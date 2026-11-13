@@ -12,9 +12,8 @@ class AttachServerGroupsResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the scaling activity. During the scaling activity, the server group is attached to the scaling group and the existing ECS instances or elastic container instances in the scaling group are added to the server group.
-        # 
-        # >  This parameter is returned only if you set ForceAttach to true.
+        # The ID of the scaling activity that is triggered when the load balancing server groups are added and the ECS instances or ECI instances in the scaling group are added to the server groups.
+        # > This parameter is returned only when the ForceAttach parameter is set to true.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):

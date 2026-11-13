@@ -20,7 +20,7 @@ class DescribeInstanceRefreshesResponseBody(DaraModel):
         self.instance_refresh_tasks = instance_refresh_tasks
         # The maximum number of entries per page.
         self.max_results = max_results
-        # The pagination token for the next query. If NextToken is empty, no more results exist.
+        # The token for the next query. An empty NextToken indicates that no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -99,15 +99,15 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(DaraModel):
         strategy: str = None,
         total_need_update_capacity: int = None,
     ):
-        # The duration for which the task pauses when a checkpoint is reached. Unit: minutes.
+        # The pause duration when a refresh task checkpoint is reached. Unit: minutes.
         self.checkpoint_pause_time = checkpoint_pause_time
-        # The checkpoints for the refresh task. A checkpoint specifies that the task automatically pauses for CheckpointPauseTime minutes when the proportion of new instances reaches the specified value during the instance refresh.
+        # The refresh task checkpoints. Specifies that during the instance refresh, the task is automatically paused for CheckpointPauseTime minutes when the percentage of new instances reaches the specified value.
         self.checkpoints = checkpoints
         # The desired configuration for the instance refresh.
         self.desired_configuration = desired_configuration
-        # The failure reason when the instance refresh task fails.
+        # The specific cause of the failure when the instance refresh task fails.
         self.detail = detail
-        # The end time of the instance refresh task.
+        # The end time of the instance refresh task. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
         # The capacity that has been refreshed.
         self.finished_update_capacity = finished_update_capacity
@@ -121,22 +121,22 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(DaraModel):
         self.region_id = region_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
-        # Indicates whether instances that already match the desired configuration are skipped.
+        # Specifies whether to skip instances that match the desired configuration.
         # 
-        # > The system determines whether an instance matches based on the ID of the desired scaling configuration, not by comparing individual configuration items.
+        # > The system determines whether an instance matches based on the ID of the desired scaling configuration, without comparing specific configuration items.
         # 
         # Valid values:
         # 
-        # - true: Skipped. When the instance refresh task starts, the system checks the configuration of each instance. Instances that were already created with the desired configuration are not refreshed.
-        # - false: Not skipped. After the instance refresh task starts, all instances in the scaling group are refreshed.
+        # - true: Skips matching instances. When the instance refresh task starts, the system checks the configuration of each instance. Instances that are already created with the desired configuration are not refreshed.
+        # - false: Does not skip matching instances. After the instance refresh task starts, all instances in the scaling group are refreshed.
         self.skip_matching = skip_matching
-        # The start time of the instance refresh task.
+        # The start time of the instance refresh task. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
         # The current status of the instance refresh task. Valid values:
-        # - Pending: The instance refresh task is created and waiting to be scheduled.
+        # - Pending: The instance refresh task is created and pending scheduling.
         # - InProgress: The instance refresh task is in progress.
         # - Paused: The instance refresh task is paused.
-        # - CheckpointPause: The instance refresh task is paused because the task progress reached a checkpoint (`Checkpoint.Percentage`).
+        # - CheckpointPause: The instance refresh task is paused because the task progress has reached the refresh task checkpoint (`Checkpoint.Percentage`).
         # - Failed: The instance refresh task failed.
         # - Successful: The instance refresh task succeeded.
         # - Cancelling: The instance refresh task is being canceled.
@@ -145,6 +145,11 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(DaraModel):
         # - RollbackSuccessful: The instance refresh task is rolled back.
         # - RollbackFailed: The rollback of the instance refresh task failed.
         self.status = status
+        # The execution strategy of the instance refresh task. Valid values:
+        # 
+        # - Rolling: Refreshes instances by creating new instances and releasing old ones.
+        # 
+        # - ReplaceSystemDisk: Updates the system disk on the existing instances.
         self.strategy = strategy
         # The total capacity that needs to be refreshed.
         self.total_need_update_capacity = total_need_update_capacity
@@ -282,17 +287,17 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
     ):
         # The list of containers included in the instance.
         self.containers = containers
-        # The ID of the image file used for automatic creation of instances.
+        # The ID of the image file, which is the image resource used for the automatic creation of instances.
         self.image_id = image_id
-        # The ID of the launch template from which the scaling group obtains launch configuration information.
+        # The ID of the launch template, which specifies that the scaling group obtains the launch configuration information from the launch template.
         self.launch_template_id = launch_template_id
-        # The instance type information that overrides the launch template.
+        # The instance type override information for the launch template.
         self.launch_template_overrides = launch_template_overrides
         # The version of the launch template. Valid values:
         # 
-        # - A fixed template version number.
-        # - Default: always uses the default version of the template.
-        # - Latest: always uses the latest version of the template.
+        # - A specific template version number.
+        # - Default: Always uses the default version of the template.
+        # - Latest: Always uses the latest version of the template.
         self.launch_template_version = launch_template_version
         # The ID of the scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
@@ -369,7 +374,7 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
         self,
         instance_type: str = None,
     ):
-        # The instance type that overrides the instance type specified in the launch template.
+        # The specified instance type, which overrides the instance type in the launch template.
         self.instance_type = instance_type
 
     def validate(self):
@@ -401,15 +406,15 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
         image: str = None,
         name: str = None,
     ):
-        # The arguments for the container startup commands.
+        # The arguments for the container startup command.
         self.args = args
-        # The container startup commands.
+        # The startup command of the container.
         self.commands = commands
         # The environment variable information.
         self.environment_vars = environment_vars
         # The container image.
         self.image = image
-        # The custom container name.
+        # The custom name of the container.
         self.name = name
 
     def validate(self):
@@ -471,7 +476,7 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
         key: str = None,
         value: str = None,
     ):
-        # >This parameter is not available for use.
+        # > This parameter is not available for use.
         self.field_ref_field_path = field_ref_field_path
         # The name of the environment variable.
         self.key = key
@@ -515,7 +520,7 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints(DaraM
         self,
         percentage: int = None,
     ):
-        # The percentage of new instances relative to the total instances in the scaling group. The task automatically pauses when this percentage is reached.
+        # The percentage of new instances out of the total instances in the scaling group. The task is automatically paused when this percentage is reached.
         self.percentage = percentage
 
     def validate(self):

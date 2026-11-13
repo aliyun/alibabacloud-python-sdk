@@ -16,15 +16,15 @@ class DescribeScalingGroupsResponseBody(DaraModel):
         scaling_groups: List[main_models.DescribeScalingGroupsResponseBodyScalingGroups] = None,
         total_count: int = None,
     ):
-        # The page number.
+        # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The scaling groups.
+        # The collection of scaling group information.
         self.scaling_groups = scaling_groups
-        # The total number of entries returned.
+        # The total number of scaling groups.
         self.total_count = total_count
 
     def validate(self):
@@ -147,147 +147,143 @@ class DescribeScalingGroupsResponseBodyScalingGroups(DaraModel):
         v_switch_id: str = None,
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
+        warm_pool_capacity: int = None,
+        warm_pool_configuration: main_models.DescribeScalingGroupsResponseBodyScalingGroupsWarmPoolConfiguration = None,
+        zone_shift_options: main_models.DescribeScalingGroupsResponseBodyScalingGroupsZoneShiftOptions = None,
     ):
-        # The number of ECS instances that are in the In Service state in the scaling group.
+        # The number of ECS instances that have been added to the scaling group and are running properly.
         self.active_capacity = active_capacity
         # The ID of the active scaling configuration in the scaling group.
         self.active_scaling_configuration_id = active_scaling_configuration_id
-        # The Application Load Balancer (ALB) server groups.
+        # The collection of information about Application Load Balancer (ALB) server groups.
         self.alb_server_groups = alb_server_groups
-        # The instance allocation policy. Auto Scaling selects instance types based on the allocation policy to create the required number of preemptible instances. The policy is suitable for pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
+        # The capacity allocation strategy, which determines how the scaling group selects available instance types to meet the capacity requirements. The capacity distribution strategy applies to both pay-as-you-go and spot capacity. This parameter takes effect only when the `MultiAZPolicy` parameter is set to `COMPOSABLE`. Valid values:
         # 
-        # *   priority: Auto Scaling adopts the predefined instance type sequence to create the required number of preemptible instances.
-        # *   lowestPrice: Auto Scaling selects instance types that have the most economical vCPU pricing to create the required number of instances.
+        # - priority: Creates instances based on the order of the configured instance types.
+        # - lowestPrice: Creates instances based on the unit price per vCPU of the instance types in ascending order.
         self.allocation_strategy = allocation_strategy
-        # Whether to enable automatic rebalancing for the scaling group. This takes effect only when BalancedOnly is enabled for the scaling group. Valid value:
-        # 
-        # *   false: Auto rebalancing is disabled for the scaling group.
-        # *   true: If Auto rebalancing is enabled, the scaling group automatically detects the capacity of the zone. If the capacity of the zone is unbalanced, the scaling group actively scales out the zone and re-balances the capacity of the zone.
+        # Specifies whether to enable automatic balancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for zone balancing. Valid values:
+        # - false: Automatic balancing for the scaling group is disabled.
+        # - true: Automatic balancing for the scaling group is enabled. The scaling group automatically detects the capacity across zones. When the capacity is unbalanced, the scaling group proactively scales in or out to rebalance the capacity across zones.
         self.auto_rebalance = auto_rebalance
-        # Indicates whether instances in the scaling group are evenly distributed across the specified zones. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
+        # Specifies whether the capacity of the scaling group is evenly distributed across multiple zones. This parameter takes effect only when the `MultiAZPolicy` parameter is set to `COMPOSABLE`. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The capacity of the scaling group is evenly distributed across multiple zones.
+        # - false: The capacity of the scaling group is not evenly distributed across multiple zones.
         self.az_balance = az_balance
-        # The zone balancing mode. This mode takes effect only when the zone balancing mode is enabled. Valid value:
+        # The zone balancing mode. This parameter takes effect only when the zone balancing mode is enabled. Valid values:
+        #  
+        # - BalancedBestEffort: When resource creation fails in a zone, the system falls back to other zones to ensure best-effort delivery of resources.
         # 
-        # *   Default value: BalancedBestEffort. If a resource fails to be created in a zone, the resource is downgraded to another zone. This ensures best-effort delivery of the resource.
-        # *   BalancedOnly: If a resource fails to be created in a zone, the resource is not downgraded to another zone. The scale-out activity is partially successful to avoid excessive imbalance of resources in different zones.
+        # - BalancedOnly: When resource creation fails in a zone, the system does not fall back to other zones. The scale-out activity partially succeeds to avoid excessive imbalance of resources across different zones.
         self.balance_mode = balance_mode
         # The capacity options.
         self.capacity_options = capacity_options
-        # Indicates whether Auto Scaling can create pay-as-you-go instances to supplement preemptible instances if preemptible instances cannot be created due to price-related factors or insufficient inventory when MultiAZPolicy is set to COST_OPTIMIZED. Valid values:
+        # Specifies whether to automatically create pay-as-you-go instances to meet the requirement for the number of ECS instances when the MultiAZPolicy parameter is set to COST_OPTIMIZED and the required number of spot instances cannot be created due to insufficient resources or price limits. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: yes.
+        # - false: no.
         self.compensate_with_on_demand = compensate_with_on_demand
-        # The time when the scaling group was created.
+        # The time when the scaling group was created. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # >  This parameter is unavailable.
+        # > This parameter is not available.
         self.current_host_name = current_host_name
-        # The Alibaba Cloud Resource Name (ARN) of the function that is specified in the custom scale-in policy. This parameter takes effect only if you set the first value of RemovalPolicies to CustomPolicy.
+        # The Alibaba Cloud Resource Name (ARN) of the Function Compute function for the custom scale-in policy. This parameter takes effect only when the first removal policy configured in RemovalPolicies is CustomPolicy.
         self.custom_policy_arn = custom_policy_arn
-        # The IDs of the ApsaraDB RDS instances that are attached to the scaling group.
+        # The IDs of the ApsaraDB RDS instances associated with the scaling group.
         self.dbinstance_ids = dbinstance_ids
-        # The databases that are attached to the scaling group.
+        # The list of databases associated with the scaling group.
         self.dbinstances = dbinstances
-        # The cooldown period of the scaling group. During the cooldown period, Auto Scaling does not execute the scaling activities that are triggered by [CloudMonitor](https://help.aliyun.com/document_detail/35170.html) event-triggered tasks.
+        # The default cooldown time of the scaling group. During the cooldown time, the scaling group does not execute any other scaling activity. This parameter applies only to a scaling activity triggered by a CloudMonitor event-triggered task.
         self.default_cooldown = default_cooldown
-        # The expected number of ECS instances in the scaling group. Auto Scaling automatically maintains the expected number of ECS instances.
+        # The expected number of instances in the scaling group. The scaling group automatically maintains the number of ECS instances at the expected number of instances.
         self.desired_capacity = desired_capacity
-        # Indicates whether the Expected Number of Instances feature is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether the expected number of instances feature is enabled. Valid values:
+        # - true: The expected number of instances feature is enabled.
+        # - false: The expected number of instances feature is disabled.
         self.enable_desired_capacity = enable_desired_capacity
-        # Indicates whether the Deletion Protection feature is enabled for the scaling group. Valid values:
+        # Indicates whether deletion protection is enabled for the scaling group. Valid values:
         # 
-        # *   true: The Deletion Protection feature is enabled for the scaling group. The scaling group cannot be deleted.
-        # *   false: The Deletion Protection feature is disabled for the scaling group.
+        # - true: Deletion protection is enabled. The scaling group cannot be deleted.
+        # - false: Deletion protection is disabled.
         self.group_deletion_protection = group_deletion_protection
-        # The type of instances that are managed by the scaling group.
+        # The type of instances managed by the scaling group.
         self.group_type = group_type
         # The health check mode of the scaling group. Valid values:
         # 
-        # *   NONE: Auto Scaling does not perform health checks.
-        # *   ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of Classic Load Balancer (CLB) instances are not supported as the health check basis for instances in the scaling group.
+        # - NONE: No health check is performed.
+        # - ECS: Health checks are performed on instances in the scaling group. This value applies to both ECS and ECI scaling groups.
+        # - LOAD_BALANCER: The health status of instances is determined based on the health check results of load balancing (CLB load balancing type is not supported).
         self.health_check_type = health_check_type
         # The health check mode of the scaling group. Valid values:
         # 
-        # *   NONE: Auto Scaling does not perform health checks.
-        # *   ECS: Auto Scaling checks the health status of instances in the scaling group. If you want to enable instance health check, you can set the value to ECS, regardless of whether the scaling group is of ECS type or Elastic Container Instance type.
-        # *   LOAD_BALANCER: Auto Scaling checks the health status of instances in the scaling group based on the health check results of load balancers. The health check results of CLB instances are not supported as the health check basis for instances in the scaling group.
+        # - NONE: No health check is performed.
+        # - ECS: Health checks are performed on instances in the scaling group. This value is used to enable instance health checks for both ECS and ECI scaling groups.
+        # - LOAD_BALANCER: The health status of instances is determined based on the health check results of load balancing (the CLB load balancing type is not currently supported).
         self.health_check_types = health_check_types
-        # The number of instances that are initialized before they are added into the scaling group.
+        # The number of instances in the initialization state before scale-out in the scaling group.
         self.init_capacity = init_capacity
-        # >  This parameter is not available for use.
+        # > This parameter is not available.
         self.is_elastic_strength_in_alarm = is_elastic_strength_in_alarm
-        # The ID of the launch template that is used by the scaling group.
+        # The ID of the launch template used by the scaling group.
         self.launch_template_id = launch_template_id
-        # The instance types that are extended in the launch template.
+        # The instance type overrides for the launch template.
         self.launch_template_overrides = launch_template_overrides
-        # The version of the launch template that is used by the scaling group.
+        # The version of the launch template used by the scaling group.
         self.launch_template_version = launch_template_version
-        # The status of the scaling group. Valid values:
+        # The lifecycle state of the scaling group. Valid values:
         # 
-        # *   Active: The scaling group is active. Active scaling groups can receive requests to execute scaling rules and trigger scaling activities.
-        # *   Inactive: The scaling group is in the Disabled state. Disabled scaling groups cannot receive requests to execute scaling rules.
-        # *   Deleting: The scaling group is being deleted. Scaling groups that are being deleted cannot receive requests to execute scaling rules, and the parameter settings of the scaling groups cannot be modified.
+        # - Active: The scaling group is active. Only active scaling groups can accept requests to execute scaling rules and trigger a scaling activity.
+        # - Inactive: The scaling group is inactive. Inactive scaling groups do not accept any requests to execute scaling rules.
+        # - Deleting: The scaling group is being deleted. Scaling groups in the Deleting state do not accept any requests to execute scaling rules, and their parameters cannot be modified.
         self.lifecycle_state = lifecycle_state
-        # The load balancer configurations.
+        # The list of load balancing configurations.
         self.load_balancer_configs = load_balancer_configs
-        # The IDs of the load balancers that are attached to the scaling group.
+        # The list of IDs of the load balancing instances associated with the scaling group.
         self.load_balancer_ids = load_balancer_ids
-        # The maximum life span of each ECS instance in the scaling group. Unit: seconds.
+        # The maximum lifetime of an instance in the scaling group. Unit: seconds.
         # 
-        # Valid values: 0 or `[86400, Integer.maxValue]`. A value of 0 for MaxInstanceLifetime indicates that a previously set limit has been removed. This effectively disables the maximum instance lifetime constraint.
+        # Valid values: 0 or `[86400, Integer.maxValue]`. A value of 0 indicates that the configured value of MaxInstanceLifetime is cleared, which means MaxInstanceLifetime is not configured.
         # 
         # Default value: null.
         # 
-        # >  This parameter is not supported by scaling groups of the Elastic Container Instance type and scaling groups whose ScalingPolicy is set to Recycle.
+        # >This parameter is not supported for scaling groups of the Elastic Container Instance (ECI) type or scaling groups that have the No Fees for Stopped Instances feature enabled.
         self.max_instance_lifetime = max_instance_lifetime
-        # The maximum number of ECS instances that can be contained in the scaling group.
+        # The maximum number of ECS instances in the scaling group.
         self.max_size = max_size
-        # The minimum number of ECS instances that must be contained in the scaling group.
+        # The minimum number of ECS instances in the scaling group.
         self.min_size = min_size
-        # The time when the scaling group was last modified.
+        # The time when the scaling group was modified. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
         self.modification_time = modification_time
-        # The ID of the CloudMonitor application group that is associated with the scaling group.
+        # The ID of the CloudMonitor application group associated with the scaling group.
         self.monitor_group_id = monitor_group_id
-        # The scaling policy of the ECS instances in the multi-zone scaling group. Valid values:
-        # 
-        # *   PRIORITY: ECS instances are created based on the value of VSwitchIds. If Auto Scaling cannot create ECS instances in the zone where the vSwitch of the highest priority resides, Auto Scaling creates ECS instances in the zone where the vSwitch of the next highest priority resides.
-        # 
-        # *   COST_OPTIMIZED: ECS instances are created based on the unit prices of their vCPUs. Auto Scaling preferentially creates ECS instances whose vCPUs are provided at the lowest price. If preemptible instance types are specified in the scaling configuration, Auto Scaling preferentially creates preemptible instances. You can also specify CompensateWithOnDemand to allow Auto Scaling to create pay-as-you-go instances if preemptible instances cannot be created due to limited stock.
-        # 
-        #     **
-        # 
-        #     **Note** The COST_OPTIMIZED setting takes effect only if your scaling configuration contains multiple instance types or contains preemptible instance types.
-        # 
-        # *   BALANCE: ECS instances are evenly distributed across the zones that are specified for the scaling group. If ECS instances become unevenly distributed across the specified zones due to limited instance type availability, you can call the RebalanceInstance operation to balance the distribution of the ECS instances.
+        # The scale-out and scale-in policy for ECS instances in a multi-zone scaling group. Valid values:
+        #          
+        # - PRIORITY: Scales instances based on the defined vSwitches (VSwitchIds). If ECS instances cannot be created in the zone of the vSwitch with the highest priority, the system automatically uses the vSwitch with the next highest priority to create ECS instances.
+        # - COST_OPTIMIZED: Attempts to create instances based on the unit price of vCPUs from low to high. If the scaling configuration specifies multiple instance types that use the preemptible billing method, the system preferentially creates spot instances. You can use the CompensateWithOnDemand parameter to specify whether to automatically create pay-as-you-go instances when spot instances cannot be created due to insufficient resources.
+        #     > The COST_OPTIMIZED value takes effect only when the scaling configuration specifies multiple instance types or uses spot instances.
+        # - BALANCE: Evenly allocates ECS instances across the active zones specified for the scaling group. If the instances are unevenly distributed across zones due to insufficient resources, you can call the RebalanceInstance operation to balance the resources.
         self.multi_azpolicy = multi_azpolicy
-        # The minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 1000. If the number of pay-as-you-go instances is less than the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances.
+        # The minimum number of pay-as-you-go instances required in the scaling group. Valid values: 0 to 1000. When the number of pay-as-you-go instances in the scaling group is less than this value, the system preferentially creates pay-as-you-go instances.
         self.on_demand_base_capacity = on_demand_base_capacity
-        # The percentage of pay-as-you-go instances in excess when the minimum number of pay-as-you-go instances reaches the threshold. Valid values: 0 to 100.
+        # The percentage of pay-as-you-go instances to be created when the number of instances exceeds the value of OnDemandBaseCapacity. Valid values: 0 to 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
-        # The number of ECS instances that are being added to the scaling group and configured.
+        # The number of ECS instances that are being added to the scaling group but have not completed the relevant configurations.
         self.pending_capacity = pending_capacity
-        # The number of ECS instances that are in the Pending Add state in the scaling group.
+        # The number of ECS instances that are pending addition to the scaling group.
         self.pending_wait_capacity = pending_wait_capacity
         # The number of ECS instances that are in the Protected state in the scaling group.
         self.protected_capacity = protected_capacity
-        # The region ID of the scaling group.
+        # The ID of the region to which the scaling group belongs.
         self.region_id = region_id
-        # The instance removal policies. Valid values:
-        # 
-        # *   OldestInstance: Auto Scaling removes ECS instances that are added at the earliest point in time to the scaling group.
-        # *   NewestInstance: Auto Scaling removes ECS instances that are most recently added to the scaling group.
-        # *   OldestScalingConfiguration: Auto Scaling removes ECS instances that are created from the earliest scaling configuration.
+        # The collection of policies for removing ECS instances from the scaling group. Valid values:
+        # - OldestInstance: Removes the ECS instances that were created at the earliest point in time.
+        # - NewestInstance: Removes the ECS instances that were created at the latest point in time.
+        # - OldestScalingConfiguration: Removes the ECS instances that were created by using the earliest scaling configuration.
         self.removal_policies = removal_policies
         # The number of ECS instances that are being removed from the scaling group.
         self.removing_capacity = removing_capacity
-        # The number of ECS instances that are in the Pending Remove state in the scaling group.
+        # The number of ECS instances that are pending removal from the scaling group.
         self.removing_wait_capacity = removing_wait_capacity
         # The ID of the resource group to which the scaling group belongs.
         self.resource_group_id = resource_group_id
@@ -295,64 +291,71 @@ class DescribeScalingGroupsResponseBodyScalingGroups(DaraModel):
         self.scaling_group_id = scaling_group_id
         # The name of the scaling group.
         self.scaling_group_name = scaling_group_name
-        # The instance reclaim mode of the scaling group. Valid values:
+        # The reclaim mode of the scaling group. Valid values:
+        #          
+        # - recycle: The scaling group uses the shutdown and reclaim mode.
+        # - release: The scaling group uses the release mode.
+        # - forcerelease: The scaling group uses the force release mode.
         # 
-        # *   recycle: economical mode.
-        # *   release: release mode.
-        # *   forcerelease: forced release mode.
-        # 
-        # For more information, see [RemoveInstances](https://help.aliyun.com/document_detail/25955.html).
+        # For more information about the actions on removed instances, see [RemoveInstances](https://help.aliyun.com/document_detail/25955.html).
         self.scaling_policy = scaling_policy
-        # The information about the server groups.
+        # The collection of information about load balancing server groups.
         # 
-        # >  You can use this parameter to obtain the information about the ALB, NLB, and GWLB server groups associated with a scaling group.
+        # > You can use this parameter to obtain the collection of information about ALB service groups, Network Load Balancer (NLB) server groups, and Gateway Load Balancer (GWLB) service groups associated with the scaling group.
+        # >
         self.server_groups = server_groups
-        # The allocation policy of preemptible instances. This parameter indicates the manner in which Auto Scaling selects instance types to create the required number of preemptible instances. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
+        # The spot capacity distribution strategy. You can use this parameter to specify the distribution strategy for spot capacity separately. This parameter takes effect only when the `MultiAZPolicy` parameter is set to `COMPOSABLE`. Valid values:
         # 
-        # *   priority: Auto Scaling adopts the predefined instance type sequence to create the required number of preemptible instances.
-        # *   lowestPrice: Auto Scaling selects instance types that have the most economical vCPU pricing to create the required number of preemptible instances.
+        # - priority: Creates instances based on the order of the configured instance types.
+        # - lowestPrice: Creates instances based on the unit price per vCPU of the instance types in ascending order.
         # 
         # Default value: priority.
         self.spot_allocation_strategy = spot_allocation_strategy
-        # The number of preemptible instances in the scaling group.
+        # The number of spot instances in the scaling group.
         self.spot_capacity = spot_capacity
-        # The number of instance types in the scaling group. Auto Scaling evenly creates preemptible instances of multiple instance types that are provided at the lowest price across the zones of the scaling group. Valid values: 0 to 10.
+        # The number of available instance types specified. The scaling group creates spot instances evenly across the specified instance types with the lowest cost. Valid values: 0 to 10.
         self.spot_instance_pools = spot_instance_pools
-        # Indicates whether preemptible instances can be supplemented. If this parameter is set to true, Auto Scaling proactively creates instances to replace the preemptible instances for reclamation when Auto Scaling receives a system notification.
+        # Indicates whether spot instance replenishment is enabled. If this feature is enabled, when the scaling group receives a system message indicating that a preemptible instance will be reclaimed, the scaling group attempts to create a new instance to replace the preemptible instance.
         self.spot_instance_remedy = spot_instance_remedy
-        # The number of ECS instances that are in the Standby state in the scaling group.
+        # The number of instances that are in the Standby state in the scaling group.
         self.standby_capacity = standby_capacity
-        # The period of time that is required by the Elastic Compute Service (ECS) instance to enter the Stopped state during the scale-in process. Unit: seconds.
+        # The timeout period for waiting for an ECS instance to be stopped during the scale-in process. Unit: seconds.
         self.stop_instance_timeout = stop_instance_timeout
-        # The number of instances that was stopped in Economical Mode in the scaling group.
+        # The number of instances in the scaling group that are in the economical mode.
         self.stopped_capacity = stopped_capacity
-        # The processes that are suspended. If no process is suspended, null is returned. Valid values:
+        # The suspended processes. If no process is suspended, an empty value is returned. Valid values:
         # 
-        # *   ScaleIn: scale-in processes.
-        # *   ScaleOut: scale-out processes.
-        # *   HealthCheck: health check processes.
-        # *   AlarmNotification: event-triggered task processes.
-        # *   ScheduledAction: scheduled task processes.
+        # - ScaleIn: The scale-in process.
+        # - ScaleOut: The scale-out process.
+        # - HealthCheck: The health check process.
+        # - AlarmNotification: The event-triggered task process.
+        # - ScheduledAction: The scheduled task process.
         self.suspended_processes = suspended_processes
-        # Indicates whether Auto Scaling stops executing scaling activities in the scaling group. Valid values:
+        # Indicates whether Auto Scaling stops executing any scaling activity in the scaling group. Valid values:
         # 
-        # *   true: Auto Scaling stops executing scaling activities in the scaling group if the scaling activities failed for more than seven consecutive days in the scaling group. In this case, you must modify the scaling group or scaling configuration to resume the scaling activities.
-        # *   false: Auto Scaling does not stop executing scaling activities in the scaling group.
+        # - true: Auto Scaling stops executing any scaling activity in the scaling group. This indicates that the scaling group has failed to execute scale-out or scale-in operations for more than seven consecutive days. You must modify the scaling group or scaling configuration to resume the execution of the scaling activity.
+        # - false: Auto Scaling executes the scaling activity in the scaling group.
         self.system_suspended = system_suspended
         # The tags of the scaling group.
         self.tags = tags
-        # The total weighted capacity of all ECS instances in the scaling group if Weighted is specified. In other cases, this parameter specifies the total number of ECS instances in the scaling group.
+        # The total weighted capacity of all ECS instances in the scaling group if instance type weights are configured. Otherwise, this parameter indicates the total number of ECS instances in the scaling group.
         self.total_capacity = total_capacity
         # The total number of ECS instances in the scaling group.
         self.total_instance_count = total_instance_count
-        # The backend vServer groups.
+        # The list of backend server groups.
         self.vserver_groups = vserver_groups
-        # The vSwitch ID of the scaling group.
+        # The ID of the vSwitch associated with the scaling group.
         self.v_switch_id = v_switch_id
-        # The IDs of the vSwitches that are associated with the scaling group. If you specify VSwitchIds, VSwitchId is ignored.
+        # The collection of IDs of the vSwitches associated with the scaling group. If you specify the VSwitchIds parameter, the VSwitchId parameter is ignored.
         self.v_switch_ids = v_switch_ids
-        # The ID of the virtual private cloud (VPC) in which the scaling group resides.
+        # The ID of the VPC to which the scaling group belongs.
         self.vpc_id = vpc_id
+        # The number of instances in the warm pool.
+        self.warm_pool_capacity = warm_pool_capacity
+        # The warm pool configuration of the scaling group.
+        self.warm_pool_configuration = warm_pool_configuration
+        # The zone shift options.
+        self.zone_shift_options = zone_shift_options
 
     def validate(self):
         if self.alb_server_groups:
@@ -385,6 +388,10 @@ class DescribeScalingGroupsResponseBodyScalingGroups(DaraModel):
             for v1 in self.vserver_groups:
                  if v1:
                     v1.validate()
+        if self.warm_pool_configuration:
+            self.warm_pool_configuration.validate()
+        if self.zone_shift_options:
+            self.zone_shift_options.validate()
 
     def to_map(self):
         result = dict()
@@ -599,6 +606,15 @@ class DescribeScalingGroupsResponseBodyScalingGroups(DaraModel):
 
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+
+        if self.warm_pool_capacity is not None:
+            result['WarmPoolCapacity'] = self.warm_pool_capacity
+
+        if self.warm_pool_configuration is not None:
+            result['WarmPoolConfiguration'] = self.warm_pool_configuration.to_map()
+
+        if self.zone_shift_options is not None:
+            result['ZoneShiftOptions'] = self.zone_shift_options.to_map()
 
         return result
 
@@ -821,6 +837,250 @@ class DescribeScalingGroupsResponseBodyScalingGroups(DaraModel):
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
 
+        if m.get('WarmPoolCapacity') is not None:
+            self.warm_pool_capacity = m.get('WarmPoolCapacity')
+
+        if m.get('WarmPoolConfiguration') is not None:
+            temp_model = main_models.DescribeScalingGroupsResponseBodyScalingGroupsWarmPoolConfiguration()
+            self.warm_pool_configuration = temp_model.from_map(m.get('WarmPoolConfiguration'))
+
+        if m.get('ZoneShiftOptions') is not None:
+            temp_model = main_models.DescribeScalingGroupsResponseBodyScalingGroupsZoneShiftOptions()
+            self.zone_shift_options = temp_model.from_map(m.get('ZoneShiftOptions'))
+
+        return self
+
+class DescribeScalingGroupsResponseBodyScalingGroupsZoneShiftOptions(DaraModel):
+    def __init__(
+        self,
+        expiry_time: str = None,
+        impaired_zone_ids: List[str] = None,
+        zone_shift_policy: main_models.DescribeScalingGroupsResponseBodyScalingGroupsZoneShiftOptionsZoneShiftPolicy = None,
+    ):
+        # The expiration time of the zone shift. After the expiration time, the system automatically ends the shift and restores the related zones. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format.
+        self.expiry_time = expiry_time
+        # The list of impaired zone IDs.
+        self.impaired_zone_ids = impaired_zone_ids
+        # The behavior policy of the scaling group during the zone shift.
+        self.zone_shift_policy = zone_shift_policy
+
+    def validate(self):
+        if self.zone_shift_policy:
+            self.zone_shift_policy.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.expiry_time is not None:
+            result['ExpiryTime'] = self.expiry_time
+
+        if self.impaired_zone_ids is not None:
+            result['ImpairedZoneIds'] = self.impaired_zone_ids
+
+        if self.zone_shift_policy is not None:
+            result['ZoneShiftPolicy'] = self.zone_shift_policy.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpiryTime') is not None:
+            self.expiry_time = m.get('ExpiryTime')
+
+        if m.get('ImpairedZoneIds') is not None:
+            self.impaired_zone_ids = m.get('ImpairedZoneIds')
+
+        if m.get('ZoneShiftPolicy') is not None:
+            temp_model = main_models.DescribeScalingGroupsResponseBodyScalingGroupsZoneShiftOptionsZoneShiftPolicy()
+            self.zone_shift_policy = temp_model.from_map(m.get('ZoneShiftPolicy'))
+
+        return self
+
+class DescribeScalingGroupsResponseBodyScalingGroupsZoneShiftOptionsZoneShiftPolicy(DaraModel):
+    def __init__(
+        self,
+        impaired_zone_health_check_behavior: str = None,
+        scale_in_blocked_rule_types: List[str] = None,
+        scale_out_in_healthy_zones_only: bool = None,
+    ):
+        # The health check behavior in impaired zones. Valid values: 
+        # 
+        # - ReplaceUnhealthy: Unhealthy instances in all zones are replaced normally.
+        # - IgnoreUnhealthy: Unhealthy instances in impaired zones are not replaced. Healthy zones are not affected.
+        self.impaired_zone_health_check_behavior = impaired_zone_health_check_behavior
+        # Blocks scale-in activities triggered by specified types of scaling rules. The blocking scope applies to all zones under the scaling group, not just the impaired zones. This prevents false improvements in monitoring metrics caused by unreachable instances in impaired zones, which could lead to accidental scale-in activities. Valid values: 
+        # 
+        # - StepScalingRule: Blocks scale-in activities triggered by step scaling rules. 
+        # - TargetTrackingScalingRule: Blocks scale-in activities triggered by target tracking scaling rules. 
+        # - None: No blocking.
+        self.scale_in_blocked_rule_types = scale_in_blocked_rule_types
+        # Specifies whether scale-out activities create instances only in healthy zones during the shift. Valid values: 
+        # 
+        # - true: Scale-out activities create instances only in healthy zones and skip impaired zones. 
+        # - false: Scale-out activities are not restricted by zone and can create instances in any zone under the scaling group.
+        self.scale_out_in_healthy_zones_only = scale_out_in_healthy_zones_only
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.impaired_zone_health_check_behavior is not None:
+            result['ImpairedZoneHealthCheckBehavior'] = self.impaired_zone_health_check_behavior
+
+        if self.scale_in_blocked_rule_types is not None:
+            result['ScaleInBlockedRuleTypes'] = self.scale_in_blocked_rule_types
+
+        if self.scale_out_in_healthy_zones_only is not None:
+            result['ScaleOutInHealthyZonesOnly'] = self.scale_out_in_healthy_zones_only
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImpairedZoneHealthCheckBehavior') is not None:
+            self.impaired_zone_health_check_behavior = m.get('ImpairedZoneHealthCheckBehavior')
+
+        if m.get('ScaleInBlockedRuleTypes') is not None:
+            self.scale_in_blocked_rule_types = m.get('ScaleInBlockedRuleTypes')
+
+        if m.get('ScaleOutInHealthyZonesOnly') is not None:
+            self.scale_out_in_healthy_zones_only = m.get('ScaleOutInHealthyZonesOnly')
+
+        return self
+
+class DescribeScalingGroupsResponseBodyScalingGroupsWarmPoolConfiguration(DaraModel):
+    def __init__(
+        self,
+        capacity_options: main_models.DescribeScalingGroupsResponseBodyScalingGroupsWarmPoolConfigurationCapacityOptions = None,
+        instance_reuse_policy: main_models.DescribeScalingGroupsResponseBodyScalingGroupsWarmPoolConfigurationInstanceReusePolicy = None,
+        pool_state: str = None,
+        status: str = None,
+    ):
+        # The capacity configuration of the warm pool.
+        self.capacity_options = capacity_options
+        # The instance reuse policy.
+        self.instance_reuse_policy = instance_reuse_policy
+        # The instance status in the warm pool. Valid values:
+        # - Stopped: Economical mode.
+        # - Running: Running.
+        self.pool_state = pool_state
+        # The status of the warm pool. Valid values:
+        # - Active: Running.
+        # - Deleting: Deleting.
+        self.status = status
+
+    def validate(self):
+        if self.capacity_options:
+            self.capacity_options.validate()
+        if self.instance_reuse_policy:
+            self.instance_reuse_policy.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.capacity_options is not None:
+            result['CapacityOptions'] = self.capacity_options.to_map()
+
+        if self.instance_reuse_policy is not None:
+            result['InstanceReusePolicy'] = self.instance_reuse_policy.to_map()
+
+        if self.pool_state is not None:
+            result['PoolState'] = self.pool_state
+
+        if self.status is not None:
+            result['Status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CapacityOptions') is not None:
+            temp_model = main_models.DescribeScalingGroupsResponseBodyScalingGroupsWarmPoolConfigurationCapacityOptions()
+            self.capacity_options = temp_model.from_map(m.get('CapacityOptions'))
+
+        if m.get('InstanceReusePolicy') is not None:
+            temp_model = main_models.DescribeScalingGroupsResponseBodyScalingGroupsWarmPoolConfigurationInstanceReusePolicy()
+            self.instance_reuse_policy = temp_model.from_map(m.get('InstanceReusePolicy'))
+
+        if m.get('PoolState') is not None:
+            self.pool_state = m.get('PoolState')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        return self
+
+class DescribeScalingGroupsResponseBodyScalingGroupsWarmPoolConfigurationInstanceReusePolicy(DaraModel):
+    def __init__(
+        self,
+        reuse_on_scale_in: bool = None,
+    ):
+        # Specifies whether instances are added back to the warm pool when the scaling group scales in.
+        self.reuse_on_scale_in = reuse_on_scale_in
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.reuse_on_scale_in is not None:
+            result['ReuseOnScaleIn'] = self.reuse_on_scale_in
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReuseOnScaleIn') is not None:
+            self.reuse_on_scale_in = m.get('ReuseOnScaleIn')
+
+        return self
+
+class DescribeScalingGroupsResponseBodyScalingGroupsWarmPoolConfigurationCapacityOptions(DaraModel):
+    def __init__(
+        self,
+        desired_group_prepared_capacity: int = None,
+        min_capacity: int = None,
+    ):
+        # The expected number of prepared instances. The system always maintains the sum of the number of instances in the scaling group and the number of instances in the warm pool equal to the expected capacity of the warm pool.
+        self.desired_group_prepared_capacity = desired_group_prepared_capacity
+        # The minimum number of instances to maintain in the warm pool.
+        self.min_capacity = min_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.desired_group_prepared_capacity is not None:
+            result['DesiredGroupPreparedCapacity'] = self.desired_group_prepared_capacity
+
+        if self.min_capacity is not None:
+            result['MinCapacity'] = self.min_capacity
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesiredGroupPreparedCapacity') is not None:
+            self.desired_group_prepared_capacity = m.get('DesiredGroupPreparedCapacity')
+
+        if m.get('MinCapacity') is not None:
+            self.min_capacity = m.get('MinCapacity')
+
         return self
 
 class DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups(DaraModel):
@@ -829,9 +1089,9 @@ class DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups(DaraModel):
         load_balancer_id: str = None,
         vserver_group_attributes: List[main_models.DescribeScalingGroupsResponseBodyScalingGroupsVServerGroupsVServerGroupAttributes] = None,
     ):
-        # The ID of the load balancer to which the backend vServer group belongs.
+        # The ID of the load balancing instance to which the backend server group belongs.
         self.load_balancer_id = load_balancer_id
-        # The attributes of the backend vServer groups.
+        # The property of the backend server group.
         self.vserver_group_attributes = vserver_group_attributes
 
     def validate(self):
@@ -875,11 +1135,11 @@ class DescribeScalingGroupsResponseBodyScalingGroupsVServerGroupsVServerGroupAtt
         vserver_group_id: str = None,
         weight: int = None,
     ):
-        # The port number that is used by the load balancer to provide external services.
+        # The port number used by the load balancing instance to provide services.
         self.port = port
-        # The ID of the backend vServer group.
+        # The property of the backend server group.
         self.vserver_group_id = vserver_group_id
-        # The weight of the backend vServer group.
+        # The weight of the backend server group.
         self.weight = weight
 
     def validate(self):
@@ -921,16 +1181,15 @@ class DescribeScalingGroupsResponseBodyScalingGroupsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Indicates whether the tags of the scaling group can be propagated to instances. Valid values:
-        # 
-        # *   true: The tags of the scaling group can be propagated only to new instances.
-        # *   false: The tags of the scaling group cannot be propagated to instances.
+        # Specifies whether the tag is propagated. Valid values:
+        # - true: Tags on the scaling group are propagated only to newly created instances, but not to instances that are already running in the scaling group.
+        # - false: Tags on the scaling group are not propagated to instances.
         # 
         # Default value: false.
         self.propagate = propagate
-        # The tag key of the scaling group.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The tag value of the scaling group.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -973,17 +1232,17 @@ class DescribeScalingGroupsResponseBodyScalingGroupsServerGroups(DaraModel):
         type: str = None,
         weight: int = None,
     ):
-        # The port number used by each ECS instance in the server group.
+        # The port number used by the ECS instance after Auto Scaling adds the ECS instance to the server group.
         self.port = port
         # The ID of the server group.
         self.server_group_id = server_group_id
         # The type of the server group. Valid values:
         # 
-        # *   ALB
-        # *   NLB
-        # *   GWLB
+        # - ALB: Application Load Balancer (application load balancing).
+        # - NLB: Network Load Balancer (network load balancing).
+        # - GWLB: Gateway Load Balancer (gateway load balancing).
         self.type = type
-        # The weight of an ECS instance as a backend server in the server group.
+        # The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to the server group.
         self.weight = weight
 
     def validate(self):
@@ -1030,9 +1289,9 @@ class DescribeScalingGroupsResponseBodyScalingGroupsLoadBalancerConfigs(DaraMode
         load_balancer_id: str = None,
         weight: int = None,
     ):
-        # The ID of the CLB instance.
+        # The ID of the load balancing CLB (formerly SLB) instance.
         self.load_balancer_id = load_balancer_id
-        # The weight of an ECS instance as a backend server in the CLB server group. An increase in the weight of an ECS instance indicates an increase in the number of access requests that are forwarded to the ECS instance. If you set the weight of an ECS instance to 0, no access requests are forwarded to the ECS instance. Valid values: 0 to 100.
+        # The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to the SLB server group. A higher weight specifies that more access requests are distributed to the ECS instance. If the weight is 0, the ECS instance does not receive access requests. Valid values: 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -1068,13 +1327,12 @@ class DescribeScalingGroupsResponseBodyScalingGroupsLaunchTemplateOverrides(Dara
         spot_price_limit: float = None,
         weighted_capacity: int = None,
     ):
-        # The instance type. The instance type that is specified by this parameter overrides the instance type that is specified in the launch template.
+        # The specified instance type, which overrides the instance type in the launch template.
         self.instance_type = instance_type
-        # The maximum bid price of the instance type that is specified by `LaunchTemplateOverride.InstanceType`.
-        # 
-        # >  This parameter takes effect only if you use `LaunchTemplateId` to specify a launch template.
+        # The maximum hourly price for the instance type specified in the launch template override (namely, LaunchTemplateOverride.InstanceType).
+        # > This parameter takes effect only when the LaunchTemplateId parameter is specified.
         self.spot_price_limit = spot_price_limit
-        # The weight of the instance type. The value of this parameter indicates the capacity of a single instance of the specified instance type in the scaling group. A higher weight indicates that a smaller number of instances of the specified instance type are required to meet the expected capacity.
+        # The weight of the instance type, which indicates the capacity of a single instance of the specified instance type in the scaling group. A greater weight indicates that fewer instances of the specified instance type are required to meet the expected capacity.
         self.weighted_capacity = weighted_capacity
 
     def validate(self):
@@ -1116,15 +1374,14 @@ class DescribeScalingGroupsResponseBodyScalingGroupsDBInstances(DaraModel):
         security_group_ids: List[str] = None,
         type: str = None,
     ):
-        # The ID of the database.
+        # The database instance ID.
         self.dbinstance_id = dbinstance_id
-        # The IDs of the security groups that are added to the security group whitelist of the attached database.
+        # The list of security group whitelists added to the database by the scaling group.
         self.security_group_ids = security_group_ids
         # The type of the database. Valid values:
-        # 
-        # *   RDS.
-        # *   Redis.
-        # *   MongoDB.
+        # - RDS
+        # - Redis
+        # - MongoDB
         self.type = type
 
     def validate(self):
@@ -1168,27 +1425,26 @@ class DescribeScalingGroupsResponseBodyScalingGroupsCapacityOptions(DaraModel):
         price_comparison_mode: str = None,
         spot_auto_replace_on_demand: bool = None,
     ):
-        # Indicates whether pay-as-you-go ECS instances can be automatically created to reach the required number of ECS instances when preemptible ECS instances cannot be created due to high prices or insufficient inventory of resources. This parameter takes effect when you set `MultiAZPolicy` to `COST_OPTIMIZED`. Valid values:
+        # Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances when the `MultiAZPolicy` parameter is set to `COST_OPTIMIZED` and sufficient spot instances cannot be created due to price or inventory reasons. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Allowed.
+        # - false: Not allowed.
         self.compensate_with_on_demand = compensate_with_on_demand
-        # The minimum number of pay-as-you-go instances required in the scaling group. When the actual number of pay-as-you-go instances drops below the minimum threshold, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
+        # The minimum number of pay-as-you-go instances required in the scaling group. If the number of pay-as-you-go instances in the scaling group is less than this value, the system preferentially creates pay-as-you-go instances. Valid values: 0 to 1000.
         self.on_demand_base_capacity = on_demand_base_capacity
-        # The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. `OnDemandBaseCapacity` specifies the minimum number of pay-as-you-go instances required in the scaling group. Valid values: 0 to 100.
+        # The percentage of pay-as-you-go instances in the excess instances after the scaling group meets the minimum number of pay-as-you-go instances specified by `OnDemandBaseCapacity`. Valid values: 0 to 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
-        # Indicates how prices are compared. Valid values:
+        # The price comparison mode of the cost optimization strategy for the scaling group. Valid values:
+        # - PricePerUnit: Compares prices based on the price per unit of capacity.
         # 
-        # *   PricePerUnit: Prices are compared based on the price per instance capacity.
+        #   The capacity of an instance in the scaling group is equal to the weight set for the instance type. The default weight is 1, which means one ECS instance occupies one unit of capacity.
         # 
-        #     Capacity is determined by the weights assigned to instance types in the scaling group. If no weight is specified, a default weight of 1 is used, meaning each instance is assigned a capacity of 1.
-        # 
-        # *   PricePerVCpu: Prices are compared based on the price per vCPU.
+        # - PricePerVCpu: Compares prices based on the price per vCPU.
         self.price_comparison_mode = price_comparison_mode
-        # Specifies whether to replace pay-as-you-go ECS instances with preemptible ECS instances. If you specify `CompensateWithOnDemand`, it may result in a higher percentage of pay-as-you-go instances compared to the value of `OnDemandPercentageAboveBaseCapacity`. In this scenario, Auto Scaling will try to deploy preemptible ECS instances to replace the surplus pay-as-you-go ECS instances. When `CompensateWithOnDemand` is specified, Auto Scaling creates pay-as-you-go ECS instances if there are not enough preemptible instance types available. To avoid keeping these pay-as-you-go ECS instances for long periods, Auto Scaling tries to replace them with preemptible instances as soon as enough of preemptible instance types become available. Valid values:
+        # Specifies whether to use spot instances to replace pay-as-you-go capacity when `CompensateWithOnDemand` is enabled and the percentage of pay-as-you-go instances exceeds the value of `OnDemandPercentageAboveBaseCapacity`. In common scenarios where `CompensateWithOnDemand` downgrades spot instances to pay-as-you-go instances due to spot inventory or price reasons, this parameter attempts to use spot instances to replace the excess pay-as-you-go capacity to avoid long-term retention of pay-as-you-go instances. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Allowed.
+        # - false: Not allowed.
         self.spot_auto_replace_on_demand = spot_auto_replace_on_demand
 
     def validate(self):
@@ -1244,9 +1500,9 @@ class DescribeScalingGroupsResponseBodyScalingGroupsAlbServerGroups(DaraModel):
     ):
         # The ID of the ALB server group.
         self.alb_server_group_id = alb_server_group_id
-        # The port number used by an ECS instance as a backend server in the ALB server group.
+        # The port number used by the ECS instance after Auto Scaling adds the ECS instance to the ALB server group.
         self.port = port
-        # The weight of an ECS instance as a backend server in the ALB server group.
+        # The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to the ALB server group.
         self.weight = weight
 
     def validate(self):

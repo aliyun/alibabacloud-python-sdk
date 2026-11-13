@@ -18,7 +18,7 @@ class CancelInstanceRefreshRequest(DaraModel):
         # This parameter is required.
         self.instance_refresh_task_id = instance_refresh_task_id
         self.owner_id = owner_id
-        # The region ID of the scaling group.
+        # The ID of the region to which the scaling group belongs.
         # 
         # This parameter is required.
         self.region_id = region_id

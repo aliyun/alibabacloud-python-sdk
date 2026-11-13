@@ -16,13 +16,13 @@ class DescribeScheduledTasksResponseBody(DaraModel):
         scheduled_tasks: List[main_models.DescribeScheduledTasksResponseBodyScheduledTasks] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information collection of the scheduled tasks.
+        # The scheduled tasks.
         self.scheduled_tasks = scheduled_tasks
         # The total number of scheduled tasks.
         self.total_count = total_count
@@ -96,43 +96,46 @@ class DescribeScheduledTasksResponseBodyScheduledTasks(DaraModel):
         scheduled_task_id: str = None,
         scheduled_task_name: str = None,
         task_enabled: bool = None,
+        warm_pool_capacity_options: main_models.DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions = None,
     ):
         # The description of the scheduled task.
         self.description = description
-        # The expected number of instances in the scaling group. If you set `Scaling Method` to `Configure Number of Instances in Scaling Group`, you can specify this parameter.
+        # The expected number of instances in the scaling group. This parameter is valid when the scaling method of the scheduled task is set to configuring the number of instances in the scaling group.
         self.desired_capacity = desired_capacity
-        # The time window during which the scheduled task can be retried. Unit: seconds. Valid values: 0 to 21600.
+        # The retry period after the scheduled task fails to be triggered. Unit: seconds. Valid values: 0 to 21600.
         self.launch_expiration_time = launch_expiration_time
-        # The point in time at which the scheduled task is triggered.
+        # The time when the scheduled task is triggered. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
         self.launch_time = launch_time
-        # The maximum number of instances that must be contained in the scaling group. If you set `Scaling Method` to `Configure Number of Instances in Scaling Group`, you can specify this parameter.
+        # The maximum number of instances in the scaling group. This parameter is valid when the scaling method of the scheduled task is set to configuring the number of instances in the scaling group.
         self.max_value = max_value
-        # The minimum number of instances that must be contained in the scaling group. If you set `Scaling Method` to `Configure Number of Instances in Scaling Group`, you can specify this parameter.
+        # The minimum number of instances in the scaling group. This parameter is valid when the scaling method of the scheduled task is set to configuring the number of instances in the scaling group.
         self.min_value = min_value
-        # The end time of the recurrence of the scheduled task.
+        # The end time of the recurrence for the scheduled task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
         self.recurrence_end_time = recurrence_end_time
-        # The recurring interval of the scheduled task.
+        # The recurrence type of the scheduled task.
         self.recurrence_type = recurrence_type
-        # The frequency of recurrence of the scheduled task.
+        # The recurrence value of the scheduled task.
         self.recurrence_value = recurrence_value
-        # The ID of the scaling group to which the scheduled task belongs.
+        # The ID of the scaling group that executes the scheduled task.
         self.scaling_group_id = scaling_group_id
-        # The scaling rule of the scheduled task. A value is returned for this parameter only after you specify ScheduledActions.
+        # The scaling rule executed when the scheduled task is triggered. This parameter is returned only when a scaling rule is specified for the scheduled task.
         self.scheduled_action = scheduled_action
         # The ID of the scheduled task.
         self.scheduled_task_id = scheduled_task_id
         # The name of the scheduled task.
         self.scheduled_task_name = scheduled_task_name
-        # Indicates whether the scheduled task is enabled.
-        # 
-        # *   true
-        # *   false
+        # Indicates whether the scheduled task is enabled. Valid values: 
+        # - true: The task is enabled.
+        # - false: The task is disabled.
         # 
         # Default value: true.
         self.task_enabled = task_enabled
+        # The warm pool capacity configurations of the scaling group.
+        self.warm_pool_capacity_options = warm_pool_capacity_options
 
     def validate(self):
-        pass
+        if self.warm_pool_capacity_options:
+            self.warm_pool_capacity_options.validate()
 
     def to_map(self):
         result = dict()
@@ -181,6 +184,9 @@ class DescribeScheduledTasksResponseBodyScheduledTasks(DaraModel):
         if self.task_enabled is not None:
             result['TaskEnabled'] = self.task_enabled
 
+        if self.warm_pool_capacity_options is not None:
+            result['WarmPoolCapacityOptions'] = self.warm_pool_capacity_options.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -226,6 +232,47 @@ class DescribeScheduledTasksResponseBodyScheduledTasks(DaraModel):
 
         if m.get('TaskEnabled') is not None:
             self.task_enabled = m.get('TaskEnabled')
+
+        if m.get('WarmPoolCapacityOptions') is not None:
+            temp_model = main_models.DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions()
+            self.warm_pool_capacity_options = temp_model.from_map(m.get('WarmPoolCapacityOptions'))
+
+        return self
+
+class DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions(DaraModel):
+    def __init__(
+        self,
+        desired_group_prepared_capacity: int = None,
+        min_capacity: int = None,
+    ):
+        # The expected number of prepared instances.
+        self.desired_group_prepared_capacity = desired_group_prepared_capacity
+        # The minimum number of instances in the warm pool.
+        self.min_capacity = min_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.desired_group_prepared_capacity is not None:
+            result['DesiredGroupPreparedCapacity'] = self.desired_group_prepared_capacity
+
+        if self.min_capacity is not None:
+            result['MinCapacity'] = self.min_capacity
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesiredGroupPreparedCapacity') is not None:
+            self.desired_group_prepared_capacity = m.get('DesiredGroupPreparedCapacity')
+
+        if m.get('MinCapacity') is not None:
+            self.min_capacity = m.get('MinCapacity')
 
         return self
 

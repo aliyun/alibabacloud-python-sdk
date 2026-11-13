@@ -39,110 +39,107 @@ class CreateScalingRuleRequest(DaraModel):
         step_adjustments: List[main_models.CreateScalingRuleRequestStepAdjustments] = None,
         target_value: float = None,
     ):
-        # The scaling method of the scaling rule. This parameter is required only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule. Valid values:
+        # The adjustment method of the scaling rule. This parameter is required for simple scaling rules and step scaling rules. Valid values:
         # 
-        # *   QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group.
-        # *   PercentChangeInCapacity: adds the specified percentage of ECS instances to or removes the specified percentage of ECS instances from the scaling group.
-        # *   TotalCapacity: adjusts the number of ECS instances in the scaling group to a specified number.
+        # - QuantityChangeInCapacity: adds or removes a specified number of ECS instances.
+        # - PercentChangeInCapacity: adds or removes a specified percentage of ECS instances.
+        # - TotalCapacity: adjusts the number of ECS instances in the scaling group to a specified number.
         self.adjustment_type = adjustment_type
-        # The number of instances that must be scaled based on the scaling rule. This parameter is required only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule. The number of ECS instances that are scaled in a single scaling activity cannot exceed 1,000.
-        # 
-        # *   Valid values if you set the AdjustmentType parameter to QuantityChangeInCapacity: -1000 to 1000.
-        # *   Valid values if you set the AdjustmentType parameter to PercentChangeInCapacity: -100 to 10000.
-        # *   Valid values if you set the AdjustmentType parameter to TotalCapacity: 0 to 2000.
+        # The adjustment value of the scaling rule. This parameter is required for simple scaling rules and step scaling rules. The number of ECS instances adjusted in a single operation cannot exceed 1,000. Valid values vary based on the adjustment method:
+        # - QuantityChangeInCapacity: -1000 to 1000.
+        # - PercentChangeInCapacity: -100 to 10000.
+        # - TotalCapacity: 0 to 2000.
         self.adjustment_value = adjustment_value
-        # The metric dimensions. This parameter is applicable to target tracking scaling rules. If your predefined metric requires extra dimensions, you must specify this parameter. For example, if you use LoadBalancerRealServerAverageQps as your predefined metric, you must use this parameter to specify the rulePool dimension.
+        # The dimension information of the metric. This parameter is applicable to target tracking scaling rules and is configured when the metric requires additional dimension information. For example, the LoadBalancerRealServerAverageQps metric requires the dimension key-value information of rulePool.
         self.alarm_dimensions = alarm_dimensions
-        # Definition of alerting properties.
+        # The definition of alert attributes.
         self.alarm_options = alarm_options
-        # The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule. Valid values: 0 to 86400. Unit: seconds.
+        # The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Valid values: 0 to 86400. Unit: seconds.
         # 
-        # By default, this parameter is left empty.
+        # Default value: none.
         self.cooldown = cooldown
-        # Specifies whether to disable scale-in. This parameter is available only if you set ScalingRuleType to TargetTrackingScalingRule.
+        # Specifies whether to disable scale-in. This parameter is applicable only to target tracking scaling rules.
         # 
         # Default value: false.
         self.disable_scale_in = disable_scale_in
-        # The warmup period of an instance. This parameter is available only if you set the ScalingRuleType parameter to TargetTrackingScalingRule or PredictiveScalingRule. Auto Scaling adds ECS instances that are in the warmup state to a scaling group but does not report monitoring data to CloudMonitor during the warmup period.
+        # The warmup time of instances. This parameter is applicable to target tracking scaling rules and step scaling rules. ECS instances in the warmup state are added to the scaling group normally, but they do not report monitoring data to CloudMonitor during the warmup period.
         # 
-        # > Auto Scaling calculates the number of ECS instances that must be scaled. ECS instances in the warmup state are not counted towards the current capacity of the scaling group.
+        # > When dynamically calculating the number of ECS instances to be scaled, instances in the warmup state are not counted in the current number of instances.
         # 
         # Valid values: 0 to 86400. Unit: seconds.
         # 
         # Default value: 300.
         self.estimated_instance_warmup = estimated_instance_warmup
-        # The Hybrid Cloud Monitoring metrics. For more information, see [Create a custom target tracking scaling rule](https://help.aliyun.com/document_detail/2852162.html).
+        # The metric settings for Hybrid Cloud Monitoring. For more information about how to configure the settings, see [Customize target tracking scaling rules by using formula operations](https://help.aliyun.com/document_detail/2852162.html).
         self.hybrid_metrics = hybrid_metrics
-        # The ID of the Hybrid Cloud Monitoring namespace.
+        # The ID of the monitoring metrics repository for Hybrid Cloud Monitoring.
         # 
-        # For information about how to manage Hybrid Cloud Monitoring namespaces, see [Manage namespaces](https://help.aliyun.com/document_detail/217606.html).
+        # For more information about managing monitoring metrics repositories, see [Manage monitoring metrics repositories](https://help.aliyun.com/document_detail/217606.html).
         self.hybrid_monitor_namespace = hybrid_monitor_namespace
-        # The maximum number of ECS instances that can be contained in the scaling group. If you specify InitialMaxSize, you must specify `PredictiveValueBehavior`.
+        # The maximum number of instances in the scaling group. This parameter is used in combination with `PredictiveValueBehavior`.
         # 
-        # The default value of this parameter is the value of MaxSize.
+        # Default value: the maximum number of instances in the scaling group (the value of MaxSize).
         self.initial_max_size = initial_max_size
-        # The predefined metric that you want to monitor. If you set ScalingRuleType to TargetTrackingScalingRule or PredictiveScalingRule, you must specify this parameter.
+        # The predefined metric. This parameter is required for target tracking scaling rules and predictive scaling rules.
         # 
-        # Valid values if you set ScalingRuleType to TargetTrackingScalingRule:
+        # Valid values for target tracking scaling rules: 
+        # - CpuUtilizationAgent: (Agent) CPU utilization (recommended).
+        # - MemoryUtilization: (Agent) memory usage (recommended).
+        # - CpuUtilization: (ECS) average CPU utilization.
+        # - IntranetTx: (ECS) average outbound traffic over the internal network.
+        # - IntranetRx: (ECS) average inbound traffic over the internal network.
+        # - VpcInternetTx: (ECS) average outbound traffic over the Internet.
+        # - VpcInternetRx: (ECS) average inbound traffic over the Internet.
+        # - LoadBalancerRealServerAverageQps: (ALB) average QPS per backend server in a server group.
         # 
-        # *   CpuUtilizationAgent (recommended): the CPU utilization.
-        # *   MemoryUtilization (recommended): the memory usage.
-        # *   CpuUtilization: the average CPU utilization.
-        # *   IntranetTx: the outbound traffic over an internal network.
-        # *   IntranetRx: the average inbound traffic over an internal network.
-        # *   VpcInternetTx: the outbound traffic from a virtual private cloud (VPC) to the Internet.
-        # *   VpcInternetRx: the inbound traffic from the Internet to a VPC.
-        # *   LoadBalancerRealServerAverageQps:the queries per second (QPS) per Application Load Balancer (ALB) server group.
+        # Valid values for predictive scaling rules: 
+        # - CpuUtilization: (ECS) average CPU utilization.
+        # - IntranetRx: (ECS) average inbound traffic over the internal network.
+        # - IntranetTx: (ECS) average outbound traffic over the internal network.
         # 
-        # Valid values if you set ScalingRuleType to PredictiveScalingRule:
-        # 
-        # *   CpuUtilization: the average CPU utilization.
-        # *   IntranetRx: the average inbound traffic over an internal network.
-        # *   IntranetTx: the average outbound traffic over an internal network.
-        # 
-        # For more information, see [Event-triggered tasks of the system monitoring type](https://help.aliyun.com/document_detail/74854.html).
+        # For more information, see [System monitoring event-triggered tasks](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The metric type. Valid values:
+        # The type of the metric. Valid values:
         # 
-        # *   system: system metrics of CloudMonitor.
-        # *   custom: custom metrics that are reported to CloudMonitor.
-        # *   hybrid: metrics of Hybrid Cloud Monitoring.
+        # - system: uses system metrics of CloudMonitor.
+        # - custom: uses custom metrics reported to CloudMonitor.
+        # - hybrid: uses metrics of Hybrid Cloud Monitoring.
         self.metric_type = metric_type
-        # The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
+        # The minimum number of instances to be adjusted. This parameter takes effect only when the scaling rule type is SimpleScalingRule or StepScalingRule and AdjustmentType is set to PercentChangeInCapacity.
         self.min_adjustment_magnitude = min_adjustment_magnitude
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The mode of the predictive scaling rule. Valid values:
         # 
-        # *   PredictAndScale: produces predictions and creates prediction tasks.
-        # *   PredictOnly: produces predictions but does not create prediction tasks.
+        # - PredictAndScale: generates prediction results and creates predictive tasks.
+        # - PredictOnly: generates prediction results but does not create predictive tasks.
         # 
         # Default value: PredictAndScale.
         self.predictive_scaling_mode = predictive_scaling_mode
-        # The amount of buffer time before the prediction task is executed. By default, all prediction tasks that are automatically created for a predictive scaling rule are executed on the hour. You can specify an amount of buffer time for resource preparation before the prediction tasks are executed. Valid values: 0 to 60. Unit: minutes.
+        # The predictive tasks automatically created by predictive scaling rules are executed on the hour by default. You can set the pre-startup time to execute the predictive tasks in advance and prepare resources beforehand. Valid values: 0 to 60. Unit: minutes.
         # 
         # Default value: 0.
         self.predictive_task_buffer_time = predictive_task_buffer_time
-        # The maximum value for predication tasks. Valid values:
+        # The processing method for the maximum value of the predictive scaling rule. Valid values:
         # 
-        # *   MaxOverridePredictiveValue: uses the initial maximum capacity as the maximum value for prediction tasks if the predicted value is greater than the initial maximum capacity.
-        # *   PredictiveValueOverrideMax: uses the predicted value as the maximum value for prediction tasks if the predicted value is greater than the initial maximum capacity.
-        # *   PredictiveValueOverrideMaxWithBuffer: increases the predicted value by a percentage that is specified by the PredictiveValueBuffer parameter. If the predicted value that is increased by the percentage is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+        # - MaxOverridePredictiveValue: The initial maximum value overrides the predicted value. If the predicted value is greater than the initial maximum value, the maximum value of the predictive task uses the initial maximum value.
+        # - PredictiveValueOverrideMax: The predicted value overrides the initial maximum value. If the predicted value is greater than the initial maximum value, the maximum value of the predictive task uses the predicted value.
+        # - PredictiveValueOverrideMaxWithBuffer: A buffer ratio is added to the predicted value. The predicted value is increased by the ratio specified by PredictiveValueBuffer. If the increased value is greater than the initial maximum value, the increased value is used.
         # 
         # Default value: MaxOverridePredictiveValue.
         self.predictive_value_behavior = predictive_value_behavior
-        # The ratio based on which the predicted value is increased when you set `PredictiveValueBehavior` to `PredictiveValueOverrideMaxWithBuffer`. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+        # This parameter takes effect only when `PredictiveValueBehavior` is set to `PredictiveValueOverrideMaxWithBuffer`. The predicted value is increased by this ratio. If the increased value is greater than the initial maximum value, the increased value is used. Valid values: 0 to 100.
         # 
         # Default value: 0.
         self.predictive_value_buffer = predictive_value_buffer
         # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The number of consecutive times that the event-triggered task created for scale-in activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
+        # After a target tracking scaling rule is created, an event-triggered task is automatically created. This parameter specifies the number of consecutive times the threshold condition must be met before the corresponding scale-in event-triggered task triggers an alert.
         # 
         # Default value: 15.
         self.scale_in_evaluation_count = scale_in_evaluation_count
-        # The number of consecutive times that the event-triggered task created for scale-out activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
+        # After a target tracking scaling rule is created, an event-triggered task is automatically created. This parameter specifies the number of consecutive times the threshold condition must be met before the corresponding scale-out event-triggered task triggers an alert.
         # 
         # Default value: 3.
         self.scale_out_evaluation_count = scale_out_evaluation_count
@@ -150,24 +147,24 @@ class CreateScalingRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # The name of the scaling rule. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). The name must start with a letter or a digit.
+        # The name of the scaling rule. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (_), hyphens (-), and periods (.). It must start with a letter, digit, or Chinese character.
         # 
-        # The name of each scaling rule must be unique under the same account within a region.
+        # The name of a scaling rule must be unique within a scaling group in a region for an Alibaba Cloud account.
         # 
-        # If you leave this parameter empty, the scaling rule ID is used.
+        # If this parameter is not specified, the value of ScalingRuleId is used by default.
         self.scaling_rule_name = scaling_rule_name
         # The type of the scaling rule. Valid values:
         # 
-        # *   SimpleScalingRule: a simple scaling rule. After you execute a simple scaling rule, Auto Scaling adjusts the number of ECS instances or elastic container instances in the scaling group based on the values of AdjustmentType and AdjustmentValue.
-        # *   TargetTrackingScalingRule: a target tracking scaling rule. After you execute a target tracking scaling rule, Auto Scaling dynamically calculates the number of ECS instances or elastic container instances to scale based on the predefined metric (MetricName) and attempts to maintain the metric value close to the expected value (TargetValue).
-        # *   StepScalingRule: a step scaling rule. After you execute a step scaling rule, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
-        # *   PredictiveScalingRule: a predictive scaling rule. After you execute a predictive scaling rule, Auto Scaling uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to adjust the boundary values for the scaling group.
+        # - SimpleScalingRule: simple scaling rule. Adjusts the number of ECS or ECI instances based on the adjustment method (AdjustmentType) and adjustment value (AdjustmentValue).
+        # - TargetTrackingScalingRule: target tracking scaling rule. Dynamically calculates the number of ECS or ECI instances for scale-out or scale-in based on a predefined metric (MetricName) to keep the metric value close to the target value (TargetValue).
+        # - StepScalingRule: step scaling rule. Provides a step-by-step scaling method based on thresholds and metric values.
+        # - PredictiveScalingRule: predictive scaling rule. Analyzes historical monitoring data of the scaling group based on machine learning capabilities to predict future metric values, and supports the automatic creation of scheduled tasks to configure the boundary values of the scaling group.
         # 
         # Default value: SimpleScalingRule.
         self.scaling_rule_type = scaling_rule_type
-        # Details of the step adjustments.
+        # The collection of instance scaling information corresponding to step adjustments.
         self.step_adjustments = step_adjustments
-        # The target value. This parameter is required only if you set the ScalingRuleType parameter to TargetTrackingScalingRule or PredictiveScalingRule. The value must be greater than 0 and can have up to three decimal places.
+        # The target value. This parameter is required for target tracking scaling rules and predictive scaling rules. The value of TargetValue can be rounded to three decimal places and must be greater than 0.
         self.target_value = target_value
 
     def validate(self):
@@ -388,11 +385,11 @@ class CreateScalingRuleRequestStepAdjustments(DaraModel):
         metric_interval_upper_bound: float = None,
         scaling_adjustment: int = None,
     ):
-        # The lower limit specified in a step adjustment. This parameter is available only if you set the ScalingRuleType parameter to StepScalingRule. Valid values: -9.999999E18 to 9.999999E18.
+        # The lower boundary of the step adjustment. This parameter is applicable only to step scaling rules. Valid values: -9.999999E18 to 9.999999E18.
         self.metric_interval_lower_bound = metric_interval_lower_bound
-        # The upper limit that is specified in a step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+        # The upper boundary of the step adjustment. Valid values: -9.999999E18 to 9.999999E18.
         self.metric_interval_upper_bound = metric_interval_upper_bound
-        # The number of ECS instances that you want to scale in a step adjustment. This parameter is available only if you set the ScalingRuleType parameter to StepScalingRule.
+        # The number of instances to be scaled for the step adjustment. This parameter is applicable only to step scaling rules.
         self.scaling_adjustment = scaling_adjustment
 
     def validate(self):
@@ -436,21 +433,20 @@ class CreateScalingRuleRequestHybridMetrics(DaraModel):
         metric_name: str = None,
         statistic: str = None,
     ):
-        # The metric dimensions. You can use this parameter to specify the monitored resources.
+        # The dimensions of the metric. Used to specify the resources monitored by the metric.
         self.dimensions = dimensions
-        # The metric expression that consists of multiple Hybrid Cloud Monitoring metrics. It calculates a result used to trigger scaling events.
+        # The metric operation expression for multiple Hybrid Cloud Monitoring metrics. The calculation result of the expression is used to trigger scaling.
         # 
-        # The expression must be written in Reverse Polish Notation (RPN) format and supports only the following operators: `+, -, *, /`.
+        # The operation expression must comply with the Reverse Polish Notation (RPN) specification, and only the `+`, `-`, `*`, and `/` operators are supported.
         self.expression = expression
-        # The reference ID of the metric in the metric expression.
+        # The reference ID of the metric in the metric operation expression.
         self.id = id
-        # The name of the Hybrid Cloud Monitoring metric.
+        # The name of the monitoring metrics in the monitoring metrics repository for Hybrid Cloud Monitoring.
         self.metric_name = metric_name
-        # The statistical method of the metric value. Valid values:
-        # 
-        # *   Average: calculates the average value of all metric values within a specified interval.
-        # *   Minimum: calculates the minimum value of all metric values within a specified interval.
-        # *   Maximum: calculates the maximum value of all metric values within a specified interval.
+        # The statistical method of the metric. Valid values:
+        # - Average: the average value of all data points within the specified period.
+        # - Minimum: the minimum value of all data points within the specified period.
+        # - Maximum: the maximum value of all data points within the specified period.
         self.statistic = statistic
 
     def validate(self):
@@ -511,9 +507,9 @@ class CreateScalingRuleRequestHybridMetricsDimensions(DaraModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
-        # The key of the metric dimension.
+        # The dimension key of the metric.
         self.dimension_key = dimension_key
-        # The value of the metric dimension.
+        # The dimension value of the metric.
         self.dimension_value = dimension_value
 
     def validate(self):
@@ -547,7 +543,7 @@ class CreateScalingRuleRequestAlarmOptions(DaraModel):
         self,
         period: int = None,
     ):
-        # The period for aggregating monitoring metric data in a target tracking rule, in seconds. Valid values:
+        # The period for collecting metric data in the target tracking scaling rule. Unit: seconds. Valid values:
         # 
         # - 15
         # - 60
@@ -555,7 +551,7 @@ class CreateScalingRuleRequestAlarmOptions(DaraModel):
         # - 300
         # - 900
         # 
-        # > Default Value: 60.
+        # > Default value: 60.
         self.period = period
 
     def validate(self):
@@ -584,9 +580,9 @@ class CreateScalingRuleRequestAlarmDimensions(DaraModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
-        # The dimension key of the metric.
+        # The dimension key associated with the metric.
         self.dimension_key = dimension_key
-        # The dimension value of the metric.
+        # The dimension value associated with the metric.
         self.dimension_value = dimension_value
 
     def validate(self):

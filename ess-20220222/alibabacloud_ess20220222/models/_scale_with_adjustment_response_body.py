@@ -15,15 +15,11 @@ class ScaleWithAdjustmentResponseBody(DaraModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
-        # The type of the scaling activity.
-        # 
-        # If this parameter is set to `CapacityChange`, the scaling activity only adjusts the desired capacity of the scaling group without immediately adding or removing instances.
-        # 
-        # This setting only affects scaling groups with a configured desired capacity.
+        # The type of the scaling activity. If `ActivityType` is `CapacityChange`, the scaling activity corresponding to the returned `ScalingActivityId` only modifies the expected number of instances in the scaling group and does not immediately execute scale-out or scale-in. Applicable scope: scaling groups with the expected number of instances configured.
         self.activity_type = activity_type
-        # The scaling plan result returned when ExecutionMode is set to PlanOnly.
+        # The elastic planning results returned when ExecutionMode is set to PlanOnly.
         self.plan_result = plan_result
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The ID of the scaling activity.
         self.scaling_activity_id = scaling_activity_id
@@ -73,7 +69,7 @@ class ScaleWithAdjustmentResponseBodyPlanResult(DaraModel):
         self,
         resource_allocations: List[main_models.ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations] = None,
     ):
-        # The resource allocation details in the scaling plan result.
+        # The resource allocation information in the elastic planning results.
         self.resource_allocations = resource_allocations
 
     def validate(self):
@@ -115,23 +111,19 @@ class ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations(DaraModel):
     ):
         # The number of instances.
         self.amount = amount
-        # The billing method of the instance. Valid values:
-        # 
-        # - **Prepaid**: subscription
-        # 
-        # - **PostPaid**: pay-as-you-go
+        # The billing method. Valid values:
+        # * **Prepaid**: subscription.
+        # * **Postpaid**: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
         # The instance type.
         self.instance_type = instance_type
-        # The spot strategy of the instance. Valid values:
+        # The preemption policy for the instance. Valid values:
         # 
-        # - NoSpot: A pay-as-you-go instance.
-        # 
-        # - SpotWithPriceLimit: A spot instance with a user-specified price limit.
-        # 
-        # - SpotAsPriceGo: A spot instance where the system automatically bids based on the current market price.
+        # - NoSpot: regular pay-as-you-go instance.
+        # - SpotWithPriceLimit: spot instance with a maximum price limit.
+        # - SpotAsPriceGo: spot instance whose price is automatically set by the system based on the current market price.
         self.spot_strategy = spot_strategy
-        # The availability zone ID.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

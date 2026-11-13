@@ -21,57 +21,50 @@ class ScaleWithAdjustmentShrinkRequest(DaraModel):
         scaling_group_id: str = None,
         sync_activity: bool = None,
     ):
-        # The metadata for the scaling activity.
+        # The metadata of the scaling activity.
         self.activity_metadata = activity_metadata
-        # The method used to adjust the number of instances in a scaling activity. Valid values:
+        # The adjustment method for the scaling activity. Valid values:
         # 
-        # - `QuantityChangeInCapacity`: Adds or removes a specified number of ECS instances.
-        # 
-        # - `PercentChangeInCapacity`: Adds or removes a specified percentage of ECS instances.
-        # 
-        # - `TotalCapacity`: Adjusts the number of ECS instances in the scaling group to a specified number.
+        # - QuantityChangeInCapacity: Increases or decreases a specified number of ECS instances.
+        # - PercentChangeInCapacity: Increases or decreases a specified percentage of ECS instances.
+        # - TotalCapacity: Adjusts the number of ECS instances in the current scaling group to a specified number.
         # 
         # This parameter is required.
         self.adjustment_type = adjustment_type
-        # The adjustment value for the scaling activity. A single adjustment cannot add or remove more than 1,000 ECS instances. The valid range depends on `AdjustmentType`:
-        # 
-        # - `QuantityChangeInCapacity`: -1000 to 1000.
-        # 
-        # - `PercentChangeInCapacity`: -100 to 10000.
-        # 
-        # - `TotalCapacity`: 0 to 2000.
+        # The adjustment value for the scaling activity. In all cases, the number of ECS instances adjusted in a single operation cannot exceed 1,000. Otherwise, the adjustment fails. Valid values vary based on the adjustment method:
+        # - QuantityChangeInCapacity: -1,000 to 1,000.
+        # - PercentChangeInCapacity: -100 to 10,000.
+        # - TotalCapacity: 0 to 2,000.
         # 
         # This parameter is required.
         self.adjustment_value = adjustment_value
-        # A client-generated token to ensure the idempotence of the request. This token must be a unique string of up to 64 ASCII characters.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
         self.client_token = client_token
         # The execution mode. Valid values:
         # 
-        # - `None`: Executes a standard scaling activity.
-        # 
-        # - `PlanOnly`: Only performs elastic planning and returns the results in `PlanResult` without triggering the scaling activity. The results include details such as instance types, availability zones, billing methods, and the number of new instances.
+        # - None: Not specified. Normal scaling is performed.
+        # - PlanOnly: Does not trigger scaling. Only elastic planning is executed. The planning results, including instance types, zone IDs, billing methods, and the number of instances to be created, are returned in PlanResult.
         # 
         # Default value: None.
         self.execution_mode = execution_mode
-        # The lifecycle hook context.
+        # The context information of the lifecycle hook.
         self.lifecycle_hook_context_shrink = lifecycle_hook_context_shrink
-        # The minimum number of instances to adjust in a scaling activity. This parameter takes effect only when `AdjustmentType` is set to `PercentChangeInCapacity`.
+        # The minimum number of instances to be adjusted in the scaling activity. This parameter takes effect only when `AdjustmentType` is set to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
-        # The parameters to override when scaling out an ECI scaling group.
+        # The override parameters specified for scaling out an Elastic Container Instance (ECI) scaling group.
         self.overrides_shrink = overrides_shrink
         self.owner_id = owner_id
-        # Specifies whether the current scaling activity supports concurrency.
+        # Specifies whether the current scaling task supports concurrent execution.
         self.parallel_task = parallel_task
         self.resource_owner_account = resource_owner_account
         # The ID of the scaling group.
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # Specifies whether to execute the scaling activity synchronously. This parameter applies only to scaling groups that are configured with an expected number of instances. Valid values:
+        # Specifies whether to synchronously execute the scaling activity. This parameter is valid only for scaling groups that have the expected number of instances configured. Valid values:
         # 
-        # - `true`: Synchronous execution. The scaling activity is triggered immediately.
-        # 
-        # - `false`: Asynchronous execution. The call updates the expected number of instances without immediately triggering the scaling activity. The activity occurs when the system detects a discrepancy between the new expected number and the current number of instances.
+        # - true: Synchronous process. When the scaling rule is executed, the scale-out or scale-in activity of the scaling group is directly triggered.
+        # - false: Asynchronous process. When the expected number of instances in the scaling group is modified, the actual scale-out or scale-in activity of the scaling group is not immediately triggered. The system automatically detects the difference between the expected number of instances and the current number of instances in the scaling group, and then triggers the scale-out or scale-in activity.
         # 
         # > For more information about the expected number of instances, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
         # 

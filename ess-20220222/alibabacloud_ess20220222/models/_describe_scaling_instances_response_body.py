@@ -17,17 +17,17 @@ class DescribeScalingInstancesResponseBody(DaraModel):
         total_count: int = None,
         total_spot_count: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The collection of ECS instance information.
         self.scaling_instances = scaling_instances
         # The total number of ECS instances.
         self.total_count = total_count
-        # The total number of running spot instances in the current scaling group.
+        # The total number of running spot instances in the scaling group.
         self.total_spot_count = total_spot_count
 
     def validate(self):
@@ -112,75 +112,82 @@ class DescribeScalingInstancesResponseBodyScalingInstances(DaraModel):
         weighted_capacity: int = None,
         zone_id: str = None,
     ):
-        # The time when the ECS instance was added to the scaling group. The value is accurate to the second.
+        # The time when the ECS instance was added to the scaling group. The time is accurate to seconds and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format. The time is displayed in UTC.
         self.created_time = created_time
-        # The time when the ECS instance was added to the scaling group. The value is accurate to the minute.
+        # The time when the ECS instance was added to the scaling group. The time is accurate to minutes and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The method used to create the ECS instance. Valid values: 
+        # The creation type of the ECS instance. Valid values: 
         # 
-        # - AutoCreated: The ECS instance is created by automatic creation based on the instance configuration source in Auto Scaling. 
-        # - Attached: The ECS instance is not created by Auto Scaling but manually added to the scaling group.
+        # - AutoCreated: The ECS instance is created by Auto Scaling through automatic creation based on the instance configuration source. 
+        # - Attached: The ECS instance is not created by Auto Scaling, but is manually added to the scaling group.
         self.creation_type = creation_type
-        # Indicates whether the manually added instance is managed by the scaling group. A managed manually added instance is released when it is removed from the scaling group (excluding manual removal). Valid values:
+        # Specifies whether the instance is managed by the scaling group when it is manually added to the scaling group. A manually added instance in the managed state is released when it is removed from the scaling group, excluding manual removal. Valid values:
         # - true: The instance is managed by the scaling group.
         # - false: The instance is not managed by the scaling group.
         self.entrusted = entrusted
-        # The health check status of the ECS instance in the scaling group. ECS instances that are not in the Running state are considered unhealthy. Valid values: 
+        # The health status of the ECS instance in the scaling group. ECS instances that are not in the Running state are considered unhealthy. Valid values: 
         # 
         # - Healthy: The ECS instance is healthy. 
         # - Unhealthy: The ECS instance is unhealthy. 
         # 
-        # Auto Scaling automatically removes unhealthy ECS instances from the scaling group and releases the ECS instances created by automatic creation.
+        # Auto Scaling automatically removes unhealthy ECS instances from the scaling group and releases ECS instances created through automatic creation.
         # 
-        # Whether a manually added ECS instance is released depends on its managed state. If the instance lifecycle is not managed by the scaling group, the instance is only removed but not released. If the instance lifecycle is managed by the scaling group, the instance is removed and released.
+        # Whether to release manually added ECS instances depends on their managed state. If the instance lifecycle is not managed by the scaling group, the instance is only removed but not released. If the instance lifecycle is managed by the scaling group, the instance is removed and released.
         # 
-        # > Make sure that your account has a sufficient available quota. If your account has an overdue payment, all pay-as-you-go ECS instances (including pay-as-you-go instances and spot instances) are stopped or even released. For information about how the status of ECS instances in a scaling group changes after an overdue payment occurs, see [Overdue payments](https://help.aliyun.com/document_detail/170589.html).
+        # > Make sure that your account has sufficient active balance. If your account has overdue payments, all pay-as-you-go ECS instances, including pay-as-you-go instances and spot instances, are stopped or even released. For more information about the instance status changes of ECS instances in a scaling group after overdue payments, see [Overdue payments](https://help.aliyun.com/document_detail/170589.html).
         self.health_status = health_status
         # The ID of the ECS instance.
         self.instance_id = instance_id
-        # The ID of the launch template.
+        # The ID of the instance launch template.
         self.launch_template_id = launch_template_id
-        # The version of the launch template.
+        # The version of the instance launch template.
         self.launch_template_version = launch_template_version
         # The lifecycle state of the ECS instance in the scaling group. Valid values:
         #  
-        # - InService: The ECS instance is added to the scaling group and provides services in the Normal state. 
-        # - Pending: The ECS instance is being added to the scaling group. During this procedure, the ECS instance is added to the backend server group of the associated load balancing instance and to the access whitelist of the associated ApsaraDB RDS instance.
-        # - Pending:Wait: The ECS instance is waiting to be added to the scaling group. If a lifecycle hook that applies to scale-out activities is created for the scaling group, the ECS instance is suspended and waits for the lifecycle hook timeout to end.
-        # - Protected: The ECS instance is protected. The ECS instance provides services as expected, but Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle.
-        # - Standby: The ECS instance is in the standby state. The ECS instance does not provide services, the weight of SLB backend server is set to zero, and Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle.
+        # - InService: The ECS instance is added to the scaling group and provides services normally. 
+        # - Pending: The ECS instance is being added to the scaling group. The procedure of adding an ECS instance to a scaling group includes adding the instance to the backend server group of a load balancing instance and adding the IP address of the instance to the access whitelist of an ApsaraDB RDS instance.
+        # - Pending:Wait: The addition of the ECS instance to the scaling group is suspended. If a lifecycle hook applicable to scale-out activities is created in the scaling group, the ECS instance is suspended when it is added to the scaling group and waits for the hook timeout to end.
+        # - Protected: The ECS instance provides services normally, but Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle.
+        # - Standby: The ECS instance does not provide services, the weight of SLB backend server is set to zero, and Auto Scaling does not manage the lifecycle of the ECS instance. You must manually manage the lifecycle.
         # - Stopped: The ECS instance is stopped and does not provide services.
-        # - Removing: The ECS instance is being removed from the scaling group. During this procedure, the ECS instance is removed from the backend server group of the associated load balancing instance and from the access whitelist of the associated ApsaraDB RDS instance. 
-        # - Removing:Wait: The ECS instance is waiting to be removed from the scaling group. If a lifecycle hook that applies to scale-down activities is created for the scaling group, the ECS instance is suspended and waits for the lifecycle hook timeout to end.
+        # - Removing: The ECS instance is being removed from the scaling group. The procedure of removing an ECS instance from a scaling group includes removing the instance from the backend server group of a load balancing instance and removing the IP address of the instance from the access whitelist of an ApsaraDB RDS instance. 
+        # - Removing:Wait: The removal of the ECS instance from the scaling group is suspended. If a lifecycle hook applicable to scale-down activities is created in the scaling group, the ECS instance is suspended when it is removed from the scaling group and waits for the hook timeout to end.
         self.lifecycle_state = lifecycle_state
-        # The weight of the load balancing instance.
-        # > This parameter is deprecated and is not recommended.
+        # The weight of the SLB backend server.
+        # > **[Deprecated]** This parameter is deprecated. Do not use it.
         self.load_balancer_weight = load_balancer_weight
-        # The private IP address of the instance in the scaling group.
+        # The internal IP address of the instance in the scaling group.
         self.private_ip_address = private_ip_address
+        # The instance replacement process that the instance is in. Valid values:
+        # - Normal: The instance is not in any replacement process.
+        # - ReBalance: The instance is in the rebalancing replacement process of the scaling group.
+        # - SpotRemedy: The instance is in the spot instance remedy replacement process.
+        # - MaxInstanceLifetimeExpire: The instance is in the replacement process due to the expiration of the maximum instance lifetime.
+        # - InstanceRefresh: The instance is in the instance refresh replacement process.
+        # - SpotReplaceOnDemand: The instance is in the process of replacing a spot instance with a pay-as-you-go instance.
         self.replace_status = replace_status
-        # The ID of the scaling activity during which the ECS instance was added to the scaling group.
+        # The ID of the scaling activity when the ECS instance was added to the scaling group.
         self.scaling_activity_id = scaling_activity_id
         # The ID of the associated scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
         # The ID of the scaling group to which the instance belongs.
         self.scaling_group_id = scaling_group_id
-        # The instance identity in the scaling group, which has a one-to-one mapping with the ECS instance ID or Elastic Container Instance (ECI) instance identity.
+        # The instance identity in the scaling group, which corresponds one-to-one with the ID of the ECS instance or elastic container instance.
         self.scaling_instance_id = scaling_instance_id
-        # The preemption policy of the spot instance. Valid values:
+        # The bidding policy for the spot instance. Valid values:
         # 
-        # - SpotWithPriceLimit: The spot instance has a maximum price limit.
-        # - SpotAsPriceGo: The system automatically bids at the current market price.
+        # - SpotWithPriceLimit: The spot instance with a maximum price.
+        # - SpotAsPriceGo: The system automatically bids based on the current market price.
         self.spot_strategy = spot_strategy
-        # The warmup state of the ECS instance. Valid values: 
+        # The warmup status of the ECS instance. Valid values: 
         #          
         # - NoNeedWarmup: No warmup is required.
-        # - WaitingForInstanceWarmup: The instance is waiting for warmup to complete.
-        # - InstanceWarmupFinish: Warmup is complete.
+        # - WaitingForInstanceWarmup: The instance is waiting for the warmup to complete.
+        # - InstanceWarmupFinish: The warmup is complete.
         self.warmup_state = warmup_state
-        # The weight of the instance type. The weight indicates the capacity that a single instance of this instance type represents in the scaling group. A higher weight means that fewer instances of this type are required to meet the expected capacity.
+        # The weight of the instance type, which indicates the capacity of a single instance of the instance type in the scaling group. A greater weight indicates that fewer instances of the instance type are required to meet the expected capacity.
         self.weighted_capacity = weighted_capacity
-        # The zone ID of the ECS instance.
+        # The ID of the zone to which the ECS instance belongs.
         self.zone_id = zone_id
 
     def validate(self):

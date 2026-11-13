@@ -17,13 +17,10 @@ class ApplyEciScalingConfigurationRequest(DaraModel):
         # 
         # This parameter is required.
         self.content = content
-        # Optional. Set the value to YAML.
         self.format = format
         # The region ID.
         self.region_id = region_id
-        # The ID of the scaling configuration.
-        # 
-        # If you want the system to update a scaling configuration of the Elastic Container Instance type based on a YAML configuration file, you must specify `ScalingConfigurationId`. If you do not specify `ScalingConfigurationId`, the system creates a new scaling configuration based on the YAML configuration file.
+        # The ID of the scaling configuration to be updated. Specify ScalingConfigurationId when you update an ECI scaling configuration based on the Content parameter. If you do not specify ScalingConfigurationId, an ECI scaling configuration is created based on the Content parameter.
         self.scaling_configuration_id = scaling_configuration_id
         # The ID of the scaling group.
         # 

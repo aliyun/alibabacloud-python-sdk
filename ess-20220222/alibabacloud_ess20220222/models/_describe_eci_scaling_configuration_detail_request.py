@@ -12,13 +12,13 @@ class DescribeEciScalingConfigurationDetailRequest(DaraModel):
         scaling_configuration_id: str = None,
         scaling_group_id: str = None,
     ):
-        # The output format. Set the value to YAML.
+        # The output format. Only YAML is supported.
         self.output_format = output_format
-        # The region ID of the scaling group to which the scaling configuration belongs.
+        # The region ID of the scaling group to which the scaling rule belongs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the scaling configuration based on which elastic container instances are created.
+        # The ID of the scaling configuration for the ECI scaling group.
         # 
         # This parameter is required.
         self.scaling_configuration_id = scaling_configuration_id

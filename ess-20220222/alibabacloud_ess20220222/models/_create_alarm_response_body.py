@@ -12,7 +12,7 @@ class CreateAlarmResponseBody(DaraModel):
     ):
         # The ID of the event-triggered task.
         self.alarm_task_id = alarm_task_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

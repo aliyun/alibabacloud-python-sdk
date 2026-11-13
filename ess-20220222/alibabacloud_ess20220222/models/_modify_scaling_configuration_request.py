@@ -56,6 +56,7 @@ class ModifyScalingConfigurationRequest(DaraModel):
         scaling_configuration_id: str = None,
         scaling_configuration_name: str = None,
         scheduler_options: Dict[str, Any] = None,
+        secondary_eni_vswitch_constraint: str = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
         security_options: main_models.ModifyScalingConfigurationRequestSecurityOptions = None,
@@ -74,241 +75,228 @@ class ModifyScalingConfigurationRequest(DaraModel):
         self.image_options = image_options
         self.private_pool_options = private_pool_options
         self.system_disk = system_disk
-        # Specifies whether to associate the instance on a dedicated host with the dedicated host. Valid values:
+        # Specifies whether the instance on a dedicated host is associated with the dedicated host. Valid values:
         # 
-        # - default: The instance is not associated with the dedicated host. If you restart an instance that was stopped in economical mode, the instance may be placed on a different dedicated host in the automatic deployment resource pool if the resources of the original dedicated host are insufficient.
+        # - default: The instance is not associated with the dedicated host. When an instance that has the economical mode enabled is restarted, the instance may be placed on another dedicated host in the automatic deployment resource pool if the original dedicated host has insufficient resources.
         # 
-        # - host: The instance is associated with the dedicated host. If you restart an instance that was stopped in economical mode, the instance is still placed on the original dedicated host. If the resources of the original dedicated host are insufficient, the instance fails to restart.
+        # - host: The instance is associated with the dedicated host. When an instance that has the economical mode enabled is restarted, the instance remains on the original dedicated host. If the original dedicated host has insufficient resources, the instance fails to restart.
         self.affinity = affinity
         # The number of vCPUs. Unit: cores.
         # 
-        # You can specify both \\`Cpu\\` and \\`Memory\\` to define a range of instance types. For example, if you set \\`Cpu\\` to 2 and \\`Memory\\` to 16, all instance types with 2 vCPUs and 16 GiB of memory are matched. Auto Scaling determines the available instance types based on factors such as I/O optimization and zone, and then creates the instance of the lowest-priced instance type.
+        # You can specify both CPU and Memory to define the range of instance types. For example, CPU=2 and Memory=16 defines all instance types with 2 vCPUs and 16 GiB of memory. Auto Scaling determines the set of active instance types based on factors such as I/O optimization and zones, and then creates instances of the lowest-priced instance type based on sorting by price.
         # 
-        # > This configuration is effective only when the cost optimization mode is enabled and no instance types are specified in the scaling configuration.
+        # > This configuration takes effect only when the cost optimization mode is enabled and no instance type is specified in the scaling configuration.
         self.cpu = cpu
-        # The performance mode of the burstable instance. Valid values:
+        # Modifies the running mode of a burstable instance. Valid values:
         # 
-        # - Standard: the standard mode. For more information about the instance performance, see the "Performance modes" section in [What is a burstable instance?](https://help.aliyun.com/document_detail/59977.html).
+        # - Standard: standard mode. For more information, see the performance constrained mode section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         # 
-        # - Unlimited: the unlimited mode. For more information about the instance performance, see the "Performance modes" section in [What is a burstable instance?](https://help.aliyun.com/document_detail/59977.html).
+        # - Unlimited: unlimited mode. For more information, see the unlimited mode section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.credit_specification = credit_specification
-        # The custom priority of the ECS instance type and vSwitch.
-        # >Notice: This parameter is in effect only when the scaling policy of the scaling group is set to the priority-based policy.
+        # The custom priorities for ECS instance type + vSwitch combinations.
+        # >Notice: This parameter takes effect only when the scaling policy of the scaling group is set to priority-based policy.
         # 
-        # If an instance cannot be created using the instance type and vSwitch with a higher priority, Auto Scaling automatically uses the instance type and vSwitch combination with the next priority to create the instance.
+        # When an instance cannot be created based on the instance type and vSwitch combination with a higher priority, Auto Scaling automatically selects the next-priority instance type and vSwitch combination to create the instance.
         # 
-        # > If you specify custom priorities for only some instance type and vSwitch combinations, the combinations for which you do not specify custom priorities have a lower priority than the combinations for which you specify custom priorities. The priority of the combinations for which you do not specify custom priorities is determined by the order of vSwitches in the scaling group and the order of instance types in the scaling configuration.
-        # >
-        # > - For example, if the vSwitches in the scaling group are ordered as vsw1 and vsw2, the instance types in the scaling configuration are ordered as type1 and type2, and the custom priority is set to ["vsw2+type2", "vsw1+type2"], the final priority is: "vsw2+type2" > "vsw1+type2" > "vsw1+type1" > "vsw2+type1".
+        # > If you specify custom priorities for only some instance type + vSwitch combinations, the unspecified combinations have lower priorities than the specified ones. The unspecified combinations are still prioritized based on the vSwitch order of the scaling group and the instance type order of the scaling configuration.
+        # > - For example, if the vSwitch order of the scaling group is vsw1 and vsw2, the instance type order of the scaling configuration is type1 and type2, and the custom priority order is ["vsw2+type2", "vsw1+type2"], the final priority is: "vsw2+type2" > "vsw1+type2" > "vsw1+type1" > "vsw2+type1".
         self.custom_priorities = custom_priorities
-        # The collection of data disk information.
+        # The collection of data cloud disk information.
         self.data_disks = data_disks
         # The ID of the dedicated host cluster.
         self.dedicated_host_cluster_id = dedicated_host_cluster_id
-        # Specifies whether to create the ECS instance on a dedicated host. If you specify \\`DedicatedHostId\\`, the \\`SpotStrategy\\` and \\`SpotPriceLimit\\` settings in the request are ignored. This is because dedicated hosts do not support spot instances.
+        # Specifies whether to create the ECS instance on a dedicated host. Because dedicated hosts do not support the creation of spot instances, if you specify the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit settings in the request are automatically ignored.
         # 
         # You can call the DescribeDedicatedHosts operation to query the list of dedicated host IDs.
         self.dedicated_host_id = dedicated_host_id
-        # The release protection attribute of the instance. This parameter specifies whether you can release the instance using the ECS console or by calling the DeleteInstance operation. This prevents the instance from being accidentally released. Valid values:
+        # The release protection property of the instance. Specifies whether the instance can be directly released from the ECS console or by calling the DeleteInstance operation, to prevent accidental deletion. Valid values:
         # 
-        # - true: enables release protection. You cannot release the instance using the ECS console or by calling the DeleteInstance operation.
+        # - true: Enables release protection. The instance cannot be directly released from the ECS console or by calling the DeleteInstance operation.
         # 
-        # - false: disables release protection. You can release the instance using the ECS console or by calling the DeleteInstance operation.
+        # - false: Disables release protection. The instance can be directly released from the ECS console or by calling the DeleteInstance operation.
         # 
-        # > This attribute applies only to pay-as-you-go instances. It prevents the instances that are scaled out by Auto Scaling from being accidentally released. This attribute does not affect normal scale-in activities. Instances for which release protection is enabled can be released during scale-in activities.
+        # > This property applies only to pay-as-you-go instances. It prevents instances created by Auto Scaling scale-out activities from being accidentally deleted, but does not affect normal scale-in activities. Instances with release protection enabled can still be released by scale-in activities.
         self.deletion_protection = deletion_protection
         # The ID of the deployment set to which the ECS instance belongs.
         self.deployment_set_id = deployment_set_id
-        # The hostname of the ECS instance. A period (.) or a hyphen (-) cannot be used as the first or last character of the hostname. Consecutive periods (.) or hyphens (-) are not allowed. The naming conventions for hostnames vary based on the instance operating system:
+        # The hostname of the Elastic Compute Service (ECS) server. A period (.) or a hyphen (-) cannot be used as the first or last character, or used consecutively. In addition, the naming conventions for different types of instances are as follows: 
         # 
-        # - For Windows instances, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). It cannot contain periods (.) or consist of only digits.
-        # 
-        # - For other instance types, such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
+        # - Windows instances: The hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). It cannot contain periods (.) or consist entirely of digits. 
+        # - Other instances (such as Linux): The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment between two periods (.) can contain letters, digits, and hyphens (-).
         self.host_name = host_name
         # The ID of the HPC cluster to which the ECS instance belongs.
         self.hpc_cluster_id = hpc_cluster_id
         # Specifies whether to enable the access channel for instance metadata. Valid values:
-        # 
-        # - enabled: enable.
-        # 
-        # - disabled: disable.
+        # - enabled: enabled.
+        # - disabled: disabled.
         # 
         # Default value: enabled.
         # 
-        # > For more information about instance metadata, see [Overview of instance metadata](https://help.aliyun.com/document_detail/108460.html).
+        # > For information about instance metadata, see [Overview of instance metadata](https://help.aliyun.com/document_detail/108460.html).
         self.http_endpoint = http_endpoint
-        # Specifies whether to enforce the security-hardened mode (IMDSv2) when you access instance metadata. Valid values:
+        # Specifies whether to forcefully use the security-hardened mode (IMDSv2) to access instance metadata. Valid values:
         # 
-        # - optional: does not enforce the use of IMDSv2.
-        # 
-        # - required: enforces the use of IMDSv2. If you set the value to \\`required\\`, you cannot access instance metadata in normal mode.
+        # - optional: does not forcefully use the security-hardened mode.
+        # - required: forcefully uses the security-hardened mode. After you set this value, instance metadata cannot be accessed in normal mode.
         # 
         # Default value: optional.
         # 
-        # > For more information about how to access instance metadata, see [Access modes of instance metadata](https://help.aliyun.com/document_detail/108460.html).
+        # > For more information about the modes for accessing instance metadata, see [Instance metadata access modes](https://help.aliyun.com/document_detail/108460.html).
         self.http_tokens = http_tokens
-        # The name of the image family. You can set this parameter to obtain the latest available image from the specified image family to create instances. If you have set the `ImageId` parameter, you cannot set this parameter.
+        # The name of the image family. You can set this parameter to obtain the latest available image from the specified image family for instance creation. If you have specified the `ImageId` parameter, you cannot specify this parameter.
         self.image_family = image_family
-        # The ID of the image file that is used to create the instances.
+        # The ID of the image file used for automatic creation of instances.
         # 
-        # > If the image that was previously used in the scaling configuration includes a system disk and data disks, the original data disk information is cleared after you change the image.
+        # > If the image previously used in the scaling configuration includes a system cloud disk and data cloud disks, the data cloud disk information is purged after you change the image.
         self.image_id = image_id
-        # The name of the image file. The image name must be unique in a region. If you specify \\`ImageId\\`, \\`ImageName\\` is ignored.
+        # The name of the image. Image names must be unique within a region. If you specify ImageId, ImageName is ignored.
         # 
-        # You cannot use \\`ImageName\\` to specify a Marketplace image.
+        # You cannot use ImageName to specify images from Alibaba Cloud Marketplace.
         self.image_name = image_name
-        # The description of the ECS instance. The description must be 2 to 256 English or Chinese characters in length and cannot start with `http://` or `https://`.
+        # The description of the ECS instance. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.instance_description = instance_description
-        # The name of the ECS instances that are automatically created using this scaling configuration.
+        # The name of the ECS instance that is automatically created by using the scaling configuration.
         self.instance_name = instance_name
-        # The collection of intelligent configuration information that is used to filter instance types that meet the specified requirements.
+        # The collection of intelligent configuration information used to filter instance types that meet the requirements.
         self.instance_pattern_infos = instance_pattern_infos
-        # After you enable the alternative mode, if issues such as insufficient inventory occur, the system supplements the selected instance types with similar instance types of the same size, or creates vSwitches in alternative zones and adds them to the scaling group.
+        # After the fallback mode is enabled, when issues such as insufficient inventory are encountered, similar instance types of the same size are supplemented based on the currently selected instance types, or vSwitches in alternative zones are created and added to the scaling group.
         self.instance_type_candidate_options = instance_type_candidate_options
-        # The information about the specified instance types.
+        # The information about specified instance types.
         self.instance_type_overrides = instance_type_overrides
-        # The instance types. If you use \\`InstanceTypes\\`, \\`InstanceType\\` is ignored.
+        # The instance types for multiple instance type support. If InstanceTypes is specified, InstanceType is ignored.
         # 
-        # If an instance cannot be created using the instance type with a higher priority, Auto Scaling automatically uses the instance type with the next priority to create the instance.
+        # When instances cannot be created by using the instance type with a higher priority, Auto Scaling automatically selects the instance type with the next priority to create instances.
         self.instance_types = instance_types
         # The billing method for network usage. Valid values:
         # 
-        # - PayByBandwidth: pay-by-bandwidth. If you set the value to PayByBandwidth, the value of \\`InternetMaxBandwidthOut\\` is the selected fixed bandwidth.
-        # 
-        # - PayByTraffic: pay-by-data-transfer. If you set the value to PayByTraffic, the value of \\`InternetMaxBandwidthOut\\` is the maximum bandwidth, and the billing is based on the actual network traffic.
+        # - PayByBandwidth: pay-by-bandwidth. In this case, the value of InternetMaxBandwidthOut specifies the fixed bandwidth value. 
+        # - PayByTraffic: pay-by-traffic. In this case, the value of InternetMaxBandwidthOut specifies only the maximum bandwidth, and billing is based on the actual network traffic.
         self.internet_charge_type = internet_charge_type
-        # The maximum inbound public bandwidth. Unit: Mbit/s. Value range:
+        # The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
         # 
-        # - If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. The default value is 10.
-        # 
-        # - If the purchased outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `InternetMaxBandwidthOut`. The default value is the value of `InternetMaxBandwidthOut`.
+        # - If the purchased maximum outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
+        # - If the purchased maximum outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of `InternetMaxBandwidthOut`. Default value: the value of `InternetMaxBandwidthOut`.
         self.internet_max_bandwidth_in = internet_max_bandwidth_in
         # The maximum outbound public bandwidth. Unit: Mbit/s. Valid values: 0 to 100.
         # 
         # Default value: 0.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # Specifies whether the instance is I/O optimized. Valid values:
-        # 
-        # - none: The instance is not I/O optimized.
-        # 
-        # - optimized: The instance is I/O optimized.
+        # Specifies whether the instance is an I/O optimized instance. Valid values:
+        # - none: The instance is not an I/O optimized instance.
+        # - optimized: The instance is an I/O optimization instance.
         self.io_optimized = io_optimized
-        # The number of randomly generated IPv6 addresses to be assigned to the ENI.
+        # The number of randomly generated IPv6 addresses allocated to the elastic network interfaces (ENIs).
         self.ipv_6address_count = ipv_6address_count
-        # The name of the key pair that is used to log on to the ECS instance.
-        # 
-        # - For Windows instances, this parameter is ignored. The default value is empty.
-        # 
-        # - For Linux instances, password-based logon is disabled by default.
+        # The name of the key pair used to log on to the ECS instance. 
+        #          
+        # - For Windows instances, this parameter is ignored and is empty by default. 
+        # - For Linux instances, password-based logon is disabled during initialization.
         self.key_pair_name = key_pair_name
-        # The weight of the backend server. Valid values: 1 to 100.
+        # The weight of SLB backend server. Valid values: 1 to 100.
         self.load_balancer_weight = load_balancer_weight
         # The memory size. Unit: GiB.
         # 
-        # You can specify both \\`Cpu\\` and \\`Memory\\` to define a range of instance types. For example, if you set \\`Cpu\\` to 2 and \\`Memory\\` to 16, all instance types with 2 vCPUs and 16 GiB of memory are matched. Auto Scaling determines the available instance types based on factors such as I/O optimization and zone, and then creates the instance of the lowest-priced instance type.
+        # You can specify both CPU and Memory to define the range of instance types. For example, CPU=2 and Memory=16 defines all instance types with 2 vCPUs and 16 GiB of memory. Auto Scaling determines the set of active instance types based on factors such as I/O optimization and zones, and then creates instances of the lowest-priced instance type based on sorting by price.
         # 
-        # > This configuration is effective only when the cost optimization mode is enabled and no instance types are specified in the scaling configuration.
+        # > This configuration takes effect only when the cost optimization mode is enabled and no instance type is specified in the scaling configuration.
         self.memory = memory
-        # The list of ENIs.
+        # The list of elastic network interfaces (ENIs).
         self.network_interfaces = network_interfaces
-        # Specifies whether to overwrite the parameter. Valid values:
-        # 
-        # - true: Overwrite the parameter.
-        # 
-        # - false: Do not overwrite the parameter.
+        # Specifies whether to override existing data. Valid values:
+        # - true: overrides existing data.
+        # - false: does not override existing data.
         self.override = override
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The password of the ECS instance. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters can be:
+        # The password of the ECS instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
         # 
-        # \\`()\\~!@#$%^&\\*-_+=|{}[]:;\\"<>,.?/
+        # `()~!@#$%^&*-_+=\\|{}[]:;\\"<>,.?/
         # 
         # For Windows instances, the password cannot start with a forward slash (/).
         # 
-        # > If you specify the \\`Password\\` parameter, we recommend that you send requests over HTTPS to prevent password leaks.
+        # > If you specify the Password parameter, we recommend that you send the request over HTTPS to prevent password leaks.
         self.password = password
-        # Specifies whether to use the password that is preset in the image. If you use this parameter, make sure that a password is set for the image.
+        # Specifies whether to use the password preset in the image. To use this parameter, ensure that a password is configured for the image.
         self.password_inherit = password_inherit
-        # The name of the RAM role of the ECS instance. The RAM role is provided and maintained by RAM. You can call the ListRoles operation to query the available RAM roles. For information about how to create a RAM role, see API CreateRole.
+        # The name of the RAM role associated with the ECS instance. This name is provided and maintained by RAM. You can call the ListRoles operation to query available RAM roles. For more information about how to create a RAM role, see the CreateRole operation.
         self.ram_role_name = ram_role_name
         # The ID of the resource group to which the ECS instance belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
-        # The resource pool policy to use when creating an instance. Note the following when you set this parameter:
+        # The resource pool policy used when creating instances. After you specify this parameter, note the following items:
         # 
-        # - This parameter is in effect only when you create a pay-as-you-go instance.
+        # - This parameter takes effect only when pay-as-you-go instances are created.
         # 
-        # - You cannot set this parameter and \\`PrivatePoolOptions.MatchCriteria\\` or \\`PrivatePoolOptions.Id\\` at the same time.
+        # - This parameter cannot be specified together with PrivatePoolOptions.MatchCriteria or PrivatePoolOptions.Id.
         self.resource_pool_options = resource_pool_options
         # The ID of the scaling configuration that you want to modify.
         # 
         # This parameter is required.
         self.scaling_configuration_id = scaling_configuration_id
-        # The name of the scaling configuration. The name must be 2 to 64 English or Chinese characters in length. It must start with a digit, a letter, or a Chinese character. The name can contain digits, underscores (_), hyphens (-), and periods (.).
+        # The name of the scaling configuration. The name must be 2 to 64 characters in length and can contain letters, digits, underscores (_), hyphens (-), and periods (.). It must start with a letter, digit, or Chinese character.
         # 
-        # The name of a scaling configuration must be unique within a scaling group in the same region. If you do not specify this parameter, the ID of the scaling configuration is used by default.
+        # The name of the scaling configuration must be unique within a scaling group in the same region. If you do not specify this parameter, the ID of the scaling configuration is used by default.
         self.scaling_configuration_name = scaling_configuration_name
-        # The scheduling options.
+        # The scheduler options.
         self.scheduler_options = scheduler_options
+        # Specifies whether a vSwitch must be selected from the VSwitchIds list for the secondary elastic network interfaces (ENIs) when the VSwitchIds parameter is set for the secondary network interface controller (NIC).
+        # 
+        # - Strict: strict mode. If no vSwitch in VSwitchIds meets the conditional requirements, instance creation fails.
+        # - Tolerant: tolerant mode. If no vSwitch in VSwitchIds meets the conditional requirements, no secondary network interface controller (NIC) is configured, but the instance is still created as active.
+        # 
+        # Default value: Strict.
+        self.secondary_eni_vswitch_constraint = secondary_eni_vswitch_constraint
         # The ID of the security group to which the ECS instance belongs. ECS instances in the same security group can access each other.
         self.security_group_id = security_group_id
-        # The ID of the security group.
+        # The IDs of the security groups to which the instance belongs.
         self.security_group_ids = security_group_ids
         # The security options.
         self.security_options = security_options
         # The protection period of the spot instance. Unit: hours. Valid values:
         # 
-        # - 1: Alibaba Cloud ensures that the instance runs for 1 hour and is not automatically released. After 1 hour, the system automatically compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
+        # - 1: After a spot instance is created, Alibaba Cloud ensures that the instance is not automatically released within 1 hour. After 1 hour, the system compares the bid price with the market price and checks resource availability to determine whether to retain automatic release the instance.
+        # - 0: After a spot instance is created, Alibaba Cloud does not ensure that the instance runs for 1 hour. The system compares the bid price with the market price and checks resource availability to determine whether to retain automatic release the instance.
         # 
-        # - 0: Alibaba Cloud does not ensure that the instance runs for 1 hour after it is created. The system automatically compares the bid price with the market price and checks the resource inventory to determine whether to retain or release the instance.
-        # 
-        # > Alibaba Cloud sends a notification to you through ECS system events 5 minutes before the instance is released. Spot instances are billed by the second. Select a protection period based on the time required to complete your task.
+        # > Alibaba Cloud sends an ECS system event notification 5 minutes before the instance is released. Spot instances are billed by second. We recommend that you select an appropriate protection period based on the expected task execution duration.
         # 
         # Default value: 1.
         self.spot_duration = spot_duration
-        # The interruption mode of the spot instance. Currently, only Terminate is supported, which is the default value. This value indicates that the instance is directly released.
+        # The interruption mode of the spot instance. Currently, only Terminate (default) is supported, which directly releases the instance.
         self.spot_interruption_behavior = spot_interruption_behavior
-        # The information about the spot instance types.
+        # The information about spot instance types.
         self.spot_price_limits = spot_price_limits
-        # The preemption policy for the pay-as-you-go instance. Valid values:
-        # 
+        # The preemption policy for pay-as-you-go instances. Valid values:
+        #          
         # - NoSpot: a regular pay-as-you-go instance.
-        # 
-        # - SpotWithPriceLimit: a spot instance for which you specify the maximum hourly price.
-        # 
-        # - SpotAsPriceGo: a spot instance for which the system automatically bids based on the current market price.
+        # - SpotWithPriceLimit: a spot instance with a user-defined maximum hourly price.
+        # - SpotAsPriceGo: a spot instance for which the market price at the time of purchase is automatically used as the bid price.
         self.spot_strategy = spot_strategy
-        # The ID of the storage set.
+        # The storage set ID.
         self.storage_set_id = storage_set_id
         # The maximum number of partitions in the storage set. The value must be an integer that is greater than or equal to 2.
         self.storage_set_partition_number = storage_set_partition_number
-        # The categories of the system disk. If a disk of a category with a higher priority cannot be created, Auto Scaling automatically tries to create a disk of a category with the next priority. Valid values:
-        # 
-        # - cloud: basic disk.
-        # 
-        # - cloud_efficiency: ultra disk.
-        # 
+        # The multi-disk types for the system cloud disk. When a disk type with a higher priority is unavailable, Auto Scaling automatically attempts the next-priority disk type to create the system cloud disk. Valid values:
+        # - cloud: basic cloud disk.
+        # - cloud_efficiency: ultra cloud disk.
         # - cloud_ssd: standard SSD.
+        # - cloud_essd: Enterprise SSD (ESSD).
         # 
-        # - cloud_essd: ESSD.
-        # 
-        # > You cannot specify this parameter and `SystemDisk.Category` at the same time.
+        # > If you specify this parameter, you cannot specify `SystemDisk.Category` at the same time.
         self.system_disk_categories = system_disk_categories
-        # The tags of the ECS instance. You can specify up to 20 tags in key-value pairs. The following limits apply to keys and values:
-        # 
-        # - A key can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. If you specify tags, the key cannot be an empty string.
-        # 
-        # - A value can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. The value can be an empty string.
+        # The tags of the ECS instance. Tags are specified as key-value pairs. You can specify up to 20 tags. The following limits apply to Key and Value: 
+        #          
+        # - Key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. Key cannot be an empty string. 
+        # - Value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. Value can be an empty string.
         self.tags = tags
         # Specifies whether to create the instance on a dedicated host. Valid values:
         # 
-        # - default: Create the instance not on a dedicated host.
+        # - default: creates an instance that is not on a dedicated host.
         # 
-        # - host: Create the instance on a dedicated host. If you do not specify \\`DedicatedHostId\\`, Alibaba Cloud automatically selects a dedicated host for the instance.
+        # - host: creates an instance on a dedicated host. If you do not specify DedicatedHostId, Alibaba Cloud automatically selects a dedicated host for the instance.
         self.tenancy = tenancy
-        # The custom data of the ECS instance. The data must be Base64-encoded. The raw data can be up to 32 KB in size.
+        # The user data of the ECS instance. The data must be encoded in Base64. The maximum size of the raw data before encoding is 32 KB.
         self.user_data = user_data
-        # The ID of the zone to which the ECS instance belongs.
+        # The zone ID of the ECS instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -501,6 +489,9 @@ class ModifyScalingConfigurationRequest(DaraModel):
 
         if self.scheduler_options is not None:
             result['SchedulerOptions'] = self.scheduler_options
+
+        if self.secondary_eni_vswitch_constraint is not None:
+            result['SecondaryEniVSwitchConstraint'] = self.secondary_eni_vswitch_constraint
 
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
@@ -708,6 +699,9 @@ class ModifyScalingConfigurationRequest(DaraModel):
         if m.get('SchedulerOptions') is not None:
             self.scheduler_options = m.get('SchedulerOptions')
 
+        if m.get('SecondaryEniVSwitchConstraint') is not None:
+            self.secondary_eni_vswitch_constraint = m.get('SecondaryEniVSwitchConstraint')
+
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
 
@@ -762,9 +756,9 @@ class ModifyScalingConfigurationRequestSpotPriceLimits(DaraModel):
         instance_type: str = None,
         price_limit: float = None,
     ):
-        # The instance type of the spot instance. This parameter is in effect when \\`SpotStrategy\\` is set to \\`SpotWithPriceLimit\\`.
+        # The instance type of the spot instance. This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
         self.instance_type = instance_type
-        # The bid for the spot instance. This parameter is in effect when \\`SpotStrategy\\` is set to \\`SpotWithPriceLimit\\`.
+        # The bid price for the spot instance. This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
         self.price_limit = price_limit
 
     def validate(self):
@@ -799,9 +793,7 @@ class ModifyScalingConfigurationRequestSecurityOptions(DaraModel):
         confidential_computing_mode: str = None,
     ):
         # The confidential computing mode. Valid values:
-        # 
-        # - Enclave: The ECS instance uses an enclave to build a confidential computing environment. For more information, see [Build a confidential computing environment using an enclave](https://help.aliyun.com/document_detail/203433.html).
-        # 
+        # - Enclave: The ECS instance uses Enclave to build a confidential computing environment. For more information, see [Build a confidential computing environment by using Enclave](https://help.aliyun.com/document_detail/203433.html).
         # - TDX: builds a TDX confidential computing environment. For more information, see [Build a TDX confidential computing environment](https://help.aliyun.com/document_detail/479090.html).
         self.confidential_computing_mode = confidential_computing_mode
 
@@ -832,26 +824,23 @@ class ModifyScalingConfigurationRequestResourcePoolOptions(DaraModel):
         private_pool_tags: List[main_models.ModifyScalingConfigurationRequestResourcePoolOptionsPrivatePoolTags] = None,
         strategy: str = None,
     ):
-        # The ID of the private pool. The private pool can be an Elastic Assurance service or a Capacity Reservation service. You can only specify the ID of a Target private pool. You cannot specify this parameter and the \\`PrivatePoolTags\\` parameter at the same time.
+        # The private pool IDs, which are the elasticity assurance IDs or capacity reservation IDs. Only Target-type private pool IDs can be specified for this parameter. This parameter cannot be specified together with the PrivatePoolTags parameter.
         self.private_pool_ids = private_pool_ids
-        # Filter available Target private pools by tag. You can specify up to 20 tags.
-        # Description:
-        # 
-        # - When you configure this parameter, the system filters only the associated Target private pools under your account to find private pools that match the tags and meet the constraints of the scaling group, such as zone and instance type.
-        # 
-        # - Tag matching rule: The private pool must match all specified tags.
-        # 
-        # - You cannot specify this parameter and the \\`PrivatePoolIds\\` parameter at the same time.
+        # Filters available Target private pools by tags. Valid values of N: 1 to 20.
+        # Note:
+        # - When this parameter is specified, the system filters only the Target private pools associated with the account that match the tags and satisfy the scaling group constraints (such as zone and instance type).
+        # - Tag matching rule: A private pool must match all specified tags.
+        # - This parameter cannot be specified together with the PrivatePoolIds parameter.
         self.private_pool_tags = private_pool_tags
-        # The resource pool includes the private pool generated after an Elastic Assurance service or a Capacity Reservation service takes effect, and the public pool. You can select a resource pool to start an instance. Valid values:
+        # Resource pools include private pools generated after elasticity assurance or capacity reservation takes effect, and public pools, which are available for instance startup. Valid values:
         # 
-        # - PrivatePoolFirst: The private pool is used first. If you select this policy and specify \\`ResourcePoolOptions.PrivatePoolIds\\` or meet the \\`PrivatePoolTags\\` conditions, the corresponding private pool is used first. If you do not specify a private pool or the specified private pool has insufficient capacity, the system automatically matches an open private pool. If no eligible private pools are available, a public pool is used to create the instance.
+        # - PrivatePoolFirst: private pool first. When this strategy is selected, if ResourcePoolOptions.PrivatePoolIds is specified or PrivatePoolTags conditions are met, the corresponding private pools are used first. If no private pool is specified or the specified private pool has insufficient capacity, open-type private pools are automatically matched. If no eligible private pool is available, the public pool is used to create instances.
         # 
-        # - PrivatePoolOnly: Only the private pool is used. If you select this policy, you must specify \\`ResourcePoolOptions.PrivatePoolIds\\`. If the specified private pool has insufficient capacity, the instance fails to start.
+        # - PrivatePoolOnly: private pool only. When this strategy is selected, you must specify ResourcePoolOptions.PrivatePoolIds. If the specified private pool has insufficient capacity, the instance fails to start.
         # 
-        # - PublicPoolFirst: The public pool is used first. A public pool is used first to create the instance. If the public pool has insufficient resources, a private pool is used. The system preferentially matches an open private pool. If no eligible private pools are available, the system uses the Target private pool that is specified by \\`ResourcePoolOptions.PrivatePoolIds\\` or meets the \\`PrivatePoolTags\\` conditions. (This policy is in invitational preview and is not yet available for use.)
+        # - PublicPoolFirst: public pool first. The public pool is used first to create instances. When public pool resources are insufficient, private pool resources are used as a supplement. Open-type private pools are automatically matched first. If no eligible private pool is available, the Target-type private pools specified by ResourcePoolOptions.PrivatePoolIds or matching PrivatePoolTags conditions are used. (This strategy is in invitational preview and is not available for use.)
         # 
-        # - None: No resource pool policy is used.
+        # - None: does not use a resource pool strategy.
         # 
         # Default value: None.
         self.strategy = strategy
@@ -941,39 +930,46 @@ class ModifyScalingConfigurationRequestNetworkInterfaces(DaraModel):
         network_interface_traffic_mode: str = None,
         secondary_private_ip_address_count: int = None,
         security_group_ids: List[str] = None,
+        v_switch_ids: List[str] = None,
     ):
-        # The type of the ENI. When you use this parameter, you must use \\`NetworkInterfaces\\` to configure the primary ENI. You cannot set the \\`SecurityGroupId\\` or \\`SecurityGroupIds\\` parameter. Valid values:
+        # The type of the elastic network interfaces (ENIs). When you use this parameter, you must use NetworkInterfaces to set the primary network interface controller (NIC). You cannot set SecurityGroupId or SecurityGroupIds at the same time. Valid values:
         # 
-        # - Primary: primary ENI.
-        # 
-        # - Secondary: secondary ENI.
+        # - Primary: primary network interface controller (NIC).
+        # - Secondary: secondary network interface controller (NIC).
         # 
         # Default value: Secondary.
         self.instance_type = instance_type
-        # The number of randomly generated IPv6 addresses to be assigned to the primary ENI. Note:
+        # The number of randomly generated IPv6 addresses for the primary ENI. Note the following items:
         # 
-        # This parameter takes effect only when \\`NetworkInterface.InstanceType\\` is set to \\`Primary\\`. You cannot set this parameter if \\`NetworkInterface.InstanceType\\` is set to \\`Secondary\\` or is empty.
+        # This parameter takes effect only when NetworkInterface.InstanceType is set to Primary. If NetworkInterface.InstanceType is set to Secondary or left empty, you cannot specify this parameter.
         # 
-        # After you set this parameter, you cannot set \\`Ipv6AddressCount\\`.
+        # After you specify this parameter, you cannot specify Ipv6AddressCount.
         self.ipv_6address_count = ipv_6address_count
-        # The communication mode of the NIC. Valid values:
+        # The communication mode of the network interface controller (NIC). Valid values:
         # 
         # - Standard: uses the TCP communication mode.
-        # 
         # - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA communication mode.
         # 
         # Default value: Standard.
         # 
-        # > The number of ENIs in RDMA mode cannot exceed the limit for the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # > The number of elastic network interfaces (ENIs) in RDMA mode cannot exceed the limit of the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         self.network_interface_traffic_mode = network_interface_traffic_mode
-        # The number of secondary private IPv4 addresses to assign to the NIC. Valid values: 1 to 49.
+        # The number of secondary private IPv4 addresses to assign to the ENI. Valid values: 1 to 49.
         # 
-        # - The value cannot exceed the limit on the number of IP addresses for the instance type. For more information, see [Instance families](https://help.aliyun.com/zh/ecs/user-guide/overview-of-instance-families).
+        # - The value cannot exceed the limit on the number of IP addresses for the instance type. For more information, see [Instance families](https://www.alibabacloud.com/help/en/ecs/user-guide/overview-of-instance-families).
         # 
-        # - \\`NetworkInterface.N.SecondaryPrivateIpAddressCount\\` is used to assign a number of secondary private IPv4 addresses to the NIC, excluding the primary private IP address of the NIC. The system randomly assigns the addresses from the available CIDR block of the vSwitch where the NIC is located (\\`NetworkInterface.N.VSwitchId\\`).
+        # - NetworkInterface.N.SecondaryPrivateIpAddressCount specifies the number of secondary private IPv4 addresses to assign to the ENI (excluding the primary private IP address of the ENI). The system randomly assigns IP addresses from the available CIDR block of the vSwitch (NetworkInterface.N.VSwitchId) to which the ENI belongs.
         self.secondary_private_ip_address_count = secondary_private_ip_address_count
-        # The IDs of one or more security groups to which the ENI belongs.
+        # The IDs of one or more security groups to which the elastic network interfaces (ENIs) belongs.
         self.security_group_ids = security_group_ids
+        # The IDs of the vSwitches to which the elastic network interfaces (ENIs) belongs. N specifies that you can set multiple vSwitches. Valid values of N: 1 to 10.
+        # 
+        # Note the following items:
+        # 
+        # - If InstanceType is set to Primary, you cannot set this parameter. The default value is the vSwitch of the instance.
+        # - If InstanceType is set to Secondary or left empty, this parameter is optional.
+        # - The system selects a vSwitch that is in the same zone as the primary network interface controller (NIC) and has the most available IP addresses.
+        self.v_switch_ids = v_switch_ids
 
     def validate(self):
         pass
@@ -998,6 +994,9 @@ class ModifyScalingConfigurationRequestNetworkInterfaces(DaraModel):
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
 
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1017,6 +1016,9 @@ class ModifyScalingConfigurationRequestNetworkInterfaces(DaraModel):
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
 
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+
         return self
 
 class ModifyScalingConfigurationRequestInstanceTypeOverrides(DaraModel):
@@ -1025,31 +1027,29 @@ class ModifyScalingConfigurationRequestInstanceTypeOverrides(DaraModel):
         instance_type: str = None,
         weighted_capacity: int = None,
     ):
-        # If you want to specify the capacity of an instance type in a scaling configuration, specify this parameter and \\`InstanceTypeOverride.WeightedCapacity\\`.
+        # To specify the capacity of an instance type in the scaling configuration, specify both this parameter and InstanceTypeOverride.WeightedCapacity.
         # 
-        # This parameter is used to specify an instance type. You can specify this parameter multiple times. You can use this parameter with the \\`InstanceTypeOverride.WeightedCapacity\\` parameter to enable custom weights for multiple instance types.
+        # This parameter specifies the instance type. You can specify multiple instance types and use the InstanceTypeOverride.WeightedCapacity parameter to extend multi-instance-type support with custom weights.
         # 
-        # > If you specify this parameter, you cannot specify \\`instanceTypes\\`.
+        # > You cannot specify this parameter together with instanceTypes.
         # 
-        # Valid values of InstanceType: available ECS instance types.
+        # Valid values of InstanceType: ECS instance types that are available for purchase.
         self.instance_type = instance_type
-        # If you want the scaling group to scale based on the capacity of instance types, specify this parameter after you specify \\`LaunchTemplateOverride.InstanceType\\`.
+        # To scale the scaling group based on instance type capacity, specify this parameter after specifying LaunchTemplateOverride.InstanceType.
         # 
-        # This parameter specifies the weight of an instance type, which indicates the capacity of a single instance of the specified instance type in the scaling group. A higher weight indicates that a smaller number of instances of the specified instance type are required to meet the expected capacity.
+        # This parameter specifies the weight of the instance type, which represents the capacity of a single instance of this type in the scaling group. A larger weight means fewer instances of this type are required to meet the expected capacity.
         # 
-        # You can set different weights for different instance types as needed because the performance metrics, such as the number of vCPUs and memory size, vary based on the instance type.
+        # Because instance types differ in vCPUs, memory, and other performance metrics, you can assign different weights to different instance types based on your requirements.
         # 
-        # For example:
+        # Example:
         # 
         # - Current capacity: 0.
+        # - Expected number of instances: 6.
+        # - Capacity of ecs.c5.xlarge: 4.
         # 
-        # - Expected capacity: 6.
+        # To meet the expected capacity, the scaling group scales out 2 ecs.c5.xlarge instances.
         # 
-        # - Capacity of the ecs.c5.xlarge instance type: 4.
-        # 
-        # To meet the expected capacity, the scaling group scales out two ecs.c5.xlarge instances.
-        # 
-        # > The capacity of the scaling group after a scale-out activity cannot exceed the sum of the maximum capacity (MaxSize) and the maximum weight of an instance type.
+        # > During scale-out, the capacity of the scaling group cannot exceed the sum of the maximum capacity (MaxSize) and the maximum weight of the instance types.
         # 
         # Valid values of WeightedCapacity: 1 to 500.
         self.weighted_capacity = weighted_capacity
@@ -1089,20 +1089,19 @@ class ModifyScalingConfigurationRequestInstanceTypeCandidateOptions(DaraModel):
         enabled: bool = None,
         max_price: float = None,
     ):
-        # When supplementing with vSwitches from other zones is allowed, you must specify the optional CIDR blocks for the vSwitches.
+        # The CIDR blocks for optional vSwitches when supplementing vSwitches in other zones.
         self.allow_cidr_blocks = allow_cidr_blocks
-        # Specifies whether to allow supplementing with vSwitches from other zones.
-        # 
-        # > The instance type remains unchanged, and only new zones are selected as alternatives. When the scaling group cannot be scaled out in any of the selected zones due to issues such as insufficient inventory, the system automatically adds a new vSwitch in another zone to the scaling group based on this configuration.
-        # > For example, if the scaling group is configured with zones cn-hangzhou-h and cn-hangzhou-g, and scale-out fails in both zones, ESS may create a vSwitch in cn-hangzhou-k and add it to the scaling group based on real-time inventory.
+        # Specifies whether to allow supplementing vSwitches in other zones.
+        # > The instance type remains unchanged. Only alternative zones are selected. When all selected zones of the scaling group cannot be used for scale-out due to issues such as insufficient inventory, new zone vSwitches are automatically added to the scaling group based on this configuration.
+        # > For example, if the scaling group is configured with the cn-hangzhou-h and cn-hangzhou-g zones, and neither zone can be used for scale-out, Auto Scaling may create a vSwitch in cn-hangzhou-k based on real-time inventory and add it to the scaling group.
         self.allow_cross_az = allow_cross_az
-        # Specifies whether to allow supplementing with instance types from other generations.
+        # Specifies whether to allow supplementing instance types from other generations.
         # 
-        # - For example, if the current instance type is ecs.c7.large, you can enable this feature to use alternative instance types such as ecs.c6.large and ecs.c8.large.
+        # - For example, if the current instance type is ecs.c7.large, enabling this option allows fallback to instance types such as ecs.c6.large and ecs.c8.large.
         self.allow_different_generation = allow_different_generation
-        # Specifies whether to enable the alternative mode.
+        # Specifies whether to enable the fallback mode.
         self.enabled = enabled
-        # The maximum price for alternative instance types.
+        # The maximum price for fallback instance types.
         self.max_price = max_price
 
     def validate(self):
@@ -1176,127 +1175,103 @@ class ModifyScalingConfigurationRequestInstancePatternInfos(DaraModel):
         minimum_memory_size: float = None,
         physical_processor_models: List[str] = None,
     ):
-        # The architecture type of the instance type. Valid values:
+        # The architecture types of the instance type. Valid values:
         # 
-        # - X86: x86.
-        # 
-        # - Heterogeneous: heterogeneous computing, such as GPU and FPGA.
-        # 
+        # - X86: x86 computing.
+        # - Heterogeneous: heterogeneous computing, such as GPU or FPGA.
         # - BareMental: ECS Bare Metal Instance.
+        # - Arm: Arm computing.
         # 
-        # - Arm: Arm.
-        # 
-        # Default value: all architecture types.
+        # Default value: all architecture types are included.
         self.architectures = architectures
         # Specifies whether to include burstable instance types. Valid values:
-        # 
-        # - Exclude: do not include burstable instance types.
-        # 
-        # - Include: include burstable instance types.
-        # 
-        # - Required: include only burstable instance types.
+        # - Exclude: excludes burstable instance types.
+        # - Include: includes burstable instance types.
+        # - Required: includes only burstable instance types.
         # 
         # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The number of vCPU cores of the instance type in intelligent configuration mode. This parameter is used to filter instance types. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The number of vCPU cores of the instance type in intelligent configuration mode, used to filter instance types that meet the requirements. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         # 
         # Note the following information:
         # 
-        # - The \\`InstancePatternInfo\\` parameter is applicable only to scaling groups whose NetworkType is set to VPC.
+        # - The InstancePatternInfo parameter applies only to scaling groups whose network type is VPC.
         # 
-        # - You must specify \\`InstancePatternInfo.Cores\\` and \\`InstancePatternInfo.Memory\\` at the same time.
+        # - You must specify both InstancePatternInfo.Cores and InstancePatternInfo.Memory.
         # 
-        # - If you specify instance types using the \\`InstanceType\\` or \\`InstanceTypes\\` parameter, Auto Scaling preferentially uses the specified instance types for scale-out activities. If the specified instance types are out of stock, Auto Scaling uses the lowest-priced instance type among those that meet the requirements specified by the \\`InstancePatternInfo\\` parameter for scale-out activities.
+        # - If you have specified instance types by using the InstanceType or InstanceTypes parameter, Auto Scaling preferentially uses the specified instance types for scale-out. When the specified instance types are out of stock, Auto Scaling selects the lowest-priced instance type from those that match the InstancePatternInfo parameter values.
         self.cores = cores
-        # The CPU architecture of the instance. Valid values:
+        # The CPU architectures of the instance. Valid values:
         # 
-        # > You can specify up to two CPU architectures.
+        # > N indicates that you can specify multiple CPU architectures. Valid values of N: 1 to 2.
         # 
         # - X86.
-        # 
         # - ARM.
         self.cpu_architectures = cpu_architectures
-        # The instance types to exclude. You can use a wildcard character (\\*) to exclude an instance type or an entire instance family. Examples:
+        # The instance types to exclude. You can use wildcard characters (*) to exclude a single instance type or an entire instance family. Examples:
         # 
         # - ecs.c6.large: excludes the ecs.c6.large instance type.
-        # 
-        # - ecs.c6.\\*: excludes all instance types of the c6 family.
+        # - ecs.c6.*: excludes the entire c6 instance family.
         self.excluded_instance_types = excluded_instance_types
-        # The GPU type.
+        # The GPU types.
         self.gpu_specs = gpu_specs
-        # The category of the instance type. Valid values:
-        # 
-        # - General-purpose: General-purpose.
-        # 
+        # The categorization of the instance type. Valid values:
+        # - General-purpose: general-purpose.
         # - Compute-optimized: compute-optimized.
-        # 
         # - Memory-optimized: memory-optimized.
-        # 
         # - Big data: big data.
-        # 
         # - Local SSDs: local SSD.
-        # 
         # - High Clock Speed: high frequency.
-        # 
-        # - Enhanced: enhanced instance families.
-        # 
-        # - Shared: shared-resource instances.
-        # 
-        # - Compute-optimized with GPU: GPU.
-        # 
+        # - Enhanced: enhanced.
+        # - Shared: shared.
+        # - Compute-optimized with GPU: GPU-accelerated compute-optimized.
         # - Visual Compute-optimized: visual compute-optimized.
-        # 
-        # - Heterogeneous Service: heterogeneous computing.
-        # 
-        # - Compute-optimized with FPGA: FPGA.
-        # 
-        # - Compute-optimized with NPU: NPU-accelerated.
-        # 
+        # - Heterogeneous Service: heterogeneous service.
+        # - Compute-optimized with FPGA: FPGA compute-optimized.
+        # - Compute-optimized with NPU: NPU compute-optimized.
         # - ECS Bare Metal: ECS Bare Metal Instance.
-        # 
         # - High Performance Compute: high-performance computing (HPC).
         self.instance_categories = instance_categories
-        # The level of the instance family. This parameter is used to filter instance types. This parameter takes effect only when \\`CostOptimization\\` is enabled. Valid values:
+        # The level of the instance family, used to filter instance types that meet the requirements. This parameter takes effect when `CostOptimization` is enabled. Valid values:
         # 
-        # - EntryLevel: entry-level instances (shared). This instance type is cost-effective but does not provide stable computing performance. It is suitable for business scenarios that have low CPU utilization. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # 
-        # - EnterpriseLevel: enterprise-level instances. This instance type provides stable performance and dedicated resources, and is suitable for business scenarios that have high stability requirements. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
-        # 
-        # - CreditEntryLevel: credit entry-level instances (burstable). This instance type provides CPU credits to ensure computing performance. It is suitable for business scenarios that have low and sporadic CPU utilization. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # - EntryLevel: entry level, which refers to shared instance types. These instance types are more cost-effective but cannot guarantee stable computing performance. They are suitable for scenarios with low CPU utilization. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # - EnterpriseLevel: enterprise level. These instance types provide stable performance and dedicated resources. They are suitable for scenarios that require high stability. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # - CreditEntryLevel: credit entry level, which refers to burstable instances. These instance types use CPU credits to ensure computing performance. They are suitable for scenarios with low average CPU utilization and occasional bursts. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
-        # The instance families to query. You can specify up to 10 instance families.
+        # The instance families to query. N indicates that you can specify multiple instance families. Valid values of N: 1 to 10.
         self.instance_type_families = instance_type_families
-        # The maximum hourly price that you can accept for a pay-as-you-go or spot instance in intelligent configuration mode. This parameter is used to filter instance types.
+        # The maximum hourly price for pay-as-you-go or spot instances in intelligent configuration mode, used to filter instance types that meet the requirements.
         # 
-        # > This parameter is required when \\`SpotStrategy\\` is set to \\`SpotWithPriceLimit\\`. In other cases, this parameter is optional.
+        # > This parameter is required when SpotStrategy is set to SpotWithPriceLimit. In other cases, this parameter is optional.
         self.max_price = max_price
         # The maximum number of vCPU cores of the instance type.
         # 
-        # > The value of \\`MaximumCpuCoreCount\\` cannot be more than four times the value of \\`MinimumCpuCoreCount\\`.
+        # > MaximumCpuCoreCount cannot exceed 4 times the value of MinimumCpuCoreCount.
         self.maximum_cpu_core_count = maximum_cpu_core_count
         # The maximum number of GPUs of the instance. Valid values: positive integers.
         self.maximum_gpu_amount = maximum_gpu_amount
         # The maximum memory size of the instance. Unit: GiB.
         self.maximum_memory_size = maximum_memory_size
-        # The memory size of the instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter instance types.
+        # The memory size of the instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter instance types that meet the requirements.
         self.memory = memory
-        # The minimum baseline vCPU computing performance (for all vCPUs) of a t5 or t6 burstable instance.
+        # The minimum baseline vCPU computing performance (sum of all vCPUs) for burstable instances (t5 and t6).
         self.minimum_baseline_credit = minimum_baseline_credit
         # The minimum number of vCPU cores of the instance.
         self.minimum_cpu_core_count = minimum_cpu_core_count
-        # The minimum number of IPv6 addresses that can be assigned to a single ENI of the instance.
+        # The minimum upper limit of IPv6 addresses on a single elastic network interfaces (ENIs) of the instance.
         self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
-        # The minimum number of IPv4 addresses that can be assigned to a single ENI of the instance.
+        # The minimum number of IPv4 addresses per ENI supported by the instance.
+        # [_single.
         self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
-        # The minimum number of ENIs that can be attached to the instance.
+        # The minimum number of elastic network interfaces (ENIs) supported by the instance.
         self.minimum_eni_quantity = minimum_eni_quantity
         # The minimum number of GPUs of the instance. Valid values: positive integers.
         self.minimum_gpu_amount = minimum_gpu_amount
-        # The minimum initial vCPU credit for a t5 or t6 burstable instance.
+        # The minimum initial vCPU credits for burstable instances (t5 and t6).
         self.minimum_initial_credit = minimum_initial_credit
         # The minimum memory size of the instance. Unit: GiB.
         self.minimum_memory_size = minimum_memory_size
-        # The processor model of the instance. You can specify up to 10 processor models.
+        # The processor models of the instance. N indicates that you can specify multiple processor models. Valid values of N: 1 to 10.
         self.physical_processor_models = physical_processor_models
 
     def validate(self):
@@ -1469,105 +1444,88 @@ class ModifyScalingConfigurationRequestDataDisks(DaraModel):
         size: int = None,
         snapshot_id: str = None,
     ):
-        # The ID of the automatic snapshot policy used for the data disk.
+        # The ID of the automatic snapshot policy applied to the data cloud disk.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # Specifies whether to enable performance burst for the system disk. Valid values:
+        # Specifies whether to enable the burst feature for the data cloud disk. Valid values:
         # 
-        # - true: Enabled.
+        # - true: enables the burst feature.
+        # - false: does not enable the burst feature.
+        # > This parameter is supported only when `SystemDisk.Category` is set to `cloud_auto`.
         # 
-        # - false: Disabled.
-        # 
-        # > This parameter takes effect only when `SystemDisk.Category` is set to `cloud_auto`.
-        # 
-        # <props="china">
-        # 
-        # For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
+        # <props="china">For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.bursting_enabled = bursting_enabled
-        # The categories of the data disk. Valid values:
-        # 
-        # - cloud: basic disk. The \\`DeleteWithInstance\\` attribute of a basic disk that is created with an instance is \\`true\\`.
-        # 
-        # - cloud_efficiency: ultra disk.
-        # 
+        # The multiple disk types of the data cloud disk. Valid values:
+        # - cloud: basic cloud disk. The DeleteWithInstance property of a basic cloud disk created along with the instance is set to true.
+        # - cloud_efficiency: ultra cloud disk.
         # - cloud_ssd: standard SSD.
-        # 
         # - cloud_essd: ESSD.
-        # 
-        # > You cannot specify this parameter and `DataDisk.Category` at the same time.
-        self.categories = categories
-        # The category of the data disk. Valid values:
-        # 
-        # - cloud: basic disk. The \\`DeleteWithInstance\\` attribute of a basic disk that is created with an instance is \\`true\\`.
-        # 
-        # - cloud_efficiency: ultra disk.
-        # 
-        # - cloud_ssd: standard SSD.
-        # 
         # - ephemeral_ssd: local SSD.
+        # - cloud_auto: ESSD AutoPL.
+        # - cloud_regional_disk_auto: regional ESSD.
         # 
+        # > You cannot specify this parameter together with `DataDisk.Category`.
+        self.categories = categories
+        # The category of the data cloud disk. Valid values:
+        # - cloud: basic cloud disk. The DeleteWithInstance attribute of a basic cloud disk created along with the instance is set to true.
+        # - cloud_efficiency: ultra cloud disk.
+        # - cloud_ssd: standard SSD.
         # - cloud_essd: ESSD.
+        # - ephemeral_ssd: local SSD.
+        # - cloud_auto: ESSD AutoPL.
+        # - cloud_regional_disk_auto: regional ESSD.
         # 
-        # You cannot specify this parameter and `DataDisk.Categories` at the same time. If neither this parameter nor `DataDisk.Categories` is specified, this parameter has a default value:
+        # This parameter cannot be specified together with `DataDisk.Categories`. If neither this parameter nor `DataDisk.Categories` is specified, the default value is used:
         # 
-        # - For I/O optimized instances, the default value is \\`cloud_efficiency\\`.
+        # - For I/O optimized instances, the default value is cloud_efficiency.
         # 
-        # - For non-I/O optimized instances, the default value is \\`cloud\\`.
+        # - For non-I/O optimized instances, the default value is cloud.
         self.category = category
-        # Specifies whether to release the data disk when the instance is released. Valid values:
+        # Specifies whether the data cloud disk is released when the instance is released. Valid values:
         # 
-        # - true: The disk is released with the instance.
+        # - true: The data cloud disk is released when the instance is released.
+        # - false: The data cloud disk is retained when the instance is released.
         # 
-        # - false: The disk is not released with the instance.
-        # 
-        # You can set this parameter only for independent cloud disks (\\`DataDisk.Category\\` is \\`cloud\\`, \\`cloud_efficiency\\`, \\`cloud_ssd\\`, \\`cloud_essd\\`, or \\`cloud_auto\\`). Otherwise, an error occurs.
+        # This parameter can be set only for independent cloud disks (DataDisk.Category is set to cloud, cloud_efficiency, cloud_ssd, cloud_essd, or cloud_auto). Otherwise, an error is returned.
         self.delete_with_instance = delete_with_instance
-        # The description of the data disk. The description must be 2 to 256 English or Chinese characters in length and cannot start with `http://` or `https://`.
+        # The description of the system cloud disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The mount point of the data disk. If you do not specify this parameter, the system allocates a mount point when the ECS instance is automatically created. The mount point starts from /dev/xvdb and goes to /dev/xvdz.
+        # The mount point of the data cloud disk. If you do not specify this parameter, the system uses the default behavior to allocate a mount point during automatic creation of the ECS instance. The mount points range from /dev/xvdb to /dev/xvdz.
         self.device = device
-        # The name of the data disk. The name must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the data cloud disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter or Chinese character and cannot start with `http://` or `https://`.
         self.disk_name = disk_name
-        # Specifies whether the system disk is encrypted. Valid values:
+        # Specifies whether to encrypt the data cloud disk. Valid values:
         # 
-        # - true: The system disk is encrypted.
-        # 
-        # - false: The system disk is not encrypted.
+        # - true: encrypts the data cloud disk.
+        # - false: does not encrypt the data cloud disk.
         self.encrypted = encrypted
-        # The ID of the KMS key for the data disk.
+        # The ID of the KMS key for the data cloud disk.
         self.kmskey_id = kmskey_id
-        # The performance level of the ESSD that is used as the data disk. Valid values:
+        # The performance level of the data cloud disk when the disk is an ESSD. Valid values:
         # 
-        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
-        # 
-        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
-        # 
-        # - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
-        # 
-        # - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
+        # - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # - PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        # - PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         # 
         # > For more information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
-        # The pre-configured IOPS of the data disk.
+        # The provisioned IOPS (Input/Output Operations Per Second) performance metrics of the data cloud disk.
         # 
-        # > IOPS, or input/output operations per second, is the number of I/O operations that a block storage device can process per second. It indicates the read and write performance of the block storage device.
+        # > IOPS (Input/Output Operations Per Second) measures the number of read and write operations that a block storage device can process per second.
         self.provisioned_iops = provisioned_iops
-        # The size of the data disk. Unit: GiB. Value range:
+        # The size of the data cloud disk. Unit: GiB. Valid values:
         # 
         # - cloud: 5 to 2000.
-        # 
         # - cloud_efficiency: 20 to 32768.
-        # 
         # - cloud_ssd: 20 to 32768.
-        # 
         # - cloud_essd: 20 to 32768.
-        # 
         # - ephemeral_ssd: 5 to 800.
         # 
-        # If you specify this parameter, the disk size must be greater than or equal to the size of the snapshot specified by \\`SnapshotId\\`.
+        # After you specify this parameter, the disk size must be greater than or equal to the size of the snapshot specified by SnapshotId.
         self.size = size
-        # The snapshot that is used to create the data disk. If you specify this parameter, \\`DataDisk.Size\\` is ignored, and the size of the created disk is the size of the specified snapshot.
+        # The ID of the snapshot used to create the data cloud disk. After this parameter is specified, DataDisk.Size is ignored, and the size of the created disk is the size of the specified snapshot.
         # 
-        # If the snapshot was created on or before July 15, 2013, the call is rejected, and the \\`InvalidSnapshot.TooOld\\` error is returned.
+        # If the snapshot was created on or before July 15, 2013, the request is rejected and the error message InvalidSnapshot.TooOld is returned.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -1676,11 +1634,11 @@ class ModifyScalingConfigurationRequestCustomPriorities(DaraModel):
     ):
         # The instance type of the ECS instance.
         # 
-        # > The instance type must be included in the list of instance types in the scaling configuration.
+        # > The instance type must be included in the instance type list of the scaling configuration.
         self.instance_type = instance_type
         # The ID of the vSwitch.
         # 
-        # > The vSwitch must be included in the list of vSwitches in the scaling group.
+        # > The vSwitch must be included in the vSwitch list of the scaling group.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -1724,89 +1682,70 @@ class ModifyScalingConfigurationRequestSystemDisk(DaraModel):
         provisioned_iops: int = None,
         size: int = None,
     ):
-        # The ID of the automatic snapshot policy used for the system disk.
+        # The ID of the automatic snapshot policy applied to the system cloud disk.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # Specifies whether to enable the performance burst feature for the system disk. Valid values:
+        # Specifies whether to enable the burst feature for the system cloud disk. Valid values:
         # 
-        # - true: enable.
-        # 
-        # - false: disable.
-        # 
+        # - true: enables the burst feature.
+        # - false: does not enable the burst feature.
         # > This parameter is supported only when `SystemDisk.Category` is set to `cloud_auto`.
         # 
-        # <props="china">
-        # 
-        # For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
+        # <props="china">For more information, see [ESSD AutoPL disks](
+        # [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html)
         self.bursting_enabled = bursting_enabled
-        # The category of the system disk. Valid values:
+        # The category of the system cloud disk. Valid values:
         # 
-        # - cloud: basic disk.
-        # 
-        # - cloud_efficiency: ultra disk.
-        # 
+        # - cloud: basic cloud disk.
+        # - cloud_efficiency: ultra cloud disk.
         # - cloud_ssd: standard SSD.
-        # 
-        # - cloud_essd: ESSD.
-        # 
+        # - cloud_essd: Enterprise SSD (ESSD).
         # - ephemeral_ssd: local SSD.
         # 
-        # You cannot specify this parameter and `SystemDiskCategories` at the same time. If neither this parameter nor `SystemDiskCategories` is specified, this parameter has a default value. If the instance type is from instance family I and the instance is not I/O optimized, the default value is \\`cloud\\`. Otherwise, the default value is \\`cloud_efficiency\\`.
+        # This parameter cannot be specified together with `SystemDiskCategories`. If neither this parameter nor `SystemDiskCategories` is specified, a default value is used. If the instance type belongs to Generation I instance families and the instance is not an I/O optimization instance, the default value is cloud. Otherwise, the default value is cloud_efficiency.
         self.category = category
-        # The description of the system disk. The description must be 2 to 256 English or Chinese characters in length and cannot start with `http://` or `https://`.
+        # The description of the system cloud disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the system disk. The name must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and cannot start with http\\:// or https\\://. It can contain digits, colons (:), underscores (_), and hyphens (-). Default value: empty
+        # The name of the system cloud disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter or Chinese character and cannot start with http:// or https://. Default value: empty.
         self.disk_name = disk_name
-        # The encryption algorithm used for the system disk. Valid values:
+        # The encryption algorithm for the system cloud disk. Valid values:
         # 
         # - AES-256.
-        # 
         # - SM4-128.
         # 
         # Default value: AES-256.
         self.encrypt_algorithm = encrypt_algorithm
-        # Specifies whether to encrypt the system disk. Valid values:
+        # Specifies whether to encrypt the system cloud disk. Valid values:
         # 
-        # - true: encrypt the system disk.
-        # 
-        # - false: do not encrypt the system disk.
+        # - true: encrypts the system cloud disk.
+        # - false: does not encrypt the system cloud disk.
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The ID of the KMS key used for the system disk.
+        # The ID of the KMS key used for the system cloud disk.
         self.kmskey_id = kmskey_id
-        # The performance level of the ESSD that is used as the system disk. Valid values:
+        # The performance level (PL) of the system cloud disk when the disk is an ESSD. Valid values:
         # 
-        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
-        # 
-        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
-        # 
-        # - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
-        # 
-        # - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
+        # - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # - PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        # - PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         # 
         # > For more information about how to select an ESSD performance level, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
-        # The pre-configured IOPS of the system disk.
+        # The provisioned IOPS (Input/Output Operations Per Second) performance metrics for the system cloud disk.
         # 
-        # > IOPS, or input/output operations per second, is the number of I/O operations that a block storage device can process per second. It indicates the read and write performance of the block storage device.
+        # > IOPS (Input/Output Operations Per Second) refers to the number of I/O operations that can be processed per second, representing the read/write (output/input) capability of block storage. Unit: operations per second.
         self.provisioned_iops = provisioned_iops
-        # The size of the system disk. Unit: GiB. Value range:
+        # The size of the system cloud disk. Unit: GiB. Valid values:
         # 
-        # - Basic disks: 20 to 500.
-        # 
-        # - ESSDs:
-        # 
+        # - Basic cloud disk: 20 to 500.
+        # - ESSD:
         #   - PL0: 1 to 2048.
-        # 
         #   - PL1: 20 to 2048.
-        # 
         #   - PL2: 461 to 2048.
-        # 
         #   - PL3: 1261 to 2048.
-        # 
-        # - ESSD AutoPL cloud disks: 1 to 2048.
-        # 
-        # - Other disk categories: 20 to 2048.
+        # - ESSD AutoPL: 1 to 2048.
+        # - Other cloud disk types: 20 to 2048.
         # 
         # The value of this parameter must be greater than or equal to max{1, ImageSize}.
         self.size = size
@@ -1897,15 +1836,15 @@ class ModifyScalingConfigurationRequestPrivatePoolOptions(DaraModel):
         id: str = None,
         match_criteria: str = None,
     ):
-        # The ID of the private pool. The private pool can be an Elastic Assurance service or a Capacity Reservation service.
+        # The private pool ID, which is the ID of the elasticity assurance or capacity reservation.
         self.id = id
-        # The capacity option of the private pool for starting the instance. The private pool is generated after an Elastic Assurance service or a Capacity Reservation service takes effect. You can select a private pool to start an instance. Valid values:
+        # The private pool option for instance startup. A private pool is generated after an elasticity assurance or capacity reservation takes effect. You can select a private pool when you start an instance. Valid values:
         # 
-        # - Open: open mode. The system automatically matches the instance with an open private pool. If no open private pools are available, the instance is started using public pool resources. You do not need to set the \\`PrivatePoolOptions.Id\\` parameter in this mode.
+        # - Open: open mode. The system automatically matches an open private pool. If no matching private pool is available, the public pool is used to start the instance. You do not need to specify PrivatePoolOptions.Id in this mode.
         # 
-        # - Target: specified mode. The instance is started using the capacity of a specified private pool. If the specified private pool is unavailable, the instance fails to start. You must specify the private pool ID by setting the \\`PrivatePoolOptions.Id\\` parameter in this mode.
+        # - Target: specified mode. A specified private pool is used to start the instance. If the specified private pool is unavailable, the instance fails to start. In this mode, you must specify the private pool ID, which means PrivatePoolOptions.Id is required.
         # 
-        # - None: no mode. The instance is not started using the capacity of a private pool.
+        # - None: no private pool is used. The instance does not use any private pool capacity for startup.
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -1939,11 +1878,11 @@ class ModifyScalingConfigurationRequestImageOptions(DaraModel):
         self,
         login_as_non_root: bool = None,
     ):
-        # Specifies whether to log on to the ECS instance as the ecs-user user. For more information, see [Manage logon usernames of ECS instances](https://help.aliyun.com/document_detail/388447.html). Valid values:
+        # Specifies whether the ECS instance uses the ecs-user account to log on. For more information, see [Manage the logon name of an ECS instance](https://help.aliyun.com/document_detail/388447.html). Valid values:
         # 
-        # true: yes.
+        # - true: The ecs-user account is used.
         # 
-        # false: no.
+        # - false: The ecs-user account is not used.
         self.login_as_non_root = login_as_non_root
 
     def validate(self):

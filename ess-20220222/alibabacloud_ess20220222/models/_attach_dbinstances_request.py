@@ -19,25 +19,26 @@ class AttachDBInstancesRequest(DaraModel):
         scaling_group_id: str = None,
         type: str = None,
     ):
-        # The mode in which you want to attach the database to the scaling group. Valid values:
+        # The association mode between the scaling group and the database. Valid values:
         # 
-        # *   SecurityIp: adds the private IP addresses of scaled out ECS instances to the IP address whitelist of the database. Take note that you can choose this mode only when the database that you want to attach is an ApsaraDB RDS instance.
-        # *   SecurityGroup: adds the security group of the scaling configuration based on which ECS instances are created in the scaling group to the security group whitelist of the database for registration.
+        # - SecurityIp: The SecurityIp mode. In this mode, the IP addresses of scaled-out instances are automatically added to the IP address whitelist of the database. Currently, only ApsaraDB RDS databases support this mode.
+        # - SecurityGroup: The security group mode. In this mode, the security group of the scaling configuration is added to the security group whitelist of the database for association and registration.
         # 
         # Default value: SecurityIp.
         self.attach_mode = attach_mode
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
+        # Ensures the idempotence of the request. You can generate a parameter value from your client to ensure that the parameter value is unique across different requests.
         # 
-        # The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure the idempotence of a request](https://help.aliyun.com/document_detail/25965.html).
+        # The value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # The IDs of the ApsaraDB RDS instances that you want to attach to the scaling group.
+        # The IDs of the RDS instances.
         # 
         # This parameter is required.
         self.dbinstances = dbinstances
-        # Specifies whether to add the private IP addresses of all ECS instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance that you want to attach to the scaling group. Valid values:
+        # Specifies whether to add the private IP addresses of all instances in the current scaling group to the IP address whitelist of the RDS instances when the RDS instances are attached to the scaling group. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Adds the private IP addresses.
+        # 
+        # - false: Does not add the private IP addresses.
         # 
         # Default value: false.
         self.force_attach = force_attach
@@ -49,11 +50,11 @@ class AttachDBInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # The type of the database that you want to attach to the scaling group. Valid values:
+        # The database type. Valid values:
         # 
-        # *   RDS
-        # *   Redis
-        # *   MongoDB
+        # - RDS
+        # - Redis
+        # - MongoDB
         # 
         # Default value: RDS.
         self.type = type

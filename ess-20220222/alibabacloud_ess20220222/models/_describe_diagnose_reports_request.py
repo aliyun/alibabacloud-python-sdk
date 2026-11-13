@@ -19,11 +19,11 @@ class DescribeDiagnoseReportsRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The region ID of the scaling group.
+        # The ID of the region to which the scaling group belongs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the diagnostic reports. You can specify at most 20 IDs.
+        # The IDs of the diagnostic reports. You can specify up to 20 IDs.
         self.report_ids = report_ids
         # The ID of the scaling group.
         # 

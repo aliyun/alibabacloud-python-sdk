@@ -40,110 +40,110 @@ class DescribePatternTypesRequest(DaraModel):
         v_switch_id: List[str] = None,
         zone_id: List[str] = None,
     ):
-        # The architecture types of the instance types. Valid values:
+        # The architecture type of the instance type. Valid values:
         # 
-        # *   X86: x86 architecture.
-        # *   Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
-        # *   BareMetal: ECS Bare Metal Instance.
-        # *   Arm: Arm.
+        # - X86: x86 computing
+        # - Heterogeneous: heterogeneous computing, such as GPU or FPGA
+        # - BareMental: Elastic Compute Service Bare Metal Server
+        # - Arm: Arm computing
         # 
-        # By default, all values are selected.
+        # Default value: all architecture types.
         self.architecture = architecture
-        # Specifies whether to include burstable instance types. Valid values:
+        # Specifies whether the instance type is a burstable instance type. Valid values:
         # 
-        # *   Exclude: does not include burstable instance types.
-        # *   Include: includes burstable instance types.
-        # *   Required: includes only burstable instance types.
+        # - Exclude: Burstable instance types are excluded.
+        # - Include: Burstable instance types are included.
+        # - Required: Only burstable instance types are included.
         # 
         # Default value: Include.
         self.burstable_performance = burstable_performance
-        # The channel ID. This parameter is not for public use.
+        # The channel ID. This parameter is reserved for internal use.
         self.channel_id = channel_id
-        # The number of vCPUs that you want to assign to the instance type.
+        # The number of vCPUs for the instance type.
         self.cores = cores
-        # The number of vCPUs that you want to assign to the instance type. You can specify multiple vCPUs.
+        # The number of vCPUs for the instance type. You can specify multiple values.
         self.cores_list = cores_list
-        # The CPU architectures of the instance types. Valid values:
+        # The CPU architecture of the instance type. Valid values:
         # 
-        # >  You can specify 1 to 2 CPU architectures.
+        # > N specifies the number of CPU architectures that you can set. Valid values of N: 1 to 2.
         # 
-        # *   x86
-        # *   Arm
+        # - X86
+        # - ARM
         self.cpu_architectures = cpu_architectures
         self.excluded_instance_type = excluded_instance_type
-        # The GPU models.
+        # The GPU type.
         self.gpu_specs = gpu_specs
-        # The classifications of the instance types. Valid values:
+        # The categorization of the instance type. Valid values:
         # 
-        # *   General-purpose: general-purpose instance type.
-        # *   Compute-optimized: compute-optimized instance type.
-        # *   Memory-optimized: memory-optimized instance type.
-        # *   Big data: big data instance type.
-        # *   Local SSDs: instance type with local SSDs.
-        # *   High Clock Speed: instance type with high clock speeds.
-        # *   Enhanced: enhanced instance type.
-        # *   Shared: shared instance type.
-        # *   Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
-        # *   Visual Compute-optimized: visual compute-optimized instance type.
-        # *   Heterogeneous Service: heterogeneous service instance type.
-        # *   Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
-        # *   Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
-        # *   ECS Bare Metal: ECS Bare Metal Instance type.
-        # *   High Performance Compute: HPC-optimized instance type.
+        # - General-purpose: general-purpose
+        # - Compute-optimized: compute-optimized
+        # - Memory-optimized: memory-optimized
+        # - Big data: big data
+        # - Local SSDs: local SSD
+        # - High Clock Speed: high frequency
+        # - Enhanced: enhanced
+        # - Shared: shared
+        # - Compute-optimized with GPU: GPU-accelerated compute-optimized
+        # - Visual Compute-optimized: visual compute-optimized
+        # - Heterogeneous Service: heterogeneous service
+        # - Compute-optimized with FPGA: FPGA-accelerated compute-optimized
+        # - Compute-optimized with NPU: NPU-accelerated compute-optimized
+        # - ECS Bare Metal: Elastic Compute Service Bare Metal Server
+        # - High Performance Compute: high-performance computing (HPC)
         self.instance_categories = instance_categories
         # The level of the instance family. Valid values:
         # 
-        # *   EntryLevel: entry level
-        # *   EnterpriseLevel: enterprise level
-        # *   CreditEntryLevel: credit-based entry level For more information, see [Burstable instance families](https://help.aliyun.com/document_detail/59977.html).
+        # - EntryLevel: Entry-level instance family.
+        # - EnterpriseLevel: Enterprise-level instance family.
+        # - CreditEntryLevel: Credit entry-level instance family. For more information, see [Burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
-        # The instance families that you want to query. You can query 1 to 10 instance families in each call.
+        # The instance families to be queried. N specifies the number of instance families that you can set. Valid values of N: 1 to 10.
         self.instance_type_families = instance_type_families
-        # The maximum hourly price for pay-as-you-go or preemptible instances.
+        # The maximum acceptable hourly price for the pay-as-you-go or spot instance.
         self.max_price = max_price
-        # The maximum number of vCPUs per instance type.
+        # The maximum number of vCPUs for the instance type.
         self.maximum_cpu_core_count = maximum_cpu_core_count
-        # The maximum number of GPUs per instance. The value must be a positive integer.
+        # The maximum number of GPUs for the instance. Valid values: positive integers.
         self.maximum_gpu_amount = maximum_gpu_amount
-        # The maximum memory size per instance. Unit: GiB.
+        # The maximum memory size of the instance. Unit: GiB.
         self.maximum_memory_size = maximum_memory_size
-        # The memory size that you want to assign to the instance type. Unit: GiB.
+        # The memory size of the instance type. Unit: GiB.
         self.memory = memory
-        # The memory size that you want to assign to the instance type. Unit: GiB. You can specify multiple memory sizes.
+        # The memory size of the instance type. Unit: GiB. You can specify multiple values.
         self.memory_list = memory_list
-        # The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+        # The minimum baseline vCPU computing performance (sum of all vCPUs) for burstable instances of the t5 and t6 instance types.
         self.minimum_baseline_credit = minimum_baseline_credit
-        # The minimum number of vCPUs per instance type.
+        # The minimum number of vCPUs for the instance type.
         self.minimum_cpu_core_count = minimum_cpu_core_count
-        # The minimum number of IPv6 addresses per ENI.
+        # The minimum upper limit on the number of IPv6 addresses per elastic network interface controller (NIC) for the instance.
         self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
-        # The minimum number of IPv4 addresses per ENI.
+        # The minimum upper limit on the number of IPv4 addresses per elastic network interface controller (NIC) for the instance.
         self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
-        # The minimum number of elastic network interfaces (ENIs) per instance.
+        # The minimum upper limit on the number of elastic network interfaces (ENIs) that can be bound to the instance.
         self.minimum_eni_quantity = minimum_eni_quantity
-        # The minimum number of GPUs per instance. The value must be a positive integer.
+        # The minimum number of GPUs for the instance. Valid values: positive integers.
         self.minimum_gpu_amount = minimum_gpu_amount
-        # The initial vCPU credits per t5 or t6 burstable instance.
+        # The minimum initial vCPU credit for burstable instances of the t5 and t6 instance types.
         self.minimum_initial_credit = minimum_initial_credit
-        # The minimum memory size per instance. Unit: GiB.
+        # The minimum memory size of the instance. Unit: GiB.
         self.minimum_memory_size = minimum_memory_size
-        # The processor models of the instance types. You can specify 1 to 10 processor models.
+        # The processor model of the instance. N specifies the number of processor models that you can set. Valid values of N: 1 to 10.
         self.physical_processor_models = physical_processor_models
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The preemption policy that you want to apply to pay-as-you-go instances. Valid values:
-        # 
-        # *   NoSpot: The instances are created as regular pay-as-you-go instances.
-        # *   SpotWithPriceLimit: The instances are created as preemptible instances that have a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bidding price.
+        # The preemption policy for the pay-as-you-go instance. Valid values:
+        #          
+        # - NoSpot: regular pay-as-you-go instance
+        # - SpotWithPriceLimit: spot instance with a maximum price limit
+        # - SpotAsPriceGo: spot instance whose price is automatically offered by the system based on the current market price
         # 
         # Default value: NoSpot.
         self.spot_strategy = spot_strategy
-        # The IDs of the vSwitches.
+        # The list of vSwitch IDs. You must specify at least one of VSwitchId and ZoneId.
         self.v_switch_id = v_switch_id
-        # The zone IDs. If you pass vSwitch IDs to the system, this parameter does not take effect.
+        # The list of zone IDs. This parameter is invalid if a vSwitch ID is specified. You must specify at least one of VSwitchId and ZoneId.
         self.zone_id = zone_id
 
     def validate(self):

@@ -10,9 +10,9 @@ class CreateEciScalingConfigurationResponseBody(DaraModel):
         request_id: str = None,
         scaling_configuration_id: str = None,
     ):
-        # The request ID.
+        # The request ID, which uniquely identifies the request.
         self.request_id = request_id
-        # The ID of the elastic container instance (container group).
+        # The instance ID, which is the container group ID.
         self.scaling_configuration_id = scaling_configuration_id
 
     def validate(self):

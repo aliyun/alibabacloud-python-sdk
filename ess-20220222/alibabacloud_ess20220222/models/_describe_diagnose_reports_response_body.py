@@ -20,9 +20,9 @@ class DescribeDiagnoseReportsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The diagnostic reports.
+        # The list of diagnostic reports.
         self.reports = reports
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
         # The total number of diagnostic reports.
         self.total_count = total_count
@@ -91,22 +91,25 @@ class DescribeDiagnoseReportsResponseBodyReports(DaraModel):
         scaling_group_id: str = None,
         user_id: str = None,
     ):
-        # The time when the diagnostic report was created.
+        # The time when the diagnostic report was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.creation_time = creation_time
         # The details of the diagnostic report.
         self.details = details
-        # The status of the diagnostic item. Only the severe status is displayed in the diagnostic report. Valid values:
+        # The diagnostic status. The value is the most severe status among the diagnostic details. Valid values:
         # 
-        # *   Normal: The diagnostic result is normal.
-        # *   Warn: The diagnostic result is warning.
-        # *   Critical: The diagnostic result is critical.
+        # - Normal: the diagnostic result is normal.
+        # 
+        # - Warn: the diagnostic result is a warning.
+        # 
+        # - Critical: the diagnostic result is critical.
         self.diagnose_status = diagnose_status
         # The status of the diagnostic report. Valid values:
         # 
-        # *   processing: The diagnosis is in progress.
-        # *   Finished: The diagnosis is complete.
+        # - Processing: in progress.
+        # 
+        # - Finished: completed.
         self.process_status = process_status
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The ID of the diagnostic report.
         self.report_id = report_id
@@ -195,35 +198,53 @@ class DescribeDiagnoseReportsResponseBodyReportsDetails(DaraModel):
     ):
         # The type of the diagnostic item. Valid values:
         # 
-        # *   AccountArrearage: Checks whether your Alibaba Cloud account has overdue payments.
-        # *   AccountNotEnoughBalance: Checks whether the balance of your Alibaba Cloud account at the China site (aliyun.com) is greater than or equal to CNY 100.
-        # *   ElasticStrength: Checks whether the instance types that are specified in the scaling configuration are sufficient.
-        # *   VSwitch: Checks whether a specific vSwitch can work as expected. For example, if a vSwitch is deleted, the vSwitch cannot provide services and an exception occurs.
-        # *   SecurityGroup: Checks whether a specific security group can work as expected. For example, if a security group is deleted, the security group cannot provide services and an exception occurs.
-        # *   KeyPair: Checks whether the key pair is available. If the specified key pair is deleted, specify another key pair for the scaling group.
-        # *   SlbBackendServerQuota: Checks whether the number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
-        # *   AlbBackendServerQuota: Checks whether the number of ECS instances that are added to the backend server groups of the ALB instances associated with the scaling group has reached the upper limit.
-        # *   NlbBackendServerQuota: Checks whether the number of ECS instances that are added to the backend server groups of the NLB instances associated with the scaling group has reached the upper limit.
+        # - AccountArrearage: account overdue payment. Checks whether the user account has overdue payments.
+        # 
+        # - AccountNotEnoughBalance: insufficient account balance. Checks whether the balance of a user account on the China site is greater than or equal to CNY 100.
+        # 
+        # - ElasticStrength: inventory health. Checks the inventory health of the instance type configured for the scaling group.
+        # 
+        # - VSwitch: vSwitch status. Checks whether the vSwitch is active, such as whether it is deleted.
+        # 
+        # - SecurityGroup: security group status. Checks whether the security group is active, such as whether it is deleted.
+        # 
+        # - KeyPair: key pair status. Checks whether the key pair is active, such as whether it is deleted.
+        # 
+        # - SlbBackendServerQuota: number of instances mounted to the SLB instance in the scaling group. Checks whether the number of ECS instances mounted to the default server group and virtual service groups of the SLB instance exceeds the quota.
+        # 
+        # - AlbBackendServerQuota: number of instances mounted to the ALB instance in the scaling group. Checks whether the number of ECS instances mounted to the server groups of the ALB instance exceeds the quota.
+        # 
+        # - NlbBackendServerQuota: number of instances mounted to the NLB instance in the scaling group. Checks whether the number of ECS instances mounted to the server groups of the NLB instance exceeds the quota.
         self.diagnose_type = diagnose_type
         # The error code of the diagnostic item. Valid values:
         # 
-        # *   VSwitchIdNotFound: The vSwitch does not exist.
-        # *   SecurityGroupNotFound: The security group does not exist.
-        # *   KeyPairNotFound: The key pair does not exist.
-        # *   SlbBackendServerQuotaExceeded: The number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
-        # *   AlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the ALB instances of the scaling group has reached the upper limit.
-        # *   NlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the NLB instances of the scaling group has reached the upper limit.
-        # *   AccountArrearage: Your account has overdue payments.
-        # *   AccountNotEnoughBalance: The balance of your Alibaba Cloud account is less than CNY 100.
-        # *   ElasticStrengthAlert: The inventory levels are lower than expected.
-        self.error_code = error_code
-        # The ID of the resource.
-        self.resource_id = resource_id
-        # The status of the diagnostic item. Valid values:
+        # - VSwitchIdNotFound: the vSwitch does not exist.
         # 
-        # *   Normal: The diagnostic result is normal.
-        # *   Warn: The diagnostic result is warning.
-        # *   Critical: The diagnostic result is critical.
+        # - SecurityGroupNotFound: the security group does not exist.
+        # 
+        # - KeyPairNotFound: the key pair does not exist.
+        # 
+        # - SlbBackendServerQuotaExceeded: the number of ECS instances mounted to the default server group and virtual service groups of the SLB instance exceeds the quota.
+        # 
+        # - AlbBackendServerQuotaExceeded: the number of ECS instances mounted to the server groups of the ALB instance exceeds the quota.
+        # 
+        # - NlbBackendServerQuotaExceeded: the number of ECS instances mounted to the server groups of the NLB instance exceeds the quota.
+        # 
+        # - AccountArrearage: the account has overdue payments.
+        # 
+        # - AccountNotEnoughBalance: the account balance is insufficient (less than CNY 100).
+        # 
+        # - ElasticStrengthAlert: the inventory health is poor.
+        self.error_code = error_code
+        # The resource ID.
+        self.resource_id = resource_id
+        # The diagnostic status of the diagnostic item. Valid values:
+        # 
+        # - Normal: the diagnostic result is normal.
+        # 
+        # - Warn: the diagnostic result is a warning.
+        # 
+        # - Critical: the diagnostic result is critical.
         self.status = status
 
     def validate(self):

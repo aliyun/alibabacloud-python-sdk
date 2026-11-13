@@ -12,7 +12,7 @@ class ApplyScalingGroupResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the enabled scaling group.
+        # The ID of the applied scaling group.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):

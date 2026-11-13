@@ -14,9 +14,9 @@ class RemoveInstancesResponseBody(DaraModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
-        # The instances that were not removed and the reasons why they were not removed.
+        # The list of ignored invalid instance information in the request.
         self.ignored_instances = ignored_instances
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the scaling activity.
         self.scaling_activity_id = scaling_activity_id
@@ -68,11 +68,11 @@ class RemoveInstancesResponseBodyIgnoredInstances(DaraModel):
         instance_id: str = None,
         message: str = None,
     ):
-        # The error code that indicates the reason why the instance was not removed.
+        # The code of the reason why the instance is ignored.
         self.code = code
-        # The ID of the instance that was not removed.
+        # The instance ID of the ignored instance.
         self.instance_id = instance_id
-        # The error message that indicates the reason why the instance was not removed.
+        # The description of the reason why the instance is ignored.
         self.message = message
 
     def validate(self):

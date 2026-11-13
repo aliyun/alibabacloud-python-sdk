@@ -16,15 +16,15 @@ class DescribeScalingActivitiesResponseBody(DaraModel):
         scaling_activities: List[main_models.DescribeScalingActivitiesResponseBodyScalingActivities] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The scaling activities.
+        # The collection of scaling activity information.
         self.scaling_activities = scaling_activities
-        # The total number of scaling activities.
+        # The total number of scaling activity records.
         self.total_count = total_count
 
     def validate(self):
@@ -115,78 +115,77 @@ class DescribeScalingActivitiesResponseBodyScalingActivities(DaraModel):
     ):
         # The metadata of the scaling activity.
         self.activity_metadata = activity_metadata
-        # The total number of instances that are manually added to the scaling group after the scaling activity is complete.
+        # The total number of manually added instances in the scaling group after the scaling activity is completed.
         self.attached_capacity = attached_capacity
-        # The total number of instances that are created by Auto Scaling after the scaling activity was complete.
+        # The total number of instances in the scaling group that are generated through automatic creation after you execute the scaling activity.
         self.auto_created_capacity = auto_created_capacity
-        # The reason why the scaling activity was triggered.
+        # The cause that triggered the scaling activity.
         self.cause = cause
-        # The number of instances that are created during the scale-out event.
+        # The number of instances created during the current scaling activity.
         self.created_capacity = created_capacity
-        # The instances that are created during the scale-out event.
+        # The list of instances created during the current scaling activity.
         self.created_instances = created_instances
         # The description of the scaling activity.
         self.description = description
-        # The number of instances that are released during the scale-in event.
+        # The number of instances released during the current scaling activity.
         self.destroyed_capacity = destroyed_capacity
-        # The instances that are released during the scale-in event.
+        # The list of instances released during the current scaling activity.
         self.destroyed_instances = destroyed_instances
-        # Details of the scaling activity.
+        # The details of the scaling activity.
         self.detail = detail
-        # The time when the scaling activity was complete.
+        # The end time of the scaling activity. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format.
         self.end_time = end_time
-        # The error code that is returned when the scaling activity failed.
+        # The error code returned when the scaling activity fails.
         self.error_code = error_code
-        # The error message that is returned when the scaling activity failed.
+        # The error message returned when the scaling activity fails.
         self.error_message = error_message
-        # The error messages that are returned when the scaling activities failed or are partially successful.
+        # The error messages returned when the scaling activity fails or is partially successful.
         self.error_messages = error_messages
         # The ID of the instance refresh task.
         self.instance_refresh_task_id = instance_refresh_task_id
-        # The context of the lifecycle hook.
+        # The context information of the lifecycle hook.
         self.lifecycle_hook_context = lifecycle_hook_context
-        # The execution progress of the scaling activity.
+        # The progress of the scaling activity.
         self.progress = progress
         # The ID of the scaling activity.
         self.scaling_activity_id = scaling_activity_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
-        # *   If you query a scale-out activity, the value of this parameter indicates the number of instances that are created or the number of instances that are started from Economical Mode.
-        # *   If you query a scale-in activity, the value of this parameter indicates the number of instances that are deleted or the number of instances that are stopped in Economical Mode.
+        # - If the scaling activity is a scale-out activity, this parameter indicates the number of instances that are created or started from the stopped and reclaimed state during the scaling activity.
+        # 
+        # - If the scaling activity is a scale-in activity, this parameter indicates the number of instances that are deleted or enter the stopped and reclaimed state during the scaling activity.
         self.scaling_instance_number = scaling_instance_number
-        # The time when the scaling activity was started.
+        # The start time of the scaling activity. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format.
         self.start_time = start_time
-        # The number of instances that are started from the Economical Mode during the scale-out event.
+        # The number of instances started from the economical mode during the current scaling activity.
         self.started_capacity = started_capacity
-        # The instances that are started from the Economical Mode during the scale-out event.
+        # The list of instances started from the economical mode during the current scaling activity.
         self.started_instances = started_instances
         # The status of the scaling activity. Valid values:
-        # 
-        # *   Successful: The scaling activity is successful.
-        # *   Warning: The scaling activity is partially successful.
-        # *   Failed: The scaling activity failed.
-        # *   InProgress: The scaling activity is in progress.
-        # *   Rejected: The request to trigger the scaling activity is rejected.
+        #  
+        # - Successful: The scaling activity is successful. 
+        # - Warning: The scaling activity is partially successful. 
+        # - Failed: The scaling activity failed. 
+        # - InProgress: The scaling activity is in progress. 
+        # - Rejected: The request to execute the scaling activity is rejected.
         self.status_code = status_code
         # The status message of the scaling activity.
         self.status_message = status_message
-        # The number of instances that are stopped in the Economical Mode during the scale-in event.
+        # The number of instances that entered the economical mode during the current scaling activity.
         self.stopped_capacity = stopped_capacity
-        # The instances that are stopped in the Economical Mode during the scale-in event.
+        # The list of instances that entered the economical mode during the current scaling activity.
         self.stopped_instances = stopped_instances
-        # The total number of instances in the scaling group after the scaling activity was complete.
+        # The total number of instances in the scaling group after the scaling activity is completed.
         self.total_capacity = total_capacity
-        # The ID of the trigger source of the scaling activity. Valid values:
-        # 
-        # *   If the scaling activity is triggered by an event-triggered task, the ID of the trigger source is the ID of the event-triggered task.
-        # *   If the scaling activity is triggered by calling an API operation, the ID of the trigger source is the ID of the Alibaba Cloud account or Resource Access Management (RAM) user that you use to call the API operation.
-        # *   If the scaling activity is triggered by Auto Scaling, the ID of the trigger source is null.
+        # The ID of the trigger source for the scaling activity. Valid values:
+        # - Cms trigger source ID: displayed as the event-triggered task ID.
+        # - Api trigger source ID: displayed as the Alibaba Cloud account ID or RAM user ID.
+        # - Ess trigger source ID: displayed as empty.
         self.trigger_source_id = trigger_source_id
-        # The type of the trigger source of the scaling activity. Valid values:
-        # 
-        # *   Cms: The scaling activity is triggered by an event-triggered task.
-        # *   APIs: The scaling activity is triggered by calling an API operation.
-        # *   Ess: The scaling activity is triggered by Auto Scaling.
+        # The type of the trigger source for the scaling activity. Valid values:
+        # - Cms: The scaling activity is triggered by an event-triggered task.
+        # - Api: The scaling activity is triggered by a user through an API call.
+        # - Ess: The scaling activity is triggered by a system task.
         self.trigger_source_type = trigger_source_type
 
     def validate(self):
@@ -400,12 +399,12 @@ class DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext
         disable_lifecycle_hook: bool = None,
         ignored_lifecycle_hook_ids: List[str] = None,
     ):
-        # Indicates whether all lifecycle hooks are disabled when the scaling activity is triggered. Valid values:
+        # Specifies whether all lifecycle hooks are disabled for the scaling activity. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Disabled.
+        # - false: Not disabled.
         self.disable_lifecycle_hook = disable_lifecycle_hook
-        # The IDs of the lifecycle hooks that are disabled.
+        # The list of IDs of the lifecycle hooks disabled for the scaling activity.
         self.ignored_lifecycle_hook_ids = ignored_lifecycle_hook_ids
 
     def validate(self):
@@ -442,13 +441,13 @@ class DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages(DaraMo
         failed_instance_ids: List[str] = None,
         message: str = None,
     ):
-        # The error code that is returned when the scaling activity failed.
+        # The error code returned when the scaling activity fails or is partially successful.
         self.code = code
-        # The description of the scaling activity exception.
+        # The exception description of the scaling activity.
         self.description = description
-        # The IDs of the instances included in the failed scaling activities.
+        # The list of failed instance ID.
         self.failed_instance_ids = failed_instance_ids
-        # The error message that is returned when the scaling activity failed or is partially successful.
+        # The error messages returned when the scaling activity fails or is partially successful.
         self.message = message
 
     def validate(self):

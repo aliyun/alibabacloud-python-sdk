@@ -21,39 +21,39 @@ class DescribeScalingActivitiesRequest(DaraModel):
         scaling_group_id: str = None,
         status_code: str = None,
     ):
-        # The ID of the instance refresh task. If you specify this parameter, this operation returns the list of scaling activities associated with the instance refresh task.
+        # The ID of the instance refresh task node. You can configure the Settings of this parameter to perform a parameter query for the scaling activity list related to the instance refresh task.
         self.instance_refresh_task_id = instance_refresh_task_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The page number of the scaling activity list. Pages start from 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 50.
+        # The paging Settings for the number of entries per page in a paged query. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the scaling group to which the scaling activity that you want to query belongs.
+        # The region ID of the scaling group to which the scaling activity belongs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of the scaling activities that you want to query.
+        # The ID of the scaling activity to be queried.
         # 
-        # >  When you call this operation, you must specify one of the following parameters: `ScalingGroupId` and `ScalingActivityIds`. You cannot specify both of them at the same time. If you specify neither of them, an error is reported.
+        # > When you invoke this API, you must specify either the ScalingGroupId or ScalingActivityIds parameter. If neither parameter is specified, an error occurs.
         self.scaling_activity_ids = scaling_activity_ids
         # The ID of the scaling group.
         # 
-        # >  When you call this operation, you must specify one of the following parameters: `ScalingGroupId` and `ScalingActivityIds`. You cannot specify both of them at the same time. If you specify neither of them, an error is reported.
+        # > When you call this operation, you must specify either ScalingGroupId or ScalingActivityIds. If neither is specified, an error occurs.
         self.scaling_group_id = scaling_group_id
         # The status of the scaling activity. Valid values:
-        # 
-        # *   Successful: The scaling activity is successful.
-        # *   Warning: The scaling activity is partially successful.
-        # *   Failed: The scaling activity failed.
-        # *   InProgress: The scaling activity is in progress.
-        # *   Rejected: The request to trigger the scaling activity is rejected.
+        #  
+        # - Successful: The scaling activity is successful. 
+        # - Warning: The scaling activity is partially successful. 
+        # - Failed: The scaling activity failed. 
+        # - InProgress: The scaling activity is in progress. 
+        # - Rejected: The request to execute the scaling activity is rejected.
         self.status_code = status_code
 
     def validate(self):

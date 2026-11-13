@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class ModifyLifecycleHookRequest(DaraModel):
@@ -9,6 +11,7 @@ class ModifyLifecycleHookRequest(DaraModel):
         self,
         default_result: str = None,
         heartbeat_timeout: int = None,
+        lifecycle_action_sources: List[str] = None,
         lifecycle_hook_id: str = None,
         lifecycle_hook_name: str = None,
         lifecycle_hook_status: str = None,
@@ -21,53 +24,50 @@ class ModifyLifecycleHookRequest(DaraModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # The action that you want Auto Scaling to perform after the lifecycle hook ends. Valid values:
+        # The subsequent action after the wait state ends. Valid values:
+        # - CONTINUE: continues the response to the scale-out activity or the scale-in activity.
+        # - ABANDON: releases the ECS instances created during the scale-out activity or removes the ECS instances from the scaling group during the scale-in activity.
+        # - ROLLBACK: rejects the release of ECS instances and rolls back the scale-in activity. For a scale-out activity, this value has the same effect as ABANDON, which releases the created ECS instances.
         # 
-        # *   CONTINUE: Auto Scaling continues to respond to scaling requests.
-        # *   ABANDON: Auto Scaling releases Elastic Compute Service (ECS) instances that are created during scale-out activities, or removes ECS instances from the scaling group during scale-in activities.
-        # 
-        # If multiple lifecycle hooks in a scaling group are triggered during scale-in activities and you set the DefaultResult parameter to ABANDON for the lifecycle hook that you want to modify, Auto Scaling immediately performs the action after the lifecycle hook that you want to modify ends. As a result, other lifecycle hooks end ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks end.
+        # If a scale-in activity occurs and multiple lifecycle hooks are triggered, and the DefaultResult of one lifecycle hook is set to ABANDON or ROLLBACK, the wait states of other lifecycle hooks are ended in advance when the wait state of this hook ends. In other cases, the subsequent action is determined by the last lifecycle hook that ends its wait state.
         self.default_result = default_result
-        # The period of time before the lifecycle hook ends. Auto Scaling performs the specified action after the lifecycle hook ends. Valid values: 30 to 21600. Unit: seconds.
+        # The wait time set by the lifecycle hook for the scaling activity. The subsequent action is performed after the wait state times out. Valid values: 30 to 21600. Unit: seconds.
         # 
-        # You can call the RecordLifecycleActionHeartbeat operation to prolong the length of a lifecycle hook. You can also call the CompleteLifecycleAction operation to end a lifecycle hook ahead of schedule.
+        # You can call the RecordLifecycleActionHeartbeat operation to extend the wait time of the ECS instance, or call the CompleteLifecycleAction operation to end the wait state of the scaling activity in advance.
         self.heartbeat_timeout = heartbeat_timeout
-        # The ID of the lifecycle hook that you want to modify.
+        # The specific scenarios that trigger the lifecycle hook.
+        self.lifecycle_action_sources = lifecycle_action_sources
+        # The ID of the lifecycle hook to be modified.
         self.lifecycle_hook_id = lifecycle_hook_id
-        # The name of the lifecycle hook that you want to modify.
+        # The name of the lifecycle hook to be modified.
         self.lifecycle_hook_name = lifecycle_hook_name
-        # The status into which you want to put the lifecycle hook. Valid values:
+        # The status of the lifecycle hook. Valid values:
+        # - Active: enables the lifecycle hook.
+        # - InActive: pauses the lifecycle hook.
         # 
-        # *   Active
-        # *   InActive
-        # 
-        # If you do not specify this parameter, the status of the lifecycle hook remains unchanged after you call this operation.
-        # 
-        # > By default, a lifecycle hook is in the Active state after you create it.
+        # If you do not specify this parameter, the status of the lifecycle hook remains unchanged.
+        # > After a lifecycle hook is created, it is in the Active state by default.
         self.lifecycle_hook_status = lifecycle_hook_status
         # The type of scaling activity to which the lifecycle hook applies. Valid values:
-        # 
-        # *   SCALE_OUT
-        # *   SCALE_IN
+        # - SCALE_OUT: scale-out activity of the scaling group.
+        # - SCALE_IN: scale-in activity of the scaling group.
         self.lifecycle_transition = lifecycle_transition
-        # The Alibaba Cloud Resource Name (ARN) of the notification recipient. Specify the value in one of the following formats:
+        # The identity of the Notification Recipient for the lifecycle hook. Settings for this parameter support the following notification methods:
+        # - Message Service (MNS) queue. Format: acs:mns:{region-id}:{account-id}:queue/{queuename}.
+        # - MNS topic. Format: acs:mns:{region-id}:{account-id}:topic/{topicname}.
+        # - Operation Orchestration Service (OOS) template. Format: acs:oos:{region-id}:{account-id}:template/{templatename}.
+        # - EventBridge. Format: acs:eventbridge:{region-id}:{account-id}:eventbus/default.
         # 
-        # *   If you specify a Simple Message Queue (SMQ, formerly MNS) as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
-        # *   If you specify an SMQ topic as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
-        # *   If you specify a CloudOps Orchestration Service (OOS) template as the notification recipient, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
-        # *   If you specify an event bus as the notification recipient, specify the value in the acs:eventbridge:{region-id}:{account-id}:eventbus/default format.
-        # 
-        # The variables in the preceding value formats have the following meanings:
-        # 
-        # *   region-id: the region ID of your scaling group.
-        # *   account-id: the ID of your Alibaba Cloud account.
-        # *   queuename: the name of the SMQ queue.
-        # *   topicname: the name of the SMQ topic.
-        # *   templatename: the name of the OOS template.
+        # Variables in the parameter formats:
+        # - region-id: the ID of the region where the scaling group resides.
+        # - account-id: the Alibaba Cloud account ID.
+        # - queuename: the name of the MNS queue.
+        # - topicname: the name of the MNS topic.
+        # - templatename: the name of the OOS template.
         self.notification_arn = notification_arn
-        # The fixed string that is included in a notification. Auto Scaling sends the notification when the lifecycle hook takes effect. The value of this parameter cannot exceed 4,096 characters in length.
+        # The fixed string information for the wait state of the scaling activity. The value can be up to 4,096 characters in length.
         # 
-        # Auto Scaling sends the value specified for the NotificationMetadata parameter together with the notification. This helps you categorize your notifications. The NotificationMetadata parameter takes effect only after you specify the NotificationArn parameter.
+        # When Auto Scaling pushes a message to the Notification Recipient, it also sends the predefined NotificationMetadata parameter value to help you manage and mark different types of notifications. This parameter takes effect only when the NotificationArn parameter is specified.
         self.notification_metadata = notification_metadata
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -90,6 +90,9 @@ class ModifyLifecycleHookRequest(DaraModel):
 
         if self.heartbeat_timeout is not None:
             result['HeartbeatTimeout'] = self.heartbeat_timeout
+
+        if self.lifecycle_action_sources is not None:
+            result['LifecycleActionSources'] = self.lifecycle_action_sources
 
         if self.lifecycle_hook_id is not None:
             result['LifecycleHookId'] = self.lifecycle_hook_id
@@ -133,6 +136,9 @@ class ModifyLifecycleHookRequest(DaraModel):
 
         if m.get('HeartbeatTimeout') is not None:
             self.heartbeat_timeout = m.get('HeartbeatTimeout')
+
+        if m.get('LifecycleActionSources') is not None:
+            self.lifecycle_action_sources = m.get('LifecycleActionSources')
 
         if m.get('LifecycleHookId') is not None:
             self.lifecycle_hook_id = m.get('LifecycleHookId')

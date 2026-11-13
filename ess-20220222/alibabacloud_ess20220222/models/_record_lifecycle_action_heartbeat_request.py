@@ -20,17 +20,17 @@ class RecordLifecycleActionHeartbeatRequest(DaraModel):
         # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The time window during which the ECS instance stays in a Pending state. When the time window ends, Auto Scaling executes the default action. Valid values: 30 to 21600. Unit: seconds.
+        # The wait time configured in the lifecycle hook for the scaling activity. If the wait state times out, the default execution policy is executed. Valid values: 30 to 21600. Unit: seconds.
         # 
-        # After you create a lifecycle hook, you can call this operation to extend the time window during which the ECS instance stays in a Pending state. You can also call the [CompleteLifecycleAction](https://help.aliyun.com/document_detail/459335.html) operation to remove the ECS instance from the Pending state ahead of schedule.
+        # After you create a lifecycle hook, you can call this operation to extend the wait time of the ECS instance, or call the [CompleteLifecycleAction](https://help.aliyun.com/document_detail/459335.html) operation to end the wait state of the scaling activity in advance.
         # 
         # Default value: 600.
         self.heartbeat_timeout = heartbeat_timeout
-        # The action token of the lifecycle hook. You can obtain the token from the details page of the Simple Message Queue (SMQ, formerly MNS) queue specified for the lifecycle hook.
+        # The wait state token of the scaling activity. When the instance is suspended, you can obtain this token from the details page of the message received from the MNS queue specified by the lifecycle hook.
         # 
-        # You can also call the [DescribeLifecycleActions](https://help.aliyun.com/document_detail/459333.html) operation to obtain the action token of the lifecycle hook.
+        # You can also call the [DescribeLifecycleActions](https://help.aliyun.com/document_detail/459333.html) operation to obtain this token.
         # 
-        # If you specified an SMQ topic for the lifecycle hook, you can obtain the token from the MNS topic.
+        # Alternatively, you can obtain this value from the MNS topic specified by the lifecycle hook.
         # 
         # This parameter is required.
         self.lifecycle_action_token = lifecycle_action_token

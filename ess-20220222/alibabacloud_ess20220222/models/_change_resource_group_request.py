@@ -14,7 +14,7 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_owner_account: str = None,
         resource_type: str = None,
     ):
-        # The ID of the resource group to which you want to move the scaling group.
+        # The ID of the new resource group to which you want to move the scaling group.
         # 
         # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
@@ -23,12 +23,12 @@ class ChangeResourceGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the scaling group that you want to move from the current resource group to another resource group.
+        # The ID of the scaling group whose resource group you want to change.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
-        # The resource type. Set the value to scalinggroup.
+        # The resource type. Currently, only scaling groups are supported. Valid value: scalinggroup.
         self.resource_type = resource_type
 
     def validate(self):

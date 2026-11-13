@@ -24,57 +24,50 @@ class ScaleWithAdjustmentRequest(DaraModel):
         scaling_group_id: str = None,
         sync_activity: bool = None,
     ):
-        # The metadata for the scaling activity.
+        # The metadata of the scaling activity.
         self.activity_metadata = activity_metadata
-        # The method used to adjust the number of instances in a scaling activity. Valid values:
+        # The adjustment method for the scaling activity. Valid values:
         # 
-        # - `QuantityChangeInCapacity`: Adds or removes a specified number of ECS instances.
-        # 
-        # - `PercentChangeInCapacity`: Adds or removes a specified percentage of ECS instances.
-        # 
-        # - `TotalCapacity`: Adjusts the number of ECS instances in the scaling group to a specified number.
+        # - QuantityChangeInCapacity: Increases or decreases a specified number of ECS instances.
+        # - PercentChangeInCapacity: Increases or decreases a specified percentage of ECS instances.
+        # - TotalCapacity: Adjusts the number of ECS instances in the current scaling group to a specified number.
         # 
         # This parameter is required.
         self.adjustment_type = adjustment_type
-        # The adjustment value for the scaling activity. A single adjustment cannot add or remove more than 1,000 ECS instances. The valid range depends on `AdjustmentType`:
-        # 
-        # - `QuantityChangeInCapacity`: -1000 to 1000.
-        # 
-        # - `PercentChangeInCapacity`: -100 to 10000.
-        # 
-        # - `TotalCapacity`: 0 to 2000.
+        # The adjustment value for the scaling activity. In all cases, the number of ECS instances adjusted in a single operation cannot exceed 1,000. Otherwise, the adjustment fails. Valid values vary based on the adjustment method:
+        # - QuantityChangeInCapacity: -1,000 to 1,000.
+        # - PercentChangeInCapacity: -100 to 10,000.
+        # - TotalCapacity: 0 to 2,000.
         # 
         # This parameter is required.
         self.adjustment_value = adjustment_value
-        # A client-generated token to ensure the idempotence of the request. This token must be a unique string of up to 64 ASCII characters.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
         self.client_token = client_token
         # The execution mode. Valid values:
         # 
-        # - `None`: Executes a standard scaling activity.
-        # 
-        # - `PlanOnly`: Only performs elastic planning and returns the results in `PlanResult` without triggering the scaling activity. The results include details such as instance types, availability zones, billing methods, and the number of new instances.
+        # - None: Not specified. Normal scaling is performed.
+        # - PlanOnly: Does not trigger scaling. Only elastic planning is executed. The planning results, including instance types, zone IDs, billing methods, and the number of instances to be created, are returned in PlanResult.
         # 
         # Default value: None.
         self.execution_mode = execution_mode
-        # The lifecycle hook context.
+        # The context information of the lifecycle hook.
         self.lifecycle_hook_context = lifecycle_hook_context
-        # The minimum number of instances to adjust in a scaling activity. This parameter takes effect only when `AdjustmentType` is set to `PercentChangeInCapacity`.
+        # The minimum number of instances to be adjusted in the scaling activity. This parameter takes effect only when `AdjustmentType` is set to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
-        # The parameters to override when scaling out an ECI scaling group.
+        # The override parameters specified for scaling out an Elastic Container Instance (ECI) scaling group.
         self.overrides = overrides
         self.owner_id = owner_id
-        # Specifies whether the current scaling activity supports concurrency.
+        # Specifies whether the current scaling task supports concurrent execution.
         self.parallel_task = parallel_task
         self.resource_owner_account = resource_owner_account
         # The ID of the scaling group.
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # Specifies whether to execute the scaling activity synchronously. This parameter applies only to scaling groups that are configured with an expected number of instances. Valid values:
+        # Specifies whether to synchronously execute the scaling activity. This parameter is valid only for scaling groups that have the expected number of instances configured. Valid values:
         # 
-        # - `true`: Synchronous execution. The scaling activity is triggered immediately.
-        # 
-        # - `false`: Asynchronous execution. The call updates the expected number of instances without immediately triggering the scaling activity. The activity occurs when the system detects a discrepancy between the new expected number and the current number of instances.
+        # - true: Synchronous process. When the scaling rule is executed, the scale-out or scale-in activity of the scaling group is directly triggered.
+        # - false: Asynchronous process. When the expected number of instances in the scaling group is modified, the actual scale-out or scale-in activity of the scaling group is not immediately triggered. The system automatically detects the difference between the expected number of instances and the current number of instances in the scaling group, and then triggers the scale-out or scale-in activity.
         # 
         # > For more information about the expected number of instances, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
         # 
@@ -186,13 +179,13 @@ class ScaleWithAdjustmentRequestOverrides(DaraModel):
         memory: float = None,
         user_data: str = None,
     ):
-        # A list of container-specific overrides.
+        # The override parameters for the container list.
         self.container_overrides = container_overrides
-        # The number of vCPUs for the instance. Unit: cores.
+        # The number of vCPUs at the instance level. Unit: cores.
         self.cpu = cpu
-        # The memory size for the instance. Unit: GiB.
+        # The memory size at the instance level. Unit: GiB.
         self.memory = memory
-        # The user data for the ECS instance. It must be Base64-encoded, and the raw data cannot exceed 32 KB.
+        # The user data of the ECS instance. The user data must be encoded in Base64. The maximum size of the raw data before encoding is 32 KB.
         self.user_data = user_data
 
     def validate(self):
@@ -251,17 +244,17 @@ class ScaleWithAdjustmentRequestOverridesContainerOverrides(DaraModel):
         memory: float = None,
         name: str = None,
     ):
-        # The arguments for the container\\"s startup command. You can specify up to 10 arguments.
+        # The arguments for the container startup command. A maximum of 10 arguments can be specified.
         self.args = args
-        # The container\\"s startup command, specified as an array of strings. You can specify up to 20 strings, and each can be up to 256 characters long.
+        # The startup commands for the container. A maximum of 20 commands can be specified. Each command can contain up to 256 characters.
         self.commands = commands
         # The number of vCPUs for the container. Unit: cores.
         self.cpu = cpu
-        # Environment variables to set in the container.
+        # The list of environment variables.
         self.environment_vars = environment_vars
-        # The memory size for the container. Unit: GiB.
+        # The memory size of the container. Unit: GiB.
         self.memory = memory
-        # The name of the container to override. The override takes effect only if this name matches a container name in the scaling configuration.
+        # The name of the container. When you need to override container parameters, you must specify the container name. The container parameters can be overridden only when the container name matches the container name in the scaling configuration.
         self.name = name
 
     def validate(self):
@@ -328,9 +321,9 @@ class ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars(DaraM
         key: str = None,
         value: str = None,
     ):
-        # The name of the environment variable. It must be 1 to 128 characters long, cannot start with a digit, and can contain only letters (a-z, A-Z), digits (0-9), and underscores (_).
+        # The name of the environment variable. The name must be 1 to 128 characters in length. It can contain letters, digits, and underscores (_), and cannot start with a digit.
         self.key = key
-        # The value of the environment variable, up to 256 characters long.
+        # The value of the environment variable. The value can be 0 to 256 characters in length.
         self.value = value
 
     def validate(self):
@@ -368,12 +361,12 @@ class ScaleWithAdjustmentRequestLifecycleHookContext(DaraModel):
     ):
         # Specifies whether to disable all lifecycle hooks for the scaling activity. Valid values:
         # 
-        # - `true`: Disables all lifecycle hooks.
-        # 
-        # - `false`: Does not disable lifecycle hooks.
+        # - true: Disables all lifecycle hooks.
+        # - false: Does not disable lifecycle hooks.
         self.disable_lifecycle_hook = disable_lifecycle_hook
-        # A list of lifecycle hook IDs to ignore during the scaling activity.
+        # The list of IDs of the lifecycle hooks that are disabled for the scaling activity.
         self.ignored_lifecycle_hook_ids = ignored_lifecycle_hook_ids
+        # The default execution result of the lifecycle hook in this scaling activity. If specified, this value overrides the original default execution result of the hook.
         self.lifecycle_hook_result = lifecycle_hook_result
 
     def validate(self):

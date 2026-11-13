@@ -25,15 +25,15 @@ class DescribeScalingRulesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The page number of the scaling rule list. Pages start from 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 50.
+        # The Settings for the number of entries per page during a paged query. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the scaling group to which the scaling rules that you want to query belong.
+        # The region ID of the scaling group to which the scaling rules belong.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -41,23 +41,23 @@ class DescribeScalingRulesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
-        # The unique identifiers of the scaling rules that you want to query.
+        # The unique identifiers of the scaling rules to be queried.
         self.scaling_rule_aris = scaling_rule_aris
-        # The IDs of the scaling rules that you want to query.
+        # The IDs of the scaling rules to be queried.
         self.scaling_rule_ids = scaling_rule_ids
-        # The names of the scaling rules that you want to query.
+        # The names of the scaling rules to be queried.
         self.scaling_rule_names = scaling_rule_names
-        # The type of the scaling rule. Valid values:
+        # The type of the scaling rule. Valid values: 
         # 
-        # *   SimpleScalingRule: adjusts the number of ECS instances based on the values of the AdjustmentType and AdjustmentValue parameters.
-        # *   TargetTrackingScalingRule: calculates the number of ECS instances that need to be scaled in a dynamic manner and maintains the value of a predefined metric close to the value of the TargetValue parameter.
-        # *   StepScalingRule: scales ECS instances in steps based on the specified thresholds and metric values.
-        # *   PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to adjust the boundary values for the scaling group.
+        # - SimpleScalingRule: simple scaling rule. Adjusts the number of ECS instances based on the adjustment type (AdjustmentType) and adjustment value (AdjustmentValue).
+        # - TargetTrackingScalingRule: target tracking scaling rule. Dynamically calculates the number of ECS instances to scale out or scale-in based on a predefined metric (MetricName) and attempts to maintain the metric value near the target value (TargetValue).
+        # - StepScalingRule: step scaling rule. Provides a step-by-step extension method based on thresholds and metric values.
+        # - PredictiveScalingRule: predictive scaling rule. Analyzes the historical monitoring data of the scaling group based on machine learning capabilities to predict future monitoring metrics, and supports the automatic creation of scheduled tasks to set the boundaries of the scaling group.
         self.scaling_rule_type = scaling_rule_type
-        # Specifies whether to return the event-triggered tasks that are associated with the scaling rule. Valid values:
+        # Specifies whether to return the CloudMonitor event-triggered tasks associated with the scaling rules. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: returns the CloudMonitor event-triggered tasks associated with the scaling rules.
+        # - false: does not return the CloudMonitor event-triggered tasks associated with the scaling rules.
         # 
         # Default value: false.
         self.show_alarm_rules = show_alarm_rules

@@ -24,40 +24,41 @@ class DescribeScalingGroupsRequest(DaraModel):
         scaling_group_names: List[str] = None,
         tags: List[main_models.DescribeScalingGroupsRequestTags] = None,
     ):
-        # The type of instances that are managed by the scaling group. Valid values:
+        # The type of instances managed by the scaling group. Valid values:
         # 
-        # *   ECS: Elastic Compute Service (ECS) instances.
-        # *   ECI: elastic container instances.
+        # - ECS: The scaling group manages ECS instances.
+        # 
+        # - ECI: The scaling group manages ECI instances.
         self.group_type = group_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Page starts from page 1.
+        # The page number. Pages start from 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 50.
+        # The paging Settings for the number of entries per page in a paged query. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The region ID of the scaling group.
+        # The ID of the region to which the scaling group belongs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the scaling group that you want to query belongs.
+        # The ID of the resource group to which the scaling groups to query belong.
         # 
-        # >  If no scaling group belongs to the specified resource group, the query result is empty and no error is reported.
+        # > If no scaling groups belong to the specified resource group, an empty result is returned and no error is reported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of the scaling groups that you want to query.
+        # The IDs of the scaling groups to query.
         # 
-        # The IDs of inactive scaling groups are not included in the query results, and no error is returned.
+        # Invalid scaling group IDs are ignored in the query results, and no error is reported.
         self.scaling_group_ids = scaling_group_ids
         # The name of the scaling group.
         self.scaling_group_name = scaling_group_name
-        # The names of the scaling groups that you want to query.
+        # The names of the scaling groups to query.
         # 
-        # The names of inactive scaling groups are not displayed in the query results, and no error is reported.
+        # Invalid scaling group names are ignored in the query results, and no error is reported.
         self.scaling_group_names = scaling_group_names
         # The tags of the scaling group.
         self.tags = tags
@@ -168,9 +169,9 @@ class DescribeScalingGroupsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the scaling group.
+        # The key of the tag.
         self.key = key
-        # The tag value of the scaling group.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

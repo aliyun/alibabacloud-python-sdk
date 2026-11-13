@@ -10,11 +10,11 @@ class CreateDiagnoseReportRequest(DaraModel):
         region_id: str = None,
         scaling_group_id: str = None,
     ):
-        # The region ID of the scaling group.
+        # The ID of the region to which the scaling group belongs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the scaling group.
+        # The ID of the target scaling group.
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id

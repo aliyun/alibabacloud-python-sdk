@@ -30,110 +30,130 @@ class ModifyAlarmRequest(DaraModel):
         statistics: str = None,
         threshold: float = None,
     ):
-        # The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
+        # The list of unique identifiers of the scaling rules associated with the event-triggered task.
         self.alarm_actions = alarm_actions
         # The ID of the event-triggered task.
         # 
         # This parameter is required.
         self.alarm_task_id = alarm_task_id
-        # The operator that is used to compare the metric value and the threshold. Valid values:
+        # The comparison operator between the statistical value and the threshold of the metric. The comparison operator indicates the relationship in which the statistical value and the threshold can satisfy the condition. Valid values:
         # 
-        # *   If the metric value is greater than or equal to the threshold, set the value to `>=`.
-        # *   If the metric value is less than or equal to the threshold, set the value to `<=`.
-        # *   If the metric value is greater than the threshold, set the value to `>`.
-        # *   If the metric value is less than the threshold, set the value to `<`.
+        # - The statistical value is greater than or equal to the threshold. Value: `>=`.
+        # - The statistical value is less than or equal to the threshold. Value: `<=`.
+        # - The statistical value is greater than the threshold. Value: `>`.
+        # - The statistical value is less than the threshold. Value: `<`.
         self.comparison_operator = comparison_operator
         # The description of the event-triggered task.
         self.description = description
-        # The metric dimensions.
+        # The dimension information associated with the metric.
         self.dimensions = dimensions
-        # The effective period of the event-triggered task.
+        # Specifies the effective period of the event-triggered task.
         # 
-        # This parameter follows the cron expression format. The default format is `X X X X X ?`, in which:
+        # This parameter follows cron expressions. The default format is `X X X X X ?`, where:
+        # - X: a placeholder for a field, which sequentially represents seconds, minutes, hours, day, and month. X can be a specific value or a special character with logical meaning. For more information about the valid values of X, see [Cron expression](https://help.aliyun.com/document_detail/25907.html).
         # 
-        # *   X: a placeholder for a field, which represents seconds, minutes, hours, days, and months in sequence. X can be a definite value or a special character that has logical meaning. For information about the valid values of X, see [Cron expression](https://help.aliyun.com/document_detail/25907.html).
-        # *   ?: No value is specified.
+        # - ?: specifies no value.
         # 
-        # > By default, the value of this parameter is specified in **UTC+8**. You can specify the time zone in the `TZ=+yy` format before a cron expression. y indicates the time zone. For example, `TZ=+00 * * 1-2 * * ?` specifies that the event-triggered task is in effect between 01:00 and 02:59 (UTC+0) every day.
+        # > The value of this parameter is **in the UTC+8 time zone by default**. You can add time zone information `TZ=+yy` before the cron expression to specify a time zone, where y represents the numeric value of the time zone. For example, `TZ=+00 * * 1-2 * * ?` indicates that the event-triggered task takes effect between 01:00 and 02:59 every day in the UTC+0 time zone.
         # 
-        # Examples:
+        # Examples and descriptions:
         # 
-        # *   ` * * * * * ?  `: The event-triggered task is in effect all the time.
-        # *   ` * * 17-18 * * ?  `: The event-triggered task is in effect between 17:00 and 18:59 (UTC+8) every day.
-        # *   `TZ=+00 * * 1-2 * * ?`: The event-triggered task is in effect between 01:00 and 02:59 (UTC+0) every day.
+        # -  `* * * * * ?  `: takes effect at all times.
+        # 
+        # -  `* * 17-18 * * ? `: takes effect between 17:00 and 18:59 every day in the UTC+8 time zone.
+        # 
+        # - `TZ=+00 * * 1-2 * * ?`: takes effect between 01:00 and 02:59 every day in the UTC+0 time zone.
         self.effective = effective
-        # The number of times that the threshold must be reached before a scaling rule can be executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before a scaling rule is triggered.
+        # The number of times that the threshold expression must be met before the scaling rule is triggered. For example, the average CPU utilization must be greater than or equal to 80% in three consecutive statistical results.
         self.evaluation_count = evaluation_count
-        # The expressions that are specified in the multi-metric alert rule.
+        # The monitoring metrics of the multi-metric event-triggered task.
         self.expressions = expressions
-        # The relationship between the trigger conditions in the multi-metric alert rule. Valid values:
+        # The relationship between multiple monitoring metrics conditions. Valid values:
         # 
-        # *   `&&`: An alert is triggered only if all metrics in the multi-metric alert rule meet the trigger conditions. In this case, an alert is triggered only if the results of all trigger conditions that are specified in the multi-metric alert rule are `true`.
-        # *   `||`: An alert is triggered if one of the metrics in the multi-metric alert rule meets the trigger condition.
+        # - `&&`: An alert is triggered only when all monitoring metrics meet the alert conditions. An alert is triggered only when all expressions in the multi-metric event-triggered task evaluate to `true`.
+        # - `||`: An alert is triggered when any monitoring metric meets the alert condition.
         # 
         # Default value: `&&`.
         self.expressions_logic_operator = expressions_logic_operator
-        # The ID of the application group to which the custom metric belongs. If you set the MetricType parameter to custom, you must specify this parameter.
+        # The ID of the CloudMonitor application group to which the custom metric belongs. This parameter is required only when MetricType is set to custom.
         self.group_id = group_id
-        # The name of the metric. The valid values vary based on the metric type.
+        # The name of the metric. Valid values vary based on the monitoring type of the event-triggered task: 
         # 
-        # *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
+        # - If the event-triggered task is of the custom monitoring type (MetricType=custom), valid values are your custom metrics.
         # 
-        # *   If you set the MetricType parameter to system, the MetricName parameter has the following valid values:
+        # - If the event-triggered task is of the system monitoring type (MetricType=system), valid values: 
         # 
-        #     *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
-        #     *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-        #     *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a virtual private cloud (VPC). Unit: KB/min.
-        #     *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
-        #     *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-        #     *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-        #     *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-        #     *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-        #     *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
-        #     *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
-        #     *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
-        #     *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
-        #     *   MemoryUtilization: the memory usage of an agent. Unit: %.
-        #     *   LoadAverage: the average system load of an agent.
-        #     *   TcpConnection: the total number of TCP connections of an agent.
-        #     *   TcpConnection: the number of established TCP connections of an agent.
-        #     *   PackagesNetOut: the number of packets that are sent by the internal network interface controller (NIC) used by an agent.
-        #     *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
-        #     *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
-        #     *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
+        #     - CpuUtilization: (ECS) CPU utilization (%).
         # 
-        # For more information, see [Event-triggered task for system monitoring](https://help.aliyun.com/document_detail/74854.html).
+        #     - IntranetTx: (ECS) outbound traffic over the internal network (KByte/min).
+        # 
+        #     - IntranetRx: (ECS) inbound traffic over the internal network (KByte/min).
+        # 
+        #     - VpcInternetTx: (ECS) outbound traffic over the Internet (KByte/min).
+        # 
+        #     - VpcInternetRx: (ECS) inbound traffic over the Internet (KByte/min).
+        # 
+        #     - SystemDiskReadBps: (ECS) system cloud disk read BPS (Byte/s).
+        # 
+        #     - SystemDiskWriteBps: (ECS) system cloud disk write BPS (Byte/s).
+        # 
+        #     - SystemDiskReadOps: (ECS) system cloud disk read IOPS (count/s).
+        # 
+        #     - SystemDiskWriteOps: (ECS) system cloud disk write IOPS (count/s).
+        # 
+        #     - CpuUtilizationAgent: (Agent) CPU utilization (%).
+        # 
+        #     - GpuMemoryFreeUtilizationAgent: (Agent) GPU memory idle rate (%).
+        # 
+        #     - GpuMemoryUtilizationAgent: (Agent) GPU memory utilization (%).
+        # 
+        #     - MemoryUtilization: (Agent) memory utilization (%).
+        # 
+        #     - LoadAverage: (Agent) average system load.
+        # 
+        #     - TcpConnection: (Agent) total number of TCP connections.
+        # 
+        #     - TcpConnection: (Agent) number of established TCP connections.
+        # 
+        #     - PackagesNetOut: (Agent) number of packets sent by the NIC.
+        # 
+        #     - PackagesNetIn: (Agent) number of packets received by the NIC.
+        # 
+        #     - EciPodCpuUtilization: CPU utilization (%).
+        # 
+        #     - EciPodMemoryUtilization: memory utilization (%).
+        # 
+        # For more information, see [Event-triggered tasks for system monitoring](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The metric type. Valid Values:
-        # 
-        # *   system: a system metric of CloudMonitor.
-        # *   custom: a custom metric that is reported to CloudMonitor.
+        # The type of the metric. Valid values:
+        # - system: uses CloudMonitor system metrics.
+        # - custom: uses custom metrics reported to CloudMonitor.
         self.metric_type = metric_type
         # The name of the event-triggered task.
         self.name = name
         self.owner_id = owner_id
-        # The period of time during which statistics about the metric is collected. Unit: seconds. Valid values:
+        # The statistical period for the metric data, in seconds. Valid values:
         # 
-        # *   15
-        # *   60
-        # *   120
-        # *   300
-        # *   900
+        # - 15.
+        # - 60.
+        # - 120.
+        # - 300.
+        # - 900.
         # 
-        # > If your scaling group is of the ECS type and uses CloudMonitor metrics, you can set the Period parameter to 15. In other cases, you can set the Period parameter to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
+        # > A statistical period of 15 seconds is applicable only to metrics collected by the CloudMonitor agent (metrics that start with Agent) when monitoring ECS-type scaling groups. For all other metrics, the statistical period can be set to 60, 120, 300, or 900 seconds.
         self.period = period
         # The region ID of the event-triggered task.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The method that is used to aggregate statistics for the metric. Valid values:
+        # The method used to aggregate the metric data. Valid values:
         # 
-        # *   Average
-        # *   Minimum
-        # *   Maximum
+        # - Average: average value.
+        # - Minimum: minimum value.
+        # - Maximum: maximum value.
         self.statistics = statistics
-        # The thresholds of the metric values in the multi-metric alert rule. If the thresholds are reached the specified number of times within the specified period, a scaling rule is executed.
+        # The threshold of the monitoring metrics in a multi-metric event-triggered task. The scaling rule is executed when the threshold expression is met the specified number of times.
         self.threshold = threshold
 
     def validate(self):
@@ -290,64 +310,84 @@ class ModifyAlarmRequestExpressions(DaraModel):
         statistics: str = None,
         threshold: float = None,
     ):
-        # The operator that is used to compare the metric value and the threshold. Valid values:
+        # The comparison operator between the statistical value and the threshold of the metric. The comparison operator indicates the relationship in which the statistical value and the threshold can satisfy the condition. Valid values:
         # 
-        # *   If the metric value is greater than or equal to the threshold, set the value to `>=`.
-        # *   If the metric value is less than or equal to the threshold, set the value to `<=`.
-        # *   If the metric value is greater than the threshold, set the value to `>`.
-        # *   If the metric value is less than the threshold, set the value to `<`.
+        # - The statistical value is greater than or equal to the threshold. Value: `>=`.
+        # - The statistical value is less than or equal to the threshold. Value: `<=`.
+        # - The statistical value is greater than the threshold. Value: `>`.
+        # - The statistical value is less than the threshold. Value: `<`.
         # 
         # Default value: >=.
         self.comparison_operator = comparison_operator
-        # The name of the metric that is specified in the multi-metric alert rule. The valid values vary based on the metric type.
+        # The name of the monitoring metric in the multi-metric event-triggered node. Valid values vary based on the monitoring type of the event-triggered task: 
         # 
-        # *   If you set the MetricType parameter to custom, the valid values are your custom metrics.
+        # - If the event-triggered task is of the custom monitoring type (MetricType=custom), valid values are your custom monitoring metrics.
         # 
-        # *   If you set the MetricType parameter to system, the MetricName parameter has the following valid values:
+        # - If the event-triggered task is of the system monitoring type (MetricType=system), valid values: 
         # 
-        #     *   CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
-        #     *   IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
-        #     *   IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-        #     *   VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
-        #     *   VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
-        #     *   SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
-        #     *   SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
-        #     *   SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
-        #     *   SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
-        #     *   CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
-        #     *   GpuUtilizationAgent: the GPU utilization of an agent. Unit: %.
-        #     *   GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
-        #     *   GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
-        #     *   MemoryUtilization: the memory usage of an agent. Unit: %.
-        #     *   LoadAverage: the average system load of an agent.
-        #     *   TcpConnection: the total number of TCP connections of an agent.
-        #     *   TcpConnection: the number of established TCP connections of an agent.
-        #     *   PackagesNetOut: the number of packets that are sent by the internal NIC used by an agent.
-        #     *   PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
-        #     *   EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
-        #     *   EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
+        #     - CpuUtilization: (ECS) CPU utilization (%).
         # 
-        # For more information, see [Event-triggered task for system monitoring](https://help.aliyun.com/document_detail/74854.html).
+        #     - IntranetTx: (ECS) outbound traffic over the internal network (KByte/min).
+        # 
+        #     - IntranetRx: (ECS) inbound traffic over the internal network (KByte/min).
+        # 
+        #     - VpcInternetTx: (ECS) outbound traffic over the Internet (KByte/min).
+        # 
+        #     - VpcInternetRx: (ECS) inbound traffic over the Internet (KByte/min).
+        # 
+        #     - SystemDiskReadBps: (ECS) system cloud disk read BPS (Byte/s).
+        # 
+        #     - SystemDiskWriteBps: (ECS) system cloud disk write BPS (Byte/s).
+        # 
+        #     - SystemDiskReadOps: (ECS) system cloud disk read IOPS (count/s).
+        # 
+        #     - SystemDiskWriteOps: (ECS) system cloud disk write IOPS (count/s).
+        # 
+        #     - CpuUtilizationAgent: (Agent) CPU utilization (%).
+        # 
+        #     - GpuUtilizationAgent: (Agent) GPU utilization (%).
+        # 
+        #     - GpuMemoryFreeUtilizationAgent: (Agent) GPU memory idle rate (%).
+        # 
+        #     - GpuMemoryUtilizationAgent: (Agent) GPU memory utilization (%).
+        # 
+        #     - MemoryUtilization: (Agent) memory utilization (%).
+        # 
+        #     - LoadAverage: (Agent) average system load.
+        # 
+        #     - TcpConnection: (Agent) total number of TCP connections.
+        # 
+        #     - TcpConnection: (Agent) number of established TCP connections.
+        # 
+        #     - PackagesNetOut: (Agent) number of packets sent by the network interface controller (NIC).
+        # 
+        #     - PackagesNetIn: (Agent) number of packets received by the network interface controller (NIC).
+        # 
+        #     - EciPodCpuUtilization: CPU utilization (%).
+        # 
+        #     - EciPodMemoryUtilization: memory utilization (%).
+        # 
+        # For more information, see [Event-triggered tasks for system monitoring](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The period of time during which statistics about the metrics in the multi-metric alert rule is collected. Unit: seconds. Valid values:
+        # The statistical period for the metric data in the multi-metric event-triggered task, in seconds. Valid values:
         # 
-        # *   15
-        # *   60
-        # *   120
-        # *   300
-        # *   900
+        # - 15.
+        # - 60.
+        # - 120.
+        # - 300.
+        # - 900.
         # 
-        # > If your scaling group is of the ECS type and the event-triggered task associated with your scaling group monitors CloudMonitor metrics, you can set the Period parameter to 15. In other cases, you can set the Period parameter to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
+        # > A statistical period of 15 seconds is applicable only to metrics collected by the CloudMonitor agent (metrics that start with Agent) when monitoring ECS-type scaling groups. For all other metrics, the statistical period can be set to 60, 120, 300, or 900 seconds.
         # 
         # Default value: 300.
         self.period = period
-        # The method that is used to aggregate statistics about the metrics that are specified in the multi-metric alert rule. Valid values:
+        # The method used to aggregate the metric data in the multi-metric event-triggered task. Valid values:
         # 
-        # *   Average
-        # *   Minimum
-        # *   Maximum
+        # - Average: average value.
+        # - Minimum: minimum value.
+        # - Maximum: maximum value.
         self.statistics = statistics
-        # The thresholds of the metric values in the multi-metric alert rule. If the thresholds are reached the specified number of times within the specified period, a scaling rule is executed.
+        # The threshold of the monitoring metrics in a multi-metric event-triggered task. The scaling rule is executed when the threshold expression is met the specified number of times.
         self.threshold = threshold
 
     def validate(self):
@@ -400,37 +440,38 @@ class ModifyAlarmRequestDimensions(DaraModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
-        # The key of dimension N that you want to associate with the metric. The valid values of Dimension.N.DimensionKey vary based on the value of MetricType.
+        # The key of the dimension information associated with the metric. Valid values vary based on the monitoring type of the event-triggered node:
         # 
-        # *   If you set MetricType to custom, you can specify this parameter based on your business requirements.
+        # - If the event-triggered task is of the custom monitoring type (MetricType=custom), valid values are not restricted. You can specify custom values.
         # 
-        # *   If you set MetricType to system, this parameter has the following valid values:
         # 
-        #     *   user_id: the ID of your Alibaba Cloud account.
-        #     *   scaling_group: the scaling group that is monitored by the event-triggered task.
-        #     *   device: the NIC type.
-        #     *   state: the status of the TCP connection.
-        #     *   rulePool: the specified server group for the ALB qps metric.
+        # - If the event-triggered task is of the system monitoring type (MetricType=system), valid values:
+        # 
+        #     - user_id: your account ID.
+        #     - scaling_group: the scaling group to be monitored.
+        #     - device: the type of the network interface controller (NIC) device.
+        #     - state: the state of the TCP connection.
+        #     - rulePool: the server group specified for the ALB QPS monitoring metrics.
         self.dimension_key = dimension_key
-        # The dimension value of the metric. The valid values of this parameter vary based on the value of Dimensions.DimensionKey.
+        # The value of the dimension information associated with the metric. Valid values are determined by Dimension.N.DimensionKey:
         # 
-        # *   If you set MetricType to custom, you can specify this parameter based on your business requirements.
+        # - If Dimension.N.DimensionKey is set to a custom value, which means the event-triggered task is of the custom monitoring type (MetricType=custom), valid values are not restricted. You can specify custom values.
         # 
-        # *   If you set MetricType to system, Dimension.N.DimensionValue has the following valid values:
+        # - If Dimension.N.DimensionKey is set to a system-specified value, which means the event-triggered task is of the system monitoring type (MetricType=system), valid values:
         # 
-        #     *   user_id: The system specifies the value.
+        #     - user_id: automatically populated by the system.
         # 
-        #     *   scaling_group: The system specifies the value.
+        #     - scaling_group: automatically populated by the system.
         # 
-        #     *   device:
+        #     - device:
         # 
-        #         *   eth0: For classic network instances, eth0 indicates the internal network network interface controller. Only one eth0 NIC exists on each instance that resides in VPCs.
-        #         *   eth1: For classic network instances, eth1 represents the Internet network interface controller.
+        #         - eth0: for classic network instances, eth0 represents the internal NIC. For VPC-connected instances, only the eth0 NIC exists.
+        #         - eth1: for classic network instances, eth1 represents the public NIC.
         # 
-        #     *   state:
+        #     - state:
         # 
-        #         *   TCP_TOTAL specifies the total number of TCP connections.
-        #         *   ESTABLISHED specifies the number of TCP connections that are established.
+        #         - TCP_TOTAL: the total number of TCP connections.
+        #         - ESTABLISHED: the number of established TCP connections.
         self.dimension_value = dimension_value
 
     def validate(self):

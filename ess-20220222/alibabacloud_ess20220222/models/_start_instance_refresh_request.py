@@ -23,26 +23,26 @@ class StartInstanceRefreshRequest(DaraModel):
         skip_matching: bool = None,
         strategy: str = None,
     ):
-        # The duration for which the task is paused when a checkpoint is reached.
+        # The pause duration when a checkpoint of the refresh task is reached.
         # - Unit: minutes.
         # - Valid values: 1 to 2880.
-        #  - Default value: 60.
+        # - Default value: 60.
         self.checkpoint_pause_time = checkpoint_pause_time
-        # The checkpoints for the refresh task. When the percentage of new instances reaches a specified value during the instance refresh, the task is automatically paused for CheckpointPauseTime minutes.
+        # The checkpoints for the refresh task. This parameter specifies that the task is automatically paused for the duration specified by CheckpointPauseTime in minutes when the percentage of new instances reaches the specified value during the instance refresh.
         self.checkpoints = checkpoints
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # Ensures the idempotence of the request. You can generate the value on the client to ensure that the value is unique across different requests. The value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
         # The desired configuration for the instance refresh.
         # 
-        # > - You cannot specify ScalingConfigurationId, ImageId, LaunchTemplateId, and Containers at the same time. If this parameter is left empty, the currently active configuration of the scaling group is used for the refresh.
-        # > - After the instance refresh task is completed, the active scaling configuration of the scaling group is updated to this configuration.
+        # > - ScalingConfigurationId, ImageId, LaunchTemplateId, and Containers cannot be specified at the same time. If this parameter is left empty, the instances are refreshed based on the active configuration of the scaling group.
+        # > - After the instance refresh task is successfully executed, the active scaling configuration of the scaling group is updated to this configuration.
         self.desired_configuration = desired_configuration
         # The maximum percentage by which the number of instances in the scaling group can exceed the scaling group capacity during the instance refresh. Valid values: 100 to 200.
         # Default value: 120.
         # 
-        # > When MinHealthyPercentage = MaxHealthyPercentage = 100, one instance is refreshed at a time.
+        # > If both MinHealthyPercentage and MaxHealthyPercentage are set to 100, one instance is refreshed at a time.
         self.max_healthy_percentage = max_healthy_percentage
-        # The minimum percentage of instances that must remain in service in the scaling group during the instance refresh. Valid values: 0 to 100.
+        # The minimum percentage of the scaling group capacity that must remain in service during the instance refresh. Valid values: 0 to 100.
         # Default value: 80.
         self.min_healthy_percentage = min_healthy_percentage
         self.owner_id = owner_id
@@ -55,17 +55,24 @@ class StartInstanceRefreshRequest(DaraModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # Specifies whether to skip instances that already match the desired configuration.
+        # Specifies whether to skip instances that match the desired configuration.
         # 
-        # > The system determines whether an instance matches based on the ID of the desired scaling configuration, not by comparing individual configuration items.
+        # > The system determines whether an instance matches the desired configuration based on the ID of the desired scaling configuration, without comparing specific configuration items.
         # 
         # Valid values:
         # 
-        # - true: Instances that were already created with the desired configuration are skipped.
-        # - false: All instances in the scaling group are refreshed when the instance refresh task starts.
+        # - true: skips the instances. When the instance refresh task is started, the system checks the configuration of each instance. Instances that are already created with the desired configuration are not refreshed.
+        # - false: does not skip the instances. After the instance refresh task is started, all instances in the scaling group are refreshed.
         # 
         # Default value: true.
         self.skip_matching = skip_matching
+        # The execution strategy for the instance refresh task. Valid values:
+        # 
+        # - Rolling: refreshes instances by creating new instances and releasing old instances.
+        # 
+        # - ReplaceSystemDisk: updates the system cloud disks of existing instances by specifying DesiredConfiguration.image.
+        # 
+        # Default value: Rolling.
         self.strategy = strategy
 
     def validate(self):
@@ -178,26 +185,27 @@ class StartInstanceRefreshRequestDesiredConfiguration(DaraModel):
         # The list of containers included in the instance.
         # 
         # > - This parameter is supported only for Elastic Container Instance (ECI) scaling groups.
-        # > - Only the container configurations that match `Container.Name` in the current scaling configuration container list are refreshed.
+        # > - Only the container configurations whose Container.Name matches the container names in the current scaling configuration are refreshed.
         self.containers = containers
-        # The image ID.
+        # The ID of the image.
         # 
         # 
         # 
-        # > - After the instance refresh task is completed, the image in the currently active configuration of the scaling group is updated to this image.
-        # > - This parameter is not supported when the instance configuration source of the scaling group is a launch template.
+        # > - After the instance refresh task is successfully executed, the image configuration in the active configuration of the scaling group is updated to this image.
+        # > - This parameter is not supported if the source of the active configuration of the scaling group is a launch template.
+        # > - Images that contain data cloud disks are not supported.
         self.image_id = image_id
-        # The ID of the launch template from which the scaling group obtains launch configuration information.
+        # The ID of the launch template. This parameter is used to specify that the scaling group obtains launch configurations from the launch template.
         self.launch_template_id = launch_template_id
-        # The instance type information that overrides the launch template.
+        # The instance type overrides for the launch template.
         self.launch_template_overrides = launch_template_overrides
         # The version of the launch template. Valid values:
         # 
-        # - A fixed template version number.
+        # - A specific template version number.
         # - Default: always uses the default version of the template.
         # - Latest: always uses the latest version of the template.
         # 
-        # > When the version is set to Default or Latest, the instance refresh task does not support rollback.
+        # > If the version is set to Default or Latest, the instance refresh task cannot be rolled back.
         self.launch_template_version = launch_template_version
         # The ID of the scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
@@ -274,9 +282,9 @@ class StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides(Dar
         self,
         instance_type: str = None,
     ):
-        # The instance type that overrides the instance type specified in the launch template.
+        # This parameter is used to specify the instance type, which overrides the instance type in the launch template.
         # 
-        # > This parameter takes effect only when the LaunchTemplateId parameter specifies a launch template.
+        # > This parameter takes effect only when the LaunchTemplateId parameter is specified.
         self.instance_type = instance_type
 
     def validate(self):
@@ -308,15 +316,15 @@ class StartInstanceRefreshRequestDesiredConfigurationContainers(DaraModel):
         image: str = None,
         name: str = None,
     ):
-        # The arguments of the container startup command. You can specify up to 10 arguments.
+        # The arguments for the container startup commands. You can specify up to 10 arguments.
         self.args = args
-        # The startup commands of the container. You can specify up to 20 commands. Each command can contain up to 256 characters.
+        # The startup commands for the container. You can specify up to 20 commands. Each command can contain up to 256 characters.
         self.commands = commands
-        # The environment variable information.
+        # The environment variables.
         self.environment_vars = environment_vars
         # The container image.
         self.image = image
-        # The custom container name.
+        # The custom name of the container.
         self.name = name
 
     def validate(self):
@@ -378,11 +386,11 @@ class StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars(D
         key: str = None,
         value: str = None,
     ):
-        # > This parameter is not available for use.
+        # > This parameter is not available.
         self.field_ref_field_path = field_ref_field_path
-        # The name of the environment variable. The name must be 1 to 128 characters in length and can contain digits, letters, and underscores (_). It cannot start with a digit.
+        # The name of the environment variable. The name must be 1 to 128 characters in length. It can contain letters, digits, and underscores (_), and cannot start with a digit.
         self.key = key
-        # The value of the environment variable. The value can be 0 to 256 characters in length.
+        # The value of the environment variable. The value must be 0 to 256 characters in length.
         self.value = value
 
     def validate(self):
@@ -422,9 +430,9 @@ class StartInstanceRefreshRequestCheckpoints(DaraModel):
         self,
         percentage: int = None,
     ):
-        # The percentage of new instances relative to the total number of instances in the scaling group. The task is automatically paused when this percentage is reached. Valid values: 1 to 100 (%).
+        # The percentage of new instances out of the total instances in the scaling group. When this percentage is reached, the task is automatically paused. Valid values: 1 to 100. Unit: %.
         # 
-        # > The values must be specified in ascending order, and the last value must be 100.
+        # > The values must be set in ascending order, and the last percentage must be 100.
         self.percentage = percentage
 
     def validate(self):

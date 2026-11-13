@@ -19,21 +19,21 @@ class DescribeLifecycleHooksRequest(DaraModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # The IDs of the lifecycle hooks that you want to query.
+        # The list of lifecycle hook IDs.
         self.lifecycle_hook_ids = lifecycle_hook_ids
         # The name of the lifecycle hook.
         self.lifecycle_hook_name = lifecycle_hook_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Pages start from page 1.
+        # The page number of the instance status list. Pages start from 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: 50.
+        # The Settings for the number of entries to return on each page during paging in a paged query. Maximum value: 50.
         # 
         # Default value: 50.
         self.page_size = page_size
-        # The region ID of the scaling group.
+        # The ID of the region where the scaling group resides.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         # The ID of the scaling group.

@@ -12,14 +12,14 @@ class SetInstanceHealthRequest(DaraModel):
         owner_id: int = None,
         resource_owner_account: str = None,
     ):
-        # The health status of the instance. Valid values:
+        # The health status to set for the instance. Valid values:
         # 
-        # *   Healthy: sets the instance as healthy.
-        # *   Unhealthy: sets the instance as unhealthy.
+        # - Healthy: Sets the instance to the healthy state.
+        # - Unhealthy: Sets the instance to the unhealthy state.
         # 
         # This parameter is required.
         self.health_status = health_status
-        # The ID of the instance.
+        # The ID of the instance in the scaling group.
         # 
         # This parameter is required.
         self.instance_id = instance_id

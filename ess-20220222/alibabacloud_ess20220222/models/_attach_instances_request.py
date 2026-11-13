@@ -22,38 +22,38 @@ class AttachInstancesRequest(DaraModel):
         resource_owner_id: int = None,
         scaling_group_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # Ensures the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # You can generate a parameter value from your client to ensure that the value is unique among different requests. The value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # Specifies whether to use the scaling group to manage the lifecycles of manually added instances. Valid values:
+        # Specifies whether to entrust the lifecycle of an existing instance to the scaling group when the instance is manually added to the scaling group. Valid values:
         # 
-        # *   true: The scaling group manages the lifecycles of manually added instances and automatically created instances in the same manner. In this case, Auto Scaling releases the instances when they are removed from the scaling group. This rule does not apply to instances that are removed by calling the DetachInstances operation.
-        # *   false: The scaling group does not manage the lifecycles of manually added instances. In this case, Auto Scaling does not release the instances when they are removed from the scaling group.
+        # - true: Entrusted. The lifecycle of the instance is managed by Auto Scaling, which is the same as that of instances automatically created by the scaling group. The instance is automatically released when it is removed from the scaling group (excluding instances removed when you invoke the DetachInstances operation).
+        # - false: Not entrusted. The instance is not released when it is removed from the scaling group.
         # 
-        # >  You cannot specify this parameter for subscription instances, non-Alibaba Cloud instances, and instances in Economical Mode.
+        # > This parameter is not supported for subscription instances, managed instances, and instances in the Economical Mode in the scaling group.
         # 
         # Default value: false.
         self.entrusted = entrusted
         # Specifies whether to ignore invalid instances when a batch of instances is added to the scaling group. Valid values:
         # 
-        # *   true: ignores invalid instances. If invalid instances exist and valid instances are added, the corresponding scaling activity enters the Warning state. You can check the scaling activity details to view the invalid instances that are ignored.
-        # *   false: does not ignore invalid instances. If invalid instances exist in the batch of instances that you want to add to the scaling group, an error is reported.
+        # - true: Invalid instances are ignored when a batch of instances is added to the scaling group. If invalid instances exist and valid instances are successfully added, the execution status of the scaling activity is displayed as Warning. You can view the invalid instances in the scaling activity details.
+        # 
+        # - false: Invalid instances are not ignored when a batch of instances is added to the scaling group. If invalid instances exist in the batch, an error is reported.
         # 
         # Default value: false.
         self.ignore_invalid_instance = ignore_invalid_instance
-        # The IDs of the ECS instances, elastic container instances, non-Alibaba Cloud instances, or instances in Economical Mode.
+        # The IDs of the ECS instances, ECI instances, managed instances, or instances in the Economical Mode in the scaling group to be added.
         self.instance_ids = instance_ids
-        # Specifies whether to trigger the lifecycle hook for scale-outs when you call this operation. Valid values:
+        # Specifies whether to trigger the scale-out lifecycle hook when instances are added to the scaling group. Valid values:
         # 
-        # *   true
-        # *   false
-        # 
-        # >  You cannot specify this parameter for subscription instances and instances in Economical Mode.
+        # - true: Triggered.
+        # - false: Not triggered.
+        # > This parameter is not supported for managed instances and instances in the Economical Mode in the scaling group.
         # 
         # Default value: false.
         self.lifecycle_hook = lifecycle_hook
-        # The weight of an ECS instance or elastic container instance as a backend server. You can use this parameter to specify weights for multiple instances at the same time.
+        # The weight of the ECS instance or ECI instance as a backend server of the load balancing instance.
         self.load_balancer_weights = load_balancer_weights
         self.owner_account = owner_account
         self.owner_id = owner_id

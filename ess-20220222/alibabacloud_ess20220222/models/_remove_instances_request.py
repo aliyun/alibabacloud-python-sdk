@@ -24,51 +24,44 @@ class RemoveInstancesRequest(DaraModel):
         scaling_group_id: str = None,
         stop_instance_timeout: int = None,
     ):
-        # A client-generated token to ensure request idempotence. This token must be unique for each request, contain only ASCII characters, and not exceed 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # Specifies whether to decrease the desired capacity of the scaling group. Valid values:
+        # Specifies whether to modify the expected number of instances. Valid values:
         # 
-        # - `true`: Decreases the desired capacity of the scaling group by the number of removed instances.
-        # 
-        # - `false`: The desired capacity of the scaling group remains unchanged.
+        # - true: After the ECS instances are removed from the scaling group, the expected number of instances is decreased by the number of removed instances.
+        # - false: After the ECS instances are removed from the scaling group, the expected number of instances remains unchanged.
         # 
         # Default value: true.
         self.decrease_desired_capacity = decrease_desired_capacity
-        # Specifies whether to ignore invalid instances when you remove multiple instances from a scaling group. Valid values:
-        # 
-        # - `true`: Invalid instances are ignored. If valid instances are removed while invalid ones are present, the scaling activity status is set to Warning. The invalid instances are listed in the scaling activity details.
-        # 
-        # - `false`: The request is rejected and an error is returned if it contains any invalid instances.
+        # Specifies whether to ignore invalid instances when removing a batch of instances from the scaling group. Valid values:
+        # - true: Invalid instances are ignored when removing a batch of instances from the scaling group. If invalid instances exist and valid instances are successfully removed, the execution status of the scaling activity is displayed as Warning. You can view the invalid instances in the scaling activity details.
+        # - false: Invalid instances are not ignored when removing a batch of instances from the scaling group. If invalid instances exist in the batch, an error is reported.
         # 
         # Default value: false.
         self.ignore_invalid_instance = ignore_invalid_instance
-        # The IDs of the ECS instances to remove.
+        # The IDs of the ECS instances to be removed.
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
-        # The context of the lifecycle hook.
+        # The context information of the lifecycle hook.
         self.lifecycle_hook_context = lifecycle_hook_context
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the scaling group.
         self.region_id = region_id
-        # Specifies the action to take on removed ECS instances. Valid values:
+        # Specifies the action for the removed ECS instances. Valid values:
         # 
-        # - recycle: The ECS instances enter the economical mode.
+        # - recycle: The ECS instances are stopped in economical mode.
         # 
-        #   > This value takes effect only when the `ScalingPolicy` parameter of the scaling group is set to `recycle`.
-        # 
+        #     > This value takes effect only when `ScalingPolicy` is set to `recycle`.
         # - release: The ECS instances are released.
         # 
-        # The `ScalingPolicy` parameter of the `CreateScalingGroup` operation specifies the reclamation mode of a scaling group. However, the `RemovePolicy` parameter of the `RemoveInstances` operation determines the action taken when an instance is removed. For example:
+        # The ScalingPolicy parameter of CreateScalingGroup specifies the reclaim mode of the scaling group, but the specific action when an instance is removed is determined by the RemovePolicy parameter of RemoveInstances. Examples:
         # 
-        # - If `ScalingPolicy` is `recycle` and `RemovePolicy` is `recycle`, the ECS instances enter the economical mode.
-        # 
-        # - If `ScalingPolicy` is `recycle` and `RemovePolicy` is `release`, the ECS instances are released.
-        # 
-        # - If `ScalingPolicy` is `release` and `RemovePolicy` is `recycle`, the ECS instances are released.
-        # 
-        # - If `ScalingPolicy` is `release` and `RemovePolicy` is `release`, the ECS instances are released.
+        # - If ScalingPolicy is set to recycle and RemovePolicy is set to recycle, the ECS instances are stopped in economical mode.
+        # - If ScalingPolicy is set to recycle and RemovePolicy is set to release, the ECS instances are released.
+        # - If ScalingPolicy is set to release and RemovePolicy is set to recycle, the ECS instances are released.
+        # - If ScalingPolicy is set to release and RemovePolicy is set to release, the ECS instances are released.
         # 
         # Default value: release.
         self.remove_policy = remove_policy
@@ -78,15 +71,13 @@ class RemoveInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # The timeout period, in seconds, for an ECS instance to stop during a scale-in. Valid values: 30 to 240.
+        # The timeout period for waiting for the ECS instances to be successfully stopped during the scale-in process. Unit: seconds.
+        # Valid values: 30 to 240.
         # 
-        # > - By default, this parameter inherits its value from the scaling group, but you can override it when calling the `RemoveInstances` operation.
-        # >
-        # > - This parameter takes effect only during scale-in events where `RemovePolicy` is set to `release`.
-        # >
-        # > - If this parameter is set, the system waits for the specified duration for the instance to stop. The scale-in process continues after the timeout expires, regardless of the instance\\"s state.
-        # >
-        # > - If this parameter is not set, the system waits until the instance stops before continuing the scale-in process. If the instance fails to stop, the scale-in operation is rolled back and fails.
+        # > - By default, this parameter inherits the value from the scaling group. You can also reset it when calling RemoveInstances.
+        # > - This parameter takes effect only in the scale-in process when RemovePolicy is set to release.  
+        # > - If this parameter is set, the system waits for a maximum of the StopInstanceTimeout period for the instances to be successfully stopped. After the timeout period, the scale-in process continues regardless of whether the instances are successfully stopped.  
+        # > - If this parameter is not set, the system waits for a long time for the instances to be successfully stopped. The scale-in process continues only after the instances are successfully stopped. If the instances fail to be stopped, the scale-in process is rolled back and the scale-in fails.
         self.stop_instance_timeout = stop_instance_timeout
 
     def validate(self):
@@ -191,13 +182,12 @@ class RemoveInstancesRequestLifecycleHookContext(DaraModel):
         lifecycle_hook_result: str = None,
     ):
         # Specifies whether to disable all lifecycle hooks for the scaling activity. Valid values:
-        # 
-        # - `true`: Disables all lifecycle hooks.
-        # 
-        # - `false`: Does not disable lifecycle hooks.
+        # - true: Disables all lifecycle hooks.
+        # - false: Does not disable lifecycle hooks.
         self.disable_lifecycle_hook = disable_lifecycle_hook
-        # A list of lifecycle hook IDs to ignore for the scaling activity.
+        # The IDs of the lifecycle hooks disabled for the scaling activity.
         self.ignored_lifecycle_hook_ids = ignored_lifecycle_hook_ids
+        # The default execution result of the lifecycle hook in this scaling activity. After this parameter is set, it overwrites the original default execution result of the hook.
         self.lifecycle_hook_result = lifecycle_hook_result
 
     def validate(self):

@@ -22,11 +22,11 @@ class DescribeScalingConfigurationsRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the scaling configuration list. Pages start from 1.
+        # The page number of the scaling configuration list. The starting value is 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page in paged queries. Maximum value: 50.
+        # The number of entries per page set in the paging Settings for a paged query. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -36,15 +36,15 @@ class DescribeScalingConfigurationsRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IDs of the scaling configurations to query.
+        # The ID of the scaling configuration to be queried.
         # 
-        # The query results include both active and inactive scaling configurations, identified by the response parameter `LifecycleState`.
+        # The query results include both active and inactive scaling configurations. The response parameter LifecycleState identifies the state.
         self.scaling_configuration_ids = scaling_configuration_ids
-        # The names of the scaling configurations to query.
+        # The name of the scaling configuration to be queried.
         # 
-        # The query ignores invalid scaling configuration names without returning an error.
+        # The query results ignore invalid scaling configuration names and do not return an error.
         self.scaling_configuration_names = scaling_configuration_names
-        # The ID of the scaling group. You can query all scaling configurations under this scaling group.
+        # The ID of the scaling group. You can query all scaling configurations in the scaling group.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):

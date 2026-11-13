@@ -16,11 +16,11 @@ class DescribeEciScalingConfigurationsResponseBody(DaraModel):
         scaling_configurations: List[main_models.DescribeEciScalingConfigurationsResponseBodyScalingConfigurations] = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The scaling configurations.
         self.scaling_configurations = scaling_configurations
@@ -135,119 +135,111 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(DaraMode
         termination_grace_period_seconds: int = None,
         volumes: List[main_models.DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes] = None,
     ):
-        # The Container Registry Enterprise Edition instances.
+        # The information about the ACR Enterprise instance.
         self.acr_registry_infos = acr_registry_infos
-        # The validity period of the scaling configuration. Unit: seconds.
+        # The validity period. Unit: seconds.
         self.active_deadline_seconds = active_deadline_seconds
-        # Indicates whether elastic IP addresses (EIPs) are automatically created and bound to elastic container instances.
+        # Specifies whether the automatic creation of an elastic IP address (EIP) and attaching it to the ECI instance is enabled.
         self.auto_create_eip = auto_create_eip
-        # Indicates whether the image cache is automatically matched. Default value: false.
+        # Specifies whether to automatically match an image cache.
+        # Default value: false.
         self.auto_match_image_cache = auto_match_image_cache
-        # The name series of elastic container instances.
+        # The name of the ECI instance, which is also the name of the pod.
         self.container_group_name = container_group_name
-        # The containers in an elastic container instance.
+        # The list of containers included in the ECI instance.
         self.containers = containers
-        # Indicates whether the Cost Optimization feature is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
+        # Specifies whether to enable cost optimization. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         self.cost_optimization = cost_optimization
-        # The number of vCPUs per elastic container instance.
+        # The number of vCPUs for the instance.
         self.cpu = cpu
-        # The number of physical CPU cores. This parameter can be specified for only specific instance types. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
+        # The number of physical CPU cores. Only specific instance types support custom settings. For more information, see [Customize CPU options](https://help.aliyun.com/document_detail/197781.html).
         self.cpu_options_core = cpu_options_core
-        # The number of threads per core. This parameter can be specified for only specific instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
+        # The number of threads per core. Only specific instance types support custom settings. A value of 1 indicates that hyper-threading is disabled. For more information, see [Customize CPU options](https://help.aliyun.com/document_detail/197781.html).
         self.cpu_options_threads_per_core = cpu_options_threads_per_core
-        # The time at which the scaling configuration was created.
+        # The time when the scaling configuration was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format.
         self.creation_time = creation_time
-        # The bucket that stores the data cache.
+        # The bucket for data caching.
         self.data_cache_bucket = data_cache_bucket
-        # Indicates whether the Performance Burst feature is enabled for the ESSD AutoPL disk that stores the data cache. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # >  For more information about ESSD AutoPL disks, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # Specifies whether to enable the burst feature for the ESSD AutoPL cloud disk used for data caching. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
+        # > For more information about ESSD AutoPL cloud disks, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
         self.data_cache_bursting_enabled = data_cache_bursting_enabled
-        # The performance level (PL) of the cloud disk that stores the data cache. We recommend that you use enterprise SSDs (ESSDs). Valid values:
+        # The performance level of the cloud disk used for data caching. We recommend using ESSD (standard SSD). Valid values for the performance level of an ESSD (standard SSD):
         # 
-        # *   PL0: An ESSD can provide up to 10,000 random read/write IOPS.
-        # *   PL1: An ESSD can provide up to 50,000 random read/write IOPS.
-        # *   PL2: An ESSD can provide up to 100,000 random read/write IOPS.
-        # *   PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
+        # - PL0: A single ESSD (standard SSD) can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single ESSD (standard SSD) can deliver up to 50,000 random read/write IOPS.
+        # - PL2: A single ESSD (standard SSD) can deliver up to 100,000 random read/write IOPS.
+        # - PL3: A single ESSD (standard SSD) can deliver up to 1,000,000 random read/write IOPS.
         # 
-        # >  For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # > For more information about ESSD (standard SSD), see [ESSD (standard SSD)](https://help.aliyun.com/document_detail/122389.html).
         self.data_cache_pl = data_cache_pl
-        # The provisioned read/write IOPS of the ESSD AutoPL disk that stores the data cache. Valid values: 0 to min{50,000, 1000 x *Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50* x Capacity, 50,000}.
-        # 
-        # >  For more information about ESSD AutoPL disks, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # The provisioned read/write IOPS of the ESSD AutoPL cloud disk used for data caching. Valid values: 0 to min{50000, 1000 × capacity - baseline performance}. The baseline performance is calculated by using the following formula: min{1800 + 50 × capacity, 50000}.
+        # > For more information about ESSD AutoPL cloud disks, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
         self.data_cache_provisioned_iops = data_cache_provisioned_iops
-        # >  This parameter is not available for use.
+        # This parameter is unavailable.
         self.description = description
-        # The IP addresses of the Domain Name Service (DNS) server.
+        # The list of IP addresses of the DNS servers.
         self.dns_config_name_servers = dns_config_name_servers
-        # The options. Each option is a name-value pair. The value in the name-value pair is optional.
+        # The list of DNS configuration options. Each option consists of a name and an optional value.
         self.dns_config_options = dns_config_options
-        # The search domains of the DNS servers.
+        # The list of DNS search domains.
         self.dns_config_searches = dns_config_searches
-        # The Domain Name System (DNS) policy.
+        # The DNS policy.
         self.dns_policy = dns_policy
-        # The maximum outbound public bandwidth. Unit: bit/s.
+        # The outbound bandwidth limit. Unit: bytes.
         self.egress_bandwidth = egress_bandwidth
-        # The EIP bandwidth. Default value: 5. Unit: Mbit/s.
+        # The bandwidth of the EIP. Default value: 5 Mbit/s.
         self.eip_bandwidth = eip_bandwidth
-        # The capacity of the ephemeral storage. Unit: GiB.
+        # The size of the ephemeral storage space. Unit: GiB.
         self.ephemeral_storage = ephemeral_storage
-        # The version of the GPU driver.
+        # The specified GPU driver version.
         self.gpu_driver_version = gpu_driver_version
-        # The hostnames and IP addresses for a container that are added to the hosts file of the elastic container instance.
+        # The custom hostname mappings for a container in the instance.
         self.host_aliases = host_aliases
-        # The hostname series.
+        # The hostname.
         self.host_name = host_name
-        # The information about the image repository.
+        # The image registry information.
         self.image_registry_credentials = image_registry_credentials
         # The ID of the image cache.
         self.image_snapshot_id = image_snapshot_id
-        # The maximum inbound public bandwidth. Unit: bit/s.
+        # The inbound bandwidth limit. Unit: bytes.
         self.ingress_bandwidth = ingress_bandwidth
-        # The init containers.
+        # The list of init containers.
         self.init_containers = init_containers
-        # The level of the instance family, which is used to filter the available instance types that meet the specified requirements. This parameter takes effect only if `CostOptimization` is set to true. Valid values:
-        # 
-        # *   EntryLevel: entry level (shared instance types). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # The level of the instance family. This parameter is used to filter instance types that meet the requirements and takes effect only when `CostOptimization` is enabled. Valid values:
+        # - EntryLevel: shared instance types. These instance types are more cost-effective but cannot guarantee stable computing performance. They are suitable for workloads with low CPU utilization. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+        # - EnterpriseLevel: enterprise-level instance types. These instance types provide stable performance and dedicated resources, and are suitable for workloads that require high stability. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # - CreditEntryLevel: burstable instance types. These instance types use CPU credits to ensure computing performance and are suitable for workloads that have low CPU utilization but occasionally experience CPU usage spikes. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
         # The specified ECS instance types. You can specify up to five instance types.
         self.instance_types = instance_types
         # The number of IPv6 addresses.
         self.ipv_6address_count = ipv_6address_count
-        # The status of the scaling configuration in the scaling group. Valid values:
-        # 
-        # *   Active: The scaling configuration is active in the scaling group. Auto Scaling uses the scaling configuration that is in the Active state to create instances during scale-out events.
-        # *   Inactive: The scaling configuration is inactive in the scaling group. Scaling configurations that are in the Inactive state are still contained in the scaling group, but Auto Scaling does not use the inactive scaling configurations to create instances during scale-out events.
+        # The state of the scaling configuration in the scaling group. Valid values:
+        # - Active: The scaling configuration is active. The scaling group uses active scaling configurations for the automatic creation of ECS instances.
+        # - Inacitve: The scaling configuration is inactive. Inactive scaling configurations exist in the scaling group, but the scaling group does not use them for the automatic creation of ECS instances.
         self.lifecycle_state = lifecycle_state
-        # The load balancing weight of each elastic container instance as a backend server. Valid values: 1 to 100.
+        # The weight of the ECI instance when it serves as a backend server. Valid values: 1 to 100.
         self.load_balancer_weight = load_balancer_weight
         # The memory size.
-        # 
-        # You can specify CPU and Memory to define the range of instance types. For example, if you set CPU to 2 and Memory to 16, the instance types that have 2 vCPUs and 16 GiB are returned. After you specify CPU and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones and preferentially creates instances by using the lowest-priced instance type.
-        # 
-        # >  You can specify CPU and Memory to define instance types only if you set Scaling Policy to Cost Optimization and no instance type is specified in the scaling configuration.
+        # You can specify both CPU and Memory to define a range of instance types. For example, if you set CPU to 2 and Memory to 16, all instance types that have 2 vCPUs and 16 GiB of memory are matched. Auto Scaling determines the available instance types based on factors such as I/O optimization and zone, and creates the instance type that has the lowest price.
+        # > This configuration takes effect only when the cost optimization mode is used and no instance types are specified in the scaling configuration.
         self.memory = memory
-        # The endpoints of the Network Time Protocol (NTP) server.
+        # The NTP servers.
         self.ntp_servers = ntp_servers
-        # The Resource Access Management (RAM) role of elastic container instances. Elastic container instances and Elastic Compute Service (ECS) instances can share the same RAM role. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
+        # The name of the instance RAM role. ECI and ECS share the same instance RAM role. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
         self.ram_role_name = ram_role_name
-        # The region ID of elastic container instances.
+        # The region ID of the ECI instance.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The restart policy of elastic container instances. Valid values:
-        # 
-        # *   Never: Elastic container instances are never restarted.
-        # *   Always: Elastic container instances are always restarted.
-        # *   OnFailure: Elastic container instances are restarted upon failures.
+        # The restart policy for the pod. Valid values:
+        # - Never: The pod is not restarted.
+        # - Always: The pod is always restarted.
+        # - OnFailure: The pod is restarted upon failure.
         self.restart_policy = restart_policy
         # The ID of the scaling configuration.
         self.scaling_configuration_id = scaling_configuration_id
@@ -255,27 +247,25 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(DaraMode
         self.scaling_configuration_name = scaling_configuration_name
         # The ID of the scaling group to which the scaling configuration belongs.
         self.scaling_group_id = scaling_group_id
-        # The system information of the security context in which the elastic container instance runs.
+        # The system info of the contextual security for the running instance.
         self.security_context_sys_ctls = security_context_sys_ctls
-        # The ID of the security group with which elastic container instances are associated. Elastic container instances that are associated with the same security group can communicate with each other.
+        # The ID of the security group to which the Elastic Container Instance (ECI) belongs. ECI instances in the same security group can access each other.
         self.security_group_id = security_group_id
-        # >  This parameter is not available for use.
+        # This parameter is unavailable.
         self.sls_enable = sls_enable
-        # The maximum hourly price for preemptible elastic container instances.
-        # 
-        # This parameter is returned only if you set SpotStrategy to SpotWithPriceLimit.
+        # The maximum hourly price for the spot instance.
+        # This parameter is returned only when SpotStrategy is set to SpotWithPriceLimit.
         self.spot_price_limit = spot_price_limit
-        # The bidding policy for elastic container instances. Valid values:
-        # 
-        # *   NoSpot: The instances are created as regular pay-as-you-go instances.
-        # *   SpotWithPriceLimit: The instances are created as preemptible instances with a user-defined maximum hourly price.
-        # *   SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
+        # The preemption policy for the instance. Valid values:
+        # - NoSpot: regular pay-as-you-go instance
+        # - SpotWithPriceLimit: spot instance with a maximum price
+        # - SpotAsPriceGo: spot instance with a price automatically offered by the system based on the current market price
         self.spot_strategy = spot_strategy
-        # The tags of elastic container instances. Tags are specified in the key-value format.
+        # The tag key-value pairs of the instance.
         self.tags = tags
-        # The buffer time during which a program handles operations before the program stops.
+        # The grace period for the program to handle operations before termination.
         self.termination_grace_period_seconds = termination_grace_period_seconds
-        # The volumes.
+        # The data volume information.
         self.volumes = volumes
 
     def validate(self):
@@ -705,48 +695,46 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes(D
         name: str = None,
         type: str = None,
     ):
-        # The paths to configuration files.
+        # The list of configuration file paths.
         self.config_file_volume_config_file_to_paths = config_file_volume_config_file_to_paths
-        # The default permissions on the ConfigFile volume.
+        # The default permissions of the ConfigFileVolume.
         self.config_file_volume_default_mode = config_file_volume_default_mode
         # The size of the disk volume. Unit: GiB.
         self.disk_volume_disk_id = disk_volume_disk_id
         # The size of the disk volume. Unit: GiB.
         self.disk_volume_disk_size = disk_volume_disk_size
-        # The system type of the disk volume.
+        # The file system type of the disk volume.
         self.disk_volume_fs_type = disk_volume_fs_type
-        # The storage medium of the emptyDir volume. If you do not specify a storage medium for the emptyDir volume, the volume stores data in the file system of a node by default. We recommend that you set this parameter to memory. In this case, the emptyDir volume stores data in the specified memory.
+        # The storage medium of the EmptyDirVolume. The default value is empty, which indicates that the node file system is used. A value of memory indicates that memory is used.
         self.empty_dir_volume_medium = empty_dir_volume_medium
-        # The storage size of the emptyDir volume.
+        # The size of the EmptyDir data volume.
         self.empty_dir_volume_size_limit = empty_dir_volume_size_limit
-        # The name of the FlexVolume driver.
+        # The name of the driver used for FlexVolume.
         self.flex_volume_driver = flex_volume_driver
-        # The type of the mounted file system. The default value is determined by the script of FlexVolume.
+        # The file system type to be mounted. The default value depends on the script of the FlexVolume.
         self.flex_volume_fs_type = flex_volume_fs_type
-        # The FlexVolume options. Each option is a key-value pair in a JSON string.
-        # 
-        # For example, if you use FlexVolume to mount a disk, the format of Options is `{"volumeId":"d-2zehdahrwoa7srg****","performanceLevel": "PL2"}`.
+        # The list of options for the FlexVolume object. The options are passed in JSON format as key-value pairs.
+        # For example, when you mount a cloud disk by using FlexVolume, the options are in the following format: `{"volumeId":"d-2zehdahrwoa7srg****","performanceLevel": "PL2"}`.
         self.flex_volume_options = flex_volume_options
-        # The path to the HostPath volume on the host.
+        # The directory path of the HostPath volume on the host.
         self.host_path_volume_path = host_path_volume_path
         # The type of the HostPath volume.
         self.host_path_volume_type = host_path_volume_type
-        # The path to the Network File System (NFS) volume.
+        # The path of the NFS volume.
         self.nfsvolume_path = nfsvolume_path
-        # Indicates whether the NFS volume is read-only.
+        # Specifies whether the NFS volume is read-only.
         # 
         # Default value: false.
         self.nfsvolume_read_only = nfsvolume_read_only
-        # The endpoint of the NFS server.
+        # The address of the NFS server.
         self.nfsvolume_server = nfsvolume_server
-        # The volume name.
+        # The name of the data volume.
         self.name = name
-        # The volume type. Valid values:
-        # 
-        # *   EmptyDirVolume
-        # *   NFSVolume
-        # *   ConfigFileVolume
-        # *   FlexVolume
+        # The data volume type. Valid values:
+        # - EmptyDirVolume.
+        # - NFSVolume.
+        # - ConfigFileVolume.
+        # - FlexVolume.
         self.type = type
 
     def validate(self):
@@ -882,9 +870,9 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumesCo
     ):
         # The content of the configuration file (32 KB).
         self.content = content
-        # The permissions on the ConfigFile volume.
+        # The directory permissions of the ConfigFileVolume.
         self.mode = mode
-        # The relative path to the configuration file.
+        # The relative file path.
         self.path = path
 
     def validate(self):
@@ -962,9 +950,9 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsSecurityC
         name: str = None,
         value: str = None,
     ):
-        # The system name of the security context in which the elastic container instance runs.
+        # The name of the system control parameter.
         self.name = name
-        # The variable value of the security context in which the elastic container instance runs.
+        # The variable value of the contextual security for the running instance.
         self.value = value
 
     def validate(self):
@@ -1012,35 +1000,35 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitConta
         security_context_run_as_user: str = None,
         working_dir: str = None,
     ):
-        # The number of vCPUs per init container.
+        # The CPU size.
         self.cpu = cpu
-        # The number of GPUs per init container.
+        # The number of GPUs used by the container.
         self.gpu = gpu
-        # The image of the init container.
+        # The image used by the container.
         self.image = image
-        # The image pulling policy.
+        # The image pull policy.
         self.image_pull_policy = image_pull_policy
-        # The container startup arguments.
+        # The startup arguments for the container.
         self.init_container_args = init_container_args
-        # The container startup commands.
+        # The startup commands for the container.
         self.init_container_commands = init_container_commands
-        # The environment variables.
+        # The information about the environment variable.
         self.init_container_environment_vars = init_container_environment_vars
-        # The ports of the init container.
+        # The collection of port information for the init container.
         self.init_container_ports = init_container_ports
-        # The volumes that are mounted to the init container.
+        # The data volume mounts.
         self.init_container_volume_mounts = init_container_volume_mounts
-        # The memory size per init container.
+        # The memory size.
         self.memory = memory
-        # The name of the init container.
+        # The name of the container.
         self.name = name
-        # The permissions that are granted to the processes in the init container. Valid values: NET_ADMIN and NET_RAW.
+        # The specific permissions granted to processes in the container. Currently, only NET_ADMIN and NET_RAW are supported.
         # 
-        # >  To use NET_RAW, you must submit a ticket.
+        # > By default, NET_RAW is not supported. To use NET_RAW, submit a ticket.
         self.security_context_capability_adds = security_context_capability_adds
-        # Indicates whether the root file system is read-only. Valid value: true.
+        # Specifies whether the root file system where the container runs is read-only. Currently, only true is supported.
         self.security_context_read_only_root_filesystem = security_context_read_only_root_filesystem
-        # The ID of the user that runs the init container.
+        # The user ID used to run the container.
         self.security_context_run_as_user = security_context_run_as_user
         # The working directory.
         self.working_dir = working_dir
@@ -1184,23 +1172,21 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitConta
         read_only: bool = None,
         sub_path: str = None,
     ):
-        # The directory to which the volume is mounted. Data under this directory is overwritten by the data on the volume.
+        # The mount directory. The content in the mount directory of the container is directly overwritten by the content of the volume. Use this parameter with caution.
         self.mount_path = mount_path
-        # The mount propagation setting. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
-        # 
-        # *   None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the already established volume mount.
-        # *   HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount.
-        # *   Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount. In addition, any volume mounts executed on a container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
-        # 
+        # The mount propagation settings for the data volume. Mount propagation allows volumes mounted by a container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # - None: The volume is not aware of any subsequent mount operations performed on the volume or its subdirectories.
+        # - HostToCotainer: The volume is aware of subsequent mount operations performed on the volume or its subdirectories.
+        # - Bidirectional: Similar to HostToCotainer, the volume is aware of mount operations. In addition, the volume is propagated back to the host and to all containers of all pods that use the same volume.
         # Default value: None.
         self.mount_propagation = mount_propagation
-        # The volume name.
+        # The name of the mounted data volume.
         self.name = name
-        # Indicates whether the mount directory is read-only.
+        # Specifies whether the mount path is read-only.
         # 
         # Default value: false.
         self.read_only = read_only
-        # The volume subdirectory. A pod can mount different directories of the same volume to different directories of the init container.
+        # The subdirectory in the data volume. This allows a pod to mount different directories in the same volume to different directories in the container.
         self.sub_path = sub_path
 
     def validate(self):
@@ -1257,8 +1243,8 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitConta
         self.port = port
         # The protocol type. Valid values:
         # 
-        # *   TCP
-        # *   UDP
+        # - TCP.
+        # - UDP.
         self.protocol = protocol
 
     def validate(self):
@@ -1294,7 +1280,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitConta
         key: str = None,
         value: str = None,
     ):
-        # >  This parameter is not available for use.
+        # This parameter is unavailable.
         self.field_ref_field_path = field_ref_field_path
         # The name of the environment variable.
         self.key = key
@@ -1340,11 +1326,11 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsImageRegi
         server: str = None,
         user_name: str = None,
     ):
-        # The password of the image repository.
+        # The password for the image registry.
         self.password = password
-        # The domain name of the image repository.
+        # The address of the image registry.
         self.server = server
-        # The username of the image repository.
+        # The username for the image registry.
         self.user_name = user_name
 
     def validate(self):
@@ -1385,9 +1371,9 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsHostAlias
         hostnames: List[str] = None,
         ip: str = None,
     ):
-        # The added hostnames.
+        # The hostnames to add.
         self.hostnames = hostnames
-        # The added IP address.
+        # The IP address to add.
         self.ip = ip
 
     def validate(self):
@@ -1422,9 +1408,9 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsDnsConfig
         name: str = None,
         value: str = None,
     ):
-        # The variable name of the option.
+        # The name of the option.
         self.name = name
-        # The variable value of the option.
+        # The value of the option.
         self.value = value
 
     def validate(self):
@@ -1509,134 +1495,126 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         volume_mounts: List[main_models.DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainersVolumeMounts] = None,
         working_dir: str = None,
     ):
-        # The container startup arguments. You can specify up to 10 arguments.
+        # The list of arguments for the container startup commands. A maximum of 10 arguments can be specified.
         self.args = args
-        # The container startup commands. You can specify up to 20 commands. Each command can contain up to 256 characters.
+        # The list of startup commands for the container. A maximum of 20 commands can be specified. Each command can contain up to 256 characters.
         self.commands = commands
-        # The number of vCPUs per container.
+        # The number of vCPUs for the container.
         self.cpu = cpu
-        # The environment variables.
+        # The list of environment variables.
         self.environment_vars = environment_vars
         # The number of GPUs.
         self.gpu = gpu
         # The container image.
         self.image = image
-        # The image pulling policy. Valid values:
-        # 
-        # *   Always: Each time image pulling is performed.
-        # *   IfNotPresent: Image pulling is performed as needed. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
-        # *   Never: On-premises images are always used. Image pulling is not performed.
+        # The image pull policy. Valid values:
+        # - Alway: The image is always pulled.
+        # - IfNotPresent: The image is pulled on demand. The local image is used first. If no local image is available, the image is pulled.
+        # - Never: The image is never pulled. The local image is used.
         self.image_pull_policy = image_pull_policy
-        # The commands that are run for configuring the postStart callback function by using the CLI within the container.
+        # The command executed in the container when the postStart callback function is configured by using the command line.
         self.lifecycle_post_start_handler_execs = lifecycle_post_start_handler_execs
-        # The IP address of the host to which HTTP GET requests for configuring the postStart callback function are sent.
+        # The host address that receives the HTTP GET request when the postStart callback function is configured by using an HTTP request.
         self.lifecycle_post_start_handler_http_get_host = lifecycle_post_start_handler_http_get_host
-        # The path to which HTTP GET requests for configuring the postStart callback function are sent.
+        # The path checked by the HTTP GET request when the postStart callback function is configured by using an HTTP request.
         self.lifecycle_post_start_handler_http_get_path = lifecycle_post_start_handler_http_get_path
-        # The port over which HTTP GET requests for configuring the postStart callback function are sent.
+        # The port number checked by the HTTP GET request when the postStart callback function is configured by using an HTTP request.
         self.lifecycle_post_start_handler_http_get_port = lifecycle_post_start_handler_http_get_port
-        # The protocol type of the HTTP GET requests that are sent for configuring the postStart callback function.
+        # The protocol type used for the HTTP GET request when the postStart callback function is configured by using an HTTP request.
         self.lifecycle_post_start_handler_http_get_scheme = lifecycle_post_start_handler_http_get_scheme
-        # The IP address of the host detected by the TCP sockets used for configuring the postStart callback function.
+        # The host address checked by the TCP socket when the postStart callback function is configured by using a TCP socket.
         self.lifecycle_post_start_handler_tcp_socket_host = lifecycle_post_start_handler_tcp_socket_host
-        # The port detected by the TCP sockets used for configuring the postStart callback function.
+        # The port checked by the TCP socket when the postStart callback function is configured by using a TCP socket.
         self.lifecycle_post_start_handler_tcp_socket_port = lifecycle_post_start_handler_tcp_socket_port
-        # The commands that are run for configuring the preStop callback function by using the CLI within the container.
+        # The command executed in the container when the preStop callback function is configured by using the command line.
         self.lifecycle_pre_stop_handler_execs = lifecycle_pre_stop_handler_execs
-        # The IP address of the host to which HTTP GET requests for configuring the preStop callback function are sent.
+        # The host address that receives the HTTP GET request when the preStop callback function is configured by using an HTTP request.
         self.lifecycle_pre_stop_handler_http_get_host = lifecycle_pre_stop_handler_http_get_host
-        # The path to which HTTP GET requests for configuring the preStop callback function are sent.
+        # The path checked by the HTTP GET request when the preStop callback function is configured by using an HTTP request.
         self.lifecycle_pre_stop_handler_http_get_path = lifecycle_pre_stop_handler_http_get_path
-        # The port over which HTTP GET requests for configuring the preStop callback function are sent.
+        # The port number checked by the HTTP GET request when the preStop callback function is configured by using an HTTP request.
         self.lifecycle_pre_stop_handler_http_get_port = lifecycle_pre_stop_handler_http_get_port
-        # The protocol type of the HTTP Get requests that are sent for configuring the preStop callback function.
+        # The protocol type used for the HTTP GET request when the preStop callback function is configured by using an HTTP request.
         self.lifecycle_pre_stop_handler_http_get_scheme = lifecycle_pre_stop_handler_http_get_scheme
-        # The IP address of the host detected by the TCP sockets used for configuring the preStop callback function.
+        # The host address checked by the TCP socket when the preStop callback function is configured by using a TCP socket.
         self.lifecycle_pre_stop_handler_tcp_socket_host = lifecycle_pre_stop_handler_tcp_socket_host
-        # The port detected by the TCP sockets used for configuring the preStop callback function.
+        # The port checked by the TCP socket when the preStop callback function is configured by using a TCP socket.
         self.lifecycle_pre_stop_handler_tcp_socket_port = lifecycle_pre_stop_handler_tcp_socket_port
-        # The commands that are run in the container when you use the CLI to perform liveness probes.
+        # The list of commands executed in the container for command-line-based health checks.
         self.liveness_probe_exec_commands = liveness_probe_exec_commands
-        # The minimum number of consecutive failures before a successful liveness probe is considered failed.
-        # 
+        # The minimum consecutive failures for the readiness probe to be considered failed after having succeeded.
         # Default value: 3.
         self.liveness_probe_failure_threshold = liveness_probe_failure_threshold
-        # The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform liveness probes.
+        # The path for the HTTP GET readiness probe.
         self.liveness_probe_http_get_path = liveness_probe_http_get_path
-        # The port to which HTTP GET requests are sent to perform liveness probes.
+        # The port for the HTTP GET liveness probe.
         self.liveness_probe_http_get_port = liveness_probe_http_get_port
-        # The protocol type of HTTP GET requests when you use the HTTP GET requests to perform liveness probes. Valid values:
-        # 
-        # *   HTTP
-        # *   HTTPS
+        # The protocol type for the HTTP GET request when HTTP requests are used for health checks. Valid values:
+        # - HTTP
+        # - HTTPS
         self.liveness_probe_http_get_scheme = liveness_probe_http_get_scheme
-        # The number of seconds that elapses from the startup of the container to the start time of a liveness probe.
+        # The delay before the readiness probe is initiated after the container starts.
         self.liveness_probe_initial_delay_seconds = liveness_probe_initial_delay_seconds
-        # The interval at which liveness probes are performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        # The execution period of the liveness probe. Default value: 10 seconds. Minimum value: 1 second.
         self.liveness_probe_period_seconds = liveness_probe_period_seconds
-        # The minimum number of consecutive successes before a failed liveness probe is considered successful. Default value: 1. Valid value: 1.
+        # The minimum consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. The current value must be 1.
         self.liveness_probe_success_threshold = liveness_probe_success_threshold
-        # The port detected by TCP sockets when you use the TCP sockets to perform liveness probes.
+        # The port number for the TCP socket liveness probe.
         self.liveness_probe_tcp_socket_port = liveness_probe_tcp_socket_port
-        # The timeout period of a liveness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+        # The timeout period for the liveness probe. Default value: 1 second. Minimum value: 1 second.
         self.liveness_probe_timeout_seconds = liveness_probe_timeout_seconds
-        # The memory size per container.
+        # The memory size of the container.
         self.memory = memory
         # The custom name of the container.
         self.name = name
-        # The exposed ports and protocols.
+        # The list of exposed ports and protocols.
         self.ports = ports
-        # The commands that are run in the container when you use the CLI to perform readiness probes.
+        # The list of commands executed in the container for command-line-based health checks.
         self.readiness_probe_exec_commands = readiness_probe_exec_commands
-        # The minimum number of consecutive failures before a successful readiness probe is considered failed.
-        # 
+        # The minimum consecutive failures for the readiness probe to be considered failed after having succeeded.
         # Default value: 3.
         self.readiness_probe_failure_threshold = readiness_probe_failure_threshold
-        # The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform readiness probes.
+        # The path for the HTTP GET readiness probe.
         self.readiness_probe_http_get_path = readiness_probe_http_get_path
-        # The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform readiness probes.
+        # The path for the HTTP GET readiness probe.
         self.readiness_probe_http_get_port = readiness_probe_http_get_port
-        # The protocol type of HTTP GET requests when you use the HTTP requests to perform readiness probes. Valid values:
-        # 
-        # *   HTTP
-        # *   HTTPS
+        # The protocol type for the HTTP GET request when HTTP requests are used for health checks. Valid values:
+        # - HTTP
+        # - HTTPS
         self.readiness_probe_http_get_scheme = readiness_probe_http_get_scheme
-        # The number of seconds that elapses from the startup of the container to the start time of a readiness probe.
+        # The delay before the readiness probe is initiated after the container starts.
         self.readiness_probe_initial_delay_seconds = readiness_probe_initial_delay_seconds
-        # The interval at which readiness probes are performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        # The execution period of the readiness probe. Default value: 10 seconds. Minimum value: 1 second.
         self.readiness_probe_period_seconds = readiness_probe_period_seconds
-        # The minimum number of consecutive successes before a failed readiness probe is considered successful. Default value: 1. Valid value: 1.
+        # The minimum consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. The current value must be 1.
         self.readiness_probe_success_threshold = readiness_probe_success_threshold
-        # The port detected by TCP sockets when you use the TCP sockets to perform readiness probes.
+        # The port number for the TCP socket liveness probe.
         self.readiness_probe_tcp_socket_port = readiness_probe_tcp_socket_port
-        # The timeout period of a readiness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+        # The timeout period for the readiness probe. Default value: 1 second. Minimum value: 1 second.
         self.readiness_probe_timeout_seconds = readiness_probe_timeout_seconds
-        # The permissions that are granted to the processes in the container. Valid values: NET_ADMIN and NET_RAW.
+        # The specific permissions granted to processes in the container. Currently, only NET_ADMIN and NET_RAW are supported.
         # 
-        # >  To use NET_RAW, you must submit a ticket.
+        # > By default, NET_RAW is not supported. To use NET_RAW, submit a ticket.
         self.security_context_capability_adds = security_context_capability_adds
-        # Indicates whether the root file system on which the container runs is read-only. Valid value: true.
+        # Specifies whether the root file system is read-only. Only true is supported.
         self.security_context_read_only_root_filesystem = security_context_read_only_root_filesystem
-        # The ID of the user that runs the entry point of the container process.
+        # The UID used to run the entrypoint of the container process.
         self.security_context_run_as_user = security_context_run_as_user
-        # Indicates whether the container allocates buffer resources to standard input streams when the container is running. If this parameter is not specified, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
+        # Specifies whether to allocate a buffer for standard input during container runtime. If this parameter is not set, reading from standard input in the container results in an EOF. Default value: false.
         self.stdin = stdin
-        # Indicates whether standard input streams are disconnected after a client is disconnected. If Stdin is set to true, standard input streams remain connected among multiple sessions.
+        # Specifies whether the standard input stream remains in the enabling status across multiple attached sessions when standard input is set to true.
         # 
-        # If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container restarts.
+        # If StdinOnce is set to true, standard input is opened when the container starts, remains empty until the first client attaches to it, and then stays in the enabling status to accept data until the client connection is disconnected. At this point, standard input is shutdown and remains shutdown until the container is restarted.
         self.stdin_once = stdin_once
-        # Indicates whether the Interaction feature is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # If the command is a /bin/bash command, the value of this parameter is true.
-        # 
+        # Specifies whether to enable interaction. Valid values:
+        # - true: enabled
+        # - false: disabled
+        # For example, if Command is set to /bin/bash, you must set this parameter to true.
         # Default value: false.
         self.tty = tty
-        # The mounted volumes.
+        # The list of volume mounts.
         self.volume_mounts = volume_mounts
-        # The working directory.
+        # The working directory in the container.
         self.working_dir = working_dir
 
     def validate(self):
@@ -2000,25 +1978,22 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         read_only: bool = None,
         sub_path: str = None,
     ):
-        # The directory to which the volume is mounted.
+        # The directory where the container mounts the data volume.
         # 
-        # >  Data in this directory is overwritten by the data on the volume. Proceed with caution if you specify this parameter.
+        # >Notice: The content in the mount directory of the container is directly overwritten by the content of the volume. Use this parameter with caution.
         self.mount_path = mount_path
-        # The mount propagation settings. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
-        # 
-        # *   None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the already established volume mount.
-        # *   HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount.
-        # *   Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount. In addition, any volume mounts executed on a container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
-        # 
+        # The mount propagation settings for the data volume. Mount propagation allows volumes mounted by a container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+        # - None: The volume is not aware of any subsequent mount operations performed on the volume or its subdirectories.
+        # - HostToCotainer: The volume is aware of subsequent mount operations performed on the volume or its subdirectories.
+        # - Bidirectional: Similar to HostToCotainer, the volume is aware of mount operations. In addition, the volume is propagated back to the host and to all containers of all pods that use the same volume.
         # Default value: None.
         self.mount_propagation = mount_propagation
-        # The volume name. The value of this parameter is the same as the name of the volume that is mounted to containers.
+        # The name of the data volume. This name must be the same as the Name parameter in Volume.
         self.name = name
-        # Indicates whether the volume is read-only.
-        # 
+        # Specifies whether the data volume is read-only.
         # Default value: false.
         self.read_only = read_only
-        # The volume subdirectory.
+        # The subpath of the data volume.
         self.sub_path = sub_path
 
     def validate(self):
@@ -2074,9 +2049,8 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         # The port number. Valid values: 1 to 65535.
         self.port = port
         # The protocol type. Valid values:
-        # 
-        # *   TCP
-        # *   UDP
+        # - TCP
+        # - UDP
         self.protocol = protocol
 
     def validate(self):
@@ -2112,7 +2086,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainer
         key: str = None,
         value: str = None,
     ):
-        # >  This parameter is not available for use.
+        # This parameter is unavailable.
         self.field_ref_field_path = field_ref_field_path
         # The name of the environment variable.
         self.key = key
@@ -2159,13 +2133,13 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsAcrRegist
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the instance are displayed. Multiple domain names are separated by commas (,).
+        # The domain names of the ACR Enterprise instance. By default, all domain names of the instance are used. You can specify one or more domain names. Separate multiple domain names with commas (,).
         self.domains = domains
-        # The ID of the Container Registry Enterprise Edition instance.
+        # The instance ID of the ACR Enterprise instance.
         self.instance_id = instance_id
-        # The name of the Container Registry Enterprise Edition instance.
+        # The name of the ACR Enterprise instance.
         self.instance_name = instance_name
-        # The region ID of the Container Registry Enterprise Edition instance.
+        # The region where the ACR Enterprise instance resides.
         self.region_id = region_id
 
     def validate(self):

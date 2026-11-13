@@ -12,7 +12,7 @@ class DescribeScalingGroupDetailRequest(DaraModel):
         region_id: str = None,
         scaling_group_id: str = None,
     ):
-        # The output format. Set the value to yaml.
+        # The output format. Only the YAML format is supported.
         self.output_format = output_format
         self.owner_id = owner_id
         # The region ID of the scaling group. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).

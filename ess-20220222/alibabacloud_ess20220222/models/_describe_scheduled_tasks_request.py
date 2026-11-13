@@ -27,24 +27,23 @@ class DescribeScheduledTasksRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Pages start from page 1.
+        # The page number of the scheduled task list. Pages start from 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 50.
+        # Settings for the number of entries per page during paging in a paged query. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The interval at which scheduled task N is repeatedly executed. Valid values:
-        # 
-        # *   Daily: Scheduled task N is executed once every specified number of days.
-        # *   Weekly: Scheduled task N is executed on each specified day of a week.
-        # *   Monthly: Scheduled task N is executed on each specified day of a month.
-        # *   Cron: Scheduled task N is executed based on the specified Cron expression.
+        # The recurrence type of the scheduled task. Valid values: 
+        # - Daily: The scheduled task is executed once every specified number of days. 
+        # - Weekly: The scheduled task is executed on specified days of each week. 
+        # - Monthly: The scheduled task is executed on specified days of each month. 
+        # - Cron: The scheduled task is executed based on the specified cron expression.
         self.recurrence_type = recurrence_type
-        # The number of times scheduled task N is repeatedly executed.
+        # The recurrence value of the scheduled task.
         # 
-        # You can specify this parameter only if you set RecurrenceType to Weekly. Separate multiple values with commas (,). The values that correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6.
+        # This parameter is supported only when RecurrenceType is set to Weekly. You can specify multiple values separated by commas (,). For example, the values for Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6.
         self.recurrence_value = recurrence_value
         # The region ID of the scaling group to which the scheduled task belongs.
         # 
@@ -52,20 +51,19 @@ class DescribeScheduledTasksRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the scaling group to which the scheduled task belongs.
+        # The ID of the scaling group that executes the scheduled task.
         self.scaling_group_id = scaling_group_id
-        # The scaling rules of the scheduled tasks. Once the scheduled tasks are triggered, the scaling rules are executed.
+        # The scaling rules used when the scheduled tasks are triggered. This parameter is valid only when a scaling rule is specified for the scheduled tasks.
         self.scheduled_actions = scheduled_actions
-        # The IDs of the scheduled tasks that you want to query.
+        # The IDs of the scheduled tasks to query.
         self.scheduled_task_ids = scheduled_task_ids
-        # The names of the scheduled tasks that you want to query.
+        # The names of the scheduled tasks to query.
         self.scheduled_task_names = scheduled_task_names
-        # Specifies whether scheduled task N is enabled.
-        # 
-        # *   true
-        # *   false
+        # Specifies whether the scheduled task is enabled. Valid values:
+        # - true: The task is enabled.
+        # - false: The task is disabled.
         self.task_enabled = task_enabled
-        # The name of scheduled task N. Fuzzy search based on keywords is supported.
+        # The name of the task. Fuzzy match by keyword is supported.
         self.task_name = task_name
 
     def validate(self):

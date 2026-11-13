@@ -1,3 +1,26 @@
+2026-11-13 Version: 1.14.0
+- Support API CancelScalingGroupZoneShift.
+- Support API StartScalingGroupZoneShift.
+- Update API CreateLifecycleHook: add request parameters LifecycleActionSources.
+- Update API CreateScalingConfiguration: add request parameters SecondaryEniVSwitchConstraint.
+- Update API CreateScalingConfiguration: add request parameters NetworkInterfaces.$.VSwitchIds.
+- Update API CreateScalingGroup: add request parameters ZoneShiftPolicy.
+- Update API CreateScheduledTask: add request parameters WarmPoolCapacityOptions.
+- Update API DescribeLifecycleHooks: add response parameters Body.LifecycleHooks.$.LifecycleActionSources.
+- Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.SecondaryEniVSwitchConstraint.
+- Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.NetworkInterfaces.$.VSwitchIds.
+- Update API DescribeScalingGroupDetail: add response parameters Body.ScalingGroup.ZoneShiftOptions.
+- Update API DescribeScalingGroups: add response parameters Body.ScalingGroups.$.WarmPoolCapacity.
+- Update API DescribeScalingGroups: add response parameters Body.ScalingGroups.$.WarmPoolConfiguration.
+- Update API DescribeScalingGroups: add response parameters Body.ScalingGroups.$.ZoneShiftOptions.
+- Update API DescribeScheduledTasks: add response parameters Body.ScheduledTasks.$.WarmPoolCapacityOptions.
+- Update API ModifyLifecycleHook: add request parameters LifecycleActionSources.
+- Update API ModifyScalingConfiguration: add request parameters SecondaryEniVSwitchConstraint.
+- Update API ModifyScalingConfiguration: add request parameters NetworkInterfaces.$.VSwitchIds.
+- Update API ModifyScalingGroup: add request parameters ZoneShiftPolicy.
+- Update API ModifyScheduledTask: add request parameters WarmPoolCapacityOptions.
+
+
 2026-06-16 Version: 1.13.3
 - Update API DescribeInstanceRefreshes: add response parameters Body.InstanceRefreshTasks.$.Strategy.
 - Update API DescribeScalingInstances: add response parameters Body.ScalingInstances.$.ReplaceStatus.

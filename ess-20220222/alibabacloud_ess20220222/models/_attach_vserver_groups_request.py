@@ -18,19 +18,17 @@ class AttachVServerGroupsRequest(DaraModel):
         scaling_group_id: str = None,
         vserver_groups: List[main_models.AttachVServerGroupsRequestVServerGroups] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
-        # Specifies whether to add the existing Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to the new vServer group. Valid values:
+        # Specifies whether to add the ECS instances or elastic container instances in the current scaling group to the newly added vServer groups. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: adds the instances.
+        # - false: does not add the instances.
         # 
         # Default value: false.
         self.force_attach = force_attach
         self.owner_id = owner_id
-        # The region ID of the scaling group. Examples: cn-hangzhou and cn-shanghai. For information about regions and zones, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The ID of the region to which the scaling group belongs. Examples: cn-hangzhou and cn-shanghai. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -39,7 +37,7 @@ class AttachVServerGroupsRequest(DaraModel):
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # The information about the vServer groups.
+        # The details of the vServer groups associated with the scaling group.
         # 
         # This parameter is required.
         self.vserver_groups = vserver_groups
@@ -114,9 +112,9 @@ class AttachVServerGroupsRequestVServerGroups(DaraModel):
         load_balancer_id: str = None,
         vserver_group_attributes: List[main_models.AttachVServerGroupsRequestVServerGroupsVServerGroupAttributes] = None,
     ):
-        # The ID of the CLB instance to which the new vServer group belongs.
+        # The ID of the CLB instance to which the vServer group belongs.
         self.load_balancer_id = load_balancer_id
-        # The attributes of the vServer group.
+        # The properties of the vServer group.
         self.vserver_group_attributes = vserver_group_attributes
 
     def validate(self):
@@ -160,11 +158,11 @@ class AttachVServerGroupsRequestVServerGroupsVServerGroupAttributes(DaraModel):
         vserver_group_id: str = None,
         weight: int = None,
     ):
-        # The port number over which Auto Scaling adds ECS instances or elastic container instances to the new vServer group. Valid values: 1 to 65535.
+        # The port number used when Auto Scaling adds the ECS instance or elastic container instance to the vServer group. Valid values: 1 to 65535.
         self.port = port
         # The ID of the vServer group.
         self.vserver_group_id = vserver_group_id
-        # The weight of an ECS instance or elastic container instance as a backend server. Valid values: 0 to 100.
+        # The weight configured when Auto Scaling adds the ECS instance or elastic container instance to the vServer group. Valid values: 0 to 100.
         # 
         # Default value: 50.
         self.weight = weight

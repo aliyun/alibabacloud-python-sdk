@@ -14,7 +14,7 @@ class QueryPredictiveMetricResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.predictive_metrics = predictive_metrics
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

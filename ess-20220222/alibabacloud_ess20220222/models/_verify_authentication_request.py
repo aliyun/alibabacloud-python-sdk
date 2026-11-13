@@ -13,15 +13,15 @@ class VerifyAuthenticationRequest(DaraModel):
         resource_owner_id: int = None,
         uid: int = None,
     ):
-        # Specifies whether to check only the authorization status. Valid values:
-        # 
-        # *   true: checks only the authorization status. The service-linked role is not created.
-        # *   false (default): checks the authorization status and resource usage.
+        # Specifies whether to only check the authorization status. Valid values:
+        # - true: Only checks the authorization status and does not create the service-linked role.
+        # - false: Checks the authorization status and resource usage.
+        # Default value: false.
         self.only_check = only_check
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of your Alibaba Cloud account.
+        # The ID of the Alibaba Cloud account.
         self.uid = uid
 
     def validate(self):

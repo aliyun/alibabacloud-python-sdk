@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_ess20220222 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Ess'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-qingdao': 'ess.aliyuncs.com',
@@ -66,34 +70,7 @@ class Client(OpenApiClient):
             'cn-zhengzhou-nebula-1': 'ess.aliyuncs.com',
             'eu-west-1-oxs': 'ess.aliyuncs.com',
             'rus-west-1-pop': 'ess.aliyuncs.com',
-            'us-southeast-1': 'ess.us-southeast-1.aliyuncs.com',
-            'na-south-1': 'ess.na-south-1.aliyuncs.com',
-            'me-east-1': 'ess.me-east-1.aliyuncs.com',
-            'me-central-1': 'ess.me-central-1.aliyuncs.com',
-            'eu-west-1': 'ess.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'ess.eu-central-1.aliyuncs.com',
-            'cn-zhongwei': 'ess.cn-zhongwei.aliyuncs.com',
-            'cn-zhengzhou-jva': 'ess.cn-zhengzhou-jva.aliyuncs.com',
-            'cn-zhangjiakou': 'ess.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu-gic-1': 'ess.cn-wulanchabu-gic-1.aliyuncs.com',
-            'cn-wulanchabu': 'ess.cn-wulanchabu.aliyuncs.com',
-            'cn-wuhan-lr': 'ess.cn-wuhan-lr.aliyuncs.com',
-            'cn-nanjing': 'ess.aliyuncs.com',
-            'cn-huhehaote': 'ess.cn-huhehaote.aliyuncs.com',
-            'cn-heyuan-acdr-1': 'ess.cn-heyuan-acdr-1.aliyuncs.com',
-            'cn-heyuan': 'ess.cn-heyuan.aliyuncs.com',
-            'cn-guangzhou': 'ess.cn-guangzhou.aliyuncs.com',
-            'cn-fuzhou': 'ess.cn-fuzhou.aliyuncs.com',
-            'cn-chengdu': 'ess.cn-chengdu.aliyuncs.com',
-            'cn-beijing-finance-1': 'ess.aliyuncs.com',
-            'ap-southeast-7': 'ess.ap-southeast-7.aliyuncs.com',
-            'ap-southeast-6': 'ess.ap-southeast-6.aliyuncs.com',
-            'ap-southeast-5': 'ess.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'ess.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-2': 'ess.ap-southeast-2.aliyuncs.com',
-            'ap-south-1': 'ess.ap-south-1.aliyuncs.com',
-            'ap-northeast-2': 'ess.ap-northeast-2.aliyuncs.com',
-            'ap-northeast-1': 'ess.ap-northeast-1.aliyuncs.com'
+            'cn-nanjing': 'ess.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('ess', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -960,6 +937,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.cancel_instance_refresh_with_options_async(request, runtime)
 
+    def cancel_scaling_group_zone_shift_with_options(
+        self,
+        request: main_models.CancelScalingGroupZoneShiftRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelScalingGroupZoneShiftResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelScalingGroupZoneShift',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelScalingGroupZoneShiftResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_scaling_group_zone_shift_with_options_async(
+        self,
+        request: main_models.CancelScalingGroupZoneShiftRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelScalingGroupZoneShiftResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelScalingGroupZoneShift',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelScalingGroupZoneShiftResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_scaling_group_zone_shift(
+        self,
+        request: main_models.CancelScalingGroupZoneShiftRequest,
+    ) -> main_models.CancelScalingGroupZoneShiftResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_scaling_group_zone_shift_with_options(request, runtime)
+
+    async def cancel_scaling_group_zone_shift_async(
+        self,
+        request: main_models.CancelScalingGroupZoneShiftRequest,
+    ) -> main_models.CancelScalingGroupZoneShiftResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_scaling_group_zone_shift_with_options_async(request, runtime)
+
     def change_resource_group_with_options(
         self,
         request: main_models.ChangeResourceGroupRequest,
@@ -1633,6 +1688,8 @@ class Client(OpenApiClient):
             query['DefaultResult'] = request.default_result
         if not DaraCore.is_null(request.heartbeat_timeout):
             query['HeartbeatTimeout'] = request.heartbeat_timeout
+        if not DaraCore.is_null(request.lifecycle_action_sources):
+            query['LifecycleActionSources'] = request.lifecycle_action_sources
         if not DaraCore.is_null(request.lifecycle_hook_name):
             query['LifecycleHookName'] = request.lifecycle_hook_name
         if not DaraCore.is_null(request.lifecycle_transition):
@@ -1679,6 +1736,8 @@ class Client(OpenApiClient):
             query['DefaultResult'] = request.default_result
         if not DaraCore.is_null(request.heartbeat_timeout):
             query['HeartbeatTimeout'] = request.heartbeat_timeout
+        if not DaraCore.is_null(request.lifecycle_action_sources):
+            query['LifecycleActionSources'] = request.lifecycle_action_sources
         if not DaraCore.is_null(request.lifecycle_hook_name):
             query['LifecycleHookName'] = request.lifecycle_hook_name
         if not DaraCore.is_null(request.lifecycle_transition):
@@ -1925,6 +1984,8 @@ class Client(OpenApiClient):
             query['ScalingGroupId'] = request.scaling_group_id
         if not DaraCore.is_null(request.scheduler_options_shrink):
             query['SchedulerOptions'] = request.scheduler_options_shrink
+        if not DaraCore.is_null(request.secondary_eni_vswitch_constraint):
+            query['SecondaryEniVSwitchConstraint'] = request.secondary_eni_vswitch_constraint
         if not DaraCore.is_null(request.security_enhancement_strategy):
             query['SecurityEnhancementStrategy'] = request.security_enhancement_strategy
         if not DaraCore.is_null(request.security_group_id):
@@ -2079,6 +2140,8 @@ class Client(OpenApiClient):
             query['ScalingGroupId'] = request.scaling_group_id
         if not DaraCore.is_null(request.scheduler_options_shrink):
             query['SchedulerOptions'] = request.scheduler_options_shrink
+        if not DaraCore.is_null(request.secondary_eni_vswitch_constraint):
+            query['SecondaryEniVSwitchConstraint'] = request.secondary_eni_vswitch_constraint
         if not DaraCore.is_null(request.security_enhancement_strategy):
             query['SecurityEnhancementStrategy'] = request.security_enhancement_strategy
         if not DaraCore.is_null(request.security_group_id):
@@ -2253,6 +2316,8 @@ class Client(OpenApiClient):
             query['VSwitchId'] = request.v_switch_id
         if not DaraCore.is_null(request.v_switch_ids):
             query['VSwitchIds'] = request.v_switch_ids
+        if not DaraCore.is_null(request.zone_shift_policy):
+            query['ZoneShiftPolicy'] = request.zone_shift_policy
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2377,6 +2442,8 @@ class Client(OpenApiClient):
             query['VSwitchId'] = request.v_switch_id
         if not DaraCore.is_null(request.v_switch_ids):
             query['VSwitchIds'] = request.v_switch_ids
+        if not DaraCore.is_null(request.zone_shift_policy):
+            query['ZoneShiftPolicy'] = request.zone_shift_policy
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2629,6 +2696,8 @@ class Client(OpenApiClient):
             query['ScheduledTaskName'] = request.scheduled_task_name
         if not DaraCore.is_null(request.task_enabled):
             query['TaskEnabled'] = request.task_enabled
+        if not DaraCore.is_null(request.warm_pool_capacity_options):
+            query['WarmPoolCapacityOptions'] = request.warm_pool_capacity_options
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2689,6 +2758,8 @@ class Client(OpenApiClient):
             query['ScheduledTaskName'] = request.scheduled_task_name
         if not DaraCore.is_null(request.task_enabled):
             query['TaskEnabled'] = request.task_enabled
+        if not DaraCore.is_null(request.warm_pool_capacity_options):
+            query['WarmPoolCapacityOptions'] = request.warm_pool_capacity_options
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8133,6 +8204,8 @@ class Client(OpenApiClient):
             query['DefaultResult'] = request.default_result
         if not DaraCore.is_null(request.heartbeat_timeout):
             query['HeartbeatTimeout'] = request.heartbeat_timeout
+        if not DaraCore.is_null(request.lifecycle_action_sources):
+            query['LifecycleActionSources'] = request.lifecycle_action_sources
         if not DaraCore.is_null(request.lifecycle_hook_id):
             query['LifecycleHookId'] = request.lifecycle_hook_id
         if not DaraCore.is_null(request.lifecycle_hook_name):
@@ -8185,6 +8258,8 @@ class Client(OpenApiClient):
             query['DefaultResult'] = request.default_result
         if not DaraCore.is_null(request.heartbeat_timeout):
             query['HeartbeatTimeout'] = request.heartbeat_timeout
+        if not DaraCore.is_null(request.lifecycle_action_sources):
+            query['LifecycleActionSources'] = request.lifecycle_action_sources
         if not DaraCore.is_null(request.lifecycle_hook_id):
             query['LifecycleHookId'] = request.lifecycle_hook_id
         if not DaraCore.is_null(request.lifecycle_hook_name):
@@ -8435,6 +8510,8 @@ class Client(OpenApiClient):
             query['ScalingConfigurationName'] = request.scaling_configuration_name
         if not DaraCore.is_null(request.scheduler_options_shrink):
             query['SchedulerOptions'] = request.scheduler_options_shrink
+        if not DaraCore.is_null(request.secondary_eni_vswitch_constraint):
+            query['SecondaryEniVSwitchConstraint'] = request.secondary_eni_vswitch_constraint
         if not DaraCore.is_null(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         if not DaraCore.is_null(request.security_group_ids):
@@ -8585,6 +8662,8 @@ class Client(OpenApiClient):
             query['ScalingConfigurationName'] = request.scaling_configuration_name
         if not DaraCore.is_null(request.scheduler_options_shrink):
             query['SchedulerOptions'] = request.scheduler_options_shrink
+        if not DaraCore.is_null(request.secondary_eni_vswitch_constraint):
+            query['SecondaryEniVSwitchConstraint'] = request.secondary_eni_vswitch_constraint
         if not DaraCore.is_null(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         if not DaraCore.is_null(request.security_group_ids):
@@ -8731,6 +8810,8 @@ class Client(OpenApiClient):
             query['StopInstanceTimeout'] = request.stop_instance_timeout
         if not DaraCore.is_null(request.v_switch_ids):
             query['VSwitchIds'] = request.v_switch_ids
+        if not DaraCore.is_null(request.zone_shift_policy):
+            query['ZoneShiftPolicy'] = request.zone_shift_policy
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8829,6 +8910,8 @@ class Client(OpenApiClient):
             query['StopInstanceTimeout'] = request.stop_instance_timeout
         if not DaraCore.is_null(request.v_switch_ids):
             query['VSwitchIds'] = request.v_switch_ids
+        if not DaraCore.is_null(request.zone_shift_policy):
+            query['ZoneShiftPolicy'] = request.zone_shift_policy
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9081,6 +9164,8 @@ class Client(OpenApiClient):
             query['ScheduledTaskName'] = request.scheduled_task_name
         if not DaraCore.is_null(request.task_enabled):
             query['TaskEnabled'] = request.task_enabled
+        if not DaraCore.is_null(request.warm_pool_capacity_options):
+            query['WarmPoolCapacityOptions'] = request.warm_pool_capacity_options
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9145,6 +9230,8 @@ class Client(OpenApiClient):
             query['ScheduledTaskName'] = request.scheduled_task_name
         if not DaraCore.is_null(request.task_enabled):
             query['TaskEnabled'] = request.task_enabled
+        if not DaraCore.is_null(request.warm_pool_capacity_options):
+            query['WarmPoolCapacityOptions'] = request.warm_pool_capacity_options
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10639,6 +10726,92 @@ class Client(OpenApiClient):
     ) -> main_models.StartInstanceRefreshResponse:
         runtime = RuntimeOptions()
         return await self.start_instance_refresh_with_options_async(request, runtime)
+
+    def start_scaling_group_zone_shift_with_options(
+        self,
+        request: main_models.StartScalingGroupZoneShiftRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartScalingGroupZoneShiftResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.expiry_time):
+            query['ExpiryTime'] = request.expiry_time
+        if not DaraCore.is_null(request.impaired_zone_ids):
+            query['ImpairedZoneIds'] = request.impaired_zone_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartScalingGroupZoneShift',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartScalingGroupZoneShiftResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_scaling_group_zone_shift_with_options_async(
+        self,
+        request: main_models.StartScalingGroupZoneShiftRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartScalingGroupZoneShiftResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.expiry_time):
+            query['ExpiryTime'] = request.expiry_time
+        if not DaraCore.is_null(request.impaired_zone_ids):
+            query['ImpairedZoneIds'] = request.impaired_zone_ids
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartScalingGroupZoneShift',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartScalingGroupZoneShiftResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_scaling_group_zone_shift(
+        self,
+        request: main_models.StartScalingGroupZoneShiftRequest,
+    ) -> main_models.StartScalingGroupZoneShiftResponse:
+        runtime = RuntimeOptions()
+        return self.start_scaling_group_zone_shift_with_options(request, runtime)
+
+    async def start_scaling_group_zone_shift_async(
+        self,
+        request: main_models.StartScalingGroupZoneShiftRequest,
+    ) -> main_models.StartScalingGroupZoneShiftResponse:
+        runtime = RuntimeOptions()
+        return await self.start_scaling_group_zone_shift_with_options_async(request, runtime)
 
     def suspend_instance_refresh_with_options(
         self,

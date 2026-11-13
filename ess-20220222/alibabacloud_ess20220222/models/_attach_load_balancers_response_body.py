@@ -10,11 +10,11 @@ class AttachLoadBalancersResponseBody(DaraModel):
         request_id: str = None,
         scaling_activity_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The ID of the scaling activity.
         # 
-        # This parameter is returned only if you set `Async` to `true`. You can call the DescribeScalingActivities operation to query the scaling activity IDs and status.
+        # This value is returned only when Async is set to `true`. You can call the DescribeScalingActivities operation to query the returned scaling activity ID and view the execution status of the scaling activity.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):

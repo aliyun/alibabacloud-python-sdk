@@ -13,7 +13,7 @@ class DescribeScalingGroupDiagnoseDetailsResponseBody(DaraModel):
         details: List[main_models.DescribeScalingGroupDiagnoseDetailsResponseBodyDetails] = None,
         request_id: str = None,
     ):
-        # The diagnostic reports.
+        # Details of the diagnostic report.
         self.details = details
         # ID of the request
         self.request_id = request_id
@@ -60,29 +60,36 @@ class DescribeScalingGroupDiagnoseDetailsResponseBodyDetails(DaraModel):
         resource_id: str = None,
         status: str = None,
     ):
-        # The type of the diagnostic item. Valid values:
-        # 
-        # *   AccountArrearage: Checks whether your Alibaba Cloud account has overdue payments.
-        # *   AccountNotEnoughBalance: Checks whether the balance of your Alibaba Cloud account is sufficient.
-        # *   ElasticStrength: Checks whether the instance types that are specified in the scaling configuration are sufficient.
-        # *   VSwitch: Checks whether the vSwitch is available. If the specified vSwitch is deleted, specify an existing vSwitch for the scaling group.
-        # *   SecurityGroup: Checks whether the security group is available. If the specified security group is deleted, specify an existing security group for the scaling group.
-        # *   KeyPair: Checks whether the key pair is available. If the specified key pair is deleted, specify another key pair for the scaling group.
-        # *   SlbBackendServerQuota: Checks whether the number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
-        # *   AlbBackendServerQuota: Checks whether the number of ECS instances that are attached to the ALB instances of the scaling group has reached the upper limit.
-        # *   NlbBackendServerQuota: Checks whether the number of ECS instances that are attached to the NLB instances of the scaling group has reached the upper limit.
+        # Item type for diagnostics. Possible values:
+        # - AccountArrearage: Checks if the user\\"s account is in arrears.
+        # - AccountNotEnoughBalance: Checks the account balance.
+        # - ElasticStrength: Checks the inventory health of instance types corresponding to the scaling group configuration.
+        # - VSwitch: Checks if the switch is available, for example, whether it has been deleted.
+        # - SecurityGroup: Checks if the security group is available, for example, whether it has been deleted.
+        # - KeyPair: Checks if the key pair is available, for example, whether it has been deleted.
+        # - SlbBackendServerQuota: Checks if the number of ECS instances mounted to the default SLB group and virtual server group exceeds the quota.
+        # - AlbBackendServerQuota: Checks if the number of ECS instances mounted to the ALB group exceeds the quota.
+        # - NlbBackendServerQuota: Checks if the number of ECS instances mounted to the NLB group exceeds the quota.
         self.diagnose_type = diagnose_type
-        # The error code of the diagnostic item. Valid values:
+        # Error code of the diagnostic item. Possible values:
         # 
-        # *   VSwitchIdNotFound: The vSwitch does not exist.
-        # *   SecurityGroupNotFound: The security group does not exist.
-        # *   KeyPairNotFound: The key pair does not exist.
-        # *   SlbBackendServerQuotaExceeded: The number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
-        # *   AlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the ALB instances of the scaling group has reached the upper limit.
-        # *   NlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the NLB instances of the scaling group has reached the upper limit.
-        # *   AccountArrearage: Your account has an overdue payment.
-        # *   AccountNotEnoughBalance: The balance of your Alibaba Cloud account is insufficient.
-        # *   ElasticStrengthAlert: The inventory levels are lower than required.
+        # - VSwitchIdNotFound: The VSwitch does not exist.
+        # 
+        # - SecurityGroupNotFound: The security group does not exist.
+        # 
+        # - KeyPairNotFound: The key pair does not exist.
+        # 
+        # - SlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the SLB default group and virtual server group exceeds the quota.
+        # 
+        # - AlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the ALB group exceeds the quota.
+        # 
+        # - NlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the NLB group exceeds the quota.
+        # 
+        # - AccountArrearage: The account is in arrears.
+        # 
+        # - AccountNotEnoughBalance: The account balance is insufficient.
+        # 
+        # - ElasticStrengthAlert: The inventory health is poor.
         self.error_code = error_code
         # The resource ID corresponding to the diagnostic result.
         self.resource_id = resource_id

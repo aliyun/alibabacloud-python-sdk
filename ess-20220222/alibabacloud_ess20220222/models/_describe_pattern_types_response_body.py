@@ -61,19 +61,19 @@ class DescribePatternTypesResponseBodyPatternTypes(DaraModel):
         instance_type_family: str = None,
         memory: float = None,
     ):
-        # The number of vCPUs that are assigned to the instance type.
+        # The number of vCPUs for the instance type.
         self.cores = cores
         # The level of the instance family.
         # 
-        # *   EntryLevel: entry level (shared instance types) Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
-        # *   EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
-        # *   CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+        # - EntryLevel: Entry-level. This level refers to shared instance types. These instance types are more cost-effective but cannot guarantee stable computing performance. They are suitable for business scenarios with low CPU utilization. For more information, see [Shared instance types](https://help.aliyun.com/document_detail/108489.html).
+        # - EnterpriseLevel: Enterprise-level. These instance types provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # - CreditEntryLevel: Credit entry-level. This level refers to burstable instances. These instance types use CPU credits to ensure computing performance and are suitable for business scenarios with low CPU utilization but occasional spikes in CPU usage. For more information, see [Burstable instances](https://help.aliyun.com/document_detail/59977.html).
         self.instance_family_level = instance_family_level
         # The name of the instance type.
         self.instance_type = instance_type
         # The instance family.
         self.instance_type_family = instance_type_family
-        # The memory size that are assigned to the instance type. Unit: GiB.
+        # The memory size of the instance type. Unit: GiB.
         self.memory = memory
 
     def validate(self):

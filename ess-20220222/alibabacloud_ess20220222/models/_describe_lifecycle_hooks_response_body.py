@@ -16,13 +16,13 @@ class DescribeLifecycleHooksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details about the lifecycle hooks.
+        # The list of lifecycle hooks.
         self.lifecycle_hooks = lifecycle_hooks
         # The page number of the returned page.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of lifecycle hooks.
         self.total_count = total_count
@@ -84,6 +84,7 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(DaraModel):
         self,
         default_result: str = None,
         heartbeat_timeout: int = None,
+        lifecycle_action_sources: List[str] = None,
         lifecycle_hook_id: str = None,
         lifecycle_hook_name: str = None,
         lifecycle_hook_status: str = None,
@@ -92,38 +93,37 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(DaraModel):
         notification_metadata: str = None,
         scaling_group_id: str = None,
     ):
-        # The next action that is performed after the lifecycle hook times out.
+        # The next action to perform after the wait state of the instance ends.
         self.default_result = default_result
-        # The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult.
+        # The wait time configured in the lifecycle hook for the scaling activity. The next action is performed when the wait time expires.
         self.heartbeat_timeout = heartbeat_timeout
+        # The specific scenarios that trigger the lifecycle hook.
+        self.lifecycle_action_sources = lifecycle_action_sources
         # The ID of the lifecycle hook.
         self.lifecycle_hook_id = lifecycle_hook_id
         # The name of the lifecycle hook.
         self.lifecycle_hook_name = lifecycle_hook_name
         # The status of the lifecycle hook. Valid values:
-        # 
-        # *   Active: The lifecycle hook is enabled.
-        # *   InActive: The lifecycle hook is disabled.
+        # - Active: The lifecycle hook is active.
+        # - InActive: The lifecycle hook is inactive.
         self.lifecycle_hook_status = lifecycle_hook_status
-        # The type of the scaling activity to which the lifecycle hook applies.
+        # The scaling activity type associated with the lifecycle hook.
         self.lifecycle_transition = lifecycle_transition
-        # The ARN of the notification recipient when the lifecycle hook takes effect. The value of this parameter must be in one of the following formats:
+        # The notification recipient identifier for the lifecycle hook. The parameter format is as follows:
+        # - No notification configured: `acs:ess:{region-id}:{account-id}:null/null`.
+        # - MNS queue: `acs:mns:{region-id}:{account-id}:queue/{queuename}`.
+        # - MNS topic: `acs:mns:{region-id}:{account-id}:topic/{topicname}`.
+        # - OOS template: `acs:oos:{region-id}:{account-id}:template/{templatename}`.
+        # - EventBridge: `acs:eventbridge:{region-id}:{account-id}:eventbus/default`.
         # 
-        # *   If you do not create a notification rule, specify the value in the `acs:ess:{region-id}:{account-id}:null/null` format.
-        # *   If you specify a Simple Message Queue (SMQ, formerly MNS) queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
-        # *   If you specify an SMQ as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
-        # *   If you specify a CloudOps Orchestration Service (OOS) template as the notification recipient, specify the value in the `acs:oos:{region-id}:{account-id}:template/{templatename}` format.
-        # *   If you specify an event bus as the notification recipient, specify the value in the `acs:eventbridge:{region-id}:{account-id}:eventbus/default` format.
-        # 
-        # The variables in the preceding value formats have the following meanings:
-        # 
-        # *   region-id: the region ID of your scaling group.
-        # *   account-id: the ID of your Alibaba Cloud account.
-        # *   queuename: the name of the SMQ queue.
-        # *   topicname: the name of the SMQ topic.
-        # *   templatename: the name of the OOS template.
+        # The variables in the parameter format have the following meanings:
+        # - region-id: The ID of the region where the scaling group resides.
+        # - account-id: The Alibaba Cloud account ID.
+        # - queuename: The name of the MNS queue.
+        # - topicname: The name of the MNS topic.
+        # - templatename: The name of the OOS template.
         self.notification_arn = notification_arn
-        # The fixed string that is included in a notification that Auto Scaling sends when the lifecycle hook takes effect.
+        # The fixed string information for the wait state of the scaling activity.
         self.notification_metadata = notification_metadata
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
@@ -141,6 +141,9 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(DaraModel):
 
         if self.heartbeat_timeout is not None:
             result['HeartbeatTimeout'] = self.heartbeat_timeout
+
+        if self.lifecycle_action_sources is not None:
+            result['LifecycleActionSources'] = self.lifecycle_action_sources
 
         if self.lifecycle_hook_id is not None:
             result['LifecycleHookId'] = self.lifecycle_hook_id
@@ -172,6 +175,9 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(DaraModel):
 
         if m.get('HeartbeatTimeout') is not None:
             self.heartbeat_timeout = m.get('HeartbeatTimeout')
+
+        if m.get('LifecycleActionSources') is not None:
+            self.lifecycle_action_sources = m.get('LifecycleActionSources')
 
         if m.get('LifecycleHookId') is not None:
             self.lifecycle_hook_id = m.get('LifecycleHookId')
