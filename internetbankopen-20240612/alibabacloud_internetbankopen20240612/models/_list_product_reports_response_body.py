@@ -13,9 +13,9 @@ class ListProductReportsResponseBody(DaraModel):
         data: main_models.ListProductReportsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The query result of the periodic report list, which contains the Reports array. The array is empty if no available reports exist.
+        # The query results of the periodic report list, which includes the Reports array. The array is empty if no available reports exist.
         self.data = data
-        # The unique identity of the request, which is used for Tracing Analysis and troubleshooting. Provide this ID when troubleshooting exceptions.
+        # The unique identity of the request, which is used for Tracing Analysis and troubleshooting. Provide this identity when troubleshooting exceptions.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +51,7 @@ class ListProductReportsResponseBodyData(DaraModel):
         self,
         reports: List[main_models.ListProductReportsResponseBodyDataReports] = None,
     ):
-        # The available report records sorted by period from newest to oldest. By default, up to ten records are returned. If LatestOnly is set to true, at most one record is returned. The array is empty if no reports exist. A single natural week may have multiple report records. Use ReportId to distinguish them. The list does not contain download URLs. The actual download status is subject to the result of GetAiReport.
+        # The available report records sorted by period in descending order. By default, up to ten records are returned. If LatestOnly is set to true, at most one record is returned. The array is empty if no reports exist. A single natural week may have multiple report records; use ReportId to distinguish them. The list does not contain download URLs. The actual download status is subject to GetAiReport.
         self.reports = reports
 
     def validate(self):
