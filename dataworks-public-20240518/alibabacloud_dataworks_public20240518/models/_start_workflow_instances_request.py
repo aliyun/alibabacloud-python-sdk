@@ -12,7 +12,7 @@ class StartWorkflowInstancesRequest(DaraModel):
         comment: str = None,
         ids: List[int] = None,
     ):
-        # The remarks.
+        # The comment.
         self.comment = comment
         # The list of workflow instance IDs.
         # 

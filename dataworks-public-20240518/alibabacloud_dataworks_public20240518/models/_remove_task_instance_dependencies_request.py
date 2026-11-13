@@ -13,13 +13,13 @@ class RemoveTaskInstanceDependenciesRequest(DaraModel):
         id: int = None,
         upstream_task_instance_ids: List[int] = None,
     ):
-        # The remarks.
+        # The comment.
         self.comment = comment
-        # The instance ID.
+        # The node instance ID.
         # 
         # This parameter is required.
         self.id = id
-        # The IDs of ancestor instances of the instance
+        # The list of upstream node instance IDs.
         self.upstream_task_instance_ids = upstream_task_instance_ids
 
     def validate(self):

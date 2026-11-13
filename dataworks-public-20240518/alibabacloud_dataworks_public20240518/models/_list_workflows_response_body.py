@@ -131,19 +131,21 @@ class ListWorkflowsResponseBodyPagingInfoWorkflows(DaraModel):
         self.client_unique_code = client_unique_code
         # The creation time.
         # 
-        # The value is a 13-digit timestamp, such as `1710239005403`.
+        # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
         # The account ID of the user who created the workflow.
         self.create_user = create_user
         # The description.
         self.description = description
-        # The project environment.
+        # The project environment. Valid values:
+        # - Prod: Production.
+        # - Dev: Development.
         self.env_type = env_type
         # The unique identifier of the workflow.
         self.id = id
         # The modification time.
         # 
-        # The value is a 13-digit timestamp, such as `1710239005403`.
+        # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
         # The account ID of the user who last modified the workflow.
         self.modify_user = modify_user
@@ -284,14 +286,14 @@ class ListWorkflowsResponseBodyPagingInfoWorkflowsTrigger(DaraModel):
         # 
         # The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
         self.end_time = end_time
-        # The running mode upon triggering. This parameter takes effect only when Type is set to Scheduler. Valid values:
+        # The running mode when the workflow is triggered. This parameter takes effect only when Type is set to Scheduler. Valid values:
         # - Pause: Paused.
         # - Skip: Dry run.
         # - Normal: Normal execution.
         self.recurrence = recurrence
-        # The effective period of the epoch trigger. This parameter takes effect only when Type is set to Scheduler.
+        # The effective time of the periodic trigger. This parameter takes effect only when Type is set to Scheduler.
         # 
-        # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identity.
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identifier.
         self.start_time = start_time
         # The trigger type. Valid values:
         # - Scheduler: Triggered by a scheduling cycle.

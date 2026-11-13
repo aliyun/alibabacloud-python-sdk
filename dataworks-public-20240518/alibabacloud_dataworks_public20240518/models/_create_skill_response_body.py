@@ -59,11 +59,11 @@ class CreateSkillResponseBodySkill(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.CreateSkillResponseBodySkillVisibilityScope = None,
     ):
-        # The content of the SKILL.md file.
+        # The body of the SKILL.md file.
         self.body = body
         # The ID of the creator.
         self.creator_id = creator_id
-        # The skill description.
+        # The description of the skill.
         self.description = description
         # The creation time. The value is a UNIX timestamp in milliseconds.
         # 
@@ -75,7 +75,7 @@ class CreateSkillResponseBodySkill(DaraModel):
         self.gmt_modified_time = gmt_modified_time
         # The ID of the last modifier.
         self.modifier_id = modifier_id
-        # The skill name.
+        # The name of the skill.
         self.name = name
         # The visibility level.
         self.visibility = visibility
@@ -158,9 +158,9 @@ class CreateSkillResponseBodySkillVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The IDs of the visible projects.
+        # The IDs of the projects in which the skill is visible.
         self.project_ids = project_ids
-        # The IDs of the visible users. This field is returned only when Visibility is set to USER.
+        # The IDs of the users who can see the skill. This field takes effect when Visibility is set to USER.
         self.user_ids = user_ids
 
     def validate(self):

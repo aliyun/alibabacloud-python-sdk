@@ -14,7 +14,7 @@ class GetImageTestResultRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The ID of the test process.
+        # The test process ID.
         # 
         # This parameter is required.
         self.process_id = process_id

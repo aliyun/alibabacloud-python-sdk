@@ -16,9 +16,9 @@ class GetCrawlerResponseBody(DaraModel):
     ):
         # The metadata crawler details.
         self.crawler = crawler
-        # The request ID. Used for locating logs and troubleshooting issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -78,41 +78,51 @@ class GetCrawlerResponseBodyCrawler(DaraModel):
         task_id: int = None,
         type: str = None,
     ):
-        # The creation time, in millisecond-level UNIX timestamp.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The data source ID.
         self.data_source_id = data_source_id
-        # Indicates whether AI metadata description is enabled.
+        # Indicates whether AI metadata descriptions are enabled.
         self.enable_ai_comment = enable_ai_comment
-        # The DataWorks environment type. Valid values: Dev, Prod.
+        # The DataWorks environment type. Valid values:
+        # - Dev
+        # - Prod
         self.env_type = env_type
         # The crawler ID.
         self.id = id
-        # The latest run status. Valid values: WAITING, RUNNING, SUCCESS, ERROR, SHUTDOWN. This value may be empty if the crawler has not been run.
+        # The latest run status. Valid values:
+        # - WAITING
+        # - RUNNING
+        # - SUCCESS
+        # - ERROR
+        # - SHUTDOWN
+        # This parameter may be empty if the crawler has not been run.
         self.last_run_status = last_run_status
-        # The DataWorks task instance ID associated with the latest run. This value may be empty if the crawler has not been run.
+        # The DataWorks task instance ID associated with the latest run. This parameter may be empty if the crawler has not been run.
         self.last_run_task_instance_id = last_run_task_instance_id
-        # The meta entity ID associated with the crawler, which can be used to connect to metadata query APIs.
+        # The ID of the meta-entity associated with the crawler. You can use this ID in metadata query APIs.
         self.meta_entity_id = meta_entity_id
-        # The modification time, in millisecond-level UNIX timestamp.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modify_time = modify_time
         # The crawler name.
         self.name = name
-        # The extended configuration for the crawler type.
+        # The extension configuration for the crawler type.
         self.options = options
         # The DataWorks user ID of the crawler owner.
         self.owner = owner
         # The DataWorks workspace ID.
         self.project_id = project_id
-        # The Serverless 2.0 resource group ID used to run the collection task.
+        # The ID of the Serverless 2.0 resource group used to run the crawl task.
         self.resource_group_id = resource_group_id
-        # The schedule configuration.
+        # The schedule settings.
         self.schedule_config = schedule_config
-        # The collection scope configuration.
+        # The crawl scope configuration.
         self.scope = scope
-        # The crawler status. The value is VALID if the crawler configuration is valid and the associated data source exists. Otherwise, the value is INVALID.
+        # The crawler status. Valid values:
+        # - VALID: The crawler configuration is valid and the associated data source exists.
+        # - INVALID: The crawler configuration is invalid or the associated data source does not exist.
         self.status = status
-        # The DataWorks scheduling task ID associated with the crawler, which can be used to call GetTask to query the task definition.
+        # The DataWorks scheduled task ID associated with the crawler. You can call GetTask to query the task definition.
         self.task_id = task_id
         # The crawler type.
         self.type = type
@@ -257,11 +267,15 @@ class GetCrawlerResponseBodyCrawlerScope(DaraModel):
         items: List[str] = None,
         unit: str = None,
     ):
-        # The exclusion regular expression for the collection scope.
+        # The regular expression used to exclude items from the crawl scope.
         self.exclude_regex = exclude_regex
-        # The collection scope entries.
+        # The crawl scope items.
         self.items = items
-        # The collection scope granularity. Valid values: PROJECT, DATABASE, INSTANCE, CATALOG.
+        # The crawl scope granularity. Valid values:
+        # - PROJECT
+        # - DATABASE
+        # - INSTANCE
+        # - CATALOG
         self.unit = unit
 
     def validate(self):
@@ -304,7 +318,9 @@ class GetCrawlerResponseBodyCrawlerScheduleConfig(DaraModel):
     ):
         # The cron expression.
         self.cron_express = cron_express
-        # The schedule type. Valid values: MANUAL, NORMAL.
+        # The scheduling type. Valid values:
+        # - MANUAL
+        # - NORMAL
         self.type = type
 
     def validate(self):

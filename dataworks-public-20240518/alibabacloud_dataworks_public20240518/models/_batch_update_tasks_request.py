@@ -15,7 +15,7 @@ class BatchUpdateTasksRequest(DaraModel):
     ):
         # The remarks.
         self.comment = comment
-        # The list of nodes.
+        # The list of tasks.
         self.tasks = tasks
 
     def validate(self):
@@ -71,36 +71,36 @@ class BatchUpdateTasksRequestTasks(DaraModel):
     ):
         # The associated data source information.
         self.data_source = data_source
-        # The description.
+        # The description of the task.
         self.description = description
         # The project environment. Valid values:
-        # - Prod: production
-        # - Dev: development
+        # - Prod: Production.
+        # - Dev: Development.
         self.env_type = env_type
-        # The node ID.
+        # The ID of the task.
         # 
         # This parameter is required.
         self.id = id
-        # The name.
+        # The name of the task.
         self.name = name
-        # The account ID of the node owner.
+        # The account ID of the task owner.
         self.owner = owner
         # The retry time interval, in seconds.
         self.rerun_interval = rerun_interval
-        # Specifies whether the node can be rerun. Valid values:
-        # - AllDenied: The node cannot be rerun regardless of whether it succeeds or fails.
-        # - FailureAllowed: The node can be rerun only after it fails.
-        # - AllAllowed: The node can be rerun regardless of whether it succeeds or fails.
+        # Specifies whether the task can be rerun. Valid values:
+        # - AllDenied: The task cannot be rerun after either success or failure.
+        # - FailureAllowed: The task can be rerun only after failure.
+        # - AllAllowed: The task can be rerun after either success or failure.
         self.rerun_mode = rerun_mode
-        # The number of retries. This parameter takes effect only when the node is configured to allow reruns.
+        # The number of retries. This parameter takes effect only when the task is configured to allow reruns.
         self.rerun_times = rerun_times
-        # The runtime environment configuration, such as resource group information.
+        # The runtime environment configurations, such as the resource group information.
         self.runtime_resource = runtime_resource
-        # The list of node tags.
+        # The list of task tags.
         self.tags = tags
-        # The timeout period for node execution, in seconds. The value must be greater than 3600.
+        # The timeout period for task execution, in seconds. The value must be greater than 3600.
         self.timeout = timeout
-        # The trigger configuration of the node.
+        # The task trigger type.
         self.trigger = trigger
 
     def validate(self):
@@ -221,20 +221,20 @@ class BatchUpdateTasksRequestTasksTrigger(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The cron expression. This parameter takes effect only when type is set to Scheduler.
+        # The cron expression. This parameter takes effect only when Type is set to Scheduler.
         self.cron = cron
-        # The time when the periodic trigger expires. This parameter takes effect only when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
+        # The expiration time of the periodic trigger. This parameter takes effect only when Type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
         self.end_time = end_time
-        # The running mode when the node is triggered. This parameter takes effect only when type is set to Scheduler. Valid values:
-        # - Pause: paused
-        # - Skip: dry run
-        # - Normal: normal execution
+        # The run mode when the task is triggered. This parameter takes effect only when Type is set to Scheduler. Valid values:
+        # - Pause: Paused.
+        # - Skip: Dry run.
+        # - Normal: Normal execution.
         self.recurrence = recurrence
-        # The time when the periodic trigger takes effect. This parameter takes effect only when type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
+        # The start time for periodic triggers. This parameter takes effect only when Type is set to Scheduler. Format: `yyyy-mm-dd hh:mm:ss`.
         self.start_time = start_time
         # The trigger type. Valid values:
-        # - Scheduler: triggered by scheduling cycle
-        # - Manual: manually triggered
+        # - Scheduler: Triggered by a scheduling cycle.
+        # - Manual: Manually triggered.
         self.type = type
 
     def validate(self):
@@ -327,11 +327,11 @@ class BatchUpdateTasksRequestTasksRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The compute unit (CU) consumption configured for node execution.
+        # The number of compute units (CUs) consumed by the task run configuration.
         self.cu = cu
-        # The image ID configured for node execution.
+        # The ID of the image configured for task execution.
         self.image = image
-        # The identifier of the schedule resource group configured for node execution.
+        # The identifier of the scheduling resource group configured for task execution.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -371,7 +371,7 @@ class BatchUpdateTasksRequestTasksDataSource(DaraModel):
         self,
         name: str = None,
     ):
-        # The data source name.
+        # The name of the data source.
         self.name = name
 
     def validate(self):

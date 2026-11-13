@@ -22,9 +22,9 @@ class ListDataQualityResultsRequest(DaraModel):
         self.bizdate_from = bizdate_from
         # The end business date of the rule instance.
         self.bizdate_to = bizdate_to
-        # The earliest time when the data quality evaluation result was generated.
+        # The earliest time when the data quality check results were generated.
         self.create_time_from = create_time_from
-        # The latest time when the data quality evaluation result was generated.
+        # The latest time when the data quality check results were generated.
         self.create_time_to = create_time_to
         # The data quality evaluation task ID.
         self.data_quality_evaluation_task_id = data_quality_evaluation_task_id
@@ -32,9 +32,9 @@ class ListDataQualityResultsRequest(DaraModel):
         self.data_quality_evaluation_task_instance_id = data_quality_evaluation_task_instance_id
         # The data quality rule ID.
         self.data_quality_rule_id = data_quality_rule_id
-        # The page number for the paging query. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The page size for the paging query. Default value: 10.
+        # The number of results per page. Default value: 10.
         self.page_size = page_size
         # The DataWorks workspace ID.
         self.project_id = project_id

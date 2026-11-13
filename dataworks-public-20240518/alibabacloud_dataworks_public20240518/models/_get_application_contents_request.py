@@ -9,7 +9,7 @@ class GetApplicationContentsRequest(DaraModel):
         self,
         process_instance_id: str = None,
     ):
-        # The approval process instance ID of the submitted application.
+        # The ID of the approval process instance for the request.
         # 
         # This parameter is required.
         self.process_instance_id = process_instance_id

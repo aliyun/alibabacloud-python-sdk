@@ -12,7 +12,7 @@ class UpdateTaskInstancesShrinkRequest(DaraModel):
     ):
         # The remarks.
         self.comment = comment
-        # The instances.
+        # The list of node instances.
         self.task_instances_shrink = task_instances_shrink
 
     def validate(self):

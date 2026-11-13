@@ -9,7 +9,7 @@ class GetDataQualityScanRunRequest(DaraModel):
         self,
         id: int = None,
     ):
-        # The data quality monitoring run record ID.
+        # The ID of the data quality monitor run record.
         self.id = id
 
     def validate(self):

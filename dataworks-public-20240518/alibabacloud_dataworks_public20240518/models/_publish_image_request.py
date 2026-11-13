@@ -14,7 +14,7 @@ class PublishImageRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The image publish execution ID, which is used as an idempotence identifier.
+        # The ID of the image publishing execution, which is used as an idempotency token.
         self.process_id = process_id
 
     def validate(self):

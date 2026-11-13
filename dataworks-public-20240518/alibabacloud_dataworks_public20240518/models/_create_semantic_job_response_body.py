@@ -14,11 +14,11 @@ class CreateSemanticJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The saved semantic job definition. Use Data.Name to call RunSemanticJob, DeleteSemanticJob, ListSemanticJobRuns, and DownloadSemanticResults.
+        # The saved semantic task definition. Use `Data.Name` to call RunSemanticJob, DeleteSemanticJob, ListSemanticJobRuns, and DownloadSemanticResults.
         self.data = data
-        # The request ID. Used for locating logs and troubleshooting issues.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -71,29 +71,29 @@ class CreateSemanticJobResponseBodyData(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
-        # The job creator identifier, equivalent to UserId, used to display creation ownership.
+        # The identifier of the task creator, which has the same value as `UserId` and identifies who created the task.
         self.creator = creator
-        # The creation time of the job definition, expressed as a UNIX timestamp in milliseconds.
+        # The time when the task definition was created. The value is a UNIX timestamp in milliseconds.
         self.gmt_create = gmt_create
-        # The last modification time of the job definition, expressed as a UNIX timestamp in milliseconds.
+        # The time when the task definition was last modified. The value is a UNIX timestamp in milliseconds.
         self.gmt_modified = gmt_modified
-        # The internal unique ID of the job definition, which identifies the job created by this call.
+        # The internal unique ID of the task definition, which is used to identify the created task.
         self.id = id
-        # The saved job name. Use this value for subsequent operations such as running, deleting, querying run records, and downloading results.
+        # The saved task name. This value is used for subsequent operations such as running, deleting, querying run records, and downloading results.
         self.name = name
-        # The DataWorks workspace ID to which the job belongs. Use this value as the ProjectId for GetSemanticJobDetail, GetSemanticJobLog, and KillSemanticJob.
+        # The ID of the DataWorks workspace to which the task belongs. This ID is used as the `ProjectId` for GetSemanticJobDetail, GetSemanticJobLog, and KillSemanticJob.
         self.project_id = project_id
-        # The list of associated uploaded file IDs. For singleTableFile, the single file in this list is read at runtime.
+        # The list of IDs of associated uploaded files. If the source type is `singleTableFile`, the task reads the only file in the list at runtime.
         self.reference_file_ids = reference_file_ids
-        # The list of associated external reference file URIs. For singleTableFile, the single file in this list is read at runtime.
+        # The list of URIs of associated external reference files. If the source type is `singleTableFile`, the task reads the only file in the list at runtime.
         self.reference_file_uris = reference_file_uris
-        # The ID of the resource group that is used when running this job.
+        # The identifier of the resource group to be used when running this task.
         self.resource_group_id = resource_group_id
-        # The saved input datasource config, corresponding to the Source in the creation request. The data scope to be analyzed is determined based on this configuration at runtime.
+        # The saved input data source configuration, which corresponds to `Source` in the creation request. The data scope to be analyzed is selected based on this config during runtime.
         self.source = source
-        # The saved Source.type data source type, used to quickly identify the job input type.
+        # The saved `Source.type` data source type, which is used to quickly identify the task input type.
         self.type = type
-        # The identifier of the user who created the job.
+        # The identifier of the user who created the task.
         self.user_id = user_id
 
     def validate(self):

@@ -15,21 +15,21 @@ class UpdateProcessDefinitionShrinkRequest(DaraModel):
         notification_services_shrink: str = None,
         rule_conditions_shrink: str = None,
     ):
-        # A list of approval nodes. This parameter does not apply to system policies.
+        # The list of approval nodes. Note: System policies do not take effect.
         self.approval_nodes_shrink = approval_nodes_shrink
-        # An idempotent parameter. It ensures that retried requests do not result in duplicate operations.
+        # The idempotency token. Used to prevent duplicate operations caused by multiple calls.
         self.client_token = client_token
-        # The description of the process definition.
+        # The description of the approval process definition.
         self.description = description
-        # The ID of the process definition.
+        # The ID of the approval process definition.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the process definition.
+        # The name of the approval process definition.
         self.name = name
-        # The notification service configurations.
+        # The notification service declaration.
         self.notification_services_shrink = notification_services_shrink
-        # A list of rule conditions. This parameter does not apply to system policies.
+        # The list of conditional rules. Note: System policies do not take effect.
         self.rule_conditions_shrink = rule_conditions_shrink
 
     def validate(self):

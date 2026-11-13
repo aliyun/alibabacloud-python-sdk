@@ -21,27 +21,23 @@ class UpdateWorkflowShrinkRequest(DaraModel):
         tasks_shrink: str = None,
         trigger_shrink: str = None,
     ):
-        # The client unique code of the workflow, used for asynchronous operations and idempotence. If not specified during creation, the system automatically generates one, and the code is uniquely bound to the resource ID. If this parameter is specified during update or deletion, it must be consistent with the client unique code used during creation.
+        # The client unique code of the workflow, which is used to implement asynchronous and idempotent operations. If you do not specify this parameter when creating a workflow, the system automatically generates one and uniquely binds it to the resource ID. If you specify this parameter when updating or deleting a resource, it must be the same as the client unique code used during creation.
         self.client_unique_code = client_unique_code
         # The dependency information.
         self.dependencies_shrink = dependencies_shrink
         # The description.
         self.description = description
-        # The project environment. Valid values:
-        # - Prod: production
-        # - Dev: development
+        # The project environment.
+        # - Prod: Production.
+        # - Dev: Development.
         self.env_type = env_type
         # The workflow ID.
         # 
         # This parameter is required.
         self.id = id
         # The instance generation mode. Valid values:
-        # 
-        # 
-        # 
-        # 
-        # - T+1: Instances are generated the next day.
-        # - Immediately: Instances are generated immediately. Periodic instances are generated only if the scheduled time of the workflow is at least 10 minutes after the workflow is deployed. During the full instance generation period (22:00 to 24:00), real-time instance generation is not available. You can submit and deploy workflows during this period, but instances are not regenerated after submission.
+        # - T+1: Generates the instance on the next day.
+        # - Immediately: Generates the instance immediately. Note: Periodic instances are generated normally only if the scheduled time of the workflow is at least 10 minutes after the workflow publish time. Real-time instance generation is not supported during the full instance generation period (22:00 to 24:00). You can submit and publish workflows during this period, but instances are not regenerated after submission.
         self.instance_mode = instance_mode
         # The name.
         # 
@@ -57,9 +53,9 @@ class UpdateWorkflowShrinkRequest(DaraModel):
         self.parameters = parameters
         # The list of workflow tags.
         self.tags_shrink = tags_shrink
-        # The node list.
+        # The list of tasks.
         self.tasks_shrink = tasks_shrink
-        # The trigger configuration.
+        # The trigger method.
         # 
         # This parameter is required.
         self.trigger_shrink = trigger_shrink

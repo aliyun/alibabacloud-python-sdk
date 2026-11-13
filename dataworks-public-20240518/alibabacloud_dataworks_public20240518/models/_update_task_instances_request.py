@@ -15,7 +15,7 @@ class UpdateTaskInstancesRequest(DaraModel):
     ):
         # The remarks.
         self.comment = comment
-        # The instances.
+        # The list of node instances.
         self.task_instances = task_instances
 
     def validate(self):
@@ -62,15 +62,15 @@ class UpdateTaskInstancesRequestTaskInstances(DaraModel):
     ):
         # The information about the associated data source.
         self.data_source = data_source
-        # The instance ID.
+        # The node instance ID.
         # 
         # This parameter is required.
         self.id = id
-        # The priority of the instance. Valid values: 1, 3, 5, 7, and 8.
+        # The runtime priority of the instance. Valid values: 1, 3, 5, 7, and 8.
         # 
         # A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The resource group information. Set this parameter to the ID of a resource group for scheduling.
+        # The resource group information. Specify the identifier of the scheduling resource group.
         self.runtime_resource = runtime_resource
 
     def validate(self):

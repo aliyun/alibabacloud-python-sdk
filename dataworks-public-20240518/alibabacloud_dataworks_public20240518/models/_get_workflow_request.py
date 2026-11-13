@@ -11,8 +11,8 @@ class GetWorkflowRequest(DaraModel):
         id: int = None,
     ):
         # The project environment. Valid values:
-        # - Prod: Production environment.
-        # - Dev: Development environment.
+        # - Prod: production.
+        # - Dev: development.
         self.env_type = env_type
         # The unique identifier of the workflow.
         # 

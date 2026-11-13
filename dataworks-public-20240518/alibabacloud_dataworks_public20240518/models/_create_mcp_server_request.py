@@ -17,13 +17,13 @@ class CreateMcpServerRequest(DaraModel):
     ):
         # The connection configuration of the MCP server.
         self.config = config
-        # The name of the MCP server. It must be unique at the tenant level. It must start with a lowercase letter and can contain only lowercase letters (`a-z`), digits (`0-9`), underscores (`_`), and hyphens (`-`).
+        # The name of the MCP server. The name must be unique at the tenant level. It must start with a lowercase letter and can contain only lowercase letters, digits, underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.name = name
         # The visibility level.
         self.visibility = visibility
-        # The visibility scope. Specify the corresponding fields based on the value of Visibility.
+        # The visibility scope. Specify the corresponding field based on the value of Visibility.
         self.visibility_scope = visibility_scope
 
     def validate(self):
@@ -75,9 +75,9 @@ class CreateMcpServerRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The list of visible project IDs. This parameter takes effect when Visibility is set to `PROJECT`.
+        # The IDs of the projects in which the MCP server is visible. This parameter takes effect only when Visibility is set to `PROJECT`.
         self.project_ids = project_ids
-        # The list of visible user IDs. This parameter takes effect when Visibility is set to `USER`.
+        # The IDs of the users who can see the MCP server. This parameter takes effect only when Visibility is set to `USER`.
         self.user_ids = user_ids
 
     def validate(self):

@@ -12,7 +12,7 @@ class BatchUpdateTasksShrinkRequest(DaraModel):
     ):
         # The remarks.
         self.comment = comment
-        # The list of nodes.
+        # The list of tasks.
         self.tasks_shrink = tasks_shrink
 
     def validate(self):

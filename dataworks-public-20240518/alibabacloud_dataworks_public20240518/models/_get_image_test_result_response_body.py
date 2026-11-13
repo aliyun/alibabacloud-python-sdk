@@ -12,7 +12,7 @@ class GetImageTestResultResponseBody(DaraModel):
         success: bool = None,
         test_result: main_models.GetImageTestResultResponseBodyTestResult = None,
     ):
-        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+        # The request ID. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -70,9 +70,9 @@ class GetImageTestResultResponseBodyTestResult(DaraModel):
         self.message = message
         # The operation time. The value is a 64-bit timestamp.
         self.operate_time = operate_time
-        # The ID of the process.
+        # The process ID.
         self.process_id = process_id
-        # The publishing status of the image. Valid values:
+        # The image publishing status. Valid values:
         # - Untest: Not tested.
         # - Testing: Testing.
         # - TestFailed: Test failed.
@@ -87,9 +87,9 @@ class GetImageTestResultResponseBodyTestResult(DaraModel):
         # - AccelerateSuccess: Acceleration succeeded.
         # - AccelerateFailed: Acceleration failed.
         self.publish_stage = publish_stage
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The status of the test process. Valid values:
+        # The test process status. Valid values:
         # - running: Running.
         # - completed: Completed.
         # - failed: Failed.

@@ -10,7 +10,7 @@ class DeleteTaskRequest(DaraModel):
         id: int = None,
         project_env: str = None,
     ):
-        # The ID of the task.
+        # The task ID.
         # 
         # This parameter is required.
         self.id = id

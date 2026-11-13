@@ -12,13 +12,13 @@ class ListSkillsShrinkRequest(DaraModel):
         q: str = None,
         visibility_shrink: str = None,
     ):
-        # The maximum number of entries to return in this request.
+        # The maximum number of entries to return in the current request.
         self.max_results = max_results
-        # The pagination token. Do not pass this parameter for the first query. For subsequent queries, pass the NextToken returned in the previous response to obtain the next page.
+        # The pagination token. Do not specify this parameter in the first request. In subsequent requests, specify the `NextToken` value returned in the previous response to retrieve the next page.
         self.next_token = next_token
-        # The search keyword for fuzzy matching by skill name.
+        # The search keyword used for fuzzy matching by skill name.
         self.q = q
-        # The visibility levels used to filter results. Multiple values can be specified.
+        # The visibility levels used to filter the results. You can specify multiple values.
         self.visibility_shrink = visibility_shrink
 
     def validate(self):

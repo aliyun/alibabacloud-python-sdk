@@ -10,9 +10,9 @@ class CreateProcessDefinitionResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # The ID of the process definition.
+        # The ID of the flow definition.
         self.id = id
-        # The request ID.
+        # **The API request ID.**
         self.request_id = request_id
 
     def validate(self):

@@ -15,7 +15,7 @@ class ListTaskInstancesResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The ID of the request.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -152,9 +152,13 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
     ):
         # The baseline ID.
         self.baseline_id = baseline_id
-        # The business date. The value is a 13-digit timestamp, such as `1710239005403`.
+        # The business date.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.bizdate = bizdate
-        # The creation time. The value is a 13-digit timestamp, such as `1710239005403`.
+        # The creation time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
         # The account ID of the user who created the instance.
         self.create_user = create_user
@@ -162,34 +166,38 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         self.data_source = data_source
         # The description.
         self.description = description
-        # The completion time. The value is a 13-digit timestamp, such as `1710239005403`.
+        # The completion time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.finished_time = finished_time
         # The unique identifier of the task instance.
         self.id = id
-        # The update time. The value is a 13-digit timestamp, such as `1710239005403`.
+        # The modification time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
-        # The account ID of the user who last modified the instance.
+        # The account ID of the user who modified the instance.
         self.modify_user = modify_user
-        # The type of the latest operation performed on the instance.
+        # The type of the latest operation on the instance.
         self.operation_type = operation_type
         # The account ID of the task owner.
         self.owner = owner
-        # The cycle number. This indicates the cycle round of the task instance on the current day.
+        # The cycle number. It indicates which scheduling cycle of the day the task instance belongs to.
         self.period_number = period_number
-        # The running priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+        # The priority of the task run. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The project environment. Valid values:
-        # - Prod: production
-        # - Dev: development
+        # The project environment.
+        # - Prod: Production.
+        # - Dev: Development.
         self.project_env = project_env
         # The project ID.
         self.project_id = project_id
-        # The rerun configuration for the task. Valid values:
-        # - AllDenied: Reruns are not allowed regardless of success or failure.
-        # - FailureAllowed: Reruns are allowed only after failures.
-        # - AllAllowed: Reruns are allowed after both successes and failures.
+        # Specifies whether the task can be rerun. Valid values:
+        # - AllDenied: The task cannot be rerun regardless of whether it succeeds or fails.
+        # - FailureAllowed: The task can be rerun only when it fails.
+        # - AllAllowed: The task can be rerun regardless of whether it succeeds or fails.
         self.rerun_mode = rerun_mode
-        # The current run number. Default value: 1.
+        # The current number of runs. Default value: 1.
         self.run_number = run_number
         # The runtime information of the instance.
         self.runtime = runtime
@@ -197,9 +205,11 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         self.runtime_resource = runtime_resource
         # The list of script parameters.
         self.script_parameters = script_parameters
-        # The start time. The value is a 13-digit timestamp, such as `1710239005403`.
+        # The start time of the run.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.started_time = started_time
-        # The running status of the instance. Valid values:
+        # The run status of the instance. Valid values:
         # - NotRun: Not run.
         # - Running: Running.
         # - WaitTime: Waiting for the trigger time.
@@ -208,7 +218,7 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         # - Failure: Failed.
         # - Success: Successful.
         # - Checking: Submitted for data quality check.
-        # - WaitTrigger: Waiting for an external trigger. Trigger-based nodes change to this status after the waiting time.
+        # - WaitTrigger: Waiting for an external trigger. A trigger node changes to this status after the waiting period.
         self.status = status
         # The ID of the task.
         self.task_id = task_id
@@ -216,38 +226,44 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstances(DaraModel):
         self.task_name = task_name
         # The type of the task.
         self.task_type = task_type
-        # The timeout period for task execution, in seconds. Note: The scheduling system rounds the configured value to the whole hours.
+        # The timeout period for task execution, in seconds.
+        # 
+        # Note: The scheduling system rounds the configured value to a whole number of hours.
         self.timeout = timeout
-        # The running mode when the node is triggered. This parameter takes effect only when TriggerType is set to Scheduler. Valid values:
-        # - Pause: The node is paused.
-        # - Skip: The node performs a dry run.
-        # - Normal: The node runs normally.
+        # The run mode when the node is triggered. This parameter takes effect only when TriggerType is set to Scheduler. Valid values:
+        # - Pause: Paused.
+        # - Skip: Dry run.
+        # - Normal: Normal run.
         self.trigger_recurrence = trigger_recurrence
-        # The scheduled trigger time. The value is a 13-digit timestamp, such as `1710239005403`.
+        # The scheduled trigger time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.trigger_time = trigger_time
         # The trigger type. Valid values:
         # - Scheduler: Triggered by a scheduling cycle.
         # - Manual: Triggered manually.
         self.trigger_type = trigger_type
-        # The unified workflow instance ID. This value is the same for all task instances within a specific business date under a single trigger.
+        # The unified workflow instance ID. The value of this field is the same for all task instances within a specific business date under a single trigger.
         self.unified_workflow_instance_id = unified_workflow_instance_id
         # The time when the instance starts waiting for resources.
         self.waiting_resource_time = waiting_resource_time
-        # The time when the instance starts waiting for the scheduled trigger time. The value is a 13-digit timestamp, such as `1710239005403`.
+        # The time when the instance starts waiting for the scheduled time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.waiting_trigger_time = waiting_trigger_time
-        # The ID of the associated workflow.
+        # The ID of the workflow to which the task belongs.
         self.workflow_id = workflow_id
-        # The ID of the associated workflow instance.
+        # The ID of the workflow instance.
         self.workflow_instance_id = workflow_instance_id
-        # The type of the workflow instance to which the task instance belongs. Valid values:
-        # - SmokeTest: Smoke test.
+        # The type of the workflow instance to which the task belongs. Valid values:
+        # - SmokeTest: Test.
         # - SupplementData: Data backfill.
-        # - Manual: Manual execution.
+        # - Manual: Manual.
         # - ManualWorkflow: Manual workflow.
         # - Normal: Scheduled cycle.
         # - ManualFlow: Manually executed business flow.
         self.workflow_instance_type = workflow_instance_type
-        # The name of the workflow to which the task instance belongs.
+        # The name of the workflow to which the task belongs.
         self.workflow_name = workflow_name
 
     def validate(self):
@@ -501,11 +517,11 @@ class ListTaskInstancesResponseBodyPagingInfoTaskInstancesRuntimeResource(DaraMo
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The number of compute units (CUs) consumed during task execution.
+        # The number of compute units (CUs) consumed by the task run configuration.
         self.cu = cu
-        # The ID of the image configured for task execution.
+        # The ID of the image configured for the task run.
         self.image = image
-        # The identifier of the schedule resource group configured for task execution.
+        # The identifier of the scheduling resource group configured for the task run.
         self.resource_group_id = resource_group_id
 
     def validate(self):

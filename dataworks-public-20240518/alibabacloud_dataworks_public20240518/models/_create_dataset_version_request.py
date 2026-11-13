@@ -15,20 +15,20 @@ class CreateDatasetVersionRequest(DaraModel):
         mount_path: str = None,
         url: str = None,
     ):
-        # The description of the dataset version. The description can be up to 1024 characters in length.
+        # The description of the dataset version. The length cannot exceed 1,024 characters.
         self.comment = comment
-        # The dataset ID. Currently, only DataWorks datasets are supported.
+        # The ID of the dataset. Currently, only DataWorks datasets are supported.
         # 
         # This parameter is required.
         self.dataset_id = dataset_id
-        # The storage import configuration for the dataset. The required configuration varies depending on the storage type.
+        # The storage import configuration of the dataset. The required configuration information varies based on the storage type.
         # <details>
         # <summary>NAS</summary>
-        # The values can be obtained from the response of the File Storage API DescribeFileSystems operation.
+        # For valid values, refer to the response of the DescribeFileSystems operation in the File Storage NAS API documentation.
         # 
         # ```JSON
         # {
-        #   "fileSystemId": "3b6XXX89c9", // The file system ID.
+        #   "fileSystemId": "3b6XXX89c9", // The ID of the file system.
         #   "fileSystemStorageType": "Performance", // The storage specification of the file system.
         #   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount target.
         # }
@@ -36,7 +36,7 @@ class CreateDatasetVersionRequest(DaraModel):
         # 
         # </details>
         self.import_info = import_info
-        # The mount path. The path must start with /mnt/. Default value: /mnt/data.
+        # The mount path. It must start with /mnt/. Default value: /mnt/data.
         self.mount_path = mount_path
         # The URL.
         # 

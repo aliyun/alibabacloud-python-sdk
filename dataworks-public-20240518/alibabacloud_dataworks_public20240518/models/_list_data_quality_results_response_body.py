@@ -13,9 +13,9 @@ class ListDataQualityResultsResponseBody(DaraModel):
         paging_info: main_models.ListDataQualityResultsResponseBodyPagingInfo = None,
         request_id: str = None,
     ):
-        # 数据质量校验结果分页查询结果。
+        # The paginated data quality check results.
         self.paging_info = paging_info
-        # API请求ID。
+        # The API request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListDataQualityResultsResponseBodyPagingInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # 质量校验结果列表。
+        # The list of data quality check results.
         self.data_quality_results = data_quality_results
-        # 页码。
+        # The page number.
         self.page_number = page_number
-        # 页大小。
+        # The number of entries per page.
         self.page_size = page_size
-        # 总条数。
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -120,24 +120,24 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResults(DaraModel):
         status: str = None,
         task_instance_id: int = None,
     ):
-        # 校验结果生成时间。
+        # The time when the check result was generated.
         self.create_time = create_time
-        # 本次校验的详情。
+        # The details of this check.
         self.details = details
-        # 校验结果ID。
+        # The check result ID.
         self.id = id
-        # 校验开始时，规则配置快照。
+        # The snapshot of the rule configuration at the start of the check.
         self.rule = rule
-        # 本次校验所使用的样本值。
+        # The sample value used for this check.
         self.sample = sample
-        # 校验结果状态：
+        # The status of the check result. Valid values:
         # - Running
         # - Error
         # - Passed
         # - Warned
         # - Critical
         self.status = status
-        # 校验任务实例ID。
+        # The ID of the data quality evaluation task instance.
         self.task_instance_id = task_instance_id
 
     def validate(self):
@@ -222,29 +222,29 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRule(DaraMod
         target: main_models.ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget = None,
         template_code: str = None,
     ):
-        # 样本校验设置。
+        # The sample check settings.
         self.checking_config = checking_config
-        # 规则描述信息，最长500个字符。
+        # The description of the rule. It can be up to 500 characters in length.
         self.description = description
-        # 规则是否启用。
+        # Specifies whether the rule is enabled.
         self.enabled = enabled
-        # 质量规则校验问题处理器。
+        # The error handlers for data quality rule checks.
         self.error_handlers = error_handlers
-        # 规则ID。
+        # The rule ID.
         self.id = id
-        # 规则名称，数字、英文字母、汉字、半角全角标点符号组合，最长255个字符。
+        # The rule name. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks. It can be up to 255 characters in length.
         self.name = name
-        # DataWorks项目空间ID。
+        # The DataWorks workspace ID.
         self.project_id = project_id
-        # 样本采集所需的设置。
+        # The settings required for sample collection.
         self.sampling_config = sampling_config
-        # 规则对于业务的等级（对应页面上的强弱规则）：
+        # The severity level of the rule for the business, which corresponds to strong and weak rules on the page. Valid values:
         # - High
         # - Normal
         self.severity = severity
-        # 规则所监控的对象。
+        # The object monitored by the rule.
         self.target = target
-        # 创建规则时所引用的规则模板Code。
+        # The code of the rule template referenced when the rule was created.
         self.template_code = template_code
 
     def validate(self):
@@ -351,7 +351,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget(D
         table_guid: str = None,
         type: str = None,
     ):
-        # 表类型的数据集，表所属的数据库类型：
+        # The database type of the table dataset. Valid values:
         # - maxcompute
         # - emr
         # - cdh
@@ -360,9 +360,9 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleTarget(D
         # - analyticdb_for_mysql
         # - starrocks
         self.database_type = database_type
-        # 表在数据地图中的唯一ID。
+        # The unique ID of the table in DataWorks Data Map.
         self.table_guid = table_guid
-        # 监控对象类型：
+        # The type of the monitored object. Valid values:
         # - Table
         self.type = type
 
@@ -406,28 +406,28 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleSampling
         sampling_filter: str = None,
         setting_config: str = None,
     ):
-        # 采样的指标名称：
-        # - Count：表行数
-        # - Min：字段最小值
-        # - Max：字段最大值
-        # - Avg：字段均值
-        # - DistinctCount：字段唯一值个数
-        # - DistinctPercent：字段唯一值个数与数据行数占比
-        # - DuplicatedCount：字段重复值个数
-        # - DuplicatedPercent：字段重复值个数与数据行数占比
-        # - TableSize：表大小
-        # - NullValueCount：字段为空的行数
-        # - NullValuePercent：字段为空的比例
-        # - GroupCount：按字段值聚合后每个值与对应的数据行数
-        # - CountNotIn：枚举值不匹配行数
-        # - CountDistinctNotIn：枚举值不匹配唯一值个数
-        # - UserDefinedSql：通过自定义SQL做样本采集
+        # The name of the sampling metric. Valid values:
+        # - Count: The number of rows in the table.
+        # - Min: The minimum value of the field.
+        # - Max: The maximum value of the field.
+        # - Avg: The average value of the field.
+        # - DistinctCount: The number of unique values in the field.
+        # - DistinctPercent: The ratio of unique values to the total number of rows in the field.
+        # - DuplicatedCount: The number of duplicate values in the field.
+        # - DuplicatedPercent: The ratio of duplicate values to the total number of rows in the field.
+        # - TableSize: The table size.
+        # - NullValueCount: The number of rows with null values in the field.
+        # - NullValuePercent: The ratio of null values in the field.
+        # - GroupCount: The number of rows corresponding to each value after aggregation by field value.
+        # - CountNotIn: The number of rows that do not match the enumerated values.
+        # - CountDistinctNotIn: The number of unique values that do not match the enumerated values.
+        # - UserDefinedSql: Sample collection through custom SQL.
         self.metric = metric
-        # 样本采集时，所需的参数。
+        # The parameters required for sample collection.
         self.metric_parameters = metric_parameters
-        # 采样时，对不关注的数据进行二次过滤的条件，最多16777215个字符。
+        # The conditions used to filter out unneeded data during sampling. It can be up to 16,777,215 characters in length.
         self.sampling_filter = sampling_filter
-        # 具体执行采样语句前，插入执行的一些运行时参数设置语句，最长1000个字符。目前只支持MaxCompute。
+        # The runtime parameter setting statements inserted before the sampling statement is executed. It can be up to 1,000 characters in length. Only MaxCompute is supported.
         self.setting_config = setting_config
 
     def validate(self):
@@ -474,9 +474,9 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleErrorHan
         error_data_filter: str = None,
         type: str = None,
     ):
-        # 如果是自定义SQL规则，需要用户指定SQL来过滤问题数据。
+        # The SQL statement specified by the user to filter error data for custom SQL rules.
         self.error_data_filter = error_data_filter
-        # 处理器类型。
+        # The handler type. Valid values:
         # - SaveErrorData
         self.type = type
 
@@ -513,11 +513,11 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         thresholds: main_models.ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholds = None,
         type: str = None,
     ):
-        # 有些类型的阈值需要查询出一些参考样本，然后对参考样本的值进行汇总得出进行比较的阈值，这里使用一个表达式来表示参考样本的查询方式。
+        # The expression used to query reference samples for certain types of thresholds. The values of the reference samples are aggregated to obtain the threshold for comparison.
         self.referenced_samples_filter = referenced_samples_filter
-        # 阈值设置。
+        # The threshold settings.
         self.thresholds = thresholds
-        # 阈值计算方式：
+        # The threshold calculation method. Valid values:
         # - Fixed
         # - Fluctation
         # - FluctationDiscreate
@@ -567,11 +567,11 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         expected: main_models.ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsExpected = None,
         warned: main_models.ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleCheckingConfigThresholdsWarned = None,
     ):
-        # 严重警告的阈值设置。
+        # The threshold settings for critical warnings.
         self.critical = critical
-        # 期望的阈值设置。
+        # The expected threshold settings.
         self.expected = expected
-        # 普通警告的阈值设置。
+        # The threshold settings for common warnings.
         self.warned = warned
 
     def validate(self):
@@ -621,17 +621,17 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         operator: str = None,
         value: str = None,
     ):
-        # 阈值表达式。
+        # The threshold expression.
         # 
-        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # For fluctuation rules, you must use an expression to represent the fluctuation threshold. Examples:
         # 
-        # - 波动上升大于0.01： $checkValue > 0.01 
-        # - 波动下降大于0.01：$checkValue < -0.01 
-        # - 波动率绝对值：abs($checkValue) > 0.01
+        # - Fluctuation increase greater than 0.01: $checkValue > 0.01 
+        # - Fluctuation decrease greater than 0.01: $checkValue < -0.01 
+        # - Absolute value of fluctuation rate: abs($checkValue) > 0.01
         # 
-        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value。
+        # For fixed value rules, you can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # 比较符：
+        # The comparison operator. Valid values:
         # - \\>
         # - \\>=
         # - \\<
@@ -639,7 +639,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         # - !=
         # - =
         self.operator = operator
-        # 阈值数值。
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -681,17 +681,17 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         operator: str = None,
         value: str = None,
     ):
-        # 阈值表达式。
+        # The threshold expression.
         # 
-        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # For fluctuation rules, you must use an expression to represent the fluctuation threshold. Examples:
         # 
-        # - 波动上升大于0.01： $checkValue > 0.01 
-        # - 波动下降大于0.01：$checkValue < -0.01 
-        # - 波动率绝对值：abs($checkValue) > 0.01
+        # - Fluctuation increase greater than 0.01: $checkValue > 0.01 
+        # - Fluctuation decrease greater than 0.01: $checkValue < -0.01 
+        # - Absolute value of fluctuation rate: abs($checkValue) > 0.01
         # 
-        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value。
+        # For fixed value rules, you can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # 比较符：
+        # The comparison operator. Valid values:
         # - \\>
         # - \\>=
         # - \\<
@@ -699,7 +699,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         # - !=
         # - =
         self.operator = operator
-        # 阈值数值。
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -741,17 +741,17 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         operator: str = None,
         value: str = None,
     ):
-        # 阈值表达式。
+        # The threshold expression.
         # 
-        # 波动率类型规则必须使用表达式方式表示波动阈值。如：
+        # For fluctuation rules, you must use an expression to represent the fluctuation threshold. Examples:
         # 
-        # - 波动上升大于0.01： $checkValue > 0.01 
-        # - 波动下降大于0.01：$checkValue < -0.01 
-        # - 波动率绝对值：abs($checkValue) > 0.01
+        # - Fluctuation increase greater than 0.01: $checkValue > 0.01 
+        # - Fluctuation decrease greater than 0.01: $checkValue < -0.01 
+        # - Absolute value of fluctuation rate: abs($checkValue) > 0.01
         # 
-        # 固定值类型规则也可以使用表达式方式配置阈值，如果同时配置，表达式优先级高于Operator和Value。
+        # For fixed value rules, you can also use an expression to configure the threshold. If both are configured, the expression takes precedence over Operator and Value.
         self.expression = expression
-        # 比较符：
+        # The comparison operator. Valid values:
         # - \\>
         # - \\>=
         # - \\<
@@ -759,7 +759,7 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsRuleChecking
         # - !=
         # - =
         self.operator = operator
-        # 阈值数值。
+        # The threshold value.
         self.value = value
 
     def validate(self):
@@ -801,11 +801,11 @@ class ListDataQualityResultsResponseBodyPagingInfoDataQualityResultsDetails(Dara
         referenced_value: str = None,
         status: str = None,
     ):
-        # 最终用来与阈值比较的值。
+        # The final value used for comparison with the threshold.
         self.checked_value = checked_value
-        # 使用引用的样本，用来参与CheckedValue计算的基准值。
+        # The referenced sample value used as the baseline for calculating the checked value.
         self.referenced_value = referenced_value
-        # 最终的比较结果状态：
+        # The final comparison result status. Valid values:
         # - Error
         # - Passed
         # - Warned

@@ -609,6 +609,12 @@ from ._get_image_test_result_response import GetImageTestResultResponse
 from ._get_job_status_request import GetJobStatusRequest
 from ._get_job_status_response_body import GetJobStatusResponseBody
 from ._get_job_status_response import GetJobStatusResponse
+from ._get_knowledge_base_request import GetKnowledgeBaseRequest
+from ._get_knowledge_base_response_body import GetKnowledgeBaseResponseBody
+from ._get_knowledge_base_response import GetKnowledgeBaseResponse
+from ._get_knowledge_point_request import GetKnowledgePointRequest
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBody
+from ._get_knowledge_point_response import GetKnowledgePointResponse
 from ._get_lineage_relationship_request import GetLineageRelationshipRequest
 from ._get_lineage_relationship_response_body import GetLineageRelationshipResponseBody
 from ._get_lineage_relationship_response import GetLineageRelationshipResponse
@@ -907,6 +913,12 @@ from ._list_images_request import ListImagesRequest
 from ._list_images_shrink_request import ListImagesShrinkRequest
 from ._list_images_response_body import ListImagesResponseBody
 from ._list_images_response import ListImagesResponse
+from ._list_knowledge_bases_request import ListKnowledgeBasesRequest
+from ._list_knowledge_bases_response_body import ListKnowledgeBasesResponseBody
+from ._list_knowledge_bases_response import ListKnowledgeBasesResponse
+from ._list_knowledge_points_request import ListKnowledgePointsRequest
+from ._list_knowledge_points_response_body import ListKnowledgePointsResponseBody
+from ._list_knowledge_points_response import ListKnowledgePointsResponse
 from ._list_lineage_relationships_request import ListLineageRelationshipsRequest
 from ._list_lineage_relationships_response_body import ListLineageRelationshipsResponseBody
 from ._list_lineage_relationships_response import ListLineageRelationshipsResponse
@@ -1123,6 +1135,10 @@ from ._resume_task_instances_request import ResumeTaskInstancesRequest
 from ._resume_task_instances_shrink_request import ResumeTaskInstancesShrinkRequest
 from ._resume_task_instances_response_body import ResumeTaskInstancesResponseBody
 from ._resume_task_instances_response import ResumeTaskInstancesResponse
+from ._retrieve_knowledge_points_request import RetrieveKnowledgePointsRequest
+from ._retrieve_knowledge_points_shrink_request import RetrieveKnowledgePointsShrinkRequest
+from ._retrieve_knowledge_points_response_body import RetrieveKnowledgePointsResponseBody
+from ._retrieve_knowledge_points_response import RetrieveKnowledgePointsResponse
 from ._revoke_member_project_roles_request import RevokeMemberProjectRolesRequest
 from ._revoke_member_project_roles_shrink_request import RevokeMemberProjectRolesShrinkRequest
 from ._revoke_member_project_roles_response_body import RevokeMemberProjectRolesResponseBody
@@ -1388,6 +1404,10 @@ from ._update_workflow_response import UpdateWorkflowResponse
 from ._update_workflow_definition_request import UpdateWorkflowDefinitionRequest
 from ._update_workflow_definition_response_body import UpdateWorkflowDefinitionResponseBody
 from ._update_workflow_definition_response import UpdateWorkflowDefinitionResponse
+from ._upload_agent_session_file_request import UploadAgentSessionFileRequest
+from ._upload_agent_session_file_shrink_request import UploadAgentSessionFileShrinkRequest
+from ._upload_agent_session_file_response_body import UploadAgentSessionFileResponseBody
+from ._upload_agent_session_file_response import UploadAgentSessionFileResponse
 from ._upload_semantic_file_request import UploadSemanticFileRequest
 from ._upload_semantic_file_response_body import UploadSemanticFileResponseBody
 from ._upload_semantic_file_response import UploadSemanticFileResponse
@@ -1767,6 +1787,18 @@ from ._get_image_response_body import GetImageResponseBodyImageSupported
 from ._get_image_response_body import GetImageResponseBodyImage
 from ._get_image_test_result_response_body import GetImageTestResultResponseBodyTestResult
 from ._get_job_status_response_body import GetJobStatusResponseBodyJobStatus
+from ._get_knowledge_base_response_body import GetKnowledgeBaseResponseBodyData
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyDataGraphEdgesJoinJoinKeys
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyDataGraphEdgesJoin
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyDataGraphEdges
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyDataGraphNodes
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyDataGraph
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyDataKnowledgeContentSources
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyDataKnowledgeContent
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyDataWarnings
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyDataWikiSources
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyDataWiki
+from ._get_knowledge_point_response_body import GetKnowledgePointResponseBodyData
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyMcpServerConfig
 from ._get_mcp_server_response_body import GetMcpServerResponseBodyMcpServer
 from ._get_meta_collection_response_body import GetMetaCollectionResponseBodyMetaCollection
@@ -2068,6 +2100,10 @@ from ._list_images_response_body import ListImagesResponseBodyPagingInfoImageLis
 from ._list_images_response_body import ListImagesResponseBodyPagingInfoImageListSupported
 from ._list_images_response_body import ListImagesResponseBodyPagingInfoImageList
 from ._list_images_response_body import ListImagesResponseBodyPagingInfo
+from ._list_knowledge_bases_response_body import ListKnowledgeBasesResponseBodyDataKnowledgeBases
+from ._list_knowledge_bases_response_body import ListKnowledgeBasesResponseBodyData
+from ._list_knowledge_points_response_body import ListKnowledgePointsResponseBodyDataKnowledgePoints
+from ._list_knowledge_points_response_body import ListKnowledgePointsResponseBodyData
 from ._list_lineage_relationships_response_body import ListLineageRelationshipsResponseBodyPagingInfo
 from ._list_lineages_response_body import ListLineagesResponseBodyPagingInfoLineages
 from ._list_lineages_response_body import ListLineagesResponseBodyPagingInfo
@@ -2266,6 +2302,16 @@ from ._reply_agent_session_response_body import ReplyAgentSessionResponseBodyJso
 from ._reply_agent_session_response_body import ReplyAgentSessionResponseBodyJsonRpcResponseResult
 from ._reply_agent_session_response_body import ReplyAgentSessionResponseBodyJsonRpcResponse
 from ._rerun_workflow_instances_request import RerunWorkflowInstancesRequestFilter
+from ._retrieve_knowledge_points_request import RetrieveKnowledgePointsRequestFocusObjects
+from ._retrieve_knowledge_points_response_body import RetrieveKnowledgePointsResponseBodyDataAmbiguitiesCandidates
+from ._retrieve_knowledge_points_response_body import RetrieveKnowledgePointsResponseBodyDataAmbiguities
+from ._retrieve_knowledge_points_response_body import RetrieveKnowledgePointsResponseBodyDataPathsEdges
+from ._retrieve_knowledge_points_response_body import RetrieveKnowledgePointsResponseBodyDataPathsNodes
+from ._retrieve_knowledge_points_response_body import RetrieveKnowledgePointsResponseBodyDataPaths
+from ._retrieve_knowledge_points_response_body import RetrieveKnowledgePointsResponseBodyDataResultsSources
+from ._retrieve_knowledge_points_response_body import RetrieveKnowledgePointsResponseBodyDataResults
+from ._retrieve_knowledge_points_response_body import RetrieveKnowledgePointsResponseBodyDataWarnings
+from ._retrieve_knowledge_points_response_body import RetrieveKnowledgePointsResponseBodyData
 from ._run_image_test_response_body import RunImageTestResponseBodyData
 from ._run_semantic_job_response_body import RunSemanticJobResponseBodyData
 from ._start_dijob_request import StartDIJobRequestRealtimeStartSettingsFailoverSettings
@@ -2419,6 +2465,11 @@ from ._update_workflow_request import UpdateWorkflowRequestTasksTags
 from ._update_workflow_request import UpdateWorkflowRequestTasksTrigger
 from ._update_workflow_request import UpdateWorkflowRequestTasks
 from ._update_workflow_request import UpdateWorkflowRequestTrigger
+from ._upload_agent_session_file_request import UploadAgentSessionFileRequestParams
+from ._upload_agent_session_file_response_body import UploadAgentSessionFileResponseBodyJsonRpcResponseError
+from ._upload_agent_session_file_response_body import UploadAgentSessionFileResponseBodyJsonRpcResponseResultSignature
+from ._upload_agent_session_file_response_body import UploadAgentSessionFileResponseBodyJsonRpcResponseResult
+from ._upload_agent_session_file_response_body import UploadAgentSessionFileResponseBodyJsonRpcResponse
 from ._upload_semantic_file_response_body import UploadSemanticFileResponseBodyData
 
 __all__ = [
@@ -3029,6 +3080,12 @@ __all__ = [
     GetJobStatusRequest,
     GetJobStatusResponseBody,
     GetJobStatusResponse,
+    GetKnowledgeBaseRequest,
+    GetKnowledgeBaseResponseBody,
+    GetKnowledgeBaseResponse,
+    GetKnowledgePointRequest,
+    GetKnowledgePointResponseBody,
+    GetKnowledgePointResponse,
     GetLineageRelationshipRequest,
     GetLineageRelationshipResponseBody,
     GetLineageRelationshipResponse,
@@ -3327,6 +3384,12 @@ __all__ = [
     ListImagesShrinkRequest,
     ListImagesResponseBody,
     ListImagesResponse,
+    ListKnowledgeBasesRequest,
+    ListKnowledgeBasesResponseBody,
+    ListKnowledgeBasesResponse,
+    ListKnowledgePointsRequest,
+    ListKnowledgePointsResponseBody,
+    ListKnowledgePointsResponse,
     ListLineageRelationshipsRequest,
     ListLineageRelationshipsResponseBody,
     ListLineageRelationshipsResponse,
@@ -3543,6 +3606,10 @@ __all__ = [
     ResumeTaskInstancesShrinkRequest,
     ResumeTaskInstancesResponseBody,
     ResumeTaskInstancesResponse,
+    RetrieveKnowledgePointsRequest,
+    RetrieveKnowledgePointsShrinkRequest,
+    RetrieveKnowledgePointsResponseBody,
+    RetrieveKnowledgePointsResponse,
     RevokeMemberProjectRolesRequest,
     RevokeMemberProjectRolesShrinkRequest,
     RevokeMemberProjectRolesResponseBody,
@@ -3808,6 +3875,10 @@ __all__ = [
     UpdateWorkflowDefinitionRequest,
     UpdateWorkflowDefinitionResponseBody,
     UpdateWorkflowDefinitionResponse,
+    UploadAgentSessionFileRequest,
+    UploadAgentSessionFileShrinkRequest,
+    UploadAgentSessionFileResponseBody,
+    UploadAgentSessionFileResponse,
     UploadSemanticFileRequest,
     UploadSemanticFileResponseBody,
     UploadSemanticFileResponse,
@@ -4187,6 +4258,18 @@ __all__ = [
     GetImageResponseBodyImage,
     GetImageTestResultResponseBodyTestResult,
     GetJobStatusResponseBodyJobStatus,
+    GetKnowledgeBaseResponseBodyData,
+    GetKnowledgePointResponseBodyDataGraphEdgesJoinJoinKeys,
+    GetKnowledgePointResponseBodyDataGraphEdgesJoin,
+    GetKnowledgePointResponseBodyDataGraphEdges,
+    GetKnowledgePointResponseBodyDataGraphNodes,
+    GetKnowledgePointResponseBodyDataGraph,
+    GetKnowledgePointResponseBodyDataKnowledgeContentSources,
+    GetKnowledgePointResponseBodyDataKnowledgeContent,
+    GetKnowledgePointResponseBodyDataWarnings,
+    GetKnowledgePointResponseBodyDataWikiSources,
+    GetKnowledgePointResponseBodyDataWiki,
+    GetKnowledgePointResponseBodyData,
     GetMcpServerResponseBodyMcpServerConfig,
     GetMcpServerResponseBodyMcpServer,
     GetMetaCollectionResponseBodyMetaCollection,
@@ -4488,6 +4571,10 @@ __all__ = [
     ListImagesResponseBodyPagingInfoImageListSupported,
     ListImagesResponseBodyPagingInfoImageList,
     ListImagesResponseBodyPagingInfo,
+    ListKnowledgeBasesResponseBodyDataKnowledgeBases,
+    ListKnowledgeBasesResponseBodyData,
+    ListKnowledgePointsResponseBodyDataKnowledgePoints,
+    ListKnowledgePointsResponseBodyData,
     ListLineageRelationshipsResponseBodyPagingInfo,
     ListLineagesResponseBodyPagingInfoLineages,
     ListLineagesResponseBodyPagingInfo,
@@ -4686,6 +4773,16 @@ __all__ = [
     ReplyAgentSessionResponseBodyJsonRpcResponseResult,
     ReplyAgentSessionResponseBodyJsonRpcResponse,
     RerunWorkflowInstancesRequestFilter,
+    RetrieveKnowledgePointsRequestFocusObjects,
+    RetrieveKnowledgePointsResponseBodyDataAmbiguitiesCandidates,
+    RetrieveKnowledgePointsResponseBodyDataAmbiguities,
+    RetrieveKnowledgePointsResponseBodyDataPathsEdges,
+    RetrieveKnowledgePointsResponseBodyDataPathsNodes,
+    RetrieveKnowledgePointsResponseBodyDataPaths,
+    RetrieveKnowledgePointsResponseBodyDataResultsSources,
+    RetrieveKnowledgePointsResponseBodyDataResults,
+    RetrieveKnowledgePointsResponseBodyDataWarnings,
+    RetrieveKnowledgePointsResponseBodyData,
     RunImageTestResponseBodyData,
     RunSemanticJobResponseBodyData,
     StartDIJobRequestRealtimeStartSettingsFailoverSettings,
@@ -4839,5 +4936,10 @@ __all__ = [
     UpdateWorkflowRequestTasksTrigger,
     UpdateWorkflowRequestTasks,
     UpdateWorkflowRequestTrigger,
+    UploadAgentSessionFileRequestParams,
+    UploadAgentSessionFileResponseBodyJsonRpcResponseError,
+    UploadAgentSessionFileResponseBodyJsonRpcResponseResultSignature,
+    UploadAgentSessionFileResponseBodyJsonRpcResponseResult,
+    UploadAgentSessionFileResponseBodyJsonRpcResponse,
     UploadSemanticFileResponseBodyData
 ]

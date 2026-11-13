@@ -25,42 +25,38 @@ class DatasetVersion(DaraModel):
     ):
         # The dataset version description.
         self.comment = comment
-        # Creation time, represented by a timestamp in milliseconds
+        # The creation timestamp in milliseconds.
         self.create_time = create_time
         # The creator ID.
         self.creator_id = creator_id
-        # The corresponding dataset ID.
+        # The associated dataset ID.
         self.dataset_id = dataset_id
         # The dataset version ID.
         self.id = id
-        # The storage import configuration for the dataset. The required configuration varies by storage type.
-        # 
-        # 
+        # The storage import configuration of the dataset. The required configuration information varies based on the storage type.
         # <details>
         # <summary>NAS</summary>
-        # For values, see the response of the File Storage NAS DescribeFileSystems API.
-        # 
+        # For valid values, refer to the response of the DescribeFileSystems API operation.
         # 
         # ```JSON
         # {
-        #   "fileSystemId": "3b6XXX89c9", // The file system ID.
-        #   "fileSystemStorageType": "Performance", // The file system storage type.
-        #   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // The VPC ID of the mount point.
+        #   "fileSystemId": "3b6XXX89c9", // File system ID
+        #   "fileSystemStorageType": "Performance", // Storage specification of the file system
+        #   "vpcId": "vpc-uf66oxxxrqge1t2gson7s" // VPC ID of the mount target
         # }
         # ```
         # 
-        # 
         # </details>
         self.import_info = import_info
-        # The PAI dataset label.
+        # The PAI dataset labels.
         self.labels = labels
-        # Modification time, represented by a timestamp in milliseconds
+        # The modification timestamp in milliseconds.
         self.modify_time = modify_time
-        # The mount path. Defaults to /mnt/data.
+        # The mount path. Default value: /mnt/data.
         self.mount_path = mount_path
-        # Storage type (read-only); consistent with the corresponding property of the parent dataset.
+        # The storage type. This property is read-only and remains consistent with the corresponding property of the associated dataset.
         self.storage_type = storage_type
-        # URL
+        # The URL.
         self.url = url
         # The dataset version number.
         self.version_number = version_number

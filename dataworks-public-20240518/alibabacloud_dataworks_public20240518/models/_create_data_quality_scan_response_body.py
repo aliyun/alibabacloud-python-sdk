@@ -10,9 +10,9 @@ class CreateDataQualityScanResponseBody(DaraModel):
         id: int = None,
         request_id: str = None,
     ):
-        # Returns the ID of the created data source sharing rule, which uniquely identifies the rule.
+        # The ID of the created data source sharing rule, which is the unique identifier of the data source sharing rule.
         self.id = id
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -13,7 +13,7 @@ class LineageTask(DaraModel):
         id: str = None,
         type: str = None,
     ):
-        # The task attributes.
+        # The task properties.
         self.attributes = attributes
         # The task ID.
         self.id = id

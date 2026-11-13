@@ -13,7 +13,7 @@ class GetDataQualityScanRunResponseBody(DaraModel):
         data_quality_scan_run: main_models.GetDataQualityScanRunResponseBodyDataQualityScanRun = None,
         request_id: str = None,
     ):
-        # Data quality monitoring running records.
+        # The run record of the data quality monitor.
         self.data_quality_scan_run = data_quality_scan_run
         # The request ID.
         self.request_id = request_id
@@ -57,28 +57,27 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRun(DaraModel):
         scan: main_models.GetDataQualityScanRunResponseBodyDataQualityScanRunScan = None,
         status: str = None,
     ):
-        # The time when the data quality monitor starts running.
+        # The time when the data quality monitoring run started.
+        # 
+        # The value is a 13-digit number, such as `1706247622000`.
         self.create_time = create_time
-        # The time when the data quality monitor stops.
+        # The time when the data quality monitoring run ended.
+        # 
+        # The value is a 13-digit number, such as `1706247622000`.
         self.finish_time = finish_time
-        # The running record ID.
+        # The ID of the run record.
         self.id = id
-        # The parameter settings used during the actual running.
+        # The parameter settings used during the actual run.
         self.parameters = parameters
-        # The validation results of each rule.
+        # The check results for individual rules.
         self.results = results
-        # The snapshot of the data quality monitor configuration at the start of the validation.
+        # The snapshot of the data quality monitoring configuration at the start of the check.
         self.scan = scan
-        # The current running status.
-        # 
+        # The current run status. Valid values:
         # - Pass
-        # 
         # - Running
-        # 
         # - Error
-        # 
         # - Warn
-        # 
         # - Fail
         self.status = status
 
@@ -177,35 +176,39 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunScan(DaraModel):
         spec: str = None,
         trigger: main_models.GetDataQualityScanRunResponseBodyDataQualityScanRunScanTrigger = None,
     ):
-        # The computing resource settings of the data quality monitor.
+        # The compute resource settings of the data quality monitoring task.
         self.compute_resource = compute_resource
-        # The creation time of the data quality monitor.
+        # The time when the data quality monitoring task was created.
+        # 
+        # The value is a 13-digit number, such as `1706247622000`.
         self.create_time = create_time
-        # The creator of the data quality monitor.
+        # The user who created the data quality monitoring task.
         self.create_user = create_user
-        # The description of the data quality validation task. Maximum length: 65,535 characters.
+        # The description of the data quality check task. The description can be up to 65,535 characters in length.
         self.description = description
-        # The hook configurations after the data quality monitor stops.
+        # The configuration for hooks that run after the data quality monitor finishes.
         self.hooks = hooks
-        # The data quality monitor ID.
+        # The ID of the data quality monitor.
         self.id = id
-        # The last update time of the data quality monitor.
+        # The time when the data quality monitoring task was updated.
+        # 
+        # The value is a 13-digit number, such as `1706247622000`.
         self.modify_time = modify_time
-        # The last updater of the data quality monitor.
+        # The user who last updated the data quality monitoring task.
         self.modify_user = modify_user
-        # The name of the data quality validation task. It can contain digits, letters, Chinese characters, and both half-width and full-width punctuation marks, with a maximum length of 255 characters.
+        # The name of the data quality check task. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks, and can be up to 255 characters in length.
         self.name = name
-        # The owner of the data quality monitor.
+        # The owner of the data quality monitoring task.
         self.owner = owner
-        # The parameter settings of the data quality monitor.
+        # The parameter settings of the data quality monitoring task.
         self.parameters = parameters
         # The project ID.
         self.project_id = project_id
-        # The resource group used for running the data quality monitor.
+        # The resource group used when the data quality monitoring task runs.
         self.runtime_resource = runtime_resource
-        # The data quality monitor Spec. For more information, see [Data quality Spec configuration description](https://help.aliyun.com/document_detail/2963394.html).
+        # The spec of the data quality monitoring task. For more information, see [Data quality spec configuration guide](https://help.aliyun.com/document_detail/2963394.html).
         self.spec = spec
-        # The trigger configurations of the data quality monitor.
+        # The trigger configuration of the data quality monitoring task.
         self.trigger = trigger
 
     def validate(self):
@@ -344,12 +347,10 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunScanTrigger(DaraModel):
         task_ids: List[int] = None,
         type: str = None,
     ):
-        # If the trigger mode is set to BySchedule, the scheduling task ID must be specified.
+        # The IDs of the scheduling tasks that trigger the data quality monitoring task when the trigger method is set to BySchedule.
         self.task_ids = task_ids
-        # The trigger method of the data quality monitor.
-        # 
+        # The trigger method of the data quality monitoring task. Valid values:
         # - ByManual
-        # 
         # - BySchedule
         self.type = type
 
@@ -386,11 +387,11 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunScanRuntimeResource(Dar
         id: str = None,
         image: str = None,
     ):
-        # Reserved CUs for the resource group.
+        # The reserved compute units (CUs) of the resource group.
         self.cu = cu
-        # The resource group ID.
+        # The ID of the resource group.
         self.id = id
-        # The image ID of the run configuration.
+        # The ID of the image used for the run configuration.
         self.image = image
 
     def validate(self):
@@ -468,12 +469,11 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks(DaraModel):
         condition: str = None,
         type: str = None,
     ):
-        # The hook trigger condition. Currently, only one type of expression syntax is supported:
+        # The condition that triggers the hook. Currently, only one expression syntax is supported:
         # 
-        # - Specify combinations of severity levels and validation statuses for multiple rules, such as `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }`. This means the hook is triggered if any executed rule has Fail with Normal severity, Error with High severity, or Warn with High severity. In the conditional expression, the severity value matches that in the Spec code, and the status value matches that in DataQualityResult.
+        # * Specify multiple groups of rule severity types and rule check statuses. For example, `results.any { r -> r.status == \\"Fail\\" && r.rule.severity == \\"Normal\\" || r.status == \\"Error\\" && r.rule.severity == \\"High\\" || r.status == \\"Warn\\" && r.rule.severity == \\"High\\" }` indicates that the condition is met if the check result of a rule with the severity of Normal is Fail, the check result of a rule with the severity of High is Error, or the check result of a rule with the severity of High is Warn among the executed rules. The enum values of severity in the conditional expression are the same as those in the spec, and the enum values of status are the same as those in DataQualityResult.
         self.condition = condition
-        # The type of the hook.
-        # 
+        # The hook type. Valid values:
         # - BlockTaskInstance
         self.type = type
 
@@ -510,15 +510,13 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource(Dar
         name: str = None,
         runtime: main_models.GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceRuntime = None,
     ):
-        # The workspace environment to which the compute engine belongs.
-        # 
+        # The workspace environment to which the compute engine belongs. Valid values:
         # - Prod
-        # 
         # - Dev
         self.env_type = env_type
-        # The name of the computing resource, which corresponds to the Name attribute in the ComputeResource data structure of the computing resource API.
+        # The name of the compute resource. This corresponds to the Name property in the ComputeResource data structure of the compute resource API.
         self.name = name
-        # The additional runtime settings of the data quality monitor.
+        # The additional runtime settings for the data quality monitoring task.
         self.runtime = runtime
 
     def validate(self):
@@ -562,17 +560,14 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceRunt
         hive_conf: Dict[str, Any] = None,
         spark_conf: Dict[str, Any] = None,
     ):
-        # The type of the compute engine. Only EMR compute engines support these settings.
-        # 
+        # The type of the engine used. Only the E-MapReduce (EMR) compute engine supports this setting. Valid values:
         # - Hive
-        # 
         # - Spark
-        # 
         # - Kyuubi
         self.engine = engine
-        # Additional parameters for the Hive engine. Currently, only mapreduce.job.queuename is supported to specify the queue.
+        # The additional parameter settings when the Hive engine is used. Currently, only the queue can be configured by using mapreduce.job.queuename.
         self.hive_conf = hive_conf
-        # Additional parameters for the Spark engine. Currently, only spark.yarn.queue is supported to specify the queue.
+        # The additional parameter settings when the Spark engine is used. Currently, only the queue can be configured by using spark.yarn.queue.
         self.spark_conf = spark_conf
 
     def validate(self):
@@ -616,24 +611,21 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunResults(DaraModel):
         sample: str = None,
         status: str = None,
     ):
-        # The time when the validation result is generated.
+        # The time when the check result was generated.
+        # 
+        # The value is a 13-digit number, such as `1725506795000`.
         self.create_time = create_time
-        # The information about the data quality check.
+        # The details of the current check.
         self.details = details
-        # The snapshot of the rule Spec at the start of the validation.
+        # The snapshot of the rule spec at the start of the check.
         self.rule = rule
-        # The sample value used in the validation.
+        # The sample value used for the current check.
         self.sample = sample
-        # The validation result status.
-        # 
+        # The status of the check result. Valid values:
         # - Pass
-        # 
         # - Running
-        # 
         # - Error
-        # 
         # - Warn
-        # 
         # - Fail
         self.status = status
 
@@ -696,18 +688,14 @@ class GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails(DaraMode
         reference_value: str = None,
         status: str = None,
     ):
-        # The final value used for comparison with the threshold.
+        # The final value used to compare with the threshold.
         self.check_value = check_value
-        # The reference sample used as the baseline for calculating the CheckedValue.
+        # The baseline value from the referenced sample used to calculate CheckedValue.
         self.reference_value = reference_value
-        # The final comparison result status.
-        # 
+        # The status of the final comparison result. Valid values:
         # - Pass
-        # 
         # - Error
-        # 
         # - Warn
-        # 
         # - Fail
         self.status = status
 

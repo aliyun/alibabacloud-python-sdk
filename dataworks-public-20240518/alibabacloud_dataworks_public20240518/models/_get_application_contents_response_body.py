@@ -13,9 +13,9 @@ class GetApplicationContentsResponseBody(DaraModel):
         data: main_models.GetApplicationContentsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The process instance and associated application content.
+        # The process instance and the associated request details.
         self.data = data
-        # The request ID, which is used for locating logs and troubleshooting.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -56,29 +56,29 @@ class GetApplicationContentsResponseBodyData(DaraModel):
         reason: str = None,
         status: str = None,
     ):
-        # The time when the application was submitted, as a millisecond timestamp.
+        # The time when the request was submitted. The value is a UNIX timestamp in milliseconds.
         self.application_time = application_time
-        # The list of application contents.
+        # The list of request items.
         self.contents = contents
         # The resource type.
         # 
-        # Note: The resource types supported for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+        # Note: The resource types supported by the system are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).name.
         # 
-        # See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.def_schema = def_schema
         # The process instance ID.
         self.process_instance_id = process_instance_id
-        # The application reason.
+        # The reason for the request.
         self.reason = reason
         # The approval status. Valid values:
         # 
-        # - WaitApproval: Pending approval.
-        # - Confirmed: Pending authorization.
-        # - RejectApproval: Approval rejected.
-        # - AuthorizeSucceed: Authorization succeeded.
-        # - AuthorizeFailed: Authorization failed.
-        # - Deleted: Deleted.
-        # - Canceled: Canceled.
+        # - WaitApproval: pending approval
+        # - Confirmed: pending authorization
+        # - RejectApproval: approval rejected
+        # - AuthorizeSucceed: authorization succeeded
+        # - AuthorizeFailed: authorization failed
+        # - Deleted: deleted
+        # - Canceled: canceled
         self.status = status
 
     def validate(self):
@@ -159,57 +159,57 @@ class GetApplicationContentsResponseBodyDataContents(DaraModel):
     ):
         # The list of requested permissions.
         # 
-        # Note: Different levels of resources support different permission application types, all constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+        # Note: Different levels of resources support different types of permission requests, which are uniformly constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
         # 
-        # See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.access_types = access_types
-        # The authorization method. Currently, only SEVERLESS_STARROCKS supports specifying the authorization method: ranger or starrocksManager.
+        # The authorization method. Currently, only SEVERLESS_STARROCKS supports specifying the authorization method: ranger and starrocksManager.
         # 
-        # Note: Different resources support different authorization methods, all constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authMethods.
+        # Note: Different resources support different authorization methods, which are uniformly constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authMethods.
         # 
-        # See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.auth_method = auth_method
         # The creation time.
         self.create_time = create_time
         # The resource type.
         # 
-        # Note: The resource types supported for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+        # Note: The resource types supported by the system are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).name.
         # 
-        # See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.def_schema = def_schema
-        # The permission expiration date, as a millisecond timestamp.
+        # The expiration date of the permission. The value is a UNIX timestamp in milliseconds.
         self.expiration_time = expiration_time
         # The list of resource operation permissions that are finally approved.
         self.final_access_types = final_access_types
-        # The grantee description.
+        # The description of the authorization principal. 
         # 
-        # Note: The grantee principal types supported by the system are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+        # Note: The authorization principal types supported by the system are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
         # 
-        # See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.grantee = grantee
-        # The unique identifier of the application content.
+        # The unique identifier of the request item.
         self.id = id
-        # The approval process instance ID of the submitted application.
+        # The ID of the approval process instance for the request.
         self.process_instance_id = process_instance_id
-        # The resource declaration. The resource description is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).
+        # The resource declaration. The resource description is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).
         # 
-        # See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.resource = resource
-        # The minimum-permission resource type.
+        # The least privilege resource type.
         # 
-        # Note: The minimum-permission resource type is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
+        # Note: The least privilege resource types are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources[*].isValidLeaf being true.
         # 
-        # See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.resource_name = resource_name
         # The approval status. Valid values:
         # 
-        # - WaitApproval: Pending approval.
-        # - Confirmed: Pending authorization.
-        # - RejectApproval: Approval rejected.
-        # - AuthorizeSucceed: Authorization succeeded.
-        # - AuthorizeFailed: Authorization failed.
-        # - Deleted: Deleted.
-        # - Canceled: Canceled.
+        # - WaitApproval: pending approval
+        # - Confirmed: pending authorization
+        # - RejectApproval: approval rejected
+        # - AuthorizeSucceed: authorization succeeded
+        # - AuthorizeFailed: authorization failed
+        # - Deleted: deleted
+        # - Canceled: canceled
         self.status = status
         # The tenant ID.
         self.tenant_id = tenant_id
@@ -328,19 +328,19 @@ class GetApplicationContentsResponseBodyDataContentsResource(DaraModel):
     ):
         # The resource type.
         # 
-        # Note: The resource types supported for applications are constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).name.
+        # Note: The resource types supported by the system are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).name.
         # 
-        # See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.def_schema = def_schema
-        # The resource parsing version, which is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).version.
+        # The resource parsing version is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).version.
         # 
-        # See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.def_version = def_version
         # The resource metadata declaration.
         # 
-        # Note: The metadata is constrained by [ResourceSchema](https://help.aliyun.com/zh/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to the validLeaf level.
+        # Note: The metadata is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to the validLeaf level.
         # 
-        # See also: [ResourceSchema documentation on the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation for the international site](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.meta_data = meta_data
 
     def validate(self):
@@ -381,15 +381,15 @@ class GetApplicationContentsResponseBodyDataContentsGrantee(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
-        # The grantee principal ID. The ID has different meanings depending on the principal type:
+        # The authorization principal ID. The mapped ID has different semantics for different principal types:
         # 
-        # - RamUser: DataWorks UserId.
+        # - RamUser: the DataWorks user ID.
         # 
-        # - RamRole: DataWorks UserId prefixed with "ROLE_".
+        # - RamRole: the DataWorks user ID starting with "ROLE_".
         # 
-        # - DlfRole: DlfNext role name.
+        # - DlfRole: the DlfNext role name.
         self.principal_id = principal_id
-        # The grantee principal type. Valid values:
+        # The authorization principal type. Valid values:
         # 
         # - RamUser
         # - RamRole

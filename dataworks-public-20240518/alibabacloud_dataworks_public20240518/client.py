@@ -15284,6 +15284,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_job_status_with_options_async(request, runtime)
 
+    def get_knowledge_base_with_options(
+        self,
+        request: main_models.GetKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            body['KnowledgeBaseId'] = request.knowledge_base_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKnowledgeBase',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_knowledge_base_with_options_async(
+        self,
+        request: main_models.GetKnowledgeBaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            body['KnowledgeBaseId'] = request.knowledge_base_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKnowledgeBase',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_knowledge_base(
+        self,
+        request: main_models.GetKnowledgeBaseRequest,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return self.get_knowledge_base_with_options(request, runtime)
+
+    async def get_knowledge_base_async(
+        self,
+        request: main_models.GetKnowledgeBaseRequest,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        return await self.get_knowledge_base_with_options_async(request, runtime)
+
+    def get_knowledge_point_with_options(
+        self,
+        request: main_models.GetKnowledgePointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKnowledgePointResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.knowledge_base_id):
+            body['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKnowledgePoint',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKnowledgePointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_knowledge_point_with_options_async(
+        self,
+        request: main_models.GetKnowledgePointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKnowledgePointResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.knowledge_base_id):
+            body['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKnowledgePoint',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKnowledgePointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_knowledge_point(
+        self,
+        request: main_models.GetKnowledgePointRequest,
+    ) -> main_models.GetKnowledgePointResponse:
+        runtime = RuntimeOptions()
+        return self.get_knowledge_point_with_options(request, runtime)
+
+    async def get_knowledge_point_async(
+        self,
+        request: main_models.GetKnowledgePointRequest,
+    ) -> main_models.GetKnowledgePointResponse:
+        runtime = RuntimeOptions()
+        return await self.get_knowledge_point_with_options_async(request, runtime)
+
     def get_lineage_relationship_with_options(
         self,
         request: main_models.GetLineageRelationshipRequest,
@@ -22774,6 +22930,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_images_with_options_async(request, runtime)
 
+    def list_knowledge_bases_with_options(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeBases',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeBasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_knowledge_bases_with_options_async(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeBases',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeBasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_knowledge_bases(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        return self.list_knowledge_bases_with_options(request, runtime)
+
+    async def list_knowledge_bases_async(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_knowledge_bases_with_options_async(request, runtime)
+
+    def list_knowledge_points_with_options(
+        self,
+        request: main_models.ListKnowledgePointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgePointsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            body['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgePoints',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgePointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_knowledge_points_with_options_async(
+        self,
+        request: main_models.ListKnowledgePointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgePointsResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.knowledge_base_id):
+            body['KnowledgeBaseId'] = request.knowledge_base_id
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgePoints',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgePointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_knowledge_points(
+        self,
+        request: main_models.ListKnowledgePointsRequest,
+    ) -> main_models.ListKnowledgePointsResponse:
+        runtime = RuntimeOptions()
+        return self.list_knowledge_points_with_options(request, runtime)
+
+    async def list_knowledge_points_async(
+        self,
+        request: main_models.ListKnowledgePointsRequest,
+    ) -> main_models.ListKnowledgePointsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_knowledge_points_with_options_async(request, runtime)
+
     def list_lineage_relationships_with_options(
         self,
         request: main_models.ListLineageRelationshipsRequest,
@@ -28465,6 +28777,100 @@ class Client(OpenApiClient):
     ) -> main_models.ResumeTaskInstancesResponse:
         runtime = RuntimeOptions()
         return await self.resume_task_instances_with_options_async(request, runtime)
+
+    def retrieve_knowledge_points_with_options(
+        self,
+        tmp_req: main_models.RetrieveKnowledgePointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetrieveKnowledgePointsResponse:
+        tmp_req.validate()
+        request = main_models.RetrieveKnowledgePointsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.focus_objects):
+            request.focus_objects_shrink = Utils.array_to_string_with_specified_style(tmp_req.focus_objects, 'FocusObjects', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_base_ids):
+            request.knowledge_base_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_base_ids, 'KnowledgeBaseIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.focus_objects_shrink):
+            body['FocusObjects'] = request.focus_objects_shrink
+        if not DaraCore.is_null(request.knowledge_base_ids_shrink):
+            body['KnowledgeBaseIds'] = request.knowledge_base_ids_shrink
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.query):
+            body['Query'] = request.query
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetrieveKnowledgePoints',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetrieveKnowledgePointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retrieve_knowledge_points_with_options_async(
+        self,
+        tmp_req: main_models.RetrieveKnowledgePointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetrieveKnowledgePointsResponse:
+        tmp_req.validate()
+        request = main_models.RetrieveKnowledgePointsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.focus_objects):
+            request.focus_objects_shrink = Utils.array_to_string_with_specified_style(tmp_req.focus_objects, 'FocusObjects', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_base_ids):
+            request.knowledge_base_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_base_ids, 'KnowledgeBaseIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.focus_objects_shrink):
+            body['FocusObjects'] = request.focus_objects_shrink
+        if not DaraCore.is_null(request.knowledge_base_ids_shrink):
+            body['KnowledgeBaseIds'] = request.knowledge_base_ids_shrink
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.query):
+            body['Query'] = request.query
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RetrieveKnowledgePoints',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RetrieveKnowledgePointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retrieve_knowledge_points(
+        self,
+        request: main_models.RetrieveKnowledgePointsRequest,
+    ) -> main_models.RetrieveKnowledgePointsResponse:
+        runtime = RuntimeOptions()
+        return self.retrieve_knowledge_points_with_options(request, runtime)
+
+    async def retrieve_knowledge_points_async(
+        self,
+        request: main_models.RetrieveKnowledgePointsRequest,
+    ) -> main_models.RetrieveKnowledgePointsResponse:
+        runtime = RuntimeOptions()
+        return await self.retrieve_knowledge_points_with_options_async(request, runtime)
 
     def revoke_member_project_roles_with_options(
         self,
@@ -35723,6 +36129,92 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateWorkflowDefinitionResponse:
         runtime = RuntimeOptions()
         return await self.update_workflow_definition_with_options_async(request, runtime)
+
+    def upload_agent_session_file_with_options(
+        self,
+        tmp_req: main_models.UploadAgentSessionFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadAgentSessionFileResponse:
+        tmp_req.validate()
+        request = main_models.UploadAgentSessionFileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadAgentSessionFile',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadAgentSessionFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_agent_session_file_with_options_async(
+        self,
+        tmp_req: main_models.UploadAgentSessionFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadAgentSessionFileResponse:
+        tmp_req.validate()
+        request = main_models.UploadAgentSessionFileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'Params', 'json')
+        body = {}
+        if not DaraCore.is_null(request.id):
+            body['Id'] = request.id
+        if not DaraCore.is_null(request.jsonrpc):
+            body['Jsonrpc'] = request.jsonrpc
+        if not DaraCore.is_null(request.params_shrink):
+            body['Params'] = request.params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadAgentSessionFile',
+            version = '2024-05-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadAgentSessionFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_agent_session_file(
+        self,
+        request: main_models.UploadAgentSessionFileRequest,
+    ) -> main_models.UploadAgentSessionFileResponse:
+        runtime = RuntimeOptions()
+        return self.upload_agent_session_file_with_options(request, runtime)
+
+    async def upload_agent_session_file_async(
+        self,
+        request: main_models.UploadAgentSessionFileRequest,
+    ) -> main_models.UploadAgentSessionFileResponse:
+        runtime = RuntimeOptions()
+        return await self.upload_agent_session_file_with_options_async(request, runtime)
 
     def upload_semantic_file_with_options(
         self,

@@ -12,11 +12,11 @@ class PublishImageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result of the API request.
+        # The API request result.
         self.data = data
-        # The request ID, which is used to locate logs and troubleshoot issues.
+        # The ID of the request, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -59,9 +59,9 @@ class PublishImageResponseBodyData(DaraModel):
         process_id: str = None,
         success: bool = None,
     ):
-        # The image publish execution ID.
+        # The image publishing execution ID.
         self.process_id = process_id
-        # Indicates whether the trigger was successful.
+        # Indicates whether the operation was triggered successfully.
         self.success = success
 
     def validate(self):

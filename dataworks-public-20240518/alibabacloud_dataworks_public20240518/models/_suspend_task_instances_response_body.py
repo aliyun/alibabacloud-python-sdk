@@ -15,7 +15,7 @@ class SuspendTaskInstancesResponseBody(DaraModel):
     ):
         # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The result information of the batch operation. The structure is a map, where the key is the task instance ID and the value is the result information.
+        # The result information of the batch operation. The structure is a map where the key is the task instance ID and the value is the result information.
         self.success_info = success_info
 
     def validate(self):

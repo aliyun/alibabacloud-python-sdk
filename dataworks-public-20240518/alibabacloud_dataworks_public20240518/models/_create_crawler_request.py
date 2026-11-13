@@ -19,7 +19,7 @@ class CreateCrawlerRequest(DaraModel):
         scope: main_models.CreateCrawlerRequestScope = None,
         type: str = None,
     ):
-        # The ID of the data source associated with the crawler. The data source must be bound to a DataWorks workspace, and the data source type must match the Type value.
+        # The ID of the data source associated with the crawler. The data source must be bound to a DataWorks workspace, and the data source type must match the Type.
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
@@ -29,7 +29,7 @@ class CreateCrawlerRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The extended configuration for the crawler type. The key names, value types, required fields, default values, and valid values are determined by the SupportedOptionKeys value returned by GetCrawlerTypeCapabilities.
+        # The extended configuration for the crawler type. The key names, value types, required status, default values, and valid values are subject to the SupportedOptionKeys value returned by GetCrawlerTypeCapabilities.
         self.options = options
         # The ID of the Serverless 2.0 resource group used to run the collection task. Whether this parameter is required depends on the RequireResourceGroup value returned by GetCrawlerTypeCapabilities.
         self.resource_group_id = resource_group_id
@@ -37,7 +37,7 @@ class CreateCrawlerRequest(DaraModel):
         self.schedule_config = schedule_config
         # The collection scope configuration. If this parameter is not specified, the DefaultScopeUnit value returned by GetCrawlerTypeCapabilities is used.
         self.scope = scope
-        # The crawler type. Call GetCrawlerTypeCapabilities to query the valid values supported in the current region.
+        # The type of the crawler. You can call GetCrawlerTypeCapabilities to query the valid values supported in the current region.
         # 
         # This parameter is required.
         self.type = type
@@ -118,9 +118,9 @@ class CreateCrawlerRequestScope(DaraModel):
     ):
         # The regular expression used to exclude objects from the collection scope. This parameter is supported only when the SupportExcludeRegex value returned by GetCrawlerTypeCapabilities is true.
         self.exclude_regex = exclude_regex
-        # The list of database names. This parameter is supported only when Unit is set to DATABASE. A maximum of 1000 entries are allowed. Names cannot be empty or duplicated.
+        # The list of database names. This parameter is supported only when Unit is set to DATABASE. You can specify up to 1,000 database names. The names cannot be empty or duplicate.
         self.items = items
-        # The collection scope granularity. Valid values are determined by the SupportedScopeUnits value returned by GetCrawlerTypeCapabilities.
+        # The granularity of the collection scope. For valid values, see SupportedScopeUnits in the GetCrawlerTypeCapabilities response.
         # 
         # This parameter is required.
         self.unit = unit
@@ -163,9 +163,9 @@ class CreateCrawlerRequestScheduleConfig(DaraModel):
         cron_express: str = None,
         type: str = None,
     ):
-        # The six-field cron expression for periodic scheduling. This parameter is required when Type is set to NORMAL. The seconds field must be 0, and the scheduling frequency cannot exceed once per hour.
+        # The six-part cron expression for periodic scheduling. This parameter is required when Type is set to NORMAL. The seconds field must be 0, and the scheduling frequency cannot be higher than once per hour.
         self.cron_express = cron_express
-        # The scheduling type. MANUAL indicates manual execution, and NORMAL indicates periodic scheduling. Data sources in the development environment support only MANUAL. Whether NORMAL is available depends on the SupportSchedule value returned by GetCrawlerTypeCapabilities.
+        # The scheduling type. Valid values: MANUAL (manual execution) and NORMAL (periodic scheduling). Data sources in the development environment support only MANUAL. Whether NORMAL is available depends on the SupportSchedule value returned by GetCrawlerTypeCapabilities.
         # 
         # This parameter is required.
         self.type = type

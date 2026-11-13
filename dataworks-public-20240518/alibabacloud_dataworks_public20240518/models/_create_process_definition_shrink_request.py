@@ -21,15 +21,15 @@ class CreateProcessDefinitionShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.approval_nodes_shrink = approval_nodes_shrink
-        # The idempotency token. We recommend that you use a UUID.
+        # The client token that is used to ensure idempotence. We recommend using a UUID.
         self.client_token = client_token
-        # The description of the process definition.
+        # The description of the flow definition.
         # 
         # This parameter is required.
         self.description = description
-        # Specifies whether to enable the process definition.
+        # Specifies whether to enable the flow definition.
         self.enabled = enabled
-        # The name of the process definition.
+        # The name of the flow definition.
         # 
         # This parameter is required.
         self.name = name
@@ -47,7 +47,7 @@ class CreateProcessDefinitionShrinkRequest(DaraModel):
         # - Schema
         # - Default
         self.sub_type = sub_type
-        # The type of the process definition. Valid values:
+        # The type of the flow definition. Valid values:
         # 
         # 1. MaxCompute
         # 2. DataService

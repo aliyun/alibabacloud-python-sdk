@@ -14,7 +14,7 @@ class BuildImageResponseBody(DaraModel):
     ):
         # The API request result.
         self.data = data
-        # The request ID, which is used to locate logs and troubleshoot issues.
+        # The request ID, used to locate logs and troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -61,7 +61,7 @@ class BuildImageResponseBodyData(DaraModel):
     ):
         # The image build execution ID.
         self.process_id = process_id
-        # Indicates whether the build was successfully triggered.
+        # Indicates whether the image build was triggered successfully.
         self.success = success
 
     def validate(self):

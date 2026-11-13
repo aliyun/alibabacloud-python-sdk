@@ -15,7 +15,7 @@ class ListTasksResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID.
+        # The request ID. You can use this ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListTasksResponseBodyPagingInfo(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The tasks.
+        # The list of tasks.
         self.tasks = tasks
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -139,64 +139,52 @@ class ListTasksResponseBodyPagingInfoTasks(DaraModel):
         # The baseline ID.
         self.baseline_id = baseline_id
         # The creation time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.create_time = create_time
-        # The account ID of the creator.
+        # The account ID of the user who created the task.
         self.create_user = create_user
-        # The information about the associated data source.
+        # The associated data source information.
         self.data_source = data_source
-        # The description of the task.
+        # The description.
         self.description = description
-        # The task ID.
+        # The unique identifier of the task.
         self.id = id
         # The instance generation mode. Valid values:
-        # 
-        # - T+1
-        # 
-        # - Immediately
+        # - T+1: Generated on the next day.
+        # - Immediately: Generated immediately.
         self.instance_mode = instance_mode
         # The modification time.
+        # 
+        # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
-        # The account ID of the modifier.
+        # The account ID of the user who modified the task.
         self.modify_user = modify_user
-        # The name of the task.
+        # The name.
         self.name = name
         # The account ID of the task owner.
         self.owner = owner
-        # The priority of the task. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
+        # The task priority. Valid values: 1 to 8. A larger value indicates a higher priority. Default value: 1.
         self.priority = priority
-        # The environment of the workspace.
-        # 
-        # Valid values:
-        # 
-        # - Prod: production environment
-        # 
-        # - Dev: development environment
+        # The project environment.
         self.project_env = project_env
-        # The workspace ID.
+        # The project ID.
         self.project_id = project_id
-        # The rerun interval. Unit: seconds.
+        # The retry time interval, in seconds.
         self.rerun_interval = rerun_interval
-        # The rerun mode.
-        # 
-        # Valid values:
-        # 
-        # - AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
-        # 
-        # - FailureAllowed: The task can be rerun only after it fails to run.
-        # 
-        # - AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+        # The rerun configuration of the task.
         self.rerun_mode = rerun_mode
-        # The number of times that the task is rerun. This parameter takes effect only if the RerunMode parameter is set to AllAllowed or FailureAllowed.
+        # The number of retries. This parameter takes effect only when the task is configured to allow reruns.
         self.rerun_times = rerun_times
-        # The configurations of the runtime environment, such as the resource group information.
+        # The runtime environment configuration, such as the resource group information.
         self.runtime_resource = runtime_resource
         # The list of script parameters.
         self.script_parameters = script_parameters
-        # The timeout period of task running. Unit: seconds.
+        # The task execution timeout period, in seconds.
         self.timeout = timeout
-        # The method to trigger task scheduling.
+        # The trigger type of the task.
         self.trigger = trigger
-        # The type of the task.
+        # The task type.
         self.type = type
         # The ID of the workflow to which the task belongs.
         self.workflow_id = workflow_id
@@ -370,29 +358,19 @@ class ListTasksResponseBodyPagingInfoTasksTrigger(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The cron expression. This parameter takes effect only when type is set to Scheduler.
         self.cron = cron
-        # The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The expiration time for periodic triggers. This parameter takes effect only when type is set to Scheduler.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `9999-01-01 00:00:00`. The example does not include a time zone identifier.
         self.end_time = end_time
-        # The running mode of the task after it is triggered. This parameter takes effect only if the Type parameter is set to Scheduler.
-        # 
-        # Valid values:
-        # 
-        # - Pause
-        # 
-        # - Skip
-        # 
-        # - Normal
+        # The running mode upon trigger. This parameter takes effect only when type is set to Scheduler.
         self.recurrence = recurrence
-        # The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+        # The effective time for periodic triggers. This parameter takes effect only when type is set to Scheduler.
+        # 
+        # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identifier.
         self.start_time = start_time
         # The trigger type.
-        # 
-        # Valid values:
-        # 
-        # - Scheduler: scheduling cycle-based trigger
-        # 
-        # - Manual: manual trigger
         self.type = type
 
     def validate(self):
@@ -446,11 +424,11 @@ class ListTasksResponseBodyPagingInfoTasksRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The default number of compute units (CUs) configured for task running.
+        # The number of compute units (CUs) consumed by the task run configuration.
         self.cu = cu
-        # The ID of the image configured for task running.
+        # The ID of the image configured for the task runtime.
         self.image = image
-        # The ID of the resource group for scheduling configured for task running.
+        # The identifier of the scheduling resource group configured for the task runtime.
         self.resource_group_id = resource_group_id
 
     def validate(self):

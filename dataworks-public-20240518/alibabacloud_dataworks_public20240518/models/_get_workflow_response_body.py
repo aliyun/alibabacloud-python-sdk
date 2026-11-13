@@ -67,7 +67,7 @@ class GetWorkflowResponseBodyWorkflow(DaraModel):
         tasks: List[main_models.GetWorkflowResponseBodyWorkflowTasks] = None,
         trigger: main_models.GetWorkflowResponseBodyWorkflowTrigger = None,
     ):
-        # The client unique code of the workflow, which is used to implement asynchronous and idempotent operations. If you do not specify this parameter when creating the workflow, the system automatically generates a code and uniquely binds it to the resource ID. If you specify this parameter when updating or deleting the resource, it must be the same as the client unique code used during creation.
+        # The client unique code of the workflow, which is used to implement asynchronous and idempotent operations. If you do not specify this parameter when creating the workflow, the system automatically generates one and uniquely binds the code to the resource ID. If you specify this parameter when updating or deleting the resource, it must be the same as the client unique code used during creation.
         self.client_unique_code = client_unique_code
         # The creation time.
         # 
@@ -80,16 +80,16 @@ class GetWorkflowResponseBodyWorkflow(DaraModel):
         # The description.
         self.description = description
         # The project environment. Valid values:
-        # - Prod: Production environment.
-        # - Dev: Development environment.
+        # - Prod: production.
+        # - Dev: development.
         self.env_type = env_type
         # The unique identifier of the workflow.
         self.id = id
-        # The update time.
+        # The modification time.
         # 
         # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
-        # The account ID of the user who updated the workflow.
+        # The account ID of the user who modified the workflow.
         self.modify_user = modify_user
         # The name.
         self.name = name
@@ -105,7 +105,7 @@ class GetWorkflowResponseBodyWorkflow(DaraModel):
         self.tags = tags
         # The list of tasks.
         self.tasks = tasks
-        # The trigger configuration.
+        # The trigger method.
         self.trigger = trigger
 
     def validate(self):
@@ -271,18 +271,18 @@ class GetWorkflowResponseBodyWorkflowTrigger(DaraModel):
         # 
         # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identifier.
         self.end_time = end_time
-        # The running mode when the trigger is fired. This parameter takes effect only when Type is set to Scheduler. Valid values:
-        # - Pause: paused
-        # - Skip: dry run
-        # - Normal: normal execution
+        # The running mode when the workflow is triggered. This parameter takes effect only when Type is set to Scheduler. Valid values:
+        # - Pause: paused.
+        # - Skip: dry run.
+        # - Normal: normal running.
         self.recurrence = recurrence
-        # The time when periodic triggering takes effect. This parameter takes effect only when Type is set to Scheduler.
+        # The start time for periodic triggers. This parameter takes effect only when Type is set to Scheduler.
         # 
         # The format is `yyyy-MM-dd HH:mm:ss`, such as `1970-01-01 00:00:00`. The example does not include a time zone identifier.
         self.start_time = start_time
-        # The type of the trigger method. Valid values:
-        # - Scheduler: triggered by a scheduling cycle
-        # - Manual: triggered manually
+        # The trigger type. Valid values:
+        # - Scheduler: triggered by a scheduling period.
+        # - Manual: manually triggered.
         self.type = type
 
     def validate(self):
@@ -357,7 +357,7 @@ class GetWorkflowResponseBodyWorkflowTasks(DaraModel):
     ):
         # The ID of the baseline.
         self.baseline_id = baseline_id
-        # The client unique code of the task, which is used to implement asynchronous and idempotent operations. If you do not specify this parameter when creating the task, the system automatically generates a code and uniquely binds it to the resource ID. If you specify this parameter when updating or deleting the resource, it must be the same as the client unique code used during creation.
+        # The client unique code of the task, which is used to implement asynchronous and idempotent operations. If you do not specify this parameter when creating the task, the system automatically generates one and uniquely binds the code to the resource ID. If you specify this parameter when updating or deleting the resource, it must be the same as the client unique code used during creation.
         self.client_unique_code = client_unique_code
         # The creation time.
         # 
@@ -370,16 +370,16 @@ class GetWorkflowResponseBodyWorkflowTasks(DaraModel):
         # The description.
         self.description = description
         # The project environment. Valid values:
-        # - Prod: Production environment.
-        # - Dev: Development environment.
+        # - Prod: production.
+        # - Dev: development.
         self.env_type = env_type
         # The ID of the task.
         self.id = id
-        # The update time.
+        # The modification time.
         # 
         # The value is a 13-digit number, such as `1710239005403`.
         self.modify_time = modify_time
-        # The account ID of the user who updated the task.
+        # The account ID of the user who modified the task.
         self.modify_user = modify_user
         # The name of the task.
         self.name = name
@@ -391,21 +391,21 @@ class GetWorkflowResponseBodyWorkflowTasks(DaraModel):
         self.project_id = project_id
         # The retry time interval, in seconds.
         self.rerun_interval = rerun_interval
-        # The configuration that specifies whether the task can be rerun. Valid values:
+        # Specifies whether the task can be rerun. Valid values:
         # - AllDenied: The task cannot be rerun regardless of whether it succeeds or fails.
         # - FailureAllowed: The task can be rerun only when it fails.
-        # - AllAllowed: The task can be rerun regardless of whether it succeeds or fails.
+        # - AllAllowed: The task can be rerun after either success or failure.
         self.rerun_mode = rerun_mode
-        # The number of retries. This parameter takes effect only when the task is configured to be rerunnable.
+        # The number of retries. This parameter takes effect only when the task is configured to allow reruns.
         self.rerun_times = rerun_times
         # The runtime environment configuration, such as the resource group information.
         self.runtime_resource = runtime_resource
         # The timeout period for task execution, in seconds.
         self.timeout = timeout
-        # The running mode when the trigger is fired. Valid values:
-        # - Pause: paused
-        # - Skip: dry run
-        # - Normal: normal execution
+        # The running mode when the task is triggered. Valid values:
+        # - Pause: paused.
+        # - Skip: dry run.
+        # - Normal: normal running.
         self.trigger_recurrence = trigger_recurrence
         # The type of the task.
         self.type = type
@@ -570,11 +570,11 @@ class GetWorkflowResponseBodyWorkflowTasksRuntimeResource(DaraModel):
         image: str = None,
         resource_group_id: str = None,
     ):
-        # The CU consumption configured for task execution.
+        # The number of compute units (CUs) consumed during task execution.
         self.cu = cu
         # The ID of the image configured for task execution.
         self.image = image
-        # The identifier of the resource group for scheduling configured for task execution.
+        # The identifier of the scheduling resource group configured for task execution.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -746,10 +746,10 @@ class GetWorkflowResponseBodyWorkflowDependencies(DaraModel):
         upstream_task_id: int = None,
     ):
         # The dependency type. Valid values:
-        # - CrossCycleDependsOnChildren: cross-cycle dependency on first-level child nodes
-        # - CrossCycleDependsOnSelf: cross-cycle dependency on the node itself
-        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes
-        # - Normal: same-cycle dependency
+        # - CrossCycleDependsOnChildren: cross-cycle dependency on first-level child nodes.
+        # - CrossCycleDependsOnSelf: cross-cycle dependency on the node itself.
+        # - CrossCycleDependsOnOtherNode: cross-cycle dependency on other nodes.
+        # - Normal: same-cycle dependency.
         self.type = type
         # The output identifier of the upstream task. This field is returned when the dependency type is same-cycle dependency and the input content is configured.
         self.upstream_output = upstream_output

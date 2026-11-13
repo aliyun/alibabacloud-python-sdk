@@ -13,9 +13,9 @@ class BatchUpdateTasksResponseBody(DaraModel):
         request_id: str = None,
         success_info: Dict[str, main_models.SuccessInfoValue] = None,
     ):
-        # The request ID. Used for locating logs and troubleshooting issues.
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The result information of the batch operation. The structure is a map in which the node ID is the key and the result information is the value.
+        # The result information of the batch operation. The structure is a map, where the key is the task ID and the value is the result information.
         self.success_info = success_info
 
     def validate(self):

@@ -22,27 +22,27 @@ class DataQualityEvaluationTask(DaraModel):
         tenant_id: int = None,
         trigger: main_models.DataQualityEvaluationTaskTrigger = None,
     ):
-        # The ID of the data source that is used for task running.
+        # The ID of the data source used to execute the data quality check task.
         self.data_source_id = data_source_id
-        # The description of the task. The description can be up to 65,535 characters in length.
+        # The description of the data quality check task. The description can be up to 65,535 characters in length.
         self.description = description
-        # The callback settings during the lifecycle of the data quality evaluation task instance. Currently, only one hook that blocks a scheduled task is supported.
+        # The callback settings for the lifecycle of the data quality check task instance. Currently, only one hook that blocks the scheduled task is supported.
         self.hooks = hooks
-        # The ID of the data quality monitoring task.
+        # The ID of the data quality check task.
         self.id = id
-        # The name of the data quality monitoring task. The name can be up to 255 characters in length and can contain digits, English letters, Chinese characters, and half-width or full-width punctuation marks.
+        # The name of the data quality check task. The name can contain digits, letters, Chinese characters, and half-width or full-width punctuation marks, and can be up to 255 characters in length.
         self.name = name
-        # The configurations for alert notifications.
+        # The notification subscription configuration of the data quality check task.
         self.notifications = notifications
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The settings used when accessing the data source. Currently, only the EMR YARN queue and the SQL engine used to collect EMR tables can be specified. Supported SQL engines: SPARK_SQL, KYUUBI, PRESTO_SQL, and HIVE_SQL.
+        # The runtime configuration for using the data source. Currently, you can only specify the YARN queue for EMR and set the SQL engine to SPARK_SQL, KYUUBI, PRESTO_SQL, or HIVE_SQL when collecting EMR tables.
         self.runtime_conf = runtime_conf
-        # The monitored object of the task.
+        # The monitored object of the data quality check task.
         self.target = target
-        # The DataWorks tenant ID.
+        # The ID of the DataWorks tenant.
         self.tenant_id = tenant_id
-        # The trigger configuration of the task.
+        # The trigger configuration of the data quality check task.
         self.trigger = trigger
 
     def validate(self):
@@ -154,11 +154,10 @@ class DataQualityEvaluationTaskTrigger(DaraModel):
         task_ids: List[int] = None,
         type: str = None,
     ):
-        # Specifies the scheduled nodes whose instances can trigger the quality evaluation task after running successfully. This setting takes effect when type is ByScheduledTaskInstance.
+        # The IDs of the scheduled nodes whose successful instance execution triggers the data quality check task. This parameter takes effect only when Type is set to ByScheduledTaskInstance.
         self.task_ids = task_ids
-        # The trigger condition of the task. Valid values:
-        # 
-        # *   ByScheduledTaskInstance. The value indicates that the task is triggered when the instance of an auto triggered node is successfully run.
+        # The event that triggers the execution of the data quality check task. Valid values:
+        # - ByScheduledTaskInstance: A scheduled instance completes successfully.
         self.type = type
 
     def validate(self):
@@ -195,23 +194,21 @@ class DataQualityEvaluationTaskTarget(DaraModel):
         table_guid: str = None,
         type: str = None,
     ):
-        # The type of the database to which the table belongs. Valid values:
-        # 
-        # *   maxcompute
-        # *   emr
-        # *   cdh
-        # *   hologres
-        # *   analyticdb_for_postgresql
-        # *   analyticdb_for_mysql
-        # *   starrocks
+        # The database type of the table dataset. Valid values:
+        # - maxcompute
+        # - emr
+        # - cdh
+        # - hologres
+        # - analyticdb_for_postgresql
+        # - analyticdb_for_mysql
+        # - starrocks
         self.database_type = database_type
-        # The configuration of the partitioned table.
+        # The partition settings of the partitioned table.
         self.partition_spec = partition_spec
-        # The ID of the table in Data Map.
+        # The unique ID of the table in Data Map.
         self.table_guid = table_guid
-        # The type of the monitored object. Valid values:
-        # 
-        # *   Table
+        # The monitored object type. Valid values:
+        # - Table
         self.type = type
 
     def validate(self):
@@ -258,9 +255,9 @@ class DataQualityEvaluationTaskNotifications(DaraModel):
         condition: str = None,
         notifications: List[main_models.DataQualityEvaluationTaskNotificationsNotifications] = None,
     ):
-        # The trigger condition of the alert notification.
+        # The trigger condition of the alert.
         self.condition = condition
-        # The configurations for alert notifications.
+        # The specific notification settings.
         self.notifications = notifications
 
     def validate(self):
@@ -303,9 +300,9 @@ class DataQualityEvaluationTaskNotificationsNotifications(DaraModel):
         notification_channels: List[main_models.DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels] = None,
         notification_receivers: List[main_models.DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers] = None,
     ):
-        # The alert notification methods.
+        # The notification method.
         self.notification_channels = notification_channels
-        # The alert recipients.
+        # The settings of the alert recipients.
         self.notification_receivers = notification_receivers
 
     def validate(self):
@@ -358,11 +355,11 @@ class DataQualityEvaluationTaskNotificationsNotificationsNotificationReceivers(D
         receiver_type: str = None,
         receiver_values: List[str] = None,
     ):
-        # The extended information in the JSON format. For example, the DingTalk chatbot can remind all members in a DingTalk group by using the at sign (@).
+        # The extension information in JSON format. For example, DingTalk chatbots support mentioning all members.
         self.extension = extension
         # The type of the alert recipient.
         self.receiver_type = receiver_type
-        # The alert recipients.
+        # The alert recipient values.
         self.receiver_values = receiver_values
 
     def validate(self):
@@ -402,7 +399,7 @@ class DataQualityEvaluationTaskNotificationsNotificationsNotificationChannels(Da
         self,
         channels: List[str] = None,
     ):
-        # The alert notification method.
+        # The notification method.
         self.channels = channels
 
     def validate(self):
@@ -431,9 +428,10 @@ class DataQualityEvaluationTaskHooks(DaraModel):
         condition: str = None,
         type: str = None,
     ):
-        # The trigger configuration of the callback event.
+        # The trigger condition of the hook.
         self.condition = condition
-        # The subsequent action type. BlockTaskInstance: blocks execution of a DataWorks task instance.
+        # The type of the subsequent action. Valid values:
+        # - BlockTaskInstance: Blocks the execution of the DataWorks task instance.
         self.type = type
 
     def validate(self):

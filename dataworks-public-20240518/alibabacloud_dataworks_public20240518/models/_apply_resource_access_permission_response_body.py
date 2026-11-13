@@ -12,9 +12,9 @@ class ApplyResourceAccessPermissionResponseBody(DaraModel):
         data: List[str] = None,
         request_id: str = None,
     ):
-        # The list of request order IDs.
+        # The list of application IDs.
         self.data = data
-        # The request ID. Used for log identification and troubleshooting.
+        # The request ID. Used to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

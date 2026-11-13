@@ -14,13 +14,13 @@ class ApplyResourceAccessPermissionRequest(DaraModel):
         client_token: str = None,
         reason: str = None,
     ):
-        # The list of resource permission request entries.
+        # The list of resource permission applications.
         # 
         # This parameter is required.
         self.apply_contents = apply_contents
-        # The idempotency token. Used to prevent duplicate operations caused by multiple calls.
+        # The idempotency token used to prevent duplicate operations caused by multiple calls.
         self.client_token = client_token
-        # The reason for the request.
+        # The reason for the application.
         # 
         # This parameter is required.
         self.reason = reason
@@ -74,27 +74,27 @@ class ApplyResourceAccessPermissionRequestApplyContents(DaraModel):
         grantee: main_models.ApplyResourceAccessPermissionRequestApplyContentsGrantee = None,
         resource: main_models.ApplyResourceAccessPermissionRequestApplyContentsResource = None,
     ):
-        # The list of requested access types.
+        # The list of requested permissions.
         # 
-        # **Note**: Different resource levels support different access types. All access types are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
+        # **Note**: The types of permissions that can be applied for vary across resources at different levels. All are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).isValidLeaf, accessTypeRestrictions, and authMethodAccessTypes.
         # 
-        # See also: [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.access_types = access_types
-        # The authorization method. Currently, only SEVERLESS_STARROCKS supports specifying an authorization method: ranger or starrocksManager.
+        # The authorization method. Currently, only SEVERLESS_STARROCKS supports specifying the authorization method: ranger and starrocksManager.
         # 
-        # **Note**: Different resources support different authorization methods. All authorization methods are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authMethods.
+        # **Note**: The authorization methods supported vary across resources. All are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authMethods.
         # 
-        # See also: [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.auth_method = auth_method
-        # The permission expiration time, in millisecond-level timestamp format.
+        # The expiration time of the permissions, specified as a millisecond timestamp.
         self.expiration_time = expiration_time
         # The grantee description.
         # 
-        # **Note**: The supported principal types are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
+        # **Note**: The principal types supported by the system are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).authPrincipal.
         # 
-        # See also: [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.grantee = grantee
@@ -159,21 +159,21 @@ class ApplyResourceAccessPermissionRequestApplyContentsResource(DaraModel):
     ):
         # The resource type.
         # 
-        # **Note**: The resource types that can be requested are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).name.
+        # **Note**: The resource types supported by the system are constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).name.
         # 
-        # See also: [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         # 
         # This parameter is required.
         self.def_schema = def_schema
-        # The resource parsing version, constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).version.
+        # The resource parsing version is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).version.
         # 
-        # [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.def_version = def_version
         # The resource metadata declaration.
         # 
-        # **Note**: The metadata is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include the full-path metadata declaration from level 0 to the validLeaf level.
+        # **Note**: The metadata is constrained by [ResourceSchema](https://www.alibabacloud.com/help/en/dataworks/developer-reference/resourceschema-template-instructions).resources. A valid resource declaration must include metadata for the full resource path from level 0 through the validLeaf level.
         # 
-        # See also: [ResourceSchema documentation (Chinese)](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
+        # Appendix: [ResourceSchema documentation](https://www.alibabacloud.com/help/zh/dataworks/developer-reference/resourceschema-template-instructions)
         self.meta_data = meta_data
 
     def validate(self):
@@ -214,12 +214,11 @@ class ApplyResourceAccessPermissionRequestApplyContentsGrantee(DaraModel):
         principal_id: str = None,
         principal_type: str = None,
     ):
-        # The principal ID. The ID has different meanings depending on the principal type:
+        # The principal ID. The mapped IDs have different semantics for different principal types:
         # 
-        # - RamUser: DataWorks UserId
-        # - RamRole: DataWorks UserId prefixed with "ROLE_"
-        # 
-        # - DlfRole: DlfNext role name
+        # - RamUser: the DataWorks user ID.
+        # - RamRole: the DataWorks user ID that starts with "ROLE_".
+        # - DlfRole: the DlfNext role name.
         # 
         # This parameter is required.
         self.principal_id = principal_id

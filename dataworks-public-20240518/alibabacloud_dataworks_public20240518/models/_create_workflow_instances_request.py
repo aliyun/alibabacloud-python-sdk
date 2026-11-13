@@ -26,7 +26,7 @@ class CreateWorkflowInstancesRequest(DaraModel):
     ):
         # Specifies whether to run the workflow instance immediately after it is created. Default value: true.
         self.auto_start_enabled = auto_start_enabled
-        # The reason for creation.
+        # The reason for the creation.
         self.comment = comment
         # The runtime configurations.
         self.default_run_properties = default_run_properties
@@ -44,28 +44,28 @@ class CreateWorkflowInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The tag creation policy. Valid values:
+        # The tag creation policy.
         # - Append: Append mode. Inherits existing tags from the manual workflow and appends new tags.
         # - Overwrite: Overwrite mode. Does not inherit existing tags from the manual workflow and directly creates tags.
         self.tag_creation_policy = tag_creation_policy
-        # The list of task tags.
+        # The list of tags for the task.
         self.tags = tags
-        # The task parameters, which are used to set parameters for specific tasks. The value is in JSON format. The key is the task ID, and the value format refers to the task script parameters (Task.Script.Parameter in the response of the GetTask operation).
+        # The parameters for specific tasks, in JSON format. Each key is a task ID, and each value follows the format of the task script parameters (Task.Script.Parameter in the response of the GetTask operation).
         self.task_parameters = task_parameters
         # The type of the workflow instance. Valid values:
-        # - SupplementData: data backfill. The methods for specifying RootTaskIds and IncludeTaskIds vary based on the data backfill mode. For more information, see the parameter description of DefaultRunProperties.Mode.
-        # - ManualWorkflow: manually triggered workflow. You must set WorkflowId to the ID of the manually triggered workflow. RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manually triggered workflow is used.
-        # - Manual: manually triggered task. You only need to specify RootTaskIds, which is the list of manually triggered tasks to be run.
-        # - SmokeTest: smoke test. You only need to specify RootTaskIds, which is the list of test tasks to be run.
-        # - TriggerWorkflow: event-triggered workflow. You must set WorkflowId to the ID of the event-triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow is run.
+        # - SupplementData: Indicates data backfill. The methods for specifying RootTaskIds and IncludeTaskIds vary based on the data backfill mode. For more information, see the parameter description of DefaultRunProperties.Mode.
+        # - ManualWorkflow: Indicates a manual business flow. Set WorkflowId to the ID of the manual business flow. RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manual business flow is used.
+        # - Manual: Indicates a manual task. You only need to specify RootTaskIds, which is the list of manual tasks to be run.
+        # - SmokeTest: Indicates a smoke test. You only need to specify RootTaskIds, which is the list of test tasks to be run.
+        # - TriggerWorkflow: Indicates an event-triggered workflow. Set WorkflowId to the ID of the event-triggered workflow. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the entire workflow is run.
         # 
         # This parameter is required.
         self.type = type
-        # The ID of the workflow. The WorkflowId of a scheduled task is always 1.
+        # The ID of the workflow to which the task belongs. The WorkflowId of all scheduled tasks is 1.
         # 
         # This parameter is required.
         self.workflow_id = workflow_id
-        # The workflow parameters. This parameter takes effect only when a specific workflow is specified (WorkflowId != 1). For a periodic workflow or an event-triggered workflow, the format is key=value, and the priority is lower than that of task parameters. For a manually triggered workflow, the format is JSON, and the priority is higher than that of task parameters.
+        # The workflow parameters. This parameter takes effect only when a specific workflow is specified (WorkflowId != 1). For a periodic workflow or an event-triggered workflow, the format is `key=value`, and the priority is lower than that of task parameters. For a manual business flow, the format is JSON, and the priority is higher than that of task parameters.
         self.workflow_parameters = workflow_parameters
 
     def validate(self):
@@ -222,11 +222,11 @@ class CreateWorkflowInstancesRequestPeriods(DaraModel):
         # 
         # This parameter is required.
         self.biz_dates = biz_dates
-        # The end time of the period. Specify the time in the hh:mm:ss format based on the 24-hour clock. Default value: 23:59:59.
+        # The end time of the period. Specify the time in the `hh:mm:ss` format (24-hour clock). Default value: 23:59:59.
         # 
         # If you specify this field, you must also specify StartTime.
         self.end_time = end_time
-        # The start time of the period. Specify the time in the hh:mm:ss format based on the 24-hour clock. Default value: 00:00:00.
+        # The start time of the period. Specify the time in the `hh:mm:ss` format (24-hour clock). Default value: 00:00:00.
         # 
         # If you specify this field, you must also specify EndTime.
         self.start_time = start_time
@@ -277,11 +277,11 @@ class CreateWorkflowInstancesRequestPeriodsBizDates(DaraModel):
         end_biz_date: str = None,
         start_biz_date: str = None,
     ):
-        # The end business date. Format: yyyy-mm-dd.
+        # The end business date. Format: `yyyy-mm-dd`.
         # 
         # This parameter is required.
         self.end_biz_date = end_biz_date
-        # The start business date. Format: yyyy-mm-dd.
+        # The start business date. Format: `yyyy-mm-dd`.
         # 
         # This parameter is required.
         self.start_biz_date = start_biz_date
@@ -335,7 +335,7 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(DaraModel):
         self.alert = alert
         # The analysis configurations. This parameter is required when Type is set to SupplementData.
         self.analysis = analysis
-        # The data source name mappings for data backfill runs. The key of the map is DataSource.Name in the task definition, and the value is DataSource.Name used during data backfill runs. This parameter takes effect only when Type is set to SupplementData. If this parameter is not configured, an empty map is passed, or the key is not matched, the task continues to use the original data source. Currently, only EMR Spark SQL, EMR Shell, and EMR Spark tasks are supported.
+        # The data source name mappings used during data backfill runs. The key in the map is DataSource.Name in the task definition, and the value is DataSource.Name used during the data backfill run. This parameter takes effect only when Type is set to SupplementData. If this parameter is not configured, an empty map is passed, or the key does not match, the task continues to use the original data source. Currently, only EMR Spark SQL, EMR Shell, and EMR Spark tasks are supported.
         self.data_source_name_mappings = data_source_name_mappings
         # The list of project IDs to exclude from the run.
         self.exclude_project_ids = exclude_project_ids
@@ -346,27 +346,27 @@ class CreateWorkflowInstancesRequestDefaultRunProperties(DaraModel):
         # The list of task IDs to include in the run.
         self.include_task_ids = include_task_ids
         # The data backfill mode. Default value: ManualSelection. This parameter is required when Type is set to SupplementData. Valid values:
-        # - General: general mode. You can specify only one value for RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the value of RootTaskIds is included by default.
-        # - ManualSelection: manual selection mode. You can specify multiple values for RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the values of RootTaskIds are included by default.
-        # - Chain: chain mode. RootTaskIds must be left empty. You must specify two IDs for IncludeTaskIds, which are the start and end tasks.
-        # - AllDownstream: all downstream mode. You can specify only one value for RootTaskIds.
+        # - General: Indicates the general mode. You can specify only one value for RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the value of RootTaskIds is included by default.
+        # - ManualSelection: Indicates the manual selection mode. You can specify multiple values for RootTaskIds. IncludeTaskIds is optional. If you do not specify IncludeTaskIds, the values of RootTaskIds are included by default.
+        # - Chain: Indicates the chain mode. RootTaskIds must be left empty. You must specify two IDs for IncludeTaskIds, which are the start and end tasks.
+        # - AllDownstream: Indicates the all downstream mode. You can specify only one value for RootTaskIds.
         self.mode = mode
         # The run order. Default value: Asc. Valid values:
-        # - Asc: ascending order by business date
-        # - Desc: descending order by business date
+        # - Asc: Ascending order by business date.
+        # - Desc: Descending order by business date.
         self.order = order
-        # The number of parallel tasks. A value of 2 to 10 indicates the parallelism, and a value of 1 indicates serial execution. This parameter is required when Type is set to SupplementData.
+        # The number of tasks to run in parallel. Use a value from 2 to 10 for parallel execution, or 1 for sequential execution. This parameter is required when Type is set to SupplementData.
         self.parallelism = parallelism
-        # The run priority. Valid values: 1 to 11. A larger value indicates a higher priority. These parameter settings are supported only for manually triggered workflows and event-triggered workflows.
+        # The run priority. Valid values: 1 to 11. A larger value indicates a higher priority. These parameter settings are supported only for manual business flows and event-triggered workflows.
         self.priority = priority
-        # The priority weight policy. These parameter settings are supported only for manually triggered workflows and event-triggered workflows. Valid values:
-        # - Disable: disabled. This is the default value.
-        # - Upstream: calculates the sum of weights of upstream nodes for the current node. A deeper hierarchy indicates a higher weight.
+        # The priority weight policy. These parameter settings are supported only for manual business flows and event-triggered workflows. Valid values:
+        # - Disable: Disables the priority weight policy. This is the default value.
+        # - Upstream: Calculates the sum of the weights of the upstream nodes of the current node. A deeper hierarchy indicates a higher weight.
         self.priority_weight_strategy = priority_weight_strategy
         # The list of root task IDs.
         # 
         # - When Type is set to SupplementData, RootTaskIds is required except when Mode is set to Chain.
-        # - When Type is set to ManualWorkflow, RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manually triggered workflow is used.
+        # - When Type is set to ManualWorkflow, RootTaskIds is optional. If you do not specify RootTaskIds, the default root node list of the manual business flow is used.
         # - When Type is set to Manual, RootTaskIds is required and specifies the list of manual tasks to be run.
         # - When Type is set to SmokeTest, RootTaskIds is required and specifies the list of test tasks to be run.
         self.root_task_ids = root_task_ids
@@ -495,15 +495,15 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesRunPolicy(DaraModel):
         start_time: str = None,
         type: str = None,
     ):
-        # The end time of the run. Specify the time in the hh:mm:ss format based on the 24-hour clock. This field is required if you configure a run policy.
+        # The end run time. Specify the time in the `hh:mm:ss` format (24-hour clock). This field is required if a run policy is configured.
         self.end_time = end_time
         # Specifies whether the run can be started immediately if the run time is in the future. Default value: false.
         self.immediately = immediately
-        # The start time of the run. Specify the time in the hh:mm:ss format based on the 24-hour clock. This field is required if you configure a run policy.
+        # The start run time. Specify the time in the `hh:mm:ss` format (24-hour clock). This field is required if a run policy is configured.
         self.start_time = start_time
-        # The period type. This field is required if you configure a run policy. Valid values:
-        # - Daily: every day
-        # - Weekend: weekends only
+        # The time period type. This field is required if a run policy is configured. Valid values:
+        # - Daily: Runs every day.
+        # - Weekend: Runs on weekends only.
         self.type = type
 
     def validate(self):
@@ -588,14 +588,14 @@ class CreateWorkflowInstancesRequestDefaultRunPropertiesAlert(DaraModel):
         type: str = None,
     ):
         # The notification method. Valid values:
-        # - Sms: text message only
-        # - Mail: email only
-        # - SmsMail: text message and email
+        # - Sms: Sends SMS messages only.
+        # - Mail: Sends emails only.
+        # - SmsMail: Sends both SMS messages and emails.
         self.notice_type = notice_type
         # The alert policy. Valid values:
-        # - Success: alerts on success
-        # - Failure: alerts on failure
-        # - SuccessFailure: alerts on both success and failure
+        # - Success: Alerts on success.
+        # - Failure: Alerts on failure.
+        # - SuccessFailure: Alerts on both success and failure.
         self.type = type
 
     def validate(self):

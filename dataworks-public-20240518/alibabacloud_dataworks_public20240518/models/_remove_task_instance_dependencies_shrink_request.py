@@ -11,13 +11,13 @@ class RemoveTaskInstanceDependenciesShrinkRequest(DaraModel):
         id: int = None,
         upstream_task_instance_ids_shrink: str = None,
     ):
-        # The remarks.
+        # The comment.
         self.comment = comment
-        # The instance ID.
+        # The node instance ID.
         # 
         # This parameter is required.
         self.id = id
-        # The IDs of ancestor instances of the instance
+        # The list of upstream node instance IDs.
         self.upstream_task_instance_ids_shrink = upstream_task_instance_ids_shrink
 
     def validate(self):

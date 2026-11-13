@@ -19,21 +19,21 @@ class CreateSkillRequest(DaraModel):
         visibility: str = None,
         visibility_scope: main_models.CreateSkillRequestVisibilityScope = None,
     ):
-        # The **download URL of the bundle.zip file** (HTTP or HTTPS). This parameter and SkillMdOverride are mutually exclusive.
+        # The downloadable URL (HTTP or HTTPS) of the bundle.zip file. This parameter and SkillMdOverride are mutually exclusive.
         self.bundle_url = bundle_url
-        # The **skill description**.
+        # The description of the skill.
         self.description = description
         # The extended metadata in key-value pairs.
         self.extra = extra
-        # The **skill name**. The name must be unique within the current account.
+        # The name of the skill. The name must be unique within the current account.
         # 
         # This parameter is required.
         self.name = name
-        # The content of the SKILL.md file. This parameter and BundleUrl are mutually exclusive. If you do not provide a bundle, use this parameter to create a lightweight skill that contains only the SKILL.md file.
+        # The body of the SKILL.md file. This parameter and BundleUrl are mutually exclusive. If you do not provide a bundle, use this field to create a lightweight skill that contains only the SKILL.md file.
         self.skill_md_override = skill_md_override
-        # The **version note**.
+        # The release notes of the version.
         self.version_note = version_note
-        # The **visibility level**. Valid values: TENANT (visible to the entire tenant), PROJECT (visible to specific projects), and USER (visible to specific users).
+        # The visibility level. Valid values: TENANT: visible within the account. PROJECT: visible to specified projects. USER: visible to specified users.
         self.visibility = visibility
         # The visibility scope. Specify the corresponding field based on the value of Visibility.
         self.visibility_scope = visibility_scope
@@ -108,9 +108,9 @@ class CreateSkillRequestVisibilityScope(DaraModel):
         project_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The IDs of the visible projects. This parameter takes effect only when Visibility is set to PROJECT.
+        # The IDs of the projects in which the skill is visible. This field takes effect when Visibility is set to PROJECT.
         self.project_ids = project_ids
-        # The IDs of the visible users. This parameter takes effect only when Visibility is set to USER.
+        # The IDs of the users who can see the skill. This field takes effect when Visibility is set to USER.
         self.user_ids = user_ids
 
     def validate(self):

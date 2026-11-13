@@ -27,13 +27,13 @@ class ListServerIdeInstancesRequest(DaraModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The DataWorks workspace ID.
+        # The ID of the DataWorks workspace.
         self.project_id = project_id
-        # The account ID of the user that owns the instance.
+        # The account ID of the user who owns the instance. This parameter is used to filter instances.
         self.related_user_id = related_user_id
-        # The DataWorks resource group identifier. You can use the numeric ID of the resource group or the full identifier in the Serverless_res_group_{tenantId}_{resgId} format.
+        # The identifier of the DataWorks resource group. You can specify the numeric ID of the resource group or the full identifier in the Serverless_res_group_{tenantId}_{resgId} format.
         self.resource_group_id = resource_group_id
-        # The instance subtype. Valid values:
+        # The subtype of the instance. Valid values:
         # - PERSONAL_DEV: personal development environment
         # - DATA_AGENT: Data Agent
         self.sub_type = sub_type

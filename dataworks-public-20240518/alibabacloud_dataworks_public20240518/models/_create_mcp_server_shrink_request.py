@@ -14,13 +14,13 @@ class CreateMcpServerShrinkRequest(DaraModel):
     ):
         # The connection configuration of the MCP server.
         self.config_shrink = config_shrink
-        # The name of the MCP server. It must be unique at the tenant level. It must start with a lowercase letter and can contain only lowercase letters (`a-z`), digits (`0-9`), underscores (`_`), and hyphens (`-`).
+        # The name of the MCP server. The name must be unique at the tenant level. It must start with a lowercase letter and can contain only lowercase letters, digits, underscores (_), and hyphens (-).
         # 
         # This parameter is required.
         self.name = name
         # The visibility level.
         self.visibility = visibility
-        # The visibility scope. Specify the corresponding fields based on the value of Visibility.
+        # The visibility scope. Specify the corresponding field based on the value of Visibility.
         self.visibility_scope_shrink = visibility_scope_shrink
 
     def validate(self):

@@ -18,11 +18,13 @@ class ListWorkflowsShrinkRequest(DaraModel):
         tags_shrink: str = None,
         trigger_type: str = None,
     ):
-        # The project environment.
+        # The project environment. Valid values:
+        # - Prod: Production.
+        # - Dev: Development.
         self.env_type = env_type
         # The list of workflow IDs. You can specify multiple workflow IDs to query multiple workflows at a time.
         self.ids_shrink = ids_shrink
-        # The name. Fuzzy match is supported.
+        # The workflow name. Fuzzy match is supported.
         self.name = name
         # The account ID of the owner.
         self.owner = owner
@@ -34,14 +36,14 @@ class ListWorkflowsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The sort field. You can sort by fields such as modification time and creation time. The format is \\"SortField+SortOrder(Desc/Asc)\\", where Asc can be omitted. Valid values for the sort field:
+        # The sort field. You can sort workflows by fields such as modification time and creation time. The format is \\"SortField+SortOrder(Desc/Asc)\\". You can omit Asc. Valid values for the sort field:
         # - ModifyTime (Desc/Asc)
         # - CreateTime (Desc/Asc)
         # - Id (Desc/Asc)
         # 
         # Default value: Id Desc.
         self.sort_by = sort_by
-        # The list of tags. If a workflow matches any of the specified tags, it is returned in the result.
+        # The list of tags. If you specify multiple tags, workflows that match at least one of the tags are returned.
         self.tags_shrink = tags_shrink
         # The trigger type. Valid values:
         # - Scheduler

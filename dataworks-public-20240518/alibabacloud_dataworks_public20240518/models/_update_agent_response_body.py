@@ -56,13 +56,13 @@ class UpdateAgentResponseBodyAgent(DaraModel):
         name: str = None,
         skills: List[main_models.UpdateAgentResponseBodyAgentSkills] = None,
     ):
-        # The version of the updated agent definition.
+        # The updated agent definition version.
         self.agent_version = agent_version
         # The bound expert suites.
         self.expert_suites = expert_suites
-        # The creation time of the agent. It is a UNIX timestamp in milliseconds.
+        # The time when the agent was created. The value is a UNIX timestamp in milliseconds.
         self.gmt_create_time = gmt_create_time
-        # The last modified time of the agent. It is a UNIX timestamp in milliseconds.
+        # The time when the agent was last modified. The value is a UNIX timestamp in milliseconds.
         self.gmt_modified_time = gmt_modified_time
         # The name of the agent.
         self.name = name
@@ -147,7 +147,7 @@ class UpdateAgentResponseBodyAgentSkills(DaraModel):
     ):
         # The name of the bound custom skill.
         self.name = name
-        # The ID of the official skill.
+        # The official skill ID.
         self.skill_id = skill_id
         # The source of the skill.
         self.source = source

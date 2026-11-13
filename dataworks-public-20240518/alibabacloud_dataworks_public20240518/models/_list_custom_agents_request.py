@@ -16,9 +16,9 @@ class ListCustomAgentsRequest(DaraModel):
     ):
         # The maximum number of entries to return for this request.
         self.max_results = max_results
-        # The pagination token. Do not specify this parameter for the first query. For subsequent queries, specify the `NextToken` value returned from the previous query to retrieve the next page.
+        # The pagination token. Omit this parameter for the first query. For subsequent queries, specify the `NextToken` value returned from the previous query to retrieve the next page.
         self.next_token = next_token
-        # The search keyword used to perform a fuzzy match on agent names.
+        # The search keyword for fuzzy matching by agent name.
         self.q = q
         # The visibility levels used to filter results. You can specify multiple values.
         self.visibility = visibility

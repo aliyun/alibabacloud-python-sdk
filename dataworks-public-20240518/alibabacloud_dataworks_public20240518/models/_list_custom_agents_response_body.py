@@ -56,11 +56,11 @@ class ListCustomAgentsResponseBodyPagingInfo(DaraModel):
     ):
         # The list of custom agents.
         self.agents = agents
-        # The maximum number of entries returned in this response.
+        # The maximum number of entries returned for this request.
         self.max_results = max_results
         # The token for the next page. An empty value indicates that the last page is reached.
         self.next_token = next_token
-        # The total number of entries that meet the query conditions.
+        # The total number of entries that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -121,19 +121,19 @@ class ListCustomAgentsResponseBodyPagingInfoAgents(DaraModel):
         name: str = None,
         visibility: str = None,
     ):
-        # **The creator ID.**
+        # **The ID of the creator.**
         self.creator_id = creator_id
         # **The description.**
         self.description = description
         # **The display name.**
         self.display_name = display_name
-        # **The creation time (UNIX timestamp in milliseconds).**
+        # **The creation time (millisecond timestamp).**
         self.gmt_create_time = gmt_create_time
-        # **The last modification time (UNIX timestamp in milliseconds).**
+        # **The last modified time (millisecond timestamp).**
         self.gmt_modified_time = gmt_modified_time
-        # **The last modifier ID.**
+        # **The ID of the last modifier.**
         self.modifier_id = modifier_id
-        # **The agent name.**
+        # **The name of the agent.**
         self.name = name
         # **The visibility level.**
         self.visibility = visibility

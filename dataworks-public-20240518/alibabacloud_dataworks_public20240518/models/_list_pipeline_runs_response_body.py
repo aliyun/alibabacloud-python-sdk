@@ -15,7 +15,7 @@ class ListPipelineRunsResponseBody(DaraModel):
     ):
         # The pagination information.
         self.paging_info = paging_info
-        # The request ID. Use this ID to locate logs and troubleshoot issues.
+        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListPipelineRunsResponseBodyPagingInfo(DaraModel):
         pipeline_runs: List[main_models.ListPipelineRunsResponseBodyPagingInfoPipelineRuns] = None,
         total_count: int = None,
     ):
-        # The returned page number.
+        # The page number of the returned page.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # A list of deployment pipeline runs.
+        # The list of deployment pipelines.
         self.pipeline_runs = pipeline_runs
-        # The total number of entries that meet the filter criteria.
+        # The total number of entries that meet the filter conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -122,37 +122,34 @@ class ListPipelineRunsResponseBodyPagingInfoPipelineRuns(DaraModel):
         stages: List[main_models.ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages] = None,
         status: str = None,
     ):
-        # The creation timestamp of the deployment pipeline run.
+        # The timestamp when the deployment package was created.
         self.create_time = create_time
-        # The creator of the deployment pipeline run.
+        # The creator of the deployment pipeline.
         self.creator = creator
-        # The description of the deployment pipeline run.
+        # The description of the deployment pipeline.
         self.description = description
-        # The ID of the deployment pipeline run.
+        # The ID of the deployment pipeline.
         self.id = id
-        # The error message returned if the deployment pipeline run fails.
+        # The error message returned when an error occurs during a deployment stage.
         self.message = message
-        # The last modification timestamp of the deployment pipeline run.
+        # The time when the deployment pipeline was updated.
+        # 
+        # The value is a 13-digit timestamp, such as `1702736654000`.
         self.modify_time = modify_time
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # A list of deployment stages.
+        # The list of deployment stages.
         self.stages = stages
-        # The status of the deployment pipeline run.
+        # The status of the deployment pipeline.
         # 
         # Valid values:
         # 
-        # - `Init`: Initializing
-        # 
-        # - `Running`: Running
-        # 
-        # - `Success`: Succeeded
-        # 
-        # - `Fail`: Failed
-        # 
-        # - `Termination`: Terminated
-        # 
-        # - `Cancel`: Canceled
+        # - Init: Initialized.
+        # - Running: Running.
+        # - Success: Succeeded.
+        # - Fail: Failed.
+        # - Termination: Terminated.
+        # - Cancel: Canceled.
         self.status = status
 
     def validate(self):
@@ -245,45 +242,36 @@ class ListPipelineRunsResponseBodyPagingInfoPipelineRunsStages(DaraModel):
     ):
         # The code of the deployment stage.
         self.code = code
-        # The stage description.
+        # The description of the deployment stage.
         self.description = description
-        # Additional information about the deployment stage.
+        # The additional supplementary information about the deployment stage.
         self.detail = detail
-        # The error message returned if the deployment stage fails.
+        # The error message returned when an error occurs during a deployment stage.
         self.message = message
-        # The stage name.
+        # The name of the deployment stage.
         self.name = name
         # The status of the deployment stage.
         # 
         # Valid values:
         # 
-        # - `Init`: Initializing
-        # 
-        # - `Running`: Running
-        # 
-        # - `Success`: Succeeded
-        # 
-        # - `Fail`: Failed
-        # 
-        # - `Termination`: Terminated
-        # 
-        # - `Cancel`: Canceled
+        # - Init: Initialized.
+        # - Running: Running.
+        # - Success: Succeeded.
+        # - Fail: Failed.
+        # - Termination: Terminated.
+        # - Cancel: Canceled.
         self.status = status
         # The step number of the deployment stage.
         self.step = step
-        # The type of the deployment stage.
+        # The type of the deployment stage. This parameter categorizes the operation type of the deployment stage.
         # 
         # Valid values:
         # 
-        # - `Deploy`: A deploy operation
-        # 
-        # - `Check`: A check operation
-        # 
-        # - `Offline`: An offline operation
-        # 
-        # - `Build`: A build operation
-        # 
-        # - `Delete`: A delete operation
+        # - Deploy: Deployment operation.
+        # - Check: Check operation.
+        # - Offline: Undeployment operation.
+        # - Build: Build operation.
+        # - Delete: Delete operation.
         self.type = type
 
     def validate(self):
