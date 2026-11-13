@@ -22,6 +22,7 @@ class GetTemplateResponseBody(DaraModel):
         team_id: str = None,
         team_name: str = None,
         template_id: str = None,
+        template_type: str = None,
     ):
         # The error code. The value is 200 if the request is successful.
         self.code = code
@@ -29,7 +30,7 @@ class GetTemplateResponseBody(DaraModel):
         self.created_time = created_time
         # The response message.
         self.message = message
-        # The name of the template.
+        # The template name.
         self.name = name
         # Id of the request
         self.request_id = request_id
@@ -39,14 +40,16 @@ class GetTemplateResponseBody(DaraModel):
         self.resource_tags = resource_tags
         # The runtime configuration of the template.
         self.runtime_config = runtime_config
-        # The status of the template.
+        # The template status.
         self.status = status
         # The team ID.
         self.team_id = team_id
-        # The name of the team.
+        # The team name.
         self.team_name = team_name
         # The unique identifier of the template.
         self.template_id = template_id
+        # The templatetype. The default value is runtime template if it is not returned.
+        self.template_type = template_type
 
     def validate(self):
         if self.resource_tags:
@@ -101,6 +104,9 @@ class GetTemplateResponseBody(DaraModel):
         if self.template_id is not None:
             result['templateID'] = self.template_id
 
+        if self.template_type is not None:
+            result['templateType'] = self.template_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -145,6 +151,9 @@ class GetTemplateResponseBody(DaraModel):
 
         if m.get('templateID') is not None:
             self.template_id = m.get('templateID')
+
+        if m.get('templateType') is not None:
+            self.template_type = m.get('templateType')
 
         return self
 

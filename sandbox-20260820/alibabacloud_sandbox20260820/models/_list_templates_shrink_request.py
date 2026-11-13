@@ -14,7 +14,7 @@ class ListTemplatesShrinkRequest(DaraModel):
     ):
         # The maximum number of entries to return per page. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of nextToken returned in the response of the previous page.
+        # The pagination token. Use the nextToken value returned in the previous response.
         self.next_token = next_token
         # The resource tags.
         self.resource_tags_shrink = resource_tags_shrink

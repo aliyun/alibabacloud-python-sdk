@@ -47,6 +47,7 @@ from ._inner_sandbox_runtime_config import InnerSandboxRuntimeConfig
 from ._inner_sandbox_volume_mount import InnerSandboxVolumeMount
 from ._juice_fsvolume_config import JuiceFSVolumeConfig
 from ._log_configuration import LogConfiguration
+from ._metric_data import MetricData
 from ._network_configuration import NetworkConfiguration
 from ._ossvolume_config import OSSVolumeConfig
 from ._public_listed_sandbox import PublicListedSandbox
@@ -76,6 +77,7 @@ from ._public_update_template_step import PublicUpdateTemplateStep
 from ._public_update_template_vpcconfig import PublicUpdateTemplateVPCConfig
 from ._quota import Quota
 from ._quota_usage import QuotaUsage
+from ._resource_usage import ResourceUsage
 from ._sandbox_lifecycle_event import SandboxLifecycleEvent
 from ._tlsconfig import TLSConfig
 from ._update_api_key_input import UpdateApiKeyInput
@@ -126,6 +128,14 @@ from ._describe_quota_response import DescribeQuotaResponse
 from ._describe_template_cache_request import DescribeTemplateCacheRequest
 from ._describe_template_cache_response_body import DescribeTemplateCacheResponseBody
 from ._describe_template_cache_response import DescribeTemplateCacheResponse
+from ._get_metric_data_request import GetMetricDataRequest
+from ._get_metric_data_shrink_request import GetMetricDataShrinkRequest
+from ._get_metric_data_response_body import GetMetricDataResponseBody
+from ._get_metric_data_response import GetMetricDataResponse
+from ._get_resource_usage_request import GetResourceUsageRequest
+from ._get_resource_usage_shrink_request import GetResourceUsageShrinkRequest
+from ._get_resource_usage_response_body import GetResourceUsageResponseBody
+from ._get_resource_usage_response import GetResourceUsageResponse
 from ._get_team_request import GetTeamRequest
 from ._get_team_response_body import GetTeamResponseBody
 from ._get_team_response import GetTeamResponse
@@ -195,8 +205,14 @@ from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountNamedMountPoints
 from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountNamed
 from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountOssMountPoints
 from ._inner_sandbox_volume_mount import InnerSandboxVolumeMountOss
+from ._metric_data import MetricDataResultsSeriesPoints
+from ._metric_data import MetricDataResultsSeries
+from ._metric_data import MetricDataResults
 from ._public_listed_sandbox import PublicListedSandboxResourceTags
 from ._public_template import PublicTemplateResourceTags
+from ._resource_usage import ResourceUsageGroupsItemsBuckets
+from ._resource_usage import ResourceUsageGroupsItems
+from ._resource_usage import ResourceUsageGroups
 from ._update_volume_input import UpdateVolumeInputAgenticFSVolumeConfig
 from ._update_volume_input import UpdateVolumeInputMountConfigVpcConfig
 from ._update_volume_input import UpdateVolumeInputMountConfig
@@ -250,6 +266,7 @@ __all__ = [
     InnerSandboxVolumeMount,
     JuiceFSVolumeConfig,
     LogConfiguration,
+    MetricData,
     NetworkConfiguration,
     OSSVolumeConfig,
     PublicListedSandbox,
@@ -279,6 +296,7 @@ __all__ = [
     PublicUpdateTemplateVPCConfig,
     Quota,
     QuotaUsage,
+    ResourceUsage,
     SandboxLifecycleEvent,
     TLSConfig,
     UpdateApiKeyInput,
@@ -329,6 +347,14 @@ __all__ = [
     DescribeTemplateCacheRequest,
     DescribeTemplateCacheResponseBody,
     DescribeTemplateCacheResponse,
+    GetMetricDataRequest,
+    GetMetricDataShrinkRequest,
+    GetMetricDataResponseBody,
+    GetMetricDataResponse,
+    GetResourceUsageRequest,
+    GetResourceUsageShrinkRequest,
+    GetResourceUsageResponseBody,
+    GetResourceUsageResponse,
     GetTeamRequest,
     GetTeamResponseBody,
     GetTeamResponse,
@@ -398,8 +424,14 @@ __all__ = [
     InnerSandboxVolumeMountNamed,
     InnerSandboxVolumeMountOssMountPoints,
     InnerSandboxVolumeMountOss,
+    MetricDataResultsSeriesPoints,
+    MetricDataResultsSeries,
+    MetricDataResults,
     PublicListedSandboxResourceTags,
     PublicTemplateResourceTags,
+    ResourceUsageGroupsItemsBuckets,
+    ResourceUsageGroupsItems,
+    ResourceUsageGroups,
     UpdateVolumeInputAgenticFSVolumeConfig,
     UpdateVolumeInputMountConfigVpcConfig,
     UpdateVolumeInputMountConfig,

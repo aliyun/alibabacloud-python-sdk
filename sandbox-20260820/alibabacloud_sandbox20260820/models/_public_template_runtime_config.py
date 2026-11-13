@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_sandbox20260820 import models as main_models
 from darabonba.model import DaraModel
 
@@ -14,6 +16,7 @@ class PublicTemplateRuntimeConfig(DaraModel):
         log_config: main_models.PublicTemplateLogConfig = None,
         memory_size: int = None,
         sandbox_config: main_models.PublicTemplateSandboxConfig = None,
+        vpc_bindings: List[str] = None,
         vpc_config: main_models.PublicTemplateVPCConfig = None,
     ):
         # The CPU specification of the sandbox instance, in cores.
@@ -28,7 +31,9 @@ class PublicTemplateRuntimeConfig(DaraModel):
         self.memory_size = memory_size
         # The image and startup configuration of the sandbox instance.
         self.sandbox_config = sandbox_config
-        # The VPC configuration of the sandbox instance.
+        # The set of allowed inbound source VPCs configured for Generation 2 templates. An omitted or empty array indicates that no inbound VPC bindings are configured, and this field can be omitted for historical records without configurations. This configuration is independent of the egress network vpcConfig. Subsequent template updates do not overwrite the bindings of functions used by existing sandboxes. When the feature switch is enabled, POST /init requests without query parameters to the standard E2B sandbox envd port 49983 are temporarily exempt from VPC source checks, while other authentication mechanisms remain in effect.
+        self.vpc_bindings = vpc_bindings
+        # The virtual private cloud (VPC) configuration of the sandbox instance.
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -62,6 +67,9 @@ class PublicTemplateRuntimeConfig(DaraModel):
         if self.sandbox_config is not None:
             result['sandboxConfig'] = self.sandbox_config.to_map()
 
+        if self.vpc_bindings is not None:
+            result['vpcBindings'] = self.vpc_bindings
+
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
 
@@ -88,6 +96,9 @@ class PublicTemplateRuntimeConfig(DaraModel):
         if m.get('sandboxConfig') is not None:
             temp_model = main_models.PublicTemplateSandboxConfig()
             self.sandbox_config = temp_model.from_map(m.get('sandboxConfig'))
+
+        if m.get('vpcBindings') is not None:
+            self.vpc_bindings = m.get('vpcBindings')
 
         if m.get('vpcConfig') is not None:
             temp_model = main_models.PublicTemplateVPCConfig()

@@ -11,7 +11,7 @@ class UpdateTemplateRequest(DaraModel):
         body: main_models.PublicUpdateTemplateInput = None,
         team_id: str = None,
     ):
-        # The request struct for updating a template. Specify only the fields to be updated.
+        # The request struct for updating the template. Specify only the fields that you want to modify.
         self.body = body
         # The team ID.
         self.team_id = team_id

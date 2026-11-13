@@ -17,13 +17,13 @@ class ListTemplateCacheResponseBody(DaraModel):
         request_id: str = None,
         template_caches: List[main_models.PublicTemplateCache] = None,
     ):
-        # The error code. The value is 200 if the request is successful.
+        # The error code. A value of 200 indicates success.
         self.code = code
-        # The maximum number of entries per page returned in this response.
+        # The maximum number of entries returned per page in this response.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page. This value is empty if no more results are available.
+        # The pagination token for the next page. The value is empty if no more results are available.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id

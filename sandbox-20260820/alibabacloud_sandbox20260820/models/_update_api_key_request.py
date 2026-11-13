@@ -10,7 +10,7 @@ class UpdateApiKeyRequest(DaraModel):
         self,
         body: main_models.UpdateApiKeyInput = None,
     ):
-        # The request parameters for updating the API key.
+        # The request parameters for updating an API key.
         self.body = body
 
     def validate(self):

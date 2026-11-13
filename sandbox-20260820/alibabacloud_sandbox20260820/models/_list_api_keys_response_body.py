@@ -20,13 +20,13 @@ class ListApiKeysResponseBody(DaraModel):
     ):
         # The list of API keys.
         self.api_keys = api_keys
-        # The response code. A value of 200 indicates success.
+        # The response code. The value is 200 if the request is successful.
         self.code = code
-        # The response message. The value is success if the request succeeds.
+        # The response message. The value is success if the request is successful.
         self.message = message
         # The page number of the current query.
         self.page_number = page_number
-        # The number of entries per page used in the current query.
+        # The number of entries per page for the current query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

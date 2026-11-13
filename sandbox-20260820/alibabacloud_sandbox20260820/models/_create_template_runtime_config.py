@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_sandbox20260820 import models as main_models
 from darabonba.model import DaraModel
 
@@ -14,21 +16,24 @@ class CreateTemplateRuntimeConfig(DaraModel):
         log_config: main_models.CreateTemplateLogConfig = None,
         memory_size: int = None,
         sandbox_config: main_models.CreateTemplateSandboxConfig = None,
+        vpc_bindings: List[str] = None,
         vpc_config: main_models.CreateTemplateVPCConfig = None,
     ):
-        # The CPU specification of the sandboxed container instance, in cores.
+        # The CPU specifications of the sandbox instance, in cores.
         self.cpu = cpu
-        # The disk specification of the sandboxed container instance, in MB.
+        # The disk specifications of the sandbox instance, in MB.
         self.disk_size = disk_size
-        # Specifies whether the sandboxed container instance is allowed to access the Internet.
+        # Specifies whether the sandbox instance is allowed to access the Internet.
         self.internet_access = internet_access
-        # The log delivery configuration of the sandboxed container instance.
+        # The log delivery configuration of the sandbox instance.
         self.log_config = log_config
-        # The memory specification of the sandboxed container instance, in MB.
+        # The memory specifications of the sandbox instance, in MB.
         self.memory_size = memory_size
-        # The image and startup configuration of the sandboxed container instance.
+        # The image and startup configuration of the sandbox instance.
         self.sandbox_config = sandbox_config
-        # The VPC configuration of the sandboxed container instance.
+        # The list of allowed inbound source VPCs. This feature is supported only for generation 2 templates (sandboxConfig.generation=2). A non-empty array specifies the set of source VPCs that are allowed to access the sandbox data endpoint. Omitting the field, setting it to null, or providing an empty array indicates that no inbound bindings are configured. This setting is independent of the egress network vpcConfig and does not modify the API key source policy. A null value is treated as omitted to maintain compatibility with SDK requests where the field is not set. For generation 1 templates, explicitly providing an empty or non-empty array returns a 400 error. You can update or clear the list by calling UpdateTemplate. The changes take effect after a new version is successfully built, and existing sandboxes continue to use the original functions and policies.
+        self.vpc_bindings = vpc_bindings
+        # The VPC configuration of the sandbox instance.
         self.vpc_config = vpc_config
 
     def validate(self):
@@ -62,6 +67,9 @@ class CreateTemplateRuntimeConfig(DaraModel):
         if self.sandbox_config is not None:
             result['sandboxConfig'] = self.sandbox_config.to_map()
 
+        if self.vpc_bindings is not None:
+            result['vpcBindings'] = self.vpc_bindings
+
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
 
@@ -88,6 +96,9 @@ class CreateTemplateRuntimeConfig(DaraModel):
         if m.get('sandboxConfig') is not None:
             temp_model = main_models.CreateTemplateSandboxConfig()
             self.sandbox_config = temp_model.from_map(m.get('sandboxConfig'))
+
+        if m.get('vpcBindings') is not None:
+            self.vpc_bindings = m.get('vpcBindings')
 
         if m.get('vpcConfig') is not None:
             temp_model = main_models.CreateTemplateVPCConfig()

@@ -17,7 +17,7 @@ class ListTeamsRequest(DaraModel):
         self.page_number = page_number
         # The number of teams to return on each page. Default value: 10. Valid values: 1 to 100.
         self.page_size = page_size
-        # Filters teams by plan specification. Valid values: eco (Economy), std (Standard), pro (Professional), and ent (Enterprise).
+        # Filters teams by plan specifications. Valid values: eco (Economy), std (Standard), pro (Professional), and ent (Enterprise).
         self.plan = plan
         # The resource group ID.
         self.resource_group_id = resource_group_id

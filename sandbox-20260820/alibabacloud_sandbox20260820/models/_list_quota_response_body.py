@@ -19,11 +19,11 @@ class ListQuotaResponseBody(DaraModel):
     ):
         # The response code. A value of 200 indicates success.
         self.code = code
-        # The maximum number of entries returned per page. This field is returned only if a positive integer is specified for maxResults in the request.
+        # The maximum number of entries to return per page. This field is returned only if a positive integer is specified for maxResults in the request.
         self.max_results = max_results
-        # The response message. The value is success if the request is successful.
+        # The response message. A value of success indicates success.
         self.message = message
-        # The pagination token for the next page, which can be used in subsequent queries.
+        # The pagination token for the next page.
         self.next_token = next_token
         # The list of quota configurations.
         self.quotas = quotas

@@ -19,13 +19,13 @@ class DescribeApiKeyResponseBody(DaraModel):
     ):
         # The API key information.
         self.api_key = api_key
-        # The response code. A value of 200 indicates success.
+        # The response code. The value is 200 when the request is successful.
         self.code = code
         # The list of IP blacklist rules.
         self.ip_blacklist = ip_blacklist
         # The list of IP address whitelist rules.
         self.ip_whitelist = ip_whitelist
-        # The response message. The value is success for a successful request.
+        # The response message. The value is success when the request is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id

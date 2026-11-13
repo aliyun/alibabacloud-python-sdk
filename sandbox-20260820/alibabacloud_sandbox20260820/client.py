@@ -1083,6 +1083,246 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_template_cache_with_options_async(template_id, request, headers, runtime)
 
+    def get_metric_data_with_options(
+        self,
+        tmp_req: main_models.GetMetricDataRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetricDataResponse:
+        tmp_req.validate()
+        request = main_models.GetMetricDataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.group_by):
+            request.group_by_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_by, 'groupBy', 'json')
+        if not DaraCore.is_null(tmp_req.metric_names):
+            request.metric_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.metric_names, 'metricNames', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.group_by_shrink):
+            query['groupBy'] = request.group_by_shrink
+        if not DaraCore.is_null(request.metric_names_shrink):
+            query['metricNames'] = request.metric_names_shrink
+        if not DaraCore.is_null(request.period):
+            query['period'] = request.period
+        if not DaraCore.is_null(request.sandbox_id):
+            query['sandboxID'] = request.sandbox_id
+        if not DaraCore.is_null(request.sandbox_plan):
+            query['sandboxPlan'] = request.sandbox_plan
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        if not DaraCore.is_null(request.template_id):
+            query['templateID'] = request.template_id
+        if not DaraCore.is_null(request.time):
+            query['time'] = request.time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetricData',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/metrics',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetricDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_metric_data_with_options_async(
+        self,
+        tmp_req: main_models.GetMetricDataRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMetricDataResponse:
+        tmp_req.validate()
+        request = main_models.GetMetricDataShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.group_by):
+            request.group_by_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_by, 'groupBy', 'json')
+        if not DaraCore.is_null(tmp_req.metric_names):
+            request.metric_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.metric_names, 'metricNames', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.group_by_shrink):
+            query['groupBy'] = request.group_by_shrink
+        if not DaraCore.is_null(request.metric_names_shrink):
+            query['metricNames'] = request.metric_names_shrink
+        if not DaraCore.is_null(request.period):
+            query['period'] = request.period
+        if not DaraCore.is_null(request.sandbox_id):
+            query['sandboxID'] = request.sandbox_id
+        if not DaraCore.is_null(request.sandbox_plan):
+            query['sandboxPlan'] = request.sandbox_plan
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        if not DaraCore.is_null(request.template_id):
+            query['templateID'] = request.template_id
+        if not DaraCore.is_null(request.time):
+            query['time'] = request.time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMetricData',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/metrics',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMetricDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_metric_data(
+        self,
+        request: main_models.GetMetricDataRequest,
+    ) -> main_models.GetMetricDataResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_metric_data_with_options(request, headers, runtime)
+
+    async def get_metric_data_async(
+        self,
+        request: main_models.GetMetricDataRequest,
+    ) -> main_models.GetMetricDataResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_metric_data_with_options_async(request, headers, runtime)
+
+    def get_resource_usage_with_options(
+        self,
+        tmp_req: main_models.GetResourceUsageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceUsageResponse:
+        tmp_req.validate()
+        request = main_models.GetResourceUsageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.group_by):
+            request.group_by_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_by, 'groupBy', 'json')
+        if not DaraCore.is_null(tmp_req.usage_names):
+            request.usage_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.usage_names, 'usageNames', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
+        if not DaraCore.is_null(request.group_by_shrink):
+            query['groupBy'] = request.group_by_shrink
+        if not DaraCore.is_null(request.sandbox_plan):
+            query['sandboxPlan'] = request.sandbox_plan
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        if not DaraCore.is_null(request.template_id):
+            query['templateID'] = request.template_id
+        if not DaraCore.is_null(request.usage_names_shrink):
+            query['usageNames'] = request.usage_names_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetResourceUsage',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/resource-usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetResourceUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_usage_with_options_async(
+        self,
+        tmp_req: main_models.GetResourceUsageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceUsageResponse:
+        tmp_req.validate()
+        request = main_models.GetResourceUsageShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.group_by):
+            request.group_by_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_by, 'groupBy', 'json')
+        if not DaraCore.is_null(tmp_req.usage_names):
+            request.usage_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.usage_names, 'usageNames', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['granularity'] = request.granularity
+        if not DaraCore.is_null(request.group_by_shrink):
+            query['groupBy'] = request.group_by_shrink
+        if not DaraCore.is_null(request.sandbox_plan):
+            query['sandboxPlan'] = request.sandbox_plan
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.team_id):
+            query['teamID'] = request.team_id
+        if not DaraCore.is_null(request.template_id):
+            query['templateID'] = request.template_id
+        if not DaraCore.is_null(request.usage_names_shrink):
+            query['usageNames'] = request.usage_names_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetResourceUsage',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/resource-usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetResourceUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_usage(
+        self,
+        request: main_models.GetResourceUsageRequest,
+    ) -> main_models.GetResourceUsageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_resource_usage_with_options(request, headers, runtime)
+
+    async def get_resource_usage_async(
+        self,
+        request: main_models.GetResourceUsageRequest,
+    ) -> main_models.GetResourceUsageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_resource_usage_with_options_async(request, headers, runtime)
+
     def get_team_with_options(
         self,
         team_id: str,

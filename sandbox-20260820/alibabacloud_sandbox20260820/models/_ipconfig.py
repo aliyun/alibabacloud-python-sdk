@@ -10,7 +10,7 @@ class IPConfig(DaraModel):
         description: str = None,
         ip_address: str = None,
     ):
-        # The description of the IP rule. The description can be up to 128 characters in length.
+        # The description of the IP rule. The length cannot exceed 128 characters.
         self.description = description
         # The IPv4 address or CIDR block. IPv6 is not supported.
         self.ip_address = ip_address

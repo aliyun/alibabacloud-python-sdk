@@ -13,7 +13,7 @@ class UpdateVolumeResponseBody(DaraModel):
         request_id: str = None,
         volume: main_models.E2BVolume = None,
     ):
-        # The response code. A value of 200 indicates success.
+        # The response code. The value is 200 if the request is successful.
         self.code = code
         # The response message. The value is success if the request is successful.
         self.message = message

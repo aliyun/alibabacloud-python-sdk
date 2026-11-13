@@ -1,3 +1,9 @@
+2026-11-13 Version: 1.3.0
+- Support API GetMetricData.
+- Support API GetResourceUsage.
+- Update API GetTemplate: add response parameters Body.templateType.
+
+
 2026-11-12 Version: 1.2.5
 - Update API ListTemplates: add request parameters resourceTags.
 

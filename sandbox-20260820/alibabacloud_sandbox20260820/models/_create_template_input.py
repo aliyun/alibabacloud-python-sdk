@@ -15,8 +15,9 @@ class CreateTemplateInput(DaraModel):
         resource_tags: List[main_models.CreateTemplateInputResourceTags] = None,
         runtime_config: main_models.CreateTemplateRuntimeConfig = None,
         team_id: str = None,
+        template_type: str = None,
     ):
-        # The build configuration of the template. This configuration specifies the build process in action-based blocks. If this parameter is not specified, the service automatically derives the configuration based on the source image. Public runtime images are used directly without building. For other images, the copy and envdInject actions are automatically executed.
+        # The build configuration of the template. This configuration specifies the build process in action-based chunks. If this parameter is not specified, the service automatically derives the configuration based on the source image. Public runtime images are used directly without building. For other images, the copy and envdInject actions are automatically executed.
         self.build_config = build_config
         # The name of the template. The name must be unique within the same team.
         self.name = name
@@ -24,8 +25,10 @@ class CreateTemplateInput(DaraModel):
         self.resource_tags = resource_tags
         # The runtime configuration of the template. This configuration determines the specifications and environment of the sandbox instances created from the template.
         self.runtime_config = runtime_config
-        # The ID of the team to which the template belongs. The ID is in UUID format. If this parameter is not specified, the default team of the current account is used.
+        # The ID of the team to which the template belongs. The ID must be in UUID format. If this parameter is not specified, the default team of the current account is used.
         self.team_id = team_id
+        # The templatetype. Set this parameter to layer to build a layer template.
+        self.template_type = template_type
 
     def validate(self):
         if self.build_config:
@@ -59,6 +62,9 @@ class CreateTemplateInput(DaraModel):
         if self.team_id is not None:
             result['teamID'] = self.team_id
 
+        if self.template_type is not None:
+            result['templateType'] = self.template_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -82,6 +88,9 @@ class CreateTemplateInput(DaraModel):
 
         if m.get('teamID') is not None:
             self.team_id = m.get('teamID')
+
+        if m.get('templateType') is not None:
+            self.template_type = m.get('templateType')
 
         return self
 

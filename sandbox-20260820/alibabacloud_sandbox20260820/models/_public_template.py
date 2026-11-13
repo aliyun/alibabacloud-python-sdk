@@ -19,25 +19,28 @@ class PublicTemplate(DaraModel):
         team_id: str = None,
         team_name: str = None,
         template_id: str = None,
+        template_type: str = None,
     ):
         # The time when the template was created, in UTC and RFC 3339 format.
         self.created_time = created_time
-        # The name of the template, which is unique within a team.
+        # The template name, which is unique within a team.
         self.name = name
         # The ID of the Alibaba Cloud resource group to which the team belongs.
         self.resource_group_id = resource_group_id
         # The resource tags.
         self.resource_tags = resource_tags
-        # The runtime configuration of the template, which determines the specifications and environment of the sandbox instances created from the template.
+        # The runtime configuration of the template, which determines the specifications and environment of sandbox instances created from this template.
         self.runtime_config = runtime_config
         # The current status of the template.
         self.status = status
         # The ID of the team to which the resource belongs, in UUID format.
         self.team_id = team_id
-        # The name of the team.
+        # The team name.
         self.team_name = team_name
-        # The ID of the sandbox template.
+        # The sandbox template ID.
         self.template_id = template_id
+        # The templatetype. An empty value indicates a runtime template.
+        self.template_type = template_type
 
     def validate(self):
         if self.resource_tags:
@@ -83,6 +86,9 @@ class PublicTemplate(DaraModel):
         if self.template_id is not None:
             result['templateID'] = self.template_id
 
+        if self.template_type is not None:
+            result['templateType'] = self.template_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -118,6 +124,9 @@ class PublicTemplate(DaraModel):
 
         if m.get('templateID') is not None:
             self.template_id = m.get('templateID')
+
+        if m.get('templateType') is not None:
+            self.template_type = m.get('templateType')
 
         return self
 
