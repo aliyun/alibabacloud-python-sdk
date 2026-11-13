@@ -29,11 +29,11 @@ class CreateClusterRequest(DaraModel):
         self.cluster_name = cluster_name
         # The cluster type.
         self.cluster_type = cluster_type
-        # The components (software instances).
+        # The components, which are software instances.
         self.components = components
         # The cluster number.
         self.hpn_zone = hpn_zone
-        # Specifies whether to skip failed nodes. Default value: False.
+        # Specifies whether to ignore failed node tasks. Default value: false.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
         # The network information.
         self.networks = networks
@@ -220,30 +220,30 @@ class CreateClusterRequestNodeGroups(DaraModel):
     ):
         # Specifies whether file system mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # The list of hyper nodes.
+        # The list of hypernodes.
         self.hyper_nodes = hyper_nodes
         # The system image ID.
         self.image_id = image_id
-        # The key pair name.
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
         # The logon password.
         self.login_password = login_password
         # The machine type.
         self.machine_type = machine_type
-        # The node group description.
+        # The description of the node group.
         self.node_group_description = node_group_description
-        # The node group name.
+        # The name of the node group.
         self.node_group_name = node_group_name
         # The list of nodes.
         self.nodes = nodes
-        # The RAM role name of the node. You can call the RAM API ListRoles to query the node RAM roles that you have created. The trusted entity of the specified role must be set to Lingjun AI Computing Service.
-        # Note: Clearing an existing role is not supported.
+        # The name of the Resource Access Management (RAM) role for the node. You can call the ListRoles operation to query the RAM roles that you have created. The trusted entity of the role must be Lingjun AI Computing Service.
+        # Note: You cannot clear an existing role.
         self.ram_role_name = ram_role_name
         # The system cloud disk information.
         self.system_disk = system_disk
-        # The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
+        # The custom executable shell script. The script must be encoded in Base64. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
-        # Specifies whether to enable GPU splitting.
+        # Specifies whether to enable GPU virtualization splitting.
         self.virtual_gpu_enabled = virtual_gpu_enabled
         # The zone ID.
         self.zone_id = zone_id
@@ -370,18 +370,39 @@ class CreateClusterRequestNodeGroupsSystemDisk(DaraModel):
     def __init__(
         self,
         category: str = None,
+        encrypted: bool = None,
+        kmskey_id: str = None,
         performance_level: str = None,
         size: int = None,
     ):
         # The cloud disk type. Valid values:
         # 
-        #  - cloud_essd: Enterprise SSD (ESSD).
+        #  - cloud_essd: ESSD.
         self.category = category
-        # Settings for the performance level (PL) when an ESSD is created as the system cloud disk. Valid values:
-        # - PL0: a maximum of 10,000 random read/write IOPS per cloud disk.
-        # - PL1: a maximum of 50,000 random read/write IOPS per cloud disk.
+        # Specifies whether to encrypt the system cloud disk. Valid values:
+        # - true: Encrypt.
+        # - false: Do not encrypt.
+        # 
+        # Default value: false.
+        # 
+        # 
+        # >Notice: When you use a shared encrypted image to create a cloud disk based on an encrypted snapshot, you must set the Encrypted request parameter of the cloud disk to true. This ensures that the created cloud disk is encrypted by using the key of the shared image recipient.
+        # 
+        # > System cloud disk encryption during instance creation is not active in Hong Kong (China) Zone D or Singapore Zone A.
+        self.encrypted = encrypted
+        # The KMS key ID corresponding to the system cloud disk.
+        # 
+        # If the Encrypted Settings parameter is set to true but you do not specify KMSKeyId, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
+        # - If the cloud disk is created from a non-shared encrypted snapshot, the encryption key used for the snapshot is used by default.
+        # - If the cloud disk is created from a shared encrypted snapshot, the service key is used by default.
+        # - If the cloud disk is created in a region where account-level default encryption for Elastic Block Storage (EBS) is enabled, the specified account-level key is used by default.
+        # - In other cases, the service key is used by default.
+        self.kmskey_id = kmskey_id
+        # Specifies the performance level Settings when you create an ESSD as the system cloud disk. Valid values:
+        # - PL0: The cloud disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1: The cloud disk can deliver up to 50,000 random read/write IOPS.
         self.performance_level = performance_level
-        # The cloud disk size. Unit: GB.
+        # The size of the cloud disk. Unit: GB.
         self.size = size
 
     def validate(self):
@@ -395,6 +416,12 @@ class CreateClusterRequestNodeGroupsSystemDisk(DaraModel):
         if self.category is not None:
             result['Category'] = self.category
 
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
+
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
 
@@ -407,6 +434,12 @@ class CreateClusterRequestNodeGroupsSystemDisk(DaraModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
 
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
@@ -503,19 +536,48 @@ class CreateClusterRequestNodeGroupsNodesDataDisk(DaraModel):
         bursting_enabled: bool = None,
         category: str = None,
         delete_with_node: bool = None,
+        device: str = None,
+        encrypted: bool = None,
+        kmskey_id: str = None,
         performance_level: str = None,
         provisioned_iops: int = None,
         size: int = None,
     ):
-        # Specifies whether to enable I/O performance burst.
+        # Specifies whether to enable the burst (performance burst) feature.
         self.bursting_enabled = bursting_enabled
         # The cloud disk type.
         self.category = category
-        # Specifies whether the data cloud disk is deleted when the node is unsubscribed.
+        # Specifies whether to delete the data cloud disk upon node unsubscription.
         self.delete_with_node = delete_with_node
-        # The performance parameter of the data cloud disk.
+        # The device name of the data cloud disk. This parameter is used only in full image scenarios. You can use this parameter to set the device name of the data cloud disk to match the source data cloud disk in the full image, and modify the properties of the corresponding data cloud disk. For non-full image scaling, the Device parameter is set by the system by default. When you use a full image for scaling:
+        # 
+        # - Regardless of whether the data cloud disk parameters are explicitly set, the system restores the data cloud disks from the source image for the user. The content is consistent with the data cloud disks in the source image.
+        # - If the data cloud disk is explicitly specified but the Device parameter is not set, additional empty data cloud disks are created. The quantity and properties are specified by the user data cloud disk parameters.
+        # - If the Device parameter of the explicitly specified data cloud disk does not match the Device parameter of the source image data cloud disk, additional empty data cloud disks are created. The quantity and properties are specified by the user data cloud disk parameters.
+        # - If multiple data cloud disks and their Device parameters are explicitly specified, but all Device parameters point to the same device of a data cloud disk in the source image, only one of the specified data cloud disks matches and overwrites the source image data cloud disk by device. The other specified data cloud disks are silently discarded, and no additional empty data cloud disks are created.
+        # - If the Device parameter of the explicitly specified data cloud disk matches the Device parameter of the source image data cloud disk, no additional empty data cloud disks are created. The user-specified data cloud disks correspond one-to-one with the source image data cloud disks by device. If the size of the user-specified data cloud disk is smaller than the size of the source image data cloud disk, the system returns HTTP status code 417 and the error message: Data disk Size can not be less than the image data disk snapshot size for Device \\"/dev/xvdb\\".
+        # - The total number of data cloud disks mounted to the node (specified data cloud disks + data cloud disks restored from the image) cannot exceed 16 for standard cloud disk groups, and cannot exceed 4 when Cloud Paralleled File System (CPFS) is enabled.
+        self.device = device
+        # Specifies whether to encrypt the data cloud disk. Valid values:
+        # - true: Encrypt.
+        # - false: Do not encrypt.
+        # 
+        # Default value: false.
+        # 
+        # 
+        # >Notice: When you use a shared encrypted image to create a cloud disk based on an encrypted snapshot, you must set the Encrypted request parameter of the cloud disk to true. This ensures that the created cloud disk is encrypted by using the key of the shared image recipient.
+        self.encrypted = encrypted
+        # The KMS key ID corresponding to the data cloud disk.
+        # 
+        # If the Encrypted Settings parameter is set to true but you do not specify KMSKeyId, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
+        # - If the cloud disk is created from a non-shared encrypted snapshot, the encryption key used for the snapshot is used by default.
+        # - If the cloud disk is created from a shared encrypted snapshot, the service key is used by default.
+        # - If the cloud disk is created in a region where account-level default encryption for EBS is enabled, the specified account-level key is used by default.
+        # - In other cases, the service key is used by default.
+        self.kmskey_id = kmskey_id
+        # The performance metric parameter of the data cloud disk.
         self.performance_level = performance_level
-        # The provisioned performance (IOPS). Valid values: 0 to 50000.
+        # The provisioned performance (IOPS). Valid values: 0 to 50,000.
         self.provisioned_iops = provisioned_iops
         # The cloud disk size.
         self.size = size
@@ -536,6 +598,15 @@ class CreateClusterRequestNodeGroupsNodesDataDisk(DaraModel):
 
         if self.delete_with_node is not None:
             result['DeleteWithNode'] = self.delete_with_node
+
+        if self.device is not None:
+            result['Device'] = self.device
+
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
 
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
@@ -558,6 +629,15 @@ class CreateClusterRequestNodeGroupsNodesDataDisk(DaraModel):
 
         if m.get('DeleteWithNode') is not None:
             self.delete_with_node = m.get('DeleteWithNode')
+
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
 
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
@@ -584,7 +664,7 @@ class CreateClusterRequestNodeGroupsHyperNodes(DaraModel):
         self.data_disk = data_disk
         # The hostname.
         self.hostname = hostname
-        # The hyper node ID.
+        # The hypernode ID.
         self.hyper_node_id = hyper_node_id
         # The logon password.
         self.login_password = login_password
@@ -657,27 +737,56 @@ class CreateClusterRequestNodeGroupsHyperNodesDataDisk(DaraModel):
         bursting_enabled: bool = None,
         category: str = None,
         delete_with_node: bool = None,
+        device: str = None,
+        encrypted: bool = None,
+        kmskey_id: str = None,
         performance_level: str = None,
         provisioned_iops: int = None,
         size: int = None,
     ):
-        # Specifies whether to enable I/O performance burst.
+        # Specifies whether to enable the burst (performance burst) feature.
         self.bursting_enabled = bursting_enabled
         # The cloud disk type. Valid values:
         # 
-        #  - cloud_essd: Enterprise SSD (ESSD).
+        #  - cloud_essd: ESSD.
         self.category = category
-        # Specifies whether the data cloud disk is deleted when the node is unsubscribed.
+        # Specifies whether to delete the data cloud disk upon node unsubscription.
         self.delete_with_node = delete_with_node
-        # Settings for the performance level (PL) when an ESSD is created as the data cloud disk. Valid values:
-        # - PL0: a maximum of 10,000 random read/write IOPS per cloud disk.
-        # - PL1: a maximum of 50,000 random read/write IOPS per cloud disk.
-        # - PL2: a maximum of 100,000 random read/write IOPS per cloud disk.
-        # - PL3: a maximum of 1,000,000 random read/write IOPS per cloud disk.
+        # The device name of the data cloud disk. This parameter is used only in full image scenarios. You can use this parameter to set the device name of the data cloud disk to match the source data cloud disk in the full image, and modify the properties of the corresponding data cloud disk. For non-full image scaling, the Device parameter is set by the system by default. When you use a full image for scaling:
+        # 
+        # - Regardless of whether the data cloud disk parameters are explicitly set, the system restores the data cloud disks from the source image for the user. The content is consistent with the data cloud disks in the source image.
+        # - If the data cloud disk is explicitly specified but the Device parameter is not set, additional empty data cloud disks are created. The quantity and properties are specified by the user data cloud disk parameters.
+        # - If the Device parameter of the explicitly specified data cloud disk does not match the Device parameter of the source image data cloud disk, additional empty data cloud disks are created. The quantity and properties are specified by the user data cloud disk parameters.
+        # - If multiple data cloud disks and their Device parameters are explicitly specified, but all Device parameters point to the same device of a data cloud disk in the source image, only one of the specified data cloud disks matches and overwrites the source image data cloud disk by device. The other specified data cloud disks are silently discarded, and no additional empty data cloud disks are created.
+        # - If the Device parameter of the explicitly specified data cloud disk matches the Device parameter of the source image data cloud disk, no additional empty data cloud disks are created. The user-specified data cloud disks correspond one-to-one with the source image data cloud disks by device. If the size of the user-specified data cloud disk is smaller than the size of the source image data cloud disk, the system returns HTTP status code 417 and the error message: Data disk Size can not be less than the image data disk snapshot size for Device \\"/dev/xvdb\\".
+        # - The total number of data cloud disks mounted to the node (specified data cloud disks + data cloud disks restored from the image) cannot exceed 16 for standard cloud disk groups, and cannot exceed 4 when Cloud Paralleled File System (CPFS) is enabled.
+        self.device = device
+        # Specifies whether to encrypt the data cloud disk. Valid values:
+        # - true: Encrypt.
+        # - false: Do not encrypt.
+        # 
+        # Default value: false.
+        # 
+        # 
+        # >Notice: When you use a shared encrypted image to create a cloud disk based on an encrypted snapshot, you must set the Encrypted request parameter of the cloud disk to true. This ensures that the created cloud disk is encrypted by using the key of the shared image recipient.
+        self.encrypted = encrypted
+        # The KMS key ID corresponding to the data cloud disk.
+        # 
+        # If the Encrypted Settings parameter is set to true but you do not specify KMSKeyId, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
+        # - If the cloud disk is created from a non-shared encrypted snapshot, the encryption key used for the snapshot is used by default.
+        # - If the cloud disk is created from a shared encrypted snapshot, the service key is used by default.
+        # - If the cloud disk is created in a region where account-level default encryption for EBS is enabled, the specified account-level key is used by default.
+        # - In other cases, the service key is used by default.
+        self.kmskey_id = kmskey_id
+        # Specifies the performance level Settings when you create an ESSD as the data cloud disk. Valid values:
+        # - PL0: The cloud disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1: The cloud disk can deliver up to 50,000 random read/write IOPS.
+        # - PL2: The cloud disk can deliver up to 100,000 random read/write IOPS.
+        # - PL3: The cloud disk can deliver up to 1,000,000 random read/write IOPS.
         # 
         # Default value: PL1.
         self.performance_level = performance_level
-        # The provisioned performance of read/write IOPS for the ESSD AutoPL cloud disk (per disk).
+        # The read/write IOPS of the provisioned performance for a single ESSD AutoPL cloud disk.
         self.provisioned_iops = provisioned_iops
         # The cloud disk size. Unit: GiB.
         self.size = size
@@ -698,6 +807,15 @@ class CreateClusterRequestNodeGroupsHyperNodesDataDisk(DaraModel):
 
         if self.delete_with_node is not None:
             result['DeleteWithNode'] = self.delete_with_node
+
+        if self.device is not None:
+            result['Device'] = self.device
+
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
 
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
@@ -720,6 +838,15 @@ class CreateClusterRequestNodeGroupsHyperNodesDataDisk(DaraModel):
 
         if m.get('DeleteWithNode') is not None:
             self.delete_with_node = m.get('DeleteWithNode')
+
+        if m.get('Device') is not None:
+            self.device = m.get('Device')
+
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
 
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
@@ -758,7 +885,7 @@ class CreateClusterRequestNetworks(DaraModel):
         self.v_switch_zone_id = v_switch_zone_id
         # The VPC ID.
         self.vpc_id = vpc_id
-        # The information about the reused VPD.
+        # The reused VPD information.
         self.vpd_info = vpd_info
 
     def validate(self):
@@ -885,7 +1012,7 @@ class CreateClusterRequestNetworksNewVpdInfo(DaraModel):
         vpd_cidr: str = None,
         vpd_subnets: List[main_models.CreateClusterRequestNetworksNewVpdInfoVpdSubnets] = None,
     ):
-        # The Cloud Enterprise Network (CEN) instance ID.
+        # The CEN ID.
         self.cen_id = cen_id
         # The cloud link CIDR block.
         self.cloud_link_cidr = cloud_link_cidr
@@ -1129,7 +1256,7 @@ class CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds(DaraModel):
     ):
         # The bond name.
         self.name = name
-        # The cluster subnet from which the IP address is allocated.
+        # The source cluster subnet for IP addresses.
         self.subnet = subnet
 
     def validate(self):
@@ -1211,7 +1338,7 @@ class CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds(DaraM
     ):
         # The bond name.
         self.name = name
-        # The cluster subnet from which the IP address is allocated.
+        # The source cluster subnet for IP addresses.
         self.subnet = subnet
 
     def validate(self):
@@ -1293,7 +1420,7 @@ class CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds(DaraModel):
     ):
         # The bond name.
         self.name = name
-        # The cluster subnet from which the IP address is allocated.
+        # The source cluster subnet for IP addresses.
         self.subnet = subnet
 
     def validate(self):
@@ -1369,7 +1496,7 @@ class CreateClusterRequestComponentsComponentConfig(DaraModel):
     ):
         # The basic parameters of the component.
         self.basic_args = basic_args
-        # The node pool configuration, which is used to establish the mapping between node groups and node pools. This parameter is required when ComponentType is set to ACKEdge. Leave this parameter empty for other component types.
+        # The node pool configuration, which is used to establish the mapping between node groups and node pools. This parameter is required when ComponentType is set to ACKEdge, and must be left empty for other component types.
         self.node_units = node_units
 
     def validate(self):

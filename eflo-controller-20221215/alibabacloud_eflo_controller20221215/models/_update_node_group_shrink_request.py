@@ -19,7 +19,7 @@ class UpdateNodeGroupShrinkRequest(DaraModel):
     ):
         # Specifies whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # The default image ID of the node group. If you do not specify this parameter, the image ID remains unchanged.
+        # The default image ID of the node group. If this parameter is not specified, the image ID remains unchanged.
         self.image_id = image_id
         # The name of the key pair.
         self.key_pair_name = key_pair_name
@@ -29,11 +29,12 @@ class UpdateNodeGroupShrinkRequest(DaraModel):
         self.new_node_group_name = new_node_group_name
         # The ID of the node group.
         self.node_group_id = node_group_id
-        # The name of the RAM role for the node. You can call the ListRoles API operation of RAM to query the RAM roles that you have created. The trusted entity of the role must be Lingjun AI Computing Service. <warning>Submitting an empty string "" clears the RAM role of the node group.</warning>
+        # The name of the node RAM role. You can use the RAM API ListRoles to query the node RAM roles that you have created. The trusted entity of the configured role must be Lingjun AI Computing Service.
+        # <warning>Submitting an empty string "" clears the RAM role of the node group.</warning>
         self.ram_role_name = ram_role_name
         # The system cloud disk configuration.
         self.system_disk_shrink = system_disk_shrink
-        # The custom executable shell script. It must be Base64-encoded, and the maximum size of the raw data is 16 KB.
+        # The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
 
     def validate(self):

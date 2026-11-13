@@ -85,28 +85,28 @@ class CreateNodeGroupRequestNodeGroup(DaraModel):
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The key pair name.
+        # The name of the key pair.
         self.key_pair_name = key_pair_name
-        # The logon password.
+        # The password.
         self.login_password = login_password
-        # The machine type.
+        # The instance type.
         # 
         # This parameter is required.
         self.machine_type = machine_type
-        # The node group description.
+        # The description of the node group.
         self.node_group_description = node_group_description
-        # The node group name.
+        # The name of the node group.
         # 
         # This parameter is required.
         self.node_group_name = node_group_name
-        # The RAM role name of the node. You can call the RAM API ListRoles to query the RAM roles you have created. The trusted entity of the role must be set to Lingjun AI Computing Service.
-        # > Note: Clearing an existing role is not currently supported.
+        # The name of the Resource Access Management (RAM) role for the node. You can call the ListRoles operation of RAM to query the RAM roles that you have created. The trusted entity of the specified role must be Lingjun Intelligent Computing.
+        # Note: You cannot clear an existing role.
         self.ram_role_name = ram_role_name
-        # The system disk configuration of the node.
+        # The system cloud disk configuration details of the node.
         self.system_disk = system_disk
-        # A custom executable shell script that must be Base64-encoded. The maximum size of the raw data is 16 KB.
+        # The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
-        # Specifies whether GPU virtualization splitting is enabled.
+        # Specifies whether to enable GPU virtualization splitting.
         self.virtual_gpu_enabled = virtual_gpu_enabled
 
     def validate(self):
@@ -201,18 +201,39 @@ class CreateNodeGroupRequestNodeGroupSystemDisk(DaraModel):
     def __init__(
         self,
         category: str = None,
+        encrypted: bool = None,
+        kmskey_id: str = None,
         performance_level: str = None,
         size: int = None,
     ):
         # The cloud disk type. Valid values:
         # 
-        #  - cloud_essd: Enterprise SSD (ESSD) cloud disk.
+        # - cloud_essd: ESSD.
         self.category = category
-        # The performance level (PL) of the ESSD cloud disk used as the system disk. Valid values:
-        # - PL0: a maximum of 10,000 random read/write IOPS per cloud disk.
-        # - PL1: a maximum of 50,000 random read/write IOPS per cloud disk.
+        # Specifies whether to encrypt the system cloud disk. Valid values:
+        # - true: Encrypts the system cloud disk.
+        # - false: Does not encrypt the system cloud disk.
+        # 
+        # Default value: false.
+        # 
+        # 
+        # >Notice: When you use a shared encrypted image to create a cloud disk based on an encrypted snapshot, you must set the Encrypted parameter to true for the cloud disk to ensure that the created cloud disk is encrypted by using the key of the recipient.
+        # 
+        # > Encrypting the system cloud disk during instance creation is not supported in Zone D of China (Hong Kong) and Zone A of Singapore.
+        self.encrypted = encrypted
+        # The KMS key ID corresponding to the system cloud disk.
+        # 
+        # If Encrypted is set to true but KMSKeyId is not specified, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
+        # - If the cloud disk is created from a non-shared encrypted snapshot, the encryption key used by the snapshot is used by default.
+        # - If the cloud disk is created from a shared encrypted snapshot, the service key is used by default.
+        # - If the cloud disk is created in a region where account-level default encryption for Elastic Block Storage (EBS) is enabled, the specified account-level key is used by default.
+        # - In other cases, the service key is used by default.
+        self.kmskey_id = kmskey_id
+        # The performance level of the ESSD when it is used as the system cloud disk. Valid values:
+        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
         self.performance_level = performance_level
-        # The disk size. Unit: GB.
+        # The size. Unit: GB.
         self.size = size
 
     def validate(self):
@@ -226,6 +247,12 @@ class CreateNodeGroupRequestNodeGroupSystemDisk(DaraModel):
         if self.category is not None:
             result['Category'] = self.category
 
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
+
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
 
@@ -238,6 +265,12 @@ class CreateNodeGroupRequestNodeGroupSystemDisk(DaraModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
 
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')

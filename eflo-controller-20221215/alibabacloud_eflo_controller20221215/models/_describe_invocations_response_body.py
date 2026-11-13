@@ -13,7 +13,7 @@ class DescribeInvocationsResponseBody(DaraModel):
         invocations: main_models.DescribeInvocationsResponseBodyInvocations = None,
         request_id: str = None,
     ):
-        # The script execution records.
+        # The invocation records.
         self.invocations = invocations
         # The request ID.
         self.request_id = request_id
@@ -51,7 +51,7 @@ class DescribeInvocationsResponseBodyInvocations(DaraModel):
         self,
         invocation: List[main_models.DescribeInvocationsResponseBodyInvocationsInvocation] = None,
     ):
-        # The file delivery record.
+        # The file delivery records.
         self.invocation = invocation
 
     def validate(self):
@@ -109,61 +109,61 @@ class DescribeInvocationsResponseBodyInvocationsInvocation(DaraModel):
         self.command_description = command_description
         # The command name.
         self.command_name = command_name
-        # The time when the task was created. The time is displayed in ISO 8601 format. Z in the example indicates UTC.
+        # The time when the task was created. The time follows the ISO 8601 standard, and Z in the example indicates UTC.
         self.creation_time = creation_time
-        # The execution time of the scheduled command.
+        # The execution time of scheduled commands.
         self.frequency = frequency
-        # The overall execution status of the command. The overall execution status depends on the common execution status across all instances in this invocation. Valid values:
-        # - Pending: The system is validating or sending the command. When the command execution status on at least one instance is Pending, the overall execution status is Pending.
-        # - Scheduled: The scheduled command has been sent and is waiting to run. When the command execution status on at least one instance is Scheduled, the overall execution status is Scheduled.
-        # - Running: The command is running on the instance. When the command execution status on at least one instance is Running, the overall execution status is Running.
-        # - Success: The command execution status on each instance is Stopped or Success, and the command execution status on at least one instance is Success. The overall execution status is Success.
-        #     - One-time task: The command execution is complete and the exit code is 0.
-        #     - Scheduled task: The last execution was successful with an exit code of 0, and all specified schedules have been completed.
-        # - Failed: The command execution status on each instance is Stopped or Failed. The overall execution status is Failed. The return value is Failed when the command execution status on an instance is one or more of the following:
-        #     - Command validation failed (Invalid).
-        #     - Command delivery failed (Aborted).
-        #     - Command execution completed with a non-zero exit code (Failed).
-        #     - Command execution timed out (Timeout).
-        #     - Command execution encountered an exception (Error).
-        # - Stopping: The task is being stopped. When the command execution status on at least one instance is Stopping, the overall execution status is Stopping.
-        # - Stopped: The task has been stopped. When the command execution status on all instances is Stopped, the overall execution status is Stopped. The return value is Stopped when the command execution status on an instance is one of the following:
-        #     - The task was canceled (Cancelled).
-        #     - The task was terminated (Terminated).
-        # - PartialFailed: Some instances executed successfully while others failed. When the command execution status on each instance is Success, Failed, or Stopped, the overall execution status is PartialFailed.
+        # The overall execution status of the command. The overall execution status depends on the combined execution status of all instances involved in the invocation. Valid values:
+        # - Pending: The system is verifying or sending the command. If the execution status of at least one instance is Pending, the overall execution status is Pending.
+        # - Scheduled: The scheduled command has been sent and is waiting to be executed. If the execution status of at least one instance is Scheduled, the overall execution status is Scheduled.
+        # - Running: The command is running on the instances. If the execution status of at least one instance is Running, the overall execution status is Running.
+        # - Success: The execution status of all instances is Stopped or Success, and the execution status of at least one instance is Success.
+        #     - For tasks that run immediately: The command execution is complete, and the exit code is 0.
+        #     - For scheduled tasks: The most recent execution was successful with an exit code of 0, and all specified execution times have elapsed.
+        # - Failed: The execution status of all instances is Stopped or Failed. The overall execution status is Failed if the execution status of one or more instances is any of the following:
+        #     - Invalid: Command verification failed.
+        #     - Aborted: Command sending failed.
+        #     - Failed: Command execution is complete, but the exit code is not 0.
+        #     - Timeout: Command execution timed out.
+        #     - Error: An exception occurred during command execution.
+        # - Stopping: The task is being stopped. If the execution status of at least one instance is Stopping, the overall execution status is Stopping.
+        # - Stopped: The task has been stopped. If the execution status of all instances is Stopped, the overall execution status is Stopped. The overall execution status is Stopped if the execution status of one or more instances is any of the following:
+        #     - Cancelled: The task was canceled.
+        #     - Terminated: The task was terminated.
+        # - PartialFailed: The command execution succeeded on some instances and failed on others. If the execution status of all instances is Success, Failed, or Stopped, the overall execution status is PartialFailed.
         # 
-        # > The InvokeStatus parameter in the response has a similar meaning, but we recommend that you check this parameter instead.
+        # > The InvokeStatus response parameter has a similar meaning to this parameter, but we recommend that you check this return value.
         self.invocation_status = invocation_status
-        # The command execution ID.
+        # The invocation ID.
         self.invoke_id = invoke_id
         # The command execution records.
         self.invoke_nodes = invoke_nodes
-        # The overall execution status of the command. The overall execution status depends on the common execution status of one or more instances in the invocation. Valid values: 
+        # The overall execution status of the command. The overall execution status depends on the combined execution status of one or more instances in the invocation. Valid values: 
         #          
         # - Running:
-        #     - Scheduled execution: The execution status remains Running until you manually stop the scheduled command.
-        #     - One-time execution: The overall execution status is Running if the command process is running on any instance.
+        #     - Scheduled execution: The execution status remains Running until the scheduled command is manually stopped.
+        #     - One-time execution: The overall execution status is Running as long as there is an ongoing command process.
         # - Finished:
-        #     - Scheduled execution: The command process cannot have a status of Finished.
-        #     - One-time execution: All instances have completed execution, or the command process was manually stopped on some instances while the remaining instances completed execution.
+        #     - Scheduled execution: The command process cannot be Finished.
+        #     - One-time execution: All instances have completed the execution, or the command processes on some instances are manually stopped while the execution on the remaining instances is completed.
         # - Failed:
-        #     - Scheduled execution: The command process cannot have a status of Failed.
-        #     - One-time execution: All instances failed to execute the command.
-        # - Stopped: The command was stopped.
+        #     - Scheduled execution: The command process cannot be Failed.
+        #     - One-time execution: The execution failed on all instances.
+        # - Stopped: The command is stopped.
         # - Stopping: The command is being stopped.
-        # - PartialFailed: Partial failure. This value does not take effect if the InstanceId parameter is also specified.
+        # - PartialFailed: The execution partially failed. This value does not take effect if the InstanceId parameter is also specified.
         self.invoke_status = invoke_status
         # The custom parameters in the command.
         self.parameters = parameters
         # The execution mode of the command. Valid values:
-        # - Once: Immediately executes the command.
+        # - Once: Executes the command immediately.
         # - Period: Executes the command on a schedule.
         # - NextRebootOnly: Automatically executes the command the next time the instance starts.
         # - EveryReboot: Automatically executes the command every time the instance starts.
         self.repeat_mode = repeat_mode
-        # The timeout period for the command execution. Unit: seconds.
+        # The timeout period for executing the command. Unit: seconds.
         self.timeout = timeout
-        # The username used to execute the command.
+        # The username of the user who executes the command.
         self.username = username
         # The working directory of the command on the instance.
         self.working_dir = working_dir
@@ -273,7 +273,7 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes(DaraModel)
         self,
         invoke_node: List[main_models.DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode] = None,
     ):
-        # The command execution record on a node.
+        # The command execution records of the node.
         self.invoke_node = invoke_node
 
     def validate(self):
@@ -323,102 +323,102 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode(
         timed: str = None,
         update_time: str = None,
     ):
-        # The start time of the command execution. The time is displayed in ISO 8601 format. Z in the example indicates UTC.
+        # The start time of the command execution. The time follows the ISO 8601 standard, and Z in the example indicates UTC.
         self.creation_time = creation_time
-        # The length of the truncated and discarded text after the text length in the Output field exceeds 24 KB.
+        # The length of the truncated and discarded text when the text length in the Output field exceeds 24 KB.
         self.dropped = dropped
         # The error code for the file delivery failure. Valid values:
         # 
-        # - Empty: The file was delivered normally.
+        # - Empty: The file is delivered normally.
         # - NodeNotExists: The specified instance does not exist or has been released.
         # - NodeReleased: The instance was released during file delivery.
-        # - NodeNotRunning: The instance was not running when the file delivery task was created.
+        # - NodeNotRunning: The instance was not in the Running state when the file delivery task was created.
         # - AccountNotExists: The specified account does not exist.
-        # - ClientNotRunning: The Cloud Assistant Agent is not running.
-        # - ClientNotResponse: The Cloud Assistant Agent is not responding.
-        # - ClientIsUpgrading: The Cloud Assistant Agent is being upgraded.
-        # - ClientNeedUpgrade: The Cloud Assistant Agent needs to be upgraded.
+        # - ClientNotRunning: Cloud Assistant Agent is not running.
+        # - ClientNotResponse: Cloud Assistant Agent is not responding.
+        # - ClientIsUpgrading: Cloud Assistant Agent is being upgraded.
+        # - ClientNeedUpgrade: Cloud Assistant Agent needs to be upgraded.
         # - DeliveryTimeout: The file delivery timed out.
-        # - FileCreateFail: The file creation failed.
+        # - FileCreateFail: File creation failed.
         # - FileAlreadyExists: A file with the same name already exists in the same path.
         # - FileContentInvalid: The file content is invalid.
         # - FileNameInvalid: The file name is invalid.
         # - FilePathInvalid: The file path is invalid.
         # - FileAuthorityInvalid: The file permissions are invalid.
-        # - UserGroupNotExists: The user group specified during file delivery does not exist.
+        # - UserGroupNotExists: The specified user group does not exist when sending the file.
         self.error_code = error_code
-        # The details of the command delivery failure or execution failure. Valid values:
-        # - Empty: The command executed normally.
+        # The details of the cause for the command delivery or execution failure. Valid values:
+        # - Empty: The command is executed normally.
         # - the specified node does not exists: The specified instance does not exist or has been released.
         # - the node has node when create task: The instance was released during command execution.
-        # - the node is not running when create task: The instance was not running when the command was executed.
+        # - the node is not running when create task: The instance was not in the Running state during command execution.
         # - the command is not applicable: The command is not applicable to the specified instance.
         # - the specified account does not exists: The specified account does not exist.
         # - the specified directory does not exists: The specified directory does not exist.
-        # - the cron job expression is invalid: The specified execution schedule expression is invalid.
-        # - the aliyun service is not running on the instance: The Cloud Assistant Agent is not running.
-        # - the aliyun service in the instance does not response: The Cloud Assistant Agent is not responding.
-        # - the aliyun service in the node is upgrading now: The Cloud Assistant Agent is being upgraded.
-        # - the aliyun service in the node need upgrade: The Cloud Assistant Agent needs to be upgraded.
+        # - the cron job expression is invalid: The specified cron expression is invalid.
+        # - the aliyun service is not running on the instance: Cloud Assistant Agent is not running.
+        # - the aliyun service in the instance does not response: Cloud Assistant Agent is not responding.
+        # - the aliyun service in the node is upgrading now: Cloud Assistant Agent is being upgraded.
+        # - the aliyun service in the node need upgrade: Cloud Assistant Agent needs to be upgraded.
         # - the command delivery has been timeout: The command delivery timed out.
         # - the command execution has been timeout: The command execution timed out.
         # - the command execution got an exception: An exception occurred during command execution.
         # - the command execution has been interrupted: The command execution was interrupted.
-        # - the command execution exit code is not zero: The command execution completed with a non-zero exit code.
+        # - the command execution exit code is not zero: The command execution is complete, but the exit code is not 0.
         # - the specified node has been released: The instance was released during file delivery.
         self.error_info = error_info
         # The exit code of the command process. Valid values:
         # 
-        # - For Linux instances, the value is the exit code of the Shell process.
-        # - For Windows instances, the value is the exit code of the Bat or PowerShell process.
+        # - For Linux instances, the exit code of the shell process.
+        # - For Windows instances, the exit code of the batch or PowerShell process.
         self.exit_code = exit_code
-        # The completion time. The time is displayed in ISO 8601 format. Z in the example indicates UTC.
+        # The completion time. The time follows the ISO 8601 standard, and Z in the example indicates UTC.
         self.finish_time = finish_time
         # The command execution status on a single instance. Valid values:
-        # -  Pending: The system is validating or sending the command.
-        # -  Invalid: The specified command type or parameters are invalid.
-        # -  Aborted: Failed to send the command to the instance. The instance must be running, and the command must be deliverable within one minute.
-        # -  Running: The command is running on the instance.
-        # -  Success:
-        #     -  One-time command: The command execution is complete and the exit code is 0.
-        #     -  Scheduled command: The last execution was successful with an exit code of 0, and the specified schedule has ended.
-        # -  Failed:
-        #     -  One-time command: The command execution is complete and the exit code is non-zero.
-        #     -  Scheduled command: The last execution was successful with a non-zero exit code, and the specified schedule will be aborted.
-        # -  Error: An exception occurred during command execution and the command cannot continue.
-        # -  Timeout: The command execution timed out.
-        # -  Cancelled: The command execution action was canceled and the command was never started.
-        # -  Stopping: The task is being stopped.
-        # -  Terminated: The command was terminated during execution.
-        # -  Scheduled:
-        #     -  One-time command: Not applicable. This status does not occur.
-        #     -  Scheduled command: Waiting to run.
+        # - Pending: The system is verifying or sending the command.
+        # - Invalid: The specified command type or parameter is invalid.
+        # - Aborted: Failed to send the command to the instance. The instance must be in the Running state, and the command must be sent within 1 minute.
+        # - Running: The command is running on the instance.
+        # - Success:
+        #     - One-time execution: The command execution is complete, and the exit code is 0.
+        #     - Scheduled execution: The previous execution was successful with an exit code of 0, and the specified schedule has ended.
+        # - Failed:
+        #     - One-time execution: The command execution is complete, but the exit code is not 0.
+        #     - Scheduled execution: The previous execution completed with a non-zero exit code, and the specified schedule will be terminated.
+        # - Error: An exception occurred during command execution and the execution cannot continue.
+        # - Timeout: The command execution timed out.
+        # - Cancelled: The command execution was canceled before it started.
+        # - Stopping: The task is being stopped.
+        # - Terminated: The command was terminated while running.
+        # - Scheduled:
+        #     - One-time execution: Not applicable. This status does not appear.
+        #     - Scheduled execution: Waiting to be executed.
         self.invocation_status = invocation_status
         # The node ID.
         self.node_id = node_id
         # The command execution status on a single instance.
         self.node_invoke_status = node_invoke_status
-        # The command output.
+        # The output of the command.
         # 
         # - If ContentEncoding is set to PlainText, the original output is returned.
         # - If ContentEncoding is set to Base64, the Base64-encoded output is returned.
         self.output = output
         # The number of times the command was executed on the instance.
-        # -  If the execution mode is one-time execution, the value is 0 or 1.
-        # -  If the execution mode is scheduled execution, the value is the number of times the command has been executed.
+        # - If the execution mode is one-time execution, the value is 0 or 1.
+        # - If the execution mode is scheduled execution, the value is the total number of executions.
         self.repeats = repeats
-        # The start time. The time is displayed in ISO 8601 format. Z in the example indicates UTC.
+        # The start time. The time follows the ISO 8601 standard, and Z in the example indicates UTC.
         self.start_time = start_time
-        # The time when StopInvocation was called to stop the command execution. The time is displayed in ISO 8601 format. Z in the example indicates UTC.
+        # The time when the StopInvocation operation was called to stop the command execution. The time follows the ISO 8601 standard, and Z in the example indicates UTC.
         self.stop_time = stop_time
-        # Indicates whether the queried command will be automatically executed in the future. Valid values:
+        # Specifies whether the queried command will be automatically executed in the future. Valid values:
         # 
-        # - true: The command was executed by calling RunCommand or InvokeCommand with the RepeatMode parameter set to Period, NextRebootOnly, or EveryReboot.
-        # - false (default): The queried command is in one of the following states:
-        #     - The command was executed by calling RunCommand or InvokeCommand with the RepeatMode parameter set to Once.
-        #     - The command has been canceled, stopped, or has completed execution.
+        # - true: Queries commands for which the RepeatMode parameter is set to Period, NextRebootOnly, or EveryReboot when calling RunCommand or InvokeCommand.
+        # - false: Queries commands in the following two states. This is the default value.
+        #     - Commands for which the RepeatMode parameter is set to Once when calling RunCommand or InvokeCommand.
+        #     - Commands that have been canceled, stopped, or completed.
         self.timed = timed
-        # The update time. The time is displayed in ISO 8601 format. Z in the example indicates UTC.
+        # The update time. The time follows the ISO 8601 standard, and Z in the example indicates UTC.
         self.update_time = update_time
 
     def validate(self):

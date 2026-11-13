@@ -1,3 +1,30 @@
+2026-11-13 Version: 3.2.1
+- Update API CreateCluster: add request parameters NodeGroups.$.HyperNodes.$.DataDisk.$.Device.
+- Update API CreateCluster: add request parameters NodeGroups.$.HyperNodes.$.DataDisk.$.Encrypted.
+- Update API CreateCluster: add request parameters NodeGroups.$.HyperNodes.$.DataDisk.$.KMSKeyId.
+- Update API CreateCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.$.Device.
+- Update API CreateCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.$.Encrypted.
+- Update API CreateCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.$.KMSKeyId.
+- Update API CreateCluster: add request parameters NodeGroups.$.SystemDisk.Encrypted.
+- Update API CreateCluster: add request parameters NodeGroups.$.SystemDisk.KMSKeyId.
+- Update API CreateNodeGroup: add request parameters NodeGroup.SystemDisk.Encrypted.
+- Update API CreateNodeGroup: add request parameters NodeGroup.SystemDisk.KMSKeyId.
+- Update API DescribeHyperNode: add response parameters Body.Nodes.$.Disks.$.Encrypted.
+- Update API DescribeHyperNode: add response parameters Body.Nodes.$.Disks.$.KMSKeyId.
+- Update API DescribeNode: add response parameters Body.Disks.$.Encrypted.
+- Update API DescribeNode: add response parameters Body.Disks.$.KMSKeyId.
+- Update API DescribeNodeGroup: add response parameters Body.SystemDisk.Encrypted.
+- Update API DescribeNodeGroup: add response parameters Body.SystemDisk.KMSKeyId.
+- Update API ExtendCluster: add request parameters NodeGroups.$.HyperNodes.$.DataDisk.$.Device.
+- Update API ExtendCluster: add request parameters NodeGroups.$.HyperNodes.$.DataDisk.$.Encrypted.
+- Update API ExtendCluster: add request parameters NodeGroups.$.HyperNodes.$.DataDisk.$.KMSKeyId.
+- Update API ExtendCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.$.Device.
+- Update API ExtendCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.$.Encrypted.
+- Update API ExtendCluster: add request parameters NodeGroups.$.Nodes.$.DataDisk.$.KMSKeyId.
+- Update API UpdateNodeGroup: add request parameters SystemDisk.Encrypted.
+- Update API UpdateNodeGroup: add request parameters SystemDisk.KMSKeyId.
+
+
 2026-10-13 Version: 3.2.0
 - Support API DescribeFaultReport.
 - Support API ListFaultReports.

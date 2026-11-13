@@ -15,17 +15,17 @@ class ListNetTestResultsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The number of entries per page in a paged query. Maximum value: 100.
+        # The maximum number of entries per page for paging in a paged query. Maximum value: 100.
         # 
         # Default value:
         # 
-        # - If this parameter is not specified or is set to a value less than 20, the default value is 20.
+        # - If you do not specify the Settings or the specified Settings value is less than 20, the default value is 20.
         # 
-        # - If this parameter is set to a value greater than 100, the default value is 100.
+        # - If the specified Settings value is greater than 100, the default value is 100.
         self.max_results = max_results
-        # The node list.
+        # The list of nodes.
         self.net_test_results = net_test_results
-        # The NextToken for the next page. Include this value when requesting the next page.
+        # The next token. Include this value in the request to query the next page of results.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -96,13 +96,13 @@ class ListNetTestResultsResponseBodyNetTestResults(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # The communication library test information. This parameter is required when the test type is communication library test.
+        # The communication library test information. This field is populated when the traffic test type is communication library test.
         self.comm_test = comm_test
-        # The creation time. The time is in ISO 8601 format. Z in the example indicates UTC.
+        # The creation time. The time is displayed in ISO 8601 format. Z in the example indicates UTC.
         self.creation_time = creation_time
-        # The latency test information. This parameter is returned when the network test type is latency test.
+        # The delay test information. This field is populated when the network test type is delay test.
         self.delay_test = delay_test
-        # The completion time. The time is in ISO 8601 format. Z in the example indicates UTC.
+        # The completion time. The time is displayed in ISO 8601 format. Z in the example indicates UTC.
         self.finished_time = finished_time
         # The network test type.
         self.net_test_type = net_test_type
@@ -110,14 +110,14 @@ class ListNetTestResultsResponseBodyNetTestResults(DaraModel):
         self.network_mode = network_mode
         # The test port number.
         self.port = port
-        # The network test task status. Valid values:</br>
-        # ● InProgress: The test is in progress.</br>
-        # ● Finished: The test is complete.</br>
-        # ● Failed: The test failed.
+        # The status of the network test task. Valid values:</br>
+        # - InProgress: The test is in progress.</br>
+        # - Finished: The test is completed.</br>
+        # - Failed: The test failed.
         self.status = status
         # The test ID. The unique identifier of the resource test task.
         self.test_id = test_id
-        # The traffic test information. This parameter is returned when the network test type is traffic test.
+        # The traffic test information. This field is populated when the network test type is traffic test.
         self.traffic_test = traffic_test
 
     def validate(self):
@@ -227,17 +227,17 @@ class ListNetTestResultsResponseBodyNetTestResultsTrafficTest(DaraModel):
     ):
         # The clients.
         self.clients = clients
-        # The duration of the workflow task. Unit: seconds.
+        # The duration of the workflow task, in seconds.
         self.duration = duration
-        # Specifies whether GPUDirect RDMA is enabled. Valid values: True and False. This parameter is returned only when the protocol is RDMA. This field is empty when the protocol is TCP.
+        # Indicates whether GDR is enabled when the protocol is RDMA. Valid values: True and False. This field is empty when the protocol is TCP.
         self.gdr = gdr
-        # The network protocol. Valid values: RDMA or TCP.
+        # The network protocol. Valid values: RDMA and TCP.
         self.protocol = protocol
-        # The number of concurrent connections for TCP tests, or the QP value for RDMA tests.
+        # The number of concurrent connections for the test when the protocol is TCP, or the configured QP value when the protocol is RDMA.
         self.qp = qp
-        # The servers. This field is empty when the traffic model (TrafficModel) is Fullmesh.
+        # The servers. This field is empty if the traffic model is Fullmesh.
         self.servers = servers
-        # The traffic model. Valid values: MTON or Fullmesh.
+        # The traffic model. Valid values: MTON and Fullmesh.
         self.traffic_model = traffic_model
 
     def validate(self):
@@ -428,7 +428,7 @@ class ListNetTestResultsResponseBodyNetTestResultsDelayTest(DaraModel):
         self,
         hosts: List[main_models.ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts] = None,
     ):
-        # The resources.
+        # The list of resources.
         self.hosts = hosts
 
     def validate(self):
@@ -528,7 +528,7 @@ class ListNetTestResultsResponseBodyNetTestResultsCommTest(DaraModel):
         self.hosts = hosts
         # The communication library model.
         self.model = model
-        # The communication library test category. Valid values: ACCL or NCCL.
+        # The communication library test type. Valid values: ACCL and NCCL.
         self.type = type
 
     def validate(self):

@@ -13,9 +13,9 @@ class RebootNodesShrinkRequest(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # Specifies whether to allow skipping failed nodes. Default value: False.
+        # Specifies whether to allow skipping failed nodes. Default value: false.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
-        # The nodes.
+        # The list of nodes.
         self.nodes_shrink = nodes_shrink
 
     def validate(self):

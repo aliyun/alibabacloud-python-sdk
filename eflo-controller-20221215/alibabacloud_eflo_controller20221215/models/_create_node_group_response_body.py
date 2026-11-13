@@ -13,7 +13,7 @@ class CreateNodeGroupResponseBody(DaraModel):
     ):
         # The node group ID.
         self.node_group_id = node_group_id
-        # The node group name.
+        # The name of the node group.
         self.node_group_name = node_group_name
         # Id of the request
         self.request_id = request_id

@@ -31,48 +31,48 @@ class DescribeNodeGroupResponseBody(DaraModel):
     ):
         # The zone.
         self.az = az
-        # The cluster ID.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
-        # The cluster name.
+        # The name of the cluster.
         self.cluster_name = cluster_name
-        # The creation time. The time is in ISO 8601 format.
+        # The creation time in ISO 8601 format.
         self.create_time = create_time
-        # Indicates whether file storage mounting is supported.
+        # Specifies whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # The image ID.
+        # The ID of the image.
         self.image_id = image_id
         # The image name.
         self.image_name = image_name
         # The name of the key pair.
         self.key_pair_name = key_pair_name
         # Valid values:
-        # • password: The group supports only password-based logon. 
-        # • keypair: The group supports only key pair-based logon. 
-        # • both: The group supports both password-based and key pair-based logon.
+        # - password: The current group supports only password logon. 
+        # - keypair: The current group supports only key pair logon. 
+        # - both: The current group supports both password and key pair logon.
         # 
-        # If the value is empty, no logon method is configured for the group.
+        # If this parameter is empty, no logon method is configured for the group.
         self.login_type = login_type
         # The machine type.
         self.machine_type = machine_type
         # The number of nodes.
         self.node_count = node_count
-        # The node group description.
+        # The description of the node group.
         self.node_group_description = node_group_description
-        # The node group ID.
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # The node group name.
+        # The name of the node group.
         self.node_group_name = node_group_name
-        # The name of the RAM role for the node. You can call the RAM API ListRoles to query the RAM roles that you have created.
+        # The name of the RAM role for the node. You can call the ListRoles operation of RAM to query the RAM roles that you have created.
         self.ram_role_name = ram_role_name
         # Id of the request
         self.request_id = request_id
         # The system cloud disk information.
         self.system_disk = system_disk
-        # The update time. The time is in ISO 8601 format.
+        # The update time in ISO 8601 format.
         self.update_time = update_time
         # The user-defined script.
         self.user_data = user_data
-        # Indicates whether GPU virtualization slicing is supported.
+        # Specifies whether GPU virtualization and partitioning are supported.
         self.virtual_gpu_enabled = virtual_gpu_enabled
 
     def validate(self):
@@ -215,27 +215,48 @@ class DescribeNodeGroupResponseBodySystemDisk(DaraModel):
     def __init__(
         self,
         category: str = None,
+        encrypted: bool = None,
+        kmskey_id: str = None,
         performance_level: str = None,
         size: int = None,
     ):
         # The category of the cloud disk.
         self.category = category
-        # The performance level (PL) of the ESSD used as the system cloud disk. Valid values:
-        # - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
-        # - PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        # Specifies whether the system cloud disk is encrypted. Valid values:
+        # - true: The system cloud disk is encrypted.
+        # - false: The system cloud disk is not encrypted.
+        # 
+        # Default value: false.
+        # 
+        # 
+        # >Notice: When you use a shared encrypted image to create a cloud disk based on an encrypted snapshot, you must set the Encrypted request parameter to true for the cloud disk. This ensures that the created cloud disk uses the key of the account that the image is shared with.</notice>
+        # 
+        # > You cannot encrypt the system cloud disk when you create an instance in Hong Kong (China) Zone D or Singapore Zone A.
+        self.encrypted = encrypted
+        # The KMS key ID for the system cloud disk.
+        # 
+        # If the Encrypted parameter is set to true but KMSKeyId is not specified, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
+        # - If the cloud disk is created from a non-shared encrypted snapshot, the encryption key used for the snapshot is used by default.
+        # - If the cloud disk is created from a shared encrypted snapshot, the service key is used by default.
+        # - If the cloud disk is created in a region where account-level default encryption for Block Storage is enabled, the specified account-level key is used by default.
+        # - In other cases, the service key is used by default.
+        self.kmskey_id = kmskey_id
+        # The performance level of the ESSD used as the system cloud disk. Valid values:
+        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
         self.performance_level = performance_level
         # The size of the system cloud disk. Unit: GiB. Valid values:
         # 
-        # - Premium performance disk: 20 to 500.
+        # - Basic cloud disk: 20 to 500.
         # - ESSD:
         #   - PL0: 1 to 2048.
         #   - PL1: 20 to 2048.
         #   - PL2: 461 to 2048.
         #   - PL3: 1261 to 2048.
-        # - ESSD AutoPL: 1 to 2048.
+        # - ESSD AutoPL cloud disk: 1 to 2048.
         # - Other cloud disk types: 20 to 2048.
         # 
-        # Default value: max{20, size of the image specified by the parameter ImageId}.
+        # Default value: max{20, the size of the image specified by the ImageId parameter}.
         self.size = size
 
     def validate(self):
@@ -249,6 +270,12 @@ class DescribeNodeGroupResponseBodySystemDisk(DaraModel):
         if self.category is not None:
             result['Category'] = self.category
 
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
+
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
 
@@ -261,6 +288,12 @@ class DescribeNodeGroupResponseBodySystemDisk(DaraModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
 
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')

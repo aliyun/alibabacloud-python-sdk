@@ -29,11 +29,11 @@ class CreateClusterShrinkRequest(DaraModel):
         self.cluster_name = cluster_name
         # The cluster type.
         self.cluster_type = cluster_type
-        # The components (software instances).
+        # The components, which are software instances.
         self.components_shrink = components_shrink
         # The cluster number.
         self.hpn_zone = hpn_zone
-        # Specifies whether to skip failed nodes. Default value: False.
+        # Specifies whether to ignore failed node tasks. Default value: false.
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
         # The network information.
         self.networks_shrink = networks_shrink

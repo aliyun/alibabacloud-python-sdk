@@ -28,37 +28,37 @@ class DescribeHyperNodeResponseBody(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         self.cluster_id = cluster_id
-        # The cluster name.
+        # The name of the cluster.
         self.cluster_name = cluster_name
-        # The creation time. The time is in ISO 8601 format. The Z in the example indicates UTC.
+        # The creation time in ISO 8601 format. The Z in the example indicates UTC.
         self.create_time = create_time
-        # The expiration time. The time is in ISO 8601 format.
+        # The expiration time in ISO 8601 format.
         self.expire_time = expire_time
-        # Indicates whether file storage mounting is supported.
+        # Indicates whether file system mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
         # The hostname.
         self.hostname = hostname
         # The cluster number.
         self.hpn_zone = hpn_zone
-        # The hypernode ID.
+        # The ID of the supernode.
         self.hyper_node_id = hyper_node_id
         # The machine type.
         self.machine_type = machine_type
-        # The node group ID.
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # The node group name.
+        # The name of the node group.
         self.node_group_name = node_group_name
         # The list of nodes.
         self.nodes = nodes
-        # The hypernode status.
+        # The status of the supernode.
         self.operating_state = operating_state
         # The request ID.
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The node status.
+        # The status of the node.
         self.status = status
         # The zone ID.
         self.zone_id = zone_id
@@ -200,19 +200,19 @@ class DescribeHyperNodeResponseBodyNodes(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
-        # The disk information.
+        # The cloud disk information.
         self.disks = disks
         # The hostname.
         self.hostname = hostname
-        # The image ID.
+        # The ID of the image.
         self.image_id = image_id
-        # The image name.
+        # The name of the image.
         self.image_name = image_name
         # The network information.
         self.networks = networks
-        # The node ID.
+        # The ID of the node.
         self.node_id = node_id
-        # The node status.
+        # The status of the node.
         self.operating_state = operating_state
         # The status.
         self.status = status
@@ -304,7 +304,7 @@ class DescribeHyperNodeResponseBodyNodesNetworks(DaraModel):
         bond_name: str = None,
         ip: str = None,
     ):
-        # The bond interface name of the machine.
+        # The name of the network interface.
         self.bond_name = bond_name
         # The IP address of the machine in the VPC.
         self.ip = ip
@@ -340,27 +340,48 @@ class DescribeHyperNodeResponseBodyNodesDisks(DaraModel):
         self,
         category: str = None,
         disk_id: str = None,
+        encrypted: bool = None,
+        kmskey_id: str = None,
         performance_level: str = None,
         size: int = None,
         type: str = None,
     ):
-        # The packet category. Valid values:
+        # The data packet classification. Valid values:
         # 
-        # - **DOWNLINK_PACKET**: downlink packet.
-        # - **UPLINK_PACKET**: uplink packet.
+        # - **DOWNLINK_PACKET**: downlink packets
+        # - **UPLINK_PACKET**: uplink packets
         self.category = category
-        # The disk ID.
+        # The ID of the cloud disk.
         self.disk_id = disk_id
-        # The performance level (PL) of the cloud disk when an ESSD is created as the system cloud disk. Settings:
-        # - PL0: A maximum of 10,000 random read/write IOPS per standard SSD.
-        # - PL1: A maximum of 50,000 random read/write IOPS per standard SSD.
-        self.performance_level = performance_level
-        # The disk size. Unit: GiB.
-        self.size = size
-        # The disk type. Valid values:
+        # Indicates whether the system cloud disk is encrypted. Valid values:
+        # - true: The disk is encrypted.
+        # - false: The disk is not encrypted.
         # 
-        # - system: system cloud disk.
-        # - data: data cloud disk.
+        # Default value: false.
+        # 
+        # 
+        # >Notice: When you create a cloud disk from an encrypted snapshot by using a shared encrypted image, you must specify the request parameter Encrypted=true for the cloud disk to ensure that the created cloud disk is encrypted by using the recipient\\"s key.
+        # 
+        # > System cloud disk encryption during instance creation is not supported in Hong Kong (China) Zone D and Singapore Zone A.
+        self.encrypted = encrypted
+        # The KMS key ID corresponding to the system cloud disk.
+        # 
+        # If the Encrypted parameter is set to true and the KMSKeyId parameter is not specified, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
+        # - If the cloud disk is created from an unshared encrypted snapshot, the encryption key used for the snapshot is used by default.
+        # - If the cloud disk is created from a shared encrypted snapshot, the service key is used by default.
+        # - If the cloud disk is created in a region where account-level default encryption for Block Storage is enabled, the specified account-level key is used by default.
+        # - In other cases, the service key is used by default.
+        self.kmskey_id = kmskey_id
+        # The performance level of the ESSD when it is used as the system cloud disk. Valid values:
+        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
+        self.performance_level = performance_level
+        # The size of the cloud disk. Unit: GiB.
+        self.size = size
+        # The type of the cloud disk. Valid values:
+        # 
+        # - system: system cloud disk
+        # - data: data cloud disk
         self.type = type
 
     def validate(self):
@@ -376,6 +397,12 @@ class DescribeHyperNodeResponseBodyNodesDisks(DaraModel):
 
         if self.disk_id is not None:
             result['DiskId'] = self.disk_id
+
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
 
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
@@ -395,6 +422,12 @@ class DescribeHyperNodeResponseBodyNodesDisks(DaraModel):
 
         if m.get('DiskId') is not None:
             self.disk_id = m.get('DiskId')
+
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
 
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')

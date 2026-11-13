@@ -20,7 +20,7 @@ class UpdateNodeGroupRequest(DaraModel):
     ):
         # Specifies whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
-        # The default image ID of the node group. If you do not specify this parameter, the image ID remains unchanged.
+        # The default image ID of the node group. If this parameter is not specified, the image ID remains unchanged.
         self.image_id = image_id
         # The name of the key pair.
         self.key_pair_name = key_pair_name
@@ -30,11 +30,12 @@ class UpdateNodeGroupRequest(DaraModel):
         self.new_node_group_name = new_node_group_name
         # The ID of the node group.
         self.node_group_id = node_group_id
-        # The name of the RAM role for the node. You can call the ListRoles API operation of RAM to query the RAM roles that you have created. The trusted entity of the role must be Lingjun AI Computing Service. <warning>Submitting an empty string "" clears the RAM role of the node group.</warning>
+        # The name of the node RAM role. You can use the RAM API ListRoles to query the node RAM roles that you have created. The trusted entity of the configured role must be Lingjun AI Computing Service.
+        # <warning>Submitting an empty string "" clears the RAM role of the node group.</warning>
         self.ram_role_name = ram_role_name
         # The system cloud disk configuration.
         self.system_disk = system_disk
-        # The custom executable shell script. It must be Base64-encoded, and the maximum size of the raw data is 16 KB.
+        # The custom executable shell script. The script must be Base64-encoded. The maximum size of the raw data is 16 KB.
         self.user_data = user_data
 
     def validate(self):
@@ -110,8 +111,29 @@ class UpdateNodeGroupRequest(DaraModel):
 class UpdateNodeGroupRequestSystemDisk(DaraModel):
     def __init__(
         self,
+        encrypted: bool = None,
+        kmskey_id: str = None,
         performance_level: str = None,
     ):
+        # Specifies whether the system cloud disk is encrypted. Valid values:
+        # - true: Encrypted.
+        # - false: Not encrypted.
+        # 
+        # Default value: false.
+        # 
+        # 
+        # >Notice: When you use a shared encrypted image to create a cloud disk based on an encrypted snapshot, you must specify the request parameter Encrypted=true for the cloud disk to ensure that the created cloud disk uses the key of the account that shares the image.
+        # 
+        # > System cloud disk encryption during instance creation is not active in Hong Kong (China) Zone D and Singapore Zone A.
+        self.encrypted = encrypted
+        # The KMS key ID for the system cloud disk.
+        # 
+        # If the Encrypted Settings is set to true and KMSKeyId is not specified, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
+        # - If the cloud disk is created from a non-shared encrypted snapshot: The encryption key used by the snapshot is used by default.
+        # - If the cloud disk is created from a shared encrypted snapshot: The service key is used by default.
+        # - If the cloud disk is created in a region where account-level default encryption for Block Storage is enabled: The specified account-level key is used by default.
+        # - In other cases: The service key is used by default.
+        self.kmskey_id = kmskey_id
         # The performance level.
         self.performance_level = performance_level
 
@@ -123,6 +145,12 @@ class UpdateNodeGroupRequestSystemDisk(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
+
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
 
@@ -130,6 +158,12 @@ class UpdateNodeGroupRequestSystemDisk(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
+
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
 

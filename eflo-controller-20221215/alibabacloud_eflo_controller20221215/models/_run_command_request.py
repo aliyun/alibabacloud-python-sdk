@@ -26,89 +26,92 @@ class RunCommandRequest(DaraModel):
         username: str = None,
         working_dir: str = None,
     ):
-        # The client token to ensure the idempotency of the request. Use your client to generate the token that is unique among requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see "How to ensure idempotence".
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
         self.client_token = client_token
-        # The command content. Take note of the following:
+        # The content of the command. Specify either this parameter or CommandId. The command content can be plaintext or Base64-encoded. Take note of the following items:
         # 
-        # *   When `EnableParameter` is set to true, you can use custom parameters in the command.
-        # *   Define custom parameters in the {{}} format. Within `{{}}`, the spaces and line feeds before and after the parameter names are ignored.
-        # *   You can specify up to 20 custom parameters.
-        # *   A custom parameter name can contain only letters, digits, underscores (_), and hyphens (-). The name is not case-sensitive.
-        # *   Each custom parameter name is up to 64 bytes in length.
+        # - Specify EnableParameter=true to enable the custom parameter feature in the command content.
+        # - Define custom parameters by enclosing them in braces ({{}}). Spaces and line breaks before and after the parameter names inside {{}} are ignored.
+        # - You can specify a maximum of 20 custom parameters.
+        # - A custom parameter name can contain only letters, digits, hyphens (-), and underscores (_). Parameter names are not case-sensitive.
+        # - A custom parameter name cannot exceed 64 bytes in length.
         self.command_content = command_content
-        # The ID of the command.
+        # The command ID.
         self.command_id = command_id
-        # The encoding mode of the command content. Valid values:
+        # The encoding method of the script content. Valid values:
         # 
-        # *   PlainText
-        # *   Base64
+        # - PlainText: The content is not encoded and is transmitted in plaintext.
+        # - Base64: The content is Base64-encoded.
         # 
-        # Default value: PlainText. If the specified value of this parameter is invalid, PlainText is used by default.
+        # Default value: PlainText. If an invalid value is specified, the value is processed as PlainText.
         self.content_encoding = content_encoding
-        # The command description.
+        # The description of the command.
         self.description = description
-        # Specifies whether to use custom parameters in the command.
+        # Specifies whether the command contains custom parameters.
         # 
         # Default value: false.
         self.enable_parameter = enable_parameter
-        # The schedule to run the command. Supported schedule types: at a fixed interval based on a rate expression, run only once at a specific time, or run at specific times based on a cron expression.
+        # The scheduled execution time of the command. Three scheduled execution methods are supported: execution at fixed time intervals (based on rate expressions), one-time execution at a specified time, and clock-based scheduled execution (based on cron expressions).
         # 
-        # *   To run the command at a fixed interval, use a rate expression to specify the interval. The interval can be in seconds, minutes, hours, or days. This option is suitable for scenarios in which tasks need to be executed at a fixed interval. Format: rate(\\<Execution interval value> \\<Execution interval unit>). For example, rate(5m) means to run the command every 5 minutes. When you specify an interval, take note of the following limits:
+        # - Execution at fixed time intervals: Based on rate expressions, the command is executed at the specified time interval. The time interval can be specified in seconds (s), minutes (m), hours (h), or days (d). This method is suitable for scenarios where tasks are executed at fixed time intervals. The format is rate(<interval value><interval unit>). For example, to execute the command every 5 minutes, use rate(5m). Limits on execution at fixed time intervals: 
+        #     - The specified time interval must not exceed 7 days, must not be less than 60 seconds, and must be greater than the timeout period of the scheduled task. 
+        #     - The execution interval is based only on the fixed frequency and is independent of the actual time required to execute the task. For example, if the command is executed every 5 minutes and the task takes 2 minutes to complete, the next execution starts 3 minutes after the task is completed. 
+        #     - The task is not executed immediately upon creation. For example, if the command is executed every 5 minutes, it is not executed immediately when the task is created. Instead, the first execution starts 5 minutes after the task is created.
+        #  
+        # - One-time execution at a specified time: The command is executed once at the specified time in the specified time zone. The format is at(yyyy-MM-dd HH:mm:ss <time zone>). If no time zone is specified, the UTC time zone is used by default. The time zone can be specified in the following three formats: 
+        #     - Full name of the time zone: such as Asia/Shanghai and America/Los_Angeles. 
+        #     - Offset of the time zone relative to Greenwich Mean Time (GMT): such as GMT+8:00 and GMT-7:00. When the GMT format is used, leading zeros are not supported for the hour. 
+        #     - Time zone abbreviation: Only UTC is supported.
+        # If you want to execute the command once at 13:15:30 on June 6, 2022 in the Asia/Shanghai time zone, use at(2022-06-06 13:15:30 Asia/Shanghai). If you want to execute the command once at 13:15:30 on June 6, 2022 in the GMT-7:00 time zone, use at(2022-06-06 13:15:30 GMT-7:00).
         # 
-        #     *   The interval can be anywhere from 60 seconds to 7 days, but must be longer than the timeout period of the scheduled task.
-        #     *   The interval is the time between two consecutive executions, irrelevant of the time required to run the command. For example, assume that you set the interval to 5 minutes and that it takes 2 minutes to run the command each time. The system waits 3 minutes before running the command again.
-        #     *   The command is not immediately executed after the task is created. For example, assume that you set the interval to 5 minutes. The task begins to be executed 5 minutes after it is created.
+        # - Clock-based scheduled execution (based on cron expressions): Based on cron expressions, the command is executed according to the scheduled task. The format is <seconds> <minutes> <hours> <day of month> <month> <day of week> <year (optional)> <time zone>, which is <cron expression> <time zone>. The scheduled task execution time is calculated and executed based on the cron expression in the specified time zone. If no time zone is specified, the internal system time zone of the instance where the scheduled task is executed is used by default. For more information about cron expressions, see Cron expressions. The time zone can be specified in the following three formats: 
+        #     - Full name of the time zone: such as Asia/Shanghai and America/Los_Angeles. 
+        #     - Offset of the time zone relative to GMT: such as GMT+8:00 and GMT-7:00. When the GMT format is used, leading zeros are not supported for the hour. 
+        #     - Time zone abbreviation: Only UTC is supported.
         # 
-        # *   To run a command only once at a specific point in time, specify a point in time and a time zone. Format: at(yyyy-MM-dd HH:mm:ss \\<Time zone>). If you do not specify a time zone, the Coordinated Universal Time (UTC) time zone is used by default. The time zone name supports the following formats: Full name, such as Asia/Shanghai and America/Los_Angeles. The time offset from GMT. Examples: GMT+8:00 (UTC+8) and GMT-7:00 (UTC-7). If you use the GMT format, you cannot add leading zeros to the hour value. The time zone abbreviation. Only UTC is supported. For example, to configure a command to run only once at 13:15:30 on June 6, 2022 (Shanghai time), set the time to at(2022-06-06 13:15:30 Asia/Shanghai). To configure a command to run only once at 13:15:30 on June 6, 2022 (UTC-7), set the time to at(2022-06-06 13:15:30 GMT-7:00).
-        # 
-        # *   To run a command at designated points in time, use a cron expression to define the schedule. Format: \\<Cron expression> \\<Time zone>. Example: \\<Seconds> \\<Minutes> \\<Hours> \\<Day of the month> \\<Month> \\<Day of the week> \\<Year (optional)> \\<Time zone>. The system calculates the execution times of the command based on the specified cron expression and time zone and runs the command as scheduled. If you do not specify a time zone, the system time zone of the instance is used by default. For more information, see Cron expressions. The time zone name supports the following formats:
-        # 
-        #     *   Full name, such as Asia/Shanghai and America/Los_Angeles.
-        #     *   The time offset from GMT. Examples: GMT+8:00 (UTC+8) and GMT-7:00 (UTC-7). If you use the GMT format, you cannot add leading zeros to the hour value.
-        #     *   The time zone abbreviation. Only UTC is supported.
-        # 
-        #     For example, if you specify a command to run at 10:15:00 every day in 2022 in China/Shanghai time, set the time to 0 15 10 ? \\* \\* 2022 Asia/Shanghai. To configure a command to run every half an hour from 10:00:00 to 11:30:00 every day in 2022 (UTC+8), set the schedule to 0 0/30 10-11 \\* \\* ? 2022 GMT+8:00. To configure a command to run every 5 minutes from 14:00:00 to 14:55:00 every October every two years from 2022 in UTC, set the schedule to 0 0/5 14 \\* 10 ? 2022/2 UTC.
+        #     For example, to execute the command once at 10:15 every day in 2022 in the Asia/Shanghai time zone, use 0 15 10 ? * * 2022 Asia/Shanghai. To execute the command every half hour from 10:00 to 11:30 every day in 2022 in the GMT+8:00 time zone, use 0 0/30 10-11 * * ? 2022 GMT+8:00. To execute the command every 5 minutes from 14:00 to 14:55 every day in October every two years starting from 2022 in the UTC time zone, use 0 0/5 14 * 10 ? 2022/2 UTC.
         self.frequency = frequency
-        # The launcher for script execution. Cannot exceed 1 KB.
+        # The launcher for script execution. The size cannot exceed 1 KB.
         self.launcher = launcher
-        # The command name.
+        # The name of the command.
         self.name = name
-        # The node list.
+        # The list of nodes.
         self.node_id_list = node_id_list
-        # The key-value pairs of custom parameters to pass in when the command includes custom parameters. For example, the command content is `echo {{name}}`. You can use `Parameters` to pass in the `{"name":"Jack"}` key-value pair. The `name` key of the custom parameter is automatically replaced by the paired Jack value to generate a new command. As a result, the `echo Jack` command is run.
+        # The key-value pairs of custom parameters that are passed when the command is executed, if the command contains custom parameters. For example, if the command content is `echo {{name}}`, you can pass the key-value pair `{"name":"Jack"}` by using the Parameters parameter. The custom parameter automatically replaces the variable value `name`, resulting in a new command. The actual command executed is `echo Jack`.
         # 
-        # You can specify 0 to 10 custom parameters. Take note of the following:
+        # The number of custom parameters ranges from 0 to 10. Take note of the following items:
         # 
-        # *   The key of a custom parameter can be up to 64 characters in length, and cannot be an empty string.
-        # *   The value of a custom parameter can be an empty string.
-        # *   If you want to retain a command, make sure that the command after Base64 encoding, including custom parameters and original command content, does not exceed 18 KB in size. If you do not want to retain the command, make sure that the command after Base64 encoding does not exceed 24 KB in size. You can set `KeepCommand` to specify whether to retain the command.
-        # *   The specified custom parameter names must be included in the custom parameter names that you specify when you create the command. You can use empty strings to represent the parameters that are not passed in.
+        # - The key cannot be an empty string and can contain a maximum of 64 characters.
+        # - The value can be an empty string.
+        # - After the custom parameters and the original command content are Base64-encoded, if the command is saved, the size of the Base64-encoded command content cannot exceed 18 KB. If the command is not saved, the size of the Base64-encoded command content cannot exceed 24 KB. You can use KeepCommand to specify whether to retain the command.
+        # - The set of custom parameter names specified must be a subset of the parameter set defined when the command is created. For parameters that are not passed, you can use an empty string instead.
         # 
-        # This parameter is left empty by default, which indicates that the custom parameter feature is disabled.
+        # Default value: empty. An empty value indicates that this parameter is not specified and the custom parameter feature is disabled.
         self.parameters = parameters
-        # The mode to run the command. Valid values:
+        # The execution mode of the command. Valid values:
         # 
-        # *   Once: runs the command immediately.
-        # *   Period: runs the command based on a schedule. When set to `Period`, `Frequency` is required.
-        # *   NextRebootOnly: runs the command the next time the instances is started.
-        # *   EveryReboot: runs the command every time the instance is started.
+        # - Once: Executes the command immediately.
+        # - Period: Executes the command on a schedule. If this parameter is set to Period, you must also specify the Frequency parameter.
+        # - NextRebootOnly: Automatically executes the command the next time the instance starts.
+        # - EveryReboot: Automatically executes the command every time the instance starts.
         # 
-        # Default value:
-        # 
-        # *   If you do not specify `Frequency`, the default value is `Once`.
-        # *   If you specify `Frequency`, RepeatMode is set to `Period` regardless of whether a value is already specified.
+        # Default values:
+        # - If the Frequency parameter is not specified, the default value is Once.
+        # - If the Frequency parameter is specified, the value is processed as Period regardless of whether this parameter is set.
         self.repeat_mode = repeat_mode
-        # Indicates how the command task is stopped when a command execution is manually stopped or times out. Valid values:
+        # The mode used when a task is stopped, either manually or due to an execution timeout. Valid values:
         # 
-        # Process: The process of the command is stopped. ProcessTree: The process tree of the command is stopped. In this case, the process of the command and all subprocesses are stopped.
+        # - Process: Stops the current script process.
+        # - ProcessTree: Stops the current process tree, which includes the script process and all child processes created by it.
         self.termination_mode = termination_mode
-        # The timeout period for the command. Unit: seconds. A timeout error occurs if the command cannot be run because the process slows down or because a specific module or Cloud Assistant Agent does not exist. When the specified timeout period ends, the command process is forcefully terminated. Default value: 60.
+        # The timeout period for command execution, in seconds. If the command cannot be executed due to process issues, missing modules, or a missing Cloud Assistant Agent, a timeout occurs. After a timeout, the command process is forcibly terminated. Default value: 60.
         self.timeout = timeout
-        # The username that you use to run the command. The name can be up to 255 characters in length. For Linux instances, the root user is used by default.
+        # The name of the user that executes the command on the instance. The name cannot exceed 255 characters in length.
+        # For Linux instances, the command is executed by the root user by default.
         self.username = username
-        # The working path of the command. You can specify a custom path. Default path:
+        # The custom execution path of the command. Default paths:
         # 
-        # Linux instances: By default, the path is in the /home directory of the root user.
+        # Linux instances: The default execution path is the home directory of the root user.
         self.working_dir = working_dir
 
     def validate(self):

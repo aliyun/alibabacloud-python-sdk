@@ -39,19 +39,19 @@ class DescribeNodeResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The cluster name.
         self.cluster_name = cluster_name
-        # The creation time. The time is in ISO 8601 format. Z in the example indicates UTC.
+        # The creation time. The time is displayed in ISO 8601 format. Z in the example indicates UTC.
         self.create_time = create_time
-        # The list of disk information.
+        # The disk information.
         self.disks = disks
-        # The expiration time. The time is in ISO 8601 format. Z in the example indicates UTC.
+        # The expiration time. The time is displayed in ISO 8601 format. Z in the example indicates UTC.
         self.expired_time = expired_time
-        # Indicates whether file storage mounting is supported.
+        # Specifies whether file storage mounting is supported.
         self.file_system_mount_enabled = file_system_mount_enabled
         # The hostname.
         self.hostname = hostname
         # The cluster number.
         self.hpn_zone = hpn_zone
-        # The HyperNode ID.
+        # The hypernode ID.
         self.hyper_node_id = hyper_node_id
         # The image ID.
         self.image_id = image_id
@@ -68,14 +68,27 @@ class DescribeNodeResponseBody(DaraModel):
         # The node ID.
         self.node_id = node_id
         # The type of the current node. Valid values:
-        # ● cpfs-enhanced
-        # ● ebs-enhanced
-        # ● standard
-        # ● standby
-        # ● standard-v2
-        # ● standby-v2
+        # - cpfs-enhanced
+        # - ebs-enhanced
+        # - standard
+        # - standby
+        # - standard-v2
+        # - standby-v2
         self.node_type = node_type
-        # The node status.
+        # The operating state of the node. Valid values:
+        # - Extending: scaling out
+        # - UnusedNodeStopped: unused node stopped
+        # - UnusedNodeStopping: stopping unused node
+        # - Unused: unused
+        # - Using: in use
+        # - ReleaseLocking: pending release
+        # - Operating: operating
+        # - ClusterNodeStopped: cluster node stopped
+        # - Cutting: scaling in
+        # - UnusedNodeRecovering: recovering unused node
+        # - ClusterNodeStopping: stopping cluster node
+        # - ClusterNodeRecovering: recovering cluster node
+        # - Replacing: replacing
         self.operating_state = operating_state
         # The request ID.
         self.request_id = request_id
@@ -277,7 +290,7 @@ class DescribeNodeResponseBodyNetworks(DaraModel):
     ):
         # The NIC port information.
         self.bond_name = bond_name
-        # The IP address of the machine.
+        # The machine IP address.
         self.ip = ip
         # The security group ID.
         self.security_group_id = security_group_id
@@ -343,19 +356,40 @@ class DescribeNodeResponseBodyDisks(DaraModel):
         self,
         category: str = None,
         disk_id: str = None,
+        encrypted: bool = None,
+        kmskey_id: str = None,
         performance_level: str = None,
         size: int = None,
         type: str = None,
     ):
         # The disk category. Valid values:
         # 
-        #  - cloud_essd: ESSD cloud disk.
+        # - cloud_essd: ESSD.
         self.category = category
         # The disk ID.
         self.disk_id = disk_id
-        # The performance level (PL) of the ESSD cloud disk when it is used as the system cloud disk. Valid values:
-        # - PL0: a maximum of 10,000 random read/write IOPS per disk.
-        # - PL1: a maximum of 50,000 random read/write IOPS per disk.
+        # Specifies whether the system cloud disk is encrypted. Valid values:
+        # - true: The disk is encrypted.
+        # - false: The disk is not encrypted.
+        # 
+        # Default value: false.
+        # 
+        # 
+        # >Notice: When you use a shared encrypted image to create a cloud disk from an encrypted snapshot, you must set the request parameter Encrypted to true for the cloud disk to ensure that the created cloud disk uses the key of the sharer.</notice>
+        # 
+        # > System cloud disk encryption during instance creation is not supported in Hong Kong (China) Zone D or Singapore Zone A.
+        self.encrypted = encrypted
+        # The KMS key ID of the system cloud disk.
+        # 
+        # If Encrypted is specified as true and KMSKeyId is not specified, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
+        # - If the cloud disk is created from an unshared encrypted snapshot, the encryption key used for the snapshot is used by default.
+        # - If the cloud disk is created from a shared encrypted snapshot, the service key is used by default.
+        # - If the cloud disk is created in a region where account-level default encryption for Elastic Block Storage (EBS) is enabled, the specified account-level key is used by default.
+        # - In other cases, the service key is used by default.
+        self.kmskey_id = kmskey_id
+        # The performance level of the ESSD when it is used as the system cloud disk. Valid values:
+        # - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+        # - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
         self.performance_level = performance_level
         # The disk size. Unit: GiB.
         self.size = size
@@ -379,6 +413,12 @@ class DescribeNodeResponseBodyDisks(DaraModel):
         if self.disk_id is not None:
             result['DiskId'] = self.disk_id
 
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
+
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
+
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
 
@@ -397,6 +437,12 @@ class DescribeNodeResponseBodyDisks(DaraModel):
 
         if m.get('DiskId') is not None:
             self.disk_id = m.get('DiskId')
+
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
+
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
 
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')

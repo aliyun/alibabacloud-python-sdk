@@ -12,17 +12,17 @@ class ListNetTestResultsRequest(DaraModel):
         next_token: str = None,
         resource_group_id: str = None,
     ):
-        # The number of entries per page in a paged query. Maximum value: 100.
+        # The maximum number of entries per page for paging in a paged query. Maximum value: 100.
         # 
         # Default value:
         # 
-        # - If this parameter is not specified or is set to a value less than 20, the default value is 20.
+        # - If you do not specify the Settings or the specified Settings value is less than 20, the default value is 20.
         # 
-        # - If this parameter is set to a value greater than 100, the default value is 100.
+        # - If the specified Settings value is greater than 100, the default value is 100.
         self.max_results = max_results
         # The network test type.
         self.net_test_type = net_test_type
-        # The pagination token. Set this parameter to the value of NextToken that is returned from the previous API call.
+        # The pagination token. The value is the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The resource group ID.
         self.resource_group_id = resource_group_id

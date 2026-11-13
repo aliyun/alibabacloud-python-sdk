@@ -9,7 +9,7 @@ class DescribeHyperNodeRequest(DaraModel):
         self,
         hyper_node_id: str = None,
     ):
-        # The hypernode ID.
+        # The ID of the supernode.
         # 
         # This parameter is required.
         self.hyper_node_id = hyper_node_id
