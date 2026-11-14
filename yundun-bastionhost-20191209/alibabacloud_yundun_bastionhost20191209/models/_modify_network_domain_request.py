@@ -43,7 +43,7 @@ class ModifyNetworkDomainRequest(DaraModel):
         # The information about the proxy servers in the network domain.
         self.proxies = proxies
         # The region ID of the Bastionhost instance to which the network domain to be modified belongs.
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -128,7 +128,7 @@ class ModifyNetworkDomainRequestProxies(DaraModel):
     ):
         # The new address of the proxy server.
         self.address = address
-        # The type of the proxy server node to be modified. Valid values:
+        # The node type of the proxy server. Valid values:
         # 
         # - **Master**: Primary proxy server.
         # - **Slave**: Secondary proxy server.

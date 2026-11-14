@@ -10,15 +10,12 @@ class DescribeRegionsRequest(DaraModel):
         accept_language: str = None,
         region_id: str = None,
     ):
-        # The language of the response. Valid values:
-        # 
+        # Specifies the language of the response. Valid values:
         # - **zh-CN** (default): Chinese
-        # 
         # - **en-US**: English
-        # 
         # - **ja**: Japanese
         self.accept_language = accept_language
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

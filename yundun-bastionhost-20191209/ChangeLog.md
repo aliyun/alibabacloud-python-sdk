@@ -1,3 +1,12 @@
+2026-11-14 Version: 1.7.3
+- Update API ListApproveCommands: add request parameters ApprovalStatus.
+- Update API ListApproveCommands: add request parameters ApproveCommandId.
+- Update API ListApproveCommands: add response parameters Body.ApproveCommands.$.ApprovalStatus.
+- Update API ListOperationTickets: add request parameters ApprovalStatus.
+- Update API ListOperationTickets: add request parameters OperationTicketId.
+- Update API ListOperationTickets: add response parameters Body.OperationTickets.$.ApprovalStatus.
+
+
 2026-10-26 Version: 1.7.2
 - Update API ListHostAccountsForUser: add response parameters Body.HostAccounts.$.HostAccountType.
 - Update API ListHostAccountsForUserGroup: add response parameters Body.HostAccounts.$.HostAccountType.

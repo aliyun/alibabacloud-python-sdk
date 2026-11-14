@@ -64,6 +64,7 @@ class ListApproveCommandsResponseBody(DaraModel):
 class ListApproveCommandsResponseBodyApproveCommands(DaraModel):
     def __init__(
         self,
+        approval_status: int = None,
         approve_command_id: str = None,
         asset_account_name: str = None,
         asset_ip: str = None,
@@ -76,13 +77,17 @@ class ListApproveCommandsResponseBodyApproveCommands(DaraModel):
         session_id: str = None,
         state: str = None,
     ):
+        # The approval status. Valid values:
+        # - 1: Pending.
+        # - 2: Processed.
+        self.approval_status = approval_status
         # The ID of the command pending approval.
         self.approve_command_id = approve_command_id
-        # The name of the asset account.
+        # The name of the asset account used for O&M.
         self.asset_account_name = asset_account_name
-        # The IP address of the O&M asset.
+        # The IP address of the asset for O&M.
         self.asset_ip = asset_ip
-        # The name of the O&M asset.
+        # The name of the asset for O&M.
         self.asset_name = asset_name
         # The source IP address from which the application is submitted.
         self.client_ip = client_ip
@@ -92,12 +97,12 @@ class ListApproveCommandsResponseBodyApproveCommands(DaraModel):
         self.command = command
         # The time when the application was submitted. Unit: seconds. The value is a UNIX timestamp.
         self.create_time = create_time
-        # The name of the O&M protocol.
+        # The name of the protocol used for O&M.
         self.protocol_name = protocol_name
         # The ID of the O&M session that triggered the approval.
         self.session_id = session_id
-        # The approval status.
-        # **Wait**: Pending approval.
+        # The approval status. Valid values:
+        # - **Wait**: Pending.
         self.state = state
 
     def validate(self):
@@ -108,6 +113,9 @@ class ListApproveCommandsResponseBodyApproveCommands(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.approval_status is not None:
+            result['ApprovalStatus'] = self.approval_status
+
         if self.approve_command_id is not None:
             result['ApproveCommandId'] = self.approve_command_id
 
@@ -145,6 +153,9 @@ class ListApproveCommandsResponseBodyApproveCommands(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApprovalStatus') is not None:
+            self.approval_status = m.get('ApprovalStatus')
+
         if m.get('ApproveCommandId') is not None:
             self.approve_command_id = m.get('ApproveCommandId')
 

@@ -11,15 +11,15 @@ class GetReviewRuleRequest(DaraModel):
         region_id: str = None,
         review_rule_id: int = None,
     ):
-        # The instance ID of the Bastionhost instance.
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the Bastionhost instance.
         # > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
-        # The audit policy ID.
+        # The ID of the audit policy.
         # > You can invoke the ListReviewRules operation to obtain this parameter.
         # 
         # This parameter is required.

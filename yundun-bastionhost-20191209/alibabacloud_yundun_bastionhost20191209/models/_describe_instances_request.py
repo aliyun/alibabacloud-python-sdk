@@ -22,23 +22,23 @@ class DescribeInstancesRequest(DaraModel):
         self.instance_id = instance_id
         # The status of the Bastionhost instance. Valid values:
         # 
-        # - **PENDING**: Uninitialized
+        # - **PENDING**: Not initialized.
         # 
-        # - **CREATING**: Creating 
+        # - **CREATING**: Being created. 
         # 
-        # - **RUNNING**: Running 
+        # - **RUNNING**: Running. 
         # 
-        # - **EXPIRED**: Expired 
+        # - **EXPIRED**: Expired. 
         # 
-        # - **CREATE_FAILED**: Creation failed
+        # - **CREATE_FAILED**: Creation failed.
         # 
-        # - **UPGRADING**: Upgrading
+        # - **UPGRADING**: Being upgraded.
         # 
-        # - **UPGRADE_FAILED**: Upgrade failed
+        # - **UPGRADE_FAILED**: Upgrade failed.
         self.instance_status = instance_status
-        # Specifies the page number of the returned results. Default value: **1**.
+        # The page number of the returned results. Default value: **1**.
         self.page_number = page_number
-        # Settings for a paged query. Specifies the number of Bastionhost instances to display on each page during paging. Default value: **10**, which indicates that 10 Bastionhost instances are displayed on each page.
+        # Settings for the number of Bastionhost instances to return on each page in a paged query. Default value: **10**, which indicates that 10 Bastionhost instances are displayed on each page.
         self.page_size = page_size
         # The region ID of the instance.
         self.region_id = region_id

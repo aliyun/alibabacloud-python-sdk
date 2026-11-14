@@ -22,21 +22,20 @@ class VerifyInstanceLDAPAuthServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.account = account
-        # The Base DN.
+        # The base distinguished name (Base DN).
         # 
         # This parameter is required.
         self.base_dn = base_dn
         # The filter condition for users.
         self.filter = filter
-        # The ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether SSL is supported. Valid values:
         # 
-        # - **true**: supported
-        # 
-        # - **false**: not supported
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.is_ssl = is_ssl
         # The password of the server account.
         self.password = password
@@ -44,7 +43,7 @@ class VerifyInstanceLDAPAuthServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.port = port
-        # The region ID of the Bastionhost instance. For the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the Bastionhost instance. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The address of the server.
         # 

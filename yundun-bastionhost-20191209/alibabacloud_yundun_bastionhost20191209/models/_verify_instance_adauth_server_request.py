@@ -19,29 +19,28 @@ class VerifyInstanceADAuthServerRequest(DaraModel):
         server: str = None,
         standby_server: str = None,
     ):
-        # The account of the server.
+        # The server account.
         # 
         # This parameter is required.
         self.account = account
-        # The Base DN.
+        # The base distinguished name (Base DN).
         # 
         # This parameter is required.
         self.base_dn = base_dn
-        # The domain on the Active Directory server.
+        # The domain on the AD server.
         # 
         # This parameter is required.
         self.domain = domain
         # The filter condition for users.
         self.filter = filter
-        # The ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The instance ID of the Bastionhost instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query this parameter.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether SSL is supported. Valid values:
         # 
-        # - **true**: supported
-        # 
-        # - **false**: not supported
+        # - **true**: Supported.
+        # - **false**: Not supported.
         # 
         # This parameter is required.
         self.is_ssl = is_ssl
@@ -51,7 +50,7 @@ class VerifyInstanceADAuthServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.port = port
-        # The region ID of the Bastionhost instance. For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # The region ID of the Bastionhost instance. For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         # The address of the server.
         # 

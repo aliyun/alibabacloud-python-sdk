@@ -22,7 +22,7 @@ class ModifyInstanceLDAPAuthServerRequest(DaraModel):
         server: str = None,
         standby_server: str = None,
     ):
-        # The account of the server.
+        # The server account.
         # 
         # This parameter is required.
         self.account = account
@@ -30,12 +30,12 @@ class ModifyInstanceLDAPAuthServerRequest(DaraModel):
         # 
         # This parameter is required.
         self.base_dn = base_dn
-        # The server attribute name that corresponds to the user email address.
+        # The server attribute name that maps to the user email address.
         self.email_mapping = email_mapping
         # The filter condition for users.
         self.filter = filter
         # The instance ID of the Bastionhost instance.
-        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the parameter value.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -44,13 +44,13 @@ class ModifyInstanceLDAPAuthServerRequest(DaraModel):
         # - **true**: Supported.
         # - **false**: Not supported.
         self.is_ssl = is_ssl
-        # The server attribute name that corresponds to the user logon name.
+        # The server attribute name that maps to the user logon name.
         self.login_name_mapping = login_name_mapping
-        # The server attribute name that corresponds to the user mobile phone number.
+        # The server attribute name that maps to the user mobile phone number.
         self.mobile_mapping = mobile_mapping
-        # The server attribute name that corresponds to the username.
+        # The server attribute name that maps to the username.
         self.name_mapping = name_mapping
-        # The password of the server account. This parameter is required when you add an LDAP authentication server. When you modify the information of an LDAP authentication server, if you do not specify this parameter, the current password is retained.
+        # The password of the server account. This parameter is required when you add an LDAP authentication server. If you do not specify this parameter when you modify the LDAP authentication server, the current password is retained.
         self.password = password
         # The port used to access the server.
         # 

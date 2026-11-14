@@ -66,6 +66,7 @@ class ListOperationTicketsResponseBodyOperationTickets(DaraModel):
         self,
         apply_user_id: str = None,
         apply_username: str = None,
+        approval_status: int = None,
         approve_comment: str = None,
         asset_account_id: str = None,
         asset_account_name: str = None,
@@ -84,54 +85,58 @@ class ListOperationTicketsResponseBodyOperationTickets(DaraModel):
         protocol_name: str = None,
         state: str = None,
     ):
-        # The ID of the O&M applicant.
+        # The ID of the user who submitted the O&M ticket.
         self.apply_user_id = apply_user_id
-        # The username of the O&M applicant.
+        # The username of the user who submitted the O&M ticket.
         self.apply_username = apply_username
-        # The remarks entered by the O&M engineer when applying for O&M.
+        # The approval status. Valid values:
+        # - 1: Pending approval.
+        # - 2: Processed.
+        self.approval_status = approval_status
+        # The remarks entered by the O&M engineer when submitting the O&M ticket.
         self.approve_comment = approve_comment
-        # The ID of the asset account for which O&M is requested.
+        # The ID of the asset account requested for O&M.
         self.asset_account_id = asset_account_id
-        # The logon name of the asset account for which O&M is requested.
+        # The logon name of the asset account requested for O&M.
         self.asset_account_name = asset_account_name
-        # The address of the asset for which O&M is requested.
+        # The address of the asset requested for O&M.
         self.asset_address = asset_address
-        # The ID of the asset for which O&M is requested.
+        # The ID of the asset requested for O&M.
         self.asset_id = asset_id
-        # The name of the asset for which O&M is requested.
+        # The name of the asset requested for O&M.
         self.asset_name = asset_name
-        # The ID of the network domain to which the asset for which O&M is requested belongs.
+        # The ID of the network domain to which the asset requested for O&M belongs.
         self.asset_network_domain_id = asset_network_domain_id
-        # The operating system type of the asset for which O&M is requested.
+        # The operating system type of the asset requested for O&M.
         self.asset_os = asset_os
-        # The name of the asset source to which the asset for which O&M is requested belongs. Valid values:
-        # - **Local**: local host
-        # - **Ecs**: ECS instance
-        # - **Rds**: ApsaraDB RDS instance
-        # - name of a third-party asset source
+        # The name of the asset source to which the asset requested for O&M belongs. Valid values:
+        # - **Local**: Local host.
+        # - **Ecs**: ECS instance.
+        # - **Rds**: ApsaraDB RDS instance.
+        # - The name of a third-party asset source.
         self.asset_source = asset_source
-        # The ID of the asset source to which the asset for which O&M is requested belongs.
+        # The ID of the asset source to which the asset requested for O&M belongs.
         self.asset_source_instance_id = asset_source_instance_id
-        # The time when the application was submitted. The value is a UNIX timestamp in seconds.
+        # The time when the O&M ticket was submitted. The value is a UNIX timestamp in seconds.
         self.created_time = created_time
         # The limit on the number of logons requested by the O&M engineer. Valid values:
         # 
-        # - **0**: No limit is imposed on the number of logons. The O&M engineer can log on an unlimited number of times within the validity period.
+        # - **0**: No limit on the number of logons. The O&M engineer can log on an unlimited number of times within the validity period.
         # - **1**: The O&M engineer is allowed to log on only once within the validity period.
         self.effect_count = effect_count
-        # The end time of the approved O&M period specified by the O&M engineer. The value is a UNIX timestamp in seconds.
-        # > A value of 0 indicates that the O&M engineer did not specify a time when submitting the application.
+        # The end time of the O&M session specified by the O&M engineer. The value is a UNIX timestamp in seconds.
+        # > A value of 0 indicates that the O&M engineer did not specify an end time when submitting the ticket.
         self.effect_end_time = effect_end_time
-        # The start time of the approved O&M period specified by the O&M engineer. The value is a UNIX timestamp in seconds.
-        # > A value of 0 indicates that the O&M engineer did not specify a time when submitting the application.
+        # The start time of the O&M session specified by the O&M engineer. The value is a UNIX timestamp in seconds.
+        # > A value of 0 indicates that the O&M engineer did not specify a start time when submitting the ticket.
         self.effect_start_time = effect_start_time
         # The ID of the O&M ticket pending approval.
         self.operation_ticket_id = operation_ticket_id
-        # The name of the protocol for the O&M request.
+        # The name of the protocol requested for O&M.
         self.protocol_name = protocol_name
         # The approval status. Valid values:
         # 
-        # - Normal: pending approval
+        # - Normal: Pending approval.
         self.state = state
 
     def validate(self):
@@ -147,6 +152,9 @@ class ListOperationTicketsResponseBodyOperationTickets(DaraModel):
 
         if self.apply_username is not None:
             result['ApplyUsername'] = self.apply_username
+
+        if self.approval_status is not None:
+            result['ApprovalStatus'] = self.approval_status
 
         if self.approve_comment is not None:
             result['ApproveComment'] = self.approve_comment
@@ -208,6 +216,9 @@ class ListOperationTicketsResponseBodyOperationTickets(DaraModel):
 
         if m.get('ApplyUsername') is not None:
             self.apply_username = m.get('ApplyUsername')
+
+        if m.get('ApprovalStatus') is not None:
+            self.approval_status = m.get('ApprovalStatus')
 
         if m.get('ApproveComment') is not None:
             self.approve_comment = m.get('ApproveComment')

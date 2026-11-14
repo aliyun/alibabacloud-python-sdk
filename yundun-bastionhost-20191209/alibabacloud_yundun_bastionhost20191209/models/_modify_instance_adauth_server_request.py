@@ -30,7 +30,7 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         sync_interval: str = None,
         user_source_id: str = None,
     ):
-        # The server account.
+        # The account of the server.
         # 
         # This parameter is required.
         self.account = account
@@ -46,25 +46,25 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         self.email_mapping = email_mapping
         # The filter condition for users.
         self.filter = filter
-        # The instance ID of the Bastionhost instance.
-        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether the AD authentication server is the default server. A value of true indicates that the server is the default AD authentication server. A value of false indicates that the server is not the default AD authentication server.
+        # Specifies whether the AD authentication server is the default server. Valid values: true and false. A value of true indicates that the server is the default AD authentication server, and a value of false indicates that the server is not the default AD authentication server.
         self.is_default = is_default
         # Specifies whether SSL is supported. Valid values:
         # 
         # - **true**: Supported.
         # - **false**: Not supported.
         self.is_ssl = is_ssl
-        # Specifies whether to synchronize the email address. A value of true indicates that the email address is synchronized. A value of false indicates that the email address is not synchronized.
+        # Specifies whether to synchronize the email address. Valid values: true and false. A value of true indicates that the email address is synchronized, and a value of false indicates that the email address is not synchronized.
         self.is_sync_email_attr = is_sync_email_attr
-        # Specifies whether to synchronize the mobile phone number. A value of true indicates that the mobile phone number is synchronized. A value of false indicates that the mobile phone number is not synchronized.
+        # Specifies whether to synchronize the mobile phone number. Valid values: true and false. A value of true indicates that the mobile phone number is synchronized, and a value of false indicates that the mobile phone number is not synchronized.
         self.is_sync_mobile_attr = is_sync_mobile_attr
-        # Specifies whether to synchronize the display name. A value of true indicates that the display name is synchronized. A value of false indicates that the display name is not synchronized.
+        # Specifies whether to synchronize the display name. Valid values: true and false. A value of true indicates that the display name is synchronized, and a value of false indicates that the display name is not synchronized.
         self.is_sync_name_attr = is_sync_name_attr
-        # Specifies whether to synchronize the organization to which the user belongs as a user group. A value of true indicates that the organization is synchronized as a user group. A value of false indicates that the organization is not synchronized as a user group.
+        # Specifies whether to synchronize the organization to which the user belongs as a user group. Valid values: true and false. A value of true indicates that the organization is synchronized as a user group, and a value of false indicates that the organization is not synchronized as a user group.
         self.is_sync_ou_as_user_group = is_sync_ou_as_user_group
         # The server attribute name that maps to the user mobile phone number.
         self.mobile_mapping = mobile_mapping
@@ -87,7 +87,7 @@ class ModifyInstanceADAuthServerRequest(DaraModel):
         self.server_name = server_name
         # The address of the standby server.
         self.standby_server = standby_server
-        # The interval at which user snapshots are automatically synchronized, in hours. Valid values: 0, and 4 to 168. A value of 0 indicates that automatic synchronization is disabled.
+        # The interval at which user snapshots are automatically synchronized. Unit: hours. Valid values: 0, and 4 to 168. A value of 0 indicates that automatic synchronization is disabled.
         self.sync_interval = sync_interval
         self.user_source_id = user_source_id
 

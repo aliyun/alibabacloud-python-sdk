@@ -7,13 +7,19 @@ from darabonba.model import DaraModel
 class ListOperationTicketsRequest(DaraModel):
     def __init__(
         self,
+        approval_status: int = None,
         asset_address: str = None,
         instance_id: str = None,
+        operation_ticket_id: str = None,
         page_number: str = None,
         page_size: str = None,
         project_id: int = None,
         region_id: str = None,
     ):
+        # The approval status. Valid values:
+        # - 1: Pending approval.
+        # - 2: Processed.
+        self.approval_status = approval_status
         # The address of the O&M asset for exact search.
         self.asset_address = asset_address
         # The instance ID of the Bastionhost instance.
@@ -21,16 +27,18 @@ class ListOperationTicketsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number of the page to return in a paged query. Default value: **1**.
+        # The ID of the O&M ticket.
+        self.operation_ticket_id = operation_ticket_id
+        # The page number for a paged query. Default value: **1**.
         self.page_number = page_number
         # The maximum number of entries to return on each page in a paged query.  
-        # The maximum value of the PageSize parameter is 1000. The default value is 20. If this parameter is left empty, 20 entries are returned by default.
+        # The maximum value of the PageSize parameter is 1000. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
         # > We recommend that you specify a value for the PageSize parameter.
         self.page_size = page_size
         # The project ID.
         self.project_id = project_id
         # The region ID of the Bastionhost instance.
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
+        # > For the mappings between region IDs and region names, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
 
     def validate(self):
@@ -41,11 +49,17 @@ class ListOperationTicketsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.approval_status is not None:
+            result['ApprovalStatus'] = self.approval_status
+
         if self.asset_address is not None:
             result['AssetAddress'] = self.asset_address
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.operation_ticket_id is not None:
+            result['OperationTicketId'] = self.operation_ticket_id
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -63,11 +77,17 @@ class ListOperationTicketsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApprovalStatus') is not None:
+            self.approval_status = m.get('ApprovalStatus')
+
         if m.get('AssetAddress') is not None:
             self.asset_address = m.get('AssetAddress')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('OperationTicketId') is not None:
+            self.operation_ticket_id = m.get('OperationTicketId')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

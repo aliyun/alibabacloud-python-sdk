@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Yundun-bastionhost'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-qingdao': 'yundun-bastionhost.aliyuncs.com',
@@ -8457,6 +8461,10 @@ class Client(OpenApiClient):
     ) -> main_models.ListApproveCommandsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.approval_status):
+            query['ApprovalStatus'] = request.approval_status
+        if not DaraCore.is_null(request.approve_command_id):
+            query['ApproveCommandId'] = request.approve_command_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
@@ -8493,6 +8501,10 @@ class Client(OpenApiClient):
     ) -> main_models.ListApproveCommandsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.approval_status):
+            query['ApprovalStatus'] = request.approval_status
+        if not DaraCore.is_null(request.approve_command_id):
+            query['ApproveCommandId'] = request.approve_command_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
@@ -11165,10 +11177,14 @@ class Client(OpenApiClient):
     ) -> main_models.ListOperationTicketsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.approval_status):
+            query['ApprovalStatus'] = request.approval_status
         if not DaraCore.is_null(request.asset_address):
             query['AssetAddress'] = request.asset_address
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_ticket_id):
+            query['OperationTicketId'] = request.operation_ticket_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -11203,10 +11219,14 @@ class Client(OpenApiClient):
     ) -> main_models.ListOperationTicketsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.approval_status):
+            query['ApprovalStatus'] = request.approval_status
         if not DaraCore.is_null(request.asset_address):
             query['AssetAddress'] = request.asset_address
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_ticket_id):
+            query['OperationTicketId'] = request.operation_ticket_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):

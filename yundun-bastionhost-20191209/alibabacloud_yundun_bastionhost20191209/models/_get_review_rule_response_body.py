@@ -59,17 +59,17 @@ class GetReviewRuleResponseBodyReviewRule(DaraModel):
     ):
         # The description of the audit policy.
         self.description = description
-        # The auditor information associated with the audit policy.
+        # The information about the auditors associated with the audit policy.
         self.principals = principals
-        # The array of project IDs specified as auditable in the audit policy. This parameter is valid only when the value of ScopeType is 2.
+        # The array of project IDs that can be audited based on the audit policy. This parameter is valid only when the value of ScopeType is 2.
         self.project_ids = project_ids
-        # The auditable project information.
+        # The information about the projects that can be audited.
         self.projects = projects
-        # The audit policy ID.
+        # The ID of the audit policy.
         self.review_rule_id = review_rule_id
         # The name of the audit policy.
         self.review_rule_name = review_rule_name
-        # The type of the auditable asset scope rule specified in the audit policy. Valid values:
+        # The type of the asset scope rule specified in the audit policy. Valid values:
         # 
         # - **1**: All projects.
         # 
@@ -157,16 +157,16 @@ class GetReviewRuleResponseBodyReviewRuleProjects(DaraModel):
         name: str = None,
         project_id: int = None,
     ):
-        # The project description.
+        # The description of the project.
         self.description = description
         # Specifies whether the project is the default project. Valid values:
         # - **true**: Yes.
         # 
         # - **false**: No.
         self.is_default = is_default
-        # The project name.
+        # The name of the project.
         self.name = name
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
 
     def validate(self):
@@ -214,11 +214,11 @@ class GetReviewRuleResponseBodyReviewRulePrincipals(DaraModel):
         principal_name: str = None,
         principal_type: str = None,
     ):
-        # If the value of PrincipalType is RamUser, the returned value is the RAM user ID of the associated auditor. If the value of PrincipalType is RamRole, the returned value is the ARN of the RAM role of the associated auditor.
+        # If the PrincipalType parameter is set to RamUser, this parameter returns the ID of the RAM user that acts as the auditor. If the PrincipalType parameter is set to RamRole, this parameter returns the ARN of the RAM role that acts as the auditor.
         self.principal_id = principal_id
-        # The display name of the RAM user or RAM role of the associated auditor.
+        # The display name of the RAM user or RAM role that acts as the auditor.
         self.principal_name = principal_name
-        # The auditor type. Valid values:
+        # The type of the auditor. Valid values:
         # 
         # - **RamUser**: Resource Access Management (RAM) user.
         # 
