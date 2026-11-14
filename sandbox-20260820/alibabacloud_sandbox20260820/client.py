@@ -395,6 +395,80 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_volume_with_options_async(request, headers, runtime)
 
+    def create_warm_pool_with_options(
+        self,
+        team_id: str,
+        request: main_models.CreateWarmPoolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWarmPoolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWarmPool',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/teams/{DaraURL.percent_encode(team_id)}/warmPools',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWarmPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_warm_pool_with_options_async(
+        self,
+        team_id: str,
+        request: main_models.CreateWarmPoolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWarmPoolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWarmPool',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/teams/{DaraURL.percent_encode(team_id)}/warmPools',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWarmPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_warm_pool(
+        self,
+        team_id: str,
+        request: main_models.CreateWarmPoolRequest,
+    ) -> main_models.CreateWarmPoolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_warm_pool_with_options(team_id, request, headers, runtime)
+
+    async def create_warm_pool_async(
+        self,
+        team_id: str,
+        request: main_models.CreateWarmPoolRequest,
+    ) -> main_models.CreateWarmPoolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_warm_pool_with_options_async(team_id, request, headers, runtime)
+
     def delete_api_key_with_options(
         self,
         api_key_id: str,
@@ -855,6 +929,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_volume_with_options_async(volume_id, request, headers, runtime)
 
+    def delete_warm_pool_with_options(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.DeleteWarmPoolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWarmPoolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWarmPool',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/teams/{DaraURL.percent_encode(team_id)}/warmPools/{DaraURL.percent_encode(template_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWarmPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_warm_pool_with_options_async(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.DeleteWarmPoolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWarmPoolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWarmPool',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/teams/{DaraURL.percent_encode(team_id)}/warmPools/{DaraURL.percent_encode(template_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWarmPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_warm_pool(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.DeleteWarmPoolRequest,
+    ) -> main_models.DeleteWarmPoolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_warm_pool_with_options(team_id, template_id, request, headers, runtime)
+
+    async def delete_warm_pool_async(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.DeleteWarmPoolRequest,
+    ) -> main_models.DeleteWarmPoolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_warm_pool_with_options_async(team_id, template_id, request, headers, runtime)
+
     def describe_api_key_with_options(
         self,
         api_key_id: str,
@@ -1082,6 +1232,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.describe_template_cache_with_options_async(template_id, request, headers, runtime)
+
+    def describe_warm_pool_with_options(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.DescribeWarmPoolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWarmPoolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWarmPool',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/teams/{DaraURL.percent_encode(team_id)}/warmPools/{DaraURL.percent_encode(template_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWarmPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_warm_pool_with_options_async(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.DescribeWarmPoolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWarmPoolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWarmPool',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/teams/{DaraURL.percent_encode(team_id)}/warmPools/{DaraURL.percent_encode(template_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWarmPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_warm_pool(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.DescribeWarmPoolRequest,
+    ) -> main_models.DescribeWarmPoolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_warm_pool_with_options(team_id, template_id, request, headers, runtime)
+
+    async def describe_warm_pool_async(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.DescribeWarmPoolRequest,
+    ) -> main_models.DescribeWarmPoolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_warm_pool_with_options_async(team_id, template_id, request, headers, runtime)
 
     def get_metric_data_with_options(
         self,
@@ -2119,6 +2345,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_volumes_with_options_async(request, headers, runtime)
 
+    def list_warm_pools_with_options(
+        self,
+        team_id: str,
+        request: main_models.ListWarmPoolsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWarmPoolsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWarmPools',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/teams/{DaraURL.percent_encode(team_id)}/warmPools',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWarmPoolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_warm_pools_with_options_async(
+        self,
+        team_id: str,
+        request: main_models.ListWarmPoolsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWarmPoolsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWarmPools',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/teams/{DaraURL.percent_encode(team_id)}/warmPools',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWarmPoolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_warm_pools(
+        self,
+        team_id: str,
+        request: main_models.ListWarmPoolsRequest,
+    ) -> main_models.ListWarmPoolsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_warm_pools_with_options(team_id, request, headers, runtime)
+
+    async def list_warm_pools_async(
+        self,
+        team_id: str,
+        request: main_models.ListWarmPoolsRequest,
+    ) -> main_models.ListWarmPoolsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_warm_pools_with_options_async(team_id, request, headers, runtime)
+
     def reset_api_key_with_options(
         self,
         api_key_id: str,
@@ -2572,3 +2882,81 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_volume_with_options_async(volume_id, request, headers, runtime)
+
+    def update_warm_pool_with_options(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.UpdateWarmPoolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWarmPoolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWarmPool',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/teams/{DaraURL.percent_encode(team_id)}/warmPools/{DaraURL.percent_encode(template_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWarmPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_warm_pool_with_options_async(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.UpdateWarmPoolRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWarmPoolResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWarmPool',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/teams/{DaraURL.percent_encode(team_id)}/warmPools/{DaraURL.percent_encode(template_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWarmPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_warm_pool(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.UpdateWarmPoolRequest,
+    ) -> main_models.UpdateWarmPoolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_warm_pool_with_options(team_id, template_id, request, headers, runtime)
+
+    async def update_warm_pool_async(
+        self,
+        team_id: str,
+        template_id: str,
+        request: main_models.UpdateWarmPoolRequest,
+    ) -> main_models.UpdateWarmPoolResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_warm_pool_with_options_async(team_id, template_id, request, headers, runtime)

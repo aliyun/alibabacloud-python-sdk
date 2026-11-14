@@ -18,7 +18,7 @@ class CreateTemplateResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The unique identifier of the created template.
+        # The unique ID of the created template.
         self.template_id = template_id
 
     def validate(self):

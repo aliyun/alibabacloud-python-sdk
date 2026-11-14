@@ -1,3 +1,11 @@
+2026-11-14 Version: 1.4.0
+- Support API CreateWarmPool.
+- Support API DeleteWarmPool.
+- Support API DescribeWarmPool.
+- Support API ListWarmPools.
+- Support API UpdateWarmPool.
+
+
 2026-11-13 Version: 1.3.0
 - Support API GetMetricData.
 - Support API GetResourceUsage.

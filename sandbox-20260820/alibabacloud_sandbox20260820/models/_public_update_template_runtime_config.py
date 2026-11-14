@@ -21,7 +21,7 @@ class PublicUpdateTemplateRuntimeConfig(DaraModel):
     ):
         # The number of vCPU cores.
         self.cpu = cpu
-        # The size of the system cloud disk in MB.
+        # The system cloud disk size in MB.
         self.disk_size = disk_size
         # Specifies whether the sandbox is allowed to access the Internet.
         self.internet_access = internet_access
@@ -31,7 +31,7 @@ class PublicUpdateTemplateRuntimeConfig(DaraModel):
         self.memory_size = memory_size
         # The sandbox configuration.
         self.sandbox_config = sandbox_config
-        # Supported only for generation 2 templates. Omitting this field or setting it to null retains the original list. A non-empty array replaces the entire allowed set. An explicit empty array [] clears the inbound VPC restrictions for the new version. This field is independent of vpcConfig. An empty request body {}, an empty runtimeConfig, or a runtimeConfig containing only vpcBindings: null returns a 400 error and does not clear the bindings. The actual JSON received by the server prevails. An empty array omitted by the SDK cannot clear the list. If the target is a generation 1 template, explicitly passing an empty or non-empty array returns a 400 error. If non-empty bindings already exist, you must first clear them on the generation 2 template and wait for the update to succeed before switching to generation 1.
+        # If omitted or set to null, the original list is retained. A non-empty array replaces the entire allowed set. An explicit empty array [] clears the inbound VPC restrictions for the new version. This field is independent of vpcConfig. An empty request body {}, an empty runtimeConfig, or a runtimeConfig that contains only vpcBindings: null returns a 400 error and does not clear the bindings. The actual JSON received by the server prevails. An empty array omitted by the SDK cannot clear the list.
         self.vpc_bindings = vpc_bindings
         # The VPC network configuration.
         self.vpc_config = vpc_config

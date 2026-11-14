@@ -26,6 +26,7 @@ from ._create_template_sandbox_config import CreateTemplateSandboxConfig
 from ._create_template_step import CreateTemplateStep
 from ._create_template_vpcconfig import CreateTemplateVPCConfig
 from ._create_volume_input import CreateVolumeInput
+from ._create_warm_pool_input import CreateWarmPoolInput
 from ._custom_domain_resp import CustomDomainResp
 from ._e2blifecycle import E2BLifecycle
 from ._e2blisted_sandbox import E2BListedSandbox
@@ -75,6 +76,8 @@ from ._public_update_template_runtime_config import PublicUpdateTemplateRuntimeC
 from ._public_update_template_sandbox_config import PublicUpdateTemplateSandboxConfig
 from ._public_update_template_step import PublicUpdateTemplateStep
 from ._public_update_template_vpcconfig import PublicUpdateTemplateVPCConfig
+from ._public_warm_pool import PublicWarmPool
+from ._public_warm_pool_config import PublicWarmPoolConfig
 from ._quota import Quota
 from ._quota_usage import QuotaUsage
 from ._resource_usage import ResourceUsage
@@ -85,7 +88,13 @@ from ._update_custom_domain_input import UpdateCustomDomainInput
 from ._update_team_input import UpdateTeamInput
 from ._update_template_input import UpdateTemplateInput
 from ._update_volume_input import UpdateVolumeInput
+from ._update_warm_pool_input import UpdateWarmPoolInput
 from ._volume_mount_config import VolumeMountConfig
+from ._warm_pool_capacity_policy import WarmPoolCapacityPolicy
+from ._warm_pool_capacity_policy_input import WarmPoolCapacityPolicyInput
+from ._warm_pool_current_error import WarmPoolCurrentError
+from ._warm_pool_scheduled_policy import WarmPoolScheduledPolicy
+from ._warm_pool_scheduled_policy_input import WarmPoolScheduledPolicyInput
 from ._create_api_key_request import CreateApiKeyRequest
 from ._create_api_key_response_body import CreateApiKeyResponseBody
 from ._create_api_key_response import CreateApiKeyResponse
@@ -101,6 +110,9 @@ from ._create_template_cache_response import CreateTemplateCacheResponse
 from ._create_volume_request import CreateVolumeRequest
 from ._create_volume_response_body import CreateVolumeResponseBody
 from ._create_volume_response import CreateVolumeResponse
+from ._create_warm_pool_request import CreateWarmPoolRequest
+from ._create_warm_pool_response_body import CreateWarmPoolResponseBody
+from ._create_warm_pool_response import CreateWarmPoolResponse
 from ._delete_api_key_request import DeleteApiKeyRequest
 from ._delete_api_key_response_body import DeleteApiKeyResponseBody
 from ._delete_api_key_response import DeleteApiKeyResponse
@@ -119,6 +131,8 @@ from ._delete_template_cache_response import DeleteTemplateCacheResponse
 from ._delete_volume_request import DeleteVolumeRequest
 from ._delete_volume_response_body import DeleteVolumeResponseBody
 from ._delete_volume_response import DeleteVolumeResponse
+from ._delete_warm_pool_request import DeleteWarmPoolRequest
+from ._delete_warm_pool_response import DeleteWarmPoolResponse
 from ._describe_api_key_request import DescribeApiKeyRequest
 from ._describe_api_key_response_body import DescribeApiKeyResponseBody
 from ._describe_api_key_response import DescribeApiKeyResponse
@@ -128,6 +142,9 @@ from ._describe_quota_response import DescribeQuotaResponse
 from ._describe_template_cache_request import DescribeTemplateCacheRequest
 from ._describe_template_cache_response_body import DescribeTemplateCacheResponseBody
 from ._describe_template_cache_response import DescribeTemplateCacheResponse
+from ._describe_warm_pool_request import DescribeWarmPoolRequest
+from ._describe_warm_pool_response_body import DescribeWarmPoolResponseBody
+from ._describe_warm_pool_response import DescribeWarmPoolResponse
 from ._get_metric_data_request import GetMetricDataRequest
 from ._get_metric_data_shrink_request import GetMetricDataShrinkRequest
 from ._get_metric_data_response_body import GetMetricDataResponseBody
@@ -164,6 +181,9 @@ from ._list_templates_response import ListTemplatesResponse
 from ._list_volumes_request import ListVolumesRequest
 from ._list_volumes_response_body import ListVolumesResponseBody
 from ._list_volumes_response import ListVolumesResponse
+from ._list_warm_pools_request import ListWarmPoolsRequest
+from ._list_warm_pools_response_body import ListWarmPoolsResponseBody
+from ._list_warm_pools_response import ListWarmPoolsResponse
 from ._reset_api_key_request import ResetApiKeyRequest
 from ._reset_api_key_response_body import ResetApiKeyResponseBody
 from ._reset_api_key_response import ResetApiKeyResponse
@@ -182,6 +202,9 @@ from ._update_template_response import UpdateTemplateResponse
 from ._update_volume_request import UpdateVolumeRequest
 from ._update_volume_response_body import UpdateVolumeResponseBody
 from ._update_volume_response import UpdateVolumeResponse
+from ._update_warm_pool_request import UpdateWarmPoolRequest
+from ._update_warm_pool_response_body import UpdateWarmPoolResponseBody
+from ._update_warm_pool_response import UpdateWarmPoolResponse
 from ._container_configuration import ContainerConfigurationRegistryCredential
 from ._create_snapshot_input import CreateSnapshotInputResourceTags
 from ._create_template_input import CreateTemplateInputResourceTags
@@ -245,6 +268,7 @@ __all__ = [
     CreateTemplateStep,
     CreateTemplateVPCConfig,
     CreateVolumeInput,
+    CreateWarmPoolInput,
     CustomDomainResp,
     E2BLifecycle,
     E2BListedSandbox,
@@ -294,6 +318,8 @@ __all__ = [
     PublicUpdateTemplateSandboxConfig,
     PublicUpdateTemplateStep,
     PublicUpdateTemplateVPCConfig,
+    PublicWarmPool,
+    PublicWarmPoolConfig,
     Quota,
     QuotaUsage,
     ResourceUsage,
@@ -304,7 +330,13 @@ __all__ = [
     UpdateTeamInput,
     UpdateTemplateInput,
     UpdateVolumeInput,
+    UpdateWarmPoolInput,
     VolumeMountConfig,
+    WarmPoolCapacityPolicy,
+    WarmPoolCapacityPolicyInput,
+    WarmPoolCurrentError,
+    WarmPoolScheduledPolicy,
+    WarmPoolScheduledPolicyInput,
     CreateApiKeyRequest,
     CreateApiKeyResponseBody,
     CreateApiKeyResponse,
@@ -320,6 +352,9 @@ __all__ = [
     CreateVolumeRequest,
     CreateVolumeResponseBody,
     CreateVolumeResponse,
+    CreateWarmPoolRequest,
+    CreateWarmPoolResponseBody,
+    CreateWarmPoolResponse,
     DeleteApiKeyRequest,
     DeleteApiKeyResponseBody,
     DeleteApiKeyResponse,
@@ -338,6 +373,8 @@ __all__ = [
     DeleteVolumeRequest,
     DeleteVolumeResponseBody,
     DeleteVolumeResponse,
+    DeleteWarmPoolRequest,
+    DeleteWarmPoolResponse,
     DescribeApiKeyRequest,
     DescribeApiKeyResponseBody,
     DescribeApiKeyResponse,
@@ -347,6 +384,9 @@ __all__ = [
     DescribeTemplateCacheRequest,
     DescribeTemplateCacheResponseBody,
     DescribeTemplateCacheResponse,
+    DescribeWarmPoolRequest,
+    DescribeWarmPoolResponseBody,
+    DescribeWarmPoolResponse,
     GetMetricDataRequest,
     GetMetricDataShrinkRequest,
     GetMetricDataResponseBody,
@@ -383,6 +423,9 @@ __all__ = [
     ListVolumesRequest,
     ListVolumesResponseBody,
     ListVolumesResponse,
+    ListWarmPoolsRequest,
+    ListWarmPoolsResponseBody,
+    ListWarmPoolsResponse,
     ResetApiKeyRequest,
     ResetApiKeyResponseBody,
     ResetApiKeyResponse,
@@ -401,6 +444,9 @@ __all__ = [
     UpdateVolumeRequest,
     UpdateVolumeResponseBody,
     UpdateVolumeResponse,
+    UpdateWarmPoolRequest,
+    UpdateWarmPoolResponseBody,
+    UpdateWarmPoolResponse,
     ContainerConfigurationRegistryCredential,
     CreateSnapshotInputResourceTags,
     CreateTemplateInputResourceTags,
