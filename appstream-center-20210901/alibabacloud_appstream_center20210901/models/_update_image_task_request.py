@@ -15,32 +15,23 @@ class UpdateImageTaskRequest(DaraModel):
         task_type: str = None,
         version_id: str = None,
     ):
-        # **Not enabled. Do not pass this parameter.** The task region is determined by the associated creation resource. This parameter is not used to switch regions.
-        # 
-        # The example "Not applicable (not enabled)" is only a description of the field status and is not a valid parameter value.
+        # **Not enabled. Do not pass this parameter.** The task region is determined by the associated creation resource. This parameter is not used to switch regions. The example "N/A (not enabled)" is only a description of the field status and is not a valid parameter value.
         self.biz_region_id = biz_region_id
-        # **Not enabled. Do not pass this parameter.** This parameter is not involved in task status updates.
-        # 
-        # The example "Not applicable (not enabled)" is only a description of the field status and is not a valid parameter value.
+        # **Not enabled. Do not pass this parameter.** This parameter is not involved in task status updates. The example "N/A (not enabled)" is only a description of the field status and is not a valid parameter value.
         self.code = code
-        # The status identifier reported by the creation resource. It must match the task type and the current creation stage. You cannot directly use the overall task status from GetTask as a substitute.
-        # 
-        # Valid values for image creation tasks (IMAGE_MANUAL and IMAGE_MANUAL_RETRY):
-        # 
+        # The status identifier reported by the creation resource. It must match the task type and the current creation stage. You cannot directly use the overall task status from GetTask as a substitute. Valid values for image creation tasks (IMAGE_MANUAL and IMAGE_MANUAL_RETRY):
         # - **BUILDER_INIT_SUCCESS**: The creation environment is initialized.
-        # - **DOWNLOAD_SUCCESS**: The creation resources are downloaded.
-        # - **DOWNLOAD_FAILED**: The creation resources fail to be downloaded.
+        # - **DOWNLOAD_SUCCESS**: The creation resource is downloaded.
+        # - **DOWNLOAD_FAILED**: The creation resource fails to be downloaded.
         # - **BUILD_START**: The image creation starts.
         # - **BUILD_SUCCESS**: The application installation and image configuration are successful.
         # - **BUILD_FAILED**: The application installation or image configuration fails.
         # - **BUILD_COMPLETE**: The creation is completed and the subsequent verification process starts.
-        # - **BUILD_COMPLETE_SKIP_VALIDATE**: The creation is completed in compatibility mode. Whether subsequent verification is performed is subject to the task query result.
-        # 
+        # - **BUILD_COMPLETE_SKIP_VALIDATE**: The creation is completed in compatibility mode. Whether verification is performed depends on the task query result.
         # Valid values for application adaptation tasks:
-        # 
         # - **BUILDER_INIT_SUCCESS**: The creation environment is initialized.
-        # - **DOWNLOAD_SUCCESS**: The application resources are downloaded.
-        # - **DOWNLOAD_FAILED**: The application resources fail to be downloaded.
+        # - **DOWNLOAD_SUCCESS**: The application resource is downloaded.
+        # - **DOWNLOAD_FAILED**: The application resource fails to be downloaded.
         # - **BUILD_START**: The application recording starts.
         # - **BUILD_SUCCESS**: The application recording is successful.
         # - **BUILD_FAILED**: The application recording fails.
@@ -56,24 +47,19 @@ class UpdateImageTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.task_id = task_id
-        # **Not enabled. Do not pass this parameter.** This parameter is not supported for updating the task step.
-        # 
-        # The example "Not applicable (not enabled)" is only a description of the field status and is not a valid parameter value.
+        # **Not enabled. Do not pass this parameter.** This parameter is not supported for updating the task step. The example "N/A (not enabled)" is only a description of the field status and is not a valid parameter value.
         self.task_step = task_step
-        # The actual type of the task to be updated. It must match the task corresponding to TaskId. Status updates support the following application adaptation and manual image creation tasks:
-        # 
+        # The actual type of the task to be updated, which must match the task specified by TaskId. Status updates support the following application adaptation and manual image creation tasks. Valid values:
         # - **ADAPT_AUTO**: Creates an application adaptation automatically.
-        # - **ADAPT_AUTO_RETRY**: Retries the automatic application adaptation.
+        # - **ADAPT_AUTO_RETRY**: Retries automatic application adaptation creation.
         # - **ADAPT_MANUAL**: Creates an application adaptation manually.
-        # - **ADAPT_MANUAL_RETRY**: Retries the manual application adaptation.
+        # - **ADAPT_MANUAL_RETRY**: Retries manual application adaptation creation.
         # - **IMAGE_MANUAL**: Creates an image manually.
-        # - **IMAGE_MANUAL_RETRY**: Retries the manual image creation.
+        # - **IMAGE_MANUAL_RETRY**: Retries manual image creation.
         # 
         # This parameter is required.
         self.task_type = task_type
-        # **Not enabled. Do not pass this parameter.** This parameter is not supported for modifying the image version associated with the task.
-        # 
-        # The example "Not applicable (not enabled)" is only a description of the field status and is not a valid parameter value.
+        # **Not enabled. Do not pass this parameter.** This parameter is not supported for modifying the image version associated with the task. The example "N/A (not enabled)" is only a description of the field status and is not a valid parameter value.
         self.version_id = version_id
 
     def validate(self):

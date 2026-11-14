@@ -17,9 +17,9 @@ class QueryUserUsageReportRequest(DaraModel):
         start_date: str = None,
         user_id: str = None,
     ):
-        # The ID of the app instance group. This parameter is used to filter data for a specified app instance group. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the ID. If you do not specify this parameter, data is not filtered by app instance group.
+        # The ID of the app instance group, which is used to filter data for a specified app instance group. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the ID. If you do not specify this parameter, data is not filtered by app instance group.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the business region. This parameter is used to filter report data. You can call the [ListRegions](~~ListRegions~~) operation to obtain the ID.
+        # The ID of the business region, which is used to filter report data. You can call the [ListRegions](~~ListRegions~~) operation to obtain the ID.
         self.biz_region_id = biz_region_id
         # The filter condition for the user connection status. The value is not case-sensitive. An unrecognized value is equivalent to not filtering by connection status.
         # 
@@ -29,28 +29,28 @@ class QueryUserUsageReportRequest(DaraModel):
         # - `Disconnected`: The session binding is retained, but no currently connected session exists.
         # - `Unbound`: No session binding exists.
         self.connection_status = connection_status
-        # The end time of the statistics. **Required**. Format: `yyyy-MM-dd HH:mm:ss`. The end time cannot be earlier than StartDate. The service converts the time to `yyyyMMdd` and calculates the statistics by natural days in a closed interval. The hours, minutes, and seconds are not involved in the day-level filtering. The time span cannot exceed 60 months. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
+        # The end time of the statistics. **Required**. Format: `yyyy-MM-dd HH:mm:ss`. The end time cannot be earlier than the `StartDate`. The service converts the time to the `yyyyMMdd` format and calculates statistics in a closed interval of natural days. The hour, minute, and second are not involved in day-level filtering. The time span cannot exceed 60 months. The string itself does not carry a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
         self.end_date = end_date
-        # The page number to query. Specify a value starting from 1. If you do not specify this parameter, the service processes the request as the first page, but the response may return 0.
+        # The page number to query. We recommend that you explicitly specify a value starting from `1`. If you do not specify this parameter, the service processes the request as the first page, but the response may return `0`.
         self.page_number = page_number
-        # The number of entries per page. Default value: 200. If the value is greater than 1,500, it is processed as 1,500.
+        # The number of entries per page. Default value: 200. If the specified value is greater than 1,500, the value 1,500 is used.
         self.page_size = page_size
         # The product type. **Required**.
         # 
         # Valid values:
         # 
-        # - `CloudApp`: WUYING Cloud App.
+        # - `CloudApp`: Wuying Cloud App.
         # - `CloudBrowser`: Cloud Browser.
         # - `WuyingServer`: Enterprise Edition workstation.
         # - `WuyingWorkstation`: Personal Edition Linggou container workstation.
-        # - `WuyingWorkstationTeam`: Team Edition Linggou container workstation.
-        # - `WuyingWorkstationBusiness`: Dedicated Edition Linggou container workstation.
+        # - `WuyingWorkstationTeam`: Linggou Team Edition container workstation.
+        # - `WuyingWorkstationBusiness`: Linggou Dedicated Edition container workstation.
         # - `AndroidCloud`: Cloud Phone.
         # - `AIAgent`: AgentBay (AI agent).
         self.product_type = product_type
-        # The start time of the statistics. **Required**. Format: `yyyy-MM-dd HH:mm:ss`. The service converts the time to `yyyyMMdd` and calculates the statistics by natural days in a closed interval. The hours, minutes, and seconds are not involved in the day-level filtering. The time span cannot exceed 60 months. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
+        # The start time of the statistics. **Required**. Format: `yyyy-MM-dd HH:mm:ss`. The service converts the time to the `yyyyMMdd` format and calculates statistics in a closed interval of natural days. The hour, minute, and second are not involved in day-level filtering. The time span cannot exceed 60 months. The string itself does not carry a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
         self.start_date = start_date
-        # The ID of the end user. This parameter is used to accurately filter users. If you do not specify this parameter, data is not filtered by user.
+        # The ID of the end user, which is used to precisely filter users. If you do not specify this parameter, data is not filtered by user.
         self.user_id = user_id
 
     def validate(self):

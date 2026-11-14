@@ -26,36 +26,36 @@ class ListBrowserInstanceGroupRequest(DaraModel):
     ):
         # The ID of the browser group set. This parameter is used to query the valid members of the set by exact match.
         self.app_instance_group_set_id = app_instance_group_set_id
-        # Filters cloud browser groups by business region.
+        # Filters browser groups by business region.
         self.biz_region_id = biz_region_id
         # The ID of the cloud browser group. This parameter is used for exact match.
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the browser group. Fuzzy match is supported.
         self.browser_instance_group_name = browser_instance_group_name
-        # Filters cloud browser groups by name or ID based on partial match.
+        # Filters by browser group name or ID by using partial match.
         self.cloud_browser_name = cloud_browser_name
-        # Excludes cloud browser groups that are authorized to the specified user groups.
+        # Excludes browser groups that are authorized to the specified user groups.
         self.excluded_user_group_ids = excluded_user_group_ids
-        # Filters cloud browser groups by the ID of the office network to which they belong.
+        # Filters browser groups by the ID of the office network to which they belong.
         self.office_site_id = office_site_id
         # The page number. Pages start from page 1.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # Filters cloud browser groups by status.
+        # Filters by browser group status.
         # 
         # **Limit:** You can specify only one status at a time.
         self.status = status
-        # The tag filtering parameter. This parameter is not supported in customer-facing scenarios. Do not specify this parameter.
+        # The tag filter parameter. This parameter is not supported in customer-facing scenarios. Do not specify this parameter.
         self.tag = tag
-        # Filters cloud browser groups by browser version. Valid values:
+        # Filters by the version of the browser. Valid values:
         # 
         # - `Basic`: Basic Edition.
         # - `Pro`: Premium Edition.
         # 
         # Use `Pro` when you query MAU browser groups.
         self.tier = tier
-        # Filters cloud browser groups by the IDs of authorized user groups.
+        # Filters by the IDs of authorized user groups.
         self.user_group_ids = user_group_ids
 
     def validate(self):

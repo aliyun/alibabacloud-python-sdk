@@ -15,13 +15,13 @@ class ListTagCloudResourcesResponseBody(DaraModel):
         resource_tags: List[main_models.ListTagCloudResourcesResponseBodyResourceTags] = None,
         total_count: int = None,
     ):
-        # The pagination token that indicates whether more results exist.
+        # Indicates whether a token for the next query is available based on NextToken.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The list of tags bound to resources.
+        # The tags bound to the resource.
         self.resource_tags = resource_tags
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -81,7 +81,7 @@ class ListTagCloudResourcesResponseBodyResourceTags(DaraModel):
         self.resource_id = resource_id
         # The cloud resource type.
         self.resource_type = resource_type
-        # The list of tags.
+        # The tag list.
         self.tags = tags
 
     def validate(self):

@@ -13,9 +13,9 @@ class GetBrowserInstanceGroupResponseBody(DaraModel):
         browser_instance_group_model: main_models.GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel = None,
         request_id: str = None,
     ):
-        # The browser instance group details.
+        # The details of the browser instance group.
         self.browser_instance_group_model = browser_instance_group_model
-        # The ID of the request.
+        # The ID of the request, which is used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -78,13 +78,13 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel(DaraModel):
         user_group_auth_mode: str = None,
         user_limit: main_models.GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelUserLimit = None,
     ):
-        # Specifies whether authorization and revocation notification emails are enabled. A value of `true` indicates that the feature is enabled, and a value of `false` indicates that the feature is disabled.
+        # Specifies whether to enable notification emails for authorization and revocation. A value of `true` indicates that the feature is enabled, and a value of `false` indicates that the feature is disabled.
         self.auth_notification_enabled = auth_notification_enabled
         # The statistics of authorized users for the browser instance group.
         self.authorized_user_info = authorized_user_info
         # The business region where the browser instance group is located.
         self.biz_region_id = biz_region_id
-        # The current configuration of the browser.
+        # The current configurations of the browser.
         self.browser_config = browser_config
         # The ID of the cloud browser instance group.
         self.browser_instance_group_id = browser_instance_group_id
@@ -92,15 +92,15 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel(DaraModel):
         self.browser_instance_group_name = browser_instance_group_name
         # The ID of the browser instance group set to which the browser instance group belongs.
         self.browser_instance_group_set_id = browser_instance_group_set_id
-        # The billing method. In the monthly active user (MAU) scenario, `PostPaid` is returned, which indicates pay-as-you-go.
+        # The billing method. In the monthly active user (MAU) scenario, `PostPaid` is returned, which indicates the pay-as-you-go billing method.
         self.charge_type = charge_type
-        # The default access URL of the browser instance group. Use the actual URL returned by the API operation. Replace the resource ID in the example.
+        # The default access URL of the browser instance group. Use the actual URL returned by the API operation. Replace the resource ID in the example with the actual value.
         self.default_access_url = default_access_url
-        # The package duration information. This parameter is not applicable to the MAU scenario and may return an empty object.
+        # The package duration information. This parameter is not applicable to the MAU scenario and an empty object may be returned.
         self.duration = duration
         # The expiration time of the browser instance group. This parameter is not applicable to the MAU scenario and is not returned.
         self.expired_time = expired_time
-        # The creation time of the browser instance group. The time is displayed in the RFC 3339 format `yyyy-MM-ddTHH:mm:ss.SSSXXX`, which includes milliseconds and time zone offset. In the example, `+00:00` indicates the UTC time zone.
+        # The creation time of the browser instance group. The time is displayed in the RFC 3339 format (`yyyy-MM-ddTHH:mm:ss.SSSXXX`), which includes milliseconds and the time zone offset. In the example, `+00:00` indicates UTC.
         self.gmt_create = gmt_create
         # The homepage URL of the browser instance group.
         self.homepage = homepage
@@ -114,14 +114,16 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel(DaraModel):
         self.network = network
         # The node specifications. This parameter is not applicable to the MAU scenario.
         self.node_instance_type = node_instance_type
-        # The list of node pool information. This parameter is not applicable to the MAU scenario and may return an empty list.
+        # The list of node pool information. This parameter is not applicable to the MAU scenario and an empty list may be returned.
         self.node_pool = node_pool
         # The operating system type of the browser instance group. Currently, Windows is used in the MAU scenario.
         self.os_type = os_type
-        # The policy configuration returned for the browser instance group. The policy fields are used to view existing settings and do not indicate that all corresponding creation parameters are configurable.
+        # The policy configurations returned for the browser instance group. The policy fields are used to view existing settings and do not indicate that all corresponding creation parameters are configurable.
         self.policy = policy
-        # The status of the browser instance group. Valid values:
-        # - DEPLOYING: Publishing.
+        # The status of the browser group.
+        # 
+        # Valid values:
+        # - DEPLOYING: Deploying.
         # - PUBLISHED: Published.
         # - FAILED: Publish failed.
         # - EXPIRED: Expired.
@@ -131,19 +133,23 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel(DaraModel):
         # - DELETING: Deleting.
         # - UNAVAILABLE: Unavailable.
         self.status = status
-        # The sub-billing type. In the MAU scenario, mau is returned, which indicates billing by monthly active users.
+        # The sub-billing method. In MAU scenarios, mau is returned, which indicates billing by monthly active users.
         self.sub_pay_type = sub_pay_type
-        # Specifies whether mixed authorization of users and user groups is supported. A value of true indicates that it is supported, and false indicates that it is not supported. Evaluate this parameter based on the current authorization mode.
+        # Specifies whether mixed authorization of users and user groups is supported. A value of true indicates that it is supported, and a value of false indicates that it is not supported. Evaluate this based on the current authorization mode.
         self.support_user_group_mixed_auth = support_user_group_mixed_auth
-        # The version of the browser. Valid values:
+        # The version of the browser.
+        # 
+        # Valid values:
         # - Basic: Basic Edition.
         # - Pro: Premium Edition.
         # 
-        # In the MAU scenario, the value is Pro.
+        # In MAU scenarios, the value is Pro.
         self.tier = tier
-        # The session timer configurations returned in the current response. This parameter is used to view the effective settings and does not indicate that the create operation supports configuring this parameter.
+        # The session timer configuration returned in the current response. This is used to view the effective settings and does not indicate that the create operation supports configuring this parameter.
         self.timers = timers
-        # The current authorization mode. Valid values:
+        # The current authorization mode.
+        # 
+        # Valid values:
         # - Mixed: Mixed authorization of users and user groups.
         # - User: User authorization.
         # - UserGroup: User group authorization.
@@ -405,9 +411,9 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelTimers(DaraMod
         interval: int = None,
         timer_type: str = None,
     ):
-        # The session retention period in minutes after disconnection. A value of -1 indicates that the session is not unbound due to this timeout, but is still subject to authorization and other session release policies.
+        # The session retention duration in minutes after disconnection. A value of -1 indicates that the session is not unbound due to this timeout, but is still subject to authorization and other session release policies.
         self.interval = interval
-        # The timer configuration type. A value of SESSION_TIMEOUT indicates the session retention period after disconnection.
+        # The timer configuration type. A value of SESSION_TIMEOUT indicates the session retention duration after disconnection.
         self.timer_type = timer_type
 
     def validate(self):
@@ -457,51 +463,55 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicy(DaraMod
     ):
         # The screen capture prevention switch.
         # 
-        # - `on`: enables screen capture prevention.
-        # - `off`: disables screen capture prevention.
+        # - `on`: Enables screen capture prevention.
+        # - `off`: Disables screen capture prevention.
         self.app_content_protection = app_content_protection
         # The IP address whitelist rules for client access.
         self.authorize_access_policy_rules = authorize_access_policy_rules
         # The list of client access control configurations.
         self.client_types = client_types
-        # Sets the clipboard transfer direction, content type, and size limits. `read` indicates transfer from the local PC to the cloud browser, and `write` indicates transfer from the cloud browser to the local PC.
+        # Sets the clipboard transfer direction, content type, and size limits. read indicates transfer from the local PC to the cloud browser, and write indicates transfer from the cloud browser to the local PC.
         self.clipboard_policy = clipboard_policy
-        # The data retention policy after disconnection. Valid values:
+        # The session data retention policy after disconnection.
         # 
-        # - `customTime`: Retains the session for the duration specified by `DisconnectKeepSessionTime`.
+        # - `customTime`: Retains the session for the duration specified by DisconnectKeepSessionTime.
         # - `persistent`: No automatic release based on disconnection duration.
         # 
         # **Note:** `persistent` is still subject to authorization and other release policies.
         self.disconnect_keep_session = disconnect_keep_session
-        # The returned retention duration for disconnected sessions, in seconds. This parameter is for viewing configurations only and does not indicate that the create operation supports setting this parameter.
+        # The retention duration for disconnected sessions, in seconds. This field is returned for viewing configurations only and does not indicate that the create operation supports setting this parameter.
         self.disconnect_keep_session_time = disconnect_keep_session_time
-        # The floating ball file manager switch. Valid values:
+        # The floating button file manager switch.
         # 
         # - `on`: Enabled.
         # - `off`: Disabled.
         self.file_manager = file_manager
-        # The file transfer policy for the web client. Valid values:
+        # The file transfer policy for the web client.
         # 
-        # - `off`: Transfer disabled.
-        # - `upload`: Upload only.
-        # - `download`: Download only.
-        # - `full`: Upload and download allowed.
+        # - `off`: Disables file transfer.
+        # - `upload`: Allows upload only.
+        # - `download`: Allows download only.
+        # - `full`: Allows both upload and download.
         # 
-        # Configure this parameter in conjunction with the clipboard policy.
+        # Configure this policy in conjunction with the clipboard policy.
         self.html_5file_transfer = html_5file_transfer
         # The dual-screen switch for cloud browsers.
         self.multi_screen = multi_screen
-        # Specifies whether to automatically disconnect sessions after a period of inactivity. The value is case-insensitive. Valid values:
+        # The automatic disconnection switch for inactivity. The value is case-insensitive.
+        # 
+        # Valid values:
         # - on: Enabled.
         # - off: Disabled.
         # 
-        # When enabled, use NoOperationDisconnectTime to set the idle timeout period.
+        # When enabled, use NoOperationDisconnectTime to set the wait duration.
         self.no_operation_disconnect = no_operation_disconnect
-        # The idle timeout period in seconds before a session is automatically disconnected. This feature is enabled or disabled by the NoOperationDisconnect parameter.
+        # The wait duration in seconds before disconnection is triggered due to inactivity. Whether this feature is enabled is indicated by NoOperationDisconnect.
         self.no_operation_disconnect_time = no_operation_disconnect_time
-        # The ID of the policy associated with the browser instance group.
+        # The ID of the policy associated with the browser group.
         self.policy_id = policy_id
-        # The policy version. Valid values:
+        # The policy version.
+        # 
+        # Valid values:
         # - DEFAULT: Legacy policy.
         # - CENTER: Centralized policy.
         self.policy_version = policy_version
@@ -646,18 +656,22 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyWatermar
         watermark_switch: str = None,
         watermark_types: List[str] = None,
     ):
-        # Specifies whether to enable watermarks. The value is case-insensitive. Valid values:
+        # The watermark switch. The value is case-insensitive.
+        # 
+        # Valid values:
         # - ON: Enabled.
         # - OFF: Disabled.
         # 
         # When disabled, the watermark content type list is not used.
         self.watermark_switch = watermark_switch
-        # The list of watermark content types. Valid values:
-        # - EndUserId: User ID.
-        # - InstanceGroupId: Delivery group ID.
-        # - ClientTime: Current client time.
+        # The list of watermark content types.
         # 
-        # Use watermark types that are supported by the browser and client.
+        # Valid values:
+        # - EndUserId: The user ID.
+        # - InstanceGroupId: The delivery group ID.
+        # - ClientTime: The current client time.
+        # 
+        # Use the watermark types supported by the browser and the client.
         self.watermark_types = watermark_types
 
     def validate(self):
@@ -736,79 +750,79 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClipboar
         text_clipboard_write_limit: int = None,
         text_clipboard_write_size_unit: str = None,
     ):
-        # The clipboard transfer direction. The value is case-insensitive. Valid values:
+        # The clipboard transfer direction. The value is case-insensitive.
         # 
-        # - `off`: Disabled in both directions.
+        # - `off`: Bidirectionally disabled.
         # - `read`: Allows copy and paste from the local PC to the cloud browser.
         # - `write`: Allows copy and paste from the cloud browser to the local PC.
-        # - `readwrite`: Enabled in both directions.
+        # - `readwrite`: Bidirectionally enabled.
         self.clipboard = clipboard
         # The clipboard size limit for inbound transfer from the local PC to the cloud browser.
         self.clipboard_read_limit = clipboard_read_limit
-        # The clipboard control granularity. Valid values:
+        # The clipboard control granularity.
         # 
         # - `global`: Unified control.
         # - `grained`: Separate control for text, rich text, and files.
         self.clipboard_scope = clipboard_scope
-        # The clipboard size unit. Valid values:
+        # The clipboard size unit.
         # 
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         self.clipboard_size_unit = clipboard_size_unit
         # The clipboard size limit for outbound transfer from the cloud browser to the local PC.
         self.clipboard_write_limit = clipboard_write_limit
-        # The clipboard transfer direction. The value is case-insensitive. Valid values:
+        # The clipboard transfer direction. The value is case-insensitive.
         # 
-        # - `off`: Disabled in both directions.
+        # - `off`: Bidirectionally disabled.
         # - `read`: Allows copy and paste from the local PC to the cloud browser.
         # - `write`: Allows copy and paste from the cloud browser to the local PC.
-        # - `readwrite`: Enabled in both directions.
+        # - `readwrite`: Bidirectionally enabled.
         self.file_clipboard = file_clipboard
-        # The clipboard transfer direction. The value is case-insensitive. Valid values:
+        # The clipboard transfer direction. The value is case-insensitive.
         # 
-        # - `off`: Disabled in both directions.
+        # - `off`: Bidirectionally disabled.
         # - `read`: Allows copy and paste from the local PC to the cloud browser.
         # - `write`: Allows copy and paste from the cloud browser to the local PC.
-        # - `readwrite`: Enabled in both directions.
+        # - `readwrite`: Bidirectionally enabled.
         self.rich_text_clipboard = rich_text_clipboard
         # The clipboard size limit for rich text.
         self.rich_text_clipboard_limit = rich_text_clipboard_limit
         # The clipboard size limit for inbound transfer from the local PC to the cloud browser.
         self.rich_text_clipboard_read_limit = rich_text_clipboard_read_limit
-        # The clipboard size unit. Valid values:
+        # The clipboard size unit.
         # 
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         self.rich_text_clipboard_read_size_unit = rich_text_clipboard_read_size_unit
-        # The clipboard size unit. Valid values:
+        # The clipboard size unit.
         # 
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         self.rich_text_clipboard_size_unit = rich_text_clipboard_size_unit
         # The clipboard size limit for outbound transfer from the cloud browser to the local PC.
         self.rich_text_clipboard_write_limit = rich_text_clipboard_write_limit
-        # The clipboard size unit. Valid values:
+        # The clipboard size unit.
         # 
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         self.rich_text_clipboard_write_size_unit = rich_text_clipboard_write_size_unit
-        # The clipboard transfer direction. The value is case-insensitive. Valid values:
+        # The clipboard transfer direction. The value is case-insensitive.
         # 
-        # - `off`: Disabled in both directions.
+        # - `off`: Bidirectionally disabled.
         # - `read`: Allows copy and paste from the local PC to the cloud browser.
         # - `write`: Allows copy and paste from the cloud browser to the local PC.
-        # - `readwrite`: Enabled in both directions.
+        # - `readwrite`: Bidirectionally enabled.
         self.text_clipboard = text_clipboard
         # The clipboard size limit for inbound transfer from the local PC to the cloud browser.
         self.text_clipboard_read_limit = text_clipboard_read_limit
-        # The clipboard size unit. Valid values:
+        # The clipboard size unit.
         # 
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         self.text_clipboard_read_size_unit = text_clipboard_read_size_unit
         # The clipboard size limit for outbound transfer from the cloud browser to the local PC.
         self.text_clipboard_write_limit = text_clipboard_write_limit
-        # The clipboard size unit. Valid values:
+        # The clipboard size unit.
         # 
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
@@ -942,7 +956,7 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClientTy
         client_type: str = None,
         status: str = None,
     ):
-        # The client type. Valid values:
+        # The client type.
         # 
         # - `windows`: Windows client.
         # - `macos`: macOS client.
@@ -951,12 +965,12 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyClientTy
         # - `android`: Android client.
         # - `ios`: iOS client.
         # 
-        # This field reflects the existing access configurations and does not indicate that all clients are currently available for the product.
+        # This field reflects existing access configurations and does not indicate that all client types are currently supported.
         self.client_type = client_type
-        # The access policy switch for the client type. Valid values:
+        # The access policy switch for the client type.
         # 
-        # - `on`: Allows access from this type of client.
-        # - `off`: Denies access from this type of client.
+        # - `on`: Allows access from this client type.
+        # - `off`: Denies access from this client type.
         self.status = status
 
     def validate(self):
@@ -998,8 +1012,8 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelPolicyAuthoriz
         self.description = description
         # The action of the client access rule.
         # 
-        # - `allow`: allows access.
-        # - `deny`: denies access.
+        # - `allow`: Allows access.
+        # - `deny`: Denies access.
         self.policy = policy
 
     def validate(self):
@@ -1077,9 +1091,9 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNodeInstanceTy
         cpu: str = None,
         memory: int = None,
     ):
-        # The CPU configuration of the node. This parameter is not applicable to the MAU scenario.
+        # The CPU configurations of the node. This parameter is not applicable to the MAU scenario.
         self.cpu = cpu
-        # The memory configuration of the node. This parameter is not applicable to the MAU scenario.
+        # The memory configurations of the node. This parameter is not applicable to the MAU scenario.
         self.memory = memory
 
     def validate(self):
@@ -1118,16 +1132,16 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelNetwork(DaraMo
     ):
         # The website access restriction mode.
         # 
-        # - `ALLOW_ALL`: allows all domain names.
-        # - `ALLOW_LIST`: allows only websites in the list.
+        # - `ALLOW_ALL`: Allows all domain names.
+        # - `ALLOW_LIST`: Allows only the websites in the list.
         # 
-        # The returned value reflects the current configuration of the browser instance group.
+        # The returned value reflects the current configurations of the browser instance group.
         self.access_restriction = access_restriction
         # The ID of the office network to which the browser instance group belongs.
         self.office_site_id = office_site_id
-        # The list of website access restrictions. A maximum of 20 restrictions are returned. To query the complete list, call the `ListBrowserRestrictedURLs` operation.
+        # The list of website access restrictions. A maximum of 20 restrictions are returned. To query the complete list, call the ListBrowserRestrictedURLs operation.
         self.restricted_urls = restricted_urls
-        # The list of vSwitch IDs used by the browser instance group. This parameter is available for scenarios where custom networks are configured.
+        # The list of vSwitch IDs used by the browser instance group. This parameter is available for scenarios where a custom network is configured.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -1285,11 +1299,11 @@ class GetBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelBrowserConfig(
         cookies_sync: str = None,
         homepage: str = None,
     ):
-        # The list of browser bookmarks. A maximum of 20 bookmarks are returned. To query the complete list of bookmarks, call the `ListBrowserBookmarks` operation.
+        # The list of browser bookmarks. A maximum of 20 bookmarks are returned. To query the complete list of bookmarks, call the ListBrowserBookmarks operation.
         self.bookmarks = bookmarks
         # The browser startup parameters. For example, `--incognito` specifies an incognito window.
         self.browser_param = browser_param
-        # The cookie synchronization configuration. A value of `true` indicates that synchronization is enabled, and a value of `false` indicates that synchronization is disabled.
+        # The cookie synchronization configuration. The string `true` indicates that synchronization is enabled, and the string `false` indicates that synchronization is disabled.
         self.cookies_sync = cookies_sync
         # The homepage URL that opens when the browser starts.
         self.homepage = homepage

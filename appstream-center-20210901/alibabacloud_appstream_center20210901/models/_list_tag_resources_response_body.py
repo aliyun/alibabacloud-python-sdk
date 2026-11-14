@@ -15,13 +15,13 @@ class ListTagResourcesResponseBody(DaraModel):
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
         total_count: int = None,
     ):
-        # The token for the next query. An empty value indicates that no more data is available. This operation returns all matching results at a time, so this field is typically empty.
+        # The pagination token for the next query. An empty value indicates that no more data is available. This operation returns all matched results at once, so this field is usually empty.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The list of resource-tag binding records. Each record corresponds to a tag key-value pair on a resource.
+        # The list of binding records between resources and tags. Each record corresponds to a tag key-value pair on a resource.
         self.tag_resources = tag_resources
-        # The number of tag records returned. If a resource has multiple tags bound, each tag key-value pair counts as one record.
+        # The number of tag records returned in the current request. If a resource is bound to multiple tags, each tag key-value pair is counted as one record.
         self.total_count = total_count
 
     def validate(self):
@@ -78,7 +78,7 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The resource ID. If the resource type is delivery group, this is the delivery group ID.
+        # The resource ID. If the resource type is delivery group, this parameter specifies the delivery group ID.
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 

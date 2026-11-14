@@ -16,15 +16,15 @@ class GetTaskResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is returned when the request fails. A successful response may not contain this parameter.
+        # The error code. Returned when the request fails. A successful response may not contain this field.
         self.code = code
         # The task details.
         self.data = data
-        # The error or result message. This parameter is used to describe the cause when the request fails. A successful response may not contain this parameter.
+        # The error or result message. Used to explain the cause when the request fails. A successful response may not contain this field.
         self.message = message
-        # The unique identifier of the request. You can provide this value when you troubleshoot issues.
+        # The unique identifier of this request. You can provide this value for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To determine whether an asynchronous task is completed, you must query the task status separately.
+        # Indicates whether the request is processed successfully. A value of true indicates that the request is processed successfully. To determine whether an asynchronous task is completed, you must query the task status separately.
         self.success = success
 
     def validate(self):
@@ -95,9 +95,9 @@ class GetTaskResponseBodyData(DaraModel):
     ):
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.ali_uid = ali_uid
-        # The prompt or execution result description of the current step of the task.
+        # The prompt or execution result description of the current task step.
         self.current_task_message = current_task_message
-        # The identifier of the step that the task is currently executing. You can call the ListTaskStep operation to query the image creation and application adaptation steps.
+        # The identifier of the step currently being executed in the task. You can call ListTaskStep to query the image creation and application adaptation steps.
         self.current_task_step = current_task_step
         # The ID of the region where the task is actually executed.
         self.execute_region = execute_region
@@ -108,27 +108,23 @@ class GetTaskResponseBodyData(DaraModel):
         # The compute type of the task creation resource.
         # 
         # Valid values:
-        # 
-        # - **CPU**: CPU compute resource
-        # - **GPU**: GPU compute resource
+        # - **CPU**: CPU compute resource.
+        # - **GPU**: GPU compute resource.
         self.performance_type = performance_type
-        # **Not enabled. The system does not return valid task progress.** Determine the task execution status based on the Status, CurrentTaskStep, and TaskStepList parameters.
+        # **Not enabled. Currently, no valid task progress is returned.** Determine the task execution status based on Status, CurrentTaskStep, and TaskStepList.
         # 
-        # The example "Not applicable (not enabled)" is only a description of the field status, not an actual API response example.
+        # The example "Not applicable (not enabled)" is only a description of the field status, not an actual API return sample.
         self.progress = progress
         # The list of resources used for task creation, which corresponds to the creation resources submitted when the task is created.
         self.resource_list = resource_list
         # The running mode of the task creation environment.
-        # 
         # Valid values:
-        # 
-        # - **NORMAL**: normal running mode
-        # - **COMPATIBLE**: compatible running mode
+        # - **NORMAL**: Normal running mode.
+        # - **COMPATIBLE**: Compatible running mode.
         self.run_mode = run_mode
         # The overall status of the task.
         # 
         # Valid values:
-        # 
         # - **INIT**: The task is initialized.
         # - **START**: The task is being created or executed.
         # - **SUCCESS**: The task is executed successfully.
@@ -137,56 +133,55 @@ class GetTaskResponseBodyData(DaraModel):
         # 
         # Deleted tasks are not included in the regular valid task query scope.
         self.status = status
-        # The system disk capacity of the task creation environment. Unit: GiB.
+        # The system cloud disk capacity of the task creation environment. Unit: GiB.
         self.system_disk_size = system_disk_size
         # The ID of the base system image used in the task creation environment.
         self.system_image_id = system_image_id
-        # The task ID. You can use this ID to call the GetTask operation to query the task status.
+        # The task ID. You can use it to call GetTask to query the task status.
         self.task_id = task_id
         # The list of recorded task execution steps and results.
         self.task_step_list = task_step_list
         # The actual type of the task.
         # 
         # Valid values:
-        # 
-        # - **AUTO_ADAPT**: automatic adaptation
-        # - **AUTO_CREATE_IMAGE**: automatic image creation
-        # - **RETRY_ADAPT**: retry of automatic adaptation
-        # - **RETRY_CREATE_IMAGE**: retry of automatic image creation
-        # - **AUTO_OTA_IMAGE**: automatic image OTA
-        # - **AUTO_CREATE_VHD**: automatic VHD creation
-        # - **RETRY_VHD**: retry of VHD creation
-        # - **AUTO_CREATE_IMAGE_VHD**: automatic VHD image creation
-        # - **RETRY_CREATE_IMAGE_VHD**: retry of VHD image creation
-        # - **AUTO_VALIDATE_VHD**: automatic VHD validation
-        # - **RETRY_VALIDATE_VHD**: retry of VHD validation
-        # - **SYNCHRONIZE_APP_IMAGE**: application image synchronization
-        # - **APPLY_VHD_BUILDER**: application for VHD application recording environment
-        # - **RETRY_VHD_BUILDER**: retry of application for VHD recording environment
-        # - **ADAPT_AUTO**: automatic application adaptation creation
-        # - **ADAPT_AUTO_RETRY**: retry of automatic application adaptation creation
-        # - **ADAPT_MANUAL**: manual application adaptation creation
-        # - **ADAPT_MANUAL_RETRY**: retry of manual application adaptation creation
-        # - **IMAGE_AUTO**: automatic image creation
-        # - **IMAGE_AUTO_RETRY**: retry of automatic image creation
-        # - **IMAGE_AUTO_VALIDATE**: automatic image validation
-        # - **IMAGE_AUTO_VALIDATE_RETRY**: retry of automatic image validation
-        # - **IMAGE_MANUAL**: manual image creation
-        # - **IMAGE_MANUAL_RETRY**: retry of manual image creation
-        # - **DESKTOP_CUSTOM_IMAGE**: cloud desktop custom image creation
-        # - **DESKTOP_CUSTOM_IMAGE_RETRY**: retry of cloud desktop custom image creation
-        # - **DESKTOP_SYNC_IMAGE**: cloud desktop image synchronization across regions
-        # - **DESKTOP_SYNC_IMAGE_RETRY**: retry of cloud desktop image synchronization across regions
-        # - **IMAGE_DISTRIBUTE**: image distribution to multiple regions
-        # - **IMAGE_DISTRIBUTE_RETRY**: retry of image distribution
-        # - **IMAGE_FROM_INSTANCE**: image creation based on an instance
-        # - **IMAGE_FROM_INSTANCE_RETRY**: retry of image creation based on an instance
-        # - **SNAPSHOT_DISTRIBUTE**: snapshot distribution to multiple regions
-        # - **SNAPSHOT_DISTRIBUTE_RETRY**: retry of snapshot distribution
-        # - **SNAPSHOT_FROM_DISK**: snapshot creation based on a disk
-        # - **SNAPSHOT_FROM_DISK_RETRY**: retry of snapshot creation based on a disk
-        # - **IMAGE_CLEAN_AND_CREATE**: temporary instance creation based on an image, cleanup, and final image creation
-        # - **IMAGE_CLEAN_AND_CREATE_RETRY**: retry of final image creation after cleanup
+        # - **AUTO_ADAPT**: Automatic adaptation.
+        # - **AUTO_CREATE_IMAGE**: Automatic image creation.
+        # - **RETRY_ADAPT**: Retry automatic adaptation.
+        # - **RETRY_CREATE_IMAGE**: Retry automatic image creation.
+        # - **AUTO_OTA_IMAGE**: Automatic image OTA.
+        # - **AUTO_CREATE_VHD**: Automatic VHD creation.
+        # - **RETRY_VHD**: Retry VHD creation.
+        # - **AUTO_CREATE_IMAGE_VHD**: Automatic VHD image creation.
+        # - **RETRY_CREATE_IMAGE_VHD**: Retry VHD image creation.
+        # - **AUTO_VALIDATE_VHD**: Automatic VHD validation.
+        # - **RETRY_VALIDATE_VHD**: Retry VHD validation.
+        # - **SYNCHRONIZE_APP_IMAGE**: Synchronize application image.
+        # - **APPLY_VHD_BUILDER**: Apply for VHD application recording environment.
+        # - **RETRY_VHD_BUILDER**: Retry applying for VHD recording environment.
+        # - **ADAPT_AUTO**: Automatic application adaptation creation.
+        # - **ADAPT_AUTO_RETRY**: Retry automatic application adaptation creation.
+        # - **ADAPT_MANUAL**: Manual application adaptation creation.
+        # - **ADAPT_MANUAL_RETRY**: Retry manual application adaptation creation.
+        # - **IMAGE_AUTO**: Automatic image creation.
+        # - **IMAGE_AUTO_RETRY**: Retry automatic image creation.
+        # - **IMAGE_AUTO_VALIDATE**: Automatic image validation.
+        # - **IMAGE_AUTO_VALIDATE_RETRY**: Retry automatic image validation.
+        # - **IMAGE_MANUAL**: Manual image creation.
+        # - **IMAGE_MANUAL_RETRY**: Retry manual image creation.
+        # - **DESKTOP_CUSTOM_IMAGE**: Create cloud desktop custom image.
+        # - **DESKTOP_CUSTOM_IMAGE_RETRY**: Retry creating cloud desktop custom image.
+        # - **DESKTOP_SYNC_IMAGE**: Synchronize cloud desktop image across regions.
+        # - **DESKTOP_SYNC_IMAGE_RETRY**: Retry synchronizing cloud desktop image across regions.
+        # - **IMAGE_DISTRIBUTE**: Distribute image to multiple regions.
+        # - **IMAGE_DISTRIBUTE_RETRY**: Retry image distribution.
+        # - **IMAGE_FROM_INSTANCE**: Create image based on instance.
+        # - **IMAGE_FROM_INSTANCE_RETRY**: Retry creating image based on instance.
+        # - **SNAPSHOT_DISTRIBUTE**: Distribute snapshot to multiple regions.
+        # - **SNAPSHOT_DISTRIBUTE_RETRY**: Retry snapshot distribution.
+        # - **SNAPSHOT_FROM_DISK**: Create snapshot based on disk.
+        # - **SNAPSHOT_FROM_DISK_RETRY**: Retry creating snapshot based on disk.
+        # - **IMAGE_CLEAN_AND_CREATE**: Create a temporary instance based on an image, and create the final image after cleanup.
+        # - **IMAGE_CLEAN_AND_CREATE_RETRY**: Retry creating the final image after cleanup.
         self.task_type = task_type
 
     def validate(self):
@@ -327,25 +322,24 @@ class GetTaskResponseBodyDataTaskStepList(DaraModel):
         task_message: str = None,
         task_step: str = None,
     ):
-        # The end time of the step. The time is a UNIX timestamp calculated from 1970-01-01T00:00:00Z. Unit: milliseconds. This parameter may not be returned if the step has not ended.
+        # The end time of the step. It is a UNIX timestamp calculated from 1970-01-01T00:00:00Z. Unit: milliseconds. This field may not be returned if the step has not ended.
         self.end_time = end_time
-        # The start time of the step. The time is a UNIX timestamp calculated from 1970-01-01T00:00:00Z. Unit: milliseconds.
+        # The start time of the step. It is a UNIX timestamp calculated from 1970-01-01T00:00:00Z. Unit: milliseconds.
         self.start_time = start_time
         # The execution status of the step.
         # 
         # Valid values:
-        # 
         # - **RUNNING**: The step is being executed.
         # - **SUCCESS**: The step is executed successfully.
         # - **FAILED**: The step fails to be executed.
         self.status = status
-        # The ISO 8601 string of the step end time, including the time zone offset. In the example, +08:00 indicates UTC+8. This parameter represents the same time as EndTime and is parsed according to the offset in the returned value. This parameter may not be returned if the step has not ended.
+        # The ISO 8601 string of the step end time, including the time zone offset. In the example, +08:00 indicates UTC+8. It represents the same time as EndTime and is parsed according to the offset in the return value. This field may not be returned if the step has not ended.
         self.step_end_time = step_end_time
-        # The ISO 8601 string of the step start time, including the time zone offset. In the example, +08:00 indicates UTC+8. This parameter represents the same time as StartTime and is parsed according to the offset in the returned value.
+        # The ISO 8601 string of the step start time, including the time zone offset. In the example, +08:00 indicates UTC+8. It represents the same time as StartTime and is parsed according to the offset in the return value.
         self.step_start_time = step_start_time
         # The prompt or execution result description of this step.
         self.task_message = task_message
-        # The task step identifier corresponding to this record. You can call the ListTaskStep operation to query the image creation and application adaptation steps.
+        # The task step identifier corresponding to this record. You can call ListTaskStep to query the image creation and application adaptation steps.
         self.task_step = task_step
 
     def validate(self):
@@ -410,15 +404,13 @@ class GetTaskResponseBodyDataResourceList(DaraModel):
         resource: str = None,
         resource_type: str = None,
     ):
-        # The resource content corresponding to ResourceType. For the URL type, specify or return an accessible resource address.
+        # The resource content corresponding to ResourceType. For the URL type, enter or return an accessible resource address.
         self.resource = resource
         # The provision method of the resource content.
-        # 
         # Valid values:
-        # 
-        # - **HOSTED**: hosted resource
-        # - **TEXT**: text resource
-        # - **URL**: resource provided through a URL
+        # - **HOSTED**: Hosted resource.
+        # - **TEXT**: Text resource.
+        # - **URL**: Resource provided through a URL.
         self.resource_type = resource_type
 
     def validate(self):

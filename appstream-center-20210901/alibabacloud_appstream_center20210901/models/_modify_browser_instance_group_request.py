@@ -20,7 +20,7 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         storage_policy: main_models.ModifyBrowserInstanceGroupRequestStoragePolicy = None,
         timers: List[main_models.ModifyBrowserInstanceGroupRequestTimers] = None,
     ):
-        # Specifies whether to send notification emails for authorization and deauthorization.
+        # Specifies whether to send notification emails for authorization and revocation.
         self.auth_notification_enabled = auth_notification_enabled
         # The browser configuration.
         self.browser_config = browser_config
@@ -30,7 +30,7 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the cloud browser.
         self.cloud_browser_name = cloud_browser_name
-        # The maximum resource count. This parameter takes effect only for the pay-as-you-go billing method based on monthly active users.
+        # The maximum resource count. This parameter takes effect for the pay-as-you-go billing method based on monthly active users.
         self.max_amount = max_amount
         # The network configurations.
         self.network = network
@@ -248,7 +248,7 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         self.app_content_protection = app_content_protection
         # The server-side access IP address whitelist.
         self.authorize_access_policy_rules = authorize_access_policy_rules
-        # The logon client type control.
+        # The client type control for logon.
         self.client_types = client_types
         # The clipboard policies.
         self.clipboard_policy = clipboard_policy
@@ -256,15 +256,15 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
         self.disconnect_keep_session = disconnect_keep_session
         # The session retention duration upon disconnection.
         self.disconnect_keep_session_time = disconnect_keep_session_time
-        # The floating ball file manager switch.
+        # The switch for the file manager in the floating button.
         self.file_manager = file_manager
         # The file transfer policy for the web client.
         self.html_5file_transfer = html_5file_transfer
-        # The cloud browser dual-screen switch.
+        # The dual-screen switch for the cloud browser.
         self.multi_screen = multi_screen
-        # The no-operation disconnect policy.
+        # The policy for disconnecting upon inactivity.
         self.no_operation_disconnect = no_operation_disconnect
-        # The no-operation disconnect time in seconds.
+        # The inactivity disconnect time, in seconds.
         self.no_operation_disconnect_time = no_operation_disconnect_time
         # The policy ID.
         self.policy_id = policy_id
@@ -548,13 +548,13 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
     ):
         # The clipboard policy.
         self.clipboard = clipboard
-        # The clipboard read length limit.
+        # The read length limit for the clipboard.
         self.clipboard_read_limit = clipboard_read_limit
         # The clipboard control scope.
         self.clipboard_scope = clipboard_scope
         # The clipboard size unit.
         self.clipboard_size_unit = clipboard_size_unit
-        # The clipboard write length limit.
+        # The write length limit for the clipboard.
         self.clipboard_write_limit = clipboard_write_limit
         # The file clipboard policy.
         self.file_clipboard = file_clipboard
@@ -562,25 +562,25 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         self.rich_text_clipboard = rich_text_clipboard
         # The rich text clipboard limit.
         self.rich_text_clipboard_limit = rich_text_clipboard_limit
-        # The rich text clipboard read size.
+        # The outbound size limit for rich text in the clipboard.
         self.rich_text_clipboard_read_limit = rich_text_clipboard_read_limit
-        # The rich text clipboard read size unit.
+        # The outbound size unit for rich text in the clipboard.
         self.rich_text_clipboard_read_size_unit = rich_text_clipboard_read_size_unit
         # The rich text clipboard size unit.
         self.rich_text_clipboard_size_unit = rich_text_clipboard_size_unit
-        # The rich text clipboard write size.
+        # The inbound size limit for rich text in the clipboard.
         self.rich_text_clipboard_write_limit = rich_text_clipboard_write_limit
-        # The rich text clipboard write size unit.
+        # The inbound size unit for rich text in the clipboard.
         self.rich_text_clipboard_write_size_unit = rich_text_clipboard_write_size_unit
         # The text clipboard policy.
         self.text_clipboard = text_clipboard
-        # The text clipboard read size.
+        # The outbound size limit for text in the clipboard.
         self.text_clipboard_read_limit = text_clipboard_read_limit
-        # The text clipboard read size unit.
+        # The outbound size unit for text in the clipboard.
         self.text_clipboard_read_size_unit = text_clipboard_read_size_unit
-        # The text clipboard write size.
+        # The inbound size limit for text in the clipboard.
         self.text_clipboard_write_limit = text_clipboard_write_limit
-        # The text clipboard write size unit.
+        # The inbound size unit for text in the clipboard.
         self.text_clipboard_write_size_unit = text_clipboard_write_size_unit
 
     def validate(self):
@@ -793,7 +793,7 @@ class ModifyBrowserInstanceGroupRequestNetwork(DaraModel):
         self.remove_restricted_urlids = remove_restricted_urlids
         # The restricted domain name configurations.
         self.restricted_urls = restricted_urls
-        # The file path for network-restricted URLs.
+        # The file path for network restricted URLs.
         self.restricted_urls_file_path = restricted_urls_file_path
 
     def validate(self):
@@ -970,7 +970,7 @@ class ModifyBrowserInstanceGroupRequestBrowserConfigBookmarks(DaraModel):
     ):
         # The folder to which the bookmark belongs.
         self.bookmark_folder = bookmark_folder
-        # The bookmark ID. This parameter is required only for modification scenarios.
+        # The bookmark ID. This parameter is required only for update scenarios.
         self.bookmark_id = bookmark_id
         # The bookmark name.
         # 

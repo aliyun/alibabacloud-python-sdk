@@ -37,15 +37,15 @@ class ListWuyingServerRequest(DaraModel):
         self.biz_region_id = biz_region_id
         # The business type.
         self.biz_type = biz_type
-        # The billing type.
+        # The billing method.
         self.charge_type = charge_type
-        # The end time of the creation time range, in ISO 8601 format. This time point is exclusive.
+        # The end time of the creation time range. The time is in ISO 8601 format and exclusive.
         self.create_time_end = create_time_end
-        # The start time of the creation time range, in ISO 8601 format. This time point is inclusive.
+        # The start time of the creation time range. The time is in ISO 8601 format and inclusive.
         self.create_time_start = create_time_start
-        # The end time of the expiration time range, in ISO 8601 format. This time point is exclusive.
+        # The end time of the expiration time range. The time is in ISO 8601 format and exclusive.
         self.expired_time_end = expired_time_end
-        # The start time of the expiration time range, in ISO 8601 format. This time point is inclusive.
+        # The start time of the expiration time range. The time is in ISO 8601 format and inclusive.
         self.expired_time_start = expired_time_start
         # The image ID.
         self.image_id = image_id
@@ -55,11 +55,11 @@ class ListWuyingServerRequest(DaraModel):
         self.office_site_id = office_site_id
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The product type.
         self.product_type = product_type
-        # The workstation instance type.
+        # The workstation specifications.
         self.server_instance_type = server_instance_type
         # The workstation status.
         self.status = status

@@ -16,29 +16,29 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The paged query token. You do not need to specify this parameter for the first request. If the previous invoke returned a non-empty NextToken value, pass it in as-is to retrieve subsequent paging results.
+        # The pagination token for paged queries. You do not need to specify this parameter when you call this operation for the first time. If a non-empty NextToken is returned in the previous call, pass it as is to obtain subsequent results.
         self.next_token = next_token
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of resource IDs. A maximum of 50 resource IDs are supported.
+        # The list of resource IDs. You can specify up to 50 resource IDs.
         # 
-        # If the resource type is delivery group, specify the delivery group ID (prefixed with `aig-`). You can call the ListAppInstanceGroup operation to obtain the delivery group ID.
+        # If the resource type is delivery group, specify the delivery group ID, which starts with `aig-`. You can obtain the ID by calling the ListAppInstanceGroup operation.
         # 
-        # > Specify at least one of ResourceId.N and Tag.N. If only ResourceId.N is specified, all tags bound to the specified resources are returned.
+        # > You must specify at least one of ResourceId.N and Tag.N. If only ResourceId.N is specified, all tags bound to these resources are returned.
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
         # - APPINSTANCEGROUP: delivery group.
         # 
-        # This parameter is case-insensitive. Only this value is supported. If you specify other values, the error code `InvalidResourceType.Invalid` is returned.
+        # The value is not case-sensitive. Only this value is supported. If you specify other values, the error code `InvalidResourceType.Invalid` is returned.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tag conditions. A maximum of 20 tag conditions are supported.
+        # The list of tag conditions. You can specify up to 20 tag conditions.
         # 
-        # > Specify at least one of ResourceId.N and Tag.N. Multiple tags have an AND relationship. Only resources that have all specified tags bound are returned.
+        # > You must specify at least one of ResourceId.N and Tag.N. Multiple tags have an AND relationship. Only resources bound to all specified tags are returned.
         self.tag = tag
 
     def validate(self):
@@ -99,11 +99,11 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. This parameter is required. The tag key is case-sensitive and must be 1 to 128 characters in length.
+        # The tag key. This parameter is required. The value is case-sensitive and must be 1 to 128 characters in length.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value. The tag value is case-sensitive and can be up to 256 characters in length. If this parameter is not specified, the value of the tag key is not restricted, which means any tag value under the key is matched.
+        # The tag value. The value is case-sensitive and can be up to 256 characters in length. If this parameter is not specified, the value corresponding to the tag key is not limited, which means any tag value under the key is matched.
         self.value = value
 
     def validate(self):

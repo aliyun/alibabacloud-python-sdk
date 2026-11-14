@@ -13,7 +13,7 @@ class ModifyAppInstanceGroupChargeTypeResponseBody(DaraModel):
     ):
         # The task information for this billing method conversion.
         self.app_instance_group_model = app_instance_group_model
-        # The unique ID of the request, which can be used to troubleshoot request issues.
+        # The unique ID of the request. You can use this ID to troubleshoot request issues.
         self.request_id = request_id
 
     def validate(self):

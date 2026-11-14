@@ -20,15 +20,15 @@ class QuerySessionReportDataRequest(DaraModel):
         self.app_instance_group_id = app_instance_group_id
         # The ID of the business region, which is used to filter report data. You can call the [ListRegions](~~ListRegions~~) operation to obtain the ID.
         self.biz_region_id = biz_region_id
-        # The end time of the statistics. This parameter is required. Format: `yyyy-MM-dd HH:mm:ss`. The end time cannot be earlier than `StartDate`. The query span must meet the limit corresponding to `StatDateType`. The string itself does not carry a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
+        # The end time of the statistics. **Required**. Format: `yyyy-MM-dd HH:mm:ss`. The end time cannot be earlier than `StartDate`. The query span must meet the limits corresponding to `StatDateType`. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
         self.end_date = end_date
-        # The page number of the page to query. Specify this parameter starting from `1`. If you do not specify this parameter, the first page is queried, but the response may return `0`.
+        # The page number to query. We recommend that you explicitly specify a value starting from `1`. If you do not specify this parameter, the service processes the request as the first page, but the response may return `0`.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 200. If the specified value is greater than 1500, 1500 is used.
+        # The number of entries per page. Default value: 200. If the value exceeds 1,500, it is processed as 1,500.
         self.page_size = page_size
-        # The product type. This parameter is optional. If you do not specify this parameter, data is queried based on the Wuying Cloud App caliber.
+        # The product type. Optional. If you do not specify this parameter, data is queried based on the Wuying Cloud App scope.
         # 
-        # Specify the value in the exact case shown below. Data that does not match the specified value is not returned.
+        # Specify the value in the exact case as follows. Data that cannot be matched is not returned.
         # 
         # Valid values:
         # 
@@ -41,9 +41,9 @@ class QuerySessionReportDataRequest(DaraModel):
         # - `AndroidCloud`: Cloud Phone.
         # - `AIAgent`: AgentBay (AI agent).
         self.product_type = product_type
-        # The start time of the statistics. This parameter is required. Format: `yyyy-MM-dd HH:mm:ss`. The `1d` granularity aggregates data by date, while other granularities aggregate data down to the minute. The query includes both the start and end boundaries. The string itself does not carry a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
+        # The start time of the statistics. **Required**. Format: `yyyy-MM-dd HH:mm:ss`. The `1d` granularity aggregates data by date, while other granularities are accurate to the minute. The query includes both the start and end boundaries. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
         self.start_date = start_date
-        # The statistical granularity. This parameter is required.
+        # The statistical granularity. **Required**.
         # 
         # Valid values:
         # 

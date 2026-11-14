@@ -14,19 +14,19 @@ class GetImageByIdRequest(DaraModel):
         show_hidden: str = None,
         version_id: str = None,
     ):
-        # The ID of the business region to query. If you do not specify this parameter, regions are not filtered by this parameter. The returned regions are still subject to the visibility scope of the product and the account.
+        # The ID of the business region to query. If this parameter is not specified, regions are not filtered by this parameter. The returned regions are still subject to the visibility scope of the product and the account.
         self.biz_region_id = biz_region_id
-        # Specifies whether to skip the operating system and adaptation status filtering for adapted applications. Default value: false. If you set this parameter to false, only applications whose operating system matches the image and whose adaptation is complete are retained. If you set this parameter to true, these two filters are skipped. Application type filtering is still controlled by the API operation and the ShowHidden parameter.
+        # Specifies whether to skip the operating system and adaptation status filtering for adapted applications. Default value: false. A value of false indicates that only applications whose operating system matches the image and whose adaptation is complete are retained. A value of true indicates that these two filters are skipped. Application type filtering is still controlled by the API and ShowHidden.
         self.ignore_filter = ignore_filter
-        # The image ID. You must specify at least one of ImageId and VersionId. If you specify only this parameter, the online version is queried.
+        # The image ID. You must specify at least one of ImageId and VersionId. If only this parameter is specified, the online version is queried.
         self.image_id = image_id
-        # The product type. Examples: CloudDesktop (Cloud Desktop), CloudApp (Cloud App), and WuyingServer (WUYING Workspace Enterprise Edition workstation).
+        # The product type, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud App), or WuyingServer (WUYING Workspace Enterprise Edition workstation).
         self.product_type = product_type
         # The types of virtual applications to include in addition to the default user applications and system applications. Valid values:
         # - VIRTUAL_DESKTOP_APP: desktop virtual applications.
         # - ALL_VIRTUAL_APP: all virtual applications.
         self.show_hidden = show_hidden
-        # The image version ID. You can specify this parameter alone to query a specific version. If you specify both this parameter and ImageId, the version must belong to the specified image.
+        # The image version ID. You can specify this parameter alone to query a specific version. If both ImageId and VersionId are specified, the version must belong to the specified image.
         self.version_id = version_id
 
     def validate(self):

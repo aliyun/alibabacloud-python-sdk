@@ -23,6 +23,9 @@ from ._builder_image_by_parent_request import BuilderImageByParentRequest
 from ._builder_image_by_parent_shrink_request import BuilderImageByParentShrinkRequest
 from ._builder_image_by_parent_response_body import BuilderImageByParentResponseBody
 from ._builder_image_by_parent_response import BuilderImageByParentResponse
+from ._clear_agent_instance_memory_request import ClearAgentInstanceMemoryRequest
+from ._clear_agent_instance_memory_response_body import ClearAgentInstanceMemoryResponseBody
+from ._clear_agent_instance_memory_response import ClearAgentInstanceMemoryResponse
 from ._config_resource_group_model_template_request import ConfigResourceGroupModelTemplateRequest
 from ._config_resource_group_model_template_response_body import ConfigResourceGroupModelTemplateResponseBody
 from ._config_resource_group_model_template_response import ConfigResourceGroupModelTemplateResponse
@@ -100,6 +103,9 @@ from ._describe_export_tasks_response import DescribeExportTasksResponse
 from ._describe_share_image_request import DescribeShareImageRequest
 from ._describe_share_image_response_body import DescribeShareImageResponseBody
 from ._describe_share_image_response import DescribeShareImageResponse
+from ._describe_user_profile_path_rules_request import DescribeUserProfilePathRulesRequest
+from ._describe_user_profile_path_rules_response_body import DescribeUserProfilePathRulesResponseBody
+from ._describe_user_profile_path_rules_response import DescribeUserProfilePathRulesResponse
 from ._describe_wuying_server_request import DescribeWuyingServerRequest
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBody
 from ._describe_wuying_server_response import DescribeWuyingServerResponse
@@ -173,12 +179,18 @@ from ._get_runtime_model_config_response import GetRuntimeModelConfigResponse
 from ._get_task_request import GetTaskRequest
 from ._get_task_response_body import GetTaskResponseBody
 from ._get_task_response import GetTaskResponse
+from ._get_tenant_memory_config_request import GetTenantMemoryConfigRequest
+from ._get_tenant_memory_config_response_body import GetTenantMemoryConfigResponseBody
+from ._get_tenant_memory_config_response import GetTenantMemoryConfigResponse
 from ._get_upload_info_request import GetUploadInfoRequest
 from ._get_upload_info_response_body import GetUploadInfoResponseBody
 from ._get_upload_info_response import GetUploadInfoResponse
 from ._import_image_request import ImportImageRequest
 from ._import_image_response_body import ImportImageResponseBody
 from ._import_image_response import ImportImageResponse
+from ._list_agent_instance_memory_request import ListAgentInstanceMemoryRequest
+from ._list_agent_instance_memory_response_body import ListAgentInstanceMemoryResponseBody
+from ._list_agent_instance_memory_response import ListAgentInstanceMemoryResponse
 from ._list_agent_instance_versions_request import ListAgentInstanceVersionsRequest
 from ._list_agent_instance_versions_response_body import ListAgentInstanceVersionsResponseBody
 from ._list_agent_instance_versions_response import ListAgentInstanceVersionsResponse
@@ -305,6 +317,9 @@ from ._list_zones_response import ListZonesResponse
 from ._log_off_all_sessions_in_app_instance_group_request import LogOffAllSessionsInAppInstanceGroupRequest
 from ._log_off_all_sessions_in_app_instance_group_response_body import LogOffAllSessionsInAppInstanceGroupResponseBody
 from ._log_off_all_sessions_in_app_instance_group_response import LogOffAllSessionsInAppInstanceGroupResponse
+from ._modify_agent_instance_memory_config_request import ModifyAgentInstanceMemoryConfigRequest
+from ._modify_agent_instance_memory_config_response_body import ModifyAgentInstanceMemoryConfigResponseBody
+from ._modify_agent_instance_memory_config_response import ModifyAgentInstanceMemoryConfigResponse
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequest
 from ._modify_app_instance_group_attribute_shrink_request import ModifyAppInstanceGroupAttributeShrinkRequest
 from ._modify_app_instance_group_attribute_response_body import ModifyAppInstanceGroupAttributeResponseBody
@@ -335,6 +350,9 @@ from ._modify_share_image_response import ModifyShareImageResponse
 from ._modify_tenant_config_request import ModifyTenantConfigRequest
 from ._modify_tenant_config_response_body import ModifyTenantConfigResponseBody
 from ._modify_tenant_config_response import ModifyTenantConfigResponse
+from ._modify_tenant_memory_config_request import ModifyTenantMemoryConfigRequest
+from ._modify_tenant_memory_config_response_body import ModifyTenantMemoryConfigResponseBody
+from ._modify_tenant_memory_config_response import ModifyTenantMemoryConfigResponse
 from ._modify_wuying_server_attribute_request import ModifyWuyingServerAttributeRequest
 from ._modify_wuying_server_attribute_response_body import ModifyWuyingServerAttributeResponseBody
 from ._modify_wuying_server_attribute_response import ModifyWuyingServerAttributeResponse
@@ -393,6 +411,9 @@ from ._renew_wuying_server_response import RenewWuyingServerResponse
 from ._restart_wuying_server_request import RestartWuyingServerRequest
 from ._restart_wuying_server_response_body import RestartWuyingServerResponseBody
 from ._restart_wuying_server_response import RestartWuyingServerResponse
+from ._set_user_profile_path_rules_request import SetUserProfilePathRulesRequest
+from ._set_user_profile_path_rules_response_body import SetUserProfilePathRulesResponseBody
+from ._set_user_profile_path_rules_response import SetUserProfilePathRulesResponse
 from ._start_task_for_create_image_request import StartTaskForCreateImageRequest
 from ._start_task_for_create_image_response_body import StartTaskForCreateImageResponseBody
 from ._start_task_for_create_image_response import StartTaskForCreateImageResponse
@@ -510,6 +531,10 @@ from ._deliver_to_user_sls_request import DeliverToUserSlsRequestDeliveryScopes
 from ._describe_events_response_body import DescribeEventsResponseBodyEventList
 from ._describe_export_tasks_response_body import DescribeExportTasksResponseBodyExportTaskModel
 from ._describe_share_image_response_body import DescribeShareImageResponseBodyData
+from ._describe_user_profile_path_rules_response_body import DescribeUserProfilePathRulesResponseBodyDataRulesBlackPath
+from ._describe_user_profile_path_rules_response_body import DescribeUserProfilePathRulesResponseBodyDataRulesWhitePaths
+from ._describe_user_profile_path_rules_response_body import DescribeUserProfilePathRulesResponseBodyDataRules
+from ._describe_user_profile_path_rules_response_body import DescribeUserProfilePathRulesResponseBodyData
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyDataPrivateIpSets
 from ._describe_wuying_server_response_body import DescribeWuyingServerResponseBodyData
 from ._describe_wuying_server_eip_info_response_body import DescribeWuyingServerEipInfoResponseBodyEipInfoModel
@@ -580,8 +605,12 @@ from ._get_runtime_model_config_response_body import GetRuntimeModelConfigRespon
 from ._get_task_response_body import GetTaskResponseBodyDataResourceList
 from ._get_task_response_body import GetTaskResponseBodyDataTaskStepList
 from ._get_task_response_body import GetTaskResponseBodyData
+from ._get_tenant_memory_config_response_body import GetTenantMemoryConfigResponseBodyData
 from ._get_upload_info_response_body import GetUploadInfoResponseBodyData
 from ._import_image_response_body import ImportImageResponseBodyData
+from ._list_agent_instance_memory_response_body import ListAgentInstanceMemoryResponseBodyDataUserGroups
+from ._list_agent_instance_memory_response_body import ListAgentInstanceMemoryResponseBodyDataUserOrgs
+from ._list_agent_instance_memory_response_body import ListAgentInstanceMemoryResponseBodyData
 from ._list_app_response_body import ListAppResponseBodyData
 from ._list_app_instance_group_request import ListAppInstanceGroupRequestTag
 from ._list_app_instance_group_response_body import ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps
@@ -748,6 +777,9 @@ __all__ = [
     BuilderImageByParentShrinkRequest,
     BuilderImageByParentResponseBody,
     BuilderImageByParentResponse,
+    ClearAgentInstanceMemoryRequest,
+    ClearAgentInstanceMemoryResponseBody,
+    ClearAgentInstanceMemoryResponse,
     ConfigResourceGroupModelTemplateRequest,
     ConfigResourceGroupModelTemplateResponseBody,
     ConfigResourceGroupModelTemplateResponse,
@@ -825,6 +857,9 @@ __all__ = [
     DescribeShareImageRequest,
     DescribeShareImageResponseBody,
     DescribeShareImageResponse,
+    DescribeUserProfilePathRulesRequest,
+    DescribeUserProfilePathRulesResponseBody,
+    DescribeUserProfilePathRulesResponse,
     DescribeWuyingServerRequest,
     DescribeWuyingServerResponseBody,
     DescribeWuyingServerResponse,
@@ -898,12 +933,18 @@ __all__ = [
     GetTaskRequest,
     GetTaskResponseBody,
     GetTaskResponse,
+    GetTenantMemoryConfigRequest,
+    GetTenantMemoryConfigResponseBody,
+    GetTenantMemoryConfigResponse,
     GetUploadInfoRequest,
     GetUploadInfoResponseBody,
     GetUploadInfoResponse,
     ImportImageRequest,
     ImportImageResponseBody,
     ImportImageResponse,
+    ListAgentInstanceMemoryRequest,
+    ListAgentInstanceMemoryResponseBody,
+    ListAgentInstanceMemoryResponse,
     ListAgentInstanceVersionsRequest,
     ListAgentInstanceVersionsResponseBody,
     ListAgentInstanceVersionsResponse,
@@ -1030,6 +1071,9 @@ __all__ = [
     LogOffAllSessionsInAppInstanceGroupRequest,
     LogOffAllSessionsInAppInstanceGroupResponseBody,
     LogOffAllSessionsInAppInstanceGroupResponse,
+    ModifyAgentInstanceMemoryConfigRequest,
+    ModifyAgentInstanceMemoryConfigResponseBody,
+    ModifyAgentInstanceMemoryConfigResponse,
     ModifyAppInstanceGroupAttributeRequest,
     ModifyAppInstanceGroupAttributeShrinkRequest,
     ModifyAppInstanceGroupAttributeResponseBody,
@@ -1060,6 +1104,9 @@ __all__ = [
     ModifyTenantConfigRequest,
     ModifyTenantConfigResponseBody,
     ModifyTenantConfigResponse,
+    ModifyTenantMemoryConfigRequest,
+    ModifyTenantMemoryConfigResponseBody,
+    ModifyTenantMemoryConfigResponse,
     ModifyWuyingServerAttributeRequest,
     ModifyWuyingServerAttributeResponseBody,
     ModifyWuyingServerAttributeResponse,
@@ -1118,6 +1165,9 @@ __all__ = [
     RestartWuyingServerRequest,
     RestartWuyingServerResponseBody,
     RestartWuyingServerResponse,
+    SetUserProfilePathRulesRequest,
+    SetUserProfilePathRulesResponseBody,
+    SetUserProfilePathRulesResponse,
     StartTaskForCreateImageRequest,
     StartTaskForCreateImageResponseBody,
     StartTaskForCreateImageResponse,
@@ -1235,6 +1285,10 @@ __all__ = [
     DescribeEventsResponseBodyEventList,
     DescribeExportTasksResponseBodyExportTaskModel,
     DescribeShareImageResponseBodyData,
+    DescribeUserProfilePathRulesResponseBodyDataRulesBlackPath,
+    DescribeUserProfilePathRulesResponseBodyDataRulesWhitePaths,
+    DescribeUserProfilePathRulesResponseBodyDataRules,
+    DescribeUserProfilePathRulesResponseBodyData,
     DescribeWuyingServerResponseBodyDataPrivateIpSets,
     DescribeWuyingServerResponseBodyData,
     DescribeWuyingServerEipInfoResponseBodyEipInfoModel,
@@ -1305,8 +1359,12 @@ __all__ = [
     GetTaskResponseBodyDataResourceList,
     GetTaskResponseBodyDataTaskStepList,
     GetTaskResponseBodyData,
+    GetTenantMemoryConfigResponseBodyData,
     GetUploadInfoResponseBodyData,
     ImportImageResponseBodyData,
+    ListAgentInstanceMemoryResponseBodyDataUserGroups,
+    ListAgentInstanceMemoryResponseBodyDataUserOrgs,
+    ListAgentInstanceMemoryResponseBodyData,
     ListAppResponseBodyData,
     ListAppInstanceGroupRequestTag,
     ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps,

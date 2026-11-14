@@ -22,9 +22,9 @@ class ConfigRuntimeChannelRequest(DaraModel):
         self.agent_platform = agent_platform
         # The agent provider.
         # 
-        # - JVS Computer: Set to OpenClaw.
-        # - OpenClaw: Set to OpenClaw.
-        # - Hermes Agent: Set to HermesAgent.
+        # - JVS Computer: Enter OpenClaw.
+        # - OpenClaw: Enter OpenClaw.
+        # - Hermes Agent: Enter HermesAgent.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
@@ -32,7 +32,7 @@ class ConfigRuntimeChannelRequest(DaraModel):
         # 
         # This parameter is required.
         self.code = code
-        # The JSON string for channel configuration.
+        # The channel configuration JSON string.
         # 
         # - Example of the simple configuration mode:
         # ```json

@@ -18,15 +18,15 @@ class QuerySessionReportDataResponseBody(DaraModel):
         report_data_model: List[main_models.QuerySessionReportDataResponseBodyReportDataModel] = None,
         request_id: str = None,
     ):
-        # The business status code. A value of `200` indicates that the request is successful. Other values indicate that the request failed.
+        # The business status code. A value of `200` indicates that the request is processed successfully. Other values indicate that the request fails to be processed.
         self.code = code
         # The total number of records that meet the query conditions.
         self.count = count
-        # The description of the request processing result. If the request is successful, `success` is usually returned.
+        # The description of the request processing result. Typically, `success` is returned when the request is successful.
         self.message = message
-        # The page number of the current response.
+        # The page number corresponding to the current response.
         self.page_number = page_number
-        # The number of records per page in the current response.
+        # The number of entries per page used in the current response.
         self.page_size = page_size
         # The list of session report data.
         self.report_data_model = report_data_model
@@ -105,13 +105,13 @@ class QuerySessionReportDataResponseBodyReportDataModel(DaraModel):
         stat_date: str = None,
         streaming_session_count: int = None,
     ):
-        # The number of sessions in the connected state in this record.
+        # The number of connected sessions in the record.
         self.connect_session_count = connect_session_count
-        # The total number of sessions corresponding to this record.
+        # The total number of sessions corresponding to the record.
         self.session_count = session_count
-        # The statistical time. The `1d` granularity returns `yyyy-MM-dd`. The `1m`, `30m`, and `6h` granularities return `yyyy-MM-dd HH:mm`. The string itself does not carry a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
+        # The statistical time. The `1d` granularity returns `yyyy-MM-dd`. The `1m`, `30m`, and `6h` granularities return `yyyy-MM-dd HH:mm`. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
         self.stat_date = stat_date
-        # The number of sessions established through streaming access in this record.
+        # The number of sessions established through streaming access in the record.
         self.streaming_session_count = streaming_session_count
 
     def validate(self):

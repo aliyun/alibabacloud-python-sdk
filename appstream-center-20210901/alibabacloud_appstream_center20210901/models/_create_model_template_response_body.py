@@ -49,7 +49,7 @@ class CreateModelTemplateResponseBodyData(DaraModel):
         self,
         model_template_id: str = None,
     ):
-        # The model group ID.
+        # The ID of the model group.
         self.model_template_id = model_template_id
 
     def validate(self):

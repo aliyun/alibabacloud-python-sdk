@@ -18,11 +18,11 @@ class QueryNetworkRttReportResponseBody(DaraModel):
         page_size: int = None,
         request_id: str = None,
     ):
-        # The business status code. `200` indicates that the request is processed successfully. Other values indicate that the processing failed.
+        # The business status code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
         self.code = code
         # The total number of records that meet the query conditions.
         self.count = count
-        # The description of the request processing result. If the request is successful, `success` is usually returned.
+        # The description of the request processing result. The value success is usually returned when the request is successful.
         self.message = message
         # The list of network RTT report data.
         self.network_rtt_report_data_model = network_rtt_report_data_model
@@ -115,11 +115,11 @@ class QueryNetworkRttReportResponseBodyNetworkRttReportDataModel(DaraModel):
         self.app_instance_group_id = app_instance_group_id
         # The number of users that meet the low-RTT criteria of the report. Unit: users. The current API operation does not return the specific threshold.
         self.low_rtt_user_count = low_rtt_user_count
-        # The ratio of low-RTT users to the total number of users involved in the statistics. Valid values: 0 to 1. To obtain the percentage, multiply the value by 100.
+        # The ratio of low-RTT users to the total number of users included in the statistics. Valid values: 0 to 1. To obtain the percentage, multiply the value by 100.
         self.low_rtt_user_rate = low_rtt_user_rate
         # The ID of the business region to which the report data belongs.
         self.region_id = region_id
-        # The average RTT of all users involved in the statistics. Unit: milliseconds.
+        # The average RTT of all users included in the statistics. Unit: milliseconds.
         self.rtt_avg = rtt_avg
         # The maximum value among the average RTTs of all users. Unit: milliseconds.
         self.rtt_max = rtt_max
@@ -129,7 +129,7 @@ class QueryNetworkRttReportResponseBodyNetworkRttReportDataModel(DaraModel):
         self.stat_end_date = stat_end_date
         # The start time of the statistical window. Format: `yyyy-MM-dd HH:mm:ss`. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
         self.stat_start_date = stat_start_date
-        # The total number of users involved in the RTT calculation for the current statistical window. Unit: users.
+        # The total number of users included in the RTT calculation for the current statistical window. Unit: users.
         self.total_user_count = total_user_count
 
     def validate(self):

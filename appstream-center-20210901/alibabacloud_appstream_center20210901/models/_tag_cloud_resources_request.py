@@ -14,7 +14,7 @@ class TagCloudResourcesRequest(DaraModel):
         resource_type: str = None,
         tags: List[main_models.TagCloudResourcesRequestTags] = None,
     ):
-        # The list of resource IDs. A maximum of 50 resource IDs are supported. You do not need to specify this parameter when the resource type is tenant ID.
+        # The list of resource IDs. A maximum of 50 resource IDs are supported. This parameter is not required when the resource type is tenant ID.
         self.resource_ids = resource_ids
         # The cloud resource type.
         # 
@@ -22,11 +22,11 @@ class TagCloudResourcesRequest(DaraModel):
         self.resource_type = resource_type
         # The list of tags. System tags and custom tags are supported.
         # 
-        # - Valid values for system tags:
-        #    - `System/Scheduler/GRAYSCALE`: canary release tag
-        #    - `System/Scheduler/STOP_NEW_USER_CONNECTION`: tag that prevents newly bound users from connecting to the app instance group
+        # - System tag enum values:
+        #    - `System/Scheduler/GRAYSCALE`: grayscale tag.
+        #    - `System/Scheduler/STOP_NEW_USER_CONNECTION`: tag that prevents new users bound to the app instance group from establishing connections.
         # 
-        # - Custom tags: You can create up to 20 custom tags.
+        # - Custom tags: A maximum of 20 custom tags can be created.
         # 
         # > A tag key on a resource can map to only one tag value. If you add a tag with an existing key, the tag value is updated to the new value.
         # 

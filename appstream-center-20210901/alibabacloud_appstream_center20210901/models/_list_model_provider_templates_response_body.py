@@ -18,13 +18,13 @@ class ListModelProviderTemplatesResponseBody(DaraModel):
     ):
         # The list of returned data objects.
         self.data = data
-        # The page number of the current query result.
+        # The page number of the current returned page.
         self.page_number = page_number
-        # The number of entries per page in the query result.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of query results.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,11 +91,11 @@ class ListModelProviderTemplatesResponseBodyData(DaraModel):
         provider_type: str = None,
         wuying_provider_key: str = None,
     ):
-        # The model provider configuration JSON object.
+        # The JSON object for the model provider configuration.
         self.config = config
         # The model provider template description.
         self.description = description
-        # Indicates whether the WUYING secure gateway proxy is enabled.
+        # Specifies whether the Wuying security gateway proxy is enabled.
         self.enable_wuying_proxy = enable_wuying_proxy
         # The model provider template name.
         self.name = name
@@ -105,7 +105,7 @@ class ListModelProviderTemplatesResponseBodyData(DaraModel):
         self.provider_template_id = provider_template_id
         # The model provider type.
         self.provider_type = provider_type
-        # The ProviderKey of the WUYING secure gateway proxy.
+        # The ProviderKey of the Wuying security gateway proxy.
         self.wuying_provider_key = wuying_provider_key
 
     def validate(self):

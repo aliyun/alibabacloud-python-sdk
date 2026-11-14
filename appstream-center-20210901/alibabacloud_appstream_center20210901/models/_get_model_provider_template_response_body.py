@@ -54,11 +54,11 @@ class GetModelProviderTemplateResponseBodyData(DaraModel):
         provider_name: str = None,
         provider_template_id: str = None,
     ):
-        # The JSON configuration object of the model provider template.
+        # The JSON object for the model provider template configuration.
         self.config = config
         # The description of the model provider template.
         self.description = description
-        # Indicates whether the WUYING secure gateway proxy is enabled.
+        # Indicates whether the Wuying security gateway proxy is enabled.
         self.enable_wuying_proxy = enable_wuying_proxy
         # The name of the model provider template.
         self.name = name

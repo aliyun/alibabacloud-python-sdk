@@ -24,21 +24,21 @@ class StartTaskForCreateImageRequest(DaraModel):
         system_disk_size: int = None,
         version_id: str = None,
     ):
-        # The image creation mode. Currently, use the following mode:
+        # The image creation mode. Use the following mode:
         # 
         # - **BUILDER_MANUAL**: Manually enter the creation environment to install applications and configure the image.
         self.image_create_mode = image_create_mode
         # The ID of the image. This parameter is not exposed by default.
         self.image_id = image_id
-        # The WUYING instance ID. The instance can be a cloud desktop instance or a workstation instance. To ensure data consistency in the image, stop the instance before initiating image creation.
+        # The WUYING instance ID. The instance can be a cloud desktop instance or a workstation instance. To ensure data consistency in the image, stop the instance before starting the image creation task.
         self.instance_id = instance_id
         # The step to jump to.
         self.jump_step = jump_step
         # The resource type.
         self.performance_type = performance_type
-        # The product type. Set this parameter to the following fixed value when you call the operation:
+        # The product type. Set this parameter to the following value when you call this operation:
         # 
-        # - CloudApp: WUYING Cloud App.
+        # - `CloudApp`: WUYING Cloud App.
         self.product_type = product_type
         # The list of resources required for image creation, such as the download URLs of applications to be installed. You can specify up to 100 items. The ResourceType and Resource of each item must correspond to each other.
         self.resource_list = resource_list
@@ -51,11 +51,11 @@ class StartTaskForCreateImageRequest(DaraModel):
         self.run_mode = run_mode
         # The source region where the image is created. If you do not specify this parameter, a region is randomly selected.
         self.source_region = source_region
-        # The sub-instance ID. This parameter is not applicable to cloud desktop scenarios. In workstation scenarios, pass the persistent session ID to ensure that a specific instance is located.
+        # The sub-instance ID. This parameter is not applicable to cloud desktop scenarios. In workstation scenarios, you must specify the persistent session ID to locate a specific instance.
         self.sub_instance_id = sub_instance_id
         # The size of the system cloud disk. Unit: GB.
         self.system_disk_size = system_disk_size
-        # The image version. This parameter is currently not exposed.
+        # The ID of the image version. This parameter is not exposed.
         self.version_id = version_id
 
     def validate(self):

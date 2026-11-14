@@ -17,7 +17,7 @@ class DeleteAppResponseBody(DaraModel):
         self.code = code
         # Indicates whether the operation was successful. A value of true indicates that the operation was successful.
         self.data = data
-        # The error or result message. This field describes the cause when a request fails. A successful response may not contain this field.
+        # The error message or result prompt. This field describes the cause when a request fails. A successful response may not contain this field.
         self.message = message
         # The unique identifier of the request. You can provide this value for troubleshooting.
         self.request_id = request_id

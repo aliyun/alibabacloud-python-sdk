@@ -18,7 +18,7 @@ class ListLlmTemplatesResponseBody(DaraModel):
     ):
         # The list of returned data objects.
         self.data = data
-        # The page number of the returned query results.
+        # The current page number of the query results.
         self.page_number = page_number
         # The number of query results per page.
         self.page_size = page_size
@@ -100,7 +100,7 @@ class ListLlmTemplatesResponseBodyData(DaraModel):
     ):
         # The model configuration JSON object.
         self.config = config
-        # The credit consumption multiplier. An empty value indicates that the model does not participate in credit billing.
+        # The credit consumption multiplier. An empty value indicates that the model is not billed by credits.
         self.credit_multiplier = credit_multiplier
         # The template description.
         self.description = description
@@ -108,7 +108,7 @@ class ListLlmTemplatesResponseBodyData(DaraModel):
         self.features = features
         # The inference metadata, including request and response modalities.
         self.inference_metadata = inference_metadata
-        # Indicates whether the model is the default model in the associated model group.
+        # Specifies whether the model is the default model in the associated model group.
         self.is_default_model = is_default_model
         # The model code.
         self.llm_code = llm_code
@@ -122,11 +122,11 @@ class ListLlmTemplatesResponseBodyData(DaraModel):
         self.prices = prices
         # The model provider template ID.
         self.provider_template_id = provider_template_id
-        # The published time in ISO 8601 format, such as 2026-03-04T06:25:17.000+00:00.
+        # The time when the model was published. The time follows the ISO 8601 standard, such as 2026-03-04T06:25:17.000+00:00.
         self.published_time = published_time
         # The authorization scope of the associated model group. Valid values: ALL_USER (all users), USER_MIXED (specified users and user groups), and RESOURCE_MIXED (specified resources). This parameter is returned only when SmartModel is true.
         self.ref_scope = ref_scope
-        # The number of route policies configured for the model tier. This parameter is returned only when SmartModel is true. If no policies are configured for the tier, 0 is returned.
+        # The number of route policies. This is the number of route policies configured for the model tier. This parameter is returned only when SmartModel is true. If no policies are configured for the tier, 0 is returned.
         self.route_policy_count = route_policy_count
 
     def validate(self):
@@ -255,7 +255,7 @@ class ListLlmTemplatesResponseBodyDataPrices(DaraModel):
     ):
         # The list of prices within the range.
         self.prices = prices
-        # The range name, such as Default or 0-1M tokens.
+        # The name of the range, such as Default or 0-1M tokens.
         self.range_name = range_name
 
     def validate(self):
@@ -301,7 +301,7 @@ class ListLlmTemplatesResponseBodyDataPricesPrices(DaraModel):
     ):
         # The price in string format, such as 0.2.
         self.price = price
-        # The price name, such as input, output, or image generation.
+        # The name of the price, such as input, output, or image generation.
         self.price_name = price_name
         # The price unit, such as per image or per 1,000 tokens.
         self.price_unit = price_unit
@@ -381,9 +381,9 @@ class ListLlmTemplatesResponseBodyDataCreditMultiplier(DaraModel):
         max: float = None,
         min: float = None,
     ):
-        # The maximum multiplier. An empty value indicates no upper limit. For example, if Min is 1 and Max is empty, it is displayed as starting from 1x.
+        # The upper limit of the multiplier. An empty value indicates no upper limit. For example, if Min=1 and Max is empty, it is displayed as starting from 1x.
         self.max = max
-        # The minimum multiplier. When it is equal to Max, it is a fixed multiplier. For example, if Min and Max are both 2, it is displayed as 2x.
+        # The lower limit of the multiplier. When it is equal to the maximum value, it is a fixed multiplier. For example, if Min=Max=2, it is displayed as 2x.
         self.min = min
 
     def validate(self):

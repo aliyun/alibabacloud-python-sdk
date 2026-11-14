@@ -30,7 +30,7 @@ class DescribeEventsResponseBody(DaraModel):
         self.page_size = page_size
         # The unique identifier of the request, which can be used to troubleshoot request issues.
         self.request_id = request_id
-        # The total number of events that meet all filter conditions within the 30-day retrievable window. Unit: entries.
+        # The total number of events that meet all filter conditions within the 30-day retrievable window. Unit: records.
         self.total_count = total_count
 
     def validate(self):
@@ -115,7 +115,7 @@ class DescribeEventsResponseBodyEventList(DaraModel):
         self.app_instance_group_id = app_instance_group_id
         # The name of the delivery group associated with the event. This field may be empty if the event is not associated with a delivery group.
         self.app_instance_group_name = app_instance_group_name
-        # The event detail text. The content varies based on the `EventType` and may be empty. For example, a session release event may return a JSON text that describes the release cause.
+        # The event detail text. The content varies with `EventType` and may be empty. For example, a session release event may return JSON text that describes the release reason.
         self.detail_info = detail_info
         # The unique identifier of the event.
         self.event_id = event_id

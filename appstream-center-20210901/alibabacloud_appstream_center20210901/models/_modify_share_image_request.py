@@ -21,9 +21,9 @@ class ModifyShareImageRequest(DaraModel):
         self.biz_type = biz_type
         # The source image ID.
         self.image_id = image_id
-        # The product type, such as cloud desktop, cloud application, or workstation.
+        # The product type, such as cloud desktop, cloud application, and workstation.
         self.product_type = product_type
-        # The Alibaba Cloud account IDs to remove from the share list.
+        # The Alibaba Cloud account IDs to remove from sharing.
         self.remove_account = remove_account
 
     def validate(self):

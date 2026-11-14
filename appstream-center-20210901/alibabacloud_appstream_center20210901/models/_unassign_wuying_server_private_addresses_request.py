@@ -12,7 +12,7 @@ class UnassignWuyingServerPrivateAddressesRequest(DaraModel):
         private_ip_addresses: List[str] = None,
         wuying_server_id: str = None,
     ):
-        # The list of secondary private IP addresses to unbind.
+        # The list of secondary private IP addresses to disassociate.
         # 
         # This parameter is required.
         self.private_ip_addresses = private_ip_addresses

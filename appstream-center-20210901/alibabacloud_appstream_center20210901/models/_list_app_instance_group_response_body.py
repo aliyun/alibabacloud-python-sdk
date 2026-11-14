@@ -18,9 +18,9 @@ class ListAppInstanceGroupResponseBody(DaraModel):
     ):
         # The delivery group information.
         self.app_instance_group_models = app_instance_group_models
-        # The current page number of query results.
+        # The current page number.
         self.page_number = page_number
-        # The number of query results per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -123,19 +123,19 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(DaraModel):
     ):
         # The access type.
         self.access_type = access_type
-        # The number of subscription resources configured by the user. Minimum value: 1.
+        # The number of subscription resources specified by the user. The minimum value is 1.
         self.amount = amount
         # The application image ID.
         self.app_center_image_id = app_center_image_id
-        # The delivery group ID.
+        # The ID of the app instance group.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the delivery group.
+        # The name of the app instance group.
         self.app_instance_group_name = app_instance_group_name
         # The specification type of the delivery group.
         self.app_instance_type = app_instance_type
         # The policy ID.
         self.app_policy_id = app_policy_id
-        # Indicates whether the current image supports the unified policy.
+        # Specifies whether the current image supports the unified policy.
         self.app_policy_image_check = app_policy_image_check
         # The policy version.
         self.app_policy_version = app_policy_version
@@ -143,21 +143,21 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(DaraModel):
         self.apps = apps
         # The authorization mode.
         self.auth_mode = auth_mode
-        # The billing mode.
+        # The sales mode.
         self.charge_resource_mode = charge_resource_mode
         # The billing method.
         self.charge_type = charge_type
-        # The expiration time of the delivery group. The value is in the ISO 8601 datetime format, including milliseconds and time zone offset. Format: yyyy-MM-dd\\"T\\"HH:mm:ss.SSSXXX.
+        # The expiration time of the app instance group. The time is displayed in the ISO 8601 date and time format, including milliseconds and time zone offset. Format template: yyyy-MM-dd\\"T\\"HH:mm:ss.SSSXXX.
         self.expired_time = expired_time
         # The creation time.
         self.gmt_create = gmt_create
-        # The maximum number of instances. Minimum value: 1.
+        # The maximum number of instances. The minimum value is 1.
         self.max_amount = max_amount
-        # The minimum number of instances. Minimum value: 1.
+        # The minimum number of instances. The minimum value is 1.
         self.min_amount = min_amount
-        # The resource group information.
+        # The node pool information.
         self.node_pool = node_pool
-        # The office network ID.
+        # The ID of the office network.
         self.office_site_id = office_site_id
         # The operating system type.
         self.os_type = os_type
@@ -165,37 +165,37 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModels(DaraModel):
         self.ota_info = ota_info
         # The product type.
         self.product_type = product_type
-        # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # The ID of the region to which the app instance group belongs. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.region_id = region_id
-        # The percentage of reserved instances, which is the ratio of unused sessions in the delivery group. Valid values: 0 to 99.
+        # The percentage of reserved instances, which is the proportion of unused sessions in the delivery group. Valid values: 0 to 99.
         self.reserve_amount_ratio = reserve_amount_ratio
-        # The maximum number of reserved instances, which is the maximum number of unused sessions in the delivery group. Minimum value: 1.
+        # The maximum number of reserved instances, which is the maximum number of unused sessions in the delivery group. The minimum value is 1.
         self.reserve_max_amount = reserve_max_amount
-        # The minimum number of reserved instances, which is the minimum number of unused sessions in the delivery group. Minimum value: 1.
+        # The minimum number of reserved instances, which is the minimum number of unused sessions in the delivery group. The minimum value is 1.
         self.reserve_min_amount = reserve_min_amount
         # The resource status.
         self.resource_status = resource_status
         # The list of resource tags.
         self.resource_tags = resource_tags
-        # The idle duration without session connections, in minutes. When a resource remains without session connections for the specified duration, automatic scale-in is triggered. Minimum value: 0.
+        # The duration without session connections, in minutes. When a resource has no session connections for the specified duration, automatic scale-in is triggered. The minimum value is 0.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
-        # The number of sessions created per scale-out operation. Minimum value: 1.
+        # The number of sessions created each time during scale-out. The minimum value is 1.
         self.scaling_step = scaling_step
-        # The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The session usage is calculated as follows: Session usage = Number of sessions in use ÷ Total number of sessions × 100%. Valid values: 0 to 99.
+        # The upper limit threshold for session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. Session usage is calculated as: Session usage = Number of active sessions / Total number of sessions × 100%. Valid values: 0 to 99.
         self.scaling_usage_threshold = scaling_usage_threshold
-        # The duration for which a disconnected session is retained, in minutes. After an end user session is disconnected, the session is retained for the duration specified here before being logged off. Set this parameter to `-1` to retain the session indefinitely. Valid values: -1 and 3 to 300. Default value: `15`.
+        # The session disconnection retention period, in minutes. After an end user\\"s session is disconnected, the session is retained for the specified period before being logged off. To retain the session indefinitely, set this parameter to `-1`. Valid values: -1 and 3 to 300. Default value: `15`.
         self.session_timeout = session_timeout
         # Specifies whether to skip user authorization verification.
         self.skip_user_auth_check = skip_user_auth_check
-        # The ID that uniquely corresponds to the delivery group ID.
+        # The ID that uniquely corresponds to the app instance group ID.
         self.spec_id = spec_id
-        # The delivery group status.
+        # The status of the app instance group.
         self.status = status
-        # Indicates whether mixed authorization of users and user groups is supported.
+        # Specifies whether mixed authorization for users and user groups is supported.
         self.support_user_group_mixed_auth = support_user_group_mixed_auth
         # The list of resource tags.
         self.tags = tags
-        # The authorization mode for users and user groups.
+        # The user and user group authorization mode.
         self.user_group_auth_mode = user_group_auth_mode
 
     def validate(self):
@@ -581,7 +581,7 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo(DaraModel):
         self.new_ota_version = new_ota_version
         # The current OTA version.
         self.ota_version = ota_version
-        # The OTA upgrade task ID.
+        # The ID of the OTA upgrade task.
         self.task_id = task_id
 
     def validate(self):
@@ -639,45 +639,44 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool(DaraModel):
         strategy_type: str = None,
         warm_up: bool = None,
     ):
-        # The number of resources purchased when the delivery group was created.
+        # The number of resources purchased when the delivery group is created.
         self.amount = amount
-        # The upper limit of idle sessions. When this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the current delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the delivery group is considered to have sufficient idle sessions and automatic scale-out is not triggered. This parameter provides flexible control over elastic scaling behavior and helps reduce costs.
+        # The upper limit of idle sessions. If this value is specified, automatic scale-out is triggered only when the session usage exceeds `ScalingUsageThreshold` and the number of idle sessions in the current delivery group is less than `MaxIdleAppInstanceAmount`. Otherwise, the delivery group is considered to have sufficient idle sessions, and automatic scale-out is not triggered. This parameter can be used to flexibly control elastic scale-out behavior and reduce costs.
         self.max_idle_app_instance_amount = max_idle_app_instance_amount
-        # The maximum number of resources that can be created during a scale-out operation.
+        # The maximum number of resources created during scale-out.
         self.max_scaling_amount = max_scaling_amount
         # The total number of current subscription resources.
         self.node_amount = node_amount
-        # The number of concurrent sessions, which is the number of sessions that a single resource can handle simultaneously. If too many sessions are connected simultaneously, the application experience may degrade. The valid values vary depending on the resource specification.
+        # The number of concurrent sessions, which is the number of sessions that a single resource can connect to simultaneously. If the number of concurrent sessions is too high, the application experience may degrade. The valid values vary based on the resource specifications.
         self.node_capacity = node_capacity
-        # The specification type ID of the purchased resource.
+        # The instance type ID of the purchased resources.
         self.node_instance_type = node_instance_type
-        # The resource group ID.
+        # The node pool ID.
         self.node_pool_id = node_pool_id
         # The name of the resource specification.
         self.node_type_name = node_type_name
         # The resource count of subscription resources in use.
         self.node_used = node_used
-        # The list of policy execution cycles.
+        # The list of policy execution schedules.
         self.recurrence_schedules = recurrence_schedules
-        # The idle duration without session connections, in minutes. When a resource remains without session connections for the specified duration, automatic scale-in is triggered. Default value: 5.
+        # The duration without session connections, in minutes. When a resource has no session connections for the specified duration, automatic scale-in is triggered. Default value: 5.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
         # The total number of elastic resources.
         self.scaling_node_amount = scaling_node_amount
         # The resource count of elastic resources in use.
         self.scaling_node_used = scaling_node_used
-        # The number of resources created per scale-out operation. Valid values: 1 to 10.
+        # The number of resources created each time during scale-out. Valid values: 1 to 10.
         self.scaling_step = scaling_step
-        # The upper threshold of session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. The session usage is calculated as follows: `Session usage = Number of current sessions ÷ (Total number of resources × Concurrent sessions per resource) × 100%`.
+        # The upper limit threshold for session usage (%). When the session usage exceeds this threshold, automatic scale-out is triggered. Session usage is calculated as: `Session usage = Current number of sessions / (Total number of resources × Number of concurrent sessions per resource) × 100%`.
         self.scaling_usage_threshold = scaling_usage_threshold
-        # The date when the policy becomes inactive. Format: yyyy-MM-dd.
+        # The strategy expiration date. Format: yyyy-MM-dd.
         self.strategy_disable_date = strategy_disable_date
-        # The date when the policy takes effect. Format: yyyy-MM-dd.
+        # The strategy effective date. Format: yyyy-MM-dd.
         self.strategy_enable_date = strategy_enable_date
         # The elastic policy type.
-        # 
         # > `NODE_SCALING_BY_USAGE` (usage-based scaling policy) applies only to `PrePaid` (subscription) resources. `NODE_SCALING_BY_SCHEDULE` (scheduled scaling policy) applies only to `PostPaid` (pay-as-you-go) resources.
         self.strategy_type = strategy_type
-        # Indicates whether the resource prefetch policy is enabled.
+        # Specifies whether the resource prefetch strategy is enabled.
         self.warm_up = warm_up
 
     def validate(self):
@@ -823,11 +822,11 @@ class ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSc
         recurrence_values: List[int] = None,
         timer_periods: List[main_models.ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods] = None,
     ):
-        # The type of the policy execution cycle. You must specify both `RecurrenceType` and `RecurrenceValues`.
+        # The type of the policy execution schedule. You must specify both `RecurrenceType` and `RecurrenceValues`.
         self.recurrence_type = recurrence_type
-        # The list of values for the policy execution cycle.
+        # The list of values for the policy execution schedule.
         self.recurrence_values = recurrence_values
-        # The list of time periods for the policy execution cycle.
+        # The list of time periods for the policy execution schedule.
         self.timer_periods = timer_periods
 
     def validate(self):

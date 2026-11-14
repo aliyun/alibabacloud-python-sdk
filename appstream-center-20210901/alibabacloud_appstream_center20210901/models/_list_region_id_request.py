@@ -10,24 +10,23 @@ class ListRegionIdRequest(DaraModel):
         product_type: str = None,
     ):
         # The product type for querying available image regions. If this parameter is omitted, the query is performed based on CloudApp. Valid values:
-        # 
         # - **CloudGame**: cloud gaming
-        # - **CloudApp**: WUYING Cloud App
+        # - **CloudApp**: WUYING cloud application
         # - **CloudBrowser**: secure browser
-        # - **CloudDesktop**: WUYING Cloud Desktop
-        # - **ImageBuilder**: image creation resources
-        # - **ImageValidate**: image validation resources
+        # - **CloudDesktop**: WUYING cloud desktop
+        # - **ImageBuilder**: image creation resource
+        # - **ImageValidate**: image validation resource
         # - **AndroidCloud**: Android cloud
         # - **GpuRender**: GPU rendering
         # - **AndroidGpuRender**: Android cloud GPU rendering
-        # - **WuyingServer**: Enterprise Edition workstation
+        # - **WuyingServer**: enterprise workstation
         # - **GpuProxy**: GPU remote rendering proxy
         # - **GpuCache**: GPU remote rendering cache
         # - **AIAgent**: AI agent service
-        # - **HostedDesktop**: hosted desktop
-        # - **WuyingWorkstation**: Personal Edition container workstation
-        # - **WuyingWorkstationBusiness**: Business Edition container workstation
-        # - **WuyingWorkstationTeam**: Linggou container workstation Team Edition
+        # - **HostedDesktop**: hosted computer
+        # - **WuyingWorkstation**: personal container workstation
+        # - **WuyingWorkstationBusiness**: business container workstation
+        # - **WuyingWorkstationTeam**: LingGou container workstation team edition
         self.product_type = product_type
 
     def validate(self):

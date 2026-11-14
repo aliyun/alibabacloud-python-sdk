@@ -13,9 +13,9 @@ class ListModelProviderEndpointsResponseBody(DaraModel):
         data: List[main_models.ListModelProviderEndpointsResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The returned data object.
+        # The data object.
         self.data = data
-        # The request ID, which uniquely identifies the request.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -60,13 +60,13 @@ class ListModelProviderEndpointsResponseBodyData(DaraModel):
         provider_name: str = None,
         provider_url: str = None,
     ):
-        # The provider description, such as Alibaba Cloud Bailian.
+        # The description of the provider, such as Alibaba Cloud Model Studio.
         self.description = description
-        # The list of all endpoints under the provider.
+        # The list of all endpoints under this provider.
         self.endpoints = endpoints
-        # The provider name, such as bailian or moonshot.
+        # The name of the provider, such as bailian or moonshot.
         self.provider_name = provider_name
-        # The provider website URL, which is used to direct users to obtain an API key.
+        # The URL of the provider\\"s official website, which directs users to obtain an API key.
         self.provider_url = provider_url
 
     def validate(self):
@@ -127,15 +127,15 @@ class ListModelProviderEndpointsResponseBodyDataEndpoints(DaraModel):
     ):
         # The API compatibility type, such as openai-compatible or anthropic-compatible.
         self.api_type = api_type
-        # The API base URL, such as https://coding.dashscope.aliyuncs.com/v1.
+        # The base URL of the API, such as https://coding.dashscope.aliyuncs.com/v1.
         self.base_url = base_url
-        # The endpoint description, such as Coding Plan - OpenAI compatible protocol.
+        # The description of the endpoint, such as Coding Plan - OpenAI-compatible protocol.
         self.description = description
-        # The endpoint identifier name, such as coding-openai or cn-beijing.
+        # The identifier name of the endpoint, such as coding-openai or cn-beijing.
         self.name = name
         # The provider URL.
         self.provider_url = provider_url
-        # The list of tags used for categorization and filtering, such as coding-plan, on-demand, or cn-beijing.
+        # The list of tags used for classification and filtering, such as coding-plan, on-demand, or cn-beijing.
         self.tags = tags
 
     def validate(self):

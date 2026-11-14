@@ -16,19 +16,19 @@ class ListPublishedAppsRequest(DaraModel):
         page_size: int = None,
         product_type: str = None,
     ):
-        # The application ID used for filtering. Substring matching is supported. You can specify a complete ID or a consecutive segment of it. If this parameter is not specified or is set to an empty string, filtering by application ID is not applied. If both this parameter and `AppName` are specified, both conditions must be met by the same application.
+        # The ID of the application used for filtering. Substring matching is supported. You can pass the complete ID or a continuous segment of it. If this parameter is not specified or an empty string is passed, filtering is not performed based on the application ID. If this parameter and `AppName` are specified at the same time, both conditions must be met by the same application.
         self.app_id = app_id
-        # The delivery group ID used for filtering. Substring matching is supported. You can specify a complete ID or a consecutive segment of it. If this parameter is not specified or is set to an empty string, filtering by delivery group ID is not applied. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain delivery group IDs. This parameter can be used together with other filter conditions, and all conditions must be met simultaneously.
+        # The ID of the delivery group used for filtering. Substring matching is supported. You can pass the complete ID or a continuous segment of it. If this parameter is not specified or an empty string is passed, filtering is not performed based on the delivery group ID. You can call the [ListAppInstanceGroup](~~ListAppInstanceGroup~~) operation to obtain the delivery group ID. This parameter can be used together with other filter conditions, and all conditions must be met.
         self.app_instance_group_id = app_instance_group_id
-        # The delivery group name used for filtering. Substring matching is supported. For example, if you specify `OfficeApps`, delivery groups whose names contain this text are matched. If this parameter is not specified or is set to an empty string, filtering by delivery group name is not applied. If both this parameter and the delivery group ID are specified, both conditions must be met.
+        # The name of the delivery group used for filtering. Substring matching is supported. For example, if you pass `Office applications`, delivery groups whose names contain this text are matched. If this parameter is not specified or an empty string is passed, filtering is not performed based on the delivery group name. If this parameter and the delivery group ID are specified at the same time, both conditions must be met.
         self.app_instance_group_name = app_instance_group_name
-        # The application name used for filtering. Substring matching is supported. For example, if you specify `OfficeApps`, applications whose names contain this text are matched. If this parameter is not specified or is set to an empty string, filtering by application name is not applied. If both this parameter and `AppId` are specified, both conditions must be met by the same application.
+        # The name of the application used for filtering. Substring matching is supported. For example, if you pass `Office applications`, applications whose names contain this text are matched. If this parameter is not specified or an empty string is passed, filtering is not performed based on the application name. If this parameter and `AppId` are specified at the same time, both conditions must be met by the same application.
         self.app_name = app_name
-        # The username to exclude. Exact username matching is used. For example, `alice`. When specified, applications that have been authorized to this user through [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) by application are not returned. This helps you find applications that can still be authorized to the user. If this parameter is not specified or is set to an empty string, no exclusion based on user authorization is applied.
+        # The username to be excluded. Exact matching is performed based on the full username, such as `alice`. If this parameter is specified, applications that have been authorized for this user on a per-application basis through [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) are not returned. This can be used to find applications that can still be authorized for the user. If this parameter is not specified or an empty string is passed, filtering is not performed based on user authorization.
         # 
-        # **Access permissions granted through delivery-group-level authorization or user groups are not evaluated by this condition.** The returned results cannot be treated as a complete list of applications that the user has no access to.
+        # **Access permissions obtained through overall delivery group authorization or user groups are not evaluated by this condition.** Do not equate the returned results with a list of applications that the user has absolutely no access to.
         self.exclude_user_id = exclude_user_id
-        # The page number. This parameter is required. Start from page `1` and use this parameter together with `PageSize`. Keep other filter conditions unchanged when querying subsequent pages. If an invalid value is specified, the error code `InvalidParameter.PageNumber` is returned.
+        # The page number. This parameter is required. Start the query from page `1` and use it in conjunction with `PageSize`. Keep other filter conditions unchanged when querying subsequent pages. If the value is invalid, the error code `InvalidParameter.PageNumber` is returned.
         # 
         # This parameter is required.
         self.page_number = page_number
@@ -36,17 +36,17 @@ class ListPublishedAppsRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The product type. This parameter is required. The value is case-insensitive. Only applications in published delivery groups of the specified product type are returned. If an unrecognized value is specified, the error code `InvalidParameter.ProductType` is returned. Filtering and statistics related to per-application authorization (`ExcludeUserId` and `AuthorizedUserCount`) are primarily used in WUYING Cloud Application common scenarios.
+        # The product type. This parameter is required and is not case-sensitive. Only applications in published delivery groups of this product type are returned. If an unrecognized value is passed, the error code `InvalidParameter.ProductType` is returned. Filtering and statistics related to per-application authorization (`ExcludeUserId` and `AuthorizedUserCount`) are primarily used in WUYING Cloud App scenarios.
         # 
         # Valid values:
         # 
-        # - `CloudApp`: WUYING Cloud Application.
-        # - `CloudBrowser`: Cloud Browser.
-        # - `WuyingServer`: Enterprise Workstation.
-        # - `WuyingWorkstation`: Personal Edition Lingjou Container Workstation.
-        # - `WuyingWorkstationTeam`: Team Edition Lingjou Container Workstation.
-        # - `WuyingWorkstationBusiness`: Dedicated Edition Lingjou Container Workstation.
-        # - `AndroidCloud`: Cloud Phone.
+        # - `CloudApp`: WUYING Cloud App.
+        # - `CloudBrowser`: Cloud browser.
+        # - `WuyingServer`: Enterprise Edition workstation.
+        # - `WuyingWorkstation`: Personal Edition Linggou container workstation.
+        # - `WuyingWorkstationTeam`: Team Edition Linggou container workstation.
+        # - `WuyingWorkstationBusiness`: Dedicated Edition Linggou container workstation.
+        # - `AndroidCloud`: Cloud phone.
         # - `AIAgent`: AgentBay (AI agent).
         # 
         # This parameter is required.

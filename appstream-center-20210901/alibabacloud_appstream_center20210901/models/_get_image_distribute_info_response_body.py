@@ -20,7 +20,7 @@ class GetImageDistributeInfoResponseBody(DaraModel):
         self.code = code
         # The image information returned by the query.
         self.data = data
-        # The processing information returned by the API.
+        # The processing message returned by the API.
         self.message = message
         # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id

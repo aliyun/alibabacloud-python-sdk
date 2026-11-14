@@ -12,7 +12,7 @@ class FinishValidateRequest(DaraModel):
         status: bool = None,
         task_id: str = None,
     ):
-        # The application ID used for exact match queries. If omitted, the results are not filtered by application ID.
+        # The application ID for exact match queries. If this parameter is omitted, the results are not filtered by application ID.
         self.app_id = app_id
         # The application version ID. **Required**. It must match the application version corresponding to the AdaptorId. This parameter is not the image version ID.
         self.app_version_id = app_version_id

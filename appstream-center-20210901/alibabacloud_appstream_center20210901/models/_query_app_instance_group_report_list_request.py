@@ -21,40 +21,37 @@ class QueryAppInstanceGroupReportListRequest(DaraModel):
         stat_date: str = None,
         status: List[str] = None,
     ):
-        # The filter condition for the app instance group ID, which matches the exact ID. If this parameter is not specified, the results are not filtered by ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
+        # The filter condition for the delivery group ID, which matches the exact ID. If this parameter is not specified, the results are not filtered by ID. You can call [ListAppInstanceGroup](~~ListAppInstanceGroup~~) to obtain the ID.
         self.app_instance_group_id = app_instance_group_id
-        # The filter condition for the app instance group name, which supports inclusion matching. If this parameter is not specified, the results are not filtered by name.
+        # The filter condition for the delivery group name, which supports inclusion matching. If this parameter is not specified, the results are not filtered by name.
         self.app_instance_group_name = app_instance_group_name
-        # The ID of the business region to which the app instance group belongs. You can call [ListRegions](~~ListRegions~~) to obtain the ID. If this parameter is not specified, the results are not filtered by business region.
+        # The business region ID of the delivery group. You can call [ListRegions](~~ListRegions~~) to obtain the ID. If this parameter is not specified, the results are not filtered by business region.
         self.biz_region_id = biz_region_id
-        # The end date of the statistics. Format: `yyyyMMdd`. This parameter must be specified in pairs with `StartDate` and cannot be earlier than the start date. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
+        # The end date of the statistics. Format: `yyyyMMdd`. This parameter must be specified in pairs with StartDate and cannot be earlier than the start date. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
         self.end_date = end_date
-        # The ID of the end user, which is used to filter app instance groups based on the current valid authorization relationship. Before the call, make sure that the user has at least one valid authorization. If no valid authorization exists, the current version does not narrow down the results based on this parameter. If this parameter is not specified, the results are not filtered by user.
+        # The ID of the end user, which is used to filter delivery groups based on the current valid authorization relationship. Before calling this operation, make sure that the user has at least one valid authorization. If the user does not have a valid authorization, the current version does not narrow down the results based on this parameter. If this parameter is not specified, the results are not filtered by user.
         self.end_user_id = end_user_id
-        # The page number to query. Specify a value starting from `1`. If this parameter is not specified, the service processes the request as the first page, but the response may return `0`.
+        # The page number to query. Specify this parameter starting from `1`. If this parameter is not specified, the service processes the request as the first page, but the response may return `0`.
         self.page_number = page_number
         # The number of entries per page. Default value: 200. The current operation does not have an additional upper limit for a single page.
         self.page_size = page_size
-        # The region ID for OpenAPI access, which is used for request authentication and routing. To filter business data by region, use `BizRegionId`.
+        # The region ID for OpenAPI access, which is used for request authentication and routing. To filter business data by region, use BizRegionId.
         self.region_id = region_id
-        # The start date of the statistics. Format: `yyyyMMdd`. This parameter must be specified in pairs with `EndDate`, and the interval includes the start and end dates. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
+        # The start date of the statistics. Format: `yyyyMMdd`. This parameter must be specified in pairs with EndDate, and the interval includes the start and end dates. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
         self.start_date = start_date
-        # The statistical date for a single day. Format: `yyyyMMdd`. If this parameter is specified along with `StartDate` and `EndDate`, the results must meet both the single-day and interval conditions. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
+        # The statistical date for a single day. Format: `yyyyMMdd`. If this parameter is specified together with StartDate and EndDate, the results must meet both the single-day and interval conditions. The string itself does not carry a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
         self.stat_date = stat_date
-        # The list of app instance group statuses. Multiple values have an OR relationship. Unrecognized values do not participate in filtering. If all values are unrecognized, the results are not filtered by status.
-        # 
-        # Valid values:
-        # 
-        # - `DEPLOYING`: Deploying.
-        # - `DEPLOYED`: Deployed but not published.
-        # - `PUBLISHED`: Published and available to provide services based on the current configurations.
-        # - `STOPPING`: Stopping.
-        # - `STOPPED`: Stopped.
-        # - `MAINTAINING`: Maintaining.
-        # - `FAILED`: Deployment or running failed.
-        # - `MAINTAIN_FAILED`: Maintenance failed.
-        # - `DELETING`: Deleting.
-        # - `DELETED`: Deleted.
+        # The list of delivery group statuses. Multiple values have an OR relationship. Unrecognized values do not participate in filtering. If all values are unrecognized, it is equivalent to not filtering by status. Valid values:
+        # - `DEPLOYING`: deploying
+        # - `DEPLOYED`: deployed but not published
+        # - `PUBLISHED`: published and available to provide services based on the current configuration
+        # - `STOPPING`: stopping
+        # - `STOPPED`: stopped
+        # - `MAINTAINING`: maintaining
+        # - `FAILED`: deployment or execution failed
+        # - `MAINTAIN_FAILED`: maintenance failed
+        # - `DELETING`: deleting
+        # - `DELETED`: deleted
         self.status = status
 
     def validate(self):

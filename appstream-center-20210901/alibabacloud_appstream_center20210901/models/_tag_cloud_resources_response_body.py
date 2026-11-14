@@ -63,7 +63,7 @@ class TagCloudResourcesResponseBodyFailedResources(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The error message.
+        # The error description.
         self.message = message
         # The resource ID.
         self.resource_id = resource_id

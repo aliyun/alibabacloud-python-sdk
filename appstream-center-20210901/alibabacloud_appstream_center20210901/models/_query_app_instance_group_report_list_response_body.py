@@ -19,7 +19,7 @@ class QueryAppInstanceGroupReportListResponseBody(DaraModel):
     ):
         # The business status code. A value of `200` indicates that the request is processed. Other values indicate that the processing failed.
         self.code = code
-        # The list of app instance group report data.
+        # The list of delivery group report data.
         self.index_data = index_data
         # The description of the request processing result. If the request is successful, `success` is usually returned.
         self.message = message
@@ -95,24 +95,21 @@ class QueryAppInstanceGroupReportListResponseBodyIndexData(DaraModel):
         app_instance_group_name: str = None,
         status: str = None,
     ):
-        # The ID of the app instance group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the app instance group.
+        # The delivery group name.
         self.app_instance_group_name = app_instance_group_name
-        # The current status of the app instance group.
-        # 
-        # Valid values:
-        # 
-        # - `DEPLOYING`: Deploying.
-        # - `DEPLOYED`: Deployed but not published.
-        # - `PUBLISHED`: Published and available to provide services based on the current configurations.
-        # - `STOPPING`: Stopping.
-        # - `STOPPED`: Stopped.
-        # - `MAINTAINING`: Maintaining.
-        # - `FAILED`: Deployment or running failed.
-        # - `MAINTAIN_FAILED`: Maintenance failed.
-        # - `DELETING`: Deleting.
-        # - `DELETED`: Deleted.
+        # The current status of the delivery group. Valid values:
+        # - `DEPLOYING`: deploying
+        # - `DEPLOYED`: deployed but not published
+        # - `PUBLISHED`: published and available to provide services based on the current configuration
+        # - `STOPPING`: stopping
+        # - `STOPPED`: stopped
+        # - `MAINTAINING`: maintaining
+        # - `FAILED`: deployment or execution failed
+        # - `MAINTAIN_FAILED`: maintenance failed
+        # - `DELETING`: deleting
+        # - `DELETED`: deleted
         self.status = status
 
     def validate(self):

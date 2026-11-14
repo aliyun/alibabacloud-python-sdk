@@ -16,7 +16,7 @@ class GetAgentRuntimeStatisticResponseBody(DaraModel):
     ):
         # The list of runtime statistics grouped by agent platform and agent provider. If AgentProvider is specified but no matching runtimes are found, a record with all statistical values set to 0 is returned.
         self.data = data
-        # The request ID, which uniquely identifies the request.
+        # The request ID, which is used to uniquely identify the request.
         self.request_id = request_id
         # The number of returned statistics records, which is the length of the Data list.
         self.total_count = total_count
@@ -73,21 +73,21 @@ class GetAgentRuntimeStatisticResponseBodyData(DaraModel):
         risky_runtime_count: int = None,
         total_runtime_count: int = None,
     ):
-        # The agent display name, which is determined by both the agent platform and the agent provider. For example, OpenClaw under the ENTERPRISE platform is displayed as OpenClaw, and OpenClaw under the JVS platform is displayed as JVS Claw.
+        # The display name of the agent, which is determined by both the agent platform and the agent provider. For example, OpenClaw under the ENTERPRISE platform is displayed as OpenClaw, and OpenClaw under the JVS platform is displayed as JVS Claw.
         self.agent_display_name = agent_display_name
         # The agent platform, such as ENTERPRISE_AGENTIC_COMPUTER.
         self.agent_platform = agent_platform
         # The agent provider, such as AgenticComputer.
         self.agent_provider = agent_provider
-        # The number of expired runtime resources in the group. A runtime is counted as expired if its resource status is Expired or Ceased, case-insensitive.
+        # The number of expired runtime resources in this group. A runtime is counted as expired if its resource status is Expired or Ceased, case-insensitive.
         self.expired_count = expired_count
-        # The number of runtime resources without channel configurations in the group, which is the total number of runtime resources minus the number of runtime resources with channel configurations.
+        # The number of runtime resources without a configured channel in this group, which is the total number of runtime resources minus the number of runtime resources with a configured channel.
         self.no_channel_configured_runtime_count = no_channel_configured_runtime_count
-        # The number of runtime resources without model configurations in the group. A runtime is considered to have a model configured if a model is configured for the runtime itself or its associated resource group.
+        # The number of runtime resources without a configured model in this group. A runtime is considered to have a configured model if either the runtime itself or its associated resource group has a model configured.
         self.no_model_configured_runtime_count = no_model_configured_runtime_count
-        # The number of risky runtime resources in the group, deduplicated by runtime ID. A runtime is counted as risky if it has any of the following risks: model configuration modified, third-party channel configuration modified, or agent being uninstalled.
+        # The number of risky runtime resources in this group, deduplicated by runtime ID. A runtime is counted as risky if it has any of the following risks: the model configuration is modified, the third-party channel configuration is modified, or the agent is being uninstalled.
         self.risky_runtime_count = risky_runtime_count
-        # The total number of runtime resources in the group, deduplicated by runtime ID.
+        # The total number of runtime resources in this group, deduplicated by runtime ID.
         self.total_runtime_count = total_runtime_count
 
     def validate(self):

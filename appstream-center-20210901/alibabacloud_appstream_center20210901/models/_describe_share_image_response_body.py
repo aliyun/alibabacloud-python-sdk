@@ -18,7 +18,7 @@ class DescribeShareImageResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The returned object.
+        # The response object.
         self.data = data
         # The message returned by the request.
         self.message = message
@@ -78,7 +78,7 @@ class DescribeShareImageResponseBodyData(DaraModel):
         self,
         ali_uid_list: List[int] = None,
     ):
-        # The list of Alibaba Cloud account IDs to which the image is shared.
+        # The list of Alibaba Cloud account IDs with which the image is shared.
         self.ali_uid_list = ali_uid_list
 
     def validate(self):

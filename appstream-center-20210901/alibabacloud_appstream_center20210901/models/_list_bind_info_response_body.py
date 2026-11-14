@@ -16,11 +16,11 @@ class ListBindInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of binding information returned.
+        # The list of returned binding information.
         self.bind_info_models = bind_info_models
-        # The page number of the query results currently displayed.
+        # The current page number of the query results.
         self.page_number = page_number
-        # The number of query results per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

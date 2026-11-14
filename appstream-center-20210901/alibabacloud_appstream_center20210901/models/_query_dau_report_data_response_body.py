@@ -18,13 +18,13 @@ class QueryDauReportDataResponseBody(DaraModel):
         page_size: int = None,
         request_id: str = None,
     ):
-        # The business status code. A value of 200 indicates that the request is processed successfully. Other values indicate that the processing failed.
+        # The business status code. A value of `200` indicates that the request is successful. Other values indicate that the request failed.
         self.code = code
         # The total number of records that meet the query conditions.
         self.count = count
         # The list of daily active user report data.
         self.dau_report_data_model = dau_report_data_model
-        # The description of the request processing result. Typically, success is returned if the request is successful.
+        # The description of the request processing result. Typically, `success` is returned when the request is successful.
         self.message = message
         # The page number corresponding to the current response.
         self.page_number = page_number
@@ -106,7 +106,7 @@ class QueryDauReportDataResponseBodyDauReportDataModel(DaraModel):
     ):
         # The number of active users within the statistical epoch. Unit: users.
         self.dau = dau
-        # The statistics date. Format: yyyy-MM-dd. The string does not contain a time zone and is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
+        # The statistics date. Format: `yyyy-MM-dd`. The string does not contain a time zone and is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
         self.stat_date = stat_date
         # The number of active users who generated sessions through streaming access within the statistical epoch. Unit: users.
         self.streaming_dau = streaming_dau

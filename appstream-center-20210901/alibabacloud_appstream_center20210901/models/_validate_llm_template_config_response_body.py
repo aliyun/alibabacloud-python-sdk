@@ -52,9 +52,9 @@ class ValidateLlmTemplateConfigResponseBodyData(DaraModel):
         valid: bool = None,
         validation_errors: List[main_models.ValidateLlmTemplateConfigResponseBodyDataValidationErrors] = None,
     ):
-        # Indicates whether the configuration is valid. The value is true if all validation checks pass.
+        # Indicates whether the configuration is valid. The value is true if all validation items pass.
         self.valid = valid
-        # The list of validation errors. This list is empty when Valid is true.
+        # The list of validation errors. This list is empty if Valid is true.
         self.validation_errors = validation_errors
 
     def validate(self):

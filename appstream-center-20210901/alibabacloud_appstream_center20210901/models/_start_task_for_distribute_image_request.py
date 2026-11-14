@@ -26,9 +26,9 @@ class StartTaskForDistributeImageRequest(DaraModel):
         self.product_type = product_type
         # This parameter is not publicly available.
         self.retry_type = retry_type
-        # The source region from which the image is copied. If this parameter is not specified, a random region is selected.
+        # The source region from which the image is copied. If you do not specify this parameter, a region is randomly selected.
         self.source_region = source_region
-        # The image version ID. If this parameter is not specified, the latest image version is used.
+        # The image version ID. If you do not specify this parameter, the latest image version is used by default.
         self.version_id = version_id
 
     def validate(self):

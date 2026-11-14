@@ -16,15 +16,15 @@ class ListAuthorizedAppsByUserResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of applications authorized to the user. Each record corresponds to one application within one delivery group.
+        # The list of applications authorized for the user. Each record corresponds to an application within an app instance group.
         self.apps = apps
         # The page number of the returned results.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of authorization records that match the query conditions.
+        # The total number of authorization records that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -91,21 +91,21 @@ class ListAuthorizedAppsByUserResponseBodyApps(DaraModel):
         app_version_name: str = None,
         authorized_user_count: int = None,
     ):
-        # The URL of the application icon. This value is empty if the deployment details of the application cannot be obtained.
+        # The access URL of the application icon. This parameter is empty when the deployment details of the application cannot be obtained.
         self.app_icon = app_icon
         # The application ID.
         self.app_id = app_id
-        # The ID of the delivery group to which the application belongs.
+        # The ID of the app instance group to which the application belongs.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the delivery group to which the application belongs. If the delivery group information cannot be obtained, the value is the same as AppInstanceGroupId.
+        # The name of the app instance group to which the application belongs. If the app instance group information cannot be obtained, the returned value is the same as the AppInstanceGroupId.
         self.app_instance_group_name = app_instance_group_name
-        # The application name. If the deployment details of the application cannot be obtained, the value is the same as AppId.
+        # The application name. If the deployment details of the application cannot be obtained, the returned value is the same as the AppId.
         self.app_name = app_name
-        # The application version. This value is empty if the deployment details of the application cannot be obtained.
+        # The application version. This parameter is empty when the deployment details of the application cannot be obtained.
         self.app_version = app_version
-        # The application version name. This value is empty if the deployment details of the application cannot be obtained.
+        # The application version name. This parameter is empty when the deployment details of the application cannot be obtained.
         self.app_version_name = app_version_name
-        # The number of authorized users for the application within its delivery group. This value is empty if the deployment details of the application cannot be obtained.
+        # The number of users authorized to access the application in the app instance group to which the application belongs. This parameter is empty when the deployment details of the application cannot be obtained.
         self.authorized_user_count = authorized_user_count
 
     def validate(self):

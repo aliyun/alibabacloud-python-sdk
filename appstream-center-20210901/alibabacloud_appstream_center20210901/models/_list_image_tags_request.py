@@ -11,11 +11,11 @@ class ListImageTagsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The label categorization to query.
+        # The tag categorization to query.
         self.category = category
         # A compatibility field. The current version does not use this field to specify the number of returned entries.
         self.max_results = max_results
-        # The token used to determine whether a next query is available. This parameter is not currently supported.
+        # The token used to determine whether the next query is available. This parameter is not supported.
         self.next_token = next_token
 
     def validate(self):

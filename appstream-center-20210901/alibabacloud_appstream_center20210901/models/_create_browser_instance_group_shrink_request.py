@@ -37,11 +37,12 @@ class CreateBrowserInstanceGroupShrinkRequest(DaraModel):
         user_info_shrink: str = None,
         users_shrink: str = None,
     ):
-        # The package identifier.
+        # The package ID.
         # 
         # You do not need to specify this parameter.
         self.app_package_type = app_package_type
         # Specifies whether to send notification emails for authorization and deauthorization.
+        # 
         # - `true`: Sends notification emails.
         # - `false`: Does not send notification emails.
         self.auth_notification_enabled = auth_notification_enabled
@@ -53,53 +54,59 @@ class CreateBrowserInstanceGroupShrinkRequest(DaraModel):
         # 
         # You do not need to specify this parameter.
         self.auto_renew = auto_renew
-        # The identifier of the business region. This parameter is required.
+        # The ID of the business region. This parameter is required.
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
         # The browser configuration.
         self.browser_config_shrink = browser_config_shrink
         # The resource billing method.
-        # **For MAU scenarios:** Set this parameter to `AppInstance`, which indicates billing by instance resources.
+        # 
+        # **For MAU scenarios:** Set this parameter to `AppInstance`, which indicates billing by instance resource.
         self.charge_resource_mode = charge_resource_mode
         # The billing method.
         # 
-        # **For MAU scenarios:** Set this parameter to PostPaid, which indicates pay-as-you-go.
+        # **For MAU scenarios:** Set this parameter to `PostPaid`, which indicates pay-as-you-go.
         self.charge_type = charge_type
-        # The name of the cloud browser group. This parameter cannot be empty. It is used to distinguish different browser groups in business management scenarios.
+        # The name of the cloud browser group. This parameter is required. It is used to distinguish different browser groups in business management scenarios.
         # 
         # This parameter is required.
         self.cloud_browser_name = cloud_browser_name
         # The image ID used by the cloud browser. The image must be compatible with the operating system.
+        # 
         # If this parameter is omitted, the default image available for the account is used. If no default image is available, the creation may fail.
-        # **Usage conditions:** When CookiesSync is enabled, explicitly specify an image that supports cookie synchronization.
+        # 
+        # **Usage condition:** When `CookiesSync` is enabled, explicitly specify an image that supports cookie synchronization.
         self.image_id = image_id
         # The instance type identifier. Select an instance type that matches the target region, operating system, and inventory conditions.
+        # 
         # If this parameter is omitted, the default instance type is used.
         self.instance_type = instance_type
-        # The capacity configuration in MAU billing scenarios.
+        # The capacity configuration for the MAU billing scenario.
         self.max_amount = max_amount
-        # The configurations for the office network and website access restrictions. The selected office network must belong to the current account and reside in the region specified by BizRegionId.
+        # The configurations of the office network and website access restrictions. The selected office network must belong to the current account and reside in the region specified by BizRegionId.
         self.network_shrink = network_shrink
         # The node pool configuration.
+        # 
         # You do not need to specify this parameter.
         self.node_pool_shrink = node_pool_shrink
         # The operating system type. This parameter is required.
+        # 
         # Only `Windows` is supported. Other operating systems are not supported.
         self.os_type = os_type
-        # The number of billing cycles for the purchase.
+        # The number of subscription periods.
         # 
         # You do not need to specify this parameter.
         self.period = period
-        # The unit of the billing cycle for the purchase.
+        # The unit of the subscription period.
         # 
         # You do not need to specify this parameter.
         self.period_unit = period_unit
-        # Configures policies for the clipboard, video, watermark, session, and client access.
+        # The configurations of clipboard, video, watermark, session, and client access policies.
         self.policy_shrink = policy_shrink
-        # The promotion identifier, which is used to specify the promotional offer applied to the order.
+        # The promotion ID, which is used to specify the promotional offer applied to the order.
         # 
-        # Applicability and specific discounts are subject to the promotion rules. You do not need to specify this parameter if no promotional offer is applied.
+        # The applicability and specific discounts are subject to the promotion rules. You do not need to specify this parameter if no promotional offer is applied.
         self.promotion_id = promotion_id
         # The connection security policy of the browser group.
         self.security_policy_shrink = security_policy_shrink
@@ -107,14 +114,15 @@ class CreateBrowserInstanceGroupShrinkRequest(DaraModel):
         self.storage_policy_shrink = storage_policy_shrink
         # The billing sub-type.
         # 
-        # **You must explicitly set this parameter to mau, which indicates billing by monthly active users (MAUs).** Omitting this parameter does not enable MAU billing.
+        # **You must explicitly set this parameter to `mau`, which indicates billing by monthly active users.** Omitting this parameter does not enable MAU billing.
         self.sub_pay_type = sub_pay_type
-        # This parameter is not supported and does not need to be specified.
+        # Not supported. Leave this parameter empty.
         self.tag_shrink = tag_shrink
-        # This parameter is not supported and does not need to be specified.
+        # Not supported. Leave this parameter empty.
         self.timers_shrink = timers_shrink
-        # The list of authorized user group IDs. You can specify up to 10 IDs. The user groups must belong to the current account and match the account type of the office network.
-        # **Limits:** This parameter cannot be specified together with a non-empty Users parameter.
+        # The list of authorized user group IDs. You can specify up to 10 user group IDs. The user groups must belong to the current account and match the account type of the office network.
+        # 
+        # **Limits:** This parameter cannot be specified together with a non-empty `Users` parameter.
         self.user_group_ids = user_group_ids
         # The authorized user account information. The information must match the user and office network types.
         self.user_info_shrink = user_info_shrink

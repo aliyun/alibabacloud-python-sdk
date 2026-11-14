@@ -14,17 +14,17 @@ class GetUploadInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code of the API. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
+        # The response code of the API. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
         self.code = code
-        # The file upload endpoint and temporary credentials.
+        # The file upload address and temporary credentials.
         self.data = data
-        # The message returned by the API.
+        # The processing message returned by the API.
         self.message = message
-        # The ID of the request. It is used to locate and troubleshoot the request.
+        # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id
         # Indicates whether the API call is successful. Valid values:
-        # - true: The call is successful.
-        # - false: The call fails.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -87,19 +87,19 @@ class GetUploadInfoResponseBodyData(DaraModel):
     ):
         # The AccessKey ID of the STS temporary access credential.
         self.access_key_id = access_key_id
-        # The AccessKey Secret of the STS temporary access credential. It is used together with AccessKeyId and StsToken.
+        # The AccessKey secret of the STS temporary access credential. This parameter is used together with AccessKeyId and StsToken.
         self.access_key_secret = access_key_secret
         # The name of the destination OSS bucket for the upload.
         self.bucket_name = bucket_name
         # Not supported.
         self.expiration = expiration
-        # The OSS directory prefix where files are allowed to be uploaded. The path of the uploaded object must be located under this directory.
+        # The OSS directory prefix where files are allowed to be uploaded. The path of the uploaded object must be located in this directory.
         self.file_path = file_path
         # The OSS endpoint for public network access.
         self.oss_point = oss_point
         # The internal OSS endpoint.
         self.oss_point_internal = oss_point_internal
-        # The STS temporary security token. It is used together with AccessKeyId and AccessKeySecret for file uploads.
+        # The STS temporary security token. This parameter is used together with AccessKeyId and AccessKeySecret for file upload.
         self.sts_token = sts_token
 
     def validate(self):

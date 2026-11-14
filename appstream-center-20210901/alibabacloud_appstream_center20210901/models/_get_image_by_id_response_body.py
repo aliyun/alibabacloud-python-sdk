@@ -16,11 +16,11 @@ class GetImageByIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
+        # The response code. 200 indicates success. If the call fails, the corresponding error code is returned.
         self.code = code
         # The image information returned by the query.
         self.data = data
-        # The response message.
+        # The message returned by the API.
         self.message = message
         # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id
@@ -115,11 +115,11 @@ class GetImageByIdResponseBodyData(DaraModel):
     ):
         # The list of adapted applications for the image version.
         self.adaptor_info_bolist = adaptor_info_bolist
-        # The ID of the Alibaba Cloud account to which the image belongs. The account ID for a system image is 0.
+        # The ID of the Alibaba Cloud account to which the image belongs. The account ID for system images is 0.
         self.ali_uid = ali_uid
         # The ID of the base image.
         self.base_image_id = base_image_id
-        # The ID of the base image version.
+        # The base image version ID.
         self.base_image_version = base_image_version
         # The business line to which the image belongs. Valid values:
         # - 1: basic business
@@ -128,7 +128,7 @@ class GetImageByIdResponseBodyData(DaraModel):
         # - 4: cloud streaming
         # - 10: standard edition
         self.biz_type = biz_type
-        # The name of the OSS bucket where the image files are stored.
+        # The name of the OSS bucket where the image file is stored.
         self.bucket_name = bucket_name
         # The description of the image.
         self.description = description
@@ -142,7 +142,7 @@ class GetImageByIdResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The image creation method. For example, BUILDER_MANUAL indicates manual creation.
         self.image_create_mode = image_create_mode
-        # The image extended information, including disk specifications and GPU driver information. For VHD or container images, the extended information of the base image and base version is used.
+        # The image extended information, which includes cloud disk specifications and GPU driver information. For VHD or container images, the extended information of the base image and base version is used.
         self.image_extend_info_model = image_extend_info_model
         # The image ID.
         self.image_id = image_id
@@ -160,11 +160,11 @@ class GetImageByIdResponseBodyData(DaraModel):
         # - Shared: shared image
         # - Community: community image
         self.image_type = image_type
-        # The image language. If the encapsulation type is VHD or Container, this property is inherited from the image with the ECS encapsulation type in the image combination.
+        # The image language. If the packaging type is VHD or Container, this property is inherited from the image with the ECS packaging type in the same image combination.
         self.language = language
         # The ID of the latest image version.
         self.latest_version_id = latest_version_id
-        # Indicates whether the returned version is the active version. Valid values:
+        # Indicates whether the returned version is the online version. Valid values:
         # - true: Yes.
         # - false: No.
         self.online_version = online_version
@@ -177,30 +177,30 @@ class GetImageByIdResponseBodyData(DaraModel):
         # - Unknown: unknown system
         self.os_type = os_type
         # The image package type. Valid values:
-        # - Ecs: ECS image.
-        # - Vhd: Virtual disk image.
-        # - Container: Container image.
-        # - Ecs_Container: ECS and container combined image.
-        # - K8s_Node: Kubernetes node image.
+        # - Ecs: ECS image
+        # - Vhd: Virtual disk image
+        # - Container: Container image
+        # - Ecs_Container: ECS and container composite image
+        # - K8s_Node: Kubernetes node image
         self.package_type = package_type
         # The ID of the parent image, which indicates the image inheritance relationship. System images do not have parent images.
         self.parent_image_id = parent_image_id
-        # The ID of the parent image version.
+        # The parent image version ID.
         self.parent_image_version = parent_image_version
         # The operating system platform ID. For example, 33 indicates Windows Server 2022.
         self.platform = platform
         # The name of the operating system platform, which corresponds to Platform.
         self.platform_name = platform_name
-        # The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud Application), or WuyingServer (WUYING Workspace Enterprise Edition workstation).
+        # The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (cloud application), and WuyingServer (WUYING Workspace Enterprise Edition workstation).
         self.product_type = product_type
-        # The extended properties of the image version, in key-value pair format.
+        # The extended properties of the image version in key-value pairs.
         self.property_map = property_map
         # The connection protocol used by the image. Valid values:
         # - ASP: Alibaba Cloud Streaming Protocol
         # - HDX: HDX protocol
         self.protocol_type = protocol_type
         # The image status. Valid values:
-        # - INIT: Initialized.
+        # - INIT: Initial.
         # - CREATING: Creating.
         # - AVAILABLE: Available.
         # - CREATE_FAILED: Creation failed.
@@ -462,7 +462,7 @@ class GetImageByIdResponseBodyDataImageRegionDistributeList(DaraModel):
         unit_image_id: str = None,
         version_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the image belongs. The account ID for a system image is 0.
+        # The ID of the Alibaba Cloud account to which the image belongs. The account ID for system images is 0.
         self.ali_uid = ali_uid
         # The ID of the ECS image corresponding to the region.
         self.ecs_image_id = ecs_image_id
@@ -472,17 +472,17 @@ class GetImageByIdResponseBodyDataImageRegionDistributeList(DaraModel):
         self.gmt_modified = gmt_modified
         # The image ID.
         self.image_id = image_id
-        # The processing information reported by the region distribution task.
+        # The processing message reported by the region distribution task.
         self.message = message
         # The distribution progress of the image in the region, expressed as a percentage.
         self.progress = progress
         # The ID of the region where the image is distributed.
         self.region_id = region_id
         # The region distribution status. Valid values:
-        # - CREATING: Distributing.
-        # - AVAILABLE: Available.
-        # - CREATE_FAILED: Distribution failed.
-        # - DELETE: Deleted.
+        # - CREATING: Distributing
+        # - AVAILABLE: Available
+        # - CREATE_FAILED: Distribution failed
+        # - DELETE: Deleted
         self.status = status
         # The logical ID of the image on the unit side, which can be different from the central image ID.
         self.unit_image_id = unit_image_id
@@ -583,7 +583,7 @@ class GetImageByIdResponseBodyDataImageExtendInfoModel(DaraModel):
         system_disk_size: int = None,
         version_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the image belongs. The account ID for a system image is 0.
+        # The ID of the Alibaba Cloud account to which the image belongs. The account ID for system images is 0.
         self.ali_uid = ali_uid
         # The size of the data cloud disk. Unit: GiB.
         self.data_disk_size = data_disk_size
@@ -598,11 +598,11 @@ class GetImageByIdResponseBodyDataImageExtendInfoModel(DaraModel):
         # The image ID.
         self.image_id = image_id
         # The image package type. Valid values:
-        # - Ecs: ECS image.
-        # - Vhd: Virtual disk image.
-        # - Container: Container image.
-        # - Ecs_Container: ECS and container combined image.
-        # - K8s_Node: Kubernetes node image.
+        # - Ecs: ECS image
+        # - Vhd: Virtual disk image
+        # - Container: Container image
+        # - Ecs_Container: ECS and container composite image
+        # - K8s_Node: Kubernetes node image
         self.package_type = package_type
         # The size of the system cloud disk. Unit: GiB.
         self.system_disk_size = system_disk_size
@@ -724,7 +724,7 @@ class GetImageByIdResponseBodyDataAdaptorInfoBOList(DaraModel):
         status: str = None,
         sub_app_type: str = None,
     ):
-        # The adapter ID.
+        # The adaptor ID.
         self.adaptor_id = adaptor_id
         # The adaptor message.
         self.adaptor_message = adaptor_message
@@ -754,9 +754,9 @@ class GetImageByIdResponseBodyDataAdaptorInfoBOList(DaraModel):
         self.app_version_name = app_version_name
         # The version number.
         self.app_version_number = app_version_number
-        # The ID of the business line to which the application belongs.
+        # The number of the business line to which the application belongs.
         self.biz_type = biz_type
-        # The name of the OSS bucket where the application files are stored.
+        # The name of the OSS bucket where the application file is stored.
         self.bucket_name = bucket_name
         # The level-2 category of the application.
         self.category_id = category_id
@@ -764,11 +764,11 @@ class GetImageByIdResponseBodyDataAdaptorInfoBOList(DaraModel):
         self.category_type = category_type
         # The control parameters that can be configured by tenants and administrators.
         self.control_param = control_param
-        # The ID of the disk where the application files are stored.
+        # The ID of the disk where the application file is stored.
         self.disk_id = disk_id
         # The path of the executable file after the cloud application is installed.
         self.execute_file_address = execute_file_address
-        # The extended information of the adapted application.
+        # The extension information of the adapted application.
         self.extend = extend
         # The file name.
         self.file_name = file_name
@@ -780,11 +780,11 @@ class GetImageByIdResponseBodyDataAdaptorInfoBOList(DaraModel):
         self.gmt_create = gmt_create
         # The last update time.
         self.gmt_modified = gmt_modified
-        # The optimization parameters configured in the administrator backend.
+        # The optimization parameters that can be configured by administrators in the backend.
         self.optimize_param = optimize_param
         # The original application type.
         self.origin_app_type = origin_app_type
-        # The operating system type supported by the application.
+        # The operating system type applicable to the application.
         self.os_type = os_type
         # The product type to which the application belongs.
         self.product_type = product_type

@@ -9,7 +9,7 @@ class DeleteWuyingServerRequest(DaraModel):
         self,
         wuying_server_id: str = None,
     ):
-        # The workstation ID.
+        # The ID of the workstation.
         # 
         # This parameter is required.
         self.wuying_server_id = wuying_server_id

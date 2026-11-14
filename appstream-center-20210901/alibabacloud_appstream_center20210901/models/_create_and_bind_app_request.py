@@ -15,17 +15,17 @@ class CreateAndBindAppRequest(DaraModel):
         url_suffix: str = None,
         version_id: str = None,
     ):
-        # The URL of the application icon. Specify an accessible icon URL to display a custom icon.
+        # The URL of the application icon. Specify an accessible icon URL when a custom icon needs to be displayed.
         self.app_icon_url = app_icon_url
         # The name of the application to be created, which is used to identify the application in the image.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The ID of the image to which the application is bound. The image must be a custom image or community image that can be managed by the current account.
+        # The ID of the image to which the application is bound. The image must be a custom image or community image manageable by the current account.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The application type. If omitted, the default value is CLIENT_BASE. Valid values:
+        # The application form. If omitted, the default value is CLIENT_BASE. Valid values:
         # 
         # - **CLIENT_BASE**: Client application.
         # - **WEB_BASE**: Browser application.
@@ -33,11 +33,11 @@ class CreateAndBindAppRequest(DaraModel):
         # - **PORT_SERVICE_BASE**: Port service application.
         # - **AGENT_SERVICE_BASE**: Agent application.
         self.origin_app_type = origin_app_type
-        # The application service port. For applications that require port-based access, specify the actual port number that the application listens on.
+        # The service port of the application. For applications that require port-based access, specify the actual port number that the application listens on.
         self.port = port
-        # The path suffix of the application access URL, which is used together with the application service port to describe the access entry point.
+        # The path suffix of the application access URL, which together with the application service port describes the access endpoint.
         self.url_suffix = url_suffix
-        # The ID of the image version to which the application is bound. If omitted, the current active version of the image specified by ImageId is used. If specified, the version must belong to the image.
+        # The ID of the image version to which the application is bound. If omitted, the current active version of the image corresponding to ImageId is used. If specified, it must belong to the image.
         self.version_id = version_id
 
     def validate(self):

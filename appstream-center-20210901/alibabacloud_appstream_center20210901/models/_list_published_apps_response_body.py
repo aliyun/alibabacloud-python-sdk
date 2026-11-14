@@ -16,15 +16,15 @@ class ListPublishedAppsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of application records on the current page. Each record corresponds to a deployed application in a published delivery group. The list is sorted by the creation time of the delivery group in descending order. An empty list is returned if no results match or the requested page exceeds the result range.
+        # The list of application records on the current page. Each record corresponds to a deployed application in a published delivery group, sorted in descending order of the creation time of the associated delivery group. If no matching results are found or the requested page exceeds the result range, an empty list is returned.
         self.apps = apps
-        # The page number specified in this request.
+        # The page number specified in the current request.
         self.page_number = page_number
-        # The number of records per page specified in this request. This value does not represent the actual number of records returned on the current page. The actual number may be less than this value.
+        # The number of records per page specified in the current request. This value does not represent the actual number of records returned on the current page. The actual number on the current page may be less than this value.
         self.page_size = page_size
-        # The request ID. You can use this ID to locate and troubleshoot issues.
+        # The unique identifier of the current request, which can be used to troubleshoot request issues.
         self.request_id = request_id
-        # The total number of records that match all filter conditions. Records are counted on a per-delivery-group-plus-application basis. If the same application appears in multiple published delivery groups, each combination is counted separately. This value does not represent the number of records returned on the current page. The value is `0` if no results match.
+        # The total number of records that meet all filter conditions. The count is based on the "delivery group + application" combination. If the same application appears in multiple published delivery groups, it is counted separately. This value is not the number of records returned on the current page. If no matching results are found, the value is `0`.
         self.total_count = total_count
 
     def validate(self):
@@ -91,21 +91,21 @@ class ListPublishedAppsResponseBodyApps(DaraModel):
         app_version_name: str = None,
         authorized_user_count: int = None,
     ):
-        # The URL of the application icon.
+        # The access URL of the application icon.
         self.app_icon = app_icon
-        # The application ID. Pass this value together with `AppInstanceGroupId` when you invoke the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation to authorize users for this application.
+        # The application ID. When you invoke the [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) operation to grant authorization to a user for this application, pass this value together with `AppInstanceGroupId`.
         self.app_id = app_id
-        # The ID of the published delivery group to which this application belongs.
+        # The ID of the published delivery group to which the application belongs.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the published delivery group to which this application belongs.
+        # The name of the published delivery group to which the application belongs.
         self.app_instance_group_name = app_instance_group_name
         # The application name.
         self.app_name = app_name
         # The application version number.
         self.app_version = app_version
-        # The application version name, which is the name assigned to this version when the application was published.
+        # The application version name, which is the name set for this version when the application is published.
         self.app_version_name = app_version_name
-        # The number of users authorized by application for this application within its delivery group. Only users authorized through [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) by application are counted. The value is `0` if no users have been authorized by application.
+        # The number of users currently authorized for this application on a per-application basis within the associated delivery group. Only users authorized on a per-application basis through [AuthorizeUsersForApp](~~AuthorizeUsersForApp~~) are counted. If no users are authorized on a per-application basis, `0` is returned.
         self.authorized_user_count = authorized_user_count
 
     def validate(self):

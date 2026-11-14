@@ -18,17 +18,17 @@ class QueryUserUsageReportResponseBody(DaraModel):
         request_id: str = None,
         user_usage_report_data_model: List[main_models.QueryUserUsageReportResponseBodyUserUsageReportDataModel] = None,
     ):
-        # The business status code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
+        # The business status code. A value of `200` indicates that the request was successful. Other values indicate that the request failed.
         self.code = code
         # The total number of records that meet the query conditions.
         self.count = count
-        # The description of the request processing result. Typically, success is returned when the request is successful.
+        # The description of the request processing result. Typically, `success` is returned when the request is successful.
         self.message = message
         # The page number corresponding to the current response.
         self.page_number = page_number
         # The number of entries per page used in the current response.
         self.page_size = page_size
-        # The unique identifier of the request. You can use this ID to troubleshoot request issues.
+        # The unique identifier of the request, which can be used to troubleshoot the request.
         self.request_id = request_id
         # The list of user usage data, sorted in descending order of cumulative usage duration.
         self.user_usage_report_data_model = user_usage_report_data_model
@@ -121,11 +121,11 @@ class QueryUserUsageReportResponseBodyUserUsageReportDataModel(DaraModel):
         # - `Disconnected`: The session binding is retained, but no currently connected session exists.
         # - `Unbound`: No session binding exists.
         self.connection_status = connection_status
-        # The last connection time. Format: `yyyy-MM-dd HH:mm:ss`. If no current or historical connection record exists, - is returned. The string itself does not carry a time zone and is interpreted as Asia/Shanghai (UTC+8).
+        # The last connection time. Format: `yyyy-MM-dd HH:mm:ss`. If no current or historical connection record exists, `-` is returned. The string itself does not carry a time zone and is interpreted in the Asia/Shanghai (UTC+8) time zone.
         self.last_connected_time = last_connected_time
-        # The current version does not return a valid region ID. Callers should not rely on this field. To filter by business region, use the BizRegionId request parameter.
+        # The current version does not return a valid region ID. Callers should not rely on this field. To filter by business region, use the `BizRegionId` request parameter.
         self.region_id = region_id
-        # The cumulative session persistence duration within the query range. This is the duration during which the user occupies the session from session attach to session release. Multiple sessions under the same app instance group are accumulated. Unit: hours.
+        # The cumulative session persistence duration within the query range, which refers to the time a user occupies a session from attach to release. If multiple sessions exist under the same app instance group, their durations are accumulated. Unit: hours.
         self.sessions_hold_duration = sessions_hold_duration
         # The cumulative user usage duration within the query range. The usage duration of the same user under the same app instance group is aggregated by day. Unit: hours.
         self.usage_duration = usage_duration

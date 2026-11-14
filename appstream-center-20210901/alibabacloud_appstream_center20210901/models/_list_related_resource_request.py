@@ -15,7 +15,7 @@ class ListRelatedResourceRequest(DaraModel):
         self.image_id = image_id
         # The page number.
         self.page_number = page_number
-        # The number of delivery groups returned per page, which is the same as the PageSize request parameter.
+        # The number of delivery groups returned per page. This value is the same as the PageSize request parameter.
         self.page_size = page_size
 
     def validate(self):

@@ -11,9 +11,9 @@ class ListWuyingServerWorkloadTemplateRequest(DaraModel):
         next_token: str = None,
         virtual_node_pool_id: str = None,
     ):
-        # A compatibility field. The current version does not read this parameter. The operation returns a fixed maximum of the first 100 templates.
+        # The compatibility field. The current version does not read this parameter. This operation returns a fixed maximum of the first 100 templates.
         self.max_results = max_results
-        # A compatibility field. The current version does not read this parameter and does not support token-based pagination.
+        # The compatibility field. The current version does not read this parameter and does not support token-based pagination.
         self.next_token = next_token
         # The ID of the virtual node pool. This parameter is **required**. The node pool must belong to the current account. You can call [ListWuyingServer](~~ListWuyingServer~~) to obtain the ID.
         # 

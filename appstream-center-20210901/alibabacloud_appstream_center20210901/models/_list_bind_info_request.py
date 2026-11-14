@@ -29,9 +29,9 @@ class ListBindInfoRequest(DaraModel):
         # 
         # > If you specify this parameter, only the binding information of the specified application instances is returned.
         self.app_instance_id_list = app_instance_id_list
-        # The page number of the query results to display. Default value: `1`. Specify this parameter.
+        # The page number of the query results to return. Default value: `1`. Specify this parameter.
         self.page_number = page_number
-        # The number of query results per page. Maximum value: `100`. Default value: `20`. Specify this parameter.
+        # The number of entries to return on each page. Maximum value: `100`. Default value: `20`. Specify this parameter.
         self.page_size = page_size
         # The list of user IDs. You can specify 1 to 100 IDs.
         # 

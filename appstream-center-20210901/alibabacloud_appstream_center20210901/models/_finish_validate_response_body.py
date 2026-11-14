@@ -17,11 +17,13 @@ class FinishValidateResponseBody(DaraModel):
         self.code = code
         # Indicates whether the operation was successful.
         self.data = data
-        # The error or result message. This field describes the cause of a failed request and may not be included in a successful response.
+        # The error or result message. It describes the cause of a failed request. This field may not be included in a successful response.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
+        # Indicates whether the call was successful. Valid values:
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

@@ -14,17 +14,17 @@ class QueryUserAppUsageAggregateByHourRequest(DaraModel):
         start_date: str = None,
         user_id: str = None,
     ):
-        # The ID of the app instance group, which is used to filter data for a specified app instance group. If this parameter is not provided, data is not filtered by app instance group.
+        # The app instance group ID, which is used to filter data for a specified app instance group. If this parameter is not provided, data is not filtered by app instance group.
         self.app_instance_group_id = app_instance_group_id
         # The business region ID, which is used to filter application usage data. If this parameter is not provided, data is not filtered by business region. You can call [ListRegions](~~ListRegions~~) to obtain the value.
         self.biz_region_id = biz_region_id
-        # The end date for statistics in the yyyyMMdd format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than StartDate or 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
+        # The end date for statistics, in yyyyMMdd format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than StartDate or 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
         self.end_date = end_date
         # The region ID for OpenAPI access, which is used for request authentication and routing. To filter business data by region, use BizRegionId.
         self.region_id = region_id
-        # The start date for statistics in the yyyyMMdd format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
+        # The start date for statistics, in yyyyMMdd format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
         self.start_date = start_date
-        # The ID of the end user to query. This parameter must be explicitly provided. If it is not provided, no matching records are usually returned.
+        # The ID of the end user to be queried. This parameter must be explicitly provided. If it is not provided, no matching records are usually returned.
         self.user_id = user_id
 
     def validate(self):

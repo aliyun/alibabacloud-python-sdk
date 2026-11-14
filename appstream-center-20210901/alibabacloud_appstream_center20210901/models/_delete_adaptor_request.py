@@ -15,13 +15,13 @@ class DeleteAdaptorRequest(DaraModel):
     ):
         # The ID of the application adaptation to be processed. **Required**. It must point to the same application adaptation as AppId and AppVersionId.
         self.adaptor_id = adaptor_id
-        # The ID of the application. **Required**. It must match the application corresponding to AdaptorId.
+        # The application ID. **Required**. It must correspond to the same application as AdaptorId.
         self.app_id = app_id
-        # The ID of the application version. **Required**. It must match the application version corresponding to AdaptorId. This parameter is not the image version ID.
+        # The application version ID. **Required**. It must correspond to the same application version as AdaptorId. This parameter is not the image version ID.
         self.app_version_id = app_version_id
-        # The ID of the image to be dissociated. **Must be provided together with VersionId**. If both parameters are not specified at the same time, the adaptation deletion process starts.
+        # The ID of the image to be dissociated. **Must be provided together with VersionId**. If they are not both specified, the adaptation deletion process is initiated.
         self.image_id = image_id
-        # The ID of the image version to be dissociated. It must be provided together with ImageId and belong to the specified image.
+        # The ID of the image version to be dissociated. It must be provided together with ImageId and belong to the image.
         self.version_id = version_id
 
     def validate(self):

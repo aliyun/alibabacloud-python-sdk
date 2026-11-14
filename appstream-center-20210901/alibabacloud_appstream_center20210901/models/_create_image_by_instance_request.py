@@ -22,27 +22,27 @@ class CreateImageByInstanceRequest(DaraModel):
         sub_instance_id: str = None,
         tag_list: List[main_models.CreateImageByInstanceRequestTagList] = None,
     ):
-        # This parameter is currently applicable only to cloud desktop scenarios. Specifies whether to clear user personal data. If you set this parameter to true, the created image clears data in all directories under C:\\Users except the Administrator and Public directories.
+        # This parameter is applicable only to cloud desktop instances. Specifies whether to clear personal user data. If you set this parameter to true, the created image clears the data in all directories under C:\\Users except the Administrator and Public directories.
         self.auto_clean_userdata = auto_clean_userdata
         # This parameter is not publicly available.
         self.biz_type = biz_type
-        # Specifies whether to copy user profile data.
+        # Specifies whether to copy personal user data.
         self.copy_profile = copy_profile
-        # The image description.
+        # The description of the image.
         self.description = description
-        # The type of disk data included in the image. By default, the image includes both the system cloud disk and data cloud disk of the instance.
+        # The types of disk data included in the image. By default, the image includes the system cloud disk and data cloud disks of the instance.
         self.disk_type = disk_type
-        # The image name.
+        # The name of the image.
         self.image_name = image_name
         # The WUYING instance ID. The instance can be a cloud desktop instance or a workstation instance. To ensure data consistency in the image, stop the instance before creating the image.
         self.instance_id = instance_id
-        # The instance type.
+        # The type of the instance.
         self.instance_type = instance_type
         # This parameter is not publicly available.
         self.product_type = product_type
-        # The sub-instance ID. This parameter does not apply to cloud desktop scenarios. In workstation scenarios, specify the persistent session ID to identify a specific instance.
+        # The sub-instance ID. This parameter is not applicable to cloud desktop scenarios. In workstation scenarios, you must specify the persistent session ID to locate a specific instance.
         self.sub_instance_id = sub_instance_id
-        # The tag list.
+        # The list of tags.
         self.tag_list = tag_list
 
     def validate(self):

@@ -40,7 +40,7 @@ class CreateWuyingServerRequest(DaraModel):
         virtual_node_pool_id: str = None,
         wuying_server_name: str = None,
     ):
-        # The quantity.
+        # The number of workstations.
         self.amount = amount
         # Specifies whether to enable automatic payment.
         self.auto_pay = auto_pay
@@ -50,78 +50,78 @@ class CreateWuyingServerRequest(DaraModel):
         self.bandwidth = bandwidth
         # The region.
         self.biz_region_id = biz_region_id
-        # The billing type.
+        # The billing method.
         self.charge_type = charge_type
         # The list of data cloud disks.
         self.data_disk = data_disk
         # Specifies whether to enable dedicated eRDMA network interfaces.
         self.erdma_enabled = erdma_enabled
-        # The GPU driver configuration version, such as grid19.
+        # The version of the GPU driver, such as grid19.
         self.gpu_driver_version = gpu_driver_version
-        # The hostname. The following limits apply:
+        # The hostname. The hostname must meet the following requirements:
         # 
-        # - A period (.) or hyphen (-) cannot be used as the first or last character, and consecutive use is not allowed.
+        # - The hostname cannot start or end with a period (.) or a hyphen (-). The hostname cannot contain consecutive periods (.) or hyphens (-).
         # 
-        # - Windows workstations: The hostname must be 2 to 15 characters in length. It cannot contain periods (.), consecutive hyphens, or consist entirely of digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
+        # - For a Windows workstation: The hostname must be 2 to 15 characters in length. It cannot contain periods (.) or consecutive hyphens (-), and cannot contain only digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
         # 
-        # - Linux workstations:
+        # - For a Linux workstation:
         # 
-        #   - The hostname must be 2 to 64 characters in length and can contain multiple periods (.). Each segment between periods can contain uppercase and lowercase letters, digits, and hyphens (-).
+        #   - The hostname must be 2 to 64 characters in length. It can contain multiple periods (.). The string between two consecutive periods is a segment. Each segment can contain uppercase and lowercase letters, digits, and hyphens (-).
         # 
-        #   - You can use the placeholder `${instance_id}` to include the instance ID in the HostName parameter. For example, if you set `HostName=k8s-${instance_id}` and the created ECS instance ID is `i-123abc****`, the hostname of the instance is `k8s-i-123abc****`.
+        #   - You can use the `${instance_id}` placeholder to pass the instance ID to the HostName parameter. For example, if you set HostName to `k8s-${instance_id}` and the created ECS instance ID is `i-123abc****`, the hostname of the instance is `k8s-i-123abc****`.
         # 
-        # - When creating multiple workstation instances at a time, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to uniformly name multiple workstations. For example, if you set Hostname to `ecd-[1,4]-test`, the hostname of the first workstation is `ecd-0001-test`, the hostname of the second workstation is `ecd-0002-test`, and so on.
+        # - When you create multiple workstations at a time, you can use the `name_prefix[begin_number,bits]name_suffix` naming format to name the workstations in a unified manner. For example, if you set HostName to `ecd-[1,4]-test`, the hostname of the first workstation is `ecd-0001-test`, the hostname of the second workstation is `ecd-0002-test`, and so on.
         # 
-        #   - `name_prefix`: The prefix of the hostname.
+        #   - `name_prefix`: the prefix of the hostname.
         # 
-        #   - `[begin_number,bits]`: The sequential number in the hostname.
+        #   - `[begin_number,bits]`: the sequential number in the hostname.
         # 
-        #     - `begin_number`: The starting number. Valid values: 0 to 999999. Default value: 0. If an invalid value is specified, the value is set to 0.
+        #     - `begin_number`: the start number. Valid values: 0 to 999999. Default value: 0. If the specified value is invalid, the default value 0 is used.
         # 
-        #     - `bits`: The number of digits. Valid values: 1 to 6. Default value: 6. If an invalid value is specified, the value is set to 6.
+        #     - `bits`: the number of digits. Valid values: 1 to 6. Default value: 6. If the specified value is invalid, the default value 6 is used.
         # 
-        #   - `name_suffix`: The suffix of the hostname.
+        #   - `name_suffix`: the suffix of the hostname.
         self.host_name = host_name
-        # The idempotency token that ensures operation uniqueness.
+        # The idempotence token that is used to ensure the uniqueness of the operation.
         self.idempotence_token = idempotence_token
         # The image ID.
         self.image_id = image_id
         # The maximum price.
         self.max_price = max_price
-        # The network policy type (invite-only preview).
+        # The network policy type. This feature is in invitational preview.
         self.network_strategy_type = network_strategy_type
         # The office network ID.
         self.office_site_id = office_site_id
-        # The workstation logon password.
+        # The logon password of the workstation.
         self.password = password
         # The subscription duration.
         self.period = period
-        # The time unit.
+        # The unit of the subscription duration.
         self.period_unit = period_unit
-        # The discount ID.
+        # The promotion ID.
         # 
         # 
-        # > If PromotionId is specified, the corresponding discount is applied.
+        # > If PromotionId is specified, the system attempts to apply the corresponding discount.
         self.promotion_id = promotion_id
         # The savings plan ID.
         self.saving_plan_id = saving_plan_id
-        # The workstation instance type.
+        # The instance type of the workstation.
         self.server_instance_type = server_instance_type
         # The service port range.
         self.server_port_range = server_port_range
-        # The sub-billing type.
+        # The sub-billing method.
         self.sub_pay_type = sub_pay_type
-        # The system cloud disk type.
+        # The category of the system cloud disk.
         self.system_disk_category = system_disk_category
-        # The system cloud disk performance level.
+        # The performance level of the system cloud disk.
         self.system_disk_performance_level = system_disk_performance_level
-        # The system cloud disk size. Unit: GB.
+        # The size of the system cloud disk. Unit: GB.
         self.system_disk_size = system_disk_size
-        # The list of office network vSwitches.
+        # The list of vSwitches in the office network.
         self.v_switch_ids = v_switch_ids
         # The virtual node pool ID.
         self.virtual_node_pool_id = virtual_node_pool_id
-        # The workstation name. When creating multiple workstations, a numeric suffix is automatically appended.
+        # The name of the workstation. When you create multiple workstations, a numeric suffix is automatically added.
         self.wuying_server_name = wuying_server_name
 
     def validate(self):
@@ -327,11 +327,11 @@ class CreateWuyingServerRequestDataDisk(DaraModel):
         data_disk_performance_level: str = None,
         data_disk_size: int = None,
     ):
-        # The data cloud disk type.
+        # The category of the data cloud disk.
         self.data_disk_category = data_disk_category
-        # The data cloud disk performance level.
+        # The performance level of the data cloud disk.
         self.data_disk_performance_level = data_disk_performance_level
-        # The data cloud disk size.
+        # The size of the data cloud disk.
         self.data_disk_size = data_disk_size
 
     def validate(self):

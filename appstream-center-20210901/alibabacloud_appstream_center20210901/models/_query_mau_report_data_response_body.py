@@ -18,7 +18,7 @@ class QueryMauReportDataResponseBody(DaraModel):
         page_size: int = None,
         request_id: str = None,
     ):
-        # The business status code. A value of `200` indicates that the request is processed successfully. Other values indicate that the request fails to be processed.
+        # The business status code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
         self.code = code
         # The total number of entries that meet the query conditions.
         self.count = count
@@ -106,15 +106,15 @@ class QueryMauReportDataResponseBodyMauReportDataModel(DaraModel):
         stat_date: str = None,
         stat_month: str = None,
     ):
-        # The app instance group ID.
+        # The ID of the app instance group.
         self.app_instance_group_id = app_instance_group_id
         # The number of monthly active users in the statistical month. Unit: users.
         self.mau = mau
-        # The business region ID to which the report data belongs.
+        # The ID of the business region to which the report data belongs.
         self.region_id = region_id
-        # The statistical cutoff date used for the month. Format: `yyyy-MM-dd`. For the last month, this is usually the day before the requested `EndDate`. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
+        # The statistical cutoff date used for the month. Format: `yyyy-MM-dd`. For the last month, the date is usually the day before the requested EndDate. The date is interpreted as a natural date in the Asia/Shanghai (UTC+8) time zone.
         self.stat_date = stat_date
-        # The statistical month. Format: `yyyy-MM`. The month is interpreted as a calendar month in the Asia/Shanghai (UTC+8) time zone.
+        # The statistical month. Format: `yyyy-MM`. The month is interpreted as a natural month in the Asia/Shanghai (UTC+8) time zone.
         self.stat_month = stat_month
 
     def validate(self):

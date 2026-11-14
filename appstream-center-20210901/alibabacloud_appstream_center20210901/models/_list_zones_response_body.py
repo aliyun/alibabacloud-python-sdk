@@ -15,7 +15,7 @@ class ListZonesResponseBody(DaraModel):
     ):
         # The zone query result.
         self.list_zones_model = list_zones_model
-        # The request ID. You can use this ID to locate and troubleshoot issues.
+        # The unique identifier of the request, which can be used to troubleshoot request issues.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +51,7 @@ class ListZonesResponseBodyListZonesModel(DaraModel):
         self,
         zones: List[str] = None,
     ):
-        # The list of available zone IDs for the specified product type and operating system type in the current region. When creating a resource that requires a vSwitch, select a vSwitch in one of these zones.
+        # The list of available zone IDs for the specified product type and operating system type in the current region. When you create a resource and specify a vSwitch, select a vSwitch located in one of these zones.
         self.zones = zones
 
     def validate(self):

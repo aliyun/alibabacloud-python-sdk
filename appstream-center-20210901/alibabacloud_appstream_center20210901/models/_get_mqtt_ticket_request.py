@@ -15,22 +15,15 @@ class GetMqttTicketRequest(DaraModel):
         properties: Dict[str, Any] = None,
         uuid: str = None,
     ):
-        # The client operating system.
+        # The operating system of the client.
         # 
         # This parameter is required.
         self.client_os = client_os
-        # The client type. Valid values:
-        # - 0: hardware terminal
-        # - 1: Windows software terminal
-        # - 2: macOS software terminal
-        # - 3: iOS client
-        # - 4: Android client
-        # - 5: web client
-        # - 6: tenant console
+        # The client type. Valid values: 0: hardware terminal; 1: Windows software terminal; 2: macOS software terminal; 3: iOS client; 4: Android client; 5: web client; 6: tenant console.
         # 
         # This parameter is required.
         self.client_type = client_type
-        # The client version.
+        # The version number of the client.
         # 
         # This parameter is required.
         self.client_version = client_version

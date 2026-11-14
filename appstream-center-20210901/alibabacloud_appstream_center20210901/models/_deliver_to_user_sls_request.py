@@ -21,13 +21,13 @@ class DeliverToUserSlsRequest(DaraModel):
         # 
         # This parameter is required.
         self.delivery_scopes = delivery_scopes
-        # The name of an existing SLS project. Either this parameter or ProjectName must be specified.
+        # The name of the existing SLS project. You must specify either this parameter or ProjectName.
         self.existed_project_name = existed_project_name
-        # The LogStore name.
+        # The name of the Logstore.
         self.log_store_name = log_store_name
-        # The SLS project name. Either this parameter or ExistedProjectName must be specified.
+        # The name of the SLS project. You must specify either this parameter or ExistedProjectName.
         self.project_name = project_name
-        # The region ID of the SLS instance.
+        # The region ID of SLS.
         # 
         # This parameter is required.
         self.sls_region_id = sls_region_id

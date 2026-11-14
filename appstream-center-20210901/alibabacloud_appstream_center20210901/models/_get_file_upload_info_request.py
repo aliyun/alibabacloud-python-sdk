@@ -9,7 +9,7 @@ class GetFileUploadInfoRequest(DaraModel):
         self,
         file_type: str = None,
     ):
-        # The file type. Currently supported values: BrowserBookmarks and BrowserRestrictionUrls.
+        # The file type. Valid values: BrowserBookmarks and BrowserRestrictionUrls.
         # 
         # This parameter is required.
         self.file_type = file_type

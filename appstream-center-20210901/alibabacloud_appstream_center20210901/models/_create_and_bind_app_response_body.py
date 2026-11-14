@@ -14,15 +14,15 @@ class CreateAndBindAppResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This field is returned when the request fails. A successful response may not contain this field.
+        # The error code. This field is returned when the request fails and may not be included in a successful response.
         self.code = code
-        # The business data returned by the operation.
+        # The business data returned by this operation.
         self.data = data
-        # The error or result message. This field describes the cause when the request fails. A successful response may not contain this field.
+        # The error or result message. This field is used to describe the cause when the request fails and may not be included in a successful response.
         self.message = message
-        # The unique identifier of the request. Provide this value when you troubleshoot issues.
+        # The unique identifier of the request, which can be provided for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the request is processed successfully. A value of true indicates that the request is processed successfully. To determine whether an asynchronous task is completed, query the task status separately.
+        # Indicates whether the request was processed successfully. A value of true indicates that the request was processed successfully. To check whether an asynchronous task is completed, you must query the task status separately.
         self.success = success
 
     def validate(self):
@@ -79,13 +79,13 @@ class CreateAndBindAppResponseBodyData(DaraModel):
         image_id: str = None,
         version_id: str = None,
     ):
-        # The application ID, which is used to query the application or dissociate the image later.
+        # The application ID, which is used for subsequent application queries or to dissociate the application from the image.
         self.app_id = app_id
         # The application version ID, which is used to locate a specified version of the application. This field is not the image version ID.
         self.app_version_id = app_version_id
-        # The image ID, which is used to query or modify the image later.
+        # The image ID, which is used for subsequent image queries or modifications.
         self.image_id = image_id
-        # The image version ID, which is used to query or manage a specified version of the image.
+        # The image version ID, which is used to query or operate on a specified version of the image.
         self.version_id = version_id
 
     def validate(self):

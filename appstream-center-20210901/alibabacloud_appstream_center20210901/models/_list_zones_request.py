@@ -11,34 +11,34 @@ class ListZonesRequest(DaraModel):
         os_type: str = None,
         product_type: str = None,
     ):
-        # The region ID. Required. Specifies the region for which to query available zones. All returned zones are within this region.
+        # The region ID. Required. Specifies the region for which you want to query available zones. All returned zones are located in this region.
         # 
-        # The value must be a region ID supported by WUYING Cloud Application. Call [ListRegions](~~ListRegions~~) to obtain the supported region IDs. If an unsupported region is specified, the error code `InvalidParameter.ValueInvalid` is returned.
+        # The value must be a region ID supported by App Streaming. You can call [ListRegions](~~ListRegions~~) to query the supported region IDs. If you specify an unsupported region, the error code InvalidParameter.ValueInvalid is returned.
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
-        # The operating system type. Required. Specifies the operating system used by the resource. This parameter, together with `ProductType`, determines the available zones. The value is case-insensitive. Use the following recommended values.
+        # The operating system type. Required. Specifies the operating system used by the resource. This parameter and ProductType together determine the available zones. The value is case-insensitive. Use one of the following values:
         # 
         # Valid values:
         # 
-        # - `Windows`: Windows operating system.
-        # - `Linux`: Linux operating system.
-        # - `Android`: Android operating system.
+        # - Windows: Windows operating system
+        # - Linux: Linux operating system
+        # - Android: Android operating system
         # 
         # This parameter is required.
         self.os_type = os_type
-        # The product type. Required. Specifies the product for which to query available zones. The zone list is returned based on the available resources of this product in the specified region. The value is case-insensitive. Use the following recommended values.
+        # The product type. Required. Specifies the product for which you want to query available zones. The list of available zones is returned based on the available resources of the product in the specified region. The value is case-insensitive. Use one of the following values:
         # 
         # Valid values:
         # 
-        # - `CloudApp`: WUYING Cloud Application.
-        # - `CloudBrowser`: Cloud Browser.
-        # - `WuyingServer`: Enterprise Edition Workstation.
-        # - `WuyingWorkstation`: Personal Edition Lingou Container Workstation.
-        # - `WuyingWorkstationTeam`: Lingou Team Edition Container Workstation.
-        # - `WuyingWorkstationBusiness`: Lingou Dedicated Edition Container Workstation.
-        # - `AndroidCloud`: Cloud Phone.
-        # - `AIAgent`: AgentBay (AI agent).
+        # - CloudApp: App Streaming
+        # - CloudBrowser: Cloud Browser
+        # - WuyingServer: Enterprise Edition workstation
+        # - WuyingWorkstation: Personal Edition Linggou container workstation
+        # - WuyingWorkstationTeam: Team Edition Linggou container workstation
+        # - WuyingWorkstationBusiness: Dedicated Edition Linggou container workstation
+        # - AndroidCloud: Cloud Phone
+        # - AIAgent: AgentBay (AI agent)
         # 
         # This parameter is required.
         self.product_type = product_type

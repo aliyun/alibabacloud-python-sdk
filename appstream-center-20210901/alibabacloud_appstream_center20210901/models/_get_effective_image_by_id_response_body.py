@@ -16,13 +16,13 @@ class GetEffectiveImageByIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code returned by the API. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
+        # The status code returned by the API. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
         self.code = code
         # The image information returned by the query.
         self.data = data
         # The message returned by the API.
         self.message = message
-        # The request ID used to locate and troubleshoot the request.
+        # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id
         # Indicates whether the API call is successful. Valid values: true: Successful. false: Failed.
         self.success = success
@@ -107,12 +107,7 @@ class GetEffectiveImageByIdResponseBodyData(DaraModel):
     ):
         # The ID of the Alibaba Cloud account to which the image belongs. The account ID for a system image is 0.
         self.ali_uid = ali_uid
-        # The business line to which the image belongs. Valid values:
-        # - 1: Basic business.
-        # - 2: Personal Edition.
-        # - 3: Cloud Office.
-        # - 4: Cloud Streaming.
-        # - 10: Standard Edition.
+        # The business line to which the image belongs. 1: basic business. 2: Personal Edition. 3: Cloud Office. 4: Cloud Streaming. 10: Standard Edition.
         self.biz_type = biz_type
         # The image description.
         self.description = description
@@ -122,23 +117,23 @@ class GetEffectiveImageByIdResponseBodyData(DaraModel):
         self.environment_id = environment_id
         # The creation time. The time is in RFC 3339 format. The Z in the example indicates the UTC time zone.
         self.gmt_create = gmt_create
-        # The last update time. The time follows the RFC 3339 format. The Z in the example indicates the UTC time zone.
+        # The last update time. The time is in RFC 3339 format. The Z in the example indicates the UTC time zone.
         self.gmt_modified = gmt_modified
         # The URL of the image icon.
         self.image_icon_url = image_icon_url
         # The image ID.
         self.image_id = image_id
-        # The details of the image version that actually takes effect in each region. For the same region, the configured newer version takes precedence.
+        # The details of the image versions that actually take effect in each region. For the same region, the configured newer version takes precedence.
         self.image_info_region_model_list = image_info_region_model_list
         # The image name.
         self.image_name = image_name
         # The list of region IDs supported by the image.
         self.image_region_list = image_region_list
         # The image type. Valid values:
-        # - System: System image.
-        # - User: Custom image.
-        # - Shared: Shared image.
-        # - Community: Community image.
+        # - System: system images.
+        # - User: custom images.
+        # - Shared: shared images.
+        # - Community: community images.
         self.image_type = image_type
         # The ID of the latest version of the image.
         self.latest_version_id = latest_version_id
@@ -152,35 +147,19 @@ class GetEffectiveImageByIdResponseBodyData(DaraModel):
         self.online_version_volume_encryption_enabled = online_version_volume_encryption_enabled
         # The KMS key ID used when disk encryption is enabled for the online version.
         self.online_version_volume_encryption_key = online_version_volume_encryption_key
-        # The operating system type of the image. Valid values:
-        # - Windows: Windows operating system.
-        # - Linux: Linux operating system.
-        # - Android: Android operating system.
-        # - Unknown: Unknown operating system.
+        # The operating system type of the image. Windows: Windows system. Linux: Linux system. Android: Android system. Unknown: unknown system.
         self.os_type = os_type
-        # The image packaging type. Valid values:
-        # - Ecs: ECS image.
-        # - Vhd: Virtual disk image.
-        # - Container: Container image.
-        # - Ecs_Container: Combined ECS and container image.
-        # - K8s_Node: Kubernetes node image.
+        # The image packaging type. Ecs: ECS image. Vhd: virtual disk image. Container: container image. Ecs_Container: combined ECS and container image. K8s_Node: Kubernetes node image.
         self.package_type = package_type
         # The parent image ID, which indicates the image inheritance relationship. System images do not have parent images.
         self.parent_image_id = parent_image_id
-        # The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud App), or WuyingServer (WUYING Workspace Enterprise Edition workstation).
+        # The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud App), and WuyingServer (WUYING Workspace Enterprise Edition workstation).
         self.product_type = product_type
-        # The connection protocol used by the image. Valid values:
-        # - ASP: Alibaba Cloud Streaming Protocol.
-        # - HDX: HDX protocol.
+        # The connection protocol used by the image. ASP: Alibaba Cloud Streaming Protocol. HDX: HDX protocol.
         self.protocol_type = protocol_type
-        # The rating score of the image, out of 100.
+        # The rating score of the image, with a maximum score of 100.
         self.rating = rating
-        # The image status. Valid values:
-        # - INIT: Initializing.
-        # - CREATING: Creating.
-        # - AVAILABLE: Available.
-        # - CREATE_FAILED: Creation failed.
-        # - DELETE: Deleted.
+        # The image status. INIT: initializing. CREATING: creating. AVAILABLE: available. CREATE_FAILED: creation failed. DELETE: deleted.
         self.status = status
         # The list of image tags.
         self.tag_list = tag_list
@@ -472,12 +451,7 @@ class GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList(DaraModel):
         self.base_image_id = base_image_id
         # The base image version ID.
         self.base_image_version = base_image_version
-        # The business line to which the image belongs. Valid values:
-        # - 1: Basic business.
-        # - 2: Personal Edition.
-        # - 3: Cloud Office.
-        # - 4: Cloud Streaming.
-        # - 10: Standard Edition.
+        # The business line to which the image belongs. 1: basic business. 2: Personal Edition. 3: Cloud Office. 4: Cloud Streaming. 10: Standard Edition.
         self.biz_type = biz_type
         # The name of the OSS bucket where the image file is stored.
         self.bucket_name = bucket_name
@@ -489,11 +463,11 @@ class GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList(DaraModel):
         self.fota_version = fota_version
         # The creation time. The time is in RFC 3339 format. The Z in the example indicates the UTC time zone.
         self.gmt_create = gmt_create
-        # The last update time. The time follows the RFC 3339 format. The Z in the example indicates the UTC time zone.
+        # The last update time. The time is in RFC 3339 format. The Z in the example indicates the UTC time zone.
         self.gmt_modified = gmt_modified
         # The image creation method. For example, BUILDER_MANUAL indicates manual creation.
         self.image_create_mode = image_create_mode
-        # The image extension information, including disk specifications and GPU driver information. VHD or Container images use the extension information of their base image and base version.
+        # The image extended information, including disk specifications and GPU driver information. VHD or Container images use the extended information of their base image and base version.
         self.image_extend_info_model = image_extend_info_model
         # The image ID.
         self.image_id = image_id
@@ -504,31 +478,22 @@ class GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList(DaraModel):
         # The image source. For example, center indicates the central image service.
         self.image_source = image_source
         # The image type. Valid values:
-        # - System: System image.
-        # - User: Custom image.
-        # - Shared: Shared image.
-        # - Community: Community image.
+        # - System: system images.
+        # - User: custom images.
+        # - Shared: shared images.
+        # - Community: community images.
         self.image_type = image_type
         # The image language.
         self.language = language
         # The ID of the latest version of the image.
         self.latest_version_id = latest_version_id
-        # Indicates whether the returned version is the active version. Valid values: true: Yes. false: No.
+        # Indicates whether the returned version is the online version. Valid values: true: Yes. false: No.
         self.online_version = online_version
         # The ID of the current online version of the image.
         self.online_version_id = online_version_id
-        # The operating system type of the image. Valid values:
-        # - Windows: Windows operating system.
-        # - Linux: Linux operating system.
-        # - Android: Android operating system.
-        # - Unknown: Unknown operating system.
+        # The operating system type of the image. Windows: Windows system. Linux: Linux system. Android: Android system. Unknown: unknown system.
         self.os_type = os_type
-        # The image packaging type. Valid values:
-        # - Ecs: ECS image.
-        # - Vhd: Virtual disk image.
-        # - Container: Container image.
-        # - Ecs_Container: Combined ECS and container image.
-        # - K8s_Node: Kubernetes node image.
+        # The image packaging type. Ecs: ECS image. Vhd: virtual disk image. Container: container image. Ecs_Container: combined ECS and container image. K8s_Node: Kubernetes node image.
         self.package_type = package_type
         # The parent image ID, which indicates the image inheritance relationship. System images do not have parent images.
         self.parent_image_id = parent_image_id
@@ -536,24 +501,17 @@ class GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelList(DaraModel):
         self.parent_image_version = parent_image_version
         # The operating system platform ID. For example, 33 indicates Windows Server 2022.
         self.platform = platform
-        # The name of the operating system platform, which corresponds to Platform.
+        # The operating system platform name, which corresponds to Platform.
         self.platform_name = platform_name
-        # The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud App), or WuyingServer (WUYING Workspace Enterprise Edition workstation).
+        # The product type to which the image belongs, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud App), and WuyingServer (WUYING Workspace Enterprise Edition workstation).
         self.product_type = product_type
         # The extended properties of the image version in key-value pairs.
         self.property_map = property_map
-        # The connection protocol used by the image. Valid values:
-        # - ASP: Alibaba Cloud Streaming Protocol.
-        # - HDX: HDX protocol.
+        # The connection protocol used by the image. ASP: Alibaba Cloud Streaming Protocol. HDX: HDX protocol.
         self.protocol_type = protocol_type
         # The ID of the region to which the image information belongs.
         self.region_id = region_id
-        # The image status. Valid values:
-        # - INIT: Initializing.
-        # - CREATING: Creating.
-        # - AVAILABLE: Available.
-        # - CREATE_FAILED: Creation failed.
-        # - DELETE: Deleted.
+        # The image status. INIT: initializing. CREATING: creating. AVAILABLE: available. CREATE_FAILED: creation failed. DELETE: deleted.
         self.status = status
         # The image version ID.
         self.version_id = version_id
@@ -999,7 +957,7 @@ class GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAdaptorInfoBO
     ):
         # The adapter ID.
         self.adaptor_id = adaptor_id
-        # The adapter message.
+        # The adaptor message.
         self.adaptor_message = adaptor_message
         # The adaptation mode.
         self.adaptor_mode = adaptor_mode
@@ -1023,13 +981,13 @@ class GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAdaptorInfoBO
         self.app_version_number = app_version_number
         # The business line ID of the application.
         self.biz_type = biz_type
-        # The name of the OSS bucket where the application files are stored.
+        # The name of the OSS bucket where the application files are located.
         self.bucket_name = bucket_name
-        # The level-2 application category, such as design software, office, or browser. This parameter is not available to the public.
+        # The level-2 application category, such as design software, office, and browsers. This parameter is not available to the public.
         self.category_id = category_id
-        # The level-1 application category, such as cloud application or cloud game. This parameter is not available to the public.
+        # The level-1 application category, such as cloud applications and cloud games. This parameter is not available to the public.
         self.category_type = category_type
-        # The control parameter. This parameter can be configured by tenants and internal administrators and is not available to the public.
+        # The control parameters that can be configured by tenants and administrators. This parameter is not available to the public.
         self.control_param = control_param
         # The path of the executable file. This parameter is not available to the public.
         self.execute_file_address = execute_file_address
@@ -1039,7 +997,7 @@ class GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAdaptorInfoBO
         self.file_path = file_path
         # The file size. Unit: KB.
         self.file_size = file_size
-        # The optimization parameter configured in the backend by internal administrators.
+        # The optimization parameters configured in the backend by administrators.
         self.optimize_param = optimize_param
         # The original application type.
         self.origin_app_type = origin_app_type
@@ -1051,11 +1009,11 @@ class GetEffectiveImageByIdResponseBodyDataImageInfoRegionModelListAdaptorInfoBO
         self.product_type = product_type
         # The runtime environment.
         self.runtime_env = runtime_env
-        # Specifies whether silent installation is enabled. This parameter can be configured by tenants and internal administrators and is not available to the public.
+        # Specifies whether silent installation is enabled. This parameter can be configured by tenants and administrators, but is not available to the public.
         self.silence_flag = silence_flag
-        # The silent installation parameter. This parameter is not available to the public.
+        # The silent installation parameters. This parameter is not available to the public.
         self.silence_param = silence_param
-        # The application adaptation status. For example, ADAPT_DONE indicates that the adaptation is complete.
+        # The application adaptation status. For example, ADAPT_DONE indicates that the adaptation is completed.
         self.status = status
         # The sub-application type.
         self.sub_app_type = sub_app_type

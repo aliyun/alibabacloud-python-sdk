@@ -22,44 +22,44 @@ class ImportImageRequest(DaraModel):
         protocol_type: str = None,
         system_disk_size: int = None,
     ):
-        # The business region ID. Example: cn-hangzhou.
+        # The business region ID, such as cn-hangzhou.
         self.biz_region_id = biz_region_id
         # The business line to which the image belongs. Default value: 1.
         self.biz_type = biz_type
-        # The boot mode of the image. Valid values:
-        # - BIOS: legacy BIOS boot.
+        # The image boot mode. Valid values:
+        # - BIOS: Legacy BIOS boot.
         # - UEFI: UEFI boot.
         self.boot_mode = boot_mode
         # The description of the image.
         self.description = description
         # Specifies whether to enable the image security check. Valid values:
-        # - true: enables the security check.
-        # - false: disables the security check.
+        # - true: Enabled.
+        # - false: Disabled.
         self.enable_security_check = enable_security_check
         # Specifies whether the image is a GPU image. Valid values:
-        # - true: yes.
-        # - false: no.
+        # - true: Yes.
+        # - false: No.
         self.gpu_category = gpu_category
         # The GPU driver type. Valid values:
         # - gpu_grid9: GRID 9 driver.
         # - gpu_grid12: GRID 12 driver.
-        # - gpu_custom: custom driver.
+        # - gpu_custom: Custom driver.
         self.gpu_driver_type = gpu_driver_type
         # The name of the image after it is imported. This parameter cannot be empty.
         self.image_name = image_name
         # The operating system license type. Valid values:
-        # - Auto: automatically selected.
-        # - Aliyun: provided by Alibaba Cloud.
-        # - BYOL: Bring Your Own License.
+        # - Auto: Automatically selected.
+        # - Aliyun: Provided by Alibaba Cloud.
+        # - BYOL: Bring your own license.
         # Default value: Auto.
         self.license_type = license_type
         # The operating system type of the image file. It must be consistent with the actual operating system of the image, such as Windows or Linux.
         self.os_type = os_type
         # The complete OSS object URL of the image file to be imported, including the bucket domain name and file path. The file must be uploaded before you call this operation. Example: https://BucketName.oss-cn-hangzhou.aliyuncs.com/FilePath.
         self.oss_object_path = oss_object_path
-        # The product type. Currently, only CloudDesktop (cloud desktop) is supported.
+        # The product type. Currently, only CloudDesktop (Cloud Desktop) is supported.
         self.product_type = product_type
-        # The connection protocol of the image. Valid values: ASP and HDX. Default value: ASP.
+        # The image connection protocol. Valid values: ASP and HDX. Default value: ASP.
         self.protocol_type = protocol_type
         # The size of the system cloud disk. Unit: GiB.
         self.system_disk_size = system_disk_size

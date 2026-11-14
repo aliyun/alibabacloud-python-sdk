@@ -16,15 +16,15 @@ class ListNodesResponseBody(DaraModel):
         request_id: str = None,
         to_page: int = None,
     ):
-        # The total number of data entries that can be returned.
+        # The total number of entries.
         self.count = count
         # The list of resource nodes.
         self.node_models = node_models
-        # The page size of the current page.
+        # The number of entries per page.
         self.per_page_size = per_page_size
         # The request ID.
         self.request_id = request_id
-        # The page number of the currently returned data.
+        # The current page number.
         self.to_page = to_page
 
     def validate(self):
@@ -85,12 +85,12 @@ class ListNodesResponseBodyNodeModels(DaraModel):
         charge_type: str = None,
         node_id: str = None,
     ):
-        # The billing type of the resource node.
+        # The billing method of the resource node.
         # 
-        # > This parameter is returned only when the billing mode of the delivery group is resource-based billing (ChargeResourceMode=Node).
+        # > This parameter is returned only when the billing mode of the associated app instance group is set to resource-based billing (ChargeResourceMode=Node).
         self.charge_type = charge_type
-        # The resource node ID.
-        # > This parameter is returned only when the billing mode of the delivery group is resource-based billing (ChargeResourceMode=Node).
+        # The ID of the resource node.
+        # > This parameter is returned only when the billing mode of the associated app instance group is set to resource-based billing (ChargeResourceMode=Node).
         self.node_id = node_id
 
     def validate(self):

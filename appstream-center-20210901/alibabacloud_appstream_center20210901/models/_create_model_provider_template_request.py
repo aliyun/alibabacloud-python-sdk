@@ -28,13 +28,13 @@ class CreateModelProviderTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_type = biz_type
-        # The JSON configuration of the model provider, which includes connection information such as baseUrl, apiKey, and api. The apiKey is encrypted and stored after creation. When ProviderType is WuyingCredit, this parameter is not required and will be copied from the system template.
+        # The JSON configuration of the model provider, which includes connection information such as baseUrl, apiKey, and api. The apiKey is encrypted and stored after creation. When ProviderType is WuyingCredit, this parameter is not required and is copied from the system template.
         # 
         # This parameter is required.
         self.config = config
         # The description of the model provider template.
         self.description = description
-        # Specifies whether to enable the Wuying secure proxy. This parameter must be set to true when ProviderType is WuyingCredit.
+        # Specifies whether to enable the Wuying security proxy. This parameter must be set to true when ProviderType is WuyingCredit.
         self.enable_wuying_proxy = enable_wuying_proxy
         # The ID of the associated model group.
         # 
@@ -42,7 +42,7 @@ class CreateModelProviderTemplateRequest(DaraModel):
         self.model_template_id = model_template_id
         # The name of the model provider template.
         self.name = name
-        # The name of the model provider. The name must be unique within the same model template. The naming conventions vary based on the ProviderType. For more information, see the description of ProviderType.
+        # The name of the model provider. The name must be unique within the same model template. The naming rules vary based on the ProviderType. For more information, see the description of ProviderType.
         # 
         # This parameter is required.
         self.provider_name = provider_name

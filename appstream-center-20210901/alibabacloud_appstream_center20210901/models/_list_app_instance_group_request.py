@@ -25,23 +25,23 @@ class ListAppInstanceGroupRequest(DaraModel):
         tag: List[main_models.ListAppInstanceGroupRequestTag] = None,
         user_group_ids: List[str] = None,
     ):
-        # The application image ID. You can obtain this value from the Image Management page in the WUYING Workspace console.
+        # The ID of the app image. You can obtain the ID from the Image Management page in the WUYING Cloud App console.
         self.app_center_image_id = app_center_image_id
-        # The delivery group ID.
+        # The ID of the app instance group.
         self.app_instance_group_id = app_instance_group_id
-        # The delivery group name. Fuzzy match is used for the query. For example, if you set the delivery group name to `OfficeApp`, all delivery groups whose names contain `OfficeApp` are returned, such as `MyOfficeApp` and `OfficeAppA`.
+        # The name of the app instance group. Fuzzy match is supported. For example, if you specify `Office App`, app instance groups whose names contain `Office App` are queried, such as `My Office App` and `Office App A`.
         self.app_instance_group_name = app_instance_group_name
-        # The region ID of the delivery group. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # The ID of the region to which the app instance group belongs. For more information about supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
         self.biz_region_id = biz_region_id
-        # The list of excluded authorized user group IDs.
+        # The list of excluded authorization user group IDs.
         self.excluded_user_group_ids = excluded_user_group_ids
-        # The specification type ID of the purchased resource. You can call the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation to obtain this value.
+        # The ID of the instance type for the purchased resources. You can obtain the ID by calling the [ListNodeInstanceType](~~ListNodeInstanceType~~) operation.
         self.node_instance_type = node_instance_type
-        # The office network ID.
+        # The ID of the office network.
         self.office_site_id = office_site_id
-        # The page number of the query results to display.
+        # The page number.
         self.page_number = page_number
-        # The number of query results per page. Maximum value: `100`.
+        # The number of entries to return on each page. The value cannot exceed `100`.
         self.page_size = page_size
         # The product type.
         # 
@@ -49,7 +49,7 @@ class ListAppInstanceGroupRequest(DaraModel):
         self.product_type = product_type
         # The region ID.
         self.region_id = region_id
-        # The list of delivery group statuses.
+        # The statuses of the app instance groups.
         self.status = status
         # The list of tags.
         self.tag = tag

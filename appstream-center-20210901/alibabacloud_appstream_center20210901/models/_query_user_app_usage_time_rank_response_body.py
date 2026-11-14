@@ -15,7 +15,7 @@ class QueryUserAppUsageTimeRankResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The business status code. A value of `200` indicates that the request is processed successfully. Other values indicate that the processing failed.
+        # The business status code. A value of `200` indicates that the request was processed successfully. Other values indicate that the processing failed.
         self.code = code
         # The ranking list of user application usage duration, sorted in descending order of cumulative usage duration.
         self.index_data = index_data
@@ -78,13 +78,13 @@ class QueryUserAppUsageTimeRankResponseBodyIndexData(DaraModel):
         app_time_cnt: str = None,
         app_version: str = None,
     ):
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The cumulative usage duration of the application within the statistical range. Unit: seconds.
         self.app_time_cnt = app_time_cnt
-        # The application version. The current version may not return this value, and callers should not rely on this field. A non-empty value indicates the application version.
+        # The version of the application. The current version may not return this value, and callers should not rely on this field. A non-empty value indicates the application version.
         self.app_version = app_version
 
     def validate(self):

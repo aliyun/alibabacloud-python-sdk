@@ -20,10 +20,10 @@ class GetAuthCodeRequest(DaraModel):
         self.app_version_id = app_version_id
         # The region compatibility parameter. The destination region of the current connection resource is determined by the execution region of the task. You cannot use this parameter to switch the task region. Omit this parameter.
         self.biz_region_id = biz_region_id
-        # The type of resource to connect to.
+        # The type of the resource to connect to. Valid values:
         # 
-        # - **BUILDER**: Connects to the creation environment.
-        # - **VALIDATE**: Connects to the validation environment.
+        # - **BUILDER**: connect to the creation environment
+        # - **VALIDATE**: connect to the validation environment
         # 
         # The corresponding environment must be created and in a connectable state.
         # 
@@ -33,33 +33,31 @@ class GetAuthCodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The actual task type. It must match the creation or validation task corresponding to the TaskId. Use the TaskType returned by GetTask. The task must also have connectable creation or validation resources. You cannot obtain an authorization code for distribution or snapshot tasks that do not have connection resources.
+        # The actual task type. It must match the creation or validation task corresponding to the TaskId. Use the TaskType returned by GetTask. The task must also have connectable creation or validation resources. You cannot obtain an authorization code for distribution or snapshot tasks that do not have connection resources. Valid values:
         # 
-        # Recognized task types:
-        # 
-        # - **AUTO_CREATE_IMAGE_VHD**: Automatically creates a VHD image.
-        # - **RETRY_CREATE_IMAGE_VHD**: Retries VHD image creation.
-        # - **AUTO_CREATE_VHD**: Automatically creates a VHD.
-        # - **RETRY_VHD**: Retries VHD creation.
-        # - **AUTO_VALIDATE_VHD**: Automatically validates a VHD.
-        # - **RETRY_VALIDATE_VHD**: Retries VHD validation.
-        # - **APPLY_VHD_BUILDER**: Applies for a VHD application recording environment.
-        # - **ADAPT_AUTO**: Automatically creates application adaptation.
-        # - **ADAPT_AUTO_RETRY**: Retries automatic application adaptation creation.
-        # - **ADAPT_MANUAL**: Manually creates application adaptation.
-        # - **ADAPT_MANUAL_RETRY**: Retries manual application adaptation creation.
-        # - **DESKTOP_CUSTOM_IMAGE**: Creates a custom image for cloud desktops.
-        # - **DESKTOP_CUSTOM_IMAGE_RETRY**: Retries custom image creation for cloud desktops.
-        # - **IMAGE_MANUAL**: Manually creates an image.
-        # - **IMAGE_MANUAL_RETRY**: Retries manual image creation.
-        # - **IMAGE_FROM_INSTANCE**: Creates an image based on an instance.
-        # - **IMAGE_FROM_INSTANCE_RETRY**: Retries image creation based on an instance.
-        # - **IMAGE_DISTRIBUTE**: Distributes an image to multiple regions.
-        # - **IMAGE_DISTRIBUTE_RETRY**: Retries image distribution.
-        # - **SNAPSHOT_DISTRIBUTE**: Distributes a snapshot to multiple regions.
-        # - **SNAPSHOT_DISTRIBUTE_RETRY**: Retries snapshot distribution.
-        # - **SNAPSHOT_FROM_DISK**: Creates a snapshot based on a disk.
-        # - **SNAPSHOT_FROM_DISK_RETRY**: Retries snapshot creation based on a disk.
+        # - **AUTO_CREATE_IMAGE_VHD**: automatically create a VHD image
+        # - **RETRY_CREATE_IMAGE_VHD**: retry VHD image creation
+        # - **AUTO_CREATE_VHD**: automatically create a VHD
+        # - **RETRY_VHD**: retry VHD creation
+        # - **AUTO_VALIDATE_VHD**: automatically validate a VHD
+        # - **RETRY_VALIDATE_VHD**: retry VHD validation
+        # - **APPLY_VHD_BUILDER**: apply for a VHD application recording environment
+        # - **ADAPT_AUTO**: automatically create application adaptation
+        # - **ADAPT_AUTO_RETRY**: retry automatic application adaptation creation
+        # - **ADAPT_MANUAL**: manually create application adaptation
+        # - **ADAPT_MANUAL_RETRY**: retry manual application adaptation creation
+        # - **DESKTOP_CUSTOM_IMAGE**: create a custom image for cloud desktop
+        # - **DESKTOP_CUSTOM_IMAGE_RETRY**: retry custom image creation for cloud desktop
+        # - **IMAGE_MANUAL**: manually create an image
+        # - **IMAGE_MANUAL_RETRY**: retry manual image creation
+        # - **IMAGE_FROM_INSTANCE**: create an image from an instance
+        # - **IMAGE_FROM_INSTANCE_RETRY**: retry image creation from an instance
+        # - **IMAGE_DISTRIBUTE**: distribute an image to multiple regions
+        # - **IMAGE_DISTRIBUTE_RETRY**: retry image distribution
+        # - **SNAPSHOT_DISTRIBUTE**: distribute a snapshot to multiple regions
+        # - **SNAPSHOT_DISTRIBUTE_RETRY**: retry snapshot distribution
+        # - **SNAPSHOT_FROM_DISK**: create a snapshot from a disk
+        # - **SNAPSHOT_FROM_DISK_RETRY**: retry snapshot creation from a disk
         # 
         # This parameter is required.
         self.task_type = task_type

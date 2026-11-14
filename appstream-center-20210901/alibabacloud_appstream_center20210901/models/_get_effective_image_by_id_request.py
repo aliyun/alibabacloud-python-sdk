@@ -15,25 +15,25 @@ class GetEffectiveImageByIdRequest(DaraModel):
         product_type: str = None,
         show_hidden: str = None,
     ):
-        # The ID of the business region to query. If this parameter is not specified, regions are not filtered by this parameter. The returned regions are still constrained by the product and the visible scope of the account.
+        # The ID of the business region to query. If this parameter is not specified, regions are not filtered by this parameter. The returned regions are still constrained by the product type and the visible scope of the account.
         self.biz_region_id = biz_region_id
-        # The content language of the community image document in BCP 47 format, such as zh-CN or en-US. Default value: zh-CN.
+        # The content language of the community image documentation in BCP 47 format, such as zh-CN and en-US. Default value: zh-CN.
         self.content_locale = content_locale
-        # Specifies whether to skip filtering by the operating system and adaptation status of applications. Default value: false. A value of false retains only applications that match the image operating system and have completed adaptation. A value of true skips these two filters. Application type filtering is still controlled by the API operation and the ShowHidden parameter.
+        # Specifies whether to skip filtering based on the operating system and adaptation status of adapted applications. Default value: false. A value of false retains only applications that match the image operating system and have completed adaptation. A value of true skips these two filters. Application type filtering is still controlled by the API operation and the ShowHidden parameter.
         self.ignore_filter = ignore_filter
-        # The image ID. Required when querying effective versions.
+        # The image ID. This parameter is required when querying effective versions.
         self.image_id = image_id
         # The image type. Valid values:
-        # - System: System image.
-        # - User: Custom image.
-        # - Shared: Shared image.
-        # - Community: Community image.
+        # - System: system images.
+        # - User: custom images.
+        # - Shared: shared images.
+        # - Community: community images.
         self.image_type = image_type
-        # The product type, such as CloudDesktop, CloudApp, or WuyingServer.
+        # The product type, such as CloudDesktop (Cloud Desktop), CloudApp (Cloud App), and WuyingServer (workstation).
         self.product_type = product_type
-        # The additional types of virtual applications to include, in addition to the user and system applications returned by default. Valid values:
-        # - VIRTUAL_DESKTOP_APP: Desktop virtual applications.
-        # - ALL_VIRTUAL_APP: All virtual applications.
+        # Specifies the additional virtual application types to include in the response besides the default user and system applications. Valid values:
+        # - VIRTUAL_DESKTOP_APP: desktop virtual applications.
+        # - ALL_VIRTUAL_APP: all virtual applications.
         self.show_hidden = show_hidden
 
     def validate(self):

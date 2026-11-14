@@ -15,15 +15,15 @@ class ListAuthorizedUserGroupsRequest(DaraModel):
         page_size: int = None,
         product_type: str = None,
     ):
-        # The ID of the delivery group.
+        # The ID of the app instance group.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the delivery group set. You must specify either AppInstanceGroupSetId or AppInstanceGroupId, but not both.
+        # The ID of the app instance group set. You must specify either AppInstanceGroupSetId or AppInstanceGroupId, but not both.
         self.app_instance_group_set_id = app_instance_group_set_id
-        # The ID of the user group. This parameter is used for exact match.
+        # The ID of the user group. Exact match is supported.
         self.group_id = group_id
-        # The name of the user group. This parameter is used for fuzzy match.
+        # The name of the user group. Fuzzy match is supported.
         self.group_name = group_name
-        # The page number, starting from 1.
+        # The page number. Pages start from 1.
         # 
         # This parameter is required.
         self.page_number = page_number

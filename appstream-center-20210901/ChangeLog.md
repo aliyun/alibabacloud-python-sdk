@@ -1,3 +1,14 @@
+2026-11-14 Version: 5.17.0
+- Support API ClearAgentInstanceMemory.
+- Support API DescribeUserProfilePathRules.
+- Support API GetTenantMemoryConfig.
+- Support API ListAgentInstanceMemory.
+- Support API ModifyAgentInstanceMemoryConfig.
+- Support API ModifyTenantMemoryConfig.
+- Support API SetUserProfilePathRules.
+- Update API GetRuntimeModelConfig: add request parameters Language.
+
+
 2026-11-12 Version: 5.16.0
 - Generated python 2021-09-01 for appstream-center.
 

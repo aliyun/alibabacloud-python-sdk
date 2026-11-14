@@ -20,11 +20,11 @@ class ListAuthorizedUserGroupsResponseBody(DaraModel):
         self.page_number = page_number
         # The maximum number of entries returned per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
-        # The list of user group information.
+        # The list of user groups.
         self.user_groups = user_groups
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListAuthorizedUserGroupsResponseBodyUserGroups(DaraModel):
         group_id: str = None,
         group_name: str = None,
     ):
-        # The ID of the delivery group.
+        # The ID of the app instance group.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the delivery group set.
+        # The ID of the app instance group set.
         self.app_instance_group_set_id = app_instance_group_set_id
         # The authorization mode.
         self.auth_mode = auth_mode

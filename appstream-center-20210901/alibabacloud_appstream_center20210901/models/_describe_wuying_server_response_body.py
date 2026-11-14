@@ -70,17 +70,17 @@ class DescribeWuyingServerResponseBodyData(DaraModel):
         wuying_server_id: str = None,
         wuying_server_name: str = None,
     ):
-        # The bandwidth size, in Mbit/s.
+        # The bandwidth. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The region ID.
         self.biz_region_id = biz_region_id
-        # The billing type.
+        # The billing method.
         self.charge_type = charge_type
-        # The creation time, in US English date and time format with a 12-hour clock.
+        # The creation time. The time is displayed in the 12-hour US English date and time format.
         self.create_time = create_time
-        # The maximum number of private IP addresses per NIC, including the primary IP address.
+        # The maximum number of private IP addresses per elastic network interface (ENI), including the primary IP address.
         self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
-        # The expiration time, in US English date and time format with a 12-hour clock.
+        # The expiration time. The time is displayed in the 12-hour US English date and time format.
         self.expired_time = expired_time
         # The image ID.
         self.image_id = image_id
@@ -102,9 +102,9 @@ class DescribeWuyingServerResponseBodyData(DaraModel):
         self.status = status
         # Whether ASP streaming connection is supported.
         self.support_asp = support_asp
-        # The type of the system cloud disk.
+        # The category of the system cloud disk.
         self.system_disk_category = system_disk_category
-        # The size of the system cloud disk, in GB.
+        # The size of the system cloud disk. Unit: GB.
         self.system_disk_size = system_disk_size
         # The ID of the development host.
         self.wuying_server_id = wuying_server_id
@@ -259,9 +259,7 @@ class DescribeWuyingServerResponseBodyDataPrivateIpSets(DaraModel):
         primary: bool = None,
         private_ip_address: str = None,
     ):
-        # Indicates whether the IP address is the primary private IP address. Valid values:
-        # - true: The IP address is the primary private IP address.
-        # - false: The IP address is a secondary private IP address.
+        # Indicates whether the IP address is the primary private IP address. Valid values: true: The IP address is the primary private IP address. false: The IP address is a secondary private IP address.
         self.primary = primary
         # The private IP address.
         self.private_ip_address = private_ip_address

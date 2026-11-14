@@ -26,7 +26,7 @@ class ListImageTagsResponseBody(DaraModel):
         self.max_results = max_results
         # The error message returned when an error occurs.
         self.message = message
-        # The token for the next query.
+        # The token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -103,7 +103,7 @@ class ListImageTagsResponseBodyData(DaraModel):
         category: str = None,
         tag: str = None,
     ):
-        # The label categorization.
+        # The tag categorization.
         self.category = category
         # The tag value.
         self.tag = tag

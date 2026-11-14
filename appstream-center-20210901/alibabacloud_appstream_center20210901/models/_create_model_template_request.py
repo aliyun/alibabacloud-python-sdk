@@ -14,9 +14,9 @@ class CreateModelTemplateRequest(DaraModel):
         name: str = None,
         ref_scope: str = None,
     ):
-        # The Agent platform.
+        # The agent platform.
         self.agent_platform = agent_platform
-        # The Agent provider name.
+        # The name of the agent provider.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
@@ -24,13 +24,13 @@ class CreateModelTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.biz_type = biz_type
-        # The template group description.
+        # The description of the template group.
         self.description = description
-        # The template group name.
+        # The name of the template group.
         # 
         # This parameter is required.
         self.name = name
-        # The authorization scope. This parameter is optional and effective only for Common model groups. Valid values: ALL_USER and USER_MIXED (strictly uppercase). If not specified, Common model groups default to USER_MIXED. Non-Common groups ignore this parameter and use RESOURCE_MIXED.
+        # The authorization scope. This parameter is optional and takes effect only for Common model groups. Valid values: ALL_USER and USER_MIXED. The value must be strictly uppercase. If this parameter is not specified, the default value for Common groups is USER_MIXED. For non-Common groups, this parameter is ignored and fixed to RESOURCE_MIXED.
         self.ref_scope = ref_scope
 
     def validate(self):

@@ -9,7 +9,7 @@ class GetBrowserInstanceGroupRequest(DaraModel):
         self,
         browser_instance_group_id: str = None,
     ):
-        # The ID of the cloud browser group. This parameter is required. Specify the ID of a browser group that is created within the current account.
+        # The ID of the cloud browser group. This parameter is required. Specify the ID of a browser group that is created under the current account.
         self.browser_instance_group_id = browser_instance_group_id
 
     def validate(self):

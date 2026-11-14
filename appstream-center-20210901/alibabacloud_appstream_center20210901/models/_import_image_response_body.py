@@ -14,7 +14,7 @@ class ImportImageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code of the API. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
+        # The response code. A value of 200 indicates success. If the call fails, the corresponding error code is returned.
         self.code = code
         # The image identifiers returned for the import request.
         self.data = data
@@ -22,9 +22,9 @@ class ImportImageResponseBody(DaraModel):
         self.message = message
         # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id
-        # Indicates whether the API call was successful. Valid values:
-        # - true: successful.
-        # - false: failed.
+        # Indicates whether the API call is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

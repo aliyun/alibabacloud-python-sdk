@@ -17,7 +17,7 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         storage_policy_shrink: str = None,
         timers_shrink: str = None,
     ):
-        # Specifies whether to send notification emails for authorization and deauthorization.
+        # Specifies whether to send notification emails for authorization and revocation.
         self.auth_notification_enabled = auth_notification_enabled
         # The browser configuration.
         self.browser_config_shrink = browser_config_shrink
@@ -27,7 +27,7 @@ class ModifyBrowserInstanceGroupShrinkRequest(DaraModel):
         self.browser_instance_group_id = browser_instance_group_id
         # The name of the cloud browser.
         self.cloud_browser_name = cloud_browser_name
-        # The maximum resource count. This parameter takes effect only for the pay-as-you-go billing method based on monthly active users.
+        # The maximum resource count. This parameter takes effect for the pay-as-you-go billing method based on monthly active users.
         self.max_amount = max_amount
         # The network configurations.
         self.network_shrink = network_shrink

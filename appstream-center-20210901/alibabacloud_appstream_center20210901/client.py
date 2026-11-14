@@ -661,6 +661,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.builder_image_by_parent_with_options_async(request, runtime)
 
+    def clear_agent_instance_memory_with_options(
+        self,
+        request: main_models.ClearAgentInstanceMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ClearAgentInstanceMemoryResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_instance_id):
+            body['AgentInstanceId'] = request.agent_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClearAgentInstanceMemory',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClearAgentInstanceMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clear_agent_instance_memory_with_options_async(
+        self,
+        request: main_models.ClearAgentInstanceMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ClearAgentInstanceMemoryResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_instance_id):
+            body['AgentInstanceId'] = request.agent_instance_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClearAgentInstanceMemory',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClearAgentInstanceMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clear_agent_instance_memory(
+        self,
+        request: main_models.ClearAgentInstanceMemoryRequest,
+    ) -> main_models.ClearAgentInstanceMemoryResponse:
+        runtime = RuntimeOptions()
+        return self.clear_agent_instance_memory_with_options(request, runtime)
+
+    async def clear_agent_instance_memory_async(
+        self,
+        request: main_models.ClearAgentInstanceMemoryRequest,
+    ) -> main_models.ClearAgentInstanceMemoryResponse:
+        runtime = RuntimeOptions()
+        return await self.clear_agent_instance_memory_with_options_async(request, runtime)
+
     def config_resource_group_model_template_with_options(
         self,
         request: main_models.ConfigResourceGroupModelTemplateRequest,
@@ -3131,6 +3201,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_share_image_with_options_async(request, runtime)
 
+    def describe_user_profile_path_rules_with_options(
+        self,
+        request: main_models.DescribeUserProfilePathRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserProfilePathRulesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.rule_type):
+            body['RuleType'] = request.rule_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUserProfilePathRules',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserProfilePathRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_profile_path_rules_with_options_async(
+        self,
+        request: main_models.DescribeUserProfilePathRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserProfilePathRulesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.rule_type):
+            body['RuleType'] = request.rule_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeUserProfilePathRules',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeUserProfilePathRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_profile_path_rules(
+        self,
+        request: main_models.DescribeUserProfilePathRulesRequest,
+    ) -> main_models.DescribeUserProfilePathRulesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_user_profile_path_rules_with_options(request, runtime)
+
+    async def describe_user_profile_path_rules_async(
+        self,
+        request: main_models.DescribeUserProfilePathRulesRequest,
+    ) -> main_models.DescribeUserProfilePathRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_user_profile_path_rules_with_options_async(request, runtime)
+
     def describe_wuying_server_with_options(
         self,
         request: main_models.DescribeWuyingServerRequest,
@@ -4948,6 +5100,8 @@ class Client(OpenApiClient):
             query['AgentProvider'] = request.agent_provider
         if not DaraCore.is_null(request.include_risk_info):
             query['IncludeRiskInfo'] = request.include_risk_info
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
         if not DaraCore.is_null(request.runtime_id):
             query['RuntimeId'] = request.runtime_id
         if not DaraCore.is_null(request.runtime_type):
@@ -4986,6 +5140,8 @@ class Client(OpenApiClient):
             query['AgentProvider'] = request.agent_provider
         if not DaraCore.is_null(request.include_risk_info):
             query['IncludeRiskInfo'] = request.include_risk_info
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
         if not DaraCore.is_null(request.runtime_id):
             query['RuntimeId'] = request.runtime_id
         if not DaraCore.is_null(request.runtime_type):
@@ -5114,6 +5270,88 @@ class Client(OpenApiClient):
     ) -> main_models.GetTaskResponse:
         runtime = RuntimeOptions()
         return await self.get_task_with_options_async(request, runtime)
+
+    def get_tenant_memory_config_with_options(
+        self,
+        request: main_models.GetTenantMemoryConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTenantMemoryConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_instance_id):
+            body['AgentInstanceId'] = request.agent_instance_id
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTenantMemoryConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTenantMemoryConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_tenant_memory_config_with_options_async(
+        self,
+        request: main_models.GetTenantMemoryConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTenantMemoryConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_instance_id):
+            body['AgentInstanceId'] = request.agent_instance_id
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTenantMemoryConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTenantMemoryConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_tenant_memory_config(
+        self,
+        request: main_models.GetTenantMemoryConfigRequest,
+    ) -> main_models.GetTenantMemoryConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_tenant_memory_config_with_options(request, runtime)
+
+    async def get_tenant_memory_config_async(
+        self,
+        request: main_models.GetTenantMemoryConfigRequest,
+    ) -> main_models.GetTenantMemoryConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_tenant_memory_config_with_options_async(request, runtime)
 
     def get_upload_info_with_options(
         self,
@@ -5310,6 +5548,112 @@ class Client(OpenApiClient):
     ) -> main_models.ImportImageResponse:
         runtime = RuntimeOptions()
         return await self.import_image_with_options_async(request, runtime)
+
+    def list_agent_instance_memory_with_options(
+        self,
+        request: main_models.ListAgentInstanceMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentInstanceMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_user_ids):
+            query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.excluded_end_user_ids):
+            query['ExcludedEndUserIds'] = request.excluded_end_user_ids
+        if not DaraCore.is_null(request.memory_statuses):
+            query['MemoryStatuses'] = request.memory_statuses
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_keyword):
+            query['SearchKeyword'] = request.search_keyword
+        if not DaraCore.is_null(request.search_type):
+            query['SearchType'] = request.search_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentInstanceMemory',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentInstanceMemoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_agent_instance_memory_with_options_async(
+        self,
+        request: main_models.ListAgentInstanceMemoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentInstanceMemoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.end_user_ids):
+            query['EndUserIds'] = request.end_user_ids
+        if not DaraCore.is_null(request.excluded_end_user_ids):
+            query['ExcludedEndUserIds'] = request.excluded_end_user_ids
+        if not DaraCore.is_null(request.memory_statuses):
+            query['MemoryStatuses'] = request.memory_statuses
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_keyword):
+            query['SearchKeyword'] = request.search_keyword
+        if not DaraCore.is_null(request.search_type):
+            query['SearchType'] = request.search_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAgentInstanceMemory',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAgentInstanceMemoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_agent_instance_memory(
+        self,
+        request: main_models.ListAgentInstanceMemoryRequest,
+    ) -> main_models.ListAgentInstanceMemoryResponse:
+        runtime = RuntimeOptions()
+        return self.list_agent_instance_memory_with_options(request, runtime)
+
+    async def list_agent_instance_memory_async(
+        self,
+        request: main_models.ListAgentInstanceMemoryRequest,
+    ) -> main_models.ListAgentInstanceMemoryResponse:
+        runtime = RuntimeOptions()
+        return await self.list_agent_instance_memory_with_options_async(request, runtime)
 
     def list_agent_instance_versions_with_options(
         self,
@@ -9353,6 +9697,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.log_off_all_sessions_in_app_instance_group_with_options_async(request, runtime)
 
+    def modify_agent_instance_memory_config_with_options(
+        self,
+        request: main_models.ModifyAgentInstanceMemoryConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAgentInstanceMemoryConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_instance_ids):
+            body['AgentInstanceIds'] = request.agent_instance_ids
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAgentInstanceMemoryConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAgentInstanceMemoryConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_agent_instance_memory_config_with_options_async(
+        self,
+        request: main_models.ModifyAgentInstanceMemoryConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAgentInstanceMemoryConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_instance_ids):
+            body['AgentInstanceIds'] = request.agent_instance_ids
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAgentInstanceMemoryConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAgentInstanceMemoryConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_agent_instance_memory_config(
+        self,
+        request: main_models.ModifyAgentInstanceMemoryConfigRequest,
+    ) -> main_models.ModifyAgentInstanceMemoryConfigResponse:
+        runtime = RuntimeOptions()
+        return self.modify_agent_instance_memory_config_with_options(request, runtime)
+
+    async def modify_agent_instance_memory_config_async(
+        self,
+        request: main_models.ModifyAgentInstanceMemoryConfigRequest,
+    ) -> main_models.ModifyAgentInstanceMemoryConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_agent_instance_memory_config_with_options_async(request, runtime)
+
     def modify_app_instance_group_attribute_with_options(
         self,
         tmp_req: main_models.ModifyAppInstanceGroupAttributeRequest,
@@ -10148,6 +10566,88 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyTenantConfigResponse:
         runtime = RuntimeOptions()
         return await self.modify_tenant_config_with_options_async(request, runtime)
+
+    def modify_tenant_memory_config_with_options(
+        self,
+        request: main_models.ModifyTenantMemoryConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTenantMemoryConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTenantMemoryConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTenantMemoryConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tenant_memory_config_with_options_async(
+        self,
+        request: main_models.ModifyTenantMemoryConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTenantMemoryConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.enabled):
+            body['Enabled'] = request.enabled
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTenantMemoryConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTenantMemoryConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tenant_memory_config(
+        self,
+        request: main_models.ModifyTenantMemoryConfigRequest,
+    ) -> main_models.ModifyTenantMemoryConfigResponse:
+        runtime = RuntimeOptions()
+        return self.modify_tenant_memory_config_with_options(request, runtime)
+
+    async def modify_tenant_memory_config_async(
+        self,
+        request: main_models.ModifyTenantMemoryConfigRequest,
+    ) -> main_models.ModifyTenantMemoryConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_tenant_memory_config_with_options_async(request, runtime)
 
     def modify_wuying_server_attribute_with_options(
         self,
@@ -11874,6 +12374,92 @@ class Client(OpenApiClient):
     ) -> main_models.RestartWuyingServerResponse:
         runtime = RuntimeOptions()
         return await self.restart_wuying_server_with_options_async(request, runtime)
+
+    def set_user_profile_path_rules_with_options(
+        self,
+        request: main_models.SetUserProfilePathRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetUserProfilePathRulesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_profile_path_rules):
+            body['UserProfilePathRules'] = request.user_profile_path_rules
+        if not DaraCore.is_null(request.user_profile_rule_type):
+            body['UserProfileRuleType'] = request.user_profile_rule_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetUserProfilePathRules',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetUserProfilePathRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_user_profile_path_rules_with_options_async(
+        self,
+        request: main_models.SetUserProfilePathRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetUserProfilePathRulesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_set_id):
+            body['AppInstanceGroupSetId'] = request.app_instance_group_set_id
+        if not DaraCore.is_null(request.region_id):
+            body['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.user_profile_path_rules):
+            body['UserProfilePathRules'] = request.user_profile_path_rules
+        if not DaraCore.is_null(request.user_profile_rule_type):
+            body['UserProfileRuleType'] = request.user_profile_rule_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetUserProfilePathRules',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetUserProfilePathRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_user_profile_path_rules(
+        self,
+        request: main_models.SetUserProfilePathRulesRequest,
+    ) -> main_models.SetUserProfilePathRulesResponse:
+        runtime = RuntimeOptions()
+        return self.set_user_profile_path_rules_with_options(request, runtime)
+
+    async def set_user_profile_path_rules_async(
+        self,
+        request: main_models.SetUserProfilePathRulesRequest,
+    ) -> main_models.SetUserProfilePathRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.set_user_profile_path_rules_with_options_async(request, runtime)
 
     def start_task_for_create_image_with_options(
         self,

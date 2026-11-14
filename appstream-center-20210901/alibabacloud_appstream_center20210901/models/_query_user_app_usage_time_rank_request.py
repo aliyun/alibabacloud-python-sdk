@@ -14,11 +14,11 @@ class QueryUserAppUsageTimeRankRequest(DaraModel):
         start_date: str = None,
         user_id: str = None,
     ):
-        # The app instance group ID, which is used to filter data for a specified app instance group. If this parameter is not provided, data is not filtered by app instance group.
+        # The ID of the app instance group, which is used to filter data for a specified app instance group. If this parameter is not provided, data is not filtered by app instance group.
         self.app_instance_group_id = app_instance_group_id
         # The business region ID, which is used to filter application usage data. If this parameter is not provided, data is not filtered by business region. You can call the [ListRegions](~~ListRegions~~) operation to obtain the ID.
         self.biz_region_id = biz_region_id
-        # The end date of the statistical period, in `yyyyMMdd` format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than `StartDate`, and cannot be earlier than 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
+        # The end date of the statistical period, in `yyyyMMdd` format. If this parameter is not provided, it defaults to yesterday. The date cannot be earlier than `StartDate` and cannot be earlier than 90 days before the call date. The query range includes this date. The date is interpreted as a calendar date in the Asia/Shanghai (UTC+8) time zone.
         self.end_date = end_date
         # The region ID for OpenAPI access, which is used for request authentication and routing. To filter business data by region, use `BizRegionId`.
         self.region_id = region_id

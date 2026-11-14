@@ -58,7 +58,7 @@ class GetRuntimeModelConfigResponseBodyData(DaraModel):
     ):
         # The default model, in the format of providerName/llmCode.
         self.default_model = default_model
-        # The list of model providers.
+        # The list of model service providers.
         self.model_provider_list = model_provider_list
         # The ID of the configured model group.
         self.model_template_id = model_template_id
@@ -66,7 +66,7 @@ class GetRuntimeModelConfigResponseBodyData(DaraModel):
         self.model_template_name = model_template_name
         # The model template association type.
         self.model_template_ref_type = model_template_ref_type
-        # The ID of the resource group to which the runtime belongs. If the runtime does not belong to any resource group, the value is null.
+        # The ID of the resource group to which the runtime belongs. This value is null if the runtime does not belong to a resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -137,11 +137,11 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderList(DaraModel):
     ):
         # The list of model information.
         self.llm_info_list = llm_info_list
-        # The ID of the model provider template.
+        # The ID of the model service provider template.
         self.model_provider_template_id = model_provider_template_id
-        # The name of the model provider template.
+        # The name of the model service provider template.
         self.name = name
-        # The name of the model provider.
+        # The name of the model service provider.
         self.provider_name = provider_name
 
     def validate(self):
@@ -216,7 +216,7 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList(DaraMode
         self.name = name
         # The published time in ISO 8601 format.
         self.published_time = published_time
-        # The model risk type. This parameter is returned only when the IncludeRiskInfo request parameter is set to true.
+        # The model risk type. This parameter is returned only when the request parameter IncludeRiskInfo is set to true.
         self.risk_type = risk_type
 
     def validate(self):
@@ -329,9 +329,9 @@ class GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMul
         max: float = None,
         min: float = None,
     ):
-        # The upper limit of the multiplier. If this parameter is empty, it indicates that there is no upper limit. For example, if Min is 1 and Max is empty, it is displayed as 1x and above.
+        # The upper limit of the multiplier. If this parameter is empty, it indicates no upper limit. For example, if Min=1 and Max is empty, it is displayed as starting from 1x.
         self.max = max
-        # The lower limit of the multiplier. When it is equal to Max, it is a fixed multiplier. For example, if Min and Max are both 2, it is displayed as 2x.
+        # The lower limit of the multiplier. When it is equal to Max, it is a fixed multiplier. For example, if Min=Max=2, it is displayed as 2x.
         self.min = min
 
     def validate(self):

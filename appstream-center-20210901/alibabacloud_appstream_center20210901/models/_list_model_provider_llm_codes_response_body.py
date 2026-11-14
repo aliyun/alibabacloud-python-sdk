@@ -16,13 +16,13 @@ class ListModelProviderLlmCodesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The paginated data object that contains a list of LLM information.
+        # The paginated data object that contains the list of LLM information.
         self.data = data
         # The current page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The unique ID of the request.
+        # The request ID, which is used to uniquely identify the request.
         self.request_id = request_id
         # The total number of records after filtering.
         self.total_count = total_count
@@ -78,7 +78,7 @@ class ListModelProviderLlmCodesResponseBodyData(DaraModel):
         self,
         llm_info_list: List[main_models.ListModelProviderLlmCodesResponseBodyDataLlmInfoList] = None,
     ):
-        # The LLM information list.
+        # The list of LLM information.
         self.llm_info_list = llm_info_list
 
     def validate(self):
@@ -148,7 +148,7 @@ class ListModelProviderLlmCodesResponseBodyDataLlmInfoList(DaraModel):
         self.prices = prices
         # The time when the model was published, in ISO 8601 format, such as 2026-03-04T06:25:17.000+00:00.
         self.published_time = published_time
-        # Indicates whether the model is recommended. This is a tri-state value: true indicates that the model is recommended for display, false indicates that the model is explicitly not recommended, and null indicates that the status is not applicable, such as for non-Bailian models or unannotated models.
+        # Specifies whether the model is recommended. This is a tri-state parameter. A value of true indicates that the model is recommended for display. A value of false indicates that the model is explicitly not recommended. A value of null indicates that the parameter is not applicable, such as for non-Bailian models or unannotated models.
         self.recommended = recommended
         # The model risk type. This parameter is returned only when includeRiskInfo is set to true.
         self.risk_type = risk_type
@@ -313,7 +313,7 @@ class ListModelProviderLlmCodesResponseBodyDataLlmInfoListPricesPrices(DaraModel
     ):
         # The price in string format, such as 0.2.
         self.price = price
-        # The name of the price item, such as input, output, or image generation.
+        # The name of the price, such as input, output, or image generation.
         self.price_name = price_name
         # The price unit, such as per image or per 1,000 tokens.
         self.price_unit = price_unit
@@ -393,9 +393,9 @@ class ListModelProviderLlmCodesResponseBodyDataLlmInfoListCreditMultiplier(DaraM
         max: float = None,
         min: float = None,
     ):
-        # The upper limit of the multiplier. An empty value indicates no upper limit. For example, if the minimum value is 1 and the maximum value is empty, it is displayed as starting from 1x.
+        # The upper limit of the multiplier. An empty value indicates no upper limit. For example, if the minimum multiplier is 1 and the maximum multiplier is empty, it is displayed as starting from 1x.
         self.max = max
-        # The lower limit of the multiplier. If this value is equal to the maximum value, the multiplier is fixed. For example, if both the minimum and maximum values are 2, it is displayed as 2x.
+        # The lower limit of the multiplier. When this value is equal to the maximum multiplier, it represents a fixed multiplier. For example, if both the minimum and maximum multipliers are 2, it is displayed as 2x.
         self.min = min
 
     def validate(self):

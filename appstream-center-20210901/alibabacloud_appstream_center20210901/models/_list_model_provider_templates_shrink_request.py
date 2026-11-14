@@ -16,25 +16,25 @@ class ListModelProviderTemplatesShrinkRequest(DaraModel):
         provider_name: str = None,
         provider_template_ids_shrink: str = None,
     ):
-        # The agent platform.
+        # The Agent platform.
         self.agent_platform = agent_platform
-        # The name of the agent provider.
+        # The name of the Agent provider.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
-        # The business type. Not all business types are supported. Only business types within the supported range are valid. Refer to the listed enumeration values.
+        # The business type. Not all business types are supported. Only specific BizType values are supported. Refer to the valid values for the supported scope.
         # 
         # This parameter is required.
         self.biz_type = biz_type
-        # The model group ID to filter by.
+        # The model group ID.
         self.model_template_id = model_template_id
-        # The page number, starting from 1. Values 0 and 1 return the same result.
+        # The page number. The value starts from 1. Entering 0 or 1 returns the same result.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The model provider name to filter by.
+        # The model provider name.
         self.provider_name = provider_name
-        # The model provider template IDs to filter by.
+        # The model provider template IDs.
         self.provider_template_ids_shrink = provider_template_ids_shrink
 
     def validate(self):

@@ -22,7 +22,7 @@ class ListRelatedResourceResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. A value of true indicates that the request is successful, and a value of false indicates that the request fails.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

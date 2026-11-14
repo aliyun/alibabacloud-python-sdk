@@ -16,31 +16,31 @@ class ListAuthorizedAppsByUserRequest(DaraModel):
         page_size: int = None,
         product_type: str = None,
     ):
-        # The application ID used to filter results. Fuzzy match by containment is used. This parameter can be combined with other filter parameters. You can obtain the application ID from the Apps list returned by the [GetAppInstanceGroup](https://help.aliyun.com/document_detail/600836.html) operation.
+        # The application ID, which is used to filter results. Fuzzy match based on inclusion is used. This parameter can be used in combination with other filter parameters. You can obtain the value from the Apps list returned by the [GetAppInstanceGroup](https://help.aliyun.com/document_detail/600836.html) operation.
         self.app_id = app_id
-        # The delivery group ID used to filter results. Fuzzy match by containment is used. This parameter can be combined with other filter parameters. Call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the delivery group ID.
+        # The app instance group ID, which is used to filter results. Fuzzy match based on inclusion is used. This parameter can be used in combination with other filter parameters. You can call the [ListAppInstanceGroup](https://help.aliyun.com/document_detail/428506.html) operation to obtain the value.
         self.app_instance_group_id = app_instance_group_id
-        # The delivery group name used to filter results. Fuzzy match by name is used. This parameter can be combined with other filter parameters.
+        # The app instance group name, which is used to filter results. Fuzzy match based on the name is used. This parameter can be used in combination with other filter parameters.
         self.app_instance_group_name = app_instance_group_name
-        # The application name used to filter results. Fuzzy match by name is used. This parameter can be combined with other filter parameters.
+        # The application name, which is used to filter results. Fuzzy match based on the name is used. This parameter can be used in combination with other filter parameters.
         self.app_name = app_name
-        # The username to query. **Required**. The user must already exist under the current account. Call the [DescribeUsers](https://help.aliyun.com/document_detail/436936.html) operation to obtain the username.
+        # The username to query. **Required**. The user must exist in the current account. You can call the [DescribeUsers](https://help.aliyun.com/document_detail/436936.html) operation to obtain the username.
         # 
         # This parameter is required.
         self.end_user_id = end_user_id
-        # The page number of the results. **Required**. The value starts from 1.
+        # The page number of the returned results. **Required**. The value starts from 1.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of records per page. **Required**. Valid values: 1 to 100.
+        # The number of entries to return on each page. **Required**. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The product type. **Required**. The value is case-insensitive.
+        # The product type. **Required**. The value is not case-sensitive.
         # 
-        # This operation queries per-application authorization records. This authorization method applies to WUYING Cloud Application delivery groups. Valid values:
+        # This operation queries application-level authorization records. This authorization method applies to WUYING Cloud App instance groups. Valid values:
         # 
-        # - CloudApp: WUYING Cloud Application.
+        # - CloudApp: WUYING Cloud App.
         # 
         # This parameter is required.
         self.product_type = product_type

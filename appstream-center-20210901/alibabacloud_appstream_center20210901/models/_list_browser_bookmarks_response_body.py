@@ -20,9 +20,9 @@ class ListBrowserBookmarksResponseBody(DaraModel):
         self.data = data
         # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
-        # The request ID, which is used to troubleshoot issues.
+        # The request ID.
         self.request_id = request_id
         # The total number of bookmarks that meet the filtering conditions.
         self.total_count = total_count
