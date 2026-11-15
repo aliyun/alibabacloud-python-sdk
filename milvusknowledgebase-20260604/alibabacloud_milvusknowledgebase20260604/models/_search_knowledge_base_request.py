@@ -12,7 +12,9 @@ class SearchKnowledgeBaseRequest(DaraModel):
         self,
         document_ids: List[str] = None,
         enable_knowledge_graph: bool = None,
+        evidence_page_token: str = None,
         image: main_models.SearchKnowledgeBaseRequestImage = None,
+        include_wiki: bool = None,
         page_number: int = None,
         page_size: int = None,
         query: str = None,
@@ -26,17 +28,21 @@ class SearchKnowledgeBaseRequest(DaraModel):
         self.document_ids = document_ids
         # Specifies whether to enable the knowledge graph.
         self.enable_knowledge_graph = enable_knowledge_graph
-        # The image retrieval input.
+        # The evidence page token. This parameter is optional and conditionally returned. It can only be passed when includeWiki is set to true. Omit this parameter for the first evidence page, and pass the evidenceNextToken from the previous page as is for subsequent pages. The candidate pool, subject, parameters, and page size are fixed, and the token expires in 5 minutes without renewal. An expired token returns a 409 error and does not trigger an automatic re-search. The pageNumber parameter only controls the legacy results. Constraint: {"minLength":1,"maxLength":4096}.
+        self.evidence_page_token = evidence_page_token
+        # The image search input.
         self.image = image
+        # Specifies whether to use Wiki evidence. This parameter is optional and conditionally returned, and is added for backward compatibility. Default value: false. If set to true, a unified evidenceResults field is additionally returned without disguising Wiki content as original text. Constraint: {"default":false}.
+        self.include_wiki = include_wiki
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
-        # The query for retrieval.
+        # The search query.
         self.query = query
         # The rerank model ID.
         self.rerank_model_id = rerank_model_id
-        # The name of the rerank model that the tenant has activated. If both rerankModelName and rerankModelId are specified, this parameter takes precedence.
+        # The name of the rerank model activated for the tenant. If both rerankModelId and this parameter are specified, this parameter takes precedence.
         self.rerank_model_name = rerank_model_name
         # The retrieval configuration.
         self.retrieval_config = retrieval_config
@@ -64,8 +70,14 @@ class SearchKnowledgeBaseRequest(DaraModel):
         if self.enable_knowledge_graph is not None:
             result['enableKnowledgeGraph'] = self.enable_knowledge_graph
 
+        if self.evidence_page_token is not None:
+            result['evidencePageToken'] = self.evidence_page_token
+
         if self.image is not None:
             result['image'] = self.image.to_map()
+
+        if self.include_wiki is not None:
+            result['includeWiki'] = self.include_wiki
 
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
@@ -101,9 +113,15 @@ class SearchKnowledgeBaseRequest(DaraModel):
         if m.get('enableKnowledgeGraph') is not None:
             self.enable_knowledge_graph = m.get('enableKnowledgeGraph')
 
+        if m.get('evidencePageToken') is not None:
+            self.evidence_page_token = m.get('evidencePageToken')
+
         if m.get('image') is not None:
             temp_model = main_models.SearchKnowledgeBaseRequestImage()
             self.image = temp_model.from_map(m.get('image'))
+
+        if m.get('includeWiki') is not None:
+            self.include_wiki = m.get('includeWiki')
 
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
@@ -141,7 +159,7 @@ class SearchKnowledgeBaseRequestTagFilter(DaraModel):
     ):
         # The list of tag conditions.
         self.conditions = conditions
-        # The logical relation between conditions.
+        # The condition relation.
         self.relation = relation
 
     def validate(self):
@@ -228,18 +246,21 @@ class SearchKnowledgeBaseRequestRetrievalConfig(DaraModel):
     def __init__(
         self,
         candidate_count: int = None,
+        enable_evidence_completion: bool = None,
         enable_query_expansion: bool = None,
         min_score: float = None,
         semantic_weight: float = None,
         translation_languages: List[str] = None,
     ):
-        # The number of candidate results to recall.
+        # The number of candidates to recall.
         self.candidate_count = candidate_count
+        # Specifies whether to enable multi-hop evidence completion. Default value: false. For pilot knowledge bases, this feature can be used on the first page of DRAFT text retrieval. The pageSize can be 5, 10, or 20, which requires a minimum candidateCount of 40, 48, or 64, respectively. When enabled, results are returned by document.
+        self.enable_evidence_completion = enable_evidence_completion
         # Specifies whether to enable query expansion.
         self.enable_query_expansion = enable_query_expansion
         # The minimum relevance score.
         self.min_score = min_score
-        # The weight of semantic relevance.
+        # The weight for semantic relevance.
         self.semantic_weight = semantic_weight
         # The list of translation languages.
         self.translation_languages = translation_languages
@@ -254,6 +275,9 @@ class SearchKnowledgeBaseRequestRetrievalConfig(DaraModel):
             result = _map
         if self.candidate_count is not None:
             result['candidateCount'] = self.candidate_count
+
+        if self.enable_evidence_completion is not None:
+            result['enableEvidenceCompletion'] = self.enable_evidence_completion
 
         if self.enable_query_expansion is not None:
             result['enableQueryExpansion'] = self.enable_query_expansion
@@ -273,6 +297,9 @@ class SearchKnowledgeBaseRequestRetrievalConfig(DaraModel):
         m = m or dict()
         if m.get('candidateCount') is not None:
             self.candidate_count = m.get('candidateCount')
+
+        if m.get('enableEvidenceCompletion') is not None:
+            self.enable_evidence_completion = m.get('enableEvidenceCompletion')
 
         if m.get('enableQueryExpansion') is not None:
             self.enable_query_expansion = m.get('enableQueryExpansion')

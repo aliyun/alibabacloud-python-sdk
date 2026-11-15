@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_milvusknowledgebase20260604 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'MilvusKnowledgeBase'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('milvusknowledgebase', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -250,8 +254,12 @@ class Client(OpenApiClient):
             body['documentIds'] = request.document_ids
         if not DaraCore.is_null(request.enable_knowledge_graph):
             body['enableKnowledgeGraph'] = request.enable_knowledge_graph
+        if not DaraCore.is_null(request.evidence_page_token):
+            body['evidencePageToken'] = request.evidence_page_token
         if not DaraCore.is_null(request.image):
             body['image'] = request.image
+        if not DaraCore.is_null(request.include_wiki):
+            body['includeWiki'] = request.include_wiki
         if not DaraCore.is_null(request.page_number):
             body['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -301,8 +309,12 @@ class Client(OpenApiClient):
             body['documentIds'] = request.document_ids
         if not DaraCore.is_null(request.enable_knowledge_graph):
             body['enableKnowledgeGraph'] = request.enable_knowledge_graph
+        if not DaraCore.is_null(request.evidence_page_token):
+            body['evidencePageToken'] = request.evidence_page_token
         if not DaraCore.is_null(request.image):
             body['image'] = request.image
+        if not DaraCore.is_null(request.include_wiki):
+            body['includeWiki'] = request.include_wiki
         if not DaraCore.is_null(request.page_number):
             body['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):

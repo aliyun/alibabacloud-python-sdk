@@ -27,11 +27,11 @@ class AddDocumentsRequest(DaraModel):
         self.import_type = import_type
         # The ID of the knowledge base.
         self.knowledge_base_id = knowledge_base_id
-        # The batch label configuration. The key must be a label field defined in the knowledge base. The value supports string, int64, float32, bool, and list types.
+        # The batch tag configuration. The key must be a tag field defined in the knowledge base. The value supports the string, int64, float32, bool, and list data types.
         self.meta_fields = meta_fields
         # The ID of the processing strategy.
         self.strategy_id = strategy_id
-        # Not supported. Ignore this parameter.
+        # This parameter is not supported and is ignored.
         self.ding_talk_configuration = ding_talk_configuration
         # Defaults to root when omitted.
         self.parent_id = parent_id
@@ -123,19 +123,19 @@ class AddDocumentsRequestDingTalkConfiguration(DaraModel):
         knowledge_type: str = None,
         user_id: str = None,
     ):
-        # Not supported. Ignore this parameter.
+        # This parameter is not supported and is ignored.
         self.app_id = app_id
-        # Not supported. Ignore this parameter.
+        # This parameter is not supported and is ignored.
         self.app_password = app_password
-        # Not supported. Ignore this parameter.
+        # This parameter is not supported and is ignored.
         self.ding_doc_mcp_link = ding_doc_mcp_link
-        # Not supported. Ignore this parameter.
+        # This parameter is not supported and is ignored.
         self.ding_table_mcp_link = ding_table_mcp_link
-        # Not supported. Ignore this parameter.
+        # This parameter is not supported and is ignored.
         self.knowledge_id = knowledge_id
-        # Not supported. Ignore this parameter.
+        # This parameter is not supported and is ignored.
         self.knowledge_type = knowledge_type
-        # Not supported. Ignore this parameter.
+        # This parameter is not supported and is ignored.
         self.user_id = user_id
 
     def validate(self):
@@ -200,13 +200,16 @@ class AddDocumentsRequestDocuments(DaraModel):
         name: str = None,
         path: str = None,
         size: int = None,
+        strategy_id: str = None,
     ):
         # The name of the document.
         self.name = name
-        # The document path. This is the file name or relative path used during upload, which must be consistent with the pre-signed request.
+        # The document path, which is the file name or relative path used during upload. It must be consistent with the pre-signed request.
         self.path = path
         # The size of the file.
         self.size = size
+        # The ID of the processing strategy.
+        self.strategy_id = strategy_id
 
     def validate(self):
         pass
@@ -225,6 +228,9 @@ class AddDocumentsRequestDocuments(DaraModel):
         if self.size is not None:
             result['Size'] = self.size
 
+        if self.strategy_id is not None:
+            result['StrategyId'] = self.strategy_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -237,6 +243,9 @@ class AddDocumentsRequestDocuments(DaraModel):
 
         if m.get('Size') is not None:
             self.size = m.get('Size')
+
+        if m.get('StrategyId') is not None:
+            self.strategy_id = m.get('StrategyId')
 
         return self
 

@@ -18,9 +18,9 @@ class AddDocumentsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the permission verification failure.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # The status code.
+        # The response status code.
         self.code = code
         # The response data.
         self.data = data
@@ -30,7 +30,7 @@ class AddDocumentsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -152,9 +152,9 @@ class AddDocumentsResponseBodyDataDocuments(DaraModel):
         thumbnail: str = None,
         token_count: int = None,
     ):
-        # The chunk count.
+        # The number of chunks.
         self.chunk_count = chunk_count
-        # The chunk method.
+        # The chunking method.
         self.chunk_method = chunk_method
         # The ID of the knowledge base.
         self.dataset_id = dataset_id
@@ -174,7 +174,7 @@ class AddDocumentsResponseBodyDataDocuments(DaraModel):
         self.suffix = suffix
         # The thumbnail.
         self.thumbnail = thumbnail
-        # The token count.
+        # The number of tokens.
         self.token_count = token_count
 
     def validate(self):

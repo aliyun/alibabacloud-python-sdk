@@ -22,8 +22,11 @@ from ._search_knowledge_base_request import SearchKnowledgeBaseRequestImage
 from ._search_knowledge_base_request import SearchKnowledgeBaseRequestRetrievalConfig
 from ._search_knowledge_base_request import SearchKnowledgeBaseRequestTagFilterConditions
 from ._search_knowledge_base_request import SearchKnowledgeBaseRequestTagFilter
+from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs
+from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyEvidenceResults
 from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyResultsImages
 from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyResultsLocations
+from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyResultsMediaTimeline
 from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyResultsScoreDetails
 from ._search_knowledge_base_response_body import SearchKnowledgeBaseResponseBodyResults
 
@@ -48,8 +51,11 @@ __all__ = [
     SearchKnowledgeBaseRequestRetrievalConfig,
     SearchKnowledgeBaseRequestTagFilterConditions,
     SearchKnowledgeBaseRequestTagFilter,
+    SearchKnowledgeBaseResponseBodyEvidenceResultsSourceRefs,
+    SearchKnowledgeBaseResponseBodyEvidenceResults,
     SearchKnowledgeBaseResponseBodyResultsImages,
     SearchKnowledgeBaseResponseBodyResultsLocations,
+    SearchKnowledgeBaseResponseBodyResultsMediaTimeline,
     SearchKnowledgeBaseResponseBodyResultsScoreDetails,
     SearchKnowledgeBaseResponseBodyResults
 ]
