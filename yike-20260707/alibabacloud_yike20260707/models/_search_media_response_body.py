@@ -19,15 +19,15 @@ class SearchMediaResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # The collection of media assets that meet the requirements.
+        # The collection of matching media assets.
         self.media_info_list = media_info_list
         # The request ID.
         self.request_id = request_id
-        # The scroll token.
+        # The pagination token.
         self.scroll_token = scroll_token
-        # Indicates whether the call is successful.
+        # Indicates whether the call was successful.
         self.success = success
-        # The total number of media assets that meet the requirements.
+        # The total number of matching media assets.
         self.total = total
 
     def validate(self):
@@ -98,7 +98,7 @@ class SearchMediaResponseBodyMediaInfoList(DaraModel):
     ):
         # The list of media files.
         self.file_info_list = file_info_list
-        # The basic media asset information.
+        # The basic information of the media asset.
         self.media_basic_info = media_basic_info
         # The dynamic data of the media asset.
         self.media_dynamic_info = media_dynamic_info
@@ -193,7 +193,7 @@ class SearchMediaResponseBodyMediaInfoListMediaDynamicInfoDynamicMetaData(DaraMo
         data: str = None,
         entity_id: str = None,
     ):
-        # The dynamic metadata content.
+        # The content of the dynamic metadata.
         self.data = data
         # The entity ID.
         self.entity_id = entity_id
@@ -252,17 +252,17 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(DaraModel):
         self.business_type = business_type
         # The category ID.
         self.category_id = category_id
-        # The category name.
+        # The name of the category.
         self.category_name = category_name
-        # The cover URL.
+        # The URL of the cover image.
         self.cover_url = cover_url
-        # The creation time of the media asset.
+        # The time when the media asset was created.
         self.create_time = create_time
-        # The content description.
+        # The description of the content.
         self.description = description
         # The entity ID.
         self.entity_id = entity_id
-        # The media asset URL.
+        # The URL of the media asset.
         self.input_url = input_url
         # The media asset ID.
         self.media_id = media_id
@@ -270,7 +270,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(DaraModel):
         self.media_tags = media_tags
         # The media type of the media asset.
         self.media_type = media_type
-        # The modification time of the media asset.
+        # The time when the media asset was modified.
         self.modified_time = modified_time
         # The snapshots.
         self.snapshots = snapshots
@@ -278,7 +278,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(DaraModel):
         self.source = source
         # The sprite images.
         self.sprite_images = sprite_images
-        # The resource status.
+        # The status of the resource.
         self.status = status
         # The title.
         self.title = title
@@ -428,7 +428,7 @@ class SearchMediaResponseBodyMediaInfoListFileInfoList(DaraModel):
         self,
         file_basic_info: main_models.SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo = None,
     ):
-        # The basic file information, including the duration and size.
+        # The basic information of the file, including the duration and size.
         self.file_basic_info = file_basic_info
 
     def validate(self):
@@ -477,13 +477,13 @@ class SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo(DaraModel):
         self.create_time = create_time
         # The duration.
         self.duration = duration
-        # The file name.
+        # The name of the file.
         self.file_name = file_name
-        # The file size in bytes.
+        # The size of the file in bytes.
         self.file_size = file_size
-        # The file status.
+        # The status of the file.
         self.file_status = file_status
-        # The file type.
+        # The type of the file.
         self.file_type = file_type
         # The OSS URL of the file.
         self.file_url = file_url

@@ -71,23 +71,23 @@ class GetMediaComprehensionJobResponseBodyMediaComprehensionJob(DaraModel):
     ):
         # The error code. This parameter is returned when the status is `Failed`.
         self.error_code = error_code
-        # The error message. This parameter is of the String type and is returned when the job status is Failed.
+        # The error message. The value is a string. This parameter is returned when the status is Failed.
         self.error_message = error_message
         # The job ID.
         self.job_id = job_id
         # The media asset ID.
         self.media_id = media_id
-        # The analysis result. The value is a JSON string.
+        # The analysis result, which is a JSON-formatted string.
         self.result = result
-        # The job status. Valid values:
+        # The file status. Valid values:
         # 
-        # - **Created**: The job is created.
-        # - **Executing**: The job is being executed.
-        # - **Finished**: The job is completed.
-        # - **Failed**: The job failed.
-        # - **Deleted**: The job is deleted.
+        # - **Created**: Created.
+        # - **Executing**: Executing.
+        # - **Finished**: Finished.
+        # - **Failed**: Failed.
+        # - **Deleted**: Deleted.
         self.state = state
-        # The user-defined parameter. The value is a JSON string.
+        # The user-defined parameter, which is a JSON-formatted string.
         self.user_data = user_data
 
     def validate(self):
@@ -156,23 +156,23 @@ class GetMediaComprehensionJobResponseBodyJob(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
-        # The error code. This parameter is returned when the job status is Failed.
+        # The error code. This parameter is returned when the status is Failed.
         self.error_code = error_code
-        # The error message. This parameter is of the String type and is returned when the job status is Failed.
+        # The error message. The value is a string. This parameter is returned when the status is Failed.
         self.error_message = error_message
         # The list of media asset IDs. If the input is a URL, the registered media asset IDs are returned.
         self.media_ids = media_ids
         # The URL of the analysis result file. The file content is in JSON format.
         self.result = result
-        # The job status. Valid values:
+        # The file status. Valid values:
         # 
-        # - **Created**: The job is created.
-        # - **Executing**: The job is being executed.
-        # - **Finished**: The job is completed.
-        # - **Failed**: The job failed.
-        # - **Deleted**: The job is deleted.
+        # - **Created**: Created.
+        # - **Executing**: Executing.
+        # - **Finished**: Finished.
+        # - **Failed**: Failed.
+        # - **Deleted**: Deleted.
         self.status = status
-        # The user-defined parameter. The value is a JSON string.
+        # The user-defined parameter, which is a JSON-formatted string.
         self.user_data = user_data
 
     def validate(self):

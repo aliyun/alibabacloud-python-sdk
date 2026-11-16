@@ -19,21 +19,21 @@ class GetVideoCreativeGenerationJobResponseBody(DaraModel):
         request_id: str = None,
         user_data: str = None,
     ):
-        # The job creation time in UTC format (yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\").
+        # The time when the job was created. The time is displayed in UTC in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format.
         self.create_time = create_time
-        # The error code. This parameter is returned only when the job status is Failed.
+        # The error code. This field is returned only when the job status is Failed.
         self.error_code = error_code
-        # The job completion time in UTC format.
+        # The time when the job was completed. The time is displayed in UTC.
         self.finish_time = finish_time
         # The job ID.
         self.job_id = job_id
-        # The task results of the node. This parameter is valid only when the job status is Succeeded. Each element represents the output for a single language.
+        # The task result. This field is valid only when the node status is Succeeded. Each element represents a single-language video output.
         self.job_result = job_result
         # The job status. Valid values: Running, Succeeded, and Failed.
         self.job_status = job_status
         # Id of the request
         self.request_id = request_id
-        # The custom user data, which is returned as-is.
+        # The user-defined parameter. This value is returned as is.
         self.user_data = user_data
 
     def validate(self):
@@ -114,13 +114,13 @@ class GetVideoCreativeGenerationJobResponseBodyJobResult(DaraModel):
         output_language: str = None,
         output_url: str = None,
     ):
-        # The online editing project ID.
+        # The ID of the online editing project.
         self.editing_project_id = editing_project_id
-        # The media asset ID of the output video.
+        # The media asset ID of the produced video.
         self.media_id = media_id
         # The output language. Valid values: CN, EN, and YUE.
         self.output_language = output_language
-        # The signed download URL of the output video. The URL is time-limited.
+        # The download URL of the produced video. The URL is signed and time-sensitive.
         self.output_url = output_url
 
     def validate(self):

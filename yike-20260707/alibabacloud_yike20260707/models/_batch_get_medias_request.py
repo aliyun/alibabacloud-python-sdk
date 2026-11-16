@@ -12,10 +12,10 @@ class BatchGetMediasRequest(DaraModel):
         media_ids: str = None,
         return_dynamic_meta: bool = None,
     ):
-        # The validity period of the signed file access URL. Unit: seconds.
+        # Specifies the validity period, in seconds, for accessing file URLs that require authentication.
         self.auth_timeout = auth_timeout
         self.biz_config = biz_config
-        # The IDs of the media assets to query, separated by commas.
+        # The IDs of the media assets to be queried, separated by commas.
         self.media_ids = media_ids
         self.return_dynamic_meta = return_dynamic_meta
 

@@ -11,21 +11,21 @@ class SubmitVideoRenderJobRequest(DaraModel):
         settings: str = None,
         user_data: str = None,
     ):
-        # The complete creative script confirmed or edited by the user, provided as a JSON string. The structure aligns with the JSON content in the Result file returned by the GetRemakeScriptJob API.
+        # The complete creative script confirmed or edited by the user, formatted as a JSON string. The structure must align with the JSON content in the Result file returned by the GetRemakeScriptJob API.
         self.script = script
-        # The rendering settings, provided as a JSON string.
+        # The rendering settings, formatted as a JSON string.
         # 
-        # - **Resolution** (String, required): The resolution. Valid values: `720P` and `1080P`.
-        #   - **AspectRatio** (String, optional): The video aspect ratio. Valid values: `9:16`, `16:9`, and `1:1`. Default value: `9:16`.
-        #   - **VoiceoverLanguage** (String, optional): The voiceover language. Valid values: `zh` (Chinese), `en` (English), `es` (Spanish), `pt` (Portuguese), `fr` (French), `de` (German), `ja` (Japanese), `ko` (Korean), and `ar` (Arabic). Default value: `zh`.
-        #   - **WithSubtitles** (Boolean, optional): Specifies whether to generate subtitles. Default value: `true`.
-        #   - **TTS** (Object, optional): The text-to-speech (TTS) configuration. If this parameter is not specified, the default voice is used. This parameter applies only to single-person scenarios and pure voiceovers.
+        # - **Resolution** (String, required): The resolution. Valid values: 720P and 1080P.
+        #   - **AspectRatio** (String, optional): The video aspect ratio. Valid values: 9:16, 16:9, and 1:1. Default value: 9:16.
+        #   - **VoiceoverLanguage** (String, optional): The voiceover language. Valid values: zh (Chinese), en (English), es (Spanish), pt (Portuguese), fr (French), de (German), ja (Japanese), ko (Korean), and ar (Arabic). Default value: zh.
+        #   - **WithSubtitles** (Boolean, optional): Specifies whether to generate subtitles. Default value: true.
+        #   - **TTS** (Object, optional): The text-to-speech (TTS) configuration. If you do not specify this parameter, the default voice is used. This parameter applies only to single-person and voiceover-only scenarios.
         # 
-        #     - **VoiceUrl** (String, optional): The URL of the voice file, which must be an HTTP or HTTPS URL. If specified, this voice is used for the voiceover throughout the entire video.
+        #     - **VoiceUrl** (String, optional): The URL of the voice file, which must be an HTTP or HTTPS address. If specified, this voice is used for the voiceover throughout the entire video.
         # 
         #   - **Bgm** (String, optional): The URL or 32-character media asset ID of the background music.
         self.settings = settings
-        # The user-defined parameters, provided as a JSON string.
+        # The user-defined parameters, formatted as a JSON string.
         self.user_data = user_data
 
     def validate(self):

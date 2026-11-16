@@ -19,30 +19,28 @@ class SubmitImageGenerationJobRequest(DaraModel):
         user_data: str = None,
     ):
         # The aspect ratio. Valid values: 16:9 (default), 9:16, 4:3, 3:4, 1:1, and 21:9.
-        # 
-        # - qwen-image-3.0 additionally supports: 4:5, 5:4, 2:3, and 3:2.
+        # - The qwen-image-3.0 model also supports the following values: 4:5, 5:4, 2:3, and 3:2.
         self.aspect_ratio = aspect_ratio
-        # The idempotency token. A unique, case-sensitive string of up to 32 characters. This token ensures that the request is processed only once, preventing duplicate operations caused by multiple retries.
+        # The idempotency parameter. A unique, case-sensitive, 32-character random string used to ensure that the request is completed only once. This prevents duplicate operations caused by multiple retries.
         self.client_token = client_token
-        # The task input. This parameter is required. The value is a JSON string that contains the following fields:
-        # 
-        # - Prompt: String. Required. The prompt text.
-        # - Medias: A list of media items. Required when the task type is `image_to_image`. A maximum of 9 items are supported.
-        # > The Media structure contains the following fields: Type, the media type, String, valid value: image. URL, the media download URL, String. MediaId, the media asset ID, String.
+        # The task input. Required. A JSON string that contains the following fields:
+        # - Prompt: the prompt. String. Required.
+        # - Medias: the list of media files. Required when the task type is `image_to_image`. Up to 9 files.
+        # > The Media structure contains the following fields: Type, the media type. String. Valid value: image. URL, the download URL of the media file. String. MediaId, the media asset ID. String.
         # >
         self.input = input
-        # The task parameters. The value is a JSON string.
-        # 
-        # - PromptExtend: Specifies whether to enable prompt optimization. Boolean. Valid values: `true` and `false`.
-        # - PromptExtendMode: The prompt extension mode. Valid values: `direct` (default) and `agent` (supported for text-to-image generation). Only qwen-image-3.0 supports this parameter.
+        # The task feature parameters. A JSON string that contains the following fields:
+        # - PromptExtend: specifies whether to optimize the prompt. Boolean. Valid values: `true` and `false`.
+        # - PromptExtendMode: the prompt optimization mode. Valid values: `direct` (default) and `agent` (supported only for text-to-image). Only the qwen-image-3.0 model supports this parameter.
         self.job_parameters = job_parameters
-        # The type of the generation task. This parameter is required. Valid values:
-        # 
-        # - text_to_image: text-to-image generation.
-        # - image_to_image: image-to-image generation.
+        # The type of the generation task. Required. Valid values:
+        # - text_to_image: text-to-image
+        # - image_to_image: image-to-image
         self.job_type = job_type
-        # The model name. This parameter is required. Valid values:
-        # 
+        # The name of the model. Required. Valid values:
+        # - Wonder-Image-2.5-Pro
+        # - Wonder-Image-2.5-Fast
+        # - Wonder-Image-2
         # - qwen-image-3.0
         # - qwen-image-2.0-pro
         # - qwen-image-2.0
@@ -52,7 +50,7 @@ class SubmitImageGenerationJobRequest(DaraModel):
         self.n = n
         # The resolution. Valid values: 1K (default), 2K, and 4K.
         self.resolution = resolution
-        # The scenario. This is an enumeration type. Currently, only `general` is supported.
+        # The scene. Valid values: `general`.
         self.scene = scene
         # The user business data in JSON format.
         self.user_data = user_data

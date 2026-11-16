@@ -56,27 +56,27 @@ class GetVideoRenderJobResponseBodyJob(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
-        # The ID of the online editing project, which can be used for secondary editing of the produced video.
+        # The ID of the online editing project, which can be used for secondary editing of the final video.
         self.editing_project_id = editing_project_id
-        # The error code. This parameter is returned when the job is in the Failed state.
+        # The error code, returned when the task status is Failed.
         self.error_code = error_code
-        # The error message. This parameter is returned when the job is in the Failed state.
+        # The error message of the String type, returned when the task status is Failed.
         self.error_message = error_message
         # The job ID.
         self.job_id = job_id
-        # The voiceover language of the produced video.
+        # The voiceover language of the final video.
         self.language = language
         # The download URL of the rendered and composited video.
         self.result = result
-        # The job status. Valid values:
+        # The file status. Valid values:
         # 
-        # - Created: The job is created.
-        # - Executing: The job is being executed.
-        # - Finished: The job is completed.
-        # - Failed: The job failed.
-        # - Deleted: The job is deleted.
+        # - Created: The file is created.
+        # - Executing: The file is executing.
+        # - Finished: The file is finished.
+        # - Failed: The file has failed.
+        # - Deleted: The file is deleted.
         self.status = status
-        # The user-defined parameter, which is a JSON-formatted string.
+        # The user-defined parameters in JSON format.
         self.user_data = user_data
 
     def validate(self):

@@ -12,25 +12,28 @@ class SearchMediaRequest(DaraModel):
         match: str = None,
         page_no: int = None,
         page_size: int = None,
+        project_id: str = None,
         scroll_token: str = None,
         sort_by: str = None,
     ):
-        # The business configuration. The value is a JSON string that can contain ProductionId (project ID).
+        # The business configuration. A JSON string that can contain ProductionId (project ID).
         self.biz_config = biz_config
         # The category ID. You can obtain the category ID by using one of the following methods:
         # 
         # - When you create a category by calling the CreateAssetCategory operation, the category ID is the value of the CategoryId response parameter.
         # - When you query categories by calling the ListAssetCategories operation, the category ID is the value of the CategoryId parameter in the corresponding returned entry.
         self.category_id = category_id
-        # The filter conditions. For the syntax rules, see [Media asset search protocol](https://www.alibabacloud.com/help/en/ims/developer-reference/media-asset-search-filter-description).
+        # The filter conditions. For syntax rules, see [Media asset search protocol](https://www.alibabacloud.com/help/en/ims/developer-reference/media-asset-search-filter-description).
         self.match = match
-        # The current page number. Default value: 1.
+        # The page number. Default value: 1.
         self.page_no = page_no
         # The number of entries to return on each page. Default value: 10. Maximum value: 50.
         self.page_size = page_size
-        # The pagination token, which is a 32-character string. You do not need to specify this parameter when you send a search request for the first time. If the search request returns data, the server returns this parameter to record the position of the current search data. Record the returned value and specify this parameter in subsequent searches based on the following requirements or recommendations: This parameter is required if you need to traverse all data that matches the search conditions. If the value of the PageNo parameter exceeds 200, specify this parameter to optimize search performance. You can only page forward, and the maximum paging distance is 1,000 media assets.
+        # The project ID.
+        self.project_id = project_id
+        # The scroll token, which is a 32-character string. You do not need to specify this parameter when you make a search request for the first time. If the search request returns data, the server returns this parameter to record the position of the current search data. Record the returned value and specify this parameter in subsequent searches based on the following requirements or suggestions: This parameter is required to traverse all data that matches the search conditions. If the value of the PageNo parameter exceeds 200, specify this parameter to optimize search performance. You can only scroll forward. The maximum scroll distance is 1,000 media assets.
         self.scroll_token = scroll_token
-        # The sort fields and sort orders. Separate multiple values with commas (,). Format: field1:Desc,field2:Asc. The sort direction can only be Asc or Desc.
+        # The sort fields and sort order. Separate multiple fields with commas (,). Format: field1:Desc,field2:Asc. The sort direction can only be Asc or Desc.
         self.sort_by = sort_by
 
     def validate(self):
@@ -56,6 +59,9 @@ class SearchMediaRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.scroll_token is not None:
             result['ScrollToken'] = self.scroll_token
 
@@ -80,6 +86,9 @@ class SearchMediaRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('ScrollToken') is not None:
             self.scroll_token = m.get('ScrollToken')

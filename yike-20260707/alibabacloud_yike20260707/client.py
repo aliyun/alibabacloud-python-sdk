@@ -44,6 +44,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_project_members_with_options(
+        self,
+        request: main_models.AddProjectMembersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddProjectMembersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.yike_user_ids):
+            query['YikeUserIds'] = request.yike_user_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddProjectMembers',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddProjectMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_project_members_with_options_async(
+        self,
+        request: main_models.AddProjectMembersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddProjectMembersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.yike_user_ids):
+            query['YikeUserIds'] = request.yike_user_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddProjectMembers',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddProjectMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_project_members(
+        self,
+        request: main_models.AddProjectMembersRequest,
+    ) -> main_models.AddProjectMembersResponse:
+        runtime = RuntimeOptions()
+        return self.add_project_members_with_options(request, runtime)
+
+    async def add_project_members_async(
+        self,
+        request: main_models.AddProjectMembersRequest,
+    ) -> main_models.AddProjectMembersResponse:
+        runtime = RuntimeOptions()
+        return await self.add_project_members_with_options_async(request, runtime)
+
     def batch_get_medias_with_options(
         self,
         request: main_models.BatchGetMediasRequest,
@@ -125,6 +199,76 @@ class Client(OpenApiClient):
     ) -> main_models.BatchGetMediasResponse:
         runtime = RuntimeOptions()
         return await self.batch_get_medias_with_options_async(request, runtime)
+
+    def batch_get_video_character_replace_jobs_with_options(
+        self,
+        request: main_models.BatchGetVideoCharacterReplaceJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetVideoCharacterReplaceJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_ids):
+            query['JobIds'] = request.job_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetVideoCharacterReplaceJobs',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetVideoCharacterReplaceJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_get_video_character_replace_jobs_with_options_async(
+        self,
+        request: main_models.BatchGetVideoCharacterReplaceJobsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchGetVideoCharacterReplaceJobsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_ids):
+            query['JobIds'] = request.job_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchGetVideoCharacterReplaceJobs',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchGetVideoCharacterReplaceJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_get_video_character_replace_jobs(
+        self,
+        request: main_models.BatchGetVideoCharacterReplaceJobsRequest,
+    ) -> main_models.BatchGetVideoCharacterReplaceJobsResponse:
+        runtime = RuntimeOptions()
+        return self.batch_get_video_character_replace_jobs_with_options(request, runtime)
+
+    async def batch_get_video_character_replace_jobs_async(
+        self,
+        request: main_models.BatchGetVideoCharacterReplaceJobsRequest,
+    ) -> main_models.BatchGetVideoCharacterReplaceJobsResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_get_video_character_replace_jobs_with_options_async(request, runtime)
 
     def cancel_generation_job_with_options(
         self,
@@ -281,6 +425,8 @@ class Client(OpenApiClient):
             query['CoverUrl'] = request.cover_url
         if not DaraCore.is_null(request.production_id):
             query['ProductionId'] = request.production_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.title):
             query['Title'] = request.title
         if not DaraCore.is_null(request.workspace_id):
@@ -315,6 +461,8 @@ class Client(OpenApiClient):
             query['CoverUrl'] = request.cover_url
         if not DaraCore.is_null(request.production_id):
             query['ProductionId'] = request.production_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.title):
             query['Title'] = request.title
         if not DaraCore.is_null(request.workspace_id):
@@ -351,6 +499,154 @@ class Client(OpenApiClient):
     ) -> main_models.CreateInfiniteCanvasResponse:
         runtime = RuntimeOptions()
         return await self.create_infinite_canvas_with_options_async(request, runtime)
+
+    def create_project_with_options(
+        self,
+        request: main_models.CreateProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProject',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_project_with_options_async(
+        self,
+        request: main_models.CreateProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateProject',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_project(
+        self,
+        request: main_models.CreateProjectRequest,
+    ) -> main_models.CreateProjectResponse:
+        runtime = RuntimeOptions()
+        return self.create_project_with_options(request, runtime)
+
+    async def create_project_async(
+        self,
+        request: main_models.CreateProjectRequest,
+    ) -> main_models.CreateProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.create_project_with_options_async(request, runtime)
+
+    def create_workspace_with_options(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.user_count_limit):
+            query['UserCountLimit'] = request.user_count_limit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspace',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workspace_with_options_async(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.user_count_limit):
+            query['UserCountLimit'] = request.user_count_limit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWorkspace',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workspace(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+    ) -> main_models.CreateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.create_workspace_with_options(request, runtime)
+
+    async def create_workspace_async(
+        self,
+        request: main_models.CreateWorkspaceRequest,
+    ) -> main_models.CreateWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_workspace_with_options_async(request, runtime)
 
     def delete_asset_category_with_options(
         self,
@@ -573,6 +869,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMediasResponse:
         runtime = RuntimeOptions()
         return await self.delete_medias_with_options_async(request, runtime)
+
+    def delete_project_with_options(
+        self,
+        request: main_models.DeleteProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProject',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_project_with_options_async(
+        self,
+        request: main_models.DeleteProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteProject',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_project(
+        self,
+        request: main_models.DeleteProjectRequest,
+    ) -> main_models.DeleteProjectResponse:
+        runtime = RuntimeOptions()
+        return self.delete_project_with_options(request, runtime)
+
+    async def delete_project_async(
+        self,
+        request: main_models.DeleteProjectRequest,
+    ) -> main_models.DeleteProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_project_with_options_async(request, runtime)
 
     def generate_yike_login_token_with_options(
         self,
@@ -1104,6 +1470,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_media_comprehension_job_with_options_async(request, runtime)
 
+    def get_project_with_options(
+        self,
+        request: main_models.GetProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProject',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_project_with_options_async(
+        self,
+        request: main_models.GetProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetProject',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_project(
+        self,
+        request: main_models.GetProjectRequest,
+    ) -> main_models.GetProjectResponse:
+        runtime = RuntimeOptions()
+        return self.get_project_with_options(request, runtime)
+
+    async def get_project_async(
+        self,
+        request: main_models.GetProjectRequest,
+    ) -> main_models.GetProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.get_project_with_options_async(request, runtime)
+
     def get_remake_script_job_with_options(
         self,
         request: main_models.GetRemakeScriptJobRequest,
@@ -1173,6 +1609,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetRemakeScriptJobResponse:
         runtime = RuntimeOptions()
         return await self.get_remake_script_job_with_options_async(request, runtime)
+
+    def get_video_character_replace_job_with_options(
+        self,
+        request: main_models.GetVideoCharacterReplaceJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoCharacterReplaceJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoCharacterReplaceJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoCharacterReplaceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_character_replace_job_with_options_async(
+        self,
+        request: main_models.GetVideoCharacterReplaceJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoCharacterReplaceJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoCharacterReplaceJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoCharacterReplaceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_character_replace_job(
+        self,
+        request: main_models.GetVideoCharacterReplaceJobRequest,
+    ) -> main_models.GetVideoCharacterReplaceJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_video_character_replace_job_with_options(request, runtime)
+
+    async def get_video_character_replace_job_async(
+        self,
+        request: main_models.GetVideoCharacterReplaceJobRequest,
+    ) -> main_models.GetVideoCharacterReplaceJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_video_character_replace_job_with_options_async(request, runtime)
 
     def get_video_creative_generation_job_with_options(
         self,
@@ -1387,6 +1893,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetVideoGenerationJobResponse:
         runtime = RuntimeOptions()
         return await self.get_video_generation_job_with_options_async(request, runtime)
+
+    def get_video_remake_job_with_options(
+        self,
+        request: main_models.GetVideoRemakeJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoRemakeJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoRemakeJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoRemakeJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_video_remake_job_with_options_async(
+        self,
+        request: main_models.GetVideoRemakeJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVideoRemakeJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetVideoRemakeJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetVideoRemakeJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_video_remake_job(
+        self,
+        request: main_models.GetVideoRemakeJobRequest,
+    ) -> main_models.GetVideoRemakeJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_video_remake_job_with_options(request, runtime)
+
+    async def get_video_remake_job_async(
+        self,
+        request: main_models.GetVideoRemakeJobRequest,
+    ) -> main_models.GetVideoRemakeJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_video_remake_job_with_options_async(request, runtime)
 
     def get_video_render_job_with_options(
         self,
@@ -1687,6 +2263,8 @@ class Client(OpenApiClient):
             query['MediaType'] = request.media_type
         if not DaraCore.is_null(request.overwrite):
             query['Overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.register_config):
             query['RegisterConfig'] = request.register_config
         if not DaraCore.is_null(request.title):
@@ -1743,6 +2321,8 @@ class Client(OpenApiClient):
             query['MediaType'] = request.media_type
         if not DaraCore.is_null(request.overwrite):
             query['Overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.register_config):
             query['RegisterConfig'] = request.register_config
         if not DaraCore.is_null(request.title):
@@ -1952,6 +2532,232 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_infinite_canvases_with_options_async(request, runtime)
 
+    def list_projects_with_options(
+        self,
+        request: main_models.ListProjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjects',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_projects_with_options_async(
+        self,
+        request: main_models.ListProjectsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProjectsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListProjects',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_projects(
+        self,
+        request: main_models.ListProjectsRequest,
+    ) -> main_models.ListProjectsResponse:
+        runtime = RuntimeOptions()
+        return self.list_projects_with_options(request, runtime)
+
+    async def list_projects_async(
+        self,
+        request: main_models.ListProjectsRequest,
+    ) -> main_models.ListProjectsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_projects_with_options_async(request, runtime)
+
+    def list_workspaces_with_options(
+        self,
+        request: main_models.ListWorkspacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaces',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspaces_with_options_async(
+        self,
+        request: main_models.ListWorkspacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWorkspacesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWorkspaces',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWorkspacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspaces(
+        self,
+        request: main_models.ListWorkspacesRequest,
+    ) -> main_models.ListWorkspacesResponse:
+        runtime = RuntimeOptions()
+        return self.list_workspaces_with_options(request, runtime)
+
+    async def list_workspaces_async(
+        self,
+        request: main_models.ListWorkspacesRequest,
+    ) -> main_models.ListWorkspacesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_workspaces_with_options_async(request, runtime)
+
+    def precheck_video_character_replace_job_with_options(
+        self,
+        request: main_models.PrecheckVideoCharacterReplaceJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PrecheckVideoCharacterReplaceJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_params):
+            query['AppParams'] = request.app_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PrecheckVideoCharacterReplaceJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrecheckVideoCharacterReplaceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def precheck_video_character_replace_job_with_options_async(
+        self,
+        request: main_models.PrecheckVideoCharacterReplaceJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PrecheckVideoCharacterReplaceJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_params):
+            query['AppParams'] = request.app_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PrecheckVideoCharacterReplaceJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PrecheckVideoCharacterReplaceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def precheck_video_character_replace_job(
+        self,
+        request: main_models.PrecheckVideoCharacterReplaceJobRequest,
+    ) -> main_models.PrecheckVideoCharacterReplaceJobResponse:
+        runtime = RuntimeOptions()
+        return self.precheck_video_character_replace_job_with_options(request, runtime)
+
+    async def precheck_video_character_replace_job_async(
+        self,
+        request: main_models.PrecheckVideoCharacterReplaceJobRequest,
+    ) -> main_models.PrecheckVideoCharacterReplaceJobResponse:
+        runtime = RuntimeOptions()
+        return await self.precheck_video_character_replace_job_with_options_async(request, runtime)
+
     def search_media_with_options(
         self,
         request: main_models.SearchMediaRequest,
@@ -1969,6 +2775,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.scroll_token):
             query['ScrollToken'] = request.scroll_token
         if not DaraCore.is_null(request.sort_by):
@@ -2009,6 +2817,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.scroll_token):
             query['ScrollToken'] = request.scroll_token
         if not DaraCore.is_null(request.sort_by):
@@ -2402,6 +3212,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.submit_remake_script_job_with_options_async(request, runtime)
 
+    def submit_video_character_replace_job_with_options(
+        self,
+        request: main_models.SubmitVideoCharacterReplaceJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoCharacterReplaceJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_params):
+            body['AppParams'] = request.app_params
+        if not DaraCore.is_null(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoCharacterReplaceJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoCharacterReplaceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_character_replace_job_with_options_async(
+        self,
+        request: main_models.SubmitVideoCharacterReplaceJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoCharacterReplaceJobResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_params):
+            body['AppParams'] = request.app_params
+        if not DaraCore.is_null(request.folder_id):
+            body['FolderId'] = request.folder_id
+        if not DaraCore.is_null(request.project_id):
+            body['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoCharacterReplaceJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoCharacterReplaceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_character_replace_job(
+        self,
+        request: main_models.SubmitVideoCharacterReplaceJobRequest,
+    ) -> main_models.SubmitVideoCharacterReplaceJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_video_character_replace_job_with_options(request, runtime)
+
+    async def submit_video_character_replace_job_async(
+        self,
+        request: main_models.SubmitVideoCharacterReplaceJobRequest,
+    ) -> main_models.SubmitVideoCharacterReplaceJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_video_character_replace_job_with_options_async(request, runtime)
+
     def submit_video_creative_generation_job_with_options(
         self,
         request: main_models.SubmitVideoCreativeGenerationJobRequest,
@@ -2703,6 +3595,84 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitVideoGenerationJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_video_generation_job_with_options_async(request, runtime)
+
+    def submit_video_remake_job_with_options(
+        self,
+        request: main_models.SubmitVideoRemakeJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoRemakeJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.input):
+            query['Input'] = request.input
+        if not DaraCore.is_null(request.remake_params):
+            query['RemakeParams'] = request.remake_params
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoRemakeJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoRemakeJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_remake_job_with_options_async(
+        self,
+        request: main_models.SubmitVideoRemakeJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoRemakeJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.input):
+            query['Input'] = request.input
+        if not DaraCore.is_null(request.remake_params):
+            query['RemakeParams'] = request.remake_params
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoRemakeJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoRemakeJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_remake_job(
+        self,
+        request: main_models.SubmitVideoRemakeJobRequest,
+    ) -> main_models.SubmitVideoRemakeJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_video_remake_job_with_options(request, runtime)
+
+    async def submit_video_remake_job_async(
+        self,
+        request: main_models.SubmitVideoRemakeJobRequest,
+    ) -> main_models.SubmitVideoRemakeJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_video_remake_job_with_options_async(request, runtime)
 
     def submit_video_render_job_with_options(
         self,
@@ -3141,3 +4111,77 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateMediaResponse:
         runtime = RuntimeOptions()
         return await self.update_media_with_options_async(request, runtime)
+
+    def update_project_with_options(
+        self,
+        request: main_models.UpdateProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProject',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_project_with_options_async(
+        self,
+        request: main_models.UpdateProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateProject',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_project(
+        self,
+        request: main_models.UpdateProjectRequest,
+    ) -> main_models.UpdateProjectResponse:
+        runtime = RuntimeOptions()
+        return self.update_project_with_options(request, runtime)
+
+    async def update_project_async(
+        self,
+        request: main_models.UpdateProjectRequest,
+    ) -> main_models.UpdateProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.update_project_with_options_async(request, runtime)

@@ -13,7 +13,7 @@ class GetVideoTranslationJobResponseBody(DaraModel):
     ):
         # The video translation job.
         self.job = job
-        # The request ID, used for Tracing Analysis and troubleshooting.
+        # The request ID used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -60,21 +60,21 @@ class GetVideoTranslationJobResponseBodyJob(DaraModel):
     ):
         # The duration of the input video, in seconds.
         self.duration = duration
-        # The editing project ID for single-target-language jobs. For multi-target-language results, retrieve the value from Output.AiResult.ResultMap.
+        # The ID of the editing project for a single-target-language job. For multi-target-language results, obtain the IDs from Output.AiResult.ResultMap.
         self.editing_project_id = editing_project_id
-        # The business error code returned when the job fails. This field is not returned when the job is not in a failed state.
+        # The business error code returned when the job fails. This parameter is usually not returned for non-failed states.
         self.error_code = error_code
-        # The business error message returned when the job fails. This field is not returned when the job is not in a failed state.
+        # The business error message returned when the job fails. This parameter is usually not returned for non-failed states.
         self.error_message = error_message
-        # The normalized input configuration JSON string saved at submission time.
+        # The normalized JSON string of the input configuration saved upon submission.
         self.input = input
-        # The video translation job ID.
+        # The ID of the video translation job.
         self.job_id = job_id
-        # The normalized job parameters JSON string, including default values supplemented by the service.
+        # The normalized JSON string of the job parameters, including the default values supplemented by the service.
         self.job_parameters = job_parameters
         # The normalized job type.
         self.job_type = job_type
-        # The job output JSON string. On success, AiResult.ResultMap organizes the final video, subtitle, and audio outputs by target language.
+        # The JSON string of the job output. If the job is successful, AiResult.ResultMap organizes the final video, subtitle, and audio outputs by target language.
         self.output = output
         # The job status. Valid values: Created, Queuing, Executing, Finished, or Failed.
         self.status = status

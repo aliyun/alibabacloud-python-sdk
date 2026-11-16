@@ -9,7 +9,7 @@ class GetVideoDetextJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The video text erasure task ID returned by SubmitVideoDetextJob.
+        # The ID of the video text removal job returned by SubmitVideoDetextJob.
         # 
         # This parameter is required.
         self.job_id = job_id

@@ -9,13 +9,16 @@ class CreateInfiniteCanvasRequest(DaraModel):
         self,
         cover_url: str = None,
         production_id: str = None,
+        project_id: str = None,
         title: str = None,
         workspace_id: str = None,
     ):
         # The cover URL.
         self.cover_url = cover_url
-        # The project ID.
+        # The project ID. **[Deprecated]** Use ProjectId instead.
         self.production_id = production_id
+        # The project ID. This field takes precedence.
+        self.project_id = project_id
         # The project title.
         # 
         # This parameter is required.
@@ -37,6 +40,9 @@ class CreateInfiniteCanvasRequest(DaraModel):
         if self.production_id is not None:
             result['ProductionId'] = self.production_id
 
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+
         if self.title is not None:
             result['Title'] = self.title
 
@@ -52,6 +58,9 @@ class CreateInfiniteCanvasRequest(DaraModel):
 
         if m.get('ProductionId') is not None:
             self.production_id = m.get('ProductionId')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')

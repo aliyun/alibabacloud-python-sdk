@@ -10,9 +10,9 @@ class UpdateMediaResponseBody(DaraModel):
         media_id: str = None,
         request_id: str = None,
     ):
-        # The Intelligent Cloud Editing (ICE) media asset ID.
+        # The ID of the ICE media asset.
         self.media_id = media_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

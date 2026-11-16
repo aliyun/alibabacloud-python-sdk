@@ -12,11 +12,11 @@ class GenerateYikeLoginTokenResponseBody(DaraModel):
         token: str = None,
         user_id: str = None,
     ):
-        # The session expiration time (millisecond timestamp).
+        # The session expiration time (timestamp in milliseconds).
         self.expires_at = expires_at
         # Id of the request
         self.request_id = request_id
-        # The login token.
+        # The logon token.
         self.token = token
         # The generated user ID.
         self.user_id = user_id

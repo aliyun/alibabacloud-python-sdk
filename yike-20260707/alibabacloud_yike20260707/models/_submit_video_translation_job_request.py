@@ -16,7 +16,7 @@ class SubmitVideoTranslationJobRequest(DaraModel):
         title: str = None,
         user_data: str = None,
     ):
-        # The user-level idempotency token, which can be up to 40 characters in length. If the same user submits the request repeatedly with the same token, the original task is returned.
+        # The user-level idempotency token, which can be up to 40 characters in length. If the same user repeatedly submits a request with the same token, the original task is returned.
         self.client_token = client_token
         # The job description, which is used to record the business purpose or processing requirements.
         self.description = description
@@ -24,7 +24,7 @@ class SubmitVideoTranslationJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.input = input
-        # The job parameters JSON string. It must include at least SourceLanguage and TargetLanguage. You can also configure primary subtitle erasure, voice translation, on-screen text translation, and final editing.
+        # The job parameters JSON string. It must include at least SourceLanguage and TargetLanguage. You can also configure primary subtitle removal, voice translation, on-screen text translation, lip sync, and final editing.
         # 
         # This parameter is required.
         self.job_parameters = job_parameters
@@ -32,11 +32,11 @@ class SubmitVideoTranslationJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.job_type = job_type
-        # The output configuration JSON string. OssUri is the optional customer OSS output directory. If OssUri is not specified, a signed URL for the service-owned output is returned.
+        # The output configuration JSON string. OssUri is the optional OSS output directory for the customer. If OssUri is not specified, a signed URL for the service-owned output is returned.
         self.output = output
         # The job title. If not specified, the service generates a default title.
         self.title = title
-        # The user-defined data JSON string. When specifying an MNS queue to receive asynchronous notifications, set `NotifyAddress` to the pure queue name starting with `yike-callback-` instead of the full queue URL. You can optionally set `NotifyMnsEndpoint` to the MNS endpoint of the task account.
+        # The user-defined data JSON string. When specifying a Message Service (MNS) queue to receive asynchronous notifications, set NotifyAddress to the pure queue name starting with yike-callback- instead of the full queue URL. You can optionally set NotifyMnsEndpoint to the MNS endpoint of the task account.
         self.user_data = user_data
 
     def validate(self):

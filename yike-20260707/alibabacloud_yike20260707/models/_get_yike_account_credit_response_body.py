@@ -66,11 +66,10 @@ class GetYikeAccountCreditResponseBodyMembershipInfo(DaraModel):
         # The end time.
         self.end_time = end_time
         # The membership level. Valid values:
-        # 
-        # - basic: Basic Edition.
-        # - standard: Standard Edition.
-        # - professional: Ultimate Edition.
-        # - ultra: Ultra Edition.
+        # - basic: Basic Edition
+        # - standard: Standard Edition
+        # - professional: Ultimate Edition
+        # - ultra: Supreme Edition
         self.membership = membership
         # The start time.
         self.start_time = start_time
@@ -117,17 +116,17 @@ class GetYikeAccountCreditResponseBodyCreditInfo(DaraModel):
         resource_credit_quota: float = None,
         resource_credit_quota_usage: float = None,
     ):
-        # The total granted credits.
+        # The total granted credit quota.
         self.granted_credit_quota = granted_credit_quota
-        # The remaining granted credits.
+        # The granted credit balance.
         self.granted_credit_quota_usage = granted_credit_quota_usage
-        # The total credits of the booster pack.
+        # The total credit quota of the top-up package.
         self.pack_credit_quota = pack_credit_quota
-        # The remaining credits of the booster pack.
+        # The credit balance of the top-up package.
         self.pack_credit_quota_usage = pack_credit_quota_usage
-        # The total credits of the membership plan.
+        # The total credit quota of the membership plan.
         self.resource_credit_quota = resource_credit_quota
-        # The remaining credits of the membership plan.
+        # The credit balance of the membership plan.
         self.resource_credit_quota_usage = resource_credit_quota_usage
 
     def validate(self):

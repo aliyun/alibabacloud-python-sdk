@@ -15,7 +15,7 @@ class CancelGenerationJobResponseBody(DaraModel):
         self.job_id = job_id
         # Id of the request
         self.request_id = request_id
-        # The task status. The value is Canceled.
+        # The task status, which is Canceled.
         self.status = status
 
     def validate(self):

@@ -11,7 +11,7 @@ class GetVideoDetextJobResponseBody(DaraModel):
         job: main_models.GetVideoDetextJobResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The video text erasure task.
+        # The video text removal job.
         self.job = job
         # The request ID, which is used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
@@ -56,21 +56,21 @@ class GetVideoDetextJobResponseBodyJob(DaraModel):
         output: str = None,
         status: str = None,
     ):
-        # The business error code returned when the task fails. This field is typically not returned for non-failure states.
+        # The business error code returned when the job fails. This field is typically not returned when the job is not in a failed state.
         self.error_code = error_code
-        # The business error message returned when the task fails. This field is typically not returned for non-failure states.
+        # The business error message returned when the job fails. This field is typically not returned when the job is not in a failed state.
         self.error_message = error_message
-        # The normalized input configuration JSON string saved at submission time.
+        # The normalized JSON string of the input configuration saved during submission.
         self.input = input
-        # The video text erasure task ID.
+        # The ID of the video text removal job.
         self.job_id = job_id
-        # The normalized text erasure parameter JSON string.
+        # The normalized JSON string of the text removal parameters.
         self.job_parameters = job_parameters
-        # The task type. The value is fixed to VIDEO_DETEXT.
+        # The job type. The value is fixed as VIDEO_DETEXT.
         self.job_type = job_type
-        # The task result JSON string. When Status is Finished, deserialize this field and read AiResult.DetextVideoURL to obtain the URL of the video after text erasure. The video URL is not guaranteed to be included when the task has not completed successfully. If Output.OssUri is specified at submission time, the result is stored in the specified OSS location. Otherwise, a signed URL is returned.
+        # The JSON character string of the task result. When Status is Finished, deserialize the sequence of this field and read AiResult.DetextVideoURL to obtain the URL of the video with text removed. If the node is not successfully completed, the video URL is not guaranteed to be included. If Output.OssUri is specified during commit, the result is stored in the specified OSS bucket. Otherwise, a signed URL is returned.
         self.output = output
-        # The task status. Valid values: Created, Queuing, Executing, Finished, and Failed.
+        # The job status. Valid values: Created, Queuing, Executing, Finished, and Failed.
         self.status = status
 
     def validate(self):

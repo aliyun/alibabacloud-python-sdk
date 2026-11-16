@@ -10,9 +10,9 @@ class GetVideoGenerationJobRequest(DaraModel):
         client_token: str = None,
         job_id: str = None,
     ):
-        # The idempotency token.
+        # The client token.
         self.client_token = client_token
-        # The task ID.
+        # The job ID.
         self.job_id = job_id
 
     def validate(self):

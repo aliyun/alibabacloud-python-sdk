@@ -88,7 +88,7 @@ class GetAssetCategoryResponseBodySubCategories(DaraModel):
         self.category_name = category_name
         # The category level.
         self.level = level
-        # The parent category ID.
+        # The ID of the parent category.
         self.parent_id = parent_id
         # The total number of subcategories.
         self.sub_total = sub_total
@@ -150,11 +150,11 @@ class GetAssetCategoryResponseBodyCategory(DaraModel):
         # The category name.
         self.category_name = category_name
         # The category level. Valid values:
-        # - **0**: level-1 category.
-        # - **1**: level-2 category.
-        # - **2**: level-3 category.
+        # - **0**: Level-1 category.
+        # - **1**: Level-2 category.
+        # - **2**: Level-3 category.
         self.level = level
-        # The parent category ID.
+        # The ID of the parent category.
         self.parent_id = parent_id
 
     def validate(self):

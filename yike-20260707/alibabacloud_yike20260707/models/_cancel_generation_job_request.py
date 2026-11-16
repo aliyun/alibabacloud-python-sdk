@@ -9,7 +9,7 @@ class CancelGenerationJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The task ID. Only queued tasks can be canceled.
+        # The ID of the task. Only queued tasks can be canceled.
         # 
         # This parameter is required.
         self.job_id = job_id

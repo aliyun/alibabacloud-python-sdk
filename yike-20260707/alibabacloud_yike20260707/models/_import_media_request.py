@@ -18,16 +18,18 @@ class ImportMediaRequest(DaraModel):
         media_tags: str = None,
         media_type: str = None,
         overwrite: bool = None,
+        project_id: str = None,
         register_config: str = None,
         title: str = None,
         user_data: str = None,
         yike_asset_config: str = None,
     ):
         self.biz_config = biz_config
+        # The category ID.
         self.category_id = category_id
-        # The cover image URL. This parameter is valid only for video media assets.
+        # The URL of the cover image. This parameter is valid only for video media assets.
         self.cover_url = cover_url
-        # The description of the media asset.
+        # The description.
         self.description = description
         # The dynamic metadata.
         self.dynamic_meta_data = dynamic_meta_data
@@ -37,17 +39,19 @@ class ImportMediaRequest(DaraModel):
         self.import_source = import_source
         # The URL of the media asset.
         self.input_url = input_url
-        # The tags of the media asset. Separate multiple tags with commas (,).
+        # The tags. Separate multiple tags with commas.
         self.media_tags = media_tags
         # The type of the media asset.
         self.media_type = media_type
         # Specifies whether to overwrite existing media assets.
         self.overwrite = overwrite
+        # The project ID.
+        self.project_id = project_id
         # The configuration for registering the media asset.
         self.register_config = register_config
-        # The title of the media asset.
+        # The title.
         self.title = title
-        # The user data. Maximum length: 1024 bytes.
+        # The user data. Maximum size: 1024 bytes.
         self.user_data = user_data
         self.yike_asset_config = yike_asset_config
 
@@ -91,6 +95,9 @@ class ImportMediaRequest(DaraModel):
 
         if self.overwrite is not None:
             result['Overwrite'] = self.overwrite
+
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
 
         if self.register_config is not None:
             result['RegisterConfig'] = self.register_config
@@ -140,6 +147,9 @@ class ImportMediaRequest(DaraModel):
 
         if m.get('Overwrite') is not None:
             self.overwrite = m.get('Overwrite')
+
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
 
         if m.get('RegisterConfig') is not None:
             self.register_config = m.get('RegisterConfig')

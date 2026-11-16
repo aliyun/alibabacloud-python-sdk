@@ -18,12 +18,12 @@ class GenerateYikeLoginTokenRequest(DaraModel):
     ):
         # Specifies whether automatic creation of a project is enabled. Default value: false.
         self.auto_create_production = auto_create_production
-        # The token expiration time, in seconds. Default value: 30 days.
+        # The expiration time of the token, in seconds. Default value: 30 days.
         self.expires = expires
         # The nickname.
         # 
         # - Format check: The maximum length is 50 characters.
-        # - Special format validation: Chinese characters, English characters, digits, _ \\ / () ] [
+        # - Special format check: Chinese and English characters, digits, and _ \\ / () ] [.
         self.nick_name = nick_name
         # The role of the user in the project.
         self.production_auth = production_auth

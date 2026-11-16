@@ -73,7 +73,7 @@ class ListAssetCategoriesResponseBodyCategories(DaraModel):
         self.category_id = category_id
         # The category name.
         self.category_name = category_name
-        # The category level. A level-1 category has a value of 0, a level-2 category has a value of 1, and a level-3 category has a value of 2.
+        # The category level. A value of 0 indicates a level-1 category, 1 indicates a level-2 category, and 2 indicates a level-3 category.
         self.level = level
         # The parent category ID.
         self.parent_id = parent_id

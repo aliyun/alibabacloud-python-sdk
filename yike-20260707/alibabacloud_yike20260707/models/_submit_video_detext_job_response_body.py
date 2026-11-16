@@ -10,9 +10,9 @@ class SubmitVideoDetextJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the video text removal job. Use this ID to call GetVideoDetextJob to query the job.
+        # The video text erasure task ID, which is used to call GetVideoDetextJob to query the task.
         self.job_id = job_id
-        # The request ID, used for Tracing Analysis and troubleshooting.
+        # The request ID, which is used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
 
     def validate(self):

@@ -2,9 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._add_project_members_request import AddProjectMembersRequest
+from ._add_project_members_response_body import AddProjectMembersResponseBody
+from ._add_project_members_response import AddProjectMembersResponse
 from ._batch_get_medias_request import BatchGetMediasRequest
 from ._batch_get_medias_response_body import BatchGetMediasResponseBody
 from ._batch_get_medias_response import BatchGetMediasResponse
+from ._batch_get_video_character_replace_jobs_request import BatchGetVideoCharacterReplaceJobsRequest
+from ._batch_get_video_character_replace_jobs_response_body import BatchGetVideoCharacterReplaceJobsResponseBody
+from ._batch_get_video_character_replace_jobs_response import BatchGetVideoCharacterReplaceJobsResponse
 from ._cancel_generation_job_request import CancelGenerationJobRequest
 from ._cancel_generation_job_response_body import CancelGenerationJobResponseBody
 from ._cancel_generation_job_response import CancelGenerationJobResponse
@@ -14,6 +20,12 @@ from ._create_asset_category_response import CreateAssetCategoryResponse
 from ._create_infinite_canvas_request import CreateInfiniteCanvasRequest
 from ._create_infinite_canvas_response_body import CreateInfiniteCanvasResponseBody
 from ._create_infinite_canvas_response import CreateInfiniteCanvasResponse
+from ._create_project_request import CreateProjectRequest
+from ._create_project_response_body import CreateProjectResponseBody
+from ._create_project_response import CreateProjectResponse
+from ._create_workspace_request import CreateWorkspaceRequest
+from ._create_workspace_response_body import CreateWorkspaceResponseBody
+from ._create_workspace_response import CreateWorkspaceResponse
 from ._delete_asset_category_request import DeleteAssetCategoryRequest
 from ._delete_asset_category_response_body import DeleteAssetCategoryResponseBody
 from ._delete_asset_category_response import DeleteAssetCategoryResponse
@@ -23,6 +35,9 @@ from ._delete_infinite_canvas_response import DeleteInfiniteCanvasResponse
 from ._delete_medias_request import DeleteMediasRequest
 from ._delete_medias_response_body import DeleteMediasResponseBody
 from ._delete_medias_response import DeleteMediasResponse
+from ._delete_project_request import DeleteProjectRequest
+from ._delete_project_response_body import DeleteProjectResponseBody
+from ._delete_project_response import DeleteProjectResponse
 from ._generate_yike_login_token_request import GenerateYikeLoginTokenRequest
 from ._generate_yike_login_token_response_body import GenerateYikeLoginTokenResponseBody
 from ._generate_yike_login_token_response import GenerateYikeLoginTokenResponse
@@ -44,9 +59,15 @@ from ._get_media_response import GetMediaResponse
 from ._get_media_comprehension_job_request import GetMediaComprehensionJobRequest
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBody
 from ._get_media_comprehension_job_response import GetMediaComprehensionJobResponse
+from ._get_project_request import GetProjectRequest
+from ._get_project_response_body import GetProjectResponseBody
+from ._get_project_response import GetProjectResponse
 from ._get_remake_script_job_request import GetRemakeScriptJobRequest
 from ._get_remake_script_job_response_body import GetRemakeScriptJobResponseBody
 from ._get_remake_script_job_response import GetRemakeScriptJobResponse
+from ._get_video_character_replace_job_request import GetVideoCharacterReplaceJobRequest
+from ._get_video_character_replace_job_response_body import GetVideoCharacterReplaceJobResponseBody
+from ._get_video_character_replace_job_response import GetVideoCharacterReplaceJobResponse
 from ._get_video_creative_generation_job_request import GetVideoCreativeGenerationJobRequest
 from ._get_video_creative_generation_job_response_body import GetVideoCreativeGenerationJobResponseBody
 from ._get_video_creative_generation_job_response import GetVideoCreativeGenerationJobResponse
@@ -56,6 +77,9 @@ from ._get_video_detext_job_response import GetVideoDetextJobResponse
 from ._get_video_generation_job_request import GetVideoGenerationJobRequest
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBody
 from ._get_video_generation_job_response import GetVideoGenerationJobResponse
+from ._get_video_remake_job_request import GetVideoRemakeJobRequest
+from ._get_video_remake_job_response_body import GetVideoRemakeJobResponseBody
+from ._get_video_remake_job_response import GetVideoRemakeJobResponse
 from ._get_video_render_job_request import GetVideoRenderJobRequest
 from ._get_video_render_job_response_body import GetVideoRenderJobResponseBody
 from ._get_video_render_job_response import GetVideoRenderJobResponse
@@ -77,6 +101,15 @@ from ._list_asset_categories_response import ListAssetCategoriesResponse
 from ._list_infinite_canvases_request import ListInfiniteCanvasesRequest
 from ._list_infinite_canvases_response_body import ListInfiniteCanvasesResponseBody
 from ._list_infinite_canvases_response import ListInfiniteCanvasesResponse
+from ._list_projects_request import ListProjectsRequest
+from ._list_projects_response_body import ListProjectsResponseBody
+from ._list_projects_response import ListProjectsResponse
+from ._list_workspaces_request import ListWorkspacesRequest
+from ._list_workspaces_response_body import ListWorkspacesResponseBody
+from ._list_workspaces_response import ListWorkspacesResponse
+from ._precheck_video_character_replace_job_request import PrecheckVideoCharacterReplaceJobRequest
+from ._precheck_video_character_replace_job_response_body import PrecheckVideoCharacterReplaceJobResponseBody
+from ._precheck_video_character_replace_job_response import PrecheckVideoCharacterReplaceJobResponse
 from ._search_media_request import SearchMediaRequest
 from ._search_media_response_body import SearchMediaResponseBody
 from ._search_media_response import SearchMediaResponse
@@ -92,6 +125,9 @@ from ._submit_media_comprehension_job_response import SubmitMediaComprehensionJo
 from ._submit_remake_script_job_request import SubmitRemakeScriptJobRequest
 from ._submit_remake_script_job_response_body import SubmitRemakeScriptJobResponseBody
 from ._submit_remake_script_job_response import SubmitRemakeScriptJobResponse
+from ._submit_video_character_replace_job_request import SubmitVideoCharacterReplaceJobRequest
+from ._submit_video_character_replace_job_response_body import SubmitVideoCharacterReplaceJobResponseBody
+from ._submit_video_character_replace_job_response import SubmitVideoCharacterReplaceJobResponse
 from ._submit_video_creative_generation_job_request import SubmitVideoCreativeGenerationJobRequest
 from ._submit_video_creative_generation_job_response_body import SubmitVideoCreativeGenerationJobResponseBody
 from ._submit_video_creative_generation_job_response import SubmitVideoCreativeGenerationJobResponse
@@ -101,6 +137,9 @@ from ._submit_video_detext_job_response import SubmitVideoDetextJobResponse
 from ._submit_video_generation_job_request import SubmitVideoGenerationJobRequest
 from ._submit_video_generation_job_response_body import SubmitVideoGenerationJobResponseBody
 from ._submit_video_generation_job_response import SubmitVideoGenerationJobResponse
+from ._submit_video_remake_job_request import SubmitVideoRemakeJobRequest
+from ._submit_video_remake_job_response_body import SubmitVideoRemakeJobResponseBody
+from ._submit_video_remake_job_response import SubmitVideoRemakeJobResponse
 from ._submit_video_render_job_request import SubmitVideoRenderJobRequest
 from ._submit_video_render_job_response_body import SubmitVideoRenderJobResponseBody
 from ._submit_video_render_job_response import SubmitVideoRenderJobResponse
@@ -116,6 +155,9 @@ from ._update_infinite_canvas_response import UpdateInfiniteCanvasResponse
 from ._update_media_request import UpdateMediaRequest
 from ._update_media_response_body import UpdateMediaResponseBody
 from ._update_media_response import UpdateMediaResponse
+from ._update_project_request import UpdateProjectRequest
+from ._update_project_response_body import UpdateProjectResponseBody
+from ._update_project_response import UpdateProjectResponse
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfosFileInfoListAudioStreamInfoList
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfosFileInfoListFileBasicInfo
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList
@@ -125,6 +167,11 @@ from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfo
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfosMediaDynamicInfo
 from ._batch_get_medias_response_body import BatchGetMediasResponseBodyMediaInfos
+from ._batch_get_video_character_replace_jobs_response_body import BatchGetVideoCharacterReplaceJobsResponseBodyJobListResultAudioResult
+from ._batch_get_video_character_replace_jobs_response_body import BatchGetVideoCharacterReplaceJobsResponseBodyJobListResultImageResult
+from ._batch_get_video_character_replace_jobs_response_body import BatchGetVideoCharacterReplaceJobsResponseBodyJobListResultVideoResult
+from ._batch_get_video_character_replace_jobs_response_body import BatchGetVideoCharacterReplaceJobsResponseBodyJobListResult
+from ._batch_get_video_character_replace_jobs_response_body import BatchGetVideoCharacterReplaceJobsResponseBodyJobList
 from ._create_asset_category_response_body import CreateAssetCategoryResponseBodyCategory
 from ._get_agent_job_response_body import GetAgentJobResponseBodyJob
 from ._get_asset_category_response_body import GetAssetCategoryResponseBodyCategory
@@ -142,16 +189,26 @@ from ._get_media_response_body import GetMediaResponseBodyMediaInfoMediaDynamicI
 from ._get_media_response_body import GetMediaResponseBodyMediaInfo
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBodyJob
 from ._get_media_comprehension_job_response_body import GetMediaComprehensionJobResponseBodyMediaComprehensionJob
+from ._get_project_response_body import GetProjectResponseBodyProject
 from ._get_remake_script_job_response_body import GetRemakeScriptJobResponseBodyJob
+from ._get_video_character_replace_job_response_body import GetVideoCharacterReplaceJobResponseBodyResultAudioResult
+from ._get_video_character_replace_job_response_body import GetVideoCharacterReplaceJobResponseBodyResultImageResult
+from ._get_video_character_replace_job_response_body import GetVideoCharacterReplaceJobResponseBodyResultVideoResult
+from ._get_video_character_replace_job_response_body import GetVideoCharacterReplaceJobResponseBodyResult
 from ._get_video_creative_generation_job_response_body import GetVideoCreativeGenerationJobResponseBodyJobResult
 from ._get_video_detext_job_response_body import GetVideoDetextJobResponseBodyJob
 from ._get_video_generation_job_response_body import GetVideoGenerationJobResponseBodyVideoGenerationJob
+from ._get_video_remake_job_response_body import GetVideoRemakeJobResponseBodyJobJobResult
+from ._get_video_remake_job_response_body import GetVideoRemakeJobResponseBodyJob
 from ._get_video_render_job_response_body import GetVideoRenderJobResponseBodyJob
 from ._get_video_translation_job_response_body import GetVideoTranslationJobResponseBodyJob
 from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyCreditInfo
 from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyMembershipInfo
 from ._list_asset_categories_response_body import ListAssetCategoriesResponseBodyCategories
 from ._list_infinite_canvases_response_body import ListInfiniteCanvasesResponseBodyCanvasList
+from ._list_projects_response_body import ListProjectsResponseBodyProjectList
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaceList
+from ._precheck_video_character_replace_job_response_body import PrecheckVideoCharacterReplaceJobResponseBodyResult
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListFileInfoList
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMediaBasicInfo
@@ -160,9 +217,15 @@ from ._search_media_response_body import SearchMediaResponseBodyMediaInfoListMed
 from ._search_media_response_body import SearchMediaResponseBodyMediaInfoList
 
 __all__ = [
+    AddProjectMembersRequest,
+    AddProjectMembersResponseBody,
+    AddProjectMembersResponse,
     BatchGetMediasRequest,
     BatchGetMediasResponseBody,
     BatchGetMediasResponse,
+    BatchGetVideoCharacterReplaceJobsRequest,
+    BatchGetVideoCharacterReplaceJobsResponseBody,
+    BatchGetVideoCharacterReplaceJobsResponse,
     CancelGenerationJobRequest,
     CancelGenerationJobResponseBody,
     CancelGenerationJobResponse,
@@ -172,6 +235,12 @@ __all__ = [
     CreateInfiniteCanvasRequest,
     CreateInfiniteCanvasResponseBody,
     CreateInfiniteCanvasResponse,
+    CreateProjectRequest,
+    CreateProjectResponseBody,
+    CreateProjectResponse,
+    CreateWorkspaceRequest,
+    CreateWorkspaceResponseBody,
+    CreateWorkspaceResponse,
     DeleteAssetCategoryRequest,
     DeleteAssetCategoryResponseBody,
     DeleteAssetCategoryResponse,
@@ -181,6 +250,9 @@ __all__ = [
     DeleteMediasRequest,
     DeleteMediasResponseBody,
     DeleteMediasResponse,
+    DeleteProjectRequest,
+    DeleteProjectResponseBody,
+    DeleteProjectResponse,
     GenerateYikeLoginTokenRequest,
     GenerateYikeLoginTokenResponseBody,
     GenerateYikeLoginTokenResponse,
@@ -202,9 +274,15 @@ __all__ = [
     GetMediaComprehensionJobRequest,
     GetMediaComprehensionJobResponseBody,
     GetMediaComprehensionJobResponse,
+    GetProjectRequest,
+    GetProjectResponseBody,
+    GetProjectResponse,
     GetRemakeScriptJobRequest,
     GetRemakeScriptJobResponseBody,
     GetRemakeScriptJobResponse,
+    GetVideoCharacterReplaceJobRequest,
+    GetVideoCharacterReplaceJobResponseBody,
+    GetVideoCharacterReplaceJobResponse,
     GetVideoCreativeGenerationJobRequest,
     GetVideoCreativeGenerationJobResponseBody,
     GetVideoCreativeGenerationJobResponse,
@@ -214,6 +292,9 @@ __all__ = [
     GetVideoGenerationJobRequest,
     GetVideoGenerationJobResponseBody,
     GetVideoGenerationJobResponse,
+    GetVideoRemakeJobRequest,
+    GetVideoRemakeJobResponseBody,
+    GetVideoRemakeJobResponse,
     GetVideoRenderJobRequest,
     GetVideoRenderJobResponseBody,
     GetVideoRenderJobResponse,
@@ -235,6 +316,15 @@ __all__ = [
     ListInfiniteCanvasesRequest,
     ListInfiniteCanvasesResponseBody,
     ListInfiniteCanvasesResponse,
+    ListProjectsRequest,
+    ListProjectsResponseBody,
+    ListProjectsResponse,
+    ListWorkspacesRequest,
+    ListWorkspacesResponseBody,
+    ListWorkspacesResponse,
+    PrecheckVideoCharacterReplaceJobRequest,
+    PrecheckVideoCharacterReplaceJobResponseBody,
+    PrecheckVideoCharacterReplaceJobResponse,
     SearchMediaRequest,
     SearchMediaResponseBody,
     SearchMediaResponse,
@@ -250,6 +340,9 @@ __all__ = [
     SubmitRemakeScriptJobRequest,
     SubmitRemakeScriptJobResponseBody,
     SubmitRemakeScriptJobResponse,
+    SubmitVideoCharacterReplaceJobRequest,
+    SubmitVideoCharacterReplaceJobResponseBody,
+    SubmitVideoCharacterReplaceJobResponse,
     SubmitVideoCreativeGenerationJobRequest,
     SubmitVideoCreativeGenerationJobResponseBody,
     SubmitVideoCreativeGenerationJobResponse,
@@ -259,6 +352,9 @@ __all__ = [
     SubmitVideoGenerationJobRequest,
     SubmitVideoGenerationJobResponseBody,
     SubmitVideoGenerationJobResponse,
+    SubmitVideoRemakeJobRequest,
+    SubmitVideoRemakeJobResponseBody,
+    SubmitVideoRemakeJobResponse,
     SubmitVideoRenderJobRequest,
     SubmitVideoRenderJobResponseBody,
     SubmitVideoRenderJobResponse,
@@ -274,6 +370,9 @@ __all__ = [
     UpdateMediaRequest,
     UpdateMediaResponseBody,
     UpdateMediaResponse,
+    UpdateProjectRequest,
+    UpdateProjectResponseBody,
+    UpdateProjectResponse,
     BatchGetMediasResponseBodyMediaInfosFileInfoListAudioStreamInfoList,
     BatchGetMediasResponseBodyMediaInfosFileInfoListFileBasicInfo,
     BatchGetMediasResponseBodyMediaInfosFileInfoListSubtitleStreamInfoList,
@@ -283,6 +382,11 @@ __all__ = [
     BatchGetMediasResponseBodyMediaInfosMediaDynamicInfoDynamicMetaData,
     BatchGetMediasResponseBodyMediaInfosMediaDynamicInfo,
     BatchGetMediasResponseBodyMediaInfos,
+    BatchGetVideoCharacterReplaceJobsResponseBodyJobListResultAudioResult,
+    BatchGetVideoCharacterReplaceJobsResponseBodyJobListResultImageResult,
+    BatchGetVideoCharacterReplaceJobsResponseBodyJobListResultVideoResult,
+    BatchGetVideoCharacterReplaceJobsResponseBodyJobListResult,
+    BatchGetVideoCharacterReplaceJobsResponseBodyJobList,
     CreateAssetCategoryResponseBodyCategory,
     GetAgentJobResponseBodyJob,
     GetAssetCategoryResponseBodyCategory,
@@ -300,16 +404,26 @@ __all__ = [
     GetMediaResponseBodyMediaInfo,
     GetMediaComprehensionJobResponseBodyJob,
     GetMediaComprehensionJobResponseBodyMediaComprehensionJob,
+    GetProjectResponseBodyProject,
     GetRemakeScriptJobResponseBodyJob,
+    GetVideoCharacterReplaceJobResponseBodyResultAudioResult,
+    GetVideoCharacterReplaceJobResponseBodyResultImageResult,
+    GetVideoCharacterReplaceJobResponseBodyResultVideoResult,
+    GetVideoCharacterReplaceJobResponseBodyResult,
     GetVideoCreativeGenerationJobResponseBodyJobResult,
     GetVideoDetextJobResponseBodyJob,
     GetVideoGenerationJobResponseBodyVideoGenerationJob,
+    GetVideoRemakeJobResponseBodyJobJobResult,
+    GetVideoRemakeJobResponseBodyJob,
     GetVideoRenderJobResponseBodyJob,
     GetVideoTranslationJobResponseBodyJob,
     GetYikeAccountCreditResponseBodyCreditInfo,
     GetYikeAccountCreditResponseBodyMembershipInfo,
     ListAssetCategoriesResponseBodyCategories,
     ListInfiniteCanvasesResponseBodyCanvasList,
+    ListProjectsResponseBodyProjectList,
+    ListWorkspacesResponseBodyWorkspaceList,
+    PrecheckVideoCharacterReplaceJobResponseBodyResult,
     SearchMediaResponseBodyMediaInfoListFileInfoListFileBasicInfo,
     SearchMediaResponseBodyMediaInfoListFileInfoList,
     SearchMediaResponseBodyMediaInfoListMediaBasicInfo,

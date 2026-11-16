@@ -11,7 +11,7 @@ class GetAgentJobResponseBody(DaraModel):
         job: main_models.GetAgentJobResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The task information.
+        # The job information.
         self.job = job
         # Id of the request
         self.request_id = request_id
@@ -51,17 +51,11 @@ class GetAgentJobResponseBodyJob(DaraModel):
         output: str = None,
         status: str = None,
     ):
-        # The task ID.
+        # The job ID.
         self.job_id = job_id
-        # The task output JSON string. Different tasks return different structures, which are defined by the business side.
+        # The output JSON string of the job. The returned structure varies by job and is defined by the service provider.
         self.output = output
-        # The task status. Valid values:
-        # 
-        # - Created
-        # - Queuing
-        # - Executing
-        # - Finished
-        # - Failed
+        # The job status. Valid values: Created, Queuing, Executing, Finished, and Failed.
         self.status = status
 
     def validate(self):

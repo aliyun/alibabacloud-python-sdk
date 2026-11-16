@@ -16,15 +16,15 @@ class SubmitAgentJobRequest(DaraModel):
     ):
         # The large language model (LLM) used to execute the agent task.
         self.model = model
-        # The callback URL. Currently, only HTTP and HTTPS addresses are supported.
+        # The callback URL. Only HTTP and HTTPS URLs are supported.
         self.notify_url = notify_url
-        # The prompt. Defined by the business as needed.
+        # The prompt. The specific content is defined by your business.
         # 
         # This parameter is required.
         self.prompt = prompt
-        # The skill identifier, provided by the skill provider.
+        # The skill identifier used for the task, which is provided by the skill provider.
         self.skill = skill
-        # The custom user data. This value is returned as-is in the callback.
+        # The user-defined information. This information is returned as-is in the callback.
         self.user_data = user_data
         # The workspace ID.
         self.workspace_id = workspace_id

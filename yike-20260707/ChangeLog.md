@@ -1,3 +1,25 @@
+2026-11-16 Version: 2.8.0
+- Support API AddProjectMembers.
+- Support API BatchGetVideoCharacterReplaceJobs.
+- Support API CreateProject.
+- Support API CreateWorkspace.
+- Support API DeleteProject.
+- Support API GetProject.
+- Support API GetVideoCharacterReplaceJob.
+- Support API GetVideoRemakeJob.
+- Support API ListProjects.
+- Support API ListWorkspaces.
+- Support API PrecheckVideoCharacterReplaceJob.
+- Support API SubmitVideoCharacterReplaceJob.
+- Support API SubmitVideoRemakeJob.
+- Support API UpdateProject.
+- Update API BatchGetMedias: add response parameters Body.MediaInfos.$.ProjectId.
+- Update API CreateInfiniteCanvas: add request parameters ProjectId.
+- Update API GetMedia: add response parameters Body.MediaInfo.ProjectId.
+- Update API ImportMedia: add request parameters ProjectId.
+- Update API SearchMedia: add request parameters ProjectId.
+
+
 2026-11-09 Version: 2.7.0
 - Support API GetVideoCreativeGenerationJob.
 - Support API SubmitVideoCreativeGenerationJob.

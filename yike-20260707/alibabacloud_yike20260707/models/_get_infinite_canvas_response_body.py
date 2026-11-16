@@ -11,7 +11,7 @@ class GetInfiniteCanvasResponseBody(DaraModel):
         infinite_canvas: main_models.GetInfiniteCanvasResponseBodyInfiniteCanvas = None,
         request_id: str = None,
     ):
-        # The infinite canvas details.
+        # The details of the infinite canvas.
         self.infinite_canvas = infinite_canvas
         # The request ID.
         self.request_id = request_id
