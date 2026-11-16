@@ -1,3 +1,6 @@
+2026-11-16 Version: 2.7.2
+- Generated python 2026-07-07 for Yike.
+
 2026-11-16 Version: 2.8.0
 - Support API AddProjectMembers.
 - Support API BatchGetVideoCharacterReplaceJobs.
