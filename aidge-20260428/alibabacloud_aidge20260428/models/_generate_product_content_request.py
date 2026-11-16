@@ -16,6 +16,7 @@ class GenerateProductContentRequest(DaraModel):
         platform: str = None,
         product_attributes: str = None,
         product_category: str = None,
+        prompt: str = None,
         source_language: str = None,
         source_text: str = None,
         target_language: str = None,
@@ -42,6 +43,7 @@ class GenerateProductContentRequest(DaraModel):
         self.product_attributes = product_attributes
         # The product category. Default value: an empty string. The length is 0 to 100 characters. It helps understand the category during generation and eliminates ambiguity during rewriting.
         self.product_category = product_category
+        self.prompt = prompt
         # The source language. Valid values: zh and en. Automatic language identification is not supported. Supported source languages: Chinese (zh) and English (en).
         # 
         # This parameter is required.
@@ -88,6 +90,9 @@ class GenerateProductContentRequest(DaraModel):
         if self.product_category is not None:
             result['ProductCategory'] = self.product_category
 
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+
         if self.source_language is not None:
             result['SourceLanguage'] = self.source_language
 
@@ -127,6 +132,9 @@ class GenerateProductContentRequest(DaraModel):
 
         if m.get('ProductCategory') is not None:
             self.product_category = m.get('ProductCategory')
+
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
 
         if m.get('SourceLanguage') is not None:
             self.source_language = m.get('SourceLanguage')

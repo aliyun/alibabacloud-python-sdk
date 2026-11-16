@@ -16,13 +16,13 @@ class ImageTranslationProResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
+        # The response code. A value of 200 indicates a successful call. For other response codes, see Error codes.
         self.code = code
         # The translation result data. ResultList contains the URLs of the translation results, and EditInfo in GenFiles contains the recognized text information.
         self.data = data
-        # The error message. "Success" is returned for successful calls. Specific error messages are returned for exceptions, such as "The content contains sensitive data. Try another input."
+        # The error message. Success is returned for a successful call. For an exception, a specific error message is returned, such as "The content contains sensitive data. Try another input."
         self.message = message
-        # The request ID, which is used to uniquely identify a request.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
@@ -87,7 +87,7 @@ class ImageTranslationProResponseBodyData(DaraModel):
         self.result_list = result_list
         # The ID of the asynchronous task. This parameter is not returned for synchronous calls.
         self.task_id = task_id
-        # The usage information, which includes the number of processed images.
+        # The usage information, including the number of processed images.
         self.usage_map = usage_map
 
     def validate(self):
@@ -193,7 +193,7 @@ class ImageTranslationProResponseBodyDataGenFiles(DaraModel):
         self.edit_info = edit_info
         # The collection of translation results.
         self.result_list = result_list
-        # The URL of the source image.
+        # The URL of the original image.
         self.src_image = src_image
 
     def validate(self):
@@ -288,11 +288,11 @@ class ImageTranslationProResponseBodyDataGenFilesEditInfo(DaraModel):
     ):
         # The list of font types.
         self.font = font
-        # The coordinate information of the product bounding box area.
+        # The coordinate information of the product area bounding box.
         self.goods_rects = goods_rects
         # The list of target languages for translation.
         self.languages = languages
-        # The URL of the image with all text erased.
+        # The URL of the image with all text masked.
         self.repaired_url = repaired_url
         # The collection of global IDs for the translated images.
         self.result_image_ids = result_image_ids
@@ -381,7 +381,7 @@ class ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreas(DaraModel):
         self.horizontal_layout = horizontal_layout
         # The number of lines in the text box.
         self.line_count = line_count
-        # The list of translated texts, where each element corresponds to the translation result in a target language.
+        # The list of translated texts. Each element corresponds to the translation result in a target language.
         self.texts = texts
         # The vertical layout method. Valid values: center, top, and down.
         self.vertical_layout = vertical_layout
@@ -470,7 +470,7 @@ class ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts(DaraMode
         self.fontsize = fontsize
         # The horizontal layout method. Valid values: center, left, and right.
         self.horizontal_layout = horizontal_layout
-        # The coordinates of the image repair area.
+        # The coordinates of the image inpainting area.
         self.image_rect = image_rect
         # The code of the target language for translation.
         self.language = language
@@ -478,7 +478,7 @@ class ImageTranslationProResponseBodyDataGenFilesEditInfoTextAreasTexts(DaraMode
         self.line_count = line_count
         # The coordinates of the text box area.
         self.text_rect = text_rect
-        # Indicates whether the text item is valid. If this value is missing or set to false, the text item is invalid.
+        # Indicates whether the TextItem is valid. If this value does not exist or is false, the item is invalid.
         self.valid = valid
         # The translated text content.
         self.value = value

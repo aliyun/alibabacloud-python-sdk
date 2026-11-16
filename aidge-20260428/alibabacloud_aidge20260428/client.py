@@ -1161,6 +1161,8 @@ class Client(OpenApiClient):
             query['ProductAttributes'] = request.product_attributes
         if not DaraCore.is_null(request.product_category):
             query['ProductCategory'] = request.product_category
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
         if not DaraCore.is_null(request.source_language):
             query['SourceLanguage'] = request.source_language
         if not DaraCore.is_null(request.source_text):
@@ -1211,6 +1213,8 @@ class Client(OpenApiClient):
             query['ProductAttributes'] = request.product_attributes
         if not DaraCore.is_null(request.product_category):
             query['ProductCategory'] = request.product_category
+        if not DaraCore.is_null(request.prompt):
+            query['Prompt'] = request.prompt
         if not DaraCore.is_null(request.source_language):
             query['SourceLanguage'] = request.source_language
         if not DaraCore.is_null(request.source_text):

@@ -14,11 +14,11 @@ class ImageTranslationProAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of success indicates that the task is submitted successfully.
+        # The response code. A value of success indicates that the task is submitted.
         self.code = code
         # The submission result of the Image Translation Pro asynchronous task.
         self.data = data
-        # The call description. A successful call returns Success. For a failed call, read the actual error message.
+        # The call description. A successful call returns Success. If the call fails, read the actual error message.
         self.message = message
         # The ID of the submission request, which is used for troubleshooting.
         self.request_id = request_id

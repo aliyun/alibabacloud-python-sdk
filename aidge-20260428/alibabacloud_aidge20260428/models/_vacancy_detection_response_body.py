@@ -79,7 +79,7 @@ class VacancyDetectionResponseBodyData(DaraModel):
         task_id: str = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The ID of the asynchronous task. You can use this ID to call QueryAsyncTaskResult to query the result later.
+        # The ID of the asynchronous task. You can use this ID to query the result by calling QueryAsyncTaskResult later.
         self.task_id = task_id
         # The usage details. This parameter is left empty during asynchronous commit and is populated by scheduling after the node reaches the desired state.
         self.usage_map = usage_map

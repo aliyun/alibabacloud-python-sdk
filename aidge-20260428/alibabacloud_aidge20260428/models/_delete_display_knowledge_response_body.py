@@ -102,13 +102,13 @@ class DeleteDisplayKnowledgeResponseBodyData(DaraModel):
         self.rag_id = rag_id
         # The number of visible records after deletion.
         self.remaining_count = remaining_count
-        # The processing results for each record.
+        # The processing result of each record.
         self.results = results
         # Indicates whether the business processing was successful.
         self.success = success
-        # The asynchronous task ID. This field is empty for synchronous API operations.
+        # The ID of the asynchronous task. This parameter is empty for synchronous API operations.
         self.task_id = task_id
-        # The usage information. This field is empty for free API operations.
+        # The usage information. This parameter is empty for free API operations.
         self.usage_map = usage_map
 
     def validate(self):
@@ -214,15 +214,15 @@ class DeleteDisplayKnowledgeResponseBodyDataResults(DaraModel):
         self.error_code = error_code
         # The reason for the failure.
         self.error_message = error_message
-        # The index in the original request array.
+        # The index of the item in the original request array.
         self.index = index
         # The record ID.
         self.record_id = record_id
-        # The SKU ID. This field is empty for deletion results.
+        # The SKU ID. This parameter is empty in the deletion result.
         self.sku_id = sku_id
-        # The record status. This field is empty for deletion results.
+        # The record status. This parameter is empty in the deletion result.
         self.status = status
-        # Indicates whether the deletion was successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

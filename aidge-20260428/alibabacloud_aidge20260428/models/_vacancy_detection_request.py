@@ -17,7 +17,7 @@ class VacancyDetectionRequest(DaraModel):
         self.image_url = image_url
         # The optional system prompt.
         self.system_prompt = system_prompt
-        # The optional user prompt. If this parameter is empty, the complete vacancy detection prompt is used. Plain text and JSON containing only text in messages or content are supported.
+        # The optional user prompt. If this parameter is left empty, the complete vacancy detection prompt is used. Plain text and JSON containing only text in messages/content are supported.
         self.user_prompt = user_prompt
 
     def validate(self):

@@ -78,7 +78,7 @@ class ImageTranslationPlusResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the asynchronous task. You can use this ID to poll the result by calling the queryTaskResult operation.
+        # The ID of the asynchronous task. You can call the queryTaskResult API operation to poll the task result later.
         self.task_id = task_id
 
     def validate(self):
