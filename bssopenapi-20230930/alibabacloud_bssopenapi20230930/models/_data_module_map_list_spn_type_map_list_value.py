@@ -62,12 +62,12 @@ class DataModuleMapListSpnTypeMapListValue(DaraModel):
 class DataModuleMapListSpnTypeMapListValueShowModules(DaraModel):
     def __init__(
         self,
-        module_id: int = None,
         module_code: str = None,
+        module_id: int = None,
         module_name: str = None,
     ):
-        self.module_id = module_id
         self.module_code = module_code
+        self.module_id = module_id
         self.module_name = module_name
 
     def validate(self):
@@ -78,11 +78,11 @@ class DataModuleMapListSpnTypeMapListValueShowModules(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.module_id is not None:
-            result['ModuleId'] = self.module_id
-
         if self.module_code is not None:
             result['ModuleCode'] = self.module_code
+
+        if self.module_id is not None:
+            result['ModuleId'] = self.module_id
 
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
@@ -91,11 +91,11 @@ class DataModuleMapListSpnTypeMapListValueShowModules(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ModuleId') is not None:
-            self.module_id = m.get('ModuleId')
-
         if m.get('ModuleCode') is not None:
             self.module_code = m.get('ModuleCode')
+
+        if m.get('ModuleId') is not None:
+            self.module_id = m.get('ModuleId')
 
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')
@@ -105,12 +105,12 @@ class DataModuleMapListSpnTypeMapListValueShowModules(DaraModel):
 class DataModuleMapListSpnTypeMapListValueFilterModules(DaraModel):
     def __init__(
         self,
-        module_id: int = None,
         module_code: str = None,
+        module_id: int = None,
         module_name: str = None,
     ):
-        self.module_id = module_id
         self.module_code = module_code
+        self.module_id = module_id
         self.module_name = module_name
 
     def validate(self):
@@ -121,11 +121,11 @@ class DataModuleMapListSpnTypeMapListValueFilterModules(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.module_id is not None:
-            result['ModuleId'] = self.module_id
-
         if self.module_code is not None:
             result['ModuleCode'] = self.module_code
+
+        if self.module_id is not None:
+            result['ModuleId'] = self.module_id
 
         if self.module_name is not None:
             result['ModuleName'] = self.module_name
@@ -134,11 +134,11 @@ class DataModuleMapListSpnTypeMapListValueFilterModules(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ModuleId') is not None:
-            self.module_id = m.get('ModuleId')
-
         if m.get('ModuleCode') is not None:
             self.module_code = m.get('ModuleCode')
+
+        if m.get('ModuleId') is not None:
+            self.module_id = m.get('ModuleId')
 
         if m.get('ModuleName') is not None:
             self.module_name = m.get('ModuleName')

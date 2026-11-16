@@ -132,13 +132,13 @@ class DescribeDeductLogsResponseBodyData(DaraModel):
         self.account_id = account_id
         # The account name.
         self.account_name = account_name
-        # The deducted commodity.
+        # The offset commodity.
         self.billing_commodity = billing_commodity
-        # The deducted commodity code.
+        # The offset commodity code.
         self.billing_commodity_code = billing_commodity_code
-        # The name of the offset commodity.
+        # The offset commodity name.
         self.billing_commodity_name = billing_commodity_name
-        # The expiration time, specified as a UNIX timestamp in milliseconds.
+        # The expiration time. This value is a UNIX timestamp in milliseconds.
         self.billing_end_time = billing_end_time
         # The offset instance.
         self.billing_instance_id = billing_instance_id
@@ -148,19 +148,19 @@ class DescribeDeductLogsResponseBodyData(DaraModel):
         self.billing_price_field_code = billing_price_field_code
         # The offset billable item name.
         self.billing_price_field_name = billing_price_field_name
-        # The effective period, specified as a UNIX timestamp in milliseconds.
+        # The effective period. This value is a UNIX timestamp in milliseconds.
         self.billing_start_time = billing_start_time
-        # The display unit of the capacity after deduction.
+        # The display unit for capacity after offset.
         self.capacity_after_deduct_view_unit = capacity_after_deduct_view_unit
-        # The display value of the capacity after deduction.
+        # The display value for capacity after offset.
         self.capacity_after_deduct_view_value = capacity_after_deduct_view_value
-        # The display unit of the capacity before deduction.
+        # The display unit for capacity before offset.
         self.capacity_before_deduct_view_unit = capacity_before_deduct_view_unit
-        # The display value of the capacity before deduction.
+        # The display value for capacity before offset.
         self.capacity_before_deduct_view_value = capacity_before_deduct_view_value
-        # The display unit of the deducted capacity.
+        # The display unit for offset capacity.
         self.capacity_deducted_view_unit = capacity_deducted_view_unit
-        # The display value of the deducted capacity.
+        # The display value for offset capacity.
         self.capacity_deducted_view_value = capacity_deducted_view_value
         # The capacity type.
         self.capacity_type = capacity_type
@@ -180,27 +180,27 @@ class DescribeDeductLogsResponseBodyData(DaraModel):
         self.cycle_type_code = cycle_type_code
         # The commitment period name.
         self.cycle_type_name = cycle_type_name
-        # The deduction time. This value is a UNIX timestamp in milliseconds.
+        # The offset time. This value is a UNIX timestamp in milliseconds.
         self.deduct_time = deduct_time
-        # The offset factor.
+        # The deduction factor.
         self.factor = factor
-        # The account ID of the instance owner.
+        # The ID of the account to which the instance belongs.
         self.instance_belong_account_id = instance_belong_account_id
-        # The account name of the instance owner.
+        # The name of the account to which the instance belongs.
         self.instance_belong_account_name = instance_belong_account_name
-        # The instance name.
+        # The name of the instance.
         self.instance_id = instance_id
-        # The display unit of the metered amount after offset.
+        # The display unit of the usage after deduction.
         self.measure_after_deduct_view_unit = measure_after_deduct_view_unit
-        # The display value of the metered amount after offset.
+        # The display value of the usage after deduction.
         self.measure_after_deduct_view_value = measure_after_deduct_view_value
-        # The display unit of the metered amount before offset.
+        # The display unit of the usage before deduction.
         self.measure_before_deduct_view_unit = measure_before_deduct_view_unit
-        # The display value of the metered amount before offset.
+        # The display value of the usage before deduction.
         self.measure_before_deduct_view_value = measure_before_deduct_view_value
-        # The display unit of the metered offset amount.
+        # The display unit of the deducted usage.
         self.measure_deducted_view_unit = measure_deducted_view_unit
-        # The display value of the metered offset amount.
+        # The display value of the deducted usage.
         self.measure_deducted_view_value = measure_deducted_view_value
         # The product.
         self.product = product
@@ -208,7 +208,7 @@ class DescribeDeductLogsResponseBodyData(DaraModel):
         self.product_code = product_code
         # The product name.
         self.product_name = product_name
-        # The ID of the account for deduction.
+        # The ID of the deduction account.
         self.relation_account_id = relation_account_id
         # The name of the deduction account.
         self.relation_account_name = relation_account_name
@@ -529,9 +529,9 @@ class DescribeDeductLogsResponseBodyDataTemplate(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):
@@ -566,9 +566,9 @@ class DescribeDeductLogsResponseBodyDataProduct(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):
@@ -640,9 +640,9 @@ class DescribeDeductLogsResponseBodyDataCommodity(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):
@@ -677,9 +677,9 @@ class DescribeDeductLogsResponseBodyDataCapacityType(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):
@@ -714,9 +714,9 @@ class DescribeDeductLogsResponseBodyDataBillingPriceField(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):
@@ -751,9 +751,9 @@ class DescribeDeductLogsResponseBodyDataBillingCommodity(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The property name.
+        # The attribute name.
         self.name = name
 
     def validate(self):

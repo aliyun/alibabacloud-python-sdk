@@ -22,42 +22,44 @@ class GetFundAccountTransactionDetailsShrinkRequest(DaraModel):
     ):
         # The transaction order number.
         self.bill_number = bill_number
-        # The payment reference No.
+        # The transaction channel serial number.
         self.channel_transaction_number = channel_transaction_number
         # The current page number.
         self.current_page = current_page
-        # The end timestamp for the query. Unit: milliseconds.
+        # The end time of the query. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The ID of the fund account. If you do not specify this parameter, the ID of the account owned by the current user is used by default.
+        # The ID of the fund account. If this parameter is not specified, the ID of the fund account owned by the current account is used by default.
         self.fund_account_id = fund_account_id
         # The number of entries per page. Maximum value: 200.
         self.page_size = page_size
-        # The start timestamp for the query. Unit: milliseconds.
+        # The start time of the query. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The list of transaction channels. If you specify this parameter, transactions are queried by channel. If you do not specify this parameter, all channels are queried by default. Valid values:
-        # - ACCT_CASH: User balance.
+        # The list of transaction channels. If you specify transaction channels, the query returns results of the specified channels. If this parameter is not specified, all transaction channels are queried by default. Valid values:
+        # - ACCT_CASH: Account balance.
         # - ALIPAY: Alipay.
         # - ALIPAY_ZHIFUTONG: Alipay Zhifutong.
-        # - OFFLINE_REMIT: Corporate remittance.
+        # - OFFLINE_REMIT: Offline remittance.
         # - REFUND: Credit limit refund.
         # - UNION_PAY_BANK: Online banking.
-        # - CREDIT_CARD: Credit card. Available only on the international site.
-        # - AYPAL: PayPal. Available only on the international site.
+        # - CREDIT_CARD: Credit card. (Available only on the international site.)
+        # - PAYPAL: PayPal. (Available only on the international site.)
         self.transaction_channel_list_shrink = transaction_channel_list_shrink
-        # The direction of the transaction.
+        # The direction of the transaction. Valid values:
+        # - IN: Fund inflow.
+        # - OUT: Fund outflow.
         self.transaction_direction = transaction_direction
         # The transaction number.
         self.transaction_number = transaction_number
-        # The transaction type. If you specify a transaction type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
+        # The transaction type. If you specify a transaction type, the query returns results of the specified type. If no results exist, an empty result is returned. If this parameter is not specified, all transaction types are returned by default. Valid values:
         # - CHARGE: Top-up.
         # - WITHDRAW: Withdrawal.
         # - REFUND: Refund.
         # - PAY: Payment.
         # - TRANSFER: Transfer.
         # - ADJUST: Adjustment.
-        # - PAY_FAILED: Refund for failed order.
+        # - PAY_FAILED: Refund for an invalid order.
         self.transaction_type = transaction_type
-        # The list of transaction types. You can specify multiple parameters for a parameter query.
+        # The list of transaction types. Supports multiple parameter query.
         self.transaction_type_list_shrink = transaction_type_list_shrink
 
     def validate(self):

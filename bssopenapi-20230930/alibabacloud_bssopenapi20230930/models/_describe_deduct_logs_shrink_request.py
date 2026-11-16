@@ -22,13 +22,13 @@ class DescribeDeductLogsShrinkRequest(DaraModel):
     ):
         # The ID of the instance for which the billing is deducted.
         self.bill_instance_id = bill_instance_id
-        # The commodity code for deduction.
+        # The commodity code of the deducted item.
         self.billing_commodity_code = billing_commodity_code
-        # The billing end time. The value is a UNIX timestamp in milliseconds.
+        # The end time of the billing cycle. The time is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.billing_end_time = billing_end_time
-        # The billing start time. The value is a UNIX timestamp in milliseconds.
+        # The start time of the billing cycle. The time is a UNIX timestamp in milliseconds.
         # 
         # This parameter is required.
         self.billing_start_time = billing_start_time
@@ -36,17 +36,17 @@ class DescribeDeductLogsShrinkRequest(DaraModel):
         self.commodity_code = commodity_code
         # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
-        # The resource dimension.
+        # The resource dimension to query.
         self.group = group
-        # The instance name.
+        # The name of the instance.
         self.instance_id = instance_id
-        # The level-1 marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+        # The ID of the level-1 marketplace. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
         self.nbid = nbid
         # The current page number.
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The list of accounts for deduction.
+        # The list of deduction accounts.
         self.relation_account_ids_shrink = relation_account_ids_shrink
 
     def validate(self):

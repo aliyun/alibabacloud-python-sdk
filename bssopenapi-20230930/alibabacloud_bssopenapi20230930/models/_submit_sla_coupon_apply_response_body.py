@@ -17,7 +17,7 @@ class SubmitSlaCouponApplyResponseBody(DaraModel):
     ):
         # The metadata of the response structure.
         self.metadata = metadata
-        # The unique identifier of the request, which is used to mark the request and facilitate troubleshooting.
+        # The unique identifier of the request, which is used to mark a request and facilitate troubleshooting.
         self.request_id = request_id
         # The total claimed amount.
         self.sum_coupon = sum_coupon

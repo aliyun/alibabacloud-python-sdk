@@ -23,7 +23,7 @@ class GetFundAccountTransactionDetailsResponseBody(DaraModel):
         self.data = data
         # The metadata of the response structure.
         self.metadata = metadata
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -115,7 +115,7 @@ class GetFundAccountTransactionDetailsResponseBodyData(DaraModel):
         self.balance = balance
         # The order number or bill number.
         self.bill_number = bill_number
-        # The external transaction serial number.
+        # The external transaction reference number.
         self.channel_transaction_number = channel_transaction_number
         # The currency of the transaction amount.
         self.currency = currency
@@ -129,25 +129,25 @@ class GetFundAccountTransactionDetailsResponseBodyData(DaraModel):
         self.fund_account_owner_account_id = fund_account_owner_account_id
         # The fund type.
         self.fund_type = fund_type
-        # The primary marketplace.
+        # The primary sales channel.
         self.nbid = nbid
         # The remark.
         self.remark = remark
         # The site.
         self.site = site
-        # The corresponding transaction account, such as the Alipay top-up account or the counterparty account for a transfer.
+        # The corresponding transaction account, such as the Alipay top-up account or the peer account for transfers.
         self.transaction_account = transaction_account
         # The transaction amount.
         self.transaction_amount = transaction_amount
-        # The list of transaction channels. If you specify this parameter, transactions are queried by channel. If you do not specify this parameter, all channels are queried by default. Valid values:
-        # - ACCT_CASH: User balance.
+        # The list of transaction channels. If you specify transaction channels, the query returns results of the specified channels. If this parameter is not specified, all transaction channels are queried by default. Valid values:
+        # - ACCT_CASH: Account balance.
         # - ALIPAY: Alipay.
         # - ALIPAY_ZHIFUTONG: Alipay Zhifutong.
-        # - OFFLINE_REMIT: Corporate remittance.
+        # - OFFLINE_REMIT: Offline remittance.
         # - REFUND: Credit limit refund.
         # - UNION_PAY_BANK: Online banking.
-        # - CREDIT_CARD: Credit card. Available only on the international site.
-        # - AYPAL: PayPal. Available only on the international site.
+        # - CREDIT_CARD: Credit card. (Available only on the international site.)
+        # - PAYPAL: PayPal. (Available only on the international site.)
         self.transaction_channel = transaction_channel
         # The transaction direction. Valid values: in (income) and out (expense).
         self.transaction_direction = transaction_direction
@@ -155,14 +155,14 @@ class GetFundAccountTransactionDetailsResponseBodyData(DaraModel):
         self.transaction_number = transaction_number
         # The formatted string of the transaction time.
         self.transaction_time = transaction_time
-        # The transaction type. If you specify a transaction type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
+        # The transaction type. If you specify a transaction type, the query returns results of the specified type. If no results exist, an empty result is returned. If this parameter is not specified, all transaction types are returned by default. Valid values:
         # - CHARGE: Top-up.
         # - WITHDRAW: Withdrawal.
         # - REFUND: Refund.
         # - PAY: Payment.
         # - TRANSFER: Transfer.
         # - ADJUST: Adjustment.
-        # - PAY_FAILED: Refund for failed order.
+        # - PAY_FAILED: Refund for an invalid order.
         self.transaction_type = transaction_type
 
     def validate(self):

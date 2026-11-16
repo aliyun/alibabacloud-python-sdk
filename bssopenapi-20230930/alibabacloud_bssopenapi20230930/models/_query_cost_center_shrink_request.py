@@ -18,11 +18,11 @@ class QueryCostCenterShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
+        # The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
-        # The ID of the level-1 sales site. If this parameter is left empty, the ID of the sales site to which the current user belongs is used by default.
+        # The ID of the level-1 marketplace. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
         self.nbid = nbid
-        # The ID of the owner account for the cost center.
+        # The ID of the owner account of the cost center.
         # 
         # This parameter is required.
         self.owner_account_id = owner_account_id

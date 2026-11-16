@@ -20,7 +20,7 @@ class DescribeCouponItemListResponseBody(DaraModel):
         self.current_page = current_page
         # The data list.
         self.data = data
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -85,7 +85,7 @@ class DescribeCouponItemListResponseBodyData(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The product code.
+        # The commodity code.
         self.code = code
         # The product name.
         self.name = name

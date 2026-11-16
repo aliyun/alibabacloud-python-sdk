@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_bssopenapi20230930 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'BssOpenApi'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'business.aliyuncs.com',
@@ -1112,14 +1116,10 @@ class Client(OpenApiClient):
 
     def create_report_definition_with_options(
         self,
-        tmp_req: main_models.CreateReportDefinitionRequest,
+        request: main_models.CreateReportDefinitionRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateReportDefinitionResponse:
-        tmp_req.validate()
-        request = main_models.CreateReportDefinitionShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.selected_fields):
-            request.selected_fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_fields, 'SelectedFields', 'json')
+        request.validate()
         query = {}
         if not DaraCore.is_null(request.begin_billing_cycle):
             query['BeginBillingCycle'] = request.begin_billing_cycle
@@ -1137,8 +1137,6 @@ class Client(OpenApiClient):
             query['OssBucketPath'] = request.oss_bucket_path
         if not DaraCore.is_null(request.report_type):
             query['ReportType'] = request.report_type
-        if not DaraCore.is_null(request.selected_fields_shrink):
-            query['SelectedFields'] = request.selected_fields_shrink
         if not DaraCore.is_null(request.send_with_attach):
             query['SendWithAttach'] = request.send_with_attach
         if not DaraCore.is_null(request.split_file_on_user_id):
@@ -1172,14 +1170,10 @@ class Client(OpenApiClient):
 
     async def create_report_definition_with_options_async(
         self,
-        tmp_req: main_models.CreateReportDefinitionRequest,
+        request: main_models.CreateReportDefinitionRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateReportDefinitionResponse:
-        tmp_req.validate()
-        request = main_models.CreateReportDefinitionShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.selected_fields):
-            request.selected_fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.selected_fields, 'SelectedFields', 'json')
+        request.validate()
         query = {}
         if not DaraCore.is_null(request.begin_billing_cycle):
             query['BeginBillingCycle'] = request.begin_billing_cycle
@@ -1197,8 +1191,6 @@ class Client(OpenApiClient):
             query['OssBucketPath'] = request.oss_bucket_path
         if not DaraCore.is_null(request.report_type):
             query['ReportType'] = request.report_type
-        if not DaraCore.is_null(request.selected_fields_shrink):
-            query['SelectedFields'] = request.selected_fields_shrink
         if not DaraCore.is_null(request.send_with_attach):
             query['SendWithAttach'] = request.send_with_attach
         if not DaraCore.is_null(request.split_file_on_user_id):
@@ -3202,6 +3194,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_saving_plan_user_deduct_rule_with_options_async(request, runtime)
 
+    def list_consume_summary_with_options(
+        self,
+        tmp_req: main_models.ListConsumeSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumeSummaryResponse:
+        tmp_req.validate()
+        request = main_models.ListConsumeSummaryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.common_filters):
+            request.common_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.common_filters, 'CommonFilters', 'json')
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.period):
+            request.period_shrink = Utils.array_to_string_with_specified_style(tmp_req.period, 'Period', 'json')
+        query = {}
+        if not DaraCore.is_null(request.common_filters_shrink):
+            query['CommonFilters'] = request.common_filters_shrink
+        if not DaraCore.is_null(request.dimension_type):
+            query['DimensionType'] = request.dimension_type
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.period_shrink):
+            query['Period'] = request.period_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumeSummary',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumeSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_consume_summary_with_options_async(
+        self,
+        tmp_req: main_models.ListConsumeSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumeSummaryResponse:
+        tmp_req.validate()
+        request = main_models.ListConsumeSummaryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.common_filters):
+            request.common_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.common_filters, 'CommonFilters', 'json')
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.period):
+            request.period_shrink = Utils.array_to_string_with_specified_style(tmp_req.period, 'Period', 'json')
+        query = {}
+        if not DaraCore.is_null(request.common_filters_shrink):
+            query['CommonFilters'] = request.common_filters_shrink
+        if not DaraCore.is_null(request.dimension_type):
+            query['DimensionType'] = request.dimension_type
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.period_shrink):
+            query['Period'] = request.period_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumeSummary',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumeSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_consume_summary(
+        self,
+        request: main_models.ListConsumeSummaryRequest,
+    ) -> main_models.ListConsumeSummaryResponse:
+        runtime = RuntimeOptions()
+        return self.list_consume_summary_with_options(request, runtime)
+
+    async def list_consume_summary_async(
+        self,
+        request: main_models.ListConsumeSummaryRequest,
+    ) -> main_models.ListConsumeSummaryResponse:
+        runtime = RuntimeOptions()
+        return await self.list_consume_summary_with_options_async(request, runtime)
+
     def list_coupon_deduct_tag_with_options(
         self,
         tmp_req: main_models.ListCouponDeductTagRequest,
@@ -3717,6 +3815,124 @@ class Client(OpenApiClient):
     ) -> main_models.ListReportDefinitionsResponse:
         runtime = RuntimeOptions()
         return await self.list_report_definitions_with_options_async(request, runtime)
+
+    def list_split_summary_with_options(
+        self,
+        tmp_req: main_models.ListSplitSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSplitSummaryResponse:
+        tmp_req.validate()
+        request = main_models.ListSplitSummaryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.common_filters):
+            request.common_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.common_filters, 'CommonFilters', 'json')
+        if not DaraCore.is_null(tmp_req.cost_categories_filters):
+            request.cost_categories_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.cost_categories_filters, 'CostCategoriesFilters', 'json')
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.period):
+            request.period_shrink = Utils.array_to_string_with_specified_style(tmp_req.period, 'Period', 'json')
+        if not DaraCore.is_null(tmp_req.tag_filters):
+            request.tag_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_filters, 'TagFilters', 'json')
+        query = {}
+        if not DaraCore.is_null(request.common_filters_shrink):
+            query['CommonFilters'] = request.common_filters_shrink
+        if not DaraCore.is_null(request.cost_categories_filters_shrink):
+            query['CostCategoriesFilters'] = request.cost_categories_filters_shrink
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.period_shrink):
+            query['Period'] = request.period_shrink
+        if not DaraCore.is_null(request.tag_filters_shrink):
+            query['TagFilters'] = request.tag_filters_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSplitSummary',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSplitSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_split_summary_with_options_async(
+        self,
+        tmp_req: main_models.ListSplitSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSplitSummaryResponse:
+        tmp_req.validate()
+        request = main_models.ListSplitSummaryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.common_filters):
+            request.common_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.common_filters, 'CommonFilters', 'json')
+        if not DaraCore.is_null(tmp_req.cost_categories_filters):
+            request.cost_categories_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.cost_categories_filters, 'CostCategoriesFilters', 'json')
+        if not DaraCore.is_null(tmp_req.ec_id_account_ids):
+            request.ec_id_account_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ec_id_account_ids, 'EcIdAccountIds', 'json')
+        if not DaraCore.is_null(tmp_req.period):
+            request.period_shrink = Utils.array_to_string_with_specified_style(tmp_req.period, 'Period', 'json')
+        if not DaraCore.is_null(tmp_req.tag_filters):
+            request.tag_filters_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_filters, 'TagFilters', 'json')
+        query = {}
+        if not DaraCore.is_null(request.common_filters_shrink):
+            query['CommonFilters'] = request.common_filters_shrink
+        if not DaraCore.is_null(request.cost_categories_filters_shrink):
+            query['CostCategoriesFilters'] = request.cost_categories_filters_shrink
+        if not DaraCore.is_null(request.ec_id_account_ids_shrink):
+            query['EcIdAccountIds'] = request.ec_id_account_ids_shrink
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.period_shrink):
+            query['Period'] = request.period_shrink
+        if not DaraCore.is_null(request.tag_filters_shrink):
+            query['TagFilters'] = request.tag_filters_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSplitSummary',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSplitSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_split_summary(
+        self,
+        request: main_models.ListSplitSummaryRequest,
+    ) -> main_models.ListSplitSummaryResponse:
+        runtime = RuntimeOptions()
+        return self.list_split_summary_with_options(request, runtime)
+
+    async def list_split_summary_async(
+        self,
+        request: main_models.ListSplitSummaryRequest,
+    ) -> main_models.ListSplitSummaryResponse:
+        runtime = RuntimeOptions()
+        return await self.list_split_summary_with_options_async(request, runtime)
 
     def modify_cost_center_with_options(
         self,

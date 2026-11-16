@@ -49,13 +49,13 @@ class DescribeCouponShrinkRequest(DaraModel):
         self.expire_start_date = expire_start_date
         # Specifies whether to include shared coupons.
         self.include_share = include_share
-        # The maximum number of entries to return for a single request.
+        # The maximum number of entries to return for a single query.
         self.max_results = max_results
-        # The first-level site information.
+        # The level-1 site information.
         self.nbid = nbid
-        # The token for the next query. If this parameter is empty, no more pages are available.
+        # The token used to start the next query. If this parameter is left empty, no more pages exist.
         self.next_token = next_token
-        # The page size.
+        # The number of items per page.
         # 
         # This parameter is required.
         self.page_size = page_size

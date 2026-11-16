@@ -22,7 +22,7 @@ class QueryCostCenterRuleResponseBody(DaraModel):
         root_cost_center_id: int = None,
         status: str = None,
     ):
-        # The cost center ID.
+        # The ID of the cost center.
         self.cost_center_id = cost_center_id
         # The rule expression.
         self.filter_expression = filter_expression
@@ -33,20 +33,20 @@ class QueryCostCenterRuleResponseBody(DaraModel):
         # The ID of the cost center automatic allocation rule.
         self.id = id
         # The deletion status. Valid values:
-        # * **0**: Active.
-        # * **1**: Inactive.
+        # * **0**: active.
+        # * **1**: inactive.
         self.is_deleted = is_deleted
-        # The response struct metadata.
+        # The metadata of the response structure.
         self.metadata = metadata
-        # The owner of the cost center.
+        # The owner account of the cost center.
         self.owner_account_id = owner_account_id
         # Id of the request
         self.request_id = request_id
-        # The root cost center ID.
+        # The ID of the root cost center.
         self.root_cost_center_id = root_cost_center_id
         # The status. Valid values:
-        # - on: Active.
-        # - off: Inactive.
+        # - on: valid.
+        # - off: invalid.
         self.status = status
 
     def validate(self):
@@ -144,7 +144,7 @@ class QueryCostCenterRuleResponseBodyFilterExpression(DaraModel):
         self.expression_type = expression_type
         # The sub-condition filter.
         self.filter_values = filter_values
-        # The filter condition (deprecated).
+        # **[Deprecated]** The filter condition.
         self.operand = operand
         # The conditional expression.
         self.operands = operands
@@ -207,11 +207,11 @@ class QueryCostCenterRuleResponseBodyFilterExpressionFilterValues(DaraModel):
     ):
         # The condition filter key.
         self.code = code
-        # The condition filter key name (deprecated).
+        # **[Deprecated]** The name of the condition filter key.
         self.code_name = code_name
-        # The association between the code and value.
+        # The association between code and value.
         self.select_type = select_type
-        # The attribute value type corresponding to the module Code. Valid values:
+        # The property value type corresponding to the module code. Valid values:
         # - single_float: single value type.
         # - range_float: range value type.
         self.values = values

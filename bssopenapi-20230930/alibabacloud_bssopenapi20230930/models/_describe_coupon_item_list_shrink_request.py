@@ -18,13 +18,13 @@ class DescribeCouponItemListShrinkRequest(DaraModel):
         self.coupon_id = coupon_id
         # The current page number.
         self.current_page = current_page
-        # The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
+        # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids_shrink = ec_id_account_ids_shrink
-        # The product name. Fuzzy matching is supported.
+        # The product name. Fuzzy match is supported.
         self.name = name
-        # The level-1 sales channel ID. If this parameter is left empty, the channel ID of the current user is used by default.
+        # The primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
 
     def validate(self):

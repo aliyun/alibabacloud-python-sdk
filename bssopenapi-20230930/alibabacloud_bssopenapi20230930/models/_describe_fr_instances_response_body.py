@@ -162,17 +162,17 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.cycle_type_code = cycle_type_code
         # The commitment period name.
         self.cycle_type_name = cycle_type_name
-        # The list of regions where deductions are applicable.
+        # The list of deductible regions.
         self.deduct_regions = deduct_regions
         # Indicates whether the deduction rule is enabled.
         self.enable_deduct_rule = enable_deduct_rule
-        # Indicates whether exchanges are supported.
+        # Indicates whether exchange is supported.
         self.enable_exchange = enable_exchange
         # Indicates whether renewal is supported.
         self.enable_renew = enable_renew
-        # Indicates whether upgrades are supported.
+        # Indicates whether upgrade is supported.
         self.enable_upgrade = enable_upgrade
-        # The expiration time. The value is a UNIX timestamp in milliseconds.
+        # The expiration time. This value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The commodity code for exchange.
         self.exchange_commodity_code = exchange_commodity_code
@@ -190,7 +190,7 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.period_capacity_view_unit = period_capacity_view_unit
         # The period capacity display value.
         self.period_capacity_view_value = period_capacity_view_value
-        # The period time unit, such as hour for hours.
+        # The period time unit, such as hour.
         self.period_time = period_time
         # The product.
         self.product = product
@@ -198,15 +198,15 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.product_code = product_code
         # The product name.
         self.product_name = product_name
-        # The purchase time. The value is a UNIX timestamp in milliseconds.
+        # The purchase time. This value is a UNIX timestamp in milliseconds.
         self.purchase_time = purchase_time
         # The region.
         self.region = region
         # The region name.
         self.region_name = region_name
-        # The specifications.
+        # The specification.
         self.spec = spec
-        # The effective period. The value is a UNIX timestamp in milliseconds.
+        # The effective period. This value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The resource status.
         self.status = status
@@ -220,9 +220,9 @@ class DescribeFrInstancesResponseBodyData(DaraModel):
         self.template_code = template_code
         # The template name.
         self.template_name = template_name
-        # The periodic capacity base unit.
+        # The base unit of the period capacity.
         self.period_capacity_base_unit = period_capacity_base_unit
-        # The periodic capacity base value.
+        # The base value of the period capacity.
         self.period_capacity_base_value = period_capacity_base_value
 
     def validate(self):
@@ -556,9 +556,9 @@ class DescribeFrInstancesResponseBodyDataTemplate(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The attribute code.
+        # The property code.
         self.code = code
-        # The attribute name.
+        # The property name.
         self.name = name
 
     def validate(self):
@@ -593,9 +593,9 @@ class DescribeFrInstancesResponseBodyDataStatus(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The attribute code.
+        # The property code.
         self.code = code
-        # The attribute name.
+        # The property name.
         self.name = name
 
     def validate(self):
@@ -630,9 +630,9 @@ class DescribeFrInstancesResponseBodyDataProduct(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The attribute code.
+        # The property code.
         self.code = code
-        # The attribute name.
+        # The property name.
         self.name = name
 
     def validate(self):
@@ -667,9 +667,9 @@ class DescribeFrInstancesResponseBodyDataDeductRegions(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The code of the region where deductions are applicable.
+        # The code of the deductible region.
         self.code = code
-        # The region where deductions are applicable.
+        # The deductible region.
         self.name = name
 
     def validate(self):
@@ -741,9 +741,9 @@ class DescribeFrInstancesResponseBodyDataCommodity(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The attribute code.
+        # The property code.
         self.code = code
-        # The attribute name.
+        # The property name.
         self.name = name
 
     def validate(self):
@@ -778,9 +778,9 @@ class DescribeFrInstancesResponseBodyDataCapacityType(DaraModel):
         code: str = None,
         name: str = None,
     ):
-        # The attribute code.
+        # The property code.
         self.code = code
-        # The attribute name.
+        # The property name.
         self.name = name
 
     def validate(self):
@@ -816,7 +816,7 @@ class DescribeFrInstancesResponseBodyDataAutoPurchase(DaraModel):
         setting_auto_purchase: bool = None,
         support_auto_purchase: bool = None,
     ):
-        # Indicates whether the resource has been auto-purchased.
+        # Indicates whether auto-purchase is already applied.
         self.already_auto_purchase = already_auto_purchase
         # Indicates whether auto-purchase is configured.
         self.setting_auto_purchase = setting_auto_purchase

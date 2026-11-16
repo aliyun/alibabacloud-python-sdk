@@ -20,7 +20,7 @@ class DescribeCouponResponseBody(DaraModel):
         self.current_page = current_page
         # The data list.
         self.data = data
-        # The page size.
+        # The number of items per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -122,9 +122,9 @@ class DescribeCouponResponseBodyData(DaraModel):
         self.coupon_type_name = coupon_type_name
         # The currency.
         self.currency = currency
-        # The end time in ISO 8601 format. The time is displayed in UTC.
+        # The end time in ISO 8601 format. The time zone is UTC.
         self.end_time = end_time
-        # Indicates whether the coupon is limited to first-time purchases.
+        # Indicates whether a first-purchase limit applies.
         self.first_buy = first_buy
         # The time when the coupon was issued.
         self.gmt_create = gmt_create
@@ -140,19 +140,19 @@ class DescribeCouponResponseBodyData(DaraModel):
         self.remark = remark
         # The list of shared accounts.
         self.share_uid_list = share_uid_list
-        # Specifies whether the tag deduction button is displayed.
+        # Indicates whether the tag deduction button is displayed.
         self.show_set_deduct_tag_button = show_set_deduct_tag_button
         # The site.
         self.site = site
         # The site name.
         self.site_name = site_name
-        # The start time in ISO 8601 format. The time is displayed in UTC.
+        # The start time in ISO 8601 format. The time zone is UTC.
         self.start_time = start_time
         # The status.
         self.status = status
         # The applicable account.
         self.suit_account = suit_account
-        # The applicable product type: all for all products, white for specified applicable products, and black for specified inapplicable products.
+        # The applicable product type. Valid values: all: Applicable to all products. white: Applicable to specified products. black: Not applicable to specified products.
         self.suit_item_type = suit_item_type
         # The application scope of the coupon.
         self.universal_type = universal_type

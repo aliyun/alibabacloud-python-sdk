@@ -1,3 +1,11 @@
+2026-11-16 Version: 3.0.0
+- Support API ListConsumeSummary.
+- Support API ListSplitSummary.
+- Update API CreateReportDefinition: delete request parameters SelectedFields.
+- Update API ListReportDefinitions: delete response parameters Body.ReportDefinitions.$.AutoTagFields.
+- Update API ListReportDefinitions: delete response parameters Body.ReportDefinitions.$.SelectedFields.
+
+
 2026-10-15 Version: 2.0.1
 - Update API ListReportDefinitions: add response parameters Body.ReportDefinitions.$.AutoTagFields.
 

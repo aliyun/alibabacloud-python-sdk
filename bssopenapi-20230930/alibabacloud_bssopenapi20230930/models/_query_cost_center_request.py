@@ -21,11 +21,11 @@ class QueryCostCenterRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
+        # The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
-        # The ID of the level-1 sales site. If this parameter is left empty, the ID of the sales site to which the current user belongs is used by default.
+        # The ID of the level-1 marketplace. If this parameter is left empty, the ID of the marketplace to which the current user belongs is used by default.
         self.nbid = nbid
-        # The ID of the owner account for the cost center.
+        # The ID of the owner account of the cost center.
         # 
         # This parameter is required.
         self.owner_account_id = owner_account_id
@@ -102,7 +102,7 @@ class QueryCostCenterRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
-        # The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
+        # The list of accounts to access. If this parameter is left empty, all accounts under the current enterprise entity ID are selected.
         self.account_ids = account_ids
         # The ID of the enterprise entity.
         # 

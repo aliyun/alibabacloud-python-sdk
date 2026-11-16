@@ -21,19 +21,19 @@ class QueryMonthlySlaListRequest(DaraModel):
     ):
         # The current page number. Default value: 1.
         self.current_page = current_page
-        # The list of enterprise entities and accounts. If this parameter is left empty, the current account is queried.
+        # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
-        # Optional. The instance IDs used for filtering.
+        # The instance IDs used for filtering.
         self.instance_ids = instance_ids
-        # Optional. The list of months in the yyyyMM format.
+        # The list of months in the yyyyMM format.
         self.months = months
-        # The primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
+        # The ID of the primary marketplace. If this parameter is left empty, the marketplace ID of the current user is used.
         self.nbid = nbid
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # Optional. The compensation statuses used for filtering. Valid values: 0 and 1.
+        # The compensation statuses used for filtering. Valid values: 0 and 1.
         self.pay_statuses = pay_statuses
-        # Optional. The product codes used for filtering.
+        # The product codes used for filtering.
         self.product_codes = product_codes
 
     def validate(self):
@@ -112,9 +112,9 @@ class QueryMonthlySlaListRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
-        # The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
+        # The list of account IDs to access. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
-        # The enterprise entity ID.
+        # The ID of the enterprise entity.
         self.ec_id = ec_id
 
     def validate(self):

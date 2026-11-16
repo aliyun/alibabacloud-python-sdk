@@ -19,13 +19,13 @@ class QueryMonthlySlaListResponseBody(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The data list.
+        # The list of data.
         self.data = data
-        # The response metadata.
+        # The metadata of the response structure.
         self.metadata = metadata
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count
@@ -104,26 +104,23 @@ class QueryMonthlySlaListResponseBodyData(DaraModel):
     ):
         # The service availability.
         self.available_rate = available_rate
-        # The unique identifier of the damaged record, which is used to call the applyCoupon operation for targeted claim.
+        # The unique identifier of the damage record, which is used for targeted claims.
         self.damaged_id = damaged_id
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
         # The month in the yyyyMM format.
         self.month = month
-        # The monthly service charge.
+        # The monthly service fee.
         self.monthly_service_charge = monthly_service_charge
         # The compensation description.
         self.pay_description = pay_description
-        # The compensation ratio, in percentage (%).
+        # The compensation ratio, in percentage.
         self.pay_rate = pay_rate
-        # The compensation status. Valid values:
-        # - 0: not compensated.
-        # - 1: compensated.
-        # - 2: no compensation required.
+        # The compensation status. Valid values: 0: Not compensated. 1: Compensated. 2: No compensation required.
         self.pay_status = pay_status
-        # The product code.
+        # The code of the product.
         self.product_code = product_code
-        # The compensation amount that should be paid.
+        # The compensation amount to be paid.
         self.should_pay_sum = should_pay_sum
 
     def validate(self):

@@ -37,13 +37,13 @@ class DescribeFrInstancesRequest(DaraModel):
         self.cycle_type = cycle_type
         # The list of enterprises and accounts. If this parameter is left empty, the current account is queried.
         self.ec_id_account_ids = ec_id_account_ids
-        # The end time, specified as a UNIX timestamp in milliseconds.
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The resource dimension.
+        # The resource dimension to query.
         self.group = group
         # The instance name.
         self.instance_id = instance_id
-        # The label value of the resource plan instance tag.
+        # The tag value of the resource plan instance.
         self.instance_tag = instance_tag
         # The primary marketplace ID. If this parameter is left empty, the marketplace ID of the current user is used by default.
         self.nbid = nbid
@@ -55,11 +55,11 @@ class DescribeFrInstancesRequest(DaraModel):
         self.product_code = product_code
         # The sort field.
         self.sort_field = sort_field
-        # The sorting collation.
+        # The sorting rule.
         self.sort_rule = sort_rule
-        # The specifications.
+        # The specification.
         self.spec = spec
-        # The start time, specified as a UNIX timestamp in milliseconds.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The resource status.
         self.status = status
@@ -202,7 +202,7 @@ class DescribeFrInstancesRequestEcIdAccountIds(DaraModel):
         account_ids: List[int] = None,
         ec_id: str = None,
     ):
-        # The list of accessed accounts. If this parameter is left empty, all accounts under the current entity ID are selected.
+        # The list of accounts to access. If this parameter is left empty, all accounts under the current entity ID are selected.
         self.account_ids = account_ids
         # The enterprise entity ID.
         # 

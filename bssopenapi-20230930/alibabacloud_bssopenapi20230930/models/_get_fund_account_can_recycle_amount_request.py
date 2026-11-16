@@ -14,7 +14,7 @@ class GetFundAccountCanRecycleAmountRequest(DaraModel):
         # 
         # This parameter is required.
         self.currency = currency
-        # The ID of the source account (payer account) from which funds are reclaimed. If not specified, the account ID owned by the current account is used by default.
+        # The ID of the source account for reclamation (the payer account ID). If this parameter is not specified, the ID of the account owned by the current user is used by default.
         self.recycle_from_fund_account_id = recycle_from_fund_account_id
 
     def validate(self):

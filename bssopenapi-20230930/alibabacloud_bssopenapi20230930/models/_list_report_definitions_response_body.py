@@ -14,11 +14,11 @@ class ListReportDefinitionsResponseBody(DaraModel):
         report_definitions: List[main_models.ListReportDefinitionsResponseBodyReportDefinitions] = None,
         request_id: str = None,
     ):
-        # Response structure metadata
+        # The metadata of the response structure.
         self.metadata = metadata
-        # Report definition list
+        # The data list.
         self.report_definitions = report_definitions
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +64,6 @@ class ListReportDefinitionsResponseBody(DaraModel):
 class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
     def __init__(
         self,
-        auto_tag_fields: bool = None,
         begin_billing_cycle: str = None,
         oss_bucket_name: str = None,
         oss_bucket_owner_account_id: int = None,
@@ -73,33 +72,28 @@ class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
         report_source_type: str = None,
         report_task_id: int = None,
         report_type: str = None,
-        selected_fields: List[str] = None,
         subscribe_create_time: str = None,
     ):
-        # Whether to enable tag fields
-        self.auto_tag_fields = auto_tag_fields
-        # Push start billing cycle. After the subscription is successfully created, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly billing PDF subscriptions and does not re-push historical data. A maximum of data from the last 1 year can be pushed.
+        # The start billing cycle for data push. After a successful subscription, the system automatically pushes data from the start billing cycle to the current time. This parameter is invalid for monthly bill PDF subscriptions and historical data is not pushed again. Data for up to the last year can be pushed.
         self.begin_billing_cycle = begin_billing_cycle
-        # Name of the OSS bucket where files are stored.
+        # The name of the OSS bucket where files are stored.
         self.oss_bucket_name = oss_bucket_name
-        # UID of the OSS owner that stores the files. Specify this parameter if you subscribe as a BID/ReSeller and want to push data to the OSS of a sub-account. The specified account must be a sub-account of the calling account and must be granted the AliyunConsumeDump2OSSRole permission. Regular users do not need to specify this parameter. The default value is the calling account.
+        # The UID of the OSS bucket owner. Specify this parameter if the subscription is made by a bidder or reseller and data needs to be pushed to the OSS bucket of a RAM user. The target account must be a RAM user of the calling account and must be granted the AliyunConsumeDump2OSSRole permission. Regular users do not need to specify this parameter. By default, the calling account is used.
         self.oss_bucket_owner_account_id = oss_bucket_owner_account_id
-        # OSS bucket storage path.
+        # The storage path in the OSS bucket.
         self.oss_bucket_path = oss_bucket_path
-        # Name of the subscription source.
+        # The name of the subscription source.
         self.report_source_name = report_source_name
-        # Type of the subscription source. Valid values: OSS and MC.
+        # The type of the subscription source, such as OSS or MC.
         self.report_source_type = report_source_type
-        # Billing subscription task ID.
+        # The ID of the bill subscription task.
         self.report_task_id = report_task_id
-        # Subscription type. Valid values:
-        # - BillingItemDetailForBillingPeriod: billing item consumption details.
-        # - InstanceDetailForBillingPeriod: instance consumption details.
-        # - BillingItemDetailMonthly: billing item consumption summary by billing cycle.
+        # The subscription type. Valid values:
+        # - BillingItemDetailForBillingPeriod: billing item consumption details
+        # - InstanceDetailForBillingPeriod: instance consumption details
+        # - BillingItemDetailMonthly: billing item consumption summary by billing cycle
         self.report_type = report_type
-        # Specified subscribed fields
-        self.selected_fields = selected_fields
-        # Time when the subscription was created.
+        # The time when the subscription was created.
         self.subscribe_create_time = subscribe_create_time
 
     def validate(self):
@@ -110,9 +104,6 @@ class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.auto_tag_fields is not None:
-            result['AutoTagFields'] = self.auto_tag_fields
-
         if self.begin_billing_cycle is not None:
             result['BeginBillingCycle'] = self.begin_billing_cycle
 
@@ -137,9 +128,6 @@ class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
         if self.report_type is not None:
             result['ReportType'] = self.report_type
 
-        if self.selected_fields is not None:
-            result['SelectedFields'] = self.selected_fields
-
         if self.subscribe_create_time is not None:
             result['SubscribeCreateTime'] = self.subscribe_create_time
 
@@ -147,9 +135,6 @@ class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AutoTagFields') is not None:
-            self.auto_tag_fields = m.get('AutoTagFields')
-
         if m.get('BeginBillingCycle') is not None:
             self.begin_billing_cycle = m.get('BeginBillingCycle')
 
@@ -173,9 +158,6 @@ class ListReportDefinitionsResponseBodyReportDefinitions(DaraModel):
 
         if m.get('ReportType') is not None:
             self.report_type = m.get('ReportType')
-
-        if m.get('SelectedFields') is not None:
-            self.selected_fields = m.get('SelectedFields')
 
         if m.get('SubscribeCreateTime') is not None:
             self.subscribe_create_time = m.get('SubscribeCreateTime')

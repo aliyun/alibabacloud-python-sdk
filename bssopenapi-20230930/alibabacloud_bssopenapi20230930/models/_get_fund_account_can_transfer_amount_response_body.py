@@ -23,31 +23,31 @@ class GetFundAccountCanTransferAmountResponseBody(DaraModel):
         site: str = None,
         transfer_amount: str = None,
     ):
-        # Available amount
+        # The available amount.
         self.available_amount = available_amount
-        # Cash ledger balance
+        # The cash ledger balance.
         self.cash_amount = cash_amount
-        # Currency
+        # The currency.
         self.currency = currency
-        # Enterprise entity ID of the account owner
+        # The enterprise entity ID of the fund account owner.
         self.fund_account_ecid = fund_account_ecid
-        # Account ID
+        # The fund account ID.
         self.fund_account_id = fund_account_id
-        # Account name
+        # The fund account name.
         self.fund_account_name = fund_account_name
-        # Alibaba Cloud account ID of the fund account owner
+        # The Alibaba Cloud account ID of the fund account owner.
         self.fund_account_owner_account_id = fund_account_owner_account_id
-        # Transferable amount
+        # The maximum transferable amount.
         self.max_transferable_amount = max_transferable_amount
-        # Response metadata
+        # The metadata of the response structure.
         self.metadata = metadata
-        # Primary marketplace
+        # The primary sales site.
         self.nbid = nbid
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Site
+        # The site.
         self.site = site
-        # Transfer ledger balance
+        # The transfer ledger balance.
         self.transfer_amount = transfer_amount
 
     def validate(self):
