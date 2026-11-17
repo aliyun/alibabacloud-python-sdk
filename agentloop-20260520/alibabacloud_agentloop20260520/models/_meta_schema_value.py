@@ -9,7 +9,7 @@ class MetaSchemaValue(DaraModel):
         self,
         type: str = None,
     ):
-        # The dataset field types. Valid values: text, long, double, and json.
+        # The dataset field type. Valid values: text, long, double, and json.
         self.type = type
 
     def validate(self):

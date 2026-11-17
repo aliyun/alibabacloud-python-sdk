@@ -16,11 +16,11 @@ class ListAgentSpacesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The information about the AgentSpaces.
+        # The AgentSpaces information.
         self.agent_spaces = agent_spaces
         # The maximum number of returned results.
         self.max_results = max_results
-        # The pagination token. This parameter is empty if there are no more pages.
+        # The pagination token. This parameter is empty if no next page exists.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -108,7 +108,7 @@ class ListAgentSpacesResponseBodyAgentSpaces(DaraModel):
         self.region_id = region_id
         # The name of the Simple Log Service project.
         self.sls_project = sls_project
-        # Returns only the tags of AgentSpaces that are active in the current region and match the local instance. An empty array is returned when it is confirmed that there are no tags. This field is omitted for entries in other regions, inactive entries, or entries that do not match the local instance. Omission of this field does not indicate the absence of tags.
+        # Returns only AgentSpace tags that are active in the current region and match the local instance. An empty array is returned when it is confirmed that no tags exist. This field is omitted for entries in other regions, inactive entries, or entries that do not match the local instance. Omission of this field does not indicate the absence of tags.
         self.tags = tags
         # The update time.
         # 
@@ -238,7 +238,7 @@ class ListAgentSpacesResponseBodyAgentSpacesMseNamespace(DaraModel):
         namespace_id: str = None,
         namespace_name: str = None,
     ):
-        # The method used to attach the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
+        # The attach method for the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
         self.bind_type = bind_type
         # The ID of the MSE namespace.
         self.namespace_id = namespace_id

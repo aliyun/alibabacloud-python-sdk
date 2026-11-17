@@ -24,7 +24,7 @@ class ListOptimizeRunsResponseBody(DaraModel):
         self.optimize_runs = optimize_runs
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -111,7 +111,7 @@ class ListOptimizeRunsResponseBodyOptimizeRuns(DaraModel):
         self.error_code = error_code
         # The error message.
         self.error_message = error_message
-        # The execution summary and finite-state information. To obtain complete result references, frozen outputs, and publish receipts, call GetOptimizeRun.
+        # The execution summary and finite-state information. Complete result references, frozen outputs, and publish receipts can be obtained by calling GetOptimizeRun.
         self.extra = extra
         # The completion time.
         self.finish_time = finish_time
@@ -123,7 +123,7 @@ class ListOptimizeRunsResponseBodyOptimizeRuns(DaraModel):
         self.optimize_task_name = optimize_task_name
         # The current execution progress. The fields are defined by the task type.
         self.progress = progress
-        # The initial start time.
+        # The first start time.
         self.start_time = start_time
         # The execution status.
         self.status = status
@@ -131,11 +131,11 @@ class ListOptimizeRunsResponseBodyOptimizeRuns(DaraModel):
         self.trajectory_count = trajectory_count
         # The trigger type.
         self.trigger_type = trigger_type
-        # The snapshot of the task type.
+        # The task type snapshot.
         self.type = type
-        # The end time of the analysis window in UNIX seconds.
+        # The end time of the analysis window, in UNIX seconds.
         self.window_end_time = window_end_time
-        # The start time of the analysis window in UNIX seconds.
+        # The start time of the analysis window, in UNIX seconds.
         self.window_start_time = window_start_time
 
     def validate(self):

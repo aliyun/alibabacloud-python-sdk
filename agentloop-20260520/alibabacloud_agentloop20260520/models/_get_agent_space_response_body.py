@@ -42,6 +42,7 @@ class GetAgentSpaceResponseBody(DaraModel):
         self.request_id = request_id
         # The name of the Simple Log Service project.
         self.sls_project = sls_project
+        # The complete standard tags of the active AgentSpace in the current region. An empty array is returned if it is confirmed that no tags exist. This field is omitted if the AgentSpace is not active or the tags cannot be determined. The omission of this field does not indicate that no tags exist.
         self.tags = tags
         # The update time.
         # 
@@ -145,7 +146,9 @@ class GetAgentSpaceResponseBodyTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value, which can be an empty string.
         self.value = value
 
     def validate(self):
@@ -181,7 +184,7 @@ class GetAgentSpaceResponseBodyMseNamespace(DaraModel):
         namespace_id: str = None,
         namespace_name: str = None,
     ):
-        # The attach type of the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that an existing namespace is selected and attached when the AgentSpace is created.
+        # The attach type of the MSE namespace. AutoCreated indicates automatic creation by AgentLoop. UserSelected indicates that you select and attach an existing namespace when creating the AgentSpace.
         self.bind_type = bind_type
         # The ID of the MSE namespace.
         self.namespace_id = namespace_id

@@ -17,7 +17,7 @@ class UpdateEvaluatorSkillRequest(DaraModel):
         files: List[main_models.UpdateEvaluatorSkillRequestFiles] = None,
         client_token: str = None,
     ):
-        # The AgentSpace name.
+        # The name of the AgentSpace.
         # 
         # This parameter is required.
         self.agent_space = agent_space
@@ -25,11 +25,11 @@ class UpdateEvaluatorSkillRequest(DaraModel):
         self.description = description
         # The display name of the skill.
         self.display_name = display_name
-        # Specifies whether to enable the skill.
+        # Specifies whether the skill is enabled.
         self.enable = enable
-        # The list of skill files. When provided, the skill file content is updated.
+        # The list of skill files. If specified, the content of the skill files is updated.
         self.files = files
-        # The idempotency token. CloudSpec declares this query parameter, but the backend does not currently perform idempotency comparison.
+        # The idempotency token. CloudSpec declares this query parameter, but the backend does not currently perform idempotency checks.
         self.client_token = client_token
 
     def validate(self):
@@ -97,15 +97,15 @@ class UpdateEvaluatorSkillRequestFiles(DaraModel):
         name: str = None,
         remark: str = None,
     ):
-        # The skill file content.
+        # The content of the skill file.
         # 
         # This parameter is required.
         self.content = content
-        # The skill file name.
+        # The name of the skill file.
         # 
         # This parameter is required.
         self.name = name
-        # The file remark.
+        # The remark for the file.
         self.remark = remark
 
     def validate(self):

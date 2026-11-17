@@ -18,13 +18,13 @@ class ListEvaluatorsResponseBody(DaraModel):
     ):
         # The list of evaluator summaries.
         self.evaluators = evaluators
-        # The number of entries per page used in this request.
+        # The number of entries per page used for this request.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of evaluators that match the filter conditions.
+        # The total number of evaluators that meet the conditions.
         self.total = total
 
     def validate(self):
@@ -93,9 +93,9 @@ class ListEvaluatorsResponseBodyEvaluators(DaraModel):
         type: str = None,
         updated_at: int = None,
     ):
-        # The list of annotations.
+        # The list of annotation tags.
         self.annotations = annotations
-        # The creation time, in seconds-level UNIX timestamp.
+        # The creation time. The value is a UNIX timestamp in seconds.
         self.created_at = created_at
         # The evaluator description.
         self.description = description
@@ -111,7 +111,7 @@ class ListEvaluatorsResponseBodyEvaluators(DaraModel):
         self.properties = properties
         # The evaluator type.
         self.type = type
-        # The update time, in seconds-level UNIX timestamp.
+        # The update time. The value is a UNIX timestamp in seconds.
         self.updated_at = updated_at
 
     def validate(self):

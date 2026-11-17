@@ -16,15 +16,15 @@ class ListOptimizeTasksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of results per page.
+        # The maximum number of results returned per page.
         self.max_results = max_results
-        # The pagination token for the next page.
+        # The token for the next page.
         self.next_token = next_token
         # The list of optimization tasks.
         self.optimize_tasks = optimize_tasks
         # The request ID.
         self.request_id = request_id
-        # The total count.
+        # The total number of tasks.
         self.total_count = total_count
 
     def validate(self):
@@ -92,23 +92,23 @@ class ListOptimizeTasksResponseBodyOptimizeTasks(DaraModel):
         type: str = None,
         update_time: str = None,
     ):
-        # The scheduling checkpoint that stores states such as the general scheduling watermark.
+        # The scheduling checkpoint, which stores states such as the general scheduling watermark.
         self.checkpoint = checkpoint
         # The type-specific configuration. For ExperienceMining and SkillOptimize, optional prompts support only inline Markdown, and the body is stored in inputs.prompt.content (non-empty UTF-8, up to 16 KiB).
         self.config = config
-        # The creation time.
+        # The time when the task was created.
         self.create_time = create_time
-        # The next scheduling trigger time.
+        # The next scheduled trigger time.
         self.next_trigger_time = next_trigger_time
         # The name of the optimization task.
         self.optimize_task_name = optimize_task_name
         # The region ID.
         self.region_id = region_id
-        # The task status.
+        # The status of the task.
         self.status = status
         # The type of the optimization task. Valid values: ExperienceMining, SkillOptimize, EfficiencyAnalysis, SOPGeneration, EvalMining, PolicyMining, and AssetMining.
         self.type = type
-        # The update time.
+        # The time when the task was updated.
         self.update_time = update_time
 
     def validate(self):

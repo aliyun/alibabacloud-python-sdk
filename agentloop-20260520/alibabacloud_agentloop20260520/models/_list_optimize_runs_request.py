@@ -13,15 +13,15 @@ class ListOptimizeRunsRequest(DaraModel):
         window_start_time_begin: int = None,
         window_start_time_end: int = None,
     ):
-        # The maximum number of entries to return. Default value: 20. Maximum value: 100.
+        # The maximum number of results to return. Default value: 20. Maximum value: 100.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The status used to filter results.
+        # The status used to filter the results.
         self.status = status
-        # The lower bound of the window start time in UNIX seconds.
+        # The lower bound of the window start time, in UNIX seconds.
         self.window_start_time_begin = window_start_time_begin
-        # The upper bound of the window start time in UNIX seconds.
+        # The upper bound of the window start time, in UNIX seconds.
         self.window_start_time_end = window_start_time_end
 
     def validate(self):

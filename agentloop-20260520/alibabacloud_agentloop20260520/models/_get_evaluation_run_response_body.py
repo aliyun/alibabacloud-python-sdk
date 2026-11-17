@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_agentloop20260520 import models as main_models
 from darabonba.model import DaraModel
@@ -16,6 +16,7 @@ class GetEvaluationRunResponseBody(DaraModel):
         evaluator_progress: List[main_models.GetEvaluationRunResponseBodyEvaluatorProgress] = None,
         evaluators: str = None,
         failed_count: int = None,
+        quality_metrics: Dict[str, Any] = None,
         request_id: str = None,
         run_id: str = None,
         run_name: str = None,
@@ -26,35 +27,37 @@ class GetEvaluationRunResponseBody(DaraModel):
         total_count: int = None,
         updated_at: int = None,
     ):
-        # The creation time, in seconds-level UNIX timestamp.
+        # The creation time. The value is a UNIX timestamp in seconds.
         self.created_at = created_at
-        # The end time of the run data window, in seconds-level UNIX timestamp.
+        # The end time of the run data window. The value is a UNIX timestamp in seconds.
         self.data_end_time = data_end_time
-        # The start time of the run data window, in seconds-level UNIX timestamp.
+        # The start time of the run data window. The value is a UNIX timestamp in seconds.
         self.data_start_time = data_start_time
-        # The list of progress entries by evaluator.
+        # The progress list by evaluator dimension.
         self.evaluator_progress = evaluator_progress
-        # The snapshot of the evaluator configuration at the time the run was created, in JSON string format.
+        # The snapshot of the evaluator configuration when the run is created. The value is a JSON string.
         self.evaluators = evaluators
         # The number of failed items.
         self.failed_count = failed_count
-        # The request ID.
+        # The snapshot of the evaluator quality scores and coverage for the current run. This field is empty if the feature is not enabled.
+        self.quality_metrics = quality_metrics
+        # The ID of the request.
         self.request_id = request_id
-        # The run ID.
+        # The ID of the run.
         self.run_id = run_id
-        # The run name.
+        # The name of the run.
         self.run_name = run_name
-        # The run type.
+        # The type of the run.
         self.run_type = run_type
-        # The run status.
+        # The status of the run.
         self.status = status
         # The number of successful items.
         self.success_count = success_count
-        # The evaluation task ID.
+        # The ID of the evaluation task.
         self.task_id = task_id
-        # The total number of evaluation items.
+        # The total number of evaluated items.
         self.total_count = total_count
-        # The update time, in seconds-level UNIX timestamp.
+        # The update time. The value is a UNIX timestamp in seconds.
         self.updated_at = updated_at
 
     def validate(self):
@@ -87,6 +90,9 @@ class GetEvaluationRunResponseBody(DaraModel):
 
         if self.failed_count is not None:
             result['failedCount'] = self.failed_count
+
+        if self.quality_metrics is not None:
+            result['qualityMetrics'] = self.quality_metrics
 
         if self.request_id is not None:
             result['requestId'] = self.request_id
@@ -140,6 +146,9 @@ class GetEvaluationRunResponseBody(DaraModel):
         if m.get('failedCount') is not None:
             self.failed_count = m.get('failedCount')
 
+        if m.get('qualityMetrics') is not None:
+            self.quality_metrics = m.get('qualityMetrics')
+
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
@@ -177,13 +186,13 @@ class GetEvaluationRunResponseBodyEvaluatorProgress(DaraModel):
         success_count: int = None,
         total_count: int = None,
     ):
-        # The evaluator name.
+        # The name of the evaluator.
         self.evaluator_name = evaluator_name
-        # The number of failed items for this evaluator.
+        # The number of failed items for the evaluator.
         self.failed_count = failed_count
-        # The number of successful items for this evaluator.
+        # The number of successful items for the evaluator.
         self.success_count = success_count
-        # The total number of items for this evaluator.
+        # The total number of items for the evaluator.
         self.total_count = total_count
 
     def validate(self):

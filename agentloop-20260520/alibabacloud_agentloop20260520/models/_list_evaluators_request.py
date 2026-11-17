@@ -18,9 +18,9 @@ class ListEvaluatorsRequest(DaraModel):
         # 
         # This parameter is required.
         self.agent_space = agent_space
-        # The number of entries per page. Default value: 20. Maximum value: 100.
+        # The number of entries returned per page. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The fuzzy match condition for the evaluator name.
+        # The fuzzy search condition for the evaluator name.
         self.name = name
         # The pagination token for the next page.
         self.next_token = next_token

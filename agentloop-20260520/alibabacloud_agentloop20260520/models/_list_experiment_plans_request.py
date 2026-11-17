@@ -14,17 +14,17 @@ class ListExperimentPlansRequest(DaraModel):
         plan_name: str = None,
         status: str = None,
     ):
-        # The number of entries to return. Default value: 20.
+        # The maximum number of entries to return. Default value: 20.
         self.limit = limit
-        # Optional. Use `offset` and `limit` for pagination instead.
+        # Optional. For pagination, use `offset` and `limit` instead.
         self.max_results = max_results
-        # Optional. Use `offset` and `limit` for pagination instead.
+        # Optional. For pagination, use `offset` and `limit` instead.
         self.next_token = next_token
         # The offset. Default value: 0.
         self.offset = offset
-        # Fuzzy matches experiment plans by plan name.
+        # The plan name used for fuzzy match.
         self.plan_name = plan_name
-        # Filters experiment plans by exact status.
+        # The exact status used for filtering.
         self.status = status
 
     def validate(self):

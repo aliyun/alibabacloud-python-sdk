@@ -14,17 +14,17 @@ class ListPipelineRunsRequest(DaraModel):
         status: str = None,
         trigger_type: str = None,
     ):
-        # The upper bound for filtering by trigger time (triggered_at <= endTime), in UNIX seconds.
+        # The upper bound of the trigger time filter (triggered_at <= endTime). The value is a UNIX timestamp in seconds.
         self.end_time = end_time
         # The maximum number of entries to return in the current request. Default value: 50. Maximum value: 200.
         self.max_results = max_results
-        # The pagination token. Pass the nextToken value from the previous response to retrieve the next page. Do not specify this parameter for the first request.
+        # The pagination token. To retrieve the next page of results, pass the nextToken value from the previous response. Do not specify this parameter for the first request.
         self.next_token = next_token
-        # The lower bound for filtering by trigger time (triggered_at >= startTime), in UNIX seconds.
+        # The lower bound of the trigger time filter (triggered_at >= startTime). The value is a UNIX timestamp in seconds.
         self.start_time = start_time
-        # Filters runs by status. Valid values: Pending, Running, Succeeded, Failed, and Cancelled. If you do not specify this parameter, no filtering is applied.
+        # Filters the results by run status. Valid values: Pending, Running, Succeeded, Failed, and Cancelled. If you do not specify this parameter, the results are not filtered by status.
         self.status = status
-        # Filters runs by trigger type. Valid values: Continuous, RunOnce, and Scheduled. If you do not specify this parameter, no filtering is applied.
+        # Filters the results by trigger type. Valid values: Manual, Scheduled, and RunOnce. If you do not specify this parameter, the results are not filtered by trigger type.
         self.trigger_type = trigger_type
 
     def validate(self):

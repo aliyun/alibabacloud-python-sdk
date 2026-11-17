@@ -16,11 +16,11 @@ class ListPipelineRunsResponseBody(DaraModel):
         runs: List[main_models.ListPipelineRunsResponseBodyRuns] = None,
         total_count: int = None,
     ):
-        # The maximum number of entries per page specified in the request, echoed in the response.
+        # The maximum number of entries per page specified in the request. This value is echoed in the response.
         self.max_results = max_results
         # The token for the next page. An empty string indicates that the current page is the last page.
         self.next_token = next_token
-        # The request ID, which is used to locate the request during troubleshooting.
+        # The request ID. You can use this ID to locate the request when troubleshooting issues.
         self.request_id = request_id
         # The list of runs.
         self.runs = runs
@@ -101,7 +101,7 @@ class ListPipelineRunsResponseBodyRuns(DaraModel):
     ):
         # The name of the AgentSpace to which the run belongs.
         self.agent_space_name = agent_space_name
-        # The current number of retries.
+        # The current attempt number.
         self.attempt = attempt
         # The semantic error code.
         self.error_code = error_code
@@ -111,9 +111,9 @@ class ListPipelineRunsResponseBodyRuns(DaraModel):
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.finish_time = finish_time
-        # The start time of the data window, in UNIX seconds.
+        # The start time of the data window. The value is a UNIX timestamp in seconds.
         self.from_time = from_time
-        # The maximum number of retries.
+        # The maximum number of attempts.
         self.max_attempts = max_attempts
         # The next retry time in ISO 8601 UTC format.
         # 
@@ -123,21 +123,21 @@ class ListPipelineRunsResponseBodyRuns(DaraModel):
         self.pipeline_name = pipeline_name
         # Run Id
         self.run_id = run_id
-        # The execution start time in ISO 8601 UTC format.
+        # The start time of the execution in ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_time = start_time
-        # The run statistics, including processedRows (number of processed rows), processedBytes (number of processed bytes), outputRows (number of output rows), outputBytes (number of output bytes), elapsedMs (elapsed time in milliseconds), cpuSec (CPU seconds), cpuCores (number of CPU cores), and tokenCount (number of consumed tokens).
+        # The run statistics metrics, including processedRows (number of processed rows), processedBytes (number of processed bytes), outputRows (number of output rows), outputBytes (number of output bytes), elapsedMs (elapsed time in milliseconds), cpuSec (CPU seconds), cpuCores (number of CPU cores), and tokenCount (number of consumed tokens).
         self.stats = stats
         # The run status. Valid values: Pending, Running, Succeeded, Failed, and Cancelled.
         self.status = status
-        # The end time of the data window, in UNIX seconds.
+        # The end time of the data window. The value is a UNIX timestamp in seconds.
         self.to_time = to_time
         # The trigger time in ISO 8601 UTC format.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.trigger_time = trigger_time
-        # The trigger type. Valid values: Scheduled, Manual, RunOnce, and Continuous (continuous micro-batch execution).
+        # The trigger type. Valid values: Scheduled, Manual, and RunOnce.
         self.trigger_type = trigger_type
 
     def validate(self):

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, Any
 
 from alibabacloud_agentloop20260520 import models as main_models
 from darabonba.model import DaraModel
@@ -18,6 +18,7 @@ class GetEvaluationTaskResponseBody(DaraModel):
         data_type: str = None,
         description: str = None,
         evaluators: List[main_models.Evaluator] = None,
+        quality_metrics: Dict[str, Any] = None,
         region_id: str = None,
         request_id: str = None,
         run_strategy_config: main_models.RunStrategies = None,
@@ -28,15 +29,15 @@ class GetEvaluationTaskResponseBody(DaraModel):
         task_name: str = None,
         updated_at: int = None,
     ):
-        # The AgentSpace name.
+        # The name of the AgentSpace.
         self.agent_space = agent_space
         # The source of the task.
         self.channel = channel
-        # The data source and execution configuration. Tasks with `dataType=trace` typically contain backend-populated `project`, `storeName`, and `dataScope` fields.
+        # The data source and execution configurations. Tasks with `dataType=trace` typically include the `project`, `storeName`, and `dataScope` fields populated by the backend.
         self.config = config
-        # The creation time, in seconds as a UNIX timestamp.
+        # The creation time, represented as a UNIX timestamp in seconds.
         self.created_at = created_at
-        # The evaluation data filter conditions, returned by the backend as a JSON string.
+        # The filter conditions for evaluation data. The backend returns this value as a JSON string.
         self.data_filter = data_filter
         # The data source type of the evaluation object.
         self.data_type = data_type
@@ -44,23 +45,25 @@ class GetEvaluationTaskResponseBody(DaraModel):
         self.description = description
         # The list of evaluator configurations.
         self.evaluators = evaluators
+        # The quality score and coverage snapshot of the most recent evaluator run. This field is empty when the feature is not enabled.
+        self.quality_metrics = quality_metrics
         # The region to which the task belongs.
         self.region_id = region_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The structured run strategy configuration, including the parsed backfill strategy and continuous evaluation strategy.
+        # The structured configuration of the run strategy, including the parsed backfill strategy and continuous evaluation strategy.
         self.run_strategy_config = run_strategy_config
-        # The evaluation task status.
+        # The status of the evaluation task.
         self.status = status
-        # The key-value pairs of task tags. Empty if not set.
+        # The key-value pairs of task tags. This field is empty when no tags are set.
         self.tags = tags
-        # The evaluation task ID.
+        # The ID of the evaluation task.
         self.task_id = task_id
-        # The evaluation task mode.
+        # The mode of the evaluation task.
         self.task_mode = task_mode
-        # The task name.
+        # The name of the task.
         self.task_name = task_name
-        # The last update time, in seconds as a UNIX timestamp.
+        # The last update time, represented as a UNIX timestamp in seconds.
         self.updated_at = updated_at
 
     def validate(self):
@@ -101,6 +104,9 @@ class GetEvaluationTaskResponseBody(DaraModel):
         if self.evaluators is not None:
             for k1 in self.evaluators:
                 result['evaluators'].append(k1.to_map() if k1 else None)
+
+        if self.quality_metrics is not None:
+            result['qualityMetrics'] = self.quality_metrics
 
         if self.region_id is not None:
             result['regionId'] = self.region_id
@@ -159,6 +165,9 @@ class GetEvaluationTaskResponseBody(DaraModel):
             for k1 in m.get('evaluators'):
                 temp_model = main_models.Evaluator()
                 self.evaluators.append(temp_model.from_map(k1))
+
+        if m.get('qualityMetrics') is not None:
+            self.quality_metrics = m.get('qualityMetrics')
 
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')

@@ -17,7 +17,7 @@ class DescribeRegionsRequest(DaraModel):
         # 
         # This parameter is required.
         self.language = language
-        # The maximum number of entries to return in a single request.
+        # The maximum number of results to return.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

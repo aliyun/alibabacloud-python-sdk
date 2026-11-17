@@ -16,9 +16,9 @@ class ListOptimizeTasksRequest(DaraModel):
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The task status.
+        # Filters the results by status.
         self.status = status
-        # The task type.
+        # Filters the results by task type.
         self.type = type
 
     def validate(self):

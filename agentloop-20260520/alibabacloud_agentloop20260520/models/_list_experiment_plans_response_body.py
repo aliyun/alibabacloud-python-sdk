@@ -18,7 +18,7 @@ class ListExperimentPlansResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of returned entries.
         self.max_results = max_results
         # The token for the next page.
         self.next_token = next_token
@@ -30,7 +30,7 @@ class ListExperimentPlansResponseBody(DaraModel):
         self.plans = plans
         # The request ID.
         self.request_id = request_id
-        # The total number of records that match the filter conditions.
+        # The total number of records that meet the conditions.
         self.total = total
 
     def validate(self):

@@ -15,9 +15,9 @@ class DescribeRegionsResponseBody(DaraModel):
         regions: List[main_models.DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The maximum number of entries returned per request.
+        # The maximum number of records returned in a single request.
         self.max_results = max_results
-        # The pagination token. If no more pages are available, this parameter is empty.
+        # The pagination token. This value is empty if no more pages are available.
         self.next_token = next_token
         # The region information.
         self.regions = regions

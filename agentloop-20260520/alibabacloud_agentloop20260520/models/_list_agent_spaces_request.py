@@ -24,7 +24,7 @@ class ListAgentSpacesRequest(DaraModel):
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
-        # Filters only active AgentSpaces in the current region. Multiple conditions use the AND operator, and keys must be unique. Omitting the value matches the existence of the key, and an empty character string is an exact match for an empty value. An empty array is equivalent to not using label filtering and retains the original cross-region resources.
+        # Filters only active AgentSpaces in the current region. Multiple conditions are combined with AND, and keys must be unique. Omitting the value matches the existence of the key, and an empty character string is an exact match for an empty value. An empty array is equivalent to not using label filtering and retains the original cross-region resources.
         self.tag = tag
 
     def validate(self):

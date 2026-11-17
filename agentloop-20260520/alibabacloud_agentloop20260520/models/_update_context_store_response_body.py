@@ -12,11 +12,11 @@ class UpdateContextStoreResponseBody(DaraModel):
         request_id: str = None,
         strategy_version: int = None,
     ):
-        # The configuration properties after updating the runtime recall switch. This block is not returned for other library update operations.
+        # The attributes returned after the runtime recall switch is updated. This block is not returned for other library update operations.
         self.config = config
-        # The request ID. You can use this ID to locate the request when troubleshooting issues.
+        # The request ID. It is used to locate the request when you troubleshoot issues.
         self.request_id = request_id
-        # The strategy version number that takes effect after the update for the memory type. If the strategy remains unchanged, the version number is the same as before the update.
+        # The strategy version number that takes effect after the update for the memory type. If the strategy remains unchanged, the version is the same as the one before the update.
         self.strategy_version = strategy_version
 
     def validate(self):
@@ -59,9 +59,9 @@ class UpdateContextStoreResponseBodyConfig(DaraModel):
         runtime_recall_enabled: bool = None,
         runtime_recall_revision: int = None,
     ):
-        # Indicates whether runtime recall is allowed after the experience library is updated.
+        # Specifies whether runtime recall is allowed after the experience library is updated.
         self.runtime_recall_enabled = runtime_recall_enabled
-        # The runtime recall property version that takes effect after this update.
+        # The version of the runtime recall attributes that takes effect after the current update.
         self.runtime_recall_revision = runtime_recall_revision
 
     def validate(self):
