@@ -77,9 +77,9 @@ class AppendCasesRequestCases(DaraModel):
         priority: int = None,
         reference_id: str = None,
     ):
-        # Custom variables defined by the customer. The value is a JSON object that contains up to 10 properties. The name and value of each property are defined by the customer.
+        # The custom variables defined by the customer. The format is a JSON object. The object can contain up to 10 properties, and the name and value of each property are defined by the customer.
         self.custom_variables = custom_variables
-        # The phone number of the contact.
+        # The contact number.
         self.phone_number = phone_number
         # The priority.
         self.priority = priority

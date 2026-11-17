@@ -99,13 +99,13 @@ class ListFlashSmsAccessProfilesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The data list.
+        # The list of flash SMS access profiles.
         self.flash_sms_access_profiles = flash_sms_access_profiles
-        # The page number, starting from 1.
+        # The page number. Pages start from 1.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of records that match the conditions.
+        # The total number of entries that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -168,19 +168,19 @@ class ListFlashSmsAccessProfilesResponseBodyDataFlashSmsAccessProfiles(DaraModel
         self.access_profile = access_profile
         # The flash SMS configuration ID.
         self.access_profile_id = access_profile_id
-        # The creation time, in millisecond-level timestamp.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.created_time = created_time
-        # The provider ID. Valid values:\\
-        # Uincall: Beijing Youyin Communication Co., Ltd.\\
-        # ChuangLan: Beijing ChuangLan Cloud Intelligence Information Co., Ltd.\\
-        # ChinaMobile: China Mobile.\\
-        # ShangHaiTianNan: Shanghai Tiannan.\\
-        # HeDao: Galexis.\\
-        # DySms: Alibaba Communication.
+        # The provider ID. Valid values:
+        # - Uincall: Beijing Uincall Communication Co., Ltd.
+        # - ChuangLan: Beijing Chuanglan Cloud Intelligence Information Technology Co., Ltd.
+        # - ChinaMobile: China Mobile
+        # - ShangHaiTianNan: Shanghai Tiannan
+        # - HeDao: Hedaokesi
+        # - DySms: Alibaba Cloud Communications
         self.provider_id = provider_id
         # The provider name.
         self.provider_name = provider_name
-        # The update time, in millisecond-level timestamp.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.updated_time = updated_time
 
     def validate(self):

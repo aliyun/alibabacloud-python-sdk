@@ -13,9 +13,9 @@ class ListFlashSmsAccessProfilesRequest(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The page number, starting from 1.
+        # The page number. Pages start from 1.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

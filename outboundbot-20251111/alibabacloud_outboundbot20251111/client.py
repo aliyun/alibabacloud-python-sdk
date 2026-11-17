@@ -2,7 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_outboundbot20251111 import models as main_models
@@ -293,6 +295,550 @@ class Client(OpenApiClient):
     ) -> main_models.AppendCasesResponse:
         runtime = RuntimeOptions()
         return await self.append_cases_with_options_async(request, runtime)
+
+    def begin_session_with_sse(
+        self,
+        request: main_models.BeginSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.BeginSessionResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.BeginSessionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def begin_session_with_sse_async(
+        self,
+        request: main_models.BeginSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.BeginSessionResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.BeginSessionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def begin_session_with_options(
+        self,
+        request: main_models.BeginSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BeginSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BeginSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def begin_session_with_options_async(
+        self,
+        request: main_models.BeginSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BeginSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BeginSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def begin_session(
+        self,
+        request: main_models.BeginSessionRequest,
+    ) -> main_models.BeginSessionResponse:
+        runtime = RuntimeOptions()
+        return self.begin_session_with_options(request, runtime)
+
+    async def begin_session_async(
+        self,
+        request: main_models.BeginSessionRequest,
+    ) -> main_models.BeginSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.begin_session_with_options_async(request, runtime)
+
+    def begin_trial_session_with_sse(
+        self,
+        request: main_models.BeginTrialSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.BeginTrialSessionResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginTrialSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.BeginTrialSessionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def begin_trial_session_with_sse_async(
+        self,
+        request: main_models.BeginTrialSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.BeginTrialSessionResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginTrialSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.BeginTrialSessionResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def begin_trial_session_with_options(
+        self,
+        request: main_models.BeginTrialSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BeginTrialSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginTrialSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BeginTrialSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def begin_trial_session_with_options_async(
+        self,
+        request: main_models.BeginTrialSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BeginTrialSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.vendor_params):
+            query['VendorParams'] = request.vendor_params
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BeginTrialSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BeginTrialSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def begin_trial_session(
+        self,
+        request: main_models.BeginTrialSessionRequest,
+    ) -> main_models.BeginTrialSessionResponse:
+        runtime = RuntimeOptions()
+        return self.begin_trial_session_with_options(request, runtime)
+
+    async def begin_trial_session_async(
+        self,
+        request: main_models.BeginTrialSessionRequest,
+    ) -> main_models.BeginTrialSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.begin_trial_session_with_options_async(request, runtime)
+
+    def bridge_trial_web_call_with_options(
+        self,
+        request: main_models.BridgeTrialWebCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BridgeTrialWebCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.caller):
+            query['Caller'] = request.caller
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.sample_rate):
+            query['SampleRate'] = request.sample_rate
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BridgeTrialWebCall',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BridgeTrialWebCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bridge_trial_web_call_with_options_async(
+        self,
+        request: main_models.BridgeTrialWebCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BridgeTrialWebCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.caller):
+            query['Caller'] = request.caller
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.sample_rate):
+            query['SampleRate'] = request.sample_rate
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BridgeTrialWebCall',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BridgeTrialWebCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bridge_trial_web_call(
+        self,
+        request: main_models.BridgeTrialWebCallRequest,
+    ) -> main_models.BridgeTrialWebCallResponse:
+        runtime = RuntimeOptions()
+        return self.bridge_trial_web_call_with_options(request, runtime)
+
+    async def bridge_trial_web_call_async(
+        self,
+        request: main_models.BridgeTrialWebCallRequest,
+    ) -> main_models.BridgeTrialWebCallResponse:
+        runtime = RuntimeOptions()
+        return await self.bridge_trial_web_call_with_options_async(request, runtime)
+
+    def bridge_web_call_with_options(
+        self,
+        request: main_models.BridgeWebCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BridgeWebCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.caller):
+            query['Caller'] = request.caller
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.sample_rate):
+            query['SampleRate'] = request.sample_rate
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BridgeWebCall',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BridgeWebCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bridge_web_call_with_options_async(
+        self,
+        request: main_models.BridgeWebCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BridgeWebCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.caller):
+            query['Caller'] = request.caller
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.sample_rate):
+            query['SampleRate'] = request.sample_rate
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.timeout_seconds):
+            query['TimeoutSeconds'] = request.timeout_seconds
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BridgeWebCall',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BridgeWebCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bridge_web_call(
+        self,
+        request: main_models.BridgeWebCallRequest,
+    ) -> main_models.BridgeWebCallResponse:
+        runtime = RuntimeOptions()
+        return self.bridge_web_call_with_options(request, runtime)
+
+    async def bridge_web_call_async(
+        self,
+        request: main_models.BridgeWebCallRequest,
+    ) -> main_models.BridgeWebCallResponse:
+        runtime = RuntimeOptions()
+        return await self.bridge_web_call_with_options_async(request, runtime)
 
     def create_campaign_with_options(
         self,
@@ -1846,6 +2392,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_voice_access_profile_with_options_async(request, runtime)
 
+    def dialogue_with_sse(
+        self,
+        request: main_models.DialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.DialogueResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Dialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.DialogueResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def dialogue_with_sse_async(
+        self,
+        request: main_models.DialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.DialogueResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Dialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.DialogueResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def dialogue_with_options(
+        self,
+        request: main_models.DialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DialogueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Dialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DialogueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dialogue_with_options_async(
+        self,
+        request: main_models.DialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DialogueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'Dialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DialogueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dialogue(
+        self,
+        request: main_models.DialogueRequest,
+    ) -> main_models.DialogueResponse:
+        runtime = RuntimeOptions()
+        return self.dialogue_with_options(request, runtime)
+
+    async def dialogue_async(
+        self,
+        request: main_models.DialogueRequest,
+    ) -> main_models.DialogueResponse:
+        runtime = RuntimeOptions()
+        return await self.dialogue_with_options_async(request, runtime)
+
     def disable_subscription_with_options(
         self,
         request: main_models.DisableSubscriptionRequest,
@@ -1915,6 +2637,166 @@ class Client(OpenApiClient):
     ) -> main_models.DisableSubscriptionResponse:
         runtime = RuntimeOptions()
         return await self.disable_subscription_with_options_async(request, runtime)
+
+    def end_session_with_options(
+        self,
+        request: main_models.EndSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EndSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EndSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EndSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def end_session_with_options_async(
+        self,
+        request: main_models.EndSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EndSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EndSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EndSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def end_session(
+        self,
+        request: main_models.EndSessionRequest,
+    ) -> main_models.EndSessionResponse:
+        runtime = RuntimeOptions()
+        return self.end_session_with_options(request, runtime)
+
+    async def end_session_async(
+        self,
+        request: main_models.EndSessionRequest,
+    ) -> main_models.EndSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.end_session_with_options_async(request, runtime)
+
+    def end_trial_session_with_options(
+        self,
+        request: main_models.EndTrialSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EndTrialSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EndTrialSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EndTrialSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def end_trial_session_with_options_async(
+        self,
+        request: main_models.EndTrialSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EndTrialSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EndTrialSession',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EndTrialSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def end_trial_session(
+        self,
+        request: main_models.EndTrialSessionRequest,
+    ) -> main_models.EndTrialSessionResponse:
+        runtime = RuntimeOptions()
+        return self.end_trial_session_with_options(request, runtime)
+
+    async def end_trial_session_async(
+        self,
+        request: main_models.EndTrialSessionRequest,
+    ) -> main_models.EndTrialSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.end_trial_session_with_options_async(request, runtime)
 
     def get_call_detail_record_with_options(
         self,
@@ -2145,6 +3027,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetCaseDetailResponse:
         runtime = RuntimeOptions()
         return await self.get_case_detail_with_options_async(request, runtime)
+
+    def get_data_channel_credential_with_options(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataChannelCredential',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataChannelCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_channel_credential_with_options_async(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataChannelCredential',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataChannelCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_channel_credential(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_channel_credential_with_options(request, runtime)
+
+    async def get_data_channel_credential_async(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_channel_credential_with_options_async(request, runtime)
 
     def get_instance_with_options(
         self,
@@ -2433,6 +3389,158 @@ class Client(OpenApiClient):
     ) -> main_models.GetSubscriptionResponse:
         runtime = RuntimeOptions()
         return await self.get_subscription_with_options_async(request, runtime)
+
+    def get_trial_access_channel_with_options(
+        self,
+        request: main_models.GetTrialAccessChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTrialAccessChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTrialAccessChannel',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTrialAccessChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_trial_access_channel_with_options_async(
+        self,
+        request: main_models.GetTrialAccessChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTrialAccessChannelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTrialAccessChannel',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTrialAccessChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_trial_access_channel(
+        self,
+        request: main_models.GetTrialAccessChannelRequest,
+    ) -> main_models.GetTrialAccessChannelResponse:
+        runtime = RuntimeOptions()
+        return self.get_trial_access_channel_with_options(request, runtime)
+
+    async def get_trial_access_channel_async(
+        self,
+        request: main_models.GetTrialAccessChannelRequest,
+    ) -> main_models.GetTrialAccessChannelResponse:
+        runtime = RuntimeOptions()
+        return await self.get_trial_access_channel_with_options_async(request, runtime)
+
+    def get_trial_data_channel_credential_with_options(
+        self,
+        request: main_models.GetTrialDataChannelCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTrialDataChannelCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTrialDataChannelCredential',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTrialDataChannelCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_trial_data_channel_credential_with_options_async(
+        self,
+        request: main_models.GetTrialDataChannelCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTrialDataChannelCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTrialDataChannelCredential',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTrialDataChannelCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_trial_data_channel_credential(
+        self,
+        request: main_models.GetTrialDataChannelCredentialRequest,
+    ) -> main_models.GetTrialDataChannelCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.get_trial_data_channel_credential_with_options(request, runtime)
+
+    async def get_trial_data_channel_credential_async(
+        self,
+        request: main_models.GetTrialDataChannelCredentialRequest,
+    ) -> main_models.GetTrialDataChannelCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.get_trial_data_channel_credential_with_options_async(request, runtime)
 
     def list_asr_models_with_options(
         self,
@@ -4150,6 +5258,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_voice_access_profiles_with_options_async(request, runtime)
 
+    def make_pilot_call_with_options(
+        self,
+        request: main_models.MakePilotCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MakePilotCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_variables):
+            query['CallVariables'] = request.call_variables
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.number):
+            query['Number'] = request.number
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.verification_code):
+            query['VerificationCode'] = request.verification_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MakePilotCall',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MakePilotCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def make_pilot_call_with_options_async(
+        self,
+        request: main_models.MakePilotCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MakePilotCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_variables):
+            query['CallVariables'] = request.call_variables
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        if not DaraCore.is_null(request.draft_version):
+            query['DraftVersion'] = request.draft_version
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.number):
+            query['Number'] = request.number
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.verification_code):
+            query['VerificationCode'] = request.verification_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MakePilotCall',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MakePilotCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def make_pilot_call(
+        self,
+        request: main_models.MakePilotCallRequest,
+    ) -> main_models.MakePilotCallResponse:
+        runtime = RuntimeOptions()
+        return self.make_pilot_call_with_options(request, runtime)
+
+    async def make_pilot_call_async(
+        self,
+        request: main_models.MakePilotCallRequest,
+    ) -> main_models.MakePilotCallResponse:
+        runtime = RuntimeOptions()
+        return await self.make_pilot_call_with_options_async(request, runtime)
+
     def pause_campaign_with_options(
         self,
         request: main_models.PauseCampaignRequest,
@@ -4449,6 +5655,190 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitCampaignResponse:
         runtime = RuntimeOptions()
         return await self.submit_campaign_with_options_async(request, runtime)
+
+    def trial_dialogue_with_sse(
+        self,
+        request: main_models.TrialDialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.TrialDialogueResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TrialDialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.TrialDialogueResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def trial_dialogue_with_sse_async(
+        self,
+        request: main_models.TrialDialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.TrialDialogueResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TrialDialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.TrialDialogueResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def trial_dialogue_with_options(
+        self,
+        request: main_models.TrialDialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TrialDialogueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TrialDialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TrialDialogueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def trial_dialogue_with_options_async(
+        self,
+        request: main_models.TrialDialogueRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TrialDialogueResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extras):
+            query['Extras'] = request.extras
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.script_id):
+            query['ScriptId'] = request.script_id
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.utterance):
+            query['Utterance'] = request.utterance
+        if not DaraCore.is_null(request.visitor_token):
+            query['VisitorToken'] = request.visitor_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'TrialDialogue',
+            version = '2025-11-11',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TrialDialogueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def trial_dialogue(
+        self,
+        request: main_models.TrialDialogueRequest,
+    ) -> main_models.TrialDialogueResponse:
+        runtime = RuntimeOptions()
+        return self.trial_dialogue_with_options(request, runtime)
+
+    async def trial_dialogue_async(
+        self,
+        request: main_models.TrialDialogueRequest,
+    ) -> main_models.TrialDialogueResponse:
+        runtime = RuntimeOptions()
+        return await self.trial_dialogue_with_options_async(request, runtime)
 
     def update_clone_voice_with_options(
         self,

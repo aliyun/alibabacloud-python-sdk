@@ -30,7 +30,7 @@ class GetCampaignResponseBody(DaraModel):
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -129,13 +129,13 @@ class GetCampaignResponseBodyData(DaraModel):
         self.cases_connected = cases_connected
         # The number of uncompleted cases.
         self.cases_uncompleted = cases_uncompleted
-        # The number of cases that were attempted but not completed.
+        # The number of attempted but uncompleted cases.
         self.cases_uncompleted_after_attempted = cases_uncompleted_after_attempted
         # The completion rate.
         self.completed_rate = completed_rate
-        # The time when the campaign was created.
+        # The creation time.
         self.created_time = created_time
-        # The fixed number of concurrent calls.
+        # The fixed concurrency.
         self.fixed_quota = fixed_quota
         # The maximum number of retries.
         self.max_attempt_count = max_attempt_count
@@ -143,21 +143,21 @@ class GetCampaignResponseBodyData(DaraModel):
         self.min_attempt_interval = min_attempt_interval
         # The name of the campaign.
         self.name = name
-        # The list of caller numbers.
+        # The list of calling numbers.
         self.numbers = numbers
         # The planned end time.
         self.planned_end_time = planned_end_time
         # The planned start time.
         self.planned_start_time = planned_start_time
-        # Indicates whether the campaign continues to run until the planned end time after all contacts have been called.
+        # Specifies whether to continue running the campaign until the end time after all contacts have been called.
         self.run_until_end_time = run_until_end_time
         # The scenario ID.
         self.script_id = script_id
-        # The state of the campaign.
+        # The status of the campaign.
         self.state = state
         # The total number of cases.
         self.total_cases = total_cases
-        # The time when the campaign was last updated.
+        # The update time.
         self.updated_time = updated_time
         # The weight of the campaign.
         self.weight = weight

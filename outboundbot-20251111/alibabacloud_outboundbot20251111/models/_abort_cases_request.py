@@ -13,7 +13,7 @@ class AbortCasesRequest(DaraModel):
         instance_id: str = None,
         phone_numbers: List[str] = None,
     ):
-        # The ID of the predictive outbound call campaign.
+        # The predictive outbound call campaign ID.
         # 
         # This parameter is required.
         self.campaign_id = campaign_id

@@ -17,19 +17,19 @@ class CreateCampaignResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code of the operation.
+        # The API status code.
         self.code = code
         # The returned data, which is the task ID.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The message returned by the operation.
+        # The message returned by the API.
         self.message = message
         # The variable values in the error message.
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

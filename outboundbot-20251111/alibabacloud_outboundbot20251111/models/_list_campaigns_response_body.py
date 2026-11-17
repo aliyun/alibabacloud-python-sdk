@@ -20,7 +20,7 @@ class ListCampaignsResponseBody(DaraModel):
     ):
         # The result code.
         self.code = code
-        # The paged query result.
+        # The paged query results.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -30,7 +30,7 @@ class ListCampaignsResponseBody(DaraModel):
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -103,9 +103,9 @@ class ListCampaignsResponseBodyData(DaraModel):
         self.list = list
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
-        # The total number of records.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -191,13 +191,13 @@ class ListCampaignsResponseBodyDataList(DaraModel):
         self.cases_connected = cases_connected
         # The number of uncompleted cases.
         self.cases_uncompleted = cases_uncompleted
-        # The number of cases that were attempted but not completed.
+        # The number of attempted but uncompleted cases.
         self.cases_uncompleted_after_attempted = cases_uncompleted_after_attempted
         # The completion rate.
         self.completed_rate = completed_rate
-        # The time when the campaign was created.
+        # The creation time.
         self.created_time = created_time
-        # The fixed number of concurrent calls.
+        # The fixed concurrency.
         self.fixed_quota = fixed_quota
         # The maximum number of retries.
         self.max_attempt_count = max_attempt_count
@@ -209,7 +209,7 @@ class ListCampaignsResponseBodyDataList(DaraModel):
         self.planned_end_time = planned_end_time
         # The planned start time.
         self.planned_start_time = planned_start_time
-        # Indicates whether the campaign continues to run until the planned end time after all contacts have been called.
+        # Specifies whether to continue running the campaign until the end time when all contacts have been called.
         self.run_until_end_time = run_until_end_time
         # The IVR flow ID.
         self.script_id = script_id
@@ -217,9 +217,9 @@ class ListCampaignsResponseBodyDataList(DaraModel):
         self.state = state
         # The total number of cases.
         self.total_cases = total_cases
-        # The time when the campaign was last updated.
+        # The update time.
         self.updated_time = updated_time
-        # The weight of the campaign.
+        # The campaign weight.
         self.weight = weight
 
     def validate(self):

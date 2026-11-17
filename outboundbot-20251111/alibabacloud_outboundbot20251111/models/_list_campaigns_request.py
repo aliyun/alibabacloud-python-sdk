@@ -21,17 +21,17 @@ class ListCampaignsRequest(DaraModel):
         self.actual_start_time_from = actual_start_time_from
         # The latest actual start time.
         self.actual_start_time_to = actual_start_time_to
-        # The instance ID of the outbound robot.
+        # The outbound instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the campaign.
+        # The name of the task.
         self.name = name
         # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         # 
         # This parameter is required.
         self.page_size = page_size
@@ -39,7 +39,7 @@ class ListCampaignsRequest(DaraModel):
         self.planned_start_time_from = planned_start_time_from
         # The latest planned start time.
         self.planned_start_time_to = planned_start_time_to
-        # The status of the campaign.
+        # The status of the task.
         self.state = state
 
     def validate(self):

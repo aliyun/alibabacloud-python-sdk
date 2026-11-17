@@ -10,11 +10,11 @@ class GetCampaignRequest(DaraModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the outbound task.
+        # The ID of the outbound campaign.
         # 
         # This parameter is required.
         self.campaign_id = campaign_id
-        # The instance ID of the outbound robot.
+        # The outbound instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

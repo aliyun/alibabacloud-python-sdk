@@ -1,3 +1,18 @@
+2026-11-17 Version: 1.7.0
+- Support API BeginSession.
+- Support API BeginTrialSession.
+- Support API BridgeTrialWebCall.
+- Support API BridgeWebCall.
+- Support API Dialogue.
+- Support API EndSession.
+- Support API EndTrialSession.
+- Support API GetDataChannelCredential.
+- Support API GetTrialAccessChannel.
+- Support API GetTrialDataChannelCredential.
+- Support API MakePilotCall.
+- Support API TrialDialogue.
+
+
 2026-11-06 Version: 1.6.4
 - Generated python 2025-11-11 for OutboundBot.
 

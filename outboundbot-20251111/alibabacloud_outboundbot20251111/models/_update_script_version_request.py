@@ -23,15 +23,15 @@ class UpdateScriptVersionRequest(DaraModel):
         self.instance_id = instance_id
         # The interaction configuration.
         self.interaction_config = interaction_config
-        # The label configurations.
+        # The label configuration.
         self.label_configs = label_configs
         # The scenario ID.
         self.script_id = script_id
         # The dialogue capability configuration.
         self.script_profile = script_profile
-        # The Text-to-Speech (TTS) configuration.
+        # The TTS configuration.
         self.synthesizer_config = synthesizer_config
-        # The Automatic Speech Recognition (ASR) configuration.
+        # The ASR configuration.
         self.transcriber_config = transcriber_config
         # The version ID.
         self.version_id = version_id
@@ -133,9 +133,9 @@ class UpdateScriptVersionRequestTranscriberConfig(DaraModel):
     ):
         # The ASR correction dictionary.
         self.correction_rules = correction_rules
-        # The custom language model ID for ASR.
+        # The ID of the custom language model for ASR.
         self.customization_id = customization_id
-        # The silence detection threshold. When the silence interval between speech segments exceeds x milliseconds, sentence segmentation is triggered (Voice Activity Detection, or VAD).
+        # The silence detection timeout. A sentence break is triggered when the speech interval exceeds the specified number of milliseconds. This is also known as voice activity detection (VAD).
         self.end_silence_timeout = end_silence_timeout
         # The ASR model.
         self.model = model
@@ -145,13 +145,13 @@ class UpdateScriptVersionRequestTranscriberConfig(DaraModel):
         self.nls_access_type = nls_access_type
         # The ASR engine.
         self.nls_engine = nls_engine
-        # The noise threshold. Valid values: -100 to 100.
+        # The noise threshold. Valid values: -100 to 100. 
         # 
-        # A value closer to -100 increases the probability that noise is classified as speech.
+        # A value closer to -100 indicates a higher probability that noise is recognized as speech.
         # 
-        # A value closer to +100 increases the probability that speech is classified as noise.
+        # A value closer to 100 indicates a higher probability that speech is recognized as noise.
         self.speech_noise_threshold = speech_noise_threshold
-        # The hot word list ID. You can obtain this ID from the hot word management page.
+        # The ID of the hot word table. You can obtain the ID from the hot word management page.
         self.vocabulary_id = vocabulary_id
 
     def validate(self):
@@ -238,7 +238,7 @@ class UpdateScriptVersionRequestTranscriberConfigNlsAccessProfile(DaraModel):
         self,
         access_profile_id: str = None,
     ):
-        # The third-party speech configuration ID. This parameter is required when using third-party ASR services such as Doubao or iFLYTEK.
+        # The ID of the third-party speech configuration. This parameter is required when you use third-party ASR services such as Doubao or iFlytek.
         self.access_profile_id = access_profile_id
 
     def validate(self):
@@ -319,11 +319,11 @@ class UpdateScriptVersionRequestSynthesizerConfig(DaraModel):
         self.nls_access_type = nls_access_type
         # The TTS engine.
         self.nls_engine = nls_engine
-        # The pitch rate.\\
+        # The pitch.\\
         # Valid values: -500 to 500.\\
         # Default value: 0.
         self.pitch_rate = pitch_rate
-        # The TTS pronunciation correction dictionary.
+        # The TTS correction dictionary.
         self.pron_rules = pron_rules
         # The speech rate.\\
         # Valid values: -500 to 500.\\
@@ -421,9 +421,9 @@ class UpdateScriptVersionRequestSynthesizerConfigPronRules(DaraModel):
         pattern: str = None,
         replacement: str = None,
     ):
-        # The commonly mispronounced word or phrase.
+        # The easily mispronounced character or word.
         self.pattern = pattern
-        # The homophonic word or phrase for correct pronunciation.
+        # The homophone character or word.
         self.replacement = replacement
 
     def validate(self):
@@ -457,7 +457,7 @@ class UpdateScriptVersionRequestSynthesizerConfigNlsAccessProfile(DaraModel):
         self,
         access_profile_id: str = None,
     ):
-        # The third-party speech configuration ID. This parameter is required when using third-party ASR services such as Doubao or iFLYTEK.
+        # The ID of the third-party speech configuration. This parameter is required when you use third-party ASR services such as Doubao or iFlytek.
         self.access_profile_id = access_profile_id
 
     def validate(self):
@@ -493,15 +493,15 @@ class UpdateScriptVersionRequestScriptProfile(DaraModel):
         nlu_access_type: str = None,
         omni_model: bool = None,
     ):
-        # The AgentKey of the dialogue robot.\\
+        # The AgentKey of the chatbot.\\
         # This parameter is required when NluEngine is set to BEEBOT for the current scenario.
         self.agent_key = agent_key
         # The dialogue agent configuration.
         self.agent_profile = agent_profile
-        # The dialogue robot type.\\
+        # The chatbot type.\\
         # This parameter is required when NluEngine is set to BEEBOT for the current scenario.
         self.builder_type = builder_type
-        # The dialogue robot ID.\\
+        # The chatbot ID.\\
         # This parameter is required when NluEngine is set to BEEBOT for the current scenario.
         self.chatbot_id = chatbot_id
         # The Function Compute configuration.
@@ -597,7 +597,7 @@ class UpdateScriptVersionRequestScriptProfileNluAccessProfile(DaraModel):
         self,
         access_profile_id: str = None,
     ):
-        # The third-party dialogue model configuration ID.
+        # The ID of the third-party dialogue model configuration.
         self.access_profile_id = access_profile_id
 
     def validate(self):
@@ -629,16 +629,16 @@ class UpdateScriptVersionRequestScriptProfileFunctionMeta(DaraModel):
         http_trigger_url: str = None,
         region_id: str = None,
     ):
-        # The function service ID.\\
+        # The ID of the function service.\\
         # This parameter is required when NluEngine is set to FUNCTION for the current scenario.
         self.function_id = function_id
         # The function service name.\\
         # This parameter is required when NluEngine is set to FUNCTION for the current scenario.
         self.function_name = function_name
-        # The function trigger name.\\
+        # The name of the function trigger.\\
         # This parameter is required when NluEngine is set to FUNCTION for the current scenario.
         self.http_trigger_name = http_trigger_name
-        # The function trigger URL.\\
+        # The URL of the function trigger.\\
         # This parameter is required when NluEngine is set to FUNCTION for the current scenario.
         self.http_trigger_url = http_trigger_url
         # The region where the function service resides.\\
@@ -695,9 +695,9 @@ class UpdateScriptVersionRequestScriptProfileAgentProfile(DaraModel):
         prompts_json: str = None,
         script_profile_template_id: str = None,
     ):
-        # The prompt in JSON format.
+        # The prompt JSON.
         self.prompts_json = prompts_json
-        # The scenario template ID.
+        # The ID of the scenario template.
         self.script_profile_template_id = script_profile_template_id
 
     def validate(self):
@@ -782,7 +782,7 @@ class UpdateScriptVersionRequestInteractionConfig(DaraModel):
         silence_detection_config: main_models.UpdateScriptVersionRequestInteractionConfigSilenceDetectionConfig = None,
         transition_config: main_models.UpdateScriptVersionRequestInteractionConfigTransitionConfig = None,
     ):
-        # The background music ID.
+        # The ID of the background music.
         self.background_music_id = background_music_id
         # The barge-in configuration.
         self.barge_in_config = barge_in_config
@@ -865,13 +865,11 @@ class UpdateScriptVersionRequestInteractionConfigTransitionConfig(DaraModel):
         phrase_source: str = None,
         transition_switch: bool = None,
     ):
-        # The prompt for model-generated transition phrases.
+        # The prompt for model generation.
         self.ai_phrase_prompt = ai_phrase_prompt
         # The list of fixed transition phrases.
         self.fixed_phrase_list = fixed_phrase_list
-        # The method for generating transition phrases. Valid values:
-        # - aiGenerated: model-generated.
-        # - fixedPhrase: fixed phrases.
+        # The method for generating transition phrases.\\ Valid values:\\ aiGenerated: model-generated.\\ fixedPhrase: fixed phrase.
         self.phrase_source = phrase_source
         # Specifies whether to enable transition phrases.
         self.transition_switch = transition_switch
@@ -922,13 +920,13 @@ class UpdateScriptVersionRequestInteractionConfigSilenceDetectionConfig(DaraMode
         prompt: str = None,
         timeout: int = None,
     ):
-        # The list of actions to perform during consecutive silence.
+        # The list of operations to execute during continuous silence.
         self.fallback_control_params_list = fallback_control_params_list
-        # The number of consecutive silence rounds before hanging up. This parameter takes effect only when NluEngine is set to PROMPTS.
+        # The maximum number of continuous silence rounds before hanging up.\\ This parameter takes effect when NluEngine is set to PROMPTS in the current scenario.
         self.max_repeats = max_repeats
         # The silence prompt.
         self.prompt = prompt
-        # The silence timeout period, in milliseconds. When the user remains silent for longer than the specified value, the silence timeout script is played. Valid values: 2000 to 10000.
+        # The silence timeout period in milliseconds.\\ When the user remains silent beyond the specified value, the silence timeout script is played.\\ Valid values: 2000 to 10000.
         self.timeout = timeout
 
     def validate(self):
@@ -982,7 +980,7 @@ class UpdateScriptVersionRequestInteractionConfigSilenceDetectionConfigFallbackC
         self,
         type: str = None,
     ):
-        # The action to perform during consecutive silence.
+        # The operation to execute during continuous silence.
         self.type = type
 
     def validate(self):
@@ -1014,9 +1012,9 @@ class UpdateScriptVersionRequestInteractionConfigEndConversationConfig(DaraModel
     ):
         # Specifies whether barge-in is supported during the delayed hang-up waiting period.
         self.barge_in_enabled = barge_in_enabled
-        # The number of seconds to wait after the hang-up statement finishes playing before executing the hang-up action. Valid values: 0 to 5.
+        # The number of seconds to wait after the hang-up script is played before the hang-up action is executed. Valid values: 0 to 5.
         self.delay = delay
-        # The special case interception rules.
+        # The special case interception.
         self.triggers = triggers
 
     def validate(self):
@@ -1067,17 +1065,17 @@ class UpdateScriptVersionRequestInteractionConfigEndConversationConfigTriggers(D
         trigger_type: str = None,
         turn_limit: int = None,
     ):
-        # The statement to play when the turn limit is reached and the hang-up action is executed.
+        # The script to be played when the turn limit is reached and the hang-up action is executed.
         self.closing_statement = closing_statement
         # The list of custom interception keywords.
         self.keywords = keywords
-        # Valid values:
-        # - TurnLimit: maximum interaction turn limit check.
-        # - IntelligentVoiceAssistant: voice assistant detection.
-        # - InteractiveVoiceResponse: extension number transfer.
-        # - KeyWords: custom keyword interception.
+        # The trigger type. Valid values:\\
+        # TurnLimit: Maximum number of interaction turns.\\
+        # IntelligentVoiceAssistant: Intelligent voice assistant.\\
+        # InteractiveVoiceResponse: Extension number transfer.\\
+        # KeyWords: Custom interception.
         self.trigger_type = trigger_type
-        # Executes the hang-up action when the number of interaction turns exceeds x. Valid values: 0 to 100. A value of 0 indicates that the turn-limit hang-up feature is disabled.
+        # The maximum number of interaction turns before the hang-up action is executed. Valid values: 0 to 100. A value of 0 indicates that the hang-up action is not triggered when the turn limit is exceeded.
         self.turn_limit = turn_limit
 
     def validate(self):
@@ -1125,11 +1123,11 @@ class UpdateScriptVersionRequestInteractionConfigBargeInConfig(DaraModel):
         global_barge_in_enabled: bool = None,
         opening_barge_in_enabled: bool = None,
     ):
-        # Specifies whether barge-in is supported during the closing statement.
+        # Specifies whether barge-in is supported for the closing statement.
         self.closing_barge_in_enabled = closing_barge_in_enabled
         # Specifies whether barge-in is supported during the conversation.
         self.global_barge_in_enabled = global_barge_in_enabled
-        # Specifies whether barge-in is supported during the opening greeting.
+        # Specifies whether barge-in is supported for the opening statement.
         self.opening_barge_in_enabled = opening_barge_in_enabled
 
     def validate(self):

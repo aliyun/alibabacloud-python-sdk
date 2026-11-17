@@ -42,13 +42,13 @@ class ListCasesShrinkRequest(DaraModel):
         self.campaign_id = campaign_id
         # Specifies whether the case is completed.
         self.case_completed = case_completed
-        # The list of case IDs.
+        # The case IDs.
         self.case_ids_shrink = case_ids_shrink
-        # The list of disposition codes.
+        # The disposition codes.
         self.disposition_codes_shrink = disposition_codes_shrink
-        # The list of disposition reasons.
+        # The disposition reasons.
         self.disposition_reasons_shrink = disposition_reasons_shrink
-        # Specifies whether it is a draft version.
+        # Specifies whether the version is a draft.
         self.draft_version = draft_version
         # The end time.
         self.end_time = end_time
@@ -84,7 +84,7 @@ class ListCasesShrinkRequest(DaraModel):
         self.script_id = script_id
         # The start time.
         self.start_time = start_time
-        # The list of case statuses.
+        # The case states.
         self.states_shrink = states_shrink
 
     def validate(self):

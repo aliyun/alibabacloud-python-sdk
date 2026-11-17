@@ -19,7 +19,7 @@ class SubmitCampaignResponseBody(DaraModel):
     ):
         # The result code.
         self.code = code
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -29,7 +29,7 @@ class SubmitCampaignResponseBody(DaraModel):
         self.params = params
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

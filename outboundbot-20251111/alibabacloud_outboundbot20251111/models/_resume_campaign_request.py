@@ -10,7 +10,7 @@ class ResumeCampaignRequest(DaraModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the campaign.
+        # The ID of the task.
         # 
         # This parameter is required.
         self.campaign_id = campaign_id

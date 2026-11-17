@@ -44,13 +44,13 @@ class ListCasesRequest(DaraModel):
         self.campaign_id = campaign_id
         # Specifies whether the case is completed.
         self.case_completed = case_completed
-        # The list of case IDs.
+        # The case IDs.
         self.case_ids = case_ids
-        # The list of disposition codes.
+        # The disposition codes.
         self.disposition_codes = disposition_codes
-        # The list of disposition reasons.
+        # The disposition reasons.
         self.disposition_reasons = disposition_reasons
-        # Specifies whether it is a draft version.
+        # Specifies whether the version is a draft.
         self.draft_version = draft_version
         # The end time.
         self.end_time = end_time
@@ -86,7 +86,7 @@ class ListCasesRequest(DaraModel):
         self.script_id = script_id
         # The start time.
         self.start_time = start_time
-        # The list of case statuses.
+        # The case states.
         self.states = states
 
     def validate(self):

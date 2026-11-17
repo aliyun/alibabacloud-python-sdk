@@ -26,7 +26,7 @@ class ListCasesResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
-        # The pass-through parameter.
+        # The pass-through parameters.
         self.params = params
         # The request ID.
         self.request_id = request_id
@@ -99,7 +99,7 @@ class ListCasesResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The case list.
+        # The list of cases.
         self.list = list
         # The current page number.
         self.page_number = page_number
@@ -182,7 +182,7 @@ class ListCasesResponseBodyDataList(DaraModel):
         talk_time: int = None,
         talk_turns: int = None,
     ):
-        # The number of call attempts.
+        # The number of attempts.
         self.attempted_count = attempted_count
         # The caller number.
         self.caller_number = caller_number
@@ -206,7 +206,7 @@ class ListCasesResponseBodyDataList(DaraModel):
         self.instance_id = instance_id
         # The list of labels.
         self.labels = labels
-        # The time of the last call attempt.
+        # The time of the last attempt.
         self.last_attempted_time = last_attempted_time
         # The called number.
         self.phone_number = phone_number
@@ -220,15 +220,15 @@ class ListCasesResponseBodyDataList(DaraModel):
         self.ringing_time = ringing_time
         # The script ID.
         self.script_id = script_id
-        # The name of the script.
+        # The script name.
         self.script_name = script_name
         # The session ID of the last call.
         self.session_id = session_id
-        # The case status.
+        # The case state.
         self.state = state
-        # The call duration.
+        # The talk time.
         self.talk_time = talk_time
-        # The number of dialogue turns.
+        # The number of conversation turns.
         self.talk_turns = talk_turns
 
     def validate(self):
@@ -407,17 +407,17 @@ class ListCasesResponseBodyDataListLabels(DaraModel):
         name: str = None,
         system: bool = None,
     ):
-        # The candidate values of the label.
+        # The candidate values for the label.
         self.candidate_values = candidate_values
-        # Indicates whether the label is collected.
+        # Indicates whether it is collected.
         self.collected = collected
-        # The description of the label.
+        # The label description.
         self.description = description
         # The matched value of the label.
         self.matched_value = matched_value
-        # The name of the label.
+        # The label name.
         self.name = name
-        # Indicates whether the label is a system label.
+        # The system label.
         self.system = system
 
     def validate(self):

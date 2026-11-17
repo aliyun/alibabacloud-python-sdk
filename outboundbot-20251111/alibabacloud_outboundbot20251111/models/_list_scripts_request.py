@@ -18,11 +18,11 @@ class ListScriptsRequest(DaraModel):
         publish_only: bool = None,
         script_ids: List[str] = None,
     ):
-        # The chatbot builder type.
+        # The bot builder type.
         self.builder_type = builder_type
         # The instance ID.
         self.instance_id = instance_id
-        # The script name.
+        # The scenario name.
         self.name = name
         # The NLU engine type.
         self.nlu_engine = nlu_engine
@@ -30,9 +30,9 @@ class ListScriptsRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # Specifies whether to return only published scripts.
+        # Specifies whether to return only published scenarios.
         self.publish_only = publish_only
-        # The list of script IDs.
+        # The list of scenario IDs.
         self.script_ids = script_ids
 
     def validate(self):

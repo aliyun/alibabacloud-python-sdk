@@ -10,11 +10,11 @@ class PauseCampaignRequest(DaraModel):
         campaign_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the campaign.
+        # The task ID.
         # 
         # This parameter is required.
         self.campaign_id = campaign_id
-        # The outbound robot instance ID.
+        # The outbound instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

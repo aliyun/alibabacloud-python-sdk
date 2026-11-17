@@ -13,6 +13,18 @@ from ._append_cases_request import AppendCasesRequest
 from ._append_cases_shrink_request import AppendCasesShrinkRequest
 from ._append_cases_response_body import AppendCasesResponseBody
 from ._append_cases_response import AppendCasesResponse
+from ._begin_session_request import BeginSessionRequest
+from ._begin_session_response_body import BeginSessionResponseBody
+from ._begin_session_response import BeginSessionResponse
+from ._begin_trial_session_request import BeginTrialSessionRequest
+from ._begin_trial_session_response_body import BeginTrialSessionResponseBody
+from ._begin_trial_session_response import BeginTrialSessionResponse
+from ._bridge_trial_web_call_request import BridgeTrialWebCallRequest
+from ._bridge_trial_web_call_response_body import BridgeTrialWebCallResponseBody
+from ._bridge_trial_web_call_response import BridgeTrialWebCallResponse
+from ._bridge_web_call_request import BridgeWebCallRequest
+from ._bridge_web_call_response_body import BridgeWebCallResponseBody
+from ._bridge_web_call_response import BridgeWebCallResponse
 from ._create_campaign_request import CreateCampaignRequest
 from ._create_campaign_shrink_request import CreateCampaignShrinkRequest
 from ._create_campaign_response_body import CreateCampaignResponseBody
@@ -75,9 +87,18 @@ from ._delete_script_response import DeleteScriptResponse
 from ._delete_voice_access_profile_request import DeleteVoiceAccessProfileRequest
 from ._delete_voice_access_profile_response_body import DeleteVoiceAccessProfileResponseBody
 from ._delete_voice_access_profile_response import DeleteVoiceAccessProfileResponse
+from ._dialogue_request import DialogueRequest
+from ._dialogue_response_body import DialogueResponseBody
+from ._dialogue_response import DialogueResponse
 from ._disable_subscription_request import DisableSubscriptionRequest
 from ._disable_subscription_response_body import DisableSubscriptionResponseBody
 from ._disable_subscription_response import DisableSubscriptionResponse
+from ._end_session_request import EndSessionRequest
+from ._end_session_response_body import EndSessionResponseBody
+from ._end_session_response import EndSessionResponse
+from ._end_trial_session_request import EndTrialSessionRequest
+from ._end_trial_session_response_body import EndTrialSessionResponseBody
+from ._end_trial_session_response import EndTrialSessionResponse
 from ._get_call_detail_record_request import GetCallDetailRecordRequest
 from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBody
 from ._get_call_detail_record_response import GetCallDetailRecordResponse
@@ -87,6 +108,9 @@ from ._get_campaign_response import GetCampaignResponse
 from ._get_case_detail_request import GetCaseDetailRequest
 from ._get_case_detail_response_body import GetCaseDetailResponseBody
 from ._get_case_detail_response import GetCaseDetailResponse
+from ._get_data_channel_credential_request import GetDataChannelCredentialRequest
+from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBody
+from ._get_data_channel_credential_response import GetDataChannelCredentialResponse
 from ._get_instance_request import GetInstanceRequest
 from ._get_instance_response_body import GetInstanceResponseBody
 from ._get_instance_response import GetInstanceResponse
@@ -99,6 +123,12 @@ from ._get_script_profile_template_response import GetScriptProfileTemplateRespo
 from ._get_subscription_request import GetSubscriptionRequest
 from ._get_subscription_response_body import GetSubscriptionResponseBody
 from ._get_subscription_response import GetSubscriptionResponse
+from ._get_trial_access_channel_request import GetTrialAccessChannelRequest
+from ._get_trial_access_channel_response_body import GetTrialAccessChannelResponseBody
+from ._get_trial_access_channel_response import GetTrialAccessChannelResponse
+from ._get_trial_data_channel_credential_request import GetTrialDataChannelCredentialRequest
+from ._get_trial_data_channel_credential_response_body import GetTrialDataChannelCredentialResponseBody
+from ._get_trial_data_channel_credential_response import GetTrialDataChannelCredentialResponse
 from ._list_asr_models_request import ListAsrModelsRequest
 from ._list_asr_models_response_body import ListAsrModelsResponseBody
 from ._list_asr_models_response import ListAsrModelsResponse
@@ -161,6 +191,9 @@ from ._list_system_configs_response import ListSystemConfigsResponse
 from ._list_voice_access_profiles_request import ListVoiceAccessProfilesRequest
 from ._list_voice_access_profiles_response_body import ListVoiceAccessProfilesResponseBody
 from ._list_voice_access_profiles_response import ListVoiceAccessProfilesResponse
+from ._make_pilot_call_request import MakePilotCallRequest
+from ._make_pilot_call_response_body import MakePilotCallResponseBody
+from ._make_pilot_call_response import MakePilotCallResponse
 from ._pause_campaign_request import PauseCampaignRequest
 from ._pause_campaign_response_body import PauseCampaignResponseBody
 from ._pause_campaign_response import PauseCampaignResponse
@@ -173,6 +206,9 @@ from ._resume_campaign_response import ResumeCampaignResponse
 from ._submit_campaign_request import SubmitCampaignRequest
 from ._submit_campaign_response_body import SubmitCampaignResponseBody
 from ._submit_campaign_response import SubmitCampaignResponse
+from ._trial_dialogue_request import TrialDialogueRequest
+from ._trial_dialogue_response_body import TrialDialogueResponseBody
+from ._trial_dialogue_response import TrialDialogueResponse
 from ._update_clone_voice_request import UpdateCloneVoiceRequest
 from ._update_clone_voice_response_body import UpdateCloneVoiceResponseBody
 from ._update_clone_voice_response import UpdateCloneVoiceResponse
@@ -216,6 +252,14 @@ from ._update_voice_access_profile_response_body import UpdateVoiceAccessProfile
 from ._update_voice_access_profile_response import UpdateVoiceAccessProfileResponse
 from ._append_cases_request import AppendCasesRequestCases
 from ._append_cases_response_body import AppendCasesResponseBodyData
+from ._begin_session_response_body import BeginSessionResponseBodyDataControlParamsList
+from ._begin_session_response_body import BeginSessionResponseBodyDataExtras
+from ._begin_session_response_body import BeginSessionResponseBodyData
+from ._begin_trial_session_response_body import BeginTrialSessionResponseBodyDataControlParamsList
+from ._begin_trial_session_response_body import BeginTrialSessionResponseBodyDataExtras
+from ._begin_trial_session_response_body import BeginTrialSessionResponseBodyData
+from ._bridge_trial_web_call_response_body import BridgeTrialWebCallResponseBodyData
+from ._bridge_web_call_response_body import BridgeWebCallResponseBodyData
 from ._create_campaign_request import CreateCampaignRequestCases
 from ._create_clone_voice_response_body import CreateCloneVoiceResponseBodyData
 from ._create_flash_sms_access_profile_request import CreateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles
@@ -241,6 +285,9 @@ from ._create_script_version_request import CreateScriptVersionRequestTranscribe
 from ._create_script_version_request import CreateScriptVersionRequestTranscriberConfigNlsAccessProfile
 from ._create_script_version_request import CreateScriptVersionRequestTranscriberConfig
 from ._create_voice_access_profile_request import CreateVoiceAccessProfileRequestProfile
+from ._dialogue_response_body import DialogueResponseBodyDataControlParamsList
+from ._dialogue_response_body import DialogueResponseBodyDataExtras
+from ._dialogue_response_body import DialogueResponseBodyData
 from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyDataLabels
 from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyDataTranscripts
 from ._get_call_detail_record_response_body import GetCallDetailRecordResponseBodyData
@@ -249,11 +296,15 @@ from ._get_case_detail_response_body import GetCaseDetailResponseBodyDataCallDet
 from ._get_case_detail_response_body import GetCaseDetailResponseBodyDataCaseLabels
 from ._get_case_detail_response_body import GetCaseDetailResponseBodyDataCase
 from ._get_case_detail_response_body import GetCaseDetailResponseBodyData
+from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBodyData
 from ._get_instance_response_body import GetInstanceResponseBodyData
 from ._get_recording_response_body import GetRecordingResponseBodyData
 from ._get_script_profile_template_response_body import GetScriptProfileTemplateResponseBodyData
 from ._get_subscription_response_body import GetSubscriptionResponseBodyDataEventList
 from ._get_subscription_response_body import GetSubscriptionResponseBodyData
+from ._get_trial_access_channel_response_body import GetTrialAccessChannelResponseBodyDataChannelScripts
+from ._get_trial_access_channel_response_body import GetTrialAccessChannelResponseBodyData
+from ._get_trial_data_channel_credential_response_body import GetTrialDataChannelCredentialResponseBodyData
 from ._list_asr_models_response_body import ListAsrModelsResponseBodyData
 from ._list_campaigns_response_body import ListCampaignsResponseBodyDataList
 from ._list_campaigns_response_body import ListCampaignsResponseBodyData
@@ -290,6 +341,10 @@ from ._list_system_configs_response_body import ListSystemConfigsResponseBodyDat
 from ._list_voice_access_profiles_response_body import ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfilesProfile
 from ._list_voice_access_profiles_response_body import ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfiles
 from ._list_voice_access_profiles_response_body import ListVoiceAccessProfilesResponseBodyData
+from ._make_pilot_call_response_body import MakePilotCallResponseBodyData
+from ._trial_dialogue_response_body import TrialDialogueResponseBodyDataControlParamsList
+from ._trial_dialogue_response_body import TrialDialogueResponseBodyDataExtras
+from ._trial_dialogue_response_body import TrialDialogueResponseBodyData
 from ._update_flash_sms_access_profile_request import UpdateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles
 from ._update_flash_sms_access_profile_request import UpdateFlashSmsAccessProfileRequestAccessProfile
 from ._update_llm_access_profile_request import UpdateLlmAccessProfileRequestProfile
@@ -326,6 +381,18 @@ __all__ = [
     AppendCasesShrinkRequest,
     AppendCasesResponseBody,
     AppendCasesResponse,
+    BeginSessionRequest,
+    BeginSessionResponseBody,
+    BeginSessionResponse,
+    BeginTrialSessionRequest,
+    BeginTrialSessionResponseBody,
+    BeginTrialSessionResponse,
+    BridgeTrialWebCallRequest,
+    BridgeTrialWebCallResponseBody,
+    BridgeTrialWebCallResponse,
+    BridgeWebCallRequest,
+    BridgeWebCallResponseBody,
+    BridgeWebCallResponse,
     CreateCampaignRequest,
     CreateCampaignShrinkRequest,
     CreateCampaignResponseBody,
@@ -388,9 +455,18 @@ __all__ = [
     DeleteVoiceAccessProfileRequest,
     DeleteVoiceAccessProfileResponseBody,
     DeleteVoiceAccessProfileResponse,
+    DialogueRequest,
+    DialogueResponseBody,
+    DialogueResponse,
     DisableSubscriptionRequest,
     DisableSubscriptionResponseBody,
     DisableSubscriptionResponse,
+    EndSessionRequest,
+    EndSessionResponseBody,
+    EndSessionResponse,
+    EndTrialSessionRequest,
+    EndTrialSessionResponseBody,
+    EndTrialSessionResponse,
     GetCallDetailRecordRequest,
     GetCallDetailRecordResponseBody,
     GetCallDetailRecordResponse,
@@ -400,6 +476,9 @@ __all__ = [
     GetCaseDetailRequest,
     GetCaseDetailResponseBody,
     GetCaseDetailResponse,
+    GetDataChannelCredentialRequest,
+    GetDataChannelCredentialResponseBody,
+    GetDataChannelCredentialResponse,
     GetInstanceRequest,
     GetInstanceResponseBody,
     GetInstanceResponse,
@@ -412,6 +491,12 @@ __all__ = [
     GetSubscriptionRequest,
     GetSubscriptionResponseBody,
     GetSubscriptionResponse,
+    GetTrialAccessChannelRequest,
+    GetTrialAccessChannelResponseBody,
+    GetTrialAccessChannelResponse,
+    GetTrialDataChannelCredentialRequest,
+    GetTrialDataChannelCredentialResponseBody,
+    GetTrialDataChannelCredentialResponse,
     ListAsrModelsRequest,
     ListAsrModelsResponseBody,
     ListAsrModelsResponse,
@@ -474,6 +559,9 @@ __all__ = [
     ListVoiceAccessProfilesRequest,
     ListVoiceAccessProfilesResponseBody,
     ListVoiceAccessProfilesResponse,
+    MakePilotCallRequest,
+    MakePilotCallResponseBody,
+    MakePilotCallResponse,
     PauseCampaignRequest,
     PauseCampaignResponseBody,
     PauseCampaignResponse,
@@ -486,6 +574,9 @@ __all__ = [
     SubmitCampaignRequest,
     SubmitCampaignResponseBody,
     SubmitCampaignResponse,
+    TrialDialogueRequest,
+    TrialDialogueResponseBody,
+    TrialDialogueResponse,
     UpdateCloneVoiceRequest,
     UpdateCloneVoiceResponseBody,
     UpdateCloneVoiceResponse,
@@ -529,6 +620,14 @@ __all__ = [
     UpdateVoiceAccessProfileResponse,
     AppendCasesRequestCases,
     AppendCasesResponseBodyData,
+    BeginSessionResponseBodyDataControlParamsList,
+    BeginSessionResponseBodyDataExtras,
+    BeginSessionResponseBodyData,
+    BeginTrialSessionResponseBodyDataControlParamsList,
+    BeginTrialSessionResponseBodyDataExtras,
+    BeginTrialSessionResponseBodyData,
+    BridgeTrialWebCallResponseBodyData,
+    BridgeWebCallResponseBodyData,
     CreateCampaignRequestCases,
     CreateCloneVoiceResponseBodyData,
     CreateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles,
@@ -554,6 +653,9 @@ __all__ = [
     CreateScriptVersionRequestTranscriberConfigNlsAccessProfile,
     CreateScriptVersionRequestTranscriberConfig,
     CreateVoiceAccessProfileRequestProfile,
+    DialogueResponseBodyDataControlParamsList,
+    DialogueResponseBodyDataExtras,
+    DialogueResponseBodyData,
     GetCallDetailRecordResponseBodyDataLabels,
     GetCallDetailRecordResponseBodyDataTranscripts,
     GetCallDetailRecordResponseBodyData,
@@ -562,11 +664,15 @@ __all__ = [
     GetCaseDetailResponseBodyDataCaseLabels,
     GetCaseDetailResponseBodyDataCase,
     GetCaseDetailResponseBodyData,
+    GetDataChannelCredentialResponseBodyData,
     GetInstanceResponseBodyData,
     GetRecordingResponseBodyData,
     GetScriptProfileTemplateResponseBodyData,
     GetSubscriptionResponseBodyDataEventList,
     GetSubscriptionResponseBodyData,
+    GetTrialAccessChannelResponseBodyDataChannelScripts,
+    GetTrialAccessChannelResponseBodyData,
+    GetTrialDataChannelCredentialResponseBodyData,
     ListAsrModelsResponseBodyData,
     ListCampaignsResponseBodyDataList,
     ListCampaignsResponseBodyData,
@@ -603,6 +709,10 @@ __all__ = [
     ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfilesProfile,
     ListVoiceAccessProfilesResponseBodyDataVoiceAccessProfiles,
     ListVoiceAccessProfilesResponseBodyData,
+    MakePilotCallResponseBodyData,
+    TrialDialogueResponseBodyDataControlParamsList,
+    TrialDialogueResponseBodyDataExtras,
+    TrialDialogueResponseBodyData,
     UpdateFlashSmsAccessProfileRequestAccessProfileDySmsAccessProfiles,
     UpdateFlashSmsAccessProfileRequestAccessProfile,
     UpdateLlmAccessProfileRequestProfile,
