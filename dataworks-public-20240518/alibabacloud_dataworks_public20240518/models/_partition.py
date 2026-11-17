@@ -14,17 +14,17 @@ class Partition(DaraModel):
         record_count: int = None,
         table_id: str = None,
     ):
-        # The creation time, in millisecond-level timestamp.
+        # The creation time (millisecond timestamp).
         self.create_time = create_time
         # The storage size of the partition, in bytes.
         self.data_size = data_size
-        # The modification time, in millisecond-level timestamp.
+        # The modification time (millisecond timestamp).
         self.modify_time = modify_time
         # The name.
         self.name = name
         # The number of records in the partition.
         self.record_count = record_count
-        # The resource ID of the data table to which the partition belongs.
+        # The ID of the parent data table. Refer to the `Table` object.
         self.table_id = table_id
 
     def validate(self):

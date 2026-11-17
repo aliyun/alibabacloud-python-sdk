@@ -27,7 +27,7 @@ class UpdateTaskAsyncShrinkRequest(DaraModel):
         timeout: int = None,
         trigger_shrink: str = None,
     ):
-        # The client unique code of the node, used to uniquely identify a node. This code is used for asynchronous processing and idempotence. If you do not specify this parameter when creating a node, the system automatically generates a value and binds it to the resource ID. If you specify this parameter when updating or deleting a resource, the value must match the client unique code used when the resource was created.
+        # The client unique code of the node, which is used to uniquely identify a node. This parameter is used to implement asynchronous processing and idempotence. If you do not specify this parameter when you create a node, the system automatically generates one. This code is uniquely bound to the resource ID. If you specify this parameter when you update or delete a resource, it must be the same as the client unique code used when the resource was created.
         self.client_unique_code = client_unique_code
         # The associated data source information.
         self.data_source_shrink = data_source_shrink
@@ -36,8 +36,8 @@ class UpdateTaskAsyncShrinkRequest(DaraModel):
         # The description.
         self.description = description
         # The project environment. Valid values:
-        # - Prod: production
-        # - Dev: development
+        # - Prod: production.
+        # - Dev: development.
         self.env_type = env_type
         # The node ID.
         # 
@@ -46,37 +46,33 @@ class UpdateTaskAsyncShrinkRequest(DaraModel):
         # The input information.
         self.inputs_shrink = inputs_shrink
         # The instance generation mode. Valid values:
-        # - T+1: generates instances the next day.
-        # - Immediately: generates instances immediately. Note: only periodic instances whose scheduled time is more than 10 minutes after the node publish time are generated normally. During the full-to-instance conversion period (22:00–24:00), real-time instance conversion is not supported. You can submit and publish nodes, but new nodes are not automatically converted to instances.
+        # - T+1: generates instances on the next day.
+        # - Immediately: generates instances immediately. Note: Periodic instances are generated normally only if the scheduled time of the node is at least 10 minutes after the node is published. Real-time instance generation is not supported during the full instance generation period (22:00 to 24:00). You can submit and publish nodes, but new nodes are not automatically converted into instances.
         self.instance_mode = instance_mode
         # The name.
         self.name = name
         # The output information.
         self.outputs_shrink = outputs_shrink
-        # The account ID of the node owner. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and hover over the profile picture in the upper-right corner of the top navigation bar to view the account ID. If this parameter is left empty, the Alibaba Cloud account ID of the caller is used by default.
+        # The Alibaba Cloud account ID of the node owner. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and move the mouse over the profile picture in the upper-right corner of the top menu bar to view the account ID. If this parameter is left empty, the Alibaba Cloud account ID of the invoker is used by default.
         self.owner = owner
         # The retry time interval, in milliseconds. The value cannot exceed 1800000.
         self.rerun_interval = rerun_interval
-        # The configuration that specifies whether the node can be rerun. Valid values:
-        # 
-        # 
-        # 
-        # 
-        # - AllDenied: the node cannot be rerun regardless of whether it succeeds or fails.
-        # - FailureAllowed: the node can be rerun only if it fails.
-        # - AllAllowed: the node can be rerun regardless of whether it succeeds or fails.
+        # Specifies whether the node can be rerun. Valid values:
+        # - AllDenied: The node cannot be rerun regardless of whether it succeeds or fails.
+        # - FailureAllowed: The node can be rerun only if it fails.
+        # - AllAllowed: The node can be rerun regardless of whether it succeeds or fails.
         self.rerun_mode = rerun_mode
-        # The number of retries. This parameter takes effect only when the node is configured to allow reruns.
+        # The number of retries. This parameter takes effect when the node is configured to be rerunnable.
         self.rerun_times = rerun_times
         # The runtime environment configuration, such as the resource group information.
         self.runtime_resource_shrink = runtime_resource_shrink
-        # The runtime script information.
+        # The information about the script to be run.
         self.script_shrink = script_shrink
-        # The list of data asset tags to attach.
+        # The list of data asset tags to be bound.
         self.tags_shrink = tags_shrink
         # The timeout period defined in the scheduling configuration.
         self.timeout = timeout
-        # The trigger method of the node.
+        # The trigger mode of the node.
         self.trigger_shrink = trigger_shrink
 
     def validate(self):

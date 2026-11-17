@@ -1,3 +1,37 @@
+2026-11-17 Version: 10.2.0
+- Support API AddKnowledgeBaseAdministrator.
+- Support API CreateKnowledgeBase.
+- Support API CreateKnowledgeBaseBuildTask.
+- Support API CreateKnowledgeBaseBuildTaskInstance.
+- Support API CreateKnowledgeObject.
+- Support API CreateKnowledgeObjectUpload.
+- Support API CreateKnowledgeSource.
+- Support API DeleteKnowledgeBase.
+- Support API DeleteKnowledgeBaseBuildTask.
+- Support API DeleteKnowledgeObject.
+- Support API DeleteKnowledgeSource.
+- Support API GetKnowledgeBaseBuildTask.
+- Support API GetKnowledgeBaseBuildTaskInstance.
+- Support API GetKnowledgeBaseBuildTaskResult.
+- Support API GetKnowledgeObject.
+- Support API GetKnowledgeSource.
+- Support API GrantKnowledgeBaseRetrieval.
+- Support API ListKnowledgeBaseAdministrators.
+- Support API ListKnowledgeBaseBuildTaskInstances.
+- Support API ListKnowledgeBaseBuildTasks.
+- Support API ListKnowledgeBaseRetrievalGrants.
+- Support API ListKnowledgeObjects.
+- Support API ListKnowledgeSources.
+- Support API RemoveKnowledgeBaseAdministrator.
+- Support API RetryKnowledgeBaseBuildTaskInstance.
+- Support API RevokeKnowledgeBaseRetrieval.
+- Support API StopKnowledgeBaseBuildTaskInstance.
+- Support API UpdateKnowledgeBase.
+- Support API UpdateKnowledgeBaseBuildTask.
+- Support API UpdateKnowledgeObject.
+- Support API UpdateKnowledgeSource.
+
+
 2026-11-13 Version: 10.1.0
 - Support API GetKnowledgeBase.
 - Support API GetKnowledgePoint.

@@ -16,7 +16,7 @@ class ListCrossProjectDeploymentCandidatesResponseBody(DaraModel):
     ):
         # The response data.
         self.data = data
-        # The request ID. You can use the ID to locate and troubleshoot the API call.
+        # The request ID, which is used to locate and troubleshoot the API call.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -64,11 +64,11 @@ class ListCrossProjectDeploymentCandidatesResponseBodyData(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of candidate objects in the source workspace that are available for cross-workspace deployment.
+        # The list of candidate objects in the source workspace that can be used for cross-workspace deployment.
         self.deployment_candidates = deployment_candidates
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -138,13 +138,13 @@ class ListCrossProjectDeploymentCandidatesResponseBodyDataDeploymentCandidates(D
         object_type: str = None,
         object_version: str = None,
     ):
-        # The change type.
+        # The type of the change.
         self.change_type = change_type
         # The commit time. The value is a UNIX timestamp in milliseconds.
         self.commit_time = commit_time
-        # The submitter.
+        # The committer.
         self.commit_user = commit_user
-        # The candidate object ID.
+        # The ID of the candidate object.
         self.object_id = object_id
         # The name of the candidate object.
         self.object_name = object_name

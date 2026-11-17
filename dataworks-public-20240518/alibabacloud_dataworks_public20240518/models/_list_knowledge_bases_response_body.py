@@ -17,13 +17,13 @@ class ListKnowledgeBasesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business error code. This field is omitted when the request is successful. If the request fails, the common error response protocol is followed.
+        # The business error code. This field may be omitted if the request succeeds. If the request fails, the common error response protocol applies.
         self.code = code
         # The list of knowledge bases on the current page and the cursor for the next page.
         self.data = data
         # The maximum number of knowledge bases to return per page. Valid values: 1 to 100.
         self.max_results = max_results
-        # The readable description of the business error. This field is omitted when the request is successful. Provide the RequestId along with this message when troubleshooting failures.
+        # A human-readable description of the business error. This field may be omitted if the request succeeds. Provide the RequestId when troubleshooting failures.
         self.message = message
         # The unique identifier of the request, which can be used to troubleshoot issues.
         self.request_id = request_id

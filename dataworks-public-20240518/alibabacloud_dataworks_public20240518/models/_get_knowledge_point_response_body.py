@@ -16,11 +16,11 @@ class GetKnowledgePointResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business error code. This parameter is omitted when the request is successful. For failures, the common error response protocol is followed.
+        # The business error code. This field may be omitted if the request succeeds. If the request fails, the common error response protocol applies.
         self.code = code
         # The typed details of a single knowledge point. Only the item corresponding to the Type value is returned among Graph, Wiki, and KnowledgeContent.
         self.data = data
-        # The readable description of the business error. This parameter is omitted when the request is successful. Provide the RequestId when troubleshooting failures.
+        # A human-readable description of the business error. This field may be omitted if the request succeeds. Provide the RequestId when troubleshooting failures.
         self.message = message
         # The unique identifier of the request, which can be used to troubleshoot issues.
         self.request_id = request_id

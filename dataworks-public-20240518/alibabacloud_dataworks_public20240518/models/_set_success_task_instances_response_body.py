@@ -15,7 +15,7 @@ class SetSuccessTaskInstancesResponseBody(DaraModel):
     ):
         # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # The results of the batch operation. The data structure is a map where the key is the task instance ID and the value is the result information.
+        # The results of the batch operation. Each map entry uses a node instance ID as the key and the corresponding operation result as the value.
         self.success_info = success_info
 
     def validate(self):

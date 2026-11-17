@@ -19,27 +19,27 @@ class ListCrossProjectDeploymentCandidatesRequest(DaraModel):
         page_size: int = None,
         project_id: int = None,
     ):
-        # The change type.
+        # The type of the change.
         self.change_type = change_type
-        # The start of the commit time range. The value is a UNIX timestamp in milliseconds.
+        # The start time of the commit. The value is a UNIX timestamp in milliseconds.
         self.commit_time_from = commit_time_from
-        # The end of the commit time range. The value is a UNIX timestamp in milliseconds.
+        # The end time of the commit. The value is a UNIX timestamp in milliseconds.
         self.commit_time_to = commit_time_to
-        # The submitter.
+        # The committer.
         self.commit_user = commit_user
-        # The cross-workspace deployment environment ID.
+        # The ID of the cross-workspace deployment environment.
         # 
         # This parameter is required.
         self.deployment_environment_id = deployment_environment_id
         # The search keyword.
         self.keyword = keyword
-        # The candidate object ID.
+        # The ID of the candidate object.
         self.object_id = object_id
         # The candidate object type.
         self.object_type = object_type
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
         # The workspace ID.
         # 

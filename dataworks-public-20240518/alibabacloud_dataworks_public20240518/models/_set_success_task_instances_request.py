@@ -14,7 +14,7 @@ class SetSuccessTaskInstancesRequest(DaraModel):
     ):
         # The comment.
         self.comment = comment
-        # The list of task instance IDs.
+        # The list of node instance IDs.
         self.ids = ids
 
     def validate(self):

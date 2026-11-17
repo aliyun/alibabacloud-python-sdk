@@ -13,7 +13,9 @@ class UploadAgentSessionFileResponseBody(DaraModel):
         json_rpc_response: main_models.UploadAgentSessionFileResponseBodyJsonRpcResponse = None,
         request_id: str = None,
     ):
+        # The JSON-RPC response. Returns Result on success and Error on protocol errors.
         self.json_rpc_response = json_rpc_response
+        # The server correlation ID for the current request. You can provide this value for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -53,10 +55,15 @@ class UploadAgentSessionFileResponseBodyJsonRpcResponse(DaraModel):
         result: main_models.UploadAgentSessionFileResponseBodyJsonRpcResponseResult = None,
         timestamp: int = None,
     ):
+        # The JSON-RPC fault message. This field is not returned on success.
         self.error = error
+        # The JSON-RPC correlation identifier for the current request, which is passed by the caller and returned as is.
         self.id = id
+        # The JSON-RPC protocol version.
         self.jsonrpc = jsonrpc
+        # Issues the staged upload URL or returns the attachment information after writing to the instance.
         self.result = result
+        # The response time as a UNIX timestamp in milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -118,11 +125,17 @@ class UploadAgentSessionFileResponseBodyJsonRpcResponseResult(DaraModel):
         size: int = None,
         upload_id: str = None,
     ):
+        # The attachment identifier.
         self.id = id
+        # The original file name.
         self.name = name
+        # The relative path in the session working directory.
         self.relative_path = relative_path
+        # The time-limited object storage signature returned by prepare.
         self.signature = signature
+        # The number of file bytes saved in the instance.
         self.size = size
+        # The staged upload identifier issued by prepare.
         self.upload_id = upload_id
 
     def validate(self):
@@ -184,8 +197,11 @@ class UploadAgentSessionFileResponseBodyJsonRpcResponseResultSignature(DaraModel
         headers: Dict[str, str] = None,
         url: str = None,
     ):
+        # The expiration time of the current upload signature in ISO 8601 UTC string format. The trailing Z indicates UTC, and fractional seconds may be included. The signature is valid for 5 minutes. Signature expiration does not indicate that the staged object has been deleted.
         self.expires_at = expires_at
+        # All signed request headers that must be included in the PUT request. The names and values must be used exactly as provided. This includes Content-Type, Content-MD5, Content-Length, x-oss-object-acl, and x-oss-forbid-overwrite.
         self.headers = headers
+        # The complete signed HTTPS PUT URL returned by prepare, which must be used exactly as provided for the upload. The example displayed for this field does not contain a valid signature. The actual request must use the complete signed URL returned by the current prepare call.
         self.url = url
 
     def validate(self):
@@ -228,9 +244,13 @@ class UploadAgentSessionFileResponseBodyJsonRpcResponseError(DaraModel):
         error_code: str = None,
         message: str = None,
     ):
+        # The JSON-RPC error code.
         self.code = code
+        # The optional additional error information. The content depends on the error type.
         self.data = data
+        # The business error code.
         self.error_code = error_code
+        # The error message.
         self.message = message
 
     def validate(self):

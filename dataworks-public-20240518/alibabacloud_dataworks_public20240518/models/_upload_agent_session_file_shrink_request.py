@@ -11,8 +11,12 @@ class UploadAgentSessionFileShrinkRequest(DaraModel):
         jsonrpc: str = None,
         params_shrink: str = None,
     ):
+        # The JSON-RPC correlation identifier for the current request. The Id in the response returns this value as is to correlate the request and response.
         self.id = id
+        # The JSON-RPC protocol version. The example uses 2.0.
         self.jsonrpc = jsonrpc
+        # The parameter object for the upload stage. The prepare step issues the upload URL, and the complete step confirms that the file has been written to the target session instance.
+        # 
         # This parameter is required.
         self.params_shrink = params_shrink
 

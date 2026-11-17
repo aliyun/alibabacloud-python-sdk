@@ -14,9 +14,9 @@ class ListCrossProjectPipelineRunItemsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response data.
+        # The business response.
         self.data = data
-        # The request ID used to locate and troubleshoot the API call.
+        # The request ID, which is used to locate and troubleshoot the API call.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -68,7 +68,7 @@ class ListCrossProjectPipelineRunItemsResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of items per page.
         self.page_size = page_size
-        # The list of publish items for the root object and its child objects in the cross-workspace publish pipeline.
+        # The list of deployment items for the root object and its child objects snapshotted in the cross-workspace deployment pipeline.
         self.pipeline_run_items = pipeline_run_items
         # The request ID.
         self.request_id = request_id
@@ -141,7 +141,7 @@ class ListCrossProjectPipelineRunItemsResponseBodyDataPipelineRunItems(DaraModel
         parent_object_id: str = None,
         status: str = None,
     ):
-        # The change type.
+        # The type of the change.
         self.change_type = change_type
         # The error code.
         self.error_code = error_code
@@ -149,13 +149,13 @@ class ListCrossProjectPipelineRunItemsResponseBodyDataPipelineRunItems(DaraModel
         self.error_message = error_message
         # Indicates whether the object is a root object.
         self.is_root = is_root
-        # The ID of the deployment object.
+        # The ID of the object to deploy.
         self.object_id = object_id
-        # The name of the deployment object.
+        # The name of the object to deploy.
         self.object_name = object_name
-        # The deployment object type.
+        # The type of the object to deploy.
         self.object_type = object_type
-        # The version of the deployment object.
+        # The version of the object to deploy.
         self.object_version = object_version
         # The ID of the parent object.
         self.parent_object_id = parent_object_id
