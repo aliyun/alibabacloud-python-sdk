@@ -18,29 +18,29 @@ class GetMetricDataShrinkRequest(DaraModel):
         template_id: str = None,
         time: str = None,
     ):
-        # 时序查询的结束时间，区间不含此时刻。使用 UTC 整秒时间，须晚于 startTime。一次最多查询 7 天。区间须包含至少一个按 period 对齐的时间点，且这些时间点不能晚于当前时间。
+        # The end time of the time series query. This time is excluded from the query range. Specify the UTC time accurate to seconds. The end time must be later than the start time. You can query metrics for a maximum of 7 days at a time. The time range must include at least one time point aligned with the period, and these time points cannot be later than the current time.
         self.end_time = end_time
-        # 例如，按 teamID 分组可分别查看各团队的指标。可组合最多 4 个不同的分组键，可用键因指标而异。不填时返回查询范围的整体结果。
+        # Groups metrics by a specific key. For example, you can group metrics by teamID to view the metrics of each team separately. You can combine up to four different grouping keys. The available keys vary by metric. If you do not specify this parameter, the overall results within the query scope are returned.
         self.group_by_shrink = group_by_shrink
-        # 要查询的指标名称。一次可查询 1～16 个不同的指标。可选指标和查询范围见指标目录。
+        # The names of the metrics to query. You can query 1 to 16 different metrics at a time. For available metrics and query scopes, see the metric catalog.
         # 
         # This parameter is required.
         self.metric_names_shrink = metric_names_shrink
-        # 时序查询的时间间隔，单位为秒。可选 60、300、900、1800、3600、86400。60 对应整分钟，86400 对应每日 UTC 零点。部分统计指标的计算时长随间隔变化。
+        # The time interval for time series queries, in seconds. Valid values: 60, 300, 900, 1800, 3600, and 86400. A value of 60 corresponds to full minutes, and 86400 corresponds to midnight UTC every day. The calculation duration of some statistical metrics varies with the interval.
         # 
         # This parameter is required.
         self.period = period
-        # 要查询的沙箱 ID。请同时填写所属的 teamID 和 templateID，并选择支持按沙箱查询的指标。
+        # The ID of the sandbox to query. You must also specify the teamID and templateID to which the sandbox belongs, and select a metric that supports sandbox-level queries.
         self.sandbox_id = sandbox_id
-        # 按沙箱版本查询沙箱数量。仅适用于 sandboxCount，可选 eco、std、pro、ent。
+        # Queries the number of sandboxes by sandbox plan. This parameter applies only to sandboxCount. Valid values: eco, std, pro, and ent.
         self.sandbox_plan = sandbox_plan
-        # 时序查询的开始时间，包含此时刻。请按示例填写 UTC 时间，精确到秒，并同时填写 endTime。
+        # The start time of the time series query. This time is included in the query range. Specify the UTC time accurate to seconds and also specify endTime.
         self.start_time = start_time
-        # 要查询的团队 ID。不填时查询当前账号。
+        # The ID of the team to query. If you leave this parameter empty, the metrics of the current account are queried.
         self.team_id = team_id
-        # 要查询的模板 ID。请同时填写模板所属的 teamID。
+        # The ID of the template to query. You must also specify the teamID to which the template belongs.
         self.template_id = template_id
-        # 查询某一时刻时，只填写 time。请按示例填写当前或过去的 UTC 时间，精确到秒。省略所有时间参数时，查询当前时刻。
+        # The specific point in time to query. If you query metrics at a specific point in time, specify only this parameter. Specify the current or past UTC time accurate to seconds. If you omit all time parameters, the metrics at the current time are queried.
         self.time = time
 
     def validate(self):

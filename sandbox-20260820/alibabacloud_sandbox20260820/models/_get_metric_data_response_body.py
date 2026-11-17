@@ -13,13 +13,13 @@ class GetMetricDataResponseBody(DaraModel):
         metric_data: main_models.MetricData = None,
         request_id: str = None,
     ):
-        # 成功时为 200。失败时为对应的错误码。
+        # The status code. A value of 200 indicates success. If the request fails, the corresponding error code is returned.
         self.code = code
-        # 本次请求的结果说明。
+        # The message returned for the request.
         self.message = message
-        # 各指标的查询结果及对应的时间和分组。
+        # The query results of each metric, along with the corresponding time and grouping information.
         self.metric_data = metric_data
-        # 本次请求的唯一标识。
+        # The unique identifier of the request.
         self.request_id = request_id
 
     def validate(self):

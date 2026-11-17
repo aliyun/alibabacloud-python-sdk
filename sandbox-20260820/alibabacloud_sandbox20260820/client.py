@@ -115,6 +115,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_api_key_with_options_async(request, headers, runtime)
 
+    def create_custom_domain_with_options(
+        self,
+        request: main_models.CreateCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomDomainResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomDomain',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/custom-domains',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_domain_with_options_async(
+        self,
+        request: main_models.CreateCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomDomainResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomDomain',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/custom-domains',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_domain(
+        self,
+        request: main_models.CreateCustomDomainRequest,
+    ) -> main_models.CreateCustomDomainResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_custom_domain_with_options(request, headers, runtime)
+
+    async def create_custom_domain_async(
+        self,
+        request: main_models.CreateCustomDomainRequest,
+    ) -> main_models.CreateCustomDomainResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_custom_domain_with_options_async(request, headers, runtime)
+
     def create_team_with_options(
         self,
         request: main_models.CreateTeamRequest,
@@ -540,6 +610,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_api_key_with_options_async(api_key_id, request, headers, runtime)
+
+    def delete_custom_domain_with_options(
+        self,
+        domain_name: str,
+        request: main_models.DeleteCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomDomainResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomDomain',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/custom-domains/{DaraURL.percent_encode(domain_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_domain_with_options_async(
+        self,
+        domain_name: str,
+        request: main_models.DeleteCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomDomainResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomDomain',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/custom-domains/{DaraURL.percent_encode(domain_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_domain(
+        self,
+        domain_name: str,
+        request: main_models.DeleteCustomDomainRequest,
+    ) -> main_models.DeleteCustomDomainResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_custom_domain_with_options(domain_name, request, headers, runtime)
+
+    async def delete_custom_domain_async(
+        self,
+        domain_name: str,
+        request: main_models.DeleteCustomDomainRequest,
+    ) -> main_models.DeleteCustomDomainResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_custom_domain_with_options_async(domain_name, request, headers, runtime)
 
     def delete_quota_with_options(
         self,
@@ -1309,6 +1451,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_warm_pool_with_options_async(team_id, template_id, request, headers, runtime)
 
+    def get_custom_domain_with_options(
+        self,
+        domain_name: str,
+        request: main_models.GetCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomDomainResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomDomain',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/custom-domains/{DaraURL.percent_encode(domain_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_domain_with_options_async(
+        self,
+        domain_name: str,
+        request: main_models.GetCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomDomainResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomDomain',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/custom-domains/{DaraURL.percent_encode(domain_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_domain(
+        self,
+        domain_name: str,
+        request: main_models.GetCustomDomainRequest,
+    ) -> main_models.GetCustomDomainResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_custom_domain_with_options(domain_name, request, headers, runtime)
+
+    async def get_custom_domain_async(
+        self,
+        domain_name: str,
+        request: main_models.GetCustomDomainRequest,
+    ) -> main_models.GetCustomDomainResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_custom_domain_with_options_async(domain_name, request, headers, runtime)
+
     def get_metric_data_with_options(
         self,
         tmp_req: main_models.GetMetricDataRequest,
@@ -1880,6 +2094,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_api_keys_with_options_async(request, headers, runtime)
+
+    def list_custom_domains_with_options(
+        self,
+        request: main_models.ListCustomDomainsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomDomainsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomDomains',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/custom-domains',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_domains_with_options_async(
+        self,
+        request: main_models.ListCustomDomainsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomDomainsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomDomains',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/custom-domains',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_domains(
+        self,
+        request: main_models.ListCustomDomainsRequest,
+    ) -> main_models.ListCustomDomainsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_custom_domains_with_options(request, headers, runtime)
+
+    async def list_custom_domains_async(
+        self,
+        request: main_models.ListCustomDomainsRequest,
+    ) -> main_models.ListCustomDomainsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_custom_domains_with_options_async(request, headers, runtime)
 
     def list_quota_with_options(
         self,
@@ -2574,6 +2868,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_api_key_with_options_async(api_key_id, request, headers, runtime)
+
+    def update_custom_domain_with_options(
+        self,
+        domain_name: str,
+        request: main_models.UpdateCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomDomainResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomDomain',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/custom-domains/{DaraURL.percent_encode(domain_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustomDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_domain_with_options_async(
+        self,
+        domain_name: str,
+        request: main_models.UpdateCustomDomainRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomDomainResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomDomain',
+            version = '2026-08-20',
+            protocol = 'HTTPS',
+            pathname = f'/pop/2026-08-20/custom-domains/{DaraURL.percent_encode(domain_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustomDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom_domain(
+        self,
+        domain_name: str,
+        request: main_models.UpdateCustomDomainRequest,
+    ) -> main_models.UpdateCustomDomainResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_custom_domain_with_options(domain_name, request, headers, runtime)
+
+    async def update_custom_domain_async(
+        self,
+        domain_name: str,
+        request: main_models.UpdateCustomDomainRequest,
+    ) -> main_models.UpdateCustomDomainResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_custom_domain_with_options_async(domain_name, request, headers, runtime)
 
     def update_quota_with_options(
         self,

@@ -98,6 +98,8 @@ from ._warm_pool_scheduled_policy_input import WarmPoolScheduledPolicyInput
 from ._create_api_key_request import CreateApiKeyRequest
 from ._create_api_key_response_body import CreateApiKeyResponseBody
 from ._create_api_key_response import CreateApiKeyResponse
+from ._create_custom_domain_request import CreateCustomDomainRequest
+from ._create_custom_domain_response import CreateCustomDomainResponse
 from ._create_team_request import CreateTeamRequest
 from ._create_team_response_body import CreateTeamResponseBody
 from ._create_team_response import CreateTeamResponse
@@ -116,6 +118,9 @@ from ._create_warm_pool_response import CreateWarmPoolResponse
 from ._delete_api_key_request import DeleteApiKeyRequest
 from ._delete_api_key_response_body import DeleteApiKeyResponseBody
 from ._delete_api_key_response import DeleteApiKeyResponse
+from ._delete_custom_domain_request import DeleteCustomDomainRequest
+from ._delete_custom_domain_response_body import DeleteCustomDomainResponseBody
+from ._delete_custom_domain_response import DeleteCustomDomainResponse
 from ._delete_quota_request import DeleteQuotaRequest
 from ._delete_quota_response_body import DeleteQuotaResponseBody
 from ._delete_quota_response import DeleteQuotaResponse
@@ -145,6 +150,8 @@ from ._describe_template_cache_response import DescribeTemplateCacheResponse
 from ._describe_warm_pool_request import DescribeWarmPoolRequest
 from ._describe_warm_pool_response_body import DescribeWarmPoolResponseBody
 from ._describe_warm_pool_response import DescribeWarmPoolResponse
+from ._get_custom_domain_request import GetCustomDomainRequest
+from ._get_custom_domain_response import GetCustomDomainResponse
 from ._get_metric_data_request import GetMetricDataRequest
 from ._get_metric_data_shrink_request import GetMetricDataShrinkRequest
 from ._get_metric_data_response_body import GetMetricDataResponseBody
@@ -165,6 +172,9 @@ from ._get_volume_response import GetVolumeResponse
 from ._list_api_keys_request import ListApiKeysRequest
 from ._list_api_keys_response_body import ListApiKeysResponseBody
 from ._list_api_keys_response import ListApiKeysResponse
+from ._list_custom_domains_request import ListCustomDomainsRequest
+from ._list_custom_domains_response_body import ListCustomDomainsResponseBody
+from ._list_custom_domains_response import ListCustomDomainsResponse
 from ._list_quota_request import ListQuotaRequest
 from ._list_quota_response_body import ListQuotaResponseBody
 from ._list_quota_response import ListQuotaResponse
@@ -190,6 +200,8 @@ from ._reset_api_key_response import ResetApiKeyResponse
 from ._update_api_key_request import UpdateApiKeyRequest
 from ._update_api_key_response_body import UpdateApiKeyResponseBody
 from ._update_api_key_response import UpdateApiKeyResponse
+from ._update_custom_domain_request import UpdateCustomDomainRequest
+from ._update_custom_domain_response import UpdateCustomDomainResponse
 from ._update_quota_request import UpdateQuotaRequest
 from ._update_quota_response_body import UpdateQuotaResponseBody
 from ._update_quota_response import UpdateQuotaResponse
@@ -340,6 +352,8 @@ __all__ = [
     CreateApiKeyRequest,
     CreateApiKeyResponseBody,
     CreateApiKeyResponse,
+    CreateCustomDomainRequest,
+    CreateCustomDomainResponse,
     CreateTeamRequest,
     CreateTeamResponseBody,
     CreateTeamResponse,
@@ -358,6 +372,9 @@ __all__ = [
     DeleteApiKeyRequest,
     DeleteApiKeyResponseBody,
     DeleteApiKeyResponse,
+    DeleteCustomDomainRequest,
+    DeleteCustomDomainResponseBody,
+    DeleteCustomDomainResponse,
     DeleteQuotaRequest,
     DeleteQuotaResponseBody,
     DeleteQuotaResponse,
@@ -387,6 +404,8 @@ __all__ = [
     DescribeWarmPoolRequest,
     DescribeWarmPoolResponseBody,
     DescribeWarmPoolResponse,
+    GetCustomDomainRequest,
+    GetCustomDomainResponse,
     GetMetricDataRequest,
     GetMetricDataShrinkRequest,
     GetMetricDataResponseBody,
@@ -407,6 +426,9 @@ __all__ = [
     ListApiKeysRequest,
     ListApiKeysResponseBody,
     ListApiKeysResponse,
+    ListCustomDomainsRequest,
+    ListCustomDomainsResponseBody,
+    ListCustomDomainsResponse,
     ListQuotaRequest,
     ListQuotaResponseBody,
     ListQuotaResponse,
@@ -432,6 +454,8 @@ __all__ = [
     UpdateApiKeyRequest,
     UpdateApiKeyResponseBody,
     UpdateApiKeyResponse,
+    UpdateCustomDomainRequest,
+    UpdateCustomDomainResponse,
     UpdateQuotaRequest,
     UpdateQuotaResponseBody,
     UpdateQuotaResponse,
