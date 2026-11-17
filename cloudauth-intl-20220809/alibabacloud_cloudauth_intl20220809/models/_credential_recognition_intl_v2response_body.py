@@ -13,13 +13,13 @@ class CredentialRecognitionIntlV2ResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.CredentialRecognitionIntlV2ResponseBodyResult = None,
     ):
-        # The return code. A value of 200 indicates a successful request. Other values indicate failures.
+        # The return code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The response result.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -69,19 +69,18 @@ class CredentialRecognitionIntlV2ResponseBodyResult(DaraModel):
         sub_code: str = None,
         success: str = None,
     ):
-        # The recognized key information, in JSON format.
+        # The recognized key information in JSON format.
         self.ext_id_info = ext_id_info
         # The result code. Valid values:
-        # 
-        # - 200: OCR extraction succeeded and all rule checks passed.
-        # - 204: Validation result is inconsistent. OCR extraction succeeded, but some fields in CheckRuleConfig did not pass (N).
-        # - 211: Quality does not meet requirements. Quality detection did not pass when idQuality is set to Y (not yet supported in the current version).
-        # - 212: Anti-forgery check did not pass. fraudCheck was triggered and anti-forgery verification failed.
-        # - 213: No text was extracted, or the credential type check did not pass.
+        # - 200: OCR extraction is successful and all rule checks are passed
+        # - 204: verification results are inconsistent. OCR extraction is successful, but some fields in CheckRuleConfig fail the check (N)
+        # - 211: quality does not meet the requirements. Quality detection fails when idQuality is set to Y. This feature is not available in the current version
+        # - 212: anti-counterfeiting check fails. fraudCheck is triggered and anti-counterfeiting verification fails
+        # - 213: no text is extracted or the credential type check fails
         self.sub_code = sub_code
         # The extraction result. Valid values:
-        # - S: Succeeded.
-        # - F: Failed.
+        # - S: success.
+        # - F: failure.
         self.success = success
 
     def validate(self):

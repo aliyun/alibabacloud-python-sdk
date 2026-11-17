@@ -19,7 +19,7 @@ class FaceLivenessV2ResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The response result.
         self.result = result
 
     def validate(self):
@@ -73,13 +73,12 @@ class FaceLivenessV2ResponseBodyResult(DaraModel):
         # The face result information.
         self.ext_face_info = ext_face_info
         # Indicates whether the authentication is passed. Valid values:
-        # 
-        # - Y: Passed.
-        # - N: Not passed.
+        # - Y: passed
+        # - N: failed
         self.passed = passed
         # The sub-result code.
         self.sub_code = sub_code
-        # The unique ID of the authentication request.
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -136,27 +135,49 @@ class FaceLivenessV2ResponseBodyResultExtFaceInfo(DaraModel):
         occlusion_score: float = None,
         sharpness_score: float = None,
     ):
-        # The predicted reference age of the face. The prediction may fail and return no value.
+        # The predicted reference age of the face. If the prediction fails, no value is returned.
         self.face_age = face_age
-        # The liveness detection result. Valid values: Y (attack detected) and N (Normal).
+        # The liveness detection result. Valid values: Y (attack) and N (normal).
         self.face_attack = face_attack
-        self.face_attribute_info = face_attribute_info
-        # The predicted gender of the face image. The prediction may fail and return no value. Valid values:
+        # Detects the facial attributes of the primary face in the input image. The primary face is the one closest to the camera, with the largest facial area, and in focus. The detection result is returned as a string for downstream processing.
         # 
-        # - M: male.
-        # - F: female.
+        # The returned fields are defined as follows:
+        # 
+        # **gender**: the gender of the primary person. A value of 1 indicates male, and 0 indicates female.
+        # 
+        # **glasses**: whether the primary person is wearing glasses. A value of 1 indicates that glasses are detected, and 0 indicates that glasses are not detected.
+        # 
+        # **hat**: whether the primary person is wearing a hat (including headscarves and veils). A value of 1 indicates that a hat is detected, and 0 indicates that a hat is not detected.
+        # 
+        # **mask**: whether the primary person is wearing a mask. A value of 1 indicates that a mask is detected, and 0 indicates that a mask is not detected.
+        # 
+        # **tattoo**: whether the primary person has visible tattoos. A value of 1 indicates that a tattoo is detected, and 0 indicates that a tattoo is not detected.
+        # 
+        # **smoking**: whether the primary person is smoking. A value of 1 indicates that smoking is detected, and 0 indicates that smoking is not detected.
+        # 
+        # **others**: whether other people are present besides the primary person. A value of 1 indicates that other people are detected, and 0 indicates that other people are not detected.
+        # 
+        # **env**: the environment where the primary person is located, such as an office, factory, hospital, or vehicle. Valid values: office, hospital, factory, vehical, and other.
+        # 
+        # **expression**: whether the primary person has an exaggerated expression (facial expressions that significantly deviate from a natural or calm state). A value of 1 indicates that an exaggerated expression is detected, and 0 indicates that an exaggerated expression is not detected.
+        # 
+        # **age**: the actual age of the primary person in years.
+        self.face_attribute_info = face_attribute_info
+        # The predicted gender of the face in the image. If the prediction fails, no value is returned. Valid values:
+        # - M: male
+        # - F: female
         self.face_gender = face_gender
-        # The quality score of the liveness face. Valid values: 0 to 100. A higher value indicates better quality.
+        # The liveness face quality score. Valid values: 0 to 100. A larger value indicates better quality.
         self.face_quality_score = face_quality_score
-        # The algorithm score for illumination, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
+        # The algorithm score for illumination in the quality judgment sub-dimension. Valid values: 0 to 100. A larger value indicates better quality.
         self.illumination_score = illumination_score
-        # The algorithm score for key area occlusion, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
+        # The algorithm score for key area occlusion in the quality judgment sub-dimension. Valid values: 0 to 100. A larger value indicates better quality.
         self.ka_occlusion_score = ka_occlusion_score
-        # Indicates whether facial occlusion is detected. A value of Y indicates occlusion is detected. A value of N indicates no occlusion is detected.
+        # Indicates whether the face is occluded. A value of Y indicates that the face is occluded. A value of N indicates that the face is not occluded.
         self.occlusion_result = occlusion_result
-        # The algorithm score for occlusion, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
+        # The algorithm score for occlusion in the quality judgment sub-dimension. Valid values: 0 to 100. A larger value indicates better quality.
         self.occlusion_score = occlusion_score
-        # The image sharpness score, which is a sub-dimension of quality assessment. Valid values: 0 to 100. A higher value indicates better quality.
+        # The image sharpness score in the quality judgment sub-dimension. Valid values: 0 to 100. A larger value indicates better quality.
         self.sharpness_score = sharpness_score
 
     def validate(self):

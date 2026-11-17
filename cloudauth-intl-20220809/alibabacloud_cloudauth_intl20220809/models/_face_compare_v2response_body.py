@@ -13,15 +13,15 @@ class FaceCompareV2ResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceCompareV2ResponseBodyResult = None,
     ):
-        # The response code.
+        # The return code.
         # 
-        # 200: success. Other values: error codes. For more information, see error codes.
+        # 200: Success. Other values: Error codes. For more information, see Error codes.
         self.code = code
-        # The response message.
+        # The return message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -74,14 +74,15 @@ class FaceCompareV2ResponseBodyResult(DaraModel):
     ):
         # The related result information.
         self.ext_face_info = ext_face_info
-        # The comparison score between the submitted face photo and the target reference face image during verification. Value range: 0 to 100.
+        # The comparison score between the submitted face photo and the reference face photo during the authentication process. Valid values: 0 to 100.
         self.face_comparison_score = face_comparison_score
-        # Indicates whether the verification passed.
+        # Indicates whether the authentication is passed.
         # 
+        # Valid values:
         # - Y: Passed.
         # - N: Not passed.
         self.passed = passed
-        # The unique identifier of the verification request.
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -148,15 +149,15 @@ class FaceCompareV2ResponseBodyResultExtFaceInfo(DaraModel):
         self.occlusion_score = occlusion_score
         # The sharpness score.
         self.sharpness_score = sharpness_score
-        # The overall quality score of the target reference face image.
+        # The overall quality score of the reference face image.
         self.target_face_quality_score = target_face_quality_score
-        # The illumination score of the target reference face image.
+        # The illumination score of the reference face image.
         self.target_illumination_score = target_illumination_score
-        # The key area occlusion score of the target reference face image.
+        # The key area occlusion score of the reference face image.
         self.target_ka_occlusion_score = target_ka_occlusion_score
-        # The occlusion score of the target reference face image.
+        # The occlusion score of the reference face image.
         self.target_occlusion_score = target_occlusion_score
-        # The sharpness score of the target reference face image.
+        # The sharpness score of the reference face image.
         self.target_sharpness_score = target_sharpness_score
 
     def validate(self):

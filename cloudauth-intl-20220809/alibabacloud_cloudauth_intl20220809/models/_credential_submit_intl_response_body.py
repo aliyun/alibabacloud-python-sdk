@@ -15,11 +15,11 @@ class CredentialSubmitIntlResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # The response message.
+        # The return message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The return result.
         self.result = result
 
     def validate(self):

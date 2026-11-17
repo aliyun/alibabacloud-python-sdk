@@ -20,50 +20,54 @@ class CredentialRecognitionIntlV2Request(DaraModel):
         ocr_value_standard: str = None,
         product_code: str = None,
     ):
-        # The field validation rule configuration, in JSON string format.
+        # The field validation rule configuration. The value is a JSON string.
         self.check_rule_config = check_rule_config
-        # The Base64-encoded image. If you choose to pass in the image by using IdOcrPictureBase64 (Base64-encoded photo), check the photo size and do not pass in an excessively large photo.
+        # The Base64-encoded image. If you choose to pass the photo by using IdOcrPictureBase64, check the photo size and do not pass excessively large photos.
         self.credential_ocr_picture_base_64 = credential_ocr_picture_base_64
         # The image file stream.
         self.credential_ocr_picture_file = credential_ocr_picture_file
-        # The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
+        # The image URL. The URL must be a publicly accessible HTTP or HTTPS link.
         self.credential_ocr_picture_url = credential_ocr_picture_url
         # The credential type. Valid values:
-        # 
-        # - 01: transaction credential (including electronic bill images for water, electricity, gas, credit cards, and other types)
+        # - 01: transaction receipt, including electronic bills for utilities and credit cards
         # - 02: vehicle registration certificate
         # - 03: transfer transaction record
-        # - 04: POA address proof
+        # - 04: proof of address (POA)
         # 
         # This parameter is required.
         self.doc_type = doc_type
-        # The input material type. Valid values:
-        # 
-        # - IMAGE (default): image
+        # The material input type. Valid values:
+        # - IMAGE: image
         # - PDF: PDF format
+        # Default value: IMAGE.
         self.file_input_type = file_input_type
         # Specifies whether to enable tampering detection. Valid values:
-        # - true: Enabled.
-        # - false: Disabled.
+        # - true: enables tampering detection.
+        # - false: disables tampering detection.
         # 
         # This parameter is required.
         self.fraud_check = fraud_check
-        # Specifies whether to enable quality detection. Valid values: Y (enabled) and N (disabled).
+        # Specifies whether to enable quality detection. Valid values:
+        # - Y: enables quality detection.
+        # - N: disables quality detection.
         self.id_quality = id_quality
         # The extraction type. Valid values:
-        # 
-        # - 0101: electronic bill address and name module (extracts address and name modules through intelligent analysis)
+        # - 0101: electronic bill address and name module, which extracts the address and name module through intelligent analysis
         # - 0201: Thailand vehicle registration certificate
-        # - 0301: transfer transaction amount information
+        # - 0301: transfer transaction record amount information
         # - 0401: POA credential extraction information
         # 
         # This parameter is required.
         self.ocr_area = ocr_area
-        # Specifies whether to enable translation. Valid values: 0 (disabled) and 1 (enabled).
+        # Specifies whether to enable translation. Valid values:
+        # - 0: disables translation.
+        # - 1: enables translation.
         self.ocr_translation = ocr_translation
-        # Specifies whether to enable OCR result normalization. Valid values: 0 (disabled) and 1 (enabled).
+        # Specifies whether to enable OCR result standardization. Valid values:
+        # - 0: disables OCR result standardization.
+        # - 1: enables OCR result standardization.
         self.ocr_value_standard = ocr_value_standard
-        # The product solution to use. Set the value to CREDENTIAL_RECOGNITION.
+        # The product solution to be integrated. Valid value: CREDENTIAL_RECOGNITION.
         # 
         # This parameter is required.
         self.product_code = product_code

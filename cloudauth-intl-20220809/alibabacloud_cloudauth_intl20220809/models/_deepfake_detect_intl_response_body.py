@@ -15,13 +15,13 @@ class DeepfakeDetectIntlResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DeepfakeDetectIntlResponseBodyResultObject = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result information.
+        # The returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -78,16 +78,16 @@ class DeepfakeDetectIntlResponseBodyResultObject(DaraModel):
         # - **1**: High risk.
         # - **2**: Suspicious.
         self.result = result
-        # The risk score map.
+        # The map of risk scores.
         self.risk_score = risk_score
-        # The risk labels. Multiple labels are separated by commas (,). Valid values:
+        # The risk tags. Multiple tags are separated by commas (,). Valid values:
         # 
-        # - **SuspectDeepForgery**: suspected depth forgery  
-        # - **SuspectPSFace**: suspected synthetic attack  
-        # - **SuspectWarterMark**: suspected watermark  
-        # - **SuspectTemple**: suspected template attack  
-        # - **SuspectAIGCFace**: suspected AIGC-generated face  
-        # - **SuspectRemake**: suspected recaptured face.
+        # - **SuspectDeepForgery**: Suspected deepfake.  
+        # - **SuspectPSFace**: Suspected synthetic attack.  
+        # - **SuspectWarterMark**: Suspected watermark.  
+        # - **SuspectTemple**: Suspected template attack.  
+        # - **SuspectAIGCFace**: Suspected AIGC-generated face.  
+        # - **SuspectRemake**: Suspected recaptured face.
         self.risk_tag = risk_tag
         self.transaction_id = transaction_id
 

@@ -15,13 +15,13 @@ class CredentialVerifyIntlResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.CredentialVerifyIntlResponseBodyResultObject = None,
     ):
-        # The return code. A value of 200 indicates success. Other values indicate failure.
+        # The return code. A value of 200 indicates success, and other values indicate failure.
         self.code = code
-        # The return message.
+        # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result information.
+        # The returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -76,18 +76,18 @@ class CredentialVerifyIntlResponseBodyResultObject(DaraModel):
         self.material_info = material_info
         # The risk result. Valid values:
         # 
-        # - **0**: Low risk.
-        # - **1**: High risk.
-        # - **2**: Suspicious.
+        # - **0**: low risk
+        # - **1**: high risk
+        # - **2**: suspicious
         self.result = result
-        # The risk score map.
+        # The map of risk scores.
         self.risk_score = risk_score
-        # The risk tags, separated by commas (,). Valid values:
+        # The risk tags. Multiple tags are separated by commas (,). Valid values:
         # 
-        # - PS: Image has been edited with photo editing software.
-        # - SCREEN_PHOTO: Photo taken from a screen.
-        # - SCREENSHOT: Screenshot.
-        # - ORIGINAL_PHOTO: Non-original image.
+        # - PS: The image is edited by using Photoshop.
+        # - SCREEN_PHOTO: The image is a photo of a screen.
+        # - SCREENSHOT: The image is a screenshot.
+        # - ORIGINAL_PHOTO: The image is not an original image.
         self.risk_tag = risk_tag
 
     def validate(self):

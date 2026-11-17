@@ -14,9 +14,9 @@ class DeleteFaceRecordResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # The response data.
+        # The returned result.
         self.data = data
-        # The response message.
+        # The return message.
         self.message = message
         # Id of the request
         self.request_id = request_id

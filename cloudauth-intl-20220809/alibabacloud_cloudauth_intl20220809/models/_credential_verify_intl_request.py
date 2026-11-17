@@ -13,34 +13,35 @@ class CredentialVerifyIntlRequest(DaraModel):
         image_url: str = None,
         product_code: str = None,
     ):
-        # The credential name (specified as a numeric code). Valid values:
+        # The credential name. Use the numeric code. Valid values:
         # 
-        # - Codes starting with 03: enterprise qualification
-        #   - 0301: business license issued in the Chinese mainland
-        # - Codes starting with 04: transaction voucher
+        # - Values starting with 03: enterprise qualification
+        #   - 0301: business license in the Chinese mainland
+        # - Values starting with 04: transaction credential
         #   - 0401: bank statement
         #   - 0402: payslip
         #   - 0403: utility bill
         #   - 0405: credit card statement
-        #   - 0499: other.
+        #   - 0499: other
         # 
         # This parameter is required.
         self.cred_name = cred_name
         # The credential type. Valid values:
         # 
         # - 03: enterprise qualification
-        # - 04: transaction voucher.
+        # - 04: transaction credential
         # 
         # This parameter is required.
         self.cred_type = cred_type
-        # The image input stream.
+        # The input stream of the image.
         # > Specify either ImageUrl or ImageFile.
         self.image_file = image_file
         # The URL of the image.
         # > Specify either ImageUrl or ImageFile.
         self.image_url = image_url
         # The call mode. Valid values:
-        # - ANTI_FAKE_CHECK: image quality and tampering detection.
+        # 
+        # - ANTI_FAKE_CHECK: image quality and tampering detection
         # 
         # This parameter is required.
         self.product_code = product_code

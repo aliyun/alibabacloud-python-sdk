@@ -14,23 +14,23 @@ class DeepfakeDetectIntlRequest(DaraModel):
         product_code: str = None,
         scene_code: str = None,
     ):
-        # The Base64-encoded content of the facial image.
-        # > Specify either FaceUrl or FaceBase64.
+        # The Base64-encoded string of the face image.
+        # > You must specify either FaceUrl or FaceBase64.
         self.face_base_64 = face_base_64
-        # Set the value to **IMAGE** to specify a facial image.
+        # The face input type. Valid value: **IMAGE**, which indicates a face image.
         self.face_input_type = face_input_type
-        # The URL of the facial image.
-        # > Specify either FaceUrl or FaceBase64.
+        # The URL of the face image.
+        # > You must specify either FaceUrl or FaceBase64.
         self.face_url = face_url
-        # The unique identifier of the merchant request. The value is a 32-character combination of letters and digits. The first few characters are a custom merchant abbreviation, the middle part can contain a timestamp, and the last part can be a random or incremental sequence.
+        # The unique identifier of the merchant request. The value is a 32-character alphanumeric string. The first few characters consist of a custom merchant abbreviation, the middle part can contain a time period, and the latter part can be a random or incremental sequence.
         # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
-        # The product solution to use. Set the value to **FACE_DEEPFAKE**.
+        # The product solution to access. Valid value: **FACE_DEEPFAKE**.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The custom scene ID for authentication. You can use this scene ID to query related records in the console. The value can be up to 10 characters long and can contain letters, digits, and underscores.
+        # The custom authentication scene ID. You can use this ID to query related records in the console. The value can be up to 10 characters in length and can contain letters, digits, and underscores.
         self.scene_code = scene_code
 
     def validate(self):

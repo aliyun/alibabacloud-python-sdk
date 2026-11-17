@@ -14,7 +14,7 @@ class ModifyFaceGroupResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # The returned result.
+        # The return result.
         self.data = data
         # The return message.
         self.message = message

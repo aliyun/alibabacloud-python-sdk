@@ -19,36 +19,33 @@ class DocOcrRequest(DaraModel):
         product_code: str = None,
         spoof: str = None,
     ):
-        # Specifies the side of the certificate to distinguish between the national emblem side and the portrait side. If this parameter is not specified, the portrait side is used by default. Valid values:
-        # 
-        # - OCR_ID_FACE (default): portrait side
-        # 
-        # - OCR_ID_NATIONAL_EMBLEM: national emblem side.
+        # Specifies the side of the certificate, which can be the national emblem side or the portrait side. If you do not specify this parameter, the portrait side is used by default. Valid values:
+        # - OCR_ID_FACE: The portrait side. Default value.
+        # - OCR_ID_NATIONAL_EMBLEM: The national emblem side.
         self.card_side = card_side
         # The certificate type.
         self.doc_type = doc_type
-        # Specifies whether to perform certificate face quality detection. Valid values:
+        # Specifies whether to perform face quality detection on the certificate. Valid values:
         # - T: Detection is required.
-        # - F: Detection is not required. (Default value: F).
+        # - F: Detection is not required. Default value: F.
         self.id_face_quality = id_face_quality
-        # The Base64-encoded card or certificate image.
+        # The Base64-encoded image of the ID card or certificate.
         # 
-        # If you use IdOcrPictureBase64 (Base64-encoded photo) to submit the certificate photo, check the photo size and do not submit an excessively large photo.
+        # If you choose to pass the certificate photo by using the IdOcrPictureBase64 (Base64-encoded photo) method, check the photo size and do not pass oversized photos.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
-        # The URL of the front side of the certificate image.
+        # The URL of the front image of the certificate.
         self.id_ocr_picture_url = id_ocr_picture_url
-        # The custom OCR quality detection threshold mode. Valid values:
-        # 
-        # - 0: system default
-        # - 1: strict mode
-        # - 2: loose mode
-        # - 3 (default): quality detection disabled.
+        # The custom threshold mode for OCR quality detection. Valid values:
+        # - 0: System default.
+        # - 1: Strict mode.
+        # - 2: Loose mode.
+        # - 3: Quality detection is disabled. Default value: 3.
         self.id_threshold = id_threshold
-        # The custom business unique identifier on the merchant side, used for subsequent issue tracking and troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+        # The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Make sure that the identifier is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The custom user ID in the business. Ensure that the value is unique.
+        # The custom user ID in the business. Make sure that the ID is unique.
         self.merchant_user_id = merchant_user_id
-        # Specifies whether to perform certificate OCR. Valid values:
+        # Specifies whether to perform OCR on the certificate. Valid values:
         # - T: OCR is required.
         # - F: OCR is not required.
         self.ocr = ocr

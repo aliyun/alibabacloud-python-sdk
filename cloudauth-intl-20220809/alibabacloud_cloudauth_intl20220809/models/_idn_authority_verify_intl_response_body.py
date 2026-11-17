@@ -19,7 +19,7 @@ class IdnAuthorityVerifyIntlResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The response result.
         self.result = result
 
     def validate(self):
@@ -70,15 +70,15 @@ class IdnAuthorityVerifyIntlResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # The detailed verification results from the data source are described as follows (using the Indonesian data source as an example):
-        # - **govId, fullName, dob**: A comparison score equal to 1.0 indicates a complete match with the official data source. A score lower than 1.0 indicates a mismatch. 
-        # - **selfiePhoto**: A comparison score greater than 0.8 indicates a match with the official data source. A score equal to or lower than 0.8 indicates a mismatch. 
+        # The detailed verification results of the data source. The following descriptions use the Indonesian data source as an example:
+        # - **govId, fullName, dob**: A comparison score of 1.0 indicates that the information is completely consistent with the official data source. A score lower than 1.0 indicates inconsistency. 
+        # - **selfiePhoto**: A comparison score greater than 0.8 indicates that the information is consistent with the official data source. A score lower than or equal to 0.8 indicates inconsistency. 
         # - **liveness**: A score higher than 0.95 indicates a liveness detection risk. 
         # - **imgManipulationScore**: A score higher than 0.95 indicates an image tampering risk.
         self.ext_source_info = ext_source_info
         # Indicates whether the verification is passed. Valid values:
-        # - Y: passed.
-        # - N: not passed.
+        # - Y: Passed.
+        # - N: Not passed.
         self.passed = passed
         # The sub-result code.
         self.sub_code = sub_code

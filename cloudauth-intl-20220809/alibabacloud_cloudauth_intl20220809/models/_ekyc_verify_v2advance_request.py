@@ -27,53 +27,51 @@ class EkycVerifyV2AdvanceRequest(DaraModel):
         merchant_user_id: str = None,
         product_code: str = None,
     ):
-        # Specifies whether to enable authoritative identity verification. Currently, this parameter applies only to second-generation mainland China ID cards.
+        # Specifies whether to enable authoritative identity verification. This feature applies only to second-generation ID cards in mainland China.
         self.authorize = authorize
-        # Specifies whether cropping is allowed. By default, cropping is not allowed. Valid values:
+        # Specifies whether to allow cropping. Default value: F. Valid values:
         # 
-        # - T: Detection is required.
-        # - F: Detection is required (default value: F).
+        # - T: Allowed.
+        # - F: Not allowed (default).
         self.crop = crop
-        # The real name of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, you must provide at least one of the following: key document information (DocName, DocNo) or document images (IdOcrPictureBase64/URL). Note: Supports a combination of Chinese characters with a minimum length of 1 character. No special characters are allowed, except for the middle dot (·) used in ethnic minority names.
+        # The real name of the user. If Authorize is set to T and the document type is a mainland China ID card, you must provide at least one of the following: key document information (DocName and DocNo) or document images (IdOcrPictureBase64 or URL). Note: The value must contain one or more Chinese characters and no special characters, except for the middle dot (·) used in ethnic minority names.
         self.doc_name = doc_name
-        # The document number of the user. When Authorize=\\"T\\" and the document type is a mainland China ID card, you must provide at least one of the following: key document information (DocName, DocNo) or document images (IdOcrPictureBase64/URL). Note: Supports a combination of letters and numbers with a length of 18 characters.
+        # The document number of the user. If Authorize is set to T and the document type is a mainland China ID card, you must provide at least one of the following: key document information (DocName and DocNo) or document images (IdOcrPictureBase64 or URL). Note: The value must be an 18-character combination of letters and digits.
         self.doc_no = doc_no
         # The document type.
         self.doc_type = doc_type
-        # The Base64-encoded face image.
+        # The Base64-encoded facial image. Notes:
         # 
-        # Note:
-        # 
-        # - If you choose this method to pass in the face image, check the photo size and do not pass in an excessively large photo.
-        # - Specify one of the following parameters: FacePictureBase64, FacePictureUrl, or FacePictureFile.
+        # - If you use this method to pass the facial image, check the image size and do not upload oversized images.
+        # - Specify only one of FacePictureBase64, FacePictureUrl, and FacePictureFile.
         self.face_picture_base_64 = face_picture_base_64
-        # The file stream of the face photo.
+        # The file stream of the facial image.
         self.face_picture_file_object = face_picture_file_object
-        # The URL of the face photo.
+        # The URL of the facial image.
         self.face_picture_url = face_picture_url
-        # Specifies whether to enable face quality detection.
+        # Specifies whether to enable facial quality check.
         self.face_quality_check = face_quality_check
-        # The Base64-encoded identity document image. Note:
+        # The Base64-encoded image of the document. Notes:
         # 
-        # - If you choose this method to pass in the document image, check the photo size and do not pass in an excessively large photo.
-        # - Specify one of the following parameters: IdOcrPictureBase64, IdOcrPictureUrl, or IdOcrPictureFile.
+        # - If you use this method to pass the document image, check the image size and do not upload oversized images.
+        # - Specify only one of IdOcrPictureBase64, IdOcrPictureUrl, and IdOcrPictureFile.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
-        # The file stream of the front side of the identity document image.
+        # The file stream of the front image of the document.
         self.id_ocr_picture_file_object = id_ocr_picture_file_object
-        # The URL of the front side of the identity document image.
+        # The URL of the front image of the document.
         self.id_ocr_picture_url = id_ocr_picture_url
         # Specifies whether to enable document anti-spoofing.
         self.id_spoof = id_spoof
-        # The custom OCR quality detection threshold mode. Valid values:
+        # The custom OCR quality check threshold mode. Valid values:
         # 
-        # - 0: system default.
-        # - 1: strict mode.
-        # - 2: loose mode.
-        # - 3 (default): quality detection disabled.
+        # - 0: System default.
+        # - 1: Strict mode.
+        # - 2: Loose mode.
+        # - 3: Quality check disabled (default).
         self.id_threshold = id_threshold
-        # A custom business unique identifier defined by the merchant, used for subsequent issue tracking and troubleshooting. Supports a combination of letters and numbers up to 32 characters in length. Ensure that this value is unique.
+        # The custom unique business identifier on the merchant side, used for subsequent troubleshooting. The value must be a unique combination of up to 32 letters and digits.
         self.merchant_biz_id = merchant_biz_id
-        # A custom user ID or other identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
+        # The custom user ID or other identifier that identifies a specific user, such as a mobile phone number or email address. Desensitize the value of this field in advance, such as by hashing the value.
         self.merchant_user_id = merchant_user_id
         # The product code.
         self.product_code = product_code

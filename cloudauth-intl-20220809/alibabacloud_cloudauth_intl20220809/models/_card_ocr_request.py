@@ -17,29 +17,29 @@ class CardOcrRequest(DaraModel):
         product_code: str = None,
         spoof: str = None,
     ):
-        # The document type.
+        # The type of the ID card or certificate.
         self.doc_type = doc_type
-        # Specifies whether to perform face quality detection on the ID document. Valid values:
-        # - T: Perform face quality detection.
-        # - F: Do not perform face quality detection. This is the default value.
+        # Specifies whether to perform face quality detection for the ID card or certificate. Valid values:
+        # - T: Performs face quality detection.
+        # - F: Does not perform face quality detection. This is the default value.
         self.id_face_quality = id_face_quality
-        # The Base64-encoded image of the front side of the ID document. The value is a Base64 encoding of the image.
+        # The Base64 encoding of the image of the front side of the ID card or certificate.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
-        # The URL of the front-side image of the ID document.
+        # The URL of the image of the front side of the ID card or certificate.
         self.id_ocr_picture_url = id_ocr_picture_url
-        # The merchant-defined unique business ID used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+        # The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Make sure that the identifier is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The merchant user ID or another identifier that can be used to identify a specific user, such as a phone number or email address. We strongly recommend that you pre-desensitize the value of the userId field, for example, by hashing the value.
+        # The merchant user ID or another identifier that can be used to identify a specific user, such as a mobile phone number or an email address. Desensitize the value of the userId field in advance, such as by hashing the value.
         self.merchant_user_id = merchant_user_id
-        # Specifies whether to perform OCR on the ID document. Valid values:
-        # - T: Perform OCR on the ID document. This is the default value.
-        # - F: Do not perform OCR.
+        # Specifies whether to perform OCR on the ID card or certificate. Valid values:
+        # - T: Performs OCR on the ID card or certificate. This is the default value.
+        # - F: Does not perform OCR.
         self.ocr = ocr
         # The product code.
         self.product_code = product_code
         # Specifies whether to enable anti-spoofing detection. Valid values:
-        # - T: Enable anti-spoofing detection.
-        # - F: Disable anti-spoofing detection. This is the default value.
+        # - T: Enables anti-spoofing detection.
+        # - F: Disables anti-spoofing detection. This is the default value.
         self.spoof = spoof
 
     def validate(self):

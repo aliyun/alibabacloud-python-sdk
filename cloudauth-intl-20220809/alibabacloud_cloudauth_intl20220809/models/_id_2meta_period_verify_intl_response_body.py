@@ -13,7 +13,7 @@ class Id2MetaPeriodVerifyIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.Id2MetaPeriodVerifyIntlResponseBodyResult = None,
     ):
-        # The response code. For more information about response codes, see the description of response codes and messages.
+        # The return code. For more information about return codes, see Return codes and messages.
         self.code = code
         # The response message of the request.
         self.message = message
@@ -70,11 +70,11 @@ class Id2MetaPeriodVerifyIntlResponseBodyResult(DaraModel):
     ):
         # The final authentication result. Valid values:
         # 
-        # *  Y: Passed.
+        # * Y: Passed.
         # 
-        # * N: Not passed.
+        # * N: Failed.
         self.passed = passed
-        # The description of the authentication result. For more information, see the ResultObject.SubCode error code description.
+        # The description of the authentication result. For more information, see ResultObject.SubCode error codes.
         self.sub_code = sub_code
 
     def validate(self):

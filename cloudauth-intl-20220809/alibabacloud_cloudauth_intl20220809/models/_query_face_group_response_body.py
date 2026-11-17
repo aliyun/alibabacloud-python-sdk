@@ -25,11 +25,11 @@ class QueryFaceGroupResponseBody(DaraModel):
         self.code = code
         # The current page number.
         self.current_page = current_page
-        # The list of returned entries.
+        # The list of returned items.
         self.items = items
-        # The number of entries per page in a paged query.
+        # The number of entries per page during paging.
         self.max_results = max_results
-        # The return message.
+        # The returned message.
         self.message = message
         # The token for the next query.
         self.next_token = next_token

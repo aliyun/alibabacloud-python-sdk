@@ -23,80 +23,59 @@ class DocOcrMaxRequest(DaraModel):
         scene_code: str = None,
         spoof: str = None,
     ):
-        # Specifies whether to enable authoritative data source verification to enhance document anti-forgery capabilities.
-        # 
-        # - **T**: enabled.
-        # 
-        # - **F**: disabled (default).
-        # 
+        # Specifies whether to enable authoritative data source verification to enhance the anti-spoofing capability of identity documents. Valid values:
+        # - **T**: Enabled.
+        # - **F**: Not enabled (default).
         # > 
-        # > - **Applicable document types**: China resident identity card (CHN01001) and Chinese mainland driver\\"s license (CHN02001).
-        # > - **Data transmission statement**: Enabling this parameter indicates your consent to transmit the user\\"s name and document number to an authoritative data source in the Chinese mainland for consistency verification.
-        # > - **Performance impact**: After this feature is enabled, the API response time increases by approximately 1 to 2 seconds. Adjust the timeout settings accordingly.
+        # > - **Applicable identity document types**: Chinese resident identity card (CHN01001) and Chinese mainland driver\\"s license (CHN02001).
+        # > - **Data transmission statement**: Enabling this parameter indicates that you agree to transmit the user\\"s name and identity document number to an authoritative data source in the Chinese mainland for consistency verification.
+        # > - **Performance impact**: After this parameter is enabled, the API response time increases by about 1 to 2 seconds. Adjust the timeout settings accordingly.
         self.authorize = authorize
-        # The expected page to recognize. Valid values:
-        # 
-        # - 01 (default): the portrait side of the document.
-        # 
-        # - 02: the back side of the document.
+        # The page to be recognized. Valid values:
+        # - 01: portrait side of the identity document (default)
+        # - 02: back side of the identity document
         self.doc_page = doc_page
-        # The document type.
-        # - Format: country code + document type abbreviation + page (optional).
+        # The type of the identity document.
+        # - Format: country code + identity document type abbreviation + page (optional).
         # 
-        # Note:
-        # - OcrModel = 0: DocType is required. Specify the document type. The existing logic remains unchanged.
+        # Note
+        # - OcrModel = 0: DocType is required and specifies the identity document type. The existing logic remains unchanged.
         # - OcrModel = 1 or 2: DocType must be left empty.
         self.doc_type = doc_type
-        # The Base64-encoded image of the card or certificate.
-        # 
-        # If you use IdOcrPictureBase64 to pass in the document image, check the image size and do not pass in an excessively large image.
+        # The Base64-encoded image of the identity document. If you choose to pass the identity document image by using the IdOcrPictureBase64 (Base64-encoded image) method, check the image size and do not pass an excessively large image.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
-        # The URL of the card or certificate image. The URL must be a publicly accessible HTTP or HTTPS link.
+        # The URL of the identity document image. The URL must be an HTTP or HTTPS link that is accessible over the Internet.
         self.id_ocr_picture_url = id_ocr_picture_url
-        # Specifies whether to enable the document anti-forgery feature. Valid values:
-        # 
-        # - T: enabled.
-        # 
-        # - F (default): disabled.
+        # Specifies whether to enable the identity document anti-spoofing feature. Valid values:
+        # - T: Enabled.
+        # - F: Not enabled (default).
         self.id_spoof = id_spoof
-        # The custom OCR quality detection threshold mode. Valid values:
-        # 
-        # - 0: system default.
-        # - 1: strict mode.
-        # - 2: loose mode.
-        # - 3 (default): quality detection disabled.
+        # The custom OCR quality check threshold mode. Valid values:
+        # - 0: system default
+        # - 1: strict mode
+        # - 2: loose mode
+        # - 3: disable quality check (default)
         self.id_threshold = id_threshold
-        # The custom unique business identifier, which is used for subsequent troubleshooting.
-        # 
-        # The value can contain up to 32 characters, including letters and digits. Make sure the value is unique.
+        # The custom unique business identifier, which is used to locate and troubleshoot issues later. The value can be up to 32 characters in length and can contain letters and digits. Make sure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The custom user ID or another identifier that can identify a specific user, such as a phone number or email address.
-        # 
-        # We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
+        # The custom user ID or other identifiers that can identify a specific user, such as a mobile phone number or an email address. Desensitize the value of this field in advance, such as by hashing the value.
         self.merchant_user_id = merchant_user_id
         # The OCR recognition mode. Valid values:
-        # 
-        # - 0: general document recognition mode (default).
-        # 
-        # - 1: automatic document classification mode.
-        # 
-        # - 2: automatic document classification + general recognition mode.
+        # - 0: general identity document recognition mode (default)
+        # - 1: automatic identity document classification mode
+        # - 2: automatic identity document classification and general recognition mode
         self.ocr_model = ocr_model
-        # Specifies whether to enable OCR key field standardization. Valid values:
-        # - 0: no (default). 
-        # - 1: yes.
+        # Specifies whether to enable the standardization of key fields in OCR recognition. Valid values:
+        # - 0: no (default) 
+        # - 1: yes
         self.ocr_value_standard = ocr_value_standard
-        # The product solution to use.
-        # 
-        # Set this parameter to ID_OCR_MAX.
+        # The product solution to be integrated. Valid value: ID_OCR_MAX.
         self.product_code = product_code
-        # >Warning: This field is deprecated.</warning>.
+        # **[Deprecated]**
         self.prompt = prompt
-        # The custom authentication scenario ID. You can use this scenario ID to query related records in the console.
-        # 
-        # The value can contain up to 10 characters, including letters, digits, and underscores.
+        # The custom authentication scene ID, which is used to query related records by entering this scene ID in the console later. The value can be up to 10 characters in length and can contain letters, digits, and underscores.
         self.scene_code = scene_code
-        # <warning>This field is deprecated.</warning>.
+        # **[Deprecated]**
         self.spoof = spoof
 
     def validate(self):

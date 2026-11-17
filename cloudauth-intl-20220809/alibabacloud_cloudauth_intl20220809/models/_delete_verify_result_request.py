@@ -11,7 +11,7 @@ class DeleteVerifyResultRequest(DaraModel):
         delete_type: str = None,
         transaction_id: str = None,
     ):
-        # Specifies whether the deletion depends on the query operation.
+        # Specifies whether to rely on the query API when deleting data.
         self.delete_after_query = delete_after_query
         # The type of data to delete.
         self.delete_type = delete_type

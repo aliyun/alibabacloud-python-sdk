@@ -15,13 +15,13 @@ class DeepfakeDetectIntlStreamResponseBody(DaraModel):
         request_id: str = None,
         result_object: main_models.DeepfakeDetectIntlStreamResponseBodyResultObject = None,
     ):
-        # The response code.
+        # The return code.
         self.code = code
-        # The response message.
+        # The return message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The returned result information.
+        # The result information.
         self.result_object = result_object
 
     def validate(self):
@@ -72,21 +72,20 @@ class DeepfakeDetectIntlStreamResponseBodyResultObject(DaraModel):
         risk_tag: str = None,
         transaction_id: str = None,
     ):
-        # The risk result:
-        # 
-        # - **0**: Low risk
-        # - **1**: High risk
-        # - **2**: Suspicious
+        # The risk result. Valid values:
+        # - **0**: low risk.
+        # - **1**: high risk.
+        # - **2**: suspicious.
         self.result = result
         # The risk score map.
         self.risk_score = risk_score
-        # The risk labels. Multiple labels are separated by commas (,), including:
-        # 
-        # - SuspectDeepForgery: Suspected deep forgery
-        # - SuspectPSFace: Suspected face synthesis attack
-        # - SuspectTemple: Suspected template attack
-        # - SuspectRemake: Suspected presentation attack
+        # The risk tags. Multiple tags are separated by commas (,). Valid values:
+        # - SuspectDeepForgery: suspected deepfake.
+        # - SuspectPSFace: suspected synthetic attack.
+        # - SuspectTemple: suspected template attack.
+        # - SuspectRemake: suspected presentation attack.
         self.risk_tag = risk_tag
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):

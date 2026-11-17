@@ -19,7 +19,7 @@ class AddFaceRecordResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -72,8 +72,7 @@ class AddFaceRecordResponseBodyResult(DaraModel):
     ):
         # The face result information.
         self.ext_face_info = ext_face_info
-        # Indicates whether the verification is passed. Valid values:
-        # 
+        # Indicates whether the authentication passed. Valid values:
         # - Y: Passed.
         # - N: Not passed.
         self.passed = passed

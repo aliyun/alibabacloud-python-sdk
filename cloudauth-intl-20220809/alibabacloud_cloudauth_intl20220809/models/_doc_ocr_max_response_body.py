@@ -19,7 +19,7 @@ class DocOcrMaxResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The response result.
         self.result = result
 
     def validate(self):
@@ -70,12 +70,11 @@ class DocOcrMaxResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # The card and certificate recognition result. This parameter is returned only when the API response is successful.
+        # The identity document recognition result. This parameter is returned only when the API responds successfully.
         self.ext_id_info = ext_id_info
         # Indicates whether the authentication is passed. Valid values:
-        # 
-        # - Y: passed.
-        # - N: not passed.
+        # - Y: Passed.
+        # - N: Not passed.
         self.passed = passed
         # The sub-result code.
         self.sub_code = sub_code

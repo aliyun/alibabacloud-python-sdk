@@ -26,59 +26,55 @@ class CredentialSubmitIntlV2AdvanceRequest(DaraModel):
     ):
         # The field validation rule configuration. The value is a JSON string.
         self.check_rule_config = check_rule_config
-        # The Base64-encoded image. If you choose this method to submit a photo, check the photo size and do not submit an excessively large photo.
+        # The Base64-encoded image. If you choose this method to upload the photo, check the photo size and do not upload excessively large photos.
         self.credential_ocr_picture_base_64 = credential_ocr_picture_base_64
         # The image file stream.
         self.credential_ocr_picture_file_object = credential_ocr_picture_file_object
-        # The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
+        # The image URL. The URL must be an HTTP or HTTPS link accessible over the Internet.
         self.credential_ocr_picture_url = credential_ocr_picture_url
         # The credential type. Valid values:
-        # 
-        # - 01: Transaction voucher, which includes electronic bill images for utilities such as water, electricity, gas, and credit cards.
-        # - 02: Vehicle registration certificate.
-        # - 03: Transfer transaction record.
-        # - 04: Proof of address (POA).
+        # - 01: transaction credential, including electronic bill images for water, electricity, gas, and credit cards
+        # - 02: vehicle registration certificate
+        # - 03: transfer transaction record
+        # - 04: proof of address (POA)
         # 
         # This parameter is required.
         self.doc_type = doc_type
-        # The type of the input material. Valid values:
-        # 
-        # - IMAGE (default): image.
-        # - PDF: PDF format.
+        # The material input type. Valid values:
+        # - IMAGE: image (default)
+        # - PDF: PDF format
         self.file_input_type = file_input_type
         # Specifies whether to enable tampering detection. Valid values:
-        # - true: Enabled.
-        # - false: Disabled.
+        # - true: enabled
+        # - false: disabled
         # 
         # This parameter is required.
         self.fraud_check = fraud_check
-        # Specifies whether to enable quality detection. Valid values: Y (enabled) and N (disabled).
+        # Specifies whether to enable quality detection. Valid values: Y: enabled, N: disabled.
         self.id_quality = id_quality
-        # The unique identifier of the merchant request. The value is a 32-character alphanumeric string.
-        # 
-        # The first few characters consist of a custom abbreviation defined by the merchant, the middle part can contain a time segment, and the last part can use a random or incremental sequence.
+        # The unique identifier of the merchant request. The value is a 32-character alphanumeric string. The first few characters consist of a custom merchant abbreviation, the middle part can include a time period, and the latter part can be a random or incremental sequence.
         # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
         # The extraction type. Valid values:
-        # 0101: electronic bill address and name module (extracts address and name modules through intelligent analysis).
-        # 0201: 
-        # 0301: transfer transaction amount information.
-        # 0401: POA credential extraction information.
+        # - 0101: electronic bill address and name module, which extracts the address and name module through intelligent analysis
+        # - 0201: 
+        # - 0301: transfer transaction record amount information
+        # - 0401: POA credential extraction information
         # 
         # This parameter is required.
         self.ocr_area = ocr_area
-        # Specifies whether to enable translation. Valid values: 0 (disabled) and 1 (enabled).
+        # Specifies whether to enable translation. Valid values: 0: disabled, 1: enabled.
         self.ocr_translation = ocr_translation
-        # Specifies whether to enable standardization of key fields recognized by OCR. Valid values:
-        # - 0: Disabled (default). 
-        # - 1: Enabled.
+        # Specifies whether to enable standardization of key fields in OCR recognition. Valid values:
+        # - 0: no (default) 
+        # - 1: yes
         self.ocr_value_standard = ocr_value_standard
-        # The product solution to use. Set the value to CREDENTIAL_RECOGNITION.
+        # The product solution to be integrated. Valid values: CREDENTIAL_RECOGNITION.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The custom verification scenario ID. You can use this scenario ID to query related records in the console. The value is a combination of up to 10 letters, digits, or underscores.
+        # The custom authentication scenario ID. This ID is used to query related records in the console. The value can be up to 10 characters in length and can contain letters, digits, and underscores.
         # 
         # This parameter is required.
         self.scene_code = scene_code

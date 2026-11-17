@@ -16,14 +16,14 @@ class CheckResultRequest(DaraModel):
         # The additional information to return.
         self.extra_image_control_list = extra_image_control_list
         # Specifies whether to return images. Valid values:
-        # - Y: Return images.
-        # - N: Do not return images.
+        # - Y: Returns images.
+        # - N: Does not return images.
         self.is_return_image = is_return_image
-        # The merchant-defined unique business ID used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+        # The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Make sure that the identifier is unique.
         self.merchant_biz_id = merchant_biz_id
-        # Specifies whether to return the anti-spoofing detection result.
+        # Specifies whether to return the anti-spoofing detection results.
         self.return_five_category_spoof_result = return_five_category_spoof_result
-        # The verification ID.
+        # The authentication ID.
         self.transaction_id = transaction_id
 
     def validate(self):

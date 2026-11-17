@@ -13,13 +13,13 @@ class AddressVerifyV2IntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.AddressVerifyV2IntlResponseBodyResult = None,
     ):
-        # The response code.
+        # The return code.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The verification result.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -70,15 +70,16 @@ class AddressVerifyV2IntlResponseBodyResult(DaraModel):
         transaction_id: str = None,
     ):
         # The verification result. Valid values:
+        # 
         # - 1: Passed.
-        # - 2: Failed (the device is in a prohibited region). 
-        # - 3: Unable to determine.
+        # - 2: Failed. The device is located in a prohibited area.
+        # - 3: Undetermined.
         self.biz_code = biz_code
-        # The verification details, which include:
+        # The verification details, including:
         # 
         # - distanceRange: the location range.   
         # - ispName: the ISP name.     
-        # - phoneStatus: the phone status. A value of 0 indicates abnormal. A value of 1 indicates Normal. Otherwise, the status is unknown.
+        # - phoneStatus: the mobile phone status. 0 indicates abnormal, 1 indicates normal, and other values indicate unknown.
         self.detail = detail
         # The authentication ID.
         self.transaction_id = transaction_id

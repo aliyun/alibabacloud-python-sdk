@@ -68,7 +68,7 @@ class DownloadVerifyRecordIntlResponseBodyData(DaraModel):
         download_task_id: str = None,
         url: str = None,
     ):
-        # The task ID. This parameter is returned in asynchronous mode. Use QueryDownloadTaskIntl to download the exported file.
+        # The task ID. This parameter is returned in asynchronous mode. You can subsequently call QueryDownloadTaskIntl to download the exported file.
         self.download_task_id = download_task_id
         # The download URL of the exported file.
         self.url = url

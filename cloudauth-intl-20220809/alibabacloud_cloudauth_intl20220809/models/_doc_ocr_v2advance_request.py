@@ -22,49 +22,43 @@ class DocOcrV2AdvanceRequest(DaraModel):
         product_code: str = None,
         spoof: str = None,
     ):
-        # Specifies the side of the certificate. If this parameter is not specified, the portrait side is used by default.
-        # 
-        # - OCR_ID_FACE (default): the portrait side
-        # 
+        # Specifies the side of the ID card, which can be the national emblem side or the portrait side. If you do not specify this parameter, the portrait side is used by default. Valid values:
+        # - OCR_ID_FACE: the portrait side. Default value.
         # - OCR_ID_NATIONAL_EMBLEM: the national emblem side.
         self.card_side = card_side
-        # The certificate type.
+        # The type of the ID card.
         self.doc_type = doc_type
-        # Specifies whether to perform face quality detection on the certificate.
-        # 
-        # - T: Detection is required.
-        # - F: Detection is not required. (Default: F).
+        # Specifies whether to perform face quality check for the ID card. Valid values:
+        # - T: Face quality check is performed.
+        # - F: Face quality check is not performed. Default value: F.
         self.id_face_quality = id_face_quality
-        # The Base64-encoded card or certificate image.
+        # The Base64-encoded image of the ID card.
         # 
-        # If you use IdOcrPictureBase64 to pass in the certificate image, check the image size and do not pass in an excessively large image.
+        # If you choose to pass the ID card photo by using the Base64-encoded image (IdOcrPictureBase64), check the photo size and do not pass oversized photos.
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
-        # The file stream of the front side of the certificate image.
+        # The file stream of the front image of the ID card.
         self.id_ocr_picture_file_object = id_ocr_picture_file_object
-        # The URL of the front side of the certificate image.
+        # The URL of the front image of the ID card.
         self.id_ocr_picture_url = id_ocr_picture_url
-        # The custom OCR quality detection threshold mode. Valid values:
-        # 
-        # - 0: system default
-        # - 1: strict mode
-        # - 2: loose mode
-        # - 3 (default): quality detection is disabled.
+        # The custom threshold mode for OCR quality check. Valid values:
+        # - 0: system default.
+        # - 1: strict mode.
+        # - 2: loose mode.
+        # - 3: disables quality check. Default value: 3.
         self.id_threshold = id_threshold
-        # The merchant-defined unique business ID used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+        # The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Make sure that the identifier is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The custom user ID defined in your business. Ensure that the value is unique.
+        # The custom user ID in the business. Make sure that the ID is unique.
         self.merchant_user_id = merchant_user_id
-        # Specifies whether to perform certificate OCR.
-        # 
-        # - T: OCR is required.
-        # - F: OCR is not required.
+        # Specifies whether to perform OCR on the ID card. Valid values:
+        # - T: OCR is performed on the ID card.
+        # - F: OCR is not performed on the ID card.
         self.ocr = ocr
         # The product code.
         self.product_code = product_code
-        # Specifies whether to enable anti-spoofing detection.
-        # 
-        # - T: Anti-spoofing is enabled.
-        # - F: Anti-spoofing is disabled.
+        # Specifies whether to enable anti-spoofing check. Valid values:
+        # - T: Anti-spoofing check is enabled.
+        # - F: Anti-spoofing check is disabled.
         self.spoof = spoof
 
     def validate(self):

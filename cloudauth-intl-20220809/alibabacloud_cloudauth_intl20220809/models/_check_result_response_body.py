@@ -19,7 +19,7 @@ class CheckResultResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -75,7 +75,7 @@ class CheckResultResponseBodyResult(DaraModel):
         passed: str = None,
         sub_code: str = None,
     ):
-        # The verification result.
+        # The authentication result.
         self.ekyc_result = ekyc_result
         # The extended basic information.
         self.ext_basic_info = ext_basic_info
@@ -83,18 +83,17 @@ class CheckResultResponseBodyResult(DaraModel):
         self.ext_face_info = ext_face_info
         # The ID information.
         self.ext_id_info = ext_id_info
-        # The extended information, in JSON string format.
+        # The extended information, which is a JSON string.
         self.ext_info = ext_info
         # The risk information.
         self.ext_risk_info = ext_risk_info
-        # The data source verification details are described as follows (using the Indonesian data source as an example):
-        # - **govId, fullName, dob**: A comparison score equal to 1.0 indicates a complete match with the official data source. A score lower than 1.0 indicates a mismatch. 
-        # - **selfiePhoto**: A comparison score greater than 0.8 indicates a match with the official data source. A score equal to or lower than 0.8 indicates a mismatch. 
+        # The detailed verification results of the data source. The following descriptions use the Indonesian data source as an example:
+        # - **govId, fullName, dob**: A comparison score of 1.0 indicates an exact match with the official data source information. A score lower than 1.0 indicates a mismatch. 
+        # - **selfiePhoto**: A comparison score greater than 0.8 indicates a match with the official data source information. A score lower than or equal to 0.8 indicates a mismatch. 
         # - **liveness**: A score higher than 0.95 indicates a liveness detection risk. 
         # - **imgManipulationScore**: A score higher than 0.95 indicates an image tampering risk.
         self.ext_source_info = ext_source_info
-        # Indicates whether the verification is passed. Valid values:
-        # 
+        # Specifies whether the authentication is passed. Valid values:
         # - Y: Passed.
         # - N: Not passed.
         self.passed = passed

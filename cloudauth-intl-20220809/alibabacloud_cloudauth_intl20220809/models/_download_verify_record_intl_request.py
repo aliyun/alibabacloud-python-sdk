@@ -15,14 +15,14 @@ class DownloadVerifyRecordIntlRequest(DaraModel):
     ):
         # The business type. Valid values:
         # - INVOKE_STATISTICS
-        # - INVOKE_RECORD.
+        # - INVOKE_RECORD
         self.biz_type = biz_type
         # The query code.
         self.code = code
         # The download mode. Valid values:
         # 
-        # - **async**: asynchronous
-        # - **sync**: synchronous.
+        # - **async**: Asynchronous.
+        # - **sync**: Synchronous.
         self.download_mode = download_mode
         # The parameters for the export and download query task.
         self.param = param

@@ -19,7 +19,7 @@ class AddressCompareIntlResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The returned result.
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -67,16 +67,16 @@ class AddressCompareIntlResponseBodyResult(DaraModel):
         self,
         data: str = None,
     ):
-        # The sameLevel parameter has the following valid values:
-        # - all: completely identical
-        # - prov: province level 
-        # - city: city level
-        # - district: district level
-        # - town: street level
-        # - road: road level
-        # - roadno: road number level
-        # - poi: community/neighborhood level
-        # - roomno: room number level.
+        # Valid values:
+        # - all: Exactly the same.
+        # - prov: Province. 
+        # - city: City.
+        # - district: District.
+        # - town: Town.
+        # - road: Road.
+        # - roadno: Road number.
+        # - poi: Residential community.
+        # - roomno: Room number.
         self.data = data
 
     def validate(self):

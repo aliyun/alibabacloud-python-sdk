@@ -19,63 +19,63 @@ class BankMetaVerifyIntlRequest(DaraModel):
     ):
         # The bank card number.
         # 
-        # - If paramType is set to normal, enter the bank card number in plaintext.
-        # - If paramType is set to md5, provide the plaintext of all digits except the last 6 digits + the MD5 value (32-character lowercase) of the last 6 digits.
+        # - If paramType is set to normal, enter the plaintext bank card number.
+        # - If paramType is set to md5, enter the plaintext of the bank card number except the last 6 digits, followed by the 32-character lowercase MD5 hash of the last 6 digits.
         # 
         # This parameter is required.
         self.bank_card = bank_card
-        # The ID document number.
-        # - If paramType is set to normal, enter the ID document number in plaintext.
+        # The identification document number.
+        # - If paramType is set to normal, enter the plaintext identification document number.
         # - If paramType is set to md5:
-        #     - For ID cards: the first 6 digits (plaintext) + date of birth (ciphertext) + the last 4 digits (plaintext).
-        #     - For other documents: the last 2 characters are MD5-encrypted.
+        #     - For an ID card, enter the first 6 digits in plaintext, followed by the ciphertext of the date of birth, and then the last 4 digits in plaintext.
+        #     - For other identification documents, encrypt the last two characters by using MD5.
         # 
         # Important:
-        # This parameter is required when ProductType is set to one of the following values:
+        # This parameter is required if ProductType is set to one of the following values:
         # - BANK_CARD_3_META
-        # - BANK_CARD_4_META.
+        # - BANK_CARD_4_META
         self.identify_num = identify_num
-        # The ID document type. If left empty, the default value is ID card. For other document types, refer to the table below.
+        # The type of the identification document. If you leave this parameter empty, the default value is ID card. For other types of identification documents, see the following table.
         self.identity_type = identity_type
-        # The phone number.
-        # - If paramType is set to normal, enter the phone number in plaintext.
-        # - If paramType is set to md5, enter the phone number in ciphertext.
+        # The mobile phone number.
+        # - If paramType is set to normal, enter the plaintext mobile phone number.
+        # - If paramType is set to md5, enter the ciphertext mobile phone number.
         # 
         # Important:
         # 
-        # - This parameter is required when ProductType is set to BANK_CARD_4_META.
+        # - This parameter is required if ProductType is set to BANK_CARD_4_META.
         self.mobile = mobile
         # The encryption method. Valid values:
-        # - normal: no encryption
-        # - md5: MD5 encryption
+        # - normal: No encryption.
+        # - md5: MD5 encryption.
         # 
         # Important:
         # 
-        # - All encrypted parameter values must be 32-character lowercase MD5 strings.
-        # - Different MD5 tools may produce different ciphertext. If the API call succeeds before encryption but fails after encryption, try a different MD5 tool.
+        # - The ciphertext of all parameters must be a 32-character lowercase MD5 string.
+        # - Different MD5 tools may generate different ciphertexts. If the API call succeeds before encryption but fails after encryption, try using a different MD5 tool.
         # 
         # This parameter is required.
         self.param_type = param_type
-        # Fixed value: BANK_CARD_N_META.
+        # The fixed value. Valid value: BANK_CARD_N_META.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The product type to call. Valid values:
+        # The product type. Valid values:
         # 
-        # - BANK_CARD_2_META: Bank card number + name verification.
-        # - BANK_CARD_3_META: Bank card number + name + ID card number verification.
-        # - BANK_CARD_4_META: Bank card number + name + ID card number + phone number verification.
+        # - BANK_CARD_2_META: Verifies the bank card number and name.
+        # - BANK_CARD_3_META: Verifies the bank card number, name, and ID card number.
+        # - BANK_CARD_4_META: Verifies the bank card number, name, ID card number, and mobile phone number.
         # 
         # This parameter is required.
         self.product_type = product_type
         # The name.
         # 
-        # - If paramType is set to normal, enter the name in plaintext.
-        # - If paramType is set to md5, provide the MD5-encrypted first character of the name (32-character lowercase MD5) + the plaintext of the remaining characters.
+        # - If paramType is set to normal, enter the plaintext name.
+        # - If paramType is set to md5, enter the 32-character lowercase MD5 hash of the first character of the name, followed by the plaintext of the remaining characters.
         # 
         # This parameter is required.
         self.user_name = user_name
-        # VERIFY_BANK_CARD: bank card authentication mode. Indicates whether the provided bank card number matches the user\\"s real name, ID card number, and phone number.
+        # The verification mode. Valid value: VERIFY_BANK_CARD. This value indicates the bank card authentication mode, which verifies whether the provided bank card number matches the real name, ID card number, and mobile phone number of the user.
         # 
         # This parameter is required.
         self.verify_mode = verify_mode

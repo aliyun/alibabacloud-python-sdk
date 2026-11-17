@@ -21,20 +21,20 @@ class CredentialSubmitIntlRequest(DaraModel):
         product_code: str = None,
         scene_code: str = None,
     ):
-        # The field validation rule configuration in JSON string format.
+        # The field validation rule configuration, which is a JSON string.
         self.check_rule_config = check_rule_config
-        # The Base64-encoded image. If you use this method to submit a photo, check the photo size and do not submit an excessively large photo.
+        # The Base64-encoded image. If you choose this method to upload the image, check the image size and do not upload an excessively large image.
         self.credential_ocr_picture_base_64 = credential_ocr_picture_base_64
-        # The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
+        # The image URL, which must be a publicly accessible HTTP or HTTPS link.
         self.credential_ocr_picture_url = credential_ocr_picture_url
         # The credential type. Valid values:
-        # - 02: vehicle registration certificate.
+        # - 02: Vehicle registration certificate.
         # 
         # This parameter is required.
         self.doc_type = doc_type
-        # The input file type. Valid values:
+        # The material input type. Valid values:
         # 
-        # - IMAGE (default): image.
+        # - IMAGE: Image. This is the default value.
         # 
         # - PDF: PDF format.
         self.file_input_type = file_input_type
@@ -44,11 +44,9 @@ class CredentialSubmitIntlRequest(DaraModel):
         # 
         # This parameter is required.
         self.fraud_check = fraud_check
-        # Specifies whether to enable quality detection. Valid values:
-        # - Y: Enabled.
-        # - N: Disabled.
+        # Specifies whether to enable quality detection. Valid values: Y: Enabled. N: Disabled.
         self.id_quality = id_quality
-        # The custom business unique identifier on the merchant side, used for subsequent troubleshooting. The value can be a combination of letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+        # The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. The identifier can be up to 32 characters in length and can contain letters and digits. Make sure that the identifier is unique.
         # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
@@ -58,19 +56,15 @@ class CredentialSubmitIntlRequest(DaraModel):
         # 
         # This parameter is required.
         self.ocr_area = ocr_area
-        # Specifies whether to enable translation. Valid values:
-        # - 0: Disabled.
-        # - 1: Enabled.
+        # Specifies whether to enable translation. Valid values: 0: Disabled. 1: Enabled.
         self.ocr_translation = ocr_translation
-        # Specifies whether to enable OCR result standardization. Valid values:
-        # - 0: Disabled.
-        # - 1: Enabled.
+        # Specifies whether to enable OCR result standardization. Valid values: 0: Disabled. 1: Enabled.
         self.ocr_value_standard = ocr_value_standard
-        # The product solution to use. Set this parameter to CREDENTIAL_RECOGNITION.
+        # The product solution to be integrated. Valid value: CREDENTIAL_RECOGNITION.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The custom authentication scenario ID. You can use this scenario ID to query related records in the console. The value can be a combination of letters, digits, or underscores with a maximum length of 10 characters.
+        # The custom authentication scene ID, which is used to query related records in the console. The ID can be up to 10 characters in length and can contain letters, digits, and underscores (_).
         # 
         # This parameter is required.
         self.scene_code = scene_code

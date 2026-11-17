@@ -15,7 +15,7 @@ class Mobile2MetaVerifyIntlResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # The return message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -69,15 +69,16 @@ class Mobile2MetaVerifyIntlResponseBodyResult(DaraModel):
         isp_name: str = None,
     ):
         # The verification result code. Valid values:
-        # - 1: Consistent.
-        # - 2: Inconsistent.
-        # - 3: No record found.
+        # 
+        # - 1: consistent
+        # - 2: inconsistent
+        # - 3: not found
         self.biz_code = biz_code
         # The name of the telecommunications service provider. Valid values:
         # 
         # - CMCC: China Mobile
         # - CUCC: China Unicom
-        # - CTCC: China Telecom.
+        # - CTCC: China Telecom
         self.isp_name = isp_name
 
     def validate(self):

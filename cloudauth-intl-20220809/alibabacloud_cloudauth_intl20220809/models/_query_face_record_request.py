@@ -20,13 +20,13 @@ class QueryFaceRecordRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The face library code.
+        # The face group code.
         # 
         # This parameter is required.
         self.face_group_code = face_group_code
         # The face ID.
         self.face_id = face_id
-        # The maximum number of entries per page for a paginated query.
+        # The maximum number of entries per page for paging.
         self.max_results = max_results
         # The merchant user ID.
         self.merchant_user_id = merchant_user_id

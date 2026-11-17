@@ -17,34 +17,34 @@ class FaceCompareV2Request(DaraModel):
         target_face_picture_file: str = None,
         target_face_picture_url: str = None,
     ):
-        # Specifies whether to enable quality check for the input face images.
-        # >Danger: Deprecated
+        # Specifies whether to enable quality check for the input face image.
+        # >Danger: **[Deprecated]**</danger>
         self.face_picture_quality_check = face_picture_quality_check
-        # Specifies whether to enable face quality check.
+        # The face quality check.
         self.face_quality_check = face_quality_check
-        # The merchant-defined unique business identifier, used for subsequent troubleshooting. Supports a combination of letters and numbers with a maximum length of 32 characters. Ensure that this value is unique.
+        # The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The Base64-encoded source face photo.
+        # The Base64-encoded portrait photo.
         # 
-        # > **Note**
+        # Note
         # 
-        # - If you choose this method to pass in the photo, check the photo size and do not pass in an excessively large photo.
-        # - Specify one of the following parameters: SourceFacePicture, SourceFacePictureUrl, or SourceFacePictureFile.
+        # - If you use this method to pass the face image, check the image size and do not pass oversized images.
+        # - Specify only one of the following parameters: SourceFacePicture, SourceFacePictureUrl, and SourceFacePictureFile.
         self.source_face_picture = source_face_picture
-        # The file stream of the source face image.
+        # The file stream of the face image.
         self.source_face_picture_file = source_face_picture_file
-        # The HTTPS or HTTP URL of the source face image.
+        # The HTTPS or HTTP URL of the face image.
         self.source_face_picture_url = source_face_picture_url
-        # The Base64-encoded target reference face photo.
+        # The Base64-encoded reference photo.
         # 
-        # > **Note**
+        # Note
         # 
-        # - If you choose this method to pass in the photo, check the photo size and do not pass in an excessively large photo.
-        # - Specify one of the following parameters: TargetFacePicture, TargetFacePictureUrl, or TargetFacePictureFile.
+        # - If you use this method to pass the reference photo, check the photo size and do not pass oversized photos.
+        # - Specify only one of the following parameters: TargetFacePicture, TargetFacePictureUrl, and TargetFacePictureFile.
         self.target_face_picture = target_face_picture
-        # The file stream of the target reference face image.
+        # The file stream of the reference face image.
         self.target_face_picture_file = target_face_picture_file
-        # The HTTPS or HTTP URL of the target reference face image.
+        # The HTTPS or HTTP URL of the reference face image.
         self.target_face_picture_url = target_face_picture_url
 
     def validate(self):

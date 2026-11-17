@@ -19,7 +19,7 @@ class CredentialGetResultIntlResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -69,14 +69,14 @@ class CredentialGetResultIntlResponseBodyResult(DaraModel):
         status: str = None,
         sub_code: str = None,
     ):
-        # The key information identified, in JSON format.
+        # The recognized key information in JSON format.
         self.ext_id_info = ext_id_info
         # The task status. Valid values:
-        # - PROCESSING: Processing. Continue polling.
-        # - SUCCESS: Succeeded.
-        # - FAILED: Failed.
+        # - PROCESSING: The task is in progress. Continue polling.
+        # - SUCCESS: The task succeeded.
+        # - FAILED: The task failed.
         self.status = status
-        # The description of the authentication result. For more information, refer to the ResultObject.SubCode error code description.
+        # The description of the authentication result. For more information, see the error code description for ResultObject.SubCode.
         self.sub_code = sub_code
 
     def validate(self):

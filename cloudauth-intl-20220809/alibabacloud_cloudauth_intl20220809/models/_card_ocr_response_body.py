@@ -19,7 +19,7 @@ class CardOcrResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The response result.
         self.result = result
 
     def validate(self):
@@ -71,18 +71,17 @@ class CardOcrResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # The ID card and certificate recognition result.
+        # The recognition result of the ID card or certificate.
         self.ext_card_info = ext_card_info
         # The additional result information.
         self.ext_id_info = ext_id_info
         # Indicates whether the authentication is passed. Valid values:
-        # 
         # - Y: Passed.
         # - N: Not passed.
         self.passed = passed
         # The sub-result code.
         self.sub_code = sub_code
-        # The unique ID of the authentication request.
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):

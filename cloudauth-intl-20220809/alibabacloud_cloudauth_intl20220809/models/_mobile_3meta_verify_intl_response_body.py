@@ -19,7 +19,7 @@ class Mobile3MetaVerifyIntlResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The verification result.
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -70,23 +70,24 @@ class Mobile3MetaVerifyIntlResponseBodyResult(DaraModel):
         sub_code: str = None,
     ):
         # The verification result code. Valid values:
+        # 
         # - 1: Consistent.
         # - 2: Inconsistent.
         # - 3: No record found.
         self.biz_code = biz_code
-        # The carrier name. Valid values:
+        # The name of the Internet service provider (ISP). Valid values:
         # 
-        # - CMCC: China Mobile
-        # - CUCC: China Unicom
+        # - CMCC: China Mobile.
+        # - CUCC: China Unicom.
         # - CTCC: China Telecom.
         self.isp_name = isp_name
         # The detailed verification result. Valid values:
         # 
         # - 101: Verification passed. 
-        # - 201: The phone number is inconsistent with the name, and the phone number is inconsistent with the ID card number. 
-        # - 202: The phone number is consistent with the name, but the phone number is inconsistent with the ID card number. 
-        # - 203: The phone number is consistent with the ID card number, but the phone number is inconsistent with the name. 
-        # - 204: Other inconsistency.
+        # - 201: The mobile phone number does not match the name or the ID card number. 
+        # - 202: The mobile phone number matches the name but does not match the ID card number. 
+        # - 203: The mobile phone number matches the ID card number but does not match the name. 
+        # - 204: Other inconsistencies.
         # - 301: No record found.
         self.sub_code = sub_code
 

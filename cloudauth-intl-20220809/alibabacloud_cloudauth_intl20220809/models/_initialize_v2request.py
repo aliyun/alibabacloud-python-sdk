@@ -39,6 +39,7 @@ class InitializeV2Request(DaraModel):
         id_face_quality: str = None,
         id_spoof: str = None,
         id_threshold: str = None,
+        is_force_face_centered: str = None,
         language_config: str = None,
         mrtdinput: str = None,
         merchant_biz_id: str = None,
@@ -72,180 +73,237 @@ class InitializeV2Request(DaraModel):
         use_nfc: str = None,
         verify_model: str = None,
     ):
-        # <warning>This feature is not supported by the **Web SDK**. To use this feature, refer to the App SDK integration.</warning>
+        # <warning>This feature is not supported by the **Web SDK**. To use this feature, refer to the App SDK integration guide.</warning>
         # 
         # Specifies whether to enable strict face quality detection. Valid values:
-        # - Y: Enabled. This is the default value.
-        # - N: Not enabled.
+        # - Y: Enable. This is the default value.
+        # - N: Disable.
         self.app_quality_check = app_quality_check
-        # Specifies whether to enable authoritative identity verification. Currently, this applies only to second-generation ID cards in the Chinese mainland. This is an input parameter for the IDV product.
+        # Specifies whether to enable authoritative identity verification. This feature currently applies only to second-generation ID cards in the Chinese mainland. This parameter is applicable to IDV products.
         self.authorize = authorize
+        # The automatic document page classification configuration. This parameter takes effect only when DocType is set to a country or region code. You can specify the pages to collect based on the specific document type code. For documents that are not configured, only the front side is collected.
         self.auto_doc_page_config = auto_doc_page_config
         # Specifies whether to enable automatic registration.
         self.auto_registration = auto_registration
-        # The security token used for anti-replay and anti-tampering verification. If this parameter is passed in, the CallbackToken field is displayed in the callback URL.
+        # The security token used for anti-replay and anti-tampering verification. If you specify this parameter, the CallbackToken field is displayed in the callback URL.
         self.callback_token = callback_token
-        # The callback URL for the authentication result notification. The callback request method is GET by default, and the callback URL must start with https. After the authentication is complete, the platform calls back this URL and automatically appends the transactionId, passed, and subcode fields.
+        # The callback URL for authentication result notifications. The default callback request method is GET, and the callback URL must start with https. After the authentication is completed, the platform calls this URL and automatically appends the transactionId, passed, and subcode fields.
         self.callback_url = callback_url
-        # Specifies whether to enable the adaptive color-changing window frame.
+        # Specifies whether to enable the adaptive color-changing window border. Valid values:
+        # - **Y**: Enable.
+        # - **N**: Disable.
         self.chameleon_frame_enable = chameleon_frame_enable
-        # Specifies whether to enable cropping. This is an input parameter for the IDV product.
+        # Specifies whether to crop the image. This parameter is applicable to IDV products.
         self.crop = crop
-        # The date of birth on the document.
+        # The date of birth on the document, in the YYMMDD format (6 digits). This parameter is required when **MRTDInput** is set to **2**.
         self.date_of_birth = date_of_birth
-        # The expiration date on the document.
+        # The expiration date on the document, in the YYMMDD format (6 digits). This parameter is required when **MRTDInput** is set to **2**.
         self.date_of_expiry = date_of_expiry
         # The real name of the user.
         self.doc_name = doc_name
         # The document number of the user.
         self.doc_no = doc_no
-        # The custom configuration for whether to collect additional pages.
+        # The custom configuration passed by the customer to specify whether to collect more pages.
         self.doc_page_config = doc_page_config
-        # The document capture photo mode.
+        # The photo capture mode for document collection. Valid values:
+        # 
+        # - manual: Manual capture.
+        # - auto: Automatic capture. This is the default value.
         self.doc_scan_mode = doc_scan_mode
-        # The document type.
-        # >For the eKYC_PRO and ID_OCR_MAX solutions, see the official documentation at https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
+        # The document type. 
+        # > For the eKYC_PRO and ID_OCR_MAX editions, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/certificate-code-table?spm=a2c63.p38356.help-menu-445633.d_2_8_2_0.279147abwKAWbr
         # 
-        # >For the ID_OCR, eKYC, and eKYC_MIN solutions, see the document type list in the official documentation at https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7
+        # > For the ID_OCR, eKYC, and eYKC_MIN editions, see the document type list in the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/gnhekqy05ni51m4c?spm=a2c63.p38356.help-menu-445633.d_2_3_1_0_0_0.6243244777KoZ7
         self.doc_type = doc_type
-        # Specifies whether to collect a verification video.
+        # Specifies whether to store a video as evidence. Valid values:
         # 
-        # - N: No verification video is collected. This is the default value.
+        # - N: No. This is the default value.
         # 
-        # - Y: A short video (1 to 2 seconds) of the user\\"s face verification process is collected during authentication and returned through the query operation.
+        # - Y: Yes. During the authentication process, a video of the user\\"s face scanning process (a 1- to 2-second video file) is collected and returned through the query operation.
         # 
-        # > Because video files are large, the system discards video files when the network is unstable to prioritize the transmission of images required for authentication.
+        # > Because video files are large, the system discards the video file when the network is unstable to prioritize the transmission of images required for authentication.
         self.doc_video = doc_video
-        # The document number.
+        # The document number. This parameter is required when **MRTDInput** is set to **2**.
         self.document_number = document_number
-        # Specifies whether the recognition result page is editable during the document OCR recognition step:
+        # Specifies whether the recognition result page is editable during the document OCR stage. Valid values:
+        # 
+        # - **0**: Not editable.
+        # 
+        # - **1**: Editable. This is the default value.
         self.edit_ocr_result = edit_ocr_result
         # The Indonesian email address. This field takes effect only when Authorize is set to T.
+        # 
+        # > Note
+        # > This field is required only when the Indonesian data source is enabled.
         self.email = email
         # The experience code.
         self.experience_code = experience_code
+        # Specifies whether to return additional face attribute information. Valid values: N: Do not return. This is the default value. Y: Return. The result is located in Result.ExtFaceInfo.FaceAttributeInfo.
         self.face_attribute_check = face_attribute_check
-        # The face libraries to compare against.
+        # The face databases for comparison.
         self.face_group_codes = face_group_codes
-        # The Base64-encoded face photo. If you use FacePictureBase64 to pass in the face photo, check the photo size and do not pass in an excessively large photo.
+        # The Base64-encoded string of the photo. If you choose to pass the face photo by using FacePictureBase64, check the photo size and do not pass an excessively large photo.
         self.face_picture_base_64 = face_picture_base_64
         # The file stream of the face photo.
         self.face_picture_file = face_picture_file
         # The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
         self.face_picture_url = face_picture_url
-        # The face registration library.
+        # The face database for registration.
         self.face_register_group_code = face_register_group_code
-        # The face verification threshold.
+        # The threshold for face verification.
         self.face_verify_threshold = face_verify_threshold
-        # The face image quality. This is an input parameter for the IDV product.
+        # The quality of the face image. This parameter is applicable to IDV products.
         self.id_face_quality = id_face_quality
-        # Specifies whether to enable document anti-spoofing detection. This is an input parameter for the IDV product.
+        # Specifies whether to enable document anti-spoofing detection. This parameter is applicable to IDV products.
         self.id_spoof = id_spoof
-        # The custom OCR quality detection threshold mode:
+        # The custom threshold mode for OCR quality detection. Valid values:
+        # 
+        # - 0: System default.
+        # - 1: Strict mode.
+        # - 2: Loose mode.
+        # - 3: Disable quality detection. This is the default value.
         self.id_threshold = id_threshold
-        # The language configuration. This is an input parameter for the IDV product.
+        # The forced centering configuration. Specifies whether to intercept the request when an off-center face is detected on the terminal. Valid values:
+        # 
+        # - Y: Intercept. The client prompts the user to scan their face again.
+        # - N: Do not intercept. This is the default value. The system extracts the largest face from the face scanning screen and sends it to the server for security detection.
+        self.is_force_face_centered = is_force_face_centered
+        # The language configuration. This parameter is applicable to IDV products.
         self.language_config = language_config
-        # The source of the MRTD verification parameter input. This parameter is required to decrypt information when reading document chip data via NFC.
+        # The input source of the MRTD verification parameter. This parameter is required to decrypt information when NFC reads the document chip information. Valid values:
         # 
-        # - **0**: user input
+        # - **0**: User input.
         # 
-        # - **1**: OCR reading
+        # - **1**: OCR reading.
         # 
-        # - **2**: API input
+        # - **2**: API input.
         self.mrtdinput = mrtdinput
-        # The merchant-defined unique business ID used for subsequent troubleshooting. The value supports a combination of letters and numbers with a maximum length of 32 characters. Ensure that the value is unique.
+        # The custom unique business identifier on the merchant side, which is used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Make sure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The custom user ID, or another identifier that can identify a specific user, such as a phone number or email address. We strongly recommend that you hash or otherwise de-identify this value before passing it in.
+        # Your custom user ID or another identifier that can identify a specific user, such as a mobile phone number or an email address. We strongly recommend that you desensitize the value of this field in advance, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
-        # The Metainfo environment parameter, which must be obtained through the client SDK.
+        # The Metainfo environment parameter, which must be obtained by using the client SDK.
         self.meta_info = meta_info
-        # The Indonesian phone number. The format must start with +62 followed by 9 to 11 digits. This field takes effect only when Authorize is set to T.
+        # The Indonesian phone number. The format must be verified. It must start with +62 followed by 9 to 11 digits. This field takes effect only when Authorize is set to T.
+        # 
+        # > 
+        # > - This field is required only when the Indonesian data source is enabled.
         self.mobile = mobile
-        # The type of liveness detection to perform.
+        # The type of liveness detection to perform. Valid values:
         # 
-        # - **LIVENESS** (default): Blink-based liveness detection.
+        # - **LIVENESS**: Liveness detection based on blinking. This is the default value.
         # 
-        # - **PHOTINUS_LIVENESS**: Dual detection that combines blink-based liveness detection and colorful light liveness detection.
+        # - **PHOTINUS_LIVENESS**: Dual liveness detection based on blinking and photinus.
         # 
         # > 
         # > - For supported SDK versions, see [SDK release notes](https://www.alibabacloud.com/help/zh/ekyc/latest/sdk-publishing-record?spm=a2c63.p38356.0.i99).
-        # > - Colorful light dual detection is not supported on PCs.
+        # > - Dual liveness detection based on photinus is not supported on PCs.
         self.model = model
+        # Specifies whether to intercept the request when multiple faces are detected on the terminal. Valid values:
+        # 
+        # - Y: Intercept. The client prompts the user to scan their face again.
+        # - N: Do not intercept. This is the default value. The system extracts the largest face from the face scanning screen and sends it to the server for security detection.
         self.need_multi_face_check = need_multi_face_check
-        # Specifies whether to enable OCR. This is an input parameter for the IDV product.
+        # Specifies whether to enable OCR. This parameter is applicable to IDV products.
         self.ocr = ocr
-        # Specifies whether to additionally return OCR recognition results in a standardized format:
+        # Specifies whether to return additional standardized OCR recognition fields. Valid values:
+        # 
+        # - 0: No. This is the default value.
+        # - 1: Yes.
         self.ocr_value_standard = ocr_value_standard
-        # The configuration for capture pages. Separate multiple pages with commas (,). Valid values:
+        # The configuration of the pages to collect. Separate multiple pages with commas (,). Valid values:
+        # - **01**: The portrait side of the document.
         # 
-        # - **01**: the portrait side of the identity document.
+        # - **01,02**: The portrait and back sides of the document.
         # 
-        # - **01,02**: the portrait side and back side of the identity document.
-        # 
-        # > When this parameter is set to 01,02, only China identity cards and Vietnam identity cards are supported.
+        # > If you set this parameter to 01,02, only Chinese ID cards and Vietnamese ID cards are supported.
         self.pages = pages
-        # Specifies whether to allow a degraded processing method when compatibility issues occur during mobile H5 authentication.
+        # Specifies whether to allow degraded processing when compatibility issues occur during mobile H5 authentication. Valid values:
         # 
-        # - **url (default)**: Degradation is supported. The page displays the authentication URL, and the user can copy the URL to open it or switch browsers to continue authentication.
+        # - **url**: Allow degradation. This is the default value. The page displays the authentication URL, and the user can copy the URL to open it or switch browsers to continue the authentication.
         # 
-        # - **keep**: Degradation is not supported. The error reason is directly returned, and the authentication process ends.
+        # - **keep**: Do not allow degradation. The system directly returns the error cause and ends the authentication process.
         # 
         # 
         # > 
-        # > - This parameter is not supported on PC.
-        # > - If the business scenario involves completing authentication within a webpage embedded in an app, set this parameter to keep to disallow URL degradation.
+        # > - This switch is not supported on PCs.
+        # > - If the business scenario involves completing authentication in an embedded web page within an app, we recommend that you set this parameter to keep to disable URL degradation.
         self.procedure_priority = procedure_priority
-        # The product plan to use.
+        # The product edition to integrate. 
         # 
-        # >**Note** For more information, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/product-introduction?spm=a2c63.p38356.0.i1
+        # > Note: For more information, see the official documentation: https://www.alibabacloud.com/help/zh/ekyc/latest/product-introduction?spm=a2c63.p38356.0.i1
         self.product_code = product_code
-        # Specifies the order of document and face verification steps. Valid values:
+        # The sequence of document and face verification. Valid values:
         # 
-        # - DOC_FACE: Document first, then face. This is the default value.
-        # - FACE_DOC: Face first, then document.
+        # - DOC_FACE: Document verification followed by face verification. This is the default value.
+        # - FACE_DOC: Face verification followed by document verification.
         # 
-        # >**Note**: This parameter is required only when ProductCode is set to KYC_GLOBAL.
+        # > Note: This parameter is required only when ProductCode is set to KYC_GLOBAL.
         self.product_flow = product_flow
-        # The number of duplicate faces to return.
+        # The number of duplicate faces returned.
         self.return_faces = return_faces
         # The client-side callback URL.
         self.return_url = return_url
         # Specifies whether to save the face photo.
         self.save_face_picture = save_face_picture
-        # The scene code. This is an input parameter for the IDV product.
+        # The scene code. This parameter is applicable to IDV products.
         self.scene_code = scene_code
-        # The mode that represents different security levels of the authentication process. Valid values:
+        # The pattern that represents different security levels of the authentication flow. Valid values:
         # 
-        # - 01: Normal mode (default).
-        # - 02: Safe mode. A relatively strict mode that can be used for high-risk scenarios (input parameter for IDV products).
+        # - 01: Normal pattern. This is the default value.
+        # - 02: safe mode. This is a relatively strict pattern that is active in high-risk scenarios. This parameter is applicable to IDV products.
         self.security_level = security_level
-        # Specifies whether to display the album upload entry during the document OCR recognition step:
+        # Specifies whether to display the album upload entry during the document OCR stage. Valid values:
+        # 
+        # - **1**: Display. This is the default value.
+        # 
+        # - **0**: Do not display.
         self.show_album_icon = show_album_icon
-        # Specifies whether to display the guide page:
+        # Specifies whether to display the guide page. Valid values:
+        # 
+        # - **1**: Display. This is the default value.
+        # 
+        # - **0**: Do not display.
         self.show_guide_page = show_guide_page
-        # Specifies whether to display the recognition result page during the document OCR recognition step:
+        # Specifies whether to display the recognition result page during the document OCR stage. Valid values:
+        # 
+        # - **1**: Display. This is the default value.
+        # 
+        # - **0**: Do not display.
         self.show_ocr_result = show_ocr_result
-        # The custom UI configuration. Convert your custom UI configuration to a JSON string based on the configuration template, and pass it in through this parameter. For more information, see [IDV UI style customization](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
+        # The custom UI configuration. Convert your custom UI configuration into a JSON string based on the configuration template, and pass it through this operation. For more information, see [Customize IDV UI styles](https://www.alibabacloud.com/help/zh/ekyc/latest/idv-kyc-custom-skin?spm=a2c63.p38356.0.i60).
         self.style_config = style_config
-        # The Base64-encoded face photo.
+        # The Base64-encoded string of the portrait photo.
         self.target_face_picture = target_face_picture
-        # The file stream of the reference face photo.
+        # The file stream of the base face image.
         self.target_face_picture_file = target_face_picture_file
-        # The URL of the face photo. The URL must be a publicly accessible HTTP or HTTPS link.
+        # The URL of the portrait photo. The URL must be a publicly accessible HTTP or HTTPS link.
         self.target_face_picture_url = target_face_picture_url
-        # The custom action pool configuration for liveness detection.
+        # The custom action pool configuration for liveness detection. This parameter is required when Model is set to TEMPLATE.
+        # Configuration rules: Separate multiple action codes with commas (,). Best Practices: We recommend that you include at least one frontal face action (such as blinking) and keep the total number of actions to a maximum of 3.
+        # Action code lookup table:
+        # 
+        # - Blink: 01
+        # - Open Mouth: 02
+        # - Shake Head Left: 03
+        # - Shake Head Right: 04
+        # - Move Farther: 05
+        # - Move Closer: 06
+        # - Photinus: 07
         self.template_config = template_config
-        # The number of actions to randomly select from TemplateConfig.
+        # **[Deprecated]** The random mode is no longer recommended. This field is deprecated.
         self.template_ran_count = template_ran_count
-        # The execution order of liveness detection actions in TemplateConfig.
+        # The execution sequence of liveness detection actions in TemplateConfig. This parameter is required when Model is set to TEMPLATE. Valid values:
+        # 
+        # - Seq: Execute from left to right in the sequence configured in TemplateConfig.
         self.template_type = template_type
-        # Specifies whether to overwrite the existing face with the current face when the MerchantUserId already exists during automatic registration. Valid values: Y (overwrite) and N (do not overwrite and return a message indicating that the UserId already exists).
+        # Specifies whether to overwrite the existing face with the current face if MerchantUserId already exists during automatic registration. Valid values: Y: Overwrite. N: Do not overwrite and return a message indicating that the UserId already exists.
         self.update_face_if_user_exists = update_face_if_user_exists
-        # When **DocType** is set to 01000000 (global passport), specifies whether to enable NFC verification.
-        # - **Y**: Enable NFC verification.
-        # - **N**: Disable NFC verification.
+        # Specifies whether to enable NFC verification when **DocType** is set to 01000000 (global passport). Valid values:
+        # - **Y**: Enable.
+        # - **N**: Disable.
         self.use_nfc = use_nfc
-        # The verification type.
+        # The type of verification.
         self.verify_model = verify_model
 
     def validate(self):
@@ -345,6 +403,9 @@ class InitializeV2Request(DaraModel):
 
         if self.id_threshold is not None:
             result['IdThreshold'] = self.id_threshold
+
+        if self.is_force_face_centered is not None:
+            result['IsForceFaceCentered'] = self.is_force_face_centered
 
         if self.language_config is not None:
             result['LanguageConfig'] = self.language_config
@@ -535,6 +596,9 @@ class InitializeV2Request(DaraModel):
 
         if m.get('IdThreshold') is not None:
             self.id_threshold = m.get('IdThreshold')
+
+        if m.get('IsForceFaceCentered') is not None:
+            self.is_force_face_centered = m.get('IsForceFaceCentered')
 
         if m.get('LanguageConfig') is not None:
             self.language_config = m.get('LanguageConfig')

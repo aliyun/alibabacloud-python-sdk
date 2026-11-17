@@ -15,11 +15,11 @@ class DeleteFaceRecordV2ResponseBody(DaraModel):
     ):
         # The return code.
         self.code = code
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The response result.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -68,11 +68,9 @@ class DeleteFaceRecordV2ResponseBodyResult(DaraModel):
         deleted: str = None,
         deleted_group_codes: str = None,
     ):
-        # The deletion result. Valid values:
-        # - Y: Succeeded.
-        # - N: Failed.
+        # The deletion result. Valid values: Y: The deletion succeeded. N: The deletion failed.
         self.deleted = deleted
-        # The list of face group codes from which the face data was actually deleted (comma-separated). This parameter is returned with all deleted group codes when FaceGroupCode is not specified.
+        # The list of codes of the face groups from which the face data was actually deleted, separated by commas. If FaceGroupCode is not specified, the codes of all face groups from which the data was deleted are returned.
         self.deleted_group_codes = deleted_group_codes
 
     def validate(self):

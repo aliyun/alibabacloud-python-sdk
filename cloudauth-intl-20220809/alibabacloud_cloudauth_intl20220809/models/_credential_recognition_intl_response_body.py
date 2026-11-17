@@ -69,13 +69,13 @@ class CredentialRecognitionIntlResponseBodyResult(DaraModel):
         sub_code: str = None,
         success: str = None,
     ):
-        # The recognized key information, in JSON format.
+        # The recognized key information in JSON format.
         self.ext_id_info = ext_id_info
         # The description of the authentication result.
         self.sub_code = sub_code
         # The extraction result. Valid values:
-        # - S: Succeeded.
-        # - F: Failed.
+        # - S: success.
+        # - F: failure.
         self.success = success
 
     def validate(self):

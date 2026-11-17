@@ -19,7 +19,7 @@ class Id2MetaVerifyIntlResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The verification result.
+        # The return result.
         self.result = result
 
     def validate(self):
@@ -70,7 +70,7 @@ class Id2MetaVerifyIntlResponseBodyResult(DaraModel):
         # The verification result code. Valid values:
         # - 1: Consistent.
         # - 2: Inconsistent.
-        # - 3: No record found.
+        # - 3: Not found.
         self.biz_code = biz_code
 
     def validate(self):

@@ -19,47 +19,45 @@ class CredentialRecognitionIntlRequest(DaraModel):
         ocr_value_standard: str = None,
         product_code: str = None,
     ):
-        # The field check rule configuration, in JSON string format.
+        # The field validation rule configuration. The value is a JSON string.
         self.check_rule_config = check_rule_config
-        # The Base64-encoded image. If you choose to pass in the image by using IdOcrPictureBase64 (Base64-encoded photo), check the photo size and do not pass in an excessively large photo.
+        # The Base64-encoded image. If you use the IdOcrPictureBase64 parameter to pass the Base64-encoded photo, check the photo size and do not pass oversized photos.
         self.credential_ocr_picture_base_64 = credential_ocr_picture_base_64
         # The URL of the image. The URL must be a publicly accessible HTTP or HTTPS link.
         self.credential_ocr_picture_url = credential_ocr_picture_url
         # The credential type. Valid values:
-        # - 01: transaction credential (including electronic bill images for water, electricity, gas, credit card, and other types)
+        # - 01: transaction credentials, including electronic bills for utilities such as water, electricity, and gas, as well as credit card statements.
         # 
         # This parameter is required.
         self.doc_type = doc_type
-        # The input file type. Valid values:
-        # 
-        # - IMAGE (default): image.
-        # 
+        # The material input type. Valid values:
+        # - IMAGE: image. This is the default value.
         # - PDF: PDF format.
         self.file_input_type = file_input_type
         # Specifies whether to enable tampering detection. Valid values:
-        # - true: Enabled.
-        # - false: Disabled.
+        # - true: enabled.
+        # - false: disabled.
         # 
         # This parameter is required.
         self.fraud_check = fraud_check
-        # Specifies whether to enable quality detection. Valid values:
-        # - Y: Enabled.
-        # - N: Disabled.
+        # Specifies whether to enable the quality check. Valid values:
+        # - Y: enabled.
+        # - N: disabled.
         self.id_quality = id_quality
         # The extraction type. Valid values:
-        # - 0101: electronic bill address and name module (extracts the address and name module through intelligent analysis)
+        # - 0101: electronic bill address and name module. The address and name are extracted through intelligent analysis.
         # 
         # This parameter is required.
         self.ocr_area = ocr_area
         # Specifies whether to enable translation. Valid values:
-        # - 0: Disabled.
-        # - 1: Enabled.
+        # - 0: disabled.
+        # - 1: enabled.
         self.ocr_translation = ocr_translation
-        # Specifies whether to enable OCR result normalization. Valid values:
-        # - 0: Disabled.
-        # - 1: Enabled.
+        # Specifies whether to enable OCR result standardization. Valid values:
+        # - 0: disabled.
+        # - 1: enabled.
         self.ocr_value_standard = ocr_value_standard
-        # The product solution to use. Set the value to CREDENTIAL_RECOGNITION.
+        # The product solution to be integrated. Valid value: CREDENTIAL_RECOGNITION.
         # 
         # This parameter is required.
         self.product_code = product_code

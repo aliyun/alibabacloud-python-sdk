@@ -13,16 +13,17 @@ class FaceCompareResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceCompareResponseBodyResult = None,
     ):
-        # Response code.
+        # The return code.
         # 
-        # 200: Success.
-        # Other: Error code. For error code details, see Error Codes.
+        # Valid values:
+        # - 200: Success.
+        # - Other values: Error codes. For more information, see Error codes.
         self.code = code
-        # Response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Response result.
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -73,12 +74,13 @@ class FaceCompareResponseBodyResult(DaraModel):
         passed: str = None,
         transaction_id: str = None,
     ):
-        # Related result information
+        # The related result information.
         self.ext_face_info = ext_face_info
-        # The comparison score between the submitted face photo and the reference face image during the authentication process. Value range: **0** to **100**.
+        # The comparison score between the submitted face photo and the reference face photo during the authentication process. Valid values: **0** to **100**.
         self.face_comparison_score = face_comparison_score
-        # Whether the authentication passed.
+        # Specifies whether the authentication is passed.
         # 
+        # Valid values:
         # - Y: Passed.
         # - N: Not passed.
         self.passed = passed
@@ -139,20 +141,25 @@ class FaceCompareResponseBodyResultExtFaceInfo(DaraModel):
         target_occlusion_score: float = None,
         target_sharpness_score: float = None,
     ):
-        # Overall quality score
+        # The overall quality score.
         self.face_quality_score = face_quality_score
-        # Illumination score
+        # The illumination score.
         self.illumination_score = illumination_score
-        # Key area occlusion score
+        # The key area occlusion score.
         self.ka_occlusion_score = ka_occlusion_score
-        # Occlusion score
+        # The occlusion score.
         self.occlusion_score = occlusion_score
-        # Sharpness score
+        # The sharpness score.
         self.sharpness_score = sharpness_score
+        # The overall quality score of the reference face photo.
         self.target_face_quality_score = target_face_quality_score
+        # The illumination score of the reference face photo.
         self.target_illumination_score = target_illumination_score
+        # The key area occlusion score of the reference face photo.
         self.target_ka_occlusion_score = target_ka_occlusion_score
+        # The occlusion score of the reference face photo.
         self.target_occlusion_score = target_occlusion_score
+        # The sharpness score of the reference face photo.
         self.target_sharpness_score = target_sharpness_score
 
     def validate(self):

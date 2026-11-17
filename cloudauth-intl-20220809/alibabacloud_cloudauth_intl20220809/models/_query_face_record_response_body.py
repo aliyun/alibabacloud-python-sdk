@@ -21,17 +21,17 @@ class QueryFaceRecordResponseBody(DaraModel):
         total_count: int = None,
         total_page: int = None,
     ):
-        # The response code.
+        # The return code.
         self.code = code
         # The current page number.
         self.current_page = current_page
-        # The list of returned records.
+        # The list of returned items.
         self.items = items
         # The maximum number of entries per page.
         self.max_results = max_results
-        # The response message.
+        # The return message.
         self.message = message
-        # The token for the next query.
+        # The token used to start the next query.
         self.next_token = next_token
         # The number of entries per page.
         self.page_size = page_size

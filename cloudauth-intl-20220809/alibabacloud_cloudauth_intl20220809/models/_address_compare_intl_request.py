@@ -12,20 +12,20 @@ class AddressCompareIntlRequest(DaraModel):
         text_1: str = None,
         text_2: str = None,
     ):
-        # The country name. Valid values:
-        # - China.
+        # The country name.
+        # - China
         # 
         # This parameter is required.
         self.default_country = default_country
-        # ADD_VERIFY.
+        # ADD_VERIFY
         # 
         # This parameter is required.
         self.product_code = product_code
-        # Address 1.
+        # The first address.
         # 
         # This parameter is required.
         self.text_1 = text_1
-        # Address 2.
+        # The second address.
         # 
         # This parameter is required.
         self.text_2 = text_2

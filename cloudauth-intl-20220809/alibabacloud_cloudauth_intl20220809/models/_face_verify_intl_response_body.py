@@ -13,13 +13,13 @@ class FaceVerifyIntlResponseBody(DaraModel):
         request_id: str = None,
         result: main_models.FaceVerifyIntlResponseBodyResult = None,
     ):
-        # The return code.
+        # The response code.
         self.code = code
-        # The return message.
+        # The response message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The returned result.
+        # The response result.
         self.result = result
 
     def validate(self):
@@ -78,31 +78,31 @@ class FaceVerifyIntlResponseBodyResult(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # The face ID, user ID, and comparison score of the corresponding face in the face library when a duplicate face is found during retrieval.
+        # The face ID, user ID, and comparison score of the duplicate face in the face library when a duplicate face is retrieved.
         self.duplicate_face = duplicate_face
         # The additional face result information.
         self.ext_face_info = ext_face_info
-        # The predicted reference age of the face. Prediction may fail and the value may not be returned in some cases.
+        # The predicted reference age of the face. This parameter may not be returned if the prediction fails.
         self.face_age = face_age
-        # Indicates whether the captured face involves a liveness attack. Valid values:
+        # Indicates whether the collected face involves a liveness attack. Valid values:
         # - Y: attack detected.
         # - N: no attack detected.
-        # 
-        # Returned when passive liveness detection is enabled.
+        # This parameter is returned only when passive liveness detection is enabled.
         self.face_attack = face_attack
-        # The probability of a passive liveness detection attack on the face. Value range: 0 to 100. Returned when passive liveness detection is enabled.
+        # The probability of a liveness attack detected by passive liveness detection. Valid values: 0 to 100.
+        # This parameter is returned only when passive liveness detection is enabled.
         self.face_attack_score = face_attack_score
-        # The comparison score between the submitted face image and the reference face image during verification. Value range: 0 to 100.
+        # The comparison score between the submitted face photo and the reference face image during authentication. Valid values: 0 to 100.
         self.face_comparison_score = face_comparison_score
-        # The predicted gender of the face image. Prediction may fail and the value may not be returned in some cases. Valid values:
+        # The predicted gender of the face image. This parameter may not be returned if the prediction fails. Valid values:
         # - M: male.
         # - F: female.
         self.face_gender = face_gender
-        # The final verification result. Valid values:
+        # The final authentication result. Valid values:
         # - Y: passed.
-        # - N: not passed.
+        # - N: failed.
         self.face_passed = face_passed
-        # The corresponding FACEID returned only when the customer has enabled automatic registration and the face is registered successfully.
+        # The FACEID returned when face registration succeeds. This parameter is returned only when automatic registration is enabled by the customer.
         self.face_registration_id = face_registration_id
         # The face registration result. Valid values: 
         # - 0: failed. 
@@ -110,7 +110,7 @@ class FaceVerifyIntlResponseBodyResult(DaraModel):
         self.face_registration_result = face_registration_result
         # The sub-result code.
         self.sub_code = sub_code
-        # The unique identifier of the verification request.
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -216,21 +216,27 @@ class FaceVerifyIntlResponseBodyResultExtFaceInfo(DaraModel):
         target_occlusion_score: float = None,
         target_sharpness_score: float = None,
     ):
+        # The attribute detection result of the main face, returned as a string. The result includes information such as gender, glasses, hat, mask, tattoo, smoking, other people, environment, expression, and age.
         self.face_attribute_info = face_attribute_info
-        # The liveness face quality score. Value range: 0 to 100. A higher value indicates better quality.
+        # The quality score of the live face. Valid values: 0 to 100. A higher value indicates better quality.
         self.face_quality_score = face_quality_score
-        # The algorithm score for illumination as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+        # The algorithm score for illumination, which is a sub-dimension of quality judgment. Valid values: 0 to 100. A higher value indicates better quality.
         self.illumination_score = illumination_score
-        # The algorithm score for key area occlusion as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+        # The algorithm score for key area occlusion, which is a sub-dimension of quality judgment. Valid values: 0 to 100. A higher value indicates better quality.
         self.ka_occlusion_score = ka_occlusion_score
-        # The algorithm score for occlusion as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+        # The algorithm score for occlusion, which is a sub-dimension of quality judgment. Valid values: 0 to 100. A higher value indicates better quality.
         self.occlusion_score = occlusion_score
-        # The image sharpness score as a sub-dimension of quality assessment. Value range: 0 to 100. A higher value indicates better quality.
+        # The image sharpness score, which is a sub-dimension of quality judgment. Valid values: 0 to 100. A higher value indicates better quality.
         self.sharpness_score = sharpness_score
+        # The comprehensive quality score of the reference face image. Valid values: 0 to 100. A higher value indicates better quality.
         self.target_face_quality_score = target_face_quality_score
+        # The illumination score of the reference face image. Valid values: 0 to 100. A higher value indicates better quality.
         self.target_illumination_score = target_illumination_score
+        # The key area occlusion score of the reference face image. Valid values: 0 to 100. A higher value indicates better quality.
         self.target_ka_occlusion_score = target_ka_occlusion_score
+        # The occlusion score of the reference face image. Valid values: 0 to 100. A higher value indicates better quality.
         self.target_occlusion_score = target_occlusion_score
+        # The sharpness score of the reference face image. Valid values: 0 to 100. A higher value indicates better quality.
         self.target_sharpness_score = target_sharpness_score
 
     def validate(self):

@@ -19,7 +19,7 @@ class AddressVerifyIntlResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result information.
+        # The returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -71,20 +71,20 @@ class AddressVerifyIntlResponseBodyResultObject(DaraModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
-        # The address verification details.
+        # The details of the address verification.
         self.address_info = address_info
-        # The telecommunications service provider name. Valid values:
+        # The name of the carrier. Valid values:
         # - CMCC: China Mobile
         # - CTCC: China Telecom
-        # - CUCC: China Unicom.
+        # - CUCC: China Unicom
         self.isp_name = isp_name
         # The verification result. Valid values:
-        # - Y: The verified address is within 10 km of the residential address.
-        # - N: The verified address is more than 10 km from the residential address.
+        # - Y: Yes. The distance to the verified address is less than or equal to 10 km.
+        # - N: No. The distance to the verified address is greater than 10 km.
         self.passed = passed
-        # The description of the verification result.
+        # The description of the authentication result.
         self.sub_code = sub_code
-        # The unique identifier of the verification request.
+        # The unique identifier of the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):

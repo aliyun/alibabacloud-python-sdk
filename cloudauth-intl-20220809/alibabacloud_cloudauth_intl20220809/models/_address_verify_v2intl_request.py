@@ -14,13 +14,13 @@ class AddressVerifyV2IntlRequest(DaraModel):
         text: str = None,
         verify_type: str = None,
     ):
-        # The device token, which is used for risk identification.
+        # The device token used for risk identification.
         # 
         # This parameter is required.
         self.device_token = device_token
-        # The China mobile phone number.
+        # The mobile phone number. Only mobile phone numbers in the Chinese mainland are supported.
         self.mobile = mobile
-        # The product code. Set this parameter to ADD_VERIFY_PRO.
+        # The product code. Set the value to ADD_VERIFY_PRO.
         # 
         # This parameter is required.
         self.product_code = product_code
@@ -32,8 +32,8 @@ class AddressVerifyV2IntlRequest(DaraModel):
         self.text = text
         # The address verification method. Valid values:
         # 
-        # - HOME: home address verification.
-        # - WORK: work address verification.
+        # - HOME: Home address verification.
+        # - WORK: Work address verification.
         self.verify_type = verify_type
 
     def validate(self):

@@ -17,10 +17,11 @@ class FaceGuardRiskRequest(DaraModel):
         self.biz_id = biz_id
         # The device token obtained through the Face Guard SDK.
         self.device_token = device_token
-        # The custom unique business identifier on the merchant side, used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Ensure that the value is unique.
+        # The custom unique business identifier on the merchant side, used for subsequent troubleshooting. It supports a combination of letters and digits and can be up to 32 characters in length. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The product code. Set the value to FACE_GUARD.
+        # The product code. Valid values: FACE_GUARD and FACE_GUARD_PRO.
         self.product_code = product_code
+        # The type of the risk scenario detected by Device Assistant.
         self.type = type
 
     def validate(self):

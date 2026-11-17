@@ -18,33 +18,32 @@ class FaceLivenessRequest(DaraModel):
         occlusion: str = None,
         product_code: str = None,
     ):
-        # Specifies whether to allow cropping. Default value: F. Valid values:
-        # 
-        # - T: enabled.
-        # - F: disabled. (Default)
+        # Specifies whether to allow cropping. Valid values:
+        # - T: Cropping is allowed.
+        # - F: Cropping is not allowed. Default value: F.
         self.crop = crop
+        # The face attribute check.
         self.face_attribute_check = face_attribute_check
-        # The Base64-encoded face photo.
+        # The Base64-encoded string of the photo.
         # 
         # Note:
-        # - If you use FacePictureBase64 (Base64-encoded photo) to pass in the face photo, check the photo size and do not pass in an excessively large photo.
+        # - If you use the FacePictureBase64 parameter to pass the face photo, check the photo size and do not pass photos that are too large.
         self.face_picture_base_64 = face_picture_base_64
         # The URL of the face photo.
         self.face_picture_url = face_picture_url
-        # Specifies whether to output the face quality score. Default value: F. Valid values:
-        # - T: enabled.
-        # - F: disabled. (Default)
+        # Specifies whether to output the face quality score. Valid values:
+        # - T: The detection is required.
+        # - F: The detection is not required. Default value: F.
         self.face_quality = face_quality
         # The face quality check.
         self.face_quality_check = face_quality_check
-        # The merchant-defined unique business ID used for subsequent troubleshooting. The value can contain letters and digits with a maximum length of 32 characters. Ensure that the value is unique.
+        # The custom unique business identifier on the merchant side, used for subsequent troubleshooting. It supports a combination of letters and digits, with a maximum length of 32 characters. Ensure that the value is unique.
         self.merchant_biz_id = merchant_biz_id
-        # The merchant user ID or another identifier that can be used to identify a specific user, such as a phone number or email address. We strongly recommend that you desensitize the value of the userId field before passing it in, for example, by hashing the value.
+        # The merchant user ID or another identifier used to identify a specific user, such as a phone number or email address. Desensitize the value of the userId field in advance, such as by hashing the value.
         self.merchant_user_id = merchant_user_id
-        # Specifies whether to perform occlusion detection. Default value: F. Valid values:
-        # 
-        # - T: enabled.
-        # - F: disabled. (Default)
+        # Specifies whether to perform occlusion detection. Valid values:
+        # - T: Occlusion detection is required.
+        # - F: Occlusion detection is not required. Default value: F.
         self.occlusion = occlusion
         # The product code.
         self.product_code = product_code
