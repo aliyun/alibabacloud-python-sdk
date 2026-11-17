@@ -12,9 +12,9 @@ class ListRegionsRequest(DaraModel):
         lang: str = None,
         load_all: bool = None,
     ):
-        # Specifies whether to filter regions by assets with auditing enabled. Valid values: true: Enabled. false: Disabled. If you do not specify this parameter, this filter condition is not applied.
+        # Specifies whether to filter regions based on assets for which auditing is enabled. Valid values: true: Auditing is enabled. false: Auditing is not enabled. If you do not specify this parameter, this condition is not used.
         self.audited = audited
-        # Specifies whether to filter regions by assets with detection enabled. Valid values: true: Enabled. false: Disabled. If you do not specify this parameter, this filter condition is not applied.
+        # Specifies whether to filter regions based on assets for which detection is enabled. Valid values: true: Detection is enabled. false: Detection is not enabled. If you do not specify this parameter, this condition is not used.
         self.identified = identified
         # The language of the response. Valid values: zh: Chinese. en: English.
         self.lang = lang

@@ -15,7 +15,7 @@ class ListRegionsResponseBody(DaraModel):
     ):
         # The list of regions where the assets are located.
         self.region_list = region_list
-        # The request ID. You can use this ID to locate the API call.
+        # The request ID, which can be used to locate the API call.
         self.request_id = request_id
 
     def validate(self):

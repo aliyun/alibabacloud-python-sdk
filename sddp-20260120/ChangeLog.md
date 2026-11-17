@@ -1,3 +1,7 @@
+2026-11-17 Version: 1.0.8
+- Update API ListDataAssetAccounts: add response parameters Body.Items.$.Description.
+
+
 2026-11-11 Version: 1.0.6
 - Generated python 2026-01-20 for Sddp.
 

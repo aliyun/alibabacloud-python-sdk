@@ -26,16 +26,16 @@ class CreateDataMaskingRuleRequest(DaraModel):
     ):
         # The name of the column encryption algorithm. The availability of AES_128_GCM, AES_256_GCM, and SM4_128_GCM depends on the instance. Select an available algorithm from ListDataMaskingEncryptionAlgorithms.
         self.enc_algorithm = enc_algorithm
-        # The identifier of the Key Management Service (KMS) key. You can obtain it from Items[].KeyId in the response of the ListKmsKeys operation. Provide this parameter when you use a KMS key. Do not pass this parameter in local key scenarios.
+        # The KMS key identifier. You can obtain it from Items[].KeyId in the response of ListKmsKeys. Provide this parameter when you use a KMS key. Do not pass this parameter in local key scenarios.
         self.encryption_key_id = encryption_key_id
         # The key mode. Valid values:
-        # - client_key: local key
-        # - kms_key: KMS key
-        # When you use kms_key, you must specify EncryptionKeyId.
+        # - client_key: local key.
+        # - kms_key: KMS key.
+        # If you use kms_key, you must specify EncryptionKeyId.
         self.encryption_key_mode = encryption_key_mode
-        # The type of the database engine. The value must be consistent with the EngineType of the target instance, such as MySQL or PostgreSQL.
+        # The database engine type. The value must be consistent with the EngineType of the target instance, such as MySQL or PostgreSQL.
         self.engine_type = engine_type
-        # The expiration time of the plaintext permission. The value is a UNIX timestamp in milliseconds since 00:00:00 UTC on January 1, 1970. Specify this parameter only when ExpireTimeOperation is set to SET. The value must be later than the current time and no greater than 2145953410000. The server saves the value with second precision. Do not specify this parameter when ExpireTimeOperation is set to PRESERVE or CLEAR.
+        # The expiration time of the plaintext access permissions. The value is a UNIX timestamp in milliseconds since 00:00:00 UTC on January 1, 1970. Specify this parameter only when ExpireTimeOperation is set to SET. The value must be later than the current time and no greater than 2145953410000. The server saves the value with second precision. Do not pass this parameter when ExpireTimeOperation is set to PRESERVE or CLEAR.
         self.expire_time = expire_time
         # The processing method for the permission expiration time. Valid values:
         # - PRESERVE: retains the original expiration time.
@@ -43,25 +43,25 @@ class CreateDataMaskingRuleRequest(DaraModel):
         # - SET: sets ExpireTime.
         # Default value: PRESERVE. Only fullAccess supports setting a validity period.
         self.expire_time_operation = expire_time_operation
-        # The instance identity. You can obtain it from Items[].InstanceId in the response of the ListDataMaskingInstances operation.
+        # The database instance identity. You can obtain it from Items[].InstanceId in the response of ListDataMaskingInstances.
         self.instance_id = instance_id
         # The language of the response description. Valid values:
-        # - zh: Chinese
-        # - en: English
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
-        # The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also passed, the two must correspond to each other.
+        # The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If you pass ProductId at the same time, the two values must match.
         self.product_code = product_code
-        # The identifier of the cloud service type. Valid values:
-        # - 5: RDS
-        # - 8: POLARDB
-        # - 27: PolarDBX2
-        # When specified together with ProductCode, the values must correspond to each other.
+        # The cloud service type identifier. Valid values:
+        # - 5: RDS.
+        # - 8: POLARDB.
+        # - 27: PolarDBX2.
+        # If you specify this parameter together with ProductCode, the values must match.
         self.product_id = product_id
         # The identifier of the associated risk handling record. You do not need to specify this parameter in the standard column encryption creation process.
         self.risk_handle_id = risk_handle_id
         # The list of column encryption targets grouped by database and table.
         self.sub_rule_list = sub_rule_list
-        # The list of database accounts to which the fullAccess plaintext permission is granted. The accounts must belong to the target instance.
+        # The list of database accounts to which the fullAccess plaintext access permissions are granted. The accounts must belong to the target instance.
         self.user_list = user_list
 
     def validate(self):
@@ -179,7 +179,7 @@ class CreateDataMaskingRuleRequestUserList(DaraModel):
         account_id: str = None,
         auth_db: str = None,
     ):
-        # The identifier of the database account. You can obtain it from Items[].Id in the response of the ListDataAssetAccounts operation. Pass the value as a string.
+        # The name of the database account. Obtain the value from Items[].AccountName in the target instance record returned by ListDataAssetAccounts and pass it as a string as is. Do not pass Items[].Id. When you create a rule, the account belongs to the instance specified by the top-level InstanceId.
         self.account_id = account_id
         # The authentication database for MongoDB accounts. This parameter is required when you select a MongoDB account. You do not need to pass this parameter for other services.
         self.auth_db = auth_db
@@ -219,7 +219,7 @@ class CreateDataMaskingRuleRequestSubRuleList(DaraModel):
         db_name: str = None,
         table_name: str = None,
     ):
-        # The list of target column names. Multiple column names are separated by commas (,).
+        # The list of target column names. Separate multiple column names with commas (,).
         self.columns = columns
         # The name of the target database.
         self.db_name = db_name

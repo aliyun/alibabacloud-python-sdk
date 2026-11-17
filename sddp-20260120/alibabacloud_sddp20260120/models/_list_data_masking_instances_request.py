@@ -33,31 +33,40 @@ class ListDataMaskingInstancesRequest(DaraModel):
         self.db_name = db_name
         # The type of the database engine. The value must be consistent with the EngineType of the target instance, such as MySQL or PostgreSQL.
         self.engine_type = engine_type
-        # The database instance identity. You can obtain the identity from the Items[].InstanceId parameter in the response of the ListDataMaskingInstances operation.
+        # The database instance identity. You can obtain the value from the Items[].InstanceId parameter in the response of the ListDataMaskingInstances operation.
         self.instance_id = instance_id
-        # The language of the response description. Valid values: zh: Chinese. en: English.
+        # The language of the response description. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
-        # The column encryption status filter. Valid values: NotEncrypted: not encrypted. Success: encrypted. Failed: encryption failed.
+        # The column encryption status filter. Valid values:
+        # - NotEncrypted: Unencrypted.
+        # - Success: Encrypted successfully.
+        # - Failed: Encryption failed.
         self.masking_status = masking_status
-        # The ID of the model tag. This parameter is used to filter data that matches the specified model tag.
+        # The ID of the model tag. This parameter is used to limit the data that matches the corresponding model tag.
         self.model_tag_id = model_tag_id
         # The number of entries to return on each page. Keep other filter conditions consistent when querying the next page.
         self.page_size = page_size
-        # The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If you specify this parameter and ProductId at the same time, the values must match.
+        # The code of the cloud service. Column encryption supports RDS, PolarDB, and PolarDB-X 2.0. If this parameter is specified together with ProductId, the values must correspond to each other.
         self.product_code = product_code
-        # The ID of the cloud service type. Valid values: 5: RDS. 8: POLARDB. 27: PolarDBX2. If you specify this parameter and ProductCode at the same time, the values must match.
+        # The ID of the cloud service type. Valid values:
+        # - 5: RDS.
+        # - 8: PolarDB.
+        # - 27: PolarDB-X 2.0.
+        # If this parameter is specified together with ProductCode, the values must correspond to each other.
         self.product_id = product_id
-        # The list of cloud service type IDs. Separate multiple values with commas (,). In column encryption scenarios, the valid values are 5 (RDS), 8 (POLARDB), and 27 (PolarDBX2).
+        # The list of cloud service type IDs. Separate multiple values with commas (,). In column encryption scenarios, the valid values are 5 (RDS), 8 (PolarDB), and 27 (PolarDB-X 2.0).
         self.product_ids = product_ids
-        # The ID of the sensitivity level. You can obtain the ID from the response of the ListRiskLevels operation.
+        # The ID of the sensitivity level. You can obtain the value from the response list of the ListRiskLevels operation.
         self.risk_level_id = risk_level_id
-        # The list of sensitivity level IDs. Separate multiple values with commas (,). Select the values from the response of the ListRiskLevels operation that corresponds to the same TemplateId.
+        # The list of sensitivity level IDs. Separate multiple values with commas (,). Select the values from the response of the ListRiskLevels operation corresponding to the same TemplateId.
         self.risk_level_ids = risk_level_ids
         # The name of the table. In PostgreSQL or Oracle scenarios, retain the schema.table format obtained from the table list.
         self.table_name = table_name
-        # The ID of the data classification template. You can obtain the ID from the Items[].Id parameter in the response of the ListTemplates operation. The ID must be consistent with the selected sensitivity level and identification model.
+        # The ID of the data classification template. You can obtain the value from the Items[].Id parameter in the response of the ListTemplates operation. The value must be consistent with the selected sensitivity level and identification model.
         self.template_id = template_id
-        # The list of identification model IDs. Separate multiple values with commas (,). Select the values from the response of the ListIdentifyModels operation that corresponds to the same TemplateId.
+        # The list of identification model IDs. Separate multiple values with commas (,). Select the values from the response of the ListIdentifyModels operation corresponding to the same TemplateId.
         self.template_rule_ids = template_rule_ids
 
     def validate(self):

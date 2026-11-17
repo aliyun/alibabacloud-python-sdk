@@ -24,13 +24,13 @@ class ListColumnsRequest(DaraModel):
     ):
         # The page number of the current query. Pages start from 1.
         self.current_page = current_page
-        # The instance identity of the cloud database. Set this parameter to the InstanceId in the instance list.
+        # The cloud database instance ID. Set this parameter to the InstanceId in the instance list.
         self.data_asset_source_id = data_asset_source_id
         # The name of the database. Set this parameter to the DbName returned by ListDataSources.
         self.data_source_name = data_source_name
         # The type of the database engine. This parameter must be consistent with the EngineType of the target instance, such as MySQL or PostgreSQL.
         self.engine_type = engine_type
-        # The compatible parameter for the instance identity. DataAssetSourceId takes precedence. If both parameters are specified, DataAssetSourceId is used.
+        # The compatible parameter for the instance ID. DataAssetSourceId takes precedence. If both parameters are specified, DataAssetSourceId is used.
         self.instance_name = instance_name
         # The language of the response description. Valid values: zh: Chinese. en: English.
         self.lang = lang

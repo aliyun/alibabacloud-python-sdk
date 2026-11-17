@@ -13,7 +13,7 @@ class GetDataMaskingColumnCountResponseBody(DaraModel):
     ):
         # The statistics on the number of encrypted columns.
         self.column_count = column_count
-        # The request ID, which can be used to locate the API call.
+        # The ID of the request, which can be used to locate the API call.
         self.request_id = request_id
 
     def validate(self):

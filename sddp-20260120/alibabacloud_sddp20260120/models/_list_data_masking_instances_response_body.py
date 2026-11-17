@@ -18,11 +18,11 @@ class ListDataMaskingInstancesResponseBody(DaraModel):
     ):
         # The page number of the returned data.
         self.current_page = current_page
-        # The list of records returned by the current query.
+        # The list of records returned in this query.
         self.items = items
-        # The number of entries returned per page in the current query.
+        # The number of entries returned per page in this query.
         self.page_size = page_size
-        # The request ID, which can be used to locate the current API call.
+        # The request ID. You can use the ID to locate this API call.
         self.request_id = request_id
         # The total number of entries that meet the current statistics or query scope.
         self.total_count = total_count
@@ -82,6 +82,7 @@ class ListDataMaskingInstancesResponseBody(DaraModel):
 class ListDataMaskingInstancesResponseBodyItems(DaraModel):
     def __init__(
         self,
+        description: str = None,
         encryption_algorithm: str = None,
         encryption_key_id: str = None,
         engine_type: str = None,
@@ -92,6 +93,8 @@ class ListDataMaskingInstancesResponseBodyItems(DaraModel):
         region_id: str = None,
         region_name: str = None,
     ):
+        # The description of the instance.
+        self.description = description
         # The current column encryption algorithm of the instance.
         self.encryption_algorithm = encryption_algorithm
         # The ID of the KMS key used by the instance. This parameter may not be returned in local key scenarios.
@@ -104,7 +107,7 @@ class ListDataMaskingInstancesResponseBodyItems(DaraModel):
         self.instance_id = instance_id
         # The code of the cloud service.
         self.product_code = product_code
-        # The ID of the cloud service type. Valid values: 5: RDS. 8: POLARDB. 27: PolarDBX2.
+        # The ID of the cloud service type. Valid values: 5 (RDS), 8 (PolarDB), and 27 (PolarDB-X 2.0).
         self.product_id = product_id
         # The ID of the region where the asset is located.
         self.region_id = region_id
@@ -119,6 +122,9 @@ class ListDataMaskingInstancesResponseBodyItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
         if self.encryption_algorithm is not None:
             result['EncryptionAlgorithm'] = self.encryption_algorithm
 
@@ -150,6 +156,9 @@ class ListDataMaskingInstancesResponseBodyItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
         if m.get('EncryptionAlgorithm') is not None:
             self.encryption_algorithm = m.get('EncryptionAlgorithm')
 

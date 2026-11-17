@@ -32,25 +32,30 @@ class ListDataMaskingColumnsRequest(DaraModel):
         self.db_name = db_name
         # The type of the database engine. It must be consistent with the EngineType of the target instance, such as MySQL or PostgreSQL.
         self.engine_type = engine_type
-        # The instance identity of the database. You can obtain it from Items[].InstanceId in the response of ListDataMaskingInstances.
+        # The database instance identity. You can obtain it from Items[].InstanceId in the response of ListDataMaskingInstances.
         self.instance_id = instance_id
-        # The language of the response description. Valid values: zh: Chinese; en: English.
+        # The language of the response description. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
-        # The filter for the column encryption status. Valid values: NotEncrypted: not encrypted; Success: encrypted successfully; Failed: encryption failed.
+        # The filter for the column encryption status. Valid values:
+        # - NotEncrypted: Not encrypted.
+        # - Success: Encryption succeeded.
+        # - Failed: Encryption failed.
         self.masking_status = masking_status
         # The number of records to return per page. Keep other filter conditions consistent when querying the next page.
         self.page_size = page_size
-        # The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also provided, the two must correspond to each other.
+        # The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also provided, the two must match.
         self.product_code = product_code
-        # The ID of the cloud service type. Valid values: 5: RDS; 8: POLARDB; 27: PolarDBX2. It must correspond to ProductCode if both are specified.
+        # The ID of the cloud service type. Valid values: 5 for RDS, 8 for POLARDB, and 27 for PolarDBX2. If specified together with ProductCode, they must match.
         self.product_id = product_id
-        # The compatible parameter for the list of product IDs. For the current column query, use a single ProductId or ProductCode. Call the operation separately to query multiple products.
+        # The compatible parameter for a list of product IDs. For the current column query, use a single ProductId or ProductCode. Call the operation separately to query multiple products.
         self.product_ids = product_ids
         # The ID of a single sensitivity level. You can obtain it from ListRiskLevels. The uppercase L in the parameter name must be preserved.
         self.risk_leve_lid = risk_leve_lid
         # The list of sensitivity level IDs. Separate multiple values with commas. Select the values from the response of ListRiskLevels corresponding to the same TemplateId.
         self.risk_level_ids = risk_level_ids
-        # The name of the table. In PostgreSQL or Oracle scenarios, retain the schema.table format obtained from the table list.
+        # The name of the table. For PostgreSQL or Oracle scenarios, preserve the schema.table format obtained from the table list.
         self.table_name = table_name
         # The ID of the data classification template. You can obtain it from Items[].Id in the response of ListTemplates. It must be consistent with the selected sensitivity level and detection model.
         self.template_id = template_id

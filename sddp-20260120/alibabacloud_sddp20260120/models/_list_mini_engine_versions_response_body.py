@@ -59,9 +59,9 @@ class ListMiniEngineVersionsResponseBodyKernelVersions(DaraModel):
         kernel_version: str = None,
         kernel_version_name: str = None,
     ):
-        # The release type of the kernel version, which follows the return values of the corresponding database service. For example, for RDS, LTS indicates the long-term support version and BETA indicates the preview version. For PolarDB, the value may be Stable, Old, HighRisk, or Beta.
+        # The release type of the kernel version, which follows the return values of the corresponding database service. For example, for RDS, LTS indicates the long-term support version and BETA indicates the preview version. PolarDB may return Stable, Old, HighRisk, or Beta.
         self.kernel_release_type = kernel_release_type
-        # The available kernel version number.
+        # The available kernel version.
         self.kernel_version = kernel_version
         # The display name of the kernel version.
         self.kernel_version_name = kernel_version_name

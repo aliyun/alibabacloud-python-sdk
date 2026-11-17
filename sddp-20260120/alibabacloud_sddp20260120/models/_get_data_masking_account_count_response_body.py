@@ -13,7 +13,7 @@ class GetDataMaskingAccountCountResponseBody(DaraModel):
     ):
         # The statistics on the number of account permissions for column encryption.
         self.account_count = account_count
-        # The request ID, which can be used to locate the API call.
+        # The request ID, which can be used to locate this API call.
         self.request_id = request_id
 
     def validate(self):
@@ -52,11 +52,11 @@ class GetDataMaskingAccountCountResponseBodyAccountCount(DaraModel):
         restricted_access_count: int = None,
         total_count: int = None,
     ):
-        # The number of accounts with plaintext access (fullAccess).
+        # The number of accounts with fullAccess plaintext access.
         self.full_access_count = full_access_count
-        # The number of accounts prohibited from decryption (noneAccess).
+        # The number of accounts with noneAccess decryption prohibition.
         self.none_access_count = none_access_count
-        # The number of accounts with restricted access (restrictedAccess).
+        # The number of accounts with restrictedAccess restricted access.
         self.restricted_access_count = restricted_access_count
         # The total number of database accounts.
         self.total_count = total_count

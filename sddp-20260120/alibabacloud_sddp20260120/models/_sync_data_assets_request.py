@@ -10,7 +10,7 @@ class SyncDataAssetsRequest(DaraModel):
         lang: str = None,
         product_code: str = None,
     ):
-        # The language of the response. Valid values: zh: Chinese. en: English.
+        # The language of the response description. Valid values: zh: Chinese. en: English.
         self.lang = lang
         # The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
         self.product_code = product_code

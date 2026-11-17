@@ -18,13 +18,13 @@ class ListTemplatesResponseBody(DaraModel):
     ):
         # The page number of the returned data.
         self.current_page = current_page
-        # The list of records returned for the current query.
+        # The list of records returned for this query.
         self.items = items
-        # The number of records per page for the current query.
+        # The number of entries returned per page for this query.
         self.page_size = page_size
-        # The request ID, which can be used to trace the current API call.
+        # The request ID, which can be used to locate this API call.
         self.request_id = request_id
-        # The total number of records that match the current query conditions.
+        # The total number of entries that meet the current statistics or query scope.
         self.total_count = total_count
 
     def validate(self):
@@ -98,11 +98,11 @@ class ListTemplatesResponseBodyItems(DaraModel):
         self.current_risk_level = current_risk_level
         # The description of the classification and grading template.
         self.description = description
-        # The creation time of the template. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+        # The time when the template was created. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
         self.gmt_create = gmt_create
-        # The last modification time of the template. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
+        # The time when the template was last modified. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
         self.gmt_modified = gmt_modified
-        # The identifier of the classification and grading template.
+        # The ID of the classification and grading template.
         self.id = id
         # The maximum classification level supported by the template.
         self.max_category_level = max_category_level
@@ -110,11 +110,11 @@ class ListTemplatesResponseBodyItems(DaraModel):
         self.max_risk_level = max_risk_level
         # The name of the classification and grading template.
         self.name = name
-        # The status of the template. Valid values: 0: Disabled. 1: Enabled primary template. 2: Active template. 3: General detection model.
+        # The template status. Valid values: 0: Disabled. 1: Enabled primary template. 2: Active template. 3: General detection model.
         self.status = status
         # Specifies whether the template can be edited. Valid values: 0: Not supported. 1: Supported.
         self.support_edit = support_edit
-        # The category of the template. Valid values: 1: Alibaba Cloud template. 2: Finance template. 3: Energy template. 4: Personal information security template. 5: Travel template. 65: General template. 66: Custom template. 67: Template from other cloud services.
+        # The template category. Valid values: 1: Alibaba Cloud template. 2: Finance template. 3: Energy template. 4: Personal information security template. 5: Travel template. 65: General template. 66: Custom template. 67: Template from other cloud services.
         self.type = type
 
     def validate(self):

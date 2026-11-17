@@ -12,18 +12,18 @@ class CheckDataMaskingInstanceRequest(DaraModel):
         product_code: str = None,
         product_id: int = None,
     ):
-        # The database instance identity. You can obtain the value from Items[].InstanceId in the response of ListDataMaskingInstances.
+        # The database instance identity. You can obtain this value from Items[].InstanceId in the response of ListDataMaskingInstances.
         self.instance_id = instance_id
         # The language of the response description. Valid values:
-        # - zh: Chinese
-        # - en: English
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
-        # The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
+        # The cloud product code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
         self.product_code = product_code
-        # The cloud service type identifier. Valid values:
-        # - 5: RDS
-        # - 8: POLARDB
-        # - 27: PolarDBX2
+        # The cloud product type identifier. Valid values:
+        # - 5: RDS.
+        # - 8: POLARDB.
+        # - 27: PolarDBX2.
         # If this parameter is specified together with ProductCode, the values must match.
         self.product_id = product_id
 

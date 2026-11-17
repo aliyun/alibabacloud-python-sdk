@@ -41,33 +41,33 @@ class ListTotalSensitiveInfoResponseBody(DaraModel):
         self.db_count = db_count
         # The total number of instances.
         self.instance_count = instance_count
-        # The request identity, which is active for locating the current API call when you invoke the API.
+        # The request ID, which is active and can be used to locate the API you invoke.
         self.request_id = request_id
-        # The list of quantities aggregated by detection rule.
+        # The list of aggregated counts by detection rule.
         self.rule_info_list = rule_info_list
-        # The number of data objects at the S0 sensitivity level.
+        # The number of S0-level data objects.
         self.s_0count = s_0count
-        # The number of data objects at the S10 sensitivity level.
+        # The number of S10-level data objects.
         self.s_10count = s_10count
-        # The number of data objects at the S1 sensitivity level.
+        # The number of S1-level data objects.
         self.s_1count = s_1count
-        # The number of data objects at the S2 sensitivity level.
+        # The number of S2-level data objects.
         self.s_2count = s_2count
-        # The number of data objects at the S3 sensitivity level.
+        # The number of S3-level data objects.
         self.s_3count = s_3count
-        # The number of data objects at the S4 sensitivity level.
+        # The number of S4-level data objects.
         self.s_4count = s_4count
-        # The number of data objects at the S5 sensitivity level.
+        # The number of S5-level data objects.
         self.s_5count = s_5count
-        # The number of data objects at the S6 sensitivity level.
+        # The number of S6-level data objects.
         self.s_6count = s_6count
-        # The number of data objects at the S7 sensitivity level.
+        # The number of S7-level data objects.
         self.s_7count = s_7count
-        # The number of data objects at the S8 sensitivity level.
+        # The number of S8-level data objects.
         self.s_8count = s_8count
-        # The number of data objects at the S9 sensitivity level.
+        # The number of S9-level data objects.
         self.s_9count = s_9count
-        # The number of sensitive data objects within the current statistics scope.
+        # The number of sensitive data items within the current statistics scope.
         self.sensitive_count = sensitive_count
         # The number of databases that contain sensitive data.
         self.sensitive_db_count = sensitive_db_count
@@ -75,11 +75,11 @@ class ListTotalSensitiveInfoResponseBody(DaraModel):
         self.sensitive_instance_count = sensitive_instance_count
         # The size of sensitive unstructured data.
         self.sensitive_un_struct_size = sensitive_un_struct_size
-        # The number of child sensitive data objects, which is used for sensitive column statistics in structured data scenarios.
+        # The number of child sensitive data objects. This parameter is used for sensitive column statistics in structured data scenarios.
         self.sub_sensitive_count = sub_sensitive_count
-        # The total number of child data objects, which is used for column-level statistics in structured data scenarios.
+        # The total number of child data objects. This parameter is used for column-level statistics in structured data scenarios.
         self.sub_total_count = sub_total_count
-        # The total number of data objects that meet the current statistics or query scope.
+        # The total number of items that meet the current statistics or query scope.
         self.total_count = total_count
         # The total size of unstructured data.
         self.un_struct_size = un_struct_size
@@ -268,9 +268,9 @@ class ListTotalSensitiveInfoResponseBodyRuleInfoList(DaraModel):
     ):
         # The number of data objects that hit the detection rule.
         self.rule_count = rule_count
-        # The ID of the hit detection rule.
+        # The ID of the matched detection rule.
         self.rule_id = rule_id
-        # The name of the hit detection rule.
+        # The name of the matched detection rule.
         self.rule_name = rule_name
 
     def validate(self):
@@ -331,45 +331,45 @@ class ListTotalSensitiveInfoResponseBodyDataCountDOList(DaraModel):
     ):
         # The list of statistics categorized by region, template, data type, or date.
         self.data_count_dolist = data_count_dolist
-        # The statistics date, represented by a UNIX timestamp in nanoseconds. The time corresponds to 00:00:00 of the day in the server time zone.
+        # The statistics date, represented as a UNIX timestamp in nanoseconds. The time corresponds to midnight of the current day in the server time zone.
         self.date = date
         # The ID of the region where the asset resides.
         self.region_id = region_id
-        # The list of quantities aggregated by detection rule.
+        # The list of aggregated counts by detection rule.
         self.rule_info_list = rule_info_list
-        # The number of data objects at the S0 sensitivity level.
+        # The number of S0-level data objects.
         self.s_0count = s_0count
-        # The number of data objects at the S10 sensitivity level.
+        # The number of S10-level data objects.
         self.s_10count = s_10count
-        # The number of data objects at the S1 sensitivity level.
+        # The number of S1-level data objects.
         self.s_1count = s_1count
-        # The number of data objects at the S2 sensitivity level.
+        # The number of S2-level data objects.
         self.s_2count = s_2count
-        # The number of data objects at the S3 sensitivity level.
+        # The number of S3-level data objects.
         self.s_3count = s_3count
-        # The number of data objects at the S4 sensitivity level.
+        # The number of S4-level data objects.
         self.s_4count = s_4count
-        # The number of data objects at the S5 sensitivity level.
+        # The number of S5-level data objects.
         self.s_5count = s_5count
-        # The number of data objects at the S6 sensitivity level.
+        # The number of S6-level data objects.
         self.s_6count = s_6count
-        # The number of data objects at the S7 sensitivity level.
+        # The number of S7-level data objects.
         self.s_7count = s_7count
-        # The number of data objects at the S8 sensitivity level.
+        # The number of S8-level data objects.
         self.s_8count = s_8count
-        # The number of data objects at the S9 sensitivity level.
+        # The number of S9-level data objects.
         self.s_9count = s_9count
-        # The number of sensitive data objects within the current statistics scope.
+        # The number of sensitive data items within the current statistics scope.
         self.sensitive_count = sensitive_count
         # The type of the statistics data. Valid values:
         # - 1: Structured data.
         # - 0: Unstructured data.
         self.struct_flag = struct_flag
-        # The ID of the data classification template.
+        # The ID of the data classification and grading template.
         self.template_id = template_id
-        # The name of the data classification template.
+        # The name of the data classification and grading template.
         self.template_name = template_name
-        # The total number of data objects that meet the current statistics or query scope.
+        # The total number of items that meet the current statistics or query scope.
         self.total_count = total_count
 
     def validate(self):
@@ -532,9 +532,9 @@ class ListTotalSensitiveInfoResponseBodyDataCountDOListRuleInfoList(DaraModel):
     ):
         # The number of data objects that hit the detection rule.
         self.rule_count = rule_count
-        # The ID of the hit detection rule.
+        # The ID of the matched detection rule.
         self.rule_id = rule_id
-        # The name of the hit detection rule.
+        # The name of the matched detection rule.
         self.rule_name = rule_name
 
     def validate(self):
@@ -576,11 +576,11 @@ class ListTotalSensitiveInfoResponseBodyDataCountDOListDataCountDOList(DaraModel
         sensitive_count: int = None,
         total_count: int = None,
     ):
-        # The statistics date, represented by a UNIX timestamp in nanoseconds. The time corresponds to 00:00:00 of the day in the server time zone.
+        # The statistics date, represented as a UNIX timestamp in nanoseconds. The time corresponds to midnight of the current day in the server time zone.
         self.date = date
-        # The number of sensitive data objects within the current statistics scope.
+        # The number of sensitive data items within the current statistics scope.
         self.sensitive_count = sensitive_count
-        # The total number of data objects that meet the current statistics or query scope.
+        # The total number of items that meet the current statistics or query scope.
         self.total_count = total_count
 
     def validate(self):

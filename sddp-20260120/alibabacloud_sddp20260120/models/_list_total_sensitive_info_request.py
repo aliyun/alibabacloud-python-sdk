@@ -15,18 +15,18 @@ class ListTotalSensitiveInfoRequest(DaraModel):
     ):
         # The statistics scenario. Valid values:
         # - 41: Overview.
-        # - 42: Query data catalog statistics by product.
-        # - 43: Query region and template summaries by product.
+        # - 42: Data catalog statistics by product.
+        # - 43: Region and template summaries by product.
         self.count_type = count_type
         # The language of the response description. Valid values:
         # - zh: Chinese.
         # - en: English.
         self.lang = lang
-        # The code of the cloud service. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
+        # The cloud service code. Column encryption supports RDS, POLARDB, and PolarDBX2. If ProductId is also specified, the two parameters must match.
         self.product_code = product_code
-        # The codes of multiple cloud services, separated by commas (,). This parameter is used when CountType is set to 43 and ProductCode is not specified. The results are aggregated by region and template.
+        # The codes of multiple cloud services, separated by commas. This parameter is used when CountType is set to 43 and ProductCode is not specified. The results are aggregated by region and template.
         self.product_code_list = product_code_list
-        # The ID of the data classification template. You can obtain the ID from the Items[].Id parameter in the response of the ListTemplates operation. The template must be consistent with the selected sensitivity level and detection model.
+        # The ID of the data classification and grading template. You can obtain the ID from the Items[].Id parameter in the response of the ListTemplates operation. The template must be consistent with the selected sensitivity level and detection model.
         self.template_id = template_id
 
     def validate(self):

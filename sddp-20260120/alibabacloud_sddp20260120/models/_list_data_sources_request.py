@@ -24,11 +24,7 @@ class ListDataSourcesRequest(DaraModel):
         product_id: int = None,
         source_ip: str = None,
     ):
-        # The connection status of the data source. Valid values:
-        # - UnConnected: Not connected.
-        # - Processing: Connecting.
-        # - Success: Connected.
-        # - Failed: Connection failed.
+        # The connection status of the data source. Valid values: UnConnected: not connected. Processing: connecting. Success: connected. Failed: connection failed.
         self.connect_status = connect_status
         # The current page number. Pages start from 1.
         self.current_page = current_page
@@ -45,21 +41,11 @@ class ListDataSourcesRequest(DaraModel):
         # - **PostgreSQL**
         # - **SQLServer**
         self.engine_type = engine_type
-        # The status of the data source detection switch. Valid values:
-        # - Enable: Submitted for enabling.
-        # - Enabling: Enabling.
-        # - Enabled: Enabled.
-        # - EnableFailed: Enabling failed.
-        # - Disable: Submitted for disabling.
-        # - Disabling: Disabling.
-        # - Disabled: Disabled.
-        # - DisableFailed: Disabling failed.
+        # The status of the data source detection switch. Valid values: Enable: submitted for enabling. Enabling: enabling. Enabled: enabled. EnableFailed: enabling failed. Disable: submitted for disabling. Disabling: disabling. Disabled: disabled. DisableFailed: disabling failed.
         self.identify_status = identify_status
         # The database instance identity. You can obtain the value from the Items[].InstanceId parameter in the response of the ListDataMaskingInstances operation.
         self.instance_id = instance_id
-        # The language of the response message. Valid values:
-        # - zh: Chinese.
-        # - en: English.
+        # The language of the response description. Valid values: zh: Chinese. en: English.
         self.lang = lang
         # A reserved pagination parameter. The ListDataSources operation uses CurrentPage and PageSize for pagination. Omit this parameter when you call the operation.
         self.max_results = max_results
@@ -67,11 +53,11 @@ class ListDataSourcesRequest(DaraModel):
         self.next_token = next_token
         # The number of entries to return on each page. Keep other filter conditions consistent when you query the next page.
         self.page_size = page_size
-        # The port for the database connection.
+        # The database connection port.
         self.port = port
         # The code of the cloud service. Column encryption supports ApsaraDB RDS, PolarDB, and PolarDB-X 2.0. If this parameter is specified together with ProductId, the values must match.
         self.product_code = product_code
-        # The identifier of the cloud service type. 5: ApsaraDB RDS; 8: PolarDB; 27: PolarDB-X 2.0. If this parameter is specified together with ProductCode, the values must match.
+        # The identifier of the cloud service type. 5: ApsaraDB RDS. 8: PolarDB. 27: PolarDB-X 2.0. If this parameter is specified together with ProductCode, the values must match.
         self.product_id = product_id
         # The source IP address of the call.
         self.source_ip = source_ip

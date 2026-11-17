@@ -10,9 +10,11 @@ class GetDataMaskingAccountCountRequest(DaraModel):
         lang: str = None,
         product_ids: str = None,
     ):
-        # The language of the response description. Valid values: zh: Chinese. en: English.
+        # The language of the response description. Valid values:
+        # - zh: Chinese.
+        # - en: English.
         self.lang = lang
-        # The list of cloud product type identifiers. Separate multiple values with commas (,). For column encryption scenarios, the values are 5 (RDS), 8 (PolarDB), and 27 (PolarDB-X 2.0).
+        # The list of cloud product type identifiers. Separate multiple values with commas (,). For column encryption scenarios, the values are 5 (RDS), 8 (PolarDB), and 27 (PolarDBX2).
         self.product_ids = product_ids
 
     def validate(self):

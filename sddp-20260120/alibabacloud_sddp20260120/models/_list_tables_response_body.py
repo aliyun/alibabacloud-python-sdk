@@ -21,7 +21,7 @@ class ListTablesResponseBody(DaraModel):
     ):
         # The page number of the returned data.
         self.current_page = current_page
-        # The list of records returned by the query.
+        # The list of records returned for the current query.
         self.items = items
         # The pagination cursor used for the current query.
         self.marker = marker
@@ -29,11 +29,11 @@ class ListTablesResponseBody(DaraModel):
         self.next_marker = next_marker
         # The number of entries returned per page for the current query.
         self.page_size = page_size
-        # The ID of the request. You can use the ID to locate the API call.
+        # The request ID. You can use this ID to locate the API call.
         self.request_id = request_id
-        # The total number of entries that meet the current statistical or query scope.
+        # The total number of entries that meet the current statistics or query scope.
         self.total_count = total_count
-        # Indicates whether more pages exist. A value of true indicates that more data exists. A value of false indicates that no more data exists.
+        # Indicates whether subsequent pages exist. The string true indicates that more data is available, and false indicates that no more data is available.
         self.truncated = truncated
 
     def validate(self):
@@ -128,21 +128,21 @@ class ListTablesResponseBodyItems(DaraModel):
     ):
         # The description of the database table.
         self.comment = comment
-        # The time when the data object was created. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The creation time of the data object. The value is a UNIX timestamp in milliseconds since 1970-01-01 00:00:00 UTC.
         self.creation_time = creation_time
         # The instance identity of the cloud instance.
         self.data_asset_source_id = data_asset_source_id
-        # The name of the database.
+        # The database name.
         self.data_source_name = data_source_name
         # The description of the database instance.
         self.instance_description = instance_description
         # The name of the database table. Some engines return the name in the schema.table format.
         self.name = name
-        # The ID of the Alibaba Cloud account that owns the database table.
+        # The cloud account ID of the database table owner.
         self.owner = owner
-        # The code of the cloud service.
+        # The cloud service code.
         self.product_code = product_code
-        # The ID of the sensitivity level.
+        # The sensitivity level ID.
         self.risk_level_id = risk_level_id
         # The name of the sensitivity level.
         self.risk_level_name = risk_level_name
@@ -150,13 +150,13 @@ class ListTablesResponseBodyItems(DaraModel):
         self.rule_list = rule_list
         # Indicates whether the data is detected as sensitive data.
         self.sensitive = sensitive
-        # The number of sensitive data entries within the current statistical scope.
+        # The number of sensitive data entries within the current statistics scope.
         self.sensitive_count = sensitive_count
         # The proportion of sensitive data.
         self.sensitive_ratio = sensitive_ratio
         # The name of the tenant to which the data asset belongs.
         self.tenant_name = tenant_name
-        # The total number of entries that meet the current statistical or query scope.
+        # The total number of entries that meet the current statistics or query scope.
         self.total_count = total_count
 
     def validate(self):
@@ -288,7 +288,7 @@ class ListTablesResponseBodyItemsRuleList(DaraModel):
         self.count = count
         # The name of the detection model or rule.
         self.name = name
-        # The ID of the sensitivity level.
+        # The sensitivity level ID.
         self.risk_level_id = risk_level_id
 
     def validate(self):

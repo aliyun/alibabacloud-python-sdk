@@ -22,7 +22,7 @@ class ListDataMaskingColumnsResponseBody(DaraModel):
         self.items = items
         # The number of records per page for the current query.
         self.page_size = page_size
-        # The ID of the request. It can be used to locate the current API call.
+        # The ID of the request. You can use it to locate the API call.
         self.request_id = request_id
         # The total number of records that meet the current statistics or query scope.
         self.total_count = total_count
@@ -107,15 +107,21 @@ class ListDataMaskingColumnsResponseBodyItems(DaraModel):
         self.db_name = db_name
         # The type of the database engine.
         self.engine_type = engine_type
-        # The business error code of the record or operation. It can be empty if no error occurs. Evaluate it together with ErrorMessage.
+        # The business error code for the record or operation. It can be empty if no error occurs. Evaluate it together with ErrorMessage.
         self.error_code = error_code
-        # The business error message of the record or operation.
+        # The business error message for the record or operation.
         self.error_message = error_message
         # The ID of the column record.
         self.id = id
         # The database instance identity.
         self.instance_id = instance_id
-        # The column encryption status. Valid values: NotEncrypted: not encrypted; Processing: processing; Success: encrypted successfully; Failed: encryption failed; Deleting: disabling; DeleteFailed: disabling failed.
+        # The column encryption status. Valid values:
+        # - NotEncrypted: Not encrypted.
+        # - Processing: Processing.
+        # - Success: Encryption succeeded.
+        # - Failed: Encryption failed.
+        # - Deleting: Disabling.
+        # - DeleteFailed: Disabling failed.
         self.masking_status = masking_status
         # The list of matched model tags.
         self.model_tags = model_tags
@@ -123,7 +129,7 @@ class ListDataMaskingColumnsResponseBodyItems(DaraModel):
         self.name = name
         # The code of the cloud service.
         self.product_code = product_code
-        # The ID of the cloud service type. Valid values: 5: RDS; 8: POLARDB; 27: PolarDBX2.
+        # The ID of the cloud service type. Valid values: 5 for RDS, 8 for POLARDB, and 27 for PolarDBX2.
         self.product_id = product_id
         # The ID of the region where the asset is located.
         self.region_id = region_id

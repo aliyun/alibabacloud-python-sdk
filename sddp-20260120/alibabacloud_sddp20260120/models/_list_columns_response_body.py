@@ -18,11 +18,11 @@ class ListColumnsResponseBody(DaraModel):
     ):
         # The page number of the returned data.
         self.current_page = current_page
-        # The list of records returned in the current query.
+        # The list of records returned for the current query.
         self.items = items
-        # The number of entries returned per page in the current query.
+        # The number of entries returned per page for the current query.
         self.page_size = page_size
-        # The request ID. You can use the ID to locate this API call.
+        # The request ID, which can be used to locate this API invoke.
         self.request_id = request_id
         # The total number of entries that meet the current statistics or query scope.
         self.total_count = total_count
@@ -102,9 +102,9 @@ class ListColumnsResponseBodyItems(DaraModel):
         sensitive: bool = None,
         table_name: str = None,
     ):
-        # The creation time of the data object. The value is a UNIX timestamp that represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The creation time of the data object. The value is a UNIX timestamp in milliseconds that represents the time elapsed since 00:00:00 UTC on January 1, 1970.
         self.creation_time = creation_time
-        # The instance identity of the cloud instance.
+        # The cloud instance ID.
         self.data_asset_source_id = data_asset_source_id
         # The name of the database.
         self.data_source_name = data_source_name
@@ -112,15 +112,15 @@ class ListColumnsResponseBodyItems(DaraModel):
         self.data_type = data_type
         # The type of the database engine.
         self.engine_type = engine_type
-        # The instance identity of the cloud instance to which the column belongs. This is a compatible field.
+        # The cloud instance ID to which the column belongs. This is a compatible field.
         self.instance_name = instance_name
-        # The compatibility field for the column encryption status. To query the column encryption results, call ListDataMaskingColumns.
+        # The compatibility field for the column encryption status. To query column encryption results, call ListDataMaskingColumns.
         self.masking_status = masking_status
         # The name of the data column.
         self.name = name
         # The code of the cloud service.
         self.product_code = product_code
-        # The ID of the region where the asset is located.
+        # The identifier of the region where the asset is located.
         self.region_id = region_id
         # The identifier of the detection result correction record.
         self.revision_id = revision_id
