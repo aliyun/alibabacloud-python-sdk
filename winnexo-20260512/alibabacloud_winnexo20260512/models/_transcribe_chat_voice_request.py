@@ -16,7 +16,7 @@ class TranscribeChatVoiceRequest(DaraModel):
         # The content type of the file. Valid values:
         # - **image**: Image.
         # - **document**: General document.
-        # - **alidoc**: Alibaba Cloud document.
+        # - **alidoc**: AliDoc.
         # - **text**: Text.
         # - **video**: Video.
         # - **audio**: Audio.
@@ -25,15 +25,15 @@ class TranscribeChatVoiceRequest(DaraModel):
         # - **link**: Shortcut.
         # - **other**: Other.
         self.content_type = content_type
-        # 标准 Base64 音频内容，不含 data URI 前缀，与 FileUrl 二选一
+        # The standard Base64-encoded audio content, excluding the data URI prefix. This parameter and FileUrl are mutually exclusive.
         self.file_content_base_64 = file_content_base_64
-        # The full path name of the file.
+        # The full path and name of the file.
         # 
         # This parameter is required.
         self.file_name = file_name
         # The publicly accessible URL of the attachment.
         self.file_url = file_url
-        # The ID of the tenant for which the operation takes effect.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):

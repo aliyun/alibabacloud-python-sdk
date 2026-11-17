@@ -24,17 +24,17 @@ class UpdateScheduledTaskRequest(DaraModel):
         visibility: str = None,
         visible_member_user_ids: List[str] = None,
     ):
-        # The description information.
+        # The description.
         self.description = description
-        # The list of digital human names.
+        # The list of digital employee names.
         self.digital_employee_name = digital_employee_name
-        # Specifies whether the task is publicly accessible.
+        # Specifies whether public access is enabled.
         self.is_open = is_open
-        # The execution model tier. If not specified, the model tier is not updated.
+        # The execution model tier. If this parameter is not specified, the model tier is not updated.
         self.model = model
         # The file name.
         self.name = name
-        # 输出会话模式，省略时保留当前配置
+        # The output conversation mode. If this parameter is omitted, the current configuration is retained.
         self.output_mode = output_mode
         # The segments.
         self.segments = segments
@@ -44,13 +44,13 @@ class UpdateScheduledTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.task_id = task_id
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # The trigger configuration. The configuration varies depending on the trigger type.
+        # The trigger configuration. The configuration varies based on the trigger type.
         self.trigger_config = trigger_config
-        # The visibility scope for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If not specified, the visibility is not updated. This parameter is ignored for personal tasks.
+        # The visibility scope adjustment for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If this parameter is not specified, the visibility scope is not updated. This field is ignored for personal tasks.
         self.visibility = visibility
-        # The full replacement list of collaborator member user IDs. This parameter takes effect only when visibility is set to COLLABORATIVE. The list is cleared when switching away from the COLLABORATIVE tier. A maximum of 1000 members are supported. If not specified, the member list is not updated. The task creator and group creator do not need to be included because they are covered by the authentication layer. This parameter is ignored for personal tasks.
+        # The full replacement list of collaborators. This parameter takes effect only when visibility is set to COLLABORATIVE. When the visibility is changed from COLLABORATIVE to another value, the list is cleared. A maximum of 1,000 members are supported. If this parameter is not specified, the members are not updated. You do not need to specify the task creator and group creator because they are covered by the authentication layer. This field is ignored for personal tasks.
         self.visible_member_user_ids = visible_member_user_ids
 
     def validate(self):
@@ -177,13 +177,13 @@ class UpdateScheduledTaskRequestTriggerConfig(DaraModel):
         timezone: str = None,
         trigger_mode: str = None,
     ):
-        # The cron expression. Required when trigger_mode is set to scheduled. Example: \\"00 09 * * *\\".
+        # The cron expression. This parameter is required when trigger_mode is set to scheduled. Example: 00 09 * * *.
         self.cron = cron
-        # The language, such as zh-CN or en-US. Automatically injected by the server.
+        # The language, such as zh-CN or en-US. This parameter is automatically injected by the server.
         self.language = language
-        # The list of push channels for the task. No push notifications are sent if the list is empty or no channel is enabled.
+        # The list of task push channels. If the list is empty or no channel is enabled, no push notification is sent.
         self.push_config = push_config
-        # The time zone, such as Asia/Shanghai. Automatically injected by the server.
+        # The time zone, such as Asia/Shanghai. This parameter is automatically injected by the server.
         self.timezone = timezone
         # The trigger mode. Valid values: manual and scheduled.
         # 
@@ -253,19 +253,19 @@ class UpdateScheduledTaskRequestTriggerConfigPushConfig(DaraModel):
         operating_object_name: str = None,
         receiver_type: str = None,
     ):
-        # The push channel type.
+        # The push channel.
         self.channel_type = channel_type
-        # The scope of push content. Default value: all_replies.
+        # The scope of the push content. Default value: all_replies.
         self.content_scope = content_scope
-        # The push method. Default value: channel_bot.
+        # The delivery method. Default value: channel_bot.
         self.delivery_method = delivery_method
-        # Specifies whether to push to this channel. Default value: false.
+        # Specifies whether to push notifications to the channel. Default value: false.
         self.enabled = enabled
-        # The format for pushing output files. Default value: file.
+        # The push format for output files. Default value: file.
         self.file_format = file_format
-        # The digital human to which the sending bot belongs. This parameter is required and cannot be empty.
+        # The digital employee to which the sending bot belongs. This parameter is required and cannot be empty.
         self.operating_object_name = operating_object_name
-        # The receiver type. Currently only self is supported.
+        # The recipient. Only self is supported.
         self.receiver_type = receiver_type
 
     def validate(self):
@@ -338,7 +338,7 @@ class UpdateScheduledTaskRequestTaskDetail(DaraModel):
         self.related_semantics = related_semantics
         # The related skills.
         self.related_skills = related_skills
-        # The task understanding description polished by the LLM.
+        # The task understanding description refined by the large language model (LLM).
         self.task_understand = task_understand
 
     def validate(self):
@@ -466,7 +466,7 @@ class UpdateScheduledTaskRequestTaskDetailRelatedSemantics(DaraModel):
         attributes: str = None,
         entity: str = None,
     ):
-        # The semantic attributes (JSON string) used for filtering during semantic retrieval.
+        # The semantic attributes in JSON string format. This parameter is used for filtering during semantic retrieval.
         self.attributes = attributes
         # The semantic entity name, such as customer or opportunity.
         self.entity = entity
@@ -509,7 +509,7 @@ class UpdateScheduledTaskRequestTaskDetailRelatedObjects(DaraModel):
         self.mention_type = mention_type
         # The file name.
         self.name = name
-        # The object ID. This parameter has a value when an object is mentioned using @.
+        # The object ID. This parameter has a value when the object is specified by using the @ symbol.
         self.object_id = object_id
         # The object type, such as customer or company.
         self.object_type = object_type
@@ -563,9 +563,9 @@ class UpdateScheduledTaskRequestSegments(DaraModel):
         skill_code: str = None,
         type: str = None,
     ):
-        # The text content. Required when type is set to text.
+        # The text content. This parameter is required when type is set to text.
         self.content = content
-        # The feature switch. Optional when type is set to web_search.
+        # Specifies whether the feature is enabled. This parameter is optional when type is set to web_search.
         self.enabled = enabled
         # The file name.
         self.name = name
@@ -647,9 +647,9 @@ class UpdateScheduledTaskRequestDescription(DaraModel):
         skill_code: str = None,
         type: str = None,
     ):
-        # The text content. Required when type is set to text.
+        # The text content. This parameter is required when type is set to text.
         self.content = content
-        # The feature switch. Optional when type is set to web_search.
+        # Specifies whether the feature is enabled. This parameter is optional when type is set to web_search.
         self.enabled = enabled
         # The file name.
         self.name = name

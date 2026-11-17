@@ -13,15 +13,15 @@ class UpdateScheduledTaskResponseBody(DaraModel):
         task_id: str = None,
         updated: bool = None,
     ):
-        # The business status code. A value of 200 indicates success. A failure returns a backend error code (ERR.* or InvalidParameter.*).
+        # The business status code. A value of 200 indicates success. A value of a backend error code such as ERR.* or InvalidParameter.* indicates failure.
         self.code = code
-        # The error description. Empty when the request is successful.
+        # The error message. This parameter is empty when the request is successful.
         self.message = message
-        # The request trace ID.
+        # The request tracking ID.
         self.request_id = request_id
-        # The task ID (echoed back).
+        # The task ID.
         self.task_id = task_id
-        # Indicates whether an actual update was made.
+        # Specifies whether an actual update is performed.
         self.updated = updated
 
     def validate(self):

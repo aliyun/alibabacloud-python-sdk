@@ -12,17 +12,17 @@ class UploadChatFileByBase64Request(DaraModel):
         file_name: str = None,
         tenant_id: str = None,
     ):
-        # 文件 MIME 类型（可选，不传时按 application/octet-stream 处理）
+        # The MIME type of the file.
         self.content_type = content_type
-        # 标准 Base64 文件内容，不含 data URI 前缀
+        # The Base64-encoded string of the file content.
         # 
         # This parameter is required.
         self.file_content_base_64 = file_content_base_64
-        # 原始文件名（含后缀）
+        # The file name.
         # 
         # This parameter is required.
         self.file_name = file_name
-        # 租户ID，公共参数，缺省时使用调用方默认租户
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

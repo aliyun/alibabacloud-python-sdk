@@ -120,7 +120,7 @@ class ListOutputFilesResponseBodyItems(DaraModel):
         self.gmt_modified = gmt_modified
         # The output name.
         self.name = name
-        # The name of the digital worker (operating object).
+        # The name of the digital employee (operating object).
         self.operating_object_name = operating_object_name
         # The output ID.
         self.output_id = output_id
@@ -244,9 +244,9 @@ class ListOutputFilesResponseBodyItemsOutputItems(DaraModel):
     ):
         # The creation time of the output detail. The backend datetime value is serialized into an ISO 8601 string, and the time zone information is returned with the original value.
         self.create_time = create_time
-        # The email information. This field is available only when the item type is email.
+        # The email information. This field is present when the item type is email.
         self.email_info = email_info
-        # The file information. This field is available only when the item type is file.
+        # The file information. This field is present when the item type is file.
         self.file_info = file_info
         # The creation time of the output or detail. The backend datetime value is serialized into an ISO 8601 string, and the time zone information is returned with the original value.
         self.gmt_create = gmt_create
@@ -262,9 +262,9 @@ class ListOutputFilesResponseBodyItemsOutputItems(DaraModel):
         self.message_id = message_id
         # The output detail ID.
         self.output_item_id = output_item_id
-        # Indicates whether sharing is enabled.
+        # Specifies whether sharing is enabled.
         self.share_enabled = share_enabled
-        # The share token. This field is present when sharing is enabled and can be used to access the public share preview API.
+        # The share token, which is present when sharing is enabled and can be used to access the public share preview API.
         self.share_token = share_token
         # The skill output ID.
         self.skill_output_id = skill_output_id
@@ -452,7 +452,7 @@ class ListOutputFilesResponseBodyItemsOutputItemsFileInfo(DaraModel):
         self.description = description
         # The file name.
         self.name = name
-        # The file download link. For versioned files, it is bound to the published version and content revision at the time of query. The link has a validity period. If it expires, query the list again to obtain a new link.
+        # The file download URL. For versioned files, it is bound to the published version and content revision at the time of query. The URL has a time-to-live (TTL). If it expires, query the list again to obtain a new URL.
         self.path = path
         # The file type, such as .pdf or .md.
         self.type = type

@@ -16,9 +16,9 @@ class TranscribeChatVoiceResponseBody(DaraModel):
         self.code = code
         # The description of the status code.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The recognized text content.
+        # The batch text to be translated.
         self.text = text
 
     def validate(self):

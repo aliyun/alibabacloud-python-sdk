@@ -12,13 +12,13 @@ class UploadChatFileByBase64ResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 业务状态码：成功为 200，失败为后端错误码（ERR.* / InvalidParameter.*）
+        # The response status code.
         self.code = code
-        # 文件记录 ID
+        # The file record ID.
         self.file_record_id = file_record_id
-        # 错误描述，成功时为空
+        # The response message.
         self.message = message
-        # 请求追踪 ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
