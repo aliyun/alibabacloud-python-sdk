@@ -19,7 +19,7 @@ class CheckAppResourcePermissionRequest(DaraModel):
         # 
         # This parameter is required.
         self.permission = permission
-        # The dot-separated resource key. The first segment is the APP application key.
+        # The dot-separated resource key. The first segment is the application key.
         # 
         # This parameter is required.
         self.resource_key = resource_key
@@ -31,7 +31,7 @@ class CheckAppResourcePermissionRequest(DaraModel):
         self.resource_type = resource_type
         # The ID of the target platform user.
         self.target_user_id = target_user_id
-        # The ID of the tenant to which the target user belongs. This parameter is required for cross-tenant targets.
+        # The tenant to which the target user belongs. This parameter is required for cross-tenant targets.
         self.target_user_tenant_id = target_user_tenant_id
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id

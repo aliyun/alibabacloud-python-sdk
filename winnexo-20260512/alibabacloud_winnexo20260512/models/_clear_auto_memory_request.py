@@ -12,15 +12,13 @@ class ClearAutoMemoryRequest(DaraModel):
         tenant_id: str = None,
         type: str = None,
     ):
-        # The workspace ID. This parameter is required when ownerType is set to group.
+        # The collaboration workspace ID. This parameter is required when ownerType is set to group.
         self.group_id = group_id
-        # The owner type. Valid values:
-        # - user: the personal memory of the authenticated user.
-        # - group: the memory of a specified workspace.
+        # The owner type. Valid values: user: the personal memory of the authenticated user; group: the memory of the specified collaboration workspace.
         self.owner_type = owner_type
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # The memory type. Valid values: user, feedback, reference, project, and all. A value of all does not clear manual memory.
+        # The memory type. Valid values: user, feedback, reference, project, or all. The value all does not clear manual memory.
         # 
         # This parameter is required.
         self.type = type

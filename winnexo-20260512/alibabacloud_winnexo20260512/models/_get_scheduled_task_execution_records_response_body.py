@@ -231,16 +231,20 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
     def __init__(
         self,
         actual_time: str = None,
+        conversation_id: str = None,
         display_name: str = None,
         error_message: str = None,
         execution_id: str = None,
         is_expired: bool = None,
+        message_id: str = None,
         output_content: str = None,
         scheduled_time: str = None,
         status: str = None,
     ):
         # The actual working hours in hours.
         self.actual_time = actual_time
+        # 本次任务执行使用的真实会话 ID
+        self.conversation_id = conversation_id
         # The name of the schedule location.
         self.display_name = display_name
         # The error message.
@@ -249,6 +253,8 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
         self.execution_id = execution_id
         # The time zone.
         self.is_expired = is_expired
+        # 本次任务执行生成的结果消息 ID
+        self.message_id = message_id
         # The execution output content (history records only).
         self.output_content = output_content
         # The timed scheduling time.
@@ -267,6 +273,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
         if self.actual_time is not None:
             result['actualTime'] = self.actual_time
 
+        if self.conversation_id is not None:
+            result['conversationId'] = self.conversation_id
+
         if self.display_name is not None:
             result['displayName'] = self.display_name
 
@@ -278,6 +287,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
 
         if self.is_expired is not None:
             result['isExpired'] = self.is_expired
+
+        if self.message_id is not None:
+            result['messageId'] = self.message_id
 
         if self.output_content is not None:
             result['outputContent'] = self.output_content
@@ -295,6 +307,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
         if m.get('actualTime') is not None:
             self.actual_time = m.get('actualTime')
 
+        if m.get('conversationId') is not None:
+            self.conversation_id = m.get('conversationId')
+
         if m.get('displayName') is not None:
             self.display_name = m.get('displayName')
 
@@ -306,6 +321,9 @@ class GetScheduledTaskExecutionRecordsResponseBodyTasksTimeline(DaraModel):
 
         if m.get('isExpired') is not None:
             self.is_expired = m.get('isExpired')
+
+        if m.get('messageId') is not None:
+            self.message_id = m.get('messageId')
 
         if m.get('outputContent') is not None:
             self.output_content = m.get('outputContent')

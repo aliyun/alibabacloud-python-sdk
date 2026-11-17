@@ -19,7 +19,7 @@ class CreateUserResponseBody(DaraModel):
         self.account_id = account_id
         # The error code.
         self.code = code
-        # The cluster name.
+        # The display name.
         self.display_name = display_name
         # Indicates whether the user is newly created. A value of false indicates that an existing user is added to the tenant.
         self.is_new_user = is_new_user
@@ -27,7 +27,7 @@ class CreateUserResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The WINNEXO platform user ID.
+        # The user ID in the WINNEXO platform.
         self.wn_user_id = wn_user_id
 
     def validate(self):

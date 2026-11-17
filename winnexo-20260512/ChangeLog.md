@@ -1,3 +1,29 @@
+2026-11-17 Version: 1.9.0
+- Support API ConvertDirectConversationToWork.
+- Support API GetScheduledTaskConversationRecords.
+- Support API ListSourceUsageStatistics.
+- Support API QuerySourceUsageSummary.
+- Support API QuerySourceUsageTrend.
+- Support API UploadChatFileByBase64.
+- Update API CreateScheduledTask: add request parameters outputMode.
+- Update API GetScheduledTaskExecutionDetail: add response parameters Body.conversationId.
+- Update API GetScheduledTaskExecutionDetail: add response parameters Body.messageId.
+- Update API GetScheduledTaskExecutionRecords: add response parameters Body.tasks.$.timeline.$.conversationId.
+- Update API GetScheduledTaskExecutionRecords: add response parameters Body.tasks.$.timeline.$.messageId.
+- Update API ListOutputFiles: add request parameters taskExecutionId.
+- Update API ListScheduledTasks: add response parameters Body.items.$.outputMode.
+- Update API SendAsyncChatMessage: add request parameters contextItems.
+- Update API SendAsyncChatMessage: add request parameters directMaxHistoryRounds.
+- Update API SendAsyncChatMessage: add request parameters locale.
+- Update API SendAsyncChatMessage: add request parameters segments.
+- Update API SendChatMessage: add request parameters contextItems.
+- Update API SendChatMessage: add request parameters directMaxHistoryRounds.
+- Update API SendChatMessage: add request parameters locale.
+- Update API SendChatMessage: add request parameters segments.
+- Update API TranscribeChatVoice: add request parameters fileContentBase64.
+- Update API UpdateScheduledTask: add request parameters outputMode.
+
+
 2026-11-06 Version: 1.8.0
 - Support API CreateFreeExplorationWorkItem.
 - Support API GetCollaborationGroupOutputItemPreview.

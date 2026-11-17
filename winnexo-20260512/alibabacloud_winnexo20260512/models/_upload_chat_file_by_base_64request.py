@@ -1,0 +1,65 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class UploadChatFileByBase64Request(DaraModel):
+    def __init__(
+        self,
+        content_type: str = None,
+        file_content_base_64: str = None,
+        file_name: str = None,
+        tenant_id: str = None,
+    ):
+        # 文件 MIME 类型（可选，不传时按 application/octet-stream 处理）
+        self.content_type = content_type
+        # 标准 Base64 文件内容，不含 data URI 前缀
+        # 
+        # This parameter is required.
+        self.file_content_base_64 = file_content_base_64
+        # 原始文件名（含后缀）
+        # 
+        # This parameter is required.
+        self.file_name = file_name
+        # 租户ID，公共参数，缺省时使用调用方默认租户
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.content_type is not None:
+            result['contentType'] = self.content_type
+
+        if self.file_content_base_64 is not None:
+            result['fileContentBase64'] = self.file_content_base_64
+
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('contentType') is not None:
+            self.content_type = m.get('contentType')
+
+        if m.get('fileContentBase64') is not None:
+            self.file_content_base_64 = m.get('fileContentBase64')
+
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+
+        return self
+

@@ -23,21 +23,19 @@ class ListScheduledTasksResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # Indicates whether more data is available. Valid values:
-        # - true: More data is available.
-        # - false: No more data is available.
+        # Indicates whether more data is available. Valid values: true (yes) and false (no).
         self.has_more = has_more
         # The list of skill cards.
         self.items = items
-        # The maximum number of entries to return in this request.
+        # The maximum number of records to return for this request.
         self.max_results = max_results
-        # The status code description.
+        # The description of the status code.
         self.message = message
-        # The pagination token.
+        # The pagination cursor.
         self.next_token = next_token
-        # The page number. Default value: 1.
+        # The specified page number. Default value: 1.
         self.page = page
-        # The number of entries per page.
+        # The number of records per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -146,23 +144,24 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
         is_open: bool = None,
         model: str = None,
         name: str = None,
+        output_mode: str = None,
         status: str = None,
         task_id: str = None,
         trigger_type: str = None,
         visibility: str = None,
         visible_member_user_ids: List[str] = None,
     ):
-        # The reason for the exception. This parameter has a value only when status is abnormal.
+        # The cause of the exception. This field has a value only when status is abnormal.
         self.abnormal_reason = abnormal_reason
-        # Indicates whether the current caller can delete the task. Only the task creator and group owner can delete the task. For personal tasks, this value is always true.
+        # Indicates whether the current caller can delete the task. This is valid only for the task creator and group owner. For personal tasks, the value is always true.
         self.can_delete = can_delete
         # Indicates whether the course can be edited or deleted.
         self.can_edit = can_edit
-        # Indicates whether the current caller can immediately execute the task. A task is executable if it is visible to the caller, except for abnormal tasks which return false. For personal tasks, this value is always true.
+        # Indicates whether the current caller can immediately execute the task. Visible means operable. For abnormal tasks, the value is false. For personal tasks, the value is always true.
         self.can_execute = can_execute
-        # Indicates whether the current caller can start or stop the task. Only the task creator and group owner can toggle the task. Abnormal tasks return false. For personal tasks, this value is always true.
+        # Indicates whether the current caller can start or stop the task. This is valid only for the task creator and group owner. For abnormal tasks, the value is false. For personal tasks, the value is always true.
         self.can_toggle = can_toggle
-        # The ID of the collaboration group (such as cg_101). If specified, a group task is created (the caller must be a valid group member). If left empty, a personal task is created.
+        # The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is specified, a group space task is created, and the caller must be a valid group member. If this parameter is left empty, a personal task is created.
         self.collaboration_group_id = collaboration_group_id
         # The creator.
         self.creator = creator
@@ -178,28 +177,25 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
         self.execution_count = execution_count
         # The creation time.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The last update time.
         self.gmt_modified = gmt_modified
         # Indicates whether public access is enabled.
         self.is_open = is_open
-        # The execution model tier. If not specified, the value is not updated.
+        # The execution model tier. If this parameter is not specified, the model tier is not updated.
         self.model = model
         # The name.
         self.name = name
-        # The task status. Running is returned upon submission.
+        # The task output session mode.
+        self.output_mode = output_mode
+        # The task status. Running is returned immediately after submission.
         self.status = status
         # The task ID.
         self.task_id = task_id
         # The type of the trigger.
         self.trigger_type = trigger_type
-        # The visibility scope of the group task. Valid values:
-        # - PRIVATE: visible only to the creator and group owner.
-        # - COLLABORATIVE: visible to specified collaborators.
-        # - PUBLIC: visible to all group members.
-        # 
-        # If not specified for a group task, the default value is PRIVATE. This parameter is ignored for personal tasks.
+        # The visibility scope of the group task. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaboration members), and PUBLIC (visible to all group members). Default value for group tasks: PRIVATE. This field is ignored for personal tasks.
         self.visibility = visibility
-        # The list of collaborator members, excluding the task creator and group creator whose access is governed by the authentication layer. This parameter is returned only for group tasks. An empty list is returned for PRIVATE and PUBLIC visibility.
+        # The list of collaboration members, excluding the task creator and group creator, which are covered by the authentication layer. This field is returned only for group tasks. An empty list is returned for PRIVATE or PUBLIC visibility scopes.
         self.visible_member_user_ids = visible_member_user_ids
 
     def validate(self):
@@ -260,6 +256,9 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
 
         if self.name is not None:
             result['name'] = self.name
+
+        if self.output_mode is not None:
+            result['outputMode'] = self.output_mode
 
         if self.status is not None:
             result['status'] = self.status
@@ -330,6 +329,9 @@ class ListScheduledTasksResponseBodyItems(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('outputMode') is not None:
+            self.output_mode = m.get('outputMode')
 
         if m.get('status') is not None:
             self.status = m.get('status')

@@ -13,23 +13,23 @@ class ResetWorkflowNodeConfigurationRequest(DaraModel):
         node_id: str = None,
         tenant_id: str = None,
     ):
-        # 协作空间ID
+        # The collaboration workspace ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 读取接口返回的configVersion；非负整数；版本冲突须刷新
+        # The configuration version returned by the read API. This must be a non-negative integer. Refresh the data if a version conflict occurs.
         # 
         # This parameter is required.
         self.expected_version = expected_version
-        # 当前物理计划ID（planId）
+        # The current physical plan ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 业务节点key（nodeKey）
+        # The business node key.
         # 
         # This parameter is required.
         self.node_id = node_id
-        # 租户ID；缺省使用调用方默认租户
+        # The tenant ID. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

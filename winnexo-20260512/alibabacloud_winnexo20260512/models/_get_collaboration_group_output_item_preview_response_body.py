@@ -19,27 +19,27 @@ class GetCollaborationGroupOutputItemPreviewResponseBody(DaraModel):
         preview_url: str = None,
         request_id: str = None,
     ):
-        # 公共业务状态码，由后端Code字段映射；错误时用于识别失败原因。
+        # The common business status code.
         self.code = code
-        # 可直接展示的文本正文或预览提示；不提供正文的文件类型可为空。
+        # The text content or preview prompt. This field can be empty.
         self.content = content
-        # 是否降级为下载。true时应展示下载入口，不要按在线文档预览器处理。
+        # Indicates whether the preview is downgraded to a download preview.
         self.degraded = degraded
-        # 短期签名下载地址；普通文件有效期3600秒，邮件正文可为空。过期后重新调用本接口。示例仅展示URL格式，不包含真实签名。
+        # The short-term signed download URL. This field can be empty. If the URL expires, call this operation again.
         self.download_url = download_url
-        # 文件扩展名，不含点；无扩展名时可为空。
+        # The file name extension. This field can be empty.
         self.file_ext = file_ext
-        # 文件名，包含扩展名；无文件名时可为空。
+        # The file name. This field can be empty.
         self.file_name = file_name
-        # 对话生成文件的产出明细ID。取GetNodeDetail返回的artifacts中ref.kind为USER_OUTPUT_ITEM的ref.id；不是artifactId。
+        # The output detail ID.
         self.item_id = item_id
-        # 公共错误说明，由后端Message字段映射；错误时描述失败原因。
+        # The common error description.
         self.message = message
-        # 预览方式，例如CONTENT为文本正文，HTML为网页，IMAGE为图片，AUDIO为音频，VIDEO为视频，OSS_IMM为文档预览。
+        # The preview type.
         self.preview_type = preview_type
-        # 短期预览地址；正文可直接展示时可为空。地址过期后重新调用本接口。示例仅展示URL格式，不是可访问凭证。
+        # The short-term preview URL. This field can be empty.
         self.preview_url = preview_url
-        # 请求追踪ID，由后端RequestId字段映射，用于排查调用失败。
+        # The request tracking ID.
         self.request_id = request_id
 
     def validate(self):

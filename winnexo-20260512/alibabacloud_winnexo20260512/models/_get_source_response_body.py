@@ -40,13 +40,13 @@ class GetSourceResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The completion time, in milliseconds.
+        # The completion time in milliseconds.
         self.completion_time = completion_time
         # The description of the to-do card type.
         self.description = description
         # The creation time.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The last update time.
         self.gmt_modified = gmt_modified
         # Indicates whether notes exist.
         self.has_notes = has_notes
@@ -56,39 +56,37 @@ class GetSourceResponseBody(DaraModel):
         self.has_structured_tables = has_structured_tables
         # Indicates whether unstructured documents exist.
         self.has_unstructured_docs = has_unstructured_docs
-        # The status code description.
+        # The description of the status code.
         self.message = message
         # The username.
         self.name = name
-        # The meeting notes content (optional). The notes are used for auxiliary analysis.
+        # The content of the meeting notes. This field is optional and is used for auxiliary analysis.
         self.notes = notes
         # The object bindings.
         self.object_bindings = object_bindings
         # The ID of the associated variable.
         self.object_id = object_id
-        # The object type, such as customer. This field has a value when type is set to mention.
+        # The object type, such as customer. This field has a value only when the type is mention.
         self.object_type = object_type
-        # The name of the digital employee (operating object name, optional).
+        # The name of the digital employee. This field is optional and represents the name of the operations object.
         self.operating_object_name = operating_object_name
         # The request ID.
         self.request_id = request_id
-        # The task scope.
+        # The scope of the task.
         self.scope = scope
-        # The user card information settings.
+        # The datasource config. This field is returned only when includeDetails is set to true. The specific fields vary based on the data source type.
         self.settings = settings
-        # The skill output ID. This ID is included when the output is saved as a resource.
+        # The ID of the skill output. This field is included when the output is saved as a resource.
         self.skill_output_id = skill_output_id
-        # The data source ID.
+        # The ID of the data source.
         self.source_id = source_id
-        # The knowledge base (KB) ownership type. Valid values:
-        # - aliding_kb_doc: DingTalk knowledge base document.
-        # - normal: standard knowledge.
+        # The ownership type of the knowledge base. Valid values: aliding_kb_doc (Alibaba DingTalk knowledge base document) and normal (common knowledge).
         self.source_kind = source_kind
-        # The resource tags (optional). The value is a JSON string list, such as ["tagA","tagB"].
+        # The resource tags. This field is optional and is a JSON string list, such as ["tagA","tagB"].
         self.source_tags = source_tags
         # The resource type.
         self.source_type = source_type
-        # The final message status.
+        # The final status of the message.
         self.status = status
         # The list of structured tables.
         self.structured_tables = structured_tables
@@ -298,19 +296,19 @@ class GetSourceResponseBodyUnstructuredDocs(DaraModel):
         oss_url: str = None,
         semantics_id: str = None,
     ):
-        # The completion time, in milliseconds.
+        # The completion time in milliseconds.
         self.completion_time = completion_time
         # The file name, including the file name extension.
         self.file_name = file_name
-        # The file record ID (optional). This value corresponds to settings.file_record_id.
+        # The ID of the file record. This field is optional and corresponds to settings.file_record_id.
         self.file_record_id = file_record_id
-        # The file type. Valid values:
-        # - **file**: file.
-        # - **folder**: folder.
+        # The file type.
+        # - **file**: File.
+        # - **folder**: Folder.
         self.file_type = file_type
-        # The session analysis result in OSS URL format. The URL expires after one hour.
+        # The result of the session analysis in the form of an OSS URL. The URL expires in one hour.
         self.oss_url = oss_url
-        # The DocumentAgent semantic ID.
+        # The semantic ID of DocumentAgent.
         self.semantics_id = semantics_id
 
     def validate(self):
@@ -374,7 +372,7 @@ class GetSourceResponseBodyObjectBindings(DaraModel):
         self.graph_name = graph_name
         # The ID of the recommended item. The value can be a **feedId** or a mini-app ID.
         self.object_id = object_id
-        # The object type, such as customer. This field has a value when type is set to mention.
+        # The object type, such as customer. This field has a value only when the type is mention.
         self.object_type = object_type
 
     def validate(self):

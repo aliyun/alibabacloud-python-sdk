@@ -17,9 +17,9 @@ class ExportWorkflowTemplateResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The error message.
+        # The error description.
         self.message = message
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
         # The simplified template definition that can be re-imported.
         self.template = template
@@ -76,15 +76,15 @@ class ExportWorkflowTemplateResponseBodyTemplate(DaraModel):
     ):
         # The template description.
         self.description = description
-        # 节点依赖边；每项包含from/to，引用稳定stepId
+        # The node dependency edges. Each item contains from and to fields that reference stable step IDs.
         self.edges = edges
-        # 可选画布布局，按stepId索引；只影响展示，不决定依赖
+        # The optional canvas layout, indexed by step ID. This only affects the display and does not determine dependencies.
         self.layout = layout
         # The template name.
         self.name = name
-        # 模板结构版本，当前为2，与业务版本vN独立
+        # The schema version of the template. The current value is 2, which is independent of the business version vN.
         self.schema_version = schema_version
-        # The standardized steps.
+        # The normalized steps.
         self.steps = steps
 
     def validate(self):
@@ -172,15 +172,15 @@ class ExportWorkflowTemplateResponseBodyTemplateSteps(DaraModel):
         self.owner_type = owner_type
         # The user ID of the human owner.
         self.owner_user_id = owner_user_id
-        # 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+        # Specifies whether to manually review the output. Default value: false. This can only be enabled for digital workers, and review tasks are automatically sent to the owner.
         self.review_output = review_output
-        # The user IDs of the reviewers.
+        # The list of user IDs of the reviewers.
         self.reviewer_user_ids = reviewer_user_ids
         # The step order.
         self.sort_order = sort_order
-        # The step handling instructions.
+        # The step processing instructions.
         self.specification = specification
-        # The ordered array of fragments. Supports text, mention, skill, app, files, and web_search. Preserves referenced identities and order.
+        # An ordered array of segments. Supports text, mention, skill, app, files, and web_search. Preserves reference identities and order.
         self.specification_json = specification_json
         # The step ID.
         self.step_id = step_id

@@ -13,19 +13,19 @@ class SendWorkItemMessageRequest(DaraModel):
         tenant_id: str = None,
         work_item_id: str = None,
     ):
-        # 目标会话所属的协作空间ID，必填，长度1至64，不能为空白。调用者须具有目标话题的查看和发送权限。
+        # The ID of the collaboration space.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 用户发送的文本正文，必填，长度1至32768，不能全为空白；保留原有文本格式。
+        # The body of the user message. The value cannot be empty and can be up to 32,768 characters in length.
         # 
         # This parameter is required.
         self.content = content
-        # 已有自由探索话题的会话ID，长度1至128，可使用创建自由探索接口返回的conversation_id。与workItemId至少传一个，同时传入时须指向同一会话。
+        # The conversation ID returned by the API operation for creating a free exploration. You must specify at least one of this parameter and workItemId. If both are specified, they must match.
         self.conversation_id = conversation_id
-        # 业务租户ID，可选。必须属于当前调用身份的可访问租户；无权访问时拒绝请求。未传时按现有鉴权规则解析租户，多租户用户无法唯一确定时需显式指定。
+        # The tenant ID. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 自由探索工作项ID，长度1至256；兼容legacy-topic:<conversationId>形式。与conversationId至少传一个，同时传入时须指向同一会话。普通工作项必须为FREE_EXPLORATION类型。
+        # The ID of the free exploration work item. This parameter is compatible with the legacy-topic:<conversationId> format. You must specify at least one of workItemId and conversationId. If both are specified, they must point to the same session.
         self.work_item_id = work_item_id
 
     def validate(self):

@@ -15,13 +15,13 @@ class GetWorkItemRunSummariesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 公共业务状态码
+        # The common business status code.
         self.code = code
-        # 当前计划、当前轮次已经生成的运行总结；重跑受影响节点的新总结生成前不会返回旧总结
+        # The execution summaries generated for the current plan and current turn. Previous summaries are not returned until new summaries are generated for affected nodes that are re-run.
         self.items = items
-        # 公共错误描述
+        # The common error description.
         self.message = message
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
 
     def validate(self):
@@ -93,43 +93,43 @@ class GetWorkItemRunSummariesResponseBodyItems(DaraModel):
         started_at: str = None,
         turn_seq: int = None,
     ):
-        # 节点尝试 ID
+        # The ID of the node attempt.
         self.attempt_id = attempt_id
-        # 节点尝试序号，从 1 开始
+        # The sequence number of the node attempt, starting from 1.
         self.attempt_seq = attempt_seq
-        # 执行器 ID
+        # The ID of the executor.
         self.executor_id = executor_id
-        # 执行器名称
+        # The name of the executor.
         self.executor_name = executor_name
-        # 执行器类型，如 AGENT、HUMAN
+        # The executor type, such as AGENT or HUMAN.
         self.executor_type = executor_type
-        # 节点结束时间，ISO8601 格式
+        # The end time of the node, in ISO 8601 format.
         self.finished_at = finished_at
-        # 节点 key
+        # The node key.
         self.node_key = node_key
-        # 节点名称
+        # The name of the node.
         self.node_name = node_name
-        # 节点状态，如 COMPLETED、FAILED
+        # The node status, such as COMPLETED or FAILED.
         self.node_status = node_status
-        # 所属物理计划 ID
+        # The ID of the associated physical plan.
         self.plan_id = plan_id
-        # 节点执行结果，JSON 对象
+        # The execution result of the node, as a JSON object.
         self.result = result
-        # 运行总结正文；未生成时为空
+        # The content of the execution summary. This field is empty if the summary is not generated.
         self.run_summary = run_summary
-        # 运行总结失败原因；成功时为空
+        # The reason for the execution summary failure. This field is empty if the generation is successful.
         self.run_summary_error = run_summary_error
-        # 运行总结生成时间，ISO8601 格式
+        # The generation time of the execution summary, in ISO 8601 format.
         self.run_summary_generated_at = run_summary_generated_at
-        # 运行总结引用的数据来源列表
+        # The list of data sources referenced in the execution summary.
         self.run_summary_sources = run_summary_sources
-        # 运行总结生成状态，如 COMPLETED、FAILED、PROCESSING
+        # The generation status of the execution summary, such as COMPLETED, FAILED, or PROCESSING.
         self.run_summary_status = run_summary_status
-        # 运行总结使用的工具列表
+        # The list of tools used in the execution summary.
         self.run_summary_tools = run_summary_tools
-        # 节点开始时间，ISO8601 格式
+        # The start time of the node, in ISO 8601 format.
         self.started_at = started_at
-        # 节点轮次序号，从 1 开始
+        # The sequence number of the node turn, starting from 1.
         self.turn_seq = turn_seq
 
     def validate(self):
@@ -274,9 +274,9 @@ class GetWorkItemRunSummariesResponseBodyItemsRunSummaryTools(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # 工具名称
+        # The name of the tool.
         self.name = name
-        # 工具类型，如 SKILL、MCP
+        # The tool type, such as SKILL or MCP.
         self.type = type
 
     def validate(self):

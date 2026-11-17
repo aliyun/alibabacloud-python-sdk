@@ -10,7 +10,7 @@ class GetScheduledTaskExecutionDetailRequest(DaraModel):
         execution_id: str = None,
         tenant_id: str = None,
     ):
-        # The execution record ID.
+        # The ID of the execution record.
         # 
         # This parameter is required.
         self.execution_id = execution_id

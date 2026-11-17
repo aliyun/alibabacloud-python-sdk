@@ -17,17 +17,18 @@ class ListOutputFilesShrinkRequest(DaraModel):
         session_id: str = None,
         shared_only: bool = None,
         tags_shrink: str = None,
+        task_execution_id: str = None,
         tenant_id: str = None,
     ):
-        # The business ID used for exact filtering. The length is 1 to 128 characters. This ID is derived from file registrations or the businessId of associated workflow instances.
+        # The business ID used for exact filtering. The length is 1 to 128 characters. This value is derived from file registration or the businessId of associated workflow instances.
         self.biz_id = biz_id
-        # The ID of the collaboration workspace. The length is 1 to 64 characters. This parameter is optional. If not specified, the personal outputs of the current user are queried. If specified, the real-time permissions of the workspace members and source resources are verified.
+        # The collaboration workspace ID. The length is 1 to 64 characters. If this parameter is not provided, the personal outputs of the current user are queried. If provided, the real-time permissions of workspace members and source resources are verified.
         self.collaboration_group_id = collaboration_group_id
-        # The output item type. Valid values: ppt, html, document, picture, slides, video, audio, email, and others.
+        # The output item type: ppt, html, document, picture, slides, video, audio, email, or others.
         self.item_type = item_type
         # The keyword used to match the output title or detail name.
         self.keyword = keyword
-        # The name of the digital employee (operating object). Filters results by name.
+        # The name of the digital employee. Filters results by name.
         self.operating_object_name = operating_object_name
         # The page number. Pages start from 1. Default value: 1.
         self.page = page
@@ -37,9 +38,11 @@ class ListOutputFilesShrinkRequest(DaraModel):
         self.session_id = session_id
         # Specifies whether to display only the outputs and output details that have sharing enabled.
         self.shared_only = shared_only
-        # The tags used for exact filtering. All specified tags must match simultaneously. You can specify up to 20 tags. Each tag must be a non-empty string of 1 to 128 characters. Tags are derived from file registrations or the variables.tags of associated instances.
+        # The tags used for exact filtering. All specified tags must match simultaneously. You can specify up to 20 tags. Each tag must be a non-empty string of 1 to 128 characters. Tags are derived from file registration or the variables.tags of associated instances.
         self.tags_shrink = tags_shrink
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used. The identity and tenant permissions are determined by the gateway and backend authentication.
+        # 按本次执行 ID 精确筛选产出
+        self.task_execution_id = task_execution_id
+        # The tenant ID. This is a common parameter. If omitted, the default tenant of the caller is used. The identity and tenant permissions are determined by the gateway and backend authentication.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -80,6 +83,9 @@ class ListOutputFilesShrinkRequest(DaraModel):
         if self.tags_shrink is not None:
             result['tags'] = self.tags_shrink
 
+        if self.task_execution_id is not None:
+            result['taskExecutionId'] = self.task_execution_id
+
         if self.tenant_id is not None:
             result['tenantId'] = self.tenant_id
 
@@ -116,6 +122,9 @@ class ListOutputFilesShrinkRequest(DaraModel):
 
         if m.get('tags') is not None:
             self.tags_shrink = m.get('tags')
+
+        if m.get('taskExecutionId') is not None:
+            self.task_execution_id = m.get('taskExecutionId')
 
         if m.get('tenantId') is not None:
             self.tenant_id = m.get('tenantId')

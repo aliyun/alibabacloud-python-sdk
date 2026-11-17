@@ -32,35 +32,37 @@ class CreateWorkflowTemplateDraftVersionResponseBody(DaraModel):
         self.code = code
         # The user ID of the creator.
         self.created_by_user_id = created_by_user_id
-        # The description of the template.
+        # The template description.
         self.description = description
-        # 节点依赖边；每项包含from/to，引用稳定stepId
+        # The node dependency edges. Each item contains a from and to field, referencing stable step IDs.
         self.edges = edges
-        # The current effective version number of the template. An empty value indicates that only a draft exists and the template cannot be used for work items.
+        # The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items.
         self.effective_version = effective_version
         # The creation time in ISO 8601 format.
         self.gmt_create = gmt_create
         # The modification time in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # 可选画布布局，按stepId索引；只影响展示，不决定依赖
+        # The optional canvas layout, indexed by step ID. This field only affects the display and does not determine dependencies.
         self.layout = layout
         # The error description.
         self.message = message
-        # The name of the step. This parameter can be left empty for a draft, but is required when the template is submitted.
+        # The step name. This field can be left empty for a draft and is required upon submission.
         self.name = name
         # The request tracking ID.
         self.request_id = request_id
-        # 模板结构版本，当前为2，与业务版本vN独立
+        # The schema version of the template. The current value is 2, which is independent of the business version vN.
         self.schema_version = schema_version
         # The ordered steps.
         self.steps = steps
-        # The ID of the template.
+        # The template ID.
         self.template_id = template_id
         # The version number to which the returned content belongs.
         self.version = version
-        # The change description of the version. An empty value indicates that no description is provided.
+        # The change description for this version. An empty value indicates that no description is provided.
         self.version_description = version_description
-        # The version status. Valid values: DRAFT (draft) and SUBMITTED (submitted).
+        # The version status. Valid values:
+        # - DRAFT: Draft.
+        # - SUBMITTED: Submitted.
         self.version_status = version_status
 
     def validate(self):
@@ -204,25 +206,27 @@ class CreateWorkflowTemplateDraftVersionResponseBodySteps(DaraModel):
     ):
         # The model tier.
         self.model_mode = model_mode
-        # The name of the step. This parameter can be left empty for a draft, but is required when the template is submitted.
+        # The step name. This field can be left empty for a draft and is required upon submission.
         self.name = name
         # The name of the agent owner.
         self.owner_agent_name = owner_agent_name
-        # The type of the owner. Valid values: MEMBER (manual) and AGENT (agent).
+        # The owner type. Valid values:
+        # - MEMBER: Human.
+        # - AGENT: Agent.
         self.owner_type = owner_type
-        # The user ID of the manual owner.
+        # The user ID of the human owner.
         self.owner_user_id = owner_user_id
-        # 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+        # Specifies whether to manually review deliverables. By default, this feature is disabled. It can only be enabled for digital workers, and review tasks are automatically sent to the owner.
         self.review_output = review_output
-        # The list of user IDs of the reviewers.
+        # The list of reviewer user IDs.
         self.reviewer_user_ids = reviewer_user_ids
-        # The order of the step.
+        # The step order.
         self.sort_order = sort_order
         # The display text derived from ordered segments. Fixed titles are not added, and the text is not stored independently.
         self.specification = specification
-        # The array of ordered segments. This parameter supports text, mention, skill, app, files, and web_search, and retains reference identities and order.
+        # The array of ordered segments. Supported types include text, mention, skill, app, files, and web_search. Reference identities and order are preserved.
         self.specification_json = specification_json
-        # The ID of the step.
+        # The step ID.
         self.step_id = step_id
 
     def validate(self):

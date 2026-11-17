@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import Any
+
 from darabonba.model import DaraModel
 
 class SendAsyncChatMessageShrinkRequest(DaraModel):
@@ -9,12 +11,16 @@ class SendAsyncChatMessageShrinkRequest(DaraModel):
         self,
         content: str = None,
         content_type: str = None,
+        context_items_shrink: str = None,
         digital_employee_name_shrink: str = None,
         direct_chat: bool = None,
+        direct_max_history_rounds: Any = None,
         enable_web_search: bool = None,
         files_shrink: str = None,
+        locale: str = None,
         model: str = None,
         reuse_last_session: bool = None,
+        segments_shrink: str = None,
         session_id: str = None,
         stream: bool = None,
         task_execution_shrink: str = None,
@@ -27,18 +33,26 @@ class SendAsyncChatMessageShrinkRequest(DaraModel):
         self.content = content
         # The message type. Valid values: Text and Markdown.
         self.content_type = content_type
+        # 作为本轮上下文引用的消息或文件条目
+        self.context_items_shrink = context_items_shrink
         # The list of digital employee names. For compatibility with the legacy format, a single string can also be passed.
         self.digital_employee_name_shrink = digital_employee_name_shrink
         # Specifies whether to enable direct connection mode. If set to true, regular scenario routing is skipped and the direct conversation scenario is used.
         self.direct_chat = direct_chat
+        # 本轮携带的最近完整 direct 问答轮数，不含本轮输入。仅 workMode=direct 或 directChat=true 时生效。有效值为 0–100 的 JSON 整数，省略时由后端按 0 处理，不携带历史但仍保存当前轮。null、布尔值、字符串、小数及越界值按原 direct 路径处理，网关保留原始值供后端判定。work/ask 忽略此字段。该参数不限制转换为 work 时的历史范围
+        self.direct_max_history_rounds = direct_max_history_rounds
         # Specifies whether to enable web search. Default value: false. In the task execution scenario where taskExecution is passed, the task configuration prevails.
         self.enable_web_search = enable_web_search
         # The list of file references. Each item is an object, and the fileId parameter is required. The fileId is returned by the uploadChatFile operation.
         self.files_shrink = files_shrink
+        # 本轮语言，可选 zh-CN、en-US，用于接口错误文案并透传给 CodeAgent；省略时沿用当前语言行为，不修改用户设置
+        self.locale = locale
         # The abstract model tier. Valid values: quick, standard, and flagship. If not specified, standard is used for new sessions, and the current tier is retained for existing sessions.
         self.model = model
         # Specifies whether to reuse the most recent session under the digital employee when sessionId is not specified. This is typically used in CLI scenarios. Default value: false, which means a new session is created.
         self.reuse_last_session = reuse_last_session
+        # 消息中的结构化片段，例如会话或对象提及
+        self.segments_shrink = segments_shrink
         # The session ID. If not specified, a new session is created.
         self.session_id = session_id
         # Specifies whether to use streaming generation. This operation always generates backend content in streaming mode and writes it to the message stream. The value of this parameter does not change the response structure.
@@ -64,11 +78,17 @@ class SendAsyncChatMessageShrinkRequest(DaraModel):
         if self.content_type is not None:
             result['contentType'] = self.content_type
 
+        if self.context_items_shrink is not None:
+            result['contextItems'] = self.context_items_shrink
+
         if self.digital_employee_name_shrink is not None:
             result['digitalEmployeeName'] = self.digital_employee_name_shrink
 
         if self.direct_chat is not None:
             result['directChat'] = self.direct_chat
+
+        if self.direct_max_history_rounds is not None:
+            result['directMaxHistoryRounds'] = self.direct_max_history_rounds
 
         if self.enable_web_search is not None:
             result['enableWebSearch'] = self.enable_web_search
@@ -76,11 +96,17 @@ class SendAsyncChatMessageShrinkRequest(DaraModel):
         if self.files_shrink is not None:
             result['files'] = self.files_shrink
 
+        if self.locale is not None:
+            result['locale'] = self.locale
+
         if self.model is not None:
             result['model'] = self.model
 
         if self.reuse_last_session is not None:
             result['reuseLastSession'] = self.reuse_last_session
+
+        if self.segments_shrink is not None:
+            result['segments'] = self.segments_shrink
 
         if self.session_id is not None:
             result['sessionId'] = self.session_id
@@ -107,11 +133,17 @@ class SendAsyncChatMessageShrinkRequest(DaraModel):
         if m.get('contentType') is not None:
             self.content_type = m.get('contentType')
 
+        if m.get('contextItems') is not None:
+            self.context_items_shrink = m.get('contextItems')
+
         if m.get('digitalEmployeeName') is not None:
             self.digital_employee_name_shrink = m.get('digitalEmployeeName')
 
         if m.get('directChat') is not None:
             self.direct_chat = m.get('directChat')
+
+        if m.get('directMaxHistoryRounds') is not None:
+            self.direct_max_history_rounds = m.get('directMaxHistoryRounds')
 
         if m.get('enableWebSearch') is not None:
             self.enable_web_search = m.get('enableWebSearch')
@@ -119,11 +151,17 @@ class SendAsyncChatMessageShrinkRequest(DaraModel):
         if m.get('files') is not None:
             self.files_shrink = m.get('files')
 
+        if m.get('locale') is not None:
+            self.locale = m.get('locale')
+
         if m.get('model') is not None:
             self.model = m.get('model')
 
         if m.get('reuseLastSession') is not None:
             self.reuse_last_session = m.get('reuseLastSession')
+
+        if m.get('segments') is not None:
+            self.segments_shrink = m.get('segments')
 
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')

@@ -15,19 +15,19 @@ class SendWorkItemMessageResponseBody(DaraModel):
         user_message_id: str = None,
         work_item_id: str = None,
     ):
-        # 公共业务状态码；成功为200，失败为后端错误码。
+        # The business status code. A value of 200 indicates success. Other values indicate backend error codes.
         self.code = code
-        # 公共状态说明；成功时为success，失败时描述具体原因。
+        # The error description. This parameter is empty if the request is successful.
         self.message = message
-        # 本轮助手消息ID；回复在后台异步生成，取得该ID不表示AI已开始或已完成回复。
+        # The ID of the assistant message. The reply is generated asynchronously in the background.
         self.message_id = message_id
-        # 请求追踪ID，可用于定位本次调用及排查失败原因。
+        # The request ID.
         self.request_id = request_id
-        # 本次消息发送到的已有话题会话ID，不是新建会话ID。
+        # The ID of the existing topic session.
         self.session_id = session_id
-        # 本次提交的用户消息ID。
+        # The ID of the user message.
         self.user_message_id = user_message_id
-        # 请求传入的工作项ID；仅传conversationId时返回legacy-topic:<conversationId>形式的兼容ID。
+        # The work item ID in the request. If only conversationId is specified, a compatible ID in the legacy-topic:<conversationId> format is returned.
         self.work_item_id = work_item_id
 
     def validate(self):

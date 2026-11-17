@@ -11,7 +11,7 @@ class GetSourceRequest(DaraModel):
         source_id: str = None,
         tenant_id: str = None,
     ):
-        # Specifies whether to return large detail fields (settings / notes / structuredTables / unstructuredDocs). Default value: False. When set to False, only metadata is returned.
+        # Specifies whether to return large detail fields (settings, notes, structuredTables, and unstructuredDocs). Default value: false. Only metadata is returned.
         self.include_details = include_details
         # The primary ID of the resource.
         # 

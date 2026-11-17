@@ -34,7 +34,7 @@ class SetWorkflowTemplateEffectiveVersionResponseBody(DaraModel):
         self.created_by_user_id = created_by_user_id
         # The template description.
         self.description = description
-        # 节点依赖边；每项包含from/to，引用稳定stepId
+        # The node dependency edges. Each item contains a from and to field, referencing a stable stepId.
         self.edges = edges
         # The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items.
         self.effective_version = effective_version
@@ -42,27 +42,25 @@ class SetWorkflowTemplateEffectiveVersionResponseBody(DaraModel):
         self.gmt_create = gmt_create
         # The modification time in ISO 8601 format.
         self.gmt_modified = gmt_modified
-        # 可选画布布局，按stepId索引；只影响展示，不决定依赖
+        # The optional canvas layout, indexed by stepId. This only affects the display and does not determine dependencies.
         self.layout = layout
         # The error description.
         self.message = message
-        # The step name. This field can be empty for drafts but is required upon submission.
+        # The step name. This can be empty for drafts but is required upon submission.
         self.name = name
         # The request tracking ID.
         self.request_id = request_id
-        # 模板结构版本，当前为2，与业务版本vN独立
+        # The template structure version. The current value is 2, which is independent of the business version vN.
         self.schema_version = schema_version
         # The ordered steps.
         self.steps = steps
         # The template ID.
         self.template_id = template_id
-        # The version number of the returned content.
+        # The version number to which the returned content belongs.
         self.version = version
         # The change description for this version. An empty value indicates that no description is provided.
         self.version_description = version_description
-        # The version status. Valid values:
-        # - DRAFT: Draft.
-        # - SUBMITTED: Submitted.
+        # The version status. Valid values: DRAFT (draft) and SUBMITTED (submitted).
         self.version_status = version_status
 
     def validate(self):
@@ -206,25 +204,23 @@ class SetWorkflowTemplateEffectiveVersionResponseBodySteps(DaraModel):
     ):
         # The model tier.
         self.model_mode = model_mode
-        # The step name. This field can be empty for drafts but is required upon submission.
+        # The step name. This can be empty for drafts but is required upon submission.
         self.name = name
         # The name of the agent owner.
         self.owner_agent_name = owner_agent_name
-        # The owner type. Valid values:
-        # - MEMBER: Human.
-        # - AGENT: Agent.
+        # The owner type. Valid values: MEMBER (human) and AGENT (agent).
         self.owner_type = owner_type
         # The user ID of the human owner.
         self.owner_user_id = owner_user_id
-        # 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+        # Specifies whether to manually review deliverables. This is disabled by default and can only be enabled for digital employees. Review tasks are automatically sent to the owner.
         self.review_output = review_output
-        # The list of user IDs of the reviewers.
+        # The list of reviewer user IDs.
         self.reviewer_user_ids = reviewer_user_ids
         # The step order.
         self.sort_order = sort_order
-        # The display text derived from ordered segments. Fixed titles are not added, and the text is not stored independently.
+        # The display text derived from ordered segments. Fixed titles are not added, and it is not stored independently.
         self.specification = specification
-        # The array of ordered segments. Supports text, mention, skill, app, files, and web_search. Retains reference identities and order.
+        # The array of ordered segments. Supports text, mention, skill, app, files, and web_search. Preserves reference identities and order.
         self.specification_json = specification_json
         # The step ID.
         self.step_id = step_id

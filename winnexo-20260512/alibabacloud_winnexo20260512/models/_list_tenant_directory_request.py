@@ -15,21 +15,21 @@ class ListTenantDirectoryRequest(DaraModel):
         source_types: str = None,
         tenant_id: str = None,
     ):
-        # The folder ID.
+        # The directory ID.
         self.directory_id = directory_id
         # The current page number.
         self.page = page
         # The number of entries per page. Default value: 100. Maximum value: 500.
         self.page_size = page_size
-        # The field by which the results are sorted. Valid values:
+        # The field by which to sort the returned results. Valid values:
         # 
-        # - event_time: the event creation time.
-        # - event_execute_start_time: the event execution time.
-        # - event_execute_finish_time: the event completion time.
+        # - event_time: the time when the event was created.
+        # - event_execute_start_time: the time when the event execution started.
+        # - event_execute_finish_time: the time when the event execution finished.
         self.sort_field = sort_field
-        # The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC and DESC (case-insensitive).
+        # The sort order. This parameter takes effect only when the sort field is specified. Valid values: ASC and DESC (case-insensitive).
         self.sort_order = sort_order
-        # The list of source types.
+        # The list of service source types.
         self.source_types = source_types
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id

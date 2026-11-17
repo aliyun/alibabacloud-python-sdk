@@ -40,6 +40,9 @@ from ._clear_operating_object_favorites_response import ClearOperatingObjectFavo
 from ._close_workflow_todos_request import CloseWorkflowTodosRequest
 from ._close_workflow_todos_response_body import CloseWorkflowTodosResponseBody
 from ._close_workflow_todos_response import CloseWorkflowTodosResponse
+from ._convert_direct_conversation_to_work_request import ConvertDirectConversationToWorkRequest
+from ._convert_direct_conversation_to_work_response_body import ConvertDirectConversationToWorkResponseBody
+from ._convert_direct_conversation_to_work_response import ConvertDirectConversationToWorkResponse
 from ._count_todos_request import CountTodosRequest
 from ._count_todos_response_body import CountTodosResponseBody
 from ._count_todos_response import CountTodosResponse
@@ -273,6 +276,9 @@ from ._get_memory_detail_response import GetMemoryDetailResponse
 from ._get_node_detail_request import GetNodeDetailRequest
 from ._get_node_detail_response_body import GetNodeDetailResponseBody
 from ._get_node_detail_response import GetNodeDetailResponse
+from ._get_scheduled_task_conversation_records_request import GetScheduledTaskConversationRecordsRequest
+from ._get_scheduled_task_conversation_records_response_body import GetScheduledTaskConversationRecordsResponseBody
+from ._get_scheduled_task_conversation_records_response import GetScheduledTaskConversationRecordsResponse
 from ._get_scheduled_task_execution_detail_request import GetScheduledTaskExecutionDetailRequest
 from ._get_scheduled_task_execution_detail_response_body import GetScheduledTaskExecutionDetailResponseBody
 from ._get_scheduled_task_execution_detail_response import GetScheduledTaskExecutionDetailResponse
@@ -444,6 +450,10 @@ from ._list_skills_request import ListSkillsRequest
 from ._list_skills_shrink_request import ListSkillsShrinkRequest
 from ._list_skills_response_body import ListSkillsResponseBody
 from ._list_skills_response import ListSkillsResponse
+from ._list_source_usage_statistics_request import ListSourceUsageStatisticsRequest
+from ._list_source_usage_statistics_shrink_request import ListSourceUsageStatisticsShrinkRequest
+from ._list_source_usage_statistics_response_body import ListSourceUsageStatisticsResponseBody
+from ._list_source_usage_statistics_response import ListSourceUsageStatisticsResponse
 from ._list_tenant_directory_request import ListTenantDirectoryRequest
 from ._list_tenant_directory_response_body import ListTenantDirectoryResponseBody
 from ._list_tenant_directory_response import ListTenantDirectoryResponse
@@ -523,6 +533,14 @@ from ._query_primary_object_data_response import QueryPrimaryObjectDataResponse
 from ._query_semantic_knowledge_request import QuerySemanticKnowledgeRequest
 from ._query_semantic_knowledge_response_body import QuerySemanticKnowledgeResponseBody
 from ._query_semantic_knowledge_response import QuerySemanticKnowledgeResponse
+from ._query_source_usage_summary_request import QuerySourceUsageSummaryRequest
+from ._query_source_usage_summary_shrink_request import QuerySourceUsageSummaryShrinkRequest
+from ._query_source_usage_summary_response_body import QuerySourceUsageSummaryResponseBody
+from ._query_source_usage_summary_response import QuerySourceUsageSummaryResponse
+from ._query_source_usage_trend_request import QuerySourceUsageTrendRequest
+from ._query_source_usage_trend_shrink_request import QuerySourceUsageTrendShrinkRequest
+from ._query_source_usage_trend_response_body import QuerySourceUsageTrendResponseBody
+from ._query_source_usage_trend_response import QuerySourceUsageTrendResponse
 from ._query_sync_result_request import QuerySyncResultRequest
 from ._query_sync_result_response_body import QuerySyncResultResponseBody
 from ._query_sync_result_response import QuerySyncResultResponse
@@ -750,6 +768,9 @@ from ._upload_chat_file_request import UploadChatFileRequest
 from ._upload_chat_file_advance_request import UploadChatFileAdvanceRequest
 from ._upload_chat_file_response_body import UploadChatFileResponseBody
 from ._upload_chat_file_response import UploadChatFileResponse
+from ._upload_chat_file_by_base_64request import UploadChatFileByBase64Request
+from ._upload_chat_file_by_base_64response_body import UploadChatFileByBase64ResponseBody
+from ._upload_chat_file_by_base_64response import UploadChatFileByBase64Response
 from ._batch_operate_work_items_response_body import BatchOperateWorkItemsResponseBodyItems
 from ._batch_remove_operating_object_favorites_response_body import BatchRemoveOperatingObjectFavoritesResponseBodyResults
 from ._check_app_resource_permissions_batch_request import CheckAppResourcePermissionsBatchRequestChecks
@@ -807,6 +828,8 @@ from ._get_node_detail_response_body import GetNodeDetailResponseBodyAgentWorkPr
 from ._get_node_detail_response_body import GetNodeDetailResponseBodyAgentWorkProcess
 from ._get_node_detail_response_body import GetNodeDetailResponseBodyArtifacts
 from ._get_node_detail_response_body import GetNodeDetailResponseBodyRunLog
+from ._get_scheduled_task_conversation_records_response_body import GetScheduledTaskConversationRecordsResponseBodyTasksConversations
+from ._get_scheduled_task_conversation_records_response_body import GetScheduledTaskConversationRecordsResponseBodyTasks
 from ._get_scheduled_task_execution_detail_response_body import GetScheduledTaskExecutionDetailResponseBodyFiles
 from ._get_scheduled_task_execution_detail_response_body import GetScheduledTaskExecutionDetailResponseBodyMetadata
 from ._get_scheduled_task_execution_detail_response_body import GetScheduledTaskExecutionDetailResponseBodyTriggerInfo
@@ -873,6 +896,7 @@ from ._list_personal_directory_contents_response_body import ListPersonalDirecto
 from ._list_roles_response_body import ListRolesResponseBodyItems
 from ._list_scheduled_tasks_response_body import ListScheduledTasksResponseBodyItems
 from ._list_skills_response_body import ListSkillsResponseBodyItems
+from ._list_source_usage_statistics_response_body import ListSourceUsageStatisticsResponseBodyItems
 from ._list_tenant_directory_response_body import ListTenantDirectoryResponseBodyItems
 from ._list_todos_response_body import ListTodosResponseBodyItems
 from ._list_user_visible_knowledge_base_contents_response_body import ListUserVisibleKnowledgeBaseContentsResponseBodyItemsShareInfos
@@ -893,6 +917,7 @@ from ._list_workflow_instances_response_body import ListWorkflowInstancesRespons
 from ._list_workflow_template_versions_response_body import ListWorkflowTemplateVersionsResponseBodyItems
 from ._list_workflow_templates_response_body import ListWorkflowTemplatesResponseBodyItems
 from ._pause_work_item_response_body import PauseWorkItemResponseBodyAttachments
+from ._query_source_usage_trend_response_body import QuerySourceUsageTrendResponseBodyTrend
 from ._query_sync_result_response_body import QuerySyncResultResponseBodyDeptStats
 from ._query_sync_result_response_body import QuerySyncResultResponseBodyMemberStats
 from ._query_work_item_feed_response_body import QueryWorkItemFeedResponseBodyEntriesItemAttachments
@@ -918,9 +943,15 @@ from ._save_group_output_file_to_group_resource_response_body import SaveGroupOu
 from ._save_group_output_file_to_personal_resource_response_body import SaveGroupOutputFileToPersonalResourceResponseBodyResults
 from ._save_output_file_to_resource_response_body import SaveOutputFileToResourceResponseBodyResults
 from ._search_ali_ding_group_chats_response_body import SearchAliDingGroupChatsResponseBodyItems
+from ._send_async_chat_message_request import SendAsyncChatMessageRequestContextItemsAnnotationFiles
+from ._send_async_chat_message_request import SendAsyncChatMessageRequestContextItems
 from ._send_async_chat_message_request import SendAsyncChatMessageRequestFiles
+from ._send_async_chat_message_request import SendAsyncChatMessageRequestSegments
 from ._send_async_chat_message_request import SendAsyncChatMessageRequestTaskExecution
+from ._send_chat_message_request import SendChatMessageRequestContextItemsAnnotationFiles
+from ._send_chat_message_request import SendChatMessageRequestContextItems
 from ._send_chat_message_request import SendChatMessageRequestFiles
+from ._send_chat_message_request import SendChatMessageRequestSegments
 from ._send_chat_message_request import SendChatMessageRequestTaskExecution
 from ._set_work_item_pinned_response_body import SetWorkItemPinnedResponseBodyAttachments
 from ._set_workflow_template_effective_version_response_body import SetWorkflowTemplateEffectiveVersionResponseBodySteps
@@ -988,6 +1019,9 @@ __all__ = [
     CloseWorkflowTodosRequest,
     CloseWorkflowTodosResponseBody,
     CloseWorkflowTodosResponse,
+    ConvertDirectConversationToWorkRequest,
+    ConvertDirectConversationToWorkResponseBody,
+    ConvertDirectConversationToWorkResponse,
     CountTodosRequest,
     CountTodosResponseBody,
     CountTodosResponse,
@@ -1221,6 +1255,9 @@ __all__ = [
     GetNodeDetailRequest,
     GetNodeDetailResponseBody,
     GetNodeDetailResponse,
+    GetScheduledTaskConversationRecordsRequest,
+    GetScheduledTaskConversationRecordsResponseBody,
+    GetScheduledTaskConversationRecordsResponse,
     GetScheduledTaskExecutionDetailRequest,
     GetScheduledTaskExecutionDetailResponseBody,
     GetScheduledTaskExecutionDetailResponse,
@@ -1392,6 +1429,10 @@ __all__ = [
     ListSkillsShrinkRequest,
     ListSkillsResponseBody,
     ListSkillsResponse,
+    ListSourceUsageStatisticsRequest,
+    ListSourceUsageStatisticsShrinkRequest,
+    ListSourceUsageStatisticsResponseBody,
+    ListSourceUsageStatisticsResponse,
     ListTenantDirectoryRequest,
     ListTenantDirectoryResponseBody,
     ListTenantDirectoryResponse,
@@ -1471,6 +1512,14 @@ __all__ = [
     QuerySemanticKnowledgeRequest,
     QuerySemanticKnowledgeResponseBody,
     QuerySemanticKnowledgeResponse,
+    QuerySourceUsageSummaryRequest,
+    QuerySourceUsageSummaryShrinkRequest,
+    QuerySourceUsageSummaryResponseBody,
+    QuerySourceUsageSummaryResponse,
+    QuerySourceUsageTrendRequest,
+    QuerySourceUsageTrendShrinkRequest,
+    QuerySourceUsageTrendResponseBody,
+    QuerySourceUsageTrendResponse,
     QuerySyncResultRequest,
     QuerySyncResultResponseBody,
     QuerySyncResultResponse,
@@ -1698,6 +1747,9 @@ __all__ = [
     UploadChatFileAdvanceRequest,
     UploadChatFileResponseBody,
     UploadChatFileResponse,
+    UploadChatFileByBase64Request,
+    UploadChatFileByBase64ResponseBody,
+    UploadChatFileByBase64Response,
     BatchOperateWorkItemsResponseBodyItems,
     BatchRemoveOperatingObjectFavoritesResponseBodyResults,
     CheckAppResourcePermissionsBatchRequestChecks,
@@ -1755,6 +1807,8 @@ __all__ = [
     GetNodeDetailResponseBodyAgentWorkProcess,
     GetNodeDetailResponseBodyArtifacts,
     GetNodeDetailResponseBodyRunLog,
+    GetScheduledTaskConversationRecordsResponseBodyTasksConversations,
+    GetScheduledTaskConversationRecordsResponseBodyTasks,
     GetScheduledTaskExecutionDetailResponseBodyFiles,
     GetScheduledTaskExecutionDetailResponseBodyMetadata,
     GetScheduledTaskExecutionDetailResponseBodyTriggerInfo,
@@ -1821,6 +1875,7 @@ __all__ = [
     ListRolesResponseBodyItems,
     ListScheduledTasksResponseBodyItems,
     ListSkillsResponseBodyItems,
+    ListSourceUsageStatisticsResponseBodyItems,
     ListTenantDirectoryResponseBodyItems,
     ListTodosResponseBodyItems,
     ListUserVisibleKnowledgeBaseContentsResponseBodyItemsShareInfos,
@@ -1841,6 +1896,7 @@ __all__ = [
     ListWorkflowTemplateVersionsResponseBodyItems,
     ListWorkflowTemplatesResponseBodyItems,
     PauseWorkItemResponseBodyAttachments,
+    QuerySourceUsageTrendResponseBodyTrend,
     QuerySyncResultResponseBodyDeptStats,
     QuerySyncResultResponseBodyMemberStats,
     QueryWorkItemFeedResponseBodyEntriesItemAttachments,
@@ -1866,9 +1922,15 @@ __all__ = [
     SaveGroupOutputFileToPersonalResourceResponseBodyResults,
     SaveOutputFileToResourceResponseBodyResults,
     SearchAliDingGroupChatsResponseBodyItems,
+    SendAsyncChatMessageRequestContextItemsAnnotationFiles,
+    SendAsyncChatMessageRequestContextItems,
     SendAsyncChatMessageRequestFiles,
+    SendAsyncChatMessageRequestSegments,
     SendAsyncChatMessageRequestTaskExecution,
+    SendChatMessageRequestContextItemsAnnotationFiles,
+    SendChatMessageRequestContextItems,
     SendChatMessageRequestFiles,
+    SendChatMessageRequestSegments,
     SendChatMessageRequestTaskExecution,
     SetWorkItemPinnedResponseBodyAttachments,
     SetWorkflowTemplateEffectiveVersionResponseBodySteps,

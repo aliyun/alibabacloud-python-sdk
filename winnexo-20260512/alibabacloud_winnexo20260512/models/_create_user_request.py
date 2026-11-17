@@ -16,21 +16,21 @@ class CreateUserRequest(DaraModel):
         tenant_id: str = None,
         wn_account_id: str = None,
     ):
-        # The cluster name.
+        # The display name.
         # 
         # This parameter is required.
         self.display_name = display_name
-        # The base64-encoded password ciphertext encrypted by using RSA-OAEP-SHA256 (required).
+        # The Base64-encoded password ciphertext encrypted by using RSA-OAEP-SHA256. This parameter is required and cannot be empty.
         # 
         # This parameter is required.
         self.password_encrypted = password_encrypted
-        # The list of new system role codes (full replacement, must contain at least one role). Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
+        # The list of new system role codes. This list fully replaces the existing roles and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
         self.role_codes = role_codes
-        # The SSO provider type. This parameter is optional if the tenant has only one external logon method. This parameter is required if the tenant has multiple external logon methods. Currently, createUser supports BUILD_IN and AGENT_ONE.
+        # The type of the SSO provider. This parameter is optional if the tenant has only one external logon method, and is required if the tenant has multiple external logon methods. Currently, createUser supports BUILD_IN and AGENT_ONE.
         self.sso_provider = sso_provider
-        # The ID of the tenant on which the operation takes effect.
+        # The ID of the effective tenant.
         self.tenant_id = tenant_id
-        # The WINNEXO logon account (unique identifier, required).
+        # The WINNEXO logon account. This is a unique identifier and cannot be empty.
         # 
         # This parameter is required.
         self.wn_account_id = wn_account_id

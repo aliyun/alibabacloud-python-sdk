@@ -16,7 +16,7 @@ class CreateWorkflowTemplateRequest(DaraModel):
     ):
         # The write action. Valid values:
         # - SAVE: Saves the template as a draft. The draft does not take effect. Node names and assignees can be left empty.
-        # - SUBMIT: Requires complete nodes. The template is saved and submitted as the only effective version.
+        # - SUBMIT: Requires complete nodes, and saves and submits the template as the only effective version.
         # Default value: SUBMIT.
         self.action = action
         # The ID of the collaboration workspace.
@@ -27,7 +27,7 @@ class CreateWorkflowTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.definition = definition
-        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

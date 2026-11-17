@@ -15,17 +15,17 @@ class CheckAppResourcePermissionResponseBody(DaraModel):
         resource_key: str = None,
         resource_type: str = None,
     ):
-        # Indicates whether the target user has the permission on the resource.
+        # Indicates whether the target user has the specified permission on the resource.
         self.allowed = allowed
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The error description. This field is empty if the request is successful.
+        # The error description. This field is empty when the request is successful.
         self.message = message
         # The target permission.
         self.permission = permission
-        # The request trace ID.
+        # The request ID.
         self.request_id = request_id
-        # The dot-separated resource key. The first segment is the APP application key.
+        # The dot-separated resource key. The first segment is the application key.
         self.resource_key = resource_key
         # The resource type. Set the value to APP_RESOURCE.
         self.resource_type = resource_type

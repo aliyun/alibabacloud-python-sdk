@@ -20,23 +20,23 @@ class ListUserVisibleKnowledgeBaseContentsRequest(DaraModel):
         # 
         # This parameter is required.
         self.directory_id = directory_id
-        # The search keyword. Supports fuzzy match on version names.
+        # The search keyword. Fuzzy search on version names is supported.
         self.keyword = keyword
         # The page number.
         self.page = page
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # The field by which the results are sorted. Valid values:
+        # The field by which to sort the returned results. Valid values:
         # 
-        # - event_time: the event creation time.
-        # - event_execute_start_time: the event execution time.
-        # - event_execute_finish_time: the event completion time.
+        # - event_time: the event creation time
+        # - event_execute_start_time: the event execution start time
+        # - event_execute_finish_time: the event execution completion time
         self.sort_field = sort_field
-        # The sort order. This parameter takes effect when sortBy is specified. Valid values: ASC, DESC (case-insensitive).
+        # Specifies the sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC and DESC. The values are case-insensitive.
         self.sort_order = sort_order
         # The list of service source types.
         self.source_types = source_types
-        # The tenant ID. This is a common parameter. Pass it explicitly through --tenant-id in winnexo-cli.
+        # The tenant ID. This is a common parameter. For winnexo-cli, it is explicitly passed by using the --tenant-id option.
         self.tenant_id = tenant_id
 
     def validate(self):

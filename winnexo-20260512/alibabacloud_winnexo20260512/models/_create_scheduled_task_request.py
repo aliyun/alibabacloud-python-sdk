@@ -16,6 +16,7 @@ class CreateScheduledTaskRequest(DaraModel):
         is_open: bool = None,
         model: str = None,
         name: str = None,
+        output_mode: str = None,
         segments: List[main_models.CreateScheduledTaskRequestSegments] = None,
         task_detail: main_models.CreateScheduledTaskRequestTaskDetail = None,
         tenant_id: str = None,
@@ -23,40 +24,33 @@ class CreateScheduledTaskRequest(DaraModel):
         visibility: str = None,
         visible_member_user_ids: List[str] = None,
     ):
-        # The ID of the collaboration group (such as cg_101). If specified, a group space task is created (the caller must be a valid group member). If empty, a personal task is created.
+        # The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is passed, a group space task is created, and the caller must be a valid group member. If this parameter is empty, a personal task is created.
         self.collaboration_group_id = collaboration_group_id
         # The description of the to-do card type.
         self.description = description
-        # The name of the current effective digital employee. This parameter is empty if not configured.
+        # The name of the current effective digital employee. This parameter is empty if it is not configured.
         self.digital_employee_name = digital_employee_name
-        # Specifies whether public access is enabled.
+        # Specifies whether public access is allowed.
         self.is_open = is_open
-        # The large model used by the assistant. An empty value indicates that DingTalk automatically selects the model.
+        # The large language model used by the assistant. The default value is empty, which indicates that DingTalk automatically selects the model.
         self.model = model
         # The name.
         # 
         # This parameter is required.
         self.name = name
+        # 输出会话模式，默认 NEW_CONVERSATION
+        self.output_mode = output_mode
         # The site ID.
         self.segments = segments
         # The task details.
         self.task_detail = task_detail
-        # The ID of the effective tenant.
+        # The effective tenant ID.
         self.tenant_id = tenant_id
-        # The trigger configuration. The configuration varies depending on the trigger type. For the specific format, refer to the following data structures:
-        # 
-        #   - OSS trigger: See [OSSTriggerConfig](https://help.aliyun.com/document_detail/415697.html).
-        #   - Simple Log Service trigger: See [LogTriggerConfig](https://help.aliyun.com/document_detail/415694.html).
-        #   - Time trigger: See [TimeTriggerConfig](https://help.aliyun.com/document_detail/415712.html).
-        #   - HTTP trigger: See [HTTPTriggerConfig](https://help.aliyun.com/document_detail/415685.html).
-        #   - Tablestore trigger: You only need to specify the complete **SourceArn** parameter. No additional configuration is required. Set the value to an empty object {}.
-        #   - CDN event trigger: See [CDNEventsTriggerConfig](https://help.aliyun.com/document_detail/415674.html).
-        #   - MNS topic trigger: See [MnsTopicTriggerConfig](https://help.aliyun.com/document_detail/415695.html).
-        #   - EventBridge trigger: See [EventBridgeTriggerConfig](https://help.aliyun.com/document_detail/2508622.html).
+        # The trigger configuration of the scheduled task. The triggerMode parameter supports manual (manual trigger) and scheduled (scheduled trigger). If scheduled is used, the cron parameter must be specified. The timezone and language parameters are injected by the server, and the client does not need to pass them. The pushConfig parameter is the list of task push channels. If the list is empty or no channel is enabled, no push is performed.
         self.trigger_config = trigger_config
-        # The visibility scope of the group task. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). Default value for group tasks: PRIVATE. This parameter is ignored for personal tasks.
+        # The visibility scope of the group task. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaboration members), and PUBLIC (visible to all group members). If this parameter is not passed for a group task, the default value is PRIVATE. This field is ignored for personal tasks.
         self.visibility = visibility
-        # The list of collaborator user IDs. This parameter takes effect only when visibility is set to COLLABORATIVE. It is ignored for other visibility levels. A maximum of 1000 IDs are supported. The task creator and group creator do not need to be included (covered by the authentication layer). This parameter is ignored for personal tasks.
+        # The list of user IDs of collaboration members. This parameter takes effect only when visibility is set to COLLABORATIVE and is ignored for other values. A maximum of 1,000 user IDs can be specified. You do not need to pass the IDs of the task creator and group creator because they are covered by the authentication layer. This field is ignored for personal tasks.
         self.visible_member_user_ids = visible_member_user_ids
 
     def validate(self):
@@ -97,6 +91,9 @@ class CreateScheduledTaskRequest(DaraModel):
 
         if self.name is not None:
             result['name'] = self.name
+
+        if self.output_mode is not None:
+            result['outputMode'] = self.output_mode
 
         result['segments'] = []
         if self.segments is not None:
@@ -143,6 +140,9 @@ class CreateScheduledTaskRequest(DaraModel):
         if m.get('name') is not None:
             self.name = m.get('name')
 
+        if m.get('outputMode') is not None:
+            self.output_mode = m.get('outputMode')
+
         self.segments = []
         if m.get('segments') is not None:
             for k1 in m.get('segments'):
@@ -177,18 +177,18 @@ class CreateScheduledTaskRequestTriggerConfig(DaraModel):
         timezone: str = None,
         trigger_mode: str = None,
     ):
-        # The periodic training information in cron syntax (Minutes Hours DayofMonth Month DayofWeek). An empty value indicates that periodic training is not performed (default). In DayofWeek, 0 indicates Sunday.
+        # The periodic training information. The cron syntax is used (Minutes Hours DayofMonth Month DayofWeek). If this parameter is empty, periodic training is not performed, which is the default value. In DayofWeek, 0 indicates Sunday.
         self.cron = cron
         # The language. Valid values:
         # 
-        # - zh_CN: Chinese (default)
-        # - en_US: English
+        # - zh_CN: Chinese. This is the default value.
+        # - en_US: English.
         self.language = language
-        # The list of task push channels. No push is performed if the list is empty or no channel is enabled.
+        # The list of task push channels. If the list is empty or no channel is enabled, no push is performed.
         self.push_config = push_config
         # The time zone.
         self.timezone = timezone
-        # The trigger mode.
+        # - Trigger mode
         #  
         #   1: Manual trigger
         #    
@@ -198,7 +198,7 @@ class CreateScheduledTaskRequestTriggerConfig(DaraModel):
         #  
         #   5: Pipeline trigger
         # 
-        #   6: WEBHOOK trigger
+        #   6: Webhook trigger
         self.trigger_mode = trigger_mode
 
     def validate(self):
@@ -271,22 +271,22 @@ class CreateScheduledTaskRequestTriggerConfigPushConfig(DaraModel):
         # - **hdm_alarm_sms_and_email**: SMS and email.
         # - **hdm_alarm_sms,dingtalk**: SMS and DingTalk chatbot.
         self.channel_type = channel_type
-        # The push content scope. Default value: all_replies.
+        # The scope of the push content. Default value: all_replies.
         self.content_scope = content_scope
         # The push method. Default value: channel_bot.
         self.delivery_method = delivery_method
         # Specifies whether the credential is enabled. Valid values:
         # 
-        # - true: Enabled.
+        # - true: Enabled. 
         # - false: Disabled.
         self.enabled = enabled
-        # The file format. Valid values: Excel and CSV.
+        # The file format, such as Excel or CSV.
         self.file_format = file_format
-        # The digital employee name (operating object name, optional).
+        # The name of the digital employee (the name of the operating object, optional).
         self.operating_object_name = operating_object_name
-        # The file receiver type. Valid values:
+        # The type of the file recipient. Valid values:
         # 
-        # - 0: One-on-one chat.
+        # - 0: Private chat.
         # 
         # - 1: Group chat.
         # 
@@ -359,11 +359,11 @@ class CreateScheduledTaskRequestTaskDetail(DaraModel):
         related_skills: List[main_models.CreateScheduledTaskRequestTaskDetailRelatedSkills] = None,
         task_understand: str = None,
     ):
-        # The related objects.
+        # The associated objects.
         self.related_objects = related_objects
-        # The related semantics.
+        # The associated semantics.
         self.related_semantics = related_semantics
-        # The related skills.
+        # The associated skills.
         self.related_skills = related_skills
         # The task understanding description polished by the LLM.
         self.task_understand = task_understand
@@ -538,13 +538,13 @@ class CreateScheduledTaskRequestTaskDetailRelatedObjects(DaraModel):
         self.name = name
         # The object ID. Pass the project task ID.
         # 
-        # - For internal enterprise applications, use the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) operation.
+        # - For internal enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) API operation to obtain the taskId.
         # 
-        # - For third-party enterprise applications, use the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) operation.
+        # - For third-party enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) API operation to obtain the taskId.
         self.object_id = object_id
         # The relationship type. Valid values:
-        # - crm_customer: enterprise customer.
-        # - crm_customer_personal: individual customer.
+        # - crm_customer: Enterprise customer.
+        # - crm_customer_personal: Individual customer.
         self.object_type = object_type
 
     def validate(self):
@@ -598,17 +598,17 @@ class CreateScheduledTaskRequestSegments(DaraModel):
     ):
         # The card callback content.
         self.content = content
-        # Specifies whether to enable this feature.
+        # Specifies whether the feature is enabled.
         self.enabled = enabled
         # The name.
         self.name = name
-        # The ID of the recommended item, which can be a **feedId** or a micro-application ID.
+        # The ID of the recommended item, which can be a **feedId** or a mini-app ID.
         self.object_id = object_id
-        # The customer type to save.
+        # The saved customer type.
         self.object_type = object_type
         # The skill code. This parameter has a value when type is set to skill.
         self.skill_code = skill_code
-        # The billing type. Only fixed is supported.
+        # The billing type. Currently, only fixed is supported.
         self.type = type
 
     def validate(self):
@@ -680,21 +680,21 @@ class CreateScheduledTaskRequestDescription(DaraModel):
     ):
         # The streaming output message.
         self.content = content
-        # Specifies whether the throttling rule is enabled. A value of true indicates enabled, and a value of false indicates disabled.
+        # Specifies whether the throttling rule is enabled. A value of true indicates that the rule is enabled, and a value of false indicates that the rule is disabled.
         self.enabled = enabled
         # The name.
         self.name = name
         # The object ID. Pass the project task ID.
         # 
-        # - For internal enterprise applications, use the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) operation.
+        # - For internal enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/orgapp-server/create-a-project-task) API operation to obtain the taskId.
         # 
-        # - For third-party enterprise applications, use the taskId obtained by calling the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) operation.
+        # - For third-party enterprise applications, call the [Create a project task](https://open.dingtalk.com/document/isvapp-server/create-a-project-task) API operation to obtain the taskId.
         self.object_id = object_id
-        # The object type. Fixed value: task, indicating a project task.
+        # The object type. Set the value to task, which indicates a project task.
         self.object_type = object_type
         # The skill code. This parameter has a value when type is set to skill.
         self.skill_code = skill_code
-        # The HTTP API type. Valid values: Http (standard HTTP API), Rest (RESTful API), WebSocket (WebSocket API), HttpIngress (HTTP API accessed through Ingress), LLM (large language model API), and Agent (Agent proxy API).
+        # The HTTP API type. Valid values: Http (standard HTTP API), Rest (RESTful API), WebSocket (WebSocket API), HttpIngress (HTTP API accessed through Ingress), LLM (large language model API), and Agent (agent API).
         self.type = type
 
     def validate(self):

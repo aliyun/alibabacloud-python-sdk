@@ -12,13 +12,15 @@ class ReplaceManualMemoryRequest(DaraModel):
         owner_type: str = None,
         tenant_id: str = None,
     ):
-        # The complete content of profile.md. An empty string indicates that the memory is cleared. This field is required, but an empty value is allowed.
+        # The complete content of profile.md. An empty string indicates that the memory is cleared. This field must be provided, but an empty value is allowed.
         # 
         # This parameter is required.
         self.content = content
         # The workspace ID. This parameter is required when ownerType is set to group.
         self.group_id = group_id
-        # The owner type. A value of user indicates the personal memory of the authenticated user. A value of group indicates the memory of a specified workspace.
+        # The owner type. Valid values:
+        # - user: the personal memory of the authenticated user.
+        # - group: the memory of the specified workspace.
         self.owner_type = owner_type
         # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id

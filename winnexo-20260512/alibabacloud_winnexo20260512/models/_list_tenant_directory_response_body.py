@@ -22,7 +22,7 @@ class ListTenantDirectoryResponseBody(DaraModel):
         self.code = code
         # The file information.
         self.items = items
-        # The description of the status code.
+        # The status code description.
         self.message = message
         # The page number. Default value: 1. Minimum value: 1. Maximum value: 200.
         self.page = page
@@ -120,23 +120,23 @@ class ListTenantDirectoryResponseBodyItems(DaraModel):
         self.description = description
         # The creation time.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The last update time.
         self.gmt_modified = gmt_modified
-        # The signing record ID.
+        # The ID of the signing record.
         self.item_id = item_id
-        # The data type (group, user, or role).
+        # The data type, such as group, user, or role.
         self.item_type = item_type
         # The name.
         self.name = name
         # The object bindings.
         self.object_bindings = object_bindings
-        # The number of resources with the FAILED status. This field is returned only when the top-level directory list of the knowledge base is queried.
+        # The number of resources in the FAILED state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
         self.source_failed_count = source_failed_count
-        # The number of resources with the READY status. This field is returned only when the top-level directory list of the knowledge base is queried.
+        # The number of resources in the READY state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
         self.source_ready_count = source_ready_count
-        # The resource status. This field has a value only when itemType is set to resource.
+        # The resource status. This parameter has a value only when itemType is set to resource.
         self.source_status = source_status
-        # The total number of resources in the directory and its subdirectories. This field is returned only when the top-level directory list of the knowledge base is queried.
+        # The total number of resources in the directory and its subdirectories. This parameter is returned only when the top-level directory list of the knowledge base is queried.
         self.source_total_count = source_total_count
         # The data source type.
         self.source_type = source_type

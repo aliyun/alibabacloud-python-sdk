@@ -12,19 +12,19 @@ class GetWorkflowNodeConfigurationRequest(DaraModel):
         node_id: str = None,
         tenant_id: str = None,
     ):
-        # 协作空间ID
+        # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 当前物理计划ID（planId）
+        # The ID of the current physical plan (planId).
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 业务节点key（nodeKey）
+        # The key of the business node (nodeKey).
         # 
         # This parameter is required.
         self.node_id = node_id
-        # 租户ID；缺省使用调用方默认租户
+        # The tenant ID. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

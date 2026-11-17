@@ -11,13 +11,13 @@ class GetSkillRunRequest(DaraModel):
         run_id: str = None,
         tenant_id: str = None,
     ):
-        # Specifies whether to include execution logs. Default value: false. Enable this parameter only for troubleshooting.
+        # Specifies whether to include execution logs. Default value: false. Enable this only when troubleshooting issues.
         self.include_logs = include_logs
         # The evaluation run ID.
         # 
         # This parameter is required.
         self.run_id = run_id
-        # The tenant ID to which the task belongs.
+        # The ID of the tenant to which the task belongs.
         self.tenant_id = tenant_id
 
     def validate(self):

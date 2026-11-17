@@ -15,6 +15,7 @@ class UpdateScheduledTaskRequest(DaraModel):
         is_open: bool = None,
         model: str = None,
         name: str = None,
+        output_mode: str = None,
         segments: List[main_models.UpdateScheduledTaskRequestSegments] = None,
         task_detail: main_models.UpdateScheduledTaskRequestTaskDetail = None,
         task_id: str = None,
@@ -33,6 +34,8 @@ class UpdateScheduledTaskRequest(DaraModel):
         self.model = model
         # The file name.
         self.name = name
+        # 输出会话模式，省略时保留当前配置
+        self.output_mode = output_mode
         # The segments.
         self.segments = segments
         # The task details.
@@ -86,6 +89,9 @@ class UpdateScheduledTaskRequest(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.output_mode is not None:
+            result['outputMode'] = self.output_mode
+
         result['segments'] = []
         if self.segments is not None:
             for k1 in self.segments:
@@ -130,6 +136,9 @@ class UpdateScheduledTaskRequest(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('outputMode') is not None:
+            self.output_mode = m.get('outputMode')
 
         self.segments = []
         if m.get('segments') is not None:

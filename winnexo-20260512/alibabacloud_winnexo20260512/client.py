@@ -1252,6 +1252,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.close_workflow_todos_with_options_async(request, headers, runtime)
 
+    def convert_direct_conversation_to_work_with_options(
+        self,
+        request: main_models.ConvertDirectConversationToWorkRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ConvertDirectConversationToWorkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConvertDirectConversationToWork',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/convertDirectConversationToWork',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConvertDirectConversationToWorkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def convert_direct_conversation_to_work_with_options_async(
+        self,
+        request: main_models.ConvertDirectConversationToWorkRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ConvertDirectConversationToWorkResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ConvertDirectConversationToWork',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/convertDirectConversationToWork',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ConvertDirectConversationToWorkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def convert_direct_conversation_to_work(
+        self,
+        request: main_models.ConvertDirectConversationToWorkRequest,
+    ) -> main_models.ConvertDirectConversationToWorkResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.convert_direct_conversation_to_work_with_options(request, headers, runtime)
+
+    async def convert_direct_conversation_to_work_async(
+        self,
+        request: main_models.ConvertDirectConversationToWorkRequest,
+    ) -> main_models.ConvertDirectConversationToWorkResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.convert_direct_conversation_to_work_with_options_async(request, headers, runtime)
+
     def count_todos_with_options(
         self,
         request: main_models.CountTodosRequest,
@@ -5303,6 +5387,8 @@ class Client(OpenApiClient):
             body['model'] = request.model
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.output_mode):
+            body['outputMode'] = request.output_mode
         if not DaraCore.is_null(request.segments_shrink):
             body['segments'] = request.segments_shrink
         if not DaraCore.is_null(request.task_detail_shrink):
@@ -5371,6 +5457,8 @@ class Client(OpenApiClient):
             body['model'] = request.model
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.output_mode):
+            body['outputMode'] = request.output_mode
         if not DaraCore.is_null(request.segments_shrink):
             body['segments'] = request.segments_shrink
         if not DaraCore.is_null(request.task_detail_shrink):
@@ -8497,6 +8585,102 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_node_detail_with_options_async(request, headers, runtime)
+
+    def get_scheduled_task_conversation_records_with_options(
+        self,
+        request: main_models.GetScheduledTaskConversationRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScheduledTaskConversationRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.initiator_user_id):
+            query['initiatorUserId'] = request.initiator_user_id
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScheduledTaskConversationRecords',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getScheduledTaskConversationRecords',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScheduledTaskConversationRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_scheduled_task_conversation_records_with_options_async(
+        self,
+        request: main_models.GetScheduledTaskConversationRecordsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScheduledTaskConversationRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.initiator_user_id):
+            query['initiatorUserId'] = request.initiator_user_id
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.task_id):
+            query['taskId'] = request.task_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScheduledTaskConversationRecords',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/getScheduledTaskConversationRecords',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScheduledTaskConversationRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_scheduled_task_conversation_records(
+        self,
+        request: main_models.GetScheduledTaskConversationRecordsRequest,
+    ) -> main_models.GetScheduledTaskConversationRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_scheduled_task_conversation_records_with_options(request, headers, runtime)
+
+    async def get_scheduled_task_conversation_records_async(
+        self,
+        request: main_models.GetScheduledTaskConversationRecordsRequest,
+    ) -> main_models.GetScheduledTaskConversationRecordsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_scheduled_task_conversation_records_with_options_async(request, headers, runtime)
 
     def get_scheduled_task_execution_detail_with_options(
         self,
@@ -12997,6 +13181,8 @@ class Client(OpenApiClient):
             body['sharedOnly'] = request.shared_only
         if not DaraCore.is_null(request.tags_shrink):
             body['tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.task_execution_id):
+            body['taskExecutionId'] = request.task_execution_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -13053,6 +13239,8 @@ class Client(OpenApiClient):
             body['sharedOnly'] = request.shared_only
         if not DaraCore.is_null(request.tags_shrink):
             body['tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.task_execution_id):
+            body['taskExecutionId'] = request.task_execution_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -13513,6 +13701,146 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_skills_with_options_async(request, headers, runtime)
+
+    def list_source_usage_statistics_with_options(
+        self,
+        tmp_req: main_models.ListSourceUsageStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSourceUsageStatisticsResponse:
+        tmp_req.validate()
+        request = main_models.ListSourceUsageStatisticsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.knowledge_base_ids):
+            request.knowledge_base_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_base_ids, 'knowledgeBaseIds', 'json')
+        if not DaraCore.is_null(tmp_req.source_ids):
+            request.source_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_ids, 'sourceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.event_type):
+            body['eventType'] = request.event_type
+        if not DaraCore.is_null(request.knowledge_base_ids_shrink):
+            body['knowledgeBaseIds'] = request.knowledge_base_ids_shrink
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.scope_type):
+            body['scopeType'] = request.scope_type
+        if not DaraCore.is_null(request.sort_by):
+            body['sortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            body['sortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.source_ids_shrink):
+            body['sourceIds'] = request.source_ids_shrink
+        if not DaraCore.is_null(request.source_name):
+            body['sourceName'] = request.source_name
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSourceUsageStatistics',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listSourceUsageStatistics',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSourceUsageStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_source_usage_statistics_with_options_async(
+        self,
+        tmp_req: main_models.ListSourceUsageStatisticsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSourceUsageStatisticsResponse:
+        tmp_req.validate()
+        request = main_models.ListSourceUsageStatisticsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.knowledge_base_ids):
+            request.knowledge_base_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_base_ids, 'knowledgeBaseIds', 'json')
+        if not DaraCore.is_null(tmp_req.source_ids):
+            request.source_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_ids, 'sourceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.event_type):
+            body['eventType'] = request.event_type
+        if not DaraCore.is_null(request.knowledge_base_ids_shrink):
+            body['knowledgeBaseIds'] = request.knowledge_base_ids_shrink
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.scope_type):
+            body['scopeType'] = request.scope_type
+        if not DaraCore.is_null(request.sort_by):
+            body['sortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            body['sortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.source_ids_shrink):
+            body['sourceIds'] = request.source_ids_shrink
+        if not DaraCore.is_null(request.source_name):
+            body['sourceName'] = request.source_name
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSourceUsageStatistics',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listSourceUsageStatistics',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSourceUsageStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_source_usage_statistics(
+        self,
+        request: main_models.ListSourceUsageStatisticsRequest,
+    ) -> main_models.ListSourceUsageStatisticsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_source_usage_statistics_with_options(request, headers, runtime)
+
+    async def list_source_usage_statistics_async(
+        self,
+        request: main_models.ListSourceUsageStatisticsRequest,
+    ) -> main_models.ListSourceUsageStatisticsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_source_usage_statistics_with_options_async(request, headers, runtime)
 
     def list_tenant_directory_with_options(
         self,
@@ -15897,6 +16225,262 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.query_semantic_knowledge_with_options_async(request, headers, runtime)
+
+    def query_source_usage_summary_with_options(
+        self,
+        tmp_req: main_models.QuerySourceUsageSummaryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySourceUsageSummaryResponse:
+        tmp_req.validate()
+        request = main_models.QuerySourceUsageSummaryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.knowledge_base_ids):
+            request.knowledge_base_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_base_ids, 'knowledgeBaseIds', 'json')
+        if not DaraCore.is_null(tmp_req.source_ids):
+            request.source_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_ids, 'sourceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.event_type):
+            body['eventType'] = request.event_type
+        if not DaraCore.is_null(request.knowledge_base_ids_shrink):
+            body['knowledgeBaseIds'] = request.knowledge_base_ids_shrink
+        if not DaraCore.is_null(request.scope_type):
+            body['scopeType'] = request.scope_type
+        if not DaraCore.is_null(request.source_ids_shrink):
+            body['sourceIds'] = request.source_ids_shrink
+        if not DaraCore.is_null(request.source_name):
+            body['sourceName'] = request.source_name
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySourceUsageSummary',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/querySourceUsageSummary',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySourceUsageSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_source_usage_summary_with_options_async(
+        self,
+        tmp_req: main_models.QuerySourceUsageSummaryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySourceUsageSummaryResponse:
+        tmp_req.validate()
+        request = main_models.QuerySourceUsageSummaryShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.knowledge_base_ids):
+            request.knowledge_base_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_base_ids, 'knowledgeBaseIds', 'json')
+        if not DaraCore.is_null(tmp_req.source_ids):
+            request.source_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_ids, 'sourceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.event_type):
+            body['eventType'] = request.event_type
+        if not DaraCore.is_null(request.knowledge_base_ids_shrink):
+            body['knowledgeBaseIds'] = request.knowledge_base_ids_shrink
+        if not DaraCore.is_null(request.scope_type):
+            body['scopeType'] = request.scope_type
+        if not DaraCore.is_null(request.source_ids_shrink):
+            body['sourceIds'] = request.source_ids_shrink
+        if not DaraCore.is_null(request.source_name):
+            body['sourceName'] = request.source_name
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySourceUsageSummary',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/querySourceUsageSummary',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySourceUsageSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_source_usage_summary(
+        self,
+        request: main_models.QuerySourceUsageSummaryRequest,
+    ) -> main_models.QuerySourceUsageSummaryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_source_usage_summary_with_options(request, headers, runtime)
+
+    async def query_source_usage_summary_async(
+        self,
+        request: main_models.QuerySourceUsageSummaryRequest,
+    ) -> main_models.QuerySourceUsageSummaryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_source_usage_summary_with_options_async(request, headers, runtime)
+
+    def query_source_usage_trend_with_options(
+        self,
+        tmp_req: main_models.QuerySourceUsageTrendRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySourceUsageTrendResponse:
+        tmp_req.validate()
+        request = main_models.QuerySourceUsageTrendShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.knowledge_base_ids):
+            request.knowledge_base_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_base_ids, 'knowledgeBaseIds', 'json')
+        if not DaraCore.is_null(tmp_req.source_ids):
+            request.source_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_ids, 'sourceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.event_type):
+            body['eventType'] = request.event_type
+        if not DaraCore.is_null(request.granularity):
+            body['granularity'] = request.granularity
+        if not DaraCore.is_null(request.knowledge_base_ids_shrink):
+            body['knowledgeBaseIds'] = request.knowledge_base_ids_shrink
+        if not DaraCore.is_null(request.scope_type):
+            body['scopeType'] = request.scope_type
+        if not DaraCore.is_null(request.source_ids_shrink):
+            body['sourceIds'] = request.source_ids_shrink
+        if not DaraCore.is_null(request.source_name):
+            body['sourceName'] = request.source_name
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        if not DaraCore.is_null(request.time_zone):
+            body['timeZone'] = request.time_zone
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySourceUsageTrend',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/querySourceUsageTrend',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySourceUsageTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_source_usage_trend_with_options_async(
+        self,
+        tmp_req: main_models.QuerySourceUsageTrendRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySourceUsageTrendResponse:
+        tmp_req.validate()
+        request = main_models.QuerySourceUsageTrendShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.knowledge_base_ids):
+            request.knowledge_base_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_base_ids, 'knowledgeBaseIds', 'json')
+        if not DaraCore.is_null(tmp_req.source_ids):
+            request.source_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.source_ids, 'sourceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.collaboration_group_id):
+            body['collaborationGroupId'] = request.collaboration_group_id
+        if not DaraCore.is_null(request.end_time):
+            body['endTime'] = request.end_time
+        if not DaraCore.is_null(request.event_type):
+            body['eventType'] = request.event_type
+        if not DaraCore.is_null(request.granularity):
+            body['granularity'] = request.granularity
+        if not DaraCore.is_null(request.knowledge_base_ids_shrink):
+            body['knowledgeBaseIds'] = request.knowledge_base_ids_shrink
+        if not DaraCore.is_null(request.scope_type):
+            body['scopeType'] = request.scope_type
+        if not DaraCore.is_null(request.source_ids_shrink):
+            body['sourceIds'] = request.source_ids_shrink
+        if not DaraCore.is_null(request.source_name):
+            body['sourceName'] = request.source_name
+        if not DaraCore.is_null(request.start_time):
+            body['startTime'] = request.start_time
+        if not DaraCore.is_null(request.time_zone):
+            body['timeZone'] = request.time_zone
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySourceUsageTrend',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/querySourceUsageTrend',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySourceUsageTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_source_usage_trend(
+        self,
+        request: main_models.QuerySourceUsageTrendRequest,
+    ) -> main_models.QuerySourceUsageTrendResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_source_usage_trend_with_options(request, headers, runtime)
+
+    async def query_source_usage_trend_async(
+        self,
+        request: main_models.QuerySourceUsageTrendRequest,
+    ) -> main_models.QuerySourceUsageTrendResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_source_usage_trend_with_options_async(request, headers, runtime)
 
     def query_sync_result_with_options(
         self,
@@ -19251,10 +19835,14 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.SendAsyncChatMessageShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context_items):
+            request.context_items_shrink = Utils.array_to_string_with_specified_style(tmp_req.context_items, 'contextItems', 'json')
         if not DaraCore.is_null(tmp_req.digital_employee_name):
             request.digital_employee_name_shrink = Utils.array_to_string_with_specified_style(tmp_req.digital_employee_name, 'digitalEmployeeName', 'json')
         if not DaraCore.is_null(tmp_req.files):
             request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'files', 'json')
+        if not DaraCore.is_null(tmp_req.segments):
+            request.segments_shrink = Utils.array_to_string_with_specified_style(tmp_req.segments, 'segments', 'json')
         if not DaraCore.is_null(tmp_req.task_execution):
             request.task_execution_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_execution, 'taskExecution', 'json')
         query = {}
@@ -19265,18 +19853,26 @@ class Client(OpenApiClient):
             body['content'] = request.content
         if not DaraCore.is_null(request.content_type):
             body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.context_items_shrink):
+            body['contextItems'] = request.context_items_shrink
         if not DaraCore.is_null(request.digital_employee_name_shrink):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.direct_max_history_rounds):
+            body['directMaxHistoryRounds'] = request.direct_max_history_rounds
         if not DaraCore.is_null(request.enable_web_search):
             body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
+        if not DaraCore.is_null(request.locale):
+            body['locale'] = request.locale
         if not DaraCore.is_null(request.model):
             body['model'] = request.model
         if not DaraCore.is_null(request.reuse_last_session):
             body['reuseLastSession'] = request.reuse_last_session
+        if not DaraCore.is_null(request.segments_shrink):
+            body['segments'] = request.segments_shrink
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
         if not DaraCore.is_null(request.stream):
@@ -19315,10 +19911,14 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.SendAsyncChatMessageShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context_items):
+            request.context_items_shrink = Utils.array_to_string_with_specified_style(tmp_req.context_items, 'contextItems', 'json')
         if not DaraCore.is_null(tmp_req.digital_employee_name):
             request.digital_employee_name_shrink = Utils.array_to_string_with_specified_style(tmp_req.digital_employee_name, 'digitalEmployeeName', 'json')
         if not DaraCore.is_null(tmp_req.files):
             request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'files', 'json')
+        if not DaraCore.is_null(tmp_req.segments):
+            request.segments_shrink = Utils.array_to_string_with_specified_style(tmp_req.segments, 'segments', 'json')
         if not DaraCore.is_null(tmp_req.task_execution):
             request.task_execution_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_execution, 'taskExecution', 'json')
         query = {}
@@ -19329,18 +19929,26 @@ class Client(OpenApiClient):
             body['content'] = request.content
         if not DaraCore.is_null(request.content_type):
             body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.context_items_shrink):
+            body['contextItems'] = request.context_items_shrink
         if not DaraCore.is_null(request.digital_employee_name_shrink):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.direct_max_history_rounds):
+            body['directMaxHistoryRounds'] = request.direct_max_history_rounds
         if not DaraCore.is_null(request.enable_web_search):
             body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
+        if not DaraCore.is_null(request.locale):
+            body['locale'] = request.locale
         if not DaraCore.is_null(request.model):
             body['model'] = request.model
         if not DaraCore.is_null(request.reuse_last_session):
             body['reuseLastSession'] = request.reuse_last_session
+        if not DaraCore.is_null(request.segments_shrink):
+            body['segments'] = request.segments_shrink
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
         if not DaraCore.is_null(request.stream):
@@ -19395,10 +20003,14 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.SendChatMessageShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context_items):
+            request.context_items_shrink = Utils.array_to_string_with_specified_style(tmp_req.context_items, 'contextItems', 'json')
         if not DaraCore.is_null(tmp_req.digital_employee_name):
             request.digital_employee_name_shrink = Utils.array_to_string_with_specified_style(tmp_req.digital_employee_name, 'digitalEmployeeName', 'json')
         if not DaraCore.is_null(tmp_req.files):
             request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'files', 'json')
+        if not DaraCore.is_null(tmp_req.segments):
+            request.segments_shrink = Utils.array_to_string_with_specified_style(tmp_req.segments, 'segments', 'json')
         if not DaraCore.is_null(tmp_req.task_execution):
             request.task_execution_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_execution, 'taskExecution', 'json')
         query = {}
@@ -19409,18 +20021,26 @@ class Client(OpenApiClient):
             body['content'] = request.content
         if not DaraCore.is_null(request.content_type):
             body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.context_items_shrink):
+            body['contextItems'] = request.context_items_shrink
         if not DaraCore.is_null(request.digital_employee_name_shrink):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.direct_max_history_rounds):
+            body['directMaxHistoryRounds'] = request.direct_max_history_rounds
         if not DaraCore.is_null(request.enable_web_search):
             body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
+        if not DaraCore.is_null(request.locale):
+            body['locale'] = request.locale
         if not DaraCore.is_null(request.model):
             body['model'] = request.model
         if not DaraCore.is_null(request.reuse_last_session):
             body['reuseLastSession'] = request.reuse_last_session
+        if not DaraCore.is_null(request.segments_shrink):
+            body['segments'] = request.segments_shrink
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
         if not DaraCore.is_null(request.stream):
@@ -19468,10 +20088,14 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.SendChatMessageShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context_items):
+            request.context_items_shrink = Utils.array_to_string_with_specified_style(tmp_req.context_items, 'contextItems', 'json')
         if not DaraCore.is_null(tmp_req.digital_employee_name):
             request.digital_employee_name_shrink = Utils.array_to_string_with_specified_style(tmp_req.digital_employee_name, 'digitalEmployeeName', 'json')
         if not DaraCore.is_null(tmp_req.files):
             request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'files', 'json')
+        if not DaraCore.is_null(tmp_req.segments):
+            request.segments_shrink = Utils.array_to_string_with_specified_style(tmp_req.segments, 'segments', 'json')
         if not DaraCore.is_null(tmp_req.task_execution):
             request.task_execution_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_execution, 'taskExecution', 'json')
         query = {}
@@ -19482,18 +20106,26 @@ class Client(OpenApiClient):
             body['content'] = request.content
         if not DaraCore.is_null(request.content_type):
             body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.context_items_shrink):
+            body['contextItems'] = request.context_items_shrink
         if not DaraCore.is_null(request.digital_employee_name_shrink):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.direct_max_history_rounds):
+            body['directMaxHistoryRounds'] = request.direct_max_history_rounds
         if not DaraCore.is_null(request.enable_web_search):
             body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
+        if not DaraCore.is_null(request.locale):
+            body['locale'] = request.locale
         if not DaraCore.is_null(request.model):
             body['model'] = request.model
         if not DaraCore.is_null(request.reuse_last_session):
             body['reuseLastSession'] = request.reuse_last_session
+        if not DaraCore.is_null(request.segments_shrink):
+            body['segments'] = request.segments_shrink
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
         if not DaraCore.is_null(request.stream):
@@ -19541,10 +20173,14 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.SendChatMessageShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context_items):
+            request.context_items_shrink = Utils.array_to_string_with_specified_style(tmp_req.context_items, 'contextItems', 'json')
         if not DaraCore.is_null(tmp_req.digital_employee_name):
             request.digital_employee_name_shrink = Utils.array_to_string_with_specified_style(tmp_req.digital_employee_name, 'digitalEmployeeName', 'json')
         if not DaraCore.is_null(tmp_req.files):
             request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'files', 'json')
+        if not DaraCore.is_null(tmp_req.segments):
+            request.segments_shrink = Utils.array_to_string_with_specified_style(tmp_req.segments, 'segments', 'json')
         if not DaraCore.is_null(tmp_req.task_execution):
             request.task_execution_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_execution, 'taskExecution', 'json')
         query = {}
@@ -19555,18 +20191,26 @@ class Client(OpenApiClient):
             body['content'] = request.content
         if not DaraCore.is_null(request.content_type):
             body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.context_items_shrink):
+            body['contextItems'] = request.context_items_shrink
         if not DaraCore.is_null(request.digital_employee_name_shrink):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.direct_max_history_rounds):
+            body['directMaxHistoryRounds'] = request.direct_max_history_rounds
         if not DaraCore.is_null(request.enable_web_search):
             body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
+        if not DaraCore.is_null(request.locale):
+            body['locale'] = request.locale
         if not DaraCore.is_null(request.model):
             body['model'] = request.model
         if not DaraCore.is_null(request.reuse_last_session):
             body['reuseLastSession'] = request.reuse_last_session
+        if not DaraCore.is_null(request.segments_shrink):
+            body['segments'] = request.segments_shrink
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
         if not DaraCore.is_null(request.stream):
@@ -19605,10 +20249,14 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.SendChatMessageShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.context_items):
+            request.context_items_shrink = Utils.array_to_string_with_specified_style(tmp_req.context_items, 'contextItems', 'json')
         if not DaraCore.is_null(tmp_req.digital_employee_name):
             request.digital_employee_name_shrink = Utils.array_to_string_with_specified_style(tmp_req.digital_employee_name, 'digitalEmployeeName', 'json')
         if not DaraCore.is_null(tmp_req.files):
             request.files_shrink = Utils.array_to_string_with_specified_style(tmp_req.files, 'files', 'json')
+        if not DaraCore.is_null(tmp_req.segments):
+            request.segments_shrink = Utils.array_to_string_with_specified_style(tmp_req.segments, 'segments', 'json')
         if not DaraCore.is_null(tmp_req.task_execution):
             request.task_execution_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_execution, 'taskExecution', 'json')
         query = {}
@@ -19619,18 +20267,26 @@ class Client(OpenApiClient):
             body['content'] = request.content
         if not DaraCore.is_null(request.content_type):
             body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.context_items_shrink):
+            body['contextItems'] = request.context_items_shrink
         if not DaraCore.is_null(request.digital_employee_name_shrink):
             body['digitalEmployeeName'] = request.digital_employee_name_shrink
         if not DaraCore.is_null(request.direct_chat):
             body['directChat'] = request.direct_chat
+        if not DaraCore.is_null(request.direct_max_history_rounds):
+            body['directMaxHistoryRounds'] = request.direct_max_history_rounds
         if not DaraCore.is_null(request.enable_web_search):
             body['enableWebSearch'] = request.enable_web_search
         if not DaraCore.is_null(request.files_shrink):
             body['files'] = request.files_shrink
+        if not DaraCore.is_null(request.locale):
+            body['locale'] = request.locale
         if not DaraCore.is_null(request.model):
             body['model'] = request.model
         if not DaraCore.is_null(request.reuse_last_session):
             body['reuseLastSession'] = request.reuse_last_session
+        if not DaraCore.is_null(request.segments_shrink):
+            body['segments'] = request.segments_shrink
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
         if not DaraCore.is_null(request.stream):
@@ -20625,6 +21281,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.content_type):
             body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.file_content_base_64):
+            body['fileContentBase64'] = request.file_content_base_64
         if not DaraCore.is_null(request.file_name):
             body['fileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
@@ -20663,6 +21321,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.content_type):
             body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.file_content_base_64):
+            body['fileContentBase64'] = request.file_content_base_64
         if not DaraCore.is_null(request.file_name):
             body['fileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
@@ -21939,6 +22599,8 @@ class Client(OpenApiClient):
             body['model'] = request.model
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.output_mode):
+            body['outputMode'] = request.output_mode
         if not DaraCore.is_null(request.segments_shrink):
             body['segments'] = request.segments_shrink
         if not DaraCore.is_null(request.task_detail_shrink):
@@ -22007,6 +22669,8 @@ class Client(OpenApiClient):
             body['model'] = request.model
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.output_mode):
+            body['outputMode'] = request.output_mode
         if not DaraCore.is_null(request.segments_shrink):
             body['segments'] = request.segments_shrink
         if not DaraCore.is_null(request.task_detail_shrink):
@@ -23203,3 +23867,95 @@ class Client(OpenApiClient):
             upload_chat_file_req.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         upload_chat_file_resp = await self.upload_chat_file_with_options_async(upload_chat_file_req, headers, runtime)
         return upload_chat_file_resp
+
+    def upload_chat_file_by_base_64with_options(
+        self,
+        request: main_models.UploadChatFileByBase64Request,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadChatFileByBase64Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.content_type):
+            body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.file_content_base_64):
+            body['fileContentBase64'] = request.file_content_base_64
+        if not DaraCore.is_null(request.file_name):
+            body['fileName'] = request.file_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadChatFileByBase64',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/uploadChatFileByBase64',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadChatFileByBase64Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_chat_file_by_base_64with_options_async(
+        self,
+        request: main_models.UploadChatFileByBase64Request,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadChatFileByBase64Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.content_type):
+            body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.file_content_base_64):
+            body['fileContentBase64'] = request.file_content_base_64
+        if not DaraCore.is_null(request.file_name):
+            body['fileName'] = request.file_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadChatFileByBase64',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/uploadChatFileByBase64',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadChatFileByBase64Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_chat_file_by_base_64(
+        self,
+        request: main_models.UploadChatFileByBase64Request,
+    ) -> main_models.UploadChatFileByBase64Response:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.upload_chat_file_by_base_64with_options(request, headers, runtime)
+
+    async def upload_chat_file_by_base_64_async(
+        self,
+        request: main_models.UploadChatFileByBase64Request,
+    ) -> main_models.UploadChatFileByBase64Response:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.upload_chat_file_by_base_64with_options_async(request, headers, runtime)

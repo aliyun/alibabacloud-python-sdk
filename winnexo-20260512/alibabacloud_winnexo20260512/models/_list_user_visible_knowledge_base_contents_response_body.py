@@ -24,9 +24,9 @@ class ListUserVisibleKnowledgeBaseContentsResponseBody(DaraModel):
         self.items = items
         # The status code description.
         self.message = message
-        # The page number. Default value: 1. Pages start from page 1.
+        # The page number. Default value: 1. The pages start from page 1.
         self.page = page
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -133,7 +133,7 @@ class ListUserVisibleKnowledgeBaseContentsResponseBodyItems(DaraModel):
         self.directory_type = directory_type
         # The creation time.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The last update time.
         self.gmt_modified = gmt_modified
         # The item ID.
         self.item_id = item_id
@@ -147,7 +147,7 @@ class ListUserVisibleKnowledgeBaseContentsResponseBodyItems(DaraModel):
         self.name = name
         # The object bindings.
         self.object_bindings = object_bindings
-        # The visibility mode of the knowledge base to digital employees.
+        # The visibility mode of the knowledge base for digital employees.
         self.oo_visibility_mode = oo_visibility_mode
         # Indicates whether the item is read-only.
         self.read_only = read_only
@@ -155,15 +155,15 @@ class ListUserVisibleKnowledgeBaseContentsResponseBodyItems(DaraModel):
         self.share_infos = share_infos
         # Indicates whether shared access is allowed.
         self.shared = shared
-        # The number of resources in FAILED status. Returned only when listing top-level KB directories.
+        # The number of resources in the FAILED state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
         self.source_failed_count = source_failed_count
-        # The knowledge base affiliation type. Valid values: aliding_kb_doc (DingTalk knowledge base document), normal (common knowledge).
+        # The ownership type of the knowledge base. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
         self.source_kind = source_kind
-        # The number of resources in READY status. Returned only when listing top-level KB directories.
+        # The number of resources in the READY state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
         self.source_ready_count = source_ready_count
-        # The resource status. This field has a value only when itemType is resource.
+        # The resource status. This parameter has a value only when itemType is set to resource.
         self.source_status = source_status
-        # The total number of resources under the directory and its subdirectories. Returned only when listing top-level KB directories.
+        # The total number of resources in the directory and its subdirectories. This parameter is returned only when the top-level directory list of the knowledge base is queried.
         self.source_total_count = source_total_count
         # The data source type.
         self.source_type = source_type
@@ -333,17 +333,17 @@ class ListUserVisibleKnowledgeBaseContentsResponseBodyItemsShareInfos(DaraModel)
         target_kb_root_directory_id: str = None,
         target_kb_root_directory_name: str = None,
     ):
-        # The Ray Job ID.
+        # The ID of the Ray job.
         self.submission_id = submission_id
-        # The user ID of the submitter.
+        # The user ID of the timesheet submitter.
         self.submitter_id = submitter_id
-        # The submitter name.
+        # The name of the submitter.
         self.submitter_name = submitter_name
-        # The target directory ID.
+        # The ID of the target directory.
         self.target_directory_id = target_directory_id
-        # The target directory name.
+        # The name of the target directory.
         self.target_directory_name = target_directory_name
-        # The root directory ID of the target enterprise knowledge base.
+        # The ID of the root directory of the target enterprise knowledge base.
         self.target_kb_root_directory_id = target_kb_root_directory_id
         # The name of the target enterprise knowledge base.
         self.target_kb_root_directory_name = target_kb_root_directory_name

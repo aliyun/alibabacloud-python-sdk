@@ -22,7 +22,7 @@ class SetWorkflowTemplateEffectiveVersionRequest(DaraModel):
         self.template_id = template_id
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # The version number of the returned content.
+        # The version number to which the returned content belongs.
         # 
         # This parameter is required.
         self.version = version

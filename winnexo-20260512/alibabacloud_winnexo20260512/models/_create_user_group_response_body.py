@@ -14,13 +14,13 @@ class CreateUserGroupResponseBody(DaraModel):
         request_id: str = None,
         user_group: Any = None,
     ):
-        # The business status code. A value of 200 indicates success.
+        # The error code.
         self.code = code
-        # The error description. This value is empty if the request is successful.
+        # The error details.
         self.message = message
-        # The request trace ID.
+        # The request ID.
         self.request_id = request_id
-        # The information about the newly created user group.
+        # The newly created user group.
         self.user_group = user_group
 
     def validate(self):

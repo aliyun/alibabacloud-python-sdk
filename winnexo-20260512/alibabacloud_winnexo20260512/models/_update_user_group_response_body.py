@@ -14,13 +14,13 @@ class UpdateUserGroupResponseBody(DaraModel):
         request_id: str = None,
         user_group: Any = None,
     ):
-        # The business status code. A value of 200 indicates success.
+        # The error code.
         self.code = code
-        # The error description. This value is empty when the request is successful.
+        # The status code description.
         self.message = message
-        # The request trace ID.
+        # The request ID.
         self.request_id = request_id
-        # The updated user group information.
+        # The updated user group.
         self.user_group = user_group
 
     def validate(self):

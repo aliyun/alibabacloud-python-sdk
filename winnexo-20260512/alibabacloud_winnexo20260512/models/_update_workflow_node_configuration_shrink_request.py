@@ -16,29 +16,29 @@ class UpdateWorkflowNodeConfigurationShrinkRequest(DaraModel):
         responsible_user_ids_shrink: str = None,
         tenant_id: str = None,
     ):
-        # 协作空间ID
+        # The ID of the collaboration workspace.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 节点执行人；省略保持，null恢复默认；与负责人、模型至少修改一项
+        # The executor of the node. If this parameter is omitted, the current value is retained. If this parameter is set to null, the default value is restored. You must modify at least one of the owner, model, or executor.
         self.executor_shrink = executor_shrink
-        # 读取接口返回的configVersion；非负整数；版本冲突须刷新
+        # The configuration version returned by the read operation. The value must be a non-negative integer. If a version conflict occurs, you must refresh the version.
         # 
         # This parameter is required.
         self.expected_version = expected_version
-        # 当前物理计划ID（planId）
+        # The ID of the current physical plan.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # 模型模式；quick归一化standard；省略保持，null恢复默认
+        # The model mode. The quick value is normalized to standard. If this parameter is omitted, the current value is retained. If this parameter is set to null, the default value is restored.
         self.model = model
-        # 业务节点key（nodeKey）
+        # The key of the business node.
         # 
         # This parameter is required.
         self.node_id = node_id
-        # 节点负责人用户ID列表，非空正整数数组；省略保持，null恢复默认
+        # The list of user IDs for the node owners. The value must be a non-empty array of positive integers. If this parameter is omitted, the current value is retained. If this parameter is set to null, the default value is restored.
         self.responsible_user_ids_shrink = responsible_user_ids_shrink
-        # 租户ID；缺省使用调用方默认租户
+        # The tenant ID. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

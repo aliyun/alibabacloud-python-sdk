@@ -12,6 +12,7 @@ class UpdateScheduledTaskShrinkRequest(DaraModel):
         is_open: bool = None,
         model: str = None,
         name: str = None,
+        output_mode: str = None,
         segments_shrink: str = None,
         task_detail_shrink: str = None,
         task_id: str = None,
@@ -30,6 +31,8 @@ class UpdateScheduledTaskShrinkRequest(DaraModel):
         self.model = model
         # The file name.
         self.name = name
+        # 输出会话模式，省略时保留当前配置
+        self.output_mode = output_mode
         # The segments.
         self.segments_shrink = segments_shrink
         # The task details.
@@ -70,6 +73,9 @@ class UpdateScheduledTaskShrinkRequest(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.output_mode is not None:
+            result['outputMode'] = self.output_mode
+
         if self.segments_shrink is not None:
             result['segments'] = self.segments_shrink
 
@@ -109,6 +115,9 @@ class UpdateScheduledTaskShrinkRequest(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        if m.get('outputMode') is not None:
+            self.output_mode = m.get('outputMode')
 
         if m.get('segments') is not None:
             self.segments_shrink = m.get('segments')

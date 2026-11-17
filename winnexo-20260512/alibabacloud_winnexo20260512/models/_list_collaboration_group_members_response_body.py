@@ -18,19 +18,19 @@ class ListCollaborationGroupMembersResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 公共业务状态码，由后端Code字段映射；错误时用于识别失败原因。
+        # The common business status code.
         self.code = code
-        # 当前页记录列表；没有匹配记录时返回空数组。
+        # The list of entries on the current page.
         self.items = items
-        # 公共错误说明，由后端Message字段映射；错误时描述失败原因。
+        # The common error description.
         self.message = message
-        # 当前返回页的页码，从1开始。
+        # The current page number.
         self.page = page
-        # 当前分页设置的每页记录数。
+        # The page size.
         self.page_size = page_size
-        # 请求追踪ID，由后端RequestId字段映射，用于排查调用失败。
+        # The request ID.
         self.request_id = request_id
-        # 满足查询条件的记录总数，不是当前页记录数。
+        # The total number of records after filtering.
         self.total = total
 
     def validate(self):
@@ -105,13 +105,13 @@ class ListCollaborationGroupMembersResponseBodyItems(DaraModel):
         role: str = None,
         user_id: str = None,
     ):
-        # 成员显示名称；未设置时为空。
+        # The display name. This field is empty if the display name is not set.
         self.display_name = display_name
-        # 租户账号是否启用。本接口只返回有效且账号启用的成员，值为true；不代表HR在职状态。
+        # The enabling status of the tenant account. Only active members are returned, so this value is always true. This field does not indicate the HR employment status.
         self.is_active = is_active
-        # 成员在空间内的角色：ADMIN为管理员，MEMBER为普通成员。
+        # The role of the workspace member.
         self.role = role
-        # 平台用户ID，字符串形式，可用作转交待办的目标用户ID。
+        # The platform user ID.
         self.user_id = user_id
 
     def validate(self):

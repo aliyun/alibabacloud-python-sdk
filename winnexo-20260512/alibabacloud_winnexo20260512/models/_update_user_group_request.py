@@ -14,19 +14,19 @@ class UpdateUserGroupRequest(DaraModel):
         user_group_id: str = None,
         user_group_name: str = None,
     ):
-        # The new description of the user group. If not specified, the description is not modified.
+        # The new description of the user group. If this parameter is not specified, the description is not modified.
         self.description = description
-        # Specifies whether to move the user group to the root node. This parameter cannot be set together with parentId.
+        # Specifies whether to move the user group to the root node. This parameter cannot be set at the same time as a non-null parentId.
         self.move_to_root = move_to_root
-        # The ID of the new parent user group. If not specified, the user group is not moved.
+        # The ID of the new parent user group. If this parameter is not specified, the user group is not moved. If it is explicitly set to null, the user group is moved to the root node.
         self.parent_id = parent_id
-        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. In winnexo-cli, it is explicitly passed by using --tenant-id.
         self.tenant_id = tenant_id
         # The ID of the target user group.
         # 
         # This parameter is required.
         self.user_group_id = user_group_id
-        # The new name of the user group. If not specified, the name is not modified.
+        # The new name of the user group. If this parameter is not specified, the name is not modified.
         self.user_group_name = user_group_name
 
     def validate(self):

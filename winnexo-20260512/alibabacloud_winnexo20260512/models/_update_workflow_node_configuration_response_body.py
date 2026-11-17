@@ -28,39 +28,39 @@ class UpdateWorkflowNodeConfigurationResponseBody(DaraModel):
         updated_at: str = None,
         updated_by: int = None,
     ):
-        # 当前用户是否可编辑此节点
+        # Indicates whether the current user can edit this node.
         self.can_edit = can_edit
-        # 公共业务状态码
+        # The common business status code.
         self.code = code
-        # 配置版本；更新或恢复时作为expectedVersion
+        # The configuration version. Use this value as the expectedVersion when updating or restoring.
         self.config_version = config_version
-        # 模板默认执行主体
+        # The default executor defined in the template.
         self.default_executor = default_executor
-        # 模板默认模型运行档
+        # The default model profile defined in the template.
         self.default_model = default_model
-        # 模板默认负责人用户ID列表
+        # The list of user IDs for the default owners defined in the template.
         self.default_responsible_user_ids = default_responsible_user_ids
-        # 当前生效的执行主体
+        # The currently effective executor.
         self.effective_executor = effective_executor
-        # 当前生效的模型运行档
+        # The currently effective model profile.
         self.effective_model = effective_model
-        # 当前生效的负责人用户ID列表
+        # The list of user IDs for the currently effective owners.
         self.effective_responsible_user_ids = effective_responsible_user_ids
-        # 当前物理计划ID
+        # The ID of the current physical plan.
         self.instance_id = instance_id
-        # 公共错误描述
+        # The common error description.
         self.message = message
-        # 业务节点key
+        # The key of the business node.
         self.node_id = node_id
-        # 实例覆盖值；字段为null时使用模板默认值
+        # The instance override values. If a field is null, the default value defined in the template is used.
         self.overrides = overrides
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
-        # 状态刷新游标，不能作为配置版本
+        # The state refresh cursor. This value cannot be used as the configuration version.
         self.state_version = state_version
-        # 最后配置更新时间ISO8601；从未更新时为空
+        # The time when the configuration was last updated, in ISO 8601 format. This field is empty if the configuration has never been updated.
         self.updated_at = updated_at
-        # 最后更新配置的平台用户ID；从未更新时为空
+        # The platform user ID of the user who last updated the configuration. This field is empty if the configuration has never been updated.
         self.updated_by = updated_by
 
     def validate(self):
@@ -194,11 +194,11 @@ class UpdateWorkflowNodeConfigurationResponseBodyOverrides(DaraModel):
         model: str = None,
         responsible_user_ids: List[int] = None,
     ):
-        # 覆盖执行主体；null为默认
+        # The overridden executor. A value of null indicates that the default value is used.
         self.executor = executor
-        # 覆盖模型运行档；null为默认
+        # The overridden model profile. A value of null indicates that the default value is used.
         self.model = model
-        # 覆盖负责人ID列表；null为默认
+        # The list of overridden owner IDs. A value of null indicates that the default value is used.
         self.responsible_user_ids = responsible_user_ids
 
     def validate(self):
@@ -241,9 +241,9 @@ class UpdateWorkflowNodeConfigurationResponseBodyOverridesExecutor(DaraModel):
         id: str = None,
         type: str = None,
     ):
-        # USER 为正整数平台用户ID字符串；AGENT 为空间数字员工技术名称
+        # The executor ID. If the type is USER, the value is a string representing a positive integer platform user ID. If the type is AGENT, the value is the technical name of the digital worker in the workspace.
         self.id = id
-        # USER 真人、AGENT 数字员工或历史 SYSTEM 系统执行人；SYSTEM仅用于响应
+        # The executor type. Valid values: USER (a human user), AGENT (a digital worker), and SYSTEM (a legacy system executor). The SYSTEM value is used only in responses.
         self.type = type
 
     def validate(self):
@@ -278,9 +278,9 @@ class UpdateWorkflowNodeConfigurationResponseBodyEffectiveExecutor(DaraModel):
         id: str = None,
         type: str = None,
     ):
-        # USER 为正整数平台用户ID字符串；AGENT 为空间数字员工技术名称
+        # The executor ID. If the type is USER, the value is a string representing a positive integer platform user ID. If the type is AGENT, the value is the technical name of the digital worker in the workspace.
         self.id = id
-        # USER 真人、AGENT 数字员工或历史 SYSTEM 系统执行人；SYSTEM仅用于响应
+        # The executor type. Valid values: USER (a human user), AGENT (a digital worker), and SYSTEM (a legacy system executor). The SYSTEM value is used only in responses.
         self.type = type
 
     def validate(self):
@@ -315,9 +315,9 @@ class UpdateWorkflowNodeConfigurationResponseBodyDefaultExecutor(DaraModel):
         id: str = None,
         type: str = None,
     ):
-        # USER 为正整数平台用户ID字符串；AGENT 为空间数字员工技术名称
+        # The executor ID. If the type is USER, the value is a string representing a positive integer platform user ID. If the type is AGENT, the value is the technical name of the digital worker in the workspace.
         self.id = id
-        # USER 真人、AGENT 数字员工或历史 SYSTEM 系统执行人；SYSTEM仅用于响应
+        # The executor type. Valid values: USER (a human user), AGENT (a digital worker), and SYSTEM (a legacy system executor). The SYSTEM value is used only in responses.
         self.type = type
 
     def validate(self):

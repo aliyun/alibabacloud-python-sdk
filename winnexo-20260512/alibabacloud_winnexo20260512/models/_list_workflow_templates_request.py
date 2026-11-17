@@ -23,7 +23,7 @@ class ListWorkflowTemplatesRequest(DaraModel):
         self.keyword = keyword
         # The maximum number of entries to return per page. Valid values: 1 to 100. This parameter takes precedence over pageSize if both are specified.
         self.max_results = max_results
-        # The pagination token. Obtain the token from the nextToken parameter in the previous response. This parameter takes precedence over page if both are specified.
+        # The pagination token. Obtain the token from the nextToken value in the previous response. This parameter takes precedence over page if both are specified.
         self.next_token = next_token
         # The page number. This parameter is ignored if nextToken is specified.
         self.page = page

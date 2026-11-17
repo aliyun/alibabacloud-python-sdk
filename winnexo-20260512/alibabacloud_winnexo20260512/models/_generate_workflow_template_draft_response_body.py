@@ -76,13 +76,13 @@ class GenerateWorkflowTemplateDraftResponseBodyDraft(DaraModel):
     ):
         # The description of the template.
         self.description = description
-        # 节点依赖边；每项包含from/to，引用稳定stepId
+        # The node dependency edges. Each item contains a from field and a to field, which reference stable step IDs.
         self.edges = edges
-        # 可选画布布局，按stepId索引；只影响展示，不决定依赖
+        # The optional canvas layout, indexed by step ID. This field only affects the display and does not determine dependencies.
         self.layout = layout
         # The name of the template.
         self.name = name
-        # 模板结构版本，当前为2，与业务版本vN独立
+        # The schema version of the template. The current value is 2, which is independent of the business version vN.
         self.schema_version = schema_version
         # The ordered steps.
         self.steps = steps
@@ -167,22 +167,22 @@ class GenerateWorkflowTemplateDraftResponseBodyDraftSteps(DaraModel):
         # The name of the agent owner.
         self.owner_agent_name = owner_agent_name
         # The type of the owner. Valid values:
-        # - MEMBER: human
-        # - AGENT: agent
+        # - MEMBER: Human user.
+        # - AGENT: Agent.
         self.owner_type = owner_type
         # The user ID of the human owner.
         self.owner_user_id = owner_user_id
-        # 是否人工审核产出物，默认关闭；仅数字员工可开启，审核待办自动发负责人
+        # Specifies whether to manually review the output. Default value: false. This feature can only be enabled for digital workers. When enabled, review tasks are automatically sent to the owner.
         self.review_output = review_output
         # The list of user IDs of the reviewers.
         self.reviewer_user_ids = reviewer_user_ids
         # The sort order of the step.
         self.sort_order = sort_order
-        # The processing instructions of the step.
+        # The processing instructions for the step.
         self.specification = specification
-        # The ordered array of fragments. Supported types include text, mention, skill, app, files, and web_search. The referenced identities and order are preserved.
+        # The ordered array of fragments. Supported types include text, mention, skill, app, files, and web_search. This field preserves the referenced identities and the order.
         self.specification_json = specification_json
-        # The ID of the step.
+        # The step ID.
         self.step_id = step_id
 
     def validate(self):

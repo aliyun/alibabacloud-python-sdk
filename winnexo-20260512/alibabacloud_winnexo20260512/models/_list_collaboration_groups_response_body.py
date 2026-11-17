@@ -18,19 +18,19 @@ class ListCollaborationGroupsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # 公共业务状态码，由后端Code字段映射；错误时用于识别失败原因。
+        # The common business status code.
         self.code = code
-        # 当前页记录列表；没有匹配记录时返回空数组。
+        # The list of items on the current page.
         self.items = items
-        # 公共错误说明，由后端Message字段映射；错误时描述失败原因。
+        # The common error message.
         self.message = message
-        # 当前返回页的页码，从1开始。
+        # The current page number.
         self.page = page
-        # 当前分页设置的每页记录数。
+        # The page size.
         self.page_size = page_size
-        # 请求追踪ID，由后端RequestId字段映射，用于排查调用失败。
+        # The request ID.
         self.request_id = request_id
-        # 满足查询条件的有效空间总数，不是当前页记录数。
+        # The total number of filtered records.
         self.total = total
 
     def validate(self):
@@ -105,13 +105,13 @@ class ListCollaborationGroupsResponseBodyItems(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # 协作空间ID，可用于查询空间成员、查询节点详情及预览对话文件。
+        # The ID of the collaboration space.
         self.collaboration_group_id = collaboration_group_id
-        # 当前调用用户在空间内的角色：ADMIN为管理员，MEMBER为普通成员。
+        # The role of the current user in the space.
         self.current_user_role = current_user_role
-        # 协作空间显示名称。
+        # The name of the space.
         self.name = name
-        # 协作空间状态，当前接口只返回ACTIVE。
+        # The status of the space. Currently, only ACTIVE is returned.
         self.status = status
 
     def validate(self):

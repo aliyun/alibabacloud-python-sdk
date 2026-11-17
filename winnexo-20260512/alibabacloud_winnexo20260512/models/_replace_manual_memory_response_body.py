@@ -14,7 +14,7 @@ class ReplaceManualMemoryResponseBody(DaraModel):
     ):
         # The business status code. A value of 200 indicates success.
         self.code = code
-        # The complete content of the manual memory after it is saved. If the memory is successfully cleared, an empty string is returned.
+        # The complete content of the manual memory after it is saved. If the memory is cleared, this value is an empty string.
         self.content = content
         # The error description.
         self.message = message

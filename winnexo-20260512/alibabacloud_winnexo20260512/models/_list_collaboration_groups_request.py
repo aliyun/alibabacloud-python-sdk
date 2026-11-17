@@ -12,13 +12,13 @@ class ListCollaborationGroupsRequest(DaraModel):
         page_size: int = None,
         tenant_id: str = None,
     ):
-        # 空间名称搜索关键词，可选，最长256字符；不传或去除首尾空白后为空时不按名称过滤。
+        # The search keyword. This parameter is optional and can contain up to 256 characters.
         self.keyword = keyword
-        # 页码，从1开始；请求省略时默认为1。
+        # The page number. Pages start from 1.
         self.page = page
-        # 每页记录数，取值1至100；请求省略时默认为20。
+        # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
-        # 业务租户ID，可选。必须属于当前调用身份的可访问租户；无权访问时拒绝请求。未传时按现有鉴权规则解析租户，多租户用户无法唯一确定时需显式指定。
+        # The tenant ID. If you do not specify this parameter, the default tenant of the caller is used.
         self.tenant_id = tenant_id
 
     def validate(self):

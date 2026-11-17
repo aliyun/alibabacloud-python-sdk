@@ -30,7 +30,7 @@ class GetUserResponseBody(DaraModel):
         # The creation time.
         self.gmt_create = gmt_create
         # Indicates whether the account is activated. Valid values:
-        #  - **true**: Activated.
+        # - **true**: Activated.
         # - **false**: Not activated.
         self.is_active = is_active
         # The last logon time.
@@ -39,11 +39,11 @@ class GetUserResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The list of system role codes. The list performs a full replacement and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
+        # The list of new system role codes. This list fully replaces the existing roles and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
         self.role_codes = role_codes
-        # The list of user group IDs to which the user belongs.
+        # The list of IDs of the user groups to which the user belongs.
         self.user_group_ids = user_group_ids
-        # The WINNEXO platform user ID.
+        # The user ID on the WINNEXO platform.
         self.wn_user_id = wn_user_id
 
     def validate(self):

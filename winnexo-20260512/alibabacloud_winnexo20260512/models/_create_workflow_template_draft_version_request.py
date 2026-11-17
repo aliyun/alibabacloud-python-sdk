@@ -12,15 +12,15 @@ class CreateWorkflowTemplateDraftVersionRequest(DaraModel):
         tenant_id: str = None,
         version: str = None,
     ):
-        # The ID of the collaboration workspace.
+        # The collaboration workspace ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # The ID of the template.
+        # The template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
-        # The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+        # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
         # The version number to which the returned content belongs.
         # 

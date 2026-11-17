@@ -11,13 +11,13 @@ class GetWorkItemAuditRequest(DaraModel):
         tenant_id: str = None,
         work_item_id: str = None,
     ):
-        # 协作空间ID
+        # The collaboration workspace ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # 租户ID；缺省使用调用方默认租户
+        # The tenant ID. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # 工作项ID
+        # The work item ID.
         # 
         # This parameter is required.
         self.work_item_id = work_item_id

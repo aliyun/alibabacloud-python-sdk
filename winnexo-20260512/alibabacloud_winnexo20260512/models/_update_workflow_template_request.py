@@ -19,27 +19,27 @@ class UpdateWorkflowTemplateRequest(DaraModel):
         version_description: str = None,
     ):
         # The write action. Valid values:
-        # - SAVE: Saves the template as a draft. The changes do not take effect. Node names and assignees can be left empty.
-        # - SUBMIT: Requires complete nodes. Saves and submits the template as the only effective version.
+        # - SAVE: Saves the template as a draft without taking effect, allowing node names and executors to be left empty.
+        # - SUBMIT: Requires complete nodes, and saves and submits the template as the only effective version.
         # Default value: SUBMIT.
         self.action = action
-        # The ID of the collaboration workspace.
+        # The collaboration workspace ID.
         # 
         # This parameter is required.
         self.collaboration_group_id = collaboration_group_id
-        # The complete JSON definition of the template. This overwrites the existing definition.
+        # The complete JSON definition of the template for full overwriting.
         # 
         # This parameter is required.
         self.definition = definition
-        # The submitted version number on which the new version is based. This parameter is mutually exclusive with version. If you do not specify this parameter, the current effective version is used.
+        # The submitted version number on which the new version is based. This parameter is mutually exclusive with version. If not specified, the system falls back to the current effective version.
         self.source_version = source_version
-        # The ID of the template.
+        # The template ID.
         # 
         # This parameter is required.
         self.template_id = template_id
         # The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
         self.tenant_id = tenant_id
-        # The version number to which the content belongs.
+        # The version number to which the returned content belongs.
         self.version = version
         # The change description for this version. An empty value indicates that no description is provided.
         self.version_description = version_description

@@ -15,13 +15,13 @@ class GetWorkItemAuditResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # 公共业务状态码
+        # The common business status code.
         self.code = code
-        # 按事件时间倒序排列的完整工作项审计记录
+        # The complete work item audit records sorted in descending order of event time.
         self.items = items
-        # 公共错误描述
+        # The common error description.
         self.message = message
-        # 请求追踪ID
+        # The request tracking ID.
         self.request_id = request_id
 
     def validate(self):
@@ -86,29 +86,29 @@ class GetWorkItemAuditResponseBodyItems(DaraModel):
         title: str = None,
         todo_id: str = None,
     ):
-        # 字段变更明细列表，每项包含变更字段与前后值
+        # The list of field change details. Each item includes the changed field and its values before and after the change.
         self.changes = changes
-        # 事件描述
+        # The event description.
         self.description = description
-        # 审计事件唯一标识
+        # The unique identifier of the audit event.
         self.event_id = event_id
-        # 审计事件类型，如 WORK_ITEM_UPDATED、TODO_COMPLETED
+        # The audit event type, such as WORK_ITEM_UPDATED or TODO_COMPLETED.
         self.event_type = event_type
-        # 事件发生时间，ISO8601 格式
+        # The time when the event occurred, in ISO 8601 format.
         self.occurred_at = occurred_at
-        # 操作人显示名
+        # The display name of the operator.
         self.operator_name = operator_name
-        # 操作人用户 ID
+        # The user ID of the operator.
         self.operator_user_id = operator_user_id
-        # 事件涉及的待确认问题列表
+        # The list of questions to be confirmed related to the event.
         self.questions = questions
-        # 事件结果负载，JSON 对象；无结果时为空
+        # The event result payload as a JSON object. If no result is available, this field is empty.
         self.result_payload = result_payload
-        # 事件状态
+        # The event status.
         self.status = status
-        # 事件标题
+        # The event title.
         self.title = title
-        # 关联待办 ID；无关联时为空字符串
+        # The ID of the associated to-do item. If no to-do item is associated, an empty string is returned.
         self.todo_id = todo_id
 
     def validate(self):

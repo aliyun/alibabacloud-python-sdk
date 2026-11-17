@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Any
 
 from alibabacloud_winnexo20260512 import models as main_models
 from darabonba.model import DaraModel
@@ -12,12 +12,16 @@ class SendAsyncChatMessageRequest(DaraModel):
         self,
         content: str = None,
         content_type: str = None,
+        context_items: List[main_models.SendAsyncChatMessageRequestContextItems] = None,
         digital_employee_name: List[str] = None,
         direct_chat: bool = None,
+        direct_max_history_rounds: Any = None,
         enable_web_search: bool = None,
         files: List[main_models.SendAsyncChatMessageRequestFiles] = None,
+        locale: str = None,
         model: str = None,
         reuse_last_session: bool = None,
+        segments: List[main_models.SendAsyncChatMessageRequestSegments] = None,
         session_id: str = None,
         stream: bool = None,
         task_execution: main_models.SendAsyncChatMessageRequestTaskExecution = None,
@@ -30,18 +34,26 @@ class SendAsyncChatMessageRequest(DaraModel):
         self.content = content
         # The message type. Valid values: Text and Markdown.
         self.content_type = content_type
+        # 作为本轮上下文引用的消息或文件条目
+        self.context_items = context_items
         # The list of digital employee names. For compatibility with the legacy format, a single string can also be passed.
         self.digital_employee_name = digital_employee_name
         # Specifies whether to enable direct connection mode. If set to true, regular scenario routing is skipped and the direct conversation scenario is used.
         self.direct_chat = direct_chat
+        # 本轮携带的最近完整 direct 问答轮数，不含本轮输入。仅 workMode=direct 或 directChat=true 时生效。有效值为 0–100 的 JSON 整数，省略时由后端按 0 处理，不携带历史但仍保存当前轮。null、布尔值、字符串、小数及越界值按原 direct 路径处理，网关保留原始值供后端判定。work/ask 忽略此字段。该参数不限制转换为 work 时的历史范围
+        self.direct_max_history_rounds = direct_max_history_rounds
         # Specifies whether to enable web search. Default value: false. In the task execution scenario where taskExecution is passed, the task configuration prevails.
         self.enable_web_search = enable_web_search
         # The list of file references. Each item is an object, and the fileId parameter is required. The fileId is returned by the uploadChatFile operation.
         self.files = files
+        # 本轮语言，可选 zh-CN、en-US，用于接口错误文案并透传给 CodeAgent；省略时沿用当前语言行为，不修改用户设置
+        self.locale = locale
         # The abstract model tier. Valid values: quick, standard, and flagship. If not specified, standard is used for new sessions, and the current tier is retained for existing sessions.
         self.model = model
         # Specifies whether to reuse the most recent session under the digital employee when sessionId is not specified. This is typically used in CLI scenarios. Default value: false, which means a new session is created.
         self.reuse_last_session = reuse_last_session
+        # 消息中的结构化片段，例如会话或对象提及
+        self.segments = segments
         # The session ID. If not specified, a new session is created.
         self.session_id = session_id
         # Specifies whether to use streaming generation. This operation always generates backend content in streaming mode and writes it to the message stream. The value of this parameter does not change the response structure.
@@ -54,8 +66,16 @@ class SendAsyncChatMessageRequest(DaraModel):
         self.work_mode = work_mode
 
     def validate(self):
+        if self.context_items:
+            for v1 in self.context_items:
+                 if v1:
+                    v1.validate()
         if self.files:
             for v1 in self.files:
+                 if v1:
+                    v1.validate()
+        if self.segments:
+            for v1 in self.segments:
                  if v1:
                     v1.validate()
         if self.task_execution:
@@ -72,11 +92,19 @@ class SendAsyncChatMessageRequest(DaraModel):
         if self.content_type is not None:
             result['contentType'] = self.content_type
 
+        result['contextItems'] = []
+        if self.context_items is not None:
+            for k1 in self.context_items:
+                result['contextItems'].append(k1.to_map() if k1 else None)
+
         if self.digital_employee_name is not None:
             result['digitalEmployeeName'] = self.digital_employee_name
 
         if self.direct_chat is not None:
             result['directChat'] = self.direct_chat
+
+        if self.direct_max_history_rounds is not None:
+            result['directMaxHistoryRounds'] = self.direct_max_history_rounds
 
         if self.enable_web_search is not None:
             result['enableWebSearch'] = self.enable_web_search
@@ -86,11 +114,19 @@ class SendAsyncChatMessageRequest(DaraModel):
             for k1 in self.files:
                 result['files'].append(k1.to_map() if k1 else None)
 
+        if self.locale is not None:
+            result['locale'] = self.locale
+
         if self.model is not None:
             result['model'] = self.model
 
         if self.reuse_last_session is not None:
             result['reuseLastSession'] = self.reuse_last_session
+
+        result['segments'] = []
+        if self.segments is not None:
+            for k1 in self.segments:
+                result['segments'].append(k1.to_map() if k1 else None)
 
         if self.session_id is not None:
             result['sessionId'] = self.session_id
@@ -117,11 +153,20 @@ class SendAsyncChatMessageRequest(DaraModel):
         if m.get('contentType') is not None:
             self.content_type = m.get('contentType')
 
+        self.context_items = []
+        if m.get('contextItems') is not None:
+            for k1 in m.get('contextItems'):
+                temp_model = main_models.SendAsyncChatMessageRequestContextItems()
+                self.context_items.append(temp_model.from_map(k1))
+
         if m.get('digitalEmployeeName') is not None:
             self.digital_employee_name = m.get('digitalEmployeeName')
 
         if m.get('directChat') is not None:
             self.direct_chat = m.get('directChat')
+
+        if m.get('directMaxHistoryRounds') is not None:
+            self.direct_max_history_rounds = m.get('directMaxHistoryRounds')
 
         if m.get('enableWebSearch') is not None:
             self.enable_web_search = m.get('enableWebSearch')
@@ -132,11 +177,20 @@ class SendAsyncChatMessageRequest(DaraModel):
                 temp_model = main_models.SendAsyncChatMessageRequestFiles()
                 self.files.append(temp_model.from_map(k1))
 
+        if m.get('locale') is not None:
+            self.locale = m.get('locale')
+
         if m.get('model') is not None:
             self.model = m.get('model')
 
         if m.get('reuseLastSession') is not None:
             self.reuse_last_session = m.get('reuseLastSession')
+
+        self.segments = []
+        if m.get('segments') is not None:
+            for k1 in m.get('segments'):
+                temp_model = main_models.SendAsyncChatMessageRequestSegments()
+                self.segments.append(temp_model.from_map(k1))
 
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
@@ -269,6 +323,88 @@ class SendAsyncChatMessageRequestTaskExecution(DaraModel):
 
         return self
 
+class SendAsyncChatMessageRequestSegments(DaraModel):
+    def __init__(
+        self,
+        content: str = None,
+        mention_type: str = None,
+        name: str = None,
+        object_id: str = None,
+        object_type: str = None,
+        session_type: str = None,
+        type: str = None,
+    ):
+        # 片段展示内容
+        self.content = content
+        # 提及对象类别
+        self.mention_type = mention_type
+        # 被引用对象名称
+        self.name = name
+        # 被引用对象 ID
+        self.object_id = object_id
+        # 被引用对象类型
+        self.object_type = object_type
+        # 会话类型
+        self.session_type = session_type
+        # 片段类型
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.content is not None:
+            result['content'] = self.content
+
+        if self.mention_type is not None:
+            result['mentionType'] = self.mention_type
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.object_id is not None:
+            result['objectId'] = self.object_id
+
+        if self.object_type is not None:
+            result['objectType'] = self.object_type
+
+        if self.session_type is not None:
+            result['sessionType'] = self.session_type
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('content') is not None:
+            self.content = m.get('content')
+
+        if m.get('mentionType') is not None:
+            self.mention_type = m.get('mentionType')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('objectId') is not None:
+            self.object_id = m.get('objectId')
+
+        if m.get('objectType') is not None:
+            self.object_type = m.get('objectType')
+
+        if m.get('sessionType') is not None:
+            self.session_type = m.get('sessionType')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
 class SendAsyncChatMessageRequestFiles(DaraModel):
     def __init__(
         self,
@@ -305,6 +441,169 @@ class SendAsyncChatMessageRequestFiles(DaraModel):
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        return self
+
+class SendAsyncChatMessageRequestContextItems(DaraModel):
+    def __init__(
+        self,
+        annotation: str = None,
+        annotation_files: List[main_models.SendAsyncChatMessageRequestContextItemsAnnotationFiles] = None,
+        content: str = None,
+        file_id: str = None,
+        file_name: str = None,
+        file_type: str = None,
+        message_id: str = None,
+        sender_name: str = None,
+        type: str = None,
+    ):
+        # 用户对引用内容的批注
+        self.annotation = annotation
+        # 批注关联的文件列表
+        self.annotation_files = annotation_files
+        # 被引用内容正文
+        self.content = content
+        # 被引用文件 ID
+        self.file_id = file_id
+        # 被引用文件名称
+        self.file_name = file_name
+        # 被引用文件类型
+        self.file_type = file_type
+        # 被引用消息 ID
+        self.message_id = message_id
+        # 消息发送者名称
+        self.sender_name = sender_name
+        # 上下文条目类型
+        self.type = type
+
+    def validate(self):
+        if self.annotation_files:
+            for v1 in self.annotation_files:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.annotation is not None:
+            result['annotation'] = self.annotation
+
+        result['annotationFiles'] = []
+        if self.annotation_files is not None:
+            for k1 in self.annotation_files:
+                result['annotationFiles'].append(k1.to_map() if k1 else None)
+
+        if self.content is not None:
+            result['content'] = self.content
+
+        if self.file_id is not None:
+            result['fileId'] = self.file_id
+
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+
+        if self.file_type is not None:
+            result['fileType'] = self.file_type
+
+        if self.message_id is not None:
+            result['messageId'] = self.message_id
+
+        if self.sender_name is not None:
+            result['senderName'] = self.sender_name
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('annotation') is not None:
+            self.annotation = m.get('annotation')
+
+        self.annotation_files = []
+        if m.get('annotationFiles') is not None:
+            for k1 in m.get('annotationFiles'):
+                temp_model = main_models.SendAsyncChatMessageRequestContextItemsAnnotationFiles()
+                self.annotation_files.append(temp_model.from_map(k1))
+
+        if m.get('content') is not None:
+            self.content = m.get('content')
+
+        if m.get('fileId') is not None:
+            self.file_id = m.get('fileId')
+
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+
+        if m.get('fileType') is not None:
+            self.file_type = m.get('fileType')
+
+        if m.get('messageId') is not None:
+            self.message_id = m.get('messageId')
+
+        if m.get('senderName') is not None:
+            self.sender_name = m.get('senderName')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class SendAsyncChatMessageRequestContextItemsAnnotationFiles(DaraModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        file_public_url: str = None,
+        file_record_id: str = None,
+        file_url: str = None,
+    ):
+        # 文件名称
+        self.file_name = file_name
+        # 文件公开访问地址
+        self.file_public_url = file_public_url
+        # 文件记录 ID
+        self.file_record_id = file_record_id
+        # 文件内部访问地址
+        self.file_url = file_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+
+        if self.file_public_url is not None:
+            result['filePublicUrl'] = self.file_public_url
+
+        if self.file_record_id is not None:
+            result['fileRecordId'] = self.file_record_id
+
+        if self.file_url is not None:
+            result['fileUrl'] = self.file_url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+
+        if m.get('filePublicUrl') is not None:
+            self.file_public_url = m.get('filePublicUrl')
+
+        if m.get('fileRecordId') is not None:
+            self.file_record_id = m.get('fileRecordId')
+
+        if m.get('fileUrl') is not None:
+            self.file_url = m.get('fileUrl')
 
         return self
 
