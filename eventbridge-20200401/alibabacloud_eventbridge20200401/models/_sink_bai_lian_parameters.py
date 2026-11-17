@@ -20,23 +20,14 @@ class SinkBaiLianParameters(DaraModel):
         partition: main_models.SinkBaiLianParametersPartition = None,
         workspace_id: str = None,
     ):
-        # The post-processing logic executed after the main operation is completed.
         self.after = after
-        # The type of the Model Studio application to be invoked.
         self.application_type = application_type
-        # The pre-processing logic executed before the event is sent to the target.
         self.before = before
-        # The context information of the application, which must be a JSON object.
         self.context = context
-        # The additional key-value pairs passed to the event target, which must be a valid JSON object.
         self.extend = extend
-        # The offset for reading the event from a stream or queue, which is used for stateful processing.
         self.offset = offset
-        # The operation to be performed by the Model Studio application.
         self.op = op
-        # The partition key of the event, which is used to route the event to a specific partition of the target service to ensure ordered processing.
         self.partition = partition
-        # The unique ID of the Model Studio workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -128,11 +119,8 @@ class SinkBaiLianParametersPartition(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from the event content), and TEMPLATE (template).
         self.form = form
-        # The template string used to format the parameter value. It is used only when Form is set to TEMPLATE.
         self.template = template
-        # The source content of the parameter value specified by Form. When Form is set to JSONPATH, this value must be a JSONPath expression.
         self.value = value
 
     def validate(self):
@@ -174,11 +162,8 @@ class SinkBaiLianParametersOp(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from the event content), and TEMPLATE (template).
         self.form = form
-        # The template string used to format the parameter value. It is used only when Form is set to TEMPLATE.
         self.template = template
-        # The source content of the parameter value specified by Form. When Form is set to JSONPATH, this value must be a JSONPath expression.
         self.value = value
 
     def validate(self):
@@ -220,11 +205,8 @@ class SinkBaiLianParametersOffset(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from the event content), and TEMPLATE (template).
         self.form = form
-        # The template string used to format the parameter value. It is used only when Form is set to TEMPLATE.
         self.template = template
-        # The source content of the parameter value specified by Form. When Form is set to JSONPATH, this value must be a JSONPath expression.
         self.value = value
 
     def validate(self):
@@ -266,11 +248,8 @@ class SinkBaiLianParametersBefore(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from the event content), and TEMPLATE (template).
         self.form = form
-        # The template string used to format the parameter value. It is used only when Form is set to TEMPLATE.
         self.template = template
-        # The source content of the parameter value specified by Form. When Form is set to JSONPATH, this value must be a JSONPath expression.
         self.value = value
 
     def validate(self):
@@ -312,11 +291,8 @@ class SinkBaiLianParametersAfter(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The method used to generate the parameter value. Valid values: CONSTANT (constant), JSONPATH (extracted from the event content), and TEMPLATE (template).
         self.form = form
-        # The template string used to format the parameter value. It is used only when Form is set to TEMPLATE.
         self.template = template
-        # The source content of the parameter value specified by Form. When Form is set to JSONPATH, this value must be a JSONPath expression.
         self.value = value
 
     def validate(self):

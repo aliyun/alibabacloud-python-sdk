@@ -17,11 +17,11 @@ class ListEventStreamingsRequest(DaraModel):
         source_arn: str = None,
         tags: List[main_models.ListEventStreamingsRequestTags] = None,
     ):
-        # Specifies the maximum number of entries to return per request. You can use this parameter together with NextToken to paginate results.>Notice: The maximum number of entries returned per request cannot exceed 100.
+        # Specifies the maximum number of entries to return per request. You can use this parameter with NextToken to paginate results. <notice>The maximum number of entries returned per request cannot exceed 100.</notice>
         self.limit = limit
         # The prefix of the event stream name.
         self.name_prefix = name_prefix
-        # The token that is returned when Limit is specified and additional results are available.
+        # The pagination token. If you specify Limit and more results are available, this token is returned.
         self.next_token = next_token
         # The ARN of the event target.
         self.sink_arn = sink_arn

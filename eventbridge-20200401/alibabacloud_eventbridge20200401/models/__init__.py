@@ -48,6 +48,7 @@ from ._query_ask_luma_log_result import QueryAskLumaLogResult
 from ._query_attachment import QueryAttachment
 from ._row import Row
 from ._schema_column import SchemaColumn
+from ._sink_agent_core_knowledge_base_parameters import SinkAgentCoreKnowledgeBaseParameters
 from ._sink_agent_run_parameters import SinkAgentRunParameters
 from ._sink_api_destination_parameters import SinkApiDestinationParameters
 from ._sink_bai_lian_parameters import SinkBaiLianParameters
@@ -1286,6 +1287,7 @@ __all__ = [
     QueryAttachment,
     Row,
     SchemaColumn,
+    SinkAgentCoreKnowledgeBaseParameters,
     SinkAgentRunParameters,
     SinkApiDestinationParameters,
     SinkBaiLianParameters,

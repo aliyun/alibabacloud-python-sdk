@@ -11,7 +11,7 @@ class DeleteApiDestinationResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The API operation status or POP error code. Valid values: Success: The operation is successful.
+        # The API status or POP error code. Valid values: Success: Successful.
         self.code = code
         # The additional information. If the request is normal, success is returned. If the request is abnormal, a specific error code is returned.
         self.message = message

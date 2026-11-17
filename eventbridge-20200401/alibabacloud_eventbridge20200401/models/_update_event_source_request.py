@@ -35,27 +35,27 @@ class UpdateEventSourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_source_name = event_source_name
-        # The external data source configuration.
+        # The external datasource config.
         self.external_source_config = external_source_config
         # The type of the external data source.
         self.external_source_type = external_source_type
         # Specifies whether to connect to an external data source.
         self.linked_external_source = linked_external_source
-        # The SourceHttpEventParameters request parameter.
+        # The request parameter SourceHttpEventParameters.
         self.source_http_event_parameters = source_http_event_parameters
-        # The SourceKafkaParameters request parameter.
+        # The request parameter SourceKafkaParameters.
         self.source_kafka_parameters = source_kafka_parameters
-        # The parameters for a Simple Message Queue (formerly MNS) event source.
+        # The parameters for the Simple Message Queue (formerly MNS) event source.
         self.source_mnsparameters = source_mnsparameters
-        # The parameters for an OSS event source.
+        # The parameters for the OSS event source.
         self.source_ossevent_parameters = source_ossevent_parameters
-        # The SourceRabbitMQParameters request parameter.
+        # The request parameter SourceRabbitMQParameters.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
-        # The SourceRocketMQParameters request parameter.
+        # The request parameter SourceRocketMQParameters.
         self.source_rocket_mqparameters = source_rocket_mqparameters
-        # The parameters for a Simple Log Service event source.
+        # The parameters for the Simple Log Service event source.
         self.source_slsparameters = source_slsparameters
-        # The SourceScheduledEventParameters request parameter.
+        # The request parameter SourceScheduledEventParameters.
         self.source_scheduled_event_parameters = source_scheduled_event_parameters
 
     def validate(self):
@@ -233,13 +233,13 @@ class UpdateEventSourceRequestSourceSLSParameters(DaraModel):
         project: str = None,
         role_name: str = None,
     ):
-        # The start consumption offset. You can set this parameter to begin to consume from the earliest offset, end to consume from the latest offset, or a specific timestamp in seconds to consume from a specified point in time.
+        # The start consumption offset. You can set this parameter to begin to consume from the earliest offset, end to consume from the latest offset, or a specific timestamp in seconds to consume from the specified time.
         self.consume_position = consume_position
         # The Simple Log Service Logstore.
         self.log_store = log_store
         # The Simple Log Service project.
         self.project = project
-        # When authorizing EventBridge to use this role to read Simple Log Service log content, the following conditions must be met: when creating the role in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and select EventBridge as the trusted service. For the permission policy of this role, refer to the custom event source Simple Log Service.
+        # When authorizing EventBridge to use this role to read Simple Log Service logs, the following conditions must be met: When creating the role in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service and select EventBridge as the trusted service. For the permission policy of this role, refer to the custom event source Simple Log Service.
         self.role_name = role_name
 
     def validate(self):
@@ -302,7 +302,7 @@ class UpdateEventSourceRequestSourceRocketMQParameters(DaraModel):
     ):
         # The authentication type. Set the value to ACL or leave it empty.
         self.auth_type = auth_type
-        # The group ID of the ApsaraMQ for RocketMQ instance.
+        # The group ID of ApsaraMQ for RocketMQ.
         self.group_id = group_id
         # The endpoint of the instance.
         self.instance_endpoint = instance_endpoint
@@ -315,8 +315,10 @@ class UpdateEventSourceRequestSourceRocketMQParameters(DaraModel):
         # The ID of the security group. This parameter is required for VPCs.
         self.instance_security_group_id = instance_security_group_id
         # The instance type. Valid values:
-        # - Cloud_4: 4.0 instance.
-        # - Cloud_5: 5.0 instance.
+        # 
+        # - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance.
+        # 
+        # - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
         self.instance_type = instance_type
         # The username of the instance.
         self.instance_username = instance_username
@@ -325,9 +327,13 @@ class UpdateEventSourceRequestSourceRocketMQParameters(DaraModel):
         # The ID of the VPC. This parameter is required for VPCs.
         self.instance_vpc_id = instance_vpc_id
         # The consumption offset of the message. Valid values:
+        # 
         # - CONSUME_FROM_LAST_OFFSET: Consumes messages from the latest offset.
+        # 
         # - CONSUME_FROM_FIRST_OFFSET: Consumes messages from the earliest offset.
-        # - CONSUME_FROM_TIMESTAMP: Consumes messages from the offset at a specified point in time.
+        # 
+        # - CONSUME_FROM_TIMESTAMP: Consumes messages from the offset at a specified timestamp.
+        # 
         # Default value: CONSUME_FROM_LAST_OFFSET.
         self.offset = offset
         # The region where the ApsaraMQ for RocketMQ instance resides.
@@ -627,7 +633,7 @@ class UpdateEventSourceRequestSourceMNSParameters(DaraModel):
         queue_name: str = None,
         region_id: str = None,
     ):
-        # Specifies whether to enable Base64 decoding. Default value: true.
+        # Specifies whether to enable Base64 decoding. By default, this option is selected, which indicates that Base64 decoding is enabled.
         self.is_base_64decode = is_base_64decode
         # The name of the Simple Message Queue (formerly MNS) queue.
         self.queue_name = queue_name
@@ -684,7 +690,7 @@ class UpdateEventSourceRequestSourceKafkaParameters(DaraModel):
         self.consumer_group = consumer_group
         # The instance ID.
         self.instance_id = instance_id
-        # The concurrency quota, which is the number of consumers.
+        # The concurrency quota, which indicates the number of consumers.
         self.maximum_tasks = maximum_tasks
         # The network configuration. Valid values: Default and PublicNetwork.
         self.network = network
@@ -784,29 +790,44 @@ class UpdateEventSourceRequestSourceHttpEventParameters(DaraModel):
         security_config: str = None,
         type: str = None,
     ):
-        # The CIDR block for security configuration. This parameter is required only when the SecurityConfig parameter is set to ip. You can enter a CIDR block or an IP address.
+        # The CIDR block for the security configuration. This parameter is required only when the SecurityConfig parameter is set to ip. You can enter a CIDR block or an IP address.
         self.ip = ip
         # The HTTP request methods supported by the generated webhook. You can select multiple values. Valid values:
+        # 
         # - GET
+        # 
         # - POST
+        # 
         # - PUT
+        # 
         # - PATCH
+        # 
         # - DELETE
+        # 
         # - HEAD
+        # 
         # - OPTIONS
+        # 
         # - TRACE
+        # 
         # - CONNECT
         self.method = method
-        # The secure domain name for security configuration. This parameter is required only when the SecurityConfig parameter is set to referer. You can enter a domain name.
+        # The secure domain name for the security configuration. This parameter is required only when the SecurityConfig parameter is set to referer. You can enter a domain name.
         self.referer = referer
         # The type of the security configuration. Valid values:
+        # 
         # - none: No configuration is required.
-        # - ip: CIDR block.
-        # - referer: Secure domain name.
+        # 
+        # - ip: CIDR block
+        # 
+        # - referer: Secure domain name
         self.security_config = security_config
         # The protocol type supported by the generated webhook. Valid values:
+        # 
         # - HTTP
+        # 
         # - HTTPS
+        # 
         # - HTTP&HTTPS
         self.type = type
 

@@ -25,10 +25,10 @@ class CreateRuleRequest(DaraModel):
         self.event_bus_name = event_bus_name
         # The list of event targets.
         self.event_targets = event_targets
-        # The event pattern in JSON format. The following patterns are supported:
-        # - stringEqual pattern
-        # - stringExpression pattern
-        # Each field supports up to five expressions in a map structure.
+        # The event pattern in JSON format. Valid values:
+        # stringEqual mode.
+        # stringExpression mode.
+        # Up to 5 expressions are supported for each field (map structure).
         # 
         # This parameter is required.
         self.filter_pattern = filter_pattern
@@ -37,8 +37,8 @@ class CreateRuleRequest(DaraModel):
         # This parameter is required.
         self.rule_name = rule_name
         # The status of the rule. Valid values:
-        # - ENABLE: The rule is enabled. This is the default status.
-        # - DISABLE: The rule is disabled.
+        # ENABLE: The rule is enabled. This is the default status.
+        # DISABLE: The rule is disabled.
         self.status = status
 
     def validate(self):
@@ -113,13 +113,13 @@ class CreateRuleRequestEventTargets(DaraModel):
     ):
         # The concurrency control configuration.
         self.concurrent_config = concurrent_config
-        # The dead-letter queue. Unprocessed events or events that exceed the retry count are written to the dead-letter queue. Supported queue types include ApsaraMQ for RocketMQ, Simple Message Queue (formerly MNS), ApsaraMQ for Kafka, and EventBridge event buses.
+        # The dead-letter queue. Unprocessed events or events that exceed the retry limit are written to the dead-letter queue. Supported queue types include ApsaraMQ for RocketMQ, Simple Message Queue (formerly MNS), ApsaraMQ for Kafka, and EventBridge event buses.
         self.dead_letter_queue = dead_letter_queue
         # The endpoint URL for delivery.
         self.endpoint = endpoint
         # The fault tolerance strategy. Valid values:
-        # - ALL: allows fault tolerance. Exceptions do not block execution. If the retry strategy is exhausted, messages are delivered to the dead-letter queue or discarded based on the configuration.
-        # - NONE: disables fault tolerance. Exceptions block execution when the retry strategy is exhausted.
+        # ALL: Fault tolerance is allowed. Exceptions are tolerated and do not block execution. If the retry strategy is exhausted, messages are delivered to the dead-letter queue or discarded based on the configuration.
+        # NONE: Fault tolerance is disabled. Exceptions are not tolerated. If an exception occurs and the retry strategy is exhausted, execution is blocked.
         self.errors_tolerance = errors_tolerance
         # The custom ID of the event target.
         # 
@@ -127,9 +127,9 @@ class CreateRuleRequestEventTargets(DaraModel):
         self.id = id
         # The parameters of the event target.
         self.param_list = param_list
-        # The retry policy for pushing events. Valid values:
-        # - BACKOFF_RETRY: backoff retry policy. The system retries 3 times, with a random interval of 10 to 20 seconds between each retry.
-        # - EXPONENTIAL_DECAY_RETRY: exponential decay retry. The system retries 176 times, with the interval exponentially incrementing to 512 seconds. The total retry time is 1 day. The specific intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, and then 512 seconds for the remaining 167 retries.
+        # The push retry policy. Valid values:
+        # BACKOFF_RETRY: The backoff retry policy. The system retries 3 times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+        # EXPONENTIAL_DECAY_RETRY: The exponential decay retry. The system retries 176 times. The intervals between consecutive retries exponentially increment up to 512 seconds. The total retry time is 1 day. The specific intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512...512 seconds (167 intervals of 512 seconds in total).
         self.push_retry_strategy = push_retry_strategy
         # The type of the event target. For more information, see [Event target parameters](https://help.aliyun.com/document_detail/185887.html).
         # 
@@ -224,7 +224,7 @@ class CreateRuleRequestEventTargetsParamList(DaraModel):
         self.form = form
         # The resource parameter of the event target. For more information, see [Limits](https://help.aliyun.com/document_detail/163289.html).
         self.resource_key = resource_key
-        # The parameter template style of the event target.
+        # The style of the event target parameter template.
         self.template = template
         # The value of the event target parameter.
         self.value = value
@@ -276,7 +276,7 @@ class CreateRuleRequestEventTargetsDeadLetterQueue(DaraModel):
         v_switch_ids: str = None,
         vpc_id: str = None,
     ):
-        # The ARN of the dead-letter queue. Unprocessed events or events that exceed the retry count are written to the dead-letter queue. Simple Message Queue (formerly MNS) and ApsaraMQ for RocketMQ are supported.
+        # The ARN of the dead-letter queue. Unprocessed events or events that exceed the retry limit are written to the dead-letter queue. Simple Message Queue (formerly MNS) and ApsaraMQ for RocketMQ are supported.
         self.arn = arn
         # The network type.
         self.network = network

@@ -21,9 +21,9 @@ class CreateEventBusRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_bus_name = event_bus_name
-        # The ID of the resource group. If you do not specify this parameter, the created event bus belongs to the default resource group of the account.
+        # The ID of the resource group. If you do not specify this parameter, the event bus belongs to the default resource group of the account.
         self.resource_group_id = resource_group_id
-        # The list of tags.
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -80,7 +80,7 @@ class CreateEventBusRequestTags(DaraModel):
     ):
         # The tag key.
         self.key = key
-        # The tag value.
+        # The value of the first tag in the tag list.
         self.value = value
 
     def validate(self):

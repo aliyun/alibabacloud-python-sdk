@@ -42,7 +42,7 @@ class CreateEventSourceShrinkRequest(DaraModel):
         self.source_http_event_parameters_shrink = source_http_event_parameters_shrink
         # The request parameter SourceKafkaParameters.
         self.source_kafka_parameters_shrink = source_kafka_parameters_shrink
-        # The parameters for a Simple Message Queue (formerly MNS) event source. If you select Simple Message Queue (formerly MNS) as the event source, the RegionId, IsBase64Decode, and QueueName parameters are required.
+        # The Simple Message Queue (formerly MNS) event source parameters. When you select Simple Message Queue (formerly MNS) as the event source, the RegionId, IsBase64Decode, and QueueName parameters are required.
         self.source_mnsparameters_shrink = source_mnsparameters_shrink
         # The parameters for an OSS event source.
         self.source_ossevent_parameters_shrink = source_ossevent_parameters_shrink

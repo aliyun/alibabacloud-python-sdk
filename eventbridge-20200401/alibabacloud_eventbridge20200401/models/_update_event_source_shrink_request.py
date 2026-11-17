@@ -32,27 +32,27 @@ class UpdateEventSourceShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_source_name = event_source_name
-        # The external data source configuration.
+        # The external datasource config.
         self.external_source_config_shrink = external_source_config_shrink
         # The type of the external data source.
         self.external_source_type = external_source_type
         # Specifies whether to connect to an external data source.
         self.linked_external_source = linked_external_source
-        # The SourceHttpEventParameters request parameter.
+        # The request parameter SourceHttpEventParameters.
         self.source_http_event_parameters_shrink = source_http_event_parameters_shrink
-        # The SourceKafkaParameters request parameter.
+        # The request parameter SourceKafkaParameters.
         self.source_kafka_parameters_shrink = source_kafka_parameters_shrink
-        # The parameters for a Simple Message Queue (formerly MNS) event source.
+        # The parameters for the Simple Message Queue (formerly MNS) event source.
         self.source_mnsparameters_shrink = source_mnsparameters_shrink
-        # The parameters for an OSS event source.
+        # The parameters for the OSS event source.
         self.source_ossevent_parameters_shrink = source_ossevent_parameters_shrink
-        # The SourceRabbitMQParameters request parameter.
+        # The request parameter SourceRabbitMQParameters.
         self.source_rabbit_mqparameters_shrink = source_rabbit_mqparameters_shrink
-        # The SourceRocketMQParameters request parameter.
+        # The request parameter SourceRocketMQParameters.
         self.source_rocket_mqparameters_shrink = source_rocket_mqparameters_shrink
-        # The parameters for a Simple Log Service event source.
+        # The parameters for the Simple Log Service event source.
         self.source_slsparameters_shrink = source_slsparameters_shrink
-        # The SourceScheduledEventParameters request parameter.
+        # The request parameter SourceScheduledEventParameters.
         self.source_scheduled_event_parameters_shrink = source_scheduled_event_parameters_shrink
 
     def validate(self):

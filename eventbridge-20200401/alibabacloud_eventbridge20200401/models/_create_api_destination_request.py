@@ -18,8 +18,7 @@ class CreateApiDestinationRequest(DaraModel):
         # This parameter is required.
         self.api_destination_name = api_destination_name
         # The name of the connection configuration. The name must be 2 to 127 characters in length.
-        # 
-        # <notice>Before calling this operation, call the Connection operation to create a connection configuration. Set ConnectionName to the name of an existing connection.
+        # <notice>You must first call the Connection operation to create a connection configuration, and specify an existing connection name for ConnectionName.</notice>
         # 
         # This parameter is required.
         self.connection_name = connection_name

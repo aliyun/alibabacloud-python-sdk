@@ -14,7 +14,7 @@ class DeleteEventStreamingRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_streaming_name = event_streaming_name
-        # Specifies whether to force delete the event stream. If set to true, system label-based deletion protection is bypassed. Default value: false.
+        # Specifies whether to force delete the event stream. If Settings is true, deletion interception based on system label is ignored. Default value: false.
         self.force = force
 
     def validate(self):

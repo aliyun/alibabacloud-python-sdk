@@ -16,19 +16,19 @@ class CreateConnectionShrinkRequest(DaraModel):
     ):
         # The authentication data structure.
         self.auth_parameters_shrink = auth_parameters_shrink
-        # The connection configuration name. Maximum length: 127 characters. Minimum length: 2 characters.
+        # The name of the connection configuration. The length must be 2 to 127 characters.
         # 
         # This parameter is required.
         self.connection_name = connection_name
         # The description of the connection configuration. Maximum length: 255 characters.
         self.description = description
-        # The network configuration data structure.
+        # The data structure of the network configuration.
         # 
         # This parameter is required.
         self.network_parameters_shrink = network_parameters_shrink
-        # The data source connection parameters (JSON object). This parameter is required when Type is a data source type. It is not required for the Http type. For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
+        # The data source connection parameters in JSON format. This parameter is required when Type is set to a data source type, and is not required when Type is set to Http. For specific field definitions, call the GetConnectionType operation and refer to ParamsSchema in the response.
         self.parameters_shrink = parameters_shrink
-        # The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, lakehouse, and Http. This parameter is required for data source type connections. If this parameter is not specified, the default value Http is used. The Http type is used for API Destination and other HTTP protocol targets. Hive and Iceberg are used for the corresponding data lakehouse sources. lakehouse is used only for compatibility with existing connections. Other data source types are used for data connections in the integration marketplace.
+        # The connection type. Valid values: MySQL, PostgreSQL, Elasticsearch, OSS_TABLES, SLS, OTS, MaxCompute, MongoDB, Redis, SQLServer, ClickHouse, Oracle, Hive, Iceberg, lakehouse, and Http. This parameter is required for data source connections. If you do not specify this parameter, the default value Http is used. The Http type is used for HTTP protocol targets such as API Destination. Hive and Iceberg are used for their respective data lakehouse data sources. The lakehouse type is used only for compatibility with existing connections. Other data source types are used for data connections in the integration marketplace.
         self.type = type
 
     def validate(self):

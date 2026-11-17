@@ -25,15 +25,15 @@ class UpdateEventStreamingRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_streaming_name = event_streaming_name
-        # The event filtering rule. If you do not specify this parameter, all events are matched. For more information, see [https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns](https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns).
+        # The event filter pattern. If you do not specify this parameter, all events are matched. For more information, see [Event patterns](https://www.alibabacloud.com/help/en/eventbridge/user-guide/event-patterns).
         self.filter_pattern = filter_pattern
-        # The common JSON Configurations for event providers. This parameter is mutually exclusive with Source.
+        # The common JSON configurations for the event provider. This parameter is mutually exclusive with Source.
         self.metadata = metadata
         # The runtime environment parameters.
         self.run_options = run_options
-        # The event target. You must select one sink, and you can configure only one sink.
+        # The event target. You must select exactly one sink.
         self.sink = sink
-        # The event provider. You must select exactly one source type and configure its parameters.
+        # The event provider. You must specify one and only one source type.
         self.source = source
         # The transform configurations.
         self.transforms = transforms
@@ -314,15 +314,15 @@ class UpdateEventStreamingRequestSource(DaraModel):
         source_rocket_mqparameters: main_models.UpdateEventStreamingRequestSourceSourceRocketMQParameters = None,
         source_slsparameters: main_models.UpdateEventStreamingRequestSourceSourceSLSParameters = None,
     ):
-        # The parameter settings for open source Kafka.
+        # The open-source Kafka parameter settings.
         self.source_apache_kafka_parameters = source_apache_kafka_parameters
-        # The RocketMQ checkpoint source.
+        # The RocketMQ Checkpoint source.
         self.source_apache_rocket_mqcheckpoint_parameters = source_apache_rocket_mqcheckpoint_parameters
-        # The custom connector Apache Kafka event source.
+        # The custom Apache Kafka connector event source.
         self.source_customized_kafka_connector_parameters = source_customized_kafka_connector_parameters
         # The custom Kafka event source.
         self.source_customized_kafka_parameters = source_customized_kafka_parameters
-        # The DTS source.
+        # The DTS event source.
         self.source_dtsparameters = source_dtsparameters
         # The event bus source.
         self.source_event_bus_parameters = source_event_bus_parameters
@@ -330,33 +330,33 @@ class UpdateEventStreamingRequestSource(DaraModel):
         self.source_fei_shu_docs_parameters = source_fei_shu_docs_parameters
         # The JDBC data source parameters.
         self.source_jdbcparameters = source_jdbcparameters
-        # The source Kafka parameters.
+        # The Kafka source.
         self.source_kafka_parameters = source_kafka_parameters
-        # The source Simple Message Queue (formerly MNS) parameters.
+        # The parameters for Simple Message Queue (formerly MNS) as the source.
         self.source_mnsparameters = source_mnsparameters
-        # The source MQTT parameters.
+        # The MQTT event source.
         self.source_mqttparameters = source_mqttparameters
-        # The source MySQL parameters.
+        # The MySQL event source.
         self.source_my_sqlparameters = source_my_sqlparameters
-        # The source OSS parameters.
+        # The OSS event source.
         self.source_ossparameters = source_ossparameters
-        # The source open source RabbitMQ parameters.
+        # The open source RabbitMQ event source.
         self.source_open_source_rabbit_mqparameters = source_open_source_rabbit_mqparameters
-        # The source PostgreSQL parameters.
+        # The PostgreSQL data source parameters.
         self.source_postgre_sqlparameters = source_postgre_sqlparameters
-        # The source Prometheus event source parameters.
+        # The Prometheus event source.
         self.source_prometheus_parameters = source_prometheus_parameters
-        # The source ApsaraMQ for RabbitMQ metadata parameters.
+        # The ApsaraMQ for RabbitMQ metadata source parameters.
         self.source_rabbit_mqmeta_parameters = source_rabbit_mqmeta_parameters
-        # The source ApsaraMQ for RabbitMQ message synchronization parameters.
+        # The ApsaraMQ for RabbitMQ message synchronization source parameters.
         self.source_rabbit_mqmsg_sync_parameters = source_rabbit_mqmsg_sync_parameters
-        # The source RabbitMQ parameters.
+        # The RabbitMQ source.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
-        # The RocketMQ checkpoint source.
+        # The RocketMQ Checkpoint source.
         self.source_rocket_mqcheckpoint_parameters = source_rocket_mqcheckpoint_parameters
-        # The RocketMQ source parameters.
+        # The RocketMQ source.
         self.source_rocket_mqparameters = source_rocket_mqparameters
-        # The Simple Log Service (SLS) source parameters.
+        # The SLS event source.
         self.source_slsparameters = source_slsparameters
 
     def validate(self):
@@ -575,7 +575,7 @@ class UpdateEventStreamingRequestSourceSourceSLSParameters(DaraModel):
         self,
         role_name: str = None,
     ):
-        # The name of the role. For the authorization of the event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and the trusted service must be the event bus.
+        # When granting authorization to the event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service and set the trusted service to the event bus.
         self.role_name = role_name
 
     def validate(self):
@@ -634,45 +634,44 @@ class UpdateEventStreamingRequestSourceSourceRocketMQParameters(DaraModel):
         self.body_data_type = body_data_type
         # The SQL filter statement.
         self.filter_sql = filter_sql
-        # The message filtering type.
+        # The message filter type.
         self.filter_type = filter_type
-        # The group ID of the MSMQ message queue RocketMQ.
+        # The group ID of ApsaraMQ for RocketMQ.
         self.group_id = group_id
         # The endpoint of the instance.
         self.instance_endpoint = instance_endpoint
-        # The instance ID of the MSMQ message queue RocketMQ.
+        # The instance ID of ApsaraMQ for RocketMQ.
         self.instance_id = instance_id
-        # The network type of the instance. Valid values:
+        # The network information of the instance. Valid values:
         # - PublicNetwork
         # - PrivateNetwork
         self.instance_network = instance_network
         # The password of the instance.
         self.instance_password = instance_password
-        # The security group ID of the instance.
+        # The security group information of the instance.
         self.instance_security_group_id = instance_security_group_id
         # The instance type. Valid values:
-        # - Cloud_4 (default): ApsaraMQ for RocketMQ 4.0 instance.
-        # - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
+        # - Cloud_4 (default): Alibaba Cloud RocketMQ 4.0 instance.
+        # - Cloud_5: Alibaba Cloud RocketMQ 5.0 instance.
         # - SelfBuilt: Self-managed Apache RocketMQ instance.
         self.instance_type = instance_type
         # The username of the instance.
         self.instance_username = instance_username
-        # The vSwitch IDs of the instance.
+        # The vSwitch information of the instance.
         self.instance_vswitch_ids = instance_vswitch_ids
-        # The VPC ID of the instance.
+        # The VPC information of the instance.
         self.instance_vpc_id = instance_vpc_id
         # The network type. Valid values:
         # - PublicNetwork
         # - PrivateNetwork
         self.network = network
-        # The consumption offset of messages. Valid values:
-        # - CONSUMEFROMLASTOFFSET: Consumes messages from the latest offset.
-        # - CONSUMEFROMFIRSTOFFSET: Consumes messages from the earliest offset.
-        # - CONSUMEFROMTIMESTAMP: Consumes messages from the offset at a specified point in time.
-        # 
+        # The consumption offset of the message. Valid values:
+        # - CONSUMEFROMLASTOFFSET: Consumes from the latest offset.
+        # - CONSUMEFROMFIRSTOFFSET: Consumes from the earliest offset.
+        # - CONSUMEFROMTIMESTAMP: Consumes from the offset at a specified point in time.
         # Default value: CONSUMEFROMLAST_OFFSET.
         self.offset = offset
-        # The region ID of the MSMQ message queue RocketMQ.
+        # The region ID of ApsaraMQ for RocketMQ.
         self.region_id = region_id
         # The security group ID.
         self.security_group_id = security_group_id
@@ -680,7 +679,7 @@ class UpdateEventStreamingRequestSourceSourceRocketMQParameters(DaraModel):
         self.tag = tag
         # The timestamp. This parameter is valid only when the Offset parameter is set to CONSUMEFROMTIMESTAMP.
         self.timestamp = timestamp
-        # The topic name.
+        # The name of the topic.
         self.topic = topic
         # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
@@ -853,7 +852,7 @@ class UpdateEventStreamingRequestSourceSourceRocketMQCheckpointParameters(DaraMo
         self.instance_type = instance_type
         # The region ID.
         self.region_id = region_id
-        # The topics of the ApsaraMQ for RocketMQ instance.
+        # The topic of the ApsaraMQ for RocketMQ instance.
         self.topics = topics
 
     def validate(self):
@@ -906,24 +905,24 @@ class UpdateEventStreamingRequestSourceSourceRabbitMQParameters(DaraModel):
         virtual_host_name: str = None,
         vpc_id: str = None,
     ):
-        # The instance ID of the ApsaraMQ for RabbitMQ instance.
+        # The instance ID of ApsaraMQ for RabbitMQ.
         self.instance_id = instance_id
         # The network type used to connect to the source RabbitMQ instance. Valid values:
-        # - PublicNetwork: the Internet.
-        # - PrivateNetwork: a VPC.
-        # If you set this parameter to PrivateNetwork, you must also configure VpcId, VSwitchIds, and SecurityGroupId. When you update an event stream and want to retain the original VPC configuration, you must pass these network parameters at the same time.
+        # - PublicNetwork: Internet.
+        # - PrivateNetwork: VPC.
+        # If you set this parameter to PrivateNetwork, you must also configure VpcId, VSwitchIds, and SecurityGroupId. When you update an event stream and want to retain the original VPC configurations, you must pass these network parameters at the same time.
         self.network_type = network_type
-        # The queue name of the ApsaraMQ for RabbitMQ instance.
+        # The name of the queue in the ApsaraMQ for RabbitMQ instance.
         self.queue_name = queue_name
         # The region ID.
         self.region_id = region_id
         # The ID of the security group used to connect to the source RabbitMQ instance. This parameter is required when NetworkType is set to PrivateNetwork.
         self.security_group_id = security_group_id
-        # The vSwitch IDs used to connect to the source RabbitMQ instance. Separate multiple vSwitch IDs with commas (,). This parameter is required when NetworkType is set to PrivateNetwork.
+        # The IDs of the vSwitches used to connect to the source RabbitMQ instance. Separate multiple vSwitch IDs with commas (,). This parameter is required when NetworkType is set to PrivateNetwork.
         self.v_switch_ids = v_switch_ids
-        # The vhost name of the ApsaraMQ for RabbitMQ instance.
+        # The name of the vhost in the ApsaraMQ for RabbitMQ instance.
         self.virtual_host_name = virtual_host_name
-        # The VPC ID of the source RabbitMQ instance. This parameter is required when NetworkType is set to PrivateNetwork.
+        # The ID of the VPC where the source RabbitMQ instance resides. This parameter is required when NetworkType is set to PrivateNetwork.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1088,7 +1087,7 @@ class UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters(DaraMo
         self.network_type = network_type
         # The password used to connect to the open source RabbitMQ instance.
         self.password = password
-        # The queue name of the open source RabbitMQ instance.
+        # The name of the queue for the open source RabbitMQ instance.
         self.queue_name = queue_name
         # The security group ID.
         self.security_group_id = security_group_id
@@ -1096,9 +1095,9 @@ class UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters(DaraMo
         self.username = username
         # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
-        # The vhost name of the open source RabbitMQ instance.
+        # The name of the virtual host for the open source RabbitMQ instance.
         self.virtual_host_name = virtual_host_name
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1194,21 +1193,21 @@ class UpdateEventStreamingRequestSourceSourceOSSParameters(DaraModel):
     ):
         # The name of the OSS bucket.
         self.bucket_name = bucket_name
-        # The delimiter. In chunk loading mode, this delimiter is used as the chunk identifier for text. Default value: 
-        #  (line break).
+        # The delimiter used as the chunk identifier for text in chunk loading mode. Default value: 
+        # .
         self.delimiter = delimiter
         # The file extension whitelist.
         self.file_extensions = file_extensions
         # The document loader.
         self.load_format = load_format
         # The data loading mode. Valid values:
-        # - single: loads a single document.
-        # - element: loads data in chunks.
+        # - single: Loads a single document.
+        # - element: Loads data in chunks.
         # Default value: single.
         self.load_mode = load_mode
         # The file path prefix.
         self.prefix = prefix
-        # The name of the RAM role that authorizes EventBridge to read OSS files. The role must have at least read-only permissions on OSS.
+        # The name of the role that authorizes EventBridge to read OSS files. The role must have at least read-only permissions on OSS.
         self.role_name = role_name
 
     def validate(self):
@@ -1292,11 +1291,11 @@ class UpdateEventStreamingRequestSourceSourceMQTTParameters(DaraModel):
         self.region_id = region_id
         # The security group ID.
         self.security_group_id = security_group_id
-        # The topic name.
+        # The name of the topic.
         self.topic = topic
-        # The vSwitch IDs.
+        # The IDs of the vSwitches.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1370,7 +1369,7 @@ class UpdateEventStreamingRequestSourceSourceMNSParameters(DaraModel):
     ):
         # Specifies whether to enable Base64 encoding. Default value: true.
         self.is_base_64decode = is_base_64decode
-        # The queue name.
+        # The name of the queue.
         self.queue_name = queue_name
         # The region ID.
         self.region_id = region_id
@@ -1421,11 +1420,11 @@ class UpdateEventStreamingRequestSourceSourceKafkaParameters(DaraModel):
         value_data_type: str = None,
         vpc_id: str = None,
     ):
-        # The group ID of the consumer that subscribes to the topic.
+        # The ID of the consumer group that subscribes to the topic.
         self.consumer_group = consumer_group
         # The instance ID.
         self.instance_id = instance_id
-        # The network configuration. Default value: Default. For VPC networks, set this parameter to PublicNetwork.
+        # The network configuration. Default value: Default. The value for a VPC is PublicNetwork.
         self.network = network
         # The offset.
         self.offset_reset = offset_reset
@@ -1433,16 +1432,16 @@ class UpdateEventStreamingRequestSourceSourceKafkaParameters(DaraModel):
         self.region_id = region_id
         # The security group ID.
         self.security_group_id = security_group_id
-        # The topic name.
+        # The name of the topic.
         self.topic = topic
         # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
         # The encoding and decoding parameter. Valid values:
-        # - Json: uses the existing logic. Bytes are decoded into strings by using UTF-8 and parsed as JSON.
-        # - Text: bytes are decoded into strings by using UTF-8 and directly placed in the payload.
-        # - Binary: bytes are encoded into strings by using Base64 encoding and placed in the payload.
+        # - Json: The existing logic. Bytes are decoded into character strings by using UTF-8 and parsed as JSON.
+        # - Text: Bytes are decoded into character strings by using UTF-8 and directly placed in the payload.
+        # - Binary: Bytes are encoded into character strings by using Base64 encoding and placed in the payload.
         self.value_data_type = value_data_type
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1569,17 +1568,17 @@ class UpdateEventStreamingRequestSourceSourceDTSParameters(DaraModel):
     ):
         # The network address and port number of the data subscription channel.
         self.broker_url = broker_url
-        # The consumption offset, which is the timestamp when the SDK client consumes the first piece of data. The value is a UNIX timestamp.
+        # The consumption checkpoint, which is the timestamp when the SDK client consumes the first piece of data. The value is a UNIX timestamp.
         self.init_check_point = init_check_point
-        # The password of the consumer group account.
+        # The password of the consumer group.
         self.password = password
-        # The ID of the consumer group.
+        # The consumer group ID.
         self.sid = sid
         # The task ID.
         self.task_id = task_id
         # The subscription topic of the data subscription channel.
         self.topic = topic
-        # The account of the consumer group.
+        # The username of the consumer group.
         self.username = username
 
     def validate(self):
@@ -1778,11 +1777,11 @@ class UpdateEventStreamingRequestSourceSourceApacheRocketMQCheckpointParameters(
         self.region_id = region_id
         # The security group ID.
         self.security_group_id = security_group_id
-        # The topic of the Apache RocketMQ instance.
+        # The topics of the Apache RocketMQ instance.
         self.topics = topics
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -1874,47 +1873,47 @@ class UpdateEventStreamingRequestSourceSourceApacheKafkaParameters(DaraModel):
         value_data_type: str = None,
         vpc_id: str = None,
     ):
-        # The endpoint.
+        # The endpoints.
         self.bootstraps = bootstraps
-        # The name of the consumer group.
+        # The consumer group name.
         self.consumer_group = consumer_group
-        # Specifies the network type of the Kafka cluster.
+        # The Kafka network type.
         self.network_type = network_type
-        # The consumption offset. Valid values:
-        # - latest: The system reads data from the latest offset.
-        # - earliest: The system reads data from the earliest offset. This value is supported only when an unused consumer group is initialized for the first time.
+        # The consumption checkpoint. Valid values:
+        # - latest: The system reads data from the latest checkpoint.
+        # - earliest: The system reads data from the earliest checkpoint. This value is only supported for the first initialization of an unused consumer group.
         self.offset_reset = offset_reset
-        # The SASL authentication mechanism of Kafka.
+        # The Kafka SASL authentication mechanism.
         self.sasl_mechanism = sasl_mechanism
-        # The SASL authentication password of Kafka.
+        # The Kafka SASL authentication password.
         self.sasl_password = sasl_password
-        # The SASL authentication username of Kafka.
+        # The Kafka SASL authentication username.
         self.sasl_user = sasl_user
-        # The ID of the security group for the Kafka source.
+        # The security group ID of the Kafka event source.
         self.security_group_id = security_group_id
-        # The security protocol type of Kafka. Valid values:
+        # The Kafka security protocol type. Valid values:
         # - SASL_SSL
         # - PLAINTEXT
         # - SASL_PLAINTEXT
         self.security_protocol = security_protocol
-        # [Required for encrypted private keys] The password for the Kafka client private key. If the client private key is protected by password encryption (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" tag), you must provide the decryption password. If the private key is not encrypted, leave this parameter empty. Note: This password is used only to decrypt the private key and is unrelated to Kafka authentication.
+        # [Required for encrypted private keys] The Kafka client private key password. This parameter is required when the client private key is encrypted (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" tag). Leave this parameter empty if the private key is not encrypted. Note: This password is only used to decrypt the private key and is unrelated to Kafka authentication.
         self.ssl_key_password = ssl_key_password
-        # [Required for mutual authentication] The Kafka client certificate chain. If mutual SSL authentication (ssl.client.auth=required) is enabled on the Kafka server, you must provide this parameter. Format requirements: Base64-encoded PEM format, including the client certificate and the complete certificate chain (the client certificate first, followed by intermediate CA certificates, and the root CA certificate is optional). Note: Ensure that each PEM file starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\" before concatenating and Base64-encoding them.
+        # [Required for mutual authentication] The Kafka client certificate chain. This parameter is required when mutual SSL authentication is enabled on the Kafka server (ssl.client.auth=required). Format requirements: Base64-encoded PEM format, including the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, and root CA certificate optional). Note: Ensure that each PEM file starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\" before concatenation and Base64 encoding.
         self.ssl_keystore_certificate_chain = ssl_keystore_certificate_chain
-        # [Required for bidirectional authentication] The SSL private key configuration object. If bidirectional SSL authentication is enabled on the Kafka server, you must provide the client private key. Only the KMS pattern is supported for the key: specify the EPS resource of the Key Management Service (KMS) that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {\\"KmsArn\\": \\"acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx\\", \\"KmsSecretValueKey\\": \\"keystore_private_key\\"}.
+        # [Required for bidirectional authentication] The SSL private key configuration object. This parameter is required when bidirectional SSL authentication is enabled on the Kafka server. Only the KMS mode is supported for keys: specify the Key Management Service (KMS) resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory for higher security. Configuration example: {"KmsArn": "acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx", "KmsSecretValueKey": "keystore_private_key"}.
         self.ssl_keystore_key = ssl_keystore_key
-        # [Required for SSL scenarios] The trusted certificate of the Kafka server. This parameter is used to authenticate the validity of the SSL certificate of the Kafka broker and prevent man-in-the-middle attacks. Format requirements: PEM format with Base64 encoding, which typically includes the CA certificate of the Kafka server or the server certificate itself. Example: Perform Base64 encoding on the PEM file content of the CA certificate (ensure that it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, you must provide the CA certificate that issued the certificate.
+        # [Required for SSL] The Kafka server trusted certificate. This parameter is used to authenticate the validity of the Kafka broker SSL certificate and prevent man-in-the-middle attacks. Format requirements: PEM format with Base64 encoding, typically containing the Kafka server CA certificate or the server certificate itself. Example: Perform Base64 encoding on the PEM file content of the CA certificate (ensure it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, provide the CA certificate that issued it.
         self.ssl_truststore_certificates = ssl_truststore_certificates
-        # The name of the topic.
+        # The topic name.
         self.topic = topic
-        # The list of vSwitch IDs for the Kafka source.
+        # The vSwitch IDs of the Kafka event source.
         self.v_switch_ids = v_switch_ids
         # The data type. Valid values:
         # - Text
         # - Binary
         # - Json
         self.value_data_type = value_data_type
-        # The VPC ID of the Kafka source.
+        # The VPC ID of the Kafka event source.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2041,9 +2040,9 @@ class UpdateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey
         kms_arn: str = None,
         kms_secret_value_key: str = None,
     ):
-        # [Required] The ARN of the KMS resource that stores the SSL private key. This parameter is used to locate the KMS instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". To obtain the ARN, view the ARN information of the corresponding key in the KMS console.
+        # [Required] The KMS resource ARN for storing the SSL private key. This parameter is used to locate the KMS instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". To obtain the ARN, view the ARN information of the corresponding key in the KMS console.
         self.kms_arn = kms_arn
-        # [KMS KV mode] The key name in the KMS secret. If the secret stored in KMS is in a key-value pair (KV) structure, specify this parameter to indicate the key corresponding to the SSL private key. Example: If the KMS secret is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", enter \\"ssl_keystore_key\\". If the KMS secret is in plain text mode (directly storing the PEM content of the private key), leave this parameter empty.
+        # [KMS KV mode] The key name in the KMS secret. When the KMS secret is a key-value (KV) pair, specify this parameter to indicate the key corresponding to the SSL private key. Example: If the KMS secret is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", enter \\"ssl_keystore_key\\". If the KMS secret is in plaintext mode (directly storing the PEM content of the private key), leave this parameter empty.
         self.kms_secret_value_key = kms_secret_value_key
 
     def validate(self):
@@ -2075,6 +2074,7 @@ class UpdateEventStreamingRequestSourceSourceApacheKafkaParametersSslKeystoreKey
 class UpdateEventStreamingRequestSink(DaraModel):
     def __init__(
         self,
+        sink_agent_core_knowledge_base_parameters: main_models.SinkAgentCoreKnowledgeBaseParameters = None,
         sink_agent_run_parameters: main_models.SinkAgentRunParameters = None,
         sink_apache_kafka_parameters: main_models.UpdateEventStreamingRequestSinkSinkApacheKafkaParameters = None,
         sink_apache_rocket_mqcheckpoint_parameters: main_models.UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters = None,
@@ -2104,21 +2104,23 @@ class UpdateEventStreamingRequestSink(DaraModel):
         sink_rocket_mqparameters: main_models.UpdateEventStreamingRequestSinkSinkRocketMQParameters = None,
         sink_slsparameters: main_models.UpdateEventStreamingRequestSinkSinkSLSParameters = None,
     ):
+        # The parameters for the AgentCore knowledge base.
+        self.sink_agent_core_knowledge_base_parameters = sink_agent_core_knowledge_base_parameters
         # The delivery parameters for the agent runtime.
         self.sink_agent_run_parameters = sink_agent_run_parameters
         # The description.
         self.sink_apache_kafka_parameters = sink_apache_kafka_parameters
         # The event source type.
         self.sink_apache_rocket_mqcheckpoint_parameters = sink_apache_rocket_mqcheckpoint_parameters
-        # The API destination target parameters.
+        # The parameters for the API destination sink.
         self.sink_api_destination_parameters = sink_api_destination_parameters
-        # The Model Studio delivery parameters.
+        # The delivery parameters for Model Studio.
         self.sink_bai_lian_parameters = sink_bai_lian_parameters
-        # The sink Kafka connector parameters.
+        # The Kafka sink connector parameters.
         self.sink_customized_kafka_connector_parameters = sink_customized_kafka_connector_parameters
-        # The sink Kafka parameters.
+        # The Kafka sink parameters.
         self.sink_customized_kafka_parameters = sink_customized_kafka_parameters
-        # The sink DashVector parameters.
+        # The DashVector sink parameters.
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
         # The DataHub sink parameters.
         self.sink_data_hub_parameters = sink_data_hub_parameters
@@ -2126,42 +2128,44 @@ class UpdateEventStreamingRequestSink(DaraModel):
         self.sink_data_works_trigger_parameters = sink_data_works_trigger_parameters
         # The event source type.
         self.sink_doris_parameters = sink_doris_parameters
-        # The name of the event target.
+        # The event target name.
         self.sink_event_house_parameters = sink_event_house_parameters
         # The function target.
         self.sink_fc_parameters = sink_fc_parameters
-        # The Sink Fnf parameters.
+        # The Sink FNF parameters.
         self.sink_fnf_parameters = sink_fnf_parameters
-        # The HTTPS target parameters.
+        # The parameters for the HTTPS sink.
         self.sink_https_parameters = sink_https_parameters
-        # The sink Kafka parameters.
+        # The Sink Kafka parameters.
         self.sink_kafka_parameters = sink_kafka_parameters
-        # The knowledge base delivery parameters.
+        # The delivery parameters for the knowledge base.
         self.sink_knowledge_base_parameters = sink_knowledge_base_parameters
-        # The Simple Message Queue (formerly MNS) event target, which is an MSMQ service.
+        # The Simple Message Queue (formerly MNS) event target.
         self.sink_mnsparameters = sink_mnsparameters
-        # The MQTT delivery parameters.
+        # The delivery parameters for MQTT.
         self.sink_mqttparameters = sink_mqttparameters
-        # The Object Storage Service (OSS) delivery parameters.
+        # The delivery parameters for Object Storage Service (OSS).
         self.sink_ossparameters = sink_ossparameters
         # The parameters for the self-managed RabbitMQ sink.
         self.sink_open_source_rabbit_mqparameters = sink_open_source_rabbit_mqparameters
-        # The parameters for the Prometheus sink.
+        # The Sink Prometheus parameters.
         self.sink_prometheus_parameters = sink_prometheus_parameters
-        # The metadata delivery parameters for Message Queue for RabbitMQ.
+        # The metadata delivery parameters for the MSMQ RabbitMQ message queue.
         self.sink_rabbit_mqmeta_parameters = sink_rabbit_mqmeta_parameters
-        # The message synchronization delivery parameters for Message Queue for RabbitMQ.
+        # The message synchronization delivery parameters for MSMQ RabbitMQ.
         self.sink_rabbit_mqmsg_sync_parameters = sink_rabbit_mqmsg_sync_parameters
         # The parameters for the ApsaraMQ for RabbitMQ sink.
         self.sink_rabbit_mqparameters = sink_rabbit_mqparameters
         # The event source type.
         self.sink_rocket_mqcheckpoint_parameters = sink_rocket_mqcheckpoint_parameters
-        # The destination parameters for the MSMQ RocketMQ message.
+        # The sink parameters for Message Queue for RocketMQ.
         self.sink_rocket_mqparameters = sink_rocket_mqparameters
-        # The Simple Log Service (SLS) sink parameters.
+        # The Simple Log Service sink parameters.
         self.sink_slsparameters = sink_slsparameters
 
     def validate(self):
+        if self.sink_agent_core_knowledge_base_parameters:
+            self.sink_agent_core_knowledge_base_parameters.validate()
         if self.sink_agent_run_parameters:
             self.sink_agent_run_parameters.validate()
         if self.sink_apache_kafka_parameters:
@@ -2224,6 +2228,9 @@ class UpdateEventStreamingRequestSink(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.sink_agent_core_knowledge_base_parameters is not None:
+            result['SinkAgentCoreKnowledgeBaseParameters'] = self.sink_agent_core_knowledge_base_parameters.to_map()
+
         if self.sink_agent_run_parameters is not None:
             result['SinkAgentRunParameters'] = self.sink_agent_run_parameters.to_map()
 
@@ -2312,6 +2319,10 @@ class UpdateEventStreamingRequestSink(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SinkAgentCoreKnowledgeBaseParameters') is not None:
+            temp_model = main_models.SinkAgentCoreKnowledgeBaseParameters()
+            self.sink_agent_core_knowledge_base_parameters = temp_model.from_map(m.get('SinkAgentCoreKnowledgeBaseParameters'))
+
         if m.get('SinkAgentRunParameters') is not None:
             temp_model = main_models.SinkAgentRunParameters()
             self.sink_agent_run_parameters = temp_model.from_map(m.get('SinkAgentRunParameters'))
@@ -2437,21 +2448,21 @@ class UpdateEventStreamingRequestSinkSinkSLSParameters(DaraModel):
         role_name: main_models.UpdateEventStreamingRequestSinkSinkSLSParametersRoleName = None,
         topic: main_models.UpdateEventStreamingRequestSinkSinkSLSParametersTopic = None,
     ):
-        # The content sent to SLS.
+        # The content sent to Simple Log Service.
         self.body = body
         # The custom key-value pairs for logs. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
         self.content_schema = content_schema
-        # The SLS data format. Valid values:
+        # The Simple Log Service data format. Valid values:
         # - JSON
         # - KeyValue
         self.content_type = content_type
-        # The SLS Logstore.
+        # The Simple Log Service Logstore.
         self.log_store = log_store
-        # The SLS project.
+        # The Simple Log Service project.
         self.project = project
-        # When granting authorization to the event bus EventBridge to use this role to read SLS log content, you must meet the following conditions: when creating the role for the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service and set the trusted service to the event bus.
+        # To authorize EventBridge to use this role to read Simple Log Service logs, the following condition must be met: when creating the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and set the trusted service to the event bus.
         self.role_name = role_name
-        # The topic of the log. This corresponds to the reserved field topic in SLS.
+        # The topic to which the logs belong, which corresponds to the reserved Simple Log Service field topic.
         self.topic = topic
 
     def validate(self):
@@ -2537,11 +2548,11 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersTopic(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The topic of the log. This corresponds to the reserved field topic in SLS.
+        # The topic to which the logs belong, which corresponds to the reserved Simple Log Service field topic.
         self.value = value
 
     def validate(self):
@@ -2583,11 +2594,11 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersRoleName(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # When granting authorization to the event bus EventBridge to use this role to read SLS log content, you must meet the following conditions: when creating the role for the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service and set the trusted service to the event bus.
+        # To authorize EventBridge to use this role to read Simple Log Service logs, the following condition must be met: when creating the role used by the service in the Resource Access Management (RAM) console, you must select Alibaba Cloud Service, and set the trusted service to the event bus.
         self.value = value
 
     def validate(self):
@@ -2629,11 +2640,11 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersProject(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The SLS project.
+        # The Simple Log Service project.
         self.value = value
 
     def validate(self):
@@ -2675,11 +2686,11 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersLogStore(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The SLS Logstore.
+        # The Simple Log Service Logstore.
         self.value = value
 
     def validate(self):
@@ -2725,7 +2736,7 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersContentType(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The SLS data format.
+        # The Simple Log Service data format.
         self.value = value
 
     def validate(self):
@@ -2817,7 +2828,7 @@ class UpdateEventStreamingRequestSinkSinkSLSParametersBody(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -2874,11 +2885,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParameters(DaraModel):
     ):
         # The message content.
         self.body = body
-        # The message delivery order type. Optional. Default value: Concurrently.
+        # The message delivery order type. This parameter is optional. Default value: Concurrent delivery.
         self.delivery_order_type = delivery_order_type
         # The endpoint of the instance.
         self.instance_endpoint = instance_endpoint
-        # The instance ID. The destination service type is MSMQ RocketMQ message.
+        # The destination service type is Message Queue for RocketMQ.
         self.instance_id = instance_id
         # The password of the instance.
         self.instance_password = instance_password
@@ -2897,15 +2908,15 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParameters(DaraModel):
         # The security group ID.
         self.security_group_id = security_group_id
         # The sharding key of the message.
-        # > When DeliveryOrderType is set to Orderly, this specifies the event content transformation rule for the ShardingKey property when writing messages to the downstream service. If the source is RocketMQ, ShardingKey can be empty. In this case, the sharding key of the message is generated by concatenating the upstream BrokerName and QueueId.
+        # > When DeliveryOrderType is set to Orderly, this parameter specifies the event content transformation rule for the ShardingKey attribute when messages are written to the downstream service. When Source is set to RocketMQ, ShardingKey can be left empty. In this case, the message sharding key is generated by concatenating the upstream BrokerName and QueueId.
         self.sharding_key = sharding_key
         # The filter properties.
         self.tags = tags
-        # The topic of the MSMQ RocketMQ message instance.
+        # The topic of the Message Queue for RocketMQ instance.
         self.topic = topic
         # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3076,7 +3087,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The VPC ID.
+        # The ID of the VPC.
         self.value = value
 
     def validate(self):
@@ -3118,7 +3129,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds(DaraModel)
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -3164,11 +3175,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The topic of the MSMQ RocketMQ message instance.
+        # The topic of the Message Queue for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -3214,7 +3225,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersTags(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -3256,11 +3267,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersShardingKey(DaraModel
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The value of the sharding key.
+        # The sharding key value.
         self.value = value
 
     def validate(self):
@@ -3302,7 +3313,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId(DaraM
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -3352,7 +3363,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties(DaraModel)
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -3394,7 +3405,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -3446,7 +3457,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersKeys(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -3488,7 +3499,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername(Dara
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -3534,13 +3545,13 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType(DaraMode
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
         # The instance type. Valid values:
         # 
-        # - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance. This is the default value.
+        # - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance (default).
         # - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
         # - SelfBuilt: Self-managed Apache RocketMQ cluster.
         self.value = value
@@ -3584,7 +3595,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword(Dara
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -3630,11 +3641,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId(DaraModel)
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The instance ID of the MSMQ RocketMQ message.
+        # The instance ID of the Message Queue for RocketMQ.
         self.value = value
 
     def validate(self):
@@ -3676,7 +3687,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint(Dara
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -3722,14 +3733,14 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersDeliveryOrderType(Dar
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
         # The delivery order type. Valid values:
         # 
-        # - **Orderly**: Orderly delivery.
-        # - **Concurrently**: Concurrent delivery.
+        # - **Orderly:** Orderly delivery.
+        # - **Concurrently:** Concurrent delivery.
         self.value = value
 
     def validate(self):
@@ -3775,7 +3786,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQParametersBody(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -3826,11 +3837,10 @@ class UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParameters(DaraModel)
         # The instance ID.
         self.instance_id = instance_id
         # The instance type. Valid values:
-        # 
-        # - Cloud_4: an ApsaraMQ for RocketMQ 4.0 instance.
-        # - Cloud_5: an ApsaraMQ for RocketMQ 5.0 instance.
+        # - Cloud_4: ApsaraMQ for RocketMQ 4.0 instance.
+        # - Cloud_5: ApsaraMQ for RocketMQ 5.0 instance.
         self.instance_type = instance_type
-        # The topic of the Message Queue for RocketMQ instance.
+        # The topic of the ApsaraMQ for RocketMQ instance.
         self.topic = topic
 
     def validate(self):
@@ -3892,11 +3902,11 @@ class UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersTopic(DaraM
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The name of the topic in the Message Queue for RocketMQ instance.
+        # The name of the topic in the ApsaraMQ for RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -3938,7 +3948,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersGroup(DaraM
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -3984,7 +3994,7 @@ class UpdateEventStreamingRequestSinkSinkRocketMQCheckpointParametersConsumeTime
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -4042,29 +4052,29 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParameters(DaraModel):
     ):
         # The message content.
         self.body = body
-        # The exchange mode. This parameter is required only when the TargetType parameter is set to Exchange.
+        # Exchange mode. This parameter is required only when the TargetType parameter is set to Exchange.
         self.exchange = exchange
-        # The target service type is Message Queue for RabbitMQ.
+        # The target service type is ApsaraMQ for RabbitMQ.
         self.instance_id = instance_id
         # The message ID.
         self.message_id = message_id
-        # The network type used to connect to the target ApsaraMQ for RabbitMQ instance. If you set this parameter to PrivateNetwork, you must also configure the VpcId, VSwitchIds, and SecurityGroupId parameters. When you update an event stream and want to retain the original private network configuration, you must include these network parameters.
+        # The network type configuration used to connect to the target ApsaraMQ for RabbitMQ instance. If you set this parameter to PrivateNetwork, you must also configure VpcId, VSwitchIds, and SecurityGroupId. When you update an event stream and want to retain the original private network configuration, you must specify these network parameters together.
         self.network_type = network_type
         # The filter properties.
         self.properties = properties
-        # The queue mode. This parameter is required only when the TargetType parameter is set to Queue.
+        # Queue mode. This parameter is required only when the TargetType parameter is set to Queue.
         self.queue_name = queue_name
-        # The routing rule of the message. This parameter is required only when the TargetType parameter is set to Exchange.
+        # The routing rule for messages. This parameter is required only when the TargetType parameter is set to Exchange.
         self.routing_key = routing_key
-        # The security group used to connect to the target ApsaraMQ for RabbitMQ instance. This parameter is required when the NetworkType.Value parameter is set to PrivateNetwork.
+        # The security group configuration used to connect to the target ApsaraMQ for RabbitMQ instance. This parameter is required when the value of NetworkType is set to PrivateNetwork.
         self.security_group_id = security_group_id
         # The target type.
         self.target_type = target_type
-        # The vSwitches used to connect to the target ApsaraMQ for RabbitMQ instance. This parameter is required when the NetworkType.Value parameter is set to PrivateNetwork.
+        # The vSwitch configuration used to connect to the target ApsaraMQ for RabbitMQ instance. This parameter is required when the value of NetworkType is set to PrivateNetwork.
         self.v_switch_ids = v_switch_ids
-        # The name of the vhost in the Message Queue for RabbitMQ instance.
+        # The name of the vhost in the ApsaraMQ for RabbitMQ instance.
         self.virtual_host_name = virtual_host_name
-        # The VPC where the target ApsaraMQ for RabbitMQ instance resides. This parameter is required when the NetworkType.Value parameter is set to PrivateNetwork.
+        # The VPC configuration for the target ApsaraMQ for RabbitMQ instance. This parameter is required when the value of NetworkType is set to PrivateNetwork.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4206,9 +4216,9 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersVpcId(DaraModel):
     ):
         # The parameter assignment method. Set this parameter to CONSTANT to use a fixed value.
         self.form = form
-        # The template content. This network parameter uses a fixed value configuration and does not perform template conversion. You do not need to specify this field.
+        # The template content. This network parameter uses a fixed value and does not require template conversion. You do not need to specify this field.
         self.template = template
-        # The ID of the VPC where the target ApsaraMQ for RabbitMQ instance resides.
+        # The VPC ID of the target ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -4250,11 +4260,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName(DaraM
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The name of the vhost in the Message Queue for RabbitMQ instance.
+        # The name of the vhost in the ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -4298,9 +4308,9 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersVSwitchIds(DaraModel)
     ):
         # The parameter assignment method. Set this parameter to CONSTANT to use a fixed value.
         self.form = form
-        # The template content. This network parameter uses a fixed value configuration and does not perform template conversion. You do not need to specify this field.
+        # The template content. This network parameter uses a fixed value and does not require template conversion. You do not need to specify this field.
         self.template = template
-        # The IDs of the vSwitches used to connect to the target ApsaraMQ for RabbitMQ instance. Separate multiple vSwitch IDs with commas (,).
+        # The vSwitch IDs used to connect to the target ApsaraMQ for RabbitMQ instance. Separate multiple vSwitch IDs with commas.
         self.value = value
 
     def validate(self):
@@ -4342,13 +4352,13 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersTargetType(DaraModel)
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
         # The target type. Valid values:
-        # - Exchange: the exchange mode.
-        # - Queue: the queue mode.
+        # - Exchange: Exchange mode.
+        # - Queue: Queue mode.
         self.value = value
 
     def validate(self):
@@ -4392,9 +4402,9 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersSecurityGroupId(DaraM
     ):
         # The parameter assignment method. Set this parameter to CONSTANT to use a fixed value.
         self.form = form
-        # The template content. This network parameter uses a fixed value configuration and does not perform template conversion. You do not need to specify this field.
+        # The template content. This network parameter uses a fixed value and does not require template conversion. You do not need to specify this field.
         self.template = template
-        # The ID of the security group used to connect to the target ApsaraMQ for RabbitMQ instance.
+        # The security group ID used to connect to the target ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -4436,11 +4446,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersRoutingKey(DaraModel)
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The routing rule of the message.
+        # The routing rule for messages.
         self.value = value
 
     def validate(self):
@@ -4482,7 +4492,7 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersQueueName(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -4532,7 +4542,7 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersProperties(DaraModel)
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -4576,11 +4586,9 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersNetworkType(DaraModel
     ):
         # The parameter assignment method. Set this parameter to CONSTANT to use a fixed value.
         self.form = form
-        # The template content. This network parameter uses a fixed value configuration and does not perform template conversion. You do not need to specify this field.
+        # The template content. This network parameter uses a fixed value and does not require template conversion. You do not need to specify this field.
         self.template = template
-        # The network type used to connect to the target ApsaraMQ for RabbitMQ instance. Valid values:
-        # - PublicNetwork: the Internet.
-        # - PrivateNetwork: a VPC.
+        # The network type used to connect to the target ApsaraMQ for RabbitMQ instance. Valid values: PublicNetwork, which indicates the Internet, and PrivateNetwork, which indicates a VPC.
         self.value = value
 
     def validate(self):
@@ -4626,7 +4634,7 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersMessageId(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -4668,11 +4676,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersInstanceId(DaraModel)
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The instance ID of the Message Queue for RabbitMQ instance.
+        # The instance ID of the ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -4714,11 +4722,11 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersExchange(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The name of the exchange in the Message Queue for RabbitMQ instance.
+        # The name of the exchange in the ApsaraMQ for RabbitMQ instance.
         self.value = value
 
     def validate(self):
@@ -4764,7 +4772,7 @@ class UpdateEventStreamingRequestSinkSinkRabbitMQParametersBody(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -4831,7 +4839,7 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParameters(DaraModel):
         self.username = username
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4944,11 +4952,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersVpcId(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The VPC ID.
+        # The ID of the VPC.
         self.value = value
 
     def validate(self):
@@ -4990,7 +4998,7 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersVSwitchId(DaraModel
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -5036,7 +5044,7 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersUsername(DaraModel)
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -5082,7 +5090,7 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersURL(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -5128,7 +5136,7 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersSecurityGroupId(Dar
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -5174,7 +5182,7 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersPassword(DaraModel)
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -5220,12 +5228,11 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersNetworkType(DaraMod
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
         # The network type. Valid values:
-        # 
         # - PublicNetwork
         # - PrivateNetwork
         self.value = value
@@ -5270,18 +5277,18 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersHeaderParameters(Da
         value: str = None,
     ):
         # The transformation format. Valid values:
-        # 
-        # - JSONPATH: JSONPATH.
-        # - CONSTANT: CONSTANT.
-        # - TEMPLATE: TEMPLATE.
+        # - JSONPATH: The JSONPath format.
+        # - CONSTANT: The constant format.
+        # - TEMPLATE: The template format.
         self.form = form
-        # The HTTP request header template. This parameter is required when Form is set to TEMPLATE. The transformed event content must be in JSON format.
+        # The HTTP request header template style. This parameter is required when Form is set to TEMPLATE. The transformed event content must be in JSON format.
         self.template = template
-        # - CONSTANT: A constant value.
-        # - JSONPATH: The content extracted by using JSONPath.
-        # - TEMPLATE: A template variable.
+        # The value.
+        # - If Form is CONSTANT: the constant value.
+        # - If Form is JSONPATH: the content extracted by JSONPath.
+        # - If Form is TEMPLATE: the template variable.
         # 
-        # Note: The Value field cannot exceed 10,240 characters in length.
+        # Note: The Value field cannot exceed 10,240 characters.
         self.value = value
 
     def validate(self):
@@ -5369,7 +5376,7 @@ class UpdateEventStreamingRequestSinkSinkPrometheusParametersAuthorizationType(D
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -5429,11 +5436,10 @@ class UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters(DaraModel)
         vpc_id: str = None,
     ):
         # The authentication type. Valid values:
-        # 
         # - ACL
         # - None
         self.auth_type = auth_type
-        # The content of the message body.
+        # The message body.
         self.body = body
         # The endpoint.
         self.endpoint = endpoint
@@ -5442,7 +5448,6 @@ class UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters(DaraModel)
         # The unique identifier of the message.
         self.message_id = message_id
         # The network type. Valid values:
-        # 
         # - PrivateNetwork
         # - PublicNetwork
         self.network_type = network_type
@@ -5452,21 +5457,19 @@ class UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters(DaraModel)
         self.properties = properties
         # The name of the queue in RabbitMQ. This parameter takes effect only when TargetType is set to Queue.
         self.queue_name = queue_name
-        # The routing key of the message.
+        # The message routing key.
         self.routing_key = routing_key
         # The security group ID.
         self.security_group_id = security_group_id
         # The target type for message delivery. Valid values:
-        # 
         # - **Exchange**: Messages are routed through an exchange.
-        # 
         # - **Queue**: Messages are delivered directly to a specified queue.
         self.target_type = target_type
         # The username used to access the RabbitMQ instance.
         self.username = username
         # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
-        # The name of the virtual host in RabbitMQ.
+        # The name of the RabbitMQ virtual host.
         self.virtual_host_name = virtual_host_name
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -5603,7 +5606,7 @@ class UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey(
         self.form = form
         # The template style.
         self.template = template
-        # The routing key value.
+        # The value of the routing key.
         self.value = value
 
     def validate(self):
@@ -5695,7 +5698,7 @@ class UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId(D
         self.form = form
         # The template style.
         self.template = template
-        # The message ID value.
+        # The value of the message ID.
         self.value = value
 
     def validate(self):
@@ -5787,7 +5790,7 @@ class UpdateEventStreamingRequestSinkSinkMNSParameters(DaraModel):
         self.body = body
         # Specifies whether to enable Base64 encoding.
         self.is_base_64encode = is_base_64encode
-        # The target service type is Simple Message Queue (formerly MNS), an MSMQ service.
+        # The target service type is Simple Message Queue (formerly MNS).
         self.queue_name = queue_name
 
     def validate(self):
@@ -5837,11 +5840,11 @@ class UpdateEventStreamingRequestSinkSinkMNSParametersQueueName(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The name of the queue in Simple Message Queue (formerly MNS), an MSMQ service.
+        # The name of the queue in Simple Message Queue (formerly MNS).
         self.value = value
 
     def validate(self):
@@ -5933,7 +5936,7 @@ class UpdateEventStreamingRequestSinkSinkMNSParametersBody(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -5980,26 +5983,26 @@ class UpdateEventStreamingRequestSinkSinkKafkaParameters(DaraModel):
         topic: main_models.UpdateEventStreamingRequestSinkSinkKafkaParametersTopic = None,
         value: main_models.UpdateEventStreamingRequestSinkSinkKafkaParametersValue = None,
     ):
-        # The acknowledgment mode for writing data to Kafka. Valid values:
-        # - acks=0: No response from the server is required. This mode delivers high performance but carries a high risk of data loss.
-        # - acks=1: A response is returned after the primary node successfully writes the data. This mode delivers medium performance and carries a medium risk of data loss. Data may be lost if the primary node fails.
-        # - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes synchronize the data. This mode delivers lower performance but ensures higher data security. Data is lost only if both the primary and secondary nodes fail.
+        # The Kafka write acknowledgment mode. Valid values:
+        # - acks=0: No response from the server is required. This mode provides high performance but has a high risk of data loss.
+        # - acks=1: A response is returned after the primary node successfully writes the data. This mode provides medium performance and has a medium risk of data loss. Data may be lost if the primary node goes down.
+        # - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes successfully synchronize the data. This mode provides lower performance but higher data security. Data is lost only if both the primary and secondary nodes go down.
         self.acks = acks
         # The compression type.
         self.compression_type = compression_type
-        # The target topic routing policy for messages. If both the Topic and DynamicTopic parameters are specified, the value of the DynamicTopic parameter takes precedence. The following configuration modes are supported:
-        # 1. **Static constant mode**: Enter a fixed topic name string, such as "order_created". All messages are sent to this topic.
-        # 2. **Dynamic extraction mode**: Enter a standard JSONPath expression, such as "$.user.id" or "$.metadata.category". The system parses the upstream message body and extracts the value of the matched field as the target topic name.
+        # Specifies the target topic routing policy for messages. If both the Topic and DynamicTopic parameters are specified, the value of the DynamicTopic parameter takes precedence. The following two configuration modes are supported:
+        #     1. **Static constant mode**: Enter a fixed topic name string (for example, "order_created"). All messages are sent to this topic.
+        #     2. **Dynamic extraction mode**: Enter a standard JSONPath expression (for example, "$.user.id" or "$.metadata.category"). The system parses the upstream message body and extracts the value of the matched field as the target topic name.
         self.dynamic_topic = dynamic_topic
-        # The additional metadata for Kafka messages.
+        # The additional metadata of the Kafka message.
         self.headers = headers
-        # The target service type is Message Queue for Apache Kafka. Specify the instance ID of the message queue (MSMQ).
+        # The target service type is MSMQ for Apache Kafka.
         self.instance_id = instance_id
-        # The identifier of the message.
+        # The message identifier.
         self.key = key
-        # The name of the topic.
+        # The topic name.
         self.topic = topic
-        # The content of the message body.
+        # The message body.
         self.value = value
 
     def validate(self):
@@ -6095,7 +6098,7 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersValue(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -6137,11 +6140,11 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersTopic(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The name of the topic.
+        # The topic name.
         self.value = value
 
     def validate(self):
@@ -6183,11 +6186,11 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersKey(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The identifier of the message.
+        # The message identifier.
         self.value = value
 
     def validate(self):
@@ -6229,7 +6232,7 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersInstanceId(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -6276,15 +6279,14 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders(DaraModel):
         value: str = None,
     ):
         # The transformation format. Valid values:
-        # 
-        # - ORIGINAL: complete event
-        # - JSONPATH: partial event
-        # - CONSTANT: constant
-        # - TEMPLATE: template
+        # - ORIGINAL: Complete event.
+        # - JSONPATH: Partial event.
+        # - CONSTANT: Constant.
+        # - TEMPLATE: Template.
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -6326,9 +6328,9 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersDynamicTopic(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion type. Valid values:
-        # - CONSTANT: A fixed value.
-        # - JSONPATH: Extracted from the upstream message based on the specified path.
+        # The transformation type. Valid values:
+        # - CONSTANT: a fixed value.
+        # - JSONPATH: extracted from the upstream message based on the path.
         self.form = form
         # The template.
         self.template = template
@@ -6374,14 +6376,14 @@ class UpdateEventStreamingRequestSinkSinkKafkaParametersAcks(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The acknowledgment mode for writing data to Kafka. Valid values:
-        # - acks=0: No response from the server is required. This mode delivers high performance but carries a high risk of data loss.
-        # - acks=1: A response is returned after the primary node successfully writes the data. This mode delivers medium performance and carries a medium risk of data loss. Data may be lost if the primary node fails.
-        # - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes synchronize the data. This mode delivers lower performance but ensures higher data security. Data is lost only if both the primary and secondary nodes fail.
+        # The Kafka write acknowledgment mode. Valid values:
+        # - acks=0: No response from the server is required. This mode provides high performance but has a high risk of data loss.
+        # - acks=1: A response is returned after the primary node successfully writes the data. This mode provides medium performance and has a medium risk of data loss. Data may be lost if the primary node goes down.
+        # - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes successfully synchronize the data. This mode provides lower performance but higher data security. Data is lost only if both the primary and secondary nodes go down.
         self.value = value
 
     def validate(self):
@@ -6428,7 +6430,7 @@ class UpdateEventStreamingRequestSinkSinkFnfParameters(DaraModel):
         self.execution_name = execution_name
         # The name of the flow.
         self.flow_name = flow_name
-        # The input information for the execution.
+        # The input for the execution.
         self.input = input
         # The role configuration.
         self.role_name = role_name
@@ -6489,7 +6491,7 @@ class UpdateEventStreamingRequestSinkSinkFnfParametersRoleName(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -6535,11 +6537,11 @@ class UpdateEventStreamingRequestSinkSinkFnfParametersInput(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The input information for the execution.
+        # The input for the execution.
         self.value = value
 
     def validate(self):
@@ -6581,7 +6583,7 @@ class UpdateEventStreamingRequestSinkSinkFnfParametersFlowName(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -6627,7 +6629,7 @@ class UpdateEventStreamingRequestSinkSinkFnfParametersExecutionName(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -6677,17 +6679,17 @@ class UpdateEventStreamingRequestSinkSinkFcParameters(DaraModel):
         qualifier: main_models.UpdateEventStreamingRequestSinkSinkFcParametersQualifier = None,
         service_name: main_models.UpdateEventStreamingRequestSinkSinkFcParametersServiceName = None,
     ):
-        # The body of the content sent to the function.
+        # The body sent to the function.
         self.body = body
-        # The delivery concurrency. The minimum value is 1.
+        # The delivery concurrency. Minimum value: 1.
         self.concurrency = concurrency
         # The format transformation rule for the event content.
         self.data_format = data_format
         # The name of the function.
         self.function_name = function_name
         # The invocation type. Valid values:
-        # - Sync: synchronous invocation
-        # - Async: asynchronous invocation
+        # - Sync: Synchronous.
+        # - Async: Asynchronous.
         self.invocation_type = invocation_type
         # The alias of the service to which the function belongs.
         self.qualifier = qualifier
@@ -6777,7 +6779,7 @@ class UpdateEventStreamingRequestSinkSinkFcParametersServiceName(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -6823,7 +6825,7 @@ class UpdateEventStreamingRequestSinkSinkFcParametersQualifier(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -6869,7 +6871,7 @@ class UpdateEventStreamingRequestSinkSinkFcParametersInvocationType(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -6915,7 +6917,7 @@ class UpdateEventStreamingRequestSinkSinkFcParametersFunctionName(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -6962,15 +6964,14 @@ class UpdateEventStreamingRequestSinkSinkFcParametersDataFormat(DaraModel):
         value: str = None,
     ):
         # The transformation format. Valid values:
-        # 
-        # - ORIGINAL: complete event
-        # - JSONPATH: partial event
-        # - CONSTANT: constant
-        # - TEMPLATE: template
+        # - ORIGINAL: Complete event.
+        # - JSONPATH: Partial event.
+        # - CONSTANT: Constant.
+        # - TEMPLATE: Template.
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -7012,11 +7013,11 @@ class UpdateEventStreamingRequestSinkSinkFcParametersConcurrency(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The delivery concurrency. The minimum value is 1.
+        # The delivery concurrency. Minimum value: 1.
         self.value = value
 
     def validate(self):
@@ -7062,7 +7063,7 @@ class UpdateEventStreamingRequestSinkSinkFcParametersBody(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -7105,7 +7106,7 @@ class UpdateEventStreamingRequestSinkSinkEventHouseParameters(DaraModel):
         mapping_rules: List[main_models.UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRules] = None,
         namespace_name: str = None,
     ):
-        # The name of the catalog.
+        # The catalog name.
         self.catalog_name = catalog_name
         # The name of the target table.
         self.event_table_name = event_table_name
@@ -7167,9 +7168,9 @@ class UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRules(DaraMo
         column_type: str = None,
         column_value: main_models.UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue = None,
     ):
-        # The name of the column.
+        # The column name.
         self.column_name = column_name
-        # The type of the column.
+        # The column type.
         self.column_type = column_type
         # The extraction rule for the column value.
         self.column_value = column_value
@@ -7270,21 +7271,21 @@ class UpdateEventStreamingRequestSinkSinkDorisParameters(DaraModel):
         v_switch_ids: main_models.UpdateEventStreamingRequestSinkSinkDorisParametersVSwitchIds = None,
         vpc_id: main_models.UpdateEventStreamingRequestSinkSinkDorisParametersVpcId = None,
     ):
-        # The public HTTP endpoint for BE.
+        # The BE public HTTP endpoint.
         self.be_http_endpoint = be_http_endpoint
         # The message content.
         self.body = body
         # The database.
         self.database = database
-        # The HTTP endpoint for FE.
+        # The FE HTTP protocol endpoint.
         self.fe_http_endpoint = fe_http_endpoint
-        # The network type.
+        # The network.
         self.network_type = network_type
         # The password.
         self.password = password
-        # The MySQL endpoint.
+        # The MySQL protocol endpoint.
         self.query_endpoint = query_endpoint
-        # The security group ID.
+        # The security group.
         self.security_group_id = security_group_id
         # The destination table.
         self.table = table
@@ -7292,7 +7293,7 @@ class UpdateEventStreamingRequestSinkSinkDorisParameters(DaraModel):
         self.user_name = user_name
         # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7423,11 +7424,11 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersVpcId(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The VPC ID.
+        # The ID of the VPC.
         self.value = value
 
     def validate(self):
@@ -7469,7 +7470,7 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersVSwitchIds(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -7515,7 +7516,7 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersUserName(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -7561,7 +7562,7 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersTable(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -7607,11 +7608,11 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersSecurityGroupId(DaraMode
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The security group ID.
+        # The security group.
         self.value = value
 
     def validate(self):
@@ -7653,11 +7654,11 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersQueryEndpoint(DaraModel)
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The MySQL endpoint.
+        # The MySQL protocol endpoint.
         self.value = value
 
     def validate(self):
@@ -7699,7 +7700,7 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersPassword(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -7745,11 +7746,11 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersNetworkType(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The network type.
+        # The network.
         self.value = value
 
     def validate(self):
@@ -7791,11 +7792,11 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersFeHttpEndpoint(DaraModel
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The HTTP endpoint for FE.
+        # The FE HTTP protocol endpoint.
         self.value = value
 
     def validate(self):
@@ -7837,7 +7838,7 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersDatabase(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -7883,7 +7884,7 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersBody(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -7929,11 +7930,11 @@ class UpdateEventStreamingRequestSinkSinkDorisParametersBeHttpEndpoint(DaraModel
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The public HTTP endpoint for BE.
+        # The BE public HTTP endpoint.
         self.value = value
 
     def validate(self):
@@ -7984,21 +7985,19 @@ class UpdateEventStreamingRequestSinkSinkDataHubParameters(DaraModel):
         self.body = body
         # The key-value pairs of the custom log. This parameter takes effect only when ContentType is set to KeyValue. Each key-value pair is represented by Key_n and Value_n.
         self.content_schema = content_schema
-        # The data format. You can select the default format or specify key-value pairs. Valid values:
-        # 
+        # The data format. You can select the default value or specify a key-value format. Valid values:
         # - JSON
         # - KeyValue
         self.content_type = content_type
-        # The name of the DataHub project.
+        # The DataHub project name.
         self.project = project
         # The name of the task role.
         self.role_name = role_name
-        # The name of the DataHub topic.
+        # The DataHub topic name.
         self.topic = topic
         # The topic content schema for the TUPLE type.
         self.topic_schema = topic_schema
         # The topic type. Valid values:
-        # 
         # - TUPLE
         # - BLOB
         self.topic_type = topic_type
@@ -8095,12 +8094,11 @@ class UpdateEventStreamingRequestSinkSinkDataHubParametersTopicType(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
         # The topic type. Valid values:
-        # 
         # - TUPLE
         # - BLOB
         self.value = value
@@ -8190,11 +8188,11 @@ class UpdateEventStreamingRequestSinkSinkDataHubParametersTopic(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The name of the DataHub topic.
+        # The DataHub topic name.
         self.value = value
 
     def validate(self):
@@ -8236,7 +8234,7 @@ class UpdateEventStreamingRequestSinkSinkDataHubParametersRoleName(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -8282,11 +8280,11 @@ class UpdateEventStreamingRequestSinkSinkDataHubParametersProject(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The name of the DataHub project.
+        # The DataHub project name.
         self.value = value
 
     def validate(self):
@@ -8332,7 +8330,7 @@ class UpdateEventStreamingRequestSinkSinkDataHubParametersContentType(DaraModel)
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -8378,7 +8376,7 @@ class UpdateEventStreamingRequestSinkSinkDataHubParametersContentSchema(DaraMode
         self.form = form
         # The template style.
         self.template = template
-        # The value before conversion.
+        # The value before transformation.
         self.value = value
 
     def validate(self):
@@ -8476,7 +8474,7 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParameters(DaraModel):
         self.api_key = api_key
         # The name of the collection.
         self.collection = collection
-        # The schema field definition of the table item when inserting data into DashVector. The result after event content transformation must be in JSON format.
+        # The schema field definitions for the table entry when inserting data into DashVector. The transformed event content must be in JSON format.
         self.dash_vector_schema_parameters = dash_vector_schema_parameters
         # The instance ID.
         self.instance_id = instance_id
@@ -8484,7 +8482,7 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParameters(DaraModel):
         # - PrivateNetwork
         # - PublicNetwork
         self.network = network
-        # The DashVector database operation type. Valid values:
+        # The type of DashVector database operation. Valid values:
         # - Delete
         # - Upsert
         self.operation = operation
@@ -8492,7 +8490,7 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParameters(DaraModel):
         self.partition = partition
         # The primary key ID used when inserting or deleting a record. If this field is not specified, a random primary key ID is used.
         self.primary_key_id = primary_key_id
-        # The vector of the DashVector record to be inserted.
+        # The vector to be inserted into the DashVector record.
         self.vector = vector
 
     def validate(self):
@@ -8591,7 +8589,7 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParametersVector(DaraModel):
         self.form = form
         # The template style.
         self.template = template
-        # The content extracted by using JSONPath.
+        # The content extracted by JSONPath.
         # 
         # > The Value field cannot exceed 10,240 characters.
         self.value = value
@@ -8641,10 +8639,7 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId(DaraMo
         self.form = form
         # The primary key ID template. This field is required only when Form is set to TEMPLATE.
         self.template = template
-        # The value.
-        # - If Form is JSONPATH: the content extracted by using JSONPath.
-        # - If Form is TEMPLATE: the template variable.
-        # 
+        # If Form is set to JSONPATH, this field specifies the content extracted by JSONPath. If Form is set to TEMPLATE, this field specifies the template variable.
         # > The Value field cannot exceed 10,240 characters.
         self.value = value
 
@@ -8693,9 +8688,8 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition(DaraModel
         self.form = form
         # The template style.
         self.template = template
-        # The value.
-        # - If Form is CONSTANT: the constant value.
-        # - If Form is JSONPATH: the content extracted by using JSONPath.
+        # - If Form is set to CONSTANT, this field specifies the constant value.
+        # - If Form is set to JSONPATH, this field specifies the content extracted by JSONPath.
         # 
         # > The Value field cannot exceed 10,240 characters.
         self.value = value
@@ -8739,11 +8733,11 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaPar
         type: main_models.UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersType = None,
         value: main_models.UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParametersValue = None,
     ):
-        # The property name.
+        # The name of the property.
         self.name = name
         # The DashVector property type.
         self.type = type
-        # The property value.
+        # The value of the property.
         self.value = value
 
     def validate(self):
@@ -8793,11 +8787,11 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaPar
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The property value.
+        # The value of the property.
         self.value = value
 
     def validate(self):
@@ -8839,7 +8833,7 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaPar
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -8885,11 +8879,11 @@ class UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaPar
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The property name.
+        # The name of the property.
         self.value = value
 
     def validate(self):
@@ -8961,7 +8955,7 @@ class UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters(Dara
     ):
         # The download URL of the OSS file.
         self.connector_package_url = connector_package_url
-        # The properties file in the current ZIP package.
+        # Parses the properties file in the current ZIP package.
         self.connector_parameters = connector_parameters
         # The instance configuration.
         self.worker_parameters = worker_parameters
@@ -9057,7 +9051,7 @@ class UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters(Dara
         self.group = group
         # The endpoint of the instance.
         self.instance_endpoint = instance_endpoint
-        # The password.
+        # The password of the user.
         self.instance_password = instance_password
         # The username required for authentication.
         self.instance_username = instance_username
@@ -9067,11 +9061,11 @@ class UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters(Dara
         self.network_type = network_type
         # The security group ID.
         self.security_group_id = security_group_id
-        # The topic of the ApsaraMQ for RocketMQ instance.
+        # The topic of the RocketMQ instance.
         self.topic = topic
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9163,11 +9157,11 @@ class UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersTopic
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The name of the topic in the ApsaraMQ for RocketMQ instance.
+        # The name of the topic in the RocketMQ instance.
         self.value = value
 
     def validate(self):
@@ -9209,7 +9203,7 @@ class UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersGroup
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -9255,7 +9249,7 @@ class UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParametersConsu
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -9318,18 +9312,18 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParameters(DaraModel):
         value: main_models.UpdateEventStreamingRequestSinkSinkApacheKafkaParametersValue = None,
         vpc_id: main_models.UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVpcId = None,
     ):
-        # The acknowledgment mode for writing data to Kafka. Valid values:
-        # - acks=0: No response from the server is required. This mode delivers high performance but carries a high risk of data loss.
-        # - acks=1: A response is returned after the primary node successfully writes the data. This mode delivers medium performance and carries a medium risk of data loss. Data may be lost if the primary node fails.
-        # - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes synchronize the data. This mode delivers lower performance but ensures higher data security. Data is lost only if both the primary and secondary nodes fail.
+        # The Kafka write acknowledgment mode. Valid values:
+        # - acks=0: No response from the server is required. This mode provides high performance but has a high risk of data loss.
+        # - acks=1: A response is returned after the primary node successfully writes the data. This mode provides medium performance and has a medium risk of data loss. Data may be lost if the primary node goes down.
+        # - acks=all: A response is returned only after the primary node successfully writes the data and the secondary nodes successfully synchronize the data. This mode provides lower performance but higher data security. Data is lost only if both the primary and secondary nodes go down.
         self.acks = acks
         # The initial endpoints of the Kafka cluster.
         self.bootstraps = bootstraps
         # The compression type.
         self.compression_type = compression_type
-        # The target topic routing policy for messages. If both the Topic and DynamicTopic parameters are specified, the value of the DynamicTopic parameter takes precedence. The following configuration modes are supported:
-        # 1. **Static constant mode**: Enter a fixed topic name string, such as "order_created". All messages are sent to this topic.
-        # 2. **Dynamic extraction mode**: Enter a standard JSONPath expression, such as "$.user.id" or "$.metadata.category". The system parses the upstream message body and extracts the value of the matched field as the target topic name.
+        # Specifies the target topic routing policy for messages. If both the Topic and DynamicTopic parameters are specified, the value of the DynamicTopic parameter takes precedence. The following two configuration modes are supported:
+        #     1. **Static constant mode**: Enter a fixed topic name string (for example, "order_created"). All messages are sent to this topic.
+        #     2. **Dynamic extraction mode**: Enter a standard JSONPath expression (for example, "$.user.id" or "$.metadata.category"). The system parses the upstream message body and extracts the value of the matched field as the target topic name.
         self.dynamic_topic = dynamic_topic
         # The message headers.
         self.headers = headers
@@ -9337,34 +9331,34 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParameters(DaraModel):
         self.key = key
         # The network type.
         self.network_type = network_type
-        # The SASL authentication mechanism of Kafka.
+        # The Kafka SASL authentication mechanism.
         self.sasl_mechanism = sasl_mechanism
-        # The SASL authentication password of Kafka.
+        # The Kafka SASL authentication password.
         self.sasl_password = sasl_password
-        # The SASL authentication username of Kafka.
+        # The Kafka SASL authentication username.
         self.sasl_user = sasl_user
         # The security group ID.
         self.security_group_id = security_group_id
-        # The security protocol type of Kafka. Valid values:
+        # The Kafka security protocol type. Valid values:
         # - SASL_SSL
         # - PLAINTEXT
         # - SASL_PLAINTEXT
         self.security_protocol = security_protocol
-        # [Required for encrypted private keys] The password for the Kafka client private key. If the client private key is protected by password encryption (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" tag), you must provide the decryption password. If the private key is not encrypted, leave this parameter empty. Note: This password is used only to decrypt the private key and is unrelated to Kafka authentication.
+        # [Required for encrypted private keys] The Kafka client private key password. This parameter is required when the client private key is encrypted (the PEM file contains the \\"Proc-Type: 4,ENCRYPTED\\" or \\"ENCRYPTED\\" tag). Leave this parameter empty if the private key is not encrypted. Note: This password is only used to decrypt the private key and is unrelated to Kafka authentication.
         self.ssl_key_password = ssl_key_password
-        # [Required for mutual authentication] The Kafka client certificate chain. If mutual SSL authentication (ssl.client.auth=required) is enabled on the Kafka server, you must provide this parameter. Format requirements: Base64-encoded PEM format, including the client certificate and the complete certificate chain (the client certificate first, followed by intermediate CA certificates, and the root CA certificate is optional). Note: Ensure that each PEM file starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\" before concatenating and Base64-encoding them.
+        # [Required for mutual authentication] The Kafka client certificate chain. This parameter is required when mutual SSL authentication is enabled on the Kafka server (ssl.client.auth=required). Format requirements: Base64-encoded PEM format, including the client certificate and the complete certificate chain (client certificate first, followed by intermediate CA certificates, and root CA certificate optional). Note: Ensure that each PEM file starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\" before concatenation and Base64 encoding.
         self.ssl_keystore_certificate_chain = ssl_keystore_certificate_chain
-        # [Required for bidirectional authentication] The SSL private key configuration object. When bidirectional SSL authentication is enabled on the Kafka server, you must provide the client private key. The key only supports the KMS mode: specify the Key Management Service (KMS) resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory, which provides higher security. Configuration example: {"KmsArn": "acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx", "KmsSecretValueKey": "keystore_private_key"}.
+        # [Required for mutual authentication] The SSL private key configuration object. When mutual SSL authentication is enabled on the Kafka server, the client private key must be provided. The key only supports the KMS mode: specify the Key Management Service resource that stores the private key by using KmsArn. The system retrieves the private key content from KMS only in memory to ensure higher security. Configuration example: {"KmsArn": "acs:kms:cn-hangzhou:123456789:secret/ssl-key-xxxx", "KmsSecretValueKey": "keystore_private_key"}.
         self.ssl_keystore_key = ssl_keystore_key
-        # [Required in SSL scenarios] The Kafka server trust certificate. It is used to authenticate the validity of the SSL certificate of the Kafka broker and prevent man-in-the-middle attacks. Format requirements: PEM format with Base64 encoding, which usually contains the CA certificate of the Kafka server or the server certificate itself. Example: Perform Base64 encoding on the PEM file content of the CA certificate (ensure that it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, you must provide the CA certificate that issued the certificate.
+        # [Required for SSL] The Kafka server trust certificate. It is used to verify the validity of the Kafka broker SSL certificate and prevent man-in-the-middle attacks. Format requirements: Base64-encoded PEM format, typically containing the Kafka server CA certificate or the server certificate itself. Example: Base64-encode the PEM file content of the CA certificate (ensure it starts with \\"-----BEGIN CERTIFICATE-----\\" and ends with \\"-----END CERTIFICATE-----\\"). If Kafka uses a self-signed certificate, provide the CA certificate that issued it.
         self.ssl_truststore_certificates = ssl_truststore_certificates
-        # The name of the topic.
+        # The topic name.
         self.topic = topic
-        # The list of vSwitch IDs for the Kafka source.
+        # The vSwitch IDs of the Kafka event source.
         self.v_switch_ids = v_switch_ids
         # The message body.
         self.value = value
-        # The VPC ID.
+        # The ID of the VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -9534,11 +9528,11 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVpcId(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The VPC ID.
+        # The ID of the VPC.
         self.value = value
 
     def validate(self):
@@ -9580,7 +9574,7 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParametersValue(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -9626,11 +9620,11 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParametersVSwitchIds(DaraMod
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
-        # The list of vSwitch IDs for the Kafka source.
+        # The vSwitch IDs of the Kafka event source.
         self.value = value
 
     def validate(self):
@@ -9671,9 +9665,9 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSslKeystoreKey(Dar
         kms_arn: str = None,
         kms_secret_value_key: str = None,
     ):
-        # [Required] The ARN of the KMS resource that stores the SSL private key. This parameter is used to locate the KMS instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". To obtain the ARN, view the ARN information of the corresponding key in the KMS console.
+        # [Required] The KMS resource ARN for storing the SSL private key. This parameter is used to locate the KMS instance that stores the client private key. Format example: \\"acs:kms:cn-hangzhou:123456789:secret/ssl-keystore-key-xxxx\\". To obtain the ARN, view the ARN information of the corresponding key in the KMS console.
         self.kms_arn = kms_arn
-        # [KMS KV mode] The key name in the KMS secret. If the secret stored in KMS is in a key-value pair (KV) structure, specify this parameter to indicate the key corresponding to the SSL private key. Example: If the KMS secret is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", enter \\"ssl_keystore_key\\". If the KMS secret is in plain text mode (directly storing the PEM content of the private key), leave this parameter empty.
+        # [KMS KV mode] The key name in the KMS secret. When the KMS secret is a key-value (KV) pair, specify this parameter to indicate the key corresponding to the SSL private key. Example: If the KMS secret is \\"{"ssl_keystore_key":"-----BEGIN PRIVATE KEY-----...","ssl_truststore_key":"..."}\\", enter \\"ssl_keystore_key\\". If the KMS secret is in plaintext mode (directly storing the PEM content of the private key), leave this parameter empty.
         self.kms_secret_value_key = kms_secret_value_key
 
     def validate(self):
@@ -9709,7 +9703,7 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParametersSecurityGroupId(Da
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -9755,7 +9749,7 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParametersNetworkType(DaraMo
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -9801,7 +9795,7 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParametersKey(DaraModel):
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -9847,7 +9841,7 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParametersHeaders(DaraModel)
         template: str = None,
         value: str = None,
     ):
-        # The conversion format. Default value: CONSTANT.
+        # The transformation format. Default value: CONSTANT.
         self.form = form
         # The template style.
         self.template = template
@@ -9893,9 +9887,9 @@ class UpdateEventStreamingRequestSinkSinkApacheKafkaParametersDynamicTopic(DaraM
         template: str = None,
         value: str = None,
     ):
-        # The conversion type. Valid values:
-        # - CONSTANT: A fixed value.
-        # - JSONPATH: Extracted from the upstream message based on the specified path.
+        # The transformation type. Valid values:
+        # - CONSTANT: a fixed value.
+        # - JSONPATH: extracted from the upstream message based on the path.
         self.form = form
         # The template.
         self.template = template
@@ -9945,21 +9939,19 @@ class UpdateEventStreamingRequestRunOptions(DaraModel):
         retry_strategy: main_models.UpdateEventStreamingRequestRunOptionsRetryStrategy = None,
         throttling: int = None,
     ):
-        # The batch window.
+        # The batching window.
         self.batch_window = batch_window
         # The business options.
         self.business_option = business_option
         # Specifies whether to enable the dead-letter queue. By default, the dead-letter queue is disabled, and messages that exceed the retry policy are discarded.
         self.dead_letter_queue = dead_letter_queue
-        # The error tolerance policy. Valid values:
-        # - NONE: No tolerance for errors.
-        # - ALL: Tolerance for all errors.
+        # The error tolerance policy. Valid values: NONE (no error tolerance) and ALL (tolerates all errors).
         self.errors_tolerance = errors_tolerance
-        # The number of concurrent tasks.
+        # The maximum number of concurrent tasks.
         self.maximum_tasks = maximum_tasks
-        # The retry policy used when an event fails to be pushed.
+        # The retry strategy used when event delivery fails.
         self.retry_strategy = retry_strategy
-        # The throttling value.
+        # The throttling limit.
         self.throttling = throttling
 
     def validate(self):
@@ -10040,9 +10032,7 @@ class UpdateEventStreamingRequestRunOptionsRetryStrategy(DaraModel):
         self.maximum_event_age_in_seconds = maximum_event_age_in_seconds
         # The maximum number of retry attempts.
         self.maximum_retry_attempts = maximum_retry_attempts
-        # The retry policy. Valid values:
-        # - BACKOFF_RETRY: Backoff retry.
-        # - EXPONENTIAL_DECAY_RETRY: Exponential decay retry.
+        # The retry strategy. Valid values: BACKOFF_RETRY (backoff retry) and EXPONENTIAL_DECAY_RETRY (exponential decay retry).
         self.push_retry_strategy = push_retry_strategy
 
     def validate(self):
@@ -10195,9 +10185,9 @@ class UpdateEventStreamingRequestRunOptionsBatchWindow(DaraModel):
         count_based_window: int = None,
         time_based_window: int = None,
     ):
-        # The maximum number of events that the window can accommodate. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, the push is triggered when the condition is met for any of the windows.
+        # The maximum number of events that the window can hold. When this threshold is reached, data in the window is pushed downstream. If multiple windows exist, the push is triggered when any window reaches its threshold.
         self.count_based_window = count_based_window
-        # The maximum time window in seconds for accumulating events. When this threshold is reached, the data in the window is pushed downstream. If multiple windows exist, the push is triggered when the condition is met for any of the windows.
+        # The maximum time window in seconds for batching events. When this threshold is reached, data in the window is pushed downstream. If multiple windows exist, the push is triggered when any window reaches its threshold.
         self.time_based_window = time_based_window
 
     def validate(self):

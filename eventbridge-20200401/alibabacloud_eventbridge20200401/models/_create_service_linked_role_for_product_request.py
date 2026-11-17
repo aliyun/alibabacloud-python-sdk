@@ -9,23 +9,24 @@ class CreateServiceLinkedRoleForProductRequest(DaraModel):
         self,
         product_name: str = None,
     ):
-        # The name of the Alibaba Cloud service or the name of the service-linked role associated with the service. Valid values:
+        # The name of the cloud service or the name of the service-linked role associated with the cloud service.
+        # 
         # - AliyunServiceRoleForEventBridgeSendToFC: Performs event delivery to Function Compute.
-        # - AliyunServiceRoleForEventBridgeSendToSMS: Performs event delivery as text messages to Short Message Service.
-        # - AliyunServiceRoleForEventBridgeSendToDirectMail: Performs event delivery as emails to Direct Mail.
-        # - AliyunServiceRoleForEventBridgeSourceRocketMQ: Integrates consumed messages from MSMQ RocketMQ instances into EventBridge.
-        # - AliyunServiceRoleForEventBridgeSourceMNS: Integrates Simple Message Queue (formerly MNS) into EventBridge.
+        # - AliyunServiceRoleForEventBridgeSendToSMS: Performs event delivery as text messages to Alibaba Cloud Short Message Service.
+        # - AliyunServiceRoleForEventBridgeSendToDirectMail: Performs event delivery as emails to Alibaba Cloud Direct Mail.
+        # - AliyunServiceRoleForEventBridgeSourceRocketMQ: Integrates consumed messages from Message Queue for RocketMQ instances into EventBridge.
+        # - AliyunServiceRoleForEventBridgeSourceMNS: Integrates Alibaba Cloud Message Service (MNS) into EventBridge.
         # - AliyunServiceRoleForEventBridgeConnectVPC: Allows EventBridge to access your VPC.
         # - AliyunServiceRoleForEventBridgeSourceActionTrail: Retrieves operation records from ActionTrail as event sources.
-        # - AliyunServiceRoleForEventBridgeSourceRabbitMQ: Integrates MSMQ RabbitMQ instances into EventBridge.
-        # - AliyunServiceRoleForEventBridgeSendToRabbitMQ: Performs event delivery of EventBridge events to MSMQ RabbitMQ instances.
-        # - AliyunServiceRoleForEventBridgeSendToRocketMQ: Performs event delivery of EventBridge events to MSMQ RocketMQ instances.
+        # - AliyunServiceRoleForEventBridgeSourceRabbitMQ: Integrates Message Queue for RabbitMQ instances into EventBridge.
+        # - AliyunServiceRoleForEventBridgeSendToRabbitMQ: Performs event delivery of EventBridge events to Message Queue for RabbitMQ instances.
+        # - AliyunServiceRoleForEventBridgeSendToRocketMQ: Performs event delivery of EventBridge events to Message Queue for RocketMQ instances.
         # - AliyunServiceRoleForEventBridgeSourceCMS: Integrates Alibaba Cloud monitoring (CMS) into EventBridge.
         # - AliyunServiceRoleForEventBridgeSendToKafka: Performs event delivery of EventBridge events to Message Queue for Apache Kafka clusters.
         # - AliyunServiceRoleForEventBridgeSourceKafka: Integrates Message Queue for Apache Kafka into EventBridge.
         # - AliyunServiceRoleForEventBridgeSendToRDS: Performs event delivery of EventBridge events to Relational Database Service (RDS) instances.
         # - AliyunServiceRoleForEventBridgeSendToSAE: Performs event delivery of EventBridge events to Serverless App DPI engine (SAE) applications.
-        # - AliyunServiceRoleForEventBridgeSourceMqtt: Integrates MSMQ MQTT into EventBridge.
+        # - AliyunServiceRoleForEventBridgeSourceMqtt: Integrates Micro MSMQ for MQTT into EventBridge.
         # - AliyunServiceRoleForEventBridgeSourceSLS: Integrates Simple Log Service into EventBridge.
         # 
         # This parameter is required.

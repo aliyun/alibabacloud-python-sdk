@@ -14,9 +14,9 @@ class CreateEventSourceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The API response code. Valid values:
+        # The API return code. Valid values:
         # - Success: The operation is successful.                                 
-        # - Other values: An error code.
+        # - Other values: Error codes.
         # For more information, see Error codes.
         self.code = code
         # The returned data.
@@ -25,7 +25,7 @@ class CreateEventSourceResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -79,7 +79,7 @@ class CreateEventSourceResponseBodyData(DaraModel):
         self,
         event_source_arn: str = None,
     ):
-        # The resource ARN.
+        # The ARN of the resource.
         self.event_source_arn = event_source_arn
 
     def validate(self):
