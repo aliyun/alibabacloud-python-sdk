@@ -13,9 +13,9 @@ class ListConsumerConsoleSummariesRequest(DaraModel):
         name_like: str = None,
         next_token: str = None,
     ):
-        # The filter condition. Valid values: all, granted, and disabled. Default value: all.
+        # The filter condition. Valid values: all, granted, and disabled. If you do not specify this parameter, all is used by default.
         self.filter = filter
-        # The target AI gateway instance ID. Consumer identities are shared across the region, while authorizations are isolated by instance.
+        # The target AI gateway instance ID. Consumer identities are shared across the region, and authorizations are isolated by instance.
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
@@ -23,9 +23,9 @@ class ListConsumerConsoleSummariesRequest(DaraModel):
         # 
         # This parameter is required.
         self.max_results = max_results
-        # The keyword for fuzzy search by consumer name. This parameter does not affect the total count.
+        # The keyword for fuzzy search by consumer name. This parameter does not affect the total counts.
         self.name_like = name_like
-        # The pagination token returned from the previous page. Omit this parameter when querying the first page. An empty or omitted value indicates the last page.
+        # The pagination token returned from the previous page. Omit this parameter when you query the first page. If the value is empty or omitted, it indicates the last page.
         self.next_token = next_token
 
     def validate(self):

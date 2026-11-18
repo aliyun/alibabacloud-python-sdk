@@ -9469,6 +9469,78 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_gateway_resource_quota_usage_with_options_async(gateway_id, request, headers, runtime)
 
+    def get_gateway_websocket_usage_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayWebsocketUsageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayWebsocketUsageResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayWebsocketUsage',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/websocket-observability/usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayWebsocketUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_gateway_websocket_usage_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayWebsocketUsageRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetGatewayWebsocketUsageResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetGatewayWebsocketUsage',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/websocket-observability/usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetGatewayWebsocketUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_gateway_websocket_usage(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayWebsocketUsageRequest,
+    ) -> main_models.GetGatewayWebsocketUsageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_gateway_websocket_usage_with_options(gateway_id, request, headers, runtime)
+
+    async def get_gateway_websocket_usage_async(
+        self,
+        gateway_id: str,
+        request: main_models.GetGatewayWebsocketUsageRequest,
+    ) -> main_models.GetGatewayWebsocketUsageResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_gateway_websocket_usage_with_options_async(gateway_id, request, headers, runtime)
+
     def get_hi_market_consumer_with_options(
         self,
         consumer_id: str,
@@ -14312,6 +14384,118 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_gateway_quota_rules_with_options_async(gateway_id, request, headers, runtime)
+
+    def list_gateway_websocket_events_with_options(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayWebsocketEventsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayWebsocketEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connection_id):
+            query['connectionId'] = request.connection_id
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model):
+            query['model'] = request.model
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        if not DaraCore.is_null(request.source):
+            query['source'] = request.source
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.turn_id):
+            query['turnId'] = request.turn_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayWebsocketEvents',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/websocket-observability/events',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayWebsocketEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_gateway_websocket_events_with_options_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayWebsocketEventsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGatewayWebsocketEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.connection_id):
+            query['connectionId'] = request.connection_id
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.model):
+            query['model'] = request.model
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        if not DaraCore.is_null(request.source):
+            query['source'] = request.source
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.turn_id):
+            query['turnId'] = request.turn_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGatewayWebsocketEvents',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/websocket-observability/events',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGatewayWebsocketEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_gateway_websocket_events(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayWebsocketEventsRequest,
+    ) -> main_models.ListGatewayWebsocketEventsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_gateway_websocket_events_with_options(gateway_id, request, headers, runtime)
+
+    async def list_gateway_websocket_events_async(
+        self,
+        gateway_id: str,
+        request: main_models.ListGatewayWebsocketEventsRequest,
+    ) -> main_models.ListGatewayWebsocketEventsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_gateway_websocket_events_with_options_async(gateway_id, request, headers, runtime)
 
     def list_gateways_with_options(
         self,

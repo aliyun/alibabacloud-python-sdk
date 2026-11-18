@@ -425,6 +425,9 @@ from ._get_gateway_quota_rule_subject_usage_export_task_response import GetGatew
 from ._get_gateway_resource_quota_usage_request import GetGatewayResourceQuotaUsageRequest
 from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBody
 from ._get_gateway_resource_quota_usage_response import GetGatewayResourceQuotaUsageResponse
+from ._get_gateway_websocket_usage_request import GetGatewayWebsocketUsageRequest
+from ._get_gateway_websocket_usage_response_body import GetGatewayWebsocketUsageResponseBody
+from ._get_gateway_websocket_usage_response import GetGatewayWebsocketUsageResponse
 from ._get_hi_market_consumer_request import GetHiMarketConsumerRequest
 from ._get_hi_market_consumer_response_body import GetHiMarketConsumerResponseBody
 from ._get_hi_market_consumer_response import GetHiMarketConsumerResponse
@@ -588,6 +591,9 @@ from ._list_gateway_load_balancers_response import ListGatewayLoadBalancersRespo
 from ._list_gateway_quota_rules_request import ListGatewayQuotaRulesRequest
 from ._list_gateway_quota_rules_response_body import ListGatewayQuotaRulesResponseBody
 from ._list_gateway_quota_rules_response import ListGatewayQuotaRulesResponse
+from ._list_gateway_websocket_events_request import ListGatewayWebsocketEventsRequest
+from ._list_gateway_websocket_events_response_body import ListGatewayWebsocketEventsResponseBody
+from ._list_gateway_websocket_events_response import ListGatewayWebsocketEventsResponse
 from ._list_gateways_request import ListGatewaysRequest
 from ._list_gateways_shrink_request import ListGatewaysShrinkRequest
 from ._list_gateways_response_body import ListGatewaysResponseBody
@@ -1243,6 +1249,7 @@ from ._get_gateway_quota_rule_subject_usage_export_task_response_body import Get
 from ._get_gateway_quota_rule_subject_usage_export_task_response_body import GetGatewayQuotaRuleSubjectUsageExportTaskResponseBodyData
 from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBodyDataItems
 from ._get_gateway_resource_quota_usage_response_body import GetGatewayResourceQuotaUsageResponseBodyData
+from ._get_gateway_websocket_usage_response_body import GetGatewayWebsocketUsageResponseBodyData
 from ._get_hi_market_consumer_response_body import GetHiMarketConsumerResponseBodyData
 from ._get_hi_market_consumer_credential_response_body import GetHiMarketConsumerCredentialResponseBodyData
 from ._get_logical_model_response_body import GetLogicalModelResponseBodyDataAvailablePaths
@@ -1380,6 +1387,7 @@ from ._list_gateway_load_balancers_response_body import ListGatewayLoadBalancers
 from ._list_gateway_load_balancers_response_body import ListGatewayLoadBalancersResponseBodyData
 from ._list_gateway_quota_rules_response_body import ListGatewayQuotaRulesResponseBodyDataItems
 from ._list_gateway_quota_rules_response_body import ListGatewayQuotaRulesResponseBodyData
+from ._list_gateway_websocket_events_response_body import ListGatewayWebsocketEventsResponseBodyData
 from ._list_gateways_request import ListGatewaysRequestTag
 from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsLoadBalancersPorts
 from ._list_gateways_response_body import ListGatewaysResponseBodyDataItemsLoadBalancers
@@ -2013,6 +2021,9 @@ __all__ = [
     GetGatewayResourceQuotaUsageRequest,
     GetGatewayResourceQuotaUsageResponseBody,
     GetGatewayResourceQuotaUsageResponse,
+    GetGatewayWebsocketUsageRequest,
+    GetGatewayWebsocketUsageResponseBody,
+    GetGatewayWebsocketUsageResponse,
     GetHiMarketConsumerRequest,
     GetHiMarketConsumerResponseBody,
     GetHiMarketConsumerResponse,
@@ -2176,6 +2187,9 @@ __all__ = [
     ListGatewayQuotaRulesRequest,
     ListGatewayQuotaRulesResponseBody,
     ListGatewayQuotaRulesResponse,
+    ListGatewayWebsocketEventsRequest,
+    ListGatewayWebsocketEventsResponseBody,
+    ListGatewayWebsocketEventsResponse,
     ListGatewaysRequest,
     ListGatewaysShrinkRequest,
     ListGatewaysResponseBody,
@@ -2831,6 +2845,7 @@ __all__ = [
     GetGatewayQuotaRuleSubjectUsageExportTaskResponseBodyData,
     GetGatewayResourceQuotaUsageResponseBodyDataItems,
     GetGatewayResourceQuotaUsageResponseBodyData,
+    GetGatewayWebsocketUsageResponseBodyData,
     GetHiMarketConsumerResponseBodyData,
     GetHiMarketConsumerCredentialResponseBodyData,
     GetLogicalModelResponseBodyDataAvailablePaths,
@@ -2968,6 +2983,7 @@ __all__ = [
     ListGatewayLoadBalancersResponseBodyData,
     ListGatewayQuotaRulesResponseBodyDataItems,
     ListGatewayQuotaRulesResponseBodyData,
+    ListGatewayWebsocketEventsResponseBodyData,
     ListGatewaysRequestTag,
     ListGatewaysResponseBodyDataItemsLoadBalancersPorts,
     ListGatewaysResponseBodyDataItemsLoadBalancers,

@@ -1,3 +1,8 @@
+2026-11-18 Version: 11.11.0
+- Support API GetGatewayWebsocketUsage.
+- Support API ListGatewayWebsocketEvents.
+
+
 2026-11-18 Version: 11.10.2
 - Generated python 2024-03-27 for APIG.
 
