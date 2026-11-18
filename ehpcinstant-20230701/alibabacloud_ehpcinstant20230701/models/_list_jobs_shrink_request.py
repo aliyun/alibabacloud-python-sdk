@@ -14,13 +14,9 @@ class ListJobsShrinkRequest(DaraModel):
     ):
         # The filter conditions for querying jobs.
         self.filter_shrink = filter_shrink
-        # The current page number.
-        # 
-        # Start value: 1
-        # 
-        # Default value: 1
+        # The page number. Starting value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. The default value is 50. The maximum value is 100.
+        # The paging Settings for the number of entries per page in a paged query. Default value: 50. Maximum value: 100.
         self.page_size = page_size
         # The sorting method.
         self.sort_by_shrink = sort_by_shrink

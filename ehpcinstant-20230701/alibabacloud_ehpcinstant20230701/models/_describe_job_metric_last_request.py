@@ -13,11 +13,11 @@ class DescribeJobMetricLastRequest(DaraModel):
         job_id: str = None,
         task_name: str = None,
     ):
-        # The list of array job indexes.
+        # The list of job array indexes.
         self.array_index = array_index
         # The job ID.
         self.job_id = job_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

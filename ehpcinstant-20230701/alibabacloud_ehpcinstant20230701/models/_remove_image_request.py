@@ -14,10 +14,10 @@ class RemoveImageRequest(DaraModel):
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The type of the images. Valid values:
+        # The image type. Valid values:
         # 
-        # *   VM: Virtual Machine Image
-        # *   Container: container image
+        # - VM: virtual machine image
+        # - Container: container image
         self.image_type = image_type
 
     def validate(self):

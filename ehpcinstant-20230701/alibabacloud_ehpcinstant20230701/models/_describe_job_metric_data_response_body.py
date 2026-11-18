@@ -11,7 +11,7 @@ class DescribeJobMetricDataResponseBody(DaraModel):
         period: int = None,
         request_id: str = None,
     ):
-        # Monitoring statistics points.
+        # The monitoring statistics data points.
         self.data_points = data_points
         # The statistical period of the monitoring data. Valid values: 15, 60, 900, and 3600. Unit: seconds.
         self.period = period

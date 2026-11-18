@@ -22,7 +22,7 @@ class CreateJobShrinkRequest(DaraModel):
         self.deployment_policy_shrink = deployment_policy_shrink
         # The job description.
         self.job_description = job_description
-        # The job name. The name must be 2 to 64 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+        # The job name. The name must be 2 to 64 characters in length and can contain Chinese characters, English letters, and digits. It can also contain hyphens (-) and underscores (_).
         # 
         # This parameter is required.
         self.job_name = job_name
@@ -31,7 +31,7 @@ class CreateJobShrinkRequest(DaraModel):
         self.job_template_id = job_template_id
         # The security policy.
         self.security_policy_shrink = security_policy_shrink
-        # The task list. Currently, only one task is supported.
+        # The list of tasks. Only one task is supported.
         # 
         # This parameter is required.
         self.tasks_shrink = tasks_shrink

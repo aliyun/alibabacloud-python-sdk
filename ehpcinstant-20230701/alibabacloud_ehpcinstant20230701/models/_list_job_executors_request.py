@@ -14,11 +14,11 @@ class ListJobExecutorsRequest(DaraModel):
     ):
         # The job ID.
         self.job_id = job_id
-        # The page number for the paged query.
+        # The page number for paging.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The job name.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

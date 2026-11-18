@@ -16,15 +16,15 @@ class ListExecutorEventsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of the running event.
+        # The list of runtime events.
         self.executor_event_list = executor_event_list
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The paging Settings for the number of entries per page in a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -88,19 +88,18 @@ class ListExecutorEventsResponseBodyExecutorEventList(DaraModel):
         level: str = None,
         time: str = None,
     ):
-        # The content of the running event.
+        # The content of the runtime event.
         self.content = content
-        # The ID of the executor. The format is JobId-TaskName-ArrayIndex.
+        # The executor ID. Format: JobId-TaskName-ArrayIndex.
         self.executor_id = executor_id
         # The job ID.
         self.job_id = job_id
-        # The level of the running event. Valid values:
-        # 
-        # *   Normal
-        # *   Warning
-        # *   Error
+        # The level of the runtime event. Valid values:
+        # - Normal
+        # - Warning
+        # - Error
         self.level = level
-        # The event of the running event.
+        # The time when the runtime event occurred.
         self.time = time
 
     def validate(self):

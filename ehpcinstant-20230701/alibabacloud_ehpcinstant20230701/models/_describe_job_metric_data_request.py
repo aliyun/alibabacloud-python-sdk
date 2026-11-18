@@ -18,9 +18,9 @@ class DescribeJobMetricDataRequest(DaraModel):
         self.array_index = array_index
         # The job ID.
         self.job_id = job_id
-        # The metrics of the job.
+        # The job monitoring metric.
         self.metric_name = metric_name
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

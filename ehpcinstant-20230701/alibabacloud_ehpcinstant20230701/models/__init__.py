@@ -14,6 +14,10 @@ from ._create_job_request import CreateJobRequest
 from ._create_job_shrink_request import CreateJobShrinkRequest
 from ._create_job_response_body import CreateJobResponseBody
 from ._create_job_response import CreateJobResponse
+from ._create_job_template_request import CreateJobTemplateRequest
+from ._create_job_template_shrink_request import CreateJobTemplateShrinkRequest
+from ._create_job_template_response_body import CreateJobTemplateResponseBody
+from ._create_job_template_response import CreateJobTemplateResponse
 from ._create_pool_request import CreatePoolRequest
 from ._create_pool_shrink_request import CreatePoolShrinkRequest
 from ._create_pool_response_body import CreatePoolResponseBody
@@ -25,6 +29,9 @@ from ._delete_job_records_request import DeleteJobRecordsRequest
 from ._delete_job_records_shrink_request import DeleteJobRecordsShrinkRequest
 from ._delete_job_records_response_body import DeleteJobRecordsResponseBody
 from ._delete_job_records_response import DeleteJobRecordsResponse
+from ._delete_job_template_request import DeleteJobTemplateRequest
+from ._delete_job_template_response_body import DeleteJobTemplateResponseBody
+from ._delete_job_template_response import DeleteJobTemplateResponse
 from ._delete_jobs_request import DeleteJobsRequest
 from ._delete_jobs_shrink_request import DeleteJobsShrinkRequest
 from ._delete_jobs_response_body import DeleteJobsResponseBody
@@ -59,6 +66,9 @@ from ._get_job_response import GetJobResponse
 from ._get_job_record_duration_request import GetJobRecordDurationRequest
 from ._get_job_record_duration_response_body import GetJobRecordDurationResponseBody
 from ._get_job_record_duration_response import GetJobRecordDurationResponse
+from ._get_job_template_request import GetJobTemplateRequest
+from ._get_job_template_response_body import GetJobTemplateResponseBody
+from ._get_job_template_response import GetJobTemplateResponse
 from ._get_pool_request import GetPoolRequest
 from ._get_pool_response_body import GetPoolResponseBody
 from ._get_pool_response import GetPoolResponse
@@ -84,6 +94,9 @@ from ._list_images_response import ListImagesResponse
 from ._list_job_executors_request import ListJobExecutorsRequest
 from ._list_job_executors_response_body import ListJobExecutorsResponseBody
 from ._list_job_executors_response import ListJobExecutorsResponse
+from ._list_job_templates_request import ListJobTemplatesRequest
+from ._list_job_templates_response_body import ListJobTemplatesResponseBody
+from ._list_job_templates_response import ListJobTemplatesResponse
 from ._list_jobs_request import ListJobsRequest
 from ._list_jobs_shrink_request import ListJobsShrinkRequest
 from ._list_jobs_response_body import ListJobsResponseBody
@@ -114,6 +127,10 @@ from ._update_action_plan_response import UpdateActionPlanResponse
 from ._update_job_record_duration_request import UpdateJobRecordDurationRequest
 from ._update_job_record_duration_response_body import UpdateJobRecordDurationResponseBody
 from ._update_job_record_duration_response import UpdateJobRecordDurationResponse
+from ._update_job_template_request import UpdateJobTemplateRequest
+from ._update_job_template_shrink_request import UpdateJobTemplateShrinkRequest
+from ._update_job_template_response_body import UpdateJobTemplateResponseBody
+from ._update_job_template_response import UpdateJobTemplateResponse
 from ._update_pool_request import UpdatePoolRequest
 from ._update_pool_shrink_request import UpdatePoolShrinkRequest
 from ._update_pool_response_body import UpdatePoolResponseBody
@@ -145,7 +162,27 @@ from ._create_job_request import CreateJobRequestTasksTaskSpecVolumeMount
 from ._create_job_request import CreateJobRequestTasksTaskSpec
 from ._create_job_request import CreateJobRequestTasks
 from ._create_job_response_body import CreateJobResponseBodyTasks
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigDeploymentPolicyNetwork
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigDeploymentPolicyTags
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigDeploymentPolicy
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigSecurityPolicySecurityGroup
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigSecurityPolicy
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksExecutorPolicyArraySpec
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksExecutorPolicy
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecResourceDisks
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecResource
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecRetryPolicyExitCodeActions
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecRetryPolicy
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorContainerEnvironmentVars
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorContainer
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorVM
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutor
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecVolumeMount
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasksTaskSpec
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfigTasks
+from ._create_job_template_request import CreateJobTemplateRequestJobTemplateConfig
 from ._create_pool_request import CreatePoolRequestResourceLimits
+from ._create_pool_request import CreatePoolRequestTags
 from ._delete_jobs_request import DeleteJobsRequestJobSpecTaskSpec
 from ._delete_jobs_request import DeleteJobsRequestJobSpec
 from ._describe_job_metric_last_response_body import DescribeJobMetricLastResponseBodyMetrics
@@ -178,6 +215,26 @@ from ._get_job_response_body import GetJobResponseBodyJobInfoTasksTaskSpecVolume
 from ._get_job_response_body import GetJobResponseBodyJobInfoTasksTaskSpec
 from ._get_job_response_body import GetJobResponseBodyJobInfoTasks
 from ._get_job_response_body import GetJobResponseBodyJobInfo
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigDeploymentPolicyNetwork
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigDeploymentPolicyTags
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigDeploymentPolicy
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigSecurityPolicySecurityGroup
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigSecurityPolicy
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksExecutorPolicyArraySpec
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksExecutorPolicy
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecResourceDisks
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecResource
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecRetryPolicyExitCodeActions
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecRetryPolicy
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecTaskExecutorContainerEnvironmentVars
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecTaskExecutorContainer
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecTaskExecutorVM
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecTaskExecutor
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecVolumeMount
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpec
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfigTasks
+from ._get_job_template_response_body import GetJobTemplateResponseBodyJobTemplateConfig
+from ._get_pool_response_body import GetPoolResponseBodyPoolInfoTags
 from ._get_pool_response_body import GetPoolResponseBodyPoolInfo
 from ._list_action_plan_activities_response_body import ListActionPlanActivitiesResponseBodyActionPlanActivitiesJobs
 from ._list_action_plan_activities_response_body import ListActionPlanActivitiesResponseBodyActionPlanActivities
@@ -193,17 +250,39 @@ from ._list_images_response_body import ListImagesResponseBodyImages
 from ._list_job_executors_response_body import ListJobExecutorsResponseBodyExecutorStatus
 from ._list_job_executors_response_body import ListJobExecutorsResponseBodyExecutorsTags
 from ._list_job_executors_response_body import ListJobExecutorsResponseBodyExecutors
+from ._list_job_templates_response_body import ListJobTemplatesResponseBodyJobTemplatesTags
+from ._list_job_templates_response_body import ListJobTemplatesResponseBodyJobTemplates
 from ._list_jobs_request import ListJobsRequestFilterTag
 from ._list_jobs_request import ListJobsRequestFilter
 from ._list_jobs_request import ListJobsRequestSortBy
 from ._list_jobs_response_body import ListJobsResponseBodyJobListTags
 from ._list_jobs_response_body import ListJobsResponseBodyJobList
 from ._list_pools_request import ListPoolsRequestFilter
+from ._list_pools_response_body import ListPoolsResponseBodyPoolListTags
 from ._list_pools_response_body import ListPoolsResponseBodyPoolList
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._tag_resources_request import TagResourcesRequestTag
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigDeploymentPolicyNetwork
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigDeploymentPolicyTags
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigDeploymentPolicy
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigSecurityPolicySecurityGroup
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigSecurityPolicy
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksExecutorPolicyArraySpec
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksExecutorPolicy
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecResourceDisks
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecResource
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecRetryPolicyExitCodeActions
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecRetryPolicy
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorContainerEnvironmentVars
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorContainer
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorVM
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutor
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecVolumeMount
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpec
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfigTasks
+from ._update_job_template_request import UpdateJobTemplateRequestJobTemplateConfig
 from ._update_pool_request import UpdatePoolRequestResourceLimits
 
 __all__ = [
@@ -219,6 +298,10 @@ __all__ = [
     CreateJobShrinkRequest,
     CreateJobResponseBody,
     CreateJobResponse,
+    CreateJobTemplateRequest,
+    CreateJobTemplateShrinkRequest,
+    CreateJobTemplateResponseBody,
+    CreateJobTemplateResponse,
     CreatePoolRequest,
     CreatePoolShrinkRequest,
     CreatePoolResponseBody,
@@ -230,6 +313,9 @@ __all__ = [
     DeleteJobRecordsShrinkRequest,
     DeleteJobRecordsResponseBody,
     DeleteJobRecordsResponse,
+    DeleteJobTemplateRequest,
+    DeleteJobTemplateResponseBody,
+    DeleteJobTemplateResponse,
     DeleteJobsRequest,
     DeleteJobsShrinkRequest,
     DeleteJobsResponseBody,
@@ -264,6 +350,9 @@ __all__ = [
     GetJobRecordDurationRequest,
     GetJobRecordDurationResponseBody,
     GetJobRecordDurationResponse,
+    GetJobTemplateRequest,
+    GetJobTemplateResponseBody,
+    GetJobTemplateResponse,
     GetPoolRequest,
     GetPoolResponseBody,
     GetPoolResponse,
@@ -289,6 +378,9 @@ __all__ = [
     ListJobExecutorsRequest,
     ListJobExecutorsResponseBody,
     ListJobExecutorsResponse,
+    ListJobTemplatesRequest,
+    ListJobTemplatesResponseBody,
+    ListJobTemplatesResponse,
     ListJobsRequest,
     ListJobsShrinkRequest,
     ListJobsResponseBody,
@@ -319,6 +411,10 @@ __all__ = [
     UpdateJobRecordDurationRequest,
     UpdateJobRecordDurationResponseBody,
     UpdateJobRecordDurationResponse,
+    UpdateJobTemplateRequest,
+    UpdateJobTemplateShrinkRequest,
+    UpdateJobTemplateResponseBody,
+    UpdateJobTemplateResponse,
     UpdatePoolRequest,
     UpdatePoolShrinkRequest,
     UpdatePoolResponseBody,
@@ -350,7 +446,27 @@ __all__ = [
     CreateJobRequestTasksTaskSpec,
     CreateJobRequestTasks,
     CreateJobResponseBodyTasks,
+    CreateJobTemplateRequestJobTemplateConfigDeploymentPolicyNetwork,
+    CreateJobTemplateRequestJobTemplateConfigDeploymentPolicyTags,
+    CreateJobTemplateRequestJobTemplateConfigDeploymentPolicy,
+    CreateJobTemplateRequestJobTemplateConfigSecurityPolicySecurityGroup,
+    CreateJobTemplateRequestJobTemplateConfigSecurityPolicy,
+    CreateJobTemplateRequestJobTemplateConfigTasksExecutorPolicyArraySpec,
+    CreateJobTemplateRequestJobTemplateConfigTasksExecutorPolicy,
+    CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecResourceDisks,
+    CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecResource,
+    CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecRetryPolicyExitCodeActions,
+    CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecRetryPolicy,
+    CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorContainerEnvironmentVars,
+    CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorContainer,
+    CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorVM,
+    CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutor,
+    CreateJobTemplateRequestJobTemplateConfigTasksTaskSpecVolumeMount,
+    CreateJobTemplateRequestJobTemplateConfigTasksTaskSpec,
+    CreateJobTemplateRequestJobTemplateConfigTasks,
+    CreateJobTemplateRequestJobTemplateConfig,
     CreatePoolRequestResourceLimits,
+    CreatePoolRequestTags,
     DeleteJobsRequestJobSpecTaskSpec,
     DeleteJobsRequestJobSpec,
     DescribeJobMetricLastResponseBodyMetrics,
@@ -383,6 +499,26 @@ __all__ = [
     GetJobResponseBodyJobInfoTasksTaskSpec,
     GetJobResponseBodyJobInfoTasks,
     GetJobResponseBodyJobInfo,
+    GetJobTemplateResponseBodyJobTemplateConfigDeploymentPolicyNetwork,
+    GetJobTemplateResponseBodyJobTemplateConfigDeploymentPolicyTags,
+    GetJobTemplateResponseBodyJobTemplateConfigDeploymentPolicy,
+    GetJobTemplateResponseBodyJobTemplateConfigSecurityPolicySecurityGroup,
+    GetJobTemplateResponseBodyJobTemplateConfigSecurityPolicy,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksExecutorPolicyArraySpec,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksExecutorPolicy,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecResourceDisks,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecResource,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecRetryPolicyExitCodeActions,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecRetryPolicy,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecTaskExecutorContainerEnvironmentVars,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecTaskExecutorContainer,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecTaskExecutorVM,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecTaskExecutor,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpecVolumeMount,
+    GetJobTemplateResponseBodyJobTemplateConfigTasksTaskSpec,
+    GetJobTemplateResponseBodyJobTemplateConfigTasks,
+    GetJobTemplateResponseBodyJobTemplateConfig,
+    GetPoolResponseBodyPoolInfoTags,
     GetPoolResponseBodyPoolInfo,
     ListActionPlanActivitiesResponseBodyActionPlanActivitiesJobs,
     ListActionPlanActivitiesResponseBodyActionPlanActivities,
@@ -398,16 +534,38 @@ __all__ = [
     ListJobExecutorsResponseBodyExecutorStatus,
     ListJobExecutorsResponseBodyExecutorsTags,
     ListJobExecutorsResponseBodyExecutors,
+    ListJobTemplatesResponseBodyJobTemplatesTags,
+    ListJobTemplatesResponseBodyJobTemplates,
     ListJobsRequestFilterTag,
     ListJobsRequestFilter,
     ListJobsRequestSortBy,
     ListJobsResponseBodyJobListTags,
     ListJobsResponseBodyJobList,
     ListPoolsRequestFilter,
+    ListPoolsResponseBodyPoolListTags,
     ListPoolsResponseBodyPoolList,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
     TagResourcesRequestTag,
+    UpdateJobTemplateRequestJobTemplateConfigDeploymentPolicyNetwork,
+    UpdateJobTemplateRequestJobTemplateConfigDeploymentPolicyTags,
+    UpdateJobTemplateRequestJobTemplateConfigDeploymentPolicy,
+    UpdateJobTemplateRequestJobTemplateConfigSecurityPolicySecurityGroup,
+    UpdateJobTemplateRequestJobTemplateConfigSecurityPolicy,
+    UpdateJobTemplateRequestJobTemplateConfigTasksExecutorPolicyArraySpec,
+    UpdateJobTemplateRequestJobTemplateConfigTasksExecutorPolicy,
+    UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecResourceDisks,
+    UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecResource,
+    UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecRetryPolicyExitCodeActions,
+    UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecRetryPolicy,
+    UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorContainerEnvironmentVars,
+    UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorContainer,
+    UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutorVM,
+    UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecTaskExecutor,
+    UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpecVolumeMount,
+    UpdateJobTemplateRequestJobTemplateConfigTasksTaskSpec,
+    UpdateJobTemplateRequestJobTemplateConfigTasks,
+    UpdateJobTemplateRequestJobTemplateConfig,
     UpdatePoolRequestResourceLimits
 ]

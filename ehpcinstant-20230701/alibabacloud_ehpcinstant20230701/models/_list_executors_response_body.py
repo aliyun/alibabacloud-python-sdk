@@ -18,13 +18,13 @@ class ListExecutorsResponseBody(DaraModel):
     ):
         # The list of executors.
         self.executors = executors
-        # The current page number.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page in the paging Settings for a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -108,80 +108,67 @@ class ListExecutorsResponseBodyExecutors(DaraModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
-        # The resource type.
-        # 
+        # The resource type. Valid values:
         # - Standard: Standard.
-        # 
-        # - Dedicated: Dedicated. This type requires whitelisting.
-        # 
-        # - Economic: Economy. This type requires whitelisting.
+        # - Dedicated: Dedicated. A whitelist is required.
+        # - Economic: Economic. A whitelist is required.
         self.allocation_spec = allocation_spec
         # The application name.
         self.app_name = app_name
-        # The executor number.
+        # The executor index.
         self.array_index = array_index
-        # The duration for which the compute resources are reserved.
+        # The retention period of compute resources.
         self.block_duration = block_duration
-        # The creation time.
+        # The creation time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The end time.
+        # The end time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
         # The executor ID. The format is JobId-TaskName-ArrayIndex.
         self.executor_id = executor_id
-        # The expiration time.
+        # The expiration time. The time is returned in the YYYY-MM-DD HH:mm:ss format based on the UTC+8 time zone.
         self.expiration_time = expiration_time
-        # A list of public IP addresses of the node.
+        # The list of public IP addresses of the node.
         self.external_ip_address = external_ip_address
-        # A list of hostnames.
+        # The list of hostnames.
         self.host_name = host_name
         # The executor image.
         self.image = image
-        # A list of private IP addresses.
+        # The list of internal IP addresses.
         self.ip_address = ip_address
         # The job ID.
         self.job_id = job_id
         # The job name.
         self.job_name = job_name
+        # Indicates whether the execution instance is preemptible.
         self.preemptible = preemptible
         # The resource information.
         self.resource = resource
         # The resource type.
         self.resource_type = resource_type
-        # The start time.
+        # The start time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
-        # The status of the executor. Possible values:
-        # 
-        # - Pending: The executor is waiting in a queue.
-        # 
-        # - Initing: The executor is being initialized.
-        # 
-        # - Succeeded: The executor ran successfully.
-        # 
-        # - Failed: The executor failed to run.
-        # 
-        # - Running: The executor is running.
-        # 
-        # - Exception: A scheduling error occurred.
-        # 
-        # - Retrying: The system is retrying the executor.
-        # 
-        # - Expired: The executor timed out.
-        # 
-        # - Suspended: The job is in hibernation.
-        # 
-        # - Restarting: The job is restarting.
-        # 
-        # - Deleted: The executor is deleted.
+        # The executor status. Valid values:
+        # - Pending: Queued.
+        # - Initing: Initializing.
+        # - Succeeded: Succeeded.
+        # - Failed: Failed.
+        # - Running: Running.
+        # - Exception: Scheduling exception.
+        # - Retrying: Retrying.
+        # - Expired: Timed out.
+        # - Suspended: Job suspended.
+        # - Restarting: Job restarting.
+        # - Deleted: Deleted.
         self.status = status
         # The description of the status reason.
         self.status_reason = status_reason
-        # A list of executor tags.
+        # The list of executor tags.
         self.tags = tags
         # The task name.
         self.task_name = task_name
         # Indicates whether the job is a long-running job.
         self.task_sustainable = task_sustainable
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
         self.vswitch_id = vswitch_id
@@ -367,9 +354,9 @@ class ListExecutorsResponseBodyExecutorsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the executor.
+        # The executor tag key.
         self.tag_key = tag_key
-        # The tag value of the executor.
+        # The executor tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -406,13 +393,13 @@ class ListExecutorsResponseBodyExecutorsResource(DaraModel):
         instance_type: str = None,
         memory: float = None,
     ):
-        # The number of CPU cores.
+        # The number of CPUs.
         self.cores = cores
-        # An array of cloud disks.
+        # The array of cloud disks.
         self.disks = disks
         # The instance type of the runtime environment.
         self.instance_type = instance_type
-        # The total amount of memory resources. Unit: GiB.
+        # The total memory resources. Unit: GiB.
         self.memory = memory
 
     def validate(self):
@@ -467,13 +454,11 @@ class ListExecutorsResponseBodyExecutorsResourceDisks(DaraModel):
         size: int = None,
         type: str = None,
     ):
-        # The size of the cloud disk.
+        # The cloud disk size.
         self.size = size
-        # The type of the cloud disk. The following types are supported:
-        # 
-        # - System: The system disk.
-        # 
-        # - Data: The data disk.
+        # The cloud disk type. Valid values:
+        # - System: System cloud disk.
+        # - Data: Data cloud disk.
         self.type = type
 
     def validate(self):

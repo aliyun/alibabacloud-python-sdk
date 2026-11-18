@@ -15,10 +15,10 @@ class AddImageResponseBody(DaraModel):
         self.image_id = image_id
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the command execution and result retrieval were successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: successful
+        # - false: failed
         self.success = success
 
     def validate(self):

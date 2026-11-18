@@ -16,13 +16,13 @@ class ListPoolsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The page number. Default value: 1.
+        # The current page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries returned per page. Maximum value: 50. Default value: 10.
+        # The number of entries per page in a paging query. Maximum value: 50. Default value: 10.
         self.page_size = page_size
-        # An array of resource pools.
+        # The list of resource pools.
         self.pool_list = pool_list
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -89,49 +89,47 @@ class ListPoolsResponseBodyPoolList(DaraModel):
         priority: int = None,
         scheduling_policy_id: str = None,
         status: str = None,
+        tags: List[main_models.ListPoolsResponseBodyPoolListTags] = None,
         update_time: str = None,
     ):
-        # The time when the resource pool was created.
+        # The time when the resource pool was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # Indicates whether the resource pool is the default pool. Valid values:
+        # Specifies whether the resource pool is the default resource pool. Valid values:
         # 
-        # - **true**: The resource pool is the default pool.
-        # 
-        # - **false**: The resource pool is not the default pool.
+        # - **true**: Yes.
+        # - **false**: No.
         self.is_default = is_default
-        # The number of running executor nodes in the resource pool.
+        # The number of running executor nodes in a resource pool.
         self.max_executor_num = max_executor_num
-        # The name of the resource pool.
-        # 
-        # - Maximum length: 15 characters.
-        # 
-        # - Allowed characters: digits, letters, underscores (_), and periods (.).
+        # The resource pool name.
+        # - The name can be up to 15 characters in length.
+        # - The name can contain digits, uppercase letters, lowercase letters, underscores (_), and periods (.).
         self.pool_name = pool_name
         # The priority of the resource pool.
         # 
-        # - Valid values: 1 to 99. Default value: 1 (lowest priority).
-        # 
-        # - Jobs in a resource pool with a higher priority are scheduled before those in a pool with a lower priority. The pool\\"s priority overrides the priority of an individual job.
+        # - Valid values: 1 to 99. Default value: 1, which indicates the lowest priority.
+        # - Jobs submitted to a resource pool with a higher priority level are scheduled before pending jobs in a resource pool with a lower priority level. The priority level of a resource pool takes precedence over the priority of a job.
         self.priority = priority
         # The ID of the scheduling policy.
         self.scheduling_policy_id = scheduling_policy_id
-        # The status of the resource pool. Valid values:
+        # The resource pool status. Valid values:
         # 
         # - Creating: The resource pool is being created.
-        # 
         # - Updating: The resource pool is being updated.
-        # 
         # - Deleting: The resource pool is being deleted.
-        # 
-        # - Working: The resource pool is operational.
-        # 
-        # - Deleted: The resource pool has been deleted.
+        # - Working: The resource pool is working.
+        # - Deleted: The resource pool is deleted.
         self.status = status
-        # The time when the resource pool was last updated.
+        # The tag information.
+        self.tags = tags
+        # The time when the resource pool was updated. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -158,6 +156,11 @@ class ListPoolsResponseBodyPoolList(DaraModel):
 
         if self.status is not None:
             result['Status'] = self.status
+
+        result['Tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['Tags'].append(k1.to_map() if k1 else None)
 
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
@@ -187,8 +190,51 @@ class ListPoolsResponseBodyPoolList(DaraModel):
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k1 in m.get('Tags'):
+                temp_model = main_models.ListPoolsResponseBodyPoolListTags()
+                self.tags.append(temp_model.from_map(k1))
+
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        return self
+
+class ListPoolsResponseBodyPoolListTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

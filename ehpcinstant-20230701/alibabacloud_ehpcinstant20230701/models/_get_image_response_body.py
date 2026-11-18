@@ -15,17 +15,16 @@ class GetImageResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # Image details.
+        # The image details.
         self.image = image
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation succeeded. Valid values:
+        # Indicates whether the process of executing the command and obtaining the result is successful. Valid values:
         # 
-        # - true: succeeded.
-        # 
-        # - false: failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
-        # Total number of items returned for this request.
+        # The total number of items that meet the request conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -84,27 +83,31 @@ class GetImageResponseBodyImage(DaraModel):
         vmimage_spec: main_models.GetImageResponseBodyImageVMImageSpec = None,
         version: str = None,
     ):
+        # The list of status information of the image in additional regions.
         self.additional_regions_info = additional_regions_info
+        # The application ID.
         self.app_id = app_id
-        # Container image configuration details.
+        # The configuration details of the container image.
         self.container_image_spec = container_image_spec
-        # Image creation time.
+        # The time when the image was created. The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format, where Z represents UTC.
         self.create_time = create_time
-        # Image description.
+        # The image description.
         self.description = description
+        # The application document information associated with the image.
         self.document_info = document_info
-        # Image type.
+        # The image type.
         # 
         # This parameter is required.
         self.image_type = image_type
-        # Image name.
+        # The image name.
         self.name = name
-        # Image size, in GiB.
+        # The image size. Unit: GiB.
         self.size = size
+        # The image status.
         self.status = status
-        # Virtual machine image configuration details.
+        # The configuration details of the virtual machine image.
         self.vmimage_spec = vmimage_spec
-        # Version.
+        # The version.
         self.version = version
 
     def validate(self):
@@ -218,13 +221,13 @@ class GetImageResponseBodyImageVMImageSpec(DaraModel):
         os_tag: str = None,
         platform: str = None,
     ):
-        # Architecture type.
+        # The architecture type.
         self.architecture = architecture
-        # Image ID.
+        # The image ID.
         self.image_id = image_id
-        # OS version identifier.
+        # The specific version identifier of the operating system.
         self.os_tag = os_tag
-        # Platform type.
+        # The platform type.
         self.platform = platform
 
     def validate(self):
@@ -272,8 +275,11 @@ class GetImageResponseBodyImageDocumentInfo(DaraModel):
         document_id: str = None,
         encoding_mode: str = None,
     ):
+        # The content of the application document.
         self.document = document
+        # The application document ID.
         self.document_id = document_id
+        # The encoding method of the application document. Base64 and PlainText are supported.
         self.encoding_mode = encoding_mode
 
     def validate(self):
@@ -320,26 +326,27 @@ class GetImageResponseBodyImageContainerImageSpec(DaraModel):
         registry_cri_id: str = None,
         registry_url: str = None,
     ):
+        # The architecture type.
         self.architecture = architecture
-        # Indicates whether the image is stored in an ACR Enterprise Edition instance. Valid values:
+        # Indicates whether the image is stored in Container Registry Enterprise Edition. Valid values:
         # 
-        # - True: yes.
-        # 
-        # - False: no.
+        # - True: Yes.
+        # - False: No.
         self.is_acrenterprise = is_acrenterprise
-        # Indicates whether the image is stored in an Alibaba Cloud Container Registry (ACR) instance. Valid values:
+        # Indicates whether the image is stored in Container Registry. Valid values:
         # 
-        # - True: yes.
-        # 
-        # - False: no.
+        # - True: Yes.
+        # - False: No.
         self.is_acrregistry = is_acrregistry
+        # The specific version identifier of the operating system.
         self.os_tag = os_tag
+        # The platform type.
         self.platform = platform
-        # Authentication for a private image registry.
+        # The authentication information for the private image registry.
         self.registry_credential = registry_credential
-        # ACR Enterprise Edition instance ID.
+        # The ID of the Container Registry Enterprise Edition instance.
         self.registry_cri_id = registry_cri_id
-        # Container image registry URL.
+        # The access URL of the container image.
         self.registry_url = registry_url
 
     def validate(self):
@@ -413,11 +420,11 @@ class GetImageResponseBodyImageContainerImageSpecRegistryCredential(DaraModel):
         server: str = None,
         user_name: str = None,
     ):
-        # Password for the username.
+        # The logon password.
         self.password = password
-        # Registry server address.
+        # The server address of the image registry.
         self.server = server
-        # Username to log on to the registry.
+        # The logon username.
         self.user_name = user_name
 
     def validate(self):
@@ -459,8 +466,11 @@ class GetImageResponseBodyImageAdditionalRegionsInfo(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
+        # The image ID in the additional region.
         self.image_id = image_id
+        # The additional region ID.
         self.region_id = region_id
+        # The status of the image in the additional region.
         self.status = status
 
     def validate(self):

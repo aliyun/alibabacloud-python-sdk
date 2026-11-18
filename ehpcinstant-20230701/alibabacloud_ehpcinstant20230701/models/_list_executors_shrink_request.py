@@ -13,9 +13,9 @@ class ListExecutorsShrinkRequest(DaraModel):
     ):
         # The filter conditions for querying executors.
         self.filter_shrink = filter_shrink
-        # The current page number.<br>Start value: 1<br>Default value: 1<br><br>
+        # The page number. Starting value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page for a paged query. Default value: 50. Maximum value: 100.
+        # The number of entries per page in the paging Settings for a paged query. Default value: 50. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):

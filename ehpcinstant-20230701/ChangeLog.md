@@ -1,3 +1,15 @@
+2026-11-18 Version: 4.1.1
+- Update API CreateJob: add request parameters DeploymentPolicy.Network.EnableENIMapping.
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.TaskExecutor.$.Container.GpuDriverVersion.
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.TaskExecutor.$.Container.Privileged.
+- Update API CreateJobTemplate: add request parameters JobTemplateConfig.Tasks.$.TaskSpec.TaskExecutor.$.Container.GpuDriverVersion.
+- Update API CreateJobTemplate: add request parameters JobTemplateConfig.Tasks.$.TaskSpec.TaskExecutor.$.Container.Privileged.
+- Update API GetJobTemplate: add response parameters Body.JobTemplateConfig.Tasks.$.TaskSpec.TaskExecutor.$.Container.GpuDriverVersion.
+- Update API GetJobTemplate: add response parameters Body.JobTemplateConfig.Tasks.$.TaskSpec.TaskExecutor.$.Container.Privileged.
+- Update API UpdateJobTemplate: add request parameters JobTemplateConfig.Tasks.$.TaskSpec.TaskExecutor.$.Container.GpuDriverVersion.
+- Update API UpdateJobTemplate: add request parameters JobTemplateConfig.Tasks.$.TaskSpec.TaskExecutor.$.Container.Privileged.
+
+
 2026-08-17 Version: 4.0.1
 - Update API CreateJob: add request parameters JobTemplateId.
 - Update API CreateJob: add request parameters Tasks.$.TaskSpec.TaskExecutor.$.VM.EnvironmentVars.

@@ -16,7 +16,7 @@ class SynchronizeAppRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The list of arrays that are synchronized to the specified region. If \\"all\\" is included, it is synchronized to all other unsynchronized regions by default.
+        # The list of target region IDs. If the list includes \\"all\\", the application is synchronized to all other unsynchronized regions by default.
         self.target_region_ids = target_region_ids
 
     def validate(self):

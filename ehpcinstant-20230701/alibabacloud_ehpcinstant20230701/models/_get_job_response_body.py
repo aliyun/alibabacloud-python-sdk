@@ -63,14 +63,15 @@ class GetJobResponseBodyJobInfo(DaraModel):
         status: str = None,
         tasks: List[main_models.GetJobResponseBodyJobInfoTasks] = None,
     ):
-        # The application additional information.
+        # The additional application information.
         self.app_extra_info = app_extra_info
-        # The job submission time.
+        # The time when the job was submitted. The example uses the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
+        # The dependency policy.
         self.dependency_policy = dependency_policy
         # The resource deployment policy.
         self.deployment_policy = deployment_policy
-        # The job end time.
+        # The time when the job ended. The example uses the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
         # The job description.
         self.job_description = job_description
@@ -79,22 +80,23 @@ class GetJobResponseBodyJobInfo(DaraModel):
         # The job name.
         self.job_name = job_name
         self.job_scheduler = job_scheduler
+        # The security policy.
         self.security_policy = security_policy
-        # The job start time.
+        # The time when the job started. The example uses the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
         # The job status. Valid values:
         # 
-        # - Pending: the job is queued.
-        # - Initing: the job is being initialized.
-        # - Succeed: the job succeeded.
-        # - Failed: the job failed.
-        # - Running: the job is running.
-        # - Exception: a scheduling exception occurred.
-        # - Retrying: the job is being retried.
-        # - Expired: the job timed out.
-        # - Deleted: the job is deleted.
-        # - Suspended: the job is suspended.
-        # - Restarting: the job is being restarted.
+        # - Pending: The job is queued.
+        # - Initing: The job is being initialized.
+        # - Succeed: The job ran successfully.
+        # - Failed: The job failed to run.
+        # - Running: The job is running.
+        # - Exception: A scheduling exception occurred.
+        # - Retrying: The job is being retried.
+        # - Expired: The job timed out.
+        # - Deleted: The job is deleted.
+        # - Suspended: The job is hibernated.
+        # - Restarting: The job is being restarted.
         self.status = status
         # The task list. Currently, only one task is supported.
         self.tasks = tasks
@@ -225,7 +227,7 @@ class GetJobResponseBodyJobInfoTasks(DaraModel):
         self.task_name = task_name
         # The task specification details.
         self.task_spec = task_spec
-        # Indicates whether the job is long-running.
+        # Specifies whether the job is a long-running job.
         self.task_sustainable = task_sustainable
 
     def validate(self):
@@ -296,9 +298,11 @@ class GetJobResponseBodyJobInfoTasksTaskSpec(DaraModel):
     ):
         # The resource information.
         self.resource = resource
+        # The task retry policy.
         self.retry_policy = retry_policy
         # The task execution configuration.
         self.task_executor = task_executor
+        # The list of data volumes mounted to the task. A maximum of 10 data volumes are supported.
         self.volume_mount = volume_mount
 
     def validate(self):
@@ -369,8 +373,20 @@ class GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount(DaraModel):
         mount_path: str = None,
         volume_driver: str = None,
     ):
+        # The list of mount parameters for the data volume. The parameters are key-value pairs in JSON format.
+        # - Format for mounting a NAS file system: {"server":"xxxxx-xxxxx.cn-heyuan.nas.aliyuncs.com","vers":"3","path":"/data","options":"nolock,tcp,noresvport"}
+        # > server specifies the mount target address of the NAS file system. path specifies the subdirectory under the NAS path, which must start with / and must already exist. vers specifies the NFS protocol version used to mount the NAS file system. Use v3. options specifies the custom parameters used when mounting the NAS file system, in the format of "xxx,xxx,xxx".
+        # 
+        # - Format for mounting an OSS bucket: {"bucket":"xxxxx", "url":"oss-cn-heyuan-internal.aliyuncs.com","path":"/data","akId":"xxxxx","akSecret":"xxxxx"}
+        # > bucket specifies the name of the OSS bucket. url specifies the endpoint of the OSS bucket. You can log on to the OSS console and obtain the endpoint on the Overview page of the bucket. path specifies the directory structure relative to the root directory of the bucket when mounting. The default value is /, and the directory must already exist. akId specifies the AccessKey ID used for direct authorization with an AccessKey pair. akSecret specifies the AccessKey secret used for direct authorization with an AccessKey pair.
         self.mount_options = mount_options
+        # The directory where the data volume is mounted to the task.
+        # 
+        # > The content in the mount directory will be directly overwritten by the content of the volume. Use this parameter with caution.
         self.mount_path = mount_path
+        # The supported data volume types. Valid values:
+        # - alicloud/nas: Mount a NAS file system.
+        # - alicloud/oss: Mount an OSS bucket.
         self.volume_driver = volume_driver
 
     def validate(self):
@@ -410,7 +426,7 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor(DaraModel):
         self,
         vm: main_models.GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM = None,
     ):
-        # The ECS instance configuration.
+        # The ECS instance used.
         self.vm = vm
 
     def validate(self):
@@ -444,9 +460,9 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(DaraModel):
     ):
         # The image ID.
         self.image = image
-        # The preprocessing script. The script must be Base64-encoded.
+        # The pre-processing script. Base64 encoding is required.
         self.prolog_script = prolog_script
-        # The job execution script. The script must be Base64-encoded.
+        # The script used to run the job. Base64 encoding is required.
         self.script = script
 
     def validate(self):
@@ -487,7 +503,9 @@ class GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy(DaraModel):
         exit_code_actions: List[main_models.GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions] = None,
         retry_count: int = None,
     ):
+        # The retry rules. A maximum of 10 rules are supported.
         self.exit_code_actions = exit_code_actions
+        # The number of retries. Valid values: 1 to 10. Default value: 3.
         self.retry_count = retry_count
 
     def validate(self):
@@ -530,7 +548,13 @@ class GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicyExitCodeActions(DaraModel
         action: str = None,
         exit_code: int = None,
     ):
+        # The next action for the task. Valid values:
+        # 
+        # - Retry: The job starts a new retry when a specific exit code is matched.
+        # 
+        # - Exit: The job exits when a specific exit code is matched.
         self.action = action
+        # The task exit code, which is used together with Action to form a job retry rule. Valid values: 0 to 255.
         self.exit_code = exit_code
 
     def validate(self):
@@ -573,8 +597,15 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResource(DaraModel):
         self.cores = cores
         # The cloud disk array.
         self.disks = disks
+        # Specifies whether to enable hyper-threading for the runtime environment. Default value: true.
         self.enable_ht = enable_ht
+        # The hostname prefix of the runtime environment. The limits are as follows:
+        # 
+        # - A period (.) and a hyphen (-) cannot be used as the first or last character, and cannot be used consecutively.
+        # - Windows environment: The length cannot exceed 10 characters. Periods (.) are not supported, and the name cannot contain only digits. Uppercase and lowercase letters, digits, and hyphens (-) are allowed.
+        # - Linux environment: The length cannot exceed 32 characters. Multiple periods (.) are supported. The string between periods is considered a segment, and each segment can contain uppercase and lowercase letters, digits, and hyphens (-).
         self.host_name_prefix = host_name_prefix
+        # The instance types of the runtime environment. A maximum of 5 instance types are supported.
         self.instance_types = instance_types
         # The total amount of memory resources. Unit: GiB.
         self.memory = memory
@@ -647,8 +678,8 @@ class GetJobResponseBodyJobInfoTasksTaskSpecResourceDisks(DaraModel):
         self.size = size
         # The cloud disk type. Valid values:
         # 
-        # - System: system cloud disk.
-        # - Data: data cloud disk.
+        # - System: System cloud disk.
+        # - Data: Data cloud disk.
         self.type = type
 
     def validate(self):
@@ -687,17 +718,17 @@ class GetJobResponseBodyJobInfoTasksExecutorStatus(DaraModel):
         status: str = None,
         status_reason: str = None,
     ):
-        # The subtask ID.
+        # The sub-job ID.
         self.array_id = array_id
-        # The job creation time.
+        # The time when the job was created. The example uses the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The job end time.
+        # The time when the job ended. The example uses the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
-        # The job start time.
+        # The time when the job started. The example uses the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
         # The job status.
         self.status = status
-        # The status reason description.
+        # The description of the status reason.
         self.status_reason = status_reason
 
     def validate(self):
@@ -758,7 +789,7 @@ class GetJobResponseBodyJobInfoTasksExecutorPolicy(DaraModel):
     ):
         # The array job details.
         self.array_spec = array_spec
-        # The maximum number of nodes for running the job.
+        # The maximum number of nodes for job execution.
         self.max_count = max_count
 
     def validate(self):
@@ -796,12 +827,12 @@ class GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec(DaraModel):
         index_start: int = None,
         index_step: int = None,
     ):
-        # The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to IndexStart.
+        # The end value of the array job index. Valid values: 0 to 4999. The value must be greater than or equal to the value of IndexStart.
         self.index_end = index_end
         # The start value of the array job index. Valid values: 0 to 4999.
         self.index_start = index_start
-        # The interval of the array job index.
-        # > If the array job properties are IndexStart=1, IndexEnd=5, and IndexStep=2, the array job contains three subtasks with indexes 1, 3, and 5.
+        # The step size of the array job index.
+        # > If the array job attributes are IndexStart=1, IndexEnd=5, and IndexStep=2, the array job contains three subtasks with indexes 1, 3, and 5.
         self.index_step = index_step
 
     def validate(self):
@@ -841,6 +872,7 @@ class GetJobResponseBodyJobInfoSecurityPolicy(DaraModel):
         self,
         security_group: main_models.GetJobResponseBodyJobInfoSecurityPolicySecurityGroup = None,
     ):
+        # The security group.
         self.security_group = security_group
 
     def validate(self):
@@ -870,6 +902,7 @@ class GetJobResponseBodyJobInfoSecurityPolicySecurityGroup(DaraModel):
         self,
         security_group_ids: List[str] = None,
     ):
+        # The security group ID array.
         self.security_group_ids = security_group_ids
 
     def validate(self):
@@ -905,16 +938,18 @@ class GetJobResponseBodyJobInfoDeploymentPolicy(DaraModel):
         # The resource type. Currently, only Dedicated is supported. You must be added to the whitelist to use this feature.
         self.allocation_spec = allocation_spec
         # The computing power level. Valid values:
-        # - General: general-purpose.
-        # - Performance: compute-optimized.
+        # - General: General-purpose.
+        # - Performance: Performance-optimized.
         # 
         # Default value: General.
         self.level = level
-        # The network configuration.
+        # The network configuration information.
         self.network = network
+        # The resource pool.
         self.pool = pool
+        # The priority.
         self.priority = priority
-        # The job tag list.
+        # The list of job tags.
         self.tags = tags
 
     def validate(self):
@@ -1022,13 +1057,13 @@ class GetJobResponseBodyJobInfoDeploymentPolicyNetwork(DaraModel):
         enable_external_ip_address: bool = None,
         vswitch: List[str] = None,
     ):
-        # Indicates whether resources are created in the zone that corresponds to the specified vSwitch.
+        # Specifies whether the resource is created in the zone corresponding to the specified vSwitch parameter. Valid values:
         # 
-        # - true: Resources are created in the zone that corresponds to the specified vSwitch.
+        # - true: The resource is created in the zone corresponding to the specified vSwitch parameter.
         # 
-        # - false: Resources are created in any zone that has available resources.
+        # - false: The resource is created in any zone with available resources.
         self.enable_enimapping = enable_enimapping
-        # Indicates whether a public IP address is created.
+        # Specifies whether to create a public IP address.
         self.enable_external_ip_address = enable_external_ip_address
         # The vSwitch array.
         self.vswitch = vswitch
@@ -1070,6 +1105,7 @@ class GetJobResponseBodyJobInfoDependencyPolicy(DaraModel):
         self,
         job_dependency: List[main_models.GetJobResponseBodyJobInfoDependencyPolicyJobDependency] = None,
     ):
+        # The job dependencies. A maximum of 10 dependencies are supported.
         self.job_dependency = job_dependency
 
     def validate(self):
@@ -1106,7 +1142,16 @@ class GetJobResponseBodyJobInfoDependencyPolicyJobDependency(DaraModel):
         job_id: str = None,
         type: str = None,
     ):
+        # The job ID.
         self.job_id = job_id
+        # The dependency type. Valid values:
+        # 
+        # - AfterSucceeded: All subtasks of the dependent job or array job run successfully (the exit code is 0).
+        # - AfterFailed: Any subtask of the dependent job or array job fails (the exit code is not 0).
+        # - AfterAny: The dependent job finishes running, regardless of success or failure.
+        # - AfterCorresponding: The corresponding subtask of the dependent array job runs successfully (the exit code is 0).
+        # 
+        # Default value: AfterSucceeded.
         self.type = type
 
     def validate(self):

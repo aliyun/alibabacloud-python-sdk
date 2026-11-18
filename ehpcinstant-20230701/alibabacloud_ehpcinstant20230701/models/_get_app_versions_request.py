@@ -13,25 +13,25 @@ class GetAppVersionsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The application name.
+        # The name of the application.
         # 
         # This parameter is required.
         self.app_name = app_name
-        # The source of the image. Valid values:
+        # The image source. Valid values:
         # 
-        # Public: public images provided by Alibaba Cloud.
+        # - Public: public images provided by Alibaba Cloud.
         # 
-        # Custom: the custom image that you added.
+        # - Custom: custom images added by you.
         self.image_category = image_category
-        # The type of the images. Valid values:
+        # The image type. Valid values:
         # 
-        # VM: Virtual Machine Image
+        # - VM: virtual machine images.
         # 
-        # Container: container image
+        # - Container: container images.
         self.image_type = image_type
-        # The page number. Default value: 1.
+        # The current page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

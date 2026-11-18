@@ -14,13 +14,11 @@ class ListExecutorEventsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Queries the Executor filter conditions.
+        # The filter conditions for querying executors.
         self.filter = filter
-        # The current page number.\\
-        # Starting value: 1\\
-        # Default value: 1
+        # The page number. Starting value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries on the current page. Default value: 50. Maximum value: 100.
+        # The paging Settings for the number of entries per page in a paged query. Default value: 50. Maximum value: 100.
         self.page_size = page_size
 
     def validate(self):
@@ -66,19 +64,18 @@ class ListExecutorEventsRequestFilter(DaraModel):
         time_after: int = None,
         time_before: int = None,
     ):
-        # The list of executor IDs. A maximum of 100 IDs are supported.
+        # The list of executor IDs. You can specify up to 100 IDs.
         self.executor_ids = executor_ids
         # The job ID.
         self.job_id = job_id
-        # The level of the running event. Valid value:
-        # 
-        # *   Normal
-        # *   Warning
-        # *   Error
+        # The level of the runtime event. Valid values:
+        # - Normal
+        # - Warning
+        # - Error
         self.level = level
-        # For jobs submitted after this time, the time in the region is converted into a Unix timestamp (UI8 regionfor Aliyun sites).
+        # The start time of the events. Events that occur after this time are returned. The time must be a UNIX timestamp based on the time zone of the region (UTC+8 for the Chinese site).
         self.time_after = time_after
-        # For jobs submitted before this time, the time in the region is converted into a Unix timestamp (UI8 regionfor Aliyun sites).
+        # The end time of the events. Events that occur before this time are returned. The time must be a UNIX timestamp based on the time zone of the region (UTC+8 for the Chinese site).
         self.time_before = time_before
 
     def validate(self):

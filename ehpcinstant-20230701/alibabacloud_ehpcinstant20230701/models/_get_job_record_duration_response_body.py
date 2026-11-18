@@ -10,9 +10,9 @@ class GetJobRecordDurationResponseBody(DaraModel):
         job_record_duration: int = None,
         request_id: str = None,
     ):
-        # The job record retention period, in days. Valid values: 1 to 30. Default value: 30.
+        # The retention period of job records, in days. Valid values: 1 to 30. Default value: 30.
         self.job_record_duration = job_record_duration
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

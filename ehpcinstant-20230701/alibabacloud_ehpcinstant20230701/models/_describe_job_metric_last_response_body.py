@@ -13,7 +13,7 @@ class DescribeJobMetricLastResponseBody(DaraModel):
         metrics: List[main_models.DescribeJobMetricLastResponseBodyMetrics] = None,
         request_id: str = None,
     ):
-        # The list of the JobMetric details.
+        # The list of JobMetric details.
         self.metrics = metrics
         # The request ID.
         self.request_id = request_id
@@ -58,9 +58,9 @@ class DescribeJobMetricLastResponseBodyMetrics(DaraModel):
         array_index: int = None,
         metric: str = None,
     ):
-        # The index of the array job.
+        # The job array index.
         self.array_index = array_index
-        # The monitoring item information corresponding to the array job index.
+        # The monitoring metric information for the job array index.
         self.metric = metric
 
     def validate(self):

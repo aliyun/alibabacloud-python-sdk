@@ -11,8 +11,9 @@ class CreatePoolShrinkRequest(DaraModel):
         priority: int = None,
         resource_limits_shrink: str = None,
         scheduling_policy_id: str = None,
+        tags_shrink: str = None,
     ):
-        # The resource pool name.
+        # The name of the resource pool.
         # - The name can be up to 15 characters in length.
         # - The name can contain digits, uppercase letters, lowercase letters, underscores (_), and periods (.).
         # 
@@ -21,12 +22,14 @@ class CreatePoolShrinkRequest(DaraModel):
         # The priority of the resource pool.
         # 
         # - Valid values: 1 to 99. Default value: 1, which indicates the lowest priority.
-        # - Jobs submitted to a resource pool with a higher priority value are scheduled before pending jobs in a resource pool with a lower priority value. The priority of a resource pool takes precedence over the priority of a job.
+        # - Jobs submitted to a resource pool with a higher priority value are scheduled before pending jobs in resource pools with lower priority values. The priority of a resource pool takes precedence over the priority of a job.
         self.priority = priority
         # The resource quota limits for concurrent usage allowed for a user within a resource pool.
         self.resource_limits_shrink = resource_limits_shrink
         # The scheduling policy.
         self.scheduling_policy_id = scheduling_policy_id
+        # The tag information.
+        self.tags_shrink = tags_shrink
 
     def validate(self):
         pass
@@ -48,6 +51,9 @@ class CreatePoolShrinkRequest(DaraModel):
         if self.scheduling_policy_id is not None:
             result['SchedulingPolicyId'] = self.scheduling_policy_id
 
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+
         return result
 
     def from_map(self, m: dict = None):
@@ -63,6 +69,9 @@ class CreatePoolShrinkRequest(DaraModel):
 
         if m.get('SchedulingPolicyId') is not None:
             self.scheduling_policy_id = m.get('SchedulingPolicyId')
+
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
 
         return self
 

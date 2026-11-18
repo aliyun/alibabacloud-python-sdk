@@ -17,13 +17,9 @@ class ListJobsRequest(DaraModel):
     ):
         # The filter conditions for querying jobs.
         self.filter = filter
-        # The current page number.
-        # 
-        # Start value: 1
-        # 
-        # Default value: 1
+        # The page number. Starting value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. The default value is 50. The maximum value is 100.
+        # The paging Settings for the number of entries per page in a paged query. Default value: 50. Maximum value: 100.
         self.page_size = page_size
         # The sorting method.
         self.sort_by = sort_by
@@ -77,17 +73,15 @@ class ListJobsRequestSortBy(DaraModel):
         label: str = None,
         order: str = None,
     ):
-        # The field to sort by. Valid values:
+        # The sorting label. Valid values:
         # 
         # - time_start
-        # 
         # - job_name
         self.label = label
-        # The sort order. Valid values:
+        # The sorting order. Valid values:
         # 
-        # - ASC (default): Ascending
-        # 
-        # - DESC: Descending
+        # - ASC: ascending order. This is the default value.
+        # - DESC: descending order.
         self.order = order
 
     def validate(self):
@@ -123,45 +117,41 @@ class ListJobsRequestFilter(DaraModel):
         job_ids: List[str] = None,
         job_name: str = None,
         job_template_id: str = None,
+        pool_name: str = None,
         status: str = None,
         tag: List[main_models.ListJobsRequestFilterTag] = None,
         time_created_after: int = None,
         time_created_before: int = None,
     ):
-        # The ID of the job.
+        # The job ID.
         self.job_id = job_id
+        # Filters jobs by a list of job IDs. A maximum of 100 job IDs are supported.
         self.job_ids = job_ids
-        # The name of the job. Fuzzy search is supported.
+        # The job name. Fuzzy match is supported.
         self.job_name = job_name
+        # The ID of the job template.
         self.job_template_id = job_template_id
-        # The status of the job. Valid values:
+        # The name of the resource pool.
+        self.pool_name = pool_name
+        # The job status. Valid values:
         # 
-        # - Pending: The job is in the queue.
-        # 
-        # - Initing: The job is initializing.
-        # 
-        # - Succeeded: The job was successful.
-        # 
-        # - Failed: The job failed.
-        # 
+        # - Pending: The job is queued.
+        # - Initing: The job is being initialized.
+        # - Succeeded: The job ran successfully.
+        # - Failed: The job failed to run.
         # - Running: The job is running.
-        # 
         # - Exception: A scheduling exception occurred.
-        # 
         # - Retrying: The job is being retried.
-        # 
         # - Expired: The job timed out.
-        # 
-        # - Suspended: The job is in hibernation.
-        # 
-        # - Restarting: The job is restarting.
-        # 
+        # - Suspended: The job is hibernated.
+        # - Restarting: The job is being restarted.
         # - Deleted: The job is deleted.
         self.status = status
+        # The list of job tags.
         self.tag = tag
-        # The time after which the jobs were submitted. This is a UNIX timestamp based on the local time of the region. For sites in the Chinese mainland, the time zone is UTC+8.
+        # The time after which jobs were submitted. The time is converted to a UNIX timestamp based on the time zone of the region. For regions in the Chinese mainland, the time zone is UTC+8.
         self.time_created_after = time_created_after
-        # The time before which the jobs were submitted. This is a UNIX timestamp based on the local time of the region. For sites in the Chinese mainland, the time zone is UTC+8.
+        # The time before which jobs were submitted. The time is converted to a UNIX timestamp based on the time zone of the region. For regions in the Chinese mainland, the time zone is UTC+8.
         self.time_created_before = time_created_before
 
     def validate(self):
@@ -186,6 +176,9 @@ class ListJobsRequestFilter(DaraModel):
 
         if self.job_template_id is not None:
             result['JobTemplateId'] = self.job_template_id
+
+        if self.pool_name is not None:
+            result['PoolName'] = self.pool_name
 
         if self.status is not None:
             result['Status'] = self.status
@@ -217,6 +210,9 @@ class ListJobsRequestFilter(DaraModel):
         if m.get('JobTemplateId') is not None:
             self.job_template_id = m.get('JobTemplateId')
 
+        if m.get('PoolName') is not None:
+            self.pool_name = m.get('PoolName')
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
@@ -240,7 +236,9 @@ class ListJobsRequestFilterTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the job tag.
         self.key = key
+        # The value of the job tag.
         self.value = value
 
     def validate(self):

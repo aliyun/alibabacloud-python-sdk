@@ -14,22 +14,22 @@ class AddImageShrinkRequest(DaraModel):
         name: str = None,
         vmimage_spec_shrink: str = None,
     ):
-        # The configurations of the container image.
+        # The container image configuration.
         self.container_image_spec_shrink = container_image_spec_shrink
-        # The description of the image.
+        # The image description.
         self.description = description
-        # The type of the images. Valid values:
+        # The image type. Valid values:
         # 
-        # *   VM: virtual machine image.
-        # *   Container: the container image.
+        # - VM: virtual machine image
+        # - Container: container image
         self.image_type = image_type
-        # The version of the image.
+        # The image version.
         self.image_version = image_version
-        # The name of the custom image.
+        # The image name.
         # 
         # This parameter is required.
         self.name = name
-        # The image configuration of the virtual machine.
+        # The virtual machine image configuration.
         self.vmimage_spec_shrink = vmimage_spec_shrink
 
     def validate(self):

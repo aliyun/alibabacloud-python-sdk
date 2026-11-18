@@ -11,11 +11,11 @@ class DescribeJobMetricLastShrinkRequest(DaraModel):
         job_id: str = None,
         task_name: str = None,
     ):
-        # The list of array job indexes.
+        # The list of job array indexes.
         self.array_index_shrink = array_index_shrink
         # The job ID.
         self.job_id = job_id
-        # The name of the task.
+        # The task name.
         self.task_name = task_name
 
     def validate(self):

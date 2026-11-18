@@ -19,18 +19,18 @@ class ListImagesResponseBody(DaraModel):
     ):
         # The list of image information.
         self.images = images
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the process of executing the command and obtaining the result was successful. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of items that meet the request conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -110,9 +110,9 @@ class ListImagesResponseBodyImages(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The time when the storage resource was created.
+        # The creation time. The time is in the YYYY-MM-DDTHH:mm:ssZ format, where Z represents UTC.
         self.create_time = create_time
-        # The description of the image.
+        # The image description.
         self.description = description
         # The document ID.
         self.document_id = document_id
@@ -120,17 +120,17 @@ class ListImagesResponseBodyImages(DaraModel):
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The type of the image.
+        # The image type.
         # 
         # This parameter is required.
         self.image_type = image_type
-        # The name of the image.
+        # The image name.
         self.name = name
-        # The ID of the specific OS version.
+        # The specific OS version identifier.
         self.os_tag = os_tag
-        # The time when the image was updated.
+        # The image update time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
-        # The version of the image.
+        # The image version.
         self.version = version
         # The weight.
         self.weight = weight

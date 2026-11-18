@@ -21,40 +21,36 @@ class CreateActionPlanShrinkRequest(DaraModel):
     ):
         # The name of the execution plan.
         self.action_plan_name = action_plan_name
-        # The resource type.
-        # 
-        # - Standard: Standard.
-        # 
-        # - Dedicated: Dedicated. This type is available only to users in the whitelist.
-        # 
-        # - Economic: Economy. This type is available only to users in the whitelist.
+        # The resource allocation specification. Valid values:
+        # - Standard: standard
+        # - Dedicated: dedicated. To use this value, you must be added to the whitelist.
+        # - Economic: economy. To use this value, you must be added to the whitelist.
         self.allocation_spec = allocation_spec
         # The application ID.
         self.app_id = app_id
-        # The desired size of the resource for the execution plan. For example, if you set ResourceType to VcpuCapacity, this parameter specifies the number of vCPUs that you want to maintain for the execution plan.
+        # The desired resource capacity for the execution plan. If ResourceType is set to VCpuCapacity, this parameter specifies the expected number of vCPUs to maintain, such as 10000.
         self.desired_capacity = desired_capacity
+        # The scheduling interval of the execution plan. Unit: minutes. Valid values: 10 to 10080. Default value: 60.
         self.interval_minutes = interval_minutes
-        # The computing power level. This parameter is valid only when you set AllocationSpec to Economic. The following types are supported:
+        # The computing power level. This parameter takes effect only when the resource type is set to Economic. Valid values:
+        # - General: general-purpose
+        # - Performance: performance-optimized
         # 
-        # - General: General-purpose.
-        # 
-        # - Performance: Compute-optimized.
-        # 
-        # Default value: General
+        # Default value: General.
         self.level = level
-        # The pre-execution script. The script must be Base64-encoded.
+        # The prolog script. The script must be Base64-encoded.
         self.prolog_script = prolog_script
-        # A list of regional resource configurations for the runtime environment of the execution plan.
+        # The list of region-specific resource configurations for the runtime environment of the execution plan.
         self.regions_shrink = regions_shrink
-        # The type of resource for the execution target. The value can be the vCPU capacity or the number of executor nodes. Valid values:
+        # The type of the target resource for the execution plan. Valid values:
         # 
         # - VCpuCapacity: vCPU capacity
         # 
-        # - ExecutorCapacity: number of executor nodes
+        # - ExecutorCapacity: number of execution nodes
         self.resource_type = resource_type
-        # A list of resource configurations for the runtime environment of the execution plan. You can specify 1 to 10 resource configurations.
+        # The list of resource configurations for the runtime environment of the execution plan. You can specify 1 to 10 resource configurations.
         self.resources_shrink = resources_shrink
-        # The script to run the job. The script must be Base64-encoded.
+        # The script used to run the job. The script must be Base64-encoded.
         self.script = script
 
     def validate(self):

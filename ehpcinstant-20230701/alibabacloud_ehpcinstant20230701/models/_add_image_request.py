@@ -15,22 +15,22 @@ class AddImageRequest(DaraModel):
         name: str = None,
         vmimage_spec: main_models.AddImageRequestVMImageSpec = None,
     ):
-        # The configurations of the container image.
+        # The container image configuration.
         self.container_image_spec = container_image_spec
-        # The description of the image.
+        # The image description.
         self.description = description
-        # The type of the images. Valid values:
+        # The image type. Valid values:
         # 
-        # *   VM: virtual machine image.
-        # *   Container: the container image.
+        # - VM: virtual machine image
+        # - Container: container image
         self.image_type = image_type
-        # The version of the image.
+        # The image version.
         self.image_version = image_version
-        # The name of the custom image.
+        # The image name.
         # 
         # This parameter is required.
         self.name = name
-        # The image configuration of the virtual machine.
+        # The virtual machine image configuration.
         self.vmimage_spec = vmimage_spec
 
     def validate(self):
@@ -125,21 +125,21 @@ class AddImageRequestContainerImageSpec(DaraModel):
         registry_cri_id: str = None,
         registry_url: str = None,
     ):
-        # Whether the instance is an Alibaba Cloud image repository Enterprise Edition.
+        # Specifies whether the image is stored in Alibaba Cloud Container Registry Enterprise Edition. Valid values:
         # 
-        # *   True
-        # *   False
+        # - True: yes
+        # - False: no
         self.is_acrenterprise = is_acrenterprise
-        # Whether it is an Alibaba Cloud image repository.
+        # Specifies whether the image is stored in Alibaba Cloud Container Registry. Valid values:
         # 
-        # *   True
-        # *   False
+        # - True: yes
+        # - False: no
         self.is_acrregistry = is_acrregistry
-        # The authentication of the private image repository.
+        # The authentication credentials for the private image repository.
         self.registry_credential = registry_credential
-        # The ID of the Container Registry Enterprise Edition image repository.
+        # The ID of the Container Registry Enterprise Edition instance.
         self.registry_cri_id = registry_cri_id
-        # The endpoint of the container image.
+        # The access URL of the container image.
         self.registry_url = registry_url
 
     def validate(self):
@@ -197,11 +197,11 @@ class AddImageRequestContainerImageSpecRegistryCredential(DaraModel):
         server: str = None,
         user_name: str = None,
     ):
-        # The password of the logon user.
+        # The logon password.
         self.password = password
-        # The registered address of the image repository.
+        # The registry address of the image repository.
         self.server = server
-        # The username of the logon user.
+        # The logon username.
         self.user_name = user_name
 
     def validate(self):

@@ -9,10 +9,9 @@ class DeletePoolRequest(DaraModel):
         self,
         pool_name: str = None,
     ):
-        # The name of the resource pool.
-        # 
-        # *   The value can be up to 15 characters in length.
-        # *   It can contain digits, uppercase letters, lowercase letters, underscores (_), and dots (.).
+        # The resource pool name.
+        # - The name can be up to 15 characters in length.
+        # - The name can contain digits, uppercase letters, lowercase letters, underscores (_), and periods (.).
         # 
         # This parameter is required.
         self.pool_name = pool_name

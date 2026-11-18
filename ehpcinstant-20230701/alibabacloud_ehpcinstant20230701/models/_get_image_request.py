@@ -14,22 +14,20 @@ class GetImageRequest(DaraModel):
         image_id: str = None,
         image_type: str = None,
     ):
+        # The list of additional region IDs for which to query image information.
         self.additional_region_ids = additional_region_ids
-        # Image source. Valid values:
-        # 
-        # - Public: public images provided by Alibaba Cloud.
-        # 
-        # - Custom: custom images that you added.
+        # The image source. Valid values:
+        # - Public: public images provided by Alibaba Cloud
+        # - Custom: custom images added by you
         self.image_category = image_category
-        # Image ID.
+        # The image ID.
         self.image_id = image_id
-        # Image type. Valid values:
+        # The image type. Valid values:
         # 
-        # - VM: virtual machine image.
+        # - VM: virtual machine image
+        # - Container: container image
         # 
-        # - Container: container image.
-        # 
-        # Default value: VM
+        # Default value: VM.
         self.image_type = image_type
 
     def validate(self):

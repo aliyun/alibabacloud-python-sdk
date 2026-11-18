@@ -19,19 +19,19 @@ class ListJobExecutorsResponseBody(DaraModel):
         task_name: str = None,
         total_count: str = None,
     ):
-        # Statistics about executor statuses.
+        # The executor status statistics.
         self.executor_status = executor_status
-        # A list of executors.
+        # The list of executors.
         self.executors = executors
         # The job ID.
         self.job_id = job_id
         # The current page number.
         self.page_number = page_number
-        # The number of entries on each page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The job name.
+        # The task name.
         self.task_name = task_name
         # The total number of entries.
         self.total_count = total_count
@@ -128,61 +128,49 @@ class ListJobExecutorsResponseBodyExecutors(DaraModel):
         status_reason: str = None,
         tags: List[main_models.ListJobExecutorsResponseBodyExecutorsTags] = None,
     ):
-        # The resource type.
-        # 
+        # The resource type. Valid values:
         # - Standard: Standard.
-        # 
-        # - Dedicated: Dedicated. To use this resource type, you must be added to the whitelist.
-        # 
-        # - Economic: Economy. To use this resource type, you must be added to the whitelist.
+        # - Dedicated: Dedicated. Requires whitelist authorization.
+        # - Economic: Economic. Requires whitelist authorization.
         self.allocation_spec = allocation_spec
-        # The index of the executor.
+        # The executor index.
         self.array_index = array_index
-        # The retention period of the compute resources.
+        # The retention period of the compute resource.
         self.block_duration = block_duration
-        # The time when the executor was created.
+        # The creation time. The example uses the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
-        # The time when the executor ended.
+        # The end time. The example uses the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
-        # The ID of the executor. The format is \\`JobId-TaskName-ArrayIndex\\`.
+        # The executor ID. The format is JobId-TaskName-ArrayIndex.
         self.executor_id = executor_id
+        # The expiration time of the execution instance, returned in the YYYY-MM-DD HH:mm:ss format (UTC+8).
         self.expiration_time = expiration_time
-        # A list of public IP addresses of the nodes.
+        # The list of public IP addresses of the node.
         self.external_ip_address = external_ip_address
-        # An array of node hostnames.
+        # The array of node hostnames.
         self.host_name = host_name
-        # A list of node IP addresses.
+        # The list of node IP addresses.
         self.ip_address = ip_address
+        # Indicates whether the execution instance is preemptible.
         self.preemptible = preemptible
-        # The time when the executor started.
+        # The start time. The example uses the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
-        # The status of the executor. Valid values:
-        # 
-        # - Pending: In queue
-        # 
-        # - Initing: Initializing
-        # 
-        # - Succeed: Succeeded
-        # 
-        # - Failed: Failed
-        # 
-        # - Running: Running
-        # 
-        # - Exception: Abnormal scheduling
-        # 
-        # - Retrying: Retrying
-        # 
-        # - Expired: Timed out
-        # 
-        # - Suspended: Job hibernating
-        # 
-        # - Restarting: Job restarting
-        # 
-        # - Deleted: Deleted
+        # The executor status. Valid values:
+        # - Pending: Queued.
+        # - Initing: Initializing.
+        # - Succeed: Succeeded.
+        # - Failed: Failed.
+        # - Running: Running.
+        # - Exception: Scheduling exception.
+        # - Retrying: Retrying.
+        # - Expired: Timed out.
+        # - Suspended: Hibernated.
+        # - Restarting: Restarting.
+        # - Deleted: Deleted.
         self.status = status
-        # The reason for the status.
+        # The description of the status reason.
         self.status_reason = status_reason
-        # A list of executor tags.
+        # The list of executor tags.
         self.tags = tags
 
     def validate(self):
@@ -303,9 +291,9 @@ class ListJobExecutorsResponseBodyExecutorsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the executor.
+        # The executor tag key.
         self.tag_key = tag_key
-        # The tag value of the executor.
+        # The executor tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -347,23 +335,23 @@ class ListJobExecutorsResponseBodyExecutorStatus(DaraModel):
         succeeded: int = None,
         suspended: int = None,
     ):
-        # The number of executors in the Deleted state.
+        # The number of executors in the deleted state.
         self.deleted = deleted
-        # The number of executors in the Exception state.
+        # The number of executors in the exception state.
         self.exception = exception
-        # The number of executors in the Failed state.
+        # The number of executors in the failed state.
         self.failed = failed
-        # The number of executors in the Initing state.
+        # The number of executors in the initializing state.
         self.initing = initing
-        # The number of executors in the Pending state.
+        # The number of executors in the pending state.
         self.pending = pending
-        # The number of executors in the Restarting state.
+        # The number of executors in the restarting state.
         self.restarting = restarting
-        # The number of executors in the Running state.
+        # The number of executors in the running state.
         self.running = running
-        # The number of executors in the Succeeded state.
+        # The number of executors in the succeeded state.
         self.succeeded = succeeded
-        # The number of executors in the Suspended state.
+        # The number of executors in the hibernated state.
         self.suspended = suspended
 
     def validate(self):

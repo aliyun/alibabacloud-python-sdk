@@ -19,19 +19,19 @@ class GetAppVersionsResponseBody(DaraModel):
     ):
         # The list of application versions.
         self.app_versions = app_versions
-        # The page number.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the process of executing the command and retrieving the result was successful. Valid values:
         # 
-        # true
+        # - true: Successful.
         # 
-        # false
+        # - false: Failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries that meet the request conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -99,11 +99,11 @@ class GetAppVersionsResponseBodyAppVersions(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The image ID of the application.
+        # The ID of the application image.
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The application name.
+        # The name of the application.
         self.name = name
         # The application version.
         self.version = version

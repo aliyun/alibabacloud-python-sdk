@@ -17,31 +17,30 @@ class ListImagesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The source of the image. Valid values:
-        # 
-        # *   Public: public images provided by Alibaba Cloud.
-        # *   Custom: the custom image that you added.
+        # The image source. Valid values:
+        # - Public: public images provided by Alibaba Cloud
+        # - Custom: custom images added by you
         self.image_category = image_category
         # The array of image IDs.
         self.image_ids = image_ids
         # The array of image names.
         self.image_names = image_names
-        # The type of the images. Valid values:
+        # The image type. Valid values:
         # 
-        # *   VM: virtual machine image.
-        # *   Container: the container image.
+        # - VM: virtual machine image
+        # - Container: container image
         # 
-        # Default value: VM
+        # Default value: VM.
         self.image_type = image_type
         # The query mode. Valid values:
         # 
-        # *   List: queries the list of all corresponding image versions.
-        # *   Merge: merges images to query the latest version list.
+        # - List: Queries the list of all image versions.
+        # - Merge: Queries the list of the latest versions for each image.
         self.mode = mode
-        # The number of the page to return.\\
+        # The current page number.    
         # Default value: 1.
         self.page_number = page_number
-        # The number of pieces per page.\\
+        # The number of entries per page.    
         # Default value: 20.
         self.page_size = page_size
 
