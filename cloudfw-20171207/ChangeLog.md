@@ -1,3 +1,6 @@
+2026-11-18 Version: 9.6.2
+- Generated python 2017-12-07 for Cloudfw.
+
 2026-11-18 Version: 9.6.1
 - Generated python 2017-12-07 for Cloudfw.
 
