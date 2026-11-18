@@ -44,6 +44,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def batch_verify_pentest_vuln_with_options(
+        self,
+        tmp_req: main_models.BatchVerifyPentestVulnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchVerifyPentestVulnResponse:
+        tmp_req.validate()
+        request = main_models.BatchVerifyPentestVulnShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.operation_input):
+            request.operation_input_shrink = Utils.array_to_string_with_specified_style(tmp_req.operation_input, 'OperationInput', 'json')
+        query = {}
+        if not DaraCore.is_null(request.operation_input_shrink):
+            query['OperationInput'] = request.operation_input_shrink
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchVerifyPentestVuln',
+            version = '2026-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchVerifyPentestVulnResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_verify_pentest_vuln_with_options_async(
+        self,
+        tmp_req: main_models.BatchVerifyPentestVulnRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchVerifyPentestVulnResponse:
+        tmp_req.validate()
+        request = main_models.BatchVerifyPentestVulnShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.operation_input):
+            request.operation_input_shrink = Utils.array_to_string_with_specified_style(tmp_req.operation_input, 'OperationInput', 'json')
+        query = {}
+        if not DaraCore.is_null(request.operation_input_shrink):
+            query['OperationInput'] = request.operation_input_shrink
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchVerifyPentestVuln',
+            version = '2026-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchVerifyPentestVulnResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_verify_pentest_vuln(
+        self,
+        request: main_models.BatchVerifyPentestVulnRequest,
+    ) -> main_models.BatchVerifyPentestVulnResponse:
+        runtime = RuntimeOptions()
+        return self.batch_verify_pentest_vuln_with_options(request, runtime)
+
+    async def batch_verify_pentest_vuln_async(
+        self,
+        request: main_models.BatchVerifyPentestVulnRequest,
+    ) -> main_models.BatchVerifyPentestVulnResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_verify_pentest_vuln_with_options_async(request, runtime)
+
     def create_pentest_task_with_options(
         self,
         tmp_req: main_models.CreatePentestTaskRequest,
@@ -289,6 +371,88 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePentestTaskListResponse:
         runtime = RuntimeOptions()
         return await self.describe_pentest_task_list_with_options_async(request, runtime)
+
+    def describe_pentest_vuln_detail_with_options(
+        self,
+        tmp_req: main_models.DescribePentestVulnDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePentestVulnDetailResponse:
+        tmp_req.validate()
+        request = main_models.DescribePentestVulnDetailShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.operation_input):
+            request.operation_input_shrink = Utils.array_to_string_with_specified_style(tmp_req.operation_input, 'OperationInput', 'json')
+        query = {}
+        if not DaraCore.is_null(request.operation_input_shrink):
+            query['OperationInput'] = request.operation_input_shrink
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePentestVulnDetail',
+            version = '2026-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePentestVulnDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pentest_vuln_detail_with_options_async(
+        self,
+        tmp_req: main_models.DescribePentestVulnDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePentestVulnDetailResponse:
+        tmp_req.validate()
+        request = main_models.DescribePentestVulnDetailShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.operation_input):
+            request.operation_input_shrink = Utils.array_to_string_with_specified_style(tmp_req.operation_input, 'OperationInput', 'json')
+        query = {}
+        if not DaraCore.is_null(request.operation_input_shrink):
+            query['OperationInput'] = request.operation_input_shrink
+        if not DaraCore.is_null(request.operation_type):
+            query['OperationType'] = request.operation_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePentestVulnDetail',
+            version = '2026-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePentestVulnDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pentest_vuln_detail(
+        self,
+        request: main_models.DescribePentestVulnDetailRequest,
+    ) -> main_models.DescribePentestVulnDetailResponse:
+        runtime = RuntimeOptions()
+        return self.describe_pentest_vuln_detail_with_options(request, runtime)
+
+    async def describe_pentest_vuln_detail_async(
+        self,
+        request: main_models.DescribePentestVulnDetailRequest,
+    ) -> main_models.DescribePentestVulnDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_pentest_vuln_detail_with_options_async(request, runtime)
 
     def describe_pentest_vuln_list_with_options(
         self,
