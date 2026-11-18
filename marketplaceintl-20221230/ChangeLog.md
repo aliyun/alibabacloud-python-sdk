@@ -1,3 +1,7 @@
+2026-11-18 Version: 1.3.1
+- Update API PushMeteringData: add request parameters Metering.
+
+
 2025-09-17 Version: 1.3.0
 - Support API DescribePushMeteringData.
 - Update API PushMeteringData: add request parameters MeteringData.$.PushOrderBizId.
