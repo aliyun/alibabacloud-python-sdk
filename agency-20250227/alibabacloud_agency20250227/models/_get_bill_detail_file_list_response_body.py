@@ -104,11 +104,11 @@ class GetBillDetailFileListResponseBodyData(DaraModel):
         # The file URL.
         self.file_url = file_url
         # The OSS file push status. Valid values:
-        # - 1: pending
-        # - 2: processing
-        # - 3: completed.
+        # - 1: Pending.
+        # - 2: Processing.
+        # - 3: Completed.
         self.status = status
-        # The type. Valid values: customer acquisition or channel expansion.
+        # The type. Valid values: Customer Acquisition, Channel Expansion.
         self.type = type
 
     def validate(self):

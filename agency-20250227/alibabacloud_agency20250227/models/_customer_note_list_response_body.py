@@ -18,7 +18,7 @@ class CustomerNoteListResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The details of the access denied error returned by the POP API when the caller does not have the required RAM permissions.
+        # The details of the access denial returned by the POP API when the RAM user lacks the required permissions.
         self.access_denied_detail = access_denied_detail
         # The result code.
         self.code = code
@@ -28,7 +28,7 @@ class CustomerNoteListResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The prompt message.
         self.message = message
-        # The prompt message, same as message.
+        # The prompt message. This parameter is the same as Message.
         self.msg = msg
         # The request ID.
         self.request_id = request_id
@@ -106,7 +106,7 @@ class CustomerNoteListResponseBodyData(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The details of the access denied error returned by the POP API when the caller does not have the required RAM permissions.
+        # The details of the access denial returned by the POP API when the RAM user lacks the required permissions.
         self.access_denied_detail = access_denied_detail
         # The result code.
         self.code = code
@@ -116,9 +116,9 @@ class CustomerNoteListResponseBodyData(DaraModel):
         self.http_status_code = http_status_code
         # The prompt message.
         self.message = message
-        # The prompt message, same as message.
+        # The prompt message. This parameter is the same as Message.
         self.msg = msg
-        # The pagination information compatible with the legacy interface (deprecated).
+        # **[Deprecated]** The pagination information compatible with the legacy fenxiao-service API.
         self.page_info = page_info
         # The current page number.
         self.page_no = page_no
@@ -287,17 +287,17 @@ class CustomerNoteListResponseBodyDataData(DaraModel):
         self.creator = creator
         # The logon name of the creator.
         self.creator_name = creator_name
-        # The creation time in the format of yyyy-MM-dd HH:mm:ss.
+        # The creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
         # The content of the note.
         self.note_content = note_content
-        # The ID of the note.
+        # The note ID.
         self.note_id = note_id
-        # The type of the note (CUSTOMER).
+        # The note type. Valid value: CUSTOMER.
         self.note_type = note_type
-        # The label of the note type.
+        # The name of the note type.
         self.note_type_label = note_type_label
-        # The touch date (timestamp).
+        # The contact date. The value is a timestamp.
         self.touch_date = touch_date
 
     def validate(self):

@@ -15,7 +15,7 @@ class GetIntlCommissionDetailFileListRequest(DaraModel):
         oss_region: str = None,
         oss_security_token: str = None,
     ):
-        # The bill month.
+        # The billing month.
         # 
         # This parameter is required.
         self.bill_month = bill_month
@@ -31,11 +31,11 @@ class GetIntlCommissionDetailFileListRequest(DaraModel):
         # 
         # This parameter is required.
         self.oss_bucket_name = oss_bucket_name
-        # The endpoint of the region where the Object Storage Service (OSS) bucket for file sharing resides.
+        # The endpoint of the OSS bucket used for file sharing.
         # 
         # This parameter is required.
         self.oss_endpoint = oss_endpoint
-        # The region where the current OSS bucket resides.
+        # The region where the current OSS bucket is located.
         # 
         # This parameter is required.
         self.oss_region = oss_region

@@ -14,17 +14,17 @@ class CustomerNoteEditResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The details of the access denial returned by the POP API when RAM permissions are not granted.
+        # The details about the access denial. This parameter is returned by the POP API operation when the RAM user does not have the required permissions.
         self.access_denied_detail = access_denied_detail
         # The status code.
         self.code = code
-        # The HTTP status code returned by the POP API.
+        # The HTTP status code returned by the POP API operation.
         self.http_status_code = http_status_code
-        # The message returned by the operation.
+        # The message returned by the API operation.
         self.message = message
-        # Same as Message.
+        # The message. This parameter is the same as Message.
         self.msg = msg
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

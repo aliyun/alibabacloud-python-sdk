@@ -145,6 +145,7 @@ class GetCustomerOrderListResponseBodyData(DaraModel):
         product_name: str = None,
         project_id: int = None,
         ram_account_for_customer_managers: List[str] = None,
+        rebate_type: int = None,
     ):
         # The order discount.
         self.amount_discount = amount_discount
@@ -187,6 +188,7 @@ class GetCustomerOrderListResponseBodyData(DaraModel):
         self.project_id = project_id
         # The employee who follows up with the customer.
         self.ram_account_for_customer_managers = ram_account_for_customer_managers
+        self.rebate_type = rebate_type
 
     def validate(self):
         pass
@@ -250,6 +252,9 @@ class GetCustomerOrderListResponseBodyData(DaraModel):
         if self.ram_account_for_customer_managers is not None:
             result['RamAccountForCustomerManagers'] = self.ram_account_for_customer_managers
 
+        if self.rebate_type is not None:
+            result['RebateType'] = self.rebate_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -307,6 +312,9 @@ class GetCustomerOrderListResponseBodyData(DaraModel):
 
         if m.get('RamAccountForCustomerManagers') is not None:
             self.ram_account_for_customer_managers = m.get('RamAccountForCustomerManagers')
+
+        if m.get('RebateType') is not None:
+            self.rebate_type = m.get('RebateType')
 
         return self
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_agency20250227 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Agency'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-1': 'agency.aliyuncs.com',
@@ -77,8 +81,7 @@ class Client(OpenApiClient):
             'me-east-1': 'agency.aliyuncs.com',
             'rus-west-1-pop': 'agency.aliyuncs.com',
             'us-east-1': 'agency.aliyuncs.com',
-            'us-west-1': 'agency.aliyuncs.com',
-            'ap-southeast-1': 'agency.ap-southeast-1.aliyuncs.com'
+            'us-west-1': 'agency.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('agency', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -658,6 +661,8 @@ class Client(OpenApiClient):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.ram_account_for_customer_manager):
             query['RamAccountForCustomerManager'] = request.ram_account_for_customer_manager
+        if not DaraCore.is_null(request.rebate_type):
+            query['RebateType'] = request.rebate_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -724,6 +729,8 @@ class Client(OpenApiClient):
             query['ProjectId'] = request.project_id
         if not DaraCore.is_null(request.ram_account_for_customer_manager):
             query['RamAccountForCustomerManager'] = request.ram_account_for_customer_manager
+        if not DaraCore.is_null(request.rebate_type):
+            query['RebateType'] = request.rebate_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

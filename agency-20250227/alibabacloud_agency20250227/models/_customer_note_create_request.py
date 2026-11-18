@@ -16,15 +16,15 @@ class CustomerNoteCreateRequest(DaraModel):
     ):
         # The contact information.
         self.contact_information = contact_information
-        # The name of the contact.
+        # The contact name.
         self.contact_name = contact_name
-        # The name of the customer.
+        # The customer name.
         self.customer_name = customer_name
-        # The UID of the customer.
+        # The customer UID.
         self.customer_uid = customer_uid
-        # The content of the note.
+        # The note content.
         self.note_content = note_content
-        # The touch time. This value is a UNIX timestamp in milliseconds.
+        # The contact time (timestamp, in milliseconds).
         self.touch_date = touch_date
 
     def validate(self):

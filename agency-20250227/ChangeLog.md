@@ -1,3 +1,8 @@
+2026-11-18 Version: 1.2.2
+- Update API GetCustomerOrderList: add request parameters RebateType.
+- Update API GetCustomerOrderList: add response parameters Body.Data.$.RebateType.
+
+
 2026-08-31 Version: 1.2.1
 - Update API CustomerNoteListDetail: add response parameters Body.Data.Attachment.$.DownloadUrl.
 

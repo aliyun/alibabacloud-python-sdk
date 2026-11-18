@@ -9,7 +9,7 @@ class CustomerNoteListDetailRequest(DaraModel):
         self,
         note_id: int = None,
     ):
-        # The note ID.
+        # The ID of the note.
         self.note_id = note_id
 
     def validate(self):

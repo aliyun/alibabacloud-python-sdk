@@ -11,7 +11,7 @@ class CustomerNoteListRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
-        # The UID of the customer.
+        # The customer UID.
         self.customer_uid = customer_uid
         # The page number. Pages start from 1.
         self.page_num = page_num

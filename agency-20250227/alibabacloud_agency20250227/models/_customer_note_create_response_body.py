@@ -15,7 +15,7 @@ class CustomerNoteCreateResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The details of the access denial returned by the POP API when the caller does not have RAM permissions.
+        # The access denied details returned by the POP API when RAM permissions are missing.
         self.access_denied_detail = access_denied_detail
         # The status code.
         self.code = code
@@ -23,7 +23,7 @@ class CustomerNoteCreateResponseBody(DaraModel):
         self.data = data
         # The HTTP status code returned by the POP API.
         self.http_status_code = http_status_code
-        # The message returned with the result.
+        # The message returned for the request.
         self.message = message
         # Same as Message.
         self.msg = msg

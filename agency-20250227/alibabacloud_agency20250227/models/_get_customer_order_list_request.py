@@ -27,6 +27,7 @@ class GetCustomerOrderListRequest(DaraModel):
         product_name: str = None,
         project_id: int = None,
         ram_account_for_customer_manager: str = None,
+        rebate_type: int = None,
     ):
         # The customer account.
         self.customer_account = customer_account
@@ -73,6 +74,7 @@ class GetCustomerOrderListRequest(DaraModel):
         self.project_id = project_id
         # The employee who follows up with the customer.
         self.ram_account_for_customer_manager = ram_account_for_customer_manager
+        self.rebate_type = rebate_type
 
     def validate(self):
         pass
@@ -136,6 +138,9 @@ class GetCustomerOrderListRequest(DaraModel):
         if self.ram_account_for_customer_manager is not None:
             result['RamAccountForCustomerManager'] = self.ram_account_for_customer_manager
 
+        if self.rebate_type is not None:
+            result['RebateType'] = self.rebate_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -193,6 +198,9 @@ class GetCustomerOrderListRequest(DaraModel):
 
         if m.get('RamAccountForCustomerManager') is not None:
             self.ram_account_for_customer_manager = m.get('RamAccountForCustomerManager')
+
+        if m.get('RebateType') is not None:
+            self.rebate_type = m.get('RebateType')
 
         return self
 

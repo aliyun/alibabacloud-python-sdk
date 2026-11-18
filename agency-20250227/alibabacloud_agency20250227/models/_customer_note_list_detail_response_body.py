@@ -18,19 +18,19 @@ class CustomerNoteListDetailResponseBody(DaraModel):
         msg: str = None,
         request_id: str = None,
     ):
-        # The access denied details returned by the POP API when RAM permissions are missing.
+        # The detailed information about the access denial returned in the POP API response when the RAM user lacks the required permissions.
         self.access_denied_detail = access_denied_detail
         # The status code.
         self.code = code
         # The returned data.
         self.data = data
-        # The HTTP status code returned by the POP API.
+        # The HTTP status code used in the POP API response.
         self.http_status_code = http_status_code
         # The prompt message.
         self.message = message
-        # The prompt message. This is the same as Message.
+        # The prompt message, which is the same as Message.
         self.msg = msg
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -109,33 +109,33 @@ class CustomerNoteListDetailResponseBodyData(DaraModel):
         note_type_label: str = None,
         touch_date: str = None,
     ):
-        # The AI parsing result (JSON string).
+        # The AI analysis result. The value is a JSON string.
         self.ai_result = ai_result
-        # The attachment list.
+        # The list of attachments.
         self.attachment = attachment
         # The contact information.
         self.contact_information = contact_information
-        # The contact name.
+        # The name of the contact.
         self.contact_name = contact_name
         # The UID of the creator.
         self.creator = creator
         # The logon name of the creator.
         self.creator_name = creator_name
-        # The customer name.
+        # The name of the customer.
         self.customer_name = customer_name
-        # The customer UID.
+        # The UID of the customer.
         self.customer_uid = customer_uid
-        # The creation time in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the note was created. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
-        # The note content.
+        # The content of the note.
         self.note_content = note_content
-        # The note ID.
+        # The ID of the note.
         self.note_id = note_id
-        # The note type (CUSTOMER).
+        # The type of the note.
         self.note_type = note_type
-        # The note type label.
+        # The name of the note type.
         self.note_type_label = note_type_label
-        # The touch date (timestamp).
+        # The contact date. The value is a timestamp.
         self.touch_date = touch_date
 
     def validate(self):
@@ -254,17 +254,17 @@ class CustomerNoteListDetailResponseBodyDataAttachment(DaraModel):
         size: int = None,
         type: str = None,
     ):
-        # The attachment signature.
+        # The download URL of the attachment.
         self.download_url = download_url
-        # The attachment ID.
+        # The ID of the attachment.
         self.id = id
-        # The attachment name.
+        # The name of the attachment.
         self.name = name
-        # The attachment signature.
+        # The signature of the attachment.
         self.signature = signature
-        # The attachment size in bytes.
+        # The size of the attachment. Unit: bytes.
         self.size = size
-        # The attachment type.
+        # The type of the attachment.
         self.type = type
 
     def validate(self):
