@@ -11,15 +11,18 @@ class ListConsumerGroupQuotaRulesRequest(DaraModel):
         keyword: str = None,
         page_number: int = None,
         page_size: int = None,
+        rule_status: str = None,
     ):
         # The gateway ID. This parameter is optional. If specified, the results are filtered by the exact gateway ID.
         self.gateway_id = gateway_id
-        # The keyword for the rule name. This parameter is optional. If specified, fuzzy matching is performed on the rule name.
+        # The keyword for the rule name. This parameter is optional. If specified, the results are filtered by a fuzzy match on the rule name.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Valid values: 1 to 500.
         self.page_size = page_size
+        # The rule status. This parameter is optional. Valid values: enabled and disabled. If not specified, all rules are queried.
+        self.rule_status = rule_status
 
     def validate(self):
         pass
@@ -41,6 +44,9 @@ class ListConsumerGroupQuotaRulesRequest(DaraModel):
         if self.page_size is not None:
             result['pageSize'] = self.page_size
 
+        if self.rule_status is not None:
+            result['ruleStatus'] = self.rule_status
+
         return result
 
     def from_map(self, m: dict = None):
@@ -56,6 +62,9 @@ class ListConsumerGroupQuotaRulesRequest(DaraModel):
 
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+
+        if m.get('ruleStatus') is not None:
+            self.rule_status = m.get('ruleStatus')
 
         return self
 

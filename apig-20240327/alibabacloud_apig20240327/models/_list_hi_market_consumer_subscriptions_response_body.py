@@ -17,15 +17,15 @@ class ListHiMarketConsumerSubscriptionsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The response code.
+        # The response status code.
         self.code = code
         # The response data.
         self.data = data
-        # The maximum number of entries returned on the current page.
+        # The maximum number of entries on the current page.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page. An empty value indicates that the last page has been reached.
+        # The pagination token for the next page. An empty value indicates that the last page is reached.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -90,7 +90,7 @@ class ListHiMarketConsumerSubscriptionsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The API product subscriptions of the consumer. Each element in the list is named subscription and represents an API product subscription record.
+        # The API product subscription list of the consumer. The list element is named subscription, and each element represents an API product subscription record.
         self.content = content
         # The page number.
         self.page_number = page_number
@@ -156,19 +156,19 @@ class ListHiMarketConsumerSubscriptionsResponseBodyDataContent(DaraModel):
         status: str = None,
         subscription_id: str = None,
     ):
-        # The ID of the consumer to which the subscription belongs. This is the same as the consumerId path parameter of this operation.
+        # The ID of the consumer to which the subscription belongs. This is the same identifier as the consumerId path parameter of this API operation.
         self.consumer_id = consumer_id
         # The name of the consumer to which the subscription belongs.
         self.consumer_name = consumer_name
-        # The ID of the subscribed API product. This is the primary ID of the API product resource.
+        # The ID of the subscribed API product, which is the primary ID of the API product resource.
         self.product_id = product_id
         # The name of the subscribed API product.
         self.product_name = product_name
-        # The type of the subscribed API product. This response parameter does not have an enum annotation. For the response parameter with the same name in the related ListProductSubscriptions operation, the valid values are REST_API, HTTP_API, MCP_SERVER, AGENT_API, and MODEL_API.
+        # The type of the subscribed API product. No enum is declared for this response parameter. For the response parameter with the same name in the related ListProductSubscriptions API operation, the valid values are REST_API, HTTP_API, MCP_SERVER, AGENT_API, and MODEL_API.
         self.product_type = product_type
-        # The subscription status. Valid values: PENDING and APPROVED. These valid values are declared in the enum of the status request parameter. This response parameter does not have an enum annotation.
+        # The subscription status. Valid values: PENDING and APPROVED. The valid values are declared in the enum of the status request parameter, and no enum is attached to this response parameter.
         self.status = status
-        # The subscription ID. You can use this ID to cancel a subscription by calling UnsubscribeHiMarketProduct or approve a subscription by calling ApproveProductSubscription. Both operations use the /himarket/v1/consumers/{consumerId}/subscriptions/{subscriptionId} path to locate the subscription.
+        # The subscription ID. You can use this ID to call UnsubscribeHiMarketProduct to cancel the subscription or ApproveProductSubscription to approve the subscription. Both operations locate the subscription by using the /himarket/v1/consumers/{consumerId}/subscriptions/{subscriptionId} path.
         self.subscription_id = subscription_id
 
     def validate(self):

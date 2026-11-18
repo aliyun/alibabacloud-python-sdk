@@ -17,7 +17,7 @@ class RevealServiceCredentialResponseBody(DaraModel):
     ):
         # The response code. The value is Ok if the request is successful.
         self.code = code
-        # The currently active credential data.
+        # The active credential data.
         self.data = data
         # The response message. The value is success if the request is successful.
         self.message = message
@@ -73,11 +73,11 @@ class RevealServiceCredentialResponseBodyData(DaraModel):
         provider: str = None,
         service_id: str = None,
     ):
-        # The current configuration revision. The value is legacy for historical objects.
+        # The current configuration version. The value is legacy for historical objects.
         self.config_revision = config_revision
-        # The credential object of the currently active type. Only the fields corresponding to the credentialType are populated.
+        # The credential object for the active type. Only the fields corresponding to the credentialType are populated.
         self.credential = credential
-        # The currently active credential type. Valid values: apiKey, bedrock, vertex, and kling.
+        # The type of the active credential. Valid values: apiKey, bedrock, vertex, and kling.
         self.credential_type = credential_type
         # The name of the provider, such as qwen, openai, bedrock, vertex, kling, or pai-eas.
         self.provider = provider
@@ -147,31 +147,31 @@ class RevealServiceCredentialResponseBodyDataCredential(DaraModel):
         vertex_project_id: str = None,
         vertex_region: str = None,
     ):
-        # The API key generation mode. Valid values: Custom and Reference. Historical null values are treated as Custom.
+        # The API key generation mode. Valid values: Custom and Reference. Historical null values are processed as Custom.
         self.api_key_generate_mode = api_key_generate_mode
-        # The list of Key Management Service (KMS) reference names. This parameter is returned only in Reference mode. The reference values are not returned.
+        # The list of KMS reference names. This parameter is returned only in Reference mode. The reference values are not returned.
         self.api_key_references = api_key_references
-        # The list of custom API keys. This parameter is returned only when apiKeyGenerateMode is set to Custom. The keys are returned in the original order without deduplication.
+        # The list of custom API keys. This parameter is returned only when apiKeyGenerateMode is set to Custom. The keys are returned in their original order without deduplication.
         self.api_keys = api_keys
-        # The AWS access key ID for Bedrock.
+        # The Bedrock AWS access key ID.
         self.aws_access_key = aws_access_key
-        # The AWS region for Bedrock.
+        # The region where Bedrock AWS is located.
         self.aws_region = aws_region
-        # The AWS secret access key for Bedrock.
+        # The Bedrock AWS secret access key.
         self.aws_secret_key = aws_secret_key
-        # The source of the credential. The value is pai-eas when the credential is backfilled by the PAI-EAS system.
+        # The source of the credential. The value is pai-eas when backfilled by the PAI-EAS system.
         self.credential_source = credential_source
-        # The Bedrock endpoint mode. The value is runtime for historical null values.
+        # The Bedrock endpoint mode. Historical null values return runtime.
         self.endpoint_mode = endpoint_mode
-        # The access key ID for Kling.
+        # The Kling access key ID.
         self.kling_access_key = kling_access_key
-        # The secret access key for Kling.
+        # The Kling secret access key.
         self.kling_secret_key = kling_secret_key
-        # The original JSON text of the Vertex service account. The text is neither parsed nor reordered.
+        # The raw JSON text of the Vertex service account. The text is not parsed or reordered.
         self.vertex_auth_key = vertex_auth_key
         # The Vertex project ID.
         self.vertex_project_id = vertex_project_id
-        # The region for Vertex.
+        # The region where Vertex is located.
         self.vertex_region = vertex_region
 
     def validate(self):

@@ -86,10 +86,13 @@ class ApiKeyIdentityConfigCredentials(DaraModel):
     def __init__(
         self,
         apikey: str = None,
+        create_timestamp: int = None,
         generate_mode: str = None,
     ):
         # The API key configuration.
         self.apikey = apikey
+        # The creation time of this logical key saved by the server, in Unix milliseconds, for read-only purposes. When updated, the original key retains the saved time, and client input is not used as the time basis. A missing or null history indicates an unknown time, and the consumer creation time must not be used as a substitute.
+        self.create_timestamp = create_timestamp
         # The generation mode.
         self.generate_mode = generate_mode
 
@@ -104,6 +107,9 @@ class ApiKeyIdentityConfigCredentials(DaraModel):
         if self.apikey is not None:
             result['apikey'] = self.apikey
 
+        if self.create_timestamp is not None:
+            result['createTimestamp'] = self.create_timestamp
+
         if self.generate_mode is not None:
             result['generateMode'] = self.generate_mode
 
@@ -113,6 +119,9 @@ class ApiKeyIdentityConfigCredentials(DaraModel):
         m = m or dict()
         if m.get('apikey') is not None:
             self.apikey = m.get('apikey')
+
+        if m.get('createTimestamp') is not None:
+            self.create_timestamp = m.get('createTimestamp')
 
         if m.get('generateMode') is not None:
             self.generate_mode = m.get('generateMode')

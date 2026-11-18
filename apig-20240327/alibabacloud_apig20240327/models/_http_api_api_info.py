@@ -35,13 +35,13 @@ class HttpApiApiInfo(DaraModel):
         self.ai_protocols = ai_protocols
         # The authentication configuration.
         self.auth_config = auth_config
-        # The API base path.
+        # The base path of the API.
         self.base_path = base_path
-        # The API operation deployment status.
+        # The publish status of the API operation.
         self.deploy_cnt_map = deploy_cnt_map
         # The list of API deployment configurations.
         self.deploy_configs = deploy_configs
-        # The API description.
+        # The description of the API.
         self.description = description
         # Specifies whether to enable authentication.
         self.enable_auth = enable_auth
@@ -49,9 +49,9 @@ class HttpApiApiInfo(DaraModel):
         self.environments = environments
         # The ID of the gateway instance to which the API belongs.
         self.gateway_id = gateway_id
-        # The HTTP API ID.
+        # The ID of the HTTP API.
         self.http_api_id = http_api_id
-        # The HTTP ingress API information.
+        # The information of the HTTP Ingress API.
         self.ingress_info = ingress_info
         # The model category.
         self.model_category = model_category
@@ -63,7 +63,7 @@ class HttpApiApiInfo(DaraModel):
         self.resource_group_id = resource_group_id
         # The API type.
         self.type = type
-        # The API versioning information.
+        # The versioning information of the API.
         self.version_info = version_info
 
     def validate(self):
@@ -235,15 +235,15 @@ class HttpApiApiInfoIngressInfo(DaraModel):
     ):
         # The environment context.
         self.environment_info = environment_info
-        # The ingress class to listen on.
+        # The Ingress class to listen on.
         self.ingress_class = ingress_class
         # The Kubernetes cluster information.
         self.k_8s_cluster_info = k_8s_cluster_info
-        # Specifies whether to update the address in the ingress status.
+        # Specifies whether to update the IP address in the Ingress status.
         self.override_ingress_ip = override_ingress_ip
         # The source ID.
         self.source_id = source_id
-        # The watched namespace.
+        # The namespace to watch.
         self.watch_namespace = watch_namespace
 
     def validate(self):
@@ -379,7 +379,7 @@ class HttpApiApiInfoEnvironments(DaraModel):
         self.backend_type = backend_type
         # The published domain name information.
         self.custom_domains = custom_domains
-        # The API deployment status in the current environment.
+        # The deployment status of the API in the current environment.
         self.deploy_status = deploy_status
         # The environment ID.
         self.environment_id = environment_id
@@ -387,9 +387,9 @@ class HttpApiApiInfoEnvironments(DaraModel):
         self.gateway_info = gateway_info
         # The environment name.
         self.name = name
-        # The existing service configurations.
+        # The existing service configuration.
         self.service_configs = service_configs
-        # The list of default domain names for the environment.
+        # The default domain names for the environment.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -564,7 +564,7 @@ class HttpApiApiInfoEnvironmentsServiceConfigs(DaraModel):
     ):
         # The service ID.
         self.gateway_service_id = gateway_service_id
-        # The match conditions.
+        # The match condition.
         self.match = match
         # The service name.
         self.name = name

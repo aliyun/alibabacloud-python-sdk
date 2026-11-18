@@ -79,7 +79,7 @@ class GetProductResponseBodyData(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The agent-related configurations of the API product. The agentAPIConfig member includes agentProtocols (the list of protocols supported by the agent) and routes (the list of routes).
+        # The agent configurations of the API product. The agentAPIConfig member includes agentProtocols (the list of protocols supported by the agent) and routes (the list of routes).
         self.agent_config = agent_config
         # Indicates whether subscription requests for the product are automatically approved.
         self.auto_approve = auto_approve
@@ -91,9 +91,9 @@ class GetProductResponseBodyData(DaraModel):
         self.feature = feature
         # The icon configuration of the API product, which consists of two fields: icon type (type) and icon information (value).
         self.icon = icon
-        # The MCP-related configurations of the API product. The members include mcpServerName (the name of the MCP server), tools, mcpServerConfig (path and domains), and meta (protocol).
+        # The Model Context Protocol (MCP) configurations of the API product. The members include mcpServerName (the name of the MCP server), tools, mcpServerConfig (path and domains), and meta (protocol).
         self.mcp_config = mcp_config
-        # The model API-related configurations of the API product. The modelAPIConfig member includes modelCategory (the AI model category), aiProtocols (the list of AI API protocols), and routes (the list of routes).
+        # The model API configurations of the API product. The modelAPIConfig member includes modelCategory (the AI model category), aiProtocols (the list of AI API protocols), and routes (the list of routes).
         self.model_config = model_config
         # The name of the API product.
         self.name = name

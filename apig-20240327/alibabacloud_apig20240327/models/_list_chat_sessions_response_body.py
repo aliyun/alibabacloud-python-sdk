@@ -25,9 +25,9 @@ class ListChatSessionsResponseBody(DaraModel):
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page. An empty value indicates that the last page has been reached.
+        # The cursor for the next page. An empty value indicates that the last page is reached.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90,11 +90,11 @@ class ListChatSessionsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of chat sessions. Each element in the list is named session and represents a chat session.
+        # The list of chat sessions. The list element is named session, and each element represents a chat session.
         self.content = content
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -155,11 +155,11 @@ class ListChatSessionsResponseBodyDataContent(DaraModel):
     ):
         # The name of the chat session.
         self.name = name
-        # The list of API products associated with the session. Each element in the list is named product.
+        # The list of API products associated with the session. The list element is named product.
         self.products = products
-        # The ID of the chat session. You can use this ID to locate the session in API operations such as UpdateChatSession, DeleteChatSession, and ListConversations.
+        # The chat session ID. You can use this ID to locate the session in operations such as UpdateChatSession, DeleteChatSession, and ListConversations.
         self.session_id = session_id
-        # The conversation type of the session. Valid values: MODEL and AGENT. These values are defined in the talkType request parameter of the CreateChatSession operation. This response parameter does not include the @enums annotation.
+        # The conversation type of the session. Valid values: MODEL and AGENT. This set of valid values is declared in the talkType enum of the CreateChatSession request parameter, and no @enums annotation is attached to this response parameter.
         self.talk_type = talk_type
 
     def validate(self):

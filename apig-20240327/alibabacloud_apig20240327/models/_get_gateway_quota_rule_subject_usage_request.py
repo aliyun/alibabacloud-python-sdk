@@ -13,7 +13,7 @@ class GetGatewayQuotaRuleSubjectUsageRequest(DaraModel):
         page_size: int = None,
         start_time: int = None,
     ):
-        # The end time for querying detailed consumption records. The time is a UNIX timestamp in seconds. If only this parameter is specified, the system automatically calculates the start time based on the rule period.
+        # The end time for querying detailed consumption records. The value is a UNIX timestamp in seconds. If only this parameter is specified, the system automatically calculates the start time based on the rule period.
         self.end_time = end_time
         # Specifies whether to filter out zero values.
         self.filter_failed_requests = filter_failed_requests
@@ -21,7 +21,7 @@ class GetGatewayQuotaRuleSubjectUsageRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page for the detailed consumption (request) records of the consumption subject within the period. Maximum value: 10.
         self.page_size = page_size
-        # The start time for querying detailed consumption records. The time is a UNIX timestamp in seconds. If only this parameter is specified, the system automatically calculates the end time based on the rule period.
+        # The start time for querying detailed consumption records. The value is a UNIX timestamp in seconds. If only this parameter is specified, the system automatically calculates the end time based on the rule period.
         self.start_time = start_time
 
     def validate(self):

@@ -1,3 +1,6 @@
+2026-11-18 Version: 11.10.2
+- Generated python 2024-03-27 for APIG.
+
 2026-11-10 Version: 11.9.0
 - Support API CreateGatewayQuotaRuleSubjectUsageExportTask.
 - Support API GetGatewayQuotaRuleSubjectUsageExportTask.

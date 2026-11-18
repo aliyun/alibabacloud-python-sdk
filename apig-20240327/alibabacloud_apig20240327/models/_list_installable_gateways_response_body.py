@@ -72,7 +72,7 @@ class ListInstallableGatewaysResponseBodyData(DaraModel):
         page_size: str = None,
         total_size: str = None,
     ):
-        # The list of gateways.
+        # The list.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -138,17 +138,17 @@ class ListInstallableGatewaysResponseBodyDataItems(DaraModel):
         installed_plugin_version: str = None,
         name: str = None,
     ):
-        # The database engine version of the gateway DPI engine.
+        # The gateway DPI engine version.
         self.engine_version = engine_version
         # The gateway ID.
         self.gateway_id = gateway_id
-        # The gateway status. The value is passed through from the GatewayPhase enumeration, such as Running or Creating.
+        # The gateway status. This is a pass-through of the GatewayPhase enum, such as Running or Creating.
         self.gateway_phase = gateway_phase
-        # Indicates whether the plugin can be installed on the gateway.
+        # Indicates whether the gateway is installable.
         self.installable = installable
-        # The reason why the plugin cannot be installed.
+        # The reason why the gateway is not installable.
         self.installable_false_reason_type = installable_false_reason_type
-        # The version number of another version of the same plugin class that is already installed on the gateway.
+        # The version number of another plug-in of the same class that is already installed on the gateway.
         self.installed_plugin_version = installed_plugin_version
         # The gateway name.
         self.name = name

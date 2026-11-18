@@ -18,6 +18,7 @@ class CreateMcpServerRequest(DaraModel):
         exposed_uri_path: str = None,
         gateway_id: str = None,
         gray_mcp_server_configs: List[main_models.CreateMcpServerRequestGrayMcpServerConfigs] = None,
+        instructions: str = None,
         match: main_models.HttpRouteMatch = None,
         mcp_server_config: main_models.CreateMcpServerRequestMcpServerConfig = None,
         mcp_statistics_enable: bool = None,
@@ -25,23 +26,23 @@ class CreateMcpServerRequest(DaraModel):
         protocol: str = None,
         type: str = None,
     ):
-        # The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
+        # The list of assembly sources. This parameter is required when the type is AssemblyMCP.
         self.assembled_sources = assembled_sources
-        # The backend service configuration for the route. This parameter is required. You must specify the backend service configuration, including scene and services. If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
+        # The backend service configuration for the route. This parameter is required. You must provide the backend service configuration, including scene and services. If this parameter is omitted, the API returns InvalidParameter.WithValue(400).
         self.backend_config = backend_config
-        # The creation source type. Valid values:
+        # The creation source type.
         # 
-        # - ApiGatewayHttpToMCP: gateway-managed HTTP-to-MCP conversion.
-        # - ApiGatewayProxyMcpHosting: gateway-managed direct MCP proxy.
-        # - ApiGatewayAssembly: gateway MCP assembly.
-        # - NacosHttpToMCP: gateway-managed Nacos-synced HTTP-to-MCP conversion.
-        # - NacosMcpHosting: gateway-managed Nacos-synced direct MCP proxy.
+        # ApiGatewayHttpToMCP: Gateway-managed HTTP-to-MCP conversion.
+        # ApiGatewayProxyMcpHosting: Gateway-managed MCP direct proxy.
+        # ApiGatewayAssembly: Gateway MCP assembly.
+        # NacosHttpToMCP: Gateway-managed Nacos-synchronized HTTP-to-MCP conversion.
+        # NacosMcpHosting: Gateway-managed Nacos-synchronized MCP direct proxy.
         self.create_from_type = create_from_type
         # The description of the MCP server.
         self.description = description
         # The domain name IDs.
         self.domain_ids = domain_ids
-        # The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
+        # The exposed URI path. This parameter is required when the protocol is SSE or StreamableHTTP and the type is RealMCP.
         self.exposed_uri_path = exposed_uri_path
         # The gateway ID.
         # 
@@ -49,21 +50,22 @@ class CreateMcpServerRequest(DaraModel):
         self.gateway_id = gateway_id
         # The canary release route configurations.
         self.gray_mcp_server_configs = gray_mcp_server_configs
-        # The route match rule. When type is set to RealMCP, the match parameter is required and you must specify a route match rule.
+        # The instructions for the MCP service.
+        self.instructions = instructions
+        # The route match rule. When the type is RealMCP, the match parameter is required and you must provide a route matching rule.
         self.match = match
         # The HTTP-to-MCP configuration.
         self.mcp_server_config = mcp_server_config
         # Specifies whether to enable MCP observability. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
-        # The MCP server name. The name must match the regular expression ^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$ and cannot exceed 64 characters in length.
+        # The name of the MCP server. The name must match the regular expression ^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$ and cannot exceed 64 characters in length.
         # 
         # This parameter is required.
         self.name = name
-        # The protocol type. This parameter is required. You must explicitly specify the protocol type (HTTP/HTTPS/SSE/StreamableHTTP). If this parameter is not specified, the API returns InvalidParameter.WithValue(400).
+        # The protocol type. This parameter is required. You must explicitly specify the protocol type, such as HTTP, HTTPS, SSE, or StreamableHTTP. If this parameter is omitted, the API returns InvalidParameter.WithValue(400).
         self.protocol = protocol
-        # The type. Valid values:
-        # 
-        # - RealMCP: a standard MCP service.
+        # The type.
+        # RealMCP: Standard MCP service.
         # 
         # This parameter is required.
         self.type = type
@@ -116,6 +118,9 @@ class CreateMcpServerRequest(DaraModel):
         if self.gray_mcp_server_configs is not None:
             for k1 in self.gray_mcp_server_configs:
                 result['grayMcpServerConfigs'].append(k1.to_map() if k1 else None)
+
+        if self.instructions is not None:
+            result['instructions'] = self.instructions
 
         if self.match is not None:
             result['match'] = self.match.to_map()
@@ -170,6 +175,9 @@ class CreateMcpServerRequest(DaraModel):
                 temp_model = main_models.CreateMcpServerRequestGrayMcpServerConfigs()
                 self.gray_mcp_server_configs.append(temp_model.from_map(k1))
 
+        if m.get('instructions') is not None:
+            self.instructions = m.get('instructions')
+
         if m.get('match') is not None:
             temp_model = main_models.HttpRouteMatch()
             self.match = temp_model.from_map(m.get('match'))
@@ -198,7 +206,7 @@ class CreateMcpServerRequestMcpServerConfig(DaraModel):
         mcp_server_spec: str = None,
         swagger_config: str = None,
     ):
-        # The MCP server spec configuration. This parameter is mutually exclusive with swaggerConfig.
+        # The MCP server configuration. This parameter is mutually exclusive with the swaggerConfig parameter.
         self.mcp_server_spec = mcp_server_spec
         # The Swagger document for HTTP-to-MCP conversion. The document must comply with the OpenAPI 3.0 specification.
         self.swagger_config = swagger_config
@@ -238,7 +246,7 @@ class CreateMcpServerRequestGrayMcpServerConfigs(DaraModel):
     ):
         # The backend configuration.
         self.backend_config = backend_config
-        # The route match rule.
+        # The route matching rule.
         self.match = match
         # The route ID.
         self.route_id = route_id
@@ -286,7 +294,7 @@ class CreateMcpServerRequestGrayMcpServerConfigsBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices] = None,
     ):
-        # The backend scenario.
+        # The backend scene.
         self.scene = scene
         # The backend services.
         self.services = services
@@ -395,7 +403,7 @@ class CreateMcpServerRequestBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.CreateMcpServerRequestBackendConfigServices] = None,
     ):
-        # The backend service scenario.
+        # The backend service scene.
         self.scene = scene
         # The backend services.
         self.services = services
@@ -445,11 +453,11 @@ class CreateMcpServerRequestBackendConfigServices(DaraModel):
     ):
         # The backend node port of the service.
         self.port = port
-        # The service protocol. Valid values:
-        # - HTTP
-        # - HTTPS
+        # The service protocol:
+        # - HTTP.
+        # - HTTPS.
         self.protocol = protocol
-        # The service ID. The serviceId must be a backend service ID that is registered under the gateway. You can call the ListServices operation (with the gatewayId parameter) to query available service IDs.
+        # The service ID. The serviceId is the ID of a registered backend service under the gateway. You can query it by calling the ListServices API and passing the gatewayId.
         self.service_id = service_id
         # The service version.
         self.version = version
@@ -509,7 +517,7 @@ class CreateMcpServerRequestAssembledSources(DaraModel):
     ):
         # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # The MCP server name.
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
         # The list of MCP tools.
         self.tools = tools

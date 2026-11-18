@@ -22,21 +22,21 @@ class AiNetworkConfigSearchEngine(DaraModel):
     ):
         # The API key of the search engine.
         self.api_key = api_key
-        # The content mode. This parameter is specific to Quark.
+        # Quark-specific: the content mode.
         self.content_mode = content_mode
         # The number of results returned per search.
         self.count = count
         # The endpoint of the search engine.
         self.endpoint = endpoint
-        # The industry filter. This parameter is specific to Quark.
+        # Quark-specific: the industry filter.
         self.industry = industry
         # The search engine-specific parameters in key-value pair format.
         self.option_args = option_args
         # The offset of the search results.
         self.start = start
-        # The time range filter. This parameter is specific to Quark.
+        # Quark-specific: the time range filter.
         self.time_range = time_range
-        # The timeout period for the API call, in milliseconds.
+        # The API call timeout in milliseconds.
         self.timeout_millisecond = timeout_millisecond
         # The search engine type.
         self.type = type

@@ -106,9 +106,9 @@ class ListK8sClusterSourcesResponseBodyDataItems(DaraModel):
         cluster_id: str = None,
         name: str = None,
     ):
-        # The container service cluster ID.
+        # The ID of the Container Service cluster.
         self.cluster_id = cluster_id
-        # The container service cluster name.
+        # The name of the Container Service cluster.
         self.name = name
 
     def validate(self):

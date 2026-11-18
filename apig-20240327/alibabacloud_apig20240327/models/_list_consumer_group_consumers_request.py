@@ -11,11 +11,11 @@ class ListConsumerGroupConsumersRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Fuzzy match by consumer name.
+        # The fuzzy filter for consumer names.
         self.name_like = name_like
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
 
     def validate(self):

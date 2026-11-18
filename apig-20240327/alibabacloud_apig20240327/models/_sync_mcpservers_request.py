@@ -16,15 +16,15 @@ class SyncMCPServersRequest(DaraModel):
         namespace: str = None,
         source_id: str = None,
     ):
-        # The domain name IDs.
+        # The list of domain name IDs. You can obtain the system default domain name ID from the subDomainInfos[].domainId field in the ListGateways response. Note: This parameter is required. If you do not specify this parameter, the API returns the InvalidParameter.IsEmpty (400) error.
         self.domain_ids = domain_ids
-        # The gateway ID.
+        # The ID of the gateway. Note: This parameter is required. If you do not specify this parameter, the API returns the InvalidParameter.IsEmpty (400) error.
         self.gateway_id = gateway_id
-        # The list of Nacos MCP servers to sync. If the list contains MCP servers that have already been synced, include the mcpServerId.
+        # The list of Nacos MCP servers to sync. If the list includes an already synced MCP server, you must specify the mcpServerId parameter.
         self.nacos_mcp_servers = nacos_mcp_servers
-        # The Nacos namespace.
+        # The Nacos namespace. Note: This parameter is required. If you do not specify this parameter, the API returns the InvalidParameter.IsEmpty (400) error.
         self.namespace = namespace
-        # The source ID.
+        # The ID of the source.
         self.source_id = source_id
 
     def validate(self):
@@ -88,13 +88,13 @@ class SyncMCPServersRequestNacosMcpServers(DaraModel):
         mcp_server_name: str = None,
         protocols: List[str] = None,
     ):
-        # The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
+        # The exposed URI path. This parameter is required when the protocol is SSE or StreamableHTTP and the type is RealMCP.
         self.exposed_uri_path = exposed_uri_path
         # The Nacos instance ID.
         self.instance_id = instance_id
-        # MCP Server ID
+        # The unique ID of the MCP server.
         self.mcp_server_id = mcp_server_id
-        # The MCP server name.
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
         # The protocols.
         self.protocols = protocols

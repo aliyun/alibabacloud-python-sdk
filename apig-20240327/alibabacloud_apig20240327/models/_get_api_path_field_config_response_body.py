@@ -75,7 +75,7 @@ class GetApiPathFieldConfigResponseBodyData(DaraModel):
         self.api_id = api_id
         # The ID of the cloud-native API gateway.
         self.gateway_id = gateway_id
-        # The list of field configurations grouped by API request path.
+        # The list of field configurations grouped by API URI of the request.
         self.path_configs = path_configs
 
     def validate(self):
@@ -124,9 +124,9 @@ class GetApiPathFieldConfigResponseBodyDataPathConfigs(DaraModel):
         field_paths: Dict[str, List[main_models.DataPathConfigsFieldPathsValue]] = None,
         path: str = None,
     ):
-        # The collection of field configurations under the path, grouped by mapping key, where each group represents a set of field configuration items.
+        # The collection of field configurations under the path, grouped by mapping key. Each group represents a set of field configuration items.
         self.field_paths = field_paths
-        # The request path of the API.
+        # The URI of the request of the API.
         self.path = path
 
     def validate(self):

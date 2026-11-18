@@ -113,11 +113,11 @@ class ListGatewayAuthorizedSecurityGroupRulesResponseBodyDataItems(DaraModel):
         source_security_group_id: str = None,
         vpc_id: str = None,
     ):
-        # The list of authorized CIDR block addresses.
+        # The list of authorized CIDR blocks.
         self.auth_cidrs = auth_cidrs
         # The rule description.
         self.description = description
-        # The protocol:
+        # The protocol. Valid values:
         # - TCP
         self.ip_protocol = ip_protocol
         # The port range.
@@ -126,7 +126,7 @@ class ListGatewayAuthorizedSecurityGroupRulesResponseBodyDataItems(DaraModel):
         self.security_group_id = security_group_id
         # The security group name.
         self.security_group_name = security_group_name
-        # The security rule ID of the cloud-native API gateway.
+        # The ID of the security rule for the cloud-native API gateway.
         self.security_group_rule_id = security_group_rule_id
         # The source security group ID.
         self.source_security_group_id = source_security_group_id

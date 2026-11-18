@@ -17,15 +17,15 @@ class ListDevelopersRequest(DaraModel):
     ):
         # The maximum number of entries per page. The default value and valid values are not specified in the API definition.
         self.max_results = max_results
-        # The pagination token. Pass the nextToken value returned in the previous response to retrieve the next page. Do not specify this parameter for the first query.
+        # The pagination token. Pass the nextToken returned in the previous response to obtain the next page. Do not specify this parameter for the first query.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The portal ID used to filter developers.
+        # The ID of the portal used to filter developers.
         self.portal_id = portal_id
-        # The developer status used to filter developers. Valid values: PENDING, APPROVED, and REJECTED.
+        # The status of the developer used to filter developers. Valid values: PENDING, APPROVED, and REJECTED.
         self.status = status
         # The logon username used to filter developers.
         self.username = username

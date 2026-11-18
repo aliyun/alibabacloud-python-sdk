@@ -13,7 +13,7 @@ class GetConsumerGroupResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response status code. Ok is returned if the request is successful.
+        # The response status code. Ok is returned if the request succeeds.
         self.code = code
         # The response data.
         self.data = data
@@ -75,17 +75,17 @@ class GetConsumerGroupResponseBodyData(DaraModel):
     ):
         # The number of consumers in the consumer group.
         self.consumer_count = consumer_count
-        # The consumer group ID.
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
-        # The creation time of the consumer group, in Unix millisecond timestamp.
+        # The time when the consumer group was created. The value is a UNIX timestamp in milliseconds.
         self.create_timestamp = create_timestamp
-        # The consumer group description.
+        # The description of the consumer group.
         self.description = description
         # The gateway type. Valid values: API and AI.
         self.gateway_type = gateway_type
-        # The consumer group name.
+        # The name of the consumer group.
         self.name = name
-        # The update time of the consumer group, in Unix millisecond timestamp.
+        # The time when the consumer group was updated. The value is a UNIX timestamp in milliseconds.
         self.update_timestamp = update_timestamp
 
     def validate(self):

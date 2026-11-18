@@ -74,13 +74,13 @@ class GetPluginWorkspaceResponseBodyData(DaraModel):
     ):
         # The Codeup organization ID.
         self.organization_id = organization_id
-        # The ID of the most recent pipeline run. This parameter is not returned if the plugin has never been built.
+        # The ID of the most recent pipeline run. This parameter is not returned if no build has been executed.
         self.pipeline_run_id = pipeline_run_id
         # The Codeup repository ID.
         self.repo_id = repo_id
-        # The repository name (the English ID of the plugin).
+        # The repository name, which is the English ID of the plug-in.
         self.repo_name = repo_name
-        # The OSS download URL of the compiled WASM build output. This parameter is returned only when the pipeline status is SUCCESS.
+        # The OSS download URL for the Wasm build output. This parameter is returned only when the pipeline status is SUCCESS.
         self.wasm_url = wasm_url
         # The workspace ID.
         self.workspace_id = workspace_id

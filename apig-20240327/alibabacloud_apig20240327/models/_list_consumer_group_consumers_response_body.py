@@ -15,7 +15,7 @@ class ListConsumerGroupConsumersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response status code. Ok is returned if the request is successful.
+        # The response status code. Ok is returned if the request succeeds.
         self.code = code
         # The response data.
         self.data = data
@@ -72,13 +72,13 @@ class ListConsumerGroupConsumersResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The consumer group member list.
+        # The list of consumer group members.
         self.items = items
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
-        # The total number of consumers that match the filter conditions.
+        # The total number of consumers that meet the conditions.
         self.total_size = total_size
 
     def validate(self):
@@ -139,7 +139,7 @@ class ListConsumerGroupConsumersResponseBodyDataItems(DaraModel):
     ):
         # The consumer ID.
         self.consumer_id = consumer_id
-        # The consumer deployment status. Valid values: Processing, Failed, and Success.
+        # The deployment status of the consumer. Valid values: Processing, Failed, and Success.
         self.deploy_status = deploy_status
         # The consumer description.
         self.description = description

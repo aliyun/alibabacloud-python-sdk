@@ -19,9 +19,9 @@ class ListSourcesRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The resource group ID used to filter results. This parameter is also used for RAM authentication.
+        # The ID of the resource group used to filter resources. This parameter is also used for Resource Access Management (RAM) authentication.
         self.resource_group_id = resource_group_id
-        # The source type used to filter the query results.
+        # The source type.
         self.type = type
 
     def validate(self):

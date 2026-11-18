@@ -12,7 +12,7 @@ class CreateConsumerAuthorizationRulesRequest(DaraModel):
         self,
         authorization_rules: List[main_models.CreateConsumerAuthorizationRulesRequestAuthorizationRules] = None,
     ):
-        # The consumer authentication rules.
+        # The consumer authorization rules.
         self.authorization_rules = authorization_rules
 
     def validate(self):
@@ -62,11 +62,11 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRules(DaraModel):
         self.expire_mode = expire_mode
         # The expiration timestamp. Unit: milliseconds.
         self.expire_timestamp = expire_timestamp
-        # The type of the principal.
+        # The type of the authorized principal.
         self.principal_type = principal_type
-        # The resource identifier, which is provided to non-standard code sources as a unique identifier for space reuse.
+        # The resource identifier, which is provided to non-standard code sources as a unique identifier for namespace reuse.
         self.resource_identifier = resource_identifier
-        # The resource type.
+        # The type of the resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -139,7 +139,7 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifie
         self.environment_id = environment_id
         # The ID of the parent resource.
         self.parent_resource_id = parent_resource_id
-        # The ID of the target resource for authorization. The required ID type is determined by resourceType, and the prefix must match.
+        # The ID of the target resource to be authorized. The required ID type is determined by resourceType, and the prefix must match.
         self.resource_id = resource_id
         # The resource information.
         self.resources = resources

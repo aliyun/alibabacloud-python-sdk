@@ -12,7 +12,7 @@ class HttpApiApiInfoDeployCntMapValue(DaraModel):
     ):
         # The number of deployed API operations.
         self.deployed_cnt = deployed_cnt
-        # The total number of operations.
+        # The total number of API operations.
         self.cnt = cnt
 
     def validate(self):

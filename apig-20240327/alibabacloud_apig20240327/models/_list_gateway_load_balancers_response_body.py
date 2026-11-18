@@ -124,7 +124,7 @@ class ListGatewayLoadBalancersResponseBodyDataItems(DaraModel):
     ):
         # Indicates whether the load balancer is the default ingress of the gateway.
         self.default_gateway_ingress = default_gateway_ingress
-        # Indicates whether the load balancer can be edited. This serves as an edit switch for load balancers during migration.
+        # Indicates whether the load balancer can be edited. This parameter serves as an edit switch for load balancers during migration.
         self.edit_enable = edit_enable
         # The gateway ID.
         self.gateway_id = gateway_id
@@ -138,7 +138,7 @@ class ListGatewayLoadBalancersResponseBodyDataItems(DaraModel):
         self.load_balancer_available_status = load_balancer_available_status
         # The load balancer instance ID.
         self.load_balancer_id = load_balancer_id
-        # The association mode.
+        # The binding mode.
         self.load_balancer_mode = load_balancer_mode
         # The load balancer name.
         self.load_balancer_name = load_balancer_name
@@ -316,7 +316,7 @@ class ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupList(DaraMo
     ):
         # The list of associated listeners.
         self.listeners = listeners
-        # The ID of the virtual server group. This is VServerGroupId for Classic Load Balancer (CLB) and ServerGroupId for Network Load Balancer (NLB).
+        # The ID of the virtual server group. For CLB, this is the VServerGroupId. For NLB, this is the ServerGroupId.
         self.virtual_service_group_id = virtual_service_group_id
         # The name of the group.
         self.virtual_service_group_name = virtual_service_group_name
@@ -369,7 +369,7 @@ class ListGatewayLoadBalancersResponseBodyDataItemsVirtualServerGroupListListene
     ):
         # The listener port.
         self.port = port
-        # The listener protocol. No backend enumeration validation is performed. The actual value is obtained from the SLB or NLB API. Common values include tcp, udp, http, https, and tls.
+        # The listener protocol. No backend enum verification is performed. The actual value is retrieved from the SLB or NLB POP API. Common values include tcp, udp, http, https, and tls.
         self.protocol = protocol
 
     def validate(self):
@@ -511,7 +511,7 @@ class ListGatewayLoadBalancersResponseBodyDataItemsLoadBalancerZoneMappingsLoadB
         private_ipv_6hc_status: str = None,
         public_ipv_4address: str = None,
     ):
-        # The allocation ID of the elastic IP address (EIP) corresponding to the public IP address.
+        # The EIP allocation ID corresponding to the public IP address.
         self.allocation_id = allocation_id
         # The ID of the elastic network interface controller (NIC).
         self.eni_id = eni_id

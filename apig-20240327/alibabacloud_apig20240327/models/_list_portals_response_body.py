@@ -25,7 +25,7 @@ class ListPortalsResponseBody(DaraModel):
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The cursor token for querying the next page.
+        # The pagination token for the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -96,7 +96,7 @@ class ListPortalsResponseBodyData(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The total count.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -162,7 +162,7 @@ class ListPortalsResponseBodyDataContent(DaraModel):
         self.description = description
         # The portal name, which is the Name property of the portal resource.
         self.name = name
-        # The portal domain configuration list. The list element is named domainConfig.
+        # The portal domain name configuration list. The list element is named domainConfig.
         self.portal_domain_config = portal_domain_config
         # The portal ID, which is the primary ID of the portal resource. It can be used in GetPortal, UpdatePortal, and DeletePortal to locate the portal at /himarket/v1/portals/{portalId}.
         self.portal_id = portal_id

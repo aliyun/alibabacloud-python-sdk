@@ -90,17 +90,17 @@ class GetMigrationTaskResponseBodyData(DaraModel):
     ):
         # The ID of the associated HTTP API.
         self.api_id = api_id
-        # The API name. This value may be empty.
+        # The name of the API. This value may be empty.
         self.api_name = api_name
         # The ID of the source ACK cluster.
         self.cluster_id = cluster_id
-        # The name of the source cluster. The name is retrieved by looking up the service source based on gatewayId and clusterId. If the lookup fails, a hyphen (-) is returned as a fallback.
+        # The name of the source cluster. The service source is reverse-queried based on the gateway ID and cluster ID. If the query fails, a hyphen (-) is returned as a fallback.
         self.cluster_name = cluster_name
-        # The namespace of the source cluster. This value is selected during SLB traffic switching.
+        # The namespace of the source cluster. This is selected during SLB traffic switching.
         self.cluster_namespace = cluster_namespace
-        # The creation time. The value is a UNIX timestamp in seconds. Multiply the value by 1000 on the frontend before formatting.
+        # The creation time. This value is a UNIX timestamp in seconds. The frontend multiplies the value by 1,000 before formatting.
         self.create_time = create_time
-        # The task description.
+        # The description of the task.
         self.description = description
         # The ID of the destination environment.
         self.env_id = env_id
@@ -111,23 +111,22 @@ class GetMigrationTaskResponseBodyData(DaraModel):
         # The Ingress configuration.
         self.ingress_config = ingress_config
         # The migration type.
-        # [_single.resp.200.props.data.migrationType.enum.Nginx Ingress]Nginx Ingress migration.
         self.migration_type = migration_type
         # The name of the selected SLB service.
         self.service_name = service_name
         # The ID of the SLB instance used for traffic switching.
         self.slb_id = slb_id
-        # The task status.
+        # The status of the task.
         self.status = status
         # The traffic switching method.
         self.switch_type = switch_type
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
-        # The ID of the user to whom the task belongs.
+        # The ID of the user who owns the task.
         self.user_id = user_id
         # The list of SLB virtual server groups.
         self.virtual_services = virtual_services
-        # The weight of the APIG-side service in the legacy flow (0-100).
+        # The weight of the service on the APIG side in the legacy process. Valid values: 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -287,7 +286,7 @@ class GetMigrationTaskResponseBodyDataVirtualServices(DaraModel):
         self.port = port
         # The protocol. This parameter is required for CLB.
         self.protocol = protocol
-        # The backend server group ID.
+        # The ID of the backend server group.
         self.virtual_service_group_id = virtual_service_group_id
         # The name.
         self.virtual_service_group_name = virtual_service_group_name
@@ -336,9 +335,9 @@ class GetMigrationTaskResponseBodyDataIngressConfig(DaraModel):
         ingress_class: str = None,
         watch_namespace: str = None,
     ):
-        # The Ingress class to listen on.
+        # The Ingress class to monitor.
         self.ingress_class = ingress_class
-        # The namespace in which to listen for Ingress resources.
+        # The namespace of the Ingress to monitor.
         self.watch_namespace = watch_namespace
 
     def validate(self):

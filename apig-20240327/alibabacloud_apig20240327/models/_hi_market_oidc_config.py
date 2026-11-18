@@ -18,19 +18,19 @@ class HiMarketOidcConfig(DaraModel):
         name: str = None,
         provider: str = None,
     ):
-        # The OAuth2 Authorization Code configuration.
+        # The OAuth2 authorization code configuration.
         self.auth_code_config = auth_code_config
-        # Specifies whether to enable the OIDC configuration.
+        # Specifies whether the OIDC configuration is enabled.
         self.enabled = enabled
-        # The authorization type.
+        # The grant type.
         self.grant_type = grant_type
         # The identity field mapping configuration.
         self.identity_mapping = identity_mapping
-        # The provider logo URL.
+        # The URL of the provider logo.
         self.logo_url = logo_url
-        # The OIDC configuration name.
+        # The name of the OIDC configuration.
         self.name = name
-        # The OIDC provider name.
+        # The name of the OIDC provider.
         self.provider = provider
 
     def validate(self):
@@ -102,13 +102,13 @@ class HiMarketOidcConfigIdentityMapping(DaraModel):
         user_id_field: str = None,
         user_name_field: str = None,
     ):
-        # The custom field mapping.
+        # The custom field mappings.
         self.custom_fields = custom_fields
-        # The identity field name that corresponds to the email address.
+        # The name of the identity field that corresponds to the email address.
         self.email_field = email_field
-        # The identity field name that corresponds to the user ID.
+        # The name of the identity field that corresponds to the user ID.
         self.user_id_field = user_id_field
-        # The identity field name that corresponds to the username.
+        # The name of the identity field that corresponds to the username.
         self.user_name_field = user_name_field
 
     def validate(self):
@@ -174,7 +174,7 @@ class HiMarketOidcConfigAuthCodeConfig(DaraModel):
         self.jwk_set_uri = jwk_set_uri
         # The OAuth2 redirect URI.
         self.redirect_uri = redirect_uri
-        # The OAuth2 authorization scopes.
+        # The OAuth2 scopes.
         self.scopes = scopes
         # The token endpoint URL.
         self.token_endpoint = token_endpoint

@@ -17,7 +17,7 @@ class ListSecretsResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The list of key information.
+        # The list of secrets.
         self.data = data
         # The response message.
         self.message = message
@@ -72,7 +72,7 @@ class ListSecretsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of key details.
+        # The list of secret details.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -144,17 +144,17 @@ class ListSecretsResponseBodyDataItems(DaraModel):
         self.create_timestamp = create_timestamp
         # The gateway type.
         self.gateway_type = gateway_type
-        # The KMS configuration information.
+        # The KMS configuration.
         self.kms_config = kms_config
-        # The key name.
+        # The secret name.
         self.name = name
-        # The resource count of resources that reference the current key.
+        # The resource count of the resources that reference the current secret.
         self.reference_count = reference_count
-        # The key ID.
+        # The secret ID.
         self.secret_id = secret_id
-        # The key source.
+        # The secret source.
         self.secret_source = secret_source
-        # The key status. Valid values:
+        # The secret status. Valid values:
         # - ENABLE: Enabled.
         # - DISABLE: Disabled.
         # - DELETED: Deleted.

@@ -21,11 +21,11 @@ class ListRiskCheckResultsResponseBody(DaraModel):
         self.code = code
         # The risk detection results.
         self.data = data
-        # The maximum number of entries to return in this request.
+        # The maximum number of records to return in the current request.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token. This parameter is empty if no more pages are available.
+        # The pagination token. This parameter is empty if no next page exists.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -94,9 +94,9 @@ class ListRiskCheckResultsResponseBodyData(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The total number of entries.
+        # The total count.
         self.total_size = total_size
 
     def validate(self):

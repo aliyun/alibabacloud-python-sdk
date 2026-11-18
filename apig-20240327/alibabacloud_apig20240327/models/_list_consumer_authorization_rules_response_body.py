@@ -148,7 +148,7 @@ class ListConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.api_info = api_info
         # The ID of the consumer authorization rule.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
-        # The consumer ID.
+        # The ID of the consumer.
         self.consumer_id = consumer_id
         # The creation timestamp.
         self.create_timestamp = create_timestamp
@@ -164,9 +164,9 @@ class ListConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.expire_timestamp = expire_timestamp
         # The gateway information.
         self.gateway_info = gateway_info
-        # The resource ID.
+        # The ID of the resource.
         self.resource_id = resource_id
-        # The resource type.
+        # The type of the resource.
         self.resource_type = resource_type
         # The update timestamp. Unit: milliseconds.
         self.update_timestamp = update_timestamp

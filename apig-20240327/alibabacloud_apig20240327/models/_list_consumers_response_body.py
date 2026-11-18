@@ -67,21 +67,26 @@ class ListConsumersResponseBody(DaraModel):
 class ListConsumersResponseBodyData(DaraModel):
     def __init__(
         self,
+        expiration_summary: main_models.ListConsumersResponseBodyDataExpirationSummary = None,
         items: List[main_models.ListConsumersResponseBodyDataItems] = None,
         page_number: int = None,
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of API consumer information.
+        # The expiration reminder count for all consumers under the same account and gateway type. This count is not affected by name filters, status filters, or pagination. This field is returned only when includeExpirationSummary is set to true.
+        self.expiration_summary = expiration_summary
+        # The list of consumer information.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries.
         self.total_size = total_size
 
     def validate(self):
+        if self.expiration_summary:
+            self.expiration_summary.validate()
         if self.items:
             for v1 in self.items:
                  if v1:
@@ -92,6 +97,9 @@ class ListConsumersResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.expiration_summary is not None:
+            result['expirationSummary'] = self.expiration_summary.to_map()
+
         result['items'] = []
         if self.items is not None:
             for k1 in self.items:
@@ -110,6 +118,10 @@ class ListConsumersResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('expirationSummary') is not None:
+            temp_model = main_models.ListConsumersResponseBodyDataExpirationSummary()
+            self.expiration_summary = temp_model.from_map(m.get('expirationSummary'))
+
         self.items = []
         if m.get('items') is not None:
             for k1 in m.get('items'):
@@ -135,10 +147,12 @@ class ListConsumersResponseBodyDataItems(DaraModel):
         deploy_status: str = None,
         description: str = None,
         enable: bool = None,
+        expire_at: int = None,
+        expire_status: str = None,
         name: str = None,
         update_timestamp: int = None,
     ):
-        # The API consumer ID.
+        # The consumer ID.
         self.consumer_id = consumer_id
         # The creation timestamp.
         self.create_timestamp = create_timestamp
@@ -146,9 +160,13 @@ class ListConsumersResponseBodyDataItems(DaraModel):
         self.deploy_status = deploy_status
         # The description.
         self.description = description
-        # Indicates whether the API consumer is enabled.
+        # Specifies whether the consumer is enabled.
         self.enable = enable
-        # The API consumer name.
+        # The expiration time of the consumer, in UTC UNIX seconds. A null value indicates that the consumer is permanently valid.
+        self.expire_at = expire_at
+        # The validity status. Valid values: Permanent, InEffect, AboutToExpire, and Expired. The status is accurate to the second. A remaining time of exactly seven days is classified as AboutToExpire, and an exact expiration time is classified as Expired.
+        self.expire_status = expire_status
+        # The consumer name.
         self.name = name
         # The update timestamp.
         self.update_timestamp = update_timestamp
@@ -176,6 +194,12 @@ class ListConsumersResponseBodyDataItems(DaraModel):
         if self.enable is not None:
             result['enable'] = self.enable
 
+        if self.expire_at is not None:
+            result['expireAt'] = self.expire_at
+
+        if self.expire_status is not None:
+            result['expireStatus'] = self.expire_status
+
         if self.name is not None:
             result['name'] = self.name
 
@@ -201,11 +225,54 @@ class ListConsumersResponseBodyDataItems(DaraModel):
         if m.get('enable') is not None:
             self.enable = m.get('enable')
 
+        if m.get('expireAt') is not None:
+            self.expire_at = m.get('expireAt')
+
+        if m.get('expireStatus') is not None:
+            self.expire_status = m.get('expireStatus')
+
         if m.get('name') is not None:
             self.name = m.get('name')
 
         if m.get('updateTimestamp') is not None:
             self.update_timestamp = m.get('updateTimestamp')
+
+        return self
+
+class ListConsumersResponseBodyDataExpirationSummary(DaraModel):
+    def __init__(
+        self,
+        about_to_expire: int = None,
+        expired: int = None,
+    ):
+        # The number of unexpired consumers with a remaining validity period of no more than seven days, including those that are manually disabled.
+        self.about_to_expire = about_to_expire
+        # The number of expired consumers, including those that are manually disabled.
+        self.expired = expired
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.about_to_expire is not None:
+            result['aboutToExpire'] = self.about_to_expire
+
+        if self.expired is not None:
+            result['expired'] = self.expired
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aboutToExpire') is not None:
+            self.about_to_expire = m.get('aboutToExpire')
+
+        if m.get('expired') is not None:
+            self.expired = m.get('expired')
 
         return self
 

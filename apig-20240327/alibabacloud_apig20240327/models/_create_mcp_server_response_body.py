@@ -70,7 +70,7 @@ class CreateMcpServerResponseBodyData(DaraModel):
     ):
         # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # The MCP server name.
+        # The name of the MCP server.
         self.name = name
 
     def validate(self):

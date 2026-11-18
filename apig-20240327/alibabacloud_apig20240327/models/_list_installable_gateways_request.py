@@ -11,7 +11,7 @@ class ListInstallableGatewaysRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The gateway type used for filtering.
+        # The gateway type filter.
         self.gateway_type = gateway_type
         # The page number.
         self.page_number = page_number

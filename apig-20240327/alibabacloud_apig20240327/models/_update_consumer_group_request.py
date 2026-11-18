@@ -10,9 +10,9 @@ class UpdateConsumerGroupRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The consumer group description.
+        # The description of the consumer group.
         self.description = description
-        # The consumer group name.
+        # The name of the consumer group.
         self.name = name
 
     def validate(self):

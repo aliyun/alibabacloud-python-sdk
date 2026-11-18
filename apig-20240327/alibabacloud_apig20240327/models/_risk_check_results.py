@@ -24,24 +24,17 @@ class RiskCheckResults(DaraModel):
         self.check_time = check_time
         # The unique identifier of the gateway instance.
         self.gateway_id = gateway_id
-        # The basic information about the instance.
+        # The basic information of the instance.
         self.metadata = metadata
-        # The list of detailed risk items.
+        # The list of detailed risk item information.
         self.risk_details = risk_details
-        # The overall risk level. Valid values:
-        # - LOW: Low risk.
-        # - MEDIUM: Medium risk.
-        # - HIGH: High risk.
-        # - CRITICAL: Critical risk.
+        # The overall risk level. Valid values: LOW (low risk), MEDIUM (medium risk), HIGH (high risk), and CRITICAL (critical risk).
         self.risk_level = risk_level
         # The overall risk score. Valid values: 0 to 100. A higher score indicates a lower risk.
         self.score = score
         # The snapshot time.
         self.snapshot_time = snapshot_time
-        # The risk detection status. Valid values:
-        # - SUCCESS: The detection succeeded.
-        # - FAIL: The detection failed.
-        # - RUNNING: The detection is running.
+        # The risk check status. Valid values: SUCCESS, FAIL, and RUNNING.
         self.status = status
         # The total number of detected risk items.
         self.total_risk = total_risk
@@ -139,13 +132,13 @@ class RiskCheckResultsRiskDetails(DaraModel):
         situation: str = None,
         suggestion: str = None,
     ):
-        # The name of the module that performed the check.
+        # The name of the module that performs the check.
         self.check_module = check_module
-        # The detailed data related to the risk. The data structure varies by risk type.
+        # The detailed data related to the risk. The data structure varies based on the risk type.
         self.data = data
         # The detailed description of the risk in JSON string format.
         self.description = description
-        # Indicates whether the alert notification for the risk item is muted.
+        # Specifies whether the alert notification for the risk item is muted.
         self.is_notice_mute = is_notice_mute
         # The unique identifier of the risk item.
         self.risk_code = risk_code
@@ -153,15 +146,11 @@ class RiskCheckResultsRiskDetails(DaraModel):
         self.risk_level = risk_level
         # The name of the risk item.
         self.risk_name = risk_name
-        # The risk category. Valid values:
-        # - SYSTEM: System risk.
-        # - VERSION: Version risk.
-        # - SAFE: Security risk.
-        # - CAPACITY: Capacity risk.
+        # The risk categorization. Valid values: SYSTEM (system risk), VERSION (version risk), SAFE (security risk), and CAPACITY (capacity risk).
         self.risk_type = risk_type
         # The current risk situation of the instance in JSON string format.
         self.situation = situation
-        # The optimization suggestions for the risk in JSON string format, including descriptions and action links.
+        # The optimization suggestions for the risk in JSON string format, including descriptions and operation links.
         self.suggestion = suggestion
 
     def validate(self):

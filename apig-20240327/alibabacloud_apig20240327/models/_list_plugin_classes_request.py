@@ -19,33 +19,33 @@ class ListPluginClassesRequest(DaraModel):
         source: str = None,
         type: str = None,
     ):
-        # The plug-in alias. Fuzzy match is supported.
+        # The plugin alias for fuzzy search.
         self.alias_like = alias_like
-        # The inbound or outbound direction. Valid values:
-        # - OutBound: outbound.
-        # - InBound: inbound.
-        # - Both: both directions.
+        # The traffic direction. Valid values:
+        # - OutBound: Outbound.
+        # - InBound: Inbound.
+        # - Both: Both.
         self.direction = direction
-        # Specifies whether to exclude built-in plug-ins.
+        # Specifies whether to exclude built-in plugins.
         self.exclude_builtin_ai_proxy = exclude_builtin_ai_proxy
         # The gateway ID.
         self.gateway_id = gateway_id
         # The gateway type filter. Currently, **AI** and **API** gateway types are supported.
         self.gateway_type = gateway_type
-        # Specifies whether the plug-in is installed.
+        # Specifies whether the plugin is installed.
         self.installed = installed
-        # The plug-in name. Fuzzy match is supported.
+        # The plugin name for fuzzy search.
         self.name_like = name_like
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The plug-in source. Valid values:
-        # - HigressOfficial: Higress official.
-        # - HigressCommunity: Higress community.
-        # - Custom: custom.
+        # The plugin source. Valid values:
+        # - Higress official: HigressOfficial.
+        # - Higress community: HigressCommunity.
+        # - Custom: Custom.
         self.source = source
-        # The plug-in type.
+        # The plugin type.
         self.type = type
 
     def validate(self):

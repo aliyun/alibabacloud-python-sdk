@@ -41,9 +41,9 @@ class UpdateGatewayMaintenancePeriodRequestMaintenancePeriod(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The end time of the O&M window (HH:mm).
+        # The O&M end time (HH:mm).
         self.end_time = end_time
-        # The start time of the O&M window (HH:mm).
+        # The O&M start time (HH:mm).
         self.start_time = start_time
 
     def validate(self):

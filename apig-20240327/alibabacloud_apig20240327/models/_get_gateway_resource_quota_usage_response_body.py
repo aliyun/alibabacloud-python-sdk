@@ -75,7 +75,7 @@ class GetGatewayResourceQuotaUsageResponseBodyData(DaraModel):
         self.gateway_id = gateway_id
         # The resource quota items.
         self.items = items
-        # The time when the statistics collection was completed.
+        # The statistics completion time.
         self.observed_at = observed_at
 
     def validate(self):
@@ -128,7 +128,7 @@ class GetGatewayResourceQuotaUsageResponseBodyDataItems(DaraModel):
         used: int = None,
         used_scope: str = None,
     ):
-        # Specifies whether the quota value is provided.
+        # Indicates whether the quota value is provided.
         self.applicable = applicable
         # The effective limit.
         self.limit = limit
@@ -138,7 +138,7 @@ class GetGatewayResourceQuotaUsageResponseBodyDataItems(DaraModel):
         self.quota_key = quota_key
         # The current usage.
         self.used = used
-        # The scope of usage statistics.
+        # The usage statistics scope.
         self.used_scope = used_scope
 
     def validate(self):

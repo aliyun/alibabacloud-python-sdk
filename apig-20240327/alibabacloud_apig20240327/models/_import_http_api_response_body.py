@@ -71,7 +71,7 @@ class ImportHttpApiResponseBodyData(DaraModel):
         http_api_id: str = None,
         name: str = None,
     ):
-        # The dry run results.
+        # The dry run result.
         self.dry_run_info = dry_run_info
         # The unique ID of the HTTP API.
         self.http_api_id = http_api_id
@@ -144,7 +144,7 @@ class ImportHttpApiResponseBodyDataDryRunInfo(DaraModel):
         self.success_operations = success_operations
         # The list of successfully imported routes.
         self.success_routes = success_routes
-        # The warning messages. If the warning messages are not empty, some operations or data structures may fail to be imported.
+        # The warning messages. If the warning messages are not empty, some operations or data structures may fail to import.
         self.warning_messages = warning_messages
 
     def validate(self):
@@ -322,7 +322,7 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessOperations(DaraModel):
         name: str = None,
         path: str = None,
     ):
-        # The action to be performed after the dry run.
+        # The action to perform after the dry run.
         # - Create: Create.
         # - Update: Update.
         self.action = action
@@ -377,7 +377,7 @@ class ImportHttpApiResponseBodyDataDryRunInfoSuccessComponents(DaraModel):
         action: str = None,
         name: str = None,
     ):
-        # The action to be performed after the dry run.
+        # The action to perform after the dry run.
         # - Create: Create.
         # - Update: Update.
         self.action = action

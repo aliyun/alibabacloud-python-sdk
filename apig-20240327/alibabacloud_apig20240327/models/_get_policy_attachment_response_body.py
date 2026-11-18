@@ -73,11 +73,11 @@ class GetPolicyAttachmentResponseBodyData(DaraModel):
         policy_attachment_id: str = None,
         policy_id: str = None,
     ):
-        # The ID of the attached resource.
+        # The attached resource ID.
         self.attach_resource_id = attach_resource_id
-        # The type of the attached resource. Valid values: HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, and Domain.
+        # The attached resource type, such as HttpApi, GatewayRoute, Operation, GatewayService, GatewayServicePort, Gateway, or Domain.
         self.attach_resource_type = attach_resource_type
-        # The configuration of the attached policy.
+        # The policy attachment configuration.
         self.config = config
         # The environment ID.
         self.environment_id = environment_id

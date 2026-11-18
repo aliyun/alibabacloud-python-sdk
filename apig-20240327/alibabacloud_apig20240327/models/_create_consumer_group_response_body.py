@@ -70,7 +70,7 @@ class CreateConsumerGroupResponseBodyData(DaraModel):
     ):
         # The consumer group ID.
         self.consumer_group_id = consumer_group_id
-        # The gateway type. Valid values: API or AI.
+        # The gateway type. Valid values: API and AI.
         self.gateway_type = gateway_type
 
     def validate(self):

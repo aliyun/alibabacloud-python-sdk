@@ -15,7 +15,7 @@ class UpdatePolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.config = config
-        # The description of the policy.
+        # The description.
         self.description = description
         # The policy name.
         # 

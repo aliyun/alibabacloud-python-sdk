@@ -17,7 +17,7 @@ class ListExternalServicesResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The list of APIs.
+        # The list of operations.
         self.data = data
         # The response message.
         self.message = message

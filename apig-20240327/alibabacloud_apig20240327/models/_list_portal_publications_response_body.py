@@ -72,7 +72,7 @@ class ListPortalPublicationsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of published API products on the portal. The list elements are named portalConfig, and each element represents an API product publication record.
+        # The list of published API products on the portal. The list elements are named portalConfig, and each element represents a publication record of an API product.
         self.content = content
         # The page number.
         self.page_number = page_number
@@ -145,9 +145,9 @@ class ListPortalPublicationsResponseBodyDataContent(DaraModel):
         self.product_id = product_id
         # The API product name. This is the Name property of the API product resource.
         self.product_name = product_name
-        # The API product type. The valid values are not defined in the API specification. Refer to the types displayed in the console.
+        # The API product type. The valid values are not declared in the API definition. Refer to the types displayed in the console.
         self.product_type = product_type
-        # The publication record ID of the API product. This ID is returned when an API product is published to a portal by using the PublishProduct operation. You can use this ID in the /himarket/v1/products/{productId}/publications/{publicationId} path to locate the publication record for the UnpublishProduct operation.
+        # The publication record ID of the API product. This ID is returned when you use PublishProduct to publish an API product to a portal. You can use this ID in the /himarket/v1/products/{productId}/publications/{publicationId} path to locate the publication record for the UnpublishProduct operation.
         self.publication_id = publication_id
 
     def validate(self):

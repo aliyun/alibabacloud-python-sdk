@@ -9,7 +9,7 @@ class ListModelCardsRequest(DaraModel):
         self,
         provider: str = None,
     ):
-        # The identifier of the model provider used to filter model cards by provider.
+        # The model provider identifier used to filter model cards by provider.
         self.provider = provider
 
     def validate(self):

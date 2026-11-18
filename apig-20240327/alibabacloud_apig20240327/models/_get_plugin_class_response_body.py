@@ -73,19 +73,19 @@ class GetPluginClassResponseBodyData(DaraModel):
         type: str = None,
         wasm_language: str = None,
     ):
-        # The plug-in alias.
+        # The alias of the plugin.
         self.alias = alias
-        # The plug-in description.
+        # The description of the plugin.
         self.description = description
         # The document key.
         self.document = document
-        # The plug-in name.
+        # The name of the plugin.
         self.name = name
         # The publish status.
         self.publish_status = publish_status
-        # The plug-in type.
+        # The type of the plugin.
         self.type = type
-        # The programming language of the Wasm plug-in.
+        # The programming language of the Wasm plugin.
         self.wasm_language = wasm_language
 
     def validate(self):

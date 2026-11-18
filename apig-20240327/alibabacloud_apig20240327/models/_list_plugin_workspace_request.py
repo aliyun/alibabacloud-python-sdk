@@ -9,7 +9,7 @@ class ListPluginWorkspaceRequest(DaraModel):
         self,
         gateway_type: str = None,
     ):
-        # The gateway type used to filter workspaces. Default value: API.
+        # The gateway type filter. Default value: API.
         self.gateway_type = gateway_type
 
     def validate(self):

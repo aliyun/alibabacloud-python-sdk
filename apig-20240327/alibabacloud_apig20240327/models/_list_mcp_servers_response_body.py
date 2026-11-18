@@ -76,7 +76,7 @@ class ListMcpServersResponseBodyData(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries.
         self.total_size = total_size
@@ -141,6 +141,7 @@ class ListMcpServersResponseBodyDataItems(DaraModel):
         environment_id: str = None,
         exposed_uri_path: str = None,
         gateway_id: str = None,
+        instructions: str = None,
         match: main_models.HttpRouteMatch = None,
         mcp_server_config: str = None,
         mcp_server_id: str = None,
@@ -152,19 +153,19 @@ class ListMcpServersResponseBodyDataItems(DaraModel):
         route_id: str = None,
         type: str = None,
     ):
-        # API ID。
+        # The API ID.
         self.api_id = api_id
-        # The list of assembly sources. This parameter is required when type is AssemblyMCP.
+        # The list of assembly sources. This parameter is required when type is set to AssemblyMCP.
         self.assembled_sources = assembled_sources
         # The backend service of the route.
         self.backend = backend
         # The creation source type.
         # 
-        # - ApiGatewayHttpToMCP: Gateway-managed HTTP-to-MCP.
-        # - ApiGatewayMcpHosting: Gateway-managed MCP direct proxy.
-        # - ApiGatewayAssembly: Gateway MCP assembly.
-        # - NacosHttpToMCP: Gateway-managed Nacos-synced HTTP-to-MCP.
-        # - NacosMcpHosting: Gateway-managed Nacos-synced MCP direct proxy.
+        # ApiGatewayHttpToMCP: HTTP-to-MCP hosted by the gateway
+        # ApiGatewayMcpHosting: Direct MCP proxy hosted by the gateway
+        # ApiGatewayAssembly: MCP assembly by the gateway
+        # NacosHttpToMCP: HTTP-to-MCP synchronized from Nacos and hosted by the gateway
+        # NacosMcpHosting: Direct MCP proxy synchronized from Nacos and hosted by the gateway
         self.create_from_type = create_from_type
         # The deployment status of the API in the current environment.
         self.deploy_status = deploy_status
@@ -176,10 +177,12 @@ class ListMcpServersResponseBodyDataItems(DaraModel):
         self.domain_infos = domain_infos
         # The environment ID.
         self.environment_id = environment_id
-        # The exposed URI path. This parameter is required when protocol is SSE or StreamableHTTP and type is RealMCP.
+        # The exposed URI path. This parameter is required when protocol is set to SSE or StreamableHTTP and type is set to RealMCP.
         self.exposed_uri_path = exposed_uri_path
         # The gateway instance ID.
         self.gateway_id = gateway_id
+        # The MCP service instructions.
+        self.instructions = instructions
         # The route match rule.
         self.match = match
         # The HTTP-to-MCP configuration.
@@ -190,11 +193,11 @@ class ListMcpServersResponseBodyDataItems(DaraModel):
         self.mcp_server_path = mcp_server_path
         # Specifies whether MCP observability is enabled. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
-        # The Nacos-synced managed MCP information.
+        # The Nacos-synchronized and hosted MCP information.
         self.nacos_mcp_sync_info = nacos_mcp_sync_info
         # The MCP server name.
         self.name = name
-        # The service protocol.
+        # The protocol.
         self.protocol = protocol
         # The route ID associated with the MCP server.
         self.route_id = route_id
@@ -258,6 +261,9 @@ class ListMcpServersResponseBodyDataItems(DaraModel):
 
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
+
+        if self.instructions is not None:
+            result['instructions'] = self.instructions
 
         if self.match is not None:
             result['match'] = self.match.to_map()
@@ -333,6 +339,9 @@ class ListMcpServersResponseBodyDataItems(DaraModel):
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
 
+        if m.get('instructions') is not None:
+            self.instructions = m.get('instructions')
+
         if m.get('match') is not None:
             temp_model = main_models.HttpRouteMatch()
             self.match = temp_model.from_map(m.get('match'))
@@ -376,7 +385,7 @@ class ListMcpServersResponseBodyDataItemsNacosMcpSyncInfo(DaraModel):
     ):
         # The Nacos instance.
         self.import_instance_id = import_instance_id
-        # The ID of the synced MCP server.
+        # The ID of the synchronized MCP server.
         self.import_mcp_server_id = import_mcp_server_id
         # The Nacos namespace.
         self.import_namespace = import_namespace

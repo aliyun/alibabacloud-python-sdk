@@ -71,9 +71,9 @@ class GetRiskNotificationResponseBodyData(DaraModel):
     ):
         # The gateway ID.
         self.gateway_id = gateway_id
-        # Indicates whether the notification for the risk item is muted.
+        # Indicates whether notifications for the risk item are muted.
         self.is_mute = is_mute
-        # The code of the risk item.
+        # The risk item code.
         self.risk_code = risk_code
 
     def validate(self):

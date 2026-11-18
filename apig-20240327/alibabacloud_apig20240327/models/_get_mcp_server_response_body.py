@@ -79,6 +79,7 @@ class GetMcpServerResponseBodyData(DaraModel):
         exposed_uri_path: str = None,
         gateway_id: str = None,
         gray_mcp_server_configs: List[main_models.GetMcpServerResponseBodyDataGrayMcpServerConfigs] = None,
+        instructions: str = None,
         match: main_models.HttpRouteMatch = None,
         mcp_server_config: str = None,
         mcp_server_config_plugin_attachment_id: str = None,
@@ -99,11 +100,11 @@ class GetMcpServerResponseBodyData(DaraModel):
         self.backend = backend
         # The creation source type.
         # 
-        # ApiGatewayHttpToMCP: Gateway-hosted HTTP-to-MCP conversion
-        # ApiGatewayMcpHosting: Gateway-hosted direct MCP proxy
-        # ApiGatewayAssembly: Gateway MCP assembly
-        # NacosHttpToMCP: Gateway-hosted Nacos-synchronized HTTP-to-MCP conversion
-        # NacosMcpHosting: Gateway-hosted Nacos-synchronized direct MCP proxy
+        # ApiGatewayHttpToMCP: HTTP-to-MCP conversion hosted by the gateway.
+        # ApiGatewayMcpHosting: Direct MCP proxy hosted by the gateway.
+        # ApiGatewayAssembly: MCP assembly by the gateway.
+        # NacosHttpToMCP: HTTP-to-MCP conversion synced from Nacos and hosted by the gateway.
+        # NacosMcpHosting: Direct MCP proxy synced from Nacos and hosted by the gateway.
         self.create_from_type = create_from_type
         # The publish status of the API in the current environment.
         self.deploy_status = deploy_status
@@ -119,25 +120,27 @@ class GetMcpServerResponseBodyData(DaraModel):
         self.exposed_uri_path = exposed_uri_path
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The canary route configurations.
+        # The canary route configuration.
         self.gray_mcp_server_configs = gray_mcp_server_configs
-        # The route match rules.
+        # The MCP service instructions.
+        self.instructions = instructions
+        # The match rule of the route.
         self.match = match
         # The HTTP-to-MCP configuration.
         self.mcp_server_config = mcp_server_config
-        # The attachment ID of the MCP server plug-in configuration.
+        # The mount ID of the MCP server plugin configuration.
         self.mcp_server_config_plugin_attachment_id = mcp_server_config_plugin_attachment_id
         # MCP Server ID
         self.mcp_server_id = mcp_server_id
         # The access path of the MCP server provided by the gateway.
         self.mcp_server_path = mcp_server_path
-        # Specifies whether to enable MCP observability. Default value: false.
+        # Specifies whether MCP observability is enabled. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
-        # The information about the Nacos-synchronized managed MCP.
+        # The information about the MCP server synced and hosted by Nacos.
         self.nacos_mcp_sync_info = nacos_mcp_sync_info
         # The name of the MCP server.
         self.name = name
-        # The service protocol.
+        # The protocol.
         self.protocol = protocol
         # The ID of the route.
         self.route_id = route_id
@@ -210,6 +213,9 @@ class GetMcpServerResponseBodyData(DaraModel):
         if self.gray_mcp_server_configs is not None:
             for k1 in self.gray_mcp_server_configs:
                 result['grayMcpServerConfigs'].append(k1.to_map() if k1 else None)
+
+        if self.instructions is not None:
+            result['instructions'] = self.instructions
 
         if self.match is not None:
             result['match'] = self.match.to_map()
@@ -294,6 +300,9 @@ class GetMcpServerResponseBodyData(DaraModel):
                 temp_model = main_models.GetMcpServerResponseBodyDataGrayMcpServerConfigs()
                 self.gray_mcp_server_configs.append(temp_model.from_map(k1))
 
+        if m.get('instructions') is not None:
+            self.instructions = m.get('instructions')
+
         if m.get('match') is not None:
             temp_model = main_models.HttpRouteMatch()
             self.match = temp_model.from_map(m.get('match'))
@@ -340,7 +349,7 @@ class GetMcpServerResponseBodyDataNacosMcpSyncInfo(DaraModel):
     ):
         # The Nacos instance.
         self.import_instance_id = import_instance_id
-        # The ID of the synchronized MCP server.
+        # The ID of the synced MCP server.
         self.import_mcp_server_id = import_mcp_server_id
         # The Nacos namespace.
         self.import_namespace = import_namespace
@@ -386,7 +395,7 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigs(DaraModel):
     ):
         # The backend configuration of the canary route.
         self.backend_config = backend_config
-        # The match rules of the canary route.
+        # The match rule of the canary route.
         self.match = match
         # The ID of the canary route.
         self.route_id = route_id
@@ -484,7 +493,7 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices(Dara
     ):
         # The service port.
         self.port = port
-        # The service protocol.
+        # The protocol.
         self.protocol = protocol
         # The ID of the service.
         self.service_id = service_id

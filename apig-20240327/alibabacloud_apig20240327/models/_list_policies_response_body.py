@@ -21,7 +21,7 @@ class ListPoliciesResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID, which is used to trace the API call chain.
+        # The request ID. You can use the ID to trace the API call chain.
         self.request_id = request_id
 
     def validate(self):

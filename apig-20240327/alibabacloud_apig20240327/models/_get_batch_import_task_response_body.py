@@ -76,11 +76,11 @@ class GetBatchImportTaskResponseBodyData(DaraModel):
         task_type: str = None,
         total_count: int = None,
     ):
-        # The time when the task was created. The time is in UTC and follows the RFC 3339 format.
+        # The time when the task was created. The time is in UTC and follows the RFC 3339 standard.
         self.create_time = create_time
         # The error message.
         self.error_message = error_message
-        # The number of processed items.
+        # The processed count.
         self.processed_count = processed_count
         # The task result details.
         self.result = result
@@ -170,7 +170,7 @@ class GetBatchImportTaskResponseBodyDataResult(DaraModel):
     ):
         # The API type.
         self.api_type = api_type
-        # Indicates whether the task is in dry run mode.
+        # Indicates whether the dry run mode is enabled.
         self.dry_run = dry_run
         # The list of dry run results.
         self.dry_run_results = dry_run_results
@@ -178,7 +178,7 @@ class GetBatchImportTaskResponseBodyDataResult(DaraModel):
         self.failure_items = failure_items
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The formal import request body. This field is returned only for dry run tasks and can be resubmitted as the request body of BatchImportHttpApis. The dryRun parameter is fixed to false. Temporary specFileUrl values are still subject to URL expiration constraints.
+        # The formal import request body. Returned only for dry run tasks. Can be resubmitted as the BatchImportHttpApis request body with dryRun set to false. The temporary specFileUrl is still subject to the URL expiration period.
         self.import_request = import_request
         # The list of successfully processed APIs.
         self.success_items = success_items
@@ -278,7 +278,7 @@ class GetBatchImportTaskResponseBodyDataResultSuccessItems(DaraModel):
     ):
         # The ID of the API.
         self.api_id = api_id
-        # The API name. The value unknown is returned if the name cannot be identified.
+        # The name of the API. If the name cannot be identified, unknown is returned.
         self.api_name = api_name
         # The error message.
         self.error_message = error_message
@@ -336,23 +336,23 @@ class GetBatchImportTaskResponseBodyDataResultImportRequest(DaraModel):
         strategy: str = None,
         with_gateway_extension: bool = None,
     ):
-        # Specifies whether to allow overwriting existing APIs.
+        # Specifies whether to allow overwriting and updating existing APIs.
         self.allow_update = allow_update
         # The API type.
         self.api_type = api_type
-        # Specifies whether the request is in dry run mode. This parameter is fixed to false in the formal import request body.
+        # Indicates whether the dry run mode is enabled. This parameter is fixed to false in the formal import request body.
         self.dry_run = dry_run
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The download URL of the OAS ZIP file, which is consistent with the dry run request.
+        # The download URL of the OAS ZIP file, which is the same as that in the dry run request.
         self.spec_file_url = spec_file_url
-        # The OSS configuration of the OAS file, which is consistent with the dry run request.
+        # The OSS configuration of the OAS file, which is the same as that in the dry run request.
         self.spec_oss_config = spec_oss_config
         # The conflict merge strategy used during import.
         self.strategy = strategy
-        # Specifies whether to import with gateway extension configurations.
+        # Specifies whether to import with the gateway extension configuration.
         self.with_gateway_extension = with_gateway_extension
 
     def validate(self):
@@ -481,7 +481,7 @@ class GetBatchImportTaskResponseBodyDataResultFailureItems(DaraModel):
     ):
         # The ID of the API.
         self.api_id = api_id
-        # The API name. The value unknown is returned if the name cannot be identified.
+        # The name of the API. If the name cannot be identified, unknown is returned.
         self.api_name = api_name
         # The error message.
         self.error_message = error_message
@@ -534,9 +534,9 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResults(DaraModel):
         error: str = None,
         file_name: str = None,
     ):
-        # The API name. The value unknown is returned if the name cannot be identified.
+        # The name of the API. If the name cannot be identified, unknown is returned.
         self.api_name = api_name
-        # The dry run details, including the operations, routes, components, and error or warning messages planned for creation or update in this file.
+        # The dry run details, including the operations, routes, components, and error and warning messages to be created or updated by this file.
         self.dry_run_info = dry_run_info
         # The dry run error message.
         self.error = error
@@ -598,7 +598,7 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfo(DaraModel)
     ):
         # The list of dry run error messages.
         self.error_messages = error_messages
-        # The basic information about the existing HTTP API matched during import.
+        # The basic information of the existing HTTP API matched during import.
         self.exist_http_api_info = exist_http_api_info
         # The list of data structures that failed the dry run.
         self.failure_components = failure_components
@@ -745,7 +745,7 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessRout
         action: str = None,
         name: str = None,
     ):
-        # The action type to be performed after the dry run.
+        # The type of action to be performed after the dry run.
         self.action = action
         # The name of the route.
         self.name = name
@@ -784,7 +784,7 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessOper
         name: str = None,
         path: str = None,
     ):
-        # The action type to be performed after the dry run.
+        # The type of action to be performed after the dry run.
         self.action = action
         # The HTTP method of the REST API operation.
         self.method = method
@@ -837,7 +837,7 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoSuccessComp
         action: str = None,
         name: str = None,
     ):
-        # The action type to be performed after the dry run.
+        # The type of action to be performed after the dry run.
         self.action = action
         # The name of the data structure.
         self.name = name
@@ -874,7 +874,7 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureRout
         error_message: str = None,
         name: str = None,
     ):
-        # The reason why the dry run failed.
+        # The reason for the dry run failure.
         self.error_message = error_message
         # The name of the route.
         self.name = name
@@ -912,7 +912,7 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureOper
         method: str = None,
         path: str = None,
     ):
-        # The reason why the dry run failed.
+        # The reason for the dry run failure.
         self.error_message = error_message
         # The HTTP method of the REST API operation.
         self.method = method
@@ -957,7 +957,7 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoFailureComp
         error_message: str = None,
         name: str = None,
     ):
-        # The reason why the dry run failed.
+        # The reason for the dry run failure.
         self.error_message = error_message
         # The name of the data structure.
         self.name = name
@@ -1008,7 +1008,7 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpAp
         self.name = name
         # The API type.
         self.type = type
-        # The API versioning information.
+        # The versioning information of the API.
         self.version_info = version_info
 
     def validate(self):
@@ -1072,7 +1072,7 @@ class GetBatchImportTaskResponseBodyDataResultDryRunResultsDryRunInfoExistHttpAp
         scheme: str = None,
         version: str = None,
     ):
-        # Indicates whether versioning is enabled.
+        # Specifies whether versioning is enabled.
         self.enable = enable
         # The key in the specified header parameter when the header versioning scheme is used.
         self.header_name = header_name

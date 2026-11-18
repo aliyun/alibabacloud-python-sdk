@@ -29,7 +29,7 @@ class ListHttpApisRequest(DaraModel):
         self.gateway_id = gateway_id
         # The type of the gateway associated with the HTTP API. Valid values: API (cloud-native API gateway) and AI (AI gateway).
         self.gateway_type = gateway_type
-        # The search keyword. Supports fuzzy match by API name or exact search by API ID.
+        # The search keyword. Supports fuzzy search by API name or exact search by API ID.
         self.keyword = keyword
         # The name for exact search.
         self.name = name
@@ -39,7 +39,7 @@ class ListHttpApisRequest(DaraModel):
         self.page_size = page_size
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The types of the HTTP API. You can specify multiple types separated by commas (,). Valid values:
+        # The types of the HTTP APIs. You can specify multiple types separated by commas (,). Valid values:
         # - Http
         # - Rest
         # - Websocket
@@ -47,19 +47,19 @@ class ListHttpApisRequest(DaraModel):
         self.types = types
         # Specifies whether to return the information about APIs published to the specified environment.
         self.with_apis_published_to_environment = with_apis_published_to_environment
-        # The ID of the environment. If specified, the response includes the consumer authentication policy information for each API in the specified environment.
+        # The environment ID. If specified, the response includes consumer authentication policy information for each API in the specified environment.
         self.with_auth_policy_in_environment_id = with_auth_policy_in_environment_id
-        # Specifies whether the permission authentication policy is enabled.
+        # Specifies whether the authentication policy is enabled.
         self.with_auth_policy_list = with_auth_policy_list
-        # The ID of the consumer. If specified, the response includes the list of authorization rules for the specified consumer in each API information.
+        # The consumer ID. If specified, the response includes the authorization rule list for the specified consumer in the information of each API.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # The environment context.
+        # Specifies whether to include the environment context.
         self.with_environment_info = with_environment_info
-        # The ID of the environment.
+        # The environment ID.
         self.with_environment_info_by_id = with_environment_info_by_id
         # Specifies whether to include Ingress information.
         self.with_ingress_info = with_ingress_info
-        # The ID of the plug-in. If specified, the plug-in release information is retrieved based on this plug-in ID.
+        # The plugin ID. If specified, the plugin release information is retrieved based on this ID.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
         # Specifies whether to include policy information.
         self.with_policy_configs = with_policy_configs

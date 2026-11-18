@@ -15,7 +15,7 @@ class DetachAndDeletePolicyResponseBody(DaraModel):
         self.code = code
         # The response message.
         self.message = message
-        # The request ID, which is used to trace the API call chain.
+        # The request ID, used to trace the API call link.
         self.request_id = request_id
 
     def validate(self):

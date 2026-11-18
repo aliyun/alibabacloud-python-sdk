@@ -23,35 +23,35 @@ class ListHttpApiRoutesRequest(DaraModel):
         with_consumer_info_by_id: str = None,
         with_plugin_attachment_by_plugin_id: str = None,
     ):
-        # The backend service name. You can use this name to filter routes.
+        # The backend service name. You can use this service name to filter routing.
         self.backend_service_name = backend_service_name
-        # The ID of the consumer authorization rule used to filter the route list. The route list in the response contains only authorized routes.
+        # The ID of the consumer authorization rule used to filter the API list. The API list in the response includes only authorized APIs.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
-        # The deployment status of the route.
+        # The deployment statuses of the routes.
         self.deploy_statuses = deploy_statuses
-        # The ID of the domain name used to filter route information.
+        # The domain name ID used to filter route information.
         self.domain_id = domain_id
         # The environment ID.
         self.environment_id = environment_id
-        # Specifies whether the query is for a deployment scenario.
+        # Specifies whether the request is for a deployment scenario.
         self.for_deploy = for_deploy
-        # The cloud-native API gateway ID.
+        # The ID of the cloud-native API gateway.
         self.gateway_id = gateway_id
         # The route name.
         self.name = name
-        # The route name used for fuzzy match.
+        # The keyword used to perform a fuzzy search by route name.
         self.name_like = name_like
-        # The page number. Pages start from 1. If you do not specify this parameter, the default value is 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The page size. Valid values: 1 to 100. Default value: 10.
+        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The route path used for fuzzy match.
+        # The keyword used to perform a fuzzy search by route path.
         self.path_like = path_like
         # Specifies whether to include consumer authorization information in the response.
         self.with_auth_policy_info = with_auth_policy_info
-        # Specifies whether to include the authorization rule list of the specified consumer ID in each route in the response.
+        # Specifies whether to include the authorization rules of a specified consumer ID in each route entry in the response.
         self.with_consumer_info_by_id = with_consumer_info_by_id
-        # Specifies whether to include the mount information of the specified plugin ID in each route in the response.
+        # Specifies whether to include the mount information of a specified plug-in ID in each route entry in the response.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
 
     def validate(self):

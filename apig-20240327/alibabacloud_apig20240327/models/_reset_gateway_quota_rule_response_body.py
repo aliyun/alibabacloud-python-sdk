@@ -17,11 +17,11 @@ class ResetGatewayQuotaRuleResponseBody(DaraModel):
     ):
         # The status code or error code.
         self.code = code
-        # The request data content.
+        # The response data content.
         self.data = data
         # The message content.
         self.message = message
-        # The unique identifier of the request.
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -72,11 +72,11 @@ class ResetGatewayQuotaRuleResponseBodyData(DaraModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # Indicates whether the semantics of the current write request can be accepted by the system. A value of false is common in retryable scenarios such as unconfirmed conflict overwrites.
+        # Indicates whether the semantics of the current write request can be accepted by the system. A value of false typically occurs in retryable scenarios, such as when conflicts are not confirmed for overwriting.
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
-        # Indicates whether it is a dry run.
+        # Indicates whether a dry run is performed.
         self.dry_run = dry_run
         # The rule ID.
         self.rule_id = rule_id
@@ -186,13 +186,13 @@ class ResetGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         subject_name: str = None,
         subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the subject. A value of day, week, or month indicates that the period of the existing conflicting rule on the subject is daily, weekly, or monthly.
+        # The period type of the existing conflicting rule on the subject. A value of day, week, or month indicates that the period of the existing conflicting rule on the subject is day, week, or month, respectively.
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the subject. A value of calendar indicates that the existing conflicting rule on the subject uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
+        # The type of the existing conflicting rule on the subject. A value of calendar indicates that the existing conflicting rule on the subject uses a calendar period. A value of epoch indicates that the existing conflicting rule uses a custom period.
         self.conflict_type = conflict_type
-        # The consumer ID. This parameter can now be uniformly replaced by subjectId.
+        # The consumer ID. You can use subjectId instead.
         self.consumer_id = consumer_id
-        # The consumer name. This parameter can now be uniformly replaced by subjectName.
+        # The consumer name. You can use subjectName instead.
         self.consumer_name = consumer_name
         # The ID of the conflicting subject.
         self.subject_id = subject_id

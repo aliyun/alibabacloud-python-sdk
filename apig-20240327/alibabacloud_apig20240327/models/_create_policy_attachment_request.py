@@ -13,7 +13,7 @@ class CreatePolicyAttachmentRequest(DaraModel):
         gateway_id: str = None,
         policy_id: str = None,
     ):
-        # The ID of the attached resource.
+        # The attached resource ID.
         # 
         # This parameter is required.
         self.attach_resource_id = attach_resource_id

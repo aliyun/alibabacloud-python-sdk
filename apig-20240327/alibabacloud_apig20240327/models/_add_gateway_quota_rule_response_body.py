@@ -72,7 +72,7 @@ class AddGatewayQuotaRuleResponseBodyData(DaraModel):
         dry_run: bool = None,
         rule_id: str = None,
     ):
-        # Indicates whether the semantics of the write request can be accepted by the system. A value of false typically occurs in retryable scenarios, such as when conflicts are not confirmed for overwriting.
+        # Indicates whether the semantics of the write request are accepted by the system. When dryRun is set to true, a value of true indicates only that the dry run is accepted, not that the data is saved. If a formal write request returns false, it indicates that the data is not saved due to conflicts. In this case, check conflictPreview. A value of false typically occurs in retryable scenarios such as unconfirmed conflict overwrites.
         self.accepted = accepted
         # The conflict preview.
         self.conflict_preview = conflict_preview
@@ -128,7 +128,7 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreview(DaraModel):
         items: List[main_models.AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems] = None,
         total_conflict_count: int = None,
     ):
-        # The hash of the conflicts.
+        # The hash of the conflict.
         self.conflict_hash = conflict_hash
         # The list of conflicting subjects (consumers or consumer groups).
         self.items = items
@@ -187,9 +187,9 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         subject_name: str = None,
         subject_type: str = None,
     ):
-        # The period type of the existing conflicting rule on the subject. This is a legacy field. Use periodType in the actual response instead. This field is not guaranteed to be returned. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month.
+        # The period type of the existing conflicting rule on the consumption subject. This is a legacy field. Use periodType in the actual response instead. This field is not guaranteed to be returned. A value of day, week, or month indicates that the period of the existing conflicting rule is day, week, or month.
         self.conflict_period_type = conflict_period_type
-        # The type of the existing conflicting rule on the subject. A value of calendar indicates that the existing conflicting rule uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
+        # The type of the existing conflicting rule on the consumption subject. A value of calendar indicates that the existing conflicting rule uses a natural period. A value of epoch indicates that the existing conflicting rule uses a custom period.
         self.conflict_type = conflict_type
         # The ID of the conflicting consumer. You can use subjectId instead.
         self.consumer_id = consumer_id
@@ -201,7 +201,7 @@ class AddGatewayQuotaRuleResponseBodyDataConflictPreviewItems(DaraModel):
         self.subject_id = subject_id
         # The name of the conflicting subject.
         self.subject_name = subject_name
-        # The type of the conflicting subject. Valid values: consumer and consumer_group.
+        # The type of the conflicting subject. Valid values: consumer, consumer_group.
         self.subject_type = subject_type
 
     def validate(self):

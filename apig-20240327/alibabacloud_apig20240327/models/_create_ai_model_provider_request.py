@@ -9,12 +9,15 @@ from darabonba.model import DaraModel
 class CreateAiModelProviderRequest(DaraModel):
     def __init__(
         self,
+        default_service_id: str = None,
         display_name: str = None,
         gateway_id: str = None,
         provider: str = None,
         service_ids: List[str] = None,
         client_token: str = None,
     ):
+        # The optional default AI service ID. If not empty, it must be a service in the current association set. Omitting this parameter indicates that no default is set. An explicit empty string clears the default. A non-empty value sets the default. The length cannot exceed 64 characters.
+        self.default_service_id = default_service_id
         # The display name of the model provider.
         # 
         # This parameter is required.
@@ -27,9 +30,9 @@ class CreateAiModelProviderRequest(DaraModel):
         # 
         # This parameter is required.
         self.provider = provider
-        # The list of service IDs to bind to the provider.
+        # The list of service IDs to associate with the provider.
         self.service_ids = service_ids
-        # The client token that ensures the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
 
     def validate(self):
@@ -40,6 +43,9 @@ class CreateAiModelProviderRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.default_service_id is not None:
+            result['defaultServiceId'] = self.default_service_id
+
         if self.display_name is not None:
             result['displayName'] = self.display_name
 
@@ -59,6 +65,9 @@ class CreateAiModelProviderRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('defaultServiceId') is not None:
+            self.default_service_id = m.get('defaultServiceId')
+
         if m.get('displayName') is not None:
             self.display_name = m.get('displayName')
 

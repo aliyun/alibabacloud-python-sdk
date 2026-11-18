@@ -24,11 +24,11 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
     ):
         # The API name.
         self.api_name_like = api_name_like
-        # The consumer group ID. If specified, the authorization rules of the consumer group are queried. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
+        # The consumer group ID. If you specify this parameter, the authorization rules of the consumer group are queried. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified.
         self.consumer_group_id = consumer_group_id
-        # The consumer group name for fuzzy match.
+        # The keyword for fuzzy match of the consumer group name.
         self.consumer_group_name_like = consumer_group_name_like
-        # The consumer ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
+        # The consumer ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified.
         self.consumer_id = consumer_id
         # The consumer name.
         self.consumer_name_like = consumer_name_like
@@ -40,15 +40,15 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The parent resource ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
+        # The parent resource ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified.
         self.parent_resource_id = parent_resource_id
-        # The principal type. Valid values: Consumer and ConsumerGroup.
+        # The type of the authorized principal. Valid values: Consumer and ConsumerGroup.
         self.principal_type = principal_type
-        # The resource ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified as a query condition.
+        # The resource ID. At least one of the resourceId, parentResourceId, consumerId, and consumerGroupId parameters must be specified.
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
-        # The service source type.
+        # The service source types.
         self.resource_types = resource_types
 
     def validate(self):

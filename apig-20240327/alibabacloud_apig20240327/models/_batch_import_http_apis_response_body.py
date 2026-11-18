@@ -15,7 +15,7 @@ class BatchImportHttpApisResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
         # The response message.
         self.message = message

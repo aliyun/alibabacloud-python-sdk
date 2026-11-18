@@ -11,11 +11,11 @@ class ListPublishableProductsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The name of the API product. This corresponds to the name field in the response list items.
+        # The name of the API product. This is the same field as the name property in the response list items.
         self.name = name
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):

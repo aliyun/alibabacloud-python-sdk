@@ -85,7 +85,7 @@ class GetPortalResponseBodyData(DaraModel):
         self.portal_domain_config = portal_domain_config
         # The portal ID, which is the primary ID of the portal resource and points to the same portal as the portalId request parameter.
         self.portal_id = portal_id
-        # The portal settings, which specify whether username and password authentication is enabled, whether developer registrations are automatically approved, and whether subscription requests are automatically approved.
+        # The portal configuration information, which includes whether account and password authentication is enabled, whether developer registrations are automatically approved, and whether subscription requests are automatically approved.
         self.portal_setting_config = portal_setting_config
         # The region ID, which is the RegionId property of the portal resource.
         self.region_id = region_id

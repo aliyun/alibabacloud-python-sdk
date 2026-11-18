@@ -18,7 +18,7 @@ class CreatePluginClassRequest(DaraModel):
         wasm_language: str = None,
         wasm_url: str = None,
     ):
-        # The alias of the plug-in. This parameter is required. If it is not provided, the service returns InvalidParameter.WithValue.
+        # The alias of the plug-in. This parameter is actually required. If it is not provided, the service returns InvalidParameter.WithValue.
         self.alias = alias
         # The description of the plug-in.
         # 
@@ -34,7 +34,7 @@ class CreatePluginClassRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The minimum supported gateway version.
+        # The minimum compatible gateway version.
         self.supported_min_gateway_version = supported_min_gateway_version
         # The version number of the plug-in.
         # 
@@ -48,7 +48,7 @@ class CreatePluginClassRequest(DaraModel):
         # 
         # This parameter is required.
         self.wasm_language = wasm_language
-        # The download URL of the WASM plug-in binary file.
+        # The download URL of the binary file for the WASM plug-in.
         # 
         # This parameter is required.
         self.wasm_url = wasm_url

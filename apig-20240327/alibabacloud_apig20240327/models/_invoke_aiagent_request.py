@@ -20,13 +20,13 @@ class InvokeAIAgentRequest(DaraModel):
         # 
         # This parameter is required.
         self.agent_name = agent_name
-        # The business parameters. Each agent performs custom validation. For example, pass the Simple Log Service context for log diagnostics.
+        # The business parameters. Each agent performs custom validation. For example, pass the SLS context for log diagnosis.
         self.biz_params = biz_params
         # The conversation history, which includes the role (user or assistant) and content. The role and content in each element cannot be empty.
         self.history = history
-        # The output language. If this parameter is set to en, the default error message is displayed in English.
+        # The output language. If set to en, the default error message is in English.
         self.output_language = output_language
-        # The current user input. If this parameter is empty, a default value is used based on the scenario, such as Start.
+        # The user input for the current session. If empty, a default value is used based on the scenario, such as Start.
         self.prompt = prompt
 
     def validate(self):
@@ -87,7 +87,7 @@ class InvokeAIAgentRequestHistory(DaraModel):
         content: str = None,
         role: str = None,
     ):
-        # The content. The returned data is in rich text format.
+        # The content of the message. The returned data is in rich text format.
         self.content = content
         # The role.
         self.role = role

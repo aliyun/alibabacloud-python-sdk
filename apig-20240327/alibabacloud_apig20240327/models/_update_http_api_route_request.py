@@ -15,6 +15,7 @@ class UpdateHttpApiRouteRequest(DaraModel):
         dfp_config: main_models.UpdateHttpApiRouteRequestDfpConfig = None,
         domain_ids: List[str] = None,
         environment_id: str = None,
+        gateway_id: str = None,
         match: main_models.HttpRouteMatch = None,
         mcp_route_config: main_models.UpdateHttpApiRouteRequestMcpRouteConfig = None,
         policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
@@ -23,12 +24,14 @@ class UpdateHttpApiRouteRequest(DaraModel):
         self.backend_config = backend_config
         # The route description.
         self.description = description
-        # The current ExtProc service selection for fixed DFP routes. You can only edit mounted routes. This parameter cannot be submitted together with backendConfig, mcpRouteConfig, or policyConfigs.
+        # The ExtProc service selection for fixed DFP routes. You can only edit mounted routes. This parameter cannot be submitted together with backendConfig, mcpRouteConfig, or policyConfigs.
         self.dfp_config = dfp_config
         # The list of domain name IDs.
         self.domain_ids = domain_ids
         # The environment ID.
         self.environment_id = environment_id
+        # The gateway ID. This parameter is used to replace the deprecated environment ID for verifying the gateway to which the route belongs. If the gateway ID does not match the gateway to which the route record belongs, the request is rejected. If the environment ID is omitted, the route ownership remains unchanged.
+        self.gateway_id = gateway_id
         # The route match rule.
         self.match = match
         # The MCP route configuration.
@@ -70,6 +73,9 @@ class UpdateHttpApiRouteRequest(DaraModel):
         if self.environment_id is not None:
             result['environmentId'] = self.environment_id
 
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+
         if self.match is not None:
             result['match'] = self.match.to_map()
 
@@ -101,6 +107,9 @@ class UpdateHttpApiRouteRequest(DaraModel):
 
         if m.get('environmentId') is not None:
             self.environment_id = m.get('environmentId')
+
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
 
         if m.get('match') is not None:
             temp_model = main_models.HttpRouteMatch()
@@ -251,19 +260,19 @@ class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service group. Used in HTTP-to-Dubbo conversion scenarios.
+        # The service group. Used for HTTP-to-Dubbo conversion scenarios.
         self.group_name = group_name
-        # The HTTP-to-Dubbo protocol conversion configuration. This configuration is only supported for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
+        # The HTTP-to-Dubbo protocol conversion configuration. Only SingleService MSE_NACOS DUBBO backends of HTTP APIs are supported.
         self.http_dubbo_transcoder = http_dubbo_transcoder
-        # The name of the target model. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If it is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
+        # The target model name. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
         self.model_name = model_name
-        # The service namespace. Used in HTTP-to-Dubbo conversion scenarios.
+        # The service namespace. Used for HTTP-to-Dubbo conversion scenarios.
         self.namespace = namespace
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
-        # - HTTP.
-        # - HTTPS.
+        # - HTTP
+        # - HTTPS
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id

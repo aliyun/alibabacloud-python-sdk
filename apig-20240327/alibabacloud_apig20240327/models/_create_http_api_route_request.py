@@ -16,28 +16,31 @@ class CreateHttpApiRouteRequest(DaraModel):
         dfp_config: main_models.CreateHttpApiRouteRequestDfpConfig = None,
         domain_ids: List[str] = None,
         environment_id: str = None,
+        gateway_id: str = None,
         match: main_models.HttpRouteMatch = None,
         mcp_route_config: main_models.CreateHttpApiRouteRequestMcpRouteConfig = None,
         name: str = None,
         policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
     ):
-        # The backend service configuration for the route.
+        # The backend service configuration of the route.
         self.backend_config = backend_config
         # The API deployment configuration.
         self.deploy_configs = deploy_configs
-        # The route description.
+        # The description of the route.
         self.description = description
-        # The fixed dynamic forwarding and ExtProc combination configuration. When you use this configuration, specify only serviceId, and do not specify environmentId or backendConfig.
+        # The combination configuration of fixed dynamic forwarding and ExtProc. When you use this parameter, specify only serviceId, and do not specify environmentId or backendConfig.
         self.dfp_config = dfp_config
         # The domain name IDs.
         self.domain_ids = domain_ids
-        # The environment ID.
+        # The ID of the environment.
         self.environment_id = environment_id
-        # The route match rules.
+        # The ID of the gateway. This parameter replaces the deprecated environment ID to specify the gateway to which the route belongs. If only this parameter is passed, the server uses the unique valid default environment of the gateway. If this parameter and environmentId are passed at the same time, the environment must belong to this gateway.
+        self.gateway_id = gateway_id
+        # The match rules of the route.
         self.match = match
         # The MCP route configuration.
         self.mcp_route_config = mcp_route_config
-        # The route name.
+        # The name of the route.
         self.name = name
         # The policy types.
         self.policy_configs = policy_configs
@@ -85,6 +88,9 @@ class CreateHttpApiRouteRequest(DaraModel):
         if self.environment_id is not None:
             result['environmentId'] = self.environment_id
 
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+
         if self.match is not None:
             result['match'] = self.match.to_map()
 
@@ -125,6 +131,9 @@ class CreateHttpApiRouteRequest(DaraModel):
 
         if m.get('environmentId') is not None:
             self.environment_id = m.get('environmentId')
+
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
 
         if m.get('match') is not None:
             temp_model = main_models.HttpRouteMatch()
@@ -229,10 +238,10 @@ class CreateHttpApiRouteRequestBackendConfig(DaraModel):
         services: List[main_models.CreateHttpApiRouteRequestBackendConfigServices] = None,
     ):
         # The backend service scenario. Valid values:
-        # - SingleService: Single service.
-        # - MultiServiceByRatio: Multiple services with ratio-based canary release.
-        # - Mock: Mock service.
-        # - Redirect: Redirect service.
+        # - SingleService: single service.
+        # - MultiServiceByRatio: canary release for multiple services by ratio.
+        # - Mock: mock service.
+        # - Redirect: redirect service.
         self.scene = scene
         # The list of backend services.
         self.services = services
@@ -285,23 +294,23 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service group. Used for HTTP-to-Dubbo conversion scenarios.
+        # The group of the service. This parameter is used in HTTP-to-Dubbo conversion scenarios.
         self.group_name = group_name
-        # The HTTP-to-Dubbo protocol conversion configuration. This configuration only supports SingleService MSE_NACOS DUBBO backends for HTTP APIs.
+        # The HTTP-to-Dubbo protocol conversion configuration. This parameter is supported only for SingleService MSE_NACOS DUBBO backends of HTTP APIs.
         self.http_dubbo_transcoder = http_dubbo_transcoder
-        # The target model name. This field is shared by multiple existing model backend scenarios, and the specific routing or model rewriting semantics are determined by backendConfig.scene. It is required for the SemanticRouter scenario. If not configured for the AiAutoRouter scenario, the default model of the AI service is used.
+        # The name of the target model. This field is shared by multiple existing model backend scenarios. The specific routing or model rewriting semantics are determined by backendConfig.scene. This field is required for the SemanticRouter scenario. If this field is not configured for the AiAutoRouter scenario, the default model of the AI service is used.
         self.model_name = model_name
-        # The service namespace. Used for HTTP-to-Dubbo conversion scenarios.
+        # The namespace of the service. This parameter is used in HTTP-to-Dubbo conversion scenarios.
         self.namespace = namespace
-        # The service port. Do not specify this parameter for dynamic ports.
+        # The service port. Do not pass this parameter for dynamic ports.
         self.port = port
         # The service protocol. Valid values:
         # - HTTP.
         # - HTTPS.
         self.protocol = protocol
-        # The service ID.
+        # The ID of the service.
         self.service_id = service_id
-        # The service source type. Used for HTTP-to-Dubbo conversion scenarios.
+        # The source type of the service. This parameter is used in HTTP-to-Dubbo conversion scenarios.
         self.source_type = source_type
         # The service version. This parameter is valid only in the tag-based scenario.
         self.version = version

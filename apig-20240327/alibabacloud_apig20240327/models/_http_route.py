@@ -27,7 +27,7 @@ class HttpRoute(DaraModel):
     ):
         # The backend service.
         self.backend = backend
-        # Indicates whether the route is a built-in system route.
+        # Specifies whether the route is a built-in system route.
         self.builtin = builtin
         # The creation time, in milliseconds.
         self.create_timestamp = create_timestamp
@@ -35,9 +35,9 @@ class HttpRoute(DaraModel):
         self.deploy_status = deploy_status
         # The route description.
         self.description = description
-        # The ExtProc service selected for the fixed dynamic forwarding route. This field is not returned when no matching binding exists.
+        # The ExtProc service selection mounted for fixed dynamic forwarding routes. This field is not returned when no matching binding exists.
         self.dfp_config = dfp_config
-        # The list of domain information.
+        # The domain name information list.
         self.domain_infos = domain_infos
         # The environment context of the routing.
         self.environment_info = environment_info
@@ -256,7 +256,7 @@ class HttpRouteMcpServerInfoMcpRouteConfig(DaraModel):
         exposed_uri_path: str = None,
         protocol: str = None,
     ):
-        # mcp route path
+        # The URI path exposed by the MCP route.
         self.exposed_uri_path = exposed_uri_path
         # The MCP protocol type.
         self.protocol = protocol
@@ -304,7 +304,7 @@ class HttpRouteEnvironmentInfo(DaraModel):
         self.gateway_info = gateway_info
         # The environment name.
         self.name = name
-        # The list of default subdomains for the environment.
+        # The list of default second-level domain names of the environment.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -370,7 +370,7 @@ class HttpRouteEnvironmentInfoSubDomains(DaraModel):
         network_type: str = None,
         protocol: str = None,
     ):
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
         # The domain name.
         self.name = name
@@ -470,7 +470,7 @@ class HttpRouteDomainInfos(DaraModel):
         name: str = None,
         protocol: str = None,
     ):
-        # The domain ID.
+        # The domain name ID.
         self.domain_id = domain_id
         # The domain name.
         self.name = name

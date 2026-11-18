@@ -78,7 +78,7 @@ class UpdateGatewayLoadBalancerResponseBodyData(DaraModel):
         status_description: str = None,
         virtual_service_list: List[main_models.UpdateGatewayLoadBalancerResponseBodyDataVirtualServiceList] = None,
     ):
-        # Indicates whether the load balancer can be edited. This serves as the edit toggle for a load balancer that is being migrated.
+        # Specifies whether the load balancer being migrated can be edited.
         self.edit_enable = edit_enable
         # The load balancer address.
         self.load_balancer_address = load_balancer_address
@@ -92,11 +92,11 @@ class UpdateGatewayLoadBalancerResponseBodyData(DaraModel):
         self.network_type = network_type
         # The port information.
         self.ports = ports
-        # The gateway service weight for traffic shifting during migration. Valid values: 0 to 100.
+        # The gateway service weight in traffic switching scenarios during migration. Valid values: 0 to 100.
         self.service_weight = service_weight
         # The status description.
         self.status_description = status_description
-        # The backend server group bindings.
+        # The list of backend server group bindings.
         self.virtual_service_list = virtual_service_list
 
     def validate(self):
@@ -189,13 +189,13 @@ class UpdateGatewayLoadBalancerResponseBodyDataVirtualServiceList(DaraModel):
         virtual_service_group_id: str = None,
         virtual_service_group_name: str = None,
     ):
-        # The port. When an NLB instance is associated, two placeholder entries with ports 80 and 443 are returned.
+        # The port. When an NLB is bound, ports 80 and 443 are fixed and returned as placeholders.
         self.port = port
-        # The protocol. When an NLB instance is associated, HTTP and HTTPS are returned as placeholders. For CLB, the value is deserialized from the stored vServerGroupMetaInfo.
+        # The protocol. When an NLB is bound, HTTP and HTTPS are fixed and returned as placeholders. For CLB, the value is deserialized from the persisted vServerGroupMetaInfo.
         self.protocol = protocol
-        # The VServerGroup or ServerGroup ID. When an NLB instance is associated, this field is an empty string placeholder.
+        # The VServerGroup or ServerGroup ID. When an NLB is bound, an empty string is returned as a placeholder.
         self.virtual_service_group_id = virtual_service_group_id
-        # The group name. When an NLB instance is associated, this field is an empty string placeholder.
+        # The group name. When an NLB is bound, an empty string is returned as a placeholder.
         self.virtual_service_group_name = virtual_service_group_name
 
     def validate(self):

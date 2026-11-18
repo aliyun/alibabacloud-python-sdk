@@ -137,15 +137,15 @@ class ListSecretReferencesResponseBodyDataItems(DaraModel):
         mcp_server_config: main_models.ListSecretReferencesResponseBodyDataItemsMcpServerConfig = None,
         resource_type: str = None,
     ):
-        # The plug-in information that references the current secret.
+        # The information about the plugin that references the current secret.
         self.plugin_config = plugin_config
-        # The service information that references the current secret.
+        # The information about the service that references the current secret.
         self.service_config = service_config
-        # The consumer information that references the current secret.
+        # The information about the consumer that references the current secret.
         self.consumer_config = consumer_config
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The MCP server information that references the current secret.
+        # The information about the MCP service that references the current secret.
         self.mcp_server_config = mcp_server_config
         # The resource type.
         self.resource_type = resource_type
@@ -218,11 +218,11 @@ class ListSecretReferencesResponseBodyDataItemsMcpServerConfig(DaraModel):
         name: str = None,
         route_id: str = None,
     ):
-        # HTTP API ID。
+        # The HTTP API ID.
         self.http_api_id = http_api_id
-        # The route name.
+        # The name of the route.
         self.name = name
-        # The route ID.
+        # The ID of the route.
         self.route_id = route_id
 
     def validate(self):
@@ -263,9 +263,9 @@ class ListSecretReferencesResponseBodyDataItemsConsumerConfig(DaraModel):
         consumer_id: str = None,
         name: str = None,
     ):
-        # The consumer ID.
+        # The ID of the consumer.
         self.consumer_id = consumer_id
-        # The consumer name.
+        # The name of the consumer.
         self.name = name
 
     def validate(self):
@@ -302,7 +302,7 @@ class ListSecretReferencesResponseBodyDataItemsServiceConfig(DaraModel):
     ):
         # The service name.
         self.name = name
-        # The service ID.
+        # The ID of the service.
         self.service_id = service_id
 
     def validate(self):
@@ -338,11 +338,11 @@ class ListSecretReferencesResponseBodyDataItemsPluginConfig(DaraModel):
         plugin_class_id: str = None,
         plugin_id: str = None,
     ):
-        # The plug-in name.
+        # The name of the plugin.
         self.name = name
-        # The plug-in type ID.
+        # The ID of the plugin class.
         self.plugin_class_id = plugin_class_id
-        # The plug-in ID.
+        # The ID of the plugin.
         self.plugin_id = plugin_id
 
     def validate(self):

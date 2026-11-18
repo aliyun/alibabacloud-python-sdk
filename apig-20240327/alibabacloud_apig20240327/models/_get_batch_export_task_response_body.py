@@ -17,7 +17,7 @@ class GetBatchExportTaskResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
         # The response message.
         self.message = message
@@ -76,11 +76,11 @@ class GetBatchExportTaskResponseBodyData(DaraModel):
         task_type: str = None,
         total_count: int = None,
     ):
-        # The time when the task was created. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+        # The task creation time. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
         self.create_time = create_time
         # The error message.
         self.error_message = error_message
-        # The number of processed items.
+        # The processed count.
         self.processed_count = processed_count
         # The task result details.
         self.result = result
@@ -90,7 +90,7 @@ class GetBatchExportTaskResponseBodyData(DaraModel):
         self.task_id = task_id
         # The task type.
         self.task_type = task_type
-        # The total number of items.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -168,13 +168,13 @@ class GetBatchExportTaskResponseBodyDataResult(DaraModel):
     ):
         # The API type.
         self.api_type = api_type
-        # The list of APIs that failed to be processed.
+        # The list of failed APIs.
         self.failure_items = failure_items
         # The gateway instance ID.
         self.gateway_id = gateway_id
-        # The Base64-encoded ZIP file content. After the frontend decodes the content, it can directly trigger a browser download.
+        # The Base64-encoded content of the ZIP file. The frontend can decode the content to directly trigger a download in the browser.
         self.spec_content_base_64 = spec_content_base_64
-        # The list of APIs that were processed successfully.
+        # The list of successfully processed APIs.
         self.success_items = success_items
 
     def validate(self):
@@ -245,7 +245,7 @@ class GetBatchExportTaskResponseBodyDataResultSuccessItems(DaraModel):
         api_name: str = None,
         error_message: str = None,
     ):
-        # API ID。
+        # The API ID.
         self.api_id = api_id
         # The API name.
         self.api_name = api_name
@@ -291,7 +291,7 @@ class GetBatchExportTaskResponseBodyDataResultFailureItems(DaraModel):
         api_name: str = None,
         error_message: str = None,
     ):
-        # API ID。
+        # The API ID.
         self.api_id = api_id
         # The API name.
         self.api_name = api_name

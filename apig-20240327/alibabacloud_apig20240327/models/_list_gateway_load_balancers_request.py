@@ -14,13 +14,13 @@ class ListGatewayLoadBalancersRequest(DaraModel):
         type: str = None,
         vpc_id: str = None,
     ):
-        # Specifies whether to return all instances in the optional list mode. This parameter affects the pagination and filtering strategies.
+        # Specifies whether to return all instances in the optional list mode. This parameter affects the pagination and filtering policies.
         self.all = all
         # The exact load balancer instance ID used to query details by ID in the optional list mode.
         self.load_balancer_id = load_balancer_id
         # The network type filter.
         self.network = network
-        # Specifies whether to return the list of load balancers associated with the gateway. If set to true, the associated load balancers are returned based on database relationships. We recommend setting this parameter to true to retrieve the associated load balancers. If set to false or left empty, the optional list mode is used to call the SLB or NLB API and filter bindable instances. In the default mode where related is false, calling the SLB or NLB API may return a 500 error due to backend data issues in common scenarios.
+        # Specifies the mode switch. If set to true, the API returns the list of load balancers associated with the gateway by reading database relationships. If set to false or left empty, the API uses the optional list mode and calls the SLB or NLB POP API to filter bindable instances. We recommend that you set this parameter to true to retrieve the associated load balancers. In the default mode where related is set to false, the API calls the SLB or NLB POP API to filter bindable instances, which may return a 500 error in common scenarios due to backend data issues.
         self.related = related
         # The load balancer type filter.
         self.type = type

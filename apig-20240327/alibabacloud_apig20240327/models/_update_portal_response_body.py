@@ -67,7 +67,7 @@ class UpdatePortalResponseBodyData(DaraModel):
         self,
         portal_id: str = None,
     ):
-        # The portal ID. This is the ID of the updated portal and corresponds to the primary ID of the portal resource specified by the portalId path parameter.
+        # The portal ID, which is the ID of the updated portal. This ID corresponds to the primary ID of the portal resource specified by the portalId path parameter.
         self.portal_id = portal_id
 
     def validate(self):

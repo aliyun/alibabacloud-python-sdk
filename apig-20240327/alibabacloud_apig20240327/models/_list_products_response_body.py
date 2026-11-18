@@ -21,11 +21,11 @@ class ListProductsResponseBody(DaraModel):
         self.code = code
         # The response data.
         self.data = data
-        # The maximum number of entries returned in this request.
+        # The maximum number of entries returned in the current request.
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page.
+        # The cursor token for querying the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -162,31 +162,31 @@ class ListProductsResponseBodyDataContent(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The agent-related configurations of the API product. The agentAPIConfig member includes agentProtocols (the list of protocols supported by the agent) and routes (the list of routes).
+        # The agent-related configurations of the API product. The agentAPIConfig member includes the list of protocols supported by the agent (agentProtocols) and the list of routes (routes).
         self.agent_config = agent_config
-        # Specifies whether subscription requests for the API product are automatically approved. This corresponds to the AutoApprove property of the API product resource.
+        # Indicates whether subscription requests for the API product are automatically approved. This corresponds to the AutoApprove property of the Product resource.
         self.auto_approve = auto_approve
         # The list of product categories to which the API product belongs. The list element is named category.
         self.categories = categories
-        # The description of the API product, which corresponds to the Description property of the API product resource.
+        # The description of the API product. This corresponds to the Description property of the Product resource.
         self.description = description
-        # The documentation of the API product, which corresponds to the Document property of the API product resource.
+        # The documentation of the API product. This corresponds to the Document property of the Product resource.
         self.document = document
-        # The capability configurations of the API product. Currently, it only includes the modelFeature (model capabilities) member, which contains model, maxTokens, temperature, streaming, webSearch, enableThinking, and enableMultiModal.
+        # The capability configurations of the API product. Currently, this includes only the modelFeature member, which contains model, maxTokens, temperature, streaming, webSearch, enableThinking, and enableMultiModal.
         self.feature = feature
-        # The icon of the API product, which corresponds to the Icon property of the API product resource. It consists of two fields: the icon type (type) and the icon information (value).
+        # The icon of the API product. This corresponds to the Icon property of the Product resource and consists of two fields: icon type (type) and icon information (value).
         self.icon = icon
-        # The MCP-related configurations of the API product. The members include mcpServerName (MCP server name), tools, mcpServerConfig (path and domains), and meta (protocol).
+        # The MCP-related configurations of the API product. The members include the MCP server name (mcpServerName), tools, MCP server configurations (mcpServerConfig, which includes path and domains), and metadata (meta, which includes protocol).
         self.mcp_config = mcp_config
-        # The model API-related configurations of the API product. The modelAPIConfig member includes modelCategory (AI model category), aiProtocols (the list of AI API protocols), and routes (the list of routes).
+        # The model API-related configurations of the API product. The modelAPIConfig member includes the AI model category (modelCategory), the list of AI API protocols (aiProtocols), and the list of routes (routes).
         self.model_config = model_config
-        # The name of the API product, which corresponds to the Name property of the API product resource.
+        # The name of the API product. This corresponds to the Name property of the Product resource.
         self.name = name
-        # The ID of the API product, which is the primary ID of the API product resource. You can use this ID to locate the product in operations such as GetProduct, UpdateProduct, DeleteProduct, PublishProduct, SetProductCategories, and ListProductPublications.
+        # The ID of the API product. This is the primary ID of the Product resource. You can use this ID to locate the product in operations such as GetProduct, UpdateProduct, DeleteProduct, PublishProduct, SetProductCategories, and ListProductPublications.
         self.product_id = product_id
-        # The status of the API product, which corresponds to the Status property of the API product resource. Valid values: Pending, Ready, and Published.
+        # The status of the API product. This corresponds to the Status property of the Product resource. Valid values: Pending, Ready, Published.
         self.status = status
-        # The type of the API product, which corresponds to the Type property of the API product resource. The valid values are not declared in the API definition. Refer to the types displayed in the console.
+        # The type of the API product. This corresponds to the Type property of the Product resource. The valid values are not declared in the API definition. Refer to the types displayed in the console.
         self.type = type
 
     def validate(self):

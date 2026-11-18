@@ -113,8 +113,8 @@ class ListGatewayAuthorizableSecurityGroupsResponseBodyDataItems(DaraModel):
         # The security group ID.
         self.security_group_id = security_group_id
         # The security group type. Valid values:
-        # - Normal: Custom security group.
-        # - Enterprise: Advanced security group.
+        # - Normal: basic security group.
+        # - Enterprise: advanced security group.
         self.type = type
         # The VPC ID.
         self.vpc_id = vpc_id

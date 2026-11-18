@@ -17,7 +17,7 @@ class ListPluginClassesResponseBody(DaraModel):
     ):
         # The response status code.
         self.code = code
-        # The response data.
+        # The response result.
         self.data = data
         # The error message.
         self.message = message
@@ -142,27 +142,27 @@ class ListPluginClassesResponseBodyDataItems(DaraModel):
         type: str = None,
         version: str = None,
     ):
-        # The plug-in alias.
+        # The plugin alias.
         self.alias = alias
-        # The plug-in description.
+        # The plugin description.
         self.description = description
-        # Indicates whether the plug-in is installed.
+        # Indicates whether the plugin is installed.
         self.installed = installed
-        # The plug-in name.
+        # The plugin name.
         self.name = name
-        # The plug-in type ID.
+        # The plugin type ID.
         self.plugin_class_id = plugin_class_id
-        # The plug-in ID.
+        # The plugin ID.
         self.plugin_id = plugin_id
         # The publish status.
         self.publish_status = publish_status
-        # The plug-in source.
+        # The plugin source.
         self.source = source
-        # The minimum gateway version supported by the plug-in.
+        # The minimum gateway version supported by the plugin.
         self.supported_min_gateway_version = supported_min_gateway_version
-        # The plug-in type.
+        # The plugin type.
         self.type = type
-        # The plug-in version.
+        # The plugin version.
         self.version = version
 
     def validate(self):

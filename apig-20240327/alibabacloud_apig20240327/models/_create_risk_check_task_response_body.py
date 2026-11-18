@@ -67,7 +67,7 @@ class CreateRiskCheckTaskResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The risk detection task ID.
+        # The ID of the risk detection task.
         self.task_id = task_id
 
     def validate(self):

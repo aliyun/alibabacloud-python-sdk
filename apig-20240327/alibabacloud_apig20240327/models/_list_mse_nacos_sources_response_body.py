@@ -108,7 +108,7 @@ class ListMseNacosSourcesResponseBodyDataItems(DaraModel):
     ):
         # The Nacos instance ID.
         self.instance_id = instance_id
-        # The Nacos instance name.
+        # The name of the Nacos instance.
         self.name = name
 
     def validate(self):

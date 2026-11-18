@@ -9,7 +9,7 @@ class ListGatewayAuthorizableSecurityGroupsRequest(DaraModel):
         self,
         cs_cluster_id: str = None,
     ):
-        # Queries only the security groups associated with a Container Service cluster.
+        # The ID of the Container Service cluster. Only security groups associated with the cluster are queried.
         self.cs_cluster_id = cs_cluster_id
 
     def validate(self):

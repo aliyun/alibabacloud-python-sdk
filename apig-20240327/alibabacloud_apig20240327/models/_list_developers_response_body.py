@@ -25,7 +25,7 @@ class ListDevelopersResponseBody(DaraModel):
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next page. An empty value indicates that the last page has been reached.
+        # The pagination token for the next page. An empty value indicates that the last page is reached.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -153,9 +153,9 @@ class ListDevelopersResponseBodyDataContent(DaraModel):
         status: str = None,
         username: str = None,
     ):
-        # The ID of the developer. You can use this ID to identify the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
+        # The ID of the developer. You can use this ID to locate the developer in API operations such as SetHiMarketDeveloperStatus and DeleteHiMarketDeveloper.
         self.developer_id = developer_id
-        # The ID of the portal to which the developer belongs. You can use this ID to identify the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
+        # The ID of the portal to which the developer belongs. You can use this ID to locate the portal in API operations such as GetPortal, UpdatePortal, and DeletePortal.
         self.portal_id = portal_id
         # The status of the developer. Valid values: PENDING, APPROVED, and REJECTED.
         self.status = status

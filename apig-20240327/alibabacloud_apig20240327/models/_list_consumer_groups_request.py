@@ -12,13 +12,13 @@ class ListConsumerGroupsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The gateway type. Valid values: API or AI.
+        # The gateway type. Valid values: API and AI. Note: This parameter is actually required. If it is not provided, the API returns InvalidParameter.IsEmpty(400) "Parameter gatewayType should not be empty."
         self.gateway_type = gateway_type
         # The fuzzy match condition for the consumer group name.
         self.name_like = name_like
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
 
     def validate(self):

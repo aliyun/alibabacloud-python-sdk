@@ -12,9 +12,7 @@ class UpdateRiskNotificationRequest(DaraModel):
     ):
         # Specifies whether to mute notifications.
         self.is_mute = is_mute
-        # The risk item code. This parameter is required.
-        # 
-        # The value is a numeric string (for example, 60010010002 or 50010010009). Call GetRiskNotification to query the code of the current risk item.
+        # The risk item code in the request body. This parameter is required. The value is a numeric string (such as 60010010002 or 50010010009). You can call GetRiskNotification to query the code of the current risk item.
         self.risk_code = risk_code
 
     def validate(self):

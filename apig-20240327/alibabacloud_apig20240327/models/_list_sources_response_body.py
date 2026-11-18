@@ -150,9 +150,9 @@ class ListSourcesResponseBodyDataItems(DaraModel):
         self.k_8s_source_info = k_8s_source_info
         # The MSE Nacos source information.
         self.nacos_source_info = nacos_source_info
-        # The source name. If the source type is container service, the name is the container service cluster name. If the source type is MSE Nacos, the name is the Nacos instance name.
+        # The source name. If the source type is container service, the name is the name of the container service cluster. If the source is MSE Nacos, the name is the name of the Nacos instance.
         self.name = name
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The source ID.
         self.source_id = source_id
@@ -241,7 +241,7 @@ class ListSourcesResponseBodyDataItemsNacosSourceInfo(DaraModel):
     ):
         # The access address of the Nacos instance.
         self.address = address
-        # The NACOS registry cluster ID.
+        # The ID of the Nacos registry cluster.
         self.cluster_id = cluster_id
         # The Nacos instance ID.
         self.instance_id = instance_id
@@ -283,7 +283,7 @@ class ListSourcesResponseBodyDataItemsK8sSourceInfo(DaraModel):
         self,
         cluster_id: str = None,
     ):
-        # The container service cluster ID.
+        # The ID of the container service cluster.
         self.cluster_id = cluster_id
 
     def validate(self):

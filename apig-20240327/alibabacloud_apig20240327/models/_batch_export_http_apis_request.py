@@ -24,11 +24,11 @@ class BatchExportHttpApisRequest(DaraModel):
         # 
         # This parameter is required.
         self.api_type = api_type
-        # The export extension configuration. When this configuration is specified for a REST API, gatewayId is required. This configuration is required for batch export of HTTP APIs.
+        # The export extension configuration. The gatewayId parameter is required when this configuration is specified for REST APIs. This configuration is required for batch export of HTTP APIs.
         self.extension_config = extension_config
         # The export format. Valid values: json and yaml. Default value: yaml.
         self.format = format
-        # The gateway instance ID. This parameter is required when extensionConfig is specified for a REST API. This parameter is required for batch export of HTTP APIs.
+        # The gateway instance ID. This parameter is required when extensionConfig is specified for REST APIs. This parameter is also required for batch export of HTTP APIs.
         self.gateway_id = gateway_id
 
     def validate(self):

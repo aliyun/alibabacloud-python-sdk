@@ -17,19 +17,19 @@ class UpdateAiModelCardRequest(DaraModel):
         model_name: str = None,
         model_provider: str = None,
     ):
-        # The list of invocation paths supported by the model. Each item must include both path and type. The entire list is overwritten during an update.
+        # The list of invocation paths supported by the model. Each item must contain both path and type. During an update, the entire list is overwritten.
         self.available_paths = available_paths
-        # The credit billing information of the model. Only the fixed type is supported. The unit is Credits per million tokens. If not specified, all cost values default to 0.
+        # The credit billing information of the model. Currently, only the fixed type is supported, and the fee unit is Credits per million tokens. If not specified, all fees default to 0.
         self.credit = credit
-        # The model capability switches. Keys must be model capability names supported by the API gateway. Values are Boolean.
+        # The model capability switches. The keys must be model capability names supported by the API gateway, and the values are Boolean values.
         self.features = features
-        # The token limits and input/output modality information of the model.
+        # The token limits and input and output modality information of the model.
         self.meta = meta
-        # The model name. The name must be unique within the same AI gateway instance and the same model provider. Maximum length: 256 characters.
+        # The model name. It must be unique within the same AI gateway instance and model provider, and be up to 256 characters in length.
         # 
         # This parameter is required.
         self.model_name = model_name
-        # The model provider identifier. The value must reference an existing model provider in the target AI gateway instance. Maximum length: 128 characters.
+        # The model provider identifier. It must reference an existing model provider in the target AI gateway instance and be up to 128 characters in length.
         # 
         # This parameter is required.
         self.model_provider = model_provider
@@ -113,9 +113,9 @@ class UpdateAiModelCardRequestMeta(DaraModel):
         self.max_output_tokens = max_output_tokens
         # The maximum total number of context tokens supported by the model. The value must be greater than or equal to 0.
         self.max_tokens = max_tokens
-        # The list of input modalities supported by the model. The list contains up to 16 items, and each item must not be empty.
+        # The list of input modalities supported by the model. It can contain up to 16 items, and each item cannot be empty.
         self.supported_input_modalities = supported_input_modalities
-        # The list of output modalities supported by the model. The list contains up to 16 items, and each item must not be empty.
+        # The list of output modalities supported by the model. It can contain up to 16 items, and each item cannot be empty.
         self.supported_output_modalities = supported_output_modalities
 
     def validate(self):
@@ -170,13 +170,13 @@ class UpdateAiModelCardRequestCredit(DaraModel):
         output_cost: float = None,
         type: str = None,
     ):
-        # The cost of cache-hit tokens, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+        # The cache hit token fee, in Credits per million tokens. The value must be greater than or equal to 0. If not specified, the default value is 0.
         self.cache_cost = cache_cost
-        # The cost of input tokens, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+        # The input token fee, in Credits per million tokens. The value must be greater than or equal to 0. If not specified, the default value is 0.
         self.input_cost = input_cost
-        # The cost of output tokens, in Credits per million tokens. The value must be greater than or equal to 0. Default value: 0.
+        # The output token fee, in Credits per million tokens. The value must be greater than or equal to 0. If not specified, the default value is 0.
         self.output_cost = output_cost
-        # The billing type. Only fixed is supported. Default value: fixed.
+        # The billing type. Currently, only fixed is supported. If not specified, the default value is fixed.
         self.type = type
 
     def validate(self):
@@ -223,9 +223,9 @@ class UpdateAiModelCardRequestAvailablePaths(DaraModel):
         path: str = None,
         type: str = None,
     ):
-        # The model invocation path. Maximum length: 2048 characters.
+        # The model invocation path, which is up to 2,048 characters in length.
         self.path = path
-        # The protocol type of the path. Maximum length: 64 characters.
+        # The protocol type corresponding to the path, which is up to 64 characters in length.
         self.type = type
 
     def validate(self):

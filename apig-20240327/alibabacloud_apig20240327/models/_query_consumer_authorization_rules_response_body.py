@@ -175,7 +175,7 @@ class QueryConsumerAuthorizationRulesResponseBodyDataItems(DaraModel):
         self.expire_timestamp = expire_timestamp
         # The gateway information.
         self.gateway_info = gateway_info
-        # The principal type. Valid values: Consumer and ConsumerGroup.
+        # The type of the authorized principal. Valid values: Consumer and ConsumerGroup.
         self.principal_type = principal_type
         # The resource ID.
         self.resource_id = resource_id

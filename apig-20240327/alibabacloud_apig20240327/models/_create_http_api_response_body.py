@@ -68,7 +68,7 @@ class CreateHttpApiResponseBodyData(DaraModel):
         http_api_id: str = None,
         name: str = None,
     ):
-        # The HTTP API ID.
+        # The ID of the HTTP API.
         self.http_api_id = http_api_id
         # The API name.
         self.name = name

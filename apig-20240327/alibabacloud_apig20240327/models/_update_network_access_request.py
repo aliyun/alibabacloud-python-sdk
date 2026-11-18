@@ -9,13 +9,7 @@ class UpdateNetworkAccessRequest(DaraModel):
         self,
         network_access_type: str = None,
     ):
-        # The expected network access type after the change. For example, to add public network access to a private network gateway, set this parameter to private&pubnet. To remove private network access from a gateway that supports both public and private network access, set this parameter to pubnet.
-        # 
-        # Valid values:
-        # 
-        # - privatenet: private network only.
-        # - private&pubnet: public network and private network.
-        # - pubnet: public network only.
+        # The expected network access type after the modification. For example, if public network access is added to a private gateway, set this parameter to private&pubnet. If private network access is removed from a gateway with both public and private network access, set this parameter to pubnet.
         # 
         # This parameter is required.
         self.network_access_type = network_access_type

@@ -15,13 +15,13 @@ class ListConsumerGroupsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response status code. Ok is returned if the request is successful.
+        # The response status code. Ok is returned when the request is successful.
         self.code = code
         # The response data.
         self.data = data
         # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76,9 +76,9 @@ class ListConsumerGroupsResponseBodyData(DaraModel):
         self.items = items
         # The current page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
-        # The total number of consumer groups that match the specified conditions.
+        # The total number of consumer groups that meet the conditions.
         self.total_size = total_size
 
     def validate(self):
@@ -139,15 +139,15 @@ class ListConsumerGroupsResponseBodyDataItems(DaraModel):
     ):
         # The number of consumers in the consumer group.
         self.consumer_count = consumer_count
-        # The consumer group ID.
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
-        # The creation time of the consumer group, in Unix millisecond timestamp.
+        # The time when the consumer group was created. The value is a UNIX timestamp in milliseconds.
         self.create_timestamp = create_timestamp
-        # The consumer group description.
+        # The description of the consumer group.
         self.description = description
-        # The gateway type. Valid values: API or AI.
+        # The gateway type. Valid values: API and AI.
         self.gateway_type = gateway_type
-        # The consumer group name.
+        # The name of the consumer group.
         self.name = name
 
     def validate(self):

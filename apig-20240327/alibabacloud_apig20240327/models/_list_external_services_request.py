@@ -15,13 +15,13 @@ class ListExternalServicesRequest(DaraModel):
     ):
         # Specifies whether to return only services that have not been imported.
         self.importable_only = importable_only
-        # The maximum number of results to return. Valid range: (0, 100]. Default value: 10.
+        # The maximum number of entries to return. Valid values: (0, 100]. Default value: 10.
         self.limit = limit
-        # Fuzzy match by API name.
+        # The keyword for fuzzy match by operation name.
         self.name_like = name_like
-        # The workspace ID of the PAI-EAS service.
+        # The ID of the PAI-EAS workspace.
         self.pai_workspace_id = pai_workspace_id
-        # The service source type used to query services. This parameter is essentially required. If not provided, the API returns 400 InvalidParameter.WithValue. Valid values: SAE_K8S_SERVICE, PAI_EAS_SERVICE, CloudFlow, K8S, FC3, PAI_WORKSPACE, and MSE_NACOS.
+        # The source type of the service. This parameter is actually required. If it is not provided, the API returns a 400 InvalidParameter.WithValue error. Valid values: SAE_K8S_SERVICE, PAI_EAS_SERVICE, CloudFlow, K8S, FC3, PAI_WORKSPACE, and MSE_NACOS.
         self.source_type = source_type
 
     def validate(self):

@@ -9,7 +9,7 @@ class DescribeRegionsRequest(DaraModel):
         self,
         language: str = None,
     ):
-        # The language of the response. Valid values: zh, en.
+        # The language of the response. Valid values: zh and en.
         self.language = language
 
     def validate(self):

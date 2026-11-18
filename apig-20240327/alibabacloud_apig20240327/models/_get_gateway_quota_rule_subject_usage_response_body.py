@@ -81,25 +81,25 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyData(DaraModel):
         used_amount: int = None,
         used_amount_decimal: float = None,
     ):
-        # The total cached token consumption.
+        # The total number of cached tokens consumed.
         self.cached_amount = cached_amount
         # The exact total cached consumption. Decimals are supported in credit scenarios.
         self.cached_amount_decimal = cached_amount_decimal
-        # The pagination of consumption details.
+        # The paginated consumption details.
         self.details = details
-        # The total input token consumption.
+        # The total number of input tokens consumed.
         self.input_amount = input_amount
         # The exact total input consumption. Decimals are supported in credit scenarios.
         self.input_amount_decimal = input_amount_decimal
-        # The total output token consumption.
+        # The total number of output tokens consumed.
         self.output_amount = output_amount
         # The exact total output consumption. Decimals are supported in credit scenarios.
         self.output_amount_decimal = output_amount_decimal
         # Indicates whether the quota is exceeded.
         self.over_limit = over_limit
-        # The quota dimension. Valid values: token and credit.
+        # The quota dimension. Valid values: token or credit.
         self.quota_dimension = quota_dimension
-        # The subject type. Valid values: consumer and consumer_group.
+        # The subject type. Valid values: consumer or consumer_group.
         self.subject_type = subject_type
         # The total quota of the subject.
         self.total_quota = total_quota
@@ -274,31 +274,43 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         input_amount: int = None,
         input_amount_decimal: float = None,
         model: str = None,
+        model_card_id: str = None,
+        model_source_id: str = None,
+        model_source_name: str = None,
         output_amount: int = None,
         output_amount_decimal: float = None,
         request_id: str = None,
+        service_id: str = None,
         start_time: str = None,
         used_amount: int = None,
         used_amount_decimal: float = None,
     ):
-        # The cached token consumption.
+        # The number of cached tokens consumed.
         self.cached_amount = cached_amount
         # The exact cached consumption. Decimals are supported in credit scenarios.
         self.cached_amount_decimal = cached_amount_decimal
         # The name of the consumer.
         self.consumer = consumer
-        # The input token consumption.
+        # The number of input tokens consumed.
         self.input_amount = input_amount
         # The exact input consumption. Decimals are supported in credit scenarios.
         self.input_amount_decimal = input_amount_decimal
         # The name of the model.
         self.model = model
-        # The output token consumption.
+        # The ID of the executed model card.
+        self.model_card_id = model_card_id
+        # The ID of the model source at execution. This field is empty for legacy records.
+        self.model_source_id = model_source_id
+        # The snapshot of the model source name at execution.
+        self.model_source_name = model_source_name
+        # The number of output tokens consumed.
         self.output_amount = output_amount
         # The exact output consumption. Decimals are supported in credit scenarios.
         self.output_amount_decimal = output_amount_decimal
         # The request ID.
         self.request_id = request_id
+        # The ID of the executed service.
+        self.service_id = service_id
         # The consumption or request time in the YYYY-MM-DD format.
         self.start_time = start_time
         # The total consumption.
@@ -332,6 +344,15 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         if self.model is not None:
             result['model'] = self.model
 
+        if self.model_card_id is not None:
+            result['modelCardId'] = self.model_card_id
+
+        if self.model_source_id is not None:
+            result['modelSourceId'] = self.model_source_id
+
+        if self.model_source_name is not None:
+            result['modelSourceName'] = self.model_source_name
+
         if self.output_amount is not None:
             result['outputAmount'] = self.output_amount
 
@@ -340,6 +361,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
 
         if self.request_id is not None:
             result['requestId'] = self.request_id
+
+        if self.service_id is not None:
+            result['serviceId'] = self.service_id
 
         if self.start_time is not None:
             result['startTime'] = self.start_time
@@ -372,6 +396,15 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
         if m.get('model') is not None:
             self.model = m.get('model')
 
+        if m.get('modelCardId') is not None:
+            self.model_card_id = m.get('modelCardId')
+
+        if m.get('modelSourceId') is not None:
+            self.model_source_id = m.get('modelSourceId')
+
+        if m.get('modelSourceName') is not None:
+            self.model_source_name = m.get('modelSourceName')
+
         if m.get('outputAmount') is not None:
             self.output_amount = m.get('outputAmount')
 
@@ -380,6 +413,9 @@ class GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems(DaraModel):
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+
+        if m.get('serviceId') is not None:
+            self.service_id = m.get('serviceId')
 
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')

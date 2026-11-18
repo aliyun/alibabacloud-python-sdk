@@ -15,7 +15,7 @@ class BatchRemoveConsumerGroupConsumersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response status code. Returns Ok if the request succeeds.
+        # The response status code. Ok is returned if the request is successful.
         self.code = code
         # The response data.
         self.data = data

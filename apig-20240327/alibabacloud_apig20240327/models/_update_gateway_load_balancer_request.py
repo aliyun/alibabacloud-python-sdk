@@ -16,9 +16,9 @@ class UpdateGatewayLoadBalancerRequest(DaraModel):
     ):
         # The load balancer operation DTO.
         self.load_balancer_dto = load_balancer_dto
-        # The operation type. If this parameter is left empty or not specified, only the listening ports are updated (only the ports field is used).
+        # The operation type. If this parameter is empty or not specified, only the ports are updated based on the ports parameter.
         self.option = option
-        # The port list.
+        # The list of ports.
         self.ports = ports
 
     def validate(self):
@@ -70,7 +70,7 @@ class UpdateGatewayLoadBalancerRequestPorts(DaraModel):
         gateway_load_balancer_ports: List[main_models.UpdateGatewayLoadBalancerRequestPortsGatewayLoadBalancerPorts] = None,
         type: str = None,
     ):
-        # The listening ports.
+        # The listener ports.
         self.gateway_load_balancer_ports = gateway_load_balancer_ports
         # The load balancer type.
         self.type = type
@@ -115,7 +115,7 @@ class UpdateGatewayLoadBalancerRequestPortsGatewayLoadBalancerPorts(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
-        # The listening port. Valid values: 0 to 65535. A maximum of 50 custom ports can be configured in the console.
+        # The listener port. Valid values: 0 to 65535. A maximum of 50 custom ports can be configured on the frontend.
         self.port = port
         # The protocol.
         self.protocol = protocol
@@ -163,7 +163,7 @@ class UpdateGatewayLoadBalancerRequestLoadBalancerDTO(DaraModel):
         self.network_type = network_type
         # The service weight. Valid values: 0 to 100.
         self.service_weight = service_weight
-        # The backend server group bindings.
+        # The list of backend server group bindings.
         self.virtual_service_list = virtual_service_list
 
     def validate(self):
@@ -226,13 +226,13 @@ class UpdateGatewayLoadBalancerRequestLoadBalancerDTOVirtualServiceList(DaraMode
         virtual_service_group_id: str = None,
         virtual_service_group_name: str = None,
     ):
-        # The port number. Valid values: 1 to 65535. An error is returned if an invalid value is specified.
+        # The port number. Valid values: 1 to 65535. If the value is invalid, an error is reported.
         self.port = port
-        # The protocol. This parameter is required for CLB. If this parameter is not specified for CLB, the error message "protocol is missing for CLB" is returned. No backend enumeration validation is performed. Valid values: tcp, udp, http, https, and tls.
+        # The protocol. This parameter is required for CLB. If this parameter is missing for CLB, a "protocol is missing for CLB" error is reported. No backend enum validation is performed. Valid values: tcp, udp, http, https, and tls.
         self.protocol = protocol
-        # The CLB VServerGroupId or NLB ServerGroupId. This parameter is required. If a duplicate group ID is specified, an error is returned.
+        # The CLB VServerGroupId or NLB ServerGroupId. This parameter is required. If the same group ID is duplicated, a group conflict error is reported.
         self.virtual_service_group_id = virtual_service_group_id
-        # The group name. This parameter is required. If this parameter is not specified, the error message "virtual service parameter is missing" is returned.
+        # The group name. This parameter is required. If this parameter is missing, a "virtual service parameter is missing" error is reported.
         self.virtual_service_group_name = virtual_service_group_name
 
     def validate(self):

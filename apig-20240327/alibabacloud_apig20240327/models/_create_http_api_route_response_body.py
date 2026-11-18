@@ -19,7 +19,7 @@ class CreateHttpApiRouteResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +67,7 @@ class CreateHttpApiRouteResponseBodyData(DaraModel):
         self,
         route_id: str = None,
     ):
-        # The route ID.
+        # The ID of the route.
         self.route_id = route_id
 
     def validate(self):

@@ -23,25 +23,25 @@ class TransportCertificateInfo(DaraModel):
     ):
         # The signature or key algorithm.
         self.algorithm = algorithm
-        # The certificate identifier (the certificate ID under the APIG Alibaba Cloud account).
+        # The certificate identifier, which is the certificate ID under the APIG cloud account.
         self.cert_identifier = cert_identifier
         # The certificate name.
         self.cert_name = cert_name
-        # The match status between the certificate and the gateway instance domain names.
+        # The matching status between the certificate and the instance domain names.
         self.certificate_match_status = certificate_match_status
-        # The certificate Common Name (CN).
+        # The common name (CN) of the certificate.
         self.common_name = common_name
-        # The set of covered domain names parsed from CN and SAN (lowercase, deduplicated, may contain *. wildcards).
+        # The set of covered domain names parsed from the CN and SAN. The domain names are in lowercase, deduplicated, and may include wildcards such as *.
         self.covered_domains = covered_domains
         # The certificate issuer.
         self.issuer = issuer
-        # The gateway instance domain names matched by the covered domain names (ordered by instance domain name, deduplicated).
+        # The gateway instance domain names matched by the covered domain names. The order follows the instance domain names, and the results are deduplicated.
         self.matched_domains = matched_domains
-        # The expiration timestamp (Unix milliseconds, from the certificate afterDate).
+        # The expiration timestamp in UNIX milliseconds, which is obtained from the afterDate of the certificate.
         self.not_after_timestamp = not_after_timestamp
-        # The effective period UNIX timestamp (milliseconds, from the certificate beforeDate).
+        # The UNIX timestamp for the effective period in milliseconds, which is obtained from the beforeDate of the certificate.
         self.not_before_timestamp = not_before_timestamp
-        # The raw Subject Alternative Name (SAN) string (separated by commas, semicolons, or whitespace. Elements may have a DNS: prefix).
+        # The raw Subject Alternative Name (SAN) string separated by commas, semicolons, or spaces. Elements may include the DNS: prefix.
         self.sans = sans
 
     def validate(self):

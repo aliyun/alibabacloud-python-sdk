@@ -25,7 +25,7 @@ class ListBatchExportTasksResponseBody(DaraModel):
         self.max_results = max_results
         # The response message.
         self.message = message
-        # The pagination token for the next query. This value is empty when no more results are available.
+        # The starting token for the next query. This parameter is empty when no more results are available.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
@@ -90,11 +90,11 @@ class ListBatchExportTasksResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The list of tasks, returned in reverse chronological order with the most recent tasks first.
+        # The list of tasks. Tasks are returned in descending order of creation time, with the latest tasks first.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The total number of tasks.
         self.total_size = total_size
@@ -157,24 +157,19 @@ class ListBatchExportTasksResponseBodyDataItems(DaraModel):
         task_type: str = None,
         total_count: int = None,
     ):
-        # The task creation time. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+        # The creation time of the task. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
         self.create_time = create_time
         # The error message.
         self.error_message = error_message
-        # The gateway instance ID associated with the task.
+        # The instance ID of the gateway associated with the task.
         self.gateway_id = gateway_id
         # The number of processed items.
         self.processed_count = processed_count
-        # The task status. Valid values:
-        # - Pending: The task is pending.
-        # - Running: The task is running.
-        # - Success: All items succeeded.
-        # - PartialSuccess: Some items succeeded.
-        # - Failed: All items failed.
+        # The status of the task. Valid values: Pending, Running, Success, PartialSuccess, and Failed.
         self.status = status
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
-        # The task type.
+        # The type of the task.
         self.task_type = task_type
         # The total number of tasks.
         self.total_count = total_count

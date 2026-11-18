@@ -15,17 +15,17 @@ class CreateSecretRequest(DaraModel):
         secret_data: str = None,
         secret_source: str = None,
     ):
-        # The description of the key.
+        # The description of the secret.
         self.description = description
         # The gateway type.
         self.gateway_type = gateway_type
-        # The KMS key configuration information.
+        # The KMS key configuration. This parameter is required when secretSource is set to KMS. If this parameter is omitted, the API returns InvalidParameter.IsEmpty(400) with the message "Parameter kmsConfig should not be empty.". This parameter contains two sub-fields: kmsInstanceId (the KMS instance ID) and kmsKeyId (the KMS key ID).
         self.kms_config = kms_config
-        # The key name. The name can contain letters, digits, and underscores (_) and can be up to 64 characters in length.
+        # The name of the secret. The name can contain letters, digits, and underscores (_) and can be up to 64 characters in length.
         self.name = name
-        # The KMS credential value.
+        # The KMS secret value. This parameter is required. If this parameter is omitted, the API returns InvalidParameter.IsEmpty(400). Because secretSource only supports KMS, you must always provide this parameter in actual calls.
         self.secret_data = secret_data
-        # The key source.
+        # The source of the secret. Currently, only KMS is supported. If you specify other values such as MANUAL, the API returns InvalidParameter.WithValue(400). This parameter is required. If this parameter is not provided, the API also returns InvalidParameter.WithValue(400).
         self.secret_source = secret_source
 
     def validate(self):

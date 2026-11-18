@@ -84,7 +84,7 @@ class GetGatewayQuotaRuleResponseBodyData(DaraModel):
         timezone: str = None,
         window_alignment: str = None,
     ):
-        # The base timestamp of the period.
+        # The base timestamp of the period, in UNIX seconds.
         self.base_timestamp = base_timestamp
         # The number of consumers associated with the rule.
         self.consumer_count = consumer_count
