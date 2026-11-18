@@ -18,9 +18,7 @@ class DescribeDBInitializeVariableResponseBody(DaraModel):
         # The database type. Valid values:
         # 
         # - Oracle
-        # 
         # - PostgreSQL
-        # 
         # - MySQL
         self.dbtype = dbtype
         # The database version.

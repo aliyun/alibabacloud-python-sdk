@@ -1,3 +1,7 @@
+2026-11-18 Version: 9.5.0
+- Support API DescribeAgenticDBPerformance.
+
+
 2026-11-12 Version: 9.4.0
 - Support API ModifyApplicationSSL.
 - Update API CreateAgenticDBProject: add request parameters ZoneId.

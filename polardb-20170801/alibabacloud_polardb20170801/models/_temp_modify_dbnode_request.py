@@ -23,11 +23,12 @@ class TempModifyDBNodeRequest(DaraModel):
         resource_owner_id: int = None,
         restore_time: str = None,
     ):
-        # Specifies whether to automatically use coupons. Valid values:
-        # * true (default): Uses coupons.
-        # * false: Does not use coupons.
+        # Specifies whether to automatically use a coupon. Valid values:
+        # 
+        # - **true**: uses a coupon. This is the default value.
+        # - **false**: does not use a coupon.
         self.auto_use_coupon = auto_use_coupon
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token is case-sensitive and can contain only ASCII characters. The token can be up to 64 characters in length.
+        # The client token that ensures the idempotence of the request. The client generates the token to ensure uniqueness across different requests. The token is case-sensitive and can contain up to 64 ASCII characters.
         self.client_token = client_token
         # The cluster ID.
         # 
@@ -37,26 +38,26 @@ class TempModifyDBNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbnode = dbnode
-        # The change type. The value is fixed as **TempUpgrade**.
+        # The modification type. Set the value to **TempUpgrade**.
         # 
         # This parameter is required.
         self.modify_type = modify_type
         # The operation type. Valid values:
         # 
-        # - **Modify**: temporarily upgrades specifications.
-        # - **Add**: temporarily adds nodes.
+        # - **Modify**: temporarily upgrades the configuration.
+        # - **Add**: temporarily adds a node.
         # 
         # This parameter is required.
         self.operation_type = operation_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The coupon code. If this parameter is not specified, the default coupon is used.
+        # The coupon ID. If you do not specify this parameter, the default coupon is used.
         self.promotion_code = promotion_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The restore time for the temporary upgrade. Specify the time in the YYYY-MM-DD hh:mm:ss format.
+        # The time when the temporary upgrade is restored. Specify the time in the YYYY-MM-DD hh:mm:ss format.
         # 
-        # > The restore time cannot be earlier than 1 hour after the current time or later than 1 day before the cluster expiration time.
+        # > The restore time must be at least 1 hour later than the current time and at least 1 day earlier than the cluster expiration time.
         # 
         # This parameter is required.
         self.restore_time = restore_time
@@ -164,7 +165,7 @@ class TempModifyDBNodeRequestDBNode(DaraModel):
         # The specifications of the node to be upgraded or added.
         # 
         # > - When you add a node, the node specifications must be the same as those of the existing nodes.
-        # > - For the specifications of existing cluster nodes, see [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html).
+        # > - For more information about the specifications of existing nodes in the cluster, see [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html).
         self.target_class = target_class
         # The zone of the node to be added. The zone must be the same as that of the existing nodes.
         self.zone_id = zone_id

@@ -167,7 +167,7 @@ class DescribePolarClawAgentToolsResponseBodyGroups(DaraModel):
         self.id = id
         # The group name.
         self.label = label
-        # The source, which is core or a plugin ID.
+        # The source: core or plug-in ID.
         self.source = source
         # The list of tools.
         self.tools = tools

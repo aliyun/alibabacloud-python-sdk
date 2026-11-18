@@ -19,7 +19,7 @@ class DescribePolarClawAgentToolsRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # Specifies whether to include plugin tools.
+        # Specifies whether to include plug-in tools.
         self.include_plugins = include_plugins
 
     def validate(self):

@@ -27,9 +27,9 @@ class ModifyDBNodesParametersRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbnode_ids = dbnode_ids
-        # Specifies whether to execute the parameter modification and restart immediately or at a scheduled time. Valid values:
-        # - false: executes the task at a scheduled time. This is the default value.
-        # - true: executes the task immediately.
+        # Specifies whether to immediately execute or schedule the parameter modification and restart. Valid values:
+        # - false: schedules the task. This is the default value.
+        # - true: immediately executes the task.
         self.from_time_service = from_time_service
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -37,9 +37,9 @@ class ModifyDBNodesParametersRequest(DaraModel):
         self.parameter_group_id = parameter_group_id
         # The JSON string of parameters and their values. Only node-level parameters can be modified. You can call the DescribeDBClusterParameters operation and select parameters where IsNodeAvailable is set to 1 and IsModifiable is set to true. To modify cluster-level parameters, call the ModifyDBClusterParameters operation.
         self.parameters = parameters
-        # The latest time to start the scheduled task. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The latest time to start the scheduled task. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.planned_end_time = planned_end_time
-        # The earliest time to execute the scheduled kernel version upgrade task. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The earliest time to start the scheduled kernel version upgrade task within the specified time window. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

@@ -17559,6 +17559,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_agentic_dbcompute_clusters_with_options_async(request, runtime)
 
+    def describe_agentic_dbperformance_with_options(
+        self,
+        request: main_models.DescribeAgenticDBPerformanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAgenticDBPerformanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aggregate):
+            query['Aggregate'] = request.aggregate
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAgenticDBPerformance',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAgenticDBPerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_agentic_dbperformance_with_options_async(
+        self,
+        request: main_models.DescribeAgenticDBPerformanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAgenticDBPerformanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.aggregate):
+            query['Aggregate'] = request.aggregate
+        if not DaraCore.is_null(request.branch_id):
+            query['BranchId'] = request.branch_id
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.key):
+            query['Key'] = request.key
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAgenticDBPerformance',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAgenticDBPerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_agentic_dbperformance(
+        self,
+        request: main_models.DescribeAgenticDBPerformanceRequest,
+    ) -> main_models.DescribeAgenticDBPerformanceResponse:
+        runtime = RuntimeOptions()
+        return self.describe_agentic_dbperformance_with_options(request, runtime)
+
+    async def describe_agentic_dbperformance_async(
+        self,
+        request: main_models.DescribeAgenticDBPerformanceRequest,
+    ) -> main_models.DescribeAgenticDBPerformanceResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_agentic_dbperformance_with_options_async(request, runtime)
+
     def describe_agentic_dbproject_with_options(
         self,
         request: main_models.DescribeAgenticDBProjectRequest,

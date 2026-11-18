@@ -27,7 +27,7 @@ class ModifyDBNodeSccModeRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The SCC mode to set for the node.
+        # SCC
         # 
         # This parameter is required.
         self.scc_mode = scc_mode

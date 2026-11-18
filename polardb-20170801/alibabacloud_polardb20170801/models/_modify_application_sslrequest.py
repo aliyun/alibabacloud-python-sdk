@@ -13,13 +13,13 @@ class ModifyApplicationSSLRequest(DaraModel):
         key_pem: str = None,
         ssl_enabled: bool = None,
     ):
-        # The application ID.
+        # The ID of the application.
         # 
         # This parameter is required.
         self.application_id = application_id
         # The server certificate chain in PEM format. This parameter is optional.
         self.ca_pem = ca_pem
-        # The server certificate in PEM format. This parameter is provided when you use a bring-your-own (BYO) certificate. It must match KeyPem and override the instance connection domain name. This parameter is allowed only when CA SSL is enabled for the instance.
+        # The server certificate in PEM format. Provide this parameter when you bring your own (BYO) certificate. The certificate must match the KeyPem parameter and override the instance connection domain name. This parameter is allowed only when CA SSL is enabled for the instance.
         self.cert_pem = cert_pem
         # The server private key in PEM format. PKCS#1, PKCS#8, and EC SEC1 formats are supported.
         self.key_pem = key_pem
