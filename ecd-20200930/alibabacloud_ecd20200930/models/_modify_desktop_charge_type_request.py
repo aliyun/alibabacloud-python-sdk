@@ -19,31 +19,31 @@ class ModifyDesktopChargeTypeRequest(DaraModel):
         reseller_owner_uid: int = None,
         use_duration: int = None,
     ):
-        # Specifies whether to automatically pay for the order when you convert the billing method to subscription.
+        # Specifies whether to automatically pay for the order when you change the billing method to subscription.
         self.auto_pay = auto_pay
-        # The target billing method to which you want to convert.
+        # The target billing method.
         self.charge_type = charge_type
-        # The cloud desktop IDs. You can specify 1 to 20 IDs.
+        # The IDs of the cloud desktops. You can specify 1 to 20 IDs.
         # 
         # This parameter is required.
         self.desktop_id = desktop_id
-        # The subscription duration of the cloud desktop when you convert the billing method to subscription. The unit is specified by PeriodUnit. This parameter takes effect and is required only when ChargeType is set to PrePaid.
+        # The subscription duration of the cloud desktop when you change the billing method to subscription. The unit is specified by PeriodUnit. This parameter takes effect and is required only when ChargeType is set to PrePaid.
         # 
-        # - If PeriodUnit is set to Week, the valid value of this parameter is 1.
-        # - If PeriodUnit is set to Month, valid values of this parameter are 1, 2, 3, and 6.
-        # - If PeriodUnit is set to Year, valid values of this parameter are 1, 2, 3, 4, and 5.
+        # - If PeriodUnit is set to Week, the valid value is 1.
+        # - If PeriodUnit is set to Month, valid values for this parameter are 1, 2, 3, and 6.
+        # - If PeriodUnit is set to Year, valid values for this parameter are 1, 2, 3, 4, and 5.
         self.period = period
-        # The unit of the subscription duration when you convert the billing method to subscription.
+        # The unit of the subscription duration when you change the billing method to subscription.
         self.period_unit = period_unit
-        # The promotion ID.
+        # The ID of the promotion.
         self.promotion_id = promotion_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource ownership user in reseller pattern. You do not need to specify this parameter if you are not using reseller pattern.
+        # The user ID for resource ownership in the reseller mode. You do not need to specify this parameter in the non-reseller mode.
         self.reseller_owner_uid = reseller_owner_uid
-        # > This parameter is in invitational preview and is not publicly available.
+        # > This parameter is in closed beta and is not publicly available.
         self.use_duration = use_duration
 
     def validate(self):

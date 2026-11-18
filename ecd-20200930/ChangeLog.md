@@ -1,3 +1,14 @@
+2026-11-18 Version: 5.8.0
+- Support API ImportDrive.
+- Update API CreateDrive: add request parameters Platforms.
+- Update API DeleteDrive: add request parameters DomainId.
+- Update API DeleteDrive: add request parameters EndUserId.
+- Update API DeleteDrive: add request parameters OfficeSiteId.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.UpmDomainId.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.UpmStatus.
+- Update API ModifyOfficeSiteAttribute: add request parameters EnableUpm.
+
+
 2026-11-06 Version: 5.6.1
 - Generated python 2020-09-30 for ecd.
 

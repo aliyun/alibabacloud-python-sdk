@@ -22,7 +22,7 @@ class CreateDriveResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -93,14 +93,14 @@ class CreateDriveResponseBodyDrive(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # The storage resource description.
+        # The description of the storage resource.
         self.description = description
         # The storage resource ID.
         self.domain_id = domain_id
-        # The user-level storage resource ID.
+        # The ID of the user-level storage resource.
         self.drive_id = drive_id
-        # The external user-level storage resource ID.
-        # > This parameter is returned only when the storage resource type is PDS.
+        # The ID of the external user-level storage resource.
+        # > This parameter is returned only when the storage resource is PDS.
         self.external_drive_id = external_drive_id
         # The external user ID.
         self.external_user_id = external_user_id
@@ -108,11 +108,11 @@ class CreateDriveResponseBodyDrive(DaraModel):
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
-        # ID。
+        # The ID.
         self.id = id
-        # The storage resource name.
+        # The name of the storage resource.
         self.name = name
-        # > This parameter is deprecated.
+        # > **[Deprecated]**
         self.profile_roaming = profile_roaming
         # The status of the user-level storage resource.
         self.status = status

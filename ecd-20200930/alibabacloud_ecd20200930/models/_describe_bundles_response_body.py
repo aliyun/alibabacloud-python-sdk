@@ -14,9 +14,9 @@ class DescribeBundlesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The list of cloud computer templates.
+        # The list of cloud desktop templates.
         self.bundles = bundles
-        # The token for the next query. If NextToken is empty, no more results exist.
+        # The token used to start the next query. An empty NextToken indicates that no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -87,33 +87,33 @@ class DescribeBundlesResponseBodyBundles(DaraModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The cloud computer template ID.
+        # The cloud desktop template ID.
         self.bundle_id = bundle_id
-        # The name of the cloud computer template.
+        # The name of the cloud desktop template.
         self.bundle_name = bundle_name
-        # The cloud computer templatetype.
+        # The cloud desktop templatetype.
         self.bundle_type = bundle_type
-        # The time when the cloud computer template was created. The time is in the ISO 8601 standard in UTC.
+        # The creation time of the cloud desktop template. The time follows the ISO 8601 standard in UTC.
         self.creation_time = creation_time
-        # The data cloud disk type.
+        # The category of the data cloud disk.
         self.data_disk_category = data_disk_category
-        # The description of the cloud computer template.
+        # The description of the cloud desktop template.
         self.description = description
-        # The cloud computer specifications.
+        # The cloud desktop specifications.
         self.desktop_type = desktop_type
-        # The details of the cloud computer specifications.
+        # The details of the cloud desktop specifications.
         self.desktop_type_attribute = desktop_type_attribute
-        # The cloud computer instance family.
+        # The cloud desktop instance family.
         self.desktop_type_family = desktop_type_family
         # The disk information.
         self.disks = disks
         # The image ID.
         self.image_id = image_id
-        # The image name.
+        # The name of the image.
         self.image_name = image_name
-        # The image status.
+        # The status of the image.
         self.image_status = image_status
-        # The language of the image operating system.
+        # The operating system language of the image.
         self.language = language
         # The operating system type.
         self.os_type = os_type
@@ -123,11 +123,11 @@ class DescribeBundlesResponseBodyBundles(DaraModel):
         self.protocol_type = protocol_type
         # The session type.
         self.session_type = session_type
-        # The stock status. This parameter is returned when `CheckStock` is set to `True`.
+        # The stock status. This parameter is returned when CheckStock is set to True.
         self.stock_state = stock_state
-        # The system cloud disk type.
+        # The category of the system cloud disk.
         self.system_disk_category = system_disk_category
-        # Specifies whether to enable disk encryption.
+        # Specifies whether disk encryption is enabled.
         self.volume_encryption_enabled = volume_encryption_enabled
         # The ID of the KMS key used when disk encryption is enabled.
         self.volume_encryption_key = volume_encryption_key
@@ -296,11 +296,11 @@ class DescribeBundlesResponseBodyBundlesDisks(DaraModel):
         disk_size: int = None,
         disk_type: str = None,
     ):
-        # The disk performance level.
+        # The performance level of the disk.
         self.disk_performance_level = disk_performance_level
-        # The disk size. Unit: GiB.
+        # The size of the disk. Unit: GiB.
         self.disk_size = disk_size
-        # The disk type.
+        # The type of the disk.
         self.disk_type = disk_type
 
     def validate(self):

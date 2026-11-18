@@ -17,21 +17,21 @@ class CreateQosRuleRequest(DaraModel):
         qos_rule_name: str = None,
         upload: int = None,
     ):
-        # The list of cloud phones to associate.
+        # The IDs of the cloud phones to associate.
         self.auth_android_id = auth_android_id
-        # The ID of the cloud computer pool for which the authorization takes effect.
+        # The ID of the cloud computer pool where the authorization takes effect.
         self.auth_desktop_group_id = auth_desktop_group_id
-        # The list of cloud computer IDs to associate.
+        # The IDs of the cloud computers to associate.
         self.auth_desktop_id = auth_desktop_id
         # The peak downstream bandwidth. Unit: Mbit/s.
         # 
         # This parameter is required.
         self.download = download
-        # The premium bandwidth ID.
+        # The ID of the premium bandwidth.
         # 
         # This parameter is required.
         self.network_package_id = network_package_id
-        # The name of the rate limiting rule.
+        # The name of the bandwidth throttling rule.
         # 
         # This parameter is required.
         self.qos_rule_name = qos_rule_name

@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class CreateDriveRequest(DaraModel):
@@ -12,6 +14,7 @@ class CreateDriveRequest(DaraModel):
         domain_id: str = None,
         drive_name: str = None,
         external_domain_id: str = None,
+        platforms: List[str] = None,
         profile_roaming: bool = None,
         region_id: str = None,
         resource_type: str = None,
@@ -23,14 +26,16 @@ class CreateDriveRequest(DaraModel):
         # The description of the user-level storage resource.
         self.description = description
         # The storage resource ID.
-        # > You can call the DescribeDrives operation to obtain this value.
+        # > You can obtain this ID by calling the DescribeDrives operation.
         self.domain_id = domain_id
         # The name of the user-level storage resource.
         self.drive_name = drive_name
         # The external storage resource ID.
-        # > You can call the DescribeDrives operation to obtain this value.
+        # > You can obtain this ID by calling the DescribeDrives operation.
         self.external_domain_id = external_domain_id
-        # > This parameter is deprecated.
+        # The list of image platforms for which to initialize VHDs, such as WINDOWS_SERVER_2025. This parameter applies to UPM binding scenarios such as workspaces, desktop pools, and cloud application delivery groups. If you specify this parameter, the VHDs are initialized based on the specified platforms. If you do not specify this parameter, the original platform derivation rules for each scenario are used.
+        self.platforms = platforms
+        # > **[Deprecated]**
         self.profile_roaming = profile_roaming
         # The region ID.
         self.region_id = region_id
@@ -63,6 +68,9 @@ class CreateDriveRequest(DaraModel):
 
         if self.external_domain_id is not None:
             result['ExternalDomainId'] = self.external_domain_id
+
+        if self.platforms is not None:
+            result['Platforms'] = self.platforms
 
         if self.profile_roaming is not None:
             result['ProfileRoaming'] = self.profile_roaming
@@ -97,6 +105,9 @@ class CreateDriveRequest(DaraModel):
 
         if m.get('ExternalDomainId') is not None:
             self.external_domain_id = m.get('ExternalDomainId')
+
+        if m.get('Platforms') is not None:
+            self.platforms = m.get('Platforms')
 
         if m.get('ProfileRoaming') is not None:
             self.profile_roaming = m.get('ProfileRoaming')

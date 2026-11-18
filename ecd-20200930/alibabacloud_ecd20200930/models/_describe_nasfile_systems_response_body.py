@@ -14,9 +14,9 @@ class DescribeNASFileSystemsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The NAS file system information.
+        # The collection of NAS file system information.
         self.file_systems = file_systems
-        # The pagination token for the next query. An empty NextToken indicates that no more results are available.
+        # The token for the next query. An empty value indicates that no subsequent results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -92,53 +92,51 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         support_acl: bool = None,
         zone_id: str = None,
     ):
-        # Indicates whether operations on user directories are supported, such as adding users and deleting data.
+        # Specifies whether operations on the user directory are supported, such as adding users and deleting data.
         self.allow_operate_user_drive = allow_operate_user_drive
         # The list of cloud application delivery groups bound to the NAS file system that supports UPM.
         self.app_instance_groups = app_instance_groups
         # The bandwidth.
         self.bandwidth = bandwidth
         # The total capacity of the NAS file system. Unit: GiB.
-        # 
-        # - If the storage type is Capacity, the capacity is fixed at 10 PiB, which is 10485760 GiB.
-        # - If the storage type is Performance, the capacity is fixed at 1 PiB, which is 1048576 GiB.
+        # - If the storage type is Capacity, the capacity is fixed at 10 PiB, which is 10,485,760 GiB.
+        # - If the storage type is Performance, the capacity is fixed at 1 PiB, which is 1,048,576 GiB.
         self.capacity = capacity
-        # The time when the NAS file system was created. The time follows the ISO 8601 standard in the UTC time zone.
+        # The creation time of the NAS file system. The time is displayed in ISO 8601 format in UTC.
         self.create_time = create_time
         # The description of the NAS file system.
         self.description = description
         # The list of shared cloud desktops bound to the NAS file system that supports UPM.
         self.desktop_groups = desktop_groups
-        # Indicates whether disk encryption is enabled.
+        # Specifies whether disk encryption is enabled.
         self.encryption_enabled = encryption_enabled
-        # The ID of the NAS file system.
+        # The NAS file system ID.
         self.file_system_id = file_system_id
         # The name of the NAS file system.
         self.file_system_name = file_system_name
         # The status of the NAS file system.
         self.file_system_status = file_system_status
-        # The type of the NAS file system. Currently, only the general-purpose type is supported, which is `standard`.
+        # The type of the NAS file system. Only the standard type is supported.
         self.file_system_type = file_system_type
-        # The used capacity of the NAS file system. Unit: Byte.
+        # The used capacity of the NAS file system. Unit: bytes.
         self.metered_size = metered_size
         # The domain name of the mount target.
         self.mount_target_domain = mount_target_domain
-        # The status of the mount target.
+        # The mount target status.
         self.mount_target_status = mount_target_status
-        # **[Deprecated]** The ID of the office network.
+        # The office network ID. **[Deprecated]**
         self.office_site_id = office_site_id
-        # **[Deprecated]** The name of the office network.
+        # The office network name. **[Deprecated]**
         self.office_site_name = office_site_name
         # The list of office networks.
         self.office_sites = office_sites
         # The product type of the NAS file system.
         self.product_type = product_type
-        # Indicates whether the User Profile Management (UPM) feature is supported.
+        # Specifies whether the User Profile Management (UPM) feature is supported.
         self.profile_compatible = profile_compatible
         # The protocol type of the file system. Valid values:
-        # 
-        # - NFS: NFS protocol
-        # - SMB: SMB protocol
+        # - NFS: NFS protocol.
+        # - SMB: SMB protocol.
         self.protocol_type = protocol_type
         # The region ID.
         self.region_id = region_id
@@ -148,7 +146,7 @@ class DescribeNASFileSystemsResponseBodyFileSystems(DaraModel):
         self.size_quota = size_quota
         # The storage type of the NAS file system.
         self.storage_type = storage_type
-        # Indicates whether the SMB ACL feature is supported.
+        # Specifies whether the SMB ACL feature is supported.
         self.support_acl = support_acl
         # The zone.
         self.zone_id = zone_id
@@ -361,9 +359,9 @@ class DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites(DaraModel):
         office_site_id: str = None,
         office_site_name: str = None,
     ):
-        # The ID of the office network.
+        # The office network ID.
         self.office_site_id = office_site_id
-        # The name of the office network.
+        # The office network name.
         self.office_site_name = office_site_name
 
     def validate(self):
@@ -435,9 +433,9 @@ class DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups(DaraModel):
         app_instance_group_id: str = None,
         app_instance_group_name: str = None,
     ):
-        # The ID of the delivery group.
+        # The delivery group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the delivery group.
+        # The delivery group name.
         self.app_instance_group_name = app_instance_group_name
 
     def validate(self):

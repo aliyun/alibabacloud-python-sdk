@@ -25,32 +25,32 @@ class DescribeDesktopMetadataRequest(DaraModel):
         region_id: str = None,
         search_region_id: str = None,
     ):
-        # The time when the cloud computer was created. The time is in UTC and follows the format:
+        # The time when the cloud desktop was created. Specify the time in the UTC format:
         # `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
         self.creation_time_start = creation_time_start
-        # The list of cloud computer IDs.
+        # The list of cloud desktop IDs.
         self.desktop_ids = desktop_ids
         # The end user ID.
         self.end_user_id = end_user_id
-        # The shared cloud computer ID.
+        # The ID of the shared cloud desktop group.
         self.group_id = group_id
         # The hostname.
         self.host_name = host_name
         # The image ID.
         self.image_id = image_id
-        # Specifies whether the response includes cloud computers in shared cloud computer groups.
+        # Specifies whether the response includes cloud desktops in shared cloud desktop groups.
         self.include_desktop_group = include_desktop_group
-        # >This parameter is not yet available for use.
+        # >This parameter is not available.
         self.keyword = keyword
-        # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+        # The number of entries to return per page in a paged query. This parameter is used for paging. Maximum value: 100. Default value: 10.
         self.max_results = max_results
         # The private IP address.
         self.network_interface_ip = network_interface_ip
-        # The token for the next query. An empty value indicates that there are no more results.
+        # The pagination token for the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
         # The workspace ID.
         self.office_site_id = office_site_id
-        # The start time of operations performed on the cloud computer. The time is in UTC and follows the format:
+        # The start time of the operation on the cloud desktop. Time format:
         # `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
         self.operation_time_start = operation_time_start
         # The region ID.

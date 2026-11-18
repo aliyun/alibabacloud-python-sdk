@@ -14,9 +14,9 @@ class DescribeDesktopMetadataResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The cloud desktop details.
+        # The detailed information of the cloud desktops.
         self.desktops = desktops
-        # The token for the next query. An empty value indicates that there are no more results.
+        # The pagination token for the next query. If NextToken is empty, no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -84,39 +84,39 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         resource_group_name: str = None,
         start_time: str = None,
     ):
-        # The agents supported by the current cloud computer.
+        # The agents supported by the cloud desktop.
         self.agent_provider_list = agent_provider_list
-        # The billing type of the cloud desktop. Valid values:
-        # - PostPaid: pay-as-you-go.
-        # - PrePaid: subscription.
+        # The billing method of the cloud desktop. Valid values:
+        # - PostPaid: pay-as-you-go
+        # - PrePaid: subscription
         self.charge_type = charge_type
-        # The time when the cloud desktop was created. The time is in the ISO 8601 standard (UTC).
+        # The creation time of the cloud desktop. The time is displayed in the ISO 8601 standard in UTC.
         self.creation_time = creation_time
-        # The shared cloud computer ID.
+        # The ID of the shared cloud desktop group.
         self.desktop_group_id = desktop_group_id
         # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # The cloud desktop name.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The cloud desktop status. Valid values:
-        # - Stopped: stopped.
-        # - Starting: starting.
-        # - Rebuilding: rebuilding.
-        # - Running: running.
-        # - Stopping: stopping.
-        # - Expired: expired.
-        # - Deleted: deleted.
-        # - Pending: pending.
+        # The status of the cloud desktop. Valid values:
+        # - Stopped: The cloud desktop is stopped.
+        # - Starting: The cloud desktop is starting.
+        # - Rebuilding: The cloud desktop is being rebuilt.
+        # - Running: The cloud desktop is running.
+        # - Stopping: The cloud desktop is stopping.
+        # - Expired: The cloud desktop has expired.
+        # - Deleted: The cloud desktop is deleted.
+        # - Pending: The cloud desktop is pending.
         self.desktop_status = desktop_status
         # The cloud desktop specifications.
         self.desktop_type = desktop_type
-        # The time when the cloud desktop expires. This value is returned only for cloud desktops that use the subscription billable method. The time format follows the ISO 8601 standard (UTC).
+        # The time when the cloud desktop will expire. This parameter is returned only for cloud desktops whose Billable methods are subscription billing. The time format is ISO 8601 standard (UTC).
         self.expired_time = expired_time
         # The image ID.
         self.image_id = image_id
-        # The local name of the region to which the cloud desktop belongs.
+        # The local name of the region where the cloud desktop resides.
         self.local_name = local_name
-        # The management status of the cloud computer.
+        # The management status of the cloud desktop.
         self.management_flags = management_flags
         # The IP address of the member elastic network interface (ENI) of the instance.
         self.member_eni_ip = member_eni_ip
@@ -130,7 +130,7 @@ class DescribeDesktopMetadataResponseBodyDesktops(DaraModel):
         self.resource_group_id = resource_group_id
         # The resource group name.
         self.resource_group_name = resource_group_name
-        # The time when the cloud desktop was started. The time is in the ISO 8601 standard (UTC).
+        # The start time of the cloud desktop. The time is displayed in the ISO 8601 standard in UTC.
         self.start_time = start_time
 
     def validate(self):

@@ -19,34 +19,34 @@ class DescribeCenterPolicyListRequest(DaraModel):
         resource_type: str = None,
         scope: str = None,
     ):
-        # 學術代理功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether the academic proxy feature is enabled. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.academic_proxy = academic_proxy
-        # 業務類型。
+        # The business type.
         # 
         # This parameter is required.
         self.business_type = business_type
-        # 模型庫功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether the model library feature is enabled. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.model_library = model_library
-        # 分頁查詢時，當前頁的頁碼。    
-        # 預設值：1。
+        # The page number of the current page for paging.    
+        # Default value: 1.
         self.page_number = page_number
-        # 分頁查詢時，每頁最大行數。
+        # The maximum number of entries per page for paging.
         self.page_size = page_size
-        # 雲端電腦策略ID清單。
+        # The list of cloud desktop policy IDs.
         self.policy_group_id = policy_group_id
-        # 連接埠代理功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether the port proxy feature is enabled. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.port_proxy = port_proxy
-        # 資源類型。
+        # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # 雲端電腦策略的生效範圍。
+        # The effective scope of the cloud desktop policy.
         self.scope = scope
 
     def validate(self):

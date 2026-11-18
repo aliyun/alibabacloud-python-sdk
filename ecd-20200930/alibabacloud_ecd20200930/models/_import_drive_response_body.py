@@ -1,0 +1,72 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class ImportDriveResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        drive_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The modification result. A value of `success` indicates success. Otherwise, an error message is returned.
+        self.code = code
+        # The newly created or reused target drive ID. A success response only indicates that the import task has been accepted.
+        self.drive_id = drive_id
+        # The response message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+        # Indicates whether the operation is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.drive_id is not None:
+            result['DriveId'] = self.drive_id
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('DriveId') is not None:
+            self.drive_id = m.get('DriveId')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+

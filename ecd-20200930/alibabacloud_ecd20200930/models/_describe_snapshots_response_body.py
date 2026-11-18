@@ -14,11 +14,11 @@ class DescribeSnapshotsResponseBody(DaraModel):
         request_id: str = None,
         snapshots: List[main_models.DescribeSnapshotsResponseBodySnapshots] = None,
     ):
-        # The pagination token for the next query. If the value is empty, no more results are available.
+        # The token for the next query. An empty NextToken indicates that no more results are available.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The snapshots.
+        # The list of snapshots.
         self.snapshots = snapshots
 
     def validate(self):
@@ -90,19 +90,19 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         volume_encryption_enabled: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The time when the snapshot was created. The time is displayed in UTC and follows the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the `yyyy-mm-ddthh:mm:ssz` format.
+        # The time when the snapshot was created. The time is displayed in the `yyyy-mm-ddthh:mm:ssz` format based on the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC.
         self.creation_time = creation_time
         # The creator.
         self.creator = creator
-        # The time when the snapshot was created. The time is displayed in UTC+0 in the `yyyy-mm-ddthh:mm:ssz` format in accordance with the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard.
+        # The time when the snapshot was created. The time is displayed in the `yyyy-mm-ddthh:mm:ssz` format based on the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in UTC.
         self.deletion_time = deletion_time
-        # The description of the snapshot.
+        # The snapshot description.
         self.description = description
         # The ID of the cloud desktop to which the snapshot belongs.
         self.desktop_id = desktop_id
         # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The status of the cloud desktop.
+        # The cloud desktop status.
         self.desktop_status = desktop_status
         # The status of the disk to which the snapshot belongs.
         self.disk_status = disk_status
@@ -111,13 +111,13 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         self.jvs_id = jvs_id
         # The operating system type.
         self.os_type = os_type
-        # The creation progress of the snapshot. Unit: percentage.
+        # The progress of snapshot creation. Unit: %.
         self.progress = progress
         # The protocol type.
         self.protocol_type = protocol_type
         # The remaining time required to create the snapshot. Unit: seconds.
         # 
-        # > If `Status` is `PROGRESSING`, the value of `RemainTime` is `-1`, which indicates that the remaining time is being calculated.
+        # > If `Status` is `PROGRESSING`, a `RemainTime` value of `-1` indicates that the remaining time is being calculated.
         self.remain_time = remain_time
         # The ID of the restore point.
         self.restore_point_id = restore_point_id
@@ -125,13 +125,13 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         self.restore_point_name = restore_point_name
         # The ID of the snapshot.
         self.snapshot_id = snapshot_id
-        # The name of the snapshot.
+        # The snapshot name.
         self.snapshot_name = snapshot_name
         # The snapshot type.
         self.snapshot_type = snapshot_type
-        # The capacity of the source disk. Unit: GiB.
+        # The size of the source disk. Unit: GiB.
         self.source_disk_size = source_disk_size
-        # The type of the source disk.
+        # The source disk type.
         self.source_disk_type = source_disk_type
         # The snapshot status.
         self.status = status

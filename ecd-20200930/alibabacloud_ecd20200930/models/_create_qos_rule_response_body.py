@@ -10,7 +10,7 @@ class CreateQosRuleResponseBody(DaraModel):
         qos_rule_id: str = None,
         request_id: str = None,
     ):
-        # The rate limiting rule ID.
+        # The ID of the bandwidth throttling rule.
         self.qos_rule_id = qos_rule_id
         # The request ID.
         self.request_id = request_id

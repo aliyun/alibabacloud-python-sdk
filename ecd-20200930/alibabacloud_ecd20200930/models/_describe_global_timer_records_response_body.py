@@ -17,11 +17,11 @@ class DescribeGlobalTimerRecordsResponseBody(DaraModel):
     ):
         # The total number of entries.
         self.count = count
-        # The token for the next query. If NextToken is empty, no more results exist.
+        # The token used to start the next query. An empty NextToken indicates that no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The result information.
+        # The returned results.
         self.results = results
 
     def validate(self):
@@ -89,27 +89,27 @@ class DescribeGlobalTimerRecordsResponseBodyResults(DaraModel):
         timer_result: str = None,
         timer_type: str = None,
     ):
-        # The type of action that was performed.
+        # The type of action performed.
         self.action_type = action_type
         # The batch ID of the scheduled task execution.
         self.batch_id = batch_id
-        # The record information during the execution of the scheduled task.
+        # The record information generated during the execution of the scheduled task.
         self.context = context
         # The time when the record was created.
-        # The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+        # The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
-        # The cloud computer ID.
+        # The cloud desktop ID.
         self.desktop_id = desktop_id
-        # The name of the cloud computer.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The display result name.
+        # The display name of the result.
         self.display_result_name = display_result_name
         # The time when the task ended.
-        # The time follows the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+        # The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.finish_time = finish_time
         # The region ID.
         self.region_id = region_id
-        # The ID of the resource parent.
+        # The ID of the parent resource.
         self.resource_parent_id = resource_parent_id
         # Specifies whether the task can be retried.
         self.retryable = retryable

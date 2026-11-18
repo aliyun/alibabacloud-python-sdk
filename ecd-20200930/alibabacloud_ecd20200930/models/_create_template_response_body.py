@@ -14,9 +14,9 @@ class CreateTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The execution result. A value of `success` indicates success. Otherwise, an error message is returned.
+        # The execution result. A value of `success` indicates that the operation is successful. Otherwise, an error message is returned.
         self.code = code
-        # The template ID returned after the template is created.
+        # The ID of the created template.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code

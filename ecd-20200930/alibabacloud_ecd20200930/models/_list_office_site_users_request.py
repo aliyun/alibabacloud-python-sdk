@@ -17,26 +17,26 @@ class ListOfficeSiteUsersRequest(DaraModel):
         region_id: str = None,
         sort_type: str = None,
     ):
-        # > This parameter is not publicly available. You can only pass in `1` or leave it empty.
+        # > This field is not available for use. You can only set this parameter to `1` or leave it empty.
         self.assigned_info = assigned_info
-        # The fuzzy query character string.
+        # The fuzzy query string.
         self.filter = filter
-        # Specifies whether to return only users who are assigned cloud computers.
+        # Specifies whether to return only the users to which cloud desktops are assigned.
         self.include_assigned_user = include_assigned_user
         # The number of entries per page for a paged query.    
         # 
         # - Maximum value: 100.    
         # - Default value: 10.
         self.max_results = max_results
-        # The pagination token. Leave this parameter empty for the first request or if no more results exist. If more results exist, set this parameter to the NextToken value returned by the previous API call.
+        # The pagination token for the next query. Leave this parameter empty for the first query or when no subsequent query is required. For subsequent queries, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The specified AD domain organizational unit (OU).
+        # The specified organizational unit (OU) of the AD domain.
         self.oupath = oupath
         # The office network ID. Only office networks based on enterprise AD accounts are supported.
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id

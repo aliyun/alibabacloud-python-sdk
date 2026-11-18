@@ -36,75 +36,75 @@ class CreateTemplateRequest(DaraModel):
     ):
         # Specifies whether automatic payment is enabled for the subscription order.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the subscription cloud computer.
+        # Specifies whether to enable auto-renewal for the subscription shared cloud desktop.
         self.auto_renew = auto_renew
-        # > This parameter is not publicly available.
+        # > This parameter is not available for public use.
         self.biz_type = biz_type
-        # The billing method of the cloud computer.
+        # The billing method of the cloud desktop.
         self.charge_type = charge_type
-        # The data disk size and specification configurations.
+        # The size and specification configurations of the data cloud disk.
         self.data_disk_list = data_disk_list
-        # The default language set when the cloud computer starts. This parameter takes effect only when a system image is used to create the cloud computer.
+        # The default language configured when the cloud desktop starts. This parameter takes effect only when you use a system image to create a cloud desktop.
         self.default_language = default_language
         # The description of the template. The description must meet the following requirements:
         # 
-        # - The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
-        # - The description can contain Chinese characters, letters, digits, spaces, and special characters, and supports line breaks.
+        # - The description must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
+        # - The description can contain Chinese characters, English letters, digits, spaces, and special characters, and supports line breaks.
         self.description = description
-        # The cloud computer image ID. You can query the ID on the image management page. System images, custom images, and other image types are supported.
+        # The ID of the cloud desktop image. You can query the image ID on the Images page. System images and custom images are supported.
         self.image_id = image_id
-        # The instance name.
+        # The name of the instance.
         self.instance_name = instance_name
-        # The subscription duration of the subscription cloud computer. This parameter takes effect and is required only when `ChargeType` is set to `PrePaid`. The unit is specified by `PeriodUnit`.
-        # - If `PeriodUnit` is set to `Month`, valid values:
+        # The subscription duration of the shared cloud desktop. This parameter is required and takes effect only when the `ChargeType` parameter is set to `PrePaid`. The unit is specified by the `PeriodUnit` parameter.
+        # - If the `PeriodUnit` parameter is set to `Month`, valid values are:
         #     - 1
         #     - 2
         #     - 3
         #     - 6
-        # - If `PeriodUnit` is set to `Year`, valid values:
+        # - If the `PeriodUnit` parameter is set to `Year`, valid values are:
         #     - 1
         #     - 2
         #     - 3
         #     - 4
         #     - 5
         self.period = period
-        # The unit of the subscription billable methods duration.
+        # The time unit of the subscription Billable methods.
         self.period_unit = period_unit
         # The ID of the global policy.
         self.policy_group_id = policy_group_id
-        # Specifies whether to automatically switch to pay-as-you-go billing after the duration plan is used up.
+        # Specifies whether to automatically switch to the pay-as-you-go billing method after the usage duration plan is exhausted.
         self.post_paid_after_used_up = post_paid_after_used_up
         # The product type. Set the value to `CloudDesktop`.
         self.product_type = product_type
-        # The region-specific template configurations. Multiple configurations are supported. The configuration that matches the specific region is used.
+        # The region-specific template configurations. You can configure multiple regions. The configurations are matched based on the specific region when the template is used.
         # 
         # > You can configure up to 20 regions.
         self.region_config_list = region_config_list
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The cloud computer tags in key-value format. You can specify up to 20 tags.
+        # The tags of the cloud desktop. The tags are in key-value pairs. You can specify up to 20 tags.
         self.resource_tag_list = resource_tag_list
-        # The site configuration management.
+        # Site configuration management.
         self.site_config_list = site_config_list
-        # The system disk type.
+        # The type of the system cloud disk.
         # 
-        # > Only high frequency and graphics cloud computer specifications support ESSD disks.
+        # > Only cloud desktops with high clock speeds or GPU-accelerated specifications support ESSDs.
         self.system_disk_performance_level = system_disk_performance_level
-        # The system disk size. Unit: GiB. Valid values: 40 to 500, in increments of 10 GiB.
+        # The size of the system cloud disk. Unit: GiB. Valid values: 40 to 500. The value must be a multiple of 10.
         # 
-        # > The system disk size cannot be smaller than the size of the configured image.
+        # > The size of the system cloud disk cannot be smaller than the size of the configured image.
         self.system_disk_size = system_disk_size
         # The name of the template. The name must meet the following requirements:
         # 
-        # - The name must be 2 to 126 characters in length and can contain letters and Chinese characters.
-        # - The name must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
-        # - The name can contain letters, digits, Chinese characters, colons (:), underscores (_), or hyphens (-). Periods (.) are not supported.
+        # - The name must be 2 to 126 characters in length.
+        # - The name must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
+        # - The name can contain letters, digits, Chinese characters, colons (:), underscores (_), and hyphens (-), but cannot contain periods (.).
         # 
         # This parameter is required.
         self.template_name = template_name
-        # The configuration group ID.
+        # The ID of the configuration group.
         self.timer_group_id = timer_group_id
-        # The usage duration plan per user.
+        # The usage duration plan for a single user.
         self.user_duration = user_duration
 
     def validate(self):
@@ -300,7 +300,7 @@ class CreateTemplateRequestSiteConfigList(DaraModel):
         app_rule_id: str = None,
         site_id: str = None,
     ):
-        # The application control policy ID.
+        # The ID of the application control policy.
         self.app_rule_id = app_rule_id
         # The site ID.
         self.site_id = site_id
@@ -380,21 +380,21 @@ class CreateTemplateRequestRegionConfigList(DaraModel):
         volume_encryption_enable: bool = None,
         volume_encryption_key: str = None,
     ):
-        # The office network ID.
+        # The ID of the office network.
         self.office_site_id = office_site_id
-        # The region ID. Call [DescribeRegions](~~DescribeRegions~~) to query the list of regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by WUYING Workspace.
         self.region_id = region_id
-        # The cloud computer specification ID.
+        # The ID of the cloud desktop specification.
         self.resource_instance_type = resource_instance_type
-        # The automatic snapshot policy ID.
+        # The ID of the automatic snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
-        # The subnet ID.
+        # The ID of the subnet.
         self.subnet_id = subnet_id
-        # The virtual node pool, used in workstation scenarios.
+        # The ID of the virtual node pool. This parameter is used in workstation scenarios.
         self.virtual_node_pool_id = virtual_node_pool_id
-        # Specifies whether to enable disk encryption.
+        # Specifies whether to enable cloud disk encryption.
         self.volume_encryption_enable = volume_encryption_enable
-        # The KMS key ID used when disk encryption is enabled. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
+        # The ID of the Key Management Service (KMS) key used when cloud disk encryption is enabled. You can call the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation to obtain the key ID.
         self.volume_encryption_key = volume_encryption_key
 
     def validate(self):
@@ -465,11 +465,11 @@ class CreateTemplateRequestDataDiskList(DaraModel):
         performance_level: str = None,
         size: int = None,
     ):
-        # The performance level of the data disk. Default value: `AutoPL`.
+        # The performance level of the data cloud disk. Default value: `AutoPL`.
         self.performance_level = performance_level
-        # The data cloud disk size. Unit: GiB. Valid values: 40 to 2040, in increments of 10 GiB.
+        # The size of the data cloud disk. Unit: GiB. Valid values: 40 to 2040. The value must be a multiple of 10.
         # 
-        # >Notice: The larger the ESSD cloud disk capacity, the higher the available performance level (PL) (for example, PL2 is available for capacities of 460 GiB or more). Higher performance levels (PLs) incur higher costs. Select the ESSD cloud disk performance level (PL) based on your requirements.
+        # >Notice: The larger the capacity of a standard SSD, the higher the performance level (PL) that you can select. For example, you can select PL2 for a standard SSD with a capacity of 460 GiB or larger. A higher PL incurs higher costs. Select an appropriate PL based on your business requirements.</notice>
         self.size = size
 
     def validate(self):

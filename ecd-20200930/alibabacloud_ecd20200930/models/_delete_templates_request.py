@@ -14,7 +14,7 @@ class DeleteTemplatesRequest(DaraModel):
     ):
         # > This parameter is not publicly available.
         self.biz_type = biz_type
-        # The list of template IDs to delete.
+        # The IDs of the templates to delete.
         self.template_ids = template_ids
 
     def validate(self):

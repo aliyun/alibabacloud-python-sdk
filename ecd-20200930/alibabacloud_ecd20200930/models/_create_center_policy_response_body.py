@@ -12,7 +12,7 @@ class CreateCenterPolicyResponseBody(DaraModel):
     ):
         # The ID of the cloud desktop policy.
         self.policy_group_id = policy_group_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

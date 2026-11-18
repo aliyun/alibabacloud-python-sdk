@@ -10,7 +10,7 @@ class CreateOfficeSiteAcceleratorResponseBody(DaraModel):
         accelerator_id: str = None,
         request_id: str = None,
     ):
-        # The GA instance ID.
+        # The instance ID of the Alibaba Cloud Global Accelerator (GA).
         self.accelerator_id = accelerator_id
         # The request ID.
         self.request_id = request_id

@@ -16,9 +16,9 @@ class DescribeDesktopsInGroupRequest(DaraModel):
         pay_type: str = None,
         region_id: str = None,
     ):
-        # The end time of the custom time range.
+        # The end time of the custom time period.
         self.custom_end_time_period = custom_end_time_period
-        # The start time of the custom time range.
+        # The start time of the custom time period.
         self.custom_start_time_period = custom_start_time_period
         # The ID of the shared cloud desktop.
         # 
@@ -26,13 +26,15 @@ class DescribeDesktopsInGroupRequest(DaraModel):
         self.desktop_group_id = desktop_group_id
         # Specifies whether to ignore the deletion flag.
         self.ignore_deleted = ignore_deleted
-        # The number of entries per page for a paged query.
+        # The number of entries to return per page for paging in a paged query.
+        # - Default value: 10.
+        # - Maximum value: 100.
         self.max_results = max_results
-        # The pagination token for the next query. An empty value indicates that no more results exist.
+        # The pagination token used to start the next query. An empty value indicates that no more results are available.
         self.next_token = next_token
         # The billing method.
         self.pay_type = pay_type
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to obtain the list of regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id

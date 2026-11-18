@@ -34,7 +34,7 @@ class DescribeDesktopsInGroupResponseBody(DaraModel):
         self.post_paid_desktops = post_paid_desktops
         # The total number of pay-as-you-go cloud desktops.
         self.post_paid_desktops_count = post_paid_desktops_count
-        # The total billing amount of pay-as-you-go cloud desktops.
+        # The total billing amount for pay-as-you-go cloud desktops.
         self.post_paid_desktops_total_amount = post_paid_desktops_total_amount
         # The request ID.
         self.request_id = request_id
@@ -174,25 +174,23 @@ class DescribeDesktopsInGroupResponseBodyPostPaidDesktops(DaraModel):
         self.connection_status = connection_status
         # The retention duration. Unit: milliseconds.
         self.create_duration = create_duration
-        # The creation time.
-        # 
-        # The time is displayed in UTC in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
+        # The creation time. Time format: ISO 8601 standard in UTC (yyyy-MM-ddTHH:mm:ssZ).
         self.create_time = create_time
-        # The cloud desktop ID.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The cloud desktop name.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The cloud desktop status.
+        # The status of the cloud desktop.
         self.desktop_status = desktop_status
-        # The disk type.
+        # The cloud disk type.
         self.disk_type = disk_type
-        # The authorized user.
+        # The ID of the authorized user.
         self.end_user_id = end_user_id
-        # The list of currently connected user IDs. This value is empty if the desktop is not connected.
+        # The list of IDs of currently connected users. This list is empty if the cloud desktop is disconnected.
         self.end_user_ids = end_user_ids
-        # The authorized username.
+        # The username of the authorized user.
         self.end_user_name = end_user_name
-        # The list of current usernames. This value is empty if the desktop is not connected.
+        # The list of usernames of currently connected users. This list is empty if the cloud desktop is disconnected.
         self.end_user_names = end_user_names
         # The image version information.
         self.fota_version = fota_version
@@ -204,22 +202,21 @@ class DescribeDesktopsInGroupResponseBodyPostPaidDesktops(DaraModel):
         self.image_name = image_name
         # The management flag.
         self.management_flag = management_flag
-        # The collection of management flags.
+        # The set of management flags.
         self.management_flags = management_flags
-        # The IP address of the secondary ENI of the instance.
+        # The IP address of the member elastic network interface (ENI) of the instance.
         self.member_eni_ip = member_eni_ip
         # The operating system type.
         self.os_type = os_type
-        # The IP address of the primary ENI of the instance.
+        # The IP address of the primary elastic network interface (ENI) of the instance.
         self.primary_eni_ip = primary_eni_ip
         # The protocol type.
         self.protocol_type = protocol_type
-        # The release time.
-        # The time is displayed in UTC in the ISO 8601 standard format: yyyy-MM-ddTHH:mm:ssZ.
+        # The release time. Time format: ISO 8601 standard in UTC (yyyy-MM-ddTHH:mm:ssZ).
         self.release_time = release_time
-        # The reset time of the cloud desktop.
+        # The reset time of the cloud desktop. Time format: yyyy-MM-dd HH:mm:ss.
         self.reset_time = reset_time
-        # The system cloud disk size. Unit: GiB.
+        # The size of the system cloud disk. Unit: GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):
@@ -408,23 +405,23 @@ class DescribeDesktopsInGroupResponseBodyPaidDesktops(DaraModel):
     ):
         # The connection status.
         self.connection_status = connection_status
-        # The cloud desktop ID.
+        # The ID of the cloud desktop.
         self.desktop_id = desktop_id
-        # The cloud desktop name.
+        # The name of the cloud desktop.
         self.desktop_name = desktop_name
-        # The cloud desktop status.
+        # The status of the cloud desktop.
         self.desktop_status = desktop_status
-        # The disk type.
+        # The cloud disk type.
         self.disk_type = disk_type
-        # The authorized user.
+        # The ID of the authorized user.
         self.end_user_id = end_user_id
-        # The list of currently connected user IDs. This value is empty if the desktop is not connected.
+        # The list of IDs of currently connected users. This list is empty if the cloud desktop is disconnected.
         self.end_user_ids = end_user_ids
-        # The authorized username.
+        # The username of the authorized user.
         self.end_user_name = end_user_name
-        # The list of current usernames. This value is empty if the desktop is not connected.
+        # The list of usernames of currently connected users. This list is empty if the cloud desktop is disconnected.
         self.end_user_names = end_user_names
-        # The time when the cloud desktop expires. This value is returned only for cloud desktops that use the subscription billable methods. The time is in the ISO 8601 format (UTC).
+        # The time when the cloud desktop will expire. This value is returned only for cloud desktops whose Billable methods are subscription billing. Time format: ISO 8601 standard (UTC).
         self.expired_time = expired_time
         # The image version information.
         self.fota_version = fota_version
@@ -438,17 +435,17 @@ class DescribeDesktopsInGroupResponseBodyPaidDesktops(DaraModel):
         self.management_flag = management_flag
         # The list of management flags.
         self.management_flags = management_flags
-        # The IP address of the secondary ENI of the instance.
+        # The IP address of the member elastic network interface (ENI) of the instance.
         self.member_eni_ip = member_eni_ip
         # The operating system type.
         self.os_type = os_type
-        # The IP address of the primary ENI of the instance.
+        # The IP address of the primary elastic network interface (ENI) of the instance.
         self.primary_eni_ip = primary_eni_ip
         # The protocol type.
         self.protocol_type = protocol_type
-        # The reset time of the cloud desktop.
+        # The reset time of the cloud desktop. Time format: yyyy-MM-dd HH:mm:ss.
         self.reset_time = reset_time
-        # The system cloud disk size. Unit: GiB.
+        # The size of the system cloud disk. Unit: GiB.
         self.system_disk_size = system_disk_size
 
     def validate(self):

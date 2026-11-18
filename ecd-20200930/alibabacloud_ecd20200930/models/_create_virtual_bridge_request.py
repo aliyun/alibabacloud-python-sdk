@@ -29,26 +29,26 @@ class CreateVirtualBridgeRequest(DaraModel):
         self.office_site_id = office_site_id
         # The payment callback URL.
         self.paid_call_back_url = paid_call_back_url
-        # The subscription duration of the purchased resource. The unit is specified by `PeriodUnit`. This parameter is required and takes effect only when `ChargeType` is set to `PrePaid`.
+        # The subscription duration of the purchased resource. The unit is specified by `PeriodUnit`. This parameter takes effect and is required only when the `ChargeType` parameter is set to `PrePaid`.
         # 
         # - If `PeriodUnit` is set to `Month`, valid values:
         # 
         #      - 1
-        #      - 2
-        #      - 3
-        #      - 6
+        #     -  2
+        #     - 3
+        #     - 6
         # 
         # - If `PeriodUnit` is set to `Year`, valid values:
         # 
-        #      - 1
-        #      - 2
-        #      - 3
-        #      - 4
-        #      - 5
+        #     - 1
+        #     - 2
+        #     - 3
+        #     - 4
+        #     - 5
         self.period = period
-        # The billing time unit of the subscription Billable methods.
+        # The unit of the subscription billing duration for the subscription Billable methods.
         self.period_unit = period_unit
-        # The promotion ID.
+        # The ID of the promotion.
         self.promotion_id = promotion_id
         # The region ID. This feature is not region-specific. Set this parameter to cn-shanghai.
         # 

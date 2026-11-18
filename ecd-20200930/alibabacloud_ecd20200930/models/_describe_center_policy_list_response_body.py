@@ -14,11 +14,11 @@ class DescribeCenterPolicyListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 雲端電腦原則的詳細資訊。
+        # The details of the cloud computer policy.
         self.describe_policy_groups = describe_policy_groups
-        # 請求 ID。
+        # The request ID.
         self.request_id = request_id
-        # 查詢結果總數。
+        # The total number of query results.
         self.total_count = total_count
 
     def validate(self):
@@ -220,400 +220,400 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         wuying_keeper: str = None,
         wy_assistant: str = None,
     ):
-        # 學術代理功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether the academic proxy feature is enabled. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.academic_proxy = academic_proxy
-        # 使用者連線雲端電腦後是否具有管理員權限。
+        # Specifies whether the user has administrator permissions after connecting to the cloud computer.
         # 
-        # > 該功能處於定向邀測中，暫不對外開放。
+        # > This feature is in limited preview and is not publicly available.
         self.admin_access = admin_access
-        # 全螢幕模式下管理員鍵盤控制開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable administrator keyboard control in full-screen mode. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.admin_keyboard_on_full_screen = admin_keyboard_on_full_screen
-        # Windows 系統內管理員鍵盤控制開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable administrator keyboard control in Windows. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.admin_keyboard_on_windows = admin_keyboard_on_windows
-        # 管理員監控開關。取值範圍：
-        # - 1：開啟。
-        # - 0：關閉。
+        # Specifies whether to enable administrator monitoring. Valid values:
+        # - 1: Enabled.
+        # - 0: Disabled.
         self.admin_monitor = admin_monitor
-        # 是否開啟防截圖功能。
+        # Specifies whether to enable the screen capture prevention feature.
         self.app_content_protection = app_content_protection
-        # 防截圖行動裝置截圖自訂 OSS Bucket 清單。
+        # The list of custom OSS buckets for mobile screenshots in screen capture prevention.
         self.app_screenshot_buckets = app_screenshot_buckets
-        # 用戶端存取 IP 白名單。
+        # The IP address whitelist for client access.
         self.authorize_access_policy_rules = authorize_access_policy_rules
-        # 安全性群組管控規則清單。
+        # The list of security group control rules.
         self.authorize_security_policy_rules = authorize_security_policy_rules
-        # 用戶端自動重新連線開關。
+        # Specifies whether to enable automatic reconnection for the client.
         self.auto_reconnect = auto_reconnect
-        # 自動儲存行動裝置截圖。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to automatically save mobile screenshots. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.auto_save_app_screenshot = auto_save_app_screenshot
-        # 是否開啟本機攝影機重新導向。
+        # Specifies whether to enable local camera redirection.
         self.camera_redirect = camera_redirect
-        # 用戶端控制選單顯示開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to display the client control menu. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.client_control_menu = client_control_menu
-        # 用戶端建立自訂快照功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the feature that allows the client to create custom snapshots. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.client_create_snapshot = client_create_snapshot
-        # 用戶端休眠選單開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the hibernate option in the client menu. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.client_hibernate = client_hibernate
-        # 用戶端重新啟動選單開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the restart option in the client menu. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.client_restart = client_restart
-        # 用戶端關機選單開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the shutdown option in the client menu. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.client_shutdown = client_shutdown
-        # 登入方式管控規則。
+        # The logon method control rules.
         self.client_types = client_types
-        # 剪貼簿權限。
+        # The clipboard permissions.
         self.clipboard = clipboard
-        # 設計及 3D 應用場景選擇是否開啟色彩增強。
+        # Specifies whether color enhancement is enabled for design and 3D Common scenarios.
         self.color_enhancement = color_enhancement
-        # 本機驅動程式剪貼簿功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the local drive clipboard feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.cpd_drive_clipboard = cpd_drive_clipboard
-        # CPU 降頻時長，取值範圍： 30\\~120。單位：秒。
+        # The CPU downclocking duration. Valid values: 30 to 120. Unit: seconds.
         self.cpu_down_grade_duration = cpu_down_grade_duration
-        # CPU 負載保護開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable CPU load protection. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.cpu_overload = cpu_overload
-        # 處理程序名稱。
+        # The process name.
         self.cpu_processors = cpu_processors
-        # CPU 保護模式開關。
+        # Specifies whether to enable CPU protection mode.
         self.cpu_protected_mode = cpu_protected_mode
-        # CPU 整體使用率百分比，取值範圍： 70\\~90。
+        # The overall CPU utilization percentage. Valid values: 70 to 90.
         self.cpu_rate_limit = cpu_rate_limit
-        # CPU 整體取樣時長，取值範圍： 10\\~60。單位：秒。
+        # The overall CPU sampling duration. Valid values: 10 to 60. Unit: seconds.
         self.cpu_sample_duration = cpu_sample_duration
-        # CPU 單核心使用率百分比，取值範圍： 70\\~100。
+        # The single-core CPU utilization percentage. Valid values: 70 to 100.
         self.cpu_single_rate_limit = cpu_single_rate_limit
-        # 已關聯該原則的雲端電腦數量。
+        # The number of cloud computers associated with this policy.
         self.desktop_count = desktop_count
-        # 已關聯該原則的雲端電腦集區數量。
+        # The number of cloud computer pools associated with this policy.
         self.desktop_group_count = desktop_group_count
-        # 周邊裝置連線提示控制。
+        # The peripheral connection prompt control.
         self.device_connect_hint = device_connect_hint
-        # 裝置重新導向規則。
+        # The device redirection rules.
         self.device_redirects = device_redirects
-        # 自訂周邊裝置規則。
+        # The custom peripheral rules.
         self.device_rules = device_rules
-        # 工作階段斷線保留。
-        # > 僅適用於雲端應用程式原則。
+        # Specifies whether to retain the session after disconnection.
+        # > This applies only to cloud application policies.
         self.disconnect_keep_session = disconnect_keep_session
-        # 工作階段斷線保留時長。單位：秒。
-        # > 僅適用於雲端應用程式原則。
+        # The session retention duration after disconnection. Unit: seconds.
+        # > This applies only to cloud application policies.
         self.disconnect_keep_session_time = disconnect_keep_session_time
-        # 磁碟負載保護開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable disk load protection. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.disk_overload = disk_overload
-        # 顯示模式。
+        # The display mode.
         self.display_mode = display_mode
-        # 網域解析生效欄位。
+        # The effective field for domain name resolution.
         self.domain_register_value = domain_register_value
-        # 網域解析原則詳情。
+        # The details of the domain name resolution policy.
         self.domain_resolve_rule = domain_resolve_rule
-        # 網域解析原則開關。
+        # Specifies whether to enable the domain name resolution policy.
         self.domain_resolve_rule_type = domain_resolve_rule_type
-        # 使用者請求管理員協助。
+        # Specifies whether to allow users to request administrator assistance.
         self.end_user_apply_admin_coordinate = end_user_apply_admin_coordinate
-        # 關聯的終端使用者數量。
+        # The number of associated end users.
         self.end_user_count = end_user_count
-        # 同一個辦公網路下使用者共享雲端電腦。
+        # Specifies whether users in the same office network share cloud desktops.
         self.end_user_group_coordinate = end_user_group_coordinate
-        # 外接儲存裝置使用開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to allow the use of external storage devices. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.external_drive = external_drive
-        # 檔案遷移。
+        # The file migration setting.
         self.file_migrate = file_migrate
-        # 檔案傳輸功能的服務位址。
+        # The service address for the file transfer feature.
         self.file_transfer_address = file_transfer_address
-        # 單次傳入雲端電腦的檔案大小限制，需與傳入單位參數配合使用。
+        # The maximum size of a file that can be transferred to the cloud desktop in a single operation. This parameter must be used together with the transfer-in unit parameter.
         self.file_transfer_in_size = file_transfer_in_size
-        # 單次傳入雲端電腦的檔案大小限制單位。
+        # The unit for the maximum size of a file that can be transferred to the cloud desktop in a single operation.
         self.file_transfer_in_unit = file_transfer_in_unit
-        # 單次從雲端電腦傳出的檔案大小限制，需與傳出單位參數配合使用。
+        # The maximum size of a file that can be transferred from the cloud desktop in a single operation. This parameter must be used together with the transfer-out unit parameter.
         self.file_transfer_out_size = file_transfer_out_size
-        # 單次從雲端電腦傳出的檔案大小限制單位。
+        # The unit for the maximum size of a file that can be transferred from the cloud desktop in a single operation.
         self.file_transfer_out_unit = file_transfer_out_unit
-        # 檔案傳輸大小限制開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the file transfer size limit. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.file_transfer_size_limit = file_transfer_size_limit
-        # 檔案傳輸速度檔位。
+        # The file transfer speed level.
         self.file_transfer_speed = file_transfer_speed
-        # 用戶端設定的檔案傳輸速度生效位置。
+        # The location where the file transfer speed configured on the client takes effect.
         self.file_transfer_speed_location = file_transfer_speed_location
-        # 檔案同步開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable file synchronization. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.folder_sync = folder_sync
-        # 是否為圖形型規格雲端電腦開啟畫質策略。對雲端電腦效能和使用體驗要求較高時，例如專業設計場景下，建議開啟該策略。
+        # Specifies whether to enable the image quality policy for cloud desktops with graphics-optimized specifications. Enable this policy when high performance and user experience are required, such as in professional design scenarios.
         self.gpu_acceleration = gpu_acceleration
-        # 懸浮球設定訊息提示開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable message prompts for the floating ball configuration. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hover_config_msg = hover_config_msg
-        # 懸浮球休眠按鈕開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the hibernate button on the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hover_hibernate = hover_hibernate
-        # 懸浮球重新啟動按鈕開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the restart button on the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hover_restart = hover_restart
-        # 懸浮球關機按鈕開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the shutdown button on the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.hover_shutdown = hover_shutdown
-        # Web用戶端存取策略。
+        # The access policy for the web client.
         self.html_5access = html_5access
-        # Web用戶端檔案傳輸策略。
+        # The file transfer policy for the web client.
         self.html_5file_transfer = html_5file_transfer
-        # 網路通訊協定。
+        # The network communication protocol.
         self.internet_communication_protocol = internet_communication_protocol
-        # 網路印表機功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the network printer feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.internet_printer = internet_printer
-        # 懸浮球鍵盤控制開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable keyboard control on the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.keyboard_control = keyboard_control
-        # KMS 伺服器開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the KMS server. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.kms_server = kms_server
-        # KMS 伺服器設定，格式為位址:連接埠。
+        # The KMS server configuration in the address:port format.
         self.kms_server_config = kms_server_config
-        # 本機磁碟映射權限。
+        # The mapping permissions for local disks.
         self.local_drive = local_drive
-        # 雲端電腦由於客觀原因造成中斷連線的最大連線重試時間。取值範圍：30\\~7200，單位：秒。
+        # The maximum connection retry time for a cloud desktop that is disconnected due to objective reasons. Valid values: 30 to 7200. Unit: seconds.
         self.max_reconnect_time = max_reconnect_time
-        # 開啟 MCP 服務。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the MCP service. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.mcp_service = mcp_service
-        # 單個處理程序記憶體降頻時長，取值範圍： 30\\~120。單位：秒。
+        # The memory downgrade duration for a single process. Valid values: 30 to 120. Unit: seconds.
         self.memory_down_grade_duration = memory_down_grade_duration
-        # 記憶體負載保護開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable memory load protection. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.memory_overload = memory_overload
-        # 處理程序名稱。
+        # The process name.
         self.memory_processors = memory_processors
-        # 記憶體保護模式開關。
+        # Specifies whether to enable the memory protection mode.
         self.memory_protected_mode = memory_protected_mode
-        # 記憶體整體使用率百分比，取值範圍： 70\\~90。
+        # The overall memory usage percentage. Valid values: 70 to 90.
         self.memory_rate_limit = memory_rate_limit
-        # 記憶體整體取樣時長，取值範圍： 30\\~60。單位：秒。
+        # The overall memory sampling duration. Valid values: 30 to 60. Unit: seconds.
         self.memory_sample_duration = memory_sample_duration
-        # 單個處理程序記憶體使用率百分比，取值範圍： 30\\~60。
+        # The memory usage percentage for a single process. Valid values: 30 to 60.
         self.memory_single_rate_limit = memory_single_rate_limit
-        # 透過行動端（Android用戶端<props="china">和iOS用戶端）連線雲端電腦時，是否在雲端電腦懸浮球內提供重新啟動按鈕。
+        # Specifies whether to provide a restart button on the floating ball when you connect to a cloud desktop from a mobile client (Android client<props="china"> and iOS client).
         # 
-        # > 僅適用於V7.4或更高版本的行動端。
+        # > This parameter applies only to mobile clients of V7.4 or later.
         self.mobile_restart = mobile_restart
-        # 行動端Windows 安全性控制開關。
+        # Specifies whether to enable the Windows security control on the mobile client.
         self.mobile_safe_menu = mobile_safe_menu
-        # 透過行動端（Android用戶端<props="china">和iOS用戶端）連線雲端電腦時，是否在雲端電腦懸浮球內提供關機按鈕。
+        # Specifies whether to provide a shutdown button on the floating ball when you connect to a cloud desktop from a mobile client (Android client<props="china"> and iOS client).
         # 
-        # > 僅適用於V7.4或更高版本的行動端。
+        # > This parameter applies only to mobile clients of V7.4 or later.
         self.mobile_shutdown = mobile_shutdown
-        # 行動端無影管家開關。
+        # Specifies whether to enable WUYING Keeper on the mobile client.
         self.mobile_wuying_keeper = mobile_wuying_keeper
-        # 行動端小穎的開關。
+        # Specifies whether to enable the Wuying Assistant on the mobile client.
         self.mobile_wy_assistant = mobile_wy_assistant
-        # 模型庫功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether the model library feature is enabled. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.model_library = model_library
-        # 多螢幕顯示功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the multi-screen display feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.multi_screen = multi_screen
-        # 策略名稱。
+        # The policy name.
         self.name = name
-        # 網路重新導向。
+        # The network redirection setting.
         # 
-        # > 該功能處於定向邀測中，暫不對外開放。
+        # > This feature is in closed beta and is not publicly available.
         self.net_redirect = net_redirect
-        # 網路重新導向策略詳細資訊。
+        # The details of the network redirection policy.
         # 
-        # > 該功能處於定向邀測中，暫不對外開放。
+        # > This feature is in closed beta and is not publicly available.
         # >
         self.net_redirect_rule = net_redirect_rule
-        # 網路印表機功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the network printer feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.network_printer = network_printer
-        # 無操作中斷連線。
-        # > 僅適用於雲端應用策略。
+        # Specifies whether to disconnect the session when no operations are performed.
+        # > This parameter applies only to cloud application policies.
         self.no_operation_disconnect = no_operation_disconnect
-        # 無操作中斷連線時長。單位：秒。
-        # > 僅適用於雲端應用策略。
+        # The idle timeout period before disconnection. Unit: seconds.
+        # > This parameter applies only to cloud application policies.
         self.no_operation_disconnect_time = no_operation_disconnect_time
-        # 關聯的組織數量。
+        # The number of associated organizations.
         self.organization_count = organization_count
-        # 策略ID。
+        # The policy ID.
         self.policy_group_id = policy_group_id
-        # 策略類型。
+        # The policy type.
         self.policy_group_type = policy_group_type
-        # 雲端電腦策略狀態。
+        # The status of the cloud desktop policy.
         self.policy_status = policy_status
-        # 連接埠代理功能開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether the port proxy feature is enabled. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.port_proxy = port_proxy
-        # 印表機彈出視窗提示。取值範圍：
-        # - default：預設值。
-        # - off：關閉。
-        # - custom：自訂。
+        # The printer pop-up prompt setting. Valid values:
+        # - default: Default value.
+        # - off: Disabled.
+        # - custom: Custom.
         self.printer_alert = printer_alert
-        # 印表機彈出視窗提示內容。
+        # The content of the printer pop-up prompt.
         self.printer_alert_content = printer_alert_content
-        # 印表機彈出視窗提示標題。
+        # The title of the printer pop-up prompt.
         self.printer_alert_title = printer_alert_title
-        # 印表機重新導向策略。
+        # The printer redirection policy.
         self.printer_redirection = printer_redirection
-        # 設計及3D應用場景選擇是否開啟畫質增強。
+        # Specifies whether image quality enhancement is enabled for Common scenarios such as design and 3D.
         self.quality_enhancement = quality_enhancement
-        # 是否開啟自訂螢幕錄影。
+        # Specifies whether to enable custom screen recording.
         self.record_content = record_content
-        # 自訂螢幕錄影的檔案過期時間，預設30天。
+        # The expiration time for custom screen recording files. Default value: 30 days.
         self.record_content_expires = record_content_expires
-        # 螢幕錄影稽核中偵測到事件發生後螢幕錄影的時長。單位：分鐘。取值範圍：10\\~60。
+        # The screen recording duration after an event is detected in screen recording audit. Unit: minutes. Valid values: 10 to 60.
         self.record_event_duration = record_event_duration
-        # 螢幕錄影稽核中的檔案監控絕對路徑。
+        # The absolute paths for file monitoring in screen recording audit.
         self.record_event_file_paths = record_event_file_paths
-        # 螢幕錄影稽核中的登錄檔監控絕對路徑。
+        # The absolute paths for registry monitoring in screen recording audit.
         self.record_event_registers = record_event_registers
-        # 是否開啟螢幕錄影。
+        # Specifies whether to enable screen recording.
         self.recording = recording
-        # 錄製雲端電腦聲音選項。
+        # The option for recording the audio of the cloud desktop.
         self.recording_audio = recording_audio
-        # 螢幕錄影檔案閱覽時長，單位為分鐘。錄製檔案會根據您設定的時長自動分割並上傳至儲存空間，檔案達到300MB時優先滾動更新。
+        # The duration of each screen recording file, in minutes. Recorded files are automatically split and uploaded to the storage space based on the specified duration. If a file reaches 300 MB, it is overwritten on a rolling basis.
         self.recording_duration = recording_duration
-        # 螢幕錄影結束時間，取值：HH:MM:SS。只有Recording取值是period時，該傳回值有實際意義。
+        # The end time of screen recording. Format: HH:MM:SS. This parameter is valid only when the Recording parameter is set to period.
         self.recording_end_time = recording_end_time
-        # 螢幕錄影檔案的保留時間。取值範圍為1\\~180天。
+        # The retention period of screen recording files. Valid values: 1 to 180 days.
         self.recording_expires = recording_expires
-        # 螢幕錄影幀率。單位：FPS（幀/秒）。
+        # The frame rate of screen recording. Unit: FPS.
         self.recording_fps = recording_fps
-        # 螢幕錄影開始時間，取值：HH:MM:SS。只有Recording取值是period時，該傳回值有實際意義。
+        # The start time of screen recording. Format: HH:MM:SS. This parameter is valid only when the Recording parameter is set to period.
         self.recording_start_time = recording_start_time
-        # 提示終端客戶已開啟螢幕錄影。
+        # Specifies whether to notify the terminal user that screen recording is enabled.
         self.recording_user_notify = recording_user_notify
-        # 提示終端客戶開啟螢幕錄影的資訊。
+        # The notification message sent to the terminal user when screen recording is enabled.
         self.recording_user_notify_message = recording_user_notify_message
-        # 遠端協助鍵盤與滑鼠控制權限。
+        # The permissions for keyboard and mouse control during remote assistance.
         self.remote_coordinate = remote_coordinate
-        # 重置雲端電腦。
+        # The permission to reset the cloud desktop.
         self.reset_desktop = reset_desktop
-        # 螢幕解析度的 DPI 值。
+        # The DPI value of the screen resolution.
         self.resolution_dpi = resolution_dpi
-        # 解析度的高度。單位：畫素。
+        # The height of the resolution. Unit: pixels.
         self.resolution_height = resolution_height
-        # 解析度類型。
+        # The resolution type.
         self.resolution_model = resolution_model
-        # 解析度的寬度。單位：畫素。
+        # The width of the resolution. Unit: pixels.
         self.resolution_width = resolution_width
-        # 已關聯該策略的資源群組數量。
+        # The number of resource groups associated with the policy.
         self.resource_group_count = resource_group_count
-        # 安全中心快速鍵開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the shortcut key for the security center. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.safe_menu = safe_menu
-        # 策略的生效範圍。
+        # The effective scope of the policy.
         self.scope = scope
-        # 生效的 CIDR Block。
+        # The effective CIDR block.
         self.scope_value = scope_value
-        # 螢幕顯示模式。
+        # The screen display mode.
         self.screen_display_mode = screen_display_mode
-        # 日常辦公場景選擇，是否開啟平滑度增強。
+        # Specifies whether to enable smoothness enhancement for daily office scenarios.
         self.smooth_enhancement = smooth_enhancement
-        # 是否在雲端電腦懸浮球內提供狀態監控功能入口。
+        # Specifies whether to provide an entry for the status monitoring feature in the floating ball of the cloud desktop.
         self.status_monitor = status_monitor
-        # 串流模式適配場景。
+        # The applicable scenario for the streaming mode.
         self.streaming_mode = streaming_mode
-        # 目標幀率，取值範圍：10\\~60。
+        # The target frame rate. Valid values: 10 to 60.
         self.target_fps = target_fps
-        # 應用程式工作列。
-        # > 僅適用於雲端應用程式策略。
+        # The application taskbar.
+        # > This parameter applies only to cloud application policies.
         self.taskbar = taskbar
-        # 三螢幕開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the triple-screen feature. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.three_screen = three_screen
-        # USB 重新導向。
+        # The USB redirection setting.
         self.usb_redirect = usb_redirect
-        # USB 重新導向規則。
+        # The USB redirection rules.
         self.usb_supply_redirect_rule = usb_supply_redirect_rule
-        # 懸浮球使用時長顯示開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to display the usage duration in the floating ball. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.use_time = use_time
-        # 影片編碼平均位元率。單位：Kbps。取值範圍：1000\\~50000。
+        # The average video encoding bitrate. Unit: Kbps. Valid values: 1000 to 50000.
         self.video_enc_avg_kbps = video_enc_avg_kbps
-        # 影片編碼最大 QP，畫面最低品質，取值範圍：0\\~51。
+        # The maximum quantization parameter (QP) for video encoding, which indicates the lowest video quality. Valid values: 0 to 51.
         self.video_enc_max_qp = video_enc_max_qp
-        # 影片編碼最小 QP，最高品質。取值範圍：0\\~51。
+        # The minimum quantization parameter (QP) for video encoding, which indicates the highest video quality. Valid values: 0 to 51.
         self.video_enc_min_qp = video_enc_min_qp
-        # 影片編碼峰值位元率。單位：Kbps。取值範圍：1000~50000。
+        # The peak video encoding bitrate. Unit: Kbps. Valid values: 1000 to 50000.
         self.video_enc_peak_kbps = video_enc_peak_kbps
-        # 影片編碼策略。
+        # The video encoding policy.
         self.video_enc_policy = video_enc_policy
-        # 多媒體重新導向。
+        # The multimedia redirection setting.
         self.video_redirect = video_redirect
-        # 影像顯示品質策略。
+        # The image display quality policy.
         self.visual_quality = visual_quality
-        # 浮水印。
+        # The watermark setting.
         self.watermark = watermark
-        # 隱藏式浮水印防拍照功能。
+        # The blind watermark anti-camera capture feature.
         self.watermark_anti_cam = watermark_anti_cam
-        # 浮水印字型顏色。取值範圍：0\\~16777215。
+        # The font color of the watermark. Valid values: 0 to 16777215.
         self.watermark_color = watermark_color
-        # 若參數 `WatermarkType` 傳入 `custom`，則必須同時透過參數 `WatermarkCustomText` 傳入自訂文字的內容。
+        # If the WatermarkType parameter is set to custom, you must specify the custom text by using the WatermarkCustomText parameter.
         self.watermark_custom_text = watermark_custom_text
-        # 浮水印傾斜度。取值範圍：-10\\~-30。
+        # The tilt angle of the watermark. Valid values: -10 to -30.
         self.watermark_degree = watermark_degree
-        # 浮水印字型大小。取值範圍：10\\~20。
+        # The font size of the watermark. Valid values: 10 to 20.
         self.watermark_font_size = watermark_font_size
-        # 浮水印字型樣式。
+        # The font style of the watermark.
         self.watermark_font_style = watermark_font_style
-        # 隱藏式浮水印增強功能。
+        # The blind watermark enhancement feature.
         self.watermark_power = watermark_power
-        # 浮水印行數。
+        # The number of watermark rows.
         self.watermark_row_amount = watermark_row_amount
-        # 隱藏式浮水印安全優先規則。
+        # The security priority rule for blind watermarks.
         self.watermark_security = watermark_security
-        # 浮水印陰影效果開關。取值範圍：
-        # - on：開啟。
-        # - off：關閉。
+        # Specifies whether to enable the shadow effect for the watermark. Valid values:
+        # - on: Enabled.
+        # - off: Disabled.
         self.watermark_shadow = watermark_shadow
-        # 浮水印透明度，值越大，透明度越小。取值範圍：10\\~100。
+        # The transparency of the watermark. A larger value indicates lower transparency. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
-        # 浮水印類型。
+        # The watermark type.
         self.watermark_type = watermark_type
-        # 無影管家開關。
+        # Specifies whether to enable WUYING Keeper.
         self.wuying_keeper = wuying_keeper
-        # 是否在雲端電腦懸浮球內提供無影 AI 助手功能入口。
+        # Specifies whether to provide an entry for the WUYING AI Assistant feature in the floating ball of the cloud desktop.
         self.wy_assistant = wy_assistant
 
     def validate(self):
@@ -1649,15 +1649,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectR
         usb_rule_type: int = None,
         vendor_id: str = None,
     ):
-        # 規則描述。
+        # The description of the rule.
         self.description = description
-        # 產品 ID。
+        # The product ID.
         self.product_id = product_id
-        # USB 重新導向類型。
+        # The USB redirection type.
         self.usb_redirect_type = usb_redirect_type
-        # USB 重新導向規則類型。
+        # The type of the USB redirection rule.
         self.usb_rule_type = usb_rule_type
-        # 生產廠商 ID。參見 [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf)。
+        # The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -1711,11 +1711,11 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule(Da
         policy: str = None,
         rule_type: str = None,
     ):
-        # 網域。
+        # The domain name.
         self.domain = domain
-        # 重新導向策略。
+        # The redirection policy.
         self.policy = policy
-        # 規則類型。
+        # The rule type.
         self.rule_type = rule_type
 
     def validate(self):
@@ -1757,11 +1757,11 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDomainResolveRule(
         domain: str = None,
         policy: str = None,
     ):
-        # 原則描述。
+        # The policy description.
         self.description = description
-        # 網域。
+        # The domain name.
         self.domain = domain
-        # 解析原則。
+        # The resolution policy.
         self.policy = policy
 
     def validate(self):
@@ -1807,19 +1807,19 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules(DaraMo
         platforms: str = None,
         redirect_type: str = None,
     ):
-        # 裝置名稱。
+        # The device name.
         self.device_name = device_name
-        # 產品 ID。
+        # The product ID.
         self.device_pid = device_pid
-        # 周邊裝置類型。
+        # The peripheral type.
         self.device_type = device_type
-        # 生產廠商 ID。參見 [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf)。
+        # The vendor ID. For more information, see [Valid USB Vendor IDs (VIDs)](https://www.usb.org/sites/default/files/vendor_ids032322.pdf_1.pdf).
         self.device_vid = device_vid
-        # 連結最佳化指令。
+        # The link optimization command.
         self.opt_command = opt_command
-        # 裝置規則適用的平台類型。
+        # The platform types to which the device rules apply.
         self.platforms = platforms
-        # 重新導向類型。
+        # The redirection type.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -1884,9 +1884,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRedirects(Da
         device_type: str = None,
         redirect_type: str = None,
     ):
-        # 周邊裝置類型。
+        # The peripheral type.
         self.device_type = device_type
-        # 重新導向類型。
+        # The redirection type.
         self.redirect_type = redirect_type
 
     def validate(self):
@@ -1921,9 +1921,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes(DaraMo
         client_type: str = None,
         status: str = None,
     ):
-        # 用戶端類型。
+        # The client type.
         self.client_type = client_type
-        # 是否允許某一類型的用戶端登入雲端桌面。
+        # Specifies whether to allow a specific type of client to log on to the cloud desktop.
         self.status = status
 
     def validate(self):
@@ -1963,19 +1963,19 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityP
         priority: str = None,
         type: str = None,
     ):
-        # 安全性群組管控規則的對象，CIDR 格式的 IPv4 位址區段。
+        # The target of the security group control rule. The value must be an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
-        # 安全性群組管控規則的描述資訊。
+        # The description of the security group control rule.
         self.description = description
-        # 安全性群組管控規則的通訊協定類型。
+        # The protocol type of the security group control rule.
         self.ip_protocol = ip_protocol
-        # 安全性群組管控規則的授權原則。
+        # The authorization policy of the security group control rule.
         self.policy = policy
-        # 安全性群組管控規則的連接埠範圍。
+        # The port range of the security group control rule.
         self.port_range = port_range
-        # 安全性群組管控規則的優先順序，數字越小，代表優先順序越高。
+        # The priority of the security group control rule. A smaller value indicates a higher priority.
         self.priority = priority
-        # 安全性群組管控規則的規則方向。
+        # The direction of the security group control rule.
         self.type = type
 
     def validate(self):
@@ -2040,9 +2040,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPol
         cidr_ip: str = None,
         description: str = None,
     ):
-        # 用戶端存取 IP 位址區段。格式為 CIDR 格式的 IPv4 位址區段。
+        # The CIDR block for client access. The value must be an IPv4 CIDR block.
         self.cidr_ip = cidr_ip
-        # 用戶端存取 IP 位址區段備註資訊。
+        # The description of the CIDR block for client access.
         self.description = description
 
     def validate(self):
@@ -2077,9 +2077,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAppScreenshotBucke
         bucket_name: str = None,
         bucket_region_id: str = None,
     ):
-        # Bucket 名稱。
+        # The name of the bucket.
         self.bucket_name = bucket_name
-        # 使用者 OSS Bucket 所在地域，必須與 Bucket 的實際地域一致。
+        # The region where the user\\"s OSS bucket is located. It must be the same as the actual region of the bucket.
         self.bucket_region_id = bucket_region_id
 
     def validate(self):

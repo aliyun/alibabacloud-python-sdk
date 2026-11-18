@@ -16,17 +16,16 @@ class CreateAndBindNasFileSystemRequest(DaraModel):
         file_system_name: str = None,
         office_site_id: str = None,
         region_id: str = None,
+        size_quota: int = None,
         storage_type: str = None,
     ):
         # The description of the NAS file system.
         self.description = description
-        # The ID of the shared cloud computer.
-        # 
-        # This parameter is required.
+        # The ID of the shared cloud desktop.
         self.desktop_group_id = desktop_group_id
-        # Specifies whether the file system uses a KMS-managed key to encrypt data at rest. Encrypted data does not need to be decrypted during read and write operations.
+        # Specifies whether the file system uses Key Management Service (KMS) managed keys to encrypt data at rest. No decryption is required when reading or writing encrypted data.
         # 
-        # > NAS-managed keys are supported when `FileSystemType` is set to `standard` or `extreme`. User-managed keys are supported when `FileSystemType` is set to `extreme`.
+        # > When `FileSystemType` is set to `standard` or `extreme`, NAS-managed keys are supported. When `FileSystemType` is set to `extreme`, user-managed keys are supported.
         self.encrypt_type = encrypt_type
         # The list of user IDs.
         self.end_user_ids = end_user_ids
@@ -38,11 +37,13 @@ class CreateAndBindNasFileSystemRequest(DaraModel):
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The storage specification type of the NAS file system.
+        # The user VHD capacity tier in GiB. Valid values: 5, 20, 50, 100, and 500. Default value: 500.
+        self.size_quota = size_quota
+        # The storage type of the NAS file system.
         # 
         # This parameter is required.
         self.storage_type = storage_type
@@ -76,6 +77,9 @@ class CreateAndBindNasFileSystemRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.size_quota is not None:
+            result['SizeQuota'] = self.size_quota
+
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
 
@@ -103,6 +107,9 @@ class CreateAndBindNasFileSystemRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('SizeQuota') is not None:
+            self.size_quota = m.get('SizeQuota')
 
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')

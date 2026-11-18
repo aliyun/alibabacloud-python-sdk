@@ -2800,6 +2800,8 @@ class Client(OpenApiClient):
             query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.size_quota):
+            query['SizeQuota'] = request.size_quota
         if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
         req = open_api_util_models.OpenApiRequest(
@@ -2842,6 +2844,8 @@ class Client(OpenApiClient):
             query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.size_quota):
+            query['SizeQuota'] = request.size_quota
         if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
         req = open_api_util_models.OpenApiRequest(
@@ -5226,6 +5230,8 @@ class Client(OpenApiClient):
             query['DriveName'] = request.drive_name
         if not DaraCore.is_null(request.external_domain_id):
             query['ExternalDomainId'] = request.external_domain_id
+        if not DaraCore.is_null(request.platforms):
+            query['Platforms'] = request.platforms
         if not DaraCore.is_null(request.profile_roaming):
             query['ProfileRoaming'] = request.profile_roaming
         if not DaraCore.is_null(request.region_id):
@@ -5272,6 +5278,8 @@ class Client(OpenApiClient):
             query['DriveName'] = request.drive_name
         if not DaraCore.is_null(request.external_domain_id):
             query['ExternalDomainId'] = request.external_domain_id
+        if not DaraCore.is_null(request.platforms):
+            query['Platforms'] = request.platforms
         if not DaraCore.is_null(request.profile_roaming):
             query['ProfileRoaming'] = request.profile_roaming
         if not DaraCore.is_null(request.region_id):
@@ -7725,6 +7733,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_cloud_drive_groups_with_options_async(request, runtime)
 
+    def delete_cloud_drive_services_with_options(
+        self,
+        request: main_models.DeleteCloudDriveServicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloudDriveServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cds_id):
+            query['CdsId'] = request.cds_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCloudDriveServices',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCloudDriveServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_drive_services_with_options_async(
+        self,
+        request: main_models.DeleteCloudDriveServicesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloudDriveServicesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cds_id):
+            query['CdsId'] = request.cds_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCloudDriveServices',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCloudDriveServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_drive_services(
+        self,
+        request: main_models.DeleteCloudDriveServicesRequest,
+    ) -> main_models.DeleteCloudDriveServicesResponse:
+        runtime = RuntimeOptions()
+        return self.delete_cloud_drive_services_with_options(request, runtime)
+
+    async def delete_cloud_drive_services_async(
+        self,
+        request: main_models.DeleteCloudDriveServicesRequest,
+    ) -> main_models.DeleteCloudDriveServicesResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_cloud_drive_services_with_options_async(request, runtime)
+
     def delete_cloud_drive_users_with_options(
         self,
         request: main_models.DeleteCloudDriveUsersRequest,
@@ -8196,8 +8278,14 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDriveResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.domain_id):
+            query['DomainId'] = request.domain_id
         if not DaraCore.is_null(request.drive_id):
             query['DriveId'] = request.drive_id
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -8226,8 +8314,14 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDriveResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.domain_id):
+            query['DomainId'] = request.domain_id
         if not DaraCore.is_null(request.drive_id):
             query['DriveId'] = request.drive_id
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -19511,6 +19605,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.hibernate_desktops_with_options_async(request, runtime)
 
+    def import_drive_with_options(
+        self,
+        request: main_models.ImportDriveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportDriveResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.force_update):
+            query['ForceUpdate'] = request.force_update
+        if not DaraCore.is_null(request.mount_url):
+            query['MountUrl'] = request.mount_url
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportDrive',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportDriveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_drive_with_options_async(
+        self,
+        request: main_models.ImportDriveRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImportDriveResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_id):
+            query['DomainId'] = request.domain_id
+        if not DaraCore.is_null(request.end_user_id):
+            query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.force_update):
+            query['ForceUpdate'] = request.force_update
+        if not DaraCore.is_null(request.mount_url):
+            query['MountUrl'] = request.mount_url
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ImportDrive',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ImportDriveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_drive(
+        self,
+        request: main_models.ImportDriveRequest,
+    ) -> main_models.ImportDriveResponse:
+        runtime = RuntimeOptions()
+        return self.import_drive_with_options(request, runtime)
+
+    async def import_drive_async(
+        self,
+        request: main_models.ImportDriveRequest,
+    ) -> main_models.ImportDriveResponse:
+        runtime = RuntimeOptions()
+        return await self.import_drive_with_options_async(request, runtime)
+
     def list_cds_files_with_options(
         self,
         tmp_req: main_models.ListCdsFilesRequest,
@@ -24212,6 +24396,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not DaraCore.is_null(request.enable_admin_access):
             query['EnableAdminAccess'] = request.enable_admin_access
+        if not DaraCore.is_null(request.enable_upm):
+            query['EnableUpm'] = request.enable_upm
         if not DaraCore.is_null(request.need_verify_login_risk):
             query['NeedVerifyLoginRisk'] = request.need_verify_login_risk
         if not DaraCore.is_null(request.need_verify_zero_device):
@@ -24264,6 +24450,8 @@ class Client(OpenApiClient):
             query['DomainName'] = request.domain_name
         if not DaraCore.is_null(request.enable_admin_access):
             query['EnableAdminAccess'] = request.enable_admin_access
+        if not DaraCore.is_null(request.enable_upm):
+            query['EnableUpm'] = request.enable_upm
         if not DaraCore.is_null(request.need_verify_login_risk):
             query['NeedVerifyLoginRisk'] = request.need_verify_login_risk
         if not DaraCore.is_null(request.need_verify_zero_device):

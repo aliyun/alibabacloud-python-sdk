@@ -10,7 +10,7 @@ class CloneCenterPolicyResponseBody(DaraModel):
         policy_group_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the cloned cloud computer policy.
+        # The ID of the cloned cloud desktop policy.
         self.policy_group_id = policy_group_id
         # The request ID.
         self.request_id = request_id

@@ -72,117 +72,182 @@ class CreateDesktopGroupRequest(DaraModel):
         volume_encryption_key: str = None,
         vpc_id: str = None,
     ):
-        # The users of all shared cloud computer categories.
+        # The users of all shared cloud desktop categories.
+        # 
+        # > This parameter is not available.
         self.all_classify_users = all_classify_users
-        # Specifies whether to allow automatic creation of cloud computers within subscription shared cloud computers. This parameter takes effect and is required only when ChargeType is set to PrePaid.
+        # Specifies whether to allow automatic creation of cloud desktops in subscription shared cloud desktops. This parameter takes effect and is required only when the ChargeType parameter is set to PrePaid.
         self.allow_auto_setup = allow_auto_setup
-        # The number of reserved cloud computers allowed in pay-as-you-go shared cloud computers. This parameter takes effect and is required only when ChargeType is set to PostPaid. Valid values:
+        # The number of reserved cloud desktops allowed in pay-as-you-go shared cloud desktops. This parameter takes effect and is required only when the ChargeType parameter is set to PostPaid. Valid values: 
+        # - 0: No cloud desktops are reserved.
+        # - N: N cloud desktops are reserved (1 ≤ N ≤ 100).
+        # 
+        # > If no available cloud desktops are reserved, when an end user initiates a connection request, the system must create and start a cloud desktop before assigning it to the user, which takes a relatively long time. Reserve a certain number of cloud desktops as needed to ensure the user experience of end users.
         self.allow_buffer_count = allow_buffer_count
-        # Specifies whether automatic payment is enabled for the subscription order.
+        # Specifies whether automatic payment is enabled for subscription orders.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the subscription shared cloud computer.
+        # Specifies whether to enable auto-renewal for the subscription shared cloud desktop.
         self.auto_renew = auto_renew
-        # The number of concurrent sessions allowed per cloud computer in multi-session shared cloud computers.
+        # The number of concurrent sessions allowed per cloud desktop in multi-session shared cloud desktops.
+        # 
+        # > This parameter is not available.
         self.bind_amount = bind_amount
-        # The cloud computer template ID.
+        # The ID of the cloud desktop template.
         self.bundle_id = bundle_id
-        # - For subscription shared cloud computers: the initial number of cloud computers to create. Valid values: 0 to 200.
+        # - For subscription shared cloud desktops: the initial number of cloud desktops created. Valid values: 0 to 200.
+        # - For pay-as-you-go shared cloud desktops: the minimum initial number of cloud desktops created. Default value: 1. Valid values: 0 to the value of MaxDesktopsCount.
         self.buy_desktops_count = buy_desktops_count
-        # The billing method of the cloud computer.
+        # The billing method of the cloud desktop.
         # 
         # This parameter is required.
         self.charge_type = charge_type
-        # The type of the shared cloud computer.
+        # The type of the shared cloud desktop.
+        # 
+        # > This parameter is not available.
         self.classify = classify
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The remarks.
+        # The description.
         self.comments = comments
-        # The maximum duration that a session can remain in the connected state. The session is automatically disconnected when this duration is reached. Unit: milliseconds. Valid values: 900000 (15 minutes) to 345600000 (4 days).
+        # The maximum duration for which a session can remain connected. When the session connection duration reaches this value, the session is automatically disconnected. Unit: milliseconds. Valid values: 900000 (15 minutes) to 345600000 (4 days).
         self.connect_duration = connect_duration
-        # The data cloud disk type.
+        # The category of the data cloud disk.
         self.data_disk_category = data_disk_category
         # The performance level of the ESSD. Default value: PL0.
         self.data_disk_per_level = data_disk_per_level
-        # The size of the attached data cloud disk. Unit: GB. Valid values: 0 to 16380. The value must be a multiple of 20.
+        # The capacity of the mounted data cloud disk. Unit: GB. Valid values: 0 to 16380. The value must be a multiple of 20.
+        # 
+        # <props="china">
+        # - A value of 0 indicates that no data cloud disk is mounted.
+        # 
+        # - If the selected plan uses an ESSD cloud disk (performance level (PL) PL0), the minimum capacity of the mounted data cloud disk is 40 GB.
+        # 
+        # - If the selected plan uses a standard SSD, the minimum capacity of the mounted data cloud disk is 20 GB.
+        # 
+        # 
+        # 
+        # <props="intl">
+        # - A value of 0 indicates that no data cloud disk is mounted.
+        # 
+        # - If the selected plan uses a standard SSD, the minimum capacity of the mounted data cloud disk is 20 GB.
+        # 
+        # 
+        # 
+        # Default value: 0.
         self.data_disk_size = data_disk_size
-        # The default number of cloud computers to create when you create multiple shared cloud computers. Default value: 1.
+        # The default number of cloud desktops created when you create multiple shared cloud desktops. Default value: 1.
         self.default_init_desktop_count = default_init_desktop_count
         # The system language.
         self.default_language = default_language
-        # The retention period before cloud computers in the cloud computer pool are automatically deleted.
+        # The retention period before a cloud desktop in the cloud desktop pool is automatically deleted.
         self.delete_duration = delete_duration
-        # The name of the shared cloud computer. The name can be up to 30 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. The name can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the shared cloud desktop. The name can be up to 30 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. It can contain Chinese characters, English letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.desktop_group_name = desktop_group_name
-        # The cloud computer specification. You can call [DescribeDesktopTypes](~~DescribeDesktopTypes~~) to query the specification IDs supported by cloud computers.
+        # The cloud desktop type. You can call the [DescribeDesktopTypes](~~DescribeDesktopTypes~~) operation to query the IDs of supported cloud desktop types.
         self.desktop_type = desktop_type
         # The directory ID.
+        # 
+        # > This parameter is not available.
         self.directory_id = directory_id
-        # The list of user IDs for the shared cloud computer.
+        # The list of user IDs for the shared cloud desktop.
         self.end_user_ids = end_user_ids
-        # Creates a static pool. This parameter is required when the `SessionType` parameter is set to `MultipleSession`. Set the value to `Exclusive`.
+        # The static pool type. If you set the `SessionType` parameter to `MultipleSession`, you must specify this parameter and set the value to `Exclusive`.
         self.exclusive_type = exclusive_type
-        # The ID of the NAS file system used for user data roaming.
+        # The ID of the NAS file system used for the user data roaming feature.
+        # 
+        # > This parameter is not available.
         self.file_system_id = file_system_id
-        # The number of single shared cloud computers to create. This parameter is required only when the `MultiResource` parameter is set to `false`. Valid values: 1 to 5. Default value: 1.
+        # The number of single-instance shared cloud desktops to create. You need to specify this parameter only when the `MultiResource` parameter is set to `false`. Valid values: 1 to 5. Default value: 1.
         self.group_amount = group_amount
-        # The version of the shared cloud computer.
+        # The version of the shared cloud desktop.
         self.group_version = group_version
-        # The custom hostname of the cloud computer. Only Settings for cloud computers that run the Windows operating system in AD office networks are supported.
+        # Custom Settings for the hostname of the cloud desktop. This is supported only for cloud desktops that run the Windows operating system and reside in an Active Directory (AD) office network.
+        # 
+        # Naming rules for hostnames:
+        # 
+        # - The hostname must be 2 to 15 characters in length.
+        # - The hostname can contain letters, digits, and hyphens (-). It cannot start or end with a hyphen, contain consecutive hyphens, or contain only digits.
+        # 
+        # When you create multiple cloud desktops, you can use the `name_prefix[begin_number,bits]name_suffix` format to name them in a unified manner. For example, if you set Hostname to ecd-[1,4]-test, the hostname of the first cloud desktop is ecd-0001-test, the hostname of the second cloud desktop is ecd-0002-test, and so on.
+        # 
+        # - ` name_prefix`: the prefix of the hostname.
+        # - ` [begin_number,bits]`: the sequential number in the hostname. `begin_number` is the starting number. Valid values: 0 to 999999. Default value: 0. `bits` is the number of digits. Valid values: 1 to 6. Default value: 6.
+        # -  `name_suffix`: the suffix of the hostname.
         self.hostname = hostname
-        # The maximum idle duration after a user session is established. If no keyboard or mouse activity occurs within this duration, the session is disconnected. Unit: milliseconds. Valid values: 360000 (6 minutes) to 3600000 (60 minutes).
+        # The maximum idle time before a user session is disconnected. If no keyboard or mouse operations are performed within this maximum duration after a user session is established, the session is disconnected. Unit: milliseconds. Valid values: 360000 (6 minutes) to 3600000 (60 minutes).
         # 
-        # 30 seconds before this duration is reached, the end user in the session receives a prompt to save document data. The end user must save document data promptly to avoid data loss.
+        # 30 seconds before this duration is reached, the end user in the session receives a prompt message to save document data. The end user must save the document data promptly to avoid data loss.
         # 
-        # > Applicable only to cloud computers with an image version of 1.0.2 or later.
+        # > This parameter applies only to cloud desktops whose image version is 1.0.2 or later.
         self.idle_disconnect_duration = idle_disconnect_duration
-        # The image ID.
+        # The ID of the image.
         self.image_id = image_id
         # The retention period after a session is disconnected. Unit: milliseconds. Valid values: 180000 (3 minutes) to 345600000 (4 days). A value of 0 indicates that the session is always retained.
+        # 
+        # If a session is actively disconnected by the user or unexpectedly disconnected due to other factors, the retention period starts from the time of disconnection. If the user does not reconnect to the session within the retention period, the session is logged off and unsaved data is destroyed. If the user successfully reconnects within the retention period, the user can enter the original session and access the data before the disconnection.
         self.keep_duration = keep_duration
-        # The load balancing policy for multi-session shared cloud computers.
+        # The load balancing policy for multi-session shared cloud desktops.
+        # 
+        # > This parameter is not available.
         self.load_policy = load_policy
-        # The maximum number of pay-as-you-go shared cloud computers. Valid values: 0 to 500.
+        # The maximum number of pay-as-you-go shared cloud desktops. Valid values: 0 to 500.
         self.max_desktops_count = max_desktops_count
-        # The maximum number of cloud computers that can be used for automatic creation for subscription shared cloud computers. This parameter takes effect and is required only when ChargeType is set to PrePaid. Default value: 1. Valid values: 0 to the value of MaxDesktopsCount.
+        # The maximum number of cloud desktops for automatic creation in subscription shared cloud desktops. This parameter takes effect and is required only when the ChargeType parameter is set to PrePaid. Default value: 1. Valid values: 0 to the value of MaxDesktopsCount.
         self.min_desktops_count = min_desktops_count
-        # Specifies whether the cloud computers are multi-resource shared cloud computers.
+        # Specifies whether the cloud desktop is a multi-instance shared cloud desktop.
         self.multi_resource = multi_resource
-        # The ID of the office network to which the shared cloud computer belongs.
+        # The ID of the office network to which the shared cloud desktop belongs.
         # 
         # This parameter is required.
         self.office_site_id = office_site_id
-        # The type of the shared cloud computer.
+        # The type of the shared cloud desktop.
+        # 
+        # > This parameter is not available.
         self.own_type = own_type
-        # The subscription duration of the shared cloud computer. This parameter takes effect and is required only when ChargeType is set to PrePaid. The unit is specified by PeriodUnit.
+        # The subscription period of the shared cloud desktop. This parameter takes effect and is required only when the ChargeType parameter is set to PrePaid. The unit is specified by the PeriodUnit parameter.
+        # - If PeriodUnit is set to Month, valid values:
+        #     - 1
+        #     - 2
+        #     - 3
+        #     - 6
+        # - If PeriodUnit is set to Year, valid values:
+        #     - 1
+        #     - 2
+        #     - 3
+        #     - 4
+        #     - 5
         self.period = period
-        # The unit of the subscription billable methods duration.
+        # The duration unit of the subscription billing method.
         self.period_unit = period_unit
-        # The ID of the policy associated with the shared cloud computer.
+        # The ID of the policy associated with the shared cloud desktop.
         # 
         # This parameter is required.
         self.policy_group_id = policy_group_id
         # Specifies whether to enable user data roaming.
+        # 
+        # > This parameter is not available.
         self.profile_follow_switch = profile_follow_switch
-        # The coupon ID.
+        # The ID of the coupon.
         self.promotion_id = promotion_id
-        # The session occupancy threshold used as the automatic scaling trigger condition for multi-session shared cloud computers. The session occupancy is calculated by using the following formula:
+        # The session usage threshold, which is used as the trigger for automatic scaling of multi-session shared cloud desktops. The formula for session usage is:
         # 
-        # ```Session occupancy = Number of bound sessions / (Total number of cloud computer resources × Maximum number of sessions supported per cloud computer) × 100%```
+        # ```Session usage = Number of attached sessions / (Total number of cloud desktop resources × Maximum number of sessions supported per cloud desktop) × 100%```
         # 
-        # When the session occupancy reaches this threshold, new cloud computers are created. When the session occupancy is below this threshold, excess cloud computers are deleted.
+        # When the session usage reaches this threshold, new cloud desktops are created. When the session usage does not reach this threshold, excess cloud desktops are deleted.
         # 
-        # > This parameter is not yet available for use.
+        # > This parameter is not available.
         self.ratio_threshold = ratio_threshold
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by Elastic Desktop Service.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the regions supported by Elastic Desktop Service.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The user ID of the resource ownership in reseller pattern. You do not need to specify this parameter in non-reseller pattern.
+        # The user ID for resource ownership in the reseller pattern. You do not need to specify this parameter for the non-reseller pattern.
         self.reseller_owner_uid = reseller_owner_uid
-        # The reset type of the cloud computer.
+        # The reset type of the cloud desktop.
         self.reset_type = reset_type
-        # The scaling policy ID.
+        # The ID of the scaling policy.
+        # 
+        # > This parameter is not available.
         self.scale_strategy_id = scale_strategy_id
         # The session type.
         self.session_type = session_type
@@ -190,27 +255,31 @@ class CreateDesktopGroupRequest(DaraModel):
         self.simple_user_group_id = simple_user_group_id
         # The ID of the automatic snapshot policy.
         self.snapshot_policy_id = snapshot_policy_id
-        # The idle shutdown duration. When the cloud computer has been idle for this duration, it is automatically shut down. If a user connects after shutdown, the cloud computer automatically starts. Unit: milliseconds.
+        # The idle shutdown time. When the idle time of the cloud desktop reaches this value, the cloud desktop is automatically shut down. If a user connects to the cloud desktop after it is shut down, the cloud desktop is automatically started. Unit: milliseconds.
         self.stop_duration = stop_duration
-        # The system cloud disk type.
+        # The category of the system cloud disk.
         self.system_disk_category = system_disk_category
         # The performance level of the ESSD. Default value: PL0.
         self.system_disk_per_level = system_disk_per_level
-        # The system cloud disk size. Unit: GiB.
+        # The size of the system cloud disk. Unit: GiB.
+        # 
+        # > The size of the system cloud disk cannot be smaller than the image file.
         self.system_disk_size = system_disk_size
-        # The list of tags. A maximum of 20 tags can be specified.
+        # The list of tags. The list can contain up to 20 tags.
         self.tag = tag
         # The ID of the scheduled task group.
         self.timer_group_id = timer_group_id
         # The name of the user group.
         self.user_group_name = user_group_name
-        # The organizational unit (OU) path of the user.
+        # The path of the user organizational unit.
         self.user_ou_path = user_ou_path
         # Specifies whether to enable disk encryption.
         self.volume_encryption_enabled = volume_encryption_enabled
-        # The ID of the KMS key used for disk encryption. You can call [ListKeys](https://help.aliyun.com/document_detail/28951.html) to obtain the key ID.
+        # The ID of the KMS key used when disk encryption is enabled. You can obtain it by calling the [ListKeys](https://help.aliyun.com/document_detail/28951.html) operation.
         self.volume_encryption_key = volume_encryption_key
-        # The VPC ID of the office network to which the shared cloud computer belongs.
+        # The ID of the VPC where the office network of the shared cloud desktop resides.
+        # 
+        # > This parameter is not available.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -607,11 +676,11 @@ class CreateDesktopGroupRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. If you specify this parameter, the value cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key. It cannot be an empty string. It can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
         # 
         # This parameter is required.
         self.key = key
-        # The tag value. The value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value. It can be an empty string. It can be up to 128 characters in length, and cannot start with acs:, or contain http:// or https://.
         # 
         # This parameter is required.
         self.value = value

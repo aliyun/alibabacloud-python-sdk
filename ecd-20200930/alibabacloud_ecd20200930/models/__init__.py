@@ -217,6 +217,9 @@ from ._delete_center_policy_response import DeleteCenterPolicyResponse
 from ._delete_cloud_drive_groups_request import DeleteCloudDriveGroupsRequest
 from ._delete_cloud_drive_groups_response_body import DeleteCloudDriveGroupsResponseBody
 from ._delete_cloud_drive_groups_response import DeleteCloudDriveGroupsResponse
+from ._delete_cloud_drive_services_request import DeleteCloudDriveServicesRequest
+from ._delete_cloud_drive_services_response_body import DeleteCloudDriveServicesResponseBody
+from ._delete_cloud_drive_services_response import DeleteCloudDriveServicesResponse
 from ._delete_cloud_drive_users_request import DeleteCloudDriveUsersRequest
 from ._delete_cloud_drive_users_response_body import DeleteCloudDriveUsersResponseBody
 from ._delete_cloud_drive_users_response import DeleteCloudDriveUsersResponse
@@ -598,6 +601,9 @@ from ._get_sp_metadata_response import GetSpMetadataResponse
 from ._hibernate_desktops_request import HibernateDesktopsRequest
 from ._hibernate_desktops_response_body import HibernateDesktopsResponseBody
 from ._hibernate_desktops_response import HibernateDesktopsResponse
+from ._import_drive_request import ImportDriveRequest
+from ._import_drive_response_body import ImportDriveResponseBody
+from ._import_drive_response import ImportDriveResponse
 from ._list_cds_files_request import ListCdsFilesRequest
 from ._list_cds_files_shrink_request import ListCdsFilesShrinkRequest
 from ._list_cds_files_response_body import ListCdsFilesResponseBody
@@ -1467,6 +1473,9 @@ __all__ = [
     DeleteCloudDriveGroupsRequest,
     DeleteCloudDriveGroupsResponseBody,
     DeleteCloudDriveGroupsResponse,
+    DeleteCloudDriveServicesRequest,
+    DeleteCloudDriveServicesResponseBody,
+    DeleteCloudDriveServicesResponse,
     DeleteCloudDriveUsersRequest,
     DeleteCloudDriveUsersResponseBody,
     DeleteCloudDriveUsersResponse,
@@ -1848,6 +1857,9 @@ __all__ = [
     HibernateDesktopsRequest,
     HibernateDesktopsResponseBody,
     HibernateDesktopsResponse,
+    ImportDriveRequest,
+    ImportDriveResponseBody,
+    ImportDriveResponse,
     ListCdsFilesRequest,
     ListCdsFilesShrinkRequest,
     ListCdsFilesResponseBody,

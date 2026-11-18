@@ -16,11 +16,11 @@ class CreateOfficeSiteAcceleratorRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The list of acceleration region information for the access points.
+        # The list of acceleration regions.
         # 
         # This parameter is required.
         self.accelerate_region = accelerate_region
-        # The name of the GA instance.
+        # The name of the Alibaba Cloud Global Accelerator (GA) instance.
         self.name = name
         # The office network ID.
         # 
@@ -101,14 +101,14 @@ class CreateOfficeSiteAcceleratorRequestAccelerateRegion(DaraModel):
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
-        # The IP address protocol used to connect to the GA service.
+        # The IP address protocol used to access the Global Accelerator (GA) service.
         # 
-        # > The `DUAL_STACK` type is supported only by standard pay-as-you-go GA instances.
+        # > The `DUAL_STACK` type is supported only by standard Alibaba Cloud Global Accelerator (GA) instances that use the pay-as-you-go billing method.
         self.ip_version = ip_version
-        # The public network line type of the acceleration region.
+        # The Internet line type of the acceleration region.
         # 
-        # > - Configure this parameter for GA instances that use the **pay-by-data-transfer** billing method.
-        # > - The supported public network line types vary by acceleration region.
+        # > - This parameter is required for Alibaba Cloud Global Accelerator (GA) instances that use the **pay-by-traffic** Billable methods.
+        # > - The supported Internet line types vary based on the acceleration region.
         # 
         # This parameter is required.
         self.isp_type = isp_type

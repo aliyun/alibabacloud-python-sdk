@@ -12,9 +12,9 @@ class DeleteConfigGroupRequest(DaraModel):
         group_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The list of configuration group IDs to delete.
+        # The IDs of the configuration groups to delete.
         self.group_ids = group_ids
-        # The region ID. This operation is not region-specific. Set this parameter to `cn-shanghai`.
+        # The region ID. This feature is not region-specific. Set this parameter to `cn-shanghai`.
         self.region_id = region_id
 
     def validate(self):
