@@ -20,11 +20,11 @@ class ListCustomDomainsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The response code. A value of 200 indicates success.
+        # The response code. The value is 200 if the request is successful.
         self.code = code
         # The custom domain names.
         self.custom_domains = custom_domains
-        # Indicates whether there is a next page.
+        # Indicates whether a next page is available.
         self.has_more = has_more
         # The maximum number of records to return per page.
         self.max_results = max_results
@@ -32,7 +32,7 @@ class ListCustomDomainsResponseBody(DaraModel):
         self.message = message
         # The offset for the next page.
         self.next_offset = next_offset
-        # The pagination token for the next page. This value is empty when no more results are available.
+        # The pagination token for the next page. This parameter is empty if no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

@@ -12,7 +12,7 @@ class ListCustomDomainsRequest(DaraModel):
     ):
         # The maximum number of records to return per page.
         self.max_results = max_results
-        # The pagination token for the next page.
+        # The pagination token for the next page, used for subsequent queries.
         self.next_token = next_token
 
     def validate(self):

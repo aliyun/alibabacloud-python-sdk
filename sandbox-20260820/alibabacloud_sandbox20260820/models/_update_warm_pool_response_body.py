@@ -13,7 +13,7 @@ class UpdateWarmPoolResponseBody(DaraModel):
         request_id: str = None,
         warm_pool: main_models.PublicWarmPoolConfig = None,
     ):
-        # The response business code.
+        # The business code in the response.
         self.code = code
         # The response message.
         self.message = message
