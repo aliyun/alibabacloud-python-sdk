@@ -12,17 +12,17 @@ class DescribeUserProfilePathRulesRequest(DaraModel):
         region_id: str = None,
         rule_type: str = None,
     ):
-        # The ID of the app instance group. Specify either this parameter or AppInstanceGroupSetId when querying app instance group rules. This parameter can be omitted when querying system default rules.
+        # The app instance group ID. Specify either this parameter or AppInstanceGroupSetId when querying app instance group rules. This parameter can be omitted when querying system default rules.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the app instance group set. Specify either this parameter or AppInstanceGroupId when querying app instance group set rules. This parameter can be omitted when querying system default rules.
+        # The app instance group set ID. Specify either this parameter or AppInstanceGroupId when querying app instance group set rules. This parameter can be omitted when querying system default rules.
         self.app_instance_group_set_id = app_instance_group_set_id
-        # The region ID of the request. When querying or setting the rules for a specified app instance group, use the region where the target app instance group is located.
+        # The region ID of the request. When querying or setting rules for a specified app instance group, use the region where the target app instance group is located.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The path rule type. Valid values:
-        # - Default: Queries the system default rules. Both target IDs can be omitted.
-        # - AppInstanceGroup: Queries the rules of an app instance group or an app instance group set.
+        # - `Default`: Queries system default rules. Both target IDs can be omitted.
+        # - `AppInstanceGroup`: Queries the rules of an app instance group or an app instance group set.
         # 
         # This parameter is required.
         self.rule_type = rule_type

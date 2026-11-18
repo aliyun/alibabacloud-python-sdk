@@ -17,7 +17,7 @@ class DescribeUserProfilePathRulesResponseBody(DaraModel):
     ):
         # The error code returned when the request fails.
         self.code = code
-        # The path rules and user data roaming configurations.
+        # The path rules and user profile roaming configurations.
         self.data = data
         # The error message returned when the request fails.
         self.message = message
@@ -78,31 +78,27 @@ class DescribeUserProfilePathRulesResponseBodyData(DaraModel):
         user_profile_size: int = None,
         user_profile_switch: bool = None,
     ):
-        # The ID of the app instance group to which the rule applies. When querying set rules, this is the ID of the primary app instance group.
+        # The app instance group ID corresponding to the rule. When querying set rules, this is the primary app instance group ID.
         self.app_instance_group_id = app_instance_group_id
-        # The ID of the app instance group set to which the rule applies. This parameter is returned when querying set rules.
+        # The app instance group set ID corresponding to the rule. This is returned when querying set rules.
         self.app_instance_group_set_id = app_instance_group_set_id
-        # The ID of the user data roaming storage domain bound to the app instance group. This parameter may be omitted if no domain is bound.
+        # The user profile roaming storage domain ID bound to the app instance group. This field may be omitted if no domain is bound.
         self.domain_id = domain_id
-        # This field is not enabled. The current query result does not provide the file system ID. The example is used to illustrate the field status.
+        # Not enabled. The current query result does not provide the file system ID. The example is used to illustrate the field status.
         self.file_system_id = file_system_id
-        # Specifies whether user data roaming is enabled. Valid values:
-        # - true: Enabled.
-        # - false: Disabled.
+        # The user profile roaming switch. A value of `true` indicates that the feature is enabled, and a value of `false` indicates that the feature is disabled.
         self.profile_follow_switch = profile_follow_switch
-        # The remote storage path for user data roaming. If the app instance group is not separately configured with this path, the app instance group ID is returned.
+        # The remote storage path for user profile roaming. If this path is not separately configured for the app instance group, the app instance group ID is returned.
         self.remote_storage_path = remote_storage_path
         # The path rule type. Valid values:
-        # - Default: Queries the system default rules. Both target IDs can be omitted.
-        # - AppInstanceGroup: Queries the rules of an app instance group or an app instance group set.
+        # - `Default`: Queries system default rules. Both target IDs can be omitted.
+        # - `AppInstanceGroup`: Queries the rules of an app instance group or an app instance group set.
         self.rule_type = rule_type
-        # The list of user data roaming path rules.
+        # The list of user profile roaming path rules.
         self.rules = rules
-        # The storage quota for user data roaming, in GB. This parameter may be omitted if it is not configured.
+        # The storage quota for user profile roaming, in GB. This field may be omitted if it is not configured.
         self.user_profile_size = user_profile_size
-        # Specifies whether user data roaming is enabled. The value is the same as ProfileFollowSwitch. Valid values:
-        # - true: Enabled.
-        # - false: Disabled.
+        # The user profile roaming switch. The value is the same as ProfileFollowSwitch. A value of `true` indicates that the feature is enabled, and a value of `false` indicates that the feature is disabled.
         self.user_profile_switch = user_profile_switch
 
     def validate(self):
@@ -193,9 +189,9 @@ class DescribeUserProfilePathRulesResponseBodyDataRules(DaraModel):
         black_path: main_models.DescribeUserProfilePathRulesResponseBodyDataRulesBlackPath = None,
         white_paths: List[main_models.DescribeUserProfilePathRulesResponseBodyDataRulesWhitePaths] = None,
     ):
-        # The file or directory excluded from user data roaming.
+        # The file or directory excluded from user profile roaming.
         self.black_path = black_path
-        # The list of files or directories that still participate in user data roaming under the excluded directories.
+        # The list of files or directories that still participate in user profile roaming under the excluded directories.
         self.white_paths = white_paths
 
     def validate(self):
@@ -244,8 +240,8 @@ class DescribeUserProfilePathRulesResponseBodyDataRulesWhitePaths(DaraModel):
         # The exception path relative to BlackPath.Path.
         self.path = path
         # The path type. Valid values:
-        # - file: File.
-        # - folder: Folder.
+        # - `file`: File.
+        # - `folder`: Folder.
         self.type = type
 
     def validate(self):
@@ -283,8 +279,8 @@ class DescribeUserProfilePathRulesResponseBodyDataRulesBlackPath(DaraModel):
         # The excluded path relative to the user profile directory.
         self.path = path
         # The path type. Valid values:
-        # - file: File.
-        # - folder: Folder.
+        # - `file`: File.
+        # - `folder`: Folder.
         self.type = type
 
     def validate(self):

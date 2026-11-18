@@ -20,17 +20,17 @@ class DescribeEventsResponseBody(DaraModel):
     ):
         # The list of events on the current page, returned in descending order of the event log time.
         self.event_list = event_list
-        # A compatibility field. The current version does not set this field. Do not rely on its value.
+        # The compatibility field. The current version does not set this field. Do not rely on its value.
         self.max_results = max_results
-        # A compatibility field. The current version does not generate a next page token. Do not use this field for pagination.
+        # The compatibility field. The current version does not generate a next page token. Do not use this field for pagination.
         self.next_token = next_token
         # The page number corresponding to the current response.
         self.page_number = page_number
         # The number of events per page used in the current response.
         self.page_size = page_size
-        # The unique identifier of the request, which can be used to troubleshoot request issues.
+        # The unique identifier of the request, which can be used to troubleshoot the request.
         self.request_id = request_id
-        # The total number of events that meet all filter conditions within the 30-day retrievable window. Unit: records.
+        # The total number of events that meet all filter conditions within the retrievable window of the last 30 days. Unit: events.
         self.total_count = total_count
 
     def validate(self):
@@ -111,11 +111,11 @@ class DescribeEventsResponseBodyEventList(DaraModel):
         product_type: str = None,
         user_id: str = None,
     ):
-        # The ID of the delivery group associated with the event. This field may be empty if the event is not associated with a delivery group.
+        # The delivery group ID associated with the event. This field may be empty if the event is not associated with a delivery group.
         self.app_instance_group_id = app_instance_group_id
-        # The name of the delivery group associated with the event. This field may be empty if the event is not associated with a delivery group.
+        # The delivery group name associated with the event. This field may be empty if the event is not associated with a delivery group.
         self.app_instance_group_name = app_instance_group_name
-        # The event detail text. The content varies with `EventType` and may be empty. For example, a session release event may return JSON text that describes the release reason.
+        # The event detail text. The content varies with `EventType` and may be empty. For example, a session release event may return a JSON text that describes the release cause.
         self.detail_info = detail_info
         # The unique identifier of the event.
         self.event_id = event_id
@@ -125,11 +125,11 @@ class DescribeEventsResponseBodyEventList(DaraModel):
         self.member_eni_ip = member_eni_ip
         # The time when the event occurred. Format: `yyyy-MM-dd HH:mm:ss`. Time zone: UTC+8 (Asia/Shanghai).
         self.occurred_time = occurred_time
-        # The ID of the office network associated with the event. This field may be empty if it is not applicable.
+        # The office network ID associated with the event. This field may be empty if it is not applicable.
         self.office_site_id = office_site_id
-        # The product type to which the event belongs. This field is an open string and may be extended as supported event sources expand. Callers should not restrict the value to the products currently listed in the `ProductType` request parameter.
+        # The product type to which the event belongs. This field is an open string and may be extended as supported event sources increase. The caller should not restrict the values to the products currently listed in the `ProductType` request parameter.
         self.product_type = product_type
-        # The ID of the end user who generated the event. This field may be empty if the event is not associated with an end user.
+        # The end user ID that generated the event. This field may be empty if the event is not associated with an end user.
         self.user_id = user_id
 
     def validate(self):

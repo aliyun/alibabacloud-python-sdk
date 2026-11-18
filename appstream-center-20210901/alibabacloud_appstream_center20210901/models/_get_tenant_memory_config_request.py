@@ -14,11 +14,11 @@ class GetTenantMemoryConfigRequest(DaraModel):
     ):
         # This parameter is not enabled. Do not specify this parameter. The current API operation queries tenant configurations by provider, business platform, and business type. The example is used to illustrate the field status.
         self.agent_instance_id = agent_instance_id
-        # The business platform to which the agent belongs. Specify the platform corresponding to the tenant memory configuration, such as `ENTERPRISE` for the enterprise platform.
+        # The business platform to which the agent belongs. Specify the platform corresponding to the tenant memory configuration, such as the enterprise platform `ENTERPRISE`.
         self.agent_platform = agent_platform
         # The agent provider. This parameter is used together with AgentPlatform and BizType to locate the memory configuration. You must use a configured business combination.
         self.agent_provider = agent_provider
-        # The business type code. This parameter is used together with the provider and business platform. Common values include `1` for Enterprise Edition, `10` for Personal Edition, and `20` for Commercial Edition.
+        # The business type code. This parameter is used together with the provider and business platform. Common values include `1` (Enterprise Edition), `10` (Personal Edition), and `20` (Commercial Edition).
         self.biz_type = biz_type
 
     def validate(self):

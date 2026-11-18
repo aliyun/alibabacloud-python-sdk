@@ -9,7 +9,7 @@ class DeliverToUserSlsResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request. It is used to troubleshoot call issues.
         self.request_id = request_id
 
     def validate(self):

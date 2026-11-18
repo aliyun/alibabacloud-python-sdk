@@ -9,7 +9,7 @@ class ModifyTenantMemoryConfigResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The unique identifier of the request. You can use this ID to troubleshoot issues.
+        # The unique identifier of the request, which can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):

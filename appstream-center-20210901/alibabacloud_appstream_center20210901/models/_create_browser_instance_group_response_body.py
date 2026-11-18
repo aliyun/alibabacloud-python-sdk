@@ -11,7 +11,7 @@ class CreateBrowserInstanceGroupResponseBody(DaraModel):
         browser_instance_group_model: main_models.CreateBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel = None,
         request_id: str = None,
     ):
-        # The creation result of the cloud browser group, including the resource ID and the order ID.
+        # The creation result of the cloud browser group, including the resource ID and order ID.
         self.browser_instance_group_model = browser_instance_group_model
         # The unique ID of the request, which can be used for troubleshooting.
         self.request_id = request_id
@@ -52,7 +52,7 @@ class CreateBrowserInstanceGroupResponseBodyBrowserInstanceGroupModel(DaraModel)
     ):
         # The ID of the newly created cloud browser group. The return of this ID does not indicate that the resource is ready.
         self.browser_instance_group_id = browser_instance_group_id
-        # The ID of the order generated for this creation.
+        # The order ID generated for this creation.
         self.order_id = order_id
 
     def validate(self):

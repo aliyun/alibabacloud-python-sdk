@@ -16,13 +16,13 @@ class BuilderImageByParentResponseBody(DaraModel):
     ):
         # The error code. This parameter is returned when the request fails. A successful response may not contain this parameter.
         self.code = code
-        # The business data returned by this operation.
+        # The business data returned by the operation.
         self.data = data
-        # The error or result message. This parameter describes the cause when the request fails. A successful response may not contain this parameter.
+        # The error message or result prompt. This parameter describes the cause of a failed request. A successful response may not contain this parameter.
         self.message = message
         # The unique identifier of the request. You can provide this value for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the request is processed successfully. A value of true indicates that the request is processed successfully. To check whether the asynchronous task is completed, you must query the task status separately.
+        # Indicates whether the request is successful. A value of true indicates that the request is successful. To check whether the asynchronous task is complete, you must query the task status separately.
         self.success = success
 
     def validate(self):
@@ -78,11 +78,11 @@ class BuilderImageByParentResponseBodyData(DaraModel):
         task_id: str = None,
         version_id: str = None,
     ):
-        # The image ID, which is used for subsequent queries or modifications of the image.
+        # The ID of the image. You can use this ID to query or modify the image later.
         self.image_id = image_id
-        # The task ID, which can be used to call GetTask to query the task status.
+        # The ID of the task. You can use this ID to call GetTask to query the task status.
         self.task_id = task_id
-        # The image version ID, which is used to query or manage the specified version of the image.
+        # The ID of the image version. You can use this ID to query or manage the specified version of the image.
         self.version_id = version_id
 
     def validate(self):

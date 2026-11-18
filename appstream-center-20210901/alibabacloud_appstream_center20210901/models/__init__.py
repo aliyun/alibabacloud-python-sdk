@@ -16,6 +16,9 @@ from ._authorize_users_for_app_request import AuthorizeUsersForAppRequest
 from ._authorize_users_for_app_shrink_request import AuthorizeUsersForAppShrinkRequest
 from ._authorize_users_for_app_response_body import AuthorizeUsersForAppResponseBody
 from ._authorize_users_for_app_response import AuthorizeUsersForAppResponse
+from ._batch_config_runtime_channel_request import BatchConfigRuntimeChannelRequest
+from ._batch_config_runtime_channel_response_body import BatchConfigRuntimeChannelResponseBody
+from ._batch_config_runtime_channel_response import BatchConfigRuntimeChannelResponse
 from ._batch_create_llm_templates_request import BatchCreateLlmTemplatesRequest
 from ._batch_create_llm_templates_response_body import BatchCreateLlmTemplatesResponseBody
 from ._batch_create_llm_templates_response import BatchCreateLlmTemplatesResponse
@@ -103,6 +106,9 @@ from ._describe_export_tasks_response import DescribeExportTasksResponse
 from ._describe_share_image_request import DescribeShareImageRequest
 from ._describe_share_image_response_body import DescribeShareImageResponseBody
 from ._describe_share_image_response import DescribeShareImageResponse
+from ._describe_sls_delivery_config_request import DescribeSlsDeliveryConfigRequest
+from ._describe_sls_delivery_config_response_body import DescribeSlsDeliveryConfigResponseBody
+from ._describe_sls_delivery_config_response import DescribeSlsDeliveryConfigResponse
 from ._describe_user_profile_path_rules_request import DescribeUserProfilePathRulesRequest
 from ._describe_user_profile_path_rules_response_body import DescribeUserProfilePathRulesResponseBody
 from ._describe_user_profile_path_rules_response import DescribeUserProfilePathRulesResponse
@@ -173,6 +179,9 @@ from ._get_resource_renew_price_response import GetResourceRenewPriceResponse
 from ._get_runtime_channel_request import GetRuntimeChannelRequest
 from ._get_runtime_channel_response_body import GetRuntimeChannelResponseBody
 from ._get_runtime_channel_response import GetRuntimeChannelResponse
+from ._get_runtime_channel_qr_code_detail_request import GetRuntimeChannelQrCodeDetailRequest
+from ._get_runtime_channel_qr_code_detail_response_body import GetRuntimeChannelQrCodeDetailResponseBody
+from ._get_runtime_channel_qr_code_detail_response import GetRuntimeChannelQrCodeDetailResponse
 from ._get_runtime_model_config_request import GetRuntimeModelConfigRequest
 from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBody
 from ._get_runtime_model_config_response import GetRuntimeModelConfigResponse
@@ -234,6 +243,9 @@ from ._list_browser_instance_group_response import ListBrowserInstanceGroupRespo
 from ._list_browser_restricted_urls_request import ListBrowserRestrictedURLsRequest
 from ._list_browser_restricted_urls_response_body import ListBrowserRestrictedURLsResponseBody
 from ._list_browser_restricted_urls_response import ListBrowserRestrictedURLsResponse
+from ._list_command_invocation_results_request import ListCommandInvocationResultsRequest
+from ._list_command_invocation_results_response_body import ListCommandInvocationResultsResponseBody
+from ._list_command_invocation_results_response import ListCommandInvocationResultsResponse
 from ._list_desktop_agent_runtime_request import ListDesktopAgentRuntimeRequest
 from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBody
 from ._list_desktop_agent_runtime_response import ListDesktopAgentRuntimeResponse
@@ -356,6 +368,9 @@ from ._modify_tenant_memory_config_response import ModifyTenantMemoryConfigRespo
 from ._modify_wuying_server_attribute_request import ModifyWuyingServerAttributeRequest
 from ._modify_wuying_server_attribute_response_body import ModifyWuyingServerAttributeResponseBody
 from ._modify_wuying_server_attribute_response import ModifyWuyingServerAttributeResponse
+from ._modify_wuying_server_spec_request import ModifyWuyingServerSpecRequest
+from ._modify_wuying_server_spec_response_body import ModifyWuyingServerSpecResponseBody
+from ._modify_wuying_server_spec_response import ModifyWuyingServerSpecResponse
 from ._page_list_app_instance_group_user_request import PageListAppInstanceGroupUserRequest
 from ._page_list_app_instance_group_user_response_body import PageListAppInstanceGroupUserResponseBody
 from ._page_list_app_instance_group_user_response import PageListAppInstanceGroupUserResponse
@@ -408,9 +423,19 @@ from ._renew_app_instance_group_response import RenewAppInstanceGroupResponse
 from ._renew_wuying_server_request import RenewWuyingServerRequest
 from ._renew_wuying_server_response_body import RenewWuyingServerResponseBody
 from ._renew_wuying_server_response import RenewWuyingServerResponse
+from ._resize_wuying_server_disk_request import ResizeWuyingServerDiskRequest
+from ._resize_wuying_server_disk_shrink_request import ResizeWuyingServerDiskShrinkRequest
+from ._resize_wuying_server_disk_response_body import ResizeWuyingServerDiskResponseBody
+from ._resize_wuying_server_disk_response import ResizeWuyingServerDiskResponse
 from ._restart_wuying_server_request import RestartWuyingServerRequest
 from ._restart_wuying_server_response_body import RestartWuyingServerResponseBody
 from ._restart_wuying_server_response import RestartWuyingServerResponse
+from ._run_app_instance_command_request import RunAppInstanceCommandRequest
+from ._run_app_instance_command_response_body import RunAppInstanceCommandResponseBody
+from ._run_app_instance_command_response import RunAppInstanceCommandResponse
+from ._send_runtime_qr_code_config_channel_message_request import SendRuntimeQrCodeConfigChannelMessageRequest
+from ._send_runtime_qr_code_config_channel_message_response_body import SendRuntimeQrCodeConfigChannelMessageResponseBody
+from ._send_runtime_qr_code_config_channel_message_response import SendRuntimeQrCodeConfigChannelMessageResponse
 from ._set_user_profile_path_rules_request import SetUserProfilePathRulesRequest
 from ._set_user_profile_path_rules_response_body import SetUserProfilePathRulesResponseBody
 from ._set_user_profile_path_rules_response import SetUserProfilePathRulesResponse
@@ -478,6 +503,8 @@ from ._validate_llm_template_config_response_body import ValidateLlmTemplateConf
 from ._validate_llm_template_config_response import ValidateLlmTemplateConfigResponse
 from ._authorize_instance_group_request import AuthorizeInstanceGroupRequestUserMeta
 from ._authorize_users_for_app_request import AuthorizeUsersForAppRequestUserMeta
+from ._batch_config_runtime_channel_request import BatchConfigRuntimeChannelRequestChannelConfigs
+from ._batch_config_runtime_channel_response_body import BatchConfigRuntimeChannelResponseBodyData
 from ._batch_create_llm_templates_request import BatchCreateLlmTemplatesRequestLlmTemplateItems
 from ._batch_create_llm_templates_response_body import BatchCreateLlmTemplatesResponseBodyDataSkippedItems
 from ._batch_create_llm_templates_response_body import BatchCreateLlmTemplatesResponseBodyData
@@ -531,6 +558,10 @@ from ._deliver_to_user_sls_request import DeliverToUserSlsRequestDeliveryScopes
 from ._describe_events_response_body import DescribeEventsResponseBodyEventList
 from ._describe_export_tasks_response_body import DescribeExportTasksResponseBodyExportTaskModel
 from ._describe_share_image_response_body import DescribeShareImageResponseBodyData
+from ._describe_sls_delivery_config_request import DescribeSlsDeliveryConfigRequestDeliveryScopes
+from ._describe_sls_delivery_config_response_body import DescribeSlsDeliveryConfigResponseBodyDeliveryConfigsLogStoresDeliveryScopes
+from ._describe_sls_delivery_config_response_body import DescribeSlsDeliveryConfigResponseBodyDeliveryConfigsLogStores
+from ._describe_sls_delivery_config_response_body import DescribeSlsDeliveryConfigResponseBodyDeliveryConfigs
 from ._describe_user_profile_path_rules_response_body import DescribeUserProfilePathRulesResponseBodyDataRulesBlackPath
 from ._describe_user_profile_path_rules_response_body import DescribeUserProfilePathRulesResponseBodyDataRulesWhitePaths
 from ._describe_user_profile_path_rules_response_body import DescribeUserProfilePathRulesResponseBodyDataRules
@@ -597,6 +628,7 @@ from ._get_resource_renew_price_response_body import GetResourceRenewPriceRespon
 from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBodyDataRules
 from ._get_resource_renew_price_response_body import GetResourceRenewPriceResponseBodyData
 from ._get_runtime_channel_response_body import GetRuntimeChannelResponseBodyData
+from ._get_runtime_channel_qr_code_detail_response_body import GetRuntimeChannelQrCodeDetailResponseBodyData
 from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier
 from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata
 from ._get_runtime_model_config_response_body import GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList
@@ -650,6 +682,7 @@ from ._list_browser_instance_group_response_body import ListBrowserInstanceGroup
 from ._list_browser_instance_group_response_body import ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsUserLimit
 from ._list_browser_instance_group_response_body import ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels
 from ._list_browser_restricted_urls_response_body import ListBrowserRestrictedURLsResponseBodyData
+from ._list_command_invocation_results_response_body import ListCommandInvocationResultsResponseBodyCommandInvocationResultModel
 from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyDataAgentImInfo
 from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList
 from ._list_desktop_agent_runtime_response_body import ListDesktopAgentRuntimeResponseBodyDataResourceGroup
@@ -730,6 +763,7 @@ from ._modify_node_pool_amount_response_body import ModifyNodePoolAmountResponse
 from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods
 from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules
 from ._modify_node_pool_attribute_request import ModifyNodePoolAttributeRequestNodePoolStrategy
+from ._modify_wuying_server_spec_response_body import ModifyWuyingServerSpecResponseBodyModifyWuyingServerSpecModel
 from ._query_app_instance_group_report_list_response_body import QueryAppInstanceGroupReportListResponseBodyIndexData
 from ._query_connection_report_response_body import QueryConnectionReportResponseBodyConnectionReportDataModel
 from ._query_dau_report_data_response_body import QueryDauReportDataResponseBodyDauReportDataModel
@@ -743,6 +777,10 @@ from ._query_user_app_usage_time_rank_response_body import QueryUserAppUsageTime
 from ._query_user_usage_report_response_body import QueryUserUsageReportResponseBodyUserUsageReportDataModel
 from ._remove_resource_group_model_template_response_body import RemoveResourceGroupModelTemplateResponseBodyData
 from ._remove_runtime_model_template_response_body import RemoveRuntimeModelTemplateResponseBodyData
+from ._resize_wuying_server_disk_request import ResizeWuyingServerDiskRequestDataDiskList
+from ._resize_wuying_server_disk_response_body import ResizeWuyingServerDiskResponseBodyData
+from ._run_app_instance_command_response_body import RunAppInstanceCommandResponseBodyCommandResultModel
+from ._send_runtime_qr_code_config_channel_message_response_body import SendRuntimeQrCodeConfigChannelMessageResponseBodyData
 from ._start_task_for_create_image_request import StartTaskForCreateImageRequestResourceList
 from ._tag_cloud_resources_request import TagCloudResourcesRequestTags
 from ._tag_cloud_resources_response_body import TagCloudResourcesResponseBodyFailedResourcesTags
@@ -770,6 +808,9 @@ __all__ = [
     AuthorizeUsersForAppShrinkRequest,
     AuthorizeUsersForAppResponseBody,
     AuthorizeUsersForAppResponse,
+    BatchConfigRuntimeChannelRequest,
+    BatchConfigRuntimeChannelResponseBody,
+    BatchConfigRuntimeChannelResponse,
     BatchCreateLlmTemplatesRequest,
     BatchCreateLlmTemplatesResponseBody,
     BatchCreateLlmTemplatesResponse,
@@ -857,6 +898,9 @@ __all__ = [
     DescribeShareImageRequest,
     DescribeShareImageResponseBody,
     DescribeShareImageResponse,
+    DescribeSlsDeliveryConfigRequest,
+    DescribeSlsDeliveryConfigResponseBody,
+    DescribeSlsDeliveryConfigResponse,
     DescribeUserProfilePathRulesRequest,
     DescribeUserProfilePathRulesResponseBody,
     DescribeUserProfilePathRulesResponse,
@@ -927,6 +971,9 @@ __all__ = [
     GetRuntimeChannelRequest,
     GetRuntimeChannelResponseBody,
     GetRuntimeChannelResponse,
+    GetRuntimeChannelQrCodeDetailRequest,
+    GetRuntimeChannelQrCodeDetailResponseBody,
+    GetRuntimeChannelQrCodeDetailResponse,
     GetRuntimeModelConfigRequest,
     GetRuntimeModelConfigResponseBody,
     GetRuntimeModelConfigResponse,
@@ -988,6 +1035,9 @@ __all__ = [
     ListBrowserRestrictedURLsRequest,
     ListBrowserRestrictedURLsResponseBody,
     ListBrowserRestrictedURLsResponse,
+    ListCommandInvocationResultsRequest,
+    ListCommandInvocationResultsResponseBody,
+    ListCommandInvocationResultsResponse,
     ListDesktopAgentRuntimeRequest,
     ListDesktopAgentRuntimeResponseBody,
     ListDesktopAgentRuntimeResponse,
@@ -1110,6 +1160,9 @@ __all__ = [
     ModifyWuyingServerAttributeRequest,
     ModifyWuyingServerAttributeResponseBody,
     ModifyWuyingServerAttributeResponse,
+    ModifyWuyingServerSpecRequest,
+    ModifyWuyingServerSpecResponseBody,
+    ModifyWuyingServerSpecResponse,
     PageListAppInstanceGroupUserRequest,
     PageListAppInstanceGroupUserResponseBody,
     PageListAppInstanceGroupUserResponse,
@@ -1162,9 +1215,19 @@ __all__ = [
     RenewWuyingServerRequest,
     RenewWuyingServerResponseBody,
     RenewWuyingServerResponse,
+    ResizeWuyingServerDiskRequest,
+    ResizeWuyingServerDiskShrinkRequest,
+    ResizeWuyingServerDiskResponseBody,
+    ResizeWuyingServerDiskResponse,
     RestartWuyingServerRequest,
     RestartWuyingServerResponseBody,
     RestartWuyingServerResponse,
+    RunAppInstanceCommandRequest,
+    RunAppInstanceCommandResponseBody,
+    RunAppInstanceCommandResponse,
+    SendRuntimeQrCodeConfigChannelMessageRequest,
+    SendRuntimeQrCodeConfigChannelMessageResponseBody,
+    SendRuntimeQrCodeConfigChannelMessageResponse,
     SetUserProfilePathRulesRequest,
     SetUserProfilePathRulesResponseBody,
     SetUserProfilePathRulesResponse,
@@ -1232,6 +1295,8 @@ __all__ = [
     ValidateLlmTemplateConfigResponse,
     AuthorizeInstanceGroupRequestUserMeta,
     AuthorizeUsersForAppRequestUserMeta,
+    BatchConfigRuntimeChannelRequestChannelConfigs,
+    BatchConfigRuntimeChannelResponseBodyData,
     BatchCreateLlmTemplatesRequestLlmTemplateItems,
     BatchCreateLlmTemplatesResponseBodyDataSkippedItems,
     BatchCreateLlmTemplatesResponseBodyData,
@@ -1285,6 +1350,10 @@ __all__ = [
     DescribeEventsResponseBodyEventList,
     DescribeExportTasksResponseBodyExportTaskModel,
     DescribeShareImageResponseBodyData,
+    DescribeSlsDeliveryConfigRequestDeliveryScopes,
+    DescribeSlsDeliveryConfigResponseBodyDeliveryConfigsLogStoresDeliveryScopes,
+    DescribeSlsDeliveryConfigResponseBodyDeliveryConfigsLogStores,
+    DescribeSlsDeliveryConfigResponseBodyDeliveryConfigs,
     DescribeUserProfilePathRulesResponseBodyDataRulesBlackPath,
     DescribeUserProfilePathRulesResponseBodyDataRulesWhitePaths,
     DescribeUserProfilePathRulesResponseBodyDataRules,
@@ -1351,6 +1420,7 @@ __all__ = [
     GetResourceRenewPriceResponseBodyDataRules,
     GetResourceRenewPriceResponseBodyData,
     GetRuntimeChannelResponseBodyData,
+    GetRuntimeChannelQrCodeDetailResponseBodyData,
     GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListCreditMultiplier,
     GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoListInferenceMetadata,
     GetRuntimeModelConfigResponseBodyDataModelProviderListLlmInfoList,
@@ -1404,6 +1474,7 @@ __all__ = [
     ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsUserLimit,
     ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels,
     ListBrowserRestrictedURLsResponseBodyData,
+    ListCommandInvocationResultsResponseBodyCommandInvocationResultModel,
     ListDesktopAgentRuntimeResponseBodyDataAgentImInfo,
     ListDesktopAgentRuntimeResponseBodyDataAgentInstanceInfoList,
     ListDesktopAgentRuntimeResponseBodyDataResourceGroup,
@@ -1484,6 +1555,7 @@ __all__ = [
     ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods,
     ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules,
     ModifyNodePoolAttributeRequestNodePoolStrategy,
+    ModifyWuyingServerSpecResponseBodyModifyWuyingServerSpecModel,
     QueryAppInstanceGroupReportListResponseBodyIndexData,
     QueryConnectionReportResponseBodyConnectionReportDataModel,
     QueryDauReportDataResponseBodyDauReportDataModel,
@@ -1497,6 +1569,10 @@ __all__ = [
     QueryUserUsageReportResponseBodyUserUsageReportDataModel,
     RemoveResourceGroupModelTemplateResponseBodyData,
     RemoveRuntimeModelTemplateResponseBodyData,
+    ResizeWuyingServerDiskRequestDataDiskList,
+    ResizeWuyingServerDiskResponseBodyData,
+    RunAppInstanceCommandResponseBodyCommandResultModel,
+    SendRuntimeQrCodeConfigChannelMessageResponseBodyData,
     StartTaskForCreateImageRequestResourceList,
     TagCloudResourcesRequestTags,
     TagCloudResourcesResponseBodyFailedResourcesTags,

@@ -9,7 +9,7 @@ class ModifyAgentInstanceMemoryConfigResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The unique identifier of the request, which can be used for troubleshooting.
+        # The unique identifier of the request, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

@@ -38,12 +38,13 @@ class CreateBrowserInstanceGroupRequest(DaraModel):
         user_info: main_models.CreateBrowserInstanceGroupRequestUserInfo = None,
         users: List[main_models.CreateBrowserInstanceGroupRequestUsers] = None,
     ):
-        # The package ID.
+        # The package identifier.
         # 
         # You do not need to specify this parameter.
         self.app_package_type = app_package_type
         # Specifies whether to send notification emails for authorization and deauthorization.
         # 
+        # Valid values:
         # - `true`: Sends notification emails.
         # - `false`: Does not send notification emails.
         self.auth_notification_enabled = auth_notification_enabled
@@ -55,7 +56,7 @@ class CreateBrowserInstanceGroupRequest(DaraModel):
         # 
         # You do not need to specify this parameter.
         self.auto_renew = auto_renew
-        # The ID of the business region. This parameter is required.
+        # The business region identifier. This parameter is required.
         # 
         # This parameter is required.
         self.biz_region_id = biz_region_id
@@ -63,13 +64,13 @@ class CreateBrowserInstanceGroupRequest(DaraModel):
         self.browser_config = browser_config
         # The resource billing method.
         # 
-        # **For MAU scenarios:** Set this parameter to `AppInstance`, which indicates billing by instance resource.
+        # **For MAU scenarios:** Set this parameter to `AppInstance`, which indicates billing by instance resources.
         self.charge_resource_mode = charge_resource_mode
         # The billing method.
         # 
         # **For MAU scenarios:** Set this parameter to `PostPaid`, which indicates pay-as-you-go.
         self.charge_type = charge_type
-        # The name of the cloud browser group. This parameter is required. It is used to distinguish different browser groups in business management scenarios.
+        # The name of the cloud browser group. This parameter cannot be empty. It is used to distinguish different browser groups in business management scenarios.
         # 
         # This parameter is required.
         self.cloud_browser_name = cloud_browser_name
@@ -77,15 +78,15 @@ class CreateBrowserInstanceGroupRequest(DaraModel):
         # 
         # If this parameter is omitted, the default image available for the account is used. If no default image is available, the creation may fail.
         # 
-        # **Usage condition:** When `CookiesSync` is enabled, explicitly specify an image that supports cookie synchronization.
+        # **Usage condition:** When CookiesSync is enabled, explicitly specify an image that supports cookie synchronization.
         self.image_id = image_id
         # The instance type identifier. Select an instance type that matches the target region, operating system, and inventory conditions.
         # 
         # If this parameter is omitted, the default instance type is used.
         self.instance_type = instance_type
-        # The capacity configuration for the MAU billing scenario.
+        # The capacity configuration for MAU billing scenarios.
         self.max_amount = max_amount
-        # The configurations of the office network and website access restrictions. The selected office network must belong to the current account and reside in the region specified by BizRegionId.
+        # The configurations for the office network and website access restrictions. The selected office network must belong to the current account and be located in the region specified by `BizRegionId`.
         self.network = network
         # The node pool configuration.
         # 
@@ -93,43 +94,43 @@ class CreateBrowserInstanceGroupRequest(DaraModel):
         self.node_pool = node_pool
         # The operating system type. This parameter is required.
         # 
-        # Only `Windows` is supported. Other operating systems are not supported.
+        # Only Windows is supported. Other operating systems are not supported.
         self.os_type = os_type
-        # The number of subscription periods.
+        # The number of billing cycles for the purchase.
         # 
         # You do not need to specify this parameter.
         self.period = period
-        # The unit of the subscription period.
+        # The unit of the billing cycle for the purchase.
         # 
         # You do not need to specify this parameter.
         self.period_unit = period_unit
-        # The configurations of clipboard, video, watermark, session, and client access policies.
+        # The configurations for clipboard, video, watermark, session, and client access policies.
         self.policy = policy
-        # The promotion ID, which is used to specify the promotional offer applied to the order.
+        # The promotion identifier, which is used to specify the promotional offer applied to the order.
         # 
-        # The applicability and specific discounts are subject to the promotion rules. You do not need to specify this parameter if no promotional offer is applied.
+        # Applicability and specific discounts are subject to the promotion rules. You do not need to specify this parameter if no promotional offer is applied.
         self.promotion_id = promotion_id
-        # The connection security policy of the browser group.
+        # The connection security policy for the browser group.
         self.security_policy = security_policy
-        # The user data storage configuration of the browser group.
+        # The user data storage configuration for the browser group.
         self.storage_policy = storage_policy
         # The billing sub-type.
         # 
-        # **You must explicitly set this parameter to `mau`, which indicates billing by monthly active users.** Omitting this parameter does not enable MAU billing.
+        # **You must explicitly set this parameter to `mau`, which indicates billing by monthly active users.** Omitting this field does not enable MAU billing.
         self.sub_pay_type = sub_pay_type
         # Not supported. Leave this parameter empty.
         self.tag = tag
         # Not supported. Leave this parameter empty.
         self.timers = timers
-        # The list of authorized user group IDs. You can specify up to 10 user group IDs. The user groups must belong to the current account and match the account type of the office network.
+        # The list of authorized user group IDs. You can specify up to 10 user group IDs. The user groups must belong to the current account and match the office network account type.
         # 
-        # **Limits:** This parameter cannot be specified together with a non-empty `Users` parameter.
+        # **Limits:** This parameter cannot be specified together with a non-empty Users parameter.
         self.user_group_ids = user_group_ids
         # The authorized user account information. The information must match the user and office network types.
         self.user_info = user_info
-        # The list of authorized users. You can specify up to 200 users. The users must be created in advance and match the account type.
+        # The list of authorized users. You can specify up to 200 users. Users must be created in advance and match the account type.
         # 
-        # **Limit:** This parameter cannot be specified together with a non-empty UserGroupIds parameter.
+        # **Limits:** This parameter cannot be specified together with a non-empty `UserGroupIds` parameter.
         self.users = users
 
     def validate(self):
@@ -360,7 +361,7 @@ class CreateBrowserInstanceGroupRequestUsers(DaraModel):
         self,
         end_user_id: str = None,
     ):
-        # The identity of the authorized user to be granted authorization.
+        # Authorized user identifier of authorized user to be authorized.
         self.end_user_id = end_user_id
 
     def validate(self):
@@ -390,10 +391,11 @@ class CreateBrowserInstanceGroupRequestUserInfo(DaraModel):
     ):
         # The account type of the authorized user.
         # 
-        # - `simple`: convenience account.
+        # Valid values:
+        # - `simple`: Convenience account.
         # - `ad`: AD domain account.
         # 
-        # The account type must match the account types of the user and the office network.
+        # The account type must match the user and office network account types.
         self.type = type
 
     def validate(self):
@@ -526,10 +528,11 @@ class CreateBrowserInstanceGroupRequestStoragePolicyUserProfile(DaraModel):
         user_profile_size: int = None,
         user_profile_switch: bool = None,
     ):
-        # The size of the user data roaming disk, in GB.
+        # The disk size for user data roaming, in GB.
         self.user_profile_size = user_profile_size
         # Specifies whether to enable user data roaming.
         # 
+        # Valid values:
         # - `true`: Enables user data roaming.
         # - `false`: Disables user data roaming.
         # 
@@ -569,10 +572,11 @@ class CreateBrowserInstanceGroupRequestSecurityPolicy(DaraModel):
     ):
         # Specifies whether to skip the user authorization check when connecting to the application.
         # 
+        # Valid values:
         # - `true`: Skips the check.
         # - `false`: Performs the check.
         # 
-        # If `SecurityPolicy` is configured but this field is omitted, the user authorization check is performed.
+        # If you configure SecurityPolicy but omit this field, the user authorization check is performed.
         # 
         # **Note:** This field cannot be used to skip OpenAPI authentication and RAM permission verification.
         self.skip_user_auth_check = skip_user_auth_check
@@ -620,52 +624,49 @@ class CreateBrowserInstanceGroupRequestPolicy(DaraModel):
         # - `on`: enables screen capture prevention.
         # - `off`: disables screen capture prevention.
         self.app_content_protection = app_content_protection
-        # The IP address whitelist for client access, which is used to restrict the source IP addresses of clients that can access the cloud browser.
+        # The client access IP address whitelist, which is used to restrict the source IP addresses of clients that can access the cloud browser.
         self.authorize_access_policy_rules = authorize_access_policy_rules
-        # The access control list for clients.
+        # The client access control list.
         self.client_types = client_types
-        # Sets the clipboard transfer direction, content type, and size limits. read indicates transfer from the local PC to the cloud browser, and write indicates transfer from the cloud browser to the local PC.
+        # Sets the clipboard transfer direction, content types, and size limits. The value `read` indicates transfer from the local PC to the cloud browser, and `write` indicates transfer from the cloud browser to the local PC.
         self.clipboard_policy = clipboard_policy
-        # The data retention policy for sessions after disconnection.
+        # The session data retention policy after disconnection. Valid values:
+        # - `customTime`: Retains the session based on the session data retention policy. Custom durations through `DisconnectKeepSessionTime` are not supported.
+        # - `persistent`: The session is not subject to automatic release based on the disconnection duration.
         # 
-        # - `customTime`: Retains the session based on the data retention policy. Custom durations through `DisconnectKeepSessionTime` are not supported.
-        # - `persistent`: The session is not automatically released based on the disconnection duration.
-        # 
-        # **Note:** `persistent` is still affected by authorization and other release policies.
+        # **Note:** The `persistent` value is still subject to authorization and other release policies.
         self.disconnect_keep_session = disconnect_keep_session
         # Not supported. Leave this parameter empty.
         self.disconnect_keep_session_time = disconnect_keep_session_time
-        # The floating ball file manager switch.
-        # 
+        # Specifies whether to enable the file manager floating button. Valid values:
         # - `on`: Enabled.
         # - `off`: Disabled.
         # 
         # **Default value:** `off`.
         self.file_manager = file_manager
-        # The file transfer policy for the web client.
-        # 
-        # - `off`: Disables transfer.
-        # - `upload`: Allows upload only.
-        # - `download`: Allows download only.
-        # - `full`: Allows upload and download.
+        # The file transfer policy for the web client. Valid values:
+        # - `off`: Prohibits file transfer.
+        # - `upload`: Allows only uploads.
+        # - `download`: Allows only downloads.
+        # - `full`: Allows both uploads and downloads.
         # 
         # Configure this parameter in conjunction with the clipboard policy.
         self.html_5file_transfer = html_5file_transfer
-        # The cloud browser dual-screen switch.
+        # Specifies whether to enable the dual-screen mode for the cloud browser. Valid values:
+        # - `on`: Enables dual-screen mode.
+        # - `off`: Disables dual-screen mode.
         self.multi_screen = multi_screen
-        # The automatic disconnection switch for inactivity. The value is case-insensitive.
-        # 
+        # Specifies whether to automatically disconnect the session after a period of inactivity. The value is not case-sensitive. Valid values:
         # - `on`: Enabled.
         # - `off`: Disabled.
         # 
-        # When enabled, use `NoOperationDisconnectTime` to set the wait time.
+        # When enabled, use `NoOperationDisconnectTime` to set the idle timeout.
         self.no_operation_disconnect = no_operation_disconnect
-        # The wait time in seconds before disconnection is triggered due to user inactivity.
+        # The idle timeout in seconds before the session is automatically disconnected.
         # 
-        # **Conditions:** When `NoOperationDisconnect` is enabled, you must specify a value greater than 0.
+        # **Prerequisites:** When `NoOperationDisconnect` is enabled, you must specify a value greater than 0.
         self.no_operation_disconnect_time = no_operation_disconnect_time
-        # The policy version. The value is case-insensitive.
-        # 
+        # The policy version. The value is not case-sensitive. Valid values:
         # - `DEFAULT`: Legacy policy.
         # - `CENTER`: Centralized policy.
         # 
@@ -808,6 +809,7 @@ class CreateBrowserInstanceGroupRequestPolicyWatermarkPolicy(DaraModel):
     ):
         # The watermark switch. The value is case-insensitive.
         # 
+        # Valid values:
         # - `ON`: Enables the watermark.
         # - `OFF`: Disables the watermark.
         # 
@@ -815,9 +817,10 @@ class CreateBrowserInstanceGroupRequestPolicyWatermarkPolicy(DaraModel):
         self.watermark_switch = watermark_switch
         # The list of watermark content types.
         # 
-        # - `EndUserId`: the user identifier.
-        # - `InstanceGroupId`: the delivery group identifier.
-        # - `ClientTime`: the current time of the client.
+        # Valid values:
+        # - `EndUserId`: The user identifier.
+        # - `InstanceGroupId`: The delivery group identifier.
+        # - `ClientTime`: The current client time.
         # 
         # Use the watermark types supported by the browser and the client.
         self.watermark_types = watermark_types
@@ -898,114 +901,103 @@ class CreateBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         text_clipboard_write_limit: int = None,
         text_clipboard_write_size_unit: str = None,
     ):
-        # The clipboard transfer direction. The value is case-insensitive.
-        # 
-        # - `off`: Disables bidirectional transfer.
+        # The clipboard transfer direction. The value is not case-sensitive. Valid values:
+        # - `off`: Bidirectional transfer is prohibited.
         # - `read`: Allows copy and paste from the local PC to the cloud browser.
         # - `write`: Allows copy and paste from the cloud browser to the local PC.
-        # - `readwrite`: Allows bidirectional transfer.
+        # - `readwrite`: Bidirectional transfer is allowed.
         self.clipboard = clipboard
         # The clipboard size limit for inbound transfer from the local PC to the cloud browser.
         # 
-        # **Value limits:** The value ranges from 1 to 102400, and the unit is specified by ClipboardSizeUnit.
+        # **Value limits:** The value ranges from 1 to 102400. The unit is specified by ClipboardSizeUnit.
         # 
-        # This value range does not change with unit conversion.
+        # The value range remains unchanged regardless of the unit.
         self.clipboard_read_limit = clipboard_read_limit
-        # The clipboard control granularity.
-        # 
+        # The clipboard control granularity. Valid values:
         # - `global`: Unified control.
         # - `grained`: Separate control for text, rich text, and files.
         self.clipboard_scope = clipboard_scope
-        # The clipboard size unit.
-        # 
+        # The clipboard size unit. Valid values:
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         self.clipboard_size_unit = clipboard_size_unit
         # The clipboard size limit for outbound transfer from the cloud browser to the local PC.
         # 
-        # **Value limits:** The value ranges from 1 to 102400, and the unit is specified by ClipboardSizeUnit.
+        # **Value limits:** The value ranges from 1 to 102400. The unit is specified by ClipboardSizeUnit.
         # 
-        # This value range does not change with unit conversion.
+        # The value range remains unchanged regardless of the unit.
         self.clipboard_write_limit = clipboard_write_limit
-        # The clipboard transfer direction. The value is case-insensitive.
-        # 
-        # - `off`: Disables bidirectional transfer.
+        # The clipboard transfer direction. The value is not case-sensitive. Valid values:
+        # - `off`: Bidirectional transfer is prohibited.
         # - `read`: Allows copy and paste from the local PC to the cloud browser.
         # - `write`: Allows copy and paste from the cloud browser to the local PC.
-        # - `readwrite`: Allows bidirectional transfer.
+        # - `readwrite`: Bidirectional transfer is allowed.
         self.file_clipboard = file_clipboard
-        # The clipboard transfer direction. The value is case-insensitive.
-        # 
-        # - `off`: Disables bidirectional transfer.
+        # The clipboard transfer direction. The value is not case-sensitive. Valid values:
+        # - `off`: Bidirectional transfer is prohibited.
         # - `read`: Allows copy and paste from the local PC to the cloud browser.
         # - `write`: Allows copy and paste from the cloud browser to the local PC.
-        # - `readwrite`: Allows bidirectional transfer.
+        # - `readwrite`: Bidirectional transfer is allowed.
         self.rich_text_clipboard = rich_text_clipboard
-        # The rich text clipboard size limit.
+        # The clipboard size limit for rich text.
         # 
-        # **Value limits:** The value ranges from 1 to 204800, and the unit is specified by RichTextClipboardSizeUnit.
+        # **Value limits:** The value ranges from 1 to 204800. The unit is specified by RichTextClipboardSizeUnit.
         # 
-        # This value range does not change with unit conversion.
+        # The value range remains unchanged regardless of the unit.
         self.rich_text_clipboard_limit = rich_text_clipboard_limit
-        # The clipboard size limit for inbound transfer from the local PC to the cloud browser.
+        # The clipboard size limit for inbound rich text transfer from the local PC to the cloud browser.
         # 
-        # **Value limits:** The value ranges from 1 to 204800, and the unit is specified by RichTextClipboardReadSizeUnit.
+        # **Value limits:** The value ranges from 1 to 204800. The unit is specified by RichTextClipboardReadSizeUnit.
         # 
-        # This value range does not change with unit conversion.
+        # The value range remains unchanged regardless of the unit.
         self.rich_text_clipboard_read_limit = rich_text_clipboard_read_limit
-        # The clipboard size unit.
-        # 
+        # The clipboard size unit. Valid values:
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         # 
         # **Default value:** `KB`.
         self.rich_text_clipboard_read_size_unit = rich_text_clipboard_read_size_unit
-        # The clipboard size unit.
-        # 
+        # The clipboard size unit. Valid values:
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         self.rich_text_clipboard_size_unit = rich_text_clipboard_size_unit
-        # The clipboard size limit for outbound transfer from the cloud browser to the local PC.
+        # The clipboard size limit for outbound rich text transfer from the cloud browser to the local PC.
         # 
-        # **Value limits:** The value ranges from 1 to 204800, and the unit is specified by RichTextClipboardWriteSizeUnit.
+        # **Value limits:** The value ranges from 1 to 204800. The unit is specified by RichTextClipboardWriteSizeUnit.
         # 
-        # This value range does not change with unit conversion.
+        # The value range remains unchanged regardless of the unit.
         self.rich_text_clipboard_write_limit = rich_text_clipboard_write_limit
-        # The clipboard size unit.
-        # 
+        # The clipboard size unit. Valid values:
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         # 
         # **Default value:** `KB`.
         self.rich_text_clipboard_write_size_unit = rich_text_clipboard_write_size_unit
-        # The clipboard transfer direction. The value is case-insensitive.
-        # 
-        # - `off`: Disables bidirectional transfer.
+        # The clipboard transfer direction. The value is not case-sensitive. Valid values:
+        # - `off`: Bidirectional transfer is prohibited.
         # - `read`: Allows copy and paste from the local PC to the cloud browser.
         # - `write`: Allows copy and paste from the cloud browser to the local PC.
-        # - `readwrite`: Allows bidirectional transfer.
+        # - `readwrite`: Bidirectional transfer is allowed.
         self.text_clipboard = text_clipboard
-        # The clipboard size limit for inbound transfer from the local PC to the cloud browser.
+        # The clipboard size limit for inbound text transfer from the local PC to the cloud browser.
         # 
-        # **Value limits:** The value ranges from 1 to 102400, and the unit is specified by TextClipboardReadSizeUnit.
+        # **Value limits:** The value ranges from 1 to 102400. The unit is specified by TextClipboardReadSizeUnit.
         # 
-        # This value range does not change with unit conversion.
+        # The value range remains unchanged regardless of the unit.
         self.text_clipboard_read_limit = text_clipboard_read_limit
-        # The clipboard size unit.
-        # 
+        # The clipboard size unit. Valid values:
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         # 
         # **Default value:** `KB`.
         self.text_clipboard_read_size_unit = text_clipboard_read_size_unit
-        # The clipboard size limit for outbound transfer from the cloud browser to the local PC.
+        # The clipboard size limit for outbound text transfer from the cloud browser to the local PC.
         # 
-        # **Value limits:** The value ranges from 1 to 102400, and the unit is specified by TextClipboardWriteSizeUnit.
+        # **Value limits:** The value ranges from 1 to 102400. The unit is specified by TextClipboardWriteSizeUnit.
         # 
-        # This value range does not change with unit conversion.
+        # The value range remains unchanged regardless of the unit.
         self.text_clipboard_write_limit = text_clipboard_write_limit
-        # The clipboard size unit.
-        # 
+        # The clipboard size unit. Valid values:
         # - `B`: Bytes.
         # - `KB`: 1024 bytes.
         # 
@@ -1188,7 +1180,7 @@ class CreateBrowserInstanceGroupRequestPolicyAuthorizeAccessPolicyRules(DaraMode
     ):
         # The source CIDR block of the client that is allowed to access the cloud browser. Use the CIDR format.
         self.cidr_ip = cidr_ip
-        # The description of the IP address whitelist rule for client access.
+        # The description of the client access IP address whitelist rule.
         self.description = description
 
     def validate(self):
@@ -1228,11 +1220,11 @@ class CreateBrowserInstanceGroupRequestNodePool(DaraModel):
         # 
         # You do not need to specify this parameter.
         self.node_amount = node_amount
-        # The node specifications identity.
+        # The identity of the node specifications.
         # 
         # You do not need to specify this parameter.
         self.node_instance_type = node_instance_type
-        # The node scaling strategy.
+        # The node scaling policy.
         # 
         # You do not need to specify this parameter.
         self.strategy_type = strategy_type
@@ -1281,27 +1273,27 @@ class CreateBrowserInstanceGroupRequestNetwork(DaraModel):
         # The website access restriction mode.
         # 
         # - `ALLOW_ALL`: allows access to all domain names.
-        # - `ALLOW_LIST`: allows access only to websites in the whitelist.
+        # - `ALLOW_LIST`: allows access only to websites in the list.
         self.access_restriction = access_restriction
-        # The ID of the created office network. The office network must belong to the current account and reside in the target region specified by BizRegionId. You can view the office network ID on the Office Networks page in the Elastic Desktop Service Enterprise Edition console, or call the DescribeOfficeSites operation of Elastic Desktop Service Enterprise Edition to query the ID.
+        # The identifier of the created office network. The office network must belong to the current account and the target region specified by BizRegionId. You can view the office network ID on the Network & Storage > Office Networks page in the Wuying Workspace Enterprise Edition console, or call the DescribeOfficeSites operation of Wuying Workspace Enterprise Edition to query it.
         self.office_site_id = office_site_id
         # The list of websites that are allowed for access. This parameter is used in `ALLOW_LIST` mode.
         # 
         # **Limits:**
         # 
-        # - You can specify up to 20 URLs directly. To specify more than 20 URLs, use RestrictedURLsFilePath to import the URLs from a file.
-        # - This parameter cannot be specified together with RestrictedURLsFilePath.
-        # - The URLs in the list must be unique.
+        # - You can specify up to 20 URLs directly. To specify more than 20 URLs, use `RestrictedURLsFilePath` to import them from a file.
+        # - This parameter cannot be specified together with `RestrictedURLsFilePath`.
+        # - URLs in the list cannot be duplicated.
         self.restricted_urls = restricted_urls
-        # The path of the uploaded website whitelist file. This parameter is used in `ALLOW_LIST` mode.
+        # The path of the uploaded website allowlist file. This parameter is used in `ALLOW_LIST` mode.
         # 
-        # If you need to specify more than 20 URLs, import the URLs from a file. By default, you can configure up to 1,000 URLs.
+        # To specify more than 20 URLs, import them from a file. By default, you can configure up to 1,000 URLs.
         # 
-        # This parameter cannot be specified together with RestrictedURLs.
+        # This parameter cannot be specified together with `RestrictedURLs`.
         self.restricted_urls_file_path = restricted_urls_file_path
-        # The list of vSwitch IDs.
+        # The list of vSwitch identifiers.
         # 
-        # **Usage condition:** This parameter is required only when you use a custom office network. Do not specify this parameter for other types of office networks.
+        # **Conditions:** This parameter is required only when a custom office network is used. Do not specify this parameter for other types of office networks.
         # 
         # Select vSwitches that match the target business region and the custom office network.
         self.v_switch_ids = v_switch_ids
@@ -1397,9 +1389,9 @@ class CreateBrowserInstanceGroupRequestBrowserConfig(DaraModel):
     ):
         # The list of browser bookmarks.
         # 
-        # **Limits:** This parameter cannot be specified together with a non-empty `BookmarksFilePath`, and bookmark URLs cannot be duplicated.
+        # **Limits:** This parameter cannot be specified together with a non-empty BookmarksFilePath, and bookmark URLs cannot be duplicated.
         self.bookmarks = bookmarks
-        # The path of the uploaded bookmark file. This parameter cannot be specified together with a non-empty `Bookmarks` parameter.
+        # The path of the uploaded bookmark file. This parameter cannot be specified together with a non-empty Bookmarks parameter.
         # 
         # **File format:** A CSV file without a header. Specify the following four columns in order:
         # 
@@ -1413,7 +1405,7 @@ class CreateBrowserInstanceGroupRequestBrowserConfig(DaraModel):
         # - Fields are separated by commas. Field content cannot contain commas or line breaks, and quote escaping is not supported.
         # - The file path must belong to the upload directory specified for the current account and cannot contain `..`.
         self.bookmarks_file_path = bookmarks_file_path
-        # The browser startup parameters. For example, `--incognito` indicates that an incognito window is used.
+        # The browser startup parameters. For example, `--incognito` specifies that an incognito window is used.
         self.browser_param = browser_param
         # Specifies whether to synchronize cookies.
         self.cookies_sync = cookies_sync
@@ -1485,7 +1477,7 @@ class CreateBrowserInstanceGroupRequestBrowserConfigBookmarks(DaraModel):
         # 
         # This parameter is required.
         self.bookmark_name = bookmark_name
-        # The URL of the bookmark. This parameter is required when you create a bookmark. The length cannot exceed 1024 characters after leading and trailing spaces are removed.
+        # The URL of the bookmark. This parameter is required when you create a bookmark. The length cannot exceed 1,024 characters after leading and trailing spaces are removed.
         # 
         # This parameter is required.
         self.bookmark_url = bookmark_url

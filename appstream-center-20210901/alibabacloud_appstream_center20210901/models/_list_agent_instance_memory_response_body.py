@@ -16,7 +16,7 @@ class ListAgentInstanceMemoryResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The memory configurations and statistics information of the agent instances on the current page.
+        # The memory configurations and statistics information of agent instances on the current page.
         self.data = data
         # The current page number. Pages start from 1.
         self.page_number = page_number
@@ -101,46 +101,46 @@ class ListAgentInstanceMemoryResponseBodyData(DaraModel):
         user_orgs: List[main_models.ListAgentInstanceMemoryResponseBodyDataUserOrgs] = None,
         wy_id: str = None,
     ):
-        # The ID of the agent instance, which can be used to configure the instance memory switch or clear the instance memory.
+        # The Agent instance ID, which can be used to set the instance memory switch or clear the instance memory.
         self.agent_instance_id = agent_instance_id
-        # The instance lifetime and epoch status of the agent instance.
-        # - `UNDEPLOYED`: No deployment.
-        # - `DEPLOYING`: Deployment in progress.
-        # - `DEPLOYED`: Deployment completed.
+        # The lifecycle status of the agent instance.
+        # - `UNDEPLOYED`: Undeployed.
+        # - `DEPLOYING`: Deploying.
+        # - `DEPLOYED`: Deployed.
         # - `STARTING`: Starting.
         # - `RUNNING`: Running.
         # - `STOPPING`: Stopping.
         # - `STOPPED`: Stopped.
-        # - `UNAVAILABLE`: Not active.
+        # - `UNAVAILABLE`: Unavailable.
         # - `FAILED`: Failed.
-        # - `UPGRADING`: Upgrade in progress.
-        # - `REBUILDING`: Reset in progress.
+        # - `UPGRADING`: Upgrading.
+        # - `REBUILDING`: Resetting.
         # - `DELETING`: Deleting.
         # - `DELETED`: Deleted.
         self.agent_instance_status = agent_instance_status
-        # The business platform to which the agent belongs.
+        # The business platform to which the Agent belongs.
         self.agent_platform = agent_platform
-        # The provider of the agent.
+        # The Agent provider.
         self.agent_provider = agent_provider
         # The number of undeleted memory backups for the instance.
         self.backup_count = backup_count
         # The ID of the end user to which the instance belongs.
         self.end_user_id = end_user_id
-        # The time of the last memory update. The time is returned in the YYYY-MM-DDThh:mm:ss format, with optional fractional seconds. The time value uses the default time zone of the server, and the string does not include a time zone offset. This field is omitted if the last update time is unavailable.
+        # The time of the last memory update. The time is returned in the YYYY-MM-DDThh:mm:ss format, which may include fractional seconds. The time value uses the default time zone of the server, and the string does not contain a time zone offset. This field is omitted if the last update time is unavailable.
         self.last_memory_updated_at = last_memory_updated_at
-        # The time of the latest backup. The time is returned in the YYYY-MM-DDThh:mm:ss format, with optional fractional seconds. The time value uses the default time zone of the server, and the string does not include a time zone offset. This field is omitted if the backup time is unavailable.
+        # The time of the latest backup. The time is returned in the YYYY-MM-DDThh:mm:ss format, which may include fractional seconds. The time value uses the default time zone of the server, and the string does not contain a time zone offset. This field is omitted if the backup time is unavailable.
         self.latest_backup_at = latest_backup_at
         # The number of memory entries for the instance. This field may be omitted if statistics are unavailable.
         self.memory_count = memory_count
         # The memory switch configured for the instance, returned as a string. A value of `true` indicates that the switch is turned on. A value of `false` indicates that the switch is turned off.
         self.memory_enabled = memory_enabled
-        # The ID of the region where the runtime environment is located.
+        # The ID of the region where the runtime is located.
         self.region_id = region_id
         # The ID of the resource associated with the instance.
         self.resource_id = resource_id
         # The runtime ID of the instance.
         self.runtime_id = runtime_id
-        # The name of the runtime environment. The name of the associated resource is returned first. If the resource name is unavailable, the instance name is returned.
+        # The runtime name. The associated resource name is returned in preference. If the resource name is unavailable, the instance name is returned.
         self.runtime_name = runtime_name
         # The list of user groups to which the end user belongs.
         self.user_groups = user_groups
@@ -296,9 +296,9 @@ class ListAgentInstanceMemoryResponseBodyDataUserOrgs(DaraModel):
         org_id: str = None,
         org_name: str = None,
     ):
-        # The ID of the organization.
+        # The organization ID.
         self.org_id = org_id
-        # The name of the organization.
+        # The organization name.
         self.org_name = org_name
 
     def validate(self):
@@ -333,9 +333,9 @@ class ListAgentInstanceMemoryResponseBodyDataUserGroups(DaraModel):
         group_id: str = None,
         group_name: str = None,
     ):
-        # The ID of the user group.
+        # The user group ID.
         self.group_id = group_id
-        # The name of the user group.
+        # The user group name.
         self.group_name = group_name
 
     def validate(self):

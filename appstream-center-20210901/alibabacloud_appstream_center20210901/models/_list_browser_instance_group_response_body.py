@@ -22,7 +22,7 @@ class ListBrowserInstanceGroupResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of browser groups that meet the filter conditions.
         self.total_count = total_count
@@ -109,13 +109,13 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels(DaraModel):
         user_group_auth_mode: str = None,
         user_limit: main_models.ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsUserLimit = None,
     ):
-        # Specifies whether notification emails for authorization and revocation are enabled. A value of `true` indicates that the feature is enabled. A value of `false` indicates that the feature is disabled.
+        # Indicates whether authorization and revocation notification emails are enabled. A value of `true` indicates that the feature is enabled. A value of `false` indicates that the feature is disabled.
         self.auth_notification_enabled = auth_notification_enabled
         # The statistics of authorized users for the browser instance group.
         self.authorized_user_info = authorized_user_info
         # The business region where the browser instance group is located.
         self.biz_region_id = biz_region_id
-        # The current configurations of the browser.
+        # The current configuration of the browser.
         self.browser_config = browser_config
         # The ID of the cloud browser instance group.
         self.browser_instance_group_id = browser_instance_group_id
@@ -123,15 +123,15 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels(DaraModel):
         self.browser_instance_group_name = browser_instance_group_name
         # The ID of the browser instance group set to which the group belongs.
         self.browser_instance_group_set_id = browser_instance_group_set_id
-        # The billing method. In the MAU scenario, `PostPaid` is returned, which indicates pay-as-you-go.
+        # The billing method. In the monthly active user (MAU) scenario, `PostPaid` is returned, which indicates the pay-as-you-go billing method.
         self.charge_type = charge_type
-        # The default access URL of the browser instance group. Use the actual URL returned by the API operation. Replace the resource ID in the example.
+        # The default access URL of the browser instance group. Use the actual URL returned by the API operation. Replace the resource ID in the example with the actual value.
         self.default_access_url = default_access_url
         # The package duration information. This parameter is not applicable to the MAU scenario and may return an empty object.
         self.duration = duration
         # The expiration time of the browser instance group. This parameter is not applicable to the MAU scenario and is not returned.
         self.expired_time = expired_time
-        # The creation time of the browser instance group. The time follows the RFC 3339 standard in the `yyyy-MM-dd\\"T\\"HH:mm:ss.SSSXXX` format, which includes milliseconds and time zone offset. The actual POP response uses the UTC offset `+00:00`.
+        # The creation time of the browser instance group. The time follows the RFC 3339 standard in the `yyyy-MM-dd\\"T\\"HH:mm:ss.SSSXXX` format, which includes milliseconds and time zone offsets. The actual response uses the UTC offset `+00:00`.
         self.gmt_create = gmt_create
         # The homepage URL of the browser instance group.
         self.homepage = homepage
@@ -143,37 +143,37 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModels(DaraModel):
         self.network = network
         # The operating system type of the browser instance group. The current MAU product scenario uses Windows.
         self.os_type = os_type
-        # The policy configurations returned for the browser instance group. The policy fields are used to view existing settings and do not indicate that all corresponding creation parameters are configurable.
+        # The policy configuration returned for the browser instance group. The policy fields are used to view existing settings and do not indicate that all corresponding creation parameters are configurable.
         self.policy = policy
         # The browser group status. Valid values:
-        # - `DEPLOYING`: Deploying.
-        # - `PUBLISHED`: Published.
-        # - `FAILED`: Failed.
-        # - `EXPIRED`: Expired.
-        # - `CEASED`: Suspended due to overdue payment.
-        # - `MAINTAINING`: Updating.
-        # - `MAINTAIN_FAILED`: Update failed.
-        # - `DELETING`: Deleting.
-        # - `UNAVAILABLE`: Unavailable.
+        # - `DEPLOYING`: deploying
+        # - `PUBLISHED`: published
+        # - `FAILED`: publish failed
+        # - `EXPIRED`: expired
+        # - `CEASED`: suspended due to overdue payment
+        # - `MAINTAINING`: updating
+        # - `MAINTAIN_FAILED`: update failed
+        # - `DELETING`: deleting
+        # - `UNAVAILABLE`: unavailable
         self.status = status
         # The sub-billing type. In the MAU scenario, `mau` is returned, which indicates billing by monthly active users.
         self.sub_pay_type = sub_pay_type
-        # Specifies whether mixed authorization of users and user groups is supported. A value of `true` indicates that mixed authorization is supported, and a value of `false` indicates that mixed authorization is not supported. Evaluate this parameter based on the current authorization mode.
+        # Specifies whether mixed authorization of users and user groups is supported. A value of `true` indicates that mixed authorization is supported. A value of `false` indicates that mixed authorization is not supported. Evaluate this parameter based on the current authorization mode.
         self.support_user_group_mixed_auth = support_user_group_mixed_auth
         # The list of resource tags returned.
         self.tags = tags
         # The version of the browser. Valid values:
-        # - `Basic`: Basic Edition.
-        # - `Pro`: Premium Edition.
+        # - Basic: Basic Edition.
+        # - Pro: Premium Edition.
         # 
         # In the MAU scenario, the value is `Pro`.
         self.tier = tier
         # The session timer configuration returned. This parameter is used to view the effective settings and does not indicate that the create operation supports configuring this parameter.
         self.timers = timers
         # The current authorization mode. Valid values:
-        # - `Mixed`: mixed authorization of users and user groups.
-        # - `User`: user authorization.
-        # - `UserGroup`: user group authorization.
+        # - Mixed: Mixed authorization of users and user groups.
+        # - User: User authorization.
+        # - UserGroup: User group authorization.
         self.user_group_auth_mode = user_group_auth_mode
         # The user quota information.
         self.user_limit = user_limit
@@ -417,7 +417,7 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsTimers(DaraM
         interval: int = None,
         timer_type: str = None,
     ):
-        # The session retention duration after disconnection, in minutes. A value of `-1` indicates that the session is not unbound due to the timeout of this duration, but is still affected by authorization and other session release policies.
+        # The session retention duration after disconnection, in minutes. A value of `-1` indicates that the session is not unbound due to a timeout of this duration, but is still subject to authorization and other session release policies.
         self.interval = interval
         # The timer configuration type. A value of `SESSION_TIMEOUT` indicates the session retention duration after disconnection.
         self.timer_type = timer_type
@@ -497,17 +497,18 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicy(DaraM
         watermark_policy: main_models.ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyWatermarkPolicy = None,
     ):
         # The screen capture prevention switch. Valid values:
-        # 
-        # - `on`: Enables screen capture prevention.
-        # - `off`: Disables screen capture prevention.
+        # - `on`: Screen capture prevention is enabled.
+        # - `off`: Screen capture prevention is disabled.
         self.app_content_protection = app_content_protection
         # The IP address whitelist rules for client access.
         self.authorize_access_policy_rules = authorize_access_policy_rules
         # The list of client access control configurations.
         self.client_types = client_types
-        # Sets the clipboard transfer direction, content type, and size limit. `read` indicates transfer from the local PC to the cloud browser, and `write` indicates transfer from the cloud browser to the local PC.
+        # The settings for the clipboard transfer direction, content type, and size limit. A value of read indicates transfer from the local PC to the cloud browser, and a value of write indicates transfer from the cloud browser to the local PC.
         self.clipboard_policy = clipboard_policy
-        # The dual-screen switch for cloud browsers.
+        # The cloud browser dual-screen switch. Valid values:
+        # - on: Enables the dual-screen feature.
+        # - off: Disables the dual-screen feature.
         self.multi_screen = multi_screen
         # The video display policy for browser sessions.
         self.video_policy = video_policy
@@ -602,16 +603,16 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyWaterm
         watermark_switch: str = None,
         watermark_types: List[str] = None,
     ):
-        # Specifies whether to enable the watermark. Values are case-insensitive. Valid values:
-        # - `ON`: Enables the watermark.
-        # - `OFF`: Disables the watermark.
+        # The watermark switch. The value is not case-sensitive. Valid values:
+        # - ON: Enables the watermark.
+        # - OFF: Disables the watermark.
         # 
         # When the watermark is disabled, the watermark content type list is not used.
         self.watermark_switch = watermark_switch
         # The list of watermark content types. Valid values:
-        # - `EndUserId`: the user identifier.
-        # - `InstanceGroupId`: the delivery group identifier.
-        # - `ClientTime`: the current time of the client.
+        # - EndUserId: The user identifier.
+        # - InstanceGroupId: The delivery group identifier.
+        # - ClientTime: The current time of the client.
         # 
         # Use the watermark types supported by the browser and the client.
         self.watermark_types = watermark_types
@@ -676,11 +677,10 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClipbo
         clipboard: str = None,
     ):
         # The clipboard transfer direction. The value is case-insensitive. Valid values:
-        # 
-        # - `off`: Disables transfer in both directions.
-        # - `read`: Allows copy and paste from the local PC to the cloud browser.
-        # - `write`: Allows copy and paste from the cloud browser to the local PC.
-        # - `readwrite`: Enables transfer in both directions.
+        # - `off`: Bidirectional transfer is disabled.
+        # - `read`: Copy and paste from the local PC to the cloud browser are allowed.
+        # - `write`: Copy and paste from the cloud browser to the local PC are allowed.
+        # - `readwrite`: Bidirectional transfer is allowed.
         self.clipboard = clipboard
 
     def validate(self):
@@ -710,20 +710,17 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyClient
         status: str = None,
     ):
         # The client type. Valid values:
-        # 
         # - `windows`: Windows client.
         # - `macos`: macOS client.
         # - `html5`: Web client.
         # - `linux`: Linux client.
         # - `android`: Android client.
         # - `ios`: iOS client.
-        # 
         # This field reflects the existing access configurations and does not indicate that all clients are currently available for the product.
         self.client_type = client_type
         # The access policy switch for the client type. Valid values:
-        # 
-        # - `on`: Allows access from this type of client.
-        # - `off`: Denies access from this type of client.
+        # - `on`: Access from this type of client is allowed.
+        # - `off`: Access from this type of client is denied.
         self.status = status
 
     def validate(self):
@@ -764,9 +761,8 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsPolicyAuthor
         # The description of the client access rule.
         self.description = description
         # The action of the client access rule. Valid values:
-        # 
-        # - `allow`: Allows access.
-        # - `deny`: Denies access.
+        # - `allow`: Access is allowed.
+        # - `deny`: Access is denied.
         self.policy = policy
 
     def validate(self):
@@ -809,15 +805,13 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsNetwork(Dara
         v_switch_ids: List[str] = None,
     ):
         # The website access restriction mode. Valid values:
-        # 
-        # - `ALLOW_ALL`: Allows all domain names.
-        # - `ALLOW_LIST`: Allows only websites in the whitelist.
-        # 
-        # The returned value reflects the existing configurations of the browser instance group.
+        # - `ALLOW_ALL`: All domain names are allowed.
+        # - `ALLOW_LIST`: Only websites in the whitelist are allowed.
+        # The returned value reflects the existing configuration of the browser instance group.
         self.access_restriction = access_restriction
         # The ID of the office network to which the browser instance group belongs.
         self.office_site_id = office_site_id
-        # The list of vSwitch IDs used by the browser instance group. This parameter is available for scenarios where custom networks are configured.
+        # The list of vSwitch IDs used by the browser instance group. This parameter is available for scenarios where a custom network is configured.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -927,7 +921,7 @@ class ListBrowserInstanceGroupResponseBodyBrowserInstanceGroupModelsBrowserConfi
         self.browser_param = browser_param
         # The cookie synchronization configuration. A value of `true` indicates that synchronization is enabled. A value of `false` indicates that synchronization is disabled.
         self.cookies_sync = cookies_sync
-        # The URL of the homepage that opens when the browser starts.
+        # The homepage URL that opens when the browser starts.
         self.homepage = homepage
 
     def validate(self):

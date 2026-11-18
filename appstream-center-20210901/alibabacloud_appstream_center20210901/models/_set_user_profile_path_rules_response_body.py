@@ -15,7 +15,7 @@ class SetUserProfilePathRulesResponseBody(DaraModel):
         self.code = code
         # The error message returned when the request fails.
         self.message = message
-        # The unique identifier of the request, which can be used for troubleshooting.
+        # The unique identifier of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

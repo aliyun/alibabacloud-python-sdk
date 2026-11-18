@@ -425,6 +425,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.authorize_users_for_app_with_options_async(request, runtime)
 
+    def batch_config_runtime_channel_with_options(
+        self,
+        request: main_models.BatchConfigRuntimeChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchConfigRuntimeChannelResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.channel_configs):
+            body['ChannelConfigs'] = request.channel_configs
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchConfigRuntimeChannel',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchConfigRuntimeChannelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_config_runtime_channel_with_options_async(
+        self,
+        request: main_models.BatchConfigRuntimeChannelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchConfigRuntimeChannelResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.channel_configs):
+            body['ChannelConfigs'] = request.channel_configs
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchConfigRuntimeChannel',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchConfigRuntimeChannelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_config_runtime_channel(
+        self,
+        request: main_models.BatchConfigRuntimeChannelRequest,
+    ) -> main_models.BatchConfigRuntimeChannelResponse:
+        runtime = RuntimeOptions()
+        return self.batch_config_runtime_channel_with_options(request, runtime)
+
+    async def batch_config_runtime_channel_async(
+        self,
+        request: main_models.BatchConfigRuntimeChannelRequest,
+    ) -> main_models.BatchConfigRuntimeChannelResponse:
+        runtime = RuntimeOptions()
+        return await self.batch_config_runtime_channel_with_options_async(request, runtime)
+
     def batch_create_llm_templates_with_options(
         self,
         request: main_models.BatchCreateLlmTemplatesRequest,
@@ -2936,6 +3018,8 @@ class Client(OpenApiClient):
             body['BizRegionId'] = request.biz_region_id
         if not DaraCore.is_null(request.end_time):
             body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.end_user_ids):
+            body['EndUserIds'] = request.end_user_ids
         if not DaraCore.is_null(request.event_id):
             body['EventId'] = request.event_id
         if not DaraCore.is_null(request.event_type):
@@ -2994,6 +3078,8 @@ class Client(OpenApiClient):
             body['BizRegionId'] = request.biz_region_id
         if not DaraCore.is_null(request.end_time):
             body['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.end_user_ids):
+            body['EndUserIds'] = request.end_user_ids
         if not DaraCore.is_null(request.event_id):
             body['EventId'] = request.event_id
         if not DaraCore.is_null(request.event_type):
@@ -3200,6 +3286,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeShareImageResponse:
         runtime = RuntimeOptions()
         return await self.describe_share_image_with_options_async(request, runtime)
+
+    def describe_sls_delivery_config_with_options(
+        self,
+        request: main_models.DescribeSlsDeliveryConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSlsDeliveryConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.sls_region_id):
+            query['SlsRegionId'] = request.sls_region_id
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.delivery_scopes):
+            body_flat['DeliveryScopes'] = request.delivery_scopes
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSlsDeliveryConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSlsDeliveryConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sls_delivery_config_with_options_async(
+        self,
+        request: main_models.DescribeSlsDeliveryConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSlsDeliveryConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.log_store_name):
+            query['LogStoreName'] = request.log_store_name
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.sls_region_id):
+            query['SlsRegionId'] = request.sls_region_id
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.delivery_scopes):
+            body_flat['DeliveryScopes'] = request.delivery_scopes
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSlsDeliveryConfig',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSlsDeliveryConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sls_delivery_config(
+        self,
+        request: main_models.DescribeSlsDeliveryConfigRequest,
+    ) -> main_models.DescribeSlsDeliveryConfigResponse:
+        runtime = RuntimeOptions()
+        return self.describe_sls_delivery_config_with_options(request, runtime)
+
+    async def describe_sls_delivery_config_async(
+        self,
+        request: main_models.DescribeSlsDeliveryConfigRequest,
+    ) -> main_models.DescribeSlsDeliveryConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_sls_delivery_config_with_options_async(request, runtime)
 
     def describe_user_profile_path_rules_with_options(
         self,
@@ -5086,6 +5262,92 @@ class Client(OpenApiClient):
     ) -> main_models.GetRuntimeChannelResponse:
         runtime = RuntimeOptions()
         return await self.get_runtime_channel_with_options_async(request, runtime)
+
+    def get_runtime_channel_qr_code_detail_with_options(
+        self,
+        request: main_models.GetRuntimeChannelQrCodeDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRuntimeChannelQrCodeDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.code):
+            query['Code'] = request.code
+        if not DaraCore.is_null(request.runtime_id):
+            query['RuntimeId'] = request.runtime_id
+        if not DaraCore.is_null(request.runtime_type):
+            query['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRuntimeChannelQrCodeDetail',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRuntimeChannelQrCodeDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_runtime_channel_qr_code_detail_with_options_async(
+        self,
+        request: main_models.GetRuntimeChannelQrCodeDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRuntimeChannelQrCodeDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_platform):
+            query['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            query['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.code):
+            query['Code'] = request.code
+        if not DaraCore.is_null(request.runtime_id):
+            query['RuntimeId'] = request.runtime_id
+        if not DaraCore.is_null(request.runtime_type):
+            query['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRuntimeChannelQrCodeDetail',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRuntimeChannelQrCodeDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_runtime_channel_qr_code_detail(
+        self,
+        request: main_models.GetRuntimeChannelQrCodeDetailRequest,
+    ) -> main_models.GetRuntimeChannelQrCodeDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_runtime_channel_qr_code_detail_with_options(request, runtime)
+
+    async def get_runtime_channel_qr_code_detail_async(
+        self,
+        request: main_models.GetRuntimeChannelQrCodeDetailRequest,
+    ) -> main_models.GetRuntimeChannelQrCodeDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_runtime_channel_qr_code_detail_with_options_async(request, runtime)
 
     def get_runtime_model_config_with_options(
         self,
@@ -7086,6 +7348,112 @@ class Client(OpenApiClient):
     ) -> main_models.ListBrowserRestrictedURLsResponse:
         runtime = RuntimeOptions()
         return await self.list_browser_restricted_urls_with_options_async(request, runtime)
+
+    def list_command_invocation_results_with_options(
+        self,
+        request: main_models.ListCommandInvocationResultsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCommandInvocationResultsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_ids):
+            body['AppInstanceGroupIds'] = request.app_instance_group_ids
+        if not DaraCore.is_null(request.app_instance_persistent_ids):
+            body['AppInstancePersistentIds'] = request.app_instance_persistent_ids
+        if not DaraCore.is_null(request.invocation_id):
+            body['InvocationId'] = request.invocation_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCommandInvocationResults',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCommandInvocationResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_command_invocation_results_with_options_async(
+        self,
+        request: main_models.ListCommandInvocationResultsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCommandInvocationResultsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_ids):
+            body['AppInstanceGroupIds'] = request.app_instance_group_ids
+        if not DaraCore.is_null(request.app_instance_persistent_ids):
+            body['AppInstancePersistentIds'] = request.app_instance_persistent_ids
+        if not DaraCore.is_null(request.invocation_id):
+            body['InvocationId'] = request.invocation_id
+        if not DaraCore.is_null(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCommandInvocationResults',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCommandInvocationResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_command_invocation_results(
+        self,
+        request: main_models.ListCommandInvocationResultsRequest,
+    ) -> main_models.ListCommandInvocationResultsResponse:
+        runtime = RuntimeOptions()
+        return self.list_command_invocation_results_with_options(request, runtime)
+
+    async def list_command_invocation_results_async(
+        self,
+        request: main_models.ListCommandInvocationResultsRequest,
+    ) -> main_models.ListCommandInvocationResultsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_command_invocation_results_with_options_async(request, runtime)
 
     def list_desktop_agent_runtime_with_options(
         self,
@@ -10735,6 +11103,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_wuying_server_attribute_with_options_async(request, runtime)
 
+    def modify_wuying_server_spec_with_options(
+        self,
+        request: main_models.ModifyWuyingServerSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyWuyingServerSpecResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.after_status):
+            body['AfterStatus'] = request.after_status
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.promotion_id):
+            body['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.server_instance_type):
+            body['ServerInstanceType'] = request.server_instance_type
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyWuyingServerSpec',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyWuyingServerSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_wuying_server_spec_with_options_async(
+        self,
+        request: main_models.ModifyWuyingServerSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyWuyingServerSpecResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.after_status):
+            body['AfterStatus'] = request.after_status
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.promotion_id):
+            body['PromotionId'] = request.promotion_id
+        if not DaraCore.is_null(request.server_instance_type):
+            body['ServerInstanceType'] = request.server_instance_type
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyWuyingServerSpec',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyWuyingServerSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_wuying_server_spec(
+        self,
+        request: main_models.ModifyWuyingServerSpecRequest,
+    ) -> main_models.ModifyWuyingServerSpecResponse:
+        runtime = RuntimeOptions()
+        return self.modify_wuying_server_spec_with_options(request, runtime)
+
+    async def modify_wuying_server_spec_async(
+        self,
+        request: main_models.ModifyWuyingServerSpecRequest,
+    ) -> main_models.ModifyWuyingServerSpecResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_wuying_server_spec_with_options_async(request, runtime)
+
     def page_list_app_instance_group_user_with_options(
         self,
         request: main_models.PageListAppInstanceGroupUserRequest,
@@ -12297,12 +12751,105 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.renew_wuying_server_with_options_async(request, runtime)
 
+    def resize_wuying_server_disk_with_options(
+        self,
+        tmp_req: main_models.ResizeWuyingServerDiskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResizeWuyingServerDiskResponse:
+        tmp_req.validate()
+        request = main_models.ResizeWuyingServerDiskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_disk_list):
+            request.data_disk_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_disk_list, 'DataDiskList', 'json')
+        body = {}
+        if not DaraCore.is_null(request.data_disk_list_shrink):
+            body['DataDiskList'] = request.data_disk_list_shrink
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.system_disk_new_size):
+            body['SystemDiskNewSize'] = request.system_disk_new_size
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResizeWuyingServerDisk',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResizeWuyingServerDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resize_wuying_server_disk_with_options_async(
+        self,
+        tmp_req: main_models.ResizeWuyingServerDiskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResizeWuyingServerDiskResponse:
+        tmp_req.validate()
+        request = main_models.ResizeWuyingServerDiskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.data_disk_list):
+            request.data_disk_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_disk_list, 'DataDiskList', 'json')
+        body = {}
+        if not DaraCore.is_null(request.data_disk_list_shrink):
+            body['DataDiskList'] = request.data_disk_list_shrink
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.system_disk_new_size):
+            body['SystemDiskNewSize'] = request.system_disk_new_size
+        if not DaraCore.is_null(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResizeWuyingServerDisk',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResizeWuyingServerDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resize_wuying_server_disk(
+        self,
+        request: main_models.ResizeWuyingServerDiskRequest,
+    ) -> main_models.ResizeWuyingServerDiskResponse:
+        runtime = RuntimeOptions()
+        return self.resize_wuying_server_disk_with_options(request, runtime)
+
+    async def resize_wuying_server_disk_async(
+        self,
+        request: main_models.ResizeWuyingServerDiskRequest,
+    ) -> main_models.ResizeWuyingServerDiskResponse:
+        runtime = RuntimeOptions()
+        return await self.resize_wuying_server_disk_with_options_async(request, runtime)
+
     def restart_wuying_server_with_options(
         self,
         request: main_models.RestartWuyingServerRequest,
         runtime: RuntimeOptions,
     ) -> main_models.RestartWuyingServerResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enable_restart_retry):
+            query['EnableRestartRetry'] = request.enable_restart_retry
         body = {}
         if not DaraCore.is_null(request.product_type):
             body['ProductType'] = request.product_type
@@ -12311,6 +12858,7 @@ class Client(OpenApiClient):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
         body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -12335,6 +12883,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.RestartWuyingServerResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.enable_restart_retry):
+            query['EnableRestartRetry'] = request.enable_restart_retry
         body = {}
         if not DaraCore.is_null(request.product_type):
             body['ProductType'] = request.product_type
@@ -12343,6 +12894,7 @@ class Client(OpenApiClient):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
         body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -12374,6 +12926,202 @@ class Client(OpenApiClient):
     ) -> main_models.RestartWuyingServerResponse:
         runtime = RuntimeOptions()
         return await self.restart_wuying_server_with_options_async(request, runtime)
+
+    def run_app_instance_command_with_options(
+        self,
+        request: main_models.RunAppInstanceCommandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunAppInstanceCommandResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_ids):
+            body['AppInstanceGroupIds'] = request.app_instance_group_ids
+        if not DaraCore.is_null(request.app_instance_persistent_id):
+            body['AppInstancePersistentId'] = request.app_instance_persistent_id
+        if not DaraCore.is_null(request.app_instance_persistent_ids):
+            body['AppInstancePersistentIds'] = request.app_instance_persistent_ids
+        if not DaraCore.is_null(request.command_content):
+            body['CommandContent'] = request.command_content
+        if not DaraCore.is_null(request.command_param):
+            body['CommandParam'] = request.command_param
+        if not DaraCore.is_null(request.command_type):
+            body['CommandType'] = request.command_type
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.run_script_type):
+            body['RunScriptType'] = request.run_script_type
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunAppInstanceCommand',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunAppInstanceCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_app_instance_command_with_options_async(
+        self,
+        request: main_models.RunAppInstanceCommandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RunAppInstanceCommandResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_instance_group_id):
+            body['AppInstanceGroupId'] = request.app_instance_group_id
+        if not DaraCore.is_null(request.app_instance_group_ids):
+            body['AppInstanceGroupIds'] = request.app_instance_group_ids
+        if not DaraCore.is_null(request.app_instance_persistent_id):
+            body['AppInstancePersistentId'] = request.app_instance_persistent_id
+        if not DaraCore.is_null(request.app_instance_persistent_ids):
+            body['AppInstancePersistentIds'] = request.app_instance_persistent_ids
+        if not DaraCore.is_null(request.command_content):
+            body['CommandContent'] = request.command_content
+        if not DaraCore.is_null(request.command_param):
+            body['CommandParam'] = request.command_param
+        if not DaraCore.is_null(request.command_type):
+            body['CommandType'] = request.command_type
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
+        if not DaraCore.is_null(request.run_script_type):
+            body['RunScriptType'] = request.run_script_type
+        if not DaraCore.is_null(request.timeout):
+            body['Timeout'] = request.timeout
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RunAppInstanceCommand',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RunAppInstanceCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_app_instance_command(
+        self,
+        request: main_models.RunAppInstanceCommandRequest,
+    ) -> main_models.RunAppInstanceCommandResponse:
+        runtime = RuntimeOptions()
+        return self.run_app_instance_command_with_options(request, runtime)
+
+    async def run_app_instance_command_async(
+        self,
+        request: main_models.RunAppInstanceCommandRequest,
+    ) -> main_models.RunAppInstanceCommandResponse:
+        runtime = RuntimeOptions()
+        return await self.run_app_instance_command_with_options_async(request, runtime)
+
+    def send_runtime_qr_code_config_channel_message_with_options(
+        self,
+        request: main_models.SendRuntimeQrCodeConfigChannelMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendRuntimeQrCodeConfigChannelMessageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.runtime_ids):
+            body['RuntimeIds'] = request.runtime_ids
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendRuntimeQrCodeConfigChannelMessage',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendRuntimeQrCodeConfigChannelMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_runtime_qr_code_config_channel_message_with_options_async(
+        self,
+        request: main_models.SendRuntimeQrCodeConfigChannelMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendRuntimeQrCodeConfigChannelMessageResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.agent_platform):
+            body['AgentPlatform'] = request.agent_platform
+        if not DaraCore.is_null(request.agent_provider):
+            body['AgentProvider'] = request.agent_provider
+        if not DaraCore.is_null(request.code):
+            body['Code'] = request.code
+        if not DaraCore.is_null(request.runtime_ids):
+            body['RuntimeIds'] = request.runtime_ids
+        if not DaraCore.is_null(request.runtime_type):
+            body['RuntimeType'] = request.runtime_type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendRuntimeQrCodeConfigChannelMessage',
+            version = '2021-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendRuntimeQrCodeConfigChannelMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_runtime_qr_code_config_channel_message(
+        self,
+        request: main_models.SendRuntimeQrCodeConfigChannelMessageRequest,
+    ) -> main_models.SendRuntimeQrCodeConfigChannelMessageResponse:
+        runtime = RuntimeOptions()
+        return self.send_runtime_qr_code_config_channel_message_with_options(request, runtime)
+
+    async def send_runtime_qr_code_config_channel_message_async(
+        self,
+        request: main_models.SendRuntimeQrCodeConfigChannelMessageRequest,
+    ) -> main_models.SendRuntimeQrCodeConfigChannelMessageResponse:
+        runtime = RuntimeOptions()
+        return await self.send_runtime_qr_code_config_channel_message_with_options_async(request, runtime)
 
     def set_user_profile_path_rules_with_options(
         self,

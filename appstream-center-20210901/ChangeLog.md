@@ -1,3 +1,6 @@
+2026-11-18 Version: 5.17.2
+- Generated python 2021-09-01 for appstream-center.
+
 2026-11-14 Version: 5.17.0
 - Support API ClearAgentInstanceMemory.
 - Support API DescribeUserProfilePathRules.

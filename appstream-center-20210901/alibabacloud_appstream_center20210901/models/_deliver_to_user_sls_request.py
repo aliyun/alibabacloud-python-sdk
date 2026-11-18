@@ -17,21 +17,33 @@ class DeliverToUserSlsRequest(DaraModel):
         sls_region_id: str = None,
         ttl: int = None,
     ):
-        # The list of delivery scopes.
+        # The list of product scopes for which delivery needs to be configured. Specify at least one item. You cannot create duplicate enabled delivery configurations for the same account and product type.
         # 
         # This parameter is required.
         self.delivery_scopes = delivery_scopes
-        # The name of the existing SLS project. You must specify either this parameter or ProjectName.
+        # The name of an existing SLS project. The name must start with `elastic-desktop-` and the project must already exist in the specified SLS region of the current account.
+        # 
+        # Specify either this parameter or `ProjectName`.
         self.existed_project_name = existed_project_name
-        # The name of the Logstore.
+        # The name of the destination Logstore. The name must start with `elastic_desktop_`. If the Logstore does not exist, it is created. If the Logstore already exists, it is reused.
+        # 
+        # If this parameter is not specified, the part after `elastic-desktop-` in the selected project name is used as a suffix to generate a name that starts with `elastic_desktop_`. For example, if the project name is `elastic-desktop-audit`, the default Logstore name is `elastic_desktop_audit`.
         self.log_store_name = log_store_name
-        # The name of the SLS project. You must specify either this parameter or ExistedProjectName.
+        # The name of the SLS project to be created or reused. The name must start with `elastic-desktop-`.
+        # 
+        # Specify either this parameter or `ExistedProjectName`. If the project does not exist, it is created. If the project already exists, it is reused.
         self.project_name = project_name
-        # The region ID of SLS.
+        # The ID of the region where the destination SLS project is located. This parameter is required.
         # 
         # This parameter is required.
         self.sls_region_id = sls_region_id
-        # The data retention period in days. Default value: 30.
+        # The data retention period of the new Logstore. Unit: days.
+        # 
+        # **Valid values:** 1 to 3650.
+        # 
+        # **Default value:** 30.
+        # 
+        # If an existing Logstore is reused, this operation does not update its data retention period.
         self.ttl = ttl
 
     def validate(self):
@@ -97,7 +109,7 @@ class DeliverToUserSlsRequestDeliveryScopes(DaraModel):
         self,
         product_type: str = None,
     ):
-        # The product type.
+        # The product type to which the logs belong. Specify the product type for which you want to enable log delivery. For example, `CloudBrowser` indicates Cloud Browser.
         # 
         # This parameter is required.
         self.product_type = product_type

@@ -32,13 +32,13 @@ class ModifyBrowserInstanceGroupRequest(DaraModel):
         self.cloud_browser_name = cloud_browser_name
         # The maximum resource count. This parameter takes effect for the pay-as-you-go billing method based on monthly active users.
         self.max_amount = max_amount
-        # The network configurations.
+        # The network configuration.
         self.network = network
         # The access policy.
         self.policy = policy
-        # The storage-related policy.
+        # The storage-related policies.
         self.storage_policy = storage_policy
-        # The timer.
+        # The timers.
         self.timers = timers
 
     def validate(self):
@@ -171,7 +171,7 @@ class ModifyBrowserInstanceGroupRequestStoragePolicy(DaraModel):
         self,
         user_profile: main_models.ModifyBrowserInstanceGroupRequestStoragePolicyUserProfile = None,
     ):
-        # The user roaming-related policy.
+        # The user roaming-related policies.
         self.user_profile = user_profile
 
     def validate(self):
@@ -246,31 +246,34 @@ class ModifyBrowserInstanceGroupRequestPolicy(DaraModel):
     ):
         # Specifies whether to enable screen capture prevention.
         self.app_content_protection = app_content_protection
-        # The server-side access IP address whitelist.
+        # The server access IP address whitelist.
         self.authorize_access_policy_rules = authorize_access_policy_rules
-        # The client type control for logon.
+        # The logon client type control settings.
         self.client_types = client_types
         # The clipboard policies.
         self.clipboard_policy = clipboard_policy
-        # The data retention policy upon disconnection.
+        # The data retention policy after disconnection.
         self.disconnect_keep_session = disconnect_keep_session
-        # The session retention duration upon disconnection.
+        # The session retention duration after disconnection.
         self.disconnect_keep_session_time = disconnect_keep_session_time
-        # The switch for the file manager in the floating button.
+        # The floating button file manager switch.
         self.file_manager = file_manager
-        # The file transfer policy for the web client.
+        # The web client file transfer policy.
         self.html_5file_transfer = html_5file_transfer
-        # The dual-screen switch for the cloud browser.
+        # The cloud browser dual-screen switch.
+        # 
+        # - `on`: Enables the dual-screen feature.
+        # - `off`: Disables the dual-screen feature.
         self.multi_screen = multi_screen
-        # The policy for disconnecting upon inactivity.
+        # The disconnect on inactivity policy.
         self.no_operation_disconnect = no_operation_disconnect
-        # The inactivity disconnect time, in seconds.
+        # The inactivity disconnect time in seconds.
         self.no_operation_disconnect_time = no_operation_disconnect_time
         # The policy ID.
         self.policy_id = policy_id
         # The policy version.
         self.policy_version = policy_version
-        # The server access IP address whitelist to be revoked.
+        # The server access IP address whitelists to be revoked.
         self.revoke_access_policy_rules = revoke_access_policy_rules
         # The video policy.
         self.video_policy = video_policy
@@ -493,7 +496,7 @@ class ModifyBrowserInstanceGroupRequestPolicyRevokeAccessPolicyRules(DaraModel):
         cidr_ip: str = None,
         description: str = None,
     ):
-        # The IPv4 address or CIDR block to be revoked.
+        # The IPv4 addresses or CIDR blocks to be revoked.
         self.cidr_ip = cidr_ip
         # The description of the access IP address whitelist rule to be revoked.
         self.description = description
@@ -548,13 +551,13 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
     ):
         # The clipboard policy.
         self.clipboard = clipboard
-        # The read length limit for the clipboard.
+        # The clipboard read length limit.
         self.clipboard_read_limit = clipboard_read_limit
         # The clipboard control scope.
         self.clipboard_scope = clipboard_scope
         # The clipboard size unit.
         self.clipboard_size_unit = clipboard_size_unit
-        # The write length limit for the clipboard.
+        # The clipboard write length limit.
         self.clipboard_write_limit = clipboard_write_limit
         # The file clipboard policy.
         self.file_clipboard = file_clipboard
@@ -562,25 +565,25 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         self.rich_text_clipboard = rich_text_clipboard
         # The rich text clipboard limit.
         self.rich_text_clipboard_limit = rich_text_clipboard_limit
-        # The outbound size limit for rich text in the clipboard.
+        # The rich text clipboard read limit.
         self.rich_text_clipboard_read_limit = rich_text_clipboard_read_limit
-        # The outbound size unit for rich text in the clipboard.
+        # The rich text clipboard read size unit.
         self.rich_text_clipboard_read_size_unit = rich_text_clipboard_read_size_unit
         # The rich text clipboard size unit.
         self.rich_text_clipboard_size_unit = rich_text_clipboard_size_unit
-        # The inbound size limit for rich text in the clipboard.
+        # The rich text clipboard write limit.
         self.rich_text_clipboard_write_limit = rich_text_clipboard_write_limit
-        # The inbound size unit for rich text in the clipboard.
+        # The rich text clipboard write size unit.
         self.rich_text_clipboard_write_size_unit = rich_text_clipboard_write_size_unit
         # The text clipboard policy.
         self.text_clipboard = text_clipboard
-        # The outbound size limit for text in the clipboard.
+        # The text clipboard read limit.
         self.text_clipboard_read_limit = text_clipboard_read_limit
-        # The outbound size unit for text in the clipboard.
+        # The text clipboard read size unit.
         self.text_clipboard_read_size_unit = text_clipboard_read_size_unit
-        # The inbound size limit for text in the clipboard.
+        # The text clipboard write limit.
         self.text_clipboard_write_limit = text_clipboard_write_limit
-        # The inbound size unit for text in the clipboard.
+        # The text clipboard write size unit.
         self.text_clipboard_write_size_unit = text_clipboard_write_size_unit
 
     def validate(self):
@@ -711,7 +714,7 @@ class ModifyBrowserInstanceGroupRequestPolicyClientTypes(DaraModel):
         client_type: str = None,
         status: str = None,
     ):
-        # The type of the client.
+        # The client type.
         self.client_type = client_type
         # The status.
         self.status = status
@@ -787,13 +790,13 @@ class ModifyBrowserInstanceGroupRequestNetwork(DaraModel):
         restricted_urls: List[main_models.ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs] = None,
         restricted_urls_file_path: str = None,
     ):
-        # The type of access restriction.
+        # The access restriction type.
         self.access_restriction = access_restriction
         # The list of domain names to remove.
         self.remove_restricted_urlids = remove_restricted_urlids
-        # The restricted domain name configurations.
+        # The restricted domain name configuration.
         self.restricted_urls = restricted_urls
-        # The file path for network restricted URLs.
+        # The network restricted URL file path.
         self.restricted_urls_file_path = restricted_urls_file_path
 
     def validate(self):
@@ -848,7 +851,7 @@ class ModifyBrowserInstanceGroupRequestNetworkRestrictedURLs(DaraModel):
         restricted_urlid: str = None,
         url: str = None,
     ):
-        # The ID of the domain name configuration. This parameter is required only when you modify the configuration.
+        # The domain name configuration ID. Required only when modifying an existing configuration.
         self.restricted_urlid = restricted_urlid
         # The domain name.
         self.url = url

@@ -12,19 +12,19 @@ class ModifyTenantMemoryConfigRequest(DaraModel):
         biz_type: int = None,
         enabled: bool = None,
     ):
-        # The business platform to which the agent belongs. Specify the platform that corresponds to the tenant memory configuration, such as `ENTERPRISE` for the enterprise platform.
+        # The business platform to which the agent belongs. Specify the platform that corresponds to the tenant memory configuration, such as the enterprise platform `ENTERPRISE`.
         # 
         # This parameter is required.
         self.agent_platform = agent_platform
-        # The agent provider. This parameter is used together with AgentPlatform and BizType to locate the memory configuration. You must use a configured business combination.
+        # The agent provider. Used together with AgentPlatform and BizType to locate the memory configuration. A configured business combination must be used.
         # 
         # This parameter is required.
         self.agent_provider = agent_provider
-        # The business type code. This parameter is used together with the provider and business platform. Common values include `1` (Enterprise Edition), `10` (Personal Edition), and `20` (Commercial Edition).
+        # The business type code. Used together with the provider and business platform. Common values include `1` (Enterprise Edition), `10` (Personal Edition), and `20` (Commercial Edition).
         # 
         # This parameter is required.
         self.biz_type = biz_type
-        # Specifies whether the memory feature for the business combination is enabled. A value of `true` enables the feature, and `false` disables the feature. If this parameter is omitted, the current setting is retained.
+        # Specifies whether to enable the memory feature for the business combination. A value of `true` enables the feature, and `false` disables it. If this parameter is omitted, the current status is retained.
         self.enabled = enabled
 
     def validate(self):
