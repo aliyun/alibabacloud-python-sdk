@@ -13,9 +13,9 @@ class UpdateTaskInstancesRequest(DaraModel):
         comment: str = None,
         task_instances: List[main_models.UpdateTaskInstancesRequestTaskInstances] = None,
     ):
-        # The remarks.
+        # The comment.
         self.comment = comment
-        # The list of node instances.
+        # The list of task instances.
         self.task_instances = task_instances
 
     def validate(self):
@@ -60,7 +60,7 @@ class UpdateTaskInstancesRequestTaskInstances(DaraModel):
         priority: int = None,
         runtime_resource: str = None,
     ):
-        # The information about the associated data source.
+        # The associated data source information.
         self.data_source = data_source
         # The node instance ID.
         # 

@@ -13,9 +13,9 @@ class ResumeTaskInstancesResponseBody(DaraModel):
         request_id: str = None,
         success_info: Dict[str, main_models.SuccessInfoValue] = None,
     ):
-        # The ID of the request. You can use the ID to locate logs and troubleshoot issues.
+        # The ID of the request.
         self.request_id = request_id
-        # The results of the batch operation. The results are returned as a map where the keys are task instance IDs and the values are the result details.
+        # The results of the batch operation. The results are returned as a map where the keys are node instance IDs and the values are the result details.
         self.success_info = success_info
 
     def validate(self):

@@ -12,7 +12,7 @@ class ResumeTaskInstancesShrinkRequest(DaraModel):
     ):
         # The comment.
         self.comment = comment
-        # The list of task instance IDs.
+        # The list of node instance IDs.
         self.ids_shrink = ids_shrink
 
     def validate(self):
