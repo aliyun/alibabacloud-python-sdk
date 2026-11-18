@@ -15,7 +15,7 @@ class ModifyDBInstanceAutoUpgradeRequest(DaraModel):
         security_token: str = None,
         value: str = None,
     ):
-        # The instance ID. You can call DescribeDBInstances to obtain the instance ID.
+        # The ID of the instance. You can call the DescribeDBInstances operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -24,7 +24,7 @@ class ModifyDBInstanceAutoUpgradeRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The automatic minor engine version update switch. Valid values:
+        # The automatic minor version upgrade switch. Valid values:
         # * **1**: Enabled.
         # * **0**: Disabled.
         # 

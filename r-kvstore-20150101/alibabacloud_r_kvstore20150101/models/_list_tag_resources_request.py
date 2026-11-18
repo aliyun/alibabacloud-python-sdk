@@ -21,7 +21,7 @@ class ListTagResourcesRequest(DaraModel):
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
         # The token used to start the next query to return more results.
-        # > You do not need to provide this parameter for the first query. If a query does not return all results, you can pass the **NextToken** value returned from the previous query in subsequent queries to continue the query.
+        # > You do not need to specify this parameter for the first query. If a query does not return all results, you can pass the **NextToken** value returned from the previous query in subsequent queries to continue the query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31,7 +31,7 @@ class ListTagResourcesRequest(DaraModel):
         self.region_id = region_id
         # The list of instance IDs.
         # 
-        # > * You must specify at least one of this parameter and the **Tag** parameter.
+        # > * You must specify either this parameter or the **Tag** parameter.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -39,7 +39,7 @@ class ListTagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag information of the instance. You must specify at least one of this parameter and the **ResourceId** parameter.
+        # The tag information of the instance. You must specify either this parameter or the **ResourceId** parameter.
         self.tag = tag
 
     def validate(self):
@@ -124,9 +124,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

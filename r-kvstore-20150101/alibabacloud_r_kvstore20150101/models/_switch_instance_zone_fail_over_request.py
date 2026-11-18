@@ -15,13 +15,12 @@ class SwitchInstanceZoneFailOverRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The duration of the simulated failure. Unit: minutes.
-        # Valid values:
+        # The duration of the failure. Unit: minutes. Valid values:
         # - 5
         # - 10
         # - 30
         self.site_fault_time = site_fault_time
-        # The target zone ID.
+        # The ID of the target zone.
         self.target_zone_id = target_zone_id
 
     def validate(self):

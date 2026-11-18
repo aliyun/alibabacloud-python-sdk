@@ -19,19 +19,19 @@ class UntagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the instance. Valid values:
-        # * **true**: removes all tags from the instance.
-        # * **false**: does not remove all tags from the instance. This is the default value.
+        # Specifies whether to remove all tags from the instances. Valid values:
+        # * **true**: Removes all tags from the instances.
+        # * **false**: Does not remove all tags from the instances. This is the default value.
         # 
-        # > If both **TagKey.N** and this parameter are specified, this parameter does not take effect.
+        # > If you specify both **TagKey.N** and this parameter, this parameter does not take effect.
         self.all = all
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query the region ID.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The list of instance IDs.
+        # The instance IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -41,7 +41,7 @@ class UntagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tag keys.
+        # The tag keys.
         self.tag_key = tag_key
 
     def validate(self):

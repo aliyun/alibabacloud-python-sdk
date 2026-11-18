@@ -24,23 +24,23 @@ class DescribeDedicatedClusterInstanceListRequest(DaraModel):
         security_token: str = None,
         zone_id: str = None,
     ):
-        # The dedicated cluster ID. You can obtain the ID on the dedicated cluster information page in the ApsaraDB for MyBase console.
+        # The dedicated cluster ID. You can obtain the ID on the Dedicated Cluster Information page in the ApsaraDB MyBase console.
         # > To specify multiple IDs, separate them with commas (,).
         self.cluster_id = cluster_id
         # The host ID in the dedicated cluster. You can call [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/200944.html) to query the host ID.
         # > To specify multiple IDs, separate them with commas (,).
         self.dedicated_host_name = dedicated_host_name
-        # The database engine. Set the value to **Redis**.
+        # The database engine type. Set the value to **Redis**.
         self.engine = engine
         # The database engine version. Set the value to **5.0**.
         self.engine_version = engine_version
         # The instance ID.
-        # > The instance must be created in a dedicated cluster. For more information, see [ApsaraDB for MyBase](https://help.aliyun.com/document_detail/141455.html).
+        # > The instance must be created in a dedicated cluster. For more information, see [ApsaraDB MyBase](https://help.aliyun.com/document_detail/141455.html).
         self.instance_id = instance_id
         # The network type of the instance endpoint. Valid values:
         # * **0**: Internet.
         # * **1**: Classic network.
-        # * **2**: Virtual Private Cloud (VPC).
+        # * **2**: VPC.
         self.instance_net_type = instance_net_type
         # The instance status. Valid values:
         # * **0**: Creating.
@@ -54,18 +54,18 @@ class DescribeDedicatedClusterInstanceListRequest(DaraModel):
         self.instance_status = instance_status
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be greater than **0** and less than or equal to the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be greater than **0** and cannot exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The maximum number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query region IDs.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) to query available regions.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/473764.html) to query zone IDs.
+        # The zone ID. You can call [DescribeZones](https://help.aliyun.com/document_detail/473764.html) to query available zones.
         self.zone_id = zone_id
 
     def validate(self):

@@ -20,9 +20,9 @@ class ModifyInspectionScheduleRequest(DaraModel):
     ):
         # The cron expression.
         self.cron_expression = cron_expression
-        # Specifies whether to start the scheduled task. Default value: true.
+        # Specifies whether to enable the scheduled task. Default value: true.
         self.enabled = enabled
-        # The specified inspection items. The following inspection items are supported:
+        # The specified inspection items. Supported inspection items:
         # - RESOURCE_USAGE
         # - BIGKEY
         # - HOTKEY
@@ -37,7 +37,7 @@ class ModifyInspectionScheduleRequest(DaraModel):
         self.instance_id = instance_id
         # The list of associated instance IDs.
         self.instance_ids = instance_ids
-        # The report language.
+        # The language of the report.
         self.report_language = report_language
         # The ID of the timed scheduling.
         self.schedule_id = schedule_id

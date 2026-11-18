@@ -11,11 +11,11 @@ class DescribeTaskDetailResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The time when the node started. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The start time of the task, in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC time).
         self.begin_time = begin_time
         # The request ID.
         self.request_id = request_id
-        # The node status.
+        # The task status.
         self.status = status
 
     def validate(self):

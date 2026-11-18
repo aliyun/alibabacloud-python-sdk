@@ -16,9 +16,9 @@ class DescribeParameterTemplatesResponseBody(DaraModel):
         parameters: main_models.DescribeParameterTemplatesResponseBodyParameters = None,
         request_id: str = None,
     ):
-        # The database engine. The value is always **Redis**.
+        # The database engine type. The value is **Redis**.
         self.engine = engine
-        # The major engine version of the instance.
+        # The major version of the instance.
         self.engine_version = engine_version
         # The number of parameters.
         self.parameter_count = parameter_count

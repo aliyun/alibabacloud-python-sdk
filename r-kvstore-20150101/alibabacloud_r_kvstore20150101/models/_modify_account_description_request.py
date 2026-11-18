@@ -17,14 +17,14 @@ class ModifyAccountDescriptionRequest(DaraModel):
         security_token: str = None,
         source_biz: str = None,
     ):
-        # The account description to set.
-        # * The description must start with a Chinese character or an English letter and cannot start with `http://` or `https://`.
-        # * The description can contain Chinese characters, English letters, digits, underscores (_), and hyphens (-).
-        # * The description must be 2 to 256 characters in length.
+        # The description of the account.
+        # * It must start with a Chinese character or a letter, and cannot start with `http://` or `https://`.
+        # * It can contain Chinese characters, letters, digits, underscores (_), and hyphens (-).
+        # * It must be 2 to 256 characters in length.
         # 
         # This parameter is required.
         self.account_description = account_description
-        # The account name. You can call [DescribeAccounts](https://help.aliyun.com/document_detail/473816.html) to obtain the account name.
+        # The account name. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/473816.html) operation to query the account name.
         # 
         # This parameter is required.
         self.account_name = account_name
@@ -37,7 +37,7 @@ class ModifyAccountDescriptionRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # This parameter is used only for internal maintenance. You do not need to specify this parameter.
+        # This parameter is used only for internal maintenance and does not need to be specified.
         self.source_biz = source_biz
 
     def validate(self):

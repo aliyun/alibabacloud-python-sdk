@@ -21,19 +21,20 @@ class TransformToPrePaidRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # * **true**: enables automatic payment.
-        # * **false**: disables automatic payment (default). You must manually renew the instance in the console. For more information, see [Manual renewal](https://help.aliyun.com/document_detail/26352.html).
+        # * **false**: disables automatic payment (default). You must manually renew the instance in the console. For more information, refer to [Manually renew an instance](https://help.aliyun.com/document_detail/26352.html).
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # 
         # * **true**: enables auto-renewal.
         # * **false**: disables auto-renewal.
         self.auto_renew = auto_renew
-        # The auto-renewal epoch. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+        # The Unified Auto Renewal Cycle. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
         # 
         # > This parameter is required when **AutoRenew** is set to **true**.
         self.auto_renew_period = auto_renew_period
+        # The coupon code. Default value: default.
         self.coupon_no = coupon_no
-        # Instance ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance ID.
+        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

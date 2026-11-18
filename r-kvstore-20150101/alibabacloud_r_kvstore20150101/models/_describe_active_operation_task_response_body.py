@@ -20,11 +20,11 @@ class DescribeActiveOperationTaskResponseBody(DaraModel):
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The maximum number of entries per page.
+        # The maximum number of entries returned on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -95,39 +95,38 @@ class DescribeActiveOperationTaskResponseBodyItems(DaraModel):
         switch_time: str = None,
         task_type: str = None,
     ):
-        # The time when the O&M task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The time when the O&M task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.created_time = created_time
-        # The database type. Return value: **redis**.
+        # The database type. Valid value: **redis**.
         self.db_type = db_type
-        # The latest time within the adjustable range for the O&M task execution time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The latest time to which the execution time of the O&M task can be adjusted. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.deadline = deadline
         # The O&M task ID.
         self.id = id
         # The instance ID.
         self.ins_name = ins_name
-        # The time when the O&M task was modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The time when the O&M task was modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.modified_time = modified_time
-        # The preparation time required between the O&M task start time and the switchover time. The time is in the <i>HH:mm:ss</i> format.
+        # The preparation time required between the start time and the switchover time of the O&M task. The time is in the <i>HH:mm:ss</i> format.
         self.prepare_interval = prepare_interval
         # The region ID.
         self.region = region
-        # The execution time of the O&M task. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The execution time of the O&M task. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.start_time = start_time
         # The task status. Valid values:
-        # * **2**: Waiting for the user to specify a time.
-        # * **3**: Waiting to be processed.
-        # * **4**: Being processed. After the task enters this state, you cannot call **ModifyActiveOperationTask** to modify the scheduled switchover time.
-        # * **5**: Succeeded.
-        # * **6**: Failed.
-        # * **7**: Canceled.
+        # * **2**: waiting for the user to specify a time.
+        # * **3**: waiting to be processed.
+        # * **4**: processing. After the task enters this state, you cannot call **ModifyActiveOperationTask** to modify the scheduled switchover time.
+        # * **5**: successful.
+        # * **6**: failed.
+        # * **7**: canceled.
         self.status = status
-        # The time when the system-initiated switchover operation is performed. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The time when the system initiates the switchover. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.switch_time = switch_time
         # The task type. Valid values:
-        # 
-        # - **rds_apsaradb_ha**: node failover.
+        # - **rds_apsaradb_ha**: switch of primary and secondary nodes.
         # - **rds_apsaradb_transfer**: instance migration.
-        # - **rds_apsaradb_upgrade**: minor engine version update.
+        # - **rds_apsaradb_upgrade**: minor version update.
         # - **all**: all task types.
         self.task_type = task_type
 

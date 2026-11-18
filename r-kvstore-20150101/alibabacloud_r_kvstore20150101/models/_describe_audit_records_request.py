@@ -23,16 +23,16 @@ class DescribeAuditRecordsRequest(DaraModel):
         security_token: str = None,
         start_time: str = None,
     ):
-        # The name of the account. If you do not specify this parameter, the audit logs of all accounts are queried.
+        # The name of the account. If you leave this parameter empty, the audit logs of all accounts are queried.
         self.account_name = account_name
-        # The database in the instance. If you do not specify this parameter, the audit logs of all databases are queried. Valid values: 0 to 255. For example, 0 indicates database 0.
+        # The database in the instance. If you leave this parameter empty, the audit logs of all databases are queried. Valid values: 0 to 255. For example, 0 indicates database 0.
         self.database_name = database_name
         # The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
-        # > Because audit logs contain a large number of entries, specify a time range of up to 10 minutes and a maximum of 1 day.
+        # > Because audit logs contain a large number of entries, specify a time range of up to 10 minutes and a maximum of 1 day for a query.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The IP address of the client. If you do not specify this parameter, the audit logs of all IP addresses are queried.
+        # The IP address of the client. If you leave this parameter empty, the audit logs from all IP addresses are queried.
         self.host_address = host_address
         # The ID of the instance.
         # 
@@ -49,9 +49,9 @@ class DescribeAuditRecordsRequest(DaraModel):
         self.page_number = page_number
         # The maximum number of entries to return on each page.
         self.page_size = page_size
-        # The keyword used to query audit logs based on a specific command. By default, the audit logs of all executed commands are queried.
+        # The keyword used to query audit logs based on a specific command. By default, all executed commands are queried.
         # 
-        # > You can specify only one keyword.
+        # > Only a single keyword can be specified.
         self.query_keywords = query_keywords
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

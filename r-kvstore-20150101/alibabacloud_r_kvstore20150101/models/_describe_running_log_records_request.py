@@ -26,15 +26,15 @@ class DescribeRunningLogRecordsRequest(DaraModel):
         start_time: str = None,
     ):
         # The shard type of the cluster instance. Valid values:
-        # * **proxy**: proxy node
-        # * **db**: data node
-        # * **cs**: config server node
+        # * **proxy**: proxy node.
+        # * **db**: data node.
+        # * **cs**: config server node.
         # 
         # > If you specify this parameter, you must also specify the **NodeId** parameter.
         self.character_type = character_type
         # The name of the database.
         self.dbname = dbname
-        # The end time of the query. The end time must be later than the start time, and the time span between the start time and end time cannot exceed one day. We recommend that you set the time span to one hour. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
+        # The end time of the query. The end time must be later than the start time. The time range between the start time and the end time cannot exceed one day. We recommend that you set the time range to one hour. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -48,12 +48,12 @@ class DescribeRunningLogRecordsRequest(DaraModel):
         # > * If you specify this parameter, you must also specify the **CharacterType** parameter.
         self.node_id = node_id
         # The sort order of the query results. Valid values:
-        # * **asc**: ascending order
-        # * **desc**: descending order
+        # * **asc**: ascending order.
+        # * **desc**: descending order.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be greater than **0** and cannot exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be greater than **0** and cannot exceed the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
         # The maximum number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
@@ -64,8 +64,8 @@ class DescribeRunningLogRecordsRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The role type of the data shard. Valid values:
-        # * **master** (default): primary node
-        # * **slave**: secondary node
+        # * **master** (default): primary node.
+        # * **slave**: secondary node.
         self.role_type = role_type
         self.security_token = security_token
         # The start time of the query. You can view the running logs generated within the last 72 hours. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.

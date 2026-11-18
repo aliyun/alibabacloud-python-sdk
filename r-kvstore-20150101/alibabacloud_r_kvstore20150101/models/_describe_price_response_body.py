@@ -18,7 +18,7 @@ class DescribePriceResponseBody(DaraModel):
     ):
         # The order information.
         self.order = order
-        # The order parameters. This parameter is returned when OrderParamOut is set to `true`.
+        # The order parameters. Returned when OrderParamOut is set to `true`.
         self.order_params = order_params
         # The request ID.
         self.request_id = request_id
@@ -436,6 +436,7 @@ class DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromot
         can_prom_fee: str = None,
         coupon_no: str = None,
         description: str = None,
+        effective: bool = None,
         name: str = None,
         option_code: str = None,
         promotion_name: str = None,
@@ -447,6 +448,7 @@ class DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromot
         self.can_prom_fee = can_prom_fee
         self.coupon_no = coupon_no
         self.description = description
+        self.effective = effective
         self.name = name
         self.option_code = option_code
         self.promotion_name = promotion_name
@@ -473,6 +475,9 @@ class DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromot
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.effective is not None:
+            result['Effective'] = self.effective
 
         if self.name is not None:
             result['Name'] = self.name
@@ -507,6 +512,9 @@ class DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromot
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Effective') is not None:
+            self.effective = m.get('Effective')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -1172,7 +1180,7 @@ class DescribePriceResponseBodyOrder(DaraModel):
         # The order code.
         self.code = code
         self.coupons = coupons
-        # The currency. The value is CNY (Chinese Yuan) for the China site and USD (US Dollar) for the international site.
+        # The currency. CNY for the China site and USD for the international site.
         self.currency = currency
         # The promotion information.
         self.depreciate_info = depreciate_info
@@ -1180,14 +1188,14 @@ class DescribePriceResponseBodyOrder(DaraModel):
         self.discount_amount = discount_amount
         # The service fee.
         self.handling_fee_amount = handling_fee_amount
-        # Indicates whether a contract-based discount is applied.
+        # Indicates whether a contract discount is applied.
         self.is_contract_activity = is_contract_activity
         # The order information.
         self.message = message
         # The original price of the order.
         self.original_amount = original_amount
         self.rule_ids = rule_ids
-        # Indicates whether discount information is displayed.
+        # Indicates whether to display the discount information.
         self.show_discount_info = show_discount_info
         # The discount price.
         self.stand_discount_price = stand_discount_price
@@ -1343,19 +1351,19 @@ class DescribePriceResponseBodyOrderDepreciateInfo(DaraModel):
         month_price: int = None,
         original_stand_amount: int = None,
     ):
-        # The price reduction ratio.
+        # The price reduction rate.
         self.cheap_rate = cheap_rate
         # The total price on the official website after the price reduction.
         self.cheap_stand_amount = cheap_stand_amount
         # The promotion information.
         self.contract_activity = contract_activity
-        # The price difference discount, displayed in the order total.
+        # The price difference discount (displayed in the total order price).
         self.differential = differential
         # The name of the price difference discount.
         self.differential_name = differential_name
-        # Indicates whether a contract-based discount is applied.
+        # Indicates whether a contract discount is applied.
         self.is_contract_activity = is_contract_activity
-        # Indicates whether the price reduction is displayed.
+        # Indicates whether to display the price reduction extent.
         self.is_show = is_show
         # The list price.
         self.list_price = list_price
@@ -1455,7 +1463,7 @@ class DescribePriceResponseBodyOrderDepreciateInfoContractActivity(DaraModel):
         self.activity_id = activity_id
         # The promotion name.
         self.activity_name = activity_name
-        # The price after the discount.
+        # The final price after the discount.
         self.final_fee = final_fee
         # The total discount amount.
         self.final_prom_fee = final_prom_fee
@@ -1588,13 +1596,17 @@ class DescribePriceResponseBodyOrderCoupons(DaraModel):
 class DescribePriceResponseBodyOrderCouponsCoupon(DaraModel):
     def __init__(
         self,
+        activity_ext_info: Dict[str, Any] = None,
         coupon_no: str = None,
         description: str = None,
+        effective: bool = None,
         is_selected: str = None,
         name: str = None,
     ):
+        self.activity_ext_info = activity_ext_info
         self.coupon_no = coupon_no
         self.description = description
+        self.effective = effective
         self.is_selected = is_selected
         self.name = name
 
@@ -1606,11 +1618,17 @@ class DescribePriceResponseBodyOrderCouponsCoupon(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.activity_ext_info is not None:
+            result['ActivityExtInfo'] = self.activity_ext_info
+
         if self.coupon_no is not None:
             result['CouponNo'] = self.coupon_no
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.effective is not None:
+            result['Effective'] = self.effective
 
         if self.is_selected is not None:
             result['IsSelected'] = self.is_selected
@@ -1622,11 +1640,17 @@ class DescribePriceResponseBodyOrderCouponsCoupon(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ActivityExtInfo') is not None:
+            self.activity_ext_info = m.get('ActivityExtInfo')
+
         if m.get('CouponNo') is not None:
             self.coupon_no = m.get('CouponNo')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('Effective') is not None:
+            self.effective = m.get('Effective')
 
         if m.get('IsSelected') is not None:
             self.is_selected = m.get('IsSelected')

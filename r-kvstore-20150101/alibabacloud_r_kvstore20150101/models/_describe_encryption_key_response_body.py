@@ -19,31 +19,31 @@ class DescribeEncryptionKeyResponseBody(DaraModel):
         request_id: str = None,
         role_arn: str = None,
     ):
-        # The Alibaba Cloud account ID of the key creator.
+        # The ID of the Alibaba Cloud account that created the key.
         self.creator = creator
-        # The estimated time when the key is to be deleted. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
-        # > If this parameter is empty, the key will not be automatically deleted.
+        # The scheduled deletion time of the key for the instance. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
+        # > If this parameter is empty, the key is not automatically deleted.
         self.delete_date = delete_date
-        # The description of the key. By default, this parameter is empty.
+        # The description of the key. Default value: empty.
         self.description = description
-        # The key ID of the instance.
+        # The ID of the key for the instance.
         self.encryption_key = encryption_key
-        # The status of the key. Valid values:
-        # * **Enabled**: The key is available.
-        # * **Disabled**: The key is unavailable.
+        # The status of the key for the instance. Valid values:
+        # * **Enabled**: Available.
+        # * **Disabled**: Unavailable.
         self.encryption_key_status = encryption_key_status
         # The encryption algorithm.
         self.encryption_name = encryption_name
-        # The purpose of the key. The return value `ENCRYPT/DECRYPT` indicates that the key is used for encryption and decryption.
+        # The purpose of the key for the instance. A value of `ENCRYPT/DECRYPT` indicates encryption and decryption.
         self.key_usage = key_usage
-        # The expiration time of the key. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The expiration time of the key. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         # > If this parameter is empty, the key does not expire.
         self.material_expire_time = material_expire_time
-        # The source of the key material. The return value is **Aliyun_KMS**, which indicates Alibaba Cloud [Key Management Service (KMS)](https://help.aliyun.com/document_detail/28935.html).
+        # The source of the key material. A value of **Aliyun_KMS** indicates Alibaba Cloud [Key Management Service (KMS)](https://help.aliyun.com/document_detail/28935.html).
         self.origin = origin
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The global resource descriptor ARN (Alibaba Cloud Resource Name) of the role to be granted authorization.
+        # The global resource descriptor ARN (Alibaba Cloud Resource Name) of the role pending authorization.
         self.role_arn = role_arn
 
     def validate(self):

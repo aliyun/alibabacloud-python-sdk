@@ -15,7 +15,7 @@ class CreateBackupRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The retention period of this manual backup. Valid values: 7 to 730. Unit: days. If you set this parameter to -1, the manual backup does not expire within the instance lifetime. If you do not specify this parameter, the retention period is the same as that of the current automatic backup policy.
+        # The expiration time of the manual backup. Valid values: 7 to 730 days. If you set this parameter to -1, the manual backup data does not expire within the instance lifecycle (epoch). If you do not specify this parameter, the default value applies, which means the expiration time is the same as that of the current automatic backup policy.
         self.backup_retention_period = backup_retention_period
         # The instance ID.
         # 

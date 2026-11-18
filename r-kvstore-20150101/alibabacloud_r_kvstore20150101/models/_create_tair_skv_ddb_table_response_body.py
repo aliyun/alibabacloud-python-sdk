@@ -26,24 +26,24 @@ class CreateTairSkvDdbTableResponseBody(DaraModel):
         # The bandwidth limit of the instance. Unit: MB/s.
         self.bandwidth = bandwidth
         # The billing method. Valid values:
-        # - PrePaid: subscription.
-        # - PostPaid: pay-as-you-go.
+        # - `PrePaid`: subscription.
+        # - `PostPaid`: pay-as-you-go.
         self.charge_type = charge_type
-        # The detailed configuration of the instance in JSON format. For more information about the parameters, see [Parameter settings](https://help.aliyun.com/document_detail/43885.html).
+        # The detailed configurations of the instance. The value is a JSON string. For more information about the parameters, see [Parameter settings](https://help.aliyun.com/document_detail/43885.html).
         self.config = config
-        # The internal endpoint of the Redis instance.
+        # The internal network connection endpoint of the ApsaraDB for Redis instance.
         self.connection_domain = connection_domain
-        # The maximum number of connections supported by the instance.
+        # The maximum number of connections to the instance.
         self.connections = connections
-        # The globally unique instance ID.
+        # The instance ID. The ID is globally unique.
         self.instance_id = instance_id
         # The current status of the instance. The value is fixed as Creating.
         self.instance_status = instance_status
         # The order ID.
         self.order_id = order_id
-        # The Redis service port.
+        # The ApsaraDB for Redis service port.
         self.port = port
-        # The queries per second (QPS). This value is the theoretical value for the current instance specification.
+        # The queries per second (QPS). This value is the theoretical QPS of the current instance specifications.
         self.qps = qps
         # The region ID.
         self.region_id = region_id
@@ -51,7 +51,7 @@ class CreateTairSkvDdbTableResponseBody(DaraModel):
         self.request_id = request_id
         # The instance name.
         self.table_name = table_name
-        # The ID of the task flow that is executed for the creation.
+        # The ID of the task flow created and executed.
         self.task_id = task_id
         # The zone ID of the instance.
         self.zone_id = zone_id

@@ -24,7 +24,7 @@ class DescribeActiveOperationTasksResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of O&M event records returned.
+        # The total number of returned O&M event records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -111,66 +111,66 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
-        # Indicates whether the event can be canceled. A value of 1 indicates that the event can be canceled. A value of 0 indicates that the event cannot be canceled.
+        # Indicates whether the event can be canceled. A value of 1 indicates that users are allowed to cancel the event. A value of 0 indicates that users are not allowed to cancel the event.
         self.allow_cancel = allow_cancel
-        # Indicates whether the event time can be modified. A value of 1 indicates that the time can be modified. A value of 0 indicates that the time cannot be modified.
+        # Indicates whether the execution time can be modified. A value of 1 indicates that users are allowed to modify the execution time. A value of 0 indicates that users are not allowed to modify the execution time.
         self.allow_change = allow_change
-        # The event level code. S1 indicates system O&M. S0 indicates risk recovery.
+        # The code of the event level. S1 indicates system O&M, and S0 indicates exception repair.
         self.change_level = change_level
         # The event level in English.
         self.change_level_en = change_level_en
         # The event level in Chinese.
         self.change_level_zh = change_level_zh
-        # The creation time in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
+        # The time when the event was created. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
         # The current zone.
         self.current_avz = current_avz
-        # The database type. Return value: **redis**.
+        # The database engine. Valid value: **redis**.
         self.db_type = db_type
-        # The Milvus version number of the kernel.
+        # The Milvus version.
         self.db_version = db_version
-        # The latest deadline by which the task execution time can be adjusted, in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
+        # The latest time within the adjustable range for the task execution time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.deadline = deadline
-        # The O&M event ID.
+        # The ID of the O&M event.
         self.id = id
-        # The event impact.
+        # The impact of the event.
         self.impact = impact
-        # The event impact in English.
+        # The impact of the event in English.
         self.impact_en = impact_en
-        # The event impact in Chinese.
+        # The impact of the event in Chinese.
         self.impact_zh = impact_zh
-        # The instance alias or description.
+        # The alias or description of the instance.
         self.ins_comment = ins_comment
         # The instance ID.
         self.ins_name = ins_name
-        # The modification time in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
+        # The time when the event was modified. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.modified_time = modified_time
-        # The preparation time required between the start time and the switchover time. Format: HH:mm:ss.
+        # The preparation time required between the start time and the switchover time. The time is in the HH:mm:ss format.
         self.prepare_interval = prepare_interval
         # The region ID.
         self.region = region
         # The execution result information.
         self.result_info = result_info
-        # The time when the backend starts executing the event, in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
+        # The time when the backend executes the event. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
         # The status of the O&M event. Valid values:
-        # - **3**: pending.
-        # - **4**: being processed.
-        # - **5**: ended successfully.
-        # - **6**: ended with failure.
-        # - **7**: canceled.
+        # - **3**: Pending events.
+        # - **4**: Processing events.
+        # - **5**: Successfully completed events.
+        # - **6**: Failed events.
+        # - **7**: Canceled events.
         self.status = status
         # The list of sub-events.
         self.sub_ins_names = sub_ins_names
-        # The time when the backend initiates the switchover operation, in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
+        # The time when the backend initiates the switchover operation. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.switch_time = switch_time
-        # The O&M event parameters.
+        # The parameters of the O&M event.
         self.task_params = task_params
         # The type of the O&M event.
         self.task_type = task_type
-        # The reason for the O&M event in English.
+        # The cause of the O&M event in English.
         self.task_type_en = task_type_en
-        # The task reason in Chinese.
+        # The cause of the task in Chinese.
         self.task_type_zh = task_type_zh
 
     def validate(self):

@@ -19,7 +19,7 @@ class DescribeInstancesResponseBody(DaraModel):
         self.instances = instances
         # The page number of the instance list.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries per page specified in the request.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

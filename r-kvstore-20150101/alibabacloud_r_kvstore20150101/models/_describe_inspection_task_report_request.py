@@ -9,15 +9,22 @@ class DescribeInspectionTaskReportRequest(DaraModel):
         self,
         inspection_ins_id: str = None,
         instance_id: str = None,
+        level_summary: str = None,
         security_token: str = None,
         task_id: str = None,
     ):
-        # The ID of the inspection instance.
+        # The inspection instance ID.
         self.inspection_ins_id = inspection_ins_id
         # The assistant instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The summary of risk levels for inspection results. You can specify multiple values. Valid values:
+        # - Normal: normal
+        # - Warning: warning
+        # - Error: high-risk
+        # - Failed: failed
+        self.level_summary = level_summary
         self.security_token = security_token
         # The task ID.
         # 
@@ -38,6 +45,9 @@ class DescribeInspectionTaskReportRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.level_summary is not None:
+            result['LevelSummary'] = self.level_summary
+
         if self.security_token is not None:
             result['SecurityToken'] = self.security_token
 
@@ -53,6 +63,9 @@ class DescribeInspectionTaskReportRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('LevelSummary') is not None:
+            self.level_summary = m.get('LevelSummary')
 
         if m.get('SecurityToken') is not None:
             self.security_token = m.get('SecurityToken')

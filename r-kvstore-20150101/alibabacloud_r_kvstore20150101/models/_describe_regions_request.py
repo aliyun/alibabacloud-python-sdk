@@ -14,7 +14,7 @@ class DescribeRegionsRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The language of the value returned for the **LocalName** parameter. Valid values:
+        # Specifies the language of the value returned for the **LocalName** parameter. Valid values:
         # * **zh-CN**: Chinese.
         # * **en-US**: English.
         # 

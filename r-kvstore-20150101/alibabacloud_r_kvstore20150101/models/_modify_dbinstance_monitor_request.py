@@ -19,9 +19,7 @@ class ModifyDBInstanceMonitorRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # **[Deprecated]** This parameter is deprecated and uses a fixed value of 60.
-        # 
-        # The collection granularity of monitoring data. Unit: seconds. Default value: 60.
+        # **[Deprecated]** This parameter is deprecated and uses a fixed value of 60. The collection granularity of monitoring data. Unit: seconds. Default value: 60.
         # 
         # This parameter is required.
         self.interval = interval

@@ -17,11 +17,11 @@ class ResetAccountPasswordRequest(DaraModel):
         security_token: str = None,
         source_biz: str = None,
     ):
-        # The account name. You can call [DescribeAccounts](https://help.aliyun.com/document_detail/473816.html) to query the account name.
+        # The name of the account. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/473816.html) operation to query the account name.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The new password. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported: `!@#$%^&*()_+-=`.
+        # The new password. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Allowed special characters include `!@#$%^&*()_+-=`.
         # 
         # This parameter is required.
         self.account_password = account_password
@@ -34,7 +34,7 @@ class ResetAccountPasswordRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # This parameter is used only for internal maintenance. You do not need to specify this parameter.
+        # This parameter is for internal maintenance only. You do not need to specify it.
         self.source_biz = source_biz
 
     def validate(self):

@@ -17,8 +17,8 @@ class RestartInstanceRequest(DaraModel):
         upgrade_minor_version: bool = None,
     ):
         # The time when the instance is restarted. Valid values:
-        # * **Immediately**: The instance is restarted immediately. This is the default value.
-        # * **MaintainTime**: The instance is restarted during the maintenance window.
+        # * **Immediately**: Restarts the instance immediately. This is the default value.
+        # * **MaintainTime**: Restarts the instance during the maintenance window.
         self.effective_time = effective_time
         # The instance ID.
         # 

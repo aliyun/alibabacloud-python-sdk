@@ -23,7 +23,7 @@ class DescribeBackupsRequest(DaraModel):
     ):
         # The ID of the backup file.
         self.backup_id = backup_id
-        # The ID of the backup job. This ID is returned by the CreateBackup operation. If CreateBackup returns multiple BackupJobIds, you must call this operation to query each of them separately.
+        # The ID of the backup task. This ID is returned by the CreateBackup operation. If the CreateBackup operation returns multiple BackupJobIds, you must call this operation to query each of them separately.
         self.backup_job_id = backup_job_id
         # The end time of the query. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         # 
@@ -34,8 +34,8 @@ class DescribeBackupsRequest(DaraModel):
         # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether to enable AOF persistence. Valid values:
-        # * **0**: Disabled.
-        # * **1**: Enabled.
+        # * **0**: disabled.
+        # * **1**: enabled.
         # 
         # > Default value: **0**.
         self.need_aof = need_aof

@@ -19,10 +19,10 @@ class DescribeHistoryEventsStatRequest(DaraModel):
     ):
         # The event status. Valid values:
         # - **Archived**: Archived.
-        # - **UnArchived**: Not archived.
-        # - **All**: All events.
+        # - **UnArchived**: Unarchived.
+        # - **All**: All.
         self.archive_status = archive_status
-        # The beginning of the time range for the task start time. Only tasks whose start time is later than this time are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0. The earliest supported time is 30 days before the current time. If the specified time is more than 30 days before the current time, it is automatically converted to 30 days before the current time.
+        # The lower bound of the time range for task start times. Only tasks that started after this time are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The earliest supported time is 30 days ago. If the specified time is more than 30 days before the current time, it is automatically adjusted to 30 days ago.
         self.from_start_time = from_start_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -33,7 +33,7 @@ class DescribeHistoryEventsStatRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The end of the time range for the task start time. Only tasks whose start time is earlier than this time are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC+0.
+        # The upper bound of the time range for task start times. Only tasks that started before this time are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.to_start_time = to_start_time
 
     def validate(self):

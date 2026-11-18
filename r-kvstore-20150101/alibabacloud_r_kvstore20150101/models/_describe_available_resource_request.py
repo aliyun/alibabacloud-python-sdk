@@ -29,38 +29,38 @@ class DescribeAvailableResourceRequest(DaraModel):
         # * **en-US**: English.
         self.accept_language = accept_language
         # The engine type. Valid values:
-        # * **Redis**: Redis engine
-        # * **Memcache**: Memcache engine
+        # * **Redis**.
+        # * **Memcache**.
         self.engine = engine
         # The billing method. Valid values:
-        # * **PrePaid** (default): subscription
-        # * **PostPaid**: pay-as-you-go
+        # * **PrePaid** (default): subscription.
+        # * **PostPaid**: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
         # The instance ID.
         # > This parameter is available and required only when **OrderType** is set to **UPGRADE** or **DOWNGRADE**.
         self.instance_id = instance_id
         # The product series. Valid values:
-        # - **professional**: Professional Edition. This edition supports the standalone, primary/secondary, read/write splitting, and cluster architectures, and provides high scalability.
+        # - **professional**: Standard Edition. This edition supports the single-replica, primary/secondary, read/write splitting, and cluster architectures, and provides high scalability.
         #  <props="china">
-        # -  **economical**: Economical Edition. This edition supports only the primary/secondary architecture and is cost-effective. For more information, see [YiTian RDS instances](https://help.aliyun.com/document_detail/2489678.html).
+        # - **economical**: This edition supports only the primary/secondary architecture and is cost-effective. For more information, see [YiTian RDS instance](https://help.aliyun.com/document_detail/2489678.html).
         self.instance_scene = instance_scene
-        # The data node ID. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to obtain the data node ID. For the obtained data node ID, you must remove the number sign (`#`) and the content that follows it. For example, retain only r-bp10noxlhcoim2****-db-0.
+        # The data node ID. You can call the [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) operation to obtain the data node ID. For the obtained data node ID, you must remove the number sign (`#`) and the content after it. For example, retain only r-bp10noxlhcoim2****-db-0.
         # > Before you specify this parameter, you must also specify the **InstanceId** parameter, and the instance must use the cluster or read/write splitting architecture.
         self.node_id = node_id
         # The order type. Valid values:
-        # * **BUY** (default): new purchase
-        # * **UPGRADE**: upgrade instance type
-        # * **DOWNGRADE**: downgrade instance type
+        # * **BUY** (default): new purchase.
+        # * **UPGRADE**: upgrade the instance type.
+        # * **DOWNGRADE**: downgrade the instance type.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The product type. Valid values:
-        # - **Local** (default): Redis Community Edition instance (classic architecture) or memory-optimized instance (classic architecture).
-        # - **Tair_rdb**: memory-optimized instance (cloud-native architecture).
+        # The product type. Default value: Local. Valid values:
+        # - **Local**: Redis Community Edition instance (Classic Edition) or memory-optimized instance (Classic Edition).
+        # - **Tair_rdb**: memory-optimized instance (Cloud-native Edition).
         # - **Tair_scm**: persistent memory-optimized instance.
         # - **Tair_essd**: disk-optimized instance.
-        # - **OnECS**: Redis Community Edition instance (cloud-native architecture).
-        # > The default value is Local. If you want to query cloud disk resources, you must specify the product type that corresponds to the required cloud disk resources.
+        # - **OnECS**: Redis Community Edition instance (Cloud-native Edition).
+        # > The default value of this parameter is Local. If you want to query cloud disk resources, you must specify the product type corresponding to the required cloud disk resources.
         self.product_type = product_type
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the region ID.
         # 

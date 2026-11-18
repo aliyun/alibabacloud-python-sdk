@@ -14,11 +14,11 @@ class ModifyTaskInfoResponseBody(DaraModel):
     ):
         # The error code.
         self.error_code = error_code
-        # The ID of the failed node. The first failed node ID is returned.
+        # The ID of the failed task. This parameter is returned when a failure occurs.
         self.error_task_id = error_task_id
         # The request ID.
         self.request_id = request_id
-        # The number of successful nodes.
+        # The number of successful tasks.
         self.success_count = success_count
 
     def validate(self):

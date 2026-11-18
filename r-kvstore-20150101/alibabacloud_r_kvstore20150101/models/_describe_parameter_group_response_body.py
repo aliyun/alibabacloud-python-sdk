@@ -60,15 +60,14 @@ class DescribeParameterGroupResponseBodyParameterGroup(DaraModel):
         parameter_group_name: str = None,
     ):
         # The product category. Valid values:
-        # 
-        # - **0**: Redis Community Edition.
-        # - **1**: Tair (Enterprise Edition).
+        # - **0**: open-source Redis
+        # - **1**: Tair (Enterprise Edition)
         self.category = category
         # The time when the parameter template was created.
         self.created = created
         # The engine of the parameter template.
         self.engine = engine
-        # The engine-compatible version.
+        # The compatible engine version.
         self.engine_version = engine_version
         # The time when the parameter template was last modified.
         self.modified = modified
@@ -163,9 +162,9 @@ class DescribeParameterGroupResponseBodyParameterGroupParamGroupsDetails(DaraMod
         param_name: str = None,
         param_value: str = None,
     ):
-        # The parameter name.
+        # The name of the parameter.
         self.param_name = param_name
-        # The parameter value.
+        # The value of the parameter.
         self.param_value = param_value
 
     def validate(self):

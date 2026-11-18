@@ -103,23 +103,23 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         task_type: str = None,
         uid: str = None,
     ):
-        # The allowed operation information. When used, the operation Action is matched based on currentStepName and status in this information. If no Action is matched, the task does not support operations in its current state. Example:
+        # The information about allowed operations. When you use this parameter, the system matches the operation action based on the CurrentStepName and Status in this information. If no action is matched, the current task status does not support the operation. Example:
         # 
         # ```
         # {"steps": [
         #     {
-        #       "step_name": "exec_task", // Step name, matched with currentStepName
-        #       "action_info": {    // Operations supported by the step
-        #         "Waiting": [      // Status, matched with status
-        #           "modifySwitchTime" // Operation Action, may have multiple values, indicating multiple supported operations
+        #       "step_name": "exec_task", // The step name, which matches CurrentStepName.
+        #       "action_info": {    // The operations supported by the step.
+        #         "Waiting": [      // The status, which matches Status.
+        #           "modifySwitchTime" // The operation action. Multiple actions indicate that multiple operations are supported.
         #         ]
         #       }
         #     },
         #     {
-        #       "step_name": "init_task", // Step name
-        #       "action_info": {    // Operations supported by the step
-        #         "Running": [      // Status
-        #           "cancel",       // Operation
+        #       "step_name": "init_task", // The step name.
+        #       "action_info": {    // The operations supported by the step.
+        #         "Running": [      // The status.
+        #           "cancel",       // The operation.
         #           "pause"
         #         ]
         #       }
@@ -128,22 +128,22 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         # }
         # ```
         # 
-        # Operations that the system may support: 
+        # Operations that may be supported by the system: 
         # * **retry**: Retry.
         # * **cancel**: Cancel.
         # * **modifySwitchTime**: Modify the switchover time or recovery time.
         self.action_info = action_info
-        # The request user ID. When callerSource is User, this value represents the user UID.
+        # The ID of the requesting user. If CallerSource is set to User, this parameter represents the user ID.
         self.caller_source = caller_source
         # The request source. Valid values: 
-        # * **System**: Automatically initiated by the system.
-        # * **User**: Initiated by a user.
+        # * **System**: Automatic system operation.
+        # * **User**: User.
         self.caller_uid = caller_uid
-        # The name of the current step being executed. An empty value indicates that the task has not started.
+        # The name of the current step being executed. If this parameter is empty, the task has not started.
         self.current_step_name = current_step_name
         # The database type. The value is fixed as redis.
         self.db_type = db_type
-        # The end time of the task in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The end time of the task. The time is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
@@ -161,23 +161,23 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         self.region_id = region_id
         # The estimated remaining execution time. Unit: seconds. A value of 0 indicates that the execution is complete.
         self.remain_time = remain_time
-        # The start time of the task in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The start time of the task. The time is in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC.
         self.start_time = start_time
         # The task status. Valid values:
-        # - **Scheduled**: Waiting for execution.
+        # - **Scheduled**: Pending execution.
         # - **Running**: Running.
         # - **Succeed**: Succeeded.
         # - **Failed**: Failed.
-        # - **Cancelling**: Being stopped.
-        # - **Canceled**: Stopped.
+        # - **Cancelling**: Cancelling.
+        # - **Canceled**: Canceled.
         # - **Waiting**: Waiting for the scheduled time.
         self.status = status
-        # The task details. Different task types correspond to different outputs.
+        # The task details. The output varies based on the task type.
         self.task_detail = task_detail
         # The task ID.
         self.task_id = task_id
         # The task type. Valid values:
-        # - **ModifyInsSpec**: Specification change or migration.
+        # - **ModifyInsSpec**: Instance specification change or migration.
         # - **DeleteInsNode**: Shard deletion.
         # - **AddInsNode**: Shard addition.
         # - **HaSwitch**: Primary/secondary switchover.
@@ -185,7 +185,7 @@ class DescribeHistoryTasksResponseBodyItems(DaraModel):
         # - **CreateIns**: Instance creation.
         # - **ModifyInsConfig**: Configuration change.
         self.task_type = task_type
-        # The user ID of the resource owner.
+        # The ID of the user to whom the resource belongs.
         self.uid = uid
 
     def validate(self):

@@ -17,8 +17,8 @@ class ModifyInstanceMinorVersionRequest(DaraModel):
         security_token: str = None,
     ):
         # The time when the upgrade is performed. Valid values:
-        # * **Immediately**: Performs the upgrade immediately. This is the default value.
-        # * **MaintainTime**: Performs the upgrade during the maintenance window.
+        # * **Immediately**: The upgrade is performed immediately. This is the default value.
+        # * **MaintainTime**: The upgrade is performed during the maintenance window.
         # 
         # > You can call [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) to change the maintenance window of the instance.
         self.effective_time = effective_time
@@ -26,7 +26,7 @@ class ModifyInstanceMinorVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The minor version to which you want to upgrade. Default value: **latest_version**, which indicates the latest version.
+        # The minor engine version to which you want to upgrade. Default value: **latest_version**, which indicates the latest version.
         self.minorversion = minorversion
         self.owner_account = owner_account
         self.owner_id = owner_id

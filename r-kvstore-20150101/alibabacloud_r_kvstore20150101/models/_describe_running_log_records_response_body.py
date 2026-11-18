@@ -33,7 +33,9 @@ class DescribeRunningLogRecordsResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The start time of the query. The time is in the YYYY-MM-DDTHH:mmZ format and is in UTC.
+        # The start time of the query.
+        # 
+        # The time is in the YYYY-MM-DDTHH:mmZ format and is in UTC.
         self.start_time = start_time
         # The total number of entries.
         self.total_record_count = total_record_count

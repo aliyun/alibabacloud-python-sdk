@@ -1,3 +1,19 @@
+2026-11-18 Version: 7.1.0
+- Support API CreateTairAIGatewayInstance.
+- Support API DescribeTairAIGatewayInstances.
+- Support API DescribeTairAIGatewayParameters.
+- Support API DescribeTairAIGatewayPluginSwitch.
+- Support API ModifyTairAIGatewayParameter.
+- Support API ModifyTairAIGatewayPluginSwitch.
+- Update API DescribeInspectionScheduleReports: add request parameters LevelSummary.
+- Update API DescribeInspectionTaskReport: add request parameters LevelSummary.
+- Update API DescribeInspectionTasks: add request parameters LevelSummary.
+- Update API DescribePrice: add request parameters NeedUnavailableCoupon.
+- Update API DescribePrice: add response parameters Body.Order.Coupons.$.ActivityExtInfo.
+- Update API DescribePrice: add response parameters Body.Order.Coupons.$.Effective.
+- Update API DescribePrice: add response parameters Body.SubOrders.$.OptionalPromotions.$.Effective.
+
+
 2026-10-19 Version: 7.0.0
 - Update API DescribeHistoryMonitorValues: add response parameters Body.MonitorLegend.
 - Update API DescribeTairSkvDdbTable: add response parameters Body.Tables.$.GlobalSecondaryIndexList.

@@ -21,41 +21,37 @@ class CreateParameterGroupRequest(DaraModel):
         security_token: str = None,
     ):
         # The product category. Valid values:
-        # 
-        # * **standard**: Redis Community Edition.
+        # * **standard**: Open-source Redis.
         # * **enterprise**: Tair (Enterprise Edition).
         # 
         # This parameter is required.
         self.category = category
         # The engine type. Valid values:
-        # 
-        # * **redis**: Redis Community Edition or Tair memory-optimized.
-        # * **tair_pena**: Tair persistent memory-optimized.
-        # * **tair_pdb**: Tair disk-optimized (ESSD/SSD).
+        # * **redis**: Open-source Redis or Tair memory-based.
+        # * **tair_pena**: Tair persistent memory-based.
+        # * **tair_pdb**: Tair disk-based (ESSD/SSD).
         # 
         # This parameter is required.
         self.engine_type = engine_type
         # The compatible version. Valid values:
-        # 
-        # * Redis Community Edition supports **5.0**, **6.0**, and **7.0**.
-        # * Tair memory-optimized is compatible with Redis 5.0, 6.0, and 7.0 protocols. Set this parameter to **5.0**, **6.0**, or **7.0**.
-        # * Tair persistent memory-optimized is compatible with the Redis 6.0 protocol. Set this parameter to **1.0**.
-        # * Tair disk-optimized (ESSD/SSD) is compatible with the Redis 6.0 protocol. To create a parameter template for the ESSD type, set this parameter to **1.0**. To create a parameter template for the SSD type, set this parameter to **2.0**.
+        # * Open-source Redis supports **5.0**, **6.0**, and **7.0**.
+        # * Tair memory-based instances are compatible with the Redis 5.0, 6.0, and 7.0 protocols. Set the value to **5.0**, **6.0**, or **7.0**.
+        # * Tair persistent memory-based instances are compatible with the Redis 6.0 protocol. Set the value to **1.0**.
+        # * Tair disk-based (ESSD/SSD) instances are compatible with the Redis 6.0 protocol. To create a parameter template for ESSD-based instances, set the value to **1.0**. To create a parameter template for SSD-based instances, set the value to **2.0**.
         # 
         # This parameter is required.
         self.engine_version = engine_version
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The description of the parameter template. The description can be 0 to 200 characters in length.
+        # The description of the parameter template. The description must be 0 to 200 characters in length.
         self.parameter_group_desc = parameter_group_desc
         # The name of the parameter template. The name must meet the following requirements:
-        # 
-        # - The name can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
-        # - The name must be 8 to 64 characters in length.
+        # - It must contain only letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
+        # - It must be 8 to 64 characters in length.
         # 
         # This parameter is required.
         self.parameter_group_name = parameter_group_name
-        # A JSON string that consists of parameters and their values, in the following format: {"Parameter 1":"Value of Parameter 1","Parameter 2":"Value of Parameter 2"...}.
+        # The parameters and their corresponding values in JSON format. Format: {"Parameter1":"Value1","Parameter2":"Value2"...}.
         # > The parameters that can be added vary by version. Refer to the console for details.
         # 
         # This parameter is required.

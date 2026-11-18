@@ -16,9 +16,9 @@ class AllocateDirectConnectionRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The prefix of the direct connection endpoint. The prefix must be 8 to 40 characters in length and can contain lowercase letters and digits. It must start with a lowercase letter. Default value: the instance ID followed by `-direct`. For example, if the instance ID is r-8vbwsicr5d5gse****, the default value is `r-8vbwsicr5d5gse****-direct`.
+        # The prefix of the direct connection endpoint. The prefix must be 8 to 40 characters in length and can contain lowercase letters and digits. It must start with a lowercase letter. The default value is the instance ID followed by `-direct`. For example, if the instance ID is r-8vbwsicr5d5gse****, the default value is `r-8vbwsicr5d5gse****-direct`.
         self.connection_string = connection_string
-        # The instance ID. Only cluster instances deployed in classic mode are supported. For instances deployed in classic mode, the value of the ComputingType parameter is Machine. You can call the DescribeInstances operation to query the ComputingType parameter.
+        # The instance ID. Only cluster instances in the classic deployment mode are supported. In the classic deployment mode, the ComputingType parameter is set to Machine. You can call the DescribeInstances operation to query the ComputingType value.
         # 
         # This parameter is required.
         self.instance_id = instance_id

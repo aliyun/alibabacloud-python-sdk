@@ -28,7 +28,7 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         self.sslenabled = sslenabled
         # The expiration time of the CA certificate.
         # 
-        # The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+        # The time follows the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
         self.sslexpired_time = sslexpired_time
 
     def validate(self):

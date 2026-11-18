@@ -74,7 +74,7 @@ class DescribeClusterMemberInfoResponseBodyClusterChildren(DaraModel):
         # The bandwidth of the node. Unit: MB/s.
         # > This parameter is returned only when the **Service** parameter is set to **redis**, which indicates that the node is a data node.
         self.band_width = band_width
-        # The number of days for which binary logs are retained.
+        # The binary log retention period in days.
         self.binlog_retention_days = binlog_retention_days
         # The business type. The value is fixed as **ALIYUN**.
         self.biz_type = biz_type
@@ -90,7 +90,7 @@ class DescribeClusterMemberInfoResponseBodyClusterChildren(DaraModel):
         # <props="china">This parameter is returned only when the instance is created in a dedicated cluster.
         self.current_band_width = current_band_width
         # The storage space of the [ESSD cloud disk](https://help.aliyun.com/document_detail/122389.html) for the data node. Unit: MB.
-        # > The ESSD cloud disk is used only for system operations, such as data persistence, and is not used as a medium for data access.
+        # > The ESSD cloud disk is used only for system operations, such as data persistence, and is not used as a medium for data storage and access.
         self.disk_size_mb = disk_size_mb
         # The replica set ID of the node.
         self.id = id
@@ -101,10 +101,10 @@ class DescribeClusterMemberInfoResponseBodyClusterChildren(DaraModel):
         # The name of the resource group to which the node belongs.
         self.resource_group_name = resource_group_name
         # The node type. Valid values:
-        # * **redis**: data node.
-        # * **redis_cs**: configuration server node.
+        # * **redis**: data node
+        # * **redis_cs**: configuration server node
         self.service = service
-        # The major version of the node.
+        # The major engine version of the node.
         self.service_version = service_version
         # The user ID.
         self.user_id = user_id

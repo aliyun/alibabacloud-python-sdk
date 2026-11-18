@@ -21,8 +21,8 @@ class ModifyGlobalSecurityIPGroupRelationRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The IP whitelist template ID.
-        # > To dissociate a template, delete the corresponding IP whitelist template ID. This parameter overwrites the original value. To dissociate all templates, pass in an empty string.
+        # The ID of the IP whitelist template.
+        # > To disassociate a template, remove the corresponding IP whitelist template ID. This parameter overwrites the original value. To disassociate all associated templates, pass an empty string.
         # 
         # This parameter is required.
         self.global_security_group_id = global_security_group_id
@@ -32,7 +32,7 @@ class ModifyGlobalSecurityIPGroupRelationRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

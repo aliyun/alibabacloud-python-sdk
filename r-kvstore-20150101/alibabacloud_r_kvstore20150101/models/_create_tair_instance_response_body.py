@@ -29,18 +29,18 @@ class CreateTairInstanceResponseBody(DaraModel):
         # - **PrePaid**: subscription.
         # - **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
-        # The detailed configurations of the instance, in the format of a JSON character string. For more information about the parameters, see Parameter settings description.
+        # The detailed configuration of the instance, in the format of a JSON character string. For more information about the parameters, see [Description of parameter settings](https://help.aliyun.com/document_detail/43885.html).
         self.config = config
         # The internal network connection endpoint of the instance.
         self.connection_domain = connection_domain
-        # The maximum number of connections supported by the instance.
+        # The maximum number of connections to the instance.
         self.connections = connections
         # The instance ID.
         self.instance_id = instance_id
         # The instance name.
         # > This parameter is returned only when the **InstanceName** request parameter is specified.
         self.instance_name = instance_name
-        # The current status of the instance. The value is fixed as **Creating**.
+        # The current status of the instance. The return value is fixed to **Creating**.
         self.instance_status = instance_status
         # The order ID.
         self.order_id = order_id

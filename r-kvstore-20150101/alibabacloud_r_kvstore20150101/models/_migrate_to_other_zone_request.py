@@ -28,26 +28,26 @@ class MigrateToOtherZoneRequest(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The time when the database switchover is performed after data migration. Valid values: 
         # * **Immediately**: The switchover is performed immediately after the migration.
-        # * **MaintainTime**: The switchover is performed within the maintenance window.
+        # * **MaintainTime**: The switchover is performed during the maintenance window.
         # 
         # > Default value: **Immediately**.
         self.effective_time = effective_time
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of read-only nodes in the primary zone.
-        # > * The ReadOnlyCount and SlaveReadOnlyCount parameters apply only to cloud-native instances with read/write splitting enabled. When you migrate an instance to multiple zones, you can use these parameters to adjust the distribution of read-only nodes across the primary and secondary zones. This operation does not support adding or removing nodes. Therefore, the total number of read-only nodes calculated by ReadOnlyCount + SlaveReadOnlyCount must remain the same as that before the migration.
-        # > * When you migrate an instance from a single zone to multiple zones and do not specify these parameters, one read-only node is migrated to the secondary zone by default, and the remaining read-only nodes stay in the primary zone.
-        # > * If the instance uses the cluster architecture, these parameters specify the number of read-only nodes per shard in the primary and secondary zones.
+        # > * The ReadOnlyCount and SlaveReadOnlyCount parameters apply only to cloud-native instances with read/write splitting enabled. When you migrate an instance to multiple zones, you can use these parameters to adjust the distribution of read-only nodes in the primary and secondary zones. This operation does not support adding or removing nodes. Therefore, the total number of read-only nodes calculated by ReadOnlyCount + SlaveReadOnlyCount must remain the same as that before the migration.
+        # > * When you migrate an instance from a single zone to multiple zones, if you do not specify these parameters, one read-only node is migrated to the secondary zone by default, and the remaining read-only nodes stay in the primary zone.
+        # > * If the instance uses the cluster architecture, these parameters specify the number of read-only nodes in the primary and secondary zones for a single shard.
         self.read_only_count = read_only_count
         # The number of secondary nodes in the primary zone.
-        # > * The ReplicaCount and SlaveReplicaCount parameters apply only to cloud-native instances. When you migrate an instance to multiple zones, you can use these parameters to adjust the distribution of secondary nodes across the primary and secondary zones. This operation does not support adding or removing nodes. Therefore, the total number of secondary nodes calculated by ReplicaCount + SlaveReplicaCount must remain the same as that before the migration.
-        # > * When you migrate an instance from a single zone to multiple zones and do not specify these parameters, one secondary node is migrated to the secondary zone by default, and the remaining secondary nodes stay in the primary zone.
-        # > * If the instance uses the cluster architecture, these parameters specify the number of secondary nodes per shard in the primary and secondary zones.
+        # > * The ReplicaCount and SlaveReplicaCount parameters apply only to cloud-native instances. When you migrate an instance to multiple zones, you can use these parameters to adjust the distribution of secondary nodes in the primary and secondary zones. This operation does not support adding or removing nodes. Therefore, the total number of secondary nodes calculated by ReplicaCount + SlaveReplicaCount must remain the same as that before the migration.
+        # > * When you migrate an instance from a single zone to multiple zones, if you do not specify these parameters, one secondary node is migrated to the secondary zone by default, and the remaining secondary nodes stay in the primary zone.
+        # > * If the instance uses the cluster architecture, these parameters specify the number of secondary nodes in the primary and secondary zones for a single shard.
         self.replica_count = replica_count
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the destination secondary zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/473764.html) operation to query the zone ID.
-        # > If you specify this parameter, the primary and secondary data nodes are distributed across different zones. This implements cross-zone disaster recovery and tolerates data center-level failures.
+        # > Specifying this parameter allows you to distribute primary and secondary data nodes across different zones to implement cross-zone disaster recovery and tolerate data center-level failures.
         self.secondary_zone_id = secondary_zone_id
         self.security_token = security_token
         # The number of read-only nodes in the secondary zone.

@@ -16,7 +16,7 @@ class DescribeGlobalSecurityIPGroupRelationResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbcluster_id = dbcluster_id
-        # The information about the associated global IP whitelist templates.
+        # The global IP whitelist templates associated with the instance.
         self.global_security_ipgroup_rel = global_security_ipgroup_rel
         # The request ID.
         self.request_id = request_id
@@ -69,8 +69,7 @@ class DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel(
         global_security_group_id: str = None,
         region_id: str = None,
     ):
-        # The IP addresses in the whitelist template.
-        # > Separate multiple IP addresses with commas (,).
+        # The IP addresses in the whitelist template. Separate multiple IP addresses with commas (,).
         self.gip_list = gip_list
         # The name of the IP whitelist template.
         self.global_ig_name = global_ig_name

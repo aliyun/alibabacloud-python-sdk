@@ -17,9 +17,9 @@ class CreateInspectionScheduleRequest(DaraModel):
         security_token: str = None,
         timezone: str = None,
     ):
-        # The cron expression for the periodic scheduling.
+        # The cron expression for the periodic schedule.
         self.cron_expression = cron_expression
-        # The specified inspection items. The following inspection items are supported:
+        # The specified inspection items. Valid values:
         # 
         # - RESOURCE_USAGE
         # - BIGKEY
@@ -29,15 +29,15 @@ class CreateInspectionScheduleRequest(DaraModel):
         self.inspection_items = inspection_items
         # The time window.
         self.inspection_window = inspection_window
-        # The O&M Assistant instance ID.
+        # The ID of the assistant instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The list of associated instance IDs.
         # > 
-        # > - Separate multiple instances with commas (,).
+        # > - Separate multiple instance IDs with commas (,).
         self.instance_ids = instance_ids
-        # The report language.
+        # The language of the report.
         self.report_language = report_language
         # The name of the timed scheduling.
         self.schedule_name = schedule_name

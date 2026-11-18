@@ -11,11 +11,11 @@ class DeleteInspectionScheduleRequest(DaraModel):
         schedule_id: str = None,
         security_token: str = None,
     ):
-        # The instance ID of the AI assistant.
+        # The ID of the AI assistant instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The scheduling ID of the timed scheduling.
+        # The ID of the schedule.
         self.schedule_id = schedule_id
         self.security_token = security_token
 

@@ -24,7 +24,7 @@ class ModifyInstanceVpcAuthModeRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The authentication mode in a VPC. Valid values:
+        # The authentication mode in the VPC. Valid values:
         # * **Open**: Uses password authentication.
         # * **Close**: Disables password authentication and enables password-free access.
         # 

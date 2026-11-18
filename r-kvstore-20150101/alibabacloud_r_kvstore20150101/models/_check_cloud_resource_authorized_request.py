@@ -15,7 +15,7 @@ class CheckCloudResourceAuthorizedRequest(DaraModel):
         role_arn: str = None,
         security_token: str = None,
     ):
-        # The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
+        # Instance ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -23,10 +23,10 @@ class CheckCloudResourceAuthorizedRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The global resource descriptor Alibaba Cloud Resource Name (ARN) of the role to be authorized. After the role is granted authorization, the related KMS can be used. Format: `acs:ram::$accountID:role/$roleName`.
+        # Specifies the global resource descriptor ARN (Alibaba Cloud Resource Name) of the role to be granted authorization. After the role authorization is completed, you can use the related Key Management Service (KMS). Format: `acs:ram::$accountID:role/$roleName`.
         # 
-        # > * `$accountID`: the ID of the Alibaba Cloud account. Log on to the Alibaba Cloud Management Console, move the mouse pointer over the profile picture in the upper-right corner, and then click **Security Settings** to view the account ID.
-        # > * `$roleName`: the name of the RAM role. Set this value to **AliyunRdsInstanceEncryptionDefaultRole**.
+        # > * `$accountID`: the Alibaba Cloud account ID. You can logon to the Alibaba Cloud Management Console, move the mouse over the profile picture in the upper-right corner, and click **Security Settings** to view the ID.
+        # > * `$roleName`: the name of the RAM role. Set the value to **AliyunRdsInstanceEncryptionDefaultRole**.
         self.role_arn = role_arn
         self.security_token = security_token
 

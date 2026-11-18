@@ -15,7 +15,7 @@ class DescribeLogicInstanceTopologyResponseBody(DaraModel):
         redis_shard_list: main_models.DescribeLogicInstanceTopologyResponseBodyRedisShardList = None,
         request_id: str = None,
     ):
-        # The instance ID.
+        # The ID of the instance.
         self.instance_id = instance_id
         self.redis_proxy_list = redis_proxy_list
         self.redis_shard_list = redis_shard_list

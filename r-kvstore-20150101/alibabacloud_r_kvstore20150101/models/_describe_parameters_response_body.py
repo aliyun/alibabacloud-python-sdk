@@ -17,7 +17,7 @@ class DescribeParametersResponseBody(DaraModel):
         running_parameters: main_models.DescribeParametersResponseBodyRunningParameters = None,
     ):
         self.config_parameters = config_parameters
-        # The database type.
+        # The database engine.
         self.engine = engine
         # The database engine version.
         self.engine_version = engine_version

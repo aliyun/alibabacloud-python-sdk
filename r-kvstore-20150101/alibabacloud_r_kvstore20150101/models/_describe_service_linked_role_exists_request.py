@@ -15,12 +15,12 @@ class DescribeServiceLinkedRoleExistsRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The database type. You can only set this parameter to "Redis" or leave it empty.
+        # The database engine. Only Redis is supported, or you can leave this parameter empty.
         self.engine = engine
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the instance.
-        # > This parameter does not affect the query result. You can specify any region.
+        # > This parameter does not affect the query results. You can specify any region.
         # 
         # This parameter is required.
         self.region_id = region_id

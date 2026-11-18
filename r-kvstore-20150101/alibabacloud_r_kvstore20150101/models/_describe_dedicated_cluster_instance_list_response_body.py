@@ -125,7 +125,7 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(DaraModel):
         self.current_band_width = current_band_width
         # An internal parameter used for instance maintenance.
         self.custom_id = custom_id
-        # The database engine. The value is fixed as **redis**.
+        # The database engine type. The value is fixed as **redis**.
         self.engine = engine
         # The database engine version. The value is fixed as **5.0**.
         self.engine_version = engine_version
@@ -140,7 +140,7 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(DaraModel):
         # The instance status. Valid values:
         # * **Normal**: Normal.
         # * **Creating**: Creating.
-        # * **Changing**: Changing.
+        # * **Changing**: Modifying.
         # * **Inactive**: Disabled.
         # * **Flushing**: Purge in progress.
         # * **Released**: Released.
@@ -149,9 +149,9 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(DaraModel):
         # * **Error**: Creation failed.
         # * **Migrating**: Migrating.
         # * **BackupRecovering**: Restoring from backup.
-        # * **MinorVersionUpgrading**: Minor version upgrade in progress.
-        # * **NetworkModifying**: Changing the network.
-        # * **SSLModifying**: Changing SSL configurations.
+        # * **MinorVersionUpgrading**: Upgrading the minor engine version.
+        # * **NetworkModifying**: Modifying the network.
+        # * **SSLModifying**: Modifying SSL settings.
         # * **MajorVersionUpgrading**: Major engine version upgrade in progress. The instance remains accessible.
         self.instance_status = instance_status
         # The end time of the maintenance window. The time is in the <i>HH:mm</i>Z format. The time is displayed in UTC.
@@ -159,6 +159,7 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(DaraModel):
         # The start time of the maintenance window. The time is in the <i>HH:mm</i>Z format. The time is displayed in UTC.
         self.maintain_start_time = maintain_start_time
         # The number of proxy nodes.
+        # 
         # > * A value of **0** indicates that the proxy mode is disabled for the instance. A value greater than **0** (such as **1**) indicates that the proxy mode is enabled for the instance.
         # > * This parameter is returned only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         self.proxy_count = proxy_count
@@ -167,7 +168,7 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstances(DaraModel):
         # The number of data shards.
         # > This parameter is returned only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html).
         self.shard_count = shard_count
-        # The storage type. The value is fixed as LOCAL_SSD ([ESSD cloud disk (standard SSD)](https://help.aliyun.com/document_detail/122389.html)).
+        # The storage type. The value is fixed as LOCAL_SSD ([ESSD standard SSD](https://help.aliyun.com/document_detail/122389.html)).
         self.storage_type = storage_type
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -365,7 +366,7 @@ class DescribeDedicatedClusterInstanceListResponseBodyInstancesInstanceNodeList(
         # The node type. Valid values:
         # * **db**: Data node.
         # * **proxy**: Proxy node.
-        # * **normal**: Regular node. This value is returned for instances that use the standard architecture.
+        # * **normal**: Regular node. This value is returned for instances of the standard architecture.
         self.node_type = node_type
         # The port of the node.
         self.port = port

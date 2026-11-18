@@ -19,16 +19,16 @@ class ModifyActiveOperationMaintainConfigRequest(DaraModel):
         status: int = None,
     ):
         # The cycle time.
-        # - If CycleType is set to Month, the value is a number from 1 to 28, which indicates the day of the month. Multiple values are separated by commas (,). If the configuration does not take effect, the value is 0.
-        # - If CycleType is set to Week, the value is a number from 1 to 7, which indicates the day of the week. Multiple values are separated by commas (,). If the configuration does not take effect, the value is 0.
+        # - If CycleType is set to Month, the value is a number from 1 to 28 that indicates the day of the month. Multiple values are separated by commas (,). The value is 0 when the configuration does not take effect.
+        # - If CycleType is set to Week, the value is a number from 1 to 7 that indicates the day of the week. Multiple values are separated by commas (,). The value is 0 when the configuration does not take effect.
         self.cycle_time = cycle_time
         # The cycle type. Valid values:
-        # - Month: Monthly.
-        # - Week: Weekly.
+        # - Month: monthly
+        # - Week: weekly
         self.cycle_type = cycle_type
-        # The end time of the O&M time window. The time is in the HH:mm:ssZ format (UTC time).
+        # The end time of the O&M time window. The time is in the HH:mm:ssZ format (UTC).
         self.maintain_end_time = maintain_end_time
-        # The start time of the O&M time window. The time is in the <i>HH:mm:ss</i>Z format (UTC time).
+        # The start time of the O&M time window. The time is in the <i>HH:mm:ss</i>Z format (UTC).
         self.maintain_start_time = maintain_start_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -36,8 +36,8 @@ class ModifyActiveOperationMaintainConfigRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # Specifies whether the configuration takes effect. Valid values:
-        # - 1: Effective.
-        # - 2: Ineffective.
+        # - 1: The configuration takes effect.
+        # - 2: The configuration does not take effect.
         self.status = status
 
     def validate(self):

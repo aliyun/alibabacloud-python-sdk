@@ -14,7 +14,7 @@ class DescribeParameterModificationHistoryResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.historical_parameters = historical_parameters
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

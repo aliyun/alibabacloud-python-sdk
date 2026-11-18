@@ -20,18 +20,18 @@ class DescribeBackupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # This group of parameters is deprecated. Ignore it.
+        # These parameters are deprecated. Ignore them.
         self.access_denied_detail = access_denied_detail
         self.backups = backups
-        # <props="china">The free backup quota for the instance. Unit: bytes. The free quota is equal to the default memory capacity of the instance type. For more information, see [Notice on backup commercialization](https://help.aliyun.com/document_detail/2664017.html).
+        # <props="china">The free backup quota for the instance. Unit: bytes. The free quota is equal to the default memory capacity of the instance type. For more information, see [Announcement on the commercialization of backups](https://help.aliyun.com/document_detail/2664017.html).
         # Full backups and log backups share this free quota. When you change the instance type, the free quota of the instance changes accordingly.
-        # <props="intl">This parameter is not in effect. Ignore this parameter.
+        # <props="intl">This parameter is invalid. Ignore this parameter.
         self.free_size = free_size
         # The size of full backup files for the current instance. Unit: bytes. Full backups include daily scheduled backups, manual backups, and backups generated during cache analysis.
         # > This value is independent of the number and size of backup sets returned in the current response. It represents the total size of all valid full backups for the instance.
         self.full_storage_size = full_storage_size
-        # The size of instance log backup files for the current instance. Unit: bytes. This value is valid only when the flashback feature is enabled.
-        # > This value is independent of the number and size of backup sets returned in the current response. It represents the total size of all valid instance log backups for the instance.
+        # The size of the instance log backup files for the current instance. Unit: bytes. This value is valid only when the flashback feature is enabled.
+        # > This value is independent of the number and size of backup sets returned in the current response. It represents the total size of all valid log backups for the instance.
         self.log_storage_size = log_storage_size
         # The page number.
         self.page_number = page_number
@@ -39,7 +39,7 @@ class DescribeBackupsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of backups.
+        # The total number of backup sets.
         self.total_count = total_count
 
     def validate(self):

@@ -88,17 +88,17 @@ class DescribeInstancesOverviewResponseBodyInstances(DaraModel):
         zone_id: str = None,
     ):
         # The architecture type. Valid values:
-        # * **cluster**: Cluster Edition.
-        # * **standard**: Standard Edition.
-        # * **rwsplit**: read/write splitting Edition.
+        # * **cluster**: Cluster.
+        # * **standard**: Standard.
+        # * **rwsplit**: Read/write splitting.
         self.architecture_type = architecture_type
         # The storage capacity of the instance. Unit: MB.
         self.capacity = capacity
         # The billing method. Valid values:
-        # * **PrePaid**: subscription.
-        # * **PostPaid**: pay-as-you-go.
+        # * **PrePaid**: Subscription.
+        # * **PostPaid**: Pay-as-you-go.
         self.charge_type = charge_type
-        # The internal endpoint of the instance.
+        # The internal network endpoint of the instance.
         self.connection_domain = connection_domain
         # The time when the instance was created.
         self.create_time = create_time
@@ -109,46 +109,46 @@ class DescribeInstancesOverviewResponseBodyInstances(DaraModel):
         # The distributed instance ID.
         # > This parameter is returned only when the instance is a child instance of a distributed instance.
         self.global_instance_id = global_instance_id
-        # The instance type.
+        # The instance specifications.
         self.instance_class = instance_class
         # The instance ID.
         self.instance_id = instance_id
         # The name of the instance.
         self.instance_name = instance_name
         # The instance status. Valid values:
-        # * **Normal**: The instance is running.
-        # * **Creating**: The instance is being created.
-        # * **Changing**: The instance is being modified.
-        # * **Inactive**: The instance is disabled.
-        # * **Flushing**: The instance is being purged.
-        # * **Released**: The instance is released.
-        # * **Transforming**: The instance is being transformed.
-        # * **Unavailable**: The instance is unavailable.
-        # * **Error**: The instance failed to be created.
-        # * **Migrating**: The instance is being migrated.
-        # * **BackupRecovering**: The instance is being restored from a backup.
-        # * **MinorVersionUpgrading**: A minor version upgrade is in progress.
-        # * **NetworkModifying**: The network configuration is being modified.
-        # * **SSLModifying**: The SSL configuration is being modified.
-        # * **MajorVersionUpgrading**: A major engine version upgrade is in progress. The instance can be accessed normally.
+        # * **Normal**: Running.
+        # * **Creating**: Being created.
+        # * **Changing**: Being modified.
+        # * **Inactive**: Disabled.
+        # * **Flushing**: Being purged.
+        # * **Released**: Released.
+        # * **Transforming**: Being transformed.
+        # * **Unavailable**: Service stopped.
+        # * **Error**: Creation failed.
+        # * **Migrating**: Being migrated.
+        # * **BackupRecovering**: Recovering from a backup.
+        # * **MinorVersionUpgrading**: Minor version upgrade in progress.
+        # * **NetworkModifying**: Modifying the network.
+        # * **SSLModifying**: Modifying SSL configurations.
+        # * **MajorVersionUpgrading**: Major engine version upgrade in progress. The instance remains accessible.
         self.instance_status = instance_status
         # The instance type. Valid values:
-        # * **Tair**: Tair (Enterprise Edition).
-        # * **Redis**: Redis Community Edition.
-        # * **Memcache**
+        # * **Tair**: Tair (Enterprise Edition)
+        # * **Redis**: Open-source Redis
+        # * **Memcache**: Memcache
         self.instance_type = instance_type
         # The network type. Valid values:
-        # * **CLASSIC**: classic network.
-        # * **VPC**: virtual private cloud (VPC).
+        # * **CLASSIC**: Classic network.
+        # * **VPC**: VPC.
         self.network_type = network_type
         self.node_type = node_type
-        # The private IP address of the instance in a VPC. The IP address may change. Use ConnectionDomain (the internal endpoint) to connect to the instance.
+        # The VPC IP address. The IP address may change. Connect to the instance by using the internal network endpoint specified by ConnectionDomain.
         # > - This parameter is not returned if the network type of the instance is classic network.
         # > - This parameter is not returned for cloud-native instances.
         self.private_ip = private_ip
         # The region ID.
         self.region_id = region_id
-        # The resource group ID to which the instance belongs.
+        # The resource group ID of the instance.
         self.resource_group_id = resource_group_id
         # The secondary zone ID.
         # > This parameter is returned only when the instance has a secondary zone.

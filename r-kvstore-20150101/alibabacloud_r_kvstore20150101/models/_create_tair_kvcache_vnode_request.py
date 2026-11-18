@@ -50,12 +50,12 @@ class CreateTairKVCacheVNodeRequest(DaraModel):
         # * **true**: uses a voucher.
         # * **false** (default): does not use a voucher.
         self.auto_use_coupon = auto_use_coupon
-        # The extended information, such as the campaign ID and business information.
+        # The extended information such as the campaign ID and business information.
         self.business_info = business_info
-        # The billing method. Valid values:
-        # * **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period** parameter.
+        # The billing method to switch to. Valid values:
+        # * **PrePaid**: Subscription. If you specify this value, you must also specify the **Period** parameter.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that the token is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that it is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
         self.client_token = client_token
         # The number of compute units. Currently, only one compute unit is supported.
         # 
@@ -72,11 +72,11 @@ class CreateTairKVCacheVNodeRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_class = instance_class
-        # The name of the new instance. The name must be 2 to 80 characters in length and start with a letter or a Chinese character. It cannot contain spaces or the following special characters: `@/:=”<>{[]}`.
+        # The name of the new instance. The name must be 2 to 80 characters in length and start with a letter or a Chinese character. It cannot contain spaces or the following special characters: `@/:="<>{[]}`.
         self.instance_name = instance_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration. Unit: months. Valid values: **1** to **9**, **12**, **24**, and **36**.
+        # The subscription period. Unit: months. Valid values: **1** to **9**, **12**, **24**, and **36**.
         # > This parameter is required when the **ChargeType** parameter is set to **PrePaid**.
         self.period = period
         # The region ID. Specifies the region where you want to create the instance.
@@ -85,7 +85,7 @@ class CreateTairKVCacheVNodeRequest(DaraModel):
         self.region_id = region_id
         # The ID of the destination resource group.
         # 
-        # > * You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or go to the console to obtain the resource group ID list. For related operations, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # > * You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or go to the console to obtain the resource group ID list. Related operations: see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         # > * Before you change the resource group to which the instance belongs, you can invoke the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the current resource group of the instance.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
@@ -93,9 +93,10 @@ class CreateTairKVCacheVNodeRequest(DaraModel):
         self.security_token = security_token
         # The tag information of the instance.
         self.tag = tag
+        # The virtual node type. Valid values: fixed and elastic.
         self.vnode_type = vnode_type
-        # The vSwitch ID of the instance. The vSwitch must belong to the VPC associated with the specified VCluster virtual cluster. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation of the VPC API to query the vSwitch ID.
-        # > The zone of the vSwitch must be the same as the zone of the instance.
+        # The vSwitch ID of the instance. The vSwitch must belong to the VPC of the specified VCluster virtual cluster. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation of the VPC API to query the vSwitch ID.
+        # > The zone of the vSwitch must be the same as that of the instance.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id

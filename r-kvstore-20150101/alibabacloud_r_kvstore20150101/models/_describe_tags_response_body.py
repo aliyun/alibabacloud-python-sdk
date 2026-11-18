@@ -15,7 +15,7 @@ class DescribeTagsResponseBody(DaraModel):
         tags: List[main_models.DescribeTagsResponseBodyTags] = None,
     ):
         # The token used to start the next query.
-        # > This parameter is returned if a single query does not return all results. You can pass the value of this parameter in a subsequent query to continue the query.
+        # > This parameter is returned if a query does not return all results. You can pass the value of this parameter in a subsequent query to continue the query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

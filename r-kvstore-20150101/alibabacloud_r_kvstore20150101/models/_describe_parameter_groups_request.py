@@ -17,9 +17,9 @@ class DescribeParameterGroupsRequest(DaraModel):
         security_token: str = None,
     ):
         # The engine type. Valid values:
-        # - **redis**: open-source Redis or Tair (Memory-optimized).
-        # - **tair_pena**: Tair (Persistent Memory-optimized).
-        # - **tair_pdb**: Tair (Disk-optimized, ESSD/SSD).
+        # - **redis**: open-source Redis or Tair (memory-optimized).
+        # - **tair_pena**: Tair (persistent memory-optimized).
+        # - **tair_pdb**: Tair (disk-optimized, ESSD/SSD).
         self.db_type = db_type
         # The compatible engine version.
         self.engine_version = engine_version

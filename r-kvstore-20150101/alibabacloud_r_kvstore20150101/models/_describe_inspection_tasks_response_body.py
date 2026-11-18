@@ -18,7 +18,7 @@ class DescribeInspectionTasksResponseBody(DaraModel):
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -63,7 +63,7 @@ class DescribeInspectionTasksResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
-        # The list of tasks.
+        # The list of task data.
         self.items = items
         # The page number.
         self.page_num = page_num
@@ -133,19 +133,13 @@ class DescribeInspectionTasksResponseBodyDataItems(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The time when the task was created.
-        # 
-        # The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The creation time of the task. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
-        # The end time of the task.
-        # 
-        # The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The end time of the task. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
-        # The completion time of the task.
-        # 
-        # The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The completion time of the task. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.finish_time = finish_time
-        # The specified inspection items. The following inspection items are supported:
+        # The specified inspection items. Supported inspection items:
         # - RESOURCE_USAGE
         # - BIGKEY
         # - HOTKEY
@@ -156,15 +150,13 @@ class DescribeInspectionTasksResponseBodyDataItems(DaraModel):
         self.instance_ids = instance_ids
         # The language of the report.
         self.report_language = report_language
-        # The ID of the scheduled task.
+        # The ID of the timed scheduling.
         self.schedule_id = schedule_id
         # The source of the task.
         self.source = source
-        # The start time of the task.
-        # 
-        # The time is displayed in UTC time in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The start time of the task. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
-        # The status of the task.
+        # The status.
         self.status = status
         # The task ID.
         self.task_id = task_id

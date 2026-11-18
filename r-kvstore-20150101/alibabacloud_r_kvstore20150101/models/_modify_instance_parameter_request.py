@@ -23,8 +23,8 @@ class ModifyInstanceParameterRequest(DaraModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The parameter template ID.
-        # > You can call the DescribeParameterGroups operation to query the list of parameter templates in the target region, including parameter template IDs.
+        # The ID of the parameter template.
+        # > You can call the DescribeParameterGroups operation to query the parameter templates in the target region, including the parameter template IDs.
         self.parameter_group_id = parameter_group_id
         # The parameter information.
         self.parameters = parameters

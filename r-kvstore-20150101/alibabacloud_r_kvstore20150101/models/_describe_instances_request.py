@@ -39,32 +39,32 @@ class DescribeInstancesRequest(DaraModel):
         zone_id: str = None,
     ):
         # The architecture type. Valid values:
-        # * **cluster**: cluster edition
-        # * **standard**: standard edition
-        # * **rwsplit**: read/write splitting edition
+        # * **cluster**: Cluster Edition
+        # * **standard**: Standard Edition
+        # * **rwsplit**: Read/Write Splitting Edition
         self.architecture_type = architecture_type
         # The billing method. Valid values:
         # * **PrePaid**: subscription
         # * **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
         # The edition type of the instance. Valid values:
-        # * **Community**: open-source Redis
+        # * **Community**: Redis Community Edition
         # * **Enterprise**: Tair Enterprise Edition
         self.edition_type = edition_type
         # The Redis-compatible engine version of the instance. Valid values: **2.8**, **4.0**, **5.0**, **6.0**, and **7.0**.
         self.engine_version = engine_version
         # The expiration status of the instance. Valid values:
         # 
-        # * **true**: The instance has expired.
-        # * **false**: The instance has not expired.
+        # * **true**: The instance is expired.
+        # * **false**: The instance is not expired.
         self.expired = expired
-        # Specifies whether to filter child instances of distributed instances in the returned instance list. Valid values:
-        # * **true**: Only child instance information is returned.
-        # * **false**: Child instance information is not returned.
+        # Specifies whether to filter out child instances of distributed instances in the returned instance list. Valid values:
+        # * **true**: Only child instances are returned.
+        # * **false**: Child instances are not returned.
         self.global_instance = global_instance
-        # The instance specifications. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/107984.html).
+        # The instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/107984.html).
         self.instance_class = instance_class
-        # The IDs of the instances to be queried.
+        # The IDs of the instances to query.
         # > To specify multiple instance IDs, separate the IDs with commas (,). You can specify up to 30 instance IDs in a single request.
         self.instance_ids = instance_ids
         # The status of the instance. Valid values:
@@ -76,11 +76,11 @@ class DescribeInstancesRequest(DaraModel):
         # * **Released**: released
         # * **Transforming**: transforming
         # * **Migrating**: migrating
-        # * **BackupRecovering**: recovering from backup
+        # * **BackupRecovering**: recovering from a backup
         # * **MinorVersionUpgrading**: minor version upgrade in progress
         # * **NetworkModifying**: changing the network type
-        # * **SSLModifying**: changing SSL configurations
-        # * **MajorVersionUpgrading**: major engine version upgrade in progress, during which the instance remains accessible
+        # * **SSLModifying**: changing SSL settings
+        # * **MajorVersionUpgrading**: major engine version upgrade in progress. The instance remains accessible.
         # 
         # > For more information about instance statuses, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
@@ -98,7 +98,7 @@ class DescribeInstancesRequest(DaraModel):
         # * **STAND_ALONE**: single-replica
         # * **double**: dual-replica
         # * **single**: single-replica
-        # > For cloud-native instances, select **MASTER_SLAVE** or **STAND_ALONE**. For classic instances, select **double** or **single**.
+        # > Select **MASTER_SLAVE** or **STAND_ALONE** for Cloud-native Edition instances, and select **double** or **single** for Classic Edition instances.
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -110,14 +110,14 @@ class DescribeInstancesRequest(DaraModel):
         self.private_ip = private_ip
         # The region ID of the instance.
         # 
-        # > When you call this operation, if the **Tag** parameter is specified, this parameter is required.
+        # > If you specify the **Tag** parameter when you call this operation, you must also specify this parameter.
         self.region_id = region_id
         # The resource group ID.
-        # > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the list of resource group IDs. For related operations, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # > You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID list. Related operations: [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The search keyword. Fuzzy match is supported for instance names and instance IDs.
+        # The keyword used for fuzzy search by instance name or instance ID.
         self.search_key = search_key
         self.security_token = security_token
         # The tag information of the instance.
@@ -319,10 +319,10 @@ class DescribeInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. It forms a key-value pair with the tag value.
+        # The tag key. The tag key and value form a key-value pair.
         # > You can specify up to 5 tag key-value pairs in a single request.
         self.key = key
-        # The tag value. It forms a key-value pair with the tag key.
+        # The value of the tag key. The tag key and value form a key-value pair.
         self.value = value
 
     def validate(self):

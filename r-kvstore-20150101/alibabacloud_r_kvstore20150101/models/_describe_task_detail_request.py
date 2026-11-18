@@ -14,7 +14,7 @@ class DescribeTaskDetailRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The node ID.
+        # The task ID.
         # 
         # This parameter is required.
         self.task_id = task_id

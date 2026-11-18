@@ -16,28 +16,29 @@ class ModifyActiveOperationTasksRequest(DaraModel):
         security_token: str = None,
         switch_time: str = None,
     ):
-        # The O&M event IDs. Separate multiple IDs with commas (,).
+        # The IDs of the O&M events. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.ids = ids
-        # Specifies whether to immediately start execution scheduling.
+        # Specifies whether to immediately enter execution scheduling.
         # 
-        # - 0: No. (Default)
-        # - 1: Yes.
+        # - 0: no (default)
+        # - 1: yes
         # 
         # > 
-        # > If the value is 0, SwitchTime takes effect. If the value is 1, SwitchTime does not take effect. The event start time is set to the current time, and the switchover time is automatically calculated based on the new start time.
-        # The event immediately enters execution scheduling (not an immediate switchover). Pre-switchover preparations begin, and the switchover is performed after the preparations are complete. Call DescribeActiveOperationTasks and check the value of the PrepareInterval response parameter to obtain the preparation time.
+        # > If the value is 0, SwitchTime takes effect. If the value is 1, SwitchTime does not take effect, the event start time is set to the current time, and the switchover time is automatically calculated based on the new start time.
+        # The event immediately enters execution scheduling but is not immediately switched over. Preparations for the switchover are performed, and the switchover is executed after the preparations are completed. You can call the DescribeActiveOperationTasks operation to obtain the preparation time from the value of the PrepareInterval response parameter.
         self.immediate_start = immediate_start
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The planned switchover time to set. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The scheduled switchover time to set. The time must be in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         # 
         # > 
-        # >  The time cannot be later than the deadline. Call DescribeActiveOperationTasks and check the value of the Deadline response parameter to obtain the deadline.
+        # > The time cannot be later than the deadline.
+        # You can call the DescribeActiveOperationTasks operation to obtain the deadline from the value of the Deadline response parameter.
         # 
         # This parameter is required.
         self.switch_time = switch_time

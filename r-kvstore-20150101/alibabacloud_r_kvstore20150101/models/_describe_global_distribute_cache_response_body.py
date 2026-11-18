@@ -16,15 +16,15 @@ class DescribeGlobalDistributeCacheResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details of the distributed instance.
+        # The list of distributed instances.
         self.global_distribute_caches = global_distribute_caches
         # The page number.
         self.page_number = page_number
-        # The number of entries that can be displayed per page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -86,14 +86,14 @@ class DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCaches(DaraModel)
         status: str = None,
         sub_instances: List[main_models.DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstances] = None,
     ):
-        # The distributed instance ID.
+        # The instance ID of the distributed instance.
         self.global_instance_id = global_instance_id
         # The instance status of the distributed instance. Valid values:
-        # * **Normal**: Running.
-        # * **Changing**: Being modified.
-        # * **Creating**: Being created.
+        # * **Normal**: The instance is running.
+        # * **Changing**: The instance is being modified.
+        # * **Creating**: The instance is being created.
         self.status = status
-        # The details of the child instances.
+        # The list of child instances.
         self.sub_instances = sub_instances
 
     def validate(self):
@@ -145,34 +145,34 @@ class DescribeGlobalDistributeCacheResponseBodyGlobalDistributeCachesSubInstance
         instance_status: str = None,
         region_id: str = None,
     ):
-        # The distributed instance ID.
+        # The instance ID of the distributed instance.
         self.global_instance_id = global_instance_id
         # The instance type of the child instance. For more information, see:
-        # * [Memory-optimized Standard Edition instance types](https://help.aliyun.com/document_detail/145228.html).
-        # * [Memory-optimized Cluster Edition instance types](https://help.aliyun.com/document_detail/150458.html).
-        # * [Memory-optimized read/write splitting instance types](https://help.aliyun.com/document_detail/150459.html).
+        # * [Standard memory-optimized instance types](https://help.aliyun.com/document_detail/145228.html).
+        # * [Cluster memory-optimized instance types](https://help.aliyun.com/document_detail/150458.html).
+        # * [Read/write splitting memory-optimized instance types](https://help.aliyun.com/document_detail/150459.html).
         self.instance_class = instance_class
-        # The child instance ID.
+        # The instance ID of the child instance.
         self.instance_id = instance_id
         # The instance status of the child instance. Valid values:
         # 
-        # * **Normal**: Normal.
-        # * **Creating**: Being created.
-        # * **Changing**: Being modified.
-        # * **Inactive**: Disabled.
-        # * **Flushing**: Being purged.
-        # * **Released**: Released.
-        # * **Transforming**: Being transformed.
-        # * **Unavailable**: Service stopped.
-        # * **Error**: Failed to create.
-        # * **Migrating**: Being migrated.
-        # * **BackupRecovering**: Being restored from a backup.
-        # * **MinorVersionUpgrading**: Minor version being upgraded.
-        # * **NetworkModifying**: Network being modified.
-        # * **SSLModifying**: SSL being modified.
-        # * **MajorVersionUpgrading**: Major engine version upgrade in progress. The instance can be accessed normally.
+        # * **Normal**: The instance is in a normal state.
+        # * **Creating**: The instance is being created.
+        # * **Changing**: The instance is being modified.
+        # * **Inactive**: The instance is disabled.
+        # * **Flushing**: The instance is being purged.
+        # * **Released**: The instance is released.
+        # * **Transforming**: The instance is being transformed.
+        # * **Unavailable**: The service is stopped.
+        # * **Error**: The instance failed to be created.
+        # * **Migrating**: The instance is being migrated.
+        # * **BackupRecovering**: The instance is recovering from a backup.
+        # * **MinorVersionUpgrading**: The minor version of the instance is being upgraded.
+        # * **NetworkModifying**: The network of the instance is being modified.
+        # * **SSLModifying**: The SSL certificate of the instance is being modified.
+        # * **MajorVersionUpgrading**: A major engine version upgrade is in progress. The instance remains accessible.
         # 
-        # > For more information about instance status and details, see [Instance states and impacts](https://help.aliyun.com/document_detail/200740.html).
+        # > For more information about instance statuses and their impacts, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
         # The region ID.
         self.region_id = region_id

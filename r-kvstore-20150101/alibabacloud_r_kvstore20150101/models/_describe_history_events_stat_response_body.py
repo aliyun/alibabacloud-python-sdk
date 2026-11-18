@@ -13,7 +13,7 @@ class DescribeHistoryEventsStatResponseBody(DaraModel):
         items: List[main_models.DescribeHistoryEventsStatResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # The event list.
+        # The list of events.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -58,11 +58,11 @@ class DescribeHistoryEventsStatResponseBodyItems(DaraModel):
         event_category: str = None,
         total_count: int = None,
     ):
-        # The system event categorization. Valid values:
-        # - **Exception**: Exception event.
+        # The category of the system event. Valid values:
+        # - **Exception**: Exception events.
         # - **Optimize**: Optimization events.
-        # - **Notification**: Notification event.
-        # - **Maintenance**: Scheduled maintenance event.
+        # - **Notification**: Notification events.
+        # - **Maintenance**: Scheduled O&M events.
         self.event_category = event_category
         # The total number of records.
         self.total_count = total_count

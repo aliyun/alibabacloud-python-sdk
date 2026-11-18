@@ -67,7 +67,7 @@ class DescribeInspectionSchedulesResponseBodyData(DaraModel):
         self.items = items
         # The current page number.
         self.page_num = page_num
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The total number of entries.
         self.total = total
@@ -135,9 +135,7 @@ class DescribeInspectionSchedulesResponseBodyDataItems(DaraModel):
         timezone: str = None,
         update_time: str = None,
     ):
-        # The time when the scheduled task configuration was created.
-        # 
-        # The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+        # The time when the scheduled task configuration was created. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.create_time = create_time
         # The cron expression.
         self.cron_expression = cron_expression
@@ -145,15 +143,13 @@ class DescribeInspectionSchedulesResponseBodyDataItems(DaraModel):
         self.enabled = enabled
         # The inspection items.
         # > 
-        # > - Supported inspection items include RESOURCE_USAGE, BIGKEY, HOTKEY, PERFORMANCE_METRICS, and SLOWLOG.
+        # > - Currently, the supported inspection items are RESOURCE_USAGE, BIGKEY, HOTKEY, PERFORMANCE_METRICS, and SLOWLOG.
         self.inspection_items = inspection_items
         # The time window.
         self.inspection_window = inspection_window
         # The list of associated instance IDs.
         self.instance_ids = instance_ids
-        # The next time the task is scheduled to run.
-        # 
-        # The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+        # The next time the task is scheduled to run. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.next_fire_time = next_fire_time
         # The notification configuration.
         self.notify_config = notify_config
@@ -165,9 +161,7 @@ class DescribeInspectionSchedulesResponseBodyDataItems(DaraModel):
         self.schedule_name = schedule_name
         # The time zone.
         self.timezone = timezone
-        # The update time.
-        # 
-        # The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+        # The update time. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
         self.update_time = update_time
 
     def validate(self):

@@ -22,18 +22,18 @@ class AddShardingNodeRequest(DaraModel):
         v_switch_id: str = None,
     ):
         # Specifies whether to enable automatic payment. Valid values:
-        # * **true**: Automatic payment is enabled. Make sure that your account has sufficient balance.
-        # * **false**: Automatic payment is disabled. You must manually complete the payment in the console. For more information, see [Manual renewal](https://help.aliyun.com/document_detail/26352.html).
+        # * **true**: enables automatic payment. Make sure that your account has sufficient balance.
+        # * **false**: disables automatic payment. You must manually renew the instance in the console. For more information, see [Manual renewal](https://help.aliyun.com/document_detail/26352.html).
         # 
         # > Default value: **true**.
         self.auto_pay = auto_pay
-        # The additional parameter for business information.
+        # The additional parameter that contains business information.
         self.business_info = business_info
         # The coupon code.
         self.coupon_no = coupon_no
-        # Specifies whether to enable forced transmission. Valid values:
-        # - **false** (default): Before the Upgrade/Downgrade, the system checks the current minor engine version of the instance. If the minor engine version is outdated, an error is returned. You must upgrade the minor engine version and retry.
-        # - **true**: Skips the check and directly executes the Upgrade/Downgrade operation.
+        # Specifies whether to enable forced transition. Valid values:
+        # - **false** (default): Before the upgrade/downgrade, the system checks the current minor engine version of the instance. If the engine version is too low, an error is reported. You must upgrade the minor engine version and retry.
+        # - **true**: skips the check to directly execute the upgrade/downgrade operation.
         self.force_trans = force_trans
         # The instance ID.
         # 
@@ -45,12 +45,12 @@ class AddShardingNodeRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The number of shards to add. Default value: **1**.
-        # > The minimum total number of shards for an instance is 2. You can add up to 64 shards in a single operation, and the total number of shards for an instance cannot exceed 256. Make sure that the number of shards does not exceed this limit.
+        # > The total number of shards in the instance must be at least 2. The maximum number of shards that can be added in a single operation is 64, and the maximum total number of shards for an instance is 256. Make sure that the number of shards does not exceed these limits.
         self.shard_count = shard_count
-        # The request source. This parameter is used only for internal maintenance and does not need to be specified.
+        # The source of the call. This parameter is used only for internal maintenance and does not need to be specified.
         self.source_biz = source_biz
-        # The ID of a different vSwitch within the same VPC. The new data shards are created under the specified vSwitch.
-        # If you leave this parameter empty, the new data shards are created under the original vSwitch.
+        # The ID of a different vSwitch in the same VPC. The new data shards are created in the specified vSwitch.
+        # If you do not specify this parameter, the new data shards are created in the original vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):

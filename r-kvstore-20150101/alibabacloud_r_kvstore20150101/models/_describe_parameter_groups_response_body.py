@@ -71,9 +71,9 @@ class DescribeParameterGroupsResponseBodyParameterGroups(DaraModel):
         # The time when the parameter template was created.
         self.created = created
         # The engine type. Valid values:
-        # - **redis**: open-source Redis or Tair (Memory-optimized).
-        # - **tair_pena**: Tair (Persistent Memory-optimized).
-        # - **tair_pdb**: Tair (Disk-optimized).
+        # - **redis**: open-source Redis or Tair (memory-optimized).
+        # - **tair_pena**: Tair (persistent memory-optimized).
+        # - **tair_pdb**: Tair (disk-optimized).
         self.engine = engine
         # The compatible engine version.
         self.engine_version = engine_version

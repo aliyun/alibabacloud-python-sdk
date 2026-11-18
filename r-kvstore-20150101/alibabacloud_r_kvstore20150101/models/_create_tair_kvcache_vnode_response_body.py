@@ -16,7 +16,7 @@ class CreateTairKVCacheVNodeResponseBody(DaraModel):
         vk_name: str = None,
         zone_id: str = None,
     ):
-        # The instance ID of the virtual node.
+        # The virtual node instance ID.
         self.instance_id = instance_id
         # The ID of the virtual node.
         self.node_id = node_id
@@ -28,7 +28,7 @@ class CreateTairKVCacheVNodeResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the virtual cluster.
         self.vcluster_id = vcluster_id
-        # The instance ID of the virtual cluster.
+        # The virtual cluster instance ID.
         self.vk_name = vk_name
         # The zone ID.
         self.zone_id = zone_id

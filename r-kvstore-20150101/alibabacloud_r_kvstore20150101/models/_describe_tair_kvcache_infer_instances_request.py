@@ -36,24 +36,24 @@ class DescribeTairKVCacheInferInstancesRequest(DaraModel):
         # - **PrePaid**: Subscription.
         # - **PostPaid**: Pay-as-you-go.
         self.charge_type = charge_type
-        # The expiration status of the instance. Valid values:
+        # Specifies whether the instance has expired. Valid values:
         # 
-        # * **true**: Expired.
-        # * **false**: Not expired.
+        # * **true**: The instance has expired.
+        # * **false**: The instance has not expired.
         self.expired = expired
         # The instance type.
         self.instance_class = instance_class
         # The IDs of the instances to query.
-        # > If you specify multiple instance IDs, separate them with commas (,). You can specify up to 30 instance IDs in a single request.
+        # > Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs in a single request.
         self.instance_ids = instance_ids
-        # The instance status. Valid values:
+        # The status of the instance. Valid values:
         # * **Normal**: Normal.
         # * **Creating**: Creating.
         # 
         # > For more information about instance statuses, see [Instance statuses and impacts](https://help.aliyun.com/document_detail/200740.html).
         self.instance_status = instance_status
         # The network type. Valid values:
-        # * **VPC**: Virtual Private Cloud (VPC). This is the default value.
+        # * **VPC**: VPC. This is the default value.
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -61,7 +61,7 @@ class DescribeTairKVCacheInferInstancesRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 30.
         self.page_size = page_size
-        # **[Deprecated]** The private IP address of the VPC.
+        # The private IP address in the VPC. **[Deprecated]** This parameter is deprecated.
         self.private_ip = private_ip
         # The region ID of the instance.
         # 
@@ -71,7 +71,7 @@ class DescribeTairKVCacheInferInstancesRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The search keyword. You can use this parameter to perform a fuzzy search by instance name or instance ID.
+        # The keyword for fuzzy search by instance name or instance ID.
         self.search_key = search_key
         self.security_token = security_token
         # The tags of the instance.

@@ -21,7 +21,7 @@ class DescribeRoleZoneInfoResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count

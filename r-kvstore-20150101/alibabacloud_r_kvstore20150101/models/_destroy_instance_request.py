@@ -14,7 +14,7 @@ class DestroyInstanceRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The instance ID of the instance to revoke from the recycle bin.
+        # The ID of the revoked instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

@@ -23,24 +23,24 @@ class TransformInstanceChargeTypeRequest(DaraModel):
         # Specifies whether to enable automatic payment. Valid values:
         # 
         # * **true**: enables automatic payment. This is the default value.
-        # * **false**: disables automatic payment. You must manually pay for the order. To pay for the order, choose **Billing** > **Renewals** in the top navigation bar of the console, and then choose **Order Management** > **My Orders** in the left-side navigation pane to find and pay for the order.
+        # * **false**: disables automatic payment. You must manually pay for the order. To pay for the order, choose **Billing** > **Renewal Management** in the top navigation bar of the console. In the left-side navigation pane, choose **Order Management** > **My Orders**, find the order, and then complete the payment.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # * **true**: enables auto-renewal.
         # * **false**: disables auto-renewal. This is the default value.
         self.auto_renew = auto_renew
-        # The auto-renewal epoch. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+        # The auto-renewal cycle. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
         # 
         # > This parameter is required only when the **AutoRenew** parameter is set to **true**.
         self.auto_renew_period = auto_renew_period
-        # The billing method to which you want to switch. Valid values:
+        # The new billing method. Valid values:
         # * **PrePaid**: subscription. If you set this parameter to PrePaid, you must also specify the **Period** parameter.
         # * **PostPaid**: pay-as-you-go.
         # 
         # This parameter is required.
         self.charge_type = charge_type
         self.coupon_no = coupon_no
-        # The ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
+        # Instance ID of the instance. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

@@ -26,7 +26,7 @@ class DescribeSlowLogRecordsRequest(DaraModel):
     ):
         # The database name.
         self.dbname = dbname
-        # The end time of the query. The end time must be later than the start time, and the time range cannot exceed 1 day. The recommended time range is 1 hour. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
+        # The end time of the query. The end time must be later than the start time, and the time range cannot exceed one day. Set the time range to one hour. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -34,31 +34,31 @@ class DescribeSlowLogRecordsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The node ID in the instance. Specify this parameter to query the slow query logs of a specific node.
+        # The node ID in the instance. Specify this parameter to query the slow logs of a specific node.
         # > This parameter is available only when the instance uses the read/write splitting or cluster architecture.
         self.node_id = node_id
-        # The field based on which the returned results are sorted. Valid values:
-        # * **execution_time**: sorts the results based on the start time of request execution. This is the default value.
-        # * **latency**: sorts the results based on the execution duration of requests.
+        # The sort criterion of the returned results. Valid values:
+        # * **execution_time**: execution start time of the request (default)
+        # * **latency**: execution duration of the request
         self.order_by = order_by
         # The sort order of the returned results. Valid values:
-        # * **ASC**: ascending order.
-        # * **DESC**: descending order. This is the default value.
+        # * **ASC**: ascending order
+        # * **DESC**: descending order (default)
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+        # The page number. The value must be greater than **0** and cannot exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The maximum number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The keyword used to search the returned results.
+        # The keyword used to search the returned results. Specify a string value.
         self.query_keyword = query_keyword
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The slow log type. Valid values:
-        # * **proxy**: Slow query logs on proxy nodes.
-        # * **db**: Slow query logs on data nodes. This is the default value.
+        # * **proxy**: slow logs of proxy nodes
+        # * **db**: slow logs of data nodes (default)
         self.slow_log_record_type = slow_log_record_type
         # The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         # 

@@ -15,8 +15,7 @@ class DescribeZonesRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The language of the zone names in the response. Valid values:
-        # 
+        # Specifies the language of the returned zone names. Valid values:
         # * **zh-CN** (default): Chinese.
         # * **en-US**: English.
         self.accept_language = accept_language

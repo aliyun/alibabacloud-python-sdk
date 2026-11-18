@@ -15,8 +15,8 @@ class DescribeDBInstanceNetInfoResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The network type. Valid values:
-        # * **CLASSIC**: classic network.
-        # * **VPC**: virtual private cloud (VPC).
+        # * **CLASSIC**: Classic network.
+        # * **VPC**: VPC.
         self.instance_network_type = instance_network_type
         self.net_info_items = net_info_items
         # The request ID.

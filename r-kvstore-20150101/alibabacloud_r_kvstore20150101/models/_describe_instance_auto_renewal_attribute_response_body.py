@@ -17,9 +17,9 @@ class DescribeInstanceAutoRenewalAttributeResponseBody(DaraModel):
         total_record_count: int = None,
     ):
         self.items = items
-        # The page number of the current page.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The number of entries returned on the current page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id

@@ -18,21 +18,21 @@ class DeleteShardingNodeRequest(DaraModel):
         security_token: str = None,
         shard_count: int = None,
     ):
-        # The time when the proxy deletion takes effect if proxy nodes are deleted when you delete shards from a cluster instance in proxy mode. Valid values:
-        # * **0 or Immediately**: Takes effect immediately. This is the default value.
-        # * **1 or MaintainTime**: Takes effect during the maintenance window.
+        # The time when the proxy deletion operation is performed if proxy nodes are deleted when you delete shards from a cluster instance in proxy mode. Valid values:
+        # * **0 or Immediately**: The operation is immediately performed. This is the default value.
+        # * **1 or MaintainTime**: The operation is performed during the maintenance window.
         # 
         # > You can call the [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) operation to modify the maintenance window of the instance.
         self.effective_time = effective_time
-        # Specifies whether to enable forced migration. Valid values:
-        # - **false** (default): Before the upgrade/downgrade, the system checks the current minor engine version of the instance. If the kernel version is too low, an error is reported. You must upgrade the minor engine version and retry.
-        # - **true**: Skips the checks and directly executes the upgrade/downgrade operation.
+        # Specifies whether to enable forced transfer. Valid values:
+        # - **false** (default): Before the Upgrade/Downgrade, the system checks the current minor engine version of the instance. If the minor engine version is too low, an error is reported. You must upgrade the minor engine version and retry.
+        # - **true**: Skips the check and directly executes the Upgrade/Downgrade operation.
         self.force_trans = force_trans
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard node to be deleted. To specify multiple shard node IDs, separate them with commas (,).
+        # The ID of the data shard node to be deleted. To specify multiple shard node IDs at a time, separate the IDs with commas (,).
         # > If both the NodeId and ShardCount parameters are specified, the NodeId parameter takes precedence.
         self.node_id = node_id
         self.owner_account = owner_account
@@ -40,7 +40,7 @@ class DeleteShardingNodeRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The number of shards to be deleted. The system deletes the specified number of shard nodes starting from the end.
+        # The number of shards to be deleted. The system counts from the tail and deletes the specified number of shard nodes.
         # > For example, if an instance has five shard nodes: db-0, db-1, db-2, db-3, and db-4, and you set this parameter to 2, the db-3 and db-4 nodes are deleted.
         self.shard_count = shard_count
 

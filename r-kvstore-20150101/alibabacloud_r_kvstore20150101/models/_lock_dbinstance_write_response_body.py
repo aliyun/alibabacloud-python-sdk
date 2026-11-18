@@ -14,7 +14,7 @@ class LockDBInstanceWriteResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The reason for locking the instance.
+        # The reason for the lock.
         self.lock_reason = lock_reason
         # The request ID.
         self.request_id = request_id

@@ -138,13 +138,13 @@ class DescribeInspectionTaskReportResponseBodyDataSummary(DaraModel):
         normal: int = None,
         warning: int = None,
     ):
-        # The number of high-risk items.
+        # The high-risk count.
         self.error = error
-        # The number of failed items.
+        # The failed count.
         self.failed = failed
-        # The number of normal items.
+        # The normal count.
         self.normal = normal
-        # The number of warning items.
+        # The warning count.
         self.warning = warning
 
     def validate(self):

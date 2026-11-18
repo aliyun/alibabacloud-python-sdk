@@ -32,7 +32,7 @@ class DescribeAccountsRequest(DaraModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The fuzzy match string for the account name.
+        # The keyword for fuzzy search of the account name.
         self.search_account_name = search_account_name
         self.security_token = security_token
 

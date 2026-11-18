@@ -18,11 +18,11 @@ class DescribeInstanceMultiVIPResponseBody(DaraModel):
     ):
         # The IP address of the primary DNS server.
         self.master_dns = master_dns
-        # The list of IP addresses corresponding to all LBs of the current instance.
+        # The list of IP addresses for all load balancers of the instance.
         self.master_dns_record = master_dns_record
         # The maximum number of VIPs that can be created.
         self.max_quota = max_quota
-        # The list of multiple LB VIPs.
+        # The list of virtual IP addresses (VIPs) for multiple load balancers.
         self.multi_viplist = multi_viplist
         # The request ID.
         self.request_id = request_id

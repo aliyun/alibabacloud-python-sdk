@@ -13,7 +13,7 @@ class DescribeGlobalSecurityIPGroupResponseBody(DaraModel):
         global_security_ipgroup: List[main_models.DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup] = None,
         request_id: str = None,
     ):
-        # The IP whitelist template information.
+        # The information about the IP whitelist templates.
         self.global_security_ipgroup = global_security_ipgroup
         # The ID of the request.
         self.request_id = request_id

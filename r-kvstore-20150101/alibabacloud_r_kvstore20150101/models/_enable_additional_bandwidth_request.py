@@ -27,38 +27,38 @@ class EnableAdditionalBandwidthRequest(DaraModel):
         # Specifies whether to enable automatic payment. Valid values:
         # 
         # * **true**: enables automatic payment. This is the default value. Make sure that your account has sufficient balance.
-        # * **false**: disables automatic payment. You must manually complete the payment.
+        # * **false**: manual payment.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # * **true**: enables auto-renewal.
         # * **false**: disables auto-renewal. This is the default value.
         self.auto_renew = auto_renew
-        # The auto-renewal period, in months. Valid values: **1**, **2**, **3**, **4**, **5**, **6**, **7**, **8**, **9**, **12**, **24**, **36**, and **60**.
+        # The auto-renewal cycle. Unit: months. Valid values: **1**, **2**, **3**, **4**, **5**, **6**, **7**, **8**, **9**, **12**, **24**, **36**, and **60**.
         # 
         # > * This parameter is available and required only when the **AutoRenew** parameter is set to **true**.
-        # > * After this parameter is configured, it cannot be queried by calling API operations. To query the auto-renewal period, choose **Billing** > **Renewal Management** in the top navigation bar of the console, and then enter the instance ID with the `-bw` suffix (for example, r-bp1zxszhcgatnx****-bw) in the **Instance ID** text box.
+        # > * After this parameter is configured, it cannot be queried by calling API operations. You can log on to the console, choose **Billing** > **Renewal Management** in the top menu bar, and enter the instance ID with the `-bw` suffix (for example, r-bp1zxszhcgatnx****-bw) in the **Instance ID** text box to query the auto-renewal cycle.
         self.auto_renew_period = auto_renew_period
-        # Specifies whether to enable burstable (second-level) elastic bandwidth. After elastic scaling for bandwidth is enabled, burstable (second-level) elastic bandwidth cannot be enabled, and vice versa.
+        # Specifies whether burstable (second-level) elastic bandwidth is enabled. After you enable elastic scaling for bandwidth, you cannot enable burstable (second-level) elastic bandwidth, and vice versa.
         self.band_width_burst = band_width_burst
-        # The bandwidth to be increased, in MB/s. The value must be an integer greater than or equal to **0**. The maximum value is six times the default bandwidth of the instance (or a single shard) specifications, but the upper limit of the increase is 192 MB/s. For example, if the default bandwidth of the instance is 10 MB/s, the value range is **0** to **60**.
+        # The bandwidth to be added. Unit: MB/s. The value must be an integer greater than or equal to **0**. The maximum value is six times the default bandwidth of the instance (or a single shard) specification, but the upper limit of the added bandwidth is 192 MB/s. For example, if the default bandwidth of the instance is 10 MB/s, the value range is **0** to **60**.
         # 
-        # > * You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation and use the **DefaultBandWidth** response parameter to obtain the default maximum bandwidth. For more information about instance specifications, see [Overview of instance specifications](https://help.aliyun.com/document_detail/26350.html).
-        # > * If multiple data shard IDs are specified in the **NodeId** request parameter, the bandwidth values specified in this parameter must correspond to the order of the shard IDs. Separate multiple bandwidth values with commas (,).
+        # > * You can call the [DescribeRoleZoneInfo](https://help.aliyun.com/document_detail/473782.html) operation and use the **DefaultBandWidth** response parameter to query the default maximum bandwidth. For more information about instance specifications, see [Overview of instance specifications](https://help.aliyun.com/document_detail/26350.html).
+        # > * If you specify multiple data shard IDs in the **NodeId** request parameter, the bandwidth values specified in this parameter must correspond to the order of the data shard IDs. Separate multiple bandwidth values with commas (,).
         self.bandwidth = bandwidth
         # The billing method for the additional bandwidth. Valid values:
         # * **PrePaid**: subscription.
-        # * **PostPaid**: pay-as-you-go. Currently, only this billing method is supported.
+        # * **PostPaid**: pay-as-you-go. Only this billing method is currently supported.
         self.charge_type = charge_type
-        # The ID of the coupon.
+        # The coupon code.
         self.coupon_no = coupon_no
-        # The ID of the instance. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to obtain the instance ID.
+        # Instance ID of the instance. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the data shard. You can call [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) to obtain the shard ID. Separate multiple shard IDs with commas (,). You can also set this parameter to **All** to specify all data shards.
+        # The ID of the data shard. You can call [DescribeLogicInstanceTopology](https://help.aliyun.com/document_detail/473786.html) to query the ID. Separate multiple IDs with commas (,). You can also set this parameter to **All** to specify all data shards.
         # > This parameter is available and required only when the instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html) or [read/write splitting architecture](https://help.aliyun.com/document_detail/62870.html).
         self.node_id = node_id
-        # The subscription duration, in days. Valid values: **1**, **2**, **3**, **7**, **14**, **30**, **60**, **90**, **180**, **365**, **730**, **1095**, and **1825**.
+        # The subscription duration. Unit: days. Valid values: **1**, **2**, **3**, **7**, **14**, **30**, **60**, **90**, **180**, **365**, **730**, **1095**, and **1825**.
         # > To continue using the purchased bandwidth, you must call the [RenewAdditionalBandwidth](https://help.aliyun.com/document_detail/473804.html) operation to renew the bandwidth before it expires.
         self.order_time_length = order_time_length
         self.owner_account = owner_account
@@ -66,7 +66,7 @@ class EnableAdditionalBandwidthRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The source of the call. This parameter is used only for internal maintenance and does not need to be specified.
+        # The call source. This parameter is used only for internal maintenance. You do not need to specify this parameter.
         self.source_biz = source_biz
 
     def validate(self):

@@ -21,7 +21,7 @@ class ModifyInstanceAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The new instance name. The name must be 2 to 80 characters in length and must start with an uppercase letter, a lowercase letter, or a Chinese character. The name cannot contain spaces or the following special characters: `@/:="<>{[]}`
+        # The new instance name. The name must be 2 to 80 characters in length and start with an uppercase or lowercase letter or a Chinese character. It cannot contain spaces or the following special characters: `@/:="<>{[]}`.
         self.instance_name = instance_name
         # The [release protection status](https://help.aliyun.com/document_detail/165005.html) of the instance. Valid values:
         # * **true**: Enabled.
@@ -29,8 +29,8 @@ class ModifyInstanceAttributeRequest(DaraModel):
         # 
         # > This parameter is supported only for pay-as-you-go instances.
         self.instance_release_protection = instance_release_protection
-        # The new password of the default account. The default account is named after the instance ID (for example, r-bp10noxlhcoim2****).
-        # > The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (`!@#$%^&*()_+-=`).
+        # The new password of the default account. The default account is named after the instance ID, such as r-bp10noxlhcoim2****.
+        # > The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Supported special characters include `!@#$%^&*()_+-=`.
         self.new_password = new_password
         self.owner_account = owner_account
         self.owner_id = owner_id

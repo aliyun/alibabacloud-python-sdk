@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_r_kvstore20150101 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'R-kvstore'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'r-kvstore.aliyuncs.com',
@@ -2113,6 +2117,156 @@ class Client(OpenApiClient):
     ) -> main_models.CreateTCInstanceResponse:
         runtime = RuntimeOptions()
         return await self.create_tcinstance_with_options_async(request, runtime)
+
+    def create_tair_aigateway_instance_with_options(
+        self,
+        request: main_models.CreateTairAIGatewayInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTairAIGatewayInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not DaraCore.is_null(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not DaraCore.is_null(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.gateway_name):
+            query['GatewayName'] = request.gateway_name
+        if not DaraCore.is_null(request.gateway_type):
+            query['GatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.plugin_params):
+            query['PluginParams'] = request.plugin_params
+        if not DaraCore.is_null(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTairAIGatewayInstance',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTairAIGatewayInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tair_aigateway_instance_with_options_async(
+        self,
+        request: main_models.CreateTairAIGatewayInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateTairAIGatewayInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not DaraCore.is_null(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not DaraCore.is_null(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not DaraCore.is_null(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not DaraCore.is_null(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.gateway_name):
+            query['GatewayName'] = request.gateway_name
+        if not DaraCore.is_null(request.gateway_type):
+            query['GatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
+        if not DaraCore.is_null(request.plugin_params):
+            query['PluginParams'] = request.plugin_params
+        if not DaraCore.is_null(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateTairAIGatewayInstance',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateTairAIGatewayInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tair_aigateway_instance(
+        self,
+        request: main_models.CreateTairAIGatewayInstanceRequest,
+    ) -> main_models.CreateTairAIGatewayInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.create_tair_aigateway_instance_with_options(request, runtime)
+
+    async def create_tair_aigateway_instance_async(
+        self,
+        request: main_models.CreateTairAIGatewayInstanceRequest,
+    ) -> main_models.CreateTairAIGatewayInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_tair_aigateway_instance_with_options_async(request, runtime)
 
     def create_tair_instance_with_options(
         self,
@@ -6691,6 +6845,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.level_summary):
+            query['LevelSummary'] = request.level_summary
         if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
@@ -6727,6 +6883,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.level_summary):
+            query['LevelSummary'] = request.level_summary
         if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
@@ -6869,6 +7027,8 @@ class Client(OpenApiClient):
             query['InspectionInsId'] = request.inspection_ins_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.level_summary):
+            query['LevelSummary'] = request.level_summary
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
         if not DaraCore.is_null(request.task_id):
@@ -6903,6 +7063,8 @@ class Client(OpenApiClient):
             query['InspectionInsId'] = request.inspection_ins_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.level_summary):
+            query['LevelSummary'] = request.level_summary
         if not DaraCore.is_null(request.security_token):
             query['SecurityToken'] = request.security_token
         if not DaraCore.is_null(request.task_id):
@@ -6949,6 +7111,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.level_summary):
+            query['LevelSummary'] = request.level_summary
         if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
@@ -6985,6 +7149,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.level_summary):
+            query['LevelSummary'] = request.level_summary
         if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
         if not DaraCore.is_null(request.page_size):
@@ -8903,6 +9069,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instances):
             query['Instances'] = request.instances
+        if not DaraCore.is_null(request.need_unavailable_coupon):
+            query['NeedUnavailableCoupon'] = request.need_unavailable_coupon
         if not DaraCore.is_null(request.node_type):
             query['NodeType'] = request.node_type
         if not DaraCore.is_null(request.order_param_out):
@@ -8975,6 +9143,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.instances):
             query['Instances'] = request.instances
+        if not DaraCore.is_null(request.need_unavailable_coupon):
+            query['NeedUnavailableCoupon'] = request.need_unavailable_coupon
         if not DaraCore.is_null(request.node_type):
             query['NodeType'] = request.node_type
         if not DaraCore.is_null(request.order_param_out):
@@ -9859,6 +10029,280 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeTagsResponse:
         runtime = RuntimeOptions()
         return await self.describe_tags_with_options_async(request, runtime)
+
+    def describe_tair_aigateway_instances_with_options(
+        self,
+        request: main_models.DescribeTairAIGatewayInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTairAIGatewayInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.expired):
+            query['Expired'] = request.expired
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.instance_status):
+            query['InstanceStatus'] = request.instance_status
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTairAIGatewayInstances',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTairAIGatewayInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tair_aigateway_instances_with_options_async(
+        self,
+        request: main_models.DescribeTairAIGatewayInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTairAIGatewayInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not DaraCore.is_null(request.expired):
+            query['Expired'] = request.expired
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.instance_status):
+            query['InstanceStatus'] = request.instance_status
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTairAIGatewayInstances',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTairAIGatewayInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tair_aigateway_instances(
+        self,
+        request: main_models.DescribeTairAIGatewayInstancesRequest,
+    ) -> main_models.DescribeTairAIGatewayInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_tair_aigateway_instances_with_options(request, runtime)
+
+    async def describe_tair_aigateway_instances_async(
+        self,
+        request: main_models.DescribeTairAIGatewayInstancesRequest,
+    ) -> main_models.DescribeTairAIGatewayInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_tair_aigateway_instances_with_options_async(request, runtime)
+
+    def describe_tair_aigateway_parameters_with_options(
+        self,
+        request: main_models.DescribeTairAIGatewayParametersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTairAIGatewayParametersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTairAIGatewayParameters',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTairAIGatewayParametersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tair_aigateway_parameters_with_options_async(
+        self,
+        request: main_models.DescribeTairAIGatewayParametersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTairAIGatewayParametersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.plugin_type):
+            query['PluginType'] = request.plugin_type
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTairAIGatewayParameters',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTairAIGatewayParametersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tair_aigateway_parameters(
+        self,
+        request: main_models.DescribeTairAIGatewayParametersRequest,
+    ) -> main_models.DescribeTairAIGatewayParametersResponse:
+        runtime = RuntimeOptions()
+        return self.describe_tair_aigateway_parameters_with_options(request, runtime)
+
+    async def describe_tair_aigateway_parameters_async(
+        self,
+        request: main_models.DescribeTairAIGatewayParametersRequest,
+    ) -> main_models.DescribeTairAIGatewayParametersResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_tair_aigateway_parameters_with_options_async(request, runtime)
+
+    def describe_tair_aigateway_plugin_switch_with_options(
+        self,
+        request: main_models.DescribeTairAIGatewayPluginSwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTairAIGatewayPluginSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTairAIGatewayPluginSwitch',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTairAIGatewayPluginSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tair_aigateway_plugin_switch_with_options_async(
+        self,
+        request: main_models.DescribeTairAIGatewayPluginSwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTairAIGatewayPluginSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeTairAIGatewayPluginSwitch',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeTairAIGatewayPluginSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tair_aigateway_plugin_switch(
+        self,
+        request: main_models.DescribeTairAIGatewayPluginSwitchRequest,
+    ) -> main_models.DescribeTairAIGatewayPluginSwitchResponse:
+        runtime = RuntimeOptions()
+        return self.describe_tair_aigateway_plugin_switch_with_options(request, runtime)
+
+    async def describe_tair_aigateway_plugin_switch_async(
+        self,
+        request: main_models.DescribeTairAIGatewayPluginSwitchRequest,
+    ) -> main_models.DescribeTairAIGatewayPluginSwitchResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_tair_aigateway_plugin_switch_with_options_async(request, runtime)
 
     def describe_tair_kvcache_custom_instance_attribute_with_options(
         self,
@@ -15189,6 +15633,170 @@ class Client(OpenApiClient):
     ) -> main_models.ModifySecurityIpsResponse:
         runtime = RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
+
+    def modify_tair_aigateway_parameter_with_options(
+        self,
+        request: main_models.ModifyTairAIGatewayParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTairAIGatewayParameterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTairAIGatewayParameter',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTairAIGatewayParameterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tair_aigateway_parameter_with_options_async(
+        self,
+        request: main_models.ModifyTairAIGatewayParameterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTairAIGatewayParameterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTairAIGatewayParameter',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTairAIGatewayParameterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tair_aigateway_parameter(
+        self,
+        request: main_models.ModifyTairAIGatewayParameterRequest,
+    ) -> main_models.ModifyTairAIGatewayParameterResponse:
+        runtime = RuntimeOptions()
+        return self.modify_tair_aigateway_parameter_with_options(request, runtime)
+
+    async def modify_tair_aigateway_parameter_async(
+        self,
+        request: main_models.ModifyTairAIGatewayParameterRequest,
+    ) -> main_models.ModifyTairAIGatewayParameterResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_tair_aigateway_parameter_with_options_async(request, runtime)
+
+    def modify_tair_aigateway_plugin_switch_with_options(
+        self,
+        request: main_models.ModifyTairAIGatewayPluginSwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTairAIGatewayPluginSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTairAIGatewayPluginSwitch',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTairAIGatewayPluginSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tair_aigateway_plugin_switch_with_options_async(
+        self,
+        request: main_models.ModifyTairAIGatewayPluginSwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyTairAIGatewayPluginSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.parameters):
+            query['Parameters'] = request.parameters
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyTairAIGatewayPluginSwitch',
+            version = '2015-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyTairAIGatewayPluginSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tair_aigateway_plugin_switch(
+        self,
+        request: main_models.ModifyTairAIGatewayPluginSwitchRequest,
+    ) -> main_models.ModifyTairAIGatewayPluginSwitchResponse:
+        runtime = RuntimeOptions()
+        return self.modify_tair_aigateway_plugin_switch_with_options(request, runtime)
+
+    async def modify_tair_aigateway_plugin_switch_async(
+        self,
+        request: main_models.ModifyTairAIGatewayPluginSwitchRequest,
+    ) -> main_models.ModifyTairAIGatewayPluginSwitchResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_tair_aigateway_plugin_switch_with_options_async(request, runtime)
 
     def modify_tair_kvcache_custom_instance_attribute_with_options(
         self,

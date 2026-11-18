@@ -18,15 +18,15 @@ class ModifyInstanceTDERequest(DaraModel):
         security_token: str = None,
         tdestatus: str = None,
     ):
-        # The ID of the custom key. You can call [DescribeEncryptionKeyList](https://help.aliyun.com/document_detail/473860.html) to query the key ID.
+        # The ID of the custom key. You can call the [DescribeEncryptionKeyList](https://help.aliyun.com/document_detail/473860.html) operation to obtain the key ID.
         # 
-        # > * If you do not specify this parameter, [Key Management Service](https://help.aliyun.com/document_detail/28935.html) automatically generates a key.
-        # > * To create a custom key, call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service.
+        # > * If you do not specify this parameter, [Key Management Service (KMS)](https://help.aliyun.com/document_detail/28935.html) automatically generates a key.
+        # > * To create a custom key, you can call the [CreateKey](https://help.aliyun.com/document_detail/28947.html) operation of Key Management Service (KMS).
         self.encryption_key = encryption_key
         # The encryption algorithm. Default value: AES-CTR-256.
-        # > This parameter is available only when **TDEStatus** is set to **Enabled**.
+        # > This parameter is available only when the **TDEStatus** parameter is set to **Enabled**.
         self.encryption_name = encryption_name
-        # The instance ID. You can call [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) to query the instance ID.
+        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -34,14 +34,14 @@ class ModifyInstanceTDERequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The global resource descriptor Alibaba Cloud Resource Name (ARN) of the role to be authorized. After the authorization is complete, the related Key Management Service can be used. Format: `acs:ram::$accountID:role/$roleName`.
+        # The global resource descriptor ARN (Alibaba Cloud Resource Name) of the RAM role to authorize. After authorization, you can use the related Key Management Service (KMS) features. Format: `acs:ram::$accountID:role/$roleName`.
         # 
-        # > * `$accountID`: the Alibaba Cloud account ID. Log on to the Alibaba Cloud Management Console, move the mouse over the profile picture in the upper-right corner, and then click **Security Settings** to view the account ID.
-        # > * `$roleName`: the RAM role name. Set this value to **AliyunRdsInstanceEncryptionDefaultRole**.
+        # > * `$accountID`: the Alibaba Cloud account ID. You can logon to the Alibaba Cloud Management Console, move the mouse over the profile picture in the upper-right corner, and click **Security Settings** to view the account ID.
+        # > * `$roleName`: the name of the RAM role. Set the value to **AliyunRdsInstanceEncryptionDefaultRole**.
         self.role_arn = role_arn
         self.security_token = security_token
-        # Enables the transparent data encryption feature. Set the value to **Enabled**.
-        # > The TDE feature cannot be disabled after it is enabled. Before enabling TDE, evaluate whether it affects your business. For more information, see [Enable transparent data encryption TDE](https://help.aliyun.com/document_detail/265913.html).
+        # The TDE status. Valid value: **Enabled**.
+        # > After TDE is enabled, it cannot be disabled. Evaluate the impact on your business before you enable TDE. For more information, see [Enable Transparent Data Encryption (TDE)](https://help.aliyun.com/document_detail/265913.html).
         # 
         # This parameter is required.
         self.tdestatus = tdestatus

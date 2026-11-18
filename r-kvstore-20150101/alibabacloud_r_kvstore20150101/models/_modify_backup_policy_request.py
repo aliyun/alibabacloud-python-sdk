@@ -18,11 +18,11 @@ class ModifyBackupPolicyRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The number of days for which data backups are retained. Default value: 7. Valid values: 7 to 730.
+        # The retention period of data backups in days. Valid values: 7 to 730. Default value: 7.
         self.backup_retention_period = backup_retention_period
         # Specifies whether to enable the data flashback feature. Valid values:
-        # * **1**: Enabled. Make sure that append-only file (AOF) persistence is enabled in the parameter settings of the instance (`appendonly` is set to `yes`). The data flashback feature is available only after AOF persistence is enabled.
-        # * **0**: Disabled. This is the default value.
+        # * **1**: enables the feature. You must also enable AOF persistence by setting the `appendonly` parameter to `yes` in the parameter settings of the instance before you can use the data flashback feature.
+        # * **0**: disables the feature. This is the default value.
         # > This parameter is supported only by Tair (Enterprise Edition) memory-optimized and persistent memory-optimized instances. For more information, see [Data flashback](https://help.aliyun.com/document_detail/148479.html).
         self.enable_backup_log = enable_backup_log
         # The instance ID.
@@ -32,20 +32,19 @@ class ModifyBackupPolicyRequest(DaraModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The backup cycle. Valid values:
-        # * **Monday**
-        # * **Tuesday**
-        # * **Wednesday**
-        # * **Thursday**
-        # * **Friday**
-        # * **Saturday**
-        # * **Sunday**
+        # * **Monday**: Monday.
+        # * **Tuesday**: Tuesday.
+        # * **Wednesday**: Wednesday.
+        # * **Thursday**: Thursday.
+        # * **Friday**: Friday.
+        # * **Saturday**: Saturday.
+        # * **Sunday**: Sunday.
         # 
-        # > You can specify multiple values. Separate them with commas (,).
+        # > You can specify multiple values. Separate multiple values with commas (,).
         # 
         # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
-        # The backup time. Specify the time in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC).
-        # > The time must be on the hour, and the interval must be 1 hour.
+        # The backup time in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC). The time must be on the hour, and the interval must be 1 hour.
         # 
         # This parameter is required.
         self.preferred_backup_time = preferred_backup_time

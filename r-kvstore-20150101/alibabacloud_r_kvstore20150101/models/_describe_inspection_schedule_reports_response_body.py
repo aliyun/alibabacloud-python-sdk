@@ -69,7 +69,7 @@ class DescribeInspectionScheduleReportsResponseBodyData(DaraModel):
         self.items = items
         # The returned page number.
         self.page_num = page_num
-        # The page size. Default value: 25.
+        # The number of entries per page. Default value: 25.
         self.page_size = page_size
         # The total number of entries.
         self.total = total
@@ -134,15 +134,15 @@ class DescribeInspectionScheduleReportsResponseBodyDataItems(DaraModel):
     ):
         # The creation time of the task.
         # 
-        # The value is a UNIX timestamp in milliseconds.
+        # The time is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The end time of the task.
         # 
-        # The time is displayed in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+        # The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
         self.end_time = end_time
         # The completion time of the task.
         # 
-        # The time is displayed in the ISO 8601 format with an explicit time zone offset.
+        # The time is in the ISO 8601 format and includes a specific time zone offset.
         self.finish_time = finish_time
         # The summary of risk levels in the inspection results.
         self.level_summary = level_summary
@@ -150,7 +150,7 @@ class DescribeInspectionScheduleReportsResponseBodyDataItems(DaraModel):
         self.report_language = report_language
         # The start time of the task.
         # 
-        # The time is displayed in the YYYY-MM-DDTHH:mmZ format in UTC.
+        # The time is in the YYYY-MM-DDTHH:mmZ format and displayed in UTC.
         self.start_time = start_time
         # The status of the inspection task.
         self.status = status

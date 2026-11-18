@@ -64,150 +64,150 @@ class CreateTairInstanceRequest(DaraModel):
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # * **true**: enables auto-renewal.
-        # * **false**: disables auto-renewal. This is the default value.
+        # * **false** (default): disables auto-renewal.
         self.auto_renew = auto_renew
-        # The auto-renewal epoch. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
+        # The auto-renewal period. Unit: months. Valid values: **1**, **2**, **3**, **6**, and **12**.
         # > This parameter is required when the **AutoRenew** parameter is set to **true**.
         self.auto_renew_period = auto_renew_period
         # Specifies whether to use a voucher. Valid values:
         # * **true**: uses a voucher.
-        # * **false**: does not use a voucher. This is the default value.
+        # * **false** (default): does not use a voucher.
         self.auto_use_coupon = auto_use_coupon
         # The ID of the backup set of the source instance. The system uses the data in the specified backup set to create the instance. You can invoke the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query the backup set ID. If the source instance is a cluster instance, you must enter the backup set IDs of all shards in the source instance and separate them with commas, such as "10**,11**,15**".
-        # > If your instance is a cloud-native architecture instance, we recommend that you invoke the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation to query the cluster backup set ID, such as "cb-xx", and then specify the ClusterBackupId request parameter to clone the cluster instance. This saves you the trouble of entering the backup set ID of each shard.
+        # > If your instance is a cloud-native architecture instance and a cluster instance, we recommend that you invoke the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation to query the cluster backup set ID, such as "cb-xx", and then specify the ClusterBackupId request parameter to clone the cluster instance. This saves you the trouble of entering the backup set ID of each shard.
         self.backup_id = backup_id
         # The activity ID and business information.
         self.business_info = business_info
         # The billing method. Valid values:
-        # - **PrePaid**: subscription. This is the default value.
+        # - **PrePaid** (default): subscription.
         # - **PostPaid**: pay-as-you-go.
         self.charge_type = charge_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token is case-sensitive and can be up to 64 ASCII characters in length.
         self.client_token = client_token
-        # The ID of the cluster backup set. Some new cluster architectures support cluster backup set IDs. You can call the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation to obtain the ID.
-        # * If the cluster architecture supports cluster backup sets, you can enter the specified cluster backup set ID. You do not need to specify the **BackupId** parameter.
-        # * If the cluster architecture does not support cluster backup sets, enter the backup set IDs of all shards in the source instance in the BackupId parameter and separate them with commas, such as "2158\\*\\*\\*\\*20,2158\\*\\*\\*\\*22".
+        # The ID of the cluster backup set. Some new cluster architectures support cluster backup set IDs. You can call the [DescribeClusterBackupList](https://help.aliyun.com/document_detail/2679168.html) operation to query the ID.
+        # * If the architecture supports cluster backup sets, you can enter the specified cluster backup set ID. You do not need to specify the **BackupId** parameter.
+        # * If the architecture does not support cluster backup sets, enter the backup set IDs of all shards in the source instance in the BackupId parameter and separate them with commas, such as "2158\\*\\*\\*\\*20,2158\\*\\*\\*\\*22".
         self.cluster_backup_id = cluster_backup_id
         # The prefix of the endpoint. The prefix must be 8 to 40 characters in length and can contain lowercase letters and digits. It must start with a lowercase letter.
         # 
         # > 
-        # > The endpoint is in the following format: <Prefix-Instance ID>.redis.rds.aliyuncs.com.
+        # > The endpoint format is: <Prefix-instance ID>.redis.rds.aliyuncs.com.
         self.connection_string_prefix = connection_string_prefix
         # The coupon code.
         self.coupon_no = coupon_no
         # Specifies whether to perform a dry run before you create the instance. Valid values:
-        # * **true**: performs a dry run without creating the instance. The system checks the request parameters, request format, service limits, and available resources. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the `DryRunOperation` error code.
-        # * **false**: sends the request. If the request passes the check, the instance is created. This is the default value.
+        # * **true**: performs a dry run without creating the instance. The system checks the request parameters, request format, service limits, and inventory. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the `DryRunOperation` error code.
+        # * **false** (default): sends the request. If the request passes the check, the instance is created.
         self.dry_run = dry_run
-        # The database engine version. Default value: **1.0**. The value varies based on the Tair instance type:
-        # - Tair_rdb: Tair memory-enhanced instances are compatible with Redis 5.0, Redis 6.0, and Redis 7.0 protocols. Set the value to **5.0**, **6.0**, or **7.0**.
+        # The database engine version. Default value: **1.0**. The parameter value rules vary based on the Tair product type:
+        # - Tair_rdb: Tair memory-optimized instances are compatible with Redis 5.0, Redis 6.0, and Redis 7.0 protocols. Set the value to **5.0**, **6.0**, or **7.0**.
         # - Tair_scm: Tair persistent memory-optimized instances are compatible with the Redis 6.0 protocol. Set the value to **1.0**.
-        # - Tair_essd: Tair disk-based (ESSD/SSD) instances are compatible with the Redis 6.0 protocol. Set the value to **1.0** for ESSD-based instances and **2.0** for SSD-based instances.
+        # - Tair_essd: Tair disk-optimized (ESSD/SSD) instances are compatible with the Redis 6.0 protocol. Set the value to **1.0** for ESSD-based instances and **2.0** for SSD-based instances.
         self.engine_version = engine_version
-        # Specifies whether to use the new instance as a child instance in a distributed instance. You can use this parameter to create a distributed instance.
-        # * To use the new instance as the first child instance, set the value to **true**.
-        # * To use the new instance as the second or third child instance, set the value to the ID of the distributed instance, such as gr-bp14rkqrhac****.
-        # * If you do not want to use the new instance as a child instance in a distributed instance, leave this parameter empty.
-        # > The new instance must be a Tair memory-enhanced instance if you want to use it as a child instance in a distributed instance.
+        # Specifies whether to use the newly created instance as a child instance in a distributed instance. You can use this method to create a distributed instance.
+        # * To use the newly created instance as the first child instance, set the value to **true**.
+        # * To use the newly created instance as the second or third child instance, enter the distributed instance ID, such as gr-bp14rkqrhac****.
+        # * If you do not want to use the instance as a distributed instance, leave this parameter empty.
+        # > The newly created instance must be a Tair memory-optimized instance if you want to use it as a distributed instance.
         self.global_instance_id = global_instance_id
-        # The global IP address whitelist templates of the instance. Separate multiple whitelist templates with commas (,). Each template must be unique.
+        # The global IP whitelist templates of the instance. Separate multiple IP whitelist templates with commas (,). Duplicates are not allowed.
         self.global_security_group_ids = global_security_group_ids
         # The instance type. For more information, see:
-        # - [Memory-enhanced instance types](https://help.aliyun.com/document_detail/2527112.html).
+        # - [Memory-optimized instance types](https://help.aliyun.com/document_detail/2527112.html).
         # - [Persistent memory-optimized instance types](https://help.aliyun.com/document_detail/2527110.html).
-        # - [Disk-based instance types](https://help.aliyun.com/document_detail/2527111.html).
+        # - [Disk-optimized instance types](https://help.aliyun.com/document_detail/2527111.html).
         # 
         # This parameter is required.
         self.instance_class = instance_class
-        # The endpoint type used when you create a cloud-native Dual-active-zone deployment read/write splitting instance. If you do not specify this parameter, the default value is AzIndependentEndpoint.
+        # The endpoint type used when you create a cloud-native dual-zone read/write splitting instance. If you do not specify this parameter, the default value is AzIndependentEndpoint.
         # 
-        # - **AzIndependentEndpoint**: active zone-independent endpoint. This is the **default value**. Independent endpoints are provided for the primary and secondary active zones. You can use different endpoints to achieve nearest access.
-        # - **UnifiedEndpoint**: unified endpoint. A unified endpoint is provided to access nodes in both the primary and secondary active zones. However, cross-active-zone access may occur.
+        # - **AzIndependentEndpoint**: the default value. Zone-independent endpoints. The primary and secondary zones provide independent endpoints. You can use different endpoints for nearest access to the zones.
+        # - **UnifiedEndpoint**: unified endpoint. A unified endpoint is provided for access to nodes in both the primary and secondary zones. However, cross-zone access may occur.
         # 
-        # >Notice: This parameter applies only to cloud-native Dual-active-zone deployment read/write splitting instances. For other types of instances, only active zone-independent endpoints are supported. Even if you specify UnifiedEndpoint, it does not take effect.
+        # >Notice: This parameter applies only to cloud-native dual-zone read/write splitting instances. For other types of instances, only zone-independent endpoints are supported. Even if you specify UnifiedEndpoint, it does not take effect.</notice>
         # 
-        # >Notice: The UnifiedEndpoint parameter is currently available only to whitelisted users. If you are not a whitelisted user and specify this parameter, an invoke error is returned. To request access, commit a ticket.
+        # >Notice: The UnifiedEndpoint parameter is currently available only to whitelisted users. If a non-whitelisted user specifies this parameter, an error is returned when you invoke the operation. To apply for the permissions, submit a ticket.</notice>
         self.instance_endpoint_type = instance_endpoint_type
         # The instance name. The name must meet the following requirements:
         # * The name must be 2 to 80 characters in length.
         # * The name must start with a letter or a Chinese character. It cannot contain spaces or the following special characters: `@/:=”<>{[]}`.
         self.instance_name = instance_name
         # The storage medium. Valid values:
-        # * **tair_rdb**: memory-enhanced.
+        # * **tair_rdb**: memory-optimized.
         # * **tair_scm**: persistent memory-optimized.
-        # * **tair_essd**: disk-based.
+        # * **tair_essd**: disk-optimized.
         # 
         # This parameter is required.
         self.instance_type = instance_type
-        # The end time of the maintenance window. Specify the time in the <i>HH:mm</i>Z format. The time must be in UTC. For example, if you want the maintenance window to end at 02:00 (UTC+8), set the value to `18:00Z`.
+        # The end time of the maintenance window for the instance. Specify the time in the <i>HH:mm</i>Z format. The time must be in UTC. For example, to set the end time to 02:00 (UTC+8), set the value to `18:00Z`.
         # 
         # > The interval between the start time and the end time must be at least 1 hour.
         # 
         # > If you do not specify this parameter, the default value is 22:00 (UTC), which is 06:00 (UTC+8).
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. Specify the time in the <i>HH:mm</i>Z format. The time must be in UTC. For example, if you want the maintenance window to start at 01:00 (UTC+8), set the value to `17:00Z`.
+        # The start time of the maintenance window for the instance. Specify the time in the <i>HH:mm</i>Z format. The time must be in UTC. For example, to set the start time to 01:00 (UTC+8), set the value to `17:00Z`.
         # 
         # > If you do not specify this parameter, the default value is 18:00 (UTC), which is 02:00 (UTC+8).
         self.maintain_start_time = maintain_start_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the parameter template. The instance is created based on the parameters in the specified template. Each template ID must be unique.
+        # The ID of the parameter template. The instance is created based on the parameters in the newly created parameter template. Duplicates are not allowed.
         self.param_group_id = param_group_id
         # The instance password. The password must meet the following requirements:
         # * The password must be 8 to 32 characters in length.
         # * The password must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Supported special characters are `!@#$%^&*()_+-=`.
         self.password = password
-        # The subscription duration. Unit: months. Valid values: **1** to **9**, **12**, **24**, **36**, and **60**.
+        # The subscription period. Unit: months. Valid values: **1** to **9**, **12**, **24**, **36**, and **60**.
         # > This parameter is required when the **ChargeType** parameter is set to **PrePaid**.
         self.period = period
         # The service port of the instance. Valid values: 1 to 65535. Default value: 6379.
         self.port = port
         # The internal IP address of the instance.
         # 
-        # > The IP address must fall within the CIDR block of the vSwitch to which the instance belongs. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation of the VPC API to query the CIDR block information.
+        # > The IP address must fall within the CIDR block of the vSwitch to which the instance belongs. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation of the VPC API to query the CIDR block.
         self.private_ip_address = private_ip_address
-        # The number of read-only nodes in the primary zone. This parameter applies only when you create a cloud-native read/write splitting instance.
+        # The number of read-only nodes in the primary zone. This parameter applies only to creating cloud-native read/write splitting instances.
         # * If the instance uses the standard architecture, valid values are 1 to 9.
-        # * If the instance uses the cluster architecture, valid values are 1 to 4, which indicate the number of read-only nodes per data shard.
-        # > If you create a multi-zone instance, you can use this parameter and the SlaveReadOnlyCount parameter to specify the number of read-only nodes in the primary and secondary zones.
-        # > * If the instance uses the standard architecture, the sum of the values of this parameter and the SlaveReadOnlyCount parameter cannot exceed 9.
-        # > * If the instance uses the cluster architecture, the sum of the values of this parameter and the SlaveReadOnlyCount parameter cannot exceed 4.
+        # * If the instance uses the cluster architecture, valid values are 1 to 4, which indicates the number of read-only nodes per data shard.
+        # > If you create a multi-zone instance, you can use this parameter and the SlaveReadOnlyCount parameter to customize the number of read-only nodes in the primary and secondary zones.
+        # > * If the instance uses the standard architecture, the sum of this parameter and the SlaveReadOnlyCount parameter cannot exceed 9.
+        # > * If the instance uses the cluster architecture, the sum of this parameter and the SlaveReadOnlyCount parameter cannot exceed 4.
         self.read_only_count = read_only_count
-        # Specifies whether to restore the account, kernel parameters, and whitelist from the original backup set when you create an instance by using a specified backup set. For example, to restore the account information, set the value to account.
+        # Specifies whether to restore the account, kernel parameter, and whitelist information from the original backup set when you create an instance by using a specified backup set. For example, to restore the account information, set this parameter to account.
         # 
-        # Default value: empty. An empty value indicates that the account, kernel parameters, and whitelist are not restored from the original backup set.
-        # > This parameter applies only to cloud-native instances and requires that the original backup set contains the account, kernel parameters, and whitelist information. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query whether the RecoverConfigMode parameter of a specified backup set contains the preceding information.
+        # Default value: empty. An empty value indicates that the account, kernel parameter, and whitelist information are not restored from the original backup set.
+        # > This parameter applies only to cloud-native instances and requires that the original backup set contains the account, kernel parameter, and whitelist information. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/473823.html) operation to query whether the RecoverConfigMode parameter of a specified backup set contains the preceding information.
         self.recover_config_mode = recover_config_mode
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent region list. Use this parameter to specify the region where you want to create the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The number of secondary nodes in the primary zone. This parameter applies only when you create a cloud-native cluster instance with multiple replicas. You can use this parameter to specify the number of secondary nodes. Valid values: 1 to 4.
-        # > If you create a multi-zone instance, you can use this parameter and the SlaveReplicaCount parameter to specify the number of secondary nodes in the primary and secondary zones. The sum of the values of this parameter and the SlaveReplicaCount parameter cannot exceed 4.
+        # The number of secondary nodes in the primary zone. This parameter applies only to creating cloud-native cluster multi-replica instances. You can use this parameter to customize the number of secondary nodes. Valid values: 1 to 4.
+        # > If you create a multi-zone instance, you can use this parameter and the SlaveReplicaCount parameter to customize the number of secondary nodes in the primary and secondary zones. The sum of this parameter and the SlaveReplicaCount parameter cannot exceed 4.
         self.replica_count = replica_count
         # The ID of the destination resource group.
         # 
-        # > * You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID list. For related operations, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # > * You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation or use the console to obtain the resource group ID list. Related operations: see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         # > * Before you change the resource group to which the instance belongs, you can invoke the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the current resource group of the instance.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The point in time to which you want to restore the source instance. If the data flashback feature is enabled for the source instance, you can specify a point in time within the backup retention period of the source instance. The system uses the backup data of the source instance at the specified point in time to create the instance. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
+        # The point in time to which you want to restore the source instance. If the data flashback feature is enabled for the source instance, you can specify any point in time within the backup retention period of the source instance. The system uses the backup data of the source instance at the specified point in time to create the new instance. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         self.restore_time = restore_time
         # The secondary zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent zone list.
         # 
-        # > The value of this parameter cannot be the same as the value of the ZoneId parameter, and you cannot specify the ID of a multi-zone deployment.
+        # > The value of this parameter must be different from the value of the ZoneId parameter, and cannot be the ID of a multi-zone deployment.
         self.secondary_zone_id = secondary_zone_id
         self.security_token = security_token
         # The number of data nodes in the instance. Valid values:
-        # * **1**: creates a [standard instance](https://help.aliyun.com/document_detail/52228.html) that has only one data node. This is the default value.
-        # * **2** to **32**: creates a [cluster instance](https://help.aliyun.com/document_detail/52228.html) that has the specified number of data nodes.
+        # * **1**: the default value, which indicates that the created instance uses the [standard architecture](https://help.aliyun.com/document_detail/52228.html) and has only one data node.
+        # * **2** to **32**: indicates that the created instance uses the [cluster architecture](https://help.aliyun.com/document_detail/52228.html) and has the specified number of data nodes.
         # 
-        # > You can set this parameter to a value from **2** to **32** only when the **InstanceType** parameter is set to **tair_rdb** or **tair_scm**. This means that only memory-enhanced and persistent memory-optimized instances support the cluster architecture.
+        # > You can set this parameter to **2** to **32** only when the **InstanceType** parameter is set to **tair_rdb** or **tair_scm**. Only memory-optimized and persistent memory-optimized instances support the cluster architecture.
         self.shard_count = shard_count
-        # The instance edition. Valid values:
-        # - **MASTER_SLAVE**: High-availability Edition. This edition uses a primary/secondary architecture to ensure high availability. This is the default value.
-        # - **STAND_ALONE**: Standalone Edition. This edition uses a single-node architecture. If a node fails, data is lost and the system automatically creates a new empty instance. This edition is supported only in **single-zone** deployments and does not support cluster or read/write splitting architectures.
+        # The instance architecture. Valid values:
+        # - **MASTER_SLAVE** (default): high-availability. The primary/secondary architecture is used to ensure availability.
+        # - **STAND_ALONE**: standalone. The single-node architecture is used. If the node fails, data is lost and the system automatically creates an empty instance. This architecture is supported only in **single-zone** deployments and does not support cluster or read/write splitting architectures.
         self.shard_type = shard_type
         # The number of read-only nodes in the secondary zone.
         self.slave_read_only_count = slave_read_only_count
@@ -216,15 +216,15 @@ class CreateTairInstanceRequest(DaraModel):
         # Instance ID of the source instance. If you want to create an instance based on the backup set of an existing instance, specify instance ID of the source instance in this parameter.
         # > Then, specify the backup set or point in time by using the **BackupId**, **ClusterBackupId** (recommended for cloud-native cluster architectures), or **RestoreTime** parameter. This parameter must be used in combination with one of the preceding three parameters.
         self.src_dbinstance_id = src_dbinstance_id
-        # The storage capacity of the disk-based instance. The valid values vary based on the instance type. For more information, see [Disk-based instance types](https://help.aliyun.com/document_detail/2527111.html).
-        # > This parameter is required only when the **InstanceType** parameter is set to **tair_essd** and you create an ESSD-based instance. If you create a Tair disk-based **SSD** instance, the capacity field is defined as a fixed value based on the instance type, and you do not need to specify this field.
+        # The storage capacity of the disk-optimized instance. The value range varies based on the instance type. For more information, see [Disk-optimized instance types](https://help.aliyun.com/document_detail/2527111.html).
+        # > This parameter is required only when the **InstanceType** parameter is set to **tair_essd** and you create an ESSD-based instance. When you create a Tair disk **SSD**-based instance, the capacity field is defined as a fixed value based on the instance type, and you do not need to specify this parameter.
         self.storage = storage
         # The storage type. Valid values: **essd_pl1**, **essd_pl2**, and **essd_pl3**.
         # > This parameter is required only when the **InstanceType** parameter is set to **tair_essd** and you create an ESSD-based instance.
         self.storage_type = storage_type
         # The tag information of the instance.
         self.tag = tag
-        # The ID of the vSwitch in the VPC. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation of the VPC API to obtain the vSwitch ID.
+        # The ID of the vSwitch in the VPC. You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation of the VPC API to query the vSwitch ID.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
@@ -232,8 +232,8 @@ class CreateTairInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The primary active zone ID. You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the most recent active zone list. Use this parameter to specify the active zone where you want to create the instance.
-        # > You can also specify the SecondaryZoneId parameter to set the secondary active zone. The primary and secondary nodes will be placed in the specified primary and secondary active zones to implement a dual-active-zone primary/secondary architecture deployment. For example, set the ZoneId parameter to "cn-hangzhou-h" and the SecondaryZoneId parameter to "cn-hangzhou-g".
+        # The primary zone ID. You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/473763.html) operation to query the zone list. Use this parameter to specify the zone where you want to create the instance.
+        # > You can also specify the SecondaryZoneId parameter to set the secondary zone. The deployment of primary and secondary nodes in the specified primary and secondary zones implements a same-region dual-data-center primary/secondary architecture. For example, set ZoneId to "cn-hangzhou-h" and SecondaryZoneId to "cn-hangzhou-g".
         self.zone_id = zone_id
 
     def validate(self):
@@ -558,7 +558,7 @@ class CreateTairInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. A tag key and a tag value form a key-value pair.
+        # The tag key. The tag key and the tag value form a tag key-value pair.
         # > You can specify up to 5 tag key-value pairs at a time.
         self.key = key
         # The tag value.

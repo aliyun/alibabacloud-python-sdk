@@ -8,15 +8,22 @@ class DescribeInspectionScheduleReportsRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
+        level_summary: str = None,
         page_num: int = None,
         page_size: int = None,
         schedule_id: str = None,
         security_token: str = None,
     ):
-        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to query the instance ID.
+        # The instance ID. You can call the [DescribeInstances](https://help.aliyun.com/document_detail/473778.html) operation to obtain the instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The summary of risk levels in the inspection results. You can specify multiple values. Valid values:
+        # - Normal: Normal.
+        # - Warning: Alert.
+        # - Error: High-risk.
+        # - Failed: Failed.
+        self.level_summary = level_summary
         # The page number. Default value: 1.
         self.page_num = page_num
         # The number of entries per page.
@@ -36,6 +43,9 @@ class DescribeInspectionScheduleReportsRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.level_summary is not None:
+            result['LevelSummary'] = self.level_summary
+
         if self.page_num is not None:
             result['PageNum'] = self.page_num
 
@@ -54,6 +64,9 @@ class DescribeInspectionScheduleReportsRequest(DaraModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('LevelSummary') is not None:
+            self.level_summary = m.get('LevelSummary')
 
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')

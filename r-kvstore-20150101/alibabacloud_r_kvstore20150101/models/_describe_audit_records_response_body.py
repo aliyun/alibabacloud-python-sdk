@@ -21,7 +21,7 @@ class DescribeAuditRecordsResponseBody(DaraModel):
     ):
         # The end time of the query.
         # 
-        # The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
+        # The time is in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
         self.end_time = end_time
         # The name of the instance.
         self.instance_name = instance_name
@@ -34,7 +34,7 @@ class DescribeAuditRecordsResponseBody(DaraModel):
         self.request_id = request_id
         # The start time of the query.
         # 
-        # The time is in the YYYY-MM-DDTHH:mm:ssZ format and displayed in UTC.
+        # The time is in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
         self.start_time = start_time
         # The total number of entries.
         self.total_record_count = total_record_count

@@ -14,7 +14,7 @@ class CreateInstanceMultiVIPRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The number of LBs to add.
+        # The number of load balancers to add.
         # 
         # This parameter is required.
         self.add_count = add_count

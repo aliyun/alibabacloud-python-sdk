@@ -10,11 +10,11 @@ class DescribeInstanceTDEStatusResponseBody(DaraModel):
         request_id: str = None,
         tdestatus: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether TDE is enabled. Valid values:
-        # * **Enabled**: TDE is enabled.
-        # * **Disabled**: TDE is disabled.
+        # * **Enabled**: Enabled.
+        # * **Disabled**: Disabled.
         self.tdestatus = tdestatus
 
     def validate(self):

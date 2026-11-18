@@ -40,17 +40,17 @@ class CreateInstanceResponseBody(DaraModel):
         self.charge_type = charge_type
         # The detailed configurations of the instance.
         self.config = config
-        # The internal network connection endpoint of the ApsaraDB for Redis instance.
+        # The internal network endpoint of the Redis instance.
         self.connection_domain = connection_domain
-        # The maximum number of connections supported by the instance.
+        # The maximum number of connections to the instance.
         self.connections = connections
-        # The time when the subscription instance expires. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
+        # The time when the subscription instance expires. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is in UTC.
         self.end_time = end_time
-        # The globally unique instance ID.
+        # Instance ID of the instance. Instance ID is globally unique.
         self.instance_id = instance_id
         # The name of the instance.
         self.instance_name = instance_name
-        # The current status of the instance. The return value is fixed to Creating.
+        # The current status of the instance. The value is fixed to Creating.
         self.instance_status = instance_status
         # The network type. Valid values:
         # * **CLASSIC**: classic network.
@@ -64,21 +64,21 @@ class CreateInstanceResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.order_id = order_id
-        # The service port of ApsaraDB for Redis.
+        # The Redis service port.
         self.port = port
         # The internal IP address of the instance.
         self.private_ip_addr = private_ip_addr
         # The queries per second (QPS). This is the theoretical value for the current instance type.
         self.qps = qps
-        # The region where the instance resides.
+        # The region where the instance is deployed.
         self.region_id = region_id
         # The ID of the request.
         self.request_id = request_id
-        # The username used to connect to ApsaraDB for Redis. By default, an account named after the instance ID is included.
+        # The username used to connect to the Redis instance. By default, an account named after the instance ID is included.
         self.user_name = user_name
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
         # The ID of the zone to which the instance belongs.
         self.zone_id = zone_id

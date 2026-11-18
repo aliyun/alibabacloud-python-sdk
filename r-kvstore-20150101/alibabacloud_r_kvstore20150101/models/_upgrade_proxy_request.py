@@ -22,17 +22,16 @@ class UpgradeProxyRequest(DaraModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The IDs of the proxy nodes to upgrade, separated by commas (,). This parameter is valid only for Classic Edition instances.
+        # The IDs of the proxy nodes to be upgraded. Separate multiple IDs with commas. This parameter is valid only for classic instances.
         self.proxy_instance_ids = proxy_instance_ids
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The time when the upgrade is performed. Valid values:
+        # The execution time for the proxy node upgrade. Valid values:
+        # * **0**: Default value. The upgrade is executed immediately.
+        # * **1**: The upgrade is executed within the maintenance window of the instance.
         # 
-        # * **Immediately**: The upgrade is immediately performed. This is the default value.
-        # * **MaintainTime**: The upgrade is performed within the O&M window of the instance.
-        # 
-        # > You can call [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) to modify the O&M window of a Redis instance.
+        # > You can call [ModifyInstanceMaintainTime](https://help.aliyun.com/document_detail/473775.html) to modify the maintenance window of the Redis instance.
         self.switch_time_mode = switch_time_mode
 
     def validate(self):

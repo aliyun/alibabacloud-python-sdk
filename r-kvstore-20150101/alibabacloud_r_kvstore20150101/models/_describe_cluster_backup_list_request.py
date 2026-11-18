@@ -31,13 +31,13 @@ class DescribeClusterBackupListRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to display the details of the backup sets for cluster nodes. Valid values:
-        # * **false** (default): displays the backup set information of cluster nodes.
-        # * **true**: does not display the backup set information of cluster nodes.
+        # Specifies whether to display the backup set details of cluster nodes. Valid values:
+        # * **false** (default): Displays the backup set information of cluster nodes.
+        # * **true**: Does not display the backup set information of cluster nodes.
         self.no_shard_backup = no_shard_backup
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The current page number.
+        # The page number.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size

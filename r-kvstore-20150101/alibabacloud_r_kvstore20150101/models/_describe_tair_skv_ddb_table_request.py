@@ -10,7 +10,7 @@ class DescribeTairSkvDdbTableRequest(DaraModel):
         instance_id: str = None,
         security_token: str = None,
     ):
-        # The ID of the instance to query.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id

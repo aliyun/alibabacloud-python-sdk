@@ -28,12 +28,12 @@ class SyncDtsStatusRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # Specifies whether to restrict specification changes on the instance. Valid values:
-        # * **0**: Unrestricted.
-        # * **1**: Restricted. Users are prompted when they perform a specification change.
+        # Specifies whether to restrict specification changes for the instance. Valid values:
+        # * **0**: No restriction.
+        # * **1**: Restricted. Users receive a prompt when performing a specification change.
         self.status = status
         # Instance ID of the DTS instance. You can log on to the [DTS console](https://dts.console.aliyun.com/) to view instance ID.
-        # > An instance may be involved in multiple DTS migration or synchronization tasks simultaneously. To remove the specification change restrictions on the instance, pass this parameter to avoid calling this operation multiple times.
+        # > An instance may be involved in multiple DTS migration or synchronization tasks. When you need to remove the specification change restriction for the instance, you can pass this parameter to avoid calling this operation multiple times.
         self.task_id = task_id
 
     def validate(self):

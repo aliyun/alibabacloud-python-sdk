@@ -18,10 +18,11 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         preferred_next_backup_time: str = None,
         request_id: str = None,
     ):
-        # This parameter is deprecated. Ignore this parameter.
+        # **[Deprecated]** This group of parameters is deprecated. Ignore it.
         self.access_denied_detail = access_denied_detail
+        # The earliest point in time for data flashback, in the yyyy-MM-ddTHH:mm:ssZ format (UTC). This parameter is returned only when the data flashback feature is enabled for the instance.
         self.backup_log_start_time = backup_log_start_time
-        # The number of days for which backup data is retained.
+        # The backup retention period in days.
         self.backup_retention_period = backup_retention_period
         # Indicates whether the backup service is enabled for the instance. Valid values:
         # * **1**: Enabled.
@@ -32,17 +33,17 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         # * **0**: Disabled.
         self.enable_backup_log = enable_backup_log
         # The backup cycle. Valid values:
-        # * **Monday**
-        # * **Tuesday**
-        # * **Wednesday**
-        # * **Thursday**
-        # * **Friday**
-        # * **Saturday**
-        # * **Sunday**
+        # * **Monday**: Monday.
+        # * **Tuesday**: Tuesday.
+        # * **Wednesday**: Wednesday.
+        # * **Thursday**: Thursday.
+        # * **Friday**: Friday.
+        # * **Saturday**: Saturday.
+        # * **Sunday**: Sunday.
         self.preferred_backup_period = preferred_backup_period
-        # The backup time. The time is in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC).
+        # The backup time, in the <i>HH:mm</i>Z-<i>HH:mm</i>Z format (UTC).
         self.preferred_backup_time = preferred_backup_time
-        # The next backup time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
+        # The time of the next backup, in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format (UTC).
         self.preferred_next_backup_time = preferred_next_backup_time
         # The request ID.
         self.request_id = request_id
@@ -128,19 +129,19 @@ class DescribeBackupPolicyResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # Same as above.
+        # The description is the same as above.
         self.auth_action = auth_action
-        # Same as above.
+        # The description is the same as above.
         self.auth_principal_display_name = auth_principal_display_name
-        # Same as above.
+        # The description is the same as above.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # Same as above.
+        # The description is the same as above.
         self.auth_principal_type = auth_principal_type
-        # Same as above.
+        # The description is the same as above.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # Same as above.
+        # The description is the same as above.
         self.no_permission_type = no_permission_type
-        # Same as above.
+        # The description is the same as above.
         self.policy_type = policy_type
 
     def validate(self):

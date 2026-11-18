@@ -28,12 +28,12 @@ class ModifyInstanceAutoRenewalAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The auto-renewal cycle. Valid values: **1** to **12**. Unit: months. When the instance is about to expire, the system automatically renews the instance for the specified duration.
-        # > This parameter is available and required only when **AutoRenew** is set to **true**.
+        # The auto-renewal period. Valid values: **1** to **12**. Unit: months. When the instance is about to expire, the system automatically renews the instance for the specified duration.
+        # > This parameter is valid and required only when the **AutoRenew** parameter is set to **true**.
         self.duration = duration
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The product. Set the value to kvstore.
+        # The product type. Set the value to kvstore.
         self.product = product
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

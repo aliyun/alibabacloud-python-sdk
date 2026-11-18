@@ -8,23 +8,30 @@ class DescribeInspectionTasksRequest(DaraModel):
     def __init__(
         self,
         instance_id: str = None,
+        level_summary: str = None,
         page_num: str = None,
         page_size: str = None,
         security_token: str = None,
         type: str = None,
     ):
-        # The instance ID.
+        # The ID of the assistant instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The summary of risk levels for inspection results. You can specify multiple values. Valid values:
+        # - Normal: Normal.
+        # - Warning: Warning.
+        # - Error: High-risk.
+        # - Failed: Failed.
+        self.level_summary = level_summary
         # The page number.
         self.page_num = page_num
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
         self.security_token = security_token
-        # The task type.
-        # - 1: manual task
-        # - 2: scheduled task
+        # The task type. Valid values:
+        # - 1: Manual task.
+        # - 2: Scheduled task.
         self.type = type
 
     def validate(self):
@@ -37,6 +44,9 @@ class DescribeInspectionTasksRequest(DaraModel):
             result = _map
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.level_summary is not None:
+            result['LevelSummary'] = self.level_summary
 
         if self.page_num is not None:
             result['PageNum'] = self.page_num
@@ -56,6 +66,9 @@ class DescribeInspectionTasksRequest(DaraModel):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('LevelSummary') is not None:
+            self.level_summary = m.get('LevelSummary')
 
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')
