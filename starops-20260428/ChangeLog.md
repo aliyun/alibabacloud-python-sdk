@@ -1,3 +1,6 @@
+2026-11-18 Version: 1.4.5
+- Generated python 2026-04-28 for STAROps.
+
 2026-10-22 Version: 1.4.3
 - Update API GetDigitalEmployee: add response parameters Body.status.
 - Update API ListDigitalEmployees: add response parameters Body.digitalEmployees.$.status.

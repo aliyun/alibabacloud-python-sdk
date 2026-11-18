@@ -21,19 +21,19 @@ class UpdateDigitalEmployeeRequest(DaraModel):
     ):
         # The attributes.
         self.attributes = attributes
-        # The default rule of the digital employee.
+        # The default rules for the digital employee.
         self.default_rule = default_rule
         # The description of the digital employee.
         self.description = description
         # The display name of the digital employee.
         self.display_name = display_name
-        # The knowledge base list.
+        # The list of knowledge bases.
         self.knowledges = knowledges
         # The ARN of the RAM role.
         self.role_arn = role_arn
-        # The list of CIDRs or IP addresses that are allowed to be accessed.
+        # The list of allowed CIDR blocks or IP addresses.
         self.sandbox_network_policy = sandbox_network_policy
-        # The security policy configuration for tool calling of the digital employee.
+        # The security policy configuration for tool calling by the digital employee.
         self.tool_policy = tool_policy
 
     def validate(self):
@@ -110,13 +110,25 @@ class UpdateDigitalEmployeeRequestToolPolicy(DaraModel):
     def __init__(
         self,
         aliyun: main_models.UpdateDigitalEmployeeRequestToolPolicyAliyun = None,
+        global_: main_models.UpdateDigitalEmployeeRequestToolPolicyGlobal = None,
+        hooks: List[main_models.Hook] = None,
     ):
         # The security policy configuration for Aliyun CLI tool calling.
         self.aliyun = aliyun
+        # The global auto-approval rules for tool calling.
+        self.global_ = global_
+        # The hook configuration.
+        self.hooks = hooks
 
     def validate(self):
         if self.aliyun:
             self.aliyun.validate()
+        if self.global_:
+            self.global_.validate()
+        if self.hooks:
+            for v1 in self.hooks:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -126,6 +138,14 @@ class UpdateDigitalEmployeeRequestToolPolicy(DaraModel):
         if self.aliyun is not None:
             result['aliyun'] = self.aliyun.to_map()
 
+        if self.global_ is not None:
+            result['global'] = self.global_.to_map()
+
+        result['hooks'] = []
+        if self.hooks is not None:
+            for k1 in self.hooks:
+                result['hooks'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -133,6 +153,52 @@ class UpdateDigitalEmployeeRequestToolPolicy(DaraModel):
         if m.get('aliyun') is not None:
             temp_model = main_models.UpdateDigitalEmployeeRequestToolPolicyAliyun()
             self.aliyun = temp_model.from_map(m.get('aliyun'))
+
+        if m.get('global') is not None:
+            temp_model = main_models.UpdateDigitalEmployeeRequestToolPolicyGlobal()
+            self.global_ = temp_model.from_map(m.get('global'))
+
+        self.hooks = []
+        if m.get('hooks') is not None:
+            for k1 in m.get('hooks'):
+                temp_model = main_models.Hook()
+                self.hooks.append(temp_model.from_map(k1))
+
+        return self
+
+class UpdateDigitalEmployeeRequestToolPolicyGlobal(DaraModel):
+    def __init__(
+        self,
+        auto_pass_policy: List[main_models.AutoPassPolicy] = None,
+    ):
+        # The array of auto-approval policies.
+        self.auto_pass_policy = auto_pass_policy
+
+    def validate(self):
+        if self.auto_pass_policy:
+            for v1 in self.auto_pass_policy:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['autoPassPolicy'] = []
+        if self.auto_pass_policy is not None:
+            for k1 in self.auto_pass_policy:
+                result['autoPassPolicy'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.auto_pass_policy = []
+        if m.get('autoPassPolicy') is not None:
+            for k1 in m.get('autoPassPolicy'):
+                temp_model = main_models.AutoPassPolicy()
+                self.auto_pass_policy.append(temp_model.from_map(k1))
 
         return self
 
@@ -144,9 +210,9 @@ class UpdateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
         enable: bool = None,
         statements: List[main_models.UpdateDigitalEmployeeRequestToolPolicyAliyunStatements] = None,
     ):
-        # The list of auto-approved RAM actions in the format of *, product:ApiName, or product:Prefix*.
+        # The list of auto-approved RAM actions. The format is *, product:ApiName, or product:Prefix*.
         self.auto_pass_policy = auto_pass_policy
-        # The list of denied RAM actions in the format of *, product:ApiName, or product:Prefix*.
+        # The list of denied RAM actions. The format is *, product:ApiName, or product:Prefix*.
         self.deny_policy = deny_policy
         # Specifies whether to enable the policy.
         self.enable = enable
@@ -211,12 +277,9 @@ class UpdateDigitalEmployeeRequestToolPolicyAliyunStatements(DaraModel):
         self.actions = actions
         # **[Deprecated]** The API version.
         self.api_version = api_version
-        # The execution policy. Valid values:
-        # - allow: Allowed.
-        # - deny: Denied.
-        # - user_ack: Requires user confirmation before execution.
+        # The execution policy.
         self.decision = decision
-        # The cloud service code.
+        # The code of the cloud service.
         self.product = product
 
     def validate(self):
@@ -264,9 +327,9 @@ class UpdateDigitalEmployeeRequestSandboxNetworkPolicy(DaraModel):
         allow_fqdns: List[str] = None,
         enable_acl: bool = None,
     ):
-        # The list of CIDRs or IP addresses that are allowed to be accessed.
+        # The list of allowed CIDR blocks or IP addresses.
         self.allow_cidrs = allow_cidrs
-        # The list of FQDNs that are allowed to be accessed.
+        # The list of allowed FQDNs.
         self.allow_fqdns = allow_fqdns
         # Specifies whether to enable the sandbox network ACL.
         self.enable_acl = enable_acl
@@ -309,9 +372,9 @@ class UpdateDigitalEmployeeRequestKnowledges(DaraModel):
         bailian: List[main_models.UpdateDigitalEmployeeRequestKnowledgesBailian] = None,
         sop: List[Dict[str, Any]] = None,
     ):
-        # The Bailian knowledge base list.
+        # The list of Model Studio knowledge bases.
         self.bailian = bailian
-        # The SOP knowledge base list.
+        # The list of SOP knowledge bases.
         self.sop = sop
 
     def validate(self):
@@ -356,13 +419,13 @@ class UpdateDigitalEmployeeRequestKnowledgesBailian(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
-        # The knowledge base attributes.
+        # The attributes of the knowledge base.
         self.attributes = attributes
-        # The Bailian index ID.
+        # The ID of the Model Studio index.
         self.index_id = index_id
         # The region of the knowledge base.
         self.region = region
-        # The Bailian workspace ID.
+        # The ID of the Model Studio workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

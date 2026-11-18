@@ -27,7 +27,7 @@ class ConnectorCreateInput(DaraModel):
         # 
         # This parameter is required.
         self.authentication = authentication
-        # The list of capabilities granted to the connector.
+        # The list of capabilities granted to the Connector.
         # 
         # This parameter is required.
         self.capability_grants = capability_grants
@@ -49,9 +49,9 @@ class ConnectorCreateInput(DaraModel):
         # 
         # This parameter is required.
         self.display_name = display_name
-        # Specifies whether to enable the connector after creation.
+        # Specifies whether to enable the Connector after creation.
         self.enabled = enabled
-        # The execution policy for the connector.
+        # The execution policy of the Connector.
         # 
         # This parameter is required.
         self.policy = policy
@@ -59,7 +59,7 @@ class ConnectorCreateInput(DaraModel):
         # 
         # This parameter is required.
         self.provider = provider
-        # The runtime configuration for the connector.
+        # The runtime configuration of the Connector.
         # 
         # This parameter is required.
         self.runtime = runtime

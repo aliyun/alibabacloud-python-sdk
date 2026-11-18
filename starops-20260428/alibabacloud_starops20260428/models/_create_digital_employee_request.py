@@ -23,7 +23,7 @@ class CreateDigitalEmployeeRequest(DaraModel):
         tags: List[main_models.Tag] = None,
         tool_policy: main_models.CreateDigitalEmployeeRequestToolPolicy = None,
     ):
-        # The digital employee properties.
+        # The attributes of the digital employee.
         self.attributes = attributes
         # The channel type.
         self.channel = channel
@@ -39,13 +39,13 @@ class CreateDigitalEmployeeRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The RAM role ARN.
+        # The ARN of the RAM role.
         # 
         # This parameter is required.
         self.role_arn = role_arn
-        # The sandbox network ACL policy configuration of the digital employee.
+        # The sandbox network ACL policy configuration for the digital employee.
         self.sandbox_network_policy = sandbox_network_policy
         # The tags.
         self.tags = tags
@@ -159,13 +159,25 @@ class CreateDigitalEmployeeRequestToolPolicy(DaraModel):
     def __init__(
         self,
         aliyun: main_models.CreateDigitalEmployeeRequestToolPolicyAliyun = None,
+        global_: main_models.CreateDigitalEmployeeRequestToolPolicyGlobal = None,
+        hooks: List[main_models.Hook] = None,
     ):
         # The security policy configuration for Aliyun CLI tool invocation.
         self.aliyun = aliyun
+        # The global auto-pass rules for tool invocation.
+        self.global_ = global_
+        # The hook configuration.
+        self.hooks = hooks
 
     def validate(self):
         if self.aliyun:
             self.aliyun.validate()
+        if self.global_:
+            self.global_.validate()
+        if self.hooks:
+            for v1 in self.hooks:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -175,6 +187,14 @@ class CreateDigitalEmployeeRequestToolPolicy(DaraModel):
         if self.aliyun is not None:
             result['aliyun'] = self.aliyun.to_map()
 
+        if self.global_ is not None:
+            result['global'] = self.global_.to_map()
+
+        result['hooks'] = []
+        if self.hooks is not None:
+            for k1 in self.hooks:
+                result['hooks'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -182,6 +202,52 @@ class CreateDigitalEmployeeRequestToolPolicy(DaraModel):
         if m.get('aliyun') is not None:
             temp_model = main_models.CreateDigitalEmployeeRequestToolPolicyAliyun()
             self.aliyun = temp_model.from_map(m.get('aliyun'))
+
+        if m.get('global') is not None:
+            temp_model = main_models.CreateDigitalEmployeeRequestToolPolicyGlobal()
+            self.global_ = temp_model.from_map(m.get('global'))
+
+        self.hooks = []
+        if m.get('hooks') is not None:
+            for k1 in m.get('hooks'):
+                temp_model = main_models.Hook()
+                self.hooks.append(temp_model.from_map(k1))
+
+        return self
+
+class CreateDigitalEmployeeRequestToolPolicyGlobal(DaraModel):
+    def __init__(
+        self,
+        auto_pass_policy: List[main_models.AutoPassPolicy] = None,
+    ):
+        # The array of auto-pass policies.
+        self.auto_pass_policy = auto_pass_policy
+
+    def validate(self):
+        if self.auto_pass_policy:
+            for v1 in self.auto_pass_policy:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['autoPassPolicy'] = []
+        if self.auto_pass_policy is not None:
+            for k1 in self.auto_pass_policy:
+                result['autoPassPolicy'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.auto_pass_policy = []
+        if m.get('autoPassPolicy') is not None:
+            for k1 in m.get('autoPassPolicy'):
+                temp_model = main_models.AutoPassPolicy()
+                self.auto_pass_policy.append(temp_model.from_map(k1))
 
         return self
 
@@ -193,13 +259,13 @@ class CreateDigitalEmployeeRequestToolPolicyAliyun(DaraModel):
         enable: bool = None,
         statements: List[main_models.CreateDigitalEmployeeRequestToolPolicyAliyunStatements] = None,
     ):
-        # The RAM actions that are automatically allowed. The format is *, product:ApiName, or product:Prefix*.
+        # The auto-passed RAM actions. The format is *, product:ApiName, or product:Prefix*.
         self.auto_pass_policy = auto_pass_policy
-        # The RAM actions that are denied. The format is *, product:ApiName, or product:Prefix*.
+        # The denied RAM actions. The format is *, product:ApiName, or product:Prefix*.
         self.deny_policy = deny_policy
         # Specifies whether to enable the policy.
         self.enable = enable
-        # **[Deprecated]** Use denyPolicy and autoPassPolicy instead. This field is still returned during the transition period. Original description: The list of Aliyun OpenAPI tool policy statements.
+        # **[Deprecated]** Use denyPolicy and autoPassPolicy instead. This field is still read during the transition period. Original description: The list of Aliyun OpenAPI tool policy statements.
         self.statements = statements
 
     def validate(self):
@@ -258,11 +324,11 @@ class CreateDigitalEmployeeRequestToolPolicyAliyunStatements(DaraModel):
     ):
         # The list of Aliyun OpenAPI actions. The format is product:ApiName, product:Prefix*, or product:*.
         self.actions = actions
-        # The Aliyun OpenAPI version that this statement applies to.
+        # The Aliyun OpenAPI version corresponding to this statement.
         self.api_version = api_version
-        # The execution policy when the API is matched.
+        # The execution policy after the API is matched.
         self.decision = decision
-        # The Aliyun OpenAPI product name that this statement applies to.
+        # The Aliyun OpenAPI product name corresponding to this statement.
         self.product = product
 
     def validate(self):
@@ -310,7 +376,7 @@ class CreateDigitalEmployeeRequestSandboxNetworkPolicy(DaraModel):
         allow_fqdns: List[str] = None,
         enable_acl: bool = None,
     ):
-        # The list of allowed CIDRs or IP addresses.
+        # The list of allowed CIDR blocks or IP addresses.
         self.allow_cidrs = allow_cidrs
         # The list of allowed FQDNs.
         self.allow_fqdns = allow_fqdns
@@ -402,13 +468,13 @@ class CreateDigitalEmployeeRequestKnowledgesBailian(DaraModel):
         region: str = None,
         workspace_id: str = None,
     ):
-        # The knowledge base properties.
+        # The attributes of the knowledge base.
         self.attributes = attributes
-        # The Bailian index ID.
+        # The ID of the Bailian index.
         self.index_id = index_id
         # The region of the knowledge base.
         self.region = region
-        # The Bailian workspace ID.
+        # The ID of the Bailian workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -33,7 +33,7 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         self.attributes = attributes
         # The channel type.
         self.channel = channel
-        # The creation time in UTC, which follows the RFC 3339 format.
+        # The creation time in RFC 3339 format. The time zone is UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
@@ -49,7 +49,7 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         self.knowledges = knowledges
         # The name of the digital employee.
         self.name = name
-        # The region ID.
+        # The region ID of the resource.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
@@ -57,7 +57,7 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         self.resource_group_id = resource_group_id
         # The ARN of the RAM role.
         self.role_arn = role_arn
-        # The sandbox network ACL policy configuration of the digital employee.
+        # The sandbox network ACL policy configuration for the digital employee.
         self.sandbox_network_policy = sandbox_network_policy
         # The status of the digital employee. Valid values: 0 (normal) and 1 (disabled).
         self.status = status
@@ -65,7 +65,7 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         self.tags = tags
         # The tool policy.
         self.tool_policy = tool_policy
-        # The update time in UTC, which follows the RFC 3339 format.
+        # The update time in RFC 3339 format. The time zone is UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -213,13 +213,25 @@ class GetDigitalEmployeeResponseBodyToolPolicy(DaraModel):
     def __init__(
         self,
         aliyun: main_models.GetDigitalEmployeeResponseBodyToolPolicyAliyun = None,
+        global_: main_models.GetDigitalEmployeeResponseBodyToolPolicyGlobal = None,
+        hooks: List[main_models.Hook] = None,
     ):
-        # The security policy configuration to invoke Aliyun CLI tools.
+        # The security policy configuration for Alibaba Cloud CLI tool invocation.
         self.aliyun = aliyun
+        # The global auto-pass configuration for the digital employee.
+        self.global_ = global_
+        # The hook configuration.
+        self.hooks = hooks
 
     def validate(self):
         if self.aliyun:
             self.aliyun.validate()
+        if self.global_:
+            self.global_.validate()
+        if self.hooks:
+            for v1 in self.hooks:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -229,6 +241,14 @@ class GetDigitalEmployeeResponseBodyToolPolicy(DaraModel):
         if self.aliyun is not None:
             result['aliyun'] = self.aliyun.to_map()
 
+        if self.global_ is not None:
+            result['global'] = self.global_.to_map()
+
+        result['hooks'] = []
+        if self.hooks is not None:
+            for k1 in self.hooks:
+                result['hooks'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -236,6 +256,52 @@ class GetDigitalEmployeeResponseBodyToolPolicy(DaraModel):
         if m.get('aliyun') is not None:
             temp_model = main_models.GetDigitalEmployeeResponseBodyToolPolicyAliyun()
             self.aliyun = temp_model.from_map(m.get('aliyun'))
+
+        if m.get('global') is not None:
+            temp_model = main_models.GetDigitalEmployeeResponseBodyToolPolicyGlobal()
+            self.global_ = temp_model.from_map(m.get('global'))
+
+        self.hooks = []
+        if m.get('hooks') is not None:
+            for k1 in m.get('hooks'):
+                temp_model = main_models.Hook()
+                self.hooks.append(temp_model.from_map(k1))
+
+        return self
+
+class GetDigitalEmployeeResponseBodyToolPolicyGlobal(DaraModel):
+    def __init__(
+        self,
+        auto_pass_policy: List[main_models.AutoPassPolicy] = None,
+    ):
+        # The auto-pass policy for CLI commands.
+        self.auto_pass_policy = auto_pass_policy
+
+    def validate(self):
+        if self.auto_pass_policy:
+            for v1 in self.auto_pass_policy:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['autoPassPolicy'] = []
+        if self.auto_pass_policy is not None:
+            for k1 in self.auto_pass_policy:
+                result['autoPassPolicy'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.auto_pass_policy = []
+        if m.get('autoPassPolicy') is not None:
+            for k1 in m.get('autoPassPolicy'):
+                temp_model = main_models.AutoPassPolicy()
+                self.auto_pass_policy.append(temp_model.from_map(k1))
 
         return self
 
@@ -247,13 +313,13 @@ class GetDigitalEmployeeResponseBodyToolPolicyAliyun(DaraModel):
         enable: bool = None,
         statements: List[main_models.GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements] = None,
     ):
-        # The automatic allow policy. Each entry is a RAM action string in the format of product:ApiName, product:Prefix*, or product:*. If an action matches an entry, the action is automatically allowed without manual confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, and Describe*) are automatically allowed. Unmatched actions require human-in-the-loop (HIL) confirmation.
+        # The auto-pass policy. Each entry is a RAM action string in the format of product:ApiName, product:Prefix*, or product:*. If an operation matches the policy, it is automatically allowed without manual confirmation. If this parameter is empty or not configured, built-in read-only actions (Get*, List*, and Describe*) are automatically allowed. Unmatched operations require manual confirmation (HIL).
         self.auto_pass_policy = auto_pass_policy
-        # The explicit deny policy, which has the highest priority. Each entry is a RAM action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no operations are actively denied. If an action matches a STAROps entry, the action is directly denied. The POP layer provides a secondary fallback check.
+        # The explicit deny policy, which has the highest priority. Each entry is a RAM action string in the format of product:ApiName, product:Prefix*, or product:*. If this parameter is empty or not configured, no operations are explicitly denied. If a STAROps operation matches the policy, it is directly denied. The POP side provides a secondary fallback.
         self.deny_policy = deny_policy
         # Specifies whether the policy is enabled.
         self.enable = enable
-        # The list of Aliyun CLI tool policy statements.
+        # The list of policy statements for Alibaba Cloud CLI tools.
         self.statements = statements
 
     def validate(self):
@@ -317,8 +383,6 @@ class GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements(DaraModel):
         # The execution policy.
         self.decision = decision
         # The code of the cloud service.
-        # 
-        # This parameter is required.
         self.product = product
 
     def validate(self):
@@ -460,11 +524,11 @@ class GetDigitalEmployeeResponseBodyKnowledgesBailian(DaraModel):
     ):
         # The attributes of the knowledge base.
         self.attributes = attributes
-        # The ID of the Model Studio index.
+        # The index ID of Model Studio.
         self.index_id = index_id
         # The region of the knowledge base.
         self.region = region
-        # The ID of the Model Studio workspace.
+        # The workspace ID of Model Studio.
         self.workspace_id = workspace_id
 
     def validate(self):

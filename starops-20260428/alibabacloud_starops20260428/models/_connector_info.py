@@ -32,7 +32,7 @@ class ConnectorInfo(DaraModel):
         # 
         # This parameter is required.
         self.authentication = authentication
-        # The list of capabilities granted to the Connector.
+        # The list of capabilities granted to the connector.
         # 
         # This parameter is required.
         self.capability_grants = capability_grants
@@ -54,7 +54,7 @@ class ConnectorInfo(DaraModel):
         # 
         # This parameter is required.
         self.display_name = display_name
-        # Specifies whether the Connector is enabled.
+        # Specifies whether the connector is enabled.
         # 
         # This parameter is required.
         self.enabled = enabled
@@ -66,7 +66,7 @@ class ConnectorInfo(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The execution policy of the Connector.
+        # The execution policy of the connector.
         # 
         # This parameter is required.
         self.policy = policy
@@ -78,7 +78,7 @@ class ConnectorInfo(DaraModel):
         # 
         # This parameter is required.
         self.revision = revision
-        # The runtime configuration of the Connector.
+        # The runtime configuration of the connector.
         # 
         # This parameter is required.
         self.runtime = runtime

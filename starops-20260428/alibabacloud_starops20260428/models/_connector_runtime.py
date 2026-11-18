@@ -7,10 +7,16 @@ from darabonba.model import DaraModel
 class ConnectorRuntime(DaraModel):
     def __init__(
         self,
+        capability_id: str = None,
+        extension_name: str = None,
         mode: str = None,
         plugin_id: str = None,
         satellite_id: str = None,
     ):
+        # The native client capability referenced by the SATELLITE runtime. This parameter is mutually exclusive with extensionName.
+        self.capability_id = capability_id
+        # The environment agent extension name referenced by the SATELLITE runtime. This parameter is mutually exclusive with capabilityId.
+        self.extension_name = extension_name
         # Runtime mode
         # 
         # This parameter is required.
@@ -28,6 +34,12 @@ class ConnectorRuntime(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.capability_id is not None:
+            result['capabilityId'] = self.capability_id
+
+        if self.extension_name is not None:
+            result['extensionName'] = self.extension_name
+
         if self.mode is not None:
             result['mode'] = self.mode
 
@@ -41,6 +53,12 @@ class ConnectorRuntime(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('capabilityId') is not None:
+            self.capability_id = m.get('capabilityId')
+
+        if m.get('extensionName') is not None:
+            self.extension_name = m.get('extensionName')
+
         if m.get('mode') is not None:
             self.mode = m.get('mode')
 

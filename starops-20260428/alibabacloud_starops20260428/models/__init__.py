@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._auto_pass_policy import AutoPassPolicy
 from ._connector_authentication import ConnectorAuthentication
 from ._connector_authentication_input import ConnectorAuthenticationInput
 from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInput
@@ -9,6 +10,7 @@ from ._connector_create_input import ConnectorCreateInput
 from ._connector_info import ConnectorInfo
 from ._connector_runtime import ConnectorRuntime
 from ._connector_update_input import ConnectorUpdateInput
+from ._hook import Hook
 from ._tag import Tag
 from ._create_artifact_upload_token_request import CreateArtifactUploadTokenRequest
 from ._create_artifact_upload_token_response_body import CreateArtifactUploadTokenResponseBody
@@ -130,6 +132,7 @@ from ._connector_authentication_update_input import ConnectorAuthenticationUpdat
 from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInputPatToken
 from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInputRole
 from ._connector_authentication_update_input import ConnectorAuthenticationUpdateInputSatellite
+from ._hook import HookExecution
 from ._create_chat_request import CreateChatRequestMessagesContents
 from ._create_chat_request import CreateChatRequestMessages
 from ._create_chat_response_body import CreateChatResponseBodyMessages
@@ -138,6 +141,7 @@ from ._create_digital_employee_request import CreateDigitalEmployeeRequestKnowle
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestSandboxNetworkPolicy
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestToolPolicyAliyunStatements
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestToolPolicyAliyun
+from ._create_digital_employee_request import CreateDigitalEmployeeRequestToolPolicyGlobal
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestToolPolicy
 from ._create_digital_employee_skill_request import CreateDigitalEmployeeSkillRequestFiles
 from ._create_mcp_service_request import CreateMcpServiceRequestConnectionAuth
@@ -153,6 +157,7 @@ from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyK
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodySandboxNetworkPolicy
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyToolPolicyAliyun
+from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyToolPolicyGlobal
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyToolPolicy
 from ._get_digital_employee_entity_data_response_body import GetDigitalEmployeeEntityDataResponseBodyResponseStatusStatusItem
 from ._get_digital_employee_entity_data_response_body import GetDigitalEmployeeEntityDataResponseBodyResponseStatus
@@ -186,6 +191,7 @@ from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowle
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestSandboxNetworkPolicy
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestToolPolicyAliyunStatements
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestToolPolicyAliyun
+from ._update_digital_employee_request import UpdateDigitalEmployeeRequestToolPolicyGlobal
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestToolPolicy
 from ._update_digital_employee_skill_request import UpdateDigitalEmployeeSkillRequestFiles
 from ._update_mcp_service_request import UpdateMcpServiceRequestConnectionAuth
@@ -194,6 +200,7 @@ from ._update_mcp_service_request import UpdateMcpServiceRequestNetwork
 from ._update_mcp_service_request import UpdateMcpServiceRequestTools
 
 __all__ = [
+    AutoPassPolicy,
     ConnectorAuthentication,
     ConnectorAuthenticationInput,
     ConnectorAuthenticationUpdateInput,
@@ -201,6 +208,7 @@ __all__ = [
     ConnectorInfo,
     ConnectorRuntime,
     ConnectorUpdateInput,
+    Hook,
     Tag,
     CreateArtifactUploadTokenRequest,
     CreateArtifactUploadTokenResponseBody,
@@ -322,6 +330,7 @@ __all__ = [
     ConnectorAuthenticationUpdateInputPatToken,
     ConnectorAuthenticationUpdateInputRole,
     ConnectorAuthenticationUpdateInputSatellite,
+    HookExecution,
     CreateChatRequestMessagesContents,
     CreateChatRequestMessages,
     CreateChatResponseBodyMessages,
@@ -330,6 +339,7 @@ __all__ = [
     CreateDigitalEmployeeRequestSandboxNetworkPolicy,
     CreateDigitalEmployeeRequestToolPolicyAliyunStatements,
     CreateDigitalEmployeeRequestToolPolicyAliyun,
+    CreateDigitalEmployeeRequestToolPolicyGlobal,
     CreateDigitalEmployeeRequestToolPolicy,
     CreateDigitalEmployeeSkillRequestFiles,
     CreateMcpServiceRequestConnectionAuth,
@@ -345,6 +355,7 @@ __all__ = [
     GetDigitalEmployeeResponseBodySandboxNetworkPolicy,
     GetDigitalEmployeeResponseBodyToolPolicyAliyunStatements,
     GetDigitalEmployeeResponseBodyToolPolicyAliyun,
+    GetDigitalEmployeeResponseBodyToolPolicyGlobal,
     GetDigitalEmployeeResponseBodyToolPolicy,
     GetDigitalEmployeeEntityDataResponseBodyResponseStatusStatusItem,
     GetDigitalEmployeeEntityDataResponseBodyResponseStatus,
@@ -378,6 +389,7 @@ __all__ = [
     UpdateDigitalEmployeeRequestSandboxNetworkPolicy,
     UpdateDigitalEmployeeRequestToolPolicyAliyunStatements,
     UpdateDigitalEmployeeRequestToolPolicyAliyun,
+    UpdateDigitalEmployeeRequestToolPolicyGlobal,
     UpdateDigitalEmployeeRequestToolPolicy,
     UpdateDigitalEmployeeSkillRequestFiles,
     UpdateMcpServiceRequestConnectionAuth,
