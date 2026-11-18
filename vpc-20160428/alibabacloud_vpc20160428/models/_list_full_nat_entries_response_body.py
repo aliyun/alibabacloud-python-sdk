@@ -18,7 +18,7 @@ class ListFullNatEntriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of FULLNAT entries.
+        # The list of queried FULLNAT entries.
         self.full_nat_entries = full_nat_entries
         # The ID of the FULLNAT table to which the queried FULLNAT entries belong.
         self.full_nat_table_id = full_nat_table_id
@@ -26,14 +26,14 @@ class ListFullNatEntriesResponseBody(DaraModel):
         self.max_results = max_results
         # The instance ID of the VPC NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token that is used for the next query. Valid values:
         # 
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # - If **NextToken** is empty, no next query is to be sent.
+        # - If **NextToken** is returned, the value indicates the token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of FULLNAT entries returned.
+        # The total number of queried FULLNAT entries.
         self.total_count = total_count
 
     def validate(self):
@@ -119,32 +119,32 @@ class ListFullNatEntriesResponseBodyFullNatEntries(DaraModel):
         network_interface_id: str = None,
         network_interface_type: str = None,
     ):
-        # The backend domain name for FULLNAT address translation in the FULLNAT entry.
+        # The backend domain name used for FULLNAT address translation in the FULLNAT entry.
         self.access_domain = access_domain
-        # The backend IP address for FULLNAT address translation in the FULLNAT entry.
+        # The backend IP address used for FULLNAT address translation in the FULLNAT entry.
         self.access_ip = access_ip
-        # The backend port for port mapping in the FULLNAT entry. Valid values: **1** to **65535**.
+        # The backend port used for port mapping in the FULLNAT entry. Valid values: **1** to **65535**.
         self.access_port = access_port
         # The time when the FULLNAT entry was created.
         self.creation_time = creation_time
-        # The IP address resolved from the backend domain name for address translation in the FULLNAT entry.
+        # The IP address resolved from the backend domain name used for address translation in the FULLNAT entry.
         self.domain_resolve = domain_resolve
         # The description of the FULLNAT entry.
         # 
-        # The description must be 2 to 128 characters in length, and must start with a letter or Chinese character. The description cannot start with `http://` or `https://`.
+        # The description must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.full_nat_entry_description = full_nat_entry_description
         # The ID of the FULLNAT entry.
         self.full_nat_entry_id = full_nat_entry_id
-        # The name of the FULLNAT entry.
+        # The name of the FULLNAT entry. 
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). The name must start with a letter or Chinese character.
+        # The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It can contain digits, hyphens (-), and underscores (_).
         self.full_nat_entry_name = full_nat_entry_name
         # The status of the FULLNAT entry. Valid values:
         # 
-        # - **Pending**: being configured.
-        # - **Available**: available.
-        # - **Deleting**: being deleted.
-        # - **Deleted**: deleted.
+        # - **Pending**: The entry is being configured.
+        # - **Available**: The entry is available.
+        # - **Deleting**: The entry is being deleted.
+        # - **Deleted**: The entry is deleted.
         self.full_nat_entry_status = full_nat_entry_status
         # The ID of the FULLNAT table to which the FULLNAT entry belongs.
         self.full_nat_table_id = full_nat_table_id
@@ -153,13 +153,13 @@ class ListFullNatEntriesResponseBodyFullNatEntries(DaraModel):
         # - **TCP**: forwards TCP packets. 
         # - **UDP**: forwards UDP packets.
         self.ip_protocol = ip_protocol
-        # The NAT IP address that provides address translation in the FULLNAT entry.
+        # The NAT IP address used for address translation in the FULLNAT entry.
         self.nat_ip = nat_ip
-        # The frontend port for port mapping in the FULLNAT entry. Valid values: **1** to **65535**.
+        # The frontend port used for port mapping in the FULLNAT entry. Valid values: **1** to **65535**.
         self.nat_ip_port = nat_ip_port
-        # The elastic network interface (ENI) ID.
+        # The ID of the elastic network interfaces (ENIs), which is a network interface controller (NIC).
         self.network_interface_id = network_interface_id
-        # The type of the elastic network interface (ENI). The value is **Endpoint** (reverse endpoint).
+        # The type of the elastic network interfaces (ENIs), which is a network interface controller (NIC). Currently, only **Endpoint** (reverse endpoint) is supported.
         self.network_interface_type = network_interface_type
 
     def validate(self):

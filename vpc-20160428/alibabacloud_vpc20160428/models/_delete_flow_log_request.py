@@ -14,7 +14,7 @@ class DeleteFlowLogRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The flow log ID.
+        # The ID of the flow log.
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
@@ -22,7 +22,7 @@ class DeleteFlowLogRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the flow log.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

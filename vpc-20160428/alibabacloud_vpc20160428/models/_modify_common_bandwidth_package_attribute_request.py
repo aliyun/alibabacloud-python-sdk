@@ -20,15 +20,17 @@ class ModifyCommonBandwidthPackageAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # The description of the Internet Shared Bandwidth instance. The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the Internet Shared Bandwidth instance.  
+        # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the Internet Shared Bandwidth instance. The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name of the Internet Shared Bandwidth instance. 
+        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the Internet Shared Bandwidth instance is located. 
+        # The region where the Internet Shared Bandwidth instance resides. 
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

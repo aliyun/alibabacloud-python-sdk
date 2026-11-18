@@ -16,20 +16,18 @@ class CheckCanAllocateVpcPrivateIpAddressRequest(DaraModel):
         resource_owner_id: int = None,
         v_switch_id: str = None,
     ):
-        # The type of the private IP address to check. Valid values:
+        # The IP version of the private IP address to be queried. Valid values:
         # 
-        # - **ipv4**: IPv4. This parameter is optional when the private IP address is of the IPv4 type.
-        # - **ipv6**: IPv6. This parameter is required when the private IP address is of the IPv6 type.
+        # - **ipv4**: IPv4. This parameter is optional when the private IP address to be queried is an IPv4 address.
+        # - **ipv6**: IPv6. This parameter is required when the private IP address to be queried is an IPv6 address.
         self.ip_version = ip_version
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The private IP address to check. The private IP address must belong to the vSwitch specified by the **VSwitchId** parameter.
+        # The private IP address whose availability you want to check. The private IP address must belong to the vSwitch specified by the **VSwitchId** parameter.
         # 
         # This parameter is required.
         self.private_ip_address = private_ip_address
-        # The region ID of the vSwitch to which the private IP address belongs.
-        # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
+        # The region ID of the vSwitch to which the private IP address belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

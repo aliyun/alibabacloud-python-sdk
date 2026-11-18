@@ -16,15 +16,15 @@ class ListVSwitchCidrReservationsResponseBody(DaraModel):
         total_count: int = None,
         v_switch_cidr_reservations: List[main_models.ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations] = None,
     ):
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.max_results = max_results
-        # The pagination token. Valid values:
-        # - If **NextToken** is empty, no subsequent query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The token for the next query. Valid values:
+        # - If **NextToken** is empty, no next query is required.
+        # - If **NextToken** returns a value, the value indicates the token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
         # The list of reserved CIDR blocks for a vSwitch.
         self.v_switch_cidr_reservations = v_switch_cidr_reservations
@@ -100,9 +100,9 @@ class ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations(DaraModel):
     ):
         # The number of used prefix CIDR blocks in the reserved CIDR block for a vSwitch.
         self.assigned_cidr_count = assigned_cidr_count
-        # The number of active prefix CIDR blocks in the reserved CIDR block for a vSwitch.
+        # The number of available prefix CIDR blocks in the reserved CIDR block for a vSwitch.
         self.available_cidr_count = available_cidr_count
-        # The time when the reserved CIDR block was created.
+        # The time when the reserved CIDR block was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format and is displayed in UTC.
         self.creation_time = creation_time
         # The IP version of the reserved CIDR block for a vSwitch. Valid values:
         # 
@@ -111,10 +111,10 @@ class ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations(DaraModel):
         self.ip_version = ip_version
         # The status of the reserved CIDR block. Valid values:
         # 
-        # - **Assigning**: being allocated.
-        # - **Assigned**: allocated.
-        # - **Releasing**: being released.
-        # - **Released**: released.
+        # - **Assigning**: The CIDR block is being allocated.
+        # - **Assigned**: The CIDR block is allocated.
+        # - **Releasing**: The CIDR block is being released.
+        # - **Released**: The CIDR block is released.
         self.status = status
         # The list of tags.
         self.tags = tags
@@ -130,7 +130,7 @@ class ListVSwitchCidrReservationsResponseBodyVSwitchCidrReservations(DaraModel):
         self.v_switch_cidr_reservation_name = v_switch_cidr_reservation_name
         # The ID of the vSwitch to which the reserved CIDR block for a vSwitch belongs.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the reserved CIDR block for a vSwitch belongs.
+        # The VPC to which the reserved CIDR block for a vSwitch belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

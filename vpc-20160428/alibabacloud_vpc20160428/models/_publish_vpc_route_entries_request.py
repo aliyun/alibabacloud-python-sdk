@@ -22,9 +22,9 @@ class PublishVpcRouteEntriesRequest(DaraModel):
     ):
         # Specifies whether to perform a dry run. Valid values:
         # 
-        # - **true**: performs a dry run without publishing route entries. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **true**: performs a dry run without publishing routes. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
         # 
-        # - **false** (default): sends a normal request. If the check succeeds, a 2xx HTTP status code is returned and the resource status is queried.
+        # - **false** (default): sends a Normal request. After the check succeeds, a 2xx HTTP status code is returned and the route publishing operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -33,8 +33,10 @@ class PublishVpcRouteEntriesRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The list of route entries to publish. You can specify up to 50 routes.
+        # 
+        # This parameter is required.
         self.route_entries = route_entries
-        # The publish route entry target instance ID.
+        # The target instance ID for route publishing.
         # 
         # This parameter is required.
         self.target_instance_id = target_instance_id

@@ -11,9 +11,9 @@ class CreateTrafficMirrorSessionResponseBody(DaraModel):
         resource_group_id: str = None,
         traffic_mirror_session_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The ID of the resource group to which the traffic mirroring instance belongs.
+        # The ID of the resource group to which the traffic mirroring belongs.
         self.resource_group_id = resource_group_id
         # The instance ID of the traffic mirror session.
         self.traffic_mirror_session_id = traffic_mirror_session_id

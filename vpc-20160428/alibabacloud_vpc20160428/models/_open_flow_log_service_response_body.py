@@ -13,7 +13,7 @@ class OpenFlowLogServiceResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The message returned when the flow log service is activated.
+        # The message returned when the flow log feature is activated.
         self.message = message
         # The request ID.
         self.request_id = request_id

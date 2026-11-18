@@ -19,9 +19,9 @@ class DescribeBgpPeersRequest(DaraModel):
         resource_owner_id: int = None,
         router_id: str = None,
     ):
-        # The ID of the BGP group to which the BGP peer that you want to query belongs.
+        # The ID of the BGP group to which the BGP peer belongs.
         self.bgp_group_id = bgp_group_id
-        # The ID of the BGP peer that you want to query.
+        # The ID of the BGP peer.
         self.bgp_peer_id = bgp_peer_id
         # Specifies whether the BGP group is the default BGP group. Valid values:
         # 
@@ -32,19 +32,19 @@ class DescribeBgpPeersRequest(DaraModel):
         self.is_default = is_default
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the BGP group to which the BGP peer that you want to query belongs. 
+        # The region ID of the BGP group to which the BGP peer belongs. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the Virtual Border Router (VBR) associated with the BGP peer that you want to query.
+        # The ID of the Virtual Border Router (VBR) associated with the BGP peer.
         self.router_id = router_id
 
     def validate(self):

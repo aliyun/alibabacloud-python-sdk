@@ -19,14 +19,14 @@ class DeleteFullNatEntryRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - **true**: sends a check request without deleting the FULLNAT entry. The system checks the required parameters, request syntax, and limits. The check items include whether your AccessKey pair is valid, whether the RAM user has the authorization to perform the operation, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        # - **false** (default): sends a normal request. After the request passes the check, a 2xx HTTP status code is returned and the FULLNAT entry is deleted.
+        # - **true**: performs a dry run and does not delete the FULLNAT entry. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user has the required authorization, and whether required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - **false** (default): sends a normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the FULLNAT entry is deleted.
         self.dry_run = dry_run
         # The ID of the FULLNAT entry that you want to delete.
         # 
@@ -38,9 +38,9 @@ class DeleteFullNatEntryRequest(DaraModel):
         self.full_nat_table_id = full_nat_table_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the VPC NAT gateway to which the FULLNAT entry that you want to delete belongs.
+        # The region ID of the VPC NAT gateway where the FULLNAT entry that you want to delete resides.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

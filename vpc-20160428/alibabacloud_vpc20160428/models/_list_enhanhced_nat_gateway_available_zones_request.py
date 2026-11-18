@@ -18,19 +18,16 @@ class ListEnhanhcedNatGatewayAvailableZonesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The language of the response. Valid values:
+        # The language in which the response is returned. Valid values:
         # 
         # - **zh-CN** (default): Chinese.
         # - **en-US**: English.
         self.accept_language = accept_language
-        # The filter information. You can specify key-value pairs to filter the query results.
+        # The filter conditions. You can specify key-value pairs to filter the query results.
         self.filter = filter
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to query.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
-        # This example queries the zones available for NAT gateway resources in the UAE (Dubai) region.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs. This example queries the available zones for NAT gateway resources in the UAE (Dubai) region.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -107,11 +104,11 @@ class ListEnhanhcedNatGatewayAvailableZonesRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter condition. Currently, only **PrivateLinkEnabled** is supported.
+        # The filter key. Only **PrivateLinkEnabled** is supported.
         self.key = key
-        # The filter value that corresponds to the filter condition.
+        # The filter value corresponding to the filter key.
         # 
-        # > If the filter condition is **PrivateLinkEnabled**, you must specify a filter value. Valid values: **true** and **false**.
+        # > If the filter key is **PrivateLinkEnabled**, you must specify a filter value. Valid values: **true** and **false**.
         self.value = value
 
     def validate(self):

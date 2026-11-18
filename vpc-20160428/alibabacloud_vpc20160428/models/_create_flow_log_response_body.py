@@ -12,15 +12,15 @@ class CreateFlowLogResponseBody(DaraModel):
         resource_group_id: str = None,
         success: str = None,
     ):
-        # The flow log ID.
+        # The ID of the flow log.
         self.flow_log_id = flow_log_id
         # The request ID.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - **true**: The call is successful.
+        # - **true**: The call was successful.
         # - **false**: The call failed.
         self.success = success
 

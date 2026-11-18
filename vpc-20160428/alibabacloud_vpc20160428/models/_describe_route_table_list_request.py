@@ -30,11 +30,11 @@ class DescribeRouteTableListRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
+        # The number of entries to return per page during paging in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the VPC to which the route table belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -62,9 +62,9 @@ class DescribeRouteTableListRequest(DaraModel):
         self.router_type = router_type
         # The tags of the resource.
         self.tag = tag
-        # The ID of the VPC to which the route table belongs.
+        # The ID of the virtual private cloud (VPC) to which the route table belongs.
         # 
-        # If you specify this parameter, the value of **RouterType** is automatically set to **VRouter**.
+        # If you specify this parameter, the value of the **RouterType** parameter is automatically set to **VRouter**.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -191,7 +191,7 @@ class DescribeRouteTableListRequestTag(DaraModel):
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

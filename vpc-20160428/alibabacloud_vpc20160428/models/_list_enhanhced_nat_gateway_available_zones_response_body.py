@@ -15,7 +15,7 @@ class ListEnhanhcedNatGatewayAvailableZonesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The list of zones.
+        # The zones.
         self.zones = zones
 
     def validate(self):

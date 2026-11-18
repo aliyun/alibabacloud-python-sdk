@@ -31,15 +31,15 @@ class SecondApplyPhysicalConnectionLOARequest(DaraModel):
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request. 
         # 
-        # The client generates the value. Ensure that the value is unique among different requests. 
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. 
         # 
-        # > If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may vary for each API request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId of each API request may be different.
         self.client_token = client_token
-        # The name of the company that accesses the Express Connect circuit.
+        # The name of the customer company that accesses the Express Connect circuit.
         # 
         # This parameter is required.
         self.company_name = company_name
-        # The time when the construction company enters the site. The time is in the ISO 8601 standard and must be in UTC. Format: YYYY-MM-DDThh:mm:ssZ.
+        # The time when the construction company enters the site. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.construction_time = construction_time
@@ -60,15 +60,15 @@ class SecondApplyPhysicalConnectionLOARequest(DaraModel):
         self.owner_id = owner_id
         # The information about the construction engineers.
         self.pminfo = pminfo
-        # The geographical location where the Express Connect circuit is deployed.
+        # The geographic location where the Express Connect circuit is deployed.
         self.peer_location = peer_location
-        # The region where the Express Connect circuit is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # The region where the Express Connect circuit is deployed. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The construction company of the Express Connect circuit.
+        # The construction company for the Express Connect circuit.
         # 
         # This parameter is required.
         self.si = si
@@ -188,14 +188,14 @@ class SecondApplyPhysicalConnectionLOARequestPMInfo(DaraModel):
         pmgender: str = None,
         pmname: str = None,
     ):
-        # The ID number of the construction engineer. You can specify an ID card number or a passport number.
+        # The ID number of the construction engineer. You can enter an ID card number or an international passport number.
         # 
-        # You can configure information for up to 16 construction engineers.
+        # You can configure the information of up to 16 construction engineers.
         self.pmcertificate_no = pmcertificate_no
         # The type of the ID document of the construction engineer. Valid values:
         # 
         # - **IDCard**: ID card.
-        # - **Passport**: passport.
+        # - **Passport**: international passport.
         self.pmcertificate_type = pmcertificate_type
         # The contact information of the construction engineer.
         self.pmcontact_info = pmcontact_info

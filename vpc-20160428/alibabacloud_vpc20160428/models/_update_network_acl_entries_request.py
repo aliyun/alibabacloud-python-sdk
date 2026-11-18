@@ -25,14 +25,11 @@ class UpdateNetworkAclEntriesRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - **false** (default): performs a dry run and sends the request.
+        # Specifies whether to perform a dry run.
         self.dry_run = dry_run
         # The information about the outbound rules.
         self.egress_acl_entries = egress_acl_entries
@@ -46,27 +43,27 @@ class UpdateNetworkAclEntriesRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the network ACL.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to update outbound rules. Valid values:
+        # Specifies whether to update the outbound rules. Valid values:
         # 
-        # - **true**: updates outbound rules.
+        # - **true**: yes.
         # 
-        # - **false** (default): does not update outbound rules.
+        # - **false** (default): no.
         # 
-        # > This parameter does not support incremental updates. If the ACL already has one outbound rule and you want to add another outbound rule, you must pass in both rules when calling this operation. If you pass in only the new outbound rule, the existing outbound rule is deleted.
+        # > This parameter does not support incremental updates. If the network ACL already has an outbound rule and you want to add another outbound rule, you must pass both rules when you call this operation. If you pass only the new outbound rule, the existing outbound rule is deleted.
         self.update_egress_acl_entries = update_egress_acl_entries
-        # Specifies whether to update inbound rules. Valid values:
+        # Specifies whether to update the inbound rules. Valid values:
         # 
-        # - **true**: updates inbound rules.
+        # - **true**: yes.
         # 
-        # - **false** (default): does not update inbound rules.
+        # - **false** (default): no.
         # 
-        # > This parameter does not support incremental updates. If the ACL already has one inbound rule and you want to add another inbound rule, you must pass in both rules when calling this operation. If you pass in only the new inbound rule, the existing inbound rule is deleted.
+        # > This parameter does not support incremental updates. If the network ACL already has an inbound rule and you want to add another inbound rule, you must pass both rules when you call this operation. If you pass only the new inbound rule, the existing inbound rule is deleted.
         self.update_ingress_acl_entries = update_ingress_acl_entries
 
     def validate(self):
@@ -195,9 +192,9 @@ class UpdateNetworkAclEntriesRequestIngressAclEntries(DaraModel):
         # - **IPv4**
         # - **IPv6**
         self.ip_version = ip_version
-        # The ID of the inbound rule entry.
+        # The ID of the inbound rule entries.
         # 
-        # Valid values of **N**: **0** to **99**. You can update up to 100 inbound rule entries.
+        # Valid values of **N**: **0** to **99**. You can update up to 100 inbound rules at a time.
         self.network_acl_entry_id = network_acl_entry_id
         # The name of the inbound rule entries.
         # 
@@ -205,28 +202,28 @@ class UpdateNetworkAclEntriesRequestIngressAclEntries(DaraModel):
         self.network_acl_entry_name = network_acl_entry_name
         # The authorization policy. Valid values:
         # 
-        # - **accept**: allows access.
+        # - **accept**: allows the traffic.
         # 
-        # - **drop**: denies access.
+        # - **drop**: denies the traffic.
         self.policy = policy
         # The source port range of the inbound rule.
         # 
-        # - If **Protocol** (Protocol Type) is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which indicates all ports.
-        # - If **Protocol** (Protocol Type) is set to **tcp** or **udp**, the port range is **1** to **65535**. The format is **1/200** or **80/80**, which indicates port 1 to port 200 or port 80.
+        # - If the **Protocol** (Protocol Type) of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which indicates that all ports are available.
+        # - If the **Protocol** (Protocol Type) of the inbound rule is set to **tcp** or **udp**, the port range is **1** to **65535**. The format is **1/200** or **80/80**, which indicates Port 1 to Port 200 or Port 80.
         self.port = port
         # The protocol type. Valid values:
         # 
-        # - **icmp**: Internet Control Message Protocol.
+        # - **icmp**: Internet Control Message Protocol (ICMP).
         # 
-        # - **gre**: Generic Routing Encapsulation.
+        # - **gre**: Generic Routing Encapsulation (GRE).
         # 
-        # - **tcp**: Transmission Control Protocol.
+        # - **tcp**: Transmission Control Protocol (TCP).
         # 
-        # - **udp**: User Datagram Protocol.
+        # - **udp**: User Datagram Protocol (UDP).
         # 
         # - **all**: all protocols.
         # 
-        # - **icmpv6**: Internet Control Message Protocol for IPv6.
+        # - **icmpv6**: Internet Control Message Protocol version 6 (ICMPv6).
         self.protocol = protocol
         # The source CIDR block. You can also specify a prefix list.
         self.source_cidr_ip = source_cidr_ip
@@ -325,9 +322,9 @@ class UpdateNetworkAclEntriesRequestEgressAclEntries(DaraModel):
         # - **IPv4**
         # - **IPv6**
         self.ip_version = ip_version
-        # The ID of the outbound rule entry.
+        # The ID of the outbound rule entries.
         # 
-        # Valid values of **N**: **0** to **99**. You can update up to 100 outbound rule entries.
+        # Valid values of **N**: **0** to **99**. You can update up to 100 outbound rules at a time.
         self.network_acl_entry_id = network_acl_entry_id
         # The name of the outbound rule entries.
         # 
@@ -335,28 +332,28 @@ class UpdateNetworkAclEntriesRequestEgressAclEntries(DaraModel):
         self.network_acl_entry_name = network_acl_entry_name
         # The authorization policy. Valid values:
         # 
-        # - **accept**: allows access.
+        # - **accept**: allows the traffic.
         # 
-        # - **drop**: denies access.
+        # - **drop**: denies the traffic.
         self.policy = policy
         # The destination port range of the outbound rule.
         # 
-        # - If **Protocol** (Protocol Type) is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which indicates all ports.
-        # - If **Protocol** (Protocol Type) is set to **tcp** or **udp**, the port range is **1** to **65535**. The format is **1/200** or **80/80**, which indicates port 1 to port 200 or port 80.
+        # - If the **Protocol** (Protocol Type) of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which indicates that all ports are available.
+        # - If the **Protocol** (Protocol Type) of the outbound rule is set to **tcp** or **udp**, the port range is **1** to **65535**. The format is **1/200** or **80/80**, which indicates Port 1 to Port 200 or Port 80.
         self.port = port
         # The protocol type. Valid values:
         # 
-        # - **icmp**: Internet Control Message Protocol.
+        # - **icmp**: Internet Control Message Protocol (ICMP).
         # 
-        # - **gre**: Generic Routing Encapsulation.
+        # - **gre**: Generic Routing Encapsulation (GRE).
         # 
-        # - **tcp**: Transmission Control Protocol.
+        # - **tcp**: Transmission Control Protocol (TCP).
         # 
-        # - **udp**: User Datagram Protocol.
+        # - **udp**: User Datagram Protocol (UDP).
         # 
         # - **all**: all protocols.
         # 
-        # - **icmpv6**: Internet Control Message Protocol for IPv6.
+        # - **icmpv6**: Internet Control Message Protocol version 6 (ICMPv6).
         self.protocol = protocol
 
     def validate(self):

@@ -21,11 +21,11 @@ class ModifyCustomerGatewayAttributeResponseBody(DaraModel):
         self.customer_gateway_id = customer_gateway_id
         # The description of the customer gateway.
         self.description = description
-        # The public IP address of the on-premises data center gateway device.
+        # The public IP address of the gateway device in the on-premises data center.
         self.ip_address = ip_address
         # The name of the customer gateway.
         self.name = name
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The ID of the resource group to which the customer gateway belongs.
         # 

@@ -19,28 +19,28 @@ class DeleteIpv4GatewayRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, an HTTP 2xx status code is returned and the IPv4 gateway is deleted.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: prechecks the request without deleting the IPv4 gateway. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends the request. If the request passes the precheck, the HTTP 2xx status code is returned and the IPv4 gateway is deleted.
         self.dry_run = dry_run
-        # The public pattern of the VPC after the IPv4 gateway is deleted. Valid values:
+        # The public network pattern of the VPC after the IPv4 gateway is deleted. Valid values:
         # 
-        # - **private**: default value. After the IPv4 gateway is deleted, the VPC becomes a purely private network VPC without public network access.
-        # - **public**: after the IPv4 gateway is deleted, public network access of the VPC is no longer centrally controlled by the IPv4 gateway. After a public IP address is attached to an instance, the instance can directly access the Internet.
+        # - **private**: the default value. After the IPv4 gateway is deleted, the VPC becomes a purely private network VPC and does not have public network access capabilities.
+        # - **public**: After the IPv4 gateway is deleted, public network access to the VPC is no longer centrally controlled by the IPv4 gateway. By default, after a public IP address is associated with an instance, the instance can directly access the public network.
         self.internet_mode = internet_mode
-        # The instance ID of the IPv4 gateway that you want to delete.
+        # The instance ID of the IPv4 gateway to delete.
         # 
         # This parameter is required.
         self.ipv_4gateway_id = ipv_4gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv4 gateway that you want to delete.
+        # The region ID of the IPv4 gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

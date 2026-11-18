@@ -19,19 +19,19 @@ class ModifyFlowLogAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The new sampling interval of the flow log. Unit: minutes. Valid values: **1**, **5**, and **10**.
+        # The sampling interval of the flow log. Unit: minutes. Valid values: **1**, **5**, and **10**.
         self.aggregation_interval = aggregation_interval
-        # The new description of the flow log.
+        # The description of the flow log.
         # 
-        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
         # The flow log ID.
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
-        # The new name of the flow log.
+        # The name of the flow log.
         # 
-        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.flow_log_name = flow_log_name
         # The IP version of the traffic captured by the flow log.
         self.ip_version = ip_version
@@ -40,7 +40,7 @@ class ModifyFlowLogAttributeRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the flow log.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

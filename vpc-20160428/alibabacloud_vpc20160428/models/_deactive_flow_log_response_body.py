@@ -10,12 +10,12 @@ class DeactiveFlowLogResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the request was successful.
         # 
-        # - **true**: The call is successful.
-        # - **false**: The call failed.
+        # - **true**: The request was successful.
+        # - **false**: The request failed.
         self.success = success
 
     def validate(self):

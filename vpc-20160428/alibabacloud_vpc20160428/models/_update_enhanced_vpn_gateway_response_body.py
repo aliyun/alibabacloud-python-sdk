@@ -29,44 +29,44 @@ class UpdateEnhancedVpnGatewayResponseBody(DaraModel):
         vpn_gateway_id: str = None,
         vpn_type: str = None,
     ):
-        # Indicates whether BGP route automatic propagation to the VPC is enabled. Valid values:
-        # - **true**: Automatic propagation is enabled.
+        # Indicates whether BGP routes are automatically propagated to the VPC. Valid values:
+        # - **true**: automatic propagation
         # 
-        # - **false**: Automatic propagation is not enabled.
+        # - **false**: no automatic propagation
         self.auto_propagate = auto_propagate
-        # The timestamp when the enhanced VPN gateway instance was created. Unit: milliseconds.<br>
-        # The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp of when the enhanced VPN gateway instance was created. Unit: milliseconds. <br>
+        # The timestamp follows the UNIX time format. It is the total number of milliseconds that have elapsed since the UNIX epoch (January 1, 1970, 00:00:00 UTC) to the time when the enhanced VPN gateway instance was created.
         self.create_time = create_time
         # The description of the enhanced VPN gateway instance.
         self.description = description
         # The ID of the second vSwitch associated with the enhanced VPN gateway instance.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
-        # The enabling status of the BGP feature for the enhanced VPN gateway. Valid values:<br>
-        # - **true**: enabled.
+        # The enabling status of the BGP feature for the enhanced VPN gateway. Valid values: <br>
+        # - **true**: enabled
         # 
-        # - **false**: disabled.
+        # - **false**: disabled
         self.enable_bgp = enable_bgp
         self.eni_instance_ids = eni_instance_ids
         # The type of the enhanced VPN gateway. Valid values:
         # 
-        # - **Enhanced.SiteToSite**: enhanced site-to-cloud VPN that supports only IPsec functionality.
+        # - **Enhanced.SiteToSite**: enhanced site-to-cloud VPN, which supports only the IPsec feature
         self.gateway_type = gateway_type
         # The name of the enhanced VPN gateway instance.
         self.name = name
         # The network type of the enhanced VPN gateway. Valid values:
-        # - **public** (default): public VPN gateway.
+        # - **public** (default): Internet VPN gateway
         self.network_type = network_type
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the enhanced VPN gateway instance belongs.<br>
-        # You can call [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) to query resource group information.
+        # The ID of the resource group to which the enhanced VPN gateway instance belongs. <br>
+        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
         self.resource_group_id = resource_group_id
-        # The status of the enhanced VPN gateway.
-        # - **init**: initializing.
-        # - **provisioning**: preparing.
-        # - **active**: normal.
-        # - **updating**: updating.
-        # - **deleting**: deleting.
+        # The status of the enhanced VPN gateway. Valid values:
+        # - **init**: initializing
+        # - **provisioning**: preparing
+        # - **active**: active
+        # - **updating**: updating
+        # - **deleting**: deleting
         self.status = status
         # The list of features supported by the enhanced VPN gateway.
         self.tag = tag
@@ -77,9 +77,9 @@ class UpdateEnhancedVpnGatewayResponseBody(DaraModel):
         self.vpc_id = vpc_id
         # The ID of the enhanced VPN gateway instance.
         self.vpn_gateway_id = vpn_gateway_id
-        # The type of the enhanced VPN gateway.
+        # The type of the enhanced VPN gateway. Valid values:
         # 
-        # - **Normal** (default): standard.
+        # - **Normal** (default): standard
         self.vpn_type = vpn_type
 
     def validate(self):

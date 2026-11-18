@@ -14,13 +14,13 @@ class DeactiveFlowLogRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The flow log ID.
+        # The ID of the flow log.
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the flow log. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # The region ID of the flow log. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

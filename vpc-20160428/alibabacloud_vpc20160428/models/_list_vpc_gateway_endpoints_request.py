@@ -24,35 +24,35 @@ class ListVpcGatewayEndpointsRequest(DaraModel):
         tags: List[main_models.ListVpcGatewayEndpointsRequestTags] = None,
         vpc_id: str = None,
     ):
-        # The endpoint instance ID of the gateway endpoint.
+        # The gateway endpoint instance ID.
         self.endpoint_id = endpoint_id
-        # The name of the gateway endpoint.
+        # The name of the VPC gateway endpoint.
         # 
         # The name must be 1 to 128 characters in length.
         self.endpoint_name = endpoint_name
-        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # Specifies whether a next query token is available. Valid values:
-        # - Leave this parameter empty for the first query or when no more results are available.
-        # - If more results are available, set this parameter to the NextToken value returned by the previous API call.
+        # The token for the next query. Valid values:
+        # - If this is the first query or no subsequent query is required, leave this parameter empty.
+        # - If a subsequent query is required, set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the gateway endpoint that you want to query.
+        # The region ID of the VPC gateway endpoint.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the gateway endpoint belongs.
+        # The ID of the resource group to which the VPC gateway endpoint belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The service name of the endpoint service.
+        # The endpoint service name.
         self.service_name = service_name
         # The list of tags.
         self.tags = tags
-        # The ID of the VPC to which the gateway endpoint belongs.
+        # The ID of the VPC to which the VPC gateway endpoint belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -161,13 +161,13 @@ class ListVpcGatewayEndpointsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
         # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can specify an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

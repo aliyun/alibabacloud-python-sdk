@@ -29,9 +29,9 @@ class DescribeIPv6TranslatorsRequest(DaraModel):
         self.allocate_ipv_6addr = allocate_ipv_6addr
         # The business status of the IPv6 Translation Service instance. Valid values:
         # 
-        # - **Normal**: normal.
+        # - **Normal**: Normal.
         # 
-        # - **FinancialLocked**: locked.
+        # - **FinancialLocked**: Locked.
         self.business_status = business_status
         # The ID of the IPv6 Translation Service instance.
         self.ipv_6translator_id = ipv_6translator_id
@@ -39,39 +39,39 @@ class DescribeIPv6TranslatorsRequest(DaraModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in paging query. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The billing transform type of the IPv6 Translation Service instance. Valid values:
+        # The billing method of the IPv6 Translation Service instance. Valid values:
         # 
-        # - **Prepay**: subscription.
+        # - **Prepay**: Subscription.
         # 
-        # - **Postpay**: pay-as-you-go.
+        # - **Postpay**: Pay-as-you-go.
         self.pay_type = pay_type
-        # The region of the IPv6 Translation Service instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
+        # The region of the IPv6 Translation Service instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The specification of the IPv6 Translation Service instance. Valid values: **small**.
+        # The specifications of the IPv6 Translation Service instance. Valid value: **small** (Small).
         self.spec = spec
         # The status of the IPv6 Translation Service instance. Valid values:
         # 
-        # - **init**: initializing.
+        # - **init**: The instance is being initialized.
         # 
-        # - **provisioning**: being provisioned.
+        # - **provisioning**: The instance is being provisioned.
         # 
-        # - **active**: available.
+        # - **active**: The instance is active.
         # 
-        # - **updating**: being updated.
+        # - **updating**: The instance is being updated.
         # 
-        # - **upgrading**: being upgraded.
+        # - **upgrading**: The instance is being upgraded.
         # 
-        # - **deleting**: being deleted.
+        # - **deleting**: The instance is being deleted.
         # 
-        # - **deleted**: deleted.
+        # - **deleted**: The instance is deleted.
         self.status = status
 
     def validate(self):

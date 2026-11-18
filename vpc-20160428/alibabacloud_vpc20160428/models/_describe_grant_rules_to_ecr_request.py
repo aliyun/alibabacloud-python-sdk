@@ -17,17 +17,15 @@ class DescribeGrantRulesToEcrRequest(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.DescribeGrantRulesToEcrRequestTags] = None,
     ):
-        # VBR ID。
+        # The VBR ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number of the list. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+        # The number of entries returned per page during paging in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -100,9 +98,7 @@ class DescribeGrantRulesToEcrRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You must specify at least 1 tag key and can specify at most 20 tag keys. The tag key cannot be an empty string.
-        # 
-        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key of the resource. You must specify at least one tag key and can specify up to 20 tag keys. The tag key cannot be an empty string. A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value.
         self.value = value

@@ -42,19 +42,19 @@ class CreateFlowLogRequest(DaraModel):
         # The IP version of the traffic captured by the flow log.
         self.ip_version = ip_version
         self.log_format = log_format
-        # The name of the Logstore that stores the captured traffic.
-        # - The Logstore name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
-        # - The name must start and end with a lowercase letter or digit.
+        # The name of the Log Service Logstore that is used to store the captured traffic.
+        # - The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # - The name must start and end with a lowercase letter or a digit.
         # - The name must be 3 to 63 characters in length.
         self.log_store_name = log_store_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The name of the project that manages the captured traffic.
-        # - The project name can contain only lowercase letters, digits, and hyphens (-).
-        # - The name must start and end with a lowercase letter or digit.
+        # The name of the Log Service project that is used to manage the captured traffic.
+        # - The name can contain only lowercase letters, digits, and hyphens (-).
+        # - The name must start and end with a lowercase letter or a digit.
         # - The name must be 3 to 63 characters in length.
         self.project_name = project_name
-        # The region ID of the flow log. You can call [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) to query the most recent region list.
+        # The region ID of the flow log. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -68,28 +68,36 @@ class CreateFlowLogRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The type of the resource whose traffic you want to catch. Valid values:
         # 
-        # - **NetworkInterface**: network interface controller (NIC).
+        # - **NetworkInterface**: elastic network interfaces (ENIs), which act as a network interface controller (NIC).
         #   
-        # - **VSwitch**: all network interface controllers (NICs) in a vSwitch.
+        # - **VSwitch**: all elastic network interfaces (ENIs) in the vSwitch.
         #   
-        # - **VPC**: all network interface controllers (NICs) in a virtual private cloud (VPC).
+        # - **VPC**: all elastic network interfaces (ENIs) in the virtual private cloud (VPC).
         # 
         # This parameter is required.
         self.resource_type = resource_type
         # The tags of the resource.
         self.tag = tag
-        # The traffic path to capture. Valid values:
+        # The traffic path to catch. Valid values:
         # 
-        # - **all**: captures all traffic.
-        # - **internetGateway**: captures Internet traffic.
+        # - **all** (default): catches all traffic.
+        # -   **internetGateway**: catches traffic to access the Internet.
+        # -   **natGateway**: catches traffic through NAT gateways.
+        # -   **vpnGateway**: catches traffic through VPN gateways.
+        # -   **transitRouter**: catches traffic through TR.
+        # -   **gatewayEndpoint**: catches traffic through gateway endpoints to access cloud services.
+        # -   **vbr**: catches traffic through the border router (VBR) to access Express Connect circuits.
+        # -   **ecr**: catches traffic through the Express Connect Router (ECR).
+        # -   **ipv4Gateway**: catches traffic to access the Internet through IPv4 gateways.
+        # -   **gatewayLoadBalancerEndpoint**: catches traffic through the Gateway Load Balancer endpoint (GWLBe).
         self.traffic_path = traffic_path
-        # The traffic type to collect. Valid values:
+        # The traffic type to catch. Valid values:
         # 
         # - **All**: all traffic.
         #   
         # - **Allow**: traffic allowed by access control.
         #   
-        # - **Drop**: traffic deny by access control.
+        # - **Drop**: traffic that access control rules deny.
         # 
         # This parameter is required.
         self.traffic_type = traffic_type
@@ -230,13 +238,13 @@ class CreateFlowLogRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. Do not specify an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, do not enter an empty string.
         # 
-        # A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. You can specify an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

@@ -32,27 +32,27 @@ class DescribeFlowLogsRequest(DaraModel):
     ):
         # The description of the flow log.
         # 
-        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the flow log.
         self.flow_log_id = flow_log_id
         # The name of the flow log.
         # 
-        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.flow_log_name = flow_log_name
-        # The name of the Logstore that stores the captured traffic.
+        # The Logstore that stores the captured traffic.
         self.log_store_name = log_store_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in paging query. Maximum value: **50**. Default value: **20**.
+        # The number of entries per page for paging in a paged query. Maximum value: **50**. Default value: **20**.
         self.page_size = page_size
-        # The name of the project that manages the captured traffic.
+        # The Log Service project that manages the captured traffic.
         self.project_name = project_name
         # The region ID of the flow log.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -64,30 +64,31 @@ class DescribeFlowLogsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The resource type of the traffic to catch. Valid values:
         #           
-        # - **NetworkInterface**: network interface controller (NIC).
+        # - **NetworkInterface**: elastic network interface controller (NIC).
         #   
-        # - **VSwitch**: all network interface controllers (NICs) in a vSwitch.
+        # - **VSwitch**: all elastic network interface controller (NIC) in a vSwitch.
         #   
-        # - **VPC**: all network interface controllers (NICs) in a virtual private cloud (VPC).
+        # - **VPC**: all elastic network interface controller (NIC) in a virtual private cloud (VPC).
         self.resource_type = resource_type
         # The status of the flow log. Valid values:
-        # - **Active**: the flow log is active.
         # 
-        # - **Activating**: the flow log is being created.
+        # - **Active**: The flow log is active.
         # 
-        # - **Inactive**: the flow log is inactive.
+        # - **Activating**: The flow log is being created.
+        # 
+        # - **Inactive**: The flow log is inactive.
         self.status = status
         # The list of tags.
         self.tags = tags
-        # The traffic type to collect. Valid values:
+        # The traffic type to catch. Valid values:
         #           
         # - **All**: all traffic.
         #   
-        # - **Allow**: traffic allowed by access control.
+        # - **Allow**: traffic that access control allows.
         #   
-        # - **Drop**: traffic deny by access control.
+        # - **Drop**: traffic that access control policies deny.
         self.traffic_type = traffic_type
-        # The ID of the VPC whose flow logs you want to query.
+        # The ID of the VPC for which you want to query flow logs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -232,13 +233,13 @@ class DescribeFlowLogsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
         # 
         # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can specify an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

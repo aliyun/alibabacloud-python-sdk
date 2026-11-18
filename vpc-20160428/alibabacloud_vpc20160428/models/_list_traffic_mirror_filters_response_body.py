@@ -17,19 +17,19 @@ class ListTrafficMirrorFiltersResponseBody(DaraModel):
         total_count: str = None,
         traffic_mirror_filters: List[main_models.ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters] = None,
     ):
-        # The number of entries returned in the current request.
+        # The number of entries returned for the current query.
         self.count = count
-        # The maximum number of entries queried in the current request.
+        # The maximum number of entries to return for the current request.
         self.max_results = max_results
-        # The token for the next query. Valid values:
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The token that indicates whether a next query is available. Valid values:
+        # - If **NextToken** is empty, no subsequent query is available.
+        # - If **NextToken** returns a value, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The details of traffic mirror filters.
+        # The details of the traffic mirror filters.
         self.traffic_mirror_filters = traffic_mirror_filters
 
     def validate(self):
@@ -103,15 +103,15 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters(DaraModel):
         traffic_mirror_filter_name: str = None,
         traffic_mirror_filter_status: str = None,
     ):
-        # The time when the traffic mirror filter was created.
+        # The creation time of the traffic mirror filter. The time is displayed in UTC and follows the ISO 8601 standard. The time is accurate to minutes and in the YYYY-MM-DDThh:mmZ format.
         self.creation_time = creation_time
-        # The details of outbound rules.
+        # The details of the outbound rules.
         self.egress_rules = egress_rules
-        # The details of inbound rules.
+        # The details of the inbound rules.
         self.ingress_rules = ingress_rules
-        # The ID of the resource group to which the traffic mirroring filter belongs.
+        # The ID of the resource group to which the traffic mirroring belongs.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The list of tags.
         self.tags = tags
         # The description of the traffic mirror filter.
         self.traffic_mirror_filter_description = traffic_mirror_filter_description
@@ -121,13 +121,13 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters(DaraModel):
         self.traffic_mirror_filter_name = traffic_mirror_filter_name
         # The status of the traffic mirror filter. Valid values:
         # 
-        # - **Creating**: being created.
+        # - **Creating**: creating
         # 
-        # - **Created**: created.
+        # - **Created**: created
         # 
-        # - **Modifying**: being modified.
+        # - **Modifying**: modifying
         # 
-        # - **Deleting**: being deleted.
+        # - **Deleting**: deleting
         self.traffic_mirror_filter_status = traffic_mirror_filter_status
 
     def validate(self):
@@ -279,33 +279,33 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules(DaraM
     ):
         # The collection policy of the inbound rule. Valid values:
         # 
-        # - **accept**: collects network traffic.
-        # - **drop**: does not collect network traffic.
+        # - **accept**: Captures network traffic.
+        # - **drop**: Does not capture network traffic.
         self.action = action
-        # The destination CIDR block of network traffic for the inbound rule.
+        # The destination CIDR block of the network traffic for the inbound rule.
         self.destination_cidr_block = destination_cidr_block
-        # The destination port range of network traffic for the inbound rule.
+        # The destination port range of the network traffic for the inbound rule.
         self.destination_port_range = destination_port_range
         # The IP version.
         self.ip_version = ip_version
         # The priority of the inbound rule. A smaller value indicates a higher priority.
         self.priority = priority
-        # The protocol type used by the inbound network traffic to be mirrored. Valid values:
+        # The protocol type of the network traffic to be mirrored for the inbound rule. Valid values:
         # 
-        # - **ALL**: all protocols.
-        # - **ICMP**: Internet Control Message Protocol.
-        # - **TCP**: Transmission Control Protocol.
-        # - **UDP**: User Datagram Protocol.
+        # - **ALL**: all protocols
+        # - **ICMP**: Internet Control Message Protocol
+        # - **TCP**: Transmission Control Protocol
+        # - **UDP**: User Datagram Protocol
         self.protocol = protocol
-        # The source CIDR block of network traffic for the inbound rule.
+        # The source CIDR block of the network traffic for the inbound rule.
         self.source_cidr_block = source_cidr_block
-        # The destination port range of network traffic for the inbound rule.
+        # The destination port range of the network traffic for the inbound rule.
         self.source_port_range = source_port_range
-        # The direction of network traffic. Valid values:
+        # The direction of the network traffic. Valid values:
         # 
-        # - **egress**: outbound.
+        # - **egress**: outbound
         # 
-        # - **ingress**: inbound.
+        # - **ingress**: inbound
         self.traffic_direction = traffic_direction
         # The instance ID of the traffic mirror filter associated with the inbound rule.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
@@ -313,13 +313,13 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules(DaraM
         self.traffic_mirror_filter_rule_id = traffic_mirror_filter_rule_id
         # The status of the inbound rule. Valid values:
         # 
-        # - **Creating**: being created.
+        # - **Creating**: creating
         # 
-        # - **Created**: created.
+        # - **Created**: created
         # 
-        # - **Modifying**: being modified.
+        # - **Modifying**: modifying
         # 
-        # - **Deleting**: being deleted.
+        # - **Deleting**: deleting
         self.traffic_mirror_filter_rule_status = traffic_mirror_filter_rule_status
 
     def validate(self):
@@ -426,33 +426,33 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules(DaraMo
     ):
         # The collection policy of the outbound rule. Valid values:
         # 
-        # - **accept**: collects network traffic.
-        # - **drop**: does not collect network traffic.
+        # - **accept**: Captures network traffic.
+        # - **drop**: Does not capture network traffic.
         self.action = action
-        # The destination CIDR block of network traffic for the outbound rule.
+        # The destination CIDR block of the network traffic for the outbound rule.
         self.destination_cidr_block = destination_cidr_block
-        # The destination port range of network traffic for the outbound rule.
+        # The destination port range of the network traffic for the outbound rule.
         self.destination_port_range = destination_port_range
         # The IP version.
         self.ip_version = ip_version
         # The priority of the outbound rule. A smaller value indicates a higher priority.
         self.priority = priority
-        # The protocol type used by the outbound network traffic to be mirrored. Valid values:
+        # The protocol type of the network traffic to be mirrored for the outbound rule. Valid values:
         # 
-        # - **ALL**: all protocols.
-        # - **ICMP**: Internet Control Message Protocol.
-        # - **TCP**: Transmission Control Protocol.
-        # - **UDP**: User Datagram Protocol.
+        # - **ALL**: all protocols
+        # - **ICMP**: Internet Control Message Protocol
+        # - **TCP**: Transmission Control Protocol
+        # - **UDP**: User Datagram Protocol
         self.protocol = protocol
-        # The source CIDR block of network traffic for the outbound rule.
+        # The source CIDR block of the network traffic for the outbound rule.
         self.source_cidr_block = source_cidr_block
-        # The source port range of network traffic for the outbound rule.
+        # The source port range of the network traffic for the outbound rule.
         self.source_port_range = source_port_range
-        # The direction of network traffic. Valid values:
+        # The direction of the network traffic. Valid values:
         # 
-        # - **egress**: outbound.
+        # - **egress**: outbound
         # 
-        # - **ingress**: inbound.
+        # - **ingress**: inbound
         self.traffic_direction = traffic_direction
         # The instance ID of the traffic mirror filter associated with the outbound rule.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
@@ -460,13 +460,13 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules(DaraMo
         self.traffic_mirror_filter_rule_id = traffic_mirror_filter_rule_id
         # The status of the outbound rule. Valid values:
         # 
-        # - **Creating**: being created.
+        # - **Creating**: creating
         # 
-        # - **Created**: created.
+        # - **Created**: created
         # 
-        # - **Modifying**: being modified.
+        # - **Modifying**: modifying
         # 
-        # - **Deleting**: being deleted.
+        # - **Deleting**: deleting
         self.traffic_mirror_filter_rule_status = traffic_mirror_filter_rule_status
 
     def validate(self):

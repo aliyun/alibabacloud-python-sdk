@@ -25,16 +25,16 @@ class ModifyRouteTableAttributesRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the VPC to which the route table belongs. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to receive dynamic routes by enabling or disabling route propagation. Valid values:
+        # Specifies whether to accept dynamic routes by enabling or disabling route propagation. Valid values:
         # 
-        # - **true** (default): enabled.
-        # - **false**: disabled.
+        # - **true** (default): enables route propagation.
+        # - **false**: disables route propagation.
         self.route_propagation_enable = route_propagation_enable
         # The ID of the route table.
         # 

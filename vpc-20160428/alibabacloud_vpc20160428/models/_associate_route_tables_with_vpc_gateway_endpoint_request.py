@@ -19,15 +19,15 @@ class AssociateRouteTablesWithVpcGatewayEndpointRequest(DaraModel):
         resource_owner_id: int = None,
         route_table_ids: List[str] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # - **true**: sends a dry run request without associating route tables with the gateway endpoint. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **true**: sends a check request and does not associate route tables. The check items include whether the AccessKey pair is valid, whether the RAM user has the required authorization, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
         # 
-        # - **false** (default): sends a normal request. After the request passes the dry run, a 2xx HTTP status code is returned and the route tables are associated.
+        # - **false** (default): sends a normal request. After the check succeeds, a 2xx HTTP status code is returned and the system associates the route tables.
         self.dry_run = dry_run
         # The ID of the gateway endpoint instance with which you want to associate route tables.
         # 
@@ -37,13 +37,13 @@ class AssociateRouteTablesWithVpcGatewayEndpointRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the gateway endpoint with which you want to associate route tables.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the route table to associate. Valid values of **N**: **1** to **20**. You can associate up to 20 route tables at a time.
+        # The IDs of the route tables that you want to associate. Valid values of **N**: **1** to **20**. You can associate up to 20 route tables at a time.
         # 
         # This parameter is required.
         self.route_table_ids = route_table_ids

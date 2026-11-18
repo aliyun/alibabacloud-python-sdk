@@ -18,25 +18,25 @@ class AssociateRouteTableRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
         # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the VPC to which the route table that you want to associate with a vSwitch belongs.
+        # The region ID of the VPC to which the route table to be associated with the vSwitch belongs.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the route table that you want to associate with a vSwitch.
+        # The ID of the route table to be associated with the vSwitch.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id
-        # The ID of the vSwitch with which you want to associate the route table.
+        # The ID of the vSwitch to be associated with the route table.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id

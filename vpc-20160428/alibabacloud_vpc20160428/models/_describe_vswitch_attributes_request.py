@@ -15,19 +15,19 @@ class DescribeVSwitchAttributesRequest(DaraModel):
         resource_owner_id: int = None,
         v_switch_id: str = None,
     ):
-        # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run without querying the vSwitch configuration. The system checks the required parameters, request format, and service limits. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the error code `DryRunOperation` is returned.
-        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the vSwitch configuration is queried.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: The system prechecks the request without querying the configuration information of the vSwitch. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): The system sends a normal request. If the request passes the precheck, an HTTP 2xx status code is returned and the configuration information of the vSwitch is queried.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the VPC to which the route table belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the vSwitch to query.
+        # The ID of the vSwitch.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id

@@ -17,7 +17,7 @@ class UpdateRouteTargetGroupRequest(DaraModel):
         route_target_group_name: str = None,
         route_target_member_list: List[main_models.UpdateRouteTargetGroupRequestRouteTargetMemberList] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters. If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may differ for each API request.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, and you must ensure that the value is unique among different requests. The client token can contain only ASCII characters. Note: If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request may be different.
         self.client_token = client_token
         # The region ID of the route target group instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
@@ -27,7 +27,7 @@ class UpdateRouteTargetGroupRequest(DaraModel):
         # 
         # The description must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.route_target_group_description = route_target_group_description
-        # The routing target group instance ID.
+        # The instance ID of the routing target group.
         # 
         # This parameter is required.
         self.route_target_group_id = route_target_group_id
@@ -35,12 +35,12 @@ class UpdateRouteTargetGroupRequest(DaraModel):
         # 
         # The name must be 1 to 128 characters in length and cannot start with http:// or https://.
         self.route_target_group_name = route_target_group_name
-        # The member list of the route target group.
+        # The list of members in the route target group.
         # 
-        # In active/standby mode, the following limits apply to route target group members:
+        # In active/standby mode, the following limits apply to the members of the route target group:
         # 
-        # 1. The number of route target group members must be 2.
-        # 2. The route target group members must belong to different zones.
+        # 1. The route target group must contain exactly two members.
+        # 2. The members of the route target group must belong to different zones.
         self.route_target_member_list = route_target_member_list
 
     def validate(self):
@@ -108,20 +108,20 @@ class UpdateRouteTargetGroupRequestRouteTargetMemberList(DaraModel):
         member_type: str = None,
         weight: int = None,
     ):
-        # The instance ID of the route target group member.
+        # The instance ID of the member in the routing target group.
         self.member_id = member_id
-        # The member type of the route target group.
+        # The type of the member in the route target group.
         # 
-        # Currently supported type:
+        # Valid values:
         # 
         # - **GatewayLoadBalancerEndpoint**
         # 
-        # In active/standby mode, all members of the route target group must be of the same type.
+        # In active/standby mode, all members in the route target group must be of the same type.
         self.member_type = member_type
-        # The weight of the route target group member. Valid values:
+        # The weight of the member in the route target group. Valid values:
         # 
-        # - 100: The member is the active instance.
-        # - 0: The member is the standby instance.
+        # - 100: The member is the primary instance.
+        # - 0: The member is the secondary instance.
         # 
         # The weight can only be set during creation and cannot be modified.
         self.weight = weight

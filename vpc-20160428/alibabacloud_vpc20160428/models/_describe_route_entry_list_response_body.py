@@ -13,14 +13,17 @@ class DescribeRouteEntryListResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
         route_entrys: main_models.DescribeRouteEntryListResponseBodyRouteEntrys = None,
+        total_count: int = None,
     ):
-        # The pagination token. Valid values:
-        # - If **NextToken** is empty, no subsequent query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The pagination token for the next query. Valid values:
+        # - If **NextToken** is empty, no subsequent query is required.
+        # - If **NextToken** returns a value, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         self.route_entrys = route_entrys
+        # The total number of entries.
+        self.total_count = total_count
 
     def validate(self):
         if self.route_entrys:
@@ -40,6 +43,9 @@ class DescribeRouteEntryListResponseBody(DaraModel):
         if self.route_entrys is not None:
             result['RouteEntrys'] = self.route_entrys.to_map()
 
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
         return result
 
     def from_map(self, m: dict = None):
@@ -53,6 +59,9 @@ class DescribeRouteEntryListResponseBody(DaraModel):
         if m.get('RouteEntrys') is not None:
             temp_model = main_models.DescribeRouteEntryListResponseBodyRouteEntrys()
             self.route_entrys = temp_model.from_map(m.get('RouteEntrys'))
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
 
         return self
 

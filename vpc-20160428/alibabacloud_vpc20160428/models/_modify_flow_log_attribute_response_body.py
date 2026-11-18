@@ -16,7 +16,7 @@ class ModifyFlowLogAttributeResponseBody(DaraModel):
         # 
         # - **true**: The operation is successful.
         # 
-        # - **false**: The operation failed.
+        # - **false**: The operation fails.
         self.success = success
 
     def validate(self):

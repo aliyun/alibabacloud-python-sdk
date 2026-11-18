@@ -15,7 +15,7 @@ class DescribeHighDefinitionMonitorLogAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID for which you want to query high-precision second-level monitoring.
+        # The instance ID for which to query high-precision second-level monitoring.
         # 
         # This parameter is required.
         self.instance_id = instance_id

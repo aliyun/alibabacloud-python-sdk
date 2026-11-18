@@ -17,23 +17,23 @@ class DeleteExpressConnectTrafficQosQueueRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The QoS policy ID.
+        # The ID of the QoS policy.
         # 
         # This parameter is required.
         self.qos_id = qos_id
-        # The QoS queue ID.
+        # The ID of the QoS queue.
         # 
         # This parameter is required.
         self.queue_id = queue_id
         # The region ID of the QoS policy.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

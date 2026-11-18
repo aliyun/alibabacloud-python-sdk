@@ -28,47 +28,47 @@ class ListTrafficMirrorSessionsRequest(DaraModel):
         traffic_mirror_target_id: str = None,
         virtual_network_id: int = None,
     ):
-        # Specifies whether the traffic mirror session is enabled. Valid values:
+        # Specifies whether to enable the traffic mirror session. Valid values:
         # 
-        # - **false** (default): The traffic mirror session is not enabled.
+        # - **false** (default): disables the traffic mirror session.
         # 
-        # - **true**: The traffic mirror session is enabled.
+        # - **true**: enables the traffic mirror session.
         self.enabled = enabled
-        # The maximum number of entries to return in this query. Valid values: **1** to **100**. Default value: **10**.
+        # The maximum number of entries to return for a single request. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # - You do not need to specify this parameter for the first request or if no next query exists.
-        # - If a next query exists, set the value to the NextToken value returned in the previous API call.
+        # The token for the next query. Valid values:
+        # - For the first query and when no next query is required, you do not need to specify this parameter.
+        # - If a next query is required, set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The priority of traffic mirror session. Valid values: **1** to **32766**.
+        # The priority of the traffic mirror session. Valid values: **1** to **32766**.
         # 
-        # A smaller value indicates a higher priority. The priority of traffic mirror session created by the same account in the same region must be unique.
+        # A smaller value indicates a higher priority. The priorities of traffic mirror sessions created by the same Alibaba Cloud account in the same region must be unique.
         self.priority = priority
-        # The region ID of the traffic mirror session. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID. For information about the regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
+        # The region ID of the traffic mirror session. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about the regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the traffic mirroring session belongs.
+        # The ID of the resource group to which the traffic mirroring belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags.
+        # The list of tags.
         self.tags = tags
         # The instance ID of the traffic mirror filter.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
-        # The instance IDs of traffic mirror sessions. The maximum value of **N** is **100**, which means you can query up to 100 traffic mirror sessions.
+        # The instance IDs of the traffic mirror sessions. The maximum value of **N** is **100**, which means you can query up to 100 traffic mirror sessions at a time.
         self.traffic_mirror_session_ids = traffic_mirror_session_ids
         # The name of the traffic mirror session.
         # 
         # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.traffic_mirror_session_name = traffic_mirror_session_name
-        # The instance ID of the traffic mirror source. Currently, elastic network interfaces (ENIs) are supported as traffic mirror sources.
+        # The instance ID of the traffic mirror source. Currently, only elastic network interfaces (ENIs) are supported as traffic mirror sources.
         self.traffic_mirror_source_id = traffic_mirror_source_id
-        # The instance ID of the traffic mirror destination. Currently, elastic network interfaces (ENIs) and internal-facing SLB instances are supported as traffic mirror destinations. Elastic network interfaces are also referred to as network interface controllers (NICs).
+        # The instance ID of the traffic mirror destination. Currently, elastic network interfaces (ENIs) and internal-facing SLB instances are supported as traffic mirror destinations.
         self.traffic_mirror_target_id = traffic_mirror_target_id
-        # The Virtual Network Identifier (VNI) used to distinguish different mirrored data. Valid values: **0** to **16777215**. You can use the VNI to identify mirrored data from different sessions at the traffic mirror destination. You can specify a custom VNI value or let the system randomly assign one. To let the system randomly assign a value, do not specify this parameter.
+        # The virtual network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: **0** to **16777215**. You can use the VNI to distinguish mirrored traffic of different sessions at the traffic mirror destination. You can specify a custom VNI or let the system randomly allocate one. To let the system randomly allocate a VNI, do not specify this parameter.
         self.virtual_network_id = virtual_network_id
 
     def validate(self):
@@ -201,13 +201,13 @@ class ListTrafficMirrorSessionsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot enter an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

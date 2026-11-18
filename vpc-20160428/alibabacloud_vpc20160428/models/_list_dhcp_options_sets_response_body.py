@@ -15,15 +15,15 @@ class ListDhcpOptionsSetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of DHCP options sets.
+        # The information about the DHCP options sets.
         self.dhcp_options_sets = dhcp_options_sets
-        # The pagination token. Valid values:
-        # - If **NextToken** is empty, no subsequent query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The token for the next query. Valid values:
+        # - If **NextToken** is empty, no subsequent query is required.
+        # - If **NextToken** returns a value, the value is the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -90,7 +90,7 @@ class ListDhcpOptionsSetsResponseBodyDhcpOptionsSets(DaraModel):
         self.associate_vpc_count = associate_vpc_count
         # The creation time.
         self.creation_time = creation_time
-        # The DHCP options configuration.
+        # The configuration information of the DHCP options.
         self.dhcp_options = dhcp_options
         # The description of the DHCP options set.
         self.dhcp_options_set_description = dhcp_options_set_description
@@ -104,13 +104,13 @@ class ListDhcpOptionsSetsResponseBodyDhcpOptionsSets(DaraModel):
         self.resource_group_id = resource_group_id
         # The status of the DHCP options set. Valid values:
         # 
-        # - **Available**: available.
+        # - **Available**: Available.
         # 
-        # - **InUse**: in use.
+        # - **InUse**: In use.
         # 
-        # - **Pending**: being configured.
+        # - **Pending**: Being configured.
         # 
-        # - **Deleted**: deleted.
+        # - **Deleted**: Deleted.
         self.status = status
         # The list of tags.
         self.tags = tags
@@ -247,19 +247,19 @@ class ListDhcpOptionsSetsResponseBodyDhcpOptionsSetsDhcpOptions(DaraModel):
     ):
         # The hostname suffix.
         self.domain_name = domain_name
-        # The IP address of the DNS server.
+        # The IP addresses of the DNS servers.
         self.domain_name_servers = domain_name_servers
         # The lease time of the IPv6 DHCP options set.
         # 
-        # - If the lease time is in hours, the unit is h. Valid values: **24h** to **1176h** and **87600h** to **175200h**. Default value: **24h**.
+        # - If the lease time is set in hours, the unit is h. Valid values: **24h** to **1176h** and **87600h** to **175200h**. Default value: **24h**.
         # 
-        # - If the lease time is in days, the unit is d. Valid values: **1d** to **49d** and **3650d** to **7300d**. Default value: **1d**.
+        # - If the lease time is set in days, the unit is d. Valid values: **1d** to **49d** and **3650d** to **7300d**. Default value: **1d**.
         self.ipv_6lease_time = ipv_6lease_time
         # The lease time of the IPv4 DHCP options set.
         # 
-        # - If the lease time is in hours, the unit is h. Valid values: **24h** to **1176h** and **87600h** to **175200h**. Default value: **87600h**.
+        # - If the lease time is set in hours, the unit is h. Valid values: **24h** to **1176h** and **87600h** to **175200h**. Default value: **87600h**.
         # 
-        # - If the lease time is in days, the unit is d. Valid values: **1d** to **49d** and **3650d** to **7300d**. Default value: **3650d**.
+        # - If the lease time is set in days, the unit is d. Valid values: **1d** to **49d** and **3650d** to **7300d**. Default value: **3650d**.
         self.lease_time = lease_time
 
     def validate(self):

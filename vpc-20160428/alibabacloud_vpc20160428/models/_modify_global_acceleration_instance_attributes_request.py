@@ -16,23 +16,23 @@ class ModifyGlobalAccelerationInstanceAttributesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The description of the Alibaba Cloud Global Accelerator (GA) instance.  
+        # The description of the Global Accelerator instance.  
         # 
         # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.description = description
-        # The ID of the Alibaba Cloud Global Accelerator (GA) instance.
+        # The ID of the Global Accelerator instance.
         # 
         # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
-        # The name of the Alibaba Cloud Global Accelerator (GA) instance.  
+        # The name of the Global Accelerator instance.  
         # 
         # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the Alibaba Cloud Global Accelerator (GA) instance is located. 
+        # The region where the Global Accelerator instance resides. 
         # 
-        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

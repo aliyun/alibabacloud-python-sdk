@@ -12,13 +12,13 @@ class CreateExpressConnectTrafficQosRuleResponseBody(DaraModel):
         request_id: str = None,
         rule_id: str = None,
     ):
-        # The QoS policy ID.
+        # The ID of the QoS policy.
         self.qos_id = qos_id
-        # The QoS queue ID.
+        # The ID of the QoS queue.
         self.queue_id = queue_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The QoS rule ID.
+        # The ID of the QoS rule.
         self.rule_id = rule_id
 
     def validate(self):

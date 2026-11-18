@@ -24,36 +24,36 @@ class DescribeForwardTableEntriesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # - If you query DNAT entries of an Internet NAT gateway, this parameter specifies the elastic IP address (EIP) that provides public network access in the DNAT entry.
+        # - When you query the DNAT entries of an Internet NAT gateway, this parameter specifies the elastic IP address (EIP) that provides public network access in the DNAT entry.
         # 
-        # - If you query DNAT entries of a VPC NAT gateway, this parameter specifies the NAT IP address that is accessed by external networks.
+        # - When you query the DNAT entries of a VPC NAT gateway, this parameter specifies the NAT IP address that is accessed by external networks.
         self.external_ip = external_ip
-        # - If you query DNAT entries of an Internet NAT gateway, this parameter specifies the external port or port range used for port forwarding.
-        #     - The port range must be within **1** to **65535**.
-        #     - To query a port range, separate the start and end ports with a forward slash (/), such as `10/20`.
-        #     - If **ExternalPort** is set to a port range, **InternalPort** must also be set to a port range with the same number of ports. For example, if **ExternalPort** is set to `10/20`, **InternalPort** must be set to `80/90`.
+        # - When you query the DNAT entries of an Internet NAT gateway, this parameter specifies the external port or port range used for port forwarding.
+        #     - The port range must be between **1** and **65535**.
+        #     - To query a port range, separate the start port and end port with a forward slash (/). Example: `10/20`.
+        #     - If the queried **ExternalPort** is a port range, the queried **InternalPort** must also be set to a port range, and the number of ports in both ranges must be the same. For example, if **ExternalPort** is set to `10/20`, **InternalPort** must be set to `80/90`.
         # 
-        # - If you query DNAT entries of a VPC NAT gateway, this parameter specifies the port on the NAT IP address that is accessed by external networks. Valid values: **1** to **65535**.
+        # - When you query the DNAT entries of a VPC NAT gateway, this parameter specifies the port of the NAT IP address that is accessed by external networks. Valid values: **1** to **65535**.
         self.external_port = external_port
         # The ID of the DNAT entry.
         self.forward_entry_id = forward_entry_id
         # The name of the DNAT entry.
         # 
-        # The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-).
+        # The name must be 2 to 128 characters in length, and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-).
         self.forward_entry_name = forward_entry_name
         # The ID of the DNAT table. 
         # 
-        # > You must specify at least one of **ForwardTableId** and **NatGatewayId**.
+        # > You must specify at least one of the **ForwardTableId** and **NatGatewayId** parameters.
         self.forward_table_id = forward_table_id
         # The private IP address.
         # 
-        # - If you query DNAT entries of an Internet NAT gateway, this parameter specifies the private IP address of the ECS instance that communicates with the Internet through the DNAT entry.
+        # - When you query the DNAT entries of an Internet NAT gateway, this parameter specifies the private IP address of the ECS instance that communicates with the Internet through the DNAT entry.
         # 
-        # - If you query DNAT entries of a VPC NAT gateway, this parameter specifies the private IP address that needs to communicate through the DNAT rule.
+        # - When you query the DNAT entries of a VPC NAT gateway, this parameter specifies the private IP address that needs to communicate through the DNAT rule.
         self.internal_ip = internal_ip
-        # - If you query DNAT entries of an Internet NAT gateway, this parameter specifies the internal port or port range used for port forwarding. Valid values: **1** to **65535**.
+        # - When you query the DNAT entries of an Internet NAT gateway, this parameter specifies the internal port or port range used for port forwarding. Valid values: **1** to **65535**.
         # 
-        # - If you query DNAT entries of a VPC NAT gateway, this parameter specifies the port of the destination ECS instance to be mapped. Valid values: **1** to **65535**.
+        # - When you query the DNAT entries of a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: **1** to **65535**.
         self.internal_port = internal_port
         # The protocol type. Valid values:
         # 
@@ -65,7 +65,7 @@ class DescribeForwardTableEntriesRequest(DaraModel):
         self.ip_protocol = ip_protocol
         # The ID of the NAT gateway to query.
         # 
-        # > You must specify at least one of **ForwardTableId** and **NatGatewayId**.
+        # > You must specify at least one of the **ForwardTableId** and **NatGatewayId** parameters.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -75,7 +75,7 @@ class DescribeForwardTableEntriesRequest(DaraModel):
         self.page_size = page_size
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

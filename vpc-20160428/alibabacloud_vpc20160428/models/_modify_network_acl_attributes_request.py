@@ -20,17 +20,17 @@ class ModifyNetworkAclAttributesRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # The description of the network ACL. 
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to perform a dry run. Valid values:
-        # * **true**: performs a dry run.
-        # * **false** (default): sends the request.
+        # Specifies whether to precheck the request. Valid values:
+        # * **true**: prechecks the request.
+        # * **false** (default): sends a normal request.
         self.dry_run = dry_run
         # The ID of the network ACL.
         # 
@@ -42,9 +42,9 @@ class ModifyNetworkAclAttributesRequest(DaraModel):
         self.network_acl_name = network_acl_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the network ACL resides.
+        # The region ID of the network ACL.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

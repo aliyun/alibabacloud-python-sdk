@@ -18,15 +18,15 @@ class ModifyCustomerGatewayAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The authentication key of the BGP route routing protocol for the on-premises data center gateway device.
+        # The authentication key for the BGP routing protocol of the gateway device in the on-premises data center.
         # 
-        # The key must be 1 to 64 characters in length, can contain only ASCII characters, and cannot contain spaces, Chinese characters, or half-width question marks (?).
+        # The key must be 1 to 64 characters in length, and can contain only ASCII characters. It cannot contain spaces, Chinese characters, or half-width question marks (?).
         self.auth_key = auth_key
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # The instance ID of the customer gateway.
         # 
@@ -34,17 +34,17 @@ class ModifyCustomerGatewayAttributeRequest(DaraModel):
         self.customer_gateway_id = customer_gateway_id
         # The description of the customer gateway.  
         # 
-        # The description must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
+        # The description must be 1 to 100 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
         # The name of the customer gateway.  
         # 
-        # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 100 characters in length, and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the customer gateway. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

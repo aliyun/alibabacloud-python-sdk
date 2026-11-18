@@ -17,9 +17,9 @@ class DescribeCommonBandwidthPackagesResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.common_bandwidth_packages = common_bandwidth_packages
-        # The page number of the list.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of entries per page for paging queries.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -479,11 +479,17 @@ class DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBa
         self,
         allocation_id: str = None,
         bandwidth_package_ip_relation_status: str = None,
+        common_bandwidth_package_ip_bandwidth: str = None,
         ip_address: str = None,
+        ip_instance_id: str = None,
+        ip_type: str = None,
     ):
         self.allocation_id = allocation_id
         self.bandwidth_package_ip_relation_status = bandwidth_package_ip_relation_status
+        self.common_bandwidth_package_ip_bandwidth = common_bandwidth_package_ip_bandwidth
         self.ip_address = ip_address
+        self.ip_instance_id = ip_instance_id
+        self.ip_type = ip_type
 
     def validate(self):
         pass
@@ -499,8 +505,17 @@ class DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBa
         if self.bandwidth_package_ip_relation_status is not None:
             result['BandwidthPackageIpRelationStatus'] = self.bandwidth_package_ip_relation_status
 
+        if self.common_bandwidth_package_ip_bandwidth is not None:
+            result['CommonBandwidthPackageIpBandwidth'] = self.common_bandwidth_package_ip_bandwidth
+
         if self.ip_address is not None:
             result['IpAddress'] = self.ip_address
+
+        if self.ip_instance_id is not None:
+            result['IpInstanceId'] = self.ip_instance_id
+
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
 
         return result
 
@@ -512,8 +527,17 @@ class DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBa
         if m.get('BandwidthPackageIpRelationStatus') is not None:
             self.bandwidth_package_ip_relation_status = m.get('BandwidthPackageIpRelationStatus')
 
+        if m.get('CommonBandwidthPackageIpBandwidth') is not None:
+            self.common_bandwidth_package_ip_bandwidth = m.get('CommonBandwidthPackageIpBandwidth')
+
         if m.get('IpAddress') is not None:
             self.ip_address = m.get('IpAddress')
+
+        if m.get('IpInstanceId') is not None:
+            self.ip_instance_id = m.get('IpInstanceId')
+
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
 
         return self
 

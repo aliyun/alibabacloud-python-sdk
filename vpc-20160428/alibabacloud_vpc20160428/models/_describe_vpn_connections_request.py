@@ -33,13 +33,9 @@ class DescribeVpnConnectionsRequest(DaraModel):
         self.page_size = page_size
         # The region ID of the IPsec-VPN connection.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
-        # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the IPsec-VPN connection belongs.
-        # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group IDs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -157,10 +153,6 @@ class DescribeVpnConnectionsRequestTag(DaraModel):
         # You can specify up to 20 tag keys at a time.
         self.key = key
         # The tag value.
-        # 
-        # The tag value can be up to 128 characters in length and can be an empty string. It cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
-        # 
-        # Each tag key corresponds to one tag value. You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

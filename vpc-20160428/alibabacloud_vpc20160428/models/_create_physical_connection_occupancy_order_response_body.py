@@ -11,7 +11,7 @@ class CreatePhysicalConnectionOccupancyOrderResponseBody(DaraModel):
         data: main_models.CreatePhysicalConnectionOccupancyOrderResponseBodyData = None,
         request_id: str = None,
     ):
-        # The detailed information about the data.
+        # The data details.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -49,7 +49,7 @@ class CreatePhysicalConnectionOccupancyOrderResponseBodyData(DaraModel):
         self,
         order_id: str = None,
     ):
-        # The ID of the order.
+        # The ID of the created order.
         self.order_id = order_id
 
     def validate(self):

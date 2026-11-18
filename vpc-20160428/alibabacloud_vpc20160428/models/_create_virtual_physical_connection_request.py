@@ -25,49 +25,51 @@ class CreateVirtualPhysicalConnectionRequest(DaraModel):
     ):
         # The description of the shared Express Connect circuits.
         # 
-        # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length, and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to only dry run the request. Valid values:
         # 
-        # - **true**: performs a dry run without creating the shared Express Connect circuits. The system checks required parameters, request format, and instance status. If the check fails, the corresponding error is returned. If the check passes, `DRYRUN.SUCCESS` is returned.
-        # - **false** (default): sends a Normal request. After the check passes, the shared Express Connect circuits are created.
+        # - **true**: The system performs a dry run on the request without creating the shared Express Connect circuits. The system checks whether the required parameters are specified, the request format, and the instance status. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, `DRYRUN.SUCCESS` is returned.
+        # - **false** (default): The system sends a Normal request. After the request passes the dry run, the shared Express Connect circuits are created.
         self.dry_run = dry_run
         # The name of the shared Express Connect circuits.
         # 
-        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-), but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.name = name
-        # The payer of the shared Express Connect circuits. Valid values:
+        # Specifies the payer of the shared Express Connect circuits. Valid values:
         # 
-        # - **PayByPhysicalConnectionOwner**: The partner pays.
-        # - **PayByVirtualPhysicalConnectionOwner**: The tenant pays.
-        # > Default value: PayByVirtualPhysicalConnectionOwner (tenant pays).
+        # - **PayByPhysicalConnectionOwner**: The partner pays the bills.
+        # - **PayByVirtualPhysicalConnectionOwner**: The tenant pays the bills.
+        # > Default value: PayByVirtualPhysicalConnectionOwner. The tenant pays the bills.
         # 
         # This parameter is required.
         self.order_mode = order_mode
         # The ID of the Express Connect circuit associated with the shared Express Connect circuits.
-        # > The Express Connect circuit must be in the Enabled state and must be an Express Connect circuit (shared Express Connect circuits IDs are not supported). Otherwise, ResourceNotFound.PhysicalConnectionId or IncorrectStatus.PhysicalConnection is returned. You can invoke DescribePhysicalConnections to query the status of the Express Connect circuit. The caller must be the account (partner) that owns the Express Connect circuit.
+        # > The Express Connect circuit must be in the Enabled state and must be a physical Express Connect circuit. You cannot specify the ID of a shared Express Connect circuit. Otherwise, the ResourceNotFound.PhysicalConnectionId or IncorrectStatus.PhysicalConnection error is returned. You can invoke the DescribePhysicalConnections operation to query the status of the Express Connect circuit. The caller must be the account (partner) to which the Express Connect circuit belongs.
         # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
         # The region ID of the shared Express Connect circuits.
         # 
-        # You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the shared Express Connect circuits belong.
         self.resource_group_id = resource_group_id
-        # The bandwidth value of the shared Express Connect circuits.
+        # The bandwidth of the shared Express Connect circuits.
         # 
         # Valid values: **50M**, **100M**, **200M**, **300M**, **400M**, **500M**, **1G**, **2G**, **5G**, **8G**, and **10G**.
         # 
         # <props="china">
-        # > The bandwidth values **2G**, **5G**, **8G**, and **10G** are not available by default. To use these values, contact your account manager.
+        # > By default, the bandwidth values of **2G**, **5G**, **8G**, and **10G** are not available. To use these values, contact your account manager.
+        # 
         # 
         # <props="intl">
-        # > The bandwidth values **2G**, **5G**, **8G**, and **10G** are not available by default. To use these values, contact your account manager.
+        # > By default, the bandwidth values of **2G**, **5G**, **8G**, and **10G** are not available. To use these values, contact your account manager.
         # 
-        # Unit: **M** indicates Mbit/s and **G** indicates Gbit/s.
+        # 
+        # Unit: **M** indicates Mbit/s, and **G** indicates Gbit/s.
         # 
         # This parameter is required.
         self.spec = spec
@@ -75,18 +77,18 @@ class CreateVirtualPhysicalConnectionRequest(DaraModel):
         self.tag = tag
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.token = token
         # The VLAN ID of the shared Express Connect circuits. Valid values: **0** to **2999**.
         # 
-        # - If the VLAN ID is **0**, the physical switch port of the Virtual Border Router (VBR) does not use VLAN mode but uses Layer 3 routing interface mode. In Layer 3 routing interface mode, each Express Connect circuit corresponds to one VBR.
-        # - If the VLAN ID is **1** to **2999**, the physical switch port of the VBR uses VLAN-based Layer 3 sub-interfaces. In Layer 3 sub-interface mode, each VLAN ID corresponds to one VBR. In this case, the Express Connect circuit of the VBR can connect to VPCs under multiple accounts. VBRs in different VLANs have network isolation at Layer 2 and cannot communicate with each other.
+        # - If the VLAN ID is **0**, the physical vSwitch port of the vRouter (Virtual Border Router) does not use the VLAN pattern, but uses the Layer 3 routing interface pattern. In the Layer 3 routing interface pattern, each Express Connect circuit corresponds to one VBR.
+        # - If the VLAN ID is **1** to **2999**, the physical vSwitch port of the VBR uses a VLAN-based Layer 3 sub-interface. In the Layer 3 sub-interface pattern, each VLAN ID corresponds to one VBR. In this case, the Express Connect circuit of the VBR can be connected to VPCs under multiple accounts. VBRs in different VLANs have Layer 2 network isolation and cannot communicate with each other.
         # 
         # This parameter is required.
         self.vlan_id = vlan_id
-        # The ID of the tenant\\"s Alibaba Cloud account.
+        # The ID of the Alibaba Cloud account (primary account) of the tenant.
         # 
         # This parameter is required.
         self.vpconn_ali_uid = vpconn_ali_uid
@@ -193,11 +195,11 @@ class CreateVirtualPhysicalConnectionRequestTag(DaraModel):
     ):
         # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

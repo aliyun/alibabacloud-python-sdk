@@ -23,31 +23,31 @@ class DescribeGlobalAccelerationInstancesRequest(DaraModel):
         service_location: str = None,
         status: str = None,
     ):
-        # The bandwidth type of the Alibaba Cloud Global Accelerator (GA) instance. Valid values: 
+        # The bandwidth type of the Global Accelerator (GA) instance. Valid values: 
         #            
-        # - **Sharing**: Queries shared-bandwidth instances.
+        # - **Sharing**: Shared bandwidth instance.
         #   
-        # - **Exclusive** (default): Queries dedicated-bandwidth instances.
+        # - **Exclusive** (default): Exclusive bandwidth instance.
         self.bandwidth_type = bandwidth_type
-        # The ID of the Alibaba Cloud Global Accelerator (GA) instance.
+        # The ID of the Global Accelerator (GA) instance.
         self.global_acceleration_instance_id = global_acceleration_instance_id
-        # Specifies whether to include reservation data that has not taken effect. Valid values:
+        # Specifies whether to include subscription data that has not taken effect. Valid values:
         # 
-        # - **false** (default): Does not include reservation data that has not taken effect.
+        # - **false** (default): Does not include subscription data that has not taken effect.
         # 
-        # - **true**: Includes reservation data that has not taken effect.
+        # - **true**: Includes subscription data that has not taken effect.
         self.include_reservation_data = include_reservation_data
-        # The public IP address of the Alibaba Cloud Global Accelerator (GA) instance.
+        # The public IP address of the Global Accelerator (GA) instance.
         self.ip_address = ip_address
-        # The name of the Alibaba Cloud Global Accelerator (GA) instance.
+        # The name of the Global Accelerator (GA) instance.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page for paging queries. Maximum value: **100**. Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The region where the Alibaba Cloud Global Accelerator (GA) instance resides. You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # The region where the Global Accelerator (GA) instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -55,25 +55,25 @@ class DescribeGlobalAccelerationInstancesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The instance ID of the backend service.
         self.server_id = server_id
-        # The backend service region. Valid values: 
+        # The region of the backend service. Valid values: 
         # 
-        # - **china-mainland**: the Chinese mainland.
+        # - **china-mainland**: The Chinese mainland.
         # 
         # - **north-america**: North America.
         #    
-        # - **asia-pacific**: Asia Pacific.
+        # - **asia-pacific**: Asia-Pacific.
         #    
         # - **europe**: Europe.
         self.service_location = service_location
-        # The instance status of the Alibaba Cloud Global Accelerator (GA) instance. Valid values: 
+        # The status of the Global Accelerator (GA) instance. Valid values: 
         # 
-        # - **Available**: active.
+        # - **Available**: Available.
         # 
         # - **Inuse**: Allocated.
         #    
-        # - **Associating**: Being attached.
+        # - **Associating**: Associating.
         #    
-        # - **Unassociating**: Being disassociated.
+        # - **Unassociating**: Unassociating.
         self.status = status
 
     def validate(self):

@@ -18,23 +18,23 @@ class DeleteDhcpOptionsSetRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** value as the **ClientToken** value. The **RequestId** value may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # The ID of the DHCP options set that you want to delete.
         # 
         # This parameter is required.
         self.dhcp_options_set_id = dhcp_options_set_id
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run on the request. Valid values:
         # 
-        # **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # **true**: performs only a dry run and does not delete the DHCP options set. The system checks whether the required parameters are specified, the request format is valid, and the limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # 
-        # **false** (default): performs a dry run and sends the request. If the request passes the dry run, the DHCP options set is deleted.
+        # **false** (default): performs a dry run and deletes the DHCP options set if the request passes the dry run.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the DHCP options set that you want to delete. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the region ID.
+        # The region ID of the DHCP options set that you want to delete. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

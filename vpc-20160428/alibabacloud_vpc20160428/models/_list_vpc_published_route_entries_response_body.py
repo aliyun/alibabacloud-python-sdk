@@ -14,14 +14,14 @@ class ListVpcPublishedRouteEntriesResponseBody(DaraModel):
         request_id: str = None,
         route_entries: List[main_models.ListVpcPublishedRouteEntriesResponseBodyRouteEntries] = None,
     ):
-        # The token for the next query. Valid values:
+        # The token used to retrieve the next page of results. Valid values:
         # 
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** has a value, the value indicates the token for the next query.
+        # - If **NextToken** is empty, no more results are available.
+        # - If **NextToken** is returned, the value is the token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The list of route entry publish status information.
+        # The list of route publication status information.
         self.route_entries = route_entries
 
     def validate(self):
@@ -72,11 +72,11 @@ class ListVpcPublishedRouteEntriesResponseBodyRouteEntries(DaraModel):
         route_publish_targets: List[main_models.ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets] = None,
         route_table_id: str = None,
     ):
-        # The destination CIDR block of the route entry.
+        # The destination CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the route entry.
+        # The ID of the route.
         self.route_entry_id = route_entry_id
-        # The list of publish status information for the route entry in publish targets.
+        # The list of publication status information of the route at the publication targets.
         self.route_publish_targets = route_publish_targets
         # The route table ID.
         self.route_table_id = route_table_id
@@ -134,11 +134,11 @@ class ListVpcPublishedRouteEntriesResponseBodyRouteEntriesRoutePublishTargets(Da
         publish_target_instance_id: str = None,
         publish_target_type: str = None,
     ):
-        # The publish status of the route entry in the publish target.
+        # The publication status of the route at the publication target.
         self.publish_status = publish_status
-        # The instance ID of the route publish target.
+        # The instance ID of the route publication target.
         self.publish_target_instance_id = publish_target_instance_id
-        # The route publish target.
+        # The route publication target.
         self.publish_target_type = publish_target_type
 
     def validate(self):

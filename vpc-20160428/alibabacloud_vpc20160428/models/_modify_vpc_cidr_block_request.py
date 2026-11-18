@@ -16,30 +16,29 @@ class ModifyVpcCidrBlockRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # Generate a parameter value from your client and ensure that the value is unique among different requests. The ClientToken parameter supports only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken** identifier. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # 
-        # - **true**: performs a dry run without modifying the CIDR block of the virtual private cloud (VPC). The system checks the request for potential issues. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
-        # - **false** (default): sends a Normal request. If the check succeeds, an HTTP 2xx status code is returned and the modification is performed.
+        # Specifies whether to perform only a dry run for this request. Valid values:
+        # - **true**: The system sends a check request and does not modify the CIDR block of the virtual private cloud (VPC). If the check fails, the system returns the corresponding error. If the check succeeds, the system returns the error code `DryRunOperation`.
+        # - **false** (default): The system sends a normal request. After the request passes the check, the system returns an HTTP 2xx status code and directly performs the modification.
         self.dry_run = dry_run
-        # The CIDR block of the VPC to modify. Both primary and secondary CIDR blocks are supported.
+        # The CIDR block of the VPC that you want to modify. Both primary and secondary CIDR blocks are supported.
         # 
         # This parameter is required.
         self.original_cidr_block = original_cidr_block
-        # The ID of the region where the VPC resides.
+        # The ID of the region where the VPC is deployed.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The new CIDR block for the VPC after modification.
+        # The target CIDR block of the VPC after the modification.
         # 
         # This parameter is required.
         self.target_cidr_block = target_cidr_block
-        # The ID of the VPC to modify.
+        # The ID of the VPC that you want to modify.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

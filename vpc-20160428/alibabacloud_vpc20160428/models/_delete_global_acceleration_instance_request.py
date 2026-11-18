@@ -14,15 +14,13 @@ class DeleteGlobalAccelerationInstanceRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the Alibaba Cloud Global Accelerator (GA) instance.
+        # The ID of the Global Accelerator instance.
         # 
         # This parameter is required.
         self.global_acceleration_instance_id = global_acceleration_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the Alibaba Cloud Global Accelerator (GA) instance is located. 
-        # 
-        # You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to obtain the region ID.
+        # The region where the Global Accelerator instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

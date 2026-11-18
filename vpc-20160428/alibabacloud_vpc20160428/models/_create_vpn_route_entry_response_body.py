@@ -19,30 +19,30 @@ class CreateVpnRouteEntryResponseBody(DaraModel):
     ):
         # The timestamp when the destination route was created. Unit: milliseconds.
         # 
-        # The timestamp follows the UNIX timestamp format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the destination route was created.
+        # The timestamp is in the UNIX format, which represents the total duration from 00:00:00 on January 1, 1970 (UTC) to the time when the destination route was created.
         self.create_time = create_time
         # The description of the destination route.
         self.description = description
         # The next hop of the destination route.
         self.next_hop = next_hop
-        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunneling).
+        # The tunnel protocol. Set the value to **Ipsec** (IPsec tunnel protocol).
         self.overlay_mode = overlay_mode
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The destination CIDR block of the destination route.
         self.route_dest = route_dest
-        # The publish status of the destination route.
+        # The publish status of the destination route. Valid values:
         # 
-        # - **published**: The destination route is published to the VPC route table.
+        # - **published**: The destination route is published to the route table of the VPC.
         # 
-        # - **normal**: The destination route is not published to the VPC route table.
+        # - **normal**: The destination route is not published to the route table of the VPC.
         self.state = state
         # The instance ID of the VPN gateway.
         self.vpn_instance_id = vpn_instance_id
         # The weight of the destination route. Valid values:
         # 
-        # - **100**: The destination route has a high priority.
-        # - **0**: The destination route has a low priority.
+        # - **100**: The destination route has a higher priority.
+        # - **0**: The destination route has a lower priority.
         self.weight = weight
 
     def validate(self):

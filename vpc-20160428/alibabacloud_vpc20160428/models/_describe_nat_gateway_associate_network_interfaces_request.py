@@ -27,35 +27,35 @@ class DescribeNatGatewayAssociateNetworkInterfacesRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # The filter information. You can specify key-value pairs to filter the query results.
+        # The filter conditions. You can specify key-value pairs to filter the query results.
         self.filter = filter
-        # The number of entries per page for a paginated query. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The ID of the NAT gateway to query.
+        # The ID of the NAT gateway that you want to query.
         # 
         # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
-        # The pagination token. Valid values:
+        # The token that is used for the next query. Valid values:
         # 
-        # - If this is the first query or no subsequent query exists, leave this parameter empty.
+        # - If this is your first query or no next query is to be sent, ignore this parameter.
         # 
-        # - If a subsequent query exists, set this parameter to the **NextToken** value returned by the previous API call.
+        # - If a next query is to be sent, set the value to the **NextToken** value that is returned from the last invoke or API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The list of resource tags.
+        # The resource tags.
         self.tag = tag
 
     def validate(self):
@@ -169,11 +169,11 @@ class DescribeNatGatewayAssociateNetworkInterfacesRequestTag(DaraModel):
     ):
         # The tag key of the instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag key of the instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -208,16 +208,16 @@ class DescribeNatGatewayAssociateNetworkInterfacesRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The valid values of Filter Key:
+        # The filter key. Valid values:
         # 
         # - ResourceId
-        # >Specify the ID of the EPS resource in Value.
+        # >Set the value to the ID of the EPS resource that you want to query.
         # - NetworkInterfaceId
-        # >Specify the ID of the network interface controller (NIC) in Value.
+        # >Set the value to the ID of the elastic network interfaces (ENIs) and network interface controller (NIC) that you want to query.
         # - ResourceOwnerId
-        # >Specify the UID of the user to whom the EPS resource ownership belongs in Value.
+        # >Set the value to the UID of the user for the resource ownership of the EPS resource that you want to query.
         self.key = key
-        # You can specify multiple values separated by commas.
+        # The filter value. You can specify multiple values separated by commas (,).
         self.value = value
 
     def validate(self):

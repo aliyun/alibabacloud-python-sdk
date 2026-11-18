@@ -31,32 +31,35 @@ class DescribeNatGatewaysRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # The disaster recovery type of the NAT gateway. Valid values:
+        # 
+        # - **CrossAZ**: cross-zone disaster recovery.
+        # - **SingleAZ**: single-zone disaster recovery.
         self.availability_mode = availability_mode
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to only perform a dry run for this request. Valid values:
         # 
-        # - **true**: performs a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized RAM user authorization, and missing parameter values. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **true**: performs a dry run on the request without querying the resource status. The system checks whether your AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # 
-        # - **false** (default): performs a dry run and sends the request. After the request passes the dry run, a 2xx HTTP status code is returned and the resource status is queried. This is the Normal request behavior.
+        # - **false** (default): sends a Normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the resource status is queried.
         self.dry_run = dry_run
-        # <props="china">The billing method of the NAT gateway instance that you want to query. Valid values:
+        # <props="china">The billing method of the NAT gateway. Valid values:
         # 
         # <props="china">
         # - **PostPaid**: pay-as-you-go.
-        # - **PrePaid**: the legacy subscription billing method. New purchases under the subscription billing method are no longer supported.
+        # - **PrePaid**: subscription. This billing method is no longer available for new purchases.
         # 
         # 
-        # 
-        # <props="intl">The billing method of the NAT gateway instance that you want to query. Valid value: **PostPaid** (pay-as-you-go).
+        # <props="intl">The billing method of the NAT gateway. Valid value: **PostPaid** (pay-as-you-go).
         self.instance_charge_type = instance_charge_type
-        # The name of the NAT gateway that you want to query.
+        # The name of the NAT gateway.
         # 
-        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.name = name
-        # The ID of the NAT gateway that you want to query.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
         # The type of the NAT gateway. Valid value: **Enhanced** (enhanced NAT gateway).
         self.nat_type = nat_type
-        # The type of the NAT gateway that you want to query. Valid values:
+        # The type of the NAT gateway. Valid values:
         # 
         # - **internet**: Internet NAT gateway.
         # - **intranet**: VPC NAT gateway.
@@ -65,19 +68,19 @@ class DescribeNatGatewaysRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for paging in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the NAT gateway that you want to query.
+        # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the NAT gateway that you want to query belongs.
+        # The ID of the resource group to which the NAT gateway belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # <props="china">The specification of the Internet NAT gateway. This parameter is supported only when **InstanceChargeType** is set to **PrePaid** (legacy subscription Internet NAT gateway) to create a NAT gateway with defined specifications. Valid values:
+        # <props="china">The specification of the Internet NAT gateway. You can create NAT gateways with defined specifications only when **InstanceChargeType** is set to **PrePaid** (existing subscription Internet NAT gateways). Valid values:
         # 
         # <props="china">
         # - **Small** (default): small.
@@ -87,20 +90,20 @@ class DescribeNatGatewaysRequest(DaraModel):
         # 
         # <props="intl">The specification of the NAT gateway. Leave this parameter empty.
         self.spec = spec
-        # The status of the NAT gateway that you want to query. Valid values:
-        # - **Creating**: The NAT gateway is being created. Creating a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Creating** state until the operation is complete.
+        # The status of the NAT gateway. Valid values:
+        # - **Creating**: Creating a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Creating** state until the creation is complete.
         # 
-        # - **Available**: The NAT gateway is available. This is a stable state after the NAT gateway is created.
+        # - **Available**: The NAT gateway is created and running. This is a stable state.
         # 
-        # - **Modifying**: The NAT gateway is being modified. Modifying a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Modifying** state until the operation is complete.
+        # - **Modifying**: Upgrading or downgrading a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Modifying** state until the modification is complete.
         # 
-        # - **Deleting**: The NAT gateway is being deleted. Deleting a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Deleting** state until the operation is complete.
+        # - **Deleting**: Deleting a NAT gateway is an asynchronous operation. The NAT gateway remains in the **Deleting** state until the deletion is complete.
         # 
-        # - **Converting**: The NAT gateway is being upgraded from a standard NAT gateway to an enhanced NAT gateway. This is an asynchronous operation. The NAT gateway remains in the **Converting** state until the operation is complete.
+        # - **Converting**: Upgrading a standard NAT gateway to an enhanced NAT gateway is an asynchronous operation. The NAT gateway remains in the **Converting** state until the upgrade is complete.
         self.status = status
         # The list of tags.
         self.tag = tag
-        # The ID of the VPC to which the NAT gateway that you want to query belongs.
+        # The ID of the virtual private cloud (VPC) to which the NAT gateway belongs.
         self.vpc_id = vpc_id
         # The zone ID of the NAT gateway.
         self.zone_id = zone_id
@@ -253,13 +256,13 @@ class DescribeNatGatewaysRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the NAT gateway instance. You can specify up to 20 tag keys.
+        # The tag key of the NAT gateway. You can specify up to 20 tag keys.
         # 
-        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the NAT gateway instance. You can specify up to 20 tag values.
+        # The tag value of the NAT gateway. You can specify up to 20 tag values.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

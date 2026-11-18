@@ -16,12 +16,12 @@ class CreateVpnGatewayResponseBody(DaraModel):
         self.name = name
         # The order ID.
         # 
-        # <props="china">If you did not enable automatic payment for the VPN gateway, go to [Expenses and Costs](https://usercenter2.aliyun.com/home) to complete the payment.
-        # <props="intl">If you did not enable automatic payment for the VPN gateway, go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/billing/#/account/overview) to complete the payment.
+        # <props="china">If you do not enable automatic payment for the VPN gateway, go to the [Alibaba Cloud Expenses and Costs](https://usercenter2.aliyun.com/home) console to complete the payment.
+        # <props="intl">If you do not enable automatic payment for the VPN gateway, go to the [Alibaba Cloud Expenses and Costs](https://usercenter2-intl.aliyun.com/billing/#/account/overview) console to complete the payment.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The instance ID of the VPN gateway.
+        # The instance ID of the VPN gateway instance.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):

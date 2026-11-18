@@ -10,7 +10,7 @@ class CreateSnatEntryResponseBody(DaraModel):
         request_id: str = None,
         snat_entry_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The ID of the SNAT entry.
         self.snat_entry_id = snat_entry_id

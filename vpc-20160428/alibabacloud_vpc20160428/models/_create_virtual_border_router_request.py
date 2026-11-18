@@ -33,10 +33,10 @@ class CreateVirtualBorderRouterRequest(DaraModel):
         vbr_owner_id: int = None,
         vlan_id: int = None,
     ):
-        # The bandwidth of the VBR instance. Unit: Mbit/s.
+        # The bandwidth value of the VBR instance. Unit: Mbit/s.
         # 
         # - When you create a VBR instance for a dedicated Express Connect circuit, valid values are **50**, **100**, **200**, **300**, **400**, **500**, **1000**, **2048**, **5120**, **8192**, **10240**, **20480**, **40960**, **50120**, **61440**, and **102400**.
-        # - When you create a VBR instance for shared Express Connect circuits, you do not need to configure this parameter. The bandwidth of the VBR is the bandwidth of the shared Express Connect circuits that is specified in Settings when the shared Express Connect circuits are created.
+        # - When you create a VBR instance for shared Express Connect circuits, you do not need to configure this parameter. The bandwidth of the VBR is the bandwidth of the shared Express Connect circuits that was specified in Settings when the shared Express Connect circuits were created.
         self.bandwidth = bandwidth
         # The circuit code provided by the carrier for the Express Connect circuit. 
         #           
@@ -110,7 +110,7 @@ class CreateVirtualBorderRouterRequest(DaraModel):
         self.tags = tags
         # The account ID of the VBR instance owner.
         # 
-        # The default value is the Alibaba Cloud account ID used for logon.
+        # The default value is the Alibaba Cloud account ID used to logon.
         self.vbr_owner_id = vbr_owner_id
         # The VLAN ID of the VBR instance. Valid values: **0 to 2999**. 
         # 
@@ -281,11 +281,11 @@ class CreateVirtualBorderRouterRequestTags(DaraModel):
     ):
         # The tag key of the resource. You must specify at least 1 tag key and can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value of the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

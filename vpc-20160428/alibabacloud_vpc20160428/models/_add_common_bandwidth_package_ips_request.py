@@ -19,15 +19,15 @@ class AddCommonBandwidthPackageIpsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID of the Internet Shared Bandwidth instance.
+        # The Internet Shared Bandwidth instance ID.
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
         # The list of EIP instance IDs to be added.
         # 
@@ -35,13 +35,13 @@ class AddCommonBandwidthPackageIpsRequest(DaraModel):
         # 
         # This parameter is required.
         self.ip_instance_ids = ip_instance_ids
-        # The IP type. Set the value to **EIP**, which specifies that EIPs are added to the Internet Shared Bandwidth instance.
+        # The IP address type. Valid value: **EIP**, which indicates that EIPs are added to the Internet Shared Bandwidth instance.
         self.ip_type = ip_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Internet Shared Bandwidth instance. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

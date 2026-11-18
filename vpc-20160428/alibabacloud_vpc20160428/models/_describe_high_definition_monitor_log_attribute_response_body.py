@@ -16,13 +16,13 @@ class DescribeHighDefinitionMonitorLogAttributeResponseBody(DaraModel):
     ):
         # The instance ID for which high-precision second-level monitoring is queried.
         self.instance_id = instance_id
-        # The type of the instance for which high-precision second-level monitoring is queried. The value is **EIP**.
+        # The type of the instance for which high-precision second-level monitoring is queried. Valid value: **EIP**.
         self.instance_type = instance_type
-        # The name of the LogProject.
+        # The name of the Simple Log Service LogProject.
         self.log_project = log_project
-        # The name of the LogStore.
+        # The name of the Simple Log Service Logstore.
         self.log_store = log_store
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the call was successful.
         # 

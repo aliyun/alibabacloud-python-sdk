@@ -17,17 +17,17 @@ class DescribeGrantRulesToEcrResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries returned.
+        # The number of queried results.
         self.count = count
-        # The cross-account authorization list of Express Connect Router (ECR).
+        # The cross-account authorization list of the Express Connect Router (ECR).
         self.ecr_grant_rules = ecr_grant_rules
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Maximum value: 50. Default value: 10.
+        # The number of entries returned per page during paging in a paged query. Maximum value: 50. Default value: 10.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -95,11 +95,11 @@ class DescribeGrantRulesToEcrResponseBodyEcrGrantRules(DaraModel):
         ecr_instance_id: str = None,
         ecr_uid: int = None,
     ):
-        # The authorization time. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
+        # The time when the authorization was granted. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The instance ID of the cross-account authorization for the Express Connect Router (ECR).
+        # The instance ID of the Express Connect Router (ECR) for which cross-account authorization is granted.
         self.ecr_instance_id = ecr_instance_id
-        # The authorized user ID for the cross-account authorization of the Express Connect Router (ECR).
+        # The ID of the authorized user for the Express Connect Router (ECR) cross-account authorization.
         self.ecr_uid = ecr_uid
 
     def validate(self):

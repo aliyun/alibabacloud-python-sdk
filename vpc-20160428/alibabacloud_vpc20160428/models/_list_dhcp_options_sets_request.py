@@ -27,23 +27,23 @@ class ListDhcpOptionsSetsRequest(DaraModel):
         self.dhcp_options_set_id = dhcp_options_set_id
         # The name of the DHCP options set.
         # 
-        # The name must be 1 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
+        # The name must be 1 to 128 characters in length, and must start with an English letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
         self.dhcp_options_set_name = dhcp_options_set_name
         # The hostname suffix, such as example.com.
         # 
-        # After the DHCP options set is associated with a VPC, the hostname suffix is automatically synchronized to the ECS instances in the associated VPC.
+        # After you associate VPC with a DHCP options set, the system performs synchronization of the hostname suffix to the ECS instances in the VPC.
         self.domain_name = domain_name
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
+        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
-        # The pagination token. Valid values:
-        # - If this is the first query or no subsequent query is required, leave this parameter empty.
-        # - If a subsequent query is required, set the value to the **NextToken** value returned in the previous API call.
+        # The token for the next query. Valid values:
+        # - For the first query or when no subsequent query is required, leave this parameter empty.
+        # - For a subsequent query, set this parameter to the **NextToken** value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the DHCP options sets that you want to query.
+        # The ID of the region where the DHCP options sets reside.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -154,13 +154,13 @@ class ListDhcpOptionsSetsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot enter an empty string.
         # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

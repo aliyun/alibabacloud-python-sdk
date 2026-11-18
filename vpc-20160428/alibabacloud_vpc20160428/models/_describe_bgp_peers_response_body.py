@@ -17,7 +17,7 @@ class DescribeBgpPeersResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.bgp_peers = bgp_peers
-        # The page number of the list.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page in a paging query.
         self.page_size = page_size

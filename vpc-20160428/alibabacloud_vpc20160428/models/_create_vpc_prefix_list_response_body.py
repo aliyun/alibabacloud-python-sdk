@@ -13,7 +13,7 @@ class CreateVpcPrefixListResponseBody(DaraModel):
     ):
         # The instance ID of the prefix list.
         self.prefix_list_id = prefix_list_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The ID of the resource group to which the prefix list belongs.
         self.resource_group_id = resource_group_id

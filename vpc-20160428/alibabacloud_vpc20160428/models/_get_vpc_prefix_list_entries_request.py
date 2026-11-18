@@ -16,11 +16,11 @@ class GetVpcPrefixListEntriesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The number of entries per page in a paged query. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token. Valid values:
-        # - Leave this parameter empty for the first query or if no subsequent query is required.
-        # - If a subsequent query is required, set this parameter to the NextToken value returned in the previous API call.
+        # The token for the next query. Valid values:
+        # - Leave this parameter empty for the first query or when no next query is required.
+        # - If a next query is required, set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -28,7 +28,7 @@ class GetVpcPrefixListEntriesRequest(DaraModel):
         # 
         # This parameter is required.
         self.prefix_list_id = prefix_list_id
-        # The region ID of the prefix list to query.
+        # The region ID of the prefix list.
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 

@@ -17,13 +17,13 @@ class DescribeVpnRouteEntriesResponseBody(DaraModel):
         vpn_route_counts: main_models.DescribeVpnRouteEntriesResponseBodyVpnRouteCounts = None,
         vpn_route_entries: main_models.DescribeVpnRouteEntriesResponseBodyVpnRouteEntries = None,
     ):
-        # The page number of the list.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page for paging queries.
+        # The number of entries returned per page for paging in a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries returned.
         self.total_count = total_count
         self.vpn_route_counts = vpn_route_counts
         self.vpn_route_entries = vpn_route_entries
@@ -126,6 +126,7 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(DaraModel)
         create_time: int = None,
         next_hop: str = None,
         next_hop_tunnel_id: str = None,
+        prefix_list_id: str = None,
         route_dest: str = None,
         route_entry_type: str = None,
         source: str = None,
@@ -138,6 +139,7 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(DaraModel)
         self.create_time = create_time
         self.next_hop = next_hop
         self.next_hop_tunnel_id = next_hop_tunnel_id
+        self.prefix_list_id = prefix_list_id
         self.route_dest = route_dest
         self.route_entry_type = route_entry_type
         self.source = source
@@ -167,6 +169,9 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(DaraModel)
 
         if self.next_hop_tunnel_id is not None:
             result['NextHopTunnelId'] = self.next_hop_tunnel_id
+
+        if self.prefix_list_id is not None:
+            result['PrefixListId'] = self.prefix_list_id
 
         if self.route_dest is not None:
             result['RouteDest'] = self.route_dest
@@ -204,6 +209,9 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(DaraModel)
 
         if m.get('NextHopTunnelId') is not None:
             self.next_hop_tunnel_id = m.get('NextHopTunnelId')
+
+        if m.get('PrefixListId') is not None:
+            self.prefix_list_id = m.get('PrefixListId')
 
         if m.get('RouteDest') is not None:
             self.route_dest = m.get('RouteDest')

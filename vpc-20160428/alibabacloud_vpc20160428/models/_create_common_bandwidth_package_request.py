@@ -33,9 +33,9 @@ class CreateCommonBandwidthPackageRequest(DaraModel):
         # 
         # <props="china">
         # 
-        # - If **InternetChargeType** is set to **PayByBandwidth**, which indicates that the billing method of the Internet Shared Bandwidth instance is pay-by-bandwidth, the default value range of **Bandwidth** is **2** to **20000**.
-        # - If **InternetChargeType** is set to **PayBy95**, which indicates that the billing method of the Internet Shared Bandwidth instance is enhanced 95th percentile billing, the default value range of **Bandwidth** is **200** to **20000**.
-        # - If **InternetChargeType** is set to **PayByDominantTraffic**, which indicates that the billing method of the Internet Shared Bandwidth instance is pay-by-dominant-traffic, the default value range of **Bandwidth** is **1** to **2000**.
+        # - If **InternetChargeType** is set to **PayByBandwidth**, which indicates the billing method is pay-by-bandwidth, the default value range of **Bandwidth** is **2** to **20000**.
+        # - If **InternetChargeType** is set to **PayBy95**, which indicates the billing method is enhanced 95th percentile, the default value range of **Bandwidth** is **200** to **20000**.
+        # - If **InternetChargeType** is set to **PayByDominantTraffic**, which indicates the billing method is pay-by-dominant-traffic, the default value range of **Bandwidth** is **1** to **2000**.
         # 
         #  Default value: **1000**.
         # 
@@ -52,8 +52,8 @@ class CreateCommonBandwidthPackageRequest(DaraModel):
         # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The line type. Valid values:
-        # - **BGP** (default): BGP (multi-ISP) lines. BGP (multi-ISP) lines are supported in all regions.
-        # - **BGP_PRO**: BGP (multi-ISP) premium lines. Currently, BGP (multi-ISP) premium Internet Shared Bandwidth instances are supported only in the Hong Kong (China), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+        # - **BGP** (default): BGP (multi-ISP) lines. All regions support BGP (multi-ISP) lines.
+        # - **BGP_PRO**: BGP (Multi-ISP) Pro lines. Currently, only Hong Kong (China), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (Multi-ISP) Pro Internet Shared Bandwidth instances.
         # 
         # If you are a single-ISP bandwidth whitelist user, you can also select the following types:
         # - **ChinaTelecom**: China Telecom
@@ -63,7 +63,7 @@ class CreateCommonBandwidthPackageRequest(DaraModel):
         # - **ChinaUnicom_L2**: China Unicom L2
         # - **ChinaMobile_L2**: China Mobile L2
         # 
-        # If you are an Alibaba Finance Cloud user in Hangzhou, this parameter is required. Set the value to **BGP_FinanceCloud**.
+        # If you are a China (Hangzhou) Finance Cloud user, this field is required. Set the value to **BGP_FinanceCloud**.
         self.isp = isp
         # The billing method of the Internet Shared Bandwidth instance. Valid values:
         # <props="intl">**PayByTraffic** (pay-by-data-transfer).
@@ -71,8 +71,8 @@ class CreateCommonBandwidthPackageRequest(DaraModel):
         # <props="china">
         # 
         # - **PayByBandwidth** (default): pay-by-bandwidth.
-        # - **PayBy95**: pay-by-enhanced-95th-percentile.
-        # - **PayByDominantTraffic**: pay-by-dominant-traffic.
+        # - **PayBy95**: enhanced 95th percentile.
+        # -  **PayByDominantTraffic**: pay-by-dominant-traffic.
         self.internet_charge_type = internet_charge_type
         # The name of the Internet Shared Bandwidth instance.
         # 
@@ -83,7 +83,7 @@ class CreateCommonBandwidthPackageRequest(DaraModel):
         # The minimum bandwidth commitment percentage of the Internet Shared Bandwidth instance. Set the value to **20**.
         # 
         #  <props="china"><ph>This parameter is required when **InternetChargeType** is set to **PayBy95**.</ph>
-        # >This parameter is supported only on the China site.
+        # >Only the China site supports this parameter.
         self.ratio = ratio
         # The region ID of the Internet Shared Bandwidth instance.
         # 
@@ -95,17 +95,17 @@ class CreateCommonBandwidthPackageRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The edition of Anti-DDoS.
+        # The security protection level.
         # 
-        # - If you leave this parameter empty, Anti-DDoS Origin Basic is used by default.
+        # - If you do not set this parameter, Anti-DDoS Origin Basic is used by default.
         # 
         # - If you set this parameter to **AntiDDoS_Enhanced**, Anti-DDoS Origin Enhanced is used.
         # 
-        # <props="china"><ph>You can set this parameter when **InternetChargeType** is set to **PayBy95**.</ph>
+        # <props="china"><ph>This parameter can be configured when **InternetChargeType** is set to **PayBy95**.</ph>
         # 
-        # You can add up to 10 security protection levels.
+        # You can specify up to 10 security protection levels.
         # 
-        # > This parameter is deprecated.
+        # > **[Deprecated]** This parameter is deprecated.
         self.security_protection_types = security_protection_types
         # The list of tags for the Internet Shared Bandwidth instance.
         self.tag = tag

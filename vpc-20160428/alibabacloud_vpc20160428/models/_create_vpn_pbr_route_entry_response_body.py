@@ -21,13 +21,13 @@ class CreateVpnPbrRouteEntryResponseBody(DaraModel):
     ):
         # The timestamp when the policy-based route was created. Unit: milliseconds.
         # 
-        # The timestamp follows the UNIX time format, which represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX time format. It is the total number of milliseconds that have elapsed since 00:00:00 Thursday, January 1, 1970 (UTC).
         self.create_time = create_time
         # The description of the policy-based route.
         self.description = description
         # The next hop of the policy-based route.
         self.next_hop = next_hop
-        # The tunneling protocol. Set the value to **Ipsec** (IPsec tunnel protocol).
+        # The tunnel protocol. Set the value to **Ipsec** (IPsec tunnel protocol).
         self.overlay_mode = overlay_mode
         # The policy priority of the policy-based route.
         self.priority = priority
@@ -39,16 +39,16 @@ class CreateVpnPbrRouteEntryResponseBody(DaraModel):
         self.route_source = route_source
         # The publish status of the policy-based route.
         # 
-        # - **published**: The policy-based route is published to the VPC route table.
+        # - **published**: The policy-based route is published to the route tables of the VPC.
         # 
-        # - **normal**: The policy-based route is not published to the VPC route table.
+        # - **normal**: The policy-based route is not published to the route tables of the VPC.
         self.state = state
-        # The VPN gateway instance ID.
+        # The ID of the VPN gateway.
         self.vpn_instance_id = vpn_instance_id
         # The weight of the policy-based route.
         # 
-        # - **100**: The IPsec-VPN connection associated with the policy-based route serves as the active link.
-        # - **0**: The IPsec-VPN connection associated with the policy-based route serves as the standby link.
+        # - **100**: The IPsec-VPN connection associated with the policy-based route is the active link.
+        # - **0**: The IPsec-VPN connection associated with the policy-based route is the standby link.
         self.weight = weight
 
     def validate(self):

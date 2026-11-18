@@ -20,23 +20,21 @@ class ListRouteTargetGroupsRequest(DaraModel):
         tag: List[main_models.ListRouteTargetGroupsRequestTag] = None,
         vpc_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters. If you do not specify this parameter, the system uses the RequestId of the API request as the ClientToken. The RequestId may be different for each API request.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. Note: If you do not specify this parameter, the system automatically uses the RequestId of the API request as the ClientToken. The RequestId of each API request is unique.
         self.client_token = client_token
-        # The number of entries per page. Valid values: **1** to **50**. Default value: **50**.
+        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
         self.max_results = max_results
-        # The ID of a route target group member instance. This parameter filters route target groups that contain the specified member instance ID.
+        # The ID of the member instance in the route target group. This parameter is used to filter route target groups that contain the specified member instance ID.
         self.member_id = member_id
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. If not all results are returned in a query, a value is returned for NextToken. In the next query, set NextToken to this value.
+        # The token used to retrieve the next page of results. Leave this parameter empty for the first query or when no subsequent query is required. For subsequent queries, set this parameter to the NextToken value returned in the previous API call.
         self.next_token = next_token
-        # The region ID of the VPC to which the route target group belongs. You can call the DescribeRegions operation to query the region ID.
+        # The region ID of the VPC to which the route target group belongs. You can call the DescribeRegions operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group. For more information about resource groups, see What is a resource group.
+        # The ID of the resource group. For more information about resource groups, see What is a resource group?
         self.resource_group_id = resource_group_id
-        # The list of route target group IDs.
-        # 
-        # You can specify up to 50 instance IDs in a single query.
+        # The list of routing target group instance IDs. You can specify up to 50 instance IDs in a single query.
         self.route_target_group_ids = route_target_group_ids
         # The list of tags.
         self.tag = tag
@@ -125,13 +123,9 @@ class ListRouteTargetGroupsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-        # 
-        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot enter an empty string. A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string. A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

@@ -16,15 +16,15 @@ class ListRouteTargetGroupsResponseBody(DaraModel):
         route_target_groups: List[main_models.ListRouteTargetGroupsResponseBodyRouteTargetGroups] = None,
         total_count: int = None,
     ):
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. If a value is returned for NextToken, the value indicates the token for the next query.
+        # The token used to retrieve the next page of results. If NextToken is empty, no subsequent query is required. If NextToken is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
         # The list of route target groups.
         self.route_target_groups = route_target_groups
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -96,19 +96,19 @@ class ListRouteTargetGroupsResponseBodyRouteTargetGroups(DaraModel):
     ):
         # The configuration mode of the route target group. Valid values:
         # 
-        # - **Active-Standby**: active/standby mode.
+        # - **Active-Standby**: Active/standby mode.
         self.config_mode = config_mode
-        # The time when the route target group was created.
+        # The time when the route target group was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
         # The region ID of the VPC to which the route target group belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         self.region_id = region_id
         # The ID of the resource group to which the route target group belongs.
         self.resource_group_id = resource_group_id
         # The description of the route target group.
         self.route_target_group_description = route_target_group_description
-        # The routing target group instance ID.
+        # The instance ID of the routing target group.
         self.route_target_group_id = route_target_group_id
         # The name of the route target group.
         self.route_target_group_name = route_target_group_name
@@ -116,18 +116,16 @@ class ListRouteTargetGroupsResponseBodyRouteTargetGroups(DaraModel):
         self.route_target_member_list = route_target_member_list
         # The status of the routing target group. Valid values:
         # 
-        # - **Recovering**: The active/standby switchback is in progress.
-        # - **Switched**: The active/standby switchover is complete.
-        # - **Available**: Available.
-        # - **Abnormal**: The standby instance has instance failures.
-        # - **Pending**: Being created.
-        # - **Switching**: The active/standby switchover is in progress.
-        # - **Deleting**: Being deleted.
+        # - **Recovering**: Switching back to the primary instance.
+        # - **Switched**: Primary/secondary switchover completed.
+        # - **Available**: active.
+        # - **Abnormal**: Secondary instance failures.
+        # - **Pending**: Creating.
+        # - **Switching**: Performing primary/secondary switchover.
+        # - **Deleting**: delete.
         # - **Unavailable**: Both primary and secondary instances have instance failures.
         self.status = status
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string. A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tags = tags
         # The ID of the VPC to which the route target group belongs.
         self.vpc_id = vpc_id
@@ -237,9 +235,7 @@ class ListRouteTargetGroupsResponseBodyRouteTargetGroupsTags(DaraModel):
     ):
         # The tag key of the resource.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string. A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -277,19 +273,19 @@ class ListRouteTargetGroupsResponseBodyRouteTargetGroupsRouteTargetMemberList(Da
         member_type: str = None,
         weight: int = None,
     ):
-        # The enable status of the route target group member. Valid values:
+        # The enablement status of the member in the route target group. Valid values:
         # 
         # - **Enable**: Enabled.
         # - **Disable**: Disabled.
         # 
-        # Only members in the Disable state can be modified to other instances. Members in the Enable state cannot be modified.
+        # Only members in the Disabled state can be changed to other instances. Members in the Enabled state cannot be modified.
         self.enable_status = enable_status
-        # The health check status of the route target group member. Valid values:
+        # The health check status of the member in the route target group. Valid values:
         # 
         # - **Normal**: Normal.
         # - **Abnormal**: Abnormal.
         self.health_check_status = health_check_status
-        # The routing target group member instance ID.
+        # The member instance ID of the routing target group.
         self.member_id = member_id
         # The member type of the route target group.
         # 
@@ -297,10 +293,10 @@ class ListRouteTargetGroupsResponseBodyRouteTargetGroupsRouteTargetMemberList(Da
         # 
         # - **GatewayLoadBalancerEndpoint**
         self.member_type = member_type
-        # The weight of the route target group member. Valid values:
+        # The weight of the member in the route target group. Valid values:
         # 
-        # - **100**: The member is the active instance.
-        # - **0**: The member is the standby instance.
+        # - **100**: The member is the primary instance.
+        # - **0**: The member is the secondary instance.
         # 
         # The weight can only be set during creation and cannot be modified.
         self.weight = weight

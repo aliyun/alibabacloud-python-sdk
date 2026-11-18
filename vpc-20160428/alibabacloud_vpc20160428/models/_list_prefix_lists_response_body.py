@@ -16,17 +16,17 @@ class ListPrefixListsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token. Valid values:
-        # - If **NextToken** is empty, no subsequent query exists.
+        # The pagination token for the next query. Valid values:
+        # - If **NextToken** is empty, no subsequent query is required.
         # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The information about the prefix lists.
+        # The details of the prefix lists.
         self.prefix_lists = prefix_lists
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of prefix lists returned.
         self.total_count = total_count
 
     def validate(self):
@@ -100,16 +100,16 @@ class ListPrefixListsResponseBodyPrefixLists(DaraModel):
         status: str = None,
         tags: List[main_models.ListPrefixListsResponseBodyPrefixListsTags] = None,
     ):
-        # The Classless Inter-Domain Routing (CIDR) block information of the prefix list.
+        # The Classless Inter-Domain Routing information of the prefix list.
         self.cidr_blocks = cidr_blocks
-        # The time when the prefix list was created.
+        # The time when the prefix list was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The IP version of the prefix list. Valid values:
         # 
         # - **IPV4**: IPv4.
         # - **IPV6**: IPv6.
         self.ip_version = ip_version
-        # The maximum number of entries for Classless Inter-Domain Routing (CIDR) blocks in the prefix list.
+        # The maximum number of entries of Classless Inter-Domain Routing in the prefix list.
         self.max_entries = max_entries
         # The Alibaba Cloud account to which the prefix list belongs.
         self.owner_id = owner_id
@@ -121,9 +121,9 @@ class ListPrefixListsResponseBodyPrefixLists(DaraModel):
         self.prefix_list_name = prefix_list_name
         # The status of the prefix list. Valid values:
         # 
-        # - **Created**: Created.
-        # - **Deleted**: Deleted.
-        # - **Modifying**: Being modified.
+        # - **Created**: The prefix list is created.
+        # - **Deleted**: The prefix list is deleted.
+        # - **Modifying**: The prefix list is being modified.
         # 
         # > This parameter has the same meaning and valid values as **Status**.
         self.prefix_list_status = prefix_list_status
@@ -135,16 +135,16 @@ class ListPrefixListsResponseBodyPrefixLists(DaraModel):
         self.resource_group_id = resource_group_id
         # The sharing type of the prefix list. Valid values:
         # 
-        # - **Shared**: The prefix list is a shared prefix list.
-        # - Empty: The prefix list is not a shared prefix list.
+        # - **Shared**: The prefix list is shared.
+        # - Empty: The prefix list is not shared.
         self.share_type = share_type
         # The status of the prefix list. Valid values:
         # 
-        # - **Created**: Created.
-        # - **Deleted**: Deleted.
-        # - **Modifying**: Being modified.
+        # - **Created**: The prefix list is created.
+        # - **Deleted**: The prefix list is deleted.
+        # - **Modifying**: The prefix list is being modified.
         self.status = status
-        # The tags.
+        # The list of tags.
         self.tags = tags
 
     def validate(self):

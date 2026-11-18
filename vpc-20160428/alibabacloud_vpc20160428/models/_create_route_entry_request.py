@@ -29,68 +29,68 @@ class CreateRouteEntryRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
         # The description of the custom route entry.
         # 
-        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
-        # The destination CIDR block of the custom route entry. IPv4 CIDR blocks, IPv6 CIDR blocks, prefix list destination CIDR blocks, and prefix list instance IDs are supported. The following requirements must be met:
+        # The destination CIDR block of the custom route entry. IPv4 CIDR blocks, IPv6 CIDR blocks, destination CIDR blocks of prefix lists, and instance IDs of prefix lists are supported. The destination CIDR block must meet the following requirements:
         #           
-        # - The destination CIDR block cannot point to or be contained by 100.64.0.0/10.  
+        # - The destination CIDR block cannot point to 100.64.0.0/10 or be contained by 100.64.0.0/10.  
         #  
-        # - The destination CIDR blocks of different route entries in the same route table must be unique.
+        # - Route entries in the same route table cannot have the same destination CIDR block.
         # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
-        # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run. The system checks the required parameters, request format, and business restrictions. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends a normal request. After the request passes the dry run, an HTTP 2xx status code is returned and the route is created.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: prechecks the request without creating the route entry. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The ID of the next hop instance of the custom route entry.
+        # The ID of the next hop instance for the custom route entry.
         # > If you set NextHopType to ECR, you can call the [DescribeExpressConnectRouterAssociation](https://help.aliyun.com/document_detail/2712069.html) operation to obtain the AssociationId as the next hop ID.
         # > -
         self.next_hop_id = next_hop_id
         # The information about the next hops.
         self.next_hop_list = next_hop_list
-        # The type of next hop for the custom route entry. Valid values: 
+        # The type of the next hop for the custom route entry. Valid values: 
         # 
-        # - **Instance** (default): ECS instance.
+        # - **Instance** (default): an ECS instance.
         # 
-        # - **HaVip**: high-availability virtual IP address.  
+        # - **HaVip**: a high-availability virtual IP address.  
         # 
-        # - **RouterInterface**: router interface.
+        # - **RouterInterface**: a vRouter interface.
         # 
-        # - **NetworkInterface**: network interface controller (NIC).
+        # - **NetworkInterface**: an elastic network interface controller (NIC).
         # 
-        # - **VpnGateway**: VPN gateway.
+        # - **VpnGateway**: a VPN gateway.
         # 
-        # - **IPv6Gateway**: IPv6 gateway.
+        # - **IPv6Gateway**: an IPv6 gateway.
         # 
-        # - **NatGateway**: NAT gateway.
+        # - **NatGateway**: a NAT gateway.
         # 
-        # - **Attachment**: transit router.
+        # - **Attachment**: a forward router.
         # 
-        # - **VpcPeer**: VPC peering connection.
-        # - **Ipv4Gateway**: IPv4 gateway.
-        # - **GatewayEndpoint**: gateway endpoint.
-        # - **Ecr**: Express Connect Router (ECR).
-        # - **GatewayLoadBalancerEndpoint**: Gateway Load Balancer endpoint (GWLBe).
-        # - **RouteTargetGroup**: route target group.
+        # - **VpcPeer**: a VPC peering connection.
+        # - **Ipv4Gateway**: an IPv4 gateway.
+        # - **GatewayEndpoint**: a gateway endpoint.
+        # - **Ecr**: an Express Connect Router (ECR).
+        # - **GatewayLoadBalancerEndpoint**: a gateway load balancing endpoint (GWLBe).
+        # - **RouteTargetGroup**: a routing target group.
         self.next_hop_type = next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the route table.
+        # The ID of the region to which the route table belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the custom route entry to add.
+        # The name of the custom route entry to be added.
         # 
-        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.route_entry_name = route_entry_name
-        # The ID of the route table to which you want to add a custom route entry.
+        # The ID of the route table to which you want to add the custom route entry.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id
@@ -208,11 +208,11 @@ class CreateRouteEntryRequestNextHopList(DaraModel):
         next_hop_type: str = None,
         weight: int = None,
     ):
-        # The ID of the next hop instance of the ECMP route.
+        # The ID of the next hop instance for the ECMP route.
         self.next_hop_id = next_hop_id
-        # The type of next hop for the ECMP route. Set the value to **RouterInterface** (router interface).
+        # The type of the next hop for the ECMP route. Set the value to **RouterInterface**, which specifies a router interface.
         self.next_hop_type = next_hop_type
-        # The weight of the next hop of the ECMP route.
+        # The route weight of the next hop for the ECMP route.
         self.weight = weight
 
     def validate(self):

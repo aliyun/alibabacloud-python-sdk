@@ -21,34 +21,34 @@ class CreateIPv6TranslatorRequest(DaraModel):
         resource_owner_id: int = None,
         spec: str = None,
     ):
-        # Specifies whether automatic payment is enabled for the subscription bill. Valid values: **true|false**.
+        # Specifies whether automatic payment is enabled for subscription bills. Valid values: **true** and **false**.
         self.auto_pay = auto_pay
-        # The billing bandwidth of the IPv6 Translation Service instance, in Mbit/s. Valid values: **1** to **200**. If you do not set the bandwidth for translation mapping entries, the mapping entries in the instance share this bandwidth. 
+        # The bandwidth of the IPv6 Translation Service instance. Unit: Mbit/s. Valid values: **1** to **200**. If you do not specify the bandwidth for an IPv6 translation mapping entry, all IPv6 translation mapping entries in the instance share this bandwidth. 
         # 
         # > If you do not specify the bandwidth, the default value is 10 Mbit/s.
         self.bandwidth = bandwidth
-        # The client token that is used to ensure the idempotence of the request. The client token must be unique among different requests and cannot exceed 64 ASCII characters in length.
+        # The client token that is used to ensure the idempotence of the request. The client token must be unique across different requests and can contain a maximum of 64 ASCII characters.
         self.client_token = client_token
         # The subscription duration. Valid values:
         # 
         # - If the billing cycle is **Month**, valid values are **1** to **9**.  
-        # - If the billing cycle is **Year**, the value is **3**.
+        # - If the billing cycle is **Year**, the valid value is **3**.
         self.duration = duration
-        # The name of the IPv6 Translation Service instance. The name defaults to the instance ID. The name must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-), but cannot start with `http://` or `https://`.
+        # The name of the IPv6 Translation Service instance. Default value: the instance ID. The name must be 2 to 100 characters in length, and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The payment method of the IPv6 Translation Service instance. Valid values: 
+        # The billing method of the IPv6 Translation Service instance. Valid values: 
         # 
         # - **PREPAY**: subscription.
         # 
         # - **POSTPAY**: pay-as-you-go.
         self.pay_type = pay_type
-        # The billing cycle for subscription. Valid values: 
+        # The billing cycle of the subscription instance. Valid values: 
         # 
-        # - **Month** (default): monthly subscription.
+        # - **Month** (default): billed on a monthly basis.
         # 
-        # - **Year**: yearly subscription.
+        # - **Year**: billed on a yearly basis.
         self.pricing_cycle = pricing_cycle
         # The region of the IPv6 Translation Service instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
@@ -56,7 +56,7 @@ class CreateIPv6TranslatorRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The specification of the IPv6 Translation Service instance. Valid values: **small**.
+        # The specification of the IPv6 Translation Service instance. Valid value: **small**.
         self.spec = spec
 
     def validate(self):

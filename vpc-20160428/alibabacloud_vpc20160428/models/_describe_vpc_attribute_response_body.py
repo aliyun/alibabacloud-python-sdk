@@ -43,14 +43,14 @@ class DescribeVpcAttributeResponseBody(DaraModel):
         self.associated_propagation_sources = associated_propagation_sources
         # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
-        # Indicates whether ClassicLink is enabled. Valid values:
+        # Indicates whether the ClassicLink feature is enabled. Valid values:
         # 
-        # - **true**: ClassicLink is enabled.
+        # - **true**: The ClassicLink feature is enabled.
         # 
-        # - **false** (default): ClassicLink is not enabled.
+        # - **false** (default): The ClassicLink feature is disabled.
         self.classic_link_enabled = classic_link_enabled
         self.cloud_resources = cloud_resources
-        # The creation time of the VPC.
+        # The time when the VPC was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.creation_time = creation_time
         # The description of the VPC.
         self.description = description
@@ -58,15 +58,15 @@ class DescribeVpcAttributeResponseBody(DaraModel):
         self.dhcp_options_set_id = dhcp_options_set_id
         # The status of the DHCP options set. Valid values:
         # 
-        # - **Available**: active.
+        # - **Available**: The DHCP options set is available.
         # 
-        # - **InUse**: in use.
+        # - **InUse**: The DHCP options set is in use.
         # 
-        # - **Deleted**: deleted.
+        # - **Deleted**: The DHCP options set is deleted.
         # 
-        # - **Pending**: being configured.
+        # - **Pending**: The DHCP options set is being configured.
         self.dhcp_options_set_status = dhcp_options_set_status
-        # Indicates whether DNS hostnames are enabled.
+        # Indicates whether the DNS hostname feature is enabled.
         self.dns_hostname_status = dns_hostname_status
         # Indicates whether IPv6 is enabled.
         self.enabled_ipv_6 = enabled_ipv_6
@@ -87,24 +87,25 @@ class DescribeVpcAttributeResponseBody(DaraModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.secondary_cidr_blocks = secondary_cidr_blocks
         # The status of the VPC. Valid values:
         # 
-        # - **Available**: active.
+        # - **Available**: The VPC is available.
         # 
-        # - **Pending**: being configured.
+        # - **Pending**: The VPC is being configured.
         self.status = status
-        # Indicates whether the VPC operates in centralized control with IPv4 gateway mode.
-        # - **true**: The VPC operates in centralized control with IPv4 gateway mode, where Internet traffic is centrally managed by the IPv4 gateway (activated after the IPv4 gateway is created and routing is configured), or the VPC is a private network-only VPC (the IPv4 gateway is deleted in private mode).
-        # - **false**: The VPC operates in Direct Internet Access mode (access mode).
+        # Indicates whether the VPC operates in the centralized control mode with the IPv4 gateway. Valid values:
         # 
-        # > For details, see [IPv4 gateway](https://help.aliyun.com/document_detail/376445.html).
+        # - **true**: The VPC operates in the centralized control mode with the IPv4 gateway. Internet traffic is centrally managed by the IPv4 gateway (the IPv4 gateway is activated after it is created and routes are configured), or the VPC is a private network-only VPC (the IPv4 gateway is deleted in private mode).
+        # - **false**: Direct Internet Access mode.
+        # 
+        # > For more information, see [IPv4 gateway](https://help.aliyun.com/document_detail/376445.html).
         self.support_ipv_4gateway = support_ipv_4gateway
         self.tags = tags
         self.user_cidrs = user_cidrs
-        # The ID of the vRouter in the VPC.
+        # The ID of the vRouter of the VPC.
         self.vrouter_id = vrouter_id
         self.v_switch_ids = v_switch_ids
         # The ID of the VPC.

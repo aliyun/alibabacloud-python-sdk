@@ -11,17 +11,15 @@ class DisassociateMacSecKeyRequest(DaraModel):
         physical_connection_id: str = None,
         region_id: str = None,
     ):
-        # The key name. Only hexadecimal characters are supported. Lowercase characters are automatically converted to uppercase. When the encryption algorithm is GCM-AES-128 or GCM-AES-XPN-128, the length must be 32 hexadecimal characters. When the encryption algorithm is GCM-AES-256 or GCM-AES-XPN-256, the length must be 64 hexadecimal characters. This value must be a key name that has been associated with the target Express Connect circuit by calling AssociateMacSecKey.
+        # The name of the key. Only hexadecimal characters are supported, and lowercase letters are automatically converted to uppercase letters. The length must be 32 hexadecimal characters when the encryption algorithm is GCM-AES-128 or GCM-AES-XPN-128, and 64 hexadecimal characters when the encryption algorithm is GCM-AES-256 or GCM-AES-XPN-256. The value must be the name of a key that has been associated with the target Express Connect circuit by calling the AssociateMacSecKey operation.
         # 
         # This parameter is required.
         self.ckn = ckn
-        # The ID of the Express Connect circuit. The Express Connect circuit must be in the **Enabled** state and its **BusinessStatus** must be **Normal**. You can call DescribePhysicalConnections to query the circuit.
+        # The ID of the Express Connect circuit. The Express Connect circuit must be in the **Enabled** state and its **BusinessStatus** must be **Normal**. You can call the DescribePhysicalConnections operation to query the status.
         # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id
-        # The region ID of the Express Connect circuit.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
+        # The region ID of the Express Connect circuit. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -10,7 +10,7 @@ class CreateExpressConnectTrafficQosResponseBody(DaraModel):
         qos_id: str = None,
         request_id: str = None,
     ):
-        # The QoS policy ID.
+        # The ID of the QoS policy.
         self.qos_id = qos_id
         # The request ID.
         self.request_id = request_id

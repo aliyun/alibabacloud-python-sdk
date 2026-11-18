@@ -24,9 +24,9 @@ class DescribeIPv6TranslatorAclListAttributesRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page when paging is used. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region of the access control policy group.
+        # The region ID of the access control policy group.
         # 
         # This parameter is required.
         self.region_id = region_id

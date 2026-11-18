@@ -15,15 +15,15 @@ class AllocateEipAddressProResponseBody(DaraModel):
     ):
         # The ID of the EIP.
         self.allocation_id = allocation_id
-        # The IP address assigned to the specified EIP. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
+        # The IP address allocated to the specified EIP. This parameter is returned only if **InstanceChargeType** is set to **PostPaid**.
         self.eip_address = eip_address
         # The order ID.
-        # <props="china">This parameter is returned when InstanceChargeType (the billing method of the EIP) is set to PrePaid (subscription). If AutoPay is set to false, which means automatic payment is not enabled, go to the [Order Center](https://usercenter2.aliyun.com/order/list) to complete the payment.
-        # <props="intl">This parameter is returned when InstanceChargeType (the billing method of the EIP) is set to PrePaid (subscription). If AutoPay is set to false, which means automatic payment is not enabled, go to the [Order Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
+        # <props="china">This parameter is returned if InstanceChargeType (the billing method of the EIP to be allocated) is set to PrePaid (subscription). If AutoPay is set to false, which means automatic payment is disabled, go to the [User Center](https://usercenter2.aliyun.com/order/list) to complete the payment.
+        # <props="intl">This parameter is returned if InstanceChargeType (the billing method of the EIP to be allocated) is set to PrePaid (subscription). If AutoPay is set to false, which means automatic payment is disabled, go to the [User Center](https://usercenter2-intl.aliyun.com/order/list) to complete the payment.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
-        # The resource group ID. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
+        # The resource group ID. This parameter is returned only if **InstanceChargeType** is set to **PostPaid**.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -25,30 +25,30 @@ class CreateFullNatEntryRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The backend domain name for FULLNAT address translation.
+        # The backend domain name in the FULLNAT address translation.
         self.access_domain = access_domain
-        # The backend IP address for FULLNAT address translation.
+        # The backend IP address in the FULLNAT address translation.
         self.access_ip = access_ip
-        # The backend port for FULLNAT port mapping. Valid values: **1** to **65535**.
+        # The backend port in the FULLNAT port mapping. Valid values: **1** to **65535**.
         # 
         # This parameter is required.
         self.access_port = access_port
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can generate a parameter value from your client to ensure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to only perform a dry run for this request. Valid values:
         # 
-        # - **true**: sends a dry run request. The system checks the request for potential issues, including missing required parameters, invalid parameter values, and whether the Resource Access Management (RAM) user is granted the required authorization. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends a normal request. If the request passes the check, a 2xx HTTP status code is returned and the FULLNAT entry is added.
+        # - **true**: performs a dry run without creating the FULLNAT entry. The system checks whether your AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a Normal request. If the request passes the check, a 2xx HTTP status code is returned and the FULLNAT entry is created.
         self.dry_run = dry_run
         # The description of the FULLNAT entry.
         # 
-        # The description can be empty or 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+        # The description can be left empty or be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.full_nat_entry_description = full_nat_entry_description
-        # The name of the FULLNAT entry. The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It cannot start with http:// or https://.
+        # The name of the FULLNAT entry. The name must be 2 to 128 characters in length, and must start with a letter or Chinese character. It cannot start with `http://` or `https://`.
         self.full_nat_entry_name = full_nat_entry_name
         # The ID of the FULLNAT table to which the FULLNAT entry belongs.
         # 
@@ -56,20 +56,20 @@ class CreateFullNatEntryRequest(DaraModel):
         self.full_nat_table_id = full_nat_table_id
         # The protocol type of the Redirection Port. Valid values:
         # 
-        # -  **TCP**: forwards TCP packets. 
-        # -  **UDP**: forwards UDP packets.
+        # - **TCP**: forwards TCP packets. 
+        # - **UDP**: forwards UDP packets.
         # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
-        # The NAT IP address that provides address translation.
+        # The NAT IP address that is used for address translation.
         # 
         # This parameter is required.
         self.nat_ip = nat_ip
-        # The frontend port for FULLNAT port mapping. Valid values: **1** to **65535**.
+        # The frontend port in the FULLNAT port mapping. Valid values: **1** to **65535**.
         # 
         # > If you do not specify this parameter, the system randomly assigns an available port.
         self.nat_ip_port = nat_ip_port
-        # The ID of the network interface controller (NIC).
+        # The ID of the elastic network interfaces (ENIs) (network interface controller (NIC)).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
@@ -77,7 +77,7 @@ class CreateFullNatEntryRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the VPC NAT gateway to which the FULLNAT entry belongs.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

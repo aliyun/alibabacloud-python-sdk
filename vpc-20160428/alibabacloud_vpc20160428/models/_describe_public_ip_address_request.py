@@ -16,7 +16,7 @@ class DescribePublicIpAddressRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The version of the IP protocol. Valid values:
+        # The IP protocol version. Valid values:
         # 
         # - **ipv4** (default): IPv4.
         # 
@@ -31,7 +31,7 @@ class DescribePublicIpAddressRequest(DaraModel):
         # Valid values: **1** to **100**. Default value: **100**.
         self.page_size = page_size
         # The region to query.
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

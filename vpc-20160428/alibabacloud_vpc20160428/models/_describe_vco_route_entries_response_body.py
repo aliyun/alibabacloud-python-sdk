@@ -17,13 +17,13 @@ class DescribeVcoRouteEntriesResponseBody(DaraModel):
         vco_route_entries: List[main_models.DescribeVcoRouteEntriesResponseBodyVcoRouteEntries] = None,
         vpn_route_counts: List[main_models.DescribeVcoRouteEntriesResponseBodyVpnRouteCounts] = None,
     ):
-        # The page number of the list.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page for paging queries.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
         # The list of routes.
         self.vco_route_entries = vco_route_entries
@@ -115,8 +115,8 @@ class DescribeVcoRouteEntriesResponseBodyVpnRouteCounts(DaraModel):
         self.route_entry_type = route_entry_type
         # The source of the BGP route.
         # 
-        # - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from the transit router.
-        # - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from the on-premises data center.
+        # - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from a transit router.
+        # - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from an on-premises data center.
         self.source = source
 
     def validate(self):
@@ -159,6 +159,7 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(DaraModel):
         create_time: int = None,
         next_hop: str = None,
         next_hop_tunnel_id_list: List[str] = None,
+        prefix_list_id: str = None,
         route_dest: str = None,
         route_entry_type: str = None,
         source: str = None,
@@ -172,15 +173,17 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(DaraModel):
         self.community = community
         # The timestamp when the destination route was created.
         # 
-        # The timestamp is in the UNIX format and represents the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The timestamp follows the UNIX time format. It represents the total number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
         self.create_time = create_time
         # The next hop of the route.
         self.next_hop = next_hop
-        # The list of next-hop tunnels.
+        # The list of next hop tunnels.
         # 
         # > - This information is returned only for IPsec-VPN connections in dual-tunnel mode.
-        # > - Tunnel information is returned only when the tunnel status is **Phase 2 negotiations succeeded**.
+        # > - Tunnel information is returned only when the tunnel status is **Phase 2 negotiation succeeded**.
         self.next_hop_tunnel_id_list = next_hop_tunnel_id_list
+        # The instance ID of the prefix list.
+        self.prefix_list_id = prefix_list_id
         # The destination CIDR block of the route.
         self.route_dest = route_dest
         # The type of the route.
@@ -190,19 +193,19 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(DaraModel):
         self.route_entry_type = route_entry_type
         # The source of the BGP route.
         # 
-        # - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from the transit router.
-        # - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from the on-premises data center.
+        # - **CLOUD**: The BGP route is learned by the IPsec-VPN connection from a transit router.
+        # - **VPN_BGP**: The BGP route is learned by the IPsec-VPN connection from an on-premises data center.
         self.source = source
         # The status of the route.
         # 
-        # - **published**: The destination route has been published to the transit router instance.
+        # - **published**: The destination route is published to the transit router.
         # - **Active**: The BGP route is available.
         self.state = state
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
         # The weight of the destination route.
         # 
-        # > This parameter is not in use.
+        # > This parameter does not take effect.
         self.weight = weight
 
     def validate(self):
@@ -227,6 +230,9 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(DaraModel):
 
         if self.next_hop_tunnel_id_list is not None:
             result['NextHopTunnelIdList'] = self.next_hop_tunnel_id_list
+
+        if self.prefix_list_id is not None:
+            result['PrefixListId'] = self.prefix_list_id
 
         if self.route_dest is not None:
             result['RouteDest'] = self.route_dest
@@ -264,6 +270,9 @@ class DescribeVcoRouteEntriesResponseBodyVcoRouteEntries(DaraModel):
 
         if m.get('NextHopTunnelIdList') is not None:
             self.next_hop_tunnel_id_list = m.get('NextHopTunnelIdList')
+
+        if m.get('PrefixListId') is not None:
+            self.prefix_list_id = m.get('PrefixListId')
 
         if m.get('RouteDest') is not None:
             self.route_dest = m.get('RouteDest')

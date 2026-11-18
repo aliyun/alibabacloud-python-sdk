@@ -28,7 +28,7 @@ class CreateRouteTargetGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.config_mode = config_mode
-        # The region ID of the route target group. You can call the DescribeRegions operation to query the region ID.
+        # The region ID of the route target group. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -36,14 +36,13 @@ class CreateRouteTargetGroupRequest(DaraModel):
         # 
         # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/2381067.html).
         self.resource_group_id = resource_group_id
-        # The description of the route target group.
-        # The description must be 1 to 256 characters in length and cannot start with http:// or https://.
+        # The description of the route target group. The description must be 1 to 256 characters in length and cannot start with http:// or https://.
         self.route_target_group_description = route_target_group_description
         # The name of the route target group.
         # 
         # The name must be 1 to 128 characters in length and cannot start with http:// or https://.
         self.route_target_group_name = route_target_group_name
-        # The member list of the route target group.
+        # The list of members in the route target group.
         # 
         # In active/standby mode, the following limits apply to route target group members:
         # 
@@ -196,13 +195,13 @@ class CreateRouteTargetGroupRequestRouteTargetMemberList(DaraModel):
         # 
         # This parameter is required.
         self.member_id = member_id
-        # The member type of the route target group.
+        # The type of the route target group member.
         # 
         # Supported type:
         # 
         # - **GatewayLoadBalancerEndpoint**
         # 
-        # In active/standby mode, all members of the route target group must be of the same type.
+        # In active/standby mode, all members in the route target group must be of the same type.
         # 
         # This parameter is required.
         self.member_type = member_type

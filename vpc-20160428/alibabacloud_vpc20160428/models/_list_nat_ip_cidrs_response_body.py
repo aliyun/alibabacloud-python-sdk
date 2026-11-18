@@ -17,13 +17,13 @@ class ListNatIpCidrsResponseBody(DaraModel):
     ):
         # The list of NAT CIDR blocks.
         self.nat_ip_cidrs = nat_ip_cidrs
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # - If **NextToken** is empty, no subsequent requests exist.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The token for the next query. Valid values:
+        # - If **NextToken** is empty, no next query is available.
+        # - If **NextToken** returns a value, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of NAT CIDR block entries returned.
+        # The total number of NAT CIDR blocks returned.
         self.total_count = total_count
 
     def validate(self):
@@ -101,7 +101,7 @@ class ListNatIpCidrsResponseBodyNatIpCidrs(DaraModel):
         self.nat_ip_cidr_id = nat_ip_cidr_id
         # The name of the NAT CIDR block.
         self.nat_ip_cidr_name = nat_ip_cidr_name
-        # The status of the NAT CIDR block. The value is **Available**, which indicates that the NAT CIDR block is available.
+        # The status of the NAT CIDR block. Valid values: **Available**, which indicates that the NAT CIDR block is active.
         self.nat_ip_cidr_status = nat_ip_cidr_status
 
     def validate(self):

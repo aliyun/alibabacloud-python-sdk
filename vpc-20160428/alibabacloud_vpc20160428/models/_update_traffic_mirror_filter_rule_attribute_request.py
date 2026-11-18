@@ -25,27 +25,27 @@ class UpdateTrafficMirrorFilterRuleAttributeRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the value, and you must ensure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The destination CIDR block of the network traffic for the inbound or outbound rule to be modified.
+        # The destination CIDR block of the network traffic for the inbound or outbound rule to be updated.
         self.destination_cidr_block = destination_cidr_block
-        # The destination port range of the network traffic for the inbound or outbound rule to be modified.
+        # The destination port range of the network traffic for the inbound or outbound rule to be updated.
         # 
-        # > If **Protocol** is set to **ICMP**, the port range cannot be modified.
+        # > If **Protocol** is set to **ICMP**, you cannot update the port range.
         self.destination_port_range = destination_port_range
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to only precheck the request. Valid values:
         # 
-        # - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **true**: prechecks the request without updating the configuration of the inbound or outbound rule. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # 
-        # - **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the configuration of the inbound or outbound rule is modified.
+        # - **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the configuration of the inbound or outbound rule is updated.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The priority of the inbound or outbound rule to be modified. A smaller value indicates a higher priority.
+        # The priority of the inbound or outbound rule to be updated. A smaller value indicates a higher priority.
         self.priority = priority
-        # The Protocol Type of the network traffic to be mirrored by the inbound or outbound rule. Valid values:
+        # The protocol type of the network traffic to be mirrored by the inbound or outbound rule to be updated. Valid values:
         # 
         # - **ALL**: all protocols.
         # 
@@ -57,24 +57,24 @@ class UpdateTrafficMirrorFilterRuleAttributeRequest(DaraModel):
         self.protocol = protocol
         # The region ID of the traffic mirror.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list. For more information about regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list. For more information about the regions that support traffic mirroring, see [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The collection policy of the inbound or outbound rule to be modified. Valid values:
+        # The collection policy of the inbound or outbound rule to be updated. Valid values:
         # 
         # - **accept**: collects network traffic.
         # 
         # - **drop**: does not collect network traffic.
         self.rule_action = rule_action
-        # The source CIDR block of the network traffic for the inbound or outbound rule to be modified.
+        # The source CIDR block of the network traffic for the inbound or outbound rule to be updated.
         self.source_cidr_block = source_cidr_block
-        # The source port range of the network traffic for the inbound or outbound rule to be modified.
-        # > If **Protocol** is set to **ICMP**, the port range cannot be modified.
+        # The source port range of the network traffic for the inbound or outbound rule to be updated.
+        # > If **Protocol** is set to **ICMP**, you cannot update the port range.
         self.source_port_range = source_port_range
-        # The instance ID of the inbound or outbound rule of the traffic mirroring filter.
+        # The instance ID of the inbound or outbound traffic mirroring rule.
         # 
         # This parameter is required.
         self.traffic_mirror_filter_rule_id = traffic_mirror_filter_rule_id

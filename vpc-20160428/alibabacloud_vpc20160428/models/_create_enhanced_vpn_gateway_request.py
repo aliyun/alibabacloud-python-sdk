@@ -24,24 +24,24 @@ class CreateEnhancedVpnGatewayRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The second vSwitch associated with the enhanced VPN VPC-connected instance.
+        # The ID of the second vSwitch associated with the enhanced VPN VPC-connected instance.
         # 
         # - This parameter is required.
-        # - You must specify two vSwitches in different zones under the VPC associated with the enhanced VPN VPC-connected instance to implement zone-level disaster recovery for IPsec-VPN connections.
-        # - For regions that support only one zone, zone-level disaster recovery is not supported. Specify two different vSwitches in the same zone to achieve high availability for IPsec-VPN connections. You can also specify the same vSwitch.
+        # - You must specify two vSwitches that are deployed in different zones within the VPC associated with the enhanced VPN VPC-connected instance to implement zone-level disaster recovery for IPsec-VPN connections.
+        # - For regions that support only one zone, zone-level disaster recovery is not supported. Specify two different vSwitches in the zone to implement high availability for IPsec-VPN connections. You can also specify the same vSwitch.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
         # The type of the enhanced VPN gateway. Valid values:
-        # - **Enhanced.SiteToSite**: enhanced site-to-cloud VPN that covers only IPsec functionality.
+        # - **Enhanced.SiteToSite**: enhanced site-to-cloud VPN gateway, which supports only IPsec.
         # 
         # This parameter is required.
         self.gateway_type = gateway_type
         # The name of the enhanced VPN gateway. The default value is the ID of the enhanced VPN gateway.
         # 
-        # The name must be 2 to 100 characters in length. It cannot start with http:// or https://. It must start with an uppercase or lowercase letter and can contain uppercase and lowercase letters, digits, underscores (_), hyphens (-), and periods (.). Other special characters are not supported.
+        # The name must be 2 to 100 characters in length, and cannot start with http:// or https://. It must start with a letter and can contain letters, digits, underscores (_), hyphens (-), and periods (.). Other special characters are not supported.
         self.name = name
         # The network type of the VPN gateway. Valid values:
         # 
@@ -51,7 +51,7 @@ class CreateEnhancedVpnGatewayRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the enhanced VPN gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -59,15 +59,15 @@ class CreateEnhancedVpnGatewayRequest(DaraModel):
         # 
         # - You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group IDs.
         # - If you do not specify a resource group ID, the enhanced VPN gateway belongs to the default resource group after it is created.
-        # - After the enhanced VPN gateway is created, if you create IPsec-VPN connections under the enhanced VPN gateway (IPsec-VPN connections bound to the enhanced VPN gateway), these resources belong to the same resource group as the enhanced VPN gateway and cannot be modified independently. If you change the resource group of the enhanced VPN gateway, the resource group of the preceding resources is also changed.
+        # - After the enhanced VPN gateway is created, if you create IPsec-VPN connections under the enhanced VPN gateway (in scenarios where IPsec-VPN connections are bound to the enhanced VPN gateway), these resources directly belong to the resource group of the enhanced VPN gateway and cannot be modified. If you change the resource group of the enhanced VPN gateway, the resource group of these resources is also changed.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The vSwitch associated with the enhanced VPN gateway instance.
+        # The ID of the vSwitch associated with the enhanced VPN gateway instance.
         # 
         # - You must specify a vSwitch and also specify the **DisasterRecoveryVSwitchId** parameter.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the enhanced VPN gateway belongs.
+        # The ID of the virtual private cloud (VPC) to which the enhanced VPN gateway belongs.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

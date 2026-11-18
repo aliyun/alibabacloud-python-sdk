@@ -19,13 +19,13 @@ class ModifyExpressCloudConnectionAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The local BGP autonomous system (AS) number to be configured on the Smart Access Gateway device.
+        # The local BGP Autonomous System (AS) number to be configured on the Smart Access Gateway (SAG) device.
         self.bgp_as = bgp_as
-        # The cloud-side IP address used for peering with the Smart Access Gateway device.
+        # The cloud-side IP address used to connect the Smart Access Gateway (SAG) device to Alibaba Cloud.
         self.ce_ip = ce_ip
-        # The description of the Express Cloud Connection instance.
+        # The description of the Express Cloud Connection.
         self.description = description
-        # The instance ID of the Express Cloud Connection instance.
+        # The Express Cloud Connection instance ID.
         # 
         # This parameter is required.
         self.ecc_id = ecc_id
@@ -33,7 +33,7 @@ class ModifyExpressCloudConnectionAttributeRequest(DaraModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The local IP address of the Smart Access Gateway device used for peering with the cloud.
+        # The local IP address of the Smart Access Gateway (SAG) device used to connect to Alibaba Cloud.
         self.pe_ip = pe_ip
         # The region ID of the Express Cloud Connection instance.
         # 

@@ -17,7 +17,7 @@ class DescribeIpv6GatewaysResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.ipv_6gateways = ipv_6gateways
-        # The current page number.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size

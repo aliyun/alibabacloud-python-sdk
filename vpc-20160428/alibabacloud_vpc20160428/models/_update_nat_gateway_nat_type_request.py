@@ -20,15 +20,15 @@ class UpdateNatGatewayNatTypeRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to only perform a dry run for this request. Valid values:
         # 
-        # **true**: performs a dry run without upgrading the Internet NAT gateway type. The system checks whether your AccessKey pair is valid, whether Resource Access Management (RAM) users are granted permissions, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # **true**: performs a dry run for the request without upgrading the Internet NAT gateway. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user has the required authorization, and whether the required parameters are specified. If the request fails the dry run, the corresponding error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # 
-        # **false** (default): performs a dry run and sends the request. If the check succeeds, a 2xx HTTP status code is returned and the Internet NAT gateway type is upgraded.
+        # **false** (default): sends a normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the Internet NAT gateway is upgraded.
         self.dry_run = dry_run
         # The instance ID of the standard Internet NAT gateway that you want to upgrade.
         # 
@@ -42,15 +42,15 @@ class UpdateNatGatewayNatTypeRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the standard Internet NAT gateway that you want to upgrade.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The vSwitch to which the enhanced Internet NAT gateway belongs after the upgrade.
+        # The ID of the vSwitch to which the enhanced Internet NAT gateway belongs after the upgrade.
         # 
-        # >If you do not set this parameter, the system randomly creates the enhanced Internet NAT gateway on any vSwitch in the VPC.
+        # > If you do not specify this parameter, the system randomly assigns the enhanced Internet NAT gateway to a vSwitch in the VPC.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id

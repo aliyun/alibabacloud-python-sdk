@@ -18,34 +18,32 @@ class SetHighDefinitionMonitorLogStatusRequest(DaraModel):
         resource_owner_id: int = None,
         status: str = None,
     ):
-        # The instance ID of the instance for which you want to configure high-definition second-level monitoring.
+        # The instance ID for which you want to configure high-precision second-level monitoring.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The type of the instance. Set the value to **EIP**.
         self.instance_type = instance_type
-        # The name of the LogProject in Simple Log Service.
+        # The name of the LogProject.
         # 
         # This parameter is required.
         self.log_project = log_project
-        # The name of the LogStore in Simple Log Service.
+        # The name of the Logstore.
         # 
         # This parameter is required.
         self.log_store = log_store
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The high-definition second-level monitoring status of the instance. Valid values:
+        # The status of high-precision second-level monitoring for the instance. Valid values:
         # 
-        # - **ON**: Enables high-definition second-level monitoring.
-        # - **OFF**: Disables high-definition second-level monitoring.
+        # - **ON**: enables high-precision second-level monitoring.
+        # - **OFF**: disables high-precision second-level monitoring.
         # 
         # This parameter is required.
         self.status = status

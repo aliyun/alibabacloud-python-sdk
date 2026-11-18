@@ -13,7 +13,7 @@ class CreateIPv6TranslatorResponseBody(DaraModel):
         request_id: str = None,
         spec: str = None,
     ):
-        # The ID of the IPv6 Translation Service instance.
+        # The IPv6 Translation Service instance ID.
         self.ipv_6translator_id = ipv_6translator_id
         # The name of the IPv6 Translation Service instance.
         self.name = name

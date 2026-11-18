@@ -27,20 +27,21 @@ class CreateIPv6TranslatorEntryRequest(DaraModel):
         # The ID of the associated access control policy group.
         self.acl_id = acl_id
         # Specifies whether to enable access control. Valid values:
-        # - **on**: Enabled.
-        # - **off**: Disabled.
+        # 
+        # - **on**: yes.
+        # - **off**: no.
         self.acl_status = acl_status
-        # The type of access control:
+        # The access control type. Valid values:
         # 
-        # - **white**: Allows the IPv6 addresses in the access control policy group to access backend services.
+        # - **white**: allows IPv6 addresses in the access control policy group to access the backend service.
         # 
-        # - **black**: Denies the IPv6 addresses in the access control policy group from accessing backend services.
+        # - **black**: denies IPv6 addresses in the access control policy group from accessing the backend service.
         self.acl_type = acl_type
-        # The port used by the IPv6 address allocated by the IPv6 Translation Service instance.
+        # The port used by the IPv6 address assigned to the IPv6 Translation Service instance.
         # 
         # This parameter is required.
         self.allocate_ipv_6port = allocate_ipv_6port
-        # The public IPv4 address that requires IPv6 services (the IPv4 address of the IPv4-only server).
+        # The public IPv4 address that requires IPv6 services, which is the IPv4 address of an IPv4-only server.
         # 
         # This parameter is required.
         self.backend_ipv_4addr = backend_ipv_4addr
@@ -50,14 +51,14 @@ class CreateIPv6TranslatorEntryRequest(DaraModel):
         self.backend_ipv_4port = backend_ipv_4port
         # The peak bandwidth of the IPv6 translation mapping entry. Valid values: 
         #         
-        # - -1 (default): No bandwidth limit is imposed on the IPv6 translation mapping entry.  
-        # - 1-200Mbps: The bandwidth value of the mapping entry.            
+        # - -1: does not limit the peak bandwidth of the IPv6 translation mapping entry. This is the default value.  
+        # - 1 to 200: the bandwidth value of the mapping entry, in Mbit/s.            
         # 
-        # > The sum of peak bandwidth values of all IPv6 translation mapping entries cannot exceed the peak bandwidth of the instance.
+        # > The sum of the peak bandwidth values of all IPv6 translation mapping entries cannot exceed the peak bandwidth of the instance.
         self.entry_bandwidth = entry_bandwidth
         # The description of the IPv6 translation mapping entry.
         self.entry_description = entry_description
-        # The name of the IPv6 translation mapping entry. The name must be 2 to 100 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
+        # The name of the IPv6 translation mapping entry. The name must be 2 to 100 characters in length, and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `http://` or `https://`.
         self.entry_name = entry_name
         # The instance ID of the IPv6 Translation Service.
         # 
@@ -73,8 +74,8 @@ class CreateIPv6TranslatorEntryRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The protocol type. Valid values:
         # 
-        # - **tcp**: Forwards TCP packets.  
-        # - **udp**: Forwards UDP packets.
+        # - **tcp**: forwards TCP packets.  
+        # - **udp**: forwards UDP packets.
         # 
         # This parameter is required.
         self.trans_protocol = trans_protocol

@@ -16,17 +16,17 @@ class GetVSwitchCidrReservationUsageResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of allocated reserved CIDR blocks for a vSwitch.
+        # The list of the reserved CIDR block for a vSwitch that is allocated and used.
         self.cidr_reservation_usages = cidr_reservation_usages
-        # The number of entries per page in a paged query.
+        # The number of entries returned per page.
         self.max_results = max_results
-        # The pagination token. Valid values:
-        # - If **NextToken** is empty, no subsequent query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The pagination token that is used to retrieve the next page of results. Valid values:
+        # - If **NextToken** is empty, no subsequent query is available.
+        # - If **NextToken** returns a value, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -91,13 +91,13 @@ class GetVSwitchCidrReservationUsageResponseBodyCidrReservationUsages(DaraModel)
         v_switch_cidr_reservation_id: str = None,
         v_switch_id: str = None,
     ):
-        # The prefix CIDR block allocated from the current reserved CIDR block for a vSwitch to an elastic network interface (ENI).
+        # The IP prefix that is allocated from the current reserved CIDR block to elastic network interfaces (ENIs) (network interface controller (NIC)).
         self.ip_prefix_cidr = ip_prefix_cidr
         # The instance ID of the reserved CIDR block allocated by prefix.
         self.ip_prefix_id = ip_prefix_id
-        # The instance ID of the elastic network interface (ENI) allocated from the reserved CIDR block for a vSwitch.
+        # The instance ID of the elastic network interfaces (ENIs) (network interface controller (NIC)) allocated from the reserved CIDR block.
         self.resource_id = resource_id
-        # The instance type allocated from the reserved CIDR block for a vSwitch. Valid values: **NetworkInterface**, which indicates an elastic network interface (ENI).
+        # The instance type of the resource allocated from the reserved CIDR block. Valid value: **NetworkInterface**, which indicates elastic network interfaces (ENIs) (network interface controller (NIC)).
         self.resource_type = resource_type
         # The instance ID of the reserved CIDR block for a vSwitch.
         self.v_switch_cidr_reservation_id = v_switch_cidr_reservation_id

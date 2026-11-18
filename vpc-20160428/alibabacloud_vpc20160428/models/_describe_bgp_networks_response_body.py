@@ -17,13 +17,13 @@ class DescribeBgpNetworksResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.bgp_networks = bgp_networks
-        # The page number of the list.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page in a paged query.
+        # The number of entries to return on each page during paging.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of advertised Border Gateway Protocol (BGP) networks.
+        # The total number of announced Border Gateway Protocol (BGP) networks.
         self.total_count = total_count
 
     def validate(self):

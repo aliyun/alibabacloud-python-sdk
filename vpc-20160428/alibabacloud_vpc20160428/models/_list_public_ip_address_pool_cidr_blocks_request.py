@@ -20,15 +20,15 @@ class ListPublicIpAddressPoolCidrBlocksRequest(DaraModel):
     ):
         # The CIDR block.
         self.cidr_block = cidr_block
-        # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run without querying the CIDR block information in the IP address pool. The system checks the required parameters, request format, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # - **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: prechecks the request without querying the CIDR blocks in the IP address pool. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends the request. If the request passes the precheck, the HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The maximum number of entries to return. Valid values: **10** to **100**. Default value: **10**.
+        # The maximum number of entries to return for a single request. Valid values: **10** to **100**. Default value: **10**.
         self.max_results = max_results
-        # The pagination token. Valid values:
-        # - You do not need to specify this parameter for the first request or if no subsequent query exists.
-        # - If a subsequent query exists, set the value to the NextToken value returned in the previous API call.
+        # The token used to retrieve the next page of results. Valid values:
+        # - If this is your first request or no subsequent requests are to be sent, leave this parameter empty.
+        # - If a subsequent request is to be sent, set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -36,7 +36,7 @@ class ListPublicIpAddressPoolCidrBlocksRequest(DaraModel):
         # 
         # This parameter is required.
         self.public_ip_address_pool_id = public_ip_address_pool_id
-        # The region ID of the CIDR block that you want to query.
+        # The region ID of the CIDR blocks to query.
         # 
         # This parameter is required.
         self.region_id = region_id

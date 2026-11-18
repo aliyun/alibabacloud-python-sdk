@@ -28,30 +28,30 @@ class ModifySslVpnServerRequest(DaraModel):
         resource_owner_id: int = None,
         ssl_vpn_server_id: str = None,
     ):
-        # The encryption algorithm used by the SSL-VPN server. Valid values: 
+        # The encryption algorithm used by SSL-VPN. Valid values: 
         # 
-        # - **AES-128-CBC** (default): AES-128-CBC algorithm.
+        # - **AES-128-CBC** (default): AES-128-CBC
         # 
-        # - **AES-192-CBC**: AES-192-CBC algorithm.
+        # - **AES-192-CBC**: AES-192-CBC
         # 
-        # - **AES-256-CBC**: AES-256-CBC algorithm.
+        # - **AES-256-CBC**: AES-256-CBC
         # 
-        # - **none**: no encryption algorithm is used.
+        # - **none**: No encryption algorithm is used.
         self.cipher = cipher
         # The client CIDR block.
         # 
-        # The client CIDR block is used to allocate IP addresses to virtual network interface controllers (NICs) of clients. It does not refer to the existing internal network CIDR block of the client.
+        # The client CIDR block is the CIDR block from which IP addresses are allocated to the virtual network interface controller (NIC) of the client. It is not the existing internal network CIDR block of the clients.
         # 
-        # When a client accesses the local end through an SSL-VPN connection, the VPN gateway allocates an IP address from the specified client CIDR block to the client. The client uses the allocated IP address to access cloud resources.
+        # When a client accesses the local network through an SSL-VPN connection, the VPN gateway allocates an IP address from the specified client CIDR block to the client. The client uses the allocated IP address to access cloud resources.
         # 
         # When you specify the client CIDR block, make sure that the number of IP addresses in the client CIDR block is at least four times the number of SSL connections supported by the VPN gateway.
         # <details>
         # <summary>Click to view the reason.</summary>
-        # For example, if you specify 192.168.0.0/24 as the client CIDR block, the system first divides a subnet with a 30-bit subnet mask from the 192.168.0.0/24 CIDR block, such as 192.168.0.4/30, and then allocates one IP address from 192.168.0.4/30 to the client. The remaining three IP addresses are used by the system to ensure network communication. In this case, one client consumes four IP addresses. Therefore, to ensure that all clients can be allocated IP addresses, make sure that the number of IP addresses in the client CIDR block is at least four times the number of SSL connections supported by the VPN gateway.
+        # For example, if the specified client CIDR block is 192.168.0.0/24, the system first divides a subnet with a 30-bit subnet mask from the 192.168.0.0/24 CIDR block, such as 192.168.0.4/30. Then, the system allocates an IP address from 192.168.0.4/30 for the client to use. The remaining three IP addresses are occupied by the system to ensure network communication. In this case, one client consumes four IP addresses. Therefore, to ensure that all your clients can be allocated IP addresses, make sure that the number of IP addresses in the specified client CIDR block is at least four times the number of SSL connections supported by the VPN gateway.
         # </details>
         # 
         # <details>
-        # <summary>Click to view unsupported CIDR blocks.</summary>
+        # <summary>Click to view the CIDR blocks that are not supported.</summary>
         # 
         # - 100.64.0.0 to 100.127.255.255
         # - 127.0.0.0 to 127.255.255.255
@@ -64,63 +64,64 @@ class ModifySslVpnServerRequest(DaraModel):
         # <details>
         # <summary>Click to view the recommended client CIDR blocks for each number of SSL connections.</summary>
         # 
-        # - If the number of SSL connections is 5, the subnet mask of the client CIDR block must be 27 bits or less. For example, 10.0.0.0/27 or 10.0.0.0/26.
-        # - If the number of SSL connections is 10, the subnet mask of the client CIDR block must be 26 bits or less. For example, 10.0.0.0/26 or 10.0.0.0/25.
-        # - If the number of SSL connections is 20, the subnet mask of the client CIDR block must be 25 bits or less. For example, 10.0.0.0/25 or 10.0.0.0/24.
-        # - If the number of SSL connections is 50, the subnet mask of the client CIDR block must be 24 bits or less. For example, 10.0.0.0/24 or 10.0.0.0/23.
-        # - If the number of SSL connections is 100, the subnet mask of the client CIDR block must be 23 bits or less. For example, 10.0.0.0/23 or 10.0.0.0/22.
-        # - If the number of SSL connections is 200, the subnet mask of the client CIDR block must be 22 bits or less. For example, 10.0.0.0/22 or 10.0.0.0/21.
-        # - If the number of SSL connections is 500, the subnet mask of the client CIDR block must be 21 bits or less. For example, 10.0.0.0/21 or 10.0.0.0/20.
-        # - If the number of SSL connections is 1000, the subnet mask of the client CIDR block must be 20 bits or less. For example, 10.0.0.0/20 or 10.0.0.0/19.
+        # - If the number of SSL connections is 5, we recommend that the subnet mask of the client CIDR block be 27 bits or less. Example: 10.0.0.0/27 or 10.0.0.0/26.
+        # - If the number of SSL connections is 10, we recommend that the subnet mask of the client CIDR block be 26 bits or less. Example: 10.0.0.0/26 or 10.0.0.0/25.
+        # - If the number of SSL connections is 20, we recommend that the subnet mask of the client CIDR block be 25 bits or less. Example: 10.0.0.0/25 or 10.0.0.0/24.
+        # - If the number of SSL connections is 50, we recommend that the subnet mask of the client CIDR block be 24 bits or less. Example: 10.0.0.0/24 or 10.0.0.0/23.
+        # - If the number of SSL connections is 100, we recommend that the subnet mask of the client CIDR block be 23 bits or less. Example: 10.0.0.0/23 or 10.0.0.0/22.
+        # - If the number of SSL connections is 200, we recommend that the subnet mask of the client CIDR block be 22 bits or less. Example: 10.0.0.0/22 or 10.0.0.0/21.
+        # - If the number of SSL connections is 500, we recommend that the subnet mask of the client CIDR block be 21 bits or less. Example: 10.0.0.0/21 or 10.0.0.0/20.
+        # - If the number of SSL connections is 1000, we recommend that the subnet mask of the client CIDR block be 20 bits or less. Example: 10.0.0.0/20 or 10.0.0.0/19.
         # 
         # </details>
         # 
         # > - The subnet mask of the client CIDR block must be 16 to 29 bits in length.
         # > - Make sure that the client CIDR block does not overlap with the local CIDR block, the VPC CIDR block, or any routing CIDR block associated with the client terminal.
-        # > - When you specify the client CIDR block, use 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, or their subnets. If you want to specify a public CIDR block as the client CIDR block, set the public CIDR block as a user CIDR block of the virtual private cloud (VPC) to ensure that the VPC can access the public CIDR block. For more information about user CIDR blocks, see [VPC FAQ](https://help.aliyun.com/document_detail/185311.html).
-        # > - After the SSL server is created, the system automatically adds the routing of the client CIDR block to the route table of the VPC instance. Do not manually add the routing of the client CIDR block to the route table of the VPC instance. Otherwise, SSL-VPN connection traffic may be abnormal.
+        # > - When you specify the client CIDR block, we recommend that you use the 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 CIDR block and their subnets. If you need to specify a public CIDR block as the client CIDR block, you must configure the public CIDR block in the user CIDR block Settings of the VPC to ensure that the VPC can access the public CIDR block. For more information about user CIDR blocks, see [virtual private cloud (VPC) FAQ](https://help.aliyun.com/document_detail/185311.html).
+        # > - After you create an SSL server, the system automatically adds the routing of the client CIDR block to the route table of the VPC-connected instance. Do not manually add the routing of the client CIDR block to the route table of the VPC-connected instance. Otherwise, SSL-VPN connection traffic transmission exceptions may occur.
         self.client_ip_pool = client_ip_pool
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the value, and you must ensure that the value is unique across different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
         # Specifies whether to compress communication. Valid values:
         # 
-        # - **true** (default): Communication is compressed.
+        # - **true** (default): Compresses communication.
         # 
-        # - **false**: Communication is not compressed.
+        # - **false**: Does not compress communication.
         self.compress = compress
+        # The DNS server addresses configured for the client. You can specify at most two addresses, separated by commas (,).
         self.dns_servers = dns_servers
-        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
-        # - **true**: sends a check request without modifying the SSL server configuration. The check items include whether required parameters are specified, the request format, and service limits. If the check fails, the corresponding error is returned. If the check passes, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends a Normal request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: Prechecks the request without modifying the SSL server configurations. The system checks whether required parameters are specified, the request format, and service limits. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # Specifies whether to enable two-factor authentication. If you enable two-factor authentication, you must also configure **IDaaSInstanceId**, **IDaaSRegionId**, and **IDaaSApplicationId**. Valid values:
         # 
-        # - **true**: enabled.
+        # - **true**: Enables two-factor authentication.
         # 
-        # - **false**: not enabled.
+        # - **false**: Disables two-factor authentication.
         # 
-        # >- If you use two-factor authentication for the first time, complete [authorization](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22VPN%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunVpnAccessingIdaasRole%22%2C%22TemplateId%22%3A%22IdaasRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fvpc.console.aliyun.com%2Fsslvpn%2Fcn-shanghai%2Fvpn-servers%22%7D) before creating the SSL server.
-        # >- When you create an SSL server in the UAE (Dubai) region, we recommend that you bind an IDaaS EIAM 2.0 instance in the Singapore region to reduce cross-region latency.
-        # >- IDaaS EIAM 1.0 instances are no longer available for purchase. If your Alibaba Cloud account has existing IDaaS EIAM 1.0 instances, you can still bind IDaaS EIAM 1.0 instances after enabling two-factor authentication. If your Alibaba Cloud account does not have IDaaS EIAM 1.0 instances, you can only bind IDaaS EIAM 2.0 instances after enabling two-factor authentication.
+        # > - If you use two-factor authentication for the first time, complete the [authorization](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22VPN%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunVpnAccessingIdaasRole%22%2C%22TemplateId%22%3A%22IdaasRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fvpc.console.aliyun.com%2Fsslvpn%2Fcn-shanghai%2Fvpn-servers%22%7D) before you create the SSL server.
+        # > - When you create an SSL server in the UAE (Dubai) region, we recommend that you bind an IDaaS EIAM 2.0 instance in the Singapore region to reduce cross-region latency.
+        # > - IDaaS EIAM 1.0 instances are no longer available for purchase. If you have an IDaaS EIAM 1.0 instance in your Alibaba Cloud account, you can still bind the IDaaS EIAM 1.0 instance after you enable two-factor authentication. If you do not have an IDaaS EIAM 1.0 instance in your Alibaba Cloud account, you can only bind an IDaaS EIAM 2.0 instance after you enable two-factor authentication.
         self.enable_multi_factor_auth = enable_multi_factor_auth
         # The ID of the IDaaS application.
         # 
-        # - If you bind an IDaaS EIAM 2.0 instance, you must enter the IDaaS application ID.
-        # - If you bind an IDaaS EIAM 1.0 instance, you do not need to enter the IDaaS application ID.
+        # - If you bind an IDaaS EIAM 2.0 instance, you must enter the ID of the IDaaS application.
+        # - If you bind an IDaaS EIAM 1.0 instance, you do not need to enter the ID of the IDaaS application.
         self.idaa_sapplication_id = idaa_sapplication_id
-        # The instance ID of the IDaaS EIAM instance.
+        # The instance ID of the IDaaS EIAM.
         self.idaa_sinstance_id = idaa_sinstance_id
         # The region ID of the IDaaS EIAM instance.
         self.idaa_sregion_id = idaa_sregion_id
         # The local CIDR block.
         # 
-        # The local CIDR block is the CIDR block that the client needs to access through the SSL-VPN connection.
+        # The local CIDR block is the CIDR block that the client wants to access through the SSL-VPN connection.
         # 
-        # The local CIDR block can be the CIDR block of a VPC, the CIDR block of a vSwitch, the CIDR block of an on-premises data center that is connected to a VPC through an Express Connect circuit, or the CIDR block of a cloud service such as Object Storage Service (OSS).
+        # The local CIDR block can be the CIDR block of a VPC, a vSwitch, an IDC connected to the VPC through an Express Connect circuit, or a cloud service such as Object Storage Service (OSS).
         # 
         # The subnet mask of the local CIDR block must be 8 to 32 bits in length. The following CIDR blocks cannot be specified as the local CIDR block:
         # 
@@ -129,21 +130,21 @@ class ModifySslVpnServerRequest(DaraModel):
         # - 224.0.0.0 to 239.255.255.255
         # - 255.0.0.0 to 255.255.255.255
         self.local_subnet = local_subnet
-        # The name of the SSL-VPN server.  
+        # The name of the SSL server.  
         # 
-        # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 100 characters in length, and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The port used by the SSL-VPN server. Valid values: **1** to **65535**. Default value: **1194**.
+        # The port used by the SSL server. Valid values: **1** to **65535**. Default value: **1194**.
         # 
         # The following ports are not supported: **22**, **2222**, **22222**, **9000**, **9001**, **9002**, **7505**, **80**, **443**, **53**, **68**, **123**, **4510**, **4560**, **500**, and **4500**.
         self.port = port
-        # The protocol used by the SSL-VPN server. Valid values:
+        # The protocol used by the SSL server. Valid values:
         # 
-        # - **TCP** (default): TCP protocol.
+        # - **TCP** (default): TCP
         # 
-        # - **UDP**: UDP protocol.
+        # - **UDP**: UDP
         self.proto = proto
         # The region ID of the VPN gateway. 
         # 
@@ -153,7 +154,7 @@ class ModifySslVpnServerRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The instance ID of the SSL-VPN server.
+        # The instance ID of the SSL server.
         # 
         # This parameter is required.
         self.ssl_vpn_server_id = ssl_vpn_server_id

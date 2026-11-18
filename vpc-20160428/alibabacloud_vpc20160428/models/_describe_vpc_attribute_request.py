@@ -16,11 +16,11 @@ class DescribeVpcAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         vpc_id: str = None,
     ):
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run for this request. Valid values:
         # 
-        # - **true**: performs a dry run without querying the resource. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **true**: sends a dry run request without querying the resource status. The system checks whether the AccessKey pair is valid, whether the Resource Access Management (RAM) user has the required authorization, and whether required parameters are specified. If the dry run fails, the corresponding error is returned. If the dry run succeeds, the DryRunOperation error code is returned.
         # 
-        # - **false** (default): sends a normal request. After the request passes the check, a 2xx HTTP status code is returned and the resource is queried directly.
+        # - **false** (default): sends a normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the resource status is queried.
         self.dry_run = dry_run
         # Specifies whether the VPC is the default VPC. Valid values: 
         # 
@@ -38,7 +38,7 @@ class DescribeVpcAttributeRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VPC to query.
+        # The ID of the VPC.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

@@ -29,16 +29,16 @@ class DescribeVpcsRequest(DaraModel):
     ):
         # The ID of the DHCP options set.
         self.dhcp_options_set_id = dhcp_options_set_id
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run for the request. Valid values:
         # 
-        # - **true**: performs a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **true**: Sends a check request and does not query the resource status. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user has authorization, and whether required parameters are specified. If the check fails, the system returns an error. If the check succeeds, the system returns the `DryRunOperation` error code.
         # 
-        # - **false** (default): sends a Normal request, and the resource status is directly queried after the request passes the authorization check. An HTTP 2xx status code is returned.
+        # - **false** (default): Sends a normal request and queries the resource status after the check succeeds and an HTTP 2xx status code is returned.
         self.dry_run = dry_run
-        # Specifies whether to query VPCs that have IPv6 CIDR blocks enabled in the specified region. The default value is empty, which means no filtering is performed based on IPv6 enablement. Valid values:
+        # Specifies whether to query VPCs for which IPv6 CIDR blocks are enabled in the specified region. By default, this parameter is empty, which means VPCs are not filtered based on whether IPv6 CIDR blocks are enabled. Valid values:
         # 
-        # - **false**: IPv6 is not enabled.
-        # - **true**: IPv6 is enabled.
+        # - **false**: IPv6 CIDR blocks are not enabled.
+        # - **true**: IPv6 CIDR blocks are enabled.
         self.enable_ipv_6 = enable_ipv_6
         # Specifies whether to query the default VPC in the specified region. Valid values: 
         # 
@@ -48,13 +48,13 @@ class DescribeVpcsRequest(DaraModel):
         self.is_default = is_default
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in paging queries. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the VPC. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/448570.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -70,7 +70,7 @@ class DescribeVpcsRequest(DaraModel):
         self.vpc_id = vpc_id
         # The name of the VPC.
         self.vpc_name = vpc_name
-        # The Alibaba Cloud account ID that owns the VPC.
+        # The Alibaba Cloud account ID of the VPC.
         self.vpc_owner_id = vpc_owner_id
 
     def validate(self):
@@ -197,13 +197,13 @@ class DescribeVpcsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can specify an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

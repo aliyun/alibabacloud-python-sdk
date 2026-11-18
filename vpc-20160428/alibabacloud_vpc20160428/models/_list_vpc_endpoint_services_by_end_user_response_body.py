@@ -16,17 +16,17 @@ class ListVpcEndpointServicesByEndUserResponseBody(DaraModel):
         services: List[main_models.ListVpcEndpointServicesByEndUserResponseBodyServices] = None,
         total_count: str = None,
     ):
-        # The number of entries per page in a paged query.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The token for the next query. Valid values:
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The token for the next query.
+        # - If **NextToken** is empty, no subsequent query is available.
+        # - If **NextToken** has a value, the value is the token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # The list of available endpoint services.
         self.services = services
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -92,13 +92,13 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(DaraModel):
     ):
         # The default access policy.
         self.default_policy_document = default_policy_document
-        # The domain name of the cloud service associated with the endpoint service in the queried region.
+        # The domain name of the Alibaba Cloud service to which the endpoint service belongs in the queried region.
         self.service_domain = service_domain
         # The instance ID of the endpoint service.
         self.service_id = service_id
         # The name of the endpoint service.
         self.service_name = service_name
-        # Indicates whether the endpoint service supports access policies. Valid values:
+        # Specifies whether the endpoint service supports access policies. Valid values:
         # 
         # - **false**: Access policies are not supported.
         # - **true**: Access policies are supported.

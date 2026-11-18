@@ -16,15 +16,15 @@ class UpdateVirtualBorderBandwidthRequest(DaraModel):
         resource_owner_id: int = None,
         virtual_border_router_id: str = None,
     ):
-        # The new bandwidth limit of the VBR. Unit: Mbit/s.
+        # The updated bandwidth limit of the VBR. Unit: Mbit/s.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+        # You can generate the value from your client. Make sure that the value is unique across different requests. The client token only supports ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id

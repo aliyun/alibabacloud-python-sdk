@@ -17,9 +17,9 @@ class DiagnoseVpnConnectionsRequest(DaraModel):
         vpn_connection_ids: List[str] = None,
         vpn_gateway_id: str = None,
     ):
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Default value: **10**.
+        # The number of entries per page in a paging query. Default value: **10**.
         self.page_size = page_size
         # The region ID of the IPsec-VPN connection.
         # 
@@ -28,11 +28,11 @@ class DiagnoseVpnConnectionsRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
-        # The list of tunnel IDs.
+        # The IDs of the tunnels.
         self.tunnel_ids = tunnel_ids
-        # The list of IPsec-VPN connection IDs.
+        # The IDs of the IPsec-VPN connections.
         self.vpn_connection_ids = vpn_connection_ids
-        # The instance ID of the VPN gateway.
+        # The VPN gateway instance ID.
         self.vpn_gateway_id = vpn_gateway_id
 
     def validate(self):

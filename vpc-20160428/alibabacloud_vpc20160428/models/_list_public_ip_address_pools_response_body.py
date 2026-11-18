@@ -15,15 +15,15 @@ class ListPublicIpAddressPoolsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # - If **NextToken** is empty, no subsequent request is to be sent.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The pagination token that is used to retrieve the next page of results. Valid values:
+        # - If **NextToken** is empty, no subsequent page exists.
+        # - If **NextToken** is returned, the value indicates the token used to start the next query.
         self.next_token = next_token
-        # The list of IP address pool instances.
+        # The list of IP address pools.
         self.public_ip_address_pool_list = public_ip_address_pool_list
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned under the current request conditions.
+        # The total number of entries returned for the current request.
         self.total_count = total_count
 
     def validate(self):
@@ -95,32 +95,32 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(DaraModel):
         user_type: str = None,
         zones: List[str] = None,
     ):
-        # The business type of the IP address pool.
-        # - **CloudBox**: CloudBox. Only CloudBox users support this type.
-        # - **Default** (default): default, indicating a non-special type.
+        # The business type of the IP address pool. Valid values:
+        # - **CloudBox**: CloudBox. This type is supported only for CloudBox users.
+        # - **Default** (default): Default. This indicates a non-special type.
         self.biz_type = biz_type
-        # The business status of the IP address pool instance.
+        # The business status of the IP address pool. Valid values:
         # 
-        # - **Normal**: normal.
-        # - **FinancialLocked**: locked.
+        # - **Normal**: Normal.
+        # - **FinancialLocked**: Locked.
         self.business_status = business_status
-        # The creation time, in the format of `YYYY-MM-DDThh:mm:ssZ`.
+        # The creation time. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.creation_time = creation_time
-        # The description of the IP address pool instance.
+        # The description of the IP address pool.
         self.description = description
-        # Indicates whether idle IP addresses are available.
-        # - **true**: yes.
-        # - **false**: no.
+        # Indicates whether idle IP addresses are available. Valid values:
+        # - **true**: Yes.
+        # - **false**: No.
         self.ip_address_remaining = ip_address_remaining
         # The line type.
         # 
-        # - **BGP**: BGP (multi-ISP) line.
+        # - **BGP**: BGP (Multi-ISP) line.
         # 
-        # - **BGP_PRO**: BGP (multi-ISP) Pro line.
+        # - **BGP_PRO**: BGP (Multi-ISP) Pro line.
         # 
-        # For more information about BGP (multi-ISP) lines and BGP (multi-ISP) Pro lines, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
+        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro lines, see [EIP line types](https://help.aliyun.com/document_detail/32321.html).
         # 
-        # If you are a whitelist user of single-ISP bandwidth, the returned type may also be:
+        # If you are a single-ISP bandwidth whitelist user, the following types may also be returned:
         # - **ChinaTelecom**: China Telecom
         # - **ChinaUnicom**: China Unicom
         # - **ChinaMobile**: China Mobile
@@ -128,9 +128,9 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(DaraModel):
         # - **ChinaUnicom_L2**: China Unicom L2
         # - **ChinaMobile_L2**: China Mobile L2
         # 
-        # If you are a China (Hangzhou) Finance Cloud user, **BGP_FinanceCloud** is returned.
+        # If you are an Alibaba Finance Cloud user in the China (Hangzhou) region, **BGP_FinanceCloud** is returned.
         self.isp = isp
-        # The name of the IP address pool instance.
+        # The name of the IP address pool.
         self.name = name
         # The Alibaba Cloud account to which the IP address pool belongs.
         self.owner_id = owner_id
@@ -142,31 +142,31 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(DaraModel):
         self.resource_group_id = resource_group_id
         # The security protection level.
         # 
-        # - If this parameter is empty, the default value is Anti-DDoS Basic.
+        # - If this parameter is empty, Anti-DDoS Basic is used by default.
         # 
-        # - If the value is **AntiDDoS_Enhanced**, it indicates Anti-DDoS (Enhanced).
+        # - If this parameter is set to **AntiDDoS_Enhanced**, Anti-DDoS (Enhanced) is used.
         self.security_protection_types = security_protection_types
-        # The sharing type of the IP address pool.
+        # The sharing type of the IP address pool. Valid values:
         # 
-        # - **Shared**: The IP address pool is a shared IP address pool.
-        # - Empty: The IP address pool is not a shared IP address pool.
+        # - **Shared**: The IP address pool is shared.
+        # - Empty: The IP address pool is not shared.
         self.share_type = share_type
-        # The instance status of the IPAM pool.
-        # - **Created**: active.
-        # - **Deleting**: being deleted.
-        # - **Modifying**: being modified.
+        # The instance status of the IP address pool. Valid values:
+        # - **Created**: available.
+        # - **Deleting**: delete in progress.
+        # - **Modifying**: modify in progress.
         self.status = status
         # The list of tags.
         self.tags = tags
-        # The total number of available IP addresses in the public IP address pool.
+        # The total number of available IP addresses in the IP address pool.
         self.total_ip_num = total_ip_num
-        # The number of used IP addresses in the public IP address pool.
+        # The number of used IP addresses in the IP address pool.
         self.used_ip_num = used_ip_num
-        # The type of the user. Valid values:
-        # - **admin**: administrator. An administrator can delete, modify, and query IP address pools, and allocate elastic IP addresses (EIPs) from IP address pools.
-        # - **user**: regular user. A regular user can only allocate EIPs from IP address pools and query IP address pools, but cannot modify or delete IP address pools.
+        # The user type. Valid values:
+        # - **admin**: administrator. Administrators can delete, modify, and query IP address pools, and allocate Elastic IP Addresses (EIPs) to IP address pools.
+        # - **user**: regular user. Regular users can only allocate EIPs to IP address pools and query IP address pools. They cannot modify or delete IP address pools.
         self.user_type = user_type
-        # The zones of the IP address pool.
+        # The zone of the IP address pool.
         # This parameter is returned only when the business type of the IP address pool is CloudBox.
         self.zones = zones
 

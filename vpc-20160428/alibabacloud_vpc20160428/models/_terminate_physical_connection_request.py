@@ -23,7 +23,7 @@ class TerminatePhysicalConnectionRequest(DaraModel):
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The instance ID of the Express Connect circuit.
+        # The instance ID of the Express Connect circuit instance.
         # 
         # This parameter is required.
         self.physical_connection_id = physical_connection_id

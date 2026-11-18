@@ -13,26 +13,26 @@ class DescribeEcGrantRelationRequest(DaraModel):
         page_size: int = None,
         vbr_region_no: str = None,
     ):
-        # The instance ID of the instance for which you want to query authorization relationships.
+        # The instance ID of the instance for which you want to query the authorization relationship.
         # 
-        # - If **InstanceType** is set to **VBR**, set this parameter to the VBR instance ID.
+        # - If **InstanceType** is set to **VBR**, set this parameter to the instance ID of the VBR instance.
         # 
-        # - If **InstanceType** is set to **VPC**, set this parameter to the VPC-connected instance ID.
+        # - If **InstanceType** is set to **VPC**, set this parameter to the instance ID of the VPC-connected instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The type of instance for which you want to query authorization relationships. Valid values:
+        # The type of the instance for which you want to query the authorization relationship. Valid values:
         # 
-        # - **VBR**: Virtual Border Router (VBR) instance. Queries the VPC-connected instances that have granted authorization to the VBR instance.
-        # - **VPC**: virtual private cloud (VPC) instance. Queries the VBR instances to which the VPC-connected instance has granted authorization.
+        # - **VBR**: Virtual Border vRouter (VBR) instance used for routing. Queries the VPC-connected instances that have authorized the VBR instance.
+        # - **VPC**: Virtual Private Cloud (VPC) instance. Queries the VBR instances that the VPC-connected instance has authorized.
         # 
         # This parameter is required.
         self.instance_type = instance_type
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for paging in a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the VBR instance for which you want to query authorization relationships.
+        # The region ID of the VBR instance for which you want to query the authorization relationship.
         # 
         # - If **InstanceType** is set to **VBR**, this parameter is required.
         # 

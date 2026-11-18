@@ -16,17 +16,17 @@ class ListVpcGatewayEndpointsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of gateway endpoints.
+        # The list of VPC gateway endpoints.
         self.endpoints = endpoints
-        # The number of entries per page for a paged query.
+        # The number of entries returned per page.
         self.max_results = max_results
-        # Indicates whether a next query token is available. Valid values:
-        # - If **NextToken** is empty, no more results are available.
+        # The token for the next query. Valid values:
+        # - If **NextToken** is empty, no subsequent query is required.
         # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -96,36 +96,36 @@ class ListVpcGatewayEndpointsResponseBodyEndpoints(DaraModel):
         tags: List[main_models.ListVpcGatewayEndpointsResponseBodyEndpointsTags] = None,
         vpc_id: str = None,
     ):
-        # The IDs of the route tables associated with the gateway endpoint.
+        # The IDs of the route tables associated with the VPC gateway endpoint.
         self.associated_route_tables = associated_route_tables
-        # The time when the gateway endpoint was created. The time is displayed in UTC in the YYYY-MM-DDThh:mm:ssZ format.
+        # The time when the VPC gateway endpoint was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.creation_time = creation_time
-        # The description of the gateway endpoint.
+        # The description of the VPC gateway endpoint.
         self.endpoint_description = endpoint_description
-        # The endpoint instance ID of the gateway endpoint.
+        # The gateway endpoint instance ID.
         self.endpoint_id = endpoint_id
-        # The name of the gateway endpoint.
+        # The name of the VPC gateway endpoint.
         self.endpoint_name = endpoint_name
-        # The status of the gateway endpoint. Valid values:
+        # The status of the VPC gateway endpoint. Valid values:
         # 
-        # - **Creating**: being created.
-        # - **Created**: created and in a normal state.
-        # - **Modifying**: being modified.
-        # - **Associating**: being associated.
-        # - **Dissociating**: being disassociated.
-        # - **Deleting**: being deleted.
+        # - **Creating**: The endpoint is being created.
+        # - **Created**: The endpoint is created and in a normal state.
+        # - **Modifying**: The endpoint is being modified.
+        # - **Associating**: The endpoint is being associated.
+        # - **Dissociating**: The endpoint is being disassociated.
+        # - **Deleting**: The endpoint is being deleted.
         self.endpoint_status = endpoint_status
         # The access policy for the cloud service.
         # 
-        # For more information about the syntax and structure of access policies, see [Policy structure and syntax](https://help.aliyun.com/document_detail/93739.html).
+        # For more information about the syntax and structure of access policies, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
         self.policy_document = policy_document
-        # The ID of the resource group to which the gateway endpoint belongs.
+        # The ID of the resource group to which the VPC gateway endpoint belongs.
         self.resource_group_id = resource_group_id
-        # The service name of the endpoint service.
+        # The endpoint service name.
         self.service_name = service_name
         # The list of tags.
         self.tags = tags
-        # The ID of the VPC to which the gateway endpoint belongs.
+        # The ID of the VPC to which the VPC gateway endpoint belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

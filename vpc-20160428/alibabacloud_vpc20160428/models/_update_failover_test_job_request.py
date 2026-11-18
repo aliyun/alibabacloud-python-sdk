@@ -23,20 +23,20 @@ class UpdateFailoverTestJobRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
         # The description of the failover test job.
         # 
         # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to only perform a dry run for the request. Valid values:
         # 
-        # - **true**: sends a request without updating the failover test node. The system checks the request for potential issues, including whether the AccessKey pair is valid, the authorization status of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the check fails, the corresponding error is returned. If the check passes, the DryRunOperation error code is returned.                             
-        # - **false** (default): sends a Normal request, and the failover test node is updated after the check passes. A 2xx HTTP status code is returned.
+        # - **true**: The system performs a dry run without updating the failover test node. The system checks whether your AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the error code DryRunOperation.                             
+        # - **false** (default): The system sends a Normal request. If the request passes the dry run, the system returns a 2xx HTTP status code and updates the failover test node.
         self.dry_run = dry_run
-        # The duration of the failover test job. Unit: minutes. Valid values: **1 to 4320**.
+        # The duration of the failover test job. Unit: minutes. Valid values: **1** to **4320**.
         self.job_duration = job_duration
         # The ID of the failover test job.
         # 
@@ -52,7 +52,7 @@ class UpdateFailoverTestJobRequest(DaraModel):
         # 
         # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         self.region_id = region_id
-        # The list of failover test resource IDs. You can add up to 16 resources.
+        # The list of resource IDs for the failover test job. You can add up to 16 resources.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
 

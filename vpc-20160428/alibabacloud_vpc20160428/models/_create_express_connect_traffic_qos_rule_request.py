@@ -29,19 +29,19 @@ class CreateExpressConnectTrafficQosRuleRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # The destination IP address IPv4 CIDR block for traffic matching in the QoS rule.
+        # The IPv4 CIDR block of the destination IP address for the traffic to be matched by the QoS rule.
         # 
-        # > You cannot specify this parameter together with **SrcIPv6Cidr** or **DstIPv6Cidr**.
+        # > You cannot specify this parameter together with the **SrcIPv6Cidr** or **DstIPv6Cidr** parameter.
         self.dst_cidr = dst_cidr
-        # The destination IP address IPv6 CIDR block for traffic matching in the QoS rule.
+        # The IPv6 CIDR block of the destination IP address for the traffic to be matched by the QoS rule.
         # 
-        # > You cannot specify this parameter together with **SrcCidr** or **DstCidr**.
+        # > You cannot specify this parameter together with the **SrcCidr** or **DstCidr** parameter.
         self.dst_ipv_6cidr = dst_ipv_6cidr
-        # The destination port range for traffic matching in the QoS rule. Valid values: **0** to **65535**. Set the value to -1 if no matching is required. Currently, only a single port number can be specified. The start and end port numbers must be the same. The destination port range is fixed for each protocol type. Valid values:
+        # The destination port range to be matched by the QoS rule. Valid values: **0** to **65535**. Set the value to -1 if you do not want to match the destination port. Currently, you can specify only a single port number, which means the start port and end port must be the same. The destination port range varies based on the protocol type. Valid values:
         # 
         # - **ALL**: -1/-1. Not editable.
         # 
@@ -75,11 +75,11 @@ class CreateExpressConnectTrafficQosRuleRequest(DaraModel):
         # 
         # - **Redis**: 6379/6379. Not editable.
         self.dst_port_range = dst_port_range
-        # The DSCP value for traffic matching in the QoS rule. Valid values: **0** to **63**. Set the value to -1 if no matching is required.
+        # The DSCP value of the traffic to be matched by the QoS rule. Valid values: **0** to **63**. Set the value to -1 if you do not want to match the DSCP value.
         self.match_dscp = match_dscp
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The priority of the QoS rule. Valid values: **1** to **9000**. A larger value indicates a higher priority. The priority must be unique within the same QoS policy.
+        # The priority of the QoS rule. Valid values: **1** to **9000**. A larger value indicates a higher priority. The priority of a QoS rule must be unique within the same QoS policy.
         # 
         # This parameter is required.
         self.priority = priority
@@ -119,40 +119,40 @@ class CreateExpressConnectTrafficQosRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The QoS policy ID.
+        # The ID of the QoS policy.
         # 
         # This parameter is required.
         self.qos_id = qos_id
-        # The QoS queue ID.
+        # The ID of the QoS queue.
         # 
         # This parameter is required.
         self.queue_id = queue_id
         # The region ID of the QoS policy.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The new DSCP value to remark on the traffic. Valid values: **0** to **63**. Set the value to -1 if no remarking is required.
+        # The new DSCP value to be marked in the traffic. Valid values: **0** to **63**. Set the value to -1 if you do not want to modify the DSCP value.
         self.remarking_dscp = remarking_dscp
         self.resource_owner_account = resource_owner_account
         # The description of the QoS rule.
         # 
-        # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description must be 0 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.rule_description = rule_description
         # The name of the QoS rule.
         # 
-        # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 0 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.rule_name = rule_name
-        # The source IPv4 CIDR block for traffic matching in the QoS rule.
+        # The source IPv4 CIDR block to be matched by the QoS rule.
         # 
-        # > You cannot specify this parameter together with **SrcIPv6Cidr** or **DstIPv6Cidr**.
+        # > You cannot specify this parameter together with the **SrcIPv6Cidr** or **DstIPv6Cidr** parameter.
         self.src_cidr = src_cidr
-        # The source IPv6 CIDR block for traffic matching in the QoS rule.
+        # The source IPv6 CIDR block to be matched by the QoS rule.
         # 
-        # > You cannot specify this parameter together with **SrcCidr** or **DstCidr**.
+        # > You cannot specify this parameter together with the **SrcCidr** or **DstCidr** parameter.
         self.src_ipv_6cidr = src_ipv_6cidr
-        # The source port range for traffic matching in the QoS rule. Valid values: **0** to **65535**. Set the value to -1 if no matching is required. Currently, only a single port number can be specified. The start and end port numbers must be the same.
+        # The source port range to be matched by the QoS rule. Valid values: **0** to **65535**. Set the value to -1 if you do not want to match the source port. Currently, you can specify only a single port number, which means the start port and end port must be the same.
         self.src_port_range = src_port_range
 
     def validate(self):

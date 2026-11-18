@@ -16,11 +16,11 @@ class ListVpcEndpointServicesByEndUserRequest(DaraModel):
         resource_owner_id: int = None,
         service_name: str = None,
     ):
-        # The number of entries per page in a paged query. Valid values: **1** to **100**. Default value: **20**.
+        # The maximum number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
         # The token for the next query. Valid values:
-        # - Leave this parameter empty for the first query or if no next query exists.
-        # - If a next query exists, set this parameter to the NextToken value returned in the previous API call.
+        # - Leave this parameter empty for the first query or when no subsequent query is required.
+        # - If a subsequent query is required, set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id

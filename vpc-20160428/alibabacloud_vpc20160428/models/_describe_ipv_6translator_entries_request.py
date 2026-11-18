@@ -30,18 +30,18 @@ class DescribeIPv6TranslatorEntriesRequest(DaraModel):
         # The ID of the access control policy group.
         self.acl_id = acl_id
         # Specifies whether to enable access control. Valid values:
-        # - **on**: enabled.
-        # - **off**: disabled.
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.acl_status = acl_status
         # The type of the access control policy. Valid values:
         # 
-        # - **white**: allows the IPv6 addresses in the access control policy group to access backend services.
+        # - **white**: Allows IPv6 addresses in the access control policy group to access the backend service.
         # 
-        # - **black**: denies the IPv6 addresses in the access control policy group from accessing backend services.
+        # - **black**: Denies IPv6 addresses in the access control policy group from accessing the backend service.
         self.acl_type = acl_type
-        # The IPv6 address allocated by the IPv6 Translation Service instance.
+        # The IPv6 address assigned to the IPv6 Translation Service instance.
         self.allocate_ipv_6addr = allocate_ipv_6addr
-        # The port used by the IPv6 address allocated by the IPv6 Translation Service instance.
+        # The port used by the IPv6 address assigned to the IPv6 Translation Service instance.
         self.allocate_ipv_6port = allocate_ipv_6port
         # The public IPv4 address that requires IPv6 services.
         self.backend_ipv_4addr = backend_ipv_4addr
@@ -49,23 +49,23 @@ class DescribeIPv6TranslatorEntriesRequest(DaraModel):
         self.backend_ipv_4port = backend_ipv_4port
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
+        # You can generate the parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
         self.client_token = client_token
-        # The name of the IPv6 Translation mapping entry.
+        # The name of the IPv6 translation mapping entry.
         self.entry_name = entry_name
-        # The ID of the IPv6 Translation mapping entry to query. 
+        # The ID of the IPv6 translation mapping entry to query. 
         # 
-        # > If both **Ipv6TranslatorId** and **Ipv6TranslatorEntryId** are empty, all IPv6 Translation mapping entries are returned. If only **Ipv6TranslatorEntryId** is empty, all IPv6 Translation mapping entries under the current IPv6 Translation Service instance are returned.
+        # > If both the **Ipv6TranslatorId** and **Ipv6TranslatorEntryId** parameters are left empty, all IPv6 translation mapping entries are returned. If only the **Ipv6TranslatorEntryId** parameter is left empty, all IPv6 translation mapping entries under the current IPv6 Translation Service instance are returned.
         self.ipv_6translator_entry_id = ipv_6translator_entry_id
         # The ID of the IPv6 Translation Service instance.
         self.ipv_6translator_id = ipv_6translator_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: 1.
+        # The page number of the list. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query region IDs.
+        # The region ID of the IPv6 Translation Service instance. You can call the **DescribeRegions** operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

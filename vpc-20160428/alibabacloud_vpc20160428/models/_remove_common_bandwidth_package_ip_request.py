@@ -23,14 +23,16 @@ class RemoveCommonBandwidthPackageIpRequest(DaraModel):
         self.bandwidth_package_id = bandwidth_package_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. The **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
+        # Specifies whether to perform a dry run without executing the actual request.
         self.dry_run = dry_run
-        # The ID of the EIP. 
+        # The ID of the public IP address instance to be removed from the Internet Shared Bandwidth instance.
         # 
-        # You can call the [DescribeEipAddresses](https://help.aliyun.com/document_detail/36018.html) operation to query the EIP ID.
+        # - If IpType is set to **EIP**, specify the EIP ID. You can call the [DescribeEipAddresses](https://www.alibabacloud.com/help/en/eip/developer-reference/api-vpc-2016-04-28-describeeipaddresses-eips) operation to query the EIP ID.
+        # - If IpType is set to **VpcIpv6**, specify the IPv6 address ID of the VPC. You can call the DescribeIpv6Addresses operation to query the IPv6 address ID.
         # 
         # This parameter is required.
         self.ip_instance_id = ip_instance_id
@@ -38,7 +40,7 @@ class RemoveCommonBandwidthPackageIpRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the Internet Shared Bandwidth instance. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-describeregions) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

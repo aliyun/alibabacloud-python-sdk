@@ -15,15 +15,15 @@ class ListGatewayRouteTableEntriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The details of the route entries in the gateway route table.
+        # The details of the routes in the gateway route table.
         self.gateway_route_entry_models = gateway_route_entry_models
-        # The pagination token. Valid values:
-        # - If **NextToken** is empty, no subsequent query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The pagination token that is used to retrieve the next page of results. Valid values:
+        # - If **NextToken** is empty, no more results are available.
+        # - If **NextToken** returns a value, the value is the token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -83,29 +83,29 @@ class ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModels(DaraModel)
         next_hops: List[main_models.ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops] = None,
         status: str = None,
     ):
-        # The description of the route entry.
+        # The description of the route.
         self.description = description
-        # The destination CIDR block of the route entry.
+        # The destination CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
-        # The name of the route entry.
+        # The name of the route.
         # 
-        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
+        # The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It can contain digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The instance ID of the next hop.
+        # The next hop instance ID.
         self.next_hop_id = next_hop_id
-        # The next hop type. Valid values:
+        # The type of the next hop. Valid values:
         # 
         # - **EcsInstance**: ECS instance.
-        # - **NetworkInterface**: elastic network interfaces (ENIs).
+        # - **NetworkInterface**: elastic network interface (ENI).
         # - **Local**: local.
         self.next_hop_type = next_hop_type
         # The next hop information.
         self.next_hops = next_hops
-        # The status of the route entry. Valid values:
+        # The status of the route. Valid values:
         # 
-        # - **Pending**: being configured.
-        # - **Available**: available.
-        # - **Modifying**: being modified.
+        # - **Pending**: The route is being configured.
+        # - **Available**: The route is available.
+        # - **Modifying**: The route is being modified.
         self.status = status
 
     def validate(self):
@@ -185,7 +185,7 @@ class ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops(Da
         # - **0**: unavailable.
         # - **1**: available.
         self.enabled = enabled
-        # The instance ID of the next hop.
+        # The next hop instance ID.
         self.next_hop_id = next_hop_id
         # The next hop type. Valid values:
         # 
@@ -193,12 +193,12 @@ class ListGatewayRouteTableEntriesResponseBodyGatewayRouteEntryModelsNextHops(Da
         # - **HaVip**: high-availability virtual IP address.
         # - **VpnGateway**: VPN gateway.
         # - **NatGateway**: NAT gateway.
-        # - **NetworkInterface**: secondary elastic network interfaces (ENIs).
+        # - **NetworkInterface**: secondary elastic network interface (ENI).
         # - **RouterInterface**: vRouter interface.
         # - **IPv6Gateway**: IPv6 gateway.
         # - **Attachment**: transit router.
         self.next_hop_type = next_hop_type
-        # The weight of the route entry.
+        # The weight of the route.
         self.weight = weight
 
     def validate(self):

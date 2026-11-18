@@ -15,7 +15,7 @@ class CreateExpressConnectTrafficQosQueueResponseBody(DaraModel):
         self.qos_id = qos_id
         # The ID of the QoS queue.
         self.queue_id = queue_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

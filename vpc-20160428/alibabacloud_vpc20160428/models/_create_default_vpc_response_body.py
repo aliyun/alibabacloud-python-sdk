@@ -14,11 +14,11 @@ class CreateDefaultVpcResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the route table that the system automatically creates after the default VPC is created.
+        # The ID of the route table automatically created after the default VPC is created.
         self.route_table_id = route_table_id
-        # The ID of the vRouter that the system automatically creates after the default VPC is created.
+        # The ID of the vRouter automatically created after the default VPC is created.
         self.vrouter_id = vrouter_id
-        # The ID of the default VPC that is created.
+        # The ID of the created default VPC.
         self.vpc_id = vpc_id
 
     def validate(self):

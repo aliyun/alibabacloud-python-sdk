@@ -28,17 +28,17 @@ class ListVSwitchCidrReservationsRequest(DaraModel):
         # - **IPv4** (default): IPv4.
         # - **IPv6**: IPv6.
         self.ip_version = ip_version
-        # The number of entries per page. Valid values: **1** to **100**. Default value: **10**.
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
-        # The pagination token. Valid values:
-        # - If this is the first request or no subsequent query exists, leave this parameter empty.
-        # - If a subsequent query exists, set this parameter to the NextToken value returned in the previous API call.
+        # The token for the next query. Valid values:
+        # - Leave this parameter empty for the first query and when no next query is required.
+        # - If a next query is required, set this parameter to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the vSwitch.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -46,13 +46,13 @@ class ListVSwitchCidrReservationsRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The tag information.
         self.tags = tags
-        # The instance IDs of the reserved CIDR block for a vSwitch. You can specify up to 10 reserved CIDR blocks.
+        # The instance IDs of the reserved CIDR blocks for a vSwitch. You can specify up to 10 reserved CIDR blocks.
         self.v_switch_cidr_reservation_ids = v_switch_cidr_reservation_ids
         # The type of the reserved CIDR block for a vSwitch. Valid values: **prefix**, which indicates that addresses are allocated by CIDR block.
         # 
-        # > When users or cloud services automatically assign CIDR blocks to elastic network interfaces (ENIs), the CIDR blocks must be allocated from the reserved CIDR block. If all addresses in the reserved CIDR block are allocated, the system returns an error.
+        # > When users and cloud services automatically allocate CIDR blocks for elastic network interfaces (ENIs), the CIDR blocks must be allocated from the reserved CIDR blocks. If all addresses in the reserved CIDR blocks are allocated, the system returns an error.
         self.v_switch_cidr_reservation_type = v_switch_cidr_reservation_type
-        # The ID of the vSwitch to which the reserved CIDR block for a vSwitch belongs.
+        # The ID of the vSwitch to which the reserved CIDR block that you want to query belongs.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -155,13 +155,9 @@ class ListVSwitchCidrReservationsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, the value cannot be an empty string.
-        # 
-        # A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot enter an empty string. A tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, the value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string. A tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

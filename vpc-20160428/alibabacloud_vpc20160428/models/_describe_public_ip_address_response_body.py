@@ -27,7 +27,7 @@ class DescribePublicIpAddressResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page in a paged query.
         self.page_size = page_size
-        # The range of public IP addresses in a virtual private cloud (VPC) in the specified region.
+        # The range of public IP addresses in a virtual private cloud (VPC) within the specified region.
         self.public_ip_address = public_ip_address
         # The region ID of the public IP address.
         self.region_id = region_id

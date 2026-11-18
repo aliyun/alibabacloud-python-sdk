@@ -22,15 +22,15 @@ class UnassociateNetworkAclRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # The client generates the value. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+        # You can use the client to generate the token, but you must ensure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # * **true**: performs a dry run. The system checks the request for potential issues without performing the actual operation.
-        # * **false** (default): performs the actual request.
+        # Specifies whether to precheck the request. Valid values:
+        # * **true**: prechecks the request.
+        # * **false** (default): sends the request.
         self.dry_run = dry_run
-        # The ID of the network ACL to disassociate from the associated resources.
+        # The ID of the network ACL from which you want to disassociate the resources.
         # 
         # This parameter is required.
         self.network_acl_id = network_acl_id
@@ -38,7 +38,7 @@ class UnassociateNetworkAclRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the network ACL.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -129,11 +129,11 @@ class UnassociateNetworkAclRequestResource(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the associated resource to disassociate.
+        # The ID of the associated resource to be disassociated.
         self.resource_id = resource_id
-        # The type of the associated resource to disassociate. Set the value to **VSwitch**.
+        # The type of the associated resource to be disassociated. Valid value: **VSwitch** (vSwitch).
         # 
-        # Valid values of **N**: 0 to 29. You can disassociate up to 30 resources at a time.
+        # The value of **N** ranges from 0 to 29, indicating that you can disassociate a maximum of 30 resources.
         self.resource_type = resource_type
 
     def validate(self):

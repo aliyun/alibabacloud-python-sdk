@@ -42,11 +42,11 @@ class CreateDhcpOptionsSetRequest(DaraModel):
         self.dhcp_options_set_name = dhcp_options_set_name
         # The hostname suffix. Example: example.com.
         # 
-        # After the DHCP options set is used to associate VPC, the hostname suffix is automatically synchronized to the ECS instances in the VPC.
+        # After you associate VPC with the DHCP options set, the hostname suffix is automatically synchronized to the ECS instances in the VPC.
         self.domain_name = domain_name
         # The IP addresses of DNS servers. You can specify up to four DNS server IP addresses. Separate multiple IP addresses with commas (,).
         # 
-        # >If you do not specify DNS server IP addresses, ECS instances use the DNS server IP addresses provided by Alibaba Cloud (100.100.2.136 and 100.100.2.138) by default.
+        # >If you do not specify DNS server IP addresses, ECS instances use the DNS server IP addresses provided by Alibaba Cloud by default (100.100.2.136 and 100.100.2.138).
         self.domain_name_servers = domain_name_servers
         # Specifies whether to perform a dry run. Valid values:
         # 
@@ -56,23 +56,23 @@ class CreateDhcpOptionsSetRequest(DaraModel):
         self.dry_run = dry_run
         # The lease time of the IPv6 DHCP options set.
         # 
-        # - If the lease time is in hours, the unit is h. Valid values: **24h to 1176h** and **87600h to 175200h**. Default value: **24h**.
+        # - If the lease time is set in hours, the unit is h. Valid values: **24h to 1176h** and **87600h to 175200h**. Default value: **24h**.
         # 
-        # - If the lease time is in days, the unit is d. Valid values: **1d to 49d** and **3650d to 7300d**. Default value: **1d**.
+        # - If the lease time is set in days, the unit is d. Valid values: **1d to 49d** and **3650d to 7300d**. Default value: **1d**.
         # 
         # > You must include the unit when specifying the value.
         self.ipv_6lease_time = ipv_6lease_time
         # The lease time of the IPv4 DHCP options set.
         # 
-        # - If the lease time is in hours, the unit is h. Valid values: **24h to 1176h** and **87600h to 175200h**. Default value: **87600h**.
+        # - If the lease time is set in hours, the unit is h. Valid values: **24h to 1176h** and **87600h to 175200h**. Default value: **87600h**.
         # 
-        # - If the lease time is in days, the unit is d. Valid values: **1d to 49d** and **3650d to 7300d**. Default value: **3650d**.
+        # - If the lease time is set in days, the unit is d. Valid values: **1d to 49d** and **3650d to 7300d**. Default value: **3650d**.
         # 
         # > You must include the unit when specifying the value.
         self.lease_time = lease_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region in which the DHCP options set resides.
+        # The region where the DHCP options set resides.
         # 
         # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
         # 

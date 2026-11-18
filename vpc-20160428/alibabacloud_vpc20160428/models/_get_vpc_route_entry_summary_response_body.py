@@ -15,7 +15,7 @@ class GetVpcRouteEntrySummaryResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about all route tables returned.
+        # The information about all queried route tables.
         self.route_entry_summarys = route_entry_summarys
 
     def validate(self):
@@ -107,16 +107,16 @@ class GetVpcRouteEntrySummaryResponseBodyRouteEntrySummarysEntrySummarys(DaraMod
         self.count = count
         # The type of the route. Valid values:
         # - **all**: all route types.
-        # - **custom**: custom route.
-        # - **system**: system route.
-        # - **bgp**: BGP route.
-        # - **cen**: Cloud Enterprise Network (CEN) route.
-        # - **type_vpn_bgp_internal**: VPN BGP route.
-        # - **ECR**: Express Connect Router (ECR) route.
+        # - **custom**: custom routes.
+        # - **system**: system routes.
+        # - **bgp**: BGP routes.
+        # - **cen**: Cloud Enterprise Network (CEN) routes.
+        # - **type_vpn_bgp_internal**: BGP routes of VPN.
+        # - **ECR**: Express Connect Router (ECR) routes.
         # 
         # 
         # 
-        # > The returned system routes are the system routes in the system route table.
+        # > The returned system routes are the system routes under the system route table.
         self.route_entry_type = route_entry_type
 
     def validate(self):

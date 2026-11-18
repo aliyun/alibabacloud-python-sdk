@@ -21,24 +21,24 @@ class DescribeVirtualBorderRoutersRequest(DaraModel):
         resource_owner_id: int = None,
         tags: List[main_models.DescribeVirtualBorderRoutersRequestTags] = None,
     ):
-        # The filter information.
+        # The filter conditions.
         self.filter = filter
-        # Specifies whether to include cross-account Virtual Border Routers.
+        # Specifies whether to include VBRs that belong to other Alibaba Cloud accounts. Valid values:
         # 
-        # - **true**: Included.
+        # - **true**: includes VBRs that belong to other accounts.
         # 
-        # - **false** (default): Not included.
+        # - **false** (default): does not include VBRs that belong to other accounts.
         self.include_cross_account_vbr = include_cross_account_vbr
         self.owner_id = owner_id
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+        # The number of entries to return on each page in a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the VBR. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # The region ID of the VBR. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group. For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html).
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -142,9 +142,9 @@ class DescribeVirtualBorderRoutersRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You must specify at least 1 tag key and can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You must specify at least one tag key and can specify up to 20 tag keys. The tag key cannot be an empty string. A tag key can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string. A tag value can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -179,9 +179,23 @@ class DescribeVirtualBorderRoutersRequestFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The filter condition. You can specify up to 5 filter conditions. The following filter conditions are supported:
+        # The filter key. You can specify up to five filter keys. Valid values:
+        # 
+        # * **PhysicalConnectionId**: instance ID of the Express Connect circuit.
+        # 
+        # * **VbrId**: instance ID of the VBR.
+        # 
+        # * **Status**: the status of the VBR.
+        # 
+        # * **Name**: the name of the VBR.
+        # 
+        # * **AccessPointId**: instance ID of the access point.
+        # 
+        # * **eccId**: instance ID of the Express Cloud Connect instance.
+        # 
+        # * **type**: the type of the Express Connect circuit.
         self.key = key
-        # The filter value based on the specified Key. You can specify multiple filter values for a Key. The relationship between multiple filter values is OR, which means that a match with any one of the filter values is considered a match with the filter condition.
+        # The filter value corresponding to the filter key. You can specify multiple filter values for a single filter key. The filter values have an OR relationship. If a resource matches one of the filter values, it matches the filter condition.
         self.value = value
 
     def validate(self):

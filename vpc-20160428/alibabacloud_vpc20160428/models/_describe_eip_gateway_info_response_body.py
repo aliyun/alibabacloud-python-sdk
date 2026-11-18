@@ -15,10 +15,10 @@ class DescribeEipGatewayInfoResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The operation status code.
+        # The status code of the operation.
         self.code = code
         self.eip_infos = eip_infos
-        # The operation message.
+        # The message returned by the operation.
         self.message = message
         # The request ID.
         self.request_id = request_id

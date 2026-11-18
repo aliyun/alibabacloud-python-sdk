@@ -13,7 +13,7 @@ class OpenTrafficMirrorServiceResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The message returned after the traffic mirroring feature is activated.
+        # The message returned when the traffic mirroring feature is enabled.
         self.message = message
         # The request ID.
         self.request_id = request_id

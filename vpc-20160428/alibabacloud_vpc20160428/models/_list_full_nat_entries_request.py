@@ -28,47 +28,47 @@ class ListFullNatEntriesRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate the value from your client and make sure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** of each API request may be different.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The ID of the FULLNAT entry to query.
+        # The ID of the FULLNAT entry to be queried.
         self.full_nat_entry_id = full_nat_entry_id
-        # The names of the FULLNAT entries to query. You can specify up to 20 names.
+        # The names of the FULLNAT entries to be queried. You can query the names of up to 20 FULLNAT entries.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). The name must start with a letter or Chinese character.
+        # The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It can contain digits, hyphens (-), and underscores (_).
         self.full_nat_entry_names = full_nat_entry_names
-        # The ID of the FULLNAT table to which the FULLNAT entries belong.
+        # The ID of the FULLNAT table to which the FULLNAT entries to be queried belong.
         # 
-        # > You must specify at least one of **FullNatTableId** and **NatGatewayId**.
+        # > You must specify at least one of the **FullNatTableId** and **NatGatewayId** parameters.
         self.full_nat_table_id = full_nat_table_id
         # The protocol type of the Redirection Port. Valid values:
         # 
         # - **TCP**: forwards TCP packets.
         # - **UDP**: forwards UDP packets.
         self.ip_protocol = ip_protocol
-        # The number of entries per page for a paged query. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The ID of the NAT gateway to query.
+        # The ID of the NAT gateway to be queried.
         # 
-        # > You must specify at least one of **FullNatTableId** and **NatGatewayId**.
+        # > You must specify at least one of the **FullNatTableId** and **NatGatewayId** parameters.
         self.nat_gateway_id = nat_gateway_id
-        # The NAT IP address in the FULLNAT entry to query.
+        # The NAT IP address of the FULLNAT entry to be queried.
         self.nat_ip = nat_ip
-        # The frontend port in the FULLNAT entry to query. Valid values: 1 to 65535.
+        # The frontend port of the FULLNAT entry to be queried. Valid values: 1 to 65535.
         self.nat_ip_port = nat_ip_port
-        # The IDs of the elastic network interfaces (ENIs) to query.
+        # The IDs of the elastic network interfaces (ENIs) to be queried.
         self.network_interface_ids = network_interface_ids
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token that is used for the next query. Valid values:
         # 
-        # - You do not need to specify this parameter for the first request or if no next query exists.
-        # - If a next query exists, set the value to the **NextToken** value returned in the previous API call.
+        # - If this is the first query or no next query is to be sent, you do not need to specify this parameter.
+        # - If a next query is to be sent, set the value to the **NextToken** value returned from the last API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the VPC NAT gateway to which the FULLNAT entries belong.
+        # The region ID of the VPC NAT gateway to which the FULLNAT entries to be queried belong.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

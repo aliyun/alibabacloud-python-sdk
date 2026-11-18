@@ -19,13 +19,13 @@ class CopyNetworkAclEntriesRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # * **true**: performs a dry run.
-        # * **false** (default): sends the request.
+        # Specifies whether to precheck this request. Valid values:
+        # * **true**: Prechecks the request.
+        # * **false** (default): Sends the request.
         self.dry_run = dry_run
         # The ID of the network ACL.
         # 
@@ -33,13 +33,13 @@ class CopyNetworkAclEntriesRequest(DaraModel):
         self.network_acl_id = network_acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the network ACL resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # The region where the network ACL resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the source network ACL from which rules are copied.
+        # The ID of the network ACL to be copied.
         # 
         # This parameter is required.
         self.source_network_acl_id = source_network_acl_id

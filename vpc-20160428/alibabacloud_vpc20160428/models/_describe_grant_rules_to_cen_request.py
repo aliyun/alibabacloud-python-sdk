@@ -21,9 +21,9 @@ class DescribeGrantRulesToCenRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
         # The ID of the network instance to query.
         # 
@@ -31,11 +31,11 @@ class DescribeGrantRulesToCenRequest(DaraModel):
         self.instance_id = instance_id
         # The type of the network instance to query. Valid values:
         # 
-        # - **VPC**: virtual private cloud (VPC).
+        # - **VPC**: virtual private cloud (VPC)
         # 
-        # - **VBR**: Virtual Border Router.
+        # - **VBR**: Virtual Border Router (VBR)
         # 
-        # - **CCN**: Cloud Connect Network.
+        # - **CCN**: Cloud Connect Network (CCN)
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -43,13 +43,13 @@ class DescribeGrantRulesToCenRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region of the network instance to query.
+        # The region ID of the network instance to query.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the network instance belongs.
+        # The ID of the resource group that contains the network instance to query.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

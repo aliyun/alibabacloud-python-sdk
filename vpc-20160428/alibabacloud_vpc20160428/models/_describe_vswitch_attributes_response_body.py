@@ -16,6 +16,7 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
         description: str = None,
         enabled_ipv_6: bool = None,
         ipv_6cidr_block: str = None,
+        ipv_6only: bool = None,
         is_default: bool = None,
         network_acl_id: str = None,
         owner_id: int = None,
@@ -30,48 +31,53 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The number of active IP addresses.
+        # The active IP address count.
         self.available_ip_address_count = available_ip_address_count
-        # The private network address range of the vSwitch.
+        # The private endpoint range of the vSwitch.
         self.cidr_block = cidr_block
         # The time when the vSwitch was created.
         self.creation_time = creation_time
         # The description of the vSwitch.
         self.description = description
-        # Indicates whether the IPv6 CIDR block is enabled for the vSwitch. Valid values:
-        # - **true**: enabled.
-        # - **false**: not enabled.
+        # Specifies whether the IPv6 CIDR block is enabled and configured for the vSwitch. Valid values:
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.enabled_ipv_6 = enabled_ipv_6
         # The IPv6 CIDR block of the vSwitch.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # Indicates whether the vSwitch is the default vSwitch. Valid values:
+        # Indicates whether the vSwitch is an IPv6 single-stack vSwitch. Valid values:
+        # 
+        # - true: The vSwitch is an IPv6 single-stack vSwitch.
+        # - false: The vSwitch is not an IPv6 single-stack vSwitch.
+        self.ipv_6only = ipv_6only
+        # Specifies whether the vSwitch is the default vSwitch. Valid values:
         # 
         # - **true**: The vSwitch is the default vSwitch.
         # - **false**: The vSwitch is not the default vSwitch.
         self.is_default = is_default
         # The network ACL rules.
         self.network_acl_id = network_acl_id
-        # The Alibaba Cloud account ID of the resource ownership.
+        # The Alibaba Cloud account ID of the resource owner.
         # 
-        # >Notice: This value is of the Long type. Precision loss may occur in certain programming languages. Use this value with caution.
+        # >Notice: This value is of the Long type and may cause precision loss in some programming languages. Use it with caution.
         self.owner_id = owner_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The route table information of the vSwitch.
         self.route_table = route_table
-        # The sharing type of the vSwitch.
+        # The share type of the vSwitch.
         # 
-        # - If the value is empty, the vSwitch is a private vSwitch.
+        # - If the value is empty, the vSwitch is a standard vSwitch.
         # - If the value is **Shared**, the vSwitch is a shared vSwitch.
-        # - If the value is **Sharing**, the vSwitch is being shared with other accounts.
+        # - If the value is **Sharing**, the vSwitch is being shared.
         self.share_type = share_type
         # The status of the vSwitch. Valid values:
         # 
-        # - **Pending**: being configured. 
+        # - **Pending**: Configuring. 
         # 
-        # - **Available**: active.
+        # - **Available**: Available.
         self.status = status
         self.tags = tags
         # The ID of the vSwitch.
@@ -111,6 +117,9 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
 
         if self.ipv_6cidr_block is not None:
             result['Ipv6CidrBlock'] = self.ipv_6cidr_block
+
+        if self.ipv_6only is not None:
+            result['Ipv6Only'] = self.ipv_6only
 
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
@@ -172,6 +181,9 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
 
         if m.get('Ipv6CidrBlock') is not None:
             self.ipv_6cidr_block = m.get('Ipv6CidrBlock')
+
+        if m.get('Ipv6Only') is not None:
+            self.ipv_6only = m.get('Ipv6Only')
 
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
@@ -296,9 +308,9 @@ class DescribeVSwitchAttributesResponseBodyRouteTable(DaraModel):
         self.route_table_id = route_table_id
         # The type of the route table. Valid values:
         # 
-        # - **System**: system route table.
+        # - **System**: System route table.
         # 
-        # - **Custom**: custom route table.
+        # - **Custom**: Custom route table.
         self.route_table_type = route_table_type
 
     def validate(self):

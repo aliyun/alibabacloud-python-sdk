@@ -19,13 +19,13 @@ class DescribeExpressConnectTrafficQosResponseBody(DaraModel):
     ):
         # The number of entries on the current page.
         self.count = count
-        # The number of entries per page for paginated queries. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # - Leave this parameter empty for the first query or if no subsequent query is required.
+        # - Leave empty for the first query or when no next query is required.
         # 
-        # - If a next query is to be sent, set the value to the **NextToken** value returned in the previous API call.
+        # - If a next query is required, set the value to the **NextToken** value returned by the previous API call.
         self.next_token = next_token
         # The list of QoS policies.
         self.qos_list = qos_list
@@ -111,25 +111,25 @@ class DescribeExpressConnectTrafficQosResponseBodyQosList(DaraModel):
         self.progressing = progressing
         # The description of the QoS policy. 
         # 
-        # The description is **0** to **256** characters in length and cannot start with `http://` or `https://`.
+        # The description must be **0** to **256** characters in length, and cannot start with `http://` or `https://`.
         self.qos_description = qos_description
-        # The QoS policy ID.
+        # The ID of the QoS policy.
         self.qos_id = qos_id
         # The name of the QoS policy. 
         # 
-        # The name is **0** to **128** characters in length and cannot start with `http://` or `https://`.
+        # The name must be **0** to **128** characters in length, and cannot start with `http://` or `https://`.
         self.qos_name = qos_name
         # The list of QoS queues.
         self.queue_list = queue_list
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The status of the QoS policy. Valid values:
         # 
-        # - **Normal**: available.
+        # - **Normal**: The QoS policy is available.
         # 
-        # - **Configuring**: being configured.
+        # - **Configuring**: The QoS policy is being configured.
         # 
-        # > A QoS policy in the Configuring state restricts most create, update, and delete operations on QoS policies, QoS queues, and QoS rules.
+        # > When a QoS policy is in the Configuring state, most creation, update, and deletion operations for QoS policies, QoS queues, and QoS rules are restricted.
         self.status = status
         # The tags of the resource.
         self.tags = tags
@@ -280,37 +280,37 @@ class DescribeExpressConnectTrafficQosResponseBodyQosListQueueList(DaraModel):
         # 
         # * When the QoS queue type is **Medium**, this parameter is required. Valid values: **1** to **100**.
         # 
-        # * When the QoS queue type is **Default**, this parameter is set to "-".
+        # * When the QoS queue type is **Default**, the value of this parameter is "-".
         self.bandwidth_percent = bandwidth_percent
-        # The QoS policy ID.
+        # The ID of the QoS policy.
         self.qos_id = qos_id
         # The description of the QoS queue.
         # 
-        # The description is **0** to **256** characters in length and cannot start with `http://` or `https://`.
+        # The description must be **0** to **256** characters in length, and cannot start with `http://` or `https://`.
         self.queue_description = queue_description
-        # The QoS queue ID.
+        # The ID of the QoS queue.
         self.queue_id = queue_id
         # The name of the QoS queue.
         # 
-        # The name is **0** to **128** characters in length and cannot start with `http://` or `https://`.
+        # The name must be **0** to **128** characters in length, and cannot start with `http://` or `https://`.
         self.queue_name = queue_name
-        # The QoS queue type. Valid values:
+        # The type of the QoS queue. Valid values:
         # 
-        # - **High**: high-priority queue.
+        # - **High**: High-priority queue.
         # 
-        # - **Medium**: medium-priority queue.
+        # - **Medium**: Medium-priority queue.
         # 
-        # - **Default**: default-priority queue.
+        # - **Default**: Default-priority queue.
         # 
-        # > The default-priority queue cannot be created.
+        # > You cannot create a default-priority queue.
         self.queue_type = queue_type
         # The status of the QoS queue. Valid values:
         # 
-        # - **Normal**: available.
+        # - **Normal**: The queue is available.
         # 
-        # - **Configuring**: being configured.
+        # - **Configuring**: The queue is being configured.
         # 
-        # - **Deleting**: being deleted.
+        # - **Deleting**: The queue is being deleted.
         self.status = status
 
     def validate(self):
@@ -383,13 +383,13 @@ class DescribeExpressConnectTrafficQosResponseBodyQosListAssociatedInstanceList(
         self.instance_progressing = instance_progressing
         # The status of the associated instance. Valid values:
         # 
-        # - **Normal**: available.
+        # - **Normal**: The instance is available.
         # 
-        # - **Configuring**: being configured.
+        # - **Configuring**: The instance is being configured.
         # 
-        # - **Deleting**: being deleted.
+        # - **Deleting**: The instance is being deleted.
         self.instance_status = instance_status
-        # The type of the associated instance. Valid values: **PHYSICALCONNECTION**: Express Connect circuit.
+        # The type of the associated instance. Valid value: **PHYSICALCONNECTION** (Express Connect circuit).
         self.instance_type = instance_type
 
     def validate(self):

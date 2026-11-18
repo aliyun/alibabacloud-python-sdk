@@ -20,7 +20,7 @@ class GetVpcRouteEntrySummaryRequest(DaraModel):
         self.owner_id = owner_id
         # The ID of the region where the route table resides.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -28,12 +28,12 @@ class GetVpcRouteEntrySummaryRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The type of the route. Valid values:
         # - **all**: all route types.
-        # - **custom**: custom route.
-        # - **system**: system route.
-        # - **bgp**: BGP route.
-        # - **cen**: Cloud Enterprise Network (CEN) route.
-        # - **type_vpn_bgp_internal**: VPN BGP route.
-        # - **ECR**: Express Connect Router (ECR) route.
+        # - **custom**: custom routes.
+        # - **system**: system routes.
+        # - **bgp**: BGP routes.
+        # - **cen**: Cloud Enterprise Network (CEN) routes.
+        # - **type_vpn_bgp_internal**: BGP routes of VPN.
+        # - **ECR**: Express Connect Router (ECR) routes.
         # 
         # This parameter is required.
         self.route_entry_type = route_entry_type

@@ -12,10 +12,10 @@ class UpdateVirtualPhysicalConnectionResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the VLAN ID of the shared Express Connect circuit is modified.
+        # Specifies whether the VLAN ID of the shared Express Connect circuit is successfully modified.
         # 
-        # - **true**: The VLAN ID is modified.
-        # - **false**: The VLAN ID failed to be modified.
+        # - **true**: The VLAN ID was modified.
+        # - **false**: The VLAN ID was not modified.
         self.success = success
 
     def validate(self):

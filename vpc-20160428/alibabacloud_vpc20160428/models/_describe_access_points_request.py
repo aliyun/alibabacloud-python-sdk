@@ -23,7 +23,7 @@ class DescribeAccessPointsRequest(DaraModel):
         self.owner_id = owner_id
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page for paging. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the access point.
         # 

@@ -119,6 +119,7 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
         biz_type: str = None,
         business_status: str = None,
         charge_type: str = None,
+        common_bandwidth_package_ip_bandwidth: str = None,
         deletion_protection: bool = None,
         description: str = None,
         eip_bandwidth: str = None,
@@ -162,6 +163,7 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
         self.biz_type = biz_type
         self.business_status = business_status
         self.charge_type = charge_type
+        self.common_bandwidth_package_ip_bandwidth = common_bandwidth_package_ip_bandwidth
         self.deletion_protection = deletion_protection
         self.description = description
         self.eip_bandwidth = eip_bandwidth
@@ -235,6 +237,9 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+
+        if self.common_bandwidth_package_ip_bandwidth is not None:
+            result['CommonBandwidthPackageIpBandwidth'] = self.common_bandwidth_package_ip_bandwidth
 
         if self.deletion_protection is not None:
             result['DeletionProtection'] = self.deletion_protection
@@ -365,6 +370,9 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+
+        if m.get('CommonBandwidthPackageIpBandwidth') is not None:
+            self.common_bandwidth_package_ip_bandwidth = m.get('CommonBandwidthPackageIpBandwidth')
 
         if m.get('DeletionProtection') is not None:
             self.deletion_protection = m.get('DeletionProtection')

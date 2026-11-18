@@ -27,13 +27,13 @@ class DescribeBgpGroupsRequest(DaraModel):
         self.is_default = is_default
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the VBR. 
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

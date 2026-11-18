@@ -22,7 +22,7 @@ class GetIpv4GatewayAttributeResponseBody(DaraModel):
         tags: List[main_models.GetIpv4GatewayAttributeResponseBodyTags] = None,
         vpc_id: str = None,
     ):
-        # The time when the IPv4 gateway was created.
+        # The creation time.
         self.create_time = create_time
         # Indicates whether the IPv4 gateway is activated. Valid values:
         # 
@@ -30,19 +30,19 @@ class GetIpv4GatewayAttributeResponseBody(DaraModel):
         # 
         # - **false**: The IPv4 gateway is not activated.
         self.enabled = enabled
-        # The description of the IPv4 gateway instance.
+        # The description of the IPv4 gateway.
         self.ipv_4gateway_description = ipv_4gateway_description
         # The instance ID of the IPv4 gateway.
         self.ipv_4gateway_id = ipv_4gateway_id
-        # The name of the IPv4 gateway instance.
+        # The name of the IPv4 gateway.
         self.ipv_4gateway_name = ipv_4gateway_name
-        # The ID of the route table associated with the IPv4 gateway instance.
+        # The ID of the route table associated with the IPv4 gateway.
         self.ipv_4gateway_route_table_id = ipv_4gateway_route_table_id
         # The request ID.
         self.request_id = request_id
         # The ID of the resource group to which the IPv4 gateway belongs.
         self.resource_group_id = resource_group_id
-        # The status of the IPv4 gateway instance. Valid values:
+        # The status of the IPv4 gateway. Valid values:
         # 
         # - **Creating**: The IPv4 gateway is being created.
         # 
@@ -56,9 +56,9 @@ class GetIpv4GatewayAttributeResponseBody(DaraModel):
         # 
         # - **Activating**: The IPv4 gateway is being activated.
         self.status = status
-        # The tag list.
+        # The tags.
         self.tags = tags
-        # The ID of the VPC associated with the IPv4 gateway instance.
+        # The ID of the VPC associated with the IPv4 gateway.
         self.vpc_id = vpc_id
 
     def validate(self):

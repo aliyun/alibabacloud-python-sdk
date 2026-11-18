@@ -17,9 +17,9 @@ class ListNatIpsResponseBody(DaraModel):
     ):
         # The list of NAT IP addresses.
         self.nat_ips = nat_ips
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The token that is used to start the next query. Valid values:
+        # - If **NextToken** is empty, no next query is available.
+        # - If **NextToken** has a return value, the value indicates the token used to start the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -87,11 +87,11 @@ class ListNatIpsResponseBodyNatIps(DaraModel):
     ):
         # The CIDR block of the IP prefix to which the NAT IP address belongs.
         self.ipv_4prefix = ipv_4prefix
-        # Indicates whether the NAT IP address is the default one. Valid values:
+        # Specifies whether the NAT IP address is the default NAT IP address. Valid values:
         # 
-        # - **true**: The NAT IP address is the default one.
+        # - **true**: The NAT IP address is the default NAT IP address.
         # 
-        # - **false**: The NAT IP address is not the default one.
+        # - **false**: The NAT IP address is not the default NAT IP address.
         self.is_default = is_default
         # The instance ID of the VPC NAT gateway to which the NAT IP address belongs.
         self.nat_gateway_id = nat_gateway_id
@@ -107,12 +107,12 @@ class ListNatIpsResponseBodyNatIps(DaraModel):
         self.nat_ip_name = nat_ip_name
         # The status of the NAT IP address. Valid values:
         # 
-        # - **Available**: available.
-        # - **Deleted**: deleted.
-        # - **Deleting**: being deleted.
-        # - **Creating**: being created.
-        # - **Associated**: associated with an SNAT or DNAT entry.
-        # - **Associating**: being associated with an SNAT or DNAT entry.
+        # - **Available**: Available.
+        # - **Deleted**: Deleted.
+        # - **Deleting**: Deleting.
+        # - **Creating**: Creating.
+        # - **Associated**: Associated with an SNAT or DNAT entry.
+        # - **Associating**: Being associated with an SNAT or DNAT entry.
         self.nat_ip_status = nat_ip_status
 
     def validate(self):

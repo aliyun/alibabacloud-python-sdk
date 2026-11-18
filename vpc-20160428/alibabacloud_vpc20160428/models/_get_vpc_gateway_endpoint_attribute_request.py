@@ -14,15 +14,15 @@ class GetVpcGatewayEndpointAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The endpoint instance ID of the gateway endpoint.
+        # The gateway endpoint instance ID.
         # 
         # This parameter is required.
         self.endpoint_id = endpoint_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the gateway endpoint.
+        # The ID of the region where the gateway endpoint resides.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

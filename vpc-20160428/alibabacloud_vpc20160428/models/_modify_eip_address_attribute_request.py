@@ -23,15 +23,15 @@ class ModifyEipAddressAttributeRequest(DaraModel):
         self.allocation_id = allocation_id
         # The peak bandwidth of the EIP. Valid values:
         # 
-        # - **1** to **200**: If the EIP is billed on a pay-by-data-transfer basis. Unit: Mbit/s. 
+        # - **1** to **200** if the EIP is billed by data transfer. Unit: Mbit/s. 
         # 
-        # - **1** to **500**: If the EIP is billed on a pay-by-bandwidth basis. Unit: Mbit/s.
+        # - **1** to **500** if the EIP is billed by bandwidth. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The description of the EIP that you want to modify.  
+        # The description of the EIP.  
         # 
         # The description must be 0 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The name of the EIP that you want to modify.  
+        # The name of the EIP.  
         # 
         # The name must be 0 to 128 characters in length and cannot start with `http://` or `https://`.
         self.name = name
@@ -39,7 +39,7 @@ class ModifyEipAddressAttributeRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the EIP.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

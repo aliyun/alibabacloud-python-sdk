@@ -18,20 +18,20 @@ class ModifyVpnGatewayAttributeRequest(DaraModel):
         resource_owner_id: int = None,
         vpn_gateway_id: str = None,
     ):
-        # Specifies whether to enable the routing automatic propagation feature for the VPN gateway. Valid values:
+        # Specifies whether to enable the automatic route propagation feature for the VPN gateway. Valid values:
         # 
-        # - **true**: enabled.
+        # - **true**: enables the feature.
         # 
-        #     After routing automatic propagation is enabled, the VPN gateway instance uses automatic learning to obtain system routes from the system route table of the VPC-connected instance and automatically propagates routes of the on-premises data center to the system route table of the VPC-connected instance.
-        # - **false**: disabled.
+        #     After automatic route propagation is enabled, the VPN gateway instance automatically learns system routes in the system route table of the VPC and automatically propagates routes of the on-premises data center to the system route table of the VPC.
+        # - **false**: disables the feature.
         #     
-        #     Before you disable routing automatic propagation, make sure that the BGP dynamic route feature is disabled for all IPsec-VPN connections under the VPN gateway.
+        #     Before you disable automatic route propagation, make sure that the BGP dynamic route feature is disabled for all IPsec-VPN connections under the VPN gateway.
         self.auto_propagate = auto_propagate
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can generate the parameter value on your client to ensure that the value is unique among different requests. The client token only supports ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the ClientToken. The RequestId may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request is different.
         self.client_token = client_token
         # The new description of the VPN gateway.  
         #  
@@ -39,17 +39,17 @@ class ModifyVpnGatewayAttributeRequest(DaraModel):
         self.description = description
         # The new name of the VPN gateway.  
         # 
-        # The name must be 2 to 100 characters in length. It cannot start with `http://` or `https://`. It must start with an uppercase or lowercase letter and can contain uppercase and lowercase letters, digits, underscores (_), hyphens (-), and periods (.). Other special characters are not supported.
+        # The name must be 2 to 100 characters in length. It cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (_), hyphens (-), and periods (.). Other special characters are not supported.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the VPN gateway instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # The region ID of the VPN gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VPN gateway instance.
+        # The ID of the VPN gateway.
         # 
         # This parameter is required.
         self.vpn_gateway_id = vpn_gateway_id

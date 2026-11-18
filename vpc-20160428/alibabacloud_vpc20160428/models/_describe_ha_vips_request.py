@@ -21,17 +21,17 @@ class DescribeHaVipsRequest(DaraModel):
         resource_owner_id: int = None,
         tags: List[main_models.DescribeHaVipsRequestTags] = None,
     ):
-        # The filter conditions.
+        # The details of the filter conditions.
         self.filter = filter
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the list. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the HaVip.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -39,7 +39,7 @@ class DescribeHaVipsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags.
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -139,13 +139,13 @@ class DescribeHaVipsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot enter an empty string.
         # 
         # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can enter an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -180,25 +180,24 @@ class DescribeHaVipsRequestFilter(DaraModel):
         key: str = None,
         value: List[str] = None,
     ):
-        # The filter condition. You can specify up to 5 filter conditions. Valid values of **N**: **1 to 5**.
+        # The filter condition. You can specify up to 5 filter conditions. Valid values of **N**: **1** to **5**.
+        # Supported filter conditions:
         # 
-        # The following filter conditions are supported:
+        # - **VpcId**: The ID of the virtual private cloud (VPC). 
         # 
-        # - **VpcId**: the virtual private cloud (VPC) ID.
+        # - **VSwitchId**: The vSwitch ID. 
         # 
-        # - **VSwitchId**: the vSwitch ID.
+        # - **Status**: The status of the HaVip. 
         # 
-        # - **Status**: the HaVip status.
+        # - **HaVipId**: The HaVip ID. 
         # 
-        # - **HaVipId**: the HaVip ID.
+        # - **HaVipAddress**: The IP address of the HaVip.
         # 
-        # - **HaVipAddress**: the IP address of the HaVip.
+        # You can specify multiple values for each filter condition. The values are evaluated by using the OR operator. A resource is considered to match the filter condition of the parameter if it matches at least one of the values.
         # 
-        # Each filter condition (Filter Key) can have multiple values. The values have an OR relationship, which means that a match on any value satisfies the filter condition.
-        # 
-        # Different filter conditions (Filter Keys) have an AND relationship, which means that all parameter filter conditions must be met for a record to be returned.
+        # Multiple filter conditions are evaluated by using the AND operator. A resource is returned only if it matches the filter conditions of all parameters.
         self.key = key
-        # The values of the specified filter condition. Valid values of **N**: **1 to 5**.
+        # The value of the specified filter condition. Valid values of **N**: **1** to **5**.
         self.value = value
 
     def validate(self):

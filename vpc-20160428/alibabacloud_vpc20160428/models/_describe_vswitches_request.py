@@ -12,6 +12,7 @@ class DescribeVSwitchesRequest(DaraModel):
         self,
         dry_run: bool = None,
         enable_ipv_6: bool = None,
+        ipv_6only: bool = None,
         is_default: bool = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -29,35 +30,41 @@ class DescribeVSwitchesRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
-        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: The system prechecks the request without creating resources. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): The system sends a normal request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # Specifies whether to query vSwitches that have IPv6 CIDR blocks enabled in the specified region. Valid values:
+        # Specifies whether to query the vSwitches that have IPv6 CIDR blocks enabled in the specified region. Valid values:
         # 
-        # - **true**: queries vSwitches that have IPv6 CIDR blocks enabled in the specified region.
+        # - **true**: Queries the vSwitches that have IPv6 CIDR blocks enabled in the specified region.
         # 
-        # - **false**: does not query vSwitches that have IPv6 CIDR blocks enabled in the specified region.
+        # - **false**: Does not query the vSwitches that have IPv6 CIDR blocks enabled in the specified region.
         # 
-        # If you do not specify this parameter, the system queries all vSwitches in the specified region.
+        # If you do not specify this parameter, the system queries all vSwitches in the specified region by default.
         self.enable_ipv_6 = enable_ipv_6
+        # Specifies whether to query the IPv6 single-stack vSwitches in the specified region. Valid values:
+        # - true: Queries the IPv6 single-stack vSwitches in the specified region.
+        # - false: Does not query the IPv6 single-stack vSwitches in the specified region.
+        # 
+        # If you do not specify this parameter, the system queries all vSwitches in the specified region by default.
+        self.ipv_6only = ipv_6only
         # Specifies whether to query the default vSwitch in the specified region. Valid values: 
         # 
-        # - **true**: queries the default vSwitch in the specified region.  
+        # - **true**: Queries the default vSwitch in the specified region.  
         # 
-        # - **false**: does not query the default vSwitch in the specified region.  
+        # - **false**: Does not query the default vSwitch in the specified region.  
         # 
-        # If you do not specify this parameter, the system queries all vSwitches in the specified region.
+        # If you do not specify this parameter, the system queries all vSwitches in the specified region by default.
         self.is_default = is_default
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. Default value: **1**.
+        # The page number of the list. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page for a paged query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the region to which the vSwitch belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # The ID of the region to which the vSwitch belongs. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
-        # > Specify at least one of the **RegionId** and **VpcId** parameters.
+        # > You must specify at least one of the **RegionId** and **VpcId** parameters.
         self.region_id = region_id
         # The ID of the resource group to which the vSwitch belongs.
         self.resource_group_id = resource_group_id
@@ -67,7 +74,7 @@ class DescribeVSwitchesRequest(DaraModel):
         self.route_table_id = route_table_id
         # The tags of the resource.
         self.tag = tag
-        # The ID of the vSwitch that you want to query.
+        # The ID of the vSwitch to be queried.
         self.v_switch_id = v_switch_id
         # The name of the vSwitch.
         # 
@@ -75,11 +82,11 @@ class DescribeVSwitchesRequest(DaraModel):
         self.v_switch_name = v_switch_name
         # The Alibaba Cloud account ID of the resource ownership.
         self.v_switch_owner_id = v_switch_owner_id
-        # The ID of the VPC to which the vSwitches that you want to query belong. 
+        # The ID of the VPC to which the vSwitch to be queried belongs. 
         # 
-        # > Specify at least one of the **RegionId** and **VpcId** parameters.
+        # > You must specify at least one of the **RegionId** and **VpcId** parameters.
         self.vpc_id = vpc_id
-        # The ID of the zone to which the vSwitch belongs. You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query the zone ID.
+        # The ID of the zone to which the vSwitch belongs. You can call the [DescribeZones](https://help.aliyun.com/document_detail/36064.html) operation to query zone IDs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -98,6 +105,9 @@ class DescribeVSwitchesRequest(DaraModel):
 
         if self.enable_ipv_6 is not None:
             result['EnableIpv6'] = self.enable_ipv_6
+
+        if self.ipv_6only is not None:
+            result['Ipv6Only'] = self.ipv_6only
 
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
@@ -159,6 +169,9 @@ class DescribeVSwitchesRequest(DaraModel):
         if m.get('EnableIpv6') is not None:
             self.enable_ipv_6 = m.get('EnableIpv6')
 
+        if m.get('Ipv6Only') is not None:
+            self.ipv_6only = m.get('Ipv6Only')
+
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
 
@@ -218,13 +231,13 @@ class DescribeVSwitchesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can specify an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

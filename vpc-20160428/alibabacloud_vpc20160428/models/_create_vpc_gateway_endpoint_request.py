@@ -27,15 +27,15 @@ class CreateVpcGatewayEndpointRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run on the request. Valid values:
         # 
-        # - **true**: performs a dry run without creating the gateway endpoint. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned. The check items include whether the AccessKey pair is valid, whether the Resource Access Management (RAM) user has the required authorization, and whether the required parameters are specified.
+        # - **true**: performs only a dry run and does not create the gateway endpoint. The system checks whether your AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # 
-        # - **false** (default): sends a Normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the gateway endpoint is created.
+        # - **false** (default): sends a normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the gateway endpoint is created.
         self.dry_run = dry_run
         # The description of the gateway endpoint.
         # 
@@ -49,16 +49,16 @@ class CreateVpcGatewayEndpointRequest(DaraModel):
         self.owner_id = owner_id
         # The access policy for the cloud service.
         # 
-        # For more information about the syntax and structure of access policies, see [Policy structure and syntax](https://help.aliyun.com/document_detail/93739.html).
+        # For more information about the syntax and structure of access policies, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
         # 
         # > 
         # > - This parameter is required if the selected endpoint service supports access policies.
-        # > - This parameter must be empty if the selected endpoint service does not support access policies.
-        # > - You can call the [ListVpcEndpointServicesByEndUser](https://help.aliyun.com/document_detail/448920.html) operation to check whether an endpoint service supports access policies. A value of true for SupportPolicy indicates that access policies are supported.
+        # > - This parameter must be left empty if the selected endpoint service does not support access policies.
+        # > - You can call the [ListVpcEndpointServicesByEndUser](https://help.aliyun.com/document_detail/448920.html) operation to check whether the endpoint service supports access policies. If the value of SupportPolicy is true, the endpoint service supports access policies. Otherwise, it does not.
         self.policy_document = policy_document
         # The region ID of the gateway endpoint that you want to create.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -66,13 +66,13 @@ class CreateVpcGatewayEndpointRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The service name of the endpoint service.
+        # The name of the endpoint service.
         # 
         # This parameter is required.
         self.service_name = service_name
         # The tags of the resource.
         self.tag = tag
-        # The ID of the VPC for which you want to create the gateway endpoint.
+        # The ID of the virtual private cloud (VPC) where you want to create the gateway endpoint.
         # 
         # The VPC must be in the same region as the gateway endpoint.
         # 
@@ -191,13 +191,13 @@ class CreateVpcGatewayEndpointRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
         # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you can specify an empty string.
         # 
-        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # A tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

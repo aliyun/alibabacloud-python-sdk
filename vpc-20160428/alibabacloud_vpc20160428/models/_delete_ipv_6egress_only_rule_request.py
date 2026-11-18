@@ -18,10 +18,11 @@ class DeleteIpv6EgressOnlyRuleRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
+        # Specifies whether to perform a dry run without executing the actual operation.
         self.dry_run = dry_run
         # The ID of the IPv6 egress-only rule that you want to delete.
         # 
@@ -29,7 +30,7 @@ class DeleteIpv6EgressOnlyRuleRequest(DaraModel):
         self.ipv_6egress_only_rule_id = ipv_6egress_only_rule_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv6 gateway. You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # The region ID of the IPv6 gateway. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

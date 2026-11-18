@@ -26,36 +26,36 @@ class ModifyFullNatEntryAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The backend domain name to be modified for FULLNAT address translation.
+        # The backend domain name for FULLNAT address translation.
         self.access_domain = access_domain
-        # The backend IP address to be modified for FULLNAT address translation.
+        # The backend IP address for FULLNAT address translation.
         self.access_ip = access_ip
-        # The backend port to be modified for FULLNAT port mapping. Valid values: **1** to **65535**.
+        # The backend port of the FULLNAT port mapping. Valid values: **1** to **65535**.
         self.access_port = access_port
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the value, and you must ensure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run for this request. Valid values:
         # 
-        # - **true**: performs a dry run without modifying the FULLNAT entry. The system checks the AccessKey pair, the authorization of the Resource Access Management (RAM) user, and the required parameters. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends a Normal request. If the check succeeds, a 2xx HTTP status code is returned and the FULLNAT entry is modified.
+        # - **true**: performs a dry run without modifying the FULLNAT entry. The system checks whether your AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a Normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the FULLNAT entry is modified.
         self.dry_run = dry_run
         # The new description of the FULLNAT entry.
         # 
-        # The description can be empty or 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+        # The description can be left empty, or must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.full_nat_entry_description = full_nat_entry_description
-        # The ID of the FULLNAT entry to be modified.
+        # The ID of the FULLNAT entry that you want to modify.
         # 
         # This parameter is required.
         self.full_nat_entry_id = full_nat_entry_id
         # The new name of the FULLNAT entry.
         # 
-        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
         self.full_nat_entry_name = full_nat_entry_name
-        # The ID of the FULLNAT table to which the FULLNAT entry belongs.
+        # The ID of the FULLNAT table.
         # 
         # This parameter is required.
         self.full_nat_table_id = full_nat_table_id
@@ -64,11 +64,11 @@ class ModifyFullNatEntryAttributeRequest(DaraModel):
         # - **TCP**: forwards TCP packets. 
         # - **UDP**: forwards UDP packets.
         self.ip_protocol = ip_protocol
-        # The NAT IP address to be modified.
+        # The NAT IP address.
         self.nat_ip = nat_ip
-        # The frontend port to be modified for FULLNAT port mapping. Valid values: **1** to **65535**.
+        # The frontend port of the FULLNAT port mapping. Valid values: **1** to **65535**.
         self.nat_ip_port = nat_ip_port
-        # The ID of the elastic network interfaces (ENIs), also known as the network interface controller (NIC), to be modified.
+        # The ID of the network interface controller (NIC) that you want to modify.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id

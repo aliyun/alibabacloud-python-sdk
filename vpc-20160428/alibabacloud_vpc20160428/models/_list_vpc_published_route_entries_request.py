@@ -19,13 +19,13 @@ class ListVpcPublishedRouteEntriesRequest(DaraModel):
         target_instance_id: str = None,
         target_type: str = None,
     ):
-        # The destination CIDR block of the route entry. IPv4 and IPv6 CIDR blocks are supported.
+        # The destination CIDR block of the route. Both IPv4 and IPv6 CIDR blocks are supported.
         self.destination_cidr_block = destination_cidr_block
-        # The number of entries per page in a paged query. Valid values: **1** to **500**. Default value: **50**.
+        # The number of entries to return on each page. Valid values: **1** to **500**. Default value: **50**.
         self.max_results = max_results
-        # The token for the next query. Valid values:
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** has a value, the value indicates the token for the next query.
+        # The token used to retrieve the next page of results. Valid values:
+        # - If **NextToken** is empty, no more results are available.
+        # - If **NextToken** is returned, the value is the token used to start the next query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -37,9 +37,9 @@ class ListVpcPublishedRouteEntriesRequest(DaraModel):
         # 
         # This parameter is required.
         self.route_table_id = route_table_id
-        # The instance ID of the route publish target.
+        # The instance ID of the route publication target.
         self.target_instance_id = target_instance_id
-        # The type of the route publish target.
+        # The type of the route publication target.
         # 
         # This parameter is required.
         self.target_type = target_type

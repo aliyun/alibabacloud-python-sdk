@@ -19,7 +19,7 @@ class DescribeIpv6AddressesResponseBody(DaraModel):
         self.ipv_6addresses = ipv_6addresses
         # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page for paging queries. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page in a paging query. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -114,6 +114,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(DaraModel):
         allocation_time: str = None,
         associated_instance_id: str = None,
         associated_instance_type: str = None,
+        common_bandwidth_package_info: main_models.DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo = None,
         ipv_6address: str = None,
         ipv_6address_description: str = None,
         ipv_6address_id: str = None,
@@ -134,6 +135,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(DaraModel):
         self.allocation_time = allocation_time
         self.associated_instance_id = associated_instance_id
         self.associated_instance_type = associated_instance_type
+        self.common_bandwidth_package_info = common_bandwidth_package_info
         self.ipv_6address = ipv_6address
         self.ipv_6address_description = ipv_6address_description
         self.ipv_6address_id = ipv_6address_id
@@ -151,6 +153,8 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(DaraModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.common_bandwidth_package_info:
+            self.common_bandwidth_package_info.validate()
         if self.ipv_6internet_bandwidth:
             self.ipv_6internet_bandwidth.validate()
         if self.tags:
@@ -172,6 +176,9 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(DaraModel):
 
         if self.associated_instance_type is not None:
             result['AssociatedInstanceType'] = self.associated_instance_type
+
+        if self.common_bandwidth_package_info is not None:
+            result['CommonBandwidthPackageInfo'] = self.common_bandwidth_package_info.to_map()
 
         if self.ipv_6address is not None:
             result['Ipv6Address'] = self.ipv_6address
@@ -233,6 +240,10 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(DaraModel):
 
         if m.get('AssociatedInstanceType') is not None:
             self.associated_instance_type = m.get('AssociatedInstanceType')
+
+        if m.get('CommonBandwidthPackageInfo') is not None:
+            temp_model = main_models.DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo()
+            self.common_bandwidth_package_info = temp_model.from_map(m.get('CommonBandwidthPackageInfo'))
 
         if m.get('Ipv6Address') is not None:
             self.ipv_6address = m.get('Ipv6Address')
@@ -449,6 +460,49 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
 
         if m.get('ReservationOrderType') is not None:
             self.reservation_order_type = m.get('ReservationOrderType')
+
+        return self
+
+class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressCommonBandwidthPackageInfo(DaraModel):
+    def __init__(
+        self,
+        bandwidth_package_bandwidth: int = None,
+        bandwidth_package_id: str = None,
+        common_bandwidth_package_ip_bandwidth: int = None,
+    ):
+        self.bandwidth_package_bandwidth = bandwidth_package_bandwidth
+        self.bandwidth_package_id = bandwidth_package_id
+        self.common_bandwidth_package_ip_bandwidth = common_bandwidth_package_ip_bandwidth
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bandwidth_package_bandwidth is not None:
+            result['BandwidthPackageBandwidth'] = self.bandwidth_package_bandwidth
+
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+
+        if self.common_bandwidth_package_ip_bandwidth is not None:
+            result['CommonBandwidthPackageIpBandwidth'] = self.common_bandwidth_package_ip_bandwidth
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BandwidthPackageBandwidth') is not None:
+            self.bandwidth_package_bandwidth = m.get('BandwidthPackageBandwidth')
+
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+
+        if m.get('CommonBandwidthPackageIpBandwidth') is not None:
+            self.common_bandwidth_package_ip_bandwidth = m.get('CommonBandwidthPackageIpBandwidth')
 
         return self
 

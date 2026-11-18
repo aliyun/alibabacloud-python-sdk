@@ -16,15 +16,15 @@ class DiagnoseVpnConnectionsResponseBody(DaraModel):
         total_count: int = None,
         vpn_connections: List[main_models.DiagnoseVpnConnectionsResponseBodyVpnConnections] = None,
     ):
-        # The page number of the list.
+        # The page number.
         self.page_number = page_number
-        # The number of entries per page in a paged query.
+        # The number of entries per page in a paging query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries.
         self.total_count = total_count
-        # The diagnostic information list of IPsec-VPN connections.
+        # The diagnostic information about the IPsec-VPN connections.
         self.vpn_connections = vpn_connections
 
     def validate(self):
@@ -92,27 +92,27 @@ class DiagnoseVpnConnectionsResponseBodyVpnConnections(DaraModel):
         tunnel_id: str = None,
         vpn_connection_id: str = None,
     ):
-        # The error reason.
+        # The cause of the error.
         self.failed_reason = failed_reason
         # The error code.
         self.failed_reason_code = failed_reason_code
         # The timestamp when the current error occurred on the IPsec-VPN connection. Unit: milliseconds.
         # 
-        # The timestamp is in UNIX format and represents the total number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC to the time when the current error occurred on the IPsec-VPN connection.
+        # The timestamp follows the UNIX timestamp format, which indicates the total duration from 00:00:00 on January 1, 1970 (UTC) to the time when the current error occurred on the IPsec-VPN connection.
         self.failed_time = failed_time
-        # The parameter value configured on the IPsec-VPN connection when the parameter values configured on the IPsec-VPN connection and the peer gateway device do not match.
+        # The parameter values configured on the IPsec-VPN connection when the parameter values configured on the IPsec-VPN connection and the peer gateway device do not match.
         self.mismatch_local_param = mismatch_local_param
-        # The parameter value configured on the peer gateway device when the parameter values configured on the IPsec-VPN connection and the peer gateway device do not match.
+        # The parameter values configured on the peer gateway device when the parameter values configured on the IPsec-VPN connection and the peer gateway device do not match.
         self.mismatch_remote_param = mismatch_remote_param
-        # The severity level of the current error.
+        # The severity level of the current error. Valid values:
         # 
-        # - **Critical**: Critical. Troubleshoot the issue immediately.
-        # - **Warn**: Warning. Troubleshoot the issue as soon as possible.
+        # - **Critical**: Critical. Troubleshoot and resolve the issue as soon as possible.
+        # - **Warn**: Warning. Troubleshoot and resolve the issue promptly.
         # - **Normal**: Normal.
         self.severity = severity
         # The log information related to the current error.
         self.source_log = source_log
-        # The tunnel ID.
+        # The ID of the tunnel.
         self.tunnel_id = tunnel_id
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id

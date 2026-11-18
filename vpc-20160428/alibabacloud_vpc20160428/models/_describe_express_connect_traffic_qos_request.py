@@ -24,23 +24,23 @@ class DescribeExpressConnectTrafficQosRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may differ for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # The number of entries per page for paginated queries. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The pagination token. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # *   Leave this parameter empty for the first query or if no subsequent query is required.
+        # * Leave empty for the first query or when no next query is required.
         # 
-        # *   If a next query is to be sent, set the value to the **NextToken** value returned in the previous API call.
+        # * If a next query is required, set the value to the **NextToken** value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The list of QoS policy IDs.
+        # The IDs of the QoS policies.
         self.qos_id_list = qos_id_list
-        # The list of QoS policy names.
+        # The QoS policy names.
         self.qos_name_list = qos_name_list
         # The region ID of the QoS policy.
         # 
@@ -48,7 +48,7 @@ class DescribeExpressConnectTrafficQosRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         # The tags of the resource.
@@ -148,13 +148,13 @@ class DescribeExpressConnectTrafficQosRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You must specify at least 1 tag key and can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You must specify at least one tag key and can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # A tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # A tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
-        # The tag value of the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # A tag value can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

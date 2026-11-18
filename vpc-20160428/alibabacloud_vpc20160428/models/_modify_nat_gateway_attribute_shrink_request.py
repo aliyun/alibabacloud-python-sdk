@@ -22,31 +22,31 @@ class ModifyNatGatewayAttributeShrinkRequest(DaraModel):
     ):
         # The description of the NAT gateway that you want to modify.
         # 
-        # The description must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The description must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
-        # The EIP attach pattern of the NAT gateway. Valid values: The value can be empty. If the value is not empty, only **NAT** is allowed, which indicates that the attach pattern is EIP Normal pattern.
+        # The EIP attach pattern of the NAT gateway. Valid values: You can leave this parameter empty. If you specify a value, only **NAT** is allowed, which indicates the standard EIP attach pattern.
         # 
         # 
         # > - You can only change the pattern from **MULTI_BINDED** to **NAT**. You cannot change the pattern from **NAT** to **MULTI_BINDED**. For more information about the **MULTI_BINDED** pattern, see [CreateNatGateway](https://help.aliyun.com/document_detail/120219.html).
-        # - During the EIP attach pattern switchover procedure, network connectivity may experience second-level transient connections (the transient connection duration increases as the number of EIPs increases. Currently, configuration changes are supported for NAT gateways with up to 5 EIPs attached). Execute the switchover during off-peak hours.
-        # - After the EIP attach pattern is changed to **NAT**, the Internet NAT gateway is compatible with the IPv4 gateway. However, attaching a public EIP occupies a private IP in the vSwitch where the NAT gateway resides. Make sure that sufficient private IP addresses are available in the vSwitch. If no available idle private IP addresses exist in the vSwitch, new EIPs cannot be attached.
+        # - During the EIP attach pattern switchover procedure, network connectivity may experience a transient connection at the second level (the duration of the transient connection increases with the number of EIPs. Currently, configuration changes are supported for NAT gateways with up to five EIPs attached), so execute the switchover operation during off-peak hours.
+        # - After the EIP attach pattern is changed to **NAT**, the Internet NAT gateway becomes compatible with the IPv4 gateway. However, when you attach a public EIP, a private IP address in the vSwitch where the NAT gateway resides is occupied. Ensure that the vSwitch has sufficient private IP addresses. If no available private IP address exists in the vSwitch, you cannot attach a new EIP.
         self.eip_bind_mode = eip_bind_mode
-        # Specifies whether to enable session logging. Valid values:
+        # Specifies whether to enable the session log feature. Valid values:
         # 
-        # - **true**: Session logging is enabled.
+        # - **true**: enables the session log feature.
         # 
-        # - **false**: Session logging is disabled.
+        # - **false**: disables the session log feature.
         self.enable_session_log = enable_session_log
         # Specifies whether to enable ICMP echo reply. Valid values:
         # 
-        # - **true** (default): Enabled.
-        # - **false**: Disabled.
+        # - **true** (default): enables ICMP echo reply.
+        # - **false**: disables ICMP echo reply.
         self.icmp_reply_enabled = icmp_reply_enabled
         # The session log configuration.
         self.log_delivery_shrink = log_delivery_shrink
         # The name of the NAT gateway that you want to modify.
         # 
-        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.name = name
         # The ID of the NAT gateway that you want to modify.
         # 
@@ -56,7 +56,7 @@ class ModifyNatGatewayAttributeShrinkRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the NAT gateway that you want to modify. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

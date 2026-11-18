@@ -20,13 +20,13 @@ class ModifyVSwitchCidrReservationAttributeRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may vary for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
-        # - **true**: performs a dry run. The system checks the required parameters, request syntax, and business restrictions. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
-        # - **false** (default): performs a dry run and sends the request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: Sends a precheck request without performing the operation. The system checks whether the required parameters are specified, the request format is valid, and the service limits are met. If the request fails the precheck, the corresponding error is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends a normal request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -38,9 +38,9 @@ class ModifyVSwitchCidrReservationAttributeRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The description of the reserved CIDR block for a vSwitch that you want to modify. If you do not specify this parameter, the description is empty. The default value is empty.
+        # The description of the reserved CIDR block for a vSwitch that you want to modify. If you do not specify this parameter, the description is empty. Default value: empty.
         # 
-        # The description must be 2 to 256 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and start with a letter. It cannot start with `http://` or `https://`.
         self.v_switch_cidr_reservation_description = v_switch_cidr_reservation_description
         # The instance ID of the reserved CIDR block for a vSwitch that you want to modify.
         # 
@@ -48,7 +48,7 @@ class ModifyVSwitchCidrReservationAttributeRequest(DaraModel):
         self.v_switch_cidr_reservation_id = v_switch_cidr_reservation_id
         # The name of the reserved CIDR block for a vSwitch that you want to modify.
         # 
-        # The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It can contain digits, underscores (_), and hyphens (-).
+        # The name must be 2 to 128 characters in length and start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
         self.v_switch_cidr_reservation_name = v_switch_cidr_reservation_name
 
     def validate(self):

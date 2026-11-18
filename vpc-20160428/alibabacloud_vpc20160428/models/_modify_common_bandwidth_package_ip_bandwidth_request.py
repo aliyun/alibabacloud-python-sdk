@@ -10,24 +10,32 @@ class ModifyCommonBandwidthPackageIpBandwidthRequest(DaraModel):
         bandwidth: str = None,
         bandwidth_package_id: str = None,
         eip_id: str = None,
+        ip_instance_id: str = None,
+        ip_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The maximum bandwidth that can be allocated within the Internet Shared Bandwidth instance. Unit: Mbps.
+        # The maximum bandwidth that can be allocated in the Internet Shared Bandwidth instance. Unit: Mbit/s.
         # 
         # This parameter is required.
         self.bandwidth = bandwidth
-        # The instance ID of the Internet Shared Bandwidth instance.
+        # The instance ID of the Internet Shared Bandwidth.
         # 
         # This parameter is required.
         self.bandwidth_package_id = bandwidth_package_id
-        # The instance ID of the EIP that has been added to the Internet Shared Bandwidth instance.
-        # 
-        # This parameter is required.
+        # The ID of the EIP that is added to the Internet Shared Bandwidth instance. This parameter applies only to EIPs. For IPv6 addresses, use IpInstanceId.
         self.eip_id = eip_id
+        # The ID of the public IP address instance for which you want to set the maximum available bandwidth in the Internet Shared Bandwidth instance. This parameter and EipId are mutually exclusive. We recommend that you use this parameter for new workloads. If IpType is set to **VpcIpv6**, specify the ID of the IPv6 address.
+        self.ip_instance_id = ip_instance_id
+        # The resource type of the public IP address for which you want to set the maximum available bandwidth in the Internet Shared Bandwidth instance. Valid values:
+        # - **EIP**: the public IP address of an EIP.
+        # - **VpcIpv6**: the IPv6 address of a VPC.
+        # 
+        # If this parameter is not specified, the default value is **EIP**.
+        self.ip_type = ip_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
@@ -53,6 +61,12 @@ class ModifyCommonBandwidthPackageIpBandwidthRequest(DaraModel):
 
         if self.eip_id is not None:
             result['EipId'] = self.eip_id
+
+        if self.ip_instance_id is not None:
+            result['IpInstanceId'] = self.ip_instance_id
+
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -81,6 +95,12 @@ class ModifyCommonBandwidthPackageIpBandwidthRequest(DaraModel):
 
         if m.get('EipId') is not None:
             self.eip_id = m.get('EipId')
+
+        if m.get('IpInstanceId') is not None:
+            self.ip_instance_id = m.get('IpInstanceId')
+
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

@@ -24,7 +24,7 @@ class CreatePhysicalConnectionOccupancyOrderRequest(DaraModel):
         # Specifies whether to enable automatic payment. Valid values:
         # 
         # - **true**: enables automatic payment. Make sure that your account balance is sufficient. If your account balance is insufficient, an abnormal order is generated and can only be canceled.
-        # - **false** (default): generates an order without charging.
+        # - **false** (default): generates an order without deducting fees.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # 
@@ -35,7 +35,7 @@ class CreatePhysicalConnectionOccupancyOrderRequest(DaraModel):
         self.auto_renew_duration = auto_renew_duration
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # The client generates the value. The value must be unique among different requests.
+        # You can use the client to generate the value, but you must make sure that it is unique among different requests.
         self.client_token = client_token
         # The billing method of the instance. Valid values:
         # 
@@ -45,8 +45,8 @@ class CreatePhysicalConnectionOccupancyOrderRequest(DaraModel):
         self.owner_id = owner_id
         # The subscription duration.
         # 
-        # - If **PricingCycle** is set to **Month**, valid values of **Period** are **1 to 9**.
-        # - If **PricingCycle** is set to **Year**, valid values of **Period** are **1 to 5**.
+        # - If **PricingCycle** is set to **Month**, valid values for **Period** are **1** to **9**.
+        # - If **PricingCycle** is set to **Year**, valid values for **Period** are **1** to **5**.
         self.period = period
         # The instance ID of the Express Connect circuit.
         # 
@@ -54,12 +54,12 @@ class CreatePhysicalConnectionOccupancyOrderRequest(DaraModel):
         self.physical_connection_id = physical_connection_id
         # The billing cycle of the subscription. Valid values:
         # 
-        # - **Month** (default): billed on a monthly basis.
-        # - **Year**: billed on a yearly basis.
+        # - **Month** (default): monthly subscription.
+        # - **Year**: yearly subscription.
         self.pricing_cycle = pricing_cycle
         # The region ID of the Express Connect circuit. 
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to obtain the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -15,13 +15,13 @@ class ModifyCommonBandwidthPackageSpecRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. 
+        # The peak bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s. 
         # 
         # <props="china">
         # 
-        #  - If the billing method of the Internet Shared Bandwidth instance is pay-by-bandwidth, the default value range of **Bandwidth** is **2** to **20000**.
-        # - If the billing method of the Internet Shared Bandwidth instance is pay-by-95th-percentile-bandwidth, the default value range of **Bandwidth** is **200** to **20000**.
-        # - If the billing method of the Internet Shared Bandwidth instance is pay-by-predominant-traffic, the default value range of **Bandwidth** is **1** to **2000**.
+        #  - If the billing method of the Internet Shared Bandwidth instance is pay-by-bandwidth, the default valid values for **Bandwidth** range from **2** to **20000**.
+        # - If the billing method of the Internet Shared Bandwidth instance is pay-by-enhanced-95th-percentile, the default valid values for **Bandwidth** range from **200** to **20000**.
+        # - If the billing method of the Internet Shared Bandwidth instance is pay-by-dominant-traffic, the default valid values for **Bandwidth** range from **1** to **2000**.
         # 
         # 
         # <props="intl">Valid values: **1** to **1000**.
@@ -36,7 +36,7 @@ class ModifyCommonBandwidthPackageSpecRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the Internet Shared Bandwidth instance. 
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

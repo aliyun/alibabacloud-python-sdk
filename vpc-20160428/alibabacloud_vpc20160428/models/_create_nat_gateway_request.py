@@ -40,52 +40,60 @@ class CreateNatGatewayRequest(DaraModel):
     ):
         # The access mode for reverse access to the VPC NAT gateway.
         self.access_mode = access_mode
-        # Subscription-based Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
+        # Subscription Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
+        # 
+        # >Notice:  This parameter is deprecated.
         self.auto_pay = auto_pay
+        # The disaster recovery type of the NAT gateway. Valid values:
+        # 
+        # - **CrossAZ**: cross-zone disaster recovery.
+        # - **SingleAZ**: single-zone disaster recovery.
         self.availability_mode = availability_mode
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests.
         # 
-        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request may be different.
         self.client_token = client_token
         # The description of the NAT gateway.
         # 
-        # The description can be empty or 2 to 256 characters in length. It cannot start with `http://` or `https://`.
+        # The description can be left empty or be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
         self.description = description
-        # Subscription-based Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
+        # Subscription Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
         self.duration = duration
-        # The EIP binding pattern of the NAT gateway. Valid values:
-        # - **MULTI_BINDED** (default): multi-EIP network interface controller (NIC)-visible pattern.
-        # - **NAT**: EIP normal pattern, compatible with IPv4 gateways.
-        #   > When the EIP binding pattern of the NAT gateway is set to EIP normal pattern, each EIP occupies a private IP address in the vSwitch to which the NAT gateway belongs. Make sure that the vSwitch has sufficient private IP addresses. If no idle private IP addresses are available in the vSwitch, new EIPs cannot be attached. In EIP normal pattern, a maximum of 50 EIPs can be attached to the NAT gateway.
+        # The EIP binding mode of the NAT gateway. Valid values:
+        # - **MULTI_BINDED** (default): multi-EIP NIC-visible mode.
+        # - **NAT**: NAT mode, which is compatible with IPv4 gateways.
+        #   > When the EIP binding mode of the NAT gateway is set to NAT mode, the EIP occupies a private IP address of the vSwitch to which the NAT gateway belongs. Make sure that the vSwitch has sufficient private IP addresses. If the vSwitch to which the NAT gateway belongs does not have available idle private IP addresses, you cannot bind new EIPs. When the EIP binding mode of the NAT gateway is set to NAT mode, the NAT gateway supports a maximum of 50 EIPs.
         self.eip_bind_mode = eip_bind_mode
         # Specifies whether to enable ICMP echo reply. Valid values:
         # 
-        # - **true** (default): Enabled.
-        # - **false**: Disabled.
+        # - **true** (default): enables ICMP echo reply.
+        # - **false**: disables ICMP echo reply.
         self.icmp_reply_enabled = icmp_reply_enabled
         # The billing method of the NAT gateway. Valid values:
         # 
         # **PostPaid** (default): pay-as-you-go.
         #           
-        # For more information, see [Billing of Internet NAT gateways](https://help.aliyun.com/document_detail/48126.html) and [Billing of VPC NAT gateways](https://help.aliyun.com/document_detail/270913.html).
+        # For more information, see [Internet NAT gateway billing](https://help.aliyun.com/document_detail/48126.html) and [VPC NAT gateway billing](https://help.aliyun.com/document_detail/270913.html).
         self.instance_charge_type = instance_charge_type
-        # The metering method of the NAT gateway. Valid values: **PayByLcu**: pay-by-data-transfer.
+        # The metering method of the NAT gateway. Set the value to **PayByLcu**, which specifies pay-by-LCU.
         self.internet_charge_type = internet_charge_type
-        # The IP prefix CIDR block used to create NAT IP addresses in batches. Specify an unassigned reserved CIDR block from the vSwitch to which the NAT gateway belongs.
+        # The IP prefix CIDR block that is used to create NAT IP addresses in batches. Use an unallocated reserved CIDR block in the vSwitch to which the NAT gateway belongs.
+        # > This parameter takes effect only for VPC NAT gateways.
         self.ipv_4prefix = ipv_4prefix
         # The name of the NAT gateway.
         # 
-        # The name must be 2 to 128 characters in length and must start with a letter or Chinese character. It can contain digits, underscores (_), and hyphens (-).
+        # The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character, and can contain digits, underscores (_), and hyphens (-).
         # 
-        # If you do not specify this parameter, the system assigns a default name to the NAT gateway.
+        # If you do not specify this parameter, the system generates a default name for the NAT gateway.
         self.name = name
-        # The private IP address occupied by the NAT gateway. Specify an unallocated IP address from the vSwitch CIDR block to which the NAT gateway belongs. If this parameter is left empty, a random IP address is allocated.
+        # The private IP address that is allocated to the NAT gateway. Use an unallocated IP address in the vSwitch CIDR block of the NAT gateway. If this parameter is left empty, an IP address is randomly allocated.
+        # > This parameter takes effect only for VPC NAT gateways.
         self.nat_ip = nat_ip
-        # The type of the NAT gateway. Valid values: **Enhanced**: enhanced NAT gateway.
+        # The type of the NAT gateway. Set the value to **Enhanced**, which specifies an enhanced NAT gateway.
         self.nat_type = nat_type
-        # The type of NAT gateway to create. Valid values:
+        # The type of the NAT gateway that you want to create. Valid values:
         # 
         # - **internet**: Internet NAT gateway.
         # 
@@ -93,17 +101,17 @@ class CreateNatGatewayRequest(DaraModel):
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Subscription-based Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
+        # Subscription Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
         self.pricing_cycle = pricing_cycle
         # Specifies whether to enable PrivateLink. Valid values:
         # 
-        # - true: Enabled.
+        # - true: enables PrivateLink.
         # 
-        # - false (default): Disabled.
+        # - false (default): disables PrivateLink.
         self.private_link_enabled = private_link_enabled
         # The region ID of the NAT gateway.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -111,24 +119,24 @@ class CreateNatGatewayRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # Specifies whether to enable the firewall feature. Valid values:
         # 
-        # - **false** (default): Disabled.
+        # - **false** (default): disables the firewall feature.
         # >Notice:  This parameter is deprecated.
         self.security_protection_enabled = security_protection_enabled
-        # Subscription-based Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
+        # Subscription Internet NAT gateways are no longer available for purchase. This parameter is no longer used.
         self.spec = spec
         # The list of tags.
         self.tag = tag
         # The ID of the vSwitch to which the NAT gateway belongs.
         # 
-        # When you create a NAT gateway, you must specify the vSwitch to which the NAT gateway belongs. The system allocates an available private IP address from the vSwitch to the NAT gateway.
+        # When you create a NAT gateway, you must specify the vSwitch to which the NAT gateway belongs. The system allocates an idle private IP address from the vSwitch to the NAT gateway.
         # 
-        # - To create a NAT gateway in an existing vSwitch, make sure that the zone to which the vSwitch belongs supports NAT gateways and the vSwitch has active IP addresses.
+        # - If you want to create a NAT gateway in an existing vSwitch, make sure that the zone to which the vSwitch belongs supports NAT gateways and the vSwitch has available IP addresses.
         # 
-        # - If you have not created a vSwitch, create a vSwitch in a zone that supports NAT gateways first, and then specify the vSwitch for the NAT gateway.
+        # - If you have not created a vSwitch, create a vSwitch in a zone that supports NAT gateways, and then specify the vSwitch to which the NAT gateway belongs.
         # 
         # > You can call the [ListEnhanhcedNatGatewayAvailableZones](https://help.aliyun.com/document_detail/182292.html) operation to query the zones that support NAT gateways, and call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query the available IP address count in a vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC in which you want to create the NAT gateway.
+        # The ID of the VPC where you want to create the NAT gateway.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
@@ -326,9 +334,9 @@ class CreateNatGatewayRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. Specify this parameter in the Tag.N.Key format. N is the index of the tag, with valid values from 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # The tag key. You can use the Tag.N.Key format when you call API operations. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
-        # The tag value. Specify this parameter in the Tag.N.Value format. N is the index of the tag, with valid values from 1 to 20. The tag value cannot be an empty string. The tag value can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # The tag value. You can use the Tag.N.Value format when you call API operations. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -373,9 +381,9 @@ class CreateNatGatewayRequestAccessMode(DaraModel):
         self.mode_value = mode_value
         # The tunnel mode type. Valid values:
         # 
-        # - **geneve**: Geneve type.
+        # - **geneve**: Geneve.
         # 
-        # > This value takes effect only when the access mode is tunnel mode.
+        # > This value is valid only when the access mode is set to tunnel mode.
         self.tunnel_type = tunnel_type
 
     def validate(self):

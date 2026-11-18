@@ -19,14 +19,14 @@ class CreateDefaultVpcRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
         # Specifies whether to enable the IPv6 CIDR block. Valid values:
         # 
-        # - **false** (default): does not enable the IPv6 CIDR block.
-        # - **true**: enables the IPv6 CIDR block.
+        # - **false** (default): disabled.
+        # - **true**: enabled.
         self.enable_ipv_6 = enable_ipv_6
         # The IPv6 CIDR block of the default VPC.
         # 
@@ -36,11 +36,11 @@ class CreateDefaultVpcRequest(DaraModel):
         self.owner_id = owner_id
         # The region ID of the default VPC.
         # 
-        # You can call [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

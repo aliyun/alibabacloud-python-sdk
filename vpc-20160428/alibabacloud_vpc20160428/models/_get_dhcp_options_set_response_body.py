@@ -26,7 +26,7 @@ class GetDhcpOptionsSetResponseBody(DaraModel):
         self.associate_vpcs = associate_vpcs
         # The creation time.
         self.creation_time = creation_time
-        # The DHCP options configuration.
+        # The DHCP options configuration information.
         self.dhcp_options = dhcp_options
         # The description of the DHCP options set.
         self.dhcp_options_set_description = dhcp_options_set_description

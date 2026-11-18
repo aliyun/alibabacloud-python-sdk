@@ -15,15 +15,15 @@ class ListTrafficMirrorSessionsResponseBody(DaraModel):
         total_count: str = None,
         traffic_mirror_sessions: List[main_models.ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions] = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # - If **NextToken** is empty, no next query exists.
-        # - If **NextToken** has a value, the value is the token for the next query.
+        # The token for the next query. Valid values:
+        # - If **NextToken** is empty, no next query is available.
+        # - If **NextToken** returns a value, the value is the token used to start the next query.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The details of traffic mirror sessions.
+        # The details of the traffic mirror sessions.
         self.traffic_mirror_sessions = traffic_mirror_sessions
 
     def validate(self):
@@ -92,34 +92,34 @@ class ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions(DaraModel):
         traffic_mirror_target_type: str = None,
         virtual_network_id: int = None,
     ):
-        # The time when the traffic mirror session was created.
+        # The creation time of the traffic mirror session. The time is specified in the ISO 8601 standard in UTC. The example is accurate to the minute in the YYYY-MM-DDThh:mmZ format.
         self.creation_time = creation_time
-        # Indicates whether the traffic mirror session is enabled. Valid values:
+        # Specifies whether the traffic mirror session is enabled. Valid values:
         # 
-        # - **false** (default): The traffic mirror session is not enabled.
+        # - **false** (default): The traffic mirror session is disabled.
         # 
         # - **true**: The traffic mirror session is enabled.
         self.enabled = enabled
-        # The length of the original packet to be mirrored (excluding the VXLAN packet length). Default value: **1500**. Valid values: **64** to **8500**. Unit: bytes.
-        # - This parameter affects the packet length received by the traffic mirror destination. For more information, see the mirrored packet length and MTU limits in [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
+        # The length of the original mirrored packet, excluding the length of the VXLAN packet. Default value: **1500**. Valid values: **64** to **8500**. Unit: bytes.
+        # - The value of this parameter affects the length of the packet received by the traffic mirror destination. For more information, see the "Mirrored packet length and MTU limits" section in [Traffic mirroring overview](https://help.aliyun.com/document_detail/207513.html).
         # 
-        # - This parameter is available only in specific regions. For more information, see the mirrored packet length parameter description in [Create and manage traffic mirrors](https://help.aliyun.com/document_detail/207514.html).
+        # - This parameter is available only in specific regions. For more information, see the description of the mirrored packet length parameter in [Create and manage traffic mirroring](https://help.aliyun.com/document_detail/207514.html).
         self.packet_length = packet_length
         # The priority of the traffic mirror session.
         # 
         # A smaller value indicates a higher priority.
         self.priority = priority
-        # The ID of the resource group to which the traffic mirroring session belongs.
+        # The ID of the resource group to which the traffic mirroring belongs.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The list of tags.
         self.tags = tags
         # The instance ID of the traffic mirror filter.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
         # The business status of the traffic mirror session. Valid values:
         # 
-        # - **Normal**: Normal.
+        # - **Normal**: The traffic mirror session is working as expected.
         # 
-        # - **FinancialLocked**: financial lock.
+        # - **FinancialLocked**: locked due to overdue payment.
         self.traffic_mirror_session_business_status = traffic_mirror_session_business_status
         # The description of the traffic mirror session.
         self.traffic_mirror_session_description = traffic_mirror_session_description
@@ -129,22 +129,22 @@ class ListTrafficMirrorSessionsResponseBodyTrafficMirrorSessions(DaraModel):
         self.traffic_mirror_session_name = traffic_mirror_session_name
         # The status of the traffic mirror session. Valid values:
         # 
-        # - **Creating**: being created.
-        # - **Created**: created.
-        # - **Modifying**: being modified.
-        # - **Deleting**: being deleted.
+        # - **Creating**: The traffic mirror session is being created.
+        # - **Created**: The traffic mirror session is created.
+        # - **Modifying**: The traffic mirror session is being modified.
+        # - **Deleting**: The traffic mirror session is being deleted.
         self.traffic_mirror_session_status = traffic_mirror_session_status
         # The instance IDs of the traffic mirror sources.
         self.traffic_mirror_source_ids = traffic_mirror_source_ids
         # The instance ID of the traffic mirror destination.
         self.traffic_mirror_target_id = traffic_mirror_target_id
-        # The traffic mirror destination type. Valid values:
+        # The type of the traffic mirror destination. Valid values:
         # 
-        # - **NetworkInterface**: network interface controller (NIC).
+        # - **NetworkInterface**: an elastic network interface (ENI).
         # 
-        # - **SLB**: internal-facing SLB instance.
+        # - **SLB**: an internal-facing SLB instance.
         self.traffic_mirror_target_type = traffic_mirror_target_type
-        # The VNI used to distinguish different mirrored data.
+        # The VNI that is used to distinguish different mirrored traffic.
         self.virtual_network_id = virtual_network_id
 
     def validate(self):

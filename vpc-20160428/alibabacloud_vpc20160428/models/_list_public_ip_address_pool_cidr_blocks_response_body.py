@@ -15,15 +15,15 @@ class ListPublicIpAddressPoolCidrBlocksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The pagination token. Valid values:
-        # - If **NextToken** is empty, no subsequent query exists.
-        # - If **NextToken** is returned, the value indicates the token for the next query.
+        # The token used to retrieve the next page of results. Valid values:
+        # - If **NextToken** is empty, no subsequent requests are to be sent.
+        # - If **NextToken** has a return value, the value indicates the token used to start the next query.
         self.next_token = next_token
         # The list of CIDR blocks in the IP address pool.
         self.public_ip_pool_cidr_block_list = public_ip_pool_cidr_block_list
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries returned for the current request.
         self.total_count = total_count
 
     def validate(self):
@@ -84,7 +84,7 @@ class ListPublicIpAddressPoolCidrBlocksResponseBodyPublicIpPoolCidrBlockList(Dar
     ):
         # The CIDR block.
         self.cidr_block = cidr_block
-        # The time when the CIDR block was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The creation time. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
         self.creation_time = creation_time
         # The instance ID of the IPAM pool.
         self.public_ip_address_pool_id = public_ip_address_pool_id

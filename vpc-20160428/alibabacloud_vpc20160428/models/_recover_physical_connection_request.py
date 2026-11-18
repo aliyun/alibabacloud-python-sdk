@@ -12,26 +12,26 @@ class RecoverPhysicalConnectionRequest(DaraModel):
         region_id: str = None,
         token: str = None,
     ):
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run on the request. Valid values:
         # 
-        # - **true**: performs a dry run without recovering the Express Connect circuit access. The system checks the required parameters, request format, and instance status. If the check fails, the corresponding error is returned. If the check succeeds, the request ID is returned.
-        # - **false** (default): sends the request. After the request passes the check, the Express Connect circuit access is recovered.
+        # - **true**: performs only a dry run and does not restore the connection of the Express Connect circuit. The system checks whether the required parameters are specified, the request format is valid, and the instance status is normal. If the request fails the dry run, an error message is returned. If the request passes the dry run, the request ID is returned.
+        # - **false** (default): performs a dry run and restores the connection of the Express Connect circuit if the request passes the dry run.
         self.dry_run = dry_run
-        # The instance ID of the Express Connect circuit.
+        # The instance ID of the Express Connect circuit to recover.
         # 
-        # > Currently, only shared Express Connect circuits can be recovered.
+        # > Currently, only the connection of shared Express Connect circuits can be recovered.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the Express Connect circuit.
         # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the region ID.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # The client generates the value of this parameter. The value must be unique among different requests and cannot exceed 64 ASCII characters in length.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.token = token
 
     def validate(self):
