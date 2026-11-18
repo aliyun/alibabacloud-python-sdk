@@ -10,6 +10,7 @@ class CreateCallOutboundInstantRequest(DaraModel):
         called_number: str = None,
         caller_number: str = None,
         caller_uac_account_id: str = None,
+        current_workspace_code: str = None,
         current_workspace_id: str = None,
         customer_line_code: str = None,
         customer_name: str = None,
@@ -20,6 +21,7 @@ class CreateCallOutboundInstantRequest(DaraModel):
         self.called_number = called_number
         self.caller_number = caller_number
         self.caller_uac_account_id = caller_uac_account_id
+        self.current_workspace_code = current_workspace_code
         self.current_workspace_id = current_workspace_id
         self.customer_line_code = customer_line_code
         self.customer_name = customer_name
@@ -43,6 +45,9 @@ class CreateCallOutboundInstantRequest(DaraModel):
 
         if self.caller_uac_account_id is not None:
             result['CallerUacAccountId'] = self.caller_uac_account_id
+
+        if self.current_workspace_code is not None:
+            result['CurrentWorkspaceCode'] = self.current_workspace_code
 
         if self.current_workspace_id is not None:
             result['CurrentWorkspaceId'] = self.current_workspace_id
@@ -74,6 +79,9 @@ class CreateCallOutboundInstantRequest(DaraModel):
 
         if m.get('CallerUacAccountId') is not None:
             self.caller_uac_account_id = m.get('CallerUacAccountId')
+
+        if m.get('CurrentWorkspaceCode') is not None:
+            self.current_workspace_code = m.get('CurrentWorkspaceCode')
 
         if m.get('CurrentWorkspaceId') is not None:
             self.current_workspace_id = m.get('CurrentWorkspaceId')

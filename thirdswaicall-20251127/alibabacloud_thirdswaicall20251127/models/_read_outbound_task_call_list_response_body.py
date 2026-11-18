@@ -132,6 +132,7 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         ext_info: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
+        hangup_direction: str = None,
         id: int = None,
         instance_id: str = None,
         label_tags: List[str] = None,
@@ -141,6 +142,7 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         retry_count: int = None,
         scene_id: str = None,
         status: str = None,
+        structured_label_tags: List[main_models.ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags] = None,
         task_id: str = None,
         tenant_id: str = None,
         tts_voice_code: str = None,
@@ -162,6 +164,7 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         self.ext_info = ext_info
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
+        self.hangup_direction = hangup_direction
         self.id = id
         self.instance_id = instance_id
         self.label_tags = label_tags
@@ -171,6 +174,7 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         self.retry_count = retry_count
         self.scene_id = scene_id
         self.status = status
+        self.structured_label_tags = structured_label_tags
         self.task_id = task_id
         self.tenant_id = tenant_id
         self.tts_voice_code = tts_voice_code
@@ -180,6 +184,10 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
     def validate(self):
         if self.dialogue_list:
             for v1 in self.dialogue_list:
+                 if v1:
+                    v1.validate()
+        if self.structured_label_tags:
+            for v1 in self.structured_label_tags:
                  if v1:
                     v1.validate()
 
@@ -235,6 +243,9 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
 
+        if self.hangup_direction is not None:
+            result['HangupDirection'] = self.hangup_direction
+
         if self.id is not None:
             result['Id'] = self.id
 
@@ -261,6 +272,11 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
 
         if self.status is not None:
             result['Status'] = self.status
+
+        result['StructuredLabelTags'] = []
+        if self.structured_label_tags is not None:
+            for k1 in self.structured_label_tags:
+                result['StructuredLabelTags'].append(k1.to_map() if k1 else None)
 
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -329,6 +345,9 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
 
+        if m.get('HangupDirection') is not None:
+            self.hangup_direction = m.get('HangupDirection')
+
         if m.get('Id') is not None:
             self.id = m.get('Id')
 
@@ -356,6 +375,12 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
+        self.structured_label_tags = []
+        if m.get('StructuredLabelTags') is not None:
+            for k1 in m.get('StructuredLabelTags'):
+                temp_model = main_models.ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags()
+                self.structured_label_tags.append(temp_model.from_map(k1))
+
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
 
@@ -370,6 +395,41 @@ class ReadOutboundTaskCallListResponseBodyRecords(DaraModel):
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+
+        return self
+
+class ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: List[str] = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

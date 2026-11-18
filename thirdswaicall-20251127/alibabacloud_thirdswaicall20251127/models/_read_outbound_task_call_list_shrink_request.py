@@ -13,6 +13,7 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         call_start_time_end: int = None,
         caller_uac_account_id: str = None,
         current: int = None,
+        current_workspace_code: str = None,
         current_workspace_id: str = None,
         customer_name_or_phone: str = None,
         display_status_list_shrink: str = None,
@@ -21,6 +22,7 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
         size: int = None,
+        structured_label_tags_shrink: str = None,
         task_id: str = None,
         user_id: str = None,
     ):
@@ -30,6 +32,7 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         self.call_start_time_end = call_start_time_end
         self.caller_uac_account_id = caller_uac_account_id
         self.current = current
+        self.current_workspace_code = current_workspace_code
         self.current_workspace_id = current_workspace_id
         self.customer_name_or_phone = customer_name_or_phone
         self.display_status_list_shrink = display_status_list_shrink
@@ -38,6 +41,7 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         self.max_results = max_results
         self.next_token = next_token
         self.size = size
+        self.structured_label_tags_shrink = structured_label_tags_shrink
         self.task_id = task_id
         self.user_id = user_id
 
@@ -67,6 +71,9 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         if self.current is not None:
             result['Current'] = self.current
 
+        if self.current_workspace_code is not None:
+            result['CurrentWorkspaceCode'] = self.current_workspace_code
+
         if self.current_workspace_id is not None:
             result['CurrentWorkspaceId'] = self.current_workspace_id
 
@@ -90,6 +97,9 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
 
         if self.size is not None:
             result['Size'] = self.size
+
+        if self.structured_label_tags_shrink is not None:
+            result['StructuredLabelTags'] = self.structured_label_tags_shrink
 
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -119,6 +129,9 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
         if m.get('Current') is not None:
             self.current = m.get('Current')
 
+        if m.get('CurrentWorkspaceCode') is not None:
+            self.current_workspace_code = m.get('CurrentWorkspaceCode')
+
         if m.get('CurrentWorkspaceId') is not None:
             self.current_workspace_id = m.get('CurrentWorkspaceId')
 
@@ -142,6 +155,9 @@ class ReadOutboundTaskCallListShrinkRequest(DaraModel):
 
         if m.get('Size') is not None:
             self.size = m.get('Size')
+
+        if m.get('StructuredLabelTags') is not None:
+            self.structured_label_tags_shrink = m.get('StructuredLabelTags')
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')

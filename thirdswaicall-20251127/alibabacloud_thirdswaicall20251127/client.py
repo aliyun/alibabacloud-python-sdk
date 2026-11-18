@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'ThirdswAicall'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('thirdswaicall', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -53,6 +57,8 @@ class Client(OpenApiClient):
             body['CallerNumber'] = request.caller_number
         if not DaraCore.is_null(request.caller_uac_account_id):
             body['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.current_workspace_code):
+            body['CurrentWorkspaceCode'] = request.current_workspace_code
         if not DaraCore.is_null(request.current_workspace_id):
             body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.customer_line_code):
@@ -97,6 +103,8 @@ class Client(OpenApiClient):
             body['CallerNumber'] = request.caller_number
         if not DaraCore.is_null(request.caller_uac_account_id):
             body['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.current_workspace_code):
+            body['CurrentWorkspaceCode'] = request.current_workspace_code
         if not DaraCore.is_null(request.current_workspace_id):
             body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.customer_line_code):
@@ -153,6 +161,8 @@ class Client(OpenApiClient):
             body['ApplicationCode'] = request.application_code
         if not DaraCore.is_null(request.caller_uac_account_id):
             body['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.current_workspace_code):
+            body['CurrentWorkspaceCode'] = request.current_workspace_code
         if not DaraCore.is_null(request.current_workspace_id):
             body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.task_id):
@@ -187,6 +197,8 @@ class Client(OpenApiClient):
             body['ApplicationCode'] = request.application_code
         if not DaraCore.is_null(request.caller_uac_account_id):
             body['CallerUacAccountId'] = request.caller_uac_account_id
+        if not DaraCore.is_null(request.current_workspace_code):
+            body['CurrentWorkspaceCode'] = request.current_workspace_code
         if not DaraCore.is_null(request.current_workspace_id):
             body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.task_id):
@@ -238,6 +250,8 @@ class Client(OpenApiClient):
             request.duration_range_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.duration_range_list, 'DurationRangeList', 'json')
         if not DaraCore.is_null(tmp_req.label_tags):
             request.label_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_tags, 'LabelTags', 'json')
+        if not DaraCore.is_null(tmp_req.structured_label_tags):
+            request.structured_label_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.structured_label_tags, 'StructuredLabelTags', 'json')
         body = {}
         if not DaraCore.is_null(request.call_end_time_begin):
             body['CallEndTimeBegin'] = request.call_end_time_begin
@@ -251,6 +265,8 @@ class Client(OpenApiClient):
             body['CallerUacAccountId'] = request.caller_uac_account_id
         if not DaraCore.is_null(request.current):
             body['Current'] = request.current
+        if not DaraCore.is_null(request.current_workspace_code):
+            body['CurrentWorkspaceCode'] = request.current_workspace_code
         if not DaraCore.is_null(request.current_workspace_id):
             body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.customer_name_or_phone):
@@ -267,6 +283,8 @@ class Client(OpenApiClient):
             body['NextToken'] = request.next_token
         if not DaraCore.is_null(request.size):
             body['Size'] = request.size
+        if not DaraCore.is_null(request.structured_label_tags_shrink):
+            body['StructuredLabelTags'] = request.structured_label_tags_shrink
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.user_id):
@@ -304,6 +322,8 @@ class Client(OpenApiClient):
             request.duration_range_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.duration_range_list, 'DurationRangeList', 'json')
         if not DaraCore.is_null(tmp_req.label_tags):
             request.label_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.label_tags, 'LabelTags', 'json')
+        if not DaraCore.is_null(tmp_req.structured_label_tags):
+            request.structured_label_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.structured_label_tags, 'StructuredLabelTags', 'json')
         body = {}
         if not DaraCore.is_null(request.call_end_time_begin):
             body['CallEndTimeBegin'] = request.call_end_time_begin
@@ -317,6 +337,8 @@ class Client(OpenApiClient):
             body['CallerUacAccountId'] = request.caller_uac_account_id
         if not DaraCore.is_null(request.current):
             body['Current'] = request.current
+        if not DaraCore.is_null(request.current_workspace_code):
+            body['CurrentWorkspaceCode'] = request.current_workspace_code
         if not DaraCore.is_null(request.current_workspace_id):
             body['CurrentWorkspaceId'] = request.current_workspace_id
         if not DaraCore.is_null(request.customer_name_or_phone):
@@ -333,6 +355,8 @@ class Client(OpenApiClient):
             body['NextToken'] = request.next_token
         if not DaraCore.is_null(request.size):
             body['Size'] = request.size
+        if not DaraCore.is_null(request.structured_label_tags_shrink):
+            body['StructuredLabelTags'] = request.structured_label_tags_shrink
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.user_id):

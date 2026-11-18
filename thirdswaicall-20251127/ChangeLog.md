@@ -1,3 +1,12 @@
+2026-11-18 Version: 1.2.5
+- Update API CreateCallOutboundInstant: add request parameters CurrentWorkspaceCode.
+- Update API QueryTaskConcurrency: add request parameters CurrentWorkspaceCode.
+- Update API ReadOutboundTaskCallList: add request parameters CurrentWorkspaceCode.
+- Update API ReadOutboundTaskCallList: add request parameters StructuredLabelTags.
+- Update API ReadOutboundTaskCallList: add response parameters Body.Records.$.HangupDirection.
+- Update API ReadOutboundTaskCallList: add response parameters Body.Records.$.StructuredLabelTags.
+
+
 2026-08-31 Version: 1.2.4
 - Update API ReadOutboundTaskCallList: add request parameters DurationRangeList.
 

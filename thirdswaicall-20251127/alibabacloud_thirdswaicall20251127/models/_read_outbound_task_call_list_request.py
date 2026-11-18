@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List
 
+from alibabacloud_thirdswaicall20251127 import models as main_models
 from darabonba.model import DaraModel
 
 class ReadOutboundTaskCallListRequest(DaraModel):
@@ -15,6 +16,7 @@ class ReadOutboundTaskCallListRequest(DaraModel):
         call_start_time_end: int = None,
         caller_uac_account_id: str = None,
         current: int = None,
+        current_workspace_code: str = None,
         current_workspace_id: str = None,
         customer_name_or_phone: str = None,
         display_status_list: List[str] = None,
@@ -23,6 +25,7 @@ class ReadOutboundTaskCallListRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
         size: int = None,
+        structured_label_tags: List[main_models.ReadOutboundTaskCallListRequestStructuredLabelTags] = None,
         task_id: str = None,
         user_id: str = None,
     ):
@@ -32,6 +35,7 @@ class ReadOutboundTaskCallListRequest(DaraModel):
         self.call_start_time_end = call_start_time_end
         self.caller_uac_account_id = caller_uac_account_id
         self.current = current
+        self.current_workspace_code = current_workspace_code
         self.current_workspace_id = current_workspace_id
         self.customer_name_or_phone = customer_name_or_phone
         self.display_status_list = display_status_list
@@ -40,11 +44,15 @@ class ReadOutboundTaskCallListRequest(DaraModel):
         self.max_results = max_results
         self.next_token = next_token
         self.size = size
+        self.structured_label_tags = structured_label_tags
         self.task_id = task_id
         self.user_id = user_id
 
     def validate(self):
-        pass
+        if self.structured_label_tags:
+            for v1 in self.structured_label_tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -69,6 +77,9 @@ class ReadOutboundTaskCallListRequest(DaraModel):
         if self.current is not None:
             result['Current'] = self.current
 
+        if self.current_workspace_code is not None:
+            result['CurrentWorkspaceCode'] = self.current_workspace_code
+
         if self.current_workspace_id is not None:
             result['CurrentWorkspaceId'] = self.current_workspace_id
 
@@ -92,6 +103,11 @@ class ReadOutboundTaskCallListRequest(DaraModel):
 
         if self.size is not None:
             result['Size'] = self.size
+
+        result['StructuredLabelTags'] = []
+        if self.structured_label_tags is not None:
+            for k1 in self.structured_label_tags:
+                result['StructuredLabelTags'].append(k1.to_map() if k1 else None)
 
         if self.task_id is not None:
             result['TaskId'] = self.task_id
@@ -121,6 +137,9 @@ class ReadOutboundTaskCallListRequest(DaraModel):
         if m.get('Current') is not None:
             self.current = m.get('Current')
 
+        if m.get('CurrentWorkspaceCode') is not None:
+            self.current_workspace_code = m.get('CurrentWorkspaceCode')
+
         if m.get('CurrentWorkspaceId') is not None:
             self.current_workspace_id = m.get('CurrentWorkspaceId')
 
@@ -145,11 +164,52 @@ class ReadOutboundTaskCallListRequest(DaraModel):
         if m.get('Size') is not None:
             self.size = m.get('Size')
 
+        self.structured_label_tags = []
+        if m.get('StructuredLabelTags') is not None:
+            for k1 in m.get('StructuredLabelTags'):
+                temp_model = main_models.ReadOutboundTaskCallListRequestStructuredLabelTags()
+                self.structured_label_tags.append(temp_model.from_map(k1))
+
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+
+        return self
+
+class ReadOutboundTaskCallListRequestStructuredLabelTags(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: List[str] = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

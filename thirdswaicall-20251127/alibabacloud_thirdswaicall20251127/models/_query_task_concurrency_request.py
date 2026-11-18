@@ -9,11 +9,13 @@ class QueryTaskConcurrencyRequest(DaraModel):
         self,
         application_code: str = None,
         caller_uac_account_id: str = None,
+        current_workspace_code: str = None,
         current_workspace_id: str = None,
         task_id: int = None,
     ):
         self.application_code = application_code
         self.caller_uac_account_id = caller_uac_account_id
+        self.current_workspace_code = current_workspace_code
         self.current_workspace_id = current_workspace_id
         self.task_id = task_id
 
@@ -31,6 +33,9 @@ class QueryTaskConcurrencyRequest(DaraModel):
         if self.caller_uac_account_id is not None:
             result['CallerUacAccountId'] = self.caller_uac_account_id
 
+        if self.current_workspace_code is not None:
+            result['CurrentWorkspaceCode'] = self.current_workspace_code
+
         if self.current_workspace_id is not None:
             result['CurrentWorkspaceId'] = self.current_workspace_id
 
@@ -46,6 +51,9 @@ class QueryTaskConcurrencyRequest(DaraModel):
 
         if m.get('CallerUacAccountId') is not None:
             self.caller_uac_account_id = m.get('CallerUacAccountId')
+
+        if m.get('CurrentWorkspaceCode') is not None:
+            self.current_workspace_code = m.get('CurrentWorkspaceCode')
 
         if m.get('CurrentWorkspaceId') is not None:
             self.current_workspace_id = m.get('CurrentWorkspaceId')

@@ -14,7 +14,9 @@ from ._read_outbound_task_call_list_response_body import ReadOutboundTaskCallLis
 from ._read_outbound_task_call_list_response import ReadOutboundTaskCallListResponse
 from ._create_call_outbound_instant_response_body import CreateCallOutboundInstantResponseBodyData
 from ._query_task_concurrency_response_body import QueryTaskConcurrencyResponseBodyData
+from ._read_outbound_task_call_list_request import ReadOutboundTaskCallListRequestStructuredLabelTags
 from ._read_outbound_task_call_list_response_body import ReadOutboundTaskCallListResponseBodyRecordsDialogueList
+from ._read_outbound_task_call_list_response_body import ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags
 from ._read_outbound_task_call_list_response_body import ReadOutboundTaskCallListResponseBodyRecords
 
 __all__ = [
@@ -30,6 +32,8 @@ __all__ = [
     ReadOutboundTaskCallListResponse,
     CreateCallOutboundInstantResponseBodyData,
     QueryTaskConcurrencyResponseBodyData,
+    ReadOutboundTaskCallListRequestStructuredLabelTags,
     ReadOutboundTaskCallListResponseBodyRecordsDialogueList,
+    ReadOutboundTaskCallListResponseBodyRecordsStructuredLabelTags,
     ReadOutboundTaskCallListResponseBodyRecords
 ]
