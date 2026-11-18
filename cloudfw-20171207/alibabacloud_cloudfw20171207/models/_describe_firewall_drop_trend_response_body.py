@@ -15,11 +15,11 @@ class DescribeFirewallDropTrendResponseBody(DaraModel):
         max_drop_time: int = None,
         request_id: str = None,
     ):
-        # The returned data list.
+        # The list of returned data.
         self.data_list = data_list
-        # The maximum number of total blocked sessions.
+        # The maximum number of blocked sessions.
         self.max_drop_session = max_drop_session
-        # The time when the maximum number of total blocked sessions occurred. The value is a UNIX timestamp in seconds, such as 1672502400.
+        # The time when the maximum number of blocked sessions occurred. The value is a UNIX timestamp in seconds, such as 1672502400.
         self.max_drop_time = max_drop_time
         # The request ID.
         self.request_id = request_id
@@ -83,9 +83,7 @@ class DescribeFirewallDropTrendResponseBodyDataList(DaraModel):
         self.internet_drop_session = internet_drop_session
         # The number of sessions blocked by the NAT firewall.
         self.nat_drop_session = nat_drop_session
-        # The time when the traffic occurred. The value is a UNIX timestamp in seconds.
-        # 
-        # If the data at this point in time has not been processed, the values of all other fields are -1.
+        # The time when the traffic occurred. The value is a UNIX timestamp in seconds. If the data for this time point is not processed, the values of other fields are -1.
         self.time = time
         # The total number of sessions blocked by the firewall.
         self.total_drop_session = total_drop_session

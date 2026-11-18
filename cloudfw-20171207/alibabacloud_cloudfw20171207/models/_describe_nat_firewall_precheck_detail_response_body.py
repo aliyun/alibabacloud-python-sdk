@@ -14,7 +14,7 @@ class DescribeNatFirewallPrecheckDetailResponseBody(DaraModel):
         precheck_detail: main_models.DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetail = None,
         request_id: str = None,
     ):
-        # Indicates whether a task exists.
+        # Indicates whether the task exists.
         self.is_found = is_found
         # The details of the precheck.
         self.precheck_detail = precheck_detail
@@ -65,17 +65,17 @@ class DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetail(DaraModel):
         precheck_timestamp: str = None,
         region_no: str = None,
     ):
-        # The ID of the firewall instance.
+        # The firewall instance ID.
         self.firewall_id = firewall_id
-        # The ID of the network instance.
+        # The network instance ID.
         self.network_instance_id = network_instance_id
-        # The list of precheck item groups.
+        # The list of precheck entity groups.
         self.precheck_entity_groups = precheck_entity_groups
-        # The status of the precheck. Valid values:
+        # The precheck status. Valid values:
         # 
         # - **running**: The precheck is in progress.
         # 
-        # - **passed**: The precheck is passed.
+        # - **passed**: The precheck passed.
         # 
         # - **failed**: The precheck failed.
         self.precheck_status = precheck_status
@@ -156,7 +156,7 @@ class DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityG
         self.name = name
         # The execution status of each precheck item.
         self.precheck_entities = precheck_entities
-        # The status of the precheck. Valid values:
+        # The status of the precheck entity group. Valid values:
         # 
         # - **running**
         # 
@@ -219,7 +219,7 @@ class DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityG
         status: str = None,
         suggestion: str = None,
     ):
-        # The information about the failed precheck item.
+        # The information about the check failure.
         self.info = info
         # The name of the precheck item.
         self.name = name
@@ -227,11 +227,11 @@ class DescribeNatFirewallPrecheckDetailResponseBodyPrecheckDetailPrecheckEntityG
         # 
         # - **running**: The precheck is in progress.
         # 
-        # - **passed**: The precheck is passed.
+        # - **passed**: The precheck passed.
         # 
         # - **failed**: The precheck failed.
         self.status = status
-        # The suggested solution.
+        # The recommended solution.
         self.suggestion = suggestion
 
     def validate(self):

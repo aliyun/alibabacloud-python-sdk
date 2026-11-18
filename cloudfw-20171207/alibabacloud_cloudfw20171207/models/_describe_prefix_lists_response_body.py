@@ -13,7 +13,7 @@ class DescribePrefixListsResponseBody(DaraModel):
         prefix_list: List[main_models.DescribePrefixListsResponseBodyPrefixList] = None,
         request_id: str = None,
     ):
-        # An array of prefix lists.
+        # The array of prefix list information.
         self.prefix_list = prefix_list
         # The ID of the request.
         self.request_id = request_id
@@ -65,8 +65,8 @@ class DescribePrefixListsResponseBodyPrefixList(DaraModel):
     ):
         # The address family of the prefix list. Valid values:
         # 
-        # - IPv4.
-        # - IPv6.
+        # - IPv4
+        # - IPv6
         self.address_family = address_family
         # The number of associated resources.
         self.association_count = association_count

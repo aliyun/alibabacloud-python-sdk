@@ -16,13 +16,13 @@ class DescribeFirewallVswitchResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.firewall_type = firewall_type
-        # The language of the response message.
+        # The language in which messages are received.
         self.lang = lang
         # The region.
         # 
         # This parameter is required.
         self.region_no = region_no
-        # The ID of the VPC instance.
+        # The VPC instance ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id

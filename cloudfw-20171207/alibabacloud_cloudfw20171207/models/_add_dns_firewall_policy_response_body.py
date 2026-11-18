@@ -12,7 +12,7 @@ class AddDnsFirewallPolicyResponseBody(DaraModel):
     ):
         # The unique ID of the access control policy.
         self.acl_uuid = acl_uuid
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

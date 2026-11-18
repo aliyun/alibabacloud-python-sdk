@@ -16,13 +16,13 @@ class DescribeAclBackupListRequest(DaraModel):
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The language of the response.
+        # The language type for receiving messages.
         self.lang = lang
         # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The source IP address of the request.
+        # The source IP address.
         self.source_ip = source_ip
 
     def validate(self):

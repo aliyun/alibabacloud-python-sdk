@@ -13,17 +13,15 @@ class DescribeControlPolicyDomainResolveRequest(DaraModel):
         lang: str = None,
         region_no: str = None,
     ):
-        # The domain name. This parameter is required and must be provided when you call the operation.
+        # The domain name. This parameter is required when you call this operation.
         self.domain = domain
         # The Cloud Firewall type.
         self.firewall_type = firewall_type
-        # The IP address version. Valid values: **4** (IPv4) or **6** (IPv6).
-        # 
-        # > This parameter is unconditionally required and has no dependency on RegionNo. If this parameter is missing, the MissingParameter.IpVersion (-200157) error is returned. If the value is invalid, the ErrorParameterIpVersion (-200135) error is returned.
+        # The IP address version. Valid values: **4** (IPv4) and **6** (IPv6). This parameter is unconditionally required and does not depend on RegionNo. If this parameter is not specified, the MissingParameter.IpVersion (-200157) error is returned. If the value is invalid, the ErrorParameterIpVersion (-200135) error is returned.
         self.ip_version = ip_version
         # The language type.
         self.lang = lang
-        # The region ID. This parameter is required. If this parameter is missing, the MissingParameter.RegionNo (-200155, The required parameter \\"RegionNo\\" is not provided.) error is returned.
+        # The region ID. This parameter is required. If this parameter is not specified, the MissingParameter.RegionNo (-200155, The required parameter \\"RegionNo\\" is not provided.) error is returned.
         self.region_no = region_no
 
     def validate(self):

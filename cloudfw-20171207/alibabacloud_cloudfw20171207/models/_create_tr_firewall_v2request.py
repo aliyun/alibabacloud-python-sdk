@@ -29,7 +29,7 @@ class CreateTrFirewallV2Request(DaraModel):
         tr_attachment_zones: List[str] = None,
         transit_router_id: str = None,
     ):
-        # The ID of the CEN instance. Create a CEN instance in the CEN console and make sure that an Enterprise Edition transit router is created.
+        # The ID of the CEN instance. Create a CEN instance in the CEN console first and make sure that an Enterprise Edition transit router is created.
         # 
         # > Note: Although the required field in the schema is set to false, this parameter is actually required. If this parameter is not specified, the API returns ErrorParameters(400).
         self.cen_id = cen_id
@@ -44,7 +44,7 @@ class CreateTrFirewallV2Request(DaraModel):
         # - **PrimaryStandby**: primary/secondary mode
         # - **MultiPrimary**: active-active mode
         # 
-        # > If this parameter is not specified, the system automatically selects the deployment mode based on the capabilities of the transit router. If the value is invalid, ErrorFwServiceMode (-360437) is returned. The MultiPrimary mode does not support specifying zones.
+        # > If this parameter is not specified, the system automatically selects a deployment mode based on the capabilities of the transit router. If the value is invalid, ErrorFwServiceMode (-360437) is returned. The MultiPrimary mode does not support specifying zones.
         self.firewall_service_mode = firewall_service_mode
         # The list of zone IDs used by the firewall service.
         self.firewall_service_zones = firewall_service_zones
@@ -75,15 +75,15 @@ class CreateTrFirewallV2Request(DaraModel):
         # 
         # > Note: Although the required field in the schema is set to false, this parameter is actually required. If this parameter is not specified, the API returns ErrorParameters(400).
         self.route_mode = route_mode
-        # The primary CIDR block of the subnet used to connect to the transit router in the firewall VPC in automatic mode.
+        # The primary CIDR block of the subnet used to connect to the TR in the firewall VPC in automatic mode.
         self.tr_attachment_master_cidr = tr_attachment_master_cidr
         # The primary zone of the vSwitch.
         self.tr_attachment_master_zone = tr_attachment_master_zone
-        # The secondary CIDR block of the subnet used to connect to the transit router in the firewall VPC in automatic mode.
+        # The secondary CIDR block of the subnet used to connect to the TR in the firewall VPC in automatic mode.
         self.tr_attachment_slave_cidr = tr_attachment_slave_cidr
         # The secondary zone of the vSwitch.
         self.tr_attachment_slave_zone = tr_attachment_slave_zone
-        # The list of zone IDs used for the transit router connection.
+        # The list of zone IDs used for the TR connection.
         self.tr_attachment_zones = tr_attachment_zones
         # The ID of the Enterprise Edition transit router instance. The transit router must belong to the CEN instance specified by CenId.
         # 

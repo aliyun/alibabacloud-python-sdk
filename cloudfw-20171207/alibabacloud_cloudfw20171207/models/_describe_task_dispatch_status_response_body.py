@@ -12,12 +12,7 @@ class DescribeTaskDispatchStatusResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The status of the task. Valid values:
-        # - PENDING: Pending.
-        # - RUNNING: Running.
-        # - SUCCESS: Successful.
-        # - FAILED: Failed.
-        # - CANCELLED: Cancelled.
+        # The task status. Valid values: PENDING (pending execution), RUNNING (running), SUCCESS (successful), FAILED (failed), and CANCELLED (canceled).
         self.status = status
 
     def validate(self):

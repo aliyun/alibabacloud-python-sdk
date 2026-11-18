@@ -9,7 +9,7 @@ class ClearLogStoreStorageRequest(DaraModel):
         self,
         site: str = None,
     ):
-        # The name of the site for which to clear logs. If there is only one Logstore, you can leave this parameter empty. If there are two Logstores, specify cn or intl.
+        # The name of the site whose logs are to be cleared. If there is only one Logstore, you can leave this parameter empty. If there are two Logstores, you must specify cn or intl.
         self.site = site
 
     def validate(self):

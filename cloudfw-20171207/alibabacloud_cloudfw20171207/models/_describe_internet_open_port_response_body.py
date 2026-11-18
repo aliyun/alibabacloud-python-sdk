@@ -137,19 +137,19 @@ class DescribeInternetOpenPortResponseBodyDataList(DaraModel):
         self.in_bytes = in_bytes
         # The outbound traffic.
         self.out_bytes = out_bytes
-        # The open port.
+        # The open ports.
         self.port = port
-        # The security threat.
+        # The security risk.
         self.prob_risk = prob_risk
-        # The description of the security threat.
+        # The description of the security risk.
         self.prob_risk_desc = prob_risk_desc
         # The protocol.
         self.protocol = protocol
-        # The number of public IP addresses that have the port open.
+        # The number of open public IP addresses.
         self.public_ip_num = public_ip_num
         # The risk level.
         self.risk_level = risk_level
-        # The description of the risk.
+        # The risk description.
         self.risk_reason = risk_reason
         # The list of applications.
         self.service_name_list = service_name_list
@@ -157,13 +157,13 @@ class DescribeInternetOpenPortResponseBodyDataList(DaraModel):
         self.suggest_level = suggest_level
         # The total traffic. Unit: bytes.
         self.total_bytes = total_bytes
-        # The percentage of traffic in the last 24 hours. Valid values: **1** to **100**.
+        # The traffic proportion. Valid values: **1** to **100**.
         self.traffic_percent_1day = traffic_percent_1day
-        # The percentage of traffic in the last 30 days.
+        # The traffic proportion over the last 30 days.
         self.traffic_percent_30day = traffic_percent_30day
-        # The percentage of traffic in the last 7 days.
+        # The traffic proportion over the last 7 days.
         self.traffic_percent_7day = traffic_percent_7day
-        # The reason why the protocol is not identified when the protocol is detected as Unknown.
+        # The reason why the protocol is not identified when the recognized protocol is Unknown.
         self.unknown_reason = unknown_reason
 
     def validate(self):

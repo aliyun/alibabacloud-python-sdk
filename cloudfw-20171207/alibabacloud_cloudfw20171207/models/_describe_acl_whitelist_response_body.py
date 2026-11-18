@@ -15,13 +15,13 @@ class DescribeAclWhitelistResponseBody(DaraModel):
     ):
         # Indicates whether the whitelist is enabled. Valid values:
         # - **true**: Enabled.
-        # - **false**: Not enabled.
+        # - **false**: Disabled.
         self.domain_group_use_dns = domain_group_use_dns
         # Indicates whether domain name DNS is supported in NAT scenarios. Valid values:
         # - **true**: Supported.
         # - **false**: Not supported.
         self.nat_domain_group_use_dns = nat_domain_group_use_dns
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the message type is supported. Valid values:
         # - **true**: Supported.

@@ -73,25 +73,22 @@ class DescribeDownloadTaskResponseBodyTasks(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The time when the task was created. This is a UNIX timestamp in seconds.
+        # The time when the task was created. The value is a UNIX timestamp in seconds.
         self.create_time = create_time
-        # The time when the task expires. This is a UNIX timestamp in seconds.
+        # The time when the task expires. The value is a UNIX timestamp in seconds.
         self.expire_time = expire_time
         # The size of the file.
         self.file_size = file_size
-        # The URL of the Object Storage Service (OSS) file.
+        # The URL of the OSS file.
         self.file_url = file_url
         # The status of the task. Valid values:
         # 
-        # - **finish**: The task is complete.
-        # 
-        # - **start**: The task has started.
-        # 
+        # - **finish**: The task is completed.
+        # - **start**: The task is started.
         # - **error**: The task failed.
-        # 
-        # - **expire**: The task has expired. The task file is no longer valid and cannot be downloaded.
+        # - **expire**: The task has expired. The task file is invalid and cannot be downloaded.
         self.status = status
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
         # The name of the task.
         self.task_name = task_name

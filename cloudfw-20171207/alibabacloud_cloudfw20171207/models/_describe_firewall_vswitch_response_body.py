@@ -75,7 +75,7 @@ class DescribeFirewallVSwitchResponseBodyVswitchList(DaraModel):
         vswitch_name: str = None,
         zone_id: str = None,
     ):
-        # The number of available IP addresses.
+        # The available IP address count.
         self.available_ip_count = available_ip_count
         # The IPv4 CIDR block.
         self.cidr_block = cidr_block
@@ -83,15 +83,15 @@ class DescribeFirewallVSwitchResponseBodyVswitchList(DaraModel):
         self.firewall_count = firewall_count
         # The list of firewalls.
         self.firewall_list = firewall_list
-        # The UID of the member account.
+        # The UID of the member accounts.
         self.member_uid = member_uid
         # The region ID.
         self.region_no = region_no
         # The VPC-connected instance ID.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.vswitch_id = vswitch_id
-        # The name of the vSwitch.
+        # The vSwitch name.
         self.vswitch_name = vswitch_name
         # The zone ID.
         self.zone_id = zone_id

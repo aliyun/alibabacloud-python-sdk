@@ -12,7 +12,7 @@ class DescribeCreatedNatFirewallRequest(DaraModel):
     ):
         # The language of the request and response messages.
         self.lang = lang
-        # The source IP address of the requester.
+        # The source IP address of the visitor.
         self.source_ip = source_ip
 
     def validate(self):

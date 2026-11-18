@@ -135,7 +135,7 @@ class DescribeFirewallTaskResponseBodyTaskSteps(DaraModel):
     ):
         # The task information.
         self.step_info = step_info
-        # Creating Cloud Firewall security.
+        # Creates Cloud Firewall security.
         self.step_name = step_name
         # The progress of the task step.
         self.step_progress = step_progress

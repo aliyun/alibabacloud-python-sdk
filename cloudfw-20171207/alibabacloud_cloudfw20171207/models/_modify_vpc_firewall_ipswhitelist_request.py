@@ -15,32 +15,26 @@ class ModifyVpcFirewallIPSWhitelistRequest(DaraModel):
         white_type: int = None,
     ):
         # The language of the request and response. Valid values:
-        # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
         # The type of the list. Valid values:
-        # 
-        # - **1**: user-defined
-        # 
-        # - **2**: address book
+        # - **1**: custom type
+        # - **2**: address book type
         # 
         # This parameter is required.
         self.list_type = list_type
         # The value that corresponds to the list type.
         self.list_value = list_value
-        # The UID of the member account.
+        # The UID of the member accounts of the current Alibaba Cloud account.
         self.member_uid = member_uid
-        # The instance ID of the VPC firewall.
+        # The instance ID of the virtual private cloud (VPC) firewalls at the border.
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
         # The type of the whitelist. Valid values:
-        # 
-        # - **1**: destination
-        # 
-        # - **2**: source
+        # - **1**: destination type
+        # - **2**: source type
         # 
         # This parameter is required.
         self.white_type = white_type

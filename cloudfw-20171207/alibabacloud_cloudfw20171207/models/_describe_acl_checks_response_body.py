@@ -52,7 +52,7 @@ class DescribeAclChecksResponseBodyCheckRecords(DaraModel):
         acl_type: str = None,
         records: List[main_models.DescribeAclChecksResponseBodyCheckRecordsRecords] = None,
     ):
-        # The type of ACL check.
+        # The ACL check type.
         self.acl_type = acl_type
         # The list of ACL check records.
         self.records = records
@@ -111,9 +111,9 @@ class DescribeAclChecksResponseBodyCheckRecordsRecords(DaraModel):
         self.check_name = check_name
         # The status of the ACL check item.
         self.check_status = check_status
-        # The type of ACL check.
+        # The ACL check type.
         self.check_type = check_type
-        # The UNIX timestamp of the last check, in seconds.
+        # The timestamp of the latest check. Unit: seconds.
         self.last_check_time = last_check_time
         # The risk level.
         self.level = level

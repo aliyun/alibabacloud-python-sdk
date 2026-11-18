@@ -21,9 +21,9 @@ class DescribeInternetOpenServiceRequest(DaraModel):
     ):
         # The page number.
         self.current_page = current_page
-        # The end of the time range to query. The value is a UNIX timestamp in seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The language of the response.
+        # The language type.
         self.lang = lang
         # The number of entries per page.
         self.page_size = page_size
@@ -31,13 +31,13 @@ class DescribeInternetOpenServiceRequest(DaraModel):
         self.port = port
         # The risk level.
         self.risk_level = risk_level
-        # The name of the application for an exact match. If you do not specify this parameter, all applications are queried.
+        # The application name for exact match. If you do not specify this parameter, all applications are queried.
         self.service_name = service_name
-        # The name of the application for a fuzzy match. If you do not specify this parameter, all applications are queried.
+        # The application name for fuzzy match. If you do not specify this parameter, all applications are queried.
         self.service_name_fuzzy = service_name_fuzzy
-        # The source IP address of the visitor.
+        # The originating IP address of the requester.
         self.source_ip = source_ip
-        # The start of the time range to query. The value is a UNIX timestamp in seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
         # The recommended policy level.
         self.suggest_level = suggest_level

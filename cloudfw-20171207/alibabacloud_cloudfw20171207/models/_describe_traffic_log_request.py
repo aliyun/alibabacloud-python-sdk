@@ -50,7 +50,7 @@ class DescribeTrafficLogRequest(DaraModel):
         vpc_firewall_id: str = None,
         vul_level: str = None,
     ):
-        # The ID of the ACL pre-match rule.
+        # The ACL pre-match rule ID.
         self.acl_pre_rule_id = acl_pre_rule_id
         # The ACL pre-match status.
         self.acl_pre_state = acl_pre_state
@@ -78,7 +78,7 @@ class DescribeTrafficLogRequest(DaraModel):
         self.dst_vpc_id = dst_vpc_id
         # The region of the destination VPC asset.
         self.dst_vpc_region_no = dst_vpc_region_no
-        # The end time. Specify the time in the UNIX timestamp format in seconds.
+        # The end time. Specify a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -92,28 +92,27 @@ class DescribeTrafficLogRequest(DaraModel):
         self.ip_version = ip_version
         # The ISP.
         self.isp = isp
-        # The language of the received messages. Valid values:
+        # The language in which you want to receive messages. Valid values:
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
         # The region of the source or destination IP address.
         self.location = location
-        # The UID of the member accounts.
+        # The UID of the member account.
         self.member_uid = member_uid
         # The NAT firewall ID.
         self.nat_firewall_id = nat_firewall_id
         # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id
-        # The number of entries per page. The value cannot exceed 20.
+        # The number of entries per page. Maximum value: 20.
         self.page_size = page_size
-        # The query ID.
-        # If the query scope is too large, a query ID is returned. You can use the query ID for subsequent queries.
+        # The query ID. If the query scope is too large, a query ID is returned. You can use the query ID to perform subsequent queries.
         self.query_id = query_id
         # The rule ID.
         self.rule_id = rule_id
-        # The rule action.
+        # The action performed by the rule.
         self.rule_result = rule_result
-        # The rule source.
+        # The source of the rule.
         self.rule_source = rule_source
         # The module that ultimately takes effect.
         self.rule_source_final = rule_source_final
@@ -127,21 +126,21 @@ class DescribeTrafficLogRequest(DaraModel):
         self.src_ip = src_ip
         # The source port.
         self.src_port = src_port
-        # The source private IP address.
+        # The private IP address of the source.
         self.src_private_ip = src_private_ip
         # The source VPC ID.
         self.src_vpc_id = src_vpc_id
         # The region of the source VPC asset.
         self.src_vpc_region_no = src_vpc_region_no
-        # The start time. Specify the time in the UNIX timestamp format in seconds. Only data within the last 7 days can be queried. A single query covers a maximum of one day.
+        # The start time. Specify a UNIX timestamp in seconds. You can query data only from the last 7 days. We recommend that you specify a time range of no more than one day for a single query.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The ID of the TLS inspection scope.
+        # The TLS inspection scope ID.
         self.tls_scope_id = tls_scope_id
-        # The instance ID of the virtual private cloud (VPC) border firewall.
+        # The instance ID of the VPC border firewall.
         self.vpc_firewall_id = vpc_firewall_id
-        # The vulnerability level.
+        # The vulnerability severity.
         self.vul_level = vul_level
 
     def validate(self):

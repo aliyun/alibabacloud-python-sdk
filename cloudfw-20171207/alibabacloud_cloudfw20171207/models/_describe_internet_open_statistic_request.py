@@ -12,13 +12,13 @@ class DescribeInternetOpenStatisticRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp in seconds.
+        # The end time of the query. The value is a timestamp in seconds.
         self.end_time = end_time
-        # The language of the request and response.
+        # The language type for the request and response messages.
         self.lang = lang
-        # The source IP address of the visitor.
+        # The source IP address of the requester.
         self.source_ip = source_ip
-        # The start of the time range to query. This value is a UNIX timestamp in seconds.
+        # The start time of the query. The value is a timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

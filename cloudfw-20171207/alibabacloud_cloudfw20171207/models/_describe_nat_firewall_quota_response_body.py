@@ -21,7 +21,7 @@ class DescribeNatFirewallQuotaResponseBody(DaraModel):
         self.total_count = total_count
         # The number of unprotected items.
         self.unprotected_count = unprotected_count
-        # The number of used quotas.
+        # The used count.
         self.used_count = used_count
 
     def validate(self):

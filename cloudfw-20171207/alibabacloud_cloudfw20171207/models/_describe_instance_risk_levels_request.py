@@ -15,10 +15,9 @@ class DescribeInstanceRiskLevelsRequest(DaraModel):
     ):
         # The list of instances.
         self.instances = instances
-        # The language of the response. Valid values:
+        # The language in which messages are received. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
 

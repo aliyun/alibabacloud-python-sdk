@@ -108,13 +108,13 @@ class DescribeSecurityProxyResourcesResponseBodyResourceListVpcList(DaraModel):
     ):
         # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
-        # The UID of the member accounts.
+        # The UID of member accounts.
         self.member_uid = member_uid
         # The list of NAT gateways.
         self.nat_gateways = nat_gateways
         # The VPC-connected instance ID.
         self.vpc_id = vpc_id
-        # The name of the VPC-connected instance.
+        # The VPC-connected instance name.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -245,17 +245,25 @@ class DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNa
     def __init__(
         self,
         destination_cidr: str = None,
+        divert_status: str = None,
         next_hop_id: str = None,
         next_hop_type: str = None,
         route_table_id: str = None,
     ):
         # The destination CIDR block.
         self.destination_cidr = destination_cidr
+        # The current traffic redirection status of the route entry. Valid values:
+        # - diverted: Traffic is redirected to the firewall.
+        # - undiverted: Traffic is not redirected and still points to the NAT gateway.
+        # - diverting: Traffic redirection is in progress.
+        # - undiverting: Traffic redirection cancellation is in progress.
+        # - abnormal: Traffic redirection is abnormal.
+        self.divert_status = divert_status
         # The next hop instance ID.
         self.next_hop_id = next_hop_id
-        # The network type of the next hop.
+        # The next hop network type.
         self.next_hop_type = next_hop_type
-        # The ID of the route table.
+        # The route table ID.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -268,6 +276,9 @@ class DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNa
             result = _map
         if self.destination_cidr is not None:
             result['DestinationCidr'] = self.destination_cidr
+
+        if self.divert_status is not None:
+            result['DivertStatus'] = self.divert_status
 
         if self.next_hop_id is not None:
             result['NextHopId'] = self.next_hop_id
@@ -284,6 +295,9 @@ class DescribeSecurityProxyResourcesResponseBodyResourceListVpcListNatGatewaysNa
         m = m or dict()
         if m.get('DestinationCidr') is not None:
             self.destination_cidr = m.get('DestinationCidr')
+
+        if m.get('DivertStatus') is not None:
+            self.divert_status = m.get('DivertStatus')
 
         if m.get('NextHopId') is not None:
             self.next_hop_id = m.get('NextHopId')

@@ -13,7 +13,7 @@ class DescribeInstanceRiskLevelsResponseBody(DaraModel):
         instance_risks: List[main_models.DescribeInstanceRiskLevelsResponseBodyInstanceRisks] = None,
         request_id: str = None,
     ):
-        # The list of instance threats.
+        # The list of instance risks.
         self.instance_risks = instance_risks
         # The ID of the request.
         self.request_id = request_id
@@ -59,13 +59,12 @@ class DescribeInstanceRiskLevelsResponseBodyInstanceRisks(DaraModel):
         instance_id: str = None,
         level: str = None,
     ):
-        # The list of threats for the ECS instances.
+        # The list of ECS instance risks.
         self.details = details
         # The ID of the Cloud Firewall instance.
         self.instance_id = instance_id
-        # The threat level. Valid value:
-        # 
-        # - **medium**: medium
+        # The risk level. Valid values:
+        # - **medium**: Medium
         self.level = level
 
     def validate(self):
@@ -117,9 +116,8 @@ class DescribeInstanceRiskLevelsResponseBodyInstanceRisksDetails(DaraModel):
     ):
         # The IP address of the server.
         self.ip = ip
-        # The threat level. Valid value:
-        # 
-        # - **medium**: medium
+        # The risk level. Valid values:
+        # - **medium**: Medium
         self.level = level
         # The type.
         self.type = type

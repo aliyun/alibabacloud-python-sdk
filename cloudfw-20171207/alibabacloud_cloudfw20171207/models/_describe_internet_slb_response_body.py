@@ -14,7 +14,7 @@ class DescribeInternetSlbResponseBody(DaraModel):
         page_info: main_models.DescribeInternetSlbResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The list of data.
+        # The data list.
         self.data_list = data_list
         # The pagination information.
         self.page_info = page_info
@@ -71,9 +71,9 @@ class DescribeInternetSlbResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.current_page = current_page
-        # The number of entries returned on the current page.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -127,7 +127,7 @@ class DescribeInternetSlbResponseBodyDataList(DaraModel):
     ):
         # The access control ID.
         self.acl_id = acl_id
-        # The status of access control.
+        # The access control status.
         self.acl_status = acl_status
         # The access control type.
         self.acl_type = acl_type

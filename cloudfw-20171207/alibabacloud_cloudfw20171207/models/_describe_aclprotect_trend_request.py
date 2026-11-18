@@ -14,14 +14,14 @@ class DescribeACLProtectTrendRequest(DaraModel):
         source_ip: str = None,
         start_time: str = None,
     ):
-        # The end time of the query. The value is a UNIX timestamp in seconds.
+        # The end time of the query. Specify the time as a UNIX timestamp in seconds.
         self.end_time = end_time
         # The type of the firewall border. Valid values:
-        # - **internet** (default): Internet Border firewall, which monitors traffic between the Internet and your assets.
-        # - **vpc**: virtual private cloud (VPC) firewalls, which monitor traffic between VPCs.
-        # - **nat**: NAT firewalls, which monitor traffic from internal-facing assets to the Internet.
+        # - **internet** (default): the Internet Border firewall.
+        # - **vpc**: virtual private cloud (VPC) firewalls.
+        # - **nat**: NAT firewalls.
         self.firewall_type = firewall_type
-        # The time aggregation granularity for trend data, in seconds. Valid values:
+        # The time aggregation granularity of the trend data, in seconds. Valid values:
         # - **60**: 1-minute granularity (uses the minute-level detail table).
         # - **1800**: 30-minute granularity.
         # - **3600**: 1-hour granularity.
@@ -33,9 +33,9 @@ class DescribeACLProtectTrendRequest(DaraModel):
         # 
         # - **en**: English.
         self.lang = lang
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated.
         self.source_ip = source_ip
-        # The start time of the query. The value is a UNIX timestamp in seconds.
+        # The start time of the query. Specify the time as a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

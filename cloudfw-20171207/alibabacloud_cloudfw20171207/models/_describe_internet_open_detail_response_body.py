@@ -71,11 +71,11 @@ class DescribeInternetOpenDetailResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The current page number.
         self.current_page = current_page
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -135,29 +135,29 @@ class DescribeInternetOpenDetailResponseBodyDataList(DaraModel):
         traffic_percent_7day: str = None,
         unknown_reason: List[str] = None,
     ):
-        # The ID of the asset instance.
+        # The asset instance ID.
         self.assets_instance_id = assets_instance_id
         # The instance name.
         self.assets_name = assets_name
         # The asset type of the instance.
         self.assets_type = assets_type
-        # The ID of the details.
+        # The detail ID.
         self.id = id
         # The inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
         # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
-        # The port that is exposed to the Internet.
+        # The open public port.
         self.port = port
-        # The security threat.
+        # The security risk.
         self.prob_risk = prob_risk
-        # The description of the security threat.
+        # The description of the security risk.
         self.prob_risk_desc = prob_risk_desc
         # The protocol type.
         self.protocol = protocol
         # The public IP address.
         self.public_ip = public_ip
-        # The region ID of the instance.
+        # The ID of the region where the instance resides.
         self.region_no = region_no
         # The risk level.
         self.risk_level = risk_level
@@ -169,13 +169,13 @@ class DescribeInternetOpenDetailResponseBodyDataList(DaraModel):
         self.suggest_level = suggest_level
         # The total traffic.
         self.total_bytes = total_bytes
-        # The percentage of traffic in the last 24 hours.
+        # The traffic proportion over the last 1 day.
         self.traffic_percent_1day = traffic_percent_1day
-        # The percentage of traffic in the last 30 days.
+        # The traffic proportion over the last 30 days.
         self.traffic_percent_30day = traffic_percent_30day
-        # The percentage of traffic in the last 7 days.
+        # The traffic proportion over the last 7 days.
         self.traffic_percent_7day = traffic_percent_7day
-        # The reason why the protocol is not detected when the protocol is identified as Unknown.
+        # The reason why the protocol is not identified when the recognized protocol is Unknown.
         self.unknown_reason = unknown_reason
 
     def validate(self):

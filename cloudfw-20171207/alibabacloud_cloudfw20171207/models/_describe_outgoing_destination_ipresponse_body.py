@@ -14,11 +14,11 @@ class DescribeOutgoingDestinationIPResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of destination IP addresses for outgoing connections.
+        # The list of IP addresses for outbound connections.
         self.dst_iplist = dst_iplist
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of outgoing IPs.
+        # The total number of outbound IP addresses.
         self.total_count = total_count
 
     def validate(self):
@@ -90,97 +90,92 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPList(DaraModel):
         tag_list: List[main_models.DescribeOutgoingDestinationIPResponseBodyDstIPListTagList] = None,
         total_bytes: str = None,
     ):
-        # Indicates whether an access control policy is applied. Valid values:
+        # Specifies whether to overwrite the access control policy. Valid values:
         # 
-        # - **Uncovered**: No policy is applied.
+        # - **Uncovered**: Not covered.
         # 
-        # - **FullCoverage**: A policy is applied.
+        # - **FullCoverage**: Covered.
         self.acl_coverage = acl_coverage
-        # Details of the ACL recommendation.
+        # The recommendation information for the ACL.
         self.acl_recommend_detail = acl_recommend_detail
         # The health status of the access control policy. Valid values:
         # 
         # - **Normal**: Healthy.
-        # 
         # - **Abnormal**: Unhealthy.
         self.acl_status = acl_status
-        # A list of address books that contain this destination IP address.
+        # The address book information.
         self.address_group_list = address_group_list
         # The list of application ports.
         # 
-        # > This response returns a maximum of 99 application ports. If more than 99 ports exist, only the first 99 are returned.
+        # > The list displays only the first 99 application ports. If the number of outbound application ports exceeds 99, only the first 99 entries are displayed.
         self.application_port_list = application_port_list
-        # The total number of assets that initiated outgoing connections to this destination IP.
+        # The total number of assets that initiate outbound connections.
         self.asset_count = asset_count
-        # The threat intelligence category of the destination IP address. Valid values:
+        # The categorization of the intelligence tags label. Valid values:
         # 
-        # - **Suspicious**
-        # 
-        # - **Malicious**
-        # 
-        # - **Trusted**
+        # - **Suspicious**: Suspicious.
+        # - **Malicious**: Malicious.
+        # - **Trusted**: Trusted.
         self.category_class_id = category_class_id
-        # The ID of the service category. Valid values:
+        # The category ID of the product. Valid values:
         # 
-        # - **Aliyun**: The destination is an Alibaba Cloud product.
+        # - **Aliyun**: Alibaba Cloud service.
         # 
-        # - **NotAliyun**: The destination is a non-Alibaba Cloud product.
+        # - **NotAliyun**: Non-Alibaba Cloud service.
         self.category_id = category_id
-        # The service category of the destination IP address. Valid values:
+        # The category name of the product. Valid values:
         # 
-        # - **Alibaba Cloud product**
+        # - **Alibaba Cloud service**
         # 
-        # - **non-Alibaba Cloud product**
+        # - **Non-Alibaba Cloud service**
         self.category_name = category_name
-        # The destination IP address of the outgoing connection.
+        # The destination IP address of the domain name for outbound connections.
         self.dst_ip = dst_ip
-        # The name of the rule group.
+        # The name of the group in the rule.
         self.group_name = group_name
         # Indicates whether an access control rule exists. Valid values:
         # 
-        # - **true**: An access control rule exists.
-        # 
-        # - **false**: No access control rule exists.
+        # - **true**: Yes.
+        # - **false**: No.
         self.has_acl = has_acl
-        # Indicates whether an ACL is recommended. Valid values:
+        # Indicates whether an ACL recommendation is available. Valid values:
         # 
-        # - **true**: An ACL is recommended.
+        # - **true**: Yes.
         # 
-        # - **false**: No ACL is recommended.
+        # - **false**: No.
         self.has_acl_recommend = has_acl_recommend
-        # The total inbound traffic in bytes.
+        # The inbound traffic. Unit: bytes.
         self.in_bytes = in_bytes
-        # Indicates whether the destination IP address is added to the allowlist. Valid values:
+        # Indicates whether the IP address is added to the whitelist. Valid values:
+        # - **true**: Added.
         # 
-        # - **true**: The destination IP address is on the allowlist.
-        # 
-        # - **false**: The destination IP address is not on the allowlist.
+        # - **false**: Not added.
         self.is_mark_normal = is_mark_normal
-        # The geographical location of the destination IP address.
+        # The region name.
         self.location_name = location_name
-        # The total outbound traffic in bytes.
+        # The outbound traffic. Unit: bytes.
         self.out_bytes = out_bytes
-        # The total number of private assets that initiated outgoing connections to this destination IP.
+        # The total number of private network assets that initiate outbound connections.
         self.private_asset_count = private_asset_count
         # The UUID of the ACL rule.
         self.rule_id = rule_id
         # The name of the ACL rule.
         self.rule_name = rule_name
-        # The reason for the security recommendation.
+        # The security reason.
         self.security_reason = security_reason
-        # The recommended security action for the outgoing connection. Valid values:
+        # The security policy for the domain name for outbound connections. Valid values:
         # 
-        # - **pass**: Allows the connection.
+        # - **pass**: Allow.
         # 
-        # - **alert**: Rejects the connection.
+        # - **alert**: Deny.
         # 
-        # - **drop**: Drops the connection.
+        # - **drop**: Monitor.
         self.security_suggest = security_suggest
         # The number of requests.
         self.session_count = session_count
-        # A list of tags associated with the destination IP.
+        # The list of tags.
         self.tag_list = tag_list
-        # The total traffic volume in bytes.
+        # The total traffic. Unit: bytes.
         self.total_bytes = total_bytes
 
     def validate(self):
@@ -382,27 +377,23 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListTagList(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # The category of the threat intelligence tag. Valid values:
+        # The categorization of the intelligence tags label. Valid values:
         # 
-        # - **Suspicious**
-        # 
-        # - **Malicious**
-        # 
-        # - **Trusted**
+        # - **Suspicious**: Suspicious.
+        # - **Malicious**: Malicious.
+        # - **Trusted**: Trusted.
         self.class_id = class_id
-        # The risk level. Valid values:
+        # The risk assessment level. Valid values:
         # 
-        # - **1**: Low
-        # 
-        # - **2**: Medium
-        # 
-        # - **3**: High
+        # - **1**: Low risk.
+        # - **2**: Medium risk.
+        # - **3**: High risk.
         self.risk_level = risk_level
-        # The description of the threat intelligence tag.
+        # The description of the intelligence tags label.
         self.tag_describe = tag_describe
-        # The ID of the threat intelligence tag.
+        # The ID of the intelligence tags label.
         self.tag_id = tag_id
-        # The name of the threat intelligence tag.
+        # The name of the intelligence label sign.
         self.tag_name = tag_name
 
     def validate(self):
@@ -456,43 +447,28 @@ class DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList(Dara
         port: int = None,
         unknown_reason: List[str] = None,
     ):
-        # The application protocol detected for the connection. Valid values:
-        # 
+        # The Protocol Type supported by the access control policy. Valid values:
         # - **FTP**
-        # 
         # - **HTTP**
-        # 
         # - **HTTPS**
-        # 
         # - **Memcache**
-        # 
         # - **MongoDB**
-        # 
         # - **MQTT**
-        # 
         # - **MySQL**
-        # 
         # - **RDP**
-        # 
         # - **Redis**
-        # 
         # - **SMTP**
-        # 
         # - **SMTPS**
-        # 
         # - **SSH**
-        # 
         # - **SSL_No_Cert**
-        # 
         # - **SSL**
-        # 
         # - **VNC**
         # 
-        # >
+        # > The valid values of this parameter depend on the value of the Proto parameter. If Proto is set to TCP, ApplicationNameList supports all the preceding Protocol Types. If both ApplicationNameList and ApplicationName are specified, ApplicationNameList takes precedence.
         self.application_name = application_name
-        # The application port.
+        # The port of the application.
         self.port = port
-        # A list of reasons why the application protocol was not identified.
+        # The list of reasons why the protocol is not analyzed when the identified protocol is Unknown.
         self.unknown_reason = unknown_reason
 
     def validate(self):

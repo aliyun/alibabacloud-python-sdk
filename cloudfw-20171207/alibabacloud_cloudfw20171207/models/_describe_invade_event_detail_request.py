@@ -13,19 +13,19 @@ class DescribeInvadeEventDetailRequest(DaraModel):
         public_ip: str = None,
         source_ip: str = None,
     ):
-        # The ID of the asset.
+        # The asset ID.
         # 
         # This parameter is required.
         self.assets_instance_id = assets_instance_id
-        # The UUID of the threat detection event.
+        # The UUID of the compromise awareness event.
         # 
         # This parameter is required.
         self.event_uuid = event_uuid
-        # The language of the content within the response.
+        # The language type of the received messages.
         self.lang = lang
         # The public IP address.
         self.public_ip = public_ip
-        # The source IP address of the visitor.
+        # The source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

@@ -10,31 +10,32 @@ class ModifyIpsRulesToDefaultRequest(DaraModel):
         attack_app: str = None,
         firewall_type: str = None,
         lang: str = None,
+        proxy_id: str = None,
         rule_type: str = None,
         rules: str = None,
         source_ip: str = None,
     ):
         # The attack application.
         self.attack_app = attack_app
-        # The type of the cloud firewall. Valid values:
-        # - **VpcFirewall**: virtual private cloud (VPC) firewalls.
-        # - **InternetFirewall** (default): the Internet border firewall.
+        # The Cloud Firewall type. Valid values:
+        # - **VpcFirewall**: virtual private cloud (VPC) firewall
+        # - **InternetFirewall** (default): the Internet firewall
         self.firewall_type = firewall_type
-        # The language of the content. Valid values:
+        # The language type. Valid values:
         # 
         # - **zh** (default): Chinese.
         # 
         # - **en**: English.
         self.lang = lang
+        # Instance ID of the NAT firewall instance. This parameter is required only when FirewallType is set to **NatFirewall**. In this case, the scope is the rules under this instance. This parameter is ignored for Internet and VPC firewalls. You can call the [ListNatFirewallIpsConfigs](https://help.aliyun.com/document_detail/2879296.html) operation to query instance ID.
+        self.proxy_id = proxy_id
         # The rule type. Valid values:
         # - **basicRule**
         # - **customize**
-        # 
-        # This parameter is required.
         self.rule_type = rule_type
-        # The rule list. Conditional requirement: when RuleType is set to customize, you must specify at least one of this parameter or AttackApp. If you specify only RuleType without Rules or AttackApp, the API returns ErrorParameters.
+        # The list of rules. This parameter is conditionally required: when RuleType is set to customize, you must specify at least one of this parameter or AttackApp. If you specify only RuleType without Rules or AttackApp, the API returns an ErrorParameters error.
         self.rules = rules
-        # The source IP address of the request.
+        # The source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):
@@ -53,6 +54,9 @@ class ModifyIpsRulesToDefaultRequest(DaraModel):
 
         if self.lang is not None:
             result['Lang'] = self.lang
+
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
 
         if self.rule_type is not None:
             result['RuleType'] = self.rule_type
@@ -75,6 +79,9 @@ class ModifyIpsRulesToDefaultRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
 
         if m.get('RuleType') is not None:
             self.rule_type = m.get('RuleType')

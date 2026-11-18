@@ -19,7 +19,7 @@ class DescribePostpayUserVpcStatusResponseBody(DaraModel):
         # - **init**: The module is being enabled.
         # - **closed**: The module is disabled.
         self.status = status
-        # The number of days that protection is disabled. This parameter is valid only when the module is enabled.
+        # The number of days when protection was not enabled. This parameter is valid only when the module is enabled.
         self.unprotected_date = unprotected_date
 
     def validate(self):

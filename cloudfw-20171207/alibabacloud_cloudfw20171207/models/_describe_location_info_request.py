@@ -13,7 +13,7 @@ class DescribeLocationInfoRequest(DaraModel):
     ):
         # The language type.
         self.lang = lang
-        # The tracing code.
+        # The source code.
         # 
         # This parameter is required.
         self.source_code = source_code

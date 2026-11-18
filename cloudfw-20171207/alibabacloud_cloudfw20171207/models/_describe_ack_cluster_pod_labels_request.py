@@ -9,9 +9,8 @@ class DescribeAckClusterPodLabelsRequest(DaraModel):
         self,
         connector_id: str = None,
     ):
-        # The ID of the ACK cluster connector. You can obtain the ID by calling the following operation:
-        # 
-        # - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): queries a list of ACK cluster connectors.
+        # The ID of the ACK cluster connector. You can obtain the value from the following operation:
+        # - [DescribeAckClusterConnectors](~~DescribeAckClusterConnectors~~): Lists ACK cluster connectors.
         # 
         # This parameter is required.
         self.connector_id = connector_id

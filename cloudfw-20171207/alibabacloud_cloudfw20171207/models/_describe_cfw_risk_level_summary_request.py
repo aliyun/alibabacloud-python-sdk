@@ -15,7 +15,6 @@ class DescribeCfwRiskLevelSummaryRequest(DaraModel):
         # - **ecs**
         self.instance_type = instance_type
         # The language in which messages are received. Valid values:
-        # 
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang

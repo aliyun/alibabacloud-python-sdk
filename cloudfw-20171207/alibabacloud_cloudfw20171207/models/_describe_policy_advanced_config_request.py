@@ -15,7 +15,7 @@ class DescribePolicyAdvancedConfigRequest(DaraModel):
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The source IP address of the requester.
+        # The source IP address of the request.
         self.source_ip = source_ip
 
     def validate(self):

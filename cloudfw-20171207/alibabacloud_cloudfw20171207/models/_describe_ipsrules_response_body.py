@@ -20,7 +20,7 @@ class DescribeIPSRulesResponseBody(DaraModel):
         total_count: int = None,
         user_define_count: int = None,
     ):
-        # The total number of rules with the block action.
+        # The total number of block rules.
         self.drop_count = drop_count
         # The number of high-risk rules.
         self.high_risk_count = high_risk_count
@@ -133,7 +133,7 @@ class DescribeIPSRulesResponseBodyRules(DaraModel):
         user_defined: str = None,
         user_status: int = None,
     ):
-        # The attacked application.
+        # The attack application.
         self.attack_app = attack_app
         # The attack type.
         self.attack_type = attack_type
@@ -147,7 +147,7 @@ class DescribeIPSRulesResponseBodyRules(DaraModel):
         self.description = description
         # The supported engine mode.
         # 
-        # This value is valid only when DefaultMode is set to drop (Block). In other modes, this value is meaningless.
+        # This value takes effect only when DefaultMode is set to drop (Block). It is not applicable in other modes.
         self.rule_class = rule_class
         # The rule ID.
         self.rule_id = rule_id
@@ -155,11 +155,11 @@ class DescribeIPSRulesResponseBodyRules(DaraModel):
         self.rule_level = rule_level
         # The rule name.
         self.rule_name = rule_name
-        # The UUID of the rule.
+        # The rule UUID.
         self.rule_uuid = rule_uuid
-        # The timestamp when the rule was modified.
+        # The timestamp when the rule was updated.
         self.update_time = update_time
-        # Specifies whether the rule is a custom rule.
+        # Indicates whether the rule is a custom rule.
         self.user_defined = user_defined
         # The user status.
         self.user_status = user_status

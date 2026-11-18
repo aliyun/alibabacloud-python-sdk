@@ -19,7 +19,7 @@ class DescribeInvadeEcsTrendResponseBody(DaraModel):
     ):
         # The data list.
         self.data_list = data_list
-        # The end of the time range. This is a UNIX timestamp. Unit: seconds.
+        # The end time. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
         # The time interval.
         self.interval = interval
@@ -27,7 +27,7 @@ class DescribeInvadeEcsTrendResponseBody(DaraModel):
         self.invade_ecs_count = invade_ecs_count
         # The ID of the request.
         self.request_id = request_id
-        # The start of the time range. This is a UNIX timestamp. Unit: seconds.
+        # The start time. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
 
     def validate(self):

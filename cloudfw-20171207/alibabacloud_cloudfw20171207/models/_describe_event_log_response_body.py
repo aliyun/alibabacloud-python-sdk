@@ -14,7 +14,7 @@ class DescribeEventLogResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of ISPs.
+        # The data list.
         self.data_list = data_list
         # The request ID.
         self.request_id = request_id
@@ -105,22 +105,22 @@ class DescribeEventLogResponseBodyDataList(DaraModel):
         # - **SSH**
         # - **SSL**
         # - **VNC**
-        # - **ANY** (all application types)
+        # - **ANY**: All application types.
         self.application_name = application_name
         # The name of the attacked application.
         self.attack_app = attack_app
         # The attack type of the intrusion prevention event. Valid values:
         # - **1**: Abnormal connection.
-        # - **2**: Command execution.
-        # - **3**: Brute-force attack.
-        # - **4**: Scanning.
+        # - **2**: execute commands.
+        # - **3**: brute-force attacks.
+        # - **4**: Scan.
         # - **5**: Other.
-        # - **6**: Information leakage.
+        # - **6**: Information leak.
         # - **7**: DoS attack.
         # - **8**: Overflow attack.
         # - **9**: Web attack.
         # - **10**: Trojan backdoor.
-        # - **11**: Viruses and worms.
+        # - **11**: Virus and worm.
         # - **12**: Mining behavior.
         # - **13**: Reverse shell.
         self.attack_type = attack_type
@@ -128,17 +128,17 @@ class DescribeEventLogResponseBodyDataList(DaraModel):
         # - **in**: Inbound.
         # - **out**: Outbound.
         self.direction = direction
-        # The destination IP address that is queried. This indicates that the intrusion prevention event involves this destination IP address.
+        # The destination IP address. This indicates that the intrusion prevention event involves this destination IP address.
         self.dst_ip = dst_ip
         # The destination port.
         self.dst_port = dst_port
-        # The hit content.
+        # The matched content.
         self.hit_content = hit_content
-        # The hit type.
+        # The match type.
         self.hit_type = hit_type
         # The protocol type.
         self.ip_protocol = ip_protocol
-        # The UID of the Cloud Firewall member account.
+        # The UID of the Cloud Firewall member accounts.
         self.member_uid = member_uid
         # The ID of the protection rule for the intrusion prevention event.
         self.rule_id = rule_id
@@ -150,28 +150,28 @@ class DescribeEventLogResponseBodyDataList(DaraModel):
         self.rule_result = rule_result
         # The source of the detection rule for the intrusion prevention event. Valid values:
         # - **1**: Basic protection.
-        # - **2**: Virtual patches.
+        # - **2**: Virtual Patches.
         # - **4**: Threat intelligence.
         self.rule_source = rule_source
-        # The SNI used when the TLS connection is established.
+        # The Server Name Indication (SNI) used when the TLS connection is established.
         self.sni = sni
-        # The source IP address that is queried. This indicates that the intrusion prevention event involves this source IP address.
+        # The source IP address. This indicates that the intrusion prevention event involves this source IP address.
         self.src_ip = src_ip
         # The source port.
         self.src_port = src_port
-        # The cipher suite used for TLS handshake negotiation, such as TLS_AES_128_GCM_SHA256.
+        # The cipher suite negotiated during the TLS handshake, such as TLS_AES_128_GCM_SHA256.
         self.ssl_cipher = ssl_cipher
         # The phase in which the TLS handshake fails, such as Certificate.
         self.ssl_error_index = ssl_error_index
-        # The reason why the TLS handshake fails, such as BAD_PACKET_LENGTH.
+        # The reason for the TLS handshake failure, such as BAD_PACKET_LENGTH.
         self.ssl_error_msg = ssl_error_msg
-        # The TLS handshake result. For example, success indicates that the handshake is successful.
+        # The TLS handshake result. For example, success indicates a successful handshake.
         self.ssl_handshake_res = ssl_handshake_res
         # The TLS version, such as TLSv1.3.
         self.ssl_protocol = ssl_protocol
-        # The start time of the data. The value is a timestamp in seconds.
+        # The start time of the data. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
-        # The document path.
+        # The URL path.
         self.url = url
         # The severity level of the intrusion prevention event. Valid values:
         # - **1**: Low.

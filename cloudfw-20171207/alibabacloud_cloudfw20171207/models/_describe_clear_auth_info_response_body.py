@@ -13,7 +13,7 @@ class DescribeClearAuthInfoResponseBody(DaraModel):
     ):
         # The expiration timestamp.
         self.end_time = end_time
-        # The number of remaining clearances.
+        # The number of remaining clearance operations.
         self.left_times = left_times
         # The ID of the request.
         self.request_id = request_id

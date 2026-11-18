@@ -10,6 +10,7 @@ class DescribeFirewallTaskRequest(DaraModel):
         child_instance_id: str = None,
         lang: str = None,
         task_id: str = None,
+        task_name: str = None,
         task_type: str = None,
     ):
         # The ID of the child instance. You must specify at least one of ChildInstanceId and TaskId. If both are empty, the MissingParameter.TaskId (-360448) error is returned.
@@ -21,6 +22,8 @@ class DescribeFirewallTaskRequest(DaraModel):
         self.lang = lang
         # The ID of the task. You must specify at least one of TaskId and ChildInstanceId. If both are empty, the MissingParameter.TaskId (-360448, At least one of TaskId or ChildInstanceId is required.) error is returned.
         self.task_id = task_id
+        # The action of the task, which is used to filter tasks by action. Valid values: init, open, close, delete, and change_route. This parameter takes effect only when TaskType is set to NAT. If TaskId is specified, this parameter is ignored. If this parameter is not specified, the most recently started task of the instance is retrieved, regardless of the action.
+        self.task_name = task_name
         # The type of the task. Valid values:
         # 
         # - **NAT**: NAT firewall task
@@ -45,6 +48,9 @@ class DescribeFirewallTaskRequest(DaraModel):
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+
         if self.task_type is not None:
             result['TaskType'] = self.task_type
 
@@ -60,6 +66,9 @@ class DescribeFirewallTaskRequest(DaraModel):
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
 
         if m.get('TaskType') is not None:
             self.task_type = m.get('TaskType')

@@ -10,8 +10,7 @@ class DescribePolicyAdvancedConfigResponseBody(DaraModel):
         internet_switch: str = None,
         request_id: str = None,
     ):
-        # The status of strict mode. Valid values:
-        # 
+        # The enabling status of strict mode for access control policies. Valid values:
         # - **on**: Strict mode is enabled.
         # - **off**: Strict mode is disabled.
         self.internet_switch = internet_switch

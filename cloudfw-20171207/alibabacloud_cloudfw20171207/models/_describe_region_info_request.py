@@ -20,7 +20,7 @@ class DescribeRegionInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.source_code = source_code
-        # The source IP address of the request.
+        # The source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

@@ -14,9 +14,9 @@ class DescribeInternetOpenServiceResponseBody(DaraModel):
         page_info: main_models.DescribeInternetOpenServiceResponseBodyPageInfo = None,
         request_id: str = None,
     ):
-        # The list of data.
+        # The data list.
         self.data_list = data_list
-        # The paging information.
+        # The pagination information.
         self.page_info = page_info
         # The request ID.
         self.request_id = request_id
@@ -73,7 +73,7 @@ class DescribeInternetOpenServiceResponseBodyPageInfo(DaraModel):
     ):
         # The page number.
         self.current_page = current_page
-        # The number of entries per page.
+        # The score.
         self.page_size = page_size
         # The total number of entries.
         self.total_count = total_count
@@ -139,17 +139,17 @@ class DescribeInternetOpenServiceResponseBodyDataList(DaraModel):
         self.out_bytes = out_bytes
         # The list of open ports.
         self.port_list = port_list
-        # The security threat.
+        # The security risk.
         self.prob_risk = prob_risk
-        # The description of the security threat.
+        # The description of the security risk.
         self.prob_risk_desc = prob_risk_desc
         # The protocol type.
         self.protocol = protocol
-        # The number of exposed public IP addresses.
+        # The number of open public IP addresses.
         self.public_ip_num = public_ip_num
-        # The risk level.
+        # The risk level. Valid values: -1: Evaluating. 0: None. 1: Low. 2: Medium. 3: High. If you do not specify this parameter, all risk levels are queried.
         self.risk_level = risk_level
-        # The description of the risk.
+        # The risk description.
         self.risk_reason = risk_reason
         # The application name.
         self.service_name = service_name
@@ -157,13 +157,13 @@ class DescribeInternetOpenServiceResponseBodyDataList(DaraModel):
         self.suggest_level = suggest_level
         # The total traffic.
         self.total_bytes = total_bytes
-        # The traffic percentage over the last 24 hours.
+        # The traffic proportion in the last 1 day.
         self.traffic_percent_1day = traffic_percent_1day
-        # The traffic percentage over the last 30 days.
+        # The traffic proportion in the last 30 days.
         self.traffic_percent_30day = traffic_percent_30day
-        # The traffic percentage over the last 7 days.
+        # The traffic proportion in the last 7 days.
         self.traffic_percent_7day = traffic_percent_7day
-        # The reason why the protocol is not identified if the detected protocol is \\`Unknown\\`.
+        # The reason why the protocol is not identified when the protocol is recognized as Unknown.
         self.unknown_reason = unknown_reason
 
     def validate(self):

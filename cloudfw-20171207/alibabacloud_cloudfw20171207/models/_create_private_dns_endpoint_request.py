@@ -39,14 +39,14 @@ class CreatePrivateDnsEndpointRequest(DaraModel):
         # - **TCP**
         # - **UDP**
         self.ip_protocol = ip_protocol
-        # The UID of Alibaba Cloud member accounts.
+        # The UID of the Alibaba Cloud member accounts.
         self.member_uid = member_uid
         # The port number.
         self.port = port
         # The primary DNS server.
         # > If PrivateDnsType is set to Custom, you must provide PrimaryDns and StandbyDns.
         self.primary_dns = primary_dns
-        # The ID of the primary vSwitch. This parameter is required. If this parameter is not specified, -200103 is returned. The region and zone of the primary and secondary vSwitches specified by PrimaryVSwitchId and StandbyVSwitchId must support private DNS firewalls.
+        # The ID of the primary vSwitch. This parameter is required. If this parameter is not specified, the error code -200103 is returned. The region and zone of the primary and secondary vSwitches specified by PrimaryVSwitchId and StandbyVSwitchId must support private DNS firewalls.
         self.primary_vswitch_id = primary_vswitch_id
         # The IP address of the primary vSwitch.
         self.primary_vswitch_ip = primary_vswitch_ip
@@ -64,7 +64,7 @@ class CreatePrivateDnsEndpointRequest(DaraModel):
         # 
         # > If PrivateDnsType is set to Custom, you must provide PrimaryDns and StandbyDns.
         self.standby_dns = standby_dns
-        # The ID of the secondary vSwitch. The zones of the primary and secondary vSwitches specified by PrimaryVSwitchId and StandbyVSwitchId must support private DNS. Otherwise, -200534 is returned. The region must also be in the support list.
+        # The ID of the secondary vSwitch. The zones of the primary and secondary vSwitches specified by PrimaryVSwitchId and StandbyVSwitchId must support private DNS. Otherwise, the error code -200534 is returned. The region must also be in the supported list.
         self.standby_vswitch_id = standby_vswitch_id
         # The IP address of the secondary vSwitch.
         self.standby_vswitch_ip = standby_vswitch_ip

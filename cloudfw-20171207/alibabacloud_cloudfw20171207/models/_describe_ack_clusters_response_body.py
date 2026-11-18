@@ -16,11 +16,11 @@ class DescribeAckClustersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of ACK clusters.
+        # The list of ACK clusters.
         self.clusters = clusters
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of entries to return on each page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -97,29 +97,42 @@ class DescribeAckClustersResponseBodyClusters(DaraModel):
         self.cluster_id = cluster_id
         # The name of the ACK cluster.
         self.cluster_name = cluster_name
-        # The specification of the ACK cluster.
+        # The specifications of the ACK cluster.
         self.cluster_spec = cluster_spec
-        # The type of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
-        # 
-        # - [DescribeClustersV1](~~DescribeClustersV1~~): Returns a list of ACK clusters in your account that meet specific criteria, such as the cluster type and specifications.
+        # The type of the ACK cluster. Valid values:
+        # - **ManagedKubernetes**: managed ACK clusters, including ACK managed clusters (Pro Edition and Basic Edition), ACK Serverless clusters (Pro Edition and Basic Edition), ACK Edge clusters (Pro Edition and Basic Edition), and ACK Lingjun clusters (Pro Edition)
+        # - **ExternalKubernetes**: registered clusters
+        # - **Kubernetes**: dedicated ACK clusters
         self.cluster_type = cluster_type
-        # The Alibaba Cloud UID of the account to which the ACK cluster resources belong.
+        # The Alibaba Cloud account ID to which the ACK cluster resources belong.
         self.member_uid = member_uid
-        # The network plugin of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
-        # 
-        # - [DescribeClustersV1](~~DescribeClustersV1~~): Lists the ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
+        # The network plug-in of the ACK cluster. Valid values:
+        # - **terway-eniip**: the Terway-eniip network plug-in
+        # - **Flannel**: the Flannel network plug-in
         self.network = network
-        # The subtype of the cluster. This parameter is available only when `ClusterType` is set to `ManagedKubernetes`. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
-        # 
-        # - [DescribeClustersV1](~~DescribeClustersV1~~): Lists ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
+        # When `ClusterType` is set to `ManagedKubernetes` (managed ACK clusters), this parameter indicates the subtype of the cluster. Valid values:
+        # - **Default**: ACK managed clusters, including ACK managed clusters Pro Edition and Basic Edition
+        # - **Serverless**: ACK Serverless clusters, including ACK Serverless clusters Pro Edition and Basic Edition
+        # - **Edge**: ACK Edge clusters, including ACK Edge clusters Pro Edition and Basic Edition
+        # - **Lingjun**: ACK Lingjun clusters, available only in Pro Edition
         self.profile = profile
         # The region ID of the ACK cluster.
         self.region_id = region_id
-        # The running status of the ACK cluster. For more information about the valid values, see [DescribeClustersV1](~~DescribeClustersV1~~).
-        # 
-        # - [DescribeClustersV1](~~DescribeClustersV1~~): Retrieves a list of ACK clusters in your account that meet specified conditions, such as cluster type and specifications.
+        # The running status of the ACK cluster. Valid values:
+        # - **initial**: The cluster is being created.
+        # - **running**: The cluster is running.
+        # - **scaling**: The cluster is being scaled.
+        # - **stopped**: The cluster is stopped.
+        # - **upgrading**: The cluster is being upgraded.
+        # - **updating**: The cluster configurations are being updated.
+        # - **deleting**: The cluster is being deleted.
+        # - **deleted**: The cluster is deleted.
+        # - **draining**: Nodes are being drained.
+        # - **removing**: Nodes are being removed.
+        # - **failed**: The cluster failed to be created.
+        # - **delete_failed**: The cluster failed to be deleted.
         self.state = state
-        # The ID of the VPC where the ACK cluster is deployed.
+        # The ID of the VPC to which the ACK cluster belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

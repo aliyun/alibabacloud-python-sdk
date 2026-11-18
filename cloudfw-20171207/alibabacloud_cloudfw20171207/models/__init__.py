@@ -39,6 +39,14 @@ from ._create_ack_cluster_connector_response import CreateAckClusterConnectorRes
 from ._create_acl_check_request import CreateAclCheckRequest
 from ._create_acl_check_response_body import CreateAclCheckResponseBody
 from ._create_acl_check_response import CreateAclCheckResponse
+from ._create_application_custom_rules_request import CreateApplicationCustomRulesRequest
+from ._create_application_custom_rules_shrink_request import CreateApplicationCustomRulesShrinkRequest
+from ._create_application_custom_rules_response_body import CreateApplicationCustomRulesResponseBody
+from ._create_application_custom_rules_response import CreateApplicationCustomRulesResponse
+from ._create_application_template_request import CreateApplicationTemplateRequest
+from ._create_application_template_shrink_request import CreateApplicationTemplateShrinkRequest
+from ._create_application_template_response_body import CreateApplicationTemplateResponseBody
+from ._create_application_template_response import CreateApplicationTemplateResponse
 from ._create_download_task_request import CreateDownloadTaskRequest
 from ._create_download_task_response_body import CreateDownloadTaskResponseBody
 from ._create_download_task_response import CreateDownloadTaskResponse
@@ -91,6 +99,13 @@ from ._create_vpc_firewall_precheck_response import CreateVpcFirewallPrecheckRes
 from ._create_vpc_firewall_task_request import CreateVpcFirewallTaskRequest
 from ._create_vpc_firewall_task_response_body import CreateVpcFirewallTaskResponseBody
 from ._create_vpc_firewall_task_response import CreateVpcFirewallTaskResponse
+from ._create_web_filter_rules_request import CreateWebFilterRulesRequest
+from ._create_web_filter_rules_shrink_request import CreateWebFilterRulesShrinkRequest
+from ._create_web_filter_rules_response_body import CreateWebFilterRulesResponseBody
+from ._create_web_filter_rules_response import CreateWebFilterRulesResponse
+from ._create_web_filter_template_request import CreateWebFilterTemplateRequest
+from ._create_web_filter_template_response_body import CreateWebFilterTemplateResponseBody
+from ._create_web_filter_template_response import CreateWebFilterTemplateResponse
 from ._delete_ack_cluster_connector_request import DeleteAckClusterConnectorRequest
 from ._delete_ack_cluster_connector_response_body import DeleteAckClusterConnectorResponseBody
 from ._delete_ack_cluster_connector_response import DeleteAckClusterConnectorResponse
@@ -100,6 +115,13 @@ from ._delete_acl_backup_data_response import DeleteAclBackupDataResponse
 from ._delete_address_book_request import DeleteAddressBookRequest
 from ._delete_address_book_response_body import DeleteAddressBookResponseBody
 from ._delete_address_book_response import DeleteAddressBookResponse
+from ._delete_application_custom_rules_request import DeleteApplicationCustomRulesRequest
+from ._delete_application_custom_rules_shrink_request import DeleteApplicationCustomRulesShrinkRequest
+from ._delete_application_custom_rules_response_body import DeleteApplicationCustomRulesResponseBody
+from ._delete_application_custom_rules_response import DeleteApplicationCustomRulesResponse
+from ._delete_application_template_request import DeleteApplicationTemplateRequest
+from ._delete_application_template_response_body import DeleteApplicationTemplateResponseBody
+from ._delete_application_template_response import DeleteApplicationTemplateResponse
 from ._delete_control_policy_request import DeleteControlPolicyRequest
 from ._delete_control_policy_response_body import DeleteControlPolicyResponseBody
 from ._delete_control_policy_response import DeleteControlPolicyResponse
@@ -151,6 +173,13 @@ from ._delete_vpc_firewall_configure_response import DeleteVpcFirewallConfigureR
 from ._delete_vpc_firewall_control_policy_request import DeleteVpcFirewallControlPolicyRequest
 from ._delete_vpc_firewall_control_policy_response_body import DeleteVpcFirewallControlPolicyResponseBody
 from ._delete_vpc_firewall_control_policy_response import DeleteVpcFirewallControlPolicyResponse
+from ._delete_web_filter_rules_request import DeleteWebFilterRulesRequest
+from ._delete_web_filter_rules_shrink_request import DeleteWebFilterRulesShrinkRequest
+from ._delete_web_filter_rules_response_body import DeleteWebFilterRulesResponseBody
+from ._delete_web_filter_rules_response import DeleteWebFilterRulesResponse
+from ._delete_web_filter_template_request import DeleteWebFilterTemplateRequest
+from ._delete_web_filter_template_response_body import DeleteWebFilterTemplateResponseBody
+from ._delete_web_filter_template_response import DeleteWebFilterTemplateResponse
 from ._describe_aclprotect_trend_request import DescribeACLProtectTrendRequest
 from ._describe_aclprotect_trend_response_body import DescribeACLProtectTrendResponseBody
 from ._describe_aclprotect_trend_response import DescribeACLProtectTrendResponse
@@ -211,6 +240,9 @@ from ._describe_address_book_request import DescribeAddressBookRequest
 from ._describe_address_book_shrink_request import DescribeAddressBookShrinkRequest
 from ._describe_address_book_response_body import DescribeAddressBookResponseBody
 from ._describe_address_book_response import DescribeAddressBookResponse
+from ._describe_application_statistics_request import DescribeApplicationStatisticsRequest
+from ._describe_application_statistics_response_body import DescribeApplicationStatisticsResponseBody
+from ._describe_application_statistics_response import DescribeApplicationStatisticsResponse
 from ._describe_asset_list_request import DescribeAssetListRequest
 from ._describe_asset_list_response_body import DescribeAssetListResponseBody
 from ._describe_asset_list_response import DescribeAssetListResponse
@@ -340,6 +372,9 @@ from ._describe_invade_event_list_response import DescribeInvadeEventListRespons
 from ._describe_invade_event_name_list_request import DescribeInvadeEventNameListRequest
 from ._describe_invade_event_name_list_response_body import DescribeInvadeEventNameListResponseBody
 from ._describe_invade_event_name_list_response import DescribeInvadeEventNameListResponse
+from ._describe_invade_event_payload_request import DescribeInvadeEventPayloadRequest
+from ._describe_invade_event_payload_response_body import DescribeInvadeEventPayloadResponseBody
+from ._describe_invade_event_payload_response import DescribeInvadeEventPayloadResponse
 from ._describe_invade_event_statistic_request import DescribeInvadeEventStatisticRequest
 from ._describe_invade_event_statistic_response_body import DescribeInvadeEventStatisticResponseBody
 from ._describe_invade_event_statistic_response import DescribeInvadeEventStatisticResponse
@@ -677,12 +712,36 @@ from ._disable_sdl_protected_asset_response import DisableSdlProtectedAssetRespo
 from ._enable_sdl_protected_asset_request import EnableSdlProtectedAssetRequest
 from ._enable_sdl_protected_asset_response_body import EnableSdlProtectedAssetResponseBody
 from ._enable_sdl_protected_asset_response import EnableSdlProtectedAssetResponse
+from ._get_application_template_request import GetApplicationTemplateRequest
+from ._get_application_template_response_body import GetApplicationTemplateResponseBody
+from ._get_application_template_response import GetApplicationTemplateResponse
+from ._get_firewall_feature_request import GetFirewallFeatureRequest
+from ._get_firewall_feature_response_body import GetFirewallFeatureResponseBody
+from ._get_firewall_feature_response import GetFirewallFeatureResponse
 from ._get_tls_inspect_certificate_download_url_request import GetTlsInspectCertificateDownloadUrlRequest
 from ._get_tls_inspect_certificate_download_url_response_body import GetTlsInspectCertificateDownloadUrlResponseBody
 from ._get_tls_inspect_certificate_download_url_response import GetTlsInspectCertificateDownloadUrlResponse
+from ._list_application_custom_rules_request import ListApplicationCustomRulesRequest
+from ._list_application_custom_rules_response_body import ListApplicationCustomRulesResponseBody
+from ._list_application_custom_rules_response import ListApplicationCustomRulesResponse
+from ._list_application_template_request import ListApplicationTemplateRequest
+from ._list_application_template_response_body import ListApplicationTemplateResponseBody
+from ._list_application_template_response import ListApplicationTemplateResponse
+from ._list_application_update_dynamics_request import ListApplicationUpdateDynamicsRequest
+from ._list_application_update_dynamics_response_body import ListApplicationUpdateDynamicsResponseBody
+from ._list_application_update_dynamics_response import ListApplicationUpdateDynamicsResponse
+from ._list_applications_request import ListApplicationsRequest
+from ._list_applications_response_body import ListApplicationsResponseBody
+from ._list_applications_response import ListApplicationsResponse
 from ._list_tls_inspect_cacertificates_request import ListTlsInspectCACertificatesRequest
 from ._list_tls_inspect_cacertificates_response_body import ListTlsInspectCACertificatesResponseBody
 from ._list_tls_inspect_cacertificates_response import ListTlsInspectCACertificatesResponse
+from ._list_web_filter_rules_request import ListWebFilterRulesRequest
+from ._list_web_filter_rules_response_body import ListWebFilterRulesResponseBody
+from ._list_web_filter_rules_response import ListWebFilterRulesResponse
+from ._list_web_filter_templates_request import ListWebFilterTemplatesRequest
+from ._list_web_filter_templates_response_body import ListWebFilterTemplatesResponseBody
+from ._list_web_filter_templates_response import ListWebFilterTemplatesResponse
 from ._modify_address_book_request import ModifyAddressBookRequest
 from ._modify_address_book_shrink_request import ModifyAddressBookShrinkRequest
 from ._modify_address_book_response_body import ModifyAddressBookResponseBody
@@ -833,6 +892,17 @@ from ._update_ack_cluster_connector_response import UpdateAckClusterConnectorRes
 from ._update_acl_check_detail_status_request import UpdateAclCheckDetailStatusRequest
 from ._update_acl_check_detail_status_response_body import UpdateAclCheckDetailStatusResponseBody
 from ._update_acl_check_detail_status_response import UpdateAclCheckDetailStatusResponse
+from ._update_application_custom_rules_request import UpdateApplicationCustomRulesRequest
+from ._update_application_custom_rules_shrink_request import UpdateApplicationCustomRulesShrinkRequest
+from ._update_application_custom_rules_response_body import UpdateApplicationCustomRulesResponseBody
+from ._update_application_custom_rules_response import UpdateApplicationCustomRulesResponse
+from ._update_application_template_request import UpdateApplicationTemplateRequest
+from ._update_application_template_shrink_request import UpdateApplicationTemplateShrinkRequest
+from ._update_application_template_response_body import UpdateApplicationTemplateResponseBody
+from ._update_application_template_response import UpdateApplicationTemplateResponse
+from ._update_firewall_feature_request import UpdateFirewallFeatureRequest
+from ._update_firewall_feature_response_body import UpdateFirewallFeatureResponseBody
+from ._update_firewall_feature_response import UpdateFirewallFeatureResponse
 from ._update_postpay_user_internet_status_request import UpdatePostpayUserInternetStatusRequest
 from ._update_postpay_user_internet_status_response_body import UpdatePostpayUserInternetStatusResponseBody
 from ._update_postpay_user_internet_status_response import UpdatePostpayUserInternetStatusResponse
@@ -845,6 +915,13 @@ from ._update_postpay_user_vpc_status_response import UpdatePostpayUserVpcStatus
 from ._update_security_proxy_request import UpdateSecurityProxyRequest
 from ._update_security_proxy_response_body import UpdateSecurityProxyResponseBody
 from ._update_security_proxy_response import UpdateSecurityProxyResponse
+from ._update_web_filter_rules_request import UpdateWebFilterRulesRequest
+from ._update_web_filter_rules_shrink_request import UpdateWebFilterRulesShrinkRequest
+from ._update_web_filter_rules_response_body import UpdateWebFilterRulesResponseBody
+from ._update_web_filter_rules_response import UpdateWebFilterRulesResponse
+from ._update_web_filter_template_request import UpdateWebFilterTemplateRequest
+from ._update_web_filter_template_response_body import UpdateWebFilterTemplateResponseBody
+from ._update_web_filter_template_response import UpdateWebFilterTemplateResponse
 from ._use_acl_backup_data_request import UseAclBackupDataRequest
 from ._use_acl_backup_data_response_body import UseAclBackupDataResponseBody
 from ._use_acl_backup_data_response import UseAclBackupDataResponse
@@ -858,9 +935,13 @@ from ._add_address_book_shrink_request import AddAddressBookShrinkRequestAckLabe
 from ._add_address_book_shrink_request import AddAddressBookShrinkRequestTagList
 from ._add_instance_members_request import AddInstanceMembersRequestMembers
 from ._create_ack_cluster_connector_response_body import CreateAckClusterConnectorResponseBodyAckClusterConnector
+from ._create_application_custom_rules_request import CreateApplicationCustomRulesRequestRules
+from ._create_application_template_request import CreateApplicationTemplateRequestAddBuiltInApplicationCustomActions
 from ._create_security_proxy_request import CreateSecurityProxyRequestNatRouteEntryList
 from ._create_tr_firewall_v2route_policy_request import CreateTrFirewallV2RoutePolicyRequestDestCandidateList
 from ._create_tr_firewall_v2route_policy_request import CreateTrFirewallV2RoutePolicyRequestSrcCandidateList
+from ._create_web_filter_rules_request import CreateWebFilterRulesRequestRulesConditions
+from ._create_web_filter_rules_request import CreateWebFilterRulesRequestRules
 from ._describe_aclprotect_trend_response_body import DescribeACLProtectTrendResponseBodyTrendList
 from ._describe_access_instance_task_response_body import DescribeAccessInstanceTaskResponseBodyTaskSteps
 from ._describe_access_instance_vswitch_list_response_body import DescribeAccessInstanceVSwitchListResponseBodyZonesVSwitchList
@@ -889,6 +970,9 @@ from ._describe_address_book_response_body import DescribeAddressBookResponseBod
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsAssetRegionResourceTypes
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAclsTagList
 from ._describe_address_book_response_body import DescribeAddressBookResponseBodyAcls
+from ._describe_application_statistics_response_body import DescribeApplicationStatisticsResponseBodyCategoryList
+from ._describe_application_statistics_response_body import DescribeApplicationStatisticsResponseBodyRiskList
+from ._describe_application_statistics_response_body import DescribeApplicationStatisticsResponseBodyTechnologyList
 from ._describe_asset_list_response_body import DescribeAssetListResponseBodyAssets
 from ._describe_asset_risk_list_response_body import DescribeAssetRiskListResponseBodyAssetList
 from ._describe_asset_statistic_response_body import DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic
@@ -1097,7 +1181,21 @@ from ._describe_vpc_list_lite_response_body import DescribeVpcListLiteResponseBo
 from ._describe_vpc_zone_response_body import DescribeVpcZoneResponseBodyZoneList
 from ._describe_vulnerability_protected_list_response_body import DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList
 from ._describe_vulnerability_protected_list_response_body import DescribeVulnerabilityProtectedListResponseBodyVulnList
+from ._get_application_template_response_body import GetApplicationTemplateResponseBodyApplicationTemplateBuiltInApplicationActions
+from ._get_application_template_response_body import GetApplicationTemplateResponseBodyApplicationTemplate
+from ._get_firewall_feature_response_body import GetFirewallFeatureResponseBodyFeatures
+from ._list_application_custom_rules_response_body import ListApplicationCustomRulesResponseBodyApplicationCustomRulesApplications
+from ._list_application_custom_rules_response_body import ListApplicationCustomRulesResponseBodyApplicationCustomRules
+from ._list_application_template_response_body import ListApplicationTemplateResponseBodyApplicationTemplatesBuiltInApplicationActionStatistics
+from ._list_application_template_response_body import ListApplicationTemplateResponseBodyApplicationTemplates
+from ._list_application_update_dynamics_response_body import ListApplicationUpdateDynamicsResponseBodyDynamicsApplications
+from ._list_application_update_dynamics_response_body import ListApplicationUpdateDynamicsResponseBodyDynamics
+from ._list_applications_response_body import ListApplicationsResponseBodyApplications
 from ._list_tls_inspect_cacertificates_response_body import ListTlsInspectCACertificatesResponseBodyCertificates
+from ._list_web_filter_rules_response_body import ListWebFilterRulesResponseBodyRulesConditions
+from ._list_web_filter_rules_response_body import ListWebFilterRulesResponseBodyRules
+from ._list_web_filter_templates_response_body import ListWebFilterTemplatesResponseBodyWebFilterTemplatesRuleActionStatistics
+from ._list_web_filter_templates_response_body import ListWebFilterTemplatesResponseBodyWebFilterTemplates
 from ._modify_address_book_request import ModifyAddressBookRequestAckLabels
 from ._modify_address_book_request import ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4
 from ._modify_address_book_request import ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6
@@ -1115,11 +1213,17 @@ from ._modify_user_alarm_config_request import ModifyUserAlarmConfigRequestAlarm
 from ._modify_user_alarm_config_request import ModifyUserAlarmConfigRequestContactConfig
 from ._modify_user_alarm_config_shrink_request import ModifyUserAlarmConfigShrinkRequestAlarmConfig
 from ._put_enable_fw_switch_response_body import PutEnableFwSwitchResponseBodyAbnormalResourceStatusList
+from ._switch_security_proxy_request import SwitchSecurityProxyRequestNatRouteEntryList
 from ._update_ack_cluster_connector_response_body import UpdateAckClusterConnectorResponseBodyAckClusterConnector
 from ._update_acl_check_detail_status_response_body import UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAclTagList
 from ._update_acl_check_detail_status_response_body import UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAcl
 from ._update_acl_check_detail_status_response_body import UpdateAclCheckDetailStatusResponseBodyCheckRecordAcls
 from ._update_acl_check_detail_status_response_body import UpdateAclCheckDetailStatusResponseBodyCheckRecord
+from ._update_application_custom_rules_request import UpdateApplicationCustomRulesRequestRules
+from ._update_application_template_request import UpdateApplicationTemplateRequestAddBuiltInApplicationCustomActions
+from ._update_application_template_request import UpdateApplicationTemplateRequestRemoveBuiltInApplicationCustomActions
+from ._update_web_filter_rules_request import UpdateWebFilterRulesRequestRulesConditions
+from ._update_web_filter_rules_request import UpdateWebFilterRulesRequestRules
 
 __all__ = [
     AddAclBackupDataRequest,
@@ -1159,6 +1263,14 @@ __all__ = [
     CreateAclCheckRequest,
     CreateAclCheckResponseBody,
     CreateAclCheckResponse,
+    CreateApplicationCustomRulesRequest,
+    CreateApplicationCustomRulesShrinkRequest,
+    CreateApplicationCustomRulesResponseBody,
+    CreateApplicationCustomRulesResponse,
+    CreateApplicationTemplateRequest,
+    CreateApplicationTemplateShrinkRequest,
+    CreateApplicationTemplateResponseBody,
+    CreateApplicationTemplateResponse,
     CreateDownloadTaskRequest,
     CreateDownloadTaskResponseBody,
     CreateDownloadTaskResponse,
@@ -1211,6 +1323,13 @@ __all__ = [
     CreateVpcFirewallTaskRequest,
     CreateVpcFirewallTaskResponseBody,
     CreateVpcFirewallTaskResponse,
+    CreateWebFilterRulesRequest,
+    CreateWebFilterRulesShrinkRequest,
+    CreateWebFilterRulesResponseBody,
+    CreateWebFilterRulesResponse,
+    CreateWebFilterTemplateRequest,
+    CreateWebFilterTemplateResponseBody,
+    CreateWebFilterTemplateResponse,
     DeleteAckClusterConnectorRequest,
     DeleteAckClusterConnectorResponseBody,
     DeleteAckClusterConnectorResponse,
@@ -1220,6 +1339,13 @@ __all__ = [
     DeleteAddressBookRequest,
     DeleteAddressBookResponseBody,
     DeleteAddressBookResponse,
+    DeleteApplicationCustomRulesRequest,
+    DeleteApplicationCustomRulesShrinkRequest,
+    DeleteApplicationCustomRulesResponseBody,
+    DeleteApplicationCustomRulesResponse,
+    DeleteApplicationTemplateRequest,
+    DeleteApplicationTemplateResponseBody,
+    DeleteApplicationTemplateResponse,
     DeleteControlPolicyRequest,
     DeleteControlPolicyResponseBody,
     DeleteControlPolicyResponse,
@@ -1271,6 +1397,13 @@ __all__ = [
     DeleteVpcFirewallControlPolicyRequest,
     DeleteVpcFirewallControlPolicyResponseBody,
     DeleteVpcFirewallControlPolicyResponse,
+    DeleteWebFilterRulesRequest,
+    DeleteWebFilterRulesShrinkRequest,
+    DeleteWebFilterRulesResponseBody,
+    DeleteWebFilterRulesResponse,
+    DeleteWebFilterTemplateRequest,
+    DeleteWebFilterTemplateResponseBody,
+    DeleteWebFilterTemplateResponse,
     DescribeACLProtectTrendRequest,
     DescribeACLProtectTrendResponseBody,
     DescribeACLProtectTrendResponse,
@@ -1331,6 +1464,9 @@ __all__ = [
     DescribeAddressBookShrinkRequest,
     DescribeAddressBookResponseBody,
     DescribeAddressBookResponse,
+    DescribeApplicationStatisticsRequest,
+    DescribeApplicationStatisticsResponseBody,
+    DescribeApplicationStatisticsResponse,
     DescribeAssetListRequest,
     DescribeAssetListResponseBody,
     DescribeAssetListResponse,
@@ -1460,6 +1596,9 @@ __all__ = [
     DescribeInvadeEventNameListRequest,
     DescribeInvadeEventNameListResponseBody,
     DescribeInvadeEventNameListResponse,
+    DescribeInvadeEventPayloadRequest,
+    DescribeInvadeEventPayloadResponseBody,
+    DescribeInvadeEventPayloadResponse,
     DescribeInvadeEventStatisticRequest,
     DescribeInvadeEventStatisticResponseBody,
     DescribeInvadeEventStatisticResponse,
@@ -1797,12 +1936,36 @@ __all__ = [
     EnableSdlProtectedAssetRequest,
     EnableSdlProtectedAssetResponseBody,
     EnableSdlProtectedAssetResponse,
+    GetApplicationTemplateRequest,
+    GetApplicationTemplateResponseBody,
+    GetApplicationTemplateResponse,
+    GetFirewallFeatureRequest,
+    GetFirewallFeatureResponseBody,
+    GetFirewallFeatureResponse,
     GetTlsInspectCertificateDownloadUrlRequest,
     GetTlsInspectCertificateDownloadUrlResponseBody,
     GetTlsInspectCertificateDownloadUrlResponse,
+    ListApplicationCustomRulesRequest,
+    ListApplicationCustomRulesResponseBody,
+    ListApplicationCustomRulesResponse,
+    ListApplicationTemplateRequest,
+    ListApplicationTemplateResponseBody,
+    ListApplicationTemplateResponse,
+    ListApplicationUpdateDynamicsRequest,
+    ListApplicationUpdateDynamicsResponseBody,
+    ListApplicationUpdateDynamicsResponse,
+    ListApplicationsRequest,
+    ListApplicationsResponseBody,
+    ListApplicationsResponse,
     ListTlsInspectCACertificatesRequest,
     ListTlsInspectCACertificatesResponseBody,
     ListTlsInspectCACertificatesResponse,
+    ListWebFilterRulesRequest,
+    ListWebFilterRulesResponseBody,
+    ListWebFilterRulesResponse,
+    ListWebFilterTemplatesRequest,
+    ListWebFilterTemplatesResponseBody,
+    ListWebFilterTemplatesResponse,
     ModifyAddressBookRequest,
     ModifyAddressBookShrinkRequest,
     ModifyAddressBookResponseBody,
@@ -1953,6 +2116,17 @@ __all__ = [
     UpdateAclCheckDetailStatusRequest,
     UpdateAclCheckDetailStatusResponseBody,
     UpdateAclCheckDetailStatusResponse,
+    UpdateApplicationCustomRulesRequest,
+    UpdateApplicationCustomRulesShrinkRequest,
+    UpdateApplicationCustomRulesResponseBody,
+    UpdateApplicationCustomRulesResponse,
+    UpdateApplicationTemplateRequest,
+    UpdateApplicationTemplateShrinkRequest,
+    UpdateApplicationTemplateResponseBody,
+    UpdateApplicationTemplateResponse,
+    UpdateFirewallFeatureRequest,
+    UpdateFirewallFeatureResponseBody,
+    UpdateFirewallFeatureResponse,
     UpdatePostpayUserInternetStatusRequest,
     UpdatePostpayUserInternetStatusResponseBody,
     UpdatePostpayUserInternetStatusResponse,
@@ -1965,6 +2139,13 @@ __all__ = [
     UpdateSecurityProxyRequest,
     UpdateSecurityProxyResponseBody,
     UpdateSecurityProxyResponse,
+    UpdateWebFilterRulesRequest,
+    UpdateWebFilterRulesShrinkRequest,
+    UpdateWebFilterRulesResponseBody,
+    UpdateWebFilterRulesResponse,
+    UpdateWebFilterTemplateRequest,
+    UpdateWebFilterTemplateResponseBody,
+    UpdateWebFilterTemplateResponse,
     UseAclBackupDataRequest,
     UseAclBackupDataResponseBody,
     UseAclBackupDataResponse,
@@ -1978,9 +2159,13 @@ __all__ = [
     AddAddressBookShrinkRequestTagList,
     AddInstanceMembersRequestMembers,
     CreateAckClusterConnectorResponseBodyAckClusterConnector,
+    CreateApplicationCustomRulesRequestRules,
+    CreateApplicationTemplateRequestAddBuiltInApplicationCustomActions,
     CreateSecurityProxyRequestNatRouteEntryList,
     CreateTrFirewallV2RoutePolicyRequestDestCandidateList,
     CreateTrFirewallV2RoutePolicyRequestSrcCandidateList,
+    CreateWebFilterRulesRequestRulesConditions,
+    CreateWebFilterRulesRequestRules,
     DescribeACLProtectTrendResponseBodyTrendList,
     DescribeAccessInstanceTaskResponseBodyTaskSteps,
     DescribeAccessInstanceVSwitchListResponseBodyZonesVSwitchList,
@@ -2009,6 +2194,9 @@ __all__ = [
     DescribeAddressBookResponseBodyAclsAssetRegionResourceTypes,
     DescribeAddressBookResponseBodyAclsTagList,
     DescribeAddressBookResponseBodyAcls,
+    DescribeApplicationStatisticsResponseBodyCategoryList,
+    DescribeApplicationStatisticsResponseBodyRiskList,
+    DescribeApplicationStatisticsResponseBodyTechnologyList,
     DescribeAssetListResponseBodyAssets,
     DescribeAssetRiskListResponseBodyAssetList,
     DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatisticCfwGeneralInstanceRegionStatistic,
@@ -2217,7 +2405,21 @@ __all__ = [
     DescribeVpcZoneResponseBodyZoneList,
     DescribeVulnerabilityProtectedListResponseBodyVulnListResourceList,
     DescribeVulnerabilityProtectedListResponseBodyVulnList,
+    GetApplicationTemplateResponseBodyApplicationTemplateBuiltInApplicationActions,
+    GetApplicationTemplateResponseBodyApplicationTemplate,
+    GetFirewallFeatureResponseBodyFeatures,
+    ListApplicationCustomRulesResponseBodyApplicationCustomRulesApplications,
+    ListApplicationCustomRulesResponseBodyApplicationCustomRules,
+    ListApplicationTemplateResponseBodyApplicationTemplatesBuiltInApplicationActionStatistics,
+    ListApplicationTemplateResponseBodyApplicationTemplates,
+    ListApplicationUpdateDynamicsResponseBodyDynamicsApplications,
+    ListApplicationUpdateDynamicsResponseBodyDynamics,
+    ListApplicationsResponseBodyApplications,
     ListTlsInspectCACertificatesResponseBodyCertificates,
+    ListWebFilterRulesResponseBodyRulesConditions,
+    ListWebFilterRulesResponseBodyRules,
+    ListWebFilterTemplatesResponseBodyWebFilterTemplatesRuleActionStatistics,
+    ListWebFilterTemplatesResponseBodyWebFilterTemplates,
     ModifyAddressBookRequestAckLabels,
     ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv4,
     ModifyAddressBookRequestAssetRegionResourceTypesResourceTypeIpv6,
@@ -2235,9 +2437,15 @@ __all__ = [
     ModifyUserAlarmConfigRequestContactConfig,
     ModifyUserAlarmConfigShrinkRequestAlarmConfig,
     PutEnableFwSwitchResponseBodyAbnormalResourceStatusList,
+    SwitchSecurityProxyRequestNatRouteEntryList,
     UpdateAckClusterConnectorResponseBodyAckClusterConnector,
     UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAclTagList,
     UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAcl,
     UpdateAclCheckDetailStatusResponseBodyCheckRecordAcls,
-    UpdateAclCheckDetailStatusResponseBodyCheckRecord
+    UpdateAclCheckDetailStatusResponseBodyCheckRecord,
+    UpdateApplicationCustomRulesRequestRules,
+    UpdateApplicationTemplateRequestAddBuiltInApplicationCustomActions,
+    UpdateApplicationTemplateRequestRemoveBuiltInApplicationCustomActions,
+    UpdateWebFilterRulesRequestRulesConditions,
+    UpdateWebFilterRulesRequestRules
 ]

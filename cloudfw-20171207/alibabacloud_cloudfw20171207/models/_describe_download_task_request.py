@@ -12,17 +12,16 @@ class DescribeDownloadTaskRequest(DaraModel):
         page_size: str = None,
         task_type: str = None,
     ):
-        # The page number for a paged query.
+        # The Settings for the page number of the current page when paging in a paged query.
         self.current_page = current_page
         # The language of the response message. Valid values:
         # 
-        # - **zh** (default): Chinese
-        # 
-        # - **en**: English
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The maximum number of entries to return on each page for a paged query. The default value is 10. The maximum value is 50.
+        # When paging, specifies the maximum number of entries to display on each page for a paged query. Default value: 10. Settings: The maximum value is 50.
         self.page_size = page_size
-        # The type of the task. This is an enumeration. For a list of valid values, see the API for querying file download task types. If you do not set this parameter, tasks for all file types are queried.
+        # The task type. For valid values, see the API operation for querying file download task types. If you do not specify this parameter, all files are queried by default.
         self.task_type = task_type
 
     def validate(self):

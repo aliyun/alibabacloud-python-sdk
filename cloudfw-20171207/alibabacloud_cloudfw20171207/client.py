@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_cloudfw20171207 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Cloudfw'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'central'
         self._endpoint_map = {
             'ap-southeast-1': 'cloudfw.ap-southeast-1.aliyuncs.com',
@@ -1181,6 +1185,190 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_acl_check_with_options_async(request, runtime)
 
+    def create_application_custom_rules_with_options(
+        self,
+        tmp_req: main_models.CreateApplicationCustomRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationCustomRulesResponse:
+        tmp_req.validate()
+        request = main_models.CreateApplicationCustomRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rules):
+            request.rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        if not DaraCore.is_null(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationCustomRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationCustomRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_custom_rules_with_options_async(
+        self,
+        tmp_req: main_models.CreateApplicationCustomRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationCustomRulesResponse:
+        tmp_req.validate()
+        request = main_models.CreateApplicationCustomRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rules):
+            request.rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        if not DaraCore.is_null(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationCustomRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationCustomRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application_custom_rules(
+        self,
+        request: main_models.CreateApplicationCustomRulesRequest,
+    ) -> main_models.CreateApplicationCustomRulesResponse:
+        runtime = RuntimeOptions()
+        return self.create_application_custom_rules_with_options(request, runtime)
+
+    async def create_application_custom_rules_async(
+        self,
+        request: main_models.CreateApplicationCustomRulesRequest,
+    ) -> main_models.CreateApplicationCustomRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.create_application_custom_rules_with_options_async(request, runtime)
+
+    def create_application_template_with_options(
+        self,
+        tmp_req: main_models.CreateApplicationTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationTemplateResponse:
+        tmp_req.validate()
+        request = main_models.CreateApplicationTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.add_built_in_application_custom_actions):
+            request.add_built_in_application_custom_actions_shrink = Utils.array_to_string_with_specified_style(tmp_req.add_built_in_application_custom_actions, 'AddBuiltInApplicationCustomActions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.add_built_in_application_custom_actions_shrink):
+            query['AddBuiltInApplicationCustomActions'] = request.add_built_in_application_custom_actions_shrink
+        if not DaraCore.is_null(request.application_template_name):
+            query['ApplicationTemplateName'] = request.application_template_name
+        if not DaraCore.is_null(request.built_in_application_status):
+            query['BuiltInApplicationStatus'] = request.built_in_application_status
+        if not DaraCore.is_null(request.custom_rule_status):
+            query['CustomRuleStatus'] = request.custom_rule_status
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.template_status):
+            query['TemplateStatus'] = request.template_status
+        if not DaraCore.is_null(request.unknown_action):
+            query['UnknownAction'] = request.unknown_action
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_application_template_with_options_async(
+        self,
+        tmp_req: main_models.CreateApplicationTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateApplicationTemplateResponse:
+        tmp_req.validate()
+        request = main_models.CreateApplicationTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.add_built_in_application_custom_actions):
+            request.add_built_in_application_custom_actions_shrink = Utils.array_to_string_with_specified_style(tmp_req.add_built_in_application_custom_actions, 'AddBuiltInApplicationCustomActions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.add_built_in_application_custom_actions_shrink):
+            query['AddBuiltInApplicationCustomActions'] = request.add_built_in_application_custom_actions_shrink
+        if not DaraCore.is_null(request.application_template_name):
+            query['ApplicationTemplateName'] = request.application_template_name
+        if not DaraCore.is_null(request.built_in_application_status):
+            query['BuiltInApplicationStatus'] = request.built_in_application_status
+        if not DaraCore.is_null(request.custom_rule_status):
+            query['CustomRuleStatus'] = request.custom_rule_status
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.template_status):
+            query['TemplateStatus'] = request.template_status
+        if not DaraCore.is_null(request.unknown_action):
+            query['UnknownAction'] = request.unknown_action
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateApplicationTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateApplicationTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_application_template(
+        self,
+        request: main_models.CreateApplicationTemplateRequest,
+    ) -> main_models.CreateApplicationTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_application_template_with_options(request, runtime)
+
+    async def create_application_template_async(
+        self,
+        request: main_models.CreateApplicationTemplateRequest,
+    ) -> main_models.CreateApplicationTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_application_template_with_options_async(request, runtime)
+
     def create_download_task_with_options(
         self,
         request: main_models.CreateDownloadTaskRequest,
@@ -1858,6 +2046,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSecurityProxyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.basic_defense_enabled):
+            query['BasicDefenseEnabled'] = request.basic_defense_enabled
         if not DaraCore.is_null(request.firewall_service_mode):
             query['FirewallServiceMode'] = request.firewall_service_mode
         if not DaraCore.is_null(request.firewall_service_zones):
@@ -1868,16 +2058,34 @@ class Client(OpenApiClient):
             query['FwVswitchZoneId'] = request.fw_vswitch_zone_id
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.master_vswitch_cidr):
+            query['MasterVSwitchCidr'] = request.master_vswitch_cidr
+        if not DaraCore.is_null(request.master_zone_id):
+            query['MasterZoneId'] = request.master_zone_id
         if not DaraCore.is_null(request.nat_gateway_id):
             query['NatGatewayId'] = request.nat_gateway_id
+        if not DaraCore.is_null(request.nat_mode):
+            query['NatMode'] = request.nat_mode
         if not DaraCore.is_null(request.nat_route_entry_list):
             query['NatRouteEntryList'] = request.nat_route_entry_list
         if not DaraCore.is_null(request.proxy_name):
             query['ProxyName'] = request.proxy_name
         if not DaraCore.is_null(request.region_no):
             query['RegionNo'] = request.region_no
+        if not DaraCore.is_null(request.rule_class):
+            query['RuleClass'] = request.rule_class
+        if not DaraCore.is_null(request.run_mode):
+            query['RunMode'] = request.run_mode
+        if not DaraCore.is_null(request.standby_vswitch_cidr):
+            query['StandbyVSwitchCidr'] = request.standby_vswitch_cidr
+        if not DaraCore.is_null(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
         if not DaraCore.is_null(request.strict_mode):
             query['StrictMode'] = request.strict_mode
+        if not DaraCore.is_null(request.threat_intel_enabled):
+            query['ThreatIntelEnabled'] = request.threat_intel_enabled
+        if not DaraCore.is_null(request.virtual_patch_enabled):
+            query['VirtualPatchEnabled'] = request.virtual_patch_enabled
         if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not DaraCore.is_null(request.vswitch_auto):
@@ -1912,6 +2120,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateSecurityProxyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.basic_defense_enabled):
+            query['BasicDefenseEnabled'] = request.basic_defense_enabled
         if not DaraCore.is_null(request.firewall_service_mode):
             query['FirewallServiceMode'] = request.firewall_service_mode
         if not DaraCore.is_null(request.firewall_service_zones):
@@ -1922,16 +2132,34 @@ class Client(OpenApiClient):
             query['FwVswitchZoneId'] = request.fw_vswitch_zone_id
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.master_vswitch_cidr):
+            query['MasterVSwitchCidr'] = request.master_vswitch_cidr
+        if not DaraCore.is_null(request.master_zone_id):
+            query['MasterZoneId'] = request.master_zone_id
         if not DaraCore.is_null(request.nat_gateway_id):
             query['NatGatewayId'] = request.nat_gateway_id
+        if not DaraCore.is_null(request.nat_mode):
+            query['NatMode'] = request.nat_mode
         if not DaraCore.is_null(request.nat_route_entry_list):
             query['NatRouteEntryList'] = request.nat_route_entry_list
         if not DaraCore.is_null(request.proxy_name):
             query['ProxyName'] = request.proxy_name
         if not DaraCore.is_null(request.region_no):
             query['RegionNo'] = request.region_no
+        if not DaraCore.is_null(request.rule_class):
+            query['RuleClass'] = request.rule_class
+        if not DaraCore.is_null(request.run_mode):
+            query['RunMode'] = request.run_mode
+        if not DaraCore.is_null(request.standby_vswitch_cidr):
+            query['StandbyVSwitchCidr'] = request.standby_vswitch_cidr
+        if not DaraCore.is_null(request.standby_zone_id):
+            query['StandbyZoneId'] = request.standby_zone_id
         if not DaraCore.is_null(request.strict_mode):
             query['StrictMode'] = request.strict_mode
+        if not DaraCore.is_null(request.threat_intel_enabled):
+            query['ThreatIntelEnabled'] = request.threat_intel_enabled
+        if not DaraCore.is_null(request.virtual_patch_enabled):
+            query['VirtualPatchEnabled'] = request.virtual_patch_enabled
         if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not DaraCore.is_null(request.vswitch_auto):
@@ -2947,6 +3175,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_vpc_firewall_task_with_options_async(request, runtime)
 
+    def create_web_filter_rules_with_options(
+        self,
+        tmp_req: main_models.CreateWebFilterRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWebFilterRulesResponse:
+        tmp_req.validate()
+        request = main_models.CreateWebFilterRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rules):
+            request.rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
+        if not DaraCore.is_null(request.web_filter_template_id):
+            query['WebFilterTemplateId'] = request.web_filter_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWebFilterRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWebFilterRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_web_filter_rules_with_options_async(
+        self,
+        tmp_req: main_models.CreateWebFilterRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWebFilterRulesResponse:
+        tmp_req.validate()
+        request = main_models.CreateWebFilterRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rules):
+            request.rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
+        if not DaraCore.is_null(request.web_filter_template_id):
+            query['WebFilterTemplateId'] = request.web_filter_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWebFilterRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWebFilterRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_web_filter_rules(
+        self,
+        request: main_models.CreateWebFilterRulesRequest,
+    ) -> main_models.CreateWebFilterRulesResponse:
+        runtime = RuntimeOptions()
+        return self.create_web_filter_rules_with_options(request, runtime)
+
+    async def create_web_filter_rules_async(
+        self,
+        request: main_models.CreateWebFilterRulesRequest,
+    ) -> main_models.CreateWebFilterRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.create_web_filter_rules_with_options_async(request, runtime)
+
+    def create_web_filter_template_with_options(
+        self,
+        request: main_models.CreateWebFilterTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWebFilterTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWebFilterTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWebFilterTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_web_filter_template_with_options_async(
+        self,
+        request: main_models.CreateWebFilterTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWebFilterTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateWebFilterTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateWebFilterTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_web_filter_template(
+        self,
+        request: main_models.CreateWebFilterTemplateRequest,
+    ) -> main_models.CreateWebFilterTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_web_filter_template_with_options(request, runtime)
+
+    async def create_web_filter_template_async(
+        self,
+        request: main_models.CreateWebFilterTemplateRequest,
+    ) -> main_models.CreateWebFilterTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_web_filter_template_with_options_async(request, runtime)
+
     def delete_ack_cluster_connector_with_options(
         self,
         request: main_models.DeleteAckClusterConnectorRequest,
@@ -3172,6 +3560,154 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAddressBookResponse:
         runtime = RuntimeOptions()
         return await self.delete_address_book_with_options_async(request, runtime)
+
+    def delete_application_custom_rules_with_options(
+        self,
+        tmp_req: main_models.DeleteApplicationCustomRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApplicationCustomRulesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteApplicationCustomRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.application_custom_rule_ids):
+            request.application_custom_rule_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.application_custom_rule_ids, 'ApplicationCustomRuleIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_custom_rule_ids_shrink):
+            query['ApplicationCustomRuleIds'] = request.application_custom_rule_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApplicationCustomRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApplicationCustomRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_application_custom_rules_with_options_async(
+        self,
+        tmp_req: main_models.DeleteApplicationCustomRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApplicationCustomRulesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteApplicationCustomRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.application_custom_rule_ids):
+            request.application_custom_rule_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.application_custom_rule_ids, 'ApplicationCustomRuleIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.application_custom_rule_ids_shrink):
+            query['ApplicationCustomRuleIds'] = request.application_custom_rule_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApplicationCustomRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApplicationCustomRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_application_custom_rules(
+        self,
+        request: main_models.DeleteApplicationCustomRulesRequest,
+    ) -> main_models.DeleteApplicationCustomRulesResponse:
+        runtime = RuntimeOptions()
+        return self.delete_application_custom_rules_with_options(request, runtime)
+
+    async def delete_application_custom_rules_async(
+        self,
+        request: main_models.DeleteApplicationCustomRulesRequest,
+    ) -> main_models.DeleteApplicationCustomRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_application_custom_rules_with_options_async(request, runtime)
+
+    def delete_application_template_with_options(
+        self,
+        request: main_models.DeleteApplicationTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApplicationTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApplicationTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApplicationTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_application_template_with_options_async(
+        self,
+        request: main_models.DeleteApplicationTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteApplicationTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteApplicationTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteApplicationTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_application_template(
+        self,
+        request: main_models.DeleteApplicationTemplateRequest,
+    ) -> main_models.DeleteApplicationTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_application_template_with_options(request, runtime)
+
+    async def delete_application_template_async(
+        self,
+        request: main_models.DeleteApplicationTemplateRequest,
+    ) -> main_models.DeleteApplicationTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_application_template_with_options_async(request, runtime)
 
     def delete_control_policy_with_options(
         self,
@@ -4490,6 +5026,154 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteVpcFirewallControlPolicyResponse:
         runtime = RuntimeOptions()
         return await self.delete_vpc_firewall_control_policy_with_options_async(request, runtime)
+
+    def delete_web_filter_rules_with_options(
+        self,
+        tmp_req: main_models.DeleteWebFilterRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWebFilterRulesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteWebFilterRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.web_filter_rule_ids):
+            request.web_filter_rule_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.web_filter_rule_ids, 'WebFilterRuleIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.web_filter_rule_ids_shrink):
+            query['WebFilterRuleIds'] = request.web_filter_rule_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWebFilterRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWebFilterRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_web_filter_rules_with_options_async(
+        self,
+        tmp_req: main_models.DeleteWebFilterRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWebFilterRulesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteWebFilterRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.web_filter_rule_ids):
+            request.web_filter_rule_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.web_filter_rule_ids, 'WebFilterRuleIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.web_filter_rule_ids_shrink):
+            query['WebFilterRuleIds'] = request.web_filter_rule_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWebFilterRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWebFilterRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_web_filter_rules(
+        self,
+        request: main_models.DeleteWebFilterRulesRequest,
+    ) -> main_models.DeleteWebFilterRulesResponse:
+        runtime = RuntimeOptions()
+        return self.delete_web_filter_rules_with_options(request, runtime)
+
+    async def delete_web_filter_rules_async(
+        self,
+        request: main_models.DeleteWebFilterRulesRequest,
+    ) -> main_models.DeleteWebFilterRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_web_filter_rules_with_options_async(request, runtime)
+
+    def delete_web_filter_template_with_options(
+        self,
+        request: main_models.DeleteWebFilterTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWebFilterTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.web_filter_template_id):
+            query['WebFilterTemplateId'] = request.web_filter_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWebFilterTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWebFilterTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_web_filter_template_with_options_async(
+        self,
+        request: main_models.DeleteWebFilterTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWebFilterTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.web_filter_template_id):
+            query['WebFilterTemplateId'] = request.web_filter_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWebFilterTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWebFilterTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_web_filter_template(
+        self,
+        request: main_models.DeleteWebFilterTemplateRequest,
+    ) -> main_models.DeleteWebFilterTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_web_filter_template_with_options(request, runtime)
+
+    async def delete_web_filter_template_async(
+        self,
+        request: main_models.DeleteWebFilterTemplateRequest,
+    ) -> main_models.DeleteWebFilterTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_web_filter_template_with_options_async(request, runtime)
 
     def describe_aclprotect_trend_with_options(
         self,
@@ -5974,6 +6658,76 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAddressBookResponse:
         runtime = RuntimeOptions()
         return await self.describe_address_book_with_options_async(request, runtime)
+
+    def describe_application_statistics_with_options(
+        self,
+        request: main_models.DescribeApplicationStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationStatisticsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationStatistics',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_statistics_with_options_async(
+        self,
+        request: main_models.DescribeApplicationStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeApplicationStatisticsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApplicationStatistics',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeApplicationStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_statistics(
+        self,
+        request: main_models.DescribeApplicationStatisticsRequest,
+    ) -> main_models.DescribeApplicationStatisticsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_application_statistics_with_options(request, runtime)
+
+    async def describe_application_statistics_async(
+        self,
+        request: main_models.DescribeApplicationStatisticsRequest,
+    ) -> main_models.DescribeApplicationStatisticsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_application_statistics_with_options_async(request, runtime)
 
     def describe_asset_list_with_options(
         self,
@@ -7508,6 +8262,8 @@ class Client(OpenApiClient):
             query['LogType'] = request.log_type
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.rule_result):
             query['RuleResult'] = request.rule_result
         if not DaraCore.is_null(request.source_code):
@@ -7516,6 +8272,8 @@ class Client(OpenApiClient):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.src_ip):
             query['SrcIP'] = request.src_ip
+        if not DaraCore.is_null(request.ssl_handshake_res):
+            query['SslHandshakeRes'] = request.ssl_handshake_res
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -7562,6 +8320,8 @@ class Client(OpenApiClient):
             query['LogType'] = request.log_type
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_id):
+            query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.rule_result):
             query['RuleResult'] = request.rule_result
         if not DaraCore.is_null(request.source_code):
@@ -7570,6 +8330,8 @@ class Client(OpenApiClient):
             query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.src_ip):
             query['SrcIP'] = request.src_ip
+        if not DaraCore.is_null(request.ssl_handshake_res):
+            query['SslHandshakeRes'] = request.ssl_handshake_res
         if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
@@ -7748,6 +8510,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
         if not DaraCore.is_null(request.task_type):
             query['TaskType'] = request.task_type
         req = open_api_util_models.OpenApiRequest(
@@ -7784,6 +8548,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
         if not DaraCore.is_null(request.task_type):
             query['TaskType'] = request.task_type
         req = open_api_util_models.OpenApiRequest(
@@ -8116,6 +8882,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
         if not DaraCore.is_null(request.query_modify):
             query['QueryModify'] = request.query_modify
         if not DaraCore.is_null(request.rule_action):
@@ -8186,6 +8954,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
         if not DaraCore.is_null(request.query_modify):
             query['QueryModify'] = request.query_modify
         if not DaraCore.is_null(request.rule_action):
@@ -10099,6 +10869,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_invade_event_name_list_with_options_async(request, runtime)
 
+    def describe_invade_event_payload_with_options(
+        self,
+        request: main_models.DescribeInvadeEventPayloadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInvadeEventPayloadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.assets_instance_id):
+            query['AssetsInstanceId'] = request.assets_instance_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.event_uuid):
+            query['EventUuid'] = request.event_uuid
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not DaraCore.is_null(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInvadeEventPayload',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInvadeEventPayloadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_invade_event_payload_with_options_async(
+        self,
+        request: main_models.DescribeInvadeEventPayloadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInvadeEventPayloadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.assets_instance_id):
+            query['AssetsInstanceId'] = request.assets_instance_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.event_uuid):
+            query['EventUuid'] = request.event_uuid
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.private_ip):
+            query['PrivateIP'] = request.private_ip
+        if not DaraCore.is_null(request.public_ip):
+            query['PublicIP'] = request.public_ip
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeInvadeEventPayload',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeInvadeEventPayloadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_invade_event_payload(
+        self,
+        request: main_models.DescribeInvadeEventPayloadRequest,
+    ) -> main_models.DescribeInvadeEventPayloadResponse:
+        runtime = RuntimeOptions()
+        return self.describe_invade_event_payload_with_options(request, runtime)
+
+    async def describe_invade_event_payload_async(
+        self,
+        request: main_models.DescribeInvadeEventPayloadRequest,
+    ) -> main_models.DescribeInvadeEventPayloadResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_invade_event_payload_with_options_async(request, runtime)
+
     def describe_invade_event_statistic_with_options(
         self,
         request: main_models.DescribeInvadeEventStatisticRequest,
@@ -11147,7 +12019,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DescribeNatFirewallQuotaResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11156,7 +12032,7 @@ class Client(OpenApiClient):
             version = '2017-12-07',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -11173,7 +12049,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DescribeNatFirewallQuotaResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11182,7 +12062,7 @@ class Client(OpenApiClient):
             version = '2017-12-07',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -20253,6 +21133,140 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.enable_sdl_protected_asset_with_options_async(request, runtime)
 
+    def get_application_template_with_options(
+        self,
+        request: main_models.GetApplicationTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetApplicationTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        if not DaraCore.is_null(request.built_in_application_action_type):
+            query['BuiltInApplicationActionType'] = request.built_in_application_action_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetApplicationTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetApplicationTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_application_template_with_options_async(
+        self,
+        request: main_models.GetApplicationTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetApplicationTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        if not DaraCore.is_null(request.built_in_application_action_type):
+            query['BuiltInApplicationActionType'] = request.built_in_application_action_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetApplicationTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetApplicationTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_application_template(
+        self,
+        request: main_models.GetApplicationTemplateRequest,
+    ) -> main_models.GetApplicationTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.get_application_template_with_options(request, runtime)
+
+    async def get_application_template_async(
+        self,
+        request: main_models.GetApplicationTemplateRequest,
+    ) -> main_models.GetApplicationTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.get_application_template_with_options_async(request, runtime)
+
+    def get_firewall_feature_with_options(
+        self,
+        request: main_models.GetFirewallFeatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFirewallFeatureResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetFirewallFeature',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFirewallFeatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_firewall_feature_with_options_async(
+        self,
+        request: main_models.GetFirewallFeatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFirewallFeatureResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetFirewallFeature',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetFirewallFeatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_firewall_feature(
+        self,
+        request: main_models.GetFirewallFeatureRequest,
+    ) -> main_models.GetFirewallFeatureResponse:
+        runtime = RuntimeOptions()
+        return self.get_firewall_feature_with_options(request, runtime)
+
+    async def get_firewall_feature_async(
+        self,
+        request: main_models.GetFirewallFeatureRequest,
+    ) -> main_models.GetFirewallFeatureResponse:
+        runtime = RuntimeOptions()
+        return await self.get_firewall_feature_with_options_async(request, runtime)
+
     def get_tls_inspect_certificate_download_url_with_options(
         self,
         request: main_models.GetTlsInspectCertificateDownloadUrlRequest,
@@ -20322,6 +21336,398 @@ class Client(OpenApiClient):
     ) -> main_models.GetTlsInspectCertificateDownloadUrlResponse:
         runtime = RuntimeOptions()
         return await self.get_tls_inspect_certificate_download_url_with_options_async(request, runtime)
+
+    def list_application_custom_rules_with_options(
+        self,
+        request: main_models.ListApplicationCustomRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationCustomRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_custom_rule_id):
+            query['ApplicationCustomRuleId'] = request.application_custom_rule_id
+        if not DaraCore.is_null(request.application_custom_rule_name):
+            query['ApplicationCustomRuleName'] = request.application_custom_rule_name
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationCustomRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationCustomRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_custom_rules_with_options_async(
+        self,
+        request: main_models.ListApplicationCustomRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationCustomRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_custom_rule_id):
+            query['ApplicationCustomRuleId'] = request.application_custom_rule_id
+        if not DaraCore.is_null(request.application_custom_rule_name):
+            query['ApplicationCustomRuleName'] = request.application_custom_rule_name
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationCustomRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationCustomRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_custom_rules(
+        self,
+        request: main_models.ListApplicationCustomRulesRequest,
+    ) -> main_models.ListApplicationCustomRulesResponse:
+        runtime = RuntimeOptions()
+        return self.list_application_custom_rules_with_options(request, runtime)
+
+    async def list_application_custom_rules_async(
+        self,
+        request: main_models.ListApplicationCustomRulesRequest,
+    ) -> main_models.ListApplicationCustomRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_application_custom_rules_with_options_async(request, runtime)
+
+    def list_application_template_with_options(
+        self,
+        request: main_models.ListApplicationTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_template_ids):
+            query['ApplicationTemplateIds'] = request.application_template_ids
+        if not DaraCore.is_null(request.application_template_name):
+            query['ApplicationTemplateName'] = request.application_template_name
+        if not DaraCore.is_null(request.built_in_application_status):
+            query['BuiltInApplicationStatus'] = request.built_in_application_status
+        if not DaraCore.is_null(request.custom_rule_status):
+            query['CustomRuleStatus'] = request.custom_rule_status
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.template_status):
+            query['TemplateStatus'] = request.template_status
+        if not DaraCore.is_null(request.unknown_action):
+            query['UnknownAction'] = request.unknown_action
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_template_with_options_async(
+        self,
+        request: main_models.ListApplicationTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_template_ids):
+            query['ApplicationTemplateIds'] = request.application_template_ids
+        if not DaraCore.is_null(request.application_template_name):
+            query['ApplicationTemplateName'] = request.application_template_name
+        if not DaraCore.is_null(request.built_in_application_status):
+            query['BuiltInApplicationStatus'] = request.built_in_application_status
+        if not DaraCore.is_null(request.custom_rule_status):
+            query['CustomRuleStatus'] = request.custom_rule_status
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.template_status):
+            query['TemplateStatus'] = request.template_status
+        if not DaraCore.is_null(request.unknown_action):
+            query['UnknownAction'] = request.unknown_action
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_template(
+        self,
+        request: main_models.ListApplicationTemplateRequest,
+    ) -> main_models.ListApplicationTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.list_application_template_with_options(request, runtime)
+
+    async def list_application_template_async(
+        self,
+        request: main_models.ListApplicationTemplateRequest,
+    ) -> main_models.ListApplicationTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.list_application_template_with_options_async(request, runtime)
+
+    def list_application_update_dynamics_with_options(
+        self,
+        request: main_models.ListApplicationUpdateDynamicsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationUpdateDynamicsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationUpdateDynamics',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationUpdateDynamicsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_update_dynamics_with_options_async(
+        self,
+        request: main_models.ListApplicationUpdateDynamicsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationUpdateDynamicsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationUpdateDynamics',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationUpdateDynamicsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_update_dynamics(
+        self,
+        request: main_models.ListApplicationUpdateDynamicsRequest,
+    ) -> main_models.ListApplicationUpdateDynamicsResponse:
+        runtime = RuntimeOptions()
+        return self.list_application_update_dynamics_with_options(request, runtime)
+
+    async def list_application_update_dynamics_async(
+        self,
+        request: main_models.ListApplicationUpdateDynamicsRequest,
+    ) -> main_models.ListApplicationUpdateDynamicsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_application_update_dynamics_with_options_async(request, runtime)
+
+    def list_applications_with_options(
+        self,
+        request: main_models.ListApplicationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not DaraCore.is_null(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.risk):
+            query['Risk'] = request.risk
+        if not DaraCore.is_null(request.technology):
+            query['Technology'] = request.technology
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplications',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_applications_with_options_async(
+        self,
+        request: main_models.ListApplicationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not DaraCore.is_null(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not DaraCore.is_null(request.category_name):
+            query['CategoryName'] = request.category_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.risk):
+            query['Risk'] = request.risk
+        if not DaraCore.is_null(request.technology):
+            query['Technology'] = request.technology
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplications',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_applications(
+        self,
+        request: main_models.ListApplicationsRequest,
+    ) -> main_models.ListApplicationsResponse:
+        runtime = RuntimeOptions()
+        return self.list_applications_with_options(request, runtime)
+
+    async def list_applications_async(
+        self,
+        request: main_models.ListApplicationsRequest,
+    ) -> main_models.ListApplicationsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_applications_with_options_async(request, runtime)
 
     def list_tls_inspect_cacertificates_with_options(
         self,
@@ -20400,6 +21806,182 @@ class Client(OpenApiClient):
     ) -> main_models.ListTlsInspectCACertificatesResponse:
         runtime = RuntimeOptions()
         return await self.list_tls_inspect_cacertificates_with_options_async(request, runtime)
+
+    def list_web_filter_rules_with_options(
+        self,
+        request: main_models.ListWebFilterRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWebFilterRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.web_filter_rule_id):
+            query['WebFilterRuleId'] = request.web_filter_rule_id
+        if not DaraCore.is_null(request.web_filter_template_id):
+            query['WebFilterTemplateId'] = request.web_filter_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWebFilterRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWebFilterRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_web_filter_rules_with_options_async(
+        self,
+        request: main_models.ListWebFilterRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWebFilterRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not DaraCore.is_null(request.web_filter_rule_id):
+            query['WebFilterRuleId'] = request.web_filter_rule_id
+        if not DaraCore.is_null(request.web_filter_template_id):
+            query['WebFilterTemplateId'] = request.web_filter_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWebFilterRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWebFilterRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_web_filter_rules(
+        self,
+        request: main_models.ListWebFilterRulesRequest,
+    ) -> main_models.ListWebFilterRulesResponse:
+        runtime = RuntimeOptions()
+        return self.list_web_filter_rules_with_options(request, runtime)
+
+    async def list_web_filter_rules_async(
+        self,
+        request: main_models.ListWebFilterRulesRequest,
+    ) -> main_models.ListWebFilterRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_web_filter_rules_with_options_async(request, runtime)
+
+    def list_web_filter_templates_with_options(
+        self,
+        request: main_models.ListWebFilterTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWebFilterTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.web_filter_template_ids):
+            query['WebFilterTemplateIds'] = request.web_filter_template_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWebFilterTemplates',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWebFilterTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_web_filter_templates_with_options_async(
+        self,
+        request: main_models.ListWebFilterTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListWebFilterTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.web_filter_template_ids):
+            query['WebFilterTemplateIds'] = request.web_filter_template_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListWebFilterTemplates',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListWebFilterTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_web_filter_templates(
+        self,
+        request: main_models.ListWebFilterTemplatesRequest,
+    ) -> main_models.ListWebFilterTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_web_filter_templates_with_options(request, runtime)
+
+    async def list_web_filter_templates_async(
+        self,
+        request: main_models.ListWebFilterTemplatesRequest,
+    ) -> main_models.ListWebFilterTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_web_filter_templates_with_options_async(request, runtime)
 
     def modify_address_book_with_options(
         self,
@@ -21412,6 +22994,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
         if not DaraCore.is_null(request.rule_type):
             query['RuleType'] = request.rule_type
         if not DaraCore.is_null(request.rules):
@@ -21452,6 +23036,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.proxy_id):
+            query['ProxyId'] = request.proxy_id
         if not DaraCore.is_null(request.rule_type):
             query['RuleType'] = request.rule_type
         if not DaraCore.is_null(request.rules):
@@ -24516,8 +26102,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.nat_route_entry_list):
+            query['NatRouteEntryList'] = request.nat_route_entry_list
         if not DaraCore.is_null(request.proxy_id):
             query['ProxyId'] = request.proxy_id
+        if not DaraCore.is_null(request.route_action):
+            query['RouteAction'] = request.route_action
         if not DaraCore.is_null(request.switch):
             query['Switch'] = request.switch
         req = open_api_util_models.OpenApiRequest(
@@ -24548,8 +26138,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.nat_route_entry_list):
+            query['NatRouteEntryList'] = request.nat_route_entry_list
         if not DaraCore.is_null(request.proxy_id):
             query['ProxyId'] = request.proxy_id
+        if not DaraCore.is_null(request.route_action):
+            query['RouteAction'] = request.route_action
         if not DaraCore.is_null(request.switch):
             query['Switch'] = request.switch
         req = open_api_util_models.OpenApiRequest(
@@ -24814,6 +26408,272 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAclCheckDetailStatusResponse:
         runtime = RuntimeOptions()
         return await self.update_acl_check_detail_status_with_options_async(request, runtime)
+
+    def update_application_custom_rules_with_options(
+        self,
+        tmp_req: main_models.UpdateApplicationCustomRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApplicationCustomRulesResponse:
+        tmp_req.validate()
+        request = main_models.UpdateApplicationCustomRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rules):
+            request.rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApplicationCustomRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApplicationCustomRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_custom_rules_with_options_async(
+        self,
+        tmp_req: main_models.UpdateApplicationCustomRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApplicationCustomRulesResponse:
+        tmp_req.validate()
+        request = main_models.UpdateApplicationCustomRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rules):
+            request.rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApplicationCustomRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApplicationCustomRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_custom_rules(
+        self,
+        request: main_models.UpdateApplicationCustomRulesRequest,
+    ) -> main_models.UpdateApplicationCustomRulesResponse:
+        runtime = RuntimeOptions()
+        return self.update_application_custom_rules_with_options(request, runtime)
+
+    async def update_application_custom_rules_async(
+        self,
+        request: main_models.UpdateApplicationCustomRulesRequest,
+    ) -> main_models.UpdateApplicationCustomRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.update_application_custom_rules_with_options_async(request, runtime)
+
+    def update_application_template_with_options(
+        self,
+        tmp_req: main_models.UpdateApplicationTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApplicationTemplateResponse:
+        tmp_req.validate()
+        request = main_models.UpdateApplicationTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.add_built_in_application_custom_actions):
+            request.add_built_in_application_custom_actions_shrink = Utils.array_to_string_with_specified_style(tmp_req.add_built_in_application_custom_actions, 'AddBuiltInApplicationCustomActions', 'json')
+        if not DaraCore.is_null(tmp_req.remove_built_in_application_custom_actions):
+            request.remove_built_in_application_custom_actions_shrink = Utils.array_to_string_with_specified_style(tmp_req.remove_built_in_application_custom_actions, 'RemoveBuiltInApplicationCustomActions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.add_built_in_application_custom_actions_shrink):
+            query['AddBuiltInApplicationCustomActions'] = request.add_built_in_application_custom_actions_shrink
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        if not DaraCore.is_null(request.application_template_name):
+            query['ApplicationTemplateName'] = request.application_template_name
+        if not DaraCore.is_null(request.built_in_application_status):
+            query['BuiltInApplicationStatus'] = request.built_in_application_status
+        if not DaraCore.is_null(request.custom_rule_status):
+            query['CustomRuleStatus'] = request.custom_rule_status
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.remove_built_in_application_custom_actions_shrink):
+            query['RemoveBuiltInApplicationCustomActions'] = request.remove_built_in_application_custom_actions_shrink
+        if not DaraCore.is_null(request.template_status):
+            query['TemplateStatus'] = request.template_status
+        if not DaraCore.is_null(request.unknown_action):
+            query['UnknownAction'] = request.unknown_action
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApplicationTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApplicationTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_template_with_options_async(
+        self,
+        tmp_req: main_models.UpdateApplicationTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateApplicationTemplateResponse:
+        tmp_req.validate()
+        request = main_models.UpdateApplicationTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.add_built_in_application_custom_actions):
+            request.add_built_in_application_custom_actions_shrink = Utils.array_to_string_with_specified_style(tmp_req.add_built_in_application_custom_actions, 'AddBuiltInApplicationCustomActions', 'json')
+        if not DaraCore.is_null(tmp_req.remove_built_in_application_custom_actions):
+            request.remove_built_in_application_custom_actions_shrink = Utils.array_to_string_with_specified_style(tmp_req.remove_built_in_application_custom_actions, 'RemoveBuiltInApplicationCustomActions', 'json')
+        query = {}
+        if not DaraCore.is_null(request.add_built_in_application_custom_actions_shrink):
+            query['AddBuiltInApplicationCustomActions'] = request.add_built_in_application_custom_actions_shrink
+        if not DaraCore.is_null(request.application_template_id):
+            query['ApplicationTemplateId'] = request.application_template_id
+        if not DaraCore.is_null(request.application_template_name):
+            query['ApplicationTemplateName'] = request.application_template_name
+        if not DaraCore.is_null(request.built_in_application_status):
+            query['BuiltInApplicationStatus'] = request.built_in_application_status
+        if not DaraCore.is_null(request.custom_rule_status):
+            query['CustomRuleStatus'] = request.custom_rule_status
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.remove_built_in_application_custom_actions_shrink):
+            query['RemoveBuiltInApplicationCustomActions'] = request.remove_built_in_application_custom_actions_shrink
+        if not DaraCore.is_null(request.template_status):
+            query['TemplateStatus'] = request.template_status
+        if not DaraCore.is_null(request.unknown_action):
+            query['UnknownAction'] = request.unknown_action
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateApplicationTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateApplicationTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_template(
+        self,
+        request: main_models.UpdateApplicationTemplateRequest,
+    ) -> main_models.UpdateApplicationTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.update_application_template_with_options(request, runtime)
+
+    async def update_application_template_async(
+        self,
+        request: main_models.UpdateApplicationTemplateRequest,
+    ) -> main_models.UpdateApplicationTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.update_application_template_with_options_async(request, runtime)
+
+    def update_firewall_feature_with_options(
+        self,
+        request: main_models.UpdateFirewallFeatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFirewallFeatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.feature_name):
+            query['FeatureName'] = request.feature_name
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFirewallFeature',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFirewallFeatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_firewall_feature_with_options_async(
+        self,
+        request: main_models.UpdateFirewallFeatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFirewallFeatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.feature_name):
+            query['FeatureName'] = request.feature_name
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateFirewallFeature',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateFirewallFeatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_firewall_feature(
+        self,
+        request: main_models.UpdateFirewallFeatureRequest,
+    ) -> main_models.UpdateFirewallFeatureResponse:
+        runtime = RuntimeOptions()
+        return self.update_firewall_feature_with_options(request, runtime)
+
+    async def update_firewall_feature_async(
+        self,
+        request: main_models.UpdateFirewallFeatureRequest,
+    ) -> main_models.UpdateFirewallFeatureResponse:
+        runtime = RuntimeOptions()
+        return await self.update_firewall_feature_with_options_async(request, runtime)
 
     def update_postpay_user_internet_status_with_options(
         self,
@@ -25130,6 +26990,166 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateSecurityProxyResponse:
         runtime = RuntimeOptions()
         return await self.update_security_proxy_with_options_async(request, runtime)
+
+    def update_web_filter_rules_with_options(
+        self,
+        tmp_req: main_models.UpdateWebFilterRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWebFilterRulesResponse:
+        tmp_req.validate()
+        request = main_models.UpdateWebFilterRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rules):
+            request.rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWebFilterRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWebFilterRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_web_filter_rules_with_options_async(
+        self,
+        tmp_req: main_models.UpdateWebFilterRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWebFilterRulesResponse:
+        tmp_req.validate()
+        request = main_models.UpdateWebFilterRulesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.rules):
+            request.rules_shrink = Utils.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
+        query = {}
+        if not DaraCore.is_null(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWebFilterRules',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWebFilterRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_web_filter_rules(
+        self,
+        request: main_models.UpdateWebFilterRulesRequest,
+    ) -> main_models.UpdateWebFilterRulesResponse:
+        runtime = RuntimeOptions()
+        return self.update_web_filter_rules_with_options(request, runtime)
+
+    async def update_web_filter_rules_async(
+        self,
+        request: main_models.UpdateWebFilterRulesRequest,
+    ) -> main_models.UpdateWebFilterRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.update_web_filter_rules_with_options_async(request, runtime)
+
+    def update_web_filter_template_with_options(
+        self,
+        request: main_models.UpdateWebFilterTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWebFilterTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.web_filter_template_id):
+            query['WebFilterTemplateId'] = request.web_filter_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWebFilterTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWebFilterTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_web_filter_template_with_options_async(
+        self,
+        request: main_models.UpdateWebFilterTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateWebFilterTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.web_filter_template_id):
+            query['WebFilterTemplateId'] = request.web_filter_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateWebFilterTemplate',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateWebFilterTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_web_filter_template(
+        self,
+        request: main_models.UpdateWebFilterTemplateRequest,
+    ) -> main_models.UpdateWebFilterTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.update_web_filter_template_with_options(request, runtime)
+
+    async def update_web_filter_template_async(
+        self,
+        request: main_models.UpdateWebFilterTemplateRequest,
+    ) -> main_models.UpdateWebFilterTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.update_web_filter_template_with_options_async(request, runtime)
 
     def use_acl_backup_data_with_options(
         self,

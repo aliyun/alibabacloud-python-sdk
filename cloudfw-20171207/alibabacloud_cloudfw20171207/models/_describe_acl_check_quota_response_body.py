@@ -58,7 +58,7 @@ class DescribeAclCheckQuotaResponseBodyQuota(DaraModel):
         self.consumed_quota = consumed_quota
         # The total quota.
         self.total_quota = total_quota
-        # The time when the quota was last updated. This value is a UNIX timestamp. Unit: seconds.
+        # The last update time of the quota. Unit: seconds.
         self.update_time = update_time
 
     def validate(self):

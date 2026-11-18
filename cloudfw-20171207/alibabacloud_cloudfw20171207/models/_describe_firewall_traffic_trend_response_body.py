@@ -15,11 +15,11 @@ class DescribeFirewallTrafficTrendResponseBody(DaraModel):
         max_bandwidth_time_bps: main_models.DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps = None,
         request_id: str = None,
     ):
-        # The returned data list.
+        # The list of returned data.
         self.data_list = data_list
-        # The timestamp when the peak total traffic occurred. The value is a UNIX timestamp in seconds.
+        # The timestamp when the total traffic peaks. The value is a UNIX timestamp in seconds.
         self.max_bandwidth_time = max_bandwidth_time
-        # The traffic distribution at the time of peak total traffic.
+        # The traffic distribution at the time when the total traffic peaks.
         self.max_bandwidth_time_bps = max_bandwidth_time_bps
         # The request ID.
         self.request_id = request_id
@@ -81,13 +81,13 @@ class DescribeFirewallTrafficTrendResponseBodyMaxBandwidthTimeBps(DaraModel):
         total_bps: int = None,
         vpc_bps: int = None,
     ):
-        # The Internet firewall traffic at the time of peak total traffic.
+        # The traffic of the Internet firewall at the time when the total traffic peaks.
         self.internet_bps = internet_bps
-        # The NAT firewall traffic at the time of peak total traffic.
+        # The traffic of the NAT firewall at the time when the total traffic peaks.
         self.nat_bps = nat_bps
         # The peak total traffic.
         self.total_bps = total_bps
-        # The VPC firewall traffic at the time of peak total traffic.
+        # The traffic of the VPC firewall at the time when the total traffic peaks.
         self.vpc_bps = vpc_bps
 
     def validate(self):
@@ -137,17 +137,17 @@ class DescribeFirewallTrafficTrendResponseBodyDataList(DaraModel):
         total_bps: int = None,
         vpc_bps: int = None,
     ):
-        # The Internet firewall traffic.
+        # The traffic of the Internet firewall.
         self.internet_bps = internet_bps
-        # The NAT firewall traffic.
+        # The traffic of the NAT firewall.
         self.nat_bps = nat_bps
-        # The time when the traffic occurred. The value is a UNIX timestamp in seconds.
+        # The time when the traffic is generated. The value is a UNIX timestamp in seconds.
         # 
-        # If the data at this point in time has not been processed, the values of other fields are -1.
+        # If the data for this time point is not processed, the values of other fields are -1.
         self.time = time
-        # The total firewall traffic.
+        # The total traffic of the firewall.
         self.total_bps = total_bps
-        # The VPC firewall traffic.
+        # The traffic of the VPC firewall.
         self.vpc_bps = vpc_bps
 
     def validate(self):

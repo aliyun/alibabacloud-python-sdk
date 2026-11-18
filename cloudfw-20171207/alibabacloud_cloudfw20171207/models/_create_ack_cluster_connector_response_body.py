@@ -11,7 +11,7 @@ class CreateAckClusterConnectorResponseBody(DaraModel):
         ack_cluster_connector: main_models.CreateAckClusterConnectorResponseBodyAckClusterConnector = None,
         request_id: str = None,
     ):
-        # The ACK cluster connector response body.
+        # The ACK cluster connector details.
         self.ack_cluster_connector = ack_cluster_connector
         # The request ID.
         self.request_id = request_id
@@ -69,8 +69,8 @@ class CreateAckClusterConnectorResponseBodyAckClusterConnector(DaraModel):
     ):
         # The access point IP address used by the ACK cluster connector to access the ACK cluster over the internal network.
         self.ack_client_host_ip = ack_client_host_ip
-        # The ID of the ACK cluster. Value sources:
-        # - [DescribeAckClusters](~~DescribeAckClusters~~): Lists ACK clusters.
+        # The ID of the ACK cluster. You can obtain the value from the following API operation:
+        # - [DescribeAckClusters](~~DescribeAckClusters~~): Queries the list of ACK clusters.
         self.cluster_id = cluster_id
         # The name of the ACK cluster.
         self.cluster_name = cluster_name
@@ -86,26 +86,26 @@ class CreateAckClusterConnectorResponseBodyAckClusterConnector(DaraModel):
         self.create_time = create_time
         # The Alibaba Cloud UID of the account to which the ACK cluster resources belong.
         self.member_uid = member_uid
-        # The primary vSwitch of the ACK cluster connector. Value sources:
-        # - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches of synchronization nodes.
+        # The ID of the primary vSwitch for the ACK cluster connector. You can obtain the value from the following API operation:
+        # - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Queries the list of vSwitches for synchronization nodes.
         self.primary_vswitch_id = primary_vswitch_id
-        # The IP address of the primary vSwitch of the ACK cluster connector.
+        # The IP address of the primary vSwitch for the ACK cluster connector.
         self.primary_vswitch_ip = primary_vswitch_ip
-        # The zone of the primary vSwitch of the ACK cluster connector. Value sources:
-        # - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Lists the zones of the vSwitches for synchronization nodes.
+        # The zone ID of the primary vSwitch for the ACK cluster connector. You can obtain the value from the following API operation:
+        # - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Queries the list of zones for the vSwitches of synchronization nodes.
         self.primary_vswitch_zone_id = primary_vswitch_zone_id
-        # The region ID of the ACK cluster connector. Value sources:
-        # - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the list of regions for synchronization nodes.
+        # The region ID of the ACK cluster connector. You can obtain the value from the following API operation:
+        # - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the regions of synchronization nodes.
         # 
         # > For more information about the regions where Cloud Firewall supports ACK cluster connectors, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
         self.region_no = region_no
-        # The secondary vSwitch of the ACK cluster connector. Value sources:
-        # - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches of synchronization nodes.
+        # The ID of the secondary vSwitch for the ACK cluster connector. You can obtain the value from the following API operation:
+        # - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Queries the list of vSwitches for synchronization nodes.
         self.standby_vswitch_id = standby_vswitch_id
-        # The IP address of the secondary vSwitch of the ACK cluster connector.
+        # The IP address of the secondary vSwitch for the ACK cluster connector.
         self.standby_vswitch_ip = standby_vswitch_ip
-        # The zone of the secondary vSwitch of the ACK cluster connector. Value sources:
-        # - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Lists the zones of the vSwitches for synchronization nodes.
+        # The zone ID of the secondary vSwitch for the ACK cluster connector. You can obtain the value from the following API operation:
+        # - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Queries the list of zones for the vSwitches of synchronization nodes.
         self.standby_vswitch_zone_id = standby_vswitch_zone_id
         # The unique ID of the task that creates the ACK cluster connector.
         self.task_id = task_id

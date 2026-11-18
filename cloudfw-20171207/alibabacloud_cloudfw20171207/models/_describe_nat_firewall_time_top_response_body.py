@@ -15,13 +15,13 @@ class DescribeNatFirewallTimeTopResponseBody(DaraModel):
         request_id: str = None,
         traffic_time: str = None,
     ):
-        # The number of results.
+        # The number of returned results.
         self.data_count = data_count
-        # The list of data.
+        # The data list.
         self.data_list = data_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The point in time when the traffic data was collected. This is a UNIX timestamp. Unit: seconds.
+        # The point in time for the traffic. The value is a UNIX timestamp in seconds.
         self.traffic_time = traffic_time
 
     def validate(self):
@@ -87,7 +87,7 @@ class DescribeNatFirewallTimeTopResponseBodyDataList(DaraModel):
         session_count: str = None,
         total_bps: int = None,
     ):
-        # The inbound bandwidth. Unit: bps.
+        # The inbound bandwidth. Unit: bit/s.
         self.in_bps = in_bps
         # The IP address.
         self.ip = ip
@@ -95,23 +95,23 @@ class DescribeNatFirewallTimeTopResponseBodyDataList(DaraModel):
         self.nat_firewall_id = nat_firewall_id
         # The name of the NAT firewall.
         self.nat_firewall_name = nat_firewall_name
-        # The ID of the NAT Gateway.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The name of the NAT Gateway.
+        # The name of the NAT gateway.
         self.nat_gateway_name = nat_gateway_name
         # The number of new connections.
         self.new_conn = new_conn
-        # The outbound bandwidth. Unit: bps.
+        # The outbound bandwidth. Unit: bit/s.
         self.out_bps = out_bps
         # The region.
         self.region_no = region_no
-        # The ID of the asset instance.
+        # The asset instance ID.
         self.resource_instance_id = resource_instance_id
         # The name of the asset instance.
         self.resource_instance_name = resource_instance_name
         # The total number of sessions.
         self.session_count = session_count
-        # The total bandwidth. Unit: bps.
+        # The total bandwidth. Unit: bit/s.
         self.total_bps = total_bps
 
     def validate(self):

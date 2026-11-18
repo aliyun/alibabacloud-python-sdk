@@ -23,9 +23,9 @@ class DescribeLocationInfoResponseBody(DaraModel):
         self.cn_list = cn_list
         # The province and city information in the Chinese mainland.
         self.cn_province_list = cn_province_list
-        # The number of regions outside the Chinese mainland.
+        # The number of regions outside China.
         self.overseas_count = overseas_count
-        # The list of regions outside the Chinese mainland.
+        # The list of regions outside China.
         self.overseas_list = overseas_list
         # The ID of the request.
         self.request_id = request_id

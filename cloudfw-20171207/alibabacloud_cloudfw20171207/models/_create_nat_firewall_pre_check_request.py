@@ -12,10 +12,10 @@ class CreateNatFirewallPreCheckRequest(DaraModel):
         region_no: str = None,
         vpc_id: str = None,
     ):
-        # The language of the content within the response. Valid values:
+        # The language of the response message. Valid values:
         # 
         # - **zh** (default): Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
         # The ID of the NAT gateway.
         # 

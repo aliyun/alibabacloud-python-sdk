@@ -123,7 +123,7 @@ class DescribePostpayBillResponseBodyBillList(DaraModel):
         vpc_instance_cnt: int = None,
         vpc_traffic: float = None,
     ):
-        # The end time. The time is a UNIX timestamp accurate to seconds, representing a full hour or a full day.
+        # The end time. The time is a UNIX timestamp accurate to seconds, which represents an exact hour or day.
         self.end_time = end_time
         # The number of Internet instances.
         self.internet_instance_cnt = internet_instance_cnt
@@ -132,19 +132,19 @@ class DescribePostpayBillResponseBodyBillList(DaraModel):
         # Indicates whether the fee is reduced. A value of 0 indicates that the fee is not reduced. A value greater than 0 indicates that the fee is reduced. If the fee is reduced, no bill is generated.
         # > This parameter is valid only when you query hourly data.
         self.is_derated = is_derated
-        # The usage duration of Simple Log Service. Unit: TB × h.
+        # The usage duration of Simple Log Service. Unit: TB×h.
         self.log_storage = log_storage
         # The number of NAT instances.
         self.nat_instance_cnt = nat_instance_cnt
         # The NAT traffic. Unit: GB.
         self.nat_traffic = nat_traffic
-        # The usage duration of sensitive data leak detection. Unit: h.
+        # The usage duration of sensitive data leak detection. Unit: hours.
         self.sdl = sdl
         # The sensitive data detection traffic. Unit: GB.
         self.sdl_traffic = sdl_traffic
-        # The start time. The time is a UNIX timestamp accurate to seconds, representing a full hour or a full day.
+        # The start time. The time is a UNIX timestamp accurate to seconds, which represents an exact hour or day.
         self.start_time = start_time
-        # The usage duration of threat intelligence. Unit: h.
+        # The usage duration of threat intelligence. Unit: hours.
         self.threat_intelligence = threat_intelligence
         # The number of VPC instances.
         self.vpc_instance_cnt = vpc_instance_cnt

@@ -15,13 +15,13 @@ class DescribeInternetTimeTopResponseBody(DaraModel):
         request_id: str = None,
         traffic_time: int = None,
     ):
-        # The number of entries returned.
+        # The number of returned entries.
         self.data_count = data_count
-        # The list of data entries.
+        # The list of returned data.
         self.data_list = data_list
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The timestamp of the traffic data. Unit: seconds.
+        # The traffic time. The value is a UNIX timestamp in seconds.
         self.traffic_time = traffic_time
 
     def validate(self):
@@ -92,7 +92,7 @@ class DescribeInternetTimeTopResponseBodyDataList(DaraModel):
         total_pps: int = None,
         vpc_id: str = None,
     ):
-        # The public IP address.
+        # The IP address.
         self.ip = ip
         # The inbound bandwidth. Unit: bit/s.
         self.in_bps = in_bps
@@ -106,7 +106,7 @@ class DescribeInternetTimeTopResponseBodyDataList(DaraModel):
         self.nat_ip = nat_ip
         # The number of new connections.
         self.new_conn = new_conn
-        # The outbound traffic. Unit: bit/s.
+        # The outbound bandwidth. Unit: bit/s.
         self.out_bps = out_bps
         # The outbound packet forwarding rate. Unit: pps.
         self.out_pps = out_pps
@@ -114,9 +114,9 @@ class DescribeInternetTimeTopResponseBodyDataList(DaraModel):
         self.private_ip = private_ip
         # The region ID.
         self.region_no = region_no
-        # The ID of the asset instance.
+        # The instance ID of the resource.
         self.resource_instance_id = resource_instance_id
-        # The name of the asset.
+        # The name of the asset instance.
         self.resource_instance_name = resource_instance_name
         # The type of the public IP address.
         self.resource_type = resource_type
@@ -126,7 +126,7 @@ class DescribeInternetTimeTopResponseBodyDataList(DaraModel):
         self.total_bps = total_bps
         # The total number of packets.
         self.total_pps = total_pps
-        # The ID of the virtual private cloud (VPC) instance.
+        # The instance ID of the VPC-connected instance.
         self.vpc_id = vpc_id
 
     def validate(self):

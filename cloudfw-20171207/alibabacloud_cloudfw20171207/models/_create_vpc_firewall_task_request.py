@@ -17,7 +17,6 @@ class CreateVpcFirewallTaskRequest(DaraModel):
         # The language of the response message. Valid values:
         # 
         # - **zh** (default): Chinese
-        # 
         # - **en**: English
         self.lang = lang
         # The priority of the rule.

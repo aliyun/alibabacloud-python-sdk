@@ -13,7 +13,7 @@ class DescribeAckClusterPodLabelsResponseBody(DaraModel):
         ack_labels: List[main_models.DescribeAckClusterPodLabelsResponseBodyAckLabels] = None,
         request_id: str = None,
     ):
-        # A list of ACK labels.
+        # The list of ACK tags.
         self.ack_labels = ack_labels
         # The request ID.
         self.request_id = request_id

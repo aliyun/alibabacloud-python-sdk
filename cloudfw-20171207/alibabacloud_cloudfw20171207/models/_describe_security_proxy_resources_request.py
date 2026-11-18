@@ -13,7 +13,7 @@ class DescribeSecurityProxyResourcesRequest(DaraModel):
     ):
         # The language type.
         self.lang = lang
-        # The UID of the member accounts.
+        # The UID of member accounts.
         self.member_uid = member_uid
         # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id

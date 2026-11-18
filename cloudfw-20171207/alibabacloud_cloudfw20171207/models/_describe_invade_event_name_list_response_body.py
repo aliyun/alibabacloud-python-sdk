@@ -14,9 +14,9 @@ class DescribeInvadeEventNameListResponseBody(DaraModel):
         name_list: List[str] = None,
         request_id: str = None,
     ):
-        # A list of anomalous activity names.
+        # The list of abnormal event names.
         self.event_name_list = event_name_list
-        # A list of vulnerability names.
+        # The list of vulnerability names.
         self.name_list = name_list
         # The request ID.
         self.request_id = request_id

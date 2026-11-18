@@ -18,13 +18,13 @@ class DescribeInternetDropTrafficTrendResponseBody(DaraModel):
     ):
         # The data list.
         self.data_list = data_list
-        # The peak number of dropped sessions in the specified period.
+        # The maximum number of dropped sessions in the corresponding period (peak value).
         self.drop_session_max = drop_session_max
-        # The average drop ratio for the entire query period, expressed as a percentage.
+        # The traffic multiplication mode. Valid values: - **0**: priority mode. - **1**: load balancing mode.
         self.ratio_average = ratio_average
         # The request ID.
         self.request_id = request_id
-        # The average drop ratio from the previous cycle, expressed as a percentage.
+        # The traffic rate. Unit: %.
         self.ring_ratio_average = ring_ratio_average
 
     def validate(self):
@@ -94,27 +94,27 @@ class DescribeInternetDropTrafficTrendResponseBodyDataList(DaraModel):
         time: int = None,
         total_session: int = None,
     ):
-        # The number of sessions dropped by access control list (ACL) rules.
+        # The number of corresponding intrusion prevention events.
         self.acl_drop = acl_drop
-        # The current time point. The time is in the `YYYY-MM-DD HH:mm:ss` format.
+        # The current time point. The time format is YYYY-MM-DD HH:mm:ss.
         self.data_time = data_time
-        # The ratio of dropped sessions to total sessions for this data point.
+        # The list of queried traffic points.
         self.drop_ratio = drop_ratio
-        # The number of dropped sessions for the corresponding data point in the previous cycle.
+        # The value range of the object: **[0,10000\\]**.
         self.drop_ring = drop_ring
-        # The drop ratio for the corresponding data point in the previous cycle.
+        # The rate of network traffic. Unit: kbit/s.
         self.drop_ring_ratio = drop_ring_ratio
-        # The number of dropped sessions.
+        # The number of blocked sessions.
         self.drop_session = drop_session
-        # The number of sessions dropped by the intrusion prevention system (IPS).
+        # The number of queried IP addresses.
         self.ips_drop = ips_drop
-        # The corresponding time point in the previous cycle. The time is in the `YYYY-MM-DD HH:mm:ss` format.
+        # The corresponding time point in the previous period. The time format is YYYY-MM-DD HH:mm:ss.
         self.ring_data_time = ring_data_time
-        # The timestamp for the corresponding data point in the previous cycle. This value is a Unix timestamp that represents the number of seconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+        # The dynamic packet drop time. The value is a UNIX timestamp in seconds, which indicates the number of seconds that have elapsed since January 1, 1970 (UTC).
         self.ring_time = ring_time
         # The timestamp.
         self.time = time
-        # The total number of sessions.
+        # The total number of requests.
         self.total_session = total_session
 
     def validate(self):

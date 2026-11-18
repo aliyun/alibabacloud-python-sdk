@@ -10,11 +10,11 @@ class ModifyControlPolicyPriorityRequest(DaraModel):
         acl_uuid: str = None,
         order: str = None,
     ):
-        # The unique ID of the access control policy.
+        # The unique identifier of the access control policy.
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
-        # The priority of the access control policy.
+        # The priority of the access control policy. Valid values: 1 to the number of policies in the same direction and of the same IP version. You can call DescribeControlPolicy to query the number of policies in the same direction and determine the valid upper limit. If the value exceeds the range, the ErrorParametersNewOrder (-200119) error is returned.
         # 
         # This parameter is required.
         self.order = order

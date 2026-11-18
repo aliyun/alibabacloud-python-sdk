@@ -18,23 +18,23 @@ class DescribeInternetOpenStatisticResponseBody(DaraModel):
         internet_unprotected_port_num: int = None,
         request_id: str = None,
     ):
-        # The total number of public IP addresses exposed to the Internet.
+        # The total number of open public IP addresses.
         self.internet_ip_num = internet_ip_num
-        # The total number of ports exposed to the Internet.
+        # The total number of open ports.
         self.internet_port_num = internet_port_num
-        # The number of risky public IP addresses exposed to the Internet.
+        # The number of risky open public IP addresses.
         self.internet_risk_ip_num = internet_risk_ip_num
         # The number of risky ports.
         self.internet_risk_port_num = internet_risk_port_num
         # The number of risky applications.
         self.internet_risk_service_num = internet_risk_service_num
-        # The total number of applications exposed to the Internet.
+        # The total number of open applications.
         self.internet_service_num = internet_service_num
-        # The number of public IP addresses of Server Load Balancer (SLB) instances.
+        # The number of SLB public IP addresses.
         self.internet_slb_ip_num = internet_slb_ip_num
-        # The number of public ports of SLB instances.
+        # The number of SLB public ports.
         self.internet_slb_ip_port_num = internet_slb_ip_port_num
-        # The number of ports that are not protected by an access control list (ACL).
+        # The number of ports that are not protected by access control lists (ACLs).
         self.internet_unprotected_port_num = internet_unprotected_port_num
         # The ID of the request.
         self.request_id = request_id

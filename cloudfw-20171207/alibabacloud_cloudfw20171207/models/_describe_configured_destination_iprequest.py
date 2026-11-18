@@ -18,7 +18,7 @@ class DescribeConfiguredDestinationIPRequest(DaraModel):
         source_code: str = None,
         source_ip: str = None,
     ):
-        # The page number.
+        # The current page number.
         self.current_page = current_page
         # The destination IP address.
         self.destination_ip = destination_ip
@@ -30,15 +30,15 @@ class DescribeConfiguredDestinationIPRequest(DaraModel):
         # 
         # This parameter is required.
         self.direction = direction
-        # The group name.
+        # The name of the group.
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The language for receiving messages.
+        # The language type for receiving messages.
         self.lang = lang
         # The number of entries per page.
         self.page_size = page_size
-        # The tracing code.
+        # The source code.
         # 
         # This parameter is required.
         self.source_code = source_code

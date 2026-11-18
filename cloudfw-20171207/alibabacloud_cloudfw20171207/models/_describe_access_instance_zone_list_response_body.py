@@ -67,7 +67,7 @@ class DescribeAccessInstanceZoneListResponseBodyZones(DaraModel):
         local_name: str = None,
         zone_id: str = None,
     ):
-        # The name of the zone in the local language.
+        # The local name of the zone.
         self.local_name = local_name
         # The zone ID.
         self.zone_id = zone_id

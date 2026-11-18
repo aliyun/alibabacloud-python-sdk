@@ -79,7 +79,7 @@ class DescribeFirewallVswitchResourcesResponseBodyVswitchList(DaraModel):
         self.available_ip_count = available_ip_count
         # The IPv4 CIDR block.
         self.cidr_block = cidr_block
-        # The details of the event.
+        # The event details.
         self.detail = detail
         # The list of firewalls.
         self.firewall_list = firewall_list
@@ -87,9 +87,9 @@ class DescribeFirewallVswitchResourcesResponseBodyVswitchList(DaraModel):
         self.route_table_id = route_table_id
         # The type of the route table. Valid values:
         # 
-        # - **Custom**: a custom route table.
+        # - **Custom**: custom route table
         # 
-        # - **System**: a system route table.
+        # - **System**: system route table
         self.route_table_type = route_table_type
         # The configuration status.
         self.status = status
@@ -97,7 +97,7 @@ class DescribeFirewallVswitchResourcesResponseBodyVswitchList(DaraModel):
         self.vswitch_id = vswitch_id
         # The name of the vSwitch.
         self.vswitch_name = vswitch_name
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -189,7 +189,7 @@ class DescribeFirewallVswitchResourcesResponseBodyVswitchListFirewallList(DaraMo
         firewall_name: str = None,
         firewall_type: str = None,
     ):
-        # The ID of the firewall instance.
+        # The firewall instance ID.
         self.firewall_id = firewall_id
         # The name of the Cloud Firewall.
         self.firewall_name = firewall_name

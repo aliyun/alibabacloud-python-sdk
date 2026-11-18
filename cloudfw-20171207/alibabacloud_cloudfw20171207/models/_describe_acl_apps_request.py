@@ -17,38 +17,33 @@ class DescribeAclAppsRequest(DaraModel):
         protocols: List[str] = None,
     ):
         # The ACL type. Valid values:
-        # 
-        # - **Internet**
-        # 
+        # - **Internet**                       
         # - **NAT**
-        # 
         # - **VPC**
-        # 
         # - **All**
         # 
         # This parameter is required.
         self.acl_type = acl_type
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # - **zh** (default): Chinese
-        # 
-        # - **en**: English
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
         # The page number.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # The page size.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
         # Specifies whether the application is common. Valid values:
         # 
-        # - **1**: common
+        # - 1: Common.
         # 
-        # - **0**: not common
+        # - 0: Uncommon.
         # 
-        # - If you omit this parameter (the default), all applications are returned.
+        # - Empty (default): All.
         self.popular = popular
         # The list of protocol types.
         self.protocols = protocols

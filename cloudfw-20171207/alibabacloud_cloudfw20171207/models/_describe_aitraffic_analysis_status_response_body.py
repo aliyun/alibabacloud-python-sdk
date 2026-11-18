@@ -14,9 +14,8 @@ class DescribeAITrafficAnalysisStatusResponseBody(DaraModel):
         self.request_id = request_id
         # The enabling status. Valid values:
         # 
-        # - **open**
-        # 
-        # - **close**
+        # - **open**: Enabled.
+        # - **close**: Disabled.
         self.status = status
 
     def validate(self):

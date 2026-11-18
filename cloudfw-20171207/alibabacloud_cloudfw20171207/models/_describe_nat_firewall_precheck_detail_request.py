@@ -11,9 +11,9 @@ class DescribeNatFirewallPrecheckDetailRequest(DaraModel):
         nat_gateway_id: str = None,
         region_no: str = None,
     ):
-        # The language of the request and response messages.
+        # The language type of the request and response messages.
         self.lang = lang
-        # The ID of the NAT Gateway.
+        # The ID of the NAT gateway. Although this parameter is marked as optional in the API definition, it is required when you call this operation. If this parameter is not specified or its value does not start with `ngw-`, the API returns a 400 error (`ErrorParameters`, error code `-360103`).
         self.nat_gateway_id = nat_gateway_id
         # The region ID.
         self.region_no = region_no

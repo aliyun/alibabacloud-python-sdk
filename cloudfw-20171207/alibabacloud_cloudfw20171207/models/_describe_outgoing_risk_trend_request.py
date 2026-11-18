@@ -14,9 +14,9 @@ class DescribeOutgoingRiskTrendRequest(DaraModel):
     ):
         # The end time of the query. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The language type for receiving messages.
+        # The language of the response message.
         self.lang = lang
-        # The source IP address of the visitor.
+        # The source IP address of the requester.
         self.source_ip = source_ip
         # The start time of the query. The value is a UNIX timestamp in seconds.
         self.start_time = start_time

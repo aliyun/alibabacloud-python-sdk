@@ -14,12 +14,9 @@ class DescribeVpcFirewallZoneResponseBody(DaraModel):
         request_id: str = None,
         zone_list: List[List[main_models.DescribeVpcFirewallZoneResponseBodyZoneList]] = None,
     ):
-        # The deployment mode of the virtual private cloud (VPC) firewall service. Valid values:
-        # 
-        # - **PrimaryStandby**: active/standby mode.
-        # - **MultiPrimary**: active-active mode.
+        # The deployment mode of the VPC firewall service. Valid values: **PrimaryStandby** (primary/secondary mode) and **MultiPrimary** (active-active mode).
         self.firewall_service_mode = firewall_service_mode
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The list of zones.
         self.zone_list = zone_list
@@ -74,13 +71,13 @@ class DescribeVpcFirewallZoneResponseBody(DaraModel):
 class DescribeVpcFirewallZoneResponseBodyZoneList(DaraModel):
     def __init__(
         self,
-        zone_id: str = None,
         local_name: str = None,
+        zone_id: str = None,
     ):
-        # The zone ID.
-        self.zone_id = zone_id
         # The zone name.
         self.local_name = local_name
+        # The zone ID.
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -90,21 +87,21 @@ class DescribeVpcFirewallZoneResponseBodyZoneList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.zone_id is not None:
-            result['ZoneId'] = self.zone_id
-
         if self.local_name is not None:
             result['LocalName'] = self.local_name
+
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ZoneId') is not None:
-            self.zone_id = m.get('ZoneId')
-
         if m.get('LocalName') is not None:
             self.local_name = m.get('LocalName')
+
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
 
         return self
 

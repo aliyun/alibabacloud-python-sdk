@@ -19,51 +19,50 @@ class DescribeDnsFirewallPolicyRequest(DaraModel):
         source: str = None,
         source_ip: str = None,
     ):
-        # The action that is performed on traffic that hits the DNS firewall policy. Valid values:
+        # The action that Cloud Firewall performs on the traffic in the access control policy of the DNS border firewall. Valid values:
         # 
-        # - **accept**: allows the traffic.
+        # - **accept**: Allow
+        # - **drop**: Deny
+        # - **log**: Monitor
         # 
-        # - **drop**: denies the traffic.
-        # 
-        # - **log**: monitors the traffic.
-        # 
-        # > If you do not specify this parameter, policies of all action types are queried.
+        # > If you do not specify this parameter, all actions are queried.
         self.acl_action = acl_action
         # The unique ID of the firewall rule.
         self.acl_uuid = acl_uuid
-        # The page number to return. Default value: 1.
+        # The page number of the current page for a paging query. Default value: 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The description of the DNS firewall policy.
+        # The description of the DNS border firewall policy.
         self.description = description
-        # The destination address in the DNS firewall policy. Fuzzy match is supported.
+        # The destination address in the access control policy of the DNS border firewall. Fuzzy match is supported.
         # 
-        # > The value of Destination can be a CIDR block, a domain name, or an address book.
+        # > Destination can be a single CIDR block, a domain name, or an address book name.
         self.destination = destination
-        # The IP version that is supported. Valid values:
+        # The IP address version. Valid values:
         # 
         # - **4**: IPv4
-        # 
         # - **6**: IPv6
         self.ip_version = ip_version
-        # The language of the response messages. Valid values: **zh** (Chinese) and **en** (English).
+        # The language of the request and response. Valid values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        # The number of entries to return on each page.
+        # The number of entries to return in the current query.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The status of the access control policy. The policy is enabled by default after it is created. Valid values:
+        # The status of the access control policy. By default, the policy is enabled after it is created. Valid values:
         # 
-        # - **true**: enables the access control policy.
+        # - **true**: Enabled
         # 
-        # - **false**: disables the access control policy.
+        # - **false**: Disabled
         self.release = release
-        # The source address in the DNS firewall policy. Fuzzy match is supported.
+        # The source address in the access control policy of the DNS border firewall. Fuzzy match is supported.
         # 
-        # > The value of Source can be a CIDR block or an address book.
+        # > Source can be a single CIDR block or an address book name.
         self.source = source
-        # The source IP address of the request.
+        # The source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

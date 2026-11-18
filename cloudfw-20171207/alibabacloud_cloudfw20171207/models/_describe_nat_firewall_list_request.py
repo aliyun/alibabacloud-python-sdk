@@ -18,38 +18,38 @@ class DescribeNatFirewallListRequest(DaraModel):
         status: str = None,
         vpc_id: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # 
-        # - **zh** (default): Chinese
-        # - **en**: English
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
         # The UID of the member account of the current Alibaba Cloud account.
         self.member_uid = member_uid
-        # The NAT gateway ID.
+        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
         # The page number of the current page.
         self.page_no = page_no
-        # The number of NAT firewalls to display on each page in a paged query.
+        # The number of NAT firewalls to return on each page in a paged query.
         # 
-        # Default value: **10**, which indicates that each page contains **10** results. Maximum value: **50**.
+        # Default value: **10**, which indicates that **10** results are returned per page. Maximum value: **50**.
         self.page_size = page_size
-        # The NAT firewall ID.
+        # The ID of the NAT firewall.
         self.proxy_id = proxy_id
-        # The NAT firewall name. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
+        # The name of the NAT firewall. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore.
         self.proxy_name = proxy_name
         # The region ID of the VPC.
         # 
         # > For more information about the regions supported by Cloud Firewall, see [Supported regions](https://help.aliyun.com/document_detail/195657.html).
         self.region_no = region_no
-        # The Cloud Firewall status. Valid values:
+        # The status of the NAT firewall. Valid values:
         # 
-        # - configuring: being created
-        # - deleting: being deleted
-        # - normal: normal
-        # - abnormal: abnormal
-        # - opening: being enabled
-        # - closing: being disabled
-        # - closed: disabled
+        # - configuring: Creating.
+        # - deleting: Deleting.
+        # - normal: Normal.
+        # - abnormal: Abnormal.
+        # - opening: Enabling.
+        # - closing: Disabling.
+        # - closed: Disabled.
         self.status = status
         # The VPC-connected instance ID.
         self.vpc_id = vpc_id

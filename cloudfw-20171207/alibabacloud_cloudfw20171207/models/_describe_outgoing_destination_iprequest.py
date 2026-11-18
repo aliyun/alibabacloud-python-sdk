@@ -22,77 +22,56 @@ class DescribeOutgoingDestinationIPRequest(DaraModel):
         start_time: str = None,
         tag_id_new: str = None,
     ):
-        # The application type supported by the access control policy.
-        # 
+        # The Protocol Type supported by the access control policy. Valid values:
         # - **FTP**
-        # 
         # - **HTTP**
-        # 
         # - **HTTPS**
-        # 
         # - **Memcache**
-        # 
         # - **MongoDB**
-        # 
         # - **MQTT**
-        # 
         # - **MySQL**
-        # 
         # - **RDP**
-        # 
         # - **Redis**
-        # 
         # - **SMTP**
-        # 
         # - **SMTPS**
-        # 
         # - **SSH**
-        # 
         # - **SSL_No_Cert**
-        # 
         # - **SSL**
-        # 
         # - **VNC**
         # 
-        # > The supported application types depend on the protocol type specified in the Proto parameter. If Proto is set to TCP, all application types listed above are supported. If both ApplicationName and ApplicationNameList are specified, the value of ApplicationNameList takes precedence.
+        # > The valid values of this parameter depend on the value of the Proto parameter. If Proto is set to TCP, ApplicationNameList supports all the preceding Protocol Types. If both ApplicationNameList and ApplicationName are specified, ApplicationNameList takes precedence.
         self.application_name = application_name
-        # The ID of the service category. Valid values:
+        # The category ID. Default value: null. Valid values:
         # 
-        # - **All**: all categories
-        # 
-        # - **RiskDomain**: risk domains
-        # 
-        # - **RiskIP**: risk IPs
-        # 
-        # - **AliYun**: Alibaba Cloud services
-        # 
-        # - **NotAliYun**: services other than Alibaba Cloud services
+        # - **All**: All categories.
+        # - **RiskDomain**: Risky domain names.
+        # - **RiskIP**: Risky IP addresses.
+        # - **AliYun**: Alibaba Cloud services.
+        # - **NotAliYun**: Non-Alibaba Cloud services.
         self.category_id = category_id
-        # The page number to return.
+        # Sets the paging settings to specify the page number to return for a paged query.
         # 
-        # Default value: 1.
+        # Default value: 1, which means the first page is returned.
         self.current_page = current_page
-        # The destination IP address of the outbound connection.
+        # The destination IP address of the domain name for outbound connections.
         self.dst_ip = dst_ip
-        # The end of the time range to query. The value is a timestamp in seconds.
+        # The end time of the query. The value is a UNIX timestamp accurate to seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The language of the response. Valid values:
         # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
         # The sort order. Valid values:
         # 
-        # - **asc**: ascending order.
-        # 
-        # - **desc** (default): descending order.
+        # - **asc**: Ascending order.
+        # - **desc** (default): Descending order.
         self.order = order
-        # The number of entries to return on each page.
+        # Sets the paging settings to specify the number of entries to return on each page for a paged query.
         # 
-        # Default value: 6. Maximum value: 10.
+        # Default value: 6, which means 6 entries are returned on each page. Maximum value: 10.
         self.page_size = page_size
         # The port number.
         self.port = port
@@ -102,89 +81,51 @@ class DescribeOutgoingDestinationIPRequest(DaraModel):
         self.public_ip = public_ip
         # The field by which to sort the results. Valid values:
         # 
-        # - **SessionCount** (default): request count.
-        # 
-        # - **TotalBytes**: total traffic.
+        # - **SessionCount** (default): The number of requests.
+        # - **TotalBytes**: The total volume of traffic.
         self.sort = sort
-        # The start of the time range to query. The value is a timestamp in seconds.
+        # The start time of the query. The value is a UNIX timestamp accurate to seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The ID of the threat intelligence tag. Valid values:
-        # 
-        # - **AliYun**: Alibaba Cloud service
-        # 
-        # - **RiskDomain**: risk domain
-        # 
-        # - **RiskIP**: risk IP
-        # 
-        # - **TrustedDomain**: trusted website
-        # 
-        # - **AliPay**: Alipay
-        # 
-        # - **DingDing**: DingTalk
-        # 
-        # - **WeChat**: WeChat
-        # 
-        # - **QQ**: Tencent QQ
-        # 
-        # - **SecurityService**: security service
-        # 
-        # - **Microsoft**: Microsoft
-        # 
-        # - **Amazon**: Amazon
-        # 
-        # - **Pan**: cloud drive
-        # 
-        # - **Map**: map
-        # 
-        # - **Code**: code hosting
-        # 
-        # - **SystemService**: system service
-        # 
-        # - **Taobao**: Taobao
-        # 
-        # - **Google**: Google
-        # 
-        # - **ThirdPartyService**: third-party service
-        # 
-        # - **FirstFlow**: first access
-        # 
-        # - **Downloader**: malicious downloader
-        # 
-        # - **Alexa Top1M**: popular website
-        # 
-        # - **Miner**: mining pool
-        # 
-        # - **Intelligence**: threat intelligence
-        # 
-        # - **DDoS**: DDoS trojan
-        # 
-        # - **Ransomware**: ransomware
-        # 
-        # - **Spyware**: spyware
-        # 
-        # - **Rogue**: rogue software
-        # 
-        # - **Botnet**: botnet
-        # 
-        # - **Suspicious**: suspicious website
-        # 
-        # - **C\\&C**: command and control (C\\&C)
-        # 
-        # - **Gang**: threat actor group
-        # 
-        # - **CVE**: CVE
-        # 
-        # - **Backdoor**: backdoor
-        # 
-        # - **Phishing**: phishing website
-        # 
-        # - **APT**: APT attack
-        # 
-        # - **Supply Chain Attack**: supply chain attack
-        # 
-        # - **Malicious software**: malware
+        # The intelligence tag ID. Valid values:
+        # - **AliYun**: Alibaba Cloud services.
+        # - **RiskDomain**: Risky domain names.
+        # - **RiskIP**: Risky IP addresses.
+        # - **TrustedDomain**: Trusted websites.
+        # - **AliPay**: Alipay.
+        # - **DingDing**: DingTalk.
+        # - **WeChat**: WeChat.
+        # - **QQ**: Tencent QQ.
+        # - **SecurityService**: Security services.
+        # - **Microsoft**: Microsoft.
+        # - **Amazon**: Amazon.
+        # - **Pan**: Cloud disks.
+        # - **Map**: Maps.
+        # - **Code**: Code hosting.
+        # - **SystemService**: System services.
+        # - **Taobao**: Taobao.
+        # - **Google**: Google.
+        # - **ThirdPartyService**: Third-party platform services.
+        # - **FirstFlow**: First visit.
+        # - **Downloader**: Malicious download.
+        # - **Alexa Top1M**: Popular website.
+        # - **Miner**: Miner Pool.
+        # - **Intelligence**: Threat intelligence.
+        # - **DDoS**: DDoS Trojan.
+        # - **Ransomware**: Ransomware.
+        # - **Spyware**: Spyware.
+        # - **Rogue**: Rogue software.
+        # - **Botnet**: Botnets.
+        # - **Suspicious**: Suspicious websites.
+        # - **C&C**: Remote control.
+        # - **Gang**: Gangs.
+        # - **CVE**: CVE vulnerabilities.
+        # - **Backdoor**: Backdoor Trojans.
+        # - **Phishing**: Phishing websites.
+        # - **APT**: APT attacks.
+        # - **Supply Chain Attack**: Supply chain attacks.
+        # - **Malicious software**: Malware.
         self.tag_id_new = tag_id_new
 
     def validate(self):

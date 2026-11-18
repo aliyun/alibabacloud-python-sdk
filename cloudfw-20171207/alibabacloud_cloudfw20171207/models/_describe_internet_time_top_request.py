@@ -23,37 +23,37 @@ class DescribeInternetTimeTopRequest(DaraModel):
         traffic_time: str = None,
         traffic_type: str = None,
     ):
-        # The direction of the traffic.
+        # The traffic direction.
         # 
         # This parameter is required.
         self.direction = direction
-        # The end of the query time range, specified as a Unix timestamp in seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
         # The network type of the IP address.
         self.iptype = iptype
-        # The time interval in seconds.
+        # The time interval.
         self.interval = interval
-        # The language of the response.
+        # The language of the response message.
         self.lang = lang
-        # The maximum number of entries to return. The value must be between 1 and 50. Default value: 50.
+        # The maximum number of top entries to return. Default value: 50. Valid values: 1 to 50.
         self.limit = limit
-        # The NAT public IP address. If omitted, traffic data for all assets is returned.
+        # The public IP address of the NAT gateway. If you leave this parameter empty, all asset IP addresses are queried.
         self.nat_ip = nat_ip
         # The sort order.
         self.order = order
-        # The metric by which to sort the results.
+        # The sorting method.
         self.sort = sort
-        # The identifier for the trace source.
+        # The tracing code.
         # 
         # This parameter is required.
         self.source_code = source_code
-        # The source IP address.
+        # The source IP address of the visitor.
         self.source_ip = source_ip
         # The source IP address.
         self.src_ip = src_ip
-        # The start of the query time range, specified as a Unix timestamp in seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
-        # The traffic timestamp to query, specified as a Unix timestamp in seconds.
+        # The traffic time to query. The value is a UNIX timestamp in seconds.
         self.traffic_time = traffic_time
         # The traffic type.
         self.traffic_type = traffic_type

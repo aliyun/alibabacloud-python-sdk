@@ -20,17 +20,17 @@ class DescribeAckClustersRequest(DaraModel):
         self.cluster_id = cluster_id
         # The name of the ACK cluster.
         self.cluster_name = cluster_name
-        # The specification of the ACK cluster.
+        # The specifications of the ACK cluster.
         self.cluster_spec = cluster_spec
-        # The status of the ACK cluster connector.
+        # The instance status of the connector in the ACK cluster.
         self.connector_status = connector_status
-        # The Alibaba Cloud UID of the account to which the ACK cluster resources belong.
+        # The Alibaba Cloud account ID to which the ACK cluster resources belong.
         self.member_uid = member_uid
         # The page number.
         # 
         # This parameter is required.
         self.page_no = page_no
-        # The number of entries per page.
+        # The number of entries to return on each page.
         # 
         # This parameter is required.
         self.page_size = page_size

@@ -61,18 +61,28 @@ class UpdateAclCheckDetailStatusResponseBodyCheckRecord(DaraModel):
         # The list of ACL check results.
         self.acls = acls
         # The name of the ACL check. Valid values:
-        # - **PolicyHitCountZero**: policies with no traffic hits
-        # - **PolicySourceDestinationSame**: Invalid policy with the same source and destination
-        # - **PolicyDuplicate**: Duplicate or redundant policy
-        # - **PolicyConflict**: Policy that conflicts with business
-        # - **DefaultPolicyNotDeny**: default policy that does not use the Deny All whitelist mechanism
-        # - **PolicyPortHighRisk**: policies that allow traffic on high-risk ports
-        # - **PolicyTooLoose**: overly loose control policy
-        # - **AddressBookIpSeparated**: duplicate, overlapping, or scattered IP address books
-        # - **AddressBookPortSeparated**: duplicate, overlapping, or scattered port address books
-        # - **AddressBookDomainValid**: validity check for domain name address books
+        # 
+        # - **PolicyHitCountZero**: Policies with no traffic hits.
+        # 
+        # - **PolicySourceDestinationSame**: Invalid policy with the same source and destination objects.
+        # 
+        # - **PolicyDuplicate**: Duplicate or redundant policy.
+        # 
+        # - **PolicyConflict**: Policy that conflicts with business.
+        # 
+        # - **DefaultPolicyNotDeny**: The default policy does not use the deny-all whitelist mechanism.
+        # 
+        # - **PolicyPortHighRisk**: Risky policies that allow traffic on high-risk ports.
+        # 
+        # - **PolicyTooLoose**: Overly loose control policy.
+        # 
+        # - **AddressBookIpSeparated**: Duplicate, overlapping, or scattered IP address books.
+        # 
+        # - **AddressBookPortSeparated**: Duplicate, overlapping, or scattered port address books.
+        # 
+        # - **AddressBookDomainValid**: Validity check for domain name address books.
         self.check_name = check_name
-        # The description of the rule.
+        # The rule description.
         self.description = description
         # The timestamp of the last check. The value is a UNIX timestamp measured in seconds.
         self.last_check_time = last_check_time
@@ -256,19 +266,20 @@ class UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAcl(DaraModel):
         vpc_firewall_id: str = None,
     ):
         # The action that Cloud Firewall performs on the traffic in the access control policy. Valid values:
+        # 
         # - **accept**: allows the traffic.
         # - **drop**: blocks the traffic.
         # - **log**: monitors the traffic.
         self.acl_action = acl_action
         # The unique ID of the access control policy.
         self.acl_uuid = acl_uuid
-        # The list of addresses in the address book.
+        # The address list information of the address book.
         self.address_list = address_list
         # The number of addresses in the address book.
         self.address_list_count = address_list_count
-        # The ID of the application for the traffic in the access control policy.
+        # The application ID of the traffic in the access control policy.
         self.application_id = application_id
-        # The application type supported by the access control policy. Valid values:
+        # The Protocol Type supported by the access control policy. Valid values:
         # - **FTP**
         # - **HTTP**
         # - **HTTPS**
@@ -285,11 +296,11 @@ class UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAcl(DaraModel):
         # - **SSL**
         # - **VNC**
         # 
-        # > The valid values of the application type depend on the protocol type specified by Proto. If Proto is set to TCP, ApplicationNameList supports all the preceding application types. If both ApplicationNameList and ApplicationName are specified, ApplicationNameList takes precedence.
+        # > The valid values of this parameter depend on the value of the Proto parameter. If Proto is set to TCP, ApplicationNameList supports all the preceding Protocol Types. If both ApplicationNameList and ApplicationName are specified, ApplicationNameList takes precedence.
         self.application_name = application_name
         # The list of application types supported by the access control policy.
         self.application_name_list = application_name_list
-        # Specifies whether to automatically add the public IP addresses of newly tagged ECS instances to the address book. Newly tagged ECS instances include newly purchased ECS instances with tags configured and ECS instances with modified tags.
+        # Specifies whether to automatically add the public IP addresses of newly matched ECS instances to the address book. Newly matched ECS instances refer to newly purchased ECS instances with tags configured or ECS instances with modified tags.
         self.auto_add_tag_ecs = auto_add_tag_ecs
         # The time when the policy was created. The value is a UNIX timestamp measured in seconds.
         self.create_time = create_time
@@ -297,135 +308,162 @@ class UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAcl(DaraModel):
         self.description = description
         # The destination port of the traffic in the access control policy.
         self.dest_port = dest_port
-        # The type of the destination port in the access control policy. Valid values:
-        # - **port**: port
-        # - **group**: port address book
+        # The destination port type in the access control policy. Valid values:
+        # - **port**: port.
+        # - **group**: port address book.
         self.dest_port_group = dest_port_group
         # The list of ports in the destination port address book.
         self.dest_port_group_ports = dest_port_group_ports
-        # The type of the destination port in the access control policy. Valid values:
-        # - **port**: port
-        # - **group**: port address book
+        # The destination port type in the access control policy. Valid values:
+        # - **port**: port.
+        # - **group**: port address book.
         self.dest_port_type = dest_port_type
-        # The destination address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the destination type (DestinationType).
-        # - If DestinationType is set to `net`, the value is a CIDR block. Example: 10.0.3.0/24.
-        # - If DestinationType is set to `domain`, the value is a domain name. Example: aliyun.
-        # - If DestinationType is set to `group`, the value is the name of an address book. Example: db_group.
-        # - If DestinationType is set to `location`, the value is an area name. For more information about the area positional encoding, see AddControlPolicy. Example: ["BJ11", "ZB"].
+        # The destination address in the access control policy. Fuzzy match is supported. The value of this parameter varies based on the destination type.
         # 
-        # > If the Settings for this parameter are not specified, all types of destination addresses are queried.
+        # - If DestinationType is set to `net`, the destination address is a CIDR block. Example: 10.0.3.0/24.
+        # 
+        # - If DestinationType is set to `domain`, the destination address is a domain name. Example: aliyun.
+        # 
+        # - If DestinationType is set to `group`, the destination address is the name of an address book. Example: db_group.
+        # 
+        # - If DestinationType is set to `location`, the destination address is an area name. For more information about specific area positional encoding, see AddControlPolicy. Example: ["BJ11", "ZB"].
+        # 
+        # > If this parameter is not specified, all types of destination addresses are queried.
         self.destination = destination
         # The list of CIDR blocks in the destination address book of the access control policy.
         self.destination_group_cidrs = destination_group_cidrs
-        # The type of the destination address book in the access control policy. Valid values:
-        # - **ip**: IP address book that contains one or more CIDR blocks
-        # - **tag**: ECS tag-based address book that contains the IP addresses of one or more ECS tags
-        # - **domain**: domain name address book that contains one or more domain names
-        # - **threat**: threat intelligence address book that contains one or more malicious IP addresses or domain names
-        # - **backsrc**: back-to-origin address book that contains the back-to-origin addresses of one or more Anti-DDoS or WAF instances
+        # The destination address book type in the access control policy. Valid values:
+        # 
+        # - **ip**: IP address book, which contains one or more CIDR blocks.
+        # 
+        # - **tag**: ECS tag-based address book, which contains IP addresses of one or more ECS tags.
+        # 
+        # - **domain**: domain name address book, which contains one or more domain names.
+        # 
+        # - **threat**: threat intelligence address book, which contains one or more malicious IP addresses or domain names.
+        # 
+        # - **backsrc**: back-to-origin address book, which contains back-to-origin IP addresses of one or more Anti-DDoS or WAF instances.
         self.destination_group_type = destination_group_type
-        # The type of the destination address in the access control policy. Valid values:
-        # - **net**: destination CIDR block
-        # - **group**: destination address book
-        # - **domain**: destination domain name
+        # The destination address type in the access control policy. Valid values:
+        # 
+        # - **net**: destination CIDR block.
+        # - **group**: destination address book.
+        # - **domain**: destination domain name.
         self.destination_type = destination_type
         # The traffic direction controlled by the access control policy. Valid values:
-        # - **in**: inbound traffic
-        # - **out**: outbound traffic
+        # 
+        # - **in**: Inbound traffic.
+        # - **out**: Outbound traffic.
         self.direction = direction
         # The DNS resolution result.
         self.dns_result = dns_result
         # The timestamp of the DNS resolution. The value is a UNIX timestamp measured in seconds.
         self.dns_result_time = dns_result_time
         # The domain name resolution mode of the access control policy. Valid values:
-        # - **FQDN**: FQDN-based resolution
-        # - **DNS**: DNS-based dynamic resolution
-        # - **FQDN_AND_DNS**: FQDN- and DNS-based dynamic resolution
+        # 
+        # * **FQDN**: FQDN-based resolution.
+        # * **DNS**: DNS-based dynamic resolution.
+        # * **FQDN_AND_DNS**: FQDN- and DNS-based dynamic resolution.
         self.domain_resolve_type = domain_resolve_type
         # The end time of the query. The value is a UNIX timestamp measured in seconds.
         self.end_time = end_time
         # The name of the address book.
         self.group_name = group_name
         # The type of the address book. Valid values:
-        # - **ip**: IP address book
-        # - **domain**: domain name address book
-        # - **port**: port address book
-        # - **tag**: ECS tag-based address book
-        # - **allCloud**: cloud service address book
-        # - **threat**: threat intelligence address book
+        # 
+        # - **ip**: IP address book.
+        # 
+        # - **domain**: domain name address book.
+        # 
+        # - **port**: port address book.
+        # 
+        # - **tag**: ECS tag-based address book.
+        # 
+        # - **allCloud**: cloud service address book.
+        # 
+        # - **threat**: threat intelligence address book.
         self.group_type = group_type
         # The unique ID of the address book.
         # 
         # > Value source: [List address books](~~DescribeAddressBook~~).
         self.group_uuid = group_uuid
-        # The timestamp of the latest time of hits. The value is in the UNIX timestamp format measured in seconds.
+        # The UNIX timestamp of the last hit. The value is a UNIX timestamp measured in seconds.
         self.hit_last_time = hit_last_time
-        # The number of hits of the access control policy.
+        # The number of hits for the access control policy.
         self.hit_times = hit_times
         # The IP version of the asset protected by Cloud Firewall. Valid values:
-        # - **4**: IPv4 (default).
+        # 
+        # - **4**: IPv4. This is the default value.
         # - **6**: IPv6.
         self.ip_version = ip_version
         # The time when the policy was last modified. The value is a UNIX timestamp measured in seconds.
         self.modify_time = modify_time
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The priority of the access control policy.
-        # The priority starts from 1 and increases in ascending order. A smaller priority number indicates a higher priority.
+        # The priority of the access control policy. The priority value starts from 1 and increments sequentially. A smaller value indicates a higher priority.
         self.order = order
         # The protocol type of the traffic in the access control policy. Valid values:
+        # 
         # - **TCP**
         # - **UDP**
         # - **ICMP**
-        # - **ANY**: all protocol types
+        # - **ANY**: all protocol types.
         # > If this parameter is not specified, all protocol types are queried.
         self.proto = proto
         # The number of times the address book is referenced.
         self.reference_count = reference_count
-        # The status of the access control policy. By default, a policy is enabled after it is created. Valid values:
-        # - **true**: The policy is enabled.
-        # - **false**: The policy is disabled.
+        # The enabling status of the access control policy. By default, a policy is enabled after it is created. Valid values:
+        # 
+        # - **true**: The access control policy is enabled.
+        # - **false**: The access control policy is disabled.
         self.release = release
-        # The set of recurrence days for the Policy Validity Period of the access control policy.
+        # The recurrence days of the Policy Validity Period for the access control policy.
         # - If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty set. Example: [].
         # - If RepeatType is set to `Weekly`, RepeatDays cannot be empty. Example: [0, 6].
-        # > If the Settings for RepeatType are `Weekly`, the values in RepeatDays cannot be duplicate.
+        # > When RepeatType is set to `Weekly`, the values in RepeatDays cannot be duplicate.
         # - If RepeatType is set to `Monthly`, RepeatDays cannot be empty. Example: [1, 31].
-        # > If the Settings for RepeatType are `Monthly`, the values in RepeatDays cannot be duplicate.
+        # > When RepeatType is set to `Monthly`, the values in RepeatDays cannot be duplicate.
         self.repeat_days = repeat_days
-        # The recurrence end time of the policy validity period. The time must be in the 24-hour HH:mm format, such as 23:30. It must be on the hour or half hour, and at least 30 minutes later than the recurrence start time.
+        # The recurrence end time of the policy validity period. The time must be in the HH:mm 24-hour format, such as 23:30. It must be on the hour or half-hour, and at least 30 minutes later than the recurrence start time.
         # > If RepeatType is set to `Permanent` or `None`, RepeatEndTime is empty. If RepeatType is set to `Daily`, `Weekly`, or `Monthly`, RepeatEndTime must be specified.
         self.repeat_end_time = repeat_end_time
-        # The recurrence start time of the policy validity period. The time must be in the 24-hour HH:mm format, such as 08:00. It must be on the hour or half hour, and at least 30 minutes earlier than the recurrence end time.
+        # The recurrence start time of the policy validity period. The time must be in the HH:mm 24-hour format, such as 08:00. It must be on the hour or half-hour, and at least 30 minutes earlier than the recurrence end time.
         # > If RepeatType is set to `Permanent` or `None`, RepeatStartTime is empty. If RepeatType is set to `Daily`, `Weekly`, or `Monthly`, RepeatStartTime must be specified.
         self.repeat_start_time = repeat_start_time
         # The recurrence type of the Policy Validity Period for the access control policy. Valid values:
-        # - **Permanent**: always (default)
-        # - **None**: specified single time
-        # - **Daily**: every day
-        # - **Weekly**: every week
-        # - **Monthly**: every month
+        # - **Permanent**: always. This is the default value.
+        # - **None**: specified single time.
+        # - **Daily**: every day.
+        # - **Weekly**: every week.
+        # - **Monthly**: every month.
         self.repeat_type = repeat_type
         # The source address in the access control policy. Valid values:
-        # - If **SourceType** is set to `net`, the value is a source CIDR block. Example: 10.2.4.0/24.
-        # - If **SourceType** is set to `group`, the value is the name of a source address book. Example: db_group.
+        # 
+        # - If **SourceType** is set to `net`, the value of Source is a source CIDR block. Example: 10.2.4.0/24.
+        # 
+        # - If **SourceType** is set to `group`, the value of Source is the name of a source address book. Example: db_group.
         self.source = source
         # The list of CIDR blocks in the source address book of the access control policy.
         self.source_group_cidrs = source_group_cidrs
-        # The type of the source address book in the access control policy. Valid values:
-        # - **ip**: IP address book that contains one or more CIDR blocks
-        # - **tag**: ECS tag-based address book that contains the IP addresses of one or more ECS tags
-        # - **domain**: domain name address book that contains one or more domain names
-        # - **threat**: threat intelligence address book that contains one or more malicious IP addresses or domain names
-        # - **backsrc**: back-to-origin address book that contains the back-to-origin addresses of one or more Anti-DDoS or WAF instances
+        # The source address book type in the access control policy. Valid values:
+        # 
+        # - **ip**: IP address book, which contains one or more CIDR blocks.
+        # 
+        # - **tag**: ECS tag-based address book, which contains IP addresses of one or more ECS tags.
+        # 
+        # - **domain**: domain name address book, which contains one or more domain names.
+        # 
+        # - **threat**: threat intelligence address book, which contains one or more malicious IP addresses or domain names.
+        # 
+        # - **backsrc**: back-to-origin address book, which contains back-to-origin IP addresses of one or more Anti-DDoS or WAF instances.
         self.source_group_type = source_group_type
-        # The type of the source address in the access control policy. Valid values:
-        # - **net**: source CIDR block
-        # - **group**: source address book
-        # - **location**: source region
+        # The source address type in the access control policy. Valid values:
+        # 
+        # - **net**: source CIDR block.
+        # - **group**: source address book.
+        # - **location**: source location.
         self.source_type = source_type
-        # The number of access control policy quotas consumed. This value is the sum of the quotas consumed by each policy.
-        # The number of quotas consumed by a single policy = Number of source CIDR blocks × Number of destination addresses (number of CIDR blocks, regions, or domain names) × Number of applications × Number of port ranges.
+        # The number of access control policy quotas consumed. This value is the sum of quotas consumed by each policy. The number of quotas consumed by a single policy = Number of source CIDR blocks × Number of destination addresses (CIDR blocks, locations, or domain names) × Number of applications × Number of port ranges.
         self.spread_cnt = spread_cnt
         # The start time of the query. The value is a UNIX timestamp measured in seconds.
         self.start_time = start_time
@@ -433,7 +471,7 @@ class UpdateAclCheckDetailStatusResponseBodyCheckRecordAclsAcl(DaraModel):
         self.tag_list = tag_list
         # The relationship between multiple ECS tags.
         self.tag_relation = tag_relation
-        # The instance ID of the border virtual private cloud (VPC) firewalls.
+        # The instance ID of the virtual private cloud (VPC) firewalls.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):

@@ -70,7 +70,7 @@ class DescribeSignatureLibVersionResponseBodyVersion(DaraModel):
     ):
         # The type.
         self.type = type
-        # The update time of the signature library version. The value is a UNIX timestamp accurate to seconds.
+        # The update time of the signature library version. The value is a UNIX timestamp in seconds.
         self.update_time = update_time
         # The version.
         self.version = version

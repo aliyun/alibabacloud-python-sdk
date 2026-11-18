@@ -12,7 +12,7 @@ class CreateVpcFirewallCenManualConfigureResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The border instance ID of the virtual private cloud (VPC) firewalls.
+        # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):

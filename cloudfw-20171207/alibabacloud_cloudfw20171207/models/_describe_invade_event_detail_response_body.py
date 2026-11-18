@@ -30,31 +30,31 @@ class DescribeInvadeEventDetailResponseBody(DaraModel):
         risk_level: int = None,
         unhandle_operation_list: List[main_models.DescribeInvadeEventDetailResponseBodyUnhandleOperationList] = None,
     ):
-        # The instance ID of the asset.
+        # The asset instance ID.
         self.assets_instance_id = assets_instance_id
-        # The name of the asset.
+        # The asset name.
         self.assets_instance_name = assets_instance_name
-        # The description of the event.
+        # The event description.
         self.event_desc = event_desc
-        # The details of the event.
+        # The event details.
         self.event_detail = event_detail
-        # The key of the event.
+        # The event key.
         self.event_key = event_key
-        # The name of the event.
+        # The event name.
         self.event_name = event_name
-        # The UUID of the threat detection event.
+        # The UUID of the compromise awareness event.
         self.event_uuid = event_uuid
-        # The time when the event first occurred. This value is a UNIX timestamp. Unit: seconds.
+        # The time when the event first occurred. The value is a UNIX timestamp accurate to seconds.
         self.first_time = first_time
         # Indicates whether the event is ignored.
         self.is_ignore = is_ignore
-        # The time when the event last occurred. This value is a UNIX timestamp. Unit: seconds.
+        # The time when the event last occurred. The value is a UNIX timestamp accurate to seconds.
         self.last_time = last_time
         # The list of remediation operations.
         self.operation_list = operation_list
         # The private IP address.
         self.private_ip = private_ip
-        # The handling status of the event.
+        # The processing status.
         self.process_status = process_status
         # The public IP address.
         self.public_ip = public_ip
@@ -64,7 +64,7 @@ class DescribeInvadeEventDetailResponseBody(DaraModel):
         self.region_no = region_no
         # The ID of the request.
         self.request_id = request_id
-        # The risk level of the event.
+        # The risk level.
         self.risk_level = risk_level
         # The list of unhandled operations.
         self.unhandle_operation_list = unhandle_operation_list
@@ -220,7 +220,7 @@ class DescribeInvadeEventDetailResponseBodyUnhandleOperationList(DaraModel):
         args: str = None,
         operate: str = None,
     ):
-        # The parameters for the operation.
+        # The operation parameters.
         self.args = args
         # The operation.
         self.operate = operate
@@ -257,7 +257,7 @@ class DescribeInvadeEventDetailResponseBodyOperationList(DaraModel):
         args: str = None,
         operate: str = None,
     ):
-        # The parameters for the operation.
+        # The operation parameters.
         self.args = args
         # The operation.
         self.operate = operate

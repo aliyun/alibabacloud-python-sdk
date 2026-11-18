@@ -16,11 +16,11 @@ class DescribeFirewallVSwitchRequest(DaraModel):
         vpc_id: str = None,
         vswitch_id: str = None,
     ):
-        # The instance ID of the virtual private cloud (VPC) firewall.
+        # The virtual private cloud (VPC) border firewalls instance ID.
         self.firewall_id = firewall_id
         # The language type.
         self.lang = lang
-        # The UID of the member account.
+        # The UID of the member accounts.
         self.member_uid = member_uid
         # The current page number.
         self.page_no = page_no

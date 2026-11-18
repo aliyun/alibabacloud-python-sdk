@@ -12,7 +12,7 @@ class DescribeAclCheckRequest(DaraModel):
         page_size: int = None,
         task_id: str = None,
     ):
-        # The language of the response.
+        # The language in which messages are received.
         self.lang = lang
         # The page number.
         # 

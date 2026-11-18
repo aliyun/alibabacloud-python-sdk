@@ -15,7 +15,7 @@ class DescribeAccessInstanceVSwitchListRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The UID of the Alibaba Cloud account to which the resource belongs.
+        # The Alibaba Cloud UID to which the resource belongs.
         self.member_uid = member_uid
         # The page number.
         self.page_no = page_no
@@ -25,9 +25,9 @@ class DescribeAccessInstanceVSwitchListRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_no = region_no
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The ID of the VPC-connected instance.
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id

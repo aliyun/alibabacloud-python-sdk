@@ -16,7 +16,7 @@ class DescribeConfiguredDestinationIPResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of destinations returned.
+        # The returned list of destinations.
         self.destinations = destinations
         # The page number of the current page.
         self.page_no = page_no
@@ -96,7 +96,7 @@ class DescribeConfiguredDestinationIPResponseBodyDestinations(DaraModel):
         self.destination_isp = destination_isp
         # The destination region.
         self.destination_region = destination_region
-        # The operation time. The value is a UNIX timestamp accurate to seconds, such as 1672502400.
+        # The operation time. The value is a UNIX timestamp in seconds, such as 1672502400.
         self.operation_time = operation_time
 
     def validate(self):

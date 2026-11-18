@@ -14,15 +14,13 @@ class ReleaseExpiredInstanceResponseBody(DaraModel):
     ):
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # Indicates whether the instance was released:
-        # 
+        # Indicates whether the release is successful. Valid values:
         # - **true**: Successful.
-        # 
         # - **false**: Failed.
         self.release_status = release_status
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

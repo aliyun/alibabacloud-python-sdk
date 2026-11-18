@@ -13,7 +13,7 @@ class DescribeCtrlInstanceMemberAccountsResponseBody(DaraModel):
     ):
         # The number of Cloud Firewall member accounts.
         self.instance_member_count = instance_member_count
-        # The maximum number of member accounts supported by Cloud Firewall.
+        # The maximum quota for Cloud Firewall member accounts.
         self.max_instance_member_num = max_instance_member_num
         # The ID of the request.
         self.request_id = request_id

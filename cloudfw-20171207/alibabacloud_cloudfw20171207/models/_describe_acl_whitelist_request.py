@@ -10,12 +10,12 @@ class DescribeAclWhitelistRequest(DaraModel):
         lang: str = None,
         source_ip: str = None,
     ):
-        # The language of the messages to receive. Valid values:
+        # The language of the response message. Valid values:
         # 
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
-        # The source IP address of the visitor.
+        # The source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

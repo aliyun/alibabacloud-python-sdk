@@ -11,11 +11,11 @@ class DescribeAccessInstanceZoneListRequest(DaraModel):
         lang: str = None,
         region_no: str = None,
     ):
-        # The type of the access instance.
+        # The type of the synchronization node.
         self.access_instance_type = access_instance_type
-        # The language of the response.
+        # The language type for receiving messages.
         self.lang = lang
-        # The region of the access instance.
+        # The region of the synchronization node.
         self.region_no = region_no
 
     def validate(self):

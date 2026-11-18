@@ -10,9 +10,11 @@ class DescribeVpcFirewallAssetRegionListRequest(DaraModel):
         member_uid: str = None,
         vpc_firewall_id: str = None,
     ):
-        # The UID of the member accounts.
+        # The UID of the member account.
         self.member_uid = member_uid
-        # The instance ID of the virtual private cloud (VPC) firewall.
+        # The instance ID of the VPC border firewall.
+        # 
+        # **Note**: This parameter is required. If it is not provided, the API returns ErrorFirewallId (-360133). You can call DescribeVpcFirewallList to obtain a valid instance ID.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):

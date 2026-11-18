@@ -13,7 +13,7 @@ class DescribeControlPolicyDomainResolveResponseBody(DaraModel):
         request_id: str = None,
         resolve_result: List[main_models.DescribeControlPolicyDomainResolveResponseBodyResolveResult] = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The domain name resolution results.
         self.resolve_result = resolve_result
@@ -62,7 +62,7 @@ class DescribeControlPolicyDomainResolveResponseBodyResolveResult(DaraModel):
     ):
         # The domain name.
         self.domain = domain
-        # The list of IP addresses.
+        # The IP address list.
         self.ip_addr_list = ip_addr_list
         # The supported IP address version.
         self.ip_version = ip_version

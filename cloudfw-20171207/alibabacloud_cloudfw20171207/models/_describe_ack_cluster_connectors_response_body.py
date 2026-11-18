@@ -24,7 +24,7 @@ class DescribeAckClusterConnectorsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -102,8 +102,8 @@ class DescribeAckClusterConnectorsResponseBodyAckClusterConnectors(DaraModel):
         unhealthy_reason: str = None,
         vpc_id: str = None,
     ):
-        # The ACK cluster ID. You can call the following operation to obtain the value:
-        # - [DescribeAckClusters](~~DescribeAckClusters~~): Queries a list of ACK clusters in batches.
+        # The ID of the ACK cluster. You can obtain the value from the following API operation:
+        # - [DescribeAckClusters](~~DescribeAckClusters~~): Lists the ACK clusters.
         self.cluster_id = cluster_id
         # The name of the ACK cluster.
         self.cluster_name = cluster_name
@@ -111,42 +111,42 @@ class DescribeAckClusterConnectorsResponseBodyAckClusterConnectors(DaraModel):
         self.connector_health_check_status = connector_health_check_status
         # The ID of the ACK cluster connector.
         self.connector_id = connector_id
-        # The name of the ACK cluster connector. The name must be 1 to 64 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
+        # The name of the ACK cluster connector. The name must be 1 to 64 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
         self.connector_name = connector_name
         # The instance status of the ACK cluster connector.
         self.connector_status = connector_status
         # The timestamp when the ACK cluster connector was created. Unit: seconds.
         self.create_time = create_time
-        # The list of address book UUIDs created on the ACK cluster connector.
+        # The list of UUIDs of the address books created for the ACK cluster connector.
         self.group_uuids = group_uuids
-        # The Alibaba Cloud UID of the account to which the ACK cluster resource belongs.
+        # The Alibaba Cloud UID to which the ACK cluster resources belong.
         self.member_uid = member_uid
-        # The primary vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
-        # - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Queries the list of synchronization node vSwitches in batches.
+        # The primary vSwitch of the ACK cluster connector. You can obtain the value from the following API operation:
+        # - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches for synchronization nodes.
         self.primary_vswitch_id = primary_vswitch_id
         # The IP address of the primary vSwitch of the ACK cluster connector.
         self.primary_vswitch_ip = primary_vswitch_ip
-        # The zone of the primary vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
-        # - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Queries the list of synchronization node vSwitch zones in batches.
+        # The zone of the primary vSwitch of the ACK cluster connector. You can obtain the value from the following API operation:
+        # - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Lists the zones of the vSwitches for synchronization nodes.
         self.primary_vswitch_zone_id = primary_vswitch_zone_id
-        # The region ID of the ACK cluster connector. You can call the following operation to obtain the value:
-        # - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the list of synchronization node regions.
+        # The region ID of the ACK cluster connector. You can obtain the value from the following API operation:
+        # - [DescribeAccessInstanceRegionList](~~DescribeAccessInstanceRegionList~~): Queries the list of regions for synchronization nodes.
         # 
-        # > For more information about the regions supported by ACK cluster connectors in Cloud Firewall, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
+        # > For more information about the regions supported by Cloud Firewall for ACK cluster connectors, see [ACK cluster synchronization nodes](https://help.aliyun.com/document_detail/2865120.html).
         self.region_no = region_no
-        # The standby vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
-        # - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Queries the list of synchronization node vSwitches in batches.
+        # The secondary vSwitch of the ACK cluster connector. You can obtain the value from the following API operation:
+        # - [DescribeAccessInstanceVSwitchList](~~DescribeAccessInstanceVSwitchList~~): Lists the vSwitches for synchronization nodes.
         self.standby_vswitch_id = standby_vswitch_id
-        # The IP address of the standby vSwitch of the ACK cluster connector.
+        # The IP address of the secondary vSwitch of the ACK cluster connector.
         self.standby_vswitch_ip = standby_vswitch_ip
-        # The zone of the standby vSwitch of the ACK cluster connector. You can call the following operation to obtain the value:
-        # - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Queries the list of synchronization node vSwitch zones in batches.
+        # The zone of the secondary vSwitch of the ACK cluster connector. You can obtain the value from the following API operation:
+        # - [DescribeAccessInstanceZoneList](~~DescribeAccessInstanceZoneList~~): Lists the zones of the vSwitches for synchronization nodes.
         self.standby_vswitch_zone_id = standby_vswitch_zone_id
-        # The container synchronization cycle of the ACK cluster connector.
+        # The synchronization cycle of the container for the ACK cluster connector.
         self.ttl = ttl
         # The reason why the ACK cluster connector is unhealthy.
         self.unhealthy_reason = unhealthy_reason
-        # The instance ID of the VPC-connected instance to which the ACK cluster belongs.
+        # The VPC-connected instance ID of the ACK cluster.
         self.vpc_id = vpc_id
 
     def validate(self):

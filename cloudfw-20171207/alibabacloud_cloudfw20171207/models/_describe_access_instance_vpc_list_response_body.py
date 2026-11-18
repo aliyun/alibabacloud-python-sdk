@@ -86,11 +86,11 @@ class DescribeAccessInstanceVpcListResponseBodyVpcList(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # Indicates whether the VPC is managed by Cloud Firewall.
+        # Indicates whether the VPC is a firewall-managed VPC.
         self.firewall_vpc = firewall_vpc
-        # The ID of the VPC instance.
+        # The ID of the VPC-connected instance.
         self.vpc_id = vpc_id
-        # The name of the VPC instance.
+        # The name of the VPC-connected instance.
         self.vpc_name = vpc_name
 
     def validate(self):

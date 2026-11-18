@@ -14,7 +14,7 @@ class DescribePrefixListsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_no = region_no
-        # The source IP address of the caller.
+        # The source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

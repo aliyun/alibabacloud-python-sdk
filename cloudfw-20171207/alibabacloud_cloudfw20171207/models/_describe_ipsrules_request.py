@@ -20,6 +20,7 @@ class DescribeIPSRulesRequest(DaraModel):
         order: str = None,
         page_no: int = None,
         page_size: int = None,
+        proxy_id: str = None,
         query_modify: str = None,
         rule_action: str = None,
         rule_class: str = None,
@@ -31,11 +32,11 @@ class DescribeIPSRulesRequest(DaraModel):
         source_ip: str = None,
         vpc_firewall_id: str = None,
     ):
-        # The attacked application.
+        # The attack application.
         self.attack_app = attack_app
-        # The list of categories of the attacked applications. Specify the value in the ["AttackAppCategory1","AttackAppCategory2"] format.
+        # The list of categories of the attacked applications, in the format of ["AttackAppCategory1","AttackAppCategory2"].
         self.attack_app_category = attack_app_category
-        # The list of attacked applications.
+        # The list of attack applications.
         self.attack_apps = attack_apps
         # The attack application type.
         self.attack_type = attack_type
@@ -57,6 +58,8 @@ class DescribeIPSRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
+        # The instance ID of the NAT firewall. This parameter is required only when FirewallType is set to **NatFirewall** and is mutually exclusive with VpcFirewallId. You can obtain the ID by calling the [ListNatFirewallIpsConfigs](https://help.aliyun.com/document_detail/2879296.html) operation.
+        self.proxy_id = proxy_id
         # Specifies whether the rule has been modified.
         self.query_modify = query_modify
         # The rule action.
@@ -75,9 +78,9 @@ class DescribeIPSRulesRequest(DaraModel):
         self.rule_type = rule_type
         # The sorting method.
         self.sort = sort
-        # The source IP address of the requester.
+        # The source IP address of the visitor.
         self.source_ip = source_ip
-        # The instance ID of the virtual private cloud (VPC) firewalls.
+        # The instance ID of the virtual private cloud (VPC) border firewalls.
         self.vpc_firewall_id = vpc_firewall_id
 
     def validate(self):
@@ -120,6 +123,9 @@ class DescribeIPSRulesRequest(DaraModel):
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+
+        if self.proxy_id is not None:
+            result['ProxyId'] = self.proxy_id
 
         if self.query_modify is not None:
             result['QueryModify'] = self.query_modify
@@ -187,6 +193,9 @@ class DescribeIPSRulesRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('ProxyId') is not None:
+            self.proxy_id = m.get('ProxyId')
 
         if m.get('QueryModify') is not None:
             self.query_modify = m.get('QueryModify')

@@ -18,19 +18,19 @@ class DescribeNatFirewallTimeTopRequest(DaraModel):
     ):
         # The time interval.
         self.interval = interval
-        # The language of the content within the request and response.
+        # The language type.
         self.lang = lang
-        # The maximum number of top entries to return. The default value is 200. Valid values: 1 to 500.
+        # The maximum number of top entries to return. Default value: 200. Valid values: 1 to 500.
         self.limit = limit
-        # The ID of the NAT Gateway.
+        # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id
         # The sorting method.
         self.sort = sort
-        # The private IP address of the NAT Gateway.
+        # The private IP address of the NAT gateway.
         self.src_private_ip = src_private_ip
-        # The public IP address of the NAT Gateway.
+        # The public IP address of the NAT gateway.
         self.src_public_ip = src_public_ip
-        # The point in time to query the traffic data. This is a UNIX timestamp. Unit: seconds.
+        # The point in time for the traffic. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.traffic_time = traffic_time

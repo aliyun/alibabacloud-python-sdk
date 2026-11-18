@@ -9,7 +9,7 @@ class CreateNatFirewallSyncTaskRequest(DaraModel):
         self,
         lang: str = None,
     ):
-        # The language type for receiving messages.
+        # The language of the response message.
         self.lang = lang
 
     def validate(self):

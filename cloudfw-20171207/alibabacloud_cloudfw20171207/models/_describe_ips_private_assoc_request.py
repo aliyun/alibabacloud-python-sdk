@@ -15,23 +15,22 @@ class DescribeIpsPrivateAssocRequest(DaraModel):
         resource_id: str = None,
         status: str = None,
     ):
-        # The number of the page to return.
+        # The page number.
         self.current_page = current_page
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # 
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
-        # The Alibaba Cloud account ID of the resource owner.
+        # The Alibaba Cloud account ID to which the resource belongs.
         self.member_uid = member_uid
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The public IP address of the instance.
         self.public_ip = public_ip
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The status of the asset.
+        # The status.
         self.status = status
 
     def validate(self):

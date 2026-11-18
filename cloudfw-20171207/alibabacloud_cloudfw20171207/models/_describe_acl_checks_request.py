@@ -10,7 +10,7 @@ class DescribeAclChecksRequest(DaraModel):
         acl_type: str = None,
         lang: str = None,
     ):
-        # The type of ACL check.
+        # The ACL check type.
         # 
         # This parameter is required.
         self.acl_type = acl_type

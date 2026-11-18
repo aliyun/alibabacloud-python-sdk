@@ -20,12 +20,12 @@ class ModifyObjectGroupOperationRequest(DaraModel):
         # The comment for the operation.
         self.comment = comment
         # The traffic direction controlled by the access control policy. Valid values:
-        # - **in**: Inbound traffic.
-        # - **out**: Outbound traffic.
+        # - **in**: inbound
+        # - **out**: outbound
         # 
         # This parameter is required.
         self.direction = direction
-        # The language for receiving messages. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese
         # - **en**: English
         self.lang = lang
@@ -33,23 +33,23 @@ class ModifyObjectGroupOperationRequest(DaraModel):
         # 
         # This parameter is required.
         self.object_list = object_list
-        # The operation to perform on the object, such as adding to or removing from a whitelist, or subscribing to or unsubscribing from the object. Valid values:
-        # - **subscribe**: Subscribes to the object.
-        # - **unsubscribe**: Unsubscribes from the object.
-        # - **ignore**: Adds the object to the whitelist.
-        # - **cancelIgnore**: Removes the object from the whitelist.
+        # The operation to whitelist, remove from the whitelist, follow, or unfollow an object. Valid values:
+        # - **subscribe**: follow
+        # - **unsubscribe**: unfollow
+        # - **ignore**: add to the whitelist
+        # - **cancelIgnore**: remove from the whitelist
         # 
         # This parameter is required.
         self.object_operation = object_operation
-        # The type of the outbound connection whitelist or subscription. Valid values:
-        # - **assetsIp**: Asset IP address.
-        # - **destinationIp**: Destination IP address.
-        # - **destinationPort**: Destination port.
-        # - **destinationDomain**: Destination domain name.
+        # The type of the object to whitelist or follow for outbound connections. Valid values:
+        # - **assetsIp**: asset IP address
+        # - **destinationIp**: destination IP address
+        # - **destinationPort**: destination port
+        # - **destinationDomain**: destination domain name
         # 
         # This parameter is required.
         self.object_type = object_type
-        # The source IP address of the visitor.
+        # The source IP address of the requester.
         self.source_ip = source_ip
 
     def validate(self):

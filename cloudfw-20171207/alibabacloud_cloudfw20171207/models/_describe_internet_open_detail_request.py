@@ -28,37 +28,37 @@ class DescribeInternetOpenDetailRequest(DaraModel):
         start_time: str = None,
         suggest_level: str = None,
     ):
-        # The ID of the asset. Fuzzy search is supported.
+        # The asset ID. Supports fuzzy search.
         self.assets_instance_id = assets_instance_id
-        # The name of the asset. Fuzzy search is supported.
+        # The asset name. Supports fuzzy search.
         self.assets_instance_name = assets_instance_name
-        # The type of the asset for an exact match. If you leave this parameter empty, all asset types are queried.
+        # The asset type. Supports exact match. If not specified, all asset types are queried.
         self.assets_type = assets_type
-        # The page number of the returned page.
+        # The current page number.
         self.current_page = current_page
-        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The language of the content.
+        # The language type.
         self.lang = lang
-        # The number of the page to return.
+        # The number of entries per page.
         self.page_size = page_size
-        # The port for an exact match. The value must be an integer from 1 to 65535. If you leave this parameter empty, all ports are queried.
+        # The port number. Supports exact match for ports from 1 to 65535. If not specified, all ports are queried.
         self.port = port
-        # The public IP address for an exact match. If you leave this parameter empty, all public IP addresses are queried.
+        # The public IP address. Supports exact match. If not specified, all public IP addresses are queried.
         self.public_ip = public_ip
         # The region ID.
         self.region_no = region_no
-        # The risk level. If you leave this parameter empty, all risk levels are queried.
+        # The risk level. If not specified, all risk levels are queried.
         self.risk_level = risk_level
-        # The name of the application for an exact match. If you leave this parameter empty, all applications are queried.
+        # The application name. Supports exact match. If not specified, all applications are queried.
         self.service_name = service_name
-        # The name of the application for a fuzzy match. If you leave this parameter empty, all applications are queried.
+        # The application name. Supports fuzzy match. If not specified, all applications are queried.
         self.service_name_fuzzy = service_name_fuzzy
-        # The sorting conditions.
+        # The sort list.
         self.sort_list = sort_list
-        # The source IP address of the access request.
+        # The source IP address.
         self.source_ip = source_ip
-        # The start of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
         # The recommended policy level.
         self.suggest_level = suggest_level
@@ -195,7 +195,7 @@ class DescribeInternetOpenDetailRequestSortList(DaraModel):
     ):
         # The sort order.
         self.dir = dir
-        # The sorting key.
+        # The sort field.
         self.sort_key = sort_key
 
     def validate(self):

@@ -17,17 +17,17 @@ class DescribeBatchSlsDispatchStatusResponseBody(DaraModel):
         project_name: str = None,
         request_id: str = None,
     ):
-        # The detailed information list of Logstores.
+        # The list of Logstore details.
         self.info_list = info_list
         # The list of log services.
         self.item_list = item_list
-        # The log version. A value of 1 indicates only one Logstore, and a value of 2 indicates two Logstores.
+        # The log version. A value of 1 indicates one Logstore, and a value of 2 indicates two Logstores.
         self.log_version = log_version
         # The name of the Logstore in Simple Log Service.
         self.logstore_name = logstore_name
         # The name of the project in Simple Log Service.
         self.project_name = project_name
-        # The request ID of the returned result.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -109,15 +109,15 @@ class DescribeBatchSlsDispatchStatusResponseBodyItemList(DaraModel):
     ):
         # The delivery configuration status.
         self.config_status = config_status
-        # The delivery name.
+        # The name of the delivery type.
         self.dispatch_name = dispatch_name
-        # The value of the delivery log.
+        # The value of the log classification.
         self.dispatch_value = dispatch_value
         # The delivery status.
         self.enable = enable
-        # The supported filter conditions.
+        # The supported filter conditions for the Internet and VPC firewalls.
         self.filter_keys = filter_keys
-        # The name of the search type.
+        # The name of the search type. This parameter is fixed as log_type and can be ignored.
         self.search_name = search_name
 
     def validate(self):
@@ -184,7 +184,7 @@ class DescribeBatchSlsDispatchStatusResponseBodyInfoList(DaraModel):
         self.logstore_name = logstore_name
         # The name of the project in Simple Log Service.
         self.project_name = project_name
-        # The site. A value of cn represents the Chinese mainland, intl represents regions outside the Chinese mainland, and global represents global.
+        # The site. A value of cn indicates the Chinese mainland, intl indicates regions outside the Chinese mainland, and global indicates global.
         self.site = site
 
     def validate(self):
@@ -245,9 +245,9 @@ class DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList(DaraModel):
     ):
         # The configuration status.
         self.config_status = config_status
-        # The Chinese name of the delivery type.
+        # The name of the delivery type.
         self.dispatch_name = dispatch_name
-        # The key for classified logs. Valid values:
+        # The log classification key. Valid values:
         # 
         # **internet_log**
         # 
@@ -259,11 +259,11 @@ class DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList(DaraModel):
         # 
         # **dns_firewall_log**
         self.dispatch_value = dispatch_value
-        # The switch status of the delivery type.
+        # The enablement status of the delivery type.
         self.enable = enable
-        # The detailed delivery configurations for the Internet and VPC.
+        # The detailed delivery configuration for the Internet and VPC firewalls.
         self.filter_keys = filter_keys
-        # The value is fixed as log_type and can be ignored.
+        # The name of the search type. This parameter is fixed as log_type and can be ignored.
         self.search_name = search_name
 
     def validate(self):
