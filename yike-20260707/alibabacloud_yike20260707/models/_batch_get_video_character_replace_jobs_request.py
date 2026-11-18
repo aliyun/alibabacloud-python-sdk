@@ -9,7 +9,7 @@ class BatchGetVideoCharacterReplaceJobsRequest(DaraModel):
         self,
         job_ids: str = None,
     ):
-        # The job IDs. Separate multiple IDs with commas.
+        # The list of job IDs. Separate multiple IDs with commas.
         self.job_ids = job_ids
 
     def validate(self):

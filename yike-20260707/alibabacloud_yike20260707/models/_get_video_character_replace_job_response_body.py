@@ -37,12 +37,12 @@ class GetVideoCharacterReplaceJobResponseBody(DaraModel):
         self.project_id = project_id
         # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id
-        # The task output results, which are categorized by image, video, and audio.
+        # The task output results, categorized by image, video, and audio.
         self.result = result
         # The task status. Valid values:
         # - Created: The task is created.
         # - Queuing: The task is queuing.
-        # - Executing: The task is executing.
+        # - Executing: The task is being executed.
         # - Finished: The task is finished.
         # - Failed: The task failed.
         self.status = status
@@ -130,7 +130,7 @@ class GetVideoCharacterReplaceJobResponseBodyResult(DaraModel):
         image_result: List[main_models.GetVideoCharacterReplaceJobResponseBodyResultImageResult] = None,
         video_result: List[main_models.GetVideoCharacterReplaceJobResponseBodyResultVideoResult] = None,
     ):
-        # The list of output audio.
+        # The list of output audio files.
         self.audio_result = audio_result
         # The list of output images.
         self.image_result = image_result
@@ -201,7 +201,7 @@ class GetVideoCharacterReplaceJobResponseBodyResultVideoResult(DaraModel):
         media_id: str = None,
         output_url: str = None,
     ):
-        # The output media asset ID.
+        # The ID of the output media asset.
         self.media_id = media_id
         # The download URL of the output media asset.
         self.output_url = output_url
@@ -238,7 +238,7 @@ class GetVideoCharacterReplaceJobResponseBodyResultImageResult(DaraModel):
         media_id: str = None,
         output_url: str = None,
     ):
-        # The output media asset ID.
+        # The ID of the output media asset.
         self.media_id = media_id
         # The download URL of the output media asset.
         self.output_url = output_url
@@ -275,7 +275,7 @@ class GetVideoCharacterReplaceJobResponseBodyResultAudioResult(DaraModel):
         media_id: str = None,
         output_url: str = None,
     ):
-        # The output media asset ID.
+        # The ID of the output media asset.
         self.media_id = media_id
         # The download URL of the output media asset.
         self.output_url = output_url

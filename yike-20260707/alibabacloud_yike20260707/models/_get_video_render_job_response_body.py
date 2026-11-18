@@ -11,7 +11,7 @@ class GetVideoRenderJobResponseBody(DaraModel):
         job: main_models.GetVideoRenderJobResponseBodyJob = None,
         request_id: str = None,
     ):
-        # The video rendering and compositing task object.
+        # The video rendering and compositing node object.
         self.job = job
         # The request ID.
         self.request_id = request_id
@@ -56,27 +56,21 @@ class GetVideoRenderJobResponseBodyJob(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
-        # The ID of the online editing project, which can be used for secondary editing of the final video.
+        # The ID of the online editing project, which can be used for secondary editing of the produced video.
         self.editing_project_id = editing_project_id
-        # The error code, returned when the task status is Failed.
+        # The error code. This parameter is returned when the job status is Failed.
         self.error_code = error_code
-        # The error message of the String type, returned when the task status is Failed.
+        # The error message. This parameter is of the String type and is returned when the job status is Failed.
         self.error_message = error_message
-        # The job ID.
+        # The ID of the job returned by SubmitVideoRenderJob.
         self.job_id = job_id
-        # The voiceover language of the final video.
+        # The voiceover language of the produced video.
         self.language = language
         # The download URL of the rendered and composited video.
         self.result = result
-        # The file status. Valid values:
-        # 
-        # - Created: The file is created.
-        # - Executing: The file is executing.
-        # - Finished: The file is finished.
-        # - Failed: The file has failed.
-        # - Deleted: The file is deleted.
+        # The status of the job. Valid values: Created, Executing, Finished, and Failed. RecordNotFound is returned if the queried job is deleted, does not exist, or does not belong to the current account.
         self.status = status
-        # The user-defined parameters in JSON format.
+        # The custom user data in JSON format.
         self.user_data = user_data
 
     def validate(self):

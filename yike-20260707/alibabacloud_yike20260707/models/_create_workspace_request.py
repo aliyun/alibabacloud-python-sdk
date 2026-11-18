@@ -10,7 +10,7 @@ class CreateWorkspaceRequest(DaraModel):
         title: str = None,
         user_count_limit: int = None,
     ):
-        # The name of the studio. The name can be up to 50 characters in length and cannot contain single quotation marks, semicolons, less than signs, greater than signs, equal signs, vertical lines, or parentheses.
+        # The name of the studio. The name can be up to 50 characters in length and cannot contain single quotation marks, semicolons, less-than signs, greater-than signs, equal signs, vertical lines, or parentheses.
         # 
         # This parameter is required.
         self.title = title

@@ -54,21 +54,15 @@ class GetRemakeScriptJobResponseBodyJob(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
-        # The error code. This parameter is returned when the status is Failed.
+        # The error code. This parameter is returned when the task status is Failed.
         self.error_code = error_code
-        # The error message. This parameter is of the String type and is returned when the status is Failed.
+        # The error message. This parameter is of the String type and is returned when the task status is Failed.
         self.error_message = error_message
         # The task ID.
         self.job_id = job_id
         # The URL of the file that contains the script rewriting result. The file content is the creative script in JSON format.
         self.result = result
-        # The file status. Valid values:
-        # 
-        # - Created: Created.
-        # - Executing: Executing.
-        # - Finished: Finished.
-        # - Failed: Failed.
-        # - Deleted: Deleted.
+        # The task status. Valid values: Created, Executing, Finished, and Failed. RecordNotFound is returned if the queried task is deleted, does not exist, or does not belong to the current account.
         self.status = status
         # The user-defined parameter, which is a string in JSON format.
         self.user_data = user_data

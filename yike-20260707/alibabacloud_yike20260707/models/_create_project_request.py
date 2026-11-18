@@ -10,7 +10,7 @@ class CreateProjectRequest(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
-        # The name of the project. The name can be up to 50 characters in length and cannot contain single quotation marks, semicolons, less-than signs, greater-than signs, equal signs, vertical lines, or parentheses.
+        # The name of the project. The name can be up to 50 characters in length and cannot contain single quotation marks, semicolons, less than signs, greater than signs, equal signs, vertical lines, or parentheses.
         # 
         # This parameter is required.
         self.title = title

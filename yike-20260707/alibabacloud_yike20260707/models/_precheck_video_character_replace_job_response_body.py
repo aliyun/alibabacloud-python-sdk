@@ -16,9 +16,9 @@ class PrecheckVideoCharacterReplaceJobResponseBody(DaraModel):
     ):
         # The request ID, which is used to locate and troubleshoot the request.
         self.request_id = request_id
-        # The list of items that fail the validation. This is an empty array if the validation passes.
+        # The list of items that failed the validation. This is an empty array if the validation passes.
         self.result = result
-        # The pre-validation status. A value of Success indicates that the validation passes. A value of Failed indicates that one or more items fail the validation.
+        # The pre-validation status. A value of Success indicates that the validation passed. A value of Failed indicates that one or more items failed the validation.
         self.status = status
 
     def validate(self):
@@ -67,9 +67,9 @@ class PrecheckVideoCharacterReplaceJobResponseBodyResult(DaraModel):
         error_code: str = None,
         key: str = None,
     ):
-        # The validation error code of the input item. For example, ImageCheckFailed indicates that the image validation fails, and AudioCheckFailed indicates that the audio validation fails.
+        # The validation error code for the input item. For example, ImageCheckFailed indicates that the image validation failed, and AudioCheckFailed indicates that the audio validation failed.
         self.error_code = error_code
-        # The name of the input parameter that fails the validation. This name is consistent with the corresponding field name in AppParams.
+        # The name of the input parameter that failed the validation, which matches the corresponding field name in AppParams.
         self.key = key
 
     def validate(self):

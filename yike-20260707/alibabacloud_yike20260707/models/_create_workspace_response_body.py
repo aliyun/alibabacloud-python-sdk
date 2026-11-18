@@ -11,7 +11,7 @@ class CreateWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the default project generated through automatic creation when the studio is created.
+        # The ID of the default project created through automatic creation when the studio is created.
         self.project_id = project_id
         # The ID of the request, which is used to locate and troubleshoot the request.
         self.request_id = request_id

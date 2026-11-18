@@ -14,9 +14,9 @@ class GetMediaComprehensionJobResponseBody(DaraModel):
         media_comprehension_job: main_models.GetMediaComprehensionJobResponseBodyMediaComprehensionJob = None,
         request_id: str = None,
     ):
-        # The media content understanding result object.
+        # The media content comprehension result object.
         self.job = job
-        # **[Deprecated]** The media content understanding object.
+        # **[Deprecated]** The media content comprehension object.
         self.media_comprehension_job = media_comprehension_job
         # The request ID.
         self.request_id = request_id
@@ -69,25 +69,25 @@ class GetMediaComprehensionJobResponseBodyMediaComprehensionJob(DaraModel):
         state: str = None,
         user_data: str = None,
     ):
-        # The error code. This parameter is returned when the status is `Failed`.
+        # The error code. This parameter is returned when the job is in the `Failed` state.
         self.error_code = error_code
-        # The error message. The value is a string. This parameter is returned when the status is Failed.
+        # The error message, which is a string. This parameter is returned when the job is in the Failed state.
         self.error_message = error_message
         # The job ID.
         self.job_id = job_id
         # The media asset ID.
         self.media_id = media_id
-        # The analysis result, which is a JSON-formatted string.
+        # The analysis result, which is a JSON string.
         self.result = result
-        # The file status. Valid values:
+        # The job status. Valid values:
         # 
-        # - **Created**: Created.
-        # - **Executing**: Executing.
-        # - **Finished**: Finished.
-        # - **Failed**: Failed.
-        # - **Deleted**: Deleted.
+        # - **Created**: The job is created.
+        # - **Executing**: The job is being executed.
+        # - **Finished**: The job is finished.
+        # - **Failed**: The job failed.
+        # - **Deleted**: The job is deleted.
         self.state = state
-        # The user-defined parameter, which is a JSON-formatted string.
+        # The custom user data, which is a JSON-formatted string.
         self.user_data = user_data
 
     def validate(self):
@@ -156,23 +156,21 @@ class GetMediaComprehensionJobResponseBodyJob(DaraModel):
         status: str = None,
         user_data: str = None,
     ):
-        # The error code. This parameter is returned when the status is Failed.
+        # The error code. This parameter is returned when the job is in the Failed state.
         self.error_code = error_code
-        # The error message. The value is a string. This parameter is returned when the status is Failed.
+        # The error message, which is a string. This parameter is returned when the job is in the Failed state.
         self.error_message = error_message
         # The list of media asset IDs. If the input is a URL, the registered media asset IDs are returned.
         self.media_ids = media_ids
-        # The URL of the analysis result file. The file content is in JSON format.
-        self.result = result
-        # The file status. Valid values:
+        # The analysis result, which is a string.
         # 
-        # - **Created**: Created.
-        # - **Executing**: Executing.
-        # - **Finished**: Finished.
-        # - **Failed**: Failed.
-        # - **Deleted**: Deleted.
+        # VideoBreakdown: the URL of the JSON file that contains the analysis result. The file content varies based on the JobParams.ResultType parameter specified when the job is submitted.
+        # 
+        # ProductRecognition: the text of the product recognition result. By default, the result is output in JSON format and returned directly as a string.
+        self.result = result
+        # The job status. Valid values: Created, Executing, Finished, and Failed. If the queried job is deleted, does not exist, or does not belong to the current account, RecordNotFound is returned.
         self.status = status
-        # The user-defined parameter, which is a JSON-formatted string.
+        # The custom user data, which is a JSON-formatted string.
         self.user_data = user_data
 
     def validate(self):

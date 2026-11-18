@@ -12,7 +12,7 @@ class CreateProjectResponseBody(DaraModel):
     ):
         # The ID of the project.
         self.project_id = project_id
-        # The ID of the request, which is used to locate and troubleshoot the request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

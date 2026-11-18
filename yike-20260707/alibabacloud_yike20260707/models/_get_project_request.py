@@ -9,7 +9,7 @@ class GetProjectRequest(DaraModel):
         self,
         project_id: str = None,
     ):
-        # The project ID.
+        # The ID of the project.
         # 
         # This parameter is required.
         self.project_id = project_id

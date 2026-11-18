@@ -11,31 +11,34 @@ class SubmitVideoRemakeJobRequest(DaraModel):
         remake_params: str = None,
         user_data: str = None,
     ):
-        # The JSON object string for the original video input. The Type of the first item in Medias is video, and a MediaId or HTTP(S) URL is provided.
-        self.input = input
-        # The remake parameters in JSON string format. The structure is as follows:
+        # The input materials. The value is a JSON string with the following structure:
         # 
-        # - Product (Object, required): The product information, including the original and new products.
-        #   - OriginalProductName (String, optional): The product or brand name in the original video, used to locate and replace mentions of the original product.
-        #   - NewProduct (Object, required): The new product information.
-        #     - ProductName (String, required): The product or brand name.
-        #     - Description (String, optional): The product description.
-        #     - ProductKnowledge (String, optional): The physical knowledge of the product, such as material and usage.
-        #     - ProductImages (Array<String>, required): A non-empty list of new product images, where each item is an HTTP(S) URL.
-        #     - SellingPoints (Array<String>, optional): The list of product selling points.
+        # - Medias (Array<Object>, required): A non-empty list of media assets. This operation uses the first video in the list and does not support batch remakes. The first item contains the following fields:
+        #   - Type (String, required): The type of the media asset. For this operation, set the value to video for the first item. The value is case-insensitive.
+        #   - Url (String, mutually exclusive with MediaId): The URL of the media asset. The URL must start with http:// or https:// and cannot exceed 2,048 characters in length. Unregistered URLs are automatically registered as media assets.
+        #   - MediaId (String, mutually exclusive with Url): The ID of the registered media asset. If both Url and MediaId are specified, MediaId takes precedence.
+        self.input = input
+        # The remake parameters. The value is a JSON string with the following structure:
+        # 
+        # - Product (Object, required): The product information, including the original product and the new product.
+        #   - OriginalProductName (String, optional): The name of the product or brand in the original video. This is used to locate and replace mentions of the original product.
+        #   - NewProduct (Object, required): The information about the new product.
+        #     - ProductName (String, required): The name of the product or brand.
+        #     - Description (String, optional): The description of the product.
+        #     - ProductKnowledge (String, optional): The physical knowledge of the product, such as the material and usage.
+        #     - ProductImages (Array\\<String\\>, required): The images of the new product. The list cannot be empty. Each item is an HTTP or HTTPS URL.
+        #     - SellingPoints (Array\\<String\\>, optional): The list of selling points of the product.
         #     - OriginalPrice (String, optional): The original price.
         #     - CurrentPrice (String, optional): The current price.
-        #     - Discount (String, optional): The discount information, such as "$50 off for orders over $200" or "Buy one get one free".
-        # - AvatarList (Array<Object>, optional): The character replacement list, supporting 1 to 5 items. Each item describes the replacement relationship between an original character and a new character. If this parameter is not passed or is an empty array, no characters are replaced.
-        #   - OriginalAvatarImage (String, required for each item when there are multiple characters, optional for a single character): The reference image of the target character in the original video. An HTTP(S) URL or a registered image MediaId is supported. Duplicates are not allowed in the same list.
-        #   - NewAvatarImages (Array<String>, required for each item): A non-empty list of reference images for the new character. An HTTP(S) URL or a registered image MediaId is supported.
+        #     - Discount (String, optional): The discount information, such as "50 off for orders over 200" or "buy one get one free".
+        # - AvatarList (Array\\<Object\\>, optional): The list of character replacements. Single-character and multi-character replacements are supported. Pass one item for single-character replacement and two to five items for multi-character replacement. Each item is an object that describes the replacement relationship between an original character and a new character. If this parameter is not passed or is an empty array, no characters are replaced.
+        #   - OriginalAvatarImage (String, required for each item in multi-character replacement, optional for single-character replacement): The reference image of the target character in the original video. HTTP and HTTPS URLs or registered image MediaIds are supported. The value cannot be duplicated within the same list.
+        #   - NewAvatarImages (Array\\<String\\>, required for each item): The list of reference images for the new character. The list cannot be empty. HTTP and HTTPS URLs or registered image MediaIds are supported.
         #   - AvatarName (String, optional for each item): The role name of the replaced character in the generated script.
-        # - VoiceoverLanguage (String, optional): The voiceover language. Default value: zh.
+        # - VoiceoverLanguage (String, optional): The voiceover language. Explicitly specify the language, such as zh for Chinese or en for English.
         # - AdditionalRequirements (String, optional): Additional remake requirements.
-        # 
-        # This operation uses AvatarList and does not use the legacy Avatar or OriginalAvatarName from the standalone scripting interface. The two character structures are not interchangeable.
         self.remake_params = remake_params
-        # The user-defined JSON object string, which is returned as-is when queried. NotifyAddress is the callback URL for the final state of the task.
+        # The user-defined data.
         self.user_data = user_data
 
     def validate(self):

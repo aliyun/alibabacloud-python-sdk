@@ -16,7 +16,7 @@ class SubmitVideoCharacterReplaceJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The application input parameters as a JSON-serialized string. The field names and material requirements are subject to the input definition of the corresponding AppId.
+        # The input parameters of the application, serialized as a JSON string. The field names and material requirements are subject to the input definition of the corresponding AppId.
         self.app_params = app_params
         # The folder ID.
         self.folder_id = folder_id

@@ -11,9 +11,9 @@ class ListProjectsRequest(DaraModel):
         page_size: int = None,
         workspace_id: str = None,
     ):
-        # The page number, starting from 1. Specify a valid positive integer along with PageSize. Otherwise, the query defaults to page 1 with 10 entries per page.
+        # The page number. Pages start from 1. Specify a valid positive integer for both this parameter and PageSize. Otherwise, the query defaults to page 1 with 10 entries per page.
         self.page_no = page_no
-        # The number of entries to return on each page. Specify a valid positive integer along with PageNo. Otherwise, the query defaults to page 1 with 10 entries per page.
+        # The number of entries to return on each page. Specify a valid positive integer for both this parameter and PageNo. Otherwise, the query defaults to page 1 with 10 entries per page.
         self.page_size = page_size
         # Filters projects by workspace ID.
         self.workspace_id = workspace_id

@@ -11,35 +11,31 @@ class SubmitRemakeScriptJobRequest(DaraModel):
         remake_type: str = None,
         user_data: str = None,
     ):
-        # The remake parameters in JSON string format. The structure varies based on `RemakeType`. For `faithful-remake`, the structure is as follows:
+        # The remake parameters in JSON string format. The structure varies depending on the RemakeType. For faithful-remake, the structure is as follows:
         # 
-        # - ComprehensionResult (string, required): The URL of the JSON file that contains the content understanding results.
-        # 
-        # - Product (object, required): The product information, including the original and new products.
-        # 
-        #   - OriginalProductName (string, required): The name of the product or brand in the original video to be replaced. This is used to locate and replace mentions of the original product in the script.
-        # 
-        #   - NewProduct (object, required): The new product information. 
-        # 
-        #     - ProductName (string, required): The name of the product or brand.
-        #     - Description (string, required): The product description.
-        #     - ProductKnowledge (string, required): The physical knowledge of the product, such as the material and usage instructions.
-        #     - ProductImages (array<string>, required): The images of the new product. This array cannot be empty, and each item must be an HTTP or HTTPS URL.
-        #     - SellingPoints (array<string>, optional): The list of product selling points.
-        #     - OriginalPrice (string, optional): The original price.
-        #     - CurrentPrice (string, optional): The current price.
-        #     - Discount (string, optional): The discount information, such as "50 off for orders over 200" or "Buy one get one free".
-        # 
-        # - Avatar (object, required): The avatar information, including the original and new avatars.
-        # 
-        #     - NewAvatarImages (array<string>, required): The list of new avatar images. This array cannot be empty, and each item must be a media asset ID or an image URL. If a URL is provided, the system automatically registers it as a media asset. **Currently, only one image is supported** (only the first element of the array is used). The array format is reserved for future extensions.
-        #     - OriginalAvatarName (string, required): The name of the avatar in the original video to be replaced. This is used to locate and replace the original avatar in the script or visuals.
-        # 
-        # - VoiceoverLanguage (string, optional): The voiceover language. Valid values: `zh` (Chinese), `en` (English), `es` (Spanish), `pt` (Portuguese), `fr` (French), `de` (German), `ja` (Japanese), `ko` (Korean), and `ar` (Arabic). Default value: `zh`.
+        # - ComprehensionResult (String, required): The content understanding result, which is the URL of a JSON file.
+        # - Product (Object, required): The product information, including the original and new products.
+        #   - OriginalProductName (String, required): The product or brand name in the original video, used to locate and replace mentions of the original product.
+        #   - NewProduct (Object, required): The new product information.
+        #     - ProductName (String, required): The product or brand name.
+        #     - Description (String, required): The product description.
+        #     - ProductKnowledge (String, optional): The physical knowledge of the product, such as the material and usage.
+        #     - ProductImages (Array<String>, required): The images of the new product. This array cannot be empty, and each item must be an HTTP or HTTPS URL.
+        #     - SellingPoints (Array<String>, optional): The list of product selling points.
+        #     - OriginalPrice (String, optional): The original price.
+        #     - CurrentPrice (String, optional): The current price.
+        #     - Discount (String, optional): The discount information, such as "50 off for orders over 200" or "buy one get one free".
+        # - AvatarList (Array<Object>, optional): The list of avatar replacements, supporting single and multiple avatar replacements. We recommend using this field. Pass one item for a single avatar and two to five items for multiple avatars. Each item is an object that describes the replacement relationship between an original avatar and a new avatar:
+        #   - OriginalAvatarName (String, required for each item): The name of the avatar to be replaced in the original video. Use the avatar name from the video breakdown result to locate the replacement target in the script or video. The original avatar names in the same list cannot be duplicated.
+        #   - NewAvatarImages (Array<String>, required for each item): The list of reference images for the new avatar. This array cannot be empty. Images can be HTTP or HTTPS URLs or registered image MediaIds. Currently, only the first image is used.
+        #   - AvatarName (String, optional for each item): The role name of the replaced avatar in the generated script.
+        # - Avatar (Object, optional): The single avatar replacement information compatible with historical calls, retained as a transitional field. We recommend using AvatarList for new integrations and subsequent calls. The field structure is the same as a single item in AvatarList. When using this field, OriginalAvatarName and NewAvatarImages are required, and AvatarName is optional.
+        # - VoiceoverLanguage (String, optional): The voiceover language. Valid values: zh (Chinese), en (English), es (Spanish), pt (Portuguese), fr (French), de (German), ja (Japanese), ko (Korean), and ar (Arabic). We recommend explicitly specifying this parameter.
+        # - AdditionalRequirements (String, optional): Additional remake requirements.
         self.remake_params = remake_params
-        # The remake type, which determines the structure of `RemakeParams`. Currently, only `faithful-remake` is supported, which replicates the original hit video structure paragraph by paragraph and replaces the product and avatar.
+        # The remake type, which determines the structure of RemakeParams. Currently, only faithful-remake is supported. This type faithfully remakes the original viral video structure segment by segment, replacing the product and avatar.
         self.remake_type = remake_type
-        # The custom parameters in JSON string format. These parameters are returned as-is in the callback result, such as newsKey. The system reserves the NotifyAddress field for the callback URL, which is invoked after the task is completed.
+        # The custom parameters in JSON string format, which are returned as-is in the callback result, such as newsKey. The system reserves the NotifyAddress field for the callback URL, which is invoked after the task is completed.
         self.user_data = user_data
 
     def validate(self):

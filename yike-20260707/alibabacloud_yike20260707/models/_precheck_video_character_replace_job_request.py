@@ -12,7 +12,7 @@ class PrecheckVideoCharacterReplaceJobRequest(DaraModel):
     ):
         # The ID of the video character replacement application. Use a configured application.
         self.app_id = app_id
-        # The input parameters of the application, which is a JSON-serialized string. The field names and material requirements are subject to the input definition of the corresponding AppId.
+        # The application input parameters, which are provided as a JSON-serialized string. The field names and material requirements are subject to the input definition of the corresponding AppId.
         self.app_params = app_params
 
     def validate(self):

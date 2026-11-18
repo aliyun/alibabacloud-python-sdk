@@ -9,7 +9,7 @@ class GetVideoRenderJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The job ID.
+        # The ID of the job returned by SubmitVideoRenderJob.
         self.job_id = job_id
 
     def validate(self):

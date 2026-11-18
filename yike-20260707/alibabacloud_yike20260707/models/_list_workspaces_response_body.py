@@ -14,7 +14,7 @@ class ListWorkspacesResponseBody(DaraModel):
         total_count: int = None,
         workspace_list: List[main_models.ListWorkspacesResponseBodyWorkspaceList] = None,
     ):
-        # The request ID, which is used to locate and troubleshoot requests.
+        # The request ID.
         self.request_id = request_id
         # The total number of workspaces that meet the query conditions.
         self.total_count = total_count
@@ -74,11 +74,11 @@ class ListWorkspacesResponseBodyWorkspaceList(DaraModel):
     ):
         # The workspace code.
         self.code = code
-        # The creation time. The time is in UTC and follows the ISO 8601 standard, ending with Z.
+        # The creation time. The time follows the ISO 8601 standard and is displayed in UTC.
         self.create_time = create_time
         # The ID of the default project for the workspace.
         self.default_project_id = default_project_id
-        # The workspace status. Valid values: Online (enabled) and Offline (disabled).
+        # The workspace status. Valid values: Online: enabled. Offline: disabled.
         self.status = status
         # The workspace name.
         self.title = title

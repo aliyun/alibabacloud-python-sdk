@@ -15,13 +15,13 @@ class ListProjectsResponseBody(DaraModel):
         project_list: List[main_models.ListProjectsResponseBodyProjectList] = None,
         request_id: str = None,
     ):
-        # A response field retained for compatibility. It is not used for current pagination and can be ignored.
+        # A response field retained for backward compatibility. This field is not used for pagination. Do not rely on this field.
         self.max_results = max_results
-        # A response field retained for compatibility. It is not used for current pagination and can be ignored.
+        # A response field retained for backward compatibility. This field is not used for pagination. Do not rely on this field.
         self.next_token = next_token
         # The list of projects on the current page.
         self.project_list = project_list
-        # The request ID, which is used to locate and troubleshoot the request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -82,21 +82,21 @@ class ListProjectsResponseBodyProjectList(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
-        # The permissions of the current caller in the project, such as Manage for management permissions.
+        # The permissions of the current caller in the project. For example, Manage indicates management permissions.
         self.auth = auth
         # The URL of the cover image.
         self.cover_url = cover_url
-        # The creation time in UTC format following the ISO 8601 standard, ending with Z.
+        # The creation time. The time is in UTC and follows the ISO 8601 standard, ending with Z.
         self.create_time = create_time
         # The username of the user who created the project.
         self.create_user_name = create_user_name
-        # The project description.
+        # The description of the project.
         self.description = description
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # The project name.
+        # The name of the project.
         self.title = title
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

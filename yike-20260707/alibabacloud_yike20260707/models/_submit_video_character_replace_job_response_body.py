@@ -10,9 +10,9 @@ class SubmitVideoCharacterReplaceJobResponseBody(DaraModel):
         job_id: str = None,
         request_id: str = None,
     ):
-        # The task ID returned by SubmitVideoCharacterReplaceJob.
+        # The job ID returned by SubmitVideoCharacterReplaceJob.
         self.job_id = job_id
-        # The request ID, which is used to locate and troubleshoot the request.
+        # The request ID used to locate and troubleshoot the request.
         self.request_id = request_id
 
     def validate(self):

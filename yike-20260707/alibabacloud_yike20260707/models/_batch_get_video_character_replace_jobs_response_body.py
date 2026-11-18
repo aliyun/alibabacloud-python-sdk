@@ -13,7 +13,7 @@ class BatchGetVideoCharacterReplaceJobsResponseBody(DaraModel):
         job_list: List[main_models.BatchGetVideoCharacterReplaceJobsResponseBodyJobList] = None,
         request_id: str = None,
     ):
-        # The list of job query results.
+        # The list of queried jobs.
         self.job_list = job_list
         # The request ID.
         self.request_id = request_id
@@ -67,7 +67,7 @@ class BatchGetVideoCharacterReplaceJobsResponseBodyJobList(DaraModel):
     ):
         # The ID of the video character replacement application. Make sure to use a configured application.
         self.app_id = app_id
-        # The application input parameters specified when the job was submitted. The value is a JSON serialized string. This corresponds to the AppParams parameter in the submit operation.
+        # The application input parameters specified when the job was submitted. The value is a JSON-serialized string. This corresponds to the AppParams parameter in the submit operation.
         self.app_input_config = app_input_config
         # The time when the job finished execution. The time is in the ISO 8601 format with a time zone.
         self.execution_finish_time = execution_finish_time
@@ -83,7 +83,7 @@ class BatchGetVideoCharacterReplaceJobsResponseBodyJobList(DaraModel):
         self.result = result
         # The job status. Valid values:
         # - Created: The job is created.
-        # - Queuing: The job is queuing.
+        # - Queuing: The job is in the queue.
         # - Executing: The job is being executed.
         # - Finished: The job is finished.
         # - Failed: The job failed.

@@ -13,7 +13,7 @@ class GetProjectResponseBody(DaraModel):
     ):
         # The project details.
         self.project = project
-        # The request ID, used to trace and troubleshoot the request.
+        # The request ID used to locate and troubleshoot the request.
         self.request_id = request_id
 
     def validate(self):
@@ -56,21 +56,21 @@ class GetProjectResponseBodyProject(DaraModel):
         title: str = None,
         workspace_id: str = None,
     ):
-        # The permissions of the current caller in the project. For example, Manage indicates management permissions.
+        # The permissions of the current caller on the project. For example, Manage indicates management permissions.
         self.auth = auth
         # The URL of the cover image.
         self.cover_url = cover_url
-        # The creation time, in ISO 8601 UTC format ending with Z.
+        # The time when the project was created, in UTC and ISO 8601 format, ending with Z.
         self.create_time = create_time
         # The username of the user who created the project.
         self.create_user_name = create_user_name
-        # The project description.
+        # The description of the project.
         self.description = description
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # The project name.
+        # The name of the project.
         self.title = title
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -9,7 +9,7 @@ class GetRemakeScriptJobRequest(DaraModel):
         self,
         job_id: str = None,
     ):
-        # The task ID.
+        # The task ID returned by SubmitRemakeScriptJob.
         self.job_id = job_id
 
     def validate(self):
