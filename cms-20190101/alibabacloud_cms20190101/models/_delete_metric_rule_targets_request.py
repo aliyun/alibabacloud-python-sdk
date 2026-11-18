@@ -18,7 +18,7 @@ class DeleteMetricRuleTargetsRequest(DaraModel):
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The resource IDs.
+        # The target IDs.
         # 
         # This parameter is required.
         self.target_ids = target_ids

@@ -16,9 +16,9 @@ class ModifySiteMonitorResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > The value 200 indicates success.
+        # > A value of 200 indicates success.
         self.code = code
-        # The details of the node task result.
+        # The details of the node modification task result.
         self.data = data
         # The returned message.
         self.message = message
@@ -26,9 +26,9 @@ class ModifySiteMonitorResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

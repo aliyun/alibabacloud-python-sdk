@@ -16,21 +16,21 @@ class DescribeSiteMonitorLogResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A status code of 200 indicates that the operation was successful.
+        # > 200 indicates success.
         self.code = code
         # The detection logs of the one-time detection task.
         self.data = data
         # The returned message.
         self.message = message
-        # The token that is used to query the next page.
+        # The token used to query the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

@@ -20,9 +20,9 @@ class ModifySiteMonitorRequest(DaraModel):
     ):
         # The URL or IP address of the monitoring task.
         self.address = address
-        # The ID of the alert rule. The ID of an existing alert rule in CloudMonitor. You can call the DescribeMetricRuleList operation to query alert rule IDs. For more information, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # The ID of the alert rule. The alert rule must already exist in CloudMonitor. You can call the [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html) operation to query the alert rule ID.
         self.alert_ids = alert_ids
-        # The custom monitoring schedule. You can select a specific time period from Monday to Sunday for monitoring.
+        # The custom probing schedule. You can select a specific time period from Monday to Sunday for probing.
         self.custom_schedule = custom_schedule
         # The monitoring frequency. Valid values: 1, 5, and 15. Unit: minutes. Default value: 1.
         self.interval = interval
@@ -30,11 +30,11 @@ class ModifySiteMonitorRequest(DaraModel):
         # 
         # Unit: milliseconds (ms).
         self.interval_unit = interval_unit
-        # The detection point information. The value is in JSONArray format, for example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`, where `city` corresponds to Beijing, Hangzhou, and Qingdao respectively.
+        # The probe information. The value is a JSON array. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`. The `city` values correspond to Beijing, Hangzhou, and Qingdao.
         # 
-        # > You can call the DescribeSiteMonitorISPCityList operation to query detection point information. For more information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html). If this parameter is left empty, the system randomly selects three detection points.
+        # > You can call the [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html) operation to obtain the detection point information. If this parameter is left empty, the system randomly selects three detection points.
         self.isp_cities = isp_cities
-        # The advanced extended options for the protocol type of the monitoring task. Different protocol types correspond to different extended options.
+        # The advanced extension options for the protocol type of the monitoring task. Different protocol types correspond to different extension options.
         self.options_json = options_json
         self.region_id = region_id
         # The ID of the monitoring task.

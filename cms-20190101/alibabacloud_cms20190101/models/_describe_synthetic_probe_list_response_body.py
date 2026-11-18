@@ -26,8 +26,8 @@ class DescribeSyntheticProbeListResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The operation is successful.
-        # - false: The operation fails.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -121,11 +121,11 @@ class DescribeSyntheticProbeListResponseBodyIspCityList(DaraModel):
         self.country_cn = country_cn
         # The English name of the country or region.
         self.country_en = country_en
-        # The number of IPv4 nodes in the IDC.
+        # The number of IDC IPv4 nodes.
         self.idc_v4probe_count = idc_v4probe_count
-        # The number of IPv6 nodes in the IDC.
+        # The number of IDC IPv6 nodes.
         self.idc_v6probe_count = idc_v6probe_count
-        # The list of node IP addresses.
+        # The list of IP addresses of the node.
         self.ip_pool = ip_pool
         # The carrier ID.
         self.isp = isp

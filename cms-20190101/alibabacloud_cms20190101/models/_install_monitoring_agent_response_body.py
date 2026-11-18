@@ -14,17 +14,17 @@ class InstallMonitoringAgentResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A value of 200 indicates success.
+        # > A status code of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: The operation is successful.
         # 
-        # - false: The operation failed.
+        # - false: The operation fails.
         self.success = success
 
     def validate(self):

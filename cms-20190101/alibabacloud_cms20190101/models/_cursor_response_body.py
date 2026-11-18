@@ -15,7 +15,7 @@ class CursorResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A value of 200 indicates success.
+        # > 200 indicates success.
         self.code = code
         # The cursor used as an input parameter in the [BatchExport](https://help.aliyun.com/document_detail/2329847.html) operation to export data.
         self.cursor = cursor
@@ -23,11 +23,11 @@ class CursorResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: Successful.
         # 
-        # - false: The operation failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

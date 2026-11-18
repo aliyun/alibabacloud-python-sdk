@@ -13,18 +13,17 @@ class ModifyMetricRuleTemplateResponseBody(DaraModel):
         success: bool = None,
     ):
         # The HTTP status code.
-        # 
-        # > The status code 200 indicates that the request was successful.
+        # >A status code of 200 indicates that the call is successful.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true
+        # - true: The operation is successful.
         # 
-        # - false
+        # - false: The operation fails.
         self.success = success
 
     def validate(self):

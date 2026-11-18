@@ -21,7 +21,7 @@ class DescribeMonitorGroupsResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > The value 200 indicates success.
+        # > 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
@@ -29,7 +29,7 @@ class DescribeMonitorGroupsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         self.resources = resources
         # Indicates whether the operation was successful. Valid values:

@@ -12,9 +12,9 @@ class PutContactResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # > The value 200 indicates success.
+        # > A value of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message

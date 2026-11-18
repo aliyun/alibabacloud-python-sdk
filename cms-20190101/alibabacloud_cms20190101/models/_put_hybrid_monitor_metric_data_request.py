@@ -22,7 +22,7 @@ class PutHybridMonitorMetricDataRequest(DaraModel):
         self.metric_list = metric_list
         # The name of the metric namespace.
         # 
-        # For information about how to obtain the name of a metric namespace, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
+        # For more information about how to obtain the name of a metric namespace, see [DescribeHybridMonitorNamespaceList](https://help.aliyun.com/document_detail/428880.html).
         # 
         # This parameter is required.
         self.namespace = namespace
@@ -76,19 +76,21 @@ class PutHybridMonitorMetricDataRequestMetricList(DaraModel):
         ts: int = None,
         value: str = None,
     ):
-        # The list of labels of the metric.
+        # The list of labels for the metric.
         # 
         # Valid values of N: 1 to 100.
+        # 
+        # Identifiers such as app, ip, and hostName.
         self.labels = labels
         # The name of the metric.
         # 
         # Valid values of N: 1 to 100.
         # 
-        # Format: The name can contain uppercase letters, lowercase letters, digits, and underscores (_). The name must start with an uppercase letter or a lowercase letter.
+        # Format: The name can contain uppercase letters, lowercase letters, digits, and underscores (_). It must start with an uppercase or lowercase letter.
         # 
         # This parameter is required.
         self.name = name
-        # The timestamp when the monitoring data was reported.
+        # The timestamp when the monitoring data is reported.
         # 
         # Valid values of N: 1 to 100.
         # 
@@ -98,7 +100,7 @@ class PutHybridMonitorMetricDataRequestMetricList(DaraModel):
         # 
         # Valid values of N: 1 to 100.
         # 
-        # Format: an integer or a floating-point number.
+        # Format: integer or floating-point number.
         # 
         # This parameter is required.
         self.value = value
@@ -155,19 +157,19 @@ class PutHybridMonitorMetricDataRequestMetricListLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the label of the metric.
+        # The label key of the metric.
         # 
         # Valid values of N: 1 to 100.
         # 
-        # Format: The key can contain uppercase letters, lowercase letters, digits, and underscores (_). The key must start with an uppercase letter, a lowercase letter, or an underscore (_).
+        # Format: The key can contain uppercase letters, lowercase letters, digits, and underscores (_). It must start with an uppercase letter, a lowercase letter, or an underscore.
         # 
-        # > Key and Value must be set at the same time.
+        # > You must specify both Key and Value.
         self.key = key
-        # The value of the label of the metric.
+        # The label value of the metric.
         # 
         # Valid values of N: 1 to 100.
         # 
-        # > Key and Value must be set at the same time.
+        # > You must specify both Key and Value.
         self.value = value
 
     def validate(self):

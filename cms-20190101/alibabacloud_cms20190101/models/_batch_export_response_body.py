@@ -20,21 +20,21 @@ class BatchExportResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The timestamp when the backend requested the data. A larger timestamp indicates that the exported data is closer to the current time.
+        # The timestamp when the backend requests data. A larger timestamp indicates that the exported data is closer to the current time.
         self.anchor = anchor
         # The HTTP status code.
         # 
-        # > A status code of 200 indicates success.
+        # > A status code of 200 indicates that the call was successful.
         self.code = code
         # The cursor used for the next call to this operation.
         # 
-        # > If the return value is `null`, the monitoring data export is complete.
+        # > If the value is null, the monitoring data export is complete.
         self.cursor = cursor
         # The data returned in the current call.
         self.data_results = data_results
         # Indicates whether the data export is complete. Valid values:
         # 
-        # - true: The data export is incomplete.
+        # - true: The data export is not complete.
         # 
         # - false: The data export is complete.
         self.has_next = has_next
@@ -44,11 +44,11 @@ class BatchExportResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: The call was successful.
         # 
-        # - false: The operation failed.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

@@ -13,23 +13,11 @@ class PutExporterOutputRequest(DaraModel):
         dest_type: str = None,
         region_id: str = None,
     ):
-        # The data export configuration. It is a JSON object string that must contain the following fields:
-        # 
-        # - endpoint: the domain name for Simple Log Service (SLS) data.
-        # - project: the project.
-        # - logstore: the Logstore.
-        # - ak: the AccessKey ID.
-        # - as: the AccessKey Secret.
-        # 
         # This parameter is required.
         self.config_json = config_json
-        # The description of the configuration.
         self.desc = desc
-        # The name of the configuration.
-        # 
         # This parameter is required.
         self.dest_name = dest_name
-        # The destination service for the export.
         self.dest_type = dest_type
         self.region_id = region_id
 

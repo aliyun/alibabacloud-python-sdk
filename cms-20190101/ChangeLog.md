@@ -1,3 +1,10 @@
+2026-11-18 Version: 4.0.13
+- Update API DeleteContact: add request parameters DryRun.
+- Update API PutContact: add request parameters DryRun.
+- Update API PutContactGroup: add request parameters DryRun.
+- Update API PutMetricRuleTargets: add request parameters DryRun.
+
+
 2026-11-08 Version: 4.0.12
 - Update API ApplyMetricRuleTemplate: add request parameters ClientToken.
 - Update API CreateDynamicTagGroup: add request parameters ClientToken.

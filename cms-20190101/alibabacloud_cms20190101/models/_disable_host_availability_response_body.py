@@ -13,14 +13,15 @@ class DisableHostAvailabilityResponseBody(DaraModel):
         success: bool = None,
     ):
         # The status code.
-        # 
-        # > A value of 200 indicates success.
+        # > 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values: true: success. false: failure.
+        # Indicates whether the operation is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

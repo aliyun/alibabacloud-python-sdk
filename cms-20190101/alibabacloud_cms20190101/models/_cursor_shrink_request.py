@@ -18,15 +18,15 @@ class CursorShrinkRequest(DaraModel):
         # 
         # Unit: milliseconds.
         # 
-        # > - UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970. The format YYYY-MM-DDThh:mm:ssZ is supported. Example: 2023-01-01T00:00:00Z, which specifies 00:00:00 on January 1, 2023 (GMT).
-        # - If you do not specify the end time, the end time is considered infinite. In real-time export scenarios, you can leave this parameter empty.
-        # - The TTL of monitoring data in CloudMonitor varies with the time granularity. Refer to the data TTL corresponding to the Period request parameter to set a reasonable time interval.
+        # > - UNIX timestamp: the number of milliseconds that have elapsed since January 1, 1970. The ISO 8601 format (YYYY-MM-DDThh:mm:ssZ) is also supported. Example: 2023-01-01T00:00:00Z, which specifies 00:00:00 on January 1, 2023 (UTC).
+        # - If you do not specify the end time, the end time is infinite. In real-time export scenarios, you can leave this parameter empty.
+        # - The TTL of monitoring data in CloudMonitor varies with the time granularity. Refer to the data TTL corresponding to the `Period` request parameter to set a reasonable time interval.
         self.end_time = end_time
         # The dimension information of the metric.
         self.matchers_shrink = matchers_shrink
-        # The name of the metric for the cloud service.
+        # The name of the metric for cloud service monitoring.
         # 
-        # For more information about how to obtain the metric name of a cloud service, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For more information about how to obtain the metric name for cloud service monitoring, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.metric = metric
@@ -40,15 +40,15 @@ class CursorShrinkRequest(DaraModel):
         # 
         # Unit: seconds.
         # 
-        # > The time interval of a metric is typically 60 seconds. For special values, see the Period parameter in [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # > The time interval of a metric is typically 60 seconds. For special values, see the `Period` parameter in [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.period = period
         # The start timestamp.
         # 
-        # The format YYYY-MM-DDThh:mm:ssZ is supported. Example: 2023-01-01T00:00:00Z, which specifies 00:00:00 on January 1, 2023 (GMT).
+        # The ISO 8601 format (YYYY-MM-DDThh:mm:ssZ) is supported. Example: 2023-01-01T00:00:00Z, which specifies 00:00:00 on January 1, 2023 (UTC).
         # 
-        # > The time-to-live (TTL) of monitoring data in CloudMonitor varies with the time granularity. Refer to the data TTL corresponding to the Period request parameter to set a reasonable time interval.
+        # > The time-to-live (TTL) of monitoring data in CloudMonitor varies with the time granularity. Refer to the data TTL corresponding to the `Period` request parameter to set a reasonable time interval.
         # 
         # This parameter is required.
         self.start_time = start_time

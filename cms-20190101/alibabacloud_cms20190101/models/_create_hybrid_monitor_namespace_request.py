@@ -26,21 +26,21 @@ class CreateHybridMonitorNamespaceRequest(DaraModel):
         self.namespace_region = namespace_region
         # The storage solution for monitoring data. Valid values:
         # 
-        # - aliyun_prometheus: Stores monitoring data in Prometheus.
+        # - aliyun_prometheus: Monitoring data is stored in Prometheus.
         # 
-        # > For more information about storage solutions for monitoring data, see [Storage solutions for monitoring data in Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/2594921.html).
+        # > For more information about the storage solutions for monitoring data, see [Storage solutions for monitoring data in Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/2594921.html).
         self.namespace_type = namespace_type
         self.region_id = region_id
         # The data storage duration. Valid values:
         # 
-        # - cms.s1.large: Stores data for 15 days.
-        # - cms.s1.xlarge: Stores data for 32 days.
-        # - cms.s1.2xlarge: Stores data for 63 days.
-        # - cms.s1.3xlarge (default): Stores data for 93 days.
-        # - cms.s1.6xlarge: Stores data for 185 days.
-        # - cms.s1.12xlarge: Stores data for 376 days.
+        # - cms.s1.large: 15 days
+        # - cms.s1.xlarge: 32 days
+        # - cms.s1.2xlarge: 63 days
+        # - cms.s1.3xlarge (default value): 93 days
+        # - cms.s1.6xlarge: 185 days
+        # - cms.s1.12xlarge: 376 days
         # 
-        # For more information about the pricing of different storage durations, see the **Pricing** table in [Dashboard](https://help.aliyun.com/document_detail/223532.html).
+        # For the prices of different storage duration specifications, see **Pricing** in [dashboard](https://help.aliyun.com/document_detail/223532.html).
         self.spec = spec
 
     def validate(self):

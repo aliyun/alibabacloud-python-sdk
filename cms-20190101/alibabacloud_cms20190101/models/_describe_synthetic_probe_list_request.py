@@ -21,9 +21,9 @@ class DescribeSyntheticProbeListRequest(DaraModel):
         self.city = city
         # Specifies whether to query only IDC detection points.
         self.idc_probe = idc_probe
-        # Specifies whether to show only IPv4 nodes.
+        # Specifies whether to display only IPv4 nodes.
         self.ipv_4 = ipv_4
-        # Specifies whether to show only IPv6 nodes.
+        # Specifies whether to display only IPv6 nodes.
         self.ipv_6 = ipv_6
         # The name or ID of the carrier detection point.
         self.isp = isp
@@ -34,7 +34,7 @@ class DescribeSyntheticProbeListRequest(DaraModel):
         self.region_id = region_id
         # Specifies whether to return all detection points. Valid values:
         # 
-        # - false: Returns only the detection points available to the user. This is the default value.
+        # - false: Returns the detection points available to you. This is the default value.
         # - true: Returns all detection points.
         self.view_all = view_all
 

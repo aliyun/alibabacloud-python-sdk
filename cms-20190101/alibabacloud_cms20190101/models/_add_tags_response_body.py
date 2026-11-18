@@ -12,19 +12,18 @@ class AddTagsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
-        # 
-        # > A status code of 200 indicates that the request was successful.
+        # The HTTP status code.
+        # > 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - true: The operation was successful.
+        # - true: The call was successful.
         # 
-        # - false: The operation failed.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

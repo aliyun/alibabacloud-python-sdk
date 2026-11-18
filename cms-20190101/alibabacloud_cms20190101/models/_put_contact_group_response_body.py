@@ -14,7 +14,7 @@ class PutContactGroupResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > 200 indicates success.
+        # > A value of 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message

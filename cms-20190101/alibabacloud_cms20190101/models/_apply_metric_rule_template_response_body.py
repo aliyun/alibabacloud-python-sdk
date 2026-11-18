@@ -17,13 +17,13 @@ class ApplyMetricRuleTemplateResponseBody(DaraModel):
         success: bool = None,
     ):
         # The HTTP status code.
-        # > A status code of 200 indicates that the request was successful.
+        # >200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The resources affected by the alert rule.
+        # The resources affected by the alert rules.
         self.resource = resource
         # Indicates whether the operation was successful. Valid values:
         # 
@@ -133,7 +133,7 @@ class ApplyMetricRuleTemplateResponseBodyResourceAlertResults(DaraModel):
         success: bool = None,
     ):
         # The HTTP status code.
-        # > A status code of 200 indicates that the request was successful.
+        # >200 indicates success.
         self.code = code
         # The returned message.
         self.message = message

@@ -2145,6 +2145,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.contact_name):
             query['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2173,6 +2175,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.contact_name):
             query['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11785,6 +11789,8 @@ class Client(OpenApiClient):
             query['ContactName'] = request.contact_name
         if not DaraCore.is_null(request.describe):
             query['Describe'] = request.describe
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.channels):
@@ -11819,6 +11825,8 @@ class Client(OpenApiClient):
             query['ContactName'] = request.contact_name
         if not DaraCore.is_null(request.describe):
             query['Describe'] = request.describe
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
         if not DaraCore.is_null(request.channels):
@@ -11869,6 +11877,8 @@ class Client(OpenApiClient):
             query['ContactNames'] = request.contact_names
         if not DaraCore.is_null(request.describe):
             query['Describe'] = request.describe
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_subscribed):
             query['EnableSubscribed'] = request.enable_subscribed
         req = open_api_util_models.OpenApiRequest(
@@ -11903,6 +11913,8 @@ class Client(OpenApiClient):
             query['ContactNames'] = request.contact_names
         if not DaraCore.is_null(request.describe):
             query['Describe'] = request.describe
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_subscribed):
             query['EnableSubscribed'] = request.enable_subscribed
         req = open_api_util_models.OpenApiRequest(
@@ -13031,6 +13043,8 @@ class Client(OpenApiClient):
     ) -> main_models.PutMetricRuleTargetsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.targets):
@@ -13061,6 +13075,8 @@ class Client(OpenApiClient):
     ) -> main_models.PutMetricRuleTargetsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.targets):

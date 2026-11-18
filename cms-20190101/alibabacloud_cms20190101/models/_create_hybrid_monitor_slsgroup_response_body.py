@@ -20,10 +20,10 @@ class CreateHybridMonitorSLSGroupResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The operation was successful.
-        # - false: The operation failed.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

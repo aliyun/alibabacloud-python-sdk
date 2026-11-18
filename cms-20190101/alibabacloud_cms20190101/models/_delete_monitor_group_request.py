@@ -12,11 +12,12 @@ class DeleteMonitorGroupRequest(DaraModel):
         group_id: int = None,
         region_id: str = None,
     ):
+        # Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see How to ensure idempotence.
         self.client_token = client_token
-        # Specifies whether to perform a dry run on the request. The dry run checks permissions and instance status. Valid values:
+        # Specifies whether to execute a dry run on the request, including checks on permissions and instance status. Valid values:
         # 
-        # - **false** (default): sends a normal request. If the request passes the check, the name and description of the route table are modified.
-        # - **true**: sends a dry run request. Only the check is performed, and the name and description of the route table are not modified. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): Sends a normal request. If the check succeeds, the name and description of the routing table are directly modified.
+        # - **true**: Sends a check request to only perform the check, and the name and description of the routing table are not modified. The check items include whether required parameters are specified and the request format. If the check fails, the corresponding error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
         self.dry_run = dry_run
         # The ID of the application group.
         # 

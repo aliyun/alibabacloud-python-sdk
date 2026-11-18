@@ -17,25 +17,13 @@ class PutExporterRuleRequest(DaraModel):
         rule_name: str = None,
         target_windows: str = None,
     ):
-        # The description of the export rules.
         self.describe = describe
-        # The destinations for data export.
-        # 
         # This parameter is required.
         self.dst_names = dst_names
-        # The name of the metric. >For more information, see [Alibaba Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
         self.metric_name = metric_name
-        # The data namespace of the Alibaba Cloud service. For more information, see [Alibaba Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
         self.namespace = namespace
         self.region_id = region_id
-        # The name of the rule.
-        # 
-        # > If the specified rule name is the same as an existing rule name, the existing rule is modified. Otherwise, a new rule is created.
         self.rule_name = rule_name
-        # The time window for exporting data. Unit: seconds.
-        # 
-        # > - To export data for multiple time windows, separate the values with commas (,).
-        # - Exporting data for a time window of less than 60 seconds is not supported.
         self.target_windows = target_windows
 
     def validate(self):

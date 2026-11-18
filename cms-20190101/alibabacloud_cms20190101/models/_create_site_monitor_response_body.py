@@ -17,9 +17,7 @@ class CreateSiteMonitorResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The status code.
-        # 
-        # > 200 indicates success.
+        # The status code. A value of 200 indicates success.
         self.code = code
         self.create_result_list = create_result_list
         # The details of the monitoring task result.

@@ -12,7 +12,7 @@ class PutCustomMetricResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The status code.
-        # > 200 indicates success.
+        # > A status code of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message

@@ -16,31 +16,32 @@ class InstallMonitoringAgentRequest(DaraModel):
         instance_ids: List[str] = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
         self.client_token = client_token
-        # Specifies whether to perform a dry run on the request. A dry run checks permissions and instance status. Valid values:
+        # Specifies whether to perform a dry run on the request. The dry run includes permission and instance status checks. Valid values:
         # 
-        # - **false** (default): Sends a normal request. After the request passes the check, the name and description of the route table are directly modified.
-        # - **true**: Sends a check request. Only the check is performed, and the name and description of the route table are not modified. The check items include whether required parameters are specified and the request format. If the check fails, a corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a normal request. If the request passes the check, the name and description of the route table are modified.
+        # - **true**: sends a dry run request. Only a check is performed, and the name and description of the route table are not modified. Check items include whether required parameters are specified and the request format. If the request fails the check, the corresponding error is returned. If the request passes the check, the DryRunOperation error code is returned.
         self.dry_run = dry_run
         # Specifies whether to forcibly install the CloudMonitor agent. Valid values:
-        # - true (default): Forcibly installs the agent.
-        # - false: Does not forcibly install the agent.
+        # - true (default): forcibly installs the agent.
+        # - false: does not forcibly install the agent.
         self.force = force
         # Installs the CloudMonitor agent on all Alibaba Cloud hosts within the current Alibaba Cloud account. Valid values:
         # 
-        # - `onlyInstallNotHasAgent`: Installs the latest version of the agent only on Alibaba Cloud hosts on which the CloudMonitor agent is not installed.
+        # - onlyInstallNotHasAgent: installs the latest version of the agent only on Alibaba Cloud hosts on which the CloudMonitor agent is not installed.
         # 
-        # - `onlyUpgradeAgent`: Upgrades the agent only on Alibaba Cloud hosts on which a non-latest version of the CloudMonitor agent is installed.
+        # - onlyUpgradeAgent: upgrades the agent only on Alibaba Cloud hosts on which a non-latest version of the CloudMonitor agent is installed.
         # 
-        # - `installAndUpgrade`: Installs the latest version of the agent on Alibaba Cloud hosts on which the CloudMonitor agent is not installed, and upgrades the agent on Alibaba Cloud hosts on which a non-latest version of the CloudMonitor agent is installed.
+        # - installAndUpgrade: installs the latest version of the agent on Alibaba Cloud hosts on which the CloudMonitor agent is not installed, and upgrades the agent on Alibaba Cloud hosts on which a non-latest version of the CloudMonitor agent is installed.
         # 
-        # > If you specify this parameter, the `InstanceIds` parameter is ignored.
+        # > If you specify this parameter, the InstanceIds parameter is ignored.
         self.install_command = install_command
-        # The ID of the Alibaba Cloud host.
+        # The IDs of the Alibaba Cloud hosts.
         # 
         # Valid values of N: 1 to 10.
         # 
-        # > You must specify either `InstallCommand` or `InstanceIds`.
+        # > You must specify either InstallCommand or InstanceIds.
         self.instance_ids = instance_ids
         self.region_id = region_id
 

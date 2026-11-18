@@ -13,13 +13,14 @@ class DeleteContactResponseBody(DaraModel):
         success: bool = None,
     ):
         # The status code.
-        # > 200 indicates success.
+        # 
+        # > A value of 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. A value of true indicates success, and false indicates failure.
+        # Indicates whether the operation is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):

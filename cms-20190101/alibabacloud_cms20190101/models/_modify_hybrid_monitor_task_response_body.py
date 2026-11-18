@@ -22,8 +22,8 @@ class ModifyHybridMonitorTaskResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The operation was successful.
-        # - false: The operation failed.
+        # - true: successful
+        # - false: failed
         self.success = success
 
     def validate(self):

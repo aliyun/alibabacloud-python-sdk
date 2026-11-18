@@ -13,17 +13,23 @@ class PutMonitoringConfigRequest(DaraModel):
         enable_install_agent_new_ecs: bool = None,
         region_id: str = None,
     ):
-        # Ignore this parameter.
+        # This parameter is not used.
         self.auto_install = auto_install
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can generate the token on your client to ensure that the token is unique across different requests. The client token supports only ASCII characters.
+        # 
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
         # Specifies whether to perform a dry run on the request. Valid values:
-        # - **true**: Sends a dry run request without deleting the endpoint IPAM pool. The system checks whether all required parameters are specified, the request format is valid, and service limits are met. If the request fails the check, the corresponding error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # - **false** (default): Sends a normal request and directly deletes the endpoint IPAM pool if the request passes the check.
+        # - **true**: sends a check request without deleting the endpoint IPAM pool. The check items include whether required parameters are specified, the request format, and service limits. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - **false** (default value): sends a normal request and directly deletes the endpoint IPAM pool if the request passes the check.
+        # Default value: **false**.
         self.dry_run = dry_run
         # Specifies whether to automatically install the CloudMonitor agent on newly purchased ECS instances. Valid values:
-        # - true (default): Automatically installs the CloudMonitor agent on newly purchased ECS instances.
-        # 
+        # - true: Automatically installs the CloudMonitor agent on newly purchased ECS instances.
         # - false: Does not automatically install the CloudMonitor agent on newly purchased ECS instances.
+        # Default value: true.
         self.enable_install_agent_new_ecs = enable_install_agent_new_ecs
         self.region_id = region_id
 

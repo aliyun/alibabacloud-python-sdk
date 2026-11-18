@@ -27,7 +27,7 @@ class CreateHostAvailabilityRequest(DaraModel):
         # 
         # This parameter is required.
         self.alert_config_escalation_list = alert_config_escalation_list
-        # The alert targets.
+        # The alert trigger targets.
         self.alert_config_target_list = alert_config_target_list
         # The ID of the application group.
         # 
@@ -35,7 +35,7 @@ class CreateHostAvailabilityRequest(DaraModel):
         self.group_id = group_id
         # The list of ECS instances that initiate the probes. Valid values of N: 1 to 21.
         # 
-        # > You must set this parameter when `TaskScope` is set to `GROUP_SPEC_INSTANCE`.
+        # > You must set this parameter when TaskScope is set to GROUP_SPEC_INSTANCE.
         self.instance_list = instance_list
         self.region_id = region_id
         # The name of the availability monitoring task. The name must be 4 to 100 characters in length and can contain letters, digits, underscores (_), and Chinese characters.
@@ -44,8 +44,8 @@ class CreateHostAvailabilityRequest(DaraModel):
         self.task_name = task_name
         # The probe scope of the availability monitoring task. Valid values:
         # 
-        # - GROUP: All ECS instances in the current application group are used as probes for the task.
-        # - GROUP_SPEC_INSTANCE: Specified ECS instances in the current application group are used as probes for the task. If you set this parameter to GROUP_SPEC_INSTANCE, you must also set the InstanceList parameter, which specifies the list of ECS instances that initiate the probes.
+        # - GROUP: All ECS instances in the current application group are used as probes for the monitoring task.
+        # - GROUP_SPEC_INSTANCE: Specified ECS instances in the current application group are used as probes for the monitoring task. If you set this parameter to GROUP_SPEC_INSTANCE, you must also set the InstanceList parameter, which specifies the list of ECS instances that initiate the probes.
         self.task_scope = task_scope
         # The probe type of the availability monitoring task. Valid values:
         # 
@@ -161,7 +161,7 @@ class CreateHostAvailabilityRequestAlertConfigTargetList(DaraModel):
         json_params: str = None,
         level: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the resource. Format: `acs:{service abbreviation}:{regionId}:{userId}:/{resource type}/{resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Parameter description:
+        # The ARN of the resource. Format: `acs:{service abbreviation}:{regionId}:{userId}:/{resource type}/{resource name}/message`. Example: `acs:mns:cn-hangzhou:120886317861****:/queues/test123/message`. Parameter descriptions:
         # 
         # - {service abbreviation}: The abbreviation of the cloud service. Only Simple Message Queue (formerly MNS) is supported.
         # 
@@ -169,7 +169,7 @@ class CreateHostAvailabilityRequestAlertConfigTargetList(DaraModel):
         # 
         # - {regionId}: The region where the Simple Message Queue (formerly MNS) queue or topic resides.
         # 
-        # - {resource type}: The type of the resource that receives alerts. Valid values:
+        # - {resource type}: The type of the resource that accepts alert notifications. Valid values:
         # 
         #   - **queues**: queue.
         #   - **topics**: topic.
@@ -179,15 +179,15 @@ class CreateHostAvailabilityRequestAlertConfigTargetList(DaraModel):
         #   - If the resource type is **queues**, the resource name is the queue name.
         #   - If the resource type is **topics**, the resource name is the topic name.
         self.arn = arn
-        # The ID of the alert target.
+        # The ID of the alert trigger target.
         self.id = id
         # The JSON-formatted parameters for the alert callback.
         self.json_params = json_params
         # The alert level. Valid values:
         # 
-        # - INFO: information.
-        # - WARN: warning.
-        # - CRITICAL: critical.
+        # - INFO: Information.
+        # - WARN: Warning.
+        # - CRITICAL: Critical.
         self.level = level
 
     def validate(self):
@@ -237,7 +237,7 @@ class CreateHostAvailabilityRequestAlertConfigEscalationList(DaraModel):
         times: int = None,
         value: str = None,
     ):
-        # The statistical method for the alert. Valid values of N: 1 to 21. Valid values vary based on the metric:
+        # The aggregation method for the alert. Valid values of N: 1 to 21. Valid values vary based on the metric:
         # 
         # - HttpStatus: Value.
         # - HttpLatency: Average.
@@ -245,7 +245,7 @@ class CreateHostAvailabilityRequestAlertConfigEscalationList(DaraModel):
         # - TelnetLatency: Average.
         # - PingLostRate: Average.
         # 
-        # > The statistical method for status codes is the original value (Value), and the statistical method for response time or packet loss rate is the average value (Average).
+        # > The aggregation method for status codes is the original value (Value). The aggregation method for response time or packet loss rate is the average value (Average).
         self.aggregate = aggregate
         # The metric for the alert. Valid values of N: 1 to 21. Valid values:
         # 
@@ -442,32 +442,32 @@ class CreateHostAvailabilityRequestAlertConfig(DaraModel):
         start_time: int = None,
         web_hook: str = None,
     ):
-        # The end time of the effective period for alerting.
+        # The end time of the effective period for alerts.
         # 
-        # The value is an integer ranging from 0 to 23. Unit: hours. The value indicates the hour when the effective period ends. The actual end time is 00:00:00 of the specified hour. For example, if you set this parameter to 22, the effective period ends at 22:00:00. The time zone is UTC+8.
+        # The value must be an integer ranging from 0 to 23. Unit: hours. The value specifies the hour when the effective period ends. The actual end time is 00:00:00 of the specified hour. For example, if you set this parameter to 22, the effective period ends at 22:00:00. The time zone is UTC+8 (Beijing time).
         # 
         # > Note: If the current time is not within the effective time window, the system does not send alert notifications even if the threshold is exceeded.
         self.end_time = end_time
-        # The alert notification method. Valid values:
+        # The alert notification type. Valid values:
         # 
-        # <props="china">- 2: phone call, text message, email, and DingTalk chatbot.
+        # <props="china">- 2: Phone call, text message, email, and DingTalk chatbot.
         # 
-        # <props="china">- 1: text message, email, and DingTalk chatbot.
+        # <props="china">- 1: Text message, email, and DingTalk chatbot.
         # 
-        # <props="china">- 0: email and DingTalk chatbot.
+        # <props="china">- 0: Email and DingTalk chatbot.
         # 
         # 
-        # <props="intl">0: email and DingTalk chatbot.
+        # <props="intl">0: Email and DingTalk chatbot.
         # 
-        # <props="partner">0: email and DingTalk chatbot.
+        # <props="partner">0: Email and DingTalk chatbot.
         # 
         # This parameter is required.
         self.notify_type = notify_type
         # The mute period. Unit: seconds. Default value: 86400 (1 day).
         self.silence_time = silence_time
-        # The start time of the effective period for alerting.
+        # The start time of the effective period for alerts.
         # 
-        # The value is an integer ranging from 0 to 23. Unit: hours. The value indicates the hour when the effective period starts. The actual start time is 00:00:00 of the specified hour. For example, if you set this parameter to 0, the effective period starts at 00:00:00. The time zone is UTC+8.
+        # The value must be an integer ranging from 0 to 23. Unit: hours. The value specifies the hour when the effective period starts. The actual start time is 00:00:00 of the specified hour. For example, if you set this parameter to 0, the effective period starts at 00:00:00. The time zone is UTC+8 (Beijing time).
         # 
         # > Note: If the current time is not within the effective time window, the system does not send alert notifications even if the threshold is exceeded.
         self.start_time = start_time

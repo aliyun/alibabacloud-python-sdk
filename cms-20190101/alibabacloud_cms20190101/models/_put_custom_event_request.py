@@ -13,7 +13,7 @@ class PutCustomEventRequest(DaraModel):
         event_info: List[main_models.PutCustomEventRequestEventInfo] = None,
         region_id: str = None,
     ):
-        # The event details.
+        # The list of event information.
         # 
         # This parameter is required.
         self.event_info = event_info
@@ -69,17 +69,11 @@ class PutCustomEventRequestEventInfo(DaraModel):
         # 
         # This parameter is required.
         self.event_name = event_name
-        # The ID of the application group. Valid values of N: 1 to 50.
+        # The ID of the application group. Valid values of N: 0 to 50.
         # 
-        # Default value: 0. This value indicates that the event to be reported does not belong to any application group.
+        # Default value: 0. A value of 0 indicates that the reported event does not belong to any application group.
         self.group_id = group_id
-        # The time when the event occurred.
-        # 
-        # Format: `yyyyMMddTHHmmss.SSSZ`.
-        # 
-        # Valid values of N: 1 to 50.
-        # 
-        # > You can also specify a UNIX timestamp. Example: 1552199984000. Unit: milliseconds.
+        # The time when the event occurred. Valid values of N: 1 to 50.
         self.time = time
 
     def validate(self):

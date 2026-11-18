@@ -14,7 +14,7 @@ class EnableMetricRulesResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A value of 200 indicates success.
+        # > A status code of 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message

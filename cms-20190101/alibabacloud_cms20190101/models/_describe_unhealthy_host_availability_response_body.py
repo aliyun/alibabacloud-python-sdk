@@ -18,13 +18,15 @@ class DescribeUnhealthyHostAvailabilityResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > A value of 200 indicates that the request was successful.
+        # > A value of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values: -true: The operation was successful. -false: The operation failed.
+        # Indicates whether the operation is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
         self.unhealthy_list = unhealthy_list
 

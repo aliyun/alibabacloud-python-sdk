@@ -13,14 +13,14 @@ class DeleteEventRuleTargetsRequest(DaraModel):
         region_id: str = None,
         rule_name: str = None,
     ):
-        # The IDs of event-triggered alert rules.
+        # The list of event-triggered alert rule IDs.
         # 
         # This parameter is required.
         self.ids = ids
         self.region_id = region_id
         # The name of the event-triggered alert rule.
         # 
-        # For information about how to obtain the name of an event-triggered alert rule, see [DescribeEventRuleList](https://help.aliyun.com/document_detail/114996.html).
+        # For more information about how to obtain the name of an event-triggered alert rule, see [DescribeEventRuleList](https://help.aliyun.com/document_detail/114996.html).
         # 
         # This parameter is required.
         self.rule_name = rule_name

@@ -14,10 +14,11 @@ class DisableMetricRulesRequest(DaraModel):
         region_id: str = None,
         rule_id: List[str] = None,
     ):
+        # Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see Ensure idempotence.
         self.client_token = client_token
-        # Specifies whether to perform a dry run only. Valid values:
-        # - **true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters are specified, the request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends a normal request. If the check passes, an HTTP 2xx status code is returned and the operation is performed.
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # - **true**: performs a dry run. The system checks the required parameters, request format, and service limits, but does not bind a security group to the instance. If the request fails the check, an error is returned. If the request passes the check, the `DryRunOperation` error code is returned.
+        # - **false** (default): sends a normal request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.region_id = region_id
         # The ID of the alert rule.

@@ -70,11 +70,11 @@ class BatchCreateInstantSiteMonitorRequestTaskList(DaraModel):
         self.address = address
         # The detection point information. If this parameter is left empty, the system randomly selects three detection points.
         # 
-        # The value is a JSON array. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`. The values correspond to Beijing, Hangzhou, and Qingdao.
+        # The format is `JSONArray`. Example: `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]`, which correspond to Beijing, Hangzhou, and Qingdao.
         # 
         # For more information about how to obtain detection point information, see [DescribeSiteMonitorISPCityList](https://help.aliyun.com/document_detail/115045.html).
         self.isp_cities = isp_cities
-        # The advanced extension options for the protocol type of the site monitoring task. Different protocol types correspond to different extension options.
+        # The advanced extension options for the protocol type of the site monitoring task. Different protocol types for detection tasks correspond to different extension options.
         self.options_json = options_json
         # The name of the site monitoring task.
         # 
@@ -89,7 +89,7 @@ class BatchCreateInstantSiteMonitorRequestTaskList(DaraModel):
         self.task_name = task_name
         # The monitoring type of the site monitoring task.
         # 
-        # Valid values: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
+        # The supported monitoring types include HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
         # 
         # > You must create at least one site monitoring task, and you must specify `Address`, `TaskName`, and `TaskType`.
         self.task_type = task_type

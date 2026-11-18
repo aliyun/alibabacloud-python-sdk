@@ -15,7 +15,7 @@ class CreateMonitorGroupResponseBody(DaraModel):
     ):
         # The status code.
         # 
-        # > 200 indicates success.
+        # > A value of 200 indicates success.
         self.code = code
         # The application group ID.
         self.group_id = group_id
@@ -25,9 +25,9 @@ class CreateMonitorGroupResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the operation is successful. Valid values:
         # 
-        # - true: The operation is successful.
+        # - true: Success.
         # 
-        # - false: The operation fails.
+        # - false: Failure.
         self.success = success
 
     def validate(self):

@@ -20,13 +20,13 @@ class CreateInstantSiteMonitorResponseBody(DaraModel):
         # 
         # > A value of 200 indicates success.
         self.code = code
-        # The result list of the one-time synthetic monitoring task creation.
+        # The list of results for creating the one-time detection task.
         self.create_result_list = create_result_list
         # The returned message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation was successful. Valid values:
+        # Indicates whether the operation is successful. Valid values:
         # * true: Successful.
         # * false: Failed.
         self.success = success
@@ -89,9 +89,9 @@ class CreateInstantSiteMonitorResponseBodyCreateResultList(DaraModel):
         task_id: str = None,
         task_name: str = None,
     ):
-        # The ID of the synthetic monitoring task.
+        # The ID of the detection task.
         self.task_id = task_id
-        # The name of the synthetic monitoring task.
+        # The name of the detection task.
         self.task_name = task_name
 
     def validate(self):

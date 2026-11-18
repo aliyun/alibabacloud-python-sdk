@@ -12,9 +12,9 @@ class PutMonitorGroupDynamicRuleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The HTTP status code.
         # 
-        # > A value of 200 indicates success.
+        # >A status code of 200 indicates success.
         self.code = code
         # The error message.
         self.message = message

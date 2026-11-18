@@ -16,13 +16,13 @@ class DeleteEventRulesResponseBody(DaraModel):
         self.code = code
         # The returned message.
         self.message = message
-        # The UUID of the request, which is used to query logs.
+        # The UUID of the request, which can be used to query logs.
         self.request_id = request_id
-        # Indicates whether the operation is successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: Successful.
+        # - true: The operation was successful.
         # 
-        # - false: Failed.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

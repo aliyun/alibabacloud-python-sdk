@@ -16,10 +16,15 @@ class DeleteMonitorGroupResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. A value of 200 indicates that the deletion was successful.
         self.code = code
+        # The information about the deleted application group.
         self.group = group
+        # The error message returned when the request fails. The example indicates that the required parameter GroupId is missing. No error message is returned when the deletion is successful.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the application group was deleted. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -75,6 +80,7 @@ class DeleteMonitorGroupResponseBodyGroup(DaraModel):
         group_name: str = None,
     ):
         self.contact_groups = contact_groups
+        # The name of the application group.
         self.group_name = group_name
 
     def validate(self):

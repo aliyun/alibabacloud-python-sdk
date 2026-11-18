@@ -26,21 +26,21 @@ class DescribeMonitorGroupsRequest(DaraModel):
         type: str = None,
         types: str = None,
     ):
-        # The ID of the dynamic rule matching.
+        # The ID of the intelligent tag rule.
         self.dynamic_tag_rule_id = dynamic_tag_rule_id
-        # The tag key used to create the application group by using dynamic rule matching.
+        # The tag key used to create the application group by using intelligent tags.
         self.group_founder_tag_key = group_founder_tag_key
-        # The tag value used to create the application group by using dynamic rule matching.
+        # The tag value used to create the application group by using intelligent tags.
         self.group_founder_tag_value = group_founder_tag_value
-        # The application group ID. Separate multiple application group IDs with commas (,).
+        # The ID of the application group. Separate multiple application group IDs with commas (,).
         self.group_id = group_id
-        # The application group name.
+        # The name of the application group.
         self.group_name = group_name
-        # Specifies whether to include the history of alert templates that have been applied to the application group in the response. Valid values:
-        # - true: Include the history.
-        # - false: Do not include the history.
+        # Specifies whether to include the history of alert templates applied to the application group in the response. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.include_template_history = include_template_history
-        # The resource instance ID. This parameter is used to query the application group to which the specified instance belongs.
+        # The instance ID. This parameter is used to query the application group to which the specified instance belongs.
         self.instance_id = instance_id
         # The search keyword.
         self.keyword = keyword
@@ -54,29 +54,29 @@ class DescribeMonitorGroupsRequest(DaraModel):
         self.page_size = page_size
         self.region_id = region_id
         # Specifies whether to include alert contact groups in the response. Valid values:
-        # - true: Include alert contact groups.
-        # - false: Do not include alert contact groups.
+        # - true: Yes.
+        # - false: No.
         self.select_contact_groups = select_contact_groups
         # The tags of the application group.
         self.tag = tag
         # The type of the application group. Valid values:
-        # - custom: a custom application group.
-        # - ehpc_cluster: an application group synchronized from an EHPC cluster.
-        # - kubernetes: an application group synchronized from Container Service for Kubernetes.
-        # - tag: an application group automatically created by using tags.
-        # - resMgr: an application group created from a resource group.
-        # - ess: an application group synchronized from Auto Scaling (ESS).
-        # - aone_group: an application group synchronized from or associated with an Aone application.
+        # - custom: custom application group
+        # - ehpc_cluster: application group from EHPC cluster synchronization
+        # - kubernetes: application group from Container Service for Kubernetes synchronization
+        # - tag: application group from automatic creation by using labels
+        # - resMgr: application group created by using resource groups
+        # - ess: application group from elastic scaling synchronization
+        # - aone_group: application group synchronized from or associated with an Aone application
         self.type = type
-        # The type of the application group. Valid values:
+        # The types of the application groups. Valid values:
         # 
-        # - custom: a custom application group.
-        # - ehpc_cluster: an application group synchronized from an EHPC cluster.
-        # - kubernetes: an application group synchronized from Container Service for Kubernetes.
-        # - tag: an application group automatically created by using tags.
-        # - resMgr: an application group created from a resource group.
-        # - ess: an application group synchronized from Auto Scaling (ESS).
-        # - aone_group: an application group synchronized from or associated with an Aone application.
+        # - custom: custom application group
+        # - ehpc_cluster: application group from EHPC cluster synchronization
+        # - kubernetes: application group from Container Service for Kubernetes synchronization
+        # - tag: application group from automatic creation by using labels
+        # - resMgr: application group created by using resource groups
+        # - ess: application group from elastic scaling synchronization
+        # - aone_group: application group synchronized from or associated with an Aone application
         self.types = types
 
     def validate(self):

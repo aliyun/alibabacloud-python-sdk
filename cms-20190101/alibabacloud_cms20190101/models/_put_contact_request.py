@@ -11,6 +11,7 @@ class PutContactRequest(DaraModel):
         channels: main_models.PutContactRequestChannels = None,
         contact_name: str = None,
         describe: str = None,
+        dry_run: bool = None,
         lang: str = None,
     ):
         self.channels = channels
@@ -22,11 +23,13 @@ class PutContactRequest(DaraModel):
         # 
         # This parameter is required.
         self.describe = describe
-        # The language in which alert notifications are sent. Valid values:
-        # - zh-cn: simplified Chinese.
+        # Specifies whether to perform only a dry run.
+        self.dry_run = dry_run
+        # The language of the alert notification. Valid values:
+        # - zh-cn: Simplified Chinese.
         # - en: English.
         # 
-        # > If you do not set this parameter, the language is automatically determined based on the region of the account.
+        # > If you do not specify this parameter, the system automatically determines the language based on the region of the account.
         self.lang = lang
 
     def validate(self):
@@ -47,6 +50,9 @@ class PutContactRequest(DaraModel):
         if self.describe is not None:
             result['Describe'] = self.describe
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.lang is not None:
             result['Lang'] = self.lang
 
@@ -64,6 +70,9 @@ class PutContactRequest(DaraModel):
         if m.get('Describe') is not None:
             self.describe = m.get('Describe')
 
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
 
@@ -77,29 +86,29 @@ class PutContactRequestChannels(DaraModel):
         mail: str = None,
         sms: str = None,
     ):
-        # The TradeManager ID of the alert contact.
+        # The TradeManager contact.
         # 
-        # <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
-        # <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
-        # <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
+        # <props="china">You must specify at least one of the following contact methods: mobile phone number, email address, DingTalk chatbot, and TradeManager.
+        # <props="intl">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
+        # <props="partner">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
         self.ali_im = ali_im
-        # The webhook URL of the DingTalk chatbot.
+        # The DingTalk chatbot.
         # 
-        # <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
-        # <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
-        # <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
+        # <props="china">You must specify at least one of the following contact methods: mobile phone number, email address, DingTalk chatbot, and TradeManager.
+        # <props="intl">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
+        # <props="partner">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
         self.ding_web_hook = ding_web_hook
-        # The email address of the alert contact. An activation link is sent to the email address. The alert contact is added only after the link is activated.
+        # The email address. The email address receives an activation link. The contact is added only after the link is activated.
         # 
-        # <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
-        # <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
-        # <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
+        # <props="china">You must specify at least one of the following contact methods: mobile phone number, email address, DingTalk chatbot, and TradeManager.
+        # <props="intl">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
+        # <props="partner">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
         self.mail = mail
-        # The phone number of the alert contact. An activation link is sent to the phone number. The alert contact is added only after the link is activated.
+        # The mobile phone number. The mobile phone number receives an activation link. The contact is added only after the link is activated.
         # 
-        # <props="china">Specify at least one of the following contact methods: phone number, email address, DingTalk chatbot, or TradeManager.
-        # <props="intl">Specify at least one of the following contact methods: email address or DingTalk chatbot.
-        # <props="partner">Specify at least one of the following contact methods: email address or DingTalk chatbot..
+        # <props="china">You must specify at least one of the following contact methods: mobile phone number, email address, DingTalk chatbot, and TradeManager.
+        # <props="intl">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
+        # <props="partner">You must specify at least one of the following contact methods: email address and DingTalk chatbot.
         self.sms = sms
 
     def validate(self):

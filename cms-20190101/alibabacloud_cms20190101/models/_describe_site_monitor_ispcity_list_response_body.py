@@ -16,20 +16,20 @@ class DescribeSiteMonitorISPCityListResponseBody(DaraModel):
         request_id: str = None,
         success: str = None,
     ):
-        # 状态码。
+        # The status code.
         # 
-        # > 200表示成功。
+        # > 200 indicates success.
         self.code = code
         self.isp_city_list = isp_city_list
-        # 返回信息。
+        # The message returned.
         self.message = message
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 操作是否成功。取值：
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true：成功。
+        # - true: successful.
         # 
-        # - false：失败。
+        # - false: failed.
         self.success = success
 
     def validate(self):

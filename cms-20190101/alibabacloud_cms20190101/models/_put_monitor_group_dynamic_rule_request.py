@@ -17,10 +17,11 @@ class PutMonitorGroupDynamicRuleRequest(DaraModel):
         is_async: bool = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
         self.client_token = client_token
-        # Specifies whether to only precheck this request. Valid values:
-        # - **true**: sends a check request. No security group is associated with the instance. The check items include whether required parameters are specified, the request format, and service limits. If the check fails, the corresponding error is returned. If the check succeeds, the `DryRunOperation` error code is returned.
-        # - **false** (default): sends a normal request. If the check succeeds, an HTTP 2xx status code is returned and the operation is directly performed.
+        # Specifies whether to only precheck the request. Valid values:
+        # - **true**: sends a check request. No security group is associated with the instance. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the check fails, an error is returned. If the check succeeds, the error code `DryRunOperation` is returned.
+        # - **false** (default): sends a normal request. If the check succeeds, an HTTP 2xx status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the application group.
         # 
@@ -104,7 +105,7 @@ class PutMonitorGroupDynamicRuleRequestGroupRules(DaraModel):
     ):
         # The type of Alibaba Cloud service for the dynamic alert rule. Valid values of N: 1 to 3. Valid values:
         # 
-        # - ecs: Elastic Compute Service (ECS) server.
+        # - ecs: Elastic Compute Service server.
         # 
         # - rds: relational database.
         # 
@@ -173,8 +174,8 @@ class PutMonitorGroupDynamicRuleRequestGroupRulesFilters(DaraModel):
         value: str = None,
     ):
         # The filter condition for instances. Valid values of N: 1 to 3. Valid values:
-        # - contains: Contains.
-        # - notContains: Does not contain.
+        # - contains: Includes.
+        # - notContains: Does not include.
         # - startWith: Prefix.
         # - endWith: Suffix.
         # 

@@ -13,11 +13,11 @@ class BatchExportShrinkRequest(DaraModel):
         metric: str = None,
         namespace: str = None,
     ):
-        # The cursor value. This parameter is required when you repeatedly call this operation to export data. You can obtain the Cursor value by using one of the following methods:
+        # The value of Cursor. This parameter is required when you repeatedly call this operation to export data. You can obtain the value of Cursor by using one of the following methods:
         # 
-        # - When you call this operation for the first time, you must call the Cursor operation to obtain the Cursor value. For more information, see [Cursor](https://help.aliyun.com/document_detail/2330730.html).
+        # - When you call this operation for the first time, you must call the Cursor operation to obtain the value of Cursor. For more information, see [Cursor](https://help.aliyun.com/document_detail/2330730.html).
         # 
-        # - When you call this operation again, you can obtain the Cursor value from the response of the previous call.
+        # - When you call this operation again, you can obtain the value of Cursor from the response of the previous call.
         # 
         # This parameter is required.
         self.cursor = cursor
@@ -29,13 +29,13 @@ class BatchExportShrinkRequest(DaraModel):
         self.length = length
         # The measurements used to customize the returned data. By default, all measurements are returned.
         # 
-        # For example, the `cpu_idle` monitoring metrics for the `acs_ecs_dashboard` cloud service have three measurement columns: `Average`, `Maximum`, and `Minimum`. If you want to return only the `Average` and `Maximum` columns, set the Settings of this parameter to the `["Average", "Maximum"]` array.
+        # For example, the cpu_idle monitoring metric of the acs_ecs_dashboard cloud service has three measurement columns: Average, Maximum, and Minimum. If you want to return only the Average and Maximum columns, you can apply the following Settings to this parameter: ["Average", "Maximum"].
         # 
-        # For more information about how to obtain the measurements of the monitoring metrics for a cloud service, see the `statistics` column in [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For more information about how to obtain the measurements of a cloud service monitoring metric, see the statistics column in [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         self.measurements_shrink = measurements_shrink
-        # The name of the monitoring metric for the cloud service.
+        # The name of the cloud service monitoring metric.
         # 
-        # For more information about how to obtain the monitoring metric name of a cloud service, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+        # For more information about how to obtain the name of a cloud service monitoring metric, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
         # > This parameter must be the same as the Metric request parameter in the Cursor operation.
         # 

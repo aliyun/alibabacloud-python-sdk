@@ -13,7 +13,7 @@ class CreateMonitorGroupByResourceGroupIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
         # > 200 indicates success.
         self.code = code
@@ -25,9 +25,9 @@ class CreateMonitorGroupByResourceGroupIdResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: Successful.
+        # - true: The operation was successful.
         # 
-        # - false: Failed.
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

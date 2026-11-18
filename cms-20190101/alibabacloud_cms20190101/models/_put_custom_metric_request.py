@@ -64,48 +64,48 @@ class PutCustomMetricRequestMetricList(DaraModel):
         type: str = None,
         values: str = None,
     ):
-        # The dimension map, which is used to query monitoring data of a specified resource. Valid values of N: 1 to 21.
+        # The dimension map used to query the monitoring data of a specified resource. Valid values of N: 1 to 21.
         # 
-        # Format: a collection of key-value pairs. A commonly used key-value pair collection is: `{"Key":"Value"}`.
+        # Format: a set of key-value pairs. A common key-value pair is `{"Key":"Value"}`.
         # 
-        # The length of Key and Value is 1 to 64 characters. Characters beyond the first 64 are truncated.
+        # The key and value must be 1 to 64 characters in length. If the length exceeds 64 characters, the string is truncated to 64 characters.
         # 
-        # The values of Key and Value can contain letters, digits, periods (.), hyphens (-), underscores (_), forward slashes (/), and backslashes (\\).
+        # The key and value can contain letters, digits, periods (.), hyphens (-), underscores (_), forward slashes (/), and backslashes (\\).
         # 
-        # > Dimensions must be passed in as a JSON string that represents the map object, and must be passed in order.
+        # > You must specify the Dimensions parameter as a JSON string to represent the map object. The key-value pairs must be specified in order.
         # 
         # This parameter is required.
         self.dimensions = dimensions
         # The ID of the application group. Valid values of N: 1 to 21.
         # 
-        # > If the metric does not belong to any application group, enter 0.
+        # > If the metric does not belong to an application group, set this parameter to 0.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # The name of the metric. Valid values of N: 1 to 21. For more information, see [Metrics of cloud services](https://help.aliyun.com/document_detail/163515.html).
+        # The name of the metric. Valid values of N: 1 to 21. For more information, see [Cloud service metrics](https://help.aliyun.com/document_detail/163515.html).
         # 
         # This parameter is required.
         self.metric_name = metric_name
         # The aggregation period. Valid values of N: 1 to 21. Unit: seconds. Valid values: 60 and 300.
         # 
-        # > If the type of the reported value is 1, you must set this parameter.
+        # > If the type of the reported value is 1, you must specify this parameter.
         self.period = period
-        # The time when the metric occurred. Valid values of N: 1 to 21. The following two types of values are supported:
-        # - UTC time. Format: YYYY-MM-DDThh:mm:ssZ. For example: 20171012T132456.888+0800.
-        # - A Long-type timestamp. For example: 1508136760000.
+        # The time when the metric was generated. Valid values of N: 1 to 21. Supported formats:
+        # - UTC time. Format: YYYY-MM-DDThh:mm:ssZ. Example: 20171012T132456.888+0800.
+        # - Long timestamp. Example: 1508136760000.
         self.time = time
         # The type of the reported value. Valid values of N: 1 to 21. Valid values:
         # 
-        # - 0: raw data.
-        # - 1: aggregate data.
+        # - 0: Raw data.
+        # - 1: Aggregate data.
         # 
-        # > When you report aggregate data, we recommend that you report both data with a period of 60 seconds and data with a period of 300 seconds. Otherwise, monitoring data cannot be queried for a time span of more than 7 days.
+        # > When reporting aggregate data, report data for both the 60-second and 300-second periods. Otherwise, you cannot query monitoring data that spans more than 7 days.
         # 
         # This parameter is required.
         self.type = type
-        # The collection of metric values. Valid values of N: 1 to 21.
+        # The set of metric values. Valid values of N: 1 to 21.
         # 
-        # > If the type of the reported value is 0, the raw values are reported. CloudMonitor aggregates raw values into multiple values, such as maximum, count, and sum, by period.
+        # > If the type of the reported value is 0, the reported values are raw values. CloudMonitor aggregates the raw values into multiple values such as maximum, count, and sum based on the period.
         # 
         # This parameter is required.
         self.values = values

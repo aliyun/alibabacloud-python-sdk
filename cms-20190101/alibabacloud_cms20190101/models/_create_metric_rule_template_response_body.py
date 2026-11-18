@@ -13,8 +13,8 @@ class CreateMetricRuleTemplateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
-        # > 200 indicates success.
+        # The HTTP status code.
+        # > A status code of 200 indicates that the request was successful.
         self.code = code
         # The ID of the alert template.
         self.id = id
@@ -22,10 +22,11 @@ class CreateMetricRuleTemplateResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # - true: The call was successful.
-        # - false: The call failed.
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

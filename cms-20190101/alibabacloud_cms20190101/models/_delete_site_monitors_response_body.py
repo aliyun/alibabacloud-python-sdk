@@ -20,11 +20,11 @@ class DeleteSiteMonitorsResponseBody(DaraModel):
         self.code = code
         # The number of affected rows.
         self.data = data
-        # The returned message. If the request is successful, a success message is returned. If the request fails, the cause of the failure is returned, such as `TaskId not found`.
+        # The returned message. If the request succeeds, a success message is returned. If the request fails, the cause of the failure is returned, such as `TaskId not found`.
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation was successful. A value of true indicates success, and a value of false indicates failure.
+        # Indicates whether the operation is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):

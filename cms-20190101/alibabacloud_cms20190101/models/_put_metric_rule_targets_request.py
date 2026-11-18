@@ -10,14 +10,17 @@ from darabonba.model import DaraModel
 class PutMetricRuleTargetsRequest(DaraModel):
     def __init__(
         self,
+        dry_run: bool = None,
         region_id: str = None,
         rule_id: str = None,
         targets: List[main_models.PutMetricRuleTargetsRequestTargets] = None,
     ):
+        # Specifies whether to perform a dry run.
+        self.dry_run = dry_run
         self.region_id = region_id
         # The ID of the alert rule.
         # 
-        # For information about how to obtain the alert rule ID, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
+        # For more information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](https://help.aliyun.com/document_detail/114941.html).
         # 
         # This parameter is required.
         self.rule_id = rule_id
@@ -37,6 +40,9 @@ class PutMetricRuleTargetsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -52,6 +58,9 @@ class PutMetricRuleTargetsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
@@ -74,51 +83,51 @@ class PutMetricRuleTargetsRequestTargets(DaraModel):
         json_params: str = None,
         level: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS), elastic scaling (ESS), Simple Log Service (SLS), and Function Compute (FC) are supported.
+        # The ARN of the resource. Simple Message Queue (formerly MNS), Auto Scaling (ESS), Simple Log Service (SLS), and Function Compute (FC) are supported.
         # 
-        # The following section describes the ARN parameter metric description for Simple Message Queue (formerly MNS):
+        # The ARN parameters for Simple Message Queue (formerly MNS) are as follows:
         # 
-        # `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`
+        # `acs:mns:{regionId}:{userId}:/{resource type}/{resource name}/message`.
         # 
-        # - {regionId}: the region where the MSMQ or topic of Simple Message Queue (formerly MNS) resides.
-        # - {userId}: the Alibaba Cloud account that owns the resource.
-        # - {Resource type}: the type of the resource that accepts alert notifications. Valid values:
+        # - {regionId}: the region where the Simple Message Queue (formerly MNS) queue or topic resides.
+        # - {userId}: the Alibaba Cloud account to which the resource belongs.
+        # - {resource type}: the type of the resource that accepts alerts. Valid values:
         # 
-        #   - **queues**: queue.
-        #   - **topics**: topic.
+        #   - **queues**: queue
+        #   - **topics**: topic
         # 
-        # - {Resource name}: the name of the resource.
+        # - {resource name}: the name of the resource.
         # 
         #   - If the resource type is **queues**, the resource name is the queue name.
         #   - If the resource type is **topics**, the resource name is the topic name.
         # 
-        # ARN for elastic scaling:
+        # The ARN for Auto Scaling:
         # 
-        # acs:ess:{regionId}:{userId}:scalingGroupId/{Scaling group ID}:scalingRuleId/{Scaling rule ID}
+        # acs:ess:{regionId}:{userId}:scalingGroupId/{scaling group ID}:scalingRuleId/{scaling rule ID}
         # 
-        # ARN for Simple Log Service:
+        # The ARN for Simple Log Service:
         # 
-        # acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}
+        # acs:log:{regionId}:{userId}:project/{project name}/logstore/{Logstore name}
         # 
-        # ARN for Function Compute:
+        # The ARN for Function Compute:
         # 
-        # acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}.
+        # acs:fc:{regionId}:{userId}:services/{service name}/functions/{function name}
         # 
         # This parameter is required.
         self.arn = arn
         # The ID of the alert trigger target.
         # 
-        # For information about how to obtain the alert trigger target ID, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
+        # For more information about how to obtain the ID of an alert trigger target, see [DescribeMetricRuleTargets](https://help.aliyun.com/document_detail/121592.html).
         # 
         # This parameter is required.
         self.id = id
-        # The JSON-formatted parameters of the alert callback.
+        # The JSON-formatted parameters for the alert callback.
         self.json_params = json_params
         # The alert level. Valid values:
         # 
-        # - INFO: information.
-        # - WARN: warning.
-        # - CRITICAL: critical.
+        # - INFO: information
+        # - WARN: warning
+        # - CRITICAL: critical
         self.level = level
 
     def validate(self):

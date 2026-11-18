@@ -13,7 +13,7 @@ class ModifyMetricRuleBlackListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The HTTP status code.
         # 
         # > 200 indicates success.
         self.code = code

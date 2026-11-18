@@ -11,9 +11,8 @@ class PutCustomEventResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The responses code.
-        # 
-        # > The status code 200 indicates that the request was successful.
+        # The status code.
+        # A value of 200 indicates success.
         self.code = code
         # The returned message.
         self.message = message
