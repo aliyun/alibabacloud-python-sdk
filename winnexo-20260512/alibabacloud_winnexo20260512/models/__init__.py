@@ -224,9 +224,23 @@ from ._delete_workflow_template_response import DeleteWorkflowTemplateResponse
 from ._delete_workflow_template_version_request import DeleteWorkflowTemplateVersionRequest
 from ._delete_workflow_template_version_response_body import DeleteWorkflowTemplateVersionResponseBody
 from ._delete_workflow_template_version_response import DeleteWorkflowTemplateVersionResponse
+from ._disable_conversation_share_request import DisableConversationShareRequest
+from ._disable_conversation_share_response_body import DisableConversationShareResponseBody
+from ._disable_conversation_share_response import DisableConversationShareResponse
+from ._disable_output_item_share_request import DisableOutputItemShareRequest
+from ._disable_output_item_share_response_body import DisableOutputItemShareResponseBody
+from ._disable_output_item_share_response import DisableOutputItemShareResponse
 from ._disable_token_request import DisableTokenRequest
 from ._disable_token_response_body import DisableTokenResponseBody
 from ._disable_token_response import DisableTokenResponse
+from ._enable_conversation_share_request import EnableConversationShareRequest
+from ._enable_conversation_share_shrink_request import EnableConversationShareShrinkRequest
+from ._enable_conversation_share_response_body import EnableConversationShareResponseBody
+from ._enable_conversation_share_response import EnableConversationShareResponse
+from ._enable_output_item_share_request import EnableOutputItemShareRequest
+from ._enable_output_item_share_shrink_request import EnableOutputItemShareShrinkRequest
+from ._enable_output_item_share_response_body import EnableOutputItemShareResponseBody
+from ._enable_output_item_share_response import EnableOutputItemShareResponse
 from ._enable_token_request import EnableTokenRequest
 from ._enable_token_response_body import EnableTokenResponseBody
 from ._enable_token_response import EnableTokenResponse
@@ -396,6 +410,9 @@ from ._list_available_configs_response import ListAvailableConfigsResponse
 from ._list_billing_request import ListBillingRequest
 from ._list_billing_response_body import ListBillingResponseBody
 from ._list_billing_response import ListBillingResponse
+from ._list_chat_message_contents_request import ListChatMessageContentsRequest
+from ._list_chat_message_contents_response_body import ListChatMessageContentsResponseBody
+from ._list_chat_message_contents_response import ListChatMessageContentsResponse
 from ._list_chat_sessions_request import ListChatSessionsRequest
 from ._list_chat_sessions_response_body import ListChatSessionsResponseBody
 from ._list_chat_sessions_response import ListChatSessionsResponse
@@ -523,6 +540,9 @@ from ._preview_group_source_response import PreviewGroupSourceResponse
 from ._preview_knowledge_base_source_request import PreviewKnowledgeBaseSourceRequest
 from ._preview_knowledge_base_source_response_body import PreviewKnowledgeBaseSourceResponseBody
 from ._preview_knowledge_base_source_response import PreviewKnowledgeBaseSourceResponse
+from ._preview_output_file_request import PreviewOutputFileRequest
+from ._preview_output_file_response_body import PreviewOutputFileResponseBody
+from ._preview_output_file_response import PreviewOutputFileResponse
 from ._preview_personal_source_headers import PreviewPersonalSourceHeaders
 from ._preview_personal_source_request import PreviewPersonalSourceRequest
 from ._preview_personal_source_response_body import PreviewPersonalSourceResponseBody
@@ -736,6 +756,10 @@ from ._update_scheduled_task_request import UpdateScheduledTaskRequest
 from ._update_scheduled_task_shrink_request import UpdateScheduledTaskShrinkRequest
 from ._update_scheduled_task_response_body import UpdateScheduledTaskResponseBody
 from ._update_scheduled_task_response import UpdateScheduledTaskResponse
+from ._update_share_request import UpdateShareRequest
+from ._update_share_shrink_request import UpdateShareShrinkRequest
+from ._update_share_response_body import UpdateShareResponseBody
+from ._update_share_response import UpdateShareResponse
 from ._update_source_content_request import UpdateSourceContentRequest
 from ._update_source_content_response_body import UpdateSourceContentResponseBody
 from ._update_source_content_response import UpdateSourceContentResponse
@@ -876,6 +900,8 @@ from ._list_app_resource_user_permissions_response_body import ListAppResourceUs
 from ._list_authorized_users_response_body import ListAuthorizedUsersResponseBodyItems
 from ._list_available_configs_response_body import ListAvailableConfigsResponseBodyConfigs
 from ._list_billing_response_body import ListBillingResponseBodyList
+from ._list_chat_message_contents_response_body import ListChatMessageContentsResponseBodyItemsAttachments
+from ._list_chat_message_contents_response_body import ListChatMessageContentsResponseBodyItems
 from ._list_collaboration_group_members_response_body import ListCollaborationGroupMembersResponseBodyItems
 from ._list_collaboration_groups_response_body import ListCollaborationGroupsResponseBodyItems
 from ._list_graph_draft_resources_response_body import ListGraphDraftResourcesResponseBodyItems
@@ -917,6 +943,9 @@ from ._list_workflow_instances_response_body import ListWorkflowInstancesRespons
 from ._list_workflow_template_versions_response_body import ListWorkflowTemplateVersionsResponseBodyItems
 from ._list_workflow_templates_response_body import ListWorkflowTemplatesResponseBodyItems
 from ._pause_work_item_response_body import PauseWorkItemResponseBodyAttachments
+from ._preview_output_file_response_body import PreviewOutputFileResponseBodySlides
+from ._preview_output_file_response_body import PreviewOutputFileResponseBodyVersionCapabilities
+from ._preview_output_file_response_body import PreviewOutputFileResponseBodyVersion
 from ._query_source_usage_trend_response_body import QuerySourceUsageTrendResponseBodyTrend
 from ._query_sync_result_response_body import QuerySyncResultResponseBodyDeptStats
 from ._query_sync_result_response_body import QuerySyncResultResponseBodyMemberStats
@@ -1203,9 +1232,23 @@ __all__ = [
     DeleteWorkflowTemplateVersionRequest,
     DeleteWorkflowTemplateVersionResponseBody,
     DeleteWorkflowTemplateVersionResponse,
+    DisableConversationShareRequest,
+    DisableConversationShareResponseBody,
+    DisableConversationShareResponse,
+    DisableOutputItemShareRequest,
+    DisableOutputItemShareResponseBody,
+    DisableOutputItemShareResponse,
     DisableTokenRequest,
     DisableTokenResponseBody,
     DisableTokenResponse,
+    EnableConversationShareRequest,
+    EnableConversationShareShrinkRequest,
+    EnableConversationShareResponseBody,
+    EnableConversationShareResponse,
+    EnableOutputItemShareRequest,
+    EnableOutputItemShareShrinkRequest,
+    EnableOutputItemShareResponseBody,
+    EnableOutputItemShareResponse,
     EnableTokenRequest,
     EnableTokenResponseBody,
     EnableTokenResponse,
@@ -1375,6 +1418,9 @@ __all__ = [
     ListBillingRequest,
     ListBillingResponseBody,
     ListBillingResponse,
+    ListChatMessageContentsRequest,
+    ListChatMessageContentsResponseBody,
+    ListChatMessageContentsResponse,
     ListChatSessionsRequest,
     ListChatSessionsResponseBody,
     ListChatSessionsResponse,
@@ -1502,6 +1548,9 @@ __all__ = [
     PreviewKnowledgeBaseSourceRequest,
     PreviewKnowledgeBaseSourceResponseBody,
     PreviewKnowledgeBaseSourceResponse,
+    PreviewOutputFileRequest,
+    PreviewOutputFileResponseBody,
+    PreviewOutputFileResponse,
     PreviewPersonalSourceHeaders,
     PreviewPersonalSourceRequest,
     PreviewPersonalSourceResponseBody,
@@ -1715,6 +1764,10 @@ __all__ = [
     UpdateScheduledTaskShrinkRequest,
     UpdateScheduledTaskResponseBody,
     UpdateScheduledTaskResponse,
+    UpdateShareRequest,
+    UpdateShareShrinkRequest,
+    UpdateShareResponseBody,
+    UpdateShareResponse,
     UpdateSourceContentRequest,
     UpdateSourceContentResponseBody,
     UpdateSourceContentResponse,
@@ -1855,6 +1908,8 @@ __all__ = [
     ListAuthorizedUsersResponseBodyItems,
     ListAvailableConfigsResponseBodyConfigs,
     ListBillingResponseBodyList,
+    ListChatMessageContentsResponseBodyItemsAttachments,
+    ListChatMessageContentsResponseBodyItems,
     ListCollaborationGroupMembersResponseBodyItems,
     ListCollaborationGroupsResponseBodyItems,
     ListGraphDraftResourcesResponseBodyItems,
@@ -1896,6 +1951,9 @@ __all__ = [
     ListWorkflowTemplateVersionsResponseBodyItems,
     ListWorkflowTemplatesResponseBodyItems,
     PauseWorkItemResponseBodyAttachments,
+    PreviewOutputFileResponseBodySlides,
+    PreviewOutputFileResponseBodyVersionCapabilities,
+    PreviewOutputFileResponseBodyVersion,
     QuerySourceUsageTrendResponseBodyTrend,
     QuerySyncResultResponseBodyDeptStats,
     QuerySyncResultResponseBodyMemberStats,

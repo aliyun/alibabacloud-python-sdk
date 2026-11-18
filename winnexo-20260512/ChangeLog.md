@@ -1,3 +1,13 @@
+2026-11-18 Version: 1.10.0
+- Support API DisableConversationShare.
+- Support API DisableOutputItemShare.
+- Support API EnableConversationShare.
+- Support API EnableOutputItemShare.
+- Support API ListChatMessageContents.
+- Support API PreviewOutputFile.
+- Support API UpdateShare.
+
+
 2026-11-17 Version: 1.9.1
 - Generated python 2026-05-12 for WinNexo.
 

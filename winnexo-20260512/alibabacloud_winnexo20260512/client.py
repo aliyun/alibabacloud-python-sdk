@@ -7106,6 +7106,182 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_workflow_template_version_with_options_async(request, headers, runtime)
 
+    def disable_conversation_share_with_options(
+        self,
+        request: main_models.DisableConversationShareRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableConversationShareResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableConversationShare',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/disableConversationShare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableConversationShareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_conversation_share_with_options_async(
+        self,
+        request: main_models.DisableConversationShareRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableConversationShareResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableConversationShare',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/disableConversationShare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableConversationShareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_conversation_share(
+        self,
+        request: main_models.DisableConversationShareRequest,
+    ) -> main_models.DisableConversationShareResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.disable_conversation_share_with_options(request, headers, runtime)
+
+    async def disable_conversation_share_async(
+        self,
+        request: main_models.DisableConversationShareRequest,
+    ) -> main_models.DisableConversationShareResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.disable_conversation_share_with_options_async(request, headers, runtime)
+
+    def disable_output_item_share_with_options(
+        self,
+        request: main_models.DisableOutputItemShareRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableOutputItemShareResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.output_item_id):
+            body['outputItemId'] = request.output_item_id
+        if not DaraCore.is_null(request.output_item_name):
+            body['outputItemName'] = request.output_item_name
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableOutputItemShare',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/disableOutputItemShare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableOutputItemShareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_output_item_share_with_options_async(
+        self,
+        request: main_models.DisableOutputItemShareRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableOutputItemShareResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.output_item_id):
+            body['outputItemId'] = request.output_item_id
+        if not DaraCore.is_null(request.output_item_name):
+            body['outputItemName'] = request.output_item_name
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableOutputItemShare',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/disableOutputItemShare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableOutputItemShareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_output_item_share(
+        self,
+        request: main_models.DisableOutputItemShareRequest,
+    ) -> main_models.DisableOutputItemShareResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.disable_output_item_share_with_options(request, headers, runtime)
+
+    async def disable_output_item_share_async(
+        self,
+        request: main_models.DisableOutputItemShareRequest,
+    ) -> main_models.DisableOutputItemShareResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.disable_output_item_share_with_options_async(request, headers, runtime)
+
     def disable_token_with_options(
         self,
         request: main_models.DisableTokenRequest,
@@ -7189,6 +7365,230 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.disable_token_with_options_async(request, headers, runtime)
+
+    def enable_conversation_share_with_options(
+        self,
+        tmp_req: main_models.EnableConversationShareRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableConversationShareResponse:
+        tmp_req.validate()
+        request = main_models.EnableConversationShareShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.share_user_group_ids):
+            request.share_user_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_group_ids, 'shareUserGroupIds', 'json')
+        if not DaraCore.is_null(tmp_req.share_user_ids):
+            request.share_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_ids, 'shareUserIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.share_access_type):
+            body['shareAccessType'] = request.share_access_type
+        if not DaraCore.is_null(request.share_user_group_ids_shrink):
+            body['shareUserGroupIds'] = request.share_user_group_ids_shrink
+        if not DaraCore.is_null(request.share_user_ids_shrink):
+            body['shareUserIds'] = request.share_user_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableConversationShare',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/enableConversationShare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableConversationShareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_conversation_share_with_options_async(
+        self,
+        tmp_req: main_models.EnableConversationShareRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableConversationShareResponse:
+        tmp_req.validate()
+        request = main_models.EnableConversationShareShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.share_user_group_ids):
+            request.share_user_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_group_ids, 'shareUserGroupIds', 'json')
+        if not DaraCore.is_null(tmp_req.share_user_ids):
+            request.share_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_ids, 'shareUserIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.share_access_type):
+            body['shareAccessType'] = request.share_access_type
+        if not DaraCore.is_null(request.share_user_group_ids_shrink):
+            body['shareUserGroupIds'] = request.share_user_group_ids_shrink
+        if not DaraCore.is_null(request.share_user_ids_shrink):
+            body['shareUserIds'] = request.share_user_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableConversationShare',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/enableConversationShare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableConversationShareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_conversation_share(
+        self,
+        request: main_models.EnableConversationShareRequest,
+    ) -> main_models.EnableConversationShareResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_conversation_share_with_options(request, headers, runtime)
+
+    async def enable_conversation_share_async(
+        self,
+        request: main_models.EnableConversationShareRequest,
+    ) -> main_models.EnableConversationShareResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_conversation_share_with_options_async(request, headers, runtime)
+
+    def enable_output_item_share_with_options(
+        self,
+        tmp_req: main_models.EnableOutputItemShareRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableOutputItemShareResponse:
+        tmp_req.validate()
+        request = main_models.EnableOutputItemShareShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.share_user_group_ids):
+            request.share_user_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_group_ids, 'shareUserGroupIds', 'json')
+        if not DaraCore.is_null(tmp_req.share_user_ids):
+            request.share_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_ids, 'shareUserIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.output_item_id):
+            body['outputItemId'] = request.output_item_id
+        if not DaraCore.is_null(request.output_item_name):
+            body['outputItemName'] = request.output_item_name
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.share_access_type):
+            body['shareAccessType'] = request.share_access_type
+        if not DaraCore.is_null(request.share_user_group_ids_shrink):
+            body['shareUserGroupIds'] = request.share_user_group_ids_shrink
+        if not DaraCore.is_null(request.share_user_ids_shrink):
+            body['shareUserIds'] = request.share_user_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableOutputItemShare',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/enableOutputItemShare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableOutputItemShareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_output_item_share_with_options_async(
+        self,
+        tmp_req: main_models.EnableOutputItemShareRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableOutputItemShareResponse:
+        tmp_req.validate()
+        request = main_models.EnableOutputItemShareShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.share_user_group_ids):
+            request.share_user_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_group_ids, 'shareUserGroupIds', 'json')
+        if not DaraCore.is_null(tmp_req.share_user_ids):
+            request.share_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_ids, 'shareUserIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.output_item_id):
+            body['outputItemId'] = request.output_item_id
+        if not DaraCore.is_null(request.output_item_name):
+            body['outputItemName'] = request.output_item_name
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.share_access_type):
+            body['shareAccessType'] = request.share_access_type
+        if not DaraCore.is_null(request.share_user_group_ids_shrink):
+            body['shareUserGroupIds'] = request.share_user_group_ids_shrink
+        if not DaraCore.is_null(request.share_user_ids_shrink):
+            body['shareUserIds'] = request.share_user_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableOutputItemShare',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/enableOutputItemShare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableOutputItemShareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_output_item_share(
+        self,
+        request: main_models.EnableOutputItemShareRequest,
+    ) -> main_models.EnableOutputItemShareResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.enable_output_item_share_with_options(request, headers, runtime)
+
+    async def enable_output_item_share_async(
+        self,
+        request: main_models.EnableOutputItemShareRequest,
+    ) -> main_models.EnableOutputItemShareResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.enable_output_item_share_with_options_async(request, headers, runtime)
 
     def enable_token_with_options(
         self,
@@ -12114,6 +12514,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_billing_with_options_async(request, headers, runtime)
 
+    def list_chat_message_contents_with_options(
+        self,
+        request: main_models.ListChatMessageContentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListChatMessageContentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.max_chars_per_attachment):
+            body['maxCharsPerAttachment'] = request.max_chars_per_attachment
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListChatMessageContents',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listChatMessageContents',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListChatMessageContentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_chat_message_contents_with_options_async(
+        self,
+        request: main_models.ListChatMessageContentsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListChatMessageContentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.max_chars_per_attachment):
+            body['maxCharsPerAttachment'] = request.max_chars_per_attachment
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_id):
+            body['sourceId'] = request.source_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListChatMessageContents',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/listChatMessageContents',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListChatMessageContentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_chat_message_contents(
+        self,
+        request: main_models.ListChatMessageContentsRequest,
+    ) -> main_models.ListChatMessageContentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_chat_message_contents_with_options(request, headers, runtime)
+
+    async def list_chat_message_contents_async(
+        self,
+        request: main_models.ListChatMessageContentsRequest,
+    ) -> main_models.ListChatMessageContentsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_chat_message_contents_with_options_async(request, headers, runtime)
+
     def list_chat_sessions_with_options(
         self,
         request: main_models.ListChatSessionsRequest,
@@ -15939,6 +16435,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.preview_knowledge_base_source_with_options_async(request, headers, runtime)
+
+    def preview_output_file_with_options(
+        self,
+        request: main_models.PreviewOutputFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewOutputFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.output_item_id):
+            body['outputItemId'] = request.output_item_id
+        if not DaraCore.is_null(request.version_id):
+            body['versionId'] = request.version_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewOutputFile',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/previewOutputFile',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewOutputFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def preview_output_file_with_options_async(
+        self,
+        request: main_models.PreviewOutputFileRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.PreviewOutputFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.output_item_id):
+            body['outputItemId'] = request.output_item_id
+        if not DaraCore.is_null(request.version_id):
+            body['versionId'] = request.version_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'PreviewOutputFile',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/previewOutputFile',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PreviewOutputFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def preview_output_file(
+        self,
+        request: main_models.PreviewOutputFileRequest,
+    ) -> main_models.PreviewOutputFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.preview_output_file_with_options(request, headers, runtime)
+
+    async def preview_output_file_async(
+        self,
+        request: main_models.PreviewOutputFileRequest,
+    ) -> main_models.PreviewOutputFileResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.preview_output_file_with_options_async(request, headers, runtime)
 
     def preview_personal_source_with_options(
         self,
@@ -22719,6 +23303,134 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_scheduled_task_with_options_async(request, headers, runtime)
+
+    def update_share_with_options(
+        self,
+        tmp_req: main_models.UpdateShareRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateShareResponse:
+        tmp_req.validate()
+        request = main_models.UpdateShareShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.share_user_group_ids):
+            request.share_user_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_group_ids, 'shareUserGroupIds', 'json')
+        if not DaraCore.is_null(tmp_req.share_user_ids):
+            request.share_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_ids, 'shareUserIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.output_item_id):
+            body['outputItemId'] = request.output_item_id
+        if not DaraCore.is_null(request.output_item_name):
+            body['outputItemName'] = request.output_item_name
+        if not DaraCore.is_null(request.refresh_share_link):
+            body['refreshShareLink'] = request.refresh_share_link
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.share_access_type):
+            body['shareAccessType'] = request.share_access_type
+        if not DaraCore.is_null(request.share_enabled):
+            body['shareEnabled'] = request.share_enabled
+        if not DaraCore.is_null(request.share_user_group_ids_shrink):
+            body['shareUserGroupIds'] = request.share_user_group_ids_shrink
+        if not DaraCore.is_null(request.share_user_ids_shrink):
+            body['shareUserIds'] = request.share_user_ids_shrink
+        if not DaraCore.is_null(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateShare',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateShare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateShareResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_share_with_options_async(
+        self,
+        tmp_req: main_models.UpdateShareRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateShareResponse:
+        tmp_req.validate()
+        request = main_models.UpdateShareShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.share_user_group_ids):
+            request.share_user_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_group_ids, 'shareUserGroupIds', 'json')
+        if not DaraCore.is_null(tmp_req.share_user_ids):
+            request.share_user_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.share_user_ids, 'shareUserIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        body = {}
+        if not DaraCore.is_null(request.output_item_id):
+            body['outputItemId'] = request.output_item_id
+        if not DaraCore.is_null(request.output_item_name):
+            body['outputItemName'] = request.output_item_name
+        if not DaraCore.is_null(request.refresh_share_link):
+            body['refreshShareLink'] = request.refresh_share_link
+        if not DaraCore.is_null(request.session_id):
+            body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.share_access_type):
+            body['shareAccessType'] = request.share_access_type
+        if not DaraCore.is_null(request.share_enabled):
+            body['shareEnabled'] = request.share_enabled
+        if not DaraCore.is_null(request.share_user_group_ids_shrink):
+            body['shareUserGroupIds'] = request.share_user_group_ids_shrink
+        if not DaraCore.is_null(request.share_user_ids_shrink):
+            body['shareUserIds'] = request.share_user_ids_shrink
+        if not DaraCore.is_null(request.target_type):
+            body['targetType'] = request.target_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateShare',
+            version = '2026-05-12',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/updateShare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateShareResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_share(
+        self,
+        request: main_models.UpdateShareRequest,
+    ) -> main_models.UpdateShareResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_share_with_options(request, headers, runtime)
+
+    async def update_share_async(
+        self,
+        request: main_models.UpdateShareRequest,
+    ) -> main_models.UpdateShareResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_share_with_options_async(request, headers, runtime)
 
     def update_source_content_with_options(
         self,
