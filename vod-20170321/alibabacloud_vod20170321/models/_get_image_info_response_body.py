@@ -11,7 +11,7 @@ class GetImageInfoResponseBody(DaraModel):
         image_info: main_models.GetImageInfoResponseBodyImageInfo = None,
         request_id: str = None,
     ):
-        # The image information.
+        # The image information list.
         self.image_info = image_info
         # The request ID.
         self.request_id = request_id
@@ -67,7 +67,7 @@ class GetImageInfoResponseBodyImageInfo(DaraModel):
         self.cate_id = cate_id
         # The category name.
         self.cate_name = cate_name
-        # The time when the image was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
+        # The time when the image was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The image description.
         self.description = description
@@ -75,14 +75,14 @@ class GetImageInfoResponseBodyImageInfo(DaraModel):
         self.image_id = image_id
         # The image type. Valid values:
         # 
-        # - **default**: regular image.
-        # - **cover**: video thumbnail.
+        # - **default**: regular image
+        # - **cover**: video thumbnail
         self.image_type = image_type
-        # The mezzanine information of the image.
+        # The image source information.
         self.mezzanine = mezzanine
         # The image status. Valid values:
         # 
-        # - **Uploading**: The image is being uploaded. This is the initial status.
+        # - **Uploading**: The initial status, which indicates that the image is being uploaded.
         # - **Normal**: The image is uploaded.
         # - **UploadFail**: The image failed to be uploaded.
         self.status = status
@@ -92,7 +92,7 @@ class GetImageInfoResponseBodyImageInfo(DaraModel):
         self.tags = tags
         # The image title.
         self.title = title
-        # The image access URL. If a CDN domain name is configured, the CDN URL is returned. Otherwise, the OSS URL is returned.
+        # The image access URL. If a CDN domain name is configured, the value is a CDN URL. Otherwise, the value is an OSS URL.
         self.url = url
 
     def validate(self):
@@ -202,11 +202,11 @@ class GetImageInfoResponseBodyImageInfoMezzanine(DaraModel):
         self.file_size = file_size
         # The OSS URL of the image file.
         self.file_url = file_url
-        # The image height. Unit: pixel.
+        # The image height. Unit: pixels.
         self.height = height
-        # The address of the uploaded source image file.
+        # The URL of the uploaded source image file.
         self.original_file_name = original_file_name
-        # The image width. Unit: pixel.
+        # The image width. Unit: pixels.
         self.width = width
 
     def validate(self):

@@ -12,14 +12,14 @@ class CreateAppInfoRequest(DaraModel):
         resource_group_id: str = None,
     ):
         # The application name. The name must be unique.
-        # - The name can be up to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), hyphens (-), and at signs (@).
-        # - UTF-8 encoding.
+        # - The name can be up to 128 characters in length and can contain only Chinese characters, uppercase and lowercase letters, digits, periods (.), hyphens (-), and at signs (@).
+        # - The name must be encoded in UTF-8.
         # 
         # This parameter is required.
         self.app_name = app_name
         # The application description.
         # - The description can be up to 512 characters in length.
-        # - UTF-8 encoding.
+        # - The description must be encoded in UTF-8.
         self.description = description
         # The resource group ID.
         self.resource_group_id = resource_group_id

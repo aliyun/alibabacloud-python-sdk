@@ -12,7 +12,7 @@ class UpdateAttachedMediaInfosResponseBody(DaraModel):
         non_exist_media_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of the auxiliary media assets that do not exist.
+        # The list of IDs of non-existent auxiliary media assets.
         self.non_exist_media_ids = non_exist_media_ids
         # The request ID.
         self.request_id = request_id

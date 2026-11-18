@@ -19,33 +19,33 @@ class DescribeVodPlayerDimensionDataRequest(DaraModel):
         self.app_id = app_id
         # The dimension type. Valid values:
         # 
-        # - Os: operating system.
-        # - AppVersion: application version.
+        # - Os: Operating system.
+        # - AppVersion: App version.
         # - SdkVersion: SDK version.
-        # - Codec: codec.
-        # - VideoType: video format.
-        # - Network: network type.
-        # - Isp: Internet service provider.
-        # - VideoDefinition: resolution.
-        # - Domain: domain name.
-        # - Country: country.
-        # - Province: province.
-        # - ErrorCode: error code.
-        # - IsHw: whether hardware decoding is used.
+        # - Codec: Codec.
+        # - VideoType: Video format.
+        # - Network: Network type.
+        # - Isp: ISP.
+        # - VideoDefinition: Resolution.
+        # - Domain: Domain name.
+        # - Country: Country.
+        # - Province: Province.
+        # - ErrorCode: Error code.
+        # - IsHw: Hardware decoding.
         # 
         # This parameter is required.
         self.dimension = dimension
-        # The end time of the query. Specify the time in the yyyy-mm-ddthh:mm:ssz format (UTC).
+        # The end time of the query. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
         self.end_time = end_time
-        # The region filter used when querying the Province or Isp dimension metadata. Valid values:
+        # The region used to limit the query scope when querying the metadata for the Province and ISP dimensions. Valid values:
         # 
-        # - ALL (default): all regions.
+        # - ALL (default): All regions.
         # - CN: China.
-        # - OVERSEAS: outside China.
+        # - OVERSEAS: Outside China.
         self.region = region
-        # The start time of the query. Specify the time in the <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z format (UTC).
+        # The start time of the query. Format: <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z (UTC).
         # > 
-        # > - Playback data from the last year is supported.
+        # > - You can query playback data history for the past year.
         # > - The time range for a single query cannot exceed 31 days.
         # > - The time interval is left-closed and right-open [StartTime, EndTime).
         self.start_time = start_time

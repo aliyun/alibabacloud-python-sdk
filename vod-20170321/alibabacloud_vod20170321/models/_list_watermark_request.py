@@ -11,7 +11,7 @@ class ListWatermarkRequest(DaraModel):
     ):
         # The application ID. Default value: **app-1000000**.
         # 
-        # If the multi-application service is enabled, you can specify an application ID to query watermark templates under the specified application. If you do not specify this parameter, watermark templates under all applications are returned. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
+        # If the multi-application system is enabled, you can specify an application ID to query the image and text watermark templates of a specific application. If you do not specify this parameter, the system returns the image and text watermark templates of all applications by default. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.app_id = app_id
 
     def validate(self):

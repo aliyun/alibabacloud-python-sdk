@@ -15,23 +15,23 @@ class DescribeVodDomainRealTimeTrafficDataRequest(DaraModel):
         start_time: str = None,
     ):
         # The accelerated domain name to query.
-        # - Separate multiple domain names with commas (,). You can specify up to 100 domain names at a time. 
+        # - Separate multiple domain names with commas (,). You can query up to 100 domain names at a time. 
         # - When you query multiple domain names, the returned data is the aggregated data of all specified domain names.
-        # - You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management > CDN Configuration > Domain Names** in the left-side navigation pane to view the accelerated domain names that you have added to ApsaraVideo VOD. You can also call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) operation to query the list of accelerated domain names.
+        # - You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management > CDN Configuration > Domain Names** in the left-side navigation pane to view the accelerated domain names added to ApsaraVideo VOD. Alternatively, you can call the [DescribeVodUserDomains](~~DescribeVodUserDomains~~) operation to query the list of accelerated domain names.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query.
+        # The end time of the data to retrieve.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # > The end time must be later than the start time.
         self.end_time = end_time
-        # The name of the Internet service provider (ISP). If you do not specify this parameter, data of all ISPs is queried.
+        # The English name of the ISP. If you do not specify this parameter, all ISPs are queried by default.
         self.isp_name_en = isp_name_en
-        # The name of the region. If you do not specify this parameter, data of all regions is queried.
+        # The English name of the region. If you do not specify this parameter, all regions are queried by default.
         self.location_name_en = location_name_en
         self.owner_id = owner_id
-        # The beginning of the time range to query.
+        # The start time of the data to retrieve.
         # 
         # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time

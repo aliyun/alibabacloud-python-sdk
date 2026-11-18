@@ -23,9 +23,9 @@ class GetWorkflowTaskResponseBody(DaraModel):
         self.error_code = error_code
         # The error message returned when transcoding fails.
         self.error_message = error_message
-        # The time when the task was completed. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the task was completed. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.finish_time_utc = finish_time_utc
-        # The time when the task was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
+        # The time when the task was created. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.gmt_create_utc = gmt_create_utc
         # The node results of the workflow task. The value is in JSON format and varies based on the workflow configuration.
         self.node_results = node_results
@@ -33,7 +33,7 @@ class GetWorkflowTaskResponseBody(DaraModel):
         self.outputs = outputs
         # Id of the request
         self.request_id = request_id
-        # The result of this review. This indicates the current manual review result. Valid values:
+        # The review result. Indicates the current manual review result. Valid values:
         # - **running**: Running.
         # - **stopped**: Stopped.
         # - **failed**: Failed.
@@ -44,7 +44,7 @@ class GetWorkflowTaskResponseBody(DaraModel):
         self.task_id = task_id
         # The custom information.
         self.user_data = user_data
-        # The workflow ID. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Processing** > **Workflow Management** to view the ID.
+        # The workflow ID. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration management** > **Media processing configuration** > **Workflow management** to view the ID.
         self.workflow_id = workflow_id
 
     def validate(self):

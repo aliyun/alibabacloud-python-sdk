@@ -24,7 +24,7 @@ class DescribeVodDomainMax95BpsDataResponseBody(DaraModel):
         self.domain_name = domain_name
         # The 95th percentile bandwidth in the Chinese mainland.
         self.domestic_max_95bps = domestic_max_95bps
-        # The end time of the data.
+        # The end time of the data. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
         self.end_time = end_time
         # The 95th percentile bandwidth.
         self.max_95bps = max_95bps
@@ -32,7 +32,7 @@ class DescribeVodDomainMax95BpsDataResponseBody(DaraModel):
         self.overseas_max_95bps = overseas_max_95bps
         # The request ID.
         self.request_id = request_id
-        # The start time of the data.
+        # The start time of the data. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
         self.start_time = start_time
 
     def validate(self):

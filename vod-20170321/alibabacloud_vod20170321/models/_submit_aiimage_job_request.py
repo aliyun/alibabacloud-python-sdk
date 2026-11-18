@@ -18,11 +18,11 @@ class SubmitAIImageJobRequest(DaraModel):
     ):
         # The AI task pipeline ID.
         # 
-        # > A default ID is available, so this parameter is optional. If you need to perform batch imports, use a separate task pipeline. Submit a ticket to request configuration or contact Alibaba Cloud after-sales support for configuration. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
+        # > A default ID is provided and this parameter is optional. If you need to import data in batches, you must use a separate task pipeline. Submit a ticket to apply for the configuration or contact Alibaba Cloud after-sales support. For more information about how to submit a ticket, see [Contact us](https://help.aliyun.com/document_detail/464625.html).
         self.aipipeline_id = aipipeline_id
         # The AI image template ID. You can obtain the template ID by using one of the following methods:
-        # - When you create an image template by calling the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation, the template ID is the value of the TemplateId parameter in the response.
-        # - After the template is created, you can call the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation to query the AI image template ID, which is the value of the TemplateId parameter in the response.
+        # - When you create an image template by calling the [AddAITemplate](https://help.aliyun.com/document_detail/102930.html) operation, the template ID is the value of the TemplateId response parameter.
+        # - After a template is created, you can call the [ListAITemplate](https://help.aliyun.com/document_detail/102936.html) operation to query the AI image template ID. The template ID is the value of the TemplateId response parameter.
         # 
         # This parameter is required.
         self.aitemplate_id = aitemplate_id
@@ -35,12 +35,12 @@ class SubmitAIImageJobRequest(DaraModel):
         # - The value must contain the MessageCallback or Extend parameter.
         # - The maximum length is 512 bytes.
         # 
-        # For more information about the parameter structure, see [UserData](https://help.aliyun.com/document_detail/86952.html).
+        # For more information about how to construct the parameter, see [UserData](https://help.aliyun.com/document_detail/86952.html).
         self.user_data = user_data
         # The video ID. You can obtain the video ID by using one of the following methods:
-        # - For videos uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the video ID.
-        # - When you upload a video by calling the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation, the video ID is the value of the VideoId parameter in the response.
-        # - After the video is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the video ID, which is the value of the VideoId parameter in the response.
+        # - For videos uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Assets** > **Audio/Video** to view the video ID.
+        # - When you upload a video by calling the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation, the video ID is the value of the VideoId response parameter.
+        # - After a video is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the video ID. The video ID is the value of the VideoId response parameter.
         # 
         # This parameter is required.
         self.video_id = video_id

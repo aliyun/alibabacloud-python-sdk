@@ -9,9 +9,9 @@ class UpdateAttachedMediaInfosRequest(DaraModel):
         self,
         update_content: str = None,
     ):
-        # The update content. You can update the information of up to 20 auxiliary media assets at a time. For the parameter structure, see the **UpdateContent** table below.
-        # >- The `Title`, `Description`, and `Tags` fields cannot contain emoticons.
-        # >- If a parameter is specified, the corresponding field is updated. Otherwise, the corresponding field is not overwritten or updated.
+        # The update content. You can update the information of up to 20 auxiliary media assets at a time. For the parameter structure, refer to the **UpdateContent** table below.
+        # >- The update content for `Title`, `Description`, and `Tags` cannot contain emojis.
+        # >- If a parameter is passed, the corresponding field is updated. Otherwise, the field is not overwritten or updated.
         # 
         # This parameter is required.
         self.update_content = update_content

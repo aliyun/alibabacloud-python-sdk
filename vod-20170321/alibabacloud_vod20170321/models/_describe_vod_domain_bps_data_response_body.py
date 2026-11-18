@@ -20,19 +20,19 @@ class DescribeVodDomainBpsDataResponseBody(DaraModel):
         start_time: str = None,
     ):
         self.bps_data_per_interval = bps_data_per_interval
-        # The time interval between consecutive data entries, which is the time granularity of the data. Unit: seconds.
+        # The time interval between each record, which is the time granularity of the data. Unit: seconds.
         self.data_interval = data_interval
         # The accelerated domain name.
         self.domain_name = domain_name
-        # The end of the time range for the returned data.
+        # The end time of the data. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
         self.end_time = end_time
-        # The name of the ISP in English.
+        # The English name of the ISP.
         self.isp_name_en = isp_name_en
-        # The name of the region in English.
+        # The English name of the region.
         self.location_name_en = location_name_en
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range for the returned data.
+        # The start time of the data. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
         self.start_time = start_time
 
     def validate(self):

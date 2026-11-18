@@ -16,7 +16,7 @@ class CancelUrlUploadJobsRequest(DaraModel):
         # 
         # > You must specify either JobIds or UploadUrls. If both are specified, only JobIds is processed.
         self.job_ids = job_ids
-        # The list of source video upload URLs. Separate multiple URLs with commas (,). A maximum of 10 URLs are supported.
+        # The list of source video URLs to upload. Separate multiple URLs with commas (,). A maximum of 10 URLs are supported.
         # 
         # > - URL-encode the URLs before use.
         # > - You must specify either JobIds or UploadUrls. If both are specified, only JobIds is processed.

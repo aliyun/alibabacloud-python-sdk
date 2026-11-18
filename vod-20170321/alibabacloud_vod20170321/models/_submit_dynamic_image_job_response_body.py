@@ -11,7 +11,7 @@ class SubmitDynamicImageJobResponseBody(DaraModel):
         dynamic_image_job: main_models.SubmitDynamicImageJobResponseBodyDynamicImageJob = None,
         request_id: str = None,
     ):
-        # The information about the animated image job.
+        # The animated image job information.
         self.dynamic_image_job = dynamic_image_job
         # The request ID.
         self.request_id = request_id

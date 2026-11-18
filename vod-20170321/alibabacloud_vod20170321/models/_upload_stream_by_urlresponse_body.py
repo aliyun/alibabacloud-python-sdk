@@ -16,9 +16,9 @@ class UploadStreamByURLResponseBody(DaraModel):
         self.file_url = file_url
         # The request ID.
         self.request_id = request_id
-        # The input URL of the transcoded stream. This value can be used as a request parameter of the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
+        # The input URL of the transcoded stream. You can use this value as a request parameter of the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
         self.source_url = source_url
-        # The job ID of the transcoded stream. This value can be used as a request parameter of the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
+        # The job ID of the transcoded stream. You can use this value as a request parameter of the [GetURLUploadInfos](https://help.aliyun.com/document_detail/106830.html) operation.
         # 
         # ApsaraVideo VOD uses the job ID to uniquely identify a transcoded stream file. For more information, see [Basic data types - PlayInfo](https://help.aliyun.com/document_detail/52839.html).
         self.stream_job_id = stream_job_id

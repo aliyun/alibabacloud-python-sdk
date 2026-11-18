@@ -14,7 +14,7 @@ class GetAttachedMediaInfoResponseBody(DaraModel):
         non_exist_media_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The information about the auxiliary media assets.
+        # The list of auxiliary media assets.
         self.attached_media_list = attached_media_list
         # The IDs of the auxiliary media assets that do not exist.
         self.non_exist_media_ids = non_exist_media_ids
@@ -81,36 +81,34 @@ class GetAttachedMediaInfoResponseBodyAttachedMediaList(DaraModel):
         self.app_id = app_id
         # The list of categories.
         self.categories = categories
-        # The time when the auxiliary media asset was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The time when the auxiliary media asset was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description.
-        # >This parameter is returned only if the auxiliary media asset has a description.
+        # > This parameter is returned only if the auxiliary media asset has a description.
         self.description = description
-        # The auxiliary media asset ID.
+        # The ID of the auxiliary media asset.
         self.media_id = media_id
-        # The time when the auxiliary media asset was last updated. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The time when the auxiliary media asset was last updated. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.modification_time = modification_time
         # The status of the auxiliary media asset. Valid values:
-        # - **Uploading**: uploading.
+        # - **Uploading**: The auxiliary media asset is being uploaded.
         # - **Normal**: Normal.
-        # - **UploadFail**: upload failed.
+        # - **UploadFail**: The auxiliary media asset failed to be uploaded.
         self.status = status
         # The storage address of the auxiliary media asset.
         self.storage_location = storage_location
         # The tags.
-        # >This parameter is returned only if the auxiliary media asset has tag information.
+        # > This parameter is returned only if the auxiliary media asset has tags.
         self.tags = tags
         # The title.
         self.title = title
         # The type of the auxiliary media asset. Valid values:
-        # 
         # - **watermark**: watermark.
         # - **subtitle**: subtitle.
         # - **material**: material.
         self.type = type
         # The access URL of the auxiliary media asset.
-        # 
-        # > If a CDN domain name is configured in ApsaraVideo VOD, the CDN URL is returned. Otherwise, the OSS URL is returned.
+        # > If a CDN domain name is configured for ApsaraVideo VOD, the CDN URL is returned. Otherwise, the OSS URL is returned.
         self.url = url
 
     def validate(self):
@@ -215,11 +213,11 @@ class GetAttachedMediaInfoResponseBodyAttachedMediaListCategories(DaraModel):
         level: int = None,
         parent_id: int = None,
     ):
-        # The category ID.
+        # The ID of the category.
         self.cate_id = cate_id
-        # The category name.
+        # The name of the category.
         self.cate_name = cate_name
-        # The category level.
+        # The level of the category.
         self.level = level
         # The ID of the parent category.
         self.parent_id = parent_id

@@ -22,16 +22,27 @@ class LicenseInstanceAppDTO(DaraModel):
         status: str = None,
         user_id: int = None,
     ):
+        # appId
         self.app_id = app_id
+        # beginOn
         self.begin_on = begin_on
+        # contractNo
         self.contract_no = contract_no
+        # creationTime
         self.creation_time = creation_time
+        # expiredOn
         self.expired_on = expired_on
+        # instanceId
         self.instance_id = instance_id
+        # itemId
         self.item_id = item_id
+        # LicenseConfigDTOS
         self.license_configs = license_configs
+        # modificationTime
         self.modification_time = modification_time
+        # status
         self.status = status
+        # userId
         self.user_id = user_id
 
     def validate(self):
@@ -134,13 +145,21 @@ class LicenseInstanceAppDTOLicenseConfigs(DaraModel):
         subscription_imp: str = None,
         subscription_pkg: str = None,
     ):
+        # businessType
         self.business_type = business_type
+        # featureIds
         self.feature_ids = feature_ids
+        # isTrial
         self.is_trial = is_trial
+        # sdkId
         self.sdk_id = sdk_id
+        # sdkName
         self.sdk_name = sdk_name
+        # subscription
         self.subscription = subscription
+        # subscriptionImp
         self.subscription_imp = subscription_imp
+        # subscriptionPkg
         self.subscription_pkg = subscription_pkg
 
     def validate(self):

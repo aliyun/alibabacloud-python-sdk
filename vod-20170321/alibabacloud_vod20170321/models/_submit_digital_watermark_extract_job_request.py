@@ -14,16 +14,16 @@ class SubmitDigitalWatermarkExtractJobRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
-        # The type of watermark extraction. Valid values:
+        # The type of the watermark to extract. Valid values:
         # 
         # - **TraceMark**: tracing watermark.
         # - **CopyrightMark**: copyright watermark.
         # 
         # This parameter is required.
         self.extract_type = extract_type
-        # The video ID of the video from which you want to extract the watermark. Only a single video ID is supported. You can obtain the video ID by using the following methods:
-        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the video ID.
-        # - Call the [SearchMedia](https://help.aliyun.com/document_detail/436559.html) operation. The video ID (VideoId) is returned in the response.
+        # The ID of the video from which you want to extract the watermark. You can specify only one video ID. You can obtain the video ID by using one of the following methods:
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Assets** > **Audio and Video** to view the video ID.
+        # - Call the [SearchMedia](https://help.aliyun.com/document_detail/436559.html) operation and obtain the video ID from the VideoId parameter in the response.
         # 
         # This parameter is required.
         self.media_id = media_id

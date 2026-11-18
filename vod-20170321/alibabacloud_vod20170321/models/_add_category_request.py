@@ -12,22 +12,22 @@ class AddCategoryRequest(DaraModel):
         type: str = None,
     ):
         # The category name.
-        # - Maximum length: 64 bytes.
-        # - UTF-8 encoded.
+        # - It can be up to 64 bytes in length.
+        # - It is encoded in UTF-8.
         # 
         # This parameter is required.
         self.cate_name = cate_name
-        # The parent category ID.
+        # The ID of the parent category.
         # 
-        # Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Management Configuration** > **Category Management** > **Audio/Video/Image Categories** or **Short Video Material Categories** to view category IDs.
+        # Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Asset Management Configuration** > **Category Management** > **Audio/Video/Image Categories** or **Short Video Material Categories** to view the category ID.
         # 
-        # > - If you specify this parameter, a subcategory is created under the specified parent category. If you do not specify this parameter, a level-0 category is created.
-        # > - Because all level-0 categories for short video materials are built-in and cannot be modified, added, or deleted, only subcategories can be created under level-0 categories. Therefore, this parameter is required when `Type` is set to `material`.
+        # > - If you specify this parameter, a subcategory is created under the specified parent category. If you do not specify this parameter, a level-1 category is created.
+        # > - All level-1 categories for short video materials are built-in and cannot be modified, added, or deleted. You can only create subcategories under level-1 categories. Therefore, this parameter is required when `Type` is set to `material`.
         self.parent_id = parent_id
         # The category type. Valid values:
         # 
-        # - **default** (default): audio/video/image category.
-        # - **material**: short video material category.
+        # - **default**: audio, video, and image categories. This is the default value.
+        # - **material**: short video material categories.
         self.type = type
 
     def validate(self):

@@ -54,13 +54,13 @@ class GetAppPlayKeyResponseBodyAppPlayKey(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The time when the playback key was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The creation time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.creation_time = creation_time
-        # The time when the playback key was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The update time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.modification_time = modification_time
         # The playback key.
-        # - Only uppercase letters, lowercase letters, and digits are supported. The length must be 8 to 20 characters.
-        # - UTF-8 encoding.
+        # - Only uppercase and lowercase letters and digits are supported. The length must be 8 to 20 characters.
+        # - Encoded in UTF-8.
         self.play_key = play_key
 
     def validate(self):

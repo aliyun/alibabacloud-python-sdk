@@ -179,19 +179,19 @@ class GetCategoriesResponseBodyCategory(DaraModel):
     ):
         # The category ID.
         self.cate_id = cate_id
-        # The category name.
+        # The name of the category.
         self.cate_name = cate_name
         # The category level. Valid values:
         # 
-        # - **0**: level-1 category.
-        # - **1**: level-2 category.
-        # - **2**: level-3 category.
+        # - **0**: Level 1 category.
+        # - **1**: Level 2 category.
+        # - **2**: Level 3 category.
         self.level = level
         # The ID of the parent category.
         self.parent_id = parent_id
         # The category type. Valid values:
-        # - **default**: audio, video, and image category.
-        # - **material**: short video material category.
+        # - **default**: Audio, video, or image category.
+        # - **material**: Short video material category.
         self.type = type
 
     def validate(self):

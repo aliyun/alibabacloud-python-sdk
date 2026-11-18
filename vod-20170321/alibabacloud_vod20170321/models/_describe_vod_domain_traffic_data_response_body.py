@@ -18,15 +18,15 @@ class DescribeVodDomainTrafficDataResponseBody(DaraModel):
         total_traffic: str = None,
         traffic_data_per_interval: main_models.DescribeVodDomainTrafficDataResponseBodyTrafficDataPerInterval = None,
     ):
-        # The time interval between the data entries, which is the time granularity of the data. Unit: seconds.
+        # The time interval of each record, which indicates the time granularity of the data. Unit: seconds.
         self.data_interval = data_interval
         # The accelerated domain name.
         self.domain_name = domain_name
-        # The end of the time range for the returned data.
+        # The end time of the data. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.end_time = end_time
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range for the returned data.
+        # The start time of the data. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
         self.start_time = start_time
         # The total traffic.
         self.total_traffic = total_traffic

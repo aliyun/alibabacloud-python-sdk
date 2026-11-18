@@ -11,7 +11,7 @@ class DescribeVodDomainDetailRequest(DaraModel):
         owner_id: int = None,
         security_token: str = None,
     ):
-        # The VOD acceleration domain name.
+        # The name of the ApsaraVideo VOD accelerated domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name

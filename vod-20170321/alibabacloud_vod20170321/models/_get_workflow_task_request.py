@@ -9,7 +9,7 @@ class GetWorkflowTaskRequest(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The task ID used to query the refresh status.
+        # The workflow task ID. It is returned by the SubmitWorkflowJob operation and is used to query the execution status and result of the task.
         self.task_id = task_id
 
     def validate(self):

@@ -20,11 +20,11 @@ class DescribeVodPlayerCollectDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The end time of the query. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+        # The end time of the query. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The time granularity for the query data. Valid values: **5m**, **1h**, and **1d**. The supported time granularity varies based on the time span specified by `StartTime` and `EndTime`:
+        # The time granularity of the queried data. Valid values: **5m**, **1h**, and **1d**. The supported time granularity varies based on the time span specified by `StartTime` and `EndTime`:
         # 
         # - Within 3 days: **5m**, **1h**, and **1d**.
         # - 4 to 7 days: **1h** and **1d**.
@@ -32,63 +32,63 @@ class DescribeVodPlayerCollectDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.interval = interval
-        # The metric type. You can specify up to 3 metrics.
+        # The metric type. You can specify multiple metrics, up to three.
         # 
         # > 
         # > - Percentage data is returned in decimal format.
         # 
-        # Playback quality (QoS) metrics:
-        # - Vv: play count.
-        # - RealVv: actual play count.
-        # - FirstFrame: first frame time.
-        # - SecondPlayRate: instant play rate.
-        # - SlowPlayRate: slow play rate.
-        # - StuckCountRate: stuttering rate by count.
-        # - SeekDuration: seek duration.
-        # - StuckDuration100s: stuttering duration per 100 seconds.
-        # - StuckCount100s: stuttering count per 100 seconds.
-        # - PlayFailRate: playback failure rate.
-        # - SeedFailRate: non-play rate.
-        # - AvgPlayBitrate: average playback bitrate.
-        # - AvgStartBitrate: average initial bitrate.
-        # - ErrorCount100s: error count per 100 seconds.
+        # Quality of Service (QoS) metrics for playback quality:
+        # - Vv: Number of plays.
+        # - RealVv: Actual play volume.
+        # - FirstFrame: First frame time.
+        # - SecondPlayRate: 1-second startup rate.
+        # - SlowPlayRate: Slow startup rate.
+        # - StuckCountRate: Stuttering count rate.
+        # - SeekDuration: Seek duration.
+        # - StuckDuration100s: Stuttering duration per 100 seconds.
+        # - StuckCount100s: Stuttering count per 100 seconds.
+        # - PlayFailRate: Playback failure rate.
+        # - SeedFailRate: Unstarted playback rate.
+        # - AvgPlayBitrate: Average playback bitrate.
+        # - AvgStartBitrate: Average startup bitrate.
+        # - ErrorCount100s: Error count per 100 seconds.
         # 
-        # Playback experience (QoE) metrics:
-        # - Uv: unique viewers.
-        # - AvgPerVv: average plays per user.
-        # - AvgVideoDuration: average video duration.
-        # - AvgPerPlayDuration: average playback duration per user.
-        # - AvgPerCompletionVv: average completion count per user.
-        # - CompletionVv: completion count.
-        # - CompletionRate: completion rate.
-        # - AvgPlayDuration: average playback duration.
+        # Quality of Experience (QoE) metrics for playback experience:
+        # - Uv: Number of playback users.
+        # - AvgPerVv: Average number of plays per user.
+        # - AvgVideoDuration: Average video duration.
+        # - AvgPerPlayDuration: Average playback duration per user.
+        # - AvgPerCompletionVv: Average number of completed plays per user.
+        # - CompletionVv: Completed play volume.
+        # - CompletionRate: Completion rate.
+        # - AvgPlayDuration: Average playback duration.
         # - JumpRate5s: 5-second bounce rate.
         # 
         # This parameter is required.
         self.metrics = metrics
-        # The operating system of the playback device. Specify this parameter to perform a filtered query for playback data of a specific operating system. Valid values: **Android**, **iOS**, **Harmony**, **Windows**, **MacOS**, and **Linux**.
-        # The available values vary by terminal type:
+        # The operating system of the playback terminal. You can specify this parameter to perform a filtered query for the playback data of a specific operating system. Valid values: **Android**, **iOS**, **Harmony**, **Windows**, **macOS**, and **Linux**.
+        # The valid values vary based on the terminal type:
         # 
-        # - **native**: Android, iOS, Harmony.
-        # - **web**: Android, iOS, Harmony, Windows, MacOs, Linux.
+        # - **native**: Android, iOS, and Harmony.
+        # - **web**: Android, iOS, Harmony, Windows, macOS, and Linux.
         # 
-        # Separate multiple values with #_#.
+        # Separate multiple operating systems with #_#.
         self.os = os
-        # The time range for period-over-period analysis, in days (d).
+        # The time range used to confirm the period-over-period analysis, in days (d).
         # 
-        # For example, if you set this parameter to 1d (1 day), the period-over-period data is retrieved from the time range of StartTime-1d to EndTime-1d.
+        # For example, if you set the value to 1d (1 day), the period-over-period time range is from StartTime-1d to EndTime-1d.
         self.period = period
-        # The start time of the query. Format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
+        # The start time of the query. Format: <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z (UTC).
         # > 
-        # > - Playback data from the last year can be queried.
+        # > - You can query historical playback data for the last year.
         # > - The time range for a single query cannot exceed 31 days.
-        # > - The time interval is left-closed and right-open [StartTime, EndTime).
+        # > - The time range is a left-closed and right-open interval [StartTime, EndTime).
         # 
         # This parameter is required.
         self.start_time = start_time
         # The terminal type. Valid values:
-        # - **web**: web.
-        # - **mobile**: native.
+        # - **web**: Web client.
+        # - **mobile**: Native client.
         # 
         # This parameter is required.
         self.terminal_type = terminal_type

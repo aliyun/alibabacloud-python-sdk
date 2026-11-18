@@ -9,7 +9,7 @@ class DeleteAppInfoRequest(DaraModel):
         self,
         app_id: str = None,
     ):
-        # The application ID. Set this parameter to the value of AppId returned by the [CreateApp](https://help.aliyun.com/document_detail/113266.html) or [ListApps](https://help.aliyun.com/document_detail/114000.html) operation.
+        # The application ID. You can obtain the value from the AppId response parameter returned by the [Create an application](https://help.aliyun.com/document_detail/113266.html) or [List applications](https://help.aliyun.com/document_detail/114000.html) API operation.
         # 
         # This parameter is required.
         self.app_id = app_id

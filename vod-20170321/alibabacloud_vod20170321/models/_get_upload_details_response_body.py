@@ -15,13 +15,13 @@ class GetUploadDetailsResponseBody(DaraModel):
         request_id: str = None,
         upload_details: List[main_models.GetUploadDetailsResponseBodyUploadDetails] = None,
     ):
-        # The IDs of media files that cannot be accessed.
+        # The IDs of the media assets that you are not authorized to access.
         self.forbidden_media_ids = forbidden_media_ids
-        # The IDs of media files that do not exist.
+        # The IDs of the media assets that do not exist.
         self.non_exist_media_ids = non_exist_media_ids
         # The request ID.
         self.request_id = request_id
-        # The upload details.
+        # The list of upload details.
         self.upload_details = upload_details
 
     def validate(self):
@@ -87,9 +87,9 @@ class GetUploadDetailsResponseBodyUploadDetails(DaraModel):
         upload_source: str = None,
         upload_status: str = None,
     ):
-        # The completion time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The completion time. The time is displayed in UTC and follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format.
         self.completion_time = completion_time
-        # The creation time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The creation time. The time is displayed in UTC and follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format.
         self.creation_time = creation_time
         # The device model.
         self.device_model = device_model
@@ -97,9 +97,9 @@ class GetUploadDetailsResponseBodyUploadDetails(DaraModel):
         self.file_size = file_size
         # The ID of the uploaded audio or video file.
         self.media_id = media_id
-        # The modification time. The time is in the _yyyy-MM-ddTHH:mm:ssZ_ format (UTC).
+        # The update time. The time is displayed in UTC and follows the _yyyy-MM-ddTHH:mm:ssZ_ format.
         self.modification_time = modification_time
-        # The video status. For the valid values and descriptions of video statuses, see the value list in [Status: video status](https://help.aliyun.com/document_detail/52839.html).
+        # The video status. For more information about the valid values and descriptions of the video status, see the valid values of [Status: Video status](https://help.aliyun.com/document_detail/52839.html).
         self.status = status
         # The title.
         self.title = title
@@ -111,7 +111,7 @@ class GetUploadDetailsResponseBodyUploadDetails(DaraModel):
         self.upload_size = upload_size
         # The upload source.
         self.upload_source = upload_source
-        # The upload task status. For the valid values and descriptions of upload statuses, see the value list in [Status: URL upload task status](https://help.aliyun.com/document_detail/52839.html).
+        # The status of the upload task. For more information about the valid values and descriptions of the upload status, see the valid values of [Status: URL upload task status](https://help.aliyun.com/document_detail/52839.html).
         self.upload_status = upload_status
 
     def validate(self):

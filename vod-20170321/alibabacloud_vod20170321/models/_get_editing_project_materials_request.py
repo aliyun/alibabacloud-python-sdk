@@ -16,23 +16,21 @@ class GetEditingProjectMaterialsRequest(DaraModel):
         type: str = None,
     ):
         # The material type. Valid values:
-        # 
         # - **video**: video
         # - **audio**: audio-only
         # - **image**: image
         self.material_type = material_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The online editing project ID. You can obtain the ID by using one of the following methods:
-        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), and choose **Production Center** > **Video Editing** to view the ID.
-        # - Obtain the value of the ProjectId response parameter when you create a project by calling the **CreateEditingProject** operation.
+        # The ID of the online editing project. You can obtain the ID by using one of the following methods:
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com), choose **Production center** > **Video editing**, and view the ID.
+        # - The value of the ProjectId response parameter returned when you create a project by calling the **Create an online editing project** operation.
         # 
         # This parameter is required.
         self.project_id = project_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The material type. Valid values:
-        # 
         # - **video**: video
         # - **audio**: audio-only
         self.type = type

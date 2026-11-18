@@ -13,9 +13,9 @@ class GetTranscodeTemplateGroupResponseBody(DaraModel):
         request_id: str = None,
         transcode_template_group: main_models.GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The transcoding template group data.
+        # The data of the transcoding template group.
         self.transcode_template_group = transcode_template_group
 
     def validate(self):
@@ -58,26 +58,26 @@ class GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup(DaraModel):
         transcode_template_group_id: str = None,
         transcode_template_list: List[main_models.GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTemplateList] = None,
     ):
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
-        # The time when the template group was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The time when the template group was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # Indicates whether the template group is the default one. Valid values:
+        # Specifies whether the template group is the default template group. Valid values:
         # 
-        # - **Default**: The template group is the default one.
-        # - **NotDefault**: The template group is not the default one.
+        # - **Default**: The default template group.
+        # - **NotDefault**: A non-default template group.
         self.is_default = is_default
-        # Indicates whether the template group is locked. Valid values:
+        # Specifies whether the template group is locked. Valid values:
         # - **Disabled**: Not locked.
         # - **Enabled**: Locked.
         self.locked = locked
-        # The time when the template group was last modified. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The time when the template group was modified. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.modify_time = modify_time
         # The name of the template group.
         self.name = name
-        # The transcoding template group ID.
+        # The ID of the transcoding template group.
         self.transcode_template_group_id = transcode_template_group_id
-        # The list of transcoding template configurations.
+        # The list of transcoding template configuration information.
         self.transcode_template_list = transcode_template_list
 
     def validate(self):
@@ -172,68 +172,68 @@ class GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTempla
         video: str = None,
         watermark_ids: List[str] = None,
     ):
-        # The audio stream transcoding configuration parameters (JSON string).
+        # The transcoding configuration parameters for the audio stream. The value is a JSON string.
         self.audio = audio
-        # The video clipping configuration (JSON string). For example, set this parameter if you want to extract 5 seconds of content from a video to generate a new video.
+        # The video clipping configuration. The value is a JSON string. For example, if you need to extract 5 seconds of content from a video to generate a new video, you can set this parameter.
         self.clip = clip
-        # The container format for encapsulating audio and video streams (JSON string).
+        # The container format that encapsulates the audio and video streams. The value is a JSON string.
         self.container = container
         # The copyright watermark information.
         self.copyright_mark = copyright_mark
-        # The definition mark for normal transcoding templates:
+        # The definition tags for standard transcoding templates:
         # 
-        # - **LD** (low definition)
-        # - **SD** (standard definition)
-        # - **HD** (high definition)
-        # - **FHD** (full high definition)
-        # - **OD** (original definition, container format conversion)
+        # - **LD** (Smooth)
+        # - **SD** (Standard definition)
+        # - **HD** (High definition)
+        # - **FHD** (Full high definition)
+        # - **OD** (Original definition, which means container format conversion)
         # - **2K**
         # - **4K**
-        # - **SQ** (standard audio quality)
-        # - **HQ** (high audio quality)
+        # - **SQ** (Standard sound quality)
+        # - **HQ** (High sound quality)
         # 
-        # The definition mark for Narrowband HD 1.0 built-in transcoding templates:
+        # The definition tags for built-in Narrowband HD™ 1.0 transcoding templates:
         # 
-        # - **LD-NBV1** (low definition)
-        # - **SD-NBV1** (standard definition)
-        # - **HD-NBV1** (high definition)
-        # - **FHD-NBV1** (full high definition)
+        # - **LD-NBV1** (Smooth)
+        # - **SD-NBV1** (Standard definition)
+        # - **HD-NBV1** (High definition)
+        # - **FHD-NBV1** (Full high definition)
         # - **2K-NBV1**
         # - **4K-NBV1**
         # 
-        # > - The definition mark of transcoding templates cannot be modified.
-        # > - The audio and video resolution, bitrate, and other parameters of Narrowband HD 1.0 transcoding templates are built into the system and cannot be modified.
-        # > - Narrowband HD 1.0 transcoding templates can only be created in FLV, M3U8 (HLS), or MP4 format.
+        # > - You cannot modify the definition tags of transcoding templates.
+        # > - The audio and video resolutions, bitrates, and other parameters of Narrowband HD™ 1.0 transcoding templates are built-in and cannot be modified.
+        # > - Narrowband HD™ 1.0 transcoding templates support only the FLV, M3U8 (HLS), and MP4 formats.
         self.definition = definition
-        # The transcoding encryption configuration.
+        # The encryption configuration information for transcoding.
         self.encrypt_setting = encrypt_setting
-        # The segment setting parameters for transcoding. Required for HLS (JSON string).
+        # The segment settings for transcoding. This parameter is required for HLS. The value is a JSON string.
         self.mux_config = mux_config
-        # The packaging configuration. Only HLS adaptive bitrate streaming packaging and DASH packaging are supported (JSON string).
+        # The packaging configuration. Only HLS adaptive bitrate streaming packaging and DASH packaging are supported. The value is a JSON string.
         self.package_setting = package_setting
-        # The video rotation parameter. Controls the rotation angle of the video. For example, if set to 180, the video is flipped upside down. Value range: `[0,360]`.
+        # The video rotation parameter. This parameter controls the rotation angle of the video image. For example, if you set this parameter to 180, the video image is upside down. Valid values: `[0,360]`.
         self.rotate = rotate
-        # The subtitle configuration (JSON string).
+        # The subtitle configuration. The value is a JSON string.
         self.subtitle_list = subtitle_list
-        # The transcoding template name.
+        # The name of the transcoding template.
         self.template_name = template_name
         # The tracing watermark information.
         self.trace_mark = trace_mark
-        # The conditional transcoding parameters. Set this parameter if you want to perform basic logic checks based on the bitrate or resolution of the source file before outputting the transcoded video (JSON string).
+        # The conditional transcoding parameters. If you need to make basic logical judgments based on the bitrate and resolution of the source video before outputting the transcoded video, you can set this parameter. The value is a JSON string.
         self.trans_config = trans_config
-        # The custom transcoding output path.
+        # The custom output path for transcoding.
         self.transcode_file_regular = transcode_file_regular
-        # The transcoding template ID.
+        # The ID of the transcoding template.
         self.transcode_template_id = transcode_template_id
         # The templatetype. Valid values:
         # 
-        # - **Normal** (default): a normal transcoding template. The PackageSetting parameter cannot be configured in Settings for this type of template.
-        # - **VideoPackage**: a video stream packaging template. This type of template first transcodes and then builds adaptive bitrate streaming. The PackageSetting parameter must be configured in Settings for this type of template.
-        # - **SubtitlePackage**: a subtitle packaging template. This type of template does not transcode but only builds the corresponding subtitle information into the adaptive bitrate streaming output file. The PackageSetting parameter must be configured in Settings for this type of template. This type of template cannot exist alone in a template group and must be configured together with a VideoPackage type template. Only one SubtitlePackage template can be configured in a template group.
+        # - **Normal** (default): A standard transcoding template. You cannot configure the Settings for the PackageSetting parameter for this type of template.
+        # - **VideoPackage**: A video stream packaging template. This type of template transcodes the video stream first and then builds an adaptive bitrate stream. You must configure the Settings for the PackageSetting parameter.
+        # - **SubtitlePackage**: A subtitle packaging template. This type of template does not transcode the video stream. It only builds the corresponding subtitle information into the adaptive bitrate output file. You must configure the Settings for the PackageSetting parameter. This type of template cannot exist independently in a template group and must be configured together with a VideoPackage template. You can configure only one SubtitlePackage template in a template group.
         self.type = type
-        # The video stream transcoding configuration parameters (JSON string).
+        # The transcoding configuration parameters for the video stream. The value is a JSON string.
         self.video = video
-        # The IDs of associated image and text watermark templates.
+        # The IDs of the associated image and text watermark templates.
         self.watermark_ids = watermark_ids
 
     def validate(self):

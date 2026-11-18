@@ -10,14 +10,14 @@ class GetUploadDetailsRequest(DaraModel):
         media_ids: str = None,
         media_type: str = None,
     ):
-        # The media IDs, which are audio or video IDs (VideoId). Separate multiple IDs with commas (,). A maximum of 20 IDs are supported. You can obtain the IDs by using the following methods:
-        # - For audio or video files uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Files** > **Audio/Video** to view the audio or video ID.
-        # - When you call the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation to obtain the upload URL and credential, the video ID is the value of the VideoId response parameter.
-        # - After the audio or video file is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the video ID, which is the value of the VideoId response parameter.
+        # The media IDs, which are the audio or video IDs (VideoId). Separate multiple IDs with commas (,). You can specify up to 20 IDs. You can obtain the IDs by using one of the following methods:
+        # - For audio or video files uploaded through the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Library** > **Audio and Video** to view the audio or video IDs.
+        # - When you call the [Create upload URLs and credentials for audio and video files](https://help.aliyun.com/document_detail/55407.html) operation to obtain the upload URL and credential, the value of the VideoId response parameter is the media ID.
+        # - After an audio or video file is uploaded, you can call the [Search for media information](https://help.aliyun.com/document_detail/86044.html) operation to query the media ID. The value of the VideoId response parameter is the media ID.
         # 
         # This parameter is required.
         self.media_ids = media_ids
-        # The media type. Set the value to **video** (audio/video).
+        # The media type. Set the value to **video**, which indicates audio and video files.
         self.media_type = media_type
 
     def validate(self):

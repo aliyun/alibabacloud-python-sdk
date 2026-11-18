@@ -17,8 +17,8 @@ class SetAppPlayKeyRequest(DaraModel):
         self.app_id = app_id
         self.owner_id = owner_id
         # The playback key.
-        # - Only uppercase letters, lowercase letters, and digits are supported. The length must be 8 to 20 characters.
-        # - UTF-8 encoding.
+        # - The value must be 8 to 20 characters in length and can contain only uppercase and lowercase letters and digits.
+        # - The value must be encoded in UTF-8.
         self.play_key = play_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

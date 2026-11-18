@@ -14,13 +14,13 @@ class SetEditingProjectMaterialsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
-        # The material IDs, which are media asset IDs such as video VideoId, image ImageId, and auxiliary media asset MediaId. Separate multiple material IDs with commas (,).
+        # The material IDs, which are media asset IDs such as video IDs, image IDs, and auxiliary media asset IDs. Separate multiple material IDs with commas (,).
         # 
         # This parameter is required.
         self.material_ids = material_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The online editing project ID.
+        # The ID of the online editing project.
         # 
         # This parameter is required.
         self.project_id = project_id

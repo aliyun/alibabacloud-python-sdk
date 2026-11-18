@@ -15,12 +15,12 @@ class AddEditingProjectMaterialsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
-        # The material IDs. Separate multiple IDs with commas (,). A maximum of 10 material IDs are supported.
-        # >  When you associate multiple materials, ensure that all materials are of the same type and correspond to the MaterialType value.
+        # The IDs of the media assets. Separate multiple IDs with commas (,). You can specify up to 10 media asset IDs.
+        # > When you associate multiple media assets, make sure that they are of the same type and the type matches the value of MaterialType.
         # 
         # This parameter is required.
         self.material_ids = material_ids
-        # The material type. Valid values:
+        # The type of the media asset. Valid values:
         # - **video**: video.
         # - **audio**: audio-only.
         # - **image**: image.
@@ -29,7 +29,7 @@ class AddEditingProjectMaterialsRequest(DaraModel):
         self.material_type = material_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The online editing project ID.
+        # The ID of the online editing project.
         # 
         # This parameter is required.
         self.project_id = project_id

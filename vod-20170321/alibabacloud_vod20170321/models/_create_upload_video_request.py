@@ -27,7 +27,7 @@ class CreateUploadVideoRequest(DaraModel):
         self.app_id = app_id
         # The category ID. You can obtain the category ID by using one of the following methods:
         # 
-        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Management Configuration** > **Category Management** to view the category ID.
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Asset Management Configuration** > **Category Management** to view the category ID.
         # - When you create a category by calling the [AddCategory](~~AddCategory~~) operation, the category ID is the value of the CateId parameter in the response.
         # - When you query categories by calling the [GetCategories](~~GetCategories~~) operation, the category ID is the value of the CateId parameter in the response.
         self.cate_id = cate_id
@@ -35,61 +35,63 @@ class CreateUploadVideoRequest(DaraModel):
         self.cover_url = cover_url
         # The description of the audio or video file displayed in ApsaraVideo VOD after the upload is complete.
         # 
-        # - The description can be up to 1024 characters in length.
-        # - The value is encoded in UTF-8.
+        # - The description can be up to 1,024 characters in length.
+        # - The description must be encoded in UTF-8.
         self.description = description
+        # Specifies whether to use the first frame of the video as the thumbnail.
         self.enable_first_frame_cover = enable_first_frame_cover
-        # The address of the audio or video source file to be uploaded.
+        # The name of the audio or video source file to be uploaded.
         # 
-        # - The file name extension is required and is not case-sensitive.
-        # - For supported file name extensions, see [Upload overview](https://help.aliyun.com/document_detail/55396.html).
+        # - The file name must contain an extension. The extension is not case-sensitive.
+        # - For supported extensions, see [Upload overview](https://help.aliyun.com/document_detail/55396.html).
         # 
         # This parameter is required.
         self.file_name = file_name
         # The size of the audio or video source file to be uploaded. Unit: bytes.
         self.file_size = file_size
+        # Specifies whether to generate a thumbnail for the video.
         self.generate_thumbnail = generate_thumbnail
-        # The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The length is 6 to 64 characters. The ID is unique at the user level.
+        # The custom ID. The ID can be 6 to 64 characters in length and can contain only lowercase letters, uppercase letters, digits, hyphens (-), and underscores (_). The ID must be unique within the user dimension.
         self.reference_id = reference_id
         # The storage address. You can obtain the storage address by using the following method:
-        # Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Management Configuration** > **Storage Management** to view the storage address.
+        # Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Asset Management Configuration** > **Storage Management** to view the storage address.
         # 
-        # > If this parameter is not specified, the audio or video file is uploaded to the default storage address. If no default storage address exists, the file is uploaded to the first storage address in the storage list. If this parameter is specified, the audio or video file is uploaded to the specified storage address.
+        # > If you do not specify this parameter, the audio or video file is uploaded to the default storage address. If no default storage address is configured, the file is uploaded to the first storage address in the storage list. If you specify this parameter, the audio or video file is uploaded to the specified storage address.
         self.storage_location = storage_location
         # The tags of the audio or video file.
         # 
         # - You can specify up to 16 tags.
-        # - To specify multiple tags, separate them with commas (,).
+        # - Separate multiple tags with commas (,).
         # - Each tag can be up to 32 characters in length.
-        # - The value is encoded in UTF-8.
+        # - The tags must be encoded in UTF-8.
         self.tags = tags
         # The ID of the transcoding template group. You can obtain the ID by using one of the following methods:
-        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Processing Configuration** > **Transcoding Template Groups** to view the transcoding template group ID.
-        # - When you create a transcoding template group by calling the [Create a transcoding template group](https://help.aliyun.com/document_detail/102665.html) operation, the transcoding template group ID is the value of the TranscodeTemplateGroupId parameter in the response.
-        # - When you query transcoding template groups by calling the [Query transcoding configurations](https://help.aliyun.com/document_detail/102669.html) operation, the transcoding template group ID is the value of the TranscodeTemplateGroupId parameter in the response.
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing Configuration** > **Transcoding Template Groups** to view the ID of the transcoding template group.
+        # - When you create a transcoding template group by calling the [Create a transcoding template group](https://help.aliyun.com/document_detail/102665.html) operation, the ID is the value of the TranscodeTemplateGroupId parameter in the response.
+        # - When you query transcoding template groups by calling the [Query transcoding configuration list](https://help.aliyun.com/document_detail/102669.html) operation, the ID is the value of the TranscodeTemplateGroupId parameter in the response.
         # 
         # >- If both WorkflowId and TemplateGroupId are specified, WorkflowId takes precedence.
-        # >- If this parameter is not specified, the default transcoding template group is used for transcoding. If a transcoding template group ID is specified, the specified template group is used for transcoding.
-        # >- If this parameter is set to the built-in **No Transcoding** template group, only the [Video Upload Complete](https://help.aliyun.com/document_detail/55630.html) event notification is sent after the audio or video file is uploaded. The [Transcode Complete for a Single Definition](https://help.aliyun.com/document_detail/55636.html) event notification is not sent.
-        # > - This parameter triggers an [asynchronous task](https://help.aliyun.com/document_detail/3027551.html). After submission, the task is not immediately completed and is queued for asynchronous execution in the background.
-        # >- To ensure normal playback, when the built-in **No Transcoding** template group is used, only the following formats support direct playback without transcoding after the audio or video file is uploaded: MP4, FLV, MP3, M3U8, and WEBM. Other formats support storage only (check the file name extension of FileName). If you use ApsaraVideo Player, the player version must be 3.1.0 or later.
+        # >- If you do not specify this parameter, the default transcoding template group is used. If you specify this parameter, the specified transcoding template group is used.
+        # >- If you set this parameter to the built-in **No Transcoding** template group, only the [video upload completion](https://help.aliyun.com/document_detail/55630.html) event notification is generated after the audio or video file is uploaded. The [single definition transcoding completion](https://help.aliyun.com/document_detail/55636.html) event notification is not generated.
+        # > - The task triggered by this parameter is an [asynchronous task](https://help.aliyun.com/document_detail/3027551.html). After the task is submitted, it is queued and executed asynchronously in the background.
+        # >- To ensure normal playback, if you set this parameter to the built-in **No Transcoding** template group, only the following formats support direct playback without transcoding after the audio or video file is uploaded: MP4, FLV, MP3, M3U8, and WEBM. Other formats are only supported for storage (pay attention to the extension of FileName). If you use ApsaraVideo Player for playback, the version must be 3.1.0 or later.
         self.template_group_id = template_group_id
         # The title of the audio or video file displayed in ApsaraVideo VOD after the upload is complete.
         # 
         # - The title can be up to 128 characters in length.
-        # - The value is encoded in UTF-8.
+        # - The title must be encoded in UTF-8.
         # 
         # This parameter is required.
         self.title = title
-        # The custom settings in a JSON string. The settings support message callbacks, upload acceleration, and other configurations. For more information, see [UserData](https://help.aliyun.com/document_detail/86952.html).
+        # The custom settings. The value is a JSON string that supports settings such as message callback and upload acceleration. For more information, see [UserData](https://help.aliyun.com/document_detail/86952.html).
         # 
-        # > - To use the message callback in this parameter, you must configure an HTTP callback URL and select the corresponding callback event types in the console. Otherwise, the callback settings do not take effect. If no callback URL is specified for subsequent tasks, callbacks are sent to this address by default. To configure HTTP callbacks in the console, see [Callback settings](https://help.aliyun.com/document_detail/86071.html).
-        # > - To use the upload acceleration feature, you must [submit a Yida form](https://yida.alibaba-inc.com/o/ticketapply) to apply for activation. For more information, see [Upload instructions](https://help.aliyun.com/document_detail/55396.html).
+        # > - To use the message callback feature, you must configure an HTTP callback URL and select the corresponding callback event types in the console. Otherwise, the callback settings do not take effect. If no callback URL is specified for subsequent tasks, notifications are pushed to this URL by default. For more information about how to configure HTTP callbacks in the console, see [Callback settings](https://help.aliyun.com/document_detail/86071.html).
+        # > - To use the upload acceleration feature, you must [submit an application](https://yida.alibaba-inc.com/o/ticketapply) to enable it. For more information, see [Upload instructions](https://help.aliyun.com/document_detail/55396.html).
         self.user_data = user_data
-        # The workflow ID. Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Processing Configuration** > **Workflow Management** to view the workflow ID.
+        # The workflow ID. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Processing Configuration** > **Workflows** to view the workflow ID.
         # 
         # > - If both WorkflowId and TemplateGroupId are specified, WorkflowId takes precedence. For more information, see [Workflows](https://help.aliyun.com/document_detail/115347.html).
-        # > - This parameter triggers an [asynchronous task](https://help.aliyun.com/document_detail/3027551.html). After submission, the task is not immediately completed and is queued for asynchronous execution in the background.
+        # > - The task triggered by this parameter is an [asynchronous task](https://help.aliyun.com/document_detail/3027551.html). After the task is submitted, it is queued and executed asynchronously in the background.
         self.workflow_id = workflow_id
 
     def validate(self):

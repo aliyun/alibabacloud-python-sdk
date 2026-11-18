@@ -60,7 +60,7 @@ class UploadMediaByURLResponseBodyUploadJobs(DaraModel):
     ):
         # The ID of the upload job.
         self.job_id = job_id
-        # The source file URL of the upload job.
+        # The source file URL corresponding to the upload job.
         self.source_url = source_url
 
     def validate(self):

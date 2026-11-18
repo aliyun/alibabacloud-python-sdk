@@ -19,29 +19,29 @@ class SearchEditingProjectRequest(DaraModel):
         status: str = None,
         title: str = None,
     ):
-        # The end of the time range to query based on CreationTime. Specify the time in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The end time of the creation time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The current page number. Default value: **1**.
         self.page_no = page_no
-        # The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
+        # The number of entries per page. Default value: **10**. Maximum value: **100**.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The sorting method of the results. Valid values:
         # 
-        # - **desc** (default): sorts the results in reverse chronological order based on creation time.
-        # - **asc**: sorts the results in chronological order based on creation time.
+        # - **desc** (default): Sorts the results by creation time in descending order.
+        # - **asc**: Sorts the results by creation time in ascending order.
         self.sort_by = sort_by
-        # The start of the time range to query based on CreationTime. Specify the time in the format of <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The start time of the creation time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
         self.start_time = start_time
-        # The status of the online editing project. Separate multiple statuses with commas (,). By default, all online editing projects are returned. Valid values:
+        # The status of the online editing project. Separate multiple values with commas (,). By default, all online editing projects are retrieved. Valid values:
         # 
         # - **Normal**: Draft.
-        # - **Producing**: Being produced.
+        # - **Producing**: Producing.
         # - **Produced**: Produced.
-        # - **ProduceFailed**: Failed to be produced.
+        # - **ProduceFailed**: Production failed.
         self.status = status
         # The title of the online editing project.
         self.title = title

@@ -12,7 +12,7 @@ class DescribeVodPlayerDimensionDataResponseBody(DaraModel):
         data_list: List[str] = None,
         request_id: str = None,
     ):
-        # The returned data list.
+        # The list of returned data.
         self.data_list = data_list
         # Id of the request
         self.request_id = request_id

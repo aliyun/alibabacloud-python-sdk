@@ -19,33 +19,29 @@ class SetVodDomainSSLCertificateRequest(DaraModel):
         sslpub: str = None,
         security_token: str = None,
     ):
-        # The certificate ID.
+        # The ID of the certificate.
         self.cert_id = cert_id
-        # The certificate name.
+        # The name of the certificate.
         self.cert_name = cert_name
-        # The certificate region. Valid values:
+        # The region of the certificate. Valid values:
         # - **ap-southeast-1** (Singapore)
-        # - **cn-hangzhou** (Hangzhou)
+        # - **cn-hangzhou** (China (Hangzhou))
         # 
         # Default value: **cn-hangzhou**.
         self.cert_region = cert_region
-        # The certificate type. Valid values:
+        # The type of the certificate. Valid values:
         # 
-        # - **upload**: an uploaded certificate.
-        # - **cas**: a certificate from SSL Certificates Service.
+        # - **upload**: Uploaded certificate.
+        # - **cas**: Certificate from SSL Certificates Service.
         self.cert_type = cert_type
         # The accelerated domain name for ApsaraVideo VOD.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # Specifies whether to distribute the certificate in a canary release environment. Valid values:
-        # 
-        # - **staging**: distributes the certificate in a canary release environment.
-        # 
-        # If this parameter is not specified or set to any other value, the certificate is formally distributed.
+        # Specifies whether to deliver the certificate in a canary release. Valid values: **staging**: Delivers the certificate in a canary release. If this parameter is not specified or is set to any other value, the certificate is delivered in the production environment.
         self.env = env
         self.owner_id = owner_id
-        # The content of the private key. If you do not enable the certificate, you do not need to specify this parameter. If you configure a certificate, enter the private key content.
+        # The content of the private key. This parameter is not required if the certificate is disabled. If you configure a certificate, enter the private key content.
         self.sslpri = sslpri
         # Specifies whether to enable the HTTPS certificate. Valid values:
         # 
@@ -54,7 +50,7 @@ class SetVodDomainSSLCertificateRequest(DaraModel):
         # 
         # This parameter is required.
         self.sslprotocol = sslprotocol
-        # The content of the security certificate. If you do not enable the certificate, you do not need to specify this parameter. If you configure a certificate, enter the certificate content.
+        # The content of the security certificate. This parameter is not required if the certificate is disabled. If you configure a certificate, enter the certificate content.
         self.sslpub = sslpub
         self.security_token = security_token
 

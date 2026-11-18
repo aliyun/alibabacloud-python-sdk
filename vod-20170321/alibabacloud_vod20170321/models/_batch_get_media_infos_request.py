@@ -10,15 +10,15 @@ class BatchGetMediaInfosRequest(DaraModel):
         media_ids: str = None,
         reference_ids: str = None,
     ):
-        # The media asset IDs, which are audio/video IDs (VideoId). Separate multiple IDs with commas (,). You can specify up to 20 IDs. You can obtain the IDs by using the following methods:
+        # The media asset IDs, namely the audio or video IDs (VideoId). Separate multiple IDs with commas (,). A maximum of 20 IDs are supported. You can obtain the IDs by using one of the following methods:
         # 
-        # - For audio/video files uploaded through the console, log on to the ApsaraVideo VOD console and choose Media Files > Audio/Video to view the audio/video IDs.
-        # - When you call the operation to obtain the upload URL and credential for audio/video files, the VideoId value is returned as a response parameter.
-        # - After an audio/video file is uploaded, you can call the SearchMedia operation to query the VideoId value in the response.
+        # - For audio or video files uploaded through the console, log on to the ApsaraVideo VOD console and choose Media Library > Audio/Video to view the audio or video IDs.
+        # - When you call the operation to obtain the upload URL and credential for an audio or video file, the ID is the value of the VideoId response parameter.
+        # - After an audio or video file is uploaded, you can call the operation to search for media asset information. The ID is the value of the VideoId response parameter.
         # 
         # This parameter is required.
         self.media_ids = media_ids
-        # The list of custom IDs. Separate multiple custom IDs with commas (,). You can specify up to 20 IDs.
+        # The custom ID list. It consists of one or more custom IDs. Separate multiple IDs with commas (,). A maximum of 20 IDs are supported.
         self.reference_ids = reference_ids
 
     def validate(self):

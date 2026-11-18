@@ -24,38 +24,38 @@ class DescribeVodPlayerMetricDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The end time of the query. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+        # The end time of the query. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The metric dimension filters. A dimension consists of a dimension type (Field), an operator (Op), and a dimension value.
+        # The metric dimension filter. A dimension consists of a dimension type (Field), an operator (Op), and a dimension value.
         # 
-        # > - A maximum of three dimensions can be specified.
-        # > - When the Metrics parameter includes the following four metrics, Filters do not take effect: Uv (playback users), AvgPerVv (average plays per user), AvgPerPlayDuration (average play duration per user), and AvgPerCompletionVv (average completion plays per user).
-        # > - For provinces and countries, pass the regionCode.
+        # > - You can specify up to three dimensions.
+        # > - If the Metrics parameter includes any of the following four metrics, the Filters parameter does not take effect: Uv (number of playback users), AvgPerVv (average number of playbacks per user), AvgPerPlayDuration (average playback duration per user), and AvgPerCompletionVv (average number of completions per user).
+        # > - Use regionCode to specify provinces and countries.
         # > - Separate multiple values with #_#.
         # 
-        # Valid values for dimension type (Field):
-        # - SdkVersion: SDK version.
-        # - AppVersion: app version.
-        # - Codec: codec.
-        # - VideoType: video format.
-        # - Network: network type.
-        # - Country: country.
-        # - Isp: ISP.
-        # - VideoDefinition: resolution.
-        # - Domain: domain name.
-        # - Province: province.
+        # Valid values for the dimension type (Field):
+        # - SdkVersion: the SDK version.
+        # - AppVersion: the app version.
+        # - Codec: the codec.
+        # - VideoType: the video format.
+        # - Network: the network type.
+        # - Country: the country.
+        # - Isp: the ISP.
+        # - VideoDefinition: the resolution.
+        # - Domain: the domain name.
+        # - Province: the province.
         # - IsHw: whether hardware decoding is used.
-        # - ErrorCode: error code.
+        # - ErrorCode: the error code.
         # 
-        # Valid values for operator (Op): = (equal to), > (greater than), < (less than), and != (not equal to).
+        # Valid values for the operator (Op): = (equal to), > (greater than), < (less than), and != (not equal to).
         # > 
-        # > - SdkVersion and VideoDefinition support all four operators. Other metrics support only = (equal to) and != (not equal to).
+        # > - Operator availability: The SdkVersion and VideoDefinition metrics support all four operators. Other metrics support only = (equal to) and != (not equal to).
         # 
-        # Retrieve dimension values by calling DescribeVodPlayerDimensionData.
+        # To obtain dimension values, call the DescribeVodPlayerDimensionData operation.
         self.filters = filters
-        # The time granularity for querying data. Valid values: **5m**, **1h**, and **1d**. The supported time granularity depends on the time span between `StartTime` and `EndTime`:
+        # The time granularity of the queried data. Valid values: **5m**, **1h**, and **1d**. The supported time granularity varies based on the time span specified by `StartTime` and `EndTime`:
         # 
         # - Within 3 days: **5m**, **1h**, and **1d**.
         # - 4 to 7 days: **1h** and **1d**.
@@ -69,67 +69,67 @@ class DescribeVodPlayerMetricDataRequest(DaraModel):
         # 
         # - **en**: English.
         self.language = language
-        # The metric types. You can select multiple metrics (up to 3).
+        # The metric types. You can select multiple metrics, up to a maximum of three.
         # 
         # > 
-        # > - Percentage data is returned in decimal form.
+        # > - Percentage data is returned in decimal format.
         # 
-        # Quality of Service (QoS) metrics:
-        # - Vv: play count.
-        # - RealVv: actual play count.
-        # - FirstFrame: first frame time.
-        # - SecondPlayRate: instant play rate.
-        # - SlowPlayRate: slow play rate.
-        # - StuckCountRate: stuttering rate by count.
-        # - SeekDuration: seek duration.
-        # - StuckDuration100s: stuttering duration per 100 seconds.
-        # - StuckCount100s: stuttering count per 100 seconds.
-        # - PlayFailRate: play failure rate.
-        # - SeedFailRate: non-play rate.
-        # - AvgPlayBitrate: average playback bitrate.
-        # - AvgStartBitrate: average start bitrate.
-        # - ErrorCount100s: error count per 100 seconds.
+        # Quality of Service (QoS) metrics for playback:
+        # - Vv: the number of playbacks.
+        # - RealVv: the actual playback volume.
+        # - FirstFrame: the first frame loading time.
+        # - SecondPlayRate: the 1-second startup rate.
+        # - SlowPlayRate: the slow startup rate.
+        # - StuckCountRate: the stuttering rate by count.
+        # - SeekDuration: the seek duration.
+        # - StuckDuration100s: the stuttering duration per 100 seconds.
+        # - StuckCount100s: the number of stuttering events per 100 seconds.
+        # - PlayFailRate: the playback failure rate.
+        # - SeedFailRate: the non-startup rate.
+        # - AvgPlayBitrate: the average playback bitrate.
+        # - AvgStartBitrate: the average startup bitrate.
+        # - ErrorCount100s: the number of errors per 100 seconds.
         # 
-        # Quality of Experience (QoE) metrics:
-        # - Uv: playback users.
-        # - AvgPerVv: average plays per user.
-        # - AvgVideoDuration: average video duration.
-        # - AvgPerPlayDuration: average play duration per user.
-        # - AvgPerCompletionVv: average completion plays per user.
-        # - CompletionVv: completion count.
-        # - CompletionRate: completion rate.
-        # - AvgPlayDuration: average play duration.
-        # - JumpRate5s: 5-second bounce rate.
+        # Quality of Experience (QoE) metrics for playback:
+        # - Uv: the number of playback users.
+        # - AvgPerVv: the average number of playbacks per user.
+        # - AvgVideoDuration: the average video duration.
+        # - AvgPerPlayDuration: the average playback duration per user.
+        # - AvgPerCompletionVv: the average number of completions per user.
+        # - CompletionVv: the completion volume.
+        # - CompletionRate: the completion rate.
+        # - AvgPlayDuration: the average playback duration.
+        # - JumpRate5s: the 5-second bounce rate.
         # 
         # This parameter is required.
         self.metrics = metrics
-        # The operating system of the player. Specify this parameter to perform a filtered query for playback data of a specific operating system. Valid values: **Android**, **iOS**, **Harmony**, **Windows**, **MacOS**, and **Linux**.
-        # The available values vary by terminal type:
+        # The operating system of the playback client. You can specify this parameter to perform a filtered query for playback data of a specific operating system. Valid values: **Android**, **iOS**, **Harmony**, **Windows**, **macOS**, and **Linux**.
+        # The available values vary based on the terminal type:
         # 
-        # - **native**: Android, iOS, Harmony.
-        # - **web**: Android, iOS, Harmony, Windows, MacOs, Linux.
+        # - **native**: Android, iOS, and Harmony.
+        # - **web**: Android, iOS, Harmony, Windows, macOS, and Linux.
         # 
-        # Separate multiple values with #_#.
+        # Separate multiple operating systems with #_#.
         self.os = os
         # The page number. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Default value: **5000**. Maximum value: **5000**.
         self.page_size = page_size
-        # The start time of the query. Format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
+        # The start time of the query. Format: <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z (UTC).
         # > 
-        # > - Supports querying playback data history for the past year.
+        # > - You can query playback data history for up to one year.
         # > - The time range for a single query cannot exceed 31 days.
         # > - The time interval is left-closed and right-open [StartTime, EndTime).
         # 
         # This parameter is required.
         self.start_time = start_time
         # The terminal type. Valid values:
-        # - **web**: web.
-        # - **mobile**: native.
+        # - **web**: the web client.
+        # - **mobile**: the native client.
         # 
         # This parameter is required.
         self.terminal_type = terminal_type
-        # Returns data for the top N items ranked by play count. If this parameter is not specified, data for all dimensions is returned.
+        # The number of top data entries by playback volume to return. If you do not specify this parameter, all dimension data is returned.
         self.top = top
 
     def validate(self):

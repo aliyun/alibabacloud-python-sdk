@@ -29,7 +29,7 @@ class UpdateEditingProjectRequest(DaraModel):
         self.project_id = project_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The timeline of the online editing project. For more information about the structure, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
+        # The timeline of the online editing project. TimelineIn and TimelineOut indicate the in point and out point of a media clip on the timeline in seconds, accurate to four decimal places. For more information about the structure, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
         self.timeline = timeline
         # The title of the online editing project.
         self.title = title

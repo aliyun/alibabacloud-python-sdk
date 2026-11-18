@@ -71,52 +71,53 @@ class GetMezzanineInfoResponseBodyMezzanine(DaraModel):
     ):
         # The audio stream information.
         self.audio_stream_list = audio_stream_list
-        # The file bitrate. Unit: Kbps.
+        # The bitrate of the file. Unit: Kbps.
         self.bitrate = bitrate
-        # The time when the file was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The time when the file was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The file duration. Unit: seconds.
         self.duration = duration
+        # The MD5 hash of the source file.
         self.file_md5 = file_md5
         # The file name.
         self.file_name = file_name
         # The source file URL.
         self.file_url = file_url
-        # The file frame rate, in frames per second.
+        # The frame rate of the file, which indicates the number of frames per second.
         self.fps = fps
-        # The file height. Unit: px.
+        # The height of the file. Unit: pixels.
         self.height = height
-        # The type of the output URL. Valid values:
+        # The output URL type. Valid values:
         # 
-        # - **oss**: back-to-origin URL.
-        # - **cdn** (default): CDN URL.
+        # - **oss**: the back-to-origin URL.
+        # - **cdn** (default): the accelerated URL.
         # 
-        # > Only OSS URLs in the MP4 playback format are supported.
+        # > Only OSS URLs for MP4 playback are supported.
         self.output_type = output_type
         # The preprocessing status. Valid values:
         # 
         # - **UnPreprocess**: Not preprocessed.
         # - **Preprocessing**: Being preprocessed.
         # - **PreprocessSucceed**: Preprocessed.
-        # - **PreprocessFailed**: Failed to be preprocessed.
+        # - **PreprocessFailed**: Preprocessing failed.
         self.preprocess_status = preprocess_status
-        # The expiration time of the media asset restore.
+        # The expiration time of the media asset restoration.
         self.restore_expiration = restore_expiration
-        # The restore status of the media asset. Valid values:
-        # - **Processing**: Being restored.
+        # The media asset restoration status. Valid values:
+        # - **Processing**: Restoring.
         # - **Success**: Restored.
-        # - **Failed**: Failed to be restored.
+        # - **Failed**: Restoration failed.
         self.restore_status = restore_status
         # The file size. Unit: bytes.
         self.size = size
         # The file status. Valid values:
         # 
-        # - **Uploading**: The file is being uploaded. This is the initial status.
+        # - **Uploading**: The file is being uploaded. This is the initial status of the file.
         # - **Normal**: The file is uploaded.
-        # - **UploadFail**: The file failed to be uploaded.
+        # - **UploadFail**: The file fails to be uploaded.
         # - **Deleted**: The file is deleted.
         self.status = status
-        # The storage class of the media asset. Valid values:
+        # The media asset storage class. Valid values:
         # 
         # - **Standard**: Standard.
         # - **IA**: Infrequent Access for media assets.
@@ -132,7 +133,7 @@ class GetMezzanineInfoResponseBodyMezzanine(DaraModel):
         self.video_id = video_id
         # The video stream information.
         self.video_stream_list = video_stream_list
-        # The file width. Unit: px.
+        # The width of the file. Unit: pixels.
         self.width = width
 
     def validate(self):
@@ -310,11 +311,11 @@ class GetMezzanineInfoResponseBodyMezzanineVideoStreamList(DaraModel):
     ):
         # The average frame rate.
         self.avg_fps = avg_fps
-        # The file bitrate. Unit: Kbps.
+        # The bitrate of the file. Unit: Kbps.
         self.bitrate = bitrate
-        # The full name of the codec.
+        # The long name of the codec format.
         self.codec_long_name = codec_long_name
-        # The short name of the codec.
+        # The short name of the codec format.
         self.codec_name = codec_name
         # The codec tag.
         self.codec_tag = codec_tag
@@ -330,11 +331,11 @@ class GetMezzanineInfoResponseBodyMezzanineVideoStreamList(DaraModel):
         self.fps = fps
         # The HDR type of the video stream.
         self.hdrtype = hdrtype
-        # Indicates whether the video stream contains B-frames.
+        # Indicates whether the video contains B-frames.
         self.has_bframes = has_bframes
-        # The height of the video resolution.
+        # The height of the video.
         self.height = height
-        # The sequence number of the video stream, which identifies the position of the video stream in the overall media stream.
+        # The sequence number of the video stream, which identifies the position of the video stream in the entire media stream.
         self.index = index
         # The language.
         self.lang = lang
@@ -346,15 +347,15 @@ class GetMezzanineInfoResponseBodyMezzanineVideoStreamList(DaraModel):
         self.pix_fmt = pix_fmt
         # The codec profile.
         self.profile = profile
-        # The video rotation angle. Value range: **[0, 360)**.
+        # The video rotation angle. Valid values: **[0, 360)**.
         self.rotate = rotate
         # The sample aspect ratio.
         self.sar = sar
-        # The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The start time. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.start_time = start_time
         # The time base.
         self.timebase = timebase
-        # The width of the video resolution.
+        # The width of the video.
         self.width = width
 
     def validate(self):
@@ -544,9 +545,9 @@ class GetMezzanineInfoResponseBodyMezzanineAudioStreamList(DaraModel):
         self.channel_layout = channel_layout
         # The number of sound channels.
         self.channels = channels
-        # The full name of the codec.
+        # The long name of the codec format.
         self.codec_long_name = codec_long_name
-        # The short name of the codec.
+        # The short name of the codec format.
         self.codec_name = codec_name
         # The codec tag.
         self.codec_tag = codec_tag
@@ -556,17 +557,17 @@ class GetMezzanineInfoResponseBodyMezzanineAudioStreamList(DaraModel):
         self.codec_time_base = codec_time_base
         # The duration.
         self.duration = duration
-        # The sequence number of the audio stream, which identifies the position of the audio stream in the overall media stream.
+        # The sequence number of the audio stream, which identifies the position of the audio stream in the entire media stream.
         self.index = index
         # The language.
         self.lang = lang
         # The total number of frames.
         self.num_frames = num_frames
-        # The sample format.
+        # The sampling format.
         self.sample_fmt = sample_fmt
         # The sample rate.
         self.sample_rate = sample_rate
-        # The start time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The start time. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.start_time = start_time
         # The time base.
         self.timebase = timebase

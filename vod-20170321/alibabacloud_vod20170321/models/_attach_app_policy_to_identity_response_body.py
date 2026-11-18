@@ -13,9 +13,9 @@ class AttachAppPolicyToIdentityResponseBody(DaraModel):
         non_exist_policy_names: List[str] = None,
         request_id: str = None,
     ):
-        # The policy names that failed to be attached.
+        # The Policy Name of the failed policy.
         self.failed_policy_names = failed_policy_names
-        # The list of policy names that do not exist.
+        # The list of non-existent policy names.
         self.non_exist_policy_names = non_exist_policy_names
         # The request ID.
         self.request_id = request_id

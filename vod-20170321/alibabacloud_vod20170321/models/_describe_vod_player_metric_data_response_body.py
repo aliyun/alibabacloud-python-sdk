@@ -17,13 +17,13 @@ class DescribeVodPlayerMetricDataResponseBody(DaraModel):
         request_id: str = None,
         total_cnt: int = None,
     ):
-        # The list of returned data.
+        # The returned data list.
         self.data_list = data_list
         # The extended information.
         self.extend = extend
         # The current page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
@@ -98,11 +98,11 @@ class DescribeVodPlayerMetricDataResponseBodyExtend(DaraModel):
         actual_start_time: str = None,
         interval_seconds: int = None,
     ):
-        # The latest time with data points within the specified time range. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+        # The latest time with data points within the specified time range. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
         self.actual_end_time = actual_end_time
-        # The earliest time with data points within the specified time range. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+        # The earliest time with data points within the specified time range. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
         self.actual_start_time = actual_start_time
-        # The time granularity of the queried data, in seconds (s).
+        # The time granularity of the queried data, in seconds.
         self.interval_seconds = interval_seconds
 
     def validate(self):
@@ -167,57 +167,57 @@ class DescribeVodPlayerMetricDataResponseBodyDataList(DaraModel):
         uv: float = None,
         vv: float = None,
     ):
-        # The average completion plays per user.
+        # The average number of completions per user.
         self.avg_per_completion_vv = avg_per_completion_vv
-        # The average play duration per user, in milliseconds (ms).
+        # The average playback duration per user, in milliseconds.
         self.avg_per_play_duration = avg_per_play_duration
-        # The average plays per user.
+        # The average number of playbacks per user.
         self.avg_per_vv = avg_per_vv
         # The average playback bitrate, in bps.
         self.avg_play_bitrate = avg_play_bitrate
-        # The average play duration, in milliseconds (ms).
+        # The average playback duration, in milliseconds.
         self.avg_play_duration = avg_play_duration
-        # The average start bitrate, in bps.
+        # The average startup bitrate, in bps.
         self.avg_start_bitrate = avg_start_bitrate
-        # The average video duration, in milliseconds (ms).
+        # The average video duration, in milliseconds.
         self.avg_video_duration = avg_video_duration
         # The completion rate.
         self.completion_rate = completion_rate
-        # The completion count.
+        # The completion volume.
         self.completion_vv = completion_vv
         # The dimension.
         self.dimension = dimension
-        # The error count per 100 seconds.
+        # The number of errors per 100 seconds.
         self.error_count_100s = error_count_100s
-        # The first frame time, in milliseconds (ms).
+        # The first frame loading time, in milliseconds.
         self.first_frame = first_frame
         # The 5-second bounce rate.
         self.jump_rate_5s = jump_rate_5s
-        # The play failure rate.
+        # The playback failure rate.
         self.play_fail_rate = play_fail_rate
-        # The actual play count.
+        # The actual playback volume.
         self.real_vv = real_vv
-        # The instant play rate.
+        # The 1-second startup rate.
         self.second_play_rate = second_play_rate
-        # The non-play rate.
+        # The non-startup rate.
         self.seed_fail_rate = seed_fail_rate
-        # The seek duration, in milliseconds (ms).
+        # The seek duration, in milliseconds.
         self.seek_duration = seek_duration
-        # The slow play rate.
+        # The slow startup rate.
         self.slow_play_rate = slow_play_rate
-        # The stuttering count per 100 seconds.
+        # The number of stuttering events per 100 seconds.
         self.stuck_count_100s = stuck_count_100s
         # The stuttering rate by count.
         self.stuck_count_rate = stuck_count_rate
-        # The stuttering duration per 100 seconds, in milliseconds (ms).
+        # The stuttering duration per 100 seconds, in milliseconds.
         self.stuck_duration_100s = stuck_duration_100s
-        # The timestamp of the data. Format: yyyy-mm-ddthh:mm:ssz (UTC).
+        # The timestamp of the returned data. Format: yyyy-mm-ddThh:mm:ssZ (UTC).
         self.time_stamp = time_stamp
-        # The total play duration, in milliseconds (ms).
+        # The total playback duration, in milliseconds.
         self.total_play_duration = total_play_duration
         # The number of playback users.
         self.uv = uv
-        # The play count.
+        # The number of playbacks.
         self.vv = vv
 
     def validate(self):

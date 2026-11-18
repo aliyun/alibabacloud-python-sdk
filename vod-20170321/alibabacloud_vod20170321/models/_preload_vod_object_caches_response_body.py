@@ -10,7 +10,7 @@ class PreloadVodObjectCachesResponseBody(DaraModel):
         preload_task_id: str = None,
         request_id: str = None,
     ):
-        # The task ID returned for the prefetch operation. Multiple task IDs are separated by commas (,).
+        # The ID of the prefetch task. Multiple task IDs are separated by commas (,).
         self.preload_task_id = preload_task_id
         # The request ID.
         self.request_id = request_id

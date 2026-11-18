@@ -16,9 +16,9 @@ class BatchGetMediaInfosResponseBody(DaraModel):
         non_exist_reference_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The list of media asset IDs that are forbidden. This is typically because you do not have permissions for multi-application operations. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
+        # The list of media asset IDs for which operations are forbidden. This is typically caused by a lack of multi-application permissions. For more information, see [Multi-application](https://help.aliyun.com/document_detail/113600.html).
         self.forbidden_media_ids = forbidden_media_ids
-        # The media asset list.
+        # The list of media assets.
         self.media_infos = media_infos
         # The list of media asset IDs that do not exist.
         self.non_exist_media_ids = non_exist_media_ids
@@ -89,11 +89,11 @@ class BatchGetMediaInfosResponseBodyMediaInfos(DaraModel):
     ):
         # The media asset ID.
         self.media_id = media_id
-        # The basic information of the media asset.
+        # The basic information about the media asset.
         self.media_info = media_info
-        # The source file information.
+        # The information about the source file.
         self.mezzanine_info = mezzanine_info
-        # The playback information (stream information) of the audio/video file.
+        # The playback information of the audio and video streams.
         self.play_info_list = play_info_list
 
     def validate(self):
@@ -179,50 +179,50 @@ class BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList(DaraModel):
         watermark_id: str = None,
         width: int = None,
     ):
-        # The color bit depth. The value is an integer.
+        # The color depth. The value is an integer.
         self.bit_depth = bit_depth
         # The bitrate of the media stream. Unit: Kbps.
         self.bitrate = bitrate
         # The short name of the codec.
         self.codec_name = codec_name
-        # The time when the stream was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The creation time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.creation_time = creation_time
         # The definition of the video stream. Valid values:
         # 
-        # - **FD**: low definition.
-        # - **LD**: standard definition.
-        # - **SD**: high definition.
-        # - **HD**: ultra high definition.
-        # - **OD**: original quality.
-        # - **2K**: 2K.
-        # - **4K**: 4K.
-        # - **SQ**: standard sound quality.
-        # - **HQ**: high sound quality.
-        # - **AUTO**: adaptive bitrate streaming.
+        # - **FD**: smooth
+        # - **LD**: standard definition
+        # - **SD**: high definition
+        # - **HD**: ultra-high definition
+        # - **OD**: original quality
+        # - **2K**: 2K
+        # - **4K**: 4K
+        # - **SQ**: standard audio quality
+        # - **HQ**: high audio quality
+        # - **AUTO**: adaptive bitrate
         self.definition = definition
         # The duration of the media stream. Unit: seconds.
         self.duration = duration
-        # Indicates whether the media stream is encrypted. Valid values:
+        # Specifies whether the media stream is encrypted. Valid values:
         # 
-        # - **0**: The stream is not encrypted.
-        # - **1**: The stream is encrypted.
+        # - **0**: no
+        # - **1**: yes
         self.encrypt = encrypt
         # The encryption mode of the media stream. Valid values:
         # 
-        # - **License**: local decryption mode.
+        # - **License**: local decryption mode
         # 
-        # > If the encryption mode is **License**, only ApsaraVideo Player SDK can be used for playback.
+        # > If the encryption mode is **License**, the stream can only be played by using the ApsaraVideo Player SDK.
         self.encrypt_mode = encrypt_mode
         # The encryption type of the media stream. Valid values:
         # 
-        # - **AliyunVoDEncryption**: Alibaba Cloud video encryption.
-        # - **HLSEncryption**: HLS encryption.
+        # - **AliyunVoDEncryption**: Alibaba Cloud video encryption
+        # - **HLSEncryption**: HLS encryption
         # 
-        # > If the encryption type is **AliyunVoDEncryption**, only ApsaraVideo Player SDK can be used for playback.
+        # > If the encryption type is **AliyunVoDEncryption**, the stream can only be played by using the ApsaraVideo Player SDK.
         self.encrypt_type = encrypt_type
         # The format of the media stream.
         # - If the media file is a video, valid values are **mp4** and **m3u8**.
-        # - If the media file is audio-only, the value is **mp3**.
+        # - If the media file is audio-only, the valid value is **mp3**.
         self.format = format
         # The frame rate of the media stream. Unit: frames per second.
         self.fps = fps
@@ -234,45 +234,45 @@ class BatchGetMediaInfosResponseBodyMediaInfosPlayInfoList(DaraModel):
         # - HDRVivid
         # - SDR+
         self.hdrtype = hdrtype
-        # The height of the media stream. Unit: px.
+        # The height of the media stream. Unit: pixels.
         self.height = height
-        # The custom watermark information of the copyright watermark. This field is returned only when `JobType` is `2`.
+        # The custom watermark information for the copyright watermark. This field is returned only when `JobType` is set to `2`.
         self.job_ext = job_ext
-        # The job ID of the media stream transcoding. This value serves as the unique identifier of the media stream.
+        # The ID of the transcoding job for the media stream. This ID uniquely identifies the media stream.
         self.job_id = job_id
         # The digital watermarking type. Valid values:
-        # - **1**: tracing watermark.
-        # - **2**: copyright watermark.
+        # - **1**: tracing watermark
+        # - **2**: copyright watermark
         self.job_type = job_type
-        # The time when the stream was last updated. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The update time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.modification_time = modification_time
         # The transcoding type. Valid values:
         # 
-        # - **0**: standard transcoding.
-        # - **1.0**: Narrowband HD 1.0 transcoding.
-        # - **2.0**: Narrowband HD 2.0 transcoding.
+        # - **0**: standard transcoding
+        # - **1.0**: Narrowband HD 1.0 transcoding
+        # - **2.0**: Narrowband HD 2.0 transcoding
         self.narrow_band_type = narrow_band_type
         # The playback URL of the video stream.
         self.play_url = play_url
         # The size of the media stream. Unit: bytes.
         self.size = size
-        # The output specification of the audio/video transcoding. For more information about valid values and descriptions, see [Output specifications: Specification](~~124671#section-6bv-l0g-opq~~).
+        # The output specification of video transcoding. For more information about the valid values and descriptions, see [Output specifications: Specification](~~124671#section-6bv-l0g-opq~~).
         self.specification = specification
         # The status of the media stream. Valid values:
         # 
-        # - **Normal**: The stream is in a normal state. This value indicates the status of the latest transcoded stream for each definition and format.
-        # - **Invisible**: The stream is invisible. When multiple duplicate transcoded streams exist for each definition and format, only the latest stream is marked as Normal, and the other streams are marked as Invisible.
+        # - **Normal**: The stream is in the normal state. This state marks the latest transcoded stream for each definition and format.
+        # - **Invisible**: The stream is in the invisible state. If multiple transcoded streams exist for the same definition and format, only the latest stream is marked as Normal, and the other streams are marked as Invisible.
         self.status = status
         # The type of the media stream.
         # If the media stream is a video, the value is **video**. If the media stream is audio-only, the value is **audio**.
         self.stream_type = stream_type
-        # The transcoding template group ID.
+        # The ID of the transcoding template group.
         self.template_group_id = template_group_id
-        # The transcoding template ID.
+        # The ID of the transcoding template.
         self.template_id = template_id
-        # The watermark template ID associated with the current media stream.
+        # The ID of the watermark template associated with the current media stream.
         self.watermark_id = watermark_id
-        # The width of the media stream. Unit: px.
+        # The width of the media stream. Unit: pixels.
         self.width = width
 
     def validate(self):
@@ -469,37 +469,38 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfo(DaraModel):
         video_stream_list: List[main_models.BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList] = None,
         width: int = None,
     ):
-        # The audio stream information.
+        # The information about the audio streams.
         self.audio_stream_list = audio_stream_list
         # The bitrate of the file. Unit: Kbps.
         self.bitrate = bitrate
-        # The time when the file was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The time when the file was created. The time follows the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
         self.creation_time = creation_time
         # The duration of the file. Unit: seconds.
         self.duration = duration
+        # The MD5 hash value of the source file.
         self.file_md5 = file_md5
         # The file name.
         self.file_name = file_name
         # The URL of the source file.
         self.file_url = file_url
-        # The frame rate of the file, in frames per second.
+        # The frame rate of the file. Unit: frames per second.
         self.fps = fps
-        # The height of the file. Unit: px.
+        # The height of the file. Unit: pixels.
         self.height = height
         # The media asset ID.
         self.media_id = media_id
-        # The size of the file. Unit: bytes.
+        # The file size. Unit: bytes.
         self.size = size
         # The file status. Valid values:
         # 
         # - **Uploading**: The file is being uploaded. This is the initial status of the file.
         # - **Normal**: The file is uploaded.
-        # - **UploadFail**: The file failed to be uploaded.
+        # - **UploadFail**: The upload failed.
         # - **Deleted**: The file is deleted.
         self.status = status
-        # The video stream information.
+        # The information about the video streams.
         self.video_stream_list = video_stream_list
-        # The width of the file. Unit: px.
+        # The width of the file. Unit: pixels.
         self.width = width
 
     def validate(self):
@@ -649,7 +650,7 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList(DaraM
         self.avg_fps = avg_fps
         # The bitrate of the file. Unit: Kbps.
         self.bitrate = bitrate
-        # The full name of the codec.
+        # The long name of the codec.
         self.codec_long_name = codec_long_name
         # The short name of the codec.
         self.codec_name = codec_name
@@ -667,11 +668,11 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList(DaraM
         self.fps = fps
         # The HDR type of the video stream.
         self.hdrtype = hdrtype
-        # Indicates whether the video stream contains B-frames.
+        # Indicates whether the video contains B-frames.
         self.has_bframes = has_bframes
-        # The height of the video resolution.
+        # The height of the video.
         self.height = height
-        # The sequence number of the video stream, which identifies the position of the video stream in the overall media stream.
+        # The index of the video stream, which indicates the position of the video stream in all media streams.
         self.index = index
         # The language.
         self.lang = lang
@@ -683,15 +684,15 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoVideoStreamList(DaraM
         self.pix_fmt = pix_fmt
         # The codec profile.
         self.profile = profile
-        # The video rotation angle. Valid values: [0, 360).
+        # The rotation angle of the video. Value range: [0, 360).
         self.rotate = rotate
         # The sample aspect ratio.
         self.sar = sar
-        # The start time. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The start time. The time follows the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
         self.start_time = start_time
         # The time base.
         self.timebase = timebase
-        # The width of the video resolution.
+        # The width of the video.
         self.width = width
 
     def validate(self):
@@ -876,12 +877,12 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList(DaraM
         self.bitrate = bitrate
         # The channel layout. Valid values:
         # 
-        # - **mono**: mono.
-        # - **stereo**: stereo.
+        # - **mono**: Mono.
+        # - **stereo**: Stereo.
         self.channel_layout = channel_layout
         # The number of sound channels.
         self.channels = channels
-        # The full name of the codec.
+        # The long name of the codec.
         self.codec_long_name = codec_long_name
         # The short name of the codec.
         self.codec_name = codec_name
@@ -893,17 +894,17 @@ class BatchGetMediaInfosResponseBodyMediaInfosMezzanineInfoAudioStreamList(DaraM
         self.codec_time_base = codec_time_base
         # The duration.
         self.duration = duration
-        # The sequence number of the audio stream, which identifies the position of the audio stream in the overall media stream.
+        # The index of the audio stream, which indicates the position of the audio stream in all media streams.
         self.index = index
         # The language.
         self.lang = lang
         # The total number of frames.
         self.num_frames = num_frames
-        # The sample format.
+        # The sampling format.
         self.sample_fmt = sample_fmt
         # The sample rate.
         self.sample_rate = sample_rate
-        # The start time. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The start time. The time follows the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
         self.start_time = start_time
         # The time base.
         self.timebase = timebase
@@ -1048,62 +1049,62 @@ class BatchGetMediaInfosResponseBodyMediaInfosMediaInfo(DaraModel):
         self.cate_id = cate_id
         # The category name.
         self.cate_name = cate_name
-        # The thumbnail URL of the audio/video file.
+        # The URL of the thumbnail for the audio or video file.
         self.cover_url = cover_url
-        # The time when the audio/video file was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The time when the audio or video file was created. The time follows the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the audio/video file.
+        # The description of the audio or video file.
         self.description = description
-        # The status of the offline download switch. After the offline download feature is enabled, mobile users can cache videos to their local devices for viewing by using ApsaraVideo Player. For more information, see [Offline download](https://help.aliyun.com/document_detail/86107.html). Valid values:
+        # The status of the offline download switch. After you enable the offline download feature, mobile users can use ApsaraVideo Player to cache videos to their local devices for offline viewing. For more information, see [Offline download](https://help.aliyun.com/document_detail/86107.html). Valid values:
         # 
-        # - **on**: Offline download is enabled.
-        # - **off**: Offline download is disabled.
+        # - **on**: The offline download feature is enabled.
+        # - **off**: The offline download feature is disabled.
         self.download_switch = download_switch
         # The media asset ID.
         self.media_id = media_id
-        # The last time when the audio/video file was updated. The time is in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
+        # The time when the audio or video file was last updated. The time follows the yyyy-MM-ddTHH:mm:ssZ format and is displayed in UTC.
         self.modification_time = modification_time
-        # The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The ID must be 6 to 64 characters in length and is unique at the user level.
+        # The custom ID. The ID must be 6 to 64 characters in length and can contain only lowercase letters, uppercase letters, digits, hyphens (-), and underscores (_). The ID must be unique within the user dimension.
         self.reference_id = reference_id
-        # The expiration time of the media asset restoration.
+        # The expiration time of the restored media asset.
         self.restore_expiration = restore_expiration
         # The restoration status of the media asset. Valid values:
         # - **Processing**: The media asset is being restored.
         # - **Success**: The media asset is restored.
-        # - **Failed**: The media asset failed to be restored.
+        # - **Failed**: The restoration failed.
         self.restore_status = restore_status
-        # The video snapshot URL array.
+        # The array of video snapshot URLs.
         self.snapshots = snapshots
         # The video status. Valid values:
         # 
         # - **Uploading**: The video is being uploaded.
-        # - **UploadFail**: The video failed to be uploaded.
-        # - **UploadSucc**: The video has been uploaded.
+        # - **UploadFail**: The upload failed.
+        # - **UploadSucc**: The upload is complete.
         # - **Transcoding**: The video is being transcoded.
-        # - **TranscodeFail**: The video failed to be transcoded.
+        # - **TranscodeFail**: The transcoding failed.
         # - **Blocked**: The video is blocked.
-        # - **Normal**: The video is in a normal state.
+        # - **Normal**: The video is normal.
         self.status = status
         # The storage class of the media asset. Valid values:
-        # - **Standard**: standard.
-        # - **IA**: Infrequent Access for media assets.
-        # - **Archive**: Archive for media assets.
-        # - **ColdArchive**: Cold Archive for media assets.
-        # - **SourceIA**: Infrequent Access for source files.
-        # - **SourceArchive**: Archive for source files.
-        # - **SourceColdArchive**: Cold Archive for source files.
+        # - **Standard**: Standard storage.
+        # - **IA**: Infrequent access storage for media assets.
+        # - **Archive**: Archive storage for media assets.
+        # - **ColdArchive**: Cold archive storage for media assets.
+        # - **SourceIA**: Infrequent access storage for source files.
+        # - **SourceArchive**: Archive storage for source files.
+        # - **SourceColdArchive**: Cold archive storage for source files.
         # - **Changing**: The storage class of the media asset is being changed.
         # - **SourceChanging**: The storage class of the source file is being changed.
         self.storage_class = storage_class
-        # The storage address of the audio/video file.
+        # The storage address of the audio or video file.
         self.storage_location = storage_location
-        # The tags of the audio/video file. Multiple tags are separated by commas (,).
+        # The tags of the audio or video file. Separate multiple tags with commas (,).
         self.tags = tags
-        # The transcoding template group ID.
+        # The ID of the transcoding template group.
         self.template_group_id = template_group_id
-        # The title of the audio/video file.
+        # The title of the audio or video file.
         self.title = title
-        # The custom parameter.
+        # The custom parameters.
         self.user_data = user_data
 
     def validate(self):

@@ -21,8 +21,8 @@ class UpdateMediaStorageClassResponseBody(DaraModel):
         self.request_id = request_id
         # The task status. Valid values:
         # 
-        # - **Processing**: Processing.
-        # - **Failed**: Failed.
+        # - **Processing**: The task is being processed.
+        # - **Failed**: The task failed.
         self.status = status
 
     def validate(self):

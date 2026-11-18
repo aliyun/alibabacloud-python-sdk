@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'vod'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'vod.cn-shanghai.aliyuncs.com',
@@ -65,18 +69,7 @@ class Client(OpenApiClient):
             'eu-west-1-oxs': 'vod.aliyuncs.com',
             'me-east-1': 'vod.aliyuncs.com',
             'rus-west-1-pop': 'vod.aliyuncs.com',
-            'us-east-1': 'vod.aliyuncs.com',
-            'cn-shenzhen': 'vod.cn-shenzhen.aliyuncs.com',
-            'cn-beijing': 'vod.cn-beijing.aliyuncs.com',
-            'cn-shanghai': 'vod.cn-shanghai.aliyuncs.com',
-            'cn-hongkong': 'vod.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'vod.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'vod.ap-northeast-1.aliyuncs.com',
-            'ap-southeast-5': 'vod.ap-southeast-5.aliyuncs.com',
-            'us-west-1': 'vod.us-west-1.aliyuncs.com',
-            'eu-central-1': 'vod.eu-central-1.aliyuncs.com',
-            'me-central-1': 'vod.me-central-1.aliyuncs.com',
-            'cn-north-2-gov-1': 'vod.cn-north-2-gov-1.aliyuncs.com'
+            'us-east-1': 'vod.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('vod', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -14394,6 +14387,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitWorkflowJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.extra_inputs):
+            query['ExtraInputs'] = request.extra_inputs
         if not DaraCore.is_null(request.media_id):
             query['MediaId'] = request.media_id
         if not DaraCore.is_null(request.workflow_id):
@@ -14424,6 +14419,8 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitWorkflowJobResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.extra_inputs):
+            query['ExtraInputs'] = request.extra_inputs
         if not DaraCore.is_null(request.media_id):
             query['MediaId'] = request.media_id
         if not DaraCore.is_null(request.workflow_id):

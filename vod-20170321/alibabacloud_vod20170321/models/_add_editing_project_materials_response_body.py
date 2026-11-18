@@ -13,7 +13,7 @@ class AddEditingProjectMaterialsResponseBody(DaraModel):
         material_list: List[main_models.AddEditingProjectMaterialsResponseBodyMaterialList] = None,
         request_id: str = None,
     ):
-        # The list of materials.
+        # The list of media assets.
         self.material_list = material_list
         # The request ID.
         self.request_id = request_id
@@ -75,45 +75,45 @@ class AddEditingProjectMaterialsResponseBodyMaterialList(DaraModel):
     ):
         # The category ID.
         self.cate_id = cate_id
-        # The material category name.
+        # The name of the media asset category.
         self.cate_name = cate_name
-        # The thumbnail URL of the material.
+        # The URL of the media asset thumbnail.
         self.cover_url = cover_url
-        # The time when the material was created. The time follows the format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
+        # The time when the media asset was created. The time follows the <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z format. The time is displayed in UTC.
         self.create_time = create_time
         # The user ID.
         self.customer_id = customer_id
-        # The material description.
+        # The description of the media asset.
         self.description = description
-        # The material duration. Unit: seconds. The value is accurate to four decimal places.
+        # The duration of the media asset. Unit: seconds. The value is accurate to four decimal places.
         self.duration = duration
-        # The material ID.
+        # The ID of the media asset.
         self.material_id = material_id
-        # The material type. Valid values:
+        # The type of the media asset. Valid values:
         # 
-        # - **video**: video.
-        # - **audio**: audio-only.
-        # - **image**: image.
+        # - **video**: video
+        # - **audio**: audio-only
+        # - **image**: image
         self.material_type = material_type
-        # The time when the material was last modified. The time follows the format: <i>yyyy-mm-dd</i>t<i>hh:mm:ss</i>z (UTC).
+        # The time when the media asset was updated. The time follows the <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z format. The time is displayed in UTC.
         self.modify_time = modify_time
         # The file size.
         self.size = size
-        # The array of snapshot URLs for the material.
+        # The array of snapshot URLs for the media asset.
         self.snapshots = snapshots
         # The sprite configuration.
         self.sprite_config = sprite_config
-        # The array of sprite URLs for the material.
+        # The array of sprite URLs for the media asset.
         self.sprites = sprites
-        # The material status. Valid values:
+        # The status of the media asset. Valid values:
         # 
         # - **Normal**: Normal.
         # - **Uploading**: Uploading.
         # - **UploadFail**: Upload failed.
         self.status = status
-        # The material tags. Multiple tags are separated by commas (,).
+        # The tags of the media asset. Separate multiple tags with commas (,).
         self.tags = tags
-        # The material title.
+        # The title of the media asset.
         self.title = title
 
     def validate(self):

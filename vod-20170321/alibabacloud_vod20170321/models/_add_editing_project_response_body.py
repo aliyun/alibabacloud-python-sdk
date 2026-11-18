@@ -11,9 +11,9 @@ class AddEditingProjectResponseBody(DaraModel):
         project: main_models.AddEditingProjectResponseBodyProject = None,
         request_id: str = None,
     ):
-        # The online editing project. For the specific structure definition, see [EditingProject](https://help.aliyun.com/document_detail/52839.html).
+        # The online editing project. For more information about the structure, see [EditingProject](https://help.aliyun.com/document_detail/52839.html).
         self.project = project
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,20 +54,20 @@ class AddEditingProjectResponseBodyProject(DaraModel):
         status: str = None,
         title: str = None,
     ):
-        # The time when the online editing project was created. The time follows the format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the online editing project was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description of the online editing project.
         self.description = description
-        # The last time when the online editing project was modified. The time follows the format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The time when the online editing project was last modified. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.modified_time = modified_time
         # The ID of the online editing project.
         self.project_id = project_id
         # The status of the online editing project. Valid values:
         # 
-        # - **Normal**: draft.
-        # - **Producing**: being produced.
-        # - **Produced**: produced.
-        # - **ProduceFailed**: failed to be produced.
+        # - **Normal**: draft
+        # - **Producing**: producing
+        # - **Produced**: produced
+        # - **ProduceFailed**: production failed
         self.status = status
         # The title of the online editing project.
         self.title = title

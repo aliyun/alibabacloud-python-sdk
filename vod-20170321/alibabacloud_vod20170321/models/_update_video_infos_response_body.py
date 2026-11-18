@@ -14,11 +14,11 @@ class UpdateVideoInfosResponseBody(DaraModel):
         non_exist_video_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The IDs of the audio and video files that cannot be operated on. This is typically caused by insufficient [permissions](https://help.aliyun.com/document_detail/113600.html).
+        # The IDs of the audio or video files on which operations are forbidden. This is usually caused by a lack of [permissions](https://help.aliyun.com/document_detail/113600.html).
         self.forbidden_video_ids = forbidden_video_ids
-        # The list of custom IDs that do not exist.
+        # The custom IDs that do not exist.
         self.non_exist_reference_ids = non_exist_reference_ids
-        # The IDs of the audio and video files that do not exist.
+        # The IDs of the audio or video files that do not exist.
         self.non_exist_video_ids = non_exist_video_ids
         # The request ID.
         self.request_id = request_id

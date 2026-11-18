@@ -20,14 +20,26 @@ class AppInfoDTO(DaraModel):
         platforms: List[main_models.AppInfoDTOPlatforms] = None,
         user_id: int = None,
     ):
+        # The application name.
         self.app_name = app_name
+        # The application type. Valid values:
+        # 
+        # - 1: Common application.
+        # - 2: Embedded SDK.
         self.app_type = app_type
+        # The creation time.
         self.creation_time = creation_time
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The application ID.
         self.item_id = item_id
+        # The update time.
         self.modification_time = modification_time
+        # The list of platform information for the application.
         self.platforms = platforms
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -118,11 +130,17 @@ class AppInfoDTOPlatforms(DaraModel):
         platform_type: int = None,
         type: int = None,
     ):
+        # The platform ID.
         self.item_id = item_id
+        # The list of licenses.
         self.license_item_ids = license_item_ids
+        # The package name.
         self.pkg_name = pkg_name
+        # The package signature.
         self.pkg_signature = pkg_signature
+        # The platform type.
         self.platform_type = platform_type
+        # The platform type.
         self.type = type
 
     def validate(self):

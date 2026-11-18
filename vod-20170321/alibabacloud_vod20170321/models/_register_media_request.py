@@ -14,28 +14,30 @@ class RegisterMediaRequest(DaraModel):
         user_data: str = None,
         workflow_id: str = None,
     ):
+        # Specifies whether to use the first frame of the video as the thumbnail.
         self.enable_first_frame_cover = enable_first_frame_cover
+        # Specifies whether to generate a thumbnail for the video.
         self.generate_thumbnail = generate_thumbnail
-        # The metadata of the media assets to register. The value is a JSON string. You can specify metadata for up to 10 media assets at a time. For more information about the parameter structure, see the **RegisterMetadata** table below.
+        # The metadata of the media assets to be registered. The value is a JSON string. You can specify the metadata for up to 10 media assets at a time. For more information about the parameter structure, see the **RegisterMetadata** table below.
         # 
         # This parameter is required.
         self.register_metadatas = register_metadatas
-        # The transcoding template group ID. You can obtain the ID by using one of the following methods:
-        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups** to view the transcoding template group ID.
-        # - Obtain the value of TranscodeTemplateGroupId from the response when you call the [CreateTranscodeTemplateGroup](https://help.aliyun.com/document_detail/102665.html) operation.
-        # - Obtain the value of TranscodeTemplateGroupId from the response when you call the [ListTranscodeTemplateGroup](https://help.aliyun.com/document_detail/102669.html) operation.
+        # The ID of the transcoding template group. You can obtain the ID by using one of the following methods:
+        # - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Processing Configuration** > **Transcoding Template Groups** to view the ID of the transcoding template group.
+        # - When you create a transcoding template group by calling the [Create a transcoding template group](https://help.aliyun.com/document_detail/102665.html) operation, the ID of the transcoding template group is the value of the TranscodeTemplateGroupId response parameter.
+        # - When you query transcoding template groups by calling the [Query transcoding configurations](https://help.aliyun.com/document_detail/102669.html) operation, the ID of the transcoding template group is the value of the TranscodeTemplateGroupId response parameter.
         # 
-        # > - If transcoding is not required, set this parameter to VOD_NO_TRANSCODE (the no-transcoding template group). Otherwise, the video status is **UploadSucc** and the video cannot be played by using the playback service. If transcoding is required, specify the corresponding transcoding template group ID.
-        # > - If both WorkflowId and TemplateGroupId are specified, WorkflowId takes precedence. For more information, see [Workflows](https://help.aliyun.com/document_detail/115347.html).
-        # > - This parameter triggers an [asynchronous task](https://help.aliyun.com/document_detail/3027551.html). After submission, the task enters a background queue for asynchronous execution.
+        # > - If transcoding is not required, set this parameter to VOD_NO_TRANSCODE, which specifies the no-transcoding template group. Otherwise, the video status is **Upload Completed**, and you cannot use the playback service to play the audio or video. If transcoding is required, specify the ID of the corresponding transcoding template group.
+        # > - If both WorkflowId and TemplateGroupId are specified, WorkflowId takes precedence. For more information, see [Media workflows](https://help.aliyun.com/document_detail/115347.html).
+        # > - The task for this parameter is an [asynchronous task](https://help.aliyun.com/document_detail/3027551.html). After the task is submitted, it is not immediately completed but queued for asynchronous execution in the background.
         self.template_group_id = template_group_id
-        # The custom settings. The value is a JSON string that supports settings such as message callbacks. For more information, see [UserData](~~86952#section_6fg_qll_v3w~~).
-        # >This operation does not support callbacks. Even if you configure a message callback in this parameter, no callback message is generated after media asset registration is complete. When you subsequently initiate media processing such as transcoding or snapshotting on the registered media asset, if you specify a message callback in UserData at that time, that callback URL takes precedence. Otherwise, the callback URL specified in UserData during media asset registration is used.
+        # The custom settings. The value is a JSON string. You can configure settings such as message callbacks. For more information about the parameter, see [UserData](~~86952#section_6fg_qll_v3w~~).
+        # > This operation does not support callbacks. Even if a message callback is configured in this parameter, no callback message is generated after the media asset registration is completed. When you subsequently initiate media processing such as transcoding and snapshot generation for the registered media assets, if you separately configure a message callback in UserData when initiating the transcoding or snapshot generation, that callback URL takes precedence. If no callback is separately configured, the callback URL configured in UserData during the media asset registration is used.
         self.user_data = user_data
-        # The workflow ID. Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Processing** > **Workflow Management** to view the workflow ID.
+        # The ID of the media workflow. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Processing Configuration** > **Workflow Management** to view the workflow ID.
         # 
-        # > - If both WorkflowId and TemplateGroupId are specified, WorkflowId takes precedence. For more information, see [Workflows](https://help.aliyun.com/document_detail/115347.html).
-        # > - This parameter triggers an [asynchronous task](https://help.aliyun.com/document_detail/3027551.html). After submission, the task enters a background queue for asynchronous execution.
+        # > - If both WorkflowId and TemplateGroupId are specified, WorkflowId takes precedence. For more information, see [Media workflows](https://help.aliyun.com/document_detail/115347.html).
+        # > - The task for this parameter is an [asynchronous task](https://help.aliyun.com/document_detail/3027551.html). After the task is submitted, it is not immediately completed but queued for asynchronous execution in the background.
         self.workflow_id = workflow_id
 
     def validate(self):

@@ -53,7 +53,7 @@ class GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetail(Dara
         page_total: int = None,
         total: int = None,
     ):
-        # The result list.
+        # The list of results.
         self.list = list
         # The current page number.
         self.page_total = page_total
@@ -108,22 +108,22 @@ class GetMediaAuditAudioResultDetailResponseBodyMediaAuditAudioResultDetailList(
         start_time: int = None,
         text: str = None,
     ):
-        # The end time of the problematic audio segment. Unit: seconds.
+        # The end time of the flagged audio segment, in seconds.
         self.end_time = end_time
         # The category of the audio review result. Valid values:
         # 
         # - **normal**: Normal.
-        # - **spam**: Contains spam.
-        # - **ad**: Advertisement.
+        # - **spam**: Spam.
+        # - **ad**: Ad.
         # - **politics**: Political content.
-        # - **terrorism**: Terrorist content.
-        # - **abuse**: Abusive content.
-        # - **porn**: Pornographic content.
-        # - **flood**: Junk content.
-        # - **contraband**: Prohibited content.
-        # - **meaningless**: Meaningless content.
+        # - **terrorism**: Terrorism.
+        # - **abuse**: Abuse.
+        # - **porn**: Pornography.
+        # - **flood**: Flooding.
+        # - **contraband**: Contraband.
+        # - **meaningless**: Meaningless.
         self.label = label
-        # The start time of the problematic audio segment. Unit: seconds.
+        # The start time of the flagged audio segment, in seconds.
         self.start_time = start_time
         # The text content corresponding to the audio.
         self.text = text

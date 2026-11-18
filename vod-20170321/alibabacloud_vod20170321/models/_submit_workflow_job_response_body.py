@@ -12,6 +12,7 @@ class SubmitWorkflowJobResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
+        # The workflow job ID. After the job is submitted, it is executed asynchronously. You can pass this ID to GetWorkflowTask to query the job status and result.
         self.task_id = task_id
 
     def validate(self):

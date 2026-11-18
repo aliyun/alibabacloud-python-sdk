@@ -17,7 +17,7 @@ class AddEditingProjectRequest(DaraModel):
         timeline: str = None,
         title: str = None,
     ):
-        # The thumbnail of the online editing project. If this parameter is left empty and the video track on the timeline already contains materials, the thumbnail of the first material on the timeline is used by default.
+        # The thumbnail of the online editing project. If this parameter is left empty and materials already exist on the video track of the timeline, the thumbnail of the first material on the timeline is used by default.
         self.cover_url = cover_url
         # The description of the online editing project.
         self.description = description
@@ -27,9 +27,9 @@ class AddEditingProjectRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The timeline of the online editing project. JSON format. For the specific structure definition, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
+        # The timeline of the online editing project. The value is in JSON format. For more information about the structure, see [Timeline](https://help.aliyun.com/document_detail/52839.html).
         # 
-        # If this parameter is left empty, an empty timeline is created and the total duration of the online editing project is 0.
+        # If this parameter is left empty, an empty timeline is created, and the total duration of the online editing project is 0.
         self.timeline = timeline
         # The title of the online editing project.
         # 

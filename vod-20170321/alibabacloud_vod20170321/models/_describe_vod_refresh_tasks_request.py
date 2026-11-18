@@ -21,16 +21,16 @@ class DescribeVodRefreshTasksRequest(DaraModel):
     ):
         # The domain name.
         self.domain_name = domain_name
-        # The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The end time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         self.end_time = end_time
-        # The path used to query. Exact match is used.
+        # The object path. Exact match is supported.
         self.object_path = object_path
         # The task type. Valid values:
-        # - **file**: file purge.
-        # - **directory**: directory purge.
-        # - **preload**: file prefetch.
+        # - **file**: file refresh
+        # - **directory**: directory refresh
+        # - **preload**: file prefetch
         # 
-        # > When DomainName or Status is specified, ObjectType is required.
+        # > If you specify DomainName or Status, ObjectType is required.
         self.object_type = object_type
         self.owner_id = owner_id
         # The page number.
@@ -38,17 +38,17 @@ class DescribeVodRefreshTasksRequest(DaraModel):
         # The number of entries per page. Default value: **20**. Maximum value: **50**.
         self.page_size = page_size
         self.security_token = security_token
-        # The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         # 
-        # > Only data within the last 3 days can be queried.
+        # > You can query only the data generated within the last three days.
         self.start_time = start_time
         # The task status. Valid values:
         # 
-        # - **Complete**: completed.
-        # - **Refreshing**: in progress.
-        # - **Failed**: failed.
+        # - **Complete**: The task is complete.
+        # - **Refreshing**: The task is in progress.
+        # - **Failed**: The task failed.
         self.status = status
-        # The task ID used to query the purge status.
+        # The task ID used to query the refresh status.
         self.task_id = task_id
 
     def validate(self):

@@ -14,11 +14,11 @@ class GetURLUploadInfosResponseBody(DaraModel):
         request_id: str = None,
         urlupload_info_list: List[main_models.GetURLUploadInfosResponseBodyURLUploadInfoList] = None,
     ):
-        # The list of upload task IDs or URLs that do not exist.
+        # The list of URL upload task IDs or URLs that do not exist.
         self.non_exists = non_exists
         # The request ID.
         self.request_id = request_id
-        # The list of URL upload information. For more information about the fields and descriptions, see [URLUploadInfo](https://help.aliyun.com/document_detail/52839.html).
+        # The list of URL upload information. For more information about the specific upload names and descriptions, see [URLUploadInfo: URL upload information](https://help.aliyun.com/document_detail/52839.html).
         self.urlupload_info_list = urlupload_info_list
 
     def validate(self):
@@ -76,9 +76,9 @@ class GetURLUploadInfosResponseBodyURLUploadInfoList(DaraModel):
         upload_url: str = None,
         user_data: str = None,
     ):
-        # The completion time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The completion time. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.complete_time = complete_time
-        # The creation time. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The creation time. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The error code.
         self.error_code = error_code
@@ -90,10 +90,11 @@ class GetURLUploadInfosResponseBodyURLUploadInfoList(DaraModel):
         self.job_id = job_id
         # The media ID.
         self.media_id = media_id
+        # The registered media asset ID.
         self.registered_media_id = registered_media_id
-        # The status of the URL-based upload task. For more information about the status values and descriptions, see [Status](https://help.aliyun.com/document_detail/52839.html).
+        # The status of the URL pull task. For more information about the specific values and descriptions of the pull status, see [Status: URL upload task status](https://help.aliyun.com/document_detail/52839.html).
         self.status = status
-        # The URL of the source video file.
+        # The URL of the video source file to upload.
         # 
         # > A maximum of 100 records can be returned.
         self.upload_url = upload_url

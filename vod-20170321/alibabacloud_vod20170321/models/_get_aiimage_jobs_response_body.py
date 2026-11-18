@@ -67,30 +67,30 @@ class GetAIImageJobsResponseBodyAIImageJobList(DaraModel):
         video_id: str = None,
     ):
         # The OSS URL of the AI image.
-        # >This is the task result. The URL does not contain complete authentication information. To obtain authentication information, generate it yourself or call the [ListAIImage](https://help.aliyun.com/document_detail/186924.html) operation to retrieve the media asset result.
+        # > This URL is returned as the task result and does not provide complete authentication information. To obtain authentication information, generate it or call the [ListAIImage](https://help.aliyun.com/document_detail/186924.html) operation to retrieve the media asset result.
         self.aiimage_result = aiimage_result
         # The error code.
         self.code = code
-        # The time when the AI image processing task was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The creation time of the AI image processing task. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
         self.creation_time = creation_time
         # The ID of the AI image processing task.
         self.job_id = job_id
         # The error message.
         self.message = message
         # The task status. Valid values:
-        # - **success**: The task is successful.
+        # - **success**: The task succeeded.
         # - **fail**: The task failed.
         self.status = status
-        # The snapshot of the configuration information of the specified template when the task was submitted.
+        # The snapshot of the configuration of the specified template when the task was submitted.
         self.template_config = template_config
-        # The AI template ID.
+        # The ID of the AI template.
         self.template_id = template_id
         # The custom settings.
         # - The value must be a JSON string.
         # - The value must contain the MessageCallback or Extend parameter.
         # - The maximum length is 512 bytes.
         # 
-        # For more information about the parameter structure, see [UserData](https://help.aliyun.com/document_detail/86952.html).
+        # For more information about how to construct the parameter, see [UserData](https://help.aliyun.com/document_detail/86952.html).
         self.user_data = user_data
         # The video ID.
         self.video_id = video_id

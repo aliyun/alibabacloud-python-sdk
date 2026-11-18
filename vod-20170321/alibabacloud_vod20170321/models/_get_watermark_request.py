@@ -9,9 +9,9 @@ class GetWatermarkRequest(DaraModel):
         self,
         watermark_id: str = None,
     ):
-        # The ID of the watermark template to query. Only a single watermark template ID is supported. You can obtain the ID by using one of the following methods:
-        # - Call the [AddWatermark](~~AddWatermark~~) operation to add a watermark template. The ID is returned.
-        # - Call the [ListWatermark](~~ListWatermark~~) operation to query the list of watermark templates. The ID is returned.
+        # The ID of the image or text watermark template to query. You can specify only one watermark template ID. You can obtain the ID by using one of the following methods:
+        # - Call the [AddWatermark](~~AddWatermark~~) operation to add an image or text watermark template. The ID is returned in the response.
+        # - Call the [ListWatermark](~~ListWatermark~~) operation to query the list of image or text watermark templates. The ID is returned in the response.
         # 
         # This parameter is required.
         self.watermark_id = watermark_id

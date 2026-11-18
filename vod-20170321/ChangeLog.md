@@ -1,3 +1,7 @@
+2026-11-18 Version: 3.12.2
+- Update API SubmitWorkflowJob: add request parameters ExtraInputs.
+
+
 2026-08-26 Version: 3.12.1
 - Update API GetAIMediaAuditJob: add response parameters Body.MediaAuditJob.Data.VideoResult.GreenEnhancedResult.
 - Update API GetMediaAuditResult: add response parameters Body.MediaAuditResult.VideoResult.GreenEnhancedResult.
