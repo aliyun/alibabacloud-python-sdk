@@ -13,7 +13,7 @@ class GetAgentSessionModelRequest(DaraModel):
         jsonrpc: str = None,
         params: Any = None,
     ):
-        # The client request identifier, which is echoed in the response. It is used to correlate this call and does not have idempotent semantics.
+        # The client request identifier, which is echoed in the response. It is used to associate this call and does not have idempotent semantics.
         self.id = id
         # The JSON-RPC version. Set the value to `2.0`.
         self.jsonrpc = jsonrpc

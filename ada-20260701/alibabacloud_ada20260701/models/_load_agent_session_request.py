@@ -13,11 +13,11 @@ class LoadAgentSessionRequest(DaraModel):
         jsonrpc: str = None,
         params: Any = None,
     ):
-        # The client call identifier. It is used to associate the current response and does not provide idempotence guarantees.
+        # The client call identifier used to associate the current response. It does not provide idempotency guarantees.
         self.id = id
         # The JSON-RPC version. Set this parameter to `2.0`.
         self.jsonrpc = jsonrpc
-        # The business parameter structure. For core nested fields, refer to the supplementary description.
+        # The business parameter structure. For core nested fields, see the supplementary description.
         # 
         # This parameter is required.
         self.params = params

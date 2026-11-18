@@ -12,7 +12,7 @@ class DeleteSkillResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is successful. Returns `true` if the skill is logically deleted and optional artifacts are logically archived.
+        # Indicates whether the operation is successful. Returns `true` when the logical deletion of the skill and the optional logical archiving of artifacts are complete.
         self.success = success
 
     def validate(self):

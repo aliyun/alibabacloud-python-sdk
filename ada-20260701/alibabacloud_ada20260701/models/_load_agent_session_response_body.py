@@ -19,11 +19,11 @@ class LoadAgentSessionResponseBody(DaraModel):
     ):
         # The `Error` field in the frame. It is an in-stream error and is actually an object.
         self.error = error
-        # The `Id` field in the frame. It is used to associate the request. Notification frames may not contain this field.
+        # The `Id` field in the frame, used to associate the request. Notification frames may not contain this field.
         self.id = id
         # The `Jsonrpc` field in the frame. The value is `2.0`.
         self.jsonrpc = jsonrpc
-        # The `Method` field in the frame. It is used to distinguish notification categories.
+        # The `Method` field in the frame, used to distinguish notification categories.
         self.method = method
         # The `Params` field in the frame. It is the notification payload and is actually an object.
         self.params = params

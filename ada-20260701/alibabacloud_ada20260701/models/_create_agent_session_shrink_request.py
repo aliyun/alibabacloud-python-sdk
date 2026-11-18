@@ -11,7 +11,7 @@ class CreateAgentSessionShrinkRequest(DaraModel):
         jsonrpc: str = None,
         params_shrink: str = None,
     ):
-        # The correlation identifier for this call. It is echoed in the response and does not provide idempotence guarantees.
+        # The correlation identifier for this call. It is echoed in the response and does not provide idempotency guarantees.
         self.id = id
         # The JSON-RPC protocol version. Set the value to `2.0`.
         self.jsonrpc = jsonrpc

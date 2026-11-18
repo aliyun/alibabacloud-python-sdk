@@ -15,7 +15,7 @@ class CreateAgentSessionResponseBody(DaraModel):
     ):
         # The response object. The business result is located in `result`.
         self.json_rpc_response = json_rpc_response
-        # The server-side request ID, which is used to troubleshoot this call.
+        # The server-side request ID. It is used to troubleshoot this call.
         self.request_id = request_id
         # Indicates whether the operation is successful. Determine the final execution state based on the description of this operation.
         self.success = success

@@ -17,19 +17,19 @@ class PromptAgentSessionResponseBody(DaraModel):
         request_id: str = None,
         result: Any = None,
     ):
-        # The `Error` field in the frame. This is an in-stream error, which is an object.
+        # The Error field in the frame. This is an in-stream error, which is an object.
         self.error = error
-        # The `Id` field in the frame, used to associate the request. Notification frames may not contain this field.
+        # The Id field in the frame, used to associate the request. Notification frames may not contain this field.
         self.id = id
-        # The `Jsonrpc` field in the frame. The value is `2.0`.
+        # The Jsonrpc field in the frame. The value is 2.0.
         self.jsonrpc = jsonrpc
-        # The `Method` field in the frame, used to distinguish notification categories.
+        # The Method field in the frame, used to distinguish notification categories.
         self.method = method
-        # The `Params` field in the frame. This is the notification payload, which is an object.
+        # The Params field in the frame. This is the notification payload, which is an object.
         self.params = params
         # The request diagnostic identifier. This identifier is not guaranteed to be included in every frame. You should also retain the diagnostic information in the response headers.
         self.request_id = request_id
-        # The `Result` field in the frame. This is the normal result, which is an object.
+        # The Result field in the frame. This is the normal result, which is an object.
         self.result = result
 
     def validate(self):

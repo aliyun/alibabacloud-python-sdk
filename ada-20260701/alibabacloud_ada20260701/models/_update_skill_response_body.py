@@ -19,7 +19,7 @@ class UpdateSkillResponseBody(DaraModel):
         self.request_id = request_id
         # The skill ID.
         self.skill_id = skill_id
-        # Indicates whether the operation is successful. Returns `true` if the skill update and optional package replacement have been fully submitted and confirmed by read-back.
+        # Indicates whether the operation is successful. A value of `true` is returned when the skill update and optional bundle replacement are fully submitted and confirmed by read-back.
         self.success = success
         # The time when the skill was updated. The value is a UNIX timestamp in milliseconds.
         self.updated_at = updated_at

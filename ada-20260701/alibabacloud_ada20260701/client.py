@@ -1108,6 +1108,66 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_transit_meta_with_options_async(request, runtime)
 
+    def get_workflow_global_env_with_options(
+        self,
+        request: main_models.GetWorkflowGlobalEnvRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowGlobalEnvResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowGlobalEnv',
+            version = '2026-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowGlobalEnvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workflow_global_env_with_options_async(
+        self,
+        request: main_models.GetWorkflowGlobalEnvRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetWorkflowGlobalEnvResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetWorkflowGlobalEnv',
+            version = '2026-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetWorkflowGlobalEnvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workflow_global_env(
+        self,
+        request: main_models.GetWorkflowGlobalEnvRequest,
+    ) -> main_models.GetWorkflowGlobalEnvResponse:
+        runtime = RuntimeOptions()
+        return self.get_workflow_global_env_with_options(request, runtime)
+
+    async def get_workflow_global_env_async(
+        self,
+        request: main_models.GetWorkflowGlobalEnvRequest,
+    ) -> main_models.GetWorkflowGlobalEnvResponse:
+        runtime = RuntimeOptions()
+        return await self.get_workflow_global_env_with_options_async(request, runtime)
+
     def list_agent_sessions_with_options(
         self,
         tmp_req: main_models.ListAgentSessionsRequest,
@@ -1917,6 +1977,76 @@ class Client(OpenApiClient):
     ) -> main_models.ReplyAgentSessionResponse:
         runtime = RuntimeOptions()
         return await self.reply_agent_session_with_options_async(request, runtime)
+
+    def save_workflow_global_env_with_options(
+        self,
+        request: main_models.SaveWorkflowGlobalEnvRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveWorkflowGlobalEnvResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveWorkflowGlobalEnv',
+            version = '2026-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveWorkflowGlobalEnvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_workflow_global_env_with_options_async(
+        self,
+        request: main_models.SaveWorkflowGlobalEnvRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveWorkflowGlobalEnvResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content):
+            body['Content'] = request.content
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveWorkflowGlobalEnv',
+            version = '2026-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveWorkflowGlobalEnvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_workflow_global_env(
+        self,
+        request: main_models.SaveWorkflowGlobalEnvRequest,
+    ) -> main_models.SaveWorkflowGlobalEnvResponse:
+        runtime = RuntimeOptions()
+        return self.save_workflow_global_env_with_options(request, runtime)
+
+    async def save_workflow_global_env_async(
+        self,
+        request: main_models.SaveWorkflowGlobalEnvRequest,
+    ) -> main_models.SaveWorkflowGlobalEnvResponse:
+        runtime = RuntimeOptions()
+        return await self.save_workflow_global_env_with_options_async(request, runtime)
 
     def set_agent_session_model_with_options(
         self,

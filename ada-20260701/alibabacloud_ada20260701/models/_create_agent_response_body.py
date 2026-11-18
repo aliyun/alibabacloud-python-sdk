@@ -19,7 +19,7 @@ class CreateAgentResponseBody(DaraModel):
         self.name = name
         # The request ID, which is used for Tracing Analysis and troubleshooting.
         self.request_id = request_id
-        # Indicates whether the agent was created. A success response always returns `true`. An error response is returned upon failure.
+        # Indicates whether the agent was created successfully. A success response always returns true. An error response is returned upon failure.
         self.success = success
         # The last update time, which is a UNIX timestamp in milliseconds.
         self.updated_at = updated_at

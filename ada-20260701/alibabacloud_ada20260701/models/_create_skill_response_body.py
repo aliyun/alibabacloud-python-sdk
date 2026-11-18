@@ -19,7 +19,7 @@ class CreateSkillResponseBody(DaraModel):
         self.request_id = request_id
         # The skill ID.
         self.skill_id = skill_id
-        # Indicates whether the operation is successful. A value of true is returned when the skill and its body or bundle are fully created and readable. Business failures are indicated by error responses.
+        # Indicates whether the operation is successful. true is returned when the skill and its body or bundle are fully created and readable. Business failures are returned in error responses.
         self.success = success
         # The update time after the skill is created. The value is a UNIX timestamp in milliseconds.
         self.updated_at = updated_at

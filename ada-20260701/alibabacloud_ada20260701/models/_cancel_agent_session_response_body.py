@@ -13,11 +13,11 @@ class CancelAgentSessionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response object. The business result is located in result.
+        # The response object. The business result is located in `result`.
         self.json_rpc_response = json_rpc_response
         # The server-side request ID, which is used to troubleshoot this call.
         self.request_id = request_id
-        # Indicates whether the operation is successful. Determine the final execution state based on the description of this API operation.
+        # Indicates whether the operation is successful. Determine the desired state of the execution based on the description of this operation.
         self.success = success
 
     def validate(self):

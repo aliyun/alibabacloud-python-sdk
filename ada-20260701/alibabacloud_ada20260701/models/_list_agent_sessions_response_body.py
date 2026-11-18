@@ -55,7 +55,7 @@ class ListAgentSessionsResponseBodyJsonRpcResponse(DaraModel):
     ):
         # The Id from the request, echoed as is.
         self.id = id
-        # The fixed value `2.0`.
+        # The fixed value 2.0.
         self.jsonrpc = jsonrpc
         # The paginated result.
         self.result = result
@@ -103,7 +103,7 @@ class ListAgentSessionsResponseBodyJsonRpcResponseResult(DaraModel):
     ):
         # The effective page size for the current page.
         self.max_results = max_results
-        # The credential to continue querying the next page. Pass it as is to Params.NextToken. Pagination ends when the token is not returned or is empty.
+        # The credential for querying the next page. Pass this value as is to Params.NextToken. Pagination ends when this value is not returned or is empty.
         self.next_token = next_token
         # The array of session summaries for the current page. If no matching records are found, an empty array [] is returned. The type is any. The fields of array elements retain the original backend names. For the structure, see the supplementary description of response parameters.
         self.session_list = session_list

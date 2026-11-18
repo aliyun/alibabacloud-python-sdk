@@ -31,9 +31,9 @@ class ListAgentsRequest(DaraModel):
         self.q = q
         # Filters agents by the runtime tag.
         self.required_runtime = required_runtime
-        # The query scope. Valid values: `SYSTEM` and `CUSTOM`.
+        # The query scope. Valid values: SYSTEM and CUSTOM.
         self.scope = scope
-        # Filters agents by visibility scope. Valid values: `user` and `tenant`.
+        # Filters agents by visibility scope. Valid values: user and tenant.
         self.visibility = visibility
 
     def validate(self):

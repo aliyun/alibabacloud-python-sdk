@@ -12,13 +12,13 @@ class GetTransitMetaRequest(DaraModel):
         network: str = None,
         transit_id: str = None,
     ):
-        # The validity period of the temporary download URL generated for the current request, in milliseconds. The value must be an integer greater than or equal to 1000 and is rounded down to the nearest whole second. If ExpireMs is omitted, the default validity period is 900000 milliseconds (15 minutes). A download URL is generated only when Network is specified.
+        # The validity period of the temporary download URL generated for the current request, in milliseconds. The value must be an integer no less than 1000 and is rounded down to the nearest second. If ExpireMs is omitted, the default validity period is 900000 milliseconds, which indicates 15 minutes. A download URL is generated only when Network is specified.
         self.expire_ms = expire_ms
-        # The opaque object path returned by CreateTransitUploadPolicy. Specify at least one of this parameter and TransitId.
+        # The opaque object path returned by CreateTransitUploadPolicy. Specify at least one of FilePath and TransitId.
         self.file_path = file_path
         # The network type used for the download URL. Valid values: public and internal. If this parameter is omitted, no download URL is generated.
         self.network = network
-        # The transit ID. Specify at least one of this parameter and FilePath. If both are provided, this parameter takes precedence.
+        # The transit ID. Specify at least one of TransitId and FilePath. If both are provided, TransitId takes precedence.
         self.transit_id = transit_id
 
     def validate(self):

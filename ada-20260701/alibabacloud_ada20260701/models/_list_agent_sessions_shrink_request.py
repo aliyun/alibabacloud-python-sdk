@@ -11,9 +11,9 @@ class ListAgentSessionsShrinkRequest(DaraModel):
         jsonrpc: str = None,
         params_shrink: str = None,
     ):
-        # The correlation identifier for this call. It is echoed in the response and does not provide idempotency guarantees.
+        # The correlation identifier for this call. This identifier is echoed in the response and does not provide idempotency guarantees.
         self.id = id
-        # The JSON-RPC protocol version. Set this parameter to `2.0`.
+        # The JSON-RPC protocol version. Set this parameter to 2.0.
         self.jsonrpc = jsonrpc
         # The business parameter object. The public fields are only AgentName, MaxResults, and NextToken.
         # 

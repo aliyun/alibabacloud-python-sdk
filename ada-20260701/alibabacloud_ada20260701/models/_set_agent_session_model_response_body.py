@@ -13,11 +13,11 @@ class SetAgentSessionModelResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The defined JSON-RPC response structure. For core nested fields, see the supplementary description.
+        # The defined JSON-RPC response structure. For more information about the core nested fields, see the supplementary description.
         self.json_rpc_response = json_rpc_response
         # The ID of the current request, which is used for troubleshooting.
         self.request_id = request_id
-        # Indicates whether the setting is successful. The value is `true` if the setting is successful. Read the actual model and thinking level from the business result.
+        # Indicates whether the setting is successful. The value is true if the setting is successful. Read the actual model and thinking level from the business result.
         self.success = success
 
     def validate(self):

@@ -15,7 +15,7 @@ class ListModelsRequest(DaraModel):
     ):
         # The maximum number of models to return per page. Valid values: 1 to 100. Explicitly specify this parameter.
         self.max_results = max_results
-        # Set this parameter to `text` for text sessions. If you omit this parameter, all visible models are queried.
+        # Set to `text` for text sessions. If omitted, all visible models are queried.
         self.model_type = model_type
         # The pagination token returned from the previous page. Omit this parameter for the first page.
         self.next_token = next_token

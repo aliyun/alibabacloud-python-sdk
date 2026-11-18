@@ -32,9 +32,9 @@ class CreateAgentRequest(DaraModel):
         self.skills = skills
         # The system prompt.
         self.system_prompt = system_prompt
-        # The list of MCP server and connector name references. The same array supports both types of entries. Specify only one type of reference for each entry. For MCP, omitting items indicates all public tools, and historically specified items retain their original values.
+        # The list of references to MCP server and connector names. The same array supports both types of entries. Specify only one type of reference for each entry. For MCP, omitting items indicates all public tools, and historically specified items retain their original values.
         self.tools = tools
-        # The visibility scope of the agent. Valid values: `user` and `tenant`. Default value: `user`.
+        # The visibility scope of the agent. Valid values: user and tenant. Default value: user.
         self.visibility = visibility
 
     def validate(self):

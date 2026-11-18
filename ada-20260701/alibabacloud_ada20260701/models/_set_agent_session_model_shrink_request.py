@@ -13,9 +13,9 @@ class SetAgentSessionModelShrinkRequest(DaraModel):
     ):
         # The client request identifier, which is echoed in the response. It is used to associate this call and does not have idempotent semantics.
         self.id = id
-        # The JSON-RPC version. Set this parameter to `2.0`.
+        # The JSON-RPC version. Set this parameter to 2.0.
         self.jsonrpc = jsonrpc
-        # The defined business parameter structure. For core nested fields, see the supplementary description.
+        # The defined business parameter structure. For more information about the core nested fields, see the supplementary description.
         # 
         # This parameter is required.
         self.params_shrink = params_shrink

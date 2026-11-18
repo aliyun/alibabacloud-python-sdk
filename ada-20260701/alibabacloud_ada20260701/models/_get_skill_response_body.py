@@ -31,9 +31,9 @@ class GetSkillResponseBody(DaraModel):
         self.can_modify = can_modify
         # The creation time of the skill. The value is a UNIX timestamp in milliseconds.
         self.created_at = created_at
-        # The description in the current main record of the skill.
+        # The description in the current primary record of the skill.
         self.description = description
-        # The download URL of the bundle. This field is returned when the network is specified, an accessible artifact exists, and the pre-signing is successful.
+        # The download URL of the bundle. This field is returned when the network is specified, an accessible artifact exists, and presigning is successful.
         self.download_url = download_url
         # The network type actually used to generate the download URL.
         self.download_url_network = download_url_network
@@ -49,11 +49,11 @@ class GetSkillResponseBody(DaraModel):
         self.request_id = request_id
         # The skill ID.
         self.skill_id = skill_id
-        # The current status of the skill. Common values include DRAFT and PUBLISHED.
+        # The current status of the skill. Common values are DRAFT and PUBLISHED.
         self.status = status
         # The update time of the skill. The value is a UNIX timestamp in milliseconds.
         self.updated_at = updated_at
-        # The visibility of the current skill. Common values include user and tenant.
+        # The visibility of the current skill. Common values are user and tenant.
         self.visibility = visibility
 
     def validate(self):

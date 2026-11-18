@@ -46,6 +46,9 @@ from ._get_skill_response import GetSkillResponse
 from ._get_transit_meta_request import GetTransitMetaRequest
 from ._get_transit_meta_response_body import GetTransitMetaResponseBody
 from ._get_transit_meta_response import GetTransitMetaResponse
+from ._get_workflow_global_env_request import GetWorkflowGlobalEnvRequest
+from ._get_workflow_global_env_response_body import GetWorkflowGlobalEnvResponseBody
+from ._get_workflow_global_env_response import GetWorkflowGlobalEnvResponse
 from ._list_agent_sessions_request import ListAgentSessionsRequest
 from ._list_agent_sessions_shrink_request import ListAgentSessionsShrinkRequest
 from ._list_agent_sessions_response_body import ListAgentSessionsResponseBody
@@ -71,6 +74,9 @@ from ._reply_agent_session_request import ReplyAgentSessionRequest
 from ._reply_agent_session_shrink_request import ReplyAgentSessionShrinkRequest
 from ._reply_agent_session_response_body import ReplyAgentSessionResponseBody
 from ._reply_agent_session_response import ReplyAgentSessionResponse
+from ._save_workflow_global_env_request import SaveWorkflowGlobalEnvRequest
+from ._save_workflow_global_env_response_body import SaveWorkflowGlobalEnvResponseBody
+from ._save_workflow_global_env_response import SaveWorkflowGlobalEnvResponse
 from ._set_agent_session_model_request import SetAgentSessionModelRequest
 from ._set_agent_session_model_shrink_request import SetAgentSessionModelShrinkRequest
 from ._set_agent_session_model_response_body import SetAgentSessionModelResponseBody
@@ -133,6 +139,9 @@ __all__ = [
     GetTransitMetaRequest,
     GetTransitMetaResponseBody,
     GetTransitMetaResponse,
+    GetWorkflowGlobalEnvRequest,
+    GetWorkflowGlobalEnvResponseBody,
+    GetWorkflowGlobalEnvResponse,
     ListAgentSessionsRequest,
     ListAgentSessionsShrinkRequest,
     ListAgentSessionsResponseBody,
@@ -158,6 +167,9 @@ __all__ = [
     ReplyAgentSessionShrinkRequest,
     ReplyAgentSessionResponseBody,
     ReplyAgentSessionResponse,
+    SaveWorkflowGlobalEnvRequest,
+    SaveWorkflowGlobalEnvResponseBody,
+    SaveWorkflowGlobalEnvResponse,
     SetAgentSessionModelRequest,
     SetAgentSessionModelShrinkRequest,
     SetAgentSessionModelResponseBody,

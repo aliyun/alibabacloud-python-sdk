@@ -13,7 +13,7 @@ class GetAgentSessionShrinkRequest(DaraModel):
     ):
         # The correlation identifier for this call, which is echoed in the response. It does not provide idempotency guarantees.
         self.id = id
-        # The JSON-RPC protocol version. Set the value to `2.0`.
+        # The JSON-RPC protocol version. Set this parameter to `2.0`.
         self.jsonrpc = jsonrpc
         # The business parameter object. For nested fields, refer to the supplementary description of request parameters.
         # 
