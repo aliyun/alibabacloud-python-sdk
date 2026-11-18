@@ -19,15 +19,15 @@ class ListApplicationFederatedCredentialsResponseBody(DaraModel):
     ):
         # The list of application federated credentials.
         self.application_federated_credentials = application_federated_credentials
-        # The maximum number of rows per page in a paged query.
+        # The maximum number of items per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned by this call.
+        # The pagination token returned by the current call.
         self.next_token = next_token
-        # The pagination token returned by this call.
+        # The pagination token returned by the current call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -107,19 +107,19 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         verification_condition: str = None,
         verification_mode: str = None,
     ):
-        # The application federated credential ID.
+        # The ID of the application federated credential.
         self.application_federated_credential_id = application_federated_credential_id
-        # The application federated credential name.
+        # The name of the application federated credential.
         self.application_federated_credential_name = application_federated_credential_name
-        # The application federated credential type.
+        # The type of the application federated credential.
         self.application_federated_credential_type = application_federated_credential_type
         # The application ID.
         self.application_id = application_id
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The application federated credential description.
+        # The description of the application federated credential.
         self.description = description
-        # The federated trust source ID.
+        # The ID of the federated trust source.
         self.federated_credential_provider_id = federated_credential_provider_id
         # The instance ID.
         self.instance_id = instance_id
@@ -129,7 +129,7 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         self.oidc_verification_config = oidc_verification_config
         # The PKCS#7 structured configuration.
         self.pkcs_7verification_config = pkcs_7verification_config
-        # The application federated credential status.
+        # The status of the application federated credential.
         self.status = status
         # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
@@ -363,11 +363,11 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
         pod_name_prefix: str = None,
         service_account_name: str = None,
     ):
-        # The K8s namespace.
+        # The Kubernetes namespace.
         self.namespace = namespace
         # The pod name prefix.
         self.pod_name_prefix = pod_name_prefix
-        # The K8s service account name.
+        # The name of the Kubernetes service account.
         self.service_account_name = service_account_name
 
     def validate(self):
@@ -439,9 +439,9 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
     ):
         # The list of VM instance IDs.
         self.instance_ids = instance_ids
-        # The GCP project ID to which the resource belongs.
+        # The ID of the GCP project to which the resource belongs.
         self.project_id = project_id
-        # The subject (sub) that corresponds to the service account.
+        # The sub claim corresponding to the service account.
         self.service_account_id = service_account_id
 
     def validate(self):
@@ -486,7 +486,7 @@ class ListApplicationFederatedCredentialsResponseBodyApplicationFederatedCredent
     ):
         # The principal ID.
         self.principal_id = principal_id
-        # The Azure resource group name.
+        # The name of the Azure resource group.
         self.resource_group_name = resource_group_name
         # The subscription ID.
         self.subscription_id = subscription_id

@@ -26,13 +26,13 @@ class ListAuthorizationResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return per page.
+        # The maximum number of entries per page for a paged query.
         # 
         # - If you do not specify this parameter, the default value is 20.
         # 
         # - The maximum value is 100.
         self.max_results = max_results
-        # The pagination token that specifies the starting position for the next page.
+        # The token that specifies the starting position of the next page.
         # 
         # - If you do not specify this parameter, the query starts from the first page by default.
         self.next_token = next_token
@@ -97,11 +97,11 @@ class ListAuthorizationResourcesRequestFilter(DaraModel):
     ):
         # The name of the filter field. Valid values:
         # 
-        # - AuthorizationResourceEntityType: the type of the resource entity associated with the authorization resource.
+        # - AuthorizationResourceEntityType: the type of the resource entity associated with the authorization resource
         # 
-        # - AuthorizationResourceEntityId: the ID of the resource entity associated with the authorization resource.
+        # - AuthorizationResourceEntityId: the ID of the resource entity associated with the authorization resource
         self.name = name
-        # The list of values for the filter field.
+        # The list of filter field values.
         self.value = value
 
     def validate(self):

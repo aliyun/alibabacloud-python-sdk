@@ -26,7 +26,7 @@ class ListOrganizationalUnitsForApplicationRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The organizational unit IDs. A maximum of 100 organizational unit IDs can be specified in a single operation.
+        # The organizational unit IDs. You can specify up to 100 organizational unit IDs in a single request.
         self.organizational_unit_ids = organizational_unit_ids
         # The page number.
         self.page_number = page_number

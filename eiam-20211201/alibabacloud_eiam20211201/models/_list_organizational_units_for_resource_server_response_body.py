@@ -16,11 +16,11 @@ class ListOrganizationalUnitsForResourceServerResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of rows per page in a paged query.
+        # The number of entries to return per page for paging in a paged query.
         self.max_results = max_results
-        # The pagination token for the next page.
+        # The query token for the next page.
         self.next_token = next_token
-        # The list of organizational units.
+        # The list of organizations.
         self.organizational_units = organizational_units
         # The request ID.
         self.request_id = request_id
@@ -90,7 +90,7 @@ class ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnits(Da
         self.instance_id = instance_id
         # The organizational unit ID.
         self.organizational_unit_id = organizational_unit_id
-        # The list of scope permissions.
+        # The list of scopes.
         self.resource_server_scopes = resource_server_scopes
 
     def validate(self):
@@ -139,9 +139,9 @@ class ListOrganizationalUnitsForResourceServerResponseBodyOrganizationalUnitsRes
         resource_server_scope_id: str = None,
         resource_server_scope_name: str = None,
     ):
-        # The scope permission ID.
+        # The scope ID.
         self.resource_server_scope_id = resource_server_scope_id
-        # The scope permission name.
+        # The scope name.
         self.resource_server_scope_name = resource_server_scope_name
 
     def validate(self):

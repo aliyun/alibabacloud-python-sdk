@@ -26,15 +26,15 @@ class ListUsersForAuthorizationRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries per page.
+        # The maximum number of records to return per page.
         # 
-        # - Default value: 20.
+        # - If this parameter is not specified, the default value is 20.
         # 
-        # - Maximum value: 100.
+        # - The maximum value cannot exceed 100.
         self.max_results = max_results
-        # The token that marks the starting position for the next page of results.
+        # The token that identifies the starting position of the next page.
         # 
-        # - If not specified, the query starts from the first page.
+        # - If this parameter is not specified, the query starts from the first page by default.
         self.next_token = next_token
 
     def validate(self):
@@ -99,7 +99,7 @@ class ListUsersForAuthorizationRuleRequestFilter(DaraModel):
         # 
         # - UserId: the account ID.
         self.name = name
-        # The values of the filter field.
+        # The list of values for the filter field.
         self.value = value
 
     def validate(self):

@@ -11,15 +11,15 @@ class UpdateDomainIcpNumberRequest(DaraModel):
         icp_number: str = None,
         instance_id: str = None,
     ):
-        # Domain ID.
+        # The domain name ID.
         # 
         # This parameter is required.
         self.domain_id = domain_id
-        # The ICP filing number associated with the domain.
+        # The ICP filing number associated with the domain name.
         # 
         # This parameter is required.
         self.icp_number = icp_number
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

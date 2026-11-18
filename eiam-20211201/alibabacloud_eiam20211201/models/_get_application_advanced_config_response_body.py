@@ -13,7 +13,7 @@ class GetApplicationAdvancedConfigResponseBody(DaraModel):
         application_advanced_config: main_models.GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfig = None,
         request_id: str = None,
     ):
-        # The advanced configuration of the application.
+        # The advanced application configurations.
         self.application_advanced_config = application_advanced_config
         # The request ID.
         self.request_id = request_id
@@ -55,9 +55,9 @@ class GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfig(DaraMode
     ):
         # The application ID.
         self.application_id = application_id
-        # The ID of the IDaaS EIAM instance.
+        # The IDaaS EIAM instance ID.
         self.instance_id = instance_id
-        # The advanced configuration of the SCIM server.
+        # The SCIM server advanced configurations.
         self.scim_server_advanced_config = scim_server_advanced_config
 
     def validate(self):
@@ -100,9 +100,9 @@ class GetApplicationAdvancedConfigResponseBodyApplicationAdvancedConfigScimServe
         supported_user_custom_field_ids: List[str] = None,
         user_custom_field_namespace: str = None,
     ):
-        # A list of IDs of the supported custom user fields.
+        # The list of supported user-defined field IDs.
         self.supported_user_custom_field_ids = supported_user_custom_field_ids
-        # The namespace of the user extension fields.
+        # The namespace for user extension fields.
         self.user_custom_field_namespace = user_custom_field_namespace
 
     def validate(self):

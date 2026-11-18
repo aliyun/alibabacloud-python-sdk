@@ -14,7 +14,7 @@ class GetNetworkAccessEndpointRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The dedicated network access endpoint ID.
+        # The network access endpoint ID.
         # 
         # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id

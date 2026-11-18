@@ -13,7 +13,7 @@ class GetResourceServerScopeResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The scope permission information under the ResourceServer.
+        # The scope permission information of the resource server.
         self.resource_server_scope = resource_server_scope
 
     def validate(self):
@@ -61,13 +61,13 @@ class GetResourceServerScopeResponseBodyResourceServerScope(DaraModel):
         self.authorization_type = authorization_type
         # The instance ID.
         self.instance_id = instance_id
-        # The scope permission ID.
+        # The ID of the scope permission.
         self.resource_server_scope_id = resource_server_scope_id
-        # The scope permission name.
+        # The name of the scope permission.
         self.resource_server_scope_name = resource_server_scope_name
-        # The scope permission type.
+        # The type of the scope permission.
         self.resource_server_scope_type = resource_server_scope_type
-        # The scope permission value.
+        # The value of the scope permission.
         self.resource_server_scope_value = resource_server_scope_value
 
     def validate(self):

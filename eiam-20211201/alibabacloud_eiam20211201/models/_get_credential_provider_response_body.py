@@ -63,29 +63,29 @@ class GetCredentialProviderResponseBodyCredentialProvider(DaraModel):
     ):
         # The creation time of the credential provider. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The configuration of the credential provider.
+        # The credential provider configuration.
         self.credential_provider_config = credential_provider_config
-        # The creation type of the credential provider. Valid values:
+        # The credential provider creation type. Valid values:
         # 
         # - system_init: Created by the system.
         # - user_custom: Created by the user.
         self.credential_provider_creation_type = credential_provider_creation_type
         # The credential provider ID.
         self.credential_provider_id = credential_provider_id
-        # The business identifier of the credential provider.
+        # The credential provider identifier.
         self.credential_provider_identifier = credential_provider_identifier
-        # The name of the credential provider.
+        # The credential provider name.
         self.credential_provider_name = credential_provider_name
-        # The type of the credential provider. Valid values:
+        # The credential provider type. Valid values:
         # 
-        # - oauth: OAuth credential provider.
-        # - jwt: JWT credential provider.
+        # - oauth: OAuth credential provider
+        # - jwt: JWT credential provider
         self.credential_provider_type = credential_provider_type
         # The description.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The status of the credential provider. Valid values:
+        # The credential provider status. Valid values:
         # 
         # - enabled: Enabled.
         # - disabled: Disabled.
@@ -186,9 +186,9 @@ class GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfi
         self.jwt_provider_config = jwt_provider_config
         # The configuration of the OAuth credential provider.
         self.oauth_provider_config = oauth_provider_config
-        # The list of credential IDs that correspond to the sensitive configurations of the credential provider.
+        # The list of credential IDs for the sensitive configurations of the credential provider.
         # 
-        # > The system securely stores the sensitive configuration information of the credential provider in the form of credentials.
+        # > The system securely stores the sensitive configuration information of the credential provider as credentials.
         self.provider_credential_ids = provider_credential_ids
 
     def validate(self):
@@ -243,23 +243,23 @@ class GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfi
         system_redirect_uri: str = None,
         token_endpoint: str = None,
     ):
-        # The authorization endpoint of the OAuth protocol.
+        # The authorization endpoint in the OAuth protocol.
         self.authorization_endpoint = authorization_endpoint
         # The OAuth authorization flow type. Valid values:
         # - m2m: Machine-to-machine.
         # - user_federation: User federation.
         self.authorization_flow = authorization_flow
-        # The client_id in the OAuth protocol, which is the client ID.
+        # The client ID in the OAuth protocol.
         self.client_id = client_id
         # The URL of the OAuth discovery document.
         self.discovery_url = discovery_url
-        # The issuer endpoint of the OAuth protocol.
+        # The issuer endpoint in the OAuth protocol.
         self.issuer = issuer
         # The algorithm used to calculate the code challenge in PKCE. Valid values:
-        # - S256.
-        # - plain.
+        # - S256: S256.
+        # - plain: plain.
         self.pkce_challenge_method = pkce_challenge_method
-        # Indicates whether Proof Key for Code Exchange (PKCE) is enabled.
+        # Specifies whether PKCE is enabled.
         self.pkce_enabled = pkce_enabled
         # The OAuth provider vendor type. Valid values:
         # - custom: Custom.
@@ -269,15 +269,15 @@ class GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfi
         # - microsoft: Microsoft.
         # - google: Google.
         self.provider_vendor = provider_vendor
-        # The scope in the OAuth protocol, which specifies the permission scope.
+        # The scope in the OAuth protocol.
         # 
-        # > The scope configuration of the OAuth credential provider serves as the default value. If the scope parameter is not specified when you call the DeveloperAPI to obtain an OAuth access token, the scope configuration of the credential provider is used for token issuance.
+        # > The scope configuration of the OAuth credential provider serves as a fallback value. If the scope parameter is not specified when calling the Developer API to obtain an OAuth access token, the token is issued based on the scope configuration of the credential provider.
         # 
         # >Notice: Multiple scope values are separated by spaces.
         self.scope = scope
         # The system-generated redirect URI.
         self.system_redirect_uri = system_redirect_uri
-        # The token endpoint of the OAuth protocol.
+        # The token endpoint in the OAuth protocol.
         self.token_endpoint = token_endpoint
 
     def validate(self):
@@ -372,15 +372,15 @@ class GetCredentialProviderResponseBodyCredentialProviderCredentialProviderConfi
     ):
         # The list of allowed JWT issuers.
         self.allowed_token_issuers = allowed_token_issuers
-        # Indicates whether the JWT derived short token feature is enabled.
+        # Specifies whether the JWT derived short token capability is enabled.
         self.derived_short_token_enabled = derived_short_token_enabled
-        # The validity period of the JWT. Unit: seconds.
+        # The validity period of the JWT, in seconds.
         self.expiration = expiration
-        # Indicates whether JWT expiration cleanup is enabled.
+        # Specifies whether JWT expiration cleanup is enabled.
         self.expiration_cleanup_enabled = expiration_cleanup_enabled
-        # JWT issuer。
+        # The JWT issuer.
         self.issuer = issuer
-        # The JWKs endpoint URL.
+        # The JWKS endpoint address.
         self.jwks_endpoint = jwks_endpoint
 
     def validate(self):

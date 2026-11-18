@@ -13,7 +13,7 @@ class CheckInstanceForDeleteResponseBody(DaraModel):
         check_instance_result: main_models.CheckInstanceForDeleteResponseBodyCheckInstanceResult = None,
         request_id: str = None,
     ):
-        # The check result.
+        # The returned result.
         self.check_instance_result = check_instance_result
         # The request ID.
         self.request_id = request_id
@@ -54,7 +54,7 @@ class CheckInstanceForDeleteResponseBodyCheckInstanceResult(DaraModel):
     ):
         # Indicates whether the instance can be deleted.
         self.deletable = deletable
-        # The restriction information for instances that cannot be deleted.
+        # The restriction information that prevents deletion.
         self.restrict_scenarios = restrict_scenarios
 
     def validate(self):
@@ -98,11 +98,11 @@ class CheckInstanceForDeleteResponseBodyCheckInstanceResultRestrictScenarios(Dar
         resource_id: str = None,
         restrict_reason: str = None,
     ):
-        # The console URL that provides helpful information.
+        # The helpful console URL.
         self.helpful_console_url = helpful_console_url
         # The resource ID.
         self.resource_id = resource_id
-        # The restriction reason.
+        # The reason for the restriction.
         self.restrict_reason = restrict_reason
 
     def validate(self):

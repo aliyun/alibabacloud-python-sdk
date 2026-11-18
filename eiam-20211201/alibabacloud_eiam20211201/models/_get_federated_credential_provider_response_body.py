@@ -69,7 +69,7 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProvider(Dara
         self.create_time = create_time
         # The description.
         self.description = description
-        # The federated trust source ID.
+        # The ID of the federated trust source.
         self.federated_credential_provider_id = federated_credential_provider_id
         # The name of the federated credential provider.
         self.federated_credential_provider_name = federated_credential_provider_name
@@ -202,9 +202,9 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPriva
     ):
         # The root certificate.
         self.certificates = certificates
-        # The method used to retrieve the root certificate.
+        # The method to obtain the root certificate.
         self.trust_anchor_source = trust_anchor_source
-        # The trust condition of the root certificate.
+        # The trust conditions for the root certificate.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -256,9 +256,9 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPriva
     ):
         # The certificate metadata.
         self.certificate_metadata = certificate_metadata
-        # The root certificate content.
+        # The content of the root certificate.
         self.content = content
-        # The root certificate fingerprint.
+        # The fingerprint of the root certificate.
         self.fingerprint = fingerprint
 
     def validate(self):
@@ -342,15 +342,15 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # The PKCS7 certificate list.
+        # The list of PKCS7 certificates.
         self.certificates = certificates
         # The CMS verification mode.
         self.cms_verification_mode = cms_verification_mode
-        # The signature effective time. The value indicates the duration for which the signature is valid. Unit: seconds.
+        # The signature validity period. The value indicates the validity duration of the signature in seconds.
         self.signature_effective_time = signature_effective_time
         # The signing time.
         self.signing_time_value_expression = signing_time_value_expression
-        # The certificate trust anchor source.
+        # The source of the certificate trust anchor.
         self.trust_anchor_source = trust_anchor_source
         # The trust condition.
         self.trust_condition = trust_condition
@@ -422,9 +422,9 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderPkcs7
     ):
         # The certificate metadata.
         self.certificate_metadata = certificate_metadata
-        # The root certificate content.
+        # The content of the root certificate.
         self.content = content
-        # The root certificate fingerprint.
+        # The fingerprint of the root certificate.
         self.fingerprint = fingerprint
 
     def validate(self):
@@ -510,11 +510,11 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderOidcP
         static_jwks: str = None,
         trust_condition: str = None,
     ):
-        # The audience list of the OIDC credential.
+        # The list of audiences for the OIDC credential.
         self.audiences = audiences
         # The dynamically obtained JWKS.
         self.dynamic_jwks = dynamic_jwks
-        # The token issuer identifier (Issuer).
+        # The issuer identifier of the token.
         self.issuer = issuer
         # The time when the JWKS was last obtained. The value is a UNIX timestamp in milliseconds.
         self.jwks_last_obtained_time = jwks_last_obtained_time
@@ -594,7 +594,7 @@ class GetFederatedCredentialProviderResponseBodyFederatedCredentialProviderCloud
         self,
         identity_provider_id: str = None,
     ):
-        # The identity provider ID.
+        # The ID of the identity provider.
         self.identity_provider_id = identity_provider_id
 
     def validate(self):

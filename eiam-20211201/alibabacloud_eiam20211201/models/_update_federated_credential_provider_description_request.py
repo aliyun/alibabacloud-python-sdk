@@ -13,7 +13,7 @@ class UpdateFederatedCredentialProviderDescriptionRequest(DaraModel):
     ):
         # The description of the federated trust source.
         self.description = description
-        # The federated trust source ID.
+        # The ID of the federated trust source.
         # 
         # This parameter is required.
         self.federated_credential_provider_id = federated_credential_provider_id

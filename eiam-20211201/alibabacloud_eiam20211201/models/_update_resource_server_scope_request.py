@@ -12,7 +12,7 @@ class UpdateResourceServerScopeRequest(DaraModel):
         resource_server_scope_id: str = None,
         resource_server_scope_name: str = None,
     ):
-        # The ID of the ResourceServer application.
+        # The application ID of the resource server.
         # 
         # This parameter is required.
         self.application_id = application_id
@@ -20,7 +20,7 @@ class UpdateResourceServerScopeRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the scope permission for the resource server.
+        # The scope permission ID of the resource server.
         # 
         # This parameter is required.
         self.resource_server_scope_id = resource_server_scope_id

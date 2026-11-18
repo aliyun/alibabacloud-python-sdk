@@ -65,13 +65,13 @@ class ObtainCredentialResponseBodyCredential(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The creation time, in UNIX timestamp format. Unit: milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The content of the credential.
+        # The credential content.
         self.credential_content = credential_content
         # The creation type of the credential. Valid values:
         # - system_init: Created by the system.
-        # - user_custom: Created by the user.
+        # - user_custom: Created by a user.
         self.credential_creation_type = credential_creation_type
         # The external unique identifier of the credential.
         self.credential_external_id = credential_external_id
@@ -89,16 +89,16 @@ class ObtainCredentialResponseBodyCredential(DaraModel):
         self.credential_sharing_scope = credential_sharing_scope
         # The ID of the subject to which the credential belongs.
         self.credential_subject_id = credential_subject_id
-        # The type of the subject to which the credential belongs. Valid values:
+        # The subject type to which the credential belongs. Valid values:
         # - authentication_token_provider: Authentication token provider.
         self.credential_subject_type = credential_subject_type
         # The credential type. Valid values:
-        # - api_key: API key credential.
-        # - oauth_client: OAuth client credential.
+        # - api_key: API key authentication credential.
+        # - oauth_client: OAuth client authentication credential.
         self.credential_type = credential_type
         # The credential description.
         self.description = description
-        # The ID of the account to which the credential is exclusively assigned.
+        # The ID of the exclusive user for the credential.
         self.exclusive_user_id = exclusive_user_id
         # The instance ID.
         self.instance_id = instance_id
@@ -106,7 +106,7 @@ class ObtainCredentialResponseBodyCredential(DaraModel):
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.status = status
-        # The update time, in UNIX timestamp format. Unit: milliseconds.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):
@@ -233,9 +233,9 @@ class ObtainCredentialResponseBodyCredentialCredentialContent(DaraModel):
         api_key_content: main_models.ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent = None,
         oauth_client_content: main_models.ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent = None,
     ):
-        # The content of the API key credential.
+        # The credential content for the API key credential type.
         self.api_key_content = api_key_content
-        # The content of the OAuth client credential.
+        # The credential content for the OAuth client authentication credential type.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -311,7 +311,7 @@ class ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent(DaraM
         self,
         api_key: str = None,
     ):
-        # The API key value.
+        # The content of the API key.
         self.api_key = api_key
 
     def validate(self):

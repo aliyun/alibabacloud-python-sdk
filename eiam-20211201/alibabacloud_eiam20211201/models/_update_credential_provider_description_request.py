@@ -11,15 +11,15 @@ class UpdateCredentialProviderDescriptionRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
-        # The ID of the credential provider.
+        # The credential provider ID.
         # 
         # This parameter is required.
         self.credential_provider_id = credential_provider_id
-        # A description of the credential provider.
+        # The description.
         # 
-        # > The description can be up to 128 characters long.
+        # > The length cannot exceed 128 characters.
         self.description = description
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

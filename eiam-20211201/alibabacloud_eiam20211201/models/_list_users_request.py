@@ -26,7 +26,7 @@ class ListUsersRequest(DaraModel):
         user_source_type: str = None,
         username_starts_with: str = None,
     ):
-        # The prefix of the display name. A left-match query is performed.
+        # The display name prefix for a left-match query.
         self.display_name_starts_with = display_name_starts_with
         # The email address of the account.
         self.email = email
@@ -34,7 +34,7 @@ class ListUsersRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page for a paging query.
+        # The number of entries per page for paging.
         self.max_results = max_results
         # The query token.
         self.next_token = next_token
@@ -44,13 +44,13 @@ class ListUsersRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
-        # The phone number of the account.
+        # The mobile phone number of the account.
         self.phone_number = phone_number
-        # The phone region code. Example: 86 for the Chinese mainland, without 00 or +.
+        # The region code of the mobile phone number. Example: 86 for the Chinese mainland, without 00 or +.
         self.phone_region = phone_region
         # The status of the account. Valid values:
-        # - enabled: Enabled.
-        # - disabled: Disabled.
+        # - enabled: enabled.
+        # - disabled: disabled.
         self.status = status
         # The external ID, which is used to map external data to IDaaS accounts.
         # 
@@ -60,16 +60,16 @@ class ListUsersRequest(DaraModel):
         self.user_ids = user_ids
         # The source ID of the account.
         # 
-        # For the build-in type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, for the DingTalk source, the value is the corpId of the DingTalk enterprise.
+        # For the built-in type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, the DingTalk source corresponds to the corpId of the DingTalk enterprise.
         self.user_source_id = user_source_id
         # The source type of the account. Valid values:
-        # - build_in: Built-in.
-        # - ding_talk: Imported from DingTalk.
-        # - ad: Imported from AD.
-        # - ldap: Imported from LDAP.
-        # - we_com: Imported from WeCom.
+        # - build_in: built-in.
+        # - ding_talk: imported from DingTalk.
+        # - ad: imported from AD.
+        # - ldap: imported from LDAP.
+        # - we_com: imported from WeCom.
         self.user_source_type = user_source_type
-        # The prefix of the username. A left-match query is performed.
+        # The username prefix for a left-match query.
         self.username_starts_with = username_starts_with
 
     def validate(self):

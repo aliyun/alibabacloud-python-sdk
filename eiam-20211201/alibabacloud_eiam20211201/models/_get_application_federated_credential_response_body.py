@@ -339,11 +339,11 @@ class GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentia
         pod_name_prefix: str = None,
         service_account_name: str = None,
     ):
-        # The K8s namespace.
+        # The Kubernetes namespace.
         self.namespace = namespace
         # The pod name prefix.
         self.pod_name_prefix = pod_name_prefix
-        # The K8s service account name.
+        # The Kubernetes service account name.
         self.service_account_name = service_account_name
 
     def validate(self):
@@ -415,9 +415,9 @@ class GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentia
     ):
         # The list of VM instance IDs.
         self.instance_ids = instance_ids
-        # The GCP project ID to which the resource belongs.
+        # The GCP project ID.
         self.project_id = project_id
-        # The sub claim that corresponds to the service account.
+        # The sub claim corresponding to the service account.
         self.service_account_id = service_account_id
 
     def validate(self):
@@ -460,9 +460,9 @@ class GetApplicationFederatedCredentialResponseBodyApplicationFederatedCredentia
         subscription_id: str = None,
         vm_names: List[str] = None,
     ):
-        # The identity identifier.
+        # The principal ID.
         self.principal_id = principal_id
-        # The Azure resource group name.
+        # The name of the Azure resource group.
         self.resource_group_name = resource_group_name
         # The subscription ID.
         self.subscription_id = subscription_id

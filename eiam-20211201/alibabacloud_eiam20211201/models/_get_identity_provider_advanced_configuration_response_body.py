@@ -100,7 +100,7 @@ class GetIdentityProviderAdvancedConfigurationResponseBodyAdvancedConfigurationD
     ):
         # The AppKey of the DingTalk first-party application.
         self.app_key = app_key
-        # The AppSecret of the DingTalk first-party application.
+        # The app_secret of the DingTalk first-party application.
         self.app_secret = app_secret
 
     def validate(self):

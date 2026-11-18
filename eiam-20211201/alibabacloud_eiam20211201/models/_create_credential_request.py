@@ -22,11 +22,11 @@ class CreateCredentialRequest(DaraModel):
         exclusive_user_id: str = None,
         instance_id: str = None,
     ):
-        # Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The content of the credential.
+        # The credential content.
         # 
         # This parameter is required.
         self.credential_content = credential_content
@@ -40,15 +40,15 @@ class CreateCredentialRequest(DaraModel):
         # 
         # This parameter is required.
         self.credential_name = credential_name
-        # The Scenarios label of the credential. Valid values:
+        # The scenarios label of the credential. Valid values:
         # - llm: large language model.
         # - saas: third-party SaaS service.
         self.credential_scenario_label = credential_scenario_label
-        # The sharing scope of the credential.
+        # The credential sharing scope.
         self.credential_sharing_scope = credential_sharing_scope
-        # The subject ID to which the credential belongs.
+        # The subject ID of the credential.
         self.credential_subject_id = credential_subject_id
-        # The subject type to which the credential belongs. Valid values:
+        # The subject type of the credential. Valid values:
         # - authentication_token_provider: authentication token provider.
         self.credential_subject_type = credential_subject_type
         # The credential type. Valid values:
@@ -57,9 +57,9 @@ class CreateCredentialRequest(DaraModel):
         # 
         # This parameter is required.
         self.credential_type = credential_type
-        # The description of the credential.
+        # The credential description.
         self.description = description
-        # The exclusive user ID of the credential.
+        # The exclusive account ID of the credential.
         self.exclusive_user_id = exclusive_user_id
         # The instance ID.
         # 
@@ -166,9 +166,9 @@ class CreateCredentialRequestCredentialContent(DaraModel):
         api_key_content: main_models.CreateCredentialRequestCredentialContentApiKeyContent = None,
         oauth_client_content: main_models.CreateCredentialRequestCredentialContentOAuthClientContent = None,
     ):
-        # The credential content of the API key credential type.
+        # The credential content for the API key credential type.
         self.api_key_content = api_key_content
-        # The credential content of the OAuth client authentication credential type.
+        # The credential content for the OAuth client authentication credential type.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -208,9 +208,9 @@ class CreateCredentialRequestCredentialContentOAuthClientContent(DaraModel):
         client_id: str = None,
         client_secret: str = None,
     ):
-        # The client_id of the OAuth protocol.
+        # The client_id in the OAuth protocol.
         self.client_id = client_id
-        # The client_secret of the OAuth protocol.
+        # The client_secret in the OAuth protocol.
         self.client_secret = client_secret
 
     def validate(self):
@@ -244,7 +244,7 @@ class CreateCredentialRequestCredentialContentApiKeyContent(DaraModel):
         self,
         api_key: str = None,
     ):
-        # The content of the API key.
+        # The API key content.
         self.api_key = api_key
 
     def validate(self):

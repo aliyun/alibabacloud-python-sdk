@@ -14,15 +14,15 @@ class UpdateApplicationSsoFormParamsRequest(DaraModel):
         application_template_params: List[main_models.UpdateApplicationSsoFormParamsRequestApplicationTemplateParams] = None,
         instance_id: str = None,
     ):
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The parameters for creating the application template.
+        # The application template creation parameters.
         # 
         # This parameter is required.
         self.application_template_params = application_template_params
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -73,9 +73,9 @@ class UpdateApplicationSsoFormParamsRequestApplicationTemplateParams(DaraModel):
         template_param_name: str = None,
         template_param_value: str = None,
     ):
-        # The name of a parameter for creating the application template.
+        # The name of the application template creation parameter.
         self.template_param_name = template_param_name
-        # The value of the parameter for creating the application template.
+        # The value of the application template creation parameter.
         self.template_param_value = template_param_value
 
     def validate(self):

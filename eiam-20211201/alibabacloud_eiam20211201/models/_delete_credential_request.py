@@ -10,11 +10,11 @@ class DeleteCredentialRequest(DaraModel):
         credential_id: str = None,
         instance_id: str = None,
     ):
-        # Credential ID.
+        # The credential ID.
         # 
         # This parameter is required.
         self.credential_id = credential_id
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

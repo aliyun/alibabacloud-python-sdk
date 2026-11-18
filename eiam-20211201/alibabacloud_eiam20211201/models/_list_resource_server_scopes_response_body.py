@@ -17,7 +17,7 @@ class ListResourceServerScopesResponseBody(DaraModel):
         resource_server_scopes: List[main_models.ListResourceServerScopesResponseBodyResourceServerScopes] = None,
         total_count: int = None,
     ):
-        # The number of entries per page in a paged query.
+        # The maximum number of entries to return per page in a paging query.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
@@ -25,9 +25,9 @@ class ListResourceServerScopesResponseBody(DaraModel):
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The list of scope permissions under the ResourceServer.
+        # The list of scope permissions under the resource server.
         self.resource_server_scopes = resource_server_scopes
-        # The total number of entries in the list.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -107,11 +107,11 @@ class ListResourceServerScopesResponseBodyResourceServerScopes(DaraModel):
         self.instance_id = instance_id
         # The scope permission ID.
         self.resource_server_scope_id = resource_server_scope_id
-        # The scope permission name.
+        # The name of the scope permission.
         self.resource_server_scope_name = resource_server_scope_name
-        # The scope permission type.
+        # The type of the scope permission.
         self.resource_server_scope_type = resource_server_scope_type
-        # The scope permission value.
+        # The value of the scope permission.
         self.resource_server_scope_value = resource_server_scope_value
 
     def validate(self):

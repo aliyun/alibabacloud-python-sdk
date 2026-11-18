@@ -73,7 +73,7 @@ class GetCloudAccountResourceResponseBodyCloudAccountResource(DaraModel):
         self.create_time = create_time
         # The description.
         self.description = description
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

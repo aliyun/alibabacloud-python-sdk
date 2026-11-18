@@ -61,7 +61,7 @@ class GetCustomPrivacyPolicyResponseBodyCustomPrivacyPolicy(DaraModel):
         self.custom_privacy_policy_contents = custom_privacy_policy_contents
         # The custom privacy policy ID.
         self.custom_privacy_policy_id = custom_privacy_policy_id
-        # The custom privacy policy name.
+        # The name of the custom privacy policy.
         self.custom_privacy_policy_name = custom_privacy_policy_name
         # The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages operation.
         self.default_language_code = default_language_code

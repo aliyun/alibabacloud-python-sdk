@@ -19,15 +19,15 @@ class ListCustomPrivacyPoliciesForBrandResponseBody(DaraModel):
     ):
         # The list of custom privacy policies associated with the brand.
         self.brand_custom_privacy_policies = brand_custom_privacy_policies
-        # The maximum number of entries to return per page for paging in a paged query.
+        # The number of entries per page for paging in a paged query.
         self.max_results = max_results
-        # The pagination token returned for this call.
+        # The pagination token returned by this call.
         self.next_token = next_token
-        # The pagination token returned for this call.
+        # The pagination token returned by this call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -93,7 +93,7 @@ class ListCustomPrivacyPoliciesForBrandResponseBodyBrandCustomPrivacyPolicies(Da
         self,
         custom_privacy_policy_id: str = None,
     ):
-        # The custom privacy policy ID.
+        # The ID of the custom privacy policy.
         self.custom_privacy_policy_id = custom_privacy_policy_id
 
     def validate(self):

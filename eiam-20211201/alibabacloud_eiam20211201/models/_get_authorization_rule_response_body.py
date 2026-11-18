@@ -63,30 +63,30 @@ class GetAuthorizationRuleResponseBodyAuthorizationRule(DaraModel):
         update_time: int = None,
     ):
         # The authorization resource scope. Valid values:
-        # - global: Global resources under the project.
-        # - custom: Resources under a specified project scope.
+        # - custom: Resources within the specified project scope.
         self.authorization_resource_scope = authorization_resource_scope
         # The creation type of the authorization rule. Valid values:
         # - system_init: Created by the system.
-        # - user_custom: Created by a user.
+        # - user_custom: Created by the user.
         self.authorization_rule_creation_type = authorization_rule_creation_type
         # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
         # The authorization rule name.
         self.authorization_rule_name = authorization_rule_name
         # The scenario label of the authorization rule. Valid values:
-        # - privileged_cloud_account: Privileged cloud account scenario.
-        # - asset: Asset scenario.
+        # - privileged_cloud_account (Privileged cloud account scenario)
+        # - asset (Asset scenario)
         self.authorization_rule_scenario_label = authorization_rule_scenario_label
         # The ID of the subject associated with the authorization rule.
         self.authorization_rule_subject_id = authorization_rule_subject_id
         # The subject scope of the authorization rule. Valid values:
-        # - shared: Shared type, which supports all subjects, including accounts and applications.
-        # - exclusive: Exclusive type.
+        # - shared: Shared. A single rule can be used by multiple subjects that meet the rule constraints.
+        # - exclusive: Exclusive. A single rule can only be used by the specified subject.
         self.authorization_rule_subject_scope = authorization_rule_subject_scope
-        # The subject type associated with the authorization rule. This parameter is valid only when the subject scope of the authorization rule is exclusive. Valid values:
+        # The subject category to which the authorization rule applies. For an exclusive rule, this field indicates the type of the specified subject. For a shared rule with a configured subject category, this field indicates the subject category that the rule allows to be associated with. Valid values:
         # - application: Application.
-        # - user: Account.
+        # - user: Account. For a shared privileged cloud account rule, this value indicates the human user category, which can be associated with accounts, user groups, and organizations.
+        # If no subject category is configured for the rule, this field may be empty. The actual subjects associated with a shared rule are determined by the subject association query results.
         self.authorization_rule_subject_type = authorization_rule_subject_type
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
@@ -96,7 +96,7 @@ class GetAuthorizationRuleResponseBodyAuthorizationRule(DaraModel):
         self.instance_id = instance_id
         # The ID of the project associated with the authorization rule.
         self.project_id = project_id
-        # The status of the authorization rule. Valid values:
+        # The authorization rule status. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.status = status

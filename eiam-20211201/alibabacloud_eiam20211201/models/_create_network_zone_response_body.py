@@ -10,9 +10,9 @@ class CreateNetworkZoneResponseBody(DaraModel):
         network_zone_id: str = None,
         request_id: str = None,
     ):
-        # Network zone ID.
+        # The network zone ID.
         self.network_zone_id = network_zone_id
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -12,7 +12,7 @@ class GetApplicationProvisioningUserPrimaryOrganizationalUnitResponseBody(DaraMo
     ):
         # The request ID.
         self.request_id = request_id
-        # The user primary organizational unit for application synchronization.
+        # The primary organizational unit of the user for application synchronization.
         self.user_primary_organizational_unit_id = user_primary_organizational_unit_id
 
     def validate(self):

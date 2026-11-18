@@ -17,7 +17,7 @@ class ListApplicationsForNetworkZoneRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return per page for paging in a paged query.
+        # The number of entries per page for paging.
         self.max_results = max_results
         # The ID of the network zone.
         # 

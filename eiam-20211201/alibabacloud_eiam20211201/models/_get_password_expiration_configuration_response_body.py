@@ -60,35 +60,32 @@ class GetPasswordExpirationConfigurationResponseBodyPasswordExpirationConfigurat
     ):
         # The list of effective authentication source IDs. Default value: ["ia_all"].
         # 
-        # - ia_all: All authentication sources. If this value is specified, no other values can be specified.
+        # - ia_all: All. If you specify this value, you cannot specify other values.
         # - ia_password: Account password logon.
         # - ia_otp_sms: SMS verification code logon.
         # - ia_webauthn: WebAuthn authenticator logon.
-        # - idp_xxx: Authentication method of a specific identity provider.
+        # - idp_xxx: A specific identity provider (IdP) authentication method.
         self.effective_authentication_source_ids = effective_authentication_source_ids
-        # The action to take when a password expires. Valid values:
-        # 
-        # - forbid_login: Forbid logon.
-        # - force_update_password: Force password change.
-        # - remind_update_password: Remind password change.
+        # The password expiration action. Valid values:
+        # - forbid_login: Prohibits logon.
+        # - force_update_password: Forces a password change.
+        # - remind_update_password: Reminds the user to change the password.
         self.password_expiration_action = password_expiration_action
         # The list of password expiration notification channels.
         self.password_expiration_notification_channels = password_expiration_notification_channels
-        # The advance notice period before password expiration. Unit: days.
+        # The password expiration notification period, in days.
         self.password_expiration_notification_duration = password_expiration_notification_duration
-        # The status of password expiration notification. Valid values:
-        # 
+        # The password expiration notification status. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.password_expiration_notification_status = password_expiration_notification_status
-        # The status of the password expiration configuration. Valid values:
-        # 
+        # The password expiration status. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.password_expiration_status = password_expiration_status
-        # The grace period for forced password change after expiration. Unit: days.
+        # The forced password change period, in days.
         self.password_forced_update_duration = password_forced_update_duration
-        # The maximum validity period of a password. Unit: days.
+        # The password validity period, in days.
         self.password_valid_max_day = password_valid_max_day
 
     def validate(self):

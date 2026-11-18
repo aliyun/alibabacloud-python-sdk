@@ -18,13 +18,13 @@ class ListGroupsForResourceServerResponseBody(DaraModel):
     ):
         # The list of groups.
         self.groups = groups
-        # The number of entries returned on the current page.
+        # The number of entries returned per page in a paging query.
         self.max_results = max_results
-        # The token to retrieve the next page of results. A null or empty value indicates that all results have been returned.
+        # The next token.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries that meet the filter criteria.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -86,9 +86,9 @@ class ListGroupsForResourceServerResponseBodyGroups(DaraModel):
         instance_id: str = None,
         resource_server_scopes: List[main_models.ListGroupsForResourceServerResponseBodyGroupsResourceServerScopes] = None,
     ):
-        # The ID of the group.
+        # The group ID.
         self.group_id = group_id
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The list of authorized scopes.
         self.resource_server_scopes = resource_server_scopes
@@ -139,9 +139,9 @@ class ListGroupsForResourceServerResponseBodyGroupsResourceServerScopes(DaraMode
         resource_server_scope_id: str = None,
         resource_server_scope_name: str = None,
     ):
-        # The ID of the scope.
+        # The scope ID.
         self.resource_server_scope_id = resource_server_scope_id
-        # The name of the scope.
+        # The scope name.
         self.resource_server_scope_name = resource_server_scope_name
 
     def validate(self):

@@ -22,9 +22,9 @@ class CreateCloudPermissionTemplateRequest(DaraModel):
     ):
         # Specifies whether users are allowed to apply for the permission template. Default value: true.
         self.allow_request = allow_request
-        # The applicable scope of the permission template, including the scope type and the specified users, groups, or organizational units.
+        # The applicable scope of the permission template, including the scope type and specified users, groups, or organizational units.
         self.applicable_scope = applicable_scope
-        # Ensures the idempotence of the request. You can generate the value from your client to ensure that the value is unique across different requests. The client token supports only ASCII characters and can be up to 64 characters in length.
+        # Ensures the idempotence of the request. You can generate a client token on your client to ensure that the value is unique across different requests. The client token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The cloud account ID.
         # 

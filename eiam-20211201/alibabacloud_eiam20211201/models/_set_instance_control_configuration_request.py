@@ -63,7 +63,7 @@ class SetInstanceControlConfigurationRequestControlElements(DaraModel):
     ):
         # The name of the instance control element.
         self.element_name = element_name
-        # The CAPTCHA authenticate configuration.
+        # The Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) configuration.
         self.human_verification_config = human_verification_config
         # The status of the instance control element.
         self.status = status
@@ -107,7 +107,7 @@ class SetInstanceControlConfigurationRequestControlElementsHumanVerificationConf
         self,
         human_verification_type: str = None,
     ):
-        # The CAPTCHA type.
+        # The Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) check type.
         self.human_verification_type = human_verification_type
 
     def validate(self):

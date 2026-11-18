@@ -14,7 +14,7 @@ class GenerateDownloadUrlForSynchronizationJobRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The synchronization task ID.
+        # The synchronization job ID.
         # 
         # This parameter is required.
         self.synchronization_job_id = synchronization_job_id

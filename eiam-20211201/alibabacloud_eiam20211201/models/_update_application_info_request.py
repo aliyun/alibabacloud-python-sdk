@@ -25,13 +25,13 @@ class UpdateApplicationInfoRequest(DaraModel):
         self.application_id = application_id
         # The application name.
         self.application_name = application_name
-        # The application owner.
+        # The owner of the application.
         self.application_owner = application_owner
-        # The application visibility settings.
+        # The application visibility collection.
         self.application_visibility = application_visibility
         # The idempotency token.
         self.client_token = client_token
-        # The list of application extension fields.
+        # The list of extended fields for the application.
         self.custom_fields = custom_fields
         # The instance ID.
         # 
@@ -120,11 +120,11 @@ class UpdateApplicationInfoRequestCustomFields(DaraModel):
         field_value: str = None,
         operation: str = None,
     ):
-        # The name of the application extension field.
+        # The name of the extended field for the application.
         self.field_name = field_name
-        # The value of the application extension field. If FieldName is set to agentType, valid values are bailian, pai, dify, and volcano. If FieldName is set to agentExternalId, enter the relevant value.
+        # The value of the extended field for the application. If FieldName is set to agentType, valid values are bailian, pai, dify, and volcano. If FieldName is set to agentExternalId, enter the relevant value.
         self.field_value = field_value
-        # The operation type for the application extension field.
+        # The operation type for the extended field of the application.
         self.operation = operation
 
     def validate(self):
@@ -165,7 +165,7 @@ class UpdateApplicationInfoRequestApplicationOwner(DaraModel):
         group_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
-        # The list of group IDs.
+        # The list of user group IDs.
         self.group_ids = group_ids
         # The list of user IDs.
         self.user_ids = user_ids

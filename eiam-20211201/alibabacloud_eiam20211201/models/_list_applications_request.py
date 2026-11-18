@@ -31,35 +31,35 @@ class ListApplicationsRequest(DaraModel):
         self.application_creation_type = application_creation_type
         # The application identity type. If this parameter is left empty, applications of the application type are queried by default. To query applications of all identity types, set this parameter to all.
         self.application_identity_type = application_identity_type
-        # The list of application IDs.
+        # The application IDs.
         self.application_ids = application_ids
-        # The application name. Only left fuzzy match is supported.
+        # The application name. Only left-fuzzy matching is supported.
         self.application_name = application_name
         # The application template ID.
         self.application_template_id = application_template_id
-        # The application access authorization type. Valid values:
+        # The access authorization type of the application. Valid values:
         # - authorize_required: Explicit authorization is required for access.
         # - default_all: All members have access permissions by default.
         self.authorization_type = authorization_type
-        # The list of custom fields.
+        # The extended fields.
         self.custom_fields = custom_fields
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether the M2M Client identity is enabled.
+        # Specifies whether the M2M client identity is enabled.
         self.m_2mclient_status = m_2mclient_status
-        # The ServiceCode of the cloud service that manages the application template.
+        # The service code of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Specifies whether the ResourceServer capability is enabled.
+        # Specifies whether the resource server capability is enabled.
         self.resource_server_status = resource_server_status
         # Specifies whether the application template is managed by a cloud service.
         self.service_managed = service_managed
-        # The SSO type filter condition. Multiple types can be separated by commas. Example: oauth2/m2m,oidc+oauth2/m2m.
+        # The SSO type search condition. You can specify multiple types separated by commas (,). Example: oauth2/m2m,oidc+oauth2/m2m.
         self.sso_type = sso_type
         # The application status. Valid values:
         # - enabled: Enabled.
@@ -190,10 +190,10 @@ class ListApplicationsRequestCustomFields(DaraModel):
         field_name: str = None,
         field_value: str = None,
     ):
-        # The custom field identifier. Valid values:
+        # The extended field identifier. Valid values:
         # - agent_type: The agent type.
         self.field_name = field_name
-        # The custom field value.
+        # The extended field value.
         self.field_value = field_value
 
     def validate(self):

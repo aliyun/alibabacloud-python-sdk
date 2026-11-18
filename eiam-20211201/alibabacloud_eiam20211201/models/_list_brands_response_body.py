@@ -19,7 +19,7 @@ class ListBrandsResponseBody(DaraModel):
     ):
         # The list of brands.
         self.brands = brands
-        # The maximum number of entries per page in a paging query.
+        # The maximum number of results per page during paging in a paged query.
         self.max_results = max_results
         # The next token returned by this call.
         self.next_token = next_token
@@ -111,7 +111,7 @@ class ListBrandsResponseBodyBrands(DaraModel):
         self.sms_gateway_id = sms_gateway_id
         # The brand status.
         self.status = status
-        # The enabling status of system notifications.
+        # The system notification status.
         self.system_notification_status = system_notification_status
 
     def validate(self):

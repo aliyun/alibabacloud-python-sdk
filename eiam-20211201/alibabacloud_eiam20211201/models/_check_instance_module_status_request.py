@@ -26,7 +26,7 @@ class CheckInstanceModuleStatusRequest(DaraModel):
         self.module_key = module_key
         # The URN key of the resource label.
         self.resource_label_key = resource_label_key
-        # The name of the resource label.
+        # The resource label name.
         self.resource_label_value = resource_label_value
         # The level-3 module identifier.
         self.sub_feature_key = sub_feature_key

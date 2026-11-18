@@ -21,7 +21,7 @@ class AddUsersToGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of account IDs. The list can contain up to 100 elements.
+        # The list of account IDs. The list can contain a maximum of 100 elements.
         # 
         # This parameter is required.
         self.user_ids = user_ids

@@ -14,7 +14,7 @@ class GenerateFileImportTemplateRequest(DaraModel):
         selected_field_names: List[str] = None,
         target_type: str = None,
     ):
-        # Specifies whether field selection mode is enabled.
+        # Specifies whether the field selection mode is enabled.
         self.field_selection_enabled = field_selection_enabled
         # The instance ID.
         # 

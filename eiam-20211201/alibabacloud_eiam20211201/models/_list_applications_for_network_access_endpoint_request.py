@@ -16,13 +16,13 @@ class ListApplicationsForNetworkAccessEndpointRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page in a paged query.
+        # The maximum number of entries to return per page for a paging query.
         self.max_results = max_results
         # The network access endpoint ID.
         # 
         # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The pagination token.
+        # The next token.
         self.next_token = next_token
 
     def validate(self):

@@ -57,24 +57,24 @@ class GetAuthorizationResourceResponseBodyAuthorizationResource(DaraModel):
         instance_id: str = None,
         update_time: int = None,
     ):
-        # The resource entity ID associated with the authorization resource.
+        # The ID of the resource entity associated with the authorization resource.
         self.authorization_resource_entity_id = authorization_resource_entity_id
-        # The resource entity type associated with the authorization resource. Valid values:
-        # - cloud_account_role: cloud role.
+        # The type of the resource entity associated with the authorization resource. Valid values:
+        # - cloud_account_role: Cloud role.
         self.authorization_resource_entity_type = authorization_resource_entity_type
         # The authorization resource ID.
         self.authorization_resource_id = authorization_resource_id
         # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
-        # The cloud account ID to which the resource entity associated with the authorization resource belongs.
+        # The ID of the cloud account to which the resource entity associated with the authorization resource belongs.
         self.cloud_account_id = cloud_account_id
-        # The condition restriction.
+        # The condition restrictions.
         self.condition = condition
-        # The creation time, in UNIX timestamp format. Unit: milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The update time, in UNIX timestamp format. Unit: milliseconds.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

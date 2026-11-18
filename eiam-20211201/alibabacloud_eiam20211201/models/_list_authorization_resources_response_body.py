@@ -18,9 +18,9 @@ class ListAuthorizationResourcesResponseBody(DaraModel):
     ):
         # The list of authorization resources.
         self.authorization_resources = authorization_resources
-        # The maximum number of entries returned per page for paging in a paged query.
+        # The maximum number of entries per page for a paged query.
         self.max_results = max_results
-        # The pagination token returned in the current response for the next paged query.
+        # The next token returned in the current response for the next paged query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -95,13 +95,14 @@ class ListAuthorizationResourcesResponseBodyAuthorizationResources(DaraModel):
         # The ID of the resource entity associated with the authorization resource.
         self.authorization_resource_entity_id = authorization_resource_entity_id
         # The type of the resource entity associated with the authorization resource. Valid values:
-        # - cloud_account_role: cloud role.
+        # 
+        # - cloud_account_role: cloud role
         self.authorization_resource_entity_type = authorization_resource_entity_type
         # The authorization resource ID.
         self.authorization_resource_id = authorization_resource_id
         # The authorization rule ID.
         self.authorization_rule_id = authorization_rule_id
-        # The ID of the cloud account to which the resource entity associated with the authorization resource belongs.
+        # The ID of the Alibaba Cloud account to which the resource entity associated with the authorization resource belongs.
         self.cloud_account_id = cloud_account_id
         # The effective conditions.
         self.condition = condition
@@ -187,7 +188,7 @@ class ListAuthorizationResourcesResponseBodyAuthorizationResourcesCondition(Dara
         self,
         credential_condition: main_models.ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCredentialCondition = None,
     ):
-        # The effective condition when used as a credential.
+        # The effective conditions when the authorization resource is used as a credential.
         self.credential_condition = credential_condition
 
     def validate(self):
@@ -217,7 +218,7 @@ class ListAuthorizationResourcesResponseBodyAuthorizationResourcesConditionCrede
         self,
         allow_same_name_identity: bool = None,
     ):
-        # Specifies whether same-name identity accounts are supported.
+        # Specifies whether identity accounts with the same name are supported.
         self.allow_same_name_identity = allow_same_name_identity
 
     def validate(self):

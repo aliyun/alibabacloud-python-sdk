@@ -1,3 +1,9 @@
+2026-11-18 Version: 3.2.2
+- Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.PamActiveUserBaseQuota.
+- Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.PamActiveUserPurchasedQuota.
+- Update API GetInstanceLicense: add response parameters Body.License.InstanceLicenseDetail.PamElasticBillingEnabled.
+
+
 2026-11-12 Version: 3.2.1
 - Update API CreateAuthorizationRule: add request parameters SubjectType.
 

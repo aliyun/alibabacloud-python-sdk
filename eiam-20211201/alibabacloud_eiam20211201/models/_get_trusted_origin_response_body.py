@@ -13,7 +13,7 @@ class GetTrustedOriginResponseBody(DaraModel):
         request_id: str = None,
         trusted_origin: main_models.GetTrustedOriginResponseBodyTrustedOrigin = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The trusted origin.
         self.trusted_origin = trusted_origin
@@ -58,7 +58,7 @@ class GetTrustedOriginResponseBodyTrustedOrigin(DaraModel):
         trusted_origin_scene: List[str] = None,
         update_time: str = None,
     ):
-        # The creation time. The time is in RFC 3339 format and in the UTC time zone.
+        # The creation time. The time is in the RFC 3339 format and the UTC time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
@@ -72,9 +72,9 @@ class GetTrustedOriginResponseBodyTrustedOrigin(DaraModel):
         self.trust_origin_name = trust_origin_name
         # The ID of the trusted origin.
         self.trusted_origin_id = trusted_origin_id
-        # The trusted origin scenes.
+        # The trusted origin scenario.
         self.trusted_origin_scene = trusted_origin_scene
-        # The update time. The time is in RFC 3339 format and in the UTC time zone.
+        # The update time. The time is in the RFC 3339 format and the UTC time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.update_time = update_time

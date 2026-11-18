@@ -17,21 +17,21 @@ class ListGroupsForResourceServerRequest(DaraModel):
         next_token: str = None,
         resource_server_scope_id: str = None,
     ):
-        # The ID of the resource server application.
+        # The application ID of the resource server.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The filter conditions.
+        # The list of filter conditions.
         self.filter = filter
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return on each page.
+        # The number of entries to return on each page in a paging query.
         self.max_results = max_results
-        # The token for the next page of results. You do not need to provide this parameter for the first request. For subsequent requests, set this to the `NextToken` value from the previous response.
+        # The next token. Set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
-        # The ID of the scope.
+        # The scope ID.
         self.resource_server_scope_id = resource_server_scope_id
 
     def validate(self):
@@ -98,9 +98,9 @@ class ListGroupsForResourceServerRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The name of the filter condition. The only valid value is GroupIds.
+        # The name of the filter condition.
         self.name = name
-        # The values for the filter condition.
+        # The list of filter condition values.
         self.value = value
 
     def validate(self):

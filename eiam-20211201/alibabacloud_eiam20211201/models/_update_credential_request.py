@@ -14,7 +14,7 @@ class UpdateCredentialRequest(DaraModel):
         credential_name: str = None,
         instance_id: str = None,
     ):
-        # Ensures the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # Ensures the idempotence of the request. Generate a parameter value on your client and ensure that the value is unique across different requests. The ClientToken parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -85,7 +85,7 @@ class UpdateCredentialRequestCredentialContent(DaraModel):
     ):
         # The credential content for the API key credential type.
         self.api_key_content = api_key_content
-        # The credential content for the OAuth client credential type.
+        # The credential content for the OAuth client authentication credential type.
         self.oauth_client_content = oauth_client_content
 
     def validate(self):
@@ -161,7 +161,7 @@ class UpdateCredentialRequestCredentialContentApiKeyContent(DaraModel):
         self,
         api_key: str = None,
     ):
-        # The API key content.
+        # The content of the API key.
         self.api_key = api_key
 
     def validate(self):

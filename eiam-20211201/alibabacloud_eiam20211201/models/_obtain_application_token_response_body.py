@@ -65,13 +65,13 @@ class ObtainApplicationTokenResponseBodyApplicationToken(DaraModel):
         self.application_token_id = application_token_id
         # The application token type.
         self.application_token_type = application_token_type
-        # The time when the application token was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The creation time of the application token. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The expiration time. The value is a UNIX timestamp. Unit: milliseconds.
+        # The expiration time. The value is a UNIX timestamp in milliseconds.
         self.expiration_time = expiration_time
         # The IDaaS EIAM instance ID.
         self.instance_id = instance_id
-        # The last used time. The value is a UNIX timestamp. Unit: milliseconds.
+        # The last used time. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
         # The enabling status.
         self.status = status

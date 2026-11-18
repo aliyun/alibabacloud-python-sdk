@@ -71,19 +71,17 @@ class ListApplicationsForUserResponseBodyApplications(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The list of application roles.
+        # The list of application roles. No roles are returned for SAML applications.
         self.application_roles = application_roles
-        # Indicates whether a direct authorization exists. Valid values:
+        # Indicates whether direct authorization exists. Valid values:
         # 
         # - true: A direct authorization record exists between the application and the account.
-        # 
         # - false: No direct authorization record exists between the application and the account.
         self.has_direct_authorization = has_direct_authorization
-        # Indicates whether an inherited authorization exists. Valid values:
+        # Indicates whether inherited authorization exists. Valid values:
         # 
-        # - true: A direct authorization record exists between the application and a parent organization or a group to which the account belongs.
-        # 
-        # - false: No direct authorization record exists between the application and any of the parent organizations or groups to which the account belongs.
+        # - true: A direct authorization record exists between the application and at least one parent organization of the account or a group to which the account belongs.
+        # - false: No direct authorization record exists between the application and any parent organization of the account or any group to which the account belongs.
         self.has_inherit_authorization = has_inherit_authorization
 
     def validate(self):
@@ -139,11 +137,11 @@ class ListApplicationsForUserResponseBodyApplicationsApplicationRoles(DaraModel)
         has_direct_authorization: bool = None,
         has_inherit_authorization: bool = None,
     ):
-        # The ID of the application role.
+        # The application role ID.
         self.application_role_id = application_role_id
-        # Indicates whether the role is directly assigned to the user.
+        # Indicates whether direct authorization exists.
         self.has_direct_authorization = has_direct_authorization
-        # Indicates whether the role is inherited from an organization or a group to which the user belongs.
+        # Indicates whether inherited authorization exists.
         self.has_inherit_authorization = has_inherit_authorization
 
     def validate(self):

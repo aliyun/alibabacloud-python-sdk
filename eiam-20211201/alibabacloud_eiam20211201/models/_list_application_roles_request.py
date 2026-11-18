@@ -20,15 +20,15 @@ class ListApplicationRolesRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The filter conditions.
+        # The list of filter conditions.
         self.filter = filter
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return on each page.
+        # The number of entries per page for paging in a paged query.
         self.max_results = max_results
-        # The token used to start the next query. Set this parameter to the value of NextToken that is returned in the last API call. Leave this parameter empty for the first query.
+        # The pagination token for the next page. Set this parameter to the NextToken value returned from the previous API call. Leave this parameter empty for the first call.
         self.next_token = next_token
 
     def validate(self):
@@ -91,7 +91,7 @@ class ListApplicationRolesRequestFilter(DaraModel):
     ):
         # The name of the filter condition.
         self.name = name
-        # The values of the filter condition.
+        # The list of filter condition values.
         self.value = value
 
     def validate(self):

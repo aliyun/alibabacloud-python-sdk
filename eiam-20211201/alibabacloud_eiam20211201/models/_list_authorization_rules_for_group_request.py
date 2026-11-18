@@ -26,9 +26,9 @@ class ListAuthorizationRulesForGroupRequest(DaraModel):
         # 
         # - Maximum value: 100.
         self.max_results = max_results
-        # The token used to identify the starting position of the next page.
+        # The token that specifies the starting position of the next page.
         # 
-        # - If this parameter is not specified, the query starts from the first page by default.
+        # - If you do not specify this parameter, the query starts from the first page by default.
         self.next_token = next_token
 
     def validate(self):

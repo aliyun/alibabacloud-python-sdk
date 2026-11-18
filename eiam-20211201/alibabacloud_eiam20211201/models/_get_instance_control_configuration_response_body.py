@@ -13,7 +13,7 @@ class GetInstanceControlConfigurationResponseBody(DaraModel):
         instance_control_configuration: main_models.GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration = None,
         request_id: str = None,
     ):
-        # The instance control configuration.
+        # The instance control configuration items.
         self.instance_control_configuration = instance_control_configuration
         # The request ID.
         self.request_id = request_id
@@ -51,7 +51,7 @@ class GetInstanceControlConfigurationResponseBodyInstanceControlConfiguration(Da
         self,
         control_elements: List[main_models.GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElements] = None,
     ):
-        # The instance control configuration.
+        # The instance control configuration items.
         self.control_elements = control_elements
 
     def validate(self):
@@ -89,11 +89,11 @@ class GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationCon
         human_verification_config: main_models.GetInstanceControlConfigurationResponseBodyInstanceControlConfigurationControlElementsHumanVerificationConfig = None,
         status: str = None,
     ):
-        # The name of the instance control item.
+        # The name of the instance control element.
         self.element_name = element_name
-        # The Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) authentication configuration.
+        # The human-machine authentication configuration.
         self.human_verification_config = human_verification_config
-        # The status of the instance control item.
+        # The status of the instance control element.
         self.status = status
 
     def validate(self):

@@ -18,7 +18,7 @@ class ListApplicationsResponseBody(DaraModel):
         self.applications = applications
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of items in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -85,61 +85,61 @@ class ListApplicationsResponseBodyApplications(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The application creation type.
+        # The creation type of the application.
         self.application_creation_type = application_creation_type
         # The application ID.
         self.application_id = application_id
-        # The application identity type.
+        # The identity type of the application.
         self.application_identity_type = application_identity_type
-        # The application name.
+        # The name of the application.
         self.application_name = application_name
-        # The application creation source. Valid values:
-        # - urn:alibaba:idaas:app:source:template: Application template.
-        # - urn:alibaba:idaas:app:source:standard: Standard protocol.
+        # The source from which the application is created. Valid values:
+        # - urn:alibaba:idaas:app:source:template: application template
+        # - urn:alibaba:idaas:app:source:standard: standard protocol
         self.application_source_type = application_source_type
-        # The application template ID.
+        # The ID of the application template.
         self.application_template_id = application_template_id
         # The client ID of the application.
         self.client_id = client_id
-        # The application creation time, in UNIX timestamp format. Unit: milliseconds.
+        # The time when the application was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The application description.
+        # The description of the application.
         self.description = description
         # The features supported by the application, returned as a JSON array string. Valid values:
-        # - sso: Single sign-on.
-        # - slo: Single logout.
-        # - provision: Account synchronization.
-        # - api_invoke: API access. 
-        # - m2m_client: M2M Client capability.
-        # - resource_server: API service capability.
-        # - other: Fallback.
+        # - sso: single sign-on
+        # - slo: single logout
+        # - provision: account synchronization
+        # - api_invoke: API publication 
+        # - m2m_client: M2M client
+        # - resource_server: resource server
+        # - other: other
         self.features = features
         # The instance ID.
         self.instance_id = instance_id
         # The URL of the application logo.
         self.logo_url = logo_url
-        # The ServiceCode of the cloud service that manages the application template.
+        # The service code of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
-        # The unique identifier of the ResourceServer.
+        # The unique identifier of the resource server.
         self.resource_server_identifier = resource_server_identifier
-        # The resource server source type.
+        # The source type of the resource server.
         self.resource_server_source_type = resource_server_source_type
-        # The resource server status.
+        # The status of the resource server.
         self.resource_server_status = resource_server_status
         # Specifies whether the application template is managed by a cloud service.
         self.service_managed = service_managed
-        # The single sign-on protocol. Valid values:
-        # - saml2: SAML 2.0 protocol.
-        # - oidc: OpenID Connect protocol.
-        # - oauth2/m2m: OAuth 2.0 protocol.
-        # - oidc+oauth2/m2m: OpenID Connect and OAuth 2.0 protocols.
+        # The single sign-on (SSO) protocol. Valid values:
+        # - saml2: SAML 2.0 protocol
+        # - oidc: OpenID Connect protocol
+        # - oauth2/m2m: OAuth 2.0 protocol
+        # - oidc+oauth2/m2m: OpenID Connect and OAuth 2.0 protocols
         self.sso_type = sso_type
-        # The application status. Valid values:
-        # - enabled: Enabled.
-        # - disabled: Disabled.
-        # - deleted: Soft deleted.
+        # The status of the application. Valid values:
+        # - enabled: enabled
+        # - disabled: disabled
+        # - deleted: soft deleted
         self.status = status
-        # The time when the application was last updated, in UNIX timestamp format. Unit: milliseconds.
+        # The time when the application was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

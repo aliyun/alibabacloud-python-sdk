@@ -19,25 +19,25 @@ class ListNetworkAccessEndpointsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries to return per page in a paging query. Maximum value: 100.
+        # The number of entries per page for paging in a paged query. The maximum value is 100.
         self.max_results = max_results
         # The status of the network access endpoint. Valid values:
         #  
-        # - pending: pending initialization.
-        # - creating: being created.
-        # - running: running.
-        # - deleting: being deleted.
+        # - pending: pending initialization
+        # - creating: being created
+        # - running: running
+        # - deleting: being deleted
         # 
-        # This filter parameter does not take effect when NetworkAccessEndpointType is set to shared.
+        # This filter does not take effect when NetworkAccessEndpointType is set to shared.
         self.network_access_endpoint_status = network_access_endpoint_status
         # The type of the network access endpoint. Valid values:
         # 
-        # - shared: shared network access endpoint.
-        # - private: private network access endpoint.
+        # - shared: shared network access endpoint
+        # - private: private network access endpoint
         # 
         # Default value: private.
         self.network_access_endpoint_type = network_access_endpoint_type
-        # The pagination token. Set the value to the NextToken value returned from the previous API call. Leave this parameter empty for the first call.
+        # The pagination token. Set this parameter to the value of NextToken returned from the previous API call. Leave this parameter empty for the first call.
         self.next_token = next_token
         # The ID of the VPC to which the private network access endpoint is connected. This parameter does not take effect when NetworkAccessEndpointType is set to shared.
         self.vpc_id = vpc_id

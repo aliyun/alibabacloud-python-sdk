@@ -19,15 +19,15 @@ class ListApplicationFederatedCredentialsForProviderResponseBody(DaraModel):
     ):
         # The list of application federated credentials.
         self.application_federated_credentials = application_federated_credentials
-        # The maximum number of rows per page in a paging query.
+        # The number of entries per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned by the current call.
+        # The query token returned by the current call.
         self.next_token = next_token
-        # The pagination token returned by the current call.
+        # The query token returned by the current call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of items.
+        # The total number of entries in the list.
         self.total_count = total_count
 
     def validate(self):
@@ -363,11 +363,11 @@ class ListApplicationFederatedCredentialsForProviderResponseBodyApplicationFeder
         pod_name_prefix: str = None,
         service_account_name: str = None,
     ):
-        # The K8s namespace.
+        # The Kubernetes namespace.
         self.namespace = namespace
         # The pod name prefix.
         self.pod_name_prefix = pod_name_prefix
-        # The name of the K8s service account.
+        # The name of the Kubernetes service account.
         self.service_account_name = service_account_name
 
     def validate(self):

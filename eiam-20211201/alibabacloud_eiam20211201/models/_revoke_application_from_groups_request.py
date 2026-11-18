@@ -20,7 +20,7 @@ class RevokeApplicationFromGroupsRequest(DaraModel):
         self.application_id = application_id
         # The application role ID.
         self.application_role_id = application_role_id
-        # The list of group IDs. A single operation supports a maximum of 100 group IDs.
+        # The list of group IDs. A maximum of 100 group IDs can be specified in a single operation.
         # 
         # This parameter is required.
         self.group_ids = group_ids

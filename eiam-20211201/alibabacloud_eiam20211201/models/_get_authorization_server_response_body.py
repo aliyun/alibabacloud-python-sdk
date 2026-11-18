@@ -64,25 +64,25 @@ class GetAuthorizationServerResponseBodyAuthorizationServer(DaraModel):
         self.authorization_server_id = authorization_server_id
         # The authorization server name.
         self.authorization_server_name = authorization_server_name
-        # The time when the authorization server was created. The value is a UNIX timestamp in milliseconds.
+        # The creation time of the authorization server. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The creation type.
         self.creation_type = creation_type
-        # The authorization server description.
+        # The description of the authorization server.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The authorization token issuer.
+        # The issuer of the authorization token.
         self.issuer = issuer
         # The domain name used by the issuer.
         self.issuer_domain = issuer_domain
         # The issuer mode.
         self.issuer_mode = issuer_mode
-        # The time when the authorization server was last updated. The value is a UNIX timestamp in milliseconds.
+        # The last update time of the authorization server. The value is a UNIX timestamp in milliseconds.
         self.last_update_time = last_update_time
-        # The authorization server endpoint configuration.
+        # The protocol endpoint configuration of the authorization server.
         self.protocol_endpoint = protocol_endpoint
-        # The authorization server status.
+        # The status of the authorization server.
         self.status = status
 
     def validate(self):
@@ -179,9 +179,9 @@ class GetAuthorizationServerResponseBodyAuthorizationServerProtocolEndpoint(Dara
         oauth_2token_endpoint: str = None,
         oidc_jwks_endpoint: str = None,
     ):
-        # The token endpoint of the authorization server.
+        # The OAuth2 token endpoint of the authorization server.
         self.oauth_2token_endpoint = oauth_2token_endpoint
-        # The JWKS endpoint of the authorization server.
+        # The OIDC JWKS endpoint of the authorization server.
         self.oidc_jwks_endpoint = oidc_jwks_endpoint
 
     def validate(self):

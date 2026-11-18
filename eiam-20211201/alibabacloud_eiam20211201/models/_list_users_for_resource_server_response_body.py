@@ -16,13 +16,13 @@ class ListUsersForResourceServerResponseBody(DaraModel):
         total_count: int = None,
         users: List[main_models.ListUsersForResourceServerResponseBodyUsers] = None,
     ):
-        # The number of entries per page in a paged query.
+        # The maximum number of entries to return per page in a paging query.
         self.max_results = max_results
-        # The pagination token for the next page.
+        # The token for the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of entries.
         self.total_count = total_count
         # The list of accounts.
         self.users = users
@@ -88,7 +88,7 @@ class ListUsersForResourceServerResponseBodyUsers(DaraModel):
     ):
         # The instance ID.
         self.instance_id = instance_id
-        # The list of granted scope permissions.
+        # The list of authorized scopes.
         self.resource_server_scopes = resource_server_scopes
         # The account ID.
         self.user_id = user_id
@@ -139,9 +139,9 @@ class ListUsersForResourceServerResponseBodyUsersResourceServerScopes(DaraModel)
         resource_server_scope_id: str = None,
         resource_server_scope_name: str = None,
     ):
-        # The scope permission ID.
+        # The scope ID.
         self.resource_server_scope_id = resource_server_scope_id
-        # The scope permission name.
+        # The scope name.
         self.resource_server_scope_name = resource_server_scope_name
 
     def validate(self):

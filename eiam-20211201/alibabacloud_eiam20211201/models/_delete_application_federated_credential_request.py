@@ -11,7 +11,7 @@ class DeleteApplicationFederatedCredentialRequest(DaraModel):
         application_id: str = None,
         instance_id: str = None,
     ):
-        # The application federated identity credential ID.
+        # The ID of the federated identity credential.
         # 
         # This parameter is required.
         self.application_federated_credential_id = application_federated_credential_id

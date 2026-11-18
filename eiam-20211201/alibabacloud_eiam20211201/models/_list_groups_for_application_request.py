@@ -22,7 +22,7 @@ class ListGroupsForApplicationRequest(DaraModel):
         self.application_id = application_id
         # The application role ID.
         self.application_role_id = application_role_id
-        # The list of group IDs. You can specify up to 100 group IDs in a single operation.
+        # The list of group IDs. A single operation supports up to 100 group IDs.
         self.group_ids = group_ids
         # The instance ID.
         # 

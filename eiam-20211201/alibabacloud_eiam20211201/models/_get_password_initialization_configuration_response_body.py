@@ -54,20 +54,17 @@ class GetPasswordInitializationConfigurationResponseBodyPasswordInitializationCo
         password_initialization_status: str = None,
         password_initialization_type: str = None,
     ):
-        # The status of forced password update. Valid values:
-        # 
+        # The password forced update status. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.password_forced_update_status = password_forced_update_status
         # The list of password initialization notification channels.
         self.password_initialization_notification_channels = password_initialization_notification_channels
-        # The status of the password initialization configuration. Valid values:
-        # 
+        # The password initialization configuration status. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.password_initialization_status = password_initialization_status
         # The password initialization method. Valid values:
-        # 
         # - random: Random.
         self.password_initialization_type = password_initialization_type
 

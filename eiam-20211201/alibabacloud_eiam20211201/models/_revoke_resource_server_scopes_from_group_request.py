@@ -14,7 +14,7 @@ class RevokeResourceServerScopesFromGroupRequest(DaraModel):
         instance_id: str = None,
         resource_server_scope_ids: List[str] = None,
     ):
-        # The application ID of the ResourceServer.
+        # The application ID of the resource server.
         # 
         # This parameter is required.
         self.application_id = application_id
@@ -26,7 +26,7 @@ class RevokeResourceServerScopesFromGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of Scope permission IDs under the ResourceServer.
+        # The list of scope permission IDs under the resource server.
         # 
         # This parameter is required.
         self.resource_server_scope_ids = resource_server_scope_ids

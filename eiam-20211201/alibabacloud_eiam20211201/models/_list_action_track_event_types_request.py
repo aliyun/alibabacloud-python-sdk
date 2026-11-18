@@ -16,11 +16,11 @@ class ListActionTrackEventTypesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page.
+        # The maximum number of entries per page for paging.
         self.max_results = max_results
-        # You can use this parameter to specify the query token.
+        # The next token.
         self.next_token = next_token
-        # The token that is used to retrieve the previous page of results.
+        # The previous token.
         self.previous_token = previous_token
 
     def validate(self):

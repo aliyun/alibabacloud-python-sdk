@@ -30,19 +30,19 @@ class ListResourceServerScopesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page in a paged query.
+        # The maximum number of entries to return per page in a paging query.
         self.max_results = max_results
-        # The pagination token (NextToken) used to retrieve the next page of results. Set this parameter to the NextToken value returned in the previous API call. Leave this parameter empty for the first query.
+        # The pagination token for the next page. Set this parameter to the value of the NextToken parameter returned from the previous API call. Leave this parameter empty for the first query.
         self.next_token = next_token
-        # The pagination token for the previous page. Set this parameter to the PreviousToken value returned in the previous API call.
+        # The pagination token for the previous page. Set this parameter to the value of the PreviousToken parameter returned from the previous API call.
         self.previous_token = previous_token
         # The list of scope permission IDs.
         self.resource_server_scope_ids = resource_server_scope_ids
-        # The scope permission name.
+        # The name of the scope permission.
         self.resource_server_scope_name = resource_server_scope_name
-        # The scope permission type.
+        # The type of the scope permission.
         self.resource_server_scope_type = resource_server_scope_type
-        # The scope permission value.
+        # The value of the scope permission.
         self.resource_server_scope_value = resource_server_scope_value
 
     def validate(self):

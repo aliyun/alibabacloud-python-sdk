@@ -21,15 +21,15 @@ class ListOrganizationalUnitsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of organizational unit IDs. The number of IDs in the list cannot exceed 100.
+        # The IDs of the organizational units. You can specify up to 100 IDs.
         self.organizational_unit_ids = organizational_unit_ids
-        # The name of the organizational unit. An exact match is used for the query.
+        # The name of the organizational unit. The query uses exact match.
         self.organizational_unit_name = organizational_unit_name
-        # The prefix of the name of the organizational unit. A left-side match is used for the query.
+        # The prefix of the organizational unit name. The query uses prefix match.
         self.organizational_unit_name_starts_with = organizational_unit_name_starts_with
-        # The page number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Default value: 20. Maximum value: 100.
+        # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
         # The ID of the parent organizational unit.
         self.parent_id = parent_id

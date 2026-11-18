@@ -156,7 +156,7 @@ class CreateApplicationFederatedCredentialRequestPkcs7VerificationConfig(DaraMod
         self,
         instance_ids: List[str] = None,
     ):
-        # The list of instance IDs.
+        # The list of instances.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -265,11 +265,11 @@ class CreateApplicationFederatedCredentialRequestOidcVerificationConfigKubernete
         pod_name_prefix: str = None,
         service_account_name: str = None,
     ):
-        # The K8s namespace.
+        # The Kubernetes namespace.
         self.namespace = namespace
         # The pod name prefix.
         self.pod_name_prefix = pod_name_prefix
-        # The K8s service account name.
+        # The Kubernetes service account name.
         self.service_account_name = service_account_name
 
     def validate(self):
@@ -341,9 +341,9 @@ class CreateApplicationFederatedCredentialRequestOidcVerificationConfigGcpVmConf
     ):
         # The list of GCP virtual machine instance IDs.
         self.instance_ids = instance_ids
-        # The GCP project ID to which the resource belongs.
+        # The GCP project ID.
         self.project_id = project_id
-        # The sub claim corresponding to the service account.
+        # The sub corresponding to the service account.
         self.service_account_id = service_account_id
 
     def validate(self):

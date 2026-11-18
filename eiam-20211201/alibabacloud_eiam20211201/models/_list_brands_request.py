@@ -16,7 +16,7 @@ class ListBrandsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries per page in a paging query.
+        # The maximum number of results per page during paging in a paged query.
         self.max_results = max_results
         # The next token.
         self.next_token = next_token

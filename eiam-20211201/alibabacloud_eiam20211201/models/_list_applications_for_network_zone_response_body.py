@@ -19,11 +19,11 @@ class ListApplicationsForNetworkZoneResponseBody(DaraModel):
     ):
         # The list of applications.
         self.applications = applications
-        # The number of entries to return per page for paging in a paged query.
+        # The number of entries per page for paging.
         self.max_results = max_results
-        # The next token returned by this call.
+        # The next token returned by the current call.
         self.next_token = next_token
-        # The next token returned by this call.
+        # The next token returned by the current call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id

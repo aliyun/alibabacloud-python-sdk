@@ -18,9 +18,9 @@ class ListCloudAccountResourcesResponseBody(DaraModel):
     ):
         # The list of cloud account resources.
         self.cloud_account_resources = cloud_account_resources
-        # The maximum number of entries returned per page during paging in a paged query.
+        # The maximum number of entries per page for paging in a paged query.
         self.max_results = max_results
-        # The query token returned by the current call for the next pagination query.
+        # The pagination token returned in the current call. You can use this token for the next paginated query.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
@@ -94,9 +94,9 @@ class ListCloudAccountResourcesResponseBodyCloudAccountResources(DaraModel):
     ):
         # The ID of the cloud account to which the resource belongs.
         self.cloud_account_id = cloud_account_id
-        # The unique remote identifier of the resource entity.
+        # The identifier of the resource entity, which is a unique remote identifier.
         self.cloud_account_resource_entity_id = cloud_account_resource_entity_id
-        # The type of the resource entity. Valid values: ram_role.
+        # The resource entity type. Valid values: ram_role.
         self.cloud_account_resource_entity_type = cloud_account_resource_entity_type
         # The identifier of the cloud account resource.
         self.cloud_account_resource_id = cloud_account_resource_id
@@ -191,15 +191,15 @@ class ListCloudAccountResourcesResponseBodyCloudAccountResourcesCloudAccountReso
         ram_policy_document: str = None,
         ram_policy_type: str = None,
     ):
-        # The JSON string of the Tencent Cloud CAM policy document. This parameter is returned only for Tencent Cloud accounts.
+        # The JSON document of the Tencent Cloud CAM policy. This is returned only for Tencent Cloud accounts.
         self.cam_policy_document = cam_policy_document
-        # The type of the Tencent Cloud CAM policy. Valid values: qcs and local. This parameter is returned only for Tencent Cloud accounts.
+        # The type of the Tencent Cloud CAM policy. Valid values: qcs and local. This is returned only for Tencent Cloud accounts.
         self.cam_policy_type = cam_policy_type
-        # The JSON string of the AWS IAM policy document. This parameter is returned only for AWS cloud accounts.
+        # The JSON document of the AWS IAM policy. This is returned only for AWS cloud accounts.
         self.iam_policy_document = iam_policy_document
-        # The type of the AWS IAM policy. Valid values: aws and local. This parameter is returned only for AWS cloud accounts.
+        # The type of the AWS IAM policy. Valid values: aws and local. This is returned only for AWS cloud accounts.
         self.iam_policy_type = iam_policy_type
-        # The JSON string of the RAM policy document. This parameter is returned only by the Get operation.
+        # The JSON document of the RAM policy. This is returned only by the Get API operation.
         self.ram_policy_document = ram_policy_document
         # The type of the RAM policy. Valid values: system and custom.
         self.ram_policy_type = ram_policy_type

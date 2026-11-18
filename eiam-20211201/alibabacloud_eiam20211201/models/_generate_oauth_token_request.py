@@ -34,7 +34,7 @@ class GenerateOauthTokenRequest(DaraModel):
         self.instance_id = instance_id
         # The requested token type.
         self.requested_token_type = requested_token_type
-        # The permission scope.
+        # The permission scopes.
         # 
         # This parameter is required.
         self.scope_values = scope_values

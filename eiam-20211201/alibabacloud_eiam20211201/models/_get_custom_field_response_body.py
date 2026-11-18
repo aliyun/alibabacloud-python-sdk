@@ -99,7 +99,7 @@ class GetCustomFieldResponseBodyCustomField(DaraModel):
         self.unique = unique
         # The last update time of the extended field. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The permissions on the user portal side.
+        # The user portal permissions.
         self.user_permission = user_permission
 
     def validate(self):

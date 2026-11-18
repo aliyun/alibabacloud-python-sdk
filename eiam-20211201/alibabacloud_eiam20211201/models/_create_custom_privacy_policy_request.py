@@ -18,7 +18,7 @@ class CreateCustomPrivacyPolicyRequest(DaraModel):
         status: str = None,
         user_consent_type: str = None,
     ):
-        # A client token used to ensure the idempotence of the request. The client generates this value to make sure that it is unique among different requests. The value can be up to 64 ASCII characters in length and cannot contain non-ASCII characters.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The details of the custom privacy policy content.
         self.custom_privacy_policy_contents = custom_privacy_policy_contents
@@ -26,7 +26,7 @@ class CreateCustomPrivacyPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.custom_privacy_policy_name = custom_privacy_policy_name
-        # The default language of the privacy policy.
+        # The default language code of the custom privacy policy.
         self.default_language_code = default_language_code
         # The instance ID.
         # 
@@ -34,7 +34,7 @@ class CreateCustomPrivacyPolicyRequest(DaraModel):
         self.instance_id = instance_id
         # The status of the custom privacy policy.
         self.status = status
-        # The consent type for the privacy policy.
+        # The user consent type.
         self.user_consent_type = user_consent_type
 
     def validate(self):
@@ -108,11 +108,11 @@ class CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents(DaraModel):
         custom_privacy_policy_tip: str = None,
         language_code: str = None,
     ):
-        # The items of the custom privacy policy.
+        # The custom privacy policy items.
         self.custom_privacy_policy_items = custom_privacy_policy_items
-        # The prompt for the custom privacy policy.
+        # The custom privacy policy tip.
         self.custom_privacy_policy_tip = custom_privacy_policy_tip
-        # The language of the custom privacy policy. The value is the LanguageCode returned by the ListLanguages operation.
+        # The language code of the custom privacy policy. The value is obtained from the LanguageCode parameter returned by the ListLanguages operation.
         self.language_code = language_code
 
     def validate(self):
@@ -163,7 +163,7 @@ class CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPo
     ):
         # The name of the custom privacy policy item.
         self.custom_privacy_policy_item_name = custom_privacy_policy_item_name
-        # The endpoint of the custom privacy policy item.
+        # The URL of the custom privacy policy item.
         self.custom_privacy_policy_item_url = custom_privacy_policy_item_url
 
     def validate(self):

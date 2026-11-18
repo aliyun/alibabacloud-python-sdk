@@ -51,9 +51,9 @@ class ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSuppo
         self,
         provision_protocol_type: List[str] = None,
     ):
-        # The account synchronization type supported by the application. Valid values:
-        # - idaas_callback: Event callback type.
-        # - scim2: System for Cross-domain Identity Management protocol type.
+        # The account synchronization protocol type supported by the application. Valid values:
+        # - idaas_callback: Event callback.
+        # - scim2: System for Cross-domain Identity Management protocol.
         self.provision_protocol_type = provision_protocol_type
 
     def validate(self):

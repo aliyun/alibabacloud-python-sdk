@@ -16,21 +16,21 @@ class UpdateCredentialProviderRequest(DaraModel):
         credential_provider_name: str = None,
         instance_id: str = None,
     ):
-        # The idempotency token that ensures the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # Generate a unique parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # You can generate the parameter value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The credential provider configuration.
+        # The configuration of the credential provider.
         self.credential_provider_config = credential_provider_config
         # The credential provider ID.
         # 
         # This parameter is required.
         self.credential_provider_id = credential_provider_id
-        # The credential provider name.
+        # The name of the credential provider.
         # 
-        # > The name cannot exceed 64 characters in length.
+        # > The name can be up to 64 characters in length.
         self.credential_provider_name = credential_provider_name
         # The instance ID.
         # 
@@ -89,7 +89,7 @@ class UpdateCredentialProviderRequestCredentialProviderConfig(DaraModel):
         jwt_provider_config: main_models.UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig = None,
         oauth_provider_config: main_models.UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig = None,
     ):
-        # The configuration of the JWT credential provider.
+        # The configuration of the JSON Web Token (JWT) credential provider.
         self.jwt_provider_config = jwt_provider_config
         # The configuration of the OAuth credential provider.
         self.oauth_provider_config = oauth_provider_config
@@ -145,19 +145,19 @@ class UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig
         # - m2m: machine-to-machine.
         # - user_federation: user federation.
         self.authorization_flow = authorization_flow
-        # The client_secret in the OAuth protocol.
+        # The client secret in the OAuth protocol.
         # 
-        # > The value cannot exceed 1024 characters in length.
+        # > The client secret can be up to 1,024 characters in length.
         self.client_secret = client_secret
-        # The auto-discovery URL.
+        # The URL of the discovery document.
         self.discovery_url = discovery_url
-        # The authorization server identifier URL.
+        # The URL of the authorization server identifier.
         self.issuer = issuer
         # The PKCE challenge method. Valid values:
         # - S256.
         # - plain.
         self.pkce_challenge_method = pkce_challenge_method
-        # Specifies whether PKCE is enabled.
+        # Specifies whether to enable Proof Key for Code Exchange (PKCE).
         self.pkce_enabled = pkce_enabled
         # The vendor type. Valid values:
         # - custom: custom.
@@ -167,21 +167,21 @@ class UpdateCredentialProviderRequestCredentialProviderConfigOAuthProviderConfig
         # - microsoft: Microsoft.
         # - google: Google.
         self.provider_vendor = provider_vendor
-        # The scope in the OAuth protocol, which specifies the permission scope.
+        # The scope in the OAuth protocol.
         # 
-        # > The Scope configuration on the credential provider serves as the fallback value. If the scope parameter is not specified when calling the DeveloperAPI to obtain an OAuth Access Token, the Scope configuration on the credential provider is used for issuance.
+        # > The scope configuration of the OAuth credential provider serves as a fallback value. If the scope parameter is not specified when you call the Developer API to obtain an OAuth access token, the access token is issued based on the scope configuration of the credential provider.
         # 
-        # >Notice: Separate multiple Scope values with spaces. To clear the Scope configuration, pass an empty string.
+        # >Notice: Separate multiple scope values with spaces. To clear the scope configuration, enter an empty string.</notice>
         # 
-        # Restrictions on each individual Scope value:
-        # 1. Allowed characters: lowercase letters, digits, and special characters `|/:_-.`
-        # 2. Must contain at least one lowercase letter or digit.
-        # 3. Must start with a special character `.`, a lowercase letter, or a digit.
-        # 4. Cannot exceed 1024 characters in length.
+        # The limits on a single scope value are as follows:
+        # 1. Allowed characters: lowercase letters, digits, and the following special characters: `|/:_-.`
+        # 2. The value must contain at least one lowercase letter or digit.
+        # 3. The value must start with a period (`.`), a lowercase letter, or a digit.
+        # 4. The value can be up to 1,024 characters in length.
         self.scope = scope
         # The token endpoint of the OAuth protocol.
         # 
-        # > The value must start with `http://` or `https://` and cannot exceed 1024 characters in length.
+        # > The endpoint must start with `http://` or `https://` and can be up to 1,024 characters in length.
         self.token_endpoint = token_endpoint
 
     def validate(self):
@@ -268,15 +268,15 @@ class UpdateCredentialProviderRequestCredentialProviderConfigJwtProviderConfig(D
     ):
         # The list of allowed JWT issuers.
         # 
-        # > The list cannot contain more than 200 entries.
+        # > The list can contain up to 200 issuers.
         # 
-        # >Notice: To clear the issuer list, pass an empty list or an empty string when calling the API.
+        # >Notice: To clear the issuer list, pass an empty list or an empty string when you call the operation.</notice>
         self.allowed_token_issuers = allowed_token_issuers
-        # Specifies whether the JWT derived short token feature is enabled.
+        # Specifies whether to enable the JWT derived short token capability.
         self.derived_short_token_enabled = derived_short_token_enabled
-        # The validity period of the JWT, in seconds.
+        # The validity period of the JWT. Unit: seconds.
         self.expiration = expiration
-        # Specifies whether JWT expiration cleanup is enabled.
+        # Specifies whether to enable JWT expiration cleanup.
         self.expiration_cleanup_enabled = expiration_cleanup_enabled
 
     def validate(self):

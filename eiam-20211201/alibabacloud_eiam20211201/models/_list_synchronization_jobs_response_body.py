@@ -15,13 +15,13 @@ class ListSynchronizationJobsResponseBody(DaraModel):
         synchronization_jobs: List[main_models.ListSynchronizationJobsResponseBodySynchronizationJobs] = None,
         total_count: int = None,
     ):
-        # The query token returned by this call.
+        # The pagination token returned by the current request.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
         # The list of synchronization jobs.
         self.synchronization_jobs = synchronization_jobs
-        # The total number of entries in the list.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -114,13 +114,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobs(DaraModel):
         self.synchronization_job_id = synchronization_job_id
         # The synchronization target ID.
         self.target_id = target_id
-        # The type of the synchronization target. Valid values:
+        # The synchronization target type. Valid values:
         # 
         # - identity_provider: identity provider
         # 
         # - application: application
         self.target_type = target_type
-        # The trigger type of the synchronization job. Valid values:
+        # The synchronization trigger type. Valid values:
         # 
         # - auto: Automatically triggered.
         # 
@@ -217,7 +217,7 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResult(DaraModel):
         self.error_code = error_code
         # The error message of the synchronization result.
         self.error_message = error_message
-        # The statistics of the group member synchronization result.
+        # The group member synchronization result statistics.
         self.group_member_statistics = group_member_statistics
         # The group synchronization result statistics.
         self.group_statistics = group_statistics
@@ -298,19 +298,19 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         same: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame = None,
         updated: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated = None,
     ):
-        # The statistics of the binding result.
+        # The binding result statistics.
         self.binded = binded
-        # The statistics of the creation result.
+        # The creation result statistics.
         self.created = created
-        # The statistics of the deletion result.
+        # The deletion result statistics.
         self.deleted = deleted
         # The export result statistics.
         self.exported = exported
-        # The statistics of the push result.
+        # The push result statistics.
         self.pushed = pushed
-        # The statistics of identical results.
+        # The unchanged result statistics.
         self.same = same
-        # The statistics of the update result.
+        # The update result statistics.
         self.updated = updated
 
     def validate(self):
@@ -397,13 +397,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -452,13 +452,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -507,13 +507,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -562,13 +562,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -617,13 +617,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -672,13 +672,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -727,13 +727,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -785,19 +785,19 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         same: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame = None,
         updated: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated = None,
     ):
-        # The statistics of the binding result.
+        # The binding result statistics.
         self.binded = binded
-        # The statistics of the creation result.
+        # The creation result statistics.
         self.created = created
-        # The statistics of the deletion result.
+        # The deletion result statistics.
         self.deleted = deleted
         # The export result statistics.
         self.exported = exported
-        # The statistics of the push result.
+        # The push result statistics.
         self.pushed = pushed
-        # The statistics of identical results.
+        # The unchanged result statistics.
         self.same = same
-        # The statistics of the update result.
+        # The update result statistics.
         self.updated = updated
 
     def validate(self):
@@ -884,13 +884,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -939,13 +939,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -994,13 +994,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1049,13 +1049,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1104,13 +1104,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1159,13 +1159,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1214,13 +1214,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizational
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1271,17 +1271,17 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         same: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame = None,
         updated: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated = None,
     ):
-        # The statistics of the binding result.
+        # The binding result statistics.
         self.binded = binded
-        # The statistics of the creation result.
+        # The creation result statistics.
         self.created = created
-        # The statistics of the deletion result.
+        # The deletion result statistics.
         self.deleted = deleted
-        # The statistics of the push result.
+        # The push result statistics.
         self.pushed = pushed
-        # The statistics of identical results.
+        # The unchanged result statistics.
         self.same = same
-        # The statistics of the update result.
+        # The update result statistics.
         self.updated = updated
 
     def validate(self):
@@ -1359,13 +1359,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1414,13 +1414,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1469,13 +1469,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1524,13 +1524,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1579,13 +1579,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1634,13 +1634,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistic
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1691,17 +1691,17 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         same: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame = None,
         updated: main_models.ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated = None,
     ):
-        # The statistics of the binding result.
+        # The binding result statistics.
         self.binded = binded
-        # The statistics of the creation result.
+        # The creation result statistics.
         self.created = created
-        # The statistics of the deletion result.
+        # The deletion result statistics.
         self.deleted = deleted
-        # The statistics of the push result.
+        # The push result statistics.
         self.pushed = pushed
-        # The statistics of identical results.
+        # The unchanged result statistics.
         self.same = same
-        # The statistics of the update result.
+        # The update result statistics.
         self.updated = updated
 
     def validate(self):
@@ -1779,13 +1779,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1834,13 +1834,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1889,13 +1889,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1944,13 +1944,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -1999,13 +1999,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -2054,13 +2054,13 @@ class ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberSta
         success: int = None,
         total: int = None,
     ):
-        # The number of failures.
+        # The number of failed items.
         self.failed = failed
         # The number of skipped items.
         self.skipped = skipped
-        # The number of successes.
+        # The number of successful items.
         self.success = success
-        # The total count.
+        # The total number of items.
         self.total = total
 
     def validate(self):

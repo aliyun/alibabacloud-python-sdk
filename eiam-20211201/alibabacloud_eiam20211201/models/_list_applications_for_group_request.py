@@ -15,19 +15,19 @@ class ListApplicationsForGroupRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Application ID list. A maximum of 100 application IDs are supported.
+        # The list of application IDs. You can specify up to 100 application IDs.
         self.application_ids = application_ids
-        # Group ID.
+        # The group ID.
         # 
         # This parameter is required.
         self.group_id = group_id
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # Page size.
+        # The page size.
         self.page_size = page_size
 
     def validate(self):

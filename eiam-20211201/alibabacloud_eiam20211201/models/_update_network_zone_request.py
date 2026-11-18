@@ -17,7 +17,7 @@ class UpdateNetworkZoneRequest(DaraModel):
         network_zone_name: str = None,
         vpc_id: str = None,
     ):
-        # The idempotence token.
+        # The client token used to ensure idempotence.
         self.client_token = client_token
         # The instance ID.
         # 

@@ -22,15 +22,15 @@ class ListCredentialProvidersRequest(DaraModel):
         self.credential_provider_ids = credential_provider_ids
         # The list of credential provider types.
         self.credential_provider_types = credential_provider_types
-        # The list of filter conditions.
+        # The list of filters.
         self.filter = filter
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page in a paged query.
+        # The maximum number of rows per page in a paged query.
         self.max_results = max_results
-        # The pagination token.
+        # The next token.
         self.next_token = next_token
         # The list of credential provider statuses.
         self.statuses = statuses
@@ -105,12 +105,12 @@ class ListCredentialProvidersRequestFilter(DaraModel):
         name: str = None,
         value: List[str] = None,
     ):
-        # The filter condition name. Valid values:
+        # The filter name. Valid values:
         # 
-        # - CredentialProviderName: the credential provider name.
-        # - CredentialProviderIdentifier: the credential provider identifier.
+        # - CredentialProviderName: the credential provider name
+        # - CredentialProviderIdentifier: the credential provider identifier
         self.name = name
-        # The list of filter condition values.
+        # The list of filter values.
         self.value = value
 
     def validate(self):

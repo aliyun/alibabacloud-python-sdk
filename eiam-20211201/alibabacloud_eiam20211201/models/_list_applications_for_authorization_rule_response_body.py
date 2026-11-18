@@ -18,9 +18,9 @@ class ListApplicationsForAuthorizationRuleResponseBody(DaraModel):
     ):
         # The list of applications.
         self.applications = applications
-        # The number of entries per page in a paging query.
+        # The maximum number of entries per page in a paging query.
         self.max_results = max_results
-        # The pagination token returned in the response, which is used to query the next page.
+        # The token returned in the current response for querying the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

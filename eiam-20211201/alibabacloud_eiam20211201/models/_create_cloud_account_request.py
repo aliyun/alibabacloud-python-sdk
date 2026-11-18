@@ -16,7 +16,7 @@ class CreateCloudAccountRequest(DaraModel):
         description: str = None,
         instance_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique among different requests. The ClientToken value supports only ASCII characters and cannot exceed 64 characters in length. For more information, see References [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a parameter value, but you must ensure that the parameter value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see References: [How to ensure idempotence](https://www.alibabacloud.com/help/zh/ecs/developer-reference/how-to-ensure-idempotence).
         # 
         # This parameter is required.
         self.client_token = client_token
@@ -24,16 +24,16 @@ class CreateCloudAccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.cloud_account_external_id = cloud_account_external_id
-        # The cloud account name.
+        # The name of the cloud account.
         self.cloud_account_name = cloud_account_name
-        # The identity provider name.
+        # The name of the identity provider.
         self.cloud_account_provider_name = cloud_account_provider_name
-        # The cloud account site. Valid values:
+        # The site of the cloud account. Valid values:
         # 
         # - global: International site.
         # - china_mainland: China site.
         self.cloud_account_site = cloud_account_site
-        # The cloud account type. Valid values:
+        # The type of the cloud account. Valid values:
         # 
         # - alibaba_cloud: Alibaba Cloud.
         # 

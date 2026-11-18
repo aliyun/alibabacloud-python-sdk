@@ -18,13 +18,13 @@ class ListApplicationRolesResponseBody(DaraModel):
     ):
         # The list of application roles.
         self.application_roles = application_roles
-        # The number of entries returned on each page.
+        # The number of entries per page for paging in a paged query.
         self.max_results = max_results
-        # The token used to start the next query.
+        # The pagination token for the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -93,9 +93,9 @@ class ListApplicationRolesResponseBodyApplicationRoles(DaraModel):
         self.application_id = application_id
         # The application role ID.
         self.application_role_id = application_role_id
-        # The name of the application role.
+        # The application role name.
         self.application_role_name = application_role_name
-        # The value of the application role.
+        # The application role value.
         self.application_role_value = application_role_value
         # The description of the application role.
         self.description = description

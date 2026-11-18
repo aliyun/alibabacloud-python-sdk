@@ -19,15 +19,15 @@ class ListCustomPrivacyPoliciesResponseBody(DaraModel):
     ):
         # The list of custom privacy policies.
         self.custom_privacy_policies = custom_privacy_policies
-        # The maximum number of entries to return per page in a paging query.
+        # The maximum number of entries per page for a paging query.
         self.max_results = max_results
-        # The pagination token returned by the current request.
+        # The next token returned in the current call.
         self.next_token = next_token
-        # The pagination token returned by the current request.
+        # The next token returned in the current call.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -98,11 +98,11 @@ class ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies(DaraModel):
         status: str = None,
         user_consent_type: str = None,
     ):
-        # The ID of the custom privacy policy.
+        # The custom privacy policy ID.
         self.custom_privacy_policy_id = custom_privacy_policy_id
-        # The name of the custom privacy policy.
+        # The custom privacy policy name.
         self.custom_privacy_policy_name = custom_privacy_policy_name
-        # The default language code for the privacy policy. The valid values are the LanguageCode values returned by the ListLanguages operation.
+        # The default language code. The valid values are the LanguageCode values returned by the ListLanguages operation.
         self.default_language_code = default_language_code
         # The instance ID.
         self.instance_id = instance_id

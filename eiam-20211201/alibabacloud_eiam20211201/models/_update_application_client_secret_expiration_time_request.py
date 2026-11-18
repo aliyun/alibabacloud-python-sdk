@@ -24,7 +24,7 @@ class UpdateApplicationClientSecretExpirationTimeRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The client secret ID.
+        # The client secret.
         # 
         # This parameter is required.
         self.secret_id = secret_id

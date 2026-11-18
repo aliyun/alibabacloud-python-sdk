@@ -16,17 +16,17 @@ class SetWebAuthnConfigurationRequest(DaraModel):
         enable_user_self_registration: bool = None,
         instance_id: str = None,
     ):
-        # List of AAGUIDs and their names.
+        # The list of AAGUIDs and their names.
         self.aaguids = aaguids
-        # Enable AAGUID verification.
+        # Specifies whether AAGUID verification is enabled.
         self.enable_aaguid_verification = enable_aaguid_verification
-        # Enable WebAuthn authenticator MDS verification.
+        # Specifies whether MDS verification is enabled for WebAuthn authenticators.
         self.enable_metadata_service_verification = enable_metadata_service_verification
-        # Allow user self-registration of WebAuthn authenticators.
+        # Specifies whether users are allowed to self-register WebAuthn authenticators.
         # 
         # This parameter is required.
         self.enable_user_self_registration = enable_user_self_registration
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -89,9 +89,9 @@ class SetWebAuthnConfigurationRequestAaguids(DaraModel):
         aaguid: str = None,
         name: str = None,
     ):
-        # AAGUID.
+        # AAGUID
         self.aaguid = aaguid
-        # AAGUID name.
+        # The AAGUID name.
         self.name = name
 
     def validate(self):

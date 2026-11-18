@@ -133,9 +133,9 @@ class CreateFederatedCredentialProviderRequestPrivateCaProviderConfig(DaraModel)
     ):
         # The list of root certificates.
         self.certificates = certificates
-        # The method used to retrieve the root certificate.
+        # The method to retrieve the root certificate.
         self.trust_anchor_source = trust_anchor_source
-        # The trust condition of the root certificate.
+        # The trust conditions for the root certificate.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -226,7 +226,7 @@ class CreateFederatedCredentialProviderRequestPkcs7ProviderConfig(DaraModel):
         self.signing_time_value_expression = signing_time_value_expression
         # The source of the certificate trust anchor.
         self.trust_anchor_source = trust_anchor_source
-        # The trust condition.
+        # The trust conditions.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -327,15 +327,15 @@ class CreateFederatedCredentialProviderRequestOidcProviderConfig(DaraModel):
     ):
         # The list of audiences.
         self.audiences = audiences
-        # The token issuer identifier (Issuer).
+        # The identifier of the token issuer.
         self.issuer = issuer
-        # The source of the JWKS.
+        # The JWKS source.
         self.jwks_source = jwks_source
         # The JWKS endpoint.
         self.jwks_uri = jwks_uri
         # The statically retrieved JWKS.
         self.static_jwks = static_jwks
-        # The trust condition.
+        # The trust conditions.
         self.trust_condition = trust_condition
 
     def validate(self):

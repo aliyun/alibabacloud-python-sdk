@@ -70,15 +70,15 @@ class GetApplicationTemplateResponseBodyApplicationTemplate(DaraModel):
         self.create_time = create_time
         # The description of the application template.
         self.description = description
-        # The help document URL of the application template.
+        # The URL of the help document for the application template.
         self.help_document_url = help_document_url
-        # The logo URL of the application template.
+        # The URL of the application template logo.
         self.logo_url = logo_url
         # The service code of the cloud service that manages the application template.
         self.managed_service_code = managed_service_code
-        # The sale information of the application template.
+        # The sales information of the application template.
         self.sale_info = sale_info
-        # The console URL of the cloud service that manages the application template.
+        # The URL of the console for the cloud service that manages the application template.
         self.service_console_url = service_console_url
         # Indicates whether the application template is managed by a cloud service.
         self.service_managed = service_managed

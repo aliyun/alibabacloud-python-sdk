@@ -18,7 +18,7 @@ class ListApplicationAccountsForUserResponseBody(DaraModel):
         self.application_accounts = application_accounts
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -77,7 +77,7 @@ class ListApplicationAccountsForUserResponseBodyApplicationAccounts(DaraModel):
         self.application_id = application_id
         # The application account name.
         self.application_username = application_username
-        # The time when the account was created. The value is a UNIX timestamp in milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The IDaaS EIAM instance ID.
         self.instance_id = instance_id

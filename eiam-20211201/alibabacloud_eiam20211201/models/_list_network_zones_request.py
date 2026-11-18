@@ -19,9 +19,9 @@ class ListNetworkZonesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return per page for paging.
+        # The maximum number of entries to return per page when paging in a paged query.
         self.max_results = max_results
-        # The network zone IDs.
+        # The IDs of the network zones.
         self.network_zone_ids = network_zone_ids
         # The pagination token.
         self.next_token = next_token

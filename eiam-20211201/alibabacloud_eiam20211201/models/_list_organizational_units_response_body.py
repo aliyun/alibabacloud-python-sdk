@@ -18,7 +18,7 @@ class ListOrganizationalUnitsResponseBody(DaraModel):
         self.organizational_units = organizational_units
         # The request ID.
         self.request_id = request_id
-        # The total number of entries that are returned. This value is the total number of matched entries. The maximum number of entries that can be returned in a single request is specified by PageSize.
+        # The total number of entries. This value indicates the total number of matched entries. The maximum number of entries returned per page is specified by the PageSize parameter.
         self.total_count = total_count
 
     def validate(self):
@@ -76,7 +76,7 @@ class ListOrganizationalUnitsResponseBodyOrganizationalUnits(DaraModel):
         parent_id: str = None,
         update_time: int = None,
     ):
-        # The time when the organizational unit was created. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the organizational unit was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description of the organizational unit.
         self.description = description
@@ -84,27 +84,24 @@ class ListOrganizationalUnitsResponseBodyOrganizationalUnits(DaraModel):
         self.instance_id = instance_id
         # Indicates whether the organizational unit is a leaf node. A value of true indicates that the organizational unit has no child nodes. A value of false indicates that the organizational unit has child nodes.
         self.leaf = leaf
-        # The external ID of the organizational unit. This ID is used to map the data of the organizational unit to the data of an external system. By default, the value of this parameter is the organizational unit ID.
-        # 
-        # Note: The external ID must be unique within the same source type and source ID.
+        # The external ID of the organizational unit, which is used to map external data to IDaaS organizational units. Default value: the IDaaS organizational unit ID. Note: The external ID must be unique under the same source type and source ID.
         self.organizational_unit_external_id = organizational_unit_external_id
-        # The organizational unit ID.
+        # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
         # The name of the organizational unit.
         self.organizational_unit_name = organizational_unit_name
         # The source ID of the organizational unit.
         self.organizational_unit_source_id = organizational_unit_source_id
         # The source type of the organizational unit. Valid values:
-        # 
-        # - build_in: The organizational unit is created in IDaaS.
-        # - ding_talk: The organizational unit is imported from DingTalk.
-        # - ad: The organizational unit is imported from Active Directory (AD).
-        # - ldap: The organizational unit is imported from a Lightweight Directory Access Protocol (LDAP) directory.
-        # - we_com: The organizational unit is imported from WeCom.
+        # - build_in: built-in.
+        # - ding_talk: imported from DingTalk.
+        # - ad: imported from AD.
+        # - ldap: imported from LDAP.
+        # - we_com: imported from WeCom.
         self.organizational_unit_source_type = organizational_unit_source_type
         # The ID of the parent organizational unit.
         self.parent_id = parent_id
-        # The time when the organizational unit was last updated. The value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the organizational unit was last updated. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

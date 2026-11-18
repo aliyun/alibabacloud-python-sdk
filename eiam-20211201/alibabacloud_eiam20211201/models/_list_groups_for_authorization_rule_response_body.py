@@ -18,9 +18,9 @@ class ListGroupsForAuthorizationRuleResponseBody(DaraModel):
     ):
         # The list of groups.
         self.groups = groups
-        # The maximum number of entries per page in a paging query.
+        # The number of entries per page for paging in a paged query.
         self.max_results = max_results
-        # The next token returned in the current response, which is used to query the next page.
+        # The token returned in the current response, which is used to query the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -93,7 +93,8 @@ class ListGroupsForAuthorizationRuleResponseBodyGroups(DaraModel):
         self.instance_id = instance_id
         # The time range of the validity period. This parameter takes effect only when **ValidityType** is set to **time_bound**.
         self.validity_period = validity_period
-        # The validity period type of the relationship. Valid values:
+        # The validity type of the relationship. Valid values:
+        # 
         # - permanent: permanent
         # - time_bound: custom time range
         self.validity_type = validity_type
@@ -144,9 +145,9 @@ class ListGroupsForAuthorizationRuleResponseBodyGroupsValidityPeriod(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The effective end time. The value is a UNIX timestamp in milliseconds.
+        # The end time of the validity period. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The effective start time. The value is a UNIX timestamp in milliseconds.
+        # The start time of the validity period. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

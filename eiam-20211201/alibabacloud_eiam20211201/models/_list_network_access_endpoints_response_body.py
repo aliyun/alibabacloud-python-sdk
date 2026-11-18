@@ -19,7 +19,7 @@ class ListNetworkAccessEndpointsResponseBody(DaraModel):
         self.network_access_endpoints = network_access_endpoints
         # The pagination token returned for the current call.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -88,31 +88,31 @@ class ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpoints(DaraModel):
     ):
         # The VPC configurations of the backup network access endpoint.
         self.backup_vpc_endpoint = backup_vpc_endpoint
-        # The time when the network access endpoint was created. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+        # The time when the network access endpoint was created. The time is displayed as a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
         # The ID of the network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
-        # The name of the network access endpoint, such as the xx business VPC access endpoint.
+        # The name of the network access endpoint, such as xx business VPC access endpoint.
         self.network_access_endpoint_name = network_access_endpoint_name
         # The type of the network access endpoint. Valid values:
         # 
-        # - shared: shared network access endpoint.
-        # - private: private network access endpoint.
+        # - shared: shared network access endpoint
+        # - private: private network access endpoint
         self.network_access_endpoint_type = network_access_endpoint_type
         # The ID of the security group used by the private network access endpoint.
         self.security_group_id = security_group_id
         # The status of the network access endpoint. Valid values:
         #  
-        # - pending: pending initialization.
-        # - creating: being created.
-        # - running: running.
-        # - deleting: being deleted.
+        # - pending: pending initialization
+        # - creating: being created
+        # - running: running
+        # - deleting: being deleted
         self.status = status
-        # The time when the network access endpoint was last updated. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
+        # The time when the network access endpoint was last updated. The time is displayed as a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The IDs of the vSwitches to which the private network access endpoint is connected.
+        # The vSwitches to which the private network access endpoint is connected.
         self.v_switch_ids = v_switch_ids
         # The ID of the VPC to which the private network access endpoint is connected.
         self.vpc_id = vpc_id
@@ -223,7 +223,7 @@ class ListNetworkAccessEndpointsResponseBodyNetworkAccessEndpointsBackupVpcEndpo
         self.backup_egress_public_ip_addresses = backup_egress_public_ip_addresses
         # The ID of the security group for the backup network access endpoint.
         self.backup_security_group_id = backup_security_group_id
-        # The IDs of the vSwitches for the backup network access endpoint.
+        # The vSwitches for the backup network access endpoint.
         self.backup_vswitch_ids = backup_vswitch_ids
         # The ID of the VPC for the backup network access endpoint.
         self.backup_vpc_id = backup_vpc_id

@@ -62,25 +62,25 @@ class GetInstanceLicenseResponseBodyLicense(DaraModel):
     ):
         # The edition of the license.
         self.edition = edition
-        # The end date of the license validity period, in timestamp format.
+        # The end date of the license validity period. The value is a UNIX timestamp.
         self.end_time = end_time
         # The detailed license information of the instance.
         self.instance_license_detail = instance_license_detail
-        # The billing type of the license.
+        # The billing method of the license.
         self.license_charge_type = license_charge_type
-        # The detailed license configuration as a JSON string.
+        # The JSON string of the detailed license configuration.
         self.license_config_json = license_config_json
-        # The creation time of the license, in timestamp format.
+        # The creation time of the license. The value is a UNIX timestamp.
         self.license_create_time = license_create_time
         # The unique identifier of the license.
         self.license_id = license_id
-        # The status of the license.
+        # The license status.
         self.license_status = license_status
         # The purchase channel of the license.
         self.purchase_channel = purchase_channel
-        # The unique identifier of the external commodity associated with the license.
+        # The unique identifier of the external product corresponding to the license.
         self.purchase_instance_id = purchase_instance_id
-        # The start date of the license validity period, in timestamp format.
+        # The start date of the license validity period. The value is a UNIX timestamp.
         self.start_time = start_time
         # The user quota of the license.
         self.user_quota = user_quota
@@ -181,6 +181,9 @@ class GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail(DaraModel):
         m_2m_application_quota: int = None,
         mim_application_license_status: str = None,
         network_access_endpoint_quota: int = None,
+        pam_active_user_base_quota: int = None,
+        pam_active_user_purchased_quota: int = None,
+        pam_elastic_billing_enabled: bool = None,
         pam_license_status: str = None,
         prepaid_active_user_number: int = None,
         user_quota: int = None,
@@ -191,13 +194,19 @@ class GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail(DaraModel):
         self.m_2m_application_license_status = m_2m_application_license_status
         # The M2M application quota of the license.
         self.m_2m_application_quota = m_2m_application_quota
-        # The machine identity license status.
+        # The machine identity status.
         self.mim_application_license_status = mim_application_license_status
         # The network access endpoint quota of the license.
         self.network_access_endpoint_quota = network_access_endpoint_quota
-        # The PAM privileged access management license status.
+        # The base quota of monthly active PAM users included in the plan, excluding additional purchases. The value is 0 if PAM is not activated.
+        self.pam_active_user_base_quota = pam_active_user_base_quota
+        # The number of additionally purchased monthly active PAM users. The value is 0 if no additional users are purchased or PAM is not activated.
+        self.pam_active_user_purchased_quota = pam_active_user_purchased_quota
+        # Specifies whether pay-as-you-go billing for monthly PAM overages is enabled. Returns false if PAM is not activated or elastic billing is disabled.
+        self.pam_elastic_billing_enabled = pam_elastic_billing_enabled
+        # The Privileged Access Management (PAM) license status.
         self.pam_license_status = pam_license_status
-        # The number of prepaid active users.
+        # The number of active subscription users.
         self.prepaid_active_user_number = prepaid_active_user_number
         # The user quota of the license.
         self.user_quota = user_quota
@@ -224,6 +233,15 @@ class GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail(DaraModel):
 
         if self.network_access_endpoint_quota is not None:
             result['NetworkAccessEndpointQuota'] = self.network_access_endpoint_quota
+
+        if self.pam_active_user_base_quota is not None:
+            result['PamActiveUserBaseQuota'] = self.pam_active_user_base_quota
+
+        if self.pam_active_user_purchased_quota is not None:
+            result['PamActiveUserPurchasedQuota'] = self.pam_active_user_purchased_quota
+
+        if self.pam_elastic_billing_enabled is not None:
+            result['PamElasticBillingEnabled'] = self.pam_elastic_billing_enabled
 
         if self.pam_license_status is not None:
             result['PamLicenseStatus'] = self.pam_license_status
@@ -252,6 +270,15 @@ class GetInstanceLicenseResponseBodyLicenseInstanceLicenseDetail(DaraModel):
 
         if m.get('NetworkAccessEndpointQuota') is not None:
             self.network_access_endpoint_quota = m.get('NetworkAccessEndpointQuota')
+
+        if m.get('PamActiveUserBaseQuota') is not None:
+            self.pam_active_user_base_quota = m.get('PamActiveUserBaseQuota')
+
+        if m.get('PamActiveUserPurchasedQuota') is not None:
+            self.pam_active_user_purchased_quota = m.get('PamActiveUserPurchasedQuota')
+
+        if m.get('PamElasticBillingEnabled') is not None:
+            self.pam_elastic_billing_enabled = m.get('PamElasticBillingEnabled')
 
         if m.get('PamLicenseStatus') is not None:
             self.pam_license_status = m.get('PamLicenseStatus')

@@ -30,7 +30,7 @@ class ListUsersForApplicationRequest(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The list of account IDs. You can specify up to 100 account IDs in a single operation.
+        # The list of user IDs. You can specify up to 100 user IDs in a single request.
         self.user_ids = user_ids
 
     def validate(self):

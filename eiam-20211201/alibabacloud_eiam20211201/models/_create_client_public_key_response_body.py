@@ -10,7 +10,7 @@ class CreateClientPublicKeyResponseBody(DaraModel):
         client_public_key_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the application ClientPublicKey.
+        # The ID of the ClientPublicKey for the application.
         self.client_public_key_id = client_public_key_id
         # The request ID.
         self.request_id = request_id

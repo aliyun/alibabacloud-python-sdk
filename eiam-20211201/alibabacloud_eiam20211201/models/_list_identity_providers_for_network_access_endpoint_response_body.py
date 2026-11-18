@@ -15,13 +15,13 @@ class ListIdentityProvidersForNetworkAccessEndpointResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The IdPs under the network access endpoint.
+        # The collection of identity providers (IdPs) for the network access endpoint.
         self.identity_providers_for_network_access_endpoint = identity_providers_for_network_access_endpoint
-        # The pagination token returned by this call.
+        # The next token returned in the response.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):

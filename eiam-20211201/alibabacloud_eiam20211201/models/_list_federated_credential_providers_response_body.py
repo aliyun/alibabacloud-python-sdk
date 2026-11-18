@@ -19,15 +19,15 @@ class ListFederatedCredentialProvidersResponseBody(DaraModel):
     ):
         # The list of federated credential providers.
         self.federated_credential_providers = federated_credential_providers
-        # The maximum number of entries per page for a paged query.
+        # The number of rows per page in a paging query.
         self.max_results = max_results
-        # The query token (Token) value returned by this call.
+        # The pagination token returned by the current request.
         self.next_token = next_token
-        # The query token (Token) value returned by this call.
+        # The pagination token returned by the current request.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries in the list.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -242,9 +242,9 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPr
         trust_anchor_source: str = None,
         trust_condition: str = None,
     ):
-        # The root certificates.
+        # The root certificate.
         self.certificates = certificates
-        # The method used to retrieve the root certificate.
+        # The method used to obtain the root certificate.
         self.trust_anchor_source = trust_anchor_source
         # The trust condition.
         self.trust_condition = trust_condition
@@ -388,7 +388,7 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersPk
         self.certificates = certificates
         # The CMS verification mode.
         self.cms_verification_mode = cms_verification_mode
-        # The signature effective time. The value indicates the duration for which the signature is valid, in seconds.
+        # The signature validity period. The value indicates the duration for which the signature is valid, in seconds.
         self.signature_effective_time = signature_effective_time
         # The expression used to obtain the signing time.
         self.signing_time_value_expression = signing_time_value_expression
@@ -556,7 +556,7 @@ class ListFederatedCredentialProvidersResponseBodyFederatedCredentialProvidersOi
         self.audiences = audiences
         # The dynamically obtained JWKS.
         self.dynamic_jwks = dynamic_jwks
-        # The token issuer identifier (Issuer).
+        # The token issuer identifier.
         self.issuer = issuer
         # The time when the JWKS was last obtained. The value is a UNIX timestamp in milliseconds.
         self.jwks_last_obtained_time = jwks_last_obtained_time

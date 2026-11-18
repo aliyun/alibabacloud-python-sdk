@@ -23,14 +23,11 @@ class ListTrustedOriginsRequest(DaraModel):
         self.instance_id = instance_id
         # The maximum number of results per page.
         self.max_results = max_results
-        # The pagination token.
+        # The next token.
         self.next_token = next_token
         # The origin filter.
         self.origin = origin
-        # The status filter. Valid values:
-        # 
-        # - Enabled: Enabled.
-        # - Disabled: Disabled.
+        # The status filter.
         self.status = status
         # The name filter.
         self.trust_origin_name = trust_origin_name

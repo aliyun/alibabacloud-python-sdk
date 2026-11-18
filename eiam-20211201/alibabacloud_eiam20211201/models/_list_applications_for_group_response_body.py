@@ -14,11 +14,11 @@ class ListApplicationsForGroupResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # List of applications authorized for access.
+        # The list of applications that the group is authorized to access.
         self.applications = applications
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total number of entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -69,16 +69,16 @@ class ListApplicationsForGroupResponseBodyApplications(DaraModel):
         has_direct_authorization: bool = None,
         has_inherit_authorization: bool = None,
     ):
-        # Application ID.
+        # The application ID.
         self.application_id = application_id
-        # Application role list.
+        # The list of application roles. No roles are returned for SAML applications.
         self.application_roles = application_roles
-        # Whether direct authorization exists. Valid values:
+        # Indicates whether direct authorization exists. Valid values:
         # 
-        # - true: A direct authorization relationship record exists between the application and the group.
-        # - false: No direct authorization relationship record exists between the application and the group.
+        # - true: A direct authorization record exists between the application and the group.
+        # - false: No direct authorization record exists between the application and the group.
         self.has_direct_authorization = has_direct_authorization
-        # Whether inherited authorization exists.
+        # Indicates whether inherited authorization exists.
         self.has_inherit_authorization = has_inherit_authorization
 
     def validate(self):
@@ -132,7 +132,7 @@ class ListApplicationsForGroupResponseBodyApplicationsApplicationRoles(DaraModel
         self,
         application_role_id: str = None,
     ):
-        # Application role ID.
+        # The application role ID.
         self.application_role_id = application_role_id
 
     def validate(self):

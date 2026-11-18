@@ -14,7 +14,7 @@ class ListOrganizationalUnitsForApplicationResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of organizational unit IDs.
+        # The organizational units.
         self.organizational_units = organizational_units
         # The request ID.
         self.request_id = request_id
@@ -67,7 +67,7 @@ class ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits(DaraM
         application_roles: List[main_models.ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles] = None,
         organizational_unit_id: str = None,
     ):
-        # The application roles.
+        # The application roles. No roles are returned for SAML applications.
         self.application_roles = application_roles
         # The organizational unit ID.
         self.organizational_unit_id = organizational_unit_id

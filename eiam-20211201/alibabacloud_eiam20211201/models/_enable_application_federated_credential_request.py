@@ -11,15 +11,15 @@ class EnableApplicationFederatedCredentialRequest(DaraModel):
         application_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the application federated credential.
+        # The application federated credential ID.
         # 
         # This parameter is required.
         self.application_federated_credential_id = application_federated_credential_id
-        # The ID of the application.
+        # The application ID.
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

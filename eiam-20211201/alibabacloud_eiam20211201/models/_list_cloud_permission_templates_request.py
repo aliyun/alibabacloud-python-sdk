@@ -16,13 +16,13 @@ class ListCloudPermissionTemplatesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The cloud account ID.
+        # The ID of the cloud account.
         # 
         # This parameter is required.
         self.cloud_account_id = cloud_account_id
         # Filters the results by template name prefix.
         self.cloud_permission_template_name_prefix = cloud_permission_template_name_prefix
-        # Filters the results by permission template sharing mode. Valid values: shared and exclusive. If this parameter is not specified, no filtering is applied.
+        # Filters the results by permission template sharing mode. Valid values: shared and exclusive. If you do not specify this parameter, no filtering is applied.
         self.cloud_permission_template_sharing_mode = cloud_permission_template_sharing_mode
         # Filters the results by permission template usage type. Valid values: user (privilege escalation for human users) and application (privilege escalation for M2M applications).
         self.cloud_permission_template_usage_type = cloud_permission_template_usage_type
@@ -32,9 +32,9 @@ class ListCloudPermissionTemplatesRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page for paging. Default value: 20. Maximum value: 100.
+        # The maximum number of entries to return per page in a paged query. This parameter is used for paging. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned from the previous API call.
+        # The query token, which is the value of the NextToken parameter returned by the previous API call.
         self.next_token = next_token
 
     def validate(self):

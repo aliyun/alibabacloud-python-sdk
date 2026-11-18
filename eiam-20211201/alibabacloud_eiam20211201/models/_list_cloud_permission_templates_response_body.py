@@ -16,15 +16,15 @@ class ListCloudPermissionTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of cloud permission templates.
+        # The list of permission templates.
         self.cloud_permission_templates = cloud_permission_templates
-        # The maximum number of entries per page in a paging query.
+        # The maximum number of entries per page during paging in a paged query.
         self.max_results = max_results
-        # The pagination token returned by the current call for subsequent queries.
+        # The pagination token returned by the current request for subsequent queries.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -102,11 +102,11 @@ class ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates(DaraModel
         status: str = None,
         update_time: int = None,
     ):
-        # Specifies whether users are allowed to apply for the permission template.
+        # Specifies whether users are allowed to apply.
         self.allow_request = allow_request
-        # The applicable scope of the permission template.
+        # The application scope of the permission template.
         self.applicable_scope = applicable_scope
-        # The ID of the cloud account to which the resource belongs.
+        # The ID of the associated cloud account.
         self.cloud_account_id = cloud_account_id
         # The creator information of the permission template.
         self.cloud_permission_template_creator = cloud_permission_template_creator
@@ -122,7 +122,7 @@ class ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates(DaraModel
         self.cloud_permission_template_owner_type = cloud_permission_template_owner_type
         # The sharing mode of the permission template. Valid values: shared and exclusive.
         self.cloud_permission_template_sharing_mode = cloud_permission_template_sharing_mode
-        # The usage type of the permission template. Valid values: user (privilege escalation for human users) and application (privilege escalation for M2M applications).
+        # The usage type of the permission template. Valid values: user (privilege elevation for human users) and application (privilege elevation for M2M applications).
         self.cloud_permission_template_usage_type = cloud_permission_template_usage_type
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
@@ -134,7 +134,7 @@ class ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplates(DaraModel
         self.permission_entity_external_id = permission_entity_external_id
         # The ID of the associated CloudAccountRole.
         self.permission_entity_id = permission_entity_id
-        # The type of the permission entity. Fixed value: cloud_account_role.
+        # The type of the permission entity. Valid value: cloud_account_role.
         self.permission_entity_type = permission_entity_type
         # The status of the permission template. Valid values: initializing, init_failed, enabled, and disabled.
         self.status = status
@@ -377,13 +377,13 @@ class ListCloudPermissionTemplatesResponseBodyCloudPermissionTemplatesApplicable
         scope_type: str = None,
         user_ids: List[str] = None,
     ):
-        # The list of specified group IDs. This parameter has a value only when ScopeType is set to custom.
+        # The list of specified group IDs. This parameter is returned only when ScopeType is set to custom.
         self.group_ids = group_ids
-        # The list of specified organizational unit IDs. This parameter has a value only when ScopeType is set to custom.
+        # The list of specified organizational unit IDs. This parameter is returned only when ScopeType is set to custom.
         self.organizational_unit_ids = organizational_unit_ids
-        # The type of the applicable scope. Valid values: global and custom.
+        # The type of the application scope. Valid values: global and custom.
         self.scope_type = scope_type
-        # The list of specified user IDs. This parameter has a value only when ScopeType is set to custom.
+        # The list of specified user IDs. This parameter is returned only when ScopeType is set to custom.
         self.user_ids = user_ids
 
     def validate(self):

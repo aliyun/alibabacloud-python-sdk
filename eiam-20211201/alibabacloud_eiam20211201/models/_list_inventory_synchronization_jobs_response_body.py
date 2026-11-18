@@ -16,15 +16,15 @@ class ListInventorySynchronizationJobsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The inventory synchronization jobs.
+        # The synchronization jobs.
         self.inventory_synchronization_jobs = inventory_synchronization_jobs
         # The maximum number of returned results.
         self.max_results = max_results
-        # The pagination token returned by the current call for subsequent paged queries.
+        # The pagination token returned by the current call for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
@@ -93,7 +93,7 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobs(D
     ):
         # The description of the synchronization job.
         self.description = description
-        # The end time of the synchronization job.
+        # The end time of the synchronization. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
         # The IDs of the synchronization targets.
         self.inventory_source_id = inventory_source_id
@@ -101,11 +101,11 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobs(D
         self.inventory_synchronization_job_id = inventory_synchronization_job_id
         # The task result of the synchronization node.
         self.result = result
-        # The start time of the synchronization job.
+        # The start time of the synchronization. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
         # The status of the synchronization job.
         self.status = status
-        # The trigger type of the synchronization job.
+        # The trigger type of the synchronization.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -180,9 +180,9 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         error_code: str = None,
         error_message: str = None,
     ):
-        # The statistics of the agent synchronization result.
+        # The statistics on the agent synchronization results.
         self.agent_statistics = agent_statistics
-        # The statistics of the asset synchronization result.
+        # The statistics on the asset synchronization results.
         self.asset_statistics = asset_statistics
         # The error code of the synchronization result.
         self.error_code = error_code
@@ -240,13 +240,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         same: main_models.ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsSame = None,
         updated: main_models.ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAssetStatisticsUpdated = None,
     ):
-        # The statistics of the creation result.
+        # The statistics on the creation results.
         self.created = created
-        # The statistics of the deletion result.
+        # The statistics on the deletion results.
         self.deleted = deleted
-        # The statistics of unchanged items.
+        # The statistics on the unchanged results.
         self.same = same
-        # The statistics of the update result.
+        # The statistics on the update results.
         self.updated = updated
 
     def validate(self):
@@ -526,13 +526,13 @@ class ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsRe
         same: main_models.ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsSame = None,
         updated: main_models.ListInventorySynchronizationJobsResponseBodyInventorySynchronizationJobsResultAgentStatisticsUpdated = None,
     ):
-        # The statistics of the creation result.
+        # The statistics on the creation results.
         self.created = created
-        # The statistics of the deletion result.
+        # The statistics on the deletion results.
         self.deleted = deleted
-        # The statistics of unchanged items.
+        # The statistics on the unchanged results.
         self.same = same
-        # The statistics of the update result.
+        # The statistics on the update results.
         self.updated = updated
 
     def validate(self):

@@ -19,7 +19,7 @@ class DeleteResourceServerScopeRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The scope permission ID under the ResourceServer.
+        # The ID of the scope permission.
         # 
         # This parameter is required.
         self.resource_server_scope_id = resource_server_scope_id

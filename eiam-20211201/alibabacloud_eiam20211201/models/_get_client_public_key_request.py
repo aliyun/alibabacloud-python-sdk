@@ -15,7 +15,7 @@ class GetClientPublicKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
-        # The ID of the application ClientPublicKey.
+        # The ID of the client public key for the application.
         # 
         # This parameter is required.
         self.client_public_key_id = client_public_key_id

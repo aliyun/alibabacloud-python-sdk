@@ -15,13 +15,13 @@ class ListApplicationsForNetworkAccessEndpointResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The collection of applications under the network access endpoint.
+        # The applications associated with the network access endpoint.
         self.applications_for_network_access_endpoint = applications_for_network_access_endpoint
-        # The pagination token returned in this call.
+        # The next token returned by this call.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

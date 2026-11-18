@@ -17,7 +17,7 @@ class ListInventorySynchronizationJobsRequest(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The end time.
+        # The end time. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
         # The ID of the IDaaS EIAM instance.
         # 
@@ -25,11 +25,11 @@ class ListInventorySynchronizationJobsRequest(DaraModel):
         self.instance_id = instance_id
         # The IDs of the synchronization targets.
         self.inventory_source_ids = inventory_source_ids
-        # The number of entries to return per page in paging. Default value: 20. Maximum value: 100.
+        # The number of entries to return per page during paging in a paged query. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The query token. Set the value to the NextToken value returned in the previous API call.
+        # The query token. Set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
-        # The start time.
+        # The start time. The value is a UNIX timestamp in seconds.
         self.start_time = start_time
         # The synchronization status.
         self.status = status

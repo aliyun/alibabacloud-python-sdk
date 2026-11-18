@@ -10,7 +10,7 @@ class CreateCloudPermissionTemplateResponseBody(DaraModel):
         cloud_permission_template_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the permission template.
+        # The permission template ID.
         self.cloud_permission_template_id = cloud_permission_template_id
         # The request ID.
         self.request_id = request_id

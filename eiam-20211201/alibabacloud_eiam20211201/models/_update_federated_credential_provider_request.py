@@ -18,11 +18,11 @@ class UpdateFederatedCredentialProviderRequest(DaraModel):
         pkcs_7provider_config: main_models.UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig = None,
         private_ca_provider_config: main_models.UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig = None,
     ):
-        # The federated trust source ID.
+        # The ID of the federated trust source.
         # 
         # This parameter is required.
         self.federated_credential_provider_id = federated_credential_provider_id
-        # The federated trust source name.
+        # The name of the federated trust source.
         # 
         # This parameter is required.
         self.federated_credential_provider_name = federated_credential_provider_name
@@ -30,7 +30,7 @@ class UpdateFederatedCredentialProviderRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The network access endpoint ID.
+        # The ID of the network access endpoint.
         self.network_access_endpoint_id = network_access_endpoint_id
         # The OIDC configuration.
         self.oidc_provider_config = oidc_provider_config
@@ -112,11 +112,11 @@ class UpdateFederatedCredentialProviderRequestPrivateCaProviderConfig(DaraModel)
     ):
         # The list of root certificates.
         self.certificates = certificates
-        # The method used to retrieve the root certificate.
+        # The method used to obtain the root certificate.
         # 
         # This parameter is required.
         self.trust_anchor_source = trust_anchor_source
-        # The trust condition of the root certificate.
+        # The trust conditions for the root certificate.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -203,13 +203,13 @@ class UpdateFederatedCredentialProviderRequestPkcs7ProviderConfig(DaraModel):
         self.cms_verification_mode = cms_verification_mode
         # The validity period of the signature.
         self.signature_effective_time = signature_effective_time
-        # The expression used to retrieve the signing time.
+        # The expression used to obtain the signing time.
         self.signing_time_value_expression = signing_time_value_expression
         # The source of the certificate trust anchor.
         # 
         # This parameter is required.
         self.trust_anchor_source = trust_anchor_source
-        # The trust condition.
+        # The trust conditions.
         self.trust_condition = trust_condition
 
     def validate(self):
@@ -309,15 +309,15 @@ class UpdateFederatedCredentialProviderRequestOidcProviderConfig(DaraModel):
     ):
         # The list of audiences.
         self.audiences = audiences
-        # The JWKS source.
+        # The source of the JWKS.
         # 
         # This parameter is required.
         self.jwks_source = jwks_source
         # The JWKS endpoint.
         self.jwks_uri = jwks_uri
-        # The statically retrieved JWKS.
+        # The statically obtained JWKS.
         self.static_jwks = static_jwks
-        # The trust condition.
+        # The trust conditions.
         self.trust_condition = trust_condition
 
     def validate(self):

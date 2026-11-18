@@ -19,20 +19,21 @@ class UpdateUserPasswordRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The new password of the account. For more information about the password format, see the "Password Policies" topic.
+        # The new password for the account. The password format must comply with the password policy.
         # 
         # This parameter is required.
         self.password = password
-        # Specifies whether to enable forcible password change upon first logon. Default value: disabled. Valid values:
-        # 
-        # *   enabled
-        # *   disabled
+        # The forced password update status. This feature is disabled by default. Valid values:
+        # - enabled: Enabled.
+        # - disabled: Disabled.
         self.password_forced_update_status = password_forced_update_status
         # The account ID.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # The methods for receiving password notifications.
+        # The list of password notification channels. Valid values:
+        # - email: Email.
+        # - sms: SMS.
         self.user_notification_channels = user_notification_channels
 
     def validate(self):

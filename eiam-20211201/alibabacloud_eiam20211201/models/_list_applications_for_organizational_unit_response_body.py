@@ -14,7 +14,7 @@ class ListApplicationsForOrganizationalUnitResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of applications that the organization is authorized to access.
+        # The list of authorized applications.
         self.applications = applications
         # The request ID.
         self.request_id = request_id
@@ -111,7 +111,7 @@ class ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRo
         self,
         application_role_id: str = None,
     ):
-        # The application role identifier.
+        # The application role ID.
         self.application_role_id = application_role_id
 
     def validate(self):

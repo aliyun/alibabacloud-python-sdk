@@ -16,13 +16,13 @@ class ListTrustedOriginsResponseBody(DaraModel):
         total_count: int = None,
         trusted_origins: List[main_models.ListTrustedOriginsResponseBodyTrustedOrigins] = None,
     ):
-        # The maximum number of results per page that takes effect for this request.
+        # The actual maximum number of results per page.
         self.max_results = max_results
-        # The pagination token for the next page.
+        # The next token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total count.
         self.total_count = total_count
         # The list of trusted origins.
         self.trusted_origins = trusted_origins
@@ -91,7 +91,7 @@ class ListTrustedOriginsResponseBodyTrustedOrigins(DaraModel):
         trusted_origin_scene: List[str] = None,
         update_time: str = None,
     ):
-        # The creation time. The time is in RFC 3339 format and in the UTC time zone.
+        # The creation time. The time follows the RFC 3339 standard and is in the UTC time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
@@ -107,7 +107,7 @@ class ListTrustedOriginsResponseBodyTrustedOrigins(DaraModel):
         self.trusted_origin_id = trusted_origin_id
         # The trusted origin scene.
         self.trusted_origin_scene = trusted_origin_scene
-        # The update time. The time is in RFC 3339 format and in the UTC time zone.
+        # The update time. The time follows the RFC 3339 standard and is in the UTC time zone.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.update_time = update_time

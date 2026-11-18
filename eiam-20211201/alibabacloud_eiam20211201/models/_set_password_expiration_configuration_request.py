@@ -27,26 +27,26 @@ class SetPasswordExpirationConfigurationRequest(DaraModel):
         self.instance_id = instance_id
         # The action to take when the password expires. This parameter is required when PasswordExpirationStatus is set to enabled. Valid values:
         # - forbid_login: Forbid logon.
-        # - force_update_password: Force password update.
-        # - remind_update_password: Remind to update password.
+        # - force_update_password: Force password change.
+        # - remind_update_password: Remind to change password.
         self.password_expiration_action = password_expiration_action
         # The list of password expiration notification channels. This parameter is required when PasswordExpirationNotificationStatus is set to enabled.
         self.password_expiration_notification_channels = password_expiration_notification_channels
-        # The password expiration notification duration, in days. This parameter is required when PasswordExpirationNotificationStatus is set to enabled.
+        # The password expiration notification duration in days. This parameter is required when PasswordExpirationNotificationStatus is set to enabled.
         self.password_expiration_notification_duration = password_expiration_notification_duration
         # The password expiration notification status. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.password_expiration_notification_status = password_expiration_notification_status
-        # The password expiration status. Valid values:
+        # The password expiration configuration status. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         # 
         # This parameter is required.
         self.password_expiration_status = password_expiration_status
-        # The password forced update duration, in days. The value of this parameter must be greater than the value of PasswordExpirationNotificationDuration.
+        # The password forced update duration in days. The value of this parameter must be greater than the value of PasswordExpirationNotificationDuration.
         self.password_forced_update_duration = password_forced_update_duration
-        # The maximum validity period of the password, in days. This parameter is required when PasswordExpirationStatus is set to enabled.
+        # The password validity period in days. This parameter is required when PasswordExpirationStatus is set to enabled.
         self.password_valid_max_day = password_valid_max_day
 
     def validate(self):

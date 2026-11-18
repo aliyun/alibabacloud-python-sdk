@@ -19,15 +19,15 @@ class ListActionTrackEventTypesResponseBody(DaraModel):
     ):
         # The list of event types.
         self.event_types = event_types
-        # The number of entries per page.
+        # The maximum number of entries per page for paging.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The next token.
         self.next_token = next_token
-        # The token to retrieve the previous page of results.
+        # The previous token.
         self.previous_token = previous_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):

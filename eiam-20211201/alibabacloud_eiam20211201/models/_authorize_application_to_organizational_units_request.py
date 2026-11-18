@@ -24,7 +24,7 @@ class AuthorizeApplicationToOrganizationalUnitsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The list of organizational unit IDs. A single operation supports up to 100 organizational unit IDs.
+        # The list of organizational unit IDs. A maximum of 100 organizational unit IDs are supported in a single operation.
         # 
         # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids

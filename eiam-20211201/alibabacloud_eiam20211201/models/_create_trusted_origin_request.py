@@ -15,19 +15,19 @@ class CreateTrustedOriginRequest(DaraModel):
         trust_origin_name: str = None,
         trusted_origin_scene: List[str] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique among different requests. The value of ClientToken can contain only ASCII characters and cannot exceed 64 characters in length.
+        # Ensures the idempotence of the request. Generate a value on your client and make sure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length.
         self.client_token = client_token
         # The ID of the IDaaS EIAM instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The browser origin in the format of scheme://host[:port]. This value cannot be modified after creation.
+        # The browser origin in the format of scheme://host[:port]. It cannot be modified after creation.
         # 
         # This parameter is required.
         self.origin = origin
-        # The name of the trusted origin used for management, display, and auditing. If this parameter is not specified, the value is empty.
+        # The name of the trusted origin used for management, display, and auditing. If you do not specify this parameter, it is left empty.
         self.trust_origin_name = trust_origin_name
-        # The trusted origin scenes. Only iframe_embed and cors are supported. At least one value is required.
+        # The trusted origin scenarios. Only iframe_embed and cors are supported. Specify at least one value.
         # 
         # This parameter is required.
         self.trusted_origin_scene = trusted_origin_scene

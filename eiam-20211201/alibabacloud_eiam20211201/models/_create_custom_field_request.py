@@ -24,43 +24,38 @@ class CreateCustomFieldRequest(DaraModel):
         unique: bool = None,
         user_permission: str = None,
     ):
-        # The default value of the field.
-        # If configuration items exist for the type, the default value must be one of the configuration items and must be in the enabled state. Maximum length: 1024 characters.
+        # The default value of the field. If the data type has configuration items, the default value must be one of the enabled configuration items. The maximum length is 1,024 characters.
         self.default_value = default_value
-        # The field description.
-        # Maximum length: 512 characters.
+        # The description of the field. The maximum length is 512 characters.
         self.description = description
-        # Specifies whether to encrypt the field.
-        # If this parameter is set to true, the data value is encrypted at the storage layer.
+        # Specifies whether the field is encrypted. If you set this parameter to true, the underlying system encrypts and stores the data value.
         self.encrypted = encrypted
         # The entity to which the field belongs. Valid values:
         # - user: account.
         # 
         # This parameter is required.
         self.entity_type = entity_type
-        # The field value configuration items.
+        # The configuration items for the field value.
         self.field_data_config = field_data_config
         # The data type of the field. Valid values:
         # - string: string.
-        # - number: number. Maximum length: 32 characters. Positive integers and decimals are supported.
-        # - boolean: Boolean.
+        # - number: number. The maximum length is 32 characters. Positive integers and decimals are supported.
+        # - boolean: Boolean value.
         # 
         # This parameter is required.
         self.field_data_type = field_data_type
-        # The field display name.
-        # Maximum length: 64 characters.
+        # The field display name. The maximum length is 64 characters.
         # 
         # This parameter is required.
         self.field_display_name = field_display_name
         # The field display type. Valid values:
-        # - input: text input box. Supported data types: string and number.
-        # - select: drop-down list. Supported data types: string and boolean.
-        # - checkbox: multi-select box. Supported data types: string.
+        # - input: text box. The supported data types are string and number.
+        # - select: drop-down list. The supported data types are string and boolean.
+        # - checkbox: check box. The supported data type is string.
         # 
         # This parameter is required.
         self.field_display_type = field_display_type
-        # The field identifier.
-        # Maximum length: 40 characters. The value can contain lowercase letters and underscores, and cannot start with an underscore.
+        # The field identifier. The maximum length is 40 characters. The value can contain lowercase English letters and underscores, and cannot start with an underscore.
         # 
         # This parameter is required.
         self.field_name = field_name
@@ -70,13 +65,12 @@ class CreateCustomFieldRequest(DaraModel):
         self.instance_id = instance_id
         # Specifies whether the field is required.
         self.required = required
-        # Specifies whether the field value is unique.
-        # If this parameter is set to true, the field value must be unique within the corresponding entity type and cannot be duplicated.
+        # Specifies whether the field value is unique. If you set this parameter to true, the value of this field must be unique within the corresponding entity type and cannot be duplicated.
         self.unique = unique
-        # The field permission on the portal side. Valid values:
-        # - hide: Not visible on the portal side.
-        # - read_only: Visible on the portal side but cannot be edited or updated.
-        # - read_write: Visible and editable on the portal side.
+        # The field permissions on the user portal. Valid values:
+        # - hide: invisible on the user portal
+        # - read_only: visible but not editable on the user portal
+        # - read_write: visible and editable on the user portal
         self.user_permission = user_permission
 
     def validate(self):
@@ -178,7 +172,7 @@ class CreateCustomFieldRequestFieldDataConfig(DaraModel):
         self,
         items: List[main_models.CreateCustomFieldRequestFieldDataConfigItems] = None,
     ):
-        # The list of field configuration items. Maximum number of items: 100.
+        # The list of field configuration items. The maximum number of items is 100.
         self.items = items
 
     def validate(self):
@@ -216,17 +210,15 @@ class CreateCustomFieldRequestFieldDataConfigItems(DaraModel):
         status: str = None,
         value: str = None,
     ):
-        # The display name of the configuration item.
-        # Maximum length: 128 characters.
+        # The display name of the configuration item. The maximum length is 128 characters.
         self.display_name = display_name
         # The status of the configuration item. Valid values:
-        # - enabled: Enabled.
-        # - disabled: Disabled.
+        # - enabled: enabled.
+        # - disabled: disabled.
         # 
-        # If a configuration item is disabled, it cannot be used when creating or updating entity field values.
+        # If a configuration item is disabled, it is unavailable when you create or update the field value of the entity.
         self.status = status
-        # The display value of the configuration item.
-        # Maximum length: 64 characters.
+        # The value of the configuration item. The maximum length is 64 characters.
         self.value = value
 
     def validate(self):

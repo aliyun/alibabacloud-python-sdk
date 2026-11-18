@@ -16,7 +16,7 @@ class ListUsersResponseBody(DaraModel):
         total_count: int = None,
         users: List[main_models.ListUsersResponseBodyUsers] = None,
     ):
-        # The maximum number of entries per page in a paging query.
+        # The maximum number of entries per page for a paged query.
         self.max_results = max_results
         # The query token.
         self.next_token = next_token
@@ -128,29 +128,31 @@ class ListUsersResponseBodyUsers(DaraModel):
         self.phone_number = phone_number
         # Indicates whether the phone number is verified. A value of true indicates that the phone number has been verified by the user or set as verified by the administrator. A value of false indicates that the phone number is not verified.
         self.phone_number_verified = phone_number_verified
-        # The phone region code. Example: 86 for the Chinese mainland, without 00 or +.
+        # The region code of the mobile phone number. Example: 86 for the Chinese mainland, without 00 or +.
         self.phone_region = phone_region
         # The registration time of the account. The value is a UNIX timestamp in milliseconds.
         self.register_time = register_time
         # The status of the account. Valid values:
-        # - enabled: enabled
-        # - disabled: disabled
+        # - enabled: The account is enabled.
+        # - disabled: The account is disabled.
         self.status = status
         # The last update time of the account. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The external ID of the account. This ID is used to map external data to IDaaS accounts. The default value is the IDaaS account ID. Note: The external ID must be unique within the same source type and source ID.
+        # The external ID of the account. This ID is used to map external data to IDaaS accounts. The default value is the IDaaS account ID.
+        # 
+        # Note: The external ID must be unique within the same source type and source ID.
         self.user_external_id = user_external_id
         # The account ID.
         self.user_id = user_id
         # The source ID of the account.
         # 
-        # For the build-in type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, for the DingTalk source, the value is the corpId of the DingTalk enterprise.
+        # For the built-in type, the default value is the instance ID. For other types, the value corresponds to the enterprise ID of the source. For example, the DingTalk source corresponds to the corpId of the DingTalk enterprise.
         self.user_source_id = user_source_id
         # The source type of the account. Valid values:
-        # - build_in: self-managed
-        # - ding_talk: imported from DingTalk
-        # - ad: imported from AD
-        # - ldap: imported from LDAP
+        # - build_in: The account is self-managed.
+        # - ding_talk: The account is imported from DingTalk.
+        # - ad: The account is imported from AD.
+        # - ldap: The account is imported from LDAP.
         self.user_source_type = user_source_type
         # The username.
         self.username = username

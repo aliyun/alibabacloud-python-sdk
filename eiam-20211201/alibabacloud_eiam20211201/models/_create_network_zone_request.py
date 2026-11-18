@@ -18,27 +18,27 @@ class CreateNetworkZoneRequest(DaraModel):
         network_zone_type: str = None,
         vpc_id: str = None,
     ):
-        # Idempotency token.
+        # The idempotency token.
         self.client_token = client_token
-        # Network zone description.
+        # The network zone description.
         self.description = description
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Network zone IPv4 CIDR blocks.
+        # The IPv4 CIDR blocks of the network zone.
         self.ipv_4cidrs = ipv_4cidrs
-        # Network zone IPv6 CIDR blocks.
+        # The IPv6 CIDR blocks of the network zone.
         self.ipv_6cidrs = ipv_6cidrs
-        # Network zone name.
+        # The network zone name.
         # 
         # This parameter is required.
         self.network_zone_name = network_zone_name
-        # Network zone type.
+        # The network zone type.
         # 
         # This parameter is required.
         self.network_zone_type = network_zone_type
-        # VPC ID.
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

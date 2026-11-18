@@ -18,9 +18,9 @@ class ListAuthorizationRulesForGroupResponseBody(DaraModel):
     ):
         # The list of authorization rules.
         self.authorization_rules = authorization_rules
-        # The number of entries per page for paging.
+        # The maximum number of entries per page for paging in a paged query.
         self.max_results = max_results
-        # The pagination token returned by the current call for the next query.
+        # The token returned in the current response, which is used to query the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -144,9 +144,9 @@ class ListAuthorizationRulesForGroupResponseBodyAuthorizationRulesValidityPeriod
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end time when the authorization expires. The value is a UNIX timestamp in milliseconds.
+        # The end time of the validity period. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The start time when the authorization takes effect. The value is a UNIX timestamp in milliseconds.
+        # The start time of the validity period. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

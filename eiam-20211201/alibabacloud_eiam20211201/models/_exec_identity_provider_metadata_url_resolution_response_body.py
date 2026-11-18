@@ -95,11 +95,11 @@ class ExecIdentityProviderMetadataUrlResolutionResponseBodyIdentityProviderMetad
         id_pentity_id: str = None,
         id_psso_url: str = None,
     ):
-        # The IdP certificate list.
+        # The list of IdP certificates.
         self.certificates = certificates
         # The IdP entity ID.
         self.id_pentity_id = id_pentity_id
-        # The IdP logon URL.
+        # The IdP SSO URL.
         self.id_psso_url = id_psso_url
 
     def validate(self):

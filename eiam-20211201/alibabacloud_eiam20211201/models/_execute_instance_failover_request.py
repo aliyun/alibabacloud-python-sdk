@@ -10,9 +10,7 @@ class ExecuteInstanceFailoverRequest(DaraModel):
         instance_failover_status: str = None,
         instance_id: str = None,
     ):
-        # The failover status. Valid values:
-        # - inactive: The primary instance is active.
-        # - active: The replica instance is active.
+        # The failover status.
         # 
         # This parameter is required.
         self.instance_failover_status = instance_failover_status

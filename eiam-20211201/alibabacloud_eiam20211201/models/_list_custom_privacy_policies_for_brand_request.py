@@ -21,11 +21,11 @@ class ListCustomPrivacyPoliciesForBrandRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return per page for paging in a paged query.
+        # The number of entries per page for paging in a paged query.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The previous token.
+        # The pagination token for the previous page.
         self.previous_token = previous_token
 
     def validate(self):

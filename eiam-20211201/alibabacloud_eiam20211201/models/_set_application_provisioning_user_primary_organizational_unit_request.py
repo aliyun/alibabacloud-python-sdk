@@ -19,7 +19,7 @@ class SetApplicationProvisioningUserPrimaryOrganizationalUnitRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The organization ID.
+        # The organizational unit ID.
         # 
         # This parameter is required.
         self.user_primary_organizational_unit_id = user_primary_organizational_unit_id

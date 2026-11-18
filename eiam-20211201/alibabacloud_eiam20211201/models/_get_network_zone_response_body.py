@@ -62,9 +62,9 @@ class GetNetworkZoneResponseBodyNetworkZone(DaraModel):
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The IPv4 CIDR blocks of the network zone.
+        # The IPv4 network zone.
         self.ipv_4cidrs = ipv_4cidrs
-        # The IPv6 CIDR blocks of the network zone.
+        # The IPv6 network zone.
         self.ipv_6cidrs = ipv_6cidrs
         # The network zone ID.
         self.network_zone_id = network_zone_id

@@ -18,13 +18,13 @@ class ListAuthorizationRulesResponseBody(DaraModel):
     ):
         # The list of authorization rules.
         self.authorization_rules = authorization_rules
-        # The number of entries per page in a paging query.
+        # The maximum number of entries per page for paging in a paged query.
         self.max_results = max_results
-        # The token returned for the next page query.
+        # The token returned in the current response for querying the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -97,45 +97,45 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The authorization resource scope. Valid values:
-        # - global: all resources under the project.
-        # - custom: specified resources under the project.
+        # The scope of authorized resources. Valid values:
+        # - custom: Resources within the specified project scope.
         self.authorization_resource_scope = authorization_resource_scope
         # The creation type of the authorization rule. Valid values:
-        # - system_init: created by the system.
-        # - user_custom: created by the user.
+        # - system_init: Created by the system.
+        # - user_custom: Created by a user.
         self.authorization_rule_creation_type = authorization_rule_creation_type
-        # The authorization rule ID.
+        # The ID of the authorization rule.
         self.authorization_rule_id = authorization_rule_id
-        # The authorization rule name.
+        # The name of the authorization rule.
         self.authorization_rule_name = authorization_rule_name
         # The scenario label of the authorization rule. Valid values:
-        # - privileged_cloud_account: privileged cloud account scenario.
-        # - asset: asset scenario.
+        # - privileged_cloud_account: Privileged cloud account scenario.
+        # - asset: Asset scenario.
         self.authorization_rule_scenario_label = authorization_rule_scenario_label
-        # The subject ID associated with the authorization rule.
+        # The ID of the subject associated with the authorization rule.
         self.authorization_rule_subject_id = authorization_rule_subject_id
         # The subject scope of the authorization rule. Valid values:
-        # - shared: supports all subjects, including accounts and applications.
-        # - exclusive: exclusive type.
+        # - shared: Shared. A single rule can be used by multiple subjects that meet the rule constraints.
+        # - exclusive: Exclusive. A single rule can only be used by the specified subject.
         self.authorization_rule_subject_scope = authorization_rule_subject_scope
-        # The subject type associated with the authorization rule. This parameter takes effect only when the subject scope is exclusive. Valid values:
-        # - application: application.
-        # - user: account.
+        # The subject type applicable to the authorization rule. For an exclusive rule, this field indicates the type of the specified subject. For a shared rule with a specified subject type, this field indicates the subject types that the rule can be associated with. Valid values:
+        # - application: Application.
+        # - user: Account. For a shared privileged cloud account rule, this value indicates the human user type and can be associated with accounts, user groups, and organizational units.
+        # > If the subject type is not specified for the rule, this field may be empty. The actual subjects associated with a shared rule are subject to the query results of subject associations.
         self.authorization_rule_subject_type = authorization_rule_subject_type
-        # The creation time, in UNIX timestamp format, measured in milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description of the authorization rule.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id
-        # The project ID associated with the authorization rule.
+        # The ID of the project associated with the authorization rule.
         self.project_id = project_id
-        # The authorization rule status. Valid values:
-        # - enabled: Enabled.
-        # - disabled: Disabled.
+        # The status of the authorization rule. Valid values:
+        # - enabled: The rule is enabled.
+        # - disabled: The rule is disabled.
         self.status = status
-        # The last update time, in UNIX timestamp format, measured in milliseconds.
+        # The last update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

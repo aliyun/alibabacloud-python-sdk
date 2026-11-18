@@ -13,7 +13,7 @@ class GetIdentityProviderStatusCheckJobResponseBody(DaraModel):
         identity_provider_status_check_job: main_models.GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJob = None,
         request_id: str = None,
     ):
-        # The IdP status check job information.
+        # The IdP status check information.
         self.identity_provider_status_check_job = identity_provider_status_check_job
         # The request ID.
         self.request_id = request_id
@@ -58,7 +58,7 @@ class GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJo
         start_time: int = None,
         status: str = None,
     ):
-        # The job check result.
+        # The check result of the job.
         self.check_result = check_result
         # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
@@ -68,11 +68,11 @@ class GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJo
         self.identity_provider_status_check_job_id = identity_provider_status_check_job_id
         # The instance ID.
         self.instance_id = instance_id
-        # The status check sub-item task result information.
+        # The status check subkey node task result information.
         self.job_check_items = job_check_items
         # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The job check status.
+        # The check status of the job.
         self.status = status
 
     def validate(self):
@@ -153,7 +153,7 @@ class GetIdentityProviderStatusCheckJobResponseBodyIdentityProviderStatusCheckJo
         minor_check_item: str = None,
         result: str = None,
     ):
-        # The error reason.
+        # The error cause.
         self.error_reason = error_reason
         # The major check item.
         self.major_check_item = major_check_item

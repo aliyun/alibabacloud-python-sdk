@@ -21,11 +21,11 @@ class ListUserAuthnSourceMappingsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The maximum number of entries to return per page in a paging query.
+        # The maximum number of entries to return per page when paging.
         self.max_results = max_results
-        # The pagination token.
+        # The next token.
         self.next_token = next_token
-        # The pagination token for the previous page.
+        # The previous token.
         self.previous_token = previous_token
         # The external association ID.
         self.user_external_id = user_external_id

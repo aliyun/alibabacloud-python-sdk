@@ -11,7 +11,7 @@ class DeleteTrustedOriginRequest(DaraModel):
         instance_id: str = None,
         trusted_origin_id: str = None,
     ):
-        # The idempotence token.
+        # The client token.
         self.client_token = client_token
         # The instance ID.
         # 

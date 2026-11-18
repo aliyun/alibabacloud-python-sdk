@@ -11,7 +11,7 @@ class DeleteAuthorizationResourceRequest(DaraModel):
         authorization_rule_id: str = None,
         instance_id: str = None,
     ):
-        # The authorized resource ID.
+        # The authorization resource ID.
         # 
         # This parameter is required.
         self.authorization_resource_id = authorization_resource_id

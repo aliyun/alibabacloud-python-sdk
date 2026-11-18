@@ -37,13 +37,13 @@ class ListSynchronizationJobsRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page for a paged query. Maximum value: 100.
+        # The maximum number of entries per page during paging in a paged query. Maximum value: 100.
         self.max_results = max_results
-        # The token used to query the next page. If no more pages exist, this parameter is not returned.
+        # The token used to query the next page. If no next page exists, this parameter is not returned.
         self.next_token = next_token
         # The page number. Pages start from 1.
         self.page_number = page_number
-        # The number of entries per page. Maximum value: 100.
+        # The page size. Maximum value: 100.
         self.page_size = page_size
         # The start time of the synchronization. The time is a UNIX timestamp in milliseconds.
         self.start_time = start_time
@@ -61,7 +61,7 @@ class ListSynchronizationJobsRequest(DaraModel):
         self.status = status
         # The list of synchronization target IDs. Example: [idp_111XXXX,idp_222XXXX].
         self.target_ids = target_ids
-        # The type of the synchronization target. Valid values:
+        # The synchronization target type. Valid values:
         # 
         # - identity_provider: identity provider
         # 
@@ -170,7 +170,7 @@ class ListSynchronizationJobsRequestFilters(DaraModel):
     ):
         # The name of the dynamic parameter.
         self.key = key
-        # The value of the dynamic parameter.
+        # The values of the dynamic parameter.
         self.values = values
 
     def validate(self):
