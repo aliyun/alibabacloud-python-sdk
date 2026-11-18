@@ -17,17 +17,17 @@ class ListNetworkServicesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries to return on each page.
+        # The maximum number of records returned per request.
         self.max_results = max_results
-        # A list of network connections.
+        # The list of network connectivity.
         self.network_services = network_services
-        # The pagination token that is used in the next request to retrieve a new page of results. If this parameter is empty, all results have been returned.
+        # The next page token.
         self.next_token = next_token
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.queues = queues
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -109,21 +109,21 @@ class ListNetworkServicesResponseBodyQueues(DaraModel):
         vswitch_ids: List[str] = None,
         workspace_id: str = None,
     ):
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.name = name
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.network_service_id = network_service_id
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.state = state
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.state_change_reason = state_change_reason
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.type = type
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.vpc_id = vpc_id
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.vswitch_ids = vswitch_ids
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -196,9 +196,9 @@ class ListNetworkServicesResponseBodyQueuesStateChangeReason(DaraModel):
         code: str = None,
         message: str = None,
     ):
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.code = code
-        # This parameter is deprecated.
+        # The deprecated parameter.
         self.message = message
 
     def validate(self):
@@ -239,21 +239,21 @@ class ListNetworkServicesResponseBodyNetworkServices(DaraModel):
         vswitch_ids: List[str] = None,
         workspace_id: str = None,
     ):
-        # The name of the network connection.
+        # The name of the network connectivity.
         self.name = name
-        # The ID of the network connection.
+        # The network connectivity ID.
         self.network_service_id = network_service_id
-        # The state of the network connection.
+        # The state.
         self.state = state
         # The reason for the state change.
         self.state_change_reason = state_change_reason
-        # The type of the network connection.
+        # The type.
         self.type = type
         # The VPC ID.
         self.vpc_id = vpc_id
         # The list of vSwitch IDs.
         self.vswitch_ids = vswitch_ids
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -328,7 +328,7 @@ class ListNetworkServicesResponseBodyNetworkServicesStateChangeReason(DaraModel)
     ):
         # The status code.
         self.code = code
-        # The message that provides details about the state change.
+        # The response message.
         self.message = message
 
     def validate(self):

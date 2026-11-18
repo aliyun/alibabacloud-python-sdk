@@ -13,11 +13,11 @@ class RefreshLivyComputeTokenRequest(DaraModel):
         token: str = None,
         region_id: str = None,
     ):
-        # The information about token expiration.
+        # The token expiration information struct.
         self.auto_expire_configuration = auto_expire_configuration
         # The name.
         self.name = name
-        # The token must be 16 or more characters in length.
+        # The token content. The length must be at least 16.
         self.token = token
         # The region ID.
         self.region_id = region_id
@@ -68,13 +68,11 @@ class RefreshLivyComputeTokenRequestAutoExpireConfiguration(DaraModel):
         enable: bool = None,
         expire_days: int = None,
     ):
-        # Specifies whether the token automatically expires.
-        # 
-        # - true: The token automatically expires.
-        # 
-        # - false: The token does not automatically expire.
+        # Specifies whether the token automatically expires. Valid values:
+        # - true: Yes.
+        # - false: No.
         self.enable = enable
-        # The expiration period in days.
+        # The expiration time in days.
         self.expire_days = expire_days
 
     def validate(self):

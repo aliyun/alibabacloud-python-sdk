@@ -24,7 +24,7 @@ class CreateProcessDefinitionWithScheduleResponseBody(DaraModel):
         self.failed = failed
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The detailed description corresponding to the request code.
+        # The detailed description corresponding to the return code.
         self.msg = msg
         # The request ID.
         self.request_id = request_id

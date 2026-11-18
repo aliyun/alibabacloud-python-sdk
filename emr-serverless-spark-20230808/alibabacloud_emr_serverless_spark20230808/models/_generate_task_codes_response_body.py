@@ -17,7 +17,7 @@ class GenerateTaskCodesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code.
+        # The error code of the request.
         self.code = code
         # The returned data.
         self.data = data
@@ -25,11 +25,11 @@ class GenerateTaskCodesResponseBody(DaraModel):
         self.failed = failed
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message.
+        # The detailed description corresponding to the request error code.
         self.msg = msg
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

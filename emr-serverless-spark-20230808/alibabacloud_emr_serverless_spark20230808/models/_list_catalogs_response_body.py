@@ -18,13 +18,13 @@ class ListCatalogsResponseBody(DaraModel):
     ):
         # The data catalogs.
         self.catalogs = catalogs
-        # The maximum number of entries to return on each page.
+        # The maximum number of records to return per request.
         self.max_results = max_results
-        # The token to retrieve the next page of results.
+        # The next page token.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -93,22 +93,23 @@ class ListCatalogsResponseBodyCatalogs(DaraModel):
         resource_owner_id: str = None,
         workspace_id: str = None,
     ):
+        # alias
         self.alias = alias
-        # The ID of the data catalog.
+        # The data catalog ID.
         self.catalog_id = catalog_id
-        # The provider of the data catalog.
+        # The data catalog type.
         self.catalog_provider = catalog_provider
-        # Indicates whether this is the default data catalog.
+        # Indicates whether the data catalog is the default data catalog.
         self.catalog_type = catalog_type
-        # The environment types.
+        # The environment type.
         self.environments = environments
-        # Extra information.
+        # The extra information.
         self.extras = extras
-        # The time when the resource was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the resource was last updated.
+        # The update time.
         self.gmt_modified = gmt_modified
-        # The ID of the resource owner.
+        # The resource owner ID.
         self.resource_owner_id = resource_owner_id
         # The workspace ID.
         self.workspace_id = workspace_id

@@ -13,9 +13,9 @@ class GrantRoleToUsersRequest(DaraModel):
         user_arns: List[str] = None,
         region_id: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
+        # The ARN of the role.
         self.role_arn = role_arn
-        # The user ARNs.
+        # The list of user ARNs.
         self.user_arns = user_arns
         # The region ID.
         self.region_id = region_id

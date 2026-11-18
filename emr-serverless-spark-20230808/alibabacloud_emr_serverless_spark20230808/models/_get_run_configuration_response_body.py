@@ -156,11 +156,11 @@ class GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs(DaraMode
         config_item_key: str = None,
         config_item_value: str = None,
     ):
-        # The name of the application configuration file.
+        # The application configuration file name.
         self.config_file_name = config_file_name
-        # The key of the configuration item.
+        # The configuration item key.
         self.config_item_key = config_item_key
-        # The value of the configuration item.
+        # The configuration item value.
         self.config_item_value = config_item_value
 
     def validate(self):

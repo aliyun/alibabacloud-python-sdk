@@ -10,7 +10,7 @@ class StartJobRunResponseBody(DaraModel):
         job_run_id: str = None,
         request_id: str = None,
     ):
-        # The job run ID.
+        # The ID of the job run.
         self.job_run_id = job_run_id
         # The request ID.
         self.request_id = request_id

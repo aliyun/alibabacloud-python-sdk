@@ -13,7 +13,7 @@ class ListLogContentsResponseBody(DaraModel):
         list_log_content: main_models.ListLogContentsResponseBodyListLogContent = None,
         request_id: str = None,
     ):
-        # Log content.
+        # The log content.
         self.list_log_content = list_log_content
         # The request ID.
         self.request_id = request_id
@@ -52,9 +52,9 @@ class ListLogContentsResponseBodyListLogContent(DaraModel):
         contents: List[main_models.ListLogContentsResponseBodyListLogContentContents] = None,
         total_length: int = None,
     ):
-        # List of log line contents.
+        # The list of log lines.
         self.contents = contents
-        # Total number of log lines.
+        # The total number of log lines.
         self.total_length = total_length
 
     def validate(self):
@@ -96,7 +96,7 @@ class ListLogContentsResponseBodyListLogContentContents(DaraModel):
         self,
         line_content: str = None,
     ):
-        # Log line content.
+        # The content of the log line.
         self.line_content = line_content
 
     def validate(self):

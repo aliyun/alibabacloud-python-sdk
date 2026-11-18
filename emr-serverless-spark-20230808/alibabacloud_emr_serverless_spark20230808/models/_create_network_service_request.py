@@ -17,17 +17,17 @@ class CreateNetworkServiceRequest(DaraModel):
         vswitch_ids: List[str] = None,
         region_id: str = None,
     ):
-        # A token to ensure the idempotency of the request.
+        # The idempotency token.
         self.client_token = client_token
-        # The name of the network service.
+        # The name.
         self.name = name
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # The type of the network service.
+        # The type.
         self.type = type
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
-        # A list of vSwitch IDs.
+        # The list of vSwitch IDs.
         self.vswitch_ids = vswitch_ids
         # The region ID.
         self.region_id = region_id

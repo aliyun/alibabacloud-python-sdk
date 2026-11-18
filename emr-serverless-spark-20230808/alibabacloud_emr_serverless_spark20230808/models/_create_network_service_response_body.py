@@ -10,7 +10,7 @@ class CreateNetworkServiceResponseBody(DaraModel):
         operation_id: str = None,
         request_id: str = None,
     ):
-        # The operation ID.
+        # The workspace ID.
         self.operation_id = operation_id
         # The request ID.
         self.request_id = request_id

@@ -45,7 +45,7 @@ class StartProcessInstanceRequest(DaraModel):
         self.runtime_queue = runtime_queue
         # The version hash code.
         self.version_hash_code = version_hash_code
-        # The workflow definition version number.
+        # The version number of the workflow definition.
         self.version_number = version_number
 
     def validate(self):

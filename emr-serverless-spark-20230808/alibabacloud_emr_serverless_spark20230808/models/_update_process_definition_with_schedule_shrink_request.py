@@ -26,14 +26,15 @@ class UpdateProcessDefinitionWithScheduleShrinkRequest(DaraModel):
         task_relation_json_shrink: str = None,
         timeout: int = None,
     ):
-        # The alert email address.
+        # The email address for alert notifications.
         self.alert_email_address = alert_email_address
         # The workflow description.
         self.description = description
-        # The execution policy.
+        # The execution strategy.
         # 
         # This parameter is required.
         self.execution_type = execution_type
+        # The list of global parameters for the workflow.
         self.global_params_shrink = global_params_shrink
         # The workflow name.
         # 
@@ -55,21 +56,21 @@ class UpdateProcessDefinitionWithScheduleShrinkRequest(DaraModel):
         self.retry_times = retry_times
         # The execution user.
         self.run_as = run_as
-        # The scheduling structure.
+        # The schedule structure.
         self.schedule_shrink = schedule_shrink
         # The tags.
         self.tags_shrink = tags_shrink
-        # The JSON array of node definitions, which contains the description information of all nodes in the workflow.
+        # The JSON array of task definitions, which contains the description of all tasks in the workflow.
         # 
         # This parameter is required.
         self.task_definition_json_shrink = task_definition_json_shrink
-        # The concurrency of workflow node execution.
+        # The concurrency level for workflow node execution.
         self.task_parallelism = task_parallelism
-        # The JSON array of node dependencies, which contains the dependencies among all nodes in the workflow. preTaskCode is the upstream node ID, and postTaskCode is the downstream node ID. Each node must have a unique ID. If a node does not have an upstream node, you must add a dependency with preTaskCode set to 0.
+        # The JSON array of task dependencies, which contains the dependencies among all tasks in the workflow. preTaskCode specifies the upstream task ID, and postTaskCode specifies the downstream task ID. Each task must have a unique ID. If a task node does not have an upstream task, you must add a dependency with preTaskCode set to 0.
         # 
         # This parameter is required.
         self.task_relation_json_shrink = task_relation_json_shrink
-        # The default timeout for workflow execution.
+        # The default timeout period for workflow execution.
         self.timeout = timeout
 
     def validate(self):

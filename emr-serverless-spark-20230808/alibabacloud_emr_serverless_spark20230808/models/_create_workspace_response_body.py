@@ -11,11 +11,11 @@ class CreateWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         workspace_id: str = None,
     ):
-        # The operation ID.
+        # The ID of the operation flow.
         self.operation_id = operation_id
         # The request ID.
         self.request_id = request_id
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

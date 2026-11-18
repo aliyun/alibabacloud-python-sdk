@@ -29,60 +29,63 @@ class Template(DaraModel):
         spark_version: str = None,
         template_type: str = None,
     ):
+        # The business ID of the Spark task template.
         self.biz_id = biz_id
-        # Creator UID.
+        # The creator UID.
         # 
         # This parameter is required.
         self.creator = creator
-        # Spark engine display version.
+        # The display version of the Spark engine.
         self.display_spark_version = display_spark_version
-        # Whether to enable the fusion switch.
+        # Specifies whether Fusion is enabled.
         self.fusion = fusion
-        # Creation time.
+        # The creation time.
         # 
         # This parameter is required.
         self.gmt_created = gmt_created
-        # Last modified time.
+        # The last updated time.
         # 
         # This parameter is required.
         self.gmt_modified = gmt_modified
+        # Specifies whether the template is the default template.
         self.is_default = is_default
-        # Last modifier UID.
+        # The last updater UID.
         # 
         # This parameter is required.
         self.modifier = modifier
+        # The template name.
         self.name = name
         # Spark Conf
         self.spark_conf = spark_conf
-        # Spark Driver cores.
+        # The number of Spark driver cores.
         # 
         # This parameter is required.
         self.spark_driver_cores = spark_driver_cores
-        # Spark Driver memory.
+        # The Spark driver memory.
         # 
         # This parameter is required.
         self.spark_driver_memory = spark_driver_memory
-        # Spark Executor cores.
+        # The number of Spark executor cores.
         # 
         # This parameter is required.
         self.spark_executor_cores = spark_executor_cores
-        # Spark Executor memory.
+        # The Spark executor memory.
         # 
         # This parameter is required.
         self.spark_executor_memory = spark_executor_memory
-        # Spark log level.
+        # The Spark log level.
         # 
         # This parameter is required.
         self.spark_log_level = spark_log_level
-        # Spark log path.
+        # The Spark log path.
         # 
         # This parameter is required.
         self.spark_log_path = spark_log_path
-        # Spark internal release version.
+        # The Spark internal release version.
         # 
         # This parameter is required.
         self.spark_version = spark_version
-        # Template type.
+        # The templatetype.
         self.template_type = template_type
 
     def validate(self):

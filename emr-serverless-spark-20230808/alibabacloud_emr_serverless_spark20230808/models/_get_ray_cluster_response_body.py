@@ -17,6 +17,7 @@ class GetRayClusterResponseBody(DaraModel):
         dashboard_url: str = None,
         description: str = None,
         display_release_version: str = None,
+        enable_metrics_upload: bool = None,
         extra_param: str = None,
         grpc_endpoint: str = None,
         head_spec: main_models.GetRayClusterResponseBodyHeadSpec = None,
@@ -32,6 +33,8 @@ class GetRayClusterResponseBody(DaraModel):
         name: str = None,
         network_service_name: str = None,
         request_id: str = None,
+        sls_log_store: str = None,
+        sls_project: str = None,
         start_time: int = None,
         state: str = None,
         submit_token: str = None,
@@ -39,11 +42,11 @@ class GetRayClusterResponseBody(DaraModel):
         volume_ids: List[str] = None,
         worker_spec: List[main_models.GetRayClusterResponseBodyWorkerSpec] = None,
     ):
-        # The Ray cluster ID.
+        # The ID of the Ray cluster.
         self.cluster_id = cluster_id
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The UID of the user who created the cluster.
+        # The user ID of the cluster creator.
         self.creator = creator
         # The nickname of the creator.
         self.creator_name = creator_name
@@ -53,46 +56,52 @@ class GetRayClusterResponseBody(DaraModel):
         self.description = description
         # The Ray DPI engine version.
         self.display_release_version = display_release_version
-        # The additional parameters in JSON format.
+        # Specifies whether to upload metrics.
+        self.enable_metrics_upload = enable_metrics_upload
+        # The extra parameters in JSON format.
         self.extra_param = extra_param
-        # The gRPC endpoint (internal network). The domain name in the endpoint can also be used to submit Ray jobs.
+        # The internal gRPC endpoint. The domain name in the endpoint can also be used to submit Ray jobs.
         self.grpc_endpoint = grpc_endpoint
-        # The Ray cluster head node parameters.
+        # The head node parameters of the Ray cluster.
         self.head_spec = head_spec
-        # The Ray cluster node IDs.
+        # The IDs of the nodes in the Ray cluster.
         self.instance_id = instance_id
-        # The Ray cluster node IDs.
+        # The IDs of the nodes in the Ray cluster.
         self.instances = instances
-        # The public address for submitting Ray jobs.
+        # The public endpoint for submitting Ray jobs.
         self.job_url = job_url
-        # The internal network address for submitting Ray jobs.
+        # The internal URL for submitting Ray jobs.
         self.job_url_inner = job_url_inner
-        # The error message when the status is Error.
+        # The error message returned when the status is Error.
         self.message = message
-        # Indicates whether the configuration has been modified.
+        # Specifies whether the configuration has been modified.
         self.modified = modified
         # The update time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # The UID of the user who last updated the cluster.
+        # The user ID of the cluster updater.
         self.modifier = modifier
-        # The nickname of the modifier.
+        # The nickname of the updater.
         self.modifier_name = modifier_name
-        # The Ray cluster name.
+        # The name of the Ray cluster.
         self.name = name
         # The network connectivity name.
         self.network_service_name = network_service_name
         # The request ID.
         self.request_id = request_id
+        # The Logstore for uploading metrics. The Logstore must be a Metricstore.
+        self.sls_log_store = sls_log_store
+        # The Simple Log Service (SLS) project for uploading metrics.
+        self.sls_project = sls_project
         # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
         # The session status. Valid values:
-        # - Starting: starting.
-        # - Running: running.
-        # - Stopping: stopping.
-        # - Stopped: stopped.
-        # - Error: failed.
+        # - Starting: The session is starting.
+        # - Running: The session is running.
+        # - Stopping: The session is stopping.
+        # - Stopped: The session is stopped.
+        # - Error: The session has failed.
         self.state = state
-        # The authentication token for submitting Ray jobs. Include this token in the request header as "ray-token": "token".
+        # The authentication token for submitting Ray jobs. You must include this token in the request header in the following format: "ray-token": "token".
         self.submit_token = submit_token
         # The Alibaba Cloud account ID of the creator.
         self.user_id = user_id
@@ -138,6 +147,9 @@ class GetRayClusterResponseBody(DaraModel):
 
         if self.display_release_version is not None:
             result['displayReleaseVersion'] = self.display_release_version
+
+        if self.enable_metrics_upload is not None:
+            result['enableMetricsUpload'] = self.enable_metrics_upload
 
         if self.extra_param is not None:
             result['extraParam'] = self.extra_param
@@ -186,6 +198,12 @@ class GetRayClusterResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
+        if self.sls_log_store is not None:
+            result['slsLogStore'] = self.sls_log_store
+
+        if self.sls_project is not None:
+            result['slsProject'] = self.sls_project
+
         if self.start_time is not None:
             result['startTime'] = self.start_time
 
@@ -230,6 +248,9 @@ class GetRayClusterResponseBody(DaraModel):
 
         if m.get('displayReleaseVersion') is not None:
             self.display_release_version = m.get('displayReleaseVersion')
+
+        if m.get('enableMetricsUpload') is not None:
+            self.enable_metrics_upload = m.get('enableMetricsUpload')
 
         if m.get('extraParam') is not None:
             self.extra_param = m.get('extraParam')
@@ -280,6 +301,12 @@ class GetRayClusterResponseBody(DaraModel):
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
+        if m.get('slsLogStore') is not None:
+            self.sls_log_store = m.get('slsLogStore')
+
+        if m.get('slsProject') is not None:
+            self.sls_project = m.get('slsProject')
+
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
 
@@ -309,8 +336,10 @@ class GetRayClusterResponseBodyWorkerSpec(DaraModel):
         cpu: str = None,
         display_release_version: str = None,
         env: str = None,
+        gpu_driver_version: str = None,
         gpu_spec: str = None,
         group_name: str = None,
+        kubernetes_group_name: str = None,
         max_replica: int = None,
         memory: str = None,
         min_replica: int = None,
@@ -321,21 +350,25 @@ class GetRayClusterResponseBodyWorkerSpec(DaraModel):
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # The database engine version.
+        # The DPI engine version.
         self.display_release_version = display_release_version
-        # The Ray environment variables.
+        # The environment variables for Ray.
         self.env = env
+        # The GPU driver type.
+        self.gpu_driver_version = gpu_driver_version
         # The GPU instance type.
         self.gpu_spec = gpu_spec
         # The worker node group name.
         self.group_name = group_name
-        # The maximum number of workers.
+        # The actual group name in Kubernetes.
+        self.kubernetes_group_name = kubernetes_group_name
+        # The maximum number of worker nodes.
         self.max_replica = max_replica
-        # The memory size, in GiB.
+        # The memory size. Unit: GiB.
         self.memory = memory
-        # The minimum number of workers.
+        # The minimum number of worker nodes.
         self.min_replica = min_replica
-        # The queue name.
+        # The name of the queue.
         self.queue_name = queue_name
         # The Ray startup parameters.
         self.ray_start_params = ray_start_params
@@ -361,11 +394,17 @@ class GetRayClusterResponseBodyWorkerSpec(DaraModel):
         if self.env is not None:
             result['env'] = self.env
 
+        if self.gpu_driver_version is not None:
+            result['gpuDriverVersion'] = self.gpu_driver_version
+
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
 
         if self.group_name is not None:
             result['groupName'] = self.group_name
+
+        if self.kubernetes_group_name is not None:
+            result['kubernetesGroupName'] = self.kubernetes_group_name
 
         if self.max_replica is not None:
             result['maxReplica'] = self.max_replica
@@ -401,11 +440,17 @@ class GetRayClusterResponseBodyWorkerSpec(DaraModel):
         if m.get('env') is not None:
             self.env = m.get('env')
 
+        if m.get('gpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('gpuDriverVersion')
+
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
 
         if m.get('groupName') is not None:
             self.group_name = m.get('groupName')
+
+        if m.get('kubernetesGroupName') is not None:
+            self.kubernetes_group_name = m.get('kubernetesGroupName')
 
         if m.get('maxReplica') is not None:
             self.max_replica = m.get('maxReplica')
@@ -445,19 +490,19 @@ class GetRayClusterResponseBodyInstances(DaraModel):
         start_time: int = None,
         type: str = None,
     ):
-        # The main container exit code.
+        # The primary container exit code.
         self.container_exit_code = container_exit_code
-        # The main container state.
+        # The primary container state.
         self.container_state = container_state
-        # The main container state information.
+        # The primary container status message.
         self.container_state_message = container_state_message
-        # The main container information.
+        # The primary container information.
         self.container_state_reason = container_state_reason
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The node ID.
         self.instance_id = instance_id
-        # The node pod state information.
+        # The node pod status message.
         self.message = message
         # The node pod state.
         self.phase = phase
@@ -557,6 +602,7 @@ class GetRayClusterResponseBodyHeadSpec(DaraModel):
         env: str = None,
         gft_config: main_models.GetRayClusterResponseBodyHeadSpecGftConfig = None,
         gft_enabled: bool = None,
+        gpu_driver_version: str = None,
         gpu_spec: str = None,
         idle_timeout_seconds: int = None,
         memory: str = None,
@@ -568,21 +614,23 @@ class GetRayClusterResponseBodyHeadSpec(DaraModel):
         self.cpu = cpu
         # The Ray DPI engine version.
         self.display_release_version = display_release_version
-        # Indicates whether auto scaling is enabled for worker nodes.
+        # Specifies whether auto-scaling is enabled for worker nodes.
         self.enable_auto_scaling = enable_auto_scaling
         # The environment variables.
         self.env = env
-        # The GCS Fault Tolerance configuration.
+        # The GCS fault tolerance configuration.
         self.gft_config = gft_config
-        # Indicates whether GCS Fault Tolerance is enabled.
+        # Specifies whether GCS fault tolerance is enabled.
         self.gft_enabled = gft_enabled
+        # The GPU driver version.
+        self.gpu_driver_version = gpu_driver_version
         # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The idle timeout period for worker nodes after auto scaling is enabled.
+        # The idle timeout period for worker nodes when auto-scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
-        # The memory size, in GiB.
+        # The memory size. Unit: GiB.
         self.memory = memory
-        # The queue name.
+        # The name of the queue.
         self.queue_name = queue_name
         # The Ray startup parameters.
         self.ray_start_params = ray_start_params
@@ -615,6 +663,9 @@ class GetRayClusterResponseBodyHeadSpec(DaraModel):
 
         if self.gft_enabled is not None:
             result['gftEnabled'] = self.gft_enabled
+
+        if self.gpu_driver_version is not None:
+            result['gpuDriverVersion'] = self.gpu_driver_version
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -657,6 +708,9 @@ class GetRayClusterResponseBodyHeadSpec(DaraModel):
         if m.get('gftEnabled') is not None:
             self.gft_enabled = m.get('gftEnabled')
 
+        if m.get('gpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('gpuDriverVersion')
+
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
 
@@ -686,7 +740,7 @@ class GetRayClusterResponseBodyHeadSpecGftConfig(DaraModel):
     ):
         # The Redis password.
         self.redis_password = redis_password
-        # The Redis address.
+        # The Redis endpoint.
         self.redis_url = redis_url
         # The Redis username.
         self.redis_username = redis_username

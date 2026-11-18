@@ -23,24 +23,24 @@ class CreateWorkspaceQueueRequest(DaraModel):
     ):
         # The description.
         self.description = description
-        # The list of GPU models.
+        # The list of GPU instance types.
         self.gpu_spec = gpu_spec
-        # The Ray cluster instance ID.
+        # The instance ID of the Ray cluster.
         self.instance_id = instance_id
         # The billing method of the instance. Valid values:
         # 
-        # - PayAsYouGo: pay-as-you-go
-        # - Pre: subscription
+        # - PayAsYouGo: pay-as-you-go.
+        # - Pre: subscription.
         self.payment_type = payment_type
-        # Indicates whether resource prefetch is enabled.
+        # Specifies whether resource prefetch is enabled.
         self.preheat = preheat
-        # The queue type. Valid values: CPU and GPU.
+        # The queue type, such as CPU or GPU.
         self.queue_category = queue_category
         # The resource specifications.
         self.resource_spec = resource_spec
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
-        # The workspace queue name.
+        # The name of the workspace queue.
         self.workspace_queue_name = workspace_queue_name
         # The region ID.
         self.region_id = region_id
@@ -129,11 +129,11 @@ class CreateWorkspaceQueueRequestResourceSpec(DaraModel):
         gpu_machine_num: int = None,
         max_cu: int = None,
     ):
-        # The maximum workspace resource capacity.
+        # The resource limit of the workspace.
         self.cu = cu
         # The number of GPUs.
         self.gpu = gpu
-        # The number of GPU machines. This parameter is valid only for subscription instances.
+        # The number of GPU machines. This parameter is valid only when the billing method is set to subscription.
         self.gpu_machine_num = gpu_machine_num
         # The maximum number of CUs.
         self.max_cu = max_cu

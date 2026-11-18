@@ -56,17 +56,17 @@ class GetSqlStatementResponseBodyData(DaraModel):
         state: str = None,
         statement_id: str = None,
     ):
-        # A list of execution times for the SQL query.
+        # The list of SQL query execution durations.
         self.execution_time = execution_time
-        # The error code for the SQL query.
+        # The SQL query error code.
         self.sql_error_code = sql_error_code
-        # The error message for the SQL query.
+        # The SQL query error message.
         self.sql_error_message = sql_error_message
-        # A list of SQL query results.
+        # The list of SQL query results.
         self.sql_outputs = sql_outputs
-        # The state of the query.
+        # The query status.
         self.state = state
-        # The statement ID.
+        # The query ID.
         self.statement_id = statement_id
 
     def validate(self):
@@ -134,10 +134,10 @@ class GetSqlStatementResponseBodyDataSqlOutputs(DaraModel):
         rows_file_path: str = None,
         schema: str = None,
     ):
-        # The query data. The data is a JSON-serialized string.
+        # The query data, formatted as a string serialized in JSON.
         self.rows = rows
         self.rows_file_path = rows_file_path
-        # The details of the schema. The details are a JSON-serialized string.
+        # The detailed schema information, formatted as a string serialized in JSON.
         self.schema = schema
 
     def validate(self):

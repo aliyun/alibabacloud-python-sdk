@@ -29,14 +29,15 @@ class UpdateProcessDefinitionWithScheduleRequest(DaraModel):
         task_relation_json: List[main_models.UpdateProcessDefinitionWithScheduleRequestTaskRelationJson] = None,
         timeout: int = None,
     ):
-        # The alert email address.
+        # The email address for alert notifications.
         self.alert_email_address = alert_email_address
         # The workflow description.
         self.description = description
-        # The execution policy.
+        # The execution strategy.
         # 
         # This parameter is required.
         self.execution_type = execution_type
+        # The list of global parameters for the workflow.
         self.global_params = global_params
         # The workflow name.
         # 
@@ -58,21 +59,21 @@ class UpdateProcessDefinitionWithScheduleRequest(DaraModel):
         self.retry_times = retry_times
         # The execution user.
         self.run_as = run_as
-        # The scheduling structure.
+        # The schedule structure.
         self.schedule = schedule
         # The tags.
         self.tags = tags
-        # The JSON array of node definitions, which contains the description information of all nodes in the workflow.
+        # The JSON array of task definitions, which contains the description of all tasks in the workflow.
         # 
         # This parameter is required.
         self.task_definition_json = task_definition_json
-        # The concurrency of workflow node execution.
+        # The concurrency level for workflow node execution.
         self.task_parallelism = task_parallelism
-        # The JSON array of node dependencies, which contains the dependencies among all nodes in the workflow. preTaskCode is the upstream node ID, and postTaskCode is the downstream node ID. Each node must have a unique ID. If a node does not have an upstream node, you must add a dependency with preTaskCode set to 0.
+        # The JSON array of task dependencies, which contains the dependencies among all tasks in the workflow. preTaskCode specifies the upstream task ID, and postTaskCode specifies the downstream task ID. Each task must have a unique ID. If a task node does not have an upstream task, you must add a dependency with preTaskCode set to 0.
         # 
         # This parameter is required.
         self.task_relation_json = task_relation_json
-        # The default timeout for workflow execution.
+        # The default timeout period for workflow execution.
         self.timeout = timeout
 
     def validate(self):
@@ -235,23 +236,23 @@ class UpdateProcessDefinitionWithScheduleRequestTaskRelationJson(DaraModel):
         pre_task_code: int = None,
         pre_task_version: int = None,
     ):
-        # The name of the node topology relationship. Set this parameter to the workflow name.
+        # The name of the task topology relationship. Set this parameter to the workflow name.
         # 
         # This parameter is required.
         self.name = name
-        # The downstream node ID.
+        # The downstream task ID.
         # 
         # This parameter is required.
         self.post_task_code = post_task_code
-        # The downstream node version.
+        # The downstream task version.
         # 
         # This parameter is required.
         self.post_task_version = post_task_version
-        # The upstream node ID.
+        # The upstream task ID.
         # 
         # This parameter is required.
         self.pre_task_code = pre_task_code
-        # The upstream node version.
+        # The upstream task version.
         # 
         # This parameter is required.
         self.pre_task_version = pre_task_version
@@ -315,27 +316,27 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson(DaraModel):
         task_type: str = None,
         timeout: int = None,
     ):
-        # The alert email address.
+        # The email address for alert notifications.
         self.alert_email_address = alert_email_address
-        # The node definition ID.
+        # The task definition ID.
         # 
         # This parameter is required.
         self.code = code
-        # The node definition description.
+        # The task definition description.
         self.description = description
-        # Specifies whether to enable alerts for node failures.
+        # Specifies whether to enable alerts for task failures.
         self.fail_alert_enable = fail_alert_enable
-        # The number of retries after a node fails.
+        # The number of retries allowed after a task failure.
         self.fail_retry_times = fail_retry_times
-        # The node name.
+        # The task name.
         # 
         # This parameter is required.
         self.name = name
-        # Specifies whether to enable alerts for node startup.
+        # Specifies whether to enable alerts for task startup.
         self.start_alert_enable = start_alert_enable
         # The tags.
         self.tags = tags
-        # The node definition parameters.
+        # The task definition parameters.
         # 
         # This parameter is required.
         self.task_params = task_params
@@ -343,7 +344,7 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson(DaraModel):
         # 
         # This parameter is required.
         self.task_type = task_type
-        # The default timeout for node execution.
+        # The default timeout period for task execution.
         self.timeout = timeout
 
     def validate(self):
@@ -454,28 +455,29 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Dar
         self.environment_id = environment_id
         # Specifies whether to enable Fusion engine acceleration.
         self.fusion = fusion
+        # The list of local parameters for the task.
         self.local_params = local_params
-        # The name of the queue for running the node.
+        # The name of the queue used to run the task.
         # 
         # This parameter is required.
         self.resource_queue_id = resource_queue_id
-        # The Spark node configuration.
+        # The Spark task configurations.
         self.spark_conf = spark_conf
         # The number of cores for the Spark driver.
         self.spark_driver_cores = spark_driver_cores
-        # The memory for the Spark driver.
+        # The memory size for the Spark driver.
         self.spark_driver_memory = spark_driver_memory
         # The number of cores for the Spark executor.
         self.spark_executor_cores = spark_executor_cores
-        # The memory for the Spark executor.
+        # The memory size for the Spark executor.
         self.spark_executor_memory = spark_executor_memory
         # The Spark log level.
         self.spark_log_level = spark_log_level
-        # The log path of the Spark node.
+        # The log path for the Spark node.
         self.spark_log_path = spark_log_path
         # The Spark engine version.
         self.spark_version = spark_version
-        # The data development node ID.
+        # The data development task ID.
         # 
         # This parameter is required.
         self.task_biz_id = task_biz_id
@@ -658,9 +660,13 @@ class UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLoca
         type: str = None,
         value: str = None,
     ):
+        # The parameter direction. Valid values: IN (input) and OUT (output).
         self.direct = direct
+        # The parameter name.
         self.prop = prop
+        # The data type of the parameter.
         self.type = type
+        # The parameter value.
         self.value = value
 
     def validate(self):
@@ -709,7 +715,7 @@ class UpdateProcessDefinitionWithScheduleRequestSchedule(DaraModel):
         start_time: str = None,
         timezone_id: str = None,
     ):
-        # The cron expression for scheduling.
+        # The cron expression for the schedule.
         self.crontab = crontab
         # The end time of the schedule. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
@@ -764,9 +770,13 @@ class UpdateProcessDefinitionWithScheduleRequestGlobalParams(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The parameter direction. Valid values: IN (input) and OUT (output).
         self.direct = direct
+        # The parameter name.
         self.prop = prop
+        # The data type of the parameter.
         self.type = type
+        # The parameter value.
         self.value = value
 
     def validate(self):

@@ -13,7 +13,7 @@ class CreateLivyComputeTokenResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The response code. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. See the message parameter for error details.
+        # The response code. A value of 1000000 indicates that the request is successful. Any other value indicates that the request failed. For more information about the error cause, see the message.
         self.code = code
         # The returned data.
         self.data = data

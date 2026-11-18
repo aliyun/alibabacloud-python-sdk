@@ -36,19 +36,19 @@ class ListJobRunsRequest(DaraModel):
         self.end_time = end_time
         # Specifies whether to aggregate and return statistical results by job run state.
         self.group_by_state = group_by_state
-        # Specifies whether the job run is a workflow job.
+        # Specifies whether the job is a workflow job.
         self.is_workflow = is_workflow
-        # The ID of the streaming job deployment.
+        # The ID of the job for the streaming job deployment.
         self.job_run_deployment_id = job_run_deployment_id
         # The ID of the job run.
         self.job_run_id = job_run_id
-        # The maximum number of entries to return in a single call. The maximum value is 100.
+        # The maximum number of records to retrieve per request. The maximum value is 100.
         self.max_results = max_results
         # The minimum execution duration of the job run, in milliseconds.
         self.min_duration = min_duration
         # The name of the job.
         self.name = name
-        # The pagination token that specifies the starting position for the query.
+        # The token that marks the position to start reading.
         self.next_token = next_token
         # The region ID.
         self.region_id = region_id
@@ -236,9 +236,9 @@ class ListJobRunsRequestStartTime(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end time of the time range. The value is a UNIX timestamp in milliseconds.
+        # The end of the time range. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The start time of the time range. The value is a UNIX timestamp in milliseconds.
+        # The start of the time range. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -273,9 +273,9 @@ class ListJobRunsRequestEndTime(DaraModel):
         end_time: int = None,
         start_time: int = None,
     ):
-        # The end time of the time range. The value is a UNIX timestamp in milliseconds.
+        # The end of the time range. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The start time of the time range. The value is a UNIX timestamp in milliseconds.
+        # The start of the time range. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):

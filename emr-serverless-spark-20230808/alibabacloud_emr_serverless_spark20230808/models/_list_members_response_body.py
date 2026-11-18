@@ -16,13 +16,13 @@ class ListMembersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records to return per request.
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
         # The list of members.
         self.members = members
         # The pagination token for the next page.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count
@@ -97,13 +97,13 @@ class ListMembersResponseBodyMembers(DaraModel):
         self.create_time = create_time
         # The display name of the user.
         self.display_name = display_name
-        # The ARN of the member.
+        # The ARN of the user.
         self.member_arn = member_arn
         # The list of roles in the workspace.
         self.roles = roles
         # The username.
         self.user_name = user_name
-        # The type of the user. Valid values:
+        # The user type.
         # - ROLE
         # - MEMBER
         self.user_type = user_type
@@ -272,7 +272,7 @@ class ListMembersResponseBodyMembersRolesActions(DaraModel):
     ):
         # The ARN of the action.
         self.action_arn = action_arn
-        # The name of the action.
+        # The name of the permission.
         self.action_name = action_name
         # The list of dependencies for the action.
         self.dependencies = dependencies
@@ -336,7 +336,7 @@ class ListMembersResponseBodyMembersActions(DaraModel):
     ):
         # The ARN of the action.
         self.action_arn = action_arn
-        # The name of the action.
+        # The name of the permission.
         self.action_name = action_name
         # The list of dependencies for the action.
         self.dependencies = dependencies

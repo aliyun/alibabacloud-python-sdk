@@ -13,7 +13,7 @@ class GetWorkspaceResponseBody(DaraModel):
         request_id: str = None,
         workspace: main_models.GetWorkspaceResponseBodyWorkspace = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The workspace object.
         self.workspace = workspace
@@ -58,6 +58,7 @@ class GetWorkspaceResponseBodyWorkspace(DaraModel):
         duration: int = None,
         end_time: int = None,
         fail_reason: str = None,
+        features: main_models.GetWorkspaceResponseBodyWorkspaceFeatures = None,
         gpu_spec: List[str] = None,
         ip_white_list: List[str] = None,
         payment_duration_unit: str = None,
@@ -78,29 +79,31 @@ class GetWorkspaceResponseBodyWorkspace(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # Specifies whether auto-renewal is enabled. This parameter is required for subscription workspaces.
+        # Specifies whether to enable auto-renewal. This parameter is required for subscription resources.
         self.auto_renew = auto_renew
-        # The auto-renewal period. This parameter is required for subscription workspaces.
+        # The auto-renewal duration. This parameter is required for subscription resources.
         self.auto_renew_period = auto_renew_period
-        # The auto-renewal cycle. This parameter is required for subscription workspaces.
+        # The auto-renewal cycle. This parameter is required for subscription resources.
         self.auto_renew_period_unit = auto_renew_period_unit
         # The time when the workspace was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The DLF catalog information.
         self.dlf_catalog_id = dlf_catalog_id
-        # The bound DLF type.
+        # The type of the associated DLF.
         self.dlf_type = dlf_type
-        # The subscription duration. This parameter is required for subscription workspaces.
+        # The duration of the subscription period. This parameter is required for subscription resources.
         self.duration = duration
-        # The time when the workspace is released.
+        # The time when the workspace was released.
         self.end_time = end_time
         # The reason for the failure.
         self.fail_reason = fail_reason
+        # The features of the workspace.
+        self.features = features
         # The list of GPU instance types.
         self.gpu_spec = gpu_spec
         # The IP whitelist of the workspace.
         self.ip_white_list = ip_white_list
-        # The unit of the subscription period. This parameter is required for subscription workspaces.
+        # The unit of the subscription period. This parameter is required for subscription resources.
         self.payment_duration_unit = payment_duration_unit
         # The payment status.
         self.payment_status = payment_status
@@ -108,34 +111,36 @@ class GetWorkspaceResponseBodyWorkspace(DaraModel):
         self.payment_type = payment_type
         # The information about the subscription resource quota.
         self.pre_paid_quota = pre_paid_quota
-        # The list of GPU subscription quotas.
+        # The list of GPU subscriptions.
         self.pre_paid_quota_gpu = pre_paid_quota_gpu
         # The name of the RAM role used to execute Spark jobs.
         self.ram_role_name = ram_role_name
         # The region ID.
         self.region_id = region_id
-        # The reason why the workspace is released.
+        # The reason for the workspace release.
         self.release_type = release_type
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The UID of the user who created the workspace.
+        # The UID of the creator.
         self.resource_owner_id = resource_owner_id
-        # The resource specifications.
+        # The resource specification.
         self.resource_spec = resource_spec
         # The information about the workspace status change.
         self.state_change_reason = state_change_reason
         # The OSS path.
         self.storage = storage
-        # The tag keys.
+        # The tag key.
         self.tags = tags
         # The workspace ID.
         self.workspace_id = workspace_id
-        # The workspace name.
+        # The name of the workspace.
         self.workspace_name = workspace_name
-        # The workspace status.
+        # The status of the workspace.
         self.workspace_status = workspace_status
 
     def validate(self):
+        if self.features:
+            self.features.validate()
         if self.pre_paid_quota:
             self.pre_paid_quota.validate()
         if self.pre_paid_quota_gpu:
@@ -180,6 +185,9 @@ class GetWorkspaceResponseBodyWorkspace(DaraModel):
 
         if self.fail_reason is not None:
             result['failReason'] = self.fail_reason
+
+        if self.features is not None:
+            result['features'] = self.features.to_map()
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -273,6 +281,10 @@ class GetWorkspaceResponseBodyWorkspace(DaraModel):
         if m.get('failReason') is not None:
             self.fail_reason = m.get('failReason')
 
+        if m.get('features') is not None:
+            temp_model = main_models.GetWorkspaceResponseBodyWorkspaceFeatures()
+            self.features = temp_model.from_map(m.get('features'))
+
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
 
@@ -346,7 +358,7 @@ class GetWorkspaceResponseBodyWorkspaceTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag keys.
+        # The tag key.
         self.tag_key = tag_key
         # The tag value.
         self.tag_value = tag_value
@@ -449,7 +461,7 @@ class GetWorkspaceResponseBodyWorkspacePrePaidQuotaGpu(DaraModel):
         self.gpu_memory_size = gpu_memory_size
         # The number of GPU instances.
         self.gpu_num = gpu_num
-        # The GPU instance type.
+        # The GPU model.
         self.gpu_spec = gpu_spec
         # The instance ID.
         self.instance_id = instance_id
@@ -583,8 +595,7 @@ class GetWorkspaceResponseBodyWorkspacePrePaidQuota(DaraModel):
     ):
         # The amount of resources currently allocated.
         self.allocated_resource = allocated_resource
-        # Specifies whether auto-renewal is enabled for the resource.
-        # 
+        # Specifies whether auto-renewal is enabled for the resource. Valid values:
         # - true: Auto-renewal is enabled. The resource is automatically renewed upon expiration.
         # - false: Auto-renewal is disabled. The resource is stopped upon expiration.
         self.auto_renewal = auto_renewal
@@ -668,6 +679,34 @@ class GetWorkspaceResponseBodyWorkspacePrePaidQuota(DaraModel):
 
         if m.get('usedResource') is not None:
             self.used_resource = m.get('usedResource')
+
+        return self
+
+class GetWorkspaceResponseBodyWorkspaceFeatures(DaraModel):
+    def __init__(
+        self,
+        fine_grained_authz: bool = None,
+    ):
+        # Specifies whether fine-grained permissions are enabled for the workspace.
+        self.fine_grained_authz = fine_grained_authz
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.fine_grained_authz is not None:
+            result['fineGrainedAuthz'] = self.fine_grained_authz
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fineGrainedAuthz') is not None:
+            self.fine_grained_authz = m.get('fineGrainedAuthz')
 
         return self
 

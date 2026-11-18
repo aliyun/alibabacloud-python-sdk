@@ -49,7 +49,7 @@ class GetCuHoursResponseBodyData(DaraModel):
         self,
         cu_hours: str = None,
     ):
-        # The number of CU-hours consumed by a queue during a specified cycle. The value is an estimated value. Refer to your Alibaba Cloud bill for the actual number of consumed CU-hours.
+        # The CU hours consumed by the specified queue during the query period. This value is an estimate and the final value is subject to the bill.
         self.cu_hours = cu_hours
 
     def validate(self):

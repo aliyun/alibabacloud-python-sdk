@@ -35,6 +35,7 @@ class CreateProcessDefinitionWithScheduleShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.execution_type = execution_type
+        # The list of global parameters for the workflow.
         self.global_params_shrink = global_params_shrink
         # The workflow name.
         # 
@@ -54,7 +55,7 @@ class CreateProcessDefinitionWithScheduleShrinkRequest(DaraModel):
         self.retry_times = retry_times
         # The Alibaba Cloud UID of the execution user.
         self.run_as = run_as
-        # The scheduling structure.
+        # The schedule structure.
         self.schedule_shrink = schedule_shrink
         # The tags.
         self.tags_shrink = tags_shrink

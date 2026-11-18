@@ -18,11 +18,11 @@ class ListJobExecutorsResponseBody(DaraModel):
     ):
         # The list of executors.
         self.exexutors = exexutors
-        # The maximum number of records returned.
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
-        # The token for the next page of results.
+        # The next token.
         self.next_token = next_token
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count
@@ -104,11 +104,11 @@ class ListJobExecutorsResponseBodyExexutors(DaraModel):
         total_tasks: int = None,
         workspace_id: str = None,
     ):
-        # The total number of active tasks that the executor is running.
+        # The total number of active tasks running on the executor.
         self.active_tasks = active_tasks
-        # The time when the executor was created.
+        # The creation time of the executor.
         self.add_time = add_time
-        # The total number of completed tasks that the executor has run.
+        # The total number of tasks completed by the executor.
         self.completed_tasks = completed_tasks
         # The disk usage of the executor.
         self.disk_used = disk_used
@@ -116,9 +116,9 @@ class ListJobExecutorsResponseBodyExexutors(DaraModel):
         self.executor_id = executor_id
         # The executor type.
         self.executor_type = executor_type
-        # The total number of failed tasks that the executor has run.
+        # The total number of failed tasks executed by the executor.
         self.failed_tasks = failed_tasks
-        # The address of the executor.
+        # The address information of the executor.
         self.host_port = host_port
         # The job run ID.
         self.job_run_id = job_run_id
@@ -126,23 +126,23 @@ class ListJobExecutorsResponseBodyExexutors(DaraModel):
         self.max_memory = max_memory
         # The memory usage of the executor.
         self.memory_used = memory_used
-        # The number of Resilient Distributed Dataset (RDD) blocks managed by the executor.
+        # The number of RDD blocks managed by the executor.
         self.rdd_blocks = rdd_blocks
         # The running status of the executor.
         self.status = status
-        # The total number of cores for the executor.
+        # The total number of cores of the executor.
         self.total_cores = total_cores
-        # The total runtime of the executor.
+        # The total running duration of the executor.
         self.total_duration = total_duration
-        # The total garbage collection (GC) time of the executor.
+        # The total GC time of the executor.
         self.total_gctime = total_gctime
-        # The number of bytes of input data for the executor.
+        # The total number of input bytes for the executor.
         self.total_input_bytes = total_input_bytes
-        # The number of bytes read during the shuffle phase by the executor.
+        # The total number of shuffle read bytes for the executor.
         self.total_shuffle_read = total_shuffle_read
-        # The number of bytes written during the shuffle phase by the executor.
+        # The total number of shuffle write bytes for the executor.
         self.total_shuffle_write = total_shuffle_write
-        # The total number of tasks that the executor has run.
+        # The total number of tasks executed by the executor.
         self.total_tasks = total_tasks
         # The workspace ID.
         self.workspace_id = workspace_id

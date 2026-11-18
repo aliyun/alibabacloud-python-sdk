@@ -52,11 +52,11 @@ class CancelKyuubiSparkApplicationResponseBodyBody(DaraModel):
     ):
         # The ID of the Spark application submitted by Kyuubi.
         self.application_id = application_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful.
+        # - true: Successful.
         # 
-        # - false: The request failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

@@ -15,18 +15,32 @@ class Credential(DaraModel):
         security_token: str = None,
         signature: str = None,
     ):
+        # sts ak
+        # 
         # This parameter is required.
         self.access_id = access_id
+        # The OSS path.
+        # 
         # This parameter is required.
         self.dir = dir
+        # The timeout period.
+        # 
         # This parameter is required.
         self.expire = expire
+        # The OSS domain name.
+        # 
         # This parameter is required.
         self.host = host
+        # The OSS access policy.
+        # 
         # This parameter is required.
         self.policy = policy
+        # sts token
+        # 
         # This parameter is required.
         self.security_token = security_token
+        # The OSS access signature.
+        # 
         # This parameter is required.
         self.signature = signature
 

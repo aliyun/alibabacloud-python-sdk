@@ -19,23 +19,23 @@ class ListTemplateResponseBody(DaraModel):
     ):
         # The data list.
         self.data = data
-        # - If the value of success is false, an error code is returned.
-        # 
-        # - If the value of success is true, this parameter is empty.
+        # - If success is false, the business error code is returned.
+        #  
+        # - If success is true, null is returned.
         self.error_code = error_code
-        # - If the value of success is false, an error message is returned.
+        # - If success is false, the business error message is returned.
         # 
-        # - If the value of success is true, this parameter is empty.
+        # - If success is true, null is returned.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         # 
-        # - true: The request was successful.
+        # - true: Successful.
         # 
-        # - false: The request failed.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

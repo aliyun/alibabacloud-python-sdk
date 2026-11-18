@@ -21,7 +21,7 @@ class ListJobRunsResponseBody(DaraModel):
         self.aggregations = aggregations
         # The list of Spark job runs.
         self.job_runs = job_runs
-        # The maximum number of records returned for the request.
+        # The maximum number of records returned for the current request.
         self.max_results = max_results
         # The position of the data read.
         self.next_token = next_token
@@ -98,6 +98,7 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         display_release_version: str = None,
         end_time: int = None,
         execution_timeout_seconds: int = None,
+        first_report_time: int = None,
         fusion: bool = None,
         job_driver: main_models.JobDriver = None,
         job_run_id: str = None,
@@ -107,6 +108,8 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         priority: str = None,
         release_version: str = None,
         resource_queue_id: str = None,
+        resource_startup_duration_ms: int = None,
+        run_duration_ms: int = None,
         state: str = None,
         state_change_reason: main_models.ListJobRunsResponseBodyJobRunsStateChangeReason = None,
         submit_time: int = None,
@@ -123,21 +126,23 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         # 
         # PYTHON.
         self.code_type = code_type
-        # The advanced Spark configurations. This parameter is not returned by the List operation.
+        # The advanced Spark configurations. This parameter is not returned by the list operation.
         self.configuration_overrides = configuration_overrides
         # The UID of the user who created the job.
         self.creator = creator
-        # The number of compute units (CUs) consumed during the job run. This value is an estimate and the final value is subject to the bill.
+        # The number of compute units (CUs) consumed during the job run. This value is an estimate. The actual value is subject to the bill.
         self.cu_hours = cu_hours
-        # The Spark DPI engine version of the running job.
+        # The Spark engine version used to run the node.
         self.display_release_version = display_release_version
         # The time when the job ended. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The execution timeout period.
         self.execution_timeout_seconds = execution_timeout_seconds
+        # The timestamp in milliseconds when the resources are ready, which is the first report time. If the first report time is empty, the job report time is used. If both are empty, null is returned.
+        self.first_report_time = first_report_time
         # Specifies whether Fusion engine acceleration is enabled.
         self.fusion = fusion
-        # The information about the Spark driver. This parameter is not returned by the List operation.
+        # The information about the Spark driver. This parameter is not returned by the list operation.
         self.job_driver = job_driver
         # The ID of the job run.
         self.job_run_id = job_run_id
@@ -149,10 +154,14 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         self.name = name
         # The priority of the Spark job.
         self.priority = priority
-        # The Spark DPI engine version of the running job.
+        # The Spark engine version used to run the node.
         self.release_version = release_version
         # The name of the resource queue in which the Spark job runs.
         self.resource_queue_id = resource_queue_id
+        # The resource startup duration in milliseconds. It is calculated by subtracting the first submission time from the resource ready time. If the first submission time or the resource ready time is missing, or if the calculation result is negative, null is returned instead of 0.
+        self.resource_startup_duration_ms = resource_startup_duration_ms
+        # The job run duration in milliseconds. It is calculated by subtracting the resource ready time from the job end time. If the job has not ended, the current time is used. If the resource ready time is missing, or if the calculation result is negative, null is returned instead of 0.
+        self.run_duration_ms = run_duration_ms
         # The states of the job runs.
         self.state = state
         # The reason for the state change.
@@ -208,6 +217,9 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         if self.execution_timeout_seconds is not None:
             result['executionTimeoutSeconds'] = self.execution_timeout_seconds
 
+        if self.first_report_time is not None:
+            result['firstReportTime'] = self.first_report_time
+
         if self.fusion is not None:
             result['fusion'] = self.fusion
 
@@ -234,6 +246,12 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
 
         if self.resource_queue_id is not None:
             result['resourceQueueId'] = self.resource_queue_id
+
+        if self.resource_startup_duration_ms is not None:
+            result['resourceStartupDurationMs'] = self.resource_startup_duration_ms
+
+        if self.run_duration_ms is not None:
+            result['runDurationMs'] = self.run_duration_ms
 
         if self.state is not None:
             result['state'] = self.state
@@ -284,6 +302,9 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
         if m.get('executionTimeoutSeconds') is not None:
             self.execution_timeout_seconds = m.get('executionTimeoutSeconds')
 
+        if m.get('firstReportTime') is not None:
+            self.first_report_time = m.get('firstReportTime')
+
         if m.get('fusion') is not None:
             self.fusion = m.get('fusion')
 
@@ -312,6 +333,12 @@ class ListJobRunsResponseBodyJobRuns(DaraModel):
 
         if m.get('resourceQueueId') is not None:
             self.resource_queue_id = m.get('resourceQueueId')
+
+        if m.get('resourceStartupDurationMs') is not None:
+            self.resource_startup_duration_ms = m.get('resourceStartupDurationMs')
+
+        if m.get('runDurationMs') is not None:
+            self.run_duration_ms = m.get('runDurationMs')
 
         if m.get('state') is not None:
             self.state = m.get('state')

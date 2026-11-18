@@ -38,6 +38,7 @@ class CreateProcessDefinitionWithScheduleRequest(DaraModel):
         # 
         # This parameter is required.
         self.execution_type = execution_type
+        # The list of global parameters for the workflow.
         self.global_params = global_params
         # The workflow name.
         # 
@@ -57,7 +58,7 @@ class CreateProcessDefinitionWithScheduleRequest(DaraModel):
         self.retry_times = retry_times
         # The Alibaba Cloud UID of the execution user.
         self.run_as = run_as
-        # The scheduling structure.
+        # The schedule structure.
         self.schedule = schedule
         # The tags.
         self.tags = tags
@@ -447,6 +448,7 @@ class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Dar
         self.environment_id = environment_id
         # Specifies whether to enable Fusion engine acceleration.
         self.fusion = fusion
+        # The list of local parameters for the task.
         self.local_params = local_params
         # The resource queue for running the Spark task.
         # 
@@ -464,9 +466,9 @@ class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams(Dar
         self.spark_executor_memory = spark_executor_memory
         # The Spark log level.
         self.spark_log_level = spark_log_level
-        # The path to the task logs of the Spark node.
+        # The task logs path for the Spark node.
         self.spark_log_path = spark_log_path
-        # The database engine version of the Spark DPI engine.
+        # The Spark DPI engine database engine version.
         self.spark_version = spark_version
         # The data development task ID.
         # 
@@ -651,9 +653,13 @@ class CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLoca
         type: str = None,
         value: str = None,
     ):
+        # The parameter direction. Valid values: IN (input) and OUT (output).
         self.direct = direct
+        # The parameter name.
         self.prop = prop
+        # The data type of the parameter.
         self.type = type
+        # The parameter value.
         self.value = value
 
     def validate(self):
@@ -757,9 +763,13 @@ class CreateProcessDefinitionWithScheduleRequestGlobalParams(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The parameter direction. Valid values: IN (input) and OUT (output).
         self.direct = direct
+        # The parameter name.
         self.prop = prop
+        # The data type of the parameter.
         self.type = type
+        # The parameter value.
         self.value = value
 
     def validate(self):

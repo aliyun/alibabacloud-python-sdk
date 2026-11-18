@@ -12,13 +12,13 @@ class ListLogContentsRequest(DaraModel):
         offset: int = None,
         region_id: str = None,
     ):
-        # Full path of the file.
+        # The full path of the file.
         self.file_name = file_name
-        # Length of the log.
+        # The length of the log.
         self.length = length
-        # Start line for query.
+        # The starting line of the query.
         self.offset = offset
-        # Region ID.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

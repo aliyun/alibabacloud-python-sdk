@@ -12,7 +12,7 @@ class ListQueueTopJobsRequest(DaraModel):
     ):
         # The region ID.
         self.region_id = region_id
-        # The maximum number of jobs to return. The maximum value is 10.
+        # The maximum number of jobs to return. Maximum value: 10.
         self.top_n = top_n
 
     def validate(self):

@@ -11,7 +11,7 @@ class StopSessionClusterRequest(DaraModel):
         session_cluster_id: str = None,
         region_id: str = None,
     ):
-        # The queue name.
+        # The name of the queue.
         self.queue_name = queue_name
         # The session ID.
         self.session_cluster_id = session_cluster_id

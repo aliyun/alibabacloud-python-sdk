@@ -12,10 +12,13 @@ class UpdateRayClusterRequest(DaraModel):
         self,
         description: str = None,
         display_release_version: str = None,
+        enable_metrics_upload: bool = None,
         extra_param: str = None,
         head_spec: main_models.UpdateRayClusterRequestHeadSpec = None,
         name: str = None,
         network_service_name: str = None,
+        sls_log_store: str = None,
+        sls_project: str = None,
         volume_ids: List[str] = None,
         worker_spec: List[main_models.UpdateRayClusterRequestWorkerSpec] = None,
     ):
@@ -23,6 +26,7 @@ class UpdateRayClusterRequest(DaraModel):
         self.description = description
         # The Ray DPI engine version.
         self.display_release_version = display_release_version
+        self.enable_metrics_upload = enable_metrics_upload
         # The extra parameters. The value must be in JSON format.
         self.extra_param = extra_param
         # The head node information for the Ray cluster.
@@ -31,6 +35,8 @@ class UpdateRayClusterRequest(DaraModel):
         self.name = name
         # The network connection name.
         self.network_service_name = network_service_name
+        self.sls_log_store = sls_log_store
+        self.sls_project = sls_project
         # The list of managed directory IDs to mount.
         self.volume_ids = volume_ids
         # The worker node information for the Ray cluster. A maximum of 50 worker groups are supported.
@@ -55,6 +61,9 @@ class UpdateRayClusterRequest(DaraModel):
         if self.display_release_version is not None:
             result['displayReleaseVersion'] = self.display_release_version
 
+        if self.enable_metrics_upload is not None:
+            result['enableMetricsUpload'] = self.enable_metrics_upload
+
         if self.extra_param is not None:
             result['extraParam'] = self.extra_param
 
@@ -66,6 +75,12 @@ class UpdateRayClusterRequest(DaraModel):
 
         if self.network_service_name is not None:
             result['networkServiceName'] = self.network_service_name
+
+        if self.sls_log_store is not None:
+            result['slsLogStore'] = self.sls_log_store
+
+        if self.sls_project is not None:
+            result['slsProject'] = self.sls_project
 
         if self.volume_ids is not None:
             result['volumeIds'] = self.volume_ids
@@ -85,6 +100,9 @@ class UpdateRayClusterRequest(DaraModel):
         if m.get('displayReleaseVersion') is not None:
             self.display_release_version = m.get('displayReleaseVersion')
 
+        if m.get('enableMetricsUpload') is not None:
+            self.enable_metrics_upload = m.get('enableMetricsUpload')
+
         if m.get('extraParam') is not None:
             self.extra_param = m.get('extraParam')
 
@@ -97,6 +115,12 @@ class UpdateRayClusterRequest(DaraModel):
 
         if m.get('networkServiceName') is not None:
             self.network_service_name = m.get('networkServiceName')
+
+        if m.get('slsLogStore') is not None:
+            self.sls_log_store = m.get('slsLogStore')
+
+        if m.get('slsProject') is not None:
+            self.sls_project = m.get('slsProject')
 
         if m.get('volumeIds') is not None:
             self.volume_ids = m.get('volumeIds')
@@ -115,6 +139,7 @@ class UpdateRayClusterRequestWorkerSpec(DaraModel):
         cpu: str = None,
         display_release_version: str = None,
         env: str = None,
+        gpu_driver_version: str = None,
         gpu_spec: str = None,
         group_name: str = None,
         max_replica: int = None,
@@ -131,6 +156,7 @@ class UpdateRayClusterRequestWorkerSpec(DaraModel):
         self.display_release_version = display_release_version
         # The Ray environment variables.
         self.env = env
+        self.gpu_driver_version = gpu_driver_version
         # The GPU instance type.
         self.gpu_spec = gpu_spec
         # The worker group name.
@@ -166,6 +192,9 @@ class UpdateRayClusterRequestWorkerSpec(DaraModel):
 
         if self.env is not None:
             result['env'] = self.env
+
+        if self.gpu_driver_version is not None:
+            result['gpuDriverVersion'] = self.gpu_driver_version
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -207,6 +236,9 @@ class UpdateRayClusterRequestWorkerSpec(DaraModel):
         if m.get('env') is not None:
             self.env = m.get('env')
 
+        if m.get('gpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('gpuDriverVersion')
+
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
 
@@ -245,6 +277,7 @@ class UpdateRayClusterRequestHeadSpec(DaraModel):
         env: str = None,
         gft_config: main_models.UpdateRayClusterRequestHeadSpecGftConfig = None,
         gft_enabled: bool = None,
+        gpu_driver_version: str = None,
         gpu_spec: str = None,
         idle_timeout_seconds: int = None,
         memory: str = None,
@@ -263,6 +296,7 @@ class UpdateRayClusterRequestHeadSpec(DaraModel):
         self.gft_config = gft_config
         # Specifies whether to enable GCS fault tolerance.
         self.gft_enabled = gft_enabled
+        self.gpu_driver_version = gpu_driver_version
         # The GPU instance type.
         self.gpu_spec = gpu_spec
         # The idle timeout period for workers after auto scaling is enabled.
@@ -301,6 +335,9 @@ class UpdateRayClusterRequestHeadSpec(DaraModel):
         if self.gft_enabled is not None:
             result['gftEnabled'] = self.gft_enabled
 
+        if self.gpu_driver_version is not None:
+            result['gpuDriverVersion'] = self.gpu_driver_version
+
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
 
@@ -338,6 +375,9 @@ class UpdateRayClusterRequestHeadSpec(DaraModel):
 
         if m.get('gftEnabled') is not None:
             self.gft_enabled = m.get('gftEnabled')
+
+        if m.get('gpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('gpuDriverVersion')
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')

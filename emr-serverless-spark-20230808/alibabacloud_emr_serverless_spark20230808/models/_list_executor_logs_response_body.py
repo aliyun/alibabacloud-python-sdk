@@ -16,9 +16,9 @@ class ListExecutorLogsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The retrieved logs, sorted in contextual order. This parameter is empty if no contextual logs are found in the log query based on the specified starting log.
+        # The retrieved logs, sorted in contextual order. This parameter is empty if no contextual logs are found based on the specified starting log query.
         self.logs = logs
-        # The maximum number of records to return in a single request.
+        # The maximum number of records to retrieve at a time.
         self.max_results = max_results
         # The next token.
         self.next_token = next_token
@@ -88,7 +88,7 @@ class ListExecutorLogsResponseBodyLogs(DaraModel):
         log_type: str = None,
         update_time: int = None,
     ):
-        # The full file path.
+        # The full path of the file.
         self.file_name = file_name
         # The file size.
         self.file_size = file_size

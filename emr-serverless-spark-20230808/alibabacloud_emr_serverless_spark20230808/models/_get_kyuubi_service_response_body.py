@@ -48,6 +48,7 @@ class GetKyuubiServiceResponseBodyData(DaraModel):
     def __init__(
         self,
         compute_instance: str = None,
+        config_refresh_required: bool = None,
         create_time: str = None,
         creator: str = None,
         inner_endpoint: str = None,
@@ -58,6 +59,7 @@ class GetKyuubiServiceResponseBodyData(DaraModel):
         public_endpoint: str = None,
         public_endpoint_enabled: bool = None,
         queue: str = None,
+        ready_replicas: int = None,
         release_version: str = None,
         replica: int = None,
         spark_configs: str = None,
@@ -66,35 +68,39 @@ class GetKyuubiServiceResponseBodyData(DaraModel):
     ):
         # The Kyuubi service specifications.
         self.compute_instance = compute_instance
+        # Indicates whether the Kyuubi configuration needs to be updated.
+        self.config_refresh_required = config_refresh_required
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The UID of the creator.
         self.creator = creator
-        # The internal network domain name.
+        # The internal domain name.
         self.inner_endpoint = inner_endpoint
-        # The Kyuubi service configuration.
+        # The Kyuubi service configurations.
         self.kyuubi_configs = kyuubi_configs
         # The Kyuubi service DPI engine version.
         self.kyuubi_release_version = kyuubi_release_version
-        # Kyuubi Service ID。
+        # The Kyuubi service ID.
         self.kyuubi_service_id = kyuubi_service_id
         # The Kyuubi service name.
         self.name = name
         # The public domain name.
         self.public_endpoint = public_endpoint
-        # Specifies whether public network access is enabled.
+        # Indicates whether public network access is enabled.
         self.public_endpoint_enabled = public_endpoint_enabled
         # The queue name.
         self.queue = queue
+        # The ready Kyuubi instances.
+        self.ready_replicas = ready_replicas
         # The Spark DPI engine version.
         self.release_version = release_version
-        # The number of replicas enabled for high availability.
+        # The number of high availability replicas.
         self.replica = replica
-        # The Spark configuration.
+        # The Spark configurations.
         self.spark_configs = spark_configs
         # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The Kyuubi service status.
+        # The Kyuubi service state.
         self.state = state
 
     def validate(self):
@@ -107,6 +113,9 @@ class GetKyuubiServiceResponseBodyData(DaraModel):
             result = _map
         if self.compute_instance is not None:
             result['computeInstance'] = self.compute_instance
+
+        if self.config_refresh_required is not None:
+            result['configRefreshRequired'] = self.config_refresh_required
 
         if self.create_time is not None:
             result['createTime'] = self.create_time
@@ -138,6 +147,9 @@ class GetKyuubiServiceResponseBodyData(DaraModel):
         if self.queue is not None:
             result['queue'] = self.queue
 
+        if self.ready_replicas is not None:
+            result['readyReplicas'] = self.ready_replicas
+
         if self.release_version is not None:
             result['releaseVersion'] = self.release_version
 
@@ -159,6 +171,9 @@ class GetKyuubiServiceResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('computeInstance') is not None:
             self.compute_instance = m.get('computeInstance')
+
+        if m.get('configRefreshRequired') is not None:
+            self.config_refresh_required = m.get('configRefreshRequired')
 
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
@@ -189,6 +204,9 @@ class GetKyuubiServiceResponseBodyData(DaraModel):
 
         if m.get('queue') is not None:
             self.queue = m.get('queue')
+
+        if m.get('readyReplicas') is not None:
+            self.ready_replicas = m.get('readyReplicas')
 
         if m.get('releaseVersion') is not None:
             self.release_version = m.get('releaseVersion')

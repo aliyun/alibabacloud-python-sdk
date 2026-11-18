@@ -16,6 +16,7 @@ class UpdateLivyComputeRequest(DaraModel):
         enable_public: bool = None,
         environment_id: str = None,
         fusion: bool = None,
+        livy_release_version: str = None,
         livy_server_conf: str = None,
         livy_version: str = None,
         memory_limit: str = None,
@@ -31,43 +32,41 @@ class UpdateLivyComputeRequest(DaraModel):
         self.auto_start_configuration = auto_start_configuration
         # The auto-stop configuration.
         self.auto_stop_configuration = auto_stop_configuration
-        # The number of vCPUs for the Livy server.
-        # 
+        # The number of CPU cores for the Livy server.
         # - 1
-        # 
         # - 2
-        # 
         # - 4
         self.cpu_limit = cpu_limit
-        # The version number of the Spark engine.
+        # The Spark DPI engine database engine version number.
         self.display_release_version = display_release_version
-        # The status of the switch for the Internet endpoint.
+        # The status of the public endpoint switch.
         self.enable_public = enable_public
-        # The environment ID.
+        # The runtime environment ID.
         self.environment_id = environment_id
-        # Specifies whether to enable the Fusion engine for acceleration.
+        # Specifies whether to enable Fusion engine acceleration.
         self.fusion = fusion
-        # The configurations of the Livy Gateway. This parameter is in JSON format and supports the following files:
+        self.livy_release_version = livy_release_version
+        # The Livy gateway configuration in JSON format. The following files are supported:
         # 
         # - sparkDefaultsConf
-        # 
         # - sparkBlackListConf
-        # 
         # - livyConf
-        # 
         # - livyClientConf
         self.livy_server_conf = livy_server_conf
         # The Livy version.
         self.livy_version = livy_version
         # The memory size of the Livy server.
+        # - 4Gi
+        # - 8Gi
+        # - 16Gi
         self.memory_limit = memory_limit
         # The name.
         self.name = name
-        # The name of the network connection.
+        # The network connectivity name.
         self.network_name = network_name
         # The queue name.
         self.queue_name = queue_name
-        # The version number of the Spark engine. This parameter is deprecated. Use displayReleaseVersion instead.
+        # **[Deprecated]** The Spark DPI engine database engine version number. Use displayReleaseVersion instead.
         self.release_version = release_version
         # The region ID.
         self.region_id = region_id
@@ -106,6 +105,9 @@ class UpdateLivyComputeRequest(DaraModel):
 
         if self.fusion is not None:
             result['fusion'] = self.fusion
+
+        if self.livy_release_version is not None:
+            result['livyReleaseVersion'] = self.livy_release_version
 
         if self.livy_server_conf is not None:
             result['livyServerConf'] = self.livy_server_conf
@@ -161,6 +163,9 @@ class UpdateLivyComputeRequest(DaraModel):
         if m.get('fusion') is not None:
             self.fusion = m.get('fusion')
 
+        if m.get('livyReleaseVersion') is not None:
+            self.livy_release_version = m.get('livyReleaseVersion')
+
         if m.get('livyServerConf') is not None:
             self.livy_server_conf = m.get('livyServerConf')
 
@@ -193,13 +198,11 @@ class UpdateLivyComputeRequestAutoStopConfiguration(DaraModel):
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
-        # Specifies whether to enable auto-stop for the Livy Gateway.
-        # 
+        # Specifies whether to allow automatic stopping.
         # - true: Yes.
-        # 
         # - false: No.
         self.enable = enable
-        # The number of minutes after which the Livy Gateway is automatically stopped if it is idle.
+        # The number of idle minutes after which the Livy gateway is automatically stopped.
         self.idle_timeout_minutes = idle_timeout_minutes
 
     def validate(self):
@@ -233,10 +236,8 @@ class UpdateLivyComputeRequestAutoStartConfiguration(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Specifies whether to automatically start the Livy Gateway after it is created.
-        # 
+        # Specifies whether to automatically start the gateway after creation.
         # - true: Yes.
-        # 
         # - false: No.
         self.enable = enable
 

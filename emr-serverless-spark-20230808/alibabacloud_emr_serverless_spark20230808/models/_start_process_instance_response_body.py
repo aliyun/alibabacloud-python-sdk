@@ -17,19 +17,19 @@ class StartProcessInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The return code of the API request backend.
+        # The backend return code for the API request.
         self.code = code
         # The returned data.
         self.data = data
-        # Indicates whether the manual workflow run failed.
+        # Specifies whether the manual workflow run failed.
         self.failed = failed
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The detailed description corresponding to the request code.
+        # The detailed description corresponding to the return code.
         self.msg = msg
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

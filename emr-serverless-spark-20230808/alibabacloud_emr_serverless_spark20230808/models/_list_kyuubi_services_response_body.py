@@ -13,7 +13,7 @@ class ListKyuubiServicesResponseBody(DaraModel):
         data: main_models.ListKyuubiServicesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -51,7 +51,7 @@ class ListKyuubiServicesResponseBodyData(DaraModel):
         self,
         kyuubi_services: List[main_models.ListKyuubiServicesResponseBodyDataKyuubiServices] = None,
     ):
-        # The list of Kyuubi servers.
+        # The list of KyuubiServers.
         self.kyuubi_services = kyuubi_services
 
     def validate(self):
@@ -86,6 +86,7 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(DaraModel):
     def __init__(
         self,
         compute_instance: str = None,
+        config_refresh_required: bool = None,
         create_time: str = None,
         creator: str = None,
         inner_endpoint: str = None,
@@ -102,35 +103,37 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(DaraModel):
         state: str = None,
         web_ui: str = None,
     ):
-        # The instance specifications of the Kyuubi server.
+        # The instance type of the KyuubiServer.
         self.compute_instance = compute_instance
-        # The creation time. The time is in UTC and follows the ISO 8601 standard.
+        # Indicates whether the Kyuubi configuration needs to be updated.
+        self.config_refresh_required = config_refresh_required
+        # The creation time. The time is in UTC and follows the ISO 8601 format.
         self.create_time = create_time
         # The UID of the creator.
         self.creator = creator
         # The internal domain name.
         self.inner_endpoint = inner_endpoint
-        # The Kyuubi server configurations.
+        # The KyuubiServer configurations.
         self.kyuubi_configs = kyuubi_configs
-        # The version of the Kyuubi server.
+        # The version of the KyuubiServer.
         self.kyuubi_release_version = kyuubi_release_version
         # The KyuubiServer ID.
         self.kyuubi_service_id = kyuubi_service_id
-        # The name of the Kyuubi server.
+        # The name of the KyuubiServer.
         self.name = name
         # The public domain name.
         self.public_endpoint = public_endpoint
         # The name of the queue.
         self.queue = queue
-        # The Spark DPI engine version.
+        # The database engine version number of the Spark DPI engine.
         self.release_version = release_version
-        # The number of replicas of the Kyuubi server.
+        # The number of replicas for the KyuubiServer.
         self.replica = replica
-        # The default configurations for the Kyuubi server to start a Spark application.
+        # The default configurations for KyuubiServer to start Spark applications.
         self.spark_configs = spark_configs
-        # The most recent start time of the Kyuubi server. The format is YYYY-MM-DD HH:mm:ss.
+        # The most recent start time of the KyuubiServer. The time is formatted as YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The state of the Kyuubi server.
+        # The state of the KyuubiServer.
         self.state = state
         # The WebUI of the Kyuubi Gateway.
         self.web_ui = web_ui
@@ -145,6 +148,9 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(DaraModel):
             result = _map
         if self.compute_instance is not None:
             result['computeInstance'] = self.compute_instance
+
+        if self.config_refresh_required is not None:
+            result['configRefreshRequired'] = self.config_refresh_required
 
         if self.create_time is not None:
             result['createTime'] = self.create_time
@@ -197,6 +203,9 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(DaraModel):
         m = m or dict()
         if m.get('computeInstance') is not None:
             self.compute_instance = m.get('computeInstance')
+
+        if m.get('configRefreshRequired') is not None:
+            self.config_refresh_required = m.get('configRefreshRequired')
 
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')

@@ -11,7 +11,7 @@ class RefreshLivyComputeTokenResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code. A value of 1000000 indicates that the request was successful. For other values, the request failed. For more information, see the message parameter.
+        # The response code. A value of 1000000 indicates a successful request. Other values indicate a failed request. For details about the cause of the error, see the message.
         self.code = code
         # The error message.
         self.message = message

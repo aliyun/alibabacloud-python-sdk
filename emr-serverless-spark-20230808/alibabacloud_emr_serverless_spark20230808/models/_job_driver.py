@@ -12,7 +12,7 @@ class JobDriver(DaraModel):
         self,
         spark_submit: main_models.JobDriverSparkSubmit = None,
     ):
-        # The configurations of SparkSubmit.
+        # The SparkSubmit configuration information.
         self.spark_submit = spark_submit
 
     def validate(self):
@@ -44,11 +44,11 @@ class JobDriverSparkSubmit(DaraModel):
         entry_point_arguments: List[str] = None,
         spark_submit_parameters: str = None,
     ):
-        # The main program of Spark.
+        # The Spark main program.
         self.entry_point = entry_point
-        # The parameters related to the main program of Spark.
+        # The list of arguments for the Spark main program.
         self.entry_point_arguments = entry_point_arguments
-        # The command-line parameter of SparkSubmit.
+        # The SparkSubmit command-line parameters.
         self.spark_submit_parameters = spark_submit_parameters
 
     def validate(self):

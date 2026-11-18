@@ -13,7 +13,7 @@ class ListRayClusterResponseBody(DaraModel):
         ray_clusters: List[main_models.ListRayClusterResponseBodyRayClusters] = None,
         request_id: str = None,
     ):
-        # The list of Ray clusters.
+        # The Ray clusters.
         self.ray_clusters = ray_clusters
         # The request ID.
         self.request_id = request_id
@@ -89,9 +89,9 @@ class ListRayClusterResponseBodyRayClusters(DaraModel):
         self.dashboard_url = dashboard_url
         # The description.
         self.description = description
-        # The Ray DPI engine version.
+        # The Ray engine version.
         self.display_release_version = display_release_version
-        # The internal gRPC endpoint. You can also use the domain name to submit Ray jobs.
+        # The gRPC endpoint on the internal network. The domain name can also be used to submit Ray jobs.
         self.grpc_endpoint = grpc_endpoint
         # The head node information of the Ray cluster.
         self.head_spec = head_spec
@@ -109,7 +109,7 @@ class ListRayClusterResponseBodyRayClusters(DaraModel):
         self.modifier_name = modifier_name
         # The name of the Ray cluster.
         self.name = name
-        # The network connectivity name.
+        # The network connection name.
         self.network_service_name = network_service_name
         # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
@@ -122,7 +122,7 @@ class ListRayClusterResponseBodyRayClusters(DaraModel):
         self.state = state
         # The Alibaba Cloud account ID.
         self.user_id = user_id
-        # The worker information of the Ray cluster.
+        # The worker node information of the Ray cluster.
         self.worker_spec = worker_spec
 
     def validate(self):
@@ -295,17 +295,17 @@ class ListRayClusterResponseBodyRayClustersWorkerSpec(DaraModel):
         self.gpu_spec = gpu_spec
         # The name of the worker group.
         self.group_name = group_name
-        # The maximum number of workers when auto scaling is enabled.
+        # The maximum number of worker nodes when auto-scaling is enabled.
         self.max_replica = max_replica
-        # The memory size, in GiB.
+        # The memory size. Unit: Gi.
         self.memory = memory
-        # The minimum number of workers when auto scaling is enabled.
+        # The minimum number of worker nodes when auto-scaling is enabled.
         self.min_replica = min_replica
-        # The name of the queue.
+        # The queue name.
         self.queue_name = queue_name
         # The number of nodes.
         self.replica = replica
-        # The type of the worker.
+        # The worker type.
         self.worker_type = worker_type
 
     def validate(self):
@@ -389,15 +389,15 @@ class ListRayClusterResponseBodyRayClustersHeadSpec(DaraModel):
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # Specifies whether auto scaling is enabled for worker nodes.
+        # Specifies whether auto-scaling is enabled for worker nodes.
         self.enable_auto_scaling = enable_auto_scaling
         # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The idle timeout for worker nodes, in seconds.
+        # The idle timeout for worker nodes.
         self.idle_timeout_seconds = idle_timeout_seconds
-        # The memory size, in GiB.
+        # The memory size. Unit: Gi.
         self.memory = memory
-        # The name of the queue.
+        # The queue name.
         self.queue_name = queue_name
         # The number of nodes.
         self.replica = replica

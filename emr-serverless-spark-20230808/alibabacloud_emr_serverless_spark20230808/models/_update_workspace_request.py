@@ -21,7 +21,7 @@ class UpdateWorkspaceRequest(DaraModel):
         workspace_name: str = None,
         region_id: str = None,
     ):
-        # The resource limit of the workspace.
+        # The resource limit for the workspace.
         self.cu = cu
         # The number of GPUs.
         self.gpu = gpu
@@ -29,7 +29,7 @@ class UpdateWorkspaceRequest(DaraModel):
         self.gpu_spec = gpu_spec
         # The GPU subscription information.
         self.gpu_subscription = gpu_subscription
-        # The workspace IP address whitelist.
+        # The IP address whitelist of the workspace.
         self.ip_white_list = ip_white_list
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -130,21 +130,24 @@ class UpdateWorkspaceRequestSubscription(DaraModel):
         client_token: str = None,
         duration: str = None,
         payment_duration_unit: str = None,
+        promotion_option_no: str = None,
         queue: List[str] = None,
     ):
         # Specifies whether to enable auto-renewal. This parameter is required for the subscription billing method.
         self.auto_renew = auto_renew
         # The auto-renewal period. This parameter is required for the subscription billing method.
         self.auto_renew_period = auto_renew_period
-        # The auto-renewal cycle. This parameter is required for the subscription billing method.
+        # The auto-renewal epoch. This parameter is required for the subscription billing method.
         self.auto_renew_period_unit = auto_renew_period_unit
-        # The client token for idempotency verification.
+        # The client token for idempotence verification.
         self.client_token = client_token
         # The number of subscription periods. This parameter is required for the subscription billing method.
         self.duration = duration
         # The subscription period unit.
         self.payment_duration_unit = payment_duration_unit
-        # The list of running queues to be switched.
+        # Supported only when you switch the billing method of CUs from pay-as-you-go to subscription. Use the voucher option ID returned by the price inquiry API. To not use a voucher, set this parameter to youhuiquan_promotion_option_id_for_blank. If you omit this parameter, the previous call behavior is retained.
+        self.promotion_option_no = promotion_option_no
+        # The list of running queues to be converted.
         self.queue = queue
 
     def validate(self):
@@ -173,6 +176,9 @@ class UpdateWorkspaceRequestSubscription(DaraModel):
         if self.payment_duration_unit is not None:
             result['paymentDurationUnit'] = self.payment_duration_unit
 
+        if self.promotion_option_no is not None:
+            result['promotionOptionNo'] = self.promotion_option_no
+
         if self.queue is not None:
             result['queue'] = self.queue
 
@@ -198,6 +204,9 @@ class UpdateWorkspaceRequestSubscription(DaraModel):
         if m.get('paymentDurationUnit') is not None:
             self.payment_duration_unit = m.get('paymentDurationUnit')
 
+        if m.get('promotionOptionNo') is not None:
+            self.promotion_option_no = m.get('promotionOptionNo')
+
         if m.get('queue') is not None:
             self.queue = m.get('queue')
 
@@ -213,6 +222,7 @@ class UpdateWorkspaceRequestGpuSubscription(DaraModel):
         instance_type_id: str = None,
         operation: str = None,
         payment_duration_unit: str = None,
+        promotion_option_no: str = None,
     ):
         # Specifies whether to enable auto-renewal.
         self.auto_renew = auto_renew
@@ -224,10 +234,12 @@ class UpdateWorkspaceRequestGpuSubscription(DaraModel):
         self.instance_id = instance_id
         # The GPU instance type.
         self.instance_type_id = instance_type_id
-        # The operation type. Valid values: BUY and UPGRADE. BUY indicates a new purchase, and UPGRADE indicates an upgrade. If you set this parameter to UPGRADE, you must specify the orderId parameter. Default value: BUY.
+        # The operation type. Valid values: BUY and UPGRADE. BUY indicates a new purchase. UPGRADE indicates an upgrade. If you set this parameter to UPGRADE, you must specify the orderId parameter. Default value: BUY.
         self.operation = operation
         # The subscription period unit.
         self.payment_duration_unit = payment_duration_unit
+        # Supported only for new GPU subscription purchases (BUY). Not supported for upgrades (UPGRADE). Use the voucher option ID returned by the price inquiry API. To not use a voucher, set this parameter to youhuiquan_promotion_option_id_for_blank. If you omit this parameter, the previous call behavior is retained.
+        self.promotion_option_no = promotion_option_no
 
     def validate(self):
         pass
@@ -258,6 +270,9 @@ class UpdateWorkspaceRequestGpuSubscription(DaraModel):
         if self.payment_duration_unit is not None:
             result['paymentDurationUnit'] = self.payment_duration_unit
 
+        if self.promotion_option_no is not None:
+            result['promotionOptionNo'] = self.promotion_option_no
+
         return result
 
     def from_map(self, m: dict = None):
@@ -282,6 +297,9 @@ class UpdateWorkspaceRequestGpuSubscription(DaraModel):
 
         if m.get('paymentDurationUnit') is not None:
             self.payment_duration_unit = m.get('paymentDurationUnit')
+
+        if m.get('promotionOptionNo') is not None:
+            self.promotion_option_no = m.get('promotionOptionNo')
 
         return self
 

@@ -18,7 +18,7 @@ class ListKyuubiSparkApplicationsResponseBody(DaraModel):
     ):
         # The list of application details.
         self.applications = applications
-        # The maximum number of records to retrieve at a time.
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
         # The token for the next page.
         self.next_token = next_token
@@ -96,6 +96,7 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(DaraModel):
         start_time: str = None,
         state: str = None,
         tags: List[main_models.Tag] = None,
+        user_name: str = None,
         vcore_seconds: int = None,
         web_ui: str = None,
     ):
@@ -103,34 +104,36 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(DaraModel):
         self.application_id = application_id
         # The name of the Spark application submitted by Kyuubi.
         self.application_name = application_name
-        # The number of compute units (CUs) consumed during the task execution. This value is an estimate. The actual value is subject to the bill.
+        # The number of compute units (CUs) consumed during the task runtime. This value is an estimate. The final value is subject to the bill.
         self.cu_hours = cu_hours
-        # The end time of the task. The format is YYYY-MM-DD HH:mm:ss.
+        # The end time of the task. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
         # The exit reason of the application.
         self.exit_reason = exit_reason
         # The ID of the Kyuubi service that submitted the Spark application.
         self.kyuubi_service_id = kyuubi_service_id
-        # The execution status of the latest SQL statement in the application.
+        # The execution status of the most recent SQL statement in the application.
         self.latest_sql_statement_status = latest_sql_statement_status
-        # The total memory allocated to the task multiplied by the task execution duration in seconds.
+        # The total memory allocated to the task multiplied by the number of seconds the task has run.
         self.mb_seconds = mb_seconds
         # The priority of the Spark application.
         self.priority = priority
-        # The name of the resource queue in which the Spark task runs.
+        # The name of the resource queue where the Spark task runs.
         self.resource_queue_id = resource_queue_id
         # The application log.
         self.run_log = run_log
-        # The start time of the task. The format is YYYY-MM-DD HH:mm:ss.
+        # The start time of the task. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The state of the Spark application. Valid values:
-        # - STARTING: The application is starting.
-        # - RUNNING: The application is running.
-        # - TERMINATED: The application is terminated.
+        # The status of the Spark application. Valid values:
+        # - STARTING: Starting.
+        # - RUNNING: Running.
+        # - TERMINATED: Terminated.
         self.state = state
         # The list of tags for the Spark application.
         self.tags = tags
-        # The total number of vcores allocated to the task multiplied by the task execution duration in seconds.
+        # The username.
+        self.user_name = user_name
+        # The total vcores allocated to the task multiplied by the number of seconds the task has run.
         self.vcore_seconds = vcore_seconds
         # The URL of the Spark application UI.
         self.web_ui = web_ui
@@ -192,6 +195,9 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(DaraModel):
             for k1 in self.tags:
                 result['tags'].append(k1.to_map() if k1 else None)
 
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+
         if self.vcore_seconds is not None:
             result['vcoreSeconds'] = self.vcore_seconds
 
@@ -247,6 +253,9 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(DaraModel):
             for k1 in m.get('tags'):
                 temp_model = main_models.Tag()
                 self.tags.append(temp_model.from_map(k1))
+
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
 
         if m.get('vcoreSeconds') is not None:
             self.vcore_seconds = m.get('vcoreSeconds')

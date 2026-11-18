@@ -12,28 +12,37 @@ class CreateRayClusterRequest(DaraModel):
         self,
         description: str = None,
         display_release_version: str = None,
+        enable_metrics_upload: bool = None,
         extra_param: str = None,
         head_spec: main_models.CreateRayClusterRequestHeadSpec = None,
         name: str = None,
         network_service_name: str = None,
+        sls_log_store: str = None,
+        sls_project: str = None,
         volume_ids: List[str] = None,
         worker_spec: List[main_models.CreateRayClusterRequestWorkerSpec] = None,
     ):
         # The description.
         self.description = description
-        # The Ray DPI engine version.
+        # The Ray database engine version.
         self.display_release_version = display_release_version
+        # Specifies whether to upload metrics.
+        self.enable_metrics_upload = enable_metrics_upload
         # The extra parameters. The value must be in JSON format.
         self.extra_param = extra_param
-        # The parameters of the Ray cluster head node.
+        # The head node parameters of the Ray cluster.
         self.head_spec = head_spec
         # The name of the Ray cluster. The name must be 1 to 64 characters in length.
         self.name = name
-        # The network connectivity name.
+        # The name of the network connectivity.
         self.network_service_name = network_service_name
-        # The list of managed directory IDs to mount.
+        # The SLS Logstore for uploading metrics.
+        self.sls_log_store = sls_log_store
+        # The SLS project for uploading metrics.
+        self.sls_project = sls_project
+        # The IDs of the managed directories to mount.
         self.volume_ids = volume_ids
-        # The parameters of the Ray cluster worker nodes. A maximum of 50 groups are supported.
+        # The worker node parameters of the Ray cluster. You can configure up to 50 groups.
         self.worker_spec = worker_spec
 
     def validate(self):
@@ -55,6 +64,9 @@ class CreateRayClusterRequest(DaraModel):
         if self.display_release_version is not None:
             result['displayReleaseVersion'] = self.display_release_version
 
+        if self.enable_metrics_upload is not None:
+            result['enableMetricsUpload'] = self.enable_metrics_upload
+
         if self.extra_param is not None:
             result['extraParam'] = self.extra_param
 
@@ -66,6 +78,12 @@ class CreateRayClusterRequest(DaraModel):
 
         if self.network_service_name is not None:
             result['networkServiceName'] = self.network_service_name
+
+        if self.sls_log_store is not None:
+            result['slsLogStore'] = self.sls_log_store
+
+        if self.sls_project is not None:
+            result['slsProject'] = self.sls_project
 
         if self.volume_ids is not None:
             result['volumeIds'] = self.volume_ids
@@ -85,6 +103,9 @@ class CreateRayClusterRequest(DaraModel):
         if m.get('displayReleaseVersion') is not None:
             self.display_release_version = m.get('displayReleaseVersion')
 
+        if m.get('enableMetricsUpload') is not None:
+            self.enable_metrics_upload = m.get('enableMetricsUpload')
+
         if m.get('extraParam') is not None:
             self.extra_param = m.get('extraParam')
 
@@ -97,6 +118,12 @@ class CreateRayClusterRequest(DaraModel):
 
         if m.get('networkServiceName') is not None:
             self.network_service_name = m.get('networkServiceName')
+
+        if m.get('slsLogStore') is not None:
+            self.sls_log_store = m.get('slsLogStore')
+
+        if m.get('slsProject') is not None:
+            self.sls_project = m.get('slsProject')
 
         if m.get('volumeIds') is not None:
             self.volume_ids = m.get('volumeIds')
@@ -115,6 +142,7 @@ class CreateRayClusterRequestWorkerSpec(DaraModel):
         cpu: str = None,
         display_release_version: str = None,
         env: str = None,
+        gpu_driver_version: str = None,
         gpu_spec: str = None,
         group_name: str = None,
         max_replica: int = None,
@@ -127,23 +155,25 @@ class CreateRayClusterRequestWorkerSpec(DaraModel):
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # The engine version. If this parameter is not specified, the value is the same as that of the head node.
+        # The engine name. If you do not specify this parameter, it is the same as that of the head node.
         self.display_release_version = display_release_version
         # The environment variables.
         self.env = env
-        # The GPU model.
+        # The GPU driver version.
+        self.gpu_driver_version = gpu_driver_version
+        # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The worker group name.
+        # The name of the worker group.
         self.group_name = group_name
-        # The maximum number of workers after automatic scaling is enabled. Minimum value: 1.
+        # The maximum number of workers after auto-scaling is enabled. Minimum value: 1.
         self.max_replica = max_replica
-        # The memory size. Unit: Gi.
+        # The memory size. Unit: GiB.
         self.memory = memory
-        # The minimum number of workers after automatic scaling is enabled. Minimum value: 1. The value must be less than or equal to maxReplica.
+        # The minimum number of workers after auto-scaling is enabled. Minimum value: 1. The value must be less than or equal to maxReplica.
         self.min_replica = min_replica
-        # The queue name.
+        # The name of the queue.
         self.queue_name = queue_name
-        # The Ray node startup parameters.
+        # The startup parameters for the Ray node.
         self.ray_start_params = ray_start_params
         # The number of workers. Minimum value: 1.
         self.replica = replica
@@ -166,6 +196,9 @@ class CreateRayClusterRequestWorkerSpec(DaraModel):
 
         if self.env is not None:
             result['env'] = self.env
+
+        if self.gpu_driver_version is not None:
+            result['gpuDriverVersion'] = self.gpu_driver_version
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -207,6 +240,9 @@ class CreateRayClusterRequestWorkerSpec(DaraModel):
         if m.get('env') is not None:
             self.env = m.get('env')
 
+        if m.get('gpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('gpuDriverVersion')
+
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
 
@@ -245,6 +281,7 @@ class CreateRayClusterRequestHeadSpec(DaraModel):
         env: str = None,
         gft_config: main_models.CreateRayClusterRequestHeadSpecGftConfig = None,
         gft_enabled: bool = None,
+        gpu_driver_version: str = None,
         gpu_spec: str = None,
         idle_timeout_seconds: int = None,
         memory: str = None,
@@ -253,25 +290,27 @@ class CreateRayClusterRequestHeadSpec(DaraModel):
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # The Ray DPI engine version.
+        # The Ray database engine version.
         self.display_release_version = display_release_version
-        # Specifies whether to enable automatic scaling for workers.
+        # Specifies whether to enable auto-scaling for worker nodes.
         self.enable_auto_scaling = enable_auto_scaling
         # The environment variables.
         self.env = env
-        # The GCS Fault Tolerance configuration.
+        # The GCS fault tolerance configuration.
         self.gft_config = gft_config
-        # Specifies whether to enable GCS Fault Tolerance.
+        # Specifies whether to enable Global Control Store (GCS) fault tolerance.
         self.gft_enabled = gft_enabled
-        # The GPU model.
+        # The GPU driver version.
+        self.gpu_driver_version = gpu_driver_version
+        # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The idle timeout period of workers after automatic scaling is enabled.
+        # The idle timeout for worker nodes after auto-scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
-        # The memory size. Unit: Gi.
+        # The memory size. Unit: GiB.
         self.memory = memory
-        # The queue name.
+        # The name of the queue.
         self.queue_name = queue_name
-        # The Ray node startup parameters.
+        # The startup parameters for the Ray node.
         self.ray_start_params = ray_start_params
 
     def validate(self):
@@ -300,6 +339,9 @@ class CreateRayClusterRequestHeadSpec(DaraModel):
 
         if self.gft_enabled is not None:
             result['gftEnabled'] = self.gft_enabled
+
+        if self.gpu_driver_version is not None:
+            result['gpuDriverVersion'] = self.gpu_driver_version
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -338,6 +380,9 @@ class CreateRayClusterRequestHeadSpec(DaraModel):
 
         if m.get('gftEnabled') is not None:
             self.gft_enabled = m.get('gftEnabled')
+
+        if m.get('gpuDriverVersion') is not None:
+            self.gpu_driver_version = m.get('gpuDriverVersion')
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')

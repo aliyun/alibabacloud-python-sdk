@@ -3,6 +3,9 @@
 from __future__ import annotations
 
 from ._artifact import Artifact
+from ._batch_edit_queue_spec import BatchEditQueueSpec
+from ._batch_edit_workspace_queues_body import BatchEditWorkspaceQueuesBody
+from ._batch_edit_workspace_queues_receipt import BatchEditWorkspaceQueuesReceipt
 from ._cache_cluster import CacheCluster
 from ._category import Category
 from ._configuration import Configuration
@@ -12,6 +15,7 @@ from ._job_driver import JobDriver
 from ._kerberos_conf import KerberosConf
 from ._principal_action import PrincipalAction
 from ._release_version_image import ReleaseVersionImage
+from ._resource_spec import ResourceSpec
 from ._run_log import RunLog
 from ._spark_conf import SparkConf
 from ._sql_output import SqlOutput
@@ -201,6 +205,9 @@ from ._list_ray_job_response import ListRayJobResponse
 from ._list_ray_logs_request import ListRayLogsRequest
 from ._list_ray_logs_response_body import ListRayLogsResponseBody
 from ._list_ray_logs_response import ListRayLogsResponse
+from ._list_regions_request import ListRegionsRequest
+from ._list_regions_response_body import ListRegionsResponseBody
+from ._list_regions_response import ListRegionsResponse
 from ._list_release_versions_request import ListReleaseVersionsRequest
 from ._list_release_versions_response_body import ListReleaseVersionsResponseBody
 from ._list_release_versions_response import ListReleaseVersionsResponse
@@ -359,6 +366,7 @@ from ._get_session_cluster_response_body import GetSessionClusterResponseBodySes
 from ._get_session_cluster_response_body import GetSessionClusterResponseBodySessionCluster
 from ._get_sql_statement_response_body import GetSqlStatementResponseBodyDataSqlOutputs
 from ._get_sql_statement_response_body import GetSqlStatementResponseBodyData
+from ._get_workspace_response_body import GetWorkspaceResponseBodyWorkspaceFeatures
 from ._get_workspace_response_body import GetWorkspaceResponseBodyWorkspacePrePaidQuota
 from ._get_workspace_response_body import GetWorkspaceResponseBodyWorkspacePrePaidQuotaGpu
 from ._get_workspace_response_body import GetWorkspaceResponseBodyWorkspaceStateChangeReason
@@ -404,6 +412,7 @@ from ._list_ray_job_request import ListRayJobRequestSubmitTime
 from ._list_ray_job_response_body import ListRayJobResponseBodyRayJobs
 from ._list_ray_logs_response_body import ListRayLogsResponseBodyDataObjectList
 from ._list_ray_logs_response_body import ListRayLogsResponseBodyData
+from ._list_regions_response_body import ListRegionsResponseBodyRegions
 from ._list_release_versions_response_body import ListReleaseVersionsResponseBodyReleaseVersions
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersApplicationConfigs
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersAutoStartConfiguration
@@ -414,6 +423,7 @@ from ._list_sql_statement_contents_response_body import ListSqlStatementContents
 from ._list_workspace_queues_response_body import ListWorkspaceQueuesResponseBodyQueuesAllowActions
 from ._list_workspace_queues_response_body import ListWorkspaceQueuesResponseBodyQueues
 from ._list_workspaces_request import ListWorkspacesRequestTag
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesFeatures
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesPrePaidQuota
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesStateChangeReason
@@ -447,6 +457,9 @@ from ._update_workspace_response_body import UpdateWorkspaceResponseBodyData
 
 __all__ = [
     Artifact,
+    BatchEditQueueSpec,
+    BatchEditWorkspaceQueuesBody,
+    BatchEditWorkspaceQueuesReceipt,
     CacheCluster,
     Category,
     Configuration,
@@ -456,6 +469,7 @@ __all__ = [
     KerberosConf,
     PrincipalAction,
     ReleaseVersionImage,
+    ResourceSpec,
     RunLog,
     SparkConf,
     SqlOutput,
@@ -645,6 +659,9 @@ __all__ = [
     ListRayLogsRequest,
     ListRayLogsResponseBody,
     ListRayLogsResponse,
+    ListRegionsRequest,
+    ListRegionsResponseBody,
+    ListRegionsResponse,
     ListReleaseVersionsRequest,
     ListReleaseVersionsResponseBody,
     ListReleaseVersionsResponse,
@@ -803,6 +820,7 @@ __all__ = [
     GetSessionClusterResponseBodySessionCluster,
     GetSqlStatementResponseBodyDataSqlOutputs,
     GetSqlStatementResponseBodyData,
+    GetWorkspaceResponseBodyWorkspaceFeatures,
     GetWorkspaceResponseBodyWorkspacePrePaidQuota,
     GetWorkspaceResponseBodyWorkspacePrePaidQuotaGpu,
     GetWorkspaceResponseBodyWorkspaceStateChangeReason,
@@ -848,6 +866,7 @@ __all__ = [
     ListRayJobResponseBodyRayJobs,
     ListRayLogsResponseBodyDataObjectList,
     ListRayLogsResponseBodyData,
+    ListRegionsResponseBodyRegions,
     ListReleaseVersionsResponseBodyReleaseVersions,
     ListSessionClustersResponseBodySessionClustersApplicationConfigs,
     ListSessionClustersResponseBodySessionClustersAutoStartConfiguration,
@@ -858,6 +877,7 @@ __all__ = [
     ListWorkspaceQueuesResponseBodyQueuesAllowActions,
     ListWorkspaceQueuesResponseBodyQueues,
     ListWorkspacesRequestTag,
+    ListWorkspacesResponseBodyWorkspacesFeatures,
     ListWorkspacesResponseBodyWorkspacesPrePaidQuota,
     ListWorkspacesResponseBodyWorkspacesPrePaidQuotaGpu,
     ListWorkspacesResponseBodyWorkspacesStateChangeReason,

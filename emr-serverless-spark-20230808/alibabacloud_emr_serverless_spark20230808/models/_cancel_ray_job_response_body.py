@@ -12,7 +12,7 @@ class CancelRayJobResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the cancellation is successfully triggered.
+        # Indicates whether the cancellation was successfully triggered.
         self.success = success
 
     def validate(self):

@@ -24,9 +24,9 @@ class StartJobRunRequest(DaraModel):
         tags: List[main_models.Tag] = None,
         region_id: str = None,
     ):
-        # The idempotence token.
+        # The client token for idempotency.
         self.client_token = client_token
-        # The job type. Valid values:
+        # The type of the job. Valid values:
         # 
         # - SQL
         # 
@@ -34,23 +34,23 @@ class StartJobRunRequest(DaraModel):
         # 
         # - PYTHON
         self.code_type = code_type
-        # The advanced Spark configurations.
+        # The advanced configurations for Spark.
         self.configuration_overrides = configuration_overrides
-        # The version that is displayed in the console.
+        # The version displayed in the console.
         self.display_release_version = display_release_version
         # The timeout period for the job.
         self.execution_timeout_seconds = execution_timeout_seconds
-        # Specifies whether to enable the Fusion engine for acceleration.
+        # Specifies whether to enable Fusion engine acceleration.
         self.fusion = fusion
         # The information about the Spark driver.
         self.job_driver = job_driver
-        # The job ID.
+        # The ID of the job.
         self.job_id = job_id
-        # The job name.
+        # The name of the job.
         self.name = name
-        # The version of the Spark engine.
+        # The version number of the Spark engine.
         self.release_version = release_version
-        # The resource queue on which the Spark job runs.
+        # The resource queue in which the Spark job runs.
         self.resource_queue_id = resource_queue_id
         # The list of job tags.
         self.tags = tags

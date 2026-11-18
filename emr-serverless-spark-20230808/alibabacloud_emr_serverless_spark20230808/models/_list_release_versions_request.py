@@ -16,12 +16,13 @@ class ListReleaseVersionsRequest(DaraModel):
     ):
         # The region ID.
         self.region_id = region_id
-        # The version type.
+        # The release type.
         self.release_type = release_type
         # The Serverless Spark version.
         self.release_version = release_version
         # The version status.
         self.release_version_status = release_version_status
+        # Filters available versions by service type. Valid values: kyuubi and ray.
         self.service_filter = service_filter
         # The workspace ID.
         self.workspace_id = workspace_id

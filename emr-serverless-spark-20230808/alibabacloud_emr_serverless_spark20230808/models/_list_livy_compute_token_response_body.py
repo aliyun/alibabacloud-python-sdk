@@ -15,7 +15,7 @@ class ListLivyComputeTokenResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The return code of the request. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. For details about the error cause, see the message.
+        # The response code. A value of 1000000 indicates a successful request, while other values indicate a failed request. For details about the error cause, see the message.
         self.code = code
         # The response data.
         self.data = data
@@ -117,7 +117,7 @@ class ListLivyComputeTokenResponseBodyDataTokens(DaraModel):
         self.createdby = createdby
         # The expiration time. The value is a UNIX timestamp in milliseconds.
         self.expire_time = expire_time
-        # The time when the token was last used. The value is a UNIX timestamp in milliseconds.
+        # The last used time. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
         # The token name.
         self.name = name

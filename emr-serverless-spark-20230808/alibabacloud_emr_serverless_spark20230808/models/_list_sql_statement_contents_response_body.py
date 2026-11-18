@@ -13,7 +13,7 @@ class ListSqlStatementContentsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The content of the SQL execution result.
+        # The content of the SQL execution results.
         self.sql_statement_contents = sql_statement_contents
 
     def validate(self):
@@ -52,13 +52,13 @@ class ListSqlStatementContentsResponseBodySqlStatementContents(DaraModel):
         next_token: str = None,
         total_count: int = None,
     ):
-        # A list of the SQL execution results.
+        # The list of SQL execution result contents.
         self.contents = contents
-        # The maximum number of records returned for a single request.
+        # The maximum number of records to retrieve at a time.
         self.max_results = max_results
-        # The token that specifies the position from which to start reading the results.
+        # The token that indicates the starting position for reading.
         self.next_token = next_token
-        # The total number of rows in the result.
+        # The total number of rows in the results.
         self.total_count = total_count
 
     def validate(self):

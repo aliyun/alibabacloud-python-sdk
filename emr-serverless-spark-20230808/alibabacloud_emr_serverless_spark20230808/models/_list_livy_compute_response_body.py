@@ -15,7 +15,7 @@ class ListLivyComputeResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The return code of the request. A value of 1000000 indicates that the request is successful. Other values indicate that the request failed. For specific error details, see the message.
+        # The response code. A value of 1000000 indicates a successful request, whereas other values indicate a failed request. For detailed error causes, refer to the message.
         self.code = code
         # The response data.
         self.data = data
@@ -117,9 +117,9 @@ class ListLivyComputeResponseBodyDataLivyComputes(DaraModel):
         self.compute_id = compute_id
         # The name of the creator.
         self.created_by = created_by
-        # The public network connection endpoint.
+        # The public endpoint.
         self.endpoint = endpoint
-        # The internal network connection endpoint.
+        # The internal network endpoint.
         self.endpoint_inner = endpoint_inner
         # The creation time.
         self.gmt_create = gmt_create

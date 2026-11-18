@@ -96,7 +96,7 @@ class ListKyuubiTokenResponseBodyDataTokens(DaraModel):
         token: str = None,
         token_id: str = None,
     ):
-        # The list of RAM user names of authorized users.
+        # The list of names of Resource Access Management (RAM) users of authorized users.
         self.account_names = account_names
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
@@ -104,12 +104,13 @@ class ListKyuubiTokenResponseBodyDataTokens(DaraModel):
         self.created_by = created_by
         # The expiration time. The value is a UNIX timestamp in milliseconds.
         self.expire_time = expire_time
-        # The last usage time. The value is a UNIX timestamp in milliseconds.
+        # The last used time. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
         # The list of ARNs of authorized users.
         self.member_arns = member_arns
         # The token name.
         self.name = name
+        # The list of Spark roles associated with the token.
         self.spark_role = spark_role
         # The masked token.
         self.token = token

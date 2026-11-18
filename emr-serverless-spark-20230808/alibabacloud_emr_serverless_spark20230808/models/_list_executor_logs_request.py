@@ -14,7 +14,7 @@ class ListExecutorLogsRequest(DaraModel):
     ):
         # The log type.
         self.log_type = log_type
-        # The maximum number of records to return in a single request.
+        # The maximum number of records to retrieve at a time.
         self.max_results = max_results
         # The next token.
         self.next_token = next_token

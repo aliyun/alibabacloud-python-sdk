@@ -16,9 +16,9 @@ class ListWorkspacesResponseBody(DaraModel):
         total_count: int = None,
         workspaces: List[main_models.ListWorkspacesResponseBodyWorkspaces] = None,
     ):
-        # The maximum number of records to return in a single request.
+        # The maximum number of results to return in a single request.
         self.max_results = max_results
-        # The next token.
+        # The token for the next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -91,6 +91,7 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         duration: int = None,
         end_time: int = None,
         fail_reason: str = None,
+        features: main_models.ListWorkspacesResponseBodyWorkspacesFeatures = None,
         gpu_spec: List[str] = None,
         ip_white_list: List[str] = None,
         payment_duration_unit: str = None,
@@ -109,11 +110,11 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         workspace_name: str = None,
         workspace_status: str = None,
     ):
-        # Specifies whether to enable auto-renewal. This parameter is required for subscription resources.
+        # Specifies whether to enable auto-renewal. This parameter is required for the subscription billing method.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. This parameter is required for subscription resources.
+        # The auto-renewal duration. This parameter is required for the subscription billing method.
         self.auto_renew_period = auto_renew_period
-        # The auto-renewal epoch. This parameter is required for subscription resources.
+        # The auto-renewal epoch. This parameter is required for the subscription billing method.
         self.auto_renew_period_unit = auto_renew_period_unit
         # The time when the workspace was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
@@ -121,17 +122,19 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         self.dlf_catalog_id = dlf_catalog_id
         # The type of the associated DLF.
         self.dlf_type = dlf_type
-        # The duration of the subscription. This parameter is required for subscription resources.
+        # The duration of the subscription period. This parameter is required for the subscription billing method.
         self.duration = duration
         # The time when the workspace was released. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The reason for the failure.
         self.fail_reason = fail_reason
-        # The list of GPU models.
+        # The workspace features.
+        self.features = features
+        # The list of GPU instance types.
         self.gpu_spec = gpu_spec
-        # The IP whitelist of the workspace.
+        # The workspace IP whitelist.
         self.ip_white_list = ip_white_list
-        # The unit of the subscription period. This parameter is required for subscription resources.
+        # The unit of the subscription period. This parameter is required for the subscription billing method.
         self.payment_duration_unit = payment_duration_unit
         # The payment status.
         self.payment_status = payment_status
@@ -163,6 +166,8 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         self.workspace_status = workspace_status
 
     def validate(self):
+        if self.features:
+            self.features.validate()
         if self.pre_paid_quota:
             self.pre_paid_quota.validate()
         if self.pre_paid_quota_gpu:
@@ -207,6 +212,9 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
 
         if self.fail_reason is not None:
             result['failReason'] = self.fail_reason
+
+        if self.features is not None:
+            result['features'] = self.features.to_map()
 
         if self.gpu_spec is not None:
             result['gpuSpec'] = self.gpu_spec
@@ -293,6 +301,10 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
 
         if m.get('failReason') is not None:
             self.fail_reason = m.get('failReason')
+
+        if m.get('features') is not None:
+            temp_model = main_models.ListWorkspacesResponseBodyWorkspacesFeatures()
+            self.features = temp_model.from_map(m.get('features'))
 
         if m.get('gpuSpec') is not None:
             self.gpu_spec = m.get('gpuSpec')
@@ -685,6 +697,34 @@ class ListWorkspacesResponseBodyWorkspacesPrePaidQuota(DaraModel):
 
         if m.get('usedResource') is not None:
             self.used_resource = m.get('usedResource')
+
+        return self
+
+class ListWorkspacesResponseBodyWorkspacesFeatures(DaraModel):
+    def __init__(
+        self,
+        fine_grained_authz: bool = None,
+    ):
+        # Indicates whether fine-grained access control is enabled for the workspace.
+        self.fine_grained_authz = fine_grained_authz
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.fine_grained_authz is not None:
+            result['fineGrainedAuthz'] = self.fine_grained_authz
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fineGrainedAuthz') is not None:
+            self.fine_grained_authz = m.get('fineGrainedAuthz')
 
         return self
 

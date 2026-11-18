@@ -9,7 +9,7 @@ class ListKyuubiServicesRequest(DaraModel):
         self,
         token: str = None,
     ):
-        # The Kyuubi Gateway token.
+        # The token of the Kyuubi Gateway.
         self.token = token
 
     def validate(self):

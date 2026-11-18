@@ -18,9 +18,9 @@ class ListReleaseVersionsResponseBody(DaraModel):
     ):
         # The maximum number of records returned per request.
         self.max_results = max_results
-        # The token for the next page.
+        # The next token.
         self.next_token = next_token
-        # The list of versions.
+        # The list of release versions.
         self.release_versions = release_versions
         # The request ID.
         self.request_id = request_id
@@ -85,6 +85,7 @@ class ListReleaseVersionsResponseBodyReleaseVersions(DaraModel):
         community_version: str = None,
         cpu_architectures: List[str] = None,
         display_release_version: str = None,
+        flame_graph_enabled: bool = None,
         fusion: bool = None,
         gmt_create: int = None,
         iaas_type: str = None,
@@ -100,13 +101,15 @@ class ListReleaseVersionsResponseBodyReleaseVersions(DaraModel):
         self.cpu_architectures = cpu_architectures
         # The version number.
         self.display_release_version = display_release_version
+        # Indicates whether the release version supports flame graphs. This is determined by checking if the fenix version metadata contains flame-graph.
+        self.flame_graph_enabled = flame_graph_enabled
         # Indicates whether Fusion engine acceleration is enabled.
         self.fusion = fusion
         # The creation time.
         self.gmt_create = gmt_create
         # The IaaS layer type.
         self.iaas_type = iaas_type
-        # Indicates whether the version is a custom image.
+        # Indicates whether the image is a custom image.
         self.is_custom = is_custom
         # The version number.
         self.release_version = release_version
@@ -114,7 +117,7 @@ class ListReleaseVersionsResponseBodyReleaseVersions(DaraModel):
         self.scala_version = scala_version
         # The version status.
         self.state = state
-        # The version type.
+        # The release type.
         self.type = type
 
     def validate(self):
@@ -133,6 +136,9 @@ class ListReleaseVersionsResponseBodyReleaseVersions(DaraModel):
 
         if self.display_release_version is not None:
             result['displayReleaseVersion'] = self.display_release_version
+
+        if self.flame_graph_enabled is not None:
+            result['flameGraphEnabled'] = self.flame_graph_enabled
 
         if self.fusion is not None:
             result['fusion'] = self.fusion
@@ -170,6 +176,9 @@ class ListReleaseVersionsResponseBodyReleaseVersions(DaraModel):
 
         if m.get('displayReleaseVersion') is not None:
             self.display_release_version = m.get('displayReleaseVersion')
+
+        if m.get('flameGraphEnabled') is not None:
+            self.flame_graph_enabled = m.get('flameGraphEnabled')
 
         if m.get('fusion') is not None:
             self.fusion = m.get('fusion')

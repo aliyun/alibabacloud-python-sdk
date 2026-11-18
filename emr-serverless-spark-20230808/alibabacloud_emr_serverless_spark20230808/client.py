@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_emr_serverless_spark20230808 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'emr-serverless-spark'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('emr-serverless-spark', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -785,6 +789,8 @@ class Client(OpenApiClient):
             body['environmentId'] = request.environment_id
         if not DaraCore.is_null(request.fusion):
             body['fusion'] = request.fusion
+        if not DaraCore.is_null(request.livy_release_version):
+            body['livyReleaseVersion'] = request.livy_release_version
         if not DaraCore.is_null(request.livy_server_conf):
             body['livyServerConf'] = request.livy_server_conf
         if not DaraCore.is_null(request.livy_version):
@@ -848,6 +854,8 @@ class Client(OpenApiClient):
             body['environmentId'] = request.environment_id
         if not DaraCore.is_null(request.fusion):
             body['fusion'] = request.fusion
+        if not DaraCore.is_null(request.livy_release_version):
+            body['livyReleaseVersion'] = request.livy_release_version
         if not DaraCore.is_null(request.livy_server_conf):
             body['livyServerConf'] = request.livy_server_conf
         if not DaraCore.is_null(request.livy_version):
@@ -1290,6 +1298,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not DaraCore.is_null(request.display_release_version):
             body['displayReleaseVersion'] = request.display_release_version
+        if not DaraCore.is_null(request.enable_metrics_upload):
+            body['enableMetricsUpload'] = request.enable_metrics_upload
         if not DaraCore.is_null(request.extra_param):
             body['extraParam'] = request.extra_param
         if not DaraCore.is_null(request.head_spec):
@@ -1298,6 +1308,10 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.network_service_name):
             body['networkServiceName'] = request.network_service_name
+        if not DaraCore.is_null(request.sls_log_store):
+            body['slsLogStore'] = request.sls_log_store
+        if not DaraCore.is_null(request.sls_project):
+            body['slsProject'] = request.sls_project
         if not DaraCore.is_null(request.volume_ids):
             body['volumeIds'] = request.volume_ids
         if not DaraCore.is_null(request.worker_spec):
@@ -1335,6 +1349,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not DaraCore.is_null(request.display_release_version):
             body['displayReleaseVersion'] = request.display_release_version
+        if not DaraCore.is_null(request.enable_metrics_upload):
+            body['enableMetricsUpload'] = request.enable_metrics_upload
         if not DaraCore.is_null(request.extra_param):
             body['extraParam'] = request.extra_param
         if not DaraCore.is_null(request.head_spec):
@@ -1343,6 +1359,10 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.network_service_name):
             body['networkServiceName'] = request.network_service_name
+        if not DaraCore.is_null(request.sls_log_store):
+            body['slsLogStore'] = request.sls_log_store
+        if not DaraCore.is_null(request.sls_project):
+            body['slsProject'] = request.sls_project
         if not DaraCore.is_null(request.volume_ids):
             body['volumeIds'] = request.volume_ids
         if not DaraCore.is_null(request.worker_spec):
@@ -1660,6 +1680,8 @@ class Client(OpenApiClient):
             body['paymentDurationUnit'] = request.payment_duration_unit
         if not DaraCore.is_null(request.payment_type):
             body['paymentType'] = request.payment_type
+        if not DaraCore.is_null(request.promotion_option_no):
+            body['promotionOptionNo'] = request.promotion_option_no
         if not DaraCore.is_null(request.ram_role_name):
             body['ramRoleName'] = request.ram_role_name
         if not DaraCore.is_null(request.release_type):
@@ -1728,6 +1750,8 @@ class Client(OpenApiClient):
             body['paymentDurationUnit'] = request.payment_duration_unit
         if not DaraCore.is_null(request.payment_type):
             body['paymentType'] = request.payment_type
+        if not DaraCore.is_null(request.promotion_option_no):
+            body['promotionOptionNo'] = request.promotion_option_no
         if not DaraCore.is_null(request.ram_role_name):
             body['ramRoleName'] = request.ram_role_name
         if not DaraCore.is_null(request.release_type):
@@ -4631,6 +4655,8 @@ class Client(OpenApiClient):
             query['startTime'] = request.start_time_shrink
         if not DaraCore.is_null(request.states):
             query['states'] = request.states
+        if not DaraCore.is_null(request.user_name):
+            query['userName'] = request.user_name
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4693,6 +4719,8 @@ class Client(OpenApiClient):
             query['startTime'] = request.start_time_shrink
         if not DaraCore.is_null(request.states):
             query['states'] = request.states
+        if not DaraCore.is_null(request.user_name):
+            query['userName'] = request.user_name
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5716,6 +5744,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_ray_logs_with_options_async(workspace_id, instance_id, request, headers, runtime)
+
+    def list_regions_with_options(
+        self,
+        request: main_models.ListRegionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRegionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRegions',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/action/listRegions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_regions_with_options_async(
+        self,
+        request: main_models.ListRegionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRegionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRegions',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/action/listRegions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_regions(
+        self,
+        request: main_models.ListRegionsRequest,
+    ) -> main_models.ListRegionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_regions_with_options(request, headers, runtime)
+
+    async def list_regions_async(
+        self,
+        request: main_models.ListRegionsRequest,
+    ) -> main_models.ListRegionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_regions_with_options_async(request, headers, runtime)
 
     def list_release_versions_with_options(
         self,
@@ -7845,6 +7949,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.compute_instance):
             body['computeInstance'] = request.compute_instance
+        if not DaraCore.is_null(request.expected_replica):
+            body['expectedReplica'] = request.expected_replica
         if not DaraCore.is_null(request.kyuubi_configs):
             body['kyuubiConfigs'] = request.kyuubi_configs
         if not DaraCore.is_null(request.kyuubi_release_version):
@@ -7855,12 +7961,16 @@ class Client(OpenApiClient):
             body['publicEndpointEnabled'] = request.public_endpoint_enabled
         if not DaraCore.is_null(request.queue):
             body['queue'] = request.queue
+        if not DaraCore.is_null(request.refresh):
+            body['refresh'] = request.refresh
         if not DaraCore.is_null(request.release_version):
             body['releaseVersion'] = request.release_version
         if not DaraCore.is_null(request.replica):
             body['replica'] = request.replica
         if not DaraCore.is_null(request.restart):
             body['restart'] = request.restart
+        if not DaraCore.is_null(request.scale):
+            body['scale'] = request.scale
         if not DaraCore.is_null(request.spark_configs):
             body['sparkConfigs'] = request.spark_configs
         req = open_api_util_models.OpenApiRequest(
@@ -7895,6 +8005,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.compute_instance):
             body['computeInstance'] = request.compute_instance
+        if not DaraCore.is_null(request.expected_replica):
+            body['expectedReplica'] = request.expected_replica
         if not DaraCore.is_null(request.kyuubi_configs):
             body['kyuubiConfigs'] = request.kyuubi_configs
         if not DaraCore.is_null(request.kyuubi_release_version):
@@ -7905,12 +8017,16 @@ class Client(OpenApiClient):
             body['publicEndpointEnabled'] = request.public_endpoint_enabled
         if not DaraCore.is_null(request.queue):
             body['queue'] = request.queue
+        if not DaraCore.is_null(request.refresh):
+            body['refresh'] = request.refresh
         if not DaraCore.is_null(request.release_version):
             body['releaseVersion'] = request.release_version
         if not DaraCore.is_null(request.replica):
             body['replica'] = request.replica
         if not DaraCore.is_null(request.restart):
             body['restart'] = request.restart
+        if not DaraCore.is_null(request.scale):
+            body['scale'] = request.scale
         if not DaraCore.is_null(request.spark_configs):
             body['sparkConfigs'] = request.spark_configs
         req = open_api_util_models.OpenApiRequest(
@@ -8094,6 +8210,8 @@ class Client(OpenApiClient):
             body['environmentId'] = request.environment_id
         if not DaraCore.is_null(request.fusion):
             body['fusion'] = request.fusion
+        if not DaraCore.is_null(request.livy_release_version):
+            body['livyReleaseVersion'] = request.livy_release_version
         if not DaraCore.is_null(request.livy_server_conf):
             body['livyServerConf'] = request.livy_server_conf
         if not DaraCore.is_null(request.livy_version):
@@ -8158,6 +8276,8 @@ class Client(OpenApiClient):
             body['environmentId'] = request.environment_id
         if not DaraCore.is_null(request.fusion):
             body['fusion'] = request.fusion
+        if not DaraCore.is_null(request.livy_release_version):
+            body['livyReleaseVersion'] = request.livy_release_version
         if not DaraCore.is_null(request.livy_server_conf):
             body['livyServerConf'] = request.livy_server_conf
         if not DaraCore.is_null(request.livy_version):
@@ -8403,6 +8523,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not DaraCore.is_null(request.display_release_version):
             body['displayReleaseVersion'] = request.display_release_version
+        if not DaraCore.is_null(request.enable_metrics_upload):
+            body['enableMetricsUpload'] = request.enable_metrics_upload
         if not DaraCore.is_null(request.extra_param):
             body['extraParam'] = request.extra_param
         if not DaraCore.is_null(request.head_spec):
@@ -8411,6 +8533,10 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.network_service_name):
             body['networkServiceName'] = request.network_service_name
+        if not DaraCore.is_null(request.sls_log_store):
+            body['slsLogStore'] = request.sls_log_store
+        if not DaraCore.is_null(request.sls_project):
+            body['slsProject'] = request.sls_project
         if not DaraCore.is_null(request.volume_ids):
             body['volumeIds'] = request.volume_ids
         if not DaraCore.is_null(request.worker_spec):
@@ -8449,6 +8575,8 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not DaraCore.is_null(request.display_release_version):
             body['displayReleaseVersion'] = request.display_release_version
+        if not DaraCore.is_null(request.enable_metrics_upload):
+            body['enableMetricsUpload'] = request.enable_metrics_upload
         if not DaraCore.is_null(request.extra_param):
             body['extraParam'] = request.extra_param
         if not DaraCore.is_null(request.head_spec):
@@ -8457,6 +8585,10 @@ class Client(OpenApiClient):
             body['name'] = request.name
         if not DaraCore.is_null(request.network_service_name):
             body['networkServiceName'] = request.network_service_name
+        if not DaraCore.is_null(request.sls_log_store):
+            body['slsLogStore'] = request.sls_log_store
+        if not DaraCore.is_null(request.sls_project):
+            body['slsProject'] = request.sls_project
         if not DaraCore.is_null(request.volume_ids):
             body['volumeIds'] = request.volume_ids
         if not DaraCore.is_null(request.worker_spec):

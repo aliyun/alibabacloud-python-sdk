@@ -22,6 +22,7 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
         sort: str = None,
         start_time: main_models.ListKyuubiSparkApplicationsRequestStartTime = None,
         states: str = None,
+        user_name: str = None,
     ):
         # The ID of the Spark application submitted by Kyuubi, used for search.
         self.application_id = application_id
@@ -29,9 +30,9 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
         self.application_name = application_name
         # The end time range of the task.
         self.end_time = end_time
-        # The list of statuses of the latest SQL statement used for filtering.
+        # The list of statuses of the most recent SQL statement used for filtering.
         self.latest_sql_statement_statuses = latest_sql_statement_statuses
-        # The maximum number of records to retrieve at a time.
+        # The maximum number of records to return in a single request.
         self.max_results = max_results
         # The minimum execution duration of the application, in milliseconds.
         self.min_duration = min_duration
@@ -41,12 +42,14 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
         self.order_by = order_by
         # The resource queue ID used to filter Spark applications.
         self.resource_queue_id = resource_queue_id
-        # The sort order. A value of asc indicates ascending order, and desc indicates descending order.
+        # The sort order. asc indicates ascending order, and desc indicates descending order.
         self.sort = sort
         # The start time range of the task.
         self.start_time = start_time
-        # The list of Spark application states used for filtering.
+        # The list of Spark application statuses used for filtering.
         self.states = states
+        # The username.
+        self.user_name = user_name
 
     def validate(self):
         if self.end_time:
@@ -95,6 +98,9 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
         if self.states is not None:
             result['states'] = self.states
 
+        if self.user_name is not None:
+            result['userName'] = self.user_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -136,6 +142,9 @@ class ListKyuubiSparkApplicationsRequest(DaraModel):
 
         if m.get('states') is not None:
             self.states = m.get('states')
+
+        if m.get('userName') is not None:
+            self.user_name = m.get('userName')
 
         return self
 

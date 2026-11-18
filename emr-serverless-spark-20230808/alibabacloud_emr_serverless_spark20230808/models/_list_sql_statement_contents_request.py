@@ -13,9 +13,9 @@ class ListSqlStatementContentsRequest(DaraModel):
     ):
         # The full path of the file.
         self.file_name = file_name
-        # The maximum number of records to return for a single request.
+        # The maximum number of records to retrieve at a time.
         self.max_results = max_results
-        # The token that specifies the position from which to start reading the results.
+        # The token that indicates the starting position for reading.
         self.next_token = next_token
 
     def validate(self):

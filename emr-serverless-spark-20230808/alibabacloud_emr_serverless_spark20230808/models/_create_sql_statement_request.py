@@ -15,17 +15,17 @@ class CreateSqlStatementRequest(DaraModel):
         task_biz_id: str = None,
         region_id: str = None,
     ):
-        # The SQL code. You can specify one or more SQL statements to execute.
+        # The SQL code. You can pass one or more SQL statements for execution.
         self.code_content = code_content
         # The default DLF catalog ID.
         self.default_catalog = default_catalog
         # The default database name.
         self.default_database = default_database
-        # The limit value. Valid values: 1 to 10000.
+        # The LIMIT value. Valid values: 1 to 10000.
         self.limit = limit
-        # The SQL session ID. Create the session in the session management module of the EMR Serverless Spark workspace.
+        # The SQL session ID. You must create the session in the session management module of the EMR Serverless Spark workspace.
         self.sql_compute_id = sql_compute_id
-        # The data development node ID.
+        # The data development task ID.
         self.task_biz_id = task_biz_id
         # The region ID.
         self.region_id = region_id

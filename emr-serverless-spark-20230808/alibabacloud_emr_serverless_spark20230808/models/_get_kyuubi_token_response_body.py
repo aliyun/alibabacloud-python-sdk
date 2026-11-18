@@ -70,14 +70,15 @@ class GetKyuubiTokenResponseBodyData(DaraModel):
         self.expire_time = expire_time
         # The last used time. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
-        # The list of authorized user ARNs.
+        # The list of ARNs of authorized users.
         self.member_arns = member_arns
         # The token name.
         self.name = name
+        # The list of Spark roles associated with the token.
         self.spark_role = spark_role
         # The masked token.
         self.token = token
-        # Token ID。
+        # The token ID.
         self.token_id = token_id
 
     def validate(self):
@@ -162,7 +163,7 @@ class GetKyuubiTokenResponseBodyDataAutoExpireConfiguration(DaraModel):
         enable: bool = None,
         expire_days: int = None,
     ):
-        # Specifies whether auto-expiration is enabled.
+        # Indicates whether automatic expiration is enabled.
         self.enable = enable
         # The expiration period in days.
         self.expire_days = expire_days

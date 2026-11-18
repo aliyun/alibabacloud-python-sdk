@@ -13,7 +13,7 @@ class GetLivyComputeTokenResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The return code of the request. A value of 1000000 indicates that the request succeeded. Other values indicate that the request failed. For details about the error, see the message field.
+        # The response code. A value of 1000000 indicates that the request was successful. Other values indicate that the request failed. For details about the error, see the message.
         self.code = code
         # The returned data.
         self.data = data
@@ -74,7 +74,7 @@ class GetLivyComputeTokenResponseBodyData(DaraModel):
         token: str = None,
         token_id: str = None,
     ):
-        # The token expiration configuration struct.
+        # The token expiration information struct.
         self.auto_expire_configuration = auto_expire_configuration
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
@@ -82,13 +82,13 @@ class GetLivyComputeTokenResponseBodyData(DaraModel):
         self.created_by = created_by
         # The expiration time. The value is a UNIX timestamp in milliseconds.
         self.expire_time = expire_time
-        # The last used time. The value is a UNIX timestamp in milliseconds.
+        # The time when the token was last used. The value is a UNIX timestamp in milliseconds.
         self.last_used_time = last_used_time
         # The token name.
         self.name = name
         # The token content.
         self.token = token
-        # Token ID。
+        # The token ID.
         self.token_id = token_id
 
     def validate(self):
@@ -161,11 +161,11 @@ class GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration(DaraModel):
         enable: bool = None,
         expire_days: int = None,
     ):
-        # Specifies whether the token expires automatically. Valid values:
+        # Indicates whether the token automatically expires. Valid values:
         # - true: Yes.
         # - false: No.
         self.enable = enable
-        # The expiration period in days.
+        # The expiration time in days.
         self.expire_days = expire_days
 
     def validate(self):

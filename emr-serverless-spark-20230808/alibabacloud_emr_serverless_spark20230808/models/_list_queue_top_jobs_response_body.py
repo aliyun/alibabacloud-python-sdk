@@ -55,13 +55,13 @@ class ListQueueTopJobsResponseBodyQueueTopJobs(DaraModel):
         total_cu: str = None,
         total_job_count: int = None,
     ):
-        # The list of jobs.
+        # The job list.
         self.jobs = jobs
         # The maximum number of records returned in a single request.
         self.max_results = max_results
-        # The name of the queue.
+        # The queue name.
         self.queue_name = queue_name
-        # The total number of CUs consumed by the queue.
+        # The total CUs consumed by the queue.
         self.total_cu = total_cu
         # The total number of jobs in the queue.
         self.total_job_count = total_job_count
@@ -129,13 +129,13 @@ class ListQueueTopJobsResponseBodyQueueTopJobsJobs(DaraModel):
     ):
         # The number of CPU cores requested by the job.
         self.cpu_cores = cpu_cores
-        # The number of CUs consumed by the job.
+        # The CUs consumed by the job.
         self.cu = cu
         # The job ID.
         self.job_id = job_id
         # The job type.
         self.job_type = job_type
-        # The amount of memory requested by the job.
+        # The memory requested by the job.
         self.memory_gi_b = memory_gi_b
 
     def validate(self):

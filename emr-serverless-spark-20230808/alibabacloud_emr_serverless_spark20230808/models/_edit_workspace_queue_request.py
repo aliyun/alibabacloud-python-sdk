@@ -21,12 +21,12 @@ class EditWorkspaceQueueRequest(DaraModel):
     ):
         # The description.
         self.description = description
-        # The environment type of the queue.
+        # The queue environment type.
         self.environments = environments
-        # The list of GPU models.
+        # The list of GPU instance types.
         self.gpu_spec = gpu_spec
         self.instance_id = instance_id
-        # The resource quota.
+        # The resource specifications.
         self.resource_spec = resource_spec
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -107,9 +107,9 @@ class EditWorkspaceQueueRequestResourceSpec(DaraModel):
         gpu_machine_num: int = None,
         max_cu: int = None,
     ):
-        # The resource upper limit of the workspace queue.
+        # The resource limit for the workspace queue.
         self.cu = cu
-        # The number of GPU cards.
+        # The number of GPUs.
         self.gpu = gpu
         # The number of GPU machines.
         self.gpu_machine_num = gpu_machine_num

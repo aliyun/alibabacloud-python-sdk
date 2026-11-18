@@ -78,7 +78,7 @@ class ListLivyComputeSessionsResponseBodySessions(DaraModel):
         vcore_seconds: int = None,
         web_ui: str = None,
     ):
-        # The ID of the Livy Gateway.
+        # The ID of the Livy gateway.
         self.compute_id = compute_id
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
@@ -88,13 +88,13 @@ class ListLivyComputeSessionsResponseBodySessions(DaraModel):
         self.end_time = end_time
         # The runtime information.
         self.info = info
-        # The total amount of memory allocated to the job multiplied by the number of seconds the job has run.
+        # The total amount of memory allocated to the job multiplied by the running time of the job in seconds.
         self.mb_seconds = mb_seconds
         # The session name.
         self.name = name
         # The queue name.
         self.queue = queue
-        # The ID of the Livy Gateway session.
+        # The ID of the Livy gateway session.
         self.session_id = session_id
         # The Spark job configuration.
         self.spark_conf = spark_conf
@@ -103,11 +103,11 @@ class ListLivyComputeSessionsResponseBodySessions(DaraModel):
         # - running: Running.
         # - terminating: Terminating.
         # - terminated: Terminated.
-        # - error: Error.
+        # - error: Failed.
         self.state = state
-        # The total number of vcores allocated to the job multiplied by the number of seconds the job has run.
+        # The total number of vcores allocated to the job multiplied by the running time of the job in seconds.
         self.vcore_seconds = vcore_seconds
-        # The web UI address of the session.
+        # The web UI URL of the session.
         self.web_ui = web_ui
 
     def validate(self):

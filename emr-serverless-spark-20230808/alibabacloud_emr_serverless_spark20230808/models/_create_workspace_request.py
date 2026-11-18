@@ -22,6 +22,7 @@ class CreateWorkspaceRequest(DaraModel):
         oss_bucket: str = None,
         payment_duration_unit: str = None,
         payment_type: str = None,
+        promotion_option_no: str = None,
         ram_role_name: str = None,
         release_type: str = None,
         resource_group_id: str = None,
@@ -30,45 +31,46 @@ class CreateWorkspaceRequest(DaraModel):
         workspace_name: str = None,
         region_id: str = None,
     ):
-        # Specifies whether to enable auto-renewal. This parameter is required if you set `paymentType` to `Pre`.
+        # Specifies whether to enable auto-renewal. This parameter is required when the paymentType parameter is set to Pre.
         self.auto_renew = auto_renew
-        # The auto-renewal duration. This parameter is required if `autoRenew` is set to `true`.
+        # The auto-renewal duration. This parameter is required when the paymentType parameter is set to Pre.
         self.auto_renew_period = auto_renew_period
-        # The unit of the auto-renewal duration. This parameter is required if `autoRenew` is set to `true`.
+        # The auto-renewal cycle. This parameter is required when the paymentType parameter is set to Pre.
         self.auto_renew_period_unit = auto_renew_period_unit
-        # Specifies whether to automatically start a session cluster when the workspace is created.
+        # Specifies whether to automatically start a session.
         self.auto_start_session_cluster = auto_start_session_cluster
-        # A token that ensures the idempotency of the request.
+        # The client token used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The DLF Catalog ID.
+        # The DLF catalog information.
         self.dlf_catalog_id = dlf_catalog_id
-        # The DLF type.
+        # The DLF binding type.
         self.dlf_type = dlf_type
-        # The subscription duration. This parameter is required if you set `paymentType` to `Pre`.
+        # The number of subscription periods. This parameter is required when the paymentType parameter is set to Pre.
         self.duration = duration
-        # The specifications for the GPU resources.
+        # The list of GPU instance types.
         self.gpu_spec = gpu_spec
-        # The OSS bucket for the workspace. The path must be in the `oss://<bucket-name>/` format.
+        # The OSS bucket.
         self.oss_bucket = oss_bucket
-        # The unit of the subscription duration. This parameter is required if you set `paymentType` to `Pre`.
+        # The unit of the subscription period.
         self.payment_duration_unit = payment_duration_unit
-        # The billing method. Valid values:
+        # The billing method of the instance. Valid values:
         # 
-        # - `PayAsYouGo`: pay-as-you-go
-        # 
-        # - `Pre`: subscription
+        # - PayAsYouGo: pay-as-you-go
+        # - Pre: subscription
         self.payment_type = payment_type
-        # The name of the RAM role used to run Spark jobs.
+        # Supported only for subscription instances. Use the voucher option ID returned by the price inquiry API. To not use a voucher, pass youhuiquan_promotion_option_id_for_blank. If this parameter is omitted, the previous calling behavior is maintained.
+        self.promotion_option_no = promotion_option_no
+        # The name of the RAM role used to execute Spark jobs.
         self.ram_role_name = ram_role_name
         # The release type.
         self.release_type = release_type
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The resource specifications.
         self.resource_spec = resource_spec
-        # The tags to add to the workspace.
+        # The list of tags.
         self.tag = tag
-        # The workspace name.
+        # The name of the workspace.
         self.workspace_name = workspace_name
         # The region ID.
         self.region_id = region_id
@@ -121,6 +123,9 @@ class CreateWorkspaceRequest(DaraModel):
 
         if self.payment_type is not None:
             result['paymentType'] = self.payment_type
+
+        if self.promotion_option_no is not None:
+            result['promotionOptionNo'] = self.promotion_option_no
 
         if self.ram_role_name is not None:
             result['ramRoleName'] = self.ram_role_name
@@ -184,6 +189,9 @@ class CreateWorkspaceRequest(DaraModel):
 
         if m.get('paymentType') is not None:
             self.payment_type = m.get('paymentType')
+
+        if m.get('promotionOptionNo') is not None:
+            self.promotion_option_no = m.get('promotionOptionNo')
 
         if m.get('ramRoleName') is not None:
             self.ram_role_name = m.get('ramRoleName')
@@ -255,9 +263,9 @@ class CreateWorkspaceRequestResourceSpec(DaraModel):
         cu: str = None,
         gpu: int = None,
     ):
-        # The resource quota for the workspace.
+        # The maximum resource limit for the workspace.
         self.cu = cu
-        # The GPU resource quota for the workspace.
+        # The number of GPUs.
         self.gpu = gpu
 
     def validate(self):
