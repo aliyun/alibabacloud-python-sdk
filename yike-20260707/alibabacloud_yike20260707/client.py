@@ -500,6 +500,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_infinite_canvas_with_options_async(request, runtime)
 
+    def create_oss_upload_with_options(
+        self,
+        request: main_models.CreateOssUploadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOssUploadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
+        if not DaraCore.is_null(request.credential_type):
+            query['CredentialType'] = request.credential_type
+        if not DaraCore.is_null(request.file_ext):
+            query['FileExt'] = request.file_ext
+        if not DaraCore.is_null(request.file_type):
+            query['FileType'] = request.file_type
+        if not DaraCore.is_null(request.target_bucket):
+            query['TargetBucket'] = request.target_bucket
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOssUpload',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOssUploadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_oss_upload_with_options_async(
+        self,
+        request: main_models.CreateOssUploadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOssUploadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_config):
+            query['BizConfig'] = request.biz_config
+        if not DaraCore.is_null(request.credential_type):
+            query['CredentialType'] = request.credential_type
+        if not DaraCore.is_null(request.file_ext):
+            query['FileExt'] = request.file_ext
+        if not DaraCore.is_null(request.file_type):
+            query['FileType'] = request.file_type
+        if not DaraCore.is_null(request.target_bucket):
+            query['TargetBucket'] = request.target_bucket
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOssUpload',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOssUploadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_oss_upload(
+        self,
+        request: main_models.CreateOssUploadRequest,
+    ) -> main_models.CreateOssUploadResponse:
+        runtime = RuntimeOptions()
+        return self.create_oss_upload_with_options(request, runtime)
+
+    async def create_oss_upload_async(
+        self,
+        request: main_models.CreateOssUploadRequest,
+    ) -> main_models.CreateOssUploadResponse:
+        runtime = RuntimeOptions()
+        return await self.create_oss_upload_with_options_async(request, runtime)
+
     def create_project_with_options(
         self,
         request: main_models.CreateProjectRequest,
@@ -573,6 +659,108 @@ class Client(OpenApiClient):
     ) -> main_models.CreateProjectResponse:
         runtime = RuntimeOptions()
         return await self.create_project_with_options_async(request, runtime)
+
+    def create_upload_media_with_options(
+        self,
+        request: main_models.CreateUploadMediaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUploadMediaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_type):
+            query['CredentialType'] = request.credential_type
+        if not DaraCore.is_null(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not DaraCore.is_null(request.file_info):
+            query['FileInfo'] = request.file_info
+        if not DaraCore.is_null(request.media_id):
+            query['MediaId'] = request.media_id
+        if not DaraCore.is_null(request.media_meta_data):
+            query['MediaMetaData'] = request.media_meta_data
+        if not DaraCore.is_null(request.overwrite):
+            query['Overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUploadMedia',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUploadMediaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_upload_media_with_options_async(
+        self,
+        request: main_models.CreateUploadMediaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateUploadMediaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_type):
+            query['CredentialType'] = request.credential_type
+        if not DaraCore.is_null(request.entity_id):
+            query['EntityId'] = request.entity_id
+        if not DaraCore.is_null(request.file_info):
+            query['FileInfo'] = request.file_info
+        if not DaraCore.is_null(request.media_id):
+            query['MediaId'] = request.media_id
+        if not DaraCore.is_null(request.media_meta_data):
+            query['MediaMetaData'] = request.media_meta_data
+        if not DaraCore.is_null(request.overwrite):
+            query['Overwrite'] = request.overwrite
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateUploadMedia',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateUploadMediaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_upload_media(
+        self,
+        request: main_models.CreateUploadMediaRequest,
+    ) -> main_models.CreateUploadMediaResponse:
+        runtime = RuntimeOptions()
+        return self.create_upload_media_with_options(request, runtime)
+
+    async def create_upload_media_async(
+        self,
+        request: main_models.CreateUploadMediaRequest,
+    ) -> main_models.CreateUploadMediaResponse:
+        runtime = RuntimeOptions()
+        return await self.create_upload_media_with_options_async(request, runtime)
 
     def create_workspace_with_options(
         self,
@@ -2531,6 +2719,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListInfiniteCanvasesResponse:
         runtime = RuntimeOptions()
         return await self.list_infinite_canvases_with_options_async(request, runtime)
+
+    def list_media_folders_with_options(
+        self,
+        request: main_models.ListMediaFoldersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMediaFoldersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMediaFolders',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMediaFoldersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_media_folders_with_options_async(
+        self,
+        request: main_models.ListMediaFoldersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMediaFoldersResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_no):
+            query['PageNo'] = request.page_no
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.production_id):
+            query['ProductionId'] = request.production_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMediaFolders',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMediaFoldersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_media_folders(
+        self,
+        request: main_models.ListMediaFoldersRequest,
+    ) -> main_models.ListMediaFoldersResponse:
+        runtime = RuntimeOptions()
+        return self.list_media_folders_with_options(request, runtime)
+
+    async def list_media_folders_async(
+        self,
+        request: main_models.ListMediaFoldersRequest,
+    ) -> main_models.ListMediaFoldersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_media_folders_with_options_async(request, runtime)
 
     def list_projects_with_options(
         self,

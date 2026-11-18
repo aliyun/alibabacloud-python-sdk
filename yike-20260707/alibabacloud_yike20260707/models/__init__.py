@@ -20,9 +20,15 @@ from ._create_asset_category_response import CreateAssetCategoryResponse
 from ._create_infinite_canvas_request import CreateInfiniteCanvasRequest
 from ._create_infinite_canvas_response_body import CreateInfiniteCanvasResponseBody
 from ._create_infinite_canvas_response import CreateInfiniteCanvasResponse
+from ._create_oss_upload_request import CreateOssUploadRequest
+from ._create_oss_upload_response_body import CreateOssUploadResponseBody
+from ._create_oss_upload_response import CreateOssUploadResponse
 from ._create_project_request import CreateProjectRequest
 from ._create_project_response_body import CreateProjectResponseBody
 from ._create_project_response import CreateProjectResponse
+from ._create_upload_media_request import CreateUploadMediaRequest
+from ._create_upload_media_response_body import CreateUploadMediaResponseBody
+from ._create_upload_media_response import CreateUploadMediaResponse
 from ._create_workspace_request import CreateWorkspaceRequest
 from ._create_workspace_response_body import CreateWorkspaceResponseBody
 from ._create_workspace_response import CreateWorkspaceResponse
@@ -101,6 +107,9 @@ from ._list_asset_categories_response import ListAssetCategoriesResponse
 from ._list_infinite_canvases_request import ListInfiniteCanvasesRequest
 from ._list_infinite_canvases_response_body import ListInfiniteCanvasesResponseBody
 from ._list_infinite_canvases_response import ListInfiniteCanvasesResponse
+from ._list_media_folders_request import ListMediaFoldersRequest
+from ._list_media_folders_response_body import ListMediaFoldersResponseBody
+from ._list_media_folders_response import ListMediaFoldersResponse
 from ._list_projects_request import ListProjectsRequest
 from ._list_projects_response_body import ListProjectsResponseBody
 from ._list_projects_response import ListProjectsResponse
@@ -173,6 +182,8 @@ from ._batch_get_video_character_replace_jobs_response_body import BatchGetVideo
 from ._batch_get_video_character_replace_jobs_response_body import BatchGetVideoCharacterReplaceJobsResponseBodyJobListResult
 from ._batch_get_video_character_replace_jobs_response_body import BatchGetVideoCharacterReplaceJobsResponseBodyJobList
 from ._create_asset_category_response_body import CreateAssetCategoryResponseBodyCategory
+from ._create_oss_upload_response_body import CreateOssUploadResponseBodyUploadCredentials
+from ._create_upload_media_response_body import CreateUploadMediaResponseBodyUploadCredentials
 from ._get_agent_job_response_body import GetAgentJobResponseBodyJob
 from ._get_asset_category_response_body import GetAssetCategoryResponseBodyCategory
 from ._get_asset_category_response_body import GetAssetCategoryResponseBodySubCategories
@@ -206,6 +217,7 @@ from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponse
 from ._get_yike_account_credit_response_body import GetYikeAccountCreditResponseBodyMembershipInfo
 from ._list_asset_categories_response_body import ListAssetCategoriesResponseBodyCategories
 from ._list_infinite_canvases_response_body import ListInfiniteCanvasesResponseBodyCanvasList
+from ._list_media_folders_response_body import ListMediaFoldersResponseBodyFolderList
 from ._list_projects_response_body import ListProjectsResponseBodyProjectList
 from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaceList
 from ._precheck_video_character_replace_job_response_body import PrecheckVideoCharacterReplaceJobResponseBodyResult
@@ -235,9 +247,15 @@ __all__ = [
     CreateInfiniteCanvasRequest,
     CreateInfiniteCanvasResponseBody,
     CreateInfiniteCanvasResponse,
+    CreateOssUploadRequest,
+    CreateOssUploadResponseBody,
+    CreateOssUploadResponse,
     CreateProjectRequest,
     CreateProjectResponseBody,
     CreateProjectResponse,
+    CreateUploadMediaRequest,
+    CreateUploadMediaResponseBody,
+    CreateUploadMediaResponse,
     CreateWorkspaceRequest,
     CreateWorkspaceResponseBody,
     CreateWorkspaceResponse,
@@ -316,6 +334,9 @@ __all__ = [
     ListInfiniteCanvasesRequest,
     ListInfiniteCanvasesResponseBody,
     ListInfiniteCanvasesResponse,
+    ListMediaFoldersRequest,
+    ListMediaFoldersResponseBody,
+    ListMediaFoldersResponse,
     ListProjectsRequest,
     ListProjectsResponseBody,
     ListProjectsResponse,
@@ -388,6 +409,8 @@ __all__ = [
     BatchGetVideoCharacterReplaceJobsResponseBodyJobListResult,
     BatchGetVideoCharacterReplaceJobsResponseBodyJobList,
     CreateAssetCategoryResponseBodyCategory,
+    CreateOssUploadResponseBodyUploadCredentials,
+    CreateUploadMediaResponseBodyUploadCredentials,
     GetAgentJobResponseBodyJob,
     GetAssetCategoryResponseBodyCategory,
     GetAssetCategoryResponseBodySubCategories,
@@ -421,6 +444,7 @@ __all__ = [
     GetYikeAccountCreditResponseBodyMembershipInfo,
     ListAssetCategoriesResponseBodyCategories,
     ListInfiniteCanvasesResponseBodyCanvasList,
+    ListMediaFoldersResponseBodyFolderList,
     ListProjectsResponseBodyProjectList,
     ListWorkspacesResponseBodyWorkspaceList,
     PrecheckVideoCharacterReplaceJobResponseBodyResult,
