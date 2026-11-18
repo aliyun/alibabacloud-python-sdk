@@ -11,7 +11,7 @@ class AttachWhitelistTemplateToInstanceRequest(DaraModel):
         region_id: str = None,
         template_id: str = None,
     ):
-        # The database instance IDs. Separate multiple IDs with commas. You can associate or disassociate up to 20 instances at a time.
+        # The IDs of the database instances. Separate multiple IDs with commas. You can associate up to 20 instances at a time.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
@@ -19,7 +19,7 @@ class AttachWhitelistTemplateToInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The whitelist template ID.
+        # The ID of the whitelist template.
         # 
         # This parameter is required.
         self.template_id = template_id

@@ -15,7 +15,7 @@ class CreateEndpointRequest(DaraModel):
     ):
         # The compute group ID.
         self.computing_group_id = computing_group_id
-        # The prefix of the destination endpoint. This is the prefix of the ConnectionString parameter.
+        # The prefix of the destination endpoint, which is the prefix of the ConnectionString parameter.
         self.connection_prefix = connection_prefix
         # The cluster ID.
         # 

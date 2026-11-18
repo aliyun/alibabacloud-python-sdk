@@ -22,11 +22,11 @@ class ModifyLangfuseProjectMembershipRequest(DaraModel):
         # 
         # This parameter is required.
         self.email = email
-        # The Langfuse organization ID.
+        # The ID of the Langfuse organization.
         # 
         # This parameter is required.
         self.organization_id = organization_id
-        # The Langfuse project ID.
+        # The ID of the Langfuse project.
         # 
         # This parameter is required.
         self.project_id = project_id

@@ -59,9 +59,9 @@ class CreateLangfuseUserResponseBodyData(DaraModel):
         self.created_at = created_at
         # The email address of the user.
         self.email = email
-        # The user role.
+        # The role of the user.
         self.membership = membership
-        # The username.
+        # The name of the user.
         self.name = name
 
     def validate(self):
@@ -116,7 +116,7 @@ class CreateLangfuseUserResponseBodyDataMembership(DaraModel):
         organization_id: str = None,
         role: str = None,
     ):
-        # The Langfuse organization ID.
+        # The ID of the Langfuse organization.
         self.organization_id = organization_id
         # The role of the user in the organization.
         self.role = role

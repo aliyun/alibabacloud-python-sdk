@@ -191,6 +191,9 @@ from ._modify_langfuse_project_membership_response import ModifyLangfuseProjectM
 from ._modify_langfuse_security_iplist_request import ModifyLangfuseSecurityIPListRequest
 from ._modify_langfuse_security_iplist_response_body import ModifyLangfuseSecurityIPListResponseBody
 from ._modify_langfuse_security_iplist_response import ModifyLangfuseSecurityIPListResponse
+from ._modify_langfuse_user_allow_org_creation_request import ModifyLangfuseUserAllowOrgCreationRequest
+from ._modify_langfuse_user_allow_org_creation_response_body import ModifyLangfuseUserAllowOrgCreationResponseBody
+from ._modify_langfuse_user_allow_org_creation_response import ModifyLangfuseUserAllowOrgCreationResponse
 from ._modify_security_iplist_request import ModifySecurityIPListRequest
 from ._modify_security_iplist_response_body import ModifySecurityIPListResponseBody
 from ._modify_security_iplist_response import ModifySecurityIPListResponse
@@ -321,6 +324,7 @@ from ._modify_dbinstance_connection_string_response_body import ModifyDBInstance
 from ._modify_langfuse_org_membership_response_body import ModifyLangfuseOrgMembershipResponseBodyData
 from ._modify_langfuse_project_membership_response_body import ModifyLangfuseProjectMembershipResponseBodyData
 from ._modify_langfuse_security_iplist_response_body import ModifyLangfuseSecurityIPListResponseBodyData
+from ._modify_langfuse_user_allow_org_creation_response_body import ModifyLangfuseUserAllowOrgCreationResponseBodyData
 from ._modify_security_iplist_response_body import ModifySecurityIPListResponseBodyData
 from ._reset_account_password_response_body import ResetAccountPasswordResponseBodyData
 from ._reset_langfuse_user_password_response_body import ResetLangfuseUserPasswordResponseBodyData
@@ -522,6 +526,9 @@ __all__ = [
     ModifyLangfuseSecurityIPListRequest,
     ModifyLangfuseSecurityIPListResponseBody,
     ModifyLangfuseSecurityIPListResponse,
+    ModifyLangfuseUserAllowOrgCreationRequest,
+    ModifyLangfuseUserAllowOrgCreationResponseBody,
+    ModifyLangfuseUserAllowOrgCreationResponse,
     ModifySecurityIPListRequest,
     ModifySecurityIPListResponseBody,
     ModifySecurityIPListResponse,
@@ -652,6 +659,7 @@ __all__ = [
     ModifyLangfuseOrgMembershipResponseBodyData,
     ModifyLangfuseProjectMembershipResponseBodyData,
     ModifyLangfuseSecurityIPListResponseBodyData,
+    ModifyLangfuseUserAllowOrgCreationResponseBodyData,
     ModifySecurityIPListResponseBodyData,
     ResetAccountPasswordResponseBodyData,
     ResetLangfuseUserPasswordResponseBodyData,

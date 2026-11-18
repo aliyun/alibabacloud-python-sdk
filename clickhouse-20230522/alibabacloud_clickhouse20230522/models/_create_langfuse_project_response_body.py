@@ -52,7 +52,7 @@ class CreateLangfuseProjectResponseBodyData(DaraModel):
         organization_id: str = None,
         project_id: str = None,
     ):
-        # The creation time of the Langfuse project. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The time when the Langfuse project was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_at = created_at
         # The name of the Langfuse project.
         self.name = name

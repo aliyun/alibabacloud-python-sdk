@@ -19,7 +19,7 @@ class CreateAccountRequest(DaraModel):
         product: str = None,
         region_id: str = None,
     ):
-        # The database account. The account name must meet the following requirements:
+        # The database account. The name must meet the following requirements:
         # - The name must be unique.
         # - The name can contain lowercase letters, digits, and underscores (_).
         # - The name must start with a lowercase letter and end with a lowercase letter or a digit.
@@ -28,8 +28,8 @@ class CreateAccountRequest(DaraModel):
         # This parameter is required.
         self.account = account
         # The type of the database account. Valid values:
-        # - **NormalAccount**: Standard account.
-        # - **SuperAccount**: Privileged account.
+        # - **NormalAccount**: standard account.
+        # - **SuperAccount**: privileged account.
         # 
         # This parameter is required.
         self.account_type = account_type
@@ -134,12 +134,12 @@ class CreateAccountRequestDmlAuthSetting(DaraModel):
         self.allow_databases = allow_databases
         # The list of dictionaries to be authorized. Separate multiple dictionaries with commas (,).
         self.allow_dictionaries = allow_dictionaries
-        # Specifies whether to grant DDL permissions to the database account. Valid values:
+        # Specifies whether to grant Data Definition Language (DDL) permissions to the database account. Valid values:
         # 
         # - **true**: Allows DDL operations.
         # - **false**: Prohibits DDL operations.
         self.ddl_authority = ddl_authority
-        # Specifies whether to grant DML permissions to the database account. Valid values:
+        # Specifies whether to grant Data Manipulation Language (DML) permissions to the database account. Valid values:
         # - **0**: Allows queries for reading, writing, and changing settings.
         # - **1**: Allows only queries for reading data.
         # - **2**: Allows queries for reading data and changing settings.

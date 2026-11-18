@@ -5312,6 +5312,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_langfuse_security_iplist_with_options_async(request, runtime)
 
+    def modify_langfuse_user_allow_org_creation_with_options(
+        self,
+        request: main_models.ModifyLangfuseUserAllowOrgCreationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLangfuseUserAllowOrgCreationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_org_creation):
+            query['AllowOrgCreation'] = request.allow_org_creation
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLangfuseUserAllowOrgCreation',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLangfuseUserAllowOrgCreationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_langfuse_user_allow_org_creation_with_options_async(
+        self,
+        request: main_models.ModifyLangfuseUserAllowOrgCreationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyLangfuseUserAllowOrgCreationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_org_creation):
+            query['AllowOrgCreation'] = request.allow_org_creation
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyLangfuseUserAllowOrgCreation',
+            version = '2023-05-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyLangfuseUserAllowOrgCreationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_langfuse_user_allow_org_creation(
+        self,
+        request: main_models.ModifyLangfuseUserAllowOrgCreationRequest,
+    ) -> main_models.ModifyLangfuseUserAllowOrgCreationResponse:
+        runtime = RuntimeOptions()
+        return self.modify_langfuse_user_allow_org_creation_with_options(request, runtime)
+
+    async def modify_langfuse_user_allow_org_creation_async(
+        self,
+        request: main_models.ModifyLangfuseUserAllowOrgCreationRequest,
+    ) -> main_models.ModifyLangfuseUserAllowOrgCreationResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_langfuse_user_allow_org_creation_with_options_async(request, runtime)
+
     def modify_security_iplist_with_options(
         self,
         request: main_models.ModifySecurityIPListRequest,

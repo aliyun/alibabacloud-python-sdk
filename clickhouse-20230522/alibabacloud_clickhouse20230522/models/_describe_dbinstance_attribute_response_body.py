@@ -13,7 +13,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         data: main_models.DescribeDBInstanceAttributeResponseBodyData = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The response result.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -95,32 +95,40 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         # The channel ID.
         self.bid = bid
         # The category. Valid values:
+        # 
+        # - enterprise: Enterprise Edition.
         self.category = category
-        # The billing method.
+        # The billing method. 
+        # Enterprise Edition clusters only support the pay-as-you-go billing method.
         self.charge_type = charge_type
-        # The ClickObserve service status.
+        # The status of the ClickObserve service.
         self.click_observe_service_status = click_observe_service_status
         # The creation time of the cluster. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.create_time = create_time
         # The cluster ID.
         self.dbinstance_id = dbinstance_id
-        # Indicates whether deletion protection is enabled.
+        # Indicates whether release protection is enabled.
         self.deletion_protection = deletion_protection
-        # The zone deployment status of the cluster. Valid values: single_az and multi_az.
+        # The zone deployment status of the cluster. Valid values:
+        # - single_az: Servers are deployed in the primary zone specified by ZoneId.
+        # - multi_az: Servers are deployed in multiple zones specified by MultiZones.
+        # 
+        # Keeper nodes are always deployed in multiple zones specified by MultiZones.
         self.deploy_schema = deploy_schema
         # The cluster description.
         self.description = description
-        # The disabled database ports. Multiple ports are separated by commas (,).
+        # The disabled database ports. Separate multiple ports with commas (,).
         self.disabled_ports = disabled_ports
         # The engine type.
         self.engine = engine
-        # The minor version of the cluster engine.
+        # The minor engine version of the cluster.
         self.engine_minor_version = engine_minor_version
-        # The DPI engine version.
+        # The database engine version.
         self.engine_version = engine_version
         # The expiration time of the cluster. Format: yyyy-MM-ddTHH:mm:ssZ.
+        # > Pay-as-you-go clusters do not have an expiration time. An empty value is returned.
         self.expire_time = expire_time
-        # The list of Langfuse instance IDs.
+        # The Langfuse instance IDs.
         self.langfuse_instance_ids = langfuse_instance_ids
         # The latest minor engine version.
         self.latest_engine_minor_version = latest_engine_minor_version
@@ -136,9 +144,9 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         self.multi_zones = multi_zones
         # The number of nodes.
         self.node_count = node_count
-        # The maximum elastic scaling value for serverless nodes.
+        # The maximum scaling limit for serverless nodes.
         self.node_scale_max = node_scale_max
-        # The minimum elastic scaling value for serverless nodes.
+        # The minimum scaling limit for serverless nodes.
         self.node_scale_min = node_scale_min
         # The node information.
         self.nodes = nodes
@@ -148,15 +156,15 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The maximum scaling value for serverless elastic scaling.
+        # The maximum value for serverless elastic scaling.
         self.scale_max = scale_max
-        # The minimum scaling value for serverless elastic scaling.
+        # The minimum value for serverless elastic scaling.
         self.scale_min = scale_min
         # The instance status.
         self.status = status
-        # The pre-purchased storage quota, in GB.
+        # The purchased storage quota, in GB.
         self.storage_quota = storage_quota
-        # The storage size. Unit: GB.
+        # The storage space size. Unit: GB.
         self.storage_size = storage_size
         # The storage type.
         self.storage_type = storage_type
@@ -164,7 +172,7 @@ class DescribeDBInstanceAttributeResponseBodyData(DaraModel):
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The VPC ID.
         self.vpc_id = vpc_id
         self.web_uisnat_status = web_uisnat_status
         # The zone ID.

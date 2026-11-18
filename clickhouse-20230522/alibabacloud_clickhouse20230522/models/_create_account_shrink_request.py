@@ -16,7 +16,7 @@ class CreateAccountShrinkRequest(DaraModel):
         product: str = None,
         region_id: str = None,
     ):
-        # The database account. The account name must meet the following requirements:
+        # The database account. The name must meet the following requirements:
         # - The name must be unique.
         # - The name can contain lowercase letters, digits, and underscores (_).
         # - The name must start with a lowercase letter and end with a lowercase letter or a digit.
@@ -25,8 +25,8 @@ class CreateAccountShrinkRequest(DaraModel):
         # This parameter is required.
         self.account = account
         # The type of the database account. Valid values:
-        # - **NormalAccount**: Standard account.
-        # - **SuperAccount**: Privileged account.
+        # - **NormalAccount**: standard account.
+        # - **SuperAccount**: privileged account.
         # 
         # This parameter is required.
         self.account_type = account_type

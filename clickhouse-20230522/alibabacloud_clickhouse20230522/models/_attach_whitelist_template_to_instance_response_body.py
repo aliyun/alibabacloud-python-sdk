@@ -53,11 +53,11 @@ class AttachWhitelistTemplateToInstanceResponseBodyData(DaraModel):
         attach_successed_list: List[main_models.AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList] = None,
         status: str = None,
     ):
-        # The instances that failed to be disassociated.
+        # The instances that failed to be associated.
         self.attach_fail_list = attach_fail_list
-        # The templates that were successfully associated.
+        # The successfully associated templates.
         self.attach_successed_list = attach_successed_list
-        # The operation status.
+        # The status of the operation.
         self.status = status
 
     def validate(self):
@@ -115,9 +115,9 @@ class AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedList(DaraM
         dbinstance_id: str = None,
         templates: List[main_models.AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTemplates] = None,
     ):
-        # The instance name.
+        # The name of the instance.
         self.dbinstance_id = dbinstance_id
-        # The whitelist templates.
+        # The list of whitelist templates.
         self.templates = templates
 
     def validate(self):
@@ -162,13 +162,13 @@ class AttachWhitelistTemplateToInstanceResponseBodyDataAttachSuccessedListTempla
         template_id: str = None,
         template_name: str = None,
     ):
-        # The associated instances.
+        # The list of associated instances.
         self.db_instances = db_instances
-        # The IP whitelists.
+        # The IP whitelist.
         self.security_iplist = security_iplist
-        # The whitelist template ID.
+        # The ID of the whitelist template.
         self.template_id = template_id
-        # The whitelist template name.
+        # The name of the whitelist template.
         self.template_name = template_name
 
     def validate(self):
@@ -253,9 +253,9 @@ class AttachWhitelistTemplateToInstanceResponseBodyDataAttachFailList(DaraModel)
         dbinstance_id: str = None,
         reason: str = None,
     ):
-        # The instance name.
+        # The name of the instance.
         self.dbinstance_id = dbinstance_id
-        # The reason for the disassociation failure.
+        # The reason for the association failure.
         self.reason = reason
 
     def validate(self):
