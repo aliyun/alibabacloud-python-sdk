@@ -23,25 +23,25 @@ class SearchContextResponseBody(DaraModel):
     ):
         # The audit write status. Valid values: ok and degraded.
         self.audit_status = audit_status
-        # The call ID for the multi-strategy recall of the experience store.
+        # The call ID for multi-strategy recall in the experience store.
         self.call_id = call_id
         # The diagnostics information for the current experience recall, including duration, model call volume, and filtering. The actual diagnostics items are determined by the running mode.
         self.diagnostics = diagnostics
-        # The actual experience recall mode used for the current request. Valid values: direct, agentic, and hybrid.
+        # The experience recall mode actually used for the current request. Valid values: direct, agentic, and hybrid.
         self.mode = mode
-        # The ID of the recall event. You can use this ID to call the GetContextStoreRecall operation to view audit details.
+        # The ID of the recall event. You can use this ID to call GetContextStoreRecall to view audit details.
         self.recall_event_id = recall_event_id
         # The list of relevance judgment results for candidate experiences.
         self.relevance = relevance
-        # The ID of the request. You can use this ID to locate the request for troubleshooting.
+        # The ID of the request. You can use this ID to locate the request when troubleshooting issues.
         self.request_id = request_id
-        # The list of retrieval results, sorted by similarity in descending order.
+        # The list of retrieval results, sorted by similarity in descending order. Each item contains contextId, context, metadata, score, rank, revision, strategyVersion, and strategyId.
         self.results = results
         # The list of rewritten queries generated based on the original retrieval query. The original query is not included.
         self.rewritten_queries = rewritten_queries
         # The processing status of the current experience recall call. Valid values: success, degraded, failed, and error.
         self.status = status
-        # The strategy implementation version used for the current experience recall. This is used for auditing and result tracing.
+        # The implementation version of the strategy used for the current experience recall. This is used for auditing and result tracing.
         self.strategy_version = strategy_version
 
     def validate(self):
