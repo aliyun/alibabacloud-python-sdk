@@ -10,7 +10,9 @@ class SceneItem(DaraModel):
         detail: str = None,
         type: str = None,
     ):
+        # The result details for vertical scenarios. Different scenarios return different JSON string structures.
         self.detail = detail
+        # The result type for vertical scenarios, such as weather or time.
         self.type = type
 
     def validate(self):

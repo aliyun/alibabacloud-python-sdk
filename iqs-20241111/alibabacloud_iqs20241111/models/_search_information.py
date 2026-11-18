@@ -10,7 +10,9 @@ class SearchInformation(DaraModel):
         search_time: int = None,
         total: int = None,
     ):
+        # The search time, in milliseconds (ms).
         self.search_time = search_time
+        # The total count.
         self.total = total
 
     def validate(self):

@@ -17,11 +17,17 @@ class GenericSearchResult(DaraModel):
         search_information: main_models.SearchInformation = None,
         weibo_items: List[main_models.WeiboItem] = None,
     ):
+        # The web content list.
         self.page_items = page_items
+        # The query context information.
         self.query_context = query_context
+        # requestId
         self.request_id = request_id
+        # The list of scenario-specific query results, such as structured results for time and weather.
         self.scene_items = scene_items
+        # The search information.
         self.search_information = search_information
+        # The Weibo list.
         self.weibo_items = weibo_items
 
     def validate(self):

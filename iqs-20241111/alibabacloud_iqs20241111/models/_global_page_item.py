@@ -15,7 +15,7 @@ class GlobalPageItem(DaraModel):
         # 
         # This parameter is required.
         self.link = link
-        # The description excerpt of the search result in text format.
+        # The truncated description of the search result in text format.
         self.snippet = snippet
         # The title of the search result in plain text.
         # 

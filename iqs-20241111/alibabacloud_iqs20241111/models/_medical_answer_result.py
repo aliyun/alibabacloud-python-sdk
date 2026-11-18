@@ -15,9 +15,13 @@ class MedicalAnswerResult(DaraModel):
         request_id: str = None,
         search_information: main_models.UnifiedSearchInformation = None,
     ):
+        # The list of medical Q&A answers. An empty array is returned if the question is empty or no content is matched.
         self.messages = messages
+        # The query context information, such as the original query content.
         self.query_context = query_context
+        # The ID of the request. You can provide this ID for troubleshooting.
         self.request_id = request_id
+        # The search information, such as the execution duration.
         self.search_information = search_information
 
     def validate(self):

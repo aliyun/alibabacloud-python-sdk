@@ -12,10 +12,15 @@ class OmniSearchQuery(DaraModel):
         use_cot: bool = None,
         use_model: str = None,
     ):
+        # The request parameter.
+        # 
         # This parameter is required.
         self.query = query
+        # The session ID. This is a reserved field and is not currently supported.
         self.session_id = session_id
+        # Specifies whether to use CoT. This is a reserved field and is not currently supported.
         self.use_cot = use_cot
+        # The model version to use. Valid values: pro for the deep version, and lite for the fast version.
         self.use_model = use_model
 
     def validate(self):

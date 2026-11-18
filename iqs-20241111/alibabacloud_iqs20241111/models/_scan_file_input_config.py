@@ -10,7 +10,9 @@ class ScanFileInputConfig(DaraModel):
         auto_crop: str = None,
         auto_rotate: str = None,
     ):
+        # The automatic trim.
         self.auto_crop = auto_crop
+        # The automatic rotation.
         self.auto_rotate = auto_rotate
 
     def validate(self):

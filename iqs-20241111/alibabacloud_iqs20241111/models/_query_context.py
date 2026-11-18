@@ -11,7 +11,9 @@ class QueryContext(DaraModel):
         original_query: main_models.QueryContextOriginalQuery = None,
         rewrite: main_models.QueryContextRewrite = None,
     ):
+        # The initial query condition.
         self.original_query = original_query
+        # The query rewrite information.
         self.rewrite = rewrite
 
     def validate(self):
@@ -51,7 +53,9 @@ class QueryContextRewrite(DaraModel):
         enabled: bool = None,
         time_range: str = None,
     ):
+        # Specifies whether query rewrite is enabled.
         self.enabled = enabled
+        # The rewritten time range. An empty value indicates that no rewrite is performed or the rewrite result is the same as the original result.
         self.time_range = time_range
 
     def validate(self):
@@ -88,9 +92,13 @@ class QueryContextOriginalQuery(DaraModel):
         query: str = None,
         time_range: str = None,
     ):
+        # The industry classification of the original request.
         self.industry = industry
+        # The page number of the original request.
         self.page = page
+        # The query content of the original request.
         self.query = query
+        # The time range of the original request. Valid values: OneDay, OneWeek, OneMonth, OneYear, and NoLimit.
         self.time_range = time_range
 
     def validate(self):

@@ -42,11 +42,11 @@ class GlobalQueryContextOriginalQuery(DaraModel):
         query: str = None,
         time_range: str = None,
     ):
-        # 页码
+        # The page number.
         self.page = page
-        # 查询关键字
+        # The query keyword.
         self.query = query
-        # 时间范围
+        # The time range.
         self.time_range = time_range
 
     def validate(self):

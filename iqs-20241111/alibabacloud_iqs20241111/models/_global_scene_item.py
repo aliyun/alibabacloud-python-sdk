@@ -12,7 +12,7 @@ class GlobalSceneItem(DaraModel):
     ):
         # The detailed information in JSON format.
         self.detail = detail
-        # The type of the vertical data.
+        # The type of vertical data.
         self.type = type
 
     def validate(self):

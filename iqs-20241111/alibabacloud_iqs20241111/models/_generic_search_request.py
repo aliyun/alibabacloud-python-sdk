@@ -21,28 +21,29 @@ class GenericSearchRequest(DaraModel):
         session_id: str = None,
         time_range: str = None,
     ):
+        # The advanced search parameters. Filters search results by the start and end dates of the webpage publication time. The date format is YYYY-MM-DD. This parameter takes precedence over timeRange.
         self.advanced_params = advanced_params
+        # Specifies whether to rerank the search results. Default value: true.
         self.enable_rerank = enable_rerank
-        # The industry. After you specify an industry, only site content related to the specified industry is recalled. Separate multiple industries with commas.
+        # The industry. If specified, only site content restricted to the specified industries is recalled. Separate multiple industries with commas.
         self.industry = industry
-        # The page number. Pages start from 1.
+        # The page number. The value starts from 1.
         self.page = page
-        # The search keyword.
+        # The search keywords.
         # 
         # This parameter is required.
         self.query = query
+        # Specifies whether to return the main text of the webpage. Default value: true.
         self.return_main_text = return_main_text
+        # Specifies whether to return the webpage content in Markdown format. Default value: true.
         self.return_markdown_text = return_markdown_text
+        # Specifies whether to return the full rich text body. Default value: false.
         self.return_rich_main_body = return_rich_main_body
+        # Specifies whether to return the enhanced summary. Default value: true.
         self.return_summary = return_summary
-        # The session ID for multi-turn interaction.
+        # The session ID for multi-turn interactions.
         self.session_id = session_id
-        # The time range for filtering results. Valid values:
-        # - OneDay: last day
-        # - OneWeek: last week
-        # - OneMonth: last month
-        # - OneYear: last year
-        # - NoLimit: no limit.
+        # The time range.
         self.time_range = time_range
 
     def validate(self):

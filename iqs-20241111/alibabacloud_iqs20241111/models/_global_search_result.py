@@ -16,13 +16,13 @@ class GlobalSearchResult(DaraModel):
         scene_items: List[main_models.GlobalSceneItem] = None,
         search_information: main_models.GlobalSearchInformation = None,
     ):
-        # The list of web page content.
+        # The web page content list.
         self.page_items = page_items
         # The query context.
         self.query_context = query_context
-        # The request ID.
+        # requestId
         self.request_id = request_id
-        # The scenario-specific vertical API recall results.
+        # The scenario-specific vertical API recall.
         self.scene_items = scene_items
         # The search information.
         self.search_information = search_information

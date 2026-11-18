@@ -10,7 +10,13 @@ class MedicalKnowInput(DaraModel):
         query: str = None,
         type: str = None,
     ):
+        # The medical, drug, disease, or food entity whose properties are to be queried.
         self.query = query
+        # The entity query type. Valid values:
+        # - finding: disease
+        # - food: food
+        # - medicine: medicine
+        # If this parameter is not specified, the type is automatically identified.
         self.type = type
 
     def validate(self):

@@ -33,34 +33,65 @@ class ScorePageItem(DaraModel):
         title: str = None,
         website_authority_score: int = None,
     ):
+        # The search result template. Different templates return different fields.
+        # 
         # This parameter is required.
         self.card_type = card_type
+        # The relevance tag. A value of 0 indicates low relevance, and 1 indicates non-low relevance.
         self.correlation_tag = correlation_tag
+        # The abbreviated URL of this search result.
+        # 
         # This parameter is required.
         self.display_link = display_link
+        # The dynamic authority score, which ranges from 0 to 2 and is calculated based on the relevance of the query content.
         self.host_authority_score = host_authority_score
+        # The site logo.
         self.host_logo = host_logo
+        # The site name.
         self.hostname = hostname
+        # The description snippet of the search result in HTML format.
+        # 
         # This parameter is required.
         self.html_snippet = html_snippet
+        # The search result title in HTML format.
+        # 
         # This parameter is required.
         self.html_title = html_title
+        # The image information.
         self.images = images
+        # The full URL that the search result points to.
+        # 
         # This parameter is required.
         self.link = link
+        # The full text of the search result, which is available in some scenarios.
         self.main_text = main_text
+        # The web page body in Markdown format.
         self.markdown_text = markdown_text
+        # The MIME type of the search result.
         self.mime = mime
+        # The supplementary page information.
         self.page_map = page_map
+        # The publish time.
+        # 
         # This parameter is required.
         self.publish_time = publish_time
+        # The full rich text body, which preserves the order of text, images, audio, video, tables, and code in the web page.
         self.rich_main_body = rich_main_body
+        # The score.
         self.score = score
+        # The site label. Two types are currently supported:
+        # * Authoritative media
+        #  * Party and government organs
         self.site_label = site_label
+        # The description snippet of the search result in text format.
         self.snippet = snippet
+        # The enhanced summary.
         self.summary = summary
+        # The search result title in plain text.
+        # 
         # This parameter is required.
         self.title = title
+        # The static authority score, which is determined solely by the authority of the website itself and is independent of the query content.
         self.website_authority_score = website_authority_score
 
     def validate(self):

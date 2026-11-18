@@ -13,7 +13,9 @@ class QueryResult(DaraModel):
         data: List[main_models.QueryResultData] = None,
         request_id: str = None,
     ):
+        # The list of returned locations.
         self.data = data
+        # The unique request ID for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -70,21 +72,37 @@ class QueryResultData(DaraModel):
         type_code: str = None,
         types: str = None,
     ):
+        # The detailed address.
         self.address = address
+        # The city code.
         self.city_code = city_code
+        # The city name.
         self.city_name = city_name
+        # The distance from the center point in meters.
         self.distance_meter = distance_meter
+        # The district code.
         self.district_code = district_code
+        # The district name.
         self.district_name = district_name
+        # The internal identifier of the location.
         self.id = id
+        # The list of images.
         self.images = images
+        # The latitude of the location.
         self.latitude = latitude
+        # The longitude of the location.
         self.longitude = longitude
+        # The related business information.
         self.metadata = metadata
+        # The location name.
         self.name = name
+        # The province code.
         self.province_code = province_code
+        # The province name.
         self.province_name = province_name
+        # The location type code.
         self.type_code = type_code
+        # The location types. Multiple types are separated by vertical bars.
         self.types = types
 
     def validate(self):
@@ -219,12 +237,19 @@ class QueryResultDataMetadata(DaraModel):
         score: str = None,
         weekly_opening_days: str = None,
     ):
+        # The average spend in CNY.
         self.average_spend = average_spend
+        # The business area.
         self.business_area = business_area
+        # The business hours for today.
         self.daily_opening_hours = daily_opening_hours
+        # The main tag.
         self.main_tag = main_tag
+        # The contact phone numbers. Multiple numbers are separated by vertical bars.
         self.phone = phone
+        # The rating.
         self.score = score
+        # The weekly opening days.
         self.weekly_opening_days = weekly_opening_days
 
     def validate(self):
@@ -289,7 +314,9 @@ class QueryResultDataImages(DaraModel):
         title: str = None,
         url: str = None,
     ):
+        # The image name.
         self.title = title
+        # The image URL.
         self.url = url
 
     def validate(self):

@@ -9,6 +9,7 @@ class AgentBaseQuery(DaraModel):
         self,
         query: str = None,
     ):
+        # The natural language question used to retrieve nearby locations.
         self.query = query
 
     def validate(self):

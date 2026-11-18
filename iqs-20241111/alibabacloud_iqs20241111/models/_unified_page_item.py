@@ -26,32 +26,37 @@ class UnifiedPageItem(DaraModel):
         title: str = None,
         website_authority_score: int = None,
     ):
+        # The relevance tag. A value of 0 indicates low relevance, and 1 indicates non-low relevance.
         self.correlation_tag = correlation_tag
+        # The dynamic authority score, which ranges from 0 to 2 and is calculated based on the relevance to the query content.
         self.host_authority_score = host_authority_score
         # The site logo.
         self.host_logo = host_logo
         # The site name.
         self.hostname = hostname
-        # The images in the search result URL. A maximum of three images are returned.
+        # The images from the search result web page, up to three.
         self.images = images
-        # The full URL that the search result points to.
+        # The full URL pointed to by the search result.
         self.link = link
         # The full text of the searched web page.
         self.main_text = main_text
         # The Markdown content.
         self.markdown_text = markdown_text
-        # The time when the web page was published, in ISO time format.
+        # The publish time of the web page in ISO format.
         self.published_time = published_time
         # The rerank score.
         self.rerank_score = rerank_score
+        # The full rich text body, which preserves the order of text, images, audio, video, tables, and code on the web page.
         self.rich_main_body = rich_main_body
-        # The text summary.
+        # The summary.
         self.snippet = snippet
-        # The enhanced summary, which contains 400 or more characters.
+        # The enhanced summary, 400 words or more.
         self.summary = summary
+        # The web page tags.
         self.tags = tags
-        # The full URL that the search result points to.
+        # The full URL pointed to by the search result.
         self.title = title
+        # The static authority score, which is determined solely by the authority of the website itself and is independent of the query content.
         self.website_authority_score = website_authority_score
 
     def validate(self):

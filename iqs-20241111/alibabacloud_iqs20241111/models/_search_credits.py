@@ -10,9 +10,9 @@ class SearchCredits(DaraModel):
         generic_text_search: int = None,
         lite_advanced_text_search: int = None,
     ):
-        # The number of basic edition text search requests.
+        # The number of basic edition text searches.
         self.generic_text_search = generic_text_search
-        # The number of LiteAdvanced search requests.
+        # The number of LiteAdvanced searches.
         self.lite_advanced_text_search = lite_advanced_text_search
 
     def validate(self):

@@ -11,8 +11,11 @@ class IncludeImage(DaraModel):
         image_link: str = None,
         width: int = None,
     ):
+        # The image height in pixels.
         self.height = height
+        # The image link.
         self.image_link = image_link
+        # The image width in pixels.
         self.width = width
 
     def validate(self):

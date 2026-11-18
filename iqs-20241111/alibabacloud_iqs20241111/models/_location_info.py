@@ -10,7 +10,9 @@ class LocationInfo(DaraModel):
         city: str = None,
         ip: str = None,
     ):
+        # The city associated with the search. It is used to return information about the corresponding region in scenarios such as weather.
         self.city = city
+        # The IP address associated with the search. It is used to identify the region in supported scenarios and has a lower priority than city.
         self.ip = ip
 
     def validate(self):

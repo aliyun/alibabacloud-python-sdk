@@ -17,11 +17,17 @@ class UnifiedSearchOutput(DaraModel):
         scene_items: List[main_models.UnifiedSceneItem] = None,
         search_information: main_models.UnifiedSearchInformation = None,
     ):
+        # The consumed credits information.
         self.cost_credits = cost_credits
+        # The web page search results.
         self.page_items = page_items
+        # The search context information.
         self.query_context = query_context
+        # The web page results.
         self.request_id = request_id
+        # The vertical API scenario-based results.
         self.scene_items = scene_items
+        # The basic search information.
         self.search_information = search_information
 
     def validate(self):

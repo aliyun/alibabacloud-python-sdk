@@ -82,8 +82,6 @@ from ._read_page_basic_response import ReadPageBasicResponse
 from ._read_page_scrape_request import ReadPageScrapeRequest
 from ._read_page_scrape_response_body import ReadPageScrapeResponseBody
 from ._read_page_scrape_response import ReadPageScrapeResponse
-from ._scan_file_request import ScanFileRequest
-from ._scan_file_response import ScanFileResponse
 from ._unified_search_request import UnifiedSearchRequest
 from ._unified_search_response import UnifiedSearchResponse
 from ._get_iqs_usage_result import GetIqsUsageResultRecords
@@ -181,8 +179,6 @@ __all__ = [
     ReadPageScrapeRequest,
     ReadPageScrapeResponseBody,
     ReadPageScrapeResponse,
-    ScanFileRequest,
-    ScanFileResponse,
     UnifiedSearchRequest,
     UnifiedSearchResponse,
     GetIqsUsageResultRecords,

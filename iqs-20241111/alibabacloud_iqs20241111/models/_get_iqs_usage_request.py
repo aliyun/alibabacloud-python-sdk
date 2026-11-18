@@ -11,10 +11,11 @@ class GetIqsUsageRequest(DaraModel):
         end_date: str = None,
         start_date: str = None,
     ):
+        # The ID of the Alibaba Cloud RAM user or the API key caller identifier to query.
         self.caller_id = caller_id
-        # End Date.
+        # The end date for the usage query, inclusive. The format is YYYYMMDD. The date must be within the last 60 days.
         self.end_date = end_date
-        # Start Date.
+        # The start date for the usage query, inclusive. The format is YYYYMMDD. The date must be within the last 60 days.
         self.start_date = start_date
 
     def validate(self):

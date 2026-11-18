@@ -13,10 +13,11 @@ class MultimodalSearchBody(DaraModel):
         engine_type: str = None,
         query: str = None,
     ):
-        # Additional query parameters, such as blocked sites
+        # The additional query items, such as blocked sites.
         self.advanced_params = advanced_params
+        # The search engine type.
         self.engine_type = engine_type
-        # Query content
+        # The query content.
         self.query = query
 
     def validate(self):

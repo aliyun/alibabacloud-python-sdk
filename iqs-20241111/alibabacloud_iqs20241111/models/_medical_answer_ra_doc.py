@@ -12,9 +12,13 @@ class MedicalAnswerRaDoc(DaraModel):
         title: str = None,
         type: str = None,
     ):
+        # The content summary of the reference source. Summaries can be returned for medical web pages and drug instructions.
         self.content = content
+        # The URL of the reference source. This can be an empty string for sources such as papers, clinical guidelines, and books.
         self.raw_url = raw_url
+        # The title of the reference source.
         self.title = title
+        # The type of the reference source, such as medical web pages, medical books, papers, or clinical guidelines.
         self.type = type
 
     def validate(self):

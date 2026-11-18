@@ -10,7 +10,9 @@ class MedicalKnowledgeInfo(DaraModel):
         content: str = None,
         url: str = None,
     ):
+        # The structured text composed of the entity name and its properties.
         self.content = content
+        # The source link of the entity property content.
         self.url = url
 
     def validate(self):

@@ -10,7 +10,7 @@ class UnifiedSceneItem(DaraModel):
         detail: str = None,
         type: str = None,
     ):
-        # The result in JSON structure.
+        # The JSON structured result.
         self.detail = detail
         # The type.
         self.type = type

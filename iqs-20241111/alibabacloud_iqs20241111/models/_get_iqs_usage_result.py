@@ -12,6 +12,7 @@ class GetIqsUsageResult(DaraModel):
         self,
         records: List[main_models.GetIqsUsageResultRecords] = None,
     ):
+        # The daily call volume records.
         self.records = records
 
     def validate(self):
@@ -61,18 +62,31 @@ class GetIqsUsageResultRecords(DaraModel):
         value_added_advanced: int = None,
         value_added_summary: int = None,
     ):
+        # The API name.
         self.api = api
+        # The queries per second (QPS) for tiered billing.
         self.billing_qps = billing_qps
+        # The metering date in the YYYYMMDD format.
         self.date = date
+        # The search engine type.
         self.engine_type = engine_type
+        # The number of failed calls.
         self.failed_calls = failed_calls
+        # The matched metering tier. Valid values: 1001, 1002, 1003, and 1004.
         self.ladder_type = ladder_type
+        # The ID of the Alibaba Cloud account.
         self.main_account_id = main_account_id
+        # The sub-account that initiates the call (RAM user or API key identifier).
         self.sub_account_id = sub_account_id
+        # The number of successful calls.
         self.success_calls = success_calls
+        # The total number of calls.
         self.total_bill_stat_calls = total_bill_stat_calls
+        # The total number of calls.
         self.total_calls = total_calls
+        # The value-added package usage for calling enhanced APIs.
         self.value_added_advanced = value_added_advanced
+        # The number of value-added package calls used for the summarization feature.
         self.value_added_summary = value_added_summary
 
     def validate(self):

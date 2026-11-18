@@ -10,6 +10,7 @@ class CommonQueryBySceneRequest(DaraModel):
         self,
         body: main_models.CommonAgentQuery = None,
     ):
+        # The request body.
         self.body = body
 
     def validate(self):

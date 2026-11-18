@@ -19,13 +19,21 @@ class UnifiedSearchInput(DaraModel):
         query: str = None,
         time_range: str = None,
     ):
+        # The advanced search parameters.
         self.advanced_params = advanced_params
+        # The query category. If specified, only search results from sites of the corresponding category are returned. Separate multiple categories with commas.
         self.category = category
+        # The options for controlling the returned content.
         self.contents = contents
+        # The engine type. Default value: Generic. Valid values: Generic, GenericAdvanced. GenericAdvanced is billed separately and returns more records.
         self.engine_type = engine_type
+        # **[Deprecated]** The location parameter. Use locationInfo to specify a city or IP address.
         self.location = location
+        # The location information, used for scenario-based searches such as weather.
         self.location_info = location_info
+        # The query content. The length limit is 1 to 100 characters.
         self.query = query
+        # The publication time range for the content.
         self.time_range = time_range
 
     def validate(self):

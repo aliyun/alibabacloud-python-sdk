@@ -9,6 +9,7 @@ class MedicalAnswerInput(DaraModel):
         self,
         query: str = None,
     ):
+        # The medical question to be answered.
         self.query = query
 
     def validate(self):

@@ -12,15 +12,15 @@ class GenericAdvancedSearchRequest(DaraModel):
         session_id: str = None,
         time_range: str = None,
     ):
-        # The industry. After you specify this parameter, only content from websites within the specified industries is recalled. Separate multiple industries with commas.
+        # The industry. If you specify this parameter, only website content specific to the specified industry is recalled. Separate multiple industries with commas.
         self.industry = industry
-        # The query text to search for.
+        # The search query.
         # 
         # This parameter is required.
         self.query = query
         # The session ID for multi-turn interactions.
         self.session_id = session_id
-        # The time range for filtering web pages by publish time.
+        # The relative query range for the web page publication time. Valid values: OneDay, OneWeek, OneMonth, OneYear, and NoLimit. A value of NoLimit indicates that no time limit is applied.
         self.time_range = time_range
 
     def validate(self):

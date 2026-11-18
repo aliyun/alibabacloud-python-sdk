@@ -12,9 +12,9 @@ class AiSearchResponseBody(DaraModel):
         payload: str = None,
         request_id: str = None,
     ):
-        # The header of the response.
+        # The header of the returned result.
         self.header = header
-        # The payload of the response. The value is a JSON structure that varies by event type.
+        # The payload of the returned result in JSON format. The structure varies based on the event.
         self.payload = payload
         # Id of the request
         self.request_id = request_id
@@ -67,7 +67,7 @@ class AiSearchResponseBodyHeader(DaraModel):
         self.event_id = event_id
         # The query context.
         self.query_context = query_context
-        # The response time, in milliseconds.
+        # The time taken (ms).
         self.response_time = response_time
 
     def validate(self):
@@ -158,7 +158,7 @@ class AiSearchResponseBodyHeaderQueryContextRewrite(DaraModel):
         enabled: bool = None,
         time_range: str = None,
     ):
-        # Indicates whether query rewriting is enabled.
+        # Specifies whether query rewrite is enabled.
         self.enabled = enabled
         # The rewritten time range.
         self.time_range = time_range
@@ -201,7 +201,7 @@ class AiSearchResponseBodyHeaderQueryContextOriginalQuery(DaraModel):
         self.industry = industry
         # The page number.
         self.page = page
-        # The query condition.
+        # The query conditions.
         self.query = query
         # The time range.
         self.time_range = time_range

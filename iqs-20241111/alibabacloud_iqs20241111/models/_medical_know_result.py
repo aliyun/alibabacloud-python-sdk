@@ -15,9 +15,13 @@ class MedicalKnowResult(DaraModel):
         request_id: str = None,
         search_information: main_models.UnifiedSearchInformation = None,
     ):
+        # The list of recognized entity property results. An empty array is returned if no entities are recognized.
         self.messages = messages
+        # The query context information, such as the original query content.
         self.query_context = query_context
+        # The ID of the request, which can be provided for troubleshooting.
         self.request_id = request_id
+        # The search information for the query, such as the search duration.
         self.search_information = search_information
 
     def validate(self):

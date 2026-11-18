@@ -1,3 +1,7 @@
+2026-11-18 Version: 2.0.0
+- Delete API ScanFile.
+
+
 2026-06-23 Version: 1.10.2
 - Generated python 2024-11-11 for IQS.
 

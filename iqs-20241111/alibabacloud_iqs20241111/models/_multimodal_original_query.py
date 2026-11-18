@@ -9,6 +9,7 @@ class MultimodalOriginalQuery(DaraModel):
         self,
         query: str = None,
     ):
+        # The query conditions.
         self.query = query
 
     def validate(self):

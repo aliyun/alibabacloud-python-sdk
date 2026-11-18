@@ -12,9 +12,13 @@ class CommonAgentQuery(DaraModel):
         query_scene_enum_code: str = None,
         search_model: str = None,
     ):
+        # The maximum number of place results to return. Default value: 10.
         self.limit = limit
+        # The natural language question used to retrieve nearby places.
         self.query = query
+        # The search scenario code. Valid values: hotels (hotel), attractions (attraction), restaurants (restaurant), and entertainment (leisure and entertainment). If you do not specify this parameter, the model identifies the scenario.
         self.query_scene_enum_code = query_scene_enum_code
+        # The search result mode. Valid values: single (returns simplified fields) and normal (returns all fields). Default value: normal.
         self.search_model = search_model
 
     def validate(self):

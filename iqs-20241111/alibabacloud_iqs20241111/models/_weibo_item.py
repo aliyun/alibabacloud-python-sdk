@@ -17,16 +17,27 @@ class WeiboItem(DaraModel):
         publish_display_time: str = None,
         username: str = None,
     ):
+        # The search result template. Fixed as weibo_strong for Weibo scenarios.
+        # 
         # This parameter is required.
         self.card_type = card_type
+        # The Weibo homepage of the user.
         self.homepage_link = homepage_link
+        # The content of the Weibo post.
+        # 
         # This parameter is required.
         self.html_snippet = html_snippet
+        # The image information.
         self.images = images
+        # The Weibo URL of the search result.
+        # 
         # This parameter is required.
         self.link = link
+        # The publish time.
+        # 
         # This parameter is required.
         self.publish_display_time = publish_display_time
+        # The Weibo username.
         self.username = username
 
     def validate(self):
