@@ -21,10 +21,10 @@ class GetSubscriptionSeatDetailsResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the API call is successful. Valid values:
         # 
-        # - true: successful
-        # - false: failed
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -147,18 +147,18 @@ class GetSubscriptionSeatDetailsResponseBodyDataItems(DaraModel):
     ):
         # The mailbox of the member accounts.
         self.account_email = account_email
-        # The ID of the attached member accounts.
+        # The ID of the member accounts to attach.
         self.account_id = account_id
         # The name of the member accounts.
         self.account_name = account_name
         # The assignment status. Valid values:
         # 
-        # - ASSIGNED
-        # - UNASSIGNED
+        # - ASSIGNED: Assigned.
+        # - UNASSIGNED: Unassigned.
         self.assigned_status = assigned_status
         # The expiration time of the seat.
         self.end_time = end_time
-        # The active entitlement instances. For the TokenPlan product, this list contains only one active entitlement instance.
+        # The currently active entitlement instances. For the TokenPlan product, this list contains only one active entitlement instance.
         self.equity_list = equity_list
         # The instance code of the seat.
         self.instance_code = instance_code
@@ -166,20 +166,20 @@ class GetSubscriptionSeatDetailsResponseBodyDataItems(DaraModel):
         self.seat_id = seat_id
         # The seat type. Valid values: 
         # 
-        # - standard: standard seat
-        # - pro: advanced seat
-        # - max: premium seat
+        # - standard: Standard seat.
+        # - pro: Pro seat.
+        # - max: Premium seat.
         self.spec_type = spec_type
         # The start time of the seat.
         self.start_time = start_time
         # The seat status. Valid values:
         # 
-        # - CREATING: creating
-        # - NORMAL: valid
-        # - LIMIT: restricted due to overdue payment
-        # - RELEASE: released upon expiration
-        # - STOP: stopped upon expiration
-        # - REFUNDED: refunded
+        # - CREATING: Creating.
+        # - NORMAL: Valid.
+        # - LIMIT: Restricted due to overdue payment.
+        # - RELEASE: Released upon expiration.
+        # - STOP: Stopped upon expiration.
+        # - REFUNDED: Refunded.
         self.status = status
 
     def validate(self):
@@ -283,7 +283,7 @@ class GetSubscriptionSeatDetailsResponseBodyDataItemsEquityList(DaraModel):
     ):
         # The end time of the current cycle, in milliseconds.
         self.cycle_end_time = cycle_end_time
-        # The entitlement code (subscription code). Consumption is not required in the credits scenario.
+        # The entitlement code. This is the subscription code and is not required for consumption in the credits scenario.
         self.cycle_instance_id = cycle_instance_id
         # The start time of the current cycle, in milliseconds.
         self.cycle_start_time = cycle_start_time

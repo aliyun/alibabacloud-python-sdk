@@ -16,11 +16,11 @@ class GetBillingTrendResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The request result code.
+        # The result code of the request.
         self.code = code
         # The returned data.
         self.data = data
-        # The description of the request result.
+        # The result message of the request.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -81,9 +81,9 @@ class GetBillingTrendResponseBodyData(DaraModel):
         history_period: main_models.GetBillingTrendResponseBodyDataHistoryPeriod = None,
         result_by_time: List[main_models.GetBillingTrendResponseBodyDataResultByTime] = None,
     ):
-        # The total costs within the entire query time range, including the top N items and Other.
+        # The total cost within the entire query time range, including the top N groups and Others.
         self.cost_totals = cost_totals
-        # The total costs of the top N groups and the optional Other group within the period.
+        # The total cost of the top N groups and the optional Others group within the period.
         self.group_by_total = group_by_total
         # The historical period data, which is returned when the includeHistoryPeriod input parameter is set to true.
         self.history_period = history_period
@@ -162,7 +162,7 @@ class GetBillingTrendResponseBodyDataResultByTime(DaraModel):
         self.period = period
         # The cost groups that actually exist in the current period.
         self.period_details = period_details
-        # The total costs of the current period.
+        # The total cost of the current period.
         self.total = total
 
     def validate(self):
@@ -218,7 +218,7 @@ class GetBillingTrendResponseBodyDataResultByTimeTotal(DaraModel):
     ):
         # The total cost amount of the current period.
         self.amount = amount
-        # The currency of the amount in the current period.
+        # The currency of the amount for the current period.
         self.currency = currency
         # The pretax amount of the current period.
         self.pretax_amount = pretax_amount
@@ -273,17 +273,17 @@ class GetBillingTrendResponseBodyDataResultByTimePeriodDetails(DaraModel):
         pretax_amount: str = None,
         tax_amount: str = None,
     ):
-        # The amount of the group in the current period.
+        # The amount of the group within the current period.
         self.amount = amount
-        # The dimension value of the group. For data other than the top N items, DIMENSION_GROUP_OTHERS_VALUE is used.
+        # The dimension value of the group. Data other than the top N uses DIMENSION_GROUP_OTHERS_VALUE.
         self.key = key
         # The display name of the group, which is affected by the locale input parameter.
         self.name = name
-        # The ratio of the current group amount to the total amount of the current period.
+        # The proportion of the current group amount to the total amount of the current period.
         self.percentage = percentage
-        # The pretax amount of the group in the current period.
+        # The pretax amount of the group within the current period.
         self.pretax_amount = pretax_amount
-        # The tax amount of the group in the current period.
+        # The tax amount of the group within the current period.
         self.tax_amount = tax_amount
 
     def validate(self):
@@ -343,9 +343,9 @@ class GetBillingTrendResponseBodyDataHistoryPeriod(DaraModel):
         group_by_total: List[main_models.GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal] = None,
         result_by_time: List[main_models.GetBillingTrendResponseBodyDataHistoryPeriodResultByTime] = None,
     ):
-        # The total costs within the historical range, including the top N items and Other.
+        # The total cost within the historical range, including the top N groups and Others.
         self.cost_totals = cost_totals
-        # The total costs of the top N groups and the optional Other group within the historical period.
+        # The total cost of the top N groups and the optional Others group within the historical period.
         self.group_by_total = group_by_total
         # The list of cost trends sorted in ascending order by time.
         self.result_by_time = result_by_time
@@ -413,7 +413,7 @@ class GetBillingTrendResponseBodyDataHistoryPeriodResultByTime(DaraModel):
         self.period = period
         # The cost groups that actually exist in the current period.
         self.period_details = period_details
-        # The total costs of the current period.
+        # The total cost of the current period.
         self.total = total
 
     def validate(self):
@@ -526,11 +526,11 @@ class GetBillingTrendResponseBodyDataHistoryPeriodResultByTimePeriodDetails(Dara
     ):
         # The amount of the current group.
         self.amount = amount
-        # The dimension value of the group. If the value is null, DIMENSION_FILTER_NULL_VALUE is returned.
+        # The dimension value of the group. A null value returns DIMENSION_FILTER_NULL_VALUE.
         self.key = key
-        # The display name of the group, which is affected by the locale parameter. If the value is null, a hyphen (-) is displayed.
+        # The display name of the group, which is affected by the locale parameter. A null value is displayed as a hyphen (-).
         self.name = name
-        # The percentage of the group amount.
+        # The proportion of the group amount.
         self.percentage = percentage
         # The total pretax amount.
         self.pretax_amount = pretax_amount
@@ -598,9 +598,9 @@ class GetBillingTrendResponseBodyDataHistoryPeriodGroupByTotal(DaraModel):
     ):
         # The total amount of the current group.
         self.amount = amount
-        # The dimension value of the group. If the value is null, DIMENSION_FILTER_NULL_VALUE is returned.
+        # The dimension value of the group. A null value returns DIMENSION_FILTER_NULL_VALUE.
         self.key = key
-        # The display name of the group, which is affected by the locale parameter. If the value is null, a hyphen (-) is displayed.
+        # The display name of the group, which is affected by the locale parameter. A null value is displayed as a hyphen (-).
         self.name = name
         # The total pretax amount.
         self.pretax_amount = pretax_amount

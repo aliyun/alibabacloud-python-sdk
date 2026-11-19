@@ -1,3 +1,7 @@
+2026-11-19 Version: 2.2.5
+- Update API GetSubscriptionSeatDetails: add request parameters InstanceCode.
+
+
 2026-10-30 Version: 2.2.4
 - Generated python 2026-02-10 for ModelStudio.
 

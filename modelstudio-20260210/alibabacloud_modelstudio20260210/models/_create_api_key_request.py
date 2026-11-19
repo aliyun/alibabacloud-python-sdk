@@ -20,7 +20,7 @@ class CreateApiKeyRequest(DaraModel):
         self.description = description
         # The workspace ID.
         # > 
-        # > - If you do not specify this parameter, the created API key is automatically assigned to the default workspace.
+        # > - If you do not specify this parameter, the created API key automatically belongs to the default workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -67,11 +67,11 @@ class CreateApiKeyRequestAuth(DaraModel):
         # The IP address whitelist.
         # 
         # > 
-        # > - If you select custom permissions and do not specify an IP address whitelist, the server defaults to IPv4 (0.0.0.0/0) and IPv6 (::/0), which allows all IP addresses.
+        # > - When you customize the permission scope and do not specify the IP address whitelist, the server sets the default values to IPv4 (0.0.0.0/0) and IPv6 (::/0), which allows access from all IP addresses.
         self.access_ips = access_ips
-        # The model access scope. If you configure this parameter, you can only call the selected models. If you do not configure this parameter, you can access all models that have been granted inference permissions in the specified workspace by default.
+        # The model access scope.
         self.model_access_scope = model_access_scope
-        # The permission type. Valid values: All: all permissions. Custom: custom permissions.
+        # The permission type. All indicates all permissions. Custom indicates custom permissions.
         self.type = type
 
     def validate(self):
@@ -115,9 +115,9 @@ class CreateApiKeyRequestAuthModelAccessScope(DaraModel):
         allow_all_models: bool = None,
     ):
         # The list of accessible models.
-        # >Notice: This parameter takes effect only when allowAllModels is set to false.
+        # >Notice: The specified values take effect only when allowAllModels is set to false.
         self.accessible_models = accessible_models
-        # Specifies whether to allow access to all models that have been granted inference permissions in the workspace. Valid values:
+        # Specifies whether to allow access to all models granted inference permissions in the workspace. Valid values:
         # 
         # - true
         # - false

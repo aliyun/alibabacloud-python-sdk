@@ -23,13 +23,13 @@ class GetBillingOverviewShrinkRequest(DaraModel):
         self.filter_shrink = filter_shrink
         # The time granularity.
         self.granularity = granularity
-        # The list of grouping conditions. Currently, you must specify exactly one grouping dimension.
+        # The list of grouping conditions. Currently, exactly one grouping dimension must be specified.
         self.group_by_shrink = group_by_shrink
         # The language of the response. Default value: en-US.
         self.locale = locale
         # The region ID.
         self.region_id = region_id
-        # The query time range, which includes the start and end times. Both the start and end times are included in the query range. The time format must be consistent with the granularity, and the start time cannot be later than the end time.
+        # The query time range, which includes start and end. Both the start time and end time are included in the query range. The time format must be consistent with granularity, and start cannot be later than end.
         self.time_period_shrink = time_period_shrink
         # The number of groups to return. Valid values: 1 to 20. Default value: 20.
         self.top_num = top_num

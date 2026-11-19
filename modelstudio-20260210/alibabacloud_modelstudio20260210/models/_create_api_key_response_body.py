@@ -25,7 +25,7 @@ class CreateApiKeyResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the request is successful.
         # - true: The request is successful.
         # - false: The request fails.
         self.success = success
@@ -95,7 +95,7 @@ class CreateApiKeyResponseBodyApiKey(DaraModel):
         # The API key ID.
         self.api_key_id = api_key_id
         # The value of the API key.
-        # >Notice: Copy your API key immediately. Keep it secure. Anyone who obtains this key can initiate service requests and incur charges on your behalf. If the key is lost, you can reset it or create a new one.
+        # >Notice: Copy your API key immediately and keep it secure. Anyone who obtains this key can initiate service requests and incur charges on your behalf. If the key is lost, you can reset it or create a new one.
         self.api_key_value = api_key_value
         # The creator.
         self.created_by = created_by

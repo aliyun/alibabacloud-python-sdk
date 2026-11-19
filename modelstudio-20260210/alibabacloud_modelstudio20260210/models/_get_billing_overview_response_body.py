@@ -20,7 +20,7 @@ class GetBillingOverviewResponseBody(DaraModel):
         self.code = code
         # The billing overview data.
         self.data = data
-        # The description of the request result.
+        # The result message of the request.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -158,9 +158,9 @@ class GetBillingOverviewResponseBodyDataGroups(DaraModel):
         self.amount = amount
         # The list of commodity codes involved in the current group.
         self.article_codes = article_codes
-        # The value of the grouping dimension. If the value is null, DIMENSION_FILTER_NULL_VALUE is returned.
+        # The value of the grouping dimension. If the value is empty, DIMENSION_FILTER_NULL_VALUE is returned.
         self.key = key
-        # The display name of the group, which is affected by the locale parameter. If the value is null, a hyphen (-) is displayed.
+        # The display name of the group, which is affected by the locale parameter. If the value is empty, a hyphen (-) is displayed.
         self.name = name
         # The proportion of the group amount to the total amount of the top N groups.
         self.percentage = percentage

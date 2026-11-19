@@ -25,9 +25,9 @@ class ResetApiKeyResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -89,7 +89,7 @@ class ResetApiKeyResponseBodyApiKey(DaraModel):
         api_key_value: str = None,
         workspace_id: str = None,
     ):
-        # API Key ID。
+        # The API key ID.
         self.api_key_id = api_key_id
         # The value of the API key.
         self.api_key_value = api_key_value

@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class GetSubscriptionSeatDetailsRequest(DaraModel):
     def __init__(
         self,
+        instance_code: str = None,
         page_no: int = None,
         page_size: int = None,
         query_assigned: bool = None,
@@ -16,23 +17,25 @@ class GetSubscriptionSeatDetailsRequest(DaraModel):
         seat_type: str = None,
         status_list: List[str] = None,
     ):
-        # The page number. Default value: 1. Valid values: positive integers.
+        # The instance code of the seat.
+        self.instance_code = instance_code
+        # The page number. Default value: 1. Valid values: a positive integer.
         self.page_no = page_no
         # The number of entries per page. Default value: 10.
         self.page_size = page_size
-        # The filter for the seat assignment status. Valid values:
+        # Specifies whether to filter by seat assignment status. Valid values:
         # 
-        # - true: assigned
-        # - false: unassigned
-        # - null: all
+        # - true: Assigned.
+        # - false: Unassigned.
+        # - null: All.
         self.query_assigned = query_assigned
         # The seat ID.
         self.seat_id = seat_id
-        # The seat type (specType). Valid values:
+        # The seat type. Valid values:
         # 
-        # - standard: standard seat
-        # - pro: advanced seat
-        # - max: premium seat
+        # - standard: Standard seat.
+        # - pro: Pro seat.
+        # - max: Premium seat.
         self.seat_type = seat_type
         # The list of seat statuses for filtering.
         self.status_list = status_list
@@ -45,6 +48,9 @@ class GetSubscriptionSeatDetailsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.instance_code is not None:
+            result['InstanceCode'] = self.instance_code
+
         if self.page_no is not None:
             result['PageNo'] = self.page_no
 
@@ -67,6 +73,9 @@ class GetSubscriptionSeatDetailsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceCode') is not None:
+            self.instance_code = m.get('InstanceCode')
+
         if m.get('PageNo') is not None:
             self.page_no = m.get('PageNo')
 

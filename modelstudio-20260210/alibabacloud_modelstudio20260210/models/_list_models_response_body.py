@@ -20,9 +20,9 @@ class ListModelsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The error code. This field is empty when the call is successful.
+        # The error code. This field is empty if the call is successful.
         self.code = code
-        # The error message. This field is empty when the call is successful.
+        # The error message. This field is empty if the call is successful.
         self.error_message = error_message
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -246,7 +246,7 @@ class ListModelsResponseBodyModelsPrices(DaraModel):
     ):
         # The model pricing.
         self.prices = prices
-        # The tier name. If tiered pricing is not used, the value is Default.
+        # The name of the pricing tier. If tiered pricing is not used, the value is Default.
         self.range_name = range_name
 
     def validate(self):
@@ -291,16 +291,16 @@ class ListModelsResponseBodyModelsPricesPrices(DaraModel):
         price_unit: str = None,
         time_band: str = None,
     ):
-        # The price. The currency unit depends on the account type: ￥ for accounts in the Chinese mainland and $ for international accounts.
+        # The price. The currency depends on the account type: CNY (￥) for accounts in the Chinese mainland and USD ($) for international accounts.
         self.price = price
         # The price type.
         self.price_name = price_name
-        # The billing method.
+        # The pricing unit.
         self.price_unit = price_unit
         # The time band. Valid values:
         # - peak: Peak hours.
         # - offpeak: Off-peak hours.
-        # - standard: No time-based tiering.
+        # - standard: No time band distinction.
         self.time_band = time_band
 
     def validate(self):

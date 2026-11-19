@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_modelstudio20260210 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'ModelStudio'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('modelstudio', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1365,6 +1369,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetSubscriptionSeatDetailsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_code):
+            query['InstanceCode'] = request.instance_code
         if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):
@@ -1405,6 +1411,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetSubscriptionSeatDetailsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.instance_code):
+            query['InstanceCode'] = request.instance_code
         if not DaraCore.is_null(request.page_no):
             query['PageNo'] = request.page_no
         if not DaraCore.is_null(request.page_size):

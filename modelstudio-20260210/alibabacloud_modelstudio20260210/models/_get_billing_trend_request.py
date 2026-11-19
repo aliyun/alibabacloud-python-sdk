@@ -20,7 +20,7 @@ class GetBillingTrendRequest(DaraModel):
         top_num: int = None,
         zero_filter: bool = None,
     ):
-        # The dimension filter condition.
+        # The dimension filter conditions.
         self.filter = filter
         # The query granularity. This parameter is required.
         self.granularity = granularity
@@ -32,7 +32,7 @@ class GetBillingTrendRequest(DaraModel):
         self.locale = locale
         # The region ID.
         self.region_id = region_id
-        # The time range to query, including the start time and end time. This parameter is required.
+        # The time range for the query, which includes the start time and end time. This parameter is required.
         self.time_period = time_period
         # The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Other".
         self.top_num = top_num
@@ -163,7 +163,7 @@ class GetBillingTrendRequestGroupBy(DaraModel):
         self,
         code: str = None,
     ):
-        # The grouping dimension code. For more information, see the "Additional notes" section below.
+        # The code of the grouping dimension. For more information, see the "Additional notes" section below.
         self.code = code
 
     def validate(self):
@@ -229,7 +229,7 @@ class GetBillingTrendRequestFilterDimensions(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
-        # The filter dimension code. For more information, see the "Additional notes" section below.
+        # The code of the filter dimension. For more information, see the "Additional notes" section below.
         self.code = code
         # The filtering method.
         self.select_type = select_type

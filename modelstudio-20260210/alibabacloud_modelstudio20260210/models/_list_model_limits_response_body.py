@@ -34,7 +34,7 @@ class ListModelLimitsResponseBody(DaraModel):
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the API call succeeded.
+        # Indicates whether the API call is successful.
         self.success = success
         # The total number of records.
         self.total_count = total_count
@@ -126,13 +126,13 @@ class ListModelLimitsResponseBodyLimits(DaraModel):
     ):
         # The model.
         self.model = model
-        # The model throttling for the current user account.
+        # The model throttling configurations for the current user account.
         self.model_limit = model_limit
         # The model name.
         self.name = name
         # The workspace ID.
         self.workspace_id = workspace_id
-        # The custom model throttling for the current workspace.
+        # The custom model throttling configurations for the current workspace.
         self.workspace_limit = workspace_limit
 
     def validate(self):
@@ -195,19 +195,19 @@ class ListModelLimitsResponseBodyLimitsWorkspaceLimit(DaraModel):
         usage_limit_field: str = None,
         usage_limit_period: int = None,
     ):
-        # The maximum number of concurrent requests.
+        # The maximum concurrency.
         self.async_user_concurrency_limit = async_user_concurrency_limit
-        # The number of queued requests.
+        # The queue limit.
         self.async_user_queue_limit = async_user_queue_limit
-        # The request throttling value.
+        # The request throttling limit.
         self.request_limit = request_limit
-        # The time period for request throttling. Unit: seconds.
+        # The time period for request throttling, in seconds.
         self.request_limit_period = request_limit_period
-        # The usage throttling value.
+        # The usage throttling limit.
         self.usage_limit = usage_limit
-        # The usage throttling unit.
+        # The unit for usage throttling.
         self.usage_limit_field = usage_limit_field
-        # The time period for usage throttling. Unit: seconds.
+        # The time period for usage throttling, in seconds.
         self.usage_limit_period = usage_limit_period
 
     def validate(self):
@@ -277,19 +277,19 @@ class ListModelLimitsResponseBodyLimitsModelLimit(DaraModel):
         usage_limit_field: str = None,
         usage_limit_period: int = None,
     ):
-        # The maximum number of concurrent requests.
+        # The maximum concurrency.
         self.async_user_concurrency_limit = async_user_concurrency_limit
-        # The number of queued requests.
+        # The queue limit.
         self.async_user_queue_limit = async_user_queue_limit
-        # The request throttling value.
+        # The request throttling limit.
         self.request_limit = request_limit
-        # The time period for request throttling. Unit: seconds.
+        # The time period for request throttling, in seconds.
         self.request_limit_period = request_limit_period
-        # The usage throttling value.
+        # The usage throttling limit.
         self.usage_limit = usage_limit
-        # The usage throttling unit.
+        # The unit for usage throttling.
         self.usage_limit_field = usage_limit_field
-        # The time period for usage throttling. Unit: seconds.
+        # The time period for usage throttling, in seconds.
         self.usage_limit_period = usage_limit_period
 
     def validate(self):

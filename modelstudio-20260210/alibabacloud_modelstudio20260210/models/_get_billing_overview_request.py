@@ -26,13 +26,13 @@ class GetBillingOverviewRequest(DaraModel):
         self.filter = filter
         # The time granularity.
         self.granularity = granularity
-        # The list of grouping conditions. Currently, you must specify exactly one grouping dimension.
+        # The list of grouping conditions. Currently, exactly one grouping dimension must be specified.
         self.group_by = group_by
         # The language of the response. Default value: en-US.
         self.locale = locale
         # The region ID.
         self.region_id = region_id
-        # The query time range, which includes the start and end times. Both the start and end times are included in the query range. The time format must be consistent with the granularity, and the start time cannot be later than the end time.
+        # The query time range, which includes start and end. Both the start time and end time are included in the query range. The time format must be consistent with granularity, and start cannot be later than end.
         self.time_period = time_period
         # The number of groups to return. Valid values: 1 to 20. Default value: 20.
         self.top_num = top_num
@@ -127,9 +127,9 @@ class GetBillingOverviewRequestTimePeriod(DaraModel):
         end: str = None,
         start: str = None,
     ):
-        # The end time of the query. This time point is included in the query range. The format is determined by granularity.
+        # The end time of the query. This time point is included. The format is determined by `granularity`.
         self.end = end
-        # The start time of the query. This time point is included in the query range. The format is determined by granularity.
+        # The start time of the query. This time point is included. The format is determined by `granularity`.
         self.start = start
 
     def validate(self):
@@ -163,7 +163,7 @@ class GetBillingOverviewRequestGroupBy(DaraModel):
         self,
         code: str = None,
     ):
-        # The code of the grouping dimension. For more information, see the "Additional notes" section below.
+        # The code of the grouping dimension. For more information, see the supplementary notes below.
         self.code = code
 
     def validate(self):
@@ -229,7 +229,7 @@ class GetBillingOverviewRequestFilterDimensions(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
-        # The filter field. For more information, see the "Additional notes" section below.
+        # The filter field. For more information, see the supplementary notes below.
         self.code = code
         # The filter type.
         self.select_type = select_type

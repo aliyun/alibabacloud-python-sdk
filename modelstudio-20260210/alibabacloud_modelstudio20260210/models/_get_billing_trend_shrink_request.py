@@ -17,7 +17,7 @@ class GetBillingTrendShrinkRequest(DaraModel):
         top_num: int = None,
         zero_filter: bool = None,
     ):
-        # The dimension filter condition.
+        # The dimension filter conditions.
         self.filter_shrink = filter_shrink
         # The query granularity. This parameter is required.
         self.granularity = granularity
@@ -29,7 +29,7 @@ class GetBillingTrendShrinkRequest(DaraModel):
         self.locale = locale
         # The region ID.
         self.region_id = region_id
-        # The time range to query, including the start time and end time. This parameter is required.
+        # The time range for the query, which includes the start time and end time. This parameter is required.
         self.time_period_shrink = time_period_shrink
         # The number of groups to return. Valid values: 1 to 20. Default value: 20. The remaining groups are merged into "Other".
         self.top_num = top_num
