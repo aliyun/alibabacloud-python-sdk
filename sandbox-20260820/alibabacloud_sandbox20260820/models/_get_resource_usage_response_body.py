@@ -13,13 +13,13 @@ class GetResourceUsageResponseBody(DaraModel):
         request_id: str = None,
         resource_usage: main_models.ResourceUsage = None,
     ):
-        # The response code. A value of 200 indicates success. Other values indicate specific error codes.
+        # The response code. The value is 200 if the request is successful. If the request fails, the value is the corresponding error code.
         self.code = code
         # The message that describes the result of the request.
         self.message = message
         # The unique identifier of the request.
         self.request_id = request_id
-        # The usage results for the query interval and each group.
+        # The usage results for the query period and each group.
         self.resource_usage = resource_usage
 
     def validate(self):

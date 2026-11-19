@@ -10,13 +10,16 @@ class QuotaUsage(DaraModel):
         cpu_cores: float = None,
         instance_count: int = None,
         memory_gb: float = None,
+        scaling_cpu_cores_per_minute: float = None,
     ):
-        # The consumed CPU quota in vCPUs, not the CPU utilization.
+        # The consumed CPU quota in vCPUs, which does not represent CPU utilization.
         self.cpu_cores = cpu_cores
         # The number of unreleased instance authorizations.
         self.instance_count = instance_count
-        # The consumed memory quota in GB, not the actual memory used by processes.
+        # The consumed memory quota in GB, which does not represent the actual memory used by processes.
         self.memory_gb = memory_gb
+        # The number of cores consumed from the team\\"s exclusive CPU creation quota that have not yet been naturally replenished. This is not the cumulative creation volume over the last minute. This field is omitted when no valid exclusive bucket snapshot is available, and actual zeros and decimals are retained.
+        self.scaling_cpu_cores_per_minute = scaling_cpu_cores_per_minute
 
     def validate(self):
         pass
@@ -35,6 +38,9 @@ class QuotaUsage(DaraModel):
         if self.memory_gb is not None:
             result['memoryGB'] = self.memory_gb
 
+        if self.scaling_cpu_cores_per_minute is not None:
+            result['scalingCpuCoresPerMinute'] = self.scaling_cpu_cores_per_minute
+
         return result
 
     def from_map(self, m: dict = None):
@@ -47,6 +53,9 @@ class QuotaUsage(DaraModel):
 
         if m.get('memoryGB') is not None:
             self.memory_gb = m.get('memoryGB')
+
+        if m.get('scalingCpuCoresPerMinute') is not None:
+            self.scaling_cpu_cores_per_minute = m.get('scalingCpuCoresPerMinute')
 
         return self
 

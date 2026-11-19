@@ -10,14 +10,17 @@ class Quota(DaraModel):
         cpu_cores: int = None,
         instance_count: int = None,
         memory_gb: int = None,
+        scaling_cpu_cores_per_minute: int = None,
         tag_value: str = None,
     ):
-        # The vCPU quota. Unit: cores.
+        # The vCPU quota, in cores.
         self.cpu_cores = cpu_cores
-        # The quota for the number of running instances.
+        # The quota for the number of active instances.
         self.instance_count = instance_count
-        # The memory quota. Unit: GB.
+        # The memory quota, in GB.
         self.memory_gb = memory_gb
+        # The team CPU creation rate in cores per minute. To retain the original configuration during an update, omit this parameter or set it to null. A positive integer sets an exclusive rate. A value of 0 prevents adding new CPU capacity. A value of -1 clears the exclusive rate and restores the remaining shared account rate. When queried, this parameter is omitted if it is not configured, an explicit 0 is retained, and -1 is not returned.
+        self.scaling_cpu_cores_per_minute = scaling_cpu_cores_per_minute
         # The quota tag value, which is set to the team ID. Quotas are independently calculated based on this dimension.
         self.tag_value = tag_value
 
@@ -38,6 +41,9 @@ class Quota(DaraModel):
         if self.memory_gb is not None:
             result['memoryGB'] = self.memory_gb
 
+        if self.scaling_cpu_cores_per_minute is not None:
+            result['scalingCpuCoresPerMinute'] = self.scaling_cpu_cores_per_minute
+
         if self.tag_value is not None:
             result['tagValue'] = self.tag_value
 
@@ -53,6 +59,9 @@ class Quota(DaraModel):
 
         if m.get('memoryGB') is not None:
             self.memory_gb = m.get('memoryGB')
+
+        if m.get('scalingCpuCoresPerMinute') is not None:
+            self.scaling_cpu_cores_per_minute = m.get('scalingCpuCoresPerMinute')
 
         if m.get('tagValue') is not None:
             self.tag_value = m.get('tagValue')

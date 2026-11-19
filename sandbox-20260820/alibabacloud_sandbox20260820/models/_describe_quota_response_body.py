@@ -16,7 +16,7 @@ class DescribeQuotaResponseBody(DaraModel):
     ):
         # The response code. A value of 200 indicates success.
         self.code = code
-        # The response message. A value of success indicates success.
+        # The response message. A value of success indicates a successful request.
         self.message = message
         # The quota configuration information.
         self.quota = quota

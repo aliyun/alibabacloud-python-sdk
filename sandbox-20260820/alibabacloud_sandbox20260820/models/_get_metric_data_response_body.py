@@ -13,9 +13,9 @@ class GetMetricDataResponseBody(DaraModel):
         metric_data: main_models.MetricData = None,
         request_id: str = None,
     ):
-        # The status code. A value of 200 indicates success. If the request fails, the corresponding error code is returned.
+        # The response code. A value of 200 indicates success. If the request fails, the corresponding error code is returned.
         self.code = code
-        # The message returned for the request.
+        # The description of the request result.
         self.message = message
         # The query results of each metric, along with the corresponding time and grouping information.
         self.metric_data = metric_data
