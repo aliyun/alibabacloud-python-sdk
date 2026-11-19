@@ -1,3 +1,6 @@
+2026-11-19 Version: 1.0.7
+- Generated python 2020-07-10 for mPaaS.
+
 2026-11-19 Version: 1.0.6
 - Update API PushMultiple: add request parameters TargetMsg.$.VendorTemplate.
 - Update API PushSimple: add request parameters TargetVendorTemplate.
