@@ -30,6 +30,7 @@ class PushSimpleRequest(DaraModel):
         strategy_content: str = None,
         strategy_type: int = None,
         target_msgkey: str = None,
+        target_vendor_template: str = None,
         task_name: str = None,
         tenant_id: str = None,
         third_channel_category: Dict[str, Any] = None,
@@ -37,7 +38,9 @@ class PushSimpleRequest(DaraModel):
         transparent_message_payload: Any = None,
         transparent_message_urgency: str = None,
         uri: str = None,
+        use_voip: bool = None,
         vendor_template: str = None,
+        voip_map: str = None,
         workspace_id: str = None,
     ):
         self.activity_content_state = activity_content_state
@@ -66,6 +69,7 @@ class PushSimpleRequest(DaraModel):
         self.strategy_type = strategy_type
         # This parameter is required.
         self.target_msgkey = target_msgkey
+        self.target_vendor_template = target_vendor_template
         self.task_name = task_name
         self.tenant_id = tenant_id
         self.third_channel_category = third_channel_category
@@ -74,7 +78,9 @@ class PushSimpleRequest(DaraModel):
         self.transparent_message_payload = transparent_message_payload
         self.transparent_message_urgency = transparent_message_urgency
         self.uri = uri
+        self.use_voip = use_voip
         self.vendor_template = vendor_template
+        self.voip_map = voip_map
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -149,6 +155,9 @@ class PushSimpleRequest(DaraModel):
         if self.target_msgkey is not None:
             result['TargetMsgkey'] = self.target_msgkey
 
+        if self.target_vendor_template is not None:
+            result['TargetVendorTemplate'] = self.target_vendor_template
+
         if self.task_name is not None:
             result['TaskName'] = self.task_name
 
@@ -170,8 +179,14 @@ class PushSimpleRequest(DaraModel):
         if self.uri is not None:
             result['Uri'] = self.uri
 
+        if self.use_voip is not None:
+            result['UseVoip'] = self.use_voip
+
         if self.vendor_template is not None:
             result['VendorTemplate'] = self.vendor_template
+
+        if self.voip_map is not None:
+            result['VoipMap'] = self.voip_map
 
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
@@ -243,6 +258,9 @@ class PushSimpleRequest(DaraModel):
         if m.get('TargetMsgkey') is not None:
             self.target_msgkey = m.get('TargetMsgkey')
 
+        if m.get('TargetVendorTemplate') is not None:
+            self.target_vendor_template = m.get('TargetVendorTemplate')
+
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
 
@@ -264,8 +282,14 @@ class PushSimpleRequest(DaraModel):
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
 
+        if m.get('UseVoip') is not None:
+            self.use_voip = m.get('UseVoip')
+
         if m.get('VendorTemplate') is not None:
             self.vendor_template = m.get('VendorTemplate')
+
+        if m.get('VoipMap') is not None:
+            self.voip_map = m.get('VoipMap')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

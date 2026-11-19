@@ -1,3 +1,13 @@
+2026-11-19 Version: 1.0.6
+- Update API PushMultiple: add request parameters TargetMsg.$.VendorTemplate.
+- Update API PushSimple: add request parameters TargetVendorTemplate.
+- Update API PushSimple: add request parameters UseVoip.
+- Update API PushSimple: add request parameters VoipMap.
+- Update API PushTemplate: add request parameters TargetVendorTemplate.
+- Update API PushTemplate: add request parameters UseVoip.
+- Update API PushTemplate: add request parameters VoipMap.
+
+
 2026-07-28 Version: 1.0.5
 - Update API CreateOpenGlobalData: add response parameters Body.AccessDeniedDetail.
 - Update API CreateOpenGlobalData: add response parameters Body.HttpStatusCode.

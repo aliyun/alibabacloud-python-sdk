@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_mpaas20200710 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'mPaaS'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'mpaas.aliyuncs.com',
@@ -4727,6 +4731,8 @@ class Client(OpenApiClient):
             body['StrategyType'] = request.strategy_type
         if not DaraCore.is_null(request.target_msgkey):
             body['TargetMsgkey'] = request.target_msgkey
+        if not DaraCore.is_null(request.target_vendor_template):
+            body['TargetVendorTemplate'] = request.target_vendor_template
         if not DaraCore.is_null(request.task_name):
             body['TaskName'] = request.task_name
         if not DaraCore.is_null(request.tenant_id):
@@ -4741,8 +4747,12 @@ class Client(OpenApiClient):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not DaraCore.is_null(request.uri):
             body['Uri'] = request.uri
+        if not DaraCore.is_null(request.use_voip):
+            body['UseVoip'] = request.use_voip
         if not DaraCore.is_null(request.vendor_template):
             body['VendorTemplate'] = request.vendor_template
+        if not DaraCore.is_null(request.voip_map):
+            body['VoipMap'] = request.voip_map
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -4819,6 +4829,8 @@ class Client(OpenApiClient):
             body['StrategyType'] = request.strategy_type
         if not DaraCore.is_null(request.target_msgkey):
             body['TargetMsgkey'] = request.target_msgkey
+        if not DaraCore.is_null(request.target_vendor_template):
+            body['TargetVendorTemplate'] = request.target_vendor_template
         if not DaraCore.is_null(request.task_name):
             body['TaskName'] = request.task_name
         if not DaraCore.is_null(request.tenant_id):
@@ -4833,8 +4845,12 @@ class Client(OpenApiClient):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not DaraCore.is_null(request.uri):
             body['Uri'] = request.uri
+        if not DaraCore.is_null(request.use_voip):
+            body['UseVoip'] = request.use_voip
         if not DaraCore.is_null(request.vendor_template):
             body['VendorTemplate'] = request.vendor_template
+        if not DaraCore.is_null(request.voip_map):
+            body['VoipMap'] = request.voip_map
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -4917,6 +4933,8 @@ class Client(OpenApiClient):
             body['StrategyType'] = request.strategy_type
         if not DaraCore.is_null(request.target_msgkey):
             body['TargetMsgkey'] = request.target_msgkey
+        if not DaraCore.is_null(request.target_vendor_template):
+            body['TargetVendorTemplate'] = request.target_vendor_template
         if not DaraCore.is_null(request.task_name):
             body['TaskName'] = request.task_name
         if not DaraCore.is_null(request.template_key_value):
@@ -4931,8 +4949,12 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.use_voip):
+            body['UseVoip'] = request.use_voip
         if not DaraCore.is_null(request.vendor_template):
             body['VendorTemplate'] = request.vendor_template
+        if not DaraCore.is_null(request.voip_map):
+            body['VoipMap'] = request.voip_map
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -5001,6 +5023,8 @@ class Client(OpenApiClient):
             body['StrategyType'] = request.strategy_type
         if not DaraCore.is_null(request.target_msgkey):
             body['TargetMsgkey'] = request.target_msgkey
+        if not DaraCore.is_null(request.target_vendor_template):
+            body['TargetVendorTemplate'] = request.target_vendor_template
         if not DaraCore.is_null(request.task_name):
             body['TaskName'] = request.task_name
         if not DaraCore.is_null(request.template_key_value):
@@ -5015,8 +5039,12 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.use_voip):
+            body['UseVoip'] = request.use_voip
         if not DaraCore.is_null(request.vendor_template):
             body['VendorTemplate'] = request.vendor_template
+        if not DaraCore.is_null(request.voip_map):
+            body['VoipMap'] = request.voip_map
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
