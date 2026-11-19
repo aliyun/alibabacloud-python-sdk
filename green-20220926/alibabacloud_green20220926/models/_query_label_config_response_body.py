@@ -12,7 +12,7 @@ class QueryLabelConfigResponseBody(DaraModel):
         content_moderation: List[Any] = None,
         request_id: str = None,
     ):
-        # The content moderation configuration.
+        # The content compliance.
         self.content_moderation = content_moderation
         # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id

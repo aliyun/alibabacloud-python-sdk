@@ -14,7 +14,7 @@ class UpdateImageLibFreeInspectionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code, which is the same as the HTTP status code.
+        # The error code, which is consistent with the HTTP status code.
         self.code = code
         # The returned result.
         self.data = data
@@ -24,7 +24,7 @@ class UpdateImageLibFreeInspectionResponseBody(DaraModel):
         self.msg = msg
         # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The success flag.
         self.success = success
 
     def validate(self):

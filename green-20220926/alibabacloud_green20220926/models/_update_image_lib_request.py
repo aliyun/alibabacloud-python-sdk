@@ -15,7 +15,7 @@ class UpdateImageLibRequest(DaraModel):
     ):
         # The remarks of the image library.
         self.comment = comment
-        # The review-free configuration.
+        # The moderation-free configuration.
         self.free_inspection = free_inspection
         # The ID of the image library.
         self.lib_id = lib_id

@@ -16,7 +16,7 @@ class ExportTextScanResultRequest(DaraModel):
     ):
         # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
-        # The query condition.
+        # The query conditions.
         self.query = query
         # The region ID.
         self.region_id = region_id

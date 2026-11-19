@@ -23,11 +23,11 @@ class ListOssCheckResultRequest(DaraModel):
         self.current_page = current_page
         # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
-        # The number of completed tasks.
+        # The number of completed items.
         self.finish_num = finish_num
         # The number of entries per page.
         self.page_size = page_size
-        # The search condition.
+        # The search conditions. This parameter is required. You must pass a JSON string that contains a valid TaskId, such as {"TaskId":"P_11TL5T"}. You can obtain the TaskId by calling the GetStockOssCheckTasksList operation. If this parameter is not provided, the API returns a 400 error with the error code oss.check.task.not.exists.
         self.query = query
         # The region ID.
         self.region_id = region_id

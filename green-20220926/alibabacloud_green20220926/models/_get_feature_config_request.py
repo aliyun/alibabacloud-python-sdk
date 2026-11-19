@@ -13,7 +13,7 @@ class GetFeatureConfigRequest(DaraModel):
         service_code: str = None,
         type: str = None,
     ):
-        # The query condition.
+        # The query conditions.
         self.query = query
         # The region ID.
         self.region_id = region_id
@@ -21,7 +21,7 @@ class GetFeatureConfigRequest(DaraModel):
         self.resource_type = resource_type
         # The service code.
         self.service_code = service_code
-        # The type.
+        # The type. Note: This parameter is actually required. If it is not provided, the API returns a 400 error (type may not be empty).
         self.type = type
 
     def validate(self):

@@ -12,7 +12,7 @@ class GetAiAppDetailTopoRequest(DaraModel):
         region_id: str = None,
         time_query: main_models.GetAiAppDetailTopoRequestTimeQuery = None,
     ):
-        # The application ID that identifies a specific AI application.
+        # The ID of the AI application.
         # 
         # This parameter is required.
         self.app_id = app_id

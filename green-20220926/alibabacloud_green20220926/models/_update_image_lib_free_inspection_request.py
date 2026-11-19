@@ -17,7 +17,7 @@ class UpdateImageLibFreeInspectionRequest(DaraModel):
         self.config = config
         # The region ID.
         self.region_id = region_id
-        # The selected service identifier.
+        # The identifier of the selected service.
         self.service_code = service_code
 
     def validate(self):

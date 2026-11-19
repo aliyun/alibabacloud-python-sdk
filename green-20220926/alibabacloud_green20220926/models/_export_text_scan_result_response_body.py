@@ -15,13 +15,13 @@ class ExportTextScanResultResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The export result.
+        # The export results.
         self.data = data
-        # The description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The success indicator.
         self.success = success
 
     def validate(self):

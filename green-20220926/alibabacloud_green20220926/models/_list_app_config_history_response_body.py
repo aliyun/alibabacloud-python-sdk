@@ -18,7 +18,7 @@ class ListAppConfigHistoryResponseBody(DaraModel):
         self.history = history
         # The published versions.
         self.publish = publish
-        # The ID assigned by the backend to uniquely identify a request. It can be used to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -84,9 +84,9 @@ class ListAppConfigHistoryResponseBodyPublish(DaraModel):
         type: str = None,
         version: int = None,
     ):
-        # App ID。
+        # The app ID.
         self.app_id = app_id
-        # **[Deprecated]** The categorization.
+        # **[Deprecated]** The category.
         self.classify = classify
         # **[Deprecated]** The configuration details.
         self.custom_config = custom_config
@@ -193,9 +193,9 @@ class ListAppConfigHistoryResponseBodyHistory(DaraModel):
         type: str = None,
         version: int = None,
     ):
-        # App ID。
+        # The app ID.
         self.app_id = app_id
-        # **[Deprecated]** The categorization.
+        # **[Deprecated]** The category.
         self.classify = classify
         # **[Deprecated]** The configuration details.
         self.custom_config = custom_config

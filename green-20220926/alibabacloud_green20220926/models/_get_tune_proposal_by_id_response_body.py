@@ -15,9 +15,9 @@ class GetTuneProposalByIdResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The response data.
+        # The returned data.
         self.data = data
-        # The description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
         # Id of the request
         self.request_id = request_id
@@ -67,7 +67,7 @@ class GetTuneProposalByIdResponseBodyData(DaraModel):
         self,
         json_content: str = None,
     ):
-        # The response data in JSON format.
+        # The returned data in JSON format.
         self.json_content = json_content
 
     def validate(self):

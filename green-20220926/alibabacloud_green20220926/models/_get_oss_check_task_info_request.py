@@ -9,7 +9,7 @@ class GetOssCheckTaskInfoRequest(DaraModel):
         self,
         parent_task_id: str = None,
     ):
-        # The parent task ID.
+        # The ID of the parent task.
         self.parent_task_id = parent_task_id
 
     def validate(self):

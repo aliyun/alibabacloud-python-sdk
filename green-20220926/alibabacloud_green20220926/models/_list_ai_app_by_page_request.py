@@ -14,9 +14,9 @@ class ListAiAppByPageRequest(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The query condition.
+        # The query conditions.
         self.query = query
         # The region ID.
         self.region_id = region_id

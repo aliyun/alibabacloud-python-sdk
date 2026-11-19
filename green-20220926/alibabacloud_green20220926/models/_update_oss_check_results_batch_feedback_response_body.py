@@ -18,11 +18,11 @@ class UpdateOssCheckResultsBatchFeedbackResponseBody(DaraModel):
         self.invalid_count = invalid_count
         # The number of duplicate items.
         self.repeat_count = repeat_count
-        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
         self.request_id = request_id
         # The number of successful items.
         self.success_count = success_count
-        # The prompt information.
+        # The prompt message.
         self.tips = tips
         # The total count.
         self.total_count = total_count

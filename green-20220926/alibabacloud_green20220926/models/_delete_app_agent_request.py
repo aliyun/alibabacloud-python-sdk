@@ -12,9 +12,9 @@ class DeleteAppAgentRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # Agent ID。
+        # The agent ID.
         self.agent_id = agent_id
-        # App ID。
+        # The app ID.
         self.app_id = app_id
         # The region ID.
         self.region_id = region_id

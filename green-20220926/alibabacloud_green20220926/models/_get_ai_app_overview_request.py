@@ -11,11 +11,11 @@ class GetAiAppOverviewRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The end time. Format: YYYY-MM-DD HH:mm:ss.
+        # The end time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
         # The region ID.
         self.region_id = region_id
-        # The start time. Format: YYYY-MM-DD HH:mm:ss.
+        # The start time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

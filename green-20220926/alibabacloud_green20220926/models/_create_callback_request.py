@@ -15,11 +15,11 @@ class CreateCallbackRequest(DaraModel):
     ):
         # The encryption algorithm.
         self.crypt_type = crypt_type
-        # The name of the scheme.
+        # The scheme name.
         self.name = name
         # The region ID.
         self.region_id = region_id
-        # The moderation result.
+        # The moderation results.
         self.scope = scope
         # The callback URL.
         self.url = url

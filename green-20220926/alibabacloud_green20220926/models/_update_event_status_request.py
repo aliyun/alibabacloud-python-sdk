@@ -16,7 +16,7 @@ class UpdateEventStatusRequest(DaraModel):
         region_id: str = None,
         source: str = None,
     ):
-        # The application ID that identifies the application to which the operation belongs.
+        # The ID of the application.
         # 
         # This parameter is required.
         self.app_id = app_id
@@ -26,11 +26,11 @@ class UpdateEventStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.operation_code = operation_code
-        # The operation parameters that contain additional parameter information required to execute the operation.
+        # The operation parameters that contain additional information required to perform the operation.
         self.operation_params = operation_params
         # The region ID.
         self.region_id = region_id
-        # The operation source that identifies the source system or module that triggered this status update request.
+        # The source of the operation, which identifies the system or module that triggered this status update request.
         self.source = source
 
     def validate(self):

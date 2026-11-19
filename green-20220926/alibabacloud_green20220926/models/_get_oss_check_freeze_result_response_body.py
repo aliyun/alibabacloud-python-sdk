@@ -22,7 +22,7 @@ class GetOssCheckFreezeResultResponseBody(DaraModel):
         self.items = items
         # The number of entries per page.
         self.page_size = page_size
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID of the request. You can use the ID to troubleshoot issues.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -113,27 +113,25 @@ class GetOssCheckFreezeResultResponseBodyItems(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
-        # The OSS bucket.
+        # The bucket.
         self.bucket = bucket
         # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # The audio or video scan type.
+        # The audio and video detection type.
         self.content_type = content_type
         # The primary service.
         self.copy_from = copy_from
-        # The feedback. Valid values:
-        # - misreport: False positive (not a violation).
-        # - missOut: Missed violation.
+        # The feedback.
         self.feedback = feedback
-        # Indicates whether the object is frozen.
+        # Indicates whether the item is frozen.
         self.freeze = freeze
-        # The freeze status.
+        # The freezing status.
         self.freeze_status = freeze_status
-        # The freeze type.
+        # The freezing type.
         self.freeze_type = freeze_type
         # The URL of the image.
         self.image_url = image_url
-        # Indicates whether the task is copied.
+        # Indicates whether the item is copied.
         self.is_copy = is_copy
         # The task name.
         self.job_name = job_name
@@ -143,13 +141,11 @@ class GetOssCheckFreezeResultResponseBodyItems(DaraModel):
         self.labels = labels
         # The text labels.
         self.labels_2 = labels_2
-        # The manual action status. Valid values:
-        # - FREEZE: Frozen.
-        # - UNFREEZE: Unfrozen.
+        # The manual disposal status.
         self.manual_freeze_action = manual_freeze_action
-        # The action time. Format: YYYY-MM-DD HH:mm:ss.
+        # The disposal time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.manual_operate_time = manual_operate_time
-        # The operator who performed the action.
+        # The operator.
         self.manual_operator = manual_operator
         # The MD5 hash of the file.
         self.md_5 = md_5
@@ -165,22 +161,17 @@ class GetOssCheckFreezeResultResponseBodyItems(DaraModel):
         self.risk_level_0 = risk_level_0
         # The text risk level.
         self.risk_level_2 = risk_level_2
-        # The scan result details.
+        # The result details.
         self.scan_result = scan_result
         # The service code.
         self.service_code = service_code
         # The service name.
         self.service_name = service_name
-        # The system action status. Valid values:
-        # - FREEZING: Freezing in progress.
-        # - FREEZED: Frozen.
-        # - UNFREEZED: Unfrozen.
-        # - NONE: No action taken.
-        # - UNFREEZING: Unfreezing in progress.
+        # The system disposal status.
         self.sys_disposal_status = sys_disposal_status
         # The task ID.
         self.task_id = task_id
-        # The task URL.
+        # The URL of the task.
         self.url = url
 
     def validate(self):

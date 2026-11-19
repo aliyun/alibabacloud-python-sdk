@@ -37,37 +37,37 @@ class CreatStockOssCheckTaskRequest(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The filter configuration for each bucket. The value can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, which includes prefix/suffix filters and a list of filter strings.
+        # The filter configuration for each bucket, which can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, including prefix and suffix filters and the list of filter characters.
         self.bucket_prefix_filter_config = bucket_prefix_filter_config
-        # The storage buckets.
+        # The buckets. The specified buckets must be registered and authorized for the Content Moderation service. You can call the GetBucketsList operation to obtain the list of available buckets. If you specify an unauthorized or non-existent bucket, the bucket.not.found error is returned.
         self.buckets = buckets
-        # The notification callback ID.
+        # The message notification ID.
         self.callback_id = callback_id
-        # Specifies whether to deduplicate against historically scanned tasks.
+        # Specifies whether to deduplicate historical scanned tasks. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (distinctHistoryTasks may not be null).
         self.distinct_history_tasks = distinct_history_tasks
-        # The task end time. Format: `YYYY-MM-DD HH:mm:ss`.
+        # The end time of the task. Format: `YYYY-MM-DD HH:mm:ss`.
         self.end_time = end_time
-        # The execution date of the scheduled task. The value is in integer format.
+        # The execution date of the scheduled task. The value is an integer.
         self.execute_date = execute_date
-        # The expected execution time of the scheduled task. Format: `HH:mm:ss-HH:mm:ss`.
+        # The estimated execution time of the scheduled task. Format: `HH:mm:ss-HH:mm:ss`.
         self.execute_time = execute_time
         # Specifies whether to freeze files.
         self.freeze = freeze
         # Specifies whether to freeze high-risk images.
         self.freeze_high_risk_1 = freeze_high_risk_1
-        # Specifies whether to freeze high-risk audio and text.
+        # Specifies whether to freeze high-risk audio and text files.
         self.freeze_high_risk_2 = freeze_high_risk_2
         # Specifies whether to freeze medium-risk images.
         self.freeze_medium_risk_1 = freeze_medium_risk_1
-        # Specifies whether to freeze medium-risk audio and text.
+        # Specifies whether to freeze medium-risk audio and text files.
         self.freeze_medium_risk_2 = freeze_medium_risk_2
-        # The path to which frozen files are transferred.
+        # The transfer path.
         self.freeze_restore_path = freeze_restore_path
         # The freeze type.
         self.freeze_type = freeze_type
         # Specifies whether the task is a scheduled scan task.
         self.is_inc = is_inc
-        # The media asset type.
+        # The media type.
         self.media_type = media_type
         # The prefix filter type.
         self.prefix_filter_type = prefix_filter_type
@@ -75,19 +75,19 @@ class CreatStockOssCheckTaskRequest(DaraModel):
         self.prefix_filters = prefix_filters
         # The priority.
         self.priority = priority
-        # Referer。
+        # The referer.
         self.referer = referer
         # The region ID.
         self.region_id = region_id
-        # The maximum number of files to scan.
+        # The scan limit.
         self.scan_limit = scan_limit
-        # Specifies whether to scan images without file extensions.
+        # Specifies whether to scan images without file name extensions.
         self.scan_no_file_type = scan_no_file_type
         # The type of files to scan.
         self.scan_resource_type = scan_resource_type
-        # The scan service code.
+        # The code of the scan service.
         self.scan_service = scan_service
-        # The task start time. Format: `YYYY-MM-DD HH:mm:ss`.
+        # The start time of the task. Format: `YYYY-MM-DD HH:mm:ss`.
         self.start_time = start_time
         # The scheduling cycle.
         self.task_cycle = task_cycle

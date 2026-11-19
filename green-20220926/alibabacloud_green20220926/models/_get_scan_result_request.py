@@ -20,19 +20,19 @@ class GetScanResultRequest(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The end time. Format: YYYY-MM-DD HH:mm:ss.
+        # The end time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.end_date = end_date
         # The number of entries per page.
         self.page_size = page_size
-        # The search condition.
+        # The search conditions.
         self.query = query
         # The region ID.
         self.region_id = region_id
-        # The resource type.
+        # The resource type. Note: This parameter is required. If it is not specified, the API returns ScanResultQueryFailed (HTTP 400). Valid value: image.
         self.resource_type = resource_type
         # The sort field.
         self.sort = sort
-        # The start time. Format: YYYY-MM-DD HH:mm:ss.
+        # The start time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_date = start_date
 
     def validate(self):

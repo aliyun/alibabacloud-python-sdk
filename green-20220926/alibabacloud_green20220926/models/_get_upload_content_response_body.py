@@ -10,7 +10,7 @@ class GetUploadContentResponseBody(DaraModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The response data.
+        # The returned data.
         self.data = data
         # Id of the request
         self.request_id = request_id

@@ -11,16 +11,15 @@ class UpdateAiAppScanStatusRequest(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The application ID.
+        # The application IDs.
         # 
         # This parameter is required.
         self.app_ids = app_ids
         # The region ID.
         self.region_id = region_id
         # The status. Valid values:
-        # 
-        # - enable: enabled
-        # - disable: disabled
+        # - enable: Enabled.
+        # - disable: Disabled.
         # 
         # This parameter is required.
         self.status = status

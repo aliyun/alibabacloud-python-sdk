@@ -16,11 +16,11 @@ class GetAiAppDetailStatRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_id = app_id
-        # The end time of the query. Format: YYYY-MM-DD HH:mm:ss.
+        # The end time of the query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
         # The ID of the region where the application resides.
         self.region_id = region_id
-        # The start time of the query. Format: YYYY-MM-DD HH:mm:ss.
+        # The start time of the query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

@@ -15,16 +15,15 @@ class PublishAppConfigRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # Agent ID。
+        # The agent ID. This parameter must be the AgentId returned by the AddAppAgent operation after the agent is added.
         self.agent_id = agent_id
         # The agent name.
         self.agent_name = agent_name
-        # App ID。
+        # The application ID. This parameter must be the AppId returned by the AddAppConfig operation after the application is created.
         self.app_id = app_id
-        # The configuration details.
+        # The configuration details. The value is a JSON string. The outer object contains the agentItemConfigs field, and its value is a re-serialized JSON array string (a double-nested structure) represented as a sequence of characters. Each array element in agentItemConfigs is an agent configuration object. Supported fields include agentId (string, the agent ID. Use the actual value returned by AddAppAgent or a clear placeholder such as <your-agent-id>), name (string, the agent name), and enable (boolean, specifies whether to enable the agent). Differences and connections with the Config parameter of ModifyAppAgent: The Config parameter of ModifyAppAgent describes the runtime configuration of a single agent (model, scene, or labelConfig), and you must first configure the agent by calling ModifyAppAgent. The Config parameter of this operation aggregates all agent entries (agentItemConfigs) under the application for overall publishing.
         self.config = config
-        # Specifies whether to enable the feature. Valid values:
-        # 
+        # Specifies whether to enable the agent. Valid values:
         # - **true**: Enabled.
         # - **false**: Disabled.
         self.enable = enable

@@ -17,9 +17,9 @@ class ModifyFeatureConfigRequest(DaraModel):
     ):
         # The configuration in JSON format.
         self.config = config
-        # The description of the label.
+        # The tag description.
         self.description = description
-        # The label value. This value is user-defined.
+        # The custom tag value. Valid values for Field must be obtained by calling the GetFeatureConfig API, such as labels and __option__.
         self.field = field
         # The region ID.
         self.region_id = region_id
@@ -27,7 +27,7 @@ class ModifyFeatureConfigRequest(DaraModel):
         self.resource_type = resource_type
         # The service code.
         self.service_code = service_code
-        # The type.
+        # The type. This parameter is actually required. If it is not provided, the API returns the error \\"type may not be empty\\".
         self.type = type
 
     def validate(self):

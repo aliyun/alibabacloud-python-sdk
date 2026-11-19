@@ -17,23 +17,23 @@ class GetAiAppDetailStatResponseBody(DaraModel):
         token_count: int = None,
         token_count_dau: float = None,
     ):
-        # The application ID.
+        # The ID of the application.
         self.app_id = app_id
-        # The average duration of model calls.
+        # The average duration of model invocations.
         self.avg_model_duration = avg_model_duration
-        # The day-over-day change ratio of average model call duration.
+        # The day-over-day comparison of the average duration of model invocations.
         self.avg_model_duration_dau = avg_model_duration_dau
-        # The number of model calls.
+        # The number of model invocations.
         self.model_count = model_count
-        # The day-over-day change ratio of model call count.
+        # The day-over-day comparison of the number of model invocations.
         self.model_count_dau = model_count_dau
-        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+        # The request ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The number of risk events.
         self.risk_event_count = risk_event_count
         # The number of tokens consumed.
         self.token_count = token_count
-        # The day-over-day change ratio of token consumption count.
+        # The day-over-day comparison of the number of tokens consumed.
         self.token_count_dau = token_count_dau
 
     def validate(self):

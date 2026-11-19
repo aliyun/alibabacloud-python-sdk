@@ -22,9 +22,9 @@ class ExportCipStatsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The detailed description of the error code.
         self.msg = msg
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID of the request, which is used to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

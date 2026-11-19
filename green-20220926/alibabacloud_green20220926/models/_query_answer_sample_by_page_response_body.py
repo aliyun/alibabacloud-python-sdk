@@ -94,9 +94,9 @@ class QueryAnswerSampleByPageResponseBodyItems(DaraModel):
         self.gmt_create = gmt_create
         # The primary key ID.
         self.id = id
-        # The ID of the proxy answer library.
+        # The ID of the fallback answer library.
         self.lib_id = lib_id
-        # UID。
+        # The UID of the user.
         self.uid = uid
 
     def validate(self):

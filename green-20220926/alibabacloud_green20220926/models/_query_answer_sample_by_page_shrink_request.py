@@ -18,7 +18,7 @@ class QueryAnswerSampleByPageShrinkRequest(DaraModel):
         self.answer = answer
         # The current page number.
         self.current_page = current_page
-        # The ID of the proxy answer library.
+        # The ID of the fallback answer library. Note: This parameter is required. If you do not specify this parameter, the API returns a 400 error with the message "libId may not be empty".
         self.lib_id = lib_id
         # The number of entries per page.
         self.page_size = page_size

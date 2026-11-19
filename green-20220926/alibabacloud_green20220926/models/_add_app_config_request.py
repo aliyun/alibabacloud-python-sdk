@@ -22,7 +22,7 @@ class AddAppConfigRequest(DaraModel):
         self.region_id = region_id
         # The resource type.
         self.resource_type = resource_type
-        # appId
+        # The system application ID.
         self.sys_app_id = sys_app_id
         # The type.
         self.type = type

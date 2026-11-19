@@ -62,7 +62,7 @@ class ChartsValueY(DaraModel):
     ):
         # The name.
         self.name = name
-        # The QPS at the point in time.
+        # The QPS at each time point.
         self.data = data
 
     def validate(self):

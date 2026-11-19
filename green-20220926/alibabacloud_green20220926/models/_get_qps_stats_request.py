@@ -10,9 +10,8 @@ class GetQpsStatsRequest(DaraModel):
         query: str = None,
         region_id: str = None,
     ):
-        # The query condition. The value is a string in JSON format.
-        # 
-        # >Different query conditions return different protected objects. For more information, see **Query parameter description**.
+        # The query conditions in JSON format.
+        # > The protected objects returned vary based on the query conditions. For more information, see **Query parameter description**.
         self.query = query
         # The region ID.
         self.region_id = region_id

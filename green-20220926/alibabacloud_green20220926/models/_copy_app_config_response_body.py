@@ -12,7 +12,7 @@ class CopyAppConfigResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The ID assigned by the backend to uniquely identify the request. This ID can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

@@ -12,7 +12,7 @@ class ModifyAppAgentResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The ID assigned by the backend to uniquely identify a request. It can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request, which can be used to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

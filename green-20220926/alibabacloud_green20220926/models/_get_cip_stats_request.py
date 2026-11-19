@@ -18,15 +18,13 @@ class GetCipStatsRequest(DaraModel):
         sub_uid: str = None,
         type: str = None,
     ):
-        # Specifies whether monthly indexing is supported. Valid values:
-        # - true: Supported.
-        # - false: Not supported.
+        # Specifies whether monthly indexing is supported. Valid values: true: Supported. false: Not supported.
         self.by_month = by_month
-        # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
+        # The end time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         self.end_date = end_date
         # The label.
         self.label = label
-        # The query condition.
+        # The query conditions.
         self.query = query
         # The region ID.
         self.region_id = region_id
@@ -34,11 +32,11 @@ class GetCipStatsRequest(DaraModel):
         self.resource_type = resource_type
         # The service code.
         self.service_code = service_code
-        # The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
+        # The start time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         self.start_date = start_date
         # The UID of the RAM user.
         self.sub_uid = sub_uid
-        # The type. Valid values: **cip**: Content Moderation invoke volume statistics. **risk_level**: Content Moderation risk level statistics. **content_moderation**: AI security guardrail content compliance risk level and tag statistics. **sensitive_data**: AI security guardrail sensitive data risk level and tag statistics. **prompt_attack**: AI security guardrail prompt risk level and tag statistics.
+        # The type. Valid values: **cip**: Content Moderation invoke usage statistics. **risk_level**: Content Moderation security risk level statistics. **content_moderation**: content compliance risk level and label statistics for AI security guardrails. **sensitive_data**: sensitive data risk level and label statistics for AI security guardrails. **prompt_attack**: prompt risk level and label statistics for AI security guardrails.
         self.type = type
 
     def validate(self):

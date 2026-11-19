@@ -13,7 +13,7 @@ class StopOnlineTestResponseBody(DaraModel):
         task_status: str = None,
         url: str = None,
     ):
-        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. It can be used to troubleshoot issues.
         self.request_id = request_id
         # The service code.
         self.service_code = service_code

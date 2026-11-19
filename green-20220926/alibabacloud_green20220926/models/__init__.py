@@ -414,8 +414,10 @@ from ._describe_oss_v2result_response_body import DescribeOssV2ResultResponseBod
 from ._describe_oss_v2result_response_body import DescribeOssV2ResultResponseBodyItems
 from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBodyChartY
 from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBodyChart
+from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBodyProperty
 from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBodyRiskEventsLabels
 from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBodyRiskEvents
+from ._get_ai_app_detail_response_body import GetAiAppDetailResponseBodyRiskStats
 from ._get_ai_app_detail_topo_request import GetAiAppDetailTopoRequestTimeQuery
 from ._get_ai_app_detail_topo_response_body import GetAiAppDetailTopoResponseBodyData
 from ._get_ai_app_node_detail_response_body import GetAiAppNodeDetailResponseBodyEventDataLabels
@@ -475,6 +477,7 @@ from ._get_user_buy_status_response_body import GetUserBuyStatusResponseBodyData
 from ._init_ai_app_scan_response_body import InitAiAppScanResponseBodyAuthInfo
 from ._list_ai_app_by_page_response_body import ListAiAppByPageResponseBodyItemsRiskEventsLabels
 from ._list_ai_app_by_page_response_body import ListAiAppByPageResponseBodyItemsRiskEvents
+from ._list_ai_app_by_page_response_body import ListAiAppByPageResponseBodyItemsRiskStats
 from ._list_ai_app_by_page_response_body import ListAiAppByPageResponseBodyItems
 from ._list_ai_app_risk_event_response_body import ListAiAppRiskEventResponseBodyData
 from ._list_ai_app_risk_event_by_page_response_body import ListAiAppRiskEventByPageResponseBodyItems
@@ -922,8 +925,10 @@ __all__ = [
     DescribeOssV2ResultResponseBodyItems,
     GetAiAppDetailResponseBodyChartY,
     GetAiAppDetailResponseBodyChart,
+    GetAiAppDetailResponseBodyProperty,
     GetAiAppDetailResponseBodyRiskEventsLabels,
     GetAiAppDetailResponseBodyRiskEvents,
+    GetAiAppDetailResponseBodyRiskStats,
     GetAiAppDetailTopoRequestTimeQuery,
     GetAiAppDetailTopoResponseBodyData,
     GetAiAppNodeDetailResponseBodyEventDataLabels,
@@ -983,6 +988,7 @@ __all__ = [
     InitAiAppScanResponseBodyAuthInfo,
     ListAiAppByPageResponseBodyItemsRiskEventsLabels,
     ListAiAppByPageResponseBodyItemsRiskEvents,
+    ListAiAppByPageResponseBodyItemsRiskStats,
     ListAiAppByPageResponseBodyItems,
     ListAiAppRiskEventResponseBodyData,
     ListAiAppRiskEventByPageResponseBodyItems,

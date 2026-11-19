@@ -15,13 +15,13 @@ class GetGuardStatusResponseBody(DaraModel):
         real_time_status: List[main_models.GetGuardStatusResponseBodyRealTimeStatus] = None,
         request_id: str = None,
     ):
-        # The list of log scan statistics.
+        # The list of statistics related to log scanning.
         self.log_scan_status = log_scan_status
-        # The list of protection status statistics.
+        # The list of statistics related to protection status.
         self.protection_status = protection_status
-        # The list of real-time protection statistics.
+        # The list of statistics related to real-time protection.
         self.real_time_status = real_time_status
-        # The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -96,7 +96,7 @@ class GetGuardStatusResponseBodyRealTimeStatus(DaraModel):
     ):
         # The status. Valid values:
         # - enabled: Running.
-        # - disabled: Not accessed.
+        # - disabled: Not connected.
         self.status = status
         # The type.
         self.type = type
@@ -135,7 +135,7 @@ class GetGuardStatusResponseBodyProtectionStatus(DaraModel):
     ):
         # The status. Valid values:
         # - enabled: Running.
-        # - disabled: Not accessed.
+        # - disabled: Not connected.
         self.status = status
         # The type.
         self.type = type
@@ -174,7 +174,7 @@ class GetGuardStatusResponseBodyLogScanStatus(DaraModel):
     ):
         # The status. Valid values:
         # - enabled: Running.
-        # - disabled: Not accessed.
+        # - disabled: Not connected.
         self.status = status
         # The type.
         self.type = type

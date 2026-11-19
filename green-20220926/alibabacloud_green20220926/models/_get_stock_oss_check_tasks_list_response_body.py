@@ -98,15 +98,15 @@ class GetStockOssCheckTasksListResponseBodyItems(DaraModel):
         task_name: str = None,
         task_type: str = None,
     ):
-        # The storage space.
+        # The buckets.
         self.buckets = buckets
-        # The configuration item.
+        # The configuration.
         self.config = config
         # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # The number of completed tasks.
+        # The number of completed items.
         self.finish_num = finish_num
-        # Indicates whether the task is a scheduled scan task.
+        # Specifies whether the task is a scheduled scan task.
         self.is_inc = is_inc
         # The next execution time of the scheduled task. Format: HH:mm:ss.
         self.last_execute_date = last_execute_date
@@ -269,19 +269,19 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(DaraModel):
         self.distinct_history_tasks = distinct_history_tasks
         # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # The scheduled execution date of the task. An integer value, such as 1.
+        # The execution date of the scheduled task. The value is an integer, such as 1.
         self.execute_date = execute_date
-        # The scheduled execution time of the task. Format: HH:mm:ss.
+        # The expected execution time of the scheduled task. Format: HH:mm:ss.
         self.execute_time = execute_time
         # Specifies whether to freeze.
         self.freeze = freeze
         # Specifies whether to freeze high-risk images.
         self.freeze_high_risk_1 = freeze_high_risk_1
-        # Specifies whether to freeze high-risk audio and text.
+        # Specifies whether to freeze high-risk audio and text files.
         self.freeze_high_risk_2 = freeze_high_risk_2
         # Specifies whether to freeze medium-risk images.
         self.freeze_medium_risk_1 = freeze_medium_risk_1
-        # Specifies whether to freeze medium-risk audio and text.
+        # Specifies whether to freeze medium-risk audio and text files.
         self.freeze_medium_risk_2 = freeze_medium_risk_2
         # The transfer path.
         self.freeze_restore_path = freeze_restore_path
@@ -289,25 +289,25 @@ class GetStockOssCheckTasksListResponseBodyItemsConfig(DaraModel):
         self.freeze_type = freeze_type
         # The prefix filter type.
         self.prefix_filter_type = prefix_filter_type
-        # The prefix.
+        # The prefixes.
         self.prefix_filters = prefix_filters
         # The priority.
         self.priority = priority
-        # Referer。
+        # The Referer header for hotlink protection.
         self.referer = referer
         # The scan limit.
         self.scan_limit = scan_limit
-        # Specifies whether to scan images without file extensions.
+        # Specifies whether to scan images without file name extensions.
         self.scan_no_file_type = scan_no_file_type
         # The type of files to scan.
         self.scan_resource_type = scan_resource_type
-        # The scan service code.
+        # The code of the scan service.
         self.scan_service = scan_service
         # The scan service information.
         self.scan_service_infos = scan_service_infos
         # The start time. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The scheduling cycle. An integer value, such as 1.
+        # The scheduling date. The value is an integer, such as 1.
         self.task_cycle = task_cycle
         # The manual freeze configuration.
         self.user_freeze_config = user_freeze_config
@@ -528,7 +528,7 @@ class GetStockOssCheckTasksListResponseBodyItemsConfigScanServiceInfos(DaraModel
     ):
         # The primary service.
         self.copy_from = copy_from
-        # Indicates whether the service is copied.
+        # Specifies whether to copy.
         self.is_copy = is_copy
         # The service code.
         self.service_code = service_code

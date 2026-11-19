@@ -7,13 +7,16 @@ from darabonba.model import DaraModel
 class GetRiskStatsRequest(DaraModel):
     def __init__(
         self,
+        channel: str = None,
         classify: str = None,
         end_time: str = None,
         region_id: str = None,
         start_time: str = None,
         type: str = None,
     ):
-        # The classification.
+        # The channel identifier.
+        self.channel = channel
+        # The category.
         self.classify = classify
         # The end time. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
@@ -34,6 +37,9 @@ class GetRiskStatsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.channel is not None:
+            result['Channel'] = self.channel
+
         if self.classify is not None:
             result['Classify'] = self.classify
 
@@ -53,6 +59,9 @@ class GetRiskStatsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+
         if m.get('Classify') is not None:
             self.classify = m.get('Classify')
 

@@ -11,7 +11,7 @@ class StopOnlineTestRequest(DaraModel):
         service_code: str = None,
         task_id: str = None,
     ):
-        # The resource type.
+        # The resource type. Note: This parameter is required. If it is not provided, the service returns a 400 error with the message \\"resourceType may not be empty\\".
         self.resource_type = resource_type
         # The service code.
         self.service_code = service_code

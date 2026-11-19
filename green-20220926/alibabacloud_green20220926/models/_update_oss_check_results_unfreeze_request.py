@@ -13,15 +13,15 @@ class UpdateOssCheckResultsUnfreezeRequest(DaraModel):
         start_date: str = None,
         task_id: str = None,
     ):
-        # The end time. Format: YYYY-MM-DD HH:mm:ss.
+        # The end time. The format is YYYY-MM-DD HH:mm:ss. Note: This parameter is actually required. If it is not provided, the service returns a 400 error.
         self.end_date = end_date
-        # The frozen items.
+        # The freeze items. Note: This parameter is actually required. If it is not provided, the service returns a 400 error.
         self.freeze_items = freeze_items
         # The region ID.
         self.region_id = region_id
-        # The start time. Format: YYYY-MM-DD HH:mm:ss.
+        # The start time. The format is YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
-        # The task ID.
+        # The task ID. Note: This parameter is actually required. If it is not provided, the service returns a 400 error.
         self.task_id = task_id
 
     def validate(self):

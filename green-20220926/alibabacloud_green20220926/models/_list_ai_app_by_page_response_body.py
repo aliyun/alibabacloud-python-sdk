@@ -20,9 +20,9 @@ class ListAiAppByPageResponseBody(DaraModel):
         self.current_page = current_page
         # The data on the current page.
         self.items = items
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID of the request, which is assigned by the backend to uniquely identify the request and can be used to troubleshoot issues.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -89,27 +89,30 @@ class ListAiAppByPageResponseBodyItems(DaraModel):
         last_trace_time: str = None,
         risk_events: List[main_models.ListAiAppByPageResponseBodyItemsRiskEvents] = None,
         risk_level: str = None,
+        risk_stats: List[main_models.ListAiAppByPageResponseBodyItemsRiskStats] = None,
         trace_status: str = None,
         uid: str = None,
         warning_count: int = None,
     ):
-        # appId。
+        # The ID of the AI application.
         self.app_id = app_id
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The application status.
         self.app_status = app_status
         # The channel.
         self.channel = channel
-        # The last active time. Format: YYYY-MM-DD HH:mm:ss.
+        # The last active time. The format is YYYY-MM-DD HH:mm:ss.
         self.last_trace_time = last_trace_time
         # The risk events.
         self.risk_events = risk_events
         # The risk level.
         self.risk_level = risk_level
+        # The risk statistics.
+        self.risk_stats = risk_stats
         # The Tracing Analysis status.
         self.trace_status = trace_status
-        # UID。
+        # The UID of the user.
         self.uid = uid
         # The number of alerts.
         self.warning_count = warning_count
@@ -117,6 +120,10 @@ class ListAiAppByPageResponseBodyItems(DaraModel):
     def validate(self):
         if self.risk_events:
             for v1 in self.risk_events:
+                 if v1:
+                    v1.validate()
+        if self.risk_stats:
+            for v1 in self.risk_stats:
                  if v1:
                     v1.validate()
 
@@ -147,6 +154,11 @@ class ListAiAppByPageResponseBodyItems(DaraModel):
 
         if self.risk_level is not None:
             result['RiskLevel'] = self.risk_level
+
+        result['RiskStats'] = []
+        if self.risk_stats is not None:
+            for k1 in self.risk_stats:
+                result['RiskStats'].append(k1.to_map() if k1 else None)
 
         if self.trace_status is not None:
             result['TraceStatus'] = self.trace_status
@@ -185,6 +197,12 @@ class ListAiAppByPageResponseBodyItems(DaraModel):
         if m.get('RiskLevel') is not None:
             self.risk_level = m.get('RiskLevel')
 
+        self.risk_stats = []
+        if m.get('RiskStats') is not None:
+            for k1 in m.get('RiskStats'):
+                temp_model = main_models.ListAiAppByPageResponseBodyItemsRiskStats()
+                self.risk_stats.append(temp_model.from_map(k1))
+
         if m.get('TraceStatus') is not None:
             self.trace_status = m.get('TraceStatus')
 
@@ -193,6 +211,52 @@ class ListAiAppByPageResponseBodyItems(DaraModel):
 
         if m.get('WarningCount') is not None:
             self.warning_count = m.get('WarningCount')
+
+        return self
+
+class ListAiAppByPageResponseBodyItemsRiskStats(DaraModel):
+    def __init__(
+        self,
+        request_count: int = None,
+        risk_count: int = None,
+        type: str = None,
+    ):
+        # The number of requests.
+        self.request_count = request_count
+        # The number of risks.
+        self.risk_count = risk_count
+        # The type.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.request_count is not None:
+            result['RequestCount'] = self.request_count
+
+        if self.risk_count is not None:
+            result['RiskCount'] = self.risk_count
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestCount') is not None:
+            self.request_count = m.get('RequestCount')
+
+        if m.get('RiskCount') is not None:
+            self.risk_count = m.get('RiskCount')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         return self
 
@@ -207,7 +271,7 @@ class ListAiAppByPageResponseBodyItemsRiskEvents(DaraModel):
         event_status: str = None,
         labels: List[main_models.ListAiAppByPageResponseBodyItemsRiskEventsLabels] = None,
     ):
-        # The risk event code.
+        # The code of the risk event.
         self.event_code = event_code
         # The number of events.
         self.event_count = event_count
@@ -215,7 +279,7 @@ class ListAiAppByPageResponseBodyItemsRiskEvents(DaraModel):
         self.event_descs = event_descs
         # The list of risk event IDs.
         self.event_ids = event_ids
-        # The risk event name.
+        # The name of the risk event.
         self.event_name = event_name
         # The event status. Valid values:
         # - **unhandled**: Unhandled.

@@ -18,13 +18,13 @@ class GetOssCheckResultDetailResponseBody(DaraModel):
     ):
         # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # The details data.
+        # The detailed data.
         self.data = data
-        # The further description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The success flag.
         self.success = success
 
     def validate(self):
@@ -105,7 +105,7 @@ class GetOssCheckResultDetailResponseBodyData(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
-        # The storage bucket.
+        # The bucket.
         self.bucket = bucket
         # The error code, which is consistent with the HTTP status code.
         self.code = code
@@ -121,25 +121,25 @@ class GetOssCheckResultDetailResponseBodyData(DaraModel):
         self.image_url = image_url
         # Indicates whether the content is copied.
         self.is_copy = is_copy
-        # The task name.
+        # The job name.
         self.job_name = job_name
-        # The labels.
+        # The label details.
         self.label_details = label_details
-        # The labels.
+        # The label details.
         self.label_details_2 = label_details_2
         # The image labels.
         self.labels = labels
         # The text labels.
         self.labels_2 = labels_2
-        # The manual disposition status.
+        # The manual action status.
         self.manual_freeze_action = manual_freeze_action
-        # The disposition time. The format is YYYY-MM-DD HH:mm:ss.
+        # The action time. The format is YYYY-MM-DD HH:mm:ss.
         self.manual_operate_time = manual_operate_time
-        # The operator who performed the disposition.
+        # The operator.
         self.manual_operator = manual_operator
         # The MD5 hash of the file.
         self.md_5 = md_5
-        # The further description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
         # The object name.
         self.object = object
@@ -432,11 +432,11 @@ class GetOssCheckResultDetailResponseBodyDataLabelDetails2(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # The confidence score, ranging from 0 to 100, rounded to two decimal places.
+        # The confidence score, which ranges from 0 to 100 and is rounded to two decimal places.
         self.confidence = confidence
         # The label description.
         self.description = description
-        # The labels.
+        # The label details.
         self.label = label
 
     def validate(self):
@@ -478,11 +478,11 @@ class GetOssCheckResultDetailResponseBodyDataLabelDetails(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # The confidence score, ranging from 0 to 100, rounded to two decimal places.
+        # The confidence score, which ranges from 0 to 100 and is rounded to two decimal places.
         self.confidence = confidence
         # The label description.
         self.description = description
-        # The labels.
+        # The label details.
         self.label = label
 
     def validate(self):

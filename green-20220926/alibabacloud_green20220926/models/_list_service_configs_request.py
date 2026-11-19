@@ -13,19 +13,16 @@ class ListServiceConfigsRequest(DaraModel):
         resource_type: str = None,
         use_status: str = None,
     ):
-        # The classification.
+        # The category.
         self.classify = classify
         # The protection type. Valid values:
-        # 
-        # - modelProtection: model protection.
-        # 
-        # - agentRealtimeProtection: agent real-time protection.
-        # 
-        # - agentBehaviorAudit: agent behavior audit.
+        # - modelProtection: model protection
+        # - agentRealtimeProtection: real-time agent protection
+        # - agentBehaviorAudit: agent behavior audit
         self.protection_type = protection_type
         # The region ID.
         self.region_id = region_id
-        # The resource type.
+        # The resource type. This parameter is required. If you do not specify this parameter, the service returns a 400 error.
         self.resource_type = resource_type
         # The usage status.
         self.use_status = use_status

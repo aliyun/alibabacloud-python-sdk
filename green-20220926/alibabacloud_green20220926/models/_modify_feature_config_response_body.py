@@ -20,9 +20,9 @@ class ModifyFeatureConfigResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message.
+        # The response message for the request.
         self.msg = msg
-        # The request ID. You can use this ID to locate issues.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

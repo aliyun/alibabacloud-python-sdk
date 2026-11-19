@@ -19,15 +19,15 @@ class ListAiAppWarningByPageResponseBody(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The extension field.
+        # The extended fields.
         self.ext = ext
-        # The data on the current page.
+        # The entries on the current page.
         self.items = items
         # The number of entries per page.
         self.page_size = page_size
-        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+        # The ID of the request. You can use the request ID to troubleshoot issues.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -102,19 +102,19 @@ class ListAiAppWarningByPageResponseBodyItems(DaraModel):
         warning_count: int = None,
         warning_time: str = None,
     ):
-        # appId。
+        # The application ID.
         self.app_id = app_id
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The list of labels.
         self.labels = labels
         # The service code.
         self.service_code = service_code
-        # The trace ID used to correlate and trace alert events.
+        # The trace ID used to associate and trace alert events.
         self.trace_id = trace_id
         # The number of alerts.
         self.warning_count = warning_count
-        # The alert time in the format of YYYY-MM-DD HH:mm:ss.
+        # The time when the alert was triggered. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.warning_time = warning_time
 
     def validate(self):
@@ -191,9 +191,9 @@ class ListAiAppWarningByPageResponseBodyItemsLabels(DaraModel):
     ):
         # The count.
         self.count = count
-        # The label name.
+        # The name of the label.
         self.label = label
-        # The label description.
+        # The description of the label.
         self.label_desc = label_desc
         # The type.
         self.type = type
@@ -241,7 +241,7 @@ class ListAiAppWarningByPageResponseBodyExt(DaraModel):
         self,
         option: Dict[str, Any] = None,
     ):
-        # The option.
+        # The options.
         self.option = option
 
     def validate(self):

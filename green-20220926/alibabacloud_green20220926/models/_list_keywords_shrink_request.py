@@ -17,7 +17,7 @@ class ListKeywordsShrinkRequest(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The keyword library ID.
+        # The ID of the keyword library.
         self.lib_id = lib_id
         # The number of entries per page.
         self.page_size = page_size
@@ -25,9 +25,9 @@ class ListKeywordsShrinkRequest(DaraModel):
         self.region_id = region_id
         # The sort field.
         self.sort_shrink = sort_shrink
-        # The keyword library code. Valid values:
+        # The library code.
         # 
-        # - desensitize: desensitization keyword library.
+        # - desensitize desensitization library
         self.tenant_code = tenant_code
         # The keyword.
         self.word = word

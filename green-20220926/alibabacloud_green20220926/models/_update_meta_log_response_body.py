@@ -10,7 +10,7 @@ class UpdateMetaLogResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The result.
         self.result = result

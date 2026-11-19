@@ -21,7 +21,7 @@ class CreateOnlineTestResponseBody(DaraModel):
         self.task_id = task_id
         # The detection status.
         self.task_status = task_status
-        # The URL to be detected.
+        # The detection URL.
         self.url = url
 
     def validate(self):

@@ -11,7 +11,7 @@ class QueryCallbackRequest(DaraModel):
         id: int = None,
         region_id: str = None,
     ):
-        # Queries data under the OSS detection task.
+        # Specifies whether to query data for OSS check tasks.
         self.check_for_oss = check_for_oss
         # The primary key ID.
         # 

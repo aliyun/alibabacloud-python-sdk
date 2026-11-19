@@ -14,7 +14,7 @@ class ConfirmAiAppScanRequest(DaraModel):
         # 
         # This parameter is required.
         self.commodity_code = commodity_code
-        # The ID of the region where the application resides.
+        # The ID of the region to which the application belongs.
         self.region_id = region_id
 
     def validate(self):

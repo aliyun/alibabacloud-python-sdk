@@ -6,6 +6,7 @@ import json
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_green20220926 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -22,6 +23,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Green'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-1': 'green.ap-southeast-1.aliyuncs.com',
@@ -3430,8 +3434,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.app_id):
             query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3460,8 +3468,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.app_id):
             query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -5876,6 +5888,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetRiskStatsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
         if not DaraCore.is_null(request.classify):
             query['Classify'] = request.classify
         if not DaraCore.is_null(request.end_time):
@@ -5912,6 +5926,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetRiskStatsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.channel):
+            query['Channel'] = request.channel
         if not DaraCore.is_null(request.classify):
             query['Classify'] = request.classify
         if not DaraCore.is_null(request.end_time):

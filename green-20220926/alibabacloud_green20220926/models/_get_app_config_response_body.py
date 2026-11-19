@@ -21,7 +21,7 @@ class GetAppConfigResponseBody(DaraModel):
         type: str = None,
         version: int = None,
     ):
-        # App ID。
+        # The application ID.
         self.app_id = app_id
         # The category.
         self.classify = classify
@@ -35,7 +35,7 @@ class GetAppConfigResponseBody(DaraModel):
         self.name = name
         # The preset options.
         self.option = option
-        # The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The resource type.
         self.resource_type = resource_type

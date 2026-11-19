@@ -21,7 +21,7 @@ class QueryCallbackResponseBody(DaraModel):
     ):
         # The encryption algorithm.
         self.crypt_type = crypt_type
-        # Indicates whether an OSS detection task exists.
+        # Indicates whether an OSS check task exists.
         self.exists_oss_check_task = exists_oss_check_task
         # The creation time.
         self.gmt_create = gmt_create
@@ -31,13 +31,13 @@ class QueryCallbackResponseBody(DaraModel):
         self.id = id
         # The name.
         self.name = name
-        # The ID assigned by the backend to uniquely identify a request. This ID can be used to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The result scope.
         self.scope = scope
-        # Seed。
+        # The seed.
         self.seed = seed
-        # UID。
+        # The UID.
         self.uid = uid
         # The callback URL.
         self.url = url

@@ -15,7 +15,7 @@ class GetQpsStatsResponseBody(DaraModel):
     ):
         # The chart configurations.
         self.charts = charts
-        # The ID assigned by the backend to uniquely identify a request. It can be used to troubleshoot issues.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

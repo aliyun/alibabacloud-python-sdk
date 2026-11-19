@@ -13,15 +13,15 @@ class GetAiAppTraceDetailRequest(DaraModel):
         start_time: str = None,
         trace_id: str = None,
     ):
-        # The AI application ID, which identifies a specific AI application instance.
+        # The ID of the AI application.
         self.app_id = app_id
-        # The end time of the query. Format: YYYY-MM-DD HH:mm:ss.
+        # The end time of the query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
         # The region ID.
         self.region_id = region_id
-        # The start time of the query. Format: YYYY-MM-DD HH:mm:ss.
+        # The start time of the query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
-        # The trace ID, which is used to track and correlate a specific request chain.
+        # The trace ID.
         # 
         # This parameter is required.
         self.trace_id = trace_id

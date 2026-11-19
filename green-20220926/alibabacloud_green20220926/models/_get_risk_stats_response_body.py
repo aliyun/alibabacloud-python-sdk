@@ -13,7 +13,7 @@ class GetRiskStatsResponseBody(DaraModel):
         request_id: str = None,
         risk_stats: List[main_models.GetRiskStatsResponseBodyRiskStats] = None,
     ):
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The list of risk posture statistics.
         self.risk_stats = risk_stats

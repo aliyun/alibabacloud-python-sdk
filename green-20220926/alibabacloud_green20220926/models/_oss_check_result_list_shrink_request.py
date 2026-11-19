@@ -19,19 +19,19 @@ class OssCheckResultListShrinkRequest(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The end time. Format: YYYY-MM-DD HH:mm:ss.
+        # The end time. The format is YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
-        # The number of completed items.
+        # The number of completed tasks.
         self.finish_num = finish_num
         # The number of entries per page.
         self.page_size = page_size
-        # The query condition.
+        # The query conditions. Note: This parameter is required. You must specify a valid JSON string that contains at least one key-value pair, such as {"Labels":"porn"}. The scan results cannot be filtered properly without query conditions.
         self.query = query
         # The region ID.
         self.region_id = region_id
         # The sort field.
         self.sort_shrink = sort_shrink
-        # The start time. Format: YYYY-MM-DD HH:mm:ss.
+        # The start time. The format is YYYY-MM-DD HH:mm:ss.
         self.start_date = start_date
         # The task status.
         self.status = status

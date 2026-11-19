@@ -67,17 +67,17 @@ class ListAppConfigsResponseBodyData(DaraModel):
         type: str = None,
         version: int = None,
     ):
-        # App ID。
+        # The application ID.
         self.app_id = app_id
-        # The classification.
+        # The category.
         self.classify = classify
         # The configuration details.
         self.custom_config = custom_config
-        # The sort number.
+        # The sort order.
         self.custom_order_num = custom_order_num
         # The publish status.
         self.deploy_status = deploy_status
-        # The last modified time.
+        # The last modification time.
         self.gmt_modified = gmt_modified
         # The name.
         self.name = name

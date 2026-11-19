@@ -13,7 +13,7 @@ class GetOssCheckStatResponseBody(DaraModel):
         bar_chart: main_models.GetOssCheckStatResponseBodyBarChart = None,
         request_id: str = None,
     ):
-        # The bar chart data.
+        # The bar chart.
         self.bar_chart = bar_chart
         # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id

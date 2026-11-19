@@ -20,11 +20,11 @@ class GetTextScanResultResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
         # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -157,17 +157,17 @@ class GetTextScanResultResponseBodyDataItems(DaraModel):
         suggestion: str = None,
         task_id: str = None,
     ):
-        # The AccountId passed in by the customer.
+        # The AccountId parameter passed by the customer.
         self.account_id = account_id
-        # The Bailian request ID.
+        # The Model Studio request ID.
         self.bailian_request_id = bailian_request_id
         # The content.
         self.content = content
-        # The DataId passed in by the customer.
+        # The DataId parameter passed by the customer.
         self.data_id = data_id
         # The feedback information.
         self.ext_feedback = ext_feedback
-        # The reserved parameter.
+        # The extra parameters.
         self.extra = extra
         # The creation time.
         self.gmt_create = gmt_create
@@ -175,19 +175,15 @@ class GetTextScanResultResponseBodyDataItems(DaraModel):
         self.labels = labels
         # The request ID.
         self.request_id = request_id
-        # The request time. Format: YYYY-MM-DD HH:mm:ss.
+        # The request time. The format is YYYY-MM-DD HH:mm:ss.
         self.request_time = request_time
-        # The detection results.
+        # The moderation result.
         self.result = result
-        # The risk level, which is returned based on the configured high and low risk score thresholds. Valid values:
-        # 
-        # - high: high risk.
-        # 
-        # - medium: medium risk.
-        #  
-        # - low: low risk.
-        # 
-        # - none: no risk detected.
+        # The risk level. The value is returned based on the configured high and low risk scores. Valid values:
+        # - high: High risk.
+        # - medium: Medium risk.
+        # - low: Low risk.
+        # - none: No risk detected.
         self.risk_level = risk_level
         # The result details.
         self.scan_result = scan_result
@@ -195,7 +191,7 @@ class GetTextScanResultResponseBodyDataItems(DaraModel):
         self.score = score
         # The service code.
         self.service_code = service_code
-        # The suggested action.
+        # The suggestion.
         self.suggestion = suggestion
         # The task ID.
         self.task_id = task_id
@@ -331,7 +327,7 @@ class GetTextScanResultResponseBodyDataItemsResult(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # The confidence score, ranging from 0 to 100 and rounded to two decimal places.
+        # The confidence score. Valid values: 0 to 100. The score is accurate to two decimal places.
         self.confidence = confidence
         # The description.
         self.description = description

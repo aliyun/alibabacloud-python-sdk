@@ -11,7 +11,7 @@ class DescribeOnlineTestResultRequest(DaraModel):
         service_code: str = None,
         task_id: str = None,
     ):
-        # The resource type.
+        # The resource type. Valid value: video. If you specify image, audio, or document, the request is rejected and a 400 error is returned with the message "resourceType should be in specific values annotated on @IsIn". Note: This parameter is actually required. If it is not provided, the API returns a 400 error with the message "resourceType may not be empty", but the required field remains false.
         self.resource_type = resource_type
         # The service code.
         self.service_code = service_code

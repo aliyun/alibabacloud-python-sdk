@@ -19,19 +19,19 @@ class GetOssCheckFreezeResultShrinkRequest(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The end time. Format: YYYY-MM-DD HH:mm:ss.
+        # The end time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.end_date = end_date
-        # The number of completed tasks.
+        # The number of completed items.
         self.finish_num = finish_num
         # The number of entries per page.
         self.page_size = page_size
-        # The query condition.
+        # The query conditions. Note: This parameter is actually required. You must provide a JSON string that contains the TaskId field, such as {"TaskId":"P_XXX"}. If this parameter is not provided, the API returns a 400 error (oss.check.task.not.exists).
         self.query = query
         # The region ID.
         self.region_id = region_id
         # The sort field.
         self.sort_shrink = sort_shrink
-        # The start time. Format: YYYY-MM-DD HH:mm:ss.
+        # The start time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         self.start_date = start_date
         # The task status.
         self.status = status

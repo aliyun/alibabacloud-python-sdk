@@ -15,9 +15,9 @@ class AddAnswerSampleResponseBody(DaraModel):
         result: main_models.AddAnswerSampleResponseBodyResult = None,
         task_id: str = None,
     ):
-        # The ID of the proxy answer library.
+        # The ID of the fallback answer library.
         self.lib_id = lib_id
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The result.
         self.result = result
@@ -80,13 +80,13 @@ class AddAnswerSampleResponseBodyResult(DaraModel):
     ):
         # The internationalization key.
         self.i_18n_key = i_18n_key
-        # The collection of samples whose length is too long or too short.
+        # The collection of samples that are too long or too short.
         self.illegal_length_samples = illegal_length_samples
         # The number of invalid records.
         self.invalid_count = invalid_count
-        # The ID of the proxy answer library.
+        # The ID of the fallback answer library.
         self.lib_id = lib_id
-        # The progress. For example, 90 indicates 90%.
+        # The progress. A value of 90 indicates 90%.
         self.progress = progress
         # The number of duplicate records.
         self.repeat_count = repeat_count

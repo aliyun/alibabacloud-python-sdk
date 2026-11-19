@@ -13,7 +13,7 @@ class GetScanNumResponseBody(DaraModel):
         sum_number: int = None,
         tag: bool = None,
     ):
-        # The upper limit on the number.
+        # The upper limit.
         self.limit_number = limit_number
         # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id

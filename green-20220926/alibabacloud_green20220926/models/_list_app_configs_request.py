@@ -11,11 +11,11 @@ class ListAppConfigsRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # The classification.
+        # The category.
         self.classify = classify
         # The region ID.
         self.region_id = region_id
-        # The resource type.
+        # The resource type. Note: This parameter is actually required. If it is not provided, the API returns a 400 error (Code: 400, Message: resourceType may not be empty). Valid values: agent_text | agent_text_image | agent_image.
         self.resource_type = resource_type
 
     def validate(self):

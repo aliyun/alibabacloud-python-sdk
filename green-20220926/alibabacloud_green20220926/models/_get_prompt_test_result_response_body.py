@@ -63,7 +63,7 @@ class GetPromptTestResultResponseBodyResult(DaraModel):
         self.content = content
         # The labels.
         self.label_details = label_details
-        # The risk level, which is returned based on the configured high and low risk scores. Valid values:
+        # The risk level. The value is returned based on the configured high and low risk scores. Valid values:
         # 
         # - high: High risk.
         # 
@@ -71,7 +71,7 @@ class GetPromptTestResultResponseBodyResult(DaraModel):
         #  
         # - low: Low risk.
         # 
-        #  - none: No risk detected.
+        # - none: No risk detected.
         self.risk_level = risk_level
 
     def validate(self):
@@ -125,7 +125,7 @@ class GetPromptTestResultResponseBodyResultLabelDetails(DaraModel):
         self.description = description
         # The labels.
         self.label = label
-        # The reason why the model determined this risk level for the text.
+        # The reason why the model determines this risk level for the text.
         self.reason = reason
 
     def validate(self):

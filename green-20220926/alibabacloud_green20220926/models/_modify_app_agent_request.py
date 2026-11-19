@@ -15,11 +15,11 @@ class ModifyAppAgentRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # Agent ID。
+        # The agent ID, which is the unique identifier of the agent and is returned in the response of the AddAppAgent operation.
         self.agent_id = agent_id
-        # The agent name.
+        # The name of the agent.
         self.agent_name = agent_name
-        # App ID。
+        # The app ID, which is the unique identifier of the application and is returned in the response of the AddAppConfig operation. Note: This parameter is actually required. If it is not provided, the API returns a 400 error with the message "appId may not be empty".
         self.app_id = app_id
         # The configuration details.
         self.config = config
@@ -29,7 +29,7 @@ class ModifyAppAgentRequest(DaraModel):
         self.enable = enable
         # The region ID.
         self.region_id = region_id
-        # The resource type.
+        # The resource type. Note: This parameter is actually required. If it is not provided, the API returns a 400 error with the message "resourceType may not be empty".
         self.resource_type = resource_type
 
     def validate(self):

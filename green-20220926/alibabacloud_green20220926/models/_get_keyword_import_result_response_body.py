@@ -20,11 +20,11 @@ class GetKeywordImportResultResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The request ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The success indicator.
         self.success = success
 
     def validate(self):
@@ -92,7 +92,7 @@ class GetKeywordImportResultResponseBodyData(DaraModel):
         self.i_18n_key = i_18n_key
         # The list of keywords that are too long or too short.
         self.illegal_length_keywords = illegal_length_keywords
-        # The number of invalid keywords.
+        # The invalid count.
         self.invalid_count = invalid_count
         # The list of invalid keywords.
         self.invalid_keywords = invalid_keywords
@@ -100,13 +100,13 @@ class GetKeywordImportResultResponseBodyData(DaraModel):
         self.lib_id = lib_id
         # The task progress percentage.
         self.progress = progress
-        # The number of duplicate keywords.
+        # The duplicate count.
         self.repeat_count = repeat_count
         # The list of duplicate keywords.
         self.repeat_keywords = repeat_keywords
-        # The number of successfully imported keywords.
+        # The success count.
         self.success_count = success_count
-        # The prompt information.
+        # The prompt message.
         self.tips = tips
         # The total count.
         self.total_count = total_count

@@ -12,9 +12,9 @@ class CopyAppConfigRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # The ID of the source App to copy from.
+        # The ID of the source app.
         self.app_id = app_id
-        # The name of the new App to be created from the copy.
+        # The name of the new app.
         self.name = name
         # The region ID.
         self.region_id = region_id

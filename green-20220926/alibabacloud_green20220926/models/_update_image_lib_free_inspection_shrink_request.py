@@ -15,7 +15,7 @@ class UpdateImageLibFreeInspectionShrinkRequest(DaraModel):
         self.config_shrink = config_shrink
         # The region ID.
         self.region_id = region_id
-        # The selected service identifier.
+        # The identifier of the selected service.
         self.service_code = service_code
 
     def validate(self):

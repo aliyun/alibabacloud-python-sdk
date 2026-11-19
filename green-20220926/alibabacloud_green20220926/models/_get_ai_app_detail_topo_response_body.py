@@ -63,7 +63,7 @@ class GetAiAppDetailTopoResponseBodyData(DaraModel):
         risk_level: str = None,
         warning_count: int = None,
     ):
-        # The node category.
+        # The node category. Valid values:
         # 
         # - LLM
         # 
@@ -73,21 +73,21 @@ class GetAiAppDetailTopoResponseBodyData(DaraModel):
         # 
         # - Others
         self.node_category = node_category
-        # The node ID.
+        # The ID of the node.
         self.node_id = node_id
-        # The node name.
+        # The name of the node.
         self.node_name = node_name
         # The node type. Valid values:
         # 
-        # - **APP**: end-to-end agent.
-        # - **MODEL**: large language model.
-        # - **TOOL**: tool.
+        # - **APP**: The full agent trace.
+        # - **MODEL**: The large language model.
+        # - **TOOL**: The tool.
         self.node_type = node_type
-        # The request count.
+        # The number of requests.
         self.request_count = request_count
         # The risk level.
         self.risk_level = risk_level
-        # The alert count.
+        # The number of alerts.
         self.warning_count = warning_count
 
     def validate(self):

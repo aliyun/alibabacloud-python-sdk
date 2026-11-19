@@ -12,7 +12,7 @@ class ListAiAppRiskEventRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The application ID. This parameter is required.
+        # The ID of the application. This parameter is required.
         # 
         # This parameter is required.
         self.app_id = app_id

@@ -15,13 +15,13 @@ class DescribeOssV2ResultRequest(DaraModel):
         start_date: str = None,
         task_name: str = None,
     ):
-        # The OSS bucket.
+        # The OSS bucket of the file server.
         self.bucket = bucket
         # The current page number.
         self.current_page = current_page
         # The end time. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The risk level.
         self.risk_level = risk_level

@@ -13,15 +13,15 @@ class ModifyAppInfoRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # App ID。
+        # The app ID. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (appId may not be empty).
         self.app_id = app_id
-        # The sort number.
+        # The custom order number.
         self.custom_order_num = custom_order_num
-        # The app name.
+        # The name of the app.
         self.name = name
         # The region ID.
         self.region_id = region_id
-        # The resource type.
+        # The resource type. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (resourceType may not be empty).
         self.resource_type = resource_type
 
     def validate(self):

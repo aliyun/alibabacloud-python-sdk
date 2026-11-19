@@ -26,7 +26,7 @@ class GetUploadInfoResponseBody(DaraModel):
         self.access_id = access_id
         # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # The expiration time. Unit: seconds.
+        # The expiration time in seconds.
         self.expire = expire
         # The file name.
         self.folder = folder
@@ -34,17 +34,17 @@ class GetUploadInfoResponseBody(DaraModel):
         self.host = host
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The key used for uploading the file.
+        # The key used for the uploaded file.
         self.key = key
-        # The further description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # Used by the frontend for image upload.
+        # The name used for frontend image uploads.
         self.name = name
-        # The policy for uploading files to OSS.
+        # The policy for uploading files to Object Storage Service (OSS).
         self.policy = policy
-        # The ID assigned by the backend to uniquely identify a request. This ID can be used for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request, which can be used for troubleshooting.
         self.request_id = request_id
-        # STS token
+        # The temporary Security Token Service (STS) token.
         self.security_token = security_token
         # The signature information for the upload.
         self.signature = signature

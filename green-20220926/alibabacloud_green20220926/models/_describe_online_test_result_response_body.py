@@ -144,7 +144,7 @@ class DescribeOnlineTestResultResponseBodySummaryList(DaraModel):
         self.risk_level = risk_level
         # The risk level summary.
         self.risk_level_summary = risk_level_summary
-        # The number of shards.
+        # The number of slices.
         self.slice_count = slice_count
 
     def validate(self):

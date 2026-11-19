@@ -15,9 +15,9 @@ class CreateAnswerLibResponseBody(DaraModel):
         result: main_models.CreateAnswerLibResponseBodyResult = None,
         task_id: str = None,
     ):
-        # The ID of the proxy answer library.
+        # The ID of the fallback answer library.
         self.lib_id = lib_id
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The result.
         self.result = result
@@ -80,17 +80,17 @@ class CreateAnswerLibResponseBodyResult(DaraModel):
     ):
         # The internationalization key.
         self.i_18n_key = i_18n_key
-        # The list of invalid proxy answers.
+        # The list of invalid fallback answers.
         self.illegal_length_samples = illegal_length_samples
         # The number of invalid samples.
         self.invalid_count = invalid_count
-        # The ID of the proxy answer library.
+        # The ID of the fallback answer library.
         self.lib_id = lib_id
-        # The task progress percentage.
+        # The progress percentage of the task.
         self.progress = progress
         # The number of duplicate samples.
         self.repeat_count = repeat_count
-        # The list of duplicate proxy answers.
+        # The list of duplicate fallback answers.
         self.repeat_samples = repeat_samples
         # The number of successful samples.
         self.success_count = success_count

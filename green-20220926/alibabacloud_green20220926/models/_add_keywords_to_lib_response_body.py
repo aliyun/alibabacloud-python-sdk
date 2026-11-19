@@ -55,7 +55,7 @@ class AddKeywordsToLibResponseBodyData(DaraModel):
     ):
         # The result.
         self.keywords_result = keywords_result
-        # The keyword library ID.
+        # The ID of the keyword library.
         self.lib_id = lib_id
         # The task ID.
         self.task_id = task_id
@@ -110,13 +110,13 @@ class AddKeywordsToLibResponseBodyDataKeywordsResult(DaraModel):
     ):
         # The internationalization key.
         self.i_18n_key = i_18n_key
-        # The list of keywords with illegal length (too long or too short).
+        # The list of keywords that are too long or too short.
         self.illegal_length_keywords = illegal_length_keywords
         # The number of invalid keywords.
         self.invalid_count = invalid_count
         # The list of invalid keywords.
         self.invalid_keywords = invalid_keywords
-        # The keyword library ID.
+        # The ID of the keyword library.
         self.lib_id = lib_id
         # The task progress percentage.
         self.progress = progress

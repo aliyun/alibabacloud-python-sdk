@@ -11,7 +11,7 @@ class GetScanNumRequest(DaraModel):
         media_type: int = None,
         region_id: str = None,
     ):
-        # The storage space.
+        # The buckets. Note: This parameter is required. If it is not provided, the service returns a 400 error.
         self.buckets = buckets
         # The media asset type.
         self.media_type = media_type

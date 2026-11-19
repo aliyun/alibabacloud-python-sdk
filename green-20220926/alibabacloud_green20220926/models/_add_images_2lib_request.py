@@ -11,9 +11,9 @@ class AddImages2LibRequest(DaraModel):
         lib_id: str = None,
         region_id: str = None,
     ):
-        # The image URL.
+        # The URL of the image. This value must be the Key field returned by GetUploadInfo, in the format of image/upload/<hash>. Passing an external image URL returns a 400 image.url.invalid error.
         self.img_url = img_url
-        # The image library ID.
+        # The ID of the image library.
         self.lib_id = lib_id
         # The region ID.
         self.region_id = region_id

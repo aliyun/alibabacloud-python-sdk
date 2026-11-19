@@ -11,7 +11,7 @@ class AddImageLibRequest(DaraModel):
         lib_name: str = None,
         region_id: str = None,
     ):
-        # The remarks of the image library.
+        # The remarks for the image library.
         self.comment = comment
         # The name of the image library.
         self.lib_name = lib_name

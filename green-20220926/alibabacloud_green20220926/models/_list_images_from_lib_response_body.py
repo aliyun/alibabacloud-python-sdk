@@ -28,13 +28,13 @@ class ListImagesFromLibResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The data on the current page.
         self.items = items
-        # The further description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
         # The number of entries per page.
         self.page_size = page_size
-        # The backend-assigned ID that uniquely identifies a request. This ID can be used for troubleshooting.
+        # The request ID, which uniquely identifies the request and can be used for troubleshooting.
         self.request_id = request_id
-        # The success flag.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of images.
         self.total_count = total_count

@@ -12,11 +12,11 @@ class AddAnswerSampleRequest(DaraModel):
         sample_object: str = None,
         samples: str = None,
     ):
-        # The ID of the proxy answer library.
+        # The ID of the fallback answer library.
         self.lib_id = lib_id
         # The region ID.
         self.region_id = region_id
-        # The file name of the proxy answer sample to be added.
+        # The name of the file that contains the fallback answer samples to be added.
         self.sample_object = sample_object
         # The samples to be added.
         self.samples = samples

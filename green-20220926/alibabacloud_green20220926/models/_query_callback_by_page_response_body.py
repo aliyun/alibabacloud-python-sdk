@@ -18,13 +18,13 @@ class QueryCallbackByPageResponseBody(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The data on the current page.
+        # The entries on the current page.
         self.items = items
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -104,9 +104,9 @@ class QueryCallbackByPageResponseBodyItems(DaraModel):
         self.name = name
         # The result scope.
         self.scope = scope
-        # Seed。
+        # The seed.
         self.seed = seed
-        # UID。
+        # The UID.
         self.uid = uid
         # The callback URL.
         self.url = url

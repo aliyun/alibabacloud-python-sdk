@@ -20,9 +20,9 @@ class ListAiAppRiskEventByPageRequest(DaraModel):
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The query parameter.
+        # The query parameters.
         self.query = query
         # The region ID.
         self.region_id = region_id

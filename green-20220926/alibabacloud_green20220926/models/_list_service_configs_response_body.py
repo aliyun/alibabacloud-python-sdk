@@ -20,11 +20,11 @@ class ListServiceConfigsResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -96,7 +96,7 @@ class ListServiceConfigsResponseBodyData(DaraModel):
         uid: str = None,
         use_status: str = None,
     ):
-        # The classification.
+        # The category.
         self.classify = classify
         # The primary service.
         self.copy_from = copy_from
@@ -109,10 +109,8 @@ class ListServiceConfigsResponseBodyData(DaraModel):
         # The resource type.
         self.resource_type = resource_type
         # The scene type. Valid values:
-        # 
-        # - recommended_scene: recommended scenario.
-        # 
-        # - all_scene: all scenarios.
+        # - recommended_scene: recommended scene
+        # - all_scene: all scenes
         self.scene_type = scene_type
         # The service code.
         self.service_code = service_code
@@ -122,7 +120,7 @@ class ListServiceConfigsResponseBodyData(DaraModel):
         self.service_name = service_name
         # The service type.
         self.service_type = service_type
-        # UID。
+        # The user UID.
         self.uid = uid
         # The usage status.
         self.use_status = use_status
@@ -235,13 +233,13 @@ class ListServiceConfigsResponseBodyDataCustomServiceConf(DaraModel):
         self.audio_service = audio_service
         # The image service.
         self.image_service = image_service
-        # The ignored keyword library.
+        # The ignored keyword libraries.
         self.keyword_filter_libs = keyword_filter_libs
-        # The hit keyword library.
+        # The matched keyword libraries.
         self.keyword_hit_libs = keyword_hit_libs
         # The service rules.
         self.rules = rules
-        # The hit similar text library.
+        # The matched similar text libraries.
         self.similar_text_hit_libs = similar_text_hit_libs
 
     def validate(self):
@@ -311,7 +309,7 @@ class ListServiceConfigsResponseBodyDataCustomServiceConfRules(DaraModel):
     ):
         # The image moderation rule.
         self.image_scan_rule = image_scan_rule
-        # The ordinal number.
+        # The sequence number.
         self.index = index
         # The text moderation rule.
         self.text_scan_rule = text_scan_rule

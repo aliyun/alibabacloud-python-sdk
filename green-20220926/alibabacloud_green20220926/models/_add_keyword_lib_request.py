@@ -25,9 +25,8 @@ class AddKeywordLibRequest(DaraModel):
         self.properties = properties
         # The region ID.
         self.region_id = region_id
-        # The library code.
-        # 
-        # - desensitize: desensitization library
+        # The code of the keyword library.
+        # - desensitize: desensitization keyword library.
         self.tenant_code = tenant_code
 
     def validate(self):

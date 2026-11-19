@@ -23,7 +23,7 @@ class GetAiAppNodeDetailResponseBody(DaraModel):
         self.app_id = app_id
         # The channel information.
         self.channel = channel
-        # The list of event data.
+        # The event data list.
         self.event_data = event_data
         # The node ID.
         self.node_id = node_id
@@ -31,7 +31,7 @@ class GetAiAppNodeDetailResponseBody(DaraModel):
         self.node_name = node_name
         # The node type.
         self.node_type = node_type
-        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+        # The request ID, which is assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The risk level.
         self.risk_level = risk_level
@@ -119,15 +119,15 @@ class GetAiAppNodeDetailResponseBodyEventData(DaraModel):
     ):
         # The channel.
         self.channel = channel
-        # The list of labels.
+        # The label list.
         self.labels = labels
         # The name.
         self.name = name
         # The risk level.
         self.risk_level = risk_level
-        # The time when the event occurred. Format: yyyy-MM-dd HH:mm:ss.
+        # The time when the event occurred. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         self.time = time
-        # The trace ID, which is used to query the exact call information.
+        # The trace ID, which is used to precisely query trace information.
         self.trace_id = trace_id
         # The event type.
         self.type = type

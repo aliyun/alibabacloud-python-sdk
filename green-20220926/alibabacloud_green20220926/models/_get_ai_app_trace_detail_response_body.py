@@ -23,17 +23,17 @@ class GetAiAppTraceDetailResponseBody(DaraModel):
         self.analysis = analysis
         # The application ID.
         self.app_id = app_id
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
-        # The application channel.
+        # The channel of the application.
         self.channel = channel
         # The list of labels.
         self.labels = labels
-        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
+        # The ID of the request.
         self.request_id = request_id
-        # The trace ID, which is used to correlate and track alert events.
+        # The trace ID.
         self.trace_id = trace_id
-        # The alert time. Format: YYYY-MM-DD HH:mm:ss.
+        # The time when the alert was triggered. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.warning_time = warning_time
 
     def validate(self):
@@ -116,9 +116,9 @@ class GetAiAppTraceDetailResponseBodyLabels(DaraModel):
     ):
         # The count.
         self.count = count
-        # The label name.
+        # The name of the label.
         self.label = label
-        # The label description.
+        # The description of the label.
         self.label_desc = label_desc
         # The type.
         self.type = type

@@ -18,7 +18,7 @@ class GetAiAppStatsRequest(DaraModel):
         self.by_month = by_month
         # The end date of the query. Format: YYYY-MM-DD HH:mm:ss.
         self.end_date = end_date
-        # The query condition.
+        # The query conditions.
         self.query = query
         # The region ID.
         self.region_id = region_id

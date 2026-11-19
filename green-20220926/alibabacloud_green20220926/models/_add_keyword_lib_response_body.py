@@ -20,11 +20,11 @@ class AddKeywordLibResponseBody(DaraModel):
         self.code = code
         # The returned data.
         self.data = data
-        # The description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The success identifier.
         self.success = success
 
     def validate(self):
@@ -80,7 +80,7 @@ class AddKeywordLibResponseBodyData(DaraModel):
         lib_id: str = None,
         task_id: str = None,
     ):
-        # The result.
+        # The results.
         self.keywords_result = keywords_result
         # The ID of the keyword library.
         self.lib_id = lib_id
@@ -137,7 +137,7 @@ class AddKeywordLibResponseBodyDataKeywordsResult(DaraModel):
     ):
         # The internationalization key.
         self.i_18n_key = i_18n_key
-        # The list of keywords with invalid length.
+        # The list of keywords that are too long or too short.
         self.illegal_length_keywords = illegal_length_keywords
         # The number of invalid keywords.
         self.invalid_count = invalid_count
@@ -151,7 +151,7 @@ class AddKeywordLibResponseBodyDataKeywordsResult(DaraModel):
         self.repeat_keywords = repeat_keywords
         # The number of successful keywords.
         self.success_count = success_count
-        # The prompt information.
+        # The prompt message.
         self.tips = tips
         # The total count.
         self.total_count = total_count

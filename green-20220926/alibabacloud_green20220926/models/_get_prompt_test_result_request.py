@@ -13,15 +13,15 @@ class GetPromptTestResultRequest(DaraModel):
         text: str = None,
         type: str = None,
     ):
-        # The configuration item.
+        # The configuration item. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (config may not be empty).
         self.config = config
-        # The resource type.
+        # The resource type. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (resourceType may not be empty).
         self.resource_type = resource_type
-        # The service code.
+        # The service code. Note: This parameter is actually required. If it is not provided, the service returns a 400 error (serviceCode may not be empty).
         self.service_code = service_code
-        # The text content.
+        # The text content. Note: This parameter is actually required. If it is not provided, the service returns a 400 error.
         self.text = text
-        # The business type.
+        # The business type. Note: This parameter is actually required. If it is not provided, the service returns a 400 error.
         self.type = type
 
     def validate(self):

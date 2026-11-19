@@ -13,7 +13,7 @@ class QueryCallbackByPageRequest(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id

@@ -18,10 +18,9 @@ class AddAppAgentRequest(DaraModel):
         self.agent_id = agent_id
         # The agent name.
         self.agent_name = agent_name
-        # App ID。
+        # The app ID.
         self.app_id = app_id
         # Specifies whether to enable the agent. Valid values:
-        # 
         # - **true**: Enabled.
         # - **false**: Disabled.
         self.enable = enable

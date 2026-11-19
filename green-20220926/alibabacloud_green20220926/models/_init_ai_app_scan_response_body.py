@@ -17,7 +17,7 @@ class InitAiAppScanResponseBody(DaraModel):
         ready_status: str = None,
         request_id: str = None,
     ):
-        # The access entry information.
+        # The access endpoint information.
         self.auth_info = auth_info
         # The access information.
         self.auth_info_config = auth_info_config
@@ -27,7 +27,7 @@ class InitAiAppScanResponseBody(DaraModel):
         self.open_status = open_status
         # The ready status.
         self.ready_status = ready_status
-        # The ID assigned by the backend to uniquely identify a request. You can use this ID for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. You can use it to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -103,7 +103,7 @@ class InitAiAppScanResponseBodyAuthInfo(DaraModel):
         self.auth_token = auth_token
         # The private domain name.
         self.private_domain = private_domain
-        # The project space.
+        # The project workspace.
         self.project = project
         # The public domain name.
         self.public_domain = public_domain

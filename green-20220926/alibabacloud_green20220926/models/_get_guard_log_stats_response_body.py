@@ -15,7 +15,7 @@ class GetGuardLogStatsResponseBody(DaraModel):
     ):
         # The data.
         self.data = data
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -71,27 +71,26 @@ class GetGuardLogStatsResponseBodyData(DaraModel):
         # The delivery region.
         self.delivery_region = delivery_region
         # Indicates whether the feature is enabled. Valid values:
-        # 
         # - **true**: Enabled.
         # - **false**: Disabled.
         self.enable = enable
         # The log analysis configuration.
         self.log_analysis_config = log_analysis_config
-        # The name of the Simple Log Service Logstore.
+        # The name of the Logstore in Simple Log Service.
         self.log_store_name = log_store_name
         # The remaining storage space. Unit: TB.
         self.pending_storage = pending_storage
         # The reserved storage. Unit: bytes.
         self.preserve_storage = preserve_storage
-        # The project space.
+        # The workspace.
         self.project = project
         # The total storage space. Unit: TB.
         self.total_storage = total_storage
-        # The number of days for which data is retained.
+        # The data retention period in days.
         self.ttl = ttl
         # The type.
         self.type = type
-        # UID。
+        # The user ID.
         self.uid = uid
         # The used storage. Unit: bytes.
         self.used_storage = used_storage

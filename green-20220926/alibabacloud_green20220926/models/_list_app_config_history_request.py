@@ -11,7 +11,7 @@ class ListAppConfigHistoryRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # App ID。
+        # The app ID.
         self.app_id = app_id
         # The region ID.
         self.region_id = region_id

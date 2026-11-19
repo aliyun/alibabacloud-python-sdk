@@ -23,7 +23,7 @@ class ExportCipStatsRequest(DaraModel):
         # - **true**: Supported.
         # - **false**: Not supported.
         self.by_month = by_month
-        # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
+        # The end time of the query, in the yyyy-MM-dd HH:mm:ss format.
         self.end_date = end_date
         # The export type. Valid values:
         # - **level**: Export by risk level.
@@ -31,7 +31,7 @@ class ExportCipStatsRequest(DaraModel):
         self.export_type = export_type
         # The task label to export.
         self.label = label
-        # The query condition.
+        # The query conditions.
         self.query = query
         # The region ID.
         self.region_id = region_id
@@ -39,16 +39,16 @@ class ExportCipStatsRequest(DaraModel):
         self.resource_type = resource_type
         # The service code.
         self.service_code = service_code
-        # The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
+        # The start time of the query, in the yyyy-MM-dd HH:mm:ss format.
         self.start_date = start_date
         # The UID of the RAM user.
         self.sub_uid = sub_uid
         # The type. Valid values:
-        # - **cip**: Content Moderation invoke volume statistics.
+        # - **cip**: Content Moderation usage statistics.
         # - **risk_level**: Content Moderation security risk level statistics.
-        # - **content_moderation**: AI Safety Guardrail content compliance risk level and tag statistics.
-        # - **sensitive_data**: AI Safety Guardrail sensitive data risk level and tag statistics.
-        # - **prompt_attack**: AI Safety Guardrail prompt risk level and tag statistics.
+        # - **content_moderation**: AI security guardrail content compliance risk level and tag statistics.
+        # - **sensitive_data**: AI security guardrail sensitive data risk level and tag statistics.
+        # - **prompt_attack**: AI security guardrail prompt risk level and tag statistics.
         self.type = type
 
     def validate(self):

@@ -14,19 +14,16 @@ class UpdateAiAppScanStatusResponseBody(DaraModel):
         status: str = None,
         success_app_ids: List[str] = None,
     ):
-        # The list of application IDs that failed.
+        # The list of failed application IDs.
         self.failed_app_ids = failed_app_ids
         # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The status. Valid values:
-        # 
-        # - SUCCESS: Succeeded.
-        # 
-        # - PARTIAL_SUCCESS: Partially succeeded.
-        # 
-        # - FAILED: Failed.
+        # - SUCCESS: Success.
+        # - PARTIAL_SUCCESS: Partial success.
+        # - FAILED: Failure.
         self.status = status
-        # The list of application IDs that succeeded.
+        # The list of successful application IDs.
         self.success_app_ids = success_app_ids
 
     def validate(self):

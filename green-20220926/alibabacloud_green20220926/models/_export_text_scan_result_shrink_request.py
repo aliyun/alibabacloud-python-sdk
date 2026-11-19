@@ -14,7 +14,7 @@ class ExportTextScanResultShrinkRequest(DaraModel):
     ):
         # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
         self.end_date = end_date
-        # The query condition.
+        # The query conditions.
         self.query_shrink = query_shrink
         # The region ID.
         self.region_id = region_id

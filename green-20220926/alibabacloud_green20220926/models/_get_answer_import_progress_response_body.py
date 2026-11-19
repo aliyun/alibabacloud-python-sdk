@@ -24,21 +24,21 @@ class GetAnswerImportProgressResponseBody(DaraModel):
     ):
         # The internationalization key.
         self.i_18n_key = i_18n_key
-        # The list of invalid proxy answers.
+        # The list of invalid fallback answers.
         self.illegal_length_samples = illegal_length_samples
-        # The number of invalid entries.
+        # The invalid count.
         self.invalid_count = invalid_count
-        # The proxy answer library ID.
+        # The fallback answer library ID.
         self.lib_id = lib_id
         # The task progress percentage.
         self.progress = progress
-        # The number of duplicate entries.
+        # The duplicate count.
         self.repeat_count = repeat_count
-        # The list of duplicate proxy answers.
+        # The list of duplicate fallback answers.
         self.repeat_samples = repeat_samples
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. This ID can be used for troubleshooting.
         self.request_id = request_id
-        # The number of successful imports.
+        # The success count.
         self.success_count = success_count
         # The task ID.
         self.task_id = task_id

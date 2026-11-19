@@ -13,7 +13,7 @@ class QueryLabelConfigRequest(DaraModel):
         service_code: str = None,
         type: str = None,
     ):
-        # The classification. Separate multiple values with commas.
+        # The category. Separate multiple values with commas.
         self.classify = classify
         # The region ID.
         self.region_id = region_id

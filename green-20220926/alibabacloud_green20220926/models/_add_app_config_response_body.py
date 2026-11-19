@@ -49,7 +49,7 @@ class AddAppConfigResponseBodyData(DaraModel):
         self,
         app_id: str = None,
     ):
-        # App ID。
+        # The application ID.
         self.app_id = app_id
 
     def validate(self):

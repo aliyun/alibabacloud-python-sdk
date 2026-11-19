@@ -13,15 +13,15 @@ class GetAppConfigRequest(DaraModel):
         region_id: str = None,
         resource_type: str = None,
     ):
-        # Agent ID。
+        # The agent ID.
         self.agent_id = agent_id
-        # App ID。
+        # The application ID.
         self.app_id = app_id
         # The application version number.
         self.app_version = app_version
         # The region ID.
         self.region_id = region_id
-        # The resource type.
+        # The resource type. This parameter is required. If it is not provided, the service returns a 400 error.
         self.resource_type = resource_type
 
     def validate(self):

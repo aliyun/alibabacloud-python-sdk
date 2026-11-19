@@ -56,7 +56,7 @@ class GetAiAppStatsResponseBodyData(DaraModel):
     ):
         # The label usage chart.
         self.label_stat_chart = label_stat_chart
-        # The total count categorized statistics.
+        # The total count statistics by category.
         self.total_stat = total_stat
         # The X value of the coordinate point.
         self.x = x

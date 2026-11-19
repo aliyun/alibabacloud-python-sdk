@@ -12,7 +12,7 @@ class ListImageLibRequest(DaraModel):
     ):
         # The region ID.
         self.region_id = region_id
-        # The selected service identifier.
+        # The service identifier.
         self.service_code = service_code
 
     def validate(self):

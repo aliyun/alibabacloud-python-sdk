@@ -10,7 +10,7 @@ class UpdateEventStatusResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The ID assigned by the backend to uniquely identify a request. You can use this ID for troubleshooting.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

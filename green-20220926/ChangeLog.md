@@ -1,3 +1,13 @@
+2026-11-19 Version: 1.13.6
+- Update API GetAiAppDetail: add request parameters EndTime.
+- Update API GetAiAppDetail: add request parameters StartTime.
+- Update API GetAiAppDetail: add response parameters Body.Channel.
+- Update API GetAiAppDetail: add response parameters Body.Property.
+- Update API GetAiAppDetail: add response parameters Body.RiskStats.
+- Update API GetRiskStats: add request parameters Channel.
+- Update API ListAiAppByPage: add response parameters Body.Items.$.RiskStats.
+
+
 2026-10-15 Version: 1.13.5
 - Update API GetKeywordLib: add request parameters ServiceCode.
 - Update API GetKeywordLib: add response parameters Body.Data.PreprocessList.

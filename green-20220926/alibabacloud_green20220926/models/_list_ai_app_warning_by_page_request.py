@@ -23,7 +23,7 @@ class ListAiAppWarningByPageRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The query condition. This parameter is required.
+        # The query conditions. This parameter is required.
         # 
         # This parameter is required.
         self.query = query

@@ -23,13 +23,13 @@ class CreatePreCheckRequest(DaraModel):
         start_time: str = None,
         task_name: str = None,
     ):
-        # The filter configuration for each bucket. The value can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, which includes prefix/suffix filters and a list of filter strings.
+        # The filter configuration for each bucket. This parameter can be parsed as a JSON map. The key is the bucket name, and the value is the filter configuration, which includes prefix and suffix filters and a list of filter characters.
         self.bucket_prefix_filter_config = bucket_prefix_filter_config
-        # The OSS buckets.
+        # The buckets.
         self.buckets = buckets
-        # Specifies whether to deduplicate against historically scanned tasks.
+        # Specifies whether to deduplicate historical scan tasks.
         self.distinct_history_tasks = distinct_history_tasks
-        # The task end time. Format: YYYY-MM-DD HH:mm:ss.
+        # The end time of the task. Format: YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
         # Specifies whether the task is a scheduled scan task.
         self.is_inc = is_inc
@@ -43,13 +43,13 @@ class CreatePreCheckRequest(DaraModel):
         self.priority = priority
         # The region ID.
         self.region_id = region_id
-        # The maximum number of items to scan.
+        # The scan limit.
         self.scan_limit = scan_limit
         # Specifies whether to scan images without file extensions.
         self.scan_no_file_type = scan_no_file_type
         # The scan service code.
         self.scan_service = scan_service
-        # The task start time. Format: YYYY-MM-DD HH:mm:ss.
+        # The start time of the task. Format: YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
         # The task name.
         self.task_name = task_name

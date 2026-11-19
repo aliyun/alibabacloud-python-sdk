@@ -18,7 +18,7 @@ class ExportScanResultShrinkRequest(DaraModel):
     ):
         # The current page number.
         self.current_page = current_page
-        # The end time of the query. Format: yyyy-MM-dd HH:mm:ss.
+        # The end time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         self.end_date = end_date
         # The number of entries per page.
         self.page_size = page_size
@@ -30,7 +30,7 @@ class ExportScanResultShrinkRequest(DaraModel):
         self.resource_type = resource_type
         # The sort field.
         self.sort_shrink = sort_shrink
-        # The start time of the query. Format: yyyy-MM-dd HH:mm:ss.
+        # The start time of the query. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         self.start_date = start_date
 
     def validate(self):

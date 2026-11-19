@@ -23,11 +23,11 @@ class GetCipStatsResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The further description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The success flag.
         self.success = success
 
     def validate(self):
@@ -94,13 +94,13 @@ class GetCipStatsResponseBodyData(DaraModel):
     ):
         # The label usage chart.
         self.label_stat_chart = label_stat_chart
-        # The total count by category.
+        # The categorized statistics of the total count.
         self.total_stat = total_stat
         # The list of UIDs.
         self.uids = uids
-        # The X value of the coordinate point.
+        # The X-axis value of the coordinate point.
         self.x = x
-        # The Y value of the coordinate point.
+        # The Y-axis value of the coordinate point.
         self.y = y
         # The hit data.
         self.z = z
@@ -279,9 +279,9 @@ class GetCipStatsResponseBodyDataLabelStatChart(DaraModel):
         self.tree_chart = tree_chart
         # The audio tree chart.
         self.voice_tree_chart = voice_tree_chart
-        # The X value of the coordinate point.
+        # The X-axis value of the coordinate point.
         self.x = x
-        # The Y value of the coordinate point.
+        # The Y-axis value of the coordinate point.
         self.y = y
 
     def validate(self):

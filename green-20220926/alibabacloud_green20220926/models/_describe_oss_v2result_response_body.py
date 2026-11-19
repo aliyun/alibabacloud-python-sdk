@@ -20,9 +20,9 @@ class DescribeOssV2ResultResponseBody(DaraModel):
         self.current_page = current_page
         # The data on the current page.
         self.items = items
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -107,31 +107,31 @@ class DescribeOssV2ResultResponseBodyItems(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
-        # The OSS bucket.
+        # The bucket.
         self.bucket = bucket
         # The error code.
         self.code = code
-        # The moderation modality type.
+        # The detection modality type.
         self.content_type = content_type
-        # Indicates whether automatic freezing is configured.
+        # Specifies whether automatic freezing is configured.
         self.freeze = freeze
         # The freeze status.
         self.freeze_status = freeze_status
         # The freeze type.
         self.freeze_type = freeze_type
-        # The label details, corresponding to labels.
+        # The label details, which correspond to labels.
         self.label_details = label_details
-        # The details of labels2, corresponding to labels2.
+        # The label 2 details, which correspond to labels2.
         self.label_details_2 = label_details_2
         # The image labels.
         self.labels = labels
         # The text labels.
         self.labels_2 = labels_2
-        # The manual disposition status.
+        # The manual handling status.
         self.manual_freeze_action = manual_freeze_action
-        # The disposition time. Format: yyyy-MM-dd HH:mm:ss.
+        # The handling time. Format: yyyy-MM-dd HH:mm:ss.
         self.manual_operate_time = manual_operate_time
-        # The operator who performed the disposition.
+        # The operator.
         self.manual_operator = manual_operator
         # The MD5 hash of the file.
         self.md_5 = md_5
@@ -143,13 +143,13 @@ class DescribeOssV2ResultResponseBodyItems(DaraModel):
         self.risk_level = risk_level
         # The overall risk level.
         self.risk_level_0 = risk_level_0
-        # The audio or text risk level.
+        # The audio and text risk levels.
         self.risk_level_2 = risk_level_2
         # The result details.
         self.scan_result = scan_result
-        # Service code。
+        # The service code.
         self.service_code = service_code
-        # The automatic freeze operation performed by the system.
+        # The automatic system freeze operation.
         self.sys_disposal_status = sys_disposal_status
         # The task ID.
         self.task_id = task_id

@@ -22,7 +22,7 @@ class ListOssCheckResultResponseBody(DaraModel):
         self.items = items
         # The number of entries per page.
         self.page_size = page_size
-        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count
@@ -107,11 +107,11 @@ class ListOssCheckResultResponseBodyItems(DaraModel):
         task_id: str = None,
         url: str = None,
     ):
-        # The OSS bucket.
+        # The bucket.
         self.bucket = bucket
         # The error code, which is consistent with the HTTP status code.
         self.code = code
-        # The audio and video detection type.
+        # The audio and video moderation type.
         self.content_type = content_type
         # The primary service.
         self.copy_from = copy_from
@@ -119,15 +119,15 @@ class ListOssCheckResultResponseBodyItems(DaraModel):
         self.freeze_status = freeze_status
         # The freeze type.
         self.freeze_type = freeze_type
-        # The URL of the image.
+        # The image URL.
         self.image_url = image_url
-        # Indicates whether the task is copied.
+        # Indicates whether the item is copied.
         self.is_copy = is_copy
         # The task name.
         self.job_name = job_name
-        # The list of labels hit by video frames.
+        # The list of matched labels for video frames.
         self.label_details = label_details
-        # The list of labels hit by video audio.
+        # The list of matched labels for video audio.
         self.label_details_2 = label_details_2
         # The image labels.
         self.labels = labels
@@ -135,7 +135,7 @@ class ListOssCheckResultResponseBodyItems(DaraModel):
         self.labels_2 = labels_2
         # The MD5 hash of the file.
         self.md_5 = md_5
-        # The description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
         # The object name.
         self.object = object
@@ -339,7 +339,7 @@ class ListOssCheckResultResponseBodyItemsLabelDetails2(DaraModel):
     ):
         # The description of the label.
         self.description = description
-        # The label hit by the audio.
+        # The matched label for audio.
         self.label = label
 
     def validate(self):
@@ -376,7 +376,7 @@ class ListOssCheckResultResponseBodyItemsLabelDetails(DaraModel):
     ):
         # The description of the label.
         self.description = description
-        # The label hit by the video frame.
+        # The matched label for video frames.
         self.label = label
 
     def validate(self):

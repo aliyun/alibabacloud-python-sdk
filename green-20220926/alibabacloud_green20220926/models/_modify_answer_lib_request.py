@@ -11,7 +11,7 @@ class ModifyAnswerLibRequest(DaraModel):
         lib_name: str = None,
         region_id: str = None,
     ):
-        # The ID of the proxy response library.
+        # The ID of the fallback library.
         self.lib_id = lib_id
         # The name of the library.
         self.lib_name = lib_name

@@ -15,19 +15,19 @@ class GetOssCheckResultDetailRequest(DaraModel):
         region_id: str = None,
         service_code: str = None,
     ):
-        # The storage bucket.
+        # The bucket. Note: This parameter is actually required. If it is not provided, the API returns a 400 error.
         self.bucket = bucket
-        # The media asset type.
+        # The media asset type. Note: This parameter is actually required. If it is not provided, the API returns a 400 error.
         self.media_type = media_type
-        # The object name.
+        # The object name. Note: This parameter is actually required. If it is not provided, the API returns a 400 error.
         self.object = object
         # The parent task ID.
         self.parent_task_id = parent_task_id
-        # The request ID of the query.
+        # The request ID of the query. Note: This parameter is actually required. If it is not provided, the API returns a 400 error.
         self.query_request_id = query_request_id
         # The region ID.
         self.region_id = region_id
-        # The service code.
+        # The service code. Note: This parameter is actually required. If it is not provided, the API returns a 400 error.
         self.service_code = service_code
 
     def validate(self):

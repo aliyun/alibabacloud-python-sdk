@@ -15,15 +15,15 @@ class GetJobNameListRequest(DaraModel):
         sort: Dict[str, str] = None,
         start_date: str = None,
     ):
-        # The end time. Format: `YYYY-MM-DD HH:mm:ss`.
+        # The end time in the `YYYY-MM-DD HH:mm:ss` format.
         self.end_date = end_date
-        # The query condition.
+        # The query conditions. This parameter is required and must be a valid JSON query condition, such as {"TaskId":"P_11TL5T"}. Before calling this operation, call GetStockOssCheckTasksList to obtain an available TaskId. If this parameter is not provided, the API returns a 400 error.
         self.query = query
         # The region ID.
         self.region_id = region_id
         # The sort field.
         self.sort = sort
-        # The start time. Format: `YYYY-MM-DD HH:mm:ss`.
+        # The start time in the `YYYY-MM-DD HH:mm:ss` format.
         self.start_date = start_date
 
     def validate(self):

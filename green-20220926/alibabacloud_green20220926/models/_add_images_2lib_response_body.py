@@ -21,11 +21,11 @@ class AddImages2LibResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # The request ID assigned by the backend, which uniquely identifies the request. You can use this ID to troubleshoot issues.
+        # The ID assigned by the server to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # The success flag.
         self.success = success
 
     def validate(self):
@@ -85,7 +85,7 @@ class AddImages2LibResponseBodyData(DaraModel):
         self,
         img_id: str = None,
     ):
-        # The image ID.
+        # The ID of the image.
         self.img_id = img_id
 
     def validate(self):

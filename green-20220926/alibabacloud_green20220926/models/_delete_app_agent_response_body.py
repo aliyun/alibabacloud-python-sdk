@@ -12,7 +12,7 @@ class DeleteAppAgentResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The ID assigned by the backend to uniquely identify a request. It can be used to troubleshoot issues.
+        # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):

@@ -16,7 +16,7 @@ class AuthInfoConfigValue(DaraModel):
         self.auth_token = auth_token
         # The private domain name.
         self.private_domain = private_domain
-        # The project space.
+        # The project workspace.
         self.project = project
         # The public domain name.
         self.public_domain = public_domain

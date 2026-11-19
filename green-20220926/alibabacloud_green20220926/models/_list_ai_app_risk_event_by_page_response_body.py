@@ -24,9 +24,9 @@ class ListAiAppRiskEventByPageResponseBody(DaraModel):
         self.items = items
         # The maximum number of results returned per page.
         self.max_results = max_results
-        # The token for the next page. An empty value indicates that no more pages exist.
+        # The token for the next page. An empty value indicates that there are no more pages.
         self.next_token = next_token
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The ID assigned by the backend to uniquely identify a request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
@@ -121,33 +121,33 @@ class ListAiAppRiskEventByPageResponseBodyItems(DaraModel):
         self.app_id = app_id
         # The name of the AI application.
         self.app_name = app_name
-        # The channel source.
+        # The source channel.
         self.channel = channel
-        # The time when the event was resolved. Format: YYYY-MM-DD HH:mm:ss.
+        # The time when the event processing was completed. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # The event code that identifies the type or category of the event.
+        # The code of the event, which identifies the type or category of the event.
         self.event_code = event_code
-        # The detailed description of the risk event.
+        # The description of the event, which details the content of the risk event.
         self.event_desc = event_desc
-        # The detailed description of the risk event in English.
+        # The English description of the event, which details the content of the risk event.
         self.event_desc_en = event_desc_en
-        # The event ID that uniquely identifies a risk event.
+        # The ID of the event, which uniquely identifies a risk event.
         self.event_id = event_id
-        # The name that briefly describes the risk event.
+        # The name of the event, which provides a brief description of the risk event.
         self.event_name = event_name
-        # The time when the event was handled. Format: YYYY-MM-DD HH:mm:ss.
+        # The time when the event was processed. The format is YYYY-MM-DD HH:mm:ss.
         self.handle_time = handle_time
-        # The label used to tag or categorize the event.
+        # The label used to mark or classify the event.
         self.label = label
-        # The detailed description of the label.
+        # The description of the label, which provides detailed information about the label.
         self.label_desc = label_desc
-        # The risk level that indicates the severity of the event, such as high, medium, or low.
+        # The risk level, which indicates the severity of the event, such as high, medium, or low.
         self.level = level
-        # The time when the event occurred. Format: YYYY-MM-DD HH:mm:ss.
+        # The time when the event started. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The event status that indicates the current processing state, such as pending or resolved.
+        # The status of the event, which indicates the processing status of the current event, such as pending or processed.
         self.status = status
-        # The event type that indicates the category of the risk event, such as security or performance.
+        # The event type, which indicates the category of the risk event, such as security or performance.
         self.type = type
 
     def validate(self):

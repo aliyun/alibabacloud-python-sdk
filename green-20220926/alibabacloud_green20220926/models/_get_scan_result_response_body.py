@@ -23,9 +23,9 @@ class GetScanResultResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The further description of the error code.
+        # The detailed description of the error code.
         self.msg = msg
-        # The ID assigned by the backend that uniquely identifies a request. You can use this ID for troubleshooting.
+        # The ID assigned by the backend to uniquely identify the request. You can use this ID to troubleshoot issues.
         self.request_id = request_id
         # The success flag.
         self.success = success
@@ -207,11 +207,11 @@ class GetScanResultResponseBodyDataItems(DaraModel):
         voice_scan_opened: bool = None,
         voice_service: str = None,
     ):
-        # The AccountId input parameter from the customer.
+        # The AccountId parameter provided by the customer.
         self.account_id = account_id
         # The machine-assisted moderation labels.
         self.api_labels = api_labels
-        # The machine-assisted moderation time. The value is a Unix/POSIX timestamp in milliseconds.
+        # The machine-assisted moderation time. The value is a UNIX/POSIX timestamp in milliseconds.
         self.api_request_time = api_request_time
         # The machine-assisted moderation risk level.
         self.api_risk_level = api_risk_level
@@ -219,25 +219,21 @@ class GetScanResultResponseBodyDataItems(DaraModel):
         self.api_service = api_service
         # The machine-assisted moderation task ID.
         self.api_task_id = api_task_id
-        # appId
+        # The application ID.
         self.app_id = app_id
-        # The attack level, returned based on the configured risk score thresholds. Valid values:
-        # 
-        # - high: high risk.
-        # 
-        # - medium: medium risk.
-        #  
-        # - low: low risk.
-        # 
-        # - none: no risk detected.
+        # The attack level. The value is returned based on the configured high and low risk scores. Valid values:
+        # - high: High risk.
+        # - medium: Medium risk.
+        # - low: Low risk.
+        # - none: No risk detected.
         self.attack_level = attack_level
-        # The Bailian request ID.
+        # The Model Studio request ID.
         self.bailian_request_id = bailian_request_id
         # The content.
         self.content = content
-        # dataId
+        # The data ID.
         self.data_id = data_id
-        # The segment end time, in seconds.
+        # The end time of the segment, in seconds.
         self.end_time = end_time
         # The extended information.
         self.ext = ext
@@ -245,9 +241,9 @@ class GetScanResultResponseBodyDataItems(DaraModel):
         self.ext_feedback = ext_feedback
         # The reserved parameter.
         self.extra = extra
-        # The frame count.
+        # The number of frames.
         self.frame_count = frame_count
-        # The creation time. Format: YYYY-MM-DD HH:mm:ss.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.gmt_create = gmt_create
         # The multimodal file URLs.
         self.guard_file_urls = guard_file_urls
@@ -257,19 +253,19 @@ class GetScanResultResponseBodyDataItems(DaraModel):
         self.image_labels = image_labels
         # The image service.
         self.image_service = image_service
-        # url
+        # The image URL.
         self.image_url = image_url
-        # imageUrls
+        # The list of image URLs.
         self.image_urls = image_urls
         # The labels.
         self.labels = labels
-        # The LiveId input parameter from the customer.
+        # The LiveId parameter provided by the customer.
         self.live_id = live_id
         # The risk level of the malicious file.
         self.malicious_file_level = malicious_file_level
         # The risk level of the malicious URL.
         self.malicious_url_level = malicious_url_level
-        # Indicates whether only manual review is used.
+        # Specifies whether the task is exclusively manually reviewed.
         self.manual_only = manual_only
         # No labels.
         self.no_labels = no_labels
@@ -281,50 +277,46 @@ class GetScanResultResponseBodyDataItems(DaraModel):
         self.request_from = request_from
         # The request ID.
         self.request_id = request_id
-        # The request time. Format: YYYY-MM-DD HH:mm:ss.
+        # The request time. The format is YYYY-MM-DD HH:mm:ss.
         self.request_time = request_time
         # The resource type.
         self.resource_type = resource_type
-        # The result set.
+        # The returned collection.
         self.result = result
         # The review labels.
         self.review_labels = review_labels
         # The review status.
         self.review_risk_level = review_risk_level
-        # The review time. The value is a Unix/POSIX timestamp in milliseconds.
+        # The review time. The value is a UNIX/POSIX timestamp in milliseconds.
         self.review_time = review_time
         # The reviewer.
         self.review_uid = review_uid
-        # Indicates whether the content has been reviewed.
+        # Specifies whether the task has been reviewed.
         self.reviewed = reviewed
-        # The risk level, returned based on the configured risk score thresholds. Valid values:
-        # 
-        # - high: high risk.
-        # 
-        # - medium: medium risk.
-        #  
-        # - low: low risk.
-        # 
-        # - none: no risk detected.
+        # The risk level. The value is returned based on the configured high and low risk scores. Valid values:
+        # - high: High risk.
+        # - medium: Medium risk.
+        # - low: Low risk.
+        # - none: No risk detected.
         self.risk_level = risk_level
-        # The details of the matched risk.
+        # The details of the hit risk.
         self.risk_tips = risk_tips
-        # The matched risk keywords.
+        # The hit risk keywords.
         self.risk_words = risk_words
         # The result details.
         self.scan_result = scan_result
         # The score.
         self.score = score
-        # The sensitivity level, returned based on the configured risk score thresholds. Valid values:
+        # The sensitivity level. The value is returned based on the configured sensitivity scores. Valid values:
         # - **S1**: Low sensitivity.
         # - **S2**: Medium sensitivity.
-        # - **S3**: Moderately high sensitivity.
+        # - **S3**: Relatively high sensitivity.
         # - **S4**: High sensitivity.
-        # - **S0**: Not sensitive.
+        # - **S0**: Non-sensitive.
         self.sensitive_level = sensitive_level
         # The service code.
         self.service_code = service_code
-        # The segment start time, in seconds.
+        # The start time of the segment, in seconds.
         self.start_time = start_time
         # The suggestion.
         self.suggestion = suggestion
@@ -340,7 +332,7 @@ class GetScanResultResponseBodyDataItems(DaraModel):
         self.url = url
         # The audio labels.
         self.voice_labels = voice_labels
-        # Indicates whether audio detection is enabled.
+        # Specifies whether audio detection is enabled.
         self.voice_scan_opened = voice_scan_opened
         # The audio service.
         self.voice_service = voice_service
@@ -722,7 +714,7 @@ class GetScanResultResponseBodyDataItemsResult(DaraModel):
         description: str = None,
         label: str = None,
     ):
-        # The confidence score, ranging from 0 to 100, rounded to two decimal places.
+        # The confidence score. The value ranges from 0 to 100 and is rounded to two decimal places.
         self.confidence = confidence
         # The description of the Label field.
         self.description = description
