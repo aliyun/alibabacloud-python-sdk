@@ -20,11 +20,11 @@ class DescribeSavingsPlansUsageTotalResponseBody(DaraModel):
         self.code = code
         # The returned query data.
         self.data = data
-        # The message returned for the API call.
+        # The API call message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call was successful.
+        # Indicates whether the API call is successful.
         self.success = success
 
     def validate(self):
@@ -81,7 +81,7 @@ class DescribeSavingsPlansUsageTotalResponseBodyData(DaraModel):
     ):
         # The usage data for each time period.
         self.period_coverage = period_coverage
-        # The total usage overview.
+        # The overview of the total usage rate.
         self.total_usage = total_usage
 
     def validate(self):
@@ -129,13 +129,13 @@ class DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage(DaraModel):
         saved_cost: float = None,
         usage_percentage: float = None,
     ):
-        # The total amount of savings plans.
+        # The total amount of the savings plan.
         self.pool_value = pool_value
         # The pay-as-you-go cost.
         self.postpaid_cost = postpaid_cost
         # The amount saved.
         self.saved_cost = saved_cost
-        # The total usage percentage.
+        # The total usage rate.
         self.usage_percentage = usage_percentage
 
     def validate(self):
@@ -182,9 +182,9 @@ class DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage(DaraModel):
         percentage: float = None,
         period: str = None,
     ):
-        # The usage percentage.
+        # The usage rate.
         self.percentage = percentage
-        # The time period to which the data belongs. Format: yyyyMMddHH.
+        # The time period to which the data belongs, in the yyyyMMddHH format.
         self.period = period
 
     def validate(self):

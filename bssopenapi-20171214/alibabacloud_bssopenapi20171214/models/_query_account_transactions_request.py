@@ -18,9 +18,9 @@ class QueryAccountTransactionsRequest(DaraModel):
         transaction_number: str = None,
         transaction_type: str = None,
     ):
-        # The end time of the creation time range. If not specified, the default value is the current time. Example: 2018-01-01T00:00:00Z.
+        # The end time of the creation time range. If you do not specify this parameter, the default value is the current time. Example: 2018-01-01T00:00:00Z.
         self.create_time_end = create_time_end
-        # The start time of the creation time range. If not specified, the default value is one month before the current time. Example: 2018-01-01T00:00:00Z.
+        # The start time of the creation time range. If you do not specify this parameter, the default value is one month before the current time. Example: 2018-01-01T00:00:00Z.
         self.create_time_start = create_time_start
         # The page number. Default value: 1.
         self.page_num = page_num
@@ -28,13 +28,13 @@ class QueryAccountTransactionsRequest(DaraModel):
         self.page_size = page_size
         # The order or bill number.
         self.record_id = record_id
-        # The transaction channel. If you specify a transaction channel, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
-        # - AccountBalance: Account balance.
+        # The transaction channel. If you specify a transaction channel, the query returns results of the specified channel. If no results exist, an empty result is returned. If you do not specify this parameter, all channels are returned by default. Valid values:
+        # - AccountBalance: User balance.
         # - BankTransfer: Bank transfer.
         # - Alipay: Alipay.
         # - AntCreditPay: Ant Credit Pay.
         # - OfflineRemittance: Offline remittance.
-        # - RegularBankCreditRefund: Credit-based payment refund.
+        # - RegularBankCreditRefund: Credit limit refund.
         # - CreditCard: Credit card.
         # - MyBankCredit: MYbank Credit.
         # - HuaxiaBankCInstallment: Huaxia Bank installment.
@@ -42,13 +42,13 @@ class QueryAccountTransactionsRequest(DaraModel):
         self.transaction_channel = transaction_channel
         # The payment reference No.
         self.transaction_channel_sn = transaction_channel_sn
-        # The income and expense type. If you specify an income and expense type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
+        # The income and expense type. If you specify an income and expense type, the query returns results of the specified type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
         # - Income: Income.
         # - Expense: Expense.
         self.transaction_flow = transaction_flow
         # The transaction number.
         self.transaction_number = transaction_number
-        # The transaction type. If you specify a transaction type, the query returns results of the corresponding type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
+        # The transaction type. If you specify a transaction type, the query returns results of the specified type. If no results exist, an empty result is returned. If you do not specify this parameter, all types are returned by default. Valid values:
         # - Payment: Top-up.
         # - Withdraw: Withdrawal.
         # - Refund: Refund.

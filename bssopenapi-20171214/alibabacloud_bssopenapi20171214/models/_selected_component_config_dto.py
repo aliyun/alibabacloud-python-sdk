@@ -14,7 +14,7 @@ class SelectedComponentConfigDTO(DaraModel):
         code: str = None,
         tag: str = None,
     ):
-        # The property configuration list.
+        # The list of property configurations.
         self.attribute_configs = attribute_configs
         # The component code.
         self.code = code
@@ -68,7 +68,7 @@ class SelectedComponentConfigDTOAttributeConfigs(DaraModel):
         code: str = None,
         value: str = None,
     ):
-        # The upper and lower bound values, used for bounded properties.
+        # The upper and lower bounds, used for bounded properties.
         self.bounded_value = bounded_value
         # The property code.
         self.code = code

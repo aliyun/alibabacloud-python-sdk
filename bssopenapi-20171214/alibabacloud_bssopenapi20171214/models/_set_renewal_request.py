@@ -16,46 +16,42 @@ class SetRenewalRequest(DaraModel):
         renewal_status: str = None,
         subscription_type: str = None,
     ):
-        # The ID of the instance. You can enable auto-renewal for up to 100 subscription instances at a time. Separate multiple instance IDs with commas (,).
+        # The instance IDs. You can specify up to 100 subscription instances at a time. Separate multiple instance IDs with commas (,).
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
         self.owner_id = owner_id
-        # The code of the service.
+        # The product code.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The type of the service.
+        # The product type.
         self.product_type = product_type
-        # The auto-renewal period. Valid values:
+        # The auto-renewal period of the instance. Valid values:
+        # - 1
+        # - 2
+        # - 3
+        # - 6
+        # - 12
         # 
-        # *   1
-        # *   2
-        # *   3
-        # *   6
-        # *   12
-        # 
-        # >  This parameter is required if the RenewalStatus parameter is set to AutoRenewal.
+        # > This parameter is required when RenewalStatus is set to AutoRenewal.
         self.renewal_period = renewal_period
-        # The unit of the auto-renewal period. Valid values:
+        # The unit of the auto-renewal cycle. Valid values:
+        # - M: month.
+        # - Y: year.
         # 
-        # *   M: months
-        # *   Y: years
-        # 
-        # >  This parameter is required if the RenewalStatus parameter is set to AutoRenewal.
+        # > This parameter is required when RenewalStatus is set to AutoRenewal.
         self.renewal_period_unit = renewal_period_unit
-        # The status of renewal. Valid values:
-        # 
-        # *   AutoRenewal: The instance is automatically renewed.
-        # *   ManualRenewal: The instance is manually renewed.
-        # *   NotRenewal: The instance is not renewed.
+        # The renewal status. Valid values:
+        # - AutoRenewal: auto-renewal.
+        # - ManualRenewal: manual renewal.
+        # - NotRenewal: no renewal.
         # 
         # This parameter is required.
         self.renewal_status = renewal_status
-        # The billing method. Valid values:
-        # 
-        # *   Subscription: subscription
-        # *   PayAsYouGo: pay-as-you-go
+        # The subscription type. Valid values:
+        # - Subscription: subscription.
+        # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

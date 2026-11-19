@@ -12,11 +12,11 @@ class CreateResellerUserQuotaRequest(DaraModel):
         out_biz_id: str = None,
         owner_id: int = None,
     ):
-        # The amount in CNY. This parameter is required to activate a quota.
+        # The amount. Unit: CNY or USD. This parameter is required for opening a quota account.
         # 
         # This parameter is required.
         self.amount = amount
-        # The currency.
+        # The currency name.
         # 
         # This parameter is required.
         self.currency = currency

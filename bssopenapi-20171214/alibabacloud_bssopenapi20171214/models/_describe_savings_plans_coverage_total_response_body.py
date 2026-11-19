@@ -24,7 +24,7 @@ class DescribeSavingsPlansCoverageTotalResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -129,7 +129,7 @@ class DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage(DaraModel):
     ):
         # The total coverage rate.
         self.coverage_percentage = coverage_percentage
-        # The total offset amount.
+        # The total deducted amount.
         self.deduct_amount = deduct_amount
 
     def validate(self):

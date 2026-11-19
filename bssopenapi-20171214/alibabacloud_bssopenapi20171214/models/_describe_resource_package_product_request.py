@@ -9,7 +9,7 @@ class DescribeResourcePackageProductRequest(DaraModel):
         self,
         product_code: str = None,
     ):
-        # The code of the service.
+        # The product type.
         # 
         # This parameter is required.
         self.product_code = product_code

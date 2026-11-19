@@ -16,16 +16,17 @@ class DescribeSavingsPlansUsageTotalRequest(DaraModel):
         period_type: str = None,
         start_period: str = None,
     ):
-        # The ID of the resource ownership account. The resource ownership account is the account that actually uses the resources.
+        # The ID of the account with resource ownership, which is the account that actually uses the resources.
         self.bill_owner_id = bill_owner_id
-        # The end of the time range to query. The end time is excluded from the time range. If you do not set this parameter, the end time is the current time. Format: yyyy-MM-dd HH:mm:ss.
+        # The end time of the time range to query. The end time is not included in the time range. If you do not specify this parameter, the end time is the current time. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         self.end_period = end_period
+        # The filter parameters.
         self.filter_param = filter_param
-        # The time granularity of the usage summary. Valid values: MONTH, DAY, HOUR.
+        # The time granularity for querying the usage summary. Valid values: MONTH, DAY, and HOUR.
         # 
         # This parameter is required.
         self.period_type = period_type
-        # The start of the time range to query. The start time is included in the time range. Format: yyyy-MM-dd HH:mm:ss.
+        # The start time of the time range to query. The start time is included in the time range. Specify the time in the yyyy-MM-dd HH:mm:ss format.
         # 
         # This parameter is required.
         self.start_period = start_period
@@ -82,7 +83,9 @@ class DescribeSavingsPlansUsageTotalRequestFilterParam(DaraModel):
         dimensions: List[main_models.DescribeSavingsPlansUsageTotalRequestFilterParamDimensions] = None,
         tags: List[main_models.DescribeSavingsPlansUsageTotalRequestFilterParamTags] = None,
     ):
+        # The list of dimension filter conditions.
         self.dimensions = dimensions
+        # The list of tag filter conditions.
         self.tags = tags
 
     def validate(self):
@@ -135,8 +138,11 @@ class DescribeSavingsPlansUsageTotalRequestFilterParamTags(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
+        # The tag code.
         self.code = code
+        # The selection method for tag filtering.
         self.select_type = select_type
+        # The list of tag filter values.
         self.values = values
 
     def validate(self):
@@ -178,8 +184,11 @@ class DescribeSavingsPlansUsageTotalRequestFilterParamDimensions(DaraModel):
         select_type: str = None,
         values: List[str] = None,
     ):
+        # The dimension code.
         self.code = code
+        # The selection method for dimension filtering.
         self.select_type = select_type
+        # The list of dimension filter values.
         self.values = values
 
     def validate(self):

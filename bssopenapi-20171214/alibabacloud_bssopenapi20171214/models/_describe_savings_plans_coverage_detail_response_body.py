@@ -20,11 +20,11 @@ class DescribeSavingsPlansCoverageDetailResponseBody(DaraModel):
         self.code = code
         # The returned query data.
         self.data = data
-        # The message returned for the API call.
+        # The API call message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call was successful.
+        # Indicates whether the API call is successful.
         self.success = success
 
     def validate(self):
@@ -84,7 +84,7 @@ class DescribeSavingsPlansCoverageDetailResponseBodyData(DaraModel):
         self.items = items
         # The token for the next page.
         self.next_token = next_token
-        # The total number of entries.
+        # The total number of data entries.
         self.total_count = total_count
 
     def validate(self):
@@ -144,7 +144,7 @@ class DescribeSavingsPlansCoverageDetailResponseBodyDataItems(DaraModel):
         user_id: int = None,
         user_name: str = None,
     ):
-        # The coverage percentage.
+        # The coverage rate.
         self.coverage_percentage = coverage_percentage
         # The currency.
         self.currency = currency
@@ -156,7 +156,7 @@ class DescribeSavingsPlansCoverageDetailResponseBodyDataItems(DaraModel):
         self.instance_id = instance_id
         # The instance type.
         self.instance_spec = instance_spec
-        # The ID of the owner of the deducted commodity.
+        # The ID of the owner of the deducted product.
         self.owner_id = owner_id
         # The pay-as-you-go cost.
         self.postpaid_cost = postpaid_cost
@@ -164,11 +164,11 @@ class DescribeSavingsPlansCoverageDetailResponseBodyDataItems(DaraModel):
         self.region = region
         # The start time.
         self.start_period = start_period
-        # The total expenditure.
+        # The total amount.
         self.total_amount = total_amount
         # The user ID.
         self.user_id = user_id
-        # The username.
+        # The account username.
         self.user_name = user_name
 
     def validate(self):

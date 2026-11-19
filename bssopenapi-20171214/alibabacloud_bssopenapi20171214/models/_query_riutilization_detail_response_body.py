@@ -16,7 +16,7 @@ class QueryRIUtilizationDetailResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code.
+        # The HTTP status code.
         self.code = code
         # The returned data.
         self.data = data

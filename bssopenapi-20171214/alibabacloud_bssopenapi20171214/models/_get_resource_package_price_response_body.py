@@ -18,11 +18,11 @@ class GetResourcePackagePriceResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -82,14 +82,14 @@ class GetResourcePackagePriceResponseBodyData(DaraModel):
         promotions: main_models.GetResourcePackagePriceResponseBodyDataPromotions = None,
         trade_price: float = None,
     ):
-        # The type of the currency.
+        # The currency.
         self.currency = currency
-        # The discounted amount. Unit: CNY.
+        # The discount price. Unit: CNY.
         self.discount_price = discount_price
         # The original price. Unit: CNY.
         self.original_price = original_price
         self.promotions = promotions
-        # The price at which the transaction is made. Unit: CNY.
+        # The transaction price. Unit: CNY.
         self.trade_price = trade_price
 
     def validate(self):

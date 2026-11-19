@@ -15,33 +15,15 @@ class QueryUserOmsDataRequest(DaraModel):
         start_time: str = None,
         table: str = None,
     ):
-        # The data timestamp type of the metering data. Refer to the specific service documentation for details. Valid values:
-        # - Raw: hourly
-        # - Hour: hourly
-        # - Day: daily
-        # - Month: monthly
-        # 
         # This parameter is required.
         self.data_type = data_type
-        # The end time of the request.
-        # 
-        # The date format must comply with the ISO 8601 standard and use UTC time. Format: yyyy-mm-ddThh:mm:ssZ.
-        # 
         # This parameter is required.
         self.end_time = end_time
-        # The marker that specifies the starting point for returning results in alphabetical order after the NextToken. By default, results are returned from the beginning.
         self.marker = marker
         self.owner_id = owner_id
-        # The number of rows per page for paging in a paged query. Valid values: 1 to 200. Default value: 100.
         self.page_size = page_size
-        # The start time of the request.
-        # 
-        # The date format must comply with the ISO 8601 standard and use UTC time. Format: yyyy-mm-ddThh:mm:ssZ.
-        # 
         # This parameter is required.
         self.start_time = start_time
-        # The product and detail information for the usage data, which is typically the ProductCode. Different services support multiple metering models.
-        # 
         # This parameter is required.
         self.table = table
 

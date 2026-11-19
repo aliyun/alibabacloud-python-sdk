@@ -15,9 +15,9 @@ class QueryResourcePackageInstancesRequest(DaraModel):
         page_size: int = None,
         product_code: str = None,
     ):
-        # The expiration end time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end time of the expiration period. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.expiry_time_end = expiry_time_end
-        # The expiration start time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The start time of the expiration period. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.expiry_time_start = expiry_time_start
         # Specifies whether to include partners.
         self.include_partner = include_partner

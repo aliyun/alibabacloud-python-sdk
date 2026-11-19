@@ -18,11 +18,11 @@ class QueryRIUtilizationDetailRequest(DaraModel):
     ):
         # The ID of the deducted instance. If this parameter is left empty, the details of all instances are returned.
         self.deducted_instance_id = deducted_instance_id
-        # The end time. Format: YYYY-MM-DD HH:mm:ss.
+        # The end time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The instance type corresponding to the reserved instance.
+        # The instance type of the reserved instance.
         self.instance_spec = instance_spec
         # The page number. Default value: 1.
         self.page_num = page_num
@@ -30,13 +30,13 @@ class QueryRIUtilizationDetailRequest(DaraModel):
         self.page_size = page_size
         # Valid values:
         # - ecsRi: ECS reserved instances. This is the default value.
-        # - scu_bag: Storage capacity unit (SCU) plans.
+        # - scu_bag: storage capacity units (SCUs).
         # 
         # This parameter is required.
         self.ricommodity_code = ricommodity_code
         # The instance ID of the reserved instance for the filtered query. If this parameter is left empty, the details of all used reserved instances are returned.
         self.riinstance_id = riinstance_id
-        # The start time. Format: YYYY-MM-DD HH:mm:ss.
+        # The start time. Specify the time in the YYYY-MM-DD HH:mm:ss format.
         # 
         # This parameter is required.
         self.start_time = start_time

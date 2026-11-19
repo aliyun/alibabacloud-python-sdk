@@ -28,9 +28,9 @@ class GetPayAsYouGoPriceRequest(DaraModel):
         self.product_code = product_code
         # The product type.
         self.product_type = product_type
-        # The region ID of the instance.
+        # The region ID of the instance. If DescribePricingModule returns a region ID, this parameter is required.
         self.region = region
-        # The subscription type. Valid values: PayAsYouGo.
+        # The subscription type. Valid values: PayAsYouGo (pay-as-you-go).
         # 
         # This parameter is required.
         self.subscription_type = subscription_type
@@ -100,26 +100,26 @@ class GetPayAsYouGoPriceRequestModuleList(DaraModel):
         module_code: str = None,
         price_type: str = None,
     ):
-        # The configuration of the Nth pricing module. The value of N ranges from 1 to 50. Format: "AA:aa,BB:bb", where AA and BB are the property codes of the pricing module, and aa and bb are the corresponding property values.
+        # The configuration of the Nth pricing module. Valid values of N: 1 to 50. Format: AA:aa,BB:bb, where AA and BB are the identifiers of the pricing module attributes, and aa and bb are the attribute values of the pricing module attributes.
         # 
-        # > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the Module parameter.
+        # > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to retrieve the Module parameter.
         # 
         # This parameter is required.
         self.config = config
-        # The module code of the Nth pricing module.
+        # The identifier of the Nth pricing module.
         # 
         # 
-        # > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the Module parameter.
+        # > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to retrieve the Module parameter.
         # 
         # This parameter is required.
         self.module_code = module_code
         # The price type of the Nth pricing module. Valid values:
         # - Hour: hourly price.
-        # - Usage: usage-based price.
+        # - Usage: usage.
         # - Month: monthly price.
         # - Year: yearly price.
         # 
-        # > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the Module parameter.
+        # > You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to retrieve the Module parameter.
         # 
         # This parameter is required.
         self.price_type = price_type

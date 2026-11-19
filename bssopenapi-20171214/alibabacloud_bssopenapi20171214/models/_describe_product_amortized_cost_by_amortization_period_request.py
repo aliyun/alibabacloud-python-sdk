@@ -20,35 +20,28 @@ class DescribeProductAmortizedCostByAmortizationPeriodRequest(DaraModel):
         product_detail: str = None,
         subscription_type: str = None,
     ):
-        # The IDs of resource owners. The resource owner is the account that uses the resources.
-        # You can specify a maximum of 10 IDs.
+        # The filter condition for the resource ownership account. The ID of the resource ownership account. The resource ownership account is the account that actually uses the resources. Maximum number of elements: 10.
         self.bill_owner_id_list = bill_owner_id_list
-        # The IDs of billable accounts. This parameter is used to filter bills by the RAM user who pays for the resources. If you specify this parameter, you can query the bills of the specified RAM user. If you leave this parameter empty, the bills of the current account and all its RAM users are queried.
-        # You can specify a maximum of 10 IDs.
+        # The filter condition for the bill purchaser ID. The ID of the RAM user. Specify this parameter to view the bills of RAM users in Finance Cloud. If you do not specify this parameter, the bills of the current caller account and all its RAM users are viewed by default. Maximum number of elements: 10.
         self.bill_user_id_list = bill_user_id_list
-        # The amortization month.
-        # Format: YYYY-MM.
+        # The amortization month. Format: YYYY-MM.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # The filter for billing cycle months.
-        # You can specify a maximum of 10 elements.
+        # The filter condition for the billing month. Maximum number of elements: 10.
         self.consume_period_filter = consume_period_filter
-        # The code of the cost center.
+        # The code of the financial unit.
         self.cost_unit_code = cost_unit_code
-        # The maximum number of entries to return. Default value: 20. Maximum value: 300.
+        # The maximum number of data records to return in the current call. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The token that marks the position to start the query. If you leave this parameter empty, the query starts from the beginning. Set this parameter to the value of NextToken that is returned in the last response to query the next page of results.
+        # The token that specifies the position from which the current call starts reading. The value must be empty or set to the NextToken value returned in the previous response. Otherwise, an error is reported. An empty value indicates that the reading starts from the beginning.
         self.next_token = next_token
-        # The product code.
-        # For more information about how to obtain this parameter, see QueryProductList and DescribeResourcePackageProduct.
+        # The product code. Reference value sources: Call QueryProductList to query product information, or call DescribeResourcePackageProduct to query the information about a specific resource plan product.
         self.product_code = product_code
-        # The details of the product.
+        # The product detail.
         self.product_detail = product_detail
         # The subscription type. Valid values:
-        # 
         # - Subscription: subscription.
-        # 
         # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 

@@ -25,33 +25,33 @@ class AttributeInfoDTO(DaraModel):
         value_type: str = None,
         values: List[main_models.AttributeValueInfoDTO] = None,
     ):
-        # The property categories.
+        # The attribute categories.
         self.attribute_categories = attribute_categories
-        # The property source.
+        # The attribute source.
         self.attribute_source = attribute_source
-        # The property type.
+        # The attribute type.
         self.attribute_type = attribute_type
-        # The property code.
+        # The attribute code.
         self.code = code
-        # The composite properties (basic information).
+        # The composite attributes (basic information).
         self.composite_attributes = composite_attributes
-        # The property description (translated).
+        # The attribute description (translated).
         self.description = description
-        # The description properties (basic information).
+        # The description attributes (basic information).
         self.description_attributes = description_attributes
-        # The property name (translated).
+        # The attribute name (translated).
         self.name = name
-        # The O&M property configuration.
+        # The O&M attribute configuration.
         self.operational_attribute_config = operational_attribute_config
-        # The O&M property type.
+        # The O&M attribute type.
         self.operational_attribute_type = operational_attribute_type
-        # The sub-properties (complete information).
+        # The sub-attributes (complete information).
         self.sub_attributes = sub_attributes
         # The unit.
         self.unit = unit
         # The value type.
         self.value_type = value_type
-        # The property value list.
+        # The attribute value list.
         self.values = values
 
     def validate(self):

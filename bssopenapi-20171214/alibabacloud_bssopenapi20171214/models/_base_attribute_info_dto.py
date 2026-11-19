@@ -39,7 +39,7 @@ class BaseAttributeInfoDTO(DaraModel):
         self.unit = unit
         # The value type.
         self.value_type = value_type
-        # The property value list.
+        # The list of property values.
         self.values = values
 
     def validate(self):

@@ -80,7 +80,7 @@ class QueryDPUtilizationDetailResponseBodyData(DaraModel):
         next_token: str = None,
     ):
         self.detail_list = detail_list
-        # The token that specifies the start position of the next query. Pass this value to the LastToken parameter in the next request. If this parameter is returned as null, the query is complete.
+        # The token that specifies the start of the next query. Pass this value to the LastToken parameter in the next request. If this parameter is returned as null, it indicates that the query is complete.
         self.next_token = next_token
 
     def validate(self):

@@ -25,11 +25,11 @@ class QueryAvailableInstancesRequest(DaraModel):
         self.create_time_end = create_time_end
         # The start time of the creation time range. Specify the time in the ISO 8601 standard in the UTC format.
         self.create_time_start = create_time_start
-        # The end time of the expiration time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
+        # The end time of the end time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
         self.end_time_end = end_time_end
-        # The start time of the expiration time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
+        # The start time of the end time range. Specify the time in the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z.
         self.end_time_start = end_time_start
-        # The instance IDs. Separate multiple IDs with commas. You can specify up to 100 IDs.
+        # The instance IDs. Separate multiple IDs with commas. Maximum number of IDs: 100.
         self.instance_ids = instance_ids
         self.owner_id = owner_id
         # The page number.
@@ -37,7 +37,8 @@ class QueryAvailableInstancesRequest(DaraModel):
         # The number of entries per page. Default value: 20. Maximum value: 300.
         self.page_size = page_size
         # The product code. You can call the **QueryProductList** operation to query product codes.
-        # > If the region is specified, this parameter cannot be empty.
+        # 
+        # > This parameter cannot be empty when the region is specified.
         self.product_code = product_code
         # The product type.
         self.product_type = product_type
@@ -48,7 +49,7 @@ class QueryAvailableInstancesRequest(DaraModel):
         # - ManualRenewal: manual renewal.
         # - NotRenewal: no renewal.
         self.renew_status = renew_status
-        # The subscription type.
+        # The subscription type. Valid values:
         # - Subscription: subscription.
         # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type

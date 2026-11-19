@@ -24,7 +24,7 @@ class DescribeSavingsPlansUsageDetailResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -146,7 +146,7 @@ class DescribeSavingsPlansUsageDetailResponseBodyDataItems(DaraModel):
     ):
         # The currency.
         self.currency = currency
-        # The amount spent from the savings plan, which is the used commitment.
+        # The deducted amount of the savings plan, which represents the used commitment.
         self.deduct_value = deduct_value
         # The end time.
         self.end_period = end_period
@@ -156,18 +156,19 @@ class DescribeSavingsPlansUsageDetailResponseBodyDataItems(DaraModel):
         self.pool_value = pool_value
         # The standard pay-as-you-go cost.
         self.postpaid_cost = postpaid_cost
-        # The net savings amount.
+        # The net savings.
         self.saved_cost = saved_cost
         # The start time.
         self.start_period = start_period
         # The current status. Valid values:
-        # 
-        # - -1: overdue payment.
-        # - 1: active.
+        # - -1: overdue payment
+        # - 1: active
         self.status = status
-        # The type of the savings plan, such as general-purpose or ECS compute.
+        # The type of the savings plan. Valid values:
+        # - general-purpose
+        # - ECS compute
         self.type = type
-        # The usage percentage.
+        # The usage rate.
         self.usage_percentage = usage_percentage
         # The account ID.
         self.user_id = user_id

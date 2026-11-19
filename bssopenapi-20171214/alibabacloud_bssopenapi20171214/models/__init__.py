@@ -262,6 +262,9 @@ from ._query_user_oms_data_response import QueryUserOmsDataResponse
 from ._refund_instance_request import RefundInstanceRequest
 from ._refund_instance_response_body import RefundInstanceResponseBody
 from ._refund_instance_response import RefundInstanceResponse
+from ._release_expired_prepaid_instance_request import ReleaseExpiredPrepaidInstanceRequest
+from ._release_expired_prepaid_instance_response_body import ReleaseExpiredPrepaidInstanceResponseBody
+from ._release_expired_prepaid_instance_response import ReleaseExpiredPrepaidInstanceResponse
 from ._release_instance_request import ReleaseInstanceRequest
 from ._release_instance_response_body import ReleaseInstanceResponseBody
 from ._release_instance_response import ReleaseInstanceResponse
@@ -540,6 +543,8 @@ from ._query_split_item_bill_response_body import QuerySplitItemBillResponseBody
 from ._query_split_item_bill_response_body import QuerySplitItemBillResponseBodyData
 from ._query_user_oms_data_response_body import QueryUserOmsDataResponseBodyData
 from ._refund_instance_response_body import RefundInstanceResponseBodyData
+from ._release_expired_prepaid_instance_response_body import ReleaseExpiredPrepaidInstanceResponseBodyDataInstanceResults
+from ._release_expired_prepaid_instance_response_body import ReleaseExpiredPrepaidInstanceResponseBodyData
 from ._release_instance_response_body import ReleaseInstanceResponseBodyData
 from ._relieve_account_relation_response_body import RelieveAccountRelationResponseBodyData
 from ._renew_change_instance_request import RenewChangeInstanceRequestParameter
@@ -812,6 +817,9 @@ __all__ = [
     RefundInstanceRequest,
     RefundInstanceResponseBody,
     RefundInstanceResponse,
+    ReleaseExpiredPrepaidInstanceRequest,
+    ReleaseExpiredPrepaidInstanceResponseBody,
+    ReleaseExpiredPrepaidInstanceResponse,
     ReleaseInstanceRequest,
     ReleaseInstanceResponseBody,
     ReleaseInstanceResponse,
@@ -1090,6 +1098,8 @@ __all__ = [
     QuerySplitItemBillResponseBodyData,
     QueryUserOmsDataResponseBodyData,
     RefundInstanceResponseBodyData,
+    ReleaseExpiredPrepaidInstanceResponseBodyDataInstanceResults,
+    ReleaseExpiredPrepaidInstanceResponseBodyData,
     ReleaseInstanceResponseBodyData,
     RelieveAccountRelationResponseBodyData,
     RenewChangeInstanceRequestParameter,

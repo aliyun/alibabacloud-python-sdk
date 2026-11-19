@@ -17,23 +17,23 @@ class ConfirmRelationRequest(DaraModel):
         relation_type: str = None,
         request_id: str = None,
     ):
-        # The Alibaba Cloud UID of the linked account.
+        # The Alibaba Cloud UID of the secondary account.
         self.child_user_id = child_user_id
         # The confirmation action. Valid values:
-        # - child_agree: The linked account agrees.
-        # - child_disagree: The linked account rejects.
-        # - 主账号取消确认: The main account cancels the confirmation.
+        # - child_agree: The secondary account agrees.
+        # - child_disagree: The secondary account rejects.
+        # - parent_cancel: The primary account cancels the confirmation.
         # 
         # This parameter is required.
         self.confirm_code = confirm_code
-        # The Alibaba Cloud UID of the main account.
+        # The Alibaba Cloud UID of the primary account.
         self.parent_user_id = parent_user_id
-        # The permissions granted to the linked account. Valid values:
-        # - SYNCHRONIZE_FINANCE_IDENTITY: Allows synchronizing the credit-based payment identity to the linked account.
-        # - SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: Allows synchronizing discounts to the linked account.
-        # - FORBID_WITHDRAW_CASH: Prohibits the linked account from withdrawing cash from the balance.
+        # The permissions granted to the secondary account. Valid values:
+        # - SYNCHRONIZE_FINANCE_IDENTITY: Allows synchronization of the credit control identity to the linked account.
+        # - SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: Allows synchronization of discounts to the linked account.
+        # - FORBID_WITHDRAW_CASH: Prohibits the linked account from withdrawing the balance.
         # - FORBID_MANAGE_INVOICE: Prohibits the linked account from managing invoices.
-        # - CHECK_FINANCE_INFO: Allows requesting to view the account linking information.
+        # - CHECK_FINANCE_INFO: Allows requesting to view account linking information.
         # - MANAGE_TARGET_INVOICE: Allows managing invoices of the target account.
         # - CHECK_TARGET_CONSUMPTION: Allows viewing the consumption information of the linked account.
         # 
@@ -41,7 +41,7 @@ class ConfirmRelationRequest(DaraModel):
         self.permission_codes = permission_codes
         # The relationship ID. You can obtain the value from the relationId field in the response of the QueryRelationList operation.
         self.relation_id = relation_id
-        # The relationship type. Valid values: enterprise_group.
+        # The relationship type. Valid value: enterprise_group.
         self.relation_type = relation_type
         # The unique identifier of the request.
         # 

@@ -16,15 +16,15 @@ class QueryProductListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response status code.
+        # The status code.
         self.code = code
         # The Alibaba Cloud product information.
         self.data = data
-        # The response message.
+        # The message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +83,7 @@ class QueryProductListResponseBodyData(DaraModel):
     ):
         # The current page number.
         self.page_num = page_num
-        # The number of records displayed per page.
+        # The number of entries displayed per page.
         self.page_size = page_size
         self.product_list = product_list
         # The total number of product records.

@@ -17,15 +17,15 @@ class QueryResellerUserAlarmThresholdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code of the request. If the call fails, an error code is returned.
+        # The code returned by the call. Typically, this is an error code.
         self.code = code
-        # The total number of entries returned.
+        # The total count.
         self.count = count
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned. If the call fails, an error message is returned.
+        # The message returned by the call. Typically, this is an error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful.
         self.success = success
@@ -96,13 +96,13 @@ class QueryResellerUserAlarmThresholdResponseBodyData(DaraModel):
         threshold_amount: str = None,
         threshold_type: int = None,
     ):
-        # The denominator of the alert percentage. This parameter is valid only when ThresholdType is set to 1.
+        # The denominator of the alert percentage. This parameter is valid when the alert type is 1.
         self.denominator = denominator
-        # The numerator of the alert percentage. This parameter is valid only when ThresholdType is set to 1.
+        # The numerator of the alert percentage. This parameter is valid when the alert type is 1.
         self.numerator = numerator
-        # The alert threshold in amount. This parameter is valid only when ThresholdType is set to 0.
+        # The alert threshold amount. This parameter is valid when the alert type is 0.
         self.threshold_amount = threshold_amount
-        # The type of the alert threshold. Valid values: 0 (amount) and 1 (percentage).
+        # The alert type. Valid values: 0: Numerical value. 1: Percentage.
         self.threshold_type = threshold_type
 
     def validate(self):

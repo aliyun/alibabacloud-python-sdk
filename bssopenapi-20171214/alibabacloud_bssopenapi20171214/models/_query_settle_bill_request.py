@@ -22,18 +22,18 @@ class QuerySettleBillRequest(DaraModel):
     ):
         # The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
         self.bill_owner_id = bill_owner_id
-        # The billing cycle, in the format of YYYY-MM.
+        # The billing cycle. Format: YYYY-MM.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
         self.is_display_local_currency = is_display_local_currency
-        # Specifies whether to filter based on whether the original price (PretaxGrossAmount) is 0. Default value: false (compatible with existing logic). Valid values:
-        # - true: Yes.
-        # - false: No.
+        # Specifies whether to filter out records whose original price (PretaxGrossAmount) is 0. Default value: false (for compatibility with existing logic). Valid values:
+        # - true: yes
+        # - false: no
         self.is_hide_zero_charge = is_hide_zero_charge
-        # The maximum number of data records to read in this request. Default value: 20. Maximum value: 300.
+        # The maximum number of data records to return in the current request. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The token that marks the position from which the next query starts. Leave this parameter empty to start from the beginning.
+        # The token that specifies the position from which to start reading. If this parameter is left empty, the reading starts from the beginning.
         self.next_token = next_token
         self.owner_id = owner_id
         # The product code.
@@ -45,10 +45,10 @@ class QuerySettleBillRequest(DaraModel):
         # The subscription type. Valid values:
         # - Subscription: subscription
         # - PayAsYouGo: pay-as-you-go
-        # >  This parameter must be used together with the ProductCode parameter.
+        # > This parameter must be used together with the ProductCode parameter.
         self.subscription_type = subscription_type
         # The type. Valid values:
-        # - SubscriptionOrder: prepaid order
+        # - SubscriptionOrder: subscription order
         # - PayAsYouGoBill: pay-as-you-go bill
         # - Refund: refund bill
         # - Adjustment: adjustment bill

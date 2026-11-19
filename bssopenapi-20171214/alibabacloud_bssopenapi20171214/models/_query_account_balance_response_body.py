@@ -22,7 +22,7 @@ class QueryAccountBalanceResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -81,21 +81,18 @@ class QueryAccountBalanceResponseBodyData(DaraModel):
         mybank_credit_amount: str = None,
         quota_limit: str = None,
     ):
-        # The available credit.
+        # The available amount.
         self.available_amount = available_amount
-        # The available cash balance.
+        # The cash balance.
         self.available_cash_amount = available_cash_amount
         # The credit limit.
         self.credit_amount = credit_amount
         # The currency. Valid values:
-        # 
-        # - CNY: Chinese Yuan
-        # 
-        # - USD: US Dollar
-        # 
-        # - JPY: Japanese Yen
+        # - CNY: Chinese yuan
+        # - USD: US dollar
+        # - JPY: Japanese yen
         self.currency = currency
-        # The credit limit granted by MYbank.
+        # The MYbank credit limit.
         self.mybank_credit_amount = mybank_credit_amount
         # The quota limit for ecosystem customers.
         self.quota_limit = quota_limit

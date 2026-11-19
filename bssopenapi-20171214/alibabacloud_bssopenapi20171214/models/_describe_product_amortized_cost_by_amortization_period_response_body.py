@@ -18,13 +18,13 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The message description.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -83,17 +83,17 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyData(DaraModel
         next_token: str = None,
         total_count: int = None,
     ):
-        # The ID of the account.
+        # The account ID.
         self.account_id = account_id
-        # The name of the account.
+        # The user account.
         self.account_name = account_name
         # The data entries.
         self.items = items
-        # The maximum number of entries returned.
+        # The maximum number of records returned for the current request.
         self.max_results = max_results
-        # The token that is used to query the next page of results.
+        # The token that specifies the position from which the current call starts reading. The value must be empty or set to the NextToken value returned in the previous response. Otherwise, an error is reported. An empty value indicates that the reading starts from the beginning.
         self.next_token = next_token
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -207,112 +207,106 @@ class DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems(Dara
         round_down_discount: float = None,
         subscription_type: str = None,
     ):
-        # The amount after a discount is applied.
+        # The amount after discount.
         self.after_discount_amount = after_discount_amount
-        # The amortization month.
-        # Format: YYYYMM.
+        # The amortization month. Format: YYYYMM.
         self.amortization_period = amortization_period
         # The amortization status. Valid values:
-        # 
-        # - amortized: The cost is amortized.
-        # 
-        # - unAmortized: The cost is not amortized.
+        # - amortized: amortized.
+        # - unAmortized: unamortized.
         self.amortization_status = amortization_status
         # The ID of the account to which the bill belongs.
         self.bill_account_id = bill_account_id
         # The name of the account to which the bill belongs.
         self.bill_account_name = bill_account_name
-        # The ID of the resource owner.
+        # The resource ownership account ID.
         self.bill_owner_id = bill_owner_id
-        # The name of the resource owner.
+        # The name of the account to which the resources belong.
         self.bill_owner_name = bill_owner_name
         # The business type.
         self.biz_type = biz_type
-        # The billing cycle.
-        # Format: YYYYMM.
+        # The billing cycle. Format: YYYYMM.
         self.consume_period = consume_period
-        # The amount that is amortized in the current period, after a discount is applied.
+        # The current amortization amount after discount.
         self.current_amortization_after_discount_amount = current_amortization_after_discount_amount
-        # The amount deducted by cash coupons that is amortized in the current period.
+        # The current amortization amount deducted by vouchers.
         self.current_amortization_deducted_by_cash_coupons = current_amortization_deducted_by_cash_coupons
-        # The amount deducted by coupons that is amortized in the current period.
+        # The current amortization amount deducted by coupons.
         self.current_amortization_deducted_by_coupons = current_amortization_deducted_by_coupons
-        # The amount paid by prepaid card that is amortized in the current period.
+        # The current amortization amount paid by prepaid cards.
         self.current_amortization_deducted_by_prepaid_card = current_amortization_deducted_by_prepaid_card
-        # The expenditure amount that is amortized in the current period. This amount can be invoiced.
+        # The current amortization expenditure amount (invoiceable).
         self.current_amortization_expenditure_amount = current_amortization_expenditure_amount
-        # The discount that is amortized in the current period.
+        # The current amortization invoice discount amount.
         self.current_amortization_invoice_discount = current_amortization_invoice_discount
-        # The pretax amount that is amortized in the current period.
+        # The current amortization pretax amount.
         self.current_amortization_pretax_amount = current_amortization_pretax_amount
-        # The pretax gross amount that is amortized in the current period.
+        # The current amortization pretax gross amount.
         self.current_amortization_pretax_gross_amount = current_amortization_pretax_gross_amount
-        # The amount rounded down that is amortized in the current period.
+        # The current amortization round-down discount amount.
         self.current_amortization_round_down_discount = current_amortization_round_down_discount
-        # The amount deducted by cash coupons.
+        # The amount deducted by vouchers.
         self.deducted_by_cash_coupons = deducted_by_cash_coupons
         # The amount deducted by coupons.
         self.deducted_by_coupons = deducted_by_coupons
-        # The amount paid by prepaid card.
+        # The amount paid by prepaid cards.
         self.deducted_by_prepaid_card = deducted_by_prepaid_card
-        # The expenditure amount. This amount can be invoiced.
+        # The expenditure amount (invoiceable).
         self.expenditure_amount = expenditure_amount
-        # The discount.
+        # The invoice discount amount.
         self.invoice_discount = invoice_discount
         # The pretax amount.
         self.pretax_amount = pretax_amount
         # The pretax gross amount.
         self.pretax_gross_amount = pretax_gross_amount
-        # The amount that was amortized before the beginning of the period, after a discount is applied.
+        # The previously amortized amount after discount.
         self.previously_amortized_after_discount_amount = previously_amortized_after_discount_amount
-        # The amount deducted by cash coupons that was amortized before the beginning of the period.
+        # The previously amortized amount deducted by vouchers.
         self.previously_amortized_deducted_by_cash_coupons = previously_amortized_deducted_by_cash_coupons
-        # The amount deducted by coupons that was amortized before the beginning of the period.
+        # The previously amortized amount deducted by coupons.
         self.previously_amortized_deducted_by_coupons = previously_amortized_deducted_by_coupons
-        # The amount paid by prepaid card that was amortized before the beginning of the period.
+        # The previously amortized amount paid by prepaid cards.
         self.previously_amortized_deducted_by_prepaid_card = previously_amortized_deducted_by_prepaid_card
-        # The expenditure amount that was amortized before the beginning of the period. This amount can be invoiced.
+        # The previously amortized expenditure amount (invoiceable).
         self.previously_amortized_expenditure_amount = previously_amortized_expenditure_amount
-        # The discount that was amortized before the beginning of the period.
+        # The previously amortized invoice discount amount.
         self.previously_amortized_invoice_discount = previously_amortized_invoice_discount
-        # The pretax amount that was amortized before the beginning of the period.
+        # The previously amortized pretax amount.
         self.previously_amortized_pretax_amount = previously_amortized_pretax_amount
-        # The pretax gross amount that was amortized before the beginning of the period.
+        # The previously amortized pretax gross amount.
         self.previously_amortized_pretax_gross_amount = previously_amortized_pretax_gross_amount
-        # The amount rounded down that was amortized before the beginning of the period.
+        # The previously amortized round-down discount amount.
         self.previously_amortized_round_down_discount = previously_amortized_round_down_discount
         # The product code.
         self.product_code = product_code
-        # The details of the product.
+        # The product detail.
         self.product_detail = product_detail
-        # The code of the product details.
+        # The product detail code.
         self.product_detail_code = product_detail_code
         # The product name.
         self.product_name = product_name
-        # The unamortized amount at the end of the period, after a discount is applied.
+        # The remaining amortization amount after discount.
         self.remaining_amortization_after_discount_amount = remaining_amortization_after_discount_amount
-        # The unamortized amount deducted by cash coupons at the end of the period.
+        # The remaining amortization amount deducted by vouchers.
         self.remaining_amortization_deducted_by_cash_coupons = remaining_amortization_deducted_by_cash_coupons
-        # The unamortized amount deducted by coupons at the end of the period.
+        # The remaining amortization amount deducted by coupons.
         self.remaining_amortization_deducted_by_coupons = remaining_amortization_deducted_by_coupons
-        # The unamortized amount paid by prepaid card at the end of the period.
+        # The remaining amortization amount paid by prepaid cards.
         self.remaining_amortization_deducted_by_prepaid_card = remaining_amortization_deducted_by_prepaid_card
-        # The unamortized expenditure amount at the end of the period. This amount can be invoiced.
+        # The remaining amortization expenditure amount (invoiceable).
         self.remaining_amortization_expenditure_amount = remaining_amortization_expenditure_amount
-        # The unamortized discount at the end of the period.
+        # The remaining amortization invoice discount amount.
         self.remaining_amortization_invoice_discount = remaining_amortization_invoice_discount
-        # The unamortized pretax amount at the end of the period.
+        # The remaining amortization pretax amount.
         self.remaining_amortization_pretax_amount = remaining_amortization_pretax_amount
-        # The unamortized pretax gross amount at the end of the period.
+        # The remaining amortization pretax gross amount.
         self.remaining_amortization_pretax_gross_amount = remaining_amortization_pretax_gross_amount
-        # The unamortized amount rounded down at the end of the period.
+        # The remaining amortization round-down discount amount.
         self.remaining_amortization_round_down_discount = remaining_amortization_round_down_discount
-        # The amount rounded down.
+        # The round-down discount amount.
         self.round_down_discount = round_down_discount
         # The subscription type. Valid values:
-        # 
         # - Subscription: subscription.
-        # 
         # - PayAsYouGo: pay-as-you-go.
         self.subscription_type = subscription_type
 

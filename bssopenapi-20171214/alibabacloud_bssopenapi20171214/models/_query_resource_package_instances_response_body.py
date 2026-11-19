@@ -31,7 +31,7 @@ class QueryResourcePackageInstancesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
         # The total number of records.
         self.total = total

@@ -87,7 +87,7 @@ class QueryAvailableInstancesResponseBodyData(DaraModel):
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -158,11 +158,11 @@ class QueryAvailableInstancesResponseBodyDataInstanceList(DaraModel):
         sub_status: str = None,
         subscription_type: str = None,
     ):
-        # The creation time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The creation time in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
-        # The end time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The end time in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.end_time = end_time
-        # The expected release time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The expected release time in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.expected_release_time = expected_release_time
         # The instance ID.
         self.instance_id = instance_id
@@ -174,16 +174,16 @@ class QueryAvailableInstancesResponseBodyDataInstanceList(DaraModel):
         self.product_type = product_type
         # The region.
         self.region = region
-        # The release time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The release time in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.release_time = release_time
         # The renewal status. Valid values:
         # - AutoRenewal: auto-renewal.
         # - ManualRenewal: manual renewal.
         # - NotRenewal: no renewal.
         self.renew_status = renew_status
-        # The number of auto-renewal epochs.
+        # The number of units for the auto-renewal cycle.
         self.renewal_duration = renewal_duration
-        # The unit of the auto-renewal epoch. Valid values:
+        # The unit of the auto-renewal cycle. Valid values:
         # - M: month.
         # - Y: year.
         self.renewal_duration_unit = renewal_duration_unit
@@ -193,7 +193,7 @@ class QueryAvailableInstancesResponseBodyDataInstanceList(DaraModel):
         self.seller_id = seller_id
         # The status.
         self.status = status
-        # The stop time. The time is in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The stop time in the ISO 8601 standard in the UTC format (YYYY-MM-DDTHH:mm:ssZ).
         self.stop_time = stop_time
         # The sub-status.
         self.sub_status = sub_status

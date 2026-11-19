@@ -18,13 +18,13 @@ class QueryRelationListResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The returned data.
+        # The message body.
         self.data = data
-        # The returned message.
+        # The message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -154,21 +154,21 @@ class QueryRelationListResponseBodyDataFinancialRelationInfoList(DaraModel):
         self.account_id = account_id
         # The logon name of the Alibaba Cloud account.
         self.account_name = account_name
-        # The display name of the account.
+        # The display name of the user.
         self.account_nick_name = account_nick_name
-        # The type of the financial account. Valid values: MASTER and MEMBER.
+        # The type of the enterprise financial account. Valid values: MASTER and MEMBER.
         self.account_type = account_type
-        # The time when the relationship expires. If this parameter is empty, the relationship does not expire.
+        # The time when the relationship expires. An empty value indicates that the relationship does not expire.
         self.end_time = end_time
         # The relationship ID.
         self.relation_id = relation_id
-        # The relationship type. `FinancialManagement` indicates Financial Management and `FinancialTrusteeship` indicates finance trusteeship.
+        # The relationship policy. A value of FinancialManagement indicates financial management, and a value of FinancialTrusteeship indicates finance trusteeship.
         self.relation_type = relation_type
-        # The time when the relationship was established. The time is in UTC and follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The time when the relationship is established. The time follows the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z (which is 20:00:00 on May 23, 2016 in UTC+8).
         self.setup_time = setup_time
-        # The time when the relationship takes effect. The time is in UTC and follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The effective period of the relationship. The time follows the ISO 8601 standard in the UTC format. Example: 2016-05-23T12:00:00Z (which is 20:00:00 on May 23, 2016 in UTC+8).
         self.start_time = start_time
-        # The status of the relationship. The value is an enumeration of RelationshipStatusEnum.
+        # The relationship status. Valid values are the enumerated values of RelationshipStatusEnum.
         self.state = state
 
     def validate(self):

@@ -12,13 +12,13 @@ class SetAllExpirationDayResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The status code.
         self.code = code
-        # The message that is returned.
+        # The response message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

@@ -20,37 +20,39 @@ class DescribeProductAmortizedCostByConsumePeriodRequest(DaraModel):
         product_detail: str = None,
         subscription_type: str = None,
     ):
-        # The filter conditions for the amortization month.
+        # The filter condition for the amortization month.
         # Maximum number of elements: 10.
         self.amortization_period_filter = amortization_period_filter
-        # The filter conditions for the IDs of resource owners.
-        # The resource owner is the account that actually uses the resources.
+        # The filter condition for the resource ownership account. 
+        # The ID of the resource ownership account. The resource ownership account is the account that actually uses the resources. 
         # Maximum number of elements: 10.
         self.bill_owner_id_list = bill_owner_id_list
-        # The filter conditions for the IDs of bill purchasers.
-        # This is the ID of a RAM user. Set this parameter to view the bills of a RAM user. If you do not set this parameter, the bills of the current account and all its RAM users are returned.
+        # The filter condition for the bill purchaser ID.
+        # The ID of the RAM user. Specify this parameter to view the bills of RAM users in Financial Cloud. If you do not specify this parameter, the bills of the current caller account and all its RAM users are viewed by default.
         # Maximum number of elements: 10.
         self.bill_user_id_list = bill_user_id_list
-        # The billing cycle.
+        # The billing cycle month.
         # Format: YYYY-MM.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # The code of the cost center.
+        # The code of the financial unit.
         self.cost_unit_code = cost_unit_code
-        # The maximum number of data records to return in this call. Default value: 20. Maximum value: 300.
+        # The maximum number of data records to return in the current call. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The token that marks the position from which to start the query. If you leave this parameter empty, the query starts from the beginning. If you specify this parameter, set it to the value of `NextToken` that is returned in the last call.
+        # The token that specifies the position from which the current call starts reading. The value must be empty or set to the NextToken value returned in the previous response. Otherwise, an error occurs. An empty value indicates that the reading starts from the beginning.
         self.next_token = next_token
-        # The product code. To obtain this value, call the QueryProductList operation to query product information or the DescribeResourcePackageProduct operation to query information about a resource plan.
+        # The product code.
+        # Reference sources for valid values:
+        # Call QueryProductList to query product information,
+        # or call DescribeResourcePackageProduct to query the information about a specific resource plan product.
         self.product_code = product_code
-        # The details of the product.
+        # The product detail.
         self.product_detail = product_detail
         # The subscription type. Valid values:
         # 
-        # - Subscription: subscription.
-        # 
-        # - PayAsYouGo: pay-as-you-go.
+        # - Subscription: subscription
+        # - PayAsYouGo: pay-as-you-go
         self.subscription_type = subscription_type
 
     def validate(self):

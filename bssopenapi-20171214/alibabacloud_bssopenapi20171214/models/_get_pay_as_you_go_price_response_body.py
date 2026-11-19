@@ -24,7 +24,7 @@ class GetPayAsYouGoPriceResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -81,9 +81,9 @@ class GetPayAsYouGoPriceResponseBodyData(DaraModel):
         promotion_details: main_models.GetPayAsYouGoPriceResponseBodyDataPromotionDetails = None,
     ):
         # The currency. Valid values:
-        # - CNY: Chinese Yuan.
-        # - USD: US Dollar.
-        # - JPY: Japanese Yen.
+        # - CNY: Chinese yuan.
+        # - USD: US dollar.
+        # - JPY: Japanese yen.
         self.currency = currency
         self.module_details = module_details
         self.promotion_details = promotion_details

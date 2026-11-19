@@ -10,7 +10,7 @@ class QueryResellerAvailableQuotaRequest(DaraModel):
         item_codes: str = None,
         owner_id: int = None,
     ):
-        # You do not need to specify this parameter.
+        # This parameter is not required.
         self.item_codes = item_codes
         # This parameter is required.
         self.owner_id = owner_id

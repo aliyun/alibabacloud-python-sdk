@@ -24,7 +24,7 @@ class QueryBillResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,9 +86,9 @@ class QueryBillResponseBodyData(DaraModel):
     ):
         # The account ID.
         self.account_id = account_id
-        # The account name.
+        # The account.
         self.account_name = account_name
-        # The billing cycle, in the YYYY-MM format.
+        # The billing cycle. Format: YYYY-MM.
         self.billing_cycle = billing_cycle
         self.items = items
         # The page number.

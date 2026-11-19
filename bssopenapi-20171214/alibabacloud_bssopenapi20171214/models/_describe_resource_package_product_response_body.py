@@ -17,15 +17,15 @@ class DescribeResourcePackageProductResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The status code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The message returned.
+        # The error message.
         self.message = message
-        # The ID of the order.
+        # The order ID.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success

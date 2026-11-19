@@ -17,43 +17,38 @@ class GetResourcePackagePriceRequest(DaraModel):
         product_code: str = None,
         specification: str = None,
     ):
-        # The validity period of the resource plan. The value must be the same as the duration of the resource plan specified in the specifications.
+        # The validity period of the resource plan. The value must match the available validity period of the specification size.
         # 
         # This parameter is required.
         self.duration = duration
-        # The time when the resource plan takes effect. If you do not specify this parameter, the resource plan immediately takes effect by default.
-        # When the **OrderType** is **BUY**, resource packs with the **EffectiveDate longer than the current time of 6 months** are not supported.
-        # If the **OrderType** is **UPGRADE**, the **EffectiveDate** **must be less than or equal to** the actual expiration time of the upgraded instance.
-        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time must be in UTC.
+        # The effective period of the resource plan. If you do not specify this parameter, the default is immediate.
+        # When the order type is **BUY**, you cannot query the price of a resource plan whose effective period is more than six months later than the current time.
+        # When the order type is **UPGRADE**, the effective period must be earlier than or equal to the actual expiration time of the resource plan to be upgraded.
+        # Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.effective_date = effective_date
-        # The ID of the instance. **This parameter is required when the order type is renewal or upgrade.**
+        # The instance ID. **This parameter is required when the order type is renewal or upgrade.**
         self.instance_id = instance_id
-        # The type of the order. Valid values:
-        # 
-        # - BUY: You place the order to purchase an instance.
-        # 
-        # - UPGRADE: You place the order to upgrade an instance.
-        # 
-        # - RENEW: You place the order to renew an instance.
+        # The order type. Valid values:
+        # - BUY: new purchase.
+        # - UPGRADE: upgrade.
+        # - RENEW: renewal.
         # 
         # Default value: BUY.
         self.order_type = order_type
         self.owner_id = owner_id
-        # The type of the resource plan. The value must be the same as the value of the **ProductCode** parameter that is returned when you call the **DescribeResourcePackageProduct** operation.
+        # The resource plan type. The value must be the same as the Code value of **ResourcePackage** returned by the operation that describes resource plans.
         # 
         # This parameter is required.
         self.package_type = package_type
-        # The unit of validity period of the resource plan. Valid values:
-        # 
-        # - Month
-        # 
-        # - Year
+        # The unit of the validity period for the resource plan. Valid values:
+        # - Month: months.
+        # - Year: years.
         self.pricing_cycle = pricing_cycle
-        # The code of service. You can query the service code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud Services**.
+        # The product code. You can obtain the product code by calling the **QueryProductList** operation or referring to the **Alibaba Cloud product code quick reference guide**.
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The specifications of the resource plan.
+        # The specification size of the resource plan.
         # 
         # This parameter is required.
         self.specification = specification

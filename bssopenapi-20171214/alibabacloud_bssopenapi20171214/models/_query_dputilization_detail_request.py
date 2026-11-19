@@ -18,7 +18,7 @@ class QueryDPUtilizationDetailRequest(DaraModel):
         prod_code: str = None,
         start_time: str = None,
     ):
-        # The commodity code, such as ecsRi and scu_bag. If this parameter is specified, the ProdCode parameter does not take effect.
+        # The commodity code, such as ecsRi or scu_bag. If this parameter is specified, the ProdCode parameter does not take effect.
         self.commodity_code = commodity_code
         # The ID of the deducted instance. If this parameter is left empty, the details of all instances are returned.
         self.deducted_instance_id = deducted_instance_id
@@ -26,7 +26,7 @@ class QueryDPUtilizationDetailRequest(DaraModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Specifies whether to include the resource plan usage of member accounts in finance trusteeship. Valid values:
+        # Specifies whether to include the resource plan usage of linked accounts in finance trusteeship. Valid values:
         # - true: Included.
         # - false: Not included.
         # 
@@ -36,7 +36,7 @@ class QueryDPUtilizationDetailRequest(DaraModel):
         self.instance_id = instance_id
         # The instance type.
         self.instance_spec = instance_spec
-        # The token that specifies the start position of the query. Set this parameter to null for the first query. For subsequent queries, use the NextToken value returned in the previous response.
+        # The token that specifies the start of the query. Set this parameter to null for the first query. For subsequent queries, use the NextToken value returned in the previous response.
         self.last_token = last_token
         # The number of entries to return per query. Default value: 20. Maximum value: 300.
         self.limit = limit

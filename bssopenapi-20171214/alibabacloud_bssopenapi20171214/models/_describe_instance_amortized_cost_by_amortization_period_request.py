@@ -21,41 +21,31 @@ class DescribeInstanceAmortizedCostByAmortizationPeriodRequest(DaraModel):
         product_detail: str = None,
         subscription_type: str = None,
     ):
-        # The filter condition for the account to which the resource belongs.
-        # The resource ownership account is the account that actually uses the resource.
-        # Maximum number of elements: 10.
+        # The resource ownership account filter. The ID of the resource ownership account. The resource ownership account is the account that actually uses the resources. Maximum number of elements: 10.
         self.bill_owner_id_list = bill_owner_id_list
-        # The filter condition for the ID of the bill owner.
-        # This parameter specifies the ID of a RAM user. You can set this parameter to query the bills of a RAM user. If you do not set this parameter, the bills of the current account and all RAM users of the current account are queried.
-        # Maximum number of elements: 10.
+        # The bill purchaser ID filter. The ID of the RAM user. Specify this parameter to view the bills of RAM users. If you do not specify this parameter, the bills of the current caller account and all its RAM users are viewed by default. Maximum number of elements: 10.
         self.bill_user_id_list = bill_user_id_list
-        # The amortization month.
-        # Format: YYYY-MM.
+        # The amortization month. Format: YYYY-MM.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
-        # The filter condition for the billing cycle.
-        # Maximum number of elements: 10.
+        # The billing cycle filter. Maximum number of elements: 10.
         self.consume_period_filter = consume_period_filter
-        # The code of the cost center.
+        # The cost unit code.
         self.cost_unit_code = cost_unit_code
-        # The filter condition for the instance ID.
-        # You can query multiple instances. If you do not set this parameter, all instances are queried.
-        # Maximum number of elements: 10.
+        # The instance ID filter. You can query multiple instances. If you do not specify this parameter, all instances are queried by default. Maximum number of elements: 10.
         self.instance_id_list = instance_id_list
-        # The maximum number of data records to return. Default value: 20. Maximum value: 300.
+        # The maximum number of data records to read in the current call. Default value: 20. Maximum value: 300.
         self.max_results = max_results
-        # The position from which to start reading the current call. The value of this parameter must be empty or the value of NextToken that is returned in the last call. Otherwise, an error is reported. If this parameter is empty, the query starts from the beginning.
+        # The token that specifies the position from which the current call starts reading. The value must be empty or set to the NextToken value returned in the previous response. Otherwise, an error occurs. An empty value indicates that the reading starts from the beginning.
         self.next_token = next_token
-        # The product code. To obtain the value of this parameter, call QueryProductList or DescribeResourcePackageProduct.
+        # The product code. Reference sources for valid values: Call QueryProductList to query product information. Call DescribeResourcePackageProduct to query the information about a specific resource plan product.
         self.product_code = product_code
-        # The details of the product.
+        # The product detail.
         self.product_detail = product_detail
         # The subscription type. Valid values:
-        # 
-        # - Subscription: subscription.
-        # 
-        # - PayAsYouGo: pay-as-you-go.
+        # - Subscription: Upfront.
+        # - PayAsYouGo: Pay-as-you-go.
         self.subscription_type = subscription_type
 
     def validate(self):

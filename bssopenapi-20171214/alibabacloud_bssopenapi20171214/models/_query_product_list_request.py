@@ -15,7 +15,7 @@ class QueryProductListRequest(DaraModel):
         # 
         # This parameter is required.
         self.page_num = page_num
-        # The number of records per page. Maximum value: 300. Default value: 20.
+        # The number of entries per page. Maximum value: 300. Default value: 20.
         self.page_size = page_size
         # Specifies whether to return the total number of products. Default value: false.
         self.query_total_count = query_total_count

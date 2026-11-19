@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_bssopenapi20171214 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'BssOpenApi'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'business.aliyuncs.com',
@@ -7663,6 +7667,84 @@ class Client(OpenApiClient):
     ) -> main_models.RefundInstanceResponse:
         runtime = RuntimeOptions()
         return await self.refund_instance_with_options_async(request, runtime)
+
+    def release_expired_prepaid_instance_with_options(
+        self,
+        request: main_models.ReleaseExpiredPrepaidInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleaseExpiredPrepaidInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReleaseExpiredPrepaidInstance',
+            version = '2017-12-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReleaseExpiredPrepaidInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_expired_prepaid_instance_with_options_async(
+        self,
+        request: main_models.ReleaseExpiredPrepaidInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleaseExpiredPrepaidInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.product_type):
+            query['ProductType'] = request.product_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ReleaseExpiredPrepaidInstance',
+            version = '2017-12-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ReleaseExpiredPrepaidInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_expired_prepaid_instance(
+        self,
+        request: main_models.ReleaseExpiredPrepaidInstanceRequest,
+    ) -> main_models.ReleaseExpiredPrepaidInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.release_expired_prepaid_instance_with_options(request, runtime)
+
+    async def release_expired_prepaid_instance_async(
+        self,
+        request: main_models.ReleaseExpiredPrepaidInstanceRequest,
+    ) -> main_models.ReleaseExpiredPrepaidInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.release_expired_prepaid_instance_with_options_async(request, runtime)
 
     def release_instance_with_options(
         self,

@@ -14,9 +14,9 @@ class SetRenewalResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The error message returned.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success

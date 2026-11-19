@@ -19,16 +19,16 @@ class QueryBillRequest(DaraModel):
         subscription_type: str = None,
         type: str = None,
     ):
-        # The ID of the resource ownership account. The resource ownership account is the account that actually uses the resource.
+        # The ID of the account with resource ownership. The account with resource ownership is the account that actually uses the resource.
         self.bill_owner_id = bill_owner_id
-        # The billing cycle, in the YYYY-MM format.
+        # The billing cycle. Format: YYYY-MM.
         # 
         # This parameter is required.
         self.billing_cycle = billing_cycle
         self.is_display_local_currency = is_display_local_currency
-        # Specifies whether to filter out bills with a original price (PretaxGrossAmount) of 0. Default value: false (compatible with existing logic). Valid values:
-        # - true: filters out zero-charge bills.
-        # - false: does not filter out zero-charge bills.
+        # Specifies whether to filter out bills whose original price (PretaxGrossAmount) is 0. Default value: false (for compatibility with existing logic). Valid values:
+        # - true: Yes.
+        # - false: No.
         self.is_hide_zero_charge = is_hide_zero_charge
         self.owner_id = owner_id
         # The page number. Default value: 1.
