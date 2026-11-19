@@ -10,7 +10,7 @@ class GetEventRuleRequest(DaraModel):
         product_name: str = None,
         rule_name: str = None,
     ):
-        # The name of the Alibaba Cloud product that triggers the event notification.
+        # The name of the cloud service for event notifications.
         # 
         # This parameter is required.
         self.product_name = product_name

@@ -21,7 +21,7 @@ class GetAccountAttributesResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The response status.
         self.status = status
@@ -92,7 +92,7 @@ class GetAccountAttributesResponseBodyData(DaraModel):
         self.log_enabled = log_enabled
         # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
-        # Indicates whether the message trace feature is enabled.
+        # Indicates whether the message tracing feature is enabled.
         self.message_trace_enabled = message_trace_enabled
         # The name of the Simple Log Service project.
         self.project_name = project_name

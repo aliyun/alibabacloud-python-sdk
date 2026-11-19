@@ -17,12 +17,13 @@ class SetSubscriptionAttributesRequest(DaraModel):
     ):
         # The dead-letter queue policy.
         self.dlq_policy = dlq_policy
-        # The retry policy for message delivery failures to the endpoint. Valid values:
+        # The retry policy used when an error occurs while pushing messages to the endpoint. Valid values:
         # 
-        # - BACKOFF_RETRY: backoff retry.
+        # - BACKOFF_RETRY: backoff retry
         # 
-        # - EXPONENTIAL_DECAY_RETRY: exponential decay retry.
+        # - EXPONENTIAL_DECAY_RETRY: exponential decay retry
         self.notify_strategy = notify_strategy
+        # The STS role ARN.
         self.sts_role_arn = sts_role_arn
         # The name of the subscription.
         # 
@@ -130,9 +131,9 @@ class SetSubscriptionAttributesRequestDlqPolicy(DaraModel):
         dead_letter_target_queue: str = None,
         enabled: bool = None,
     ):
-        # The destination queue for dead-letter messages.
+        # The destination queue for dead-letter message delivery.
         self.dead_letter_target_queue = dead_letter_target_queue
-        # Whether to enable dead-letter message delivery.
+        # Specifies whether dead-letter message delivery is enabled.
         self.enabled = enabled
 
     def validate(self):

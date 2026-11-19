@@ -11,19 +11,19 @@ class AuthorizeEndpointAclShrinkRequest(DaraModel):
         cidr_list_shrink: str = None,
         endpoint_type: str = None,
     ):
-        # The access control list (ACL) policy. Valid value:
+        # The ACL policy. Valid values:
         # 
-        # - **allow**: A CIDR whitelist. Only allow is supported.
+        # - **allow**: CIDR whitelist. Currently, only allow is supported.
         # 
         # This parameter is required.
         self.acl_strategy = acl_strategy
-        # A list of CIDR blocks.
+        # The list of CIDR blocks. You must specify at least one CIDR block. Example: 192.168.1.0/24.
         # 
         # This parameter is required.
         self.cidr_list_shrink = cidr_list_shrink
-        # The type of the endpoint. Valid value:
+        # The access point type. Valid values:
         # 
-        # - **public**: An internet endpoint. Only public is supported.
+        # - **public**: Internet-facing access point. Currently, only public is supported.
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type

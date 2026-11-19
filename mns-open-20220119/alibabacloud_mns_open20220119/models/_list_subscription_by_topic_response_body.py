@@ -23,11 +23,11 @@ class ListSubscriptionByTopicResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The response status.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -92,15 +92,15 @@ class ListSubscriptionByTopicResponseBodyData(DaraModel):
         size: int = None,
         total: int = None,
     ):
-        # The entries on the current page.
+        # The results returned on the current page.
         self.page_data = page_data
-        # The page number of the returned page.
+        # The page number of the returned results.
         self.page_num = page_num
         # The number of entries returned per page.
         self.page_size = page_size
         # The total number of pages.
         self.pages = pages
-        # The number of entries on the current page.
+        # The number of entries returned on the current page.
         self.size = size
         # The total number of entries.
         self.total = total
@@ -177,18 +177,17 @@ class ListSubscriptionByTopicResponseBodyDataPageData(DaraModel):
         topic_name: str = None,
         topic_owner: str = None,
     ):
-        # The time when the subscription was created, in Unix time format.
+        # The time when the subscription was created. The value is a UNIX timestamp representing the number of seconds that have elapsed since 00:00:00 on January 1, 1970.
         self.create_time = create_time
-        # The dead-letter queue policy.
+        # The dead-letter policy.
         self.dlq_policy = dlq_policy
-        # The endpoint of the subscription.
+        # The endpoint address of the subscription.
         self.endpoint = endpoint
-        # The tag for message filtering in the subscription. Only messages with the same tag are pushed.
+        # The tag used to filter messages in the subscription. Only messages with matching tags are pushed.
         self.filter_tag = filter_tag
-        # The time when the subscription properties were last modified. This value is a UNIX timestamp.
+        # The time when the subscription attributes were last modified. The value is a UNIX timestamp representing the number of seconds that have elapsed since 00:00:00 on January 1, 1970.
         self.last_modify_time = last_modify_time
-        # The format of the message content pushed to the endpoint.
-        # Valid values:
+        # The format of the message content pushed to the endpoint. Valid values:
         # 
         # - XML
         # 
@@ -196,17 +195,17 @@ class ListSubscriptionByTopicResponseBodyDataPageData(DaraModel):
         # 
         # - SIMPLIFIED
         self.notify_content_format = notify_content_format
-        # The retry policy for message push failures to the endpoint. Valid values:
+        # The retry strategy used when a message fails to be pushed to the endpoint. Valid values:
         # 
-        # - BACKOFF_RETRY: backoff retry.
+        # - BACKOFF_RETRY: backoff retry
         # 
-        # - EXPONENTIAL_DECAY_RETRY: exponential decay retry.
+        # - EXPONENTIAL_DECAY_RETRY: exponential decay retry
         self.notify_strategy = notify_strategy
-        # The subscription name.
+        # The name of the subscription.
         self.subscription_name = subscription_name
         # The name of the topic to which the subscription belongs.
         self.topic_name = topic_name
-        # The AccountId of the owner of the topic to which the subscription belongs.
+        # The account ID of the topic owner to which the subscription belongs.
         self.topic_owner = topic_owner
 
     def validate(self):
@@ -291,7 +290,7 @@ class ListSubscriptionByTopicResponseBodyDataPageDataDlqPolicy(DaraModel):
         dead_letter_target_queue: str = None,
         enabled: bool = None,
     ):
-        # The destination queue for dead-letter messages.
+        # The destination queue for dead-letter message delivery.
         self.dead_letter_target_queue = dead_letter_target_queue
         # Indicates whether dead-letter message delivery is enabled.
         self.enabled = enabled

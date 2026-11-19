@@ -136,7 +136,7 @@ class GetEndpointAttributeResponseBodyDataCidrList(DaraModel):
     ):
         # The ACL policy. Valid values:
         # 
-        # - **allow**: The endpoint allows access from the corresponding CIDR block. Currently, only allow is supported.
+        # - **allow**: allows access from the corresponding CIDR block to the current endpoint. Currently, only allow is supported.
         self.acl_strategy = acl_strategy
         # The CIDR block.
         self.cidr = cidr

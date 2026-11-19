@@ -20,15 +20,20 @@ class SetTopicAttributesRequest(DaraModel):
         # - true: Enabled.
         # 
         # - false: Disabled.
+        # 
         # Default value: false.
         self.enable_logging = enable_logging
+        # Specifies whether to enable server-side encryption for message bodies. Valid values: true or false.
         self.enable_sse = enable_sse
+        # The KMS key ID. This parameter is required when you use KMS for encryption. The key must belong to the same Alibaba Cloud account and region as the topic.
         self.kms_key_id = kms_key_id
-        # The maximum length of the message body sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+        # The maximum size of a message body sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.max_message_size = max_message_size
+        # The server-side encryption algorithm. Currently, only AES-256-GCM is supported. If you do not specify this parameter, the default algorithm is used.
         self.sse_algorithm = sse_algorithm
+        # The server-side encryption method. Valid values: SMQ (service-managed key) or KMS (customer-managed KMS key).
         self.sse_type = sse_type
-        # The name of the topic.
+        # The name of the topic. The name can be up to 120 characters in length. It must start with a letter and can contain letters, digits, and hyphens.
         # 
         # This parameter is required.
         self.topic_name = topic_name

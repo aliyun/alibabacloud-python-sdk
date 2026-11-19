@@ -22,11 +22,11 @@ class DeleteTopicResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The response status.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

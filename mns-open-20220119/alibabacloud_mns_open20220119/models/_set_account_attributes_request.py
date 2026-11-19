@@ -13,7 +13,7 @@ class SetAccountAttributesRequest(DaraModel):
         message_trace_enabled: bool = None,
         project_name: str = None,
     ):
-        # Ensures the idempotence of the request. Generate a parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and cannot exceed 64 characters in length. For more information, see How to ensure idempotence.
+        # Ensures the idempotence of the request. You can generate the value on your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see Ensure idempotence.
         self.client_token = client_token
         # Specifies whether to enable the log management feature.
         self.log_enabled = log_enabled

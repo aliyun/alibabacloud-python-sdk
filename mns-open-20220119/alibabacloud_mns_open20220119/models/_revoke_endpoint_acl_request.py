@@ -15,17 +15,17 @@ class RevokeEndpointAclRequest(DaraModel):
     ):
         # The ACL policy. Valid values:
         # 
-        # - **allow**: The operation is for a Classless Inter-Domain Routing (CIDR) whitelist. Currently, only \\`allow\\` is supported.
+        # - **allow**: CIDR whitelist. Currently, only allow is supported.
         # 
         # This parameter is required.
         self.acl_strategy = acl_strategy
-        # The list of network segments.
+        # The list of CIDR blocks. Specify at least one CIDR block. Example: 192.168.1.0/24.
         # 
         # This parameter is required.
         self.cidr_list = cidr_list
         # The endpoint type. Valid values:
         # 
-        # - **public**: The Internet endpoint. Currently, only \\`public\\` is supported.
+        # - **public**: Internet-facing endpoint. Currently, only public is supported.
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type

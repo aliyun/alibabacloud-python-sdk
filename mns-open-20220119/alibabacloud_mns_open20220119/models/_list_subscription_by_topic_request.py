@@ -14,19 +14,17 @@ class ListSubscriptionByTopicRequest(DaraModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # The type of the subscription endpoint used to filter results. For queue push, set the value to queue.
         self.endpoint_type = endpoint_type
+        # The address of the subscription endpoint used to filter results. For queue push, specify the queue name.
         self.endpoint_value = endpoint_value
-        # The page number of the results to return.
-        # Valid values: 1 to 100000000.
-        # If the value is less than 1, the system uses 1. If the value is greater than 100000000, the system uses 100000000.
+        # The page number of the returned results. Valid values: 1 to 100000000. If the specified value is less than 1, the system defaults to 1. If the specified value is greater than 100000000, the system defaults to 100000000.
         self.page_num = page_num
-        # The number of entries to return on each page.
-        # Valid values: 10 to 50.
-        # If the value is less than 10, the system uses 10. If the value is greater than 50, the system uses 50.
+        # The number of entries to return on each page. Valid values: 10 to 50. If the specified value is less than 10, the system defaults to 10. If the specified value is greater than 50, the system defaults to 50.
         self.page_size = page_size
-        # The subscription name.
+        # The name of the subscription.
         self.subscription_name = subscription_name
-        # The topic name.
+        # The name of the topic.
         self.topic_name = topic_name
 
     def validate(self):

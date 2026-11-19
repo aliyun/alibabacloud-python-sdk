@@ -15,15 +15,15 @@ class CreateTopicResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The HTTP status code of the response.
         self.code = code
         # The response data.
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The response status.
+        # The status of the response.
         self.status = status
         # Indicates whether the request was successful.
         self.success = success
@@ -87,7 +87,7 @@ class CreateTopicResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The HTTP status code of the response.
         self.code = code
         # The response message.
         self.message = message

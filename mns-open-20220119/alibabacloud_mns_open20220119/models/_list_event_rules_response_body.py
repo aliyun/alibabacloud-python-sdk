@@ -23,11 +23,11 @@ class ListEventRulesResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The status of the response.
+        # The response status.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -94,19 +94,19 @@ class ListEventRulesResponseBodyData(DaraModel):
         size: int = None,
         total: int = None,
     ):
-        # This parameter is deprecated. The maximum number of entries is based on Total.
+        # **[Deprecated]** Use Total for the maximum number of entries in paged queries.
         self.max_results = max_results
-        # This parameter is deprecated. Paged queries are based on PageNum.
+        # **[Deprecated]** Use PageNum for paging.
         self.next_token = next_token
         # The data entries.
         self.page_data = page_data
         # The page number of the returned results.
         self.page_num = page_num
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The total number of pages.
         self.pages = pages
-        # The number of entries on the current page.
+        # The number of entries returned on the current page.
         self.size = size
         # The total number of entries.
         self.total = total
@@ -192,17 +192,17 @@ class ListEventRulesResponseBodyDataPageData(DaraModel):
         subscriptions: List[main_models.ListEventRulesResponseBodyDataPageDataSubscriptions] = None,
         topic_name: str = None,
     ):
-        # This parameter is deprecated.
+        # **[Deprecated]**
         self.delivery_mode = delivery_mode
-        # The endpoint of the subscription.
+        # The endpoint address of the subscription.
         self.endpoint = endpoint
         # The list of event types.
         self.event_types = event_types
-        # The event matching rules. The rules have an OR relationship.
+        # The event matching rules with an OR relationship.
         self.match_rules = match_rules
         # The name of the event notification rule.
         self.rule_name = rule_name
-        # The subscribers. A maximum of 20 entries are returned. If there are more subscribers, see [List Subscriptions](https://help.aliyun.com/document_detail/2804757.html).
+        # The subscription endpoints. A maximum of 20 entries are returned. If the number exceeds 20, use the [subscription list](https://help.aliyun.com/document_detail/2804757.html) to query.
         self.subscriptions = subscriptions
         # The name of the topic.
         self.topic_name = topic_name
@@ -298,7 +298,7 @@ class ListEventRulesResponseBodyDataPageDataSubscriptions(DaraModel):
     ):
         # The endpoint type.
         self.endpoint_type = endpoint_type
-        # The actual value of the endpoint.
+        # The actual value of the receiving endpoint.
         self.endpoint_value = endpoint_value
 
     def validate(self):
@@ -334,12 +334,10 @@ class ListEventRulesResponseBodyDataPageDataEndpoint(DaraModel):
         endpoint_value: str = None,
     ):
         # The endpoint type. Valid values:
-        # 
-        # - **topic**: A topic can deliver messages to multiple subscribers. You can add or remove subscribers later.
-        # 
-        # - **queue**: Messages are delivered directly to a queue. This simplifies the delivery path, but you cannot add new subscribers later.
+        # - **topic**: The topic type. A topic supports delivery to multiple subscription endpoints. You can add or remove subscription endpoints later.
+        # - **queue**: The queue type. Messages are delivered directly to a queue. This reduces the link path, but you cannot add new subscription endpoints later.
         self.endpoint_type = endpoint_type
-        # The actual value of the endpoint.
+        # The actual value of the receiving endpoint.
         self.endpoint_value = endpoint_value
 
     def validate(self):

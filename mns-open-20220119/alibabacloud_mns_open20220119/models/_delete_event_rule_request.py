@@ -10,11 +10,11 @@ class DeleteEventRuleRequest(DaraModel):
         product_name: str = None,
         rule_name: str = None,
     ):
-        # The name of the cloud service for the event notification.
+        # The name of the cloud service for event notifications.
         # 
         # This parameter is required.
         self.product_name = product_name
-        # The name of the event rule.
+        # The name of the event notification rule.
         # 
         # This parameter is required.
         self.rule_name = rule_name

@@ -11,7 +11,7 @@ class GetEndpointAttributeRequest(DaraModel):
     ):
         # The endpoint type. Valid values:
         # 
-        # - **public**: Internet endpoint. Currently, only public is supported.
+        # - **public**: Internet-facing endpoint. Currently, only public is supported.
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type

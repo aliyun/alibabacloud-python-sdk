@@ -26,9 +26,7 @@ class CreateQueueRequest(DaraModel):
         tenant_rate_limit_policy: main_models.CreateQueueRequestTenantRateLimitPolicy = None,
         visibility_timeout: int = None,
     ):
-        # The delay period for all messages sent to the queue. A message sent to the queue can be consumed only after the delay period specified by this parameter elapses.
-        # Valid values: 0 to 604800. Unit: seconds.
-        # Default value: 0.
+        # The delay time for all messages sent to the queue. A message can be consumed only after the specified delay time elapses from the time it is sent to the queue. Valid values: 0 to 604800. Unit: seconds. Default value: 0.
         self.delay_seconds = delay_seconds
         # The dead-letter policy.
         self.dlq_policy = dlq_policy
@@ -40,37 +38,33 @@ class CreateQueueRequest(DaraModel):
         # 
         # Default value: false.
         self.enable_logging = enable_logging
+        # Specifies whether log broker encryption is enabled. Valid values: true and false.
         self.enable_sse = enable_sse
+        # The KMS key ID. This parameter is required only when SseType is set to KMS.
         self.kms_key_id = kms_key_id
-        # The maximum size of a message body that can be sent to the queue.
-        # Valid values: 1024 to 65536. Unit: bytes.
-        # Default value: 65536.
+        # The maximum size of a message body that can be sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
         self.maximum_message_size = maximum_message_size
-        # The maximum duration for which a message is retained in the queue. After the specified duration elapses since a message is sent to the queue, the message is deleted regardless of whether it has been consumed.
-        # Valid values: 60 to 604800. Unit: seconds.
-        # Default value: 345600.
+        # The maximum retention period of a message in the queue. After the specified period elapses from the time the message is sent to the queue, the message is deleted regardless of whether it has been received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
         self.message_retention_period = message_retention_period
-        # The maximum duration for which a ReceiveMessage request waits when the queue has no messages.
-        # Valid values: 0 to 30. Unit: seconds.
-        # Default value: 0.
+        # The maximum wait time for a ReceiveMessage request when no messages are available in the queue. Valid values: 0 to 30. Unit: seconds. Default value: 0.
         self.polling_wait_seconds = polling_wait_seconds
         # The name of the queue.
         # 
         # This parameter is required.
         self.queue_name = queue_name
         # The type of the queue. Valid values:
-        #    * normal: standard queue.
+        #    * normal: Standard queue.
         #    * fifo: FIFO queue.
         self.queue_type = queue_type
+        # The storage encryption algorithm. AES-256-GCM is supported. If you do not specify this parameter, the default algorithm is used.
         self.sse_algorithm = sse_algorithm
+        # The storage encryption method. Valid values: SMQ and KMS.
         self.sse_type = sse_type
         # The list of resource tags.
         self.tag = tag
         # The throttling policy.
         self.tenant_rate_limit_policy = tenant_rate_limit_policy
-        # The duration for which a message stays in the Inactive state after it is consumed from the queue and changes from the Active state to the Inactive state.
-        # Valid values: 1 to 43200. Unit: seconds.
-        # Default value: 30.
+        # The duration for which a message remains in the inactive state after it is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
@@ -237,9 +231,9 @@ class CreateQueueRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -275,11 +269,11 @@ class CreateQueueRequestDlqPolicy(DaraModel):
         enabled: bool = None,
         max_receive_count: int = None,
     ):
-        # The target queue to which dead-letter messages are delivered.
+        # The destination queue for dead-letter messages.
         self.dead_letter_target_queue = dead_letter_target_queue
         # Specifies whether to enable dead-letter message delivery.
         self.enabled = enabled
-        # The maximum number of times a message can be delivered.
+        # The maximum number of receive attempts for a message.
         self.max_receive_count = max_receive_count
 
     def validate(self):

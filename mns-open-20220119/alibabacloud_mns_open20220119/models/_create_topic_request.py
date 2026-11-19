@@ -20,28 +20,34 @@ class CreateTopicRequest(DaraModel):
         topic_name: str = None,
         topic_type: str = None,
     ):
-        # Specifies whether to enable the log management feature. Valid values:
+        # Specifies whether to enable the logging feature. Valid values:
         # 
-        # - true: Enabled.
+        # - true: enables the feature.
         # 
-        # - false: Disabled.
+        # - false: disables the feature.
         # Default value: false.
         self.enable_logging = enable_logging
+        # Specifies whether to enable server-side encryption for the message body. Valid values: true or false.
         self.enable_sse = enable_sse
+        # The KMS key ID used when KMS encryption is enabled. The key must belong to the same account and region as the topic.
         self.kms_key_id = kms_key_id
-        # The maximum length of the message body sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+        # The maximum size of the message body that can be sent to the topic.
+        # Valid values: 1024 to 65536. Unit: bytes.
+        # Default value: 65536.
         self.max_message_size = max_message_size
+        # The server-side encryption algorithm. Currently, only AES-256-GCM is supported. If this parameter is not specified, the default algorithm is used.
         self.sse_algorithm = sse_algorithm
+        # The server-side encryption method. Valid values: SMQ (service-hosted key) or KMS (user-managed KMS key).
         self.sse_type = sse_type
         # The list of resource tags.
         self.tag = tag
-        # The name of the topic to create.
+        # The name of the topic. The name can be up to 120 characters in length and must start with a letter. It can contain letters, digits, and hyphens (-).
         # 
         # This parameter is required.
         self.topic_name = topic_name
         # The type of the topic. Valid values:
-        #    * normal: normal topic
-        #    * fifo: FIFO topic
+        #    * normal: standard topic.
+        #    * fifo: FIFO topic.
         self.topic_type = topic_type
 
     def validate(self):

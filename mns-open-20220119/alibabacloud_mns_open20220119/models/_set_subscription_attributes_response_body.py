@@ -21,11 +21,11 @@ class SetSubscriptionAttributesResponseBody(DaraModel):
         self.data = data
         # The response message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The response status.
+        # The status of the response.
         self.status = status
-        # Whether the request succeeded.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,7 +91,7 @@ class SetSubscriptionAttributesResponseBodyData(DaraModel):
         self.code = code
         # The response message.
         self.message = message
-        # Whether the request succeeded.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

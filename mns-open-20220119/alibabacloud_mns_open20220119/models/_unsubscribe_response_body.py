@@ -23,9 +23,9 @@ class UnsubscribeResponseBody(DaraModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
-        # The status of the response.
+        # The response status.
         self.status = status
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,7 +91,7 @@ class UnsubscribeResponseBodyData(DaraModel):
         self.code = code
         # The response message.
         self.message = message
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
