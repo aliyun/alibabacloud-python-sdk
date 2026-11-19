@@ -10,8 +10,12 @@ class ShopStatusChangeRequest(DaraModel):
         shop_id: str = None,
         shop_status: str = None,
     ):
+        # The shop ID.
+        # 
         # This parameter is required.
         self.shop_id = shop_id
+        # The shop status.
+        # 
         # This parameter is required.
         self.shop_status = shop_status
 

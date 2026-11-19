@@ -10,7 +10,7 @@ class RenderRefundOrderRequest(DaraModel):
         self,
         body: main_models.RefundRenderCmd = None,
     ):
-        # Refund order rendering
+        # The reverse order rendering.
         # 
         # This parameter is required.
         self.body = body

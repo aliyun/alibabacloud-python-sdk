@@ -13,12 +13,20 @@ class ShopCreateRequest(DaraModel):
         pre_sale_ding_talk_id: str = None,
         shop_name: str = None,
     ):
+        # The after-sales DingTalk ID.
         self.after_sale_ding_talk_id = after_sale_ding_talk_id
+        # The shop description.
+        # 
         # This parameter is required.
         self.description = description
+        # The operations DingTalk ID.
+        # 
         # This parameter is required.
         self.operator_ding_talk_id = operator_ding_talk_id
+        # The pre-sales DingTalk ID.
         self.pre_sale_ding_talk_id = pre_sale_ding_talk_id
+        # The shop name.
+        # 
         # This parameter is required.
         self.shop_name = shop_name
 

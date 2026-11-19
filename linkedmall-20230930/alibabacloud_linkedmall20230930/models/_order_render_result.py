@@ -16,15 +16,15 @@ class OrderRenderResult(DaraModel):
         message: str = None,
         product_list: List[main_models.OrderProductResult] = None,
     ):
-        # Indicates whether the item can be sold.
+        # Indicates whether the item is sellable.
         self.can_sell = can_sell
         # The fulfillment information.
         self.delivery_info_list = delivery_info_list
         # The extension information.
         self.ext_info = ext_info
-        # The reason why the item is unavailable.
+        # The unsellable reason.
         self.message = message
-        # The list of products.
+        # The product collection.
         self.product_list = product_list
 
     def validate(self):

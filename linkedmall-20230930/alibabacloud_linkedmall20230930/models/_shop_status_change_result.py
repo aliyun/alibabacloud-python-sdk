@@ -9,6 +9,7 @@ class ShopStatusChangeResult(DaraModel):
         self,
         operate: bool = None,
     ):
+        # Indicates whether the operation is successful.
         self.operate = operate
 
     def validate(self):

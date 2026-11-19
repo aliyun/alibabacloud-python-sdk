@@ -14,11 +14,11 @@ class ShopPageResult(DaraModel):
         shop_list: List[main_models.ShopPageDataResult] = None,
         total: int = None,
     ):
-        # API request ID
+        # The request ID.
         self.request_id = request_id
-        # Shop collection
+        # The shop list.
         self.shop_list = shop_list
-        # Total count
+        # The total count.
         self.total = total
 
     def validate(self):

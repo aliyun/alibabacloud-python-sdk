@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_linkedmall20230930 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'linkedmall'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'linkedmall.aliyuncs.com',
@@ -1169,6 +1173,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListSelectionProductsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cursor):
+            query['cursor'] = request.cursor
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -1203,6 +1209,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListSelectionProductsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cursor):
+            query['cursor'] = request.cursor
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -1611,6 +1619,8 @@ class Client(OpenApiClient):
             body['createEndTime'] = request.create_end_time
         if not DaraCore.is_null(request.create_start_time):
             body['createStartTime'] = request.create_start_time
+        if not DaraCore.is_null(request.cursor):
+            body['cursor'] = request.cursor
         if not DaraCore.is_null(request.distribution_high_price):
             body['distributionHighPrice'] = request.distribution_high_price
         if not DaraCore.is_null(request.distribution_high_price_ratio):
@@ -1699,6 +1709,8 @@ class Client(OpenApiClient):
             body['createEndTime'] = request.create_end_time
         if not DaraCore.is_null(request.create_start_time):
             body['createStartTime'] = request.create_start_time
+        if not DaraCore.is_null(request.cursor):
+            body['cursor'] = request.cursor
         if not DaraCore.is_null(request.distribution_high_price):
             body['distributionHighPrice'] = request.distribution_high_price
         if not DaraCore.is_null(request.distribution_high_price_ratio):

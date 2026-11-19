@@ -9,6 +9,8 @@ class CreateAliPayUrlRequest(DaraModel):
         self,
         shop_id: str = None,
     ):
+        # The ID of the applied shop.
+        # 
         # This parameter is required.
         self.shop_id = shop_id
 

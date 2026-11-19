@@ -40,29 +40,29 @@ class Product(DaraModel):
     ):
         # The brand name.
         self.brand_name = brand_name
-        # Indicates whether the product is available for sale. This is a calculated value.
+        # The calculated value indicating whether the product is available for sale.
         self.can_sell = can_sell
         # The category chain.
         self.category_chain = category_chain
         # The leaf category ID.
         self.category_leaf_id = category_leaf_id
-        # The product description URL.
+        # The product details URL.
         self.desc_path = desc_path
-        # The region code.
+        # The division code.
         self.division_code = division_code
-        # The product\\"s extended properties.
+        # The extended product properties.
         self.extend_properties = extend_properties
-        # The stock status.
+        # The approximate inventory.
         self.fuzzy_quantity = fuzzy_quantity
-        # The product images.
+        # images
         self.images = images
-        # The warehousing status.
+        # The warehousing status of the product.
         self.in_group = in_group
         # The purchase limit rules.
         self.limit_rules = limit_rules
         # The LM product ID.
         self.lm_item_id = lm_item_id
-        # The main product image URL.
+        # The product main image.
         self.pic_url = pic_url
         # The product ID.
         self.product_id = product_id
@@ -72,27 +72,27 @@ class Product(DaraModel):
         self.product_status = product_status
         # The product type.
         self.product_type = product_type
-        # The product attributes.
+        # The product properties.
         self.properties = properties
         # The inventory.
-        # 
-        # > - This parameter is fixed at -1 and can be ignored.
+        # > 
+        # > - This field is currently a fixed value of -1 and can be ignored.
         self.quantity = quantity
-        # The request ID.
+        # The API request ID.
         self.request_id = request_id
-        # The service promises.>Notice:  Suppliers maintain all service promises. If a supplier fails to update this information in a timely manner, the service promise labels for some products may be inaccurate. Distributors should display this information to their customers with caution.
+        # The service commitments.<notice>Service commitments are maintained by suppliers. If suppliers fail to maintain or update them promptly, the service commitment labels for some products may be inaccurate. Distributors should display these commitments to their customers with caution.</notice>
         self.service_promises = service_promises
-        # The channel shop ID.
+        # The channel store ID.
         self.shop_id = shop_id
-        # The product SKUs.
+        # skus
         self.skus = skus
-        # The quantity sold.
+        # The sales volume.
         self.sold_quantity = sold_quantity
         # The tax code.
         self.tax_code = tax_code
         # The tax rate.
         self.tax_rate = tax_rate
-        # The product title.
+        # The title.
         self.title = title
 
     def validate(self):

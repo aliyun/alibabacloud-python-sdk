@@ -11,8 +11,11 @@ class CreateAliPayUrlResult(DaraModel):
         member_id: str = None,
         zft_withhold_sign_url: str = None,
     ):
+        # The LM account ID.
         self.account_id = account_id
+        # The LM member ID.
         self.member_id = member_id
+        # The Alipay auto-debit signing URL.
         self.zft_withhold_sign_url = zft_withhold_sign_url
 
     def validate(self):

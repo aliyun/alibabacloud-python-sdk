@@ -15,9 +15,13 @@ class StopDistributionResult(DaraModel):
         products: List[main_models.DistributionProduct] = None,
         request_id: str = None,
     ):
+        # The return code.
         self.code = code
+        # The return message.
         self.message = message
+        # The product information.
         self.products = products
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -10,7 +10,7 @@ class QueryOrdersRequest(DaraModel):
         self,
         body: main_models.OrderPageQuery = None,
     ):
-        # Queries the list of main orders.
+        # The main order list.
         # 
         # This parameter is required.
         self.body = body

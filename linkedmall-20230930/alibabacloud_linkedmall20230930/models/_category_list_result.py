@@ -13,9 +13,9 @@ class CategoryListResult(DaraModel):
         categories: List[main_models.Category] = None,
         request_id: str = None,
     ):
-        # category collection
+        # The category collection.
         self.categories = categories
-        # request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -10,7 +10,9 @@ class ShopCreateResult(DaraModel):
         shop_id: str = None,
         shop_status: str = None,
     ):
+        # The store ID.
         self.shop_id = shop_id
+        # The store status.
         self.shop_status = shop_status
 
     def validate(self):

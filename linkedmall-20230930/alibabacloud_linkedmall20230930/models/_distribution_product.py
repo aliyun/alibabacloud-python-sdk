@@ -23,17 +23,29 @@ class DistributionProduct(DaraModel):
         title: str = None,
         white_background_pic_url: str = None,
     ):
+        # The category chain name.
         self.category_chain = category_chain
+        # The leaf category ID.
         self.category_leaf_id = category_leaf_id
+        # The leaf category name.
         self.category_leaf_name = category_leaf_name
+        # The channel ID.
         self.channel_code = channel_code
+        # The distribution status.
         self.distribute_status = distribute_status
+        # The main image.
         self.pic_url = pic_url
+        # The product ID.
         self.product_id = product_id
+        # The seller ID.
         self.seller_id = seller_id
+        # The short product title.
         self.short_title = short_title
+        # The SKU list.
         self.skus = skus
+        # The long product title.
         self.title = title
+        # The white background image.
         self.white_background_pic_url = white_background_pic_url
 
     def validate(self):

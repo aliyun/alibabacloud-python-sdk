@@ -10,9 +10,9 @@ class ListPurchaserShopsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Page number of the request.
+        # The page number.
         self.page_number = page_number
-        # Number of items per page.
+        # The number of items per page.
         self.page_size = page_size
 
     def validate(self):

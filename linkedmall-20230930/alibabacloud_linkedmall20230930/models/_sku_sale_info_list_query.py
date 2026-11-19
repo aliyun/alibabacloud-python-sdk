@@ -14,15 +14,14 @@ class SkuSaleInfoListQuery(DaraModel):
         purchaser_id: str = None,
         sku_query_params: List[main_models.SkuQueryParam] = None,
     ):
-        # Region code. Use a five-level administrative division code, such as a town or subdistrict code.
+        # The division code. A level-5 township or sub-district address code is recommended.
         self.division_code = division_code
-        # Purchaser ID
+        # The purchaser ID.
         # 
         # This parameter is required.
         self.purchaser_id = purchaser_id
-        # Product query parameters
-        # 
-        # > You can query up to 20 SKUs per request.
+        # The product query parameters.
+        # > The maximum number of SKUs that can be queried in a single request is 20.
         # 
         # This parameter is required.
         self.sku_query_params = sku_query_params

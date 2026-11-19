@@ -12,7 +12,9 @@ class MemberAccountResult(DaraModel):
         account_no: List[str] = None,
         shop_id: str = None,
     ):
+        # The signed and bound Alipay auto-debit account (masked).
         self.account_no = account_no
+        # The store ID.
         self.shop_id = shop_id
 
     def validate(self):

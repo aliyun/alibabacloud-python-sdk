@@ -10,25 +10,28 @@ from darabonba.model import DaraModel
 class ProductPageResult(DaraModel):
     def __init__(
         self,
+        next_cursor: str = None,
         page_number: int = None,
         page_size: int = None,
         products: List[main_models.Product] = None,
         request_id: str = None,
         total: int = None,
     ):
-        # Current page number
+        # The cursor value for the next page.
+        self.next_cursor = next_cursor
+        # The current page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # Page size
+        # The page size.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Collection of products
+        # The product collection.
         self.products = products
-        # Request ID for the API call
+        # The request ID.
         self.request_id = request_id
-        # Total count
+        # The total count.
         # 
         # This parameter is required.
         self.total = total
@@ -44,6 +47,9 @@ class ProductPageResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.next_cursor is not None:
+            result['nextCursor'] = self.next_cursor
+
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
 
@@ -65,6 +71,9 @@ class ProductPageResult(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('nextCursor') is not None:
+            self.next_cursor = m.get('nextCursor')
+
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
 

@@ -13,6 +13,7 @@ class SearchProductsRequest(DaraModel):
         category_ids: List[str] = None,
         create_end_time: str = None,
         create_start_time: str = None,
+        cursor: str = None,
         distribution_high_price: int = None,
         distribution_high_price_ratio: int = None,
         distribution_low_price: int = None,
@@ -40,81 +41,82 @@ class SearchProductsRequest(DaraModel):
         tax_rate: str = None,
         trade_mode_and_credit: str = None,
     ):
-        # Brand name
+        # The brand name.
         self.brand_name = brand_name
-        # Collection of category IDs
+        # The list of category IDs.
         self.category_ids = category_ids
-        # Creation end time
+        # The end time of the creation. The format is yyyy-MM-dd HH:mm:ss.
         self.create_end_time = create_end_time
-        # Creation start time
+        # The start time of the creation. The format is yyyy-MM-dd HH:mm:ss.
         self.create_start_time = create_start_time
-        # Upper limit of distribution purchase price
+        # The cursor.
+        self.cursor = cursor
+        # The maximum distribution purchase price, in cents.
         self.distribution_high_price = distribution_high_price
-        # Upper limit of distribution premium rate
+        # The maximum distribution premium rate. A value of 244 indicates 2.44%.
         self.distribution_high_price_ratio = distribution_high_price_ratio
-        # Lower limit of distribution purchase price
+        # The minimum distribution purchase price, in cents.
         self.distribution_low_price = distribution_low_price
-        # Lower limit of distribution premium rate
+        # The minimum distribution premium rate. A value of 133 indicates 1.33%.
         self.distribution_low_price_ratio = distribution_low_price_ratio
-        # Upper limit of strikethrough price
+        # The maximum strikethrough price, in cents.
         self.high_mark_price = high_mark_price
-        # Upper limit of suggested retail price
+        # The maximum suggested retail price, in cents.
         self.high_price = high_price
-        # Whether the product is in inventory
+        # Specifies whether the product is added to the inventory.
         self.in_group = in_group
-        # End time of the product’s entry period.
+        # The end time when the product was added to the inventory. The format is yyyy-MM-dd HH:mm:ss.
         self.in_group_end_time = in_group_end_time
-        # Inventory start time
+        # The start time when the product was added to the inventory. The format is yyyy-MM-dd HH:mm:ss.
         self.in_group_start_time = in_group_start_time
-        # Inventory risk level
+        # The inventory risk level.
         self.inventory_risk_level = inventory_risk_level
-        # LM product ID
+        # The LM product ID.
         self.lm_item_id = lm_item_id
-        # Lower limit of strikethrough price
+        # The minimum strikethrough price, in cents.
         self.low_mark_price = low_mark_price
-        # Lower limit of suggested retail price
+        # The minimum suggested retail price, in cents.
         self.low_price = low_price
-        # Modification end time
+        # The end time of the modification. The format is yyyy-MM-dd HH:mm:ss.
         self.modify_end_time = modify_end_time
-        # Modification start time
+        # The start time of the modification. The format is yyyy-MM-dd HH:mm:ss.
         self.modify_start_time = modify_start_time
-        # Sort field
-        # 
-        # > - Used in combination with the sort direction field
+        # The sort field.
+        # > 
+        # > - This parameter must be used in combination with the sort direction parameter.
         self.order_by = order_by
-        # Sort direction
-        # 
-        # > - Used in combination with the sort field
+        # The sort direction.
+        # > 
+        # > - This parameter must be used in combination with the sort field parameter.
         self.order_direction = order_direction
-        # Page number
+        # The page number.
         # 
         # This parameter is required.
         self.page_number = page_number
-        # Page size
-        # 
-        # > - Maximum of 20 items per page
+        # The number of items per page.
+        # > 
+        # > - Maximum value: 20.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # Source platform
+        # The source platform.
         self.platform = platform
-        # Product ID
+        # The product ID.
         self.product_id = product_id
-        # Product name
+        # The product name.
         self.product_name = product_name
-        # Product status
+        # The product status.
         self.product_status = product_status
-        # Purchaser ID
+        # The ID of the purchaser.
         # 
         # This parameter is required.
         self.purchaser_id = purchaser_id
-        # Tax rate
-        # 
-        # > - Supports combining multiple tax rate enumeration values as request parameters. Use commas to separate them, for example: Rate0,Rate1.
-        # >
-        # > - HasRate cannot be combined with other enumeration values as request parameters.
+        # The tax rate.
+        # > 
+        # > - You can combine multiple tax rate enum values. Separate the values with commas (,). Example: Rate0,Rate1.
+        # > - HasRate cannot be combined with other enum values.
         self.tax_rate = tax_rate
-        # Sales pattern
+        # The sales mode.
         self.trade_mode_and_credit = trade_mode_and_credit
 
     def validate(self):
@@ -136,6 +138,9 @@ class SearchProductsRequest(DaraModel):
 
         if self.create_start_time is not None:
             result['createStartTime'] = self.create_start_time
+
+        if self.cursor is not None:
+            result['cursor'] = self.cursor
 
         if self.distribution_high_price is not None:
             result['distributionHighPrice'] = self.distribution_high_price
@@ -230,6 +235,9 @@ class SearchProductsRequest(DaraModel):
 
         if m.get('createStartTime') is not None:
             self.create_start_time = m.get('createStartTime')
+
+        if m.get('cursor') is not None:
+            self.cursor = m.get('cursor')
 
         if m.get('distributionHighPrice') is not None:
             self.distribution_high_price = m.get('distributionHighPrice')

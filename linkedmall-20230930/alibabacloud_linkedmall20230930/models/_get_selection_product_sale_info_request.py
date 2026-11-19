@@ -10,9 +10,9 @@ class GetSelectionProductSaleInfoRequest(DaraModel):
         division_code: str = None,
         purchaser_id: str = None,
     ):
-        # Administrative division code. We recommend using a five-level code (township or subdistrict level).
+        # The division code. A level-5 address code for a town or sub-district is recommended.
         self.division_code = division_code
-        # Purchaser ID
+        # The purchaser ID.
         # 
         # This parameter is required.
         self.purchaser_id = purchaser_id

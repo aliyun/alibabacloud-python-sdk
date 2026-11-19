@@ -10,7 +10,7 @@ class ListCategoriesRequest(DaraModel):
         self,
         body: main_models.CategoryListQuery = None,
     ):
-        # Category query parameters
+        # The category query parameters.
         self.body = body
 
     def validate(self):

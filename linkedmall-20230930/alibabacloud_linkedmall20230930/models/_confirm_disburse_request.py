@@ -10,7 +10,7 @@ class ConfirmDisburseRequest(DaraModel):
         self,
         body: main_models.ConfirmDisburseCmd = None,
     ):
-        # The request body for confirming the receipt of goods.
+        # The request parameters for confirming receipt.
         # 
         # This parameter is required.
         self.body = body

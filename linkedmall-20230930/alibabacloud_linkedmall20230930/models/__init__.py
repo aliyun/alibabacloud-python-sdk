@@ -84,6 +84,8 @@ from ._sku_sale_info import SkuSaleInfo
 from ._sku_sale_info_list_query import SkuSaleInfoListQuery
 from ._sku_sale_info_list_result import SkuSaleInfoListResult
 from ._sku_spec import SkuSpec
+from ._stop_distribution_channel_command import StopDistributionChannelCommand
+from ._stop_distribution_channel_result import StopDistributionChannelResult
 from ._stop_distribution_command import StopDistributionCommand
 from ._stop_distribution_result import StopDistributionResult
 from ._cancel_refund_order_response import CancelRefundOrderResponse
@@ -220,6 +222,8 @@ __all__ = [
     SkuSaleInfoListQuery,
     SkuSaleInfoListResult,
     SkuSpec,
+    StopDistributionChannelCommand,
+    StopDistributionChannelResult,
     StopDistributionCommand,
     StopDistributionResult,
     CancelRefundOrderResponse,

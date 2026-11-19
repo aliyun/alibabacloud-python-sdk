@@ -9,6 +9,8 @@ class MemberAccountRequest(DaraModel):
         self,
         shop_id: str = None,
     ):
+        # The shop ID.
+        # 
         # This parameter is required.
         self.shop_id = shop_id
 

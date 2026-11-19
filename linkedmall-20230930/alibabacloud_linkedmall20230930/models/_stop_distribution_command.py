@@ -13,10 +13,15 @@ class StopDistributionCommand(DaraModel):
         request_time: str = None,
         request_user: str = None,
     ):
+        # The LM shop ID.
         self.lm_shop_id = lm_shop_id
+        # The product ID.
         self.product_id = product_id
+        # The request ID.
         self.request_id = request_id
+        # The submission time.
         self.request_time = request_time
+        # The submitter.
         self.request_user = request_user
 
     def validate(self):

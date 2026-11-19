@@ -10,12 +10,15 @@ from darabonba.model import DaraModel
 class SearchProductsResponseBody(DaraModel):
     def __init__(
         self,
+        next_cursor: str = None,
         products: List[main_models.SearchProductsResponseBodyProducts] = None,
         total: int = None,
     ):
-        # Product collection
+        # The cursor for the next page.
+        self.next_cursor = next_cursor
+        # The product collection.
         self.products = products
-        # Total quantity
+        # The total number of items.
         self.total = total
 
     def validate(self):
@@ -29,6 +32,9 @@ class SearchProductsResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.next_cursor is not None:
+            result['nextCursor'] = self.next_cursor
+
         result['products'] = []
         if self.products is not None:
             for k1 in self.products:
@@ -41,6 +47,9 @@ class SearchProductsResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('nextCursor') is not None:
+            self.next_cursor = m.get('nextCursor')
+
         self.products = []
         if m.get('products') is not None:
             for k1 in m.get('products'):
@@ -82,57 +91,57 @@ class SearchProductsResponseBodyProducts(DaraModel):
         tax_rate: int = None,
         trade_mode: str = None,
     ):
-        # Brand name
+        # The brand name.
         self.band_name = band_name
-        # Reason for unsellable status
+        # The reason why the product is unavailable for sale.
         self.can_not_sell_reason = can_not_sell_reason
-        # Whether the product is sellable (calculated value)
+        # Indicates whether the product is available for sale. This is a calculated value.
         self.can_sell = can_sell
-        # Category
+        # The category chain.
         self.category_chain = category_chain
-        # Billing cycle
+        # The billing cycle.
         self.credit = credit
-        # Price difference range
+        # The price difference range.
         self.diff_price = diff_price
-        # Distribution purchase price range
+        # The distribution purchase price range.
         self.distribution_price = distribution_price
-        # Distribution premium rate range
+        # The distribution premium rate range.
         self.distribution_price_ratio = distribution_price_ratio
-        # Source platform
+        # The source platform.
         self.external_platform_type = external_platform_type
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Last modified time.
+        # The last modification time.
         self.gmt_modified = gmt_modified
-        # Whether the product is in inventory
+        # Specifies whether the product is added to the inventory.
         self.in_group = in_group
-        # Inventory time
+        # The time when the product was added to the inventory. The format is yyyy-MM-dd HH:mm:ss.
         self.in_group_time = in_group_time
-        # Inventory risk level
+        # The inventory risk level.
         self.inventory_risk_level = inventory_risk_level
-        # Invoice type
+        # The invoice type.
         self.invoice_type = invoice_type
-        # LM product ID
+        # The LM product ID.
         self.lm_item_id = lm_item_id
-        # Product main image URL
+        # The main image URL of the product.
         self.pic_url = pic_url
-        # Suggested retail price range
+        # The suggested retail price range.
         self.platform_price = platform_price
-        # Strikethrough price range
+        # The strikethrough price range.
         self.platform_reserve_price = platform_reserve_price
-        # Product ID
+        # The product ID.
         self.product_id = product_id
-        # Product name
+        # The product name.
         self.product_name = product_name
-        # Channel store name
+        # The channel store name.
         self.shop_name = shop_name
-        # Accumulated sales volume
+        # The cumulative sales volume.
         self.sold_quantity = sold_quantity
-        # Tax code
+        # The tax code.
         self.tax_code = tax_code
-        # Tax rate
+        # The tax rate.
         self.tax_rate = tax_rate
-        # Sales pattern
+        # The sales mode.
         self.trade_mode = trade_mode
 
     def validate(self):
@@ -322,15 +331,15 @@ class SearchProductsResponseBodyProductsCategoryChain(DaraModel):
         name: str = None,
         parent_id: int = None,
     ):
-        # Category ID
+        # The category ID.
         self.category_id = category_id
-        # Is leaf node
+        # Indicates whether the node is a leaf node.
         self.is_leaf = is_leaf
-        # Level
+        # The level.
         self.level = level
-        # Category name
+        # The category name.
         self.name = name
-        # Parent class ID
+        # The parent category ID.
         self.parent_id = parent_id
 
     def validate(self):

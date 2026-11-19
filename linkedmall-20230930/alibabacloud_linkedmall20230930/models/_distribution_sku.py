@@ -22,19 +22,33 @@ class DistributionSku(DaraModel):
         tax_rate: int = None,
         title: str = None,
     ):
+        # The alias.
         self.alias_title = alias_title
+        # The barcode.
         self.bar_code = bar_code
+        # The maximum acceptable credit period.
         self.credit_period = credit_period
+        # The consignment supply price.
         self.dx_price = dx_price
+        # Specifies whether credit periods are supported.
         self.has_credit = has_credit
+        # Specifies whether invoicing is supported.
         self.has_invoice = has_invoice
+        # The distribution supply price.
         self.jx_price = jx_price
+        # The image.
         self.pic_url = pic_url
+        # The inventory.
         self.quantity = quantity
+        # sku id
         self.sku_id = sku_id
+        # The status.
         self.sku_status = sku_status
+        # The tax code.
         self.tax_code = tax_code
+        # The tax rate.
         self.tax_rate = tax_rate
+        # The name.
         self.title = title
 
     def validate(self):

@@ -16,10 +16,15 @@ class DistributeProductCommand(DaraModel):
         request_time: str = None,
         request_user: str = None,
     ):
+        # The LM shop ID.
         self.lm_shop_id = lm_shop_id
+        # The distributed products.
         self.products = products
+        # The request ID.
         self.request_id = request_id
+        # The submission time.
         self.request_time = request_time
+        # The submitter.
         self.request_user = request_user
 
     def validate(self):

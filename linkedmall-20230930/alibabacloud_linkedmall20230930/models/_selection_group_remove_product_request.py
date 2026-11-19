@@ -12,13 +12,13 @@ class SelectionGroupRemoveProductRequest(DaraModel):
         product_ids: List[str] = None,
         purchaser_id: str = None,
     ):
-        # A list of IDs for the products to be removed from stock.
-        # 
+        # The list of product IDs to be dispatched.
+        # > 
         # > - A single call supports a maximum of 30 products.
         # 
         # This parameter is required.
         self.product_ids = product_ids
-        # The ID of the purchaser.
+        # The purchaser ID.
         # 
         # This parameter is required.
         self.purchaser_id = purchaser_id

@@ -23,29 +23,29 @@ class ProductSaleInfo(DaraModel):
         skus: List[main_models.SkuSaleInfo] = None,
         title: str = None,
     ):
-        # Is sellable, calculated value
+        # The calculated value that indicates whether the product is sellable.
         self.can_sell = can_sell
-        # Region code
+        # The division code.
         self.division_code = division_code
-        # Fuzzy inventory quantity.
+        # The fuzzy inventory.
         self.fuzzy_quantity = fuzzy_quantity
-        # Purchase limit configuration
+        # The purchase limit configuration.
         self.limit_rules = limit_rules
-        # LM product ID
+        # The LM product ID.
         self.lm_item_id = lm_item_id
-        # Product ID
+        # The product ID.
         self.product_id = product_id
-        # Product status
+        # The product status.
         self.product_status = product_status
-        # Inventory
+        # The inventory.
         self.quantity = quantity
-        # API request ID
+        # The API request ID.
         self.request_id = request_id
-        # Channel shop ID
+        # The channel shop ID.
         self.shop_id = shop_id
-        # SKU collection
+        # The SKU collection.
         self.skus = skus
-        # Title
+        # The title.
         self.title = title
 
     def validate(self):

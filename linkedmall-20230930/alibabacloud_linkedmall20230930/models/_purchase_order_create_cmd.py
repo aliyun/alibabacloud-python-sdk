@@ -16,27 +16,23 @@ class PurchaseOrderCreateCmd(DaraModel):
         outer_purchase_order_id: str = None,
         product_list: List[main_models.ProductDTO] = None,
     ):
-        # User ID in the distributor\\"s business, customized by the distributor.
-        # 
-        # >Notice: 
-        # 
-        # Allocate different buyer IDs for different buyers.
+        # The user ID in the distributor business, which is defined by the distributor.
+        # >Notice: Assign different buyerIds to different buyers.</notice>
         # 
         # This parameter is required.
         self.buyer_id = buyer_id
-        # Address information.
+        # The address information.
         # 
         # This parameter is required.
         self.delivery_address = delivery_address
-        # Extension information.
+        # The extended information.
         self.ext_info = ext_info
-        # Order ID in the distributor\\"s business, customized by the distributor.
+        # The order ID in the distributor business, which is defined by the distributor.
         # 
         # This parameter is required.
         self.outer_purchase_order_id = outer_purchase_order_id
-        # Product collection.
-        # 
-        # > Maximum number of SKUs per purchase order: 20.
+        # The product list.
+        # > Maximum number of SKUs per purchase order: 20
         # 
         # This parameter is required.
         self.product_list = product_list

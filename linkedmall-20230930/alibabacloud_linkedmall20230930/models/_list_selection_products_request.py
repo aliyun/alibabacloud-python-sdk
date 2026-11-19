@@ -7,11 +7,14 @@ from darabonba.model import DaraModel
 class ListSelectionProductsRequest(DaraModel):
     def __init__(
         self,
+        cursor: str = None,
         page_number: int = None,
         page_size: int = None,
         purchaser_id: str = None,
     ):
-        # The page number. The value must be 1 or greater.
+        # The cursor.
+        self.cursor = cursor
+        # The current page number. Pages start from 1.
         # 
         # This parameter is required.
         self.page_number = page_number
@@ -32,6 +35,9 @@ class ListSelectionProductsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cursor is not None:
+            result['cursor'] = self.cursor
+
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
 
@@ -45,6 +51,9 @@ class ListSelectionProductsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cursor') is not None:
+            self.cursor = m.get('cursor')
+
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
 

@@ -12,13 +12,13 @@ class SelectionGroupAddProductRequest(DaraModel):
         product_ids: List[str] = None,
         purchaser_id: str = None,
     ):
-        # Collection of product IDs to add
-        # 
-        # > - You can add up to 30 products per call.
+        # The IDs of the products to be added to the selection pool.
+        # > 
+        # > - A maximum of 30 products can be added in a single call.
         # 
         # This parameter is required.
         self.product_ids = product_ids
-        # Purchaser ID
+        # The ID of the purchaser.
         # 
         # This parameter is required.
         self.purchaser_id = purchaser_id

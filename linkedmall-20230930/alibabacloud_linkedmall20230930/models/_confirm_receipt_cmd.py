@@ -9,6 +9,7 @@ class ConfirmReceiptCmd(DaraModel):
         self,
         dispute_id: str = None,
     ):
+        # The refund dispute ID.
         self.dispute_id = dispute_id
 
     def validate(self):

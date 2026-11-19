@@ -23,23 +23,23 @@ class Shop(DaraModel):
     ):
         # The partner shops.
         self.cooperation_shops = cooperation_shops
-        # The ID of the distributor.
+        # The distributor ID.
         self.distributor_id = distributor_id
         # The end time.
         self.end_date = end_date
-        # The ID of the purchaser.
+        # The purchaser ID.
         self.purchaser_id = purchaser_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the shop.
+        # The shop ID.
         self.shop_id = shop_id
-        # The name of the shop.
+        # The shop name.
         self.shop_name = shop_name
-        # The type of the shop.
+        # The shop type.
         self.shop_type = shop_type
         # The start time.
         self.start_date = start_date
-        # The status of the shop.
+        # The shop status.
         self.status = status
 
     def validate(self):

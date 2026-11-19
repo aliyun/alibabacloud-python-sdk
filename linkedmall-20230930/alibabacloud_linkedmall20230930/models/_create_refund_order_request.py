@@ -10,7 +10,7 @@ class CreateRefundOrderRequest(DaraModel):
         self,
         body: main_models.RefundOrderCmd = None,
     ):
-        # Create a return order
+        # Creates a reverse ticket.
         # 
         # This parameter is required.
         self.body = body
