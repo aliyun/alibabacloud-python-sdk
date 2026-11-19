@@ -16,8 +16,9 @@ class UpdateStandardWordRootRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The update instruction.
+        # The update command.
         # 
         # This parameter is required.
         self.update_command = update_command
@@ -65,21 +66,21 @@ class UpdateStandardWordRootRequestUpdateCommand(DaraModel):
         name: str = None,
         old_name: str = None,
     ):
-        # The abbreviation of the root word.
+        # The abbreviation of the word root.
         # 
         # This parameter is required.
         self.abbreviation = abbreviation
-        # The description of the root word.
+        # The description of the word root.
         self.description = description
-        # The full name of the root word.
+        # The full name of the word root.
         # 
         # This parameter is required.
         self.full_name = full_name
-        # The name of the root word.
+        # The name of the word root.
         # 
         # This parameter is required.
         self.name = name
-        # The name of the root word before the update.
+        # The original name of the word root.
         # 
         # This parameter is required.
         self.old_name = old_name

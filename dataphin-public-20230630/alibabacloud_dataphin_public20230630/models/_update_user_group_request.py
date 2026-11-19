@@ -18,8 +18,9 @@ class UpdateUserGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The command to edit the user group.
+        # The update user group command.
         self.update_command = update_command
 
     def validate(self):
@@ -64,15 +65,15 @@ class UpdateUserGroupRequestUpdateCommand(DaraModel):
         id: str = None,
         name: str = None,
     ):
-        # The list of administrator user IDs for the user group.
+        # The user group administrators.
         self.admin_user_id_list = admin_user_id_list
-        # The description of the user group.
+        # The description.
         self.description = description
-        # The ID of the user group.
+        # The user group ID.
         # 
         # This parameter is required.
         self.id = id
-        # The name of the user group.
+        # The user group name.
         self.name = name
 
     def validate(self):

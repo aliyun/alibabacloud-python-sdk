@@ -21,7 +21,7 @@ class GetDataServiceAuthorizedProjectsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The details of the backend exception.
         self.message = message
         # The list of projects.
         self.project_list = project_list

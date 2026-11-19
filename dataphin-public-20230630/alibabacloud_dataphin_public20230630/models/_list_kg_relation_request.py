@@ -20,9 +20,9 @@ class ListKgRelationRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The relationship type code.
+        # The relation type code.
         # 
         # This parameter is required.
         self.relation_type = relation_type

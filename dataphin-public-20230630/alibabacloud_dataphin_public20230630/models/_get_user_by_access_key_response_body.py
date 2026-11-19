@@ -17,15 +17,15 @@ class GetUserByAccessKeyResponseBody(DaraModel):
         success: bool = None,
         user_info: main_models.GetUserByAccessKeyResponseBodyUserInfo = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message returned for the request.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The user information.
         self.user_info = user_info
@@ -99,22 +99,19 @@ class GetUserByAccessKeyResponseBodyUserInfo(DaraModel):
         self.display_name = display_name
         # The Dataphin user ID.
         self.id = id
-        # The email address of the user.
+        # The email address.
         self.mail = mail
         # The nickname of the user.
         self.nick_name = nick_name
-        # The account source type, such as ALIYUN_OAUTH2, PUBLICCLOUD_OAUTH2, BUC, or APSARA.
+        # The source type of the account, such as ALIYUN_OAUTH2, PUBLICCLOUD_OAUTH2, BUC, or APSARA.
         self.source_type = source_type
-        # The source account ID of the user during SSO integration.
+        # The source account ID of the user when SSO is integrated.
         self.source_user_id = source_user_id
-        # The tenant member status. Valid values:
-        # - NORMAL: Normal.
-        # - DEACTIVATE: Deactivated.
-        # - DELETE: Deleted.
+        # The status of the tenant member. Valid values: NORMAL, DEACTIVATE, and DELETE.
         self.status = status
-        # The list of tenant-level roles assigned to the AK/SK owner in the current tenant.
+        # The list of tenant-level roles. These are the roles of the user to whom the AccessKey ID and AccessKey secret belong in the current tenant.
         self.tenant_roles = tenant_roles
-        # The username of the account.
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -199,7 +196,7 @@ class GetUserByAccessKeyResponseBodyUserInfoTenantRoles(DaraModel):
         role_key: str = None,
         role_name: str = None,
     ):
-        # The role identifier, such as SUPER_ADMIN or COMMON_USER.
+        # The role key, such as SUPER_ADMIN or COMMON_USER.
         self.role_key = role_key
         # The role name.
         self.role_name = role_name

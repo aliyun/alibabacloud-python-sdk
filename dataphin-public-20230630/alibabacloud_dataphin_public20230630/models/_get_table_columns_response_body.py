@@ -23,11 +23,11 @@ class GetTableColumnsResponseBody(DaraModel):
         self.column_list = column_list
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The details of the backend response exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Specifies whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -116,19 +116,19 @@ class GetTableColumnsResponseBodyColumnList(DaraModel):
         table_name: str = None,
         visit_count_30d: int = None,
     ):
-        # The ID of the data classification.
+        # The data classification ID.
         self.classify_id = classify_id
-        # The name of the data classification.
+        # The data classification name.
         self.classify_name = classify_name
-        # The comment of the field.
+        # The field comment.
         self.comment = comment
         # The creation time, in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The creator.
         self.creator = creator
-        # The ID of the data source.
+        # The data source ID.
         self.data_source_id = data_source_id
-        # The type of the data source.
+        # The data source type.
         self.data_source_type = data_source_type
         # The data type.
         self.data_type = data_type
@@ -136,31 +136,31 @@ class GetTableColumnsResponseBodyColumnList(DaraModel):
         self.default_value = default_value
         # The display name of the field.
         self.display_name = display_name
-        # The environment to which the field belongs. Valid values: dev and prod.
+        # The environment to which the table belongs. Valid values: dev and prod.
         self.env = env
         # The GUID of the column.
         self.guid = guid
-        # Indicates whether the field is a foreign key.
+        # Specifies whether the column is a foreign key.
         self.is_foreign_key = is_foreign_key
-        # Indicates whether the field is a partition key.
+        # Specifies whether the column is a partition key.
         self.is_partition_column = is_partition_column
-        # Indicates whether the field is a primary key.
+        # Specifies whether the column is a primary key.
         self.is_primary_key = is_primary_key
-        # The user who last modified the field.
+        # The last modifier.
         self.last_modifier = last_modifier
-        # The abbreviation of the data security level.
+        # The abbreviation of the data classification level.
         self.level_abbreviation = level_abbreviation
         # The modification time, in the YYYY-MM-DD HH:mm:ss format.
         self.modify_time = modify_time
-        # The name of the field.
+        # The field name.
         self.name = name
-        # Indicates whether the field can be null.
+        # Specifies whether the column can be null.
         self.nullable = nullable
-        # The sequence number.
+        # The ordinal number.
         self.seq_number = seq_number
         # The GUID of the table.
         self.table_guid = table_guid
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
         # The number of queries in the last 30 days.
         self.visit_count_30d = visit_count_30d

@@ -17,7 +17,7 @@ class ListDataDomainsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The query result.
         self.data = data
@@ -27,7 +27,7 @@ class ListDataDomainsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -87,7 +87,7 @@ class ListDataDomainsResponseBodyData(DaraModel):
         self,
         data_domain_list: List[main_models.ListDataDomainsResponseBodyDataDataDomainList] = None,
     ):
-        # The details of the data domains.
+        # The data domain details.
         self.data_domain_list = data_domain_list
 
     def validate(self):
@@ -141,23 +141,23 @@ class ListDataDomainsResponseBodyDataDataDomainList(DaraModel):
         self.biz_unit_id = biz_unit_id
         # The description of the business object.
         self.description = description
-        # The display name of the data domain.
+        # The display name.
         self.display_name = display_name
         # The creation time.
         self.gmt_create = gmt_create
         # The update time.
         self.gmt_modified = gmt_modified
-        # The ID of the data domain.
+        # The data domain ID.
         self.id = id
-        # The ID of the user who last modified the data domain.
+        # The user ID of the last modifier.
         self.last_modifier = last_modifier
-        # The name of the user who last modified the data domain.
+        # The name of the last modifier.
         self.last_modifier_name = last_modifier_name
-        # The name of the data domain.
+        # The name.
         self.name = name
-        # The ID of the owner of the business object.
+        # The user ID of the business object owner.
         self.owner_name = owner_name
-        # The ID of the owner of the business object.
+        # The user ID of the business object owner.
         self.owner_user_id = owner_user_id
         # The IDs of the parent data domains.
         self.parent_id = parent_id

@@ -23,7 +23,7 @@ class ListQualityRuleTasksResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The backend exception details.
         self.message = message
-        # The paged query result.
+        # The paged query results.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
@@ -88,7 +88,7 @@ class ListQualityRuleTasksResponseBodyPageResult(DaraModel):
         quality_rule_task_list: List[main_models.ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList] = None,
         total_count: int = None,
     ):
-        # The paged quality rule task list.
+        # The paged list of quality rule tasks.
         self.quality_rule_task_list = quality_rule_task_list
         # The total number of records.
         self.total_count = total_count
@@ -149,29 +149,29 @@ class ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList(DaraModel):
         watch_id: int = None,
         watch_task_id: int = None,
     ):
-        # The business date.
+        # The business date. Format: YYYY-MM-DD.
         self.biz_date = biz_date
         # The business date format.
         self.biz_date_format = biz_date_format
-        # The creation time.
+        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The creator.
         self.creator = creator
-        # The end time.
+        # The end time. The format is YYYY-MM-DD HH:mm:ss.
         self.end_time = end_time
-        # The rule task ID.
+        # The ID of the rule task.
         self.id = id
-        # The ID of the user who last modified the task.
+        # The ID of the user who last updated the task.
         self.modifier = modifier
-        # The modification time.
+        # The update time. The format is YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
-        # The rule ID.
+        # The ID of the rule.
         self.rule_id = rule_id
-        # The start time.
+        # The start time. The format is YYYY-MM-DD HH:mm:ss.
         self.start_time = start_time
-        # The task status.
+        # The status of the task.
         self.status = status
-        # The template ID.
+        # The ID of the template.
         self.template_id = template_id
         # The name of the validated object.
         self.validate_object_name = validate_object_name
@@ -181,9 +181,9 @@ class ListQualityRuleTasksResponseBodyPageResultQualityRuleTaskList(DaraModel):
         self.validate_partition = validate_partition
         # Indicates whether the validation is successful.
         self.validate_success = validate_success
-        # The watch ID.
+        # The ID of the associated quality watchtask.
         self.watch_id = watch_id
-        # The watch task ID. This ID is empty for trial run tasks.
+        # The ID of the watchtask. This ID is empty for trial rule tasks.
         self.watch_task_id = watch_task_id
 
     def validate(self):

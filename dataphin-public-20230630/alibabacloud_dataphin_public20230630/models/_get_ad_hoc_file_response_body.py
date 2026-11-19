@@ -15,9 +15,9 @@ class GetAdHocFileResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
-        # The details of the custom query file.
+        # The details of the ad hoc query file.
         self.file_info = file_info
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -25,7 +25,7 @@ class GetAdHocFileResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -95,7 +95,7 @@ class GetAdHocFileResponseBodyFileInfo(DaraModel):
         self.content = content
         # The creator.
         self.creator = creator
-        # The directory where the file is located.
+        # The directory of the file.
         self.directory = directory
         # The file ID.
         self.id = id

@@ -16,8 +16,9 @@ class UpdateDataSourceBasicInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The basic information to edit for the data source.
+        # The update of the basic information for a data source.
         # 
         # This parameter is required.
         self.update_command = update_command

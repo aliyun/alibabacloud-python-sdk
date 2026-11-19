@@ -121,21 +121,21 @@ class GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo(DaraModel)
         table_task_id: int = None,
         table_type: str = None,
     ):
-        # The business date. Format: YYYY-MM-DD.
+        # The business date in the YYYY-MM-DD format.
         self.biz_date = biz_date
-        # The Chinese name of the business unit.
+        # The Chinese display name of the business unit.
         self.biz_unit_display_name = biz_unit_display_name
         # The ID of the business unit.
         self.biz_unit_id = biz_unit_id
         # The name of the business unit.
         self.biz_unit_name = biz_unit_name
-        # The classification abbreviation.
+        # The abbreviation of the classification.
         self.classify_abbreviation = classify_abbreviation
-        # The classification ID.
+        # The ID of the classification.
         self.classify_id = classify_id
-        # The classification name.
+        # The name of the classification.
         self.classify_name = classify_name
-        # The creation time. Format: YYYY-MM-DD HH:mm:ss.
+        # The creation time in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The creator.
         self.creator = creator
@@ -143,35 +143,35 @@ class GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo(DaraModel)
         self.datasource_id = datasource_id
         # The name of the data source.
         self.datasource_name = datasource_name
-        # The field description.
+        # The description of the field.
         self.field_description = field_description
         # The ID of the field.
         self.field_id = field_id
         # The name of the field.
         self.field_name = field_name
-        # Indicates whether a better match is available.
+        # Indicates whether a better matched result exists.
         self.has_better_rule = has_better_rule
-        # The recognition result ID.
+        # The ID of the recognition result.
         self.id = id
         # The ID of the identification record.
         self.identify_record_id = identify_record_id
-        # Indicates whether a custom identification rule is used.
+        # Indicates whether a custom tagging rule is used.
         self.is_custom_identify = is_custom_identify
         # Indicates whether the item is locked.
         self.is_locked = is_locked
-        # The abbreviation of the classification level.
+        # The abbreviation of the level.
         self.level_abbreviation = level_abbreviation
-        # The color of the classification level.
+        # The color of the level.
         self.level_color = level_color
-        # The classification level.
+        # The grading level.
         self.level_index = level_index
-        # The name of the classification level.
+        # The name of the level.
         self.level_name = level_name
         # The modifier.
         self.modifier = modifier
         # The modification time in the YYYY-MM-DD HH:mm:ss format.
         self.modify_time = modify_time
-        # The Chinese name of the project.
+        # The Chinese display name of the project.
         self.project_display_name = project_display_name
         # The ID of the project.
         self.project_id = project_id
@@ -181,11 +181,11 @@ class GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo(DaraModel)
         self.scan_task_id = scan_task_id
         # The status. Valid values: ENABLE (enabled) and DISABLE (disabled).
         self.status = status
-        # The table catalog.
+        # The catalog of the table.
         self.table_catalog = table_catalog
-        # The table description.
+        # The description of the table.
         self.table_description = table_description
-        # The table environment.
+        # The environment of the table.
         self.table_env = table_env
         # The ID of the table.
         self.table_id = table_id
@@ -193,15 +193,7 @@ class GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo(DaraModel)
         self.table_name = table_name
         # The ID of the table identification task.
         self.table_task_id = table_task_id
-        # The table type. Valid values:
-        # - LOGIC_TABLE: logical table
-        # - LOGIC_DIM_TABLE: logical dimension table
-        # - LOGIC_FACT_TABLE: logical fact table
-        # - LOGIC_SUM_TABLE: logical aggregate table
-        # - LOGIC_ODM_SOURCE: source table
-        # - LOGIC_LABEL_TABLE: logical label table
-        # - PHYSICAL_TABLE: physical table
-        # - REAL_TIME_LOGIC_TABLE: real-time configured logical table
+        # The type of the table. Valid values: LOGIC_TABLE (logical table), LOGIC_DIM_TABLE (logical dimension table), LOGIC_FACT_TABLE (logical fact table), LOGIC_SUM_TABLE (logical aggregate table), LOGIC_ODM_SOURCE (source table), LOGIC_LABEL_TABLE (logical label table), PHYSICAL_TABLE (physical table), and REAL_TIME_LOGIC_TABLE (real-time configured logical table).
         self.table_type = table_type
 
     def validate(self):

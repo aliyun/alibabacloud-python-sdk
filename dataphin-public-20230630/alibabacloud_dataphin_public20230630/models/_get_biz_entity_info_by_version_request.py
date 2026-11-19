@@ -21,12 +21,13 @@ class GetBizEntityInfoByVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
         # The business type. Valid values: BIZ_OBJECT and BIZ_PROCESS.
         # 
         # This parameter is required.
         self.type = type
-        # The version.
+        # The version ID.
         # 
         # This parameter is required.
         self.version_id = version_id

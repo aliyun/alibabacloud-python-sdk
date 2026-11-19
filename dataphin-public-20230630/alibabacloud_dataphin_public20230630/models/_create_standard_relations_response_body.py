@@ -27,7 +27,7 @@ class CreateStandardRelationsResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class CreateStandardRelationsResponseBodyData(DaraModel):
         not_exist_standard_id_list: List[int] = None,
         success_count: int = None,
     ):
-        # The list of standard IDs that do not exist.
+        # The list of non-existent standard IDs.
         self.not_exist_standard_id_list = not_exist_standard_id_list
-        # The number of successfully added associations.
+        # The number of successful additions.
         self.success_count = success_count
 
     def validate(self):

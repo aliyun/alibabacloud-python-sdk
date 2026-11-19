@@ -17,15 +17,15 @@ class GetQualityArchiveTableProgressResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The asynchronous task progress details.
+        # The progress details of the asynchronous task.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,17 +88,17 @@ class GetQualityArchiveTableProgressResponseBodyData(DaraModel):
         error_message: str = None,
         status: str = None,
     ):
-        # The archived table ID. This parameter is returned after the task succeeds and can be used to switch the active table.
+        # The ID of the archive table. This parameter is returned after the task succeeds and can be used to switch the active table later.
         self.archive_table_id = archive_table_id
-        # The full name of the archived table. This parameter is returned after the task succeeds. When creating a table, the name includes the automatically appended _exception_data suffix.
+        # The full name of the archive table. This parameter is returned after the task succeeds. When a table is created, the _exception_data suffix is automatically appended to the name.
         self.archive_table_name = archive_table_name
-        # The reason for the task failure. This parameter is returned only when Status is FAILED.
+        # The cause of the task failure. This parameter is returned only when Status is FAILED.
         self.error_message = error_message
         # The task status. Valid values:
-        # - PROGRESS: In progress.
-        # - SUCCESS: Succeeded.
-        # - FAILED: Failed.
-        # - CANCEL: Canceled.
+        # - PROGRESS: The task is in progress.
+        # - SUCCESS: The task is successful.
+        # - FAILED: The task failed.
+        # - CANCEL: The task is canceled.
         self.status = status
 
     def validate(self):

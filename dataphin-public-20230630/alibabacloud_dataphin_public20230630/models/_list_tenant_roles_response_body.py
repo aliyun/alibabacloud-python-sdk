@@ -17,15 +17,15 @@ class ListTenantRolesResponseBody(DaraModel):
         role_list: List[main_models.ListTenantRolesResponseBodyRoleList] = None,
         success: bool = None,
     ):
-        # The request error code. OK indicates that the request is successful.
+        # The error code. A value of OK indicates that the request is normal.
         self.code = code
-        # The HTTP status code of the backend response.
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message of the request.
+        # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The role list.
+        # The list of roles.
         self.role_list = role_list
         # Indicates whether the request is successful.
         self.success = success
@@ -106,32 +106,32 @@ class ListTenantRolesResponseBodyRoleList(DaraModel):
     ):
         # The JSON string of the permission set.
         self.auth_json = auth_json
-        # The user ID of the creator.
+        # The ID of the user who created the role.
         self.creator = creator
-        # The creation time.
+        # The time when the role was created.
         self.gmt_create = gmt_create
-        # The modification time.
+        # The time when the role was last modified.
         self.gmt_modified = gmt_modified
-        # The user ID of the modifier.
+        # The ID of the user who last modified the role.
         self.modifier = modifier
-        # The role description.
+        # The description of the role.
         self.role_desc = role_desc
-        # The role key.
+        # The key of the role.
         self.role_key = role_key
-        # The role name.
+        # The name of the role.
         self.role_name = role_name
-        # The role type. Valid values:
-        # - BUILD_IN: built-in role
-        # - CUSTOM: custom role
+        # The type of the role. Valid values:
+        # - BUILD_IN: built-in role.
+        # - CUSTOM: custom role.
         self.role_type = role_type
-        # The role status. Valid values:
-        # - ON: enabled
-        # - OFF: disabled
-        # - DEL: deleted
+        # The status of the role. Valid values:
+        # - ON: enabled.
+        # - OFF: disabled.
+        # - DEL: deleted.
         self.status = status
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The tenant type.
+        # The type of the tenant.
         self.tenant_type = tenant_type
 
     def validate(self):

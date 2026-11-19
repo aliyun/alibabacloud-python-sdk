@@ -21,13 +21,13 @@ class GetQualityAlertOfAllRuleScopeByWatchIdResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
-        # The alert settings details.
+        # The alert configuration details.
         self.quality_alert_info = quality_alert_info
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -93,9 +93,9 @@ class GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfo(DaraMod
         enable_alert_quality_owner: bool = None,
         watch_id: int = None,
     ):
-        # The duty roster alert channels.
+        # The on-call schedule alert channels.
         self.alert_duty_channel_list = alert_duty_channel_list
-        # The duty roster alert list.
+        # The on-call schedule alert list.
         self.alert_duty_list = alert_duty_list
         # The quality owner alert channels.
         self.alert_quality_owner_channel_list = alert_quality_owner_channel_list
@@ -103,7 +103,7 @@ class GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfo(DaraMod
         self.alert_user_channel_list = alert_user_channel_list
         # The user alert list.
         self.alert_user_list = alert_user_list
-        # Indicates whether alerting is enabled for the quality owner.
+        # Indicates whether alerting for quality owners is enabled.
         self.enable_alert_quality_owner = enable_alert_quality_owner
         # The monitored object ID.
         self.watch_id = watch_id
@@ -224,9 +224,9 @@ class GetQualityAlertOfAllRuleScopeByWatchIdResponseBodyQualityAlertInfoAlertDut
         id: str = None,
         name: str = None,
     ):
-        # The alert duty roster ID.
+        # The on-call schedule ID.
         self.id = id
-        # The alert duty roster name.
+        # The on-call schedule name.
         self.name = name
 
     def validate(self):

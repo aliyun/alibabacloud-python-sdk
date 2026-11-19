@@ -20,7 +20,7 @@ class ListDatasetsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The operator ID.
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -97,7 +97,7 @@ class ListDatasetsRequestDatasetQuery(DaraModel):
         self.storage_type = storage_type
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The dataset types. If this parameter is left empty, all types are queried.
+        # The dataset type. If this parameter is left empty, all types are queried.
         self.type_list = type_list
 
     def validate(self):

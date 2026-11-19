@@ -23,7 +23,7 @@ class ListBatchTemplatesResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The backend exception details.
         self.message = message
-        # The paging query result.
+        # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
@@ -88,7 +88,7 @@ class ListBatchTemplatesResponseBodyPageResult(DaraModel):
         template_list: List[main_models.ListBatchTemplatesResponseBodyPageResultTemplateList] = None,
         total_count: int = None,
     ):
-        # The paginated template record list.
+        # The list of paged template records.
         self.template_list = template_list
         # The total number of records.
         self.total_count = total_count
@@ -155,13 +155,13 @@ class ListBatchTemplatesResponseBodyPageResultTemplateList(DaraModel):
         share_runtime_resource: bool = None,
         status: str = None,
     ):
-        # The template submission comment.
+        # The submission comment for the template.
         self.comment = comment
         # The template content.
         self.content = content
-        # The latest version.
+        # The current latest version.
         self.current_version = current_version
-        # The datasource config of the database SQL template.
+        # The datasource config for the database SQL template.
         self.data_source_config = data_source_config
         # The template description.
         self.description = description
@@ -175,25 +175,25 @@ class ListBatchTemplatesResponseBodyPageResultTemplateList(DaraModel):
         self.gmt_create = gmt_create
         # The time when the template was updated. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_modified = gmt_modified
-        # The ID of the template. This ID is the same as the menu tree node ID.
+        # The template ID, which is the same as the menu tree node ID.
         self.id = id
         # The user who last updated the template.
         self.modifier = modifier
         # The ID of the user who last updated the template.
         self.modifier_id = modifier_id
-        # The name of the template.
+        # The template name.
         self.name = name
-        # The type of the node. Valid values: 10 (Shell) and 21 (Python).
+        # The node type. Valid values: 10 (Shell) and 21 (Python).
         self.operator_type = operator_type
-        # The owner of the template.
+        # The template owner.
         self.owner = owner
         # The ID of the template owner.
         self.owner_id = owner_id
         # The list of template parameters.
         self.params = params
-        # The ID of the project.
+        # The project ID.
         self.project_id = project_id
-        # The list of dependent Python third-party packages.
+        # The list of dependent third-party Python packages.
         self.python_module_list = python_module_list
         # The ID of the resource group in the production environment.
         self.resource_group_id = resource_group_id
@@ -201,7 +201,7 @@ class ListBatchTemplatesResponseBodyPageResultTemplateList(DaraModel):
         self.resource_group_name = resource_group_name
         # Indicates whether runtime resources are shared.
         self.share_runtime_resource = share_runtime_resource
-        # The status of the template. Valid values: 0 (draft), 2 (submitted), and 100 (in development).
+        # The template status. Valid values: 0 (Draft), 2 (Submitted), and 100 (In development).
         self.status = status
 
     def validate(self):
@@ -392,15 +392,21 @@ class ListBatchTemplatesResponseBodyPageResultTemplateListPythonModuleList(DaraM
         status: str = None,
         version: str = None,
     ):
-        # The ID of the Python third-party package.
+        # The ID of the third-party Python package.
         self.id = id
         # The installation time.
         self.install_time = install_time
-        # The name of the Python third-party package.
+        # The name of the third-party Python package.
         self.name = name
         # The Python version. Valid values: PYTHON_2_7, PYTHON_3_7, and PYTHON_3_11.
         self.python_version = python_version
-        # The status of the third-party package. Valid values: INSTALL_SUCCESS (installed successfully), INSTALL_FAILED (installation failed), INSTALLING (installing), UPGRADE_SUCCESS (upgraded successfully), UPGRADE_FAILED (upgrade failed), and UPGRADING (upgrading).
+        # The status of the third-party package. Valid values:
+        # - INSTALL_SUCCESS: Installation succeeded.
+        # - INSTALL_FAILED: Installation failed.
+        # - INSTALLING: Installation in progress.
+        # - UPGRADE_SUCCESS: Upgrade succeeded.
+        # - UPGRADE_FAILED: Upgrade failed.
+        # - UPGRADING: Upgrade in progress.
         self.status = status
         # The version of the third-party package.
         self.version = version
@@ -524,7 +530,7 @@ class ListBatchTemplatesResponseBodyPageResultTemplateListDataSourceConfig(DaraM
         self.ds_id = ds_id
         # The schema of the data source for the database SQL template.
         self.schema = schema
-        # The data source type of the database SQL template. Valid values: MYSQL, ORACLE, ADB_FOR_PG, OUSHUDB, PRESTO, POSTGRE_SQL, STARROCKS, CLICKHOUSE, ANALYTICDB, ADB_FOR_MYSQL_V3, GAUSSDB, SELECTDB, DORIS, SQL_SERVER, HOLOGRES, OPENGAUSS, DAMENG, OCEANBASE, TRINO, POLARDB_X2, LINDORM, EMR_SPARK_SERVERLESS, TDSQL_FOR_PG, TDSQL_FOR_MYSQL, GBASE_8A, and TDENGINE.
+        # The type of the data source for the database SQL template. Valid values: MYSQL, ORACLE, ADB_FOR_PG, OUSHUDB, PRESTO, POSTGRE_SQL, STARROCKS, CLICKHOUSE, ANALYTICDB, ADB_FOR_MYSQL_V3, GAUSSDB, SELECTDB, DORIS, SQL_SERVER, HOLOGRES, OPENGAUSS, DAMENG, OCEANBASE, TRINO, POLARDB_X2, LINDORM, EMR_SPARK_SERVERLESS, TDSQL_FOR_PG, TDSQL_FOR_MYSQL, GBASE_8A, and TDENGINE.
         self.type = type
 
     def validate(self):

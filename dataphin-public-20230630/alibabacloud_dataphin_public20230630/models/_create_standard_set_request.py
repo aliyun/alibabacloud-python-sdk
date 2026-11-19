@@ -14,7 +14,7 @@ class CreateStandardSetRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The create instruction.
+        # The create command.
         # 
         # This parameter is required.
         self.create_command = create_command
@@ -22,6 +22,7 @@ class CreateStandardSetRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -73,7 +74,7 @@ class CreateStandardSetRequestCreateCommand(DaraModel):
         offline_approval_config: main_models.CreateStandardSetRequestCreateCommandOfflineApprovalConfig = None,
         visibility_config: main_models.CreateStandardSetRequestCreateCommandVisibilityConfig = None,
     ):
-        # The approval configuration for going online.
+        # The online approval configuration.
         self.approval_config = approval_config
         # The code of the standard set.
         # 
@@ -83,19 +84,19 @@ class CreateStandardSetRequestCreateCommand(DaraModel):
         self.default_standard_template_id = default_standard_template_id
         # The description of the standard set.
         self.description = description
-        # The directory to which the standard set belongs.
+        # The parent folder.
         self.directory_reference = directory_reference
-        # The list of maintainers.
+        # The maintainers.
         self.maintainer_list = maintainer_list
-        # The list of member groups.
+        # The member group list.
         self.member_group_list = member_group_list
-        # The list of members.
+        # The member list.
         self.member_list = member_list
         # The name of the standard set.
         # 
         # This parameter is required.
         self.name = name
-        # The approval configuration for going offline.
+        # The offline approval configuration.
         self.offline_approval_config = offline_approval_config
         # The visibility configuration.
         self.visibility_config = visibility_config
@@ -199,10 +200,7 @@ class CreateStandardSetRequestCreateCommandVisibilityConfig(DaraModel):
     ):
         # The list of specified users who can view the standard set. This parameter takes effect only when the visibility type is set to SPECIFIED.
         self.specified_user_list = specified_user_list
-        # The visibility type. Valid values:
-        # - PUBLIC: visible to all users.
-        # - PRIVATE: visible only to standard set members and administrators.
-        # - SPECIFIED: visible only to specified users.
+        # The visibility type. Valid values: PUBLIC: Public. PRIVATE: Private, visible only to standard set members and administrators. SPECIFIED: Visible to specified users.
         # 
         # This parameter is required.
         self.type = type
@@ -241,9 +239,7 @@ class CreateStandardSetRequestCreateCommandOfflineApprovalConfig(DaraModel):
         is_submit_in_batch: bool = None,
         template_id: int = None,
     ):
-        # The approval process type. Valid values:
-        # - BY_DEFAULT: the default approval type.
-        # - BY_TEMPLATE: approval based on an approval template.
+        # The approval flow type. Valid values: BY_DEFAULT: Default approval type. BY_TEMPLATE: Based on an approval template.
         # 
         # This parameter is required.
         self.approval_type = approval_type
@@ -255,7 +251,7 @@ class CreateStandardSetRequestCreateCommandOfflineApprovalConfig(DaraModel):
         # 
         # This parameter is required.
         self.is_submit_in_batch = is_submit_in_batch
-        # The ID of the approval template. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+        # The ID of the approval template. This parameter takes effect only when the approval flow type is set to BY_TEMPLATE.
         self.template_id = template_id
 
     def validate(self):
@@ -301,7 +297,7 @@ class CreateStandardSetRequestCreateCommandDirectoryReference(DaraModel):
         self,
         directory: str = None,
     ):
-        # The directory to which the standard set belongs.
+        # The folder.
         # 
         # This parameter is required.
         self.directory = directory
@@ -334,9 +330,7 @@ class CreateStandardSetRequestCreateCommandApprovalConfig(DaraModel):
         is_submit_in_batch: bool = None,
         template_id: int = None,
     ):
-        # The approval process type. Valid values:
-        # - BY_DEFAULT: the default approval type.
-        # - BY_TEMPLATE: approval based on an approval template.
+        # The approval flow type. Valid values: BY_DEFAULT: Default approval type. BY_TEMPLATE: Based on an approval template.
         # 
         # This parameter is required.
         self.approval_type = approval_type
@@ -348,7 +342,7 @@ class CreateStandardSetRequestCreateCommandApprovalConfig(DaraModel):
         # 
         # This parameter is required.
         self.is_submit_in_batch = is_submit_in_batch
-        # The ID of the approval template. This parameter takes effect only when the approval process type is set to BY_TEMPLATE.
+        # The ID of the approval template. This parameter takes effect only when the approval flow type is set to BY_TEMPLATE.
         self.template_id = template_id
 
     def validate(self):

@@ -27,7 +27,7 @@ class ExecKgCypherResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -92,7 +92,7 @@ class ExecKgCypherResponseBodyData(DaraModel):
     ):
         # The list of edges.
         self.edge_list = edge_list
-        # The transformed execution statement.
+        # The converted execution statement.
         self.execute_cypher = execute_cypher
         # The list of nodes.
         self.node_list = node_list
@@ -168,7 +168,7 @@ class ExecKgCypherResponseBodyDataRowList(DaraModel):
         self,
         columns: List[main_models.ExecKgCypherResponseBodyDataRowListColumns] = None,
     ):
-        # The list of columns in the row.
+        # The list of columns.
         self.columns = columns
 
     def validate(self):
@@ -247,7 +247,7 @@ class ExecKgCypherResponseBodyDataNodeList(DaraModel):
         self.data_id = data_id
         # The entity type.
         self.entity_type = entity_type
-        # The list of entity record properties.
+        # The list of properties for the entity record.
         self.properties = properties
 
     def validate(self):
@@ -340,7 +340,7 @@ class ExecKgCypherResponseBodyDataEdgeList(DaraModel):
     ):
         # The data ID of the relationship record.
         self.data_id = data_id
-        # The list of relationship record properties.
+        # The list of properties for the relationship record.
         self.properties = properties
         # The relationship type.
         self.relation_type = relation_type

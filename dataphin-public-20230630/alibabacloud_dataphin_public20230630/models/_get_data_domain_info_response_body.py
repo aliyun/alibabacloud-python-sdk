@@ -15,7 +15,7 @@ class GetDataDomainInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The data domain details.
         self.data_domain_info = data_domain_info
@@ -25,7 +25,7 @@ class GetDataDomainInfoResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -117,9 +117,9 @@ class GetDataDomainInfoResponseBodyDataDomainInfo(DaraModel):
         self.last_modifier_name = last_modifier_name
         # The name.
         self.name = name
-        # The ID of the business object owner.
+        # The ID of the owner of the business object.
         self.owner_name = owner_name
-        # The ID of the business object owner.
+        # The ID of the owner of the business object.
         self.owner_user_id = owner_user_id
         # The ID of the parent data domain.
         self.parent_id = parent_id

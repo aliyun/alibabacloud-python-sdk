@@ -105,7 +105,15 @@ class GetQualityTemplateResponseBodyQualityTemplateInfo(DaraModel):
         type: str = None,
         type_name: str = None,
     ):
-        # The template category. Valid values: CONSISTENT: consistency, EFFECTIVE: effectiveness, TIMELINESE: timeliness, ACCURATE: accuracy, UNIQUENESS: uniqueness, COMPLETENESS: completeness, STABILITY: stability, and CUSTOM: custom.
+        # The template category. Valid values:
+        # - CONSISTENT: Consistency.
+        # - EFFECTIVE: Effectiveness.
+        # - TIMELINESE: Timeliness.
+        # - ACCURATE: Accuracy.
+        # - UNIQUENESS: Uniqueness.
+        # - COMPLETENESS: Completeness.
+        # - STABILITY: Stability.
+        # - CUSTOM: Custom.
         self.catalog = catalog
         # The display name of the template category.
         self.catalog_name = catalog_name
@@ -117,11 +125,11 @@ class GetQualityTemplateResponseBodyQualityTemplateInfo(DaraModel):
         self.creator_name = creator_name
         # The template description.
         self.description = description
-        # The rule configuration key-value pairs.
+        # The key-value pairs for rule configuration.
         self.form_property_list = form_property_list
         # The template ID.
         self.id = id
-        # Indicates whether the template is a system template.
+        # Specifies whether the template is a system template.
         self.is_system_template = is_system_template
         # The user ID of the last modifier.
         self.modifier = modifier
@@ -135,11 +143,42 @@ class GetQualityTemplateResponseBodyQualityTemplateInfo(DaraModel):
         self.owner = owner
         # The name of the owner.
         self.owner_name = owner_name
-        # Indicates whether all data source types are supported.
+        # Specifies whether all data source types are supported.
         self.support_all_data_source_type = support_all_data_source_type
-        # The supported specific data source types, such as MySQL, Oracle, Microsoft SQL Server, MaxCompute, and Hive.
+        # The specific data source types that are supported, such as MySQL, Oracle, Microsoft SQL Server, MaxCompute, and Hive.
         self.support_data_source_type_list = support_data_source_type_list
-        # The templatetype. Valid values: FIELD_NULL_VALUE_VALIDATE: field null value check, FIELD_EMPTY_STRING_VALIDATE: field empty character string check, FIELD_UNIQUE_VALIDATE: field uniqueness check, FIELD_GROUP_COUNT_VALIDATE: field unique value count check, FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: field duplicate value count check, FUNCTION_TIME_COMPARE: time function comparison, SINGLE_TABLE_TIME_COMPARE: non-partitioned table time field comparison, DOUBLE_TABLE_TIME_COMPARE: double-table time field comparison, FIELD_FORMAT_VALIDATE: field format check, FIELD_LENGTH_VALIDATE: field length check, FIELD_VALUE_RANGE_VALIDATE: field value range check, CODE_TABLE_COMPARE: lookup table reference comparison, STANDARD_CODE_TABLE_COMPARE: data standard lookup table reference comparison, SINGLE_TABLE_FIELD_VALUE_COMPARE: non-partitioned table field value consistency comparison, SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: non-partitioned table field statistical value consistency comparison, SINGLE_TABLE_FIELD_EXP_COMPARE: non-partitioned table field business logic consistency comparison, DOUBLE_TABLE_FIELD_VALUE_COMPARE: double-table field value consistency comparison, DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: double-table field statistical value consistency comparison, CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: cross-source double-table field statistical value consistency comparison, DOUBLE_TABLE_FIELD_EXP_COMPARE: double-table field business logic consistency comparison, TABLE_STABILITY_VALIDATE: table stability check, TABLE_FLUCTUATION_VALIDATE: table fluctuation check, FIELD_STABILITY_VALIDATE: field stability check, FIELD_FLUCTUATION_VALIDATE: field fluctuation check, CUSTOM_STATISTICAL_VALIDATE: custom statistical metric check, CUSTOM_DATA_DETAILS_VALIDATE: custom data details check, DATASOURCE_AVAILABLE_CHECK: data source connectivity check, TABLE_SCHEMA_CHECK: table schema change check, REAL_TIME_OFFLINE_COMPARE: real-time and offline comparison, REAL_TIME_STATISTICAL_VALIDATE: real-time statistical value check, and REAL_TIME_MULTI_CHAIN_COMPARE: real-time multi-link comparison.
+        # The templatetype. Valid values:
+        # - FIELD_NULL_VALUE_VALIDATE: Field null value check.
+        # - FIELD_EMPTY_STRING_VALIDATE: Field empty character check.
+        # - FIELD_UNIQUE_VALIDATE: Field uniqueness check.
+        # - FIELD_GROUP_COUNT_VALIDATE: Field unique value count check.
+        # - FIELD_DUPLICATE_VALUE_COUNT_VALIDATE: Field duplicate value count check.
+        # - FUNCTION_TIME_COMPARE: Time function comparison.
+        # - SINGLE_TABLE_TIME_COMPARE: Non-partitioned table time field comparison.
+        # - DOUBLE_TABLE_TIME_COMPARE: Double-table time field comparison.
+        # - FIELD_FORMAT_VALIDATE: Field format check.
+        # - FIELD_LENGTH_VALIDATE: Field length check.
+        # - FIELD_VALUE_RANGE_VALIDATE: Field value range check.
+        # - CODE_TABLE_COMPARE: Lookup table reference comparison.
+        # - STANDARD_CODE_TABLE_COMPARE: Data standard lookup table reference comparison.
+        # - SINGLE_TABLE_FIELD_VALUE_COMPARE: Non-partitioned table field value consistency comparison.
+        # - SINGLE_TABLE_FIELD_STATISTICAL_COMPARE: Non-partitioned table field statistical value consistency comparison.
+        # - SINGLE_TABLE_FIELD_EXP_COMPARE: Non-partitioned table field business logic consistency comparison.
+        # - DOUBLE_TABLE_FIELD_VALUE_COMPARE: Double-table field value consistency comparison.
+        # - DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Double-table field statistical value consistency comparison.
+        # - CROSS_DOUBLE_TABLE_FIELD_STATISTICAL_COMPARE: Cross-source double-table field statistical value consistency comparison.
+        # - DOUBLE_TABLE_FIELD_EXP_COMPARE: Double-table field business logic consistency comparison.
+        # - TABLE_STABILITY_VALIDATE: Table stability check.
+        # - TABLE_FLUCTUATION_VALIDATE: Table fluctuation check.
+        # - FIELD_STABILITY_VALIDATE: Field stability check.
+        # - FIELD_FLUCTUATION_VALIDATE: Field fluctuation check.
+        # - CUSTOM_STATISTICAL_VALIDATE: Custom statistical metric check.
+        # - CUSTOM_DATA_DETAILS_VALIDATE: Custom data details check.
+        # - DATASOURCE_AVAILABLE_CHECK: Data source connectivity check.
+        # - TABLE_SCHEMA_CHECK: Table schema change check.
+        # - REAL_TIME_OFFLINE_COMPARE: Real-time and offline comparison.
+        # - REAL_TIME_STATISTICAL_VALIDATE: Real-time statistical value check.
+        # - REAL_TIME_MULTI_CHAIN_COMPARE: Real-time multi-link comparison.
         self.type = type
         # The display name of the templatetype.
         self.type_name = type_name

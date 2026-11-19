@@ -62,7 +62,7 @@ class GetAssetMappingRelationsRequestAssetMappingQuery(DaraModel):
         guid: str = None,
         relation_type: str = None,
     ):
-        # The asset object type. Valid values: COLUMN (field) and INDEX (metric).
+        # The asset object type. Valid values: COLUMN: field. INDEX: metric.
         # 
         # This parameter is required.
         self.asset_type = asset_type
@@ -70,7 +70,7 @@ class GetAssetMappingRelationsRequestAssetMappingQuery(DaraModel):
         # 
         # This parameter is required.
         self.guid = guid
-        # The mapping relationship type. Valid values: VALID (mapped) and INVALID (invalid mapping).
+        # The mapping relationship type. Valid values: VALID: mapped. INVALID: invalid mapping.
         # 
         # This parameter is required.
         self.relation_type = relation_type

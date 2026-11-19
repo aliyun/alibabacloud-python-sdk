@@ -17,17 +17,17 @@ class ListDataServicePublishedApisResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Backend response code.
+        # The backend response code.
         self.code = code
-        # HTTP status code.
+        # The HTTP response code.
         self.http_status_code = http_status_code
-        # Backend exception details.
+        # The backend exception details.
         self.message = message
-        # Paginated query result.
+        # The paged query results.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListDataServicePublishedApisResponseBodyPageResult(DaraModel):
         api_list: List[main_models.ListDataServicePublishedApisResponseBodyPageResultApiList] = None,
         total_count: int = None,
     ):
-        # Paginated API list.
+        # The paged API list.
         self.api_list = api_list
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -153,49 +153,63 @@ class ListDataServicePublishedApisResponseBodyPageResultApiList(DaraModel):
         update_time: str = None,
         version: str = None,
     ):
-        # API ID.
+        # The API code.
         self.api_id = api_id
-        # API name.
+        # The API name.
         self.api_name = api_name
-        # Number of bound applications.
+        # The number of bound applications.
         self.app_count = app_count
-        # List of referenced application information.
+        # The list of referenced applications.
         self.app_info_list = app_info_list
-        # Application status. Valid values: 0 (not all applied), 1 (applied), 2 (no app, need to apply for an app first).
+        # The application status. Valid values:
+        # - 0: Not fully applied.
+        # - 1: Applied.
+        # - 2: No application. You must apply for an application first.
         self.apply_status = apply_status
-        # Number of calls.
+        # The number of calls.
         self.call_count = call_count
-        # Creation type. Valid values: 0 (custom mode), 1 (wizard mode), 2 (direct connection API).
+        # The creation type. Valid values:
+        # - 0: Custom mode.
+        # - 1: Wizard mode.
+        # - 2: Direct API connection.
         self.create_type = create_type
-        # Custom update frequency content.
+        # The custom content for the update frequency.
         self.custom_update_rate = custom_update_rate
-        # Publish time. Time format: yyyy-MM-dd HH:mm:ss.
+        # The publish time. Format: yyyy-MM-dd HH:mm:ss.
         self.deploy_time = deploy_time
-        # API description.
+        # The API description.
         self.description = description
-        # Call type. Valid values: 1 (synchronous), 2 (asynchronous).
+        # The execution mode. Valid values:
+        # - 1: Synchronous.
+        # - 2: Asynchronous.
         self.execute_mode = execute_mode
-        # Group ID.
+        # The group ID.
         self.group_id = group_id
-        # API group name.
+        # The API group name.
         self.group_name = group_name
-        # Service unit number.
+        # The service unit number.
         self.logic_unit_no = logic_unit_no
-        # Mode. Valid values: 0 (basic), 1 (dev_prod).
+        # The mode. Valid values:
+        # - 0: basic.
+        # - 1: dev_prod.
         self.mode = mode
-        # Owner ID.
+        # The owner ID.
         self.owner = owner
-        # Owner name.
+        # The owner.
         self.owner_user_name = owner_user_name
-        # Data service project ID.
+        # The data service project ID.
         self.project_id = project_id
-        # Service project name.
+        # The service project name.
         self.project_name = project_name
-        # Update frequency. Valid values: 0 (custom), 1 (daily), 2 (hourly), 3 (per minute).
+        # The update frequency. Valid values:
+        # - 0: Custom.
+        # - 1: Daily.
+        # - 2: Hourly.
+        # - 3: Every minute.
         self.update_rate = update_rate
-        # Modification time. Time format: yyyy-MM-dd HH:mm:ss.
+        # The update time. Format: yyyy-MM-dd HH:mm:ss.
         self.update_time = update_time
-        # API version.
+        # The API version.
         self.version = version
 
     def validate(self):
@@ -360,14 +374,14 @@ class ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList(DaraM
         app_key_str: str = None,
         app_name: str = None,
     ):
-        # Application ID.
+        # The application ID.
         self.app_id = app_id
-        # Application key.
-        # >Notice: Deprecated. Use AppKeyStr instead.
+        # The application key. **[Deprecated]** Use AppKeyStr instead.
+        # >Notice: **[Deprecated]** Use AppKeyStr instead.</notice>
         self.app_key = app_key
-        # Application key.
+        # The application key.
         self.app_key_str = app_key_str
-        # Application name.
+        # The application name.
         self.app_name = app_name
 
     def validate(self):

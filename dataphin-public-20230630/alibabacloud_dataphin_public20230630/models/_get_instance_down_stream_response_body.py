@@ -17,17 +17,17 @@ class GetInstanceDownStreamResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. OK indicates a successful request.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
-        # HTTP status code returned by the backend.
+        # The HTTP status code of the backend response.
         self.http_status_code = http_status_code
-        # Downstream instances and dependency relationships.
+        # The downstream and dependency relationships.
         self.instance_relation_list = instance_relation_list
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -99,23 +99,23 @@ class GetInstanceDownStreamResponseBodyInstanceRelationList(DaraModel):
         select_status: str = None,
         select_status_cause: str = None,
     ):
-        # Depth level.
+        # The level.
         self.down_stream_depth = down_stream_depth
-        # Extended information of the node instance.
+        # The extended information of the node instance.
         self.extend_info = extend_info
-        # Field instance list.
+        # The list of field instances.
         self.field_instance_list = field_instance_list
-        # Instance information.
+        # The instance information.
         self.instance_info = instance_info
-        # Run status of the instance.
+        # The run status of the instance.
         self.run_status = run_status
-        # Selection status of the instance, primarily used for logical fields.
-        # - OPTIONAL: Optional.
-        # - SELECTED: Required.
-        # - DISABLE: Not selectable.
-        # - GROUP_SELECTED: Select all or deselect all.
+        # The selection status of the instance. This is mainly used for logical fields. Valid values:
+        # - OPTIONAL: optional.
+        # - SELECTED: required.
+        # - DISABLE: unavailable.
+        # - GROUP_SELECTED: all selected or all unselected.
         self.select_status = select_status
-        # Reason why the instance is selected.
+        # The reason why the instance is selected. Valid values:
         # - PK_CHANGE
         # - LOGIC_CHANGE
         # - RELATION
@@ -204,11 +204,11 @@ class GetInstanceDownStreamResponseBodyInstanceRelationListInstanceInfo(DaraMode
         name: str = None,
         type: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         self.id = id
-        # Instance name.
+        # The instance name.
         self.name = name
-        # Node type.
+        # The node type.
         self.type = type
 
     def validate(self):
@@ -250,11 +250,11 @@ class GetInstanceDownStreamResponseBodyInstanceRelationListFieldInstanceList(Dar
         run_status: str = None,
         select_status: str = None,
     ):
-        # Field instance ID.
+        # The field instance ID.
         self.field_instance_id = field_instance_id
-        # Run status.
+        # The run status.
         self.run_status = run_status
-        # Selection status of the instance.
+        # The selection status of the instance.
         self.select_status = select_status
 
     def validate(self):

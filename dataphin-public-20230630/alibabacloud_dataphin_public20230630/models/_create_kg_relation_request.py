@@ -15,7 +15,7 @@ class CreateKgRelationRequest(DaraModel):
         op_user_id: str = None,
         workspace_id: str = None,
     ):
-        # The create command.
+        # The creation command.
         # 
         # This parameter is required.
         self.create_command = create_command
@@ -23,6 +23,7 @@ class CreateKgRelationRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
         # The workspace ID.
         # 
@@ -77,7 +78,7 @@ class CreateKgRelationRequestCreateCommand(DaraModel):
         source_entity_id: str = None,
         target_entity_id: str = None,
     ):
-        # The relationship record property list.
+        # The property list of the relationship record.
         self.property_list = property_list
         # The relationship type code.
         # 

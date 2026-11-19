@@ -18,7 +18,7 @@ class SubmitBatchTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The operator user ID.
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The edit request.
         # 
@@ -94,87 +94,87 @@ class SubmitBatchTaskRequestSubmitCommand(DaraModel):
         spark_sql_resource_config_map: Dict[str, str] = None,
         up_stream_list: List[main_models.SubmitBatchTaskRequestSubmitCommandUpStreamList] = None,
     ):
-        # The code of the task.
+        # The task code.
         # 
         # This parameter is required.
         self.code = code
-        # The version number of the code template.
+        # The code template version number.
         self.code_template_version = code_template_version
         # The comment for the submit operation.
         # 
         # This parameter is required.
         self.comment = comment
-        # 条件调度；不传保留，Enable=false关闭并清除原条件，仅周期任务支持
+        # The conditional scheduling configuration. If this parameter is not specified, the current configuration is retained. If Enable is set to false, conditional scheduling is disabled and the original conditions are cleared. This parameter is supported only for periodic tasks.
         self.condition_schedule_config = condition_schedule_config
-        # 不传时保留任务当前配置。
+        # The amount of CPU resources. If this parameter is not specified, the current configuration of the task is retained.
         self.cpu_resource = cpu_resource
         # The cron expression for automatic scheduling. You can refer to Linux cron expressions.
         self.cron_expression = cron_expression
-        # The custom schedule interval configuration.
+        # The custom scheduling interval configuration.
         self.custom_schedule_config = custom_schedule_config
-        # The execution engine of the task. Valid values for Python tasks:
+        # The task execution engine. For Python tasks, valid values:
         # - PYTHON2_7
         # - PYTHON3_7
         # - PYTHON3_11
         self.engine = engine
-        # 失败重试配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+        # The failure retry configuration. If this parameter is not specified, the current configuration of the task is retained. If this parameter is specified, the entire configuration object is replaced.
         self.execute_rerun_config = execute_rerun_config
-        # 执行超时配置。不传时保留任务当前配置。传入时整体替换该配置对象。
+        # The execution timeout configuration. If this parameter is not specified, the current configuration of the task is retained. If this parameter is specified, the entire configuration object is replaced.
         self.execute_time_out_config = execute_time_out_config
         # The ID of the node in the task directory tree.
         # 
         # This parameter is required.
         self.file_id = file_id
-        # 不传时保留任务当前配置。
+        # The amount of CPU resources. If this parameter is not specified, the current configuration of the task is retained.
         self.memory_resource = memory_resource
         # The name of the offline task.
         # 
         # This parameter is required.
         self.name = name
-        # The description of the task.
+        # The task description.
         self.node_description = node_description
         # The list of node output names.
         self.node_output_name_list = node_output_name_list
-        # The status of the node. Valid values:
+        # The node status. Valid values:
         # - 1: Normal.
         # - 2: Paused.
         # - 3: Dry run.
         self.node_status = node_status
         # The ID of the offline code template.
         self.offline_code_template_id = offline_code_template_id
-        # The list of parameters for the offline code template.
+        # The list of offline code template parameters.
         self.offline_code_template_params = offline_code_template_params
         # The list of custom parameters.
         self.param_list = param_list
-        # The scheduling priority of the task. Valid values: 1 to 9. A larger value indicates a lower priority.
+        # The task scheduling priority. Valid values: 1 to 9. A larger value indicates a lower priority.
         self.priority = priority
-        # The ID of the project to which the task belongs.
+        # The ID of the project to which the node belongs.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The Python third-party packages required by the task.
+        # The list of Python third-party packages on which the node depends.
         self.python_module_list = python_module_list
-        # 资源引用列表，元素为资源名称。不传时使用原有任务的资源引用；传入列表时整体替换，空列表表示清空引用。
+        # The list of referenced resources. Each element is a resource name. If this parameter is not specified, the resource references of the original node are used. If a list is specified, the existing references are completely replaced. An empty list clears all references.
         self.resource_reference_list = resource_reference_list
-        # 超时重试开关。不传时保留任务当前配置。显式传入false时关闭。
+        # Specifies whether to enable retry on timeout. If this parameter is not specified, the current configuration of the node is retained. If this parameter is explicitly set to false, the feature is disabled.
         self.retry_on_timeout_enable = retry_on_timeout_enable
-        # The schedule period. Valid values:
-        # - YEARLY: Yearly.
-        # - MONTHLY: Monthly.
-        # - WEEKLY: Weekly.
-        # - DAILY: Daily.
-        # - HOURLY: Hourly.
-        # - MINUTELY: Minutely.
+        # The scheduling period. Valid values:
+        # - YEARLY: yearly
+        # - MONTHLY: monthly
+        # - WEEKLY: weekly
+        # - DAILY: daily
+        # - HOURLY: hourly
+        # - MINUTELY: minutely
         self.schedule_period = schedule_period
-        # 基础调度模板；不传保留，空对象解除绑定，仅周期任务支持
+        # The basic scheduling template. If this parameter is not specified, the current template is retained. An empty object unbinds the template. This parameter is supported only for periodic nodes.
         self.schedule_template = schedule_template
         # The Spark client.
         self.spark_client_info = spark_client_info
-        # 不传时保留任务当前配置。显式传入false时关闭。
+        # Specifies whether to enable dynamic resources for Spark. If this parameter is not specified, the current configuration of the node is retained. If this parameter is explicitly set to false, the feature is disabled.
         self.spark_dynamic_resource_switch = spark_dynamic_resource_switch
-        # ONLY_PROD表示仅生产环境，PROD_AND_DEV表示生产和开发环境。不传时保留任务当前配置。
+        # The effective scope of the Spark resource configuration. ONLY_PROD indicates the production environment only. PROD_AND_DEV indicates both the production and development environments. If this parameter is not specified, the current configuration of the node is retained.
         self.spark_resource_effect_scope = spark_resource_effect_scope
-        # Spark SQL资源配置，键为配置项名称，值为字符串。不传时保留任务当前配置。传入空Map时清空配置。
+        # The Spark SQL resource configurations. The key is the configuration item name, and the value is a string. If this parameter is not specified, the current configurations of the node are retained. An empty map clears all configurations.
         self.spark_sql_resource_config_map = spark_sql_resource_config_map
         # The upstream dependencies.
         self.up_stream_list = up_stream_list
@@ -439,18 +439,18 @@ class SubmitBatchTaskRequestSubmitCommandUpStreamList(DaraModel):
         # The dependency period.
         self.depend_period = depend_period
         # The dependency strategy. Valid values:
-        # - ALL: All.
-        # - FIRST: First.
-        # - LAST: Last.
-        # - NEAR: Nearest.
+        # - ALL: all
+        # - FIRST: first
+        # - LAST: last
+        # - NEAR: nearest
         self.depend_strategy = depend_strategy
         # The dependent logical table fields.
         self.field_list = field_list
         # The upstream dependency node type. Valid values:
-        # - PHYSICAL: Physical node.
-        # - LOGICAL: Logical table dependency.
+        # - PHYSICAL: physical node
+        # - LOGICAL: logical table dependency
         self.node_type = node_type
-        # The period difference. A value of 0 indicates a dependency on the same period. A positive number indicates a dependency on the previous N periods.
+        # The period difference. A value of 0 indicates a dependency on the same period. A positive value indicates a dependency on the previous N periods.
         # 
         # This parameter is required.
         self.period_diff = period_diff
@@ -542,10 +542,10 @@ class SubmitBatchTaskRequestSubmitCommandUpStreamListDependPeriod(DaraModel):
         # The period offset. This parameter is required when dependencyPeriodType is set to LAST_N_PERIOD.
         self.period_offset = period_offset
         # The dependency period type. Valid values:
-        # - CURRENT_PERIOD: Current period.
-        # - LAST_PERIOD: Last period.
-        # - LAST_N_PERIOD: Last N days.
-        # - LAST_24_HOUR: Last 24 hours.
+        # - CURRENT_PERIOD: current period
+        # - LAST_PERIOD: last period
+        # - LAST_N_PERIOD: last N days
+        # - LAST_24_HOUR: last 24 hours
         # 
         # This parameter is required.
         self.period_type = period_type
@@ -611,7 +611,7 @@ class SubmitBatchTaskRequestSubmitCommandScheduleTemplate(DaraModel):
         self,
         template_id: int = None,
     ):
-        # 基础调度模板ID，必须为正数
+        # The ID of the basic scheduling template. The value must be a positive number.
         self.template_id = template_id
 
     def validate(self):
@@ -640,11 +640,11 @@ class SubmitBatchTaskRequestSubmitCommandParamList(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The name of the parameter.
+        # The parameter name.
         # 
         # This parameter is required.
         self.key = key
-        # The value of the parameter.
+        # The parameter value.
         # 
         # This parameter is required.
         self.value = value
@@ -683,13 +683,13 @@ class SubmitBatchTaskRequestSubmitCommandOfflineCodeTemplateParams(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The description of the parameter.
+        # The parameter description.
         self.description = description
         # Specifies whether encryption is enabled.
         self.encrypt_enabled = encrypt_enabled
-        # The key of the parameter.
+        # The parameter key.
         self.key = key
-        # The value of the parameter.
+        # The parameter value.
         self.value = value
 
     def validate(self):
@@ -736,9 +736,9 @@ class SubmitBatchTaskRequestSubmitCommandExecuteTimeOutConfig(DaraModel):
         custom_values: str = None,
         follow_system: bool = None,
     ):
-        # 自定义超时时间。
+        # The custom timeout period.
         self.custom_values = custom_values
-        # 是否跟随系统配置。
+        # Specifies whether to follow the system configuration.
         self.follow_system = follow_system
 
     def validate(self):
@@ -774,11 +774,11 @@ class SubmitBatchTaskRequestSubmitCommandExecuteRerunConfig(DaraModel):
         custom_rerun_times: str = None,
         follow_system: bool = None,
     ):
-        # 自定义失败重试间隔。
+        # The custom retry interval for failures.
         self.custom_rerun_interval = custom_rerun_interval
-        # 自定义失败重试次数。
+        # The custom number of retries for failures.
         self.custom_rerun_times = custom_rerun_times
-        # 是否跟随系统配置。
+        # Specifies whether to follow the system configuration.
         self.follow_system = follow_system
 
     def validate(self):
@@ -831,12 +831,12 @@ class SubmitBatchTaskRequestSubmitCommandCustomScheduleConfig(DaraModel):
         # This parameter is required.
         self.interval = interval
         # The interval unit. Valid values:
-        # - MINUTE: Minute.
-        # - HOUR: Hour.
+        # - MINUTE: Minutes.
+        # - HOUR: Hours.
         # 
         # This parameter is required.
         self.interval_unit = interval_unit
-        # The schedule period. Valid values:
+        # The scheduling period. Valid values:
         # - YEARLY: Yearly.
         # - MONTHLY: Monthly.
         # - WEEKLY: Weekly.
@@ -902,11 +902,11 @@ class SubmitBatchTaskRequestSubmitCommandConditionScheduleConfig(DaraModel):
         param_list: List[main_models.SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList] = None,
         template_id: int = None,
     ):
-        # 是否启用条件调度。传入ConditionScheduleConfig对象时必须提供，由后端校验；false关闭并清除旧配置。
+        # Specifies whether to enable conditional scheduling. This parameter is required when the ConditionScheduleConfig object is passed and is verified by the backend. If this parameter is set to false, conditional scheduling is disabled and the previous configuration is cleared.
         self.enable = enable
-        # 自定义条件列表；与TemplateId互斥，空列表清除旧条件
+        # The list of custom conditions. This parameter is mutually exclusive with TemplateId. An empty list clears the previous conditions.
         self.param_list = param_list
-        # 条件调度模板ID，与ParamList互斥
+        # The ID of the conditional scheduling template. This parameter is mutually exclusive with ParamList.
         self.template_id = template_id
 
     def validate(self):
@@ -960,19 +960,22 @@ class SubmitBatchTaskRequestSubmitCommandConditionScheduleConfigParamList(DaraMo
         schedule_condition_json: str = None,
         schedule_time: str = None,
     ):
-        # 条件名称
+        # The condition name.
         self.condition_name = condition_name
-        # 命中后的cron表达式
+        # The cron expression used after a condition is matched.
         self.cron_expression = cron_expression
-        # 是否启用该条件
+        # Specifies whether to enable the condition.
         self.enable = enable
-        # 是否跟随主调度参数
+        # Specifies whether to follow the primary scheduling parameters.
         self.follow_schedule_param = follow_schedule_param
-        # 命中后的调度状态：1正常，2暂停，3空跑
+        # The scheduling status used after a condition is matched. Valid values:
+        # - 1: Normal.
+        # - 2: Paused.
+        # - 3: Dry run.
         self.node_status = node_status
-        # 条件表达式树JSON字符串，内部键名使用小驼峰
+        # The JSON character string of the conditional expression tree. Internal key names use lower camel case.
         self.schedule_condition_json = schedule_condition_json
-        # 命中后的调度时间
+        # The scheduling time used after a condition is matched.
         self.schedule_time = schedule_time
 
     def validate(self):

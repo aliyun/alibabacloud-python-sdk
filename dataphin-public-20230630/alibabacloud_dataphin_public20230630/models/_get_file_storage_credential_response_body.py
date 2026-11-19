@@ -97,7 +97,7 @@ class GetFileStorageCredentialResponseBodyStorageCredential(DaraModel):
         self.access_id = access_id
         # The temporary AccessKey ID.
         self.access_key = access_key
-        # The file storage bucket.
+        # The bucket for file storage.
         self.bucket = bucket
         # The endpoint.
         self.endpoint = endpoint
@@ -107,9 +107,9 @@ class GetFileStorageCredentialResponseBodyStorageCredential(DaraModel):
         self.object_name = object_name
         # region
         self.region = region
-        # The security token.
+        # The temporary security token.
         self.security_token = security_token
-        # The type of the storage cluster. Valid values: oss and ceph.
+        # The type of the storage cluster, such as oss or ceph.
         self.storage_type = storage_type
 
     def validate(self):

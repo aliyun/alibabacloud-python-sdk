@@ -17,7 +17,7 @@ class GetTransferInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The query result.
         self.data = data
@@ -27,7 +27,7 @@ class GetTransferInfoResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -113,15 +113,13 @@ class GetTransferInfoResponseBodyData(DaraModel):
         self.new_owner = new_owner
         # The previous owner.
         self.old_owner = old_owner
-        # The transfer mode. Valid values:
-        # - ONE_STOP: one-click transfer.
-        # - FUNCTION_MODULE_BASED: transfer by function module.
+        # The transfer mode. Valid values: ONE_STOP: one-click transfer. FUNCTION_MODULE_BASED: transfer by feature module.
         self.privilege_transfer_mode = privilege_transfer_mode
-        # The transfer details of function modules.
+        # The transfer details of feature modules.
         self.privilege_transfer_result_entries = privilege_transfer_result_entries
-        # The approval ID.
+        # The approval ticket ID.
         self.proposal_id = proposal_id
-        # The approval title.
+        # The title of the approval ticket.
         self.title = title
         # The transfer description.
         self.transfer_comment = transfer_comment
@@ -249,9 +247,9 @@ class GetTransferInfoResponseBodyDataPrivilegeTransferResultEntries(DaraModel):
     ):
         # The error message.
         self.err_msg = err_msg
-        # The name of the transfer module.
+        # The name of the transferred module.
         self.privilege_display_name = privilege_display_name
-        # The status of the transfer module.
+        # The status of the transferred module.
         self.status = status
 
     def validate(self):
@@ -292,7 +290,7 @@ class GetTransferInfoResponseBodyDataOldOwner(DaraModel):
         display_name: str = None,
         user_id: str = None,
     ):
-        # The username.
+        # The display name of the user.
         self.display_name = display_name
         # The user ID.
         self.user_id = user_id
@@ -329,7 +327,7 @@ class GetTransferInfoResponseBodyDataNewOwner(DaraModel):
         display_name: str = None,
         user_id: str = None,
     ):
-        # The username.
+        # The display name of the user.
         self.display_name = display_name
         # The user ID.
         self.user_id = user_id
@@ -366,7 +364,7 @@ class GetTransferInfoResponseBodyDataLastModifier(DaraModel):
         display_name: str = None,
         user_id: str = None,
     ):
-        # The username.
+        # The display name of the user.
         self.display_name = display_name
         # The user ID.
         self.user_id = user_id
@@ -403,7 +401,7 @@ class GetTransferInfoResponseBodyDataCreator(DaraModel):
         display_name: str = None,
         user_id: str = None,
     ):
-        # The username.
+        # The display name of the user.
         self.display_name = display_name
         # The user ID.
         self.user_id = user_id

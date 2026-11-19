@@ -21,8 +21,9 @@ class GetTableColumnLineagesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The GUID of the table, which is the unique identifier of the asset.
+        # The GUID of the table, which uniquely identifies the asset.
         # 
         # This parameter is required.
         self.table_guid = table_guid
@@ -82,9 +83,9 @@ class GetTableColumnLineagesRequestFilterQuery(DaraModel):
         self.need_not_exist_object = need_not_exist_object
         # Specifies whether to query upstream lineage. Default value: true.
         self.need_upstream = need_upstream
-        # The environment of the nodes to query. Valid values: dev and prod.
+        # The environment of the node to query. Valid values: dev and prod.
         self.node_env = node_env
-        # The list of node IDs to filter.
+        # The list of node IDs to query.
         self.node_id_list = node_id_list
 
     def validate(self):

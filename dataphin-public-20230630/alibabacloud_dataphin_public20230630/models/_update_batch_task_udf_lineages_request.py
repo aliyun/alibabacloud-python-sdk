@@ -18,8 +18,9 @@ class UpdateBatchTaskUdfLineagesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The update instruction.
+        # The update command.
         # 
         # This parameter is required.
         self.update_command = update_command
@@ -65,7 +66,7 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommand(DaraModel):
         lineage_group_list: List[main_models.UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupList] = None,
         project_id: int = None,
     ):
-        # The node ID in the logical definition subtree.
+        # The node ID in the task directory tree.
         # 
         # This parameter is required.
         self.file_id = file_id
@@ -73,7 +74,7 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommand(DaraModel):
         # 
         # This parameter is required.
         self.lineage_group_list = lineage_group_list
-        # The project to which the node belongs.
+        # The project to which the task belongs.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -124,11 +125,11 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupList(DaraModel):
         input_lineage_list: List[main_models.UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListInputLineageList] = None,
         output_lineage_list: List[main_models.UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListOutputLineageList] = None,
     ):
-        # The collection of lineage input tables.
+        # The collection of input tables for lineage.
         # 
         # This parameter is required.
         self.input_lineage_list = input_lineage_list
-        # The collection of lineage output tables.
+        # The collection of output tables for lineage.
         # 
         # This parameter is required.
         self.output_lineage_list = output_lineage_list
@@ -184,7 +185,7 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListOutputLineag
         full_table: bool = None,
         name: str = None,
     ):
-        # The list of lineage fields.
+        # The list of lineage columns.
         # 
         # This parameter is required.
         self.column_list = column_list
@@ -196,7 +197,7 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListOutputLineag
         # 
         # This parameter is required.
         self.full_table = full_table
-        # The table name.
+        # The name of the table.
         # 
         # This parameter is required.
         self.name = name
@@ -247,7 +248,7 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListInputLineage
         full_table: bool = None,
         name: str = None,
     ):
-        # The list of lineage fields.
+        # The list of lineage columns.
         # 
         # This parameter is required.
         self.column_list = column_list
@@ -259,7 +260,7 @@ class UpdateBatchTaskUdfLineagesRequestUpdateCommandLineageGroupListInputLineage
         # 
         # This parameter is required.
         self.full_table = full_table
-        # The table name.
+        # The name of the table.
         # 
         # This parameter is required.
         self.name = name

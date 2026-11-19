@@ -15,7 +15,7 @@ class CreateKgEntityRequest(DaraModel):
         op_user_id: str = None,
         workspace_id: str = None,
     ):
-        # The create command.
+        # The creation command.
         # 
         # This parameter is required.
         self.create_command = create_command
@@ -23,6 +23,7 @@ class CreateKgEntityRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The workspace ID.
         # 
@@ -79,7 +80,7 @@ class CreateKgEntityRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.entity_type = entity_type
-        # The entity record property list.
+        # The property list of the entity record.
         # 
         # This parameter is required.
         self.property_list = property_list

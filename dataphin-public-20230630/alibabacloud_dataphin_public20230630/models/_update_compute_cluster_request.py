@@ -27,7 +27,7 @@ class UpdateComputeClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -96,7 +96,7 @@ class UpdateComputeClusterRequestClusterConfig(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # 时区名称，例如 Asia/Shanghai。更新时不传则保留原值。
+        # The time zone name, such as Asia/Shanghai. If this parameter is not specified during an update, the original value is retained.
         self.time_zone = time_zone
         # The cluster type.
         # 
@@ -228,9 +228,9 @@ class UpdateComputeClusterRequestClusterConfigClusterSafetyControl(DaraModel):
     ):
         # The control mode.
         self.cluster_safety_auth_type = cluster_safety_auth_type
-        # The list of whitelist user group IDs.
+        # The list of whitelisted user group IDs.
         self.user_group_ids = user_group_ids
-        # The list of whitelist user IDs.
+        # The list of whitelisted user IDs.
         self.user_ids = user_ids
 
     def validate(self):

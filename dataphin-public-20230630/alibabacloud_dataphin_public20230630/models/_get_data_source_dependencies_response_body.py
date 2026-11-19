@@ -19,7 +19,7 @@ class GetDataSourceDependenciesResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The dependency records.
+        # The reference records.
         self.dependency_list = dependency_list
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class GetDataSourceDependenciesResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

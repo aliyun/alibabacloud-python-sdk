@@ -15,9 +15,10 @@ class GetDataServiceAppGroupsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operating user ID.
         self.op_user_id = op_user_id
         # The data service project ID.
-        # >Notice: This field is deprecated.</notice>.
+        # >Notice: This field is deprecated.
         self.project_id = project_id
 
     def validate(self):

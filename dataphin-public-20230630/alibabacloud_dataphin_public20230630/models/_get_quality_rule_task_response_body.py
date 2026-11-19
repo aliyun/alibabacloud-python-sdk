@@ -102,41 +102,41 @@ class GetQualityRuleTaskResponseBodyRuleTaskInfo(DaraModel):
         watch_id: int = None,
         watch_task_id: int = None,
     ):
-        # The business date. The format is YYYY-MM-DD.
+        # The business date in the YYYY-MM-DD format.
         self.biz_date = biz_date
-        # The format of the business date.
+        # The business date format.
         self.biz_date_format = biz_date_format
-        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
+        # The creation time in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The creator.
         self.creator = creator
-        # The end time. The format is YYYY-MM-DD HH:mm:ss.
+        # The end time in the YYYY-MM-DD HH:mm:ss format.
         self.end_time = end_time
         # The rule task ID.
         self.id = id
-        # The ID of the user who last updated the task.
+        # The ID of the last updater.
         self.modifier = modifier
-        # The update time. The format is YYYY-MM-DD HH:mm:ss.
+        # The update time in the YYYY-MM-DD HH:mm:ss format.
         self.modify_time = modify_time
         # The rule ID.
         self.rule_id = rule_id
-        # The start time. The format is YYYY-MM-DD HH:mm:ss.
+        # The start time in the YYYY-MM-DD HH:mm:ss format.
         self.start_time = start_time
         # The task status.
         self.status = status
         # The template ID.
         self.template_id = template_id
-        # The name of the validated object.
+        # The name of the checked object.
         self.validate_object_name = validate_object_name
-        # The validated object type.
+        # The checked object type.
         self.validate_object_type = validate_object_type
-        # The validated partition.
+        # The checked partition.
         self.validate_partition = validate_partition
-        # Indicates whether the validation is successful.
+        # Indicates whether the check is successful.
         self.validate_success = validate_success
-        # The watch ID.
+        # The associated monitoring ID.
         self.watch_id = watch_id
-        # The watch task ID. This ID is empty for rule tasks in a trial run.
+        # The monitoring task ID. This ID is empty for trial-run rule tasks.
         self.watch_task_id = watch_task_id
 
     def validate(self):

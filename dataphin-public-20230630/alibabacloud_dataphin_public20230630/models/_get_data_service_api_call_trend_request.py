@@ -13,7 +13,7 @@ class GetDataServiceApiCallTrendRequest(DaraModel):
         project_id: int = None,
         start_time: str = None,
     ):
-        # The end time in the format of yyyy-MM-dd HH:mm:ss.
+        # The end time. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -21,12 +21,13 @@ class GetDataServiceApiCallTrendRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The data service project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The start time in the format of yyyy-MM-dd HH:mm:ss.
+        # The start time. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.start_time = start_time

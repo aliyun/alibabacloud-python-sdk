@@ -23,9 +23,9 @@ class GetResourceResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The resource file details.
+        # The details of the resource file.
         self.resource_info = resource_info
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -97,17 +97,17 @@ class GetResourceResponseBodyResourceInfo(DaraModel):
         size: int = None,
         storage_address: str = None,
     ):
-        # The compute engine type.
+        # The compute engine source type.
         self.compute_engine_type = compute_engine_type
         # The creator.
         self.creator = creator
         # The description.
         self.description = description
-        # The directory where the resource is stored.
+        # The storage directory.
         self.directory = directory
-        # The creation time, in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the resource was created. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
-        # The last modification time, in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the resource was updated. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_modified = gmt_modified
         # The resource ID.
         self.id = id

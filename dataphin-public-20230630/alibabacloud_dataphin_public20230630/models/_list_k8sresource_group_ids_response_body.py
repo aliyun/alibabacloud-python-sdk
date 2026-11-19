@@ -19,11 +19,11 @@ class ListK8SResourceGroupIdsResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The list of custom Kubernetes resource groups.
+        # The custom K8s resource groups used for Flink tasks under the tenant. The ListK8SResourceGroupIds operation returns only available resource groups.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend response error.
+        # The details of the backend response exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -95,11 +95,11 @@ class ListK8SResourceGroupIdsResponseBodyData(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # The ID of the custom Kubernetes resource group.
+        # The ID of the custom K8s resource group, which can be used to select the compute queue for real-time tasks.
         self.id = id
-        # The name of the custom Kubernetes resource group.
+        # The name of the custom K8s resource group.
         self.name = name
-        # The status of the resource group.
+        # The status of the resource group. NORMAL indicates that the resource group is available.
         self.status = status
 
     def validate(self):

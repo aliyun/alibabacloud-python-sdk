@@ -25,9 +25,9 @@ class GetTableColumnLineagesResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The list of table column lineage records.
+        # The list of table column lineage.
         self.table_column_lineage_list = table_column_lineage_list
 
     def validate(self):
@@ -116,7 +116,7 @@ class GetTableColumnLineagesResponseBodyTableColumnLineageList(DaraModel):
     ):
         # The ID of the business unit to which the input table belongs.
         self.input_biz_unit_id = input_biz_unit_id
-        # The GUID of the input column. Format: TableGuid.ColumnName.
+        # The GUID of the input column. Format: table GUID.column name.
         self.input_column_guid = input_column_guid
         # The name of the input column.
         self.input_column_name = input_column_name
@@ -126,21 +126,21 @@ class GetTableColumnLineagesResponseBodyTableColumnLineageList(DaraModel):
         self.input_data_source_type = input_data_source_type
         # The ID of the project to which the input table belongs.
         self.input_project_id = input_project_id
-        # Indicates whether the input table has been deleted.
+        # Indicates whether the input table is deleted.
         self.input_table_deleted = input_table_deleted
-        # The environment of the input table. Valid values: dev and prod.
+        # The environment to which the input table belongs. Valid values: dev and prod.
         self.input_table_env = input_table_env
-        # The GUID of the input table. Each asset has a unique identifier.
+        # The GUID of the input table, which uniquely identifies the asset.
         self.input_table_guid = input_table_guid
         # The name of the input table.
         self.input_table_name = input_table_name
-        # The environment of the node. Valid values: dev and prod.
+        # The environment to which the node belongs. Valid values: dev and prod.
         self.node_env = node_env
-        # The node ID associated with the lineage.
+        # The ID of the node corresponding to the lineage.
         self.node_id = node_id
         # The ID of the business unit to which the output table belongs.
         self.output_biz_unit_id = output_biz_unit_id
-        # The GUID of the output column. Format: TableId.ColumnName.
+        # The GUID of the output column. Format: table ID.column name.
         self.output_column_guid = output_column_guid
         # The name of the output column.
         self.output_column_name = output_column_name
@@ -150,11 +150,11 @@ class GetTableColumnLineagesResponseBodyTableColumnLineageList(DaraModel):
         self.output_data_source_type = output_data_source_type
         # The ID of the project to which the output table belongs.
         self.output_project_id = output_project_id
-        # Indicates whether the output table has been deleted.
+        # Indicates whether the output table is deleted.
         self.output_table_deleted = output_table_deleted
-        # The environment of the output table. Valid values: dev and prod.
+        # The environment to which the output table belongs. Valid values: dev and prod.
         self.output_table_env = output_table_env
-        # The GUID of the output table. Each asset has a unique identifier.
+        # The GUID of the output table, which uniquely identifies the asset.
         self.output_table_guid = output_table_guid
         # The name of the output table.
         self.output_table_name = output_table_name

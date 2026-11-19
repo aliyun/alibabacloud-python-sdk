@@ -20,6 +20,7 @@ class CreateResourceRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -68,22 +69,19 @@ class CreateResourceRequestCreateCommand(DaraModel):
         resource_type: str = None,
         storage_address: str = None,
     ):
-        # The commit remarks.
+        # The submission comment.
         # 
         # This parameter is required.
         self.comment = comment
-        # The compute engine type. Valid values:
-        # - MAX_COMPUTE
-        # - HADOOP
-        # - NONE.
+        # The compute engine type. Valid values: MAX_COMPUTE, HADOOP, and NONE.
         # 
         # This parameter is required.
         self.compute_engine_type = compute_engine_type
-        # The description of the resource file.
+        # The resource description.
         # 
         # This parameter is required.
         self.description = description
-        # The folder in which the resource file is stored.
+        # The storage folder.
         # 
         # This parameter is required.
         self.directory = directory
@@ -95,15 +93,11 @@ class CreateResourceRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The type of the resource file. Valid values:
-        # - FILE: common file.
-        # - JAR: JAR file.
-        # - PYTHON: Python file.
-        # - OTHERS: other type of file.
+        # The resource type. Valid values: FILE: common file, JAR: JAR file, PYTHON: Python file, and OTHERS: other types of files.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The storage address of the resource file.
+        # The storage address of the resource.
         # 
         # This parameter is required.
         self.storage_address = storage_address

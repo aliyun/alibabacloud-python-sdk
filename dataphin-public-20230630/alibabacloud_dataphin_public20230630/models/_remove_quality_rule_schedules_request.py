@@ -18,8 +18,9 @@ class RemoveQualityRuleSchedulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The unbinding instruction.
+        # The unbind command.
         # 
         # This parameter is required.
         self.remove_command = remove_command
@@ -73,7 +74,7 @@ class RemoveQualityRuleSchedulesRequestRemoveCommand(DaraModel):
         # 
         # This parameter is required.
         self.schedule_id_list = schedule_id_list
-        # The ID of the monitored object.
+        # The monitored object ID.
         # 
         # This parameter is required.
         self.watch_id = watch_id

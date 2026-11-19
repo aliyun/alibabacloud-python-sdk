@@ -19,13 +19,13 @@ class GetResourceByVersionResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The details of the resource file.
+        # The resource file details.
         self.resource_info = resource_info
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -105,9 +105,9 @@ class GetResourceByVersionResponseBodyResourceInfo(DaraModel):
         self.description = description
         # The storage folder.
         self.directory = directory
-        # The creation time, in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the resource was created. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
-        # The update time, in the yyyy-MM-dd HH:mm:ss format.
+        # The time when the resource was updated. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_modified = gmt_modified
         # The resource ID.
         self.id = id
@@ -119,7 +119,7 @@ class GetResourceByVersionResponseBodyResourceInfo(DaraModel):
         self.project_id = project_id
         # The resource type.
         self.resource_type = resource_type
-        # The size of the resource, in bytes.
+        # The size of the resource. Unit: bytes.
         self.size = size
         # The storage address of the resource.
         self.storage_address = storage_address

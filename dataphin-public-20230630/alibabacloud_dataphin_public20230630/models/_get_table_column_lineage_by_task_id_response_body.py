@@ -17,17 +17,17 @@ class GetTableColumnLineageByTaskIdResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
-        # Query results.
+        # The query result.
         self.data = data
-        # HTTP status code.
+        # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # Error message.
+        # The error message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -119,74 +119,73 @@ class GetTableColumnLineageByTaskIdResponseBodyData(DaraModel):
         task_id: str = None,
         tenant_id: int = None,
     ):
-        # Business unit ID of the input table.
+        # The ID of the business unit to which the input table belongs.
         self.input_biz_unit_id = input_biz_unit_id
-        # GUID of the input column.
+        # The GUID of the input field.
         self.input_column_id = input_column_id
-        # Input column name.
+        # The name of the input field.
         self.input_column_name = input_column_name
-        # Data source ID of the input table.
+        # The ID of the data source to which the input table belongs.
         self.input_data_source_id = input_data_source_id
-        # Storage type of the input table.
+        # The storage format of the input table.
         self.input_data_source_type = input_data_source_type
-        # Database type of the input table.
+        # The type of the input data source.
         self.input_db_type = input_db_type
-        # Environment of the input table: DEV or PROD.
+        # The environment of the input table. Valid values: DEV and PROD.
         self.input_env = input_env
-        # Project ID of the input table.
+        # The ID of the project to which the input table belongs.
         self.input_project_id = input_project_id
         # Indicates whether the input table is deleted.
         self.input_table_deleted = input_table_deleted
-        # GUID of the input table. Each asset has a unique GUID in the following format: 
-        # 
-        # - Logical table: dp_table.[TenantId].[BizUnitName].[TableName]
-        # - Compute source physical table: [EngineType].[TenantId].[ProjectName].[TableName]
-        # - Data source table: dp_ds_table.[TenantId].[DataSourceId].[SchemaName].[TableName]
+        # The GUID of the input table. Each asset has a unique GUID in one of the following formats:
+        # - Logical table: dp_table.[Tenant ID].[Business unit name].[Table name]
+        # - Physical table of a compute source: [Engine type].[Tenant ID].[Project name].[Table name]
+        # - Data source table: dp_ds_table.[Tenant ID].[Data source ID].[Schema name].[Table name]
         self.input_table_id = input_table_id
-        # Input table name.
+        # The name of the input table.
         self.input_table_name = input_table_name
-        # Input table type. Valid values:
-        # - PHYSICAL_TABLE: Physical table (compute source)
-        # - DIM_LOGIC_TABLE: Dimension logical table
-        # - FACT_LOGIC_TABLE: Fact logical table
-        # - SUM_LOGIC_TABLE: Summary logical table
-        # - REAL_TIME_LOGIC_TABLE: Real-time meta table
-        # - REAL_TIME_MIRROR_TABLE: Real-time mirror table
-        # - PHYSICAL_VIEW: Physical view
-        # - LOGICAL_VIEW: Logical view
-        # - DATA_SOURCE_PHYSICAL_TABLE: Data source table
-        # - DATA_SOURCE_VIEW: Data source view
-        # - DATA_SOURCE_MATERIALIZED_VIEW: Data source materialized view
+        # The type of the input table. Valid values:
+        # - PHYSICAL_TABLE: physical table (compute source)
+        # - DIM_LOGIC_TABLE: logical dimension table
+        # - FACT_LOGIC_TABLE: logical fact table
+        # - SUM_LOGIC_TABLE: logical aggregate table
+        # - REAL_TIME_LOGIC_TABLE: real-time metadata table
+        # - REAL_TIME_MIRROR_TABLE: real-time mirror table
+        # - PHYSICAL_VIEW: physical view
+        # - LOGICAL_VIEW: logical view
+        # - DATA_SOURCE_PHYSICAL_TABLE: data source table
+        # - DATA_SOURCE_VIEW: data source view
+        # - DATA_SOURCE_MATERIALIZED_VIEW: data source materialized view
         self.input_table_type = input_table_type
-        # Business unit ID of the output table.
+        # The ID of the business unit to which the output table belongs.
         self.output_biz_unit_id = output_biz_unit_id
-        # GUID of the output column.
+        # The GUID of the output field.
         self.output_column_id = output_column_id
-        # Output column name.
+        # The name of the output field.
         self.output_column_name = output_column_name
-        # Data source ID of the output table.
+        # The ID of the data source to which the output table belongs.
         self.output_data_source_id = output_data_source_id
-        # Storage type of the output table.
+        # The storage format of the output table.
         self.output_data_source_type = output_data_source_type
-        # Database type of the output table.
+        # The type of the output data source.
         self.output_db_type = output_db_type
-        # Environment of the output table: DEV or PROD.
+        # The environment of the output table. Valid values: DEV and PROD.
         self.output_env = output_env
-        # Project ID of the output table.
+        # The ID of the project to which the output table belongs.
         self.output_project_id = output_project_id
         # Indicates whether the output table is deleted.
         self.output_table_deleted = output_table_deleted
-        # GUID of the output table. Each asset has a unique GUID. For the format, see InputTableId.
+        # The GUID of the output table. Each asset has a unique GUID. For the format, see InputTableId.
         self.output_table_id = output_table_id
-        # Output table name.
+        # The name of the output table.
         self.output_table_name = output_table_name
-        # Output table type. For valid values, see InputTableType.
+        # The type of the output table. For valid values, see InputTableType.
         self.output_table_type = output_table_type
-        # Environment of the task (node) associated with the lineage: DEV or PROD.
+        # The environment of the task (node) associated with the lineage. Valid values: DEV and PROD.
         self.task_env = task_env
-        # Task (node) ID associated with the lineage.
+        # The ID of the task (node) associated with the lineage.
         self.task_id = task_id
-        # Tenant ID.
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):

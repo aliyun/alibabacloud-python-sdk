@@ -17,17 +17,17 @@ class ListDataServiceMyApiPermissionsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Backend response code.
+        # The backend response code.
         self.code = code
-        # HTTP status code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Backend response exception details.
+        # The details of the backend exception.
         self.message = message
-        # Paginated query result.
+        # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Whether the request is successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListDataServiceMyApiPermissionsResponseBodyPageResult(DaraModel):
         permission_list: List[main_models.ListDataServiceMyApiPermissionsResponseBodyPageResultPermissionList] = None,
         total_count: int = None,
     ):
-        # Paginated permission list.
+        # The paged permission list.
         self.permission_list = permission_list
-        # Total number of records.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -142,27 +142,29 @@ class ListDataServiceMyApiPermissionsResponseBodyPageResultPermissionList(DaraMo
         project_name: str = None,
         role: int = None,
     ):
-        # API ID.
+        # The API ID.
         self.api_id = api_id
-        # API name.
+        # The API name.
         self.api_name = api_name
-        # Creator name.
+        # The name of the creator.
         self.create_user_name = create_user_name
-        # Creator ID.
+        # The ID of the creator.
         self.creator = creator
-        # Owner ID.
+        # The ID of the owner.
         self.owner = owner
-        # Owner name.
+        # The name of the owner.
         self.owner_user_name = owner_user_name
-        # The user to whom the privilege belongs.
+        # The owner of the permission.
         self.privilege_belong_to = privilege_belong_to
-        # Authorization source. Valid value: 0, which indicates the owner.
+        # The authorization source. Valid values:
+        # - 0: Owner.
         self.privilege_from = privilege_from
-        # Project ID.
+        # The project ID.
         self.project_id = project_id
-        # Project name.
+        # The project name.
         self.project_name = project_name
-        # Role. Valid value: 0, which indicates the owner.
+        # The role. Valid values:
+        # - 0: Owner.
         self.role = role
 
     def validate(self):

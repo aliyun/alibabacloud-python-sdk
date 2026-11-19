@@ -14,10 +14,11 @@ class GetTableLineagesShrinkRequest(DaraModel):
     ):
         # The filter conditions.
         self.filter_query_shrink = filter_query_shrink
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The GUID of the table, which is the unique identifier of each asset.
         # 

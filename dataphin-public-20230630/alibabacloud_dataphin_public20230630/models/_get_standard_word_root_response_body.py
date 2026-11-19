@@ -19,13 +19,13 @@ class GetStandardWordRootResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The word root details.
+        # The details of the word root.
         self.word_root_info = word_root_info
 
     def validate(self):
@@ -98,7 +98,7 @@ class GetStandardWordRootResponseBodyWordRootInfo(DaraModel):
         self.abbreviation = abbreviation
         # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # The user ID of the creator.
+        # The ID of the creator.
         self.creator = creator
         # The username of the creator.
         self.creator_name = creator_name
@@ -106,7 +106,7 @@ class GetStandardWordRootResponseBodyWordRootInfo(DaraModel):
         self.description = description
         # The full name of the word root.
         self.full_name = full_name
-        # The user ID of the last modifier.
+        # The ID of the last modifier.
         self.last_modifier = last_modifier
         # The username of the last modifier.
         self.last_modifier_name = last_modifier_name

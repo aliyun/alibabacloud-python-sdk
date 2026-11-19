@@ -19,7 +19,7 @@ class GetDataServiceApiErrorImpactResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The summary of call exception impacts.
+        # The summary of API exception impacts.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class GetDataServiceApiErrorImpactResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class GetDataServiceApiErrorImpactResponseBodyData(DaraModel):
         error_api_list: List[main_models.GetDataServiceApiErrorImpactResponseBodyDataErrorApiList] = None,
         error_app_list: List[main_models.GetDataServiceApiErrorImpactResponseBodyDataErrorAppList] = None,
     ):
-        # The list of APIs affected by exceptions.
+        # The APIs affected by the exceptions.
         self.error_api_list = error_api_list
-        # The list of apps affected by exceptions.
+        # The applications affected by the exceptions.
         self.error_app_list = error_app_list
 
     def validate(self):
@@ -148,9 +148,9 @@ class GetDataServiceApiErrorImpactResponseBodyDataErrorAppList(DaraModel):
         self.app_id = app_id
         # appKey
         self.app_key = app_key
-        # The app name.
+        # The name of the application.
         self.app_name = app_name
-        # The number of exceptions for the app.
+        # The number of exceptions for the application.
         self.error_count = error_count
 
     def validate(self):
@@ -198,9 +198,9 @@ class GetDataServiceApiErrorImpactResponseBodyDataErrorApiList(DaraModel):
         app_id: int = None,
         error_count: int = None,
     ):
-        # The API name.
+        # The name of the API.
         self.api_name = api_name
-        # The API ID.
+        # The ID of the API.
         self.app_id = app_id
         # The number of exceptions for the API.
         self.error_count = error_count

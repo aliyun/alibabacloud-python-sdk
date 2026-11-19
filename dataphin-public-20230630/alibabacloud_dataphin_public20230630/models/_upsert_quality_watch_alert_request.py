@@ -18,8 +18,9 @@ class UpsertQualityWatchAlertRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The update instruction.
+        # The update command.
         # 
         # This parameter is required.
         self.upsert_command = upsert_command
@@ -64,7 +65,7 @@ class UpsertQualityWatchAlertRequestUpsertCommand(DaraModel):
         quality_alert_info: main_models.UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfo = None,
         watch_id: int = None,
     ):
-        # The alert configuration details.
+        # The details of the alert settings.
         # 
         # This parameter is required.
         self.quality_alert_info = quality_alert_info
@@ -111,17 +112,17 @@ class UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfo(DaraModel):
         alert_user_list: List[main_models.UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertUserList] = None,
         enable_alert_quality_owner: bool = None,
     ):
-        # The alert channels for on-duty schedules.
+        # The alert channels for on-call schedules.
         self.alert_duty_channel_list = alert_duty_channel_list
-        # The list of on-duty schedules for alerts.
+        # The list of on-call schedules to be alerted.
         self.alert_duty_list = alert_duty_list
         # The alert channels for the quality owner.
         self.alert_quality_owner_channel_list = alert_quality_owner_channel_list
         # The alert channels for users.
         self.alert_user_channel_list = alert_user_channel_list
-        # The list of users to receive alerts.
+        # The list of users to be alerted.
         self.alert_user_list = alert_user_list
-        # Specifies whether to enable alerts for the quality owner.
+        # Specifies whether to enable alerting for the quality owner.
         self.enable_alert_quality_owner = enable_alert_quality_owner
 
     def validate(self):
@@ -234,9 +235,9 @@ class UpsertQualityWatchAlertRequestUpsertCommandQualityAlertInfoAlertDutyList(D
         id: str = None,
         name: str = None,
     ):
-        # The ID of the on-duty alert schedule.
+        # The ID of the on-call schedule.
         self.id = id
-        # The name of the on-duty alert schedule.
+        # The name of the on-call schedule.
         self.name = name
 
     def validate(self):

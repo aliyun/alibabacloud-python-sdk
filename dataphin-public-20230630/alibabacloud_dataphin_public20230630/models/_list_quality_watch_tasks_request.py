@@ -14,13 +14,13 @@ class ListQualityWatchTasksRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The paged query conditions.
+        # The paging conditions for the paged query.
         self.list_query = list_query
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator.
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -78,63 +78,39 @@ class ListQualityWatchTasksRequestListQuery(DaraModel):
         table_type_list: List[str] = None,
         watch_type_list: List[str] = None,
     ):
-        # The business date filter.
+        # The business date filter. The format is YYYY-MM-DD.
         self.biz_date = biz_date
-        # The name of the business unit to which the object belongs.
+        # The business unit names.
         self.biz_unit_name_list = biz_unit_name_list
-        # Specifies whether to query only the watchtask objects owned by the current user.
+        # The monitoring task objects (nodes) for which the current user is responsible.
         self.current_user_owned = current_user_owned
-        # The data source ID.
+        # The data source IDs.
         self.data_source_id_list = data_source_id_list
-        # The data source owner.
+        # The data source owners.
         self.data_source_owner_list = data_source_owner_list
-        # The data source scope. Valid values:
-        # - STREAMING: real-time only.
-        # - OFFLINE: offline only.
-        # - ALL: real-time and offline.
+        # The data source scope. Valid values: STREAMING (real-time only), OFFLINE (offline only), and ALL (real-time and offline).
         self.data_source_scope_list = data_source_scope_list
-        # The data source type, such as MAX_COMPUTE, HADOOP, or MYSQL.
+        # The data source types, such as MAX_COMPUTE, HADOOP, and MYSQL.
         self.data_source_type_list = data_source_type_list
-        # The rule exception type. Valid values:
-        # - STRONG: strong.
-        # - WEAK: weak.
+        # The rule exception type. Valid values: STRONG (strong) and WEAK (weak).
         self.error_rule_strength_list = error_rule_strength_list
-        # The search keyword. This parameter specifies the name of the monitored table.
+        # The search keyword, such as the name of the monitored table.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_no = page_no
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The name of the project to which the object belongs.
+        # The project names.
         self.project_name_list = project_name_list
-        # The quality owner.
+        # The quality owners.
         self.quality_owner_list = quality_owner_list
-        # The task status. Valid values:
-        # - NOT_RUN: not executed.
-        # - WAITING: waiting.
-        # - RUNNING: running.
-        # - SUCCESS: succeeded.
-        # - FAILED: failed.
-        # - CANCEL: canceled.
-        # - TIMEOUT: timed out.
-        # - OFFLINE: offline.
+        # The task status. Valid values: NOT_RUN (not run), WAITING (waiting), RUNNING (running), SUCCESS (successful), FAILED (failed), CANCEL (canceled), TIMEOUT (timed out), and OFFLINE (offline).
         self.status_list = status_list
-        # The table owner.
+        # The table owners.
         self.table_owner_list = table_owner_list
-        # The table type. Valid values:
-        # - LOGIC_DIM_TABLE: logical dimension table.
-        # - LOGIC_FACT_TABLE: logical fact table.
-        # - LOGIC_SUM_TABLE: logical aggregate table.
-        # - LOGIC_LABEL_TABLE: logical label table.
-        # - PHYSICAL_TABLE: physical table.
-        # - REALTIME_LOGICAL_TABLE: real-time meta table.
+        # The table type. Valid values: LOGIC_DIM_TABLE (logical dimension table), LOGIC_FACT_TABLE (logical fact table), LOGIC_SUM_TABLE (logical aggregate table), LOGIC_LABEL_TABLE (logical label table), PHYSICAL_TABLE (physical table), and REALTIME_LOGICAL_TABLE (real-time metatable).
         self.table_type_list = table_type_list
-        # The monitored object type. Valid values:
-        # - TABLE: Dataphin table.
-        # - DATASOURCE_TABLE: global domain table.
-        # - DATASOURCE: data source.
-        # - INDEX: metric.
-        # - REALTIME_LOGICAL_TABLE: real-time meta table.
+        # The monitored object type. Valid values: TABLE (Dataphin table), DATASOURCE_TABLE (global table), DATASOURCE (data source), INDEX (metric), and REALTIME_LOGICAL_TABLE (real-time metatable).
         self.watch_type_list = watch_type_list
 
     def validate(self):

@@ -91,15 +91,15 @@ class GetCheckConnectivityJobByJobIdResponseBodyData(DaraModel):
         tenant_id: str = None,
         voldemort_task_id: str = None,
     ):
-        # The ID of the data source. This parameter is empty if the check is performed before creation.
+        # The ID of the data source. This field is empty when the check is performed before creation.
         self.data_source_id = data_source_id
         # The error message returned when the check fails.
         self.error_msg = error_msg
         # The ID of the connectivity check task.
         self.job_id = job_id
-        # The job type.
+        # The type of the task.
         self.job_type = job_type
-        # The job status. Valid values: NEW, IN_PROCESS, SUCCESS, and FAILED.
+        # The status of the task. Valid values: NEW, IN_PROCESS, SUCCESS, and FAILED.
         self.status = status
         # The ID of the tenant to which the check task belongs.
         self.tenant_id = tenant_id

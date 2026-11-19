@@ -19,11 +19,11 @@ class ListStreamTaskManagersResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The list of TaskManagers for the real-time task.
+        # The TaskManager information retrieved in real time. You can use the taskmanagerId to query the logs of the TaskManager.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend response exception.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -94,9 +94,9 @@ class ListStreamTaskManagersResponseBodyData(DaraModel):
         path: str = None,
         taskmanager_id: str = None,
     ):
-        # The communication address or machine information.
+        # The communication address or host machine information of the TaskManager returned by the engine. This is not the log download URL.
         self.path = path
-        # taskmanagerId
+        # The identifier of the TaskManager. This corresponds to the TaskmanagerId input parameter of ListStreamTaskManagerLogs and GetStreamLogContent.
         self.taskmanager_id = taskmanager_id
 
     def validate(self):

@@ -21,13 +21,13 @@ class GetDataServiceMyProjectsResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend error details.
         self.message = message
         # The list of data service projects.
         self.project_list = project_list
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -95,16 +95,11 @@ class GetDataServiceMyProjectsResponseBodyProjectList(DaraModel):
         project_name: str = None,
         role: int = None,
     ):
-        # The data service project ID.
+        # The ID of the data service project.
         self.project_id = project_id
-        # The project name.
+        # The name of the project.
         self.project_name = project_name
-        # The role. Valid values:
-        # - 1: super administrator
-        # - 2: developer
-        # - 3: application member
-        # - 4: service project administrator
-        # - 5: O&M engineer.
+        # The role. Valid values: 1: Super administrator, 2: Developer, 3: Application member, 4: Service project administrator, 5: O&M user.
         self.role = role
 
     def validate(self):

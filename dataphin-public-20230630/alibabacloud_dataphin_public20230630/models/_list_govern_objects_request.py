@@ -22,7 +22,7 @@ class ListGovernObjectsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -71,14 +71,7 @@ class ListGovernObjectsRequestListQuery(DaraModel):
         status_list: List[str] = None,
         view_type: str = None,
     ):
-        # The governance item type. Valid values:
-        # 
-        # - TABLE
-        # - DATASOURCE_TABLE
-        # - DATASOURCE
-        # - INDEX
-        # - REALTIME_LOGICAL_TABLE
-        # - QD_FEATURE
+        # The governance item type. Valid values: TABLE, DATASOURCE_TABLE, DATASOURCE, INDEX, REALTIME_LOGICAL_TABLE, and QD_FEATURE.
         # 
         # This parameter is required.
         self.govern_item_type = govern_item_type
@@ -90,20 +83,11 @@ class ListGovernObjectsRequestListQuery(DaraModel):
         self.page_number = page_number
         # The number of records per page. Default value: 20.
         self.page_size = page_size
-        # The list of project names used to filter results.
+        # The list of project names used for filtering.
         self.project_names = project_names
-        # The list of governance object statuses. Valid values:
-        # 
-        # - NEW
-        # - VERIFY
-        # - FINISHED
-        # - IGNORE
+        # The list of governance object statuses. Valid values: NEW, VERIFY, FINISHED, and IGNORE.
         self.status_list = status_list
-        # The view type. Valid values:
-        # 
-        # - ALL
-        # - OWNER
-        # - PROJECT
+        # The view type. Valid values: ALL, OWNER, and PROJECT.
         self.view_type = view_type
 
     def validate(self):

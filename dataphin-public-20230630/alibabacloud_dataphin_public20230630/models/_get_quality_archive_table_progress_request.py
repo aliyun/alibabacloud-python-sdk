@@ -15,9 +15,9 @@ class GetQualityArchiveTableProgressRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator.
+        # The operator ID.
         self.op_user_id = op_user_id
-        # The asynchronous task progress ID returned by the UpsertQualityArchiveTable operation.
+        # The progress ID of the asynchronous task, which is returned by the UpsertQualityArchiveTable operation.
         # 
         # This parameter is required.
         self.progress_id = progress_id

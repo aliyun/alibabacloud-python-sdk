@@ -15,15 +15,15 @@ class SubmitBatchTaskResponseBody(DaraModel):
         submit_result: main_models.SubmitBatchTaskResponseBodySubmitResult = None,
         success: bool = None,
     ):
-        # The error code returned for the request. A value of OK indicates that the request is normal.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message returned for the request.
+        # The error message.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The edit result.
+        # The submission result.
         self.submit_result = submit_result
         # Indicates whether the request is successful.
         self.success = success

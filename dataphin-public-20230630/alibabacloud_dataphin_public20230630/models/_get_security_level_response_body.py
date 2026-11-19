@@ -21,13 +21,13 @@ class GetSecurityLevelResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend response exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The data classification level details.
+        # The details of the data classification level.
         self.security_level_info = security_level_info
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,15 +91,15 @@ class GetSecurityLevelResponseBodySecurityLevelInfo(DaraModel):
         name: str = None,
         related_classify_id_list: List[int] = None,
     ):
-        # The abbreviated name of the data classification level.
+        # The abbreviation of the data classification level.
         self.abbreviation = abbreviation
         # The description of the data classification level.
         self.description = description
-        # The sensitivity level of the data classification.
+        # The sensitivity of the data classification level.
         self.index = index
         # The name of the data classification level.
         self.name = name
-        # The list of data categorization IDs associated with the current data classification level.
+        # The list of data category IDs associated with the current data classification level.
         self.related_classify_id_list = related_classify_id_list
 
     def validate(self):

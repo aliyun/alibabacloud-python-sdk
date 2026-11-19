@@ -75,7 +75,7 @@ class BatchCreateKgRelationRequestCreateCommand(DaraModel):
         self,
         relation_list: List[main_models.BatchCreateKgRelationRequestCreateCommandRelationList] = None,
     ):
-        # The relationship list.
+        # The relation list.
         # 
         # This parameter is required.
         self.relation_list = relation_list
@@ -116,9 +116,9 @@ class BatchCreateKgRelationRequestCreateCommandRelationList(DaraModel):
         source_entity_id: str = None,
         target_entity_id: str = None,
     ):
-        # The relationship record property list.
+        # The property list of the relation record.
         self.property_list = property_list
-        # The relationship type code.
+        # The relation type code.
         # 
         # This parameter is required.
         self.relation_type = relation_type

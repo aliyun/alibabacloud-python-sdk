@@ -19,15 +19,15 @@ class ListStreamTaskManagerLogsResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The list of log files for the specified TaskManager.
+        # The log file entries for the JobManager or TaskManager. You can use the LogName field to retrieve the log content.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -95,11 +95,11 @@ class ListStreamTaskManagerLogsResponseBodyData(DaraModel):
         mtime: int = None,
         size: int = None,
     ):
-        # The log file name. This name can be used as the logName input parameter for the logContent operation.
+        # The original name of the log file. This value corresponds to the LogName request parameter of the GetStreamLogContent operation. Pass this value as is.
         self.log_name = log_name
-        # The last modified time in milliseconds.
+        # The last modified time of the log file. The value is a timestamp in milliseconds since the UNIX epoch.
         self.mtime = mtime
-        # The file size in bytes.
+        # The size of the log file. Unit: bytes.
         self.size = size
 
     def validate(self):

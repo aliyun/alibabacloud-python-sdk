@@ -12,18 +12,19 @@ class CreatePipelineByAsyncShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Request context information
+        # The request context information.
         # 
         # This parameter is required.
         self.context_shrink = context_shrink
-        # Create pipeline/workflow task configuration
+        # The configuration for creating a pipeline or workflow task.
         # 
         # This parameter is required.
         self.create_command_shrink = create_command_shrink
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
 
     def validate(self):

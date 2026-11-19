@@ -103,7 +103,7 @@ class GetAssetMappingRelationsResponseBodyMappingRelationList(DaraModel):
         standard_set_name: str = None,
         standard_stage: str = None,
     ):
-        # The asset type. Valid values: COLUMN (field) and INDEX (metric).
+        # The asset type. Valid values: COLUMN: field. INDEX: metric.
         self.asset_type = asset_type
         # The GUID of the asset.
         self.guid = guid

@@ -23,7 +23,7 @@ class GetBatchTemplateVersionsResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -146,11 +146,11 @@ class GetBatchTemplateVersionsResponseBodyDataTemplateVersionList(DaraModel):
         status: str = None,
         version: int = None,
     ):
-        # The template submission comment.
+        # The comment for the template submission.
         self.comment = comment
         # The template content.
         self.content = content
-        # The data source configuration of the database SQL template.
+        # The datasource config for the database SQL template.
         self.data_source_config = data_source_config
         # The template description.
         self.description = description
@@ -158,39 +158,39 @@ class GetBatchTemplateVersionsResponseBodyDataTemplateVersionList(DaraModel):
         self.dev_resource_group_id = dev_resource_group_id
         # The name of the resource group in the development environment.
         self.dev_resource_group_name = dev_resource_group_name
-        # The version of the compute engine. Valid values: Python 2.7 and Python 3.7.
+        # The version of the compute engine. Currently, Python 2.7 and Python 3.7 are supported.
         self.engine = engine
         # The time when the template was created. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
         # The time when the template was updated. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_modified = gmt_modified
-        # The ID of the template, which is the same as the menu tree node ID.
+        # The template ID, which is the same as the menu tree node ID.
         self.id = id
-        # The last user who updated the template.
+        # The user who last updated the template.
         self.modifier = modifier
-        # The ID of the last user who updated the template.
+        # The ID of the user who last updated the template.
         self.modifier_id = modifier_id
-        # The name of the template.
+        # The template name.
         self.name = name
         # The node type. Valid values: 10 (Shell) and 21 (Python).
         self.operator_type = operator_type
-        # The owner of the template.
+        # The template owner.
         self.owner = owner
         # The ID of the template owner.
         self.owner_id = owner_id
         # The list of template parameters.
         self.params = params
-        # The ID of the project.
+        # The project ID.
         self.project_id = project_id
-        # The list of dependent Python third-party packages.
+        # The list of dependent third-party Python packages.
         self.python_module_list = python_module_list
         # The ID of the resource group in the production environment.
         self.resource_group_id = resource_group_id
         # The name of the resource group in the production environment.
         self.resource_group_name = resource_group_name
-        # Indicates whether runtime resources are shared.
+        # Specifies whether runtime resources are shared.
         self.share_runtime_resource = share_runtime_resource
-        # The status of the template. Valid values: 0 (draft), 2 (submitted), and 100 (in development).
+        # The template status. Valid values: 0 (Draft), 2 (Submitted), and 100 (In development).
         self.status = status
         # The version number.
         self.version = version
@@ -383,15 +383,15 @@ class GetBatchTemplateVersionsResponseBodyDataTemplateVersionListPythonModuleLis
         status: str = None,
         version: str = None,
     ):
-        # The ID of the Python third-party package.
+        # The ID of the third-party Python package.
         self.id = id
         # The installation time.
         self.install_time = install_time
-        # The name of the Python third-party package.
+        # The name of the third-party Python package.
         self.name = name
         # The Python version. Valid values: PYTHON_2_7, PYTHON_3_7, and PYTHON_3_11.
         self.python_version = python_version
-        # The status of the third-party package. Valid values: INSTALL_SUCCESS (installed), INSTALL_FAILED (installation failed), INSTALLING (installing), UPGRADE_SUCCESS (upgraded), UPGRADE_FAILED (upgrade failed), and UPGRADING (upgrading).
+        # The status of the third-party package. Valid values: INSTALL_SUCCESS (installation succeeded), INSTALL_FAILED (installation failed), INSTALLING (installing), UPGRADE_SUCCESS (upgrade succeeded), UPGRADE_FAILED (upgrade failed), and UPGRADING (upgrading).
         self.status = status
         # The version of the third-party package.
         self.version = version
@@ -456,9 +456,9 @@ class GetBatchTemplateVersionsResponseBodyDataTemplateVersionListParams(DaraMode
     ):
         # The parameter description.
         self.description = description
-        # Indicates whether encryption is enabled for the parameter.
+        # Specifies whether encryption is enabled for the parameter.
         self.encrypt_enabled = encrypt_enabled
-        # The key of the parameter.
+        # The parameter key.
         self.key = key
         # The default value of the parameter.
         self.value = value
@@ -515,7 +515,7 @@ class GetBatchTemplateVersionsResponseBodyDataTemplateVersionListDataSourceConfi
         self.ds_id = ds_id
         # The schema of the data source for the database SQL template.
         self.schema = schema
-        # The data source type of the database SQL template. Valid values: MYSQL, ORACLE, ADB_FOR_PG, OUSHUDB, PRESTO, POSTGRE_SQL, STARROCKS, CLICKHOUSE, ANALYTICDB, ADB_FOR_MYSQL_V3, GAUSSDB, SELECTDB, DORIS, SQL_SERVER, HOLOGRES, OPENGAUSS, DAMENG, OCEANBASE, TRINO, POLARDB_X2, LINDORM, EMR_SPARK_SERVERLESS, TDSQL_FOR_PG, TDSQL_FOR_MYSQL, GBASE_8A, and TDENGINE.
+        # The type of the data source for the database SQL template. Valid values: MYSQL, ORACLE, ADB_FOR_PG, OUSHUDB, PRESTO, POSTGRE_SQL, STARROCKS, CLICKHOUSE, ANALYTICDB, ADB_FOR_MYSQL_V3, GAUSSDB, SELECTDB, DORIS, SQL_SERVER, HOLOGRES, OPENGAUSS, DAMENG, OCEANBASE, TRINO, POLARDB_X2, LINDORM, EMR_SPARK_SERVERLESS, TDSQL_FOR_PG, TDSQL_FOR_MYSQL, GBASE_8A, and TDENGINE.
         self.type = type
 
     def validate(self):

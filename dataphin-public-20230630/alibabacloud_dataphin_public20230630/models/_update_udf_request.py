@@ -18,6 +18,7 @@ class UpdateUdfRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
         # The update command.
         # 
@@ -71,29 +72,28 @@ class UpdateUdfRequestUpdateCommand(DaraModel):
         ref_resource_id_list: List[int] = None,
     ):
         # The category. Valid values:
-        # 
-        # - 1: window function
-        # - 2: aggregate function
-        # - 3: numerical function
-        # - 4: string function
-        # - 5: time function
-        # - 6: IP address utility function
-        # - 7: URL-related function
-        # - 8: encoding and decoding function
-        # - 9: business-related function
-        # - 10: other.
+        # - 1: Window function.
+        # - 2: Aggregate function.
+        # - 3: Numerical function.
+        # - 4: String function.
+        # - 5: Time function.
+        # - 6: IP address helper function.
+        # - 7: URL-related function.
+        # - 8: Encoding and decoding function.
+        # - 9: Business-related function.
+        # - 10: Other.
         # 
         # This parameter is required.
         self.category = category
-        # The class name that implements the function in the resource.
+        # The name of the class that implements the function in the resource.
         # 
         # This parameter is required.
         self.class_name = class_name
-        # The command format for function calling to invoke.
+        # The command format for function invocation.
         # 
         # This parameter is required.
         self.command_help = command_help
-        # The commit remarks.
+        # The submission comment.
         # 
         # This parameter is required.
         self.comment = comment
@@ -101,11 +101,11 @@ class UpdateUdfRequestUpdateCommand(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # The ID of the user-defined function.
+        # The ID of the custom function.
         # 
         # This parameter is required.
         self.id = id
-        # The project ID.
+        # The ID of the project.
         # 
         # This parameter is required.
         self.project_id = project_id

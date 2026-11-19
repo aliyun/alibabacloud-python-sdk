@@ -19,15 +19,15 @@ class GetDataServiceApiCallTrendResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The access trend data.
+        # The access trends.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class GetDataServiceApiCallTrendResponseBodyData(DaraModel):
         call_error_impact_trend_list: List[main_models.GetDataServiceApiCallTrendResponseBodyDataCallErrorImpactTrendList] = None,
         call_error_trend_list: List[main_models.GetDataServiceApiCallTrendResponseBodyDataCallErrorTrendList] = None,
     ):
-        # The call error impact trends, sorted by minute in ascending order.
+        # The call exception impact trends in ascending order by minute.
         self.call_error_impact_trend_list = call_error_impact_trend_list
-        # The call error trends, sorted by minute in ascending order.
+        # The call exception trends in ascending order by minute.
         self.call_error_trend_list = call_error_trend_list
 
     def validate(self):
@@ -145,9 +145,9 @@ class GetDataServiceApiCallTrendResponseBodyDataCallErrorTrendList(DaraModel):
     ):
         # The number of calls.
         self.call_count = call_count
-        # The number of call errors.
+        # The number of call exceptions.
         self.error_count = error_count
-        # The minute in the format of yyyy_MMdd_HHmm.
+        # The minute. Format: yyyy_MMdd_HHmm.
         self.minute = minute
 
     def validate(self):
@@ -192,11 +192,11 @@ class GetDataServiceApiCallTrendResponseBodyDataCallErrorImpactTrendList(DaraMod
     ):
         # The API IDs.
         self.api_id_list = api_id_list
-        # The number of APIs with call errors.
+        # The number of APIs with call exceptions.
         self.error_api_count = error_api_count
         # The number of affected applications.
         self.error_app_count = error_app_count
-        # The time scale in minutes, in the format of yyyy-MM-dd HH:mm.
+        # The time scale in minutes. Format: yyyy-MM-dd HH:mm.
         self.minute = minute
 
     def validate(self):

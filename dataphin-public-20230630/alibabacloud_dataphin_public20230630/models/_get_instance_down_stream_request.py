@@ -15,24 +15,25 @@ class GetInstanceDownStreamRequest(DaraModel):
         op_user_id: str = None,
         run_status: str = None,
     ):
-        # Number of levels to expand downstream in the DAG query. Valid values: 1 to 6.
+        # The number of levels to expand the DAG downwards. Valid values: 1 to 6.
         # 
         # This parameter is required.
         self.down_stream_depth = down_stream_depth
-        # Environment identifier.
-        # - DEV: Development environment.
-        # - PROD (default): Production environment.
+        # The environment identifier. Valid values:
+        # - DEV: development environment. 
+        # - PROD: production environment. This is the default value.
         self.env = env
-        # The request body.
+        # The get request.
         # 
         # This parameter is required.
         self.instance_get = instance_get
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # Run status of the instance.
+        # The run status of the instance. Valid values:
         # - INIT
         # - WATING
         # - RUNNING
@@ -98,11 +99,11 @@ class GetInstanceDownStreamRequestInstanceGet(DaraModel):
         instance_id: str = None,
         node_type: str = None,
     ):
-        # Instance ID.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Node type of the instance.
+        # The node type of the instance. Valid values:
         # - BBOX_LOGIC_TABLE_NODE
         # - BBOX_LOGIC_FIELD_NODE
         # - BBOX_LOGIC_FIELD_GROUP_NODE

@@ -20,6 +20,7 @@ class CreateDirectoryRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -65,25 +66,25 @@ class CreateDirectoryRequestCreateCommand(DaraModel):
         project_id: int = None,
     ):
         # The menu tree category. Valid values:
-        # - tempCode: custom query
-        # - codeManage: code node
-        # - offlinePipeline: offline pipeline
-        # - offlinePipelineCustomPlugin: pipeline custom component
-        # - dataX: synchronization task
-        # - streamMeta: real-time meta table
-        # - streamCustomDataSource: real-time custom source
-        # - streamTemplate: real-time compute template
-        # - resourceManage: resource management
-        # - udfResource: offline function
-        # - streamFunction: real-time function.
+        # - tempCode: Ad hoc query.
+        # - codeManage: Code task.
+        # - offlinePipeline: Offline pipeline.
+        # - offlinePipelineCustomPlugin: Custom pipeline component.
+        # - dataX: Synchronization task.
+        # - streamMeta: Real-time meta table.
+        # - streamCustomDataSource: Real-time custom data source.
+        # - streamTemplate: Real-time compute template.
+        # - resourceManage: Resource management.
+        # - udfResource: Offline function.
+        # - streamFunction: Real-time function.
         # 
         # This parameter is required.
         self.category = category
-        # The parent directory of the new file directory.
+        # The parent directory of the new directory.
         # 
         # This parameter is required.
         self.directory = directory
-        # The name of the new file directory.
+        # The name of the new directory.
         # 
         # This parameter is required.
         self.name = name

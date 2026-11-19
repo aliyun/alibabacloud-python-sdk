@@ -27,7 +27,7 @@ class SearchKgBySemanticResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -140,11 +140,11 @@ class SearchKgBySemanticResponseBodyDataSearchResults(DaraModel):
         self.item_id = item_id
         # The entity type code.
         self.item_type_code = item_type_code
-        # The property code that matched the semantic search.
+        # The code of the matched semantic search property.
         self.matched_property_code = matched_property_code
         # The actual value of the matched property.
         self.matched_property_value = matched_property_value
-        # The similarity score ranging from 0.0 to 1.0, based on cosine similarity.
+        # The similarity score based on cosine similarity. Valid values: 0.0 to 1.0.
         self.similarity_score = similarity_score
 
     def validate(self):

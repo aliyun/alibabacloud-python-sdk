@@ -14,12 +14,13 @@ class UpdateDataServiceAppRequest(DaraModel):
         op_user_id: str = None,
         update_command: main_models.UpdateDataServiceAppRequestUpdateCommand = None,
     ):
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
-        # The command to update the data service application.
+        # The update command.
         # 
         # This parameter is required.
         self.update_command = update_command
@@ -67,17 +68,17 @@ class UpdateDataServiceAppRequestUpdateCommand(DaraModel):
         owner_ids: List[str] = None,
         scenarios: str = None,
     ):
-        # Application group ID.
+        # The application group ID.
         self.app_group_id = app_group_id
-        # Application ID.
+        # The application ID.
         # 
         # This parameter is required.
         self.app_id = app_id
-        # Application name.
+        # The application name.
         self.app_name = app_name
-        # List of owner IDs.
+        # The owner IDs.
         self.owner_ids = owner_ids
-        # Application scenarios.
+        # The common scenarios.
         self.scenarios = scenarios
 
     def validate(self):

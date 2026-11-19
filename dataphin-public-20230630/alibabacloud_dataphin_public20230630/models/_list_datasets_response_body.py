@@ -172,17 +172,17 @@ class ListDatasetsResponseBodyPageResultResultData(DaraModel):
         self.file_id = file_id
         # The creation time.
         self.gmt_create = gmt_create
-        # The update time.
+        # The modification time.
         self.gmt_modified = gmt_modified
         # The dataset ID, which is the business primary key.
         self.id = id
         # The ID of the development owner.
         self.lock_owner = lock_owner
-        # The name of the development owner (interface display field).
+        # The name of the development owner (Displayed Fields on the interface).
         self.lock_owner_name = lock_owner_name
         # **The metastore type.**
         self.metadata_storage_type = metadata_storage_type
-        # The name of the dataset.
+        # The dataset name.
         self.name = name
         # The list of owners.
         self.owner_list = owner_list
@@ -190,7 +190,7 @@ class ListDatasetsResponseBodyPageResultResultData(DaraModel):
         self.project_id = project_id
         # The name of the project to which the dataset belongs.
         self.project_name = project_name
-        # The scenarios of the dataset. Valid values: OFFLINE (offline, default) and REALTIME (real-time).
+        # The Scenarios in which the dataset is used. Valid values: OFFLINE (offline, default) and REALTIME (real-time).
         self.scenario = scenario
         # **The storage type.**
         self.storage_type = storage_type
@@ -382,7 +382,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionList(DaraModel):
         id: int = None,
         version: str = None,
     ):
-        # The API information of the online dataset.
+        # The API information for the online dataset.
         self.api_info = api_info
         # The ID of the creator.
         self.creator = creator
@@ -392,7 +392,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionList(DaraModel):
         self.dataset_id = dataset_id
         # The creation time.
         self.gmt_create = gmt_create
-        # The update time.
+        # The modification time.
         self.gmt_modified = gmt_modified
         # The version ID.
         self.id = id
@@ -478,7 +478,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfig(D
         self.file_storage_config = file_storage_config
         # The metastore configuration.
         self.metadata_storage_config = metadata_storage_config
-        # The real-time metatable configuration. This configuration is valid only when `metadataStorageType` is `REALTIME_META_TABLE`.
+        # The real-time metatable configuration. Effective only when `metadataStorageType=REALTIME_META_TABLE`.
         self.realtime_meta_table_config = realtime_meta_table_config
         # The version description.
         self.version_description = version_description
@@ -537,7 +537,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRe
         project_id: int = None,
         table_schema: main_models.ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema = None,
     ):
-        # The data source type of the metatable. Only KAFKA is supported in the current release.
+        # The data source type of the metatable. Only KAFKA is currently supported.
         # 
         # This parameter is required.
         self.datasource_type = datasource_type
@@ -545,11 +545,11 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRe
         # 
         # This parameter is required.
         self.meta_table_name = meta_table_name
-        # The ID of the project to which the metatable belongs. Cross-project access is supported.
+        # The project ID of the metatable. Cross-project access is supported.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The table schema configuration. This configuration reuses `MetadataStorageConfigDTO.TableSchemaDTO`.
+        # The table schema configuration. Reuses `MetadataStorageConfigDTO.TableSchemaDTO`.
         self.table_schema = table_schema
 
     def validate(self):
@@ -597,7 +597,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRe
         self,
         columns: List[main_models.ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns] = None,
     ):
-        # The list of columns.
+        # The column list.
         self.columns = columns
 
     def validate(self):
@@ -640,17 +640,17 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRe
         url: bool = None,
         vector_index_config: main_models.ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumnsVectorIndexConfig = None,
     ):
-        # **The field description.**
+        # **Field description**
         self.comment = comment
-        # **The subtype of the array element. Valid only when type is ARRAY.**
+        # **The subtype of array elements. Valid only when type=ARRAY.**
         self.element_type = element_type
-        # **The maximum capacity of the array. Valid only when type is ARRAY. Default value: 4096.**
+        # **The maximum capacity of the array. Valid only when type=ARRAY. Default value: 4096.**
         self.max_capacity = max_capacity
         # **The column name.**
         # 
         # This parameter is required.
         self.name = name
-        # Specifies whether the column is a primary key.
+        # Indicates whether the column is a primary key.
         # 
         # This parameter is required.
         self.pk = pk
@@ -658,7 +658,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRe
         # 
         # This parameter is required.
         self.type = type
-        # Specifies whether the column is a URL.
+        # Indicates whether the column is a URL.
         self.url = url
         # The vector index configuration.
         self.vector_index_config = vector_index_config
@@ -736,7 +736,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRe
         index_type: str = None,
         similarity_type: str = None,
     ):
-        # The embedding dimension.
+        # The vector dimension.
         # 
         # This parameter is required.
         self.dimension = dimension
@@ -744,13 +744,13 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigRe
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # The index building parameters.
+        # The index build parameters.
         self.index_params = index_params
         # The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
         # 
         # This parameter is required.
         self.index_type = index_type
-        # The similarity type. Default value: COSINE. Valid values: COSINE, L2, and IP.
+        # The similarity type. Valid values: COSINE, L2, and IP. Default value: COSINE.
         # 
         # This parameter is required.
         self.similarity_type = similarity_type
@@ -817,7 +817,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMe
         self.data_source_id = data_source_id
         # The data source name.
         self.data_source_name = data_source_name
-        # The development database or schema.
+        # The development database/schema.
         self.dev_schema = dev_schema
         # The storage destination (new table or existing table).
         # 
@@ -825,7 +825,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMe
         self.metadata_storage_mode = metadata_storage_mode
         # The metastore type.
         self.metadata_storage_type = metadata_storage_type
-        # The production database or schema.
+        # The production database/schema.
         # 
         # This parameter is required.
         self.prod_schema = prod_schema
@@ -905,7 +905,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMe
         self,
         columns: List[main_models.ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns] = None,
     ):
-        # The list of columns.
+        # The column list.
         self.columns = columns
 
     def validate(self):
@@ -950,15 +950,15 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMe
     ):
         # The column description.
         self.comment = comment
-        # The subtype of the array element. Valid only when type is ARRAY.
+        # The subtype of array elements. Valid only when type=ARRAY.
         self.element_type = element_type
-        # The maximum capacity of the array. Valid only when type is ARRAY. Default value: 4096.
+        # The maximum capacity of the array. Valid only when type=ARRAY. Default value: 4096.
         self.max_capacity = max_capacity
         # The column name.
         # 
         # This parameter is required.
         self.name = name
-        # Specifies whether the column is a primary key.
+        # Indicates whether the column is a primary key.
         # 
         # This parameter is required.
         self.pk = pk
@@ -966,7 +966,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMe
         # 
         # This parameter is required.
         self.type = type
-        # Specifies whether the column is a URL.
+        # Indicates whether the column is a URL.
         self.url = url
         # The vector index configuration.
         self.vector_index_config = vector_index_config
@@ -1044,7 +1044,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMe
         index_type: str = None,
         similarity_type: str = None,
     ):
-        # The embedding dimension.
+        # The vector dimension.
         # 
         # This parameter is required.
         self.dimension = dimension
@@ -1052,13 +1052,13 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListDataVersionConfigMe
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # The index building parameters.
+        # The index build parameters.
         self.index_params = index_params
         # The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all index types.
         # 
         # This parameter is required.
         self.index_type = index_type
-        # The similarity type. Default value: COSINE. Valid values: COSINE, L2, and IP.
+        # The similarity type. Valid values: COSINE, L2, and IP. Default value: COSINE.
         # 
         # This parameter is required.
         self.similarity_type = similarity_type
@@ -1199,7 +1199,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo(DaraModel):
         # 
         # This parameter is required.
         self.exec_timeout = exec_timeout
-        # The execution mode. Valid values: 1: Synchronous, 2: Asynchronous.
+        # The execution mode: 1-synchronous, 2-asynchronous.
         # 
         # This parameter is required.
         self.execute_mode = execute_mode
@@ -1215,19 +1215,19 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListApiInfo(DaraModel):
         self.os_project = os_project
         # The name of the data service project.
         self.os_project_name = os_project_name
-        # The protocol type. Valid values: 1: HTTPS, 2: HTTP, 3: HTTP and HTTPS.
+        # The protocol type: 1. HTTPS, 2. HTTP, 3. HTTP and HTTPS.
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The request method. Valid values: 1: GET, 2: LIST.
+        # The request method: 1-GET, 2-LIST.
         # 
         # This parameter is required.
         self.request_method = request_method
-        # The list of request parameters.
+        # The request parameter list.
         # 
         # This parameter is required.
         self.request_param_list = request_param_list
-        # The list of response parameters.
+        # The response parameter list.
         self.response_param_list = response_param_list
         # The timeout period in seconds.
         # 
@@ -1364,7 +1364,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoResponsePara
         self.param_name = param_name
         # The parameter type.
         self.param_type = param_type
-        # The example value.
+        # The sample value.
         self.sample = sample
         # The sequence number.
         self.seq_num = seq_num
@@ -1476,7 +1476,7 @@ class ListDatasetsResponseBodyPageResultResultDataVersionListApiInfoRequestParam
         self.param_name = param_name
         # The parameter type.
         self.param_type = param_type
-        # The example value.
+        # The sample value.
         self.sample = sample
         # The sequence number.
         self.seq_num = seq_num

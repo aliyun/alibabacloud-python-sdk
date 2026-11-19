@@ -19,6 +19,7 @@ class UpdateKgRelationRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The update command.
         # 
@@ -76,7 +77,7 @@ class UpdateKgRelationRequestUpdateCommand(DaraModel):
         relation_id: str = None,
         relation_type: str = None,
     ):
-        # The list of relationship record properties.
+        # The relationship record property list.
         self.property_list = property_list
         # The relationship record ID.
         # 

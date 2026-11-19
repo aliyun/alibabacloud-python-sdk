@@ -90,7 +90,7 @@ class ListDataServiceAuthorizedAppsResponseBodyPageResult(DaraModel):
     ):
         # The paginated list of authorized applications.
         self.authorized_app_list = authorized_app_list
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -153,13 +153,13 @@ class ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList(DaraM
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
-        # The ID of the authorized account, which is the ID of the applicant.
+        # The ID of the privilege account, which is the ID of the applicant.
         self.apply_user_id = apply_user_id
-        # The name of the authorized account, which is the name of the applicant.
+        # The name of the privilege account, which is the name of the applicant.
         self.apply_user_name = apply_user_name
         # The expiration date. Format: yyyy-MM-dd.
         self.expire_date = expire_date
-        # The ID of the authorization request.
+        # The ID of the application request.
         self.id = id
         # Indicates whether the current user is a project manager.
         self.is_project_manager = is_project_manager
@@ -167,32 +167,32 @@ class ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList(DaraM
         self.owner = owner
         # The name of the owner.
         self.owner_user_name = owner_user_name
-        # The authorized account type. Valid values:
+        # The privilege account type. Valid values:
         # - 0: Individual account.
         self.privilege_account = privilege_account
         # The permission type. Valid values:
-        # - 0: Usage permissions.
-        # - 1: Development permissions.
+        # - 0: Usage permission.
+        # - 1: Development permission.
         self.privilege_type = privilege_type
         # The project ID.
         self.project_id = project_id
         # The project name.
         self.project_name = project_name
-        # Indicates whether the user actually has the owner permissions for the application. The user may not have the permissions due to expiration or other reasons.
+        # Indicates whether the user actually has the owner permission for the application. The user may not have the permission due to expiration or other reasons.
         self.real_has_owner_privilege = real_has_owner_privilege
-        # Indicates whether the user actually has the permissions.
+        # Indicates whether the user actually has the permission.
         self.real_has_privilege = real_has_privilege
         # The description used for troubleshooting.
         self.remark_for_debug_list = remark_for_debug_list
         # Indicates whether the permission can be returned or revoked.
         self.revocable = revocable
         # The detailed status of the revocation button. Valid values:
-        # - -1: Super administrators cannot relinquish the permission.
-        # - -2: Owners cannot relinquish the permission.
-        # - -3: Project managers without actual permissions (grayed out).
-        # - -4: Regular users without permissions cannot relinquish the permission.
-        # - 1: Project managers with actual permissions can relinquish the permission.
-        # - 2: Regular users with permissions can relinquish the permission.
+        # - -1: The super administrator cannot return the permission.
+        # - -2: The owner cannot return the permission.
+        # - -3: The project manager does not have actual permissions, and the button is grayed out.
+        # - -4: The regular user does not have permissions and cannot return the permission.
+        # - 1: The project manager has actual permissions and can return the permission.
+        # - 2: The regular user has permissions and can return the permission.
         self.revocable_detail = revocable_detail
 
     def validate(self):
@@ -331,9 +331,9 @@ class ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemark
         key: str = None,
         value: str = None,
     ):
-        # The configuration item.
+        # The configuration key.
         self.key = key
-        # The value of the configuration item.
+        # The configuration value.
         self.value = value
 
     def validate(self):

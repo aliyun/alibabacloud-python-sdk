@@ -1,3 +1,10 @@
+2026-11-19 Version: 2.15.1
+- Update API BatchCreateKgEntity: add request parameters CreateCommand.EntityList.$.BizId.
+- Update API BatchCreateKgEntity: add response parameters Body.CreateResult.SuccessEntityList.$.BizId.
+- Update API BatchCreateKgRelation: add response parameters Body.CreateResult.SuccessRelationList.$.SourceEntityId.
+- Update API BatchCreateKgRelation: add response parameters Body.CreateResult.SuccessRelationList.$.TargetEntityId.
+
+
 2026-10-31 Version: 2.15.0
 - Support API ApplyResourcePermission.
 - Support API CheckComputeClusterConnectivityById.

@@ -14,7 +14,7 @@ class ListTablesRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The paged query conditions.
+        # The paging query conditions.
         self.list_query = list_query
         # The tenant ID.
         # 
@@ -67,7 +67,7 @@ class ListTablesRequestListQuery(DaraModel):
         page_size: int = None,
         sub_types: List[str] = None,
     ):
-        # The asset catalog: project name and business unit name.
+        # The asset catalog: project name, business unit name, or data source ID. If this parameter is not specified, all table assets are queried.
         self.catalog = catalog
         # The supported keyword: table name.
         self.keyword = keyword
@@ -77,7 +77,7 @@ class ListTablesRequestListQuery(DaraModel):
         self.page_no = page_no
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The table types. If you do not specify this parameter or pass an empty list, all table types are queried. Valid values:
+        # The table types. If this parameter is not specified or an empty list is passed, all table types are queried. Valid values:
         # - PHYSICAL_TABLE: Physical table of the compute source.
         # - PHYSICAL_VIEW: View of the compute source.
         # - PHYSICAL_MATERIALIZED_VIEW: Materialized view of the compute source.

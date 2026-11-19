@@ -17,17 +17,17 @@ class ListComputeSourcesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The backend response code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error message returned if the request failed.
+        # The backend exception details.
         self.message = message
-        # The paginated query result.
+        # The paging query result.
         self.page_result = page_result
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,7 +90,7 @@ class ListComputeSourcesResponseBodyPageResult(DaraModel):
     ):
         # The paginated list of compute sources.
         self.compute_source_list = compute_source_list
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -145,33 +145,33 @@ class ListComputeSourcesResponseBodyPageResultComputeSourceList(DaraModel):
         owner_name: str = None,
         type: str = None,
     ):
-        # Indicates whether the compute source is bound to a project.
+        # Specifies whether the compute source is bound to a project.
         self.bind_project = bind_project
         # The ID of the bound project.
         self.bind_project_id = bind_project_id
         # The name of the bound project.
         self.bind_project_name = bind_project_name
-        # The ID of the creator.
+        # The creator.
         self.creator = creator
-        # The name of the creator.
+        # The creator.
         self.creator_name = creator_name
-        # The description of the compute source.
+        # The description.
         self.description = description
-        # The display name of the compute source.
+        # The display name.
         self.display_name = display_name
-        # The time when the compute source was created, in the yyyy-MM-dd HH:mm:ss format.
+        # The creation time. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_create = gmt_create
-        # The time when the compute source was last modified, in the yyyy-MM-dd HH:mm:ss format.
+        # The update time. Format: yyyy-MM-dd HH:mm:ss.
         self.gmt_modified = gmt_modified
         # The ID of the compute source.
         self.id = id
         # The name of the compute source.
         self.name = name
-        # The ID of the compute source owner.
+        # The owner of the compute source.
         self.owner = owner
-        # The name of the compute source owner.
+        # The owner of the compute source.
         self.owner_name = owner_name
-        # The type of the compute source.
+        # The compute source type.
         self.type = type
 
     def validate(self):

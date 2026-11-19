@@ -12,9 +12,7 @@ class GetStreamJobsRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # The Dataphin environment. Valid values:
-        # - DEV
-        # - PROD.
+        # The Dataphin environment. Valid values: DEV and PROD.
         # 
         # This parameter is required.
         self.env = env
@@ -22,6 +20,7 @@ class GetStreamJobsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The Dataphin project ID.
         # 

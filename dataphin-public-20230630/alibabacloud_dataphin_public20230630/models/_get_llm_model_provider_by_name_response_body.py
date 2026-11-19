@@ -19,15 +19,15 @@ class GetLlmModelProviderByNameResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The large language model service provider and available models.
+        # The large model service provider and available models.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The details of the backend response exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -95,17 +95,17 @@ class GetLlmModelProviderByNameResponseBodyData(DaraModel):
     ):
         # The base URL of the model.
         self.base_url = base_url
-        # The enabling status.
+        # The enabled status.
         self.enabled = enabled
         # The ID of the model service provider.
         self.id = id
         # The list of models provided by the model service provider.
         self.llm_models = llm_models
         # The source of the model service provider. Valid values:
-        # - BUILTIN_MODEL: built-in
-        # - BYOM: user-provided
+        # - BUILTIN_MODEL: Built-in.
+        # - BYOM: Bring your own model.
         self.provider_source = provider_source
-        # The service provider type. Valid values:
+        # The provider type. Valid values:
         # - BAILIAN
         # - DEEPSEEK
         # - AI_STACK
@@ -196,33 +196,33 @@ class GetLlmModelProviderByNameResponseBodyDataLlmModels(DaraModel):
     ):
         # The Chinese name of the model.
         self.cn_name = cn_name
-        # The model description.
+        # The description of the model.
         self.description = description
-        # The list of available dimension values for the embedding model. Only embedding models have this value.
+        # The list of available dimension values for the embedding model. This value is available only for embedding models.
         self.embedding_dimensions = embedding_dimensions
         # The enabling status.
         self.enabled = enabled
-        # The model invocation method. Valid values:
+        # The model invocation type. Valid values:
         # - OPEN_AI
         # - DASH_SCOPE
         self.invoke_type = invoke_type
-        # The model ID.
+        # The ID of the model.
         self.model_id = model_id
         # The list of model modality types. Valid values:
-        # - TEXT: text
-        # - IMAGE: image
-        # - AUDIO: audio
-        # - VIDEO: video
-        # - EMBEDDING: embedding
+        # - TEXT: Text.
+        # - IMAGE: Image.
+        # - AUDIO: Audio.
+        # - VIDEO: Video.
+        # - EMBEDDING: Embedding.
         self.model_types = model_types
-        # The model name.
+        # The name of the model.
         self.name = name
         # The service provider.
         self.service_provider = service_provider
         # The list of model task capabilities. Valid values:
-        # - ASR: speech recognition
-        # - TTS: speech synthesis
-        # - TRANSLATION: speech translation
+        # - ASR: Speech recognition.
+        # - TTS: Speech synthesis.
+        # - TRANSLATION: Speech translation.
         self.tasks = tasks
 
     def validate(self):

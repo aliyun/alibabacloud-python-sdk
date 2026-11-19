@@ -18,12 +18,13 @@ class ListKgEntityRequest(DaraModel):
     ):
         # The entity type code.
         self.entity_type = entity_type
-        # The paged query filter conditions.
+        # The paged search filter conditions.
         self.list_query = list_query
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The workspace ID.
         # 
@@ -86,7 +87,7 @@ class ListKgEntityRequestListQuery(DaraModel):
     ):
         # The property filter conditions.
         self.filter_list = filter_list
-        # The keyword for searching display properties.
+        # The keyword search for displayed properties.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_num = page_num
@@ -146,15 +147,7 @@ class ListKgEntityRequestListQueryFilterList(DaraModel):
         property_code: str = None,
         value: str = None,
     ):
-        # The operator. Valid values:
-        # - eq: equal to.
-        # - neq: not equal to.
-        # - contains: contains.
-        # - gt: greater than.
-        # - gte: greater than or equal to.
-        # - lt: less than.
-        # - lte: less than or equal to.
-        # - like: fuzzy match.
+        # The operator. Valid values: eq (equal to), neq (not equal to), contains (contains), gt (greater than), gte (greater than or equal to), lt (less than), lte (less than or equal to), and like (fuzzy match).
         # 
         # This parameter is required.
         self.op = op
@@ -162,7 +155,7 @@ class ListKgEntityRequestListQueryFilterList(DaraModel):
         # 
         # This parameter is required.
         self.property_code = property_code
-        # The property match value.
+        # The property value.
         # 
         # This parameter is required.
         self.value = value

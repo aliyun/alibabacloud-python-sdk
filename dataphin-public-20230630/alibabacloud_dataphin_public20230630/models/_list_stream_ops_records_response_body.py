@@ -19,7 +19,7 @@ class ListStreamOpsRecordsResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The start and stop operation records of real-time tasks.
+        # The start and stop operation records for real-time tasks. You can use the log storage identifiers in the list to query the log content by calling the GetStreamOpsRecord operation.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -99,19 +99,19 @@ class ListStreamOpsRecordsResponseBodyData(DaraModel):
         ops_record_id: str = None,
         start_time: str = None,
     ):
-        # deploymentId
+        # The deployment ID of the task. This ID is used to identify the deployment and is different from the specific running instance ID deploymentInstanceId.
         self.deployment_id = deployment_id
-        # deploymentInstanceId
+        # The deployment instance ID associated with this operation. This ID corresponds to the DeploymentInstanceId request parameter in the log and TaskManager query operations.
         self.deployment_instance_id = deployment_instance_id
-        # The end time.
+        # The end time of the operation. The time is in the yyyy-MM-dd HH:mm:ss format. If the operation has not ended, the value may be null.
         self.end_time = end_time
-        # The log content.
+        # The operation logs. In the ListStreamOpsRecords response, this field may contain a log storage identity. After you invoke the GetStreamOpsRecord operation, the log content or operation information is returned.
         self.log_content = log_content
-        # The instance status. Valid values: START, PAUSE, RESUME, and STOP. Displayed as Start, Pause, Recover, or Stop.
+        # The type of the operation. Valid values: START, PAUSE, RESUME, and STOP. This field does not represent the running status of the task.
         self.operate = operate
-        # opsRecordId
+        # The ID of the operation record. This ID corresponds to the OpsRecordId request parameter of the GetStreamOpsRecord operation.
         self.ops_record_id = ops_record_id
-        # The start time.
+        # The start time of the operation. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.start_time = start_time
 
     def validate(self):

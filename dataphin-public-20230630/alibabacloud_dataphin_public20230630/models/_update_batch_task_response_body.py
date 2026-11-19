@@ -15,7 +15,7 @@ class UpdateBatchTaskResponseBody(DaraModel):
         success: bool = None,
         update_result: main_models.UpdateBatchTaskResponseBodyUpdateResult = None,
     ):
-        # The error code. A value of OK indicates that the request is successful.
+        # The error code. A value of OK indicates that the request is normal.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -85,7 +85,7 @@ class UpdateBatchTaskResponseBodyUpdateResult(DaraModel):
         self,
         file_id: int = None,
     ):
-        # The ID of the task directory tree node.
+        # The ID of the node in the task directory tree.
         self.file_id = file_id
 
     def validate(self):

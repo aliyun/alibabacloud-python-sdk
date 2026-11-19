@@ -17,11 +17,11 @@ class GetUsersResponseBody(DaraModel):
         success: bool = None,
         user_list: List[main_models.GetUsersResponseBodyUserList] = None,
     ):
-        # The error code. OK indicates that the request is successful.
+        # The error code of the request. A value of OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
-        # The error message.
+        # The error message of the request.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -117,7 +117,7 @@ class GetUsersResponseBodyUserList(DaraModel):
         self.ding_number = ding_number
         # The display name of the user.
         self.display_name = display_name
-        # The display name of the user without the status.
+        # The display name of the user, excluding the status.
         self.display_name_without_status = display_name_without_status
         # Indicates whether the IP whitelist is enabled.
         self.enable_white_ip = enable_white_ip
@@ -125,7 +125,7 @@ class GetUsersResponseBodyUserList(DaraModel):
         self.fei_shu_robot = fei_shu_robot
         # The time when the user was created.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The time when the user was modified.
         self.gmt_modified = gmt_modified
         # The user ID.
         self.id = id
@@ -137,17 +137,17 @@ class GetUsersResponseBodyUserList(DaraModel):
         self.name = name
         # The nickname of the user.
         self.nick_name = nick_name
-        # The ID of the Alibaba Cloud account to which the user belongs.
+        # The ID of the primary account to which the user belongs.
         self.parent_id = parent_id
         # The real name of the user.
         self.real_name = real_name
-        # The ID of the user source.
+        # The source ID of the user.
         self.source_id = source_id
         # The source of the user.
         self.source_type = source_type
         # The WeCom bot.
         self.we_chat_robot = we_chat_robot
-        # The whitelist.
+        # The IP address whitelist.
         self.white_ip = white_ip
 
     def validate(self):

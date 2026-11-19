@@ -27,7 +27,7 @@ class ListKgRelationResponseBody(DaraModel):
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +88,7 @@ class ListKgRelationResponseBodyPageResult(DaraModel):
         relation_list: List[main_models.ListKgRelationResponseBodyPageResultRelationList] = None,
         total_count: int = None,
     ):
-        # The list of paged relationship records.
+        # The paged list of relation records.
         self.relation_list = relation_list
         # The total number of records.
         self.total_count = total_count
@@ -136,11 +136,11 @@ class ListKgRelationResponseBodyPageResultRelationList(DaraModel):
         source_entity_id: str = None,
         target_entity_id: str = None,
     ):
-        # The list of properties for the relationship record.
+        # The list of properties for the relation record.
         self.property_list = property_list
-        # The relationship record ID.
+        # The relation record ID.
         self.relation_id = relation_id
-        # The relationship type code.
+        # The relation type code.
         self.relation_type = relation_type
         # The source entity ID.
         self.source_entity_id = source_entity_id
@@ -208,7 +208,7 @@ class ListKgRelationResponseBodyPageResultRelationListPropertyList(DaraModel):
     ):
         # The property code.
         self.code = code
-        # The data type of the property. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean), DATE (date), and LIST (list).
+        # The data type of the property, such as STRING, INTEGER, FLOAT, BOOLEAN, DATE, or LIST.
         self.data_type = data_type
         # The property value.
         self.value = value

@@ -83,11 +83,11 @@ class ListBatchTemplatesRequestListQuery(DaraModel):
         page_size: int = None,
         template_id: int = None,
     ):
-        # The keyword in the template name.
+        # The keyword for the template name.
         self.keyword = keyword
         # The page number. Default value: 1.
         self.page_num = page_num
-        # The number of records per page. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
         # The template ID. The query is based on the template ID.
         self.template_id = template_id

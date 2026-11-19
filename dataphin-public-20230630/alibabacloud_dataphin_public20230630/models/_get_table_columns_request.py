@@ -13,17 +13,17 @@ class GetTableColumnsRequest(DaraModel):
         table_guid: str = None,
         table_name: str = None,
     ):
-        # The catalog of the asset table, which is the name of the business unit or project workspace.
+        # The catalog of the asset table, which is the name of the business unit or project space.
         self.catalog = catalog
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator.
+        # The ID of the operating user.
         self.op_user_id = op_user_id
-        # The GUID of the table. If this parameter is specified, it takes precedence in the query, and the Catalog and TableName parameters are ignored even if they are provided.
+        # The GUID of the table. If this parameter is specified, it is used for priority query, and the Catalog and TableName parameters are not required and will be ignored even if specified.
         self.table_guid = table_guid
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

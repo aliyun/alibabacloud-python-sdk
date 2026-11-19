@@ -17,7 +17,7 @@ class GetKgNeighborRequest(DaraModel):
         op_user_id: str = None,
         workspace_id: str = None,
     ):
-        # The entity record data ID.
+        # The data ID of the entity record.
         # 
         # This parameter is required.
         self.entity_data_id = entity_data_id
@@ -25,12 +25,13 @@ class GetKgNeighborRequest(DaraModel):
         # 
         # This parameter is required.
         self.entity_type = entity_type
-        # The entity record neighbor node query instruction.
+        # The neighbor node query instruction for entity records.
         self.neighbors_query = neighbors_query
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The model ID.
         # 
@@ -99,10 +100,9 @@ class GetKgNeighborRequestNeighborsQuery(DaraModel):
         # The maximum depth of neighbor nodes. Default value: 1.
         self.depth = depth
         # The direction type. Valid values:
-        # - in: the current entity is the target node.
-        # - out: the current entity is the source node.
-        # - both: the current entity is both the source node and the target node.
-        # 
+        # - in: Uses the current entity as the target node.
+        # - out: Uses the current entity as the source node.
+        # - both: Uses the current entity as both the source and target nodes.
         # Default value: both.
         self.direction_type = direction_type
         # The list of relation types.

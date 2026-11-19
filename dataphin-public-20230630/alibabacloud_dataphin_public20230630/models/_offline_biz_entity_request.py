@@ -12,14 +12,15 @@ class OfflineBizEntityRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Offline request
+        # The offline request.
         # 
         # This parameter is required.
         self.offline_command = offline_command
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -64,19 +65,19 @@ class OfflineBizEntityRequestOfflineCommand(DaraModel):
         id: int = None,
         type: str = None,
     ):
-        # Business unit ID
+        # The ID of the business unit.
         # 
         # This parameter is required.
         self.biz_unit_id = biz_unit_id
-        # Offline comment
+        # The comment for the offline operation.
         # 
         # This parameter is required.
         self.comment = comment
-        # Business entity ID
+        # The ID of the business entity.
         # 
         # This parameter is required.
         self.id = id
-        # Business entity type. For more information, see the "CreateBizEntity" operation.
+        # The type of the business entity. For more information, see the create business entity operation.
         # 
         # This parameter is required.
         self.type = type

@@ -18,6 +18,7 @@ class UpdateRowPermissionRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The request command.
         # 
@@ -178,7 +179,7 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommandTables(DaraModel):
         # 
         # This parameter is required.
         self.mapping_column_name = mapping_column_name
-        # The GUID of the table.
+        # The table GUID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
@@ -225,7 +226,7 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommandRules(DaraModel):
         status: int = None,
         user_mapping_list: List[main_models.UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList] = None,
     ):
-        # The rule expressions.
+        # The rule expression.
         # 
         # This parameter is required.
         self.expressions = expressions
@@ -415,7 +416,7 @@ class UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions(DaraM
         # 
         # This parameter is required.
         self.type = type
-        # The expression operation values.
+        # The expression operand value.
         self.values = values
 
     def validate(self):

@@ -12,12 +12,13 @@ class GetTableColumnLineageByTaskIdRequest(DaraModel):
         op_user_id: str = None,
         table_column_lineage_by_task_id_query: main_models.GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery = None,
     ):
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # Data structure for querying table column lineage.
+        # The data structure used to query table column lineage.
         # 
         # This parameter is required.
         self.table_column_lineage_by_task_id_query = table_column_lineage_by_task_id_query
@@ -65,9 +66,9 @@ class GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery(DaraMo
     ):
         # Specifies whether to return tables that do not exist in the asset inventory. If this parameter is not specified, non-existent tables are not returned.
         self.need_not_exist_object = need_not_exist_object
-        # Environment of the task to query: DEV or PROD.
+        # The environment to which the node belongs, such as DEV or PROD.
         self.task_env = task_env
-        # Task (node) ID used to filter the query.
+        # The ID of the node used to filter the query.
         # 
         # This parameter is required.
         self.task_id = task_id

@@ -12,7 +12,7 @@ class GetUdfRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # The user-defined function ID.
+        # The ID of the custom function.
         # 
         # This parameter is required.
         self.id = id
@@ -20,7 +20,7 @@ class GetUdfRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The project ID.
         # 

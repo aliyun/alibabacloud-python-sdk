@@ -27,7 +27,7 @@ class DeleteSecurityLevelResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -91,9 +91,9 @@ class DeleteSecurityLevelResponseBodyDeleteResult(DaraModel):
     ):
         # The error code.
         self.error_code = error_code
-        # The list of data classification IDs that are associated with the current classification level. This parameter is returned only when this error is triggered.
+        # The list of data classification IDs that are bound to the current data classification level. This parameter is returned only when this error is triggered.
         self.related_classify_id_list = related_classify_id_list
-        # Indicates whether the deletion was successful.
+        # Indicates whether the deletion is successful.
         self.success = success
 
     def validate(self):

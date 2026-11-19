@@ -16,18 +16,13 @@ class GetQualityWatchByObjectIdRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator.
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The ID of the object, such as the table ID, data source ID, or metric ID.
+        # The object ID, such as the table ID, data source ID, or metric ID.
         # 
         # This parameter is required.
         self.watch_object_id = watch_object_id
-        # The monitored object type. Valid values:
-        # - TABLE: Dataphin table.
-        # - DATASOURCE_TABLE: Global table.
-        # - DATASOURCE: Data source.
-        # - INDEX: Metric.
-        # - REALTIME_LOGICAL_TABLE: Real-time metatable.
+        # The monitored object type. Valid values: TABLE (Dataphin table), DATASOURCE_TABLE (global table), DATASOURCE (data source), INDEX (metric), and REALTIME_LOGICAL_TABLE (real-time logical table).
         # 
         # This parameter is required.
         self.watch_type = watch_type

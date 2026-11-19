@@ -11,12 +11,13 @@ class RemoveDataServiceAppMemberShrinkRequest(DaraModel):
         op_user_id: str = None,
         remove_command_shrink: str = None,
     ):
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # Remove regular members from a data service application
+        # Deletes a regular member from a data service application.
         # 
         # This parameter is required.
         self.remove_command_shrink = remove_command_shrink

@@ -23,11 +23,11 @@ class BatchCreateKgEntityResponseBody(DaraModel):
         self.create_result = create_result
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -89,11 +89,11 @@ class BatchCreateKgEntityResponseBodyCreateResult(DaraModel):
         success_count: int = None,
         success_entity_list: List[main_models.BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList] = None,
     ):
-        # The number of failed records.
+        # The number of failed creations.
         self.fail_count = fail_count
-        # The number of successfully created records.
+        # The number of successful creations.
         self.success_count = success_count
-        # The list of IDs of successfully created entity records.
+        # The list of IDs for successfully created entity records.
         self.success_entity_list = success_entity_list
 
     def validate(self):
@@ -139,9 +139,12 @@ class BatchCreateKgEntityResponseBodyCreateResult(DaraModel):
 class BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList(DaraModel):
     def __init__(
         self,
+        biz_id: str = None,
         entity_id: str = None,
         entity_type: str = None,
     ):
+        # The business ID of the entity record.
+        self.biz_id = biz_id
         # The ID of the entity record.
         self.entity_id = entity_id
         # The entity type code.
@@ -155,6 +158,9 @@ class BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
 
@@ -165,6 +171,9 @@ class BatchCreateKgEntityResponseBodyCreateResultSuccessEntityList(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
 

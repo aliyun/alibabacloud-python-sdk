@@ -15,7 +15,7 @@ class GetQualityRuleTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator.
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The rule task ID.
         # 

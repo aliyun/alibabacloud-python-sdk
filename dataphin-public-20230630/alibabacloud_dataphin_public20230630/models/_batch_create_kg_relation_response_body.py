@@ -19,7 +19,7 @@ class BatchCreateKgRelationResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The result of creating relationship records in batches.
+        # The result of creating relation records in batches.
         self.create_result = create_result
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -89,11 +89,11 @@ class BatchCreateKgRelationResponseBodyCreateResult(DaraModel):
         success_count: int = None,
         success_relation_list: List[main_models.BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList] = None,
     ):
-        # The number of failed records.
+        # The number of failed creations.
         self.fail_count = fail_count
-        # The number of successfully created records.
+        # The number of successful creations.
         self.success_count = success_count
-        # The list of successfully created entity records.
+        # The list of successfully created relation records.
         self.success_relation_list = success_relation_list
 
     def validate(self):
@@ -141,11 +141,17 @@ class BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList(DaraModel
         self,
         relation_id: str = None,
         relation_type: str = None,
+        source_entity_id: str = None,
+        target_entity_id: str = None,
     ):
-        # The relationship record ID.
+        # The relation record ID.
         self.relation_id = relation_id
-        # The relationship type code.
+        # The relation type code.
         self.relation_type = relation_type
+        # The source entity ID.
+        self.source_entity_id = source_entity_id
+        # The target entity ID.
+        self.target_entity_id = target_entity_id
 
     def validate(self):
         pass
@@ -161,6 +167,12 @@ class BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList(DaraModel
         if self.relation_type is not None:
             result['RelationType'] = self.relation_type
 
+        if self.source_entity_id is not None:
+            result['SourceEntityId'] = self.source_entity_id
+
+        if self.target_entity_id is not None:
+            result['TargetEntityId'] = self.target_entity_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -170,6 +182,12 @@ class BatchCreateKgRelationResponseBodyCreateResultSuccessRelationList(DaraModel
 
         if m.get('RelationType') is not None:
             self.relation_type = m.get('RelationType')
+
+        if m.get('SourceEntityId') is not None:
+            self.source_entity_id = m.get('SourceEntityId')
+
+        if m.get('TargetEntityId') is not None:
+            self.target_entity_id = m.get('TargetEntityId')
 
         return self
 

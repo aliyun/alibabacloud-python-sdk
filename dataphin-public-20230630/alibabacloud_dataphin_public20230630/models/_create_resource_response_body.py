@@ -16,15 +16,15 @@ class CreateResourceResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The ID of the resource file.
+        # The resource file ID.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

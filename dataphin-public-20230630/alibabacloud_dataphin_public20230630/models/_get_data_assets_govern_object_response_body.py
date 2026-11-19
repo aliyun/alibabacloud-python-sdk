@@ -17,17 +17,17 @@ class GetDataAssetsGovernObjectResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code.
+        # The backend response code.
         self.code = code
         # The governance object details.
         self.govern_object_info = govern_object_info
-        # The HTTP status code.
+        # The HTTP response code.
         self.http_status_code = http_status_code
         # The backend response exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -102,7 +102,7 @@ class GetDataAssetsGovernObjectResponseBodyGovernObjectInfo(DaraModel):
         submit_type: str = None,
         tenant_id: int = None,
     ):
-        # The time when the governance object was reported.
+        # The submission time.
         self.commit_time = commit_time
         # The governance object ID.
         self.govern_item_id = govern_item_id
@@ -116,13 +116,13 @@ class GetDataAssetsGovernObjectResponseBodyGovernObjectInfo(DaraModel):
         self.problem = problem
         # The properties.
         self.properties = properties
-        # The ID of the rectification.
+        # The rectification ID.
         self.rectify_id = rectify_id
-        # The name of the rectification.
+        # The rectification name.
         self.rectify_name = rectify_name
         # The rectification status.
         self.rectify_status = rectify_status
-        # The ID of the user who performs the rectification.
+        # The ID of the rectification user.
         self.rectify_user = rectify_user
         # The display name of the rectification user.
         self.rectify_user_name = rectify_user_name
@@ -280,7 +280,7 @@ class GetDataAssetsGovernObjectResponseBodyGovernObjectInfoRelatedKnowledge(Dara
         self.cause = cause
         # The description.
         self.desc = desc
-        # The ID of the knowledge entry.
+        # The knowledge ID.
         self.knowledge_id = knowledge_id
         # The owner.
         self.owner = owner
@@ -363,23 +363,23 @@ class GetDataAssetsGovernObjectResponseBodyGovernObjectInfoProblem(DaraModel):
     ):
         # The object ID.
         self.object_id = object_id
-        # The ID of the parent object.
+        # The parent object ID.
         self.parent_object_id = parent_object_id
         # The contact email for the governance issue.
         self.problem_contact_mail = problem_contact_mail
-        # The other contact information for the governance issue.
+        # Other contact information for the governance issue.
         self.problem_contact_other = problem_contact_other
         # The contact phone number for the governance issue.
         self.problem_contact_phone = problem_contact_phone
         # The description of the governance issue.
         self.problem_desc = problem_desc
-        # The submission method of the issue.
+        # The submission method for the issue.
         self.problem_submit_type = problem_submit_type
         # The user who submitted the issue.
         self.problem_submitter = problem_submitter
         # The username of the user who submitted the issue.
         self.problem_submitter_user_name = problem_submitter_user_name
-        # The types of the governance issue.
+        # The type of the governance issue.
         self.problem_types = problem_types
 
     def validate(self):

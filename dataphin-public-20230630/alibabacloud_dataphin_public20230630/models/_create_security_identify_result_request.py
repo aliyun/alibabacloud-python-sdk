@@ -12,7 +12,7 @@ class CreateSecurityIdentifyResultRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The create request.
+        # The creation request.
         # 
         # This parameter is required.
         self.create_command = create_command
@@ -20,6 +20,7 @@ class CreateSecurityIdentifyResultRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -73,32 +74,27 @@ class CreateSecurityIdentifyResultRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.classify_id = classify_id
-        # The deduplication strategy. Valid values:
-        # - COVER_ALL: overwrites all online tags.
-        # - COVER_UNLOCKED: overwrites only unlocked online tags.
+        # The conflict strategy. Valid values: COVER_ALL (overwrites all online tags) and COVER_UNLOCKED (overwrites only unlocked online tags).
         # 
         # This parameter is required.
         self.conflict_strategy = conflict_strategy
-        # The datasource environment identifier. This parameter is required only for datasource tables.
+        # The environment identifier of the datasource. This parameter is required only for datasource tables.
         self.datasource_env = datasource_env
-        # The datasource name. This parameter is required only for datasource tables.
+        # The name of the datasource. This parameter is required only for datasource tables.
         self.datasource_name = datasource_name
-        # Specifies whether to enable the result. Valid values:
-        # - true: Enabled.
-        # - false: Disabled.
-        # Default value: true.
+        # The enabled status. Valid values: true (enabled) and false (disabled). Default value: true.
         self.enable = enable
-        # The field name.
+        # The name of the field.
         # 
         # This parameter is required.
         self.field_name = field_name
         # Specifies whether the table is a datasource table. Default value: false (treated as a Dataphin table).
         self.is_datasource_table = is_datasource_table
-        # The table catalog. For a datasource table, specify the database or schema name. For a Dataphin physical table, specify the project name in English. For a Dataphin logical table, specify the business unit name in English.
+        # The catalog of the table. For a datasource table, specify the name of the database or schema to which the table belongs. For a Dataphin physical table, specify the English name of the project. For a Dataphin logical table, specify the English name of the business unit.
         # 
         # This parameter is required.
         self.table_catalog = table_catalog
-        # The table name.
+        # The name of the table.
         # 
         # This parameter is required.
         self.table_name = table_name

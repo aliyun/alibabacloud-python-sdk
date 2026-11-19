@@ -19,7 +19,7 @@ class ListQualityArchiveTablesResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The result of querying the anomaly archived table list.
+        # The query result for the exception archived table list.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class ListQualityArchiveTablesResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class ListQualityArchiveTablesResponseBodyData(DaraModel):
         archive_table_list: List[main_models.ListQualityArchiveTablesResponseBodyDataArchiveTableList] = None,
         total_count: int = None,
     ):
-        # The list of anomaly archived tables.
+        # The list of exception archived tables.
         self.archive_table_list = archive_table_list
-        # The number of custom anomaly archived tables.
+        # The number of custom exception archived tables.
         self.total_count = total_count
 
     def validate(self):
@@ -137,17 +137,17 @@ class ListQualityArchiveTablesResponseBodyDataArchiveTableList(DaraModel):
         lifecycle: int = None,
         max_archive_count: int = None,
     ):
-        # The ID of the archived table. This ID is used when you update, switch to active, or delete the archived table.
+        # The ID of the archived table. This ID is used when you modify, activate, or delete the archived table.
         self.archive_table_id = archive_table_id
-        # The full table name in the format of project_name.table_name.
+        # The full table name, in the format of project name.table name.
         self.archive_table_name = archive_table_name
-        # The DDL statement for creating the archived table, which includes dataphin_quality_* system fields and the dataphin_quality_validate_date partition field definition.
+        # The DDL statement for creating the archived table, including the definitions of the dataphin_quality_* system fields and the dataphin_quality_validate_date partition field.
         self.ddl = ddl
-        # Indicates whether this is the active archived table. At least one active archived table must exist under the same monitored object.
+        # Indicates whether the archived table is active. At least one archived table must be active under the same monitored object.
         self.is_default = is_default
-        # The lifecycle in days. An empty value indicates no lifecycle is configured.
+        # The lifecycle in days. An empty value indicates that no lifecycle is configured.
         self.lifecycle = lifecycle
-        # The maximum number of records to archive per validation. A value of -1 indicates full archiving.
+        # The maximum number of archived records per check. A value of -1 indicates full archiving.
         self.max_archive_count = max_archive_count
 
     def validate(self):

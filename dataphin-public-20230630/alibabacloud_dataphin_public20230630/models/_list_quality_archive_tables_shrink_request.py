@@ -11,7 +11,7 @@ class ListQualityArchiveTablesShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The input parameters for querying the anomaly archived table list.
+        # The query parameters for the exception archived table list.
         # 
         # This parameter is required.
         self.list_query_shrink = list_query_shrink
@@ -19,7 +19,7 @@ class ListQualityArchiveTablesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):

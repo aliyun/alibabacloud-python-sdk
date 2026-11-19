@@ -14,12 +14,13 @@ class CreateDataSourceRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Request object
+        # The request object.
         self.create_command = create_command
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -62,9 +63,9 @@ class CreateDataSourceRequestCreateCommand(DaraModel):
         dev_data_source_create: main_models.CreateDataSourceRequestCreateCommandDevDataSourceCreate = None,
         prod_data_source_create: main_models.CreateDataSourceRequestCreateCommandProdDataSourceCreate = None,
     ):
-        # Development environment data source
+        # The development environment data source.
         self.dev_data_source_create = dev_data_source_create
-        # Production environment data source
+        # The production environment data source.
         self.prod_data_source_create = prod_data_source_create
 
     def validate(self):
@@ -107,19 +108,19 @@ class CreateDataSourceRequestCreateCommandProdDataSourceCreate(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # Whether to check connectivity
+        # Specifies whether to check the connectivity.
         self.check_activity = check_activity
-        # List of connection configuration items
+        # The list of connection configuration items.
         # 
         # This parameter is required.
         self.config_item_list = config_item_list
-        # Data source description
+        # The description of the data source.
         self.description = description
-        # Data source name
+        # The name of the data source.
         # 
         # This parameter is required.
         self.name = name
-        # Data source type:
+        # The data source type. Valid values:
         # - MAX_COMPUTE
         # - HDFS
         # - LOG_HUB
@@ -142,7 +143,7 @@ class CreateDataSourceRequestCreateCommandProdDataSourceCreate(DaraModel):
         # - ORACLE
         # - VERTICA
         # - DB2
-        # - TERA_DATA, etc.
+        # - TERA_DATA
         # 
         # This parameter is required.
         self.type = type
@@ -205,11 +206,11 @@ class CreateDataSourceRequestCreateCommandProdDataSourceCreateConfigItemList(Dar
         key: str = None,
         value: str = None,
     ):
-        # Configuration item. For the key values required by different databases, see the supplementary description at the bottom of the document.
+        # The configuration item key. For the key values required by different databases, refer to the supplementary instructions below.
         # 
         # This parameter is required.
         self.key = key
-        # Configuration item value
+        # The value of the configuration item.
         # 
         # This parameter is required.
         self.value = value
@@ -246,9 +247,9 @@ class CreateDataSourceRequestCreateCommandDevDataSourceCreate(DaraModel):
         data_source_create: main_models.CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate = None,
         prod_data_source_id: int = None,
     ):
-        # Development environment data source
+        # The development environment data source.
         self.data_source_create = data_source_create
-        # Associated production environment data source ID. This parameter cannot be empty when only creating a development environment compute source.
+        # The ID of the associated production environment data source. This parameter is required if you only create a compute source for the development environment.
         self.prod_data_source_id = prod_data_source_id
 
     def validate(self):
@@ -288,19 +289,19 @@ class CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate(Da
         name: str = None,
         type: str = None,
     ):
-        # Whether to check connectivity
+        # Specifies whether to check the connectivity.
         self.check_activity = check_activity
-        # List of connection configuration items
+        # The list of connection configuration items.
         # 
         # This parameter is required.
         self.config_item_list = config_item_list
-        # Description
+        # The description.
         self.description = description
-        # Data source name
+        # The name of the data source.
         # 
         # This parameter is required.
         self.name = name
-        # Data source type
+        # The data source type.
         # 
         # This parameter is required.
         self.type = type
@@ -363,11 +364,11 @@ class CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreateCon
         key: str = None,
         value: str = None,
     ):
-        # Configuration item. For the key values required by different databases, see the supplementary description at the bottom of the document.
+        # The configuration item key. For the key values required by different databases, refer to the supplementary instructions below.
         # 
         # This parameter is required.
         self.key = key
-        # Configuration item value
+        # The value of the configuration item.
         # 
         # This parameter is required.
         self.value = value

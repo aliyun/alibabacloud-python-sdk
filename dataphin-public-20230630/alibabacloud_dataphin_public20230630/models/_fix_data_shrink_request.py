@@ -13,10 +13,10 @@ class FixDataShrinkRequest(DaraModel):
         op_user_id: str = None,
     ):
         # The environment identifier. Valid values:
-        # - DEV: development environment. 
-        # - PROD (default): production environment.
+        # - DEV: development environment 
+        # - PROD: production environment (default)
         self.env = env
-        # The command to rerun downstream nodes to fix data link issues. You can choose to force a rerun.
+        # Reruns downstream nodes to repair pipeline data and allows you to force the rerun.
         # 
         # This parameter is required.
         self.fix_data_command_shrink = fix_data_command_shrink
@@ -24,6 +24,7 @@ class FixDataShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):

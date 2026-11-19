@@ -15,7 +15,7 @@ class DeleteBizMetricResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The deletion result.
         self.data = data
@@ -25,7 +25,7 @@ class DeleteBizMetricResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,11 +86,9 @@ class DeleteBizMetricResponseBodyData(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # The exception information.
+        # The exception message.
         self.message = message
-        # Indicates whether the deletion was successful. Valid values:
-        # - true: Succeeded.
-        # - false: Failed.
+        # Indicates whether the deletion is successful. A value of true indicates that the deletion is successful. A value of false indicates that the deletion failed.
         self.success = success
 
     def validate(self):

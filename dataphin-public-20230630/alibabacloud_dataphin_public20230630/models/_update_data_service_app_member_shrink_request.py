@@ -15,8 +15,9 @@ class UpdateDataServiceAppMemberShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # The command to update regular members of a data service application.
+        # Updates the regular members of a data service application.
         # 
         # This parameter is required.
         self.update_command_shrink = update_command_shrink

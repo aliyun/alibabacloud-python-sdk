@@ -18,8 +18,9 @@ class UpdateSecurityClassifyCatalogRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The update instruction.
+        # The update command.
         # 
         # This parameter is required.
         self.update_command = update_command
@@ -67,24 +68,19 @@ class UpdateSecurityClassifyCatalogRequestUpdateCommand(DaraModel):
         path: str = None,
         visible_type: str = None,
     ):
-        # The name of the classification folder.
+        # The name of the classification catalog.
         # 
         # This parameter is required.
         self.name = name
-        # The list of administrator IDs. This parameter takes effect only when the parent folder is the root folder.
+        # The list of administrator IDs. This parameter is valid only when the parent catalog is the root catalog.
         self.owner_list = owner_list
-        # The full path of the parent classification folder. Default value: /.
+        # The full path of the parent classification catalog. Default value: /.
         self.parent_path = parent_path
-        # The original full path of the folder.
+        # The original full path of the catalog.
         # 
         # This parameter is required.
         self.path = path
-        # The visibility scope of the classification. Valid values:
-        # 
-        # - PUBLIC: visible to all users.
-        # - PRIVATE: visible only to administrators.
-        # 
-        # Default value: PUBLIC. This parameter takes effect only when the parent folder is the root folder.
+        # The classification visibility scope. Valid values: PUBLIC (public) and PRIVATE (visible only to administrators). Default value: PUBLIC. This parameter is valid only when the parent catalog is the root catalog.
         self.visible_type = visible_type
 
     def validate(self):

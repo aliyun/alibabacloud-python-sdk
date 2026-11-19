@@ -14,7 +14,7 @@ class CreateBizUnitRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The create request.
+        # The creation request.
         # 
         # This parameter is required.
         self.create_command = create_command
@@ -22,6 +22,7 @@ class CreateBizUnitRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -68,7 +69,7 @@ class CreateBizUnitRequestCreateCommand(DaraModel):
         mode: str = None,
         name: str = None,
     ):
-        # The list of data domain architects.
+        # The business unit architects.
         # 
         # This parameter is required.
         self.biz_unit_account_list = biz_unit_account_list
@@ -87,8 +88,8 @@ class CreateBizUnitRequestCreateCommand(DaraModel):
         # - icon-entertainment: Entertainment.
         # - icon-traffic: Travel.
         # - icon-health: Health.
-        # - icon-social-contact: Social and communication.
-        # - con-dining: Dining.
+        # - icon-social-contact: Social and communications.
+        # - con-dining: Catering.
         # - icon-education: Education.
         # - icon-environment: Environment.
         # 
@@ -96,9 +97,9 @@ class CreateBizUnitRequestCreateCommand(DaraModel):
         self.icon = icon
         # The production mode. Valid values:
         # - BASIC: single-environment mode.
-        # - DEV_PROD: development/production dual-environment mode.
+        # - DEV_PROD: development and production dual-environment mode.
         self.mode = mode
-        # The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For ADB_PG engines, the code name can be up to 40 characters in length.
+        # The code name of the business object. The name can be up to 64 characters in length and can contain only letters, digits, and underscores. For the ADB_PG engine, the code name can be up to 40 characters in length.
         # 
         # This parameter is required.
         self.name = name

@@ -14,13 +14,13 @@ class ListQualityRuleTasksRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The paging query conditions.
+        # The paging conditions for the paged query.
         self.list_query = list_query
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The operator user ID.
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -71,9 +71,9 @@ class ListQualityRuleTasksRequestListQuery(DaraModel):
         validate_result_list: List[str] = None,
         watch_task_id: int = None,
     ):
-        # The business date.
+        # The business date. Format: YYYY-MM-DD.
         self.biz_date = biz_date
-        # The rule types. Valid values: CONSISTENT (consistency), EFFECTIVE (effectiveness), TIMELINESE (timeliness), ACCURATE (accuracy), UNIQUENESS (uniqueness), COMPLETENESS (completeness), STABILITY (stability), and CUSTOM (custom).
+        # The rule types. Valid values: CONSISTENT (Consistency), EFFECTIVE (Effectiveness), TIMELINESE (Timeliness), ACCURATE (Accuracy), UNIQUENESS (Uniqueness), COMPLETENESS (Completeness), STABILITY (Stability), and CUSTOM (Custom).
         self.catalog_list = catalog_list
         # The search keyword. You can search by field name or rule name.
         self.keyword = keyword
@@ -81,15 +81,15 @@ class ListQualityRuleTasksRequestListQuery(DaraModel):
         self.page_no = page_no
         # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The rule strengths. Valid values: STRONG (strong) and WEAK (weak).
+        # The rule strengths. Valid values: STRONG (Strong) and WEAK (Weak).
         self.rule_strength_list = rule_strength_list
-        # The rule labels. Valid values: DEFAULT (default label), DATA_STANDARD_MANUAL (manually created standard rules), DATA_STANDARD_AUTO (standard quality rules created by automatic creation), PIPELINE (rules created by pipelines), and DATA_MODELING (data modeling).
+        # The rule labels. Valid values: DEFAULT (Default label), DATA_STANDARD_MANUAL (Manually created standard rule), DATA_STANDARD_AUTO (Standard quality rule of automatic creation), PIPELINE (Rule created by pipeline), and DATA_MODELING (Data modeling).
         self.rule_tag_list = rule_tag_list
-        # The task statuses. Valid values: NOT_RUN (not run), WAITING (waiting), RUNNING (running), SUCCESS (successful), FAILED (failed), CANCEL (canceled), TIMEOUT (timed out), and OFFLINE (offline).
+        # The task statuses. Valid values: NOT_RUN (Not run), WAITING (Waiting), RUNNING (Running), SUCCESS (Successful), FAILED (Failed), CANCEL (Canceled), TIMEOUT (Timed out), and OFFLINE (Offline).
         self.status_list = status_list
-        # The validation results. Valid values: NOT_RUN (not run), WAITING (waiting), RUNNING (running), PASS (passed), NOT_PASS (not passed), FAILED (failed), OFFLINE (offline and requires restart), CANCEL (canceled), and TIMEOUT (timed out).
+        # The validation results. Valid values: NOT_RUN (Not run), WAITING (Waiting), RUNNING (Running), PASS (Passed), NOT_PASS (Not passed), FAILED (Failed), OFFLINE (Offline, requires restart), CANCEL (Canceled), and TIMEOUT (Timed out).
         self.validate_result_list = validate_result_list
-        # The quality watchtask ID.
+        # The watchtask ID.
         self.watch_task_id = watch_task_id
 
     def validate(self):

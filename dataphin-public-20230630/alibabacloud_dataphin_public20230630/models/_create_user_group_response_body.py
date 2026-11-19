@@ -14,7 +14,7 @@ class CreateUserGroupResponseBody(DaraModel):
         success: bool = None,
         user_group_id: str = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -22,9 +22,9 @@ class CreateUserGroupResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
-        # The user group ID.
+        # The ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):

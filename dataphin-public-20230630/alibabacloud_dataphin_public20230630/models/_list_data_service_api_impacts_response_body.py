@@ -27,7 +27,7 @@ class ListDataServiceApiImpactsResponseBody(DaraModel):
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -150,25 +150,25 @@ class ListDataServiceApiImpactsResponseBodyPageResultImpactList(DaraModel):
         self.api_id = api_id
         # appKey
         self.app_key = app_key
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The number of calls.
         self.call_count = call_count
         # The number of client failures.
         self.client_fail_count = client_fail_count
-        # The source IP address of the access request.
+        # The IP address of the client.
         self.client_ip = client_ip
-        # The number of abnormal API calls.
+        # The number of API call exceptions.
         self.error_api_count = error_api_count
-        # The number of errors.
+        # The number of exceptions.
         self.error_count = error_count
         # The error rate.
         self.error_rate = error_rate
-        # The most recent call time. Format: yyyy-MM-dd HH:mm:ss.
+        # The time of the last call. Format: yyyy-MM-dd HH:mm:ss.
         self.last_call_time = last_call_time
-        # The gateway statistics time. Format: yyyy_MMdd_HHmm.
+        # The time when the gateway statistics are collected. Format: yyyy_MMdd_HHmm.
         self.minute = minute
-        # The number of offline instances.
+        # The offline count.
         self.offline_count = offline_count
         # The total time consumed by successful calls.
         self.success_time_cost = success_time_cost

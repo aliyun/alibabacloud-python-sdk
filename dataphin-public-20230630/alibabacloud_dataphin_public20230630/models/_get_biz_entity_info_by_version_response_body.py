@@ -19,7 +19,7 @@ class GetBizEntityInfoByVersionResponseBody(DaraModel):
     ):
         # The creation result.
         self.biz_entity_info = biz_entity_info
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -27,7 +27,7 @@ class GetBizEntityInfoByVersionResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -93,13 +93,13 @@ class GetBizEntityInfoByVersionResponseBodyBizEntityInfo(DaraModel):
     ):
         # The business object.
         self.biz_object = biz_object
-        # The business process.
+        # The business activity.
         self.biz_process = biz_process
-        # The business unit ID of the business object.
+        # The ID of the business unit to which the business object belongs.
         self.biz_unit_id = biz_unit_id
-        # The ID of the subject domain to which the entity belongs.
+        # The ID of the data domain to which the entity belongs.
         self.data_domain_id = data_domain_id
-        # The type of the business entity. For more information, refer to the query business entity details operation.
+        # The business entity type. For more information, see the Query business entity details API operation.
         self.type = type
 
     def validate(self):
@@ -175,45 +175,45 @@ class GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizProcess(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The approval flow ID.
+        # The ID of the approval process.
         self.approval_id = approval_id
-        # The approval status. For more information, refer to the query business entity details operation.
+        # The approval status. For more information, see the operation for querying business entity details.
         self.approval_status = approval_status
-        # The list of business event activity IDs contained in the business flow activity. This parameter is valid only when the type is a business flow activity.
+        # The list of business event activity IDs included in the business process activity. This field is valid only when the entity is a business process activity.
         self.biz_event_entity_id_list = biz_event_entity_id_list
-        # The description of the business process.
+        # The description of the business activity.
         self.description = description
-        # The display name of the business process.
+        # The display name of the business activity.
         self.display_name = display_name
-        # The creation time.
+        # The time when the business object was created.
         self.gmt_create = gmt_create
-        # The update time.
+        # The time when the business object was last updated.
         self.gmt_modified = gmt_modified
-        # Indicates whether the business process is depended on by other entities.
+        # Indicates whether the business process activity has dependents.
         self.has_dependent = has_dependent
-        # The business process ID.
+        # The ID of the business activity.
         self.id = id
         # The ID of the user who last modified the business object.
         self.last_modifier = last_modifier
         # The name of the user who last modified the business object.
         self.last_modifier_name = last_modifier_name
-        # The name of the business process.
+        # The name of the business activity.
         self.name = name
-        # The online status. For more information, refer to the query business entity details operation.
+        # The online status. For more information, see the operation for querying business entity details.
         self.online_status = online_status
-        # The owner of the business object.
+        # The ID of the owner of the business object.
         self.owner_name = owner_name
-        # The owner of the business object.
+        # The ID of the owner of the business object.
         self.owner_user_id = owner_user_id
-        # The preceding business flow activities of the business flow activity.
+        # The preceding business process activities of the current business process activity.
         self.pre_biz_process_id_list = pre_biz_process_id_list
-        # The list of associated online business entity IDs.
+        # The list of IDs of associated online business entities.
         self.ref_biz_entity_id_list = ref_biz_entity_id_list
-        # The number of associated fact tables.
+        # The number of associated logical fact tables.
         self.ref_fact_table_count = ref_fact_table_count
-        # The status. For more information, refer to the query business entity details operation.
+        # The status. For more information, see the operation for querying business entity details.
         self.status = status
-        # The type of the business process. For more information, refer to the query business entity details operation.
+        # The type of the business activity. For more information, see the operation for querying business entity details.
         self.type = type
 
     def validate(self):
@@ -374,45 +374,45 @@ class GetBizEntityInfoByVersionResponseBodyBizEntityInfoBizObject(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The approval flow ID.
+        # The ID of the approval process.
         self.approval_id = approval_id
-        # The approval status. For more information, refer to the query business entity details operation.
+        # The approval status. For more information, see the operation for querying business entity details.
         self.approval_status = approval_status
-        # The list of child business objects of the business object.
+        # The list of IDs of child business objects.
         self.child_biz_entity_id_list = child_biz_entity_id_list
         # The description of the business object.
         self.description = description
         # The display name of the business object.
         self.display_name = display_name
-        # The creation time.
+        # The time when the business object was created.
         self.gmt_create = gmt_create
-        # The update time.
+        # The time when the business object was last updated.
         self.gmt_modified = gmt_modified
-        # The business object ID.
+        # The ID of the business object.
         self.id = id
         # The ID of the user who last modified the business object.
         self.last_modifier = last_modifier
         # The name of the user who last modified the business object.
         self.last_modifier_name = last_modifier_name
-        # The code name of the business object.
+        # The code of the business object.
         self.name = name
-        # The online status. For more information, refer to the query business entity details operation.
+        # The online status. For more information, see the operation for querying business entity details.
         self.online_status = online_status
-        # The owner of the business object.
+        # The ID of the owner of the business object.
         self.owner_name = owner_name
-        # The owner of the business object.
+        # The ID of the owner of the business object.
         self.owner_user_id = owner_user_id
-        # The parent entity that the business object inherits from. Only common business objects support inheritance, and the parent entity must be online.
+        # The ID of the parent entity inherited by the business object. Only common business objects can be configured to inherit entities, and they can only inherit online business objects.
         self.parent_id = parent_id
-        # The list of associated online business entity IDs.
+        # The list of IDs of associated online business entities.
         self.ref_biz_entity_id_list = ref_biz_entity_id_list
         # The number of associated logical dimension tables.
         self.ref_dim_table_count = ref_dim_table_count
-        # The number of associated aggregate tables.
+        # The number of associated logical aggregate tables.
         self.ref_summary_table_count = ref_summary_table_count
-        # The status. For more information, refer to the query business entity details operation.
+        # The status. For more information, see the operation for querying business entity details.
         self.status = status
-        # The object type of the business object. For more information, refer to the query business entity details operation.
+        # The object type of the business object. For more information, see the operation for querying business entity details.
         self.type = type
 
     def validate(self):

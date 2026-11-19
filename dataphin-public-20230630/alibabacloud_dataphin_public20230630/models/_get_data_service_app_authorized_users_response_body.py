@@ -21,13 +21,13 @@ class GetDataServiceAppAuthorizedUsersResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The error details of the backend response.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The user list.
+        # The list of users.
         self.user_list = user_list
 
     def validate(self):

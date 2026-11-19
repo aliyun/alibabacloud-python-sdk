@@ -21,8 +21,9 @@ class ListDataServiceApiImpactsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The ID of the data service project.
+        # The ID of the Data Service project.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -83,19 +84,19 @@ class ListDataServiceApiImpactsRequestListQuery(DaraModel):
         # 
         # This parameter is required.
         self.api_id = api_id
-        # The application name.
+        # The name of the application.
         self.app_name = app_name
         # The end time. Format: yyyy-MM-dd HH:mm:ss.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The column used for sorting. Valid values: CALL_COUNT: the number of calls. ERROR_COUNT: the number of errors. ERROR_RATE: the error rate. Default value: CALL_COUNT.
+        # The column by which to sort the results. Valid values: CALL_COUNT (number of calls), ERROR_COUNT (number of exceptions), and ERROR_RATE (error rate). Default value: CALL_COUNT.
         self.order_column = order_column
-        # The sort order. Valid values: 1: ascending order. 2: descending order. Default value: 1.
+        # The sort order. Valid values: 1 (ascending order) and 2 (descending order). Default value: 1.
         self.order_type = order_type
         # The page number. Default value: 1.
         self.page_no = page_no
-        # The number of records per page. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
         # The start time. Format: yyyy-MM-dd HH:mm:ss.
         # 

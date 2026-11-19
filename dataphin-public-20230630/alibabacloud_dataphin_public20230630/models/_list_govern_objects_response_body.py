@@ -19,15 +19,15 @@ class ListGovernObjectsResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The HTTP status code.
+        # The HTTP response code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The backend response exception details.
         self.message = message
         # The paged query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -143,7 +143,7 @@ class ListGovernObjectsResponseBodyPageResultData(DaraModel):
         related_knowledge: List[main_models.ListGovernObjectsResponseBodyPageResultDataRelatedKnowledge] = None,
         status: str = None,
     ):
-        # The time when the record was reported.
+        # The submission time.
         self.commit_time = commit_time
         # The governance object ID.
         self.govern_item_id = govern_item_id
@@ -153,17 +153,17 @@ class ListGovernObjectsResponseBodyPageResultData(DaraModel):
         self.is_rectify = is_rectify
         # The list of owners.
         self.owners = owners
-        # The governance issue object.
+        # The governance problem object.
         self.problem = problem
         # The property values.
         self.properties = properties
         # The rectification ID.
         self.rectify_id = rectify_id
-        # The name of the rectification.
+        # The rectification name.
         self.rectify_name = rectify_name
         # The rectification status.
         self.rectify_status = rectify_status
-        # The related knowledge base entries.
+        # The related knowledge base.
         self.related_knowledge = related_knowledge
         # The status of the governance object.
         self.status = status
@@ -285,15 +285,15 @@ class ListGovernObjectsResponseBodyPageResultDataRelatedKnowledge(DaraModel):
         solution: str = None,
         title: str = None,
     ):
-        # The cause of the issue.
+        # The cause of the problem.
         self.cause = cause
         # The description.
         self.desc = desc
-        # The knowledge entry ID.
+        # The knowledge ID.
         self.knowledge_id = knowledge_id
         # The owner.
         self.owner = owner
-        # The name of the owner.
+        # The owner name.
         self.owner_name = owner_name
         # The Solutions.
         self.solution = solution
@@ -374,21 +374,21 @@ class ListGovernObjectsResponseBodyPageResultDataProblem(DaraModel):
         self.object_id = object_id
         # The ID of the parent object.
         self.parent_object_id = parent_object_id
-        # The contact email for the governance issue.
+        # The contact email for governance issues.
         self.problem_contact_mail = problem_contact_mail
-        # The other contact information for the governance issue.
+        # Other contact information for the governance problem.
         self.problem_contact_other = problem_contact_other
-        # The contact phone number for the governance issue.
+        # The contact phone number for the governance problem.
         self.problem_contact_phone = problem_contact_phone
-        # The description of the governance issue.
+        # The description of the governance problem.
         self.problem_desc = problem_desc
-        # The submission type of the issue.
+        # The submission method of the problem.
         self.problem_submit_type = problem_submit_type
-        # The user who submitted the issue.
+        # The user who submitted the problem.
         self.problem_submitter = problem_submitter
-        # The username of the issue submitter.
+        # The username of the user who submitted the problem.
         self.problem_submitter_user_name = problem_submitter_user_name
-        # The types of the governance issue.
+        # The type of the governance problem.
         self.problem_types = problem_types
 
     def validate(self):

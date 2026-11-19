@@ -11,7 +11,7 @@ class AssignQualityRuleOfAllRuleScopeSchedulesShrinkRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The assignment binding command.
+        # The binding assignment command.
         # 
         # This parameter is required.
         self.assign_command_shrink = assign_command_shrink
@@ -19,7 +19,7 @@ class AssignQualityRuleOfAllRuleScopeSchedulesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):

@@ -16,8 +16,9 @@ class ParseBatchTaskDependencyRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
-        # The parse request.
+        # The parsing request.
         # 
         # This parameter is required.
         self.parse_command = parse_command
@@ -72,15 +73,15 @@ class ParseBatchTaskDependencyRequestParseCommand(DaraModel):
         # 
         # This parameter is required.
         self.code = code
-        # The catalog for a database SQL node. This parameter takes effect only for data source types that require a catalog, such as Presto.
+        # The data source catalog for database SQL nodes. This parameter takes effect only for data source types that require a catalog, such as Presto.
         self.data_source_catalog = data_source_catalog
-        # The data source ID for a database SQL node.
+        # The data source ID for database SQL nodes.
         self.data_source_id = data_source_id
-        # The schema for a database SQL node. This parameter takes effect only for data source types that require a schema, such as Oracle.
+        # The data source schema for database SQL nodes. This parameter takes effect only for data source types that require a schema, such as Oracle.
         self.data_source_schema = data_source_schema
-        # Specifies whether to include dependency information for input tables that have no corresponding nodes. Default value: false.
+        # Specifies whether to include dependency information for input tables that do not have corresponding nodes. Default value: false.
         self.include_all_input_tables = include_all_input_tables
-        # Specifies whether to query data lineage when querying upstream dependencies. Default value: false.
+        # Specifies whether to query lineage data when querying upstream dependencies. Default value: false.
         self.need_query_lineages = need_query_lineages
         # The node type, such as MAX_COMPUTE_SQL.
         # 

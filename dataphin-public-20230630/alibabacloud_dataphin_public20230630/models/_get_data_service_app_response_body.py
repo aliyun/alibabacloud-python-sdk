@@ -23,7 +23,7 @@ class GetDataServiceAppResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -107,7 +107,7 @@ class GetDataServiceAppResponseBodyData(DaraModel):
         self.app_secret = app_secret
         # The IP address whitelist. Separate IP addresses or CIDR blocks with semicolons. For CIDR blocks, use a forward slash (/) to separate the IP address and the prefix length, which ranges from 1 to 32. Example: 192.168.3.12/24.
         self.ip_whitelist = ip_whitelist
-        # Indicates whether the IP address whitelist is enabled. Valid values:
+        # Specifies whether the IP address whitelist is enabled. Valid values:
         # - true: Enabled.
         # - false: Disabled.
         self.ip_whitelist_status = ip_whitelist_status

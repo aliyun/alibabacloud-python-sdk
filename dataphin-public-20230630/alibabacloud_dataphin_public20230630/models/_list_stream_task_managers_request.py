@@ -12,17 +12,17 @@ class ListStreamTaskManagersRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # The ID of the Flink deployment instance.
+        # The deployment instance ID. You can obtain the value from the deploymentInstanceId returned in the operation record or historical run instance.
         # 
         # This parameter is required.
         self.deployment_instance_id = deployment_instance_id
-        # The ID of the operating tenant. After the gateway verifies that the current identity has access to the tenant, it injects the tenant ID into the backend.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The optional ID of the operating user. This parameter follows the identity verification rules of the gateway and is not directly bound to the backend user ID.
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The project ID.
+        # The ID of the Dataphin project to which the task belongs. This parameter is used for permission verification in the production environment.
         # 
         # This parameter is required.
         self.project_id = project_id

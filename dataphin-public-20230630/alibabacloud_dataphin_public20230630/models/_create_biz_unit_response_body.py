@@ -15,7 +15,7 @@ class CreateBizUnitResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. A value of OK indicates that the request is successful.
         self.code = code
         # The creation result.
         self.create_result = create_result
@@ -25,7 +25,7 @@ class CreateBizUnitResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -85,7 +85,7 @@ class CreateBizUnitResponseBodyCreateResult(DaraModel):
         self,
         biz_unit_id: int = None,
     ):
-        # The ID of the created data domain.
+        # The ID of the created business unit.
         self.biz_unit_id = biz_unit_id
 
     def validate(self):

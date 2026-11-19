@@ -19,11 +19,11 @@ class ListTablesResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The HTTP response code.
+        # The HTTP status code.
         self.http_status_code = http_status_code
         # The backend exception details.
         self.message = message
-        # The paged query result.
+        # The paging query result.
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
@@ -198,7 +198,7 @@ class ListTablesResponseBodyPageResultTableList(DaraModel):
         self.last_dml_time = last_dml_time
         # The time when the data was last viewed.
         self.last_query_time = last_query_time
-        # The lifecycle of the table, in days.
+        # The lifecycle of the table in days.
         self.life_cycle = life_cycle
         # The table name.
         self.name = name
@@ -220,7 +220,7 @@ class ListTablesResponseBodyPageResultTableList(DaraModel):
         self.storage_type = storage_type
         # The dynamic properties of the real-time metatable.
         self.stream_table_config = stream_table_config
-        # The total storage size of the table, in bytes.
+        # The total storage size of the table in bytes.
         self.table_size_in_bytes = table_size_in_bytes
         # The number of visits in the last 30 days.
         self.visit_count_30d = visit_count_30d

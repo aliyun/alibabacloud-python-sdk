@@ -12,7 +12,7 @@ class ExecKgCypherShrinkRequest(DaraModel):
         op_user_id: str = None,
         workspace_id: str = None,
     ):
-        # The custom Cypher query instruction.
+        # The custom Cypher query command.
         # 
         # This parameter is required.
         self.exec_command_shrink = exec_command_shrink
@@ -20,6 +20,7 @@ class ExecKgCypherShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operating user.
         self.op_user_id = op_user_id
         # The model ID.
         # 

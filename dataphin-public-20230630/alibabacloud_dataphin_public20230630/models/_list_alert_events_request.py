@@ -22,6 +22,7 @@ class ListAlertEventsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -75,21 +76,21 @@ class ListAlertEventsRequestListQuery(DaraModel):
         status_list: List[str] = None,
         user_id_list: List[str] = None,
     ):
-        # The end date of the alert.
+        # The alert end date.
         # 
         # This parameter is required.
         self.alert_end_time = alert_end_time
         # The list of alert object types.
         self.alert_object_type_list = alert_object_type_list
-        # The list of alert reasons.
+        # The list of alert causes.
         self.alert_reason_list = alert_reason_list
-        # The start date of the alert.
+        # The alert start date.
         # 
         # This parameter is required.
         self.alert_start_time = alert_start_time
-        # The list of business units.
+        # The list of business unit names.
         self.biz_name_list = biz_name_list
-        # The keyword for the query.
+        # The search keyword.
         self.keyword = keyword
         # The list of monitored item IDs.
         self.monitored_item_id_list = monitored_item_id_list
@@ -101,20 +102,17 @@ class ListAlertEventsRequestListQuery(DaraModel):
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The list of projects.
+        # The list of project names.
         self.project_name_list = project_name_list
         # The source system. Valid values:
-        # 
-        # - ALL: all
-        # - DQE: data quality
-        # - OS: data service
-        # - STREAM: real-time computing
-        # - VDM_BATCH: offline computing
-        # - SOP: O&M platform
-        # - REAL_TIME_PIPELINE: real-time integration
-        # - KGB: baseline monitoring
-        # 
-        # and more.
+        # - ALL: All.
+        # - DQE: Data quality.
+        # - OS: Data service.
+        # - STREAM: Real-time computing.
+        # - VDM_BATCH: Offline computing.
+        # - SOP: O&M platform.
+        # - REAL_TIME_PIPELINE: Real-time integration.
+        # - KGB: Baseline monitoring.
         # 
         # This parameter is required.
         self.source_system = source_system

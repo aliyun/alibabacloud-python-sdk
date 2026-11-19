@@ -17,7 +17,7 @@ class CreateKgRelationResponseBody(DaraModel):
     ):
         # The backend response code.
         self.code = code
-        # The result of creating the relationship record.
+        # The creation result of the relationship record.
         self.create_result = create_result
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -25,7 +25,7 @@ class CreateKgRelationResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

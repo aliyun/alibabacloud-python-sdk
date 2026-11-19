@@ -19,6 +19,7 @@ class UpdateKgEntityRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The update command.
         # 
@@ -76,15 +77,15 @@ class UpdateKgEntityRequestUpdateCommand(DaraModel):
         entity_type: str = None,
         property_list: List[main_models.UpdateKgEntityRequestUpdateCommandPropertyList] = None,
     ):
-        # The entity record ID.
+        # The ID of the entity record.
         # 
         # This parameter is required.
         self.entity_id = entity_id
-        # The entity type code.
+        # The code of the entity type.
         # 
         # This parameter is required.
         self.entity_type = entity_type
-        # The entity record property list.
+        # The property list of the entity record.
         # 
         # This parameter is required.
         self.property_list = property_list
@@ -135,11 +136,11 @@ class UpdateKgEntityRequestUpdateCommandPropertyList(DaraModel):
         code: str = None,
         value: str = None,
     ):
-        # The property code.
+        # The code of the property.
         # 
         # This parameter is required.
         self.code = code
-        # The property value.
+        # The value of the property.
         # 
         # This parameter is required.
         self.value = value

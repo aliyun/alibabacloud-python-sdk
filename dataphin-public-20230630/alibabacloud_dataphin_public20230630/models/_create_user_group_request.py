@@ -20,6 +20,7 @@ class CreateUserGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -66,7 +67,7 @@ class CreateUserGroupRequestCreateCommand(DaraModel):
     ):
         # Specifies whether to enable the user group.
         self.active = active
-        # The user IDs of the user group administrators.
+        # The IDs of the administrator users in the user group.
         self.admin_user_id_list = admin_user_id_list
         # The description of the user group.
         self.description = description

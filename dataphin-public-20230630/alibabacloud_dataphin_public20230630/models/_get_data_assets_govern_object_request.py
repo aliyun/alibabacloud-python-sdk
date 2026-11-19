@@ -12,7 +12,7 @@ class GetDataAssetsGovernObjectRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The query instruction.
+        # The query command.
         # 
         # This parameter is required.
         self.command = command
@@ -20,7 +20,7 @@ class GetDataAssetsGovernObjectRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operation user.
+        # The operator user ID.
         self.op_user_id = op_user_id
 
     def validate(self):

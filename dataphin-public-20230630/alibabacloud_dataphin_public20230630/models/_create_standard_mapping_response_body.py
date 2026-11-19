@@ -23,11 +23,11 @@ class CreateStandardMappingResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,9 +88,9 @@ class CreateStandardMappingResponseBodyData(DaraModel):
         failed_guid_list: List[str] = None,
         success_count: int = None,
     ):
-        # The list of asset GUIDs that failed to be created.
+        # The list of GUIDs for assets that failed to be created.
         self.failed_guid_list = failed_guid_list
-        # The number of successfully added mappings.
+        # The number of successfully added items.
         self.success_count = success_count
 
     def validate(self):

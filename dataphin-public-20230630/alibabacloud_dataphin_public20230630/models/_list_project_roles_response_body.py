@@ -17,7 +17,7 @@ class ListProjectRolesResponseBody(DaraModel):
         role_list: List[main_models.ListProjectRolesResponseBodyRoleList] = None,
         success: bool = None,
     ):
-        # The error code. OK indicates that the request is successful.
+        # The error code. A value of OK indicates that the request is normal.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -104,7 +104,7 @@ class ListProjectRolesResponseBodyRoleList(DaraModel):
         status: str = None,
         tenant_id: int = None,
     ):
-        # The JSON string of the permission set.
+        # The JSON string of permission points.
         self.auth_json = auth_json
         # The user ID of the creator.
         self.creator = creator

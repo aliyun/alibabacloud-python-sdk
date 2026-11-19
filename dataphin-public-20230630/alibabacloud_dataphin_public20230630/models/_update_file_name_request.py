@@ -17,7 +17,7 @@ class UpdateFileNameRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_id = file_id
-        # The new file name.
+        # The updated file name.
         # 
         # This parameter is required.
         self.name = name
@@ -25,6 +25,7 @@ class UpdateFileNameRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The project ID.
         # 

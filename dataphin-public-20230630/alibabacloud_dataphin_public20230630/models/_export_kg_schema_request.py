@@ -17,10 +17,11 @@ class ExportKgSchemaRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The format of the exported content. Valid values: json and yaml. Default value: yaml.
         self.output_format = output_format
-        # The version number. If this parameter is empty or set to -1, the model metadata in draft state is returned. If this parameter is set to 0, the model metadata of the latest version is returned.
+        # The version ID. An empty value or -1 indicates the draft model metadata. 0 indicates the latest model metadata.
         self.version_id = version_id
         # The workspace ID.
         # 

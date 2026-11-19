@@ -12,7 +12,7 @@ class CreateKgRelationShrinkRequest(DaraModel):
         op_user_id: str = None,
         workspace_id: str = None,
     ):
-        # The create command.
+        # The creation command.
         # 
         # This parameter is required.
         self.create_command_shrink = create_command_shrink
@@ -20,6 +20,7 @@ class CreateKgRelationShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
         # The workspace ID.
         # 

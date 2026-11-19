@@ -17,17 +17,17 @@ class GetStreamJobsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The backend response code.
+        # The backend status code.
         self.code = code
         # The returned data.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -100,30 +100,21 @@ class GetStreamJobsResponseBodyData(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The environment identifier. Valid values:
-        # - DEV: development.
-        # - PROD: production.
+        # The environment identifier. Valid values: DEV for development and PROD for production.
         self.env = env
-        # The mapping ID of the real-time node.
+        # The mapping ID of the real-time task.
         self.id = id
-        # The name of the real-time node.
+        # The name of the real-time task.
         self.job_name = job_name
-        # The ID of the user who last modified the node.
+        # The ID of the last modifier.
         self.modifier_id = modifier_id
         # The ID of the creator.
         self.owner_id = owner_id
         # The Dataphin project ID.
         self.project_id = project_id
-        # The node status. Valid values:
-        # - 0: draft.
-        # - 1: submitting.
-        # - 2: submitted.
-        # - 3: published.
-        # - 100: in development.
+        # The task status. Valid values: 0 (Draft), 1 (Submitting), 2 (Submitted), 3 (Published), and 100 (Developing).
         self.status = status
-        # The node type. Valid values:
-        # - FLINK_SQL
-        # - FLINK_DATASTREAM.
+        # The task type. Valid values: FLINK_SQL and FLINK_DATASTREAM.
         self.type = type
 
     def validate(self):

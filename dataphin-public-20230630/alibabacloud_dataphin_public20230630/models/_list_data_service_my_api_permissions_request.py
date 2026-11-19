@@ -13,14 +13,15 @@ class ListDataServiceMyApiPermissionsRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # Search conditions.
+        # The search criteria.
         self.list_query = list_query
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # Data service project ID.
+        # The data service project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
@@ -72,11 +73,11 @@ class ListDataServiceMyApiPermissionsRequestListQuery(DaraModel):
         page_no: int = None,
         page_size: int = None,
     ):
-        # Search keyword.
+        # The search keyword.
         self.keyword = keyword
-        # Page number. Default value: 1.
+        # The page number. Default value: 1.
         self.page_no = page_no
-        # Number of records per page. Default value: 20.
+        # The number of records per page. Default value: 20.
         self.page_size = page_size
 
     def validate(self):

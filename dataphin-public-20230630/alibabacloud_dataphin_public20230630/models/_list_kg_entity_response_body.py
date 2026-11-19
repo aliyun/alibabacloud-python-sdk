@@ -27,7 +27,7 @@ class ListKgEntityResponseBody(DaraModel):
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -138,7 +138,7 @@ class ListKgEntityResponseBodyPageResultEntityList(DaraModel):
         self.entity_id = entity_id
         # The entity type code.
         self.entity_type = entity_type
-        # The entity record property list.
+        # The property list of the entity record.
         self.property_list = property_list
 
     def validate(self):
@@ -190,13 +190,7 @@ class ListKgEntityResponseBodyPageResultEntityListPropertyList(DaraModel):
     ):
         # The property code.
         self.code = code
-        # The property data type. Valid values:
-        # - STRING: string.
-        # - INTEGER: integer.
-        # - FLOAT: floating-point number.
-        # - BOOLEAN: Boolean.
-        # - DATE: date.
-        # - LIST: list.
+        # The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean value), DATE (date), and LIST (list).
         self.data_type = data_type
         # The property value.
         self.value = value

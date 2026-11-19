@@ -23,7 +23,7 @@ class GetStandardLookupTableResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The lookup table details.
         self.lookup_table_info = lookup_table_info
-        # The details of the backend exception.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -104,19 +104,19 @@ class GetStandardLookupTableResponseBodyLookupTableInfo(DaraModel):
         self.code = code
         # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # The ID of the user who created the lookup table.
+        # The ID of the creator.
         self.creator = creator
-        # The username of the user who created the lookup table.
+        # The username of the creator.
         self.creator_name = creator_name
         # The description of the lookup table.
         self.description = description
         # The parent folder.
         self.directory_reference = directory_reference
-        # The ID of the lookup table.
+        # The lookup table ID.
         self.id = id
-        # The ID of the user who last modified the lookup table.
+        # The ID of the last modifier.
         self.last_modifier = last_modifier
-        # The username of the user who last modified the lookup table.
+        # The username of the last modifier.
         self.last_modifier_name = last_modifier_name
         # The list of lookup table values.
         self.lookup_table_value_list = lookup_table_value_list

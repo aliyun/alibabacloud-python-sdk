@@ -15,7 +15,7 @@ class GetTableRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The operator user ID.
+        # The ID of the operating user.
         self.op_user_id = op_user_id
         # The GUID of the table asset.
         self.table_guid = table_guid

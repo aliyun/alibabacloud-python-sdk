@@ -13,11 +13,11 @@ class GetUsersRequest(DaraModel):
         op_user_id: str = None,
         user_id_list: List[str] = None,
     ):
-        # The operator tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The operator user ID.
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The list of user IDs.
         # 

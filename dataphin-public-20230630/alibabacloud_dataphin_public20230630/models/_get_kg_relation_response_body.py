@@ -163,7 +163,7 @@ class GetKgRelationResponseBodyRelationInfoPropertyList(DaraModel):
     ):
         # The property code.
         self.code = code
-        # The property data type. Valid values: STRING (string), INTEGER (integer), FLOAT (floating-point number), BOOLEAN (Boolean), DATE (date), and LIST (list).
+        # The property data type. Valid values include STRING, INTEGER, FLOAT, BOOLEAN, DATE, and LIST.
         self.data_type = data_type
         # The property value.
         self.value = value

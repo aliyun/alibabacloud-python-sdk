@@ -16,13 +16,13 @@ class GetBatchTemplateVersionsRequest(DaraModel):
         # The environment. Valid values:
         # - DEV: development environment.
         # - PROD: production environment.
-        # Default value: DEV for dev_prod projects.
+        # Default value for dev_prod projects: DEV.
         self.env = env
         # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The operator user ID.
+        # The ID of the operating user.
         self.op_user_id = op_user_id
         # The project ID.
         # 

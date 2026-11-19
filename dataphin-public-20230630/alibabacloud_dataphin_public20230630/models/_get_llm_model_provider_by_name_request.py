@@ -11,7 +11,7 @@ class GetLlmModelProviderByNameRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The name of the large language model service provider.
+        # The name of the large model service provider.
         # 
         # This parameter is required.
         self.name = name
@@ -19,7 +19,7 @@ class GetLlmModelProviderByNameRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):

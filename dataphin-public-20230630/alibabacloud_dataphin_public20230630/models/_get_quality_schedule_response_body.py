@@ -23,7 +23,7 @@ class GetQualityScheduleResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The backend exception details.
         self.message = message
-        # The details of the scheduling object.
+        # The schedule object details.
         self.quality_schedule_info = quality_schedule_info
         # Id of the request
         self.request_id = request_id
@@ -106,59 +106,37 @@ class GetQualityScheduleResponseBodyQualityScheduleInfo(DaraModel):
     ):
         # The creation time. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
-        # The ID of the creator.
+        # The user ID of the creator.
         self.creator = creator
         # The cron expression for timed scheduling.
         self.cron_expression = cron_expression
-        # The ID of the scheduling object.
+        # The ID of the schedule object.
         self.id = id
-        # Indicates whether the scheduling object is referenced by a rule.
+        # Indicates whether the object is referenced by a rule.
         self.is_ref_by_rule = is_ref_by_rule
-        # The ID of the last modifier.
+        # The user ID of the last modifier.
         self.modifier = modifier
-        # The modification time. The format is YYYY-MM-DD HH:mm:ss.
+        # The update time. The format is YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
-        # The name of the scheduling object.
+        # The name of the schedule object.
         self.name = name
         # The custom partition expression.
         self.partition_expression = partition_expression
-        # The partition type. Valid values:
-        # - EVERY_DAY: Every day.
-        # - PRE_DAY: Previous day.
-        # - TODAY: Current day.
-        # - FIRST_DAY_OF_WEEK: First day of the week (Sunday).
-        # - CUSTOM: Custom.
+        # The partition type. Valid values: EVERY_DAY for daily, PRE_DAY for previous day, TODAY for current day, FIRST_DAY_OF_WEEK for first day of the week (Sunday), and CUSTOM for custom.
         self.partition_type = partition_type
-        # The scheduling epoch type for timed scheduling. Valid values:
-        # - DAILY: Daily.
-        # - WEEKLY: Weekly.
-        # - MONTHLY: Monthly.
-        # - HOURLY: Hourly.
-        # - MINUTELY: Minutely.
+        # The schedule cycle type for timed scheduling. Valid values: DAILY for day, WEEKLY for week, MONTHLY for month, HOURLY for hour, and MINUTELY for minute.
         self.period_schedule_interval_type = period_schedule_interval_type
-        # The scheduling epoch values for timed scheduling.
+        # The schedule cycle values for timed scheduling.
         self.period_schedule_param_list = period_schedule_param_list
-        # The trigger method for fixed task triggers. Valid values:
-        # - ALL_TASKS_FINISHED: All tasks finished.
-        # - ONE_TASKS_FINISHED: One task finished.
-        # - PRE_ONE_TASKS_START: Previous task started.
+        # The trigger method for static task trigger. Valid values: ALL_TASKS_FINISHED, ONE_TASKS_FINISHED, and PRE_ONE_TASKS_START.
         self.static_task_trigger_type = static_task_trigger_type
         # The list of trigger tasks for trigger scheduling.
         self.trigger_node_list = trigger_node_list
-        # The trigger method for trigger scheduling. Valid values:
-        # - STATIC_TASK_TRIGGER: Fixed task trigger.
-        # - CODE_CHECK_TRIGGER: Code check trigger.
+        # The trigger method for trigger scheduling. Valid values: STATIC_TASK_TRIGGER for static task trigger and CODE_CHECK_TRIGGER for code check trigger.
         self.trigger_type = trigger_type
-        # The scheduling type. Valid values:
-        # - PERIOD_SCHEDULE: Timed scheduling.
-        # - MANUAL_SCHEDULE: Manual trigger.
-        # - CODE_CHECK_TRIGGER: Code check trigger.
-        # - STATIC_TASK_TRIGGER: Fixed node trigger.
-        # - DEPENDENCY_SCHEDULE: Dependency scheduling.
+        # The schedule type. Valid values: PERIOD_SCHEDULE for timed scheduling, MANUAL_SCHEDULE for manual trigger, CODE_CHECK_TRIGGER for code check trigger, STATIC_TASK_TRIGGER for static task trigger, and DEPENDENCY_SCHEDULE for dependency scheduling.
         self.type = type
-        # The validation scope. Valid values:
-        # - TASK_REFERRED_PARTITION: Task updated partition.
-        # - USER_DEFINED_PARTITION: User-defined partition.
+        # The validation scope. Valid values: TASK_REFERRED_PARTITION for task updated partition and USER_DEFINED_PARTITION for custom partition.
         self.validate_partition_type = validate_partition_type
         # The ID of the monitored object.
         self.watch_id = watch_id

@@ -115,9 +115,9 @@ class GetDatasetResponseBodyDatasetDTO(DaraModel):
         self.creator = creator
         # The name of the creator.
         self.creator_name = creator_name
-        # The subject domain ID.
+        # The subject area ID.
         self.data_cell_id = data_cell_id
-        # The name of the subject domain.
+        # The subject area name.
         self.data_cell_name = data_cell_name
         # The description.
         self.description = description
@@ -129,7 +129,7 @@ class GetDatasetResponseBodyDatasetDTO(DaraModel):
         self.gmt_create = gmt_create
         # The time when the dataset was updated.
         self.gmt_modified = gmt_modified
-        # The dataset ID, which serves as the business primary key.
+        # The dataset ID, which is the business primary key.
         self.id = id
         # The ID of the development owner.
         self.lock_owner = lock_owner
@@ -337,7 +337,7 @@ class GetDatasetResponseBodyDatasetDTOVersionList(DaraModel):
         id: int = None,
         version: str = None,
     ):
-        # The API information for the online dataset.
+        # The API information of the online dataset.
         self.api_info = api_info
         # The ID of the creator.
         self.creator = creator
@@ -433,7 +433,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfig(DaraModel):
         self.file_storage_config = file_storage_config
         # The metastore configuration.
         self.metadata_storage_config = metadata_storage_config
-        # The real-time meta table configuration. This configuration takes effect only when metadataStorageType is set to REALTIME_META_TABLE.
+        # The real-time metadata table configuration. Valid only when metadataStorageType is REALTIME_META_TABLE.
         self.realtime_meta_table_config = realtime_meta_table_config
         # The version description.
         self.version_description = version_description
@@ -492,19 +492,19 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTa
         project_id: int = None,
         table_schema: main_models.GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchema = None,
     ):
-        # The data source type of the meta table. Only KAFKA is supported in the current phase.
+        # The data source type of the metadata table. Only KAFKA is available in the current phase.
         # 
         # This parameter is required.
         self.datasource_type = datasource_type
-        # The meta table name.
+        # The metadata table name.
         # 
         # This parameter is required.
         self.meta_table_name = meta_table_name
-        # The ID of the project to which the meta table belongs. Cross-project access is supported.
+        # The ID of the project to which the metadata table belongs. Cross-project access is supported.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The table schema configuration. This configuration reuses MetadataStorageConfigDTO.TableSchemaDTO.
+        # The table schema configuration. Reuses MetadataStorageConfigDTO.TableSchemaDTO.
         self.table_schema = table_schema
 
     def validate(self):
@@ -552,7 +552,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTa
         self,
         columns: List[main_models.GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTableConfigTableSchemaColumns] = None,
     ):
-        # The column list.
+        # The list of columns.
         self.columns = columns
 
     def validate(self):
@@ -691,7 +691,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTa
         index_type: str = None,
         similarity_type: str = None,
     ):
-        # The embedding dimension.
+        # The vector dimension.
         # 
         # This parameter is required.
         self.dimension = dimension
@@ -699,7 +699,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigRealtimeMetaTa
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # The index building parameters.
+        # The index construction parameters.
         self.index_params = index_params
         # The index type.
         # 
@@ -770,11 +770,11 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorag
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # The name of the data source.
+        # The data source name.
         self.data_source_name = data_source_name
         # The development database or schema.
         self.dev_schema = dev_schema
-        # The storage destination, which can be a new table or an existing table.
+        # The storage destination (new table or existing table).
         # 
         # This parameter is required.
         self.metadata_storage_mode = metadata_storage_mode
@@ -860,7 +860,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorag
         self,
         columns: List[main_models.GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorageConfigTableSchemaColumns] = None,
     ):
-        # The column list.
+        # The list of columns.
         self.columns = columns
 
     def validate(self):
@@ -905,9 +905,9 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorag
     ):
         # The column description.
         self.comment = comment
-        # The subtype of the array element. This parameter is valid only when the type is ARRAY.
+        # The subtype of the array element. Valid only when the type is ARRAY.
         self.element_type = element_type
-        # The maximum capacity of the array. This parameter is valid only when the type is ARRAY. Default value: 4096.
+        # The maximum capacity of the array. Valid only when the type is ARRAY. Default value: 4096.
         self.max_capacity = max_capacity
         # The column name.
         # 
@@ -999,7 +999,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorag
         index_type: str = None,
         similarity_type: str = None,
     ):
-        # The embedding dimension.
+        # The vector dimension.
         # 
         # This parameter is required.
         self.dimension = dimension
@@ -1007,7 +1007,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigMetadataStorag
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # The index building parameters. Specify different parameters based on the index type. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
+        # The index build parameters. Specify different parameters based on the index type. For example, HNSW requires {M:30, efConstruction:360}, and IVF_FLAT requires {nlist:128}.
         self.index_params = index_params
         # The index type. PostgreSQL supports IVFFlat and HNSW. Milvus supports all types.
         # 
@@ -1075,7 +1075,7 @@ class GetDatasetResponseBodyDatasetDTOVersionListDataVersionConfigFileStorageCon
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # The name of the data source.
+        # The data source name.
         self.data_source_name = data_source_name
         # The development path. This parameter is not required for basic projects.
         self.dev_path = dev_path
@@ -1178,11 +1178,11 @@ class GetDatasetResponseBodyDatasetDTOVersionListApiInfo(DaraModel):
         # 
         # This parameter is required.
         self.request_method = request_method
-        # The request parameter list.
+        # The list of request parameters.
         # 
         # This parameter is required.
         self.request_param_list = request_param_list
-        # The response parameter list.
+        # The list of response parameters.
         self.response_param_list = response_param_list
         # The timeout period in seconds.
         # 

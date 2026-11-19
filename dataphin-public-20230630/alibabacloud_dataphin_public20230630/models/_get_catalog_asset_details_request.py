@@ -12,7 +12,7 @@ class GetCatalogAssetDetailsRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The paged query for the listed asset catalog.
+        # The paging query for the list of listed asset catalogs.
         # 
         # This parameter is required.
         self.get_catalog_asset_details_query = get_catalog_asset_details_query
@@ -20,7 +20,7 @@ class GetCatalogAssetDetailsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator user.
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -68,13 +68,15 @@ class GetCatalogAssetDetailsRequestGetCatalogAssetDetailsQuery(DaraModel):
         # 
         # This parameter is required.
         self.guid = guid
-        # Specifies whether to include the field list. Default value: false. Valid values:
-        # - false: Not included.
+        # Specifies whether to include the column list. Valid values:
         # - true: Included.
+        # - false: Not included.
+        # Default value: false.
         self.include_columns = include_columns
-        # Specifies whether to include detailed data. Default value: false. Valid values:
-        # - false: Not included.
+        # Specifies whether to include detailed data. Valid values:
         # - true: Included.
+        # - false: Not included.
+        # Default value: false.
         self.include_detailed_attributes = include_detailed_attributes
 
     def validate(self):

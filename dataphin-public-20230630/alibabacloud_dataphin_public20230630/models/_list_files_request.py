@@ -12,14 +12,15 @@ class ListFilesRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # Query conditions
+        # The query conditions.
         # 
         # This parameter is required.
         self.list_query = list_query
-        # Tenant ID
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -65,38 +66,38 @@ class ListFilesRequestListQuery(DaraModel):
         project_id: int = None,
         recursive: bool = None,
     ):
-        # Menu tree category
-        # - Ad hoc query: tempCode
-        # - Code task: codeManage
-        # - Offline pipeline: offlinePipeline
-        # - Pipeline custom component: offlinePipelineCustomPlugin
-        # - Sync task: dataX
-        # - Real-time meta table: streamMeta
-        # - Real-time custom source: streamCustomDataSource
-        # - Real-time computing template: streamTemplate
-        # - Resource management: resourceManage
-        # - Offline function: udfResource
-        # - Real-time function: streamFunction
+        # The menu tree category. Valid values:
+        # - tempCode: Ad hoc query.
+        # - codeManage: Code task.
+        # - offlinePipeline: Offline pipeline.
+        # - offlinePipelineCustomPlugin: Custom pipeline component.
+        # - dataX: Synchronization task.
+        # - streamMeta: Real-time metatable.
+        # - streamCustomDataSource: Real-time custom data source.
+        # - streamTemplate: Real-time computing template.
+        # - resourceManage: Resource management.
+        # - udfResource: Offline function.
+        # - streamFunction: Real-time function.
         # 
         # This parameter is required.
         self.category = category
-        # File directory
+        # The file directory.
         # 
         # This parameter is required.
         self.directory = directory
-        # Environment identifier
+        # The environment identifier. Valid values:
         # - DEV
         # - PROD
         # 
         # This parameter is required.
         self.env = env
-        # Project ID
+        # The project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # Whether to recursively traverse and query
-        # - true: Yes, returns all nodes under the directory
-        # - false: No, returns only the first-level nodes under the directory
+        # Specifies whether to recursively traverse and query the directory. Valid values:
+        # - true: Yes. Returns all nodes under the directory.
+        # - false: No. Returns only the first-level nodes under the directory.
         # 
         # This parameter is required.
         self.recursive = recursive

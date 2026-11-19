@@ -14,7 +14,7 @@ class FixDataResponseBody(DaraModel):
         submit_id: str = None,
         success: bool = None,
     ):
-        # The error code. A value of OK indicates that the request was successful.
+        # The error code. OK indicates that the request is successful.
         self.code = code
         # The HTTP status code returned by the backend.
         self.http_status_code = http_status_code
@@ -22,9 +22,9 @@ class FixDataResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The submit ID of this submission.
+        # The submit ID of the current submission. If downstreamRange is set to a shortcut mode, this field returns the submit ID. You can call the [QueryOperationSubmitJobStatus] operation to query the submit status of the current submission. You can ignore this field if you manually select downstream instances.
         self.submit_id = submit_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

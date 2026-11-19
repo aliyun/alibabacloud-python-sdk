@@ -15,7 +15,7 @@ class ExecKgCypherRequest(DaraModel):
         op_user_id: str = None,
         workspace_id: str = None,
     ):
-        # The custom Cypher query instruction.
+        # The custom Cypher query command.
         # 
         # This parameter is required.
         self.exec_command = exec_command
@@ -23,6 +23,7 @@ class ExecKgCypherRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operating user.
         self.op_user_id = op_user_id
         # The model ID.
         # 
@@ -76,9 +77,9 @@ class ExecKgCypherRequestExecCommand(DaraModel):
         params: List[main_models.ExecKgCypherRequestExecCommandParams] = None,
         query: str = None,
     ):
-        # The maximum number of records to return.
+        # The limit on the number of returned records.
         self.limit = limit
-        # The input parameters of the query statement.
+        # The input parameters for the query statement.
         self.params = params
         # The custom Cypher query statement.
         self.query = query

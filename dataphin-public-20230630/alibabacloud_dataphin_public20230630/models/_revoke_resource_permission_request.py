@@ -18,6 +18,7 @@ class RevokeResourcePermissionRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
         # The authorization revocation request.
         # 
@@ -67,11 +68,11 @@ class RevokeResourcePermissionRequestRevokeCommand(DaraModel):
         resource_type: str = None,
         user_id: str = None,
     ):
-        # The list of operations.
+        # The operation list.
         self.operate_list = operate_list
-        # The reason for revoking the authorization.
+        # The revocation reason.
         self.reason = reason
-        # The list of resources.
+        # The resources.
         # 
         # This parameter is required.
         self.resource_list = resource_list

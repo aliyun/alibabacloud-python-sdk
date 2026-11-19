@@ -22,7 +22,7 @@ class GetDataServiceApiDocumentRequest(DaraModel):
         self.op_tenant_id = op_tenant_id
         # The operator user ID.
         self.op_user_id = op_user_id
-        # The version.
+        # The version ID.
         self.version_id = version_id
 
     def validate(self):

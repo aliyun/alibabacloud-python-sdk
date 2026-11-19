@@ -22,6 +22,7 @@ class CreateUdfRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -72,23 +73,33 @@ class CreateUdfRequestCreateCommand(DaraModel):
         project_id: int = None,
         ref_resource_id_list: List[int] = None,
     ):
-        # The UDF category identifier. Valid values: 1: window function. 2: statistical function. 3: numerical function. 4: string function. 5: time function. 6: IP address utility function. 7: URL-related function. 8: encoding and decoding function. 9: business-related function. 10: other.
+        # The category identifier of the user-defined function (UDF). Valid values:
+        # - 1: window function
+        # - 2: statistical function
+        # - 3: numerical function
+        # - 4: string function
+        # - 5: time function
+        # - 6: IP address helper function
+        # - 7: URL-related function
+        # - 8: encoding and decoding function
+        # - 9: business-related function
+        # - 10: other
         # 
         # This parameter is required.
         self.category = category
-        # The class name that implements the function in the resource.
+        # The name of the class that implements the function in the resource.
         # 
         # This parameter is required.
         self.class_name = class_name
-        # The command format for function calling invoke.
+        # The command format for function invocation.
         # 
         # This parameter is required.
         self.command_help = command_help
-        # The commit remarks.
+        # The submission comment.
         # 
         # This parameter is required.
         self.comment = comment
-        # The compute engine type. Valid values: MAX_COMPUTE, HADOOP.
+        # The compute engine type. Valid values: MAX_COMPUTE and HADOOP.
         # 
         # This parameter is required.
         self.compute_engine_type = compute_engine_type
@@ -96,7 +107,7 @@ class CreateUdfRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # The directory in which the function is stored.
+        # The storage directory. Default value: /.
         self.directory = directory
         # The function name.
         # 
@@ -106,7 +117,7 @@ class CreateUdfRequestCreateCommand(DaraModel):
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The IDs of referenced resources.
+        # The IDs of the referenced resources.
         # 
         # This parameter is required.
         self.ref_resource_id_list = ref_resource_id_list

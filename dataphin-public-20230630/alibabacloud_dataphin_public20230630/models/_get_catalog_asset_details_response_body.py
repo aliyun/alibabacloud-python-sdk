@@ -23,11 +23,11 @@ class GetCatalogAssetDetailsResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend response exception details.
+        # The backend exception details.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -145,21 +145,21 @@ class GetCatalogAssetDetailsResponseBodyData(DaraModel):
         table_life_cycle: str = None,
         table_size_in_bytes: int = None,
     ):
-        # The API call mode. Returned when the asset type is API. Valid values: 1=Synchronous call, 2=Asynchronous call.
+        # The call mode of the API. This parameter is returned when the asset type is API. Valid values: 1 (synchronous call) and 2 (asynchronous call).
         self.api_call_mode = api_call_mode
-        # The API group name. Returned when the asset type is API.
+        # The name of the API group. This parameter is returned when the asset type is API.
         self.api_group_name = api_group_name
-        # The API ID. Returned when the asset type is API.
+        # The API ID. This parameter is returned when the asset type is API.
         self.api_id = api_id
-        # The API operation type. Returned when the asset type is API. Valid values: 1=Get, 2=List, 3=Create, 4=Update, 5=Delete.
+        # The type of the API operation. This parameter is returned when the asset type is API. Valid values: 1 (Get), 2 (List), 3 (Create), 4 (Update), and 5 (Delete).
         self.api_request_method = api_request_method
         # The description of the asset.
         self.asset_description = asset_description
-        # The URL of the asset catalog detail page.
+        # The URL to the asset catalog details.
         self.asset_detail_url = asset_detail_url
         # The display name of the asset. This parameter is returned when the asset type is TABLE, INDEX, or BIZ_INDEX.
         self.asset_display_name = asset_display_name
-        # The source of the asset. TABLE (physical table) returns "Dataphin-workspace type-project Chinese name (project English name)". TABLE (logical table) returns "Dataphin-workspace type-data domain Chinese name (data domain English name)". TABLE (data source table) returns "source system name-data source name-database/schema name". INDEX (standard modeling metric) returns the asset source of the associated aggregate logical table. INDEX (custom metric) returns the asset source of the source table. API returns "data service project name". PAGE returns "application system name".
+        # The source of the asset. If the asset type is TABLE (physical table), the format is Dataphin-space type-project Chinese name (project English name). If the asset type is TABLE (logical table), the format is Dataphin-space type-data block Chinese name (data block English name). If the asset type is TABLE (data source table), the format is source system name-data source name-database or schema name. If the asset type is INDEX (standardized modeling metric), the value is the asset source of the associated aggregate logical table. If the asset type is INDEX (custom metric), the value is the asset source of the source table. If the asset type is API, the value is the data service project name. If the asset type is PAGE, the value is the application system name.
         self.asset_from = asset_from
         # The full name of the asset. This parameter is returned when the asset type is TABLE or INDEX.
         self.asset_full_name = asset_full_name
@@ -167,44 +167,39 @@ class GetCatalogAssetDetailsResponseBodyData(DaraModel):
         self.asset_name = asset_name
         # The tags of the asset.
         self.asset_tags = asset_tags
-        # The asset type. Valid values:
-        # - TABLE: table, including views and materialized views.
-        # - INDEX: technical metric.
-        # - BIZ_INDEX: business metric.
-        # - API: API.
-        # - PAGE: dashboard.
+        # The asset type. Valid values: TABLE (tables, including views and materialized views), INDEX (technical metrics), BIZ_INDEX (business metrics), API, and PAGE (dashboards).
         self.asset_type = asset_type
-        # The BI workspace or folder to which the asset belongs. Returned when the asset type is PAGE (dashboard).
+        # The BI workspace or directory. This parameter is returned when the asset type is PAGE (dashboard).
         self.bi_catalog = bi_catalog
-        # The ID of the data domain to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+        # The ID of the data block to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
         self.biz_unit_id = biz_unit_id
-        # The name of the data domain to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+        # The name of the data block to which the asset belongs. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
         self.biz_unit_name = biz_unit_name
-        # The total number of charts. Returned when the asset type is PAGE (dashboard).
+        # The total number of charts. This parameter is returned when the asset type is PAGE (dashboard).
         self.chart_count = chart_count
-        # The collection count.
+        # The number of favorites.
         self.collection_count = collection_count
-        # The list of columns. This parameter is returned when the asset type is TABLE.
+        # The list of columns. Returned when the asset type is TABLE.
         self.columns = columns
         # The creation time.
         self.create_time = create_time
-        # The custom attributes. Returned when includeDetailedAttributes is set to true.
+        # The custom attributes. This parameter is returned when includeDetailedAttributes is set to true.
         self.custom_attributes = custom_attributes
-        # The ID of the data domain. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+        # The ID of the data domain. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source tables are logical tables only).
         self.data_cell_id = data_cell_id
-        # The name of the data domain. Returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source table is a logical table only).
+        # The name of the data domain. This parameter is returned when the asset type is TABLE (logical tables only) or INDEX (technical metrics whose source tables are logical tables only).
         self.data_cell_name = data_cell_name
         # The name of the data source to which the asset belongs. This parameter is returned when the asset type is TABLE (data source tables only) or INDEX (technical metrics whose source table is a data source table only).
         self.data_source_name = data_source_name
         # The ID of the data source to which the asset belongs. This parameter is returned when the asset type is TABLE (data source tables only) or INDEX (technical metrics whose source table is a data source table only).
         self.datasource_id = datasource_id
-        # The directories to which the asset belongs, including topic ID, topic name, directory ID, and directory name.
+        # The directories to which the asset belongs, including the topic ID, topic name, directory ID, and directory name.
         self.directories = directories
-        # The time of the first listing.
+        # The first listing time.
         self.first_on_shelve_time = first_on_shelve_time
-        # The user who performed the first listing.
+        # The first listing user.
         self.first_on_shelve_user = first_on_shelve_user
-        # The statistical granularity name of the technical metric. Returned when the asset type is INDEX.
+        # The name of the statistical granularity for the technical metric. This parameter is returned when the asset type is INDEX.
         self.granularity = granularity
         # The GUID of the asset, which serves as the unique identifier of the asset.
         self.guid = guid
@@ -212,21 +207,19 @@ class GetCatalogAssetDetailsResponseBodyData(DaraModel):
         self.instruction = instruction
         # Indicates whether the asset is deleted.
         self.is_deleted = is_deleted
-        # Indicates whether the table is a partitioned table. Returned when the asset type is TABLE. Valid values:
-        # - true: The table is a partitioned table.
-        # - false: The table is not a partitioned table.
+        # Specifies whether the table is a partitioned table. This parameter is returned when the asset type is TABLE. Valid values: true and false.
         self.is_partition_table = is_partition_table
-        # The time of the last DDL change.
+        # The last DDL time.
         self.last_ddl_time = last_ddl_time
-        # The time of the last DML update.
+        # The last update time.
         self.last_dml_time = last_dml_time
-        # The time of the last listing.
+        # The last listing time.
         self.last_on_shelve_time = last_on_shelve_time
-        # The user who performed the last listing.
+        # The last listing user.
         self.last_on_shelve_user = last_on_shelve_user
-        # The listing maintenance user groups.
+        # The listing maintainer groups.
         self.maintain_user_groups = maintain_user_groups
-        # The IDs of the listing maintenance users.
+        # The listing maintainers.
         self.maintain_user_ids = maintain_user_ids
         # The maximum sensitivity level. This parameter is returned when the asset type is TABLE.
         self.max_security_level = max_security_level
@@ -234,61 +227,47 @@ class GetCatalogAssetDetailsResponseBodyData(DaraModel):
         self.modify_time = modify_time
         # The owner.
         self.owner = owner
-        # The partition key. Returned when the asset type is TABLE.
+        # The partition field. This parameter is returned when the asset type is TABLE.
         self.partition_key = partition_key
-        # The primary key. Returned when the asset type is TABLE.
+        # The primary key. This parameter is returned when the asset type is TABLE.
         self.primary_key = primary_key
-        # The visibility scope type of the profiling report. This parameter is returned only when the asset type is TABLE or INDEX. Valid values:
+        # The visibility scope type of the profiling report. This parameter is returned when the asset type is TABLE or INDEX. Valid values:
         # - ALL_USERS_CAN_VIEW: Visible to all users.
         # - PART_USERS_CAN_VIEW: Visible to some users.
-        # - ALL_USERS_CAN_NOT_VIEW: Not visible to any users.
+        # - ALL_USERS_CAN_NOT_VIEW: Invisible to all users.
         self.profiling_report_view_scope_type = profiling_report_view_scope_type
-        # The user groups within the profiling report visibility scope.
+        # The user groups within the visibility scope of the profiling report.
         self.profiling_report_view_scope_user_groups = profiling_report_view_scope_user_groups
-        # The users within the profiling report visibility scope.
+        # The users within the visibility scope of the profiling report.
         self.profiling_report_view_scope_user_ids = profiling_report_view_scope_user_ids
         # The ID of the project to which the asset belongs. This parameter is returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
         self.project_id = project_id
         # The name of the project to which the asset belongs. This parameter is returned when the asset type is TABLE (physical tables only) or INDEX (technical metrics whose source table is a physical table only).
         self.project_name = project_name
-        # The quality score radar chart information. This parameter is returned only when includeDetailedAttributes is set to true. It contains the total score, the number of passed/validated rules, and the score details for each dimension.
+        # The quality score radar chart information. This parameter is returned when includeDetailedAttributes is set to true. It includes the total score, the number of passed and checked rules, and the score details for each dimension.
         self.quality_score_radar = quality_score_radar
-        # The view count.
+        # The number of views.
         self.read_count = read_count
         # The visibility scope type. Valid values:
         # - ALL_USERS_CAN_VIEW: Visible to all users.
         # - PART_USERS_CAN_VIEW: Visible to some users.
-        # - PART_USERS_CAN_NOT_VIEW: Not visible to some users.
+        # - PART_USERS_CAN_NOT_VIEW: Invisible to some users.
         self.shelve_view_scope_type = shelve_view_scope_type
         # The user groups within the visibility scope.
         self.shelve_view_scope_user_groups = shelve_view_scope_user_groups
         # The users within the visibility scope.
         self.shelve_view_scope_user_ids = shelve_view_scope_user_ids
-        # The output nodes. Returned when the asset type is TABLE.
+        # The output nodes. This parameter is returned when the asset type is TABLE.
         self.simple_node_infos = simple_node_infos
-        # The subtype. Valid values:
-        # - DIM_NORMAL: common logical dimension table.
-        # - DIM_ENUM: enumeration logical dimension table.
-        # - DIM_VIRTUAL: virtual logical dimension table.
-        # - SUM_BIZ_UNIT: aggregate logical table.
-        # - FACT_EVENT: event fact logical table.
-        # - FACT_SNAPSHOT: snapshot fact logical table.
-        # - DATASOURCE_TABLE: data source table.
-        # - PHYSICAL_TABLE: physical table.
-        # - DATASOURCE_VIEW: view (data source view).
-        # - PHYSICAL_VIEW: physical view.
-        # - MATERIALIZED_VIEW: materialized view.
-        # - BIZ_INDEX: business metric.
-        # - INDEX: technical metric (standard modeling metric).
-        # - CUSTOM_INDEX: technical metric (custom metric).
+        # The subtype. Valid values: DIM_NORMAL (common logical dimension table), DIM_ENUM (enumeration logical dimension table), DIM_VIRTUAL (virtual logical dimension table), SUM_BIZ_UNIT (aggregate logical table), FACT_EVENT (event fact logical table), FACT_SNAPSHOT (snapshot fact logical table), DATASOURCE_TABLE (data source table), PHYSICAL_TABLE (physical table), DATASOURCE_VIEW (data source view), PHYSICAL_VIEW (physical view), MATERIALIZED_VIEW (materialized view), BIZ_INDEX (business metric), INDEX (technical metric - standardized modeling metric), and CUSTOM_INDEX (technical metric - custom metric).
         self.sub_type = sub_type
-        # The GUID of the aggregate table to which the asset belongs. Returned when the asset type is INDEX.
+        # The GUID of the summary table. This parameter is returned when the asset type is INDEX.
         self.sum_table_guid = sum_table_guid
-        # The name of the aggregate table to which the asset belongs. Returned when the asset type is INDEX.
+        # The name of the summary table. This parameter is returned when the asset type is INDEX.
         self.sum_table_name = sum_table_name
-        # The lifecycle. Returned when the asset type is TABLE.
+        # The lifecycle. This parameter is returned when the asset type is TABLE.
         self.table_life_cycle = table_life_cycle
-        # The storage size. This parameter is returned only when the asset type is TABLE.
+        # The storage size. This parameter is returned when the asset type is TABLE.
         self.table_size_in_bytes = table_size_in_bytes
 
     def validate(self):
@@ -720,19 +699,19 @@ class GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfos(DaraModel):
     ):
         # The business unit to which the node belongs.
         self.biz_unit = biz_unit
-        # The environment to which the asset belongs.
+        # The environment.
         self.env = env
-        # The node ID.
+        # The ID of the node.
         self.node_id = node_id
-        # The node name.
+        # The name of the node.
         self.node_name = node_name
-        # The scheduling type. Valid values: NORMAL (timed scheduling), MANUAL (manual scheduling).
+        # The scheduling mode. Valid values: NORMAL (periodic scheduling) and MANUAL (manual scheduling).
         self.node_schedule_type = node_schedule_type
-        # The list of O&M owners.
+        # The O&M owners.
         self.owners = owners
         # The project to which the node belongs.
         self.project = project
-        # The node type. Example valid values: DLINK (offline integration), PYTHON37 (Python compute node).
+        # The type of the node. Example valid values: DLINK (offline integration) and PYTHON37 (Python computing node).
         self.sub_biz_type = sub_biz_type
 
     def validate(self):
@@ -814,9 +793,9 @@ class GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosProject(DaraModel):
         project_id: str = None,
         project_name: str = None,
     ):
-        # The project ID.
+        # The ID of the project.
         self.project_id = project_id
-        # The project name.
+        # The name of the project.
         self.project_name = project_name
 
     def validate(self):
@@ -851,9 +830,9 @@ class GetCatalogAssetDetailsResponseBodyDataSimpleNodeInfosOwners(DaraModel):
         display_name: str = None,
         user_id: str = None,
     ):
-        # The username.
+        # The display name of the user.
         self.display_name = display_name
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -896,7 +875,7 @@ class GetCatalogAssetDetailsResponseBodyDataQualityScoreRadar(DaraModel):
         self.pass_rule_count = pass_rule_count
         # The total quality score.
         self.total_score = total_score
-        # The number of validated rules.
+        # The number of checked rules.
         self.validate_rule_count = validate_rule_count
 
     def validate(self):
@@ -968,7 +947,7 @@ class GetCatalogAssetDetailsResponseBodyDataQualityScoreRadarCatalogScores(DaraM
         self.score = score
         # The number of table-level rules.
         self.table_rule_count = table_rule_count
-        # The number of validated rules.
+        # The number of checked rules.
         self.validate_rule_count = validate_rule_count
 
     def validate(self):
@@ -1033,9 +1012,9 @@ class GetCatalogAssetDetailsResponseBodyDataOwner(DaraModel):
         display_name: str = None,
         user_id: str = None,
     ):
-        # The username.
+        # The display name of the user.
         self.display_name = display_name
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -1070,9 +1049,9 @@ class GetCatalogAssetDetailsResponseBodyDataLastOnShelveUser(DaraModel):
         display_name: str = None,
         user_id: str = None,
     ):
-        # The username.
+        # The display name of the user.
         self.display_name = display_name
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -1107,9 +1086,9 @@ class GetCatalogAssetDetailsResponseBodyDataFirstOnShelveUser(DaraModel):
         display_name: str = None,
         user_id: str = None,
     ):
-        # The username.
+        # The display name of the user.
         self.display_name = display_name
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -1149,19 +1128,19 @@ class GetCatalogAssetDetailsResponseBodyDataDirectories(DaraModel):
         topic_id: int = None,
         topic_name: str = None,
     ):
-        # The complete directory hierarchy chain from the top-level directory to the current directory, including the current directory.
+        # The complete hierarchy chain of the directory, from the top-level directory to the current directory, including the current directory.
         self.directory_chain = directory_chain
-        # The directory description.
+        # The description of the directory.
         self.directory_description = directory_description
-        # The directory ID.
+        # The ID of the directory.
         self.directory_id = directory_id
-        # The directory name.
+        # The name of the directory.
         self.directory_name = directory_name
-        # The topic description.
+        # The description of the topic.
         self.topic_description = topic_description
-        # The topic ID.
+        # The ID of the topic.
         self.topic_id = topic_id
-        # The topic name.
+        # The name of the topic.
         self.topic_name = topic_name
 
     def validate(self):
@@ -1236,13 +1215,13 @@ class GetCatalogAssetDetailsResponseBodyDataDirectoriesDirectoryChain(DaraModel)
         directory_name: str = None,
         level: int = None,
     ):
-        # The directory description.
+        # The description of the directory.
         self.directory_description = directory_description
-        # The directory ID.
+        # The ID of the directory.
         self.directory_id = directory_id
-        # The directory name.
+        # The name of the directory.
         self.directory_name = directory_name
-        # The folder level.
+        # The directory level.
         self.level = level
 
     def validate(self):
@@ -1291,13 +1270,13 @@ class GetCatalogAssetDetailsResponseBodyDataCustomAttributes(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The attribute type. Valid values: BUSINESS (business attribute), MANAGEMENT (management attribute), TECHNOLOGY (technical attribute).
+        # The type of the attribute. Valid values: BUSINESS (business attribute), MANAGEMENT (management attribute), and TECHNOLOGY (technical attribute).
         self.attr_type = attr_type
-        # The attribute code.
+        # The code of the attribute.
         self.code = code
-        # The attribute name.
+        # The name of the attribute.
         self.name = name
-        # The attribute value.
+        # The value of the attribute.
         self.value = value
 
     def validate(self):
@@ -1353,12 +1332,9 @@ class GetCatalogAssetDetailsResponseBodyDataColumns(DaraModel):
         quality_score: float = None,
         standards: List[main_models.GetCatalogAssetDetailsResponseBodyDataColumnsStandards] = None,
     ):
-        # The associated entity. This parameter is returned when the business type is DIMENSION.
+        # The associated entity. Returned when the business type is DIMENSION.
         self.associated_entity = associated_entity
-        # The business type. Valid values:
-        # - INDEX: metric.
-        # - STAT_PERIOD: statistical period.
-        # - DIMENSION: dimension.
+        # The business type. Valid values: INDEX (metric), STAT_PERIOD (statistical period), and DIMENSION (dimension).
         self.biz_type = biz_type
         # The data classification.
         self.classify_name = classify_name
@@ -1370,7 +1346,7 @@ class GetCatalogAssetDetailsResponseBodyDataColumns(DaraModel):
         self.display_name = display_name
         # The GUID of the column.
         self.guid = guid
-        # The data classification level.
+        # The data grade.
         self.level_short_name = level_short_name
         # The name of the column.
         self.name = name

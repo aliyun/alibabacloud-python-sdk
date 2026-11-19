@@ -11,7 +11,7 @@ class GetQualityScheduleRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The ID of the scheduling object.
+        # The ID of the schedule object.
         # 
         # This parameter is required.
         self.id = id
@@ -19,7 +19,7 @@ class GetQualityScheduleRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # The ID of the operator.
+        # The user ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):

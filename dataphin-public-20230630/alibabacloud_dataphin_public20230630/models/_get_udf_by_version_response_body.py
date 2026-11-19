@@ -25,7 +25,7 @@ class GetUdfByVersionResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
-        # The custom function details.
+        # The details of the custom function.
         self.udf_info = udf_info
 
     def validate(self):
@@ -96,39 +96,29 @@ class GetUdfByVersionResponseBodyUdfInfo(DaraModel):
         last_modifier: str = None,
         name: str = None,
     ):
-        # The category. Valid values:
-        # - 1: Window function.
-        # - 2: Statistical function.
-        # - 3: Numerical function.
-        # - 4: String function.
-        # - 5: Time function.
-        # - 6: IP address helper function.
-        # - 7: URL-related function.
-        # - 8: Encoding and decoding function.
-        # - 9: Business-related function.
-        # - 10: Other.
+        # The category of the function. Valid values: 1: Window function. 2: Aggregate function. 3: Numeric function. 4: String function. 5: Time function. 6: IP address helper function. 7: URL-related function. 8: Encoding and decoding function. 9: Business-related function. 10: Other.
         self.category = category
-        # The registered class name.
+        # The name of the registered class.
         self.class_name = class_name
         # The command help information.
         self.command_help = command_help
         # The compute engine. Valid values: HADOOP, MAX_COMPUTE, and FLINK.
         self.compute_engine_type = compute_engine_type
-        # The creator.
+        # The creator of the function.
         self.creator = creator
-        # The description.
+        # The description of the function.
         self.description = description
-        # The storage directory.
+        # The directory where the function is stored.
         self.directory = directory
-        # The creation time. Format: yyyy-MM-d HH:mm:ss.
+        # The time when the function was created. Format: yyyy-MM-d HH:mm:ss.
         self.gmt_create = gmt_create
-        # The update time. Format: yyyy-MM-d HH:mm:ss.
+        # The time when the function was last updated. Format: yyyy-MM-d HH:mm:ss.
         self.gmt_modified = gmt_modified
-        # The custom function ID.
+        # The ID of the custom function.
         self.id = id
-        # The last modifier.
+        # The user who last modified the function.
         self.last_modifier = last_modifier
-        # The function name.
+        # The name of the function.
         self.name = name
 
     def validate(self):

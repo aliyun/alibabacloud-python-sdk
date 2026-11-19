@@ -18,8 +18,9 @@ class GetTableColumnLineagesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
-        # The GUID of the table, which is the unique identifier of the asset.
+        # The GUID of the table, which uniquely identifies the asset.
         # 
         # This parameter is required.
         self.table_guid = table_guid

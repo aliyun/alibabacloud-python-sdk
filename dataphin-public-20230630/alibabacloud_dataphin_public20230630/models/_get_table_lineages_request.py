@@ -17,10 +17,11 @@ class GetTableLineagesRequest(DaraModel):
     ):
         # The filter conditions.
         self.filter_query = filter_query
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
         # The GUID of the table, which is the unique identifier of each asset.
         # 
@@ -78,13 +79,13 @@ class GetTableLineagesRequestFilterQuery(DaraModel):
     ):
         # Specifies whether to query downstream lineage. Default value: false.
         self.need_downstream = need_downstream
-        # Specifies whether to return tables that do not exist in the asset list. Default value: false.
+        # Specifies whether to return tables that do not exist in the asset inventory. Default value: false.
         self.need_not_exist_object = need_not_exist_object
         # Specifies whether to query upstream lineage. Default value: false.
         self.need_upstream = need_upstream
-        # The environment to which the task belongs. This parameter is used for filtering. Valid values: dev and prod.
+        # The environment of the node to be queried. Valid values: dev and prod.
         self.node_env = node_env
-        # The list of task IDs used for filtering.
+        # The list of node IDs to be queried.
         self.node_id_list = node_id_list
 
     def validate(self):

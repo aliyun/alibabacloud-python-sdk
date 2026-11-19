@@ -27,7 +27,7 @@ class ListQualityWatchTasksResponseBody(DaraModel):
         self.page_result = page_result
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,7 +88,7 @@ class ListQualityWatchTasksResponseBodyPageResult(DaraModel):
         quality_watch_task_list: List[main_models.ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskList] = None,
         total_count: int = None,
     ):
-        # The list of quality watchtasks.
+        # The paged quality template list.
         self.quality_watch_task_list = quality_watch_task_list
         # The total number of records.
         self.total_count = total_count
@@ -146,11 +146,11 @@ class ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskList(DaraModel)
         status: str = None,
         watch_id: int = None,
     ):
-        # The business date.
+        # The business date. Format: YYYY-MM-DD.
         self.biz_date = biz_date
         # The business date format.
         self.biz_date_format = biz_date_format
-        # The creation time.
+        # The creation time. Format: YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The creator.
         self.creator = creator
@@ -160,27 +160,19 @@ class ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskList(DaraModel)
         self.id = id
         # The user ID of the last modifier.
         self.modifier = modifier
-        # The modification time.
+        # The update time. Format: YYYY-MM-DD HH:mm:ss.
         self.modify_time = modify_time
         # The user ID of the quality owner.
         self.quality_owner = quality_owner
         # The name of the quality owner.
         self.quality_owner_name = quality_owner_name
-        # The quality rule count information.
+        # The quality rule count.
         self.rule_count_info = rule_count_info
-        # The list of quality rule IDs.
+        # The IDs of the quality rules.
         self.rule_id_list = rule_id_list
         # The start time. Format: yyyy-MM-dd HH:mm:ss.
         self.start_time = start_time
-        # The task status. Valid values:
-        # - NOT_RUN: not executed.
-        # - WAITING: waiting.
-        # - RUNNING: running.
-        # - SUCCESS: succeeded.
-        # - FAILED: failed.
-        # - CANCEL: canceled.
-        # - TIMEOUT: timed out.
-        # - OFFLINE: offline.
+        # The task status. Valid values: NOT_RUN (not run), WAITING (waiting), RUNNING (running), SUCCESS (successful), FAILED (failed), CANCEL (canceled), TIMEOUT (timed out), and OFFLINE (offline).
         self.status = status
         # The ID of the monitored object.
         self.watch_id = watch_id
@@ -298,11 +290,11 @@ class ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountIn
         validate_rule_count: main_models.ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInfoValidateRuleCount = None,
         weak_rule_count: main_models.ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountInfoWeakRuleCount = None,
     ):
-        # The strong rule count information.
+        # The strong rule count.
         self.strong_rule_count = strong_rule_count
-        # The validation rule count information.
+        # The validation rule count.
         self.validate_rule_count = validate_rule_count
-        # The weak rule count information.
+        # The weak rule count.
         self.weak_rule_count = weak_rule_count
 
     def validate(self):
@@ -353,11 +345,11 @@ class ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountIn
         success_rule_count: int = None,
         total_rule_count: int = None,
     ):
-        # The number of rules that failed to be executed.
+        # The number of failed rules.
         self.error_rule_count = error_rule_count
-        # The number of rules that have been executed.
+        # The number of completed rules.
         self.finished_rule_count = finished_rule_count
-        # The number of rules that were successfully executed.
+        # The number of successful rules.
         self.success_rule_count = success_rule_count
         # The total number of rules.
         self.total_rule_count = total_rule_count
@@ -408,11 +400,11 @@ class ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountIn
         success_rule_count: int = None,
         total_rule_count: int = None,
     ):
-        # The number of rules that failed to be executed.
+        # The number of failed rules.
         self.error_rule_count = error_rule_count
-        # The number of rules that have been executed.
+        # The number of completed rules.
         self.finished_rule_count = finished_rule_count
-        # The number of rules that were successfully executed.
+        # The number of successful rules.
         self.success_rule_count = success_rule_count
         # The total number of rules.
         self.total_rule_count = total_rule_count
@@ -463,11 +455,11 @@ class ListQualityWatchTasksResponseBodyPageResultQualityWatchTaskListRuleCountIn
         success_rule_count: int = None,
         total_rule_count: int = None,
     ):
-        # The number of rules that failed to be executed.
+        # The number of failed rules.
         self.error_rule_count = error_rule_count
-        # The number of rules that have been executed.
+        # The number of completed rules.
         self.finished_rule_count = finished_rule_count
-        # The number of rules that were successfully executed.
+        # The number of successful rules.
         self.success_rule_count = success_rule_count
         # The total number of rules.
         self.total_rule_count = total_rule_count

@@ -20,6 +20,7 @@ class ListAlertNotificationsRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator ID.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -78,15 +79,15 @@ class ListAlertNotificationsRequestListQuery(DaraModel):
         self.channel_type_list = channel_type_list
         # The list of custom message channel IDs.
         self.custom_channel_id_list = custom_channel_id_list
-        # The keyword for the query.
+        # The search keyword.
         self.keyword = keyword
         # The list of monitored item IDs.
         self.monitored_item_id_list = monitored_item_id_list
-        # The end time of the push.
+        # The push end time.
         # 
         # This parameter is required.
         self.notify_end_time = notify_end_time
-        # The start time of the push.
+        # The push start time.
         # 
         # This parameter is required.
         self.notify_start_time = notify_start_time
@@ -94,22 +95,20 @@ class ListAlertNotificationsRequestListQuery(DaraModel):
         # 
         # This parameter is required.
         self.page = page
-        # The number of records per page.
+        # The number of entries per page.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The source system. Valid values:
-        # 
-        # - ALL: all.
-        # - DQE: data quality.
-        # - OS: data service.
-        # - STREAM: real-time computing.
-        # - VDM_BATCH: offline computing.
+        # - ALL: All.
+        # - DQE: Data quality.
+        # - OS: Data service.
+        # - STREAM: Real-time computing.
+        # - VDM_BATCH: Offline computing.
         # - SOP: O&M platform.
-        # - REAL_TIME_PIPELINE: real-time integration.
-        # - KGB: baseline monitoring.
-        # 
-        # And more.
+        # - REAL_TIME_PIPELINE: Real-time integration.
+        # - KGB: Baseline monitoring.
+        # etc.
         # 
         # This parameter is required.
         self.source_system = source_system

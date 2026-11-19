@@ -19,13 +19,13 @@ class ExportKgSchemaResponseBody(DaraModel):
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The backend exception details.
+        # The details of the backend exception.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The knowledge graph definition details.
+        # The details of the knowledge graph definition.
         self.schema_info = schema_info
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,7 +86,7 @@ class ExportKgSchemaResponseBodySchemaInfo(DaraModel):
         content: str = None,
         output_format: str = None,
     ):
-        # The knowledge graph definition content converted based on the specified format.
+        # The content of the knowledge graph definition converted based on the specified format.
         self.content = content
         # The format of the returned knowledge graph definition content. Valid values: json and yaml.
         self.output_format = output_format

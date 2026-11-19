@@ -18,6 +18,7 @@ class PublishStandardRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the user who performs the operation.
         self.op_user_id = op_user_id
         # The publish command.
         # 
@@ -68,9 +69,9 @@ class PublishStandardRequestPublishCommand(DaraModel):
         standard_stage: str = None,
         version: int = None,
     ):
-        # Specifies whether to automatically publish after approval. Default value: true.
+        # Specifies whether to automatically publish the standard after the approval succeeds. Default value: true.
         self.auto_publish_after_approval = auto_publish_after_approval
-        # The review comment. Maximum length: 128 characters.
+        # The review comment. The comment can be up to 128 characters in length.
         # 
         # This parameter is required.
         self.comment = comment
@@ -82,7 +83,7 @@ class PublishStandardRequestPublishCommand(DaraModel):
         self.reviewer_id_list = reviewer_id_list
         # The stage of the standard. Valid values: DEV and PROD. Default value: DEV.
         self.standard_stage = standard_stage
-        # The version number. Default value: -1 (latest version).
+        # The version number. Default value: -1, which indicates the latest version.
         self.version = version
 
     def validate(self):

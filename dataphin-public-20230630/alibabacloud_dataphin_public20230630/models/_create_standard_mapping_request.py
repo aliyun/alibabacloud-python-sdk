@@ -14,7 +14,7 @@ class CreateStandardMappingRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The create command.
+        # The creation command.
         # 
         # This parameter is required.
         self.create_command = create_command
@@ -22,6 +22,7 @@ class CreateStandardMappingRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -71,15 +72,13 @@ class CreateStandardMappingRequestCreateCommand(DaraModel):
         # This parameter is required.
         self.asset_guid_list = asset_guid_list
         # The processing policy for invalid mappings when importing mapping relationships. Valid values:
-        # - SET_INVALID_TO_VALID: sets invalid mappings to valid mappings.
-        # - KEEP_INVALID_AND_SKIP: retains invalid mappings and skips them.
-        # 
+        # - SET_INVALID_TO_VALID: Changes invalid mappings to valid mappings.
+        # - KEEP_INVALID_AND_SKIP: Retains invalid mappings and skips them.
         # Default value: SET_INVALID_TO_VALID.
         self.invalid_mapping_relation_operation_type = invalid_mapping_relation_operation_type
         # The mapping relationship type. Valid values:
-        # - VALID: valid mapping.
-        # - INVALID: invalid mapping.
-        # 
+        # - VALID: Valid mapping.
+        # - INVALID: Invalid mapping.
         # Default value: VALID.
         self.relation_type = relation_type
         # The standard ID.

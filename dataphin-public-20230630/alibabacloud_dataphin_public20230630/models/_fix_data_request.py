@@ -16,10 +16,10 @@ class FixDataRequest(DaraModel):
         op_user_id: str = None,
     ):
         # The environment identifier. Valid values:
-        # - DEV: development environment. 
-        # - PROD (default): production environment.
+        # - DEV: development environment 
+        # - PROD: production environment (default)
         self.env = env
-        # The command to rerun downstream nodes to fix data link issues. You can choose to force a rerun.
+        # Reruns downstream nodes to repair pipeline data and allows you to force the rerun.
         # 
         # This parameter is required.
         self.fix_data_command = fix_data_command
@@ -27,6 +27,7 @@ class FixDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator.
         self.op_user_id = op_user_id
 
     def validate(self):
@@ -79,17 +80,17 @@ class FixDataRequestFixDataCommand(DaraModel):
         project_id: int = None,
         root_instance_id: main_models.FixDataRequestFixDataCommandRootInstanceId = None,
     ):
-        # Specifies whether to rerun the root instance. If you do not specify this parameter, the default value is true.
+        # Specifies whether to rerun the root instance. Default value: true.
         self.contain_root_instance = contain_root_instance
-        # The downstream instances. If you have specified a downstream range, you do not need to specify this parameter. Otherwise, you must specify the list of downstream instances.
+        # The downstream instances. If a downstream range is selected, you do not need to specify this parameter. Otherwise, you must provide a list of downstream instances.
         self.down_stream_instance_id_list = down_stream_instance_id_list
         # The downstream range. Valid values:
-        # - ALL_FAILED_INSTANCE: all failed instances.
-        # - ALL_INSTANCE: all instances.
-        # - ALL_FINAL_INSTANCE: all desired state instances.
-        # - If you do not specify this parameter, the rerun is performed based on the specified downstream instances.
+        # - ALL_FAILED_INSTANCE: all failed instances
+        # - ALL_INSTANCE: all instances
+        # - ALL_FINAL_INSTANCE: all instances in the desired state
+        # If you do not specify this parameter, the rerun is performed based on the specified downstream instances.
         self.downstream_range = downstream_range
-        # Specifies whether to force a rerun.
+        # Specifies whether to force the rerun.
         self.force_rerun = force_rerun
         # The project ID.
         # 
@@ -167,7 +168,7 @@ class FixDataRequestFixDataCommandRootInstanceId(DaraModel):
         field_instance_id_list: List[str] = None,
         id: str = None,
     ):
-        # The field IDs. This parameter is available when the node is a logical table instance ID. If you do not specify this parameter, the full table is used by default.
+        # The field instance IDs. This parameter is applicable when the node is a logical table instance. If you do not specify this parameter, the entire table is used by default.
         self.field_instance_id_list = field_instance_id_list
         # The instance ID.
         # 

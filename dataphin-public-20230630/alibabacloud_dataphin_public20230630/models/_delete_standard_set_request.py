@@ -11,7 +11,7 @@ class DeleteStandardSetRequest(DaraModel):
         op_tenant_id: int = None,
         op_user_id: str = None,
     ):
-        # The standard set ID.
+        # The ID of the standard set.
         # 
         # This parameter is required.
         self.id = id
@@ -19,6 +19,7 @@ class DeleteStandardSetRequest(DaraModel):
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The ID of the operator user.
         self.op_user_id = op_user_id
 
     def validate(self):

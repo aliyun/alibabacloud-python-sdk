@@ -12,14 +12,15 @@ class ListDataServiceMyApiPermissionsShrinkRequest(DaraModel):
         op_user_id: str = None,
         project_id: int = None,
     ):
-        # Search conditions.
+        # The search criteria.
         self.list_query_shrink = list_query_shrink
-        # Tenant ID.
+        # The tenant ID.
         # 
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
+        # The operator user ID.
         self.op_user_id = op_user_id
-        # Data service project ID.
+        # The data service project ID.
         # 
         # This parameter is required.
         self.project_id = project_id
