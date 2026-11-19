@@ -16,24 +16,27 @@ class ListOperationTicketsRequest(DaraModel):
         project_id: int = None,
         region_id: str = None,
     ):
-        # The approval status. Valid values:
-        # - 1: Pending approval.
-        # - 2: Processed.
+        # The status of the O&M ticket. Valid values:
+        # 
+        # - **1**: Pending approval.
+        # 
+        # - **2**: Approved.
+        # > If this parameter is not specified, the default value is 1, and only tickets pending approval are queried.
         self.approval_status = approval_status
         # The address of the O&M asset for exact search.
         self.asset_address = asset_address
-        # The instance ID of the Bastionhost instance.
-        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to obtain this parameter.
+        # The instance ID of the Bastionhost.
+        # > You can invoke the [DescribeInstances](https://help.aliyun.com/document_detail/153281.html) operation to query the parameter value.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The ID of the O&M ticket.
         self.operation_ticket_id = operation_ticket_id
-        # The page number for a paged query. Default value: **1**.
+        # The page number of the page to return in a paged query. Default value: **1**.
         self.page_number = page_number
         # The maximum number of entries to return on each page in a paged query.  
-        # The maximum value of the PageSize parameter is 1000. Default value: 20. If the PageSize parameter is left empty, 20 entries are returned by default.
-        # > We recommend that you specify a value for the PageSize parameter.
+        # Maximum value of PageSize: 1000. Default value: 20. If PageSize is left empty, 20 entries are returned by default.
+        # > Specify a value for PageSize.
         self.page_size = page_size
         # The project ID.
         self.project_id = project_id

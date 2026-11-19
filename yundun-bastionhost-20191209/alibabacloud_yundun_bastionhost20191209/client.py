@@ -1700,6 +1700,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.attach_reviewers_to_review_rule_with_options_async(request, runtime)
 
+    def cancel_operation_ticket_with_options(
+        self,
+        request: main_models.CancelOperationTicketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelOperationTicketResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_ticket_id):
+            query['OperationTicketId'] = request.operation_ticket_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelOperationTicket',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelOperationTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_operation_ticket_with_options_async(
+        self,
+        request: main_models.CancelOperationTicketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelOperationTicketResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.operation_ticket_id):
+            query['OperationTicketId'] = request.operation_ticket_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelOperationTicket',
+            version = '2019-12-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelOperationTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_operation_ticket(
+        self,
+        request: main_models.CancelOperationTicketRequest,
+    ) -> main_models.CancelOperationTicketResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_operation_ticket_with_options(request, runtime)
+
+    async def cancel_operation_ticket_async(
+        self,
+        request: main_models.CancelOperationTicketRequest,
+    ) -> main_models.CancelOperationTicketResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_operation_ticket_with_options_async(request, runtime)
+
     def config_instance_security_groups_with_options(
         self,
         request: main_models.ConfigInstanceSecurityGroupsRequest,

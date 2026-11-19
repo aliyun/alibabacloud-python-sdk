@@ -1,3 +1,7 @@
+2026-11-19 Version: 1.8.0
+- Support API CancelOperationTicket.
+
+
 2026-11-14 Version: 1.7.3
 - Update API ListApproveCommands: add request parameters ApprovalStatus.
 - Update API ListApproveCommands: add request parameters ApproveCommandId.

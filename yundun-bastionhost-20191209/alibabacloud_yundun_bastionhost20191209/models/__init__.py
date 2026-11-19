@@ -59,6 +59,9 @@ from ._attach_projects_to_review_rule_response import AttachProjectsToReviewRule
 from ._attach_reviewers_to_review_rule_request import AttachReviewersToReviewRuleRequest
 from ._attach_reviewers_to_review_rule_response_body import AttachReviewersToReviewRuleResponseBody
 from ._attach_reviewers_to_review_rule_response import AttachReviewersToReviewRuleResponse
+from ._cancel_operation_ticket_request import CancelOperationTicketRequest
+from ._cancel_operation_ticket_response_body import CancelOperationTicketResponseBody
+from ._cancel_operation_ticket_response import CancelOperationTicketResponse
 from ._config_instance_security_groups_request import ConfigInstanceSecurityGroupsRequest
 from ._config_instance_security_groups_response_body import ConfigInstanceSecurityGroupsResponseBody
 from ._config_instance_security_groups_response import ConfigInstanceSecurityGroupsResponse
@@ -822,6 +825,9 @@ __all__ = [
     AttachReviewersToReviewRuleRequest,
     AttachReviewersToReviewRuleResponseBody,
     AttachReviewersToReviewRuleResponse,
+    CancelOperationTicketRequest,
+    CancelOperationTicketResponseBody,
+    CancelOperationTicketResponse,
     ConfigInstanceSecurityGroupsRequest,
     ConfigInstanceSecurityGroupsResponseBody,
     ConfigInstanceSecurityGroupsResponse,

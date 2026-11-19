@@ -85,37 +85,39 @@ class ListOperationTicketsResponseBodyOperationTickets(DaraModel):
         protocol_name: str = None,
         state: str = None,
     ):
-        # The ID of the user who submitted the O&M ticket.
+        # The ID of the O&M applicant.
         self.apply_user_id = apply_user_id
-        # The username of the user who submitted the O&M ticket.
+        # The username of the O&M applicant.
         self.apply_username = apply_username
-        # The approval status. Valid values:
-        # - 1: Pending approval.
-        # - 2: Processed.
+        # The status of the O&M ticket. Valid values:
+        # 
+        # - **1**: Pending approval.
+        # 
+        # - **2**: Approved.
         self.approval_status = approval_status
         # The remarks entered by the O&M engineer when submitting the O&M ticket.
         self.approve_comment = approve_comment
-        # The ID of the asset account requested for O&M.
+        # The ID of the asset account for which O&M is requested.
         self.asset_account_id = asset_account_id
-        # The logon name of the asset account requested for O&M.
+        # The logon name of the asset account for which O&M is requested.
         self.asset_account_name = asset_account_name
-        # The address of the asset requested for O&M.
+        # The address of the asset for which O&M is requested.
         self.asset_address = asset_address
-        # The ID of the asset requested for O&M.
+        # The ID of the asset for which O&M is requested.
         self.asset_id = asset_id
-        # The name of the asset requested for O&M.
+        # The name of the asset for which O&M is requested.
         self.asset_name = asset_name
-        # The ID of the network domain to which the asset requested for O&M belongs.
+        # The ID of the network domain to which the asset for which O&M is requested belongs.
         self.asset_network_domain_id = asset_network_domain_id
-        # The operating system type of the asset requested for O&M.
+        # The operating system type of the asset for which O&M is requested.
         self.asset_os = asset_os
-        # The name of the asset source to which the asset requested for O&M belongs. Valid values:
-        # - **Local**: Local host.
-        # - **Ecs**: ECS instance.
-        # - **Rds**: ApsaraDB RDS instance.
-        # - The name of a third-party asset source.
+        # The name of the asset source to which the asset for which O&M is requested belongs. Valid values:
+        # - **Local**: Local host
+        # - **Ecs**: ECS instance
+        # - **Rds**: RDS instance
+        # - The name of a third-party asset source
         self.asset_source = asset_source
-        # The ID of the asset source to which the asset requested for O&M belongs.
+        # The ID of the asset source to which the asset for which O&M is requested belongs.
         self.asset_source_instance_id = asset_source_instance_id
         # The time when the O&M ticket was submitted. The value is a UNIX timestamp in seconds.
         self.created_time = created_time
@@ -124,15 +126,15 @@ class ListOperationTicketsResponseBodyOperationTickets(DaraModel):
         # - **0**: No limit on the number of logons. The O&M engineer can log on an unlimited number of times within the validity period.
         # - **1**: The O&M engineer is allowed to log on only once within the validity period.
         self.effect_count = effect_count
-        # The end time of the O&M session specified by the O&M engineer. The value is a UNIX timestamp in seconds.
+        # The end time of the approved O&M period specified by the O&M engineer. The value is a UNIX timestamp in seconds.
         # > A value of 0 indicates that the O&M engineer did not specify an end time when submitting the ticket.
         self.effect_end_time = effect_end_time
-        # The start time of the O&M session specified by the O&M engineer. The value is a UNIX timestamp in seconds.
+        # The start time of the approved O&M period specified by the O&M engineer. The value is a UNIX timestamp in seconds.
         # > A value of 0 indicates that the O&M engineer did not specify a start time when submitting the ticket.
         self.effect_start_time = effect_start_time
         # The ID of the O&M ticket pending approval.
         self.operation_ticket_id = operation_ticket_id
-        # The name of the protocol requested for O&M.
+        # The name of the protocol used for the O&M request.
         self.protocol_name = protocol_name
         # The approval status. Valid values:
         # 

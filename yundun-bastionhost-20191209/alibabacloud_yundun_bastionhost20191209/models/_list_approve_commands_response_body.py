@@ -77,32 +77,34 @@ class ListApproveCommandsResponseBodyApproveCommands(DaraModel):
         session_id: str = None,
         state: str = None,
     ):
-        # The approval status. Valid values:
-        # - 1: Pending.
-        # - 2: Processed.
+        # The status of the approval request. Valid values:
+        # 
+        # - **1**: Pending approval.
+        # 
+        # - **2**: Approved.
         self.approval_status = approval_status
         # The ID of the command pending approval.
         self.approve_command_id = approve_command_id
-        # The name of the asset account used for O&M.
+        # The name of the O&M asset account.
         self.asset_account_name = asset_account_name
-        # The IP address of the asset for O&M.
+        # The IP address of the O&M asset.
         self.asset_ip = asset_ip
-        # The name of the asset for O&M.
+        # The name of the O&M asset.
         self.asset_name = asset_name
-        # The source IP address from which the application is submitted.
+        # The source IP address from which the request was submitted.
         self.client_ip = client_ip
-        # The Bastionhost user who submitted the application.
+        # The Bastionhost user who submitted the request.
         self.client_user = client_user
         # The command pending approval.
         self.command = command
-        # The time when the application was submitted. Unit: seconds. The value is a UNIX timestamp.
+        # The time when the request was submitted. The value is a UNIX timestamp in seconds.
         self.create_time = create_time
-        # The name of the protocol used for O&M.
+        # The name of the O&M protocol.
         self.protocol_name = protocol_name
         # The ID of the O&M session that triggered the approval.
         self.session_id = session_id
-        # The approval status. Valid values:
-        # - **Wait**: Pending.
+        # The approval status. Valid value:
+        # - **Wait**: Pending approval.
         self.state = state
 
     def validate(self):
