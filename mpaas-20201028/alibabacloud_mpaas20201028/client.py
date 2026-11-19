@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_mpaas20201028 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'mPaaS'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'mpaas.aliyuncs.com',
@@ -9633,6 +9637,8 @@ class Client(OpenApiClient):
             body['StrategyType'] = request.strategy_type
         if not DaraCore.is_null(request.target_msgkey):
             body['TargetMsgkey'] = request.target_msgkey
+        if not DaraCore.is_null(request.target_vendor_template):
+            body['TargetVendorTemplate'] = request.target_vendor_template
         if not DaraCore.is_null(request.task_name):
             body['TaskName'] = request.task_name
         if not DaraCore.is_null(request.tenant_id):
@@ -9647,8 +9653,12 @@ class Client(OpenApiClient):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not DaraCore.is_null(request.uri):
             body['Uri'] = request.uri
+        if not DaraCore.is_null(request.use_voip):
+            body['UseVoip'] = request.use_voip
         if not DaraCore.is_null(request.vendor_template):
             body['VendorTemplate'] = request.vendor_template
+        if not DaraCore.is_null(request.voip_map):
+            body['VoipMap'] = request.voip_map
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -9733,6 +9743,8 @@ class Client(OpenApiClient):
             body['StrategyType'] = request.strategy_type
         if not DaraCore.is_null(request.target_msgkey):
             body['TargetMsgkey'] = request.target_msgkey
+        if not DaraCore.is_null(request.target_vendor_template):
+            body['TargetVendorTemplate'] = request.target_vendor_template
         if not DaraCore.is_null(request.task_name):
             body['TaskName'] = request.task_name
         if not DaraCore.is_null(request.tenant_id):
@@ -9747,8 +9759,12 @@ class Client(OpenApiClient):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not DaraCore.is_null(request.uri):
             body['Uri'] = request.uri
+        if not DaraCore.is_null(request.use_voip):
+            body['UseVoip'] = request.use_voip
         if not DaraCore.is_null(request.vendor_template):
             body['VendorTemplate'] = request.vendor_template
+        if not DaraCore.is_null(request.voip_map):
+            body['VoipMap'] = request.voip_map
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -9839,6 +9855,8 @@ class Client(OpenApiClient):
             body['StrategyType'] = request.strategy_type
         if not DaraCore.is_null(request.target_msgkey):
             body['TargetMsgkey'] = request.target_msgkey
+        if not DaraCore.is_null(request.target_vendor_template):
+            body['TargetVendorTemplate'] = request.target_vendor_template
         if not DaraCore.is_null(request.task_name):
             body['TaskName'] = request.task_name
         if not DaraCore.is_null(request.template_key_value):
@@ -9853,8 +9871,12 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.use_voip):
+            body['UseVoip'] = request.use_voip
         if not DaraCore.is_null(request.vendor_template):
             body['VendorTemplate'] = request.vendor_template
+        if not DaraCore.is_null(request.voip_map):
+            body['VoipMap'] = request.voip_map
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -9931,6 +9953,8 @@ class Client(OpenApiClient):
             body['StrategyType'] = request.strategy_type
         if not DaraCore.is_null(request.target_msgkey):
             body['TargetMsgkey'] = request.target_msgkey
+        if not DaraCore.is_null(request.target_vendor_template):
+            body['TargetVendorTemplate'] = request.target_vendor_template
         if not DaraCore.is_null(request.task_name):
             body['TaskName'] = request.task_name
         if not DaraCore.is_null(request.template_key_value):
@@ -9945,8 +9969,12 @@ class Client(OpenApiClient):
             body['TransparentMessagePayload'] = request.transparent_message_payload
         if not DaraCore.is_null(request.transparent_message_urgency):
             body['TransparentMessageUrgency'] = request.transparent_message_urgency
+        if not DaraCore.is_null(request.use_voip):
+            body['UseVoip'] = request.use_voip
         if not DaraCore.is_null(request.vendor_template):
             body['VendorTemplate'] = request.vendor_template
+        if not DaraCore.is_null(request.voip_map):
+            body['VoipMap'] = request.voip_map
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -12799,6 +12827,92 @@ class Client(OpenApiClient):
     ) -> main_models.StartUserAppAsyncEnhanceInMsaResponse:
         runtime = RuntimeOptions()
         return await self.start_user_app_async_enhance_in_msa_with_options_async(request, runtime)
+
+    def sync_mini_game_online_status_by_app_with_options(
+        self,
+        request: main_models.SyncMiniGameOnlineStatusByAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SyncMiniGameOnlineStatusByAppResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.mini_program_code):
+            body['MiniProgramCode'] = request.mini_program_code
+        if not DaraCore.is_null(request.online_status):
+            body['OnlineStatus'] = request.online_status
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SyncMiniGameOnlineStatusByApp',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SyncMiniGameOnlineStatusByAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sync_mini_game_online_status_by_app_with_options_async(
+        self,
+        request: main_models.SyncMiniGameOnlineStatusByAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SyncMiniGameOnlineStatusByAppResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppId'] = request.app_id
+        if not DaraCore.is_null(request.mini_program_code):
+            body['MiniProgramCode'] = request.mini_program_code
+        if not DaraCore.is_null(request.online_status):
+            body['OnlineStatus'] = request.online_status
+        if not DaraCore.is_null(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SyncMiniGameOnlineStatusByApp',
+            version = '2020-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SyncMiniGameOnlineStatusByAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sync_mini_game_online_status_by_app(
+        self,
+        request: main_models.SyncMiniGameOnlineStatusByAppRequest,
+    ) -> main_models.SyncMiniGameOnlineStatusByAppResponse:
+        runtime = RuntimeOptions()
+        return self.sync_mini_game_online_status_by_app_with_options(request, runtime)
+
+    async def sync_mini_game_online_status_by_app_async(
+        self,
+        request: main_models.SyncMiniGameOnlineStatusByAppRequest,
+    ) -> main_models.SyncMiniGameOnlineStatusByAppResponse:
+        runtime = RuntimeOptions()
+        return await self.sync_mini_game_online_status_by_app_with_options_async(request, runtime)
 
     def update_gateway_api_with_options(
         self,

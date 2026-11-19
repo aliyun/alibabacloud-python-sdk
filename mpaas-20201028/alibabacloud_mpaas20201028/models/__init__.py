@@ -401,6 +401,9 @@ from ._save_order_relation_info_to_msence_response import SaveOrderRelationInfoT
 from ._start_user_app_async_enhance_in_msa_request import StartUserAppAsyncEnhanceInMsaRequest
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBody
 from ._start_user_app_async_enhance_in_msa_response import StartUserAppAsyncEnhanceInMsaResponse
+from ._sync_mini_game_online_status_by_app_request import SyncMiniGameOnlineStatusByAppRequest
+from ._sync_mini_game_online_status_by_app_response_body import SyncMiniGameOnlineStatusByAppResponseBody
+from ._sync_mini_game_online_status_by_app_response import SyncMiniGameOnlineStatusByAppResponse
 from ._update_gateway_api_request import UpdateGatewayApiRequest
 from ._update_gateway_api_shrink_request import UpdateGatewayApiShrinkRequest
 from ._update_gateway_api_response_body import UpdateGatewayApiResponseBody
@@ -709,6 +712,7 @@ from ._save_order_relation_info_to_msence_response_body import SaveOrderRelation
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBodyResultContentDataEnhanceMapping
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBodyResultContentData
 from ._start_user_app_async_enhance_in_msa_response_body import StartUserAppAsyncEnhanceInMsaResponseBodyResultContent
+from ._sync_mini_game_online_status_by_app_response_body import SyncMiniGameOnlineStatusByAppResponseBodyContent
 from ._update_gateway_api_request import UpdateGatewayApiRequestCacheRule
 from ._update_gateway_api_request import UpdateGatewayApiRequestDefaultLimitRule
 from ._update_gateway_api_request import UpdateGatewayApiRequestHeaderRules
@@ -1135,6 +1139,9 @@ __all__ = [
     StartUserAppAsyncEnhanceInMsaRequest,
     StartUserAppAsyncEnhanceInMsaResponseBody,
     StartUserAppAsyncEnhanceInMsaResponse,
+    SyncMiniGameOnlineStatusByAppRequest,
+    SyncMiniGameOnlineStatusByAppResponseBody,
+    SyncMiniGameOnlineStatusByAppResponse,
     UpdateGatewayApiRequest,
     UpdateGatewayApiShrinkRequest,
     UpdateGatewayApiResponseBody,
@@ -1443,6 +1450,7 @@ __all__ = [
     StartUserAppAsyncEnhanceInMsaResponseBodyResultContentDataEnhanceMapping,
     StartUserAppAsyncEnhanceInMsaResponseBodyResultContentData,
     StartUserAppAsyncEnhanceInMsaResponseBodyResultContent,
+    SyncMiniGameOnlineStatusByAppResponseBodyContent,
     UpdateGatewayApiRequestCacheRule,
     UpdateGatewayApiRequestDefaultLimitRule,
     UpdateGatewayApiRequestHeaderRules,

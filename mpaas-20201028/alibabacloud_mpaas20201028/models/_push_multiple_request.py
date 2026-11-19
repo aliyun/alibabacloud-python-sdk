@@ -247,6 +247,7 @@ class PushMultipleRequestTargetMsg(DaraModel):
         msg_key: str = None,
         target: str = None,
         template_key_value: str = None,
+        vendor_template: str = None,
     ):
         self.extended_params = extended_params
         # This parameter is required.
@@ -254,6 +255,7 @@ class PushMultipleRequestTargetMsg(DaraModel):
         # This parameter is required.
         self.target = target
         self.template_key_value = template_key_value
+        self.vendor_template = vendor_template
 
     def validate(self):
         pass
@@ -275,6 +277,9 @@ class PushMultipleRequestTargetMsg(DaraModel):
         if self.template_key_value is not None:
             result['TemplateKeyValue'] = self.template_key_value
 
+        if self.vendor_template is not None:
+            result['VendorTemplate'] = self.vendor_template
+
         return result
 
     def from_map(self, m: dict = None):
@@ -290,6 +295,9 @@ class PushMultipleRequestTargetMsg(DaraModel):
 
         if m.get('TemplateKeyValue') is not None:
             self.template_key_value = m.get('TemplateKeyValue')
+
+        if m.get('VendorTemplate') is not None:
+            self.vendor_template = m.get('VendorTemplate')
 
         return self
 

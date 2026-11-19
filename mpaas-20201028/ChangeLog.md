@@ -1,3 +1,14 @@
+2026-11-19 Version: 3.6.0
+- Support API SyncMiniGameOnlineStatusByApp.
+- Update API PushMultiple: add request parameters TargetMsg.$.VendorTemplate.
+- Update API PushSimple: add request parameters TargetVendorTemplate.
+- Update API PushSimple: add request parameters UseVoip.
+- Update API PushSimple: add request parameters VoipMap.
+- Update API PushTemplate: add request parameters TargetVendorTemplate.
+- Update API PushTemplate: add request parameters UseVoip.
+- Update API PushTemplate: add request parameters VoipMap.
+
+
 2026-11-02 Version: 3.5.0
 - Support API CreateGatewayApi.
 - Support API CreateGatewayApiGroup.
