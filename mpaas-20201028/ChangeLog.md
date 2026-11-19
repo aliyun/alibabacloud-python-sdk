@@ -1,3 +1,6 @@
+2026-11-19 Version: 3.6.1
+- Generated python 2020-10-28 for mPaaS.
+
 2026-11-19 Version: 3.6.0
 - Support API SyncMiniGameOnlineStatusByApp.
 - Update API PushMultiple: add request parameters TargetMsg.$.VendorTemplate.
