@@ -15,11 +15,10 @@ class DescribeReplicaSetRoleResponseBody(DaraModel):
         replica_sets: main_models.DescribeReplicaSetRoleResponseBodyReplicaSets = None,
         request_id: str = None,
     ):
-        # The domain name suffix for the connection string.
+        # The domain name suffix of the connection string.
         self.connection_string_suffix = connection_string_suffix
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # Details of the replica set.
         self.replica_sets = replica_sets
         # The request ID.
         self.request_id = request_id
@@ -106,6 +105,7 @@ class DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet(DaraModel):
         connection_port: str = None,
         connection_type: str = None,
         expired_time: str = None,
+        ipaddress: str = None,
         network_type: str = None,
         replica_set_role: str = None,
         role_id: str = None,
@@ -114,6 +114,7 @@ class DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet(DaraModel):
         self.connection_port = connection_port
         self.connection_type = connection_type
         self.expired_time = expired_time
+        self.ipaddress = ipaddress
         self.network_type = network_type
         self.replica_set_role = replica_set_role
         self.role_id = role_id
@@ -137,6 +138,9 @@ class DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet(DaraModel):
 
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+
+        if self.ipaddress is not None:
+            result['IPAddress'] = self.ipaddress
 
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
@@ -162,6 +166,9 @@ class DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet(DaraModel):
 
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+
+        if m.get('IPAddress') is not None:
+            self.ipaddress = m.get('IPAddress')
 
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')

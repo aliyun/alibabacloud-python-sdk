@@ -22,10 +22,11 @@ class DescribeInstanceRecoverTimeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region where the geo-redundancy backup set is stored.
+        # The region where the geo-redundancy backup set is located.
         # > 
-        # > - This parameter is required when you query geo-redundancy backups.
+        # > - Required when you query geo-redundancy.
         self.dest_region = dest_region
+        # Specifies whether to query only the restorable time ranges that support database and table restoration. Default value: false.
         self.only_db_table_recovery = only_db_table_recovery
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -34,9 +35,9 @@ class DescribeInstanceRecoverTimeRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The area where the source instance of the geo-redundancy backup resides.
+        # The area where the source instance of the geo-redundancy backup is located.
         # > 
-        # > - This parameter is required when you query geo-redundancy backups.
+        # > - Required when you query geo-redundancy.
         self.src_region = src_region
 
     def validate(self):

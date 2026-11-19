@@ -25,32 +25,23 @@ class DescribeActiveOperationTasksRequest(DaraModel):
         task_type: str = None,
     ):
         # Specifies whether the task can be canceled. Valid values:
-        # 
         # - **-1** (default): returns all tasks.
-        # 
         # - **0**: returns only tasks that cannot be canceled.
-        # 
         # - **1**: returns only tasks that can be canceled.
         self.allow_cancel = allow_cancel
-        # Specifies whether the time can be changed. Valid values:
-        # 
+        # Specifies whether the execution time can be modified. Valid values:
         # - **-1** (default): returns all tasks.
-        # 
-        # - **0**: returns only tasks whose time cannot be changed.
-        # 
-        # - **1**: returns only tasks whose time can be changed.
+        # - **0**: returns only tasks whose execution time cannot be modified.
+        # - **1**: returns only tasks whose execution time can be modified.
         self.allow_change = allow_change
-        # The level of the task. Valid values:
-        # 
+        # The change level. Valid values:
         # - **all** (default): returns all tasks.
-        # 
-        # - **S0**: returns tasks for exception fixing.
-        # 
-        # - **S1**: returns tasks for system O\\&M.
+        # - **S0**: returns tasks at the exception remediation level.
+        # - **S1**: returns tasks at the system O&M level.
         self.change_level = change_level
         # The database type. Default value: **all**.
         self.db_type = db_type
-        # The name of the instance. This parameter is optional. You can specify only one instance name.
+        # The name of the instance. This parameter is optional. If you specify this parameter, you can specify only one instance name.
         self.ins_name = ins_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -58,41 +49,31 @@ class DescribeActiveOperationTasksRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The product name. For MongoDB instances, set this parameter to **MongoDB**.
+        # The product name. For MongoDB instances, set the value to **MongoDB**.
         self.product_id = product_id
-        # The ID of the region where the pending event is located. Call the DescribeRegions operation to obtain the region ID.
-        # 
-        # > A value of **all** indicates all region IDs.
+        # The ID of the region to which the pending event belongs. You can call the DescribeRegions operation to query the region ID.
+        # > A value of **all** specifies all region IDs.
         self.region = region
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The task status. This parameter filters the returned tasks.
+        # The task status, which is used to filter the returned tasks. Valid values:
         # 
-        # - **-1**: all tasks.
-        # 
-        # - **3**: pending tasks.
-        # 
-        # - **4**: running tasks.
-        # 
-        # - **5**: successfully completed tasks.
-        # 
-        # - **6**: failed tasks.
-        # 
-        # - **7**: canceled tasks.
+        # - **-1**: all tasks
+        # - **3**: pending tasks
+        # - **4**: in-progress tasks
+        # - **5**: successfully completed tasks
+        # - **6**: failed tasks
+        # - **7**: canceled tasks
         self.status = status
         # The task type. Valid values:
         # 
-        # - **rds_apsaradb_ha**: primary-secondary node switchover.
-        # 
-        # - **rds_apsaradb_transfer**: instance migration.
-        # 
-        # - **rds_apsaradb_upgrade**: minor version upgrade.
-        # 
-        # - **rds_apsaradb_maxscale**: proxy minor version upgrade.
-        # 
-        # - **all**: all task types.
+        # - **rds_apsaradb_ha**: primary/secondary node switch
+        # - **rds_apsaradb_transfer**: instance migration
+        # - **rds_apsaradb_upgrade**: minor version upgrade
+        # - **rds_apsaradb_maxscale**: proxy minor version upgrade
+        # - **all**: all task types
         self.task_type = task_type
 
     def validate(self):

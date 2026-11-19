@@ -19,7 +19,7 @@ class DescribeDBInstanceEncryptionKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The custom encryption key of the instance. You can call [DescribeUserEncryptionKeyList](https://help.aliyun.com/document_detail/151729.html) to query the custom keys of the instance.
+        # The custom key of the instance. You can call [DescribeUserEncryptionKeyList](https://help.aliyun.com/document_detail/151729.html) to query the custom keys of the instance.
         self.encryption_key = encryption_key
         # The key scenario to query. Valid values:
         # - TDE: Queries transparent data encryption key information.

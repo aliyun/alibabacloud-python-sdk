@@ -10,9 +10,9 @@ class RenewDBInstanceResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the order.
+        # The ID of the generated order.
         self.order_id = order_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

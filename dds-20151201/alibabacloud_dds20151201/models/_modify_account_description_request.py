@@ -18,31 +18,26 @@ class ModifyAccountDescriptionRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # The description of the account.
-        # 
-        # - The description must start with a letter and cannot start with http\\:// or https\\://.
-        # 
-        # - The description must be 2 to 256 characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
+        # - It cannot start with http:// or https://.
+        # - It must start with a letter or a Chinese character.
+        # - It can contain letters, Chinese characters, underscores (_), hyphens (-), and digits, and must be 2 to 256 characters in length.
         # 
         # This parameter is required.
         self.account_description = account_description
-        # The name of the account whose description is to be modified.
+        # The name of the account whose description you want to modify.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The type of the account whose description you can modify. Valid values:
-        # 
+        # The type of the account whose description you want to modify. Valid values:
         # - **db**: shard account
-        # 
-        # - **cs**: ConfigServer account
-        # 
-        # - **normal** (default): replica set account (available)
-        # 
-        # > You can set this parameter only to **normal**.
+        # - **cs**: config server account
+        # - **normal**: replica set account (default)
         self.character_type = character_type
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The database to which the account belongs.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id

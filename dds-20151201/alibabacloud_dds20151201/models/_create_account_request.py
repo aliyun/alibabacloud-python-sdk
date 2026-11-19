@@ -22,36 +22,49 @@ class CreateAccountRequest(DaraModel):
         resource_owner_id: int = None,
         roles: List[main_models.CreateAccountRequestRoles] = None,
     ):
-        # The description of the account.
+        # The account description.
+        # 
+        # - Regular expression: `^[a-zA-Z一-龥][a-zA-Z一-龥0-9_.-]{1,255}$`. The description must start with an English letter or Chinese character, followed by English letters, Chinese characters, digits, underscores (_), periods (.), or hyphens (-). The length must be 2 to 256 characters.
+        # - If the description is invalid, InvalidAccountDescription.Malformed is returned.
         self.account_description = account_description
-        # The account name. The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter. The account has read-only permissions.
+        # The account name.
+        # - Regular expression: `^[a-z]+[a-z0-9|_]*[a-z0-9]+$`. The name must start with a lowercase letter, end with a lowercase letter or digit, and can contain lowercase letters, digits, and underscores (_). The length must be 2 to 16 characters.
+        # - The reserved name `root` (case-insensitive, built-in system account) cannot be used.
+        # - The name cannot start with `__cloud` (reserved prefix for system accounts).
+        # - If the name is invalid, `InvalidAccountName.Malformed` is returned.
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The account password. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
+        # The account password.
+        # - The length must be 8 to 32 characters. It can contain uppercase letters, lowercase letters, digits, and the following special characters: `!@#$%^&*()_+-=`.
+        # - The password must contain at least **three** of the following four character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - If the password is invalid, `InvalidAccountPassword.Malformed` is returned.
         # 
-        # > For information about how to handle special characters, see [What do I do if a connection fails because the username or password in the connection string contains special characters?](https://help.aliyun.com/document_detail/471568.html)
+        # 
+        # > For information about how to handle special characters, see [How do I resolve the connection failure caused by special characters in the account name or password of a connection string?](https://help.aliyun.com/document_detail/471568.html)
         # 
         # This parameter is required.
         self.account_password = account_password
-        # The type of the account to be created. Valid values:
-        # - **db**: shard account. This is the default value.
-        # - **cs**: Configserver account.
-        # - **normal**: replica set account.
-        # 
-        # > Currently, only **db** accounts are supported.
+        # The account type.<br>Valid values:<br>- `normal`: replica set account. For a replica set instance, any value is processed as `normal`.<br>- `cs`: sharded cluster ConfigServer account.<br>- `db`: sharded cluster Shard direct connection account. For a sharded cluster instance, any value other than `cs` is processed as `db`.<br>Default value: `db`.
         self.character_type = character_type
-        # The instance ID.
+        # The instance ID. For a sharded cluster instance, specify the sharded cluster ID. Account operations are executed from the perspective of the ConfigServer.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The database to which the account belongs. This is the database where the account is created or on which the account operates. Default value: admin. The name must be 1 to 63 characters in length and cannot contain /, \\, ., spaces, double quotation marks ("), or $. The name cannot be local.
+        # The database to which the account belongs (authentication database).<br>
+        # Default value: `admin`.<br>Rules: If this parameter is left empty, the request is allowed and the downstream system processes it as `admin`. If this parameter is specified, the length must be 1 to 63 characters. The value cannot contain `/`, `\\`, `.`, spaces, `"`, or `$`, and cannot be `local`. Otherwise, `InvalidParameter` is returned.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The list of authorized roles for the account.
+        # The list of authorization roles for the account. **Required for replica set and ConfigServer (cs) accounts**. **Prohibited for sharded cluster Shard direct connection (db) accounts**.
+        # - **Globally prohibited** (returns `InvalidRoles.NotAllowed`): `root`, `clusterAdmin`, `hostManager`, `clusterManager`, `__system`, `__queryableBackup`, and `restore`.
+        # - **Can be authorized to any database (including admin)**: `read`, `userAdmin`, and `enableSharding`.
+        # - **Can only be authorized to non-admin databases** (returns `InvalidRoles.InvalidDB` if authorized to admin): `readWrite`, `dbAdmin`, and `dbOwner`.
+        # - **Can only be authorized to the admin database**: `readAnyDatabase`, `readWriteAnyDatabase`, `userAdminAnyDatabase`, `dbAdminAnyDatabase`, `clusterMonitor`, `backup`, and `alibabaCloudAdmin`. (`alibabaCloudAdmin` is supported only for instances with kernel version 4.4 or later. For earlier versions, `InvalidRoles.NotAllowed` is returned.)
+        # - **Custom roles**: Roles other than the preceding ones are considered custom roles and must already exist in the instance (you can query them by calling DescribeAccountRoles). Otherwise, `InvalidRoles.NotFound` is returned. `Roles.N.DBName` must be the same as the database where the role is defined. Otherwise, `InvalidRoles.DBNotMatch` is returned.
+        # - If `Roles` is missing as a whole, `MissingRoles` is returned. If `Roles.N.Role` and `Roles.N.DBName` do not appear in pairs, `InvalidRoles.Malformed` is returned. If `Roles` is passed for a sharded cluster Shard direct connection account, `InvalidRoles.NotSupported` is returned.
         self.roles = roles
 
     def validate(self):
@@ -150,9 +163,10 @@ class CreateAccountRequestRoles(DaraModel):
         dbname: str = None,
         role: str = None,
     ):
-        # The authorized database.
+        # The database to which the account belongs (authentication database).<br>
+        # Default value: `admin`.<br>Rules: If this parameter is left empty, the request is allowed and the downstream system processes it as `admin`. If this parameter is specified, the length must be 1 to 63 characters. The value cannot contain `/`, `\\`, `.`, spaces, `"`, or `$`, and cannot be `local`. Otherwise, `InvalidParameter` is returned.
         self.dbname = dbname
-        # The granted permissions.
+        # The role name. It can be a built-in role or a custom role created on the instance. For value rules, see [Roles parameter description](https://www.alibabacloud.com/help/en/mongodb/manage-database-accounts-through-the-console).
         self.role = role
 
     def validate(self):

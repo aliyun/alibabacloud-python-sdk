@@ -15,12 +15,12 @@ class DescribeDBInstancePerformanceResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range to query. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+        # The end time of the query. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format in UTC.
         self.end_time = end_time
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range to query. The time is in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
+        # The start time of the query. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm</i>Z format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):

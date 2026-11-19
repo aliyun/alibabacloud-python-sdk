@@ -18,12 +18,15 @@ class CreateShardingDBInstanceRequest(DaraModel):
         config_server: List[main_models.CreateShardingDBInstanceRequestConfigServer] = None,
         dbinstance_description: str = None,
         dest_region: str = None,
+        dry_run: bool = None,
         encrypted: bool = None,
         encryption_key: str = None,
         engine: str = None,
         engine_version: str = None,
         global_security_group_ids: str = None,
         hidden_zone_id: str = None,
+        maintain_end_time: str = None,
+        maintain_start_time: str = None,
         mongos: List[main_models.CreateShardingDBInstanceRequestMongos] = None,
         network_type: str = None,
         owner_account: str = None,
@@ -44,6 +47,7 @@ class CreateShardingDBInstanceRequest(DaraModel):
         src_region: str = None,
         storage_engine: str = None,
         storage_type: str = None,
+        ttlenabled: bool = None,
         tag: List[main_models.CreateShardingDBInstanceRequestTag] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -54,49 +58,52 @@ class CreateShardingDBInstanceRequest(DaraModel):
         # - Special characters include !@#$%^&*()_+-=.
         # - It must be 8 to 32 characters in length.
         # 
-        # > For more information about how to troubleshoot connection failures caused by special characters in database connection string, see [What do I do if database connection to an ApsaraDB for MongoDB instance fails because the username or password in database connection string contains special characters?](https://help.aliyun.com/document_detail/471568.html).
+        # > For more information about how to troubleshoot connection failures caused by special characters in database connection string, see [What do I do if a connection failure occurs because the username or password in database connection string contains special characters?](https://help.aliyun.com/document_detail/471568.html).
         self.account_password = account_password
         # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
-        # - **true**: Enables auto-renewal.
-        # - **false**: Disables auto-renewal. You must manually renew the instance. This is the default value.
+        # - **true**: enables auto-renewal.
+        # - **false**: disables auto-renewal. In this case, you must manually renew the instance. This is the default value.
         # 
-        # > This parameter is available and optional only when the **ChargeType** parameter is set to **PrePaid**.
+        # > This parameter is valid and optional only when the **ChargeType** parameter is set to **PrePaid**.
         self.auto_renew = auto_renew
-        # The ID of the cluster backup.
-        # 
+        # The cluster backup ID.
         # 
         # > - This parameter is required only when RestoreType is set to 2 or 3.
         self.backup_id = backup_id
         # The billing method of the instance. Valid values:
         # 
-        # - **PostPaid**: Pay-as-you-go. This is the default value.
-        # - **PrePaid**: Subscription.
+        # - **PostPaid**: pay-as-you-go. This is the default value.
+        # - **PrePaid**: subscription.
         # 
         # > If you set this parameter to **PrePaid**, you must also specify the **Period** parameter.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the token, but you must ensure that the token is unique among different requests. The token can contain a maximum of 64 ASCII characters and cannot contain non-ASCII characters.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The information about the ConfigServer nodes.
+        # The information about the Configserver node.
         # 
         # This parameter is required.
         self.config_server = config_server
-        # The name of the instance. The name must meet the following requirements:
-        # - It must start with a letter or a Chinese character.
-        # - It can contain digits, letters, Chinese characters, underscores (_), periods (.), and hyphens (-).
+        # The instance name. The name must meet the following requirements:
+        # - It must start with a letter.
+        # - It can contain digits, letters, underscores (_), periods (.), and hyphens (-).
         # - It must be 2 to 256 characters in length.
         self.dbinstance_description = dbinstance_description
-        # The region where the cross-region backup is stored.
+        # The region of the geo-redundant backup.
         self.dest_region = dest_region
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # - true: performs a dry run without executing the actual request. The system checks the request parameters, request format, service limits, and available resources. If the request fails the dry run, the system returns an error. If the request passes the dry run, the system returns the DryRunOperation error code.
+        # - false: sends a normal request and executes the operation after the request passes the dry run. This is the default value.
+        self.dry_run = dry_run
         # Specifies whether to enable cloud disk encryption.
         self.encrypted = encrypted
-        # The ID of the custom key.
+        # The custom key ID.
         self.encryption_key = encryption_key
         # The database engine. Set the value to **MongoDB**.
         # 
         # This parameter is required.
         self.engine = engine
-        # The database version number. Valid values:
+        # The database version. Valid values:
         # - **8.0**
         # - **7.0**
         # - **6.0**
@@ -110,7 +117,7 @@ class CreateShardingDBInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.engine_version = engine_version
-        # The global IP address whitelist templates of the instance. Separate multiple templates with commas (,). Duplicate templates are not supported.
+        # The global IP address whitelist templates of the instance. Separate multiple templates with commas (,). Each template must be unique.
         self.global_security_group_ids = global_security_group_ids
         # The secondary zone 2 for multi-zone deployment. Valid values:
         # - **cn-hangzhou-g**: Hangzhou Zone G.
@@ -132,26 +139,30 @@ class CreateShardingDBInstanceRequest(DaraModel):
         # - **eu-central-1b**: Frankfurt Zone B.
         # - **eu-central-1c**: Frankfurt Zone C.
         # 
-        # > - This parameter is available only when the instance uses cloud disks.
+        # > - This parameter is valid only when the instance uses cloud disks.
         # > - The value of this parameter cannot be the same as the value of **ZoneId** or **SecondaryZoneId**.
         # > - For more information about the multi-zone deployment policy for sharded cluster instances, see [Create a multi-zone sharded cluster instance](https://help.aliyun.com/document_detail/117865.html).
         self.hidden_zone_id = hidden_zone_id
+        # The maintenance end time.
+        self.maintain_end_time = maintain_end_time
+        # The maintenance start time.
+        self.maintain_start_time = maintain_start_time
         # The information about the mongos nodes.
         # 
         # This parameter is required.
         self.mongos = mongos
         # The network type of the instance. Valid values:
         # 
-        # - **VPC**: VPC.
+        # **VPC**: VPC.
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The subscription duration of the instance. Unit: months.
         # 
         # Valid values: **1** to **9**, **12**, **24**, **36**, and **60**.
-        # > This parameter is required and takes effect only when the **ChargeType** parameter is set to **PrePaid**.
+        # > This parameter is required and valid only when the **ChargeType** parameter is set to **PrePaid**.
         self.period = period
-        # The type of the access protocol. Valid values:
+        # The access protocol type. Valid values:
         # - **mongodb**: MongoDB protocol.
         # - **dynamodb**: DynamoDB protocol.
         self.protocol_type = protocol_type
@@ -169,13 +180,13 @@ class CreateShardingDBInstanceRequest(DaraModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
-        # > This parameter is required only when you call this operation to clone an instance. You must also specify the **SrcDBInstanceId** parameter.
+        # > You must specify this parameter only when you call this operation to clone an instance. You must also specify the **SrcDBInstanceId** parameter.
         self.restore_time = restore_time
         # The backup restoration type. Valid values:
         # 
-        # - 1: Restore the instance to a specified point in time.
-        # - 2: Restore a released instance to a specified backup set.
-        # - 3: Restore the instance to a specified cross-region backup set.
+        # - 1: restore the instance to a specified point in time.
+        # - 2: restore a released instance to a specified backup set.
+        # - 3: restore the instance to a specified geo-redundant backup set.
         self.restore_type = restore_type
         # The secondary zone 1 for multi-zone deployment. Valid values:
         # - **cn-hangzhou-g**: Hangzhou Zone G.
@@ -196,25 +207,25 @@ class CreateShardingDBInstanceRequest(DaraModel):
         # - **eu-central-1a**: Frankfurt Zone A.
         # - **eu-central-1b**: Frankfurt Zone B.
         # - **eu-central-1c**: Frankfurt Zone C.
-        # >- This parameter is available only when the instance uses cloud disks.
-        # >- The value of this parameter cannot be the same as the value of **ZoneId** or **HiddenZoneId**.
-        # >- For more information about the multi-zone deployment policy for sharded cluster instances, see [Create a multi-zone sharded cluster instance](https://help.aliyun.com/document_detail/117865.html).
+        # > - This parameter is valid only when the instance uses cloud disks.
+        # > - The value of this parameter cannot be the same as the value of **ZoneId** or **HiddenZoneId**.
+        # > - For more information about the multi-zone deployment policy for sharded cluster instances, see [Create a multi-zone sharded cluster instance](https://help.aliyun.com/document_detail/117865.html).
         self.secondary_zone_id = secondary_zone_id
-        # The IP address whitelist of the instance. Separate multiple IP addresses with commas (,). Duplicate IP addresses are not supported. The following formats are supported:
+        # The IP address whitelist of the instance. Separate multiple IP addresses with commas (,). Each IP address must be unique. The following formats are supported:
         # - 0.0.0.0/0
         # - IP addresses, such as 10.23.12.24.
         # - CIDR blocks, such as 10.23.12.0/24. 24 indicates the length of the prefix in the CIDR block, and the prefix length ranges from 1 to 32.
         # 
-        # > - You can add up to 1,000 IP addresses or CIDR blocks to the whitelist of an instance. The total number of IP addresses or CIDR blocks in all whitelist groups cannot exceed 1,000.
-        # > - 0.0.0.0/0 indicates that all IP addresses can access the instance. This is a high-risk setting. Configure this parameter with caution.
+        # > - You can add up to 1,000 IP addresses or CIDR blocks to the whitelist of an instance. The total number of IP addresses and CIDR blocks in all whitelist groups cannot exceed 1,000.
+        # > - 0.0.0.0/0 indicates that all IP addresses can access the databases of the instance. This is a high-risk setting. Configure this setting with caution.
         self.security_iplist = security_iplist
-        # The source instance ID.
-        # > This parameter is required only when you call this operation to clone an instance. You must also specify the **RestoreTime** parameter.
+        # The ID of the source instance.
+        # > You must specify this parameter only when you call this operation to clone an instance. You must also specify the **RestoreTime** parameter.
         self.src_dbinstance_id = src_dbinstance_id
-        # The region where the source instance is located.
+        # The region of the source instance.
         # 
-        # >- This parameter is required when the backup restoration type is rebuilding a deleted instance.
-        # >- This parameter is required when the backup restoration type is cross-region backup cloning.
+        # > - This parameter is required when the backup restoration type is rebuilding a deleted instance.
+        # > - This parameter is required when the backup restoration type is cloning from a geo-redundant backup.
         self.src_region = src_region
         # The storage engine of the instance. Set the value to **WiredTiger**.
         # 
@@ -226,11 +237,13 @@ class CreateShardingDBInstanceRequest(DaraModel):
         # - **cloud_essd1**: PL1 ESSD.
         # - **cloud_essd2**: PL2 ESSD.
         # - **cloud_essd3**: PL3 ESSD.
-        # - **local_ssd**: local SSD.
+        # - **local_ssd**: Local SSD.
         # 
-        # > - Instances of version 4.4 and later support only cloud disks. If you do not specify this parameter, **cloud_essd1** is selected by default.
-        # > - Instances of version 4.2 and earlier support only local disks. If you do not specify this parameter, **local_ssd** is selected by default.
+        # > - Instances of version 4.4 or later support only cloud disks. If you do not specify this parameter, **cloud_essd1** is selected by default.
+        # > - Instances of version 4.2 or earlier support only local disks. If you do not specify this parameter, **local_ssd** is selected by default.
         self.storage_type = storage_type
+        # Specifies whether to enable TTL index cleanup for the restored instance. A value of true or an empty value indicates that cleanup is enabled.
+        self.ttlenabled = ttlenabled
         # The custom tags.
         self.tag = tag
         # The vSwitch ID.
@@ -289,6 +302,9 @@ class CreateShardingDBInstanceRequest(DaraModel):
         if self.dest_region is not None:
             result['DestRegion'] = self.dest_region
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.encrypted is not None:
             result['Encrypted'] = self.encrypted
 
@@ -306,6 +322,12 @@ class CreateShardingDBInstanceRequest(DaraModel):
 
         if self.hidden_zone_id is not None:
             result['HiddenZoneId'] = self.hidden_zone_id
+
+        if self.maintain_end_time is not None:
+            result['MaintainEndTime'] = self.maintain_end_time
+
+        if self.maintain_start_time is not None:
+            result['MaintainStartTime'] = self.maintain_start_time
 
         result['Mongos'] = []
         if self.mongos is not None:
@@ -371,6 +393,9 @@ class CreateShardingDBInstanceRequest(DaraModel):
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
 
+        if self.ttlenabled is not None:
+            result['TTLEnabled'] = self.ttlenabled
+
         result['Tag'] = []
         if self.tag is not None:
             for k1 in self.tag:
@@ -416,6 +441,9 @@ class CreateShardingDBInstanceRequest(DaraModel):
         if m.get('DestRegion') is not None:
             self.dest_region = m.get('DestRegion')
 
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('Encrypted') is not None:
             self.encrypted = m.get('Encrypted')
 
@@ -433,6 +461,12 @@ class CreateShardingDBInstanceRequest(DaraModel):
 
         if m.get('HiddenZoneId') is not None:
             self.hidden_zone_id = m.get('HiddenZoneId')
+
+        if m.get('MaintainEndTime') is not None:
+            self.maintain_end_time = m.get('MaintainEndTime')
+
+        if m.get('MaintainStartTime') is not None:
+            self.maintain_start_time = m.get('MaintainStartTime')
 
         self.mongos = []
         if m.get('Mongos') is not None:
@@ -500,6 +534,9 @@ class CreateShardingDBInstanceRequest(DaraModel):
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
 
+        if m.get('TTLEnabled') is not None:
+            self.ttlenabled = m.get('TTLEnabled')
+
         self.tag = []
         if m.get('Tag') is not None:
             for k1 in m.get('Tag'):
@@ -523,11 +560,11 @@ class CreateShardingDBInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
-        # > - **N** in the parameter name specifies the sequence number of the tag. For example, **Tag.1.Key** specifies the key of the first tag, and **Tag.2.Key** specifies the key of the second tag.
+        # The tag key.
+        # > **N** in the parameter name specifies the Nth tag. For example, **Tag.1.Key** specifies the key of the first tag, and **Tag.2.Key** specifies the key of the second tag.
         self.key = key
-        # The value of the tag.
-        # > **N** in the parameter name specifies the sequence number of the tag. For example, **Tag.1.Value** specifies the value of the first tag, and **Tag.2.Value** specifies the value of the second tag.
+        # The tag value.
+        # > **N** in the parameter name specifies the Nth tag. For example, **Tag.1.Value** specifies the value of the first tag, and **Tag.2.Value** specifies the value of the second tag.
         self.value = value
 
     def validate(self):
@@ -565,7 +602,7 @@ class CreateShardingDBInstanceRequestReplicaSet(DaraModel):
     ):
         # The specifications of the shard node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
         # 
-        # > - **N** in the parameter name specifies the sequence number of the shard node. For example, **ReplicaSet.2.Class** specifies the specifications of the second shard node.
+        # > - **N** in the parameter name specifies the Nth shard node. For example, **ReplicaSet.2.Class** specifies the specifications of the second shard node.
         # > - Valid values of **N**: **2** to **32**.
         # 
         # This parameter is required.
@@ -573,12 +610,12 @@ class CreateShardingDBInstanceRequestReplicaSet(DaraModel):
         # The number of read-only nodes in the shard node.
         # 
         # Valid values: **0** to **5**. Default value: **0**.
-        # > **N** in the parameter name specifies the sequence number of the shard node. For example, **ReplicaSet.2.ReadonlyReplicas** specifies the number of read-only nodes in the second shard node.
+        # > **N** in the parameter name specifies the Nth shard node. For example, **ReplicaSet.2.ReadonlyReplicas** specifies the number of read-only nodes in the second shard node.
         self.readonly_replicas = readonly_replicas
         # The storage capacity of the shard node. Unit: GB.
         # 
         # > - The valid values are subject to the instance specifications. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
-        # > - **N** in the parameter name specifies the sequence number of the shard node. For example, **ReplicaSet.2.Storage** specifies the storage capacity of the second shard node.
+        # > - **N** in the parameter name specifies the Nth shard node. For example, **ReplicaSet.2.Storage** specifies the storage capacity of the second shard node.
         # 
         # This parameter is required.
         self.storage = storage
@@ -622,7 +659,7 @@ class CreateShardingDBInstanceRequestMongos(DaraModel):
     ):
         # The specifications of the mongos node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
         # 
-        # > - **N** in the parameter name specifies the sequence number of the mongos node. For example, **Mongos.2.Class** specifies the specifications of the second mongos node.
+        # > - **N** in the parameter name specifies the Nth mongos node. For example, **Mongos.2.Class** specifies the specifications of the second mongos node.
         # > - Valid values of **N**: **2** to **32**.
         # 
         # This parameter is required.
@@ -654,13 +691,13 @@ class CreateShardingDBInstanceRequestConfigServer(DaraModel):
         class_: str = None,
         storage: int = None,
     ):
-        # The specifications of the ConfigServer node. Valid values:
-        # - **mdb.shard.2x.xlarge.d**: 4 cores, 8 GB (dedicated). This specification is supported only for instances of version 4.4 and later.
-        # - **dds.cs.mid**: 1 core, 2 GB (general-purpose). This specification is supported only for instances of version 4.2 and earlier.
+        # The specifications of the Configserver node. Valid values:
+        # - **mdb.shard.2x.xlarge.d**: 4 cores, 8 GB (dedicated). This specification is supported only by instances of version 4.4 or later.
+        # - **dds.cs.mid**: 1 core, 2 GB (general-purpose). This specification is supported only by instances of version 4.2 or earlier.
         # 
         # This parameter is required.
         self.class_ = class_
-        # The storage capacity of the ConfigServer node. Unit: GB.
+        # The storage capacity of the Configserver node. Unit: GB.
         # 
         # > The valid values are subject to the instance specifications. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
         # 

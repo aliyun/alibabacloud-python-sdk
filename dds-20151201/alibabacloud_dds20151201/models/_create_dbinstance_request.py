@@ -22,12 +22,15 @@ class CreateDBInstanceRequest(DaraModel):
         dbinstance_description: str = None,
         dbinstance_storage: int = None,
         database_names: str = None,
+        dry_run: bool = None,
         encrypted: bool = None,
         encryption_key: str = None,
         engine: str = None,
         engine_version: str = None,
         global_security_group_ids: str = None,
         hidden_zone_id: str = None,
+        maintain_end_time: str = None,
+        maintain_start_time: str = None,
         network_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -47,6 +50,7 @@ class CreateDBInstanceRequest(DaraModel):
         src_region: str = None,
         storage_engine: str = None,
         storage_type: str = None,
+        ttlenabled: bool = None,
         tag: List[main_models.CreateDBInstanceRequestTag] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -54,62 +58,66 @@ class CreateDBInstanceRequest(DaraModel):
     ):
         # The password of the root account. The password must meet the following requirements:
         # 
-        # - Must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # - Special characters include !@#$%^&*()_+-=.
-        # - Must be 8 to 32 characters in length.
+        # - It must be 8 to 32 characters in length.
         # 
-        # > For information about how to database connection failures caused by special characters in the password, see [How do I database connection failures caused by special characters in the connection string?](https://help.aliyun.com/document_detail/471568.html).
+        # > For more information about how to resolve the issue where database connection fails due to special characters in the account password in the connection string, see [What do I do if the connection to an ApsaraDB for MongoDB instance fails because the username or password in the connection string contains special characters?](https://help.aliyun.com/document_detail/471568.html).
         self.account_password = account_password
         # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
         # - **true**: enables auto-renewal.
-        # - **false**: default value. Disables auto-renewal. You must manually renew the instance.
+        # - **false**: disables auto-renewal. In this case, you must manually renew the instance. This is the default value.
         # 
-        # > This parameter is available and optional when **ChargeType** is set to **PrePaid**.
+        # > This parameter is valid and optional only when the **ChargeType** parameter is set to **PrePaid**.
         self.auto_renew = auto_renew
-        # The backup ID. You can invoke the [DescribeBackups](https://help.aliyun.com/document_detail/62172.html) operation to query the backup ID.
-        # > This parameter is required only when you invoke this operation to clone a clone instance from a backup point. You must also configure the **SrcDBInstanceId** parameter.
+        # The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/62172.html) operation to query the backup set ID.
+        # > This parameter is required only when you call this operation to clone an instance from a backup set. You must also specify the **SrcDBInstanceId** parameter.
         self.backup_id = backup_id
-        # The additional information about the business.
+        # The additional parameter for business information.
         self.business_info = business_info
         # The billing method of the instance. Valid values:
         # 
-        # - **PostPaid**: default value. Pay-as-you-go.
-        # - **PrePaid**: Subscription.
+        # - **PostPaid**: pay-as-you-go. This is the default value.
+        # - **PrePaid**: subscription.
         # 
-        # > If you set this parameter to **PrePaid**, you must also configure the **Period** parameter.
+        # > When this parameter is set to **PrePaid**, you must also specify the **Period** parameter.
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
         self.client_token = client_token
         self.cluster_id = cluster_id
         # Specifies whether to use a coupon. Valid values:
-        # - **default** or **null** (default): uses a coupon.
+        # - **default** or **null**: uses a coupon. This is the default value.
         # - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
         self.coupon_no = coupon_no
         # The instance type. You can call the [DescribeAvailableResource](https://help.aliyun.com/document_detail/149719.html) operation to query the available instance types.
         # 
         # This parameter is required.
         self.dbinstance_class = dbinstance_class
-        # The instance name. The name must meet the following requirements:
+        # The name of the instance. The name must meet the following requirements:
         # 
-        # - Must start with a Chinese character or a letter.
-        # - Can contain digits, Chinese characters, letters, underscores (_), periods (.), and hyphens (-).
-        # - Must be 2 to 256 characters in length.
+        # - It must start with a letter or a Chinese character.
+        # - It can contain digits, letters, Chinese characters, underscores (_), periods (.), and hyphens (-).
+        # - It must be 2 to 256 characters in length.
         self.dbinstance_description = dbinstance_description
-        # The instance storage capacity. Unit: GB.
+        # The instance storage. Unit: GB.
         # 
-        # The valid values depend on the instance type. For details, see [Replica set instance specifications](https://help.aliyun.com/document_detail/311410.html).
+        # The valid values are subject to the instance type. For details, see [Replica set instance types](https://help.aliyun.com/document_detail/311410.html).
         # 
         # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
         # The name of the database.
-        # > When you invoke this operation to clone a clone instance, you can specify this parameter to clone specific databases. If you do not specify this parameter, all databases are cloned.
+        # > When you call this operation to clone an instance, you can specify this parameter to specify the databases to be cloned. If you do not specify this parameter, all databases of the instance are cloned.
         self.database_names = database_names
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # - true: performs a dry run without calling the operation. The system checks items such as request parameters, request format, business limits, and inventory. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+        # - false (default): sends a normal request. After the check succeeds, the operation is directly executed.
+        self.dry_run = dry_run
         # Specifies whether to enable cloud disk encryption.
         self.encrypted = encrypted
-        # The custom key ID.
+        # The ID of the custom key.
         self.encryption_key = encryption_key
-        # The database engine. The value is fixed as **MongoDB**.
+        # The database engine. Set the value to **MongoDB**.
         self.engine = engine
         # The database engine version. Valid values:
         # - **8.0**
@@ -120,15 +128,15 @@ class CreateDBInstanceRequest(DaraModel):
         # - **4.2**
         # - **4.0**
         # 
-        # > If you call this operation to clone clone instance or restore clone instance from the recycle bin, set this parameter to the same value as that of the source instance.
+        # > When you call this operation to clone clone instance or restore clone instance from the recycle bin, the value of this parameter must be the same as that of the source instance.
         # 
-        # >Warning: Versions 3.4 and earlier are no longer available for purchase.
+        # >Warning: Versions 3.4 and earlier are no longer available for sale.
         # 
         # This parameter is required.
         self.engine_version = engine_version
-        # The global IP whitelist templates for the instance. Separate multiple templates with commas (,). Duplicate templates are not allowed. (This feature is in canary release.)
+        # The global IP address whitelist templates of the instance. Separate multiple templates with commas (,). Duplicate templates are not allowed. This feature is in canary release.
         self.global_security_group_ids = global_security_group_ids
-        # The zone where the hidden node is deployed to implement multi-zone deployment. Valid values:
+        # The zone where the hidden node resides. You can specify this parameter for multi-zone deployment. Valid values:
         # 
         # - **cn-hangzhou-g**: Hangzhou Zone G.
         # - **cn-hangzhou-h**: Hangzhou Zone H.
@@ -149,51 +157,55 @@ class CreateDBInstanceRequest(DaraModel):
         # - **eu-central-1b**: Frankfurt Zone B.
         # - **eu-central-1c**: Frankfurt Zone C.
         # 
-        # > - This parameter is available when the instance uses cloud disks.
-        # > - The value of this parameter cannot be the same as the values of **ZoneId** and **SecondaryZoneId**.
+        # > - This parameter is active only when the instance uses cloud disks.
+        # > - The value of this parameter cannot be the same as the value of the **ZoneId** or **SecondaryZoneId** parameter.
         self.hidden_zone_id = hidden_zone_id
+        # The end time of the maintenance window.
+        self.maintain_end_time = maintain_end_time
+        # The start time of the maintenance window.
+        self.maintain_start_time = maintain_start_time
         # The network type of the instance. Valid values:
         # 
-        # **VPC**: Virtual Private Cloud.
+        # **VPC**: Virtual Private Cloud (VPC).
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration of the instance. Unit: months.
+        # The subscription duration of the instance. Unit: month.
         # 
         # Valid values: **1** to **9** (integers), **12**, **24**, **36**, and **60**.
         # 
-        # > This parameter is available and required when **ChargeType** is set to **PrePaid**.
+        # > This parameter is required and valid only when the **ChargeType** parameter is set to **PrePaid**.
         self.period = period
         # The provisioned performance (IOPS). Valid values: 0 to 50000.
         self.provisioned_iops = provisioned_iops
-        # The **number of read-only nodes** in the replica set instance. Valid values: **0** to **5** (integers). Default value: **0**.
+        # The number of **read-only nodes** in the replica set instance. Valid values: **0** to **5** (integers). Default value: **0**.
         self.readonly_replicas = readonly_replicas
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
-        # > If you call this operation to clone clone instance or restore clone instance from the recycle bin, set this parameter to the same value as that of the source instance.
+        # > When you call this operation to clone clone instance or restore clone instance from the recycle bin, the value of this parameter must be the same as that of the source instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The **number of primary and secondary nodes** in the replica set instance. Valid values:
+        # The number of **primary and secondary nodes** in the replica set instance. Valid values:
         # 
         # - **3** (default)
         # - **5**
         # - **7**
         # 
-        # >Notice: This parameter is not required for single-node instances.
+        # >Notice: You do not need to specify this parameter for a standalone instance.
         self.replication_factor = replication_factor
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The point in time to recover the instance to. You can specify any point in time within the last 7 days. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
-        # > This parameter is required only when you invoke this operation to clone a clone instance to a point in time. You must also configure the **SrcDBInstanceId** parameter.
+        # The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
+        # > This parameter is required only when you call this operation to clone an instance to a specific point in time. You must also specify the **SrcDBInstanceId** parameter.
         self.restore_time = restore_time
-        # The backup restoration type. Valid values:
-        # - 0: recovers the instance to a specified backup set.
-        # - 1: recovers the instance to a specified point in time.
-        # - 2: recovers a released instance to a specified backup set.
-        # - 3: recovers the instance to a specified geo-redundancy backup set.
+        # The backup restoration type of the instance. Valid values:
+        # - 0: restores the instance to a specified backup set
+        # - 1: restores the instance to a specified point in time
+        # - 2: restores a released instance to a specified backup set
+        # - 3: restores the instance to a specified geo-redundancy backup set
         self.restore_type = restore_type
-        # The zone where the secondary node is deployed to implement multi-zone deployment. Valid values:
+        # The zone where the secondary node resides. You can specify this parameter for multi-zone deployment. Valid values:
         # 
         # - **cn-hangzhou-g**: Hangzhou Zone G.
         # - **cn-hangzhou-h**: Hangzhou Zone H.
@@ -214,42 +226,44 @@ class CreateDBInstanceRequest(DaraModel):
         # - **eu-central-1b**: Frankfurt Zone B.
         # - **eu-central-1c**: Frankfurt Zone C.
         # 
-        # > - This parameter is available when the instance uses cloud disks.
-        # > - The value of this parameter cannot be the same as the values of **ZoneId** and **HiddenZoneId**.
+        # > - This parameter is active only when the instance uses cloud disks.
+        # > - The value of this parameter cannot be the same as the value of the **ZoneId** or **HiddenZoneId** parameter.
         self.secondary_zone_id = secondary_zone_id
-        # The IP whitelist of the instance. Separate multiple IP addresses with commas (,). Duplicate IP addresses are not allowed. The following formats are supported:
+        # The IP address whitelist of the instance. Separate multiple IP addresses with commas (,). Duplicate IP addresses are not allowed. The following three formats are supported:
         # 
         # - 0.0.0.0/0
         # - IP address format, such as 10.23.12.24.
-        # - CIDR block format, such as 10.23.12.0/24. In this example, 24 indicates that the prefix of the CIDR block is 24 bits in length. The prefix length ranges from 1 to 32.
+        # - CIDR format, such as 10.23.12.0/24. 24 indicates the length of the prefix in the CIDR block, and the valid range is 1 to 32.
         # 
-        # > - Each instance supports a maximum of 1,000 IP addresses or CIDR blocks across all IP whitelist groups.
-        # > - 0.0.0.0/0 allows all IP addresses to access the instance database. This is a high-risk setting. Proceed with caution.
+        # > - You can add up to 1,000 IP addresses or CIDR blocks to each instance. The total number of IP addresses or CIDR blocks in all IP address whitelist groups cannot exceed 1,000.
+        # > - 0.0.0.0/0 indicates that all IP addresses can access the databases of the instance. This is a high-risk setting. Proceed with caution.
         self.security_iplist = security_iplist
         # The source instance ID.
-        # > If you call this operation to clone clone instance, you must configure this parameter along with the **BackupId** or **RestoreTime** parameter. If you call this operation to restore clone instance from the recycle bin, you only need to configure this parameter. The **BackupId** and **RestoreTime** parameters are not required.
+        # > When you call this operation to clone an instance, you must specify this parameter and the **BackupId** or **RestoreTime** parameter. When you call this operation to restore a revoked instance, you only need to specify this parameter, and you do not need to specify the **BackupId** or **RestoreTime** parameter.
         self.src_dbinstance_id = src_dbinstance_id
         # The region where the source instance resides.
         # 
-        # > This parameter is required when the restoration type is 2 or 3.
+        # >- This parameter is required when the backup restoration type is 2 or 3.
         self.src_region = src_region
-        # The storage engine of the instance. The value is fixed as **WiredTiger**.
-        # > - If you call this operation to clone clone instance or restore clone instance from the recycle bin, set this parameter to the same value as that of the source instance.
-        # > - For information about the constraints on storage engines and versions, see [Versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+        # The storage engine of the instance. Set the value to **WiredTiger**.
+        # > - When you call this operation to clone clone instance or restore clone instance from the recycle bin, the value of this parameter must be the same as that of the source instance.
+        # > - For more information about the constraints on the selection of storage engines and versions, see [Versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
         self.storage_engine = storage_engine
         # The storage type. Valid values:
         # - **cloud_essd1**: PL1 ESSD.
         # - **cloud_essd2**: PL2 ESSD.
         # - **cloud_essd3**: PL3 ESSD.
-        # - **cloud_auto**: ESSD AutoPL disk.
+        # - **cloud_auto**: ESSD AutoPL cloud disk.
         # - **local_ssd**: local SSD.
         # 
-        # > - For single-node instances, if you specify cloud_essd1, the instance uses a cloud_essd disk.
-        # > - ESSD AutoPL disks are currently available only on the China site.
-        # > - For instances running version 4.4 or later, the default value is **cloud_essd1**.
-        # > - For instances running version 4.2 or earlier, the default value is **local_ssd**.
+        # > - If you specify cloud_essd1 when you purchase a standalone instance, the instance actually uses a cloud_essd cloud disk.
+        # > - ESSD AutoPL cloud disks are supported only on the Alibaba Cloud China site.
+        # > - The default value for instances of version 4.4 and later is **cloud_essd1**.
+        # > - The default value for instances of version 4.2 and earlier is **local_ssd**.
         self.storage_type = storage_type
-        # The user-defined tags.
+        # Specifies whether to enable TTL index cleanup for the restored instance. A value of true or an empty value indicates that cleanup is enabled.
+        self.ttlenabled = ttlenabled
+        # The custom tags.
         self.tag = tag
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -305,6 +319,9 @@ class CreateDBInstanceRequest(DaraModel):
         if self.database_names is not None:
             result['DatabaseNames'] = self.database_names
 
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.encrypted is not None:
             result['Encrypted'] = self.encrypted
 
@@ -322,6 +339,12 @@ class CreateDBInstanceRequest(DaraModel):
 
         if self.hidden_zone_id is not None:
             result['HiddenZoneId'] = self.hidden_zone_id
+
+        if self.maintain_end_time is not None:
+            result['MaintainEndTime'] = self.maintain_end_time
+
+        if self.maintain_start_time is not None:
+            result['MaintainStartTime'] = self.maintain_start_time
 
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
@@ -380,6 +403,9 @@ class CreateDBInstanceRequest(DaraModel):
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
 
+        if self.ttlenabled is not None:
+            result['TTLEnabled'] = self.ttlenabled
+
         result['Tag'] = []
         if self.tag is not None:
             for k1 in self.tag:
@@ -434,6 +460,9 @@ class CreateDBInstanceRequest(DaraModel):
         if m.get('DatabaseNames') is not None:
             self.database_names = m.get('DatabaseNames')
 
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('Encrypted') is not None:
             self.encrypted = m.get('Encrypted')
 
@@ -451,6 +480,12 @@ class CreateDBInstanceRequest(DaraModel):
 
         if m.get('HiddenZoneId') is not None:
             self.hidden_zone_id = m.get('HiddenZoneId')
+
+        if m.get('MaintainEndTime') is not None:
+            self.maintain_end_time = m.get('MaintainEndTime')
+
+        if m.get('MaintainStartTime') is not None:
+            self.maintain_start_time = m.get('MaintainStartTime')
 
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
@@ -509,6 +544,9 @@ class CreateDBInstanceRequest(DaraModel):
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
 
+        if m.get('TTLEnabled') is not None:
+            self.ttlenabled = m.get('TTLEnabled')
+
         self.tag = []
         if m.get('Tag') is not None:
             for k1 in m.get('Tag'):
@@ -532,11 +570,11 @@ class CreateDBInstanceRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
-        # > - **N** indicates the sequence number of the tag key. For example, **Tag.1.Key** indicates the key of the first tag, and **Tag.2.Key** indicates the key of the second tag.
+        # The key of the tag.
+        # > - **N** specifies the sequence number of the tag. For example, **Tag.1.Key** specifies the key of the first tag, and **Tag.2.Key** specifies the key of the second tag.
         self.key = key
-        # The tag value.
-        # > **N** indicates the sequence number of the tag value. For example, **Tag.1.Value** indicates the value of the first tag, and **Tag.2.Value** indicates the value of the second tag.
+        # The value of the tag.
+        # > **N** specifies the sequence number of the tag. For example, **Tag.1.Value** specifies the value of the first tag, and **Tag.2.Value** specifies the value of the second tag.
         self.value = value
 
     def validate(self):

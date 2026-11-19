@@ -10,6 +10,7 @@ class ModifyDBInstanceConnectionStringResponseBody(DaraModel):
         modified_connection_string: str = None,
         request_id: str = None,
     ):
+        # The modified endpoint of the instance.
         self.modified_connection_string = modified_connection_string
         # The request ID.
         self.request_id = request_id

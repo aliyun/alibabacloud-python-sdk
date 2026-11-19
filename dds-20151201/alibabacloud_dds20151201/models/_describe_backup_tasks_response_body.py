@@ -13,7 +13,7 @@ class DescribeBackupTasksResponseBody(DaraModel):
         backup_jobs: List[main_models.DescribeBackupTasksResponseBodyBackupJobs] = None,
         request_id: str = None,
     ):
-        # The details of the backup jobs.
+        # The backup job details.
         self.backup_jobs = backup_jobs
         # The request ID.
         self.request_id = request_id
@@ -61,27 +61,21 @@ class DescribeBackupTasksResponseBodyBackupJobs(DaraModel):
         job_mode: str = None,
         progress: str = None,
     ):
-        # The status of the backup job.
-        # 
-        # - **Scheduled**: The backup job is scheduled. This includes regular backup jobs that have not started.
-        # 
-        # - **Checking**: The instance is being checked before the backup.
-        # 
-        # - **Backuping**: The backup is in progress.
-        # 
-        # - **Finished**: The backup is complete.
+        # The backup job status. Valid values:
+        # * **Scheduled**: The backup task is scheduled, including routine backup tasks that have not started.
+        # * **Checking**: The instance is being checked before the backup.
+        # * **Backuping**: The backup is in progress.
+        # * **Finished**: The backup is completed.
         self.backup_set_status = backup_set_status
-        # The start time of the backup.
+        # The backup start time in the yyyy-MM-ddTHH:mm:ssZ format (UTC).
         self.backup_start_time = backup_start_time
         # The backup job ID.
         self.backupjob_id = backupjob_id
-        # The backup mode. Valid values:
-        # 
-        # - **Automated**: automatic backup.
-        # 
-        # - **Manual**: manual backup.
+        # The backup pattern. Valid values:
+        # * **Automated**: Automatic backup.
+        # * **Manual**: Manual backup.
         self.job_mode = job_mode
-        # The backup progress in percentage. The progress is displayed only for running backup jobs.
+        # The backup progress in percentage. The progress is displayed only for running backups.
         self.progress = progress
 
     def validate(self):

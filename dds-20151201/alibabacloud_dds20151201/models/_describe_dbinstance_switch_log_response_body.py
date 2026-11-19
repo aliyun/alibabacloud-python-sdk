@@ -19,15 +19,15 @@ class DescribeDBInstanceSwitchLogResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The primary/secondary switchover logs.
+        # The list of primary/secondary switchover logs.
         self.log_items = log_items
-        # The page number returned.
+        # The current page number.
         self.page_number = page_number
-        # The number of entries returned on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The number of primary/secondary switching entries.
+        # The total number of primary/secondary switchover records returned in the query.
         self.total_count = total_count
 
     def validate(self):
@@ -96,25 +96,21 @@ class DescribeDBInstanceSwitchLogResponseBodyLogItems(DaraModel):
         switch_status: str = None,
         switch_time: str = None,
     ):
-        # The ID of the replica set instance or the ID of the node on which a primary/secondary switchover is performed.
+        # Instance ID of the instance if the instance is a replica set instance, or instance ID of the switched node if the instance is a sharded cluster instance.
         self.node_id = node_id
-        # The code that indicates the reason of a primary/secondary switchover. Valid values:
-        # 
-        # - USER_CONSOLE_OPERATION: The switchover is manually performed.
-        # 
-        # - OPERATION_AND_MAINTENANCE: Potential risks exist.
-        # 
-        # - MACHINE_DOWNTIME: The host is offline.
-        # 
-        # - PRIMARY_UNHEALTHY: An exception occurs on the primary node of the instance.
-        # 
-        # - SECONDARY_UNHEALTHY: An exception occurs on the secondary node of the instance.
-        # 
-        # - MULTIPLE_NODE_FAILURES: An exception occurs on multiple nodes of the instance.
+        # The cause code of the switchover. Valid values:
+        # - USER_CONSOLE_OPERATION: manual operation
+        # - OPERATION_AND_MAINTENANCE: potential risk
+        # - MACHINE_DOWNTIME: host offline
+        # - PRIMARY_UNHEALTHY: instance failures
+        # - SECONDARY_UNHEALTHY: instance failures
+        # - MULTIPLE_NODE_FAILURES: instance failures
         self.switch_code = switch_code
-        # The switchover status. Valid values: **1** and **0**. The value 1 indicates a successful primary/secondary switchover and the value 0 indicates a failed primary/secondary switchover.
+        # The switchover status. Valid values:
+        # - **1**: The switchover is successful.
+        # - **0**: The switchover failed.
         self.switch_status = switch_status
-        # The point in time when a primary/secondary switchover was performed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The switchover time. The time is in the <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z format (UTC).
         self.switch_time = switch_time
 
     def validate(self):

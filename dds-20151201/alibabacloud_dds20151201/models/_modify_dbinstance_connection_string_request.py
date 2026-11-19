@@ -28,8 +28,11 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to forcibly modify the suffix of the connection string. If a suffix conflict occurs:
+        # - true: Forcibly modifies the suffix.
+        # - false or not specified: Uses the default validation logic.
         self.force_modify_suffix = force_modify_suffix
-        # The network type of the connection string when only the port number is modified.
+        # The network type of the connection string when only port numbers are modified.
         self.network_type = network_type
         # The new endpoint. The endpoint must meet the following requirements:
         # - It must start with a lowercase letter.
@@ -37,9 +40,9 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         # - It can contain only lowercase letters, digits, and hyphens (-).
         # - It must be 8 to 63 characters in length.
         # 
-        # > Specify only the prefix of the endpoint. The remaining part cannot be modified.
+        # > You only need to specify the prefix of the endpoint. The suffix cannot be modified.
         self.new_connection_string = new_connection_string
-        # The new port. Valid values: 1000 to 65535.
+        # The new port number. Valid values: 1000 to 65535.
         # > This parameter is active only when the **DBInstanceId** parameter is set to a cloud disk instance ID.
         self.new_port = new_port
         # Instance ID of the Mongos node in the sharded cluster instance. You can specify only one Mongos node ID in each call.
@@ -48,7 +51,7 @@ class ModifyDBInstanceConnectionStringRequest(DaraModel):
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Specifies whether to modify only port numbers. If you modify only port numbers, batch modification is supported.
+        # Specifies whether to modify only port numbers. Batch modification is supported when only port numbers are modified.
         self.port_modify_only = port_modify_only
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

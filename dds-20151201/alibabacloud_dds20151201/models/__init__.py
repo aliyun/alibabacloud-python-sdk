@@ -59,6 +59,9 @@ from ._delete_global_security_ipgroup_response import DeleteGlobalSecurityIPGrou
 from ._delete_node_request import DeleteNodeRequest
 from ._delete_node_response_body import DeleteNodeResponseBody
 from ._delete_node_response import DeleteNodeResponse
+from ._describe_account_roles_request import DescribeAccountRolesRequest
+from ._describe_account_roles_response_body import DescribeAccountRolesResponseBody
+from ._describe_account_roles_response import DescribeAccountRolesResponse
 from ._describe_accounts_request import DescribeAccountsRequest
 from ._describe_accounts_response_body import DescribeAccountsResponseBody
 from ._describe_accounts_response import DescribeAccountsResponse
@@ -158,6 +161,9 @@ from ._describe_dbinstances_response import DescribeDBInstancesResponse
 from ._describe_dbinstances_overview_request import DescribeDBInstancesOverviewRequest
 from ._describe_dbinstances_overview_response_body import DescribeDBInstancesOverviewResponseBody
 from ._describe_dbinstances_overview_response import DescribeDBInstancesOverviewResponse
+from ._describe_databases_request import DescribeDatabasesRequest
+from ._describe_databases_response_body import DescribeDatabasesResponseBody
+from ._describe_databases_response import DescribeDatabasesResponse
 from ._describe_error_log_records_request import DescribeErrorLogRecordsRequest
 from ._describe_error_log_records_response_body import DescribeErrorLogRecordsResponseBody
 from ._describe_error_log_records_response import DescribeErrorLogRecordsResponse
@@ -415,6 +421,8 @@ from ._create_sharding_dbinstance_request import CreateShardingDBInstanceRequest
 from ._create_sharding_dbinstance_request import CreateShardingDBInstanceRequestMongos
 from ._create_sharding_dbinstance_request import CreateShardingDBInstanceRequestReplicaSet
 from ._create_sharding_dbinstance_request import CreateShardingDBInstanceRequestTag
+from ._describe_account_roles_response_body import DescribeAccountRolesResponseBodyRolesRole
+from ._describe_account_roles_response_body import DescribeAccountRolesResponseBodyRoles
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountsAccountRolesRole
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountsAccountRoles
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountsAccount
@@ -487,6 +495,7 @@ from ._describe_dbinstances_overview_response_body import DescribeDBInstancesOve
 from ._describe_dbinstances_overview_response_body import DescribeDBInstancesOverviewResponseBodyDBInstancesShardList
 from ._describe_dbinstances_overview_response_body import DescribeDBInstancesOverviewResponseBodyDBInstancesTags
 from ._describe_dbinstances_overview_response_body import DescribeDBInstancesOverviewResponseBodyDBInstances
+from ._describe_databases_response_body import DescribeDatabasesResponseBodyDatabases
 from ._describe_error_log_records_response_body import DescribeErrorLogRecordsResponseBodyItemsLogRecords
 from ._describe_error_log_records_response_body import DescribeErrorLogRecordsResponseBodyItems
 from ._describe_global_security_ipgroup_response_body import DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup
@@ -642,6 +651,9 @@ __all__ = [
     DeleteNodeRequest,
     DeleteNodeResponseBody,
     DeleteNodeResponse,
+    DescribeAccountRolesRequest,
+    DescribeAccountRolesResponseBody,
+    DescribeAccountRolesResponse,
     DescribeAccountsRequest,
     DescribeAccountsResponseBody,
     DescribeAccountsResponse,
@@ -741,6 +753,9 @@ __all__ = [
     DescribeDBInstancesOverviewRequest,
     DescribeDBInstancesOverviewResponseBody,
     DescribeDBInstancesOverviewResponse,
+    DescribeDatabasesRequest,
+    DescribeDatabasesResponseBody,
+    DescribeDatabasesResponse,
     DescribeErrorLogRecordsRequest,
     DescribeErrorLogRecordsResponseBody,
     DescribeErrorLogRecordsResponse,
@@ -998,6 +1013,8 @@ __all__ = [
     CreateShardingDBInstanceRequestMongos,
     CreateShardingDBInstanceRequestReplicaSet,
     CreateShardingDBInstanceRequestTag,
+    DescribeAccountRolesResponseBodyRolesRole,
+    DescribeAccountRolesResponseBodyRoles,
     DescribeAccountsResponseBodyAccountsAccountRolesRole,
     DescribeAccountsResponseBodyAccountsAccountRoles,
     DescribeAccountsResponseBodyAccountsAccount,
@@ -1070,6 +1087,7 @@ __all__ = [
     DescribeDBInstancesOverviewResponseBodyDBInstancesShardList,
     DescribeDBInstancesOverviewResponseBodyDBInstancesTags,
     DescribeDBInstancesOverviewResponseBodyDBInstances,
+    DescribeDatabasesResponseBodyDatabases,
     DescribeErrorLogRecordsResponseBodyItemsLogRecords,
     DescribeErrorLogRecordsResponseBodyItems,
     DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup,

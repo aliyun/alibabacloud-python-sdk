@@ -14,6 +14,7 @@ class CreateNodeBatchRequest(DaraModel):
         client_token: str = None,
         coupon_no: str = None,
         dbinstance_id: str = None,
+        dry_run: bool = None,
         from_app: str = None,
         nodes_info: str = None,
         owner_account: str = None,
@@ -22,7 +23,7 @@ class CreateNodeBatchRequest(DaraModel):
         resource_owner_id: int = None,
         shard_direct: bool = None,
     ):
-        # The name of the account. Valid values:
+        # The username of the account. The name must meet the following requirements:
         # 
         # - The name must start with a lowercase letter.
         # - The name can contain lowercase letters, digits, and underscores (_).
@@ -32,7 +33,7 @@ class CreateNodeBatchRequest(DaraModel):
         # > - The permissions of the account are fixed to read-only.
         # > - When you apply for a direct connection endpoint for a shard node for the first time, you must set the account name and password. You do not need to set them again for subsequent applications.
         self.account_name = account_name
-        # The password of the account. Valid values:
+        # The password of the account. The password must meet the following requirements:
         # - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # - Special characters include !@#$%^&*()_+-=.
         # - The password must be 8 to 32 characters in length.
@@ -41,24 +42,28 @@ class CreateNodeBatchRequest(DaraModel):
         self.account_password = account_password
         # Specifies whether to enable automatic payment. Valid values:
         # 
-        # - **true**: (Default) Automatic payment is enabled. Make sure that your account has sufficient balance.
-        # - **false**: Manual payment is enabled. For more information, see [Manually renew a subscription instance](https://help.aliyun.com/document_detail/85052.html).
+        # - **true**: Enables automatic payment. Make sure that your account has sufficient balance. This is the default value.
+        # - **false**: Disables automatic payment. You must manually pay the order. For more information, see [Manually renew a subscription instance](https://help.aliyun.com/document_detail/85052.html).
         self.auto_pay = auto_pay
         # The business information.
         self.business_info = business_info
-        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. It cannot contain non-ASCII characters.
         self.client_token = client_token
         # Specifies whether to use a coupon. Valid values:
-        # - **default** or **null**: (Default) A coupon is used.
-        # - **youhuiquan_promotion_option_id_for_blank**: No coupon is used.
+        # - **default** or **null**: Uses a coupon. This is the default value.
+        # - **youhuiquan_promotion_option_id_for_blank**: Does not use a coupon.
         self.coupon_no = coupon_no
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # - true: Performs a dry run without calling the operation. The system checks items such as request parameters, request format, service limits, and inventory. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+        # - false: Sends the request. If the check succeeds, the operation is performed. This is the default value.
+        self.dry_run = dry_run
         # The source of the request. Valid values:
-        # - **OpenApi**: OpenAPI.
-        # - **mongo_buy**: The console.
+        # - **OpenApi**: The request is sent from OpenAPI Explorer.
+        # - **mongo_buy**: The request is sent from the console.
         self.from_app = from_app
         # The specifications of the Mongos or shard nodes to be added. For more information about the specifications, see [Instance specifications](https://help.aliyun.com/document_detail/57141.html).
         # 
@@ -73,7 +78,7 @@ class CreateNodeBatchRequest(DaraModel):
         # Specifies whether to apply for a direct connection endpoint for the shard node. Valid values:
         # 
         # - **true**: Applies for a direct connection endpoint for the shard node.
-        # - **false**: (Default) Does not apply for a direct connection endpoint for the shard node.
+        # - **false**: Does not apply for a direct connection endpoint for the shard node. This is the default value.
         self.shard_direct = shard_direct
 
     def validate(self):
@@ -104,6 +109,9 @@ class CreateNodeBatchRequest(DaraModel):
 
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.from_app is not None:
             result['FromApp'] = self.from_app
@@ -150,6 +158,9 @@ class CreateNodeBatchRequest(DaraModel):
 
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('FromApp') is not None:
             self.from_app = m.get('FromApp')

@@ -10,10 +10,12 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         align_primary_zone: bool = None,
         auto_pay: bool = None,
         business_info: str = None,
+        client_token: str = None,
         coupon_no: str = None,
         dbinstance_class: str = None,
         dbinstance_id: str = None,
         dbinstance_storage: str = None,
+        dry_run: bool = None,
         effective_time: str = None,
         extra_param: str = None,
         order_type: str = None,
@@ -31,15 +33,17 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         target_vswitch_id: str = None,
         target_zone_id: str = None,
     ):
-        # Specifies whether to automatically align the primary node to the primary zone for a multi-zone instance after operations such as configuration changes. If you choose not to align the node, one primary/secondary switchover (transient disconnection) is avoided. Default value: true (aligned).
+        # Specifies whether to automatically align the primary node to the primary zone after operations such as configuration changes for a multi-zone instance. If you choose not to align the node, one primary/secondary switchover (transient disconnection) is avoided. Default value: true, which indicates that the node is aligned.
         self.align_primary_zone = align_primary_zone
         # Specifies whether to enable automatic payment for the instance. Valid values:
         # - **true**: enables automatic payment. This is the default value. Make sure that your account has sufficient balance.
-        # <props="china">- **false**: disables automatic payment. You must manually pay for the order in the console. Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Expenses and Costs**. In the left-side navigation pane, choose **Orders** > **My Orders**. On the **Orders** tab, find the order and complete the payment.
-        # <props="intl">- **false**: disables automatic payment. You must manually pay for the order in the console. Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Expenses and Costs**. In the left-side navigation pane, click **Order Management**. On the **Orders** page, find the order and complete the payment.
+        # <props="china">- **false**: disables automatic payment. You can manually pay for the order in the ApsaraDB for MongoDB console. Log on to the console, choose **Expenses** > **Expenses and Costs** in the upper-right corner, choose **Purchase Orders** > **My Orders** in the left-side navigation pane, and then find the target order on the **Product Orders** tab to complete the payment.
+        # <props="intl">- **false**: disables automatic payment. You can manually pay for the order in the ApsaraDB for MongoDB console. Log on to the console, choose **Expenses** > **Expenses and Costs** in the upper-right corner, click **Order Management** in the left-side navigation pane, and then find the target order on the **Product Orders** page to complete the payment.
         self.auto_pay = auto_pay
         # The business information.
         self.business_info = business_info
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
+        self.client_token = client_token
         # Specifies whether to use a coupon. Valid values:
         # - **default** or **null**: uses a coupon. This is the default value.
         # - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
@@ -56,48 +60,52 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Instance storage space of the instance. <props="intl"><ph>Valid values: 10 to 3000. Unit: GB. The step size is 10 GB. The valid values are subject to the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).</ph>
+        # The instance storage. <props="intl"><ph>Valid values: 10 to 3000. Unit: GB. Step size: 10 GB. The valid values are subject to the instance type. For details, see [Instance types](https://help.aliyun.com/document_detail/57141.html).</ph>
         # 
         # <props="china">
-        # - For standalone instances and replica set instances, valid values are 10 to 3000. Unit: GB. The step size is 10 GB. The valid values are subject to the instance type. For more information, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
-        # - For serverless instances, valid values are 1 to 100. Unit: GB. The step size is 1 GB.
+        # - For standalone instances and replica set instances, valid values are 10 to 3000. Unit: GB. Step size: 10 GB. The valid values are subject to the instance type. For details, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+        # - For serverless instances, valid values are 1 to 100. Unit: GB. Step size: 1 GB.
         # 
         # 
-        # > - You must specify at least one of the **DBInstanceStorage** and **DBInstanceClass** parameters.
-        # > - You cannot downgrade instance storage space.
+        # > - You must specify at least one of this parameter and the **DBInstanceClass** parameter.
+        # > - You cannot decrease the quota of storage space.
         self.dbinstance_storage = dbinstance_storage
-        # The time when the configuration change takes effect. Valid values:
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # true: performs a dry run without calling the operation. The system checks the request parameters, request format, business limits, and inventory. If the request fails the dry run, the corresponding error is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # false: sends the normal request and directly performs the operation after the request passes the check. This is the default value.
+        self.dry_run = dry_run
+        # The effective period of the configuration change. Valid values:
         # - **Immediately**: takes effect immediately. This is the default value.
         # - **MaintainTime**: takes effect during the maintenance window of the instance.
         self.effective_time = effective_time
         # The additional parameter. Valid values:
         # 
         # - **async**: returns the result after the configuration change order is created.
-        # - **sync**: returns the result when the configuration change is delivered after the order is created.
+        # - **sync**: returns the result when the configuration change is delivered to the instance after the order is created.
         self.extra_param = extra_param
-        # The type of configuration change. Valid values:
+        # The type of the configuration change. Valid values:
         # - **UPGRADE**: upgrades the configurations. This is the default value.
         # - **DOWNGRADE**: downgrades the configurations.
         # 
-        # > You can specify this parameter only when the instance uses the subscription billing method.
+        # > This parameter is available only when the billing method of the instance is subscription.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of read-only nodes. Valid values: **0** to **5**.
         # 
-        # If the instance is connected only over the **classic network** and a **VPC**, you must enable Internet access or release the classic network before you can change the **number of read-only nodes**.
+        # If the network type of the instance includes only the **classic network** and **VPC**, you must enable Internet access or release the classic network before you can change the **number of read-only nodes**.
         # > You can log on to the ApsaraDB for MongoDB console and view the enabled network types on the **Database Connections** page.
         self.readonly_replicas = readonly_replicas
         # The number of nodes in the instance. Default value: 3.
         # - For a replica set instance, valid values are **3**, **5**, and **7**.
         # - For a standalone instance, the value is fixed to **1**.
-        # - For a replica set instance that uses shared storage (supported only on the Alibaba Cloud China site), the value is fixed to **2**.
+        # - For a replica set instance that uses shared storage (supported only on the China site), the value is fixed to **2**.
         # 
-        # > You do not need to specify this parameter for a serverless instance (supported only on the Alibaba Cloud China site).
+        # > You do not need to specify this parameter for a serverless instance (supported only on the China site).
         self.replication_factor = replication_factor
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The specifications of the search node for the configuration change.
+        # The node specifications of the search node for the configuration change.
         self.search_node_class = search_node_class
         # The number of search nodes for the configuration change.
         self.search_node_count = search_node_count
@@ -108,7 +116,7 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         # >Notice: The value of this parameter cannot be the same as the value of the TargetZoneId or TargetSecondaryZoneId parameter.</notice>
         # 
         # > 
-        # > - You must specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
+        # > - You need to specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
         # > - This parameter is available only for multi-zone migration.
         # > - The destination zone and the current zone of the instance must be in the same region.
         # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query zone IDs.
@@ -117,7 +125,7 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         # >Notice: This parameter is supported only for instances that use cloud disks.</notice>
         # >Notice: The value of this parameter cannot be the same as the value of the TargetZoneId or TargetHiddenZoneId parameter.</notice>
         # > 
-        # > - You must specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
+        # > - You need to specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
         # > - This parameter is available only for multi-zone migration.
         # > - The destination zone and the current zone of the instance must be in the same region.
         # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query zone IDs.
@@ -125,12 +133,12 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         # The ID of the destination vSwitch when you cloud disk instance across zones and change its configurations at the same time.
         # >Notice: This parameter is supported only for instances that use cloud disks.</notice>
         # > 
-        # > - You must specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
+        # > - You need to specify this parameter only when you cloud disk instance across zones and change its configurations at the same time.
         self.target_vswitch_id = target_vswitch_id
-        # The destination zone for instance migration when you migrate the instance across zones and change its configurations at the same time.
+        # The destination active zone for instance migration during a configuration change across zones.
         # >Notice: This parameter is supported only for cloud disk instances.</notice>
         # >Notice: The value of this parameter cannot be the same as the value of the TargetSecondaryZoneId or TargetHiddenZoneId parameter.</notice>
-        # > - You must specify this parameter only when you migrate the instance across zones and change its configurations at the same time.
+        # > - You need to specify this parameter only during a configuration change across zones.
         # > - The destination zone and the current zone of the instance must be in the same region.
         # > - You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query zone IDs.
         self.target_zone_id = target_zone_id
@@ -152,6 +160,9 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         if self.business_info is not None:
             result['BusinessInfo'] = self.business_info
 
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.coupon_no is not None:
             result['CouponNo'] = self.coupon_no
 
@@ -163,6 +174,9 @@ class ModifyDBInstanceSpecRequest(DaraModel):
 
         if self.dbinstance_storage is not None:
             result['DBInstanceStorage'] = self.dbinstance_storage
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.effective_time is not None:
             result['EffectiveTime'] = self.effective_time
@@ -225,6 +239,9 @@ class ModifyDBInstanceSpecRequest(DaraModel):
         if m.get('BusinessInfo') is not None:
             self.business_info = m.get('BusinessInfo')
 
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('CouponNo') is not None:
             self.coupon_no = m.get('CouponNo')
 
@@ -236,6 +253,9 @@ class ModifyDBInstanceSpecRequest(DaraModel):
 
         if m.get('DBInstanceStorage') is not None:
             self.dbinstance_storage = m.get('DBInstanceStorage')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('EffectiveTime') is not None:
             self.effective_time = m.get('EffectiveTime')

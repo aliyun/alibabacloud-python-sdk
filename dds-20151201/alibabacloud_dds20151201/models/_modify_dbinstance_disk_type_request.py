@@ -19,56 +19,43 @@ class ModifyDBInstanceDiskTypeRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # Specifies whether to enable automatic payment. Valid values:
-        # 
-        # - **true**: Enables automatic payment. Make sure that your account has a sufficient balance.
-        # 
-        # <props="china">
-        # 
-        # - **false**: Disables automatic payment. To pay for the order, log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Expenses and Costs**. In the navigation pane on the left, choose **Subscription Orders** > **My Orders**. On the **Product Orders** tab, find the order and complete the payment.
-        # 
-        # 
-        # 
-        # 
-        # <props="intl">
-        # 
-        # - **false**: Disables automatic payment. To pay for the order, log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Expenses and Costs**. In the navigation pane on the left, click **Order Management**. On the **Product Orders** page, find the order and complete the payment.
-        # 
-        # 
-        # 
+        # - **true**: enables automatic payment. Make sure that your account has sufficient balance.
+        # <props="china">- **false**: disables automatic payment. You can manually pay for the order in the console. Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Expenses and Costs**. In the left-side navigation pane, choose **Orders** > **My Orders**. On the **Orders** tab, find the target order and complete the payment.
+        # <props="intl">- **false**: disables automatic payment. You can manually pay for the order in the console. Log on to the ApsaraDB for MongoDB console. In the upper-right corner of the page, choose **Expenses** > **Expenses and Costs**. In the left-side navigation pane, click **Order Management**. On the **Orders** page, find the target order and complete the payment.
         # 
         # Default value: **true**.
         self.auto_pay = auto_pay
-        # Specifies whether to enable auto-renewal for the instance. Valid values:
+        # Specifies whether to enable auto-renewal. Valid values:
+        # - **true**: enables auto-renewal.
+        # - **false**: disables auto-renewal.
         # 
-        # - **true**: Enables auto-renewal.
-        # 
-        # - **false**: Disables auto-renewal.
-        # 
-        # Default value: **false**
+        # Default value: **false**.
         self.auto_renew = auto_renew
-        # The business information. This is an additional parameter.
+        # The additional parameter for business information.
         self.business_info = business_info
-        # The coupon code. The default value is `youhuiquan_promotion_option_id_for_blank`.
+        # The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
         self.coupon_no = coupon_no
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The disk type after the modification. Valid value:
+        # The new disk type. Valid values:
+        # - **cloud_auto**: ESSD AutoPL cloud disk.
         # 
-        # - **cloud_auto**: ESSD AutoPL disk.
+        # > Prerequisite: The disk space of the instance must be at least 40 GB before you call this operation. If the disk space is insufficient, call ModifyDBInstanceSpec to expand the disk.
         self.db_instance_storage_type = db_instance_storage_type
-        # An additional parameter.
+        # The additional parameter.
         self.extra_param = extra_param
-        # The order type. Valid values:
+        # The specification change type. Valid values:
         # 
-        # - **UPGRADE**: Upgrades the instance configuration.
+        # - **UPGRADE**: upgrades the configurations.
+        # - **DOWNGRADE**: downgrades the configurations.
         # 
-        # - **DOWNGRADE**: Downgrades the instance configuration.
-        # 
-        # > This parameter is available only when the instance uses the subscription billing method.
+        # > This parameter is available only when the billing method of the instance is subscription.
         self.order_type = order_type
-        # The provisioned IOPS. Valid values: 0 to 50000.
+        # The provisioned performance (IOPS). Valid values: 0 to 50,000.
+        # 
+        # > If DbInstanceStorageType is set to cloud_auto, this parameter is conditionally required and can be set to 0. If this parameter is not specified, the API returns InvalidParameter.
         self.provisioned_iops = provisioned_iops
         self.resource_owner_id = resource_owner_id
 

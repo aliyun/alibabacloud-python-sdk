@@ -14,7 +14,7 @@ class DeleteBackupRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The backup ID.
+        # The backup ID. You must specify a backup set ID, which can be obtained by calling the DescribeBackups operation. Do not use the BackupId returned by the CreateBackup operation because it is a backup task ID. If you specify a backup task ID, the BackupSetNotFound error is returned.
         # 
         # This parameter is required.
         self.backup_id = backup_id

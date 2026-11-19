@@ -24,13 +24,13 @@ class DescribeDBInstanceAttributeRequest(DaraModel):
         # The database engine. Set the value to **MongoDB**.
         self.engine = engine
         # Specifies whether the instance is deleted. Valid values: 
-        # - **false**: The instance is running. Queries the information of a running instance.
-        # - **true**: The instance is deleted. Queries the information of a deleted instance.
+        # - **false**: The instance is running. Queries the information of running instances.
+        # - **true**: The instance is deleted. Queries the information of deleted instances.
         self.is_delete = is_delete
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The resource group ID. For more information about resource groups, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
-        # >This parameter is supported only on the China site.
+        # The resource group ID. For more information about resource groups, see [View the basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+        # > This parameter is supported only on the Alibaba Cloud China site.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

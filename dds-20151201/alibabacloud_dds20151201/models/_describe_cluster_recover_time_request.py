@@ -21,10 +21,13 @@ class DescribeClusterRecoverTimeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The region where the geo-redundancy backup set resides.
+        # The region where the geo-redundancy backup set is stored.
         # > 
-        # > - This parameter is required when you query a geo-redundancy backup.
+        # > - This parameter is required when you query geo-redundancy backups.
         self.dest_region = dest_region
+        # Specifies whether to query only the restorable time ranges that support database and table restoration. Valid values:
+        # - **true**: returns only the restorable time ranges that support database and table restoration.
+        # - **false** (default): returns all restorable time ranges.
         self.only_db_table_recovery = only_db_table_recovery
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -32,9 +35,9 @@ class DescribeClusterRecoverTimeRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The region where the source instance of the geo-redundancy backup resides.
+        # The region of the source instance for geo-redundancy backups.
         # > 
-        # > - This parameter is required when you query a geo-redundancy backup.
+        # > - This parameter is required when you query geo-redundancy backups.
         self.src_region = src_region
 
     def validate(self):

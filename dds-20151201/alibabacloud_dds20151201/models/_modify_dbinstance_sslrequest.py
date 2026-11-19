@@ -20,34 +20,34 @@ class ModifyDBInstanceSSLRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to force Secure Sockets Layer (SSL) encryption for connections. Valid values:
+        # Specifies whether to force SSL encryption for connections. Valid values:
         # 
-        # - **1**: Forces Secure Sockets Layer (SSL) encryption.
-        # - **0**: Does not force Secure Sockets Layer (SSL) encryption.
+        # - **1**: forces SSL encryption.
+        # - **0**: does not force SSL encryption.
         # 
         # > 
-        # > - Forced Secure Sockets Layer (SSL) encryption applies only to MongoDB 7.0 and 8.0 instances that use cloud disks and meet the following minor engine version requirements:
-        # >   - MongoDB 7.0: The minor engine version must be 8.0.13 or later.
-        # >   - MongoDB 8.0: The minor engine version must be 9.0.5 or later.
+        # > - Forced SSL encryption applies only to cloud disk instances running MongoDB 7.0 and 8.0, and the following minor engine version requirements must be met:
+        # > - - MongoDB 7.0: The minor engine version must be 8.0.13 or later.
+        # > - - MongoDB 8.0: The minor engine version must be 9.0.5 or later.
         # 
-        # >Warning: After you enable forced Secure Sockets Layer (SSL) encryption, you cannot connect to the instance by using non-SSL connections.</warning>
+        # >Warning: After forced SSL encryption is enabled, you cannot connect to the instance without SSL encryption.</warning>
         self.force_encryption = force_encryption
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The operation to perform on the SSL feature. Valid values:
-        # - **Open**: Enables Secure Sockets Layer (SSL) encryption.
-        # - **Close**: Disables Secure Sockets Layer (SSL) encryption.
-        # - **Update**: Updates the SSL certificate.
+        # Specifies the operation to perform on the SSL feature. Valid values:
+        # - **Open**: enables Secure Sockets Layer (SSL) encryption.
+        # - **Close**: disables Secure Sockets Layer (SSL) encryption.
+        # - **Update**: updates the SSL certificate.
         # 
         # This parameter is required.
         self.sslaction = sslaction
-        # The time when the SSL configuration of the MongoDB instance is modified. Valid values:
+        # Specifies the time when the SSL configuration of the MongoDB instance is modified. Valid values:
         # 
-        # - 0: Modifies the configuration immediately.
+        # - 0: modifies the configuration immediately.
         # 
-        # - 1: Modifies the configuration within the O&M window.
+        # - 1: modifies the configuration within the maintenance window.
         self.switch_mode = switch_mode
 
     def validate(self):

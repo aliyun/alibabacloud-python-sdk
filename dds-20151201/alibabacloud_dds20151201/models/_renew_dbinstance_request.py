@@ -13,6 +13,7 @@ class RenewDBInstanceRequest(DaraModel):
         client_token: str = None,
         coupon_no: str = None,
         dbinstance_id: str = None,
+        dry_run: bool = None,
         owner_account: str = None,
         owner_id: int = None,
         period: int = None,
@@ -20,38 +21,37 @@ class RenewDBInstanceRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # Specifies whether to enable automatic payment. Valid values:
-        # 
-        # - **true**: enables automatic payment. Make sure that you have sufficient balance within your account.
-        # 
-        # - **false**: disables automatic payment. You must perform the following operations to pay for the instance: Log on to the ApsaraDB for MongoDB console. In the upper-right corner, click **Expenses** and select **User Center** from the drop-down list. The User Center page appears. In the left-side navigation pane, choose **Order Management** > Renew. On the Renewal tab, find the bill that you want to pay and then click Renew in the Actions column.
+        # - **true**: enables automatic payment. Make sure that your account has sufficient balance.
+        # <props="china">- **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console, choose **Billing** > **Expenses and Costs** in the upper-right corner, choose **Orders** > **My Orders** in the left-side navigation pane, and then find the target order on the **Orders** tab to complete the payment.
+        # <props="intl">- **false**: disables automatic payment. You can log on to the ApsaraDB for MongoDB console, choose **Billing** > **Expenses and Costs** in the upper-right corner, click **Order Management** in the left-side navigation pane, and then find the target order on the **Orders** page to complete the payment.
         # 
         # Default value: **true**.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
-        # 
-        # - **true**
-        # 
-        # - **false**
+        # - **true**: enables auto-renewal.
+        # - **false**: disables auto-renewal.
         # 
         # Default value: **false**.
         self.auto_renew = auto_renew
         # The business information.
         self.business_info = business_info
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # Specifies whether to use coupons. Default value: null. Valid values:
-        # 
-        # - **default** or **null**: uses coupons.
-        # 
-        # - **youhuiquan_promotion_option_id_for_blank**: does not use coupons.
+        # Specifies whether to use a coupon. Valid values:
+        # - **default** or **null** (default): uses a coupon.
+        # - **youhuiquan_promotion_option_id_for_blank**: does not use a coupon.
         self.coupon_no = coupon_no
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # Specifies whether to perform a dry run on the request. Valid values:
+        # true: performs a dry run without calling the operation. The system checks the request parameters, request format, service limits, and available resources. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # false (default): sends the request. If the request passes the dry run, the operation is performed.
+        self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription period of the instance. Unit: month. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, and 36**.
+        # The renewal duration of the instance. Unit: months. Valid values: **1 to 9, 12, 24, and 36**.
         # 
         # This parameter is required.
         self.period = period
@@ -83,6 +83,9 @@ class RenewDBInstanceRequest(DaraModel):
 
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -120,6 +123,9 @@ class RenewDBInstanceRequest(DaraModel):
 
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

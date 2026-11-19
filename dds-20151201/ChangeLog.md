@@ -1,3 +1,26 @@
+2026-11-19 Version: 9.6.0
+- Support API DescribeAccountRoles.
+- Support API DescribeDatabases.
+- Update API CreateDBInstance: add request parameters DryRun.
+- Update API CreateDBInstance: add request parameters MaintainEndTime.
+- Update API CreateDBInstance: add request parameters MaintainStartTime.
+- Update API CreateDBInstance: add request parameters TTLEnabled.
+- Update API CreateNode: add request parameters DryRun.
+- Update API CreateNodeBatch: add request parameters DryRun.
+- Update API CreateShardingDBInstance: add request parameters DryRun.
+- Update API CreateShardingDBInstance: add request parameters MaintainEndTime.
+- Update API CreateShardingDBInstance: add request parameters MaintainStartTime.
+- Update API CreateShardingDBInstance: add request parameters TTLEnabled.
+- Update API DeleteDBInstance: add request parameters DryRun.
+- Update API DescribeReplicaSetRole: add response parameters Body.ReplicaSets.$.IPAddress.
+- Update API DestroyInstance: add request parameters DryRun.
+- Update API ModifyDBInstanceSpec: add request parameters ClientToken.
+- Update API ModifyDBInstanceSpec: add request parameters DryRun.
+- Update API RenewDBInstance: add request parameters DryRun.
+- Update API TransformToPrePaid: add request parameters ClientToken.
+- Update API TransformToPrePaid: add request parameters DryRun.
+
+
 2026-10-19 Version: 9.5.0
 - Support API DescribeAdvancedBackupPolicy.
 - Support API DescribeAdvancedBackupStatus.

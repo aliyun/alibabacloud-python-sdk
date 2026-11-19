@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_dds20151201 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Dds'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-qingdao': 'mongodb.cn-qingdao.aliyuncs.com',
@@ -1019,6 +1023,8 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not DaraCore.is_null(request.database_names):
             query['DatabaseNames'] = request.database_names
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.encrypted):
             query['Encrypted'] = request.encrypted
         if not DaraCore.is_null(request.encryption_key):
@@ -1031,6 +1037,10 @@ class Client(OpenApiClient):
             query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not DaraCore.is_null(request.hidden_zone_id):
             query['HiddenZoneId'] = request.hidden_zone_id
+        if not DaraCore.is_null(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not DaraCore.is_null(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
         if not DaraCore.is_null(request.network_type):
             query['NetworkType'] = request.network_type
         if not DaraCore.is_null(request.owner_account):
@@ -1069,6 +1079,8 @@ class Client(OpenApiClient):
             query['StorageEngine'] = request.storage_engine
         if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.ttlenabled):
+            query['TTLEnabled'] = request.ttlenabled
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.v_switch_id):
@@ -1127,6 +1139,8 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not DaraCore.is_null(request.database_names):
             query['DatabaseNames'] = request.database_names
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.encrypted):
             query['Encrypted'] = request.encrypted
         if not DaraCore.is_null(request.encryption_key):
@@ -1139,6 +1153,10 @@ class Client(OpenApiClient):
             query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not DaraCore.is_null(request.hidden_zone_id):
             query['HiddenZoneId'] = request.hidden_zone_id
+        if not DaraCore.is_null(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not DaraCore.is_null(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
         if not DaraCore.is_null(request.network_type):
             query['NetworkType'] = request.network_type
         if not DaraCore.is_null(request.owner_account):
@@ -1177,6 +1195,8 @@ class Client(OpenApiClient):
             query['StorageEngine'] = request.storage_engine
         if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.ttlenabled):
+            query['TTLEnabled'] = request.ttlenabled
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.v_switch_id):
@@ -1337,6 +1357,8 @@ class Client(OpenApiClient):
             query['CouponNo'] = request.coupon_no
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.node_class):
             query['NodeClass'] = request.node_class
         if not DaraCore.is_null(request.node_storage):
@@ -1401,6 +1423,8 @@ class Client(OpenApiClient):
             query['CouponNo'] = request.coupon_no
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.node_class):
             query['NodeClass'] = request.node_class
         if not DaraCore.is_null(request.node_storage):
@@ -1479,6 +1503,8 @@ class Client(OpenApiClient):
             query['CouponNo'] = request.coupon_no
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.from_app):
             query['FromApp'] = request.from_app
         if not DaraCore.is_null(request.nodes_info):
@@ -1533,6 +1559,8 @@ class Client(OpenApiClient):
             query['CouponNo'] = request.coupon_no
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.from_app):
             query['FromApp'] = request.from_app
         if not DaraCore.is_null(request.nodes_info):
@@ -1693,6 +1721,8 @@ class Client(OpenApiClient):
             query['DBInstanceDescription'] = request.dbinstance_description
         if not DaraCore.is_null(request.dest_region):
             query['DestRegion'] = request.dest_region
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.encrypted):
             query['Encrypted'] = request.encrypted
         if not DaraCore.is_null(request.encryption_key):
@@ -1705,6 +1735,10 @@ class Client(OpenApiClient):
             query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not DaraCore.is_null(request.hidden_zone_id):
             query['HiddenZoneId'] = request.hidden_zone_id
+        if not DaraCore.is_null(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not DaraCore.is_null(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
         if not DaraCore.is_null(request.mongos):
             query['Mongos'] = request.mongos
         if not DaraCore.is_null(request.network_type):
@@ -1745,6 +1779,8 @@ class Client(OpenApiClient):
             query['StorageEngine'] = request.storage_engine
         if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.ttlenabled):
+            query['TTLEnabled'] = request.ttlenabled
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.v_switch_id):
@@ -1795,6 +1831,8 @@ class Client(OpenApiClient):
             query['DBInstanceDescription'] = request.dbinstance_description
         if not DaraCore.is_null(request.dest_region):
             query['DestRegion'] = request.dest_region
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.encrypted):
             query['Encrypted'] = request.encrypted
         if not DaraCore.is_null(request.encryption_key):
@@ -1807,6 +1845,10 @@ class Client(OpenApiClient):
             query['GlobalSecurityGroupIds'] = request.global_security_group_ids
         if not DaraCore.is_null(request.hidden_zone_id):
             query['HiddenZoneId'] = request.hidden_zone_id
+        if not DaraCore.is_null(request.maintain_end_time):
+            query['MaintainEndTime'] = request.maintain_end_time
+        if not DaraCore.is_null(request.maintain_start_time):
+            query['MaintainStartTime'] = request.maintain_start_time
         if not DaraCore.is_null(request.mongos):
             query['Mongos'] = request.mongos
         if not DaraCore.is_null(request.network_type):
@@ -1847,6 +1889,8 @@ class Client(OpenApiClient):
             query['StorageEngine'] = request.storage_engine
         if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.ttlenabled):
+            query['TTLEnabled'] = request.ttlenabled
         if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
         if not DaraCore.is_null(request.v_switch_id):
@@ -1989,6 +2033,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -2027,6 +2073,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -2259,6 +2307,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteNodeResponse:
         runtime = RuntimeOptions()
         return await self.delete_node_with_options_async(request, runtime)
+
+    def describe_account_roles_with_options(
+        self,
+        request: main_models.DescribeAccountRolesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAccountRolesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAccountRoles',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAccountRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_account_roles_with_options_async(
+        self,
+        request: main_models.DescribeAccountRolesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAccountRolesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAccountRoles',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAccountRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_account_roles(
+        self,
+        request: main_models.DescribeAccountRolesRequest,
+    ) -> main_models.DescribeAccountRolesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_account_roles_with_options(request, runtime)
+
+    async def describe_account_roles_async(
+        self,
+        request: main_models.DescribeAccountRolesRequest,
+    ) -> main_models.DescribeAccountRolesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_account_roles_with_options_async(request, runtime)
 
     def describe_accounts_with_options(
         self,
@@ -5666,6 +5788,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_dbinstances_overview_with_options_async(request, runtime)
 
+    def describe_databases_with_options(
+        self,
+        request: main_models.DescribeDatabasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDatabasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDatabases',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_databases_with_options_async(
+        self,
+        request: main_models.DescribeDatabasesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDatabasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDatabases',
+            version = '2015-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_databases(
+        self,
+        request: main_models.DescribeDatabasesRequest,
+    ) -> main_models.DescribeDatabasesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_databases_with_options(request, runtime)
+
+    async def describe_databases_async(
+        self,
+        request: main_models.DescribeDatabasesRequest,
+    ) -> main_models.DescribeDatabasesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_databases_with_options_async(request, runtime)
+
     def describe_error_log_records_with_options(
         self,
         request: main_models.DescribeErrorLogRecordsRequest,
@@ -8625,6 +8817,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.owner_account):
@@ -8667,6 +8861,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.owner_account):
@@ -11071,6 +11267,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.business_info):
             query['BusinessInfo'] = request.business_info
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.coupon_no):
             query['CouponNo'] = request.coupon_no
         if not DaraCore.is_null(request.dbinstance_class):
@@ -11079,6 +11277,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.dbinstance_storage):
             query['DBInstanceStorage'] = request.dbinstance_storage
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.effective_time):
             query['EffectiveTime'] = request.effective_time
         if not DaraCore.is_null(request.extra_param):
@@ -11143,6 +11343,8 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.business_info):
             query['BusinessInfo'] = request.business_info
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.coupon_no):
             query['CouponNo'] = request.coupon_no
         if not DaraCore.is_null(request.dbinstance_class):
@@ -11151,6 +11353,8 @@ class Client(OpenApiClient):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.dbinstance_storage):
             query['DBInstanceStorage'] = request.dbinstance_storage
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.effective_time):
             query['EffectiveTime'] = request.effective_time
         if not DaraCore.is_null(request.extra_param):
@@ -12891,6 +13095,8 @@ class Client(OpenApiClient):
             query['CouponNo'] = request.coupon_no
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -12939,6 +13145,8 @@ class Client(OpenApiClient):
             query['CouponNo'] = request.coupon_no
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
@@ -13697,8 +13905,12 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.business_info):
             query['BusinessInfo'] = request.business_info
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.coupon_no):
             query['CouponNo'] = request.coupon_no
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.owner_account):
@@ -13743,8 +13955,12 @@ class Client(OpenApiClient):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.business_info):
             query['BusinessInfo'] = request.business_info
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.coupon_no):
             query['CouponNo'] = request.coupon_no
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.owner_account):

@@ -15,23 +15,27 @@ class ModifyTaskInfoRequest(DaraModel):
         task_action: str = None,
         task_id: str = None,
     ):
-        # A action-related parameter. This parameter can be extended based on your business requirements. This parameter value varies with the value of the TaskAction parameter.
+        # The parameters related to the action. These parameters can be extended based on business requirements. Different values must be passed for different taskAction names.
+        # 
+        # > When TaskAction is set to modifySwitchTime, this parameter is required. It must be a JSON string that contains the recoverMode key. Valid values for recoverMode: immediate, maintainTime, and timePoint.
         self.action_params = action_params
-        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the step visible to the user.
+        # The name of the step visible to the current user.
         # 
         # This parameter is required.
         self.step_name = step_name
-        # The action name that corresponds to the state described in the actionInfo parameter of the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2639186.html) operation.
+        # The name of the operation. The value is the action name corresponding to the status in the actionInfo obtained from the [DescribeHistoryTasks](https://help.aliyun.com/document_detail/2639186.html) operation.
+        # 
+        # > Valid values: retry, cancel, and modifySwitchTime.
         # 
         # This parameter is required.
         self.task_action = task_action
-        # The task ID. Separate multiple IDs with commas (,). You can specify up to 10 task IDs.
+        # The task ID. Separate multiple IDs with commas (,). You can specify up to 10 IDs.
         # 
         # This parameter is required.
         self.task_id = task_id

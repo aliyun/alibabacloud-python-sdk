@@ -10,7 +10,7 @@ class TransferClusterBackupResponseBody(DaraModel):
         already_done: str = None,
         request_id: str = None,
     ):
-        # Indicates whether the instance is switched to the cluster backup mode. If the value of this parameter is **1**, the instance is switched to the cluster backup mode.
+        # Indicates whether the instance has been switched to cluster backup mode. **1** indicates that the switch is complete.
         self.already_done = already_done
         # The request ID.
         self.request_id = request_id

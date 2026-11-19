@@ -14,13 +14,12 @@ class DescribeActiveOperationMaintenanceConfigResponseBody(DaraModel):
     ):
         # The details of the configuration.
         self.config = config
-        # Indicates whether a configuration is set.
+        # Indicates whether the O&M task is configured. Valid values:
         # 
-        # - 1: A configuration is set.
-        # 
-        # - 0: No configuration is set.
+        # - 1: Configured.
+        # - 0: Not configured.
         self.has_config = has_config
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -68,31 +67,30 @@ class DescribeActiveOperationMaintenanceConfigResponseBodyConfig(DaraModel):
         modified_time: str = None,
         status: int = None,
     ):
-        # The time when the O\\&M task configuration was created. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format and is displayed in UTC.
+        # The time when the O&M task configuration was created. The time is in the <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z format. The time is displayed in UTC.
         self.created_time = created_time
-        # The days of the cycle.
+        # The cycle time.
         # 
-        # - If CycleType is set to Month, this parameter returns the days of the month. Valid values: 1 to 28. Multiple values are separated by commas (,).
+        # - If CycleType is set to Month, the return value is a number from 1 to 28, which indicates the day of the month. Multiple values are separated by commas (,).
+        # - If CycleType is set to Week, the return value is a number from 1 to 7, which indicates the day of the week. Multiple values are separated by commas (,).
         # 
-        # - If CycleType is set to Week, this parameter returns the days of the week. Valid values: 1 to 7. Multiple values are separated by commas (,).
+        # Value format: This field returns a list of numeric serial numbers separated by commas (,), such as "1,2,3", which indicates the execution days of the O&M cycle. It is not a datetime value and does not involve time formats or time zones.
         self.cycle_time = cycle_time
-        # The cycle type.
+        # The cycle type. Valid values:
         # 
-        # - Month
-        # 
-        # - Week
+        # - Month: Monthly.
+        # - Week: Weekly.
         self.cycle_type = cycle_type
-        # The end time of the O\\&M time window. The time is in the *hh:mm:ss*Z format and is displayed in UTC.
+        # The end time of the O&M time window. The time is in the <i>hh:mm:ss</i>Z format. The time is displayed in UTC.
         self.maintain_end_time = maintain_end_time
-        # The start time of the O\\&M time window. The time is in the *hh:mm:ss*Z format and is displayed in UTC.
+        # The start time of the O&M time window. The time is in the <i>hh:mm:ss</i>Z format. The time is displayed in UTC.
         self.maintain_start_time = maintain_start_time
-        # The time when the operations and maintenance (O\\&M) task configuration was modified. The time is in the *yyyy-mm-dd*T*hh:mm:ss*Z format and is displayed in UTC.
+        # The time when the O&M task configuration was modified. The time is in the <i>yyyy-mm-dd</i>T<i>hh:mm:ss</i>Z format. The time is displayed in UTC.
         self.modified_time = modified_time
-        # Indicates whether the configuration is enabled.
+        # Indicates whether the configuration is effective. Valid values:
         # 
-        # - 1: Enabled
-        # 
-        # - 2: Disabled
+        # - 1: Effective.
+        # - 2: Invalid.
         self.status = status
 
     def validate(self):

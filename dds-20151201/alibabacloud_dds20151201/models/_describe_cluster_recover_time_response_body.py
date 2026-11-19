@@ -15,7 +15,7 @@ class DescribeClusterRecoverTimeResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The list of cluster backup sets. A cluster backup contains the backup set of each node.
+        # The list of cluster backup sets. A cluster backup contains the backup sets of each node.
         self.restore_ranges = restore_ranges
 
     def validate(self):
@@ -59,9 +59,9 @@ class DescribeClusterRecoverTimeResponseBodyRestoreRanges(DaraModel):
         restore_end_time: str = None,
         restore_type: str = None,
     ):
-        # The beginning of the restorable time range.
+        # The start time of the restorable time range. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.restore_begin_time = restore_begin_time
-        # The end of the restorable time range.
+        # The end time of the restorable time range. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.restore_end_time = restore_end_time
         # The restoration method. Valid values:
         # * **PointInTime** (default): point-in-time restoration.
