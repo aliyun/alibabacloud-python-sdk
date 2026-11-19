@@ -1,3 +1,8 @@
+2026-11-19 Version: 9.5.1
+- Update API CreateKnowledgeSpace: add request parameters AutoCreateMcpInstance.
+- Update API CreateKnowledgeSpace: add request parameters DryRun.
+
+
 2026-11-18 Version: 9.5.0
 - Support API DescribeAgenticDBPerformance.
 

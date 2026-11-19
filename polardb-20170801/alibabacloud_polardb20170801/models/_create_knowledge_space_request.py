@@ -7,8 +7,10 @@ from darabonba.model import DaraModel
 class CreateKnowledgeSpaceRequest(DaraModel):
     def __init__(
         self,
+        auto_create_mcp_instance: bool = None,
         dbtype: str = None,
         description: str = None,
+        dry_run: bool = None,
         embedding_dimension: int = None,
         embedding_model: str = None,
         enforce_acl: bool = None,
@@ -26,10 +28,14 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether to automatically activate MCP. The specifications are fixed to polar.app.g2.medium with 2 nodes and the pay-as-you-go billing method. If you set this parameter to true, you must also explicitly set EnforceAcl to true.
+        self.auto_create_mcp_instance = auto_create_mcp_instance
         # The type of the database engine.
         self.dbtype = dbtype
         # The description of the knowledge space. The description can be up to 512 characters in length.
         self.description = description
+        # Specifies whether to only validate the creation request without placing an order or creating resources.
+        self.dry_run = dry_run
         # The vector dimensions.
         # 
         # This parameter is required.
@@ -38,7 +44,7 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # Specifies whether to enforce access control list (ACL) authentication for the knowledge space.
+        # Specifies whether to enforce ACL authentication for the knowledge space.
         self.enforce_acl = enforce_acl
         # The name of the large language model.
         self.llmmodel = llmmodel
@@ -62,31 +68,31 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the rerank model.
+        # The name of the reranking model.
         self.rerank_model = rerank_model
         # The ID of the security group.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id
-        # The shard size, in tokens.
+        # The shard size in tokens.
         # 
         # This parameter is required.
         self.sharding_size = sharding_size
         # The sharding strategy. Valid values:
-        # - hierarchical: hierarchical sharding. This is the default value.
-        # - hybrid: hybrid sharding.
+        # - hierarchical: The default value.
+        # - hybrid.
         # 
         # This parameter is required.
         self.sharding_strategy = sharding_strategy
-        # The vSwitch for automatic creation of the database.
+        # The ID of the vSwitch for the automatic creation of the database.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The VPC for automatic creation of the database.
+        # The ID of the VPC for the automatic creation of the database.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The active zone for automatic creation of the database.
+        # The active zone for the automatic creation of the database.
         # 
         # This parameter is required.
         self.zone_id = zone_id
@@ -99,11 +105,17 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_create_mcp_instance is not None:
+            result['AutoCreateMcpInstance'] = self.auto_create_mcp_instance
+
         if self.dbtype is not None:
             result['DBType'] = self.dbtype
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
 
         if self.embedding_dimension is not None:
             result['EmbeddingDimension'] = self.embedding_dimension
@@ -157,11 +169,17 @@ class CreateKnowledgeSpaceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoCreateMcpInstance') is not None:
+            self.auto_create_mcp_instance = m.get('AutoCreateMcpInstance')
+
         if m.get('DBType') is not None:
             self.dbtype = m.get('DBType')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
 
         if m.get('EmbeddingDimension') is not None:
             self.embedding_dimension = m.get('EmbeddingDimension')

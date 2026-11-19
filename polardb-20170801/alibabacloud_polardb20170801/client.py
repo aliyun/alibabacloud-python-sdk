@@ -8164,10 +8164,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateKnowledgeSpaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_create_mcp_instance):
+            query['AutoCreateMcpInstance'] = request.auto_create_mcp_instance
         if not DaraCore.is_null(request.dbtype):
             query['DBType'] = request.dbtype
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.embedding_dimension):
             query['EmbeddingDimension'] = request.embedding_dimension
         if not DaraCore.is_null(request.embedding_model):
@@ -8226,10 +8230,14 @@ class Client(OpenApiClient):
     ) -> main_models.CreateKnowledgeSpaceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_create_mcp_instance):
+            query['AutoCreateMcpInstance'] = request.auto_create_mcp_instance
         if not DaraCore.is_null(request.dbtype):
             query['DBType'] = request.dbtype
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.embedding_dimension):
             query['EmbeddingDimension'] = request.embedding_dimension
         if not DaraCore.is_null(request.embedding_model):

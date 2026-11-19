@@ -23,7 +23,7 @@ class DescribeAgenticDBPerformanceResponseBody(DaraModel):
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
-        # The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and in UTC.
         self.start_time = start_time
 
     def validate(self):
