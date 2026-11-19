@@ -17,17 +17,17 @@ class UpdateIdentityProviderSCIMResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business result code. If the call fails, handle the error based on the HTTP status code and the message.
+        # The business result code. If the request fails, use this code in combination with the HTTP status code and the result message for troubleshooting.
         self.code = code
-        # The original fields and the meaning of the status field are retained. The new scimStatus field corresponds to the data.status field in the query operation. The operationStatus field retains the status of the most recent SCIM task.
+        # The data object. Retains the original fields and the meaning of the status field. The new scimStatus field corresponds to the data.status field in the query API operation, and the operationStatus field retains the status of the most recent SCIM task.
         self.data = data
-        # The processing status of the current request. This status is not equivalent to the final result of the background task.
+        # The HTTP status code. Indicates the processing status of the current request, which does not necessarily reflect the final result of the background task.
         self.http_status_code = http_status_code
-        # The message indicating that the request is accepted or an error message. For asynchronous tasks, verify the task result by calling the corresponding query operation.
+        # The result message. Indicates whether the request is accepted or returns an error message. For an asynchronous task, check the task result by calling the corresponding query API operation.
         self.message = message
-        # The ID of the request. You can use this ID to associate the current call with troubleshooting. Keep this ID if the call fails.
+        # The request ID. Retain this ID to correlate the current call and troubleshoot failures.
         self.request_id = request_id
-        # Indicates whether the current request is successful. A value of true indicates that the request is processed successfully. For asynchronous writes, you must continue to query the task result.
+        # Indicates whether the current request is successful. A value of true indicates that the request is processed successfully. For asynchronous write operations, you must continue to query the task result.
         self.success = success
 
     def validate(self):
@@ -92,6 +92,7 @@ class UpdateIdentityProviderSCIMResponseBodyData(DaraModel):
         login_callback_url: str = None,
         login_enabled: bool = None,
         metadata: main_models.UpdateIdentityProviderSCIMResponseBodyDataMetadata = None,
+        oidc: main_models.UpdateIdentityProviderSCIMResponseBodyDataOidc = None,
         operation_status: str = None,
         protocol: str = None,
         saml: main_models.UpdateIdentityProviderSCIMResponseBodyDataSaml = None,
@@ -101,31 +102,33 @@ class UpdateIdentityProviderSCIMResponseBodyData(DaraModel):
         updated_at: str = None,
         workspace_id: str = None,
     ):
-        # The actual upstream configuration. The actual SAML configuration is read back on demand only by GetIdentityProvider. SCIM queries and preparations return the actual receiving status and URL.
+        # The actual upstream configuration. The actual SAML configuration is read back on demand only by the GetIdentityProvider API operation. The SCIM query and preparation operations return the actual receiving status and URL.
         self.configuration = configuration
         # The time when the record was created on the server.
         self.created_at = created_at
-        # The event subscription callback URL. CustomSSO returns an empty string. You must obtain the SCIM receiving URL by calling the SCIM query or preparation operation. The example shows a JSON empty string "". The actual value does not contain double quotation marks.
+        # The SAML vendor event callback URL. For CustomSSO, an empty string is returned. To obtain the SCIM receiving URL, call the SCIM query or preparation API operation. The example shows a JSON empty string "", but the actual value does not include double quotation marks.
         self.event_subscription_callback_url = event_subscription_callback_url
-        # The type of the identity provider. General CRUD operations support DingTalk, Feishu, and CustomSSO. SP queries support only CustomSSO. The SCIM path uses the CustomSSO shared pool.
+        # The identity provider type. General CRUD operations support DingTalk, Feishu, and CustomSSO. SP queries support only CustomSSO. The SCIM path uses the CustomSSO shared pool.
         self.identity_provider_type = identity_provider_type
-        # The logon callback URL. CustomSSO returns an empty string. You must obtain the ACS URL for SAML by calling the SP query operation. The example shows a JSON empty string "". The actual value does not contain double quotation marks.
+        # The SAML vendor callback URL. For CustomSSO, an empty string is returned. To obtain the Assertion Consumer Service (ACS) URL for SAML, call the SP query API operation. The example shows a JSON empty string "", but the actual value does not include double quotation marks.
         self.login_callback_url = login_callback_url
-        # Indicates whether logon is enabled. Do not set this parameter to true during CustomSSO initialization. A valid SAML configuration must be saved before enabling logon. Disabling logon does not delete the configuration. If an asynchronous task fails, this expected value does not indicate that the configuration has taken effect upstream.
+        # Specifies whether logon is enabled. Do not set this parameter to true during CustomSSO initialization. You must save a valid SAML configuration before enabling logon. Disabling logon does not delete the configuration. If an asynchronous task fails, this expected value does not indicate that the change has taken effect on the upstream server.
         self.login_enabled = login_enabled
-        # The standard IdP metadata. Vendor parameters are used for DingTalk and Feishu. CustomSSO updates use the protocol and saml fields and do not accept this field. The return value does not contain vendor keys.
+        # The standard identity provider (IdP) metadata. Vendor parameters are used for DingTalk and Feishu. To update CustomSSO, use the protocol and saml fields. This field is not accepted for CustomSSO updates. The return value does not include vendor keys.
         self.metadata = metadata
+        # The security summary of the expected OIDC configuration. This summary does not include credentials. The original SAML fields and their meanings are retained.
+        self.oidc = oidc
         # The original status of the most recent independent SCIM operation task. If no historical tasks exist, an empty string ("") is returned.
         self.operation_status = operation_status
         # The logon protocol. Only SAML is supported. This field may not be returned if no valid configuration is saved. You cannot use OIDC as a placeholder for initialization.
         self.protocol = protocol
-        # The SAML logon configuration. You can enter an XML file or manually enter the complete configuration. The query returns the standardized configuration and does not echo the original XML. This field can be omitted if it is not configured.
+        # The SAML logon configuration. You can provide the input by using XML or by manually entering all fields. The query returns the standardized configuration and does not echo the original XML. This field can be omitted if it is not configured.
         self.saml = saml
-        # The independent SCIM status. This field does not change the meaning of shared resources and logon configuration in the original status field. It corresponds to the data.status field in the query operation.
+        # The independent SCIM status. This field does not change the meaning of the original status field for shared resources and logon configurations. It corresponds to the data.status field in the query API operation.
         self.scim_status = scim_status
-        # The lifecycle status of the CustomSSO user pool and the task status of the logon configuration. This field does not indicate the SCIM operation result. You can query the SCIM switch result by using GetIdentityProviderSCIM.operationStatus. You cannot use this field to determine whether all protocols are configured.
+        # The operation status of the CustomSSO user pool lifecycle and logon configuration tasks. This status does not indicate the result of SCIM operations. To query the result of the SCIM switch, use the GetIdentityProviderSCIM.operationStatus field. You cannot use this field to determine whether all protocols are configured.
         self.status = status
-        # Do not set this parameter to true during CustomSSO initialization. You can only update this parameter later by calling UpdateIdentityProviderSCIM. Determine the result based on the operationStatus field.
+        # Specifies whether to enable SCIM synchronization. Do not set this parameter to true during CustomSSO initialization. You can only update this parameter later by calling UpdateIdentityProviderSCIM. Determine the result based on the operationStatus field.
         self.sync_enabled = sync_enabled
         # The time when the record was last updated on the server.
         self.updated_at = updated_at
@@ -137,6 +140,8 @@ class UpdateIdentityProviderSCIMResponseBodyData(DaraModel):
             self.configuration.validate()
         if self.metadata:
             self.metadata.validate()
+        if self.oidc:
+            self.oidc.validate()
         if self.saml:
             self.saml.validate()
 
@@ -165,6 +170,9 @@ class UpdateIdentityProviderSCIMResponseBodyData(DaraModel):
 
         if self.metadata is not None:
             result['metadata'] = self.metadata.to_map()
+
+        if self.oidc is not None:
+            result['oidc'] = self.oidc.to_map()
 
         if self.operation_status is not None:
             result['operationStatus'] = self.operation_status
@@ -217,6 +225,10 @@ class UpdateIdentityProviderSCIMResponseBodyData(DaraModel):
             temp_model = main_models.UpdateIdentityProviderSCIMResponseBodyDataMetadata()
             self.metadata = temp_model.from_map(m.get('metadata'))
 
+        if m.get('oidc') is not None:
+            temp_model = main_models.UpdateIdentityProviderSCIMResponseBodyDataOidc()
+            self.oidc = temp_model.from_map(m.get('oidc'))
+
         if m.get('operationStatus') is not None:
             self.operation_status = m.get('operationStatus')
 
@@ -252,13 +264,13 @@ class UpdateIdentityProviderSCIMResponseBodyDataSaml(DaraModel):
         login_url: str = None,
         x_509certificates: List[str] = None,
     ):
-        # The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. This parameter is required when you manually enter the configuration. The query returns the short name.
+        # The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. This field is required when you manually enter the configuration. The query returns the short name.
         self.binding_type = binding_type
-        # The entity ID of the IdP. This parameter is required when you manually enter the configuration. It must be non-empty and cannot exceed 2,048 characters. You cannot change the entity ID of an existing configuration. This ID is different from the local entity ID returned by the SP query.
+        # The IdP entity ID. This field is required when you manually enter the metadata. It must be a non-empty string of up to 2,048 characters. You cannot change the entity ID after it is configured. This ID is different from the local entity ID returned by the SP query.
         self.entity_id = entity_id
-        # The SSO logon URL of the IdP. This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+        # The IdP SSO logon URL. This field is required when you manually enter the metadata. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
         self.login_url = login_url
-        # The list of IdP signing certificates. When you manually enter the configuration, this parameter is required and must be a non-empty array. Use PEM X.509 certificate text. The system verifies the current validity period. A maximum of two certificates are allowed after deduplication.
+        # The list of IdP signing certificates. When you manually enter the configuration, this field is required and must be a non-empty array of PEM X.509 certificate texts. The system verifies the current validity period. A maximum of two certificates are retained after deduplication.
         self.x_509certificates = x_509certificates
 
     def validate(self):
@@ -299,6 +311,124 @@ class UpdateIdentityProviderSCIMResponseBodyDataSaml(DaraModel):
 
         return self
 
+class UpdateIdentityProviderSCIMResponseBodyDataOidc(DaraModel):
+    def __init__(
+        self,
+        authorization_endpoint: str = None,
+        client_auth_method: str = None,
+        client_id: str = None,
+        discovery_endpoint: str = None,
+        issuer: str = None,
+        jwks_uri: str = None,
+        pkce_required: bool = None,
+        scopes: List[str] = None,
+        sso_mapping_claim: str = None,
+        token_endpoint: str = None,
+        userinfo_endpoint: str = None,
+    ):
+        # The authorization endpoint. This field is required in manual mode and must be an absolute HTTPS URL. Do not specify this field in discovery mode.
+        self.authorization_endpoint = authorization_endpoint
+        # The client authentication method. Default value: client_secret_post. If the value is none, Proof Key for Code Exchange (PKCE) must be enabled.
+        self.client_auth_method = client_auth_method
+        # The client ID registered in the external IdP. This ID is different from the Matrix client ID. You cannot change the client ID in place after it is configured.
+        self.client_id = client_id
+        # The absolute HTTPS OIDC discovery endpoint. This field is mutually exclusive with manually entered endpoints.
+        self.discovery_endpoint = discovery_endpoint
+        # The absolute HTTPS issuer of the external IdP. You cannot change the issuer in place after it is configured.
+        self.issuer = issuer
+        # The authorization endpoint. This field is required in manual mode and must be an absolute HTTPS URL. Do not specify this field in discovery mode.
+        self.jwks_uri = jwks_uri
+        # Specifies whether PKCE is enabled. Default value: true. This parameter must be set to true when no client authentication is used.
+        self.pkce_required = pkce_required
+        # The array of strings that must contain openid. Default values: openid, profile, and email.
+        self.scopes = scopes
+        # The name of the claim in the ID token that is used to match the SCIM externalId. If omitted during creation, the default value sub is used. If omitted during an update, the saved value is retained. For Azure, you can specify oid. The value must be non-empty and cannot contain whitespace characters. When querying oidc, the saved value is returned. When querying oidcConfiguration, the actual upstream value is returned, which may be empty.
+        self.sso_mapping_claim = sso_mapping_claim
+        # The authorization endpoint. This field is required in manual mode and must be an absolute HTTPS URL. Do not specify this field in discovery mode.
+        self.token_endpoint = token_endpoint
+        # The optional absolute HTTPS URL for manual mode. Leave this field empty in discovery mode.
+        self.userinfo_endpoint = userinfo_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.authorization_endpoint is not None:
+            result['authorizationEndpoint'] = self.authorization_endpoint
+
+        if self.client_auth_method is not None:
+            result['clientAuthMethod'] = self.client_auth_method
+
+        if self.client_id is not None:
+            result['clientId'] = self.client_id
+
+        if self.discovery_endpoint is not None:
+            result['discoveryEndpoint'] = self.discovery_endpoint
+
+        if self.issuer is not None:
+            result['issuer'] = self.issuer
+
+        if self.jwks_uri is not None:
+            result['jwksUri'] = self.jwks_uri
+
+        if self.pkce_required is not None:
+            result['pkceRequired'] = self.pkce_required
+
+        if self.scopes is not None:
+            result['scopes'] = self.scopes
+
+        if self.sso_mapping_claim is not None:
+            result['ssoMappingClaim'] = self.sso_mapping_claim
+
+        if self.token_endpoint is not None:
+            result['tokenEndpoint'] = self.token_endpoint
+
+        if self.userinfo_endpoint is not None:
+            result['userinfoEndpoint'] = self.userinfo_endpoint
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authorizationEndpoint') is not None:
+            self.authorization_endpoint = m.get('authorizationEndpoint')
+
+        if m.get('clientAuthMethod') is not None:
+            self.client_auth_method = m.get('clientAuthMethod')
+
+        if m.get('clientId') is not None:
+            self.client_id = m.get('clientId')
+
+        if m.get('discoveryEndpoint') is not None:
+            self.discovery_endpoint = m.get('discoveryEndpoint')
+
+        if m.get('issuer') is not None:
+            self.issuer = m.get('issuer')
+
+        if m.get('jwksUri') is not None:
+            self.jwks_uri = m.get('jwksUri')
+
+        if m.get('pkceRequired') is not None:
+            self.pkce_required = m.get('pkceRequired')
+
+        if m.get('scopes') is not None:
+            self.scopes = m.get('scopes')
+
+        if m.get('ssoMappingClaim') is not None:
+            self.sso_mapping_claim = m.get('ssoMappingClaim')
+
+        if m.get('tokenEndpoint') is not None:
+            self.token_endpoint = m.get('tokenEndpoint')
+
+        if m.get('userinfoEndpoint') is not None:
+            self.userinfo_endpoint = m.get('userinfoEndpoint')
+
+        return self
+
 class UpdateIdentityProviderSCIMResponseBodyDataMetadata(DaraModel):
     def __init__(
         self,
@@ -307,13 +437,13 @@ class UpdateIdentityProviderSCIMResponseBodyDataMetadata(DaraModel):
         entity_id: str = None,
         login_url: str = None,
     ):
-        # The SAML binding URI in the historical metadata snapshot. For CustomSSO updates, use saml.bindingType.
+        # The SAML binding URI in the historical metadata snapshot. To update CustomSSO, use the saml.bindingType field.
         self.binding = binding
-        # The certificate string in the historical metadata snapshot. To edit the configuration, use saml.x509Certificates and do not submit the old metadata.
+        # The certificate string in the historical metadata snapshot. To edit the configuration, use the saml.x509Certificates field instead of submitting the old metadata.
         self.certificates = certificates
-        # The entity ID of the IdP. This parameter is required when you manually enter the configuration. It must be non-empty and cannot exceed 2,048 characters. You cannot change the entity ID of an existing configuration. This ID is different from the local entity ID returned by the SP query.
+        # The IdP entity ID. This field is required when you manually enter the metadata. It must be a non-empty string of up to 2,048 characters. You cannot change the entity ID after it is configured. This ID is different from the local entity ID returned by the SP query.
         self.entity_id = entity_id
-        # The SSO logon URL of the IdP. This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+        # The IdP SSO logon URL. This field is required when you manually enter the metadata. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
         self.login_url = login_url
 
     def validate(self):
@@ -362,13 +492,13 @@ class UpdateIdentityProviderSCIMResponseBodyDataConfiguration(DaraModel):
         login_url: str = None,
         sso_status: str = None,
     ):
-        # The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. This parameter is required when you manually enter the configuration. The query returns the short name.
+        # The SAML binding type. Valid values: HTTP-Redirect and HTTP-POST. This field is required when you manually enter the configuration. The query returns the short name.
         self.binding_type = binding_type
-        # The entity ID of the IdP. This parameter is required when you manually enter the configuration. It must be non-empty and cannot exceed 2,048 characters. You cannot change the entity ID of an existing configuration. This ID is different from the local entity ID returned by the SP query.
+        # The IdP entity ID. This field is required when you manually enter the metadata. It must be a non-empty string of up to 2,048 characters. You cannot change the entity ID after it is configured. This ID is different from the local entity ID returned by the SP query.
         self.entity_id = entity_id
-        # The SSO logon URL of the IdP. This parameter is required when you manually enter the configuration. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
+        # The IdP SSO logon URL. This field is required when you manually enter the metadata. It must be an absolute HTTPS URL and cannot contain user credentials or fragments.
         self.login_url = login_url
-        # The actual SSO logon status of AgentIdentity. Valid values: Enabled and Disabled. This value is not equivalent to the expected value of loginEnabled saved in AC.
+        # The actual SSO logon status of AgentIdentity. The actual switch value is Enabled or Disabled, which is not equivalent to the expected value of loginEnabled saved in the access configuration.
         self.sso_status = sso_status
 
     def validate(self):

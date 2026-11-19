@@ -19,7 +19,7 @@ class SearchMemoriesResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The search results.
+        # The retrieval result.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -87,7 +87,9 @@ class SearchMemoriesResponseBodyData(DaraModel):
         self,
         memories: List[main_models.SearchMemoriesResponseBodyDataMemories] = None,
     ):
-        # The list of search results.
+        # The list of retrieval results.
+        # 
+        # This parameter is required.
         self.memories = memories
 
     def validate(self):
@@ -126,10 +128,16 @@ class SearchMemoriesResponseBodyDataMemories(DaraModel):
         similarity: float = None,
     ):
         # The matched memory.
+        # 
+        # This parameter is required.
         self.memory = memory
         # The relevance score.
+        # 
+        # This parameter is required.
         self.score = score
         # The vector similarity.
+        # 
+        # This parameter is required.
         self.similarity = similarity
 
     def validate(self):
@@ -174,7 +182,10 @@ class SearchMemoriesResponseBodyDataMemoriesMemory(DaraModel):
         memory_id: str = None,
         metadata: Dict[str, str] = None,
         scope: main_models.SearchMemoriesResponseBodyDataMemoriesMemoryScope = None,
+        source: str = None,
+        type: str = None,
         updated_at: str = None,
+        valid: bool = None,
     ):
         # The memory content.
         self.content = content
@@ -186,8 +197,14 @@ class SearchMemoriesResponseBodyDataMemoriesMemory(DaraModel):
         self.metadata = metadata
         # The memory scope.
         self.scope = scope
-        # The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+        # The memory source. Valid values: session_extraction (extracted from session events), content_extraction (extracted from text or messages), and direct (written directly).
+        self.source = source
+        # The memory content type. Valid values: semantic (semantic memory), skill (skill), user_profile (user preference), and session_summary (session summary).
+        self.type = type
+        # The last updated time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.updated_at = updated_at
+        # Indicates whether the memory is valid. A value of false indicates that the memory is revoked and is not included in valid memory retrieval.
+        self.valid = valid
 
     def validate(self):
         if self.content:
@@ -215,8 +232,17 @@ class SearchMemoriesResponseBodyDataMemoriesMemory(DaraModel):
         if self.scope is not None:
             result['scope'] = self.scope.to_map()
 
+        if self.source is not None:
+            result['source'] = self.source
+
+        if self.type is not None:
+            result['type'] = self.type
+
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
+
+        if self.valid is not None:
+            result['valid'] = self.valid
 
         return result
 
@@ -239,8 +265,17 @@ class SearchMemoriesResponseBodyDataMemoriesMemory(DaraModel):
             temp_model = main_models.SearchMemoriesResponseBodyDataMemoriesMemoryScope()
             self.scope = temp_model.from_map(m.get('scope'))
 
+        if m.get('source') is not None:
+            self.source = m.get('source')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
+
+        if m.get('valid') is not None:
+            self.valid = m.get('valid')
 
         return self
 
@@ -249,12 +284,15 @@ class SearchMemoriesResponseBodyDataMemoriesMemoryScope(DaraModel):
         self,
         agent_id: str = None,
         session_id: str = None,
+        team_id: str = None,
         user_id: str = None,
     ):
         # The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
         self.agent_id = agent_id
         # The session ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
         self.session_id = session_id
+        # The business team ID defined by the caller. If provided, it cannot be empty and can be up to 128 UTF-8 bytes in length.
+        self.team_id = team_id
         # The user ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
         self.user_id = user_id
 
@@ -272,6 +310,9 @@ class SearchMemoriesResponseBodyDataMemoriesMemoryScope(DaraModel):
         if self.session_id is not None:
             result['sessionId'] = self.session_id
 
+        if self.team_id is not None:
+            result['teamId'] = self.team_id
+
         if self.user_id is not None:
             result['userId'] = self.user_id
 
@@ -285,6 +326,9 @@ class SearchMemoriesResponseBodyDataMemoriesMemoryScope(DaraModel):
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
 
+        if m.get('teamId') is not None:
+            self.team_id = m.get('teamId')
+
         if m.get('userId') is not None:
             self.user_id = m.get('userId')
 
@@ -296,6 +340,8 @@ class SearchMemoriesResponseBodyDataMemoriesMemoryContent(DaraModel):
         text: str = None,
     ):
         # The memory text.
+        # 
+        # This parameter is required.
         self.text = text
 
     def validate(self):

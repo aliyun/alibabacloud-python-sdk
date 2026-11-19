@@ -15,7 +15,7 @@ class CreateExternalAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved query parameter. Currently, the backend does not provide idempotency guarantees for deduplication or restoring the original acceptance result based on this identifier.
+        # The reserved query parameter. The backend does not provide idempotency guarantees for deduplication or restoring the original acceptance result based on this identifier at this time.
         self.client_token = client_token
 
     def validate(self):
@@ -50,6 +50,7 @@ class CreateExternalAgentRequestBody(DaraModel):
     def __init__(
         self,
         description: str = None,
+        environment: main_models.CreateExternalAgentRequestBodyEnvironment = None,
         instruction: str = None,
         model: main_models.CreateExternalAgentRequestBodyModel = None,
         model_source: str = None,
@@ -60,11 +61,13 @@ class CreateExternalAgentRequestBody(DaraModel):
     ):
         # The description of the managed agent.
         self.description = description
-        # The agent instructions, which are used to guide the behavior of the agent.
+        # Optional. Credentials can be bound to both PLATFORM and RUNTIME model sources. When passing the object, you must explicitly provide a non-null credentialReferences list. Common environment variables are not supported.
+        self.environment = environment
+        # The agent instruction, used to guide the behavior of the agent.
         self.instruction = instruction
         # The model configuration. Available only when modelSource is PLATFORM.
         self.model = model
-        # The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model, and the model parameter cannot be passed at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
+        # The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model itself, and the model parameter cannot be passed at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
         self.model_source = model_source
         # The name of the managed agent.
         # 
@@ -78,6 +81,8 @@ class CreateExternalAgentRequestBody(DaraModel):
         self.tools = tools
 
     def validate(self):
+        if self.environment:
+            self.environment.validate()
         if self.model:
             self.model.validate()
         if self.skills:
@@ -98,6 +103,9 @@ class CreateExternalAgentRequestBody(DaraModel):
             result = _map
         if self.description is not None:
             result['description'] = self.description
+
+        if self.environment is not None:
+            result['environment'] = self.environment.to_map()
 
         if self.instruction is not None:
             result['instruction'] = self.instruction
@@ -130,6 +138,10 @@ class CreateExternalAgentRequestBody(DaraModel):
         m = m or dict()
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('environment') is not None:
+            temp_model = main_models.CreateExternalAgentRequestBodyEnvironment()
+            self.environment = temp_model.from_map(m.get('environment'))
 
         if m.get('instruction') is not None:
             self.instruction = m.get('instruction')
@@ -239,11 +251,11 @@ class CreateExternalAgentRequestBodyTemplateAiRegistry(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The name of the template in AI Registry.
+        # The name of the template in the AI Registry.
         # 
         # This parameter is required.
         self.name = name
-        # The version of the template in AI Registry.
+        # The version of the template in the AI Registry.
         # 
         # This parameter is required.
         self.version = version
@@ -286,11 +298,11 @@ class CreateExternalAgentRequestBodySkills(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The skill source type. REFERENCE references AI Registry, and STATIC is statically provided with the package.
+        # The skill source type. REFERENCE references the AI Registry. STATIC is statically provided with the deployment package.
         self.source_type = source_type
-        # The skill version field for compatibility with legacy requests. For new requests, use sourceType and versionSelector. Do not submit this field in combination with sourceType.
+        # The skill version field for compatibility with legacy requests. Use sourceType and versionSelector for new requests. Do not submit it in combination with sourceType.
         self.version = version
-        # The skill reference version selector, which supports LABEL tags and VERSION specific versions. If omitted, LABEL/latest is used. STATIC sources do not provide a selector.
+        # The skill reference version selector. Supports LABEL tags and VERSION specific versions. Defaults to LABEL/latest if omitted. Selectors are not provided for STATIC sources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -339,7 +351,7 @@ class CreateExternalAgentRequestBodySkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The version selector type. LABEL selects by tag, and VERSION selects by specific version.
+        # The version selector type. LABEL selects by tag. VERSION selects by specific version.
         self.type = type
         # The selector value. For LABEL, it is the tag name (such as latest). For VERSION, it is the specific version number.
         self.value = value
@@ -430,7 +442,7 @@ class CreateExternalAgentRequestBodyModelQuota(DaraModel):
         period_type: str = None,
         usage_limit: int = None,
     ):
-        # Specifies whether to enable the token quota. Default value: true. If set to false, the quota is disabled and existing quota rules are deleted.
+        # Specifies whether to enable the token quota. Defaults to true if not specified. Passing false disables and deletes existing quota rules.
         self.enabled = enabled
         # The quota limit type. Required and validated by the backend when the quota is enabled. Fixed value: token.
         self.limit_type = limit_type
@@ -474,6 +486,70 @@ class CreateExternalAgentRequestBodyModelQuota(DaraModel):
 
         if m.get('usageLimit') is not None:
             self.usage_limit = m.get('usageLimit')
+
+        return self
+
+class CreateExternalAgentRequestBodyEnvironment(DaraModel):
+    def __init__(
+        self,
+        credential_references: List[main_models.CreateExternalAgentRequestBodyEnvironmentCredentialReferences] = None,
+    ):
+        # This list must be explicitly provided and cannot be null when the environment object is passed. The list is replaced as a whole. If environment is not passed during an update, the original binding is retained. If an empty list is passed or environment is null, the binding is cleared. Only the credential ID is passed, not the actual secret key.
+        self.credential_references = credential_references
+
+    def validate(self):
+        if self.credential_references:
+            for v1 in self.credential_references:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['credentialReferences'] = []
+        if self.credential_references is not None:
+            for k1 in self.credential_references:
+                result['credentialReferences'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.credential_references = []
+        if m.get('credentialReferences') is not None:
+            for k1 in m.get('credentialReferences'):
+                temp_model = main_models.CreateExternalAgentRequestBodyEnvironmentCredentialReferences()
+                self.credential_references.append(temp_model.from_map(k1))
+
+        return self
+
+class CreateExternalAgentRequestBodyEnvironmentCredentialReferences(DaraModel):
+    def __init__(
+        self,
+        credential_id: str = None,
+    ):
+        # Required when a credential reference item is passed. Validated by the backend.
+        self.credential_id = credential_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.credential_id is not None:
+            result['credentialId'] = self.credential_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('credentialId') is not None:
+            self.credential_id = m.get('credentialId')
 
         return self
 

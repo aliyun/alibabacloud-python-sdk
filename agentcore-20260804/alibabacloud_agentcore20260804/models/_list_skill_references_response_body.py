@@ -13,9 +13,9 @@ class ListSkillReferencesResponseBody(DaraModel):
         data: main_models.ListSkillReferencesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The skill reference relationships returned in the paging query.
+        # The skill reference relationship data returned by the paged query.
         self.data = data
-        # The request ID, which is used for troubleshooting.
+        # The request ID, used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -58,9 +58,9 @@ class ListSkillReferencesResponseBodyData(DaraModel):
         self.page_items = page_items
         # The current page number, starting from 1.
         self.page_number = page_number
-        # The total number of pages.
+        # The total number of available pages.
         self.pages_available = pages_available
-        # The total number of reference relationships that meet the filter conditions.
+        # The total number of reference relationships that meet the conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -115,24 +115,33 @@ class ListSkillReferencesResponseBodyDataPageItems(DaraModel):
         owner_id: str = None,
         owner_type: str = None,
         owner_version: str = None,
+        ref_type: str = None,
         selector_type: str = None,
         selector_value: str = None,
         skill_name: str = None,
+        source_id: str = None,
+        source_name: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the referencing entity, which identifies the agent or AgentSpec.
+        # The ID of the referencing entity, which is the identifier of the agent or agent spec.
         self.owner_id = owner_id
-        # The type of the referencing entity. Valid values: AGENT and AGENTSPEC.
+        # The type of the referencing entity. Valid values: AGENT, AGENTSPEC.
         self.owner_type = owner_type
         # The version of the referencing entity.
         self.owner_version = owner_version
-        # The reference selector type. Valid values: LABEL and VERSION.
+        # The reference strength. Valid values: STRONG, WEAK. For legacy data, STRONG is returned.
+        self.ref_type = ref_type
+        # The reference selector type. Valid values: LABEL, VERSION.
         self.selector_type = selector_type
         # The reference selector value. Valid values: latest, a named label, HEAD, or a specific version.
         self.selector_value = selector_value
         # The name of the referenced skill.
         self.skill_name = skill_name
-        # The ID of the workspace to which the reference belongs.
+        # The reference source identifier. For legacy data, agentcore is returned.
+        self.source_id = source_id
+        # The display name of the reference source. If no name is registered, the source identifier is returned.
+        self.source_name = source_name
+        # The workspace ID to which the reference belongs.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -152,6 +161,9 @@ class ListSkillReferencesResponseBodyDataPageItems(DaraModel):
         if self.owner_version is not None:
             result['ownerVersion'] = self.owner_version
 
+        if self.ref_type is not None:
+            result['refType'] = self.ref_type
+
         if self.selector_type is not None:
             result['selectorType'] = self.selector_type
 
@@ -160,6 +172,12 @@ class ListSkillReferencesResponseBodyDataPageItems(DaraModel):
 
         if self.skill_name is not None:
             result['skillName'] = self.skill_name
+
+        if self.source_id is not None:
+            result['sourceId'] = self.source_id
+
+        if self.source_name is not None:
+            result['sourceName'] = self.source_name
 
         if self.workspace_id is not None:
             result['workspaceId'] = self.workspace_id
@@ -177,6 +195,9 @@ class ListSkillReferencesResponseBodyDataPageItems(DaraModel):
         if m.get('ownerVersion') is not None:
             self.owner_version = m.get('ownerVersion')
 
+        if m.get('refType') is not None:
+            self.ref_type = m.get('refType')
+
         if m.get('selectorType') is not None:
             self.selector_type = m.get('selectorType')
 
@@ -185,6 +206,12 @@ class ListSkillReferencesResponseBodyDataPageItems(DaraModel):
 
         if m.get('skillName') is not None:
             self.skill_name = m.get('skillName')
+
+        if m.get('sourceId') is not None:
+            self.source_id = m.get('sourceId')
+
+        if m.get('sourceName') is not None:
+            self.source_name = m.get('sourceName')
 
         if m.get('workspaceId') is not None:
             self.workspace_id = m.get('workspaceId')

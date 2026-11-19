@@ -12,7 +12,7 @@ class UpdateManagedAgentShrinkRequest(DaraModel):
     ):
         # The request body.
         self.body_shrink = body_shrink
-        # The reserved query parameter. The backend currently does not provide idempotency guarantees for deduplication or restoring original acceptance results based on this identifier.
+        # The reserved query parameter. The backend does not currently provide idempotency guarantees for deduplication or result recovery based on this token.
         self.client_token = client_token
 
     def validate(self):

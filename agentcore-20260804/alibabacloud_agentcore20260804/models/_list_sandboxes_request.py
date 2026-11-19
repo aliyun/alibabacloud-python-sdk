@@ -19,7 +19,7 @@ class ListSandboxesRequest(DaraModel):
         self.next_token = next_token
         # Performs a case-insensitive fuzzy search by sandbox ID fragment.
         self.search_text = search_text
-        # If this parameter is omitted or left blank, the latest running unit of the agent is queried. If this parameter is specified, the service endpoint must belong to the agent and the target type must be AGENT_VERSION. Otherwise, Resource.NotFound is returned. An independently running service endpoint returns only the sandboxes of its own running unit. If the DEFAULT service endpoint has not taken over independent running, the query falls back to the latest running unit. If a non-DEFAULT service endpoint is not running independently, ServiceEndpointTargetNotReady is returned. If the running unit is not created, an empty list is returned and totalCount is 0, without reporting an error.
+        # If omitted or left blank, queries the latest running unit of the agent. If specified, the service endpoint must belong to the agent and the target type must be AGENT_VERSION. Otherwise, Resource.NotFound is returned. An independently running service endpoint returns only the sandboxes of its own running unit. If the DEFAULT service endpoint has not taken over independent running, it falls back to the latest running unit. If a non-DEFAULT service endpoint is not running independently, ServiceEndpointTargetNotReady is returned. If the running unit has not been created, an empty list is returned and totalCount is 0, without reporting an error.
         self.service_endpoint_id = service_endpoint_id
         # Performs a case-insensitive fuzzy search by current valid session ID fragment.
         self.session_id = session_id

@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_agentcore20260804 import models as main_models
 from darabonba.model import DaraModel
@@ -18,6 +18,7 @@ class ListMemorySessionsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
         success: bool = None,
+        total_count: int = None,
     ):
         # The business status code.
         self.code = code
@@ -35,6 +36,8 @@ class ListMemorySessionsResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
+        # The total number of records.
+        self.total_count = total_count
 
     def validate(self):
         if self.items:
@@ -73,6 +76,9 @@ class ListMemorySessionsResponseBody(DaraModel):
         if self.success is not None:
             result['success'] = self.success
 
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+
         return result
 
     def from_map(self, m: dict = None):
@@ -104,19 +110,34 @@ class ListMemorySessionsResponseBody(DaraModel):
         if m.get('success') is not None:
             self.success = m.get('success')
 
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+
         return self
 
 class ListMemorySessionsResponseBodyItems(DaraModel):
     def __init__(
         self,
         agent_id: str = None,
+        created_at: str = None,
+        metadata: Dict[str, str] = None,
         session_id: str = None,
+        team_id: str = None,
+        title: str = None,
         user_id: str = None,
     ):
         # The agent ID. This field is not returned if the session is not associated with an agent ID.
         self.agent_id = agent_id
+        # The creation time in RFC 3339 format with time zone.
+        self.created_at = created_at
+        # The string key-value tags set by the caller. A maximum of 16 tags are supported. A key can be up to 64 Unicode characters in length, and a value can be up to 1,024 Unicode characters in length. Empty strings are allowed. Nested objects or arrays are not supported.
+        self.metadata = metadata
         # The session ID.
         self.session_id = session_id
+        # The business team ID defined by the caller. If specified, the value cannot be empty and can be up to 128 UTF-8 bytes in length.
+        self.team_id = team_id
+        # The session title.
+        self.title = title
         # The user ID. This field is not returned if the session is not associated with a user ID.
         self.user_id = user_id
 
@@ -131,8 +152,20 @@ class ListMemorySessionsResponseBodyItems(DaraModel):
         if self.agent_id is not None:
             result['agentId'] = self.agent_id
 
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+
+        if self.metadata is not None:
+            result['metadata'] = self.metadata
+
         if self.session_id is not None:
             result['sessionId'] = self.session_id
+
+        if self.team_id is not None:
+            result['teamId'] = self.team_id
+
+        if self.title is not None:
+            result['title'] = self.title
 
         if self.user_id is not None:
             result['userId'] = self.user_id
@@ -144,8 +177,20 @@ class ListMemorySessionsResponseBodyItems(DaraModel):
         if m.get('agentId') is not None:
             self.agent_id = m.get('agentId')
 
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+
+        if m.get('metadata') is not None:
+            self.metadata = m.get('metadata')
+
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
+
+        if m.get('teamId') is not None:
+            self.team_id = m.get('teamId')
+
+        if m.get('title') is not None:
+            self.title = m.get('title')
 
         if m.get('userId') is not None:
             self.user_id = m.get('userId')

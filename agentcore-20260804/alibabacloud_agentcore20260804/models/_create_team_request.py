@@ -54,11 +54,11 @@ class CreateTeamRequestBody(DaraModel):
         name: str = None,
         users: List[main_models.CreateTeamRequestBodyUsers] = None,
     ):
-        # The list of agent members in the team.
+        # The list of agent members in the team. The list must include exactly one LEADER, and the LEADER must be a managed agent. External agents and high-code agents only support the WORKER role. In addition, high-code agents must declare the AG-UI (agui) or OpenAI Chat Completions (openai-chat-completion) protocol in the latest version configuration.
         self.agents = agents
         # The team description.
         self.description = description
-        # The team name. It can only contain lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
+        # The team name. The name can contain only lowercase letters, digits, and hyphens, must start and end with a lowercase letter or a digit, and must be 1 to 128 characters in length.
         # 
         # This parameter is required.
         self.name = name
@@ -126,7 +126,7 @@ class CreateTeamRequestBodyUsers(DaraModel):
         team_role: str = None,
         user_id: str = None,
     ):
-        # The role of the user in the team. Valid values: ADMIN, MEMBER. Each team must have exactly one ADMIN.
+        # The role of the user in the team. Valid values: ADMIN and MEMBER. Each team must include exactly one ADMIN.
         self.team_role = team_role
         # The user ID.
         self.user_id = user_id
@@ -165,7 +165,7 @@ class CreateTeamRequestBodyAgents(DaraModel):
     ):
         # The agent ID.
         self.agent_id = agent_id
-        # The role of the agent in the team. Valid values: LEADER, WORKER.
+        # The role of the agent in the team. Valid values: LEADER and WORKER.
         self.team_role = team_role
 
     def validate(self):

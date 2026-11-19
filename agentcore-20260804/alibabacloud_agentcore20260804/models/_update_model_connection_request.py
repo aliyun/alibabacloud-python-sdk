@@ -15,7 +15,7 @@ class UpdateModelConnectionRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The client token used to ensure idempotence. This parameter is currently not supported.
+        # The client token used for idempotence. This parameter is not currently supported.
         self.client_token = client_token
 
     def validate(self):
@@ -56,17 +56,17 @@ class UpdateModelConnectionRequestBody(DaraModel):
         protocol: str = None,
         provider_type: str = None,
     ):
-        # The list of API keys used to access the upstream model service. The list must contain at least one non-empty value.
+        # The list of API keys used to access the upstream model service. The list must contain at least one non-empty value. When submitted, the new list completely replaces all existing keys. If this parameter is omitted or set to null, the original key list is retained.
         self.api_keys = api_keys
-        # The description of the model connection. The description can be up to 255 characters in length.
+        # The description of the model connection, which can be up to 255 characters in length.
         self.description = description
-        # The absolute HTTP or HTTPS URL of the upstream model service. The URL can be up to 1,024 characters in length.
+        # The absolute HTTP or HTTPS URL of the upstream model service, which can be up to 1,024 characters in length.
         self.endpoint = endpoint
-        # The name of the model connection. The name must be 1 to 128 non-whitespace characters in length.
+        # The name of the model connection, which must be 1 to 128 non-whitespace characters in length.
         self.name = name
-        # The model invoke protocol. Currently, only OpenAI/v1 is supported. If the Settings are not specified during model creation of the connection, this default value is used.
+        # The model invoke protocol. Currently, only OpenAI/v1 is supported. If Settings are not specified during model creation, this default value is used.
         self.protocol = protocol
-        # The model provider type.
+        # The model provider type. Predefined providers can be queried by calling [ListPredefinedModelProviders](https://api.aliyun.com/document/AgentCore/2026-08-04/ListPredefinedModelProviders). Additionally, custom, anthropic, and gemini are supported.
         self.provider_type = provider_type
 
     def validate(self):

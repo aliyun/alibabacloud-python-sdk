@@ -15,15 +15,15 @@ class GetIdentityProviderServiceProviderResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business result code. If the request fails, handle the error based on the HTTP status code and the message.
+        # The business result code. If the request fails, troubleshoot the issue based on the HTTP status code and the message.
         self.code = code
-        # The SP information. For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, which does not guarantee that the background task is complete.
+        # The SP information. For the result structure, see the response fields of this operation. The response of an asynchronous write operation indicates that the request is accepted, but does not guarantee that the background task is complete.
         self.data = data
-        # The processing status of the current request. This status is not equivalent to the final result of the background task.
+        # The processing status of the current request. This status does not indicate the final result of the background task.
         self.http_status_code = http_status_code
-        # The message about request acceptance or errors. Check the asynchronous task result by calling the corresponding query operation.
+        # The request acceptance or error message. For asynchronous task results, check them by calling the corresponding query operation.
         self.message = message
-        # The ID of the request. You can use the ID to associate the call with troubleshooting. Keep the ID if the request fails.
+        # The ID of the request. You can use this ID to associate the current call with troubleshooting. Keep this ID if the request fails.
         self.request_id = request_id
         # Indicates whether the current request is successful. A value of true indicates that the request is processed successfully. For asynchronous write operations, you must continue to query the task results.
         self.success = success
@@ -87,15 +87,18 @@ class GetIdentityProviderServiceProviderResponseBodyData(DaraModel):
         entity_id: str = None,
         metadata_xml: str = None,
         protocol: str = None,
+        redirect_uri: str = None,
     ):
-        # The SAML assertion consumer URL of the local SP. Configure it in the external IdP.
+        # The SAML assertion consumer URL of the local SP. Configure this value in the external IdP.
         self.acs_url = acs_url
-        # The entity identifier of the local SP. Configure it in the external IdP. This is not the Entity ID of the external IdP.
+        # The entity identifier of the local SP. Configure this value in the external IdP. This is not the Entity ID of the external IdP.
         self.entity_id = entity_id
-        # The SP metadata XML of the local SP. Use it for import in the external IdP. Do not submit it as the IdP XML for SAML configuration.
+        # The SP metadata XML of the local SP. Use this file for import in the external IdP. Do not submit this file as the IdP XML for SAML configuration.
         self.metadata_xml = metadata_xml
         # Required. The query parameter. Only the exact value SAML is supported. The response returns SAML.
         self.protocol = protocol
+        # The valid URL returned when protocol is set to OIDC. Configure this value as the callback URL in the external IdP. This field is empty or not returned when SAML is used. The meanings of the original SAML fields remain unchanged.
+        self.redirect_uri = redirect_uri
 
     def validate(self):
         pass
@@ -117,6 +120,9 @@ class GetIdentityProviderServiceProviderResponseBodyData(DaraModel):
         if self.protocol is not None:
             result['protocol'] = self.protocol
 
+        if self.redirect_uri is not None:
+            result['redirectUri'] = self.redirect_uri
+
         return result
 
     def from_map(self, m: dict = None):
@@ -132,6 +138,9 @@ class GetIdentityProviderServiceProviderResponseBodyData(DaraModel):
 
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')
+
+        if m.get('redirectUri') is not None:
+            self.redirect_uri = m.get('redirectUri')
 
         return self
 

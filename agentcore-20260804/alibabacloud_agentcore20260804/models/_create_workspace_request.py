@@ -53,11 +53,12 @@ class CreateWorkspaceRequestBody(DaraModel):
         cms_workspace: str = None,
         name: str = None,
         network_configuration: main_models.CreateWorkspaceRequestBodyNetworkConfiguration = None,
+        scan_policy: str = None,
         storage_type: str = None,
     ):
-        # If specified, the workspace is directly bound to this AgentSpace, and a new one is not created. The CMS workspace to which it belongs is determined by the server reverse lookup result, and CmsWorkspace validation is not required. When the workspace is deleted, it is only unbound, and the AgentSpace is not deleted. The value must match the current account and region, and the reverse lookup must return the associated CMS workspace. Otherwise, InvalidParameter is returned.
+        # If specified, the workspace is directly bound to this AgentSpace, and a new one is not created. The CMS workspace to which it belongs is determined by the server reverse lookup result, and CmsWorkspace does not need to be verified. When the workspace is deleted, it is only unbound, and the AgentSpace is not deleted. It must match the current account and region, and the associated CMS workspace must be found through reverse lookup. Otherwise, InvalidParameter is returned.
         self.agent_space = agent_space
-        # If specified, the workspace is bound to this CMS workspace, and the platform does not create a new one. When the workspace is deleted, it is only unbound, and the CMS workspace is not deleted. The value must match the current account and region. Otherwise, InvalidParameter is returned.
+        # If specified, the workspace is bound to this CMS workspace, and the platform does not create a new one. When the workspace is deleted, it is only unbound, and the CMS workspace is not deleted. The CMS workspace must match the current account and region. Otherwise, InvalidParameter is returned.
         self.cms_workspace = cms_workspace
         # The name of the workspace.
         # 
@@ -65,7 +66,9 @@ class CreateWorkspaceRequestBody(DaraModel):
         self.name = name
         # The network configuration of the workspace.
         self.network_configuration = network_configuration
-        # The storage type of the workspace. PLATFORM indicates platform-managed storage, and PRIVATE indicates user private OSS storage.
+        # The optional JSON string for the workspace skill security scan policy. If omitted, the existing compatibility behavior is maintained.
+        self.scan_policy = scan_policy
+        # The storage type of the workspace. PLATFORM indicates platform-managed storage. PRIVATE indicates user private OSS storage.
         self.storage_type = storage_type
 
     def validate(self):
@@ -89,6 +92,9 @@ class CreateWorkspaceRequestBody(DaraModel):
         if self.network_configuration is not None:
             result['networkConfiguration'] = self.network_configuration.to_map()
 
+        if self.scan_policy is not None:
+            result['scanPolicy'] = self.scan_policy
+
         if self.storage_type is not None:
             result['storageType'] = self.storage_type
 
@@ -109,6 +115,9 @@ class CreateWorkspaceRequestBody(DaraModel):
             temp_model = main_models.CreateWorkspaceRequestBodyNetworkConfiguration()
             self.network_configuration = temp_model.from_map(m.get('networkConfiguration'))
 
+        if m.get('scanPolicy') is not None:
+            self.scan_policy = m.get('scanPolicy')
+
         if m.get('storageType') is not None:
             self.storage_type = m.get('storageType')
 
@@ -121,11 +130,11 @@ class CreateWorkspaceRequestBodyNetworkConfiguration(DaraModel):
         public_ingress_enabled: bool = None,
         vpc: main_models.CreateWorkspaceRequestBodyNetworkConfigurationVpc = None,
     ):
-        # Specifies whether to allow public egress access through the platform. If not specified, this feature is enabled by default. This parameter only controls whether the latest versions of managed and custom agents use the platform public egress. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
+        # Specifies whether to allow public egress access from the platform. Default value: true. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
         self.public_egress_enabled = public_egress_enabled
-        # Specifies whether to allow public ingress access. If not specified, this feature is enabled by default. If disabled, the public ingress endpoints of all agent endpoints in the workspace are closed. If re-enabled, the original public ingress endpoints are restored. INNER_DIRECT and user VPC ingress endpoints are not affected. Collaboration and Element Web ingress endpoints are not controlled by this parameter.
+        # Specifies whether to allow public ingress access. Default value: true. If set to false, the public ingress for all agent endpoints in the workspace is disabled. If set back to true, the original public ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter. If this parameter is set to false, the workspace VPC must be enabled.
         self.public_ingress_enabled = public_ingress_enabled
-        # The network configuration of the user VPC.
+        # The VPC network configuration of the user.
         self.vpc = vpc
 
     def validate(self):

@@ -12,13 +12,13 @@ class RetryImageCacheShrinkRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
-        # The request body for retrying image cache creation.
+        # The retry image cache request body.
         self.body_shrink = body_shrink
-        # The non-empty client token passed as a query parameter. The current implementation does not guarantee deduplication by this token or restoration of the original acceptance result.
+        # The non-empty request token passed as a query parameter. The current implementation does not guarantee deduplication or recovery of the original acceptance result based on this token.
         # 
         # This parameter is required.
         self.client_token = client_token
-        # The region ID. This parameter is passed as a query parameter and must match the selected region endpoint and the workspace region.
+        # The product entry region. It is passed as a query parameter and must match the selected region endpoint and the workspace region.
         # 
         # This parameter is required.
         self.region_id = region_id

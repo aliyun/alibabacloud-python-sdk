@@ -10,7 +10,7 @@ class UpdateIdentityProviderSCIMRequest(DaraModel):
         self,
         body: main_models.UpdateIdentityProviderSCIMRequestBody = None,
     ):
-        # Submit business parameters as described in this operation. The body parameters of public APIs are mapped to backend wrappers by the gateway. Do not mix them with direct backend body wrappers.
+        # Submit business parameters as described in this operation. For public API operations, body parameters are mapped to backend wrappers by the gateway. Do not mix them with direct backend body wrappers.
         # 
         # This parameter is required.
         self.body = body
@@ -42,7 +42,7 @@ class UpdateIdentityProviderSCIMRequestBody(DaraModel):
         self,
         sync_enabled: bool = None,
     ):
-        # Do not set this parameter to true during CustomSSO initialization. You can only update this parameter later by calling UpdateIdentityProviderSCIM. Determine the result based on the operationStatus field.
+        # Specifies whether to enable SCIM synchronization. Do not set this parameter to true during CustomSSO initialization. You can only update this parameter later by calling UpdateIdentityProviderSCIM. Determine the result based on the operationStatus field.
         # 
         # This parameter is required.
         self.sync_enabled = sync_enabled

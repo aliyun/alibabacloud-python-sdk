@@ -15,7 +15,7 @@ class UpdateExternalAgentRequest(DaraModel):
     ):
         # The request body.
         self.body = body
-        # The reserved query parameter. The backend does not provide idempotence guarantees for deduplication or recovery of original acceptance results based on this identifier at this time.
+        # The reserved query parameter. The backend does not currently provide idempotence guarantees for deduplication or recovery of original acceptance results based on this identifier.
         self.client_token = client_token
 
     def validate(self):
@@ -50,6 +50,7 @@ class UpdateExternalAgentRequestBody(DaraModel):
     def __init__(
         self,
         description: str = None,
+        environment: main_models.UpdateExternalAgentRequestBodyEnvironment = None,
         instruction: str = None,
         model: main_models.UpdateExternalAgentRequestBodyModel = None,
         model_source: str = None,
@@ -60,13 +61,13 @@ class UpdateExternalAgentRequestBody(DaraModel):
     ):
         # The description of the managed agent.
         self.description = description
+        # The credential binding configuration. If you do not pass this parameter, the original binding is retained. If you pass an object, you must explicitly provide a non-null credentialReferences list, and the list is replaced in its entirety. If the list is empty or environment is null, the binding is cleared. Empty objects and objects that contain only common environment variables are invalid.
+        self.environment = environment
         # The agent instruction, which is used to guide the behavior of the agent.
         self.instruction = instruction
         # The model configuration. This parameter is available only when modelSource is set to PLATFORM.
         self.model = model
-        # The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be passed at the same time. Valid values:
-        # - PLATFORM: Platform model.
-        # - RUNTIME: Runtime model.
+        # The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model itself, and the model parameter cannot be passed at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
         self.model_source = model_source
         # The name of the managed agent.
         self.name = name
@@ -78,6 +79,8 @@ class UpdateExternalAgentRequestBody(DaraModel):
         self.tools = tools
 
     def validate(self):
+        if self.environment:
+            self.environment.validate()
         if self.model:
             self.model.validate()
         if self.skills:
@@ -98,6 +101,9 @@ class UpdateExternalAgentRequestBody(DaraModel):
             result = _map
         if self.description is not None:
             result['description'] = self.description
+
+        if self.environment is not None:
+            result['environment'] = self.environment.to_map()
 
         if self.instruction is not None:
             result['instruction'] = self.instruction
@@ -130,6 +136,10 @@ class UpdateExternalAgentRequestBody(DaraModel):
         m = m or dict()
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('environment') is not None:
+            temp_model = main_models.UpdateExternalAgentRequestBodyEnvironment()
+            self.environment = temp_model.from_map(m.get('environment'))
 
         if m.get('instruction') is not None:
             self.instruction = m.get('instruction')
@@ -172,8 +182,7 @@ class UpdateExternalAgentRequestBodyTools(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The tool type. Valid values:
-        # - MCP: MCP tool.
+        # The tool type. Valid values: MCP (MCP tool).
         # 
         # This parameter is required.
         self.type = type
@@ -287,13 +296,11 @@ class UpdateExternalAgentRequestBodySkills(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The skill source type. Valid values:
-        # - REFERENCE: References AI Registry assets.
-        # - STATIC: Statically provided with deployment artifacts.
+        # The skill source type. Valid values: REFERENCE (references AI Registry) and STATIC (statically provided with the package).
         self.source_type = source_type
         # The skill version field for compatibility with legacy requests. For new requests, use sourceType and versionSelector. Do not submit this parameter in combination with sourceType.
         self.version = version
-        # The skill reference version selector, which supports LABEL tags and VERSION specific versions. If this parameter is omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
+        # The skill reference version selector, which supports LABEL tags and VERSION specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -342,9 +349,7 @@ class UpdateExternalAgentRequestBodySkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The version selector type. Valid values:
-        # - LABEL: Selects by tag.
-        # - VERSION: Selects by specific version.
+        # The version selector type. Valid values: LABEL (by tag) and VERSION (by specific version).
         self.type = type
         # The selector value. When the type is LABEL, the value is the tag name, such as latest. When the type is VERSION, the value is the specific version number.
         self.value = value
@@ -390,7 +395,7 @@ class UpdateExternalAgentRequestBodyModel(DaraModel):
         # 
         # This parameter is required.
         self.model_name = model_name
-        # The model token quota configuration. If this parameter is not passed, no quota is configured.
+        # The model token quota configuration. If you do not pass this parameter, no quota is configured.
         self.quota = quota
 
     def validate(self):
@@ -435,15 +440,13 @@ class UpdateExternalAgentRequestBodyModelQuota(DaraModel):
         period_type: str = None,
         usage_limit: int = None,
     ):
-        # Specifies whether to enable the token quota. If this parameter is not specified, the default value is true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
+        # Specifies whether to enable the token quota. Default value: true. If you set this parameter to false, the quota is disabled and existing quota rules are deleted.
         self.enabled = enabled
         # The quota limit type. This parameter is required and verified by the backend when the quota is enabled. Fixed value: token.
         self.limit_type = limit_type
-        # The statistical period of the quota. This parameter is required and verified by the backend when the quota is enabled. Valid values:
-        # - day: Daily.
-        # - month: Monthly.
+        # The statistical period of the quota. This parameter is required and verified by the backend when the quota is enabled. Valid values: day (daily) and month (monthly).
         self.period_type = period_type
-        # The maximum number of tokens allowed to be consumed in a single period. This parameter is required and verified by the backend when the quota is enabled. The value must be greater than 0.
+        # The maximum number of tokens that can be consumed in a single period. This parameter is required and verified by the backend when the quota is enabled. The value must be greater than 0.
         self.usage_limit = usage_limit
 
     def validate(self):
@@ -481,6 +484,70 @@ class UpdateExternalAgentRequestBodyModelQuota(DaraModel):
 
         if m.get('usageLimit') is not None:
             self.usage_limit = m.get('usageLimit')
+
+        return self
+
+class UpdateExternalAgentRequestBodyEnvironment(DaraModel):
+    def __init__(
+        self,
+        credential_references: List[main_models.UpdateExternalAgentRequestBodyEnvironmentCredentialReferences] = None,
+    ):
+        # The list of credential references. You must explicitly provide this list when passing the environment object, and it cannot be null. The list is replaced in its entirety. If you do not pass environment during an update, the original binding is retained. If you pass an empty list or set environment to null, the binding is cleared. Pass only the credential ID, not the actual key.
+        self.credential_references = credential_references
+
+    def validate(self):
+        if self.credential_references:
+            for v1 in self.credential_references:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['credentialReferences'] = []
+        if self.credential_references is not None:
+            for k1 in self.credential_references:
+                result['credentialReferences'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.credential_references = []
+        if m.get('credentialReferences') is not None:
+            for k1 in m.get('credentialReferences'):
+                temp_model = main_models.UpdateExternalAgentRequestBodyEnvironmentCredentialReferences()
+                self.credential_references.append(temp_model.from_map(k1))
+
+        return self
+
+class UpdateExternalAgentRequestBodyEnvironmentCredentialReferences(DaraModel):
+    def __init__(
+        self,
+        credential_id: str = None,
+    ):
+        # The credential ID. This parameter is required when passing a credential reference item and is verified by the backend.
+        self.credential_id = credential_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.credential_id is not None:
+            result['credentialId'] = self.credential_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('credentialId') is not None:
+            self.credential_id = m.get('credentialId')
 
         return self
 

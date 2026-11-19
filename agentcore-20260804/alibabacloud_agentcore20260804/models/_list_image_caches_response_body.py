@@ -28,11 +28,11 @@ class ListImageCachesResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.http_status_code = http_status_code
-        # The records on the current page. An empty array is returned if no matching items are found.
+        # The records on the current page. This is an empty array if no matching items are found.
         # 
         # This parameter is required.
         self.items = items
-        # The actual page size used for this request, which is not the number of items on the current page.
+        # The actual page size used for this request, not the number of items on this page.
         # 
         # This parameter is required.
         self.max_results = max_results
@@ -44,7 +44,7 @@ class ListImageCachesResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.next_token = next_token
-        # The request ID, which is used for troubleshooting.
+        # The request ID used for troubleshooting.
         # 
         # This parameter is required.
         self.request_id = request_id
@@ -52,7 +52,7 @@ class ListImageCachesResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.success = success
-        # The total number of records under the current filter conditions. Do not use this value to determine whether the traversal is complete.
+        # The total number of records that match the current filter conditions. This value is not used to determine whether the traversal is complete.
         # 
         # This parameter is required.
         self.total_count = total_count
@@ -155,7 +155,7 @@ class ListImageCachesResponseBodyItems(DaraModel):
         # 
         # This parameter is required.
         self.acr_instance_id = acr_instance_id
-        # The number of agents using the cache.
+        # The number of agents that use the cache.
         # 
         # This parameter is required.
         self.agent_count = agent_count
@@ -167,7 +167,7 @@ class ListImageCachesResponseBodyItems(DaraModel):
         # 
         # This parameter is required.
         self.can_delete = can_delete
-        # The resource creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+        # The resource creation time. The time follows the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         # 
         # This parameter is required.
         self.created_at = created_at

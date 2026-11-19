@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class ListMemoryRulesRequest(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        max_results: int = None,
+        name_like: str = None,
+        next_token: str = None,
+    ):
+        # Filters by the enabled status.
+        self.enabled = enabled
+        # The maximum number of entries per page.
+        self.max_results = max_results
+        # nameLike
+        self.name_like = name_like
+        # The pagination token returned for the same resource and filter conditions.
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+
+        if self.name_like is not None:
+            result['nameLike'] = self.name_like
+
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+
+        if m.get('nameLike') is not None:
+            self.name_like = m.get('nameLike')
+
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+
+        return self
+

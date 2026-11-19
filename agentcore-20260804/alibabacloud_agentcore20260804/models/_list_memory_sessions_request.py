@@ -10,15 +10,18 @@ class ListMemorySessionsRequest(DaraModel):
         agent_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        team_id: str = None,
         user_id: str = None,
     ):
-        # The agent ID. If you do not specify this parameter, all agents are matched. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
+        # The agent ID. If you do not specify this parameter, all agents are matched. The value must be 1 to 128 UTF-8 bytes in length and cannot contain a forward slash (/) or an asterisk (*).
         self.agent_id = agent_id
         # The maximum number of records per page. Default value: 100. Valid values: 1 to 100.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
-        # The user ID. If you do not specify this parameter, all users are matched. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
+        # The business team ID defined by the caller.
+        self.team_id = team_id
+        # The user ID. If you do not specify this parameter, all users are matched. The value must be 1 to 128 UTF-8 bytes in length and cannot contain a forward slash (/) or an asterisk (*).
         self.user_id = user_id
 
     def validate(self):
@@ -38,6 +41,9 @@ class ListMemorySessionsRequest(DaraModel):
         if self.next_token is not None:
             result['nextToken'] = self.next_token
 
+        if self.team_id is not None:
+            result['teamId'] = self.team_id
+
         if self.user_id is not None:
             result['userId'] = self.user_id
 
@@ -53,6 +59,9 @@ class ListMemorySessionsRequest(DaraModel):
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+
+        if m.get('teamId') is not None:
+            self.team_id = m.get('teamId')
 
         if m.get('userId') is not None:
             self.user_id = m.get('userId')

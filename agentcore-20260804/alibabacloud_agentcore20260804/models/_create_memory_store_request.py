@@ -15,7 +15,7 @@ class CreateMemoryStoreRequest(DaraModel):
         # 
         # This parameter is required.
         self.body = body
-        # The client request token.
+        # The client token.
         self.client_token = client_token
 
     def validate(self):

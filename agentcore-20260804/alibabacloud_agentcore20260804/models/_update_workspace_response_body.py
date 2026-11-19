@@ -27,7 +27,7 @@ class UpdateWorkspaceResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -95,7 +95,7 @@ class UpdateWorkspaceResponseBodyData(DaraModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
-        # The OSS storage authorization status.
+        # The authorization status of OSS storage.
         self.authorization_status = authorization_status
         # The name of the private OSS bucket.
         self.bucket_name = bucket_name
@@ -191,9 +191,9 @@ class UpdateWorkspaceResponseBodyDataNetworkConfiguration(DaraModel):
         public_ingress_enabled: bool = None,
         vpc: main_models.UpdateWorkspaceResponseBodyDataNetworkConfigurationVpc = None,
     ):
-        # Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This setting only controls whether the latest versions of managed and custom agents use the public network egress of the platform. It does not control fixed historical versions, model or MCP proxy egresses, or the public network egress of the user VPC.
+        # Returns the target configuration value. Updating indicates that the change is still in progress, and UpdateFailed indicates that the current change failed. This parameter only controls whether the latest versions of managed and custom agents use the public egress of the platform. It does not control fixed historical versions, model or MCP proxy egress, or the public egress of the user VPC.
         self.public_egress_enabled = public_egress_enabled
-        # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public network ingress of all agent endpoints in the workspace is closed. When re-enabled, the original public network ingress is restored. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this setting.
+        # Returns the target configuration value. Updating indicates that the change is in progress, and UpdateFailed indicates that the change failed. When disabled, the public ingress for all agent endpoints in the workspace is closed, and the original public ingress is restored when re-enabled. INNER_DIRECT and user VPC ingress are not affected. Collaboration and Element Web ingress are not controlled by this parameter.
         self.public_ingress_enabled = public_ingress_enabled
         # The VPC network configuration of the user.
         self.vpc = vpc

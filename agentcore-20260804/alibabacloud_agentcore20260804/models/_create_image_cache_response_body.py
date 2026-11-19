@@ -35,7 +35,7 @@ class CreateImageCacheResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.request_id = request_id
-        # Indicates whether the request is successful. A successful request does not mean that the cache creation is complete.
+        # Indicates whether the request is successful. This does not mean that the cache creation is complete.
         # 
         # This parameter is required.
         self.success = success
@@ -126,7 +126,7 @@ class CreateImageCacheResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.can_delete = can_delete
-        # The time when the resource was created. The time follows the RFC 3339 format. The trailing Z in the example indicates the UTC time zone.
+        # The time when the resource was created. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         # 
         # This parameter is required.
         self.created_at = created_at
@@ -150,7 +150,7 @@ class CreateImageCacheResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.registry = registry
-        # The repository path of the source image.
+        # The path of the source image repository.
         # 
         # This parameter is required.
         self.repository = repository

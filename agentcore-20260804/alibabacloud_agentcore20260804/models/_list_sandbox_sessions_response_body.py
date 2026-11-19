@@ -34,7 +34,7 @@ class ListSandboxSessionsResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request is successful. A value of true indicates success, and a value of false indicates failure.
+        # Indicates whether the request is successful. A value of true indicates success. A value of false indicates failure.
         self.success = success
         # The total number of records that meet the query conditions.
         self.total_count = total_count
@@ -126,7 +126,7 @@ class ListSandboxSessionsResponseBodyItems(DaraModel):
         self.channel_type = channel_type
         # The unique identifier of the active session.
         self.session_id = session_id
-        # The source type of the session. A value of API indicates an API call, CONSOLE_DEBUG indicates console debugging, EXTERNAL_CHANNEL indicates an external channel, and UNKNOWN indicates an unknown source.
+        # The source type of the session. A value of API indicates an API call. A value of CONSOLE_DEBUG indicates console debugging. A value of EXTERNAL_CHANNEL indicates an external channel. A value of UNKNOWN indicates an unknown source.
         self.source_type = source_type
 
     def validate(self):

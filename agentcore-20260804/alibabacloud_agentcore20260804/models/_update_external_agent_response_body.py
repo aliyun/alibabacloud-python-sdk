@@ -17,11 +17,11 @@ class UpdateExternalAgentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The business status code. A value of SUCCESS indicates success.
+        # The business status code. The value is SUCCESS for a successful request.
         self.code = code
         # The details of the updated managed agent.
         self.data = data
-        # The HTTP status code. A value of 200 indicates success.
+        # The HTTP status code. The value is 200 for a successful request.
         self.http_status_code = http_status_code
         # The request processing result message.
         self.message = message
@@ -91,6 +91,7 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
         created_at: str = None,
         deploy_type: str = None,
         description: str = None,
+        environment: main_models.UpdateExternalAgentResponseBodyDataEnvironment = None,
         external_agent_status: main_models.UpdateExternalAgentResponseBodyDataExternalAgentStatus = None,
         instruction: str = None,
         latest_spec_version: int = None,
@@ -119,6 +120,8 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
         self.deploy_type = deploy_type
         # The description of the managed agent.
         self.description = description
+        # The credential binding configuration.
+        self.environment = environment
         # The runtime status information reported by the managed agent.
         self.external_agent_status = external_agent_status
         # The agent instruction, which is used to guide the behavior of the agent.
@@ -129,9 +132,7 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
         self.latest_version_status = latest_version_status
         # The model configuration. This parameter is available only when modelSource is set to PLATFORM.
         self.model = model
-        # The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model independently, and the model parameter cannot be passed at the same time. Valid values:
-        # - PLATFORM: Platform model.
-        # - RUNTIME: Runtime model.
+        # The source of the model configuration. PLATFORM indicates that the platform parses and delivers the model configuration. RUNTIME indicates that the external runtime manages the model itself, and the model parameter cannot be passed at the same time. Valid values: PLATFORM (platform model) and RUNTIME (runtime model).
         self.model_source = model_source
         # The name of the managed agent.
         self.name = name
@@ -157,6 +158,8 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
             for v1 in self.configured_skills:
                  if v1:
                     v1.validate()
+        if self.environment:
+            self.environment.validate()
         if self.external_agent_status:
             self.external_agent_status.validate()
         if self.model:
@@ -196,6 +199,9 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.environment is not None:
+            result['environment'] = self.environment.to_map()
 
         if self.external_agent_status is not None:
             result['externalAgentStatus'] = self.external_agent_status.to_map()
@@ -271,6 +277,10 @@ class UpdateExternalAgentResponseBodyData(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('environment') is not None:
+            temp_model = main_models.UpdateExternalAgentResponseBodyDataEnvironment()
+            self.environment = temp_model.from_map(m.get('environment'))
+
         if m.get('externalAgentStatus') is not None:
             temp_model = main_models.UpdateExternalAgentResponseBodyDataExternalAgentStatus()
             self.external_agent_status = temp_model.from_map(m.get('externalAgentStatus'))
@@ -337,8 +347,7 @@ class UpdateExternalAgentResponseBodyDataTools(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The tool type. Valid values:
-        # - MCP: MCP tool.
+        # The tool type. Valid values: MCP (MCP tool).
         # 
         # This parameter is required.
         self.type = type
@@ -451,21 +460,19 @@ class UpdateExternalAgentResponseBodyDataSkills(DaraModel):
         version: str = None,
         version_selector: main_models.UpdateExternalAgentResponseBodyDataSkillsVersionSelector = None,
     ):
-        # The effective version at runtime. This field is read-only.
+        # The effective version applied at runtime. This field is read-only.
         self.applied_version = applied_version
-        # Indicates whether the skill is from a fixed template. This field is read-only. Template items cannot be removed.
+        # Indicates whether the skill is from a fixed template. This field is read-only, and template items cannot be removed.
         self.from_template = from_template
         # The skill name.
         self.name = name
         # The current target version. This field is read-only.
         self.resolved_version = resolved_version
-        # The skill source type. Valid values:
-        # - REFERENCE: References AI Registry assets.
-        # - STATIC: Statically provided with deployment artifacts.
+        # The skill source type. Valid values: REFERENCE (references AI Registry) and STATIC (statically provided with the package).
         self.source_type = source_type
         # The current target version for compatibility with legacy clients. New clients use resolvedVersion and determine the effective runtime version based on appliedVersion.
         self.version = version
-        # The skill reference version selector, which supports LABEL tags and VERSION specific versions. If this parameter is omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
+        # The skill reference version selector, which supports LABEL tags and VERSION specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -532,9 +539,7 @@ class UpdateExternalAgentResponseBodyDataSkillsVersionSelector(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The version selector type. Valid values:
-        # - LABEL: Selects by tag.
-        # - VERSION: Selects by specific version.
+        # The version selector type. Valid values: LABEL (by tag) and VERSION (by specific version).
         self.type = type
         # The selector value. When the type is LABEL, the value is the tag name, such as latest. When the type is VERSION, the value is the specific version number.
         self.value = value
@@ -576,7 +581,7 @@ class UpdateExternalAgentResponseBodyDataModel(DaraModel):
         self.model_connection_id = model_connection_id
         # The upstream model name.
         self.model_name = model_name
-        # The model token quota configuration and the quota usage status for the current cycle. This field is empty if no quota is configured.
+        # The model token quota configuration and usage status for the current period. This field is empty if no quota is configured.
         self.quota = quota
 
     def validate(self):
@@ -628,15 +633,15 @@ class UpdateExternalAgentResponseBodyDataModelQuota(DaraModel):
         self.enabled = enabled
         # The quota limit type. Currently, only token is supported.
         self.limit_type = limit_type
-        # Indicates whether the quota is exceeded in the current cycle. This field is read-only and returned by the backend.
+        # Indicates whether the quota is exceeded in the current period. This field is read-only and returned by the backend.
         self.over_limit = over_limit
         # The quota statistical period. A value of day indicates daily, and a value of month indicates monthly.
         self.period_type = period_type
         # The gateway quota rule status. This field is read-only and returned by the backend.
         self.rule_status = rule_status
-        # The maximum number of tokens allowed to be consumed in a single cycle.
+        # The maximum number of tokens allowed to be consumed in a single period.
         self.usage_limit = usage_limit
-        # The number of tokens consumed in the current cycle. This field is read-only and returned by the backend.
+        # The number of tokens consumed in the current period. This field is read-only and returned by the backend.
         self.used_amount = used_amount
 
     def validate(self):
@@ -704,7 +709,10 @@ class UpdateExternalAgentResponseBodyDataExternalAgentStatus(DaraModel):
         local_ip: str = None,
         runtime: str = None,
     ):
-        # The heartbeat status. ONLINE indicates that the most recent heartbeat did not exceed the configured timeout threshold. STALE indicates that the heartbeat has timed out. UNKNOWN indicates that the heartbeat is missing or the format is invalid. Valid values: ONLINE (online), STALE (heartbeat expired), and UNKNOWN (unknown).
+        # The heartbeat status. ONLINE indicates that the most recent heartbeat did not exceed the configured timeout threshold. STALE indicates that the heartbeat has timed out. UNKNOWN indicates that the heartbeat is missing or the format is invalid. Valid values:
+        # - ONLINE: Online.
+        # - STALE: Heartbeat expired.
+        # - UNKNOWN: Unknown.
         self.heartbeat_status = heartbeat_status
         # The time when the managed agent was last active, in RFC 3339 format.
         self.last_active_at = last_active_at
@@ -759,6 +767,70 @@ class UpdateExternalAgentResponseBodyDataExternalAgentStatus(DaraModel):
 
         return self
 
+class UpdateExternalAgentResponseBodyDataEnvironment(DaraModel):
+    def __init__(
+        self,
+        credential_references: List[main_models.UpdateExternalAgentResponseBodyDataEnvironmentCredentialReferences] = None,
+    ):
+        # The list of credential references. You must explicitly provide this list when passing the environment object, and it cannot be null. The list is replaced in its entirety. If you do not pass environment during an update, the original binding is retained. If you pass an empty list or set environment to null, the binding is cleared. Pass only the credential ID, not the actual key.
+        self.credential_references = credential_references
+
+    def validate(self):
+        if self.credential_references:
+            for v1 in self.credential_references:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['credentialReferences'] = []
+        if self.credential_references is not None:
+            for k1 in self.credential_references:
+                result['credentialReferences'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.credential_references = []
+        if m.get('credentialReferences') is not None:
+            for k1 in m.get('credentialReferences'):
+                temp_model = main_models.UpdateExternalAgentResponseBodyDataEnvironmentCredentialReferences()
+                self.credential_references.append(temp_model.from_map(k1))
+
+        return self
+
+class UpdateExternalAgentResponseBodyDataEnvironmentCredentialReferences(DaraModel):
+    def __init__(
+        self,
+        credential_id: str = None,
+    ):
+        # The credential ID. This parameter is required when passing a credential reference item and is verified by the backend.
+        self.credential_id = credential_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.credential_id is not None:
+            result['credentialId'] = self.credential_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('credentialId') is not None:
+            self.credential_id = m.get('credentialId')
+
+        return self
+
 class UpdateExternalAgentResponseBodyDataConfiguredSkills(DaraModel):
     def __init__(
         self,
@@ -771,13 +843,11 @@ class UpdateExternalAgentResponseBodyDataConfiguredSkills(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # The skill source type. Valid values:
-        # - REFERENCE: References AI Registry assets.
-        # - STATIC: Statically provided with deployment artifacts.
+        # The skill source type. Valid values: REFERENCE (references AI Registry) and STATIC (statically provided with the package).
         self.source_type = source_type
-        # The legacy compatibility field. Use sourceType and versionSelector for new requests.
+        # The legacy compatibility field. For new requests, use sourceType and versionSelector.
         self.version = version
-        # The skill reference version selector, which supports LABEL tags and VERSION specific versions. If this parameter is omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
+        # The skill reference version selector, which supports LABEL tags and VERSION specific versions. If omitted, LABEL/latest is used. Selectors are not provided for STATIC sources.
         self.version_selector = version_selector
 
     def validate(self):
@@ -826,9 +896,7 @@ class UpdateExternalAgentResponseBodyDataConfiguredSkillsVersionSelector(DaraMod
         type: str = None,
         value: str = None,
     ):
-        # The version selector type. Valid values:
-        # - LABEL: Selects by tag.
-        # - VERSION: Selects by specific version.
+        # The version selector type. Valid values: LABEL (by tag) and VERSION (by specific version).
         self.type = type
         # The selector value. When the type is LABEL, the value is the tag name, such as latest. When the type is VERSION, the value is the specific version number.
         self.value = value

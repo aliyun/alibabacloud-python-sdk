@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, List
 
 from alibabacloud_agentcore20260804 import models as main_models
 from darabonba.model import DaraModel
@@ -12,7 +12,7 @@ class SearchMemoriesRequest(DaraModel):
         self,
         body: main_models.SearchMemoriesRequestBody = None,
     ):
-        # The semantic search request.
+        # The semantic retrieval request.
         # 
         # This parameter is required.
         self.body = body
@@ -49,23 +49,26 @@ class SearchMemoriesRequestBody(DaraModel):
         query: str = None,
         scope: main_models.SearchMemoriesRequestBodyScope = None,
         top_k: int = None,
+        types: List[str] = None,
     ):
         # Specifies whether to enable reranking. Default value: true.
         self.enable_rerank = enable_rerank
-        # The string key-value metadata for exact matching. You can specify up to 16 keys. The maximum length of a key is 64 characters, and the maximum length of a value is 1,024 characters.
+        # The string key-value metadata for exact matching. A maximum of 16 keys are supported. Each key can be up to 64 characters in length, and each value can be up to 1,024 characters in length.
         self.metadata = metadata
-        # The minimum relevance score. Valid values: 0 to 1. Default value: 0.2. If both minScore and minSimilarity are specified, the AND logic is applied for filtering.
+        # The minimum relevance score. Default value: 0.2. Valid values: 0 to 1. If both minScore and minSimilarity are specified, the results are filtered based on the AND logic.
         self.min_score = min_score
-        # The minimum similarity. Valid values: 0 to 1. Default value: 0.3. If both minSimilarity and minScore are specified, the AND logic is applied for filtering.
+        # The minimum similarity score. Default value: 0.3. Valid values: 0 to 1. If both minSimilarity and minScore are specified, the results are filtered based on the AND logic.
         self.min_similarity = min_similarity
-        # The query text. The maximum length is 8,192 characters.
+        # The query text for retrieval, up to 8,192 characters.
         # 
         # This parameter is required.
         self.query = query
-        # The search scope. UserId, AgentId, and SessionId are all optional.
+        # The retrieval scope. UserId, AgentId, and SessionId are all optional.
         self.scope = scope
         # The number of results to return.
         self.top_k = top_k
+        # The list of memory content types. Supported types include semantic, skill, user_profile, and session_summary. If omitted or left as an empty array, no type restriction is applied.
+        self.types = types
 
     def validate(self):
         if self.scope:
@@ -97,6 +100,9 @@ class SearchMemoriesRequestBody(DaraModel):
         if self.top_k is not None:
             result['topK'] = self.top_k
 
+        if self.types is not None:
+            result['types'] = self.types
+
         return result
 
     def from_map(self, m: dict = None):
@@ -123,6 +129,9 @@ class SearchMemoriesRequestBody(DaraModel):
         if m.get('topK') is not None:
             self.top_k = m.get('topK')
 
+        if m.get('types') is not None:
+            self.types = m.get('types')
+
         return self
 
 class SearchMemoriesRequestBodyScope(DaraModel):
@@ -130,12 +139,15 @@ class SearchMemoriesRequestBodyScope(DaraModel):
         self,
         agent_id: str = None,
         session_id: str = None,
+        team_id: str = None,
         user_id: str = None,
     ):
         # The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
         self.agent_id = agent_id
         # The session ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
         self.session_id = session_id
+        # The business team ID defined by the caller. If provided, it cannot be empty and can be up to 128 UTF-8 bytes in length.
+        self.team_id = team_id
         # The user ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
         self.user_id = user_id
 
@@ -153,6 +165,9 @@ class SearchMemoriesRequestBodyScope(DaraModel):
         if self.session_id is not None:
             result['sessionId'] = self.session_id
 
+        if self.team_id is not None:
+            result['teamId'] = self.team_id
+
         if self.user_id is not None:
             result['userId'] = self.user_id
 
@@ -165,6 +180,9 @@ class SearchMemoriesRequestBodyScope(DaraModel):
 
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
+
+        if m.get('teamId') is not None:
+            self.team_id = m.get('teamId')
 
         if m.get('userId') is not None:
             self.user_id = m.get('userId')

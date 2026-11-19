@@ -87,11 +87,14 @@ class AddMemoriesResponseBodyData(DaraModel):
         self,
         memories: List[main_models.AddMemoriesResponseBodyDataMemories] = None,
         task_id: str = None,
+        task_ids: List[str] = None,
     ):
-        # The memory references. This parameter is returned only when sync is set to true, and an empty array is allowed. It is not returned together with taskId.
+        # The memory references returned only when sync is set to true. An empty array is allowed. It is not returned together with taskId.
         self.memories = memories
-        # The task ID. This parameter is returned only when sync is set to false. It is not returned together with memories.
+        # The task ID returned only when sync is set to false. It is not returned together with memories.
         self.task_id = task_id
+        # The list of extraction task IDs. Multiple tasks may be returned when multiple rules are enabled. It is not returned for direct writes.
+        self.task_ids = task_ids
 
     def validate(self):
         if self.memories:
@@ -112,6 +115,9 @@ class AddMemoriesResponseBodyData(DaraModel):
         if self.task_id is not None:
             result['taskId'] = self.task_id
 
+        if self.task_ids is not None:
+            result['taskIds'] = self.task_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -125,6 +131,9 @@ class AddMemoriesResponseBodyData(DaraModel):
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')
 
+        if m.get('taskIds') is not None:
+            self.task_ids = m.get('taskIds')
+
         return self
 
 class AddMemoriesResponseBodyDataMemories(DaraModel):
@@ -133,6 +142,8 @@ class AddMemoriesResponseBodyDataMemories(DaraModel):
         memory_id: str = None,
     ):
         # The long-term memory ID.
+        # 
+        # This parameter is required.
         self.memory_id = memory_id
 
     def validate(self):

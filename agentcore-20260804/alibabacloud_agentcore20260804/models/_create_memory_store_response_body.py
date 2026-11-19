@@ -17,7 +17,7 @@ class CreateMemoryStoreResponseBody(DaraModel):
     ):
         # The business status code.
         self.code = code
-        # The memory store details.
+        # The details of the memory store.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -85,7 +85,9 @@ class CreateMemoryStoreResponseBodyData(DaraModel):
         self,
         created_at: str = None,
         description: str = None,
+        event_count: int = None,
         extract_instructions: str = None,
+        memory_count: int = None,
         memory_store_id: str = None,
         memory_store_name: str = None,
         status: str = None,
@@ -96,17 +98,21 @@ class CreateMemoryStoreResponseBodyData(DaraModel):
         self.created_at = created_at
         # The description of the memory store.
         self.description = description
+        # The number of events. You can query this value by calling GetMemoryStore.
+        self.event_count = event_count
         # The custom extraction instructions.
         self.extract_instructions = extract_instructions
-        # The memory store ID.
+        # The number of valid memories. You can query this value by calling GetMemoryStore.
+        self.memory_count = memory_count
+        # The ID of the memory store.
         self.memory_store_id = memory_store_id
         # The name of the memory store. The name cannot be modified after creation.
         self.memory_store_name = memory_store_name
-        # The lifecycle state of the memory store.
+        # The lifecycle status of the memory store.
         self.status = status
         # The last updated time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.updated_at = updated_at
-        # The AgentCore workspace ID.
+        # The ID of the AgentCore workspace.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -123,8 +129,14 @@ class CreateMemoryStoreResponseBodyData(DaraModel):
         if self.description is not None:
             result['description'] = self.description
 
+        if self.event_count is not None:
+            result['eventCount'] = self.event_count
+
         if self.extract_instructions is not None:
             result['extractInstructions'] = self.extract_instructions
+
+        if self.memory_count is not None:
+            result['memoryCount'] = self.memory_count
 
         if self.memory_store_id is not None:
             result['memoryStoreId'] = self.memory_store_id
@@ -151,8 +163,14 @@ class CreateMemoryStoreResponseBodyData(DaraModel):
         if m.get('description') is not None:
             self.description = m.get('description')
 
+        if m.get('eventCount') is not None:
+            self.event_count = m.get('eventCount')
+
         if m.get('extractInstructions') is not None:
             self.extract_instructions = m.get('extractInstructions')
+
+        if m.get('memoryCount') is not None:
+            self.memory_count = m.get('memoryCount')
 
         if m.get('memoryStoreId') is not None:
             self.memory_store_id = m.get('memoryStoreId')

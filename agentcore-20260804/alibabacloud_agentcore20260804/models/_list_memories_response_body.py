@@ -18,12 +18,13 @@ class ListMemoriesResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
         success: bool = None,
+        total_count: int = None,
     ):
         # The business status code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The memory list.
+        # The list of memories.
         self.items = items
         # The maximum number of records per page.
         self.max_results = max_results
@@ -35,6 +36,8 @@ class ListMemoriesResponseBody(DaraModel):
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
+        # The total number of records.
+        self.total_count = total_count
 
     def validate(self):
         if self.items:
@@ -73,6 +76,9 @@ class ListMemoriesResponseBody(DaraModel):
         if self.success is not None:
             result['success'] = self.success
 
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+
         return result
 
     def from_map(self, m: dict = None):
@@ -104,6 +110,9 @@ class ListMemoriesResponseBody(DaraModel):
         if m.get('success') is not None:
             self.success = m.get('success')
 
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+
         return self
 
 class ListMemoriesResponseBodyItems(DaraModel):
@@ -114,7 +123,10 @@ class ListMemoriesResponseBodyItems(DaraModel):
         memory_id: str = None,
         metadata: Dict[str, str] = None,
         scope: main_models.ListMemoriesResponseBodyItemsScope = None,
+        source: str = None,
+        type: str = None,
         updated_at: str = None,
+        valid: bool = None,
     ):
         # The memory content.
         self.content = content
@@ -126,8 +138,21 @@ class ListMemoriesResponseBodyItems(DaraModel):
         self.metadata = metadata
         # The memory scope.
         self.scope = scope
+        # The source of the memory. Valid values:
+        # - session_extraction: Extracted from session events.
+        # - content_extraction: Extracted from text or messages.
+        # - direct: Written directly.
+        self.source = source
+        # The memory content type. Valid values:
+        # - semantic: Semantic memory.
+        # - skill: Skill.
+        # - user_profile: User preference.
+        # - session_summary: Session summary.
+        self.type = type
         # The last update time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         self.updated_at = updated_at
+        # Indicates whether the memory is valid. A value of false indicates that the memory is revoked and is not included in valid memory retrieval.
+        self.valid = valid
 
     def validate(self):
         if self.content:
@@ -155,8 +180,17 @@ class ListMemoriesResponseBodyItems(DaraModel):
         if self.scope is not None:
             result['scope'] = self.scope.to_map()
 
+        if self.source is not None:
+            result['source'] = self.source
+
+        if self.type is not None:
+            result['type'] = self.type
+
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
+
+        if self.valid is not None:
+            result['valid'] = self.valid
 
         return result
 
@@ -179,8 +213,17 @@ class ListMemoriesResponseBodyItems(DaraModel):
             temp_model = main_models.ListMemoriesResponseBodyItemsScope()
             self.scope = temp_model.from_map(m.get('scope'))
 
+        if m.get('source') is not None:
+            self.source = m.get('source')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
+
+        if m.get('valid') is not None:
+            self.valid = m.get('valid')
 
         return self
 
@@ -189,13 +232,16 @@ class ListMemoriesResponseBodyItemsScope(DaraModel):
         self,
         agent_id: str = None,
         session_id: str = None,
+        team_id: str = None,
         user_id: str = None,
     ):
-        # The agent ID. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
+        # The agent ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with an agent ID.
         self.agent_id = agent_id
-        # The session ID. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
+        # The session ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a session ID.
         self.session_id = session_id
-        # The user ID. The length is limited to 1 to 128 UTF-8 bytes, and the value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
+        # The business team ID defined by the caller. This field cannot be empty when provided and can be up to 128 UTF-8 bytes in length.
+        self.team_id = team_id
+        # The user ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*). This field is not returned if the memory is not associated with a user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -212,6 +258,9 @@ class ListMemoriesResponseBodyItemsScope(DaraModel):
         if self.session_id is not None:
             result['sessionId'] = self.session_id
 
+        if self.team_id is not None:
+            result['teamId'] = self.team_id
+
         if self.user_id is not None:
             result['userId'] = self.user_id
 
@@ -225,6 +274,9 @@ class ListMemoriesResponseBodyItemsScope(DaraModel):
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
 
+        if m.get('teamId') is not None:
+            self.team_id = m.get('teamId')
+
         if m.get('userId') is not None:
             self.user_id = m.get('userId')
 
@@ -236,6 +288,8 @@ class ListMemoriesResponseBodyItemsContent(DaraModel):
         text: str = None,
     ):
         # The memory text.
+        # 
+        # This parameter is required.
         self.text = text
 
     def validate(self):

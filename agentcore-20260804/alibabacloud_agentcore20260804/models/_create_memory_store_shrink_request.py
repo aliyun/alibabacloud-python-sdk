@@ -14,7 +14,7 @@ class CreateMemoryStoreShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.body_shrink = body_shrink
-        # The client request token.
+        # The client token.
         self.client_token = client_token
 
     def validate(self):

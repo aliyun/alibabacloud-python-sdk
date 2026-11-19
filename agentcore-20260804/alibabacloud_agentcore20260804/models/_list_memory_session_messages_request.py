@@ -13,17 +13,17 @@ class ListMemorySessionMessagesRequest(DaraModel):
         session_id: str = None,
         user_id: str = None,
     ):
-        # The agent ID. At least one of UserId or AgentId must be provided. The length is limited to 1 to 128 UTF-8 bytes. Forward slashes (/) and asterisks (*) are not allowed.
+        # The agent ID. At least one of UserId or AgentId must be provided. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
         self.agent_id = agent_id
         # The maximum number of records per page. Default value: 200. Valid values: 1 to 500.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
-        # The session ID. The length is limited to 1 to 128 UTF-8 bytes. Forward slashes (/) and asterisks (*) are not allowed.
+        # The session ID. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
         # 
         # This parameter is required.
         self.session_id = session_id
-        # The user ID. At least one of UserId or AgentId must be provided. The length is limited to 1 to 128 UTF-8 bytes. Forward slashes (/) and asterisks (*) are not allowed.
+        # The user ID. At least one of UserId or AgentId must be provided. The length is limited to 1 to 128 UTF-8 bytes. The value cannot contain a forward slash (/) or an asterisk (*).
         self.user_id = user_id
 
     def validate(self):

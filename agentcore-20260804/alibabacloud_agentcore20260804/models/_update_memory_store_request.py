@@ -15,7 +15,7 @@ class UpdateMemoryStoreRequest(DaraModel):
         # 
         # This parameter is required.
         self.body = body
-        # The client token.
+        # The client request token.
         self.client_token = client_token
 
     def validate(self):
@@ -52,9 +52,9 @@ class UpdateMemoryStoreRequestBody(DaraModel):
         description: str = None,
         extract_instructions: str = None,
     ):
-        # The description of the memory store. Maximum length: 1024 characters.
+        # The description of the memory store. Maximum length: 1,024 characters.
         self.description = description
-        # The custom memory extraction instructions. Maximum length: 4096 characters.
+        # The custom memory extraction instructions. Maximum length: 4,096 characters.
         self.extract_instructions = extract_instructions
 
     def validate(self):

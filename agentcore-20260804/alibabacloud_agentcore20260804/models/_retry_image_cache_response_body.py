@@ -19,7 +19,7 @@ class RetryImageCacheResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.code = code
-        # The result of retrying image cache creation.
+        # The retry image cache result.
         # 
         # This parameter is required.
         self.data = data
@@ -35,7 +35,7 @@ class RetryImageCacheResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.request_id = request_id
-        # Indicates whether the request is successful. A successful request does not mean that the cache creation is complete.
+        # Indicates whether the request is successful. This does not mean that the cache creation is complete.
         # 
         # This parameter is required.
         self.success = success
@@ -110,27 +110,27 @@ class RetryImageCacheResponseBodyData(DaraModel):
         tag: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the source ACR instance.
+        # The source ACR instance ID.
         # 
         # This parameter is required.
         self.acr_instance_id = acr_instance_id
-        # The number of agents that use the cache.
+        # The number of agents using the cache.
         # 
         # This parameter is required.
         self.agent_count = agent_count
-        # The size of the cache in bytes.
+        # The cache size in bytes.
         # 
         # This parameter is required.
         self.cache_size_bytes = cache_size_bytes
-        # Indicates whether the cache can be deleted.
+        # Indicates whether deletion is allowed.
         # 
         # This parameter is required.
         self.can_delete = can_delete
-        # The time when the resource was created. The time follows the RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
+        # The resource creation time. The time is in RFC 3339 format. The Z at the end of the example indicates the UTC time zone.
         # 
         # This parameter is required.
         self.created_at = created_at
-        # The reason why the cache cannot be deleted.
+        # The reason why deletion is blocked.
         # 
         # This parameter is required.
         self.delete_block_reason = delete_block_reason
@@ -146,19 +146,19 @@ class RetryImageCacheResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.image_id = image_id
-        # The domain name of the source image.
+        # The source image domain name.
         # 
         # This parameter is required.
         self.registry = registry
-        # The path of the source image repository.
+        # The source image repository path.
         # 
         # This parameter is required.
         self.repository = repository
-        # The cache status.
+        # The image cache status.
         # 
         # This parameter is required.
         self.status = status
-        # The tag of the source image.
+        # The source image tag.
         # 
         # This parameter is required.
         self.tag = tag
