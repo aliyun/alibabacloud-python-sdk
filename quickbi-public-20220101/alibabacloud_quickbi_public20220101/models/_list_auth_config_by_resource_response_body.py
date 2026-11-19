@@ -18,7 +18,7 @@ class ListAuthConfigByResourceResponseBody(DaraModel):
         self.request_id = request_id
         # The collection of authorization details.
         self.result = result
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -73,35 +73,35 @@ class ListAuthConfigByResourceResponseBodyResult(DaraModel):
         resource_type: str = None,
         scope: int = None,
     ):
-        # The array of permissions granted.
+        # The array of owned permissions.
         self.authorities = authorities
         # The ID of the authorized user.
         self.authorized_id = authorized_id
         # The name of the authorized user.
         self.authorized_name = authorized_name
-        # The expiration time. This value is a UNIX timestamp in milliseconds.
+        # The expiration time. The value is a UNIX timestamp in milliseconds.
         self.expire_date = expire_date
-        # The time when the permission record was created, in the yyyy-MM-dd mm:hh:ss format.
+        # The creation time of the permission record. The format is yyyy-MM-dd mm:hh:ss.
         self.gmt_create = gmt_create
         # The resource ID.
         self.resource_id = resource_id
         # The resource type. Valid values:
         # 
-        # - dashboard: dashboard
-        # - screen: data screen
-        # - report: electron
-        # - ANALYSIS: ad hoc analysis
-        # - dashboardOfflineQuery: self-service data retrieval
-        # - dataForm: data form
-        # - cube: dataset
-        # - datasource: data source
+        # - dashboard: Dashboard.
+        # - screen: Data screen.
+        # - report: Workbook.
+        # - ANALYSIS: Ad hoc analysis.
+        # - dashboardOfflineQuery: Self-service data retrieval.
+        # - dataForm: Data entry.
+        # - cube: Dataset.
+        # - datasource: Data source.
         self.resource_type = resource_type
         # The authorization scope. Valid values:
         # 
-        # - 0: user
-        # - 1: user group
-        # - 2: organization
-        # - 3: workspace
+        # - 0: User.
+        # - 1: User group.
+        # - 2: Organization.
+        # - 3: Workspace.
         self.scope = scope
 
     def validate(self):

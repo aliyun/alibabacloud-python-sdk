@@ -13,35 +13,35 @@ class ListAuthConfigByResourceRequest(DaraModel):
         share_to_type: int = None,
         works_type: str = None,
     ):
-        # Specifies whether to query only records that have permissions.
+        # Specifies whether to query only the records that have permissions.
         # 
         # This parameter is required.
         self.has_auth = has_auth
         # The search keyword for the authorized object.
         self.keyword = keyword
-        # The ID of the resource to authorize.
+        # The ID of the resource to be authorized.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         # The query granularity. Valid values:
         # 
-        # - 0: user
-        # - 1: user group
+        # - 0: User.
+        # - 1: User group.
         # 
-        # >Notice: Authorization records for organizations and workspaces are returned at the user granularity. Datasets and data sources can only be authorized to users.
+        # >Notice: Authorization records for organizations and workspaces are returned at the user granularity. Datasets and data sources can only be authorized to users.</notice>
         # 
         # This parameter is required.
         self.share_to_type = share_to_type
-        # The type of the authorization resource. Valid values:
+        # The resource type. Valid values:
         # 
-        # - dashboard: dashboard
-        # - screen: data screen
-        # - report: electron
-        # - ANALYSIS: ad hoc analysis
-        # - dashboardOfflineQuery: self-service data retrieval
-        # - dataForm: data form
-        # - cube: dataset
-        # - datasource: data source
+        # - dashboard: Dashboard.
+        # - screen: Data screen.
+        # - report: Workbook.
+        # - ANALYSIS: Ad hoc analysis.
+        # - dashboardOfflineQuery: Self-service data retrieval.
+        # - dataForm: Data entry.
+        # - cube: Dataset.
+        # - datasource: Data source.
         # 
         # This parameter is required.
         self.works_type = works_type

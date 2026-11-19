@@ -15,25 +15,25 @@ class BatchAddFeishuUsersRequest(DaraModel):
     ):
         # The information about the users to be added.
         self.feishu_users = feishu_users
-        # Specifies whether the user is an admin user. Valid values:
-        # - true
-        # - false
+        # Specifies whether the user is an administrator. Valid values:
+        # - true: Yes.
+        # - false: No.
         # 
         # Default value: false.
         self.is_admin = is_admin
         # Specifies whether the user is a permission management administrator. Valid values:
         # 
-        # - true
-        # - false
+        # - true: Yes.
+        # - false: No.
         # 
         # Default value: false.
         self.is_auth_admin = is_auth_admin
-        # The user groups to which the users belong.
+        # The IDs of the user groups to which the users belong.
         self.user_group_ids = user_group_ids
         # The user type. Valid values:
-        # - 1: developer
-        # - 2: visitor
-        # - 3: analyst
+        # - 1: Developer.
+        # - 2: Visitor.
+        # - 3: Analyst.
         self.user_type = user_type
 
     def validate(self):

@@ -14,19 +14,17 @@ class QueryDataResponseBody(DaraModel):
         result: main_models.QueryDataResponseBodyResult = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The result of the API call. Valid values:
+        # The execution result of the API. Valid values:
         # 
-        # - true: The call was successful.
-        # 
-        # - false: The call failed.
+        # - true: The execution is successful.
+        # - false: The execution fails.
         self.result = result
-        # Whether the request succeeded. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -69,19 +67,25 @@ class QueryDataResponseBodyResult(DaraModel):
         headers: List[main_models.QueryDataResponseBodyResultHeaders] = None,
         sql: str = None,
         values: List[Dict[str, Any]] = None,
+        values_v2: List[main_models.QueryDataResponseBodyResultValuesV2] = None,
     ):
         # The column headers.
         self.headers = headers
-        # The SQL statement for the query.
-        # 
-        # > The returned SQL includes both the filter conditions from this call and any row-level or column-level permission rules.
+        # The SQL statement of the query.
+        # > In addition to the parameter conditions of the current API, the filter conditions in the returned SQL statement also include the row-level and column-level permission configurations.
         self.sql = sql
-        # The query results.
+        # The returned query results.
         self.values = values
+        # The returned query results, including the original value fields.
+        self.values_v2 = values_v2
 
     def validate(self):
         if self.headers:
             for v1 in self.headers:
+                 if v1:
+                    v1.validate()
+        if self.values_v2:
+            for v1 in self.values_v2:
                  if v1:
                     v1.validate()
 
@@ -101,6 +105,11 @@ class QueryDataResponseBodyResult(DaraModel):
         if self.values is not None:
             result['Values'] = self.values
 
+        result['ValuesV2'] = []
+        if self.values_v2 is not None:
+            for k1 in self.values_v2:
+                result['ValuesV2'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -117,6 +126,94 @@ class QueryDataResponseBodyResult(DaraModel):
         if m.get('Values') is not None:
             self.values = m.get('Values')
 
+        self.values_v2 = []
+        if m.get('ValuesV2') is not None:
+            for k1 in m.get('ValuesV2'):
+                temp_model = main_models.QueryDataResponseBodyResultValuesV2()
+                self.values_v2.append(temp_model.from_map(k1))
+
+        return self
+
+class QueryDataResponseBodyResultValuesV2(DaraModel):
+    def __init__(
+        self,
+        row_value: List[main_models.QueryDataResponseBodyResultValuesV2RowValue] = None,
+    ):
+        # The row values.
+        self.row_value = row_value
+
+    def validate(self):
+        if self.row_value:
+            for v1 in self.row_value:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['RowValue'] = []
+        if self.row_value is not None:
+            for k1 in self.row_value:
+                result['RowValue'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.row_value = []
+        if m.get('RowValue') is not None:
+            for k1 in m.get('RowValue'):
+                temp_model = main_models.QueryDataResponseBodyResultValuesV2RowValue()
+                self.row_value.append(temp_model.from_map(k1))
+
+        return self
+
+class QueryDataResponseBodyResultValuesV2RowValue(DaraModel):
+    def __init__(
+        self,
+        l: str = None,
+        r: str = None,
+        v: str = None,
+    ):
+        # The field alias set in Data Service.
+        self.l = l
+        # The original value.
+        self.r = r
+        # The display value.
+        self.v = v
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.l is not None:
+            result['L'] = self.l
+
+        if self.r is not None:
+            result['R'] = self.r
+
+        if self.v is not None:
+            result['V'] = self.v
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('L') is not None:
+            self.l = m.get('L')
+
+        if m.get('R') is not None:
+            self.r = m.get('R')
+
+        if m.get('V') is not None:
+            self.v = m.get('V')
+
         return self
 
 class QueryDataResponseBodyResultHeaders(DaraModel):
@@ -130,57 +227,40 @@ class QueryDataResponseBodyResultHeaders(DaraModel):
         original_column: str = None,
         type: str = None,
     ):
-        # The aggregate operator. Returned only for measure fields.
-        # 
-        # - SUM: The sum.
-        # 
-        # - MAX: The maximum value.
-        # 
-        # - MIN: The minimum value.
-        # 
-        # - AVG: The average value.
-        # 
-        # - COUNT: The count.
-        # 
-        # - COUNTD: The count of unique values.
-        # 
-        # - STDDEV_POP: The population standard deviation.
-        # 
-        # - STDDEV_SAMP: The sample standard deviation.
-        # 
-        # - VAR_POP: The population variance.
-        # 
-        # - VAR_SAMP: The sample variance.
+        # The aggregation operator. This field is available only for measure fields, such as SUM, AVG, and MAX. Valid values:
+        # - SUM: Sum.
+        # - MAX: Maximum value.
+        # - MIN: Minimum value.
+        # - AVG: Average value.
+        # - COUNT: Count.
+        # - COUNTD: Deduplicate count.
+        # - STDDEV_POP: Population standard deviation.
+        # - STDDEV_SAMP: Sample standard deviation.
+        # - VAR_POP: Population variance.
+        # - VAR_SAMP: Sample variance.
         self.aggregator = aggregator
-        # The physical table field name.
+        # The name of the field, which corresponds to the field name in the physical table.
         self.column = column
-        # The field data type. Common types:
-        # 
-        # - number
-        # 
-        # - string
-        # 
-        # - date
-        # 
-        # - time
-        # 
-        # - datetime
+        # The data type of the field. Valid values:
+        # - number: Numeric.
+        # - string: String.
+        # - date: Date.
+        # - time: Time.
+        # - datetime: Date and time.
         self.data_type = data_type
-        # The dimension granularity. Returned only for date or geographic dimensions. Valid values:
+        # The granularity of the dimension field. This field is returned only when the requested field is a date dimension or a geographic dimension. Valid values:
         # 
-        # - Date granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), secRegion (second)
+        # - Date granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), and secRegion (second).
         # 
-        # - Geographic granularity: COUNTRY (country), PROVINCE (province), CITY (city), XIAN (county/district), REGION (region)
+        # - Geographic granularity: COUNTRY (country), PROVINCE (province), CITY (city), XIAN (district/county), and REGION (region).
         self.granularity = granularity
-        # The field alias. Used as the key in each Values map entry.
+        # The alias of the field, which is the key of the map data row in the values result parameter.
         self.label = label
-        # The original field name in the dataset.
+        # The original name of the corresponding field in the dataset.
         self.original_column = original_column
-        # Whether the field is a dimension or measure.
-        # 
-        # - Dimension
-        # 
-        # - Measure
+        # The type of the field, which is used to distinguish whether the field is a dimension or a measure. Valid values:
+        # - Dimension: Dimension.
+        # - Measure: Measure.
         self.type = type
 
     def validate(self):

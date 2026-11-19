@@ -14,14 +14,14 @@ class QueryWorksBloodRelationshipResponseBody(DaraModel):
         result: List[main_models.QueryWorksBloodRelationshipResponseBodyResult] = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # List of work blood information.
+        # The list of data work lineage information.
         self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -75,19 +75,19 @@ class QueryWorksBloodRelationshipResponseBodyResult(DaraModel):
         dataset_id: str = None,
         query_params: List[main_models.QueryWorksBloodRelationshipResponseBodyResultQueryParams] = None,
     ):
-        # The ID of the component that you want to modify.
+        # The component ID.
         self.component_id = component_id
-        # The name of the component.
+        # The component name.
         self.component_name = component_name
-        # The type of the image component.
+        # The component type.
         self.component_type = component_type
-        # Chinese name of the component type
+        # The Chinese name of the component type.
         self.component_type_cn_name = component_type_cn_name
-        # The name of the component type.
+        # The component type name.
         self.component_type_name = component_type_name
-        # The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        # The dataset ID.
         self.dataset_id = dataset_id
-        # A list of query parameter reference columns.
+        # The list of columns referenced by query parameters.
         self.query_params = query_params
 
     def validate(self):
@@ -166,30 +166,31 @@ class QueryWorksBloodRelationshipResponseBodyResultQueryParams(DaraModel):
         path_id: str = None,
         uid: str = None,
     ):
-        # The ID of the owning location.
+        # The ID of the area.
         self.area_id = area_id
-        # The name of the owning location.
+        # The name of the area.
         self.area_name = area_name
-        # The display name of the field.
+        # The original name of the field.
         self.caption = caption
-        # The type of the field. Valid values:
+        # The field type. Valid values:
         # 
-        # *   string: string type
-        # *   date: a date type that contains only the year, month, and day parts
-        # *   datetime: a common date type
-        # *   time: a date type that contains only hours, minutes, and seconds.
-        # *   number: numeric
-        # *   boolean: Boolean type
-        # *   geographical: geographical location
-        # *   url: string type
-        # *   imageUrl: the type of the image link.
-        # *   multivalue: a multi-value column
+        # - string: String type.
+        # - date: Date type that includes only the year, month, and day.
+        # - datetime: General date type.
+        # - time: Time type that includes only the hour, minute, and second.
+        # - number: Numeric type.
+        # - boolean: Boolean type.
+        # - geographic: Geographic location.
+        # - url: URL string type.
+        # - imageUrl: Image URL type.
+        # - multivalue: Multi-value column.
         self.data_type = data_type
-        # Calculate field expression.
+        # The expression of the calculated field.
         self.expression = expression
-        # Indices whether the metric. Valid values:
+        # Indicates whether the field is a measure. Valid values:
         # 
-        # true false
+        # - true: Yes.
+        # - false: No.
         self.is_measure = is_measure
         # The globally unique PathId.
         self.path_id = path_id

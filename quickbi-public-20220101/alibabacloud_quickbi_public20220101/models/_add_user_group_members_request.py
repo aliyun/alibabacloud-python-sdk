@@ -10,11 +10,11 @@ class AddUserGroupMembersRequest(DaraModel):
         user_group_ids: str = None,
         user_id: str = None,
     ):
-        # The IDs of the user groups. Separate the IDs with commas (,). Example: aGroupId,bGroupId,cGroupIds
+        # The IDs of the user groups, separated by commas. Example: aGroupId,bGroupId,cGroupIds.
         # 
         # This parameter is required.
         self.user_group_ids = user_group_ids
-        # The user ID of the Quick BI.
+        # The user ID in Quick BI.
         # 
         # This parameter is required.
         self.user_id = user_id

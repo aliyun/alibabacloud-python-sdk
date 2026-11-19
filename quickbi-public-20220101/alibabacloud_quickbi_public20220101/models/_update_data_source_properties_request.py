@@ -12,10 +12,15 @@ class UpdateDataSourcePropertiesRequest(DaraModel):
         quick_biowner_id: str = None,
         show_name: str = None,
     ):
+        # The description.
         self.description = description
+        # The data source ID.
+        # 
         # This parameter is required.
         self.ds_id = ds_id
+        # The owner of the data source. Set this parameter to the user ID in Quick BI.
         self.quick_biowner_id = quick_biowner_id
+        # The display name of the data source.
         self.show_name = show_name
 
     def validate(self):

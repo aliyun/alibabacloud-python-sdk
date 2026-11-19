@@ -14,15 +14,15 @@ class QueryDataServiceResponseBody(DaraModel):
         result: main_models.QueryDataServiceResponseBodyResult = None,
         success: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Returns the result of the interface query.
+        # The query result returned by the API.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful
+        # - true: The request is successful.
         # 
-        # - false: The request failed
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -66,11 +66,11 @@ class QueryDataServiceResponseBodyResult(DaraModel):
         sql: str = None,
         values: List[Dict[str, Any]] = None,
     ):
-        # Column headers.
+        # The column headers.
         self.headers = headers
-        # The SQL of the query request.
+        # The SQL statement of the query request.
         self.sql = sql
-        # The queried results returned.
+        # The returned query results.
         self.values = values
 
     def validate(self):
@@ -123,22 +123,21 @@ class QueryDataServiceResponseBodyResultHeaders(DaraModel):
         label: str = None,
         type: str = None,
     ):
-        # Aggregation operator. Only present for measure fields, such as SUM, AVG, and MAX.
+        # The aggregation operator. This parameter is returned only for measure fields, such as SUM, AVG, and MAX.
         self.aggregator = aggregator
-        # Field name, corresponding to the physical table field name.
+        # The name of the field, which corresponds to the field name in the physical table.
         self.column = column
-        # The data type of the field. Common types include number, string, date, datetime, time, and geographic.
+        # The data type of the field. Common values include number, string, date, datetime, time, and geographic.
         self.data_type = data_type
-        # The granularity of the dimension field.
-        # This field is returned only when the requested field is a date or geographic dimension, with the following possible values:
+        # The granularity of the dimension field. This parameter is returned only when the requested field is a date dimension or geographic dimension field. Valid values:
         # 
-        # - Date granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), secRegion (second)
+        # - Date granularity: yearRegion (year), monthRegion (month), weekRegion (week), dayRegion (day), hourRegion (hour), minRegion (minute), and secRegion (second).
         # 
-        # - Geographic granularity: COUNTRY (country level), PROVINCE (province level), CITY (city level), XIAN (district/county level), REGION (region)
+        # - Geographic information granularity: COUNTRY (country level), PROVINCE (province level), CITY (city level), XIAN (district or county level), and REGION (region level).
         self.granularity = granularity
-        # Alias for the field, serving as the key in the map data row of the values parameter.
+        # The alias of the field, which is the key of the map data row in the Values response parameter.
         self.label = label
-        # Field type, used to distinguish between dimension and measure fields.
+        # The type of the field, which is used to distinguish whether the field is a dimension or a measure.
         self.type = type
 
     def validate(self):

@@ -9,7 +9,7 @@ class QueryReadableResourcesListByUserIdRequest(DaraModel):
         self,
         user_id: str = None,
     ):
-        # Quick BI the user ID.
+        # The Quick BI user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

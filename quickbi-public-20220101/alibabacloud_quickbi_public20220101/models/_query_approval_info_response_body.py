@@ -14,13 +14,13 @@ class QueryApprovalInfoResponseBody(DaraModel):
         result: main_models.QueryApprovalInfoResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return the result of the interface execution.
+        # The result of the API operation.
         self.result = result
-        # Indicates whether the API call was successful. Possible values are:
-        # - true: success
-        # - false: failure
+        # Indicates whether the API operation is successful. Valid values:
+        # - true: The operation is successful.
+        # - false: The operation fails.
         self.success = success
 
     def validate(self):
@@ -67,15 +67,15 @@ class QueryApprovalInfoResponseBodyResult(DaraModel):
         total: int = None,
         total_pages: int = None,
     ):
-        # Array of approval flow information.
+        # The array of approval flow information.
         self.data = data
         # The current page number.
         self.page = page
-        # The number of records requested per page.
+        # The number of records on the current page.
         self.page_size = page_size
-        # The starting position of the current page.
+        # The start position of the current page.
         self.start = start
-        # The total number of items.
+        # The total number of records.
         self.total = total
         # The total number of pages.
         self.total_pages = total_pages
@@ -158,38 +158,38 @@ class QueryApprovalInfoResponseBodyResultData(DaraModel):
         resource_type: str = None,
         workspace_name: str = None,
     ):
-        # Applicant\\"s user ID, qbi user ID.
+        # The QBI user ID of the applicant.
         self.applicant_id = applicant_id
-        # Applicant\\"s nickname.
+        # The nickname of the applicant.
         self.applicant_name = applicant_name
-        # Application ID.
+        # The ID of the application.
         self.application_id = application_id
-        # Application reason.
+        # The reason for the application.
         self.apply_reason = apply_reason
-        # Approver\\"s user ID, qbi user ID.
+        # The QBI user ID of the approver.
         self.approver_id = approver_id
-        # Approver\\"s nickname.
+        # The nickname of the approver.
         self.approver_name = approver_name
-        # Whether the resource has been deleted:
-        # - true: Deleted
-        # - false: Not deleted
+        # Indicates whether the resource has been deleted. Valid values:
+        # - true: The resource has been deleted.
+        # - false: The resource has not been deleted.
         self.delete_flag = delete_flag
-        # Permission expiration date, timestamp.
+        # The expiration time of the permission.
         self.expire_date = expire_date
-        # Permission approval status:
-        # - 0: Under review, corresponding to 0 in the request parameters
-        # - 1: Approved, corresponding to 1 in the request parameters
-        # - 2: Rejected, corresponding to 1 in the request parameters
+        # The approval status of the permission. Valid values:
+        # - 0: Pending approval, which corresponds to 0 in the request parameters.
+        # - 1: Approved, which corresponds to 1 in the request parameters.
+        # - 2: Rejected, which corresponds to 1 in the request parameters.
         self.flag_status = flag_status
-        # Application creation time, timestamp.
+        # The time when the application was created.
         self.gmt_create = gmt_create
-        # Application modification time, timestamp.
+        # The time when the application was modified.
         self.gmt_modified = gmt_modified
-        # Handling reason.
+        # The reason for handling the application.
         self.handle_reason = handle_reason
-        # The ID of the resource for which permission is requested.
+        # The ID of the resource for which permissions are requested.
         self.resource_id = resource_id
-        # The name of the resource for which permission is requested (e.g., report name, space name...).
+        # The name of the resource for which permissions are requested, such as the report name or workspace name.
         self.resource_name = resource_name
         # The type of the resource.
         self.resource_type = resource_type

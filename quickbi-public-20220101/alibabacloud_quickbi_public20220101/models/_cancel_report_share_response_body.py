@@ -11,17 +11,17 @@ class CancelReportShareResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The execution result of the interface is returned. Valid values:
+        # The execution result of the API operation. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request fails.
+        # - true: The execution succeeded.
+        # - false: The execution failed.
         self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request succeeded.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

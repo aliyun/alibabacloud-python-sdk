@@ -11,23 +11,23 @@ class CancelReportShareRequest(DaraModel):
         share_to_ids: str = None,
         share_to_type: int = None,
     ):
-        # The ID of the work. The works here include BI portal, dashboards, spreadsheets, and self-service access.
+        # The ID of the data work. Data works include data portals, dashboards, workbooks, and ad hoc queries.
         # 
         # This parameter is required.
         self.report_id = report_id
-        # The ID of the person to be shared, which may be the user ID of the Quick BI or the user group ID.
+        # The ID of the sharee. It can be a Quick BI user ID or a user group ID.
         # 
-        # *   If ShareToType is 0 (user), ShareTo is the user ID.
-        # *   When ShareToType is set to 1 (user group), ShareTo is the user group ID.
-        # *   When ShareToType=2 (organization), ShareTo is the ID of the organization.
+        # - If ShareToType is set to 0 (user), the value is the user ID.
+        # - If ShareToType is set to 1 (user group), the value is the user group ID.
+        # - If ShareToType is set to 2 (organization), the value is the organization ID.
         # 
         # This parameter is required.
         self.share_to_ids = share_to_ids
         # The deletion method. Valid values:
         # 
-        # *   0: Delete by user
-        # *   1: Delete by user group
-        # *   2: Delete by organization
+        # - 0: Delete by user.
+        # - 1: Delete by user group.
+        # - 2: Delete by organization.
         # 
         # This parameter is required.
         self.share_to_type = share_to_type

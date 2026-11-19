@@ -10,11 +10,10 @@ class QueryDataRangeRequest(DaraModel):
         keyword: str = None,
         type: str = None,
     ):
-        # Name, for fuzzy search.
+        # The name. Fuzzy search is supported.
         self.keyword = keyword
-        # Data range type:
-        # 
-        # - llmCube: LlmCube resource.
+        # The data scope type. Valid values:
+        # - llmCube: Data query resource.
         # - llmCubeTheme: Analysis theme.
         # 
         # This parameter is required.

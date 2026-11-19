@@ -11,8 +11,17 @@ class UpdateDataSourcePropertiesResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the modification was successful. Valid values:
+        # 
+        # - true: The modification was successful.
+        # - false: The modification failed.
         self.result = result
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # - true: The request was successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

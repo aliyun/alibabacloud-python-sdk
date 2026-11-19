@@ -12,14 +12,14 @@ class QueryDatasetSwitchInfoResponseBody(DaraModel):
         result: main_models.QueryDatasetSwitchInfoResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Details of the dataset\\"s row and column permission switches.
+        # The details of the row- and column-level permission switches for the dataset.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -63,17 +63,17 @@ class QueryDatasetSwitchInfoResponseBodyResult(DaraModel):
         is_open_column_level_permission: int = None,
         is_open_row_level_permission: int = None,
     ):
-        # Dataset ID.
+        # The dataset ID.
         self.cube_id = cube_id
-        # Status of the column-level field permission switch. Possible values:
+        # The status of the column-level field permission switch. Valid values:
         # 
-        # - 1: Enabled
-        # - 0: Disabled
+        # - 1: Enabled.
+        # - 0: Disabled.
         self.is_open_column_level_permission = is_open_column_level_permission
-        # Status of the row-level permission switch.
+        # The status of the row-level permission switch. Valid values:
         # 
-        # - 1: Enabled
-        # - 0: Disabled
+        # - 1: Enabled.
+        # - 0: Disabled.
         self.is_open_row_level_permission = is_open_row_level_permission
 
     def validate(self):

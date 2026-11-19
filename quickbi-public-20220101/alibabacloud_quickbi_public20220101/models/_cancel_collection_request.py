@@ -10,11 +10,11 @@ class CancelCollectionRequest(DaraModel):
         user_id: str = None,
         works_id: str = None,
     ):
-        # The ID of the favorite user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+        # The ID of the user who favorited the work. The user ID here refers to the Quick BI user ID, not the Alibaba Cloud UID.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # The ID of the work to cancel the collection.
+        # The ID of the work to remove from favorites.
         # 
         # This parameter is required.
         self.works_id = works_id

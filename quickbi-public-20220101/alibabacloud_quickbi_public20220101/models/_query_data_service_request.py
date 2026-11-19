@@ -11,23 +11,23 @@ class QueryDataServiceRequest(DaraModel):
         conditions: str = None,
         return_fields: str = None,
     ):
-        # The API ID in the data service. For more information, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
+        # The ID of the API in Data Service. For more information, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
         # 
         # This parameter is required.
         self.api_id = api_id
-        # The query conditions for the data service, passed in as Key-Value pairs. This is a map-type string. Here, Key is the name of the request parameter, and Value is the value of the request parameter. Keys and Values must appear in pairs.
+        # The query conditions for Data Service, which are passed as key-value pairs. The value is a string of the map type. The key is the name of the request parameter, and the value is the value of the request parameter. Keys and values must appear in pairs.
         # 
         # **Note:**
         # 
-        # - When the operator of the request parameter is set to **enumeration filter**, the value can contain multiple values. In this case, the format of the value is a JSON list. For example: `area=["East China","North China","South China"]`     
+        # - When the operator of a request parameter is set to **Enum Filter**, the value can contain multiple values. In this case, the value must be a JSON-formatted list. Example: `area=["East China","North China","South China"]`     
         # 
-        # - For dates, different formats are provided based on the type:
+        # - For dates, different input formats are provided based on the type:
         # 
         #     - Year: 2019
         # 
         #     - Quarter: 2019Q1
         # 
-        #     - Month: 201901 (with leading zero)
+        #     - Month: 201901 (including the leading zero)
         #     
         #     - Week: 2019-52
         # 
@@ -39,7 +39,7 @@ class QueryDataServiceRequest(DaraModel):
         # 
         #     - Second: 14:34:34
         self.conditions = conditions
-        # A list of parameter names to be returned, as a List-type string.
+        # The list of names of the response parameters. The value is a string of the list type.
         self.return_fields = return_fields
 
     def validate(self):

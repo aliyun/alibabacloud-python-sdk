@@ -13,16 +13,14 @@ class CheckOrganizationMemberResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the API call succeeded. Valid values:
+        # The execution result of the operation. Valid values:
         # 
-        # - true: The call succeeded.
-        # 
-        # - false: The call failed.
+        # - true: The execution succeeded.
+        # - false: The execution failed.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful.
-        # 
+        # - true: The request succeeded.
         # - false: The request failed.
         self.success = success
 

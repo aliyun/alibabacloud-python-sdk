@@ -14,14 +14,14 @@ class QueryReadableResourcesListByUserIdResponseBody(DaraModel):
         result: List[main_models.QueryReadableResourcesListByUserIdResponseBodyResult] = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The list of works that the user has permission to view.
         self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -83,52 +83,53 @@ class QueryReadableResourcesListByUserIdResponseBodyResult(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # The timestamp of the creation time in milliseconds.
+        # The millisecond timestamp of the creation time.
         self.create_time = create_time
-        # Remarks on the work.
+        # The description of the work.
         self.description = description
-        # The directory structure in which the work is located.
+        # The directory structure where the work is located.
         self.directory = directory
-        # The name of the Alibaba Cloud account to which the modifier belongs.
+        # The Alibaba Cloud account name of the user who last modified the work.
         self.modify_name = modify_name
-        # The timestamp of the modification time in milliseconds.
+        # The millisecond timestamp of the last modification time.
         self.modify_time = modify_time
-        # The Quick BI UserID of the work owner.
+        # The Quick BI user ID of the work owner.
         self.owner_id = owner_id
-        # The Alibaba Cloud account name of the owner.
+        # The Alibaba Cloud account name of the work owner.
         self.owner_name = owner_name
-        # Security policies for collaborative authorization of works. Valid values:
+        # The security policy for collaborative authorization of the work. Valid values:
+        # - 0: private
+        # - 12: authorized to specified members
+        # - 1 or 11: authorized to all workspace members
         # 
-        # *   0: private
-        # *   12: Authorize specified members
-        # *   1 or 11: Authorize all workspace members
-        # 
-        # > 
-        # 
-        # *   If you use legacy permissions, the return value is 1.
-        # 
-        # *   If you use the new permissions, the return value is 11.
+        # > - If you use the legacy permission model, the value 1 is returned.
+        # > - If you use the new permission model, the value 11 is returned.
         self.security_level = security_level
         # The status of the report. Valid values:
         # 
-        # *   0: unpublished
-        # *   1: published
-        # *   2: modified but not published
-        # *   3: unpublished
+        # - 0: unpublished
+        # - 1: published
+        # - 2: modified but unpublished
+        # - 3: offline
         self.status = status
-        # Third-party embedding status. Valid values:
+        # The third-party embedding status. Valid values:
         # 
-        # *   0: The embed service is not enabled.
-        # *   1: Embed is enabled.
+        # - 0: Embedding is not enabled.
+        # - 1: Embedding is enabled.
         self.third_part_auth_flag = third_part_auth_flag
         # The name of the work.
         self.work_name = work_name
         # The type of the work. Valid values:
         # 
-        # *   DATAPRODUCT: BI portal
-        # *   PAGE: Dashboard
-        # *   FULLPAGE: full-screen dashboards
-        # *   REPORT: workbook
+        # - DATAPRODUCT: Data portal
+        # - PAGE: Dashboard (legacy)
+        # - FULLPAGE: Full-screen dashboard
+        # - REPORT: Workbook
+        # - DASHBOARD: Dashboard (new)
+        # - DATAFORM: Data entry form
+        # - dashboardOfflineQuery: Ad hoc query
+        # - ANALYSIS: Ad hoc analysis
+        # - SCREEN: Data screen
         self.work_type = work_type
         # The ID of the work.
         self.works_id = works_id
@@ -255,9 +256,9 @@ class QueryReadableResourcesListByUserIdResponseBodyResultDirectory(DaraModel):
         self.id = id
         # The name of the directory.
         self.name = name
-        # The hierarchical structure of the directory ID, which is separated with \\"/\\".
+        # The hierarchical structure of directory IDs, separated by forward slashes (/).
         self.path_id = path_id
-        # The hierarchical structure of the directory name, which is separated with \\"/\\".
+        # The hierarchical structure of directory names, separated by forward slashes (/).
         self.path_name = path_name
 
     def validate(self):

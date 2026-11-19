@@ -11,11 +11,11 @@ class CancelAuthorizationMenuResponseBody(DaraModel):
         result: int = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Number of menus successfully unauthorized.
+        # The number of menus for which authorization was successfully revoked.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request was successful. Valid values:
         # 
         # - true: The request was successful.
         # - false: The request failed.

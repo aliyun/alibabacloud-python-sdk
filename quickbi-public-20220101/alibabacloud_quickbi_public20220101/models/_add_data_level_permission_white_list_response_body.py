@@ -11,18 +11,16 @@ class AddDataLevelPermissionWhiteListResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The execution result of the API operation. Valid values:
+        # The execution result of the operation. Valid values:
         # 
-        # - true: The request was successful.
-        # 
+        # - true: The request succeeded.
         # - false: The request failed.
         self.result = result
         # Indicates whether the request was successful. Valid values:
         # 
-        # - true: The request was successful.
-        # 
+        # - true: The request succeeded.
         # - false: The request failed.
         self.success = success
 

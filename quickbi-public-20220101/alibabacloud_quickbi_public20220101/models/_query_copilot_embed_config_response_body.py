@@ -14,14 +14,14 @@ class QueryCopilotEmbedConfigResponseBody(DaraModel):
         result: List[main_models.QueryCopilotEmbedConfigResponseBodyResult] = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # List of embedded configurations.
+        # The list of embedding configurations.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -76,21 +76,21 @@ class QueryCopilotEmbedConfigResponseBodyResult(DaraModel):
         module_name: str = None,
         show_name: str = None,
     ):
-        # Robot\\"s nickname.
+        # The nickname of the chatbot.
         self.agent_name = agent_name
-        # Embedding ID.
+        # The embedding ID.
         self.copilot_id = copilot_id
-        # ID of the creator.
+        # The user ID of the creator.
         self.create_user = create_user
-        # Nickname of the creator.
+        # The nickname of the creator.
         self.create_user_name = create_user_name
-        # Data range (analysis themes and question resources).
+        # The data scope, including analysis topics and data query resources.
         self.data_range = data_range
-        # ID of the modifier.
+        # The user ID of the modifier.
         self.modify_user = modify_user
-        # Module name.
+        # The module name.
         self.module_name = module_name
-        # Name of the embedded module.
+        # The name of the embedding module.
         self.show_name = show_name
 
     def validate(self):
@@ -165,13 +165,13 @@ class QueryCopilotEmbedConfigResponseBodyResultDataRange(DaraModel):
         llm_cubes: List[str] = None,
         themes: List[str] = None,
     ):
-        # Whether all question resources are selected.
+        # Indicates whether all data query resources are selected.
         self.all_cube = all_cube
-        # Whether all analysis themes are selected.
+        # Indicates whether all analysis topics are selected.
         self.all_theme = all_theme
-        # Collection of question resource IDs.
+        # The set of data query resource IDs.
         self.llm_cubes = llm_cubes
-        # Collection of analysis theme IDs.
+        # The set of analysis topic IDs.
         self.themes = themes
 
     def validate(self):

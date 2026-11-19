@@ -11,19 +11,13 @@ class UpdateUserTagMetaRequest(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # The tag description.
-        # 
-        # - Format check: Maximum length is 255 characters.
+        # The description of the tag. The maximum length is 255 characters.
         self.tag_description = tag_description
-        # The specified TagID.
-        # 
-        # - Format check: Maximum length is 64 characters.
+        # The specified tag ID. The maximum length is 64 characters.
         # 
         # This parameter is required.
         self.tag_id = tag_id
-        # The tag name.
-        # - Format check: Maximum length is 50 characters.
-        # - Only Chinese, English, numbers, and /\\|[]() symbols are allowed.
+        # The name of the tag. The maximum length is 50 characters. Only letters, digits, and the /, \\, |, [, ], (, and ) symbols are allowed.
         # 
         # This parameter is required.
         self.tag_name = tag_name

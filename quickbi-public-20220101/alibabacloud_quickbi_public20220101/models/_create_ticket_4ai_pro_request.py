@@ -16,14 +16,28 @@ class CreateTicket4AiProRequest(DaraModel):
         system_uid: str = None,
         ticket_num: int = None,
     ):
+        # The account of the access user to bind. Use this parameter together with AccountType when QuickBIUserId is not specified.
         self.account_name = account_name
+        # The account type of the user. Valid values:
+        # - 1: Alibaba Cloud account.
+        # - 3: Quick BI custom account.
+        # - 4: DingTalk.
+        # - 5: RAM user.
+        # - 9: WeCom.
         self.account_type = account_type
+        # The ID of the AIPro embedding configuration. The configuration must exist, belong to the current organization, and have a status of 1.
+        # 
         # This parameter is required.
         self.ai_pro_id = ai_pro_id
+        # The custom pass-through parameter. If specified, it must be a valid JSON string.
         self.custom_param = custom_param
+        # The validity period of the ticket, in minutes. Default value: 240. The value must be greater than 0.
         self.expire_time = expire_time
+        # The QuickBI user ID of the access user to bind. Specify either this parameter or the combination of AccountName and AccountType.
         self.quick_biuser_id = quick_biuser_id
+        # The custom system identifier. The length must be less than 150 characters.
         self.system_uid = system_uid
+        # The number of times the ticket can be used. Default value: 1. Valid values: 1 to 99999.
         self.ticket_num = ticket_num
 
     def validate(self):

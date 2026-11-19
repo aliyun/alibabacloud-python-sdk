@@ -14,14 +14,14 @@ class QueryLlmCubeWithThemeListByUserIdResponseBody(DaraModel):
         result: main_models.QueryLlmCubeWithThemeListByUserIdResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # List of datasets and analysis themes.
+        # The list of datasets and analysis themes.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful
-        # - false: The request failed
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -64,14 +64,13 @@ class QueryLlmCubeWithThemeListByUserIdResponseBodyResult(DaraModel):
         cube_ids: Dict[str, str] = None,
         theme_ids: Dict[str, str] = None,
     ):
-        # Dataset map.
-        # 
-        # - key - Dataset ID
-        # - value - Dataset name
+        # The dataset map.
+        # - key: The dataset ID.
+        # - value: The dataset name.
         self.cube_ids = cube_ids
-        # Analysis theme map.
-        # - key - Analysis theme ID 
-        # - value - Analysis theme name
+        # The analysis theme map.
+        # - key: The analysis theme ID. 
+        # - value: The analysis theme name.
         self.theme_ids = theme_ids
 
     def validate(self):

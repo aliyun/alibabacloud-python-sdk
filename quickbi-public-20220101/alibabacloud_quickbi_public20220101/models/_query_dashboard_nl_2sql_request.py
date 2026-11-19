@@ -10,11 +10,11 @@ class QueryDashboardNl2sqlRequest(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # User ID.
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # Workspace ID.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

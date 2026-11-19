@@ -13,32 +13,28 @@ class AddDataLevelPermissionWhiteListRequest(DaraModel):
         target_ids: str = None,
         target_type: str = None,
     ):
-        # The ID of the dataset.
+        # The dataset ID.
         # 
         # This parameter is required.
         self.cube_id = cube_id
-        # The operation to perform. Valid values:
+        # The operation type. Valid values: 
         # 
-        # - ADD: adds users or user groups to the whitelist.
-        # 
-        # - DELETE: removes users or user groups from the whitelist.
+        # - ADD: add entries to the whitelist
+        # - DELETE: remove entries from the whitelist
         self.operate_type = operate_type
-        # The type of permission. Valid values:
+        # The permission type. Valid values:
         # 
-        # - ROW_LEVEL: row-level permission
-        # 
-        # - COLUMN_LEVEL: column-level permission
+        # - ROW_LEVEL: row-level permissions
+        # - COLUMN_LEVEL: column-level permissions
         self.rule_type = rule_type
-        # The IDs of the users or user groups to add to the whitelist.
+        # The authorization targets. You can specify multiple targets separated by commas (,). Valid values:
         # 
-        # - If you set TargetType to 1 (user), specify the user IDs.
-        # 
-        # - When `TargetType=2` (user group), the value is the user group ID.
+        # - If TargetType is set to 1 (user), the value is the user ID.
+        # - If TargetType is set to 2 (user group), the value is the user group ID.
         self.target_ids = target_ids
-        # The type of object to add to the whitelist. Valid values:
+        # The type of the target for which the whitelist is modified. Valid values:
         # 
-        # - 1: user
-        # 
+        # - 1: user 
         # - 2: user group
         self.target_type = target_type
 

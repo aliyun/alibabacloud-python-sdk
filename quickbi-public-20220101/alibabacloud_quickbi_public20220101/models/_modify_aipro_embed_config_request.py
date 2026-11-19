@@ -15,12 +15,34 @@ class ModifyAiproEmbedConfigRequest(DaraModel):
         show_name: str = None,
         upload_enabled: int = None,
     ):
+        # The nickname of the agent. The default value is Intelligent Data Analytics Assistant when you create a configuration.
         self.agent_name = agent_name
+        # The AIPro configuration ID. If this parameter is not specified or is left empty, a new configuration is created. If this parameter is specified, the existing configuration is updated.
         self.ai_pro_id = ai_pro_id
+        # Specifies whether to display the chat history. Valid values:
+        # 
+        # - 1: Display.
+        # - 0: Do not display.
+        # 
+        # Default value: 1.
         self.chat_history_status = chat_history_status
+        # The JSON string of the embedding appearance configuration saved on the frontend.
         self.config = config
+        # Specifies whether to enable memory. Valid values:
+        # 
+        # - 1: Enable.
+        # - 0: Disable.
+        # 
+        # Default value: 0.
         self.memory_enabled = memory_enabled
+        # The name of the configuration. This parameter is required and must be unique within the organization when you create a configuration. If this parameter is left empty when you update a configuration, the name is not updated.
         self.show_name = show_name
+        # Specifies whether to allow file uploads. Valid values:
+        # 
+        # - 1: Allow.
+        # - 0: Do not allow.
+        # 
+        # Default value: 0.
         self.upload_enabled = upload_enabled
 
     def validate(self):

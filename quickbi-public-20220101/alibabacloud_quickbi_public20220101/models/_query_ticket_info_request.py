@@ -9,7 +9,7 @@ class QueryTicketInfoRequest(DaraModel):
         self,
         ticket: str = None,
     ):
-        # The value of the bill.
+        # The ticket value.
         # 
         # This parameter is required.
         self.ticket = ticket

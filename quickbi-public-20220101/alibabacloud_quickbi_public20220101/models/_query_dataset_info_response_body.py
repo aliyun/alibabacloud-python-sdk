@@ -14,14 +14,14 @@ class QueryDatasetInfoResponseBody(DaraModel):
         result: main_models.QueryDatasetInfoResponseBodyResult = None,
         success: bool = None,
     ):
-        # Whether the operation is successfully returned. Valid values:
-        # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # The request ID.
         self.request_id = request_id
         # The dataset information.
         self.result = result
-        # The unique ID of the dataset.
+        # Specifies whether the request is successful. Valid values:
+        # 
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -80,55 +80,55 @@ class QueryDatasetInfoResponseBodyResult(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # The unique ID of the dataset.
+        # The list of tables used by the dataset.
         self.cube_table_list = cube_table_list
-        # The unique ID of the workspace to which the dataset belongs.
+        # Specifies whether custom SQL is used. Valid values:
+        # 
+        # - true: Yes.
+        # - false: No.
         self.custimze_sql = custimze_sql
-        # The type of the data source. Valid values:
-        # 
-        # *   mysql
-        # *   odps
-        # *   oracle
-        # *   ... Data source types supported by Quick BI such as
+        # The unique ID of the dataset.
         self.dataset_id = dataset_id
-        # The user ID of the dataset owner in the Quick BI.
+        # The dataset name.
         self.dataset_name = dataset_name
-        # A list of all dimensions in the dataset.
+        # The list of all dimensions in the dataset.
         self.dimension_list = dimension_list
-        # The unique ID of the metric.
+        # The folder information of the dataset.
         self.directory = directory
-        # The name of the data source.
-        self.ds_id = ds_id
-        # The time when the dataset was last modified.
-        self.ds_name = ds_name
-        # The point in time when the training dataset was created.
-        self.ds_type = ds_type
-        # Indicates whether to customize SQL statements. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.gmt_create = gmt_create
-        # The information about the dataset.
-        self.gmt_modify = gmt_modify
-        # A list of all measures for the dataset.
-        self.measure_list = measure_list
-        # Whether to enable extraction acceleration. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.open_offline_acceleration = open_offline_acceleration
-        # Test Space
-        self.owner_id = owner_id
         # The unique ID of the data source.
-        self.owner_name = owner_name
-        # The name of the training dataset.
-        self.row_level = row_level
-        # Whether row-level permissions are enabled. Valid values:
+        self.ds_id = ds_id
+        # The data source name.
+        self.ds_name = ds_name
+        # The data source type. Valid values:
         # 
-        # *   true: The VIP Netty channel is enabled.
-        # *   false: The VIP Netty channel is disabled.
+        # - mysql
+        # - odps
+        # - oracle
+        # - Other data source types supported by Quick BI.
+        self.ds_type = ds_type
+        # The time when the dataset was created.
+        self.gmt_create = gmt_create
+        # The time when the dataset was last modified.
+        self.gmt_modify = gmt_modify
+        # The list of all measures in the dataset.
+        self.measure_list = measure_list
+        # Specifies whether extract acceleration is enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
+        self.open_offline_acceleration = open_offline_acceleration
+        # The user ID of the dataset owner in Quick BI.
+        self.owner_id = owner_id
+        # The name of the dataset owner.
+        self.owner_name = owner_name
+        # Specifies whether row-level permissions are enabled. Valid values:
+        # 
+        # - true: Enabled.
+        # - false: Disabled.
+        self.row_level = row_level
+        # The unique ID of the workspace to which the dataset belongs.
         self.workspace_id = workspace_id
-        # Big Baby
+        # The name of the workspace to which the dataset belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -295,30 +295,30 @@ class QueryDatasetInfoResponseBodyResultMeasureList(DaraModel):
         table_unique_id: str = None,
         uid: str = None,
     ):
-        # The actual physical field.
+        # The display name of the measure.
         self.caption = caption
-        # A list of all measures for the dataset.
+        # The data type. Valid values:
+        # 
+        # - string: String.
+        # - number: Number.
+        # - datetime: Datetime.
         self.data_type = data_type
-        # Data type; value:
-        # 
-        # *   string: character
-        # *   number: a number
-        # *   datetime: time
+        # The expression for the calculated measure. This parameter is valid only for calculated measures.
         self.expression = expression
-        # Expression for flattened computation metrics.
+        # The flattened expression for the calculated measure.
         self.expression_v2 = expression_v2
-        # The type of the measure. Valid values:
-        # 
-        # *   standard_measure: General Metrics
-        # *   calculate_measure: Calculating Measures
+        # The actual physical field.
         self.fact_column = fact_column
-        # The description of the field.
+        # The field description.
         self.field_description = field_description
-        # An expression that calculates a measure; valid only for calculated measures.
+        # The metric type. Valid values:
+        # 
+        # - standard_measure: Standard measure.
+        # - calculate_measure: Calculated measure.
         self.measure_type = measure_type
-        # The display name of the metric.
+        # The unique ID of the table to which the dimension belongs. This corresponds to the UniqueId in CubeTypeList.
         self.table_unique_id = table_unique_id
-        # The unique ID of the table to which the table belongs, which corresponds to the UniqueId of the CubeTypeList.
+        # The unique ID of the measure.
         self.uid = uid
 
     def validate(self):
@@ -397,13 +397,13 @@ class QueryDatasetInfoResponseBodyResultDirectory(DaraModel):
         path_id: str = None,
         path_name: str = None,
     ):
-        # Test directory
+        # The folder ID.
         self.id = id
-        # Test directory
+        # The folder name.
         self.name = name
-        # The information about the directory to which the dataset belongs.
+        # The path of the folder ID, such as aa/bb/cc/dd.
         self.path_id = path_id
-        # The path of the directory ID, for example, aa/bb/cc/dd.
+        # The path name of the folder ID, such as Level 1 folder/Level 2 folder.
         self.path_name = path_name
 
     def validate(self):
@@ -459,35 +459,35 @@ class QueryDatasetInfoResponseBodyResultDimensionList(DaraModel):
         table_unique_id: str = None,
         uid: str = None,
     ):
-        # The unique ID of the field that is referenced by the group measure. Non-NULL if and only if the metric is a grouping metric.
-        self.caption = caption
-        # A list of all dimensions in the dataset.
-        self.data_type = data_type
-        # The actual physical field.
-        self.dimension_type = dimension_type
-        # Data type; value:
-        # 
-        # *   string: character
-        # *   number: a number
-        # *   datetime: time
-        self.expression = expression
-        # Expression for the flattened calculation dimensions.
-        self.expression_v2 = expression_v2
-        # Expression for a calculated dimension; valid only for calculated dimensions.
-        self.fact_column = fact_column
-        # The description of the field.
-        self.field_description = field_description
-        # The type of the dimension. Valid values:
-        # 
-        # *   standard_dimension: General Dimension
-        # *   calculate_dimension: calculating dimensions
-        # *   group_dimension: grouping dimensions
-        self.granularity = granularity
-        # The granularity.
-        self.ref_uid = ref_uid
-        # The ARN.
-        self.table_unique_id = table_unique_id
         # The display name of the dimension.
+        self.caption = caption
+        # The data type. Valid values:
+        # 
+        # - string: String.
+        # - number: Number.
+        # - datetime: Datetime.
+        self.data_type = data_type
+        # The dimension type. Valid values:
+        # 
+        # - standard_dimension: Standard dimension.
+        # - calculate_dimension: Calculated dimension.
+        # - group_dimension: Grouped dimension.
+        self.dimension_type = dimension_type
+        # The expression for the calculated dimension. This parameter is valid only for calculated dimensions.
+        self.expression = expression
+        # The flattened expression for the calculated dimension.
+        self.expression_v2 = expression_v2
+        # The actual physical field.
+        self.fact_column = fact_column
+        # The field description.
+        self.field_description = field_description
+        # The granularity.
+        self.granularity = granularity
+        # The unique ID of the referenced field for a grouped measure. This parameter is not null only when the measure is a grouped measure.
+        self.ref_uid = ref_uid
+        # The unique ID of the table to which the dimension belongs. This corresponds to the UniqueId in CubeTypeList.
+        self.table_unique_id = table_unique_id
+        # The unique ID.
         self.uid = uid
 
     def validate(self):
@@ -583,33 +583,34 @@ class QueryDatasetInfoResponseBodyResultCubeTableList(DaraModel):
         table_name: str = None,
         unique_id: str = None,
     ):
-        # Indicates whether the data source table is valid. Valid values:
-        # 
-        # *   true: data source table
-        # *   false: custom table
-        self.caption = caption
-        self.child_tables = child_tables
         # The display name of the table.
+        self.caption = caption
+        # The actual physical tables used by the merged table.
+        self.child_tables = child_tables
+        # Specifies whether the table is a custom SQL table. Valid values:
+        # 
+        # - true: The table is a custom SQL table.
+        # - false: The table is not a custom SQL table.
         self.customsql = customsql
-        # The name of the table.
+        # The data source ID.
         self.datasource_id = datasource_id
-        # The ID of the data source.
+        # The data source type. Valid values:
+        # 
+        # - mysql
+        # - odps
+        # - oracle
+        # - Other data source types supported by Quick BI.
         self.ds_type = ds_type
-        # The unique ID of the table.
+        # Specifies whether the table is a data source table. Valid values:
+        # 
+        # - true: The table is a data source table.
+        # - false: The table is a custom table.
         self.fact_table = fact_table
-        # Indicates whether the table is a custom SQL table. Valid values:
-        # 
-        # *   true: custom SQL table
-        # *   false: non-custom SQL table
+        # The specific SQL statement when the table is a custom SQL table.
         self.sql = sql
-        # The list of tables used by the dataset.
+        # The table name.
         self.table_name = table_name
-        # The type of the data source. Valid values:
-        # 
-        # *   mysql
-        # *   odps
-        # *   oracle
-        # *   ... and other data source types supported by Quick BI
+        # The unique ID of the table.
         self.unique_id = unique_id
 
     def validate(self):
@@ -700,13 +701,21 @@ class QueryDatasetInfoResponseBodyResultCubeTableListChildTables(DaraModel):
         table_name: str = None,
         unique_id: str = None,
     ):
+        # The display name.
         self.caption = caption
+        # Specifies whether the table is a custom dataset.
         self.customsql = customsql
+        # The data source ID.
         self.datasource_id = datasource_id
+        # The data source type.
         self.ds_type = ds_type
+        # Specifies whether the table is the primary table.
         self.fact_table = fact_table
+        # The SQL statement for the custom SQL dataset.
         self.sql = sql
+        # The physical table name.
         self.table_name = table_name
+        # The unique ID.
         self.unique_id = unique_id
 
     def validate(self):

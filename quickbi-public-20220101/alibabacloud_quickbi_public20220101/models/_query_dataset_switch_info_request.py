@@ -9,7 +9,7 @@ class QueryDatasetSwitchInfoRequest(DaraModel):
         self,
         cube_id: str = None,
     ):
-        # Dataset ID.
+        # The dataset ID.
         # 
         # This parameter is required.
         self.cube_id = cube_id

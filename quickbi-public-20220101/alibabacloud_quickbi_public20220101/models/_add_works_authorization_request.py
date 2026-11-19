@@ -14,61 +14,41 @@ class AddWorksAuthorizationRequest(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The permissions to grant. Valid values:
-        # 
-        # `1`: View
-        # 
-        # `3`: View and Export
-        # 
-        # `11`: Edit, View, and Export
-        # 
-        # **Note**: If AuthPoints is set to 11, the authorization is permanent and the ExpireDay parameter is ignored.
+        # The type of granted permissions. Valid values:
+        # - 1: View.
+        # - 3: View and export.
+        # - 11: Edit, view, and export.
+        # Note: When the value is set to 11, the authorization does not expire.
         # 
         # This parameter is required.
         self.auth_points = auth_points
-        # The type of the principal. Valid values:
-        # 
-        # - `0`: User. Set AuthorizedId to the user ID.
-        # 
-        # - `1`: User group. Set AuthorizedId to the user group ID.
-        # 
-        # - `2`: All members of an organization. Set AuthorizedId to the organization ID.
-        # 
-        # - `3`: All members of a workspace. Set AuthorizedId to the workspace ID.
+        # The authorization scope. Valid values:
+        # - 0: User. The AuthorizedId parameter corresponds to the user ID in Quick BI.
+        # - 1: User group. The AuthorizedId parameter corresponds to the user group ID in Quick BI.
+        # - 2: All organization members. The AuthorizedId parameter corresponds to the organization ID in Quick BI.
+        # - 3: All workspace members. The AuthorizedId parameter corresponds to the workspace ID in Quick BI.
         # 
         # This parameter is required.
         self.authorize_scope = authorize_scope
-        # The ID of the principal to be authorized. The AuthorizeScope parameter specifies the type of principal.
+        # The ID of the authorized object. For more information, see the description of AuthorizeScope.
         # 
         # This parameter is required.
         self.authorized_id = authorized_id
-        # The expiration date for the permissions.
-        # 
-        # Format: `YYYY-MM-DD`.
-        # 
-        # **Note**: This parameter is required if AuthPoints is not 11. The authorization must be valid for at least one day after the authorization date.
+        # The expiration date of the authorization. Format: yyyy-MM-dd. Example: 2022-02-16. Note: The authorization period must be at least N+1 days. This parameter is required when the AuthPoints parameter is not set to 11.
         self.expire_day = expire_day
-        # The ID of the work.
+        # The resource ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the work. Valid values:
-        # 
-        # - `dashboard`: A dashboard.
-        # 
-        # - `report`: A report.
-        # 
-        # - `dashboardOfflineQuery`: An ad-hoc query.
-        # 
-        # - `cube`: A dataset.
-        # 
-        # - `datasource`: A data source.
-        # 
-        # - `screen`: A data screen.
-        # 
-        # - `ANALYSIS`: An ad-hoc analysis.
-        # 
-        # - `dataForm`: A data form.
+        # The resource type. Valid values:
+        # - dashboard: Dashboard.
+        # - report: Workbook.
+        # - dashboardOfflineQuery: Ad hoc query.
+        # - cube: Dataset.
+        # - datasource: Data source.
+        # - screen: Data screen.
+        # - ANALYSIS: Ad hoc analysis.
+        # - dataForm: Data entry.
         # 
         # This parameter is required.
         self.resource_type = resource_type

@@ -11,8 +11,17 @@ class ModifyAiproEmbedConfigResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The execution result of the operation. Valid values:
+        # 
+        # - true: The operation is successful.
+        # - false: The operation fails.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

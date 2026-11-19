@@ -18,48 +18,37 @@ class QueryAuditLogRequest(DaraModel):
         workspace_id: str = None,
     ):
         # The access source. Valid values:
-        # 
-        # - COMMON: standard access
-        # 
-        # - IMBEDDED: embedded report
-        # 
-        # - PUBLIC: public report
-        # 
-        # - IMBEDDED_COMPONENT: embedded card
+        # - COMMON: Regular access.
+        # - IMBEDDED: Embedded report.
+        # - PUBLIC: Public report.
+        # - IMBEDDED_COMPONENT: Embedded card.
         self.access_source_flag = access_source_flag
-        # The end date for the query. Use the yyyyMMdd format.
+        # The end date of the query. Format: yyyyMMdd.
         # 
         # This parameter is required.
         self.end_date = end_date
         # The log type. Valid values:
-        # 
-        # - dataView: access logs
-        # 
-        # - function: operation logs
-        # 
-        # - permission: permission logs
+        # - dataView: Access.
+        # - function: Operation.
+        # - permission: Permission.
         # 
         # This parameter is required.
         self.log_type = log_type
         # The user ID of the operator.
         self.operator_id = operator_id
-        # The permission, access, or operation type. If left empty, all types are queried by default.
-        # 
-        # For valid values, see audit log codes. To specify multiple types, separate them with commas.
+        # The permission, access, or operation type. If this parameter is left empty, all types are queried by default. For more information, see the audit log code values. Separate multiple values with commas (,).
         self.operator_types = operator_types
-        # The resource type. For more information, see work types.
+        # The resource type. For more information, see the asset type.
         self.resource_type = resource_type
-        # The start date for the query. Use the yyyyMMdd format. The date cannot be more than 90 days before the current date.
+        # The start date of the query. Format: yyyyMMdd. The date cannot be more than 90 days before the current date.
         # 
         # This parameter is required.
         self.start_date = start_date
-        # The device used for access. Valid values:
-        # 
-        # - MOBILE: mobile device
-        # 
-        # - PC: PC
+        # The access device. Valid values:
+        # - MOBILE: Mobile client.
+        # - PC: PC client.
         self.user_access_device = user_access_device
-        # The ID of the workspace that contains the logs to query.
+        # The ID of the workspace to which the logs to be queried belong.
         self.workspace_id = workspace_id
 
     def validate(self):

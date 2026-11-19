@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_quickbi_public20220101 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'quickbi-public'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('quickbi-public', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -3679,6 +3683,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetMailTaskStatusResponse:
         runtime = RuntimeOptions()
         return await self.get_mail_task_status_with_options_async(request, runtime)
+
+    def get_personal_icode_with_options(
+        self,
+        request: main_models.GetPersonalICodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPersonalICodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.quick_biuser_id):
+            query['QuickBIUserId'] = request.quick_biuser_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPersonalICode',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPersonalICodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_personal_icode_with_options_async(
+        self,
+        request: main_models.GetPersonalICodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPersonalICodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.quick_biuser_id):
+            query['QuickBIUserId'] = request.quick_biuser_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPersonalICode',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPersonalICodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_personal_icode(
+        self,
+        request: main_models.GetPersonalICodeRequest,
+    ) -> main_models.GetPersonalICodeResponse:
+        runtime = RuntimeOptions()
+        return self.get_personal_icode_with_options(request, runtime)
+
+    async def get_personal_icode_async(
+        self,
+        request: main_models.GetPersonalICodeRequest,
+    ) -> main_models.GetPersonalICodeResponse:
+        runtime = RuntimeOptions()
+        return await self.get_personal_icode_with_options_async(request, runtime)
 
     def get_user_group_info_with_options(
         self,
@@ -10493,6 +10567,76 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateEmbeddedStatusResponse:
         runtime = RuntimeOptions()
         return await self.update_embedded_status_with_options_async(request, runtime)
+
+    def update_personal_icode_with_options(
+        self,
+        request: main_models.UpdatePersonalICodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePersonalICodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.quick_biuser_id):
+            query['QuickBIUserId'] = request.quick_biuser_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePersonalICode',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePersonalICodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_personal_icode_with_options_async(
+        self,
+        request: main_models.UpdatePersonalICodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePersonalICodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.quick_biuser_id):
+            query['QuickBIUserId'] = request.quick_biuser_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdatePersonalICode',
+            version = '2022-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdatePersonalICodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_personal_icode(
+        self,
+        request: main_models.UpdatePersonalICodeRequest,
+    ) -> main_models.UpdatePersonalICodeResponse:
+        runtime = RuntimeOptions()
+        return self.update_personal_icode_with_options(request, runtime)
+
+    async def update_personal_icode_async(
+        self,
+        request: main_models.UpdatePersonalICodeRequest,
+    ) -> main_models.UpdatePersonalICodeResponse:
+        runtime = RuntimeOptions()
+        return await self.update_personal_icode_with_options_async(request, runtime)
 
     def update_ticket_num_with_options(
         self,

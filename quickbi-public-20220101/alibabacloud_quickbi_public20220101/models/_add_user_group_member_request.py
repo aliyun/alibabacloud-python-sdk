@@ -14,7 +14,7 @@ class AddUserGroupMemberRequest(DaraModel):
         # 
         # This parameter is required.
         self.user_group_id = user_group_id
-        # The ID of the Quick BI user. Separate multiple IDs with commas (,). Example: abc,efg. You can enter a maximum of 1000 entries.
+        # The IDs of Quick BI users. Separate multiple IDs with commas (,). Example: abc,efg. You can specify up to 1,000 IDs.
         # 
         # This parameter is required.
         self.user_id_list = user_id_list

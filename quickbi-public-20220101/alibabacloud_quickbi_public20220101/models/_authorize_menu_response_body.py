@@ -13,12 +13,12 @@ class AuthorizeMenuResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The number of authorized menus.
+        # The number of menus that are successfully authorized.
         self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

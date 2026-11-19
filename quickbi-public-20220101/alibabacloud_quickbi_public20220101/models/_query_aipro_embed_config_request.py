@@ -9,6 +9,7 @@ class QueryAiproEmbedConfigRequest(DaraModel):
         self,
         keyword: str = None,
     ):
+        # The keyword used for fuzzy search by showName.
         self.keyword = keyword
 
     def validate(self):

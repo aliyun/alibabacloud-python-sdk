@@ -16,16 +16,16 @@ class BatchAddFeishuUsersResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result of adding user group members. Valid values:
+        # Indicates whether the user group members are added. Valid values:
         # 
-        # - true: The users were added.
+        # - true: The user group members are added.
         # 
-        # - false: The users failed to be added.
+        # - false: The user group members fail to be added.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -69,11 +69,11 @@ class BatchAddFeishuUsersResponseBodyResult(DaraModel):
         fail_results: List[main_models.BatchAddFeishuUsersResponseBodyResultFailResults] = None,
         ok_count: int = None,
     ):
-        # The number of users that failed validation.
+        # The number of failures.
         self.fail_count = fail_count
         # The details of the failures.
         self.fail_results = fail_results
-        # The number of users that were added.
+        # The number of successes.
         self.ok_count = ok_count
 
     def validate(self):
@@ -121,7 +121,7 @@ class BatchAddFeishuUsersResponseBodyResultFailResults(DaraModel):
         self,
         fail_infos: List[main_models.BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos] = None,
     ):
-        # The error causes.
+        # The causes of the errors.
         self.fail_infos = fail_infos
 
     def validate(self):
@@ -161,7 +161,7 @@ class BatchAddFeishuUsersResponseBodyResultFailResultsFailInfos(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The error code description.
+        # The description of the error code.
         self.code_desc = code_desc
         # The invalid input value.
         self.input = input

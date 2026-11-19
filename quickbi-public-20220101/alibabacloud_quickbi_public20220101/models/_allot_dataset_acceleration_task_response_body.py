@@ -13,15 +13,14 @@ class AllotDatasetAccelerationTaskResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the IP address whitelist is updated. Valid values:
-        # 
-        # *   true: The task is triggered.
-        # *   false: The task fails to be triggered.
+        # The execution result. Valid values:
+        # - true: The task is triggered successfully.
+        # - false: The task fails to be triggered.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):

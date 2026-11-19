@@ -16,10 +16,9 @@ class QueryUserByMobileAccountResponseBody(DaraModel):
         self.request_id = request_id
         # The user information bound to the third-party account.
         self.result = result
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -64,7 +63,7 @@ class QueryUserByMobileAccountResponseBodyResult(DaraModel):
     ):
         # The Quick BI user ID of the bound account.
         self.bound_user_id = bound_user_id
-        # The mobile account name.
+        # The name of the mobile account.
         self.third_account_name = third_account_name
 
     def validate(self):

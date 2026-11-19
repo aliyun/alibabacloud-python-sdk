@@ -9,7 +9,7 @@ class QueryLlmCubeWithThemeListByUserIdRequest(DaraModel):
         self,
         user_id: str = None,
     ):
-        # User ID.
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id

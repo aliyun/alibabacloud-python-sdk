@@ -1,3 +1,9 @@
+2026-11-19 Version: 1.20.0
+- Support API GetPersonalICode.
+- Support API UpdatePersonalICode.
+- Update API QueryData: add response parameters Body.Result.ValuesV2.
+
+
 2026-10-26 Version: 1.19.0
 - Support API CreateTicket4AiPro.
 - Support API ModifyAiproEmbedConfig.

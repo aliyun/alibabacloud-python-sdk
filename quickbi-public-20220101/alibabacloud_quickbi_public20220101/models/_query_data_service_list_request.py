@@ -12,16 +12,16 @@ class QueryDataServiceListRequest(DaraModel):
         page_size: int = None,
         user_id: str = None,
     ):
-        # Data service name.
+        # The service name.
         self.name = name
-        # Page number. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_no = page_no
-        # Number of items per page in a paginated query:
+        # The number of entries per page for a paged query.
         # 
         # - Default value: 10
         # - Maximum value: 1000
         self.page_size = page_size
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

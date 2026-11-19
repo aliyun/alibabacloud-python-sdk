@@ -12,17 +12,17 @@ class QueryApprovalInfoRequest(DaraModel):
         status: int = None,
         user_id: str = None,
     ):
-        # Page number, default is 1.
+        # The page number. Default value: 1.
         self.page = page
-        # Number of rows per page, default is 1000.
+        # The number of entries per page. Default value: 1000.
         self.page_size = page_size
-        # Approval status:
-        # - 0: Pending
-        # - 1: Processed
+        # The approval status. Valid values:
+        # - 0: Pending.
+        # - 1: Processed.
         # 
         # This parameter is required.
         self.status = status
-        # Current approver user ID, qbi user ID.
+        # The QBI user ID of the current approver.
         # 
         # This parameter is required.
         self.user_id = user_id

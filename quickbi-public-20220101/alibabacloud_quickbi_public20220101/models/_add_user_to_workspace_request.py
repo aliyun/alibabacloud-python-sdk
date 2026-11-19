@@ -11,25 +11,22 @@ class AddUserToWorkspaceRequest(DaraModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the role in the workspace. Predefined roles:
+        # The workspace role ID. Preset roles:
+        # - 25: Workspace administrator
+        # - 26: Workspace developer
+        # - 27: Workspace analyst
+        # - 30: Workspace viewer
         # 
-        # - 25: workspace administrator
-        # 
-        # - 26: workspace developer
-        # 
-        # - 27: workspace analyst
-        # 
-        # - 30: workspace viewer
-        # 
-        # > Custom role IDs are supported in version 6.0.3 and later.
+        # > Custom role IDs are supported since 6.0.3.
+        # >
         # 
         # This parameter is required.
         self.role_id = role_id
-        # The ID of the Quick BI user to be added.
+        # The ID of the Quick BI user to add.
         # 
         # This parameter is required.
         self.user_id = user_id
-        # The ID of the workspace.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

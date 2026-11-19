@@ -9,7 +9,7 @@ class QueryDatasetInfoRequest(DaraModel):
         self,
         dataset_id: str = None,
     ):
-        # Queries information about a specified dataset.
+        # The unique ID of the dataset.
         # 
         # This parameter is required.
         self.dataset_id = dataset_id

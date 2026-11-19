@@ -15,7 +15,7 @@ class AddWorksAuthorizationResponseBody(DaraModel):
         self.request_id = request_id
         # The authorization ID.
         self.result = result
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

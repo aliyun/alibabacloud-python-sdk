@@ -12,15 +12,13 @@ class QueryTicketInfoResponseBody(DaraModel):
         result: main_models.QueryTicketInfoResponseBodyResult = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The details of the generated ticket.
         self.result = result
         # Indicates whether the request is successful. Valid values:
-        # 
-        # - true: The request was successful.
-        # 
-        # - false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -72,27 +70,27 @@ class QueryTicketInfoResponseBodyResult(DaraModel):
         watermark_param: str = None,
         works_id: str = None,
     ):
-        # Notes.
+        # The ticket.
         self.access_ticket = access_ticket
-        # The ID of the component in the report.
+        # The component ID in the report.
         self.cmpt_id = cmpt_id
-        # Global parameters.
+        # The global parameters.
         self.global_param = global_param
-        # Expiration time of the note.
+        # The expiration time of the ticket.
         self.invalid_time = invalid_time
-        # The maximum number of supported bills.
+        # The maximum number of supported tickets.
         self.max_ticket_num = max_ticket_num
-        # The ID of the organization.
+        # The organization ID.
         self.organization_id = organization_id
         # The registration time of the ticket.
         self.register_time = register_time
-        # The number of bills that have been consumed.
+        # The number of consumed tickets.
         self.used_ticket_num = used_ticket_num
-        # The user ID of the Quick BI.
+        # The Quick BI user ID.
         self.user_id = user_id
-        # Set the watermarking parameters.
+        # The watermark parameters.
         self.watermark_param = watermark_param
-        # The ID of the operations report.
+        # The report ID.
         self.works_id = works_id
 
     def validate(self):

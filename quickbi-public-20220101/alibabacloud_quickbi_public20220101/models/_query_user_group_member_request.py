@@ -10,9 +10,9 @@ class QueryUserGroupMemberRequest(DaraModel):
         keyword: str = None,
         user_group_id: str = None,
     ):
-        # Keyword for the username or nickname of the user group member.
+        # The keyword used to search for the username or nickname of a user group member.
         self.keyword = keyword
-        # User group ID.
+        # The ID of the user group.
         # 
         # This parameter is required.
         self.user_group_id = user_group_id

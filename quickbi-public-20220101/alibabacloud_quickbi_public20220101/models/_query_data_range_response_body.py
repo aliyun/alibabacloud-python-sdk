@@ -14,13 +14,13 @@ class QueryDataRangeResponseBody(DaraModel):
         result: main_models.QueryDataRangeResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Data range object.
+        # The data scope object.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
-        # - true: The request was successful.
-        # - false: The request failed.
+        # Indicates whether the request is successful. Valid values:
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -63,9 +63,9 @@ class QueryDataRangeResponseBodyResult(DaraModel):
         api_copilot_llm_cube_models: List[main_models.QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels] = None,
         api_copilot_theme_models: List[main_models.QueryDataRangeResponseBodyResultApiCopilotThemeModels] = None,
     ):
-        # Array of LlmCube resources.
+        # The array of data query resources.
         self.api_copilot_llm_cube_models = api_copilot_llm_cube_models
-        # Array of analysis themes.
+        # The array of analysis themes.
         self.api_copilot_theme_models = api_copilot_theme_models
 
     def validate(self):
@@ -119,13 +119,13 @@ class QueryDataRangeResponseBodyResultApiCopilotThemeModels(DaraModel):
         theme_id: str = None,
         theme_name: str = None,
     ):
-        # Array of LlmCube resources.
+        # The array of data query resources.
         self.api_copilot_llm_cube_models = api_copilot_llm_cube_models
-        # Nickname of the creator.
+        # The nickname of the creator.
         self.create_user = create_user
-        # Analysis theme ID.
+        # The ID of the analysis theme.
         self.theme_id = theme_id
-        # Nickname of the analysis theme.
+        # The nickname of the analysis theme.
         self.theme_name = theme_name
 
     def validate(self):
@@ -181,11 +181,11 @@ class QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeMode
         create_user: str = None,
         llm_cube_id: str = None,
     ):
-        # Alias of the LLM cube resource.
+        # The alias of the data query resource.
         self.alias = alias
-        # Nickname of the creator.
+        # The nickname of the creator.
         self.create_user = create_user
-        # LlmCube resource ID.
+        # The ID of the data query resource.
         self.llm_cube_id = llm_cube_id
 
     def validate(self):
@@ -227,11 +227,11 @@ class QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels(DaraModel):
         create_user: str = None,
         llm_cube_id: str = None,
     ):
-        # Alias of the LlmCube resource.
+        # The alias of the data query resource.
         self.alias = alias
-        # Nickname of the creator.
+        # The nickname of the creator.
         self.create_user = create_user
-        # LlmCube resource ID.
+        # The ID of the data query resource.
         self.llm_cube_id = llm_cube_id
 
     def validate(self):

@@ -14,8 +14,14 @@ class QueryAiproEmbedConfigResponseBody(DaraModel):
         result: List[main_models.QueryAiproEmbedConfigResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The array of AIPro configurations.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - true: The request is successful.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):
@@ -70,13 +76,33 @@ class QueryAiproEmbedConfigResponseBodyResult(DaraModel):
         status: int = None,
         upload_enabled: int = None,
     ):
+        # The agent nickname.
         self.agent_name = agent_name
+        # The embed configuration ID, which is used for CreateTicket4AiPro.
         self.ai_pro_id = ai_pro_id
+        # Indicates whether chat history is displayed. Valid values:
+        # 
+        # - 1: Displayed.
+        # - 0: Not displayed.
         self.chat_history_status = chat_history_status
+        # The JSON string of the embed appearance configuration.
         self.config = config
+        # Specifies whether memory is enabled. Valid values:
+        # 
+        # - 1: Enabled.
+        # - 0: Disabled.
         self.memory_enabled = memory_enabled
+        # The configuration name.
         self.show_name = show_name
+        # The status. Valid values:
+        # 
+        # - 1: Enabled.
+        # - 0: Disabled.
         self.status = status
+        # Specifies whether file upload is allowed. Valid values:
+        # 
+        # - 1: Allowed.
+        # - 0: Not allowed.
         self.upload_enabled = upload_enabled
 
     def validate(self):

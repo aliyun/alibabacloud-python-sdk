@@ -16,20 +16,20 @@ class CancelAuthorizationMenuRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_portal_id = data_portal_id
-        # The leaf node menu IDs of the data portal.
+        # The IDs of the leaf node menus in the data portal.
         # 
-        # - Supports batch parameters, with IDs separated by commas (,). The maximum number for batch modification is 100.
+        # - You can specify multiple IDs. Separate multiple IDs with commas (,). A maximum of 100 IDs can be specified at a time.
         # 
         # This parameter is required.
         self.menu_ids = menu_ids
-        # List of user group IDs.
+        # The IDs of the user groups.
         # 
-        # - Supports batch parameters, with IDs separated by commas (,). The maximum number for batch modification is 200.
-        # - UserGroupIds and UserIds cannot both be empty.
+        # - You can specify multiple IDs. Separate multiple IDs with commas (,). A maximum of 200 IDs can be specified at a time.
+        # - UserGroupIds and UserIds cannot be empty at the same time.
         self.user_group_ids = user_group_ids
-        # List of user IDs. These are Quick BI UserIDs, not Alibaba Cloud UIDs.
+        # The IDs of the users. These are Quick BI user IDs, not Alibaba Cloud UIDs.
         # 
-        # - Supports batch parameters, with IDs separated by commas (,). The maximum number for batch modification is 200.
+        # - You can specify multiple IDs. Separate multiple IDs with commas (,). A maximum of 200 IDs can be specified at a time.
         self.user_ids = user_ids
 
     def validate(self):

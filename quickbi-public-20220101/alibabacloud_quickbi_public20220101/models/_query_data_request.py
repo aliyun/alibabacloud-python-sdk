@@ -12,43 +12,42 @@ class QueryDataRequest(DaraModel):
         return_fields: str = None,
         user_id: str = None,
     ):
-        # The API ID in [DataService Studio](https://help.aliyun.com/document_detail/144980.html).
+        # The ID of the API in Data Service. For more information, see [Data Service](https://help.aliyun.com/document_detail/144980.html).
         # 
         # This parameter is required.
         self.api_id = api_id
-        # Filter conditions as a JSON map string. Each key is a request parameter name, and each value is the parameter value.
+        # The query conditions for Data Service. Specify the conditions as key-value pairs in a map-type string. The key is the request parameter name, and the value is the request parameter value. Keys and values must appear in pairs.
         # 
         # **Note:**
         # 
-        # - If the operator of a request parameter is set to **Enumeration Filter**, the value can contain multiple values. In this case, the value must be in the format of a JSON list. For example: `area=["East China","North China","South China"]`
+        # - When the operator of the request parameter is set to **enumeration filter**, the value can contain multiple values. In this case, the value must be a JSON-formatted list. Example: `area=["East China","North China","South China"]`     
         # 
-        # - For dates, use the following formats based on the date type:
+        # - For dates, different input formats are provided based on the type:
         # 
-        #   - Year: 2019
+        #     - Year: 2019
         # 
-        #   - Quarter: 2019Q1
+        #     - Quarter: 2019Q1
         # 
-        #   - Month: 201901 (with a leading zero)
+        #     - Month: 201901 (with a leading zero)
+        #     
+        #     - Week: 2019-52
         # 
-        #   - Week: 2019-52
+        #     - Day: 20190101
         # 
-        #   - Day: 20190101
+        #     - Hour: 14:00:00 (minutes and seconds are 00)
+        #     
+        #     - Minute: 14:12:00 (seconds are 00)
         # 
-        #   - Hour: 14:00:00 (minutes and seconds are 00)
-        # 
-        #   - Minute: 14:12:00 (seconds are 00)
-        # 
-        #   - Second: 14:34:34
+        #     - Second: 14:34:34
         self.conditions = conditions
-        # A JSON array of field names to return.
+        # The list of names of the return parameters, which is a list-type string.
         self.return_fields = return_fields
-        # The Quick BI user ID. Obtain this value from [QueryUserInfoByAccount](https://next.api.aliyun.com/document/quickbi-public/2022-01-01/QueryUserInfoByAccount).
+        # The user ID in Quick BI. For information about how to obtain the user ID, see [Query user information by account](https://next.api.aliyun.com/document/quickbi-public/2022-01-01/QueryUserInfoByAccount).
+        # > This parameter specifies the identity of the user who uses Data Service. It can be used in combination with the row-level and column-level permission configurations of the dataset.
         # 
-        # > Specifies the user identity for DataService Studio, used with row-level and column-level permission configurations.
         # 
-        # >Notice: 
         # 
-        # If omitted, empty, or null, defaults to the Quick BI organization owner\\"s user ID.
+        # >Notice: If this parameter is not specified, is left empty, or is set to null, the user ID of the owner of the current Quick BI organization is used by default.</notice>
         self.user_id = user_id
 
     def validate(self):

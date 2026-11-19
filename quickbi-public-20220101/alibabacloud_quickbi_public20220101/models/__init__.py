@@ -140,6 +140,9 @@ from ._get_mail_task_list_response import GetMailTaskListResponse
 from ._get_mail_task_status_request import GetMailTaskStatusRequest
 from ._get_mail_task_status_response_body import GetMailTaskStatusResponseBody
 from ._get_mail_task_status_response import GetMailTaskStatusResponse
+from ._get_personal_icode_request import GetPersonalICodeRequest
+from ._get_personal_icode_response_body import GetPersonalICodeResponseBody
+from ._get_personal_icode_response import GetPersonalICodeResponse
 from ._get_user_group_info_request import GetUserGroupInfoRequest
 from ._get_user_group_info_response_body import GetUserGroupInfoResponseBody
 from ._get_user_group_info_response import GetUserGroupInfoResponse
@@ -407,6 +410,9 @@ from ._update_data_source_properties_response import UpdateDataSourcePropertiesR
 from ._update_embedded_status_request import UpdateEmbeddedStatusRequest
 from ._update_embedded_status_response_body import UpdateEmbeddedStatusResponseBody
 from ._update_embedded_status_response import UpdateEmbeddedStatusResponse
+from ._update_personal_icode_request import UpdatePersonalICodeRequest
+from ._update_personal_icode_response_body import UpdatePersonalICodeResponseBody
+from ._update_personal_icode_response import UpdatePersonalICodeResponse
 from ._update_ticket_num_request import UpdateTicketNumRequest
 from ._update_ticket_num_response_body import UpdateTicketNumResponseBody
 from ._update_ticket_num_response import UpdateTicketNumResponse
@@ -441,6 +447,7 @@ from ._get_data_source_connection_info_response_body import GetDataSourceConnect
 from ._get_mail_task_list_response_body import GetMailTaskListResponseBodyResultData
 from ._get_mail_task_list_response_body import GetMailTaskListResponseBodyResult
 from ._get_mail_task_status_response_body import GetMailTaskStatusResponseBodyResult
+from ._get_personal_icode_response_body import GetPersonalICodeResponseBodyResult
 from ._get_user_group_info_response_body import GetUserGroupInfoResponseBodyResult
 from ._get_works_embed_list_response_body import GetWorksEmbedListResponseBodyResultData
 from ._get_works_embed_list_response_body import GetWorksEmbedListResponseBodyResult
@@ -491,6 +498,8 @@ from ._query_cube_optimization_response_body import QueryCubeOptimizationRespons
 from ._query_cube_performance_response_body import QueryCubePerformanceResponseBodyResult
 from ._query_dashboard_nl_2sql_response_body import QueryDashboardNl2sqlResponseBodyResult
 from ._query_data_response_body import QueryDataResponseBodyResultHeaders
+from ._query_data_response_body import QueryDataResponseBodyResultValuesV2RowValue
+from ._query_data_response_body import QueryDataResponseBodyResultValuesV2
 from ._query_data_response_body import QueryDataResponseBodyResult
 from ._query_data_range_response_body import QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels
 from ._query_data_range_response_body import QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels
@@ -564,6 +573,7 @@ from ._smartq_authorize_response_body import SmartqAuthorizeResponseBodyResult
 from ._smartq_query_ability_response_body import SmartqQueryAbilityResponseBodyResultMetaType
 from ._smartq_query_ability_response_body import SmartqQueryAbilityResponseBodyResultValues
 from ._smartq_query_ability_response_body import SmartqQueryAbilityResponseBodyResult
+from ._update_personal_icode_response_body import UpdatePersonalICodeResponseBodyResult
 from ._update_workspace_users_role_response_body import UpdateWorkspaceUsersRoleResponseBodyResult
 
 __all__ = [
@@ -705,6 +715,9 @@ __all__ = [
     GetMailTaskStatusRequest,
     GetMailTaskStatusResponseBody,
     GetMailTaskStatusResponse,
+    GetPersonalICodeRequest,
+    GetPersonalICodeResponseBody,
+    GetPersonalICodeResponse,
     GetUserGroupInfoRequest,
     GetUserGroupInfoResponseBody,
     GetUserGroupInfoResponse,
@@ -972,6 +985,9 @@ __all__ = [
     UpdateEmbeddedStatusRequest,
     UpdateEmbeddedStatusResponseBody,
     UpdateEmbeddedStatusResponse,
+    UpdatePersonalICodeRequest,
+    UpdatePersonalICodeResponseBody,
+    UpdatePersonalICodeResponse,
     UpdateTicketNumRequest,
     UpdateTicketNumResponseBody,
     UpdateTicketNumResponse,
@@ -1006,6 +1022,7 @@ __all__ = [
     GetMailTaskListResponseBodyResultData,
     GetMailTaskListResponseBodyResult,
     GetMailTaskStatusResponseBodyResult,
+    GetPersonalICodeResponseBodyResult,
     GetUserGroupInfoResponseBodyResult,
     GetWorksEmbedListResponseBodyResultData,
     GetWorksEmbedListResponseBodyResult,
@@ -1056,6 +1073,8 @@ __all__ = [
     QueryCubePerformanceResponseBodyResult,
     QueryDashboardNl2sqlResponseBodyResult,
     QueryDataResponseBodyResultHeaders,
+    QueryDataResponseBodyResultValuesV2RowValue,
+    QueryDataResponseBodyResultValuesV2,
     QueryDataResponseBodyResult,
     QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels,
     QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels,
@@ -1129,5 +1148,6 @@ __all__ = [
     SmartqQueryAbilityResponseBodyResultMetaType,
     SmartqQueryAbilityResponseBodyResultValues,
     SmartqQueryAbilityResponseBodyResult,
+    UpdatePersonalICodeResponseBodyResult,
     UpdateWorkspaceUsersRoleResponseBodyResult
 ]

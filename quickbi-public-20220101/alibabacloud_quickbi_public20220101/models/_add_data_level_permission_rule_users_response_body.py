@@ -13,17 +13,14 @@ class AddDataLevelPermissionRuleUsersResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The result of the API operation. Valid values:
-        # 
-        # - true: The request is successful.
-        # 
-        # - false: The request fails.
+        # The execution result of the operation. Valid values:
+        # - true: The request succeeded.
+        # - false: The request failed.
         self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
-        # - true: The request is successful.
-        # 
-        # - false: The request fails.
+        # - true: The request succeeded.
+        # - false: The request failed.
         self.success = success
 
     def validate(self):

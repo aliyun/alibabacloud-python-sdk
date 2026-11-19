@@ -14,11 +14,11 @@ class QueryUserGroupMemberResponseBody(DaraModel):
         result: List[main_models.QueryUserGroupMemberResponseBodyResult] = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The result of the request for the user group member list.
+        # The query result of the user group member list.
         self.result = result
-        # Indicates whether the request was successful. Possible values:
+        # Indicates whether the request was successful. Valid values:
         # 
         # - true: The request was successful.
         # - false: The request failed.
@@ -73,18 +73,18 @@ class QueryUserGroupMemberResponseBodyResult(DaraModel):
         parent_user_group_id: str = None,
         parent_user_group_name: str = None,
     ):
-        # ID of the user group or the user group member.
+        # The ID of the user group or the user group member.
         self.id = id
-        # Indicates whether it is a user group. Possible values:
+        # Indicates whether the item is a user group. Valid values:
         # 
-        # - true: It is a user group.
-        # - false: It is a user.
+        # - true: The item is a user group.
+        # - false: The item is a user.
         self.is_user_group = is_user_group
-        # Name or nickname of the user group or its member.
+        # The name of the user group or the nickname of the user group member.
         self.name = name
-        # ID of the parent user group.
+        # The ID of the parent user group.
         self.parent_user_group_id = parent_user_group_id
-        # Name of the parent user group.
+        # The name of the parent user group.
         self.parent_user_group_name = parent_user_group_name
 
     def validate(self):

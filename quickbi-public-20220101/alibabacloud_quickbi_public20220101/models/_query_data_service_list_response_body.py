@@ -14,13 +14,14 @@ class QueryDataServiceListResponseBody(DaraModel):
         result: main_models.QueryDataServiceListResponseBodyResult = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return result.
+        # The returned result.
         self.result = result
-        # Indicates whether the request was successful. Value range:
-        # - true: The request was successful 
-        # - false: The request failed
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -66,15 +67,15 @@ class QueryDataServiceListResponseBodyResult(DaraModel):
         total_num: int = None,
         total_pages: int = None,
     ):
-        # Data service information.
+        # The data service information.
         self.data = data
-        # Page number.
+        # The page number.
         self.page_num = page_num
-        # Number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of rows.
+        # The total number of rows.
         self.total_num = total_num
-        # Total number of pages.
+        # The total number of pages.
         self.total_pages = total_pages
 
     def validate(self):
@@ -151,35 +152,35 @@ class QueryDataServiceListResponseBodyResultData(DaraModel):
     ):
         # The model of the data service in JSON format.
         self.content = content
-        # Creator ID.
+        # The ID of the creator.
         self.creator_id = creator_id
-        # Creator\\"s name.
+        # The name of the creator.
         self.creator_name = creator_name
-        # Cube identifier ID.
+        # The cube ID.
         self.cube_id = cube_id
-        # Dataset name.
+        # The name of the dataset.
         self.cube_name = cube_name
-        # Description
+        # The description.
         self.desc = desc
-        # Creation time.
+        # The creation time.
         self.gmt_create = gmt_create
-        # Modification time.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # Modifier\\"s userId.
+        # The user ID of the modifier.
         self.modifier_id = modifier_id
-        # Modifier\\"s name
+        # The name of the modifier.
         self.modifier_name = modifier_name
-        # Data service name.
+        # The service name.
         self.name = name
-        # Owner ID
+        # The ID of the owner.
         self.owner_id = owner_id
-        # Owner\\"s name
+        # The name of the owner.
         self.owner_name = owner_name
-        # Unique ID of the data service.
+        # The unique ID of the data service.
         self.sid = sid
-        # Workspace ID.
+        # The workspace ID.
         self.workspace_id = workspace_id
-        # Workspace name.
+        # The name of the workspace.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -303,15 +304,15 @@ class QueryDataServiceListResponseBodyResultDataContent(DaraModel):
         filter: main_models.QueryDataServiceListResponseBodyResultDataContentFilter = None,
         return_fields: List[main_models.QueryDataServiceListResponseBodyResultDataContentReturnFields] = None,
     ):
-        # Cube identifier ID.
+        # The cube ID.
         self.cube_id = cube_id
-        # Dataset name.
+        # The name of the dataset.
         self.cube_name = cube_name
-        # Detail or Summary
+        # The detail or aggregate type.
         self.detail = detail
-        # Request parameter information.
+        # The request parameter information.
         self.filter = filter
-        # Return information.
+        # The returned information.
         self.return_fields = return_fields
 
     def validate(self):
@@ -378,19 +379,19 @@ class QueryDataServiceListResponseBodyResultDataContentReturnFields(DaraModel):
         field: main_models.QueryDataServiceListResponseBodyResultDataContentReturnFieldsField = None,
         orderby: str = None,
     ):
-        # Aggregation operator. For example, SUM, AVG, and MAX.
+        # The aggregate operation (aggregation), such as SUM, AVG, and MAX.
         self.aggregator = aggregator
-        # Field parameter name.
+        # The field parameter name.
         self.alias = alias
-        # Remark for the returned field.
+        # The description of the returned field.
         self.desc = desc
-        # Corresponding cube field information.
+        # The corresponding cube field information.
         self.field = field
-        # Sorting.
+        # The sort order.
         # 
-        # - asc: Ascending
-        # - desc: Descending
-        # - no: No sorting
+        # - asc: Ascending.
+        # - desc: Descending.
+        # - no: Unsorted.
         self.orderby = orderby
 
     def validate(self):
@@ -450,31 +451,31 @@ class QueryDataServiceListResponseBodyResultDataContentReturnFieldsField(DaraMod
         name: str = None,
         type: str = None,
     ):
-        # Display name in the cube model (can be in Chinese or English).
+        # The display name in the cube model, which can be in Chinese or English.
         self.caption = caption
         # The corresponding physical field name.
         self.column = column
-        # Data type.
+        # The data type.
         # 
-        # - number: numeric
-        # - string: string
-        # - date: date
-        # - datetime: datetime
-        # - time: time
-        # - geographic: geographic
-        # - boolean: boolean
-        # - url: URL
+        # - number: Number.
+        # - string: String.
+        # - date: Date.
+        # - datetime: Datetime.
+        # - time: Time.
+        # - geographic: Geographic.
+        # - boolean: Boolean.
+        # - url: URL.
         self.data_type = data_type
-        # Unique identifier for the original field.
+        # The unique ID of the original field.
         self.fid = fid
-        # This attribute is included for date and geographic dimensions, indicating the supported granularity.
+        # The supported granularity. This property is included in date and geographic dimensions.
         self.granularity = granularity
-        # Unique name of the cube field, mainly used for unique positioning in the returned result.
+        # The unique name of the cube field, which is primarily used to uniquely locate the returned result.
         self.name = name
-        # Type.
+        # The type.
         # 
-        # - Dimension: Dimension
-        # - Measure: Measure
+        # - Dimension: Dimension.
+        # - Measure: Measure.
         self.type = type
 
     def validate(self):
@@ -540,17 +541,17 @@ class QueryDataServiceListResponseBodyResultDataContentFilter(DaraModel):
         logical_operator: str = None,
         type: str = None,
     ):
-        # Combined conditions.
+        # The combined conditions.
         self.filters = filters
-        # Logical relationship between multiple SQL text keywords.
+        # The logical relationship between multiple SQL text keywords.
         # 
-        # - **or**: or
-        # - **and**: and
+        # - **or**: OR.
+        # - **and**: AND.
         self.logical_operator = logical_operator
-        # Type.
+        # The type.
         # 
-        # - basic: basic
-        # - combined: complex
+        # - basic: Basic.
+        # - combined: Complex.
         self.type = type
 
     def validate(self):

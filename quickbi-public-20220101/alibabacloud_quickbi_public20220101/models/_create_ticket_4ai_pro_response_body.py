@@ -11,8 +11,13 @@ class CreateTicket4AiProResponseBody(DaraModel):
         result: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The embedding ticket.
         self.result = result
+        # Indicates whether the request is successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

@@ -14,14 +14,14 @@ class QueryUserTagMetaListResponseBody(DaraModel):
         result: List[main_models.QueryUserTagMetaListResponseBodyResult] = None,
         success: bool = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Returns a list of user tags in an organization.
+        # The list of user tags in the organization.
         self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
@@ -71,11 +71,11 @@ class QueryUserTagMetaListResponseBodyResult(DaraModel):
         tag_id: str = None,
         tag_name: str = None,
     ):
-        # The description of the tag.
+        # The tag description.
         self.tag_description = tag_description
-        # The ID of the label.
+        # The tag ID.
         self.tag_id = tag_id
-        # The name of the tag.
+        # The tag name.
         self.tag_name = tag_name
 
     def validate(self):

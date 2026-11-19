@@ -11,7 +11,6 @@ class QueryUserByMobileAccountRequest(DaraModel):
         mobile_user_id: str = None,
     ):
         # The bound mobile type.
-        # 
         # - DingTalk: ding
         # - WeCom: corp_weixin
         # - Lark: feishu
@@ -19,11 +18,10 @@ class QueryUserByMobileAccountRequest(DaraModel):
         # This parameter is required.
         self.mobile_type = mobile_type
         # The bound mobile user ID.
-        # 
-        # - DingTalk: The unionId of the DingTalk account.
-        # - WeCom: The userId of the WeCom account.
-        # - Lark: The userId of the Lark account.
-        # >Notice: The mobileUserId must be obtained by calling the relevant API operations of DingTalk, WeCom, or Lark.
+        # - DingTalk: the unionId of the DingTalk account.
+        # - WeCom: the userId of the WeCom account.
+        # - Lark: the userId of the Lark account.
+        # >Notice: Developers must call the relevant APIs of DingTalk, WeCom, or Lark to obtain the mobileUserId.</notice>
         # 
         # This parameter is required.
         self.mobile_user_id = mobile_user_id

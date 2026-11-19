@@ -11,13 +11,14 @@ class AddUserTagMetaResponseBody(DaraModel):
         result: str = None,
         success: bool = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Returns the ID of the successfully added tag.
+        # The ID of the successfully added tag.
         self.result = result
-        # Indicates whether the request was successful. Value range:
-        # - true: The request succeeded 
-        # - false: The request failed
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # - true: The request is successful.
+        # - false: The request fails.
         self.success = success
 
     def validate(self):
