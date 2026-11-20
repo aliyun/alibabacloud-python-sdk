@@ -1,0 +1,551 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._add_axn_track_no_request import AddAxnTrackNoRequest
+from ._add_axn_track_no_response_body import AddAxnTrackNoResponseBody
+from ._add_axn_track_no_response import AddAxnTrackNoResponse
+from ._add_secret_blacklist_request import AddSecretBlacklistRequest
+from ._add_secret_blacklist_response_body import AddSecretBlacklistResponseBody
+from ._add_secret_blacklist_response import AddSecretBlacklistResponse
+from ._bind_axbcall_request import BindAXBCallRequest
+from ._bind_axbcall_response_body import BindAXBCallResponseBody
+from ._bind_axbcall_response import BindAXBCallResponse
+from ._bind_axb_request import BindAxbRequest
+from ._bind_axb_response_body import BindAxbResponseBody
+from ._bind_axb_response import BindAxbResponse
+from ._bind_axb_700request import BindAxb700Request
+from ._bind_axb_700response_body import BindAxb700ResponseBody
+from ._bind_axb_700response import BindAxb700Response
+from ._bind_axb_fixed_line_request import BindAxbFixedLineRequest
+from ._bind_axb_fixed_line_shrink_request import BindAxbFixedLineShrinkRequest
+from ._bind_axb_fixed_line_response_body import BindAxbFixedLineResponseBody
+from ._bind_axb_fixed_line_response import BindAxbFixedLineResponse
+from ._bind_axg_request import BindAxgRequest
+from ._bind_axg_response_body import BindAxgResponseBody
+from ._bind_axg_response import BindAxgResponse
+from ._bind_axn_request import BindAxnRequest
+from ._bind_axn_response_body import BindAxnResponseBody
+from ._bind_axn_response import BindAxnResponse
+from ._bind_axn_extension_request import BindAxnExtensionRequest
+from ._bind_axn_extension_response_body import BindAxnExtensionResponseBody
+from ._bind_axn_extension_response import BindAxnExtensionResponse
+from ._bind_axn_extension_fixed_line_request import BindAxnExtensionFixedLineRequest
+from ._bind_axn_extension_fixed_line_shrink_request import BindAxnExtensionFixedLineShrinkRequest
+from ._bind_axn_extension_fixed_line_response_body import BindAxnExtensionFixedLineResponseBody
+from ._bind_axn_extension_fixed_line_response import BindAxnExtensionFixedLineResponse
+from ._bind_axn_fixed_line_request import BindAxnFixedLineRequest
+from ._bind_axn_fixed_line_shrink_request import BindAxnFixedLineShrinkRequest
+from ._bind_axn_fixed_line_response_body import BindAxnFixedLineResponseBody
+from ._bind_axn_fixed_line_response import BindAxnFixedLineResponse
+from ._bind_batch_axg_request import BindBatchAxgRequest
+from ._bind_batch_axg_shrink_request import BindBatchAxgShrinkRequest
+from ._bind_batch_axg_response_body import BindBatchAxgResponseBody
+from ._bind_batch_axg_response import BindBatchAxgResponse
+from ._bind_gxb_700request import BindGxb700Request
+from ._bind_gxb_700response_body import BindGxb700ResponseBody
+from ._bind_gxb_700response import BindGxb700Response
+from ._bind_xbrequest import BindXBRequest
+from ._bind_xbresponse_body import BindXBResponseBody
+from ._bind_xbresponse import BindXBResponse
+from ._buy_secret_no_request import BuySecretNoRequest
+from ._buy_secret_no_response_body import BuySecretNoResponseBody
+from ._buy_secret_no_response import BuySecretNoResponse
+from ._cancel_pick_up_waybill_request import CancelPickUpWaybillRequest
+from ._cancel_pick_up_waybill_response_body import CancelPickUpWaybillResponseBody
+from ._cancel_pick_up_waybill_response import CancelPickUpWaybillResponse
+from ._config_xrequest import ConfigXRequest
+from ._config_xshrink_request import ConfigXShrinkRequest
+from ._config_xresponse_body import ConfigXResponseBody
+from ._config_xresponse import ConfigXResponse
+from ._create_axg_group_request import CreateAxgGroupRequest
+from ._create_axg_group_response_body import CreateAxgGroupResponseBody
+from ._create_axg_group_response import CreateAxgGroupResponse
+from ._create_fixed_no_areport_request import CreateFixedNoAReportRequest
+from ._create_fixed_no_areport_response_body import CreateFixedNoAReportResponseBody
+from ._create_fixed_no_areport_response import CreateFixedNoAReportResponse
+from ._create_phone_no_areport_request import CreatePhoneNoAReportRequest
+from ._create_phone_no_areport_response_body import CreatePhoneNoAReportResponseBody
+from ._create_phone_no_areport_response import CreatePhoneNoAReportResponse
+from ._create_pick_up_waybill_request import CreatePickUpWaybillRequest
+from ._create_pick_up_waybill_shrink_request import CreatePickUpWaybillShrinkRequest
+from ._create_pick_up_waybill_response_body import CreatePickUpWaybillResponseBody
+from ._create_pick_up_waybill_response import CreatePickUpWaybillResponse
+from ._create_pick_up_waybill_pre_query_request import CreatePickUpWaybillPreQueryRequest
+from ._create_pick_up_waybill_pre_query_shrink_request import CreatePickUpWaybillPreQueryShrinkRequest
+from ._create_pick_up_waybill_pre_query_response_body import CreatePickUpWaybillPreQueryResponseBody
+from ._create_pick_up_waybill_pre_query_response import CreatePickUpWaybillPreQueryResponse
+from ._create_secret_transfer_record_request import CreateSecretTransferRecordRequest
+from ._create_secret_transfer_record_response_body import CreateSecretTransferRecordResponseBody
+from ._create_secret_transfer_record_response import CreateSecretTransferRecordResponse
+from ._create_sms_sign_request import CreateSmsSignRequest
+from ._create_sms_sign_response_body import CreateSmsSignResponseBody
+from ._create_sms_sign_response import CreateSmsSignResponse
+from ._delete_axb_bind_fixed_line_request import DeleteAxbBindFixedLineRequest
+from ._delete_axb_bind_fixed_line_response_body import DeleteAxbBindFixedLineResponseBody
+from ._delete_axb_bind_fixed_line_response import DeleteAxbBindFixedLineResponse
+from ._delete_axg_group_request import DeleteAxgGroupRequest
+from ._delete_axg_group_response_body import DeleteAxgGroupResponseBody
+from ._delete_axg_group_response import DeleteAxgGroupResponse
+from ._delete_axn_bind_fixed_line_request import DeleteAxnBindFixedLineRequest
+from ._delete_axn_bind_fixed_line_response_body import DeleteAxnBindFixedLineResponseBody
+from ._delete_axn_bind_fixed_line_response import DeleteAxnBindFixedLineResponse
+from ._delete_axn_extension_bind_fixed_line_request import DeleteAxnExtensionBindFixedLineRequest
+from ._delete_axn_extension_bind_fixed_line_response_body import DeleteAxnExtensionBindFixedLineResponseBody
+from ._delete_axn_extension_bind_fixed_line_response import DeleteAxnExtensionBindFixedLineResponse
+from ._delete_secret_aphone_no_to_cust_request import DeleteSecretAPhoneNoToCustRequest
+from ._delete_secret_aphone_no_to_cust_response_body import DeleteSecretAPhoneNoToCustResponseBody
+from ._delete_secret_aphone_no_to_cust_response import DeleteSecretAPhoneNoToCustResponse
+from ._delete_secret_blacklist_request import DeleteSecretBlacklistRequest
+from ._delete_secret_blacklist_response_body import DeleteSecretBlacklistResponseBody
+from ._delete_secret_blacklist_response import DeleteSecretBlacklistResponse
+from ._get_dypls_ossinfo_for_upload_file_request import GetDyplsOSSInfoForUploadFileRequest
+from ._get_dypls_ossinfo_for_upload_file_response_body import GetDyplsOSSInfoForUploadFileResponseBody
+from ._get_dypls_ossinfo_for_upload_file_response import GetDyplsOSSInfoForUploadFileResponse
+from ._get_secret_asr_detail_request import GetSecretAsrDetailRequest
+from ._get_secret_asr_detail_response_body import GetSecretAsrDetailResponseBody
+from ._get_secret_asr_detail_response import GetSecretAsrDetailResponse
+from ._get_total_public_url_request import GetTotalPublicUrlRequest
+from ._get_total_public_url_response_body import GetTotalPublicUrlResponseBody
+from ._get_total_public_url_response import GetTotalPublicUrlResponse
+from ._get_xconfig_request import GetXConfigRequest
+from ._get_xconfig_response_body import GetXConfigResponseBody
+from ._get_xconfig_response import GetXConfigResponse
+from ._get_xdefault_config_request import GetXDefaultConfigRequest
+from ._get_xdefault_config_response_body import GetXDefaultConfigResponseBody
+from ._get_xdefault_config_response import GetXDefaultConfigResponse
+from ._list_xtelephones_request import ListXTelephonesRequest
+from ._list_xtelephones_response_body import ListXTelephonesResponseBody
+from ._list_xtelephones_response import ListXTelephonesResponse
+from ._lock_secret_no_request import LockSecretNoRequest
+from ._lock_secret_no_response_body import LockSecretNoResponseBody
+from ._lock_secret_no_response import LockSecretNoResponse
+from ._operate_axg_group_request import OperateAxgGroupRequest
+from ._operate_axg_group_response_body import OperateAxgGroupResponseBody
+from ._operate_axg_group_response import OperateAxgGroupResponse
+from ._operate_black_no_request import OperateBlackNoRequest
+from ._operate_black_no_response_body import OperateBlackNoResponseBody
+from ._operate_black_no_response import OperateBlackNoResponse
+from ._query_axb_bind_fixed_line_request import QueryAxbBindFixedLineRequest
+from ._query_axb_bind_fixed_line_response_body import QueryAxbBindFixedLineResponseBody
+from ._query_axb_bind_fixed_line_response import QueryAxbBindFixedLineResponse
+from ._query_axn_bind_fixed_line_request import QueryAxnBindFixedLineRequest
+from ._query_axn_bind_fixed_line_response_body import QueryAxnBindFixedLineResponseBody
+from ._query_axn_bind_fixed_line_response import QueryAxnBindFixedLineResponse
+from ._query_axn_extension_bind_fixed_line_request import QueryAxnExtensionBindFixedLineRequest
+from ._query_axn_extension_bind_fixed_line_response_body import QueryAxnExtensionBindFixedLineResponseBody
+from ._query_axn_extension_bind_fixed_line_response import QueryAxnExtensionBindFixedLineResponse
+from ._query_phone_no_aby_track_no_request import QueryPhoneNoAByTrackNoRequest
+from ._query_phone_no_aby_track_no_response_body import QueryPhoneNoAByTrackNoResponseBody
+from ._query_phone_no_aby_track_no_response import QueryPhoneNoAByTrackNoResponse
+from ._query_record_file_download_url_request import QueryRecordFileDownloadUrlRequest
+from ._query_record_file_download_url_response_body import QueryRecordFileDownloadUrlResponseBody
+from ._query_record_file_download_url_response import QueryRecordFileDownloadUrlResponse
+from ._query_secret_aphone_no_to_cust_request import QuerySecretAPhoneNoToCustRequest
+from ._query_secret_aphone_no_to_cust_response_body import QuerySecretAPhoneNoToCustResponseBody
+from ._query_secret_aphone_no_to_cust_response import QuerySecretAPhoneNoToCustResponse
+from ._query_secret_no_detail_request import QuerySecretNoDetailRequest
+from ._query_secret_no_detail_response_body import QuerySecretNoDetailResponseBody
+from ._query_secret_no_detail_response import QuerySecretNoDetailResponse
+from ._query_secret_no_remain_request import QuerySecretNoRemainRequest
+from ._query_secret_no_remain_response_body import QuerySecretNoRemainResponseBody
+from ._query_secret_no_remain_response import QuerySecretNoRemainResponse
+from ._query_secret_transfer_details_request import QuerySecretTransferDetailsRequest
+from ._query_secret_transfer_details_response_body import QuerySecretTransferDetailsResponseBody
+from ._query_secret_transfer_details_response import QuerySecretTransferDetailsResponse
+from ._query_sound_record_request import QuerySoundRecordRequest
+from ._query_sound_record_response_body import QuerySoundRecordResponseBody
+from ._query_sound_record_response import QuerySoundRecordResponse
+from ._query_subs_id_request import QuerySubsIdRequest
+from ._query_subs_id_response_body import QuerySubsIdResponseBody
+from ._query_subs_id_response import QuerySubsIdResponse
+from ._query_subscription_detail_request import QuerySubscriptionDetailRequest
+from ._query_subscription_detail_response_body import QuerySubscriptionDetailResponseBody
+from ._query_subscription_detail_response import QuerySubscriptionDetailResponse
+from ._release_secret_no_request import ReleaseSecretNoRequest
+from ._release_secret_no_response_body import ReleaseSecretNoResponseBody
+from ._release_secret_no_response import ReleaseSecretNoResponse
+from ._un_bind_axbrequest import UnBindAXBRequest
+from ._un_bind_axbresponse_body import UnBindAXBResponseBody
+from ._un_bind_axbresponse import UnBindAXBResponse
+from ._un_bind_xbrequest import UnBindXBRequest
+from ._un_bind_xbresponse_body import UnBindXBResponseBody
+from ._un_bind_xbresponse import UnBindXBResponse
+from ._unbind_subs_700request import UnbindSubs700Request
+from ._unbind_subs_700response_body import UnbindSubs700ResponseBody
+from ._unbind_subs_700response import UnbindSubs700Response
+from ._unbind_subscription_request import UnbindSubscriptionRequest
+from ._unbind_subscription_response_body import UnbindSubscriptionResponseBody
+from ._unbind_subscription_response import UnbindSubscriptionResponse
+from ._unlock_secret_no_request import UnlockSecretNoRequest
+from ._unlock_secret_no_response_body import UnlockSecretNoResponseBody
+from ._unlock_secret_no_response import UnlockSecretNoResponse
+from ._update_axb_bind_fixed_line_request import UpdateAxbBindFixedLineRequest
+from ._update_axb_bind_fixed_line_shrink_request import UpdateAxbBindFixedLineShrinkRequest
+from ._update_axb_bind_fixed_line_response_body import UpdateAxbBindFixedLineResponseBody
+from ._update_axb_bind_fixed_line_response import UpdateAxbBindFixedLineResponse
+from ._update_axn_bind_fixed_line_request import UpdateAxnBindFixedLineRequest
+from ._update_axn_bind_fixed_line_shrink_request import UpdateAxnBindFixedLineShrinkRequest
+from ._update_axn_bind_fixed_line_response_body import UpdateAxnBindFixedLineResponseBody
+from ._update_axn_bind_fixed_line_response import UpdateAxnBindFixedLineResponse
+from ._update_axn_extension_bind_fixed_line_request import UpdateAxnExtensionBindFixedLineRequest
+from ._update_axn_extension_bind_fixed_line_shrink_request import UpdateAxnExtensionBindFixedLineShrinkRequest
+from ._update_axn_extension_bind_fixed_line_response_body import UpdateAxnExtensionBindFixedLineResponseBody
+from ._update_axn_extension_bind_fixed_line_response import UpdateAxnExtensionBindFixedLineResponse
+from ._update_subs_700request import UpdateSubs700Request
+from ._update_subs_700response_body import UpdateSubs700ResponseBody
+from ._update_subs_700response import UpdateSubs700Response
+from ._update_subscription_request import UpdateSubscriptionRequest
+from ._update_subscription_response_body import UpdateSubscriptionResponseBody
+from ._update_subscription_response import UpdateSubscriptionResponse
+from ._bind_axbcall_response_body import BindAXBCallResponseBodyData
+from ._bind_axb_response_body import BindAxbResponseBodySecretBindDTO
+from ._bind_axb_700response_body import BindAxb700ResponseBodyData
+from ._bind_axb_fixed_line_request import BindAxbFixedLineRequestExtra
+from ._bind_axb_fixed_line_response_body import BindAxbFixedLineResponseBodyData
+from ._bind_axg_response_body import BindAxgResponseBodySecretBindDTO
+from ._bind_axn_response_body import BindAxnResponseBodySecretBindDTO
+from ._bind_axn_extension_response_body import BindAxnExtensionResponseBodySecretBindDTO
+from ._bind_axn_extension_fixed_line_request import BindAxnExtensionFixedLineRequestExtraaxx
+from ._bind_axn_extension_fixed_line_response_body import BindAxnExtensionFixedLineResponseBodyData
+from ._bind_axn_fixed_line_request import BindAxnFixedLineRequestExtra
+from ._bind_axn_fixed_line_response_body import BindAxnFixedLineResponseBodyData
+from ._bind_batch_axg_request import BindBatchAxgRequestAxgBindList
+from ._bind_batch_axg_response_body import BindBatchAxgResponseBodySecretBindListSecretBind
+from ._bind_batch_axg_response_body import BindBatchAxgResponseBodySecretBindList
+from ._bind_gxb_700response_body import BindGxb700ResponseBodyData
+from ._bind_xbresponse_body import BindXBResponseBodyData
+from ._buy_secret_no_response_body import BuySecretNoResponseBodySecretBuyInfoDTO
+from ._cancel_pick_up_waybill_response_body import CancelPickUpWaybillResponseBodyData
+from ._config_xrequest import ConfigXRequestSequenceCalls
+from ._config_xresponse_body import ConfigXResponseBodyData
+from ._create_fixed_no_areport_response_body import CreateFixedNoAReportResponseBodyData
+from ._create_phone_no_areport_response_body import CreatePhoneNoAReportResponseBodyData
+from ._create_pick_up_waybill_request import CreatePickUpWaybillRequestConsigneeAddress
+from ._create_pick_up_waybill_request import CreatePickUpWaybillRequestGoodsInfos
+from ._create_pick_up_waybill_request import CreatePickUpWaybillRequestSendAddress
+from ._create_pick_up_waybill_response_body import CreatePickUpWaybillResponseBodyData
+from ._create_pick_up_waybill_pre_query_request import CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo
+from ._create_pick_up_waybill_pre_query_request import CreatePickUpWaybillPreQueryRequestConsigneeInfo
+from ._create_pick_up_waybill_pre_query_request import CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo
+from ._create_pick_up_waybill_pre_query_request import CreatePickUpWaybillPreQueryRequestSenderInfo
+from ._create_pick_up_waybill_pre_query_response_body import CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList
+from ._create_pick_up_waybill_pre_query_response_body import CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes
+from ._create_pick_up_waybill_pre_query_response_body import CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime
+from ._create_pick_up_waybill_pre_query_response_body import CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList
+from ._create_pick_up_waybill_pre_query_response_body import CreatePickUpWaybillPreQueryResponseBodyData
+from ._create_sms_sign_response_body import CreateSmsSignResponseBodyData
+from ._delete_axb_bind_fixed_line_response_body import DeleteAxbBindFixedLineResponseBodyData
+from ._delete_axn_bind_fixed_line_response_body import DeleteAxnBindFixedLineResponseBodyData
+from ._delete_axn_extension_bind_fixed_line_response_body import DeleteAxnExtensionBindFixedLineResponseBodyData
+from ._get_dypls_ossinfo_for_upload_file_response_body import GetDyplsOSSInfoForUploadFileResponseBodyData
+from ._get_secret_asr_detail_response_body import GetSecretAsrDetailResponseBodyDataSentences
+from ._get_secret_asr_detail_response_body import GetSecretAsrDetailResponseBodyData
+from ._get_total_public_url_response_body import GetTotalPublicUrlResponseBodyData
+from ._get_xconfig_response_body import GetXConfigResponseBodyDataReachJsons
+from ._get_xconfig_response_body import GetXConfigResponseBodyDataSequenceCalls
+from ._get_xconfig_response_body import GetXConfigResponseBodyData
+from ._get_xdefault_config_response_body import GetXDefaultConfigResponseBodyDataReachJson
+from ._get_xdefault_config_response_body import GetXDefaultConfigResponseBodyDataSequenceCall
+from ._get_xdefault_config_response_body import GetXDefaultConfigResponseBodyData
+from ._list_xtelephones_response_body import ListXTelephonesResponseBodyDataList
+from ._list_xtelephones_response_body import ListXTelephonesResponseBodyData
+from ._query_axb_bind_fixed_line_response_body import QueryAxbBindFixedLineResponseBodyDataExtra
+from ._query_axb_bind_fixed_line_response_body import QueryAxbBindFixedLineResponseBodyData
+from ._query_axn_bind_fixed_line_response_body import QueryAxnBindFixedLineResponseBodyDataExtra
+from ._query_axn_bind_fixed_line_response_body import QueryAxnBindFixedLineResponseBodyData
+from ._query_axn_extension_bind_fixed_line_response_body import QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx
+from ._query_axn_extension_bind_fixed_line_response_body import QueryAxnExtensionBindFixedLineResponseBodyData
+from ._query_phone_no_aby_track_no_response_body import QueryPhoneNoAByTrackNoResponseBodyModule
+from ._query_secret_aphone_no_to_cust_response_body import QuerySecretAPhoneNoToCustResponseBodyData
+from ._query_secret_no_detail_response_body import QuerySecretNoDetailResponseBodySecretNoInfoDTO
+from ._query_secret_no_remain_response_body import QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOListRemainDTO
+from ._query_secret_no_remain_response_body import QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOList
+from ._query_secret_no_remain_response_body import QuerySecretNoRemainResponseBodySecretRemainDTO
+from ._query_secret_transfer_details_response_body import QuerySecretTransferDetailsResponseBodyDataList
+from ._query_secret_transfer_details_response_body import QuerySecretTransferDetailsResponseBodyData
+from ._query_sound_record_response_body import QuerySoundRecordResponseBodyData
+from ._query_subscription_detail_response_body import QuerySubscriptionDetailResponseBodySecretBindDetailDTO
+from ._un_bind_axbresponse_body import UnBindAXBResponseBodyData
+from ._un_bind_xbresponse_body import UnBindXBResponseBodyData
+from ._update_axb_bind_fixed_line_request import UpdateAxbBindFixedLineRequestExtra
+from ._update_axb_bind_fixed_line_response_body import UpdateAxbBindFixedLineResponseBodyData
+from ._update_axn_bind_fixed_line_request import UpdateAxnBindFixedLineRequestExtra
+from ._update_axn_bind_fixed_line_response_body import UpdateAxnBindFixedLineResponseBodyData
+from ._update_axn_extension_bind_fixed_line_request import UpdateAxnExtensionBindFixedLineRequestExtraaxx
+from ._update_axn_extension_bind_fixed_line_response_body import UpdateAxnExtensionBindFixedLineResponseBodyData
+
+__all__ = [
+    AddAxnTrackNoRequest,
+    AddAxnTrackNoResponseBody,
+    AddAxnTrackNoResponse,
+    AddSecretBlacklistRequest,
+    AddSecretBlacklistResponseBody,
+    AddSecretBlacklistResponse,
+    BindAXBCallRequest,
+    BindAXBCallResponseBody,
+    BindAXBCallResponse,
+    BindAxbRequest,
+    BindAxbResponseBody,
+    BindAxbResponse,
+    BindAxb700Request,
+    BindAxb700ResponseBody,
+    BindAxb700Response,
+    BindAxbFixedLineRequest,
+    BindAxbFixedLineShrinkRequest,
+    BindAxbFixedLineResponseBody,
+    BindAxbFixedLineResponse,
+    BindAxgRequest,
+    BindAxgResponseBody,
+    BindAxgResponse,
+    BindAxnRequest,
+    BindAxnResponseBody,
+    BindAxnResponse,
+    BindAxnExtensionRequest,
+    BindAxnExtensionResponseBody,
+    BindAxnExtensionResponse,
+    BindAxnExtensionFixedLineRequest,
+    BindAxnExtensionFixedLineShrinkRequest,
+    BindAxnExtensionFixedLineResponseBody,
+    BindAxnExtensionFixedLineResponse,
+    BindAxnFixedLineRequest,
+    BindAxnFixedLineShrinkRequest,
+    BindAxnFixedLineResponseBody,
+    BindAxnFixedLineResponse,
+    BindBatchAxgRequest,
+    BindBatchAxgShrinkRequest,
+    BindBatchAxgResponseBody,
+    BindBatchAxgResponse,
+    BindGxb700Request,
+    BindGxb700ResponseBody,
+    BindGxb700Response,
+    BindXBRequest,
+    BindXBResponseBody,
+    BindXBResponse,
+    BuySecretNoRequest,
+    BuySecretNoResponseBody,
+    BuySecretNoResponse,
+    CancelPickUpWaybillRequest,
+    CancelPickUpWaybillResponseBody,
+    CancelPickUpWaybillResponse,
+    ConfigXRequest,
+    ConfigXShrinkRequest,
+    ConfigXResponseBody,
+    ConfigXResponse,
+    CreateAxgGroupRequest,
+    CreateAxgGroupResponseBody,
+    CreateAxgGroupResponse,
+    CreateFixedNoAReportRequest,
+    CreateFixedNoAReportResponseBody,
+    CreateFixedNoAReportResponse,
+    CreatePhoneNoAReportRequest,
+    CreatePhoneNoAReportResponseBody,
+    CreatePhoneNoAReportResponse,
+    CreatePickUpWaybillRequest,
+    CreatePickUpWaybillShrinkRequest,
+    CreatePickUpWaybillResponseBody,
+    CreatePickUpWaybillResponse,
+    CreatePickUpWaybillPreQueryRequest,
+    CreatePickUpWaybillPreQueryShrinkRequest,
+    CreatePickUpWaybillPreQueryResponseBody,
+    CreatePickUpWaybillPreQueryResponse,
+    CreateSecretTransferRecordRequest,
+    CreateSecretTransferRecordResponseBody,
+    CreateSecretTransferRecordResponse,
+    CreateSmsSignRequest,
+    CreateSmsSignResponseBody,
+    CreateSmsSignResponse,
+    DeleteAxbBindFixedLineRequest,
+    DeleteAxbBindFixedLineResponseBody,
+    DeleteAxbBindFixedLineResponse,
+    DeleteAxgGroupRequest,
+    DeleteAxgGroupResponseBody,
+    DeleteAxgGroupResponse,
+    DeleteAxnBindFixedLineRequest,
+    DeleteAxnBindFixedLineResponseBody,
+    DeleteAxnBindFixedLineResponse,
+    DeleteAxnExtensionBindFixedLineRequest,
+    DeleteAxnExtensionBindFixedLineResponseBody,
+    DeleteAxnExtensionBindFixedLineResponse,
+    DeleteSecretAPhoneNoToCustRequest,
+    DeleteSecretAPhoneNoToCustResponseBody,
+    DeleteSecretAPhoneNoToCustResponse,
+    DeleteSecretBlacklistRequest,
+    DeleteSecretBlacklistResponseBody,
+    DeleteSecretBlacklistResponse,
+    GetDyplsOSSInfoForUploadFileRequest,
+    GetDyplsOSSInfoForUploadFileResponseBody,
+    GetDyplsOSSInfoForUploadFileResponse,
+    GetSecretAsrDetailRequest,
+    GetSecretAsrDetailResponseBody,
+    GetSecretAsrDetailResponse,
+    GetTotalPublicUrlRequest,
+    GetTotalPublicUrlResponseBody,
+    GetTotalPublicUrlResponse,
+    GetXConfigRequest,
+    GetXConfigResponseBody,
+    GetXConfigResponse,
+    GetXDefaultConfigRequest,
+    GetXDefaultConfigResponseBody,
+    GetXDefaultConfigResponse,
+    ListXTelephonesRequest,
+    ListXTelephonesResponseBody,
+    ListXTelephonesResponse,
+    LockSecretNoRequest,
+    LockSecretNoResponseBody,
+    LockSecretNoResponse,
+    OperateAxgGroupRequest,
+    OperateAxgGroupResponseBody,
+    OperateAxgGroupResponse,
+    OperateBlackNoRequest,
+    OperateBlackNoResponseBody,
+    OperateBlackNoResponse,
+    QueryAxbBindFixedLineRequest,
+    QueryAxbBindFixedLineResponseBody,
+    QueryAxbBindFixedLineResponse,
+    QueryAxnBindFixedLineRequest,
+    QueryAxnBindFixedLineResponseBody,
+    QueryAxnBindFixedLineResponse,
+    QueryAxnExtensionBindFixedLineRequest,
+    QueryAxnExtensionBindFixedLineResponseBody,
+    QueryAxnExtensionBindFixedLineResponse,
+    QueryPhoneNoAByTrackNoRequest,
+    QueryPhoneNoAByTrackNoResponseBody,
+    QueryPhoneNoAByTrackNoResponse,
+    QueryRecordFileDownloadUrlRequest,
+    QueryRecordFileDownloadUrlResponseBody,
+    QueryRecordFileDownloadUrlResponse,
+    QuerySecretAPhoneNoToCustRequest,
+    QuerySecretAPhoneNoToCustResponseBody,
+    QuerySecretAPhoneNoToCustResponse,
+    QuerySecretNoDetailRequest,
+    QuerySecretNoDetailResponseBody,
+    QuerySecretNoDetailResponse,
+    QuerySecretNoRemainRequest,
+    QuerySecretNoRemainResponseBody,
+    QuerySecretNoRemainResponse,
+    QuerySecretTransferDetailsRequest,
+    QuerySecretTransferDetailsResponseBody,
+    QuerySecretTransferDetailsResponse,
+    QuerySoundRecordRequest,
+    QuerySoundRecordResponseBody,
+    QuerySoundRecordResponse,
+    QuerySubsIdRequest,
+    QuerySubsIdResponseBody,
+    QuerySubsIdResponse,
+    QuerySubscriptionDetailRequest,
+    QuerySubscriptionDetailResponseBody,
+    QuerySubscriptionDetailResponse,
+    ReleaseSecretNoRequest,
+    ReleaseSecretNoResponseBody,
+    ReleaseSecretNoResponse,
+    UnBindAXBRequest,
+    UnBindAXBResponseBody,
+    UnBindAXBResponse,
+    UnBindXBRequest,
+    UnBindXBResponseBody,
+    UnBindXBResponse,
+    UnbindSubs700Request,
+    UnbindSubs700ResponseBody,
+    UnbindSubs700Response,
+    UnbindSubscriptionRequest,
+    UnbindSubscriptionResponseBody,
+    UnbindSubscriptionResponse,
+    UnlockSecretNoRequest,
+    UnlockSecretNoResponseBody,
+    UnlockSecretNoResponse,
+    UpdateAxbBindFixedLineRequest,
+    UpdateAxbBindFixedLineShrinkRequest,
+    UpdateAxbBindFixedLineResponseBody,
+    UpdateAxbBindFixedLineResponse,
+    UpdateAxnBindFixedLineRequest,
+    UpdateAxnBindFixedLineShrinkRequest,
+    UpdateAxnBindFixedLineResponseBody,
+    UpdateAxnBindFixedLineResponse,
+    UpdateAxnExtensionBindFixedLineRequest,
+    UpdateAxnExtensionBindFixedLineShrinkRequest,
+    UpdateAxnExtensionBindFixedLineResponseBody,
+    UpdateAxnExtensionBindFixedLineResponse,
+    UpdateSubs700Request,
+    UpdateSubs700ResponseBody,
+    UpdateSubs700Response,
+    UpdateSubscriptionRequest,
+    UpdateSubscriptionResponseBody,
+    UpdateSubscriptionResponse,
+    BindAXBCallResponseBodyData,
+    BindAxbResponseBodySecretBindDTO,
+    BindAxb700ResponseBodyData,
+    BindAxbFixedLineRequestExtra,
+    BindAxbFixedLineResponseBodyData,
+    BindAxgResponseBodySecretBindDTO,
+    BindAxnResponseBodySecretBindDTO,
+    BindAxnExtensionResponseBodySecretBindDTO,
+    BindAxnExtensionFixedLineRequestExtraaxx,
+    BindAxnExtensionFixedLineResponseBodyData,
+    BindAxnFixedLineRequestExtra,
+    BindAxnFixedLineResponseBodyData,
+    BindBatchAxgRequestAxgBindList,
+    BindBatchAxgResponseBodySecretBindListSecretBind,
+    BindBatchAxgResponseBodySecretBindList,
+    BindGxb700ResponseBodyData,
+    BindXBResponseBodyData,
+    BuySecretNoResponseBodySecretBuyInfoDTO,
+    CancelPickUpWaybillResponseBodyData,
+    ConfigXRequestSequenceCalls,
+    ConfigXResponseBodyData,
+    CreateFixedNoAReportResponseBodyData,
+    CreatePhoneNoAReportResponseBodyData,
+    CreatePickUpWaybillRequestConsigneeAddress,
+    CreatePickUpWaybillRequestGoodsInfos,
+    CreatePickUpWaybillRequestSendAddress,
+    CreatePickUpWaybillResponseBodyData,
+    CreatePickUpWaybillPreQueryRequestConsigneeInfoAddressInfo,
+    CreatePickUpWaybillPreQueryRequestConsigneeInfo,
+    CreatePickUpWaybillPreQueryRequestSenderInfoAddressInfo,
+    CreatePickUpWaybillPreQueryRequestSenderInfo,
+    CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimesTimeList,
+    CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListAppointTimes,
+    CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectListRealTime,
+    CreatePickUpWaybillPreQueryResponseBodyDataCpTimeSelectList,
+    CreatePickUpWaybillPreQueryResponseBodyData,
+    CreateSmsSignResponseBodyData,
+    DeleteAxbBindFixedLineResponseBodyData,
+    DeleteAxnBindFixedLineResponseBodyData,
+    DeleteAxnExtensionBindFixedLineResponseBodyData,
+    GetDyplsOSSInfoForUploadFileResponseBodyData,
+    GetSecretAsrDetailResponseBodyDataSentences,
+    GetSecretAsrDetailResponseBodyData,
+    GetTotalPublicUrlResponseBodyData,
+    GetXConfigResponseBodyDataReachJsons,
+    GetXConfigResponseBodyDataSequenceCalls,
+    GetXConfigResponseBodyData,
+    GetXDefaultConfigResponseBodyDataReachJson,
+    GetXDefaultConfigResponseBodyDataSequenceCall,
+    GetXDefaultConfigResponseBodyData,
+    ListXTelephonesResponseBodyDataList,
+    ListXTelephonesResponseBodyData,
+    QueryAxbBindFixedLineResponseBodyDataExtra,
+    QueryAxbBindFixedLineResponseBodyData,
+    QueryAxnBindFixedLineResponseBodyDataExtra,
+    QueryAxnBindFixedLineResponseBodyData,
+    QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx,
+    QueryAxnExtensionBindFixedLineResponseBodyData,
+    QueryPhoneNoAByTrackNoResponseBodyModule,
+    QuerySecretAPhoneNoToCustResponseBodyData,
+    QuerySecretNoDetailResponseBodySecretNoInfoDTO,
+    QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOListRemainDTO,
+    QuerySecretNoRemainResponseBodySecretRemainDTORemainDTOList,
+    QuerySecretNoRemainResponseBodySecretRemainDTO,
+    QuerySecretTransferDetailsResponseBodyDataList,
+    QuerySecretTransferDetailsResponseBodyData,
+    QuerySoundRecordResponseBodyData,
+    QuerySubscriptionDetailResponseBodySecretBindDetailDTO,
+    UnBindAXBResponseBodyData,
+    UnBindXBResponseBodyData,
+    UpdateAxbBindFixedLineRequestExtra,
+    UpdateAxbBindFixedLineResponseBodyData,
+    UpdateAxnBindFixedLineRequestExtra,
+    UpdateAxnBindFixedLineResponseBodyData,
+    UpdateAxnExtensionBindFixedLineRequestExtraaxx,
+    UpdateAxnExtensionBindFixedLineResponseBodyData
+]

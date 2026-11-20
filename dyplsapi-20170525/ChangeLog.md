@@ -1,3 +1,8 @@
+2026-11-20 Version: 2.6.0
+- Support API CreateSecretTransferRecord.
+- Support API QuerySecretTransferDetails.
+
+
 2025-11-03 Version: 2.5.1
 - Update API UnbindSubs700: add request parameters IndustrialId.
 - Update API UnbindSubs700: add request parameters OrderId.
