@@ -14,11 +14,17 @@ class OrgInitResultDTO(DaraModel):
         org_id: int = None,
         user_id: int = None,
     ):
+        # The returned plaintext API key, which is visible only once during initialization.
         self.api_key = api_key
+        # The customer ID.
         self.client_id = client_id
+        # The customer unique identifier.
         self.client_uuid = client_uuid
+        # Indicates whether it is newly created. A value of false indicates that it already exists.
         self.is_new = is_new
+        # The enterprise ID.
         self.org_id = org_id
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

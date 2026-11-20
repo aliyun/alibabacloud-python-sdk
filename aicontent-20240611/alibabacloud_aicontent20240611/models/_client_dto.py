@@ -25,22 +25,39 @@ class ClientDTO(DaraModel):
         remark: str = None,
         user_id: int = None,
     ):
+        # The company address.
         self.address = address
+        # The authorization management configuration in the format of {"model_ids":[...],"group_ids":[...]}. An empty value indicates that group authorization is not used.
         self.allowed_model_group_config = allowed_model_group_config
+        # The list of allowed model IDs, separated by commas. An empty value indicates all models.
         self.allowed_models = allowed_models
+        # The customer UUID.
         self.client_uuid = client_uuid
+        # The contact information.
         self.contact = contact
+        # The status. A value of 0 indicates enabled, and a non-zero value indicates disabled.
         self.delete_tag = delete_tag
+        # The discount factor. A value of 1.0 indicates no discount.
         self.discount = discount
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # ID
         self.id = id
+        # The hierarchy level. Valid values: 1 to 5.
         self.level = level
+        # The account type. A value of 0 indicates a main account, and a value of 1 indicates a regular account.
         self.main = main
+        # The customer name.
         self.name = name
+        # The node type. Valid values: department: Department. user: User node, which is a leaf in the department tree.
         self.node_type = node_type
+        # The parent department ID. An empty value indicates the top level.
         self.parent_id = parent_id
+        # The remarks.
         self.remark = remark
+        # The user ID. This field has a value only when the node type is user.
         self.user_id = user_id
 
     def validate(self):

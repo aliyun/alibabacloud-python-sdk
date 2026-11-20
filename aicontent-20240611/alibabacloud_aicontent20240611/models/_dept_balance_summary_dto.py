@@ -11,7 +11,9 @@ class DeptBalanceSummaryDTO(DaraModel):
         monthly: main_models.BalancePoolSummaryDTO = None,
         permanent: main_models.BalancePoolSummaryDTO = None,
     ):
+        # The monthly balance pool overview.
         self.monthly = monthly
+        # The permanent balance pool overview.
         self.permanent = permanent
 
     def validate(self):

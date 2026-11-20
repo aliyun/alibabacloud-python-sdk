@@ -17,7 +17,7 @@ class QueryApplicationAccessIdResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The error code.
+        # The fault message encoding.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -25,7 +25,7 @@ class QueryApplicationAccessIdResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,9 +86,9 @@ class QueryApplicationAccessIdResponseBodyData(DaraModel):
         application_access_id: str = None,
         application_access_secret: str = None,
     ):
-        # The application access ID (appkey).
+        # The application access identifier (appkey).
         self.application_access_id = application_access_id
-        # The application access secret. This parameter is returned only for requests from the Alibaba Cloud console.
+        # The application secret. This parameter is returned only for console requests.
         self.application_access_secret = application_access_secret
 
     def validate(self):

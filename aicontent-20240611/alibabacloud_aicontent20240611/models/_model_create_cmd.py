@@ -18,15 +18,25 @@ class ModelCreateCmd(DaraModel):
         symbol: str = None,
         tags: str = None,
     ):
+        # API Key
         self.api_key = api_key
+        # Base URL
         self.base_url = base_url
+        # The model description.
         self.description = description
+        # The maximum input length.
         self.max_input_length = max_input_length
+        # The maximum output length.
         self.max_output_length = max_output_length
+        # The model ID.
         self.model_id = model_id
+        # The model type.
         self.model_type = model_type
+        # The model name.
         self.name = name
+        # The vendor symbol.
         self.symbol = symbol
+        # The tags, separated by commas.
         self.tags = tags
 
     def validate(self):

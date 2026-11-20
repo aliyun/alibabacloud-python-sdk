@@ -17,9 +17,9 @@ class ModelRouterQueryNacosTagsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # An array of tags.
+        # The data object.
         self.data = data
-        # The error code.
+        # The fault message encoding.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -27,7 +27,7 @@ class ModelRouterQueryNacosTagsResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -96,9 +96,13 @@ class ModelRouterQueryNacosTagsResponseBodyData(DaraModel):
         tag_name: str = None,
         value: str = None,
     ):
+        # The display name of the model type. This parameter is returned when configType is set to model-types.
         self.label = label
+        # The tag value.
         self.tag = tag
+        # The tag name.
         self.tag_name = tag_name
+        # The model type value. This parameter is returned when configType is set to model-types.
         self.value = value
 
     def validate(self):

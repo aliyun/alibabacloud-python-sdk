@@ -10,7 +10,9 @@ class BillingBillSummaryPointDTO(DaraModel):
         timestamp: int = None,
         total_amount: float = None,
     ):
+        # The timestamp in UNIX seconds.
         self.timestamp = timestamp
+        # The total cost at that point in time.
         self.total_amount = total_amount
 
     def validate(self):

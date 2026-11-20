@@ -15,15 +15,15 @@ class ExecuteAITeacherSyncDialogueRequest(DaraModel):
         records: List[main_models.ExecuteAITeacherSyncDialogueRequestRecords] = None,
         user_id: str = None,
     ):
-        # An array of dialogue task objects.
+        # The collection of conversation task content.
         # 
         # This parameter is required.
         self.dialogue_tasks = dialogue_tasks
-        # The language and dialect of the dialogue.
+        # The language code.
         self.language_code = language_code
-        # An array of dialogue record objects.
+        # The collection of conversation records.
         self.records = records
-        # A unique identifier for the user.
+        # The user ID.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -92,19 +92,23 @@ class ExecuteAITeacherSyncDialogueRequestRecords(DaraModel):
         order: int = None,
         role: str = None,
     ):
-        # The message content.
+        # The conversation content.
         # 
         # This parameter is required.
         self.content = content
-        # Indicates whether the user\\"s response is off-topic, acting as a flow control mechanism. This value is based on how the user\\"s previous response aligned with the dialogue task. If the user goes off-topic more than twice, the system sets this parameter to `true` to trigger a task switch.
+        # Specifies whether the response is off topic, which also serves as a flow control mechanism. This parameter reflects whether the student\\"s response meets the settings of the conversation task. The value of this parameter is derived from the return results of previous conversation turns. In addition, this parameter serves as a flow control mechanism. If the response is off topic more than twice, the value is forcibly set to true to force a task switch. Valid values:
+        # - true: Off topic.
+        # - false: On topic.
         self.is_off_topic_control = is_off_topic_control
-        # Indicates whether the response is on-topic.
+        # Specifies whether the response is on topic. Valid values:
+        # - true: On topic.
+        # - false: Off topic.
         self.is_on_topic = is_on_topic
-        # The sequence number of the message.
+        # The sequence number.
         # 
         # This parameter is required.
         self.order = order
-        # The role of the message author.
+        # The role identity.
         # 
         # This parameter is required.
         self.role = role
@@ -161,17 +165,17 @@ class ExecuteAITeacherSyncDialogueRequestDialogueTasks(DaraModel):
         order: int = None,
         user: str = None,
     ):
-        # The assistant\\"s dialogue content.
+        # The AI conversation content.
         # 
         # This parameter is required.
         self.assistant = assistant
-        # The translation of the assistant\\"s dialogue content.
+        # The translation of the AI conversation content.
         self.assistant_translate = assistant_translate
-        # The sequence number of the task.
+        # The sequence number.
         # 
         # This parameter is required.
         self.order = order
-        # The user\\"s dialogue content.
+        # The user conversation content.
         # 
         # This parameter is required.
         self.user = user

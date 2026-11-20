@@ -17,9 +17,9 @@ class PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody(DaraModel
         request_id: str = None,
         success: bool = None,
     ):
-        # The response data object.
+        # The data object.
         self.data = data
-        # The error code.
+        # The fault message encoding.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -27,7 +27,7 @@ class PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody(DaraModel
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -93,19 +93,19 @@ class PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBodyData(DaraM
         prompt_id: str = None,
         result_image_url: List[str] = None,
     ):
-        # The creation time of the inference job.
+        # The creation time of the model inference task.
         self.create_time = create_time
-        # The inference job ID.
+        # The model inference task ID.
         self.id = id
-        # The job status.
+        # The model inference task status.
         self.job_status = job_status
-        # The job progress.
+        # The model inference task progress.
         self.job_train_progress = job_train_progress
         # The model ID.
         self.model_id = model_id
-        # The ID of the prompt used for the job.
+        # promptId
         self.prompt_id = prompt_id
-        # A list of resource IDs for the generated images.
+        # The list of model inference task results.
         self.result_image_url = result_image_url
 
     def validate(self):

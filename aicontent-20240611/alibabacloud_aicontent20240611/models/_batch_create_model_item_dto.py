@@ -17,17 +17,29 @@ class BatchCreateModelItemDTO(DaraModel):
         name: str = None,
         tags: str = None,
     ):
+        # The model description.
         self.description = description
+        # The extension configuration parameters in JSON string format.
         self.extensions = extensions
+        # The supported input and output data types, separated by commas.
         self.in_out = in_out
+        # The maximum input length in tokens.
         self.max_input_length = max_input_length
+        # The maximum output length in tokens.
         self.max_output_length = max_output_length
+        # The model identifier. This parameter is required and corresponds to the model ID on the vendor side. If the identifier is duplicated, the backend automatically increments the version by using v1 or v2.
+        # 
         # This parameter is required.
         self.model_id = model_id
+        # The model type. This parameter is required. Valid values: Chat, Embedding, Rerank, Image, Audio, and Video.
+        # 
         # This parameter is required.
         self.model_type = model_type
+        # The model name. This parameter is required. If the identifier is duplicated, add -v1 or -v2 to distinguish the models.
+        # 
         # This parameter is required.
         self.name = name
+        # The tags, separated by commas.
         self.tags = tags
 
     def validate(self):

@@ -12,9 +12,13 @@ class UserDepartmentDTO(DaraModel):
         role_code: str = None,
         role_name: str = None,
     ):
+        # The department ID.
         self.client_id = client_id
+        # The department name.
         self.client_name = client_name
+        # The role code.
         self.role_code = role_code
+        # The role name.
         self.role_name = role_name
 
     def validate(self):

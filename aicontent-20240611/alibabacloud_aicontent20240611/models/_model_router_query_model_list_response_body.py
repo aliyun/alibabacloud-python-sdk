@@ -18,19 +18,19 @@ class ModelRouterQueryModelListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Contains the paginated list of models and pagination metadata.
+        # The data object.
         self.data = data
-        # The error code. Returned only when the request fails.
+        # The fault message code.
         self.err_code = err_code
-        # The error message. Returned only when the request fails.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The maximum number of results per page.
+        # maxResults
         self.max_results = max_results
-        # The unique identifier for the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -101,17 +101,17 @@ class ModelRouterQueryModelListResponseBodyData(DaraModel):
         page_size: int = None,
         total: str = None,
     ):
-        # An array of model objects.
+        # The list of trajectory query records.
         self.list = list
-        # The maximum number of results per page.
+        # maxResults
         self.max_results = max_results
-        # The pagination token used to retrieve the next page of results. An empty value indicates that no more results are available.
+        # nextToken
         self.next_token = next_token
-        # The current page number.
+        # The requested page.
         self.page = page
-        # The number of models per page.
+        # The number of items per page.
         self.page_size = page_size
-        # The total number of models that meet the filter criteria.
+        # The total number of records.
         self.total = total
 
     def validate(self):

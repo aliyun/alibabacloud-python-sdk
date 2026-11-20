@@ -12,9 +12,9 @@ class ListTextbookAssistantArticleDetailsRequest(DaraModel):
         article_id_list: List[str] = None,
         auth_token: str = None,
     ):
-        # A list of article IDs to retrieve.
+        # The list of article IDs.
         self.article_id_list = article_id_list
-        # The authorization token obtained from the "Get Authorization Token for the English Textbook-Style AI Teacher" API.
+        # The authorization code for API calls. You can obtain this code by calling the operation that retrieves the authorization code for the English textbook-style AI teacher feature.
         # 
         # This parameter is required.
         self.auth_token = auth_token

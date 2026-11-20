@@ -17,7 +17,7 @@ class ExecuteAITeacherSyncDialogueResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The error code.
+        # The fault error message encoding.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -25,7 +25,7 @@ class ExecuteAITeacherSyncDialogueResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -88,13 +88,13 @@ class ExecuteAITeacherSyncDialogueResponseBodyData(DaraModel):
         is_on_topic: bool = None,
         question_index: int = None,
     ):
-        # The English response from the AI teacher.
+        # The English reply from the AI teacher.
         self.english_result = english_result
-        # Indicates whether the dialogue is finished.
+        # Indicates whether the conversation is completed.
         self.is_finish = is_finish
-        # Indicates whether the user\\"s response is on topic.
+        # Indicates whether the response is on topic.
         self.is_on_topic = is_on_topic
-        # The index of the current question.
+        # The index of the current question being answered.
         self.question_index = question_index
 
     def validate(self):

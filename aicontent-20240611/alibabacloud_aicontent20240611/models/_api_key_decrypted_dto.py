@@ -18,14 +18,23 @@ class ApiKeyDecryptedDTO(DaraModel):
         key_preview: str = None,
         name: str = None,
     ):
+        # The associated client information.
         self.client = client
+        # The client ID.
         self.client_id = client_id
+        # The deletion tag. A value of 0 indicates enabled, and a non-zero value indicates disabled.
         self.delete_tag = delete_tag
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # ID
         self.id = id
+        # The full key.
         self.key = key
+        # The key preview.
         self.key_preview = key_preview
+        # The key name.
         self.name = name
 
     def validate(self):

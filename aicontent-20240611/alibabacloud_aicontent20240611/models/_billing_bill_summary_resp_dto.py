@@ -13,7 +13,9 @@ class BillingBillSummaryRespDTO(DaraModel):
         points: List[main_models.BillingBillSummaryPointDTO] = None,
         total_amount: float = None,
     ):
+        # The list of cost trend data points.
         self.points = points
+        # The total cost within the time range.
         self.total_amount = total_amount
 
     def validate(self):

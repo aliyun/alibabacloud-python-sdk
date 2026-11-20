@@ -9,6 +9,7 @@ class ApiKeyCreateCmd(DaraModel):
         self,
         client_id: int = None,
     ):
+        # The customer ID. A value of null indicates the default customer.
         self.client_id = client_id
 
     def validate(self):

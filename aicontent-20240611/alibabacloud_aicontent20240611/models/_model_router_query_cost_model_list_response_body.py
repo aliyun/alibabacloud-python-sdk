@@ -19,19 +19,19 @@ class ModelRouterQueryCostModelListResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The fault code.
+        # The fault message encoding.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The maximum number of results to return.
+        # The maximum number of results.
         self.max_results = max_results
         # nextToken
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

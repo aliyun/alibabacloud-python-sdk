@@ -13,8 +13,11 @@ class TimeSeriesPointDTO(DaraModel):
         timestamp: str = None,
         value: Any = None,
     ):
+        # The label.
         self.label = label
+        # The timestamp (RFC3339).
         self.timestamp = timestamp
+        # The value.
         self.value = value
 
     def validate(self):

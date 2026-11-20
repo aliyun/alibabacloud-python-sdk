@@ -11,8 +11,11 @@ class BillingBillTierDTO(DaraModel):
         payable_amount: float = None,
         values: str = None,
     ):
+        # The dimension key-value mapping, where the key is the dimension column name and the value is the display value.
         self.dim_values = dim_values
+        # The cost of the bucket.
         self.payable_amount = payable_amount
+        # The usage value mapping, where the key is the metric name and the value is the numerical value.
         self.values = values
 
     def validate(self):

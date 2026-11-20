@@ -28,21 +28,22 @@ class ModelDTO(DaraModel):
         tags: str = None,
         version: int = None,
     ):
-        # A masked preview of the API key.
+        # The API key preview.
         self.api_key_preview = api_key_preview
-        # The base URL for API requests.
+        # Base URL
         self.base_url = base_url
-        # Indicates the model\\"s status. A value of 0 means enabled, and a non-zero value means disabled.
+        # A value of 0 indicates enabled, and a non-zero value indicates disabled.
         self.delete_tag = delete_tag
         # The model description.
         self.description = description
         self.extensions = extensions
-        # The time when the model was created, in ISO 8601 format.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the model was last updated, in ISO 8601 format.
+        # The update time.
         self.gmt_modified = gmt_modified
+        # Indicates whether a billing rule is configured.
         self.has_billing_rule = has_billing_rule
-        # The unique ID of the model.
+        # ID
         self.id = id
         self.in_out = in_out
         # Indicates whether the model is custom.
@@ -51,7 +52,7 @@ class ModelDTO(DaraModel):
         self.max_input_length = max_input_length
         # The maximum output length.
         self.max_output_length = max_output_length
-        # The model code.
+        # The model identifier.
         self.model_code = model_code
         # The model type.
         self.model_type = model_type
@@ -59,11 +60,11 @@ class ModelDTO(DaraModel):
         self.name = name
         # The vendor symbol.
         self.symbol = symbol
-        # The display names for the tags, separated by commas.
+        # The tag display names.
         self.tag_names = tag_names
-        # A comma-separated list of model tags.
+        # The tags, separated by commas.
         self.tags = tags
-        # The version number.
+        # The version.
         self.version = version
 
     def validate(self):

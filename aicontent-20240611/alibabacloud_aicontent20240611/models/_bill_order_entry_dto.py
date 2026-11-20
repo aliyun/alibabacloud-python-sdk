@@ -22,19 +22,33 @@ class BillOrderEntryDTO(DaraModel):
         total_after: float = None,
         total_before: float = None,
     ):
+        # The change amount.
         self.amount = amount
+        # The balance after the change.
         self.balance_after = balance_after
+        # The balance before the change.
         self.balance_before = balance_before
+        # The balance type: permanent/monthly.
         self.balance_type = balance_type
+        # The creation time.
         self.create_time = create_time
+        # The change direction: in/out.
         self.direction = direction
+        # The model code (available when gateway billing deduction is applied).
         self.model_code = model_code
+        # The operator ID.
         self.operator_id = operator_id
+        # The change record ID.
         self.order_id = order_id
+        # The change type.
         self.order_type = order_type
+        # The remark.
         self.remark = remark
+        # The source.
         self.source = source
+        # The total balance after the change.
         self.total_after = total_after
+        # The total balance before the change.
         self.total_before = total_before
 
     def validate(self):

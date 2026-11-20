@@ -15,17 +15,17 @@ class ExecuteAITeacherExpansionDialogueRefineResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The object that contains the refinement result.
+        # The data object.
         self.data = data
-        # The error code. Returned only when the request fails.
+        # The fault message encoding.
         self.err_code = err_code
-        # The error message. Returned only when the request fails.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -85,7 +85,7 @@ class ExecuteAITeacherExpansionDialogueRefineResponseBodyData(DaraModel):
         self,
         result: str = None,
     ):
-        # The refinement result.
+        # The polishing result.
         self.result = result
 
     def validate(self):

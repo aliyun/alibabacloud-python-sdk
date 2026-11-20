@@ -14,34 +14,37 @@ class ModelRouterQueryCostModelListRequest(DaraModel):
         granularity: str = None,
         max_results: int = None,
         member_user_ids: str = None,
+        model_ids: str = None,
         model_types: str = None,
         next_token: str = None,
         search: str = None,
         start_time: int = None,
     ):
-        # Optional. Filters results by API Key ID. This parameter is linked to the department and requires clientId to be specified first.
+        # The API key ID used for filtering. This parameter is optional and associated with the department. You must specify clientId first.
         self.api_key_id = api_key_id
-        # Filters results by department ID.
+        # The department ID used for filtering.
         self.client_id = client_id
-        # The list of department IDs, separated by commas. Supports querying data for multiple departments. This parameter is mutually exclusive with clientId.
+        # The department IDs. Separate multiple IDs with commas to query data for multiple departments. This parameter is mutually exclusive with clientId.
         self.client_ids = client_ids
-        # The end time, in UNIX timestamp (seconds).
+        # The end time, specified as a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # Automatically aggregated. No input required. Granularity: hourly/daily. Default value: hourly.
+        # The time granularity for automatic aggregation. You do not need to pass this parameter. Valid values: hourly and daily. Default value: hourly.
         self.granularity = granularity
-        # The maximum number of results to return.
+        # The maximum number of results.
         self.max_results = max_results
-        # Optional. Filters results by members (member IDs, separated by commas). If not specified, the department and all its members are included. If an empty value is passed, only the department is included without members.
+        # The member IDs used for filtering. Separate multiple IDs with commas. This parameter is optional. If you do not specify this parameter, the department and all its members are included. If you pass an empty value, only the department is included, excluding its members.
         self.member_user_ids = member_user_ids
-        # The model types, separated by commas.
+        # The model IDs used for filtering. Separate multiple positive integer IDs with commas.
+        self.model_ids = model_ids
+        # The model types. Separate multiple values with commas.
         self.model_types = model_types
         # nextToken
         self.next_token = next_token
-        # Fuzzy search by model name or code.
+        # The keyword for fuzzy search by model name or code.
         self.search = search
-        # The start time, in UNIX timestamp (seconds).
+        # The start time, specified as a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
@@ -74,6 +77,9 @@ class ModelRouterQueryCostModelListRequest(DaraModel):
 
         if self.member_user_ids is not None:
             result['memberUserIds'] = self.member_user_ids
+
+        if self.model_ids is not None:
+            result['modelIds'] = self.model_ids
 
         if self.model_types is not None:
             result['modelTypes'] = self.model_types
@@ -111,6 +117,9 @@ class ModelRouterQueryCostModelListRequest(DaraModel):
 
         if m.get('memberUserIds') is not None:
             self.member_user_ids = m.get('memberUserIds')
+
+        if m.get('modelIds') is not None:
+            self.model_ids = m.get('modelIds')
 
         if m.get('modelTypes') is not None:
             self.model_types = m.get('modelTypes')

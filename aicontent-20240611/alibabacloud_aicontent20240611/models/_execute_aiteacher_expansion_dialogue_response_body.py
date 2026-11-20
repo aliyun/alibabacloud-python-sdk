@@ -15,17 +15,17 @@ class ExecuteAITeacherExpansionDialogueResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response data.
+        # The data object.
         self.data = data
-        # The error code returned if the request fails.
+        # The fault message encoding.
         self.err_code = err_code
-        # The error message returned if the request fails.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # A unique identifier for the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -90,17 +90,17 @@ class ExecuteAITeacherExpansionDialogueResponseBodyData(DaraModel):
         is_on_topic: bool = None,
         question_index: int = None,
     ):
-        # The AI teacher\\"s response in Chinese.
+        # The Chinese reply from the AI teacher.
         self.chinese_result = chinese_result
-        # The AI teacher\\"s response in English.
+        # The English reply from the AI teacher.
         self.english_result = english_result
-        # Indicates whether the dialogue is finished.
+        # Indicates whether the conversation is completed.
         self.is_finish = is_finish
         # Indicates whether the response is off-topic.
         self.is_off_topic_control = is_off_topic_control
         # Indicates whether the response is on-topic.
         self.is_on_topic = is_on_topic
-        # The index of the current question.
+        # The number of the current question being answered.
         self.question_index = question_index
 
     def validate(self):

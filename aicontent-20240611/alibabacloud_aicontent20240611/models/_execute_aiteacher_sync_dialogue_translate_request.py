@@ -14,11 +14,11 @@ class ExecuteAITeacherSyncDialogueTranslateRequest(DaraModel):
         records: List[main_models.ExecuteAITeacherSyncDialogueTranslateRequestRecords] = None,
         user_id: str = None,
     ):
-        # An array of dialogue task objects.
+        # The collection of conversation content for dialogue tasks.
         # 
         # This parameter is required.
         self.dialogue_tasks = dialogue_tasks
-        # An array of dialogue record objects.
+        # The collection of conversation records.
         self.records = records
         # The user ID.
         # 
@@ -83,19 +83,23 @@ class ExecuteAITeacherSyncDialogueTranslateRequestRecords(DaraModel):
         order: int = None,
         role: str = None,
     ):
-        # The content of the message.
+        # The conversation content.
         # 
         # This parameter is required.
         self.content = content
-        # Indicates whether the message is off-topic. This parameter is used for flow control.
+        # Specifies whether the content is off topic for flow control purposes. Valid values:
+        # - true: Off topic.
+        # - false: On topic.
         self.is_off_topic_control = is_off_topic_control
-        # Indicates whether the message is on-topic.
+        # Specifies whether the content is on topic. Valid values:
+        # - true: On topic.
+        # - false: Off topic.
         self.is_on_topic = is_on_topic
-        # The sequence number of the message.
+        # The sort order.
         # 
         # This parameter is required.
         self.order = order
-        # The message author\\"s role.
+        # The role.
         # 
         # This parameter is required.
         self.role = role
@@ -152,17 +156,17 @@ class ExecuteAITeacherSyncDialogueTranslateRequestDialogueTasks(DaraModel):
         order: int = None,
         user: str = None,
     ):
-        # The content of the assistant\\"s message.
+        # The AI conversation content.
         # 
         # This parameter is required.
         self.assistant = assistant
-        # The translated content of the assistant\\"s message.
+        # The translation of the AI conversation content.
         self.assistant_translate = assistant_translate
-        # The sequence number of the task.
+        # The sort order.
         # 
         # This parameter is required.
         self.order = order
-        # The content of the user\\"s message.
+        # The user conversation content.
         # 
         # This parameter is required.
         self.user = user

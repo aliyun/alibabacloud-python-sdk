@@ -14,11 +14,17 @@ class UsageInfoDTO(DaraModel):
         video_count: int = None,
         video_duration: int = None,
     ):
+        # The output tokens.
         self.completion_tokens = completion_tokens
+        # The number of images.
         self.image_count = image_count
+        # The input tokens.
         self.prompt_tokens = prompt_tokens
+        # The total tokens.
         self.total_tokens = total_tokens
+        # The number of videos.
         self.video_count = video_count
+        # The video duration in seconds.
         self.video_duration = video_duration
 
     def validate(self):

@@ -14,6 +14,7 @@ class ModelRouterQueryCostTrendMetricsRequest(DaraModel):
         granularity: str = None,
         max_results: int = None,
         member_user_ids: str = None,
+        model_ids: str = None,
         model_types: str = None,
         next_token: str = None,
         start_time: int = None,
@@ -39,6 +40,7 @@ class ModelRouterQueryCostTrendMetricsRequest(DaraModel):
         self.max_results = max_results
         # Optional. Filters by member IDs, separated by commas. If not specified, data for the department and all its members is returned. If an empty value is specified, only department data without members is returned.
         self.member_user_ids = member_user_ids
+        self.model_ids = model_ids
         # The model types, separated by commas.
         self.model_types = model_types
         # nextToken
@@ -77,6 +79,9 @@ class ModelRouterQueryCostTrendMetricsRequest(DaraModel):
         if self.member_user_ids is not None:
             result['memberUserIds'] = self.member_user_ids
 
+        if self.model_ids is not None:
+            result['modelIds'] = self.model_ids
+
         if self.model_types is not None:
             result['modelTypes'] = self.model_types
 
@@ -110,6 +115,9 @@ class ModelRouterQueryCostTrendMetricsRequest(DaraModel):
 
         if m.get('memberUserIds') is not None:
             self.member_user_ids = m.get('memberUserIds')
+
+        if m.get('modelIds') is not None:
+            self.model_ids = m.get('modelIds')
 
         if m.get('modelTypes') is not None:
             self.model_types = m.get('modelTypes')

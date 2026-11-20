@@ -32,29 +32,29 @@ class BillingDetailRowDTO(DaraModel):
         total_tokens: float = None,
         usage_detail: str = None,
     ):
-        # The actual payment amount (after discount), rounded to 8 decimal places.
+        # The actual amount paid after discounts, rounded to eight decimal places.
         self.amount = amount
         # API Key ID
         self.api_key_id = api_key_id
-        # The API key name.
+        # The name of the API key.
         self.api_key_name = api_key_name
-        # The number of cache creation tokens (explicit cache writes).
+        # The number of cache creation tokens for explicit cache writes.
         self.cache_creation_tokens = cache_creation_tokens
-        # The number of tokens that hit the cache.
+        # The number of cache hit tokens.
         self.cached_tokens = cached_tokens
-        # The department ID. A value of 0 indicates that no department is associated.
+        # The department ID. A value of 0 indicates that the request does not belong to any department.
         self.client_id = client_id
         # The department name.
         self.client_name = client_name
-        # The discount coefficient. A value of 1.0 indicates no discount.
+        # The discount factor. A value of 1.0 indicates no discount.
         self.discount = discount
         # The number of input tokens, including cached tokens and cache creation tokens.
         self.input_tokens = input_tokens
-        # The member user ID for a member row. The value is 0 for a department row.
+        # The user ID of the member. For department rows, the value is 0.
         self.member_user_id = member_user_id
-        # The member name for a member row. The value is empty for a department row.
+        # The name of the member. For department rows, the value is empty.
         self.member_user_name = member_user_name
-        # The JSON of other metering field mapping, such as video duration and image count. Fields with a value of 0 are not included in the output.
+        # The JSON containing other metering field mappings, such as video duration and number of images. Fields with a value of 0 are not returned.
         self.metrics = metrics
         # The model identifier.
         self.model_code = model_code
@@ -62,7 +62,7 @@ class BillingDetailRowDTO(DaraModel):
         self.model_id = model_id
         # The model name.
         self.model_name = model_name
-        # The model symbol (provider identifier).
+        # The model symbol, which is the vendor identifier.
         self.model_symbol = model_symbol
         # The model type.
         self.model_type = model_type
@@ -72,13 +72,13 @@ class BillingDetailRowDTO(DaraModel):
         self.output_tokens = output_tokens
         # The number of reasoning tokens.
         self.reasoning_tokens = reasoning_tokens
-        # The unique request ID.
+        # The unique identifier of the request.
         self.request_id = request_id
         # The request time as a UNIX timestamp in seconds.
         self.request_time = request_time
         # The total number of tokens.
         self.total_tokens = total_tokens
-        # The raw JSON of the usage details.
+        # The raw JSON of usage details.
         self.usage_detail = usage_detail
 
     def validate(self):

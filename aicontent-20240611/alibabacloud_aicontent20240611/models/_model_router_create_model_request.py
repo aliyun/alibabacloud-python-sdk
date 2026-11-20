@@ -24,7 +24,7 @@ class ModelRouterCreateModelRequest(DaraModel):
         self.api_key = api_key
         # Base URL
         self.base_url = base_url
-        # The model description.
+        # The description of the model.
         self.description = description
         # The extension configuration parameters of the model, stored as a JSON string.
         self.extensions = extensions
@@ -34,11 +34,11 @@ class ModelRouterCreateModelRequest(DaraModel):
         self.max_input_length = max_input_length
         # The maximum output length.
         self.max_output_length = max_output_length
-        # The model ID.
+        # The ID of the model.
         self.model_id = model_id
-        # The model type.
+        # The type of the model.
         self.model_type = model_type
-        # The model name.
+        # The name of the model.
         self.name = name
         # The vendor symbol.
         self.symbol = symbol

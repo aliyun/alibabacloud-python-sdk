@@ -9,7 +9,7 @@ class PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest(DaraModel):
         self,
         inference_job_id: str = None,
     ):
-        # The inference job ID.
+        # The inference task ID.
         # 
         # This parameter is required.
         self.inference_job_id = inference_job_id

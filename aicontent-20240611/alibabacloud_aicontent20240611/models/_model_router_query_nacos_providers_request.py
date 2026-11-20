@@ -16,21 +16,21 @@ class ModelRouterQueryNacosProvidersRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
-        # The field by which to group the results.
+        # The field used to group the results.
         self.group_by = group_by
         # The maximum number of results to return.
         self.max_results = max_results
-        # Specifies whether the total count is required.
+        # Specifies whether to include the total count of items.
         self.need_total_count = need_total_count
-        # The pagination token used for paginated queries. Specify this parameter to retrieve the next page.
+        # The pagination token used to retrieve the next page of results.
         self.next_token = next_token
-        # The field by which to sort the results.
+        # The field used to sort the results.
         self.order_by = order_by
-        # The sort direction.
+        # The sort order.
         self.order_direction = order_direction
         # The page number.
         self.page_index = page_index
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
 
     def validate(self):

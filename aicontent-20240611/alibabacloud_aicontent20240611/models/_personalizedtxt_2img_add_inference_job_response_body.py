@@ -19,7 +19,7 @@ class Personalizedtxt2imgAddInferenceJobResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The error code.
+        # The fault message encoding.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -27,7 +27,7 @@ class Personalizedtxt2imgAddInferenceJobResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -93,19 +93,19 @@ class Personalizedtxt2imgAddInferenceJobResponseBodyData(DaraModel):
         prompt_id: str = None,
         result_image_url: List[str] = None,
     ):
-        # The inference job\\"s creation time.
+        # The creation time of the model inference task.
         self.create_time = create_time
-        # The model inference job ID.
+        # The ID of the model inference task.
         self.id = id
-        # The job status.
+        # The status of the model inference task.
         self.job_status = job_status
-        # The inference job progress.
+        # The progress of the model inference task.
         self.job_train_progress = job_train_progress
         # The model ID.
         self.model_id = model_id
-        # The prompt ID.
+        # promptId
         self.prompt_id = prompt_id
-        # A list of URLs for the generated images.
+        # The list of results for the model inference task.
         self.result_image_url = result_image_url
 
     def validate(self):

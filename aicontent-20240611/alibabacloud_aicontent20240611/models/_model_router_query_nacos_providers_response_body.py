@@ -19,7 +19,7 @@ class ModelRouterQueryNacosProvidersResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The fault message code.
+        # The fault message encoding.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -100,9 +100,9 @@ class ModelRouterQueryNacosProvidersResponseBodyData(DaraModel):
         self.base_url = base_url
         # The list of models.
         self.models = models
-        # The provider name.
+        # The name of the provider.
         self.name = name
-        # The provider identifier.
+        # The identifier of the provider.
         self.symbol = symbol
 
     def validate(self):
@@ -161,17 +161,17 @@ class ModelRouterQueryNacosProvidersResponseBodyDataModels(DaraModel):
         output_token: str = None,
         type: str = None,
     ):
-        # The extension configuration parameters of the model, stored as key-value pairs for additional model behavior configuration.
+        # The extension configuration parameters of the model, which store additional model behavior configurations as key-value pairs.
         self.extensions = extensions
-        # The model identifier.
+        # The identifier of the model.
         self.identifier = identifier
-        # The input type and output type.
+        # The input and output types.
         self.in_out = in_out
         # The input token limit.
         self.input_token = input_token
         # The output token limit.
         self.output_token = output_token
-        # The feature type or capability category of the model.
+        # The function type or capability category of the model.
         self.type = type
 
     def validate(self):
@@ -231,7 +231,7 @@ class ModelRouterQueryNacosProvidersResponseBodyDataModelsExtensions(DaraModel):
         self,
         async_: bool = None,
     ):
-        # The asynchronous call identifier.
+        # The identifier for asynchronous invocation.
         self.async_ = async_
 
     def validate(self):

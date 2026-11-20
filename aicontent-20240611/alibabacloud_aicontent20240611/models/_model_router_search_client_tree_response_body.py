@@ -87,7 +87,7 @@ class ModelRouterSearchClientTreeResponseBodyData(DaraModel):
         self,
         matched_dept_ids: List[int] = None,
     ):
-        # The collection of matched department IDs.
+        # The IDs of the matched departments.
         self.matched_dept_ids = matched_dept_ids
 
     def validate(self):

@@ -7,6 +7,7 @@ import json
 from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_aicontent20240611 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -23,6 +24,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'AiContent'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-shanghai': 'aicontent.aliyuncs.com',
@@ -8839,6 +8843,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.member_user_ids):
             query['memberUserIds'] = request.member_user_ids
+        if not DaraCore.is_null(request.model_ids):
+            query['modelIds'] = request.model_ids
         if not DaraCore.is_null(request.model_types):
             query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
@@ -8889,6 +8895,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.member_user_ids):
             query['memberUserIds'] = request.member_user_ids
+        if not DaraCore.is_null(request.model_ids):
+            query['modelIds'] = request.model_ids
         if not DaraCore.is_null(request.model_types):
             query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
@@ -9067,6 +9075,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.member_user_ids):
             query['memberUserIds'] = request.member_user_ids
+        if not DaraCore.is_null(request.model_ids):
+            query['modelIds'] = request.model_ids
         if not DaraCore.is_null(request.model_types):
             query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):
@@ -9115,6 +9125,8 @@ class Client(OpenApiClient):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.member_user_ids):
             query['memberUserIds'] = request.member_user_ids
+        if not DaraCore.is_null(request.model_ids):
+            query['modelIds'] = request.model_ids
         if not DaraCore.is_null(request.model_types):
             query['modelTypes'] = request.model_types
         if not DaraCore.is_null(request.next_token):

@@ -17,11 +17,17 @@ class ObservationChartsDTO(DaraModel):
         success_rate: List[main_models.ObservationChartsDTOSuccessRate] = None,
         tpm: List[main_models.TimeSeriesPointDTO] = None,
     ):
+        # The call volume time series.
         self.call_volume = call_volume
+        # The number of concurrent connections.
         self.concurrency = concurrency
+        # The QPM time series.
         self.qpm = qpm
+        # The response time time series.
         self.response_time = response_time
+        # The success rate time series.
         self.success_rate = success_rate
+        # The TPM time series.
         self.tpm = tpm
 
     def validate(self):
@@ -136,8 +142,11 @@ class ObservationChartsDTOSuccessRate(DaraModel):
         timestamp: str = None,
         value: Any = None,
     ):
+        # The label.
         self.label = label
+        # The timestamp (RFC3339).
         self.timestamp = timestamp
+        # The value.
         self.value = value
 
     def validate(self):

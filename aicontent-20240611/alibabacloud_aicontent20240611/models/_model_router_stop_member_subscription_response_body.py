@@ -14,11 +14,17 @@ class ModelRouterStopMemberSubscriptionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data object. This object contains no business data and is always empty.
         self.data = data
+        # The fault message encoding.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

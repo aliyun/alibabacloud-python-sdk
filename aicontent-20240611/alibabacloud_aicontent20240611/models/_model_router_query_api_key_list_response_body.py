@@ -20,7 +20,7 @@ class ModelRouterQueryApiKeyListResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The error message code.
+        # The fault message encoding.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -30,7 +30,7 @@ class ModelRouterQueryApiKeyListResponseBody(DaraModel):
         self.max_results = max_results
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -101,11 +101,17 @@ class ModelRouterQueryApiKeyListResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The elements.
         self.list = list
+        # The page size. Default value: 20.
         self.max_result = max_result
+        # nextToken
         self.next_token = next_token
+        # The page number.
         self.page = page
+        # The number of items per page.
         self.page_size = page_size
+        # The total number of records.
         self.total = total
 
     def validate(self):

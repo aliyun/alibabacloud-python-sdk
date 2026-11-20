@@ -19,19 +19,18 @@ class ListTextbookAssistantSceneDetailsResponseBody(DaraModel):
     ):
         # The returned data object.
         self.data = data
-        # The error code returned if the request fails.
+        # The error code.
         self.err_code = err_code
-        # The error message returned if the request fails.
+        # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the call succeeded.
+        # Indicates whether the API call is successful. Valid values:
+        # - **true**: Successful.
         # 
-        # - **true**: The call succeeded.
-        # 
-        # - **false**: The call failed.
+        # - **false**: Failed.
         self.success = success
 
     def validate(self):
@@ -107,27 +106,26 @@ class ListTextbookAssistantSceneDetailsResponseBodyData(DaraModel):
         topic: main_models.ListTextbookAssistantSceneDetailsResponseBodyDataTopic = None,
         word_list: List[main_models.ListTextbookAssistantSceneDetailsResponseBodyDataWordList] = None,
     ):
-        # A list of roles in the scene.
+        # The list of roles.
         self.role_list = role_list
         # The scene description.
         self.scene = scene
         # The scene ID.
         self.scene_id = scene_id
-        # A list of image URLs related to the current scene.
+        # The images related to the current scene.
         self.scene_image_list = scene_image_list
-        # The scene task list.
+        # The list of scene tasks.
         self.scene_task_list = scene_task_list
-        # The translation of the scene description.
         self.scene_translate = scene_translate
-        # The sentence list.
+        # The list of sentences.
         self.sentence_list = sentence_list
-        # The practice target.
+        # The practice objective.
         self.target = target
-        # The theme details.
+        # The theme information.
         self.theme = theme
-        # The topic details.
+        # The topic information.
         self.topic = topic
-        # The word list.
+        # The list of words.
         self.word_list = word_list
 
     def validate(self):
@@ -304,11 +302,11 @@ class ListTextbookAssistantSceneDetailsResponseBodyDataTopic(DaraModel):
         topic_name: str = None,
         topic_translate: str = None,
     ):
-        # A list of image URLs related to the topic.
+        # The images related to the current topic.
         self.topic_image_list = topic_image_list
         # The topic name.
         self.topic_name = topic_name
-        # The translation of the topic name.
+        # The translation of the topic content.
         self.topic_translate = topic_translate
 
     def validate(self):
@@ -350,7 +348,7 @@ class ListTextbookAssistantSceneDetailsResponseBodyDataTheme(DaraModel):
         theme_name: str = None,
         theme_translate: str = None,
     ):
-        # A list of image URLs related to the theme.
+        # The images related to the current theme.
         self.theme_image_list = theme_image_list
         # The theme name.
         self.theme_name = theme_name
@@ -396,7 +394,7 @@ class ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList(DaraModel):
         sentence_id: str = None,
         sentence_text: str = None,
     ):
-        # The sentence analysis.
+        # The sentence analysis and explanation.
         self.sentence_analysis = sentence_analysis
         # The sentence ID.
         self.sentence_id = sentence_id
@@ -487,15 +485,15 @@ class ListTextbookAssistantSceneDetailsResponseBodyDataRoleList(DaraModel):
         self.introduction = introduction
         # The translation of the role introduction.
         self.introduction_translate = introduction_translate
-        # The role guidance text.
+        # The role prompt text.
         self.promoting = promoting
-        # The translation of the role guidance text.
+        # The translation of the role prompt text.
         self.promoting_translate = promoting_translate
         # The role name.
         self.role_name = role_name
         # The translation of the role name.
         self.role_name_translate = role_name_translate
-        # The role type:
+        # The role type. A value of 0 indicates the AI questioner, and a value of 1 indicates the responder.
         self.role_type = role_type
 
     def validate(self):

@@ -13,7 +13,9 @@ class BatchOpResultDTO(DaraModel):
         failed: List[main_models.BatchFailedItemDTO] = None,
         succeeded: List[int] = None,
     ):
+        # The list of failed items.
         self.failed = failed
+        # The list of successful member user IDs.
         self.succeeded = succeeded
 
     def validate(self):

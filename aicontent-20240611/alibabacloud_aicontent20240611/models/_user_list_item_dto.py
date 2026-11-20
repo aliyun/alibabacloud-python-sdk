@@ -17,11 +17,17 @@ class UserListItemDTO(DaraModel):
         name: str = None,
         phone: str = None,
     ):
+        # The list of departments and roles to which the user belongs.
         self.departments = departments
+        # The creation time in the yyyy-MM-dd HH:mm:ss format.
         self.gmt_create = gmt_create
+        # The user ID.
         self.id = id
+        # The logon name.
         self.login_name = login_name
+        # The name.
         self.name = name
+        # The phone number.
         self.phone = phone
 
     def validate(self):

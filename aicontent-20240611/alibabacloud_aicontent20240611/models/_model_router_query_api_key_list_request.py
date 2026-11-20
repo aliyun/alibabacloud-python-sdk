@@ -21,31 +21,31 @@ class ModelRouterQueryApiKeyListRequest(DaraModel):
         page_size: int = None,
         status: int = None,
     ):
-        # The client ID used to filter the results.
+        # The client ID used to filter results.
         self.client_id = client_id
-        # The field by which to group the results.
+        # The field used to group results.
         self.group_by = group_by
-        # Optional. If set to true, the keys of members under the department are also included when filtering by department.
+        # Optional. Specifies whether to include the keys of members under the department when filtering by department.
         self.include_member_keys = include_member_keys
         # The search keyword.
         self.keyword = keyword
         # The maximum number of results to return.
         self.max_results = max_results
-        # Optional. Filters by member IDs. Separate multiple member IDs with commas. If this parameter is not specified, the department and all its members are included. If an empty value is specified, only the department is included without members.
+        # Optional. Filters results by member IDs. Separate multiple IDs with commas. If you do not specify this parameter, the department and all its members are included. If you pass an empty value, only the department is included, excluding its members.
         self.member_user_ids = member_user_ids
-        # Specifies whether to return the total count.
+        # Specifies whether to return the total count of records.
         self.need_total_count = need_total_count
         # The pagination token. An empty value indicates that no more pages are available.
         self.next_token = next_token
-        # The field by which to sort the results.
+        # The field by which to sort results.
         self.order_by = order_by
         # The sort direction.
         self.order_direction = order_direction
         # The page number.
         self.page_index = page_index
-        # The number of entries per page.
+        # The number of items per page.
         self.page_size = page_size
-        # The status used to filter the results.
+        # The status used to filter results.
         self.status = status
 
     def validate(self):

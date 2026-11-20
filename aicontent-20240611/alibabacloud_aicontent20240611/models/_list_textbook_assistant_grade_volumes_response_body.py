@@ -17,7 +17,7 @@ class ListTextbookAssistantGradeVolumesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response data.
+        # The response data object.
         self.data = data
         # The error code.
         self.err_code = err_code
@@ -25,9 +25,9 @@ class ListTextbookAssistantGradeVolumesResponseBody(DaraModel):
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -94,9 +94,9 @@ class ListTextbookAssistantGradeVolumesResponseBodyData(DaraModel):
         grade_volumes: List[main_models.ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes] = None,
         textbook_version: str = None,
     ):
-        # The grade and volume information.
+        # The grade and volume data.
         self.grade_volumes = grade_volumes
-        # The version of the textbook.
+        # The textbook version.
         self.textbook_version = textbook_version
 
     def validate(self):
@@ -139,9 +139,9 @@ class ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes(DaraModel):
         grade: str = None,
         volume: str = None,
     ):
-        # The grade level. Valid values: 1 to 9.
+        # The grade. Valid values: 1 to 9, corresponding to the grade level.
         self.grade = grade
-        # The volume. Valid values: `0` (single volume), `1` (Volume 1), and `2` (Volume 2).
+        # The volume. Valid values: 0: full volume, 1: first semester, 2: second semester.
         self.volume = volume
 
     def validate(self):

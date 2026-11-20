@@ -19,26 +19,27 @@ class ModelRouterQueryClientListRequest(DaraModel):
         parent_id: int = None,
         status: int = None,
     ):
-        # The field to group the results by.
+        # The field used to group the results.
         self.group_by = group_by
-        # The search keyword.
+        # The keyword used for search.
         self.keyword = keyword
         # The maximum number of results to return.
         self.max_results = max_results
-        # Specifies whether to return the total count of entries.
+        # Specifies whether to include the total count of records.
         self.need_total_count = need_total_count
-        # The token for the next page of results. Set this to the nextToken value from the previous response. Omit for the first page.
+        # The pagination token. An empty value indicates that there are no more pages.
         self.next_token = next_token
-        # The field to sort the results by.
+        # The field used to sort the results.
         self.order_by = order_by
-        # The sort direction.
+        # The sort order.
         self.order_direction = order_direction
-        # The page number of the results to return. The first page is 1.
+        # The page number.
         self.page_index = page_index
-        # The number of entries to return per page.
+        # The number of items per page.
         self.page_size = page_size
+        # Optional. The ID of the parent department used to filter the results.
         self.parent_id = parent_id
-        # Filters the results by status.
+        # The status used to filter the results.
         self.status = status
 
     def validate(self):

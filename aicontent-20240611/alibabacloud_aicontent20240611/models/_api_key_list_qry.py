@@ -13,10 +13,15 @@ class ApiKeyListQry(DaraModel):
         page_size: int = None,
         status: int = None,
     ):
+        # The client ID filter.
         self.client_id = client_id
+        # The search keyword.
         self.keyword = keyword
+        # The page number.
         self.page = page
+        # The number of items per page.
         self.page_size = page_size
+        # The status filter.
         self.status = status
 
     def validate(self):

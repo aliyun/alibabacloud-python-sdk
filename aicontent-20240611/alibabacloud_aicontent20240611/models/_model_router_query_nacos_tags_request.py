@@ -17,22 +17,23 @@ class ModelRouterQueryNacosTagsRequest(DaraModel):
         page_index: int = None,
         page_size: int = None,
     ):
+        # Specifies the Nacos configuration type to retrieve.
         self.config_type = config_type
-        # The field by which to group the results.
+        # The grouping field.
         self.group_by = group_by
         # The maximum number of results to return.
         self.max_results = max_results
-        # Specifies whether to return the total count of results.
+        # Specifies whether to return the total count.
         self.need_total_count = need_total_count
-        # The token from a previous response to retrieve the next page of results.
+        # The pagination token. This parameter is empty if there is no next page.
         self.next_token = next_token
-        # The field by which to sort the results.
+        # The sort field.
         self.order_by = order_by
-        # The sort order.
+        # The sort direction.
         self.order_direction = order_direction
         # The page number.
         self.page_index = page_index
-        # The number of results to return per page.
+        # The number of items per page.
         self.page_size = page_size
 
     def validate(self):

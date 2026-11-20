@@ -11,8 +11,11 @@ class BalancePoolSummaryDTO(DaraModel):
         available: float = None,
         total: float = None,
     ):
+        # The balance allocated to users equals the sum of the sub-wallet balances of all members in the department.
         self.allocated = allocated
+        # The available department balance equals the sub-wallet balance of the department.
         self.available = available
+        # The total amount equals the available department balance plus the balance allocated to users.
         self.total = total
 
     def validate(self):

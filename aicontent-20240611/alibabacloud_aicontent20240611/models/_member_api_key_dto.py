@@ -22,18 +22,31 @@ class MemberApiKeyDTO(DaraModel):
         name: str = None,
         status: str = None,
     ):
+        # The parent department information.
         self.client = client
+        # The ID of the parent department. Member keys are mapped to their parent departments.
         self.client_id = client_id
+        # The deletion tag. A value of 0 indicates that the key is enabled, and a non-zero value indicates that the key is disabled.
         self.delete_tag = delete_tag
+        # The expiration time. A null value indicates that the key never expires.
         self.expire_at = expire_at
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The API key ID. This ID can be used to query the bound group by API key.
         self.id = id
+        # The full key. This field is not returned in the member list and is always empty.
         self.key = key
+        # The masked preview of the API key.
         self.key_preview = key_preview
+        # The ID of the department member to whom the key belongs.
         self.member_user_id = member_user_id
+        # The member name.
         self.member_user_name = member_user_name
+        # The API key name.
         self.name = name
+        # The status. Valid values: active: Enabled. disabled: Disabled.
         self.status = status
 
     def validate(self):

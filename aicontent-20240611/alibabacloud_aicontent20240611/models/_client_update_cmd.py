@@ -14,11 +14,17 @@ class ClientUpdateCmd(DaraModel):
         remark: str = None,
         status: int = None,
     ):
+        # The company address.
         self.address = address
+        # The list of allowed model IDs, separated by commas. An empty value indicates all models.
         self.allowed_models = allowed_models
+        # The contact information.
         self.contact = contact
+        # The customer name.
         self.name = name
+        # The remarks.
         self.remark = remark
+        # The status.
         self.status = status
 
     def validate(self):

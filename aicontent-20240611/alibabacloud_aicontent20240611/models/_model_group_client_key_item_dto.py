@@ -11,8 +11,11 @@ class ModelGroupClientKeyItemDTO(DaraModel):
         key_preview: str = None,
         name: str = None,
     ):
+        # The numeric ID of the API key.
         self.id = id
+        # The masked preview of the API key.
         self.key_preview = key_preview
+        # The authorization name (derived from the API key name).
         self.name = name
 
     def validate(self):

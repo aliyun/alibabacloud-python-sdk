@@ -14,8 +14,11 @@ class ModelGroupClientDTO(DaraModel):
         client_id: int = None,
         client_name: str = None,
     ):
+        # The list of API key summaries for the department.
         self.api_keys = api_keys
+        # The department ID.
         self.client_id = client_id
+        # The department name.
         self.client_name = client_name
 
     def validate(self):

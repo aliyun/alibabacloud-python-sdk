@@ -32,28 +32,51 @@ class RequestLogDTO(DaraModel):
         total_tokens: int = None,
         usage: main_models.UsageInfoDTO = None,
     ):
+        # API Key ID
         self.api_key_id = api_key_id
+        # The client ID.
         self.client_id = client_id
+        # The unique identifier of the client.
         self.client_uuid = client_uuid
+        # The output tokens.
         self.completion_tokens = completion_tokens
+        # The deletion tag. A value of 0 indicates enabled, and a non-zero value indicates disabled.
         self.delete_tag = delete_tag
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # ID
         self.id = id
+        # The model.
         self.model_code = model_code
+        # The model ID.
         self.model_id = model_id
+        # The model name.
         self.model_name = model_name
+        # The model type.
         self.model_type = model_type
+        # The input tokens.
         self.prompt_tokens = prompt_tokens
+        # The request body.
         self.request_body = request_body
+        # The request ID.
         self.request_id = request_id
+        # The request time.
         self.request_time = request_time
+        # The response body.
         self.response_body = response_body
+        # The response time in milliseconds.
         self.response_time_ms = response_time_ms
+        # The status.
         self.status = status
+        # The status code.
         self.status_code = status_code
+        # The tag.
         self.symbol = symbol
+        # The total tokens.
         self.total_tokens = total_tokens
+        # The usage statistics.
         self.usage = usage
 
     def validate(self):

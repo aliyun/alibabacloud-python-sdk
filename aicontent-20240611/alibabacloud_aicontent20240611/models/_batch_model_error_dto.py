@@ -11,8 +11,11 @@ class BatchModelErrorDTO(DaraModel):
         model_id: str = None,
         name: str = None,
     ):
+        # The failure cause.
         self.error_msg = error_msg
+        # The model ID.
         self.model_id = model_id
+        # The model name.
         self.name = name
 
     def validate(self):

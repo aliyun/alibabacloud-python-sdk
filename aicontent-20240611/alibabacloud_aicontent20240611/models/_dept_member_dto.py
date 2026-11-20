@@ -20,17 +20,29 @@ class DeptMemberDTO(DaraModel):
         role_code: str = None,
         role_name: str = None,
     ):
+        # The comma-separated list of authorized model IDs. This field is valid only when include_authorization is specified. An empty value indicates that the models are inherited or all models are authorized.
         self.allowed_models = allowed_models
+        # The authorization configuration. Valid values: inherit: Inherited from the department. custom: Customized. This field is valid only when include_authorization is specified.
         self.auth_config = auth_config
+        # The creation time.
         self.gmt_create = gmt_create
+        # The member user ID.
         self.id = id
+        # The number of active keys that belong to the member. This field is valid only when include_authorization is specified.
         self.key_count = key_count
+        # The logon name.
         self.login_name = login_name
+        # The monthly balance. This field is valid only when include_balance is specified. The value is 0 if the feature is not activated.
         self.monthly_balance = monthly_balance
+        # The name.
         self.name = name
+        # The permanent balance. This field is valid only when include_balance is specified. The value is 0 if the feature is not activated.
         self.permanent_balance = permanent_balance
+        # The mobile phone number.
         self.phone = phone
+        # The role code.
         self.role_code = role_code
+        # The role name.
         self.role_name = role_name
 
     def validate(self):

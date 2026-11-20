@@ -14,11 +14,17 @@ class ModelGroupModelDTO(DaraModel):
         platform: str = None,
         version: str = None,
     ):
+        # The numeric ID of the model.
         self.id = id
+        # The model identifier.
         self.model_code = model_code
+        # The model type.
         self.model_type = model_type
+        # The name of the model.
         self.name = name
+        # The platform to which the model belongs.
         self.platform = platform
+        # The model version.
         self.version = version
 
     def validate(self):

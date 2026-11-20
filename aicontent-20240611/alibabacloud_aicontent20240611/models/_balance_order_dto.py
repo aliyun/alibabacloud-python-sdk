@@ -22,19 +22,33 @@ class BalanceOrderDTO(DaraModel):
         total_after: float = None,
         total_before: float = None,
     ):
+        # The change amount.
         self.amount = amount
+        # The pool balance after the change.
         self.balance_after = balance_after
+        # The pool balance before the change.
         self.balance_before = balance_before
+        # The balance type (permanent: Permanent / monthly: Monthly).
         self.balance_type = balance_type
+        # The creation time.
         self.create_time = create_time
+        # The direction (in: Income / out: Expense).
         self.direction = direction
+        # The associated model code (available for deduction types).
         self.model_code = model_code
+        # The operator ID.
         self.operator_id = operator_id
+        # The unique identifier of the change record.
         self.order_id = order_id
+        # The change type (recharge: Recharge / periodic_recharge: Periodic recharge / deduct: Deduction / manual_deduct: Manual deduction / transfer_out: Transfer out / transfer_in: Transfer in / return_out: Refund out / return_in: Refund in / write_off: Write-off / monthly_expire: Monthly expiration / deficit_writeoff: Deficit write-off).
         self.order_type = order_type
+        # The remark.
         self.remark = remark
+        # The source identifier.
         self.source = source
+        # The total balance after the change (permanent + monthly).
         self.total_after = total_after
+        # The total balance before the change (permanent + monthly).
         self.total_before = total_before
 
     def validate(self):

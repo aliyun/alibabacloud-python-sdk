@@ -16,11 +16,11 @@ class ModelRouterSaveFlowConfigRequest(DaraModel):
         # 
         # This parameter is required.
         self.model_id = model_id
-        # The maximum number of requests per minute (RPM).
+        # The requests per minute (RPM) limit.
         self.rpm = rpm
-        # Specifies whether to enable smooth flow control.
+        # Specifies whether smooth rate limiting is enabled.
         self.smooth_flow_enabled = smooth_flow_enabled
-        # The maximum number of tokens per minute (TPM).
+        # The tokens per minute (TPM) limit.
         self.tpm = tpm
 
     def validate(self):

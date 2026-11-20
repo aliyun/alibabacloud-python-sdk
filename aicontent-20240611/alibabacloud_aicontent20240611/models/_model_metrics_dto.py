@@ -13,10 +13,15 @@ class ModelMetricsDTO(DaraModel):
         success_rate: float = None,
         total_calls: int = None,
     ):
+        # The average response time (ms).
         self.avg_response_time = avg_response_time
+        # The total number of input tokens.
         self.input_tokens = input_tokens
+        # The total number of output tokens.
         self.output_tokens = output_tokens
+        # The success rate (%).
         self.success_rate = success_rate
+        # The total number of calls.
         self.total_calls = total_calls
 
     def validate(self):

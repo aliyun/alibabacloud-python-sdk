@@ -15,9 +15,9 @@ class GetAITeacherExpansionDialogueSuggestionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # A container for the returned data.
+        # The data object.
         self.data = data
-        # The error code.
+        # The fault message code.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -25,7 +25,7 @@ class GetAITeacherExpansionDialogueSuggestionResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -86,9 +86,9 @@ class GetAITeacherExpansionDialogueSuggestionResponseBodyData(DaraModel):
         chinese_result: str = None,
         english_result: str = None,
     ):
-        # The Chinese translation of the suggested response.
+        # The Chinese prompt of the assistant.
         self.chinese_result = chinese_result
-        # The suggested response in English.
+        # The English prompt of the assistant.
         self.english_result = english_result
 
     def validate(self):

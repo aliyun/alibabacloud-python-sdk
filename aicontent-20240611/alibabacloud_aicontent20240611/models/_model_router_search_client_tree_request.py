@@ -9,7 +9,7 @@ class ModelRouterSearchClientTreeRequest(DaraModel):
         self,
         keyword: str = None,
     ):
-        # The search keyword, which can be a department name, username, or phone number.
+        # The search keyword, such as a department name, username, or phone number.
         self.keyword = keyword
 
     def validate(self):

@@ -12,9 +12,13 @@ class ConversationUpdateCmd(DaraModel):
         model_ids: str = None,
         title: str = None,
     ):
+        # The conversation data in JSON format, containing message records for each model.
         self.chat_data = chat_data
+        # The number of messages.
         self.message_count = message_count
+        # The list of model IDs as a JSON array string.
         self.model_ids = model_ids
+        # The conversation title.
         self.title = title
 
     def validate(self):

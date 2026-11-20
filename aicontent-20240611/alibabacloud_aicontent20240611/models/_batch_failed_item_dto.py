@@ -10,7 +10,9 @@ class BatchFailedItemDTO(DaraModel):
         reason: str = None,
         user_id: int = None,
     ):
+        # The reason for failure.
         self.reason = reason
+        # The user ID of the failed member.
         self.user_id = user_id
 
     def validate(self):

@@ -17,9 +17,9 @@ class ModelRouterQueryClientListResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # A wrapper object for the paged response data.
+        # The data object.
         self.data = data
-        # The error code.
+        # The fault message encoding.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
@@ -27,7 +27,7 @@ class ModelRouterQueryClientListResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -92,11 +92,17 @@ class ModelRouterQueryClientListResponseBodyData(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The list of items.
         self.list = list
+        # maxResults
         self.max_results = max_results
+        # nextToken
         self.next_token = next_token
+        # The current page number.
         self.page = page
+        # The number of records per page.
         self.page_size = page_size
+        # The total number of records that meet the query conditions.
         self.total = total
 
     def validate(self):

@@ -14,8 +14,11 @@ class ModelGroupUserDTO(DaraModel):
         user_id: int = None,
         user_name: str = None,
     ):
+        # The list of API key summaries for the user.
         self.api_keys = api_keys
+        # The user ID.
         self.user_id = user_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):

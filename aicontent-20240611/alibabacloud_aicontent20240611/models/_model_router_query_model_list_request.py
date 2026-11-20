@@ -19,26 +19,27 @@ class ModelRouterQueryModelListRequest(DaraModel):
         page_size: int = None,
         status: int = None,
     ):
-        # The field to use for grouping the results.
+        # The field by which to group the results.
         self.group_by = group_by
-        # The keyword for a fuzzy search on model information.
+        # The search keyword.
         self.keyword = keyword
         # The maximum number of results to return.
         self.max_results = max_results
+        # The model type filter.
         self.model_type = model_type
-        # Specifies whether to include the total count of matching models in the response.
+        # Specifies whether to include the total count of items.
         self.need_total_count = need_total_count
-        # The pagination token for retrieving the next page of results. If this parameter is not specified, the first page is retrieved. To retrieve a subsequent page, set this to the `nextToken` value from the previous response.
+        # The pagination token.
         self.next_token = next_token
-        # The field to use for sorting the results.
+        # The field by which to sort the results.
         self.order_by = order_by
-        # The sort order. Valid values include `ASC` for ascending order and `DESC` for descending order.
+        # The sort direction.
         self.order_direction = order_direction
-        # The page number to retrieve. Pages are numbered starting from 1.
+        # The page number.
         self.page_index = page_index
-        # The number of models to return per page.
+        # The number of items per page.
         self.page_size = page_size
-        # The model status to use as a filter.
+        # The status filter.
         self.status = status
 
     def validate(self):

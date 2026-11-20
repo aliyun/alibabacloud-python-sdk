@@ -17,15 +17,15 @@ class ModelRouterCreateModelResponseBody(DaraModel):
     ):
         # The data object.
         self.data = data
-        # The fault code.
+        # The encoding of the error message for the fault.
         self.err_code = err_code
         # The error message.
         self.err_message = err_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
