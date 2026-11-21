@@ -32,7 +32,7 @@ class ListWorkspacesRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The tags.
         self.tags = tags
-        # The workspace name. Fuzzy match is supported.
+        # The name of the workspace. Fuzzy match is supported.
         self.workspace_name = workspace_name
         # The names of the workspaces. Exact match is supported.
         self.workspace_name_list = workspace_name_list

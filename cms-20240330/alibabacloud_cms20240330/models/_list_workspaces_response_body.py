@@ -24,9 +24,9 @@ class ListWorkspacesResponseBody(DaraModel):
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total count.
+        # The total number of results.
         self.total = total
         # The list of workspaces.
         self.workspaces = workspaces
@@ -104,7 +104,7 @@ class ListWorkspacesResponseBodyWorkspaces(DaraModel):
         self.description = description
         # The display name of the workspace.
         self.display_name = display_name
-        # The update time.
+        # The last modification time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.last_modify_time = last_modify_time

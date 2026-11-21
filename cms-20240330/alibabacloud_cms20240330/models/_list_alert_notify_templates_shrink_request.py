@@ -16,11 +16,11 @@ class ListAlertNotifyTemplatesShrinkRequest(DaraModel):
     ):
         # The list of notification template IDs.
         self.alert_notify_template_ids_shrink = alert_notify_template_ids_shrink
-        # The name of the notification template.
+        # The notification template name.
         self.alert_notify_template_name = alert_notify_template_name
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # The template language.
         self.program_lang = program_lang

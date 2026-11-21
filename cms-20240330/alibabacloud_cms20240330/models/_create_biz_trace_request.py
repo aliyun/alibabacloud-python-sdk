@@ -13,11 +13,11 @@ class CreateBizTraceRequest(DaraModel):
         rule_config: str = None,
         workspace: str = None,
     ):
-        # The advanced configurations.
+        # The advanced configuration.
         self.advanced_config = advanced_config
-        # The business trace code. The code can contain only letters, digits, and underscores (_), and must start with a lowercase letter.
+        # The business link identifier. The identifier can contain only letters, digits, and underscores (_), and must start with a lowercase letter.
         self.biz_trace_code = biz_trace_code
-        # The name of the business trace.
+        # The name of the business link.
         self.biz_trace_name = biz_trace_name
         # The list of configuration rules.
         self.rule_config = rule_config

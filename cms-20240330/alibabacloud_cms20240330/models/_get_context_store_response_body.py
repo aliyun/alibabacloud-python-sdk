@@ -22,27 +22,27 @@ class GetContextStoreResponseBody(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
-        # The configuration of the context store.
+        # The configuration information.
         self.config = config
-        # The context store name.
+        # The name of the context store.
         self.context_store_name = context_store_name
-        # The type of the context store.
+        # The context type.
         self.context_type = context_type
-        # The creation time of the context store. This value is a Unix timestamp in seconds.
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # Information about the associated dataset.
+        # The dataset information.
         self.dataset = dataset
-        # The description of the context store.
+        # The description.
         self.description = description
         # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The status of the context store.
+        # The status.
         self.status = status
-        # The last update time of the context store. This value is a Unix timestamp in seconds.
+        # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
@@ -171,7 +171,7 @@ class GetContextStoreResponseBodyConfig(DaraModel):
     ):
         # The internal source.
         self.inner_source = inner_source
-        # The metadata fields.
+        # The metadata field.
         self.metadata_field = metadata_field
         # The configuration source.
         self.source = source
@@ -220,11 +220,11 @@ class GetContextStoreResponseBodyConfigSource(DaraModel):
         project: str = None,
         start_time: str = None,
     ):
-        # The name of the Log Service logstore.
+        # The name of the Simple Log Service Logstore.
         self.logstore = logstore
-        # The name of the Log Service project.
+        # The name of the Simple Log Service project.
         self.project = project
-        # The time when the configuration takes effect. This value is a Unix timestamp in milliseconds.
+        # The effective start time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.start_time = start_time
@@ -267,9 +267,9 @@ class GetContextStoreResponseBodyConfigInnerSource(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
-        # The name of the Log Service logstore.
+        # The name of the Simple Log Service Logstore.
         self.logstore = logstore
-        # The name of the Log Service project.
+        # The name of the Simple Log Service project.
         self.project = project
 
     def validate(self):

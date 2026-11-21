@@ -28,7 +28,7 @@ class IncidentEventStruct(DaraModel):
         self.auto_recover_time = auto_recover_time
         # The content.
         self.content = content
-        # The statistical count.
+        # The count.
         self.count = count
         # The dimension.
         self.dimension = dimension
@@ -42,7 +42,7 @@ class IncidentEventStruct(DaraModel):
         self.last_time = last_time
         # The manual recovery time.
         self.recover_time = recover_time
-        # The information about the resources associated with the event.
+        # The resource information associated with the event.
         self.resource = resource
         # The status.
         self.status = status

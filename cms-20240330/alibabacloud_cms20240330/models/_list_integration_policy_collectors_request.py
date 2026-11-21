@@ -13,7 +13,7 @@ class ListIntegrationPolicyCollectorsRequest(DaraModel):
     ):
         # The name of the add-on release.
         self.addon_release_name = addon_release_name
-        # The collector type.
+        # The type of the collector.
         # 
         # This parameter is required.
         self.collector_type = collector_type

@@ -17,15 +17,15 @@ class MergeOncallSchedule(DaraModel):
         source: str = None,
         workspace: str = None,
     ):
-        # The extension details.
+        # The extended details.
         self.detail = detail
         # The creation time.
         self.gmt_create = gmt_create
-        # The last modified time.
+        # The last modification time.
         self.gmt_modified = gmt_modified
         # The unique identifier.
         self.identifier = identifier
-        # The schedule name.
+        # The name of the schedule.
         self.name = name
         # The source.
         self.source = source

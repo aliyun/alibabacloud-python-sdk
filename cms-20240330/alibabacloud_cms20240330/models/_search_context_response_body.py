@@ -12,9 +12,9 @@ class SearchContextResponseBody(DaraModel):
         request_id: str = None,
         results: List[Dict[str, Any]] = None,
     ):
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Return value
+        # The results.
         self.results = results
 
     def validate(self):

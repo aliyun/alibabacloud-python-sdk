@@ -16,7 +16,7 @@ class CreateContactGroupRequest(DaraModel):
     ):
         # The unique identifier of the contact group.
         self.contact_group_id = contact_group_id
-        # The IDs of the contacts.
+        # The contact IDs.
         self.contacts = contacts
         # The name of the contact.
         self.name = name

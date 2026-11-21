@@ -15,7 +15,7 @@ class ListTagResourcesShrinkRequest(DaraModel):
     ):
         # The maximum number of results to return. Maximum value: 200.
         self.max_results = max_results
-        # The token for the next query.
+        # The token that is used to start the next query.
         self.next_token = next_token
         # The list of resource IDs.
         self.resource_id_shrink = resource_id_shrink
@@ -23,9 +23,9 @@ class ListTagResourcesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The labels. Used as filter conditions for the query.
+        # The tags. The filter conditions for the query.
         # 
-        # You can specify up to 20 labels.
+        # You can specify up to 20 tags.
         self.tag_shrink = tag_shrink
 
     def validate(self):

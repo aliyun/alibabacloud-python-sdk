@@ -16,35 +16,35 @@ class ListMaintainWindowsRequest(DaraModel):
         order_by: str = None,
         workspace: str = None,
     ):
-        # The sort direction. Valid values:
+        # The sort order. Valid values:
         # 
-        # - **asc**: ascending order.
-        # - **desc**: descending order (default).
+        # - **asc**: Ascending order.
+        # - **desc**: Descending order. This is the default value.
         self.direction = direction
-        # Filters results by enabled status. Valid values:
+        # Filters by enabled status. Valid values:
         # 
         # - **true**: Returns only enabled silence policies.
         # - **false**: Returns only paused silence policies.
         # 
-        # If you do not specify this parameter, results are not filtered by enabled status.
+        # If you do not specify this parameter, the policies are not filtered by enabled status.
         self.enable = enable
-        # The ID of the silence policy. Exact match is used. If you do not specify this parameter, results are not filtered by ID.
+        # The ID of the silence policy. Exact matching is used. If you do not specify this parameter, the policies are not filtered by ID.
         self.maintain_window_id = maintain_window_id
-        # Policy Name of the silence policy. Fuzzy match is used (a match occurs if Policy Name contains the specified value). If you do not specify this parameter, results are not filtered by name.
+        # Policy Name of the silence policy. Fuzzy matching is used, where a match occurs if Policy Name contains the specified value. If you do not specify this parameter, the policies are not filtered by name.
         self.maintain_window_name = maintain_window_name
-        # The maximum number of records to return in this request. Default value: 20.
+        # The maximum number of records to return for this request. Default value: 20.
         self.max_results = max_results
-        # The pagination token. You do not need to specify this parameter for the first query. For subsequent queries, set this parameter to the non-empty nextToken value returned in the previous response. This value does not guarantee that the next page contains data.
+        # The pagination cursor. You do not need to specify this parameter for the first query. For subsequent queries, you can specify the non-empty nextToken returned in the previous response. This value does not guarantee that the next page contains data.
         self.next_token = next_token
-        # The field by which to sort results. Default value: createTime. Valid values:
+        # The field by which to sort. By default, the policies are sorted by creation time. Valid values:
         # 
-        # - **createTime**: creation time.
-        # - **updateTime**: update time.
-        # - **enable**: enabled status.
+        # - **createTime**: Creation time.
+        # - **updateTime**: Update time.
+        # - **enable**: Enabled status.
         # 
-        # If you specify any other value, results are sorted by creation time.
+        # If you specify other values, the policies are sorted by creation time.
         self.order_by = order_by
-        # The workspace name. This parameter is required by the backend and is used to isolate silence policy resources across different business workspaces.
+        # The name of the workspace. This parameter is required by the backend and is used to isolate silence policy resources across different business workspaces.
         self.workspace = workspace
 
     def validate(self):

@@ -18,7 +18,7 @@ class Evaluator(DaraModel):
     ):
         # The evaluator configuration parameters.
         self.config = config
-        # The evaluation filter conditions.
+        # The evaluation filters.
         self.filters = filters
         # The evaluator name.
         self.name = name
@@ -26,7 +26,7 @@ class Evaluator(DaraModel):
         self.result_name = result_name
         # The evaluation result type.
         self.result_type = result_type
-        # The evaluation variable mapping.
+        # The evaluation variable mappings.
         self.variable_mapping = variable_mapping
 
     def validate(self):

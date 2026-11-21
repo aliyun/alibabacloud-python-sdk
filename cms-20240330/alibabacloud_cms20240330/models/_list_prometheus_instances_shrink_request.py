@@ -26,15 +26,15 @@ class ListPrometheusInstancesShrinkRequest(DaraModel):
         self.next_token = next_token
         # The list of instance IDs, separated by commas.
         self.prometheus_instance_ids = prometheus_instance_ids
-        # The instance name. Partial match is supported.
+        # The name of the instance. Partial match is supported.
         self.prometheus_instance_name = prometheus_instance_name
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The resource type of the instance.
         self.resource_type = resource_type
         # The list of tags.
         self.tag_shrink = tag_shrink
-        # The instance version.
+        # The version of the instance.
         self.version = version
         # The workspace to which the instance belongs.
         self.workspace = workspace

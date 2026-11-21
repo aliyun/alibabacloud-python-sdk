@@ -64,21 +64,19 @@ class GetDeliveryTaskResponseBodyDeliveryTask(DaraModel):
         task_name: str = None,
         update_time: str = None,
     ):
-        # The creation time.
-        # 
-        # The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
+        # The creation time. The time follows the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) and is in UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
         # The data source ID (Prometheus instance ID).
         self.data_source_id = data_source_id
-        # The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
+        # The additional labels attached to all delivered metrics, where the key is the label name and the value is the label value.
         self.external_labels = external_labels
         # The extended information.
         self.extra_info = extra_info
-        # The metric filter conditions used in conjunction with labelFiltersType. The key is the metric label name and the value is the match value.
+        # The metric filtering conditions used with labelFiltersType, where the key is the metric label name and the value is the matched value.
         self.label_filters = label_filters
-        # The metric filter mode.
+        # The metric filtering mode.
         self.label_filters_type = label_filters_type
         # The region ID.
         self.region_id = region_id
@@ -94,9 +92,7 @@ class GetDeliveryTaskResponseBodyDeliveryTask(DaraModel):
         self.task_id = task_id
         # The name of the task.
         self.task_name = task_name
-        # The update time.
-        # 
-        # The time is in the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) in UTC.
+        # The update time. The time follows the ISO 8601 standard format (YYYY-MM-DDThh:mm:ssZ) and is in UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time

@@ -29,7 +29,7 @@ class AddMemoriesRequest(DaraModel):
         self.async_mode = async_mode
         # The custom instructions.
         self.custom_instructions = custom_instructions
-        # The inference setting.
+        # Specifies whether to enable inference.
         self.infer = infer
         # The messages.
         self.messages = messages

@@ -11,11 +11,11 @@ class DeleteNotifyPolicyResponseBody(DaraModel):
         success: bool = None,
         uuid: str = None,
     ):
-        # The unique ID of the request. Used for troubleshooting and ticket tracking.
+        # The unique ID of the request, which is used for troubleshooting and ticket tracking.
         self.request_id = request_id
         # Indicates whether the operation is successful.
         self.success = success
-        # The uuid of the notification policy that was operated on.
+        # The UUID of the notification policy.
         self.uuid = uuid
 
     def validate(self):

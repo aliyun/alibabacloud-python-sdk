@@ -13,9 +13,9 @@ class GetMemoryHistoryResponseBody(DaraModel):
         request_id: str = None,
         results: List[main_models.GetMemoryHistoryResponseBodyResults] = None,
     ):
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Return value.
+        # The results.
         self.results = results
 
     def validate(self):
@@ -66,25 +66,25 @@ class GetMemoryHistoryResponseBodyResults(DaraModel):
         updated_at: str = None,
         user_id: str = None,
     ):
-        # Creation time.
+        # The creation time.
         self.created_at = created_at
-        # Event type.
+        # The event type.
         self.event = event
-        # Memory ID.
+        # The memory ID.
         self.id = id
-        # Original message.
+        # The original message.
         self.input = input
-        # Memory ID.
+        # The memory ID.
         self.memory_id = memory_id
-        # Metadata.
+        # The metadata.
         self.metadata = metadata
-        # New memory.
+        # The new memory.
         self.new_memory = new_memory
-        # Old memory.
+        # The old memory.
         self.old_memory = old_memory
-        # Update time.
+        # The update time.
         self.updated_at = updated_at
-        # User ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -175,9 +175,9 @@ class GetMemoryHistoryResponseBodyResultsInput(DaraModel):
         content: str = None,
         role: str = None,
     ):
-        # Message content.
+        # The message content.
         self.content = content
-        # Message sender role.
+        # The role of the message sender.
         self.role = role
 
     def validate(self):

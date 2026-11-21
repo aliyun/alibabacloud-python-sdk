@@ -86,15 +86,15 @@ class ListAddonsResponseBodyAddons(DaraModel):
         self.keywords = keywords
         # The language.
         self.language = language
-        # The time when the latest version was created. The time follows the ISO 8601 standard and includes a UTC identifier or time zone offset.
+        # The time of the latest release. The time follows the ISO 8601 standard and includes a UTC identifier or time zone offset.
         self.latest_release_create_time = latest_release_create_time
         # The name of the integration component.
         self.name = name
-        # Specifies whether the component can be installed only once.
+        # Specifies whether the add-on can be installed only once.
         self.once = once
-        # The scenario of the component.
+        # The component scenario.
         self.scene = scene
-        # The version of the component.
+        # The component version.
         self.version = version
         # The display weight of the integration component.
         self.weight = weight
@@ -240,7 +240,7 @@ class ListAddonsResponseBodyAddonsEnvironments(DaraModel):
         self.name = name
         # The integration policy configurations.
         self.policies = policies
-        # The policy type of the integration center.
+        # The Integration Center policy type.
         self.policy_type = policy_type
 
     def validate(self):
@@ -332,13 +332,13 @@ class ListAddonsResponseBodyAddonsEnvironmentsPolicies(DaraModel):
     ):
         # The enabling status of the default policy for alert rules.
         self.alert_default_status = alert_default_status
-        # Specifies whether to install the component by default.
+        # Specifies whether the add-on is installed by default.
         self.default_install = default_install
         # Specifies whether to assign a service account for communication with the console API.
         self.enable_service_account = enable_service_account
         # The metric check rule.
         self.metric_check_rule = metric_check_rule
-        # Specifies whether to trigger a pod restart guide immediately after the plug-in installation is completed during integration.
+        # Specifies whether to trigger the pod restart process immediately after the plug-in is installed during integration.
         self.need_restart_after_integration = need_restart_after_integration
         # The supported protocol types in the configuration.
         self.protocols = protocols
@@ -420,13 +420,13 @@ class ListAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols(DaraModel):
         label: str = None,
         name: str = None,
     ):
-        # The description of the protocol.
+        # The protocol description.
         self.description = description
         # The URL of the icon.
         self.icon = icon
         # The display name of the protocol.
         self.label = label
-        # The name of the protocol.
+        # The protocol name.
         self.name = name
 
     def validate(self):

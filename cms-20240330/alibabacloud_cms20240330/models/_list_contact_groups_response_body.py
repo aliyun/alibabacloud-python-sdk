@@ -22,7 +22,7 @@ class ListContactGroupsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # The unique request ID.
+        # The unique ID of the request.
         self.request_id = request_id
         # The total number of entries.
         self.total = total
@@ -89,9 +89,9 @@ class ListContactGroupsResponseBodyContactGroups(DaraModel):
     ):
         # The unique identifier of the contact group.
         self.contact_group_id = contact_group_id
-        # The contact IDs.
+        # The IDs of the contacts.
         self.contact_ids = contact_ids
-        # The contact name.
+        # The name of the contact.
         self.name = name
         # The workspace.
         self.workspace = workspace

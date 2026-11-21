@@ -32,9 +32,9 @@ class CreateMemoryStoreRequest(DaraModel):
         # 
         # This parameter is required.
         self.short_term_ttl = short_term_ttl
-        # The source of the memory.
+        # The memory source.
         self.source_type = source_type
-        # The configuration when the sourceType is Trace.
+        # The configuration when the sourceType is set to Trace.
         self.trace_source_config = trace_source_config
 
     def validate(self):

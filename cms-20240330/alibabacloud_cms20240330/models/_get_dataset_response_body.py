@@ -19,25 +19,25 @@ class GetDatasetResponseBody(DaraModel):
         update_time: str = None,
         workspace: str = None,
     ):
-        # The time the dataset was created, as a Unix timestamp.
+        # The creation time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
-        # The name of the dataset.
+        # The dataset name.
         self.dataset_name = dataset_name
-        # The description of the dataset.
+        # The description.
         self.description = description
-        # The ID of the region where the dataset is located.
+        # The region ID.
         self.region_id = region_id
-        # The unique identifier for the request.
+        # The request ID.
         self.request_id = request_id
-        # The data schema of the dataset.
+        # The table schema.
         self.schema = schema
-        # The time the dataset was last updated, as a Unix timestamp.
+        # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
-        # The workspace ID.
+        # The workspace name.
         self.workspace = workspace
 
     def validate(self):

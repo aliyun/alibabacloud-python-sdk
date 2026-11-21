@@ -22,7 +22,7 @@ class NotifyStrategyDetail(DaraModel):
         self.description = description
         # The grouping and merging settings.
         self.grouping_setting = grouping_setting
-        # Specifies whether to ignore notifications for recovery events. A value of true indicates that recovery notifications are not sent.
+        # Specifies whether to ignore notifications for recovery events. If set to true, recovery notifications are not sent.
         self.ignore_restored_notification = ignore_restored_notification
         # The list of notification channel routing settings.
         self.routes = routes
@@ -177,7 +177,7 @@ class NotifyStrategyDetailRoutesEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # The days of the week when the policy takes effect. Valid values: 0 to 6. 0 indicates Sunday, and 6 indicates Saturday. The value 7 is not supported.
+        # The effective days of the week. Valid values: 0 to 6. A value of 0 indicates Sunday, and 6 indicates Saturday. The value 7 is not supported.
         self.day_in_week = day_in_week
         # The end time of the day in minutes. Valid values: 0 to 1439.
         self.end_time_in_minute = end_time_in_minute
@@ -231,7 +231,7 @@ class NotifyStrategyDetailRoutesChannels(DaraModel):
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
-        # The type of the channel. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP.
+        # The channel type. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP.
         self.channel_type = channel_type
         # The enabled sub-channels. Valid values: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK.
         self.enabled_sub_channels = enabled_sub_channels
@@ -278,11 +278,11 @@ class NotifyStrategyDetailGroupingSetting(DaraModel):
         silence_sec: int = None,
         times: int = None,
     ):
-        # The event fields used for grouping and merging. Events in the same group are merged into a single notification. An empty array indicates that no grouping is applied.
+        # The event fields used for grouping and merging. Events with the same values for these fields are merged into a single notification. An empty array indicates that no grouping is applied.
         self.grouping_keys = grouping_keys
         # The check period in minutes.
         self.period_min = period_min
-        # The mute period in seconds.
+        # The silence period in seconds.
         self.silence_sec = silence_sec
         # The number of triggers.
         self.times = times

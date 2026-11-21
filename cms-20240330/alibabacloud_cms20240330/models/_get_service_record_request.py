@@ -9,8 +9,8 @@ class GetServiceRecordRequest(DaraModel):
         self,
         record_type: str = None,
     ):
-        # The type of the linked entry. Currently supported values:
-        # logCorrelation: indicates application log association.
+        # The type of the association entry. Valid values:
+        # logCorrelation: application log association.
         # 
         # This parameter is required.
         self.record_type = record_type

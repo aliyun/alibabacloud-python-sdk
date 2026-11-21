@@ -28,7 +28,7 @@ class GetMemoryResponseBody(DaraModel):
         self.app_id = app_id
         # The creation time.
         self.created_at = created_at
-        # The expiration time.
+        # The expiration date.
         self.expiration_date = expiration_date
         # The memory ID.
         self.id = id

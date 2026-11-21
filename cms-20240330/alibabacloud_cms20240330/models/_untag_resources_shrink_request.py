@@ -12,10 +12,10 @@ class UntagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_key_shrink: str = None,
     ):
-        # Specifies whether to unbind all labels from the specified resource. Valid values:
-        # 
-        # - false (default): No.
-        # - true: Yes.
+        # Specifies whether to unbind all tags from the specified resource. Valid values:
+        # - true: Unbinds all tags.
+        # - false: Does not unbind all tags.
+        # Default value: false.
         self.all = all
         # The list of resource IDs.
         # 
@@ -25,9 +25,7 @@ class UntagResourcesShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The label key.
-        # 
-        # You can unbind up to 20 label keys at a time.
+        # The tag keys. You can unbind up to 20 tag keys.
         self.tag_key_shrink = tag_key_shrink
 
     def validate(self):

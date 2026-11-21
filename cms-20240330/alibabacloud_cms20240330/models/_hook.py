@@ -10,30 +10,36 @@ from darabonba.model import DaraModel
 class Hook(DaraModel):
     def __init__(
         self,
+        debug: bool = None,
         description: str = None,
         enable: bool = None,
         event: str = None,
         execution: main_models.HookExecution = None,
+        invisible: bool = None,
         match: List[str] = None,
         name: str = None,
         schema_version: str = None,
         scope: str = None,
     ):
+        # Specifies whether to enable debug mode.
+        self.debug = debug
         # The description.
         self.description = description
-        # Specifies whether the Hook is enabled. The Hook is executed only when this parameter is set to true. If not configured, the Hook is disabled.
+        # Specifies whether the Hook is enabled. It is executed only when this parameter is set to true. If not configured, the Hook is disabled.
         self.enable = enable
-        # The event processed by the Hook. Each Hook processes only one event.
+        # The event. Each Hook processes only one event.
         self.event = event
-        # The execution configuration that specifies the synchronous execution, total timeout, number of retries, and invalid return value handling policy for the Hook.
+        # The execution configuration. Configures the synchronous execution, total timeout, number of retries, and invalid return value handling policy for the Hook.
         self.execution = execution
-        # The list of tool names. Only ToolStart and ToolEnd events perform exact matching based on the actual tool name. Tool names such as Read, Write, Bash, and Edit are supported, but wildcards are not supported. An empty array does not restrict tools. This field is ignored for other events.
+        # Specifies whether to hide Hook invocation events. When set to true, Hook invocation events are not sent to the frontend, regardless of whether debug mode is enabled.
+        self.invisible = invisible
+        # The list of tool names. Only ToolStart and ToolEnd perform an exact match based on the actual tool name. Tool names such as Read, Write, Bash, and Edit are supported. Wildcards are not supported. An empty array does not restrict tools. This field is ignored for other events.
         self.match = match
-        # The Hook name. Only digits, letters, underscores, and hyphens are allowed. The name cannot be empty. Hooks with the same name are still executed independently in the order of the list.
+        # The Hook name. Only digits, letters, underscores, and hyphens are allowed, and it cannot be empty. Hooks with the same name are executed independently in the order of the list.
         self.name = name
         # The configuration protocol version.
         self.schema_version = schema_version
-        # The effective scope. Valid values: all, chat, and mission. A value of all indicates that the scope includes Chat and Mission. A value of chat or mission indicates that the scope applies only to the corresponding scenario.
+        # The effective scope. A value of all indicates Chat and Mission. A value of chat or mission indicates that the Hook takes effect only in the corresponding scenario.
         self.scope = scope
 
     def validate(self):
@@ -45,6 +51,9 @@ class Hook(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.debug is not None:
+            result['debug'] = self.debug
+
         if self.description is not None:
             result['description'] = self.description
 
@@ -56,6 +65,9 @@ class Hook(DaraModel):
 
         if self.execution is not None:
             result['execution'] = self.execution.to_map()
+
+        if self.invisible is not None:
+            result['invisible'] = self.invisible
 
         if self.match is not None:
             result['match'] = self.match
@@ -73,6 +85,9 @@ class Hook(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('debug') is not None:
+            self.debug = m.get('debug')
+
         if m.get('description') is not None:
             self.description = m.get('description')
 
@@ -85,6 +100,9 @@ class Hook(DaraModel):
         if m.get('execution') is not None:
             temp_model = main_models.HookExecution()
             self.execution = temp_model.from_map(m.get('execution'))
+
+        if m.get('invisible') is not None:
+            self.invisible = m.get('invisible')
 
         if m.get('match') is not None:
             self.match = m.get('match')
@@ -109,15 +127,15 @@ class HookExecution(DaraModel):
         timeout_seconds: int = None,
         type: str = None,
     ):
-        # The handling policy for invalid return values. If the handler return value remains invalid after retries, it is processed as allow or reject.
+        # The invalid return value handling policy. If the handler return value is still invalid after retries, it is processed as allow or reject.
         self.fail_result = fail_result
-        # The execution instruction. The prompt type indicates a prompt, the bash type indicates a Bash script, the python3 type indicates a Python 3 script, and the hint type indicates contextual text directly appended. A non-empty UTF-8 text must be provided for all four types.
+        # The execution instruction. For the prompt type, it is a prompt. For the bash type, it is a Bash script. For the python3 type, it is a Python 3 script. For the hint type, it is contextual text directly appended. Non-empty UTF-8 text must be provided for all four types.
         self.instruction = instruction
-        # The maximum number of additional attempts after a failure. Valid values: 0 to 3.
+        # The maximum number of retries. Specifies the number of additional attempts after a failure. Valid values: 0 to 3.
         self.max_retry = max_retry
-        # The timeout period in seconds. Valid values: 1 to 30. All attempts and waits for the Hook share this timeout period.
+        # The timeout period in seconds. Valid values: 1 to 30. All attempts and waits for this Hook share this timeout period.
         self.timeout_seconds = timeout_seconds
-        # The handler type. Valid values: prompt, bash, python3, and hint.
+        # The handler type. Only prompt, bash, python3, and hint are supported.
         self.type = type
 
     def validate(self):

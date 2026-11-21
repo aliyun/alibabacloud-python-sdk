@@ -93,7 +93,7 @@ class GetAddonSchemaResponseBodyFields(DaraModel):
         self.label = label
         # The field name.
         self.name = name
-        # The input prompt.
+        # The placeholder text.
         self.placeholder = placeholder
         # The other properties of the component.
         self.props = props
@@ -293,7 +293,7 @@ class GetAddonSchemaResponseBodyFieldsProps(DaraModel):
     ):
         # The data source information.
         self.data_source = data_source
-        # The related data collection.
+        # The related data set.
         self.related = related
         # The selection mode.
         self.select_mode = select_mode
@@ -389,7 +389,7 @@ class GetAddonSchemaResponseBodyFieldsConditions(DaraModel):
         self.field = field
         # The condition operator.
         self.op = op
-        # The target value for the condition.
+        # The target value.
         self.value = value
 
     def validate(self):

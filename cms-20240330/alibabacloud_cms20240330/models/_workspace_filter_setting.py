@@ -13,7 +13,7 @@ class WorkspaceFilterSetting(DaraModel):
         tag_selector: main_models.FilterSetting = None,
         workspace_uuids: List[str] = None,
     ):
-        # The label filter. This parameter is not supported and does not take effect if specified.
+        # The tag filter. This feature is not yet supported, and passing this parameter has no effect.
         self.tag_selector = tag_selector
         # The list of workspace UUIDs.
         self.workspace_uuids = workspace_uuids

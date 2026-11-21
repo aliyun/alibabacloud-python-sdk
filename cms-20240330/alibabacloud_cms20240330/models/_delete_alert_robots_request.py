@@ -12,11 +12,11 @@ class DeleteAlertRobotsRequest(DaraModel):
         robot_ids: List[str] = None,
         type: str = None,
     ):
-        # The chatbot IDs.
+        # The IDs of the chatbots.
         # 
         # This parameter is required.
         self.robot_ids = robot_ids
-        # The chatbot type.
+        # The type of the chatbot.
         self.type = type
 
     def validate(self):

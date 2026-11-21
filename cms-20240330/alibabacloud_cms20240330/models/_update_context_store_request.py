@@ -141,9 +141,9 @@ class UpdateContextStoreRequestConfigSource(DaraModel):
         project: str = None,
         start_time: str = None,
     ):
-        # The name of the Simple Log Service Logstore.
+        # The name of the Logstore.
         self.logstore = logstore
-        # The name of the Simple Log Service project.
+        # The name of the project.
         self.project = project
         # The start time.
         self.start_time = start_time

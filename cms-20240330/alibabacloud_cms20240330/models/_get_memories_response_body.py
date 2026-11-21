@@ -103,7 +103,7 @@ class GetMemoriesResponseBodyResults(DaraModel):
         self.memory = memory
         # The metadata.
         self.metadata = metadata
-        # The role of the message initiator.
+        # The role that initiated the message.
         self.role = role
         # The run ID.
         self.run_id = run_id

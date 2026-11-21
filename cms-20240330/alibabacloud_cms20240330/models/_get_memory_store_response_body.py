@@ -32,9 +32,9 @@ class GetMemoryStoreResponseBody(DaraModel):
         self.custom_extraction_strategies = custom_extraction_strategies
         # The description.
         self.description = description
-        # The extraction strategies. Valid values: Episodic, Summary, and Fact.
+        # The supported extraction strategies: Episodic, Summary, and Fact.
         self.extraction_strategies = extraction_strategies
-        # The memory store name.
+        # The name of the memory store.
         self.memory_store_name = memory_store_name
         # The region ID.
         self.region_id = region_id
@@ -42,17 +42,17 @@ class GetMemoryStoreResponseBody(DaraModel):
         self.request_id = request_id
         # The short-term memory storage.
         self.short_term_storage = short_term_storage
-        # The retention period of short-term memory.
+        # The retention period for short-term memory.
         self.short_term_ttl = short_term_ttl
         # The memory source.
         self.source_type = source_type
-        # The configuration used when sourceType is set to Trace.
+        # The configuration when the sourceType is Trace.
         self.trace_source_config = trace_source_config
         # The update time.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
-        # The workspace name.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -168,11 +168,11 @@ class GetMemoryStoreResponseBodyTraceSourceConfig(DaraModel):
         query: str = None,
         workspace: str = None,
     ):
-        # Specifies whether to include LLM output in memory extraction.
+        # Specifies whether to include the LLM output in memory extraction.
         self.include_output = include_output
         # The Simple Log Service query statement used to filter traces.
         self.query = query
-        # The workspace where the trace resides.
+        # The workspace where the trace is located.
         self.workspace = workspace
 
     def validate(self):
@@ -213,9 +213,9 @@ class GetMemoryStoreResponseBodyShortTermStorage(DaraModel):
         logstore: str = None,
         project: str = None,
     ):
-        # The Simple Log Service Logstore name.
+        # The name of the Simple Log Service Logstore.
         self.logstore = logstore
-        # The Simple Log Service project name.
+        # The name of the Simple Log Service project.
         self.project = project
 
     def validate(self):

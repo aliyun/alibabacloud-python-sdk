@@ -99,11 +99,11 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(DaraModel):
         workspace: str = None,
     ):
         # The access type. Valid values:
-        # - readWrite
-        # - readOnly
-        # - httpReadOnly
+        # - readWrite: Read and write.
+        # - readOnly: Read-only.
+        # - httpReadOnly: HTTP read-only.
         self.access_type = access_type
-        # The time when the instance was created. The time is displayed in UTC+0 and formatted as yyyy-MM-ddTHH:mmZ.
+        # The time when the instance was created. The time is displayed in UTC+0 in the yyyy-MM-ddTHH:mmZ format.
         self.create_time = create_time
         # The instance type.
         self.instance_type = instance_type
@@ -115,13 +115,13 @@ class ListPrometheusInstancesResponseBodyPrometheusInstances(DaraModel):
         self.payment_type = payment_type
         # The product to which the Prometheus instance belongs.
         self.product = product
-        # The instance ID.
+        # The ID of the instance.
         self.prometheus_instance_id = prometheus_instance_id
-        # The instance name.
+        # The name of the instance.
         self.prometheus_instance_name = prometheus_instance_name
         # The region ID.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The resource type.
         self.resource_type = resource_type

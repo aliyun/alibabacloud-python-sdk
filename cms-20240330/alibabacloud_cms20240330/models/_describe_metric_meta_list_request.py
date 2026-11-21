@@ -22,23 +22,23 @@ class DescribeMetricMetaListRequest(DaraModel):
     ):
         # The language.
         self.aliyun_lang = aliyun_lang
-        # The directory.
+        # The category.
         self.category = category
         # The keyword.
         self.keywords = keywords
-        # Filters resources by label. The existing labels are described as follows:
+        # Filters resources by label. Existing labels are described as follows:
         # - metricCategory: the category description of the metric.
         # - alertEnable: specifies whether alerting is required.
         # - alertUnit: the recommended alert unit.
         # - unitFactor: the unit conversion factor.
         # - minAlertPeriod: the minimum alert period.
-        # - productCategory: the product category.
+        # - productCategory: the cloud service category.
         self.labels = labels
-        # The metadata source. Valid values: CMS for CloudMonitor Basic monitoring metrics, and PROM_BASIC for Prometheus CloudMonitor basic monitoring metrics.
+        # The source of metadata. Valid values: CMS for CloudMonitor Basic monitoring metrics, and PROM_BASIC for basic monitoring metrics of Managed Service for Prometheus.
         self.meta_format = meta_format
-        # The metric name.
+        # The name of the metric.
         self.metric_name = metric_name
-        # The namespace used to distinguish products.
+        # The namespace used to distinguish cloud services.
         self.namespace = namespace
         # The page number. Default value: 1.
         self.page_number = page_number
@@ -127,9 +127,9 @@ class DescribeMetricMetaListRequestLabels(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The label name.
+        # The name of the label.
         self.name = name
-        # The label value.
+        # The value of the label.
         self.value = value
 
     def validate(self):

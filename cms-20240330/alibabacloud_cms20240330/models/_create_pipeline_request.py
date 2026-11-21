@@ -25,7 +25,7 @@ class CreatePipelineRequest(DaraModel):
         self.pipeline = pipeline
         # The name of the pipeline.
         self.pipeline_name = pipeline_name
-        # The sink.
+        # The destination.
         self.sink = sink
         # The data source.
         self.source = source
@@ -97,7 +97,7 @@ class CreatePipelineRequestSource(DaraModel):
         logstore: main_models.CreatePipelineRequestSourceLogstore = None,
         type: str = None,
     ):
-        # The Simple Log Service Logstore information.
+        # The Logstore information.
         self.logstore = logstore
         # The data source type.
         self.type = type
@@ -137,9 +137,9 @@ class CreatePipelineRequestSourceLogstore(DaraModel):
         project: str = None,
         query: str = None,
     ):
-        # The name of the Simple Log Service Logstore.
+        # The name of the Logstore.
         self.logstore = logstore
-        # The name of the Simple Log Service project.
+        # The name of the project.
         self.project = project
         # The filter statement.
         self.query = query
@@ -184,7 +184,7 @@ class CreatePipelineRequestSink(DaraModel):
     ):
         # The dataset information.
         self.dataset = dataset
-        # The sink type.
+        # The destination type.
         self.type = type
 
     def validate(self):

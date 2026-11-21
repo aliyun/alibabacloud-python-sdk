@@ -11,9 +11,9 @@ class ListIntegrationPolicyStorageRequirementsRequest(DaraModel):
         addon_release_name: str = None,
         storage_type: str = None,
     ):
-        # The add-on release name.
+        # The name of the add-on release.
         self.addon_name = addon_name
-        # The add-on release name.
+        # The name of the AddonRelease.
         self.addon_release_name = addon_release_name
         # The storage type. Valid values: LogStore, Prometheus, TraceStore, EventStore, and EntityStore.
         self.storage_type = storage_type

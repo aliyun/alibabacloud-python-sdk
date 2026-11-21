@@ -13,15 +13,15 @@ class ListContactGroupsShrinkRequest(DaraModel):
         page_size: int = None,
         workspace: str = None,
     ):
-        # The contact group IDs.
+        # The IDs of the contact groups.
         self.contact_group_ids_shrink = contact_group_ids_shrink
-        # The contact name.
+        # The name of the contact.
         self.name = name
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
-        # The workspace name.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

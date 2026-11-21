@@ -10,9 +10,10 @@ class GetCmsServiceRequest(DaraModel):
         product: str = None,
         service: str = None,
     ):
-        # prometheus: Checks the activation status of the Prometheus service. The service is billed by reported data volume or written data volume.
+        # prometheus: the activation status of the Prometheus service (billed based on the amount of reported or written data).
         self.product = product
-        # prometheus: Checks whether the Prometheus product that is billed by reported data volume is activated.prometheusgb: Checks whether the Prometheus product that is billed by written data volume is activated.
+        # prometheus: indicates whether the Prometheus product billed based on the amount of reported data is activated.
+        # prometheusgb: indicates whether the Prometheus product billed based on the amount of written data is activated.
         self.service = service
 
     def validate(self):

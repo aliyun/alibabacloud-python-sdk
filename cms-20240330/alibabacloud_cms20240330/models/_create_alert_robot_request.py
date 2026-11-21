@@ -20,17 +20,17 @@ class CreateAlertRobotRequest(DaraModel):
         self.digital_employee_name = digital_employee_name
         # The language.
         self.lang = lang
-        # The name of the robot.
+        # The name of the chatbot.
         self.name = name
-        # The unique ID of the robot.
+        # The unique ID of the chatbot.
         self.robot_id = robot_id
-        # The signing key of the robot.
+        # The signing key of the chatbot.
         self.robot_sign_key = robot_sign_key
-        # The type of the robot.
+        # The type of the chatbot.
         # 
         # This parameter is required.
         self.type = type
-        # The webhook URL of the robot.
+        # The webhook URL of the chatbot.
         self.url = url
         # The name of the workspace.
         self.workspace = workspace

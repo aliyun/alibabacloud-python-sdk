@@ -10,7 +10,7 @@ class DeleteContextsResponseBody(DaraModel):
         deleted_count: int = None,
         request_id: str = None,
     ):
-        # The number of deleted contexts.
+        # The number of successfully deleted contexts.
         self.deleted_count = deleted_count
         # The request ID.
         self.request_id = request_id

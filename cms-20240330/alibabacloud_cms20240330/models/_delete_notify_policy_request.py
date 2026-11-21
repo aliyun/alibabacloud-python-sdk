@@ -10,11 +10,11 @@ class DeleteNotifyPolicyRequest(DaraModel):
         uuid: str = None,
         workspace: str = None,
     ):
-        # The unique identifier of the notification policy, returned by the creation operation.
+        # The unique identifier of the notification policy, which is returned by the create operation.
         # 
         # This parameter is required.
         self.uuid = uuid
-        # The workspace ID. Used to isolate notification policy resources across different business spaces.
+        # The workspace ID, which is used to isolate notification policy resources across different business workspaces.
         # 
         # This parameter is required.
         self.workspace = workspace

@@ -18,7 +18,7 @@ class CreateContextStoreRequest(DaraModel):
     ):
         # The configuration information.
         self.config = config
-        # The name of the context store.
+        # The name of the context library.
         # 
         # This parameter is required.
         self.context_store_name = context_store_name

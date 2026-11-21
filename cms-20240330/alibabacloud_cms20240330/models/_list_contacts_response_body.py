@@ -24,7 +24,7 @@ class ListContactsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total = total
 
     def validate(self):
@@ -102,7 +102,7 @@ class ListContactsResponseBodyContacts(DaraModel):
         self.email_verify = email_verify
         # The alert contact groups to which the alert contact belongs.
         self.group_list = group_list
-        # The mapping of IM user IDs. Multiple instant messaging tools are supported.
+        # The mapping of instant messaging (IM) user IDs. Multiple IM tools are supported.
         self.im_user_ids = im_user_ids
         # The language.
         self.lang = lang

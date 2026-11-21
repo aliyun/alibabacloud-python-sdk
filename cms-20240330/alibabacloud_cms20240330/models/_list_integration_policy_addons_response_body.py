@@ -237,9 +237,9 @@ class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironments(DaraModel):
         self.dependencies = dependencies
         # The description.
         self.description = description
-        # Indicates whether the environment is enabled.
+        # Specifies whether it is enabled.
         self.enable = enable
-        # The display name of the environment.
+        # The environment display name.
         self.label = label
         # The environment name.
         self.name = name
@@ -312,9 +312,9 @@ class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies(DaraMode
         protocols: List[main_models.ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPoliciesProtocols] = None,
         target_addon_name: str = None,
     ):
-        # The enabled status of the default alert rule policy.
+        # The enabling status of the default alert rule policy.
         self.alert_default_status = alert_default_status
-        # Specifies whether the add-on is installed by default.
+        # Specifies whether it is installed by default.
         self.default_install = default_install
         # Specifies whether a service account is assigned for communication with the console API.
         self.enable_service_account = enable_service_account
@@ -324,7 +324,7 @@ class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsPolicies(DaraMode
         self.need_restart_after_integration = need_restart_after_integration
         # The protocols.
         self.protocols = protocols
-        # The name of the target add-on.
+        # The target add-on name.
         self.target_addon_name = target_addon_name
 
     def validate(self):
@@ -484,7 +484,7 @@ class ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies(Dara
         features: Dict[str, bool] = None,
         services: List[str] = None,
     ):
-        # The dependencies on cluster types.
+        # The cluster type dependencies.
         self.cluster_types = cluster_types
         # The dependencies on probes.
         self.features = features

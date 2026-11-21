@@ -5,8 +5,13 @@ from __future__ import annotations
 from darabonba.model import DaraModel
 
 class CreateEntityStoreRequest(DaraModel):
-    def __init__(self):
-        pass
+    def __init__(
+        self,
+        dry_run: bool = None,
+    ):
+        # Specifies whether to perform a dry run. Valid values: true: performs a dry run without making actual changes. false: sends a normal request. Default value: false.
+        self.dry_run = dry_run
+
     def validate(self):
         pass
 
@@ -15,9 +20,15 @@ class CreateEntityStoreRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+
         return self
 

@@ -110,7 +110,7 @@ class NotifyStrategyConfigRoutes(DaraModel):
         self.digital_employee_name = digital_employee_name
         # The effective time range.
         self.effect_time_range = effect_time_range
-        # Specifies whether to enable Root Cause Analysis (RCA).
+        # Specifies whether to enable root cause analysis (RCA).
         self.enable_rca = enable_rca
         # The route-level event filtering conditions.
         self.filter_setting = filter_setting
@@ -235,13 +235,13 @@ class NotifyStrategyConfigRoutesChannels(DaraModel):
         enabled_sub_channels: List[str] = None,
         receivers: List[str] = None,
     ):
-        # The type of the channel. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP. The values must be in uppercase. Lowercase values are not supported. For email, text messages, and voice calls, use CONTACT with enabledSubChannels.
+        # The type of the channel. Valid values: DING, WEIXIN, FEISHU, SLACK, TEAMS, WEBHOOK, CONTACT, GROUP, DUTY, and DING_COOL_APP. The values must be in uppercase. Lowercase values are not supported. For email, text message, and voice call, use CONTACT and configure enabledSubChannels.
         # 
         # This parameter is required.
         self.channel_type = channel_type
-        # Required only for CONTACT, GROUP, and DUTY. Valid values for sub-channels: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK. The values must be in uppercase.
+        # This parameter is required only when the channel type is CONTACT, GROUP, or DUTY. Valid values for sub-channels: EMAIL, SMS, VOICE, DING, WEIXIN, FEISHU, and WEBHOOK. The values must be in uppercase.
         self.enabled_sub_channels = enabled_sub_channels
-        # The list of receiver identifiers. At least one receiver is required. For WEBHOOK, specify the webhook UUID. For a chatbot, specify the chatbot UUID. For CONTACT, specify the contact ID.
+        # The list of recipient identifiers. At least one identifier is required. For WEBHOOK, specify the webhook UUID. For a chatbot, specify the chatbot UUID. For CONTACT, specify the contact ID.
         # 
         # This parameter is required.
         self.receivers = receivers
@@ -288,11 +288,11 @@ class NotifyStrategyConfigGroupingSetting(DaraModel):
     ):
         # The event fields used for grouping and merging. Events in the same group are merged into a single notification. An empty array indicates no grouping.
         self.grouping_keys = grouping_keys
-        # This parameter does not take effect for this API operation and does not need to be set.
+        # This parameter does not take effect for this API operation and does not need to be configured.
         self.period_min = period_min
-        # This parameter does not take effect for this API operation and does not need to be set.
+        # This parameter does not take effect for this API operation and does not need to be configured.
         self.silence_sec = silence_sec
-        # This parameter does not take effect for this API operation and does not need to be set.
+        # This parameter does not take effect for this API operation and does not need to be configured.
         self.times = times
 
     def validate(self):
@@ -336,8 +336,11 @@ class NotifyStrategyConfigGroupingSetting(DaraModel):
 class NotifyStrategyConfigCustomTemplateEntries(DaraModel):
     def __init__(
         self,
+        target_type: str = None,
         template_uuid: str = None,
     ):
+        # This parameter is optional. You can configure at most one template for each notification type.
+        self.target_type = target_type
         # The UUID of the notification template.
         self.template_uuid = template_uuid
 
@@ -349,6 +352,9 @@ class NotifyStrategyConfigCustomTemplateEntries(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.target_type is not None:
+            result['targetType'] = self.target_type
+
         if self.template_uuid is not None:
             result['templateUuid'] = self.template_uuid
 
@@ -356,6 +362,9 @@ class NotifyStrategyConfigCustomTemplateEntries(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('targetType') is not None:
+            self.target_type = m.get('targetType')
+
         if m.get('templateUuid') is not None:
             self.template_uuid = m.get('templateUuid')
 

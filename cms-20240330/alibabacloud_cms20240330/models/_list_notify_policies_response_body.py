@@ -16,15 +16,15 @@ class ListNotifyPoliciesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records returned for this request.
+        # The maximum number of entries returned for this request.
         self.max_results = max_results
-        # The pagination token for the next page. Empty if no more data is available.
+        # The pagination token for the next page. This parameter is empty if no more data is available.
         self.next_token = next_token
-        # The list of notification policies. Each item is of the NotifyPolicySummary type, which is a lightweight view.
+        # The list of notification policies. Each item is of the NotifyPolicySummary type, which represents a lightweight view.
         self.notify_policy_list = notify_policy_list
-        # The unique ID of the request, used for troubleshooting and ticket tracking.
+        # The unique ID of the request, which is used for troubleshooting and ticket tracking.
         self.request_id = request_id
-        # The total number of records. The actual total is returned for the first page, and -1 is returned for subsequent pages.
+        # The total number of entries. The actual total count is returned for the first page, and -1 is returned for subsequent pages.
         self.total_count = total_count
 
     def validate(self):

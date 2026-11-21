@@ -35,57 +35,57 @@ class ListAlertHistoriesRequest(DaraModel):
         status: str = None,
         workspace: str = None,
     ):
-        # The unique identifier (transId) of an alert history record.
+        # The unique identifier of an alert history record, which is the transId.
         self.alert_history_id = alert_history_id
-        # Filters the history records of a specified alert rule. Specify the unique identifier (ruleUuid) of the alert rule.
+        # The unique identifier of the alert rule used to filter the history records of a specific alert rule. Pass the ruleUuid of the alert rule.
         self.alert_rule_id = alert_rule_id
-        # Specifies the business source of the alert history. For example, managed_service_for_prometheus indicates the managed type of the Prometheus integration center. Default value: empty. Leave this parameter empty if you are unsure how to specify it.
+        # The business source of the alert history. For example, `managed_service_for_prometheus` indicates the managed type of the Prometheus integration center. Default value: empty. Leave this parameter empty if you are unsure about the value.
         self.biz_source = biz_source
         # The namespace of CloudMonitor, such as acs_rds_dashboard and acs_ecs_dashboard.
         self.cms_namespace = cms_namespace
         # The product category of CloudMonitor.
         self.cms_product_category = cms_product_category
-        # Filters the records by performing fuzzy matching on the keywords in the display name of the alert rule.
+        # The keyword used for fuzzy match filtering based on the display name of the alert rule.
         self.display_name_key_word = display_name_key_word
-        # The unique key value (instanceKey) that identifies the alert object instance.
+        # The unique key value used to identify the alert object instance, which is the instanceKey.
         self.instance_key = instance_key
         # The filter condition for rule labels. The value is a JSON-formatted string that supports filtering by label key-value pairs.
         self.label_filter = label_filter
-        # The level of the most recent alert during the alert duration. Valid values: CRITICAL (critical), WARN (warning), and INFO (info).
+        # The level of the most recent alert during the alert duration. Valid values: CRITICAL, WARN, and INFO.
         self.latest_level = latest_level
-        # The highest alert level reached during the alert duration. Valid values: CRITICAL (critical), WARN (warning), and INFO (info).
+        # The highest alert level reached during the alert duration. Valid values: CRITICAL, WARN, and INFO.
         self.max_level = max_level
-        # The maximum number of results returned per page in a paged query. This parameter is not supported. Use pageSize and pageNumber for paged queries.
+        # The maximum number of results to return on each page during paging for a paged query. This parameter is not supported. Use pageSize and pageNumber for a paged query.
         self.max_results = max_results
-        # The migration status value of the alert history.
+        # The migration status of the alert history.
         self.migration_status = migration_status
-        # The paging token for querying the next page. This parameter is not supported. Use pageSize and pageNumber for a paging query.
+        # The paging token used to query the next page. This parameter is not supported. Use pageSize and pageNumber for a paged query.
         self.next_token = next_token
-        # Filters alert rules that contain specified notification recipients. Only rules that contain any notification recipient specified in notifyTargets are returned in the result list.
+        # The filter used to filter alert rules that contain specific notification recipients. Only rules that contain at least one notification recipient specified in notifyTargets are returned in the result list.
         self.notification_filter = notification_filter
         # The relation type of the observed object, such as GROUP, INSTANCE, and TAG.
         self.observe_relation_type = observe_relation_type
-        # The dimension column (domain) of the observed object.
+        # The domain of the observed object.
         self.observe_resource_domain = observe_resource_domain
         # Specifies whether the observed object is in the global scope.
         self.observe_resource_global_scope = observe_resource_global_scope
-        # Filters the alert history by resource instance ID.
+        # The resource instance ID used to filter the alert history.
         self.observe_resource_instance_id = observe_resource_instance_id
         # The type of the observed object, such as PROMETHEUS, APM, RUM, and cms_basic.
         self.observe_resource_type = observe_resource_type
-        # The page number for a paged query. Default value: 1.
+        # The page number for paging in a paged query. Default value: 1.
         self.page_number = page_number
-        # The number of alert history records returned per page in a paged query. Default value: 10.
+        # The number of alert history records to return on each page during paging for a paged query. Default value: 10.
         self.page_size = page_size
-        # The key value used for data partitioning. Typically, you do not need to specify this parameter.
+        # The key value used for data partitioning. You do not need to specify this parameter in most cases.
         self.partition_key = partition_key
-        # The start timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If not specified, the default value is 30 days ago.
+        # The start timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If you do not specify this parameter, the default value is the timestamp 30 days ago.
         self.start_time_from = start_time_from
-        # The end timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If not specified, the default value is the current time.
+        # The end timestamp of the time range for the alert start time. The value is a UNIX timestamp in milliseconds. If you do not specify this parameter, the default value is the current timestamp.
         self.start_time_to = start_time_to
-        # The current status of the alert history. Valid values: OK (recovered) and ALARM (alerting).
+        # The current status of the alert history. Valid values: OK and ALARM.
         self.status = status
-        # The identifier of the workspace to which the alert history belongs. If not specified, the default workspace is used.
+        # The identifier of the workspace to which the alert history belongs. If you do not specify this parameter, the default workspace is used.
         self.workspace = workspace
 
     def validate(self):

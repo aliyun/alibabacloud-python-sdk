@@ -16,7 +16,7 @@ class ListOncallSchedulesResponseBody(DaraModel):
     ):
         # The list of on-call schedules.
         self.oncall_schedules = oncall_schedules
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of records.
         self.total = total
@@ -77,7 +77,7 @@ class ListOncallSchedulesResponseBodyOncallSchedules(DaraModel):
         self.oncall_schedule_name = oncall_schedule_name
         # The list of rotations.
         self.rotations = rotations
-        # The ID of the robot that sends shift change reminders.
+        # The ID of the chatbot that sends shift reminders.
         self.shift_robot_id = shift_robot_id
         # The list of substitution rules.
         self.substitudes = substitudes
@@ -229,9 +229,9 @@ class ListOncallSchedulesResponseBodyOncallSchedulesRotations(DaraModel):
         self.rotation_name = rotation_name
         # The start time of the rotation. Format: HH:mm.
         self.rotation_start_time = rotation_start_time
-        # The length of the shift cycle. This parameter is used together with shiftRecurrenceFrequency. For example, a value of 3 indicates that the on-call personnel changes every 3 days.
+        # The length of the shift recurrence. This parameter is used together with shiftRecurrenceFrequency. For example, you can set this parameter to 3 and shiftRecurrenceFrequency to Day to rotate the on-call personnel every 3 days.
         self.shift_length = shift_length
-        # The unit of the shift cycle. This parameter is used together with shiftLength. For example, a value of Week indicates that the on-call personnel changes every week.
+        # The unit of the shift recurrence frequency. This parameter is used together with shiftLength. For example, you can set this parameter to Week to rotate the on-call personnel every week.
         self.shift_recurrence_frequency = shift_recurrence_frequency
         # The start date of the rotation. Format: yyyy-MM-dd.
         self.start_date = start_date

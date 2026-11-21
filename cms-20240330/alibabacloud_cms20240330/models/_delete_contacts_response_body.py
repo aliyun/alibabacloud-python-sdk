@@ -12,7 +12,7 @@ class DeleteContactsResponseBody(DaraModel):
     ):
         # The actual number of deleted records.
         self.deleted_count = deleted_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

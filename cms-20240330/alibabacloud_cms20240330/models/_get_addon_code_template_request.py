@@ -11,7 +11,7 @@ class GetAddonCodeTemplateRequest(DaraModel):
         environment_type: str = None,
         version: str = None,
     ):
-        # The locale. Default value: zh. Valid values: zh, en.
+        # The locale. Default value: zh. Valid values: zh and en.
         self.aliyun_lang = aliyun_lang
         # The environment type. Valid values: CS (container) and ECS.
         self.environment_type = environment_type

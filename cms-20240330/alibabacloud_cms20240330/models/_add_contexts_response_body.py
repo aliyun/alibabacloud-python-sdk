@@ -15,7 +15,7 @@ class AddContextsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The return values.
+        # The results.
         self.results = results
 
     def validate(self):

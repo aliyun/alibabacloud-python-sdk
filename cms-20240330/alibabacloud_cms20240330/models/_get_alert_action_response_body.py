@@ -73,7 +73,7 @@ class GetAlertActionResponseBodyAlertActions(DaraModel):
         self.fc_3param = fc_3param
         # The Function Compute parameters.
         self.fc_param = fc_param
-        # The Simple Message Queue (formerly MNS) parameters.
+        # The Simple Message Queue (formerly MNS) (MSMQ) parameters.
         self.mns_param = mns_param
         # The PagerDuty parameters.
         self.pager_duty_param = pager_duty_param
@@ -201,7 +201,7 @@ class GetAlertActionResponseBodyAlertActionsWebhookParam(DaraModel):
         self.headers = headers
         # The webhook request method.
         self.method = method
-        # The URL for the alert callback.
+        # The URL of the alert callback.
         self.url = url
 
     def validate(self):
@@ -294,9 +294,9 @@ class GetAlertActionResponseBodyAlertActionsPagerDutyParam(DaraModel):
         key: str = None,
         url: str = None,
     ):
-        # The integration key for PagerDuty.
+        # The integration key of PagerDuty.
         self.key = key
-        # The PagerDuty integration webhook. Versions 1 and 2 are supported.
+        # The integration webhook of PagerDuty. Both V1 and V2 are supported.
         self.url = url
 
     def validate(self):
@@ -332,7 +332,7 @@ class GetAlertActionResponseBodyAlertActionsMnsParam(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The Simple Message Queue (formerly MNS) resource type.
+        # The Simple Message Queue (formerly MNS) (MSMQ) resource type.
         self.mns_type = mns_type
         # The resource name.
         # 

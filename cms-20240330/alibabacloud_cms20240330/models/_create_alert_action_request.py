@@ -28,7 +28,7 @@ class CreateAlertActionRequest(DaraModel):
         # 
         # This parameter is required.
         self.alert_action_name = alert_action_name
-        # The event bus parameters.
+        # The event bus.
         self.eb_param = eb_param
         # The elastic scaling parameters.
         self.ess_param = ess_param
@@ -164,9 +164,9 @@ class CreateAlertActionRequestWebhookParam(DaraModel):
         self.content_type = content_type
         # The request header information.
         self.headers = headers
-        # The HTTP method for the webhook request.
+        # The webhook request method.
         self.method = method
-        # The alert callback URL.
+        # The URL for the alert callback.
         self.url = url
 
     def validate(self):
@@ -261,7 +261,7 @@ class CreateAlertActionRequestPagerDutyParam(DaraModel):
     ):
         # The integration key for PagerDuty.
         self.key = key
-        # The integration webhook URL for PagerDuty. Both V1 and V2 are supported.
+        # The integration webhook for PagerDuty. V1 and V2 are supported.
         self.url = url
 
     def validate(self):
@@ -300,7 +300,6 @@ class CreateAlertActionRequestMnsParam(DaraModel):
         # The Simple Message Queue (formerly MNS) resource type.
         self.mns_type = mns_type
         # The resource name.
-        # 
         # - If the resource type is queue, the resource name is the queue name.
         # - If the resource type is topic, the resource name is the topic name.
         self.name = name

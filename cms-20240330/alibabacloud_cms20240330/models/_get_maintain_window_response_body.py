@@ -11,9 +11,9 @@ class GetMaintainWindowResponseBody(DaraModel):
         maintain_window: main_models.MaintainWindowForView = None,
         request_id: str = None,
     ):
-        # The details of the silence policy, including the policy ID, name, description, enabled status, filterSetting, effective period configuration, creation time, and update time. workspaceFilterSetting is not returned.
+        # The details of the silence policy, including the policy ID, name, description, enabled status, filterSetting, effective period configuration, creation time, and update time. The workspaceFilterSetting is not returned.
         self.maintain_window = maintain_window
-        # The unique ID of the request. You can use this ID for troubleshooting and ticket submission.
+        # The unique ID of the request, which is used for troubleshooting and ticket tracking.
         self.request_id = request_id
 
     def validate(self):

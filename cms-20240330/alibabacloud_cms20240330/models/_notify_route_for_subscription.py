@@ -63,11 +63,11 @@ class NotifyRouteForSubscriptionEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
-        # The effective days of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday).
+        # The valid days of the week. Valid values: 0 to 6, where 0 indicates Sunday and 6 indicates Saturday.
         self.day_in_week = day_in_week
-        # The end time of the day, in minutes from 0:00.
+        # The end time of the day in minutes, calculated from 00:00.
         self.end_time_in_minute = end_time_in_minute
-        # The start time of the day, in minutes from 0:00.
+        # The start time of the day in minutes, calculated from 00:00.
         self.start_time_in_minute = start_time_in_minute
         # The time zone.
         self.time_zone = time_zone
@@ -119,7 +119,7 @@ class NotifyRouteForSubscriptionChannels(DaraModel):
     ):
         # The channel type.
         self.channel_type = channel_type
-        # The list of enabled subchannels.
+        # The list of enabled sub-channels.
         self.enabled_sub_channels = enabled_sub_channels
         # The list of receivers.
         self.receivers = receivers

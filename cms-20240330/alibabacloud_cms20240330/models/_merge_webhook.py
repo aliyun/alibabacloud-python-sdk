@@ -28,7 +28,7 @@ class MergeWebhook(DaraModel):
         self.extend = extend
         # The creation time.
         self.gmt_create = gmt_create
-        # The last modification time.
+        # The last modified time.
         self.gmt_modified = gmt_modified
         # The request header information.
         self.headers = headers
@@ -38,13 +38,13 @@ class MergeWebhook(DaraModel):
         self.lang = lang
         # The HTTP request method.
         self.method = method
-        # The name of the webhook.
+        # The webhook name.
         self.name = name
         # The source system of the webhook.
         self.source = source
-        # The webhook type, which indicates its target platform.
+        # The webhook type, which indicates the target platform.
         self.type = type
-        # The webhook address used to send requests.
+        # The webhook URL used to send requests.
         self.webhook = webhook
 
     def validate(self):

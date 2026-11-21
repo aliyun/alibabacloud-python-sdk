@@ -10,11 +10,11 @@ class DeleteAlertRobotsShrinkRequest(DaraModel):
         robot_ids_shrink: str = None,
         type: str = None,
     ):
-        # The chatbot IDs.
+        # The IDs of the chatbots.
         # 
         # This parameter is required.
         self.robot_ids_shrink = robot_ids_shrink
-        # The chatbot type.
+        # The type of the chatbot.
         self.type = type
 
     def validate(self):

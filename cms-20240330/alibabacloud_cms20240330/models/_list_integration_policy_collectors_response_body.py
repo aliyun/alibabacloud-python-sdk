@@ -67,19 +67,19 @@ class ListIntegrationPolicyCollectorsResponseBodyCollectors(DaraModel):
     ):
         # The add-on details.
         self.addon_meta = addon_meta
-        # The collector name.
+        # The name of the collector.
         self.collector_name = collector_name
-        # The collector type.
+        # The type of the collector.
         self.collector_type = collector_type
-        # The phase status.
+        # The conditions.
         self.conditions = conditions
-        # Indicates whether the component is a managed component.
+        # Indicates whether the component is managed.
         self.managed = managed
         # The name of the add-on release.
         self.release_name = release_name
-        # The collector status.
+        # The state of the collector.
         self.state = state
-        # The component version.
+        # The version of the component.
         self.version = version
         # The list of workloads.
         self.workloads = workloads
@@ -188,29 +188,29 @@ class ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloads(DaraModel):
         status: str = None,
         version: str = None,
     ):
-        # The host IP address.
+        # The IP address of the host.
         self.host_ip = host_ip
         # The IP address of the workload.
         self.ip = ip
-        # Indicates whether the component is a managed component.
+        # Indicates whether the component is managed.
         self.managed = managed
         # The policy management information.
         self.managed_info = managed_info
-        # The details.
+        # The condition details.
         self.message = message
-        # The workload name.
+        # The name of the workload.
         self.name = name
-        # The workload namespace.
+        # The namespace of the workload.
         self.namespace = namespace
-        # The kind of the parent reference.
+        # The kind of the owner reference.
         self.owner_reference_kind = owner_reference_kind
-        # The name of the parent reference.
+        # The name of the owner reference.
         self.owner_reference_name = owner_reference_name
-        # The start time.
+        # The start time, in ISO 8601 format, including the UTC identifier or time zone offset.
         self.start_time = start_time
         # The status.
         self.status = status
-        # The workload version.
+        # The version of the workload.
         self.version = version
 
     def validate(self):
@@ -307,9 +307,9 @@ class ListIntegrationPolicyCollectorsResponseBodyCollectorsWorkloadsManagedInfo(
         security_group_id: str = None,
         vswitch_id: str = None,
     ):
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -348,17 +348,17 @@ class ListIntegrationPolicyCollectorsResponseBodyCollectorsConditions(DaraModel)
         status: str = None,
         type: str = None,
     ):
-        # The time of the first transition.
+        # The time of the first transition, in ISO 8601 format, including the UTC identifier or time zone offset.
         self.first_transition_time = first_transition_time
-        # The time of the last transition.
+        # The time of the last transition, in ISO 8601 format, including the UTC identifier or time zone offset.
         self.last_transition_time = last_transition_time
-        # The details.
+        # The condition details.
         self.message = message
         # The reason for the failure.
         self.reason = reason
-        # The phase status.
+        # The conditions.
         self.status = status
-        # The phase type.
+        # The type of the condition.
         self.type = type
 
     def validate(self):

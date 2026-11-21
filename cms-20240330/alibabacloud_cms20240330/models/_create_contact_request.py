@@ -28,7 +28,7 @@ class CreateContactRequest(DaraModel):
         self.lang = lang
         # The name of the contact.
         self.name = name
-        # The mobile phone number. Currently, only mobile phone numbers in China are supported.
+        # The mobile phone number. Currently, only phone numbers in the Chinese mainland are supported.
         self.phone = phone
         # The country code.
         self.phone_code = phone_code

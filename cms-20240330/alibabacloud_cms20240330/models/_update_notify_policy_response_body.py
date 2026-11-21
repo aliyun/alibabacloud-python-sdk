@@ -11,9 +11,9 @@ class UpdateNotifyPolicyResponseBody(DaraModel):
         notify_policy: main_models.NotifyPolicy = None,
         request_id: str = None,
     ):
-        # The notification policy object details, including the policy uuid, name, description, enabled status, and sub-entities such as notification policies (noise reduction, notification routing, and channels), subscriptions (event filtering, cross-workspace routing, and legacy product event subscriptions), and response plans (escalation, repeated notifications, automatic recovery, and action integration).
+        # The details of the notification policy object, including the policy UUID, name, description, and enabling status, as well as sub-entities such as the notification policy (group merging, notification routing, and channels), subscriptions (event filtering, cross-workspace routing, and legacy product event subscriptions), and response plans (escalation, repeated notifications, automatic recovery, and action integration).
         self.notify_policy = notify_policy
-        # The unique ID of the request. You can use this ID for troubleshooting and ticket locating.
+        # The unique ID of the request, which is used for troubleshooting and ticket tracking.
         self.request_id = request_id
 
     def validate(self):

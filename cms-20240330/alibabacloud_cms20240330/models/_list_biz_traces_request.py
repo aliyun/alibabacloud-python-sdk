@@ -11,7 +11,7 @@ class ListBizTracesRequest(DaraModel):
         next_token: str = None,
         workspace: str = None,
     ):
-        # The maximum number of results to return. Maximum value: 100.
+        # The maximum number of results to return. The maximum value is 100.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

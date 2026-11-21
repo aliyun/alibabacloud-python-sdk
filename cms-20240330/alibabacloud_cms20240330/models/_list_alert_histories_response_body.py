@@ -132,9 +132,9 @@ class ListAlertHistoriesResponseBodyData(DaraModel):
         self.annotations = annotations
         # The business source.
         self.biz_source = biz_source
-        # The cumulative number of alert events during the alert duration.
+        # The cumulative number of alerts (alert events) during the alert duration.
         self.count = count
-        # The end time of the alert, which is the recovery time. This field has a value only when the alert history enters the OK state. The value is a UNIX timestamp in milliseconds.
+        # The end time (recovery time) of the alert. This field has a value only when the alert history record enters the OK state. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The creation time of the alert history record. The value is a UNIX timestamp in milliseconds.
         self.gmt_create = gmt_create
@@ -142,7 +142,7 @@ class ListAlertHistoriesResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The detailed information of the alert object, stored as key-value pairs.
         self.instance_detail = instance_detail
-        # The unique key value (instanceKey) that identifies the alert object instance.
+        # The unique key value used to identify the alert object instance, which is the instanceKey.
         self.instance_key = instance_key
         # The snapshot of the labels of the alert rule, stored as key-value pairs and copied from the rule when the alert is triggered.
         self.labels = labels
@@ -152,11 +152,11 @@ class ListAlertHistoriesResponseBodyData(DaraModel):
         self.max_level = max_level
         # The content of the latest alert message.
         self.message = message
-        # Indicates whether the observed object is in the global scope. This value is copied from the rule when the alert history record is created.
+        # Indicates whether the observed object is in the global scope. This value is copied from the rule upon creation.
         self.observe_resource_global_scope = observe_resource_global_scope
-        # The serialized string of the observed object list. This value is copied from the rule when the alert history record is created.
+        # The serialized string of the observed object list. This value is copied from the rule upon creation.
         self.observe_resource_list = observe_resource_list
-        # The type of the observed object, such as PROMETHEUS, APM, RUM, or cms_basic. This value is copied from the rule when the alert history record is created.
+        # The type of the observed object, such as PROMETHEUS, APM, RUM, or cms_basic. This value is copied from the rule upon creation.
         self.observe_resource_type = observe_resource_type
         # The ID of the region to which the alert history record belongs.
         self.region_id = region_id

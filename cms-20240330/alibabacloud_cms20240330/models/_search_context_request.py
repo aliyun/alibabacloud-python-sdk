@@ -16,19 +16,19 @@ class SearchContextRequest(DaraModel):
         retrieval_option: str = None,
         threshold: float = None,
     ):
-        # Filter conditions
+        # The filter conditions.
         self.filter = filter
-        # Whether to format
+        # Specifies whether to format the output.
         self.formatted = formatted
-        # Limit the number of items returned
+        # The maximum number of results to return.
         self.limit = limit
-        # Query content
+        # The query content.
         # 
         # This parameter is required.
         self.query = query
-        # Retrieval option
+        # The retrieval options.
         self.retrieval_option = retrieval_option
-        # Similarity threshold
+        # The similarity threshold.
         self.threshold = threshold
 
     def validate(self):

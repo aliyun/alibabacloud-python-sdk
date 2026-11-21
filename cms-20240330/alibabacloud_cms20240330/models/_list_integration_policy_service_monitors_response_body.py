@@ -84,15 +84,15 @@ class ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors(DaraModel)
         name: str = None,
         namespace: str = None,
     ):
-        # The addon name.
+        # The name of the add-on.
         self.addon_name = addon_name
-        # The addon release name.
+        # The name of the add-on release.
         self.addon_release_name = addon_release_name
-        # The addon version.
+        # The version of the add-on.
         self.addon_version = addon_version
-        # The configuration YAML.
+        # The YAML configuration.
         self.config_yaml = config_yaml
-        # The enabling status.
+        # The enabled status.
         self.enable_status = enable_status
         # The encrypted YAML.
         self.encrypt_yaml = encrypt_yaml
@@ -100,9 +100,9 @@ class ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitors(DaraModel)
         self.endpoints = endpoints
         # The number of matched services.
         self.matched_service_count = matched_service_count
-        # The ServiceMonitor name.
+        # The name of the ServiceMonitor.
         self.name = name
-        # The namespace.
+        # The name of the project workspace.
         self.namespace = namespace
 
     def validate(self):
@@ -200,7 +200,7 @@ class ListIntegrationPolicyServiceMonitorsResponseBodyServiceMonitorsEndpoints(D
         self.interval = interval
         # The number of matched targets.
         self.matched_target_count = matched_target_count
-        # The sampling path.
+        # The collection path.
         self.path = path
         # The collection port.
         self.port = port

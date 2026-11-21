@@ -11,7 +11,7 @@ class GetServiceRecordResponseBody(DaraModel):
         record: main_models.GetServiceRecordResponseBodyRecord = None,
         request_id: str = None,
     ):
-        # The record.
+        # The number of records.
         self.record = record
         # Id of the request
         self.request_id = request_id
@@ -52,10 +52,10 @@ class GetServiceRecordResponseBodyRecord(DaraModel):
         service_id: str = None,
         workspace: str = None,
     ):
-        # The entry content in JSON string format. The returned content varies depending on the recordType.
+        # The content of the entry in JSON string format. The returned content varies based on the recordType.
         self.record_content = record_content
-        # The type of the linked entry. Currently supported values:
-        # logCorrelation: indicates application log association.
+        # The type of the association entry. Valid values:
+        # logCorrelation: application log association.
         self.record_type = record_type
         # The unique identifier of the service.
         self.service_id = service_id

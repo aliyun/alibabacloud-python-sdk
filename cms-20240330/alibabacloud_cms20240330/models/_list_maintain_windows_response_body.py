@@ -15,13 +15,13 @@ class ListMaintainWindowsResponseBody(DaraModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The list of silence policies. An empty list is returned when no items match. The list items do not include workspaceFilterSetting.
+        # The list of silence policies. An empty list is returned if no matches are found. List items do not include workspaceFilterSetting.
         self.maintain_window_list = maintain_window_list
-        # The maximum number of records returned in this request.
+        # The maximum number of records returned for this request.
         self.max_results = max_results
-        # The pagination token for the next page. A non-empty value indicates that more results may be available, but the next page may still be empty. An empty value indicates the end of pagination.
+        # The starting cursor for the next page. If this value is not empty, you can continue to query, but the next page may still be empty. An empty value indicates the end of pagination.
         self.next_token = next_token
-        # The unique ID of this request, used for troubleshooting and ticket tracking.
+        # The unique ID of the request, which is used for troubleshooting and ticket tracking.
         self.request_id = request_id
 
     def validate(self):

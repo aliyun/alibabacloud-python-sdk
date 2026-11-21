@@ -12,7 +12,7 @@ class CreateOncallScheduleResponseBody(DaraModel):
     ):
         # The unique identifier of the on-call schedule.
         self.oncall_schedule_id = oncall_schedule_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

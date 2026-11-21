@@ -22,7 +22,7 @@ class CreateAlertWebhookRequest(DaraModel):
         # - JSON (default)
         # - FORM
         self.content_type = content_type
-        # The collection of HTTP request headers.
+        # The HTTP request headers.
         self.headers = headers
         # The language. Valid values:
         # - zh_CN

@@ -10,19 +10,22 @@ from darabonba.model import DaraModel
 class PutWorkspaceRequest(DaraModel):
     def __init__(
         self,
+        dry_run: bool = None,
         description: str = None,
         display_name: str = None,
         resource_group_id: str = None,
         sls_project: str = None,
         tags: List[main_models.PutWorkspaceRequestTags] = None,
     ):
-        # The workspace description.
+        # Specifies whether to perform a dry run of the request. Valid values: true: sends a check request without making actual changes. false (default): sends a normal request.
+        self.dry_run = dry_run
+        # The description of the workspace.
         self.description = description
         # The display name of the workspace.
         self.display_name = display_name
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The Simple Log Service project name.
+        # The name of the Simple Log Service project.
         # 
         # This parameter is required.
         self.sls_project = sls_project
@@ -40,6 +43,9 @@ class PutWorkspaceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
         if self.description is not None:
             result['description'] = self.description
 
@@ -61,6 +67,9 @@ class PutWorkspaceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
         if m.get('description') is not None:
             self.description = m.get('description')
 

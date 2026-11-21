@@ -62,15 +62,15 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements(Da
         spec: main_models.ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec = None,
         status: main_models.ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus = None,
     ):
-        # The collection of add-on releases.
+        # The collection of AddonReleases.
         self.addon_release_names = addon_release_names
-        # The API version.
+        # The version number.
         self.api_version = api_version
         # The resource kind.
         self.kind = kind
         # The metadata.
         self.metadata = metadata
-        # The resource specification.
+        # The specification of the resource.
         self.spec = spec
         # The storage requirement status.
         self.status = status
@@ -248,7 +248,7 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpe
         user_id: str = None,
         workspace: str = None,
     ):
-        # The instance ID. Specify this parameter to narrow down the scope to the instance level. This depends on the data in EntityStore.
+        # The instance ID. Specify this parameter to narrow the scope to the instance level. This parameter depends on the data in the EntityStore.
         self.entity_id = entity_id
         # The Prometheus instance ID.
         self.instance = instance
@@ -262,9 +262,9 @@ class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpe
         self.share_scope = share_scope
         # The instance storage type.
         self.storage_type = storage_type
-        # The tags to be added to the destination storage. These tags are injected as system tags.
+        # The tags to be added to the target storage, injected as system tags.
         self.system_tags = system_tags
-        # The tags to be added to the destination storage. These tags are injected as regular tags.
+        # The tags to be added to the target storage, injected as regular tags.
         self.tags = tags
         # The user ID.
         self.user_id = user_id

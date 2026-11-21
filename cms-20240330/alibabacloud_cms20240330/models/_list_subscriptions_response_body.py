@@ -15,7 +15,7 @@ class ListSubscriptionsResponseBody(DaraModel):
         request_id: str = None,
         subscription_list: List[main_models.SubscriptionForView] = None,
     ):
-        # The maximum number of records returned for the current request.
+        # The maximum number of records returned in the current request.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token

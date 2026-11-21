@@ -18,13 +18,13 @@ class ListUserNotifyHistoriesResponseBody(DaraModel):
     ):
         # The notification history list.
         self.history_list = history_list
-        # The maximum number of entries returned for the current request.
+        # The maximum number of records returned for the current request.
         self.max_results = max_results
         # The pagination token for the next page. It is an opaque string generated and encrypted by the server. An empty value indicates that no more data is available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of notification history entries that meet the query conditions.
+        # The total number of notification history records that meet the query conditions.
         self.total = total
 
     def validate(self):
@@ -114,8 +114,8 @@ class ListUserNotifyHistoriesResponseBodyHistoryList(DaraModel):
         # The notification job ID.
         self.job_id = job_id
         # Indicates whether the notification record has no actual delivery channel. Valid values:
-        # - true: the record has no channel, which means the notifyResult is NO_CHANNEL.
-        # - false: the record has an actual delivery channel.
+        # - true: The record has no channel, which means the notifyResult is NO_CHANNEL.
+        # - false: The record has an actual delivery channel.
         self.no_channel = no_channel
         # The notification policy ID.
         self.notify_strategy_id = notify_strategy_id
@@ -123,41 +123,41 @@ class ListUserNotifyHistoriesResponseBodyHistoryList(DaraModel):
         self.notify_strategy_name = notify_strategy_name
         # The recipient address, such as a phone number, email address, or webhook address, depending on the notification channel.
         self.receiver = receiver
-        # The details of the notification delivery result. This is the raw response content returned by the channel, such as the API response from a DingTalk or Lark bot.
+        # The notification delivery result details. This is the raw response content returned by the channel, such as the API response from a DingTalk or Lark bot.
         self.result = result
         # The alert rule ID.
         self.rule_id = rule_id
         # The alert rule name.
         self.rule_name = rule_name
         # The notification delivery type. Valid values:
-        # - SUBSCRIBE: subscription notifications
-        # - DIRECT: direct event notifications
-        # - ITSM: ticket or action notifications
+        # - SUBSCRIBE: Subscription notification.
+        # - DIRECT: Direct event notification.
+        # - ITSM: Ticket or action notification.
         self.send_type = send_type
         # The alert severity. Valid values:
-        # - CRITICAL: critical
-        # - ERROR: error
-        # - WARNING: warning
-        # - INFO: info
+        # - CRITICAL: Critical.
+        # - ERROR: Error.
+        # - WARNING: Warning.
+        # - INFO: Info.
         self.severity = severity
         # The incident status. Valid values:
-        # - TRIGGERED: triggered
-        # - RESOLVED: resolved
-        # - ACK: acknowledged
-        # - ESCALATED: escalated
-        # - MANUAL_RESOLVED: manually resolved
-        # - TIMEOUT: automatically resolved due to timeout
-        # - RETRIGGERED: retriggered
-        # - PARTIAL_RESOLVED: partially resolved
-        # - INVALID: invalid
+        # - TRIGGERED: Triggered.
+        # - RESOLVED: Resolved.
+        # - ACK: Acknowledged.
+        # - ESCALATED: Escalated.
+        # - MANUAL_RESOLVED: Manually resolved.
+        # - TIMEOUT: Automatically resolved due to timeout.
+        # - RETRIGGERED: Retriggered.
+        # - PARTIAL_RESOLVED: Partially resolved.
+        # - INVALID: Invalid.
         self.status = status
         # The subscription ID.
         self.subscription_id = subscription_id
         # The subscription name.
         self.subscription_name = subscription_name
         # Indicates whether the notification was delivered successfully. Valid values:
-        # - true: the delivery was successful.
-        # - false: the delivery failed.
+        # - true: Delivered successfully.
+        # - false: Delivery failed.
         self.success = success
         # The time when the notification was recorded. The value is a UNIX timestamp in seconds.
         self.timestamp = timestamp

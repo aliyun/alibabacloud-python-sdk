@@ -18,7 +18,7 @@ class SearchMemoriesResponseBody(DaraModel):
         self.relations = relations
         # The request ID.
         self.request_id = request_id
-        # The return values.
+        # The returned results.
         self.results = results
 
     def validate(self):
@@ -92,7 +92,7 @@ class SearchMemoriesResponseBodyResults(DaraModel):
         self.agent_id = agent_id
         # The creation time.
         self.created_at = created_at
-        # The hash value of the memory.
+        # The memory hash value.
         self.hash = hash
         # The memory ID.
         self.id = id

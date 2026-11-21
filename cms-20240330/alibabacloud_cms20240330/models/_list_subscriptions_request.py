@@ -20,11 +20,11 @@ class ListSubscriptionsRequest(DaraModel):
         unbound: bool = None,
         workspace: str = None,
     ):
-        # The UUID of the AI agent. This parameter is used to filter subscriptions for a specified AI agent.
+        # The UUID of the AI agent. This parameter is used to filter subscriptions of a specific AI agent.
         self.agent_uuid = agent_uuid
         # The sort order of the returned versions. Valid values:
-        # - asc: Ascending order. 
-        # - desc: Descending order.
+        # - asc: ascending order 
+        # - desc: descending order
         self.direction = direction
         # Specifies whether the subscription is enabled.
         self.enable = enable
@@ -32,7 +32,7 @@ class ListSubscriptionsRequest(DaraModel):
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The UUID of the notification policy. This parameter is used to filter subscriptions that are bound to a specified notification policy. The value is a 32-character string.
+        # The UUID of the notification policy. This parameter is used to filter subscriptions that are bound to a specific notification policy. The value is a 32-character string.
         self.notify_strategy_uuid = notify_strategy_uuid
         # The sort field.
         self.order_by = order_by
@@ -40,9 +40,11 @@ class ListSubscriptionsRequest(DaraModel):
         self.subscription_id = subscription_id
         # The name of the subscription.
         self.subscription_name = subscription_name
-        # The type of the subscription. Valid values: NORMAL (standard subscription) and AI_AGENT (AI agent subscription).
+        # The type of the subscription. Valid values:
+        # - NORMAL: standard subscription
+        # - AI_AGENT: AI agent subscription
         self.subscription_type = subscription_type
-        # **[Deprecated]** This is an internal reserved parameter. Do not use it.
+        # **[Deprecated]** This is an internal reserved parameter. Do not use this parameter.
         self.unbound = unbound
         # The name of the workspace.
         self.workspace = workspace

@@ -24,9 +24,9 @@ class CreateDeliveryTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_source_id = data_source_id
-        # The additional labels attached to all delivered metrics. The key is the label name, and the value is the label value.
+        # The additional labels attached to all delivered metrics. The key is the label name and the value is the label value.
         self.external_labels = external_labels
-        # The metric filtering conditions. This parameter is used together with labelFiltersType. The key is the metric label name, and the value is the match value.
+        # The metric filtering conditions used in conjunction with labelFiltersType. The key is the metric label name and the value is the match value.
         self.label_filters = label_filters
         # The metric filtering mode.
         self.label_filters_type = label_filters_type
@@ -36,7 +36,7 @@ class CreateDeliveryTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.sink_list = sink_list
-        # The tags of the resource.
+        # The resource tags.
         self.tags = tags
         # The description of the task.
         self.task_description = task_description

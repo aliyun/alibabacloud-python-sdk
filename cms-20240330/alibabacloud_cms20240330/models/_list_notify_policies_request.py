@@ -14,17 +14,17 @@ class ListNotifyPoliciesRequest(DaraModel):
         order_desc: str = None,
         workspace: str = None,
     ):
-        # The maximum number of records to return for this request.
+        # The maximum number of entries to return for this request.
         self.max_results = max_results
-        # The fuzzy filter for the policy name.
+        # The keyword for fuzzy filtering by policy name.
         self.name = name
-        # The pagination token. Leave empty for the first page. For subsequent pages, pass the nextToken returned from the previous page.
+        # The pagination token. Leave this parameter empty for the first request. For subsequent requests, pass the nextToken value returned from the previous response.
         self.next_token = next_token
-        # The field to sort by. Valid values include createTime, updateTime, and name.
+        # The field by which to sort the results. Valid values: createTime, updateTime, and name.
         self.order_by = order_by
-        # Specifies whether to sort in descending order. Set to true for descending order, or false for ascending order.
+        # Specifies whether to sort the results in descending order. A value of true indicates descending order, and a value of false indicates ascending order.
         self.order_desc = order_desc
-        # The workspace ID, used to isolate notification policy resources for different business workspaces.
+        # The workspace ID, which is used to isolate notification policy resources across different business workspaces.
         # 
         # This parameter is required.
         self.workspace = workspace

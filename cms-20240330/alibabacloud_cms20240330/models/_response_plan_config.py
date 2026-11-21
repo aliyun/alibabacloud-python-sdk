@@ -15,7 +15,7 @@ class ResponsePlanConfig(DaraModel):
         pushing_setting: main_models.ResponsePlanConfigPushingSetting = None,
         repeat_notify_setting: main_models.ResponsePlanConfigRepeatNotifySetting = None,
     ):
-        # The number of seconds for automatic recovery. If no new trigger occurs within this duration, the event is automatically recovered.
+        # The auto-recovery time in seconds. The incident automatically recovers if no new triggers occur within this duration.
         self.auto_recover_seconds = auto_recover_seconds
         # The list of escalation plan IDs.
         self.escalation_id = escalation_id
@@ -73,9 +73,9 @@ class ResponsePlanConfigRepeatNotifySetting(DaraModel):
         end_incident_state: str = None,
         repeat_interval: int = None,
     ):
-        # The target incident status at which repeat notifications stop.
+        # The target incident state for stopping repeat notifications.
         self.end_incident_state = end_incident_state
-        # The repeat notification interval, in seconds.
+        # The repeat notification interval in seconds.
         self.repeat_interval = repeat_interval
 
     def validate(self):
@@ -110,9 +110,9 @@ class ResponsePlanConfigPushingSetting(DaraModel):
         alert_action_ids: List[str] = None,
         restore_action_ids: List[str] = None,
     ):
-        # The list of action integration IDs triggered by alerts.
+        # The list of alert-triggered action integration IDs.
         self.alert_action_ids = alert_action_ids
-        # The list of action integration IDs triggered by recovery.
+        # The list of recovery-triggered action integration IDs.
         self.restore_action_ids = restore_action_ids
 
     def validate(self):

@@ -10,11 +10,11 @@ class GetNotifyPolicyRequest(DaraModel):
         uuid: str = None,
         workspace: str = None,
     ):
-        # The unique identifier of the notification policy, returned by the create operation.
+        # The unique identifier of the notification policy, which is returned by the create operation.
         # 
         # This parameter is required.
         self.uuid = uuid
-        # The workspace ID. Used to isolate notification policy resources across different business spaces. Example: `default-cms-xxxx-ap-southeast-1`.
+        # The workspace ID, which is used to isolate notification policy resources for different business workspaces. Example: `default-cms-xxxx-cn-hangzhou`.
         # 
         # This parameter is required.
         self.workspace = workspace

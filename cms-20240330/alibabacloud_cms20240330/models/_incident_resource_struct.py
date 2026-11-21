@@ -18,11 +18,11 @@ class IncidentResourceStruct(DaraModel):
     ):
         # The description.
         self.description = description
-        # The event ID.
+        # The incident ID.
         self.incident_id = incident_id
-        # The unique ID of the resource in the event.
+        # The unique ID of the resource in the incident.
         self.incident_resource_id = incident_resource_id
-        # The details object for the event resource.
+        # The incident resource details object.
         self.resource = resource
         # The source.
         self.source = source

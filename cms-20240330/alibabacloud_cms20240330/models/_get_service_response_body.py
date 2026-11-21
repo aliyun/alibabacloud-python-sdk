@@ -13,7 +13,7 @@ class GetServiceResponseBody(DaraModel):
         request_id: str = None,
         service: main_models.GetServiceResponseBodyService = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The service object.
         self.service = service
@@ -71,23 +71,23 @@ class GetServiceResponseBodyService(DaraModel):
         self.description = description
         # The display name. This parameter is valid only when serviceType is set to RUM.
         self.display_name = display_name
-        # The ARMS application ID for backward compatibility.
+        # The legacy ARMS application ID for backward compatibility.
         self.pid = pid
         # The region ID.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The service ID.
+        # The ID of the service.
         self.service_id = service_id
         # The service name.
         self.service_name = service_name
-        # The service status. This parameter is valid only when serviceType is set to RUM.
+        # The status of the service. This parameter is valid only when serviceType is set to RUM.
         self.service_status = service_status
-        # The service type.
+        # The type of the service.
         self.service_type = service_type
-        # The tags.
+        # The array of tags.
         self.tags = tags
-        # The workspace name.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):
@@ -196,9 +196,9 @@ class GetServiceResponseBodyServiceTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

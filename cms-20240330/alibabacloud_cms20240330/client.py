@@ -1977,8 +1977,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateEntityStoreResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'CreateEntityStore',
@@ -2004,8 +2008,12 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateEntityStoreResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         req = open_api_util_models.OpenApiRequest(
-            headers = headers
+            headers = headers,
+            query = Utils.query(query)
         )
         params = open_api_util_models.Params(
             action = 'CreateEntityStore',
@@ -3455,11 +3463,15 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateUmodelResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -3486,11 +3498,15 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateUmodelResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6308,6 +6324,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.domain):
             query['domain'] = request.domain
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.kind):
             query['kind'] = request.kind
         if not DaraCore.is_null(request.name):
@@ -6343,6 +6361,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.domain):
             query['domain'] = request.domain
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.kind):
             query['kind'] = request.kind
         if not DaraCore.is_null(request.name):
@@ -14933,6 +14953,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.PutWorkspaceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
@@ -14946,6 +14969,7 @@ class Client(OpenApiClient):
             body['tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -14972,6 +14996,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.PutWorkspaceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
         body = {}
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
@@ -14985,6 +15012,7 @@ class Client(OpenApiClient):
             body['tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -18502,6 +18530,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpsertUmodelCommonSchemaRefResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.group):
             query['group'] = request.group
         if not DaraCore.is_null(request.version):
@@ -18535,6 +18565,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpsertUmodelCommonSchemaRefResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.group):
             query['group'] = request.group
         if not DaraCore.is_null(request.version):
@@ -18586,6 +18618,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpsertUmodelDataResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.method):
             query['method'] = request.method
         body = {}
@@ -18621,6 +18655,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpsertUmodelDataResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.method):
             query['method'] = request.method
         body = {}

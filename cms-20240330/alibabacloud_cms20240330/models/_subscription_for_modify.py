@@ -25,11 +25,13 @@ class SubscriptionForModify(DaraModel):
         self.description = description
         # The filter settings.
         self.filter_setting = filter_setting
-        # The UUID of the notification strategy.
+        # The notification policy UUID.
         self.notify_strategy_id = notify_strategy_id
         # The push settings.
         self.pushing_setting = pushing_setting
-        # Specifies whether to subscribe to legacy product events (CMS 1.0, ARMS, or SLS events where workspace is null). Valid values: true: Subscribe. false or null: Do not subscribe.
+        # Specifies whether to subscribe to legacy product events (CloudMonitor 1.0, ARMS, or SLS events where workspace is null). Valid values:
+        # - true: Subscribes to the events.
+        # - false or null: Does not subscribe to the events.
         self.subscribe_legacy_event = subscribe_legacy_event
         # The name.
         # 
@@ -119,13 +121,13 @@ class SubscriptionForModifyPushingSetting(DaraModel):
         restore_action_ids: List[str] = None,
         template_uuid: str = None,
     ):
-        # The list of action plan IDs for alert push.
+        # The list of alert push action plan IDs.
         self.alert_action_ids = alert_action_ids
         # The action plan ID.
         self.response_plan_id = response_plan_id
-        # The list of action integration plan IDs for recovery push.
+        # The list of action integration plan IDs.
         self.restore_action_ids = restore_action_ids
-        # The UUID of the template.
+        # The template UUID.
         self.template_uuid = template_uuid
 
     def validate(self):

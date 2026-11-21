@@ -17,11 +17,11 @@ class ListAlertWebhooksShrinkRequest(DaraModel):
         self.name = name
         # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The unique ID of the webhook.
+        # The unique identifiers of the webhooks.
         self.webhook_ids_shrink = webhook_ids_shrink
-        # The workspace name.
+        # The name of the workspace.
         self.workspace = workspace
 
     def validate(self):

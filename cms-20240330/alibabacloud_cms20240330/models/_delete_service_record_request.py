@@ -10,7 +10,7 @@ class DeleteServiceRecordRequest(DaraModel):
         record_type: str = None,
     ):
         # The type of the association entry. Valid values:
-        # logCorrelation: application log association
+        # - logCorrelation: application log association
         # 
         # This parameter is required.
         self.record_type = record_type

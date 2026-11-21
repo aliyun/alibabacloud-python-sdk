@@ -16,11 +16,11 @@ class ListServiceRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of entries returned.
+        # The maximum number of results returned.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The list of operation records.
+        # The list of ticket operation records.
         self.records = records
         # Id of the request
         self.request_id = request_id
@@ -88,10 +88,9 @@ class ListServiceRecordsResponseBodyRecords(DaraModel):
         service_name: str = None,
         workspace: str = None,
     ):
-        # The entry content in JSON string format. The format varies depending on the recordType.
+        # The content of the entry in JSON string format. The format varies based on the recordType.
         self.record_content = record_content
-        # The type of the linked entry. Currently supported:
-        # logCorrelation, which indicates application log association.
+        # The type of the association entry. Valid values: logCorrelation: application log association.
         self.record_type = record_type
         # The unique identifier of the service.
         self.service_id = service_id

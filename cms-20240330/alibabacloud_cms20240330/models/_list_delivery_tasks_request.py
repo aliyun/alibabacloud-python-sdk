@@ -20,7 +20,7 @@ class ListDeliveryTasksRequest(DaraModel):
         self.key_words = key_words
         # The maximum number of entries to return per page. Default value: 20. Maximum value: 100.
         self.max_results = max_results
-        # The pagination token. Do not specify this parameter for the first request. For subsequent requests, specify the nextToken value returned from the previous request.
+        # The pagination token. Do not specify this parameter for the first request. For subsequent requests, specify the nextToken value returned in the previous response.
         self.next_token = next_token
         # The ID of the resource group.
         self.resource_group_id = resource_group_id

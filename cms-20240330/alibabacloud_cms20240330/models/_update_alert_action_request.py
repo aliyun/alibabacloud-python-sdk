@@ -21,7 +21,7 @@ class UpdateAlertActionRequest(DaraModel):
         type: str = None,
         webhook_param: main_models.UpdateAlertActionRequestWebhookParam = None,
     ):
-        # The name of the action integration.
+        # The name of the alert action integration.
         self.alert_action_name = alert_action_name
         # The event bus parameters.
         self.eb_param = eb_param
@@ -31,13 +31,13 @@ class UpdateAlertActionRequest(DaraModel):
         self.fc_3param = fc_3param
         # The Function Compute parameters.
         self.fc_param = fc_param
-        # The Simple Message Queue (formerly MNS) parameters.
+        # The Simple Message Queue (formerly MNS) (MSMQ) parameters.
         self.mns_param = mns_param
         # The PagerDuty parameters.
         self.pager_duty_param = pager_duty_param
         # The Simple Log Service parameters.
         self.sls_param = sls_param
-        # The action integration type.
+        # The alert action integration type.
         self.type = type
         # The webhook parameters.
         self.webhook_param = webhook_param
@@ -153,7 +153,7 @@ class UpdateAlertActionRequestWebhookParam(DaraModel):
         self.headers = headers
         # The webhook request method.
         self.method = method
-        # The URL for the alert callback.
+        # The URL of the alert callback.
         self.url = url
 
     def validate(self):
@@ -284,7 +284,7 @@ class UpdateAlertActionRequestMnsParam(DaraModel):
         name: str = None,
         region_id: str = None,
     ):
-        # The Simple Message Queue (formerly MNS) resource type.
+        # The resource type of Simple Message Queue (formerly MNS) (MSMQ).
         self.mns_type = mns_type
         # The resource name.
         # 

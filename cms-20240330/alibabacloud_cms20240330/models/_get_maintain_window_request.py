@@ -9,7 +9,7 @@ class GetMaintainWindowRequest(DaraModel):
         self,
         workspace: str = None,
     ):
-        # The workspace name. This parameter is required by the backend and is used to isolate silence policy resources across different business spaces.
+        # The name of the workspace. This parameter is required by the backend and is used to isolate silence policy resources across different business workspaces.
         self.workspace = workspace
 
     def validate(self):

@@ -15,7 +15,7 @@ class GetPrometheusInstanceResponseBody(DaraModel):
     ):
         # The Prometheus instance details.
         self.prometheus_instance = prometheus_instance
-        # The unique identifier of the request.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -92,27 +92,28 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         version: str = None,
         workspace: str = None,
     ):
-        # The access type. Valid values: readWrite, readOnly, and httpReadOnly.
+        # The access type. Valid values:
+        # readWrite, readOnly, httpReadOnly
         self.access_type = access_type
-        # The number of days to automatically archive data after the storage expires. A value of 0 indicates that data is not archived. A value of 3650 indicates permanent retention.
+        # The number of days to automatically archive and retain data after the storage expires. A value of 0 indicates that data is not archived, and a value of 3650 indicates permanent retention.
         self.archive_duration = archive_duration
-        # The auth-free read policy. IP CIDR blocks and VPC IDs are supported.
+        # The authentication-free read policy. IP CIDR blocks and VPC IDs are supported.
         self.auth_free_read_policy = auth_free_read_policy
-        # The auth-free write policy. IP CIDR blocks and VPC IDs are supported.
+        # The authentication-free write policy. IP CIDR blocks and VPC IDs are supported.
         self.auth_free_write_policy = auth_free_write_policy
-        # The auth token.
+        # The authentication token string.
         self.auth_token = auth_token
         # The time when the instance was created. The time is displayed in UTC+0 in the yyyy-MM-ddTHH:mmZ format.
         self.create_time = create_time
-        # Specifies whether auth-free read is enabled.
+        # Specifies whether authentication-free read is enabled.
         self.enable_auth_free_read = enable_auth_free_read
-        # Specifies whether auth-free write is enabled.
+        # Specifies whether authentication-free write is enabled.
         self.enable_auth_free_write = enable_auth_free_write
         # Specifies whether the authentication token is enabled.
         self.enable_auth_token = enable_auth_token
         # The extended information.
         self.extra_info = extra_info
-        # The URL of the dashboard folder.
+        # The URL of the visualization dashboard directory.
         self.folder_url = folder_url
         # The instance ID of the attached managed Grafana instance.
         self.grafana_instance_id = grafana_instance_id
@@ -127,10 +128,10 @@ class GetPrometheusInstanceResponseBodyPrometheusInstance(DaraModel):
         # The Prometheus instance type.
         self.instance_type = instance_type
         # The billing method. Valid values:
-        # - POSTPAY: Pay-as-you-go based on the volume of reported metrics.
-        # - POSTPAY_GB: Pay-as-you-go based on the volume of written metrics.
+        # POSTPAY: Pay-as-you-go based on the number of reported metrics.
+        # POSTPAY_GB: Pay-as-you-go based on the volume of written metrics.
         self.payment_type = payment_type
-        # The time when the billing method of the instance was updated (UTC format).
+        # The time when the billing method of the instance was updated. The time is in UTC format.
         self.payment_type_update_time = payment_type_update_time
         # The product to which the Prometheus instance belongs, such as ARMS or CMS.
         self.product = product

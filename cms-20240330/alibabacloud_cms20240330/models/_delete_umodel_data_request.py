@@ -8,14 +8,20 @@ class DeleteUmodelDataRequest(DaraModel):
     def __init__(
         self,
         domain: str = None,
+        dry_run: bool = None,
         kind: str = None,
         name: str = None,
     ):
-        # The name of the Umodel data to delete. Omit this parameter to delete all Umodel data.
+        # The name of the specific Umodel data. If you do not specify this parameter, all Umodel data is included.
         self.domain = domain
-        # The kind of the Umodel data. If unspecified, data of all kinds is deleted.
+        # Specifies whether to perform a dry run of the request. Valid values:
+        # - true: sends a check request and does not perform actual changes.
+        # - false: sends a normal request.
+        # Default value: false.
+        self.dry_run = dry_run
+        # The kind of the specific Umodel data. If you do not specify this parameter, all kinds are included.
         self.kind = kind
-        # The name of the Umodel data. If unspecified, data with any name is deleted.
+        # The name of the specific Umodel data. If you do not specify this parameter, all Umodel data is included.
         self.name = name
 
     def validate(self):
@@ -29,6 +35,9 @@ class DeleteUmodelDataRequest(DaraModel):
         if self.domain is not None:
             result['domain'] = self.domain
 
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+
         if self.kind is not None:
             result['kind'] = self.kind
 
@@ -41,6 +50,9 @@ class DeleteUmodelDataRequest(DaraModel):
         m = m or dict()
         if m.get('domain') is not None:
             self.domain = m.get('domain')
+
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
 
         if m.get('kind') is not None:
             self.kind = m.get('kind')

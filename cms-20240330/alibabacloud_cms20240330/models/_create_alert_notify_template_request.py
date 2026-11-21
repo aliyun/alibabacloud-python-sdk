@@ -19,11 +19,11 @@ class CreateAlertNotifyTemplateRequest(DaraModel):
         self.alert_notify_template_id = alert_notify_template_id
         # The name of the notification template.
         self.alert_notify_template_name = alert_notify_template_name
-        # The template syntax type. Currently, only Go is supported. Templates in the title and content fields use the Go template syntax.
+        # The syntax type of the template. Currently, only Go is supported. The templates in the title and content fields use the Go template syntax.
         self.program_lang = program_lang
-        # The multilingual notification templates. The key is the language code: zh for Chinese and en for English. The value is the template configuration object for the specified language. When a notification is sent, the corresponding template is selected based on the recipient\\"s language. The content format varies by type: Markdown for DING, WEIXIN, and FEISHU; HTML for EMAIL; plain text for SMS, CALL, and SLACK; and JSON for CUSTOM.
+        # The multilingual notification templates. The key is the language code: zh for Chinese and en for English. The value is the template configuration object for the specified language. When a notification is sent, the corresponding template is selected based on the recipient\\"s language. The content format varies by type. Markdown for DING, WEIXIN, and FEISHU. HTML for EMAIL. Plain text for SMS, CALL, and SLACK. JSON for CUSTOM.
         self.templates = templates
-        # The notification channel type. Valid values:
+        # The type of the notification channel. Valid values:
         # - DING
         # - WEIXIN
         # - FEISHU

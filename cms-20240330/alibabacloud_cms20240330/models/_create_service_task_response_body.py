@@ -12,7 +12,7 @@ class CreateServiceTaskResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The ID of the created task. Use this ID for subsequent query or deletion operations.
+        # The ID of the created task. You can use this ID for subsequent queries or deletions.
         self.task_id = task_id
 
     def validate(self):

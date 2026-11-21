@@ -99,7 +99,7 @@ class AddContextsRequestItems(DaraModel):
         self.experience = experience
         # The expiration date.
         self.expiration_date = expiration_date
-        # The mutability.
+        # The immutable attribute.
         self.immutable = immutable
         # The inference.
         self.infer = infer

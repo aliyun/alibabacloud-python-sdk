@@ -10,11 +10,11 @@ class GetIntegrationVersionForCSRequest(DaraModel):
         cluster_id: str = None,
         cluster_type: str = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # The type of the cluster. Valid values: acs.ack.cluster and acs.asi.cluster.
+        # The cluster type. Valid values: acs.ack.cluster and acs.asi.cluster.
         # 
         # This parameter is required.
         self.cluster_type = cluster_type

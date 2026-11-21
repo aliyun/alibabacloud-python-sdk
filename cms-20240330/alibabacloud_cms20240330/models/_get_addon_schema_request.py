@@ -12,13 +12,13 @@ class GetAddonSchemaRequest(DaraModel):
         environment_type: str = None,
         version: str = None,
     ):
-        # The language environment. Default value: zh. Valid values: zh, en.
+        # The language. Default value: zh. Valid values: zh, en.
         self.aliyun_lang = aliyun_lang
         # The add-on catalog version. Valid values: v1, v2.
         self.api_version = api_version
-        # The environment type. Valid values: CS (container), ECS.
+        # The environment type. Valid values: CS, ECS.
         self.environment_type = environment_type
-        # The component version.
+        # The add-on version.
         self.version = version
 
     def validate(self):

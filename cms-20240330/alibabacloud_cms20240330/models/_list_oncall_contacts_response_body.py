@@ -14,7 +14,7 @@ class ListOncallContactsResponseBody(DaraModel):
     ):
         # The IDs of the contacts.
         self.contact_ids = contact_ids
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

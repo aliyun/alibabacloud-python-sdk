@@ -22,7 +22,7 @@ class UpdatePipelineRequest(DaraModel):
         self.execute_policy = execute_policy
         # The pipeline configuration.
         self.pipeline = pipeline
-        # The data sink.
+        # The sink.
         self.sink = sink
         # The data source.
         self.source = source
@@ -166,7 +166,7 @@ class UpdatePipelineRequestSink(DaraModel):
     ):
         # The dataset.
         self.dataset = dataset
-        # The data sink type.
+        # The sink type.
         self.type = type
 
     def validate(self):
@@ -325,7 +325,7 @@ class UpdatePipelineRequestExecutePolicy(DaraModel):
     ):
         # The execution mode.
         self.mode = mode
-        # The configuration for one-time execution.
+        # The configuration for a single execution.
         self.run_once = run_once
         # The configuration for scheduled execution.
         self.scheduled = scheduled

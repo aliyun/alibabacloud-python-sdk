@@ -12,16 +12,15 @@ class ListServiceRecordsRequest(DaraModel):
         record_type: str = None,
         search: str = None,
     ):
-        # The maximum number of entries to return. Maximum value: 200.
+        # The maximum number of results to return. Maximum value: 200.
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The type of the linked entry. Currently supported:
-        # logCorrelation, which indicates application log association.
+        # The type of the association entry. Valid values: logCorrelation: application log association.
         # 
         # This parameter is required.
         self.record_type = record_type
-        # The filter information for service-linked entries.
+        # The filter information for service association entries.
         self.search = search
 
     def validate(self):

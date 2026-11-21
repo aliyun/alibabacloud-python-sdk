@@ -19,7 +19,7 @@ class UpdateOncallScheduleRequest(DaraModel):
         self.oncall_schedule_name = oncall_schedule_name
         # The list of rotations.
         self.rotations = rotations
-        # The ID of the shift reminder bot.
+        # The ID of the shift reminder chatbot.
         self.shift_robot_id = shift_robot_id
         # The list of substitution rules.
         self.substitudes = substitudes
@@ -91,7 +91,7 @@ class UpdateOncallScheduleRequestSubstitudes(DaraModel):
         self.contact_id = contact_id
         # The end time of the substitution. Format: YYYY-MM-DD HH:mm.
         self.end_time = end_time
-        # The contact ID of the replaced person.
+        # The contact ID of the replaced contact.
         self.replaced_contact_id = replaced_contact_id
         # The start time of the substitution. Format: YYYY-MM-DD HH:mm.
         self.start_time = start_time
@@ -147,11 +147,11 @@ class UpdateOncallScheduleRequestRotations(DaraModel):
         start_date: str = None,
         time_zone: str = None,
     ):
-        # The days of the week when the rotation takes effect.
+        # The days of the week when the rotation is active.
         # 
         # This parameter is required.
         self.active_days = active_days
-        # The IDs of the contacts.
+        # The contact ID.
         # 
         # This parameter is required.
         self.contacts = contacts
@@ -167,9 +167,9 @@ class UpdateOncallScheduleRequestRotations(DaraModel):
         # 
         # This parameter is required.
         self.rotation_start_time = rotation_start_time
-        # The length of the shift recurrence cycle. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 3 days.
+        # The length of the shift recurrence cycle. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call contact every 3 days.
         self.shift_length = shift_length
-        # The unit of the shift recurrence frequency. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call person every 1 week.
+        # The unit of the shift recurrence cycle. Used in conjunction with shiftRecurrenceFrequency. For example, rotate to the next on-call contact every week.
         # 
         # This parameter is required.
         self.shift_recurrence_frequency = shift_recurrence_frequency
@@ -177,7 +177,7 @@ class UpdateOncallScheduleRequestRotations(DaraModel):
         # 
         # This parameter is required.
         self.start_date = start_date
-        # The time zone name, which uses the IANA Time Zone Database standard. Example: Asia/Shanghai.
+        # The name of the time zone based on the IANA Time Zone Database standard. Example: Asia/Shanghai.
         # 
         # This parameter is required.
         self.time_zone = time_zone

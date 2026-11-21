@@ -16,7 +16,7 @@ class FilterSetting(DaraModel):
     ):
         # The subscription conditions.
         self.conditions = conditions
-        # Use either expression or relation. If expression is not empty, it takes precedence and relation is ignored. If expression is empty or not specified, relation (AND or OR) is used to perform a simple AND/OR operation on all conditions. Condition numbers correspond to the indexes of the conditions array (starting from 1). Each condition evaluates whether a single event field matches by using field (the event field path, which supports dot-notation nesting such as resource.tags.pod), op (the operator, such as CONTAIN, EQ, or IN), and value (the matching value).
+        # The expression. Specify either expression or relation. If expression is not empty, it takes precedence and relation is ignored. If expression is empty or not specified, relation (AND or OR) is used to perform a simple logical AND or OR operation on all conditions. The condition number corresponds to the index of the conditions array, starting from 1. Each condition evaluates whether a single event field matches based on field (the event field path, which supports dot notation for nested fields such as resource.tags.pod), op (the operator, such as CONTAIN, EQ, or IN), and value (the matching value).
         self.expression = expression
         # The logical relationship between conditions. This parameter takes effect when expression is empty.
         self.relation = relation
@@ -68,11 +68,11 @@ class FilterSettingConditions(DaraModel):
         op: str = None,
         value: str = None,
     ):
-        # The JSON path of the event field. Dot-notation nesting is supported.
+        # The JSON path of the event field, which supports dot notation for nested fields.
         self.field = field
         # The comparison operator.
         self.op = op
-        # The matching value. Separate multiple values with commas when using IN or NOT_IN.
+        # The matching value. Separate multiple values with commas when the operator is IN or NOT_IN.
         self.value = value
 
     def validate(self):

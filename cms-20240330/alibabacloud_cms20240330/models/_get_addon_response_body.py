@@ -13,7 +13,7 @@ class GetAddonResponseBody(DaraModel):
         data: main_models.GetAddonResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data list corresponding to the request header.
+        # The list of data corresponding to the request.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -222,11 +222,11 @@ class GetAddonResponseBodyDataEnvironments(DaraModel):
     ):
         # The list of associated common schemas.
         self.common_schema_refs = common_schema_refs
-        # The additional dependency files.
+        # The additional dependencies.
         self.dependencies = dependencies
         # The description.
         self.description = description
-        # Specifies whether the environment is enabled.
+        # Indicates whether the environment is enabled.
         self.enable = enable
         # The display name of the environment.
         self.label = label
@@ -332,7 +332,7 @@ class GetAddonResponseBodyDataEnvironmentsPolicies(DaraModel):
         self.enable_service_account = enable_service_account
         # The metric check rule.
         self.metric_check_rule = metric_check_rule
-        # Specifies whether the pod restart guide is triggered immediately after the add-on is installed during integration.
+        # Specifies whether to initiate a pod restart guide immediately after the add-on is installed during integration.
         self.need_restart_after_integration = need_restart_after_integration
         # The protocols.
         self.protocols = protocols
@@ -466,7 +466,7 @@ class GetAddonResponseBodyDataEnvironmentsPoliciesMetricCheckRule(DaraModel):
         self,
         prom_ql: List[str] = None,
     ):
-        # The data check rule after installation.
+        # The data check rule applied after installation.
         self.prom_ql = prom_ql
 
     def validate(self):

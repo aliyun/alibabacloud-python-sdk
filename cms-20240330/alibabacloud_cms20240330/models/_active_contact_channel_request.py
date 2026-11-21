@@ -12,7 +12,7 @@ class ActiveContactChannelRequest(DaraModel):
     ):
         # The activation verification code. The system sends this 32-character string to the mobile phone number or email address of the contact.
         self.code = code
-        # The site. Valid values: cn_hangzhou (China site) and ap_southeast_1 (International site). Default value: cn_hangzhou.
+        # The site. Valid values: cn_hangzhou (Alibaba Cloud China Website) and ap_southeast_1 (Alibaba Cloud International Website). Default value: cn_hangzhou.
         self.site = site
 
     def validate(self):

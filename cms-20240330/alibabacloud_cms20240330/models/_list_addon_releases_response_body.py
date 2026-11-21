@@ -15,13 +15,13 @@ class ListAddonReleasesResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The token for the next page.
+        # The token used to query the next page.
         self.next_token = next_token
-        # The collection of integrated component information.
+        # The collection of onboarded component information.
         self.releases = releases
         # The request ID.
         self.request_id = request_id
-        # The number of components.
+        # The total number of components.
         self.total = total
 
     def validate(self):
@@ -108,11 +108,11 @@ class ListAddonReleasesResponseBodyReleases(DaraModel):
         self.alert_rule_count = alert_rule_count
         # The version number.
         self.api_version = api_version
-        # The installation phase information.
+        # The installation phase conditions.
         self.conditions = conditions
         # The configuration information of the component.
         self.config = config
-        # The integration time.
+        # The onboarding time.
         self.create_time = create_time
         # The number of dashboards.
         self.dashboard_count = dashboard_count
@@ -122,15 +122,15 @@ class ListAddonReleasesResponseBodyReleases(DaraModel):
         self.env_type = env_type
         # The ID of the environment.
         self.environment_id = environment_id
-        # The number of plugins.
+        # The number of plug-ins.
         self.exporter_count = exporter_count
-        # Indicates whether configurations exist.
+        # Indicates whether a configuration exists.
         self.have_config = have_config
-        # The ID of the integration user.
+        # The ID of the onboarding user.
         self.install_user_id = install_user_id
         # The language.
         self.language = language
-        # Indicates whether the component is a managed component.
+        # Indicates whether the component is managed.
         self.managed = managed
         # The starting version number of the remaining list.
         self.next_version = next_version
@@ -152,7 +152,7 @@ class ListAddonReleasesResponseBodyReleases(DaraModel):
         self.sub_addon_release = sub_addon_release
         # The update time.
         self.update_time = update_time
-        # The ID of the owner user.
+        # The ID of the associated user.
         self.user_id = user_id
         # The version of the component.
         self.version = version
@@ -363,7 +363,7 @@ class ListAddonReleasesResponseBodyReleasesSubAddonRelease(DaraModel):
     ):
         # The number of ready sub-releases.
         self.ready = ready
-        # The number of sub-releases.
+        # The total number of sub-releases.
         self.total = total
 
     def validate(self):

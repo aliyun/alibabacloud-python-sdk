@@ -29,9 +29,9 @@ class SearchMemoriesRequest(DaraModel):
         self.filters = filters
         # The query content.
         self.query = query
-        # The reranking option.
+        # Specifies whether to rerank.
         self.rerank = rerank
-        # The retrieval option.
+        # The retrieval options.
         self.retrieval_option = retrieval_option
         # The run ID.
         self.run_id = run_id

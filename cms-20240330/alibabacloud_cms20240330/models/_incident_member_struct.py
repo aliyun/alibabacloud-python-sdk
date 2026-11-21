@@ -20,17 +20,17 @@ class IncidentMemberStruct(DaraModel):
         time: int = None,
         user_id: int = None,
     ):
-        # The structure of the confirmation information.
+        # The acknowledgment information struct.
         self.acknowledge = acknowledge
-        # The ID of the contact.
+        # The contact ID.
         self.contact_id = contact_id
-        # A list of contacts.
+        # The contact list.
         self.contacts = contacts
-        # Information about the escalation stage.
+        # The escalation stage information.
         self.escalation = escalation
-        # The ID of the event.
+        # The incident ID.
         self.incident_id = incident_id
-        # The ID of the event member.
+        # The incident member ID.
         self.incident_member_id = incident_member_id
         # The scheduling group.
         self.schedule_group = schedule_group
@@ -130,7 +130,7 @@ class IncidentMemberStructScheduleGroup(DaraModel):
         contact_id: str = None,
         name: str = None,
     ):
-        # The ID of the contact.
+        # The contact ID.
         self.contact_id = contact_id
         # The name.
         self.name = name
@@ -172,11 +172,11 @@ class IncidentMemberStructEscalation(DaraModel):
     ):
         # The description.
         self.description = description
-        # The ID of the event escalation.
+        # The incident escalation ID.
         self.incident_escalation_id = incident_escalation_id
         # The name.
         self.name = name
-        # The index of the escalation stage.
+        # The escalation stage index.
         self.stage_index = stage_index
         # The title.
         self.title = title
@@ -233,7 +233,7 @@ class IncidentMemberStructContacts(DaraModel):
     ):
         # The channel.
         self.channel = channel
-        # The masked ID of the contact.
+        # The contact ID (masked).
         self.contact_mask = contact_mask
 
     def validate(self):
@@ -268,7 +268,7 @@ class IncidentMemberStructAcknowledge(DaraModel):
         break_level: str = None,
         verify_time: int = None,
     ):
-        # The confirmation level.
+        # The acknowledgment level.
         self.break_level = break_level
         # The verification time.
         self.verify_time = verify_time

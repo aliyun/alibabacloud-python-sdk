@@ -29,7 +29,7 @@ class ListWorkspacesShrinkRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The tags.
         self.tags_shrink = tags_shrink
-        # The workspace name. Fuzzy match is supported.
+        # The name of the workspace. Fuzzy match is supported.
         self.workspace_name = workspace_name
         # The names of the workspaces. Exact match is supported.
         self.workspace_name_list_shrink = workspace_name_list_shrink

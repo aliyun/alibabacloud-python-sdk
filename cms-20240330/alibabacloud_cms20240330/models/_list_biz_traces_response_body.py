@@ -18,13 +18,13 @@ class ListBizTracesResponseBody(DaraModel):
     ):
         # The list of business links.
         self.items = items
-        # The maximum number of results to return. Maximum value: 100.
+        # The maximum number of results to return. The maximum value is 100.
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of items.
         self.total_count = total_count
 
     def validate(self):
