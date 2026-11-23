@@ -13,9 +13,13 @@ class GetQwenEduApiActivationStatusResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The API status or POP error code.
         self.code = code
+        # The activation result.
         self.data = data
+        # The request error message.
         self.message = message
+        # The **POP request ID**. This field is not returned if signature verification or identity authentication fails.
         self.request_id = request_id
 
     def validate(self):
@@ -65,8 +69,14 @@ class GetQwenEduApiActivationStatusResponseBodyData(DaraModel):
         fail_message: str = None,
         status: str = None,
     ):
+        # The **failure code**. For more information, see 3.4.
         self.fail_code = fail_code
+        # The **failure description**.
         self.fail_message = fail_message
+        # The activation status. Valid values:
+        # - ACTIVE: Activated.
+        # - ACTIVATING: Activating.
+        # - FAILED: Activation failed.
         self.status = status
 
     def validate(self):

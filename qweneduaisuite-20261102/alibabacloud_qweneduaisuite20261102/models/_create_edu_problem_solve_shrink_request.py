@@ -10,8 +10,9 @@ class CreateEduProblemSolveShrinkRequest(DaraModel):
         query_shrink: str = None,
         request_id: str = None,
     ):
-        # This parameter is required.
+        # **The question image container.**
         self.query_shrink = query_shrink
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

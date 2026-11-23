@@ -15,9 +15,13 @@ class GetEduHomeworkCorrectionResultResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The API status.
         self.code = code
+        # The business data. This field is usually empty when the task fails.
         self.data = data
+        # The request error message.
         self.message = message
+        # The request ID, which can be used for troubleshooting.
         self.request_id = request_id
 
     def validate(self):
@@ -69,10 +73,15 @@ class GetEduHomeworkCorrectionResultResponseBodyData(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The rotation angle of the image in the clockwise direction, in degrees.
         self.angle = angle
+        # The URL of the dewarped image. If dewarp is set to false, the URL of the original image is returned.
         self.dewarp_url = dewarp_url
+        # The array of question recognition and grading results. For more information, see the following table.
         self.question_results = question_results
+        # The task status.
         self.status = status
+        # The unique identifier of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -138,12 +147,22 @@ class GetEduHomeworkCorrectionResultResponseBodyDataQuestionResults(DaraModel):
         question_type: str = None,
         solution: str = None,
     ):
+        # The array of answering and grading results for the question. For more information, see the following table.
         self.answer_results = answer_results
+        # Indicates whether the task is finished:
+        # 
+        # - **true**: The task is finished.
+        # - **false**: The task is not finished.
         self.finish = finish
+        # The text content of the question.
         self.question_content = question_content
+        # The question ID.
         self.question_id = question_id
+        # The coordinate group of the question area. It generally contains four vertex coordinate values, arranged in the order of top-left, top-right, bottom-right, and bottom-left.
         self.question_points = question_points
+        # The question type.
         self.question_type = question_type
+        # The question analysis or solution.
         self.solution = solution
 
     def validate(self):
@@ -232,7 +251,9 @@ class GetEduHomeworkCorrectionResultResponseBodyDataQuestionResultsQuestionPoint
         x: int = None,
         y: int = None,
     ):
+        # The X-axis coordinate value.
         self.x = x
+        # The Y-axis coordinate value.
         self.y = y
 
     def validate(self):
@@ -270,10 +291,15 @@ class GetEduHomeworkCorrectionResultResponseBodyDataQuestionResultsAnswerResults
         standard_answer: str = None,
         user_answer: str = None,
     ):
+        # The coordinate group of the user\\"s answering area. It generally contains four vertex coordinate values, arranged in the order of top-left, top-right, bottom-right, and bottom-left, such as `[{"x": ..., "y": ...}, ...]`.
         self.answer_points = answer_points
+        # The coordinates of the grading mark point, such as `{ "x": ..., "y": ... }`.
         self.check_point = check_point
+        # The grading conclusion, such as `correct`, `wrong`, or `partial`.
         self.check_result = check_result
+        # The ground truth.
         self.standard_answer = standard_answer
+        # The student\\"s answer.
         self.user_answer = user_answer
 
     def validate(self):
@@ -337,7 +363,9 @@ class GetEduHomeworkCorrectionResultResponseBodyDataQuestionResultsAnswerResults
         x: int = None,
         y: int = None,
     ):
+        # The X-axis coordinate value.
         self.x = x
+        # The Y-axis coordinate value.
         self.y = y
 
     def validate(self):
@@ -372,7 +400,9 @@ class GetEduHomeworkCorrectionResultResponseBodyDataQuestionResultsAnswerResults
         x: int = None,
         y: int = None,
     ):
+        # The X-axis coordinate value.
         self.x = x
+        # The Y-axis coordinate value.
         self.y = y
 
     def validate(self):

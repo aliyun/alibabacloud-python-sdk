@@ -11,8 +11,9 @@ class CreateEduProblemSolveRequest(DaraModel):
         query: main_models.CreateEduProblemSolveRequestQuery = None,
         request_id: str = None,
     ):
-        # This parameter is required.
+        # **The question image container.**
         self.query = query
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -48,6 +49,7 @@ class CreateEduProblemSolveRequestQuery(DaraModel):
         self,
         image: main_models.CreateEduProblemSolveRequestQueryImage = None,
     ):
+        # **The image information.**
         self.image = image
 
     def validate(self):
@@ -79,9 +81,13 @@ class CreateEduProblemSolveRequestQueryImage(DaraModel):
         format: str = None,
         url: str = None,
     ):
+        # **The Base64-encoded image**. If both this parameter and the URL are provided, this parameter takes precedence.
         self.base_64 = base_64
+        # **The image format**: jpg, jpeg, or png. The value must match the actual file format.
+        # 
         # This parameter is required.
         self.format = format
+        # The URL of a single question image.
         self.url = url
 
     def validate(self):

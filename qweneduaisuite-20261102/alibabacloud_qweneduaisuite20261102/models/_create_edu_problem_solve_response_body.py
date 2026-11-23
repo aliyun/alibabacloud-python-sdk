@@ -10,59 +10,32 @@ from darabonba.model import DaraModel
 class CreateEduProblemSolveResponseBody(DaraModel):
     def __init__(
         self,
-        data: main_models.CreateEduProblemSolveResponseBodyData = None,
-        event: str = None,
-    ):
-        self.data = data
-        self.event = event
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.data is not None:
-            result['data'] = self.data.to_map()
-
-        if self.event is not None:
-            result['event'] = self.event
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('data') is not None:
-            temp_model = main_models.CreateEduProblemSolveResponseBodyData()
-            self.data = temp_model.from_map(m.get('data'))
-
-        if m.get('event') is not None:
-            self.event = m.get('event')
-
-        return self
-
-class CreateEduProblemSolveResponseBodyData(DaraModel):
-    def __init__(
-        self,
         code: str = None,
         finished: bool = None,
-        items: List[main_models.CreateEduProblemSolveResponseBodyDataItems] = None,
+        items: List[main_models.CreateEduProblemSolveResponseBodyItems] = None,
         message: str = None,
         request_id: str = None,
         result_type: str = None,
         retryable: bool = None,
-        usage: main_models.CreateEduProblemSolveResponseBodyDataUsage = None,
+        usage: main_models.CreateEduProblemSolveResponseBodyUsage = None,
     ):
+        # The API data identifier.
         self.code = code
+        # Specifies whether this is the final full snapshot. The value is fixed to true in the complete event.
         self.finished = finished
+        # The current list of complete question results.
         self.items = items
+        # The actual response message of the request.
         self.message = message
+        # Echo request ID echoed from echo request.
         self.request_id = request_id
+        # The type of the question resolution result. Valid values:
+        # * single: Single question.
+        # * multiple: Multiple questions.
         self.result_type = result_type
+        # Specifies whether the error is retryable. Default value: true.
         self.retryable = retryable
+        # The token usage. Only the complete event carries the final value. The message event does not return this field.
         self.usage = usage
 
     def validate(self):
@@ -117,7 +90,7 @@ class CreateEduProblemSolveResponseBodyData(DaraModel):
         self.items = []
         if m.get('items') is not None:
             for k1 in m.get('items'):
-                temp_model = main_models.CreateEduProblemSolveResponseBodyDataItems()
+                temp_model = main_models.CreateEduProblemSolveResponseBodyItems()
                 self.items.append(temp_model.from_map(k1))
 
         if m.get('message') is not None:
@@ -133,18 +106,20 @@ class CreateEduProblemSolveResponseBodyData(DaraModel):
             self.retryable = m.get('retryable')
 
         if m.get('usage') is not None:
-            temp_model = main_models.CreateEduProblemSolveResponseBodyDataUsage()
+            temp_model = main_models.CreateEduProblemSolveResponseBodyUsage()
             self.usage = temp_model.from_map(m.get('usage'))
 
         return self
 
-class CreateEduProblemSolveResponseBodyDataUsage(DaraModel):
+class CreateEduProblemSolveResponseBodyUsage(DaraModel):
     def __init__(
         self,
         completion_tokens: int = None,
         prompt_tokens: int = None,
     ):
+        # The number of output tokens.
         self.completion_tokens = completion_tokens
+        # The number of input tokens.
         self.prompt_tokens = prompt_tokens
 
     def validate(self):
@@ -173,19 +148,26 @@ class CreateEduProblemSolveResponseBodyDataUsage(DaraModel):
 
         return self
 
-class CreateEduProblemSolveResponseBodyDataItems(DaraModel):
+class CreateEduProblemSolveResponseBodyItems(DaraModel):
     def __init__(
         self,
         content: str = None,
         image_url: str = None,
         question_id: str = None,
         status: str = None,
-        thinking: main_models.CreateEduProblemSolveResponseBodyDataItemsThinking = None,
+        thinking: main_models.CreateEduProblemSolveResponseBodyItemsThinking = None,
     ):
+        # The complete Markdown content of the question resolution, including the deduction process and the final result.
         self.content = content
+        # The URL of the unique image for the current question. The URL may be time-sensitive. If the question is not associated with an image resource and no request URL is available for fallback, an empty string is returned.
         self.image_url = image_url
+        # The question identifier. The value is the question title, such as Question 1. The server does not return a separate title field. If the downstream service does not provide a question title, which is always the case for single-question scenarios, titles such as Question 1 and Question 2 are generated in the order of the questions.
         self.question_id = question_id
+        # The current question status. Valid values:
+        # * processing: Processing.
+        # * complete: Complete.
         self.status = status
+        # The thinking process. This field is returned only when result_type is single, and is not returned for multiple questions.
         self.thinking = thinking
 
     def validate(self):
@@ -229,18 +211,22 @@ class CreateEduProblemSolveResponseBodyDataItems(DaraModel):
             self.status = m.get('status')
 
         if m.get('thinking') is not None:
-            temp_model = main_models.CreateEduProblemSolveResponseBodyDataItemsThinking()
+            temp_model = main_models.CreateEduProblemSolveResponseBodyItemsThinking()
             self.thinking = temp_model.from_map(m.get('thinking'))
 
         return self
 
-class CreateEduProblemSolveResponseBodyDataItemsThinking(DaraModel):
+class CreateEduProblemSolveResponseBodyItemsThinking(DaraModel):
     def __init__(
         self,
         content: str = None,
         status: str = None,
     ):
+        # The current thinking content.
         self.content = content
+        # The thinking status. Valid values:
+        # * processing: Processing.
+        # * complete: Complete.
         self.status = status
 
     def validate(self):

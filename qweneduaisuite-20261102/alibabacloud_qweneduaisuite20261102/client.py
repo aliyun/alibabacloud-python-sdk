@@ -26,7 +26,7 @@ class Client(OpenApiClient):
         self._product_id = 'QwenEduAiSuite'
         gateway_client = GatewayClientClient()
         self._spi = gateway_client
-        self._endpoint_rule = ''
+        self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('qweneduaisuite', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 

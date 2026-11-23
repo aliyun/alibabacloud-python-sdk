@@ -12,9 +12,13 @@ class CreateEduHomeworkCorrectSubmitRequest(DaraModel):
         image_url: str = None,
         request_id: str = None,
     ):
+        # Specifies whether to correct the image distortion. Default value: `true`. If you set this parameter to `false`, the image is not corrected, `dewarp_url` returns the original image, and the coordinates are based on `dewarp_url`.
         self.dewarp = dewarp
+        # The pure Base64-encoded string of the image, excluding the `data:` prefix and MIME declaration. The encoded size cannot exceed 15 MB. If both parameters are specified, `image_base64` takes precedence.
         self.image_base_64 = image_base_64
+        # The publicly accessible HTTP or HTTPS URL of the image. The server downloads the image from this URL.
         self.image_url = image_url
+        # The request ID on the caller side. Use a UUID for reconciliation and troubleshooting. If this parameter is not specified, the server generates a request ID and returns it in the response.
         self.request_id = request_id
 
     def validate(self):
