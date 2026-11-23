@@ -8,10 +8,12 @@ class MosCheckInRequest(DaraModel):
     def __init__(
         self,
         activity_id: str = None,
+        checkin_point: str = None,
         ext_param: str = None,
         qr_code: str = None,
     ):
         self.activity_id = activity_id
+        self.checkin_point = checkin_point
         self.ext_param = ext_param
         self.qr_code = qr_code
 
@@ -26,6 +28,9 @@ class MosCheckInRequest(DaraModel):
         if self.activity_id is not None:
             result['ActivityId'] = self.activity_id
 
+        if self.checkin_point is not None:
+            result['CheckinPoint'] = self.checkin_point
+
         if self.ext_param is not None:
             result['ExtParam'] = self.ext_param
 
@@ -38,6 +43,9 @@ class MosCheckInRequest(DaraModel):
         m = m or dict()
         if m.get('ActivityId') is not None:
             self.activity_id = m.get('ActivityId')
+
+        if m.get('CheckinPoint') is not None:
+            self.checkin_point = m.get('CheckinPoint')
 
         if m.get('ExtParam') is not None:
             self.ext_param = m.get('ExtParam')

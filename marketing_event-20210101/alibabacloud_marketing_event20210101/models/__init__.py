@@ -26,6 +26,9 @@ from ._find_guest_ticket_record_response import FindGuestTicketRecordResponse
 from ._mos_check_in_request import MosCheckInRequest
 from ._mos_check_in_response_body import MosCheckInResponseBody
 from ._mos_check_in_response import MosCheckInResponse
+from ._mos_query_registration_info_request import MosQueryRegistrationInfoRequest
+from ._mos_query_registration_info_response_body import MosQueryRegistrationInfoResponseBody
+from ._mos_query_registration_info_response import MosQueryRegistrationInfoResponse
 from ._query_all_activity_info_request import QueryAllActivityInfoRequest
 from ._query_all_activity_info_response_body import QueryAllActivityInfoResponseBody
 from ._query_all_activity_info_response import QueryAllActivityInfoResponse
@@ -62,6 +65,9 @@ from ._update_credentials_status_pop_response import UpdateCredentialsStatusPopR
 from ._update_ticket_record_byticket_code_pop_request import UpdateTicketRecordByticketCodePopRequest
 from ._update_ticket_record_byticket_code_pop_response_body import UpdateTicketRecordByticketCodePopResponseBody
 from ._update_ticket_record_byticket_code_pop_response import UpdateTicketRecordByticketCodePopResponse
+from ._verify_activity_admission_request import VerifyActivityAdmissionRequest
+from ._verify_activity_admission_response_body import VerifyActivityAdmissionResponseBody
+from ._verify_activity_admission_response import VerifyActivityAdmissionResponse
 from ._check_nfcbind_pop_response_body import CheckNFCBindPopResponseBodyData
 from ._find_guest_credentials_record_response_body import FindGuestCredentialsRecordResponseBodyDataChannelLevelInfoLevelOneOwner
 from ._find_guest_credentials_record_response_body import FindGuestCredentialsRecordResponseBodyDataChannelLevelInfoLevelThreeOwner
@@ -73,6 +79,9 @@ from ._find_guest_ticket_record_response_body import FindGuestTicketRecordRespon
 from ._find_guest_ticket_record_response_body import FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelTwoOwner
 from ._find_guest_ticket_record_response_body import FindGuestTicketRecordResponseBodyDataChannelLevelInfo
 from ._find_guest_ticket_record_response_body import FindGuestTicketRecordResponseBodyData
+from ._mos_query_registration_info_response_body import MosQueryRegistrationInfoResponseBodyDataListTagInfos
+from ._mos_query_registration_info_response_body import MosQueryRegistrationInfoResponseBodyDataList
+from ._mos_query_registration_info_response_body import MosQueryRegistrationInfoResponseBodyData
 from ._query_all_activity_info_response_body import QueryAllActivityInfoResponseBodyData
 from ._query_order_session_list_pop_response_body import QueryOrderSessionListPopResponseBodyData
 from ._query_qwen_conference_sg_ticket_pop_response_body import QueryQwenConferenceSgTicketPopResponseBodyData
@@ -81,6 +90,7 @@ from ._query_session_by_activity_id_pop_response_body import QuerySessionByActiv
 from ._query_session_list_pop_response_body import QuerySessionListPopResponseBodyData
 from ._query_sign_in_record_pop_response_body import QuerySignInRecordPopResponseBodyData
 from ._query_single_activity_info_response_body import QuerySingleActivityInfoResponseBodyData
+from ._verify_activity_admission_response_body import VerifyActivityAdmissionResponseBodyData
 
 __all__ = [
     AddAgendaSumRecordFlowPopRequest,
@@ -107,6 +117,9 @@ __all__ = [
     MosCheckInRequest,
     MosCheckInResponseBody,
     MosCheckInResponse,
+    MosQueryRegistrationInfoRequest,
+    MosQueryRegistrationInfoResponseBody,
+    MosQueryRegistrationInfoResponse,
     QueryAllActivityInfoRequest,
     QueryAllActivityInfoResponseBody,
     QueryAllActivityInfoResponse,
@@ -143,6 +156,9 @@ __all__ = [
     UpdateTicketRecordByticketCodePopRequest,
     UpdateTicketRecordByticketCodePopResponseBody,
     UpdateTicketRecordByticketCodePopResponse,
+    VerifyActivityAdmissionRequest,
+    VerifyActivityAdmissionResponseBody,
+    VerifyActivityAdmissionResponse,
     CheckNFCBindPopResponseBodyData,
     FindGuestCredentialsRecordResponseBodyDataChannelLevelInfoLevelOneOwner,
     FindGuestCredentialsRecordResponseBodyDataChannelLevelInfoLevelThreeOwner,
@@ -154,6 +170,9 @@ __all__ = [
     FindGuestTicketRecordResponseBodyDataChannelLevelInfoLevelTwoOwner,
     FindGuestTicketRecordResponseBodyDataChannelLevelInfo,
     FindGuestTicketRecordResponseBodyData,
+    MosQueryRegistrationInfoResponseBodyDataListTagInfos,
+    MosQueryRegistrationInfoResponseBodyDataList,
+    MosQueryRegistrationInfoResponseBodyData,
     QueryAllActivityInfoResponseBodyData,
     QueryOrderSessionListPopResponseBodyData,
     QueryQwenConferenceSgTicketPopResponseBodyData,
@@ -161,5 +180,6 @@ __all__ = [
     QuerySessionByActivityIdPopResponseBodyData,
     QuerySessionListPopResponseBodyData,
     QuerySignInRecordPopResponseBodyData,
-    QuerySingleActivityInfoResponseBodyData
+    QuerySingleActivityInfoResponseBodyData,
+    VerifyActivityAdmissionResponseBodyData
 ]

@@ -1,3 +1,9 @@
+2026-11-23 Version: 1.5.0
+- Support API MosQueryRegistrationInfo.
+- Support API VerifyActivityAdmission.
+- Update API MosCheckIn: add request parameters CheckinPoint.
+
+
 2026-10-08 Version: 1.4.0
 - Support API MosCheckIn.
 

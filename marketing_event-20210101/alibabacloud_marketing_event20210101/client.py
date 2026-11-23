@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_marketing_event20210101 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'marketing_event'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('marketing_event', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -675,6 +679,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.activity_id):
             body['ActivityId'] = request.activity_id
+        if not DaraCore.is_null(request.checkin_point):
+            body['CheckinPoint'] = request.checkin_point
         if not DaraCore.is_null(request.ext_param):
             body['ExtParam'] = request.ext_param
         if not DaraCore.is_null(request.qr_code):
@@ -707,6 +713,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.activity_id):
             body['ActivityId'] = request.activity_id
+        if not DaraCore.is_null(request.checkin_point):
+            body['CheckinPoint'] = request.checkin_point
         if not DaraCore.is_null(request.ext_param):
             body['ExtParam'] = request.ext_param
         if not DaraCore.is_null(request.qr_code):
@@ -743,6 +751,72 @@ class Client(OpenApiClient):
     ) -> main_models.MosCheckInResponse:
         runtime = RuntimeOptions()
         return await self.mos_check_in_with_options_async(request, runtime)
+
+    def mos_query_registration_info_with_options(
+        self,
+        request: main_models.MosQueryRegistrationInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MosQueryRegistrationInfoResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MosQueryRegistrationInfo',
+            version = '2021-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MosQueryRegistrationInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mos_query_registration_info_with_options_async(
+        self,
+        request: main_models.MosQueryRegistrationInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MosQueryRegistrationInfoResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MosQueryRegistrationInfo',
+            version = '2021-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MosQueryRegistrationInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mos_query_registration_info(
+        self,
+        request: main_models.MosQueryRegistrationInfoRequest,
+    ) -> main_models.MosQueryRegistrationInfoResponse:
+        runtime = RuntimeOptions()
+        return self.mos_query_registration_info_with_options(request, runtime)
+
+    async def mos_query_registration_info_async(
+        self,
+        request: main_models.MosQueryRegistrationInfoRequest,
+    ) -> main_models.MosQueryRegistrationInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.mos_query_registration_info_with_options_async(request, runtime)
 
     def query_all_activity_info_with_options(
         self,
@@ -1655,3 +1729,77 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateTicketRecordByticketCodePopResponse:
         runtime = RuntimeOptions()
         return await self.update_ticket_record_byticket_code_pop_with_options_async(request, runtime)
+
+    def verify_activity_admission_with_options(
+        self,
+        request: main_models.VerifyActivityAdmissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyActivityAdmissionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.activity_id):
+            body['ActivityId'] = request.activity_id
+        if not DaraCore.is_null(request.id_card_no):
+            body['IdCardNo'] = request.id_card_no
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyActivityAdmission',
+            version = '2021-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyActivityAdmissionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_activity_admission_with_options_async(
+        self,
+        request: main_models.VerifyActivityAdmissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyActivityAdmissionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.activity_id):
+            body['ActivityId'] = request.activity_id
+        if not DaraCore.is_null(request.id_card_no):
+            body['IdCardNo'] = request.id_card_no
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyActivityAdmission',
+            version = '2021-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyActivityAdmissionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_activity_admission(
+        self,
+        request: main_models.VerifyActivityAdmissionRequest,
+    ) -> main_models.VerifyActivityAdmissionResponse:
+        runtime = RuntimeOptions()
+        return self.verify_activity_admission_with_options(request, runtime)
+
+    async def verify_activity_admission_async(
+        self,
+        request: main_models.VerifyActivityAdmissionRequest,
+    ) -> main_models.VerifyActivityAdmissionResponse:
+        runtime = RuntimeOptions()
+        return await self.verify_activity_admission_with_options_async(request, runtime)
