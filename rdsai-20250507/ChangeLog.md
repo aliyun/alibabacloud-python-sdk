@@ -1,3 +1,10 @@
+2026-11-23 Version: 3.11.0
+- Support API GetContextDatabaseCreditUsageSummary.
+- Support API GetContextDatabaseCreditUsageSummaryByMember.
+- Support API GetContextDatabaseUsage.
+- Support API ListContextDatabaseCreditUsageRecords.
+
+
 2026-11-12 Version: 3.10.4
 - Generated python 2025-05-07 for RdsAi.
 

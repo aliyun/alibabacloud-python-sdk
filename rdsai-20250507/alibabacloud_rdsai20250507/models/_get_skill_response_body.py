@@ -41,15 +41,15 @@ class GetSkillResponseBody(DaraModel):
         versions: List[main_models.GetSkillResponseBodyVersions] = None,
         visibility: str = None,
     ):
-        # The current active version ID.
+        # The ID of the currently active version.
         self.active_version_id = active_version_id
-        # The content digest of the current skill bundle.
+        # The content digest of the current skill package.
         self.bundle_hash = bundle_hash
-        # The size of the current skill bundle, in bytes.
+        # The size of the current skill package, in bytes.
         self.bundle_size_bytes = bundle_size_bytes
         # The skill operations that the current user can perform.
         self.capabilities = capabilities
-        # The skill category.
+        # The category of the skill.
         self.category = category
         # The content.
         self.content = content
@@ -57,43 +57,43 @@ class GetSkillResponseBody(DaraModel):
         self.created_at = created_at
         # The list of database types.
         self.dbtypes = dbtypes
-        # The skill description. The description can be up to 1000 characters in length.
+        # The description of the skill. The description can be up to 1,000 characters in length.
         self.description = description
         # The display name of the skill.
         self.display_name = display_name
-        # The temporary download URL of the skill bundle.
+        # The temporary download URL for the skill package.
         self.download_url = download_url
         # The expiration time of the temporary download URL.
         self.expires_at = expires_at
-        # The file in the bundle that is read based on the specified path.
+        # The file in the package specified by path.
         self.file = file
-        # The list of files in the current skill bundle.
+        # The list of files in the current skill package.
         self.files = files
         # The metadata fields of SKILL.md.
         self.frontmatter = frontmatter
-        # The public HTTPS URL of the current icon. This value is empty if no icon is configured.
+        # The public HTTPS URL of the current icon. This field is empty if no icon is configured.
         self.icon = icon
         # The unique identifier of the skill.
         self.id = id
         # Indicates whether the skill is deleted.
         self.is_deleted = is_deleted
-        # The skill name. The name can contain only lowercase letters, digits, and hyphens.
+        # The name of the skill. The name can contain only lowercase letters, digits, and hyphens.
         self.name = name
-        # The unique request identifier.
+        # The unique identifier of the request.
         self.request_id = request_id
         # The visibility scope of the skill.
         self.scope = scope
         # The current skill ID.
         self.skill_id = skill_id
-        # The full Markdown content of SKILL.md.
+        # The full SKILL.md Markdown content.
         self.skill_markdown = skill_markdown
-        # The skill type.
+        # The type of the skill.
         self.skill_type = skill_type
-        # The stable identifier of the private skill.
+        # The stable identifier for the private skill.
         self.slug = slug
         # The update time.
         self.updated_at = updated_at
-        # The current skill version number.
+        # The current version number of the skill.
         self.version = version
         # The current skill version ID.
         self.version_id = version_id
@@ -326,25 +326,25 @@ class GetSkillResponseBodyVersions(DaraModel):
         update_note: str = None,
         version: str = None,
     ):
-        # The activation time of the skill version.
+        # The time when the skill version was activated.
         self.activated_at = activated_at
-        # The creation time of the skill version.
+        # The time when the skill version was created.
         self.created_at = created_at
-        # Indicates whether the skill requires a credential.
+        # Indicates whether the skill requires credentials.
         self.credential_required = credential_required
-        # The number of files in the skill bundle.
+        # The number of files in the skill package.
         self.file_count = file_count
-        # The skill version ID.
+        # The ID of the skill version.
         self.id = id
-        # The size of the skill bundle, in bytes.
+        # The size of the skill package, in bytes.
         self.package_size = package_size
-        # The reason for revoking the skill version.
+        # The reason why the skill version was revoked.
         self.revoke_reason = revoke_reason
-        # The revocation time of the skill version.
+        # The time when the skill version was revoked.
         self.revoked_at = revoked_at
         # The SHA-256 digest of the skill package.
         self.sha_256 = sha_256
-        # The ID of the skill to which the version belongs.
+        # The ID of the parent skill.
         self.skill_id = skill_id
         # The Markdown content of the skill.
         self.skill_markdown = skill_markdown
@@ -352,7 +352,7 @@ class GetSkillResponseBodyVersions(DaraModel):
         self.source = source
         # The status of the skill version.
         self.status = status
-        # The update note for the version.
+        # The update notes for the version.
         self.update_note = update_note
         # The version number of the skill.
         self.version = version
@@ -473,7 +473,7 @@ class GetSkillResponseBodyCapabilities(DaraModel):
     ):
         # Indicates whether the skill can be deleted.
         self.delete = delete
-        # Indicates whether the skill bundle can be downloaded.
+        # Indicates whether the skill package can be downloaded.
         self.download = download
         # Indicates whether the skill can be edited.
         self.edit = edit

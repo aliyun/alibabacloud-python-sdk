@@ -16,9 +16,9 @@ class ModifyAppInstanceShrinkRequest(DaraModel):
         migration_mode: str = None,
         region_id: str = None,
     ):
-        # The reserved parameter.
+        # A reserved parameter.
         self.branch_name = branch_name
-        # The idempotency parameter.
+        # The client token used to ensure idempotence.
         self.client_token = client_token
         # The list of modules.
         self.components_shrink = components_shrink
@@ -26,11 +26,11 @@ class ModifyAppInstanceShrinkRequest(DaraModel):
         # 
         # <notice>Only **newly purchased empty ApsaraDB RDS for PostgreSQL instances** are supported. The major engine version must be **17**, and the minor engine version must be **20250630 or later**.</notice>
         self.dbinstance_name = dbinstance_name
-        # The instance type. Only **rdsai.supabase.basic** is supported.
+        # The instance type. Currently, only **rdsai.supabase.basic** is supported.
         self.instance_class = instance_class
         # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The reserved parameter.
+        # A reserved parameter.
         self.migration_mode = migration_mode
         # The region ID.
         self.region_id = region_id

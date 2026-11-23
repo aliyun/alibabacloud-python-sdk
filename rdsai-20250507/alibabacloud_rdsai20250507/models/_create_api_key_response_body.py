@@ -21,7 +21,7 @@ class CreateApiKeyResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The request result.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -139,12 +139,13 @@ class CreateApiKeyResponseBodyDataCustomKeyList(DaraModel):
         self.limit_rate = limit_rate
         # The quota limit type. Valid values:
         # 
-        # - **fixed**: Fixed value.
+        # - **fixed**: fixed value.
         # 
-        # - **ratio**: Percentage-based.
+        # - **ratio**: percentage.
         # 
-        # - **auto**: Automatic allocation.
+        # - **auto**: automatic allocation.
         self.limit_type = limit_type
+        # The ARN of the RAM role bound to the custom API key.
         self.role_arn = role_arn
         # The token quota for the current key.
         self.token_quota = token_quota

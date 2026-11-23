@@ -19,10 +19,11 @@ class ChatMessagesRequest(DaraModel):
     ):
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool invocation events, sub-node events, and document events are included in the answer field of the event = message response. When set to separate, tool invocation events, sub-node events, and document events each have their own event.
+        # The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool calling invoke events, child node events, and document events are unified into the answer field of the event = message. When set to separate, tool calling invoke events, child node events, and document events have their own respective events.
         self.event_mode = event_mode
+        # The list of attachments included in the current conversation round. References uploaded files by using UploadFileId.
         self.files = files
-        # The task inputs.
+        # The task input.
         self.inputs = inputs
         # The parent message ID.
         self.parent_message_id = parent_message_id
@@ -106,7 +107,7 @@ class ChatMessagesRequestInputs(DaraModel):
     ):
         # The custom agent ID for the user.
         self.custom_agent_id = custom_agent_id
-        # Specifies whether to enable deep thinking mode.
+        # Specifies whether to enable the deep thinking mode.
         self.enable_thinking = enable_thinking
         # The conversation language.
         self.language = language
@@ -114,13 +115,13 @@ class ChatMessagesRequestInputs(DaraModel):
         self.model_id = model_id
         # The region ID.
         self.region_id = region_id
-        # The tool approval call ID for resuming execution. Pass this parameter after all decisions in the current approval round are completed in the console to continue the interrupted ChatMessage Loop. Do not pass this parameter for regular conversations.
+        # The tool approval call ID for resuming execution. Pass this parameter after the console completes all decisions for the current approval round to continue the interrupted ChatMessage loop. Do not pass this parameter for regular conversations.
         self.resume_call_id = resume_call_id
         # The thinking depth.
         self.think_effort = think_effort
         # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
-        # The tool approval mode for the current conversation. Valid values: read_only (read-only, write tools are rejected), manual (write tools require manual approval), and auto (the approval sub-agent automatically determines the action. If the result is needs_human, the request is escalated to manual approval). When this parameter is passed, the approval mode of the current conversation is updated.
+        # The tool approval mode for the current conversation. Valid values: read_only (read-only, rejects write tools), manual (write tools require manual approval), and auto (automatically determined by the approval sub-agent; escalated to manual approval when needs_human is returned). Passing this parameter updates the approval mode for the current conversation.
         self.tool_approval_mode = tool_approval_mode
         # The ContextDB workspace ID.
         self.workspace_id = workspace_id
@@ -205,10 +206,16 @@ class ChatMessagesRequestFiles(DaraModel):
         transfer_method: str = None,
         type: str = None,
         upload_file_id: str = None,
+        url: str = None,
     ):
+        # The file transfer method. Set this parameter to local_file when referencing an uploaded file, and provide the UploadFileId at the same time.
         self.transfer_method = transfer_method
+        # The attachment type. A value of image indicates an image. The actual supported types are determined by the file upload configuration of the application.
         self.type = type
+        # The identifier of the uploaded file. The ContextDB management agent can use the UploadFileId returned by the current workspace knowledge base.
         self.upload_file_id = upload_file_id
+        # The image URL.
+        self.url = url
 
     def validate(self):
         pass
@@ -227,6 +234,9 @@ class ChatMessagesRequestFiles(DaraModel):
         if self.upload_file_id is not None:
             result['UploadFileId'] = self.upload_file_id
 
+        if self.url is not None:
+            result['Url'] = self.url
+
         return result
 
     def from_map(self, m: dict = None):
@@ -239,6 +249,9 @@ class ChatMessagesRequestFiles(DaraModel):
 
         if m.get('UploadFileId') is not None:
             self.upload_file_id = m.get('UploadFileId')
+
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
 
         return self
 

@@ -18,6 +18,7 @@ class ModifyInstanceSSLResponseBody(DaraModel):
         self.instance_name = instance_name
         # The request ID.
         self.request_id = request_id
+        # The expiration time of the custom SSL certificate. The time is in the yyyy-MM-dd HH:mm:ss format and displayed in the UTC+8 time zone.
         self.sslexpired_time = sslexpired_time
 
     def validate(self):

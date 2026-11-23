@@ -16,11 +16,13 @@ class DescribeInstanceIpWhitelistResponseBody(DaraModel):
         ip_white_list_groups: List[main_models.DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups] = None,
         request_id: str = None,
     ):
+        # The name of the branch specified for this operation.
         self.branch_name = branch_name
+        # The list of IP address whitelist groups for the PostgreSQL database instance associated with the branch.
         self.db_ip_white_list_groups = db_ip_white_list_groups
         # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The IP whitelist groups.
+        # The list of IP address whitelist groups.
         self.ip_white_list_groups = ip_white_list_groups
         # The request ID.
         self.request_id = request_id
@@ -92,7 +94,7 @@ class DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups(DaraModel):
         group_name: str = None,
         ip_whitelist: str = None,
     ):
-        # The group name.
+        # The name of the group.
         self.group_name = group_name
         # The list of IP addresses.
         self.ip_whitelist = ip_whitelist
@@ -129,7 +131,9 @@ class DescribeInstanceIpWhitelistResponseBodyDbIpWhiteListGroups(DaraModel):
         group_name: str = None,
         ip_whitelist: str = None,
     ):
+        # The name of the IP address whitelist group.
         self.group_name = group_name
+        # The list of addresses in the IP address whitelist.
         self.ip_whitelist = ip_whitelist
 
     def validate(self):

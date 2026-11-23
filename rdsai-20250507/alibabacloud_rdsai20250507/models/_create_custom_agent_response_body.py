@@ -25,7 +25,7 @@ class CreateCustomAgentResponseBody(DaraModel):
         self.enable_tools = enable_tools
         # AgentId
         self.id = id
-        # The name of the custom agent.
+        # The name of the dedicated agent.
         self.name = name
         # The request ID.
         self.request_id = request_id
@@ -114,7 +114,7 @@ class CreateCustomAgentResponseBodySkills(DaraModel):
         name: str = None,
         skill_type: str = None,
     ):
-        # The skill description.
+        # The description of the skill.
         self.description = description
         # The unique identifier of the skill.
         self.id = id

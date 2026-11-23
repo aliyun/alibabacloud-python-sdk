@@ -11,11 +11,11 @@ class RenameApiKeyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The request result.
+        # The result of the request.
         self.success = success
 
     def validate(self):

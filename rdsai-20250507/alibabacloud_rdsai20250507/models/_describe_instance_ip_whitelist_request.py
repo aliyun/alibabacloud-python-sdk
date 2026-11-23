@@ -12,12 +12,13 @@ class DescribeInstanceIpWhitelistRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The name of the branch to be operated on. If this parameter is not specified, the operation is performed on the original instance.
         self.branch_name = branch_name
-        # The group name.
+        # The name of the group.
         self.group_name = group_name
         # The instance ID of the AI application.
         self.instance_name = instance_name
-        # The region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

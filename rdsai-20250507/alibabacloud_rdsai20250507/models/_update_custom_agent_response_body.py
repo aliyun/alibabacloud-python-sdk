@@ -105,13 +105,13 @@ class UpdateCustomAgentResponseBodySkills(DaraModel):
         name: str = None,
         skill_type: str = None,
     ):
-        # The skill description.
+        # The description of the skill.
         self.description = description
         # The unique identifier of the skill.
         self.id = id
-        # The skill name.
+        # The name of the skill.
         self.name = name
-        # The skill type.
+        # The type of the skill.
         self.skill_type = skill_type
 
     def validate(self):

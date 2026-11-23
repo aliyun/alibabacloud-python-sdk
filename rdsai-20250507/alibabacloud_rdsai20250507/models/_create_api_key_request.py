@@ -26,13 +26,15 @@ class CreateApiKeyRequest(DaraModel):
         # The quota limit percentage.
         self.limit_rate = limit_rate
         # The quota limit type. Valid values:
-        # - ratio: Percentage-based.
-        # - fixed: Fixed value.
-        # - auto: Automatic allocation.
+        # - ratio: percentage.
+        # - fixed: fixed value.
+        # - auto: automatic allocation.
         self.limit_type = limit_type
         # The number of API keys to create. Default value: **1**.
         self.quantity = quantity
+        # The ARN of the RAM role bound to the API key. The account to which the role belongs must be the same as the caller account.
         self.role_arn = role_arn
+        # The name of the RAM role bound to the API key.
         self.role_name = role_name
         # The token quota for the current key.
         self.token_quota = token_quota

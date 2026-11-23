@@ -28,6 +28,7 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         # * **1**: Enabled.
         # * **0**: Disabled.
         self.sslenabled = sslenabled
+        # The expiration time of the custom SSL certificate. The time is in the yyyy-MM-dd HH:mm:ss format and in the UTC+8 time zone.
         self.sslexpired_time = sslexpired_time
         # The content of the custom certificate.
         self.server_cert = server_cert

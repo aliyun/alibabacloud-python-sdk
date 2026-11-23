@@ -22,7 +22,7 @@ class ListSkillResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID.
+        # The unique identifier of the request.
         self.request_id = request_id
         # The total number of records.
         self.total_count = total_count
@@ -100,9 +100,9 @@ class ListSkillResponseBodyData(DaraModel):
         updated_at: str = None,
         visibility: str = None,
     ):
-        # The currently active skill version information.
+        # The information about the currently active skill version.
         self.active_version = active_version
-        # The currently active version ID.
+        # The ID of the currently active version.
         self.active_version_id = active_version_id
         # The skill category.
         self.category = category
@@ -114,9 +114,9 @@ class ListSkillResponseBodyData(DaraModel):
         self.dbtypes = dbtypes
         # The description.
         self.description = description
-        # The skill display name.
+        # The display name of the skill.
         self.display_name = display_name
-        # The public HTTPS URL of the current icon. Empty if not configured.
+        # The public HTTPS URL of the current icon. This parameter is empty if no icon is configured.
         self.icon = icon
         # The unique identifier of the skill.
         self.id = id
@@ -124,15 +124,15 @@ class ListSkillResponseBodyData(DaraModel):
         self.is_deleted = is_deleted
         # The skill name.
         self.name = name
-        # The skill visibility scope.
+        # The visibility scope of the skill.
         self.scope = scope
         # The skill type.
         self.skill_type = skill_type
-        # The skill stable identifier.
+        # The stable identifier of the skill.
         self.slug = slug
         # The update time.
         self.updated_at = updated_at
-        # The skill visibility for the current user.
+        # The visibility of the skill to the current user.
         self.visibility = visibility
 
     def validate(self):

@@ -16,7 +16,7 @@ class ModifyAppInstanceResponseBody(DaraModel):
         request_id: str = None,
         target_instance_name: str = None,
     ):
-        # The reserved parameter.
+        # A reserved parameter.
         self.branch_name = branch_name
         # The list of modules.
         self.components = components
@@ -24,7 +24,7 @@ class ModifyAppInstanceResponseBody(DaraModel):
         self.instance_name = instance_name
         # Id of the request
         self.request_id = request_id
-        # The reserved parameter.
+        # A reserved parameter.
         self.target_instance_name = target_instance_name
 
     def validate(self):

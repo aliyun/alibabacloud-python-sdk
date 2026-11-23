@@ -18,10 +18,11 @@ class ModifySandboxTemplateRequest(DaraModel):
         tags: Dict[str, str] = None,
         template_id: str = None,
     ):
-        # The number of CPUs for sandboxes created from this template. Valid values: 1 to 4.
+        # The number of CPUs for sandboxes created by using this template. Valid values: 1 to 4.
         self.default_cpu = default_cpu
-        # The memory size of sandboxes created from this template. Unit: Gi. Valid values: 1Gi to 8Gi.
+        # The memory size for sandboxes created by using this template. Unit: GiB. Valid values: 1 to 8.
         self.default_memory = default_memory
+        # The container image used for the sandbox template. Format: `[registry/]<repo>[:tag][@sha256:digest]`.
         self.image = image
         # The instance ID of the AI application.
         # 
@@ -31,8 +32,9 @@ class ModifySandboxTemplateRequest(DaraModel):
         self.region_id = region_id
         # The initial number of instances. Valid values: 1 to 1000.
         self.replicas = replicas
+        # The custom tags of the sandbox template. The key is the tag name, and the value is the tag value. You cannot use the system-reserved tag createdBy or the system-reserved tag hidden.
         self.tags = tags
-        # The sandbox template ID.
+        # The ID of the sandbox template.
         # 
         # This parameter is required.
         self.template_id = template_id

@@ -17,11 +17,11 @@ class ListApiKeysResponseBody(DaraModel):
     ):
         # The query result.
         self.data = data
-        # The response message.
+        # The returned message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The request result.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -77,23 +77,23 @@ class ListApiKeysResponseBodyData(DaraModel):
         threshold_percent: int = None,
         total: int = None,
     ):
-        # The URL for model calls.
+        # The URL for model invocation.
         self.base_url = base_url
         # The list of custom API keys.
         self.custom_key_list = custom_key_list
-        # The daily throttling quota for the system API key.
+        # The daily token quota of the system API key.
         self.daily_token_quota = daily_token_quota
-        # Indicates whether the key is throttled.
+        # Indicates whether the API key is throttled.
         self.is_rate_limited = is_rate_limited
         # The page number.
         self.page = page
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The system-generated key.
+        # The system-generated API key.
         self.system_api_key = system_api_key
-        # The alert threshold percentage for SystemApiKey. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
+        # The alert threshold percentage for the system API key. A value of 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
         self.threshold_percent = threshold_percent
-        # The total number of records.
+        # The total number of entries.
         self.total = total
 
     def validate(self):
@@ -187,24 +187,24 @@ class ListApiKeysResponseBodyDataCustomKeyList(DaraModel):
     ):
         # API Key
         self.api_key = api_key
-        # The daily throttling quota.
+        # The daily token quota.
         self.daily_token_quota = daily_token_quota
-        # Indicates whether the key is throttled.
+        # Indicates whether the API key is throttled.
         self.is_rate_limited = is_rate_limited
-        # The API key name.
+        # The name of the API key.
         self.key_name = key_name
-        # The quota ratio.
+        # The quota limit percentage.
         self.limit_rate = limit_rate
-        # The quota type. Valid values:
-        # 
+        # The quota limit type. Valid values:
         # - **fixed**: Fixed value.
         # - **ratio**: Percentage.
         # - **auto**: Automatic allocation.
         self.limit_type = limit_type
+        # The ARN of the RAM role bound to the custom API key.
         self.role_arn = role_arn
-        # The alert threshold percentage. For example, 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
+        # The alert threshold percentage. A value of 80 indicates that an alert is triggered when the usage reaches 80%. The alert is reset when the usage drops below this percentage.
         self.threshold_percent = threshold_percent
-        # The quota of the current key.
+        # The token quota of the current API key.
         self.token_quota = token_quota
 
     def validate(self):

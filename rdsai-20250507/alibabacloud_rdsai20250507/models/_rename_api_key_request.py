@@ -17,13 +17,15 @@ class RenameApiKeyRequest(DaraModel):
         # 
         # This parameter is required.
         self.api_key = api_key
-        # The instance ID.
+        # The instance name.
         self.instance_id = instance_id
-        # The API key name.
+        # The name of the API key.
         # 
         # This parameter is required.
         self.key_name = key_name
+        # The ARN of the RAM role associated with the API key. The account to which the role belongs must be the same as the account of the caller.
         self.role_arn = role_arn
+        # The name of the RAM role associated with the API key.
         self.role_name = role_name
 
     def validate(self):

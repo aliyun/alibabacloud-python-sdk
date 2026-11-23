@@ -19,7 +19,7 @@ class DescribeAppInstancesResponseBody(DaraModel):
     ):
         # The list of instances.
         self.instances = instances
-        # A reserved parameter. You can ignore it.
+        # A reserved parameter. You can ignore this parameter.
         self.max_results = max_results
         # The page number.
         self.page_number = page_number
@@ -27,7 +27,7 @@ class DescribeAppInstancesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -126,7 +126,7 @@ class DescribeAppInstancesResponseBodyInstances(DaraModel):
         self.status = status
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The internal endpoint of the AI application.
+        # The internal network connection endpoint of the AI application.
         self.vpc_connection_string = vpc_connection_string
 
     def validate(self):

@@ -27,15 +27,15 @@ class ChatMessagesResponseBody(DaraModel):
     ):
         # The answer content.
         self.answer = answer
-        # The tool invocation approval status.
+        # The tool calling invoke approval status.
         self.approval_status = approval_status
-        # The tool invocation ID.
+        # The tool calling invoke ID.
         self.call_id = call_id
         # The conversation ID.
         self.conversation_id = conversation_id
         # The creation time.
         self.created_at = created_at
-        # The tool invocation description.
+        # The tool calling invoke description.
         self.description = description
         # The event.
         self.event = event
@@ -51,7 +51,7 @@ class ChatMessagesResponseBody(DaraModel):
         self.round_id = round_id
         # The asynchronous task ID.
         self.task_id = task_id
-        # The tool invocation parameters.
+        # The tool calling invoke parameters.
         self.tool_arguments = tool_arguments
         # The tool name.
         self.tool_name = tool_name

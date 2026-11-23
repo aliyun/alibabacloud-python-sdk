@@ -4534,6 +4534,194 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_chat_model_with_options_async(request, runtime)
 
+    def get_context_database_credit_usage_summary_with_options(
+        self,
+        request: main_models.GetContextDatabaseCreditUsageSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContextDatabaseCreditUsageSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.item):
+            query['Item'] = request.item
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.sub_item):
+            query['SubItem'] = request.sub_item
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContextDatabaseCreditUsageSummary',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContextDatabaseCreditUsageSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_context_database_credit_usage_summary_with_options_async(
+        self,
+        request: main_models.GetContextDatabaseCreditUsageSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContextDatabaseCreditUsageSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.interval):
+            query['Interval'] = request.interval
+        if not DaraCore.is_null(request.item):
+            query['Item'] = request.item
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.sub_item):
+            query['SubItem'] = request.sub_item
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContextDatabaseCreditUsageSummary',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContextDatabaseCreditUsageSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_context_database_credit_usage_summary(
+        self,
+        request: main_models.GetContextDatabaseCreditUsageSummaryRequest,
+    ) -> main_models.GetContextDatabaseCreditUsageSummaryResponse:
+        runtime = RuntimeOptions()
+        return self.get_context_database_credit_usage_summary_with_options(request, runtime)
+
+    async def get_context_database_credit_usage_summary_async(
+        self,
+        request: main_models.GetContextDatabaseCreditUsageSummaryRequest,
+    ) -> main_models.GetContextDatabaseCreditUsageSummaryResponse:
+        runtime = RuntimeOptions()
+        return await self.get_context_database_credit_usage_summary_with_options_async(request, runtime)
+
+    def get_context_database_credit_usage_summary_by_member_with_options(
+        self,
+        request: main_models.GetContextDatabaseCreditUsageSummaryByMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContextDatabaseCreditUsageSummaryByMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.item):
+            query['Item'] = request.item
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContextDatabaseCreditUsageSummaryByMember',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContextDatabaseCreditUsageSummaryByMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_context_database_credit_usage_summary_by_member_with_options_async(
+        self,
+        request: main_models.GetContextDatabaseCreditUsageSummaryByMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContextDatabaseCreditUsageSummaryByMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.item):
+            query['Item'] = request.item
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContextDatabaseCreditUsageSummaryByMember',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContextDatabaseCreditUsageSummaryByMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_context_database_credit_usage_summary_by_member(
+        self,
+        request: main_models.GetContextDatabaseCreditUsageSummaryByMemberRequest,
+    ) -> main_models.GetContextDatabaseCreditUsageSummaryByMemberResponse:
+        runtime = RuntimeOptions()
+        return self.get_context_database_credit_usage_summary_by_member_with_options(request, runtime)
+
+    async def get_context_database_credit_usage_summary_by_member_async(
+        self,
+        request: main_models.GetContextDatabaseCreditUsageSummaryByMemberRequest,
+    ) -> main_models.GetContextDatabaseCreditUsageSummaryByMemberResponse:
+        runtime = RuntimeOptions()
+        return await self.get_context_database_credit_usage_summary_by_member_with_options_async(request, runtime)
+
     def get_context_database_sync_connection_with_options(
         self,
         request: main_models.GetContextDatabaseSyncConnectionRequest,
@@ -5199,6 +5387,84 @@ class Client(OpenApiClient):
     ) -> main_models.GetContextDatabaseSyncSourceSelectionResponse:
         runtime = RuntimeOptions()
         return await self.get_context_database_sync_source_selection_with_options_async(request, runtime)
+
+    def get_context_database_usage_with_options(
+        self,
+        request: main_models.GetContextDatabaseUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContextDatabaseUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContextDatabaseUsage',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContextDatabaseUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_context_database_usage_with_options_async(
+        self,
+        request: main_models.GetContextDatabaseUsageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetContextDatabaseUsageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetContextDatabaseUsage',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetContextDatabaseUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_context_database_usage(
+        self,
+        request: main_models.GetContextDatabaseUsageRequest,
+    ) -> main_models.GetContextDatabaseUsageResponse:
+        runtime = RuntimeOptions()
+        return self.get_context_database_usage_with_options(request, runtime)
+
+    async def get_context_database_usage_async(
+        self,
+        request: main_models.GetContextDatabaseUsageRequest,
+    ) -> main_models.GetContextDatabaseUsageResponse:
+        runtime = RuntimeOptions()
+        return await self.get_context_database_usage_with_options_async(request, runtime)
 
     def get_conversations_with_options(
         self,
@@ -6089,6 +6355,112 @@ class Client(OpenApiClient):
     ) -> main_models.ListContextDatabaseApiKeysResponse:
         runtime = RuntimeOptions()
         return await self.list_context_database_api_keys_with_options_async(request, runtime)
+
+    def list_context_database_credit_usage_records_with_options(
+        self,
+        request: main_models.ListContextDatabaseCreditUsageRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextDatabaseCreditUsageRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.item):
+            query['Item'] = request.item
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.sub_item):
+            query['SubItem'] = request.sub_item
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextDatabaseCreditUsageRecords',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextDatabaseCreditUsageRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_context_database_credit_usage_records_with_options_async(
+        self,
+        request: main_models.ListContextDatabaseCreditUsageRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListContextDatabaseCreditUsageRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.item):
+            query['Item'] = request.item
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.page):
+            query['Page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.sub_item):
+            query['SubItem'] = request.sub_item
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListContextDatabaseCreditUsageRecords',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListContextDatabaseCreditUsageRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_context_database_credit_usage_records(
+        self,
+        request: main_models.ListContextDatabaseCreditUsageRecordsRequest,
+    ) -> main_models.ListContextDatabaseCreditUsageRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.list_context_database_credit_usage_records_with_options(request, runtime)
+
+    async def list_context_database_credit_usage_records_async(
+        self,
+        request: main_models.ListContextDatabaseCreditUsageRecordsRequest,
+    ) -> main_models.ListContextDatabaseCreditUsageRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_context_database_credit_usage_records_with_options_async(request, runtime)
 
     def list_context_database_members_with_options(
         self,

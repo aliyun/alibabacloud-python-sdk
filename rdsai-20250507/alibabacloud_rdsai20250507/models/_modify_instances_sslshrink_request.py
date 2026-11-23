@@ -14,22 +14,22 @@ class ModifyInstancesSSLShrinkRequest(DaraModel):
         server_cert: str = None,
         server_key: str = None,
     ):
-        # The certificate type. Currently, only **custom** is supported, which indicates a custom certificate.
+        # The certificate type. Only **custom** is supported, which indicates that a custom certificate is used.
         # > This parameter is required when **SSLEnabled** is set to **1**.
         self.catype = catype
-        # The list of instance IDs of AI applications. A maximum of 10 instance IDs can be specified.
+        # The IDs of the ApsaraDB RDS AI application instances. You can specify up to 10 instance IDs.
         # 
         # This parameter is required.
         self.instance_names_shrink = instance_names_shrink
         # The region ID.
         self.region_id = region_id
-        # Specifies whether to enable or disable SSL. Valid values:
-        # * **1**: Enable.
-        # * **0**: Disable.
+        # Specifies whether to enable SSL. Valid values:
+        # * **1**: Enabled.
+        # * **0**: Disabled.
         # 
         # This parameter is required.
         self.sslenabled = sslenabled
-        # The custom certificate content.
+        # The content of the custom certificate.
         # 
         # > This parameter is required when **CAType** is set to **custom**.
         self.server_cert = server_cert

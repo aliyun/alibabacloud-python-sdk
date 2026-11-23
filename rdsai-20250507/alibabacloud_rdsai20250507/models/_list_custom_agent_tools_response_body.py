@@ -70,7 +70,7 @@ class ListCustomAgentToolsResponseBodyData(DaraModel):
         self.name = name
         # The Traditional Chinese description.
         self.tc = tc
-        # The read/write type of the tool.
+        # The tool read/write type.
         self.type = type
         # The Chinese description.
         self.zh = zh

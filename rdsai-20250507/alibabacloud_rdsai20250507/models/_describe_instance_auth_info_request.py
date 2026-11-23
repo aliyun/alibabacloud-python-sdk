@@ -11,9 +11,9 @@ class DescribeInstanceAuthInfoRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
-        # Reserved parameter.
+        # A reserved parameter.
         self.branch_name = branch_name
-        # The instance ID of the AI application.
+        # The ID of the AI application instance.
         self.instance_name = instance_name
         # The region ID.
         self.region_id = region_id

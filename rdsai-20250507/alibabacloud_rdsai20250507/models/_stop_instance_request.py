@@ -12,7 +12,13 @@ class StopInstanceRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The name of the branch to operate on. If this parameter is not specified, the operation is performed on the original instance.
         self.branch_name = branch_name
+        # Specifies whether to forcibly stop the instance. Valid values:
+        # - true: Forcibly stops the instance.
+        # - false: Normally stops the instance.
+        # 
+        # Default value: false.
         self.force = force
         # The instance ID of the AI application.
         # 

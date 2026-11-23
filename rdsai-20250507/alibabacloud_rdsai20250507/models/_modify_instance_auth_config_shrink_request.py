@@ -12,7 +12,7 @@ class ModifyInstanceAuthConfigShrinkRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
-        # The reserved parameter.
+        # A reserved parameter.
         self.branch_name = branch_name
         # The list of authentication configurations.
         self.config_list_shrink = config_list_shrink
