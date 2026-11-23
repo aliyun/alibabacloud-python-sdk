@@ -5501,6 +5501,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_pipelines_with_options_async(agent_space, request, headers, runtime)
 
+    def list_tag_resources_with_options(
+        self,
+        tmp_req: main_models.ListTagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        tmp_req.validate()
+        request = main_models.ListTagResourcesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_id):
+            request.resource_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_id, 'resourceId', 'json')
+        if not DaraCore.is_null(tmp_req.tag):
+            request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
+        query = {}
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_id_shrink):
+            query['resourceId'] = request.resource_id_shrink
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_shrink):
+            query['tag'] = request.tag_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/tags',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        tmp_req: main_models.ListTagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        tmp_req.validate()
+        request = main_models.ListTagResourcesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_id):
+            request.resource_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_id, 'resourceId', 'json')
+        if not DaraCore.is_null(tmp_req.tag):
+            request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
+        query = {}
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_id_shrink):
+            query['resourceId'] = request.resource_id_shrink
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_shrink):
+            query['tag'] = request.tag_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/tags',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_tag_resources_with_options(request, headers, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_tag_resources_with_options_async(request, headers, runtime)
+
     def pause_pipeline_with_options(
         self,
         agent_space: str,
@@ -5961,6 +6061,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.search_context_with_options_async(agent_space, context_store_name, request, headers, runtime)
 
+    def tag_resources_with_options(
+        self,
+        request: main_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            body['tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/tags',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: main_models.TagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            body['tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/tags',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.tag_resources_with_options(request, headers, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.tag_resources_with_options_async(request, headers, runtime)
+
     def terminate_pipeline_with_options(
         self,
         agent_space: str,
@@ -6044,6 +6228,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.terminate_pipeline_with_options_async(agent_space, pipeline_name, request, headers, runtime)
+
+    def untag_resources_with_options(
+        self,
+        tmp_req: main_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        tmp_req.validate()
+        request = main_models.UntagResourcesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_id):
+            request.resource_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_id, 'resourceId', 'json')
+        if not DaraCore.is_null(tmp_req.tag_key):
+            request.tag_key_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_key, 'tagKey', 'json')
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['all'] = request.all
+        if not DaraCore.is_null(request.resource_id_shrink):
+            query['resourceId'] = request.resource_id_shrink
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key_shrink):
+            query['tagKey'] = request.tag_key_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/tags',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        tmp_req: main_models.UntagResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        tmp_req.validate()
+        request = main_models.UntagResourcesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_id):
+            request.resource_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_id, 'resourceId', 'json')
+        if not DaraCore.is_null(tmp_req.tag_key):
+            request.tag_key_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag_key, 'tagKey', 'json')
+        query = {}
+        if not DaraCore.is_null(request.all):
+            query['all'] = request.all
+        if not DaraCore.is_null(request.resource_id_shrink):
+            query['resourceId'] = request.resource_id_shrink
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag_key_shrink):
+            query['tagKey'] = request.tag_key_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2026-05-20',
+            protocol = 'HTTPS',
+            pathname = f'/tags',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.untag_resources_with_options(request, headers, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.untag_resources_with_options_async(request, headers, runtime)
 
     def update_agent_space_with_options(
         self,

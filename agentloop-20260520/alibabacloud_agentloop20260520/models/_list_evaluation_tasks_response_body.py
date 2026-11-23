@@ -18,13 +18,13 @@ class ListEvaluationTasksResponseBody(DaraModel):
     ):
         # The list of evaluation task summaries.
         self.evaluation_tasks = evaluation_tasks
-        # The number of entries per page used in this request.
+        # The number of entries per page used for this request.
         self.max_results = max_results
-        # The pagination token for the next page. An empty value indicates that no more pages are available.
+        # The pagination token for the next page. An empty value indicates that there is no next page.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of records. The total count is calculated only on the first page. This value may be empty on subsequent pages.
+        # The total number of records. The backend queries the total count only on the first page, so this field may be empty on subsequent pages.
         self.total_count = total_count
 
     def validate(self):
@@ -97,19 +97,19 @@ class ListEvaluationTasksResponseBodyEvaluationTasks(DaraModel):
     ):
         # The data source and execution configuration summary.
         self.config = config
-        # The creation time, in seconds-level UNIX timestamp.
+        # The creation time, represented as a UNIX timestamp in seconds.
         self.created_at = created_at
         # The data source type of the evaluation object.
         self.data_type = data_type
-        # The description of the evaluation task.
+        # The evaluation task description.
         self.description = description
-        # The evaluator configuration summary, in JSON string format.
+        # The evaluator configuration summary, as a JSON string.
         self.evaluators = evaluators
-        # The structured run strategy configuration, including the parsed backfill strategy and continuous evaluation strategy.
+        # The structured configuration of the run strategy, including the parsed backfill strategy and continuous evaluation strategy.
         self.run_strategy_config = run_strategy_config
         # The evaluation task status.
         self.status = status
-        # The key-value pairs of task tags. This parameter is empty if no tags are set.
+        # The key-value pairs of task tags. Empty if not set.
         self.tags = tags
         # The evaluation task ID.
         self.task_id = task_id
@@ -117,7 +117,7 @@ class ListEvaluationTasksResponseBodyEvaluationTasks(DaraModel):
         self.task_mode = task_mode
         # The task name.
         self.task_name = task_name
-        # The last update time, in seconds-level UNIX timestamp.
+        # The last update time, represented as a UNIX timestamp in seconds.
         self.updated_at = updated_at
 
     def validate(self):

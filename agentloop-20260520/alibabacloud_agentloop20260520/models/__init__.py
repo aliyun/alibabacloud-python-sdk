@@ -19,6 +19,7 @@ from ._model_parameters import ModelParameters
 from ._offline_experiment_config import OfflineExperimentConfig
 from ._prompt_template_item import PromptTemplateItem
 from ._run_strategies import RunStrategies
+from ._selected_data_strategy import SelectedDataStrategy
 from ._evaluator_variable_extractor_mapping_value import EvaluatorVariableExtractorMappingValue
 from ._meta_schema_value import MetaSchemaValue
 from ._add_dataset_data_request import AddDatasetDataRequest
@@ -203,6 +204,10 @@ from ._list_pipeline_runs_response import ListPipelineRunsResponse
 from ._list_pipelines_request import ListPipelinesRequest
 from ._list_pipelines_response_body import ListPipelinesResponseBody
 from ._list_pipelines_response import ListPipelinesResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_shrink_request import ListTagResourcesShrinkRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
 from ._pause_pipeline_request import PausePipelineRequest
 from ._pause_pipeline_response_body import PausePipelineResponseBody
 from ._pause_pipeline_response import PausePipelineResponse
@@ -218,9 +223,16 @@ from ._run_pipeline_response import RunPipelineResponse
 from ._search_context_request import SearchContextRequest
 from ._search_context_response_body import SearchContextResponseBody
 from ._search_context_response import SearchContextResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
 from ._terminate_pipeline_request import TerminatePipelineRequest
 from ._terminate_pipeline_response_body import TerminatePipelineResponseBody
 from ._terminate_pipeline_response import TerminatePipelineResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_shrink_request import UntagResourcesShrinkRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
 from ._update_agent_space_request import UpdateAgentSpaceRequest
 from ._update_agent_space_response_body import UpdateAgentSpaceResponseBody
 from ._update_agent_space_response import UpdateAgentSpaceResponse
@@ -391,6 +403,8 @@ from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSou
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSourceTrajectory
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelinesSource
 from ._list_pipelines_response_body import ListPipelinesResponseBodyPipelines
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._preview_pipeline_request import PreviewPipelineRequestPipelineNodes
 from ._preview_pipeline_request import PreviewPipelineRequestPipeline
 from ._preview_pipeline_request import PreviewPipelineRequestSourceDataset
@@ -402,6 +416,7 @@ from ._preview_pipeline_request import PreviewPipelineRequestSource
 from ._preview_pipeline_response_body import PreviewPipelineResponseBodyMeta
 from ._run_pipeline_request import RunPipelineRequestOutput
 from ._search_context_request import SearchContextRequestScope
+from ._tag_resources_request import TagResourcesRequestTag
 from ._update_context_store_request import UpdateContextStoreRequestConfigAudit
 from ._update_context_store_request import UpdateContextStoreRequestConfigExtractionPoliciesModel
 from ._update_context_store_request import UpdateContextStoreRequestConfigExtractionPoliciesStoragePolicy
@@ -460,6 +475,7 @@ __all__ = [
     OfflineExperimentConfig,
     PromptTemplateItem,
     RunStrategies,
+    SelectedDataStrategy,
     EvaluatorVariableExtractorMappingValue,
     MetaSchemaValue,
     AddDatasetDataRequest,
@@ -644,6 +660,10 @@ __all__ = [
     ListPipelinesRequest,
     ListPipelinesResponseBody,
     ListPipelinesResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesShrinkRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
     PausePipelineRequest,
     PausePipelineResponseBody,
     PausePipelineResponse,
@@ -659,9 +679,16 @@ __all__ = [
     SearchContextRequest,
     SearchContextResponseBody,
     SearchContextResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
     TerminatePipelineRequest,
     TerminatePipelineResponseBody,
     TerminatePipelineResponse,
+    UntagResourcesRequest,
+    UntagResourcesShrinkRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
     UpdateAgentSpaceRequest,
     UpdateAgentSpaceResponseBody,
     UpdateAgentSpaceResponse,
@@ -832,6 +859,8 @@ __all__ = [
     ListPipelinesResponseBodyPipelinesSourceTrajectory,
     ListPipelinesResponseBodyPipelinesSource,
     ListPipelinesResponseBodyPipelines,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
     PreviewPipelineRequestPipelineNodes,
     PreviewPipelineRequestPipeline,
     PreviewPipelineRequestSourceDataset,
@@ -843,6 +872,7 @@ __all__ = [
     PreviewPipelineResponseBodyMeta,
     RunPipelineRequestOutput,
     SearchContextRequestScope,
+    TagResourcesRequestTag,
     UpdateContextStoreRequestConfigAudit,
     UpdateContextStoreRequestConfigExtractionPoliciesModel,
     UpdateContextStoreRequestConfigExtractionPoliciesStoragePolicy,

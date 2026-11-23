@@ -10,17 +10,22 @@ class RunStrategies(DaraModel):
         self,
         backfill: main_models.BackfillStrategy = None,
         continuous: main_models.ContinuousStrategy = None,
+        selected_data: main_models.SelectedDataStrategy = None,
     ):
         # The historical batch backfill policy. Backfill is enabled when the object exists and enabled is not explicitly set to false.
         self.backfill = backfill
         # The continuous evaluation policy. Continuous evaluation is enabled when the object exists and enabled is not explicitly set to false.
         self.continuous = continuous
+        # The selection of specified objects for evaluation.
+        self.selected_data = selected_data
 
     def validate(self):
         if self.backfill:
             self.backfill.validate()
         if self.continuous:
             self.continuous.validate()
+        if self.selected_data:
+            self.selected_data.validate()
 
     def to_map(self):
         result = dict()
@@ -33,6 +38,9 @@ class RunStrategies(DaraModel):
         if self.continuous is not None:
             result['continuous'] = self.continuous.to_map()
 
+        if self.selected_data is not None:
+            result['selectedData'] = self.selected_data.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -44,6 +52,10 @@ class RunStrategies(DaraModel):
         if m.get('continuous') is not None:
             temp_model = main_models.ContinuousStrategy()
             self.continuous = temp_model.from_map(m.get('continuous'))
+
+        if m.get('selectedData') is not None:
+            temp_model = main_models.SelectedDataStrategy()
+            self.selected_data = temp_model.from_map(m.get('selectedData'))
 
         return self
 

@@ -16,21 +16,21 @@ class ListEvaluationTasksRequest(DaraModel):
         task_mode: str = None,
         task_name: str = None,
     ):
-        # The AgentSpace name.
+        # The name of the AgentSpace.
         self.agent_space = agent_space
-        # The filter condition for the task source. If this parameter is not specified, tasks from the default source are queried.
+        # The filter condition for the task source. If not specified, tasks from the default source are queried.
         self.channel = channel
-        # The data source type of the evaluation object. Set this parameter to `trace` for trace-based evaluation.
+        # The data source type of the evaluation object. Use trace for trace evaluation.
         self.data_type = data_type
-        # The number of entries per page. Default value: 20. Maximum value: 100.
+        # The number of entries to return per page. The default value is 20, and the maximum value is 100.
         self.max_results = max_results
         # The pagination token for the next page, obtained from the previous response.
         self.next_token = next_token
         # The filter condition for the evaluation task status.
         self.status = status
-        # The evaluation task mode. If this parameter is not specified, the default value is `batch`.
+        # The mode of the evaluation task. If not specified, the backend defaults to batch.
         self.task_mode = task_mode
-        # The fuzzy match condition for the task name.
+        # The fuzzy search condition for the task name.
         self.task_name = task_name
 
     def validate(self):
