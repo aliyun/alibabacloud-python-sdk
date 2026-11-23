@@ -1,0 +1,71 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._medical_agent_chat_headers import MedicalAgentChatHeaders
+from ._medical_agent_chat_request import MedicalAgentChatRequest
+from ._medical_agent_chat_response_body import MedicalAgentChatResponseBody
+from ._medical_agent_chat_response import MedicalAgentChatResponse
+from ._medical_model_inference_headers import MedicalModelInferenceHeaders
+from ._medical_model_inference_request import MedicalModelInferenceRequest
+from ._medical_model_inference_response_body import MedicalModelInferenceResponseBody
+from ._medical_model_inference_response import MedicalModelInferenceResponse
+from ._open_service_headers import OpenServiceHeaders
+from ._open_service_request import OpenServiceRequest
+from ._open_service_response_body import OpenServiceResponseBody
+from ._open_service_response import OpenServiceResponse
+from ._medical_agent_chat_response_body import MedicalAgentChatResponseBodyAudioFrames
+from ._medical_agent_chat_response_body import MedicalAgentChatResponseBodyCommunication
+from ._medical_agent_chat_response_body import MedicalAgentChatResponseBodyDataExtraInfoInputResources
+from ._medical_agent_chat_response_body import MedicalAgentChatResponseBodyDataExtraInfo
+from ._medical_agent_chat_response_body import MedicalAgentChatResponseBodyDataMessagesMetaDataMultiLoad
+from ._medical_agent_chat_response_body import MedicalAgentChatResponseBodyDataMessagesMetaData
+from ._medical_agent_chat_response_body import MedicalAgentChatResponseBodyDataMessages
+from ._medical_agent_chat_response_body import MedicalAgentChatResponseBodyData
+from ._medical_agent_chat_response_body import MedicalAgentChatResponseBodyError
+from ._medical_model_inference_response_body import MedicalModelInferenceResponseBodyAudioFrames
+from ._medical_model_inference_response_body import MedicalModelInferenceResponseBodyCommunication
+from ._medical_model_inference_response_body import MedicalModelInferenceResponseBodyDataExtraInfoInputResources
+from ._medical_model_inference_response_body import MedicalModelInferenceResponseBodyDataExtraInfo
+from ._medical_model_inference_response_body import MedicalModelInferenceResponseBodyDataMessagesMetaDataMultiLoad
+from ._medical_model_inference_response_body import MedicalModelInferenceResponseBodyDataMessagesMetaData
+from ._medical_model_inference_response_body import MedicalModelInferenceResponseBodyDataMessages
+from ._medical_model_inference_response_body import MedicalModelInferenceResponseBodyData
+from ._medical_model_inference_response_body import MedicalModelInferenceResponseBodyError
+from ._open_service_request import OpenServiceRequestCommunicationUserInfo
+from ._open_service_request import OpenServiceRequestCommunication
+
+__all__ = [
+    MedicalAgentChatHeaders,
+    MedicalAgentChatRequest,
+    MedicalAgentChatResponseBody,
+    MedicalAgentChatResponse,
+    MedicalModelInferenceHeaders,
+    MedicalModelInferenceRequest,
+    MedicalModelInferenceResponseBody,
+    MedicalModelInferenceResponse,
+    OpenServiceHeaders,
+    OpenServiceRequest,
+    OpenServiceResponseBody,
+    OpenServiceResponse,
+    MedicalAgentChatResponseBodyAudioFrames,
+    MedicalAgentChatResponseBodyCommunication,
+    MedicalAgentChatResponseBodyDataExtraInfoInputResources,
+    MedicalAgentChatResponseBodyDataExtraInfo,
+    MedicalAgentChatResponseBodyDataMessagesMetaDataMultiLoad,
+    MedicalAgentChatResponseBodyDataMessagesMetaData,
+    MedicalAgentChatResponseBodyDataMessages,
+    MedicalAgentChatResponseBodyData,
+    MedicalAgentChatResponseBodyError,
+    MedicalModelInferenceResponseBodyAudioFrames,
+    MedicalModelInferenceResponseBodyCommunication,
+    MedicalModelInferenceResponseBodyDataExtraInfoInputResources,
+    MedicalModelInferenceResponseBodyDataExtraInfo,
+    MedicalModelInferenceResponseBodyDataMessagesMetaDataMultiLoad,
+    MedicalModelInferenceResponseBodyDataMessagesMetaData,
+    MedicalModelInferenceResponseBodyDataMessages,
+    MedicalModelInferenceResponseBodyData,
+    MedicalModelInferenceResponseBodyError,
+    OpenServiceRequestCommunicationUserInfo,
+    OpenServiceRequestCommunication
+]
