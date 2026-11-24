@@ -142,7 +142,7 @@ class Client(OpenApiClient):
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'formData',
+            req_body_type = 'json',
             body_type = 'json'
         )
         return DaraCore.from_map(
@@ -178,7 +178,7 @@ class Client(OpenApiClient):
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'formData',
+            req_body_type = 'json',
             body_type = 'json'
         )
         return DaraCore.from_map(
@@ -204,18 +204,14 @@ class Client(OpenApiClient):
 
     def create_edu_problem_solve_with_sse(
         self,
-        tmp_req: main_models.CreateEduProblemSolveRequest,
+        request: main_models.CreateEduProblemSolveRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> Generator[main_models.CreateEduProblemSolveResponse, None, None]:
-        tmp_req.validate()
-        request = main_models.CreateEduProblemSolveShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.query):
-            request.query_shrink = Utils.array_to_string_with_specified_style(tmp_req.query, 'query', 'json')
+        request.validate()
         body = {}
-        if not DaraCore.is_null(request.query_shrink):
-            body['query'] = request.query_shrink
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
         if not DaraCore.is_null(request.request_id):
             body['requestId'] = request.request_id
         req = open_api_util_models.OpenApiRequest(
@@ -230,7 +226,7 @@ class Client(OpenApiClient):
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'formData',
+            req_body_type = 'json',
             body_type = 'json'
         )
         sse_resp = self.call_sseapi(params, req, runtime)
@@ -249,18 +245,14 @@ class Client(OpenApiClient):
 
     async def create_edu_problem_solve_with_sse_async(
         self,
-        tmp_req: main_models.CreateEduProblemSolveRequest,
+        request: main_models.CreateEduProblemSolveRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> AsyncGenerator[main_models.CreateEduProblemSolveResponse, None, None]:
-        tmp_req.validate()
-        request = main_models.CreateEduProblemSolveShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.query):
-            request.query_shrink = Utils.array_to_string_with_specified_style(tmp_req.query, 'query', 'json')
+        request.validate()
         body = {}
-        if not DaraCore.is_null(request.query_shrink):
-            body['query'] = request.query_shrink
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
         if not DaraCore.is_null(request.request_id):
             body['requestId'] = request.request_id
         req = open_api_util_models.OpenApiRequest(
@@ -275,7 +267,7 @@ class Client(OpenApiClient):
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'formData',
+            req_body_type = 'json',
             body_type = 'json'
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
@@ -294,18 +286,14 @@ class Client(OpenApiClient):
 
     def create_edu_problem_solve_with_options(
         self,
-        tmp_req: main_models.CreateEduProblemSolveRequest,
+        request: main_models.CreateEduProblemSolveRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.CreateEduProblemSolveResponse:
-        tmp_req.validate()
-        request = main_models.CreateEduProblemSolveShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.query):
-            request.query_shrink = Utils.array_to_string_with_specified_style(tmp_req.query, 'query', 'json')
+        request.validate()
         body = {}
-        if not DaraCore.is_null(request.query_shrink):
-            body['query'] = request.query_shrink
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
         if not DaraCore.is_null(request.request_id):
             body['requestId'] = request.request_id
         req = open_api_util_models.OpenApiRequest(
@@ -320,7 +308,7 @@ class Client(OpenApiClient):
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'formData',
+            req_body_type = 'json',
             body_type = 'json'
         )
         return DaraCore.from_map(
@@ -330,18 +318,14 @@ class Client(OpenApiClient):
 
     async def create_edu_problem_solve_with_options_async(
         self,
-        tmp_req: main_models.CreateEduProblemSolveRequest,
+        request: main_models.CreateEduProblemSolveRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.CreateEduProblemSolveResponse:
-        tmp_req.validate()
-        request = main_models.CreateEduProblemSolveShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.query):
-            request.query_shrink = Utils.array_to_string_with_specified_style(tmp_req.query, 'query', 'json')
+        request.validate()
         body = {}
-        if not DaraCore.is_null(request.query_shrink):
-            body['query'] = request.query_shrink
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
         if not DaraCore.is_null(request.request_id):
             body['requestId'] = request.request_id
         req = open_api_util_models.OpenApiRequest(
@@ -356,7 +340,7 @@ class Client(OpenApiClient):
             method = 'POST',
             auth_type = 'AK',
             style = 'ROA',
-            req_body_type = 'formData',
+            req_body_type = 'json',
             body_type = 'json'
         )
         return DaraCore.from_map(

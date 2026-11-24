@@ -1,3 +1,14 @@
+2026-11-24 Version: 3.0.0
+- Update API CreateEduHomeworkCorrectSubmit: add request parameters body.
+- Update API CreateEduHomeworkCorrectSubmit: delete request parameters dewarp.
+- Update API CreateEduHomeworkCorrectSubmit: delete request parameters imageBase64.
+- Update API CreateEduHomeworkCorrectSubmit: delete request parameters imageUrl.
+- Update API CreateEduHomeworkCorrectSubmit: delete request parameters requestId.
+- Update API CreateEduProblemSolve: add request parameters body.
+- Update API CreateEduProblemSolve: delete request parameters query.
+- Update API CreateEduProblemSolve: delete request parameters requestId.
+
+
 2026-11-23 Version: 2.0.0
 - Update API CreateEduProblemSolve: add response parameters Body.code.
 - Update API CreateEduProblemSolve: add response parameters Body.finished.

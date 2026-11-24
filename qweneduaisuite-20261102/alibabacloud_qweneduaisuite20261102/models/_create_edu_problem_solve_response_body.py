@@ -21,21 +21,21 @@ class CreateEduProblemSolveResponseBody(DaraModel):
     ):
         # The API data identifier.
         self.code = code
-        # Specifies whether this is the final full snapshot. The value is fixed to true in the complete event.
+        # Specifies whether the response is the final full snapshot. This value is fixed to true in the complete event.
         self.finished = finished
         # The current list of complete question results.
         self.items = items
-        # The actual response message of the request.
+        # The actual message returned by the request.
         self.message = message
         # Echo request ID echoed from echo request.
         self.request_id = request_id
         # The type of the question resolution result. Valid values:
-        # * single: Single question.
-        # * multiple: Multiple questions.
+        # - single: A single question.
+        # - multiple: Multiple questions.
         self.result_type = result_type
         # Specifies whether the error is retryable. Default value: true.
         self.retryable = retryable
-        # The token usage. Only the complete event carries the final value. The message event does not return this field.
+        # The token usage. Only the complete event carries the final value. This field is not returned in message events.
         self.usage = usage
 
     def validate(self):
@@ -157,17 +157,17 @@ class CreateEduProblemSolveResponseBodyItems(DaraModel):
         status: str = None,
         thinking: main_models.CreateEduProblemSolveResponseBodyItemsThinking = None,
     ):
-        # The complete Markdown content of the question resolution, including the deduction process and the final result.
+        # The complete question resolution content in Markdown format, including the deduction process and the final result.
         self.content = content
         # The URL of the unique image for the current question. The URL may be time-sensitive. If the question is not associated with an image resource and no request URL is available for fallback, an empty string is returned.
         self.image_url = image_url
-        # The question identifier. The value is the question title, such as Question 1. The server does not return a separate title field. If the downstream service does not provide a question title, which is always the case for single-question scenarios, titles such as Question 1 and Question 2 are generated in the order of the questions.
+        # The question identifier. The value is the question title, such as Question 1. The server does not return a separate title field. If the downstream service does not provide a question title, which is always the case in single-question scenarios, titles such as Question 1 and Question 2 are generated in the order of the questions.
         self.question_id = question_id
         # The current question status. Valid values:
-        # * processing: Processing.
-        # * complete: Complete.
+        # - processing: The question is being processed.
+        # - complete: The question processing is complete.
         self.status = status
-        # The thinking process. This field is returned only when result_type is single, and is not returned for multiple questions.
+        # The thinking process. This field is returned only when result_type is single. It is not returned for multiple questions.
         self.thinking = thinking
 
     def validate(self):
@@ -225,8 +225,8 @@ class CreateEduProblemSolveResponseBodyItemsThinking(DaraModel):
         # The current thinking content.
         self.content = content
         # The thinking status. Valid values:
-        # * processing: Processing.
-        # * complete: Complete.
+        # - processing: The thinking process is in progress.
+        # - complete: The thinking process is complete.
         self.status = status
 
     def validate(self):

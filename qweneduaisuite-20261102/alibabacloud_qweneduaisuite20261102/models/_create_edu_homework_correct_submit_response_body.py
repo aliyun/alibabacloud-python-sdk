@@ -21,7 +21,7 @@ class CreateEduHomeworkCorrectSubmitResponseBody(DaraModel):
         self.data = data
         # The request error message.
         self.message = message
-        # The request ID on the caller side.
+        # The request ID of the caller.
         self.request_id = request_id
 
     def validate(self):
@@ -73,15 +73,15 @@ class CreateEduHomeworkCorrectSubmitResponseBodyData(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The clockwise rotation angle of the image, in degrees.
+        # The rotation angle of the image in the clockwise direction, in degrees.
         self.angle = angle
-        # The URL of the corrected image. If `dewarp` is set to `false`, the URL of the original image is returned.
+        # The URL of the corrected image. If `dewarp` is set to `false`, the original image is returned.
         self.dewarp_url = dewarp_url
         # The array of question recognition and grading results.
         self.question_results = question_results
         # The task status.
         self.status = status
-        # The unique identifier of the task. You must include this ID in subsequent queries.
+        # The unique identifier of the task, which must be included in subsequent queries.
         self.task_id = task_id
 
     def validate(self):
@@ -149,7 +149,7 @@ class CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResults(DaraModel):
     ):
         # The array of answering and grading results for the question.
         self.answer_results = answer_results
-        # Specifies whether the task is completed:
+        # Specifies whether the task is completed. Valid values:
         # 
         # - **true**: The task is completed.
         # - **false**: The task is not completed.
@@ -158,7 +158,7 @@ class CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResults(DaraModel):
         self.question_content = question_content
         # The question ID.
         self.question_id = question_id
-        # The coordinate group of the question area. It generally contains four vertex coordinates arranged in the order of top-left, top-right, bottom-right, and bottom-left.
+        # The coordinate group of the question area. It generally contains four vertex coordinates, arranged in the order of top-left, top-right, bottom-right, and bottom-left.
         self.question_points = question_points
         # The question type.
         self.question_type = question_type
@@ -291,9 +291,9 @@ class CreateEduHomeworkCorrectSubmitResponseBodyDataQuestionResultsAnswerResults
         standard_answer: str = None,
         user_answer: str = None,
     ):
-        # The coordinate group of the user\\"s answering area. It generally contains four vertex coordinates arranged in the order of top-left, top-right, bottom-right, and bottom-left, formatted as `[{"x": ..., "y": ...}, ...]`.
+        # The coordinate group of the user\\"s answering area. It generally contains four vertex coordinates, arranged in the order of top-left, top-right, bottom-right, and bottom-left, such as `[{"x": ..., "y": ...}, ...]`.
         self.answer_points = answer_points
-        # The coordinates of the grading mark point, formatted as `{ "x": ..., "y": ... }`.
+        # The coordinates of the grading mark point, such as `{ "x": ..., "y": ... }`.
         self.check_point = check_point
         # The grading conclusion, such as `correct`, `wrong`, or `partial`.
         self.check_result = check_result

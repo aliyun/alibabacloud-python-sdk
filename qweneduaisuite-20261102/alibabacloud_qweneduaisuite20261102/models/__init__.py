@@ -9,7 +9,6 @@ from ._create_edu_homework_correct_submit_request import CreateEduHomeworkCorrec
 from ._create_edu_homework_correct_submit_response_body import CreateEduHomeworkCorrectSubmitResponseBody
 from ._create_edu_homework_correct_submit_response import CreateEduHomeworkCorrectSubmitResponse
 from ._create_edu_problem_solve_request import CreateEduProblemSolveRequest
-from ._create_edu_problem_solve_shrink_request import CreateEduProblemSolveShrinkRequest
 from ._create_edu_problem_solve_response_body import CreateEduProblemSolveResponseBody
 from ._create_edu_problem_solve_response import CreateEduProblemSolveResponse
 from ._get_edu_homework_correction_result_request import GetEduHomeworkCorrectionResultRequest
@@ -46,7 +45,6 @@ __all__ = [
     CreateEduHomeworkCorrectSubmitResponseBody,
     CreateEduHomeworkCorrectSubmitResponse,
     CreateEduProblemSolveRequest,
-    CreateEduProblemSolveShrinkRequest,
     CreateEduProblemSolveResponseBody,
     CreateEduProblemSolveResponse,
     GetEduHomeworkCorrectionResultRequest,
