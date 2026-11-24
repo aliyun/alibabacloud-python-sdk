@@ -511,6 +511,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.batch_delete_consumer_authorization_rule_with_options_async(request, headers, runtime)
 
+    def batch_deploy_http_api_routes_with_options(
+        self,
+        http_api_id: str,
+        request: main_models.BatchDeployHttpApiRoutesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeployHttpApiRoutesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.async_):
+            body['async'] = request.async_
+        if not DaraCore.is_null(request.deploy_all):
+            body['deployAll'] = request.deploy_all
+        if not DaraCore.is_null(request.route_ids):
+            body['routeIds'] = request.route_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeployHttpApiRoutes',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-apis/{DaraURL.percent_encode(http_api_id)}/routes/batch-deploy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeployHttpApiRoutesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_deploy_http_api_routes_with_options_async(
+        self,
+        http_api_id: str,
+        request: main_models.BatchDeployHttpApiRoutesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeployHttpApiRoutesResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.async_):
+            body['async'] = request.async_
+        if not DaraCore.is_null(request.deploy_all):
+            body['deployAll'] = request.deploy_all
+        if not DaraCore.is_null(request.route_ids):
+            body['routeIds'] = request.route_ids
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeployHttpApiRoutes',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-apis/{DaraURL.percent_encode(http_api_id)}/routes/batch-deploy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeployHttpApiRoutesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_deploy_http_api_routes(
+        self,
+        http_api_id: str,
+        request: main_models.BatchDeployHttpApiRoutesRequest,
+    ) -> main_models.BatchDeployHttpApiRoutesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_deploy_http_api_routes_with_options(http_api_id, request, headers, runtime)
+
+    async def batch_deploy_http_api_routes_async(
+        self,
+        http_api_id: str,
+        request: main_models.BatchDeployHttpApiRoutesRequest,
+    ) -> main_models.BatchDeployHttpApiRoutesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_deploy_http_api_routes_with_options_async(http_api_id, request, headers, runtime)
+
     def batch_export_http_apis_with_options(
         self,
         request: main_models.BatchExportHttpApisRequest,
@@ -12706,6 +12794,110 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_batch_export_tasks_with_options_async(request, headers, runtime)
+
+    def list_batch_import_tasks_with_options(
+        self,
+        request: main_models.ListBatchImportTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBatchImportTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.statuses):
+            query['statuses'] = request.statuses
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBatchImportTasks',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-api-batch-import-tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBatchImportTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_batch_import_tasks_with_options_async(
+        self,
+        request: main_models.ListBatchImportTasksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBatchImportTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['endTime'] = request.end_time
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['startTime'] = request.start_time
+        if not DaraCore.is_null(request.statuses):
+            query['statuses'] = request.statuses
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBatchImportTasks',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/http-api-batch-import-tasks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBatchImportTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_batch_import_tasks(
+        self,
+        request: main_models.ListBatchImportTasksRequest,
+    ) -> main_models.ListBatchImportTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_batch_import_tasks_with_options(request, headers, runtime)
+
+    async def list_batch_import_tasks_async(
+        self,
+        request: main_models.ListBatchImportTasksRequest,
+    ) -> main_models.ListBatchImportTasksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_batch_import_tasks_with_options_async(request, headers, runtime)
 
     def list_chat_sessions_with_options(
         self,

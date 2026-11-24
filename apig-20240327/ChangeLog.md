@@ -1,3 +1,8 @@
+2026-11-24 Version: 11.13.0
+- Support API BatchDeployHttpApiRoutes.
+- Support API ListBatchImportTasks.
+
+
 2026-11-24 Version: 11.12.0
 - Generated python 2024-03-27 for APIG.
 

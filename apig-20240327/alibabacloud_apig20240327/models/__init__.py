@@ -108,6 +108,7 @@ from ._validation_options import ValidationOptions
 from ._http_api_api_info_deploy_cnt_map_value import HttpApiApiInfoDeployCntMapValue
 from ._model_api_api_info_deploy_cnt_map_value import ModelApiApiInfoDeployCntMapValue
 from ._model_api_list_api_info_deploy_cnt_map_value import ModelApiListApiInfoDeployCntMapValue
+from ._data_results_value import DataResultsValue
 from ._data_path_configs_field_paths_value import DataPathConfigsFieldPathsValue
 from ._data_field_paths_value import DataFieldPathsValue
 from ._add_gateway_quota_rule_request import AddGatewayQuotaRuleRequest
@@ -125,6 +126,9 @@ from ._batch_add_consumer_group_consumers_response import BatchAddConsumerGroupC
 from ._batch_delete_consumer_authorization_rule_request import BatchDeleteConsumerAuthorizationRuleRequest
 from ._batch_delete_consumer_authorization_rule_response_body import BatchDeleteConsumerAuthorizationRuleResponseBody
 from ._batch_delete_consumer_authorization_rule_response import BatchDeleteConsumerAuthorizationRuleResponse
+from ._batch_deploy_http_api_routes_request import BatchDeployHttpApiRoutesRequest
+from ._batch_deploy_http_api_routes_response_body import BatchDeployHttpApiRoutesResponseBody
+from ._batch_deploy_http_api_routes_response import BatchDeployHttpApiRoutesResponse
 from ._batch_export_http_apis_request import BatchExportHttpApisRequest
 from ._batch_export_http_apis_response_body import BatchExportHttpApisResponseBody
 from ._batch_export_http_apis_response import BatchExportHttpApisResponse
@@ -538,6 +542,9 @@ from ._list_api_path_field_templates_response import ListApiPathFieldTemplatesRe
 from ._list_batch_export_tasks_request import ListBatchExportTasksRequest
 from ._list_batch_export_tasks_response_body import ListBatchExportTasksResponseBody
 from ._list_batch_export_tasks_response import ListBatchExportTasksResponse
+from ._list_batch_import_tasks_request import ListBatchImportTasksRequest
+from ._list_batch_import_tasks_response_body import ListBatchImportTasksResponseBody
+from ._list_batch_import_tasks_response import ListBatchImportTasksResponse
 from ._list_chat_sessions_request import ListChatSessionsRequest
 from ._list_chat_sessions_response_body import ListChatSessionsResponseBody
 from ._list_chat_sessions_response import ListChatSessionsResponse
@@ -1043,6 +1050,7 @@ from ._add_gateway_quota_rule_response_body import AddGatewayQuotaRuleResponseBo
 from ._authorize_consumer_model_card_grants_response_body import AuthorizeConsumerModelCardGrantsResponseBodyDataEntitlementState
 from ._authorize_consumer_model_card_grants_response_body import AuthorizeConsumerModelCardGrantsResponseBodyData
 from ._batch_add_consumer_group_consumers_response_body import BatchAddConsumerGroupConsumersResponseBodyData
+from ._batch_deploy_http_api_routes_response_body import BatchDeployHttpApiRoutesResponseBodyData
 from ._batch_export_http_apis_request import BatchExportHttpApisRequestExtensionConfig
 from ._batch_export_http_apis_response_body import BatchExportHttpApisResponseBodyData
 from ._batch_import_http_apis_request import BatchImportHttpApisRequestSpecOssConfig
@@ -1345,6 +1353,8 @@ from ._list_api_path_field_templates_response_body import ListApiPathFieldTempla
 from ._list_api_path_field_templates_response_body import ListApiPathFieldTemplatesResponseBodyData
 from ._list_batch_export_tasks_response_body import ListBatchExportTasksResponseBodyDataItems
 from ._list_batch_export_tasks_response_body import ListBatchExportTasksResponseBodyData
+from ._list_batch_import_tasks_response_body import ListBatchImportTasksResponseBodyDataItems
+from ._list_batch_import_tasks_response_body import ListBatchImportTasksResponseBodyData
 from ._list_chat_sessions_response_body import ListChatSessionsResponseBodyDataContent
 from ._list_chat_sessions_response_body import ListChatSessionsResponseBodyData
 from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyDataItems
@@ -1716,6 +1726,7 @@ __all__ = [
     HttpApiApiInfoDeployCntMapValue,
     ModelApiApiInfoDeployCntMapValue,
     ModelApiListApiInfoDeployCntMapValue,
+    DataResultsValue,
     DataPathConfigsFieldPathsValue,
     DataFieldPathsValue,
     AddGatewayQuotaRuleRequest,
@@ -1733,6 +1744,9 @@ __all__ = [
     BatchDeleteConsumerAuthorizationRuleRequest,
     BatchDeleteConsumerAuthorizationRuleResponseBody,
     BatchDeleteConsumerAuthorizationRuleResponse,
+    BatchDeployHttpApiRoutesRequest,
+    BatchDeployHttpApiRoutesResponseBody,
+    BatchDeployHttpApiRoutesResponse,
     BatchExportHttpApisRequest,
     BatchExportHttpApisResponseBody,
     BatchExportHttpApisResponse,
@@ -2146,6 +2160,9 @@ __all__ = [
     ListBatchExportTasksRequest,
     ListBatchExportTasksResponseBody,
     ListBatchExportTasksResponse,
+    ListBatchImportTasksRequest,
+    ListBatchImportTasksResponseBody,
+    ListBatchImportTasksResponse,
     ListChatSessionsRequest,
     ListChatSessionsResponseBody,
     ListChatSessionsResponse,
@@ -2651,6 +2668,7 @@ __all__ = [
     AuthorizeConsumerModelCardGrantsResponseBodyDataEntitlementState,
     AuthorizeConsumerModelCardGrantsResponseBodyData,
     BatchAddConsumerGroupConsumersResponseBodyData,
+    BatchDeployHttpApiRoutesResponseBodyData,
     BatchExportHttpApisRequestExtensionConfig,
     BatchExportHttpApisResponseBodyData,
     BatchImportHttpApisRequestSpecOssConfig,
@@ -2953,6 +2971,8 @@ __all__ = [
     ListApiPathFieldTemplatesResponseBodyData,
     ListBatchExportTasksResponseBodyDataItems,
     ListBatchExportTasksResponseBodyData,
+    ListBatchImportTasksResponseBodyDataItems,
+    ListBatchImportTasksResponseBodyData,
     ListChatSessionsResponseBodyDataContent,
     ListChatSessionsResponseBodyData,
     ListConsumerAuthorizationRulesResponseBodyDataItems,
