@@ -18,9 +18,9 @@ class ListGatewayResponseBody(DaraModel):
     ):
         # The list of private gateways.
         self.gateways = gateways
-        # The page number of the returned gateway list.
+        # The page number of the returned page.
         self.page_number = page_number
-        # The number of gateways returned on each page.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
@@ -97,6 +97,7 @@ class ListGatewayResponseBodyGateways(DaraModel):
         sslredirection_enabled: bool = None,
         status: str = None,
         update_time: str = None,
+        workspace_id: str = None,
     ):
         # The billing method. Valid values:
         # - PrePaid: subscription.
@@ -130,6 +131,8 @@ class ListGatewayResponseBodyGateways(DaraModel):
         self.status = status
         # The time when the private gateway was updated. The time is displayed in UTC.
         self.update_time = update_time
+        # The ID of the workspace.
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.labels:
@@ -189,6 +192,9 @@ class ListGatewayResponseBodyGateways(DaraModel):
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -240,6 +246,9 @@ class ListGatewayResponseBodyGateways(DaraModel):
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

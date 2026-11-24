@@ -22,7 +22,7 @@ class UpdateServiceRolloutRequest(DaraModel):
         # * Required: no
         # * Description: The partition rollout configuration. Used to adjust partition policy parameters. Mutually exclusive with Batch.
         self.partition = partition
-        # Specifies whether to pause the rollout. A value of `true` indicates that the rollout is paused. A value of `false` indicates that the rollout is resumed.
+        # Specifies whether to pause the rollout. A value of true indicates that the rollout is paused. A value of false indicates that the rollout is resumed.
         self.paused = paused
 
     def validate(self):
@@ -71,9 +71,9 @@ class UpdateServiceRolloutRequestPartition(DaraModel):
         # * Type: string
         # * Required: yes
         # * Description: The partition value. Two formats are supported:
-        #   1. Integer format: such as "5", which indicates that 5 old replicas are retained.
-        #   2. Percentage format: such as "50%", which indicates that 50% of the old replicas are retained.
-        #   Adjustment strategies:
+        #   1. Integer format: such as "5", which means retaining 5 old replicas.
+        #   2. Percentage format: such as "50%", which means retaining 50% of the old replicas.
+        #   Adjustment policy:
         #   - Increase the value: Roll back to the old version and increase the proportion of old replicas.
         #   - Decrease the value: Proceed to the new version and decrease the proportion of old replicas.
         #   - Set to "0%": Complete the full update and switch all replicas to the new version.
@@ -106,9 +106,9 @@ class UpdateServiceRolloutRequestBatch(DaraModel):
         batch_size: str = None,
         interval: str = None,
     ):
-        # The batch size. The number of replicas to update in each batch. Integer or percentage formats are supported. Default value: `"25%"`.
+        # The batch size. The number of replicas updated per batch. Integer or percentage formats are supported. Default value: "25%".
         self.batch_size = batch_size
-        # The batch interval. The wait time between two rollouts. Supported units: `s` (seconds), `m` (minutes), and `h` (hours).
+        # The batch interval. The wait time between two rollouts. Supported units: s (seconds), m (minutes), and h (hours).
         self.interval = interval
 
     def validate(self):

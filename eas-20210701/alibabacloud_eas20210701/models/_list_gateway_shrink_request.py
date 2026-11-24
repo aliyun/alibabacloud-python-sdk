@@ -19,31 +19,34 @@ class ListGatewayShrinkRequest(DaraModel):
         resource_name: str = None,
         sort: str = None,
         status: str = None,
+        workspace_id: str = None,
     ):
         # The billing method.
         self.charge_type = charge_type
-        # The ID of the private gateway. For information about how to obtain the ID of a private gateway, see the private_gateway_id field in the response of the ListResources operation.
+        # The ID of the private gateway. To obtain the private gateway ID, see the private_gateway_id field in the response of the ListResources operation.
         self.gateway_id = gateway_id
         # The alias of the private gateway.
         self.gateway_name = gateway_name
         # The type of the gateway.
         self.gateway_type = gateway_type
-        # Specifies whether Internet access is enabled.
+        # Specifies whether public network access is enabled.
         self.internet_enabled = internet_enabled
-        # The label used to filter gateways.
+        # Filters the results by label.
         self.label_shrink = label_shrink
         # The sort order.
         self.order = order
         # The page number of the gateway list. Default value: 1.
         self.page_number = page_number
-        # The paging Settings for the number of entries to return per page in a paged query. Default value: 100.
+        # The paging settings for the number of entries to return on each page in a paged query. Default value: 100.
         self.page_size = page_size
-        # The ID of the resource group. For information about how to obtain the ID of a resource group, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+        # The ID of the resource group. To obtain the resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
         self.resource_name = resource_name
         # The field used for sorting.
         self.sort = sort
         # The status of the gateway.
         self.status = status
+        # The ID of the workspace.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -89,6 +92,9 @@ class ListGatewayShrinkRequest(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -128,6 +134,9 @@ class ListGatewayShrinkRequest(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

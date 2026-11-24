@@ -15,6 +15,7 @@ class DescribeGatewayResponseBody(DaraModel):
         external_cluster_id: str = None,
         gateway_id: str = None,
         gateway_name: str = None,
+        idle_timeout: str = None,
         instance_type: str = None,
         internet_domain: str = None,
         internet_enabled: bool = None,
@@ -25,46 +26,56 @@ class DescribeGatewayResponseBody(DaraModel):
         labels: List[main_models.DescribeGatewayResponseBodyLabels] = None,
         replicas: int = None,
         request_id: str = None,
+        request_timeout: str = None,
         sslredirection_enabled: bool = None,
         status: str = None,
         update_time: str = None,
+        workspace_id: str = None,
     ):
-        # The billing method. Valid values:
+        # The billing method.
         self.charge_type = charge_type
-        # The time when the dedicated gateway was created. The time is in UTC.
+        # The time when the private gateway was created. The time is displayed in UTC.
         self.create_time = create_time
-        # The self-managed cluster ID.
+        # The ID of the self-managed cluster.
         self.external_cluster_id = external_cluster_id
-        # The dedicated gateway ID.
+        # The ID of the private gateway.
         self.gateway_id = gateway_id
-        # The alias of the dedicated gateway.
+        # The alias of the private gateway.
         self.gateway_name = gateway_name
-        # The instance type used by the dedicated gateway.
+        # The idle connection timeout. Default value: 600. Valid values: 1 to 3600. Unit: seconds.
+        self.idle_timeout = idle_timeout
+        # The instance type used by the private gateway.
         self.instance_type = instance_type
-        # The public network access domain name.
+        # The domain name for public network access.
         self.internet_domain = internet_domain
-        # Indicates whether public network access is enabled.
+        # Specifies whether public network access is enabled.
         self.internet_enabled = internet_enabled
-        # The status of public network access. Valid values:
+        # The status of enabling or disabling public network access.
         self.internet_status = internet_status
-        # The internal access domain name.
+        # The domain name for internal network access.
         self.intranet_domain = intranet_domain
-        # Indicates whether internal network access is enabled. A value of true indicates that internal network access is enabled. A value of false indicates that internal network access is not enabled.
+        # Specifies whether internal network access is enabled. A value of true indicates that internal network access is enabled. A value of false indicates that internal network access is disabled.
         self.intranet_enabled = intranet_enabled
-        # Indicates whether the dedicated gateway is the default gateway.
+        # Specifies whether the private gateway is the default private gateway.
         self.is_default = is_default
         # The list of gateway labels.
         self.labels = labels
-        # The number of nodes in the dedicated gateway.
+        # The number of nodes in the private gateway.
         self.replicas = replicas
         # The request ID.
         self.request_id = request_id
-        # Indicates whether HTTP-to-HTTPS redirection is enabled.
+        # The request timeout. Unit: seconds.
+        # 
+        # Default value: 600. Valid values: 1 to 3600.
+        self.request_timeout = request_timeout
+        # Specifies whether HTTP to HTTPS redirection is enabled.
         self.sslredirection_enabled = sslredirection_enabled
-        # The status of the dedicated gateway. Valid values:
+        # The status of the private gateway.
         self.status = status
-        # The time when the dedicated gateway was last updated. The time is in UTC.
+        # The time when the private gateway was updated. The time is displayed in UTC.
         self.update_time = update_time
+        # The workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.labels:
@@ -91,6 +102,9 @@ class DescribeGatewayResponseBody(DaraModel):
 
         if self.gateway_name is not None:
             result['GatewayName'] = self.gateway_name
+
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
 
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
@@ -124,6 +138,9 @@ class DescribeGatewayResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
+
         if self.sslredirection_enabled is not None:
             result['SSLRedirectionEnabled'] = self.sslredirection_enabled
 
@@ -132,6 +149,9 @@ class DescribeGatewayResponseBody(DaraModel):
 
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
 
         return result
 
@@ -151,6 +171,9 @@ class DescribeGatewayResponseBody(DaraModel):
 
         if m.get('GatewayName') is not None:
             self.gateway_name = m.get('GatewayName')
+
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
 
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
@@ -185,6 +208,9 @@ class DescribeGatewayResponseBody(DaraModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
+
         if m.get('SSLRedirectionEnabled') is not None:
             self.sslredirection_enabled = m.get('SSLRedirectionEnabled')
 
@@ -194,6 +220,9 @@ class DescribeGatewayResponseBody(DaraModel):
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
 
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+
         return self
 
 class DescribeGatewayResponseBodyLabels(DaraModel):
@@ -202,9 +231,9 @@ class DescribeGatewayResponseBodyLabels(DaraModel):
         label_key: str = None,
         label_value: str = None,
     ):
-        # The gateway label key.
+        # The key of the gateway label.
         self.label_key = label_key
-        # The gateway label value.
+        # The value of the gateway label.
         self.label_value = label_value
 
     def validate(self):

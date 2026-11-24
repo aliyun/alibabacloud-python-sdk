@@ -12,12 +12,12 @@ class DeleteServiceRolloutResponseBody(DaraModel):
     ):
         # **Message**  
         # * Type: `string`  
-        # * Description: The response message. Describes the result of the request processing.  
+        # * Description: The returned message. Describes the request processing result.  
         # * Example: `Rollout deleted successfully`
         self.message = message
         # **RequestId**  
         # * Type: `string`  
-        # * Description: The request ID. A unique identifier returned for each request, used for troubleshooting and tracing.  
+        # * Description: The request ID. The unique identifier returned for each request, used for troubleshooting and tracking.  
         # * Example: `40325405-579C-4D82-9B4F-8A7C6D5E4F3A`
         self.request_id = request_id
 

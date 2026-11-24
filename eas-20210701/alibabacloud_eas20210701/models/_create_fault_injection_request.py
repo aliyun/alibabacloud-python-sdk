@@ -88,7 +88,7 @@ class CreateFaultInjectionRequest(DaraModel):
         # }
         # `
         self.fault_args = fault_args
-        # The fault type. Device faults: 1. CPU full-load fault. 2. Memory load fault. 3. Network fault. 4. Disk read/write hang fault. 5. Disk fill fault.
+        # The fault type. Device faults include CPU full load, memory load, network fault, disk read/write hang, and disk fill.
         self.fault_type = fault_type
 
     def validate(self):

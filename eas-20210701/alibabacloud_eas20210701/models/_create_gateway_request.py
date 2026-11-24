@@ -16,22 +16,23 @@ class CreateGatewayRequest(DaraModel):
         instance_type: str = None,
         name: str = None,
         replicas: int = None,
+        workspace_id: str = None,
     ):
-        # The name of the resource group. For more information, see the ResourceName field where ResourceType is SelfManaged in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+        # The name of the resource group. For more information, see the ResourceName field returned by the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation when ResourceType is set to SelfManaged.
         self.resource_name = resource_name
         # Specifies whether to enable auto-renewal. Valid values:
-        # - false: disables auto-renewal. This is the default value.
-        # - true: enables auto-renewal.
+        # - false: Disables auto-renewal. This is the default value.
+        # - true: Enables auto-renewal.
         self.auto_renewal = auto_renewal
         # The billing method. Valid values:
-        # - PrePaid: subscription.
-        # - PostPaid: pay-as-you-go.
+        # - PrePaid: Subscription.
+        # - PostPaid: Pay-as-you-go.
         self.charge_type = charge_type
         # Specifies whether to enable public network access. Default value: false.
         self.enable_internet = enable_internet
         # Specifies whether to enable internal network access. Default value: true.
         self.enable_intranet = enable_intranet
-        # The type of the private gateway. ALB indicates an application-layer dedicated gateway, and FullyManaged indicates a fully managed dedicated gateway.
+        # The type of the private gateway. A value of ALB indicates an application-type dedicated gateway. A value of FullyManaged indicates a fully managed dedicated gateway.
         self.gateway_type = gateway_type
         # The instance type used by the private gateway. Valid values:
         # - 2c4g
@@ -43,6 +44,8 @@ class CreateGatewayRequest(DaraModel):
         self.name = name
         # The number of nodes in the private gateway.
         self.replicas = replicas
+        # The workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -79,6 +82,9 @@ class CreateGatewayRequest(DaraModel):
         if self.replicas is not None:
             result['Replicas'] = self.replicas
 
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -109,6 +115,9 @@ class CreateGatewayRequest(DaraModel):
 
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

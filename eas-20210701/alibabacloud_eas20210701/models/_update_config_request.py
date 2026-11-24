@@ -9,7 +9,7 @@ class UpdateConfigRequest(DaraModel):
         self,
         value: str = None,
     ):
-        # The dynamic parameter value (required).
+        # The value of the dynamic parameter. This parameter is required.
         self.value = value
 
     def validate(self):

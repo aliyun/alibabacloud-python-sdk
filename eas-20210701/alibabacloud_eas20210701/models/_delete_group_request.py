@@ -9,7 +9,7 @@ class DeleteGroupRequest(DaraModel):
         self,
         cascade_delete: str = None,
     ):
-        # Specifies whether to perform a cascade delete. If enabled, deleting the service group automatically deletes all services within the service group. This feature is disabled by default.
+        # Specifies whether cascade delete is enabled. If enabled, deleting the service group automatically deletes all services in the service group. Default value: false.
         self.cascade_delete = cascade_delete
 
     def validate(self):

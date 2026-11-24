@@ -9,7 +9,7 @@ class DeleteGatewayLabelShrinkRequest(DaraModel):
         self,
         label_keys_shrink: str = None,
     ):
-        # The keys of the labels that you want to delete.
+        # The gateway labels to delete.
         # 
         # This parameter is required.
         self.label_keys_shrink = label_keys_shrink

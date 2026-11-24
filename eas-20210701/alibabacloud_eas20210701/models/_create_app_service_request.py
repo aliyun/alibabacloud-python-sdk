@@ -23,8 +23,8 @@ class CreateAppServiceRequest(DaraModel):
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # Specifies whether to perform a dry run on the request. Valid values:
-        # - true: performs a dry run and does not create the instance. The system checks whether the required parameters are specified, the request format is valid, the service limits are met, and the ECS inventory is sufficient. If the request fails the check, an error is returned. If the request passes the check, the DryRunOperation error code is returned.
-        # - false (default): performs a normal request and creates the instance if the request passes the check.
+        # - true: performs a dry run without performing the actual operation. If the request fails the dry run, an error is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - false (default): sends a normal request.
         self.dry_run = dry_run
         # The quota ID.
         self.quota_id = quota_id

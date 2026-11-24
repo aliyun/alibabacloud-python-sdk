@@ -11,9 +11,9 @@ class UpdateGatewayResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The ID of the private gateway.
+        # The private gateway ID.
         self.gateway_id = gateway_id
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id

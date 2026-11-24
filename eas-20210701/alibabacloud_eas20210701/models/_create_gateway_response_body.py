@@ -12,9 +12,9 @@ class CreateGatewayResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The region where the private gateway resides.
+        # The region where the private gateway is located.
         self.cluster_id = cluster_id
-        # The ID of the private gateway.
+        # The private gateway ID.
         self.gateway_id = gateway_id
         # The message returned in the response.
         self.message = message

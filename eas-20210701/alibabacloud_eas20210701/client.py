@@ -830,6 +830,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not DaraCore.is_null(request.replicas):
             body['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -878,6 +880,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not DaraCore.is_null(request.replicas):
             body['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -6439,6 +6443,8 @@ class Client(OpenApiClient):
             query['Sort'] = request.sort
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6495,6 +6501,8 @@ class Client(OpenApiClient):
             query['Sort'] = request.sort
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -9203,6 +9211,8 @@ class Client(OpenApiClient):
             body['EnableIntranet'] = request.enable_intranet
         if not DaraCore.is_null(request.enable_sslredirection):
             body['EnableSSLRedirection'] = request.enable_sslredirection
+        if not DaraCore.is_null(request.idle_timeout):
+            body['IdleTimeout'] = request.idle_timeout
         if not DaraCore.is_null(request.instance_type):
             body['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.is_default):
@@ -9211,10 +9221,14 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not DaraCore.is_null(request.replicas):
             body['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.request_timeout):
+            body['RequestTimeout'] = request.request_timeout
         if not DaraCore.is_null(request.v_switch_ids):
             body['VSwitchIds'] = request.v_switch_ids
         if not DaraCore.is_null(request.vpc_id):
             body['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -9251,6 +9265,8 @@ class Client(OpenApiClient):
             body['EnableIntranet'] = request.enable_intranet
         if not DaraCore.is_null(request.enable_sslredirection):
             body['EnableSSLRedirection'] = request.enable_sslredirection
+        if not DaraCore.is_null(request.idle_timeout):
+            body['IdleTimeout'] = request.idle_timeout
         if not DaraCore.is_null(request.instance_type):
             body['InstanceType'] = request.instance_type
         if not DaraCore.is_null(request.is_default):
@@ -9259,10 +9275,14 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not DaraCore.is_null(request.replicas):
             body['Replicas'] = request.replicas
+        if not DaraCore.is_null(request.request_timeout):
+            body['RequestTimeout'] = request.request_timeout
         if not DaraCore.is_null(request.v_switch_ids):
             body['VSwitchIds'] = request.v_switch_ids
         if not DaraCore.is_null(request.vpc_id):
             body['VpcId'] = request.vpc_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

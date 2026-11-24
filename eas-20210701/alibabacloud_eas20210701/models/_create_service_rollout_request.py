@@ -12,9 +12,9 @@ class CreateServiceRolloutRequest(DaraModel):
         partition: main_models.CreateServiceRolloutRequestPartition = None,
         paused: bool = None,
     ):
-        # The configuration for automatic batching.
+        # The automatic batching configuration.
         self.batch = batch
-        # The configuration for manual batching.
+        # The manual batching configuration.
         self.partition = partition
         # Specifies whether to pause the update.
         self.paused = paused

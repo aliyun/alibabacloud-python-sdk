@@ -10,7 +10,7 @@ class ScaleServiceResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # A message indicating the result of the operation.
+        # The operation result message.
         self.message = message
         # The request ID.
         self.request_id = request_id

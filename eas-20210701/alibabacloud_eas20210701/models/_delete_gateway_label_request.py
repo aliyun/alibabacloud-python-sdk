@@ -11,7 +11,7 @@ class DeleteGatewayLabelRequest(DaraModel):
         self,
         label_keys: List[str] = None,
     ):
-        # The keys of the labels that you want to delete.
+        # The gateway labels to delete.
         # 
         # This parameter is required.
         self.label_keys = label_keys

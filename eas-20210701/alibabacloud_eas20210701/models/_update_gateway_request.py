@@ -12,12 +12,15 @@ class UpdateGatewayRequest(DaraModel):
         enable_internet: bool = None,
         enable_intranet: bool = None,
         enable_sslredirection: bool = None,
+        idle_timeout: int = None,
         instance_type: str = None,
         is_default: bool = None,
         name: str = None,
         replicas: int = None,
+        request_timeout: int = None,
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
+        workspace_id: str = None,
     ):
         # Specifies whether to enable public network access. Default value: false.
         self.enable_internet = enable_internet
@@ -25,6 +28,8 @@ class UpdateGatewayRequest(DaraModel):
         self.enable_intranet = enable_intranet
         # Specifies whether to enable HTTP to HTTPS redirection. Default value: false.
         self.enable_sslredirection = enable_sslredirection
+        # The idle connection timeout period. Unit: seconds. Default value: 600. Valid values: 1 to 3600.
+        self.idle_timeout = idle_timeout
         # The instance type used by the private gateway. Valid values:
         # - 2c4g
         # - 4c8g
@@ -37,10 +42,14 @@ class UpdateGatewayRequest(DaraModel):
         self.name = name
         # The number of nodes in the private gateway.
         self.replicas = replicas
+        # The request timeout period. Unit: seconds. Default value: 600. Valid values: 1 to 3600.
+        self.request_timeout = request_timeout
         # The list of vSwitches. This parameter applies only to dedicated gateways for applications.
         self.v_switch_ids = v_switch_ids
         # The ID of the VPC to which the gateway belongs. This parameter applies only to dedicated gateways for applications.
         self.vpc_id = vpc_id
+        # The workspace ID.
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -59,6 +68,9 @@ class UpdateGatewayRequest(DaraModel):
         if self.enable_sslredirection is not None:
             result['EnableSSLRedirection'] = self.enable_sslredirection
 
+        if self.idle_timeout is not None:
+            result['IdleTimeout'] = self.idle_timeout
+
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
 
@@ -71,11 +83,17 @@ class UpdateGatewayRequest(DaraModel):
         if self.replicas is not None:
             result['Replicas'] = self.replicas
 
+        if self.request_timeout is not None:
+            result['RequestTimeout'] = self.request_timeout
+
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
 
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
 
         return result
 
@@ -90,6 +108,9 @@ class UpdateGatewayRequest(DaraModel):
         if m.get('EnableSSLRedirection') is not None:
             self.enable_sslredirection = m.get('EnableSSLRedirection')
 
+        if m.get('IdleTimeout') is not None:
+            self.idle_timeout = m.get('IdleTimeout')
+
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
 
@@ -102,11 +123,17 @@ class UpdateGatewayRequest(DaraModel):
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
 
+        if m.get('RequestTimeout') is not None:
+            self.request_timeout = m.get('RequestTimeout')
+
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
 
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
 
         return self
 

@@ -19,7 +19,7 @@ class CreateAppServiceResponseBody(DaraModel):
         self.internet_endpoint = internet_endpoint
         # The internal endpoint of the service.
         self.intranet_endpoint = intranet_endpoint
-        # The region where the service is located.
+        # The region where the service is deployed.
         self.region = region
         # The request ID.
         self.request_id = request_id
