@@ -1,6 +1,9 @@
 2026-11-24 Version: 6.18.2
 - Generated python 2021-07-01 for eas.
 
+2026-11-24 Version: 6.18.2
+- Generated python 2021-07-01 for eas.
+
 2026-11-12 Version: 6.18.0
 - Support API UpdateServiceVersionRemark.
 - Update API CreateAppService: add request parameters ClientToken.
