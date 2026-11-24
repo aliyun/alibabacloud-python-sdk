@@ -38,8 +38,11 @@ class UpdateSkillLabelsRequest(DaraModel):
 class UpdateSkillLabelsRequestBody(DaraModel):
     def __init__(
         self,
+        label_descriptions: str = None,
         labels: str = None,
     ):
+        # The label descriptions.
+        self.label_descriptions = label_descriptions
         # The version label mapping JSON string.
         # 
         # This parameter is required.
@@ -53,6 +56,9 @@ class UpdateSkillLabelsRequestBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.label_descriptions is not None:
+            result['labelDescriptions'] = self.label_descriptions
+
         if self.labels is not None:
             result['labels'] = self.labels
 
@@ -60,6 +66,9 @@ class UpdateSkillLabelsRequestBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('labelDescriptions') is not None:
+            self.label_descriptions = m.get('labelDescriptions')
+
         if m.get('labels') is not None:
             self.labels = m.get('labels')
 

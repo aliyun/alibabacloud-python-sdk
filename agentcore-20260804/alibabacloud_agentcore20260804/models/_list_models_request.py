@@ -18,7 +18,7 @@ class ListModelsRequest(DaraModel):
         self.max_results = max_results
         # The upstream model name.
         self.model_name = model_name
-        # The pagination token. Specify the token returned from the previous query. An empty response indicates that no more pages are available.
+        # The pagination token. Pass the token returned by the previous query in the request. An empty value in the response indicates that no more pages are available.
         self.next_token = next_token
 
     def validate(self):

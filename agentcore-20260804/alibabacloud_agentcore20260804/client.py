@@ -977,6 +977,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_custom_agent_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_custom_agent_debug_token_with_options(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.CreateCustomAgentDebugTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomAgentDebugTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.network_type):
+            query['networkType'] = request.network_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomAgentDebugToken',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents/{DaraURL.percent_encode(agent_id)}/debug/token',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomAgentDebugTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_agent_debug_token_with_options_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.CreateCustomAgentDebugTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomAgentDebugTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.network_type):
+            query['networkType'] = request.network_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomAgentDebugToken',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/custom-agents/{DaraURL.percent_encode(agent_id)}/debug/token',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomAgentDebugTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_agent_debug_token(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.CreateCustomAgentDebugTokenRequest,
+    ) -> main_models.CreateCustomAgentDebugTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_custom_agent_debug_token_with_options(workspace_id, agent_id, request, headers, runtime)
+
+    async def create_custom_agent_debug_token_async(
+        self,
+        workspace_id: str,
+        agent_id: str,
+        request: main_models.CreateCustomAgentDebugTokenRequest,
+    ) -> main_models.CreateCustomAgentDebugTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_custom_agent_debug_token_with_options_async(workspace_id, agent_id, request, headers, runtime)
+
     def create_events_with_options(
         self,
         workspace_id: str,
@@ -12944,6 +13028,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.prepare_identity_provider_scimwith_options_async(workspace_id, request, headers, runtime)
+
+    def probe_mcp_origin_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.ProbeMcpOriginRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ProbeMcpOriginResponse:
+        tmp_req.validate()
+        request = main_models.ProbeMcpOriginShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ProbeMcpOrigin',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-origin-probes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ProbeMcpOriginResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def probe_mcp_origin_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: main_models.ProbeMcpOriginRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ProbeMcpOriginResponse:
+        tmp_req.validate()
+        request = main_models.ProbeMcpOriginShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'body', 'json')
+        body = {}
+        if not DaraCore.is_null(request.body_shrink):
+            body['body'] = request.body_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ProbeMcpOrigin',
+            version = '2026-08-04',
+            protocol = 'HTTPS',
+            pathname = f'/workspaces/{DaraURL.percent_encode(workspace_id)}/mcp-origin-probes',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ProbeMcpOriginResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def probe_mcp_origin(
+        self,
+        workspace_id: str,
+        request: main_models.ProbeMcpOriginRequest,
+    ) -> main_models.ProbeMcpOriginResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.probe_mcp_origin_with_options(workspace_id, request, headers, runtime)
+
+    async def probe_mcp_origin_async(
+        self,
+        workspace_id: str,
+        request: main_models.ProbeMcpOriginRequest,
+    ) -> main_models.ProbeMcpOriginResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.probe_mcp_origin_with_options_async(workspace_id, request, headers, runtime)
 
     def publish_skill_version_with_options(
         self,

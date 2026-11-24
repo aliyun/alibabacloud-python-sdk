@@ -12,7 +12,7 @@ class UpdateMcpShrinkRequest(DaraModel):
     ):
         # The request body.
         self.body_shrink = body_shrink
-        # The reserved query request identifier. The current console backend does not read this parameter and does not provide idempotency guarantees for deduplication or restoring the original acceptance result based on this identifier.
+        # The reserved query request identifier. The console backend does not read this parameter and does not provide idempotency guarantees for deduplication or restoring original results based on this identifier.
         self.client_token = client_token
 
     def validate(self):

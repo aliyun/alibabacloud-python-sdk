@@ -25,7 +25,7 @@ class UpdateMcpTemplateConfigResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The request ID used to locate and troubleshoot requests.
+        # The request ID, which is used to locate and troubleshoot requests.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -106,21 +106,21 @@ class UpdateMcpTemplateConfigResponseBodyData(DaraModel):
         self.addresses = addresses
         # The custom tags. Multiple tags are supported.
         self.custom_tags = custom_tags
-        # The deployment configuration for code-deployed MCP.
+        # The deployment configuration for a code-deployed MCP.
         self.deployment_config = deployment_config
         # The description of the MCP service.
         self.description = description
-        # The MCP service access endpoint.
+        # The access endpoint of the MCP service.
         self.endpoint = endpoint
-        # The Function Compute function name for the code-deployed MCP.
+        # The name of the Function Compute function corresponding to the code-deployed MCP.
         self.function_name = function_name
         # The source marketplace template of the MCP.
         self.market_source = market_source
-        # The ID of the MCP service.
+        # The MCP service ID.
         self.mcp_server_id = mcp_server_id
         # The MCP service name.
         self.name = name
-        # The official usage tag managed by the server.
+        # The official usage tags, which are managed by the server.
         self.official_tag = official_tag
         # The MCP protocol.
         self.protocol = protocol
@@ -130,7 +130,7 @@ class UpdateMcpTemplateConfigResponseBodyData(DaraModel):
         self.status_reason = status_reason
         # The template version and input schema bound to the MCP.
         self.template = template
-        # The MCP type: DIRECT_PROXY (direct proxy), HTTP_TO_MCP (HTTP to MCP), or CODE_PACKAGE (code deployment).
+        # The MCP type. Valid values: DIRECT_PROXY (direct proxy), HTTP_TO_MCP (HTTP to MCP), and CODE_PACKAGE (code deployment).
         self.type = type
         # Specifies whether the MCP is still subject to the usage constraints of the official template.
         self.usage_active = usage_active
@@ -322,7 +322,7 @@ class UpdateMcpTemplateConfigResponseBodyDataMarketSource(DaraModel):
         self,
         market_item_id: str = None,
     ):
-        # The MCP marketplace template ID.
+        # The ID of the MCP marketplace template.
         self.market_item_id = market_item_id
 
     def validate(self):
@@ -367,7 +367,7 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfig(DaraModel):
         self.access_control = access_control
         # The agent identity configuration.
         self.agent_identity_configuration = agent_identity_configuration
-        # The artifact type. A value of Code indicates a ZIP code package, and a value of Container indicates a custom container.
+        # The artifact type. Code indicates a ZIP code package, and Container indicates a custom container.
         self.artifact_type = artifact_type
         # The code package configuration.
         self.code_configuration = code_configuration
@@ -540,21 +540,21 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigRuntimeConfiguratio
         port: int = None,
         timeout: int = None,
     ):
-        # The CPU specification. Unit: cores. Default value: 0.25.
+        # The CPU specification in cores. Default value: 0.25.
         self.cpu = cpu
-        # The ephemeral disk size. Unit: MB. Valid values: 512 and 10240.
+        # The temporary disk size in MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
         # The environment variables.
         self.environment_variables = environment_variables
         # The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
         self.execution_role_arn = execution_role_arn
-        # The maximum number of concurrent requests per instance. Default value: 200.
+        # The number of concurrent requests per instance. Default value: 200.
         self.instance_concurrency = instance_concurrency
-        # The memory specification. Unit: MB. Default value: 512.
+        # The memory specification in MB. Default value: 512.
         self.memory = memory
         # The service port. Default value: 9000.
         self.port = port
-        # The function timeout period. Unit: seconds. Default value: 300.
+        # The function timeout period in seconds. Default value: 300.
         self.timeout = timeout
 
     def validate(self):
@@ -656,7 +656,7 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigParameterTransformC
     ):
         # Specifies whether to enable parameter transformation and result enhancement.
         self.enabled = enabled
-        # The reserved reference to the parameter transformation and result enhancement rule set.
+        # The reserved parameter transformation and result enhancement rule set reference.
         self.rule_set_id = rule_set_id
         # The transformation rule version.
         self.version = version
@@ -740,9 +740,9 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigOssMountConfigurati
     ):
         # The name of the OSS bucket.
         self.bucket_name = bucket_name
-        # The path in the OSS bucket.
+        # The path of the OSS bucket.
         self.bucket_path = bucket_path
-        # The OSS endpoint.
+        # The OSS service endpoint.
         self.endpoint = endpoint
         # The local mount directory.
         self.mount_dir = mount_dir
@@ -855,11 +855,11 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigNasConfiguration(Da
         mount_points: List[main_models.UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigNasConfigurationMountPoints] = None,
         user_id: int = None,
     ):
-        # The user group ID.
+        # The runtime user group ID.
         self.group_id = group_id
         # The list of NAS mount points.
         self.mount_points = mount_points
-        # The user ID.
+        # The runtime user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -913,7 +913,7 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigNasConfigurationMou
         self.enable_tls = enable_tls
         # The local mount directory.
         self.mount_dir = mount_dir
-        # The NAS server address.
+        # The NAS service address.
         self.server_addr = server_addr
 
     def validate(self):
@@ -955,15 +955,18 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigMcpConfiguration(Da
         session_concurrency_per_instance: int = None,
         session_idle_timeout_seconds: int = None,
         session_max_lifetime_seconds: int = None,
+        session_mode: str = None,
     ):
         # The MCP endpoint path, such as /mcp or /sse.
         self.endpoint_path = endpoint_path
-        # The number of concurrent sessions per instance. Currently, this parameter is fixed to 1.
+        # The number of concurrent sessions per instance. Currently, this value is fixed to 1.
         self.session_concurrency_per_instance = session_concurrency_per_instance
-        # The session idle timeout period. Unit: seconds. Default value: 1800.
+        # The session idle timeout period in seconds. Default value: 1800.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
-        # The maximum session lifetime. Unit: seconds. Default value: 21600.
+        # The maximum session lifetime in seconds. Default value: 21600.
         self.session_max_lifetime_seconds = session_max_lifetime_seconds
+        # The session mode. This parameter applies only to StreamableHTTP. Default value for creation: STATEFUL. If omitted during an update, the original value is retained. STATELESS disables Function Compute session affinity, and the stdio gateway does not enable stateful mode. Native HTTP services must support stateless MCP themselves.
+        self.session_mode = session_mode
 
     def validate(self):
         pass
@@ -985,6 +988,9 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigMcpConfiguration(Da
         if self.session_max_lifetime_seconds is not None:
             result['sessionMaxLifetimeSeconds'] = self.session_max_lifetime_seconds
 
+        if self.session_mode is not None:
+            result['sessionMode'] = self.session_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1001,6 +1007,9 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigMcpConfiguration(Da
         if m.get('sessionMaxLifetimeSeconds') is not None:
             self.session_max_lifetime_seconds = m.get('sessionMaxLifetimeSeconds')
 
+        if m.get('sessionMode') is not None:
+            self.session_mode = m.get('sessionMode')
+
         return self
 
 class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigLogConfiguration(DaraModel):
@@ -1016,11 +1025,11 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigLogConfiguration(Da
         self.enable_instance_metrics = enable_instance_metrics
         # Specifies whether to collect request metrics.
         self.enable_request_metrics = enable_request_metrics
-        # The start rule for splitting Function Compute logs.
+        # The start rule for FC log splitting.
         self.log_begin_rule = log_begin_rule
-        # The name of the Logstore.
+        # The Logstore name.
         self.logstore = logstore
-        # The name of the Simple Log Service project.
+        # The Simple Log Service project name.
         self.project = project
 
     def validate(self):
@@ -1072,7 +1081,7 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigHookConfiguration(D
         self,
         hooks: List[main_models.UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigHookConfigurationHooks] = None,
     ):
-        # The list of hooks executed in array order, including PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks.
+        # The ordered list of hooks. Executes the PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in array order.
         self.hooks = hooks
 
     def validate(self):
@@ -1204,11 +1213,11 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigContainerConfigurat
         self.entrypoint = entrypoint
         # The container image address.
         self.image = image
-        # The image repository type.
+        # The image registry type.
         self.image_registry_type = image_registry_type
-        # The MCP runtime mode. Custom containers must currently expose standard MCP by themselves. Set this parameter to SELF_HOSTED.
+        # The MCP runtime mode. Custom containers must currently expose the standard MCP themselves. Set this value to SELF_HOSTED.
         self.mcp_runtime_mode = mcp_runtime_mode
-        # The container source type. Currently, this parameter is fixed to CONTAINER_IMAGE.
+        # The container source type. Currently, this value is fixed to CONTAINER_IMAGE.
         self.source_type = source_type
 
     def validate(self):
@@ -1278,7 +1287,7 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigCodeConfiguration(D
         self.code_package_token = code_package_token
         # The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the complete subcommand, and the remaining parameters.
         self.command = command
-        # The code package runtime. Valid values: python3.13, nodejs22, and java17.
+        # The runtime environment for the code package. Valid values: python3.13, nodejs22, and java17.
         self.language = language
 
     def validate(self):
@@ -1375,11 +1384,11 @@ class UpdateMcpTemplateConfigResponseBodyDataDeploymentConfigAccessControl(DaraM
         enabled: bool = None,
         mode: str = None,
     ):
-        # The ID of the AgentCore credential referenced when the mode is set to CREDENTIAL.
+        # The AgentCore credential ID referenced when the mode is set to CREDENTIAL.
         self.credential_id = credential_id
         # Specifies whether to enable entry access control.
         self.enabled = enabled
-        # The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates authentication by using AgentCore credentials.
+        # The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates authentication using AgentCore access credentials.
         self.mode = mode
 
     def validate(self):

@@ -1,3 +1,6 @@
+2026-11-24 Version: 3.8.0
+- Generated python 2026-08-04 for AgentCore.
+
 2026-11-19 Version: 3.6.1
 - Update API CreateWorkspace: add request parameters body.scanPolicy.
 

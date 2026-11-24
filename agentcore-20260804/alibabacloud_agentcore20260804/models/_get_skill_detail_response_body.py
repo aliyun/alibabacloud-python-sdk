@@ -57,6 +57,7 @@ class GetSkillDetailResponseBodyData(DaraModel):
         editing_version: str = None,
         enable: bool = None,
         from_: str = None,
+        label_descriptions: Dict[str, str] = None,
         labels: Dict[str, str] = None,
         name: str = None,
         online_cnt: int = None,
@@ -74,17 +75,19 @@ class GetSkillDetailResponseBodyData(DaraModel):
         self.description = description
         # The total number of downloads.
         self.download_count = download_count
-        # The draft pattern. A value of HEAD indicates that the skill has a persistent draft. A value of VERSIONED indicates that each edit creates a draft with a version number. This pattern is determined by the server, and the client uses it for routing What to do next when they invoke the API.
+        # The draft pattern. HEAD indicates that the skill has a persistent draft, and VERSIONED indicates that a draft with a version number is created for each edit. This is determined by the server, and clients invoke What to do next by routing based on this value.
         self.draft_mode = draft_mode
         # Indicates whether the root data is editable.
         self.editable = editable
-        # The version being edited.
+        # The version being edited. The value is HEAD in HEAD draft mode.
         self.editing_version = editing_version
         # Indicates whether the skill is enabled.
         self.enable = enable
         # The source tag.
         self.from_ = from_
-        # The tag mapping.
+        # The label descriptions under the root data.
+        self.label_descriptions = label_descriptions
+        # The label mapping.
         self.labels = labels
         # The name.
         self.name = name
@@ -92,11 +95,11 @@ class GetSkillDetailResponseBodyData(DaraModel):
         self.online_cnt = online_cnt
         # The resource owner.
         self.owner = owner
-        # The version under review.
+        # The version under review. The value is HEAD in HEAD draft mode.
         self.reviewing_version = reviewing_version
         # The visibility scope.
         self.scope = scope
-        # The update time. The value is a UNIX timestamp in milliseconds.
+        # The update time. It is a UNIX timestamp in milliseconds.
         self.update_time = update_time
         # The list of all version summaries.
         self.versions = versions
@@ -139,6 +142,9 @@ class GetSkillDetailResponseBodyData(DaraModel):
 
         if self.from_ is not None:
             result['from'] = self.from_
+
+        if self.label_descriptions is not None:
+            result['labelDescriptions'] = self.label_descriptions
 
         if self.labels is not None:
             result['labels'] = self.labels
@@ -200,6 +206,9 @@ class GetSkillDetailResponseBodyData(DaraModel):
         if m.get('from') is not None:
             self.from_ = m.get('from')
 
+        if m.get('labelDescriptions') is not None:
+            self.label_descriptions = m.get('labelDescriptions')
+
         if m.get('labels') is not None:
             self.labels = m.get('labels')
 
@@ -249,25 +258,25 @@ class GetSkillDetailResponseBodyDataVersions(DaraModel):
         update_time: int = None,
         version: str = None,
     ):
-        # The author of the version.
+        # The version author.
         self.author = author
         # The commit message.
         self.commit_msg = commit_msg
         # The MD5 checksum of the skill content package for this version, used to verify content consistency.
         self.content_md_5 = content_md_5
-        # The creation time. The value is a UNIX timestamp in milliseconds.
+        # The creation time. It is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The description.
         self.description = description
         # The number of downloads.
         self.download_count = download_count
-        # The release pipeline information.
+        # The publish pipeline information.
         self.publish_pipeline_info = publish_pipeline_info
         # The status.
         self.status = status
-        # The update time. The value is a UNIX timestamp in milliseconds.
+        # The update time. It is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The version number.
+        # The version number. A value of HEAD indicates a persistent draft, which should be displayed as a draft in the user interface.
         self.version = version
 
     def validate(self):

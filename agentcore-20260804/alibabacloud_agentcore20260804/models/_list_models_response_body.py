@@ -20,9 +20,9 @@ class ListModelsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The business status code. A value of SUCCESS indicates success.
+        # The business status code. The value is SUCCESS if the request is successful.
         self.code = code
-        # The HTTP status code. A value of 200 indicates success.
+        # The HTTP status code. The value is 200 if the request is successful.
         self.http_status_code = http_status_code
         # The list of models.
         self.items = items
@@ -30,7 +30,7 @@ class ListModelsResponseBody(DaraModel):
         self.max_results = max_results
         # The message about the request processing result.
         self.message = message
-        # The pagination token. Specify the token returned from the previous query. An empty response indicates that no more pages are available.
+        # The pagination token. Pass the token returned by the previous query in the request. An empty value in the response indicates that no more pages are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -126,6 +126,7 @@ class ListModelsResponseBodyItems(DaraModel):
         max_tokens: int = None,
         model_id: str = None,
         model_name: str = None,
+        supported_thinking_levels: List[str] = None,
         updated_at: str = None,
         workspace_id: str = None,
     ):
@@ -135,9 +136,9 @@ class ListModelsResponseBodyItems(DaraModel):
         self.connection_id = connection_id
         # The context window size of the model, in tokens. The value must be a positive integer.
         self.context_size = context_size
-        # The time when the resource was created, in RFC 3339 UTC format.
+        # The time when the resource was created. The time is in RFC 3339 UTC format.
         self.created_at = created_at
-        # The model description, which can be up to 255 characters in length.
+        # The model description. The description can be up to 255 characters in length.
         self.description = description
         # The maximum number of output tokens supported by the model per generation.
         self.max_tokens = max_tokens
@@ -145,7 +146,9 @@ class ListModelsResponseBodyItems(DaraModel):
         self.model_id = model_id
         # The upstream model name.
         self.model_name = model_name
-        # The time when the resource was last updated, in RFC 3339 UTC format.
+        # The explicit thinking levels supported by the model. An empty list indicates that only the default setting is supported. If this field is omitted, no level information is available.
+        self.supported_thinking_levels = supported_thinking_levels
+        # The time when the resource was last updated. The time is in RFC 3339 UTC format.
         self.updated_at = updated_at
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -183,6 +186,9 @@ class ListModelsResponseBodyItems(DaraModel):
         if self.model_name is not None:
             result['modelName'] = self.model_name
 
+        if self.supported_thinking_levels is not None:
+            result['supportedThinkingLevels'] = self.supported_thinking_levels
+
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
 
@@ -218,6 +224,9 @@ class ListModelsResponseBodyItems(DaraModel):
         if m.get('modelName') is not None:
             self.model_name = m.get('modelName')
 
+        if m.get('supportedThinkingLevels') is not None:
+            self.supported_thinking_levels = m.get('supportedThinkingLevels')
+
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
 
@@ -238,21 +247,21 @@ class ListModelsResponseBodyItemsCapabilities(DaraModel):
         video: bool = None,
         vision: bool = None,
     ):
-        # Indicates whether the model supports audio input or output.
+        # Specifies whether the model supports audio input or output.
         self.audio = audio
-        # Indicates whether the model supports document input.
+        # Specifies whether the model supports document input.
         self.document = document
-        # Specifies whether the model supports multiple tool calls in a single response.
+        # Specifies whether the model is able to invoke multiple tool calling operations in a single response.
         self.multi_tool_call = multi_tool_call
-        # Indicates whether the model supports reasoning capabilities.
+        # Specifies whether the model supports reasoning capabilities.
         self.reasoning = reasoning
-        # Specifies whether the model supports streaming tool calls.
+        # Specifies whether the model is able to invoke tool calling in a streaming manner.
         self.stream_tool_call = stream_tool_call
-        # Indicates whether the model supports tool calling.
+        # Specifies whether the model supports tool calling.
         self.tool_call = tool_call
-        # Indicates whether the model supports video input.
+        # Specifies whether the model supports video input.
         self.video = video
-        # Indicates whether the model supports image input.
+        # Specifies whether the model supports image input.
         self.vision = vision
 
     def validate(self):

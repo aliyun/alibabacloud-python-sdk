@@ -14,9 +14,9 @@ class UpdateMcpTemplateConfigRequest(DaraModel):
         client_token: str = None,
         template_version: str = None,
     ):
-        # The MCP configuration updated based on the specified template version. The configuration must comply with the input schema of the template.
+        # The MCP configuration updated based on the specified template version, which must comply with the input schema of the template.
         self.body = body
-        # The reserved query request identifier. The console backend does not read this parameter and does not provide idempotency guarantees such as deduplication or returning the original processing result based on this identifier.
+        # The reserved query request identifier. The console backend does not read this parameter and does not provide idempotency guarantees such as deduplication or restoring the original processing result based on this identifier.
         self.client_token = client_token
         # The template version used for this update.
         # 
@@ -68,9 +68,9 @@ class UpdateMcpTemplateConfigRequestBody(DaraModel):
     ):
         # The list of remote MCP service addresses.
         self.addresses = addresses
-        # The authentication configuration for the MCP service.
+        # The MCP authentication configuration.
         self.auth = auth
-        # The deployment configuration for code-deployed MCP.
+        # The deployment configuration for a code-deployed MCP.
         self.deployment_config = deployment_config
         # The description of the MCP service.
         self.description = description
@@ -148,7 +148,7 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfig(DaraModel):
         self.access_control = access_control
         # The agent identity configuration.
         self.agent_identity_configuration = agent_identity_configuration
-        # The artifact type. A value of Code indicates a ZIP code package, and a value of Container indicates a custom container.
+        # The artifact type. Code indicates a ZIP code package, and Container indicates a custom container.
         self.artifact_type = artifact_type
         # The code package configuration.
         self.code_configuration = code_configuration
@@ -321,21 +321,21 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigRuntimeConfiguration(Dar
         port: int = None,
         timeout: int = None,
     ):
-        # The CPU specification. Unit: cores. Default value: 0.25.
+        # The CPU specification in cores. Default value: 0.25.
         self.cpu = cpu
-        # The ephemeral disk size. Unit: MB. Valid values: 512 and 10240.
+        # The temporary disk size in MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
         # The environment variables.
         self.environment_variables = environment_variables
         # The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
         self.execution_role_arn = execution_role_arn
-        # The maximum number of concurrent requests per instance. Default value: 200.
+        # The number of concurrent requests per instance. Default value: 200.
         self.instance_concurrency = instance_concurrency
-        # The memory specification. Unit: MB. Default value: 512.
+        # The memory specification in MB. Default value: 512.
         self.memory = memory
         # The service port. Default value: 9000.
         self.port = port
-        # The function timeout period. Unit: seconds. Default value: 300.
+        # The function timeout period in seconds. Default value: 300.
         self.timeout = timeout
 
     def validate(self):
@@ -437,7 +437,7 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigParameterTransformConfig
     ):
         # Specifies whether to enable parameter transformation and result enhancement.
         self.enabled = enabled
-        # The reserved reference to the parameter transformation and result enhancement rule set.
+        # The reserved parameter transformation and result enhancement rule set reference.
         self.rule_set_id = rule_set_id
         # The transformation rule version.
         self.version = version
@@ -521,9 +521,9 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigOssMountConfigurationMou
     ):
         # The name of the OSS bucket.
         self.bucket_name = bucket_name
-        # The path in the OSS bucket.
+        # The path of the OSS bucket.
         self.bucket_path = bucket_path
-        # The OSS endpoint.
+        # The OSS service endpoint.
         self.endpoint = endpoint
         # The local mount directory.
         self.mount_dir = mount_dir
@@ -636,11 +636,11 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigNasConfiguration(DaraMod
         mount_points: List[main_models.UpdateMcpTemplateConfigRequestBodyDeploymentConfigNasConfigurationMountPoints] = None,
         user_id: int = None,
     ):
-        # The user group ID.
+        # The runtime user group ID.
         self.group_id = group_id
         # The list of NAS mount points.
         self.mount_points = mount_points
-        # The user ID.
+        # The runtime user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -694,7 +694,7 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigNasConfigurationMountPoi
         self.enable_tls = enable_tls
         # The local mount directory.
         self.mount_dir = mount_dir
-        # The NAS server address.
+        # The NAS service address.
         self.server_addr = server_addr
 
     def validate(self):
@@ -736,15 +736,18 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigMcpConfiguration(DaraMod
         session_concurrency_per_instance: int = None,
         session_idle_timeout_seconds: int = None,
         session_max_lifetime_seconds: int = None,
+        session_mode: str = None,
     ):
         # The MCP endpoint path, such as /mcp or /sse.
         self.endpoint_path = endpoint_path
-        # The number of concurrent sessions per instance. Currently, this parameter is fixed to 1.
+        # The number of concurrent sessions per instance. Currently, this value is fixed to 1.
         self.session_concurrency_per_instance = session_concurrency_per_instance
-        # The session idle timeout period. Unit: seconds. Default value: 1800.
+        # The session idle timeout period in seconds. Default value: 1800.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
-        # The maximum session lifetime. Unit: seconds. Default value: 21600.
+        # The maximum session lifetime in seconds. Default value: 21600.
         self.session_max_lifetime_seconds = session_max_lifetime_seconds
+        # The session mode. This parameter applies only to StreamableHTTP. Default value for creation: STATEFUL. If omitted during an update, the original value is retained. STATELESS disables Function Compute session affinity, and the stdio gateway does not enable stateful mode. Native HTTP services must support stateless MCP themselves.
+        self.session_mode = session_mode
 
     def validate(self):
         pass
@@ -766,6 +769,9 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigMcpConfiguration(DaraMod
         if self.session_max_lifetime_seconds is not None:
             result['sessionMaxLifetimeSeconds'] = self.session_max_lifetime_seconds
 
+        if self.session_mode is not None:
+            result['sessionMode'] = self.session_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -782,6 +788,9 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigMcpConfiguration(DaraMod
         if m.get('sessionMaxLifetimeSeconds') is not None:
             self.session_max_lifetime_seconds = m.get('sessionMaxLifetimeSeconds')
 
+        if m.get('sessionMode') is not None:
+            self.session_mode = m.get('sessionMode')
+
         return self
 
 class UpdateMcpTemplateConfigRequestBodyDeploymentConfigLogConfiguration(DaraModel):
@@ -797,11 +806,11 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigLogConfiguration(DaraMod
         self.enable_instance_metrics = enable_instance_metrics
         # Specifies whether to collect request metrics.
         self.enable_request_metrics = enable_request_metrics
-        # The start rule for splitting Function Compute logs.
+        # The start rule for FC log splitting.
         self.log_begin_rule = log_begin_rule
-        # The name of the Logstore.
+        # The Logstore name.
         self.logstore = logstore
-        # The name of the Simple Log Service project.
+        # The Simple Log Service project name.
         self.project = project
 
     def validate(self):
@@ -853,7 +862,7 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigHookConfiguration(DaraMo
         self,
         hooks: List[main_models.UpdateMcpTemplateConfigRequestBodyDeploymentConfigHookConfigurationHooks] = None,
     ):
-        # The list of hooks executed in array order, including PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks.
+        # The ordered list of hooks. Executes the PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in array order.
         self.hooks = hooks
 
     def validate(self):
@@ -985,11 +994,11 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigContainerConfiguration(D
         self.entrypoint = entrypoint
         # The container image address.
         self.image = image
-        # The image repository type.
+        # The image registry type.
         self.image_registry_type = image_registry_type
-        # The MCP runtime mode. Custom containers must currently expose standard MCP by themselves. Set this parameter to SELF_HOSTED.
+        # The MCP runtime mode. Custom containers must currently expose the standard MCP themselves. Set this value to SELF_HOSTED.
         self.mcp_runtime_mode = mcp_runtime_mode
-        # The container source type. Currently, this parameter is fixed to CONTAINER_IMAGE.
+        # The container source type. Currently, this value is fixed to CONTAINER_IMAGE.
         self.source_type = source_type
 
     def validate(self):
@@ -1059,7 +1068,7 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigCodeConfiguration(DaraMo
         self.code_package_token = code_package_token
         # The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the complete subcommand, and the remaining parameters.
         self.command = command
-        # The code package runtime. Valid values: python3.13, nodejs22, and java17.
+        # The runtime environment for the code package. Valid values: python3.13, nodejs22, and java17.
         self.language = language
 
     def validate(self):
@@ -1156,11 +1165,11 @@ class UpdateMcpTemplateConfigRequestBodyDeploymentConfigAccessControl(DaraModel)
         enabled: bool = None,
         mode: str = None,
     ):
-        # The ID of the AgentCore credential referenced when the mode is set to CREDENTIAL.
+        # The AgentCore credential ID referenced when the mode is set to CREDENTIAL.
         self.credential_id = credential_id
         # Specifies whether to enable entry access control.
         self.enabled = enabled
-        # The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates authentication by using AgentCore credentials.
+        # The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates authentication using AgentCore access credentials.
         self.mode = mode
 
     def validate(self):
@@ -1204,7 +1213,7 @@ class UpdateMcpTemplateConfigRequestBodyAuth(DaraModel):
     ):
         # The backend authentication configuration for the direct proxy.
         self.direct_proxy = direct_proxy
-        # Specifies whether to enable the configuration.
+        # Specifies whether to enable this configuration.
         self.enabled = enabled
         # The list of backend authentication configurations for HTTP-to-MCP.
         self.http_to_mcp = http_to_mcp
@@ -1261,15 +1270,15 @@ class UpdateMcpTemplateConfigRequestBodyAuthHttpToMcp(DaraModel):
         position: str = None,
         type: str = None,
     ):
-        # The credential for backend authentication.
+        # The credential for the backend authentication.
         self.credential = credential
         # The ID of the backend authentication configuration.
         self.id = id
-        # The parameter name of the API key.
+        # The name of the API key parameter.
         self.name = name
-        # The location where the API key is passed.
+        # The position where the API key is passed.
         self.position = position
-        # The type of backend authentication.
+        # The type of the backend authentication.
         self.type = type
 
     def validate(self):

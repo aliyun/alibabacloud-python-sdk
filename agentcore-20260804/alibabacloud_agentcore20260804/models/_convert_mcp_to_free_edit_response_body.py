@@ -25,7 +25,7 @@ class ConvertMcpToFreeEditResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The response message.
         self.message = message
-        # The request ID used to locate and troubleshoot the request.
+        # The request ID used to locate and troubleshoot requests.
         self.request_id = request_id
         # Indicates whether the request is successful.
         self.success = success
@@ -106,7 +106,7 @@ class ConvertMcpToFreeEditResponseBodyData(DaraModel):
         self.addresses = addresses
         # The custom tags. Multiple tags are supported.
         self.custom_tags = custom_tags
-        # The deployment configuration for the code-deployed MCP.
+        # The deployment configuration of the code-deployed MCP.
         self.deployment_config = deployment_config
         # The description of the MCP service.
         self.description = description
@@ -114,7 +114,7 @@ class ConvertMcpToFreeEditResponseBodyData(DaraModel):
         self.endpoint = endpoint
         # The name of the Function Compute function corresponding to the code-deployed MCP.
         self.function_name = function_name
-        # The MCP source marketplace template.
+        # The source marketplace template for the MCP.
         self.market_source = market_source
         # The MCP service ID.
         self.mcp_server_id = mcp_server_id
@@ -124,13 +124,13 @@ class ConvertMcpToFreeEditResponseBodyData(DaraModel):
         self.official_tag = official_tag
         # The MCP protocol.
         self.protocol = protocol
-        # The MCP service status.
+        # The status of the MCP service.
         self.status = status
         # The reason why the MCP service is in the current status.
         self.status_reason = status_reason
         # The template version and input schema bound to the MCP.
         self.template = template
-        # The MCP type. Valid values: DIRECT_PROXY (direct proxy), HTTP_TO_MCP (HTTP to MCP), and CODE_PACKAGE (code deployment).
+        # The MCP type, which can be DIRECT_PROXY (direct proxy), HTTP_TO_MCP (HTTP to MCP), or CODE_PACKAGE (code deployment).
         self.type = type
         # Specifies whether the MCP is still subject to the usage constraints of the official template.
         self.usage_active = usage_active
@@ -322,7 +322,7 @@ class ConvertMcpToFreeEditResponseBodyDataMarketSource(DaraModel):
         self,
         market_item_id: str = None,
     ):
-        # The MCP marketplace template ID.
+        # The ID of the MCP marketplace template.
         self.market_item_id = market_item_id
 
     def validate(self):
@@ -363,9 +363,9 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfig(DaraModel):
         proxy_configuration: main_models.ConvertMcpToFreeEditResponseBodyDataDeploymentConfigProxyConfiguration = None,
         runtime_configuration: main_models.ConvertMcpToFreeEditResponseBodyDataDeploymentConfigRuntimeConfiguration = None,
     ):
-        # The MCP entry point access control.
+        # The MCP entry access control.
         self.access_control = access_control
-        # The Agent Identity configuration.
+        # The agent identity configuration.
         self.agent_identity_configuration = agent_identity_configuration
         # The artifact type. Code indicates a ZIP code package, and Container indicates a custom container.
         self.artifact_type = artifact_type
@@ -540,21 +540,21 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigRuntimeConfiguration(D
         port: int = None,
         timeout: int = None,
     ):
-        # The CPU specification in cores. Default value: 0.25.
+        # The CPU specifications. Unit: cores. Default value: 0.25.
         self.cpu = cpu
-        # The ephemeral disk size in MB. Valid values: 512 and 10240.
+        # The unit is MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
         # The environment variables.
         self.environment_variables = environment_variables
-        # The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
+        # The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
         self.execution_role_arn = execution_role_arn
         # Default value: 200.
         self.instance_concurrency = instance_concurrency
-        # The memory size in MB. Default value: 512.
+        # The unit is MB. Default value: 512.
         self.memory = memory
         # Default value: 9000.
         self.port = port
-        # The timeout period in seconds. Default value: 300.
+        # The unit is seconds. Default value: 300.
         self.timeout = timeout
 
     def validate(self):
@@ -624,7 +624,7 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigProxyConfiguration(Dar
         self,
         enabled: bool = None,
     ):
-        # Specifies whether to enable the MCP proxy.
+        # Specifies whether the MCP proxy is enabled.
         self.enabled = enabled
 
     def validate(self):
@@ -654,11 +654,11 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigParameterTransformConf
         rule_set_id: str = None,
         version: str = None,
     ):
-        # Specifies whether to enable parameter transformation and result enhancement.
+        # Specifies whether parameter transformation and result enhancement are enabled.
         self.enabled = enabled
-        # The reserved reference for the parameter transformation and result enhancement rule set.
+        # The reserved reference to the parameter transformation and result enhancement rule set.
         self.rule_set_id = rule_set_id
-        # The transformation rule version.
+        # The version of the transformation rule.
         self.version = version
 
     def validate(self):
@@ -857,7 +857,7 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNasConfiguration(DaraM
     ):
         # The user group ID.
         self.group_id = group_id
-        # The list of NAS mount targets.
+        # The list of NAS mount points.
         self.mount_points = mount_points
         # The user ID.
         self.user_id = user_id
@@ -913,7 +913,7 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNasConfigurationMountP
         self.enable_tls = enable_tls
         # The local mount directory.
         self.mount_dir = mount_dir
-        # The NAS server address.
+        # The NAS service address.
         self.server_addr = server_addr
 
     def validate(self):
@@ -955,15 +955,18 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration(DaraM
         session_concurrency_per_instance: int = None,
         session_idle_timeout_seconds: int = None,
         session_max_lifetime_seconds: int = None,
+        session_mode: str = None,
     ):
         # The MCP endpoint path, such as /mcp or /sse.
         self.endpoint_path = endpoint_path
         # Currently fixed at 1.
         self.session_concurrency_per_instance = session_concurrency_per_instance
-        # The session idle timeout in seconds. Default value: 1800.
+        # The unit is seconds. Default value: 1800.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
-        # The maximum session lifetime in seconds. Default value: 21600.
+        # The unit is seconds. Default value: 21600.
         self.session_max_lifetime_seconds = session_max_lifetime_seconds
+        # Applicable only to StreamableHTTP. Default value for creation: STATEFUL. If omitted during an update, the original value is retained. STATELESS disables Function Compute (FC) session affinity, and the stdio gateway does not enable stateful mode. Native HTTP services must support stateless MCP themselves.
+        self.session_mode = session_mode
 
     def validate(self):
         pass
@@ -985,6 +988,9 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration(DaraM
         if self.session_max_lifetime_seconds is not None:
             result['sessionMaxLifetimeSeconds'] = self.session_max_lifetime_seconds
 
+        if self.session_mode is not None:
+            result['sessionMode'] = self.session_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1000,6 +1006,9 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration(DaraM
 
         if m.get('sessionMaxLifetimeSeconds') is not None:
             self.session_max_lifetime_seconds = m.get('sessionMaxLifetimeSeconds')
+
+        if m.get('sessionMode') is not None:
+            self.session_mode = m.get('sessionMode')
 
         return self
 
@@ -1020,7 +1029,7 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigLogConfiguration(DaraM
         self.log_begin_rule = log_begin_rule
         # The name of the Logstore.
         self.logstore = logstore
-        # The name of the Simple Log Service project.
+        # The name of the Log Service project.
         self.project = project
 
     def validate(self):
@@ -1072,7 +1081,7 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfiguration(Dara
         self,
         hooks: List[main_models.ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfigurationHooks] = None,
     ):
-        # The ordered list of hooks. Executes PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in the order of the array.
+        # The ordered list of hooks. Executes PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in array order.
         self.hooks = hooks
 
     def validate(self):
@@ -1114,19 +1123,19 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfigurationHooks
         timeout: int = None,
         url: str = None,
     ):
-        # The hook API version.
+        # The API version of the hook.
         self.api_version = api_version
-        # The hook description.
+        # The description of the hook.
         self.description = description
-        # Specifies whether to enable the hook.
+        # Specifies whether the hook is enabled.
         self.enabled = enabled
         # The hook event.
         self.event = event
-        # The hook request headers.
+        # The request headers of the hook.
         self.headers = headers
-        # The hook timeout in milliseconds.
+        # The timeout period of the hook, in milliseconds.
         self.timeout = timeout
-        # The hook callback URL.
+        # The callback URL of the hook.
         self.url = url
 
     def validate(self):
@@ -1196,7 +1205,7 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigContainerConfiguration
         mcp_runtime_mode: str = None,
         source_type: str = None,
     ):
-        # The ACR instance ID.
+        # The ID of the ACR instance.
         self.acr_instance_id = acr_instance_id
         # The startup command.
         self.command = command
@@ -1206,9 +1215,9 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigContainerConfiguration
         self.image = image
         # The image repository type.
         self.image_registry_type = image_registry_type
-        # The MCP runtime mode. Custom containers must expose the standard MCP themselves. Valid value: SELF_HOSTED.
+        # The MCP runtime mode. Custom containers must expose the standard MCP themselves. The value is fixed to SELF_HOSTED.
         self.mcp_runtime_mode = mcp_runtime_mode
-        # The container source type. Currently, this is fixed to CONTAINER_IMAGE.
+        # The container source type. Currently, the value is fixed to CONTAINER_IMAGE.
         self.source_type = source_type
 
     def validate(self):
@@ -1274,9 +1283,9 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigCodeConfiguration(Dara
         command: List[str] = None,
         language: str = None,
     ):
-        # The temporary code package token returned by GetMcpCodePackageUploadUrl. It is used to create or update a code deployment after the presigned upload is completed.
+        # The temporary code package token returned by GetMcpCodePackageUploadUrl, which is used to create or update a code deployment after a presigned upload is completed.
         self.code_package_token = code_package_token
-        # The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the complete subcommand, and the remaining parameters.
+        # The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the full subcommand, and the remaining parameters.
         self.command = command
         # The code package runtime. Valid values: python3.13, nodejs22, and java17.
         self.language = language
@@ -1321,13 +1330,13 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAgentIdentityConfigura
         credential_provider_type: str = None,
         enabled: bool = None,
     ):
-        # Specifies whether to enable authorization.
+        # Specifies whether authorization is enabled.
         self.authorization_enabled = authorization_enabled
-        # The credential provider ARN.
+        # The ARN of the credential provider.
         self.credential_provider_arn = credential_provider_arn
-        # The credential provider type.
+        # The type of the credential provider.
         self.credential_provider_type = credential_provider_type
-        # Specifies whether to enable Agent Identity.
+        # Specifies whether agent identity is enabled.
         self.enabled = enabled
 
     def validate(self):
@@ -1375,9 +1384,9 @@ class ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAccessControl(DaraMode
         enabled: bool = None,
         mode: str = None,
     ):
-        # The access credential ID. It references an AgentCore credential when the mode is set to CREDENTIAL.
+        # The ID of the AgentCore credential referenced when the mode is CREDENTIAL.
         self.credential_id = credential_id
-        # Specifies whether to enable entry point access control.
+        # Specifies whether entry access control is enabled.
         self.enabled = enabled
         # The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates that AgentCore access credentials are used.
         self.mode = mode

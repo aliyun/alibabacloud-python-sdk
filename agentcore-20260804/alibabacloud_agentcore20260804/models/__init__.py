@@ -44,6 +44,9 @@ from ._create_custom_agent_request import CreateCustomAgentRequest
 from ._create_custom_agent_shrink_request import CreateCustomAgentShrinkRequest
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBody
 from ._create_custom_agent_response import CreateCustomAgentResponse
+from ._create_custom_agent_debug_token_request import CreateCustomAgentDebugTokenRequest
+from ._create_custom_agent_debug_token_response_body import CreateCustomAgentDebugTokenResponseBody
+from ._create_custom_agent_debug_token_response import CreateCustomAgentDebugTokenResponse
 from ._create_events_request import CreateEventsRequest
 from ._create_events_shrink_request import CreateEventsShrinkRequest
 from ._create_events_response_body import CreateEventsResponseBody
@@ -489,6 +492,10 @@ from ._precheck_skill_upload_via_oss_response import PrecheckSkillUploadViaOssRe
 from ._prepare_identity_provider_scimrequest import PrepareIdentityProviderSCIMRequest
 from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProviderSCIMResponseBody
 from ._prepare_identity_provider_scimresponse import PrepareIdentityProviderSCIMResponse
+from ._probe_mcp_origin_request import ProbeMcpOriginRequest
+from ._probe_mcp_origin_shrink_request import ProbeMcpOriginShrinkRequest
+from ._probe_mcp_origin_response_body import ProbeMcpOriginResponseBody
+from ._probe_mcp_origin_response import ProbeMcpOriginResponse
 from ._publish_skill_version_request import PublishSkillVersionRequest
 from ._publish_skill_version_shrink_request import PublishSkillVersionShrinkRequest
 from ._publish_skill_version_response_body import PublishSkillVersionResponseBody
@@ -750,6 +757,7 @@ from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDat
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataRuntimeSessionPolicy
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataRuntime
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyData
+from ._create_custom_agent_debug_token_response_body import CreateCustomAgentDebugTokenResponseBodyData
 from ._create_events_request import CreateEventsRequestBodyEventsDataContent
 from ._create_events_request import CreateEventsRequestBodyEventsDataParentScope
 from ._create_events_request import CreateEventsRequestBodyEventsData
@@ -902,6 +910,12 @@ from ._create_mcp_response_body import CreateMcpResponseBodyDataDeploymentConfig
 from ._create_mcp_response_body import CreateMcpResponseBodyDataDeploymentConfigRuntimeConfiguration
 from ._create_mcp_response_body import CreateMcpResponseBodyDataDeploymentConfig
 from ._create_mcp_response_body import CreateMcpResponseBodyDataMarketSource
+from ._create_mcp_response_body import CreateMcpResponseBodyDataOperationError
+from ._create_mcp_response_body import CreateMcpResponseBodyDataOperation
+from ._create_mcp_response_body import CreateMcpResponseBodyDataOriginProbeLastResultActualConfiguration
+from ._create_mcp_response_body import CreateMcpResponseBodyDataOriginProbeLastResultError
+from ._create_mcp_response_body import CreateMcpResponseBodyDataOriginProbeLastResult
+from ._create_mcp_response_body import CreateMcpResponseBodyDataOriginProbe
 from ._create_mcp_response_body import CreateMcpResponseBodyDataTemplate
 from ._create_mcp_response_body import CreateMcpResponseBodyData
 from ._create_memory_rule_request import CreateMemoryRuleRequestBodyStrategy
@@ -1113,6 +1127,12 @@ from ._get_mcp_response_body import GetMcpResponseBodyDataDeploymentConfigProxyC
 from ._get_mcp_response_body import GetMcpResponseBodyDataDeploymentConfigRuntimeConfiguration
 from ._get_mcp_response_body import GetMcpResponseBodyDataDeploymentConfig
 from ._get_mcp_response_body import GetMcpResponseBodyDataMarketSource
+from ._get_mcp_response_body import GetMcpResponseBodyDataOperationError
+from ._get_mcp_response_body import GetMcpResponseBodyDataOperation
+from ._get_mcp_response_body import GetMcpResponseBodyDataOriginProbeLastResultActualConfiguration
+from ._get_mcp_response_body import GetMcpResponseBodyDataOriginProbeLastResultError
+from ._get_mcp_response_body import GetMcpResponseBodyDataOriginProbeLastResult
+from ._get_mcp_response_body import GetMcpResponseBodyDataOriginProbe
 from ._get_mcp_response_body import GetMcpResponseBodyDataTemplate
 from ._get_mcp_response_body import GetMcpResponseBodyData
 from ._get_mcp_code_package_upload_url_request import GetMcpCodePackageUploadUrlRequestBody
@@ -1282,6 +1302,12 @@ from ._list_mcps_response_body import ListMcpsResponseBodyItemsDeploymentConfigP
 from ._list_mcps_response_body import ListMcpsResponseBodyItemsDeploymentConfigRuntimeConfiguration
 from ._list_mcps_response_body import ListMcpsResponseBodyItemsDeploymentConfig
 from ._list_mcps_response_body import ListMcpsResponseBodyItemsMarketSource
+from ._list_mcps_response_body import ListMcpsResponseBodyItemsOperationError
+from ._list_mcps_response_body import ListMcpsResponseBodyItemsOperation
+from ._list_mcps_response_body import ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration
+from ._list_mcps_response_body import ListMcpsResponseBodyItemsOriginProbeLastResultError
+from ._list_mcps_response_body import ListMcpsResponseBodyItemsOriginProbeLastResult
+from ._list_mcps_response_body import ListMcpsResponseBodyItemsOriginProbe
 from ._list_mcps_response_body import ListMcpsResponseBodyItems
 from ._list_memories_response_body import ListMemoriesResponseBodyItemsContent
 from ._list_memories_response_body import ListMemoriesResponseBodyItemsScope
@@ -1332,6 +1358,19 @@ from ._precheck_skill_upload_via_oss_response_body import PrecheckSkillUploadVia
 from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProviderSCIMResponseBodyDataConfiguration
 from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProviderSCIMResponseBodyDataCredential
 from ._prepare_identity_provider_scimresponse_body import PrepareIdentityProviderSCIMResponseBodyData
+from ._probe_mcp_origin_request import ProbeMcpOriginRequestBodyAuthDirectProxy
+from ._probe_mcp_origin_request import ProbeMcpOriginRequestBodyAuthHttpToMcp
+from ._probe_mcp_origin_request import ProbeMcpOriginRequestBodyAuth
+from ._probe_mcp_origin_request import ProbeMcpOriginRequestBody
+from ._probe_mcp_origin_response_body import ProbeMcpOriginResponseBodyDataCoverage
+from ._probe_mcp_origin_response_body import ProbeMcpOriginResponseBodyDataError
+from ._probe_mcp_origin_response_body import ProbeMcpOriginResponseBodyDataHttpResult
+from ._probe_mcp_origin_response_body import ProbeMcpOriginResponseBodyDataObservations
+from ._probe_mcp_origin_response_body import ProbeMcpOriginResponseBodyDataRecommendation
+from ._probe_mcp_origin_response_body import ProbeMcpOriginResponseBodyDataSelectedConfiguration
+from ._probe_mcp_origin_response_body import ProbeMcpOriginResponseBodyDataTools
+from ._probe_mcp_origin_response_body import ProbeMcpOriginResponseBodyDataWarnings
+from ._probe_mcp_origin_response_body import ProbeMcpOriginResponseBodyData
 from ._publish_skill_version_request import PublishSkillVersionRequestBody
 from ._rebuild_sandbox_response_body import RebuildSandboxResponseBodyData
 from ._redraft_skill_version_request import RedraftSkillVersionRequestBody
@@ -1679,6 +1718,9 @@ __all__ = [
     CreateCustomAgentShrinkRequest,
     CreateCustomAgentResponseBody,
     CreateCustomAgentResponse,
+    CreateCustomAgentDebugTokenRequest,
+    CreateCustomAgentDebugTokenResponseBody,
+    CreateCustomAgentDebugTokenResponse,
     CreateEventsRequest,
     CreateEventsShrinkRequest,
     CreateEventsResponseBody,
@@ -2124,6 +2166,10 @@ __all__ = [
     PrepareIdentityProviderSCIMRequest,
     PrepareIdentityProviderSCIMResponseBody,
     PrepareIdentityProviderSCIMResponse,
+    ProbeMcpOriginRequest,
+    ProbeMcpOriginShrinkRequest,
+    ProbeMcpOriginResponseBody,
+    ProbeMcpOriginResponse,
     PublishSkillVersionRequest,
     PublishSkillVersionShrinkRequest,
     PublishSkillVersionResponseBody,
@@ -2385,6 +2431,7 @@ __all__ = [
     CreateCustomAgentResponseBodyDataRuntimeSessionPolicy,
     CreateCustomAgentResponseBodyDataRuntime,
     CreateCustomAgentResponseBodyData,
+    CreateCustomAgentDebugTokenResponseBodyData,
     CreateEventsRequestBodyEventsDataContent,
     CreateEventsRequestBodyEventsDataParentScope,
     CreateEventsRequestBodyEventsData,
@@ -2537,6 +2584,12 @@ __all__ = [
     CreateMcpResponseBodyDataDeploymentConfigRuntimeConfiguration,
     CreateMcpResponseBodyDataDeploymentConfig,
     CreateMcpResponseBodyDataMarketSource,
+    CreateMcpResponseBodyDataOperationError,
+    CreateMcpResponseBodyDataOperation,
+    CreateMcpResponseBodyDataOriginProbeLastResultActualConfiguration,
+    CreateMcpResponseBodyDataOriginProbeLastResultError,
+    CreateMcpResponseBodyDataOriginProbeLastResult,
+    CreateMcpResponseBodyDataOriginProbe,
     CreateMcpResponseBodyDataTemplate,
     CreateMcpResponseBodyData,
     CreateMemoryRuleRequestBodyStrategy,
@@ -2748,6 +2801,12 @@ __all__ = [
     GetMcpResponseBodyDataDeploymentConfigRuntimeConfiguration,
     GetMcpResponseBodyDataDeploymentConfig,
     GetMcpResponseBodyDataMarketSource,
+    GetMcpResponseBodyDataOperationError,
+    GetMcpResponseBodyDataOperation,
+    GetMcpResponseBodyDataOriginProbeLastResultActualConfiguration,
+    GetMcpResponseBodyDataOriginProbeLastResultError,
+    GetMcpResponseBodyDataOriginProbeLastResult,
+    GetMcpResponseBodyDataOriginProbe,
     GetMcpResponseBodyDataTemplate,
     GetMcpResponseBodyData,
     GetMcpCodePackageUploadUrlRequestBody,
@@ -2917,6 +2976,12 @@ __all__ = [
     ListMcpsResponseBodyItemsDeploymentConfigRuntimeConfiguration,
     ListMcpsResponseBodyItemsDeploymentConfig,
     ListMcpsResponseBodyItemsMarketSource,
+    ListMcpsResponseBodyItemsOperationError,
+    ListMcpsResponseBodyItemsOperation,
+    ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration,
+    ListMcpsResponseBodyItemsOriginProbeLastResultError,
+    ListMcpsResponseBodyItemsOriginProbeLastResult,
+    ListMcpsResponseBodyItemsOriginProbe,
     ListMcpsResponseBodyItems,
     ListMemoriesResponseBodyItemsContent,
     ListMemoriesResponseBodyItemsScope,
@@ -2967,6 +3032,19 @@ __all__ = [
     PrepareIdentityProviderSCIMResponseBodyDataConfiguration,
     PrepareIdentityProviderSCIMResponseBodyDataCredential,
     PrepareIdentityProviderSCIMResponseBodyData,
+    ProbeMcpOriginRequestBodyAuthDirectProxy,
+    ProbeMcpOriginRequestBodyAuthHttpToMcp,
+    ProbeMcpOriginRequestBodyAuth,
+    ProbeMcpOriginRequestBody,
+    ProbeMcpOriginResponseBodyDataCoverage,
+    ProbeMcpOriginResponseBodyDataError,
+    ProbeMcpOriginResponseBodyDataHttpResult,
+    ProbeMcpOriginResponseBodyDataObservations,
+    ProbeMcpOriginResponseBodyDataRecommendation,
+    ProbeMcpOriginResponseBodyDataSelectedConfiguration,
+    ProbeMcpOriginResponseBodyDataTools,
+    ProbeMcpOriginResponseBodyDataWarnings,
+    ProbeMcpOriginResponseBodyData,
     PublishSkillVersionRequestBody,
     RebuildSandboxResponseBodyData,
     RedraftSkillVersionRequestBody,

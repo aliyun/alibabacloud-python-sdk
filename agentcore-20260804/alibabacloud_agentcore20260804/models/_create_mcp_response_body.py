@@ -87,6 +87,7 @@ class CreateMcpResponseBodyData(DaraModel):
         self,
         addresses: List[str] = None,
         auth: main_models.CreateMcpResponseBodyDataAuth = None,
+        backend_mcp_protocol: str = None,
         custom_tags: List[str] = None,
         deployment_config: main_models.CreateMcpResponseBodyDataDeploymentConfig = None,
         description: str = None,
@@ -97,6 +98,9 @@ class CreateMcpResponseBodyData(DaraModel):
         mcp_server_id: str = None,
         name: str = None,
         official_tag: str = None,
+        operation: main_models.CreateMcpResponseBodyDataOperation = None,
+        origin_probe: main_models.CreateMcpResponseBodyDataOriginProbe = None,
+        origin_protocol_version: str = None,
         permission_mode: str = None,
         protocol: str = None,
         status: str = None,
@@ -106,21 +110,23 @@ class CreateMcpResponseBodyData(DaraModel):
         type: str = None,
         usage_active: bool = None,
     ):
-        # The list of MCP service addresses.
+        # The list of MCP service addresses. Required when Type is DIRECT_PROXY or HTTP_TO_MCP. Do not specify when Type is CODE_PACKAGE.
         self.addresses = addresses
-        # The backend authentication configuration. The enabled field indicates whether authentication is enabled. The directProxy field specifies the custom authentication header for the direct proxy. The httpToMcp field specifies the list of OpenAPI credentials for HTTP_TO_MCP.
+        # The backend authentication configuration. enabled indicates whether it is enabled; directProxy specifies the custom authentication headers for direct proxy; httpToMcp specifies the list of OpenAPI credentials for HTTP_TO_MCP.
         self.auth = auth
+        # The saved legacy or modern backend policy, which is separate from the transport indicated by protocol and does not indicate verification. This field is not saved for newly created CODE_PACKAGE. For historical CODE_PACKAGE, the existing value does not control Function Compute session affinity or gateway protocol; for the actual protocol, refer to OriginProbe.LastResult.ActualConfiguration.BackendMcpProtocol. This field is returned as empty for historically unspecified values and HTTP_TO_MCP.
+        self.backend_mcp_protocol = backend_mcp_protocol
         # The custom tags. Multiple tags are supported.
         self.custom_tags = custom_tags
-        # The deployment configuration for the code deployment MCP.
+        # The deployment configuration of the code deployment MCP.
         self.deployment_config = deployment_config
         # The description.
         self.description = description
-        # The MCP endpoint available for users or agents to invoke. This field is empty before deployment is complete.
+        # The MCP endpoint that can be called by users or agents. This parameter is empty before the deployment is completed.
         self.endpoint = endpoint
-        # The Function Compute function name corresponding to the CODE_PACKAGE MCP. This field is empty before deployment is complete and for other types.
+        # The name of the Function Compute function corresponding to the CODE_PACKAGE MCP. This parameter is empty before the deployment is completed or for other types.
         self.function_name = function_name
-        # The MCP source marketplace template.
+        # The MCP marketplace source template.
         self.market_source = market_source
         # The MCP server configuration.
         self.mcp_server_config = mcp_server_config
@@ -130,7 +136,13 @@ class CreateMcpResponseBodyData(DaraModel):
         self.name = name
         # The official usage tag managed by the server.
         self.official_tag = official_tag
-        # PUBLIC indicates public access. CONTROLLED indicates that access is controlled based on permission rules.
+        # The read-only progress that reuses an existing release task. This parameter does not change the primary status of the resource and is empty if no historical operation information is available.
+        self.operation = operation
+        # Returns the minimal origin verification summary of the most recent task only for code deployment. This parameter is empty for direct connection and HTTP-to-MCP scenarios. Querying this parameter does not trigger probing.
+        self.origin_probe = origin_probe
+        # The optional saved origin MCP protocol date display metadata in the YYYY-MM-DD format. You can specify this parameter when you create the resource and modify it when you update the resource. If you omit this parameter during an update, the current value is retained. This parameter is used only to save and display information. It does not represent a software version, restrict the external protocol of the gateway, control backend requests, or indicate that real-time verification is passed. If this parameter is omitted during creation and not updated, is missing in history, or is set to HTTP_TO_MCP, null is returned. No default value is provided.
+        self.origin_protocol_version = origin_protocol_version
+        # The access permission mode. PUBLIC indicates public access. CONTROLLED indicates that access is controlled based on permission rules.
         self.permission_mode = permission_mode
         # The MCP protocol.
         self.protocol = protocol
@@ -154,6 +166,10 @@ class CreateMcpResponseBodyData(DaraModel):
             self.deployment_config.validate()
         if self.market_source:
             self.market_source.validate()
+        if self.operation:
+            self.operation.validate()
+        if self.origin_probe:
+            self.origin_probe.validate()
         if self.template:
             self.template.validate()
 
@@ -167,6 +183,9 @@ class CreateMcpResponseBodyData(DaraModel):
 
         if self.auth is not None:
             result['auth'] = self.auth.to_map()
+
+        if self.backend_mcp_protocol is not None:
+            result['backendMcpProtocol'] = self.backend_mcp_protocol
 
         if self.custom_tags is not None:
             result['customTags'] = self.custom_tags
@@ -197,6 +216,15 @@ class CreateMcpResponseBodyData(DaraModel):
 
         if self.official_tag is not None:
             result['officialTag'] = self.official_tag
+
+        if self.operation is not None:
+            result['operation'] = self.operation.to_map()
+
+        if self.origin_probe is not None:
+            result['originProbe'] = self.origin_probe.to_map()
+
+        if self.origin_protocol_version is not None:
+            result['originProtocolVersion'] = self.origin_protocol_version
 
         if self.permission_mode is not None:
             result['permissionMode'] = self.permission_mode
@@ -233,6 +261,9 @@ class CreateMcpResponseBodyData(DaraModel):
             temp_model = main_models.CreateMcpResponseBodyDataAuth()
             self.auth = temp_model.from_map(m.get('auth'))
 
+        if m.get('backendMcpProtocol') is not None:
+            self.backend_mcp_protocol = m.get('backendMcpProtocol')
+
         if m.get('customTags') is not None:
             self.custom_tags = m.get('customTags')
 
@@ -264,6 +295,17 @@ class CreateMcpResponseBodyData(DaraModel):
 
         if m.get('officialTag') is not None:
             self.official_tag = m.get('officialTag')
+
+        if m.get('operation') is not None:
+            temp_model = main_models.CreateMcpResponseBodyDataOperation()
+            self.operation = temp_model.from_map(m.get('operation'))
+
+        if m.get('originProbe') is not None:
+            temp_model = main_models.CreateMcpResponseBodyDataOriginProbe()
+            self.origin_probe = temp_model.from_map(m.get('originProbe'))
+
+        if m.get('originProtocolVersion') is not None:
+            self.origin_protocol_version = m.get('originProtocolVersion')
 
         if m.get('permissionMode') is not None:
             self.permission_mode = m.get('permissionMode')
@@ -301,15 +343,15 @@ class CreateMcpResponseBodyDataTemplate(DaraModel):
         template_input_schema: str = None,
         update_available: bool = None,
     ):
-        # The applied template version of the current MCP.
+        # The template version currently applied to the MCP.
         self.applied_template_version = applied_template_version
         # The latest template version.
         self.latest_template_version = latest_template_version
-        # The template schema version.
+        # The schema version of the template.
         self.schema_version = schema_version
-        # The template input schema, represented as a JSON Schema string.
+        # The input schema of the template, represented as a JSON Schema string.
         self.template_input_schema = template_input_schema
-        # Indicates whether an updated template version is available.
+        # Indicates whether a newer template version is available.
         self.update_available = update_available
 
     def validate(self):
@@ -356,12 +398,369 @@ class CreateMcpResponseBodyDataTemplate(DaraModel):
 
         return self
 
+class CreateMcpResponseBodyDataOriginProbe(DaraModel):
+    def __init__(
+        self,
+        last_result: main_models.CreateMcpResponseBodyDataOriginProbeLastResult = None,
+    ):
+        # Returned only for CODE_PACKAGE. This parameter is cleared when a new task starts and is empty if no verification has been performed or if an old task did not perform verification. If a subsequent release fails, the current summary is retained. This parameter does not indicate real-time health or the status of the effective version.
+        self.last_result = last_result
+
+    def validate(self):
+        if self.last_result:
+            self.last_result.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.last_result is not None:
+            result['lastResult'] = self.last_result.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('lastResult') is not None:
+            temp_model = main_models.CreateMcpResponseBodyDataOriginProbeLastResult()
+            self.last_result = temp_model.from_map(m.get('lastResult'))
+
+        return self
+
+class CreateMcpResponseBodyDataOriginProbeLastResult(DaraModel):
+    def __init__(
+        self,
+        actual_configuration: main_models.CreateMcpResponseBodyDataOriginProbeLastResultActualConfiguration = None,
+        error: main_models.CreateMcpResponseBodyDataOriginProbeLastResultError = None,
+        probed_at: str = None,
+        stage: str = None,
+        status: str = None,
+    ):
+        # The actual configuration confirmed by evidence in the current verification. This parameter is empty if no confirmed information is available and is not inferred from the expected configuration.
+        self.actual_configuration = actual_configuration
+        # The verification error. This parameter is empty if the verification is successful. It saves only the desensitized diagnostics required for the current verification.
+        self.error = error
+        # The time of the current origin verification in ISO 8601 UTC format.
+        self.probed_at = probed_at
+        # The verification stage. Valid values: CONNECT, DISCOVER, INITIALIZE, SESSION_CHECK, CLEANUP, and COMPLETE.
+        self.stage = stage
+        # The verification result. Valid values: SUCCESS and FAILED. The value is SUCCESS if the protocol and applicable session checks pass. Not declaring any capabilities does not affect the result.
+        self.status = status
+
+    def validate(self):
+        if self.actual_configuration:
+            self.actual_configuration.validate()
+        if self.error:
+            self.error.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.actual_configuration is not None:
+            result['actualConfiguration'] = self.actual_configuration.to_map()
+
+        if self.error is not None:
+            result['error'] = self.error.to_map()
+
+        if self.probed_at is not None:
+            result['probedAt'] = self.probed_at
+
+        if self.stage is not None:
+            result['stage'] = self.stage
+
+        if self.status is not None:
+            result['status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('actualConfiguration') is not None:
+            temp_model = main_models.CreateMcpResponseBodyDataOriginProbeLastResultActualConfiguration()
+            self.actual_configuration = temp_model.from_map(m.get('actualConfiguration'))
+
+        if m.get('error') is not None:
+            temp_model = main_models.CreateMcpResponseBodyDataOriginProbeLastResultError()
+            self.error = temp_model.from_map(m.get('error'))
+
+        if m.get('probedAt') is not None:
+            self.probed_at = m.get('probedAt')
+
+        if m.get('stage') is not None:
+            self.stage = m.get('stage')
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
+
+        return self
+
+class CreateMcpResponseBodyDataOriginProbeLastResultError(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        retryable: bool = None,
+        source: str = None,
+        stage: str = None,
+    ):
+        # Returns only bounded diagnostic codes and does not return the original error body of the origin server.
+        self.code = code
+        # The necessary diagnostics that are trimmed and desensitized. This parameter does not contain credentials or original responses.
+        self.message = message
+        # Specifies whether the operation is suitable for retry based on a restricted policy. This parameter does not trigger automatic retries.
+        self.retryable = retryable
+        # The source of the error. Valid values: MAGIC, ROUTER, NETWORK, ORIGIN, and UNKNOWN. The value is determined only based on actual evidence.
+        self.source = source
+        # The detection or release stage where the error occurred.
+        self.stage = stage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['code'] = self.code
+
+        if self.message is not None:
+            result['message'] = self.message
+
+        if self.retryable is not None:
+            result['retryable'] = self.retryable
+
+        if self.source is not None:
+            result['source'] = self.source
+
+        if self.stage is not None:
+            result['stage'] = self.stage
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+
+        if m.get('message') is not None:
+            self.message = m.get('message')
+
+        if m.get('retryable') is not None:
+            self.retryable = m.get('retryable')
+
+        if m.get('source') is not None:
+            self.source = m.get('source')
+
+        if m.get('stage') is not None:
+            self.stage = m.get('stage')
+
+        return self
+
+class CreateMcpResponseBodyDataOriginProbeLastResultActualConfiguration(DaraModel):
+    def __init__(
+        self,
+        backend_mcp_protocol: str = None,
+        protocol: str = None,
+        protocol_version: str = None,
+        session_mode: str = None,
+    ):
+        # The verified backend MCP protocol policy. Valid values: legacy and modern. This parameter is empty if the policy is not confirmed.
+        self.backend_mcp_protocol = backend_mcp_protocol
+        # The verified MCP transport. Valid values: SSE and StreamableHTTP. This parameter is empty if the transport is not confirmed.
+        self.protocol = protocol
+        # The actual negotiated or selected and verified date version of the MCP protocol. This parameter is empty if the version is not confirmed.
+        self.protocol_version = protocol_version
+        # The actual session mode. Valid values: STATEFUL, STATELESS, and NOT_APPLICABLE. This parameter is empty if the mode is not confirmed.
+        self.session_mode = session_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.backend_mcp_protocol is not None:
+            result['backendMcpProtocol'] = self.backend_mcp_protocol
+
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+
+        if self.protocol_version is not None:
+            result['protocolVersion'] = self.protocol_version
+
+        if self.session_mode is not None:
+            result['sessionMode'] = self.session_mode
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('backendMcpProtocol') is not None:
+            self.backend_mcp_protocol = m.get('backendMcpProtocol')
+
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+
+        if m.get('protocolVersion') is not None:
+            self.protocol_version = m.get('protocolVersion')
+
+        if m.get('sessionMode') is not None:
+            self.session_mode = m.get('sessionMode')
+
+        return self
+
+class CreateMcpResponseBodyDataOperation(DaraModel):
+    def __init__(
+        self,
+        error: main_models.CreateMcpResponseBodyDataOperationError = None,
+        operation_id: str = None,
+        stage: str = None,
+        status: str = None,
+        type: str = None,
+        updated_at: str = None,
+    ):
+        # The desensitized error of the current release operation. This field indicates the failure of the gateway or formal link after the origin server passes the verification.
+        self.error = error
+        # The ID of the current or most recent release operation.
+        self.operation_id = operation_id
+        # The release stage, such as compute deployment, origin verification, summary saving, gateway release, ingress credential synchronization, formal link verification, or deployment submission. Old tasks retain their original stage semantics.
+        self.stage = stage
+        # The status of the operation. Valid values: PENDING, RUNNING, SUCCEEDED, and FAILED.
+        self.status = status
+        # The type of the operation. Valid value: PUBLISH.
+        self.type = type
+        # The time when the operation was updated in ISO 8601 UTC format.
+        self.updated_at = updated_at
+
+    def validate(self):
+        if self.error:
+            self.error.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.error is not None:
+            result['error'] = self.error.to_map()
+
+        if self.operation_id is not None:
+            result['operationId'] = self.operation_id
+
+        if self.stage is not None:
+            result['stage'] = self.stage
+
+        if self.status is not None:
+            result['status'] = self.status
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        if self.updated_at is not None:
+            result['updatedAt'] = self.updated_at
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('error') is not None:
+            temp_model = main_models.CreateMcpResponseBodyDataOperationError()
+            self.error = temp_model.from_map(m.get('error'))
+
+        if m.get('operationId') is not None:
+            self.operation_id = m.get('operationId')
+
+        if m.get('stage') is not None:
+            self.stage = m.get('stage')
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        if m.get('updatedAt') is not None:
+            self.updated_at = m.get('updatedAt')
+
+        return self
+
+class CreateMcpResponseBodyDataOperationError(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        retryable: bool = None,
+        source: str = None,
+        stage: str = None,
+    ):
+        # Returns only bounded diagnostic codes and does not return the original error body of the origin server.
+        self.code = code
+        # The necessary diagnostics that are trimmed and desensitized. This parameter does not contain credentials or original responses.
+        self.message = message
+        # Specifies whether the operation is suitable for retry based on a restricted policy. This parameter does not trigger automatic retries.
+        self.retryable = retryable
+        # The source of the error. Valid values: MAGIC, ROUTER, NETWORK, ORIGIN, and UNKNOWN. The value is determined only based on actual evidence.
+        self.source = source
+        # The detection or release stage where the error occurred.
+        self.stage = stage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['code'] = self.code
+
+        if self.message is not None:
+            result['message'] = self.message
+
+        if self.retryable is not None:
+            result['retryable'] = self.retryable
+
+        if self.source is not None:
+            result['source'] = self.source
+
+        if self.stage is not None:
+            result['stage'] = self.stage
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+
+        if m.get('message') is not None:
+            self.message = m.get('message')
+
+        if m.get('retryable') is not None:
+            self.retryable = m.get('retryable')
+
+        if m.get('source') is not None:
+            self.source = m.get('source')
+
+        if m.get('stage') is not None:
+            self.stage = m.get('stage')
+
+        return self
+
 class CreateMcpResponseBodyDataMarketSource(DaraModel):
     def __init__(
         self,
         market_item_id: str = None,
     ):
-        # The MCP marketplace template ID.
+        # The ID of the MCP marketplace template.
         self.market_item_id = market_item_id
 
     def validate(self):
@@ -402,7 +801,7 @@ class CreateMcpResponseBodyDataDeploymentConfig(DaraModel):
         proxy_configuration: main_models.CreateMcpResponseBodyDataDeploymentConfigProxyConfiguration = None,
         runtime_configuration: main_models.CreateMcpResponseBodyDataDeploymentConfigRuntimeConfiguration = None,
     ):
-        # The MCP entry access control.
+        # The MCP ingress access control configuration.
         self.access_control = access_control
         # The agent identity configuration.
         self.agent_identity_configuration = agent_identity_configuration
@@ -579,19 +978,19 @@ class CreateMcpResponseBodyDataDeploymentConfigRuntimeConfiguration(DaraModel):
         port: int = None,
         timeout: int = None,
     ):
-        # The CPU specification in cores. Default value: 0.25.
+        # The CPU specifications in cores. Default value: 0.25.
         self.cpu = cpu
-        # The ephemeral disk size in MB. Valid values: 512 and 10240.
+        # The temporary disk size in MB. Valid values: 512 and 10240.
         self.disk_size = disk_size
         # The environment variables.
         self.environment_variables = environment_variables
         # The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
         self.execution_role_arn = execution_role_arn
-        # Default value: 200.
+        # The request concurrency per instance. Default value: 200.
         self.instance_concurrency = instance_concurrency
-        # The memory specification in MB. Default value: 512.
+        # The memory specifications in MB. Default value: 512.
         self.memory = memory
-        # Default value: 9000.
+        # The service port. Default value: 9000.
         self.port = port
         # The function timeout period in seconds. Default value: 300.
         self.timeout = timeout
@@ -695,7 +1094,7 @@ class CreateMcpResponseBodyDataDeploymentConfigParameterTransformConfiguration(D
     ):
         # Specifies whether to enable parameter transformation and result enhancement.
         self.enabled = enabled
-        # The reserved parameter transformation and result enhancement rule set reference.
+        # The reserved reference to the parameter transformation and result enhancement rule set.
         self.rule_set_id = rule_set_id
         # The transformation rule version.
         self.version = version
@@ -781,7 +1180,7 @@ class CreateMcpResponseBodyDataDeploymentConfigOssMountConfigurationMountPoints(
         self.bucket_name = bucket_name
         # The path in the OSS bucket.
         self.bucket_path = bucket_path
-        # The OSS service endpoint.
+        # The endpoint of the OSS service.
         self.endpoint = endpoint
         # The local mount directory.
         self.mount_dir = mount_dir
@@ -842,11 +1241,11 @@ class CreateMcpResponseBodyDataDeploymentConfigNetworkConfiguration(DaraModel):
     ):
         # The network mode.
         self.network_mode = network_mode
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
         # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -894,11 +1293,11 @@ class CreateMcpResponseBodyDataDeploymentConfigNasConfiguration(DaraModel):
         mount_points: List[main_models.CreateMcpResponseBodyDataDeploymentConfigNasConfigurationMountPoints] = None,
         user_id: int = None,
     ):
-        # The runtime user group ID.
+        # The ID of the user group.
         self.group_id = group_id
         # The list of NAS mount points.
         self.mount_points = mount_points
-        # The runtime user ID.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):
@@ -952,7 +1351,7 @@ class CreateMcpResponseBodyDataDeploymentConfigNasConfigurationMountPoints(DaraM
         self.enable_tls = enable_tls
         # The local mount directory.
         self.mount_dir = mount_dir
-        # The NAS service address.
+        # The NAS server address.
         self.server_addr = server_addr
 
     def validate(self):
@@ -994,15 +1393,18 @@ class CreateMcpResponseBodyDataDeploymentConfigMcpConfiguration(DaraModel):
         session_concurrency_per_instance: int = None,
         session_idle_timeout_seconds: int = None,
         session_max_lifetime_seconds: int = None,
+        session_mode: str = None,
     ):
         # The MCP endpoint path, such as /mcp or /sse.
         self.endpoint_path = endpoint_path
-        # Currently fixed to 1.
+        # The session concurrency per instance. Currently fixed to 1.
         self.session_concurrency_per_instance = session_concurrency_per_instance
         # The session idle timeout period in seconds. Default value: 1800.
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
         # The maximum session lifetime in seconds. Default value: 21600.
         self.session_max_lifetime_seconds = session_max_lifetime_seconds
+        # The session mode. Only applicable to StreamableHTTP. Default value for creation: STATEFUL. If omitted during an update, the original value is retained. STATELESS disables Function Compute session affinity, and the stdio gateway does not enable stateful mode. Native HTTP services must support stateless MCP by themselves.
+        self.session_mode = session_mode
 
     def validate(self):
         pass
@@ -1024,6 +1426,9 @@ class CreateMcpResponseBodyDataDeploymentConfigMcpConfiguration(DaraModel):
         if self.session_max_lifetime_seconds is not None:
             result['sessionMaxLifetimeSeconds'] = self.session_max_lifetime_seconds
 
+        if self.session_mode is not None:
+            result['sessionMode'] = self.session_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1040,6 +1445,9 @@ class CreateMcpResponseBodyDataDeploymentConfigMcpConfiguration(DaraModel):
         if m.get('sessionMaxLifetimeSeconds') is not None:
             self.session_max_lifetime_seconds = m.get('sessionMaxLifetimeSeconds')
 
+        if m.get('sessionMode') is not None:
+            self.session_mode = m.get('sessionMode')
+
         return self
 
 class CreateMcpResponseBodyDataDeploymentConfigLogConfiguration(DaraModel):
@@ -1055,7 +1463,7 @@ class CreateMcpResponseBodyDataDeploymentConfigLogConfiguration(DaraModel):
         self.enable_instance_metrics = enable_instance_metrics
         # Specifies whether to collect request metrics.
         self.enable_request_metrics = enable_request_metrics
-        # The start rule for FC log splitting.
+        # The start rule for log segmentation.
         self.log_begin_rule = log_begin_rule
         # The name of the Logstore.
         self.logstore = logstore
@@ -1111,7 +1519,7 @@ class CreateMcpResponseBodyDataDeploymentConfigHookConfiguration(DaraModel):
         self,
         hooks: List[main_models.CreateMcpResponseBodyDataDeploymentConfigHookConfigurationHooks] = None,
     ):
-        # Executes the PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in array order.
+        # Executes the PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in the order of the array.
         self.hooks = hooks
 
     def validate(self):
@@ -1163,7 +1571,7 @@ class CreateMcpResponseBodyDataDeploymentConfigHookConfigurationHooks(DaraModel)
         self.event = event
         # The hook request headers.
         self.headers = headers
-        # The timeout period of the hook, in milliseconds.
+        # The timeout period in milliseconds.
         self.timeout = timeout
         # The callback URL of the hook.
         self.url = url
@@ -1243,11 +1651,11 @@ class CreateMcpResponseBodyDataDeploymentConfigContainerConfiguration(DaraModel)
         self.entrypoint = entrypoint
         # The container image URL.
         self.image = image
-        # The image repository type.
+        # The image registry type.
         self.image_registry_type = image_registry_type
-        # Custom containers currently must expose the standard MCP themselves. Set the value to SELF_HOSTED.
+        # The MCP runtime mode. Custom containers currently need to expose standard MCP by themselves. Set the value to SELF_HOSTED.
         self.mcp_runtime_mode = mcp_runtime_mode
-        # Currently fixed to CONTAINER_IMAGE.
+        # The container source type. Currently fixed to CONTAINER_IMAGE.
         self.source_type = source_type
 
     def validate(self):
@@ -1313,11 +1721,11 @@ class CreateMcpResponseBodyDataDeploymentConfigCodeConfiguration(DaraModel):
         command: List[str] = None,
         language: str = None,
     ):
-        # The temporary code package token returned by GetMcpCodePackageUploadUrl, which is used to create or update a code deployment after a presigned upload is complete.
+        # The temporary code package token returned by GetMcpCodePackageUploadUrl. This token is used to create or update a code deployment after a presigned upload is completed.
         self.code_package_token = code_package_token
         # The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the complete subcommand, and the remaining parameters.
         self.command = command
-        # The runtime of the code package. Valid values: python3.13, nodejs22, and java17.
+        # The code package runtime: python3.13, nodejs22, or java17.
         self.language = language
 
     def validate(self):
@@ -1416,9 +1824,9 @@ class CreateMcpResponseBodyDataDeploymentConfigAccessControl(DaraModel):
     ):
         # The ID of the AgentCore credential referenced when the mode is set to CREDENTIAL.
         self.credential_id = credential_id
-        # Specifies whether to enable entry access control.
+        # Specifies whether to enable ingress access control.
         self.enabled = enabled
-        # The access control mode. ANONYMOUS indicates anonymous access. CREDENTIAL indicates authentication by using AgentCore access credentials.
+        # The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates authentication by using AgentCore credentials.
         self.mode = mode
 
     def validate(self):
@@ -1461,7 +1869,7 @@ class CreateMcpResponseBodyDataAuth(DaraModel):
         enabled: bool = None,
         http_to_mcp: List[main_models.CreateMcpResponseBodyDataAuthHttpToMcp] = None,
     ):
-        # The caller API Key authentication configuration for code-deployed MCP.
+        # The caller API key authentication configuration for code-deployed MCP.
         self.code_package = code_package
         # The direct proxy authentication configuration.
         self.direct_proxy = direct_proxy
@@ -1537,7 +1945,7 @@ class CreateMcpResponseBodyDataAuthHttpToMcp(DaraModel):
         self.id = id
         # The name.
         self.name = name
-        # The location of the credential.
+        # The position of the credential.
         self.position = position
         # The type.
         self.type = type
@@ -1629,9 +2037,9 @@ class CreateMcpResponseBodyDataAuthCodePackage(DaraModel):
         api_key: str = None,
         header_name: str = None,
     ):
-        # The API Key used to verify MCP callers.
+        # The API key used to verify MCP callers.
         self.api_key = api_key
-        # The name of the request header that carries the API Key.
+        # The name of the request header that carries the API key.
         self.header_name = header_name
 
     def validate(self):
