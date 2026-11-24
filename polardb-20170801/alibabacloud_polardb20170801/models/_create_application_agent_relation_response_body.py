@@ -10,7 +10,7 @@ class CreateApplicationAgentRelationResponseBody(DaraModel):
         application_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the Squad application.
+        # The ID of the squad application.
         self.application_id = application_id
         # Id of the request
         self.request_id = request_id

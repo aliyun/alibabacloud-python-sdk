@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class DescribeGatewayAttributeResponseBody(DaraModel):
     def __init__(
         self,
+        auto_expire_time: str = None,
         class_code: str = None,
         create_time: str = None,
         current_version: str = None,
@@ -27,15 +28,18 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         running_version: str = None,
         security_iparrays: List[main_models.DescribeGatewayAttributeResponseBodySecurityIPArrays] = None,
         semantic_cache_enabled: bool = None,
+        smart_routing_enabled: bool = None,
         status: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The specification code.
+        # The cumulative expiration time of the smart routing privilege in UTC and ISO 8601 format. This parameter may be omitted or null if smart routing is not enabled.
+        self.auto_expire_time = auto_expire_time
+        # The instance type code.
         self.class_code = class_code
         # The creation time.
         # 
-        # The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
         self.create_time = create_time
         # The current version number.
         self.current_version = current_version
@@ -47,15 +51,14 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         # 
         # This parameter is empty when the billing method is Postpaid.
         # 
-        # The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
         self.expire_time = expire_time
         # Indicates whether the cluster has expired. Valid values:
         # 
-        # - true
-        # 
-        # - false
+        # - true: The cluster has expired.
+        # - false: The cluster has not expired.
         self.expired = expired
-        # The gateway instance ID.
+        # The instance ID of the gateway.
         self.gw_cluster_id = gw_cluster_id
         # The description of the gateway.
         self.gw_description = gw_description
@@ -63,7 +66,7 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         self.latest_version = latest_version
         # The last modification time.
         # 
-        # The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
         self.modify_time = modify_time
         # The billing method. Valid values:
         # 
@@ -76,10 +79,12 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The running version number.
         self.running_version = running_version
-        # The application-level whitelist.
+        # The application-level IP whitelist.
         self.security_iparrays = security_iparrays
-        # Indicates whether the semantic cache is enabled. If the semantic cache is disabled or has never been enabled, the value is false.
+        # Indicates whether semantic caching is enabled. If it is disabled or has never been enabled, the value is false.
         self.semantic_cache_enabled = semantic_cache_enabled
+        # Indicates whether smart routing is enabled for the instance. The value is returned by ApsaraDB based on the validity period of the privilege. A value of true does not indicate that the data plane is healthy.
+        self.smart_routing_enabled = smart_routing_enabled
         # The application status. Valid values:
         # 
         # - CREATE: creating
@@ -105,6 +110,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_expire_time is not None:
+            result['AutoExpireTime'] = self.auto_expire_time
+
         if self.class_code is not None:
             result['ClassCode'] = self.class_code
 
@@ -160,6 +168,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
         if self.semantic_cache_enabled is not None:
             result['SemanticCacheEnabled'] = self.semantic_cache_enabled
 
+        if self.smart_routing_enabled is not None:
+            result['SmartRoutingEnabled'] = self.smart_routing_enabled
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -173,6 +184,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoExpireTime') is not None:
+            self.auto_expire_time = m.get('AutoExpireTime')
+
         if m.get('ClassCode') is not None:
             self.class_code = m.get('ClassCode')
 
@@ -229,6 +243,9 @@ class DescribeGatewayAttributeResponseBody(DaraModel):
 
         if m.get('SemanticCacheEnabled') is not None:
             self.semantic_cache_enabled = m.get('SemanticCacheEnabled')
+
+        if m.get('SmartRoutingEnabled') is not None:
+            self.smart_routing_enabled = m.get('SmartRoutingEnabled')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
@@ -298,15 +315,15 @@ class DescribeGatewayAttributeResponseBodyEndpoints(DaraModel):
         tunnel_id: str = None,
         vpc_id: str = None,
     ):
-        # The endpoint address.
+        # The endpoint.
         self.address = address
-        # The ID of the endpoint node.
+        # The ID of the endpoint.
         self.endpoint_id = endpoint_id
-        # The gateway instance ID.
+        # The instance ID of the gateway.
         self.gw_cluster_id = gw_cluster_id
-        # The type of the endpoint address. Valid values:
+        # The endpoint type. Valid values:
         # - Private: VPC address
-        # - Public: Internet address
+        # - Public: public network address
         self.net_type = net_type
         # The port.
         self.port = port

@@ -13,13 +13,13 @@ class CreateResourceControlRequest(DaraModel):
         region_id: str = None,
         resource_control_name: str = None,
     ):
-        # The maximum number of CPU cores available to the resource control rule. The minimum value is 1, and the maximum value is determined by the resource_control_cpu_count_limit kernel parameter of the cluster. You must specify either MaxCpu or CpuCount, but not both.
+        # The maximum number of CPU cores available to the resource control rule. The minimum value is 1, and the maximum value is determined by the resource_control_cpu_count_limit kernel parameter of the cluster. You must specify exactly one of the MaxCpu and CpuCount parameters.
         self.cpu_count = cpu_count
         # The ID of the PolarDB cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The maximum CPU quota percentage available to the resource control rule. Valid values: 1 to 100. You must specify either MaxCpu or CpuCount, but not both.
+        # The maximum CPU quota percentage available to the resource control rule. Valid values: 1 to 100. You must specify exactly one of the MaxCpu and CpuCount parameters.
         self.max_cpu = max_cpu
         # The ID of the region where the PolarDB cluster is deployed.
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.

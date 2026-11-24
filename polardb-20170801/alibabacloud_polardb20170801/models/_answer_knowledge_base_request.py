@@ -19,7 +19,7 @@ class AnswerKnowledgeBaseRequest(DaraModel):
         top_k: int = None,
         user_instructions: str = None,
     ):
-        # The unique identifier of the knowledge base. To obtain the ID, first call CreateKnowledgeSpace to create a knowledge space, use the returned KnowledgeSpaceId to call CreateKnowledgeBase, and then use the KnowledgeBaseId returned by CreateKnowledgeBase. Separate multiple knowledge base IDs with commas.
+        # The unique identifier of the knowledge base. To obtain this ID, call CreateKnowledgeSpace to create a knowledge space, use the returned KnowledgeSpaceId to call CreateKnowledgeBase, and then use the KnowledgeBaseId returned by CreateKnowledgeBase. You can specify up to 50 knowledge base IDs separated by commas.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id
@@ -43,7 +43,7 @@ class AnswerKnowledgeBaseRequest(DaraModel):
         self.search_mode = search_mode
         # The system prompt.
         self.system_prompt = system_prompt
-        # The number of results to recall.
+        # The number of results to recall during retrieval.
         self.top_k = top_k
         # The additional user instructions.
         self.user_instructions = user_instructions

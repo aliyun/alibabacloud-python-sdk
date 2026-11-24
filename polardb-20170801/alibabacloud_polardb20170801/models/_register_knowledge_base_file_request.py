@@ -17,7 +17,7 @@ class RegisterKnowledgeBaseFileRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_path = file_path
-        # The ID of the knowledge base. Create a knowledge space first, then create a knowledge base, and obtain this ID from the creation result.
+        # The knowledge base ID. Create a knowledge space first, then create a knowledge base, and obtain this ID from the creation result.
         # 
         # This parameter is required.
         self.knowledge_base_id = knowledge_base_id

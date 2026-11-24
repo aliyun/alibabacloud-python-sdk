@@ -18,17 +18,17 @@ class DescribeCostRulesRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
     ):
-        # The ID of the cost rule.
+        # The cost rule ID.
         self.cost_rule_id = cost_rule_id
-        # The effective target type used to filter the results. Valid values: global, consumerGroup, and consumer.
+        # The effective target type. Valid values: global, consumerGroup, and consumer.
         self.effective_target_type = effective_target_type
-        # The effective target value used to filter the results.
+        # The effective target value.
         self.effective_target_value = effective_target_value
         # The gateway instance ID.
         # 
         # This parameter is required.
         self.gw_cluster_id = gw_cluster_id
-        # The input token tier used to filter the results. Returns rules that include this tier. Valid values: 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+.
+        # The input token tier used for filtering. Returns rules that include this tier. An empty string filters the default tier. Valid values: 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+.
         self.input_token_tier = input_token_tier
         # The name of the model, such as gpt-4 or qwen-turbo.
         self.model_name = model_name

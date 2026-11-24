@@ -96,6 +96,7 @@ class DescribeGatewayListResponseBody(DaraModel):
 class DescribeGatewayListResponseBodyItems(DaraModel):
     def __init__(
         self,
+        auto_expire_time: str = None,
         create_time: str = None,
         db_type: str = None,
         expire_time: str = None,
@@ -105,13 +106,16 @@ class DescribeGatewayListResponseBodyItems(DaraModel):
         modify_time: str = None,
         pay_type: str = None,
         region_id: str = None,
+        smart_routing_enabled: bool = None,
         status: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The cumulative expiration time of the smart routing benefit. The time follows the ISO 8601 standard and is displayed in UTC. If smart routing is not enabled, this parameter may be omitted or set to null.
+        self.auto_expire_time = auto_expire_time
         # The creation time.
         # 
-        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
         self.create_time = create_time
         # The database type.
         self.db_type = db_type
@@ -119,7 +123,7 @@ class DescribeGatewayListResponseBodyItems(DaraModel):
         # - If the billing method of the cluster is subscription, the actual expiration time is returned.
         # - If the billing method of the cluster is pay-as-you-go, an empty value is returned.
         # 
-        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
         self.expire_time = expire_time
         # Indicates whether the cluster has expired. Valid values:
         # 
@@ -129,11 +133,11 @@ class DescribeGatewayListResponseBodyItems(DaraModel):
         self.expired = expired
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The gateway description.
+        # The description of the gateway.
         self.gw_description = gw_description
         # The last modification time.
         # 
-        # The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
         self.modify_time = modify_time
         # The billing method. Valid values: 
         # 
@@ -142,14 +146,16 @@ class DescribeGatewayListResponseBodyItems(DaraModel):
         self.pay_type = pay_type
         # The region ID.
         self.region_id = region_id
+        # Indicates whether smart routing is enabled for the instance. This value is returned by ApsaraDB based on the benefit validity period. A value of true does not indicate that the data plane is healthy.
+        self.smart_routing_enabled = smart_routing_enabled
         # The application status. Valid values:
         # 
-        # - CREATE: being created.
-        # - ACTIVATION: running.
+        # - CREATE: creating
+        # - ACTIVATION: running
         self.status = status
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -160,6 +166,9 @@ class DescribeGatewayListResponseBodyItems(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_expire_time is not None:
+            result['AutoExpireTime'] = self.auto_expire_time
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -187,6 +196,9 @@ class DescribeGatewayListResponseBodyItems(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.smart_routing_enabled is not None:
+            result['SmartRoutingEnabled'] = self.smart_routing_enabled
+
         if self.status is not None:
             result['Status'] = self.status
 
@@ -200,6 +212,9 @@ class DescribeGatewayListResponseBodyItems(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoExpireTime') is not None:
+            self.auto_expire_time = m.get('AutoExpireTime')
+
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
 
@@ -226,6 +241,9 @@ class DescribeGatewayListResponseBodyItems(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('SmartRoutingEnabled') is not None:
+            self.smart_routing_enabled = m.get('SmartRoutingEnabled')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

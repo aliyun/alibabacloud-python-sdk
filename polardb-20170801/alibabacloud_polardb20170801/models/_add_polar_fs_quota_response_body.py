@@ -10,9 +10,9 @@ class AddPolarFsQuotaResponseBody(DaraModel):
         polar_fs_instance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the Polarlakebase instance.
+        # The Polarlakebase instance ID.
         self.polar_fs_instance_id = polar_fs_instance_id
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

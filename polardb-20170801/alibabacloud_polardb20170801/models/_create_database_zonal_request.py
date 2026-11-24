@@ -25,19 +25,19 @@ class CreateDatabaseZonalRequest(DaraModel):
         self.account_name = account_name
         # The permissions of the account. Valid values:
         # 
-        # - ReadWrite: read and write permissions.
-        # - ReadOnly: read-only permissions.
-        # - DMLOnly: DML-only permissions.
-        # - DDLOnly: DDL-only permissions.
-        # - ReadIndex: read and index permissions.
+        # - ReadWrite: read and write permissions
+        # - ReadOnly: read-only permissions
+        # - DMLOnly: DML-only permissions
+        # - DDLOnly: DDL-only permissions
+        # - ReadIndex: read-only and index permissions
         # 
-        # Default value: ReadWrite.
+        # If this parameter is not specified, the default value is ReadWrite.
         self.account_privilege = account_privilege
         # The character set.
         # 
         # This parameter is required.
         self.character_set_name = character_set_name
-        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and is case-sensitive. It can contain up to 64 ASCII characters.
+        # The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, and ensure that the value is unique across different requests. The value is case-sensitive and can be up to 64 ASCII characters in length.
         self.client_token = client_token
         # The locale setting used to specify the collation of the new database.
         self.collate = collate
@@ -49,13 +49,13 @@ class CreateDatabaseZonalRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The description of the database. The description must meet the following requirements:
         # 
-        # - It cannot start with `http://` or `https://`.
-        # - It must be 2 to 256 characters in length.
+        # - cannot start with `http://` or `https://`
+        # - must be 2 to 256 characters in length
         self.dbdescription = dbdescription
         # The name of the database. The name must meet the following requirements:
         # 
-        # - It can contain lowercase letters, digits, hyphens (-), and underscores (_).
-        # - It must start with a letter and end with a letter or digit. It can be up to 64 characters in length.
+        # - consists of lowercase letters, digits, hyphens (-), and underscores (_)
+        # - starts with a letter and ends with a letter or digit, and can be up to 64 characters in length
         # 
         # This parameter is required.
         self.dbname = dbname

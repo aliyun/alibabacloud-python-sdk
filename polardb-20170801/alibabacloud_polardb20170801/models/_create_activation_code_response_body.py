@@ -21,15 +21,15 @@ class CreateActivationCodeResponseBody(DaraModel):
     ):
         # The effective period.
         self.activate_at = activate_at
-        # The content of the activation code. Decode the Base64-encoded content and save it to the license.lic file for PolarDB to read during startup.
+        # The content of the activation code. Decode this content by using Base64 and save it to the license.lic file for PolarDB to read during startup.
         self.cert_content_b64 = cert_content_b64
         # The description of the activation code.
         self.description = description
-        # The time when the activation code expires.
+        # The expiration time.
         self.expire_at = expire_at
-        # The time when the activation code was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The time when the activation code was updated.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The ID of the activation code.
         self.id = id

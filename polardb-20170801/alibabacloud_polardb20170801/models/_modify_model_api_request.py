@@ -11,6 +11,9 @@ class ModifyModelApiRequest(DaraModel):
         gw_cluster_id: str = None,
         model_api_id: str = None,
         model_category: str = None,
+        model_mappings: str = None,
+        model_routing: str = None,
+        name: str = None,
         path_prefix: str = None,
         protocol: str = None,
         record_input: str = None,
@@ -32,12 +35,14 @@ class ModifyModelApiRequest(DaraModel):
         # * **text**
         # * **embedding**
         # * **rerank**
-        # 
-        # This parameter is required.
         self.model_category = model_category
+        # The model name mappings, specified as a JSON array string. Each element is in the format of {"Source":"client model name","Target":"upstream model name"}. If you do not specify this parameter, the current mappings are retained. If you specify "[]", the mappings are cleared. The Source field is matched in a case-insensitive manner and must be unique.
+        self.model_mappings = model_mappings
+        # The intelligent routing candidate list, specified as a JSON object string in the format of {"AllowedModels":["candidate model name"]}. If you do not specify this parameter, the current list is retained. If you specify this parameter, the existing list is fully replaced with the new list. You cannot use an empty list to disable the feature. Saving candidates does not enable the feature. You must call EnableModelRouting first.
+        self.model_routing = model_routing
+        # The name of the model API. This parameter is modifiable. If you do not specify this parameter, the original name is retained.
+        self.name = name
         # The API path prefix.
-        # 
-        # This parameter is required.
         self.path_prefix = path_prefix
         # The protocol. Valid values:
         # 
@@ -45,8 +50,6 @@ class ModifyModelApiRequest(DaraModel):
         # * **anthropic**
         # * **bailian**
         # * **vllm**
-        # 
-        # This parameter is required.
         self.protocol = protocol
         # The number of input tokens.
         self.record_input = record_input
@@ -54,9 +57,7 @@ class ModifyModelApiRequest(DaraModel):
         self.record_output = record_output
         # The region ID.
         self.region_id = region_id
-        # The list of routing rules, formatted as a JSON array string. Usage notes: Correct the value of FallbackMode in the RouteRules parameter example by replacing it with a valid value or removing the field, and add the list of valid values and their meanings for the FallbackMode subfield to the description of RouteRules.
-        # 
-        # This parameter is required.
+        # The list of routing rules, specified as a JSON array string. Usage note: Correct the value of FallbackMode in the RouteRules parameter example by replacing it with a valid value or removing the field, and add the list of valid values and their descriptions for the FallbackMode subfield in the description of RouteRules.
         self.route_rules = route_rules
 
     def validate(self):
@@ -78,6 +79,15 @@ class ModifyModelApiRequest(DaraModel):
 
         if self.model_category is not None:
             result['ModelCategory'] = self.model_category
+
+        if self.model_mappings is not None:
+            result['ModelMappings'] = self.model_mappings
+
+        if self.model_routing is not None:
+            result['ModelRouting'] = self.model_routing
+
+        if self.name is not None:
+            result['Name'] = self.name
 
         if self.path_prefix is not None:
             result['PathPrefix'] = self.path_prefix
@@ -112,6 +122,15 @@ class ModifyModelApiRequest(DaraModel):
 
         if m.get('ModelCategory') is not None:
             self.model_category = m.get('ModelCategory')
+
+        if m.get('ModelMappings') is not None:
+            self.model_mappings = m.get('ModelMappings')
+
+        if m.get('ModelRouting') is not None:
+            self.model_routing = m.get('ModelRouting')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
 
         if m.get('PathPrefix') is not None:
             self.path_prefix = m.get('PathPrefix')

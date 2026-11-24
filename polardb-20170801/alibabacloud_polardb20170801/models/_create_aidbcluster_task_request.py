@@ -38,7 +38,7 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The instance type.
         self.dbinstance_class = dbinstance_class
-        # The data service mode. A value of custom indicates that custom OSS is used. A value of cold_storage indicates that cold storage is used.
+        # The data service mode. custom indicates that custom Object Storage Service (OSS) is used, and cold_storage indicates that cold storage is used.
         self.dataservice_mode = dataservice_mode
         # The ID of the training dataset. This parameter is required for fine-tuning.
         self.dataset_path = dataset_path
@@ -50,7 +50,7 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         # This parameter is required.
         self.kube_type = kube_type
         # The name of the model.
-        # * **For a preset model, specify the selected model name.**
+        # * **For a preset model, specify the name of the selected model.**
         # * **For a custom model, specify the path of the model (the trained model in a cold storage instance).**
         # 
         # This parameter is required.
@@ -69,19 +69,19 @@ class CreateAIDBClusterTaskRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The runtime parameters in JSON string format.
+        # The runtime parameters, specified as a JSON string.
         # 
         # This parameter is required.
         self.running_parameter = running_parameter
-        # The ID of the security group. This parameter is actually required. If it is not provided, the service returns InvalidEcsSecurityGroupId.Malformed (400).
+        # The ID of the security group. This parameter is required. If you do not specify this parameter, the service returns InvalidEcsSecurityGroupId.Malformed (400).
         self.security_group_id = security_group_id
         # The description of the model service.
         self.task_name = task_name
         # The model fine-tuning architecture.
         self.tune_arch = tune_arch
-        # The ID of the virtual private cloud (VPC). This parameter is actually required. If it is not provided, the service returns InvalidVpcId.Malformed (400).
+        # The ID of the virtual private cloud (VPC). This parameter is required. If you do not specify this parameter, the service returns InvalidVpcId.Malformed (400).
         self.vpcid = vpcid
-        # The ID of the vSwitch. This parameter is actually required and must belong to the VPC specified by VPCId.
+        # The ID of the vSwitch. This parameter is required and the vSwitch must belong to the VPC specified by VPCId.
         self.v_switch_id = v_switch_id
         # The zone ID.
         self.zone_id = zone_id

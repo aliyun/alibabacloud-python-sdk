@@ -5530,6 +5530,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCostRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.bypass_quota_check):
+            query['BypassQuotaCheck'] = request.bypass_quota_check
         if not DaraCore.is_null(request.cache_cost_points_per_million):
             query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
         if not DaraCore.is_null(request.cache_creation_cost_points_per_million):
@@ -5548,6 +5550,8 @@ class Client(OpenApiClient):
             query['ImageCostPointsPerCount'] = request.image_cost_points_per_count
         if not DaraCore.is_null(request.input_cost_points_per_million):
             query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.input_token_tier):
+            query['InputTokenTier'] = request.input_token_tier
         if not DaraCore.is_null(request.input_token_tiers):
             query['InputTokenTiers'] = request.input_token_tiers
         if not DaraCore.is_null(request.model_name):
@@ -5586,6 +5590,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCostRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.bypass_quota_check):
+            query['BypassQuotaCheck'] = request.bypass_quota_check
         if not DaraCore.is_null(request.cache_cost_points_per_million):
             query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
         if not DaraCore.is_null(request.cache_creation_cost_points_per_million):
@@ -5604,6 +5610,8 @@ class Client(OpenApiClient):
             query['ImageCostPointsPerCount'] = request.image_cost_points_per_count
         if not DaraCore.is_null(request.input_cost_points_per_million):
             query['InputCostPointsPerMillion'] = request.input_cost_points_per_million
+        if not DaraCore.is_null(request.input_token_tier):
+            query['InputTokenTier'] = request.input_token_tier
         if not DaraCore.is_null(request.input_token_tiers):
             query['InputTokenTiers'] = request.input_token_tiers
         if not DaraCore.is_null(request.model_name):
@@ -8494,6 +8502,10 @@ class Client(OpenApiClient):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.model_category):
             query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.model_mappings):
+            query['ModelMappings'] = request.model_mappings
+        if not DaraCore.is_null(request.model_routing):
+            query['ModelRouting'] = request.model_routing
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.path_prefix):
@@ -8542,6 +8554,10 @@ class Client(OpenApiClient):
             query['GwClusterId'] = request.gw_cluster_id
         if not DaraCore.is_null(request.model_category):
             query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.model_mappings):
+            query['ModelMappings'] = request.model_mappings
+        if not DaraCore.is_null(request.model_routing):
+            query['ModelRouting'] = request.model_routing
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.path_prefix):
@@ -40568,6 +40584,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyCostRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.bypass_quota_check):
+            query['BypassQuotaCheck'] = request.bypass_quota_check
         if not DaraCore.is_null(request.cache_cost_points_per_million):
             query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
         if not DaraCore.is_null(request.cache_creation_cost_points_per_million):
@@ -40620,6 +40638,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyCostRuleResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.bypass_quota_check):
+            query['BypassQuotaCheck'] = request.bypass_quota_check
         if not DaraCore.is_null(request.cache_cost_points_per_million):
             query['CacheCostPointsPerMillion'] = request.cache_cost_points_per_million
         if not DaraCore.is_null(request.cache_creation_cost_points_per_million):
@@ -45604,6 +45624,12 @@ class Client(OpenApiClient):
             query['ModelApiId'] = request.model_api_id
         if not DaraCore.is_null(request.model_category):
             query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.model_mappings):
+            query['ModelMappings'] = request.model_mappings
+        if not DaraCore.is_null(request.model_routing):
+            query['ModelRouting'] = request.model_routing
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
         if not DaraCore.is_null(request.path_prefix):
             query['PathPrefix'] = request.path_prefix
         if not DaraCore.is_null(request.protocol):
@@ -45650,6 +45676,12 @@ class Client(OpenApiClient):
             query['ModelApiId'] = request.model_api_id
         if not DaraCore.is_null(request.model_category):
             query['ModelCategory'] = request.model_category
+        if not DaraCore.is_null(request.model_mappings):
+            query['ModelMappings'] = request.model_mappings
+        if not DaraCore.is_null(request.model_routing):
+            query['ModelRouting'] = request.model_routing
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
         if not DaraCore.is_null(request.path_prefix):
             query['PathPrefix'] = request.path_prefix
         if not DaraCore.is_null(request.protocol):

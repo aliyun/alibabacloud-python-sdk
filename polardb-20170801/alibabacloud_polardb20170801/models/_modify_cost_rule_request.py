@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyCostRuleRequest(DaraModel):
     def __init__(
         self,
+        bypass_quota_check: bool = None,
         cache_cost_points_per_million: str = None,
         cache_creation_cost_points_per_million: str = None,
         cost_rule_id: str = None,
@@ -21,11 +22,13 @@ class ModifyCostRuleRequest(DaraModel):
         region_id: str = None,
         video_cost_points_per_second: str = None,
     ):
+        # Specifies whether to bypass the quota check. This parameter is optional and has no default value. If omitted, it is not passed through. Both false and true are passed through as-is.
+        self.bypass_quota_check = bypass_quota_check
         # The cache cost points per million tokens. Default value: 0.
         self.cache_cost_points_per_million = cache_cost_points_per_million
         # The cache creation cost points per million tokens.
         self.cache_creation_cost_points_per_million = cache_creation_cost_points_per_million
-        # The ID of the cost rule.
+        # The cost rule ID.
         # 
         # This parameter is required.
         self.cost_rule_id = cost_rule_id
@@ -39,13 +42,13 @@ class ModifyCostRuleRequest(DaraModel):
         self.image_cost_points_per_count = image_cost_points_per_count
         # The input cost points per million tokens. Default value: 0.
         self.input_cost_points_per_million = input_cost_points_per_million
-        # The input token tiered price (non-cumulative) specified as a JSON array character string. Each element contains Tier and InputCostPointsPerMillion. Valid values for Tier: "" (default tier), 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+. Example: [{"Tier":"0-32K","InputCostPointsPerMillion":"1200"}]. A non-empty value replaces all existing tiers. If this parameter is not specified or is set to an empty string, the original tiers are retained. An empty array [] is not allowed.
+        # The tiered price for input tokens (non-cumulative). This parameter is a JSON array character string. Each element contains Tier and InputCostPointsPerMillion. Valid values for Tier: "" (default tier), 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+. Example: [{"Tier":"0-32K","InputCostPointsPerMillion":"1200"}]. If this parameter is not empty, all tiers are replaced. If this parameter is not specified or an empty string is passed, the original tiers are retained. An empty array [] is not allowed.
         self.input_token_tiers = input_token_tiers
         # The name of the model, such as gpt-4 or qwen-turbo.
         # 
         # This parameter is required.
         self.model_name = model_name
-        # The ID of the model service.
+        # The model service ID.
         # 
         # This parameter is required.
         self.model_service_id = model_service_id
@@ -64,6 +67,9 @@ class ModifyCostRuleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.bypass_quota_check is not None:
+            result['BypassQuotaCheck'] = self.bypass_quota_check
+
         if self.cache_cost_points_per_million is not None:
             result['CacheCostPointsPerMillion'] = self.cache_cost_points_per_million
 
@@ -107,6 +113,9 @@ class ModifyCostRuleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BypassQuotaCheck') is not None:
+            self.bypass_quota_check = m.get('BypassQuotaCheck')
+
         if m.get('CacheCostPointsPerMillion') is not None:
             self.cache_cost_points_per_million = m.get('CacheCostPointsPerMillion')
 

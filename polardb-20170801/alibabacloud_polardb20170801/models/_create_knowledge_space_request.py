@@ -44,7 +44,7 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.embedding_model = embedding_model
-        # Specifies whether to enforce ACL authentication for the knowledge space.
+        # Specifies whether to enable mandatory ACL authentication for the knowledge space.
         self.enforce_acl = enforce_acl
         # The name of the large language model.
         self.llmmodel = llmmodel
@@ -68,7 +68,7 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the reranking model.
+        # The name of the rerank model.
         self.rerank_model = rerank_model
         # The ID of the security group.
         # 
@@ -80,19 +80,19 @@ class CreateKnowledgeSpaceRequest(DaraModel):
         self.sharding_size = sharding_size
         # The sharding strategy. Valid values:
         # - hierarchical: The default value.
-        # - hybrid.
+        # - hybrid
         # 
         # This parameter is required.
         self.sharding_strategy = sharding_strategy
-        # The ID of the vSwitch for the automatic creation of the database.
+        # The ID of the vSwitch for automatic creation of the database.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC for the automatic creation of the database.
+        # The ID of the VPC for automatic creation of the database.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The active zone for the automatic creation of the database.
+        # The active zone for automatic creation of the database.
         # 
         # This parameter is required.
         self.zone_id = zone_id

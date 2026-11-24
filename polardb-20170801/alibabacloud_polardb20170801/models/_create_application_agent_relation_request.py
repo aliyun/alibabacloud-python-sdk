@@ -11,11 +11,11 @@ class CreateApplicationAgentRelationRequest(DaraModel):
         application_id: str = None,
         token: str = None,
     ):
-        # The instance ID of the Agent to attach.
+        # The instance ID of the agent to attach.
         # 
         # This parameter is required.
         self.agent_id = agent_id
-        # The ID of the Squad application.
+        # The ID of the squad application.
         # 
         # This parameter is required.
         self.application_id = application_id

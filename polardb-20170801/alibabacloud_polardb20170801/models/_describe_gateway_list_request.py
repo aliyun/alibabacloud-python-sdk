@@ -15,7 +15,7 @@ class DescribeGatewayListRequest(DaraModel):
     ):
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
-        # The gateway description.
+        # The description of the gateway.
         self.gw_description = gw_description
         # The current page number.
         self.page_number = page_number

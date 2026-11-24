@@ -77,9 +77,9 @@ class AddPolarFsPathMappingRequestCustomBucketPathList(DaraModel):
     ):
         # The name of the bucket.
         self.bucket = bucket
-        # The AccessKey ID for the bucket.
+        # The AccessKey ID of the bucket.
         self.bucket_access_key_id = bucket_access_key_id
-        # The AccessKey secret for the bucket.
+        # The AccessKey secret of the bucket.
         self.bucket_access_key_secret = bucket_access_key_secret
         # The custom storage path.
         self.path = path

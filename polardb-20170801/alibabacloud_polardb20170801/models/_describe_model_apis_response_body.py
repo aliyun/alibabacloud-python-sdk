@@ -15,21 +15,22 @@ class DescribeModelApisResponseBody(DaraModel):
         page_record_count: int = None,
         page_size: int = None,
         request_id: str = None,
+        total_pages: int = None,
         total_record_count: int = None,
     ):
         # The list of model APIs.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries on the current page.
+        # The number of records on the current page.
         self.page_record_count = page_record_count
-        # The number of entries per page. Valid values: **30**, **50**, and **100**.
-        # 
-        # Default value: **30**.
+        # The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of pages.
+        self.total_pages = total_pages
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -60,6 +61,9 @@ class DescribeModelApisResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+
         if self.total_record_count is not None:
             result['TotalRecordCount'] = self.total_record_count
 
@@ -85,6 +89,9 @@ class DescribeModelApisResponseBody(DaraModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+
         if m.get('TotalRecordCount') is not None:
             self.total_record_count = m.get('TotalRecordCount')
 
@@ -95,8 +102,12 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         self,
         category: str = None,
         config: str = None,
+        custins_name: str = None,
         gmt_created: str = None,
+        gmt_modified: str = None,
         model_api_id: str = None,
+        model_mappings: str = None,
+        model_routing: str = None,
         name: str = None,
         path_prefix: str = None,
         protocol: str = None,
@@ -112,11 +123,19 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         self.category = category
         # The gateway retry configuration.
         self.config = config
+        # The ID of the gateway instance to which the model API belongs.
+        self.custins_name = custins_name
         # The creation time.
         self.gmt_created = gmt_created
+        # The modification time of the model API.
+        self.gmt_modified = gmt_modified
         # The model API IDs.
         self.model_api_id = model_api_id
-        # The name of the model API.
+        # The model name mappings, which is a JSON array string. Each element is in the format of {"Source":"client model name","Target":"upstream model name"}. If not configured, this parameter is empty.
+        self.model_mappings = model_mappings
+        # The intelligent routing candidate list, which is a JSON object string in the format of {"AllowedModels":["candidate model name"]}. If not configured, this parameter is empty.
+        self.model_routing = model_routing
+        # The model API name.
         self.name = name
         # The API path prefix.
         self.path_prefix = path_prefix
@@ -126,13 +145,13 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         # * **bailian**
         # * **vllm**
         self.protocol = protocol
-        # The number of input tokens.
+        # The number of input points.
         self.record_input = record_input
-        # The number of output tokens.
+        # The number of output points.
         self.record_output = record_output
         # The list of routing rules, which is a JSON array string.
         self.route_rules = route_rules
-        # The status of the model API.
+        # The model API status.
         self.status = status
 
     def validate(self):
@@ -149,11 +168,23 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         if self.config is not None:
             result['Config'] = self.config
 
+        if self.custins_name is not None:
+            result['CustinsName'] = self.custins_name
+
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
 
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+
         if self.model_api_id is not None:
             result['ModelApiId'] = self.model_api_id
+
+        if self.model_mappings is not None:
+            result['ModelMappings'] = self.model_mappings
+
+        if self.model_routing is not None:
+            result['ModelRouting'] = self.model_routing
 
         if self.name is not None:
             result['Name'] = self.name
@@ -186,11 +217,23 @@ class DescribeModelApisResponseBodyItems(DaraModel):
         if m.get('Config') is not None:
             self.config = m.get('Config')
 
+        if m.get('CustinsName') is not None:
+            self.custins_name = m.get('CustinsName')
+
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
 
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+
         if m.get('ModelApiId') is not None:
             self.model_api_id = m.get('ModelApiId')
+
+        if m.get('ModelMappings') is not None:
+            self.model_mappings = m.get('ModelMappings')
+
+        if m.get('ModelRouting') is not None:
+            self.model_routing = m.get('ModelRouting')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

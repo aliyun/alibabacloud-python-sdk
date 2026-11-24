@@ -17,14 +17,14 @@ class CancelActiveOperationTasksRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. This parameter is required. You can call the DescribeRegions operation to query the region ID. If you leave this parameter empty, the system queries scheduled tasks in all regions under the current account by default.
+        # The region ID. This parameter is required. You can call the DescribeRegions operation to query the region ID. If this parameter is left empty, scheduled tasks in all regions under the current account are queried by default.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The IDs of the O&M events to cancel in batches. Separate multiple IDs with commas (,).
+        # The IDs of the O&M events to be canceled in batches. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.task_ids = task_ids

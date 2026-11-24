@@ -29,7 +29,7 @@ class DescribeModelApisRequest(DaraModel):
         # * **embedding**
         # * **rerank**
         self.model_category = model_category
-        # The name of the model API.
+        # The model API name.
         self.name = name
         # The page number.
         self.page_number = page_number
@@ -49,7 +49,7 @@ class DescribeModelApisRequest(DaraModel):
         self.protocol = protocol
         # The region ID.
         self.region_id = region_id
-        # The status of the model API.
+        # The model API status.
         self.status = status
 
     def validate(self):

@@ -12,7 +12,7 @@ class CancelActiveOperationTasksResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The IDs of the O&M events to cancel in batches. Separate multiple IDs with commas (,).
+        # The IDs of the O&M events to be canceled in batches. Separate multiple IDs with commas (,).
         self.task_ids = task_ids
 
     def validate(self):

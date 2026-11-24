@@ -12,7 +12,7 @@ class CreateKnowledgeSpaceResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the PolarDB instance for automatic creation.
+        # The ID of the PolarDB instance created by automatic creation.
         self.dbcluster_id = dbcluster_id
         # The unique identifier of the knowledge space.
         self.knowledge_space_id = knowledge_space_id

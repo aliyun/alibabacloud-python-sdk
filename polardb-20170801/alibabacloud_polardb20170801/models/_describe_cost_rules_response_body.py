@@ -15,19 +15,22 @@ class DescribeCostRulesResponseBody(DaraModel):
         page_record_count: int = None,
         page_size: int = None,
         request_id: str = None,
+        total_pages: int = None,
         total_record_count: int = None,
     ):
         # The list of cost rules.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of records on the current page.
         self.page_record_count = page_record_count
-        # The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
+        # The number of records per page. Valid values: 30, 50, and 100. Default value: 30.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of pages.
+        self.total_pages = total_pages
+        # The total number of records.
         self.total_record_count = total_record_count
 
     def validate(self):
@@ -58,6 +61,9 @@ class DescribeCostRulesResponseBody(DaraModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+
         if self.total_record_count is not None:
             result['TotalRecordCount'] = self.total_record_count
 
@@ -82,6 +88,9 @@ class DescribeCostRulesResponseBody(DaraModel):
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
 
         if m.get('TotalRecordCount') is not None:
             self.total_record_count = m.get('TotalRecordCount')
@@ -118,19 +127,19 @@ class DescribeCostRulesResponseBodyItems(DaraModel):
         self.cache_creation_cost_points_per_million = cache_creation_cost_points_per_million
         # The ID of the cost rule.
         self.cost_rule_id = cost_rule_id
-        # The end time of the effective period. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The effective end time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
         self.effective_end_time = effective_end_time
-        # The start time of the effective period. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The effective start time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
         self.effective_start_time = effective_start_time
-        # The type of the effective target.
+        # The effective target type.
         self.effective_target_type = effective_target_type
-        # The value of the effective target.
+        # The effective target value.
         self.effective_target_value = effective_target_value
         # The explicit cache read cost points per million tokens.
         self.explicit_cache_cost_points_per_million = explicit_cache_cost_points_per_million
-        # The time when the cost rule was created.
+        # The creation time.
         self.gmt_created = gmt_created
-        # The time when the cost rule was last updated.
+        # The last update time.
         self.gmt_modified = gmt_modified
         # The gateway instance ID.
         self.gw_cluster_id = gw_cluster_id
@@ -301,7 +310,7 @@ class DescribeCostRulesResponseBodyItemsInputTokenTiers(DaraModel):
         input_cost_points_per_million: str = None,
         tier: str = None,
     ):
-        # The input cost points per million tokens for the tier.
+        # The input cost points per million tokens for this tier.
         self.input_cost_points_per_million = input_cost_points_per_million
         # The token tier. Valid values: "" (default tier), 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+.
         self.tier = tier

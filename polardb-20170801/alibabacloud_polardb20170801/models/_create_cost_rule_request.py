@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateCostRuleRequest(DaraModel):
     def __init__(
         self,
+        bypass_quota_check: bool = None,
         cache_cost_points_per_million: str = None,
         cache_creation_cost_points_per_million: str = None,
         effective_start_time: str = None,
@@ -16,6 +17,7 @@ class CreateCostRuleRequest(DaraModel):
         gw_cluster_id: str = None,
         image_cost_points_per_count: str = None,
         input_cost_points_per_million: str = None,
+        input_token_tier: str = None,
         input_token_tiers: str = None,
         model_name: str = None,
         model_service_id: str = None,
@@ -23,11 +25,13 @@ class CreateCostRuleRequest(DaraModel):
         region_id: str = None,
         video_cost_points_per_second: str = None,
     ):
+        # Specifies whether to bypass the quota check. This parameter is optional and has no default value. If omitted, it is not passed through. Both false and true are passed through as-is.
+        self.bypass_quota_check = bypass_quota_check
         # The cache read cost points per million tokens. Default value: 0.
         self.cache_cost_points_per_million = cache_cost_points_per_million
         # The cache creation cost points per million tokens.
         self.cache_creation_cost_points_per_million = cache_creation_cost_points_per_million
-        # The effective start time in the yyyy-MM-dd HH:mm:ss format. If this parameter is not specified, the rule takes effect immediately.
+        # The effective start time in the yyyy-MM-dd HH:mm:ss format. If this parameter is not provided, the rule takes effect immediately.
         self.effective_start_time = effective_start_time
         # The effective target type. Valid values: global, consumerGroup, and consumer. Default value: global.
         self.effective_target_type = effective_target_type
@@ -43,7 +47,9 @@ class CreateCostRuleRequest(DaraModel):
         self.image_cost_points_per_count = image_cost_points_per_count
         # The input cost points per million tokens. Default value: 0.
         self.input_cost_points_per_million = input_cost_points_per_million
-        # The tiered price for input tokens (non-cumulative). The value is a JSON array character string. Each element contains Tier and InputCostPointsPerMillion. Valid values for Tier: "" (default tier), 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+. Example: [{"Tier":"0-32K","InputCostPointsPerMillion":"1000"},{"Tier":"32K-64K","InputCostPointsPerMillion":"1800"}]. If this parameter is specified, it takes precedence over InputCostPointsPerMillion. An empty array [] is not allowed.
+        # The input token tier. An empty string indicates the default tier. If this parameter is omitted, it is processed by the backend.
+        self.input_token_tier = input_token_tier
+        # The tiered price for input tokens (non-cumulative). The value is a JSON array character string. Each element contains Tier and InputCostPointsPerMillion. Valid values for Tier: "" (default tier), 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+. Example: [{"Tier":"0-32K","InputCostPointsPerMillion":"1000"},{"Tier":"32K-64K","InputCostPointsPerMillion":"1800"}]. If this parameter is provided, it takes precedence over InputCostPointsPerMillion. An empty array [] is not allowed.
         self.input_token_tiers = input_token_tiers
         # The name of the model, such as gpt-4 or qwen-turbo.
         # 
@@ -68,6 +74,9 @@ class CreateCostRuleRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.bypass_quota_check is not None:
+            result['BypassQuotaCheck'] = self.bypass_quota_check
+
         if self.cache_cost_points_per_million is not None:
             result['CacheCostPointsPerMillion'] = self.cache_cost_points_per_million
 
@@ -95,6 +104,9 @@ class CreateCostRuleRequest(DaraModel):
         if self.input_cost_points_per_million is not None:
             result['InputCostPointsPerMillion'] = self.input_cost_points_per_million
 
+        if self.input_token_tier is not None:
+            result['InputTokenTier'] = self.input_token_tier
+
         if self.input_token_tiers is not None:
             result['InputTokenTiers'] = self.input_token_tiers
 
@@ -117,6 +129,9 @@ class CreateCostRuleRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BypassQuotaCheck') is not None:
+            self.bypass_quota_check = m.get('BypassQuotaCheck')
+
         if m.get('CacheCostPointsPerMillion') is not None:
             self.cache_cost_points_per_million = m.get('CacheCostPointsPerMillion')
 
@@ -143,6 +158,9 @@ class CreateCostRuleRequest(DaraModel):
 
         if m.get('InputCostPointsPerMillion') is not None:
             self.input_cost_points_per_million = m.get('InputCostPointsPerMillion')
+
+        if m.get('InputTokenTier') is not None:
+            self.input_token_tier = m.get('InputTokenTier')
 
         if m.get('InputTokenTiers') is not None:
             self.input_token_tiers = m.get('InputTokenTiers')
