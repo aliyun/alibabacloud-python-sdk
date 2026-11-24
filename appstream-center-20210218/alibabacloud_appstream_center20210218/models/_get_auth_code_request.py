@@ -16,14 +16,17 @@ class GetAuthCodeRequest(DaraModel):
         policy: str = None,
         token_type: str = None,
     ):
+        # The account type. Valid values: ad (enterprise AD account) and simple (convenience account).
         self.account_type = account_type
+        # The Active Directory domain name. This parameter is required when the account type is ad.
         self.ad_domain = ad_domain
+        # The password of the enterprise AD account.
         self.ad_password = ad_password
-        # Specifies whether to synchronously create an EndUserId based on ExternalUserId. This parameter takes effect only when EndUserId is empty.
+        # Specifies whether to synchronously create an EndUserId based on ExternalUserId. This parameter takes effect only when EndUserId is left empty.
         self.auto_create_user = auto_create_user
-        # The username of the China Desktop Service (China Desktop Service) convenience account. The username must be unique within an Alibaba Cloud account. This parameter and ExternalUserId cannot both be empty.
+        # The username of the Wuying convenience account. The username must be unique within an Alibaba Cloud account. This parameter and ExternalUserId cannot be left empty at the same time.
         self.end_user_id = end_user_id
-        # The external user ID. This ID is defined by the caller and must be unique within an Alibaba Cloud account. This parameter and EndUserId cannot both be empty.
+        # The external user ID. This ID is customized by the caller and must be unique within an Alibaba Cloud account. This parameter and ExternalUserId cannot be left empty at the same time.
         self.external_user_id = external_user_id
         # The access policy that restricts the access permissions of the authorization code. If this parameter is left empty, no restrictions are applied.
         # 
@@ -33,18 +36,19 @@ class GetAuthCodeRequest(DaraModel):
         # {
         #       "Version": "1",
         #       "Resource": {
-        #             "Type": "<Resource type>",
-        #             "Id": "<Resource ID>"
+        #             "Type": "<resource type>",
+        #             "Id": "<resource ID>"
         #       }
         # }
         # ```
         # 
-        # Valid values of <Resource type>:
+        # Valid values for <resource type>:
         # 
-        # - AppInstanceGroup: delivery group. You can call the ListAppInstanceGroup operation to obtain the ID.
-        # - AppInstance: application instance (dedicated field).
+        # - AppInstanceGroup: app instance group. You can call the ListAppInstanceGroup operation to obtain the ID.
+        # - AppInstance: app instance. This is a dedicated field.
         # - App: application. You can call the ListAppInstanceGroup operation to obtain the ID.
         self.policy = policy
+        # The token type. Valid values: LoginToken (logon token) and StsToken (temporary identity credential).
         self.token_type = token_type
 
     def validate(self):

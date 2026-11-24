@@ -13,7 +13,7 @@ class GetStsTokenResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The details of the token.
+        # The token details.
         self.sts_token_model = sts_token_model
 
     def validate(self):
@@ -52,13 +52,13 @@ class GetStsTokenResponseBodyStsTokenModel(DaraModel):
         sts_token: str = None,
         tenant_id: int = None,
     ):
-        # The tenant ID, which is the UID of the Alibaba Cloud account.
+        # The tenant ID (Alibaba Cloud account UID).
         self.ali_uid = ali_uid
         # The session ID.
         self.session_id = session_id
-        # The temporary credentials.
+        # The temporary identity credential.
         self.sts_token = sts_token
-        # The tenant ID, which is the UID of the Alibaba Cloud account.
+        # The tenant ID (Alibaba Cloud account UID).
         self.tenant_id = tenant_id
 
     def validate(self):

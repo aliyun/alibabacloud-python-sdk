@@ -1,3 +1,6 @@
+2026-11-24 Version: 1.2.0
+- Generated python 2021-02-18 for appstream-center.
+
 2026-07-09 Version: 1.1.3
 - Update API GetAuthCode: add request parameters AdPassword.
 

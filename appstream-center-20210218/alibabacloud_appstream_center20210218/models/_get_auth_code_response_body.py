@@ -44,8 +44,6 @@ class GetAuthCodeResponseBody(DaraModel):
 
         return self
 
-
-
 class GetAuthCodeResponseBodyAuthModel(DaraModel):
     def __init__(
         self,
@@ -53,11 +51,11 @@ class GetAuthCodeResponseBodyAuthModel(DaraModel):
         end_user_id: str = None,
         expire_time: str = None,
     ):
-        # The authorization code. The authorization code is valid for 3 minutes and can be used only once regardless of whether the verification succeeds or fails. If multiple authorization codes are generated for a user, only the last generated authorization code is valid.
+        # The authorization code. The authorization code is valid for 3 minutes and can be used only once regardless of whether the verification succeeds or fails. If multiple authorization codes are generated for a user, only the last generated one is valid.
         self.auth_code = auth_code
-        # The username of the China Desktop Service convenience account.
+        # The username of the Wuying convenience account.
         self.end_user_id = end_user_id
-        # The expiration time of the authorization code in UTC, following the ISO 8601 standard.
+        # The expiration time of the authorization code. The time is displayed in UTC and follows the ISO 8601 standard.
         self.expire_time = expire_time
 
     def validate(self):

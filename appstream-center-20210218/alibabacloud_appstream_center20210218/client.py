@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_appstream_center20210218 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,11 +21,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'appstream-center'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'cn-shanghai': 'appstream-center.cn-shanghai.aliyuncs.com',
-            'ap-southeast-1': 'appstream-center.ap-southeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('appstream-center', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -43,6 +43,96 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def create_third_app_access_token_with_options(
+        self,
+        tmp_req: main_models.CreateThirdAppAccessTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateThirdAppAccessTokenResponse:
+        tmp_req.validate()
+        request = main_models.CreateThirdAppAccessTokenShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource):
+            request.resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource, 'Resource', 'json')
+        body = {}
+        if not DaraCore.is_null(request.authorizer_id):
+            body['AuthorizerId'] = request.authorizer_id
+        if not DaraCore.is_null(request.business_channel):
+            body['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.expiration):
+            body['Expiration'] = request.expiration
+        if not DaraCore.is_null(request.resource_shrink):
+            body['Resource'] = request.resource_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateThirdAppAccessToken',
+            version = '2021-02-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateThirdAppAccessTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_third_app_access_token_with_options_async(
+        self,
+        tmp_req: main_models.CreateThirdAppAccessTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateThirdAppAccessTokenResponse:
+        tmp_req.validate()
+        request = main_models.CreateThirdAppAccessTokenShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource):
+            request.resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource, 'Resource', 'json')
+        body = {}
+        if not DaraCore.is_null(request.authorizer_id):
+            body['AuthorizerId'] = request.authorizer_id
+        if not DaraCore.is_null(request.business_channel):
+            body['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.expiration):
+            body['Expiration'] = request.expiration
+        if not DaraCore.is_null(request.resource_shrink):
+            body['Resource'] = request.resource_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateThirdAppAccessToken',
+            version = '2021-02-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateThirdAppAccessTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_third_app_access_token(
+        self,
+        request: main_models.CreateThirdAppAccessTokenRequest,
+    ) -> main_models.CreateThirdAppAccessTokenResponse:
+        runtime = RuntimeOptions()
+        return self.create_third_app_access_token_with_options(request, runtime)
+
+    async def create_third_app_access_token_async(
+        self,
+        request: main_models.CreateThirdAppAccessTokenRequest,
+    ) -> main_models.CreateThirdAppAccessTokenResponse:
+        runtime = RuntimeOptions()
+        return await self.create_third_app_access_token_with_options_async(request, runtime)
 
     def expire_login_token_with_options(
         self,
@@ -227,6 +317,92 @@ class Client(OpenApiClient):
     ) -> main_models.GetAuthCodeResponse:
         runtime = RuntimeOptions()
         return await self.get_auth_code_with_options_async(request, runtime)
+
+    def get_latest_third_app_access_token_with_options(
+        self,
+        tmp_req: main_models.GetLatestThirdAppAccessTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLatestThirdAppAccessTokenResponse:
+        tmp_req.validate()
+        request = main_models.GetLatestThirdAppAccessTokenShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource):
+            request.resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource, 'Resource', 'json')
+        body = {}
+        if not DaraCore.is_null(request.authorizer_id):
+            body['AuthorizerId'] = request.authorizer_id
+        if not DaraCore.is_null(request.business_channel):
+            body['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.resource_shrink):
+            body['Resource'] = request.resource_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLatestThirdAppAccessToken',
+            version = '2021-02-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLatestThirdAppAccessTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_latest_third_app_access_token_with_options_async(
+        self,
+        tmp_req: main_models.GetLatestThirdAppAccessTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetLatestThirdAppAccessTokenResponse:
+        tmp_req.validate()
+        request = main_models.GetLatestThirdAppAccessTokenShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource):
+            request.resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource, 'Resource', 'json')
+        body = {}
+        if not DaraCore.is_null(request.authorizer_id):
+            body['AuthorizerId'] = request.authorizer_id
+        if not DaraCore.is_null(request.business_channel):
+            body['BusinessChannel'] = request.business_channel
+        if not DaraCore.is_null(request.resource_shrink):
+            body['Resource'] = request.resource_shrink
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetLatestThirdAppAccessToken',
+            version = '2021-02-18',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetLatestThirdAppAccessTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_latest_third_app_access_token(
+        self,
+        request: main_models.GetLatestThirdAppAccessTokenRequest,
+    ) -> main_models.GetLatestThirdAppAccessTokenResponse:
+        runtime = RuntimeOptions()
+        return self.get_latest_third_app_access_token_with_options(request, runtime)
+
+    async def get_latest_third_app_access_token_async(
+        self,
+        request: main_models.GetLatestThirdAppAccessTokenRequest,
+    ) -> main_models.GetLatestThirdAppAccessTokenResponse:
+        runtime = RuntimeOptions()
+        return await self.get_latest_third_app_access_token_with_options_async(request, runtime)
 
     def get_sts_token_with_options(
         self,
