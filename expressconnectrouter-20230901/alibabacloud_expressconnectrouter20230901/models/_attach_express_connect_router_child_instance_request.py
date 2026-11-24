@@ -17,36 +17,35 @@ class AttachExpressConnectRouterChildInstanceRequest(DaraModel):
         ecr_id: str = None,
         version: str = None,
     ):
-        # The VBR ID.
+        # The ID of the VBR instance.
         # 
         # This parameter is required.
         self.child_instance_id = child_instance_id
-        # The ID of the Alibaba Cloud account to which the VBR belongs.
+        # The Alibaba Cloud account ID of the account to which the VBR instance belongs.
         # 
-        # >  If you want to connect to a network instance that belongs to a different account, this parameter is required.
+        # > If you want to load a network instance that belongs to a different Alibaba Cloud account, this parameter is required.
         self.child_instance_owner_id = child_instance_owner_id
-        # The region ID of the VBR.
+        # The region ID of the VBR instance.
         # 
         # This parameter is required.
         self.child_instance_region_id = child_instance_region_id
-        # The type of the network instance. Set the value to **VBR**.
+        # The type of the network instance. Valid value: **VBR** (Virtual Border Router).
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # The description of the sub-instance. It must be 0 to 128 characters in length.
+        # The description of the child instance. The description must be 0 to 128 characters in length.
         self.description = description
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # Specifies whether it is only a dry run for this request. Valid values:
+        # - **true**: performs a dry run for the request without modifying EPS resources.
+        # - **false** (default): sends a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The instance ID of the Express Connect Router (ECR).
         # 
         # This parameter is required.
         self.ecr_id = ecr_id

@@ -1,3 +1,6 @@
+2026-11-24 Version: 4.2.0
+- Generated python 2023-09-01 for ExpressConnectRouter.
+
 2026-06-04 Version: 4.1.3
 - Update API CreateExpressConnectRouterAssociation: add request parameters Tag.
 - Update API DescribeExpressConnectRouterAssociation: add request parameters Tag.

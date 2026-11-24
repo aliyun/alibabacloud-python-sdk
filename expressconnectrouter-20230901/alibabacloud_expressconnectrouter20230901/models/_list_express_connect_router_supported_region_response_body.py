@@ -16,7 +16,7 @@ class ListExpressConnectRouterSupportedRegionResponseBody(DaraModel):
         success: bool = None,
         supported_region_id_list: List[str] = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The status code. A value of 200 indicates that the call was successful. For more information about other values, see the error codes.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -24,12 +24,13 @@ class ListExpressConnectRouterSupportedRegionResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   True
-        # *   False
+        # - True: The call was successful.
+        # 
+        # - False: The call failed.
         self.success = success
-        # The regions in which the ECR feature is activated.
+        # The list of supported regions.
         self.supported_region_id_list = supported_region_id_list
 
     def validate(self):

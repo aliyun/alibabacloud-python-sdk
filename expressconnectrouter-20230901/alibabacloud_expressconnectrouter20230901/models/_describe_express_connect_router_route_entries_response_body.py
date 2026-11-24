@@ -23,37 +23,36 @@ class DescribeExpressConnectRouterRouteEntriesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The status code that indicates whether the call is successful. A value of 200 indicates success. Other values indicate failure. For more information about the cause of failure, see Error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
         # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The total number of entries returned. Valid values: 1 to 2147483647. Default value: 10
+        # The maximum number of entries returned. Valid values: 1 to 2147483647. Default value: 10.
         self.max_results = max_results
-        # The returned message.
+        # The message returned for the instance operation.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no subsequent query is required.
+        # - If **NextToken** has a return value, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The routes.
+        # The list of route entries.
         self.route_entries_list = route_entries_list
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **True**: The call was successful.
+        # - **False**: The call failed.
         self.success = success
-        # The total number of route entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -161,23 +160,22 @@ class DescribeExpressConnectRouterRouteEntriesResponseBodyRouteEntriesList(DaraM
         nexthop_instance_region_id: str = None,
         status: str = None,
     ):
-        # The AS path of the route.
+        # The AS path traversed by the route entry.
         self.as_path = as_path
-        # The community value that is carried in the BGP route.
+        # The community value carried by the BGP route entry.
         self.community = community
-        # The destination CIDR block of the route.
+        # The destination CIDR block of the route entry.
         self.destination_cidr_block = destination_cidr_block
-        # The MED value of the BGP route, which is used between the ECR and the transit router.
-        # 
-        # *   You can set the MED value to 2000. In this case, the transit router and the ECR are used as default paths.
-        # *   If a non-default path is used, the MED value is empty.
-        # *   You can set the MED value to 2000 only for one object associated with a transit router of a CEN instance.
+        # The MED value carried by the BGP route entry, which takes effect for routing between the Express Connect Router (ECR) and the TR. 
+        # - The MED value can be set to 2000. After the configuration, the TR and the Express Connect Router (ECR) serve as the default path. 
+        # - For a non-default path, the MED value is empty. 
+        # - For TRs in the same Cloud Enterprise Network (CEN), only one associated object can have the MED value set to 2000.
         self.med = med
-        # The ID of the next-hop instance.
+        # The next hop instance ID.
         self.nexthop_instance_id = nexthop_instance_id
-        # The region ID of the next-hop instance.
+        # The region where the next hop instance resides.
         self.nexthop_instance_region_id = nexthop_instance_region_id
-        # The state of the ECR.
+        # The status of the Express Connect Router (ECR) instance.
         self.status = status
 
     def validate(self):

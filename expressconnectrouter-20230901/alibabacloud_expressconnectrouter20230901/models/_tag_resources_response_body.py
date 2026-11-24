@@ -12,16 +12,16 @@ class TagResourcesResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The response code. A value of 200 indicates success. Other values indicate failure. For more information, see error codes.
         self.code = code
-        # The returned message.
+        # The response message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: successful.
+        # - **false**: failed.
         self.success = success
 
     def validate(self):

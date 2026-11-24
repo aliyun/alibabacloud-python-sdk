@@ -16,24 +16,24 @@ class EnableExpressConnectRouterRouteEntriesRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a unique value from your client for this parameter. This ensures that the request is idempotent. The ClientToken parameter supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** is different for each API request.
         self.client_token = client_token
-        # The destination CIDR block of the route entry in the route table of the ECR.
+        # The destination CIDR block of the route entry.
         # 
         # This parameter is required.
         self.destination_cidr_block = destination_cidr_block
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: Sends a check request. The request does not modify service resources.
+        # - **false** (default): Sends a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The ID of ECR.
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
-        # The ID of the next-hop instance.
+        # The ID of the next hop instance.
         # 
         # This parameter is required.
         self.nexthop_instance_id = nexthop_instance_id

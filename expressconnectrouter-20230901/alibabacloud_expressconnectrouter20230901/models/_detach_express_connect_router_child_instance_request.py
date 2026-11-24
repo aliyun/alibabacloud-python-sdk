@@ -14,26 +14,25 @@ class DetachExpressConnectRouterChildInstanceRequest(DaraModel):
         ecr_id: str = None,
         version: str = None,
     ):
-        # The VBR ID.
+        # The VBR instance ID.
         # 
         # This parameter is required.
         self.child_instance_id = child_instance_id
-        # The type of the network instance. Set the value to **VBR**.
+        # The type of the network instance. Valid value: **VBR** (virtual border router).
         # 
         # This parameter is required.
         self.child_instance_type = child_instance_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate the value from your client and make sure that the value is unique across different requests. The client token only supports ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # Specifies whether to perform a dry run for this request. Valid values:
+        # - **true**: sends a check request without modifying service resources.
+        # - **false** (default): sends a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The ECR instance ID.
         # 
         # This parameter is required.
         self.ecr_id = ecr_id

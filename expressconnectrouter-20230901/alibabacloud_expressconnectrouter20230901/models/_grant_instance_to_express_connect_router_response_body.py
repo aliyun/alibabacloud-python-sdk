@@ -18,13 +18,13 @@ class GrantInstanceToExpressConnectRouterResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The response code. A value of 200 indicates success. Other values indicate failure. For more information, see error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage** parameter.
         # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # > For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the specified value of the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The HTTP status code.
         self.http_status_code = http_status_code
@@ -32,10 +32,10 @@ class GrantInstanceToExpressConnectRouterResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **True**: The call was successful.
+        # - **False**: The call failed.
         self.success = success
 
     def validate(self):

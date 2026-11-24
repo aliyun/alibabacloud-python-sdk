@@ -15,13 +15,31 @@ class ModifyExpressConnectRouterChildInstanceRequest(DaraModel):
         ecr_id: str = None,
         version: str = None,
     ):
+        # The instance ID of the VBR.
+        # 
         # This parameter is required.
         self.child_instance_id = child_instance_id
+        # The type of the network instance. Valid values:
+        # - **VBR**: VBR instance.
+        # 
         # This parameter is required.
         self.child_instance_type = child_instance_type
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can generate a parameter value from your client to ensure that the parameter value is unique among different requests. The client token only supports ASCII characters.
+        # 
+        # > 
+        # > - If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request is different.
         self.client_token = client_token
+        # The description of the child instance. The description must be 0 to 128 characters in length.
         self.description = description
+        # Specifies whether the request is a dry run only. Valid values:
+        # 
+        # - **true**: performs a dry run and does not modify service resources.
+        # - **false** (default): sends a normal request.
         self.dry_run = dry_run
+        # The instance ID of the Express Connect Router (ECR).
+        # 
         # This parameter is required.
         self.ecr_id = ecr_id
         self.version = version

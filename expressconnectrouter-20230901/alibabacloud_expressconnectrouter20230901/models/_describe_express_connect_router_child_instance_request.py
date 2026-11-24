@@ -18,35 +18,35 @@ class DescribeExpressConnectRouterChildInstanceRequest(DaraModel):
         next_token: str = None,
         version: str = None,
     ):
-        # The ID of the association between the ECR and the virtual private cloud (VPC) or transit router (TR).
+        # The ID used to associate the Express Connect Router (ECR) with the VBR.
         self.association_id = association_id
-        # The ID of the network instance to be queried.
+        # The instance ID of the network instance to be queried.
         self.child_instance_id = child_instance_id
-        # The region ID of the network instance.
+        # The region where the network instance resides.
         self.child_instance_region_id = child_instance_region_id
-        # The type of network instance. Set the value to VBR.
+        # The type of the network instance. Valid values: **VBR**: virtual border router.
         self.child_instance_type = child_instance_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate the value from your client and ensure that the value is unique across different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether this request is only a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: sends a check request without modifying the EPS resource.
+        # - **false** (default): sends a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # Instance ID of the Express Connect Router (ECR) instance.
+        # > You can call the DescribeExpressConnectRouter API operation to obtain instance ID.
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
-        # The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 20.
+        # The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 20.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If NextToken is empty, no next page exists.
-        # *   If a value of NextToken is returned, the value indicates the token that is used for the next query.
+        # The token for the next query. Valid values:
+        # - If this is the first query or no next query is required, leave this parameter empty.
+        # - If a next query is required, set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.version = version
 

@@ -22,26 +22,24 @@ class DescribeExpressConnectRouterInterRegionTransitModeResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # Indicates whether the call was successful. A return value of 200 indicates success, and any other value indicates failure. For the cause of failure, see error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
-        # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The cross-region forwarding modes.
+        # The list of cross-region forwarding modes.
         self.inter_region_transit_mode_list = inter_region_transit_mode_list
-        # The returned message.
+        # The message returned for the operation.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **True**: The call was successful.
+        # - **False**: The call failed.
         self.success = success
 
     def validate(self):
@@ -127,11 +125,10 @@ class DescribeExpressConnectRouterInterRegionTransitModeResponseBodyInterRegionT
         region_id: str = None,
     ):
         # The cross-region forwarding mode of the ECR. Valid values:
-        # 
-        # *   **ECMP**: the load balancing mode.
-        # *   **NearBy**: the nearby forwarding mode.
+        # - **ECMP**: load balancing mode.
+        # - **NearBy**: nearest forwarding mode.
         self.mode = mode
-        # The region ID of the ECR.
+        # The ID of the region to which the Express Connect Router (ECR) belongs.
         self.region_id = region_id
 
     def validate(self):

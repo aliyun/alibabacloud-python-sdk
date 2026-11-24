@@ -25,33 +25,32 @@ class DescribeExpressConnectRouterAssociationResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The associated resources.
+        # The list of associated resources.
         self.association_list = association_list
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The status code. A value of 200 indicates that the call was successful. Other values indicate that the call failed. For more information about the causes of failures, see Error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
         # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of DynamicMessage is **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the specified **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+        # The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 20.
         self.max_results = max_results
         # The returned message.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # The token for the next query. Valid values:
+        # - If **NextToken** is empty, no next query is required.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **True**: successful.
+        # - **False**: failed.
         self.success = success
         # The total number of associated resources.
         self.total_count = total_count
@@ -173,54 +172,63 @@ class DescribeExpressConnectRouterAssociationResponseBodyAssociationList(DaraMod
         vpc_name: str = None,
         vpc_owner_id: int = None,
     ):
-        # The allowed route prefixes.
+        # The allowed route prefix list.
         self.allowed_prefixes = allowed_prefixes
-        # The prefix route mode. Valid values:
-        # 
-        # *   MatchMode
-        # *   IncrementalMode
+        # The prefix routing mode. Valid values:
+        # - MatchMode: match mode.
+        # - IncrementalMode: incremental mode.
         self.allowed_prefixes_mode = allowed_prefixes_mode
-        # The ID of the association between the ECR and the VPC or TR.
+        # The ID used to associate the Express Connect Router (ECR) with a VPC or TR.
         self.association_id = association_id
         # The type of the associated resource. Valid values:
         # 
-        # *   **VPC**
-        # *   **TR**
+        # - **VPC**: VPC.
+        # 
+        # - **TR**: transit router.
         self.association_node_type = association_node_type
-        # The ID of the CEN instance.
+        # The instance ID of the Cloud Enterprise Network (CEN).
         self.cen_id = cen_id
         # The description of the associated resource.
         self.description = description
-        # The ECR ID.
+        # The instance ID of the Express Connect Router (ECR).
         self.ecr_id = ecr_id
-        # The time when the association was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the association was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.gmt_create = gmt_create
-        # The time when the association was modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the association was modified. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.gmt_modified = gmt_modified
-        # The ID of the Alibaba Cloud account that owns the resource.
+        # The Alibaba Cloud account ID to which the resource belongs.
         self.owner_id = owner_id
-        # The region ID of the resource.
+        # The region where the resource resides.
         self.region_id = region_id
-        # The deployment state of the associated resource. Valid values:
+        # The deployment status of the associated resource. Valid values:
         # 
-        # *   **CREATING**: The resource is being created.
-        # *   **ACTIVE**: The resource is created.
-        # *   **INACTIVE**: The TR is pending to be associated with the ECR.
-        # *   **ASSOCIATING**: The resource is being associated.
-        # *   **DISSOCIATING**: The resource is being disassociated.
-        # *   **UPDATING**: The resource is being modified.
-        # *   **DELETING**: The resource is being deleted.
+        # - **CREATING**: The resource is being created.
+        # 
+        # - **ACTIVE**: The resource is created.
+        # 
+        # - **INACTIVE**: The Express Connect Router (ECR) is associated with the transit router, and the transit router is pending association with the ECR for forward routing.
+        # 
+        # - **ASSOCIATING**: The resource is being attached.
+        # 
+        # - **DISSOCIATING**: The resource is being disassociated.
+        # 
+        # - **UPDATING**: The resource is being modified.
+        # 
+        # - **DELETING**: The resource is being deleted.
         self.status = status
+        # The list of tags added to the associated resource.
         self.tags = tags
-        # The TR ID.
+        # The ID of the transit router.
         self.transit_router_id = transit_router_id
+        # The name of the transit router.
         self.transit_router_name = transit_router_name
-        # The ID of the Alibaba Cloud account that owns the TR.
+        # The Alibaba Cloud account ID to which the transit router for forward routing belongs.
         self.transit_router_owner_id = transit_router_owner_id
-        # The VPC ID.
+        # The ID of the VPC-connected instance.
         self.vpc_id = vpc_id
+        # The name of the VPC-connected instance.
         self.vpc_name = vpc_name
-        # The ID of the Alibaba Cloud account to which the VPC belongs.
+        # The Alibaba Cloud account ID to which the VPC belongs.
         self.vpc_owner_id = vpc_owner_id
 
     def validate(self):
@@ -365,7 +373,9 @@ class DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags(Dar
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):

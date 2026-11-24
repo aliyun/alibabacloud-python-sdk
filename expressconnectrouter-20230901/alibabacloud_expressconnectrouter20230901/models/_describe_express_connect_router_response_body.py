@@ -23,37 +23,36 @@ class DescribeExpressConnectRouterResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # Indicates whether the call was successful. A return value of 200 indicates success, while other values indicate failure. For the cause of failure, see the error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
         # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The ECRs.
+        # The list of Express Connect Router (ECR) instances.
         self.ecr_list = ecr_list
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+        # The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 20.
         self.max_results = max_results
-        # The returned message.
+        # The message returned for the operation.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # *   If NextToken is empty, no next page exists.
-        # *   If a value of NextToken is returned, the value indicates the token that is used for the next query.
+        # - If NextToken is empty, no next query is available.
+        # - If NextToken has a return value, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the query for created ECR instances was successful. Valid values:
+        # - **True**: The query was successful.
+        # - **False**: The query failed.
         self.success = success
-        # The total number of ECRs.
+        # The total number of Express Connect Router (ECR) instances.
         self.total_count = total_count
 
     def validate(self):
@@ -165,39 +164,47 @@ class DescribeExpressConnectRouterResponseBodyEcrList(DaraModel):
         status: str = None,
         tags: List[main_models.DescribeExpressConnectRouterResponseBodyEcrListTags] = None,
     ):
-        # The autonomous system number (ASN) of the ECR.
+        # The ASN of the Express Connect Router (ECR) instance.
         self.alibaba_side_asn = alibaba_side_asn
-        # The business state of the ECR. Valid values:
+        # The business status of the service instance. Valid values:
         # 
-        # *   **Normal:** The ECR is running as expected.
-        # *   **FinancialLocked**: The ECR is locked due to overdue payments.
+        # - **Normal**: Normal.
+        # 
+        # - **FinancialLocked**: Locked due to overdue payment.
         self.biz_status = biz_status
-        # The description of the ECR.
+        # The description of the Express Connect Router (ECR) instance.
         self.description = description
-        # The ECR ID.
+        # The ID of the Express Connect Router (ECR) instance.
         self.ecr_id = ecr_id
-        # The time when the ECR was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the Express Connect Router (ECR) instance was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.gmt_create = gmt_create
-        # The time when the ECR was modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the Express Connect Router (ECR) instance was modified. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.gmt_modified = gmt_modified
-        # The name of the ECR.
+        # The name of the Express Connect Router (ECR) instance.
         self.name = name
-        # The ID of the Alibaba Cloud account that owns the ECR.
+        # The Alibaba Cloud account ID to which the Express Connect Router (ECR) instance belongs.
         self.owner_id = owner_id
-        # The ID of the resource group to which the ECR belongs.
+        # The ID of the resource group to which the Express Connect Router (ECR) instance belongs.
         self.resource_group_id = resource_group_id
-        # The deployment state of the ECR. Valid values:
+        # The deployment status of the service instance. Valid values:
         # 
-        # *   **ACTIVE**: The ECR is created.
-        # *   **UPDATING**: The ECR is being modified.
-        # *   **ASSOCIATING**: The ECR is being associated with resources.
-        # *   **DISSOCIATING**: The resource is being disassociated from resources.
-        # *   **LOCKED_ATTACHING**: The ECR is locked because it is being associated with an external system.
-        # *   **LOCKED_DETACHING**: The ECR is locked because it is being disassociated from an external system.
-        # *   **RECLAIMING**: The ECR is waiting to release resources.
-        # *   **DELETING**: The ECR is being deleted.
+        # - **ACTIVE**: Created.
+        # 
+        # - **UPDATING**: Updating.
+        # 
+        # - **ASSOCIATING**: Associating resources.
+        # 
+        # - **DISSOCIATING**: Dissociating resources.
+        # 
+        # - **LOCKED_ATTACHING**: Locked for association by an external system.
+        # 
+        # - **LOCKED_DETACHING**: Locked for dissociation by an external system.
+        # 
+        # - **RECLAIMING**: Pending resource release.
+        # 
+        # - **DELETING**: Deleting.
         self.status = status
-        # The tags.
+        # The list of tags.
         self.tags = tags
 
     def validate(self):
@@ -294,9 +301,9 @@ class DescribeExpressConnectRouterResponseBodyEcrListTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The tag key of the Express Connect Router (ECR) instance.
         self.tag_key = tag_key
-        # The tag value.
+        # The tag value of the Express Connect Router (ECR) instance.
         self.tag_value = tag_value
 
     def validate(self):

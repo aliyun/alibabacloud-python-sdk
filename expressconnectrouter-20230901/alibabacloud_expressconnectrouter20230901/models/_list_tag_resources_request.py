@@ -17,22 +17,30 @@ class ListTagResourcesRequest(DaraModel):
         tag: List[main_models.ListTagResourcesRequestTag] = None,
         version: str = None,
     ):
-        # The maximum number of entries to return for a single request. Default value: 20.
+        # The maximum number of entries to return in a single request. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The pagination token. Valid values:
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # - If NextToken is empty, no next query exists.
+        # - If NextToken is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The ECR IDs.
+        # The list of resource instance IDs.
+        # 
+        # You can specify up to 20 resource instance IDs. If you exceed this limit, the IllegalParamSize.ResourceIds error is returned.
+        # 
+        # > You must specify at least one of ResourceId and Tag. Otherwise, the MissingParam.TagsAndResourceIds error is returned.
         self.resource_id = resource_id
-        # The resource type. Set the value to EXPRESSCONNECTROUTER.
+        # The resource type. Valid values:
+        # - **EXPRESSCONNECTROUTER**: Express Connect Router (ECR) instance.
+        # - **EXPRESSCONNECTROUTERVPCASSOCIATION**: association between an ECR and a VPC.
+        # - **EXPRESSCONNECTROUTERTRASSOCIATION**: association between an ECR and a transit router.
+        # - **ECRFLOWLOG**: ECR flow log.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag.
+        # The tags.
         # 
-        # You can specify at most 20 tags.
+        # You can bind up to 20 tags.
         self.tag = tag
         self.version = version
 
@@ -100,15 +108,15 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the resource.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+        # The tag key cannot be an empty string. It can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         # 
-        # You can specify up to 20 tag keys in each call.
+        # You can specify up to 20 tag keys at a time.
         self.key = key
-        # The tag value. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`. The tag value can be an empty string.
+        # The tag value. It can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. It can be an empty string.
         # 
-        # You can specify up to 20 tag values in each call.
+        # You can specify up to 20 tag values at a time.
         self.value = value
 
     def validate(self):

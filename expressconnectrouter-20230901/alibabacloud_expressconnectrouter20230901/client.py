@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_expressconnectrouter20230901 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,7 +21,43 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'ExpressConnectRouter'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
+        self._endpoint_map = {
+            'cn-hongkong': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-zhangjiakou': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-zhengzhou-jva': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-shenzhen': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-beijing': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-wulanchabu': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-nanjing': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'ap-northeast-2': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'ap-northeast-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-fuzhou': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-chengdu': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-qingdao': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-wuhan-lr': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-guangzhou': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-heyuan': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'ap-southeast-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'ap-southeast-3': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-huhehaote': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'ap-southeast-5': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'ap-southeast-6': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'ap-southeast-7': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-hangzhou': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'us-west-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'us-east-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'eu-central-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'eu-west-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'me-central-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-shenzhen-finance-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-shanghai-finance-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-heyuan-acdr-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com',
+            'cn-beijing-finance-1': 'expressconnectrouter.cn-shanghai.aliyuncs.com'
+        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('expressconnectrouter', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -688,6 +725,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_flow_log_with_options_async(request, runtime)
 
+    def create_route_map_association_with_options(
+        self,
+        request: main_models.CreateRouteMapAssociationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRouteMapAssociationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id_list):
+            query['RegionIdList'] = request.region_id_list
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRouteMapAssociation',
+            version = '2023-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRouteMapAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_route_map_association_with_options_async(
+        self,
+        request: main_models.CreateRouteMapAssociationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRouteMapAssociationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.region_id_list):
+            query['RegionIdList'] = request.region_id_list
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRouteMapAssociation',
+            version = '2023-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRouteMapAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_route_map_association(
+        self,
+        request: main_models.CreateRouteMapAssociationRequest,
+    ) -> main_models.CreateRouteMapAssociationResponse:
+        runtime = RuntimeOptions()
+        return self.create_route_map_association_with_options(request, runtime)
+
+    async def create_route_map_association_async(
+        self,
+        request: main_models.CreateRouteMapAssociationRequest,
+    ) -> main_models.CreateRouteMapAssociationResponse:
+        runtime = RuntimeOptions()
+        return await self.create_route_map_association_with_options_async(request, runtime)
+
     def deactivate_flow_log_with_options(
         self,
         request: main_models.DeactivateFlowLogRequest,
@@ -1047,6 +1178,96 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteFlowlogResponse:
         runtime = RuntimeOptions()
         return await self.delete_flowlog_with_options_async(request, runtime)
+
+    def delete_route_map_association_with_options(
+        self,
+        request: main_models.DeleteRouteMapAssociationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRouteMapAssociationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.association_id):
+            query['AssociationId'] = request.association_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRouteMapAssociation',
+            version = '2023-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRouteMapAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_route_map_association_with_options_async(
+        self,
+        request: main_models.DeleteRouteMapAssociationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRouteMapAssociationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.association_id):
+            query['AssociationId'] = request.association_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteRouteMapAssociation',
+            version = '2023-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteRouteMapAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_route_map_association(
+        self,
+        request: main_models.DeleteRouteMapAssociationRequest,
+    ) -> main_models.DeleteRouteMapAssociationResponse:
+        runtime = RuntimeOptions()
+        return self.delete_route_map_association_with_options(request, runtime)
+
+    async def delete_route_map_association_async(
+        self,
+        request: main_models.DeleteRouteMapAssociationRequest,
+    ) -> main_models.DeleteRouteMapAssociationResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_route_map_association_with_options_async(request, runtime)
 
     def describe_disabled_express_connect_router_route_entries_with_options(
         self,
@@ -2660,6 +2881,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_express_connect_router_supported_region_with_options_async(request, runtime)
 
+    def list_route_map_associations_with_options(
+        self,
+        request: main_models.ListRouteMapAssociationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRouteMapAssociationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.association_id):
+            query['AssociationId'] = request.association_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRouteMapAssociations',
+            version = '2023-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRouteMapAssociationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_route_map_associations_with_options_async(
+        self,
+        request: main_models.ListRouteMapAssociationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRouteMapAssociationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.association_id):
+            query['AssociationId'] = request.association_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.route_map_id):
+            query['RouteMapId'] = request.route_map_id
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListRouteMapAssociations',
+            version = '2023-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListRouteMapAssociationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_route_map_associations(
+        self,
+        request: main_models.ListRouteMapAssociationsRequest,
+    ) -> main_models.ListRouteMapAssociationsResponse:
+        runtime = RuntimeOptions()
+        return self.list_route_map_associations_with_options(request, runtime)
+
+    async def list_route_map_associations_async(
+        self,
+        request: main_models.ListRouteMapAssociationsRequest,
+    ) -> main_models.ListRouteMapAssociationsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_route_map_associations_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: main_models.ListTagResourcesRequest,
@@ -3811,3 +4134,97 @@ class Client(OpenApiClient):
     ) -> main_models.UntagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_route_map_association_with_options(
+        self,
+        request: main_models.UpdateRouteMapAssociationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRouteMapAssociationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.association_id):
+            query['AssociationId'] = request.association_id
+        if not DaraCore.is_null(request.region_id_list):
+            query['RegionIdList'] = request.region_id_list
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRouteMapAssociation',
+            version = '2023-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRouteMapAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_route_map_association_with_options_async(
+        self,
+        request: main_models.UpdateRouteMapAssociationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRouteMapAssociationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.association_id):
+            query['AssociationId'] = request.association_id
+        if not DaraCore.is_null(request.region_id_list):
+            query['RegionIdList'] = request.region_id_list
+        if not DaraCore.is_null(request.version):
+            query['Version'] = request.version
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRouteMapAssociation',
+            version = '2023-09-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRouteMapAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_route_map_association(
+        self,
+        request: main_models.UpdateRouteMapAssociationRequest,
+    ) -> main_models.UpdateRouteMapAssociationResponse:
+        runtime = RuntimeOptions()
+        return self.update_route_map_association_with_options(request, runtime)
+
+    async def update_route_map_association_async(
+        self,
+        request: main_models.UpdateRouteMapAssociationRequest,
+    ) -> main_models.UpdateRouteMapAssociationResponse:
+        runtime = RuntimeOptions()
+        return await self.update_route_map_association_with_options_async(request, runtime)

@@ -16,13 +16,25 @@ class ModifyExpressConnectRouterChildInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
+        # Indicates whether the call was successful. A return value of 200 indicates success, and other values indicate failure. For the cause of failure, see the error codes.
         self.code = code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
+        # 
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The response message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # - **True**: The call was successful.
+        # - **False**: The call failed.
         self.success = success
 
     def validate(self):

@@ -17,28 +17,28 @@ class CreateExpressConnectRouterAssociationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The ID of the association between the ECR and the VPC or TR.
+        # The ID used to associate the Express Connect Router (ECR) with a VPC or TR.
         self.association_id = association_id
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # Indicates whether the call was successful. A return value of 200 indicates that the attachment was successful. Any other value indicates that the attachment failed. For more information about the failure causes, see Error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
         # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The message returned by the operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **True**: The call was successful.
+        # - **False**: The call failed.
         self.success = success
 
     def validate(self):

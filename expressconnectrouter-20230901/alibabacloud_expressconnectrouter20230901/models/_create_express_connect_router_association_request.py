@@ -26,55 +26,61 @@ class CreateExpressConnectRouterAssociationRequest(DaraModel):
         vpc_id: str = None,
         vpc_owner_id: int = None,
     ):
-        # The allowed route prefixes.
+        # The list of allowed route prefixes.
         self.allowed_prefixes = allowed_prefixes
         # The route prefix mode. Valid values:
-        # 
-        # - **MatchMode**: After you distribute new route CIDR blocks to data centers, original specific routes that are distributed are withdrawn.
-        # 
-        # - **IncrementalMode**: After you distribute new route CIDR blocks to data centers, the original specific routes that fall in the CIDR blocks that you configure are withdrawn, and the original specific routes that do not fall in the CIDR blocks are still distributed.
+        # - MatchMode: match mode. Only the configured route CIDR blocks are advertised to the data center, and the previously advertised specific routes are withdrawn.
+        # - IncrementalMode: incremental mode. The configured route CIDR blocks are advertised to the data center. The previously advertised specific routes that fall within the configured route CIDR blocks are withdrawn, and the specific routes that do not fall within the configured CIDR blocks remain advertised.
         self.allowed_prefixes_mode = allowed_prefixes_mode
-        # The region ID of the resource to be associated.
+        # The region where the associated resource resides.
         # 
         # This parameter is required.
         self.association_region_id = association_region_id
         # The ID of the Cloud Enterprise Network (CEN) instance.
+        # > If you specify TransitRouterId, CenId is required. You must first call the CreateCen operation of the Cbn (2017-09-12) service to create a CEN instance and obtain the CEN instance ID.
         self.cen_id = cen_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate a parameter value from your client to ensure that the value is unique among different requests. The client token only supports ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # Specifies whether to initiate an association on the TR when the ECR is associated with the TR. Valid values:
+        # Specifies whether to initiate an association when the Express Connect Router is associated with the transit router. Valid values:
         # 
-        # *   **true**: You do not need to initiate an association on the TR.
-        # *   **false**: You need to initiate an association on the TR.
+        # - **true**: No association is initiated on the transit router side.
+        # - **false**: An association is initiated on the transit router side.
         self.create_attachment = create_attachment
-        # The information about the associated resource. It must be 0 to 128 characters in length.
+        # The description of the associated resource. The description must be 0 to 128 characters in length.
         self.description = description
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to only perform a dry run for this request. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: The system sends a check request without modifying service resources.
+        # 
+        # - **false** (default): The system sends a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The instance ID of the Express Connect Router (ECR).
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
-        self.tag = tag
-        # The TR ID.
-        self.transit_router_id = transit_router_id
-        # The ID of the Alibaba Cloud account that owns the TR. Default value: ID of the Alibaba Cloud account that logs in.
+        # The list of tags.
         # 
-        # >  If you want to connect to a network instance that belongs to a different account, this parameter is required.
+        # You can add up to 20 tags.
+        self.tag = tag
+        # The ID of the transit router.
+        # > The TransitRouterId and VpcId parameters are mutually exclusive. You must specify one of them. You must first call the CreateTransitRouter operation of the Cbn (2017-09-12) service to create a transit router and obtain the transit router ID.
+        self.transit_router_id = transit_router_id
+        # The ID of the Alibaba Cloud account to which the transit router instance belongs. The transit router is used to forward routing traffic. Default value: the current logon Alibaba Cloud account ID.
+        # 
+        # > If you want to load a network instance across accounts, this parameter is required.
         self.transit_router_owner_id = transit_router_owner_id
         self.version = version
-        # The VPC ID.
+        # The instance ID of the VPC-connected instance.
+        # > The VpcId and TransitRouterId parameters are mutually exclusive. You must specify one of them.
+        # > You must first call the CreateVpc operation of the Vpc (2016-04-28) service to create a VPC and obtain the VPC ID.
         self.vpc_id = vpc_id
-        # The ID of the Alibaba Cloud account that owns the VPC. Default value: ID of the Alibaba Cloud account that logs in.
+        # The Alibaba Cloud account ID to which the VPC-connected instance belongs. Default value: the current logon Alibaba Cloud account ID.
         # 
-        # >  If you want to connect to a network instance that belongs to a different account, this parameter is required.
+        # > If you want to load a network instance across accounts, this parameter is required.
         self.vpc_owner_id = vpc_owner_id
 
     def validate(self):
@@ -195,7 +201,9 @@ class CreateExpressConnectRouterAssociationRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value of the resource. The tag value can be an empty string and can be up to 128 characters in length. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

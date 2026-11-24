@@ -22,29 +22,30 @@ class DescribeExpressConnectRouterRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate a parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: performs a dry run. The request is checked, but service resources are not modified.
+        # 
+        # - **false** (default): sends a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The ID of the Express Connect Router (ECR) instance.
         self.ecr_id = ecr_id
-        # The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 20.
+        # The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 20.
         self.max_results = max_results
-        # The name of the ECR. The name must be 0 to 128 characters in length.
+        # The name of the Express Connect Router (ECR) instance. The name must be 0 to 128 characters in length.
         self.name = name
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # - For the first query or when no next query is required, leave this parameter empty.
+        # - If a next query is required, set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
-        # The ID of the resource group to which the ECR belongs.
+        # The ID of the resource group to which the Express Connect Router (ECR) instance belongs.
         self.resource_group_id = resource_group_id
-        # The resource tags. You can specify up to 20 tags.
+        # The list of tags used for filtering. You can specify up to 20 tags.
         self.tag = tag
         self.version = version
 
@@ -130,15 +131,11 @@ class DescribeExpressConnectRouterRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag keys.
+        # The tag key of the instance. If you specify this parameter, it cannot be an empty string.
         # 
-        # The tag keys cannot be an empty string. The tag keys can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-        # 
-        # You can specify at most 20 tag keys.
+        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # A tag value.
-        # 
-        # A tag value can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:`.
+        # The tag value. The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. If you specify this parameter, it can be an empty string.
         self.value = value
 
     def validate(self):

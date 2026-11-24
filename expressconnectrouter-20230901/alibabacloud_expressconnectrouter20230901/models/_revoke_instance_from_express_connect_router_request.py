@@ -18,20 +18,21 @@ class RevokeInstanceFromExpressConnectRouterRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run, without sending the request. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: performs a dry run without modifying service resources.
+        # 
+        # - **false** (default): sends a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The Express Connect Router (ECR) instance ID.
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
-        # The ID of the Alibaba Cloud account that owns the ECR from which you want to revoke permissions.
+        # The ID of the Alibaba Cloud account that owns the ECR instance for which authorization is being revoked.
         # 
         # This parameter is required.
         self.ecr_owner_ali_uid = ecr_owner_ali_uid
@@ -39,14 +40,13 @@ class RevokeInstanceFromExpressConnectRouterRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the network instance.
+        # The region of the network instance for which authorization is being revoked.
         # 
         # This parameter is required.
         self.instance_region_id = instance_region_id
         # The type of the network instance. Valid values:
-        # 
-        # *   **VBR**
-        # *   **VPC**
+        # - **VBR**: virtual border router instance.
+        # - **VPC**: virtual private cloud instance.
         # 
         # This parameter is required.
         self.instance_type = instance_type

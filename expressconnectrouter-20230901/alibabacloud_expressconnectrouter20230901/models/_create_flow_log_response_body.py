@@ -17,28 +17,28 @@ class CreateFlowLogResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The queried information about the request denial.
+        # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The status code that indicates whether the call was successful. A value of 200 indicates that the request was successful. Other values indicate that the request failed. For more information about the causes of failure, see the error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic error message. This parameter is used to replace the % **s** in the **ErrMessage** error message of the response parameter.
+        # The dynamic error message, which is used to replace the **%s** placeholder in the **ErrMessage** error message.
         # 
-        # > For example, if the value of **ErrMessage** is **The Value of Input Parameter** %**s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the specified **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The ID of the flow log.
+        # The ID of the flow log instance.
         self.flow_log_id = flow_log_id
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message.
+        # The message returned by the operation.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - **True**
-        # - **False**
+        # - **True**: The call was successful.
+        # - **False**: The call failed.
         self.success = success
 
     def validate(self):

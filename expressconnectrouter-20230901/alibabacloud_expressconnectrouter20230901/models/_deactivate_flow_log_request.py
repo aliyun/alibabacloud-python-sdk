@@ -15,20 +15,21 @@ class DeactivateFlowLogRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate the parameter value from your client to ensure that the value is unique among different requests. The ClientToken parameter supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether this is a dry run request. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: Sends a check request and does not modify the resources.
+        # 
+        # - **false**: Sends a normal request. Default value.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The ID of the Express Connect Router (ECR) instance.
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
-        # The ID of the flow log.
+        # The ID of the flow log instance.
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id

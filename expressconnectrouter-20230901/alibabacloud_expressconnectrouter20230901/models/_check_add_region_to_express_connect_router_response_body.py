@@ -21,51 +21,57 @@ class CheckAddRegionToExpressConnectRouterResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # Indicates whether the ECR is used to establish connections between regions in the Chinese mainland and regions outside China. Valid values:
+        # Indicates whether the Express Connect Router (ECR) instance has cross-border connections between the Chinese mainland and regions outside the Chinese mainland. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.any_cross_border_link = any_cross_border_link
-        # Indicates whether the ECR is used to establish connections between regions in the Chinese mainland. Valid values:
+        # Indicates whether the Express Connect Router (ECR) instance has cross-region connections in the Chinese mainland. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.any_inter_region_link = any_inter_region_link
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # Indicates whether the call was successful. A return value of 200 indicates that the request was successful. Any other value indicates that the request failed. For more information about the causes of failure, see Error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
         # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsInstanceId**, the request parameter **DtsInstanceId** is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsInstanceId**, it indicates that the **DtsInstanceId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # Indicates whether the cross-border CDT service is activated for the account to which the ECR belongs. Valid values:
+        # Indicates whether the cross-border Cloud Data Transfer (CDT) service is enabled for the account to which the Express Connect Router (ECR) instance belongs. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.is_cdt_cross_border_enabled = is_cdt_cross_border_enabled
-        # Indicates whether the CDT service is activated for the account to which the ECR belongs. Valid values:
+        # Indicates whether the Cloud Data Transfer (CDT) service is enabled for the account to which the Express Connect Router (ECR) instance belongs. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.is_cdt_inter_region_enabled = is_cdt_inter_region_enabled
-        # Indicates whether the account to which the ECR belongs can create cross-border connections. Valid values:
+        # Indicates whether the account to which the Express Connect Router (ECR) instance belongs is allowed to create cross-border connections. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **true**: Yes.
+        # 
+        # - **false**: No.
         self.is_user_allowed_to_create_cross_border_link = is_user_allowed_to_create_cross_border_link
-        # The returned message.
+        # The message returned for the operation.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   **true**
-        # *   **false**
+        # - **True**: The call was successful.
+        # 
+        # - **False**: The call failed.
         self.success = success
 
     def validate(self):

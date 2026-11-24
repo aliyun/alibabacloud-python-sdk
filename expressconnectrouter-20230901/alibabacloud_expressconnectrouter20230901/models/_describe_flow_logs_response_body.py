@@ -23,37 +23,35 @@ class DescribeFlowLogsResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The queried information about the request denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The status code that indicates whether the call was successful. A value of 200 indicates that the call was successful. Other values indicate that the call failed. For more information about the failure causes, see the error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
-        # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** response parameter.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, the specified **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The information about the flow logs.
+        # The list of flow logs.
         self.flow_logs = flow_logs
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The total number of entries returned. Valid values: 1 to 2147483647. Default value: 10.
+        # The maximum number of entries returned. Valid values: 1 to 2147483647. Default value: 10.
         self.max_results = max_results
-        # The returned message.
+        # The message returned by the operation.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # The token for the next query. Valid values:
+        # - If **NextToken** is empty, no next query is available.
+        # - If **NextToken** has a return value, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - **True**
-        # - **False**
+        # - **True**: The call was successful.
+        # - **False**: The call failed.
         self.success = success
-        # The total number of records that meet the query conditions.
+        # The total number of entries that meet the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -170,38 +168,37 @@ class DescribeFlowLogsResponseBodyFlowLogs(DaraModel):
         status: str = None,
         tags: List[main_models.DescribeFlowLogsResponseBodyFlowLogsTags] = None,
     ):
-        # The time when the flow log was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+        # The time when the flow log was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.creation_time = creation_time
-        # The description of the flow log.
+        # The description of the Express Connect Router (ECR) instance.
         self.description = description
-        # The ECR ID.
+        # The instance ID of the Express Connect Router (ECR).
         self.ecr_id = ecr_id
-        # The ID of the flow log.
+        # The instance ID of the flow log instance.
         self.flow_log_id = flow_log_id
         # The name of the flow log.
         self.flow_log_name = flow_log_name
-        # The ID of the network instance.
+        # The ID of the authorized instance.
         self.instance_id = instance_id
         # The type of the network instance. Valid values:
-        # 
-        # - **VBR**: virtual border router (VBR)
+        # - **VBR**: virtual border router (VBR) instance.
         self.instance_type = instance_type
-        # The time window for collecting log data. Unit: seconds. Valid values:
+        # The capture window duration for the traffic captured by the flow log. Unit: seconds. Valid values:
         # 
-        # - **60**
+        # - **60** 
         # - **600**
         # 
         # Default value: **600**.
         self.interval = interval
-        # The Logstore that stores the captured traffic data.
+        # The name of the Logstore that stores the captured traffic.
         self.log_store_name = log_store_name
-        # The name of the project that stores the captured traffic data.
+        # The name of the Simple Log Service project that stores the captured traffic.
         self.project_name = project_name
-        # The region ID of the flow log.
+        # The region ID of the Express Connect Router.
         self.region_id = region_id
-        # The ID of the resource group to which the ECR belongs.
+        # The ID of the resource group to which the Express Connect Router (ECR) instance belongs.
         self.resource_group_id = resource_group_id
-        # The sampling proportion. Valid values:
+        # The sampling ratio. Valid values:
         # 
         # - **1:4096**
         # - **1:2048**
@@ -209,15 +206,13 @@ class DescribeFlowLogsResponseBodyFlowLogs(DaraModel):
         # 
         # Default value: **1:4096**.
         self.sampling_rate = sampling_rate
-        # The ID of the region where Log Service is deployed.
+        # The region ID of Simple Log Service.
         self.sls_region_id = sls_region_id
         # The status of the flow log. Valid values:
-        # 
-        # *   **Active**
-        # 
-        # *   **Inactive**
+        # - **Active**: The flow log is started.
+        # - **Inactive**: The flow log is not started.
         self.status = status
-        # The tag key.
+        # The tags of the Express Connect Router (ECR) instance.
         self.tags = tags
 
     def validate(self):
@@ -344,13 +339,13 @@ class DescribeFlowLogsResponseBodyFlowLogsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the instance. The tag key cannot be an empty string.
+        # The tag key of the instance. If you specify this parameter, it cannot be an empty string.
         # 
-        # > It can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # > The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
         # The tag value.
         # 
-        # > It can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. The tag value can be an empty string.
+        # > The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. If you specify this parameter, it can be an empty string.
         self.value = value
 
     def validate(self):

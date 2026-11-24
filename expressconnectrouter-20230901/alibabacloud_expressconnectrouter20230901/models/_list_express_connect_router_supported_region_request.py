@@ -11,17 +11,19 @@ class ListExpressConnectRouterSupportedRegionRequest(DaraModel):
         node_type: str = None,
         version: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
+        # A client token to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a value that is unique across different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** as the **ClientToken**. Each request has a unique **RequestId**.
         self.client_token = client_token
-        # The type of the network instance. Valid values:
+        # The type of network instance. Valid values:
         # 
-        # *   **TR**
-        # *   **VBR**
-        # *   **VPC**
+        # - **TR**: transit router instance.
+        # 
+        # - **VBR**: virtual border router instance.
+        # 
+        # - **VPC**: virtual private cloud instance.
         # 
         # This parameter is required.
         self.node_type = node_type

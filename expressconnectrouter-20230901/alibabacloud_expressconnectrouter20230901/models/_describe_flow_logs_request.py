@@ -26,55 +26,60 @@ class DescribeFlowLogsRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate a parameter value on your client to ensure that the value is unique across different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to only perform a dry run for this request. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: send a check request and do not modify service resources.
+        # 
+        # - **false** (default): send a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The instance ID of the Express Connect Router (ECR).
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
-        # The ID of the flow log.
+        # The instance ID of the flow log instance.
         self.flow_log_id = flow_log_id
-        # The flow log name. The name must be 0 to 128 characters in length.
+        # The name of the flow log. The name must be 0 to 128 characters in length.
         self.flow_log_name = flow_log_name
-        # The ID of the VBR associated with the ECR.
+        # The instance ID of the VBR instance loaded on the Express Connect Router (ECR).
         self.instance_id = instance_id
-        # The Logstore that stores the captured traffic data.
+        # The Simple Log Service Logstore used to capture traffic.
+        # - If you have created a Logstore in the current region, you can enter the name of the existing Logstore.
+        # - If you have not created a Logstore in the current region, you can specify a custom name for the Logstore, and the system automatically creates the Logstore. The naming rules are as follows:
         # 
-        # *   If a Logstore is already created in the selected region, enter the name of the Logstore.
-        # *   If no Logstores are created in the selected region, enter a name and the system automatically creates a Logstore. The name of the Logstore. The name must meet the following requirements:
-        # *   The name must be unique in a project.
-        # *   It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
-        # *   The name must start and end with a lowercase letter or a digit.
-        # *   The name must be 3 to 63 characters in length.
+        # - The Logstore name must be unique within the same project.
+        # - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # - It must start and end with a lowercase letter or a digit.
+        # - It must be 3 to 63 characters in length.
         self.log_store_name = log_store_name
         # The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # - You do not need to specify this parameter for the first request.
-        # - You must specify the token that is obtained from the previous query as the value of NextToken.
+        # - If NextToken is empty, no next query is available.
+        # - If NextToken has a return value, the value indicates the token for the next query.
         self.next_token = next_token
-        # The project that stores the captured traffic data.
+        # The Simple Log Service project used to capture traffic.
+        # - If you have created a project in the current region, you can enter the name of the existing project.
+        # - If you have not created a project in the current region, you can specify a custom name for the project, and the system automatically creates the project.
         # 
-        # *   If a project is already created in the selected region, enter the name of the project.
-        # *   If no projects are created in the selected region, enter a name and the system automatically creates a project.
         # 
-        # The project name must be unique in a region. You cannot change the name after the project is created. The name must meet the following requirements:
-        # 
-        # *   The name must be globally unique.
-        # *   The name can contain only lowercase letters,
-        # *   digits, and hyphens (-).
-        # *   The name must start and end with a lowercase letter or a digit.
-        # *   The name must be 3 to 63 characters in length.
+        # The project name must be globally unique within an Alibaba Cloud region and cannot be modified after creation. The naming rules are as follows:
+        #    
+        # - The project name must be globally unique.
+        # - It can contain only lowercase
+        # - letters, digits, and hyphens (-).
+        # - It must start and end with a lowercase letter or a digit.
+        # - It must be 3 to 63 characters in length.
         self.project_name = project_name
+        # The ID of the resource group to which the flow log instance belongs.
         self.resource_group_id = resource_group_id
+        # The tags.
+        # 
+        # You can add up to 20 tags.
         self.tag = tag
         self.version = version
 
@@ -184,7 +189,9 @@ class DescribeFlowLogsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. Valid values of N: 1 to 20. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

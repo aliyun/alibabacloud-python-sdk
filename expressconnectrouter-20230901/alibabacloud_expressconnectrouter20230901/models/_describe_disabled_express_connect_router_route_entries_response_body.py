@@ -25,35 +25,34 @@ class DescribeDisabledExpressConnectRouterRouteEntriesResponseBody(DaraModel):
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The status code. A value of 200 indicates that the call was successful. Other values indicate that the call failed. For more information about the causes of failure, see error codes.
         self.code = code
-        # The routes that are queried.
+        # The list of queried route entries.
         self.disabled_route_entry_list = disabled_route_entry_list
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
         # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsInstanceId**, the request parameter **DtsInstanceId** is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsInstanceId**, it indicates that the **DtsInstanceId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The total number of entries returned. Valid values: 1 to 2147483647. Default value: 10.
+        # The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 10.
         self.max_results = max_results
-        # The returned message.
+        # The message returned by the operation.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # *   If NextToken is empty, no next page exists.
-        # *   If a value of NextToken is returned, the value indicates the token that is used for the next query.
+        # - If NextToken is empty, no next query is required.
+        # - If NextToken is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether routes are disabled by the ECR. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the disabled Express Connect Router (ECR) routing is successfully queried. Valid values:
+        # - **True**: The query was successful.
+        # - **False**: The query failed.
         self.success = success
-        # The total number of routes.
+        # The total number of route entry.
         self.total_count = total_count
 
     def validate(self):
@@ -159,15 +158,15 @@ class DescribeDisabledExpressConnectRouterRouteEntriesResponseBodyDisabledRouteE
         nexthop_instance_id: str = None,
         nexthop_instance_region_id: str = None,
     ):
-        # The destination CIDR block of the route.
+        # The destination CIDR block of the route entry.
         self.destination_cidr_block = destination_cidr_block
-        # The ECR ID.
+        # The instance ID of the Express Connect Router (ECR).
         self.ecr_id = ecr_id
         # The time when the route entry was created.
         self.gmt_create = gmt_create
-        # The ID of the next-hop instance.
+        # The instance ID of the next hop.
         self.nexthop_instance_id = nexthop_instance_id
-        # The region ID of the next-hop instance.
+        # The region ID of the next hop instance.
         self.nexthop_instance_region_id = nexthop_instance_region_id
 
     def validate(self):

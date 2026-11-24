@@ -20,18 +20,19 @@ class GrantInstanceToExpressConnectRouterRequest(DaraModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: performs a dry run without modifying the EPS resource.
+        # 
+        # - **false** (default): sends a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The instance ID of the associated Express Connect Router (ECR).
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
-        # The ID of the Alibaba Cloud account that owns the ECR to which you want to grant permissions.
+        # The ID of the Alibaba Cloud account that owns the Express Connect Router (ECR) instance that accepts the authorization.
         # 
         # This parameter is required.
         self.ecr_owner_ali_uid = ecr_owner_ali_uid
@@ -39,14 +40,13 @@ class GrantInstanceToExpressConnectRouterRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the network instance.
+        # The region ID of the network instance to be authorized.
         # 
         # This parameter is required.
         self.instance_region_id = instance_region_id
         # The type of the network instance. Valid values:
-        # 
-        # *   **VBR**
-        # *   **VPC**
+        # - **VBR**: virtual border router instance.
+        # - **VPC**: virtual private cloud instance.
         # 
         # This parameter is required.
         self.instance_type = instance_type

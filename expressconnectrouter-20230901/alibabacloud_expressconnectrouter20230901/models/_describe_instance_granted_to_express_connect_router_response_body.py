@@ -23,37 +23,36 @@ class DescribeInstanceGrantedToExpressConnectRouterResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The status code. A value of 200 indicates that the call was successful. Other values indicate that the call failed. For more information about the failure causes, see the error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
         # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The network instances whose permissions are granted to the ECR.
+        # The list of instances authorized to the ECR.
         self.ecr_granted_instance_list = ecr_granted_instance_list
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+        # The maximum number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
         self.max_results = max_results
-        # The returned message.
+        # The message returned by the operation.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # The pagination token. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no next query is available.
+        # - If **NextToken** returns a value, the value indicates the token for the next query.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **True**: The call was successful.
+        # - **False**: The call failed.
         self.success = success
-        # The total number of network instances whose permissions are granted to the ECR.
+        # The total number of network instances for which authorization is granted to the Express Connect Router (ECR).
         self.total_count = total_count
 
     def validate(self):
@@ -165,30 +164,29 @@ class DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanc
         node_type: str = None,
         status: str = None,
     ):
-        # The ECR ID.
+        # The instance ID of the Express Connect Router (ECR).
         self.ecr_id = ecr_id
-        # The ID of the Alibaba Cloud account that owns the ECR to which you want to grant permissions.
+        # The ID of the Alibaba Cloud account to which the Express Connect Router (ECR) instance that receives the authorization belongs.
         self.ecr_owner_ali_uid = ecr_owner_ali_uid
-        # The time when the network instance was created.
+        # The time when the instance was created.
         self.gmt_create = gmt_create
-        # The time when the network instance was modified.
+        # The time when the instance was modified.
         self.gmt_modified = gmt_modified
-        # The authorization ID.
+        # The ID of the authorization.
         self.grant_id = grant_id
-        # The ID of the network instance.
+        # The instance ID of the authorization.
         self.node_id = node_id
-        # The ID of the Alibaba Cloud enterprise account that owns the network instance.
+        # The ID of the Alibaba Cloud enterprise account to which the instance belongs.
         self.node_owner_bid = node_owner_bid
-        # The ID of the Alibaba Cloud account that owns the network instance.
+        # The ID of the Alibaba Cloud account to which the instance belongs.
         self.node_owner_uid = node_owner_uid
-        # The region ID of the network instance.
+        # The ID of the region to which the authorized instance belongs.
         self.node_region_id = node_region_id
         # The type of the network instance. Valid values:
-        # 
-        # *   **VBR**
-        # *   **VPC**
+        # - **VBR**: VBR instance.
+        # - **VPC**: VPC instance.
         self.node_type = node_type
-        # The state of the network instance.
+        # The status of the authorized network instance.
         self.status = status
 
     def validate(self):

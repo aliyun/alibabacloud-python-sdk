@@ -23,35 +23,33 @@ class DescribeExpressConnectRouterChildInstanceResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The VBRs.
+        # The list of child instances.
         self.child_instance_list = child_instance_list
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The status code that indicates whether the call was successful. A value of 200 indicates that the attachment was successful. Other values indicate that the attachment failed. For more information about the causes of failures, see the error codes.
         self.code = code
         # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
-        # 
-        # >  For example, if the value of **ErrMessage** is **The Value of Input Parameter %s is not valid** and the value of **DynamicMessage** is **DtsJobId**, the request parameter **DtsJobId** is invalid.
+        # The dynamic error message, which is used to replace `%s` in the **ErrMessage** error message.
+        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid** and **DynamicMessage** returns **DtsJobId**, it indicates that the **DtsJobId** request parameter is invalid.
         self.dynamic_message = dynamic_message
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+        # The maximum number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
         self.max_results = max_results
-        # The returned message.
+        # The message returned by the operation.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # The token for the next query. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If NextToken is empty, no next query is required.
+        # - If NextToken is returned, the value indicates the token for the next query.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **True**: successful.
+        # - **False**: failed.
         self.success = success
         # The total number of associated resources.
         self.total_count = total_count
@@ -167,37 +165,43 @@ class DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList(Dar
         region_id: str = None,
         status: str = None,
     ):
-        # The ID of the association between the ECR and the VPC or TR.
+        # The ID used to associate the Express Connect Router (ECR) with the VBR.
         self.association_id = association_id
-        # The VBR ID.
+        # The instance ID of the border router for routing.
         self.child_instance_id = child_instance_id
+        # The name of the child instance.
         self.child_instance_name = child_instance_name
-        # The ID of the Alibaba Cloud account that owns the VBR.
+        # The Alibaba Cloud account ID to which the child instance belongs.
         self.child_instance_owner_id = child_instance_owner_id
-        # The region ID of the VBR.
+        # The region where the child instance resides.
         self.child_instance_region_id = child_instance_region_id
-        # The type of the VBR. The value is **VBR**.
+        # The type of the child instance. Valid values: **VBR**: virtual border router.
         self.child_instance_type = child_instance_type
-        # The description of the ECR.
+        # The description of the child instance.
         self.description = description
-        # The ECR ID.
+        # The instance ID of the Express Connect Router (ECR).
         self.ecr_id = ecr_id
-        # The time when the association was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the association was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.gmt_create = gmt_create
-        # The time when the association was modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+        # The time when the association was modified. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
         self.gmt_modified = gmt_modified
-        # The ID of the Alibaba Cloud account that owns the VBR.
+        # The Alibaba Cloud account ID to which the border router for routing belongs.
         self.owner_id = owner_id
-        # The region ID of the VBR.
+        # The region where the VBR resides.
         self.region_id = region_id
-        # The deployment state of the associated resource. Valid values:
+        # The deployment status of the associated resource. Valid values:
         # 
-        # - **CREATING**: The resource is being created.
-        # - **ACTIVE**: The resource is created.
-        # - **ASSOCIATING**: The resource is being associated.
-        # - **DISSOCIATING**: The resource is being disassociated.
-        # - **UPDATING**: The resource is being modified.
-        # - **DELETING**: The resource is being deleted.
+        # - **CREATING**: creating.
+        # 
+        # - **ACTIVE**: created.
+        # 
+        # - **ASSOCIATING**: associating.
+        # 
+        # - **DISSOCIATING**: dissociating.
+        # 
+        # - **UPDATING**: updating.
+        # 
+        # - **DELETING**: deleting.
         self.status = status
 
     def validate(self):

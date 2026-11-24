@@ -17,33 +17,38 @@ class UntagResourcesRequest(DaraModel):
         tag_key: List[str] = None,
         version: str = None,
     ):
-        # Specifies whether to remove all tags. This parameter is valid only when the **TagKey** parameter is not specified. Valid values:
+        # Specifies whether to unbind all tags. This parameter is valid only when **TagKey** is empty. Valid values:
         # 
-        # *   **true**
-        # *   **false** (default)
+        # - **true**: Unbinds all tags from the Express Connect Router (ECR) instance.
+        # - **false** (default): Does not unbind all tags from the Express Connect Router (ECR) instance.
         # 
-        # >  You must specify one of **TagKey** and **All**.
+        # > You must specify either **TagKey** or **All**.
         self.all = all
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** may be different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform only a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: Performs a dry run without modifying EPS resources.
+        # 
+        # - **false** (default): Sends the request normally.
         self.dry_run = dry_run
-        # The ECR IDs.
+        # The list of resource instance IDs. You can unbind tags from up to 50 resource instances at a time.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The resource type. Set the value to **EXPRESSCONNECTROUTER**.
+        # The resource type. Valid values:
+        # - **EXPRESSCONNECTROUTER**: Express Connect Router (ECR) instance.
+        # - **EXPRESSCONNECTROUTERVPCASSOCIATION**: the associate relationship between an ECR and a VPC.
+        # - **EXPRESSCONNECTROUTERTRASSOCIATION**: the associate relationship between an ECR and a transit router.
+        # - **ECRFLOWLOG**: ECR flow log.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The keys of the tags that you want to remove from the ECRs.
+        # The tag keys of the Express Connect Router (ECR) instance to unbind.
         self.tag_key = tag_key
         self.version = version
 

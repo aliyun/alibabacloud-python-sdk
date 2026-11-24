@@ -19,27 +19,26 @@ class ListTagResourcesResponseBody(DaraModel):
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
         total_count: int = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+        # The response code. A value of 200 indicates success. Other values indicate failure. For more information, see error codes.
         self.code = code
-        # The number of entries per page.
+        # The number of entries per page in a paged query.
         self.max_results = max_results
         # The returned message.
         self.message = message
-        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+        # The pagination token. Valid values:
         # 
-        # *   If **NextToken** is empty, no next page exists.
-        # *   If a value of **NextToken** is returned, the value indicates the token that is used for the next query.
+        # - If **NextToken** is empty, no next query exists.
+        # - If **NextToken** is returned, the value indicates the token for the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **True**: The call was successful.
+        # - **False**: The call failed.
         self.success = success
-        # The tags.
+        # The list of tags.
         self.tag_resources = tag_resources
-        # The total number of records that meet the query conditions.
+        # The total number of records that match the query conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -122,11 +121,15 @@ class ListTagResourcesResponseBodyTagResources(DaraModel):
     ):
         # The resource ID.
         self.resource_id = resource_id
-        # The resource type. The value is **EXPRESSCONNECTROUTER**.
+        # The resource type. Valid values:
+        # - **EXPRESSCONNECTROUTER**: Express Connect Router (ECR) instance.
+        # - **EXPRESSCONNECTROUTERVPCASSOCIATION**: association between an ECR and a VPC.
+        # - **EXPRESSCONNECTROUTERTRASSOCIATION**: association between an ECR and a transit router.
+        # - **ECRFLOWLOG**: ECR flow log.
         self.resource_type = resource_type
-        # The tag key.
+        # The tag key of the resource.
         self.tag_key = tag_key
-        # The tag value.
+        # The label value of the Express Connect Router (ECR).
         self.tag_value = tag_value
 
     def validate(self):

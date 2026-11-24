@@ -24,47 +24,49 @@ class DescribeInstanceGrantedToExpressConnectRouterRequest(DaraModel):
         tag_models: List[main_models.DescribeInstanceGrantedToExpressConnectRouterRequestTagModels] = None,
         version: str = None,
     ):
-        # The type of the user account. Valid values:
+        # The type of the caller. Valid values:
         # 
-        # *   **sub**: a Resource Access Management (RAM) user.
-        # *   **parent**: an Alibaba Cloud account.
+        # - ECR
+        # - OTHER
+        # 
+        # Default value: ECR.
         self.caller_type = caller_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate the parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: performs a dry run. The request is checked but EPS resources are not modified.
+        # 
+        # - **false** (default): sends a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The instance ID of the Express Connect Router (ECR).
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
-        # The ID of the network instance.
+        # The ID of the authorized instance.
         self.instance_id = instance_id
-        # The ID of the Alibaba Cloud account that owns the network instance.
+        # The ID of the Alibaba Cloud account to which the authorized network instance belongs.
         self.instance_owner_id = instance_owner_id
-        # The region ID of the network instance.
+        # The region where the authorized network instance resides.
         self.instance_region_id = instance_region_id
         # The type of the network instance. Valid values:
-        # 
-        # *   **VBR**
-        # *   **VPC**
+        # - **VBR**: VBR instance.
+        # - **VPC**: VPC instance.
         self.instance_type = instance_type
-        # The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 20.
+        # The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+        # The pagination token. Valid values:
         # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # - If this is the first query or no next query is available, leave this parameter empty.
+        # - If a next query is available, set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The ID of the resource group to which the network instance belongs.
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # The list of tags.
         self.tag_models = tag_models
         self.version = version
 
@@ -174,13 +176,13 @@ class DescribeInstanceGrantedToExpressConnectRouterRequestTagModels(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
         # 
-        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tag_key = tag_key
-        # The tag value. You can specify up to 20 tag values. The tag value cannot be an empty string.
+        # The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you cannot specify an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):

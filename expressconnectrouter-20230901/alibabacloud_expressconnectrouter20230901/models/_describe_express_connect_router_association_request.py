@@ -24,44 +24,47 @@ class DescribeExpressConnectRouterAssociationRequest(DaraModel):
         version: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the association between the ECR and the VPC or TR.
+        # The ID used to associate the Express Connect Router (ECR) with a VPC or TR.
         self.association_id = association_id
         # The type of the associated resource. Valid values:
         # 
-        # *   **VPC**
-        # *   **TR**
+        # - **VPC**: VPC.
+        # 
+        # - **TR**: transit router.
         self.association_node_type = association_node_type
-        # The region ID of the VPC or TR.
+        # The region where the VPC or TR resides.
         self.association_region_id = association_region_id
         # The ID of the Cloud Enterprise Network (CEN) instance.
         self.cen_id = cen_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate the value from your client. Make sure that the value is unique across different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is different.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # Specifies whether this is a dry run. Valid values:
+        # - **true**: sends a check request and does not modify service resources.
+        # - **false** (default): sends a normal request.
         self.dry_run = dry_run
-        # The ECR ID.
+        # The instance ID of the Express Connect Router (ECR).
+        # > You can call the CreateExpressConnectRouter API operation to create an ECR instance and obtain the EcrId.
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
-        # The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 20.
+        # The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
-        # 
-        # *   You do not need to specify this parameter for the first request.
-        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token for the next query. Valid values:
+        # - If this is the first query or no next query is required, leave this parameter empty.
+        # - If a next query is required, set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
+        # The list of tags.
+        # 
+        # You can add up to 20 tags.
         self.tag = tag
-        # The TR ID.
+        # The ID of the transit router.
         self.transit_router_id = transit_router_id
         self.version = version
-        # The VPC ID.
+        # The ID of the VPC-connected instance.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -170,7 +173,9 @@ class DescribeExpressConnectRouterAssociationRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. The tag key cannot be an empty string. It can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value of the resource. The tag value can be an empty string. It can be up to 128 characters in length, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

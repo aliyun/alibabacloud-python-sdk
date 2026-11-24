@@ -19,34 +19,34 @@ class CreateExpressConnectRouterRequest(DaraModel):
         tag: List[main_models.CreateExpressConnectRouterRequestTag] = None,
         version: str = None,
     ):
-        # The autonomous system number (ASN) of the ECR. Valid values: 45104, 64512 to 65534, and 4200000000 to 4294967294. Default value: 45104. The value 65025 is reserved by Alibaba Cloud.
+        # The Autonomous System Number (ASN) of the Express Connect Router (ECR) instance. Valid values: 45104 (default), 64512 to 65534, and 4200000000 to 4294967294. The value 65025 is reserved by Alibaba Cloud.
         # 
         # This parameter is required.
         self.alibaba_side_asn = alibaba_side_asn
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can generate the token from your client to ensure that the token is unique across different requests. The ClientToken parameter supports only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # > If you do not specify this parameter, the system automatically uses the **RequestId** of the API request as the **ClientToken**. The **RequestId** of each API request is unique.
         self.client_token = client_token
-        # The description of the ECR.
+        # The description of the Express Connect Router (ECR) instance.
         # 
-        # >  The description can be empty or 0 to 256 characters in length and cannot start with http:// or https://.
+        # > The description can be empty or 0 to 256 characters in length, and cannot start with http:// or https://.
         self.description = description
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # Specifies whether it is only a dry run for this request. Valid values:
         # 
-        # *   **true**: performs only a dry run.
-        # *   **false** (default): performs a dry run and performs the actual request.
+        # - **true**: Sends a check request without modifying service resources.
+        # 
+        # - **false** (default): Sends a normal request.
         self.dry_run = dry_run
-        # The name of the ECR.
-        # 
-        # >  The name must be 0 to 128 characters in length, and cannot start with http:// or https://.
+        # The name of the Express Connect Router (ECR) instance.
+        # > The name can be empty or 0 to 128 characters in length, and cannot start with http:// or https://.
         self.name = name
-        # The ID of the resource group to which the ECR belongs.
+        # The ID of the resource group to which the Express Connect Router (ECR) instance belongs.
         self.resource_group_id = resource_group_id
-        # The information about the tags.
+        # The tags.
         # 
-        # You can specify at most 20 tags in each call.
+        # You can add up to 20 tags.
         self.tag = tag
         self.version = version
 
@@ -128,13 +128,9 @@ class CreateExpressConnectRouterRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-        # 
-        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key of the resource. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag value of the listener. Valid values of N: **1** to **20**. If specified, the value can be an empty string. The value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

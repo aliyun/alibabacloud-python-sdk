@@ -20,6 +20,9 @@ from ._create_express_connect_router_association_response import CreateExpressCo
 from ._create_flow_log_request import CreateFlowLogRequest
 from ._create_flow_log_response_body import CreateFlowLogResponseBody
 from ._create_flow_log_response import CreateFlowLogResponse
+from ._create_route_map_association_request import CreateRouteMapAssociationRequest
+from ._create_route_map_association_response_body import CreateRouteMapAssociationResponseBody
+from ._create_route_map_association_response import CreateRouteMapAssociationResponse
 from ._deactivate_flow_log_request import DeactivateFlowLogRequest
 from ._deactivate_flow_log_response_body import DeactivateFlowLogResponseBody
 from ._deactivate_flow_log_response import DeactivateFlowLogResponse
@@ -32,6 +35,9 @@ from ._delete_express_connect_router_association_response import DeleteExpressCo
 from ._delete_flowlog_request import DeleteFlowlogRequest
 from ._delete_flowlog_response_body import DeleteFlowlogResponseBody
 from ._delete_flowlog_response import DeleteFlowlogResponse
+from ._delete_route_map_association_request import DeleteRouteMapAssociationRequest
+from ._delete_route_map_association_response_body import DeleteRouteMapAssociationResponseBody
+from ._delete_route_map_association_response import DeleteRouteMapAssociationResponse
 from ._describe_disabled_express_connect_router_route_entries_request import DescribeDisabledExpressConnectRouterRouteEntriesRequest
 from ._describe_disabled_express_connect_router_route_entries_response_body import DescribeDisabledExpressConnectRouterRouteEntriesResponseBody
 from ._describe_disabled_express_connect_router_route_entries_response import DescribeDisabledExpressConnectRouterRouteEntriesResponse
@@ -80,6 +86,9 @@ from ._grant_instance_to_express_connect_router_response import GrantInstanceToE
 from ._list_express_connect_router_supported_region_request import ListExpressConnectRouterSupportedRegionRequest
 from ._list_express_connect_router_supported_region_response_body import ListExpressConnectRouterSupportedRegionResponseBody
 from ._list_express_connect_router_supported_region_response import ListExpressConnectRouterSupportedRegionResponse
+from ._list_route_map_associations_request import ListRouteMapAssociationsRequest
+from ._list_route_map_associations_response_body import ListRouteMapAssociationsResponseBody
+from ._list_route_map_associations_response import ListRouteMapAssociationsResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
@@ -116,6 +125,9 @@ from ._tag_resources_response import TagResourcesResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._update_route_map_association_request import UpdateRouteMapAssociationRequest
+from ._update_route_map_association_response_body import UpdateRouteMapAssociationResponseBody
+from ._update_route_map_association_response import UpdateRouteMapAssociationResponse
 from ._create_express_connect_router_request import CreateExpressConnectRouterRequestTag
 from ._create_express_connect_router_association_request import CreateExpressConnectRouterAssociationRequestTag
 from ._create_flow_log_request import CreateFlowLogRequestTag
@@ -135,6 +147,7 @@ from ._describe_flow_logs_response_body import DescribeFlowLogsResponseBodyFlowL
 from ._describe_flow_logs_response_body import DescribeFlowLogsResponseBodyFlowLogs
 from ._describe_instance_granted_to_express_connect_router_request import DescribeInstanceGrantedToExpressConnectRouterRequestTagModels
 from ._describe_instance_granted_to_express_connect_router_response_body import DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList
+from ._list_route_map_associations_response_body import ListRouteMapAssociationsResponseBodyRouteMapAssociationList
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._modify_express_connect_router_inter_region_transit_mode_request import ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList
@@ -159,6 +172,9 @@ __all__ = [
     CreateFlowLogRequest,
     CreateFlowLogResponseBody,
     CreateFlowLogResponse,
+    CreateRouteMapAssociationRequest,
+    CreateRouteMapAssociationResponseBody,
+    CreateRouteMapAssociationResponse,
     DeactivateFlowLogRequest,
     DeactivateFlowLogResponseBody,
     DeactivateFlowLogResponse,
@@ -171,6 +187,9 @@ __all__ = [
     DeleteFlowlogRequest,
     DeleteFlowlogResponseBody,
     DeleteFlowlogResponse,
+    DeleteRouteMapAssociationRequest,
+    DeleteRouteMapAssociationResponseBody,
+    DeleteRouteMapAssociationResponse,
     DescribeDisabledExpressConnectRouterRouteEntriesRequest,
     DescribeDisabledExpressConnectRouterRouteEntriesResponseBody,
     DescribeDisabledExpressConnectRouterRouteEntriesResponse,
@@ -219,6 +238,9 @@ __all__ = [
     ListExpressConnectRouterSupportedRegionRequest,
     ListExpressConnectRouterSupportedRegionResponseBody,
     ListExpressConnectRouterSupportedRegionResponse,
+    ListRouteMapAssociationsRequest,
+    ListRouteMapAssociationsResponseBody,
+    ListRouteMapAssociationsResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
@@ -255,6 +277,9 @@ __all__ = [
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UpdateRouteMapAssociationRequest,
+    UpdateRouteMapAssociationResponseBody,
+    UpdateRouteMapAssociationResponse,
     CreateExpressConnectRouterRequestTag,
     CreateExpressConnectRouterAssociationRequestTag,
     CreateFlowLogRequestTag,
@@ -274,6 +299,7 @@ __all__ = [
     DescribeFlowLogsResponseBodyFlowLogs,
     DescribeInstanceGrantedToExpressConnectRouterRequestTagModels,
     DescribeInstanceGrantedToExpressConnectRouterResponseBodyEcrGrantedInstanceList,
+    ListRouteMapAssociationsResponseBodyRouteMapAssociationList,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
     ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList,
