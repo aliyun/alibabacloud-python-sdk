@@ -16,7 +16,7 @@ class ImageMattingAsyncResponseBody(DaraModel):
     ):
         # The status code, such as success.
         self.code = code
-        # The submit result of the intelligent image matting asynchronous node.
+        # The submission result of the intelligent image matting asynchronous task.
         self.data = data
         # The error message. This parameter is not returned for normal calls.
         self.message = message
@@ -76,7 +76,7 @@ class ImageMattingAsyncResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the node, which is used to query the result of the asynchronous node.
+        # The task ID, which is used to query the result of the asynchronous task.
         self.task_id = task_id
 
     def validate(self):

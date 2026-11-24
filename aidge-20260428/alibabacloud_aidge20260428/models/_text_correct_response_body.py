@@ -16,15 +16,15 @@ class TextCorrectResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The value "success" is returned if the call is successful.
+        # The response code. "success" is returned for successful calls.
         self.code = code
         # The intelligent correction result data.
         self.data = data
-        # The error message. The value "Success" is returned if the call is successful. If an error occurs, a specific error message is returned, such as "The parameters contain sensitive information. Try other input."
+        # The error message. "Success" is returned for successful calls. For failed calls, a specific error message is returned, such as "The parameter contains sensitive information. Please try another input."
         self.message = message
-        # The request ID, which uniquely identifies the request.
+        # The request ID, which is used to uniquely identify a request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):

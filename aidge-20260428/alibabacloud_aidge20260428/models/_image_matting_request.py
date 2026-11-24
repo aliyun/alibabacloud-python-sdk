@@ -25,9 +25,9 @@ class ImageMattingRequest(DaraModel):
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The height of the target image. Unit: pixels.
+        # The target height of the image, in pixels.
         self.target_height = target_height
-        # The width of the target image. Unit: pixels.
+        # The target width of the image, in pixels.
         self.target_width = target_width
 
     def validate(self):

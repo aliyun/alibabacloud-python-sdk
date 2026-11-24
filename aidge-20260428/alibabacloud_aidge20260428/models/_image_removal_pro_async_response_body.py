@@ -14,15 +14,15 @@ class ImageRemovalProAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code. This parameter is not returned for successful calls.
         self.code = code
         # The submission result of the Intelligent Erasure Pro asynchronous task.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful. Example: "The parameters contain sensitive information. Try another input."
+        # The error message. This parameter is not returned for successful calls. Example: "The parameters contain sensitive information. Try other inputs."
         self.message = message
-        # The ID of the request.
+        # The request ID, which is used to identify a unique request call.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: true and false.
+        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -76,7 +76,7 @@ class ImageRemovalProAsyncResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the task, which is used to query the result of the asynchronous task.
+        # The task ID used to query the asynchronous task result.
         self.task_id = task_id
 
     def validate(self):

@@ -14,7 +14,7 @@ class ImageTranslationProAsyncResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of success indicates that the task is submitted.
+        # The response code. A value of success indicates that the task is submitted successfully.
         self.code = code
         # The submission result of the Image Translation Pro asynchronous task.
         self.data = data
@@ -76,7 +76,7 @@ class ImageTranslationProAsyncResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The identifier of the asynchronous task, which is used for result queries and notification association. Do not use the example prefix as a business validation rule.
+        # The ID of the asynchronous task, which is used to query results and associate notifications. Do not use the example prefix as a business validation rule.
         self.task_id = task_id
 
     def validate(self):

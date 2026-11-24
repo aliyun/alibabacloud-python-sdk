@@ -16,15 +16,15 @@ class TextTranslateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The value "success" is returned for successful calls.
+        # The response code. If the call is successful, "success" is returned.
         self.code = code
-        # The translation result data, including the translation list and usage information.
+        # The translation result data, which includes the translation list and usage information.
         self.data = data
-        # The error message. The value "Success" is returned for successful calls. For failed calls, a specific error message is returned, such as "The parameters contain sensitive information. Try other input."
+        # The error message. If the call is successful, "Success" is returned. If an exception occurs, a specific error message is returned, such as "The parameter contains sensitive information. Please try another input."
         self.message = message
-        # The request ID, which uniquely identifies a single API call.
+        # The request ID, which is used to identify a unique request call.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,9 @@ class TextTranslateResponseBodyData(DaraModel):
         translations: List[main_models.TextTranslateResponseBodyDataTranslations] = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The translation result list. Each element corresponds to a translation result for an entry in the input text list.
+        # The list of translation results. Each element corresponds to a translation result for an item in the input text list.
         self.translations = translations
-        # The usage information, including the number of input characters.
+        # The usage information, which includes the number of input characters.
         self.usage_map = usage_map
 
     def validate(self):

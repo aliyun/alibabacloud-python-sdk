@@ -14,17 +14,15 @@ class SubmitProductMatchResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned for normal calls.
+        # The error code. This parameter is not returned for successful calls.
         self.code = code
-        # The submission result of the asynchronous task for identical product identification.
+        # The submission result of the asynchronous task for identical product recognition.
         self.data = data
-        # The error message. This parameter is not returned for normal calls.
+        # The error message. This parameter is not returned for successful calls.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
-        # - true: Successful.
-        # - false: Failed.
+        # Indicates whether the call was successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -81,7 +79,7 @@ class SubmitProductMatchResponseBodyData(DaraModel):
     ):
         # The time when the task was accepted, in ISO 8601 UTC format.
         self.submitted_at = submitted_at
-        # The ID of the asynchronous task used to query the task result by calling QueryAsyncTaskResult.
+        # The asynchronous task ID used to query the task result by calling QueryAsyncTaskResult.
         self.task_id = task_id
 
     def validate(self):

@@ -123,7 +123,7 @@ class MerchandiseSceneDetectionResponseBodyDataResult(DaraModel):
         self.grounding = grounding
         # The list of recognized scenes.
         self.scenes = scenes
-        # The type. Fixed value: scene.
+        # The type. Fixed to scene.
         self.type = type
 
     def validate(self):
@@ -185,15 +185,15 @@ class MerchandiseSceneDetectionResponseBodyDataResultScenes(DaraModel):
         self.area_rate = area_rate
         # Optional. The purity metric for proprietary products. The specific business definition is subject to the recognition service.
         self.own_purity = own_purity
-        # Optional. The display fullness metric.
+        # Optional. The display plumpness metric.
         self.plumpness = plumpness
         # The display name of the scene. If omitted, the value is an empty string.
         self.scene_actual_name = scene_actual_name
-        # The center point of the scene, which retains the original normalized coordinates. If omitted, the value is an empty array.
+        # The center point of the scene. The original normalized coordinates are retained. If omitted, the value is an empty array.
         self.scene_center = scene_center
-        # The list of area points. Each item is in the format of {x,y} and retains the original normalized coordinates. If omitted, the value is an empty array.
+        # The list of region points. Each item is in the {x,y} format and retains the original normalized coordinates. If omitted, the value is an empty array.
         self.scene_location = scene_location
-        # The scene identifier. This parameter is required and cannot be empty.
+        # The scene identifier. This field is required and cannot be empty.
         self.scene_name = scene_name
         # Optional. The shelf distribution proportion metric. The specific business definition is subject to the recognition service.
         self.shelf_distribution_rate = shelf_distribution_rate
@@ -274,9 +274,9 @@ class MerchandiseSceneDetectionResponseBodyDataResultScenesSceneLocation(DaraMod
         x: float = None,
         y: float = None,
     ):
-        # The x-coordinate of the area point.
+        # The X-coordinate of the region point.
         self.x = x
-        # The y-coordinate of the area point.
+        # The Y-coordinate of the region point.
         self.y = y
 
     def validate(self):
@@ -357,7 +357,7 @@ class MerchandiseSceneDetectionResponseBodyDataResultGroundingRegions(DaraModel)
         label: str = None,
         text: str = None,
     ):
-        # The 2D bounding box in the format of [top-left x, top-left y, bottom-right x, bottom-right y]. Valid values: 0 to 1000. The left coordinate must be less than the right coordinate, and the top coordinate must be less than the bottom coordinate.
+        # The 2D bounding box in the format of [top-left X, top-left Y, bottom-right X, bottom-right Y]. Values range from 0 to 1000. Left < right, and top < bottom.
         self.bbox_2d = bbox_2d
         # The label.
         self.label = label

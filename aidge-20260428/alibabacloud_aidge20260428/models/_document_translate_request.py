@@ -12,7 +12,7 @@ class DocumentTranslateRequest(DaraModel):
         target_language: str = None,
         url: str = None,
     ):
-        # Supports PDF, WORD, and EXCEL formats. Use uppercase letters when specifying this parameter.
+        # Supports PDF, WORD, and EXCEL formats. Use uppercase letters for the input parameter.
         # 
         # This parameter is required.
         self.file_type = file_type
@@ -20,8 +20,8 @@ class DocumentTranslateRequest(DaraModel):
         # ● Supports custom translation results, including:   
         # ○ Do-not-translate (ABC-ABC).   
         # ○ Specified translation (ABC-DEF).   
-        # ○ Translation omission (ABC-null value).
-        # This is commonly used in scenarios such as brand word protection.   
+        # ○ Translation omission (ABC-null).
+        # Commonly used in scenarios such as brand word protection.   
         # Example value: "glossary_1"
         self.glossary = glossary
         # The target language.

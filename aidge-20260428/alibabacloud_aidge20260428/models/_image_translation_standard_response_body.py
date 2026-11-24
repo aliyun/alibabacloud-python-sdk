@@ -16,9 +16,9 @@ class ImageTranslationStandardResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
+        # The response code. A value of 200 indicates a successful call. For other response codes, see the error codes.
         self.code = code
-        # The translation result data, which includes the URL of the translated image and usage information.
+        # The translation result data, including the translated image URL and usage information.
         self.data = data
         # The error message. "Success" is returned for a successful call, and specific error details are returned when an exception occurs.
         self.message = message
@@ -82,9 +82,9 @@ class ImageTranslationStandardResponseBodyData(DaraModel):
     ):
         # The edit information.
         self.edit_info = edit_info
-        # The URL of the generated translated image.
+        # The URL of the image generated after image translation.
         self.image_url = image_url
-        # The usage information, such as the number of processed images.
+        # The usage information, including the number of processed images.
         self.usage_map = usage_map
 
     def validate(self):

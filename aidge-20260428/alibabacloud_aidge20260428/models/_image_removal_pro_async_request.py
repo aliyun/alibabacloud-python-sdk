@@ -10,9 +10,9 @@ class ImageRemovalProAsyncRequest(DaraModel):
         biz_id: str = None,
         image_url: str = None,
     ):
-        # The business ID of the caller. It is recorded when the request is accepted and returned as is when you query the result of the asynchronous task.
+        # The business order ID of the caller. It is recorded upon acceptance and returned as is when querying the asynchronous task result.
         self.biz_id = biz_id
-        # The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256×256 and 3000×3000 pixels, and the file size must be less than or equal to 10 MB.
+        # The URL of the original image. The image must be in JPG, JPEG, PNG, BMP, or WEBP format. The resolution must be between 256×256 and 3000×3000, and the file size must be less than or equal to 10 MB.
         # 
         # This parameter is required.
         self.image_url = image_url

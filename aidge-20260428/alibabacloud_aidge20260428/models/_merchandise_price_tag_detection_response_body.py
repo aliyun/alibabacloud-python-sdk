@@ -18,13 +18,13 @@ class MerchandisePriceTagDetectionResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The recognition result.
+        # The scenario recognition result.
         self.data = data
-        # The returned message or failure description.
+        # The response message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -79,7 +79,7 @@ class MerchandisePriceTagDetectionResponseBodyData(DaraModel):
         result: main_models.MerchandisePriceTagDetectionResponseBodyDataResult = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The details of the detection and recognition result.
+        # The detection and recognition result details.
         self.result = result
         # The usage information.
         self.usage_map = usage_map
@@ -121,9 +121,9 @@ class MerchandisePriceTagDetectionResponseBodyDataResult(DaraModel):
     ):
         # The grounding information.
         self.grounding = grounding
-        # The list of price tags. This can be an empty array if no price tags are recognized.
+        # The list of price tags. This can be an empty array if no price tags are recognized under normal conditions.
         self.price_tags = price_tags
-        # Fixed to priceTag.
+        # The fixed value priceTag.
         self.type = type
 
     def validate(self):
@@ -182,7 +182,7 @@ class MerchandisePriceTagDetectionResponseBodyDataResultPriceTags(DaraModel):
         self.location = location
         # The original price.
         self.original_price = original_price
-        # The selling price, retained as a string.
+        # The selling price, retained as a character string.
         self.price = price
         # The code of the associated product.
         self.sku_code = sku_code

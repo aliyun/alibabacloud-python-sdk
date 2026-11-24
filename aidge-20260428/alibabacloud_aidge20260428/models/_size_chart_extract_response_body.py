@@ -14,11 +14,11 @@ class SizeChartExtractResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned if the call is successful.
+        # The error code. This parameter is not returned when the call is successful.
         self.code = code
-        # The size chart extraction result.
+        # The size chart extraction results.
         self.data = data
-        # The error message. This parameter is not returned if the call is successful.
+        # The error message. This parameter is not returned when the call is successful.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -76,7 +76,7 @@ class SizeChartExtractResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The asynchronous task ID, which is used to query the result later.
+        # The ID of the asynchronous task. You can use this ID to query the task results.
         self.task_id = task_id
 
     def validate(self):

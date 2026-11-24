@@ -18,7 +18,7 @@ class ProductHotspotDetectionResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The product hotzone recognition result.
+        # The product hot zone recognition results.
         self.data = data
         # The error message.
         self.message = message
@@ -79,7 +79,7 @@ class ProductHotspotDetectionResponseBodyData(DaraModel):
         products: List[main_models.ProductHotspotDetectionResponseBodyDataProducts] = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The list of detected products and their bounding boxes.
+        # The list of recognized products and detection boxes.
         self.products = products
         # The usage information.
         self.usage_map = usage_map
@@ -125,7 +125,7 @@ class ProductHotspotDetectionResponseBodyDataProducts(DaraModel):
         label: str = None,
         product_id: str = None,
     ):
-        # The bounding boxes of the detected product instances.
+        # The detection boxes for product instances.
         self.boxes = boxes
         # The product name.
         self.label = label
@@ -180,13 +180,13 @@ class ProductHotspotDetectionResponseBodyDataProductsBoxes(DaraModel):
         right: float = None,
         top: float = None,
     ):
-        # The bottom boundary of the bounding box.
+        # The bottom boundary of the detection box.
         self.bottom = bottom
-        # The left boundary of the bounding box.
+        # The left boundary of the detection box.
         self.left = left
-        # The right boundary of the bounding box.
+        # The right boundary of the detection box.
         self.right = right
-        # The top boundary of the bounding box.
+        # The top boundary of the detection box.
         self.top = top
 
     def validate(self):

@@ -1,3 +1,8 @@
+2026-11-24 Version: 6.0.0
+- Support API RealtimeSpeechTranslation.
+- Update API GeneralRephotographyDetection: delete response parameters Body.Data.Result.Grounding.
+
+
 2026-11-16 Version: 5.15.1
 - Update API GenerateProductContent: add request parameters Prompt.
 

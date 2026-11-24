@@ -20,19 +20,29 @@ class ImageRecognitionShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The elements to detect outside the image subject. Valid values: 1 (watermark), 2 (logo), 3 (text), and 4 (text-containing color block). You can specify multiple values. This parameter and ObjectDetectElements cannot be empty at the same time.
+        # Specifies the elements to detect on the non-subject area of the image. Valid values: 1 for watermark, 2 for logo, 3 for text, and 4 for text-containing color block. You can specify multiple element types. This parameter and ObjectDetectElements cannot be empty at the same time.
         self.non_object_detect_elements_shrink = non_object_detect_elements_shrink
-        # The elements to detect on the image subject. Valid values: 1 (watermark), 2 (logo), 3 (text), and 4 (text-containing color block). You can specify multiple values.
+        # Specifies the elements to detect on the image subject. Valid values: 1 for watermark, 2 for logo, 3 for text, and 4 for text-containing color block. You can specify multiple element types.
         self.object_detect_elements_shrink = object_detect_elements_shrink
-        # Specifies whether to return border pixel information. Valid values: 1 (return) and 0 (do not return).
+        # Specifies whether to return border pixel information. Valid values:
+        # - 1: Return border pixel information.
+        # - 0: Do not return border pixel information.
         self.return_border_pixel = return_border_pixel
-        # Specifies whether to return text information. Valid values: 1 (return) and 0 (do not return).
+        # Specifies whether to return text information. Valid values:
+        # - 1: Return text information.
+        # - 0: Do not return text information.
         self.return_character = return_character
-        # Specifies whether to return text attribute information. Valid values: 1 (return) and 0 (do not return).
+        # Specifies whether to return text property information. Valid values:
+        # - 1: Return text property information.
+        # - 0: Do not return text property information.
         self.return_character_prop = return_character_prop
-        # Specifies whether to return the product quantity. Valid values: 1 (return) and 0 (do not return).
+        # Specifies whether to return the product quantity. Valid values:
+        # - 1: Return the product quantity.
+        # - 0: Do not return the product quantity.
         self.return_product_num = return_product_num
-        # Specifies whether to return product attribute information. Valid values: 1 (return) and 0 (do not return).
+        # Specifies whether to return product property information. Valid values:
+        # - 1: Return product property information.
+        # - 0: Do not return product property information.
         self.return_product_prop = return_product_prop
 
     def validate(self):

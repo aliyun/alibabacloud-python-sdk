@@ -10,11 +10,11 @@ class PackageWeightSizeCheckRequest(DaraModel):
         annotated_image_url: str = None,
         raw_image_url: str = None,
     ):
-        # The URL of the image with manual bounding box annotations, which is the original image overlaid with blue or red rectangular bounding box lines. The URL must be publicly accessible. The image must not exceed 4000 × 4000 pixels or 10 MB in size. Supported formats: png, jpeg, and jpg.
+        # The URL of the annotated image, which is the original image overlaid with blue or red rectangular bounding box lines drawn manually. The URL must be publicly accessible. The image size cannot exceed 4000 × 4000 pixels or 10 MB. Supported formats include PNG, JPEG, and JPG.
         # 
         # This parameter is required.
         self.annotated_image_url = annotated_image_url
-        # The URL of the raw image, which is the unannotated photo of the parcel on the scanning platform. The URL must be publicly accessible. The image must not exceed 4000 × 4000 pixels or 10 MB in size. Supported formats: png, jpeg, and jpg.
+        # The URL of the raw image, which is the unannotated photo of the parcel on the scanning platform. The URL must be publicly accessible. The image size cannot exceed 4000 × 4000 pixels or 10 MB. Supported formats include PNG, JPEG, and JPG.
         # 
         # This parameter is required.
         self.raw_image_url = raw_image_url

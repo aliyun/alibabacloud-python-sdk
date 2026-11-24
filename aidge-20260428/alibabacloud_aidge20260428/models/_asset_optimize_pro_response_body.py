@@ -14,11 +14,11 @@ class AssetOptimizeProResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. A value of success is returned for successful calls.
+        # The status code. A value of success indicates a successful call.
         self.code = code
         # The submission result of the asynchronous task, which includes the asynchronous task ID.
         self.data = data
-        # The error message. A value of Success is returned for successful calls.
+        # The error message. A value of Success is returned for a successful call.
         self.message = message
         # The request ID, which is used to identify a unique request.
         self.request_id = request_id

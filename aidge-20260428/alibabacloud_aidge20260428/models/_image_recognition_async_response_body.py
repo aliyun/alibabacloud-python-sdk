@@ -16,13 +16,13 @@ class ImageRecognitionAsyncResponseBody(DaraModel):
     ):
         # The error code. This parameter is not returned for normal calls.
         self.code = code
-        # The returned result struct.
+        # The returned data structure.
         self.data = data
-        # The error message, such as "The parameter contains sensitive information. Try another input."
+        # The error message, such as \\"The parameter contains sensitive information. Try another input.\\"
         self.message = message
-        # The request ID, which is used to identify a unique request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: true (successful) and false (failed).
+        # Indicates whether the call is successful. Valid values: true: Successful. false: Failed.
         self.success = success
 
     def validate(self):

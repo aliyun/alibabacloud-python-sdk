@@ -64,11 +64,11 @@ class UpdateDisplayKnowledgeRequestRecords(DaraModel):
         sku_id: str = None,
         sku_name: str = None,
     ):
-        # The HTTP or HTTPS URL of the product image.
+        # The HTTP(S) URL of the product image.
         self.image_url = image_url
         # The record ID.
         self.record_id = record_id
-        # The SKU ID. If this parameter is not empty, the original value is overwritten.
+        # The SKU ID. If specified, this value overwrites the original value.
         self.sku_id = sku_id
         # The SKU name.
         self.sku_name = sku_name

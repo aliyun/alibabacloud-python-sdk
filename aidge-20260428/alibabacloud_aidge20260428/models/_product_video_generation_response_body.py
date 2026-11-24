@@ -22,7 +22,7 @@ class ProductVideoGenerationResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -78,11 +78,11 @@ class ProductVideoGenerationResponseBodyData(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
-        # The planning route written upon acceptance. Valid values: DIRECT (with script) and AUTO_PLAN (automatic planning).
+        # The planning path written upon acceptance. Valid values: DIRECT (with script) and AUTO_PLAN (automatic planning).
         self.route = route
-        # The current status of the task.
+        # The current status.
         self.status = status
-        # The task ID of the service.
+        # The task ID of this service.
         self.task_id = task_id
 
     def validate(self):

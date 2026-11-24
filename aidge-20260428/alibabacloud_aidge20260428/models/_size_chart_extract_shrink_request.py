@@ -11,13 +11,13 @@ class SizeChartExtractShrinkRequest(DaraModel):
         image_url: str = None,
         language_model: str = None,
     ):
-        # The list of column names (such as Size, Bust, and Length).
+        # The list of column names, such as Size, Bust, and Length.
         self.column_name_list_shrink = column_name_list_shrink
-        # The URL of the size chart image to extract.
+        # The URL of the image from which the size chart is extracted.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The language model (such as en and cn).
+        # The language model, such as en and cn.
         self.language_model = language_model
 
     def validate(self):

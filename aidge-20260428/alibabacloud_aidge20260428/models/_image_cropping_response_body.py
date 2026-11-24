@@ -24,7 +24,9 @@ class ImageCroppingResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
+        # Indicates whether the call was successful. Valid values:
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):

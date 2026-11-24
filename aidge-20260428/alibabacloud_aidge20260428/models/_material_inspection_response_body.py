@@ -123,9 +123,9 @@ class MaterialInspectionResponseBodyDataResult(DaraModel):
         steps: List[main_models.MaterialInspectionResponseBodyDataResultSteps] = None,
         type: str = None,
     ):
-        # The natural language summary, such as \\"1 rule: 1 PASS, all detection items are compliant\\".
+        # The natural language summary, such as "1 rule: 1 PASS, all detection items are compliant".
         self.evidence = evidence
-        # The overall judgment. Valid values: PASS and FAIL.
+        # The overall judgment. Valid values: PASS, FAIL.
         self.overall_result = overall_result
         # The request ID returned as-is.
         self.req_id = req_id
@@ -192,7 +192,7 @@ class MaterialInspectionResponseBodyDataResultSteps(DaraModel):
         result: str = None,
         step_id: str = None,
     ):
-        # The judgment result. Valid values: PASS, FAIL, and UNABLE_TO_JUDGE.
+        # The judgment result. Valid values: PASS, FAIL, UNABLE_TO_JUDGE.
         self.result = result
         # The step ID.
         self.step_id = step_id

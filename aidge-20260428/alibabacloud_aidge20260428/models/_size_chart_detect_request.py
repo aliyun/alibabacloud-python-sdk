@@ -10,7 +10,7 @@ class SizeChartDetectRequest(DaraModel):
         image_url: str = None,
         threshold: float = None,
     ):
-        # The URL of the image to detect.
+        # The URL of the image to be detected.
         # 
         # This parameter is required.
         self.image_url = image_url

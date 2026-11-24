@@ -16,15 +16,15 @@ class VideoGenerationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. success indicates a successful call, and failed indicates a failed call.
+        # The response code. This parameter is not returned for successful calls. A value of success indicates a successful call, and a value of failed indicates a failed call.
         self.code = code
         # The struct information of the returned result.
         self.data = data
-        # The returned message. An error message is returned when the call fails.
+        # The return message. This parameter is not returned for successful calls. An error message is returned when the call fails.
         self.message = message
         # The request ID, which is used to identify a unique request call.
         self.request_id = request_id
-        # Indicates whether the call is successful. true indicates success, and false indicates failure.
+        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):

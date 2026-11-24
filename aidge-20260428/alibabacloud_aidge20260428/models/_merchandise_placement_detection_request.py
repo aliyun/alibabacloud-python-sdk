@@ -13,15 +13,15 @@ class MerchandisePlacementDetectionRequest(DaraModel):
         rule: str = None,
         type: str = None,
     ):
-        # Specifies the ID of a custom API. Pass this parameter if you need to specify a custom version of the API. If you created a custom API during the trial phase, you can query the ApiId of the corresponding feature in the product console by choosing Intelligent Inspection > API Management > My APIs.
+        # The ID of the custom API. Pass this parameter if you need to specify a custom version of the API. If you created a custom API during the trial phase, you can query the ApiId of the corresponding feature in the product console by choosing Intelligent Inspection > API Management > My APIs.
         self.api_id = api_id
         # The URL of the original shelf or floor display image to be recognized. The URL must be accessible over the Internet or from OSS.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The ID of the customer-specific SKU vector database. This parameter determines which database is used for retrieval. The database must be created through the database creation process in advance.
+        # The ID of the customer-specific SKU vector database, which determines the database used for retrieval. The database must be created through the database creation process in advance.
         self.rag_id = rag_id
-        # The custom rule. You can enter a detection prompt, which is passed as the rule input parameter to the workflow. If this parameter is specified, the type parameter is not required, and the independent rule branch is used. If this parameter is left empty, you must specify the type parameter to start detection.
+        # The custom rule. You can enter a detection prompt, which is passed as the `rule` input parameter to the workflow. If this parameter is specified, the `type` parameter is not required and the independent rule branch is used. If this parameter is left empty, you must specify the `type` parameter to start detection.
         self.rule = rule
         # The business type. This parameter is reserved for future routing based on business lines. Currently, only skincare products are supported.
         self.type = type

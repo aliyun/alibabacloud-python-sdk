@@ -25,7 +25,7 @@ class AssetOptimizeLiteRequest(DaraModel):
         # 
         # This parameter is required.
         self.need_trans = need_trans
-        # The product URL.
+        # The product link URL.
         # 
         # This parameter is required.
         self.product_url = product_url

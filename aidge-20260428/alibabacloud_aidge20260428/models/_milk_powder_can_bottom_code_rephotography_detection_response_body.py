@@ -121,9 +121,9 @@ class MilkPowderCanBottomCodeRephotographyDetectionResponseBodyDataResult(DaraMo
     ):
         # The localization information.
         self.grounding = grounding
-        # Indicates whether the image is recaptured.
+        # Indicates whether the image is a recapture.
         self.is_fake = is_fake
-        # The detection type, which is fixed to canBottom.
+        # The detection type. Fixed to canBottom.
         self.type = type
 
     def validate(self):
@@ -214,7 +214,7 @@ class MilkPowderCanBottomCodeRephotographyDetectionResponseBodyDataResultGroundi
         label: str = None,
         text: str = None,
     ):
-        # The bounding box coordinates in the format of `[top-left x, top-left y, bottom-right x, bottom-right y]`. The value range is 0 to 1000. The left coordinate is less than the right coordinate, and the top coordinate is less than the bottom coordinate.
+        # The bounding box coordinates in the format of `[top-left x, top-left y, bottom-right x, bottom-right y]`. The values range from 0 to 1000. The left coordinate is less than the right coordinate, and the top coordinate is less than the bottom coordinate.
         self.bbox_2d = bbox_2d
         # The target category. For enumerations, see the following table.
         self.label = label

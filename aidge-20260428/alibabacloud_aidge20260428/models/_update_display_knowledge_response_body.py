@@ -18,13 +18,13 @@ class UpdateDisplayKnowledgeResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The modification result of the display knowledge base content.
+        # The content modification result of the display knowledge base.
         self.data = data
-        # The response message or failure description.
+        # The returned message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -99,13 +99,13 @@ class UpdateDisplayKnowledgeResponseBodyData(DaraModel):
         self.knowledge_base_status = knowledge_base_status
         # The knowledge base ID.
         self.rag_id = rag_id
-        # The processing results for each record.
+        # The processing result of each record.
         self.results = results
-        # Indicates whether the business processing was successful.
+        # Indicates whether the business processing is successful.
         self.success = success
-        # The asynchronous task ID. This parameter is empty for synchronous API operations.
+        # The asynchronous task ID. This field is empty for synchronous API operations.
         self.task_id = task_id
-        # The usage information. This parameter is empty for free API operations.
+        # The usage information. This field is empty for free API operations.
         self.usage_map = usage_map
 
     def validate(self):
@@ -205,7 +205,7 @@ class UpdateDisplayKnowledgeResponseBodyDataResults(DaraModel):
         self.error_code = error_code
         # The reason for the failure.
         self.error_message = error_message
-        # The index of the original request array.
+        # The index in the original request array.
         self.index = index
         # The record ID.
         self.record_id = record_id
@@ -213,7 +213,7 @@ class UpdateDisplayKnowledgeResponseBodyDataResults(DaraModel):
         self.sku_id = sku_id
         # The record status.
         self.status = status
-        # Indicates whether the record was accepted.
+        # Indicates whether the record is accepted.
         self.success = success
 
     def validate(self):

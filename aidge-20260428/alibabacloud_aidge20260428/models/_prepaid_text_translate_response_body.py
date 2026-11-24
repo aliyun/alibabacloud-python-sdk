@@ -16,13 +16,13 @@ class PrepaidTextTranslateResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. If the call is successful, success is returned.
+        # The response code. success is returned for successful calls.
         self.code = code
         # The translation result data, which includes the translation list and usage information.
         self.data = data
-        # The error message. If the call is successful, Success is returned. If an exception occurs, a specific error message is returned, such as "The parameter contains sensitive information. Try another input".
+        # The error message. Success is returned for successful calls. If an exception occurs, a specific error message is returned, such as \\"The parameter contains sensitive information. Try another input.\\"
         self.message = message
-        # The ID of the request, which is used to identify a unique API call.
+        # The ID of the request, which is used to identify a unique request call.
         self.request_id = request_id
         # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success

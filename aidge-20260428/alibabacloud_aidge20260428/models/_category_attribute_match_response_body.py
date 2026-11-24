@@ -16,11 +16,11 @@ class CategoryAttributeMatchResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The error code. This parameter is not returned when the call is successful.
+        # The error code. This parameter is not returned for successful calls.
         self.code = code
         # The returned result.
         self.data = data
-        # The error message. This parameter is not returned when the call is successful.
+        # The error message. This parameter is not returned for successful calls.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -230,9 +230,9 @@ class CategoryAttributeMatchResponseBodyDataAttributes(DaraModel):
         self.name_en = name_en
         # The description of the matching reason.
         self.reason = reason
-        # The list of selected attribute value texts, such as ["iOS","Android"].
+        # The list of selected attribute value texts, such as ["iOS","Android"\\].
         self.selected_values = selected_values
-        # The list of selected attribute value IDs, such as [30127,30128].
+        # The list of selected attribute value IDs, such as [30127,30128\\].
         self.selected_vids = selected_vids
 
     def validate(self):

@@ -16,9 +16,9 @@ class DiduiAreaDeductionShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.products_shrink = products_shrink
-        # The ID of the customer\\"s dedicated SKU vector database, which determines the database used for retrieval. The database must be created through the database creation process in advance.
+        # The ID of the customer-specific SKU vector database, which determines the database used for retrieval. The database must be created through the database creation process in advance.
         self.rag_id = rag_id
-        # The optional business request ID, used for end-to-end Tracing Analysis.
+        # The optional business request ID, which is used for Tracing Analysis.
         self.req_id = req_id
         # The HTTPS URL of the overall floor display image.
         # 

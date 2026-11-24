@@ -14,7 +14,7 @@ class ImageUpscaleResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code, such as success.
+        # The status code, such as "success".
         self.code = code
         # The returned result struct.
         self.data = data
@@ -22,7 +22,7 @@ class ImageUpscaleResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the API call is successful. Valid values: true and false.
+        # Indicates whether the call was successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -81,17 +81,17 @@ class ImageUpscaleResponseBodyData(DaraModel):
         task_id: str = None,
         usage_map: main_models.ImageUpscaleResponseBodyDataUsageMap = None,
     ):
-        # The high-definition upscaling result data.
+        # The upscaling result data.
         self.data = data
-        # The error code returned when the request fails, such as InvalidParameter or DownstreamUnavailable.
+        # The error code returned when the operation fails, such as InvalidParameter or DownstreamUnavailable.
         self.error_code = error_code
-        # The error message returned when the request fails.
+        # The error message returned when the operation fails.
         self.error_message = error_message
-        # Indicates whether the request is successful. Valid values: true and false.
+        # Indicates whether the operation was successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
         # The ID of the downstream task. This parameter is left empty for synchronous API operations.
         self.task_id = task_id
-        # The usage information.
+        # The usage information. The key is the billing dimension name.
         self.usage_map = usage_map
 
     def validate(self):
@@ -186,7 +186,7 @@ class ImageUpscaleResponseBodyDataData(DaraModel):
     ):
         # The actual height of the generated image.
         self.image_height = image_height
-        # The result information of the upscaled image.
+        # The URL of the upscaled single image.
         self.image_url = image_url
         # The actual width of the generated image.
         self.image_width = image_width

@@ -18,15 +18,15 @@ class ImageMattingResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The image matting result.
+        # The matting result.
         self.data = data
         # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
-        # - true: The call is successful.
-        # - false: The call fails.
+        # - true: Successful.
+        # - false: Failed.
         self.success = success
 
     def validate(self):
@@ -85,17 +85,17 @@ class ImageMattingResponseBodyData(DaraModel):
         usage_map: Dict[str, int] = None,
         width: int = None,
     ):
-        # The height of the result image. Unit: pixels.
+        # The height of the result image, in pixels.
         self.height = height
-        # The URL of the result image.
+        # The URL of the matting result image.
         self.image_url = image_url
         # The matting quality score.
         self.score = score
-        # The returned layer information. This includes the URL of the original image, the URL of the matting result, and the matting area information.
+        # The returned layer information, which includes the original image URL, the matting result URL, and the matting area information.
         self.struct_data = struct_data
         # The usage information.
         self.usage_map = usage_map
-        # The width of the result image. Unit: pixels.
+        # The width of the result image, in pixels.
         self.width = width
 
     def validate(self):

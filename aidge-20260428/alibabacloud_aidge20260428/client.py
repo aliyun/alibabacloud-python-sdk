@@ -9,6 +9,7 @@ from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
+from alibabacloud_tea_openapi.websocket_utils import Client as WebSocketUtilsClient
 from darabonba.core import DaraCore as DaraCore
 from darabonba.runtime import RuntimeOptions
 
@@ -4053,6 +4054,70 @@ class Client(OpenApiClient):
     ) -> main_models.QueryDisplayKnowledgeResponse:
         runtime = RuntimeOptions()
         return await self.query_display_knowledge_with_options_async(request, runtime)
+
+    def realtime_speech_translation_with_options(
+        self,
+        request: main_models.RealtimeSpeechTranslationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RealtimeSpeechTranslationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'RealtimeSpeechTranslation',
+            version = '2026-04-28',
+            protocol = 'wss',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json',
+            websocket_sub_protocol = 'general'
+        )
+        res = main_models.RealtimeSpeechTranslationResponse()
+        tmp = self.call_api(params, req, runtime)
+        if not DaraCore.is_null(tmp.get('webSocketClient')):
+            res.web_socket_client = WebSocketUtilsClient.create_web_socket_client(tmp.get('webSocketClient'))
+        return res
+
+    async def realtime_speech_translation_with_options_async(
+        self,
+        request: main_models.RealtimeSpeechTranslationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RealtimeSpeechTranslationResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'RealtimeSpeechTranslation',
+            version = '2026-04-28',
+            protocol = 'wss',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json',
+            websocket_sub_protocol = 'general'
+        )
+        res = main_models.RealtimeSpeechTranslationResponse()
+        tmp = await self.call_api_async(params, req, runtime)
+        if not DaraCore.is_null(tmp.get('webSocketClient')):
+            res.web_socket_client = WebSocketUtilsClient.create_web_socket_client(tmp.get('webSocketClient'))
+        return res
+
+    def realtime_speech_translation(
+        self,
+        request: main_models.RealtimeSpeechTranslationRequest,
+    ) -> main_models.RealtimeSpeechTranslationResponse:
+        runtime = RuntimeOptions()
+        return self.realtime_speech_translation_with_options(request, runtime)
+
+    async def realtime_speech_translation_async(
+        self,
+        request: main_models.RealtimeSpeechTranslationRequest,
+    ) -> main_models.RealtimeSpeechTranslationResponse:
+        runtime = RuntimeOptions()
+        return await self.realtime_speech_translation_with_options_async(request, runtime)
 
     def size_chart_detect_with_options(
         self,

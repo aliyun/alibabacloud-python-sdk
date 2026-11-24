@@ -16,18 +16,18 @@ class ImageTranslationProAsyncRequest(DaraModel):
         translating_brand_in_the_product: bool = None,
         use_image_editor: bool = None,
     ):
-        # The business order ID of the caller. This ID is recorded when the request is accepted and returned as-is when you query the asynchronous task result.
+        # The business order number of the caller. It is recorded when the request is accepted and returned as-is when you query the asynchronous task result.
         self.biz_id = biz_id
         # The ID of the intervention glossary. You must create the glossary in the console and provide its ID. If this parameter is left empty, the translation results are not modified.
         self.glossary = glossary
         # • Image URL: The URL must be publicly accessible over the Internet.   
-        # • Formats: PNG, JPEG, JPG, BMP, and WebP.   
+        # • Format: PNG, JPEG, JPG, BMP, and WEBP.   
         # • Pixels: The width and height must not exceed 4,000 pixels.  
         # • File size: The original file size must be less than or equal to 10 MB.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # Specifies whether to translate the text on the image subject. Set this parameter to false to protect the subject information, such as the product name, from being translated. Default value: false.
+        # Specifies whether to translate the text on the product subject in the image. If you set this parameter to false, the subject information, such as the product name, is protected from being translated. Default value: false.
         self.including_product_area = including_product_area
         # The source language code. The value auto is supported for automatic detection.
         # 
@@ -37,9 +37,9 @@ class ImageTranslationProAsyncRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_language = target_language
-        # Specifies whether to translate brand names in the image. Default value: false, which indicates that brand names are not translated.
+        # Specifies whether to translate the brand names in the image. Default value: false, which indicates that brand names are not translated.
         self.translating_brand_in_the_product = translating_brand_in_the_product
-        # Specifies whether to return layout information such as the position, font, and color of the text. If you set this parameter to true, layer information is returned, which can be used for secondary editing when you integrate an image editor. Default value: true.
+        # Specifies whether to return layout information such as the position, font, and color of the text. If you set this parameter to true, layer information is returned, which allows you to integrate an image editor for secondary editing. Default value: true.
         self.use_image_editor = use_image_editor
 
     def validate(self):

@@ -18,11 +18,13 @@ class VideoTranslationResponseBody(DaraModel):
         self.code = code
         # The submission result of the asynchronous task.
         self.data = data
-        # The message.
+        # The description message.
         self.message = message
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: `true`: The call is successful. `false`: The call fails.
+        # Indicates whether the call is successful. Valid values:
+        # - `true`: The call is successful.
+        # - `false`: The call fails.
         self.success = success
 
     def validate(self):

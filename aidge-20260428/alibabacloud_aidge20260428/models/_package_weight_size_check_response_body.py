@@ -16,13 +16,13 @@ class PackageWeightSizeCheckResponseBody(DaraModel):
     ):
         # The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
         self.code = code
-        # The submit status result data, which contains the asynchronous task ID.
+        # The asynchronous submit result data, which includes the asynchronous task ID.
         self.data = data
-        # The error message. "Success" is returned for successful calls. A specific error message is returned for failed calls.
+        # The error message. Success is returned for successful calls, and specific error information is returned for failed calls.
         self.message = message
-        # The request ID, which uniquely identifies the request.
+        # The request ID, which is used to identify a unique request.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values: true and false.
+        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -76,7 +76,7 @@ class PackageWeightSizeCheckResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The asynchronous task ID used to query the review result later by calling QueryAsyncTaskResult.
+        # The asynchronous task ID, which is used to query the audit result by calling QueryAsyncTaskResult.
         self.task_id = task_id
 
     def validate(self):

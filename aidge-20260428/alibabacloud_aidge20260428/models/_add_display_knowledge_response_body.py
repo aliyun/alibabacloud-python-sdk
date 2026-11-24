@@ -20,7 +20,7 @@ class AddDisplayKnowledgeResponseBody(DaraModel):
         self.code = code
         # The result of adding content to the display knowledge base.
         self.data = data
-        # The response message or failure description.
+        # The returned message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -95,11 +95,11 @@ class AddDisplayKnowledgeResponseBodyData(DaraModel):
         self.error_message = error_message
         # The number of failed records.
         self.failed_count = failed_count
-        # The knowledge base status.
+        # The status of the knowledge base.
         self.knowledge_base_status = knowledge_base_status
         # The knowledge base ID.
         self.rag_id = rag_id
-        # The processing results for each record.
+        # The processing result of each record.
         self.results = results
         # Indicates whether the business processing was successful.
         self.success = success
@@ -205,13 +205,13 @@ class AddDisplayKnowledgeResponseBodyDataResults(DaraModel):
         self.error_code = error_code
         # The reason for the failure.
         self.error_message = error_message
-        # The index in the original request array.
+        # The index of the original request array.
         self.index = index
         # The record ID.
         self.record_id = record_id
         # The effective SKU ID.
         self.sku_id = sku_id
-        # The record status.
+        # The status of the record.
         self.status = status
         # Indicates whether the record was accepted.
         self.success = success

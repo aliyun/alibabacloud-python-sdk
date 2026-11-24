@@ -16,7 +16,7 @@ class ImageTranslationStandardAsyncRequest(DaraModel):
         translating_brand_in_the_product: bool = None,
         use_image_editor: bool = None,
     ):
-        # The business order ID of the caller. It is recorded upon acceptance and returned as-is when querying the asynchronous task result.
+        # The business order ID of the caller. This ID is recorded upon acceptance and returned as-is when querying the asynchronous task result.
         self.biz_id = biz_id
         # The intervention glossary.
         self.glossary = glossary
@@ -34,7 +34,7 @@ class ImageTranslationStandardAsyncRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_language = target_language
-        # Specifies whether to translate the brand text in the product area.
+        # Specifies whether to translate brand text in the product area.
         self.translating_brand_in_the_product = translating_brand_in_the_product
         # Specifies whether to use the image editor protocol.
         self.use_image_editor = use_image_editor

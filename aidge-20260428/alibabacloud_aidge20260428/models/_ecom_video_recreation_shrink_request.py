@@ -10,11 +10,11 @@ class EcomVideoRecreationShrinkRequest(DaraModel):
         input_shrink: str = None,
         output_shrink: str = None,
     ):
-        # The video variation input parameters.
+        # The input parameters for video variation generation.
         # 
         # This parameter is required.
         self.input_shrink = input_shrink
-        # The final video output specifications.
+        # The output specifications for the final video.
         self.output_shrink = output_shrink
 
     def validate(self):

@@ -20,7 +20,7 @@ class StorefrontSceneRecognitionResponseBody(DaraModel):
         self.code = code
         # The scene recognition result.
         self.data = data
-        # The returned message or failure description.
+        # The response message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -119,7 +119,7 @@ class StorefrontSceneRecognitionResponseBodyDataResult(DaraModel):
         grounding: main_models.StorefrontSceneRecognitionResponseBodyDataResultGrounding = None,
         scenes: List[str] = None,
     ):
-        # The classification details, which can be an empty array.
+        # The classification details. This can be an empty array.
         self.details = details
         # The localization information.
         self.grounding = grounding
@@ -268,7 +268,7 @@ class StorefrontSceneRecognitionResponseBodyDataResultDetails(DaraModel):
     ):
         # The non-empty category name.
         self.clazz = clazz
-        # A finite numerical value. The source document does not specify the value range.
+        # A finite numeric value. The value range is not specified.
         self.confidence = confidence
 
     def validate(self):

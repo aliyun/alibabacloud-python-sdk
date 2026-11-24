@@ -19,7 +19,7 @@ class CategoryMatchRequest(DaraModel):
         # 
         # This parameter is required.
         self.description = description
-        # The product attributes and feature descriptions, such as the material of the product. Enter the product attribute name and attribute value.
+        # The product attributes and feature descriptions, such as the product material. Specify the attribute names and values.
         self.item_spec = item_spec
         # The product SKU title.
         self.sku = sku

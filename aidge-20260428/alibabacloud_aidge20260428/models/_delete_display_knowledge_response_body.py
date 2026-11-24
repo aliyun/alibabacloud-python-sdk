@@ -18,13 +18,13 @@ class DeleteDisplayKnowledgeResponseBody(DaraModel):
     ):
         # The error code.
         self.code = code
-        # The result of deleting content from the display knowledge base.
+        # The deletion result of the display knowledge base content.
         self.data = data
         # The returned message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -96,17 +96,17 @@ class DeleteDisplayKnowledgeResponseBodyData(DaraModel):
         self.error_message = error_message
         # The number of failed records.
         self.failed_count = failed_count
-        # The status of the knowledge base.
+        # The knowledge base status.
         self.knowledge_base_status = knowledge_base_status
         # The knowledge base ID.
         self.rag_id = rag_id
         # The number of visible records after deletion.
         self.remaining_count = remaining_count
-        # The processing result of each record.
+        # The processing results for each record.
         self.results = results
-        # Indicates whether the business processing was successful.
+        # Indicates whether the business processing is successful.
         self.success = success
-        # The ID of the asynchronous task. This parameter is empty for synchronous API operations.
+        # The asynchronous task ID. This parameter is empty for synchronous API operations.
         self.task_id = task_id
         # The usage information. This parameter is empty for free API operations.
         self.usage_map = usage_map
@@ -214,15 +214,15 @@ class DeleteDisplayKnowledgeResponseBodyDataResults(DaraModel):
         self.error_code = error_code
         # The reason for the failure.
         self.error_message = error_message
-        # The index of the item in the original request array.
+        # The index in the original request array.
         self.index = index
         # The record ID.
         self.record_id = record_id
-        # The SKU ID. This parameter is empty in the deletion result.
+        # The SKU ID. This parameter is empty in deletion results.
         self.sku_id = sku_id
-        # The record status. This parameter is empty in the deletion result.
+        # The record status. This parameter is empty in deletion results.
         self.status = status
-        # Indicates whether the operation was successful.
+        # Indicates whether the operation is successful.
         self.success = success
 
     def validate(self):

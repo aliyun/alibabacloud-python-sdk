@@ -76,7 +76,7 @@ class DiduiAreaDeductionProResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the asynchronous task used to query the result by calling QueryAsyncTaskResult.
+        # The ID of the asynchronous task used for querying with QueryAsyncTaskResult.
         self.task_id = task_id
 
     def validate(self):

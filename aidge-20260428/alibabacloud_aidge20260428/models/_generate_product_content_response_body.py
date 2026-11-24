@@ -18,15 +18,13 @@ class GenerateProductContentResponseBody(DaraModel):
     ):
         # The error code. This parameter is not returned for normal calls.
         self.code = code
-        # The processing result. Contains copy data upon success. Returns a fixed value when the business processing fails.
+        # The processing result. If the call is successful, this parameter contains the copy data. If the business processing fails, an empty value is returned.
         self.data = data
         # The error message. This parameter is not returned for normal calls.
         self.message = message
-        # The request ID, used for troubleshooting. It may be empty in extreme exception cases.
+        # The request ID, which is used for troubleshooting. This parameter may be empty in extreme exceptions.
         self.request_id = request_id
-        # Specifies whether the business processing is successful. Valid values:
-        # - true: The output passes the verification.
-        # - false: The business processing fails.
+        # Indicates whether the business processing is successful. Valid values: true (the output passes the verification) and false (the business processing fails).
         self.success = success
 
     def validate(self):
@@ -86,15 +84,15 @@ class GenerateProductContentResponseBodyData(DaraModel):
         text: str = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The actual copy type processed.
+        # The actual copy type that is processed.
         self.content_type = content_type
-        # The total number of characters in data.text, including formatting characters such as spaces, punctuation marks, and line breaks.
+        # The total number of characters in Data.Text, including formatting characters such as spaces, punctuation marks, and line breaks.
         self.length = length
         # The code of the actual output language.
         self.output_language = output_language
-        # Returned only when bullet point processing is successful. The number of characters for each point, corresponding to data.points one by one.
+        # Returned only when bullet points are successfully processed. The number of characters for each bullet point, which corresponds to Data.Points one by one.
         self.point_lengths = point_lengths
-        # Returned only when bullet point processing is successful. The selling point texts arranged in output order.
+        # Returned only when bullet points are successfully processed. The text of the bullet points arranged in the output order.
         self.points = points
         # The final copy. Generated keywords are separated by commas and spaces. Rewritten keywords are separated by spaces. Bullet points are separated by line breaks.
         self.text = text

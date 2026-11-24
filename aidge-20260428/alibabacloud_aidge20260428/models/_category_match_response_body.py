@@ -16,13 +16,13 @@ class CategoryMatchResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. "success" is returned for successful calls.
+        # The status code. Returns "success" for normal calls.
         self.code = code
         # The product category matching result.
         self.data = data
-        # The error message. "Success" is returned for successful calls.
+        # The error message. Returns "Success" for normal calls.
         self.message = message
-        # The request ID, which is used to identify a unique request call.
+        # The request ID, which identifies a unique request.
         self.request_id = request_id
         # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
@@ -92,9 +92,9 @@ class CategoryMatchResponseBodyData(DaraModel):
         self.category_path = category_path
         # The matching confidence score, ranging from 0 to 100.
         self.confidence = confidence
-        # Indicates whether the match is successful.
+        # Indicates whether the matching is successful.
         self.match_successful = match_successful
-        # The matching rationale.
+        # The matching reason.
         self.reason = reason
         # The usage information.
         self.usage_map = usage_map

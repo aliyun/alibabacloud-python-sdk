@@ -18,7 +18,7 @@ class ProductVideoGenerationShrinkRequest(DaraModel):
         self.aspect_ratio = aspect_ratio
         # The duration of the video in seconds. Default value: 15. If no script is provided, the value must be an integer from 5 to 15. If a script is provided, the value must be an integer from 5 to 30. A value of 15.0 is treated as 15.
         self.duration = duration
-        # The public image URLs. At least one image URL is required. Each URL must start with http:// or https:// after leading and trailing whitespaces are removed.
+        # The public URLs of the product images. At least one image is required. After leading and trailing whitespaces are removed, each URL must start with http:// or https://.
         # 
         # This parameter is required.
         self.product_images_shrink = product_images_shrink

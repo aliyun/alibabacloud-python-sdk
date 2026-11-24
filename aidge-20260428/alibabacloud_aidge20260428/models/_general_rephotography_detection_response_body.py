@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict
 
 from alibabacloud_aidge20260428 import models as main_models
 from darabonba.model import DaraModel
@@ -24,7 +24,7 @@ class GeneralRephotographyDetectionResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful.
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -115,29 +115,22 @@ class GeneralRephotographyDetectionResponseBodyData(DaraModel):
 class GeneralRephotographyDetectionResponseBodyDataResult(DaraModel):
     def __init__(
         self,
-        grounding: main_models.GeneralRephotographyDetectionResponseBodyDataResultGrounding = None,
         is_fake: bool = None,
         type: str = None,
     ):
-        # The supplementary element localization result.
-        self.grounding = grounding
         # Indicates whether the image is recaptured.
         self.is_fake = is_fake
-        # The detection type. Fixed to general.
+        # Fixed to general.
         self.type = type
 
     def validate(self):
-        if self.grounding:
-            self.grounding.validate()
+        pass
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.grounding is not None:
-            result['Grounding'] = self.grounding.to_map()
-
         if self.is_fake is not None:
             result['IsFake'] = self.is_fake
 
@@ -148,108 +141,11 @@ class GeneralRephotographyDetectionResponseBodyDataResult(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Grounding') is not None:
-            temp_model = main_models.GeneralRephotographyDetectionResponseBodyDataResultGrounding()
-            self.grounding = temp_model.from_map(m.get('Grounding'))
-
         if m.get('IsFake') is not None:
             self.is_fake = m.get('IsFake')
 
         if m.get('Type') is not None:
             self.type = m.get('Type')
-
-        return self
-
-class GeneralRephotographyDetectionResponseBodyDataResultGrounding(DaraModel):
-    def __init__(
-        self,
-        coverage: str = None,
-        regions: List[main_models.GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions] = None,
-    ):
-        # The coverage. Valid values:
-        # - `complete`: The relevant visible targets are complete.
-        # - `partial`: Only some targets are valid or recognizable.
-        self.coverage = coverage
-        # The target array. A maximum of 12 items are returned. This can be empty if no relevant targets are found.
-        self.regions = regions
-
-    def validate(self):
-        if self.regions:
-            for v1 in self.regions:
-                 if v1:
-                    v1.validate()
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.coverage is not None:
-            result['Coverage'] = self.coverage
-
-        result['Regions'] = []
-        if self.regions is not None:
-            for k1 in self.regions:
-                result['Regions'].append(k1.to_map() if k1 else None)
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Coverage') is not None:
-            self.coverage = m.get('Coverage')
-
-        self.regions = []
-        if m.get('Regions') is not None:
-            for k1 in m.get('Regions'):
-                temp_model = main_models.GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions()
-                self.regions.append(temp_model.from_map(k1))
-
-        return self
-
-class GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions(DaraModel):
-    def __init__(
-        self,
-        bbox_2d: List[float] = None,
-        label: str = None,
-        text: str = None,
-    ):
-        # The bounding box coordinates.
-        self.bbox_2d = bbox_2d
-        # The target category. For valid values, see the following table.
-        self.label = label
-        # The confirmed short name or text of up to 24 characters. This is an empty string if the text is unclear.
-        self.text = text
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.bbox_2d is not None:
-            result['Bbox2d'] = self.bbox_2d
-
-        if self.label is not None:
-            result['Label'] = self.label
-
-        if self.text is not None:
-            result['Text'] = self.text
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Bbox2d') is not None:
-            self.bbox_2d = m.get('Bbox2d')
-
-        if m.get('Label') is not None:
-            self.label = m.get('Label')
-
-        if m.get('Text') is not None:
-            self.text = m.get('Text')
 
         return self
 

@@ -152,6 +152,9 @@ from ._query_display_knowledge_request import QueryDisplayKnowledgeRequest
 from ._query_display_knowledge_shrink_request import QueryDisplayKnowledgeShrinkRequest
 from ._query_display_knowledge_response_body import QueryDisplayKnowledgeResponseBody
 from ._query_display_knowledge_response import QueryDisplayKnowledgeResponse
+from ._realtime_speech_translation_request import RealtimeSpeechTranslationRequest
+from ._realtime_speech_translation_response_body import RealtimeSpeechTranslationResponseBody
+from ._realtime_speech_translation_response import RealtimeSpeechTranslationResponse
 from ._size_chart_detect_request import SizeChartDetectRequest
 from ._size_chart_detect_response_body import SizeChartDetectResponseBody
 from ._size_chart_detect_response import SizeChartDetectResponse
@@ -226,8 +229,6 @@ from ._ecom_video_recreation_request import EcomVideoRecreationRequestInputProdu
 from ._ecom_video_recreation_request import EcomVideoRecreationRequestInput
 from ._ecom_video_recreation_request import EcomVideoRecreationRequestOutput
 from ._ecom_video_recreation_response_body import EcomVideoRecreationResponseBodyData
-from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions
-from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyDataResultGrounding
 from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyDataResult
 from ._general_rephotography_detection_response_body import GeneralRephotographyDetectionResponseBodyData
 from ._generate_product_content_response_body import GenerateProductContentResponseBodyData
@@ -488,6 +489,9 @@ __all__ = [
     QueryDisplayKnowledgeShrinkRequest,
     QueryDisplayKnowledgeResponseBody,
     QueryDisplayKnowledgeResponse,
+    RealtimeSpeechTranslationRequest,
+    RealtimeSpeechTranslationResponseBody,
+    RealtimeSpeechTranslationResponse,
     SizeChartDetectRequest,
     SizeChartDetectResponseBody,
     SizeChartDetectResponse,
@@ -562,8 +566,6 @@ __all__ = [
     EcomVideoRecreationRequestInput,
     EcomVideoRecreationRequestOutput,
     EcomVideoRecreationResponseBodyData,
-    GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions,
-    GeneralRephotographyDetectionResponseBodyDataResultGrounding,
     GeneralRephotographyDetectionResponseBodyDataResult,
     GeneralRephotographyDetectionResponseBodyData,
     GenerateProductContentResponseBodyData,

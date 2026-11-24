@@ -20,7 +20,7 @@ class MilkPowderCartonCodeRephotographyDetectionResponseBody(DaraModel):
         self.code = code
         # The recapture detection result.
         self.data = data
-        # The returned message or failure description.
+        # The response message or failure description.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -81,7 +81,7 @@ class MilkPowderCartonCodeRephotographyDetectionResponseBodyData(DaraModel):
     ):
         # The details of the recapture detection result.
         self.result = result
-        # The usage information. If the call is successful, the value is `{"ProcessingCount":1}`. If the call fails, the value is an empty object.
+        # The usage information. It is `{"ProcessingCount":1}` if the call is successful, or an empty object if the call fails.
         self.usage_map = usage_map
 
     def validate(self):
@@ -122,11 +122,11 @@ class MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResult(DaraModel
         score: float = None,
         type: str = None,
     ):
-        # The supplementary element grounding result.
+        # The supplementary element localization result.
         self.grounding = grounding
-        # Indicates whether the image is recaptured.
+        # Indicates whether the image is a recapture.
         self.is_fake = is_fake
-        # Indicates whether the image is suspected to be recaptured.
+        # Indicates whether the image is suspected to be a recapture.
         self.is_suspect = is_suspect
         # The recapture status. Valid values:
         # - `0`: Non-recapture.
@@ -135,7 +135,7 @@ class MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResult(DaraModel
         self.photo_status = photo_status
         # The recapture confidence score.
         self.score = score
-        # Fixed to `boxCode`.
+        # The detection type. Fixed to `boxCode`.
         self.type = type
 
     def validate(self):
@@ -200,7 +200,7 @@ class MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResultGrounding(
         # - `complete`: The relevant visible targets are complete.
         # - `partial`: Only some targets are valid or recognizable.
         self.coverage = coverage
-        # The target array, containing up to 12 items. This array can be empty if no relevant targets are found.
+        # The target array. It contains up to 12 items. It can be empty if no relevant targets are found.
         self.regions = regions
 
     def validate(self):
@@ -246,12 +246,12 @@ class MilkPowderCartonCodeRephotographyDetectionResponseBodyDataResultGroundingR
     ):
         # The bounding box coordinates.
         # - `[top-left x, top-left y, bottom-right x, bottom-right y]`
-        # - Value range: 0 to 1000.
-        # - The left value must be less than the right value, and the top value must be less than the bottom value.
+        # - Value range: 0–1000.
+        # - Left < right, top < bottom.
         self.bbox_2d = bbox_2d
         # The target category. For valid values, see the following table.
         self.label = label
-        # The confirmed short name or text, up to 24 characters. If the text is unclear, an empty string is returned.
+        # The recognized text. It contains up to 24 characters of a confirmed short name or text. It is an empty string if the text is unclear.
         self.text = text
 
     def validate(self):

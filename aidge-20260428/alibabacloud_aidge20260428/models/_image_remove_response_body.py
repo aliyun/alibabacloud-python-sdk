@@ -18,13 +18,13 @@ class ImageRemoveResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The intelligent removal result.
+        # The object removal result.
         self.data = data
         # The error message.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the call is successful.
         self.success = success
 
     def validate(self):
@@ -83,7 +83,7 @@ class ImageRemoveResponseBodyData(DaraModel):
     ):
         # The height of the result image, in pixels.
         self.height = height
-        # The URL of the result image after removal.
+        # The URL of the result image.
         self.image_url = image_url
         # The usage information.
         self.usage_map = usage_map

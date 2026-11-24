@@ -15,7 +15,7 @@ class MaterialInspectionRequest(DaraModel):
     ):
         # apiId
         self.api_id = api_id
-        # The URL of the reference image. This parameter is optional. If it is not empty, the multi-image difference comparison mode is used.
+        # The URL of the reference image. This parameter is optional. If it is not empty, multi-image difference comparison is used.
         self.image_refer = image_refer
         # The URL of the target image.
         # 

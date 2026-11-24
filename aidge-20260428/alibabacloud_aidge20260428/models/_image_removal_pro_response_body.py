@@ -18,7 +18,7 @@ class ImageRemovalProResponseBody(DaraModel):
     ):
         # The error code. This parameter is not returned when the call is successful.
         self.code = code
-        # The result of the intelligent object removal Pro operation.
+        # The result of Intelligent removal Pro.
         self.data = data
         # The error message. This parameter is not returned when the call is successful.
         self.message = message
@@ -82,7 +82,7 @@ class ImageRemovalProResponseBodyData(DaraModel):
         task_id: str = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The URL of the result image. This parameter is returned in synchronous mode.
+        # The URL of the processed image. This parameter is returned in synchronous mode.
         self.image_url = image_url
         # The ID of the asynchronous task. This parameter is returned in asynchronous mode and is used to query the task result.
         self.task_id = task_id

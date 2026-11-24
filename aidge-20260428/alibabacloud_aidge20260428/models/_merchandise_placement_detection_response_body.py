@@ -82,9 +82,9 @@ class MerchandisePlacementDetectionResponseBodyData(DaraModel):
         data: List[main_models.MerchandisePlacementDetectionResponseBodyDataData] = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The number of valid detection boxes.
+        # The number of valid bounding boxes.
         self.box_count = box_count
-        # The list of retrieval details for each detection box.
+        # The list of retrieval details for each bounding box.
         self.data = data
         # The usage information. The key is the usage metric name and the value is the count.
         self.usage_map = usage_map
@@ -138,15 +138,15 @@ class MerchandisePlacementDetectionResponseBodyDataData(DaraModel):
         top_1: main_models.MerchandisePlacementDetectionResponseBodyDataDataTop1 = None,
         topk: List[main_models.MerchandisePlacementDetectionResponseBodyDataDataTopk] = None,
     ):
-        # The coordinates of the detection box in the [x1,y1,x2,y2] format.
+        # The coordinates of the bounding box in the [x1,y1,x2,y2] format.
         self.bbox = bbox
-        # The reason for the failure of the detection box. This parameter is null if the detection is successful.
+        # The reason why the bounding box processing failed. This parameter is null if the processing is successful.
         self.error = error
-        # The index of the detection box.
+        # The index of the bounding box.
         self.idx = idx
-        # The top-1 retrieved product for the detection box.
+        # The top-1 retrieved product for the bounding box.
         self.top_1 = top_1
-        # The list of top-K retrieved products for the detection box.
+        # The list of top-K retrieved products for the bounding box.
         self.topk = topk
 
     def validate(self):
@@ -214,7 +214,7 @@ class MerchandisePlacementDetectionResponseBodyDataDataTopk(DaraModel):
     ):
         # The retrieval rank.
         self.rank = rank
-        # The similarity score. Valid values: 0 to 1.
+        # The similarity score, which ranges from 0 to 1.
         self.score = score
         # The ID of the retrieved product.
         self.sku_id = sku_id
@@ -266,7 +266,7 @@ class MerchandisePlacementDetectionResponseBodyDataDataTop1(DaraModel):
         sku_id: str = None,
         sku_name: str = None,
     ):
-        # The similarity score. Valid values: 0 to 1.
+        # The similarity score, which ranges from 0 to 1.
         self.score = score
         # The ID of the retrieved product.
         self.sku_id = sku_id

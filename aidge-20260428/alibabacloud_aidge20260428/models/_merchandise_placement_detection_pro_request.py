@@ -15,7 +15,7 @@ class MerchandisePlacementDetectionProRequest(DaraModel):
         # 
         # This parameter is required.
         self.image_url = image_url
-        # The detection rule. If this parameter is not empty, it is preferentially used as the model prompt.
+        # The detection rule. If this parameter is not empty, it takes precedence as the model prompt.
         self.rule = rule
         # The product type. If the Rule parameter is empty, you must set this parameter to Genki Forest.
         self.type = type

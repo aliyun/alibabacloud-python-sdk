@@ -76,7 +76,7 @@ class ImageTranslationStandardAsyncResponseBodyData(DaraModel):
         self,
         task_id: str = None,
     ):
-        # The ID of the task used to query the asynchronous task result.
+        # The task ID used to query the asynchronous task result.
         self.task_id = task_id
 
     def validate(self):

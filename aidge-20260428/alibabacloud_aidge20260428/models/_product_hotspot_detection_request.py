@@ -13,11 +13,11 @@ class ProductHotspotDetectionRequest(DaraModel):
         req_id: str = None,
         target_image_url: str = None,
     ):
-        # The HTTPS URLs of reference images that define the SKU whitelist. A maximum of 20 images are supported.
+        # The HTTPS URLs of the reference images that define the SKU whitelist. A maximum of 20 images are supported.
         # 
         # This parameter is required.
         self.reference_image_urls = reference_image_urls
-        # The unique business ID for this single-scene call.
+        # The unique business ID for the single-scene call.
         self.req_id = req_id
         # The HTTPS OSS or CDN URL of the target image to be annotated with bounding boxes.
         # 

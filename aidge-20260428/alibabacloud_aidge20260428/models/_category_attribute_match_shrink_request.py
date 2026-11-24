@@ -36,7 +36,7 @@ class CategoryAttributeMatchShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.source_platform = source_platform
-        # The target platform. Currently, only TEMU is supported.
+        # The target platform for product listing. Currently, only TEMU is supported.
         # 
         # This parameter is required.
         self.target_platform = target_platform

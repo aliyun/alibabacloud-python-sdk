@@ -16,15 +16,15 @@ class LanguageDetectResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code documentation.
+        # The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
         self.code = code
-        # The language identification result data, including the detected language and usage information.
+        # The language detection result data, which includes the detected language and usage information.
         self.data = data
-        # The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call, such as "The parameters contain sensitive information. Try other input."
+        # The error message. "Success" is returned for normal calls. For exceptions, a specific error message is returned, such as "The parameter contains sensitive information. Try another input."
         self.message = message
-        # The request ID, which uniquely identifies the request.
+        # The request ID, which is used to uniquely identify a request.
         self.request_id = request_id
-        # Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+        # Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
         self.success = success
 
     def validate(self):
@@ -79,9 +79,9 @@ class LanguageDetectResponseBodyData(DaraModel):
         detected_language: str = None,
         usage_map: Dict[str, int] = None,
     ):
-        # The detected language code.
+        # The code of the detected language.
         self.detected_language = detected_language
-        # The usage information, including the number of input characters.
+        # The usage information, which includes the number of input characters.
         self.usage_map = usage_map
 
     def validate(self):

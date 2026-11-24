@@ -18,18 +18,18 @@ class ImageTranslationProRequest(DaraModel):
     ):
         # Specifies whether to use the asynchronous mode. Default value: false, which indicates the synchronous mode. If you set this parameter to true, the API immediately returns a TaskId, and you must call the query translation result API to obtain the final result.
         self.async_ = async_
-        # The ID of the intervention glossary. This parameter is optional. You must create the glossary in the console and provide its ID. If the provided intervention glossary ID is empty, the translation results are not modified.
+        # The ID of the intervention glossary. This parameter is optional. You must create the glossary in the console and provide its ID. If the intervention glossary ID is empty, the translation results are not modified.
         self.glossary = glossary
         # The URL of the original image. This parameter is required.  
         # Image requirements:  
-        # • Image URL: The image must be accessible over the Internet.   
-        # • Format: PNG, JPEG, JPG, BMP, or WebP.   
-        # • Pixels: The width and height must not exceed 4,000 pixels.  
-        # • File size: The original file size must not exceed 10 MB.
+        # - Image URL: Must be publicly accessible.   
+        # - Formats: PNG, JPEG, JPG, BMP, and WebP.   
+        # - Pixels: Both width and height must not exceed 4,000 pixels.  
+        # - File size: The original file must be less than or equal to 10 MB.
         # 
         # This parameter is required.
         self.image_url = image_url
-        # Specifies whether to translate the text on the image subject. This parameter is optional. Default value: false. This helps you protect information and prevents embedded information such as product names from being translated.
+        # Specifies whether to translate the text on the product subject in the image. Default value: false. This helps protect information and prevents embedded information such as product names from being translated.
         self.including_product_area = including_product_area
         # The source language code. This parameter is required.   
         # <props="china">For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).      
@@ -43,7 +43,7 @@ class ImageTranslationProRequest(DaraModel):
         # 
         # This parameter is required.
         self.target_language = target_language
-        # Specifies whether to translate brand names in the image. This parameter is optional. Default value: false. This helps you protect brand name information from being translated.
+        # Specifies whether to translate brand names in the image. Default value: false. This helps protect brand name information from being translated.
         self.translating_brand_in_the_product = translating_brand_in_the_product
         # Specifies whether to return layout information such as the position, font, and color of the text. If you set this parameter to true, layer information is returned, which can be used for secondary editing when you integrate an image editor. Default value: true.
         self.use_image_editor = use_image_editor
