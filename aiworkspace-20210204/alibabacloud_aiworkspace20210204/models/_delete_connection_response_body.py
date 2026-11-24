@@ -9,7 +9,7 @@ class DeleteConnectionResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The unique ID of the request.
+        # The unique request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -14,21 +14,21 @@ class ListPromptsRequest(DaraModel):
         sort_by: str = None,
         workspace_id: str = None,
     ):
-        # The prompt template framework type.
+        # The framework type of the prompt template.
         self.framework_type = framework_type
-        # The sorting order for the specified field during paging. Default value: ASC.
-        # - ASC: ascending order.
-        # - DESC: descending order.
+        # The sorting order for the specified field during paging in a paged query. Default value: ASC. Valid values:
+        # - ASC: Ascending order.
+        # - DESC: Descending order.
         self.order = order
-        # The page number, starting from 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The page size. Default value: 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The field used for sorting. Valid values:
-        # - Name: the run name.
-        # - GmtCreateTime (default): the run creation time.
+        # The name of the field used for sorting. Valid values:
+        # - Name: the name of the Run
+        # - GmtCreateTime: the creation time of the Run (default)
         self.sort_by = sort_by
-        # The workspace ID. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

@@ -44,96 +44,95 @@ class ListDatasetFileMetasRequest(DaraModel):
         # 
         # This parameter is required.
         self.dataset_version = dataset_version
-        # The start time of the file update time range for the query. The value is a UTC timestamp in ISO 8601 format.
+        # The end time of the file update time range for the query. Specify the time in the ISO 8601 standard in UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.end_file_update_time = end_file_update_time
-        # The end time of the tag last update time range for the query. The value is a UTC timestamp in ISO 8601 format.
+        # The end time of the tag last update time range for the query. Specify the time in the ISO 8601 standard in UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.end_tag_update_time = end_tag_update_time
-        # The maximum number of results to return per request when using NextToken-based pagination. Valid values: 1 to 100. Default value: 10.
+        # The maximum number of results to return per query when NextToken is used. Valid values: 1 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token.
+        # The pagination cursor.
         # > 
-        # > If this parameter is not specified, the first page of data is returned. If a value is returned for this parameter, more pages are available. Pass the returned NextToken value as a request parameter to retrieve the next page, until no NextToken value is returned, which indicates that all data has been retrieved.
+        # > If this parameter is not specified, the first page of data is returned. If this parameter has a return value, it indicates that there is a next page. You can use the returned NextToken as a parameter to request the next page of data until Null is returned, which indicates that all data is retrieved.
         self.next_token = next_token
-        # The sorting order for the specified sorting field in paging queries. Used together with SortBy. Default value: DESC. Valid values:
-        # - ASC: ascending order.
-        # - DESC: descending order.
+        # The ascending or descending order for the specified sorting field in a paged query. This parameter is used together with SortBy during paging. Default value: DESC. Valid values:
+        # - ASC: Ascending order.
+        # - DESC: Descending order.
         self.order = order
-        # The number of entries per page. If MaxResults is also specified, MaxResults takes precedence.
-        # > This parameter will be offline soon. Use NextToken and MaxResults to perform paging query operations.
+        # The number of entries per page. If MaxResults is also specified, MaxResults prevails.
+        # > This parameter will soon be offline. We recommend that you use NextToken and MaxResults for paging in paged query operations.
         self.page_size = page_size
-        # The search condition for "include any of the following content types". You can select multiple content types, and the query results need to match only one of them. If this parameter is empty, this condition is not applied. Array elements are separated by commas.
+        # The search condition for "including any of the following file content types". You can select multiple file content types, and the search results only need to meet one of them. If this parameter is empty, this condition is not applied. Separate multiple file content types with commas.
         self.query_content_type_include_any = query_content_type_include_any
-        # The query statement (DSL) is a realm-specific language for expressing complex retrieve conditions. It supports grouping, Boolean logic (AND/OR/NOT), range comparisons (>, >=, <, <=), property existence checks (HAS/NOT HAS), token match (:), and exact match (=), which are suitable for advanced retrieve scenarios.
-        # This parameter is typically used for complex advanced retrieve conditional statements.
-        # <notice>To avoid conflicts, after setting this query statement, do not use it together with other query parameters.</notice>
+        # The query statement (DSL) is a domain-specific language used to express complex search conditions. It supports grouping, Boolean logic (AND/OR/NOT), range comparison (>, >=, <, <=), property existence (HAS/NOT HAS), token matching (:), and exact matching (=), and is suitable for advanced search scenarios.
+        # It is generally used for complex advanced search conditions.
+        # <notice>To avoid conflicts, do not mix this query statement with other query parameters.</notice>
         self.query_expression = query_expression
-        # The file directory search condition. Fuzzy match is supported.
+        # The file directory search condition. Fuzzy search is supported.
         self.query_file_dir = query_file_dir
-        # The file name search condition. Fuzzy match is supported.
+        # The file name search condition. Fuzzy search is supported.
         self.query_file_name = query_file_name
-        # The search condition for "include any of the following file types". You can select multiple file types, and the query results need to match only one of them. If this parameter is empty, this condition is not applied. Array elements are separated by commas.
+        # The search condition for "including any of the following file types". You can select multiple file types, and the search results only need to meet one of them. If this parameter is empty, this condition is not applied. Separate multiple file types with commas.
         self.query_file_type_include_any = query_file_type_include_any
         # The image information for image-to-image search.
-        # * An OSS URL with public network access is supported. Format: oss://{bucket_name}/{object_path}, where bucket_name is the bucket name and object_path is the file path in the bucket.
+        # * Supports passing an OSS URL that allows public network access for the image. Format: oss://{bucket_name}/{object_path}. bucket_name is the bucket name, and object_path is the path of the file in the bucket.
         # > This parameter takes effect only when QueryType is set to VECTOR or MIX.
         self.query_image = query_image
-        # The search condition for "exclude the following tags". You can select multiple tags, and the query results must not contain any of them. If this parameter is empty, this condition is not applied.
+        # The search condition for "excluding the following tags". You can select multiple tags, and the search results must not contain these tags. If this parameter is empty, this condition is not applied.
         # > This parameter takes effect only when QueryType is set to TAG or MIX.
         self.query_tags_exclude = query_tags_exclude
-        # The search condition for "include all of the following tags". You can select multiple tags, and the query results must match all of them. If this parameter is empty, this condition is not applied. Array elements are separated by commas.
-        # 
-        # > This parameter takes effect only when QueryType is set to TAG or MIX. When QueryType is set to TAG, the value of QueryText is added to this condition.
+        # The search condition for "including all of the following tags". You can select multiple tags, and the search results must meet all these tags simultaneously. If this parameter is empty, this condition is not applied. Separate multiple tags with commas.
+        # > This parameter takes effect only when QueryType is set to TAG or MIX. When QueryType is set to TAG, QueryText is added to this condition.
         self.query_tags_include_all = query_tags_include_all
-        # The search condition for "include any of the following tags". You can select multiple tags, and the query results need to match only one of them. If this parameter is empty, this condition is not applied. Array elements are separated by commas.
+        # The search condition for "including any of the following tags". You can select multiple tags, and the search results only need to meet one of them. If this parameter is empty, this condition is not applied. Separate multiple tags with commas.
         # > This parameter takes effect only when QueryType is set to TAG or MIX.
         self.query_tags_include_any = query_tags_include_any
-        # The text content to search for.
+        # The text content to search.
         self.query_text = query_text
         # The retrieve type. Valid values:
-        # * MIX: hybrid retrieve (default).
-        # * TAG: label-only retrieve.
+        # * MIX: Hybrid retrieve. This is the default value.
+        # * TAG: Label-only retrieve.
         # * VECTOR: AISearch-only retrieve.
         self.query_type = query_type
-        # The video file information for video-based search.
-        # * A video OSS URL with public network access is supported. Format: oss://{bucket_name}/{object_path}, where bucket_name is the bucket name and object_path is the file path in the bucket.
+        # The video file information for video search.
+        # * Supports passing an OSS URL that allows public network access for the video. Format: oss://{bucket_name}/{object_path}. bucket_name is the bucket name, and object_path is the path of the file in the bucket.
         # > This parameter takes effect only when QueryType is set to VECTOR or MIX.
         self.query_video = query_video
-        # The similarity score threshold. Only results with a score greater than ScoreThreshold are returned.
+        # The similarity score threshold for filtering. Only results with a score greater than ScoreThreshold are returned.
         # > This parameter takes effect only when QueryType is set to VECTOR or MIX.
         self.score_threshold = score_threshold
-        # The sorting field for paging queries. By default, results are sorted by retrieve relevance in descending order. Other valid values:
-        # * FileCreateTime: sorting by file creation time.
-        # * FileUpdateTime: sorting by file last modified time.
+        # The sorting field for paged query. If this parameter is not specified, the results are sorted by retrieve relevance in descending order during paging. Valid values:
+        # * FileCreateTime: Sort by file creation time.
+        # * FileUpdateTime: Sort by file last modification time.
         self.sort_by = sort_by
-        # The end time of the file update time range for the query. The value is a UTC timestamp in ISO 8601 format.
+        # The start time of the file update time range for the query. Specify the time in the ISO 8601 standard in UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_file_update_time = start_file_update_time
-        # The start time of the tag last update time range for the query. The value is a UTC timestamp in ISO 8601 format.
+        # The start time of the tag last update time range for the query. Specify the time in the ISO 8601 standard in UTC.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.start_tag_update_time = start_tag_update_time
         # The metadata status to query. Valid values:
-        # * ACTIVE: queries only non-deleted data (default).
-        # * ALL: queries all data.
-        # * DELETED: queries only logically deleted data.
+        # * ACTIVE: Query only undeleted data. This is the default value.
+        # * ALL: Query all data.
+        # * DELETED: Query only logically deleted data.
         self.status = status
-        # The thumbnail mode for images. Currently, only OSS files support thumbnails:
-        # - Proportional scaling: p_{percentage}, where percentage specifies the desired scaling ratio. Valid values: [1, 100]. Example: p_50 uses 50% of the original file size as the thumbnail.
-        # - Fixed width with adaptive height: w_{width}, where width specifies the desired image width. Valid values: [1, 16384]. Example: w_200 fixes the image width to 200 pixels and adaptively scales the height.
-        # - Fixed height with adaptive width: h_{height}, where height specifies the desired image height. Valid values: [1, 16384]. Example: h_100 fixes the image height to 100 pixels and adaptively scales the width.
-        # - Fixed dimensions with padding: m_pad,w_{width},h_{height},color_{RGB}. m_pad scales the image to the largest size that fits within the specified width and height rectangle. RGB specifies the fill color for blank areas. If this parameter is not specified, white is used by default. width specifies the desired image width and height specifies the desired image height. Valid values for both width and height: [1, 16384]. Example:
-        # - Fixed dimensions with center cropping: m_fill,w_{width},h_{height}. m_fill proportionally scales the image to the smallest size that extends beyond the specified width and height rectangle, and center-crops the excess. width specifies the desired image width and height specifies the desired image height. Valid values for both width and height: [1, 16384]. Example: m_fill,w_100,h_100 fixes both the width and height to 100 pixels with center cropping.
-        # - Forced dimensions: m_fixed,w_{width},h_{height}. width specifies the desired image width and height specifies the desired image height. Valid values for both width and height: [1, 16384]. Example: m_fixed,w_100,h_100 forces both the width and height to 100 pixels.
+        # The thumbnail mode for images. Currently, only OSS files support thumbnails. Valid values:
+        # - Proportional scaling: p_{percentage}. percentage indicates the expected scaling ratio. Valid values: [1, 100]. Example: p_50 indicates that the thumbnail size is 50% of the original file size.
+        # - Fixed width and adaptive height: w_{width}. width indicates the expected image width. Valid values: [1, 16384]. Example: w_200 indicates that the image width is fixed at 200 pixels and the height is adaptively scaled.
+        # - Fixed height and adaptive width: h_{height}. height indicates the expected image height. Valid values: [1, 16384]. Example: h_100 indicates that the image height is fixed at 100 pixels and the width is adaptively scaled.
+        # - Fixed width and height with padding: m_pad,w_{width},h_{height},color_{RGB}. m_pad indicates that the image is scaled to the maximum size within the specified w and h rectangle. RGB specifies the color used to fill the blank space in the center. If this parameter is not specified, white is used by default. width indicates the expected image width, and height indicates the expected image height. Valid values of width and height: [1, 16384]. Example:
+        # - Fixed width and height with center cropping: m_fill,w_{width},h_{height}. m_fill indicates that the image is proportionally scaled to the minimum size that extends beyond the specified w and h rectangle, and the excess part is center-cropped. width indicates the expected image width, and height indicates the expected image height. Valid values of width and height: [1, 16384]. Example: m_fill,w_100,h_100 indicates that the image width and height are both fixed at 100 pixels for center cropping and scaling.
+        # - Forced width and height scaling: m_fixed,w_{width},h_{height}. width indicates the expected image width, and height indicates the expected image height. Valid values of width and height: [1, 16384]. Example: m_fixed,w_100,h_100 indicates that the image width and height are both fixed at 100 pixels for forced scaling.
         self.thumbnail_mode = thumbnail_mode
-        # The maximum number of results to return. Only the top K results are returned.
+        # The number of search results to return. A maximum of TopK search results are returned.
         # > This parameter takes effect only when QueryType is set to VECTOR or MIX.
         self.top_k = top_k
-        # The workspace ID of the dataset. For information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The ID of the workspace to which the dataset belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

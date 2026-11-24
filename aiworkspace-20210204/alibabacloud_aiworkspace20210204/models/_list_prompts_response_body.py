@@ -18,7 +18,7 @@ class ListPromptsResponseBody(DaraModel):
         self.prompts = prompts
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned under the current request conditions. This parameter is optional and may not be returned by default.
+        # The total number of entries that meet the query conditions. This parameter is optional and is not returned by default.
         self.total_count = total_count
 
     def validate(self):

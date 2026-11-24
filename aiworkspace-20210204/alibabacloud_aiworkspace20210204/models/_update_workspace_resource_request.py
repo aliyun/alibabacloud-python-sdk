@@ -20,33 +20,24 @@ class UpdateWorkspaceResourceRequest(DaraModel):
     ):
         # The group name.
         self.group_name = group_name
-        # Specifies whether to set the resource as the default resource for the workspace. Currently, only `true` is a valid value.
+        # Specifies whether the resource is the default resource. Currently, you can set this parameter only to true. The value false is not supported.
         self.is_default = is_default
-        # An array of tags. The update affects only resources that have all of the specified tags.
+        # The collection of resource tags. If multiple tags are specified, only resources that have all the specified tags are returned.
         self.labels = labels
-        # **This parameter is deprecated. Use `ResourceType` instead.**
+        # **[Deprecated]** This field is deprecated and will be taken offline. Use the ResourceType field instead.
         self.product_type = product_type
-        # An array of resource IDs.
-        # 
-        # You cannot leave both `GroupName` and `ResourceIds` empty. If you specify both parameters, the group name must be the same for all specified resource IDs.
+        # The collection of resource IDs. GroupName and ResourceIds cannot be both empty, but they can be both specified. If both are specified, the GroupName of each resource ID in the collection must be the same.
         self.resource_ids = resource_ids
-        # The resource type. Valid values are:
+        # The list of resource types. Valid values:
         # 
-        # - MaxCompute: MaxCompute resources.
-        # 
-        # - ECS: General-purpose computing resources.
-        # 
-        # - Lingjun: Lingjun intelligent computing resources.
-        # 
-        # - ACS: ACS computing resources.
-        # 
-        # - Flink: Flink resources.
-        # 
-        # - SelfManagedAckPro: Resources for self-managed ACK Pro clusters.
-        # 
-        # - SelfManagedAckLingjun: Resources for self-managed ACK Lingjun clusters.
-        # 
-        # - SelfManagedASI: Resources for self-managed clusters on third-party clouds.
+        # - MaxCompute: MaxCompute big data compute EPS resources
+        # - ECS: general-purpose compute resources
+        # - Lingjun: Lingjun AI computing resources
+        # - ACS: ACS compute resources
+        # - FLINK: Flink resources
+        # - SelfManagedAckPro: ACK Pro unified management cluster resources
+        # - SelfManagedAckLingjun: ACK Lingjun unified management cluster resources
+        # - SelfManagedASI: ASI unified management cluster resources (third-party cloud)
         self.resource_type = resource_type
         # The specifications of the resource.
         self.spec = spec
@@ -121,9 +112,9 @@ class UpdateWorkspaceResourceRequestLabels(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

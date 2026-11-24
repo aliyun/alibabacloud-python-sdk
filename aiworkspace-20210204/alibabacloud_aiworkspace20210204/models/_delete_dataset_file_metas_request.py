@@ -11,13 +11,13 @@ class DeleteDatasetFileMetasRequest(DaraModel):
         dataset_version: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the dataset file metadata.
+        # The IDs of the file metadata records in the dataset.
         # 
         # This parameter is required.
         self.dataset_file_meta_ids = dataset_file_meta_ids
-        # The name of the dataset version.
+        # The dataset version name.
         self.dataset_version = dataset_version
-        # The ID of the workspace where the dataset is located. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The ID of the workspace to which the dataset belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

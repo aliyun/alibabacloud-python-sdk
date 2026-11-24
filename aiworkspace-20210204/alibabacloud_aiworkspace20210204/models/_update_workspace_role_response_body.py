@@ -10,7 +10,7 @@ class UpdateWorkspaceRoleResponseBody(DaraModel):
         instance_job_id: str = None,
         request_id: str = None,
     ):
-        # The task ID.
+        # The ID of the task corresponding to the request.
         self.instance_job_id = instance_job_id
         # The request ID.
         self.request_id = request_id

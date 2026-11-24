@@ -13,9 +13,9 @@ class UpdateWorkspaceRoleRequest(DaraModel):
         module_permissions: List[main_models.UpdateWorkspaceRoleRequestModulePermissions] = None,
         role_name: str = None,
     ):
-        # The permission settings for the role.
+        # The permission configuration of the role.
         self.module_permissions = module_permissions
-        # The name of the custom role. The name must be unique within the workspace. It can be up to 64 characters long and can contain letters, digits, underscores (_), and hyphens (-).
+        # The name of the custom role. The name must be unique within the same workspace. The name can contain letters, digits, underscores (_), and hyphens (-), and can be up to 64 characters in length.
         self.role_name = role_name
 
     def validate(self):

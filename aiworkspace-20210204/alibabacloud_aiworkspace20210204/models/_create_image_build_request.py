@@ -22,25 +22,23 @@ class CreateImageBuildRequest(DaraModel):
         user_vpc: main_models.CreateImageBuildRequestUserVpc = None,
         workspace_id: str = None,
     ):
-        # An idempotence token.
+        # The idempotency parameter.
         self.client_token = client_token
-        # The visibility of the image.
-        # 
-        # - **PUBLIC**: The image is public.
-        # 
-        # - **PRIVATE**: The image is private.
+        # The visibility. Valid values:
+        # - **PUBLIC**: Public.
+        # - **PRIVATE**: Private.
         self.accessibility = accessibility
-        # **The build configuration. Specify the content of the Dockerfile to be built.**
+        # **The build configuration, which specifies the content of the Dockerfile to be built.**
         # 
         # This parameter is required.
         self.build_config = build_config
-        # The metadata of the image.
+        # The image metadata.
         # 
         # This parameter is required.
         self.image = image
         # The name of the image build task.
         self.image_build_job_name = image_build_job_name
-        # Specifies whether to overwrite an existing image version in the image repository.
+        # Specifies whether to overwrite the existing image version in the image repository.
         self.overwrite_image_tag = overwrite_image_tag
         # The region ID.
         self.region_id = region_id
@@ -48,11 +46,11 @@ class CreateImageBuildRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource = resource
-        # **The configuration of the target image repository.**
+        # **The target registry configuration.**
         # 
         # This parameter is required.
         self.target_registry = target_registry
-        # The information about the user\\"s virtual private cloud (VPC). This parameter is required when you use the public resource group.
+        # The user VPC information. This parameter is required when you use a public resource group.
         self.user_vpc = user_vpc
         # The workspace ID.
         # 
@@ -162,21 +160,18 @@ class CreateImageBuildRequestUserVpc(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The default route.
-        # 
-        # - eth1: Indicates that the user\\"s elastic network interface (ENI) is used to access the external network through a private gateway. For more information, see [Configure a Distribution Switch (DSW) instance to access the Internet through a private NAT gateway](https://help.aliyun.com/zh/pai/user-guide/configure-a-dsw-instance-to-access-the-internet-through-a-private-nat-gateway?spm=a2c4g.11186623.0.0.3b3965f6SZWm85).
+        # The default routing of the network interface controller (NIC). Valid values:
+        # * eth1: Uses the user\\"s elastic network interfaces (ENIs) to access external networks through a private NAT gateway. For the configuration method, refer to [Configure a DSW instance to access the Internet through a private NAT gateway](https://www.alibabacloud.com/help/en/pai/user-guide/configure-a-dsw-instance-to-access-the-internet-through-a-private-nat-gateway).
         self.default_route = default_route
         # The extended CIDR blocks.
-        # 
-        # - If you do not specify a vSwitch ID, you can leave this parameter empty. The system automatically obtains all CIDR blocks of the VPC.
-        # 
-        # - If you specify a vSwitch ID, you must specify this parameter. For best results, include all CIDR blocks of the VPC.
+        # * If the vSwitch ID is empty, this parameter is optional and the system automatically retrieves all CIDR blocks under the VPC.
+        # * If the vSwitch ID is not empty, this parameter is required. We recommend that you specify all CIDR blocks under the VPC.
         self.extended_cidrs = extended_cidrs
-        # The security group ID. This parameter is required when you configure a VPC.
+        # The security group ID. This parameter is required when you specify the VPC configuration.
         self.security_group_id = security_group_id
         # The vSwitch ID. This parameter is optional.
         self.switch_id = switch_id
-        # The VPC ID. If the build task needs to access your ACR Enterprise Edition instance, specify a VPC that is in the access control list of the instance.
+        # The VPC ID. When the build task accesses a user\\"s Container Registry Enterprise Edition instance, you must specify a VPC that is added to the access control list of the instance.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -229,9 +224,9 @@ class CreateImageBuildRequestTargetRegistry(DaraModel):
         instance_id: str = None,
         type: str = None,
     ):
-        # The ID of the image repository instance. This parameter is required when you use ACR as the image repository.
+        # The registry instance ID. This parameter is required when you use Container Registry (ACR) as the image service.
         self.instance_id = instance_id
-        # The type of the target image repository. Only ACR Enterprise Edition is supported.
+        # The registry type. Only Container Registry Enterprise Edition is supported as the target registry.
         # 
         # This parameter is required.
         self.type = type
@@ -270,13 +265,13 @@ class CreateImageBuildRequestResource(DaraModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The instance type of the pay-as-you-go resource. This parameter is required when you use the public resource group.
+        # The pay-as-you-go resource specifications. This parameter is required when you use a public resource group.
         self.ecs_spec = ecs_spec
-        # The resource configuration. Specify this parameter when you use subscription resources. Leave it empty when you use the public resource group.
+        # The resource configuration. This parameter is required when you use subscription resources and must be left empty when you use a public resource group.
         self.resource_config = resource_config
-        # The resource quota ID. This parameter applies only to subscription resources. Do not set this parameter for pay-as-you-go resources.
+        # The resource quota ID. This parameter applies only to subscription resources and must not be specified when you use pay-as-you-go resources.
         self.resource_id = resource_id
-        # The type of the subscription resource. Currently, only Lingjun resources are supported. Specify this parameter when you use subscription resources.
+        # The subscription resource type. Only Lingjun resources are supported. This parameter is required when you use subscription resources.
         self.resource_type = resource_type
 
     def validate(self):
@@ -327,7 +322,7 @@ class CreateImageBuildRequestResourceResourceConfig(DaraModel):
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # The memory size.
+        # The memory capacity.
         self.memory = memory
 
     def validate(self):
@@ -364,21 +359,18 @@ class CreateImageBuildRequestImage(DaraModel):
         name: str = None,
         uri: str = None,
     ):
-        # The description of the image.
+        # The image description.
         self.description = description
         # The image labels.
         self.labels = labels
-        # The name of the image. The name must meet the following requirements:
-        # 
-        # - The name must be 1 to 50 characters in length.
-        # 
-        # - The name can contain lowercase letters, digits, and hyphens (-). It must start with a letter.
-        # 
-        # - The name must be unique within the same workspace.
+        # The image name. The naming rules are as follows:
+        # * The name must be 1 to 50 characters in length.
+        # * The name can contain lowercase letters, digits, and hyphens (-), and must start with a letter.
+        # * The name must be unique within the same workspace.
         # 
         # This parameter is required.
         self.name = name
-        # The image URL.
+        # The image URI.
         # 
         # This parameter is required.
         self.uri = uri
@@ -470,26 +462,31 @@ class CreateImageBuildRequestBuildConfig(DaraModel):
     def __init__(
         self,
         build_type: str = None,
+        data_sources: List[main_models.CreateImageBuildRequestBuildConfigDataSources] = None,
         dockerfile: str = None,
+        dockerfile_path: str = None,
         registry_auths: Dict[str, Any] = None,
     ):
-        # The build type. The following types are supported:
-        # 
-        # - **PackageInstallation**: Installs software packages based on a specified image.
-        # 
-        # - **CustomDockerfile**: Builds an image based on a custom Dockerfile.
+        # The build type. Valid values:
+        # * **PackageInstallation**: Installs software packages based on a specified image.
+        # * **CustomDockerfile**: Uses a custom Dockerfile.
         # 
         # This parameter is required.
         self.build_type = build_type
+        # The list of data sources.
+        self.data_sources = data_sources
         # The content of the Dockerfile to be built.
-        # 
-        # This parameter is required.
         self.dockerfile = dockerfile
-        # The authentication information for the private image repository. You can specify the authentication information for an ACR image repository that does not belong to you. The format is \\`{"user_registry_domain":{"Auth":"base64 encoded auth"}}\\`.
+        # The Dockerfile path, which is a relative path to the mounted context path. Example: docker/Dockerfile. If the mount path is /mnt/data/, the file is located at /mnt/data/docker/Dockerfile.
+        self.dockerfile_path = dockerfile_path
+        # The authentication information for private image repositories. You can specify the authentication information for an ACR image repository that does not belong to the current user. Format: {"user_registry_domain":{"Auth":"base64 encoded auth"}}.
         self.registry_auths = registry_auths
 
     def validate(self):
-        pass
+        if self.data_sources:
+            for v1 in self.data_sources:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -499,8 +496,16 @@ class CreateImageBuildRequestBuildConfig(DaraModel):
         if self.build_type is not None:
             result['BuildType'] = self.build_type
 
+        result['DataSources'] = []
+        if self.data_sources is not None:
+            for k1 in self.data_sources:
+                result['DataSources'].append(k1.to_map() if k1 else None)
+
         if self.dockerfile is not None:
             result['Dockerfile'] = self.dockerfile
+
+        if self.dockerfile_path is not None:
+            result['DockerfilePath'] = self.dockerfile_path
 
         if self.registry_auths is not None:
             result['RegistryAuths'] = self.registry_auths
@@ -512,11 +517,93 @@ class CreateImageBuildRequestBuildConfig(DaraModel):
         if m.get('BuildType') is not None:
             self.build_type = m.get('BuildType')
 
+        self.data_sources = []
+        if m.get('DataSources') is not None:
+            for k1 in m.get('DataSources'):
+                temp_model = main_models.CreateImageBuildRequestBuildConfigDataSources()
+                self.data_sources.append(temp_model.from_map(k1))
+
         if m.get('Dockerfile') is not None:
             self.dockerfile = m.get('Dockerfile')
 
+        if m.get('DockerfilePath') is not None:
+            self.dockerfile_path = m.get('DockerfilePath')
+
         if m.get('RegistryAuths') is not None:
             self.registry_auths = m.get('RegistryAuths')
+
+        return self
+
+class CreateImageBuildRequestBuildConfigDataSources(DaraModel):
+    def __init__(
+        self,
+        data_source_id: str = None,
+        data_source_version: str = None,
+        mount_access: str = None,
+        mount_path: str = None,
+        options: str = None,
+        uri: str = None,
+    ):
+        # The ID of the dataset in the workspace. Example: d-************zbs.
+        self.data_source_id = data_source_id
+        # The dataset version. If you specify this parameter, you must also specify DataSourceId. Example: v1.
+        self.data_source_version = data_source_version
+        # The read and write permissions. Valid values: RW (default) and RO.
+        self.mount_access = mount_access
+        # The mount path. Example: /mnt/data/.
+        self.mount_path = mount_path
+        # The mount property for the custom dataset. Only OSS is supported. Example: {"fs.oss.download.thread.concurrency":"10"}.
+        self.options = options
+        # The storage path, including the endpoint. This parameter is mutually exclusive with DataSourceId. Example: OSS storage path oss://{bucket-name}.oss-{region}-internal.aliyuncs.com/{subPath}/.
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.data_source_id is not None:
+            result['DataSourceId'] = self.data_source_id
+
+        if self.data_source_version is not None:
+            result['DataSourceVersion'] = self.data_source_version
+
+        if self.mount_access is not None:
+            result['MountAccess'] = self.mount_access
+
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+
+        if self.options is not None:
+            result['Options'] = self.options
+
+        if self.uri is not None:
+            result['Uri'] = self.uri
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceId') is not None:
+            self.data_source_id = m.get('DataSourceId')
+
+        if m.get('DataSourceVersion') is not None:
+            self.data_source_version = m.get('DataSourceVersion')
+
+        if m.get('MountAccess') is not None:
+            self.mount_access = m.get('MountAccess')
+
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
 
         return self
 

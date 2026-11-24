@@ -29,23 +29,23 @@ class ListRunsRequest(DaraModel):
         self.gmt_create_time = gmt_create_time
         # The labels of the task for exact matching. Supported formats:
         # - Single-label query: "is_evaluation:true"
-        # - Multi-label scenario (not recommended for common scenarios due to potential performance issues): "is_evaluation:true,LLM_evaluation:true". Use commas (,) to separate multiple labels, which means all specified label key-value pairs must be matched at the same time.
+        # - Multi-label query (not recommended unless necessary due to potential performance issues): "is_evaluation:true,LLM_evaluation:true". Separate multiple label key-value pairs with commas (,). All specified label key-value pairs must be matched at the same time.
         self.labels = labels
         # The maximum number of results to return for the request. Default value: 10.
         self.max_results = max_results
         # The name of the run.
         self.name = name
-        # Specifies the sorting of the specified field during a paged query. This parameter is used together with SortBy for paging. Valid values:
+        # The sorting order of the specified field for a paging query. This parameter is used together with SortBy. Valid values:
         # - ASC: ascending order.
         # - DESC (default): descending order.
         self.order = order
-        # The list of strings that specify the sort order. Supported fields for sorting include GmtCreateTime and Name. The sort orders include DESC and ASC. Default value: ASC. You can specify multiple fields and separate them with commas (,).
+        # The list of strings that specify the sorting methods. Supported fields for sorting include GmtCreateTime and Name. Valid sorting methods are DESC and ASC. Default value: ASC. You can specify multiple fields and separate them with commas (,).
         self.order_by = order_by
         # The current page number. Valid values: integers greater than 0. Default value: 1.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The pagination token. The value starts from 0. Default value: 0.
+        # The pagination token. The token starts from 0. Default value: 0.
         self.page_token = page_token
         # The name of the field used for sorting. Valid values:
         # - Name: the name of the run.
@@ -56,10 +56,12 @@ class ListRunsRequest(DaraModel):
         # The type of the PAI workload associated with the run.
         self.source_type = source_type
         # Specifies whether to display detailed information, including Metrics, Params, and Labels. Valid values:
-        # - true: Displays detailed information.
-        # - false (default): Does not display detailed information.
+        # - true: displays detailed information.
+        # - false (default): does not display detailed information.
         self.verbose = verbose
-        # The ID of the workspace to which the experiment belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html). If you do not specify the workspace ID, the system returns the runs in the default workspace.
+        # The ID of the workspace to which the experiment belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # > If you do not specify the workspace ID, the system returns the list of runs in the default workspace.
+        # >
         self.workspace_id = workspace_id
 
     def validate(self):

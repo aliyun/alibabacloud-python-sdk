@@ -18,22 +18,22 @@ class UpdateCodeSourceRequest(DaraModel):
         mount_path: str = None,
     ):
         # The clone mode. Valid values:
-        # - 0 (default): creates a new subdirectory.
-        # - 1: tiles to the current directory.
+        # - 0 (default): Create a subdirectory.
+        # - 1: Tile to the current directory.
         self.clone_type = clone_type
-        # The branch name of the code.
+        # The name of the code branch.
         self.code_branch = code_branch
         # The commit ID of the code.
         self.code_commit = code_commit
         # The URL of the code repository.
         self.code_repo = code_repo
-        # The access token associated with the username.
+        # The access token corresponding to the username.
         self.code_repo_access_token = code_repo_access_token
-        # The username used to access the access code repository.
+        # The username used to access the code repository.
         self.code_repo_user_name = code_repo_user_name
-        # The description of the code source configuration.
+        # The description of the code configuration.
         self.description = description
-        # The name of the code source configuration.
+        # The name of the code configuration.
         self.display_name = display_name
         # The default mount path.
         self.mount_path = mount_path

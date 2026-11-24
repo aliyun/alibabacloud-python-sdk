@@ -18,7 +18,7 @@ class ListWorkspaceRolesResponseBody(DaraModel):
         self.request_id = request_id
         # The list of custom roles.
         self.roles = roles
-        # The total count of matching entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -71,13 +71,13 @@ class ListWorkspaceRolesResponseBodyRoles(DaraModel):
         role_id: str = None,
         role_name: str = None,
     ):
-        # The Alibaba Cloud account UID of the creator.
+        # The UID of the Alibaba Cloud account of the creator.
         self.creator = creator
-        # The creation time, in UTC and ISO 8601 format.
+        # The creation time. The time is in UTC and formatted in ISO 8601.
         self.gmt_create_time = gmt_create_time
-        # The modification time, in UTC and ISO 8601 format.
+        # The modification time. The time is in UTC and formatted in ISO 8601.
         self.gmt_modified_time = gmt_modified_time
-        # The permission configuration of the role.
+        # The permission configurations of the role.
         self.module_permissions = module_permissions
         # The ID of the custom role.
         self.role_id = role_id

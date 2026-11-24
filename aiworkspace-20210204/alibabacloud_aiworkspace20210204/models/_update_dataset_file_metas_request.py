@@ -15,15 +15,15 @@ class UpdateDatasetFileMetasRequest(DaraModel):
         tag_job_id: str = None,
         workspace_id: str = None,
     ):
-        # A list of dataset file metadata to update.
+        # The list of dataset file metadata to be updated.
         # 
         # This parameter is required.
         self.dataset_file_metas = dataset_file_metas
         # The name of the dataset version.
         self.dataset_version = dataset_version
-        # The ID of the tagging job for updating metadata tags.
+        # The ID of the tagging task associated with updating the tags in the dataset file metadata.
         self.tag_job_id = tag_job_id
-        # The ID of the workspace that contains the dataset. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The ID of the workspace to which the dataset belongs. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

@@ -17,43 +17,30 @@ class ListWorkspaceRolesRequest(DaraModel):
         status: str = None,
         verbose_fields: str = None,
     ):
-        # The sort order for the specified sort field. Valid values:
+        # The sorting order for the specified sorting field in paging. Valid values:
         # 
-        # - `ASC` (default): Ascending order.
-        # 
-        # - `DESC`: Descending order.
+        # - ASC: Ascending order. Default value.
+        # - DESC: Descending order.
         self.order = order
-        # The page number. Pages start from 1. The default value is 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. The default value is 20.
+        # The number of entries per page. Default value: 20.
         self.page_size = page_size
-        # A comma-separated list of role IDs.
+        # The list of role IDs. Separate multiple IDs with commas (,).
         self.role_ids = role_ids
         # The role name.
         self.role_name = role_name
-        # The role type.
-        # 
-        # - `custom`: A custom role.
+        # The role type. Valid values:
+        # - custom: custom role.
         self.role_type = role_type
-        # The sort field for paginated queries. Valid values:
+        # The sorting field for paging. Valid values:
         # 
-        # - `GmtCreateTime` (default): Sorts by creation time.
-        # 
-        # - `GmtModifiedTime`: Sorts by modification time.
+        # - GmtCreateTime: Sort by creation time. Default value.
+        # - GmtModifiedTime: Sort by modification time.
         self.sort_by = sort_by
-        # The status. Valid values:
-        # 
-        # - `Creating`
-        # 
-        # - `Updating`
-        # 
-        # - `Deleting`
-        # 
-        # - `Succeeded`: A terminal state.
-        # 
-        # - `Failed`: A terminal state.
+        # **[Deprecated]** The status.
         self.status = status
-        # A comma-separated list of fields to return. Currently, only `ModulePermissions` is supported, which returns the permission configuration of the role.
+        # The comma-separated list of fields to return. Currently, only ModulePermissions is supported, which indicates whether to return the permission configurations of the role.
         self.verbose_fields = verbose_fields
 
     def validate(self):

@@ -12,7 +12,7 @@ class CreateImageBuildResponseBody(DaraModel):
     ):
         # The image build ID.
         self.image_build_id = image_build_id
-        # The build task ID.
+        # The build job ID.
         self.image_build_job_id = image_build_job_id
 
     def validate(self):

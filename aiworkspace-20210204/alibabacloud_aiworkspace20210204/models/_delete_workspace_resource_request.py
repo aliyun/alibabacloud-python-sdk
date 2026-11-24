@@ -14,37 +14,27 @@ class DeleteWorkspaceResourceRequest(DaraModel):
         resource_ids: str = None,
         resource_type: str = None,
     ):
-        # The resource group name. To get the resource group name, see [ListResources](https://help.aliyun.com/document_detail/449143.html).
+        # The name of the resource group. To obtain the name of the resource group, see [ListResources](https://help.aliyun.com/document_detail/449143.html).
         self.group_name = group_name
-        # A comma-separated list of labels.
+        # The list of tags, separated by commas.
         self.labels = labels
         # The deletion behavior. Valid values:
-        # 
-        # - `DetachAndDelete` (default): Detaches the resource from the workspace and deletes the resource.
-        # 
-        # - `Detach`: Detaches the resource from the workspace.
+        # - DetachAndDelete: Unbinds the resources from the workspace and deletes the resources. This is the default value.
+        # - Detach: Unbinds the resources from the workspace.
         self.option = option
-        # **This parameter is deprecated and will be removed. Use the `ResourceType` parameter instead.**
+        # **[Deprecated]** This field is deprecated and will be retired. Use the ResourceType field.
         self.product_type = product_type
-        # A comma-separated list of resource IDs. All specified resources must belong to the same `GroupName`. You must specify a value for at least one of the `GroupName` or `ResourceIds` parameters.
+        # The IDs of the resources, separated by commas. The GroupName of these resource IDs must be the same. GroupName and ResourceIds cannot be empty at the same time, but both can be specified.
         self.resource_ids = resource_ids
-        # The resource type. Valid values:
-        # 
-        # - `ECS`: general-purpose computing resources
-        # 
-        # - `Lingjun`: Lingjun intelligent computing resources
-        # 
-        # - `ACS`: ACS computing resources
-        # 
-        # - `Flink`: Flink resources.
-        # 
-        # - `MaxCompute`: MaxCompute resources. For this resource type, the `Option` parameter can only be set to `Detach`.
-        # 
-        # - `SelfManagedAckPro`: AckPro unified management cluster resources
-        # 
-        # - `SelfManagedAckLingjun`: AckLinjun unified management cluster resources
-        # 
-        # - `SelfManagedASI`: ASI unified management cluster resources (third-party cloud)
+        # The list of resource types. Valid values:
+        # - ECS: general computing resources
+        # - Lingjun: Lingjun AI computing resources
+        # - ACS: ACS computing resources
+        # - FLINK: Flink resources
+        # - MaxCompute: MaxCompute resources. Only the Detach option is supported. The DetachAndDelete option is not supported.
+        # - SelfManagedAckPro: ACK Pro unified management cluster resources
+        # - SelfManagedAckLingjun: ACK Lingjun unified management cluster resources
+        # - SelfManagedASI: ASI unified management cluster resources (third-party cloud)
         self.resource_type = resource_type
 
     def validate(self):

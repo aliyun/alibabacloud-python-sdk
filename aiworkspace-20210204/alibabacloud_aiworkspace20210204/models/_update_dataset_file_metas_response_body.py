@@ -14,11 +14,11 @@ class UpdateDatasetFileMetasResponseBody(DaraModel):
         request_id: str = None,
         status: bool = None,
     ):
-        # A list of file metadata that failed to be updated.
+        # The list of file metadata that failed to be updated.
         self.failed_details = failed_details
         # The request ID.
         self.request_id = request_id
-        # The status of the batch metadata update. A value of \\`true\\` indicates that all updates succeeded. If the value is \\`false\\`, check the \\`FailedDetails\\` parameter.
+        # The status of the metadata update result for the current batch. A value of true indicates that all updates succeeded. If the value is false, check FailedDetails.
         self.status = status
 
     def validate(self):

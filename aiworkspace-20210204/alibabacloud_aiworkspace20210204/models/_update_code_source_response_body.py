@@ -10,9 +10,9 @@ class UpdateCodeSourceResponseBody(DaraModel):
         code_source_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the code source configuration.
+        # The ID of the code configuration.
         self.code_source_id = code_source_id
-        # The request ID. Alibaba Cloud generates a unique identifier for the request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -11,9 +11,9 @@ class DeleteMembersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The error code returned if the request failed.
+        # The error code returned when the request fails.
         self.code = code
-        # The error message returned if the request failed.
+        # The error message returned when the request fails.
         self.message = message
         # The request ID.
         self.request_id = request_id

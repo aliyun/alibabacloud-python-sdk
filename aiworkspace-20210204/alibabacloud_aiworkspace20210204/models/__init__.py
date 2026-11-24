@@ -427,6 +427,7 @@ from ._add_image_request import AddImageRequestLabels
 from ._add_image_labels_request import AddImageLabelsRequestLabels
 from ._create_connection_request import CreateConnectionRequestModels
 from ._create_connection_request import CreateConnectionRequestResourceMeta
+from ._create_image_build_request import CreateImageBuildRequestBuildConfigDataSources
 from ._create_image_build_request import CreateImageBuildRequestBuildConfig
 from ._create_image_build_request import CreateImageBuildRequestImageLabels
 from ._create_image_build_request import CreateImageBuildRequestImage
@@ -922,6 +923,7 @@ __all__ = [
     AddImageLabelsRequestLabels,
     CreateConnectionRequestModels,
     CreateConnectionRequestResourceMeta,
+    CreateImageBuildRequestBuildConfigDataSources,
     CreateImageBuildRequestBuildConfig,
     CreateImageBuildRequestImageLabels,
     CreateImageBuildRequestImage,

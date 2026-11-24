@@ -19,31 +19,26 @@ class GetWorkspaceRoleResponseBody(DaraModel):
         role_name: str = None,
         status: str = None,
     ):
-        # The Alibaba Cloud account UID of the creator.
+        # The UID of the Alibaba Cloud account of the creator.
         self.creator = creator
-        # The time when the role was created. It is specified in UTC and formatted in ISO 8601.
+        # The creation time in ISO 8601 format.
         self.gmt_create_time = gmt_create_time
-        # The time when the role was last modified. It is specified in UTC and formatted in ISO 8601.
+        # The modification time in ISO 8601 format.
         self.gmt_modified_time = gmt_modified_time
-        # The permission configuration of the role.
+        # The permission configurations of the role.
         self.module_permissions = module_permissions
         # The request ID.
         self.request_id = request_id
-        # The role ID.
+        # The ID of the role.
         self.role_id = role_id
-        # The role name.
+        # The name of the role.
         self.role_name = role_name
         # The task status. Valid values:
-        # 
-        # - `Creating`: The role is being created.
-        # 
-        # - `Updating`: The role is being updated.
-        # 
-        # - `Deleting`: The role is being deleted.
-        # 
-        # - `Succeeded`: The task succeeded.
-        # 
-        # - `Failed`: The task failed.
+        # - Creating: creating
+        # - Updating: updating
+        # - Deleting: deleting
+        # - Successful: succeeded (final state)
+        # - Failed: failed (final state)
         self.status = status
 
     def validate(self):

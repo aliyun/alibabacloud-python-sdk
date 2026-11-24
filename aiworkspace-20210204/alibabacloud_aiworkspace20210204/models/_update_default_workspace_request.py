@@ -9,7 +9,7 @@ class UpdateDefaultWorkspaceRequest(DaraModel):
         self,
         workspace_id: str = None,
     ):
-        # The ID of the workspace. For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+        # The workspace ID. For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
         self.workspace_id = workspace_id
 
     def validate(self):

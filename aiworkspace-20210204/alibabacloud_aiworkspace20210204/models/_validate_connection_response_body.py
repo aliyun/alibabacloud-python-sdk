@@ -15,18 +15,16 @@ class ValidateConnectionResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The error code returned if the request fails.
+        # The error code returned when the request fails.
         self.code = code
         # The details of the validation result.
         self.details = details
-        # A description of the validation result.
+        # The description of the validation result.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The validation status.
-        # 
-        # - success: The validation is successful.
-        # 
+        # The status of the validation result. Valid values:
+        # - success: The validation succeeded.
         # - failed: The validation failed.
         self.status = status
 

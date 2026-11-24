@@ -15,34 +15,26 @@ class GetInstanceJobResponseBody(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The creation time in UTC, in ISO 8601 format.
+        # The creation time. The time is in UTC and follows the ISO 8601 standard.
         self.gmt_create_time = gmt_create_time
-        # The instance ID. For example, if a job creates a custom role, this parameter returns the corresponding role ID.
+        # Instance ID of the task instance. For example, in a task that creates a custom role, this is instance ID of the generated role.
         self.instance_id = instance_id
-        # The job ID.
+        # The task ID.
         self.instance_job_id = instance_job_id
-        # A message providing details about the job.
+        # The detailed description of the task.
         self.reason_message = reason_message
         # The request ID.
         self.request_id = request_id
-        # The status of the job. Valid values:
-        # 
-        # - Creating: The job is being created.
-        # 
-        # - Updating: The job is being updated.
-        # 
-        # - Deleting: The job is being deleted.
-        # 
-        # - Successful: The job completed successfully (a final state).
-        # 
-        # - Failed: The job failed (a final state).
+        # The task status. Valid values:
+        # - Creating: The task is being created.
+        # - Updating: The task is being updated.
+        # - Deleting: The task is being deleted.
+        # - Successful: The task succeeded. This is a desired state.
+        # - Failed: The task failed. This is a desired state.
         self.status = status
-        # The job type. Valid values:
-        # 
+        # The task type. Valid values:
         # - CreateWorkspaceCustomRole
-        # 
         # - UpdateWorkspaceCustomRole
-        # 
         # - DeleteWorkspaceCustomRole
         self.type = type
 

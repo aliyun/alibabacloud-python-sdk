@@ -25,13 +25,13 @@ class ListDatasetFileMetasResponseBody(DaraModel):
         self.dataset_id = dataset_id
         # The dataset version name.
         self.dataset_version = dataset_version
-        # The maximum number of results returned per request when using NextToken-based pagination.
+        # The maximum number of results to return per query when NextToken is used.
         self.max_results = max_results
-        # The pagination token. If the number of results that match the query conditions exceeds the page size, this pagination token is returned. To retrieve the next page of data, pass the returned token value as a request parameter until no token value is returned, which indicates that all data has been retrieved.
+        # The pagination cursor. If the number of returned results that match the query conditions exceeds the page size, this pagination cursor is returned. To obtain the next page of data, use the returned cursor value as a request parameter until no cursor value is returned, which indicates that all data is retrieved.
         self.next_token = next_token
-        # The current page size.
+        # The number of entries on the current page.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
         # The workspace ID.
         self.workspace_id = workspace_id

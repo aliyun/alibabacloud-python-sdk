@@ -14,11 +14,11 @@ class UpdatePromptRequest(DaraModel):
     ):
         # The description of the prompt.
         self.description = description
-        # The prompt content.
+        # The content of the prompt.
         self.framework_content = framework_content
         # The framework type of the prompt template.
         self.framework_type = framework_type
-        # The workspace ID. You can obtain the ID by calling the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation.
+        # The ID of the workspace. You can obtain the ID by calling the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

@@ -14,7 +14,7 @@ class UpdateWorkspaceResourceResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # An array of IDs for the resources that were updated.
+        # The collection of resource IDs updated in this request.
         self.resource_ids = resource_ids
 
     def validate(self):

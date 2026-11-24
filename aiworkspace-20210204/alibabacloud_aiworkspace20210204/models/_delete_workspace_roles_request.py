@@ -11,7 +11,7 @@ class DeleteWorkspaceRolesRequest(DaraModel):
         self,
         role_ids: List[str] = None,
     ):
-        # The IDs of the roles to delete.
+        # (Required) The list of role IDs.
         self.role_ids = role_ids
 
     def validate(self):

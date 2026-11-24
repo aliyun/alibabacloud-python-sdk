@@ -14,21 +14,21 @@ class CreatePromptRequest(DaraModel):
         prompt_name: str = None,
         workspace_id: str = None,
     ):
-        # The workspace visibility. Valid values:
+        # The visibility of the workspace. Valid values:
         # - PRIVATE (default): Visible only to you and administrators in this workspace.
-        # - PUBLIC: Visible to everyone in this workspace.
+        # - PUBLIC: Visible to all users in this workspace.
         self.accessibility = accessibility
-        # The prompt description.
+        # The description of the prompt.
         self.description = description
-        # The prompt framework content.
+        # The content of the prompt framework.
         self.framework_content = framework_content
         # The prompt optimization template.
         self.framework_type = framework_type
-        # The prompt name.
+        # The name of the prompt.
         # 
         # This parameter is required.
         self.prompt_name = prompt_name
-        # The workspace ID. You can obtain the ID by calling the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation.
+        # The workspace ID. You can call the [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) operation to obtain the ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
