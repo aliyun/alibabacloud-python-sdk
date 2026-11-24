@@ -11,10 +11,16 @@ class DeleteComputeJobRequest(DaraModel):
         job_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the compute instance, excluding the region name.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the compute job.
+        # 
         # This parameter is required.
         self.job_name = job_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

@@ -11,10 +11,15 @@ class CreateComputeInstanceRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # The billing method. Only 5 (pay-as-you-go) is supported.
+        # 
         # This parameter is required.
         self.paid_type = paid_type
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -15,14 +15,26 @@ class StartComputeJobRequest(DaraModel):
         recovery_mode: str = None,
         region_id: str = None,
     ):
+        # The CU limit for the job. Integers and decimals are supported.
         self.cu_limit = cu_limit
+        # The number of reserved CUs for the job. Integers and decimals are supported.
+        # 
+        # > The number of reserved CUs cannot exceed the CU limit.
         self.cu_reserved = cu_reserved
+        # **The Flink SQL draft, which must be a self-contained and complete DDL and DML statement.**
         self.draft_sql = draft_sql
+        # **The compute instance ID.**
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # **The name of the compute job.**
+        # 
         # This parameter is required.
         self.job_name = job_name
+        # **The recovery mode, such as savepoint or stateless.**
         self.recovery_mode = recovery_mode
+        # **The region ID.**
+        # 
         # This parameter is required.
         self.region_id = region_id
 

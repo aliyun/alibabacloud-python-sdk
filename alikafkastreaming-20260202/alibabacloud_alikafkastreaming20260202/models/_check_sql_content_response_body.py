@@ -15,9 +15,13 @@ class CheckSqlContentResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -66,7 +70,9 @@ class CheckSqlContentResponseBodyData(DaraModel):
         error_list: List[main_models.CheckSqlContentResponseBodyDataErrorList] = None,
         valid: bool = None,
     ):
+        # The list of SQL validation errors.
         self.error_list = error_list
+        # Indicates whether the SQL statement passed the validation.
         self.valid = valid
 
     def validate(self):
@@ -116,12 +122,19 @@ class CheckSqlContentResponseBodyDataErrorList(DaraModel):
         line_number: int = None,
         message: str = None,
     ):
+        # The SQL snippet where the error occurred.
         self.code_snippet = code_snippet
+        # The starting column number of the error.
         self.column_number = column_number
+        # The ending column number of the error.
         self.end_column_number = end_column_number
+        # The ending line number of the error.
         self.end_line_number = end_line_number
+        # The error type.
         self.error_type = error_type
+        # The starting line number of the error.
         self.line_number = line_number
+        # The error message.
         self.message = message
 
     def validate(self):

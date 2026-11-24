@@ -1,3 +1,6 @@
+2026-11-24 Version: 2.0.2
+- Generated python 2026-02-02 for AlikafkaStreaming.
+
 2026-09-15 Version: 2.0.0
 - Update API CreateComputeInstance: delete request parameters ResourceType.
 - Update API CreateComputeJob: delete request parameters ClientToken.

@@ -18,12 +18,19 @@ class ListComputeInstancesInPageResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The return code.
         self.code = code
+        # The current page number.
         self.current_page = current_page
+        # The returned data.
         self.data = data
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # The total number of entries that meet the query conditions.
         self.total = total
 
     def validate(self):
@@ -110,23 +117,41 @@ class ListComputeInstancesInPageResponseBodyData(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # Indicates whether auto-renewal is enabled.
         self.auto_renew_flag = auto_renew_flag
+        # The billing method.
         self.charge_type = charge_type
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The total CU limit.
         self.cu_limit_sum = cu_limit_sum
+        # The total number of reserved CUs.
         self.cu_reserved_sum = cu_reserved_sum
+        # The total number of used CUs.
         self.cu_used_sum = cu_used_sum
+        # The expiration time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.expire_time = expire_time
+        # The compute instance ID.
         self.instance_id = instance_id
+        # The instance name.
         self.instance_name = instance_name
+        # The owner of the resource.
         self.owner = owner
+        # The region ID.
         self.region_id = region_id
+        # The service status of the instance.
         self.service_status = service_status
+        # The total number of jobs.
         self.total_jobs = total_jobs
+        # The number of running jobs.
         self.total_running_jobs = total_running_jobs
+        # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

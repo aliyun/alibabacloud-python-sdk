@@ -11,10 +11,16 @@ class UpdateComputeInstanceNameRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the compute instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the compute instance.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

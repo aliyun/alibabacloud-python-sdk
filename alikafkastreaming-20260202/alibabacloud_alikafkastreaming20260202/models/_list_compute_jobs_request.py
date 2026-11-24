@@ -15,14 +15,23 @@ class ListComputeJobsRequest(DaraModel):
         sort_direction: str = None,
         sort_field: str = None,
     ):
+        # The compute instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The maximum number of jobs to return in the current request. Default value: 10. Maximum value: 1000. If you set this parameter to 0, the default value is used.
         self.max_results = max_results
+        # The pagination token. Do not specify this parameter in the first request. For subsequent requests, use the `NextToken` value returned in the previous response.
         self.next_token = next_token
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The keyword used to search for jobs by name or remark.
         self.search = search
+        # The sort direction. The value is not case-sensitive. Valid values: `ASC` and `DESC`.
         self.sort_direction = sort_direction
+        # The sort field. Valid values: `createTime`, `cuReserved`, `cuLimit`, `cuUsed`, `status`, and `jobName`.
         self.sort_field = sort_field
 
     def validate(self):

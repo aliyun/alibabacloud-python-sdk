@@ -15,11 +15,17 @@ class ListComputeInstancesInPageRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # The current page number. Default value: 1.
         self.current_page = current_page
+        # The list of compute instance IDs.
         self.instance_ids = instance_ids
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
 
     def validate(self):

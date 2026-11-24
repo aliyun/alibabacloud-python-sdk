@@ -15,13 +15,22 @@ class StartComputeInstanceRequest(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the compute instance.
         self.instance_name = instance_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The list of vSwitch IDs.
+        # 
         # This parameter is required.
         self.v_switch_ids = v_switch_ids
+        # The ID of the VPC where the instance is deployed.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

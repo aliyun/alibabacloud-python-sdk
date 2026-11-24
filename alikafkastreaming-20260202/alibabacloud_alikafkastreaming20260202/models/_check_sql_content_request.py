@@ -12,12 +12,20 @@ class CheckSqlContentRequest(DaraModel):
         region_id: str = None,
         sql_content: str = None,
     ):
+        # The compute instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The compute job name.
+        # 
         # This parameter is required.
         self.job_name = job_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The Flink SQL statement to be validated.
+        # 
         # This parameter is required.
         self.sql_content = sql_content
 

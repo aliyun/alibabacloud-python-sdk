@@ -12,9 +12,13 @@ class StopComputeInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

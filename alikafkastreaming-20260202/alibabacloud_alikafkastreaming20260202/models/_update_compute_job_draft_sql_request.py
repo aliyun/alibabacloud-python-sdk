@@ -12,12 +12,20 @@ class UpdateComputeJobDraftSqlRequest(DaraModel):
         job_name: str = None,
         region_id: str = None,
     ):
+        # The Flink SQL draft.
+        # 
         # This parameter is required.
         self.draft_sql = draft_sql
+        # The compute instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the compute job.
+        # 
         # This parameter is required.
         self.job_name = job_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
 

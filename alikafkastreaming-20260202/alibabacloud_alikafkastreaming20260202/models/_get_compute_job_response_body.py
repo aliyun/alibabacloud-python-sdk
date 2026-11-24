@@ -13,9 +13,13 @@ class GetComputeJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The response data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -78,23 +82,43 @@ class GetComputeJobResponseBodyData(DaraModel):
         status: str = None,
         upgrade_mode: str = None,
     ):
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The CU limit for the job.
         self.cu_limit = cu_limit
+        # The reserved CUs for the job.
         self.cu_reserved = cu_reserved
+        # The used CUs.
         self.cu_used = cu_used
+        # Indicates whether the job is a debug job. Valid values:
+        # - 0: No.
+        # - 1: Yes.
         self.debug_mode = debug_mode
+        # The currently deployed SQL.
         self.deployed_sql = deployed_sql
+        # The Flink SQL draft.
         self.draft_sql = draft_sql
+        # The error message.
         self.error_msg = error_msg
+        # The expiration time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.expiration_time = expiration_time
+        # The compute instance ID.
         self.instance_id = instance_id
+        # The name of the compute job.
         self.job_name = job_name
+        # The owner of the resource.
         self.owner = owner
+        # The region ID.
         self.region_id = region_id
+        # The remark for the job.
         self.remark = remark
+        # The status of the job.
         self.status = status
+        # The startup mode, such as savepoint or stateless.
         self.upgrade_mode = upgrade_mode
 
     def validate(self):

@@ -18,12 +18,19 @@ class ListComputeJobsResponseBody(DaraModel):
         success: bool = None,
         total: int = None,
     ):
+        # The return code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The maximum number of returned entries.
         self.max_results = max_results
+        # The pagination token.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
+        # The total number of records that match the query conditions.
         self.total = total
 
     def validate(self):
@@ -105,17 +112,29 @@ class ListComputeJobsResponseBodyData(DaraModel):
         remark: str = None,
         status: str = None,
     ):
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The CU limit for the job.
         self.cu_limit = cu_limit
+        # The reserved CUs for the job.
         self.cu_reserved = cu_reserved
+        # The number of CUs used.
         self.cu_used = cu_used
+        # Specifies whether the job is a debug job. Valid values: 0: No. 1: Yes.
         self.debug_mode = debug_mode
+        # The compute instance ID.
         self.instance_id = instance_id
+        # The name of the compute job.
         self.job_name = job_name
+        # The owner of the resource.
         self.owner = owner
+        # The region ID.
         self.region_id = region_id
+        # The job remark.
         self.remark = remark
+        # The job status.
         self.status = status
 
     def validate(self):

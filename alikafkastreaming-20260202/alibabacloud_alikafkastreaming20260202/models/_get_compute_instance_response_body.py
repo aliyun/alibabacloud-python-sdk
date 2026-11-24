@@ -15,9 +15,13 @@ class GetComputeInstanceResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The return code.
         self.code = code
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -72,27 +76,46 @@ class GetComputeInstanceResponseBodyData(DaraModel):
         instance_id: str = None,
         instance_name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         service_status: str = None,
         total_jobs: int = None,
         total_running_jobs: int = None,
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # The billing method.
         self.charge_type = charge_type
+        # The creation time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.create_time = create_time
+        # The total CU limit.
         self.cu_limit_sum = cu_limit_sum
+        # The total number of reserved CUs.
         self.cu_reserved_sum = cu_reserved_sum
+        # The total number of used CUs.
         self.cu_used_sum = cu_used_sum
+        # The expiration time.
+        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.expire_time = expire_time
+        # The compute instance ID.
         self.instance_id = instance_id
+        # The name of the compute instance.
         self.instance_name = instance_name
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The service status of the instance.
         self.service_status = service_status
+        # The total number of jobs.
         self.total_jobs = total_jobs
+        # The number of running jobs.
         self.total_running_jobs = total_running_jobs
+        # The list of vSwitch IDs.
         self.v_switch_ids = v_switch_ids
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -129,6 +152,9 @@ class GetComputeInstanceResponseBodyData(DaraModel):
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
 
         if self.service_status is not None:
             result['ServiceStatus'] = self.service_status
@@ -175,6 +201,9 @@ class GetComputeInstanceResponseBodyData(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
 
         if m.get('ServiceStatus') is not None:
             self.service_status = m.get('ServiceStatus')

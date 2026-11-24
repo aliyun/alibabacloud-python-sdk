@@ -12,12 +12,19 @@ class UpdateComputeJobRequest(DaraModel):
         region_id: str = None,
         remark: str = None,
     ):
+        # **The compute instance ID.**
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # **The compute job name.**
+        # 
         # This parameter is required.
         self.job_name = job_name
+        # **The region ID.**
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # **The job remarks.**
         self.remark = remark
 
     def validate(self):

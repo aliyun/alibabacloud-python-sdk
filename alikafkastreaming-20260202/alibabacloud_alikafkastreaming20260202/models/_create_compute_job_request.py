@@ -14,16 +14,29 @@ class CreateComputeJobRequest(DaraModel):
         region_id: str = None,
         remark: str = None,
     ):
+        # The compute unit (CU) limit for the job.
+        # 
         # This parameter is required.
         self.cu_limit = cu_limit
+        # The reserved compute units (CUs) for the job.
+        # 
+        # > The reserved CUs must not exceed the CU limit.
+        # 
         # This parameter is required.
         self.cu_reserved = cu_reserved
+        # The compute instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The name of the compute job.
+        # 
         # This parameter is required.
         self.job_name = job_name
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The remarks for the job.
         self.remark = remark
 
     def validate(self):
