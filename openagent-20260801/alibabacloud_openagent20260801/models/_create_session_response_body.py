@@ -12,7 +12,7 @@ class CreateSessionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The session information of the created session.
+        # The created session information.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -60,6 +60,7 @@ class CreateSessionResponseBodyData(DaraModel):
         pinned: bool = None,
         session_id: str = None,
         status: str = None,
+        ui_enabled: bool = None,
         updated_at: str = None,
     ):
         # The time when the session was created, in ISO 8601 format.
@@ -68,8 +69,10 @@ class CreateSessionResponseBodyData(DaraModel):
         self.pinned = pinned
         # The session ID.
         self.session_id = session_id
-        # The session status. The value is fixed to `IDLE` upon successful creation.
+        # The session status. The value is fixed to `IDLE` when the session is successfully created.
         self.status = status
+        # Indicates whether session UI enhancement is enabled. A value of true indicates that it is enabled, and a value of false indicates that it is disabled. Only common sessions support this feature. If this field is not returned, it is considered disabled.
+        self.ui_enabled = ui_enabled
         # The time when the session was last updated, in ISO 8601 format.
         self.updated_at = updated_at
 
@@ -93,6 +96,9 @@ class CreateSessionResponseBodyData(DaraModel):
         if self.status is not None:
             result['status'] = self.status
 
+        if self.ui_enabled is not None:
+            result['uiEnabled'] = self.ui_enabled
+
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
 
@@ -111,6 +117,9 @@ class CreateSessionResponseBodyData(DaraModel):
 
         if m.get('status') is not None:
             self.status = m.get('status')
+
+        if m.get('uiEnabled') is not None:
+            self.ui_enabled = m.get('uiEnabled')
 
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')

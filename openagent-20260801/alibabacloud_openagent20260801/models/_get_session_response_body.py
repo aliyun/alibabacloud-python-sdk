@@ -14,9 +14,9 @@ class GetSessionResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -63,22 +63,25 @@ class GetSessionResponseBodyData(DaraModel):
         session_id: str = None,
         status: str = None,
         title: str = None,
+        ui_enabled: bool = None,
         updated_at: str = None,
     ):
         # The time when the session was created, in ISO 8601 format.
         self.created_at = created_at
         # The ID of the last run.
         self.last_run_id = last_run_id
-        # The status of the last run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interrupt handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), `REJECTED` (rejected).
+        # The status of the last run. Valid values: `PENDING` (pending), `RUNNING` (running), `WAITING_USER` (waiting for interrupt handling), `COMPLETED` (completed), `FAILED` (failed), `CANCELLED` (cancelled), and `REJECTED` (rejected).
         self.last_run_status = last_run_status
         # Indicates whether the session is pinned.
         self.pinned = pinned
-        # The session ID.
+        # The ID of the session.
         self.session_id = session_id
-        # The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), `CLOSED` (closed).
+        # The session status. Valid values: `IDLE` (idle), `ACTIVE` (running), `WAITING_USER_INPUT` (waiting for user input), `WAITING_APPROVAL` (waiting for user confirmation), `WAITING_OUT_OF_BAND_APPROVAL` (waiting for out-of-band approval), and `CLOSED` (closed).
         self.status = status
-        # The session title.
+        # The title of the session.
         self.title = title
+        # Indicates whether session UI enhancement is enabled. Valid values: true (enabled) and false (disabled). This feature is supported only for common sessions. If this field is not returned, the feature is considered disabled.
+        self.ui_enabled = ui_enabled
         # The time when the session was last updated, in ISO 8601 format.
         self.updated_at = updated_at
 
@@ -111,6 +114,9 @@ class GetSessionResponseBodyData(DaraModel):
         if self.title is not None:
             result['title'] = self.title
 
+        if self.ui_enabled is not None:
+            result['uiEnabled'] = self.ui_enabled
+
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
 
@@ -138,6 +144,9 @@ class GetSessionResponseBodyData(DaraModel):
 
         if m.get('title') is not None:
             self.title = m.get('title')
+
+        if m.get('uiEnabled') is not None:
+            self.ui_enabled = m.get('uiEnabled')
 
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')

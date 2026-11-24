@@ -149,6 +149,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.title):
             body['title'] = request.title
+        if not DaraCore.is_null(request.ui_enabled):
+            body['uiEnabled'] = request.ui_enabled
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -184,6 +186,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.title):
             body['title'] = request.title
+        if not DaraCore.is_null(request.ui_enabled):
+            body['uiEnabled'] = request.ui_enabled
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -702,6 +706,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.attachments):
             body['attachments'] = request.attachments
+        if not DaraCore.is_null(request.commands):
+            body['commands'] = request.commands
         if not DaraCore.is_null(request.content):
             body['content'] = request.content
         if not DaraCore.is_null(request.resume):
@@ -755,6 +761,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.attachments):
             body['attachments'] = request.attachments
+        if not DaraCore.is_null(request.commands):
+            body['commands'] = request.commands
         if not DaraCore.is_null(request.content):
             body['content'] = request.content
         if not DaraCore.is_null(request.resume):
@@ -808,6 +816,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.attachments):
             body['attachments'] = request.attachments
+        if not DaraCore.is_null(request.commands):
+            body['commands'] = request.commands
         if not DaraCore.is_null(request.content):
             body['content'] = request.content
         if not DaraCore.is_null(request.resume):
@@ -852,6 +862,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.attachments):
             body['attachments'] = request.attachments
+        if not DaraCore.is_null(request.commands):
+            body['commands'] = request.commands
         if not DaraCore.is_null(request.content):
             body['content'] = request.content
         if not DaraCore.is_null(request.resume):
@@ -992,6 +1004,8 @@ class Client(OpenApiClient):
             body['pinned'] = request.pinned
         if not DaraCore.is_null(request.title):
             body['title'] = request.title
+        if not DaraCore.is_null(request.ui_enabled):
+            body['uiEnabled'] = request.ui_enabled
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1030,6 +1044,8 @@ class Client(OpenApiClient):
             body['pinned'] = request.pinned
         if not DaraCore.is_null(request.title):
             body['title'] = request.title
+        if not DaraCore.is_null(request.ui_enabled):
+            body['uiEnabled'] = request.ui_enabled
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers

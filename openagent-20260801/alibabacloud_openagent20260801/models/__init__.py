@@ -63,6 +63,8 @@ from ._list_messages_response_body import ListMessagesResponseBodyData
 from ._list_sessions_response_body import ListSessionsResponseBodyDataSessions
 from ._list_sessions_response_body import ListSessionsResponseBodyData
 from ._send_message_request import SendMessageRequestAttachments
+from ._send_message_request import SendMessageRequestCommandsPayload
+from ._send_message_request import SendMessageRequestCommands
 from ._send_message_request import SendMessageRequestResume
 from ._update_readonly_mode_response_body import UpdateReadonlyModeResponseBodyData
 from ._update_session_response_body import UpdateSessionResponseBodyData
@@ -129,6 +131,8 @@ __all__ = [
     ListSessionsResponseBodyDataSessions,
     ListSessionsResponseBodyData,
     SendMessageRequestAttachments,
+    SendMessageRequestCommandsPayload,
+    SendMessageRequestCommands,
     SendMessageRequestResume,
     UpdateReadonlyModeResponseBodyData,
     UpdateSessionResponseBodyData

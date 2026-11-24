@@ -62,7 +62,7 @@ class UpdateReadonlyModeResponseBodyData(DaraModel):
         value: str = None,
         value_type: str = None,
     ):
-        # The configuration name. The value is fixed to readonly.
+        # The configuration name. The value is fixed as readonly.
         self.config_name = config_name
         # Indicates whether a configuration record already exists.
         self.exists = exists
@@ -70,7 +70,7 @@ class UpdateReadonlyModeResponseBodyData(DaraModel):
         self.gmt_update = gmt_update
         # The current effective configuration value. The value is returned as a string, either true or false.
         self.value = value
-        # The type of the configuration value. The value is BOOL for this operation.
+        # The type of the configuration value. For this operation, the value is BOOL.
         self.value_type = value_type
 
     def validate(self):

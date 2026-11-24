@@ -13,7 +13,7 @@ class SendMessageHeaders(DaraModel):
         x_open_agent_idempotency_key: str = None,
     ):
         self.common_headers = common_headers
-        # The idempotency key for the request. Use the same key and the same business parameters when retrying the same request.
+        # The idempotency key for the request. Use the same key and the same business parameters when you retry the same request.
         self.x_open_agent_idempotency_key = x_open_agent_idempotency_key
 
     def validate(self):

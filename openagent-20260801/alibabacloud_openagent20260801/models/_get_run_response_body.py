@@ -65,7 +65,7 @@ class GetRunResponseBodyData(DaraModel):
         status: str = None,
         updated_at: str = None,
     ):
-        # The run creation time in ISO 8601 format.
+        # The creation time of the run, in ISO 8601 format.
         self.created_at = created_at
         # The run outcome.
         self.outcome = outcome
@@ -74,15 +74,15 @@ class GetRunResponseBodyData(DaraModel):
         # The session ID.
         self.session_id = session_id
         # The run status. Valid values:
-        # - `PENDING`: pending execution
-        # - `RUNNING`: running
-        # - `WAITING_USER`: waiting for interrupt handling
-        # - `COMPLETED`: completed
-        # - `FAILED`: failed
-        # - `CANCELLED`: canceled
-        # - `REJECTED`: rejected
+        # - `PENDING`: Pending execution.
+        # - `RUNNING`: Running.
+        # - `WAITING_USER`: Waiting for interrupt handling.
+        # - `COMPLETED`: Completed.
+        # - `FAILED`: Failed.
+        # - `CANCELLED`: Canceled.
+        # - `REJECTED`: Rejected.
         self.status = status
-        # The last update time of the run in ISO 8601 format.
+        # The last update time of the run, in ISO 8601 format.
         self.updated_at = updated_at
 
     def validate(self):
@@ -143,11 +143,11 @@ class GetRunResponseBodyDataOutcome(DaraModel):
         interrupts: List[main_models.GetRunResponseBodyDataOutcomeInterrupts] = None,
         type: str = None,
     ):
-        # The interrupt list.
+        # The list of interrupts.
         self.interrupts = interrupts
-        # The result type. Valid values:
-        # - `success`: successfully completed
-        # - `interrupt`: waiting for interrupt handling
+        # The outcome type. Valid values:
+        # - `success`: Successfully completed.
+        # - `interrupt`: Waiting for interrupt handling.
         self.type = type
 
     def validate(self):
@@ -198,7 +198,7 @@ class GetRunResponseBodyDataOutcomeInterrupts(DaraModel):
     ):
         # The interrupt data.
         self.data = data
-        # The interrupt expiration time in ISO 8601 format.
+        # The expiration time of the interrupt, in ISO 8601 format.
         self.expires_at = expires_at
         # The interrupt ID.
         self.id = id
@@ -207,12 +207,12 @@ class GetRunResponseBodyDataOutcomeInterrupts(DaraModel):
         # The extended information.
         self.metadata = metadata
         # The interrupt reason. Valid values:
-        # - `tool_call`: tool invocation requires handling
-        # - `input_required`: user input is required
-        # - `confirmation`: confirmation is required
-        # - `out_of_band_approval`: waiting for out-of-band approval
+        # - `tool_call`: Tool invocation requires handling.
+        # - `input_required`: User input is required.
+        # - `confirmation`: Confirmation is required.
+        # - `out_of_band_approval`: Waiting for out-of-band approval.
         self.reason = reason
-        # The JSON schema that the payload must comply with when resuming this interrupt.
+        # The JSON schema that the payload must conform to when resuming this interrupt.
         self.response_schema = response_schema
         # The tool invocation ID.
         self.tool_call_id = tool_call_id

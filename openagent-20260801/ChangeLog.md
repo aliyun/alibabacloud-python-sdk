@@ -1,3 +1,6 @@
+2026-11-24 Version: 1.0.3
+- Generated python 2026-08-01 for OpenAgent.
+
 2026-11-12 Version: 1.0.1
 - Update API SendMessage: add request parameters body.attachments.
 
