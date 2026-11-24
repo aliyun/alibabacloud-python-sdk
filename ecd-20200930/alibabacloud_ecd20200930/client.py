@@ -11443,6 +11443,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_desktop_groups_with_options_async(request, runtime)
 
+    def describe_desktop_ids_by_vul_names_with_options(
+        self,
+        request: main_models.DescribeDesktopIdsByVulNamesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDesktopIdsByVulNamesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.necessity):
+            query['Necessity'] = request.necessity
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.vul_name):
+            query['VulName'] = request.vul_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDesktopIdsByVulNames',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDesktopIdsByVulNamesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_desktop_ids_by_vul_names_with_options_async(
+        self,
+        request: main_models.DescribeDesktopIdsByVulNamesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDesktopIdsByVulNamesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.necessity):
+            query['Necessity'] = request.necessity
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.vul_name):
+            query['VulName'] = request.vul_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDesktopIdsByVulNames',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDesktopIdsByVulNamesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_desktop_ids_by_vul_names(
+        self,
+        request: main_models.DescribeDesktopIdsByVulNamesRequest,
+    ) -> main_models.DescribeDesktopIdsByVulNamesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_desktop_ids_by_vul_names_with_options(request, runtime)
+
+    async def describe_desktop_ids_by_vul_names_async(
+        self,
+        request: main_models.DescribeDesktopIdsByVulNamesRequest,
+    ) -> main_models.DescribeDesktopIdsByVulNamesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_desktop_ids_by_vul_names_with_options_async(request, runtime)
+
     def describe_desktop_info_with_options(
         self,
         request: main_models.DescribeDesktopInfoRequest,
@@ -16271,6 +16357,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_resource_by_center_policy_id_with_options_async(request, runtime)
 
+    def describe_resource_statistic_by_region_with_options(
+        self,
+        request: main_models.DescribeResourceStatisticByRegionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResourceStatisticByRegionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.include_group_desktops):
+            query['IncludeGroupDesktops'] = request.include_group_desktops
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeResourceStatisticByRegion',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeResourceStatisticByRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_resource_statistic_by_region_with_options_async(
+        self,
+        request: main_models.DescribeResourceStatisticByRegionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResourceStatisticByRegionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.include_group_desktops):
+            query['IncludeGroupDesktops'] = request.include_group_desktops
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.search_region_id):
+            query['SearchRegionId'] = request.search_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeResourceStatisticByRegion',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeResourceStatisticByRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_resource_statistic_by_region(
+        self,
+        request: main_models.DescribeResourceStatisticByRegionRequest,
+    ) -> main_models.DescribeResourceStatisticByRegionResponse:
+        runtime = RuntimeOptions()
+        return self.describe_resource_statistic_by_region_with_options(request, runtime)
+
+    async def describe_resource_statistic_by_region_async(
+        self,
+        request: main_models.DescribeResourceStatisticByRegionRequest,
+    ) -> main_models.DescribeResourceStatisticByRegionResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_resource_statistic_by_region_with_options_async(request, runtime)
+
     def describe_route_entry_list_with_options(
         self,
         request: main_models.DescribeRouteEntryListRequest,
@@ -17674,6 +17838,8 @@ class Client(OpenApiClient):
             query['DesktopStatus'] = request.desktop_status
         if not DaraCore.is_null(request.include_fix_result):
             query['IncludeFixResult'] = request.include_fix_result
+        if not DaraCore.is_null(request.include_patch_task):
+            query['IncludePatchTask'] = request.include_patch_task
         if not DaraCore.is_null(request.language):
             query['Language'] = request.language
         if not DaraCore.is_null(request.max_results):
@@ -17734,6 +17900,8 @@ class Client(OpenApiClient):
             query['DesktopStatus'] = request.desktop_status
         if not DaraCore.is_null(request.include_fix_result):
             query['IncludeFixResult'] = request.include_fix_result
+        if not DaraCore.is_null(request.include_patch_task):
+            query['IncludePatchTask'] = request.include_patch_task
         if not DaraCore.is_null(request.language):
             query['Language'] = request.language
         if not DaraCore.is_null(request.max_results):

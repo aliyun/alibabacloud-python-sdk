@@ -346,6 +346,9 @@ from ._describe_desktop_group_sessions_response import DescribeDesktopGroupSessi
 from ._describe_desktop_groups_request import DescribeDesktopGroupsRequest
 from ._describe_desktop_groups_response_body import DescribeDesktopGroupsResponseBody
 from ._describe_desktop_groups_response import DescribeDesktopGroupsResponse
+from ._describe_desktop_ids_by_vul_names_request import DescribeDesktopIdsByVulNamesRequest
+from ._describe_desktop_ids_by_vul_names_response_body import DescribeDesktopIdsByVulNamesResponseBody
+from ._describe_desktop_ids_by_vul_names_response import DescribeDesktopIdsByVulNamesResponse
 from ._describe_desktop_info_request import DescribeDesktopInfoRequest
 from ._describe_desktop_info_response_body import DescribeDesktopInfoResponseBody
 from ._describe_desktop_info_response import DescribeDesktopInfoResponse
@@ -490,6 +493,9 @@ from ._describe_renewal_price_response import DescribeRenewalPriceResponse
 from ._describe_resource_by_center_policy_id_request import DescribeResourceByCenterPolicyIdRequest
 from ._describe_resource_by_center_policy_id_response_body import DescribeResourceByCenterPolicyIdResponseBody
 from ._describe_resource_by_center_policy_id_response import DescribeResourceByCenterPolicyIdResponse
+from ._describe_resource_statistic_by_region_request import DescribeResourceStatisticByRegionRequest
+from ._describe_resource_statistic_by_region_response_body import DescribeResourceStatisticByRegionResponseBody
+from ._describe_resource_statistic_by_region_response import DescribeResourceStatisticByRegionResponse
 from ._describe_route_entry_list_request import DescribeRouteEntryListRequest
 from ._describe_route_entry_list_response_body import DescribeRouteEntryListResponseBody
 from ._describe_route_entry_list_response import DescribeRouteEntryListResponse
@@ -1037,6 +1043,7 @@ from ._describe_desktop_groups_request import DescribeDesktopGroupsRequestTag
 from ._describe_desktop_groups_response_body import DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus
 from ._describe_desktop_groups_response_body import DescribeDesktopGroupsResponseBodyDesktopGroupsTags
 from ._describe_desktop_groups_response_body import DescribeDesktopGroupsResponseBodyDesktopGroups
+from ._describe_desktop_ids_by_vul_names_response_body import DescribeDesktopIdsByVulNamesResponseBodyDesktopItems
 from ._describe_desktop_info_response_body import DescribeDesktopInfoResponseBodyDesktops
 from ._describe_desktop_metadata_response_body import DescribeDesktopMetadataResponseBodyDesktops
 from ._describe_desktop_oversold_group_response_body import DescribeDesktopOversoldGroupResponseBodyData
@@ -1134,6 +1141,8 @@ from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseB
 from ._describe_renewal_price_response_body import DescribeRenewalPriceResponseBodyPriceInfo
 from ._describe_resource_by_center_policy_id_response_body import DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList
 from ._describe_resource_by_center_policy_id_response_body import DescribeResourceByCenterPolicyIdResponseBodyResourceModelList
+from ._describe_resource_statistic_by_region_response_body import DescribeResourceStatisticByRegionResponseBodyStatisticRegionStatistics
+from ._describe_resource_statistic_by_region_response_body import DescribeResourceStatisticByRegionResponseBodyStatistic
 from ._describe_route_entry_list_response_body import DescribeRouteEntryListResponseBodyRouteEntriesNextHops
 from ._describe_route_entry_list_response_body import DescribeRouteEntryListResponseBodyRouteEntries
 from ._describe_route_table_list_response_body import DescribeRouteTableListResponseBodyRouteTableList
@@ -1602,6 +1611,9 @@ __all__ = [
     DescribeDesktopGroupsRequest,
     DescribeDesktopGroupsResponseBody,
     DescribeDesktopGroupsResponse,
+    DescribeDesktopIdsByVulNamesRequest,
+    DescribeDesktopIdsByVulNamesResponseBody,
+    DescribeDesktopIdsByVulNamesResponse,
     DescribeDesktopInfoRequest,
     DescribeDesktopInfoResponseBody,
     DescribeDesktopInfoResponse,
@@ -1746,6 +1758,9 @@ __all__ = [
     DescribeResourceByCenterPolicyIdRequest,
     DescribeResourceByCenterPolicyIdResponseBody,
     DescribeResourceByCenterPolicyIdResponse,
+    DescribeResourceStatisticByRegionRequest,
+    DescribeResourceStatisticByRegionResponseBody,
+    DescribeResourceStatisticByRegionResponse,
     DescribeRouteEntryListRequest,
     DescribeRouteEntryListResponseBody,
     DescribeRouteEntryListResponse,
@@ -2293,6 +2308,7 @@ __all__ = [
     DescribeDesktopGroupsResponseBodyDesktopGroupsCountPerStatus,
     DescribeDesktopGroupsResponseBodyDesktopGroupsTags,
     DescribeDesktopGroupsResponseBodyDesktopGroups,
+    DescribeDesktopIdsByVulNamesResponseBodyDesktopItems,
     DescribeDesktopInfoResponseBodyDesktops,
     DescribeDesktopMetadataResponseBodyDesktops,
     DescribeDesktopOversoldGroupResponseBodyData,
@@ -2390,6 +2406,8 @@ __all__ = [
     DescribeRenewalPriceResponseBodyPriceInfo,
     DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList,
     DescribeResourceByCenterPolicyIdResponseBodyResourceModelList,
+    DescribeResourceStatisticByRegionResponseBodyStatisticRegionStatistics,
+    DescribeResourceStatisticByRegionResponseBodyStatistic,
     DescribeRouteEntryListResponseBodyRouteEntriesNextHops,
     DescribeRouteEntryListResponseBodyRouteEntries,
     DescribeRouteTableListResponseBodyRouteTableList,

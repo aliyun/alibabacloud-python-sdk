@@ -17,15 +17,15 @@ class UntagResourcesRequest(DaraModel):
     ):
         # Specifies whether to unbind all tags from the resource. This parameter takes effect only when TagKey.N is not specified. Default value: false.
         self.all = all
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by Elastic Desktop Service (EDS).
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by cloud computers.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the resources, that is, the IDs of the cloud desktops. You can specify 1 to 50 IDs.
+        # The list of resource IDs, which are the cloud computer IDs. You can specify 1 to 50 IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type.
         # 
         # This parameter is required.
         self.resource_type = resource_type

@@ -16,19 +16,15 @@ class DescribeVulDesktopsResponseBody(DaraModel):
         total_count: int = None,
         vul_desktops: List[main_models.DescribeVulDesktopsResponseBodyVulDesktops] = None,
     ):
-        # The number of entries per page in a paged query.
-        # 
-        # Maximum value: 100.
-        # 
-        # Default value: 10.
+        # The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
         self.max_results = max_results
-        # The token for the next query. An empty value indicates that no more results exist.
+        # The token for the next query. An empty NextToken indicates that no more results are available.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total count.
         self.total_count = total_count
-        # The details of cloud desktops affected by the vulnerability.
+        # The list of details about cloud desktops affected by the vulnerability.
         self.vul_desktops = vul_desktops
 
     def validate(self):
@@ -101,13 +97,13 @@ class DescribeVulDesktopsResponseBodyVulDesktops(DaraModel):
         status: str = None,
         vul_level: str = None,
     ):
-        # The configuration task ID.
+        # The ID of the configuration task.
         self.config_group_id = config_group_id
         # The connection status of the cloud desktop.
         self.connection_status = connection_status
         # The number of vulnerabilities.
         self.cve_count = cve_count
-        # The vulnerability details.
+        # The list of vulnerability details.
         self.cves = cves
         # The ID of the cloud desktop affected by the vulnerability.
         self.desktop_id = desktop_id
@@ -115,19 +111,19 @@ class DescribeVulDesktopsResponseBodyVulDesktops(DaraModel):
         self.desktop_status = desktop_status
         # Indicates whether the activation code is disabled.
         self.disabled = disabled
-        # The time when the vulnerability was first detected. Format: yyyy-MM-dd HH:mm:ss.
+        # The time when the vulnerability was first detected. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.first_found_time = first_found_time
-        # The fix records of the cloud desktop.
+        # The list of fix details for the cloud desktop.
         self.fix_records = fix_records
-        # The patch IDs.
+        # The list of patch IDs.
         self.patch_ids = patch_ids
-        # The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by WUYING Workspace.
         self.region_id = region_id
-        # The enterprise resource group ID.
+        # The ID of the enterprise resource group.
         self.resource_group_id = resource_group_id
         # The fix status of the patch.
         self.status = status
-        # The patch level.
+        # The severity level of the patch.
         self.vul_level = vul_level
 
     def validate(self):
@@ -256,11 +252,11 @@ class DescribeVulDesktopsResponseBodyVulDesktopsFixRecords(DaraModel):
     ):
         # The batch ID of the scheduled task execution.
         self.batch_id = batch_id
-        # The failure reason.
+        # The reason for the failure.
         self.fix_failure_reason = fix_failure_reason
         # The fix result.
         self.fix_result = fix_result
-        # The timestamp when the fix task ended, in milliseconds.
+        # The timestamp when the fix task ended. Unit: milliseconds.
         self.fix_time = fix_time
         # The fix type.
         self.fix_type = fix_type
@@ -320,19 +316,19 @@ class DescribeVulDesktopsResponseBodyVulDesktopsCves(DaraModel):
         reference_url: str = None,
         release_time: str = None,
     ):
-        # The CVE ID of the vulnerability.
+        # The vulnerability ID.
         self.cve_id = cve_id
-        # The vulnerability level.
+        # The severity level of the vulnerability.
         self.cve_level = cve_level
-        # The vulnerability name.
+        # The name of the vulnerability.
         self.cve_title = cve_title
-        # The CVE URL.
+        # The CVE link.
         self.cve_url = cve_url
         # The vulnerability score.
         self.impact_score = impact_score
-        # The reference URL for the vulnerability details.
+        # The reference link for the vulnerability details.
         self.reference_url = reference_url
-        # The release time. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+        # The release time. The time is in the ISO 8601 standard UTC format: yyyy-MM-ddTHH:mm:ssZ.
         self.release_time = release_time
 
     def validate(self):
