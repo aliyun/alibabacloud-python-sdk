@@ -1,3 +1,6 @@
+2026-11-24 Version: 6.0.1
+- Generated python 2026-04-28 for Aidge.
+
 2026-11-24 Version: 6.0.0
 - Support API RealtimeSpeechTranslation.
 - Update API GeneralRephotographyDetection: delete response parameters Body.Data.Result.Grounding.
