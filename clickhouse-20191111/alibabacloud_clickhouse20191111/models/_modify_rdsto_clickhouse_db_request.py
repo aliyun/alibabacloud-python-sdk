@@ -25,7 +25,7 @@ class ModifyRDSToClickhouseDbRequest(DaraModel):
         resource_owner_id: int = None,
         skip_unsupported: bool = None,
     ):
-        # The password of the ApsaraDB for ClickHouse database account.
+        # The password of the database account for the ApsaraDB for ClickHouse cluster.
         # 
         # This parameter is required.
         self.ck_password = ck_password
@@ -39,21 +39,21 @@ class ModifyRDSToClickhouseDbRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_cluster_id = db_cluster_id
-        # The maximum number of rows to sync per second.
+        # The maximum number of rows that can be synchronized per second.
         self.limit_upper = limit_upper
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The instance ID of the ApsaraDB RDS for MySQL instance.
+        # The instance ID of the ApsaraDB RDS for MySQL database.
         # 
         # This parameter is required.
         self.rds_id = rds_id
-        # The password of the ApsaraDB RDS for MySQL database account.
+        # The password of the database account for the ApsaraDB RDS for MySQL instance.
         # 
         # This parameter is required.
         self.rds_password = rds_password
         # The port number of the ApsaraDB RDS for MySQL instance.
         self.rds_port = rds_port
-        # The database in the ApsaraDB RDS for MySQL instance.
+        # The databases in the ApsaraDB RDS for MySQL instance.
         # 
         # This parameter is required.
         self.rds_syn_db = rds_syn_db
@@ -71,9 +71,8 @@ class ModifyRDSToClickhouseDbRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # Specifies whether to ignore databases that do not support synchronization. Valid values:
         # 
-        # - **true**: Ignore the databases.
-        # 
-        # - **false**: Do not ignore the databases.
+        # - **true**: Ignore.
+        # - **false**: Do not ignore.
         # 
         # This parameter is required.
         self.skip_unsupported = skip_unsupported

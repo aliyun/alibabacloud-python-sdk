@@ -16,10 +16,8 @@ class ModifyAccountDescriptionRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # The new description of the database account.
-        # 
-        # - The description cannot start with http\\:// or https\\://.
-        # 
-        # - The description must be 0 to 256 characters in length.
+        # - It cannot start with http:// or https://.
+        # - It must be 0 to 256 characters in length.
         # 
         # This parameter is required.
         self.account_description = account_description

@@ -10,7 +10,7 @@ class CancelActiveOperationTasksResponseBody(DaraModel):
         ids: str = None,
         request_id: str = None,
     ):
-        # The IDs of the O\\&M tasks that were canceled. Multiple IDs are separated by a comma (,).
+        # The IDs of the O&M tasks canceled in batches. Separate multiple IDs with commas (,).
         self.ids = ids
         # The request ID.
         self.request_id = request_id

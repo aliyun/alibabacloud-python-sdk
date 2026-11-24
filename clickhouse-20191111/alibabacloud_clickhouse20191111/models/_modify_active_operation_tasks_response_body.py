@@ -10,9 +10,9 @@ class ModifyActiveOperationTasksResponseBody(DaraModel):
         ids: str = None,
         request_id: str = None,
     ):
-        # The O\\&M event IDs. Multiple IDs are separated by commas (,).
+        # The IDs of the O&M events. Separate multiple IDs with commas (,).
         self.ids = ids
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

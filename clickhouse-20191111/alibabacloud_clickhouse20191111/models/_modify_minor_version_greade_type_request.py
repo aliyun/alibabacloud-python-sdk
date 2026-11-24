@@ -18,7 +18,7 @@ class ModifyMinorVersionGreadeTypeRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The upgrade type. Set this parameter to **false** for manual upgrades.
+        # The update type. A value of **false** indicates a manual update.
         # 
         # This parameter is required.
         self.maintain_auto_type = maintain_auto_type

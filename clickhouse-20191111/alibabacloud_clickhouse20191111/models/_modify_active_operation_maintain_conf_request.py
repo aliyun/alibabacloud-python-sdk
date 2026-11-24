@@ -18,32 +18,26 @@ class ModifyActiveOperationMaintainConfRequest(DaraModel):
         security_token: str = None,
         status: int = None,
     ):
-        # The day of the recurrence cycle.
-        # 
-        # - If CycleType is set to Month, this parameter specifies the day of the month. Valid values are 1 to 28. Use a comma (,) to separate multiple days.
-        # 
-        # - If CycleType is set to Week, this parameter specifies the day of the week. Valid values are 1 to 7. Use a comma (,) to separate multiple days.
+        # The cycle time. 
+        # - If CycleType is set to Month, the value is one or more numbers from 1 to 28 that indicate the days of the month, separated by commas (,).
+        # - If CycleType is set to Week, the value is one or more numbers from 1 to 7 that indicate the days of the week, separated by commas (,).
         self.cycle_time = cycle_time
-        # The recurrence cycle. Valid values:
-        # 
-        # - Month: monthly
-        # 
-        # - Week: weekly
+        # The cycle type. Valid values:
+        # - Month: Monthly.
+        # - Week: Weekly.
         self.cycle_type = cycle_type
-        # The end time of the maintenance window. Use the HH:mmZ format. The time is in UTC.
+        # The end time of the maintenance window. Format: HH:mmZ-HH:mmZ (UTC).
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. Use the HH:mmZ format. The time is in UTC.
+        # The start time of the task. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
         self.maintain_start_time = maintain_start_time
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # Specifies whether the configuration is enabled. Valid values:
-        # 
-        # - **1**: Enabled.
-        # 
-        # - **2**: Disabled.
+        # Specifies whether the configuration takes effect. Valid values:
+        # - **1**: Yes.
+        # - **2**: No.
         self.status = status
 
     def validate(self):

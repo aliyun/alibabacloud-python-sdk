@@ -23,7 +23,7 @@ class DescribeSynDbsRequest(DaraModel):
         self.owner_id = owner_id
         # The current page number.
         self.page_number = page_number
-        # The number of records to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

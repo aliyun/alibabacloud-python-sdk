@@ -13,25 +13,22 @@ class DescribeOSSStorageResponseBody(DaraModel):
         state: str = None,
         storage_usage: str = None,
     ):
-        # Indicates whether tiered storage for hot and cold data can be enabled. Valid values:
+        # Indicates whether hot and cold tiered storage is supported. Valid values:
         # 
-        # - **true**: Tiered storage can be enabled.
-        # 
-        # - **false**: Tiered storage cannot be enabled.
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.cold_storage = cold_storage
-        # The parameters of the tiered storage policy for hot and cold data.
+        # The parameters of the hot and cold tiered storage policy.
         self.policy = policy
         # The request ID.
         self.request_id = request_id
-        # The status of tiered storage for hot and cold data. Valid values:
+        # The status of the hot and cold tiered storage. Valid values:
         # 
-        # - **CREATING**: Tiered storage is being enabled.
-        # 
-        # - **DISABLE**: Tiered storage is disabled.
-        # 
-        # - **ENABLE**: Tiered storage is enabled.
+        # - **CREATING**: Enabling.
+        # - **DISABLE**: Disabled.
+        # - **ENABLE**: Enabled.
         self.state = state
-        # The cold storage space used. Unit: GB.
+        # The amount of storage space used by cold data. Unit: GB.
         self.storage_usage = storage_usage
 
     def validate(self):

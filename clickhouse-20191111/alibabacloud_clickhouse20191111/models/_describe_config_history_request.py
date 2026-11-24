@@ -11,15 +11,15 @@ class DescribeConfigHistoryRequest(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the information about all clusters in a specific region, including cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query all clusters in a specific region, including their cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. Use the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+        # The end time of the query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The start of the time range to query. Use the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+        # The start time of the query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

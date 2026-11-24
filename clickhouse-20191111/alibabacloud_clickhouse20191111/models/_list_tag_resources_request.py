@@ -20,12 +20,11 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first query. If a query does not return all results, a NextToken value is returned. You can use this token in a subsequent query to retrieve the next page of results.
+        # The token used to return more results. You do not need to specify this parameter for the first query. If not all results are returned in the first query, you can pass the NextToken value returned in the previous response to continue the query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
-        # 
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
         # 
         # This parameter is required.
@@ -34,7 +33,7 @@ class ListTagResourcesRequest(DaraModel):
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The resource type. Set the value to **DBCLUSTER**.
+        # The resource type. Valid value: **DBCLUSTER**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -123,12 +122,10 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify from 1 to **20** tag keys.
-        # 
+        # The tag key. You can specify up to N tag keys. N is an integer and ranges from **1 to 20**.
         # > If you specify the **ResourceId.N** parameter, you can leave this parameter empty.
         self.key = key
-        # The value of the tag. You can specify from 1 to **20** tag values.
-        # 
+        # The tag value corresponding to the tag key. You can specify up to N tag values. N is an integer and ranges from **1 to 20**.
         # > You can leave this parameter empty.
         self.value = value
 

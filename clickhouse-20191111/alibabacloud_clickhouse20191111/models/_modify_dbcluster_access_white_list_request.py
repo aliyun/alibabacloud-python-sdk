@@ -17,39 +17,32 @@ class ModifyDBClusterAccessWhiteListRequest(DaraModel):
         resource_owner_id: int = None,
         security_ips: str = None,
     ):
-        # The attribute of the whitelist group. The default value is **empty**.
+        # The attribute of the whitelist group. Default value: **empty**.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
-        # The name of the whitelist group to modify.
-        # 
-        # > If you do not specify this parameter, the whitelist of the default group is modified.
+        # The name of the whitelist group to be modified.
+        # > If you do not specify this parameter, the whitelist in the default group is modified.
         self.dbcluster_iparray_name = dbcluster_iparray_name
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The modification method. Valid values:
+        # The modification mode. Valid values:
         # 
-        # - **Cover**: Overwrites the whitelist.
+        # - **Cover**: overwrites the original whitelist.
+        # - **Append**: appends the specified IP addresses to the original whitelist.
+        # - **Delete**: deletes the original whitelist.
         # 
-        # - **Append**: Adds IP addresses to the whitelist.
-        # 
-        # - **Delete**: Removes IP addresses from the whitelist.
-        # 
-        # > If you do not specify this parameter, the Cover method is used by default.
+        # > If you do not specify this parameter, the Cover mode is used by default.
         self.modify_mode = modify_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IP address whitelist. The following formats are supported:
-        # 
-        # - IP address: For example, 192.168.0.1. This allows the specified IP address to access the ApsaraDB for ClickHouse cluster.
-        # 
-        # - CIDR block: For example, 192.168.0.0/24. This allows IP addresses from 192.168.0.1 to 192.168.0.255 to access the ApsaraDB for ClickHouse cluster.
-        # 
-        # > * Do not enter 0.0.0.0.
-        # 
-        # - Set this parameter to 127.0.0.1 to block access from all IP addresses.
+        # The IP whitelist. Two formats are supported:
+        # - IP address: For example, 192.168.0.1 allows this IP address to access the ApsaraDB for ClickHouse cluster.
+        # - CIDR block: For example, 192.168.0.0/24 allows IP addresses from 192.168.0.1 to 192.168.0.255 to access the ApsaraDB for ClickHouse cluster.
+        # >- Do not enter 0.0.0.0.
+        # - Set the value to 127.0.0.1 to deny access from all IP addresses.
         # 
         # This parameter is required.
         self.security_ips = security_ips

@@ -23,9 +23,7 @@ class DescribeBackupsResponseBody(DaraModel):
         # The number of entries per page. Valid values:
         # 
         # - **30** (default)
-        # 
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The request ID.
@@ -91,6 +89,7 @@ class DescribeBackupsResponseBodyItems(DaraModel):
         backup_end_time: str = None,
         backup_id: str = None,
         backup_method: str = None,
+        backup_schedule_type: str = None,
         backup_set_info: str = None,
         backup_size: int = None,
         backup_start_time: str = None,
@@ -99,37 +98,36 @@ class DescribeBackupsResponseBodyItems(DaraModel):
         dbcluster_id: str = None,
         expire_date: str = None,
     ):
-        # The end time of the backup. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
+        # The end time of the backup. Format: yyyy-MM-ddTHH:mmZ (UTC).
         self.backup_end_time = backup_end_time
-        # The data backup task ID.
+        # The ID of the backup task.
         self.backup_id = backup_id
-        # The backup method. The value is always **Physical**, which indicates a physical backup.
+        # The backup method. The only valid value is **Physical**, which indicates physical backup.
         self.backup_method = backup_method
-        # The number of cluster nodes.
+        # The backup schedule type. Valid values: manual (manual backup) and scheduled (automatic backup).
+        self.backup_schedule_type = backup_schedule_type
+        # The number of nodes in the cluster.
         # 
-        # - For a single-replica edition cluster, the value is an integer from 1 to 48.
-        # 
-        # - For a double-replica edition cluster, the value is an integer from 1 to 24.
+        # - Single-replica edition: 1 to 48.
+        # - Master-replica edition: 1 to 24.
         self.backup_set_info = backup_set_info
         # The backup size. Unit: MB.
         self.backup_size = backup_size
-        # The start time of the backup. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
+        # The start time of the backup. Format: yyyy-MM-ddTHH:mmZ (UTC).
         self.backup_start_time = backup_start_time
         # The backup status. Valid values:
         # 
-        # - **Success**: The backup is successful.
-        # 
+        # - **Success**: The backup is completed.
         # - **Failure**: The backup failed.
         self.backup_status = backup_status
         # The backup type. Valid values:
         # 
-        # - **FullBackup**: full backup.
-        # 
-        # - **IncrementalBackup**: incremental backup.
+        # - **FullBackup**: full backup
+        # - **IncrementalBackup**: incremental backup
         self.backup_type = backup_type
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The expiration time of the backup set. The time is in the yyyy-MM-ddTHH:mmZ format and is displayed in UTC.
+        # The expiration time of the backup set. Format: yyyy-MM-ddTHH:mmZ (UTC).
         self.expire_date = expire_date
 
     def validate(self):
@@ -148,6 +146,9 @@ class DescribeBackupsResponseBodyItems(DaraModel):
 
         if self.backup_method is not None:
             result['BackupMethod'] = self.backup_method
+
+        if self.backup_schedule_type is not None:
+            result['BackupScheduleType'] = self.backup_schedule_type
 
         if self.backup_set_info is not None:
             result['BackupSetInfo'] = self.backup_set_info
@@ -182,6 +183,9 @@ class DescribeBackupsResponseBodyItems(DaraModel):
 
         if m.get('BackupMethod') is not None:
             self.backup_method = m.get('BackupMethod')
+
+        if m.get('BackupScheduleType') is not None:
+            self.backup_schedule_type = m.get('BackupScheduleType')
 
         if m.get('BackupSetInfo') is not None:
             self.backup_set_info = m.get('BackupSetInfo')

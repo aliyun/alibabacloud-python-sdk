@@ -30,21 +30,18 @@ class RestartInstanceNodeListRequest(DaraModel):
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
         # - **30** (default)
-        # 
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The scheduled restart time. The time is in the yyyy-MM-ddTHH:mmZ format and is in UTC.
-        # 
-        # > If this parameter is left empty or set to a time earlier than the current time, the cluster restarts immediately.
+        # The scheduled restart time. Format: yyyy-MM-ddTHH:mmZ (UTC).
+        # >If this parameter is left empty or set to a time earlier than the current time, the cluster is restarted immediately.
         self.restart_time = restart_time
 
     def validate(self):

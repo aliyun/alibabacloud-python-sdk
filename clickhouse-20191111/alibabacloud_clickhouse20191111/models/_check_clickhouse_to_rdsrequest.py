@@ -22,33 +22,33 @@ class CheckClickhouseToRDSRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The password for the ApsaraDB for ClickHouse database account.
+        # The password of the database account for the ApsaraDB for ClickHouse cluster.
         # 
         # This parameter is required.
         self.ck_password = ck_password
-        # The database account for the ApsaraDB for ClickHouse cluster.
+        # The database account of the ApsaraDB for ClickHouse cluster.
         # 
         # This parameter is required.
         self.ck_user_name = ck_user_name
         # The port number of the ApsaraDB for ClickHouse cluster.
         self.clickhouse_port = clickhouse_port
-        # The ID of the community-compatible ApsaraDB for ClickHouse cluster.
+        # The ID of the ApsaraDB for ClickHouse Community-compatible Edition cluster.
         # 
         # This parameter is required.
         self.db_cluster_id = db_cluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the ApsaraDB RDS instance.
+        # The instance ID of the ApsaraDB RDS database.
         # 
         # This parameter is required.
         self.rds_id = rds_id
-        # The password for the ApsaraDB RDS database account.
+        # The password of the database account for the ApsaraDB RDS instance.
         # 
         # This parameter is required.
         self.rds_password = rds_password
         # The port number of the ApsaraDB RDS instance.
         self.rds_port = rds_port
-        # The database account for the ApsaraDB RDS instance.
+        # The database account of the ApsaraDB RDS instance.
         # 
         # This parameter is required.
         self.rds_user_name = rds_user_name

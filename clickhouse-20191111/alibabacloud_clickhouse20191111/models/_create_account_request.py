@@ -17,33 +17,21 @@ class CreateAccountRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # The description of the database account.
-        # 
-        # > 
-        # 
-        # *   The description cannot start with http:// or https://.
-        # 
-        # *   The description must be 0 to 256 characters in length.
+        # >- It cannot start with http:// or https://.
+        # - It must be 0 to 256 characters in length.
         self.account_description = account_description
-        # The name of the database account.
-        # 
-        # > 
-        # 
-        # *   The name must be unique in the cluster.
-        # 
-        # *   The name can contain lowercase letters, digits, and underscores (_).
-        # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
-        # *   The name must be 2 to 64 characters in length.
+        # The database account name.
+        # >- The name must be unique.
+        # - It can contain lowercase letters, digits, and underscores (_).
+        # - It must start with a lowercase letter and end with a lowercase letter or digit.
+        # - It must be 2 to 64 characters in length.
         # 
         # This parameter is required.
         self.account_name = account_name
         # The password of the database account.
-        # 
-        # > 
-        # 
-        # *   The password must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
-        # 
-        # *   The password can contain the following special characters: ! @ # $ % ^ & \\* ( ) _ + - =
-        # *   The password must be 8 to 32 characters in length.
+        # >- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # - Special characters include !@#$%^&*()_+-=
+        # - It must be 8 to 32 characters in length.
         # 
         # This parameter is required.
         self.account_password = account_password

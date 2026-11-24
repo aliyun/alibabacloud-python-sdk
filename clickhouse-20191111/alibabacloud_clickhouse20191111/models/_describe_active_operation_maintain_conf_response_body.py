@@ -12,13 +12,12 @@ class DescribeActiveOperationMaintainConfResponseBody(DaraModel):
         has_config: int = None,
         request_id: str = None,
     ):
-        # The active O\\&M configuration items.
+        # The proactive maintenance configuration.
         self.config = config
-        # Indicates whether a configuration is set.
+        # Indicates whether proactive maintenance is configured. Valid values:
         # 
-        # - 1: A configuration is set.
-        # 
-        # - 0: No configuration is set.
+        # - 1: Configured.
+        # - 0: Not configured.
         self.has_config = has_config
         # The request ID.
         self.request_id = request_id
@@ -68,27 +67,28 @@ class DescribeActiveOperationMaintainConfResponseBodyConfig(DaraModel):
         modified_time: str = None,
         status: int = None,
     ):
-        # The time when the configuration was created.
+        # The creation time.
         self.created_time = created_time
-        # The day of the cycle.
+        # The cycle time.
         # 
-        # - If CycleType is Month, this parameter returns one or more numbers from 1 to 28 that indicate the day of the month. Multiple numbers are separated by commas (,).
-        # 
-        # - If CycleType is Week, this parameter returns one or more numbers from 1 to 7 that indicate the day of the week. Multiple numbers are separated by commas (,).
+        # - If CycleType is set to Month, the return value is a number from 1 to 28, which indicates the day of the month. Multiple values are separated by commas (,).
+        # - If CycleType is set to Week, the return value is a number from 1 to 7, which indicates the day of the week. Multiple values are separated by commas (,).
         self.cycle_time = cycle_time
-        # The cycle type.
+        # The cycle type. Valid values:
         # 
-        # - Month
-        # 
-        # - Week
+        # - Month: Monthly.
+        # - Week: Weekly.
         self.cycle_type = cycle_type
         # The end time of the maintenance window.
         self.maintain_end_time = maintain_end_time
         # The start time of the maintenance window.
         self.maintain_start_time = maintain_start_time
-        # The time when the configuration was last modified.
+        # The modification time.
         self.modified_time = modified_time
-        # The status of the configuration. A value of 1 indicates that the configuration is enabled. A value of 2 indicates that the configuration is disabled.
+        # Indicates whether the configuration takes effect. Valid values:
+        # 
+        # - 1: Yes.
+        # - 2: No.
         self.status = status
 
     def validate(self):

@@ -12,19 +12,19 @@ class ModifyDBClusterConfigInXMLRequest(DaraModel):
         reason: str = None,
         region_id: str = None,
     ):
-        # The configuration parameters to modify. Call the [DescribeDBClusterConfigInXML](https://help.aliyun.com/document_detail/452210.html) operation to query the current configuration parameters. Then, modify the returned parameters.
-        # 
-        # > When you modify a parameter, you must include all other configuration parameters in the request. If a parameter is not included, it retains its initial value or the modification fails.
+        # The configuration parameters to be modified. You can call the [DescribeDBClusterConfigInXML](https://help.aliyun.com/document_detail/452210.html) operation to query the configuration parameters and modify the returned parameters.
+        # >To modify a single parameter, you must pass all configuration parameters. Parameters that are not passed retain their original values or cause the configuration parameter modification to fail.
         # 
         # This parameter is required.
         self.config = config
-        # The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the IDs of all clusters in a region.
+        # The cluster ID.
+        # You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query all clusters in the target region, including their cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The reason for the modification.
+        # The description of the modification.
         self.reason = reason
-        # The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query available region IDs.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -22,35 +22,27 @@ class DescribeDBClustersRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tag: List[main_models.DescribeDBClustersRequestTag] = None,
+        vpc_ids: str = None,
     ):
-        # The cluster description.
+        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The cluster ID.
-        # 
-        # > If you do not specify this parameter, information about all clusters is queried by default.
+        # The cluster IDs.
+        # >If you do not specify this parameter, the information about all clusters is queried by default.
         self.dbcluster_ids = dbcluster_ids
-        # The state of the cluster. Valid values:
-        # 
-        # - **Preparing**: The cluster is being prepared.
-        # 
-        # - **Creating**: The cluster is being created.
-        # 
-        # - **Running**: The cluster is running.
-        # 
-        # - **Deleting**: The cluster is being deleted.
-        # 
-        # - **SCALING_OUT**: The cluster is being scaled out.
+        # The status of the cluster. Valid values:
+        # - **Preparing**: preparing
+        # - **Creating**: creating
+        # - **Running**: running
+        # - **Deleting**: deleting
+        # - **SCALING_OUT**: scaling out
         self.dbcluster_status = dbcluster_status
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # - **30** (Default)
-        # 
+        # - **30** (default)
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
@@ -63,6 +55,8 @@ class DescribeDBClustersRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The tags.
         self.tag = tag
+        # The VPC IDs.
+        self.vpc_ids = vpc_ids
 
     def validate(self):
         if self.tag:
@@ -113,6 +107,9 @@ class DescribeDBClustersRequest(DaraModel):
             for k1 in self.tag:
                 result['Tag'].append(k1.to_map() if k1 else None)
 
+        if self.vpc_ids is not None:
+            result['VpcIds'] = self.vpc_ids
+
         return result
 
     def from_map(self, m: dict = None):
@@ -156,6 +153,9 @@ class DescribeDBClustersRequest(DaraModel):
                 temp_model = main_models.DescribeDBClustersRequestTag()
                 self.tag.append(temp_model.from_map(k1))
 
+        if m.get('VpcIds') is not None:
+            self.vpc_ids = m.get('VpcIds')
+
         return self
 
 class DescribeDBClustersRequestTag(DaraModel):
@@ -164,9 +164,9 @@ class DescribeDBClustersRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

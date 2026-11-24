@@ -10,11 +10,11 @@ class CheckModifyConfigNeedRestartRequest(DaraModel):
         config: str = None,
         dbcluster_id: str = None,
     ):
-        # The configuration parameters to change.
+        # The configuration parameters to be modified.
         # 
         # This parameter is required.
         self.config = config
-        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the information of all clusters in the target region, including the cluster ID.
+        # The ID of the cluster. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query all clusters in a specified region and obtain the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

@@ -28,7 +28,7 @@ class CheckScaleOutBalancedRequest(DaraModel):
         # The number of entries per page. Valid values:
         # - **30** (default)
         # - **50**
-        # - **100**.
+        # - **100**
         self.page_size = page_size
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         # 
@@ -36,6 +36,11 @@ class CheckScaleOutBalancedRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The upgrade/downgrade type. Valid values:
+        # - ScaleOut: horizontal scaling
+        # - ScaleIn: horizontal scale-in
+        # - MultiAzUpgrade: upgrade to multi-zone deployment
+        # - DiskDownGrade: decrease the quota for disks
         self.scaling_type = scaling_type
 
     def validate(self):

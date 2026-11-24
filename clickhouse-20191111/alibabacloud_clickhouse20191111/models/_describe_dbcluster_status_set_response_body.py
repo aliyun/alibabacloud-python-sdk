@@ -14,7 +14,7 @@ class DescribeDBClusterStatusSetResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The set of instance statuses.
+        # The instance status set.
         self.status_set = status_set
 
     def validate(self):

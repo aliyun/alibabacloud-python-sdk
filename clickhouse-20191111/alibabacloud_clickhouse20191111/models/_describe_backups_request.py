@@ -18,13 +18,13 @@ class DescribeBackupsRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The data backup task ID.
+        # The ID of the backup task.
         self.backup_id = backup_id
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # The end time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
@@ -35,14 +35,12 @@ class DescribeBackupsRequest(DaraModel):
         # The number of entries per page. Valid values:
         # 
         # - **30** (default)
-        # 
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+        # The start time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

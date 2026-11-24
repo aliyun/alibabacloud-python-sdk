@@ -15,7 +15,7 @@ class DescribeSlowLogRecordsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The details of the slow query logs.
+        # The list of slow log details.
         self.slow_log_records = slow_log_records
 
     def validate(self):
@@ -56,11 +56,11 @@ class DescribeSlowLogRecordsResponseBodySlowLogRecords(DaraModel):
         table_schema: main_models.DescribeSlowLogRecordsResponseBodySlowLogRecordsTableSchema = None,
     ):
         self.data = data
-        # The number of rows in the result set.
+        # The number of rows in the returned result set.
         self.rows = rows
-        # The number of entries on each page.
+        # The page size.
         self.rows_before_limit_at_least = rows_before_limit_at_least
-        # The statistics of the query results.
+        # The statistics information of the query results.
         self.statistics = statistics
         self.table_schema = table_schema
 
@@ -193,11 +193,11 @@ class DescribeSlowLogRecordsResponseBodySlowLogRecordsStatistics(DaraModel):
         elapsed_time: float = None,
         rows_read: int = None,
     ):
-        # The amount of data read, in bytes.
+        # The maximum amount of data read. Unit: bytes.
         self.bytes_read = bytes_read
-        # The time elapsed for the slow query, in milliseconds.
+        # The time elapsed for the slow query. Unit: milliseconds.
         self.elapsed_time = elapsed_time
-        # The number of rows read.
+        # The maximum number of rows read.
         self.rows_read = rows_read
 
     def validate(self):

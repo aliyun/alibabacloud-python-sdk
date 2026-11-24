@@ -16,7 +16,7 @@ class DescribeAutoRenewAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID.
+        # The cluster IDs.
         self.dbcluster_ids = dbcluster_ids
         self.owner_account = owner_account
         self.owner_id = owner_id

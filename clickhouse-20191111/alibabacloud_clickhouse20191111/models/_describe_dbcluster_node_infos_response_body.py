@@ -17,23 +17,20 @@ class DescribeDBClusterNodeInfosResponseBody(DaraModel):
         total_node_count: int = None,
         zk_node_infos: List[main_models.DescribeDBClusterNodeInfosResponseBodyZkNodeInfos] = None,
     ):
-        # The information about the ClickHouse nodes.
+        # The ApsaraDB for ClickHouse node information.
         self.node_infos = node_infos
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
         # - **30** (default)
-        # 
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         # The total number of nodes.
         self.total_node_count = total_node_count
-        # The information about the ZooKeeper nodes.
+        # The ZooKeeper node information.
         self.zk_node_infos = zk_node_infos
 
     def validate(self):
@@ -110,7 +107,7 @@ class DescribeDBClusterNodeInfosResponseBodyZkNodeInfos(DaraModel):
         node_name: str = None,
         replica_id: str = None,
     ):
-        # Indicates whether a disaster recovery test is in progress.
+        # Indicates whether a disaster recovery drill is in progress.
         self.failover_testing = failover_testing
         # The node name.
         self.node_name = node_name
@@ -158,9 +155,9 @@ class DescribeDBClusterNodeInfosResponseBodyNodeInfos(DaraModel):
         replica_id: str = None,
         shard_id: str = None,
     ):
-        # Indicates whether a disaster recovery test is in progress.
+        # Indicates whether a disaster recovery drill is in progress.
         self.failover_testing = failover_testing
-        # The IP address of the node.
+        # The node IP address.
         self.node_ip = node_ip
         # The node name.
         self.node_name = node_name

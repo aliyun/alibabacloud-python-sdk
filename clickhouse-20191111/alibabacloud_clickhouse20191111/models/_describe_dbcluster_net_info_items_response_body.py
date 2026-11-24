@@ -17,11 +17,9 @@ class DescribeDBClusterNetInfoItemsResponseBody(DaraModel):
     ):
         # The network type. Only VPC is supported.
         self.cluster_network_type = cluster_network_type
-        # Indicates whether Server Load Balancer (SLB) is enabled in the VPC. Valid values:
-        # 
-        # - true: enabled.
-        # 
-        # - false: disabled.
+        # Indicates whether SLB is enabled in the VPC. Valid values:
+        # - true: Enabled.
+        # - false: Disabled.
         # 
         # This parameter is required.
         self.enable_slb = enable_slb

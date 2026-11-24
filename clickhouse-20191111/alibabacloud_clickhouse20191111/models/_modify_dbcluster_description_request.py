@@ -14,10 +14,8 @@ class ModifyDBClusterDescriptionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster description. The description must meet the following requirements:
-        # 
-        # - It cannot start with http\\:// or https\\://.
-        # 
+        # The cluster name. The naming rules are as follows:
+        # - It cannot start with http:// or https://.
         # - It must be 2 to 256 characters in length.
         # 
         # This parameter is required.

@@ -18,13 +18,13 @@ class DescribeSynDbsResponseBody(DaraModel):
     ):
         # The current page number.
         self.page_number = page_number
-        # The number of records on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The synchronized data.
+        # The synchronization data.
         self.syn_dbs = syn_dbs
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,22 +89,20 @@ class DescribeSynDbsResponseBodySynDbs(DaraModel):
         syn_db: str = None,
         syn_status: bool = None,
     ):
-        # - This parameter is not returned if **SynStatus** is **true**.
-        # 
-        # - If **SynStatus** is **false**, this parameter indicates the reason for the synchronization failure.
+        # - This parameter is not returned when **SynStatus** is **true**.
+        # - When **SynStatus** is **false**, this parameter indicates the cause of the synchronization failure.
         self.error_msg = error_msg
-        # The instance ID of the ApsaraDB RDS for MySQL instance.
+        # The instance ID of the ApsaraDB RDS for MySQL database.
         self.rds_id = rds_id
-        # The database account for the ApsaraDB RDS for MySQL instance.
+        # The database account of the ApsaraDB RDS for MySQL instance.
         self.rds_user_name = rds_user_name
-        # The internal endpoint of the ApsaraDB RDS for MySQL instance.
+        # The internal network connection endpoint of the ApsaraDB RDS for MySQL database.
         self.rds_vpc_url = rds_vpc_url
-        # The database in the ApsaraDB RDS for MySQL instance.
+        # The database of the ApsaraDB RDS for MySQL instance.
         self.syn_db = syn_db
-        # Indicates whether the synchronization was successful. Valid values:
+        # Indicates whether the synchronization is successful. Valid values:
         # 
-        # - **true**: The synchronization was successful.
-        # 
+        # - **true**: The synchronization is successful.
         # - **false**: The synchronization failed.
         self.syn_status = syn_status
 

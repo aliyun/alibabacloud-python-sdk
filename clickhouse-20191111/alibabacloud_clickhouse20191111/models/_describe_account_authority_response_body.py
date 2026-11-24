@@ -18,7 +18,7 @@ class DescribeAccountAuthorityResponseBody(DaraModel):
         total_databases: List[str] = None,
         total_dictionaries: List[str] = None,
     ):
-        # The database account name.
+        # The database account.
         self.account_name = account_name
         # The list of authorized databases.
         self.allow_databases = allow_databases
@@ -26,21 +26,19 @@ class DescribeAccountAuthorityResponseBody(DaraModel):
         self.allow_dictionaries = allow_dictionaries
         # Indicates whether the account has DDL permissions. Valid values:
         # 
-        # - **true**: DDL permissions are granted.
-        # 
-        # - **false**: DDL permissions are denied.
+        # - **true**: DDL is allowed.
+        # - **false**: DDL is not allowed.
         self.ddl_authority = ddl_authority
-        # The DML permission level for the account. Valid values:
+        # Indicates whether the account has DML permissions. Valid values:
         # 
-        # - **all**: read, write, and settings permissions.
-        # 
-        # - **readOnly,modify**: read and settings permissions.
+        # - **all**: Read, write, and settings permissions.
+        # - **readOnly,modify**: Read and settings permissions.
         self.dml_authority = dml_authority
         # The request ID.
         self.request_id = request_id
-        # A list of all databases in the cluster.
+        # The list of all databases.
         self.total_databases = total_databases
-        # A list of all dictionaries in the cluster.
+        # The list of all dictionaries.
         self.total_dictionaries = total_dictionaries
 
     def validate(self):

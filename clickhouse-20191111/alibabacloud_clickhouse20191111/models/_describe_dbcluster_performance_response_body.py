@@ -18,13 +18,13 @@ class DescribeDBClusterPerformanceResponseBody(DaraModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range that was queried. The time is in UTC, formatted as `yyyy-MM-ddTHH:mmZ`.
+        # The end time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC time).
         self.end_time = end_time
-        # The list of performance metrics for the cluster.
+        # The list of cluster performance metric values.
         self.performances = performances
         # The request ID.
         self.request_id = request_id
-        # The beginning of the time range that was queried. The time is in UTC, formatted as `yyyy-MM-ddTHH:mmZ`.
+        # The start time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC time).
         self.start_time = start_time
 
     def validate(self):
@@ -87,13 +87,13 @@ class DescribeDBClusterPerformanceResponseBodyPerformances(DaraModel):
         series: List[main_models.DescribeDBClusterPerformanceResponseBodyPerformancesSeries] = None,
         unit: str = None,
     ):
-        # The name of the performance metric.
+        # The name of the performance metrics.
         self.key = key
-        # The name of the performance metric.
+        # The name of the performance value.
         self.name = name
-        # The time series data for the metric.
+        # The collection of performance metrics.
         self.series = series
-        # The unit of the metric.
+        # The data unit.
         self.unit = unit
 
     def validate(self):
@@ -148,9 +148,9 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(DaraModel):
         name: str = None,
         values: List[main_models.DescribeDBClusterPerformanceResponseBodyPerformancesSeriesValues] = None,
     ):
-        # The name of the time series.
+        # The name of the performance data list.
         self.name = name
-        # The values of the performance metrics, each associated with a sampling timestamp.
+        # The performance metric values. Each value corresponds to a collection time point.
         self.values = values
 
     def validate(self):
@@ -192,7 +192,7 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeriesValues(DaraModel
         self,
         point: List[str] = None,
     ):
-        # The value of the performance metric.
+        # The performance value.
         self.point = point
 
     def validate(self):

@@ -17,8 +17,7 @@ class DescribeAccountsRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # The name of the database account.
-        # 
-        # > If this parameter is not specified, the operation queries information about all database accounts.
+        # >If you do not specify this parameter, the system queries the information of all database accounts by default.
         self.account_name = account_name
         # The cluster ID.
         # 
@@ -26,14 +25,11 @@ class DescribeAccountsRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
-        # 
+        # The number of entries per page. Valid values:
         # - **30** (default)
-        # 
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account

@@ -16,21 +16,19 @@ class ModifyDBClusterConfigRequest(DaraModel):
         resource_owner_id: int = None,
         user_config: str = None,
     ):
-        # The ID of the cluster. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in a specific region. This information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the information about all clusters in the specified region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The reason for the modification.
+        # The description of the modification.
         self.reason = reason
-        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent list of regions.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The configuration parameters to modify.
-        # 
-        # > You can modify a single configuration parameter. Parameters that are not specified in the request are not affected.
+        # The configuration parameters to be modified. > You can modify a single configuration parameter. Configuration parameters that are not specified remain unaffected.
         # 
         # This parameter is required.
         self.user_config = user_config

@@ -22,25 +22,20 @@ class ElectZookeeperLeaderRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to disable writes.
+        # Specifies whether to disable write operations.
         self.disable_write = disable_write
-        # The time to perform the leader switchover.
+        # The time when the primary switchover is performed. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.elect_time = elect_time
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
-        # 
-        # - **30** (Default)
-        # 
+        # The number of entries per page. Valid values:
+        # - **30** (default)
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
-        # The region ID.
-        # 
-        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

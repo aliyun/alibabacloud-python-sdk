@@ -17,7 +17,7 @@ class CreateBackupPolicyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The backup retention period in days. The value must be an integer from 7 to 730. The default value is 7.
+        # The backup retention period. Default value: 7 days. Valid values: 7 to 730. Unit: days.
         self.backup_retention_period = backup_retention_period
         # The cluster ID.
         # 
@@ -25,31 +25,24 @@ class CreateBackupPolicyRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The backup cycle. If you specify multiple days, separate them with commas. Valid values:
-        # 
-        # - **Monday**
-        # 
-        # - **Tuesday**
-        # 
-        # - **Wednesday**
-        # 
-        # - **Thursday**
-        # 
-        # - **Friday**
-        # 
-        # - **Saturday**
-        # 
-        # - **Sunday**
+        # The backup cycle. Separate multiple values with commas (,). Valid values:
+        # - **Monday**: Monday.
+        # - **Tuesday**: Tuesday.
+        # - **Wednesday**: Wednesday.
+        # - **Thursday**: Thursday.
+        # - **Friday**: Friday.
+        # - **Saturday**: Saturday.
+        # - **Sunday**: Sunday.
         # 
         # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
-        # The backup time in UTC. The format is HH:mmZ-HH:mmZ.
+        # The backup time in UTC. Format: HH:mmZ-HH:mmZ.
         # 
-        # Example: 00:00Z-01:00Z. This means that data backup can be performed from 00:00 to 01:00 UTC (08:00 to 09:00 UTC+8).
+        # Example: 00:00Z-01:00Z indicates that data can be backed up from 00:00 to 01:00 UTC (08:00 to 09:00 UTC+8).
         # 
         # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
-        # The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

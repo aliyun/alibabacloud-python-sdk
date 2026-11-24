@@ -28,21 +28,19 @@ class TransferVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The time windows during which writes are disabled.
+        # The write suspension window.
         self.disable_write_windows = disable_write_windows
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
+        # The number of entries per page. Valid values:
         # 
-        # - **30** (Default)
-        # 
+        # - **30** (default)
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
-        # The ID of the region. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent list of regions.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -52,14 +50,13 @@ class TransferVersionRequest(DaraModel):
         # 
         # This parameter is required.
         self.source_account = source_account
-        # The name of the self-managed ClickHouse cluster.
-        # To obtain the name, execute `SELECT * FROM system.clusters`.
+        # The cluster name of the self-managed ClickHouse cluster. You can execute the `SELECT * FROM system.clusters` statement to obtain the cluster name.
         self.source_cluster_name = source_cluster_name
         # The password of the source account.
         # 
         # This parameter is required.
         self.source_password = source_password
-        # The addresses and TCP ports of the shards in the self-managed ClickHouse cluster.
+        # The address and TCP port information of the self-managed ClickHouse cluster.
         self.source_shards = source_shards
         # The destination account.
         # 

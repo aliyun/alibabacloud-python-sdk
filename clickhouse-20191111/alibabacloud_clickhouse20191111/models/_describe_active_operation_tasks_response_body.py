@@ -16,16 +16,13 @@ class DescribeActiveOperationTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The list of O\\&M tasks.
+        # The list of O&M tasks.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries returned per page. Valid values:
-        # 
-        # - **30** (Default)
-        # 
+        # The number of entries per page. Valid values:
+        # - **30** (default)
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The request ID.
@@ -117,41 +114,33 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
-        # Specifies whether the task can be canceled. Return values:
-        # 
-        # - **-1**: All
-        # 
-        # - **0**: No
-        # 
-        # - **1**: Yes
+        # Indicates whether the task can be canceled. Valid values:
+        # - **-1**: all
+        # - **0**: not allowed
+        # - **1**: allowed
         self.allow_cancel = allow_cancel
-        # Specifies whether the time can be changed. Return values:
-        # 
-        # - **-1**: All
-        # 
-        # - **0**: No
-        # 
-        # - **1**: Yes
+        # Indicates whether the execution time can be modified. Valid values:
+        # - **-1**: all
+        # - **0**: not allowed
+        # - **1**: allowed
         self.allow_change = allow_change
-        # The event level code.
-        # 
-        # - **S1**: System O\\&M.
-        # 
-        # - **S0**: Threat fixing.
+        # The event level code. Valid values:
+        # - **S1**: system O&M.
+        # - **S0**: risk fix.
         self.change_level = change_level
         # The English name of the change level.
         self.change_level_en = change_level_en
         # The event level in Chinese.
         self.change_level_zh = change_level_zh
-        # The creation time. The time is in UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The creation time in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.
         self.created_time = created_time
         # The current zone.
         self.current_avz = current_avz
         # The database type.
         self.db_type = db_type
-        # The kernel version of the cluster.
+        # The Milvus version of the cluster kernel.
         self.db_version = db_version
-        # The latest time to which the task execution time can be adjusted. The time is in UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The deadline for adjusting the task execution time in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.
         self.deadline = deadline
         # The task ID.
         self.id = id
@@ -165,7 +154,7 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         self.ins_comment = ins_comment
         # The instance ID.
         self.ins_name = ins_name
-        # The modification time. The time is in UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The modification time in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.
         self.modified_time = modified_time
         # The preparation time required between the start time and the switchover time. The format is HH:mm:ss.
         self.prepare_interval = prepare_interval
@@ -173,33 +162,27 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         self.region = region
         # The description of the execution result.
         self.result_info = result_info
-        # The time when the backend executes the task. The time is in UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The time when the backend executes the task in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.
         self.start_time = start_time
-        # The running status of the task. Return values:
-        # 
-        # - **2**: Waiting for the user to specify a time.
-        # 
-        # - **3**: To be processed.
-        # 
-        # - **4**: In progress.
-        # 
-        # - **5**: Successful.
-        # 
-        # - **6**: Failed.
-        # 
-        # - **7**: Canceled.
+        # The running status of the task. Valid values:
+        # - **2**: waiting for the user to specify a time.
+        # - **3**: pending.
+        # - **4**: in progress.
+        # - **5**: successful.
+        # - **6**: failed.
+        # - **7**: canceled.
         self.status = status
-        # The sub-instance IDs.
+        # The instance ID of the sub-instances.
         self.sub_ins_names = sub_ins_names
-        # The time when the backend initiates the switchover. The time is in UTC format (YYYY-MM-DDTHH:mm:ssZ).
+        # The time when the backend initiates the switchover operation in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.
         self.switch_time = switch_time
-        # The O\\&M event parameters.
+        # The O&M event parameters.
         self.task_params = task_params
-        # The O\\&M event task type.
+        # The O&M event task type.
         self.task_type = task_type
         # The task type in English.
         self.task_type_en = task_type_en
-        # The task reason in Chinese.
+        # The task cause in Chinese.
         self.task_type_zh = task_type_zh
 
     def validate(self):

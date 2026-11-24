@@ -17,25 +17,24 @@ class DescribeSlowLogTrendRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in a specific region, including cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query all clusters in the specified region, including their cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. Specify the time in the \\`yyyy-MM-dd hh:mm:ss\\` format. The time is in UTC.
-        # 
-        # > The end time must be later than the start time. The time range cannot exceed 7 days.
+        # The end time of the query. Format: yyyy-MM-dd hh:mm:ss (UTC).
+        # >The end time must be later than the start time, and the interval between the start time and the end time must be less than 7 days.
         # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The execution duration of a slow SQL query, in milliseconds. The minimum value is **1000**. The default value is **1000**. The operation returns slow SQL queries that take longer than this duration to execute.
+        # The execution duration of slow SQL statements. Minimum value: **1000**. Default value: **1000**. Unit: milliseconds. The response returns slow SQL statements whose execution duration exceeds this value.
         self.query_duration_ms = query_duration_ms
-        # The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in the \\`yyyy-MM-dd hh:mm:ss\\` format. The time is in UTC.
+        # The start time of the query. Format: yyyy-MM-dd hh:mm:ss (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time

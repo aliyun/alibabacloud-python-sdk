@@ -25,24 +25,17 @@ class DescribeActiveOperationTasksRequest(DaraModel):
         task_type: str = None,
     ):
         # Specifies whether the task can be canceled. Valid values:
-        # 
-        # - **0**: The task cannot be canceled.
-        # 
-        # - **1**: The task can be canceled.
+        # - **0**: not allowed.
+        # - **1**: allowed.
         self.allow_cancel = allow_cancel
-        # Specifies whether the time can be changed. Valid values:
-        # 
-        # - **0**: The time cannot be changed.
-        # 
-        # - **1**: The time can be changed.
+        # Specifies whether the execution time can be modified. Valid values:
+        # - **0**: not allowed.
+        # - **1**: allowed.
         self.allow_change = allow_change
         # The task level. Valid values:
-        # 
-        # - **all** (Default): All levels.
-        # 
-        # - **S0**: Returns tasks for fixing exceptions.
-        # 
-        # - **S1**: Returns tasks for system O\\&M.
+        # - **all** (default): all levels.
+        # - **S0**: exception fix tasks.
+        # - **S1**: system O&M tasks.
         self.change_level = change_level
         # The database type.
         self.db_type = db_type
@@ -52,40 +45,29 @@ class DescribeActiveOperationTasksRequest(DaraModel):
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
-        # 
-        # - **30** (Default)
-        # 
+        # The number of entries per page. Valid values:
+        # - **30** (default)
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The product ID.
         self.product_id = product_id
-        # The region ID.
+        # The region.
         self.region = region
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The task status. This parameter is used to filter tasks.
-        # 
-        # - **-1:** All tasks.
-        # 
-        # - **3:** Tasks to be processed.
-        # 
-        # - **4:** Tasks in progress.
-        # 
-        # - **5:** Successfully completed tasks.
-        # 
-        # - **6:** Failed tasks.
-        # 
-        # - **7:** Canceled tasks.
+        # The task status, which is used to filter returned tasks. Valid values:
+        # - **-1**: all tasks.
+        # - **3**: pending tasks.
+        # - **4**: in-progress tasks.
+        # - **5**: successfully completed tasks.
+        # - **6**: failed tasks.
+        # - **7**: canceled tasks.
         self.status = status
         # The task type. Valid values:
-        # 
-        # - **rds_apsaradb_upgrade**: Minor version upgrade.
-        # 
-        # - **all**: All task types.
+        # - **rds_apsaradb_upgrade**: minor version update.
+        # - **all**: all task types.
         self.task_type = task_type
 
     def validate(self):

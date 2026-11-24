@@ -11,7 +11,7 @@ class ChangeResourceGroupRequest(DaraModel):
         resource_id: str = None,
         resource_region_id: str = None,
     ):
-        # The ID of the destination resource group.
+        # The target resource group.
         # 
         # This parameter is required.
         self.resource_group_id = resource_group_id

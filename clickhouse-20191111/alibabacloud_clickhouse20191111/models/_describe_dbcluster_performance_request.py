@@ -20,65 +20,42 @@ class DescribeDBClusterPerformanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the time range to query. Specify the time in UTC using the `yyyy-MM-ddTHH:mmZ` format.
-        # 
-        # > The end time must be later than the start time. The maximum time range cannot exceed 32 days.
+        # The end time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC time).
+        # >The end time must be later than the start time, and the time interval between the start time and the end time cannot exceed 32 days.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The performance metrics that you want to query. Separate multiple metric names with a comma (,). You can query up to five performance metrics at a time. The following performance metrics are supported:
-        # 
-        # > **Key** is required.
+        # The names of the performance metrics to query. Separate multiple values with commas (,). You can query up to 5 performance metrics at a time. The following performance metrics are supported:
+        # >**Key** is required.
         # 
         # - **CPU**:
-        # 
-        #   - **CPU_USAGE**: The CPU utilization.
-        # 
+        #     - **CPU_USAGE**: CPU utilization.
         # - **Memory**:
-        # 
-        #   - **MEM_USAGE**: The memory utilization.
-        # 
-        #   - **MEM_USAGE_SIZE**: The memory usage in MB.
-        # 
+        #     - **MEM_USAGE**: Memory utilization.
+        #     - **MEM_USAGE_SIZE**: Memory usage (unit: MB).
         # - **Disk**:
-        # 
-        #   - **DISK_USAGE**: The disk utilization.
-        # 
-        #   - **DISK_USAGE_SIZE**: The disk usage in MB.
-        # 
-        #   - **IOPS**: The disk input/output operations per second (IOPS).
-        # 
-        # - **Connection**:
-        # 
-        #   - **CONN_USAGE**: The database connection utilization.
-        # 
-        #   - **CONN_USAGE_COUNT**: The number of database connections.
-        # 
-        # - **Write**:
-        # 
-        #   - **TPS**: The number of rows written per second (TPS).
-        # 
-        #   - **INSERT_SIZE**: The write size per second in MB.
-        # 
-        # - **Query**:
-        # 
-        #   - **QPS**: The queries per second (QPS).
-        # 
-        #   - **AVG_SEEK**: The number of random SEEK calls.
-        # 
-        # - **WAIT**:
-        # 
-        #   - **ZK_WAIT**: The average wait time of ZooKeeper (ZK) in ms.
-        # 
-        #   - **IO_WAIT**: The average I/O wait time in ms.
-        # 
-        #   - **CPU_WAIT**: The average CPU wait time in ms.
+        #     - **DISK_USAGE**: Disk utilization. 
+        #     - **DISK_USAGE_SIZE**: Disk usage (unit: MB).
+        #     - **IOPS**: Disk IOPS.
+        # - **Connections**:
+        #     - **CONN_USAGE**: Database connection utilization.
+        #     - **CONN_USAGE_COUNT**: Number of database connections in use.
+        # - **Writes**: 
+        #     - **TPS**: Number of rows written per second.
+        #     - **INSERT_SIZE**: Size of data written per second (unit: MB).
+        # - **Queries**: 
+        #     - **QPS**: Queries per second (QPS).
+        #     - **AVG_SEEK**: Number of random SEEK calls.
+        # - **WAIT**: 
+        #     - **ZK_WAIT**: Average wait time for ZooKeeper (unit: ms).
+        #     - **IO_WAIT**: Average wait time for IO_WAIT (unit: ms).
+        #     - **CPU_WAIT**: Average wait time for CPU_WAIT (unit: ms).
         self.key = key
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the time range to query. Specify the time in UTC using the `yyyy-MM-ddTHH:mmZ` format.
+        # The start time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC time).
         # 
         # This parameter is required.
         self.start_time = start_time

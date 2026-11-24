@@ -14,16 +14,14 @@ class ModifyRDSToClickhouseDbResponseBody(DaraModel):
     ):
         # The error code.
         self.error_code = error_code
-        # - This parameter is not returned if **Status** is **1**.
-        # 
-        # - If **Status** is **0**, this parameter indicates the reason why the modification failed.
+        # - This parameter is not returned when **Status** is **1**.
+        # - When **Status** is **0**, this parameter indicates the cause of the modification failure.
         self.error_msg = error_msg
         # The request ID.
         self.request_id = request_id
         # Indicates whether the modification was successful. Valid values:
         # 
         # - **1**: The modification was successful.
-        # 
         # - **0**: The modification failed.
         self.status = status
 

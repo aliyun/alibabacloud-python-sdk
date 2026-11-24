@@ -25,11 +25,11 @@ class ModifyAccountAuthorityRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The list of databases to authorize. Separate multiple database names with commas (,).
+        # The databases to which you want to grant permissions. Separate multiple databases with commas (,).
         # 
         # This parameter is required.
         self.allow_databases = allow_databases
-        # The list of dictionaries to authorize. Separate multiple dictionary names with commas (,).
+        # The dictionaries to which you want to grant permissions. Separate multiple dictionaries with commas (,).
         # 
         # This parameter is required.
         self.allow_dictionaries = allow_dictionaries
@@ -37,31 +37,29 @@ class ModifyAccountAuthorityRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to grant DDL permissions to the database account. Valid values:
+        # Specifies whether to grant Data Definition Language (DDL) permissions to the database account. Valid values:
         # 
-        # - **true**: Allows DDL operations.
-        # 
-        # - **false**: Denies DDL operations.
+        # - **true**: allows DDL operations.
+        # - **false**: prohibits DDL operations.
         # 
         # This parameter is required.
         self.ddl_authority = ddl_authority
-        # The DML permissions granted to the database account. Valid values:
+        # Specifies whether to grant Data Manipulation Language (DML) permissions to the database account. Valid values:
         # 
-        # - **all**: Grants read, write, and modify permissions.
-        # 
-        # - **readonly,modify**: Grants read and modify permissions.
+        # - **all**: read, write, and settings permissions.
+        # - **readonly,modify**: read and settings permissions.
         # 
         # This parameter is required.
         self.dml_authority = dml_authority
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # All databases in the cluster. Separate multiple database names with commas (,).
+        # The list of all databases. Separate multiple databases with commas (,).
         self.total_databases = total_databases
-        # All dictionaries in the cluster. Separate multiple dictionary names with commas (,).
+        # The list of all dictionaries. Separate multiple dictionaries with commas (,).
         self.total_dictionaries = total_dictionaries
 
     def validate(self):

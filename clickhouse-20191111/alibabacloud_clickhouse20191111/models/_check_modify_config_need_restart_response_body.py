@@ -10,13 +10,11 @@ class CheckModifyConfigNeedRestartResponseBody(DaraModel):
         need_restart: bool = None,
         request_id: str = None,
     ):
-        # 变更配置参数后是否重启。取值说明：
-        # 
-        # - **true**：重启。
-        # 
-        # - **false**：不重启。
+        # Indicates whether a restart is required after the configuration parameters are modified. Valid values:
+        # - **true**: A restart is required.
+        # - **false**: No restart is required.
         self.need_restart = need_restart
-        # 请求 ID。
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

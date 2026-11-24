@@ -25,7 +25,7 @@ class CreateRDSToClickhouseDbRequest(DaraModel):
         skip_unsupported: bool = None,
         syn_db_tables: str = None,
     ):
-        # The password for the database account of the ApsaraDB for ClickHouse cluster.
+        # The password of the database account for the ApsaraDB for ClickHouse cluster.
         # 
         # This parameter is required.
         self.ck_password = ck_password
@@ -39,15 +39,15 @@ class CreateRDSToClickhouseDbRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_cluster_id = db_cluster_id
-        # The maximum number of rows to sync per second.
+        # The maximum number of rows to synchronize per second.
         self.limit_upper = limit_upper
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the ApsaraDB RDS for MySQL instance.
+        # The instance ID of the ApsaraDB RDS for MySQL database.
         # 
         # This parameter is required.
         self.rds_id = rds_id
-        # The password for the database account of the ApsaraDB RDS for MySQL instance.
+        # The password of the database account for the ApsaraDB RDS for MySQL instance.
         # 
         # This parameter is required.
         self.rds_password = rds_password
@@ -59,19 +59,18 @@ class CreateRDSToClickhouseDbRequest(DaraModel):
         self.rds_user_name = rds_user_name
         # The VPC ID of the ApsaraDB RDS for MySQL instance.
         self.rds_vpc_id = rds_vpc_id
-        # The internal endpoint of the ApsaraDB RDS instance.
+        # The internal endpoint of ApsaraDB RDS.
         self.rds_vpc_url = rds_vpc_url
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to skip unsupported table schemas. Valid values:
+        # Specifies whether to ignore table schemas that are not supported for synchronization. Valid values:
         # 
-        # - **true**: Skip.
-        # 
-        # - **false**: Do not skip.
+        # - **true**: Ignore.
+        # - **false**: Do not ignore.
         # 
         # This parameter is required.
         self.skip_unsupported = skip_unsupported
-        # The tables to sync.
+        # The tables to be synchronized.
         # 
         # This parameter is required.
         self.syn_db_tables = syn_db_tables

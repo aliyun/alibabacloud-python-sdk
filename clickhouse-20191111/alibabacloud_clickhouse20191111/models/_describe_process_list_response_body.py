@@ -13,7 +13,7 @@ class DescribeProcessListResponseBody(DaraModel):
         process_list: main_models.DescribeProcessListResponseBodyProcessList = None,
         request_id: str = None,
     ):
-        # The list of tasks.
+        # The process list.
         self.process_list = process_list
         # The request ID.
         self.request_id = request_id
@@ -56,11 +56,11 @@ class DescribeProcessListResponseBodyProcessList(DaraModel):
         table_schema: main_models.DescribeProcessListResponseBodyProcessListTableSchema = None,
     ):
         self.data = data
-        # The number of rows returned for the query.
+        # The number of data rows returned by the query.
         self.rows = rows
-        # The page size in rows.
+        # The page size.
         self.rows_before_limit_at_least = rows_before_limit_at_least
-        # The statistics of the query result.
+        # The statistics information of the query results.
         self.statistics = statistics
         self.table_schema = table_schema
 
@@ -193,11 +193,11 @@ class DescribeProcessListResponseBodyProcessListStatistics(DaraModel):
         elapsed_time: float = None,
         rows_read: int = None,
     ):
-        # The size of the scanned data, in bytes.
+        # The size of the scanned data. Unit: bytes.
         self.bytes_read = bytes_read
-        # The elapsed time.
+        # The average response time. Unit: milliseconds.
         self.elapsed_time = elapsed_time
-        # The number of rows scanned.
+        # The number of scanned data rows.
         self.rows_read = rows_read
 
     def validate(self):

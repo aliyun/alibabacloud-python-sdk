@@ -14,16 +14,14 @@ class DeleteSyndbResponseBody(DaraModel):
     ):
         # The error code.
         self.error_code = error_code
-        # - This parameter is not returned if **Status** is **true**.
-        # 
-        # - If **Status** is **false**, this parameter indicates the reason for the failure.
+        # - If **Status** is **true**, this parameter is not returned.
+        # - If **Status** is **false**, this parameter indicates the cause of the deletion failure.
         self.error_msg = error_msg
         # The request ID.
         self.request_id = request_id
         # Indicates whether the deletion was successful. Valid values:
         # 
         # - **true**: The deletion was successful.
-        # 
         # - **false**: The deletion failed.
         self.status = status
 

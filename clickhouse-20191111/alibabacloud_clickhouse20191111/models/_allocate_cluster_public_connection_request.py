@@ -14,7 +14,7 @@ class AllocateClusterPublicConnectionRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The prefix of the public endpoint. The value is the cluster ID.
+        # The prefix of the endpoint used to connect to the database. The value is fixed as the cluster ID.
         self.connection_string_prefix = connection_string_prefix
         # The cluster ID.
         # 

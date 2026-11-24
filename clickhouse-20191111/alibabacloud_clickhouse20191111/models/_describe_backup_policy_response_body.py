@@ -14,35 +14,28 @@ class DescribeBackupPolicyResponseBody(DaraModel):
         request_id: str = None,
         switch: str = None,
     ):
-        # The backup retention period. Default value: 7. Valid values: 7 to 730. Unit: day.
+        # The backup retention period. Default value: 7 days. Valid values: 7 to 730. Unit: days.
         self.backup_retention_period = backup_retention_period
         # The backup size. Unit: MB.
         self.backup_size = backup_size
         # The backup cycle. Valid values:
         # 
-        # - **Monday**
-        # 
-        # - **Tuesday**
-        # 
-        # - **Wednesday**
-        # 
-        # - **Thursday**
-        # 
-        # - **Friday**
-        # 
-        # - **Saturday**
-        # 
-        # - **Sunday**
+        # - **Monday**: Monday.
+        # - **Tuesday**: Tuesday.
+        # - **Wednesday**: Wednesday.
+        # - **Thursday**: Thursday.
+        # - **Friday**: Friday.
+        # - **Saturday**: Saturday.
+        # - **Sunday**: Sunday.
         self.preferred_backup_period = preferred_backup_period
         # The backup time in UTC.
         self.preferred_backup_time = preferred_backup_time
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the backup feature is enabled. Valid values:
+        # Indicates whether the backup service is enabled. Valid values:
         # 
-        # - **true**: The backup feature is enabled.
-        # 
-        # - **false**: The backup feature is disabled.
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         self.switch = switch
 
     def validate(self):

@@ -27,12 +27,12 @@ class CheckScaleOutBalancedResponseBody(DaraModel):
         # The number of entries per page. Valid values:
         # - **30** (default)
         # - **50**
-        # - **100**.
+        # - **100**
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
         self.table_details = table_details
-        # The time required for the migration scale-out. Unit: minutes.
+        # The time required for migration and scaling. Unit: minutes.
         self.time_duration = time_duration
         # The total number of entries.
         self.total_count = total_count

@@ -13,7 +13,7 @@ class DescribeDBClusterAttributeResponseBody(DaraModel):
         dbcluster: main_models.DescribeDBClusterAttributeResponseBodyDBCluster = None,
         request_id: str = None,
     ):
-        # Details about the cluster.
+        # The cluster information.
         self.dbcluster = dbcluster
         # The request ID.
         self.request_id = request_id
@@ -80,6 +80,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         ext_storage_size: int = None,
         ext_storage_type: str = None,
         is_expired: str = None,
+        langfuse_instance_ids: main_models.DescribeDBClusterAttributeResponseBodyDBClusterLangfuseInstanceIds = None,
         lb_kind: str = None,
         lock_mode: str = None,
         lock_reason: str = None,
@@ -111,47 +112,43 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.ali_uid = ali_uid
-        # Specifies whether to stop write operations during a primary/secondary switchover. Valid values:
+        # The configuration for disabling writes during a primary switchover restart. Valid values:
         # 
-        # - `true`: Write operations are stopped for the instance during the switchover.
-        # 
-        # - `false`: Write operations are not stopped for the instance during the switchover.
+        # - true: Writes to the instance are disabled during the primary switchover.
+        # - false: Writes to the instance are not disabled during the primary switchover.
         self.appointment_elect_zookeeper_disable_write = appointment_elect_zookeeper_disable_write
-        # The scheduled time for a primary/secondary switchover. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and is in UTC.
+        # The scheduled time for the primary switchover. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.appointment_elect_zookeeper_time = appointment_elect_zookeeper_time
-        # A list of nodes that are scheduled for a restart.
+        # The list of nodes scheduled for a partial restart.
         self.appointment_restart_node_list = appointment_restart_node_list
-        # The scheduled time to restart specific nodes. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and is in UTC.
+        # The scheduled time for the partial node restart. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.appointment_restart_node_time = appointment_restart_node_time
-        # The scheduled restart time. The time is in the `YYYY-MM-DDThh:mm:ssZ` format and is in UTC.
+        # The scheduled restart time. The time is in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.appointment_restart_time = appointment_restart_time
-        # The available major versions to which the cluster can be upgraded, and their latest minor versions.
+        # The target major version to which the cluster can be upgraded.
         self.available_upgrade_major_version = available_upgrade_major_version
         # The site ID. Valid values:
         # 
-        # - `26842`: China site (aliyun.com).
-        # 
-        # - `26888`: international site (alibabacloud.com).
+        # - **26842**: Chinese site.
+        # - **26888**: International site.
         self.bid = bid
-        # The edition of the cluster. Valid values:
+        # The replica configuration. Valid values:
         # 
-        # - `Basic`: single-replica edition.
-        # 
-        # - `HighAvailability`: dual-replica edition.
+        # - **Basic**: Single-replica edition.
+        # - **HighAvailability**: Master-replica cluster.
         self.category = category
         # The commodity code.
         self.commodity_code = commodity_code
         # The VPC endpoint.
         self.connection_string = connection_string
-        # The version of the backend management system. Valid values:
+        # The version number of the backend control system. Valid values:
         # 
-        # - `v1`
-        # 
-        # - `v2`
+        # - **v1**
+        # - **v2**
         self.control_version = control_version
-        # The creation time of the cluster, in `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
+        # The time when the cluster was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The cluster description.
+        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
@@ -159,150 +156,112 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         self.dbcluster_network_type = dbcluster_network_type
         # The cluster status. Valid values:
         # 
-        # - `Preparing`: The cluster is being prepared.
-        # 
-        # - `Creating`: The cluster is being created.
-        # 
-        # - `Running`: The cluster is running.
-        # 
-        # - `Deleting`: The cluster is being deleted.
-        # 
-        # - `SCALING_OUT`: The cluster is being scaled out.
+        # - **Preparing**: Preparing.
+        # - **Creating**: Creating.
+        # - **Running**: Running.
+        # - **Deleting**: Deleting.
+        # - **SCALING_OUT**: Scaling out.
         self.dbcluster_status = dbcluster_status
         # The cluster type. Valid values:
         # 
-        # - `Common`: a standard cluster.
-        # 
-        # - `Readonly`: a read-only cluster.
-        # 
-        # - `Guard`: a disaster recovery cluster.
+        # - **Common**: Standard cluster.
+        # - **Readonly**: Read-only cluster.
+        # - **Guard**: Disaster recovery cluster.
         self.dbcluster_type = dbcluster_type
-        # The instance type of the cluster nodes.
+        # The cluster specifications. Valid values:
         # 
-        # - Valid values for a single-replica edition:
-        # 
-        #   - `S4-NEW`
-        # 
-        #   - `S8`
-        # 
-        #   - `S16`
-        # 
-        #   - `S32`
-        # 
-        #   - `S64`
-        # 
-        #   - `S104`
-        # 
-        # - Valid values for a dual-replica edition:
-        # 
-        #   - `C4-NEW`
-        # 
-        #   - `C8`
-        # 
-        #   - `C16`
-        # 
-        #   - `C32`
-        # 
-        #   - `C64`
-        # 
-        #   - `C104`
+        # - Single-replica edition:
+        #     - **S4-NEW**
+        #     - **S8**
+        #     - **S16**
+        #     - **S32**
+        #     - **S64**
+        #     - **S104**
+        # - Master-replica cluster: 
+        #     - **C4-NEW**
+        #     - **C8**
+        #     - **C16**
+        #     - **C32**
+        #     - **C64**
+        #     - **C104**
         self.dbnode_class = dbnode_class
-        # The number of nodes in the cluster.
+        # The number of nodes. Valid values:
         # 
-        # - For a single-replica edition, the value range is 1 to 48.
-        # 
-        # - For a dual-replica edition, the value range is 1 to 24.
+        # - Single-replica edition: 1 to 48.
+        # - Master-replica cluster: 1 to 24.
         self.dbnode_count = dbnode_count
-        # The storage capacity per node, in GB.
+        # The storage space per node. Unit: GB.
         # 
-        # The value can range from 100 to 32000.
+        # Valid values: 100 to 32000.
         # 
-        # > The value must be a multiple of 100.
+        # > The step size is 100 GB.
         self.dbnode_storage = dbnode_storage
-        # The Key Management Service (KMS) key ID.
-        # 
-        # > This parameter is empty if `EncryptionType` is set to `off`.
+        # The KMS key.
+        # > If the encryption type is off, this parameter is empty.
         self.encryption_key = encryption_key
         # The encryption type. Valid values:
         # 
-        # - `CloudDisk`: disk encryption.
-        # 
-        # - `off`: Encryption is disabled.
+        # - **CloudDisk**: Cloud disk encryption.
+        # - **off**: No encryption.
         self.encryption_type = encryption_type
-        # The database engine.
+        # The engine type.
         self.engine = engine
-        # The latest minor version to which the cluster can be upgraded.
+        # The latest minor version to which the engine can be upgraded.
         self.engine_latest_minor_version = engine_latest_minor_version
-        # The engine\\"s current minor version.
+        # The current minor version.
         self.engine_minor_version = engine_minor_version
-        # The engine version.
+        # The DPI engine version.
         self.engine_version = engine_version
-        # The expiration time of the cluster, in `yyyy-MM-ddTHH:mm:ssZ` format (UTC).
-        # 
-        # > This parameter is empty for pay-as-you-go clusters.
+        # The expiration time of the cluster. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
+        # > Pay-as-you-go clusters do not have an expiration time. This parameter is empty for pay-as-you-go clusters.
         self.expire_time = expire_time
-        # The extended storage capacity, in GB.
+        # The extended storage space. Unit: GB.
         self.ext_storage_size = ext_storage_size
         # The extended storage type. Valid values:
         # 
-        # <props="china">
-        # 
-        # - `CloudESSD_PL0`: ESSD PL0 disk.
-        # 
-        # 
-        # 
-        # 
-        # - `CloudESSD`: ESSD PL1 disk.
-        # 
-        # - `CloudESSD_PL2`: ESSD PL2 disk.
-        # 
-        # - `CloudESSD_PL3`: ESSD PL3 disk.
-        # 
-        # - `CloudEfficiency`: Ultra disk.
+        # <props="china">- **CloudESSD_PL0**: PL0 ESSD.
+        # - **CloudESSD**: PL1 ESSD.
+        # - **CloudESSD_PL2**: PL2 ESSD.
+        # - **CloudESSD_PL3**: PL3 ESSD.
+        # - **CloudEfficiency**: Ultra disk.
         self.ext_storage_type = ext_storage_type
-        # Whether the cluster has expired. Valid values:
+        # Indicates whether the cluster has expired. Valid values:
         # 
-        # - `true`: The cluster has expired.
-        # 
-        # - `false`: The cluster has not expired.
+        # - **true**: Expired.
+        # - **false**: Not expired.
         self.is_expired = is_expired
-        # The type of the load balancer.
+        self.langfuse_instance_ids = langfuse_instance_ids
+        # The load balancer type.
         self.lb_kind = lb_kind
         # The lock mode of the cluster. Valid values:
         # 
-        # - `Unlock`: The cluster is not locked.
-        # 
-        # - `ManualLock`: The cluster is manually locked.
-        # 
-        # - `LockByExpiration`: The cluster is automatically locked upon expiration.
-        # 
-        # - `LockByRestoration`: The cluster is automatically locked before a rollback.
-        # 
-        # - `LockByDiskQuota`: The cluster is automatically locked because the storage is full.
+        # - **Unlock**: Normal.
+        # - **ManualLock**: Manually locked.
+        # - **LockByExpiration**: Automatically locked due to expiration.
+        # - **LockByRestoration**: Automatically locked before a rollback.
+        # - **LockByDiskQuota**: Automatically locked due to full storage space.
         self.lock_mode = lock_mode
-        # The reason the cluster was locked.
-        # 
-        # > This parameter is empty if `LockMode` is set to `Unlock`.
+        # The reason for locking.
+        # > If the lock mode is Unlock, this parameter is empty.
         self.lock_reason = lock_reason
-        # The upgrade method. A value of `false` indicates that upgrades must be performed manually.
+        # The upgrade type. A value of **false** indicates manual upgrade.
         self.maintain_auto_type = maintain_auto_type
-        # The maintenance window of the cluster. The time is in the `HH:mmZ-HH:mmZ` format and is in UTC.
+        # The maintenance window of the cluster. The time is in the HH:mmZ-HH:mmZ format. The time is displayed in UTC.
         # 
-        # For example, `00:00Z-01:00Z` indicates that the maintenance window is from 00:00 to 01:00 (UTC), which corresponds to 08:00 to 09:00 in Beijing time (UTC+8).
+        # Example: 00:00Z-01:00Z indicates that routine maintenance can be performed from 00:00 to 01:00 UTC (08:00 to 09:00 UTC+8).
         self.maintain_time = maintain_time
         # The billing method. Valid values:
         # 
-        # - `Postpaid`: pay-as-you-go.
-        # 
-        # - `Prepaid`: subscription.
+        # - **Postpaid**: Pay-as-you-go.
+        # - **Prepaid**: Subscription.
         self.pay_type = pay_type
-        # The HTTP port.
+        # The HTTP port number.
         self.port = port
         # The public endpoint.
         self.public_connection_string = public_connection_string
         # The IP address of the public endpoint.
         self.public_ip_addr = public_ip_addr
-        # The public TCP port.
+        # The public TCP port number.
         self.public_port = public_port
         # The region ID.
         self.region_id = region_id
@@ -312,65 +271,55 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         self.scale_out_status = scale_out_status
         # The storage type. Valid values:
         # 
-        # <props="china">
-        # 
-        # - `CloudESSD_PL0`: ESSD PL0 disk.
-        # 
-        # 
-        # 
-        # 
-        # - `CloudESSD`: ESSD PL1 disk.
-        # 
-        # - `CloudESSD_PL2`: ESSD PL2 disk.
-        # 
-        # - `CloudESSD_PL3`: ESSD PL3 disk.
-        # 
-        # - `CloudEfficiency`: Ultra disk.
+        # <props="china">- **CloudESSD_PL0**: PL0 ESSD.
+        # - **CloudESSD**: PL1 ESSD.
+        # - **CloudESSD_PL2**: PL2 ESSD.
+        # - **CloudESSD_PL3**: PL3 ESSD.
+        # - **CloudEfficiency**: Ultra disk.
         self.storage_type = storage_type
-        # Whether the cluster supports data backup. Valid values:
+        # Indicates whether data backup is supported. Valid values:
         # 
-        # - `1`: Supported.
-        # 
-        # - `2`: Not supported.
+        # - **1**: Data backup is supported.
+        # - **2**: Data backup is not supported.
         self.support_backup = support_backup
-        # Whether the HTTPS port is supported. Valid values:
+        # Indicates whether the HTTPS port is supported. Valid values:
         # 
-        # - `true`: Supported.
-        # 
-        # - `false`: Not supported.
+        # - **true**: The HTTPS port is supported.
+        # - **false**: The HTTPS port is not supported.
         self.support_https_port = support_https_port
-        # Whether the MySQL port is supported. Valid values:
+        # Indicates whether the MySQL port is supported. Valid values:
         # 
-        # - `true`: Supported.
-        # 
-        # - `false`: Not supported.
+        # - **true**: The MySQL port is supported.
+        # - **false**: The MySQL port is not supported.
         self.support_mysql_port = support_mysql_port
-        # Whether the cluster supports tiered storage for hot and cold data. Valid values:
+        # Indicates whether tiered storage of hot and cold data is supported. Valid values:
         # 
-        # - `1`: Supported.
-        # 
-        # - `2`: Not supported.
+        # - **1**: Tiered storage of hot and cold data is supported.
+        # - **2**: Tiered storage of hot and cold data is not supported.
         self.support_oss = support_oss
-        # The tags of the cluster.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
+        # The VPC resource ID.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
         # The VPC ID.
         self.vpc_id = vpc_id
-        # The IP address of the VPC endpoint.
+        # The IP address of the VPC network connectivity string.
         self.vpc_ip_addr = vpc_ip_addr
+        # The status of the WebUI public network gateway.
         self.web_uisnat_status = web_uisnat_status
+        # The WebUI status.
         self.web_uistatus = web_uistatus
         # The zone ID.
         self.zone_id = zone_id
-        # A map of zone IDs to vSwitch IDs for a multi-zone cluster.
+        # The list of vSwitch IDs for the multi-zone instance.
         self.zone_id_vswitch_map = zone_id_vswitch_map
-        # The specifications of the ZooKeeper nodes.
+        # The Zookeeper specifications.
         self.zookeeper_class = zookeeper_class
 
     def validate(self):
+        if self.langfuse_instance_ids:
+            self.langfuse_instance_ids.validate()
         if self.scale_out_status:
             self.scale_out_status.validate()
         if self.tags:
@@ -473,6 +422,9 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
 
         if self.is_expired is not None:
             result['IsExpired'] = self.is_expired
+
+        if self.langfuse_instance_ids is not None:
+            result['LangfuseInstanceIds'] = self.langfuse_instance_ids.to_map()
 
         if self.lb_kind is not None:
             result['LbKind'] = self.lb_kind
@@ -655,6 +607,10 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         if m.get('IsExpired') is not None:
             self.is_expired = m.get('IsExpired')
 
+        if m.get('LangfuseInstanceIds') is not None:
+            temp_model = main_models.DescribeDBClusterAttributeResponseBodyDBClusterLangfuseInstanceIds()
+            self.langfuse_instance_ids = temp_model.from_map(m.get('LangfuseInstanceIds'))
+
         if m.get('LbKind') is not None:
             self.lb_kind = m.get('LbKind')
 
@@ -819,13 +775,11 @@ class DescribeDBClusterAttributeResponseBodyDBClusterScaleOutStatus(DaraModel):
         progress: str = None,
         ratio: str = None,
     ):
-        # The data migration progress, as a percentage.
-        # 
-        # > This parameter is returned only when the cluster is in the `SCALING_OUT` state.
+        # The percentage of data migrated.
+        # > This parameter is returned only when the cluster status is SCALING_OUT.
         self.progress = progress
-        # The data migration progress, displayed as `Amount of data migrated/Total data amount`.
-        # 
-        # > This parameter is returned only when the cluster is in the `SCALING_OUT` state.
+        # The data migration progress. Format: Migrated data volume/Total data volume.
+        # > This parameter is returned only when the cluster status is SCALING_OUT.
         self.ratio = ratio
 
     def validate(self):
@@ -851,6 +805,33 @@ class DescribeDBClusterAttributeResponseBodyDBClusterScaleOutStatus(DaraModel):
 
         if m.get('Ratio') is not None:
             self.ratio = m.get('Ratio')
+
+        return self
+
+class DescribeDBClusterAttributeResponseBodyDBClusterLangfuseInstanceIds(DaraModel):
+    def __init__(
+        self,
+        langfuse_instance_id: List[str] = None,
+    ):
+        self.langfuse_instance_id = langfuse_instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.langfuse_instance_id is not None:
+            result['LangfuseInstanceId'] = self.langfuse_instance_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LangfuseInstanceId') is not None:
+            self.langfuse_instance_id = m.get('LangfuseInstanceId')
 
         return self
 

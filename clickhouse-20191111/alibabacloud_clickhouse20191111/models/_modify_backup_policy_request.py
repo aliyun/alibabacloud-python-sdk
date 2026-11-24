@@ -16,7 +16,7 @@ class ModifyBackupPolicyRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The number of days to retain data backups. Valid values: 7 to 730.
+        # The data backup retention period in days. Valid values: 7 to 730.
         self.backup_retention_period = backup_retention_period
         # The cluster ID.
         # 
@@ -24,27 +24,21 @@ class ModifyBackupPolicyRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The backup cycle. If you specify multiple values, separate them with commas. Valid values:
+        # The backup cycle. Separate multiple values with commas (,). Valid values:
         # 
-        # - **Monday**
-        # 
-        # - **Tuesday**
-        # 
-        # - **Wednesday**
-        # 
-        # - **Thursday**
-        # 
-        # - **Friday**
-        # 
-        # - **Saturday**
-        # 
-        # - **Sunday**
+        # - **Monday**: Monday.
+        # - **Tuesday**: Tuesday.
+        # - **Wednesday**: Wednesday.
+        # - **Thursday**: Thursday.
+        # - **Friday**: Friday.
+        # - **Saturday**: Saturday.
+        # - **Sunday**: Sunday.
         # 
         # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
-        # The backup time in UTC. The format is HH:mmZ-HH:mmZ.
+        # The backup time in UTC. Format: HH:mmZ-HH:mmZ.
         # 
-        # Example: 00:00Z-01:00Z. This means that data backup can be performed from 00:00 to 01:00 UTC. This corresponds to 08:00 to 09:00 UTC+8.
+        # Example: 00:00Z-01:00Z indicates that data backup can be performed from 00:00 to 01:00 UTC (08:00 to 09:00 UTC+8).
         # 
         # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
