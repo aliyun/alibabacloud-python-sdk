@@ -1,6 +1,9 @@
 2026-11-24 Version: 3.3.7
 - Generated python 2019-11-11 for clickhouse.
 
+2026-11-24 Version: 3.3.7
+- Generated python 2019-11-11 for clickhouse.
+
 2026-06-23 Version: 3.3.5
 - Update API CheckScaleOutBalanced: add request parameters ScalingType.
 
