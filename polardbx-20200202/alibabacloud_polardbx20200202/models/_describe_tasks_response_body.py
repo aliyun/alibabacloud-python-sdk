@@ -16,11 +16,11 @@ class DescribeTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The list of result items.
+        # The list of items.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries returned on the current page.
+        # The number of entries per page.
         self.page_record_count = page_record_count
         # The request ID.
         self.request_id = request_id
@@ -96,25 +96,26 @@ class DescribeTasksResponseBodyItems(DaraModel):
     ):
         # The start time of the task. The format is yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
         self.begin_time = begin_time
-        # The name of the database associated with the task. This field is usually empty.
+        # The name of the database associated with the task. This parameter is usually empty.
         self.dbname = dbname
         # The end time of the task. The format is yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
         self.finish_time = finish_time
         # The task progress, in percentage.
         self.progress = progress
-        # The detailed progress of the task. This field is usually empty.
+        # The detailed task progress. This parameter is usually empty.
         self.progress_info = progress_info
-        # The scale-out token. If the task is a scale-out task, this field returns a scale-out ID, which is a unique backend key.
+        # The scale-out ID, which is a unique backend key. This parameter is returned only for scale-out tasks.
         self.scale_out_token = scale_out_token
         # The task status. Valid values:
+        # 
         # - **RUNNING**: The task is running.
         # - **FAILED**: The task failed and was interrupted.
         self.status = status
-        # The task action. This is a unique key for the backend task type.
+        # The task action, which is a unique key for the backend task type.
         self.task_action = task_action
-        # The error code of the failed task.
+        # The error code returned when the task fails.
         self.task_error_code = task_error_code
-        # The error message of the failed task.
+        # The error message returned when the task fails.
         self.task_error_message = task_error_message
         # The task ID.
         self.task_id = task_id

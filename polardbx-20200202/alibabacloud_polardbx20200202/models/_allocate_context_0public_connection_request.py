@@ -13,13 +13,13 @@ class AllocateContext0PublicConnectionRequest(DaraModel):
         port: str = None,
         region_id: str = None,
     ):
-        # The prefix of the public network connection string.
+        # The prefix of the public connection string.
         self.connection_string_prefix = connection_string_prefix
         # The instance name.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The target node type. Valid values: service and dashboard.
+        # The target node type. Valid values: service, dashboard.
         self.node_type = node_type
         # The port number.
         self.port = port

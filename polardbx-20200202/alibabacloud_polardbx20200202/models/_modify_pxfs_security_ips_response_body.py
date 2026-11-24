@@ -12,7 +12,7 @@ class ModifyPxfsSecurityIpsResponseBody(DaraModel):
         data: main_models.ModifyPxfsSecurityIpsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The details of the access denied error.
         self.access_denied_detail = access_denied_detail
         # The response data.
         self.data = data
@@ -95,13 +95,13 @@ class ModifyPxfsSecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The authorization action.
+        # The authentication action.
         self.auth_action = auth_action
-        # The identity used for authentication in the request.
+        # The identity identifier used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authorization principal.
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The description is the same as above.
+        # Same as above.
         self.auth_principal_type = auth_principal_type
         # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message

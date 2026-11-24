@@ -12,11 +12,11 @@ class UpgradePxfsVersionResponseBody(DaraModel):
         data: main_models.UpgradePxfsVersionResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The details of the unauthorized access.
         self.access_denied_detail = access_denied_detail
         # The response data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -70,7 +70,7 @@ class UpgradePxfsVersionResponseBodyData(DaraModel):
         self.minor_version = minor_version
         # The Agent file service instance ID.
         self.pxfs_instance_id = pxfs_instance_id
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -124,17 +124,17 @@ class UpgradePxfsVersionResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authorization action.
         self.auth_action = auth_action
-        # The identity used for authorization in the request.
+        # The identity used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authorization principal.
+        # The owner ID of the authenticated principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authorization principal type.
+        # The type of the authenticated principal.
         self.auth_principal_type = auth_principal_type
         # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of missing permission.
+        # The type of the access denial.
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # The type of the policy.
         self.policy_type = policy_type
 
     def validate(self):

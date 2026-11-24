@@ -102,9 +102,9 @@ class DescribeEventsResponseBodyEventItems(DaraModel):
         self.event_payload = event_payload
         # The reason.
         self.event_reason = event_reason
-        # The record time. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+        # The record time. The time must be in UTC and in the YYYY-MM-DDTHH:mm:ssZ format.
         self.event_record_time = event_record_time
-        # The event time. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+        # The event time. The time must be in UTC and in the YYYY-MM-DDTHH:mm:ssZ format.
         self.event_time = event_time
         # The event type.
         self.event_type = event_type

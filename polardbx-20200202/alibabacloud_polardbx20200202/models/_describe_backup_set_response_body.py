@@ -15,13 +15,13 @@ class DescribeBackupSetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data list.
+        # The list of data.
         self.data = data
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -83,30 +83,27 @@ class DescribeBackupSetResponseBodyData(DaraModel):
         status: int = None,
     ):
         # The backup mode. Valid values:
-        # 
-        # - **0**: Automatic backup.
-        # - **1**: Manual backup.
+        # - **0**: automatic backup
+        # - **1**: manual backup
         self.backup_model = backup_model
-        # The backup set ID.
+        # The ID of the backup set.
         self.backup_set_id = backup_set_id
-        # The size of the backup set, in bytes.
+        # The size of the backup set. Unit: bytes.
         self.backup_set_size = backup_set_size
         # The backup type. Valid values:
-        # 
-        # - **0**: Fast backup.
-        # - **1**: Consistent backup.
+        # - **0**: quick backup
+        # - **1**: consistent backup
         self.backup_type = backup_type
-        # The backup start time.
+        # The start time of the backup.
         self.begin_time = begin_time
-        # The backup end time.
+        # The end time of the backup.
         self.end_time = end_time
         # The list of OSS information for the backup set.
         self.osslist = osslist
         # The status of the backup set. Valid values:
-        # 
-        # - **0**: Backing up.
-        # - **1**: Backup succeeded.
-        # - **2**: Backup failed.
+        # - **0**: in progress
+        # - **1**: successful
+        # - **2**: failed
         self.status = status
 
     def validate(self):
@@ -187,13 +184,13 @@ class DescribeBackupSetResponseBodyDataOSSList(DaraModel):
         intranet_download_link: str = None,
         link_expired_time: str = None,
     ):
-        # The OSS file name.
+        # The name of the OSS file.
         self.backup_set_file = backup_set_file
-        # The public download URL.
+        # The Internet download URL.
         self.download_link = download_link
-        # The internal network OSS download URL.
+        # The internal OSS download URL.
         self.intranet_download_link = intranet_download_link
-        # The expiration time of the OSS file link.
+        # The expiration time of the OSS file download link.
         self.link_expired_time = link_expired_time
 
     def validate(self):

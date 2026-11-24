@@ -15,7 +15,7 @@ class DeleteOpenSearchAccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The instance name.
+        # The name of the instance.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

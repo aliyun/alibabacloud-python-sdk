@@ -12,7 +12,7 @@ class AllocatePxfsPublicConnectionResponseBody(DaraModel):
         data: main_models.AllocatePxfsPublicConnectionResponseBodyData = None,
         request_id: str = None,
     ):
-        # The access denial details.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The response data.
         self.data = data
@@ -113,11 +113,11 @@ class AllocatePxfsPublicConnectionResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # Same as above.
+        # The description is the same as above.
         self.auth_action = auth_action
         # The identity used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # Same as above.
+        # The description is the same as above.
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
@@ -125,7 +125,7 @@ class AllocatePxfsPublicConnectionResponseBodyAccessDeniedDetail(DaraModel):
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # The type of the policy.
         self.policy_type = policy_type
 
     def validate(self):

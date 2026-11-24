@@ -30,9 +30,9 @@ class ResetAccountPasswordRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the cryptographic officer (CO) account.
+        # The security administrator account.
         self.security_account_name = security_account_name
-        # The password of the cryptographic officer (CO) account.
+        # The password of the security administrator account.
         self.security_account_password = security_account_password
 
     def validate(self):

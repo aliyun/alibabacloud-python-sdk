@@ -75,17 +75,17 @@ class AllocateContext0PublicConnectionResponseBodyData(DaraModel):
         self.context_0instance_name = context_0instance_name
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The instance name.
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
         # The network type of the connection string.
         self.dbinstance_net_type = dbinstance_net_type
-        # The target node type. Valid values: service and dashboard.
+        # The target node type. Valid values: service, dashboard.
         self.node_type = node_type
         # The port number.
         self.port = port
         # The task ID.
         self.task_id = task_id
-        # The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance protected by the policy.
+        # The IP address of the Anti-DDoS instance protected by the policy.
         self.vip = vip
 
     def validate(self):
@@ -169,13 +169,13 @@ class AllocateContext0PublicConnectionResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The action that is evaluated.
+        # The authorization action.
         self.auth_action = auth_action
-        # The identity used for authentication in the request.
+        # The identity identifier used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The action that is evaluated.
+        # The authorization action.
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message

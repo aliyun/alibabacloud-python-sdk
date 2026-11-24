@@ -107,11 +107,13 @@ class DescribeRdsVpcsResponseBodyVpcsVpc(DaraModel):
         self.gmt_create = gmt_create
         # The time when the VPC was last modified.
         self.gmt_modified = gmt_modified
-        # Indicates whether the VPC is the default VPC. Valid values: **true**: The VPC is the default VPC. **false**: The VPC is not the default VPC.
+        # Indicates whether the VPC is the default VPC. Valid values:
+        # - true: The VPC is the default VPC.
+        # - false: The VPC is not the default VPC.
         self.is_default = is_default
-        # The region in which the VPC resides.
+        # The region where the VPC resides.
         self.region_no = region_no
-        # The VPC status.
+        # The status of the VPC.
         self.status = status
         # The vSwitch information of the VPC.
         self.v_switchs = v_switchs
@@ -222,17 +224,17 @@ class DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs(DaraModel):
     ):
         # The vSwitch CIDR block.
         self.cidr_block = cidr_block
-        # The time when the vSwitch was created. The value is a UNIX timestamp accurate to milliseconds.
+        # The creation time, which is a UNIX timestamp accurate to milliseconds.
         self.gmt_create = gmt_create
-        # The time when the vSwitch was last modified. The value is a UNIX timestamp.
+        # The last modification time. The value is a UNIX timestamp.
         self.gmt_modified = gmt_modified
         # Indicates whether the vSwitch is the default vSwitch.
         self.is_default = is_default
         # The zone ID.
         self.iz_no = iz_no
-        # The vSwitch status.
+        # The status of the vSwitch.
         self.status = status
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
         # The name of the vSwitch.
         self.v_switch_name = v_switch_name

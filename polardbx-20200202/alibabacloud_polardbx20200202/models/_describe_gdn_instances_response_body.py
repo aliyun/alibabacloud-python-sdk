@@ -17,8 +17,7 @@ class DescribeGdnInstancesResponseBody(DaraModel):
     ):
         # The list of instance details.
         self.data = data
-        # The message returned for the request.
-        # > This parameter is empty if the request is successful. If the request fails, an error message such as an error code is returned.
+        # The returned message. If the request is successful, this parameter is empty. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -77,7 +76,7 @@ class DescribeGdnInstancesResponseBodyData(DaraModel):
         self.gdn_instance_list = gdn_instance_list
         # The page number.
         self.page_number = page_number
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The total number of entries.
         self.total_number = total_number
@@ -147,7 +146,7 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceList(DaraModel):
         self.description = description
         # The name of the GDN instance.
         self.gdn_instance_name = gdn_instance_name
-        # The replication mode of the GDN. Valid values: gdn_mode_master_slave and gdn_mode_bidirectional.
+        # The GDN replication mode. Valid values: gdn_mode_master_slave and gdn_mode_bidirectional.
         self.gdn_mode = gdn_mode
         # The creation time.
         self.gmt_created = gmt_created
@@ -163,7 +162,7 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceList(DaraModel):
         self.rpl_sync_ddl = rpl_sync_ddl
         # The status.
         self.status = status
-        # The switchover logs.
+        # The switchover log.
         self.switch_history = switch_history
 
     def validate(self):
@@ -295,7 +294,7 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(DaraModel):
         # - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
         # - **polarx.st.12xlarge.2e**: 90 cores, 720 GB
         self.cn_node_class_code = cn_node_class_code
-        # The number of compute nodes (CNs).
+        # The number of CNs.
         self.cn_node_count = cn_node_count
         # The commodity code.
         self.commodity_code = commodity_code
@@ -319,9 +318,9 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(DaraModel):
         # - **mysql.st.8xlarge.25**: 60 cores, 470 GB
         # - **mysql.st.12xlarge.25**: 90 cores, 720 GB
         self.dn_node_class_code = dn_node_class_code
-        # The number of data nodes (DNs).
+        # The number of DNs.
         self.dn_node_count = dn_node_count
-        # The expiration time. The format is YYYY-MM-DDTHH:mm:ss.SSS±HHmm, which includes the time zone offset.
+        # The expiration time. The time is in the YYYY-MM-DDTHH:mm:ss.SSS±HHmm format, which includes the time zone offset.
         self.expire_time = expire_time
         # The creation time.
         self.gmt_created = gmt_created
@@ -329,8 +328,8 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(DaraModel):
         self.member_name = member_name
         # The billing method of the instance. Valid values:
         # 
-        # - **Postpaid**: pay-as-you-go
-        # - **Prepaid**: subscription
+        # - **Postpaid**: pay-as-you-go.
+        # - **Prepaid**: subscription.
         self.pay_type = pay_type
         # The primary zone.
         self.primary_zone = primary_zone
@@ -348,7 +347,7 @@ class DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList(DaraModel):
         self.status = status
         # The status of the switchover task.
         self.task_status = task_status
-        # The third active zone in a three-zone deployment.
+        # The third active zone in a Three-zone deployment.
         self.tertiary_zone = tertiary_zone
         # The zone ID.
         self.zone_id = zone_id

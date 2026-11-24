@@ -11,7 +11,7 @@ class DescribePxfsUsersRequest(DaraModel):
         region_id: str = None,
         tenant_id: str = None,
     ):
-        # The instance ID of the PolarDB-X instance.
+        # The PolarDB-X instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

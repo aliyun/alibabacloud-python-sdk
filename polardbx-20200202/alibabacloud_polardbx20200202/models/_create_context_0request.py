@@ -15,7 +15,7 @@ class CreateContext0Request(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The name of the PolarDB-X Search instance.
+        # The name of the PolarDBX Search instance.
         # 
         # This parameter is required.
         self.open_search_instance_name = open_search_instance_name

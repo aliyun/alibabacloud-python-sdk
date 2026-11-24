@@ -10,7 +10,7 @@ class ReleasePxfsPublicConnectionRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
-        # The instance ID of the PolarDB-X instance.
+        # The PolarDB-X instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

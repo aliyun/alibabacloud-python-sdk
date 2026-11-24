@@ -12,7 +12,7 @@ class ScaleOutOpenSearchResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
         # The order ID.
         self.order_id = order_id

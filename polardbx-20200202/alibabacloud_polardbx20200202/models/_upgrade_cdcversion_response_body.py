@@ -15,9 +15,9 @@ class UpgradeCDCVersionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned result.
+        # The returned data.
         self.data = data
-        # The response message.
+        # The message returned in the response.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -70,7 +70,7 @@ class UpgradeCDCVersionResponseBodyData(DaraModel):
         minor_version: str = None,
         task_list: List[main_models.UpgradeCDCVersionResponseBodyDataTaskList] = None,
     ):
-        # The target version number.
+        # The target minor version.
         self.minor_version = minor_version
         # The list of upgrade tasks.
         self.task_list = task_list
@@ -117,7 +117,7 @@ class UpgradeCDCVersionResponseBodyDataTaskList(DaraModel):
     ):
         # The instance ID.
         self.db_instance_name = db_instance_name
-        # The target task ID.
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):

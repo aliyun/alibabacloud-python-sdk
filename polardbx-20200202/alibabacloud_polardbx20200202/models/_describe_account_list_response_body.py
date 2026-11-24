@@ -17,11 +17,11 @@ class DescribeAccountListResponseBody(DaraModel):
     ):
         # The data struct.
         self.data = data
-        # The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
+        # The message returned. If the request is successful, success is returned. If an error occurs, the corresponding error code is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -87,14 +87,13 @@ class DescribeAccountListResponseBodyData(DaraModel):
         self.account_name = account_name
         # The permissions granted to the account.
         self.account_privilege = account_privilege
-        # The type of the account.
-        # 
-        # - Before three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged user account.
-        # - After three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
+        # The type of the account. Valid values:
+        # - Before the three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged account.
+        # - After the three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
         self.account_type = account_type
         # The name of the instance.
         self.dbinstance_name = dbinstance_name
-        # The database to which the account is granted permissions.
+        # The database on which the account is granted permissions.
         self.dbname = dbname
         # The time when the account was created.
         self.gmt_created = gmt_created

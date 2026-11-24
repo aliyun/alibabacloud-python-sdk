@@ -18,7 +18,7 @@ class CreateServiceAccountResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The returned policy details.
         self.data = data
-        # The additional information returned. If the request is successful, **success** is returned. If the request fails, the corresponding error code is returned.
+        # The additional information returned by the API. success is returned for a successful request, and an error code is returned for a failed request.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -86,11 +86,11 @@ class CreateServiceAccountResponseBodyData(DaraModel):
     ):
         # The account name.
         self.account_name = account_name
-        # Indicates whether the account already exists.
+        # Indicates whether it already exists.
         self.already_exists = already_exists
         # The request ID.
         self.request_id = request_id
-        # The type of the service account.
+        # The service account type.
         self.service_account_type = service_account_type
         # The instance status.
         self.status = status
@@ -158,7 +158,7 @@ class CreateServiceAccountResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The authentication principal type.
+        # The type of the authenticated principal.
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message

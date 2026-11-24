@@ -14,9 +14,9 @@ class DescribePxfsInfoResponseBody(DaraModel):
         data: main_models.DescribePxfsInfoResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The response data.
+        # The returned data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -107,9 +107,9 @@ class DescribePxfsInfoResponseBodyDataInstance(DaraModel):
         version: str = None,
         zone_id: str = None,
     ):
-        # The node specification.
+        # The node specifications.
         self.class_code = class_code
-        # The list of connection addresses.
+        # The list of endpoints.
         self.conn_addrs = conn_addrs
         # The creation time.
         self.create_time = create_time
@@ -125,11 +125,11 @@ class DescribePxfsInfoResponseBodyDataInstance(DaraModel):
         self.region_id = region_id
         # The status.
         self.status = status
-        # The storage size.
+        # The storage capacity.
         self.storage_size = storage_size
         # The storage type.
         self.storage_type = storage_type
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -265,19 +265,19 @@ class DescribePxfsInfoResponseBodyDataInstanceConnAddrs(DaraModel):
     ):
         # The connection string.
         self.connection_string = connection_string
-        # The endpoint.
+        # The access endpoint.
         self.endpoint = endpoint
-        # The port number.
+        # The port.
         self.port = port
         # The access protocol.
         self.protocol = protocol
-        # Indicates whether TLS is enabled.
+        # Specifies whether TLS is enabled.
         self.tls_enabled = tls_enabled
         # The transport protocol.
         self.transport = transport
         # The connection type.
         self.type = type
-        # The virtual private cloud (VPC) ID.
+        # The VPC ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -361,17 +361,17 @@ class DescribePxfsInfoResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The authorization action. Same as described above.
+        # Same as above.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authorization action. Same as described above.
+        # Same as above.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of missing permission.
+        # The type of the permission denial.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

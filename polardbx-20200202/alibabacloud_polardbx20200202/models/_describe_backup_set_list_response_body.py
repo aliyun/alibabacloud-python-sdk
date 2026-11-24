@@ -17,11 +17,11 @@ class DescribeBackupSetListResponseBody(DaraModel):
     ):
         # The data struct.
         self.data = data
-        # The returned message. "success" is returned if the request is successful. Otherwise, an error code is returned.
+        # The returned message. If the request is successful, success is returned. If the request fails, an error code is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -82,28 +82,25 @@ class DescribeBackupSetListResponseBodyData(DaraModel):
         status: int = None,
     ):
         # The backup mode. Valid values:
-        # 
-        # - **0**: automatic backup.
-        # - **1**: manual backup.
+        # - **0**: automatic backup
+        # - **1**: manual backup
         self.backup_model = backup_model
-        # The backup set ID.
+        # The ID of the backup set.
         self.backup_set_id = backup_set_id
         # The size of the backup set, in bytes.
         self.backup_set_size = backup_set_size
         # The backup type. Valid values:
-        # 
-        # - **0**: fast backup.
-        # - **1**: consistent backup.
+        # - **0**: quick backup
+        # - **1**: consistent backup
         self.backup_type = backup_type
-        # The backup start time.
+        # The start time of the backup.
         self.begin_time = begin_time
-        # The backup end time.
+        # The end time of the backup.
         self.end_time = end_time
         # The status of the backup set. Valid values:
-        # 
-        # - **0**: Backing up.
-        # - **1**: Backup succeeded.
-        # - **2**: Backup failed.
+        # - **0**: The backup is in progress.
+        # - **1**: The backup was successful.
+        # - **2**: The backup failed.
         self.status = status
 
     def validate(self):

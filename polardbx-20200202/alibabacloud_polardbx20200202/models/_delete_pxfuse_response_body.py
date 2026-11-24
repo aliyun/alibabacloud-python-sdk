@@ -12,7 +12,7 @@ class DeletePxfuseResponseBody(DaraModel):
         data: main_models.DeletePxfuseResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
         # The monitoring data.
         self.data = data
@@ -103,9 +103,9 @@ class DeletePxfuseResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The no-permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

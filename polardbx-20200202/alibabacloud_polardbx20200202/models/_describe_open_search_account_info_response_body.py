@@ -69,7 +69,7 @@ class DescribeOpenSearchAccountInfoResponseBodyData(DaraModel):
         self.accounts = accounts
         # The time when the password was last modified.
         self.password_last_modified = password_last_modified
-        # The account name of the OpenSearch instance.
+        # The username of the OpenSearch instance account.
         self.username = username
 
     def validate(self):
@@ -119,18 +119,17 @@ class DescribeOpenSearchAccountInfoResponseBodyDataAccounts(DaraModel):
         account_type: str = None,
         username: str = None,
     ):
-        # The account status. Valid values: 
-        # 
+        # The account status. Valid values:
         # - **Creating**: The account is being created.
         # - **Available**: The account is available.
         # - **Deleting**: The account is being deleted.
         self.account_status = account_status
         # The account type.
         # 
-        # - Before three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged account.
-        # - After three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
+        # - Before the three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged account.
+        # - After the three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
         self.account_type = account_type
-        # The account name of the OpenSearch instance.
+        # The username of the OpenSearch instance account.
         self.username = username
 
     def validate(self):
@@ -182,9 +181,9 @@ class DescribeOpenSearchAccountInfoResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type

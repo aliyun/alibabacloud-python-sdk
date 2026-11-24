@@ -50,8 +50,7 @@ class DescribeDBInstanceTDEResponseBodyData(DaraModel):
         tdestatus: str = None,
     ):
         # Indicates whether TDE is enabled. Valid values:
-        # 
-        # - 0: Not enabled.
+        # - 0: Disabled.
         # - 1: Enabled.
         self.tdestatus = tdestatus
 

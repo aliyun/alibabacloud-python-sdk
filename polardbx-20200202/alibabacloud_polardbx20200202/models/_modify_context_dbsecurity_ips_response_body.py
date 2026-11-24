@@ -14,9 +14,9 @@ class ModifyContextDBSecurityIpsResponseBody(DaraModel):
         data: main_models.ModifyContextDBSecurityIpsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # The data struct.
+        # The data structure.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -67,7 +67,7 @@ class ModifyContextDBSecurityIpsResponseBodyData(DaraModel):
         task_id: int = None,
         task_ids: List[int] = None,
     ):
-        # The context service instance name.
+        # The name of the context service instance.
         self.context_dbinstance_name = context_dbinstance_name
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -135,18 +135,18 @@ class ModifyContextDBSecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The ID of the Alibaba Cloud account to which the authentication principal belongs.
+        # The Alibaba Cloud account ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The identity type used for authentication in the request. Valid values:
+        # The type of identity used for authentication in the request. Valid values:
         # - SubUser: RAM user.
         # - AssumedRoleUser: RAM role.
         # - Federated: SSO federated identity.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The no permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

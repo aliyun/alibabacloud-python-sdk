@@ -12,7 +12,7 @@ class DisableOpenSearchPublicEndpointResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
         # The error message.
         self.message = message
@@ -66,11 +66,11 @@ class DisableOpenSearchPublicEndpointResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The display name of the principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authentication principal.
+        # The ID of the principal owner.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of the authentication principal.
+        # The type of the authenticated principal.
         self.auth_principal_type = auth_principal_type
         # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message

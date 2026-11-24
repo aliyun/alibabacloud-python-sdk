@@ -13,7 +13,7 @@ class DescribeDBInstanceConfigResponseBody(DaraModel):
     ):
         # The data struct.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -53,13 +53,13 @@ class DescribeDBInstanceConfigResponseBodyData(DaraModel):
     ):
         # The configuration key.
         self.config_name = config_name
-        # The configuration item. Description:
+        # The configuration items. Details:
         # 
-        # - attendHtapList: the list of instances with HTAP enabled.
+        # - attendHtapList: the list of instances for which HTAP is enabled.
         # - autoAttendHtap: specifies whether to automatically add newly created read-only instances to the HTAP list.
-        # - delayExecutionStrategy: when the read-only instance lag reaches the value specified by storageDelayThreshold, read-only traffic is switched back to the primary instance. Default value: 1. Valid values: 0 and 1.
+        # - delayExecutionStrategy: specifies whether to route read-only traffic back to the primary instance when the read-only latency reaches the value specified by storageDelayThreshold. Default value: 1. Valid values: 0 and 1.
         # - enableConsistentReplicaRead: specifies whether to enable consistent reads.
-        # - storageDelayThreshold: the latency threshold for read-only instances. Default value: 3s. Valid values: 0 to 3600*24.
+        # - storageDelayThreshold: the latency threshold for read-only instances. Default value: 3 seconds. Valid values: 0 to 3600 × 24.
         # - enableHtap: specifies whether to enable HTAP.
         # - masterReadWeight: the read weight of the primary node. A value of 100 indicates that 100% of traffic is routed to the primary node. Valid values: 0 to 100.
         self.config_value = config_value

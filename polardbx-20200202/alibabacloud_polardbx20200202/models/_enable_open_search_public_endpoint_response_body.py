@@ -18,9 +18,9 @@ class EnableOpenSearchPublicEndpointResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The host required for upload.
         self.host = host
-        # The additional information returned by the operation. "success" is returned if the operation is successful. Otherwise, the corresponding error code is returned.
+        # The additional information returned by the API operation. If the request is successful, success is returned. If an error occurs, the corresponding error code is returned.
         self.message = message
-        # The public endpoint port.
+        # The port of the public endpoint.
         self.port = port
         # Id of the request
         self.request_id = request_id
@@ -86,7 +86,7 @@ class EnableOpenSearchPublicEndpointResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_action = auth_action
         # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The description is the same as above.
+        # The description is as described above.
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type

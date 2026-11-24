@@ -195,7 +195,7 @@ class DescribePxfsUsersResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type

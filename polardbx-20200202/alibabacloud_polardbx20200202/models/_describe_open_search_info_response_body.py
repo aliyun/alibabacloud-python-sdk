@@ -120,7 +120,7 @@ class DescribeOpenSearchInfoResponseBodyDataSpec(DaraModel):
         self.coordinator_node_count = coordinator_node_count
         # The number of CPU cores per coordinator node.
         self.coordinator_node_cpu = coordinator_node_cpu
-        # Indicates whether the coordinator node is enabled.
+        # Specifies whether the coordinator node is enabled.
         self.coordinator_node_enabled = coordinator_node_enabled
         # The memory size per coordinator node, in GB.
         self.coordinator_node_memory_gb = coordinator_node_memory_gb
@@ -131,12 +131,12 @@ class DescribeOpenSearchInfoResponseBodyDataSpec(DaraModel):
         # The memory size per data node, in GB.
         self.data_node_memory_gb = data_node_memory_gb
         # The master node type. Valid values:
-        # - **0**: single-node master
-        # - **2**: cluster-edition master
+        # - **0**: The master node is a single node.
+        # - **2**: The master node is of the Cluster Edition.
         self.master_node_count = master_node_count
         # The number of CPU cores per dedicated master node.
         self.master_node_cpu = master_node_cpu
-        # Indicates whether the dedicated master node is enabled.
+        # Specifies whether the dedicated master node is enabled.
         self.master_node_enabled = master_node_enabled
         # The memory size per dedicated master node, in GB.
         self.master_node_memory_gb = master_node_memory_gb
@@ -293,7 +293,7 @@ class DescribeOpenSearchInfoResponseBodyDataInstance(DaraModel):
         self.region_id = region_id
         # The instance status.
         self.status = status
-        # The last task update time in UNIX timestamp format.
+        # The last task update time in timestamp format.
         self.update_time = update_time
         # The ID of the virtual private cloud (VPC) where the access endpoint resides.
         self.vpc_id = vpc_id
@@ -409,17 +409,17 @@ class DescribeOpenSearchInfoResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The authorization action.
+        # The authentication action.
         self.auth_action = auth_action
-        # The identity used for authorization in the request.
+        # The identity used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # The ID of the owner of the authorization principal.
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of the authorization principal.
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
         # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of access denial.
+        # The type of the missing permission.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

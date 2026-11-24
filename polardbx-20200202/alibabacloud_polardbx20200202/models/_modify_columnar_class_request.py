@@ -13,7 +13,7 @@ class ModifyColumnarClassRequest(DaraModel):
         region_id: str = None,
         switch_mode: str = None,
     ):
-        # The column store specifications.
+        # The column store specification.
         # 
         # This parameter is required.
         self.columnar_class = columnar_class
@@ -23,7 +23,7 @@ class ModifyColumnarClassRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_name = instance_name
-        # The region in which the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+        # The region where the instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to view the regions supported by PolarDB-X, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

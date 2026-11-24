@@ -16,7 +16,7 @@ class DescribeOpenSearchNodesResponseBody(DaraModel):
     ):
         # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The data struct.
+        # The data structure.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -113,28 +113,28 @@ class DescribeOpenSearchNodesResponseBodyDataResult(DaraModel):
     ):
         # The number of CPU cores of the node.
         self.cpu_cores = cpu_cores
-        # The CPU usage (%).
+        # The CPU utilization (%).
         self.cpu_percent = cpu_percent
         # The total disk capacity of the node, in GB.
         self.disk_size_gb = disk_size_gb
-        # The disk space usage of the node.
+        # The disk space utilization of the node.
         self.disk_used_percent = disk_used_percent
-        # The total number of unresolved baseline check items.
+        # The total number of unresolved baseline checks.
         self.health = health
-        # The JVM heap memory usage of the node.
+        # The JVM heap memory utilization of the node.
         self.heap_percent = heap_percent
         # The IP address and port of the session host that initiated the session.
         self.host = host
-        # The name of the host on which the node instance runs. You can log on to the host and run the `hostname` command to view the hostname.
+        # The name of the host where the node instance runs. You can log on to the host and run the `hostname` command to view the hostname.
         self.host_name = host_name
         # The average system load of the node over the last 1 minute.
         self.load_one_m = load_one_m
-        # The amount of memory used.
+        # The amount of used memory.
         self.memory_gb = memory_gb
-        # The node type to query. Valid values:
-        # - all: queries both dn and gms nodes.
-        # - gms: queries only gms nodes.
-        # - dn: queries only dn nodes.
+        # The type of node to query. Valid values:
+        # - all: Queries both dn and gms nodes.
+        # - gms: Queries only gms nodes.
+        # - dn: Queries only dn nodes.
         self.node_type = node_type
         # The port.
         self.port = port
@@ -246,15 +246,15 @@ class DescribeOpenSearchNodesResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The identity used for authentication in the request.
+        # The identity identifier used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of the authentication principal.
+        # The description as above.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The no-permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

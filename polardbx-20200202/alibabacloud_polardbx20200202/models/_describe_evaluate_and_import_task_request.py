@@ -14,7 +14,7 @@ class DescribeEvaluateAndImportTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the link task.
+        # The ID of the slink task.
         self.slink_task_id = slink_task_id
 
     def validate(self):

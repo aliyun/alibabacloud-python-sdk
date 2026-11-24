@@ -14,7 +14,7 @@ class DescribeContextDBSecurityIpsResponseBody(DaraModel):
         data: main_models.DescribeContextDBSecurityIpsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
         # The paginated result of the instance list.
         self.data = data
@@ -65,11 +65,11 @@ class DescribeContextDBSecurityIpsResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         group_items: List[main_models.DescribeContextDBSecurityIpsResponseBodyDataGroupItems] = None,
     ):
-        # The context service instance name.
+        # The name of the context service instance.
         self.context_dbinstance_name = context_dbinstance_name
         # The instance name.
         self.dbinstance_name = dbinstance_name
-        # The whitelist group list.
+        # The list of whitelist groups.
         self.group_items = group_items
 
     def validate(self):
@@ -119,11 +119,11 @@ class DescribeContextDBSecurityIpsResponseBodyDataGroupItems(DaraModel):
         group_tag: str = None,
         security_iplist: str = None,
     ):
-        # The whitelist group name.
+        # The name of the whitelist group.
         self.group_name = group_name
         # The group tag.
         self.group_tag = group_tag
-        # The details of the whitelist group.
+        # The whitelist details of the group.
         self.security_iplist = security_iplist
 
     def validate(self):
@@ -171,13 +171,13 @@ class DescribeContextDBSecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authenticated principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authentication principal.
+        # The owner ID of the authenticated principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The type of the authenticated principal.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type

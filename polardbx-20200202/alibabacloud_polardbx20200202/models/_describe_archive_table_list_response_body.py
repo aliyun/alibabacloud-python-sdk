@@ -62,9 +62,9 @@ class DescribeArchiveTableListResponseBodyData(DaraModel):
         self.page_index = page_index
         # The number of entries per page.
         self.page_size = page_size
-        # The number of tables in the PAUSE state.
+        # The number of tables whose archiving is paused.
         self.paused_count = paused_count
-        # The number of tables being archived.
+        # The number of tables currently being archived.
         self.running_count = running_count
         # The number of successfully archived tables.
         self.success_count = success_count

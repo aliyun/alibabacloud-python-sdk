@@ -15,9 +15,9 @@ class DescribeMem0InfoResponseBody(DaraModel):
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # Response data
+        # The returned data.
         self.data = data
-        # Request ID
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,7 +62,7 @@ class DescribeMem0InfoResponseBodyData(DaraModel):
         self,
         instance: main_models.DescribeMem0InfoResponseBodyDataInstance = None,
     ):
-        # Instance information
+        # The instance information.
         self.instance = instance
 
     def validate(self):
@@ -102,27 +102,27 @@ class DescribeMem0InfoResponseBodyDataInstance(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # Instance specifications
+        # The instance type.
         self.class_code = class_code
-        # Connection address list
+        # The list of endpoints.
         self.conn_addrs = conn_addrs
         # The creation time.
         self.create_time = create_time
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Number of nodes
+        # The number of nodes.
         self.node_count = node_count
-        # Region ID
+        # The region ID.
         self.region_id = region_id
-        # Instance status
+        # The instance status.
         self.status = status
-        # Storage type
+        # The storage type.
         self.storage_type = storage_type
         # VPC ID
         self.vpcid = vpcid
-        # vSwitch ID
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # Zone ID
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -223,17 +223,17 @@ class DescribeMem0InfoResponseBodyDataInstanceConnAddrs(DaraModel):
         v_switch_id: str = None,
         vpc_instance_id: str = None,
     ):
-        # Connection address
+        # The endpoint.
         self.connection_string = connection_string
-        # Port
+        # The port.
         self.port = port
-        # Connection address type
+        # The endpoint type.
         self.type = type
         # VPC ID
         self.vpcid = vpcid
-        # vSwitch ID
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC instance ID
+        # The VPC instance ID.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

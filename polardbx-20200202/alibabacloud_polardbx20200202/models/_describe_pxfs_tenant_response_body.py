@@ -14,9 +14,9 @@ class DescribePxfsTenantResponseBody(DaraModel):
     ):
         # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The returned data.
+        # The response data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -69,7 +69,7 @@ class DescribePxfsTenantResponseBodyData(DaraModel):
         used_bytes: int = None,
         used_files: int = None,
     ):
-        # The capacity quota.
+        # The storage quota.
         self.quota_bytes = quota_bytes
         # The file count quota.
         self.quota_files = quota_files
@@ -79,13 +79,13 @@ class DescribePxfsTenantResponseBodyData(DaraModel):
         self.rate_limit_wbps = rate_limit_wbps
         # The status.
         self.status = status
-        # The tenant ID.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
-        # The tenant name.
+        # The name of the tenant.
         self.tenant_name = tenant_name
-        # The used capacity.
+        # The used storage capacity.
         self.used_bytes = used_bytes
-        # The used file count.
+        # The number of used files.
         self.used_files = used_files
 
     def validate(self):
@@ -175,9 +175,9 @@ class DescribePxfsTenantResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The no-permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

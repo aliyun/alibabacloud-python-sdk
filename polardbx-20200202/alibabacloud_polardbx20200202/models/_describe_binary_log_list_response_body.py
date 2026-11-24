@@ -18,7 +18,7 @@ class DescribeBinaryLogListResponseBody(DaraModel):
     ):
         # The list of binary log files.
         self.log_list = log_list
-        # The current page number.
+        # The page number of the returned page.
         self.page_number = page_number
         # The number of binary logs returned on the current page.
         self.page_size = page_size
@@ -111,17 +111,15 @@ class DescribeBinaryLogListResponseBodyLogList(DaraModel):
         # The last update time. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.modified_time = modified_time
         # The cleanup status. Valid values:
-        # 
-        # - 0: Not deleted. 
-        # - 1: Deleted.
+        # - 0: not deleted
+        # - 1: deleted
         self.purge_status = purge_status
         # The backup host.
         self.upload_host = upload_host
         # The backup status. Valid values:
-        # 
-        # - 0: Not backed up. 
-        # - 1: Being backed up. 
-        # - 2: Backed up.
+        # - 0: not backed up
+        # - 1: being backed up
+        # - 2: backed up
         self.upload_status = upload_status
 
     def validate(self):

@@ -11,11 +11,11 @@ class CreateGatewayConsumerForPolarDBXResponseBody(DaraModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # The instance name.
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
         # Id of the request
         self.request_id = request_id
-        # The backend task ID.
+        # The ID of the backend task.
         self.task_id = task_id
 
     def validate(self):

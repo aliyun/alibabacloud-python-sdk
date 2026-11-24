@@ -12,7 +12,7 @@ class ModifySupabaseDashboardPasswordResponseBody(DaraModel):
         data: main_models.ModifySupabaseDashboardPasswordResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # The operation result.
         self.data = data
@@ -97,15 +97,15 @@ class ModifySupabaseDashboardPasswordResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of the authentication principal.
+        # The authentication principal type.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The no permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

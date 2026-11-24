@@ -19,17 +19,16 @@ class ModifyPxfuseSecurityIpsRequest(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The name of the whitelist group for the instance.
         self.group_name = group_name
-        # The modification mode of the whitelist. Valid values:
-        # 
-        # - 0: overwrites the whitelist group.
-        # - 1: adds a whitelist group.
-        # - 2: deletes a whitelist group.
+        # The modification mode for the whitelist. Valid values:
+        # - 0: Overwrites the whitelist group.
+        # - 1: Appends to the whitelist group.
+        # - 2: Deletes the whitelist group.
         self.modify_mode = modify_mode
-        # The region in which the instance resides.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IP addresses in the whitelist group. Separate multiple IP addresses with commas (,).
+        # The list of IP addresses in the whitelist group. Separate multiple IP addresses with commas (,).
         # 
         # This parameter is required.
         self.security_iplist = security_iplist

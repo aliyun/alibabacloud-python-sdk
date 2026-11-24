@@ -16,7 +16,7 @@ class DeletePxfsUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The identity name.
+        # The name of the identity.
         # 
         # This parameter is required.
         self.identity_name = identity_name
@@ -24,7 +24,7 @@ class DeletePxfsUserRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The tenant ID.
+        # The ID of the tenant.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id

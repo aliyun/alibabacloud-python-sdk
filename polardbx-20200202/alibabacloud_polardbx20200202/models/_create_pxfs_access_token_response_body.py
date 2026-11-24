@@ -80,7 +80,7 @@ class CreatePxfsAccessTokenResponseBodyData(DaraModel):
         self.port = port
         # The tenant ID.
         self.tenant_id = tenant_id
-        # The plaintext of the token.
+        # The plaintext token.
         self.token = token
         # Token ID
         self.token_id = token_id
@@ -166,7 +166,7 @@ class CreatePxfsAccessTokenResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The type of the missing permission.
         self.no_permission_type = no_permission_type

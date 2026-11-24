@@ -20,7 +20,7 @@ class ExecuteMetaQueryResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The list of instance details.
         self.data = data
-        # The additional message returned by the API operation. If the request is successful, success is returned. If an error occurs, the corresponding error code is returned.
+        # The additional information returned by the API operation. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -90,13 +90,13 @@ class ExecuteMetaQueryResponseBodyData(DaraModel):
     ):
         # The actual top-level LIMIT offset applied to the SQL statement. If no offset is specified, the value is 0.
         self.applied_offset = applied_offset
-        # The effective upper limit of returned rows for this request.
+        # The effective maximum number of rows to return for this request.
         self.applied_row_limit = applied_row_limit
         # The column names.
         self.columns = columns
         # Indicates whether the query result contains at least one more row beyond the effective row limit for this request.
         self.has_more = has_more
-        # The size in bytes of the Rows JSON array in the returned result after UTF-8 encoding, excluding protocol overhead.
+        # The size in bytes of the Rows JSON array in the response after UTF-8 encoding, excluding protocol overhead.
         self.records_size_bytes = records_size_bytes
         # The actual number of result rows returned for this request.
         self.returned_row_count = returned_row_count
@@ -176,9 +176,9 @@ class ExecuteMetaQueryResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # Same as above.
+        # The description is the same as above.
         self.auth_action = auth_action
-        # Same as above.
+        # The description is the same as above.
         self.auth_principal_type = auth_principal_type
         # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message

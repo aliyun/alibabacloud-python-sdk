@@ -12,7 +12,7 @@ class ResetOpenSearchPasswordResponseBody(DaraModel):
         data: main_models.ResetOpenSearchPasswordResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The detailed reasons for access denial.
         self.access_denied_detail = access_denied_detail
         # The monitoring data.
         self.data = data
@@ -62,7 +62,7 @@ class ResetOpenSearchPasswordResponseBodyData(DaraModel):
         message: str = None,
         password_last_modified: str = None,
     ):
-        # The additional information returned by the operation. "success" is returned if the operation is successful. Otherwise, the corresponding error code is returned.
+        # The additional information returned by the API operation. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
         self.message = message
         # The time when the password was last modified.
         self.password_last_modified = password_last_modified
@@ -112,7 +112,7 @@ class ResetOpenSearchPasswordResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The type of the missing permission.
         self.no_permission_type = no_permission_type

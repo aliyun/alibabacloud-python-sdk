@@ -13,7 +13,7 @@ class CreateSupabaseNetTypeRequest(DaraModel):
     ):
         # The custom endpoint prefix.
         self.connection_string = connection_string
-        # The instance name.
+        # The name of the instance.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

@@ -17,8 +17,8 @@ class ModifyOpenSearchAccessProtocolRequest(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The access protocol. Valid values:
         # 
-        # - **http**: HTTP protocol.
-        # - **https**: HTTPS protocol.
+        # - **http**: HTTP.
+        # - **https**: HTTPS.
         # 
         # This parameter is required.
         self.protocol = protocol

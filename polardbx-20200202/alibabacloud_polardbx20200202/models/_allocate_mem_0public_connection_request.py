@@ -20,11 +20,11 @@ class AllocateMem0PublicConnectionRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The port.
+        # The port number.
         # 
         # This parameter is required.
         self.port = port
-        # The region where the instance resides.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

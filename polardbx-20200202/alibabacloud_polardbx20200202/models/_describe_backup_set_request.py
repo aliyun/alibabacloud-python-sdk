@@ -12,7 +12,7 @@ class DescribeBackupSetRequest(DaraModel):
         dest_cross_region: str = None,
         region_id: str = None,
     ):
-        # The backup set ID.
+        # The ID of the backup set.
         # 
         # This parameter is required.
         self.backup_set_id = backup_set_id

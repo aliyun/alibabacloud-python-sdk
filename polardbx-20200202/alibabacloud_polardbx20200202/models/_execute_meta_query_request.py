@@ -23,7 +23,7 @@ class ExecuteMetaQueryRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The SQL statement to execute.
+        # The SQL statement to be executed.
         # 
         # This parameter is required.
         self.sql = sql

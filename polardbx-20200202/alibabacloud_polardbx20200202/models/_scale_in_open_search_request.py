@@ -19,7 +19,7 @@ class ScaleInOpenSearchRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The total number of data nodes after the scale-in. The value must be a positive integer and less than the current number of data nodes.
+        # The total number of data nodes after the scale-down. The value must be a positive integer and less than the current number of data nodes.
         # 
         # This parameter is required.
         self.search_node_count = search_node_count

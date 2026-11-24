@@ -12,9 +12,9 @@ class DescribeOpenSearchConnectionInfoResponseBody(DaraModel):
         data: main_models.DescribeOpenSearchConnectionInfoResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # The data struct.
+        # The data structure.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -66,21 +66,21 @@ class DescribeOpenSearchConnectionInfoResponseBodyData(DaraModel):
         protocol: str = None,
         public_endpoint: main_models.DescribeOpenSearchConnectionInfoResponseBodyDataPublicEndpoint = None,
     ):
-        # The internal endpoint of the OpenSearch Dashboard.
+        # The internal endpoint of OpenSearch Dashboard.
         self.dashboard_endpoint = dashboard_endpoint
-        # The public network access endpoint of the OpenSearch Dashboard.
+        # The public network access endpoint of OpenSearch Dashboard.
         self.dashboard_public_endpoint = dashboard_public_endpoint
-        # The default account name of OpenSearch.
+        # The default username for OpenSearch.
         self.default_username = default_username
         # The VPC endpoint of the instance.
         self.private_endpoint = private_endpoint
-        # The protocol of the monitoring task. Valid values:
+        # The protocol of the probe task. Valid values:
         # 
-        # - **ICMP**.
-        # - **TCP**.
-        # - **HTTP**.
+        # - **ICMP**
+        # - **TCP**
+        # - **HTTP**
         # 
-        # > Private network monitoring supports only the ICMP and TCP protocols.
+        # > Internal network probing supports only the ICMP and TCP protocols.
         self.protocol = protocol
         # The public endpoint of the instance.
         self.public_endpoint = public_endpoint
@@ -153,7 +153,7 @@ class DescribeOpenSearchConnectionInfoResponseBodyDataPublicEndpoint(DaraModel):
         host: str = None,
         port: int = None,
     ):
-        # Specifies whether to enable dead-letter message delivery.
+        # Specifies whether dead-letter message delivery is enabled.
         self.enabled = enabled
         # The machine.
         self.host = host
@@ -199,7 +199,7 @@ class DescribeOpenSearchConnectionInfoResponseBodyDataPrivateEndpoint(DaraModel)
         host: str = None,
         port: int = None,
     ):
-        # Specifies whether to enable the echo feature. This parameter is required. Valid values: true/false.
+        # Specifies whether additional features are enabled. This parameter is required. Valid values: true and false.
         self.enabled = enabled
         # The OSS domain name.
         self.host = host
@@ -247,15 +247,14 @@ class DescribeOpenSearchConnectionInfoResponseBodyDataDashboardPublicEndpoint(Da
         url: str = None,
     ):
         # The service activation status. Valid values:
-        # 
         # - **on**: Activated.
         # - **off**: Not activated.
         self.enabled = enabled
-        # The hostname. Retrieves data under the specified host.
+        # The hostname.
         self.host = host
         # The port.
         self.port = port
-        # The URL.
+        # The article URL.
         self.url = url
 
     def validate(self):
@@ -304,13 +303,13 @@ class DescribeOpenSearchConnectionInfoResponseBodyDataDashboardEndpoint(DaraMode
         port: int = None,
         url: str = None,
     ):
-        # Specifies whether static frame check is enabled. Default value: false.
+        # Specifies whether still frame checking is enabled. Default value: false.
         self.enabled = enabled
         # The host address.
         self.host = host
         # The port.
         self.port = port
-        # The URL.
+        # The article URL.
         self.url = url
 
     def validate(self):
@@ -364,11 +363,11 @@ class DescribeOpenSearchConnectionInfoResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The display name of the authenticated principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authentication principal.
+        # The owner ID of the authenticated principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The description is the same as above.
+        # The description is as above.
         self.auth_principal_type = auth_principal_type
         # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message

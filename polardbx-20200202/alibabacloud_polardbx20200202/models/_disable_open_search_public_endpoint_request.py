@@ -15,12 +15,12 @@ class DisableOpenSearchPublicEndpointRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The type of the target node. Valid values:
+        # The type of the destination node. Valid values:
         # 
         # - **search**: data node. This is the default value.
         # - **dashboard**: dashboard node.
         self.node_type = node_type
-        # The region ID of the instance.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id

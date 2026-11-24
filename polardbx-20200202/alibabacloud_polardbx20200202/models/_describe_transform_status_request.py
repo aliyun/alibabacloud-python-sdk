@@ -13,7 +13,7 @@ class DescribeTransformStatusRequest(DaraModel):
     ):
         # The instance name.
         self.dbinstance_name = dbinstance_name
-        # The check report.
+        # The validation report.
         self.query_report = query_report
         # The region ID.
         self.region_id = region_id

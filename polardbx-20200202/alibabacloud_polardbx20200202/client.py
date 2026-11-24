@@ -6,6 +6,7 @@ import json
 
 from typing import Dict, Generator, AsyncGenerator
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_polardbx20200202 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -22,6 +23,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'polardbx'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-1': 'polardbx.aliyuncs.com',
@@ -13015,6 +13019,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.execute_meta_query_with_options_async(request, runtime)
 
+    def list_pxfs_tenants_with_options(
+        self,
+        request: main_models.ListPxfsTenantsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPxfsTenantsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPxfsTenants',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPxfsTenantsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pxfs_tenants_with_options_async(
+        self,
+        request: main_models.ListPxfsTenantsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPxfsTenantsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPxfsTenants',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPxfsTenantsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pxfs_tenants(
+        self,
+        request: main_models.ListPxfsTenantsRequest,
+    ) -> main_models.ListPxfsTenantsResponse:
+        runtime = RuntimeOptions()
+        return self.list_pxfs_tenants_with_options(request, runtime)
+
+    async def list_pxfs_tenants_async(
+        self,
+        request: main_models.ListPxfsTenantsRequest,
+    ) -> main_models.ListPxfsTenantsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_pxfs_tenants_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: main_models.ListTagResourcesRequest,
@@ -15270,6 +15348,100 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyPxfsSecurityIpsResponse:
         runtime = RuntimeOptions()
         return await self.modify_pxfs_security_ips_with_options_async(request, runtime)
+
+    def modify_pxfs_tenant_quota_with_options(
+        self,
+        request: main_models.ModifyPxfsTenantQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPxfsTenantQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.quota_bytes):
+            query['QuotaBytes'] = request.quota_bytes
+        if not DaraCore.is_null(request.quota_files):
+            query['QuotaFiles'] = request.quota_files
+        if not DaraCore.is_null(request.rate_limit_rps):
+            query['RateLimitRps'] = request.rate_limit_rps
+        if not DaraCore.is_null(request.rate_limit_wbps):
+            query['RateLimitWbps'] = request.rate_limit_wbps
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPxfsTenantQuota',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPxfsTenantQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_pxfs_tenant_quota_with_options_async(
+        self,
+        request: main_models.ModifyPxfsTenantQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPxfsTenantQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.quota_bytes):
+            query['QuotaBytes'] = request.quota_bytes
+        if not DaraCore.is_null(request.quota_files):
+            query['QuotaFiles'] = request.quota_files
+        if not DaraCore.is_null(request.rate_limit_rps):
+            query['RateLimitRps'] = request.rate_limit_rps
+        if not DaraCore.is_null(request.rate_limit_wbps):
+            query['RateLimitWbps'] = request.rate_limit_wbps
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPxfsTenantQuota',
+            version = '2020-02-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPxfsTenantQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_pxfs_tenant_quota(
+        self,
+        request: main_models.ModifyPxfsTenantQuotaRequest,
+    ) -> main_models.ModifyPxfsTenantQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.modify_pxfs_tenant_quota_with_options(request, runtime)
+
+    async def modify_pxfs_tenant_quota_async(
+        self,
+        request: main_models.ModifyPxfsTenantQuotaRequest,
+    ) -> main_models.ModifyPxfsTenantQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_pxfs_tenant_quota_with_options_async(request, runtime)
 
     def modify_pxfuse_security_ips_with_options(
         self,

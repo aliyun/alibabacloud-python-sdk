@@ -18,11 +18,11 @@ class DeleteServiceAccountResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The data struct.
         self.data = data
-        # The error message returned if the request failed. This parameter is empty if the request is successful.
+        # The error message returned if the request fails. This parameter is empty if the request succeeds.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -84,17 +84,17 @@ class DeleteServiceAccountResponseBodyData(DaraModel):
         status: str = None,
         task_id: int = None,
     ):
-        # The account name.
+        # The name of the account.
         self.account_name = account_name
-        # Indicates whether the import task is successful.
+        # Indicates whether the import task was successful.
         self.deleted = deleted
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The type of the service account.
         self.service_account_type = service_account_type
         # The instance status.
         self.status = status
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -162,9 +162,9 @@ class DeleteServiceAccountResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_type = auth_principal_type
         # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the missing permission.
+        # The type of the permission denial.
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # The type of the policy.
         self.policy_type = policy_type
 
     def validate(self):

@@ -14,7 +14,7 @@ class DescribeSupabaseIpWhitelistResponseBody(DaraModel):
         data: main_models.DescribeSupabaseIpWhitelistResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denied error.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # The whitelist information.
         self.data = data
@@ -66,7 +66,7 @@ class DescribeSupabaseIpWhitelistResponseBodyData(DaraModel):
     ):
         # The instance name.
         self.dbinstance_name = dbinstance_name
-        # The list of whitelist groups.
+        # The whitelist group list.
         self.group_items = group_items
 
     def validate(self):
@@ -110,9 +110,9 @@ class DescribeSupabaseIpWhitelistResponseBodyDataGroupItems(DaraModel):
         group_tag: str = None,
         security_iplist: str = None,
     ):
-        # The name of the group.
+        # The group name.
         self.group_name = group_name
-        # The tag of the group.
+        # The group tag.
         self.group_tag = group_tag
         # The IP whitelist.
         self.security_iplist = security_iplist
@@ -162,17 +162,17 @@ class DescribeSupabaseIpWhitelistResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The authentication principal name.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of the authentication principal.
+        # The authentication principal type.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The no permission type.
         self.no_permission_type = no_permission_type
-        # The type of the policy.
+        # The policy type.
         self.policy_type = policy_type
 
     def validate(self):

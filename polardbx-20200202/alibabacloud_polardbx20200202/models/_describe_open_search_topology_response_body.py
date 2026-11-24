@@ -14,9 +14,9 @@ class DescribeOpenSearchTopologyResponseBody(DaraModel):
         data: main_models.DescribeOpenSearchTopologyResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # The data struct.
+        # The data structure.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -66,7 +66,7 @@ class DescribeOpenSearchTopologyResponseBodyData(DaraModel):
     ):
         # The node IDs.
         self.nodes = nodes
-        # The configuration of the automatic storage scaling feature for the instance.
+        # The configuration information of the Automatic storage scaling feature for instance storage.
         self.storage = storage
 
     def validate(self):
@@ -114,9 +114,9 @@ class DescribeOpenSearchTopologyResponseBodyDataStorage(DaraModel):
         storage_type: str = None,
     ):
         # The number of secondary nodes in the primary zone.
-        # > The **ReplicaCount** and **SlaveReplicaCount** parameters apply only to cloud-native instances. If the instance uses the cluster architecture, these parameters indicate the number of secondary nodes of a **single shard** in the primary and secondary zones.
+        # > The **ReplicaCount** and **SlaveReplicaCount** parameters apply only to cloud-native instances. If the instance uses a cluster architecture, these parameters indicate the number of secondary nodes in the primary and secondary zones for a **single shard**.
         self.replica_count = replica_count
-        # The total storage capacity of the node. Unit: GB.
+        # The total storage capacity of the node, in GB.
         self.storage_total_gb = storage_total_gb
         # The storage type.
         self.storage_type = storage_type
@@ -169,15 +169,15 @@ class DescribeOpenSearchTopologyResponseBodyDataNodes(DaraModel):
         self.availability_zone = availability_zone
         # The total number of CPU cores in the cluster.
         self.cpu = cpu
-        # The Origin Domain Name that you configured in the DCDN console, including IPv4 addresses, IPv6 addresses, common domain names, and OSS domain names.
+        # The origin domain name that you configured in the DCDN console, including IPv4 addresses, IPv6 addresses, regular domain names, and OSS domain names.
         self.host = host
         # Indicates whether the current node is the primary node.
         self.is_leader = is_leader
-        # The memory size.
+        # The configured memory size.
         self.memory_gb = memory_gb
         # The node ID.
         self.node_id = node_id
-        # The role of a node in the three-node RDS cluster. Valid values:
+        # The role of a node in the three-node RDS architecture. Valid values:
         # 
         # - **leader**: primary node
         # - **follower**: secondary node
@@ -185,13 +185,13 @@ class DescribeOpenSearchTopologyResponseBodyDataNodes(DaraModel):
         self.role = role
         # The node status. Valid values:
         # 
-        # - **0**: Running
-        # - **1**: Creating
-        # - **2**: Abnormal
-        # - **3**: Expired
-        # - **4**: Releasing
-        # - **5**: Released
-        # - **6**: Locked
+        # - **0**: running
+        # - **1**: creating
+        # - **2**: abnormal
+        # - **3**: expired
+        # - **4**: releasing
+        # - **5**: released
+        # - **6**: locked
         self.status = status
 
     def validate(self):
@@ -269,13 +269,13 @@ class DescribeOpenSearchTopologyResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authentication principal.
+        # The OwnerId of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The description as above.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type

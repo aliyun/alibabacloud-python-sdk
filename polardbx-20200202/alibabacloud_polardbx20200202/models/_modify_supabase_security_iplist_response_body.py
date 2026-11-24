@@ -12,7 +12,7 @@ class ModifySupabaseSecurityIPListResponseBody(DaraModel):
         data: main_models.ModifySupabaseSecurityIPListResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denied error.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The operation result.
         self.data = data
@@ -67,7 +67,7 @@ class ModifySupabaseSecurityIPListResponseBodyData(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The name of the whitelist group.
         self.group_name = group_name
-        # The IP whitelist.
+        # The IP addresses in the whitelist.
         self.security_iplist = security_iplist
 
     def validate(self):
@@ -121,9 +121,9 @@ class ModifySupabaseSecurityIPListResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic message.
+        # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the no permission error.
+        # The type of the permission denial.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

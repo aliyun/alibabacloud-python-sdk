@@ -114,13 +114,14 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology(DaraModel)
         self.dbinstance_storage = dbinstance_storage
         # The engine. Default value: polarx.
         self.engine = engine
-        # The DPI engine version. Default value: 2.0.
+        # The database engine version. Default value: 2.0.
         self.engine_version = engine_version
         # The list of historical nodes.
         self.history_items = history_items
         # The list of nodes.
         self.items = items
         # The lock status. Valid values:
+        # 
         # - **0**: Unlocked.
         # - **1**: Locked.
         self.lock_mode = lock_mode
@@ -292,13 +293,14 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         storage_used: str = None,
         version: str = None,
     ):
-        # Indicates whether the node is enabled. In the compute layer, only the nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary nodes in the compute layer are switched to primary nodes. All nodes in the storage layer are enabled.
+        # Indicates whether the node is enabled. In the compute layer, only nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary node in the compute layer is switched to the primary node. All nodes in the storage layer are enabled.
         self.activated = activated
-        # The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons (;).
+        # The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons.
         self.azone = azone
-        # The list of data information for the three-node ApsaraDB RDS deployment.
+        # The list of information about the three ApsaraDB RDS nodes.
         self.azone_role_list = azone_role_list
-        # The node attribute. Valid values:
+        # The node type. Valid values:
+        # 
         # - **polarx_cn**: Compute node.
         # - **polarx_store**: Data node.
         # - **polarx_gms**: GMS node.
@@ -321,16 +323,18 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         self.dbinstance_status_description = dbinstance_status_description
         # The disk size.
         self.disk_size = disk_size
-        # The DPI engine version. Valid values:
+        # The database engine version. Valid values:
+        # 
         # - **mysql**
         # - **polarx_cdc**
         # - **polarx_dn**
         self.engine = engine
-        # The DPI engine version. Default value: 2.0.
+        # The database engine version. Default value: 2.0.
         self.engine_version = engine_version
         # The name of the CN cluster for the instance, such as default.
         self.instance_cluster_name = instance_cluster_name
-        # The lock status. Valid values:
+        # Indicates whether the node is locked. Valid values:
+        # 
         # - **0**: Unlocked.
         # - **1**: Locked.
         self.lock_mode = lock_mode
@@ -345,6 +349,7 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         # The maximum IOPS.
         self.max_iops = max_iops
         # The node specifications. Valid values:
+        # 
         # - **polarx.x4.medium.2e**: 2 vCPUs and 8 GB of memory.
         # - **polarx.x4.large.2e**: 4 vCPUs and 16 GB of memory.
         # - **polarx.x8.large.2e**: 4 vCPUs and 32 GB of memory.
@@ -361,13 +366,15 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems(DaraM
         self.phy_instance_name = phy_instance_name
         # The read/write type, such as ReadWrite.
         self.read_type = read_type
-        # The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons (;).
+        # The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons.
         self.region = region
         # The node role. Valid values:
+        # 
         # - **master**: Primary node.
         # - **standby**: Secondary node.
         self.role = role
         # The node status. Valid values:
+        # 
         # - **0**: Running.
         # - **1**: Creating.
         # - **2**: Abnormal.
@@ -644,9 +651,10 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneR
         azone: str = None,
         role: str = None,
     ):
-        # The zone to which a specific node in the three-node ApsaraDB RDS deployment belongs.
+        # The zone to which a specific node among the three ApsaraDB RDS nodes belongs.
         self.azone = azone
-        # The role of a specific node in the three-node ApsaraDB RDS deployment. Valid values:
+        # The role of a specific node among the three ApsaraDB RDS nodes. Valid values:
+        # 
         # - **leader**: Primary node.
         # - **follower**: Secondary node.
         # - **logger**: Logger node.
@@ -690,11 +698,12 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItem
         region: str = None,
         role: str = None,
     ):
-        # Indicates whether the node is enabled. In the compute layer, only the nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary nodes in the compute layer are switched to primary nodes. All nodes in the storage layer are enabled.
+        # Indicates whether the node is enabled. In the compute layer, only nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary node in the compute layer is switched to the primary node. All nodes in the storage layer are enabled.
         self.activated = activated
-        # The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons (;).
+        # The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons.
         self.azone = azone
-        # The node attribute. Valid values:
+        # The node type. Valid values:
+        # 
         # - **polarx_cn**: Compute node.
         # - **polarx_store**: Data node.
         # - **polarx_gms**: GMS node.
@@ -705,9 +714,10 @@ class DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItem
         self.dbinstance_name = dbinstance_name
         # The name of the physical instance.
         self.phy_instance_name = phy_instance_name
-        # The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons (;).
+        # The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons.
         self.region = region
         # The node role. Valid values:
+        # 
         # - **master**: Primary node.
         # - **standby**: Secondary node.
         self.role = role

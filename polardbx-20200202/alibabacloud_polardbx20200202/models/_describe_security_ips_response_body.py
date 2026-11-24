@@ -17,11 +17,11 @@ class DescribeSecurityIpsResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The additional information returned. "success" is returned if the request is successful. Otherwise, an error code is returned.
+        # The additional message returned by the API operation. If the call is successful, success is returned. Otherwise, the corresponding error code is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -70,7 +70,7 @@ class DescribeSecurityIpsResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         group_items: List[main_models.DescribeSecurityIpsResponseBodyDataGroupItems] = None,
     ):
-        # The instance name.
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
         # The list of whitelist groups.
         self.group_items = group_items
@@ -117,7 +117,7 @@ class DescribeSecurityIpsResponseBodyDataGroupItems(DaraModel):
     ):
         # The name of the whitelist group.
         self.group_name = group_name
-        # The details of the whitelist in the group.
+        # The IP addresses in the whitelist group.
         self.security_iplist = security_iplist
 
     def validate(self):

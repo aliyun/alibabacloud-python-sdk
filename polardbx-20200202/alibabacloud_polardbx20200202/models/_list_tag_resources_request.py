@@ -22,13 +22,13 @@ class ListTagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can specify up to 50 subkeys.
+        # The IDs of the resources. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
-        # The resource type. Set this parameter to PolarDBXInstance.
+        # The resource type. Set the value to PolarDBXInstance.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of labels. You can specify up to 20 subkeys.
+        # The list of tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -89,9 +89,9 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the label.
+        # The key of the tag.
         self.key = key
-        # The value of the label.
+        # The value of the tag.
         self.value = value
 
     def validate(self):

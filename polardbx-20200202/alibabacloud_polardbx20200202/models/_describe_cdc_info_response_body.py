@@ -17,13 +17,13 @@ class DescribeCdcInfoResponseBody(DaraModel):
     ):
         # The instance data.
         self.data = data
-        # The HTTP status code.
+        # The HTTP status code of the request.
         # 
         # This parameter is required.
         self.http_status_code = http_status_code
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         # 
         # This parameter is required.
         self.success = success
@@ -80,7 +80,7 @@ class DescribeCdcInfoResponseBodyData(DaraModel):
         server_id: int = None,
         version_support_multi_cdc: bool = None,
     ):
-        # The number of days that binlogs are retained.
+        # The number of days for which binlogs are retained.
         self.binlog_persist_time = binlog_persist_time
         # The binlog size.
         # 
@@ -90,17 +90,17 @@ class DescribeCdcInfoResponseBodyData(DaraModel):
         # 
         # This parameter is required.
         self.cdc_new_version = cdc_new_version
-        # The checksum switch.
+        # Indicates whether the checksum feature is enabled.
         self.check_sum_switch = check_sum_switch
         # Indicates whether bidirectional replication is supported.
         self.enable_cyclic_replication = enable_cyclic_replication
-        # The instance list.
+        # The list of instances.
         self.instance_topology_list = instance_topology_list
         # server id
         # 
         # This parameter is required.
         self.server_id = server_id
-        # Indicates whether multi-stream CDC is supported.
+        # Indicates whether multiple CDC streams are supported.
         self.version_support_multi_cdc = version_support_multi_cdc
 
     def validate(self):
@@ -186,15 +186,15 @@ class DescribeCdcInfoResponseBodyDataInstanceTopologyList(DaraModel):
     ):
         # The cluster type.
         self.cluster_type = cluster_type
-        # The instance type remarks.
+        # The comment on the instance type.
         self.comment = comment
-        # The multi-stream group name.
+        # The name of the multi-stream group.
         self.group_name = group_name
         # The split level.
         self.hash_level = hash_level
-        # The instance name.
+        # The name of the instance.
         self.instance_name = instance_name
-        # The node array.
+        # The array of nodes.
         self.physical_nodes = physical_nodes
         # The number of splits.
         self.stream_num = stream_num
@@ -278,11 +278,11 @@ class DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes(DaraModel
         self.azone = azone
         # The disk size, in MB.
         self.disk = disk
-        # The instance specifications.
+        # The instance type.
         self.node_class = node_class
         # The node ID.
         self.node_id = node_id
-        # The node name.
+        # The name of the node.
         self.node_name = node_name
         # The instance status.
         self.status = status

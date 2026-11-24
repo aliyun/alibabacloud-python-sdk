@@ -13,7 +13,7 @@ class DescribeRdsVswitchesResponseBody(DaraModel):
         data: main_models.DescribeRdsVswitchesResponseBodyData = None,
         request_id: str = None,
     ):
-        # The data struct.
+        # The data structure.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -51,7 +51,7 @@ class DescribeRdsVswitchesResponseBodyData(DaraModel):
         self,
         vswitch_list: List[main_models.DescribeRdsVswitchesResponseBodyDataVswitchList] = None,
     ):
-        # The vSwitch list.
+        # The list of vSwitches.
         self.vswitch_list = vswitch_list
 
     def validate(self):
@@ -99,21 +99,21 @@ class DescribeRdsVswitchesResponseBodyDataVswitchList(DaraModel):
         self.availabe_ip_count = availabe_ip_count
         # The CIDR block of the VPC.
         self.cidr_block = cidr_block
-        # The description of the database.
+        # The database description.
         self.description = description
         # The node ID.
         self.id = id
         # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the VPC is the default VPC. Valid values:
-        # - **true**: The VPC is the default VPC.
-        # - **false**: The VPC is not the default VPC.
+        # Specifies whether the VPC is the default VPC. Valid values:
+        # - true: The VPC is the default VPC.
+        # - false: The VPC is not the default VPC.
         self.is_default = is_default
         # The zone ID.
         self.iz_no = iz_no
         # The name.
         self.name = name
-        # vpc id。
+        # The VPC ID.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

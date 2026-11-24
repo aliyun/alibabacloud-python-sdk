@@ -14,7 +14,7 @@ class DeleteContext0ResponseBody(DaraModel):
     ):
         # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The data struct.
+        # The data structure.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -69,9 +69,9 @@ class DeleteContext0ResponseBodyData(DaraModel):
         self.context_0instance_name = context_0instance_name
         # The name of the instance.
         self.dbinstance_name = dbinstance_name
-        # The name of the context service dashboard instance.
+        # The name of the dashboard instance for the context service.
         self.dashboard_replica_set_name = dashboard_replica_set_name
-        # The name of the context service instance.
+        # The name of the service instance for the context service.
         self.service_replica_set_name = service_replica_set_name
         # The task ID.
         self.task_id = task_id
@@ -139,7 +139,7 @@ class DeleteContext0ResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type

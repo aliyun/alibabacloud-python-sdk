@@ -66,7 +66,7 @@ class DescribePxfsSecurityIpsResponseBodyData(DaraModel):
     ):
         # The name of the managed instance.
         self.custins_name = custins_name
-        # The whitelist groups.
+        # The list of whitelist groups.
         self.groups = groups
 
     def validate(self):
@@ -114,7 +114,7 @@ class DescribePxfsSecurityIpsResponseBodyDataGroups(DaraModel):
         self.group_name = group_name
         # The tag of the whitelist group.
         self.group_tag = group_tag
-        # The IP addresses.
+        # The list of IP addresses.
         self.ip_lists = ip_lists
 
     def validate(self):
@@ -166,9 +166,9 @@ class DescribePxfsSecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The description is as described above.
+        # Same as above.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The no-permission type.
         self.no_permission_type = no_permission_type

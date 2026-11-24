@@ -11,9 +11,9 @@ class ReleaseMem0PublicConnectionResponseBody(DaraModel):
         access_denied_detail: main_models.ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -65,9 +65,9 @@ class ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of missing permission.
+        # NoPermissionType
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # PolicyType
         self.policy_type = policy_type
 
     def validate(self):

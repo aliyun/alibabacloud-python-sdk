@@ -13,9 +13,9 @@ class UpdateBackupPolicyResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The backup policy details.
+        # The returned policy details.
         self.data = data
-        # The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
+        # The returned message. If the call is successful, success is returned. If the call fails, the corresponding error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -86,25 +86,56 @@ class UpdateBackupPolicyResponseBodyData(DaraModel):
         log_local_retention_space: int = None,
         remove_log_retention: int = None,
     ):
+        # The backup cycle. Specify at least two days. The value is a 7-digit string, where each digit from left to right represents whether backups are enabled for Monday through Sunday. A value of 0 indicates that backups are disabled, and a value of 1 indicates that backups are enabled:
+        # 
+        # - First digit: Monday
+        # - Second digit: Tuesday
+        # - Third digit: Wednesday
+        # - Fourth digit: Thursday
+        # - Fifth digit: Friday
+        # - Sixth digit: Saturday
+        # - Seventh digit: Sunday
         self.backup_period = backup_period
+        # The time when the daily backup starts, in UTC.
         self.backup_plan_begin = backup_plan_begin
+        # The retention period of the backup set, in days.
         self.backup_set_retention = backup_set_retention
+        # The backup type. A value of 0 indicates a quick backup.
         self.backup_type = backup_type
+        # The backup method. Valid values:
+        # 
+        # - **P**: physical backup
+        # - **L**: logical backup
         self.backup_way = backup_way
+        # The interval at which cold data is backed up, in days. Valid values: 1 to 59.
         self.cold_data_backup_interval = cold_data_backup_interval
+        # The retention period of cold data backups, in days.
         self.cold_data_backup_retention = cold_data_backup_retention
+        # The retention period of cross-region data backups, in days.
         self.cross_region_data_backup_retention = cross_region_data_backup_retention
+        # The number of days selected for cross-region backups.
         self.cross_region_filter_value = cross_region_filter_value
+        # The retention period of cross-region log backups, in days.
         self.cross_region_log_backup_retention = cross_region_log_backup_retention
+        # The instance ID.
         self.dbinstance_name = dbinstance_name
+        # The destination region for cross-region backups.
         self.dest_cross_region = dest_cross_region
+        # Specifies whether to forcibly clear binary logs when the storage usage of the instance is excessively high. A value of 1 indicates yes, and a value of 0 indicates no.
         self.force_clean_on_high_space_usage = force_clean_on_high_space_usage
+        # Specifies whether to enable cross-region data backups. Default value: false.
         self.is_cross_region_data_backup_enabled = is_cross_region_data_backup_enabled
+        # Specifies whether to enable cross-region log backups. Default value: false.
         self.is_cross_region_log_backup_enabled = is_cross_region_log_backup_enabled
+        # Specifies whether to enable backups. The fixed value is 1, which indicates that backups are enabled.
         self.is_enabled = is_enabled
+        # The local retention period of log backups, in hours. Valid values: 0 to 168. A value of 0 indicates that log backups are not retained. Default value: 7.
         self.local_log_retention = local_log_retention
+        # The number of local binary logs to retain. Valid values: 6 to 100. Default value: 60.
         self.local_log_retention_number = local_log_retention_number
+        # The maximum space usage for binary logs. The parameter value ranges from 0 to 50. This is a loop space. Default value: 30.
         self.log_local_retention_space = log_local_retention_space
+        # The remote retention period of log backups, in days. Valid values: 7 to 730. Default value: 7.
         self.remove_log_retention = remove_log_retention
 
     def validate(self):

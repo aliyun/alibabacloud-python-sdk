@@ -11,13 +11,13 @@ class ReleaseMem0PublicConnectionRequest(DaraModel):
         dbinstance_name: str = None,
         region_id: str = None,
     ):
-        # The public endpoint to be released. This parameter is optional. If this parameter is not specified, the public endpoint of Mem0 is automatically released.
+        # The public network connection string to be released. This parameter is optional. If you do not specify this parameter, automatic release of the Mem0 public endpoint is performed.
         self.current_connection_string = current_connection_string
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The region ID of the instance. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the details of regions supported by PolarDB-X, including region IDs.
+        # The ID of the region where the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to view the details of regions supported by PolarDB-X, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

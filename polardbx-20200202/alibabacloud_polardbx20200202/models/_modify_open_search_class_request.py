@@ -22,7 +22,7 @@ class ModifyOpenSearchClassRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The node specifications code for PolarDBX Search data nodes. This parameter is required. The active node specifications depend on the region and sales configuration, and must differ from the current node specifications.
+        # The data node specifications code for PolarDB-X Search. This parameter is required. Active node specifications depend on the region and sales configuration, and must be different from the current node specifications.
         self.search_class_code = search_class_code
 
     def validate(self):

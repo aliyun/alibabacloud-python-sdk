@@ -14,8 +14,8 @@ class DescribeOpenSearchResourceUsageRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The ID of the region in which the instance resides.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+        # The region ID of the instance.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the details of regions supported by PolarDB-X, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

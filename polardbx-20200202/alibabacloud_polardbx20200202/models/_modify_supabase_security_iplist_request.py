@@ -25,7 +25,7 @@ class ModifySupabaseSecurityIPListRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IP whitelist. Separate multiple IP addresses with commas.
+        # The list of IP addresses in the whitelist. Separate multiple IP addresses with commas.
         # 
         # This parameter is required.
         self.security_iplist = security_iplist

@@ -12,9 +12,9 @@ class CreatePxfuseResponseBody(DaraModel):
         data: main_models.CreatePxfuseResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
-        # The details of the returned policy.
+        # The returned policy details.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -64,7 +64,7 @@ class CreatePxfuseResponseBodyData(DaraModel):
         pxfuse_instance_name: str = None,
         task_id: int = None,
     ):
-        # Indicates whether the resource already exists.
+        # Indicates whether the instance already exists.
         self.already_exists = already_exists
         # The instance ID.
         self.dbinstance_name = dbinstance_name
@@ -132,7 +132,7 @@ class CreatePxfuseResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of access denial.
+        # The type of the missing permission.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

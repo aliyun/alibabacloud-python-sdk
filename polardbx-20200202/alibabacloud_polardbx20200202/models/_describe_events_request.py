@@ -13,7 +13,7 @@ class DescribeEventsRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The end time. Specify the time in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+        # The end time. The time must be in UTC and in the YYYY-MM-DDTHH:mm:ssZ format.
         self.end_time = end_time
         # The page number.
         self.page_number = page_number
@@ -23,7 +23,7 @@ class DescribeEventsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time. Specify the time in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+        # The start time. The time must be in UTC and in the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
 
     def validate(self):

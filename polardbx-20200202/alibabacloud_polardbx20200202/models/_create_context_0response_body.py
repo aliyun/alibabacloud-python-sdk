@@ -12,7 +12,7 @@ class CreateContext0ResponseBody(DaraModel):
         data: main_models.CreateContext0ResponseBodyData = None,
         request_id: str = None,
     ):
-        # The access denial details.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The instance data.
         self.data = data
@@ -73,11 +73,11 @@ class CreateContext0ResponseBodyData(DaraModel):
         self.context_0instance_name = context_0instance_name
         # The instance name.
         self.dbinstance_name = dbinstance_name
-        # The dashboard instance name of the context service.
+        # The dashboard replica set name of the context service.
         self.dashboard_replica_set_name = dashboard_replica_set_name
-        # The name of the PolarDB-X Search instance.
+        # The name of the PolarDBX Search instance.
         self.open_search_instance_name = open_search_instance_name
-        # The service instance name of the context service.
+        # The service replica set name of the context service.
         self.service_replica_set_name = service_replica_set_name
         # The backend task ID.
         self.task_id = task_id
@@ -151,11 +151,11 @@ class CreateContext0ResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The name of the authentication principal.
+        # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message

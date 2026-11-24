@@ -13,7 +13,7 @@ class ModifyPxfsSecurityIpsRequest(DaraModel):
         region_id: str = None,
         security_iplist: str = None,
     ):
-        # The ID of the PolarDB-X instance.
+        # The PolarDB-X instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

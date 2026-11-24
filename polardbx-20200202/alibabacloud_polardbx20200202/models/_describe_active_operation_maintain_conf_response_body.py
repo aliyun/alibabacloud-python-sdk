@@ -14,7 +14,7 @@ class DescribeActiveOperationMaintainConfResponseBody(DaraModel):
     ):
         # The configuration information.
         self.config = config
-        # Specifies whether the settings are configured. Valid values:
+        # Specifies whether the O&M window is configured. Valid values:
         # 
         # - 1: Configured.
         # - 0: Not configured.

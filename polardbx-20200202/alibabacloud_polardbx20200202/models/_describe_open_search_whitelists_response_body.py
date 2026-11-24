@@ -14,7 +14,7 @@ class DescribeOpenSearchWhitelistsResponseBody(DaraModel):
         data: main_models.DescribeOpenSearchWhitelistsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
         # The monitoring data.
         self.data = data
@@ -111,13 +111,13 @@ class DescribeOpenSearchWhitelistsResponseBodyDataWhitelists(DaraModel):
         self.group_id = group_id
         # The name of the whitelist group.
         self.group_name = group_name
-        # The IP address list.
+        # The list of IP addresses.
         self.ips = ips
-        # The network type. Only VPC is supported.
+        # The network type. Only VPC networks are supported.
         self.network_type = network_type
-        # The policy remarks.
+        # The policy remark.
         self.remark = remark
-        # The time when the task was last updated, in timestamp format.
+        # The last update time of the task in timestamp format.
         self.update_time = update_time
 
     def validate(self):
@@ -189,15 +189,15 @@ class DescribeOpenSearchWhitelistsResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authentication principal.
+        # The OwnerId of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The description is the same as above.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the missing permission.
+        # The no-permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

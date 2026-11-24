@@ -15,11 +15,11 @@ class UpgradeColumnarVersionRequest(DaraModel):
     ):
         # The column store version.
         self.columnar_version = columnar_version
-        # The instance name.
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
-        # The instance name.
+        # The name of the instance.
         self.instance_name = instance_name
-        # The region in which the instance resides.
+        # The region ID.
         self.region_id = region_id
         # The switch mode.
         self.switch_mode = switch_mode

@@ -16,15 +16,15 @@ class DescribeServiceAccountResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the access denial.
+        # The details of the access denied error.
         self.access_denied_detail = access_denied_detail
         # The instance details.
         self.data = data
-        # The response message. "success" is returned if the request was successful. Otherwise, an error code is returned.
+        # The message returned. If the request is successful, \\"success\\" is returned. If the request fails, the corresponding error code is returned.
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -120,13 +120,13 @@ class DescribeServiceAccountResponseBodyDataServiceAccounts(DaraModel):
         service_account_type: str = None,
         status: str = None,
     ):
-        # The account name.
+        # The name of the account.
         self.account_name = account_name
         # The creation time.
         self.created_time = created_time
-        # The service account type.
+        # The type of the service account.
         self.service_account_type = service_account_type
-        # The status of the backup set. Valid values:
+        # The status of the backup set:
         # 
         # - **0**: Backing up.
         # - **1**: Backup succeeded.
@@ -182,13 +182,13 @@ class DescribeServiceAccountResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The authentication principal type.
+        # The type of the authenticated principal.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The type of the access denial.
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # The type of the policy.
         self.policy_type = policy_type
 
     def validate(self):

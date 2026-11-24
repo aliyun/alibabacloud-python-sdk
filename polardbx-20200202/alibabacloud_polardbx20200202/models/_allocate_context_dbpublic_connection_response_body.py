@@ -69,7 +69,7 @@ class AllocateContextDBPublicConnectionResponseBodyData(DaraModel):
         task_id: int = None,
         vip: str = None,
     ):
-        # The endpoint.
+        # The connection string.
         self.connection_string = connection_string
         # The name of the context service instance.
         self.context_dbinstance_name = context_dbinstance_name
@@ -77,15 +77,15 @@ class AllocateContextDBPublicConnectionResponseBodyData(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The network type of the endpoint.
+        # The network type of the connection string.
         self.dbinstance_net_type = dbinstance_net_type
-        # The type of the target node. Valid values: service and dashboard.
+        # The target node type. Valid values: service and dashboard.
         self.node_type = node_type
-        # The port of the endpoint.
+        # The port number.
         self.port = port
         # The backend task ID.
         self.task_id = task_id
-        # The IP address of the Anti-DDoS Proxy instance protected by the policy.
+        # The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance protected by the policy.
         self.vip = vip
 
     def validate(self):
@@ -171,13 +171,13 @@ class AllocateContextDBPublicConnectionResponseBodyAccessDeniedDetail(DaraModel)
         self.auth_action = auth_action
         # The identity used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # The type of the authentication principal.
+        # See the preceding description.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of the authentication principal.
+        # See the preceding description.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The type of the missing permission.
         self.no_permission_type = no_permission_type
         # PolicyType
         self.policy_type = policy_type

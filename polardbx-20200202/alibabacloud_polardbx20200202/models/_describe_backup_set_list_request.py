@@ -19,9 +19,9 @@ class DescribeBackupSetListRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The region where the backup set resides. After you specify this parameter, backup sets in the specified region are returned. Only one region can be specified at a time.
+        # The region where the backup sets reside. If you specify this parameter, only backup sets in the specified region are returned. You can specify only one region at a time.
         self.dest_cross_region = dest_cross_region
-        # The end time timestamp, in milliseconds.
+        # The timestamp of the end time, in milliseconds.
         self.end_time = end_time
         # The page number, starting from 1.
         self.page_number = page_number
@@ -31,7 +31,7 @@ class DescribeBackupSetListRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time timestamp, in milliseconds.
+        # The timestamp of the start time, in milliseconds.
         self.start_time = start_time
 
     def validate(self):

@@ -14,9 +14,9 @@ class DescribeDataImportTaskInfoRequest(DaraModel):
         success_page_number: int = None,
         success_page_size: int = None,
     ):
-        # The page number of the failed records.
+        # The page number for failed records.
         self.fail_page_number = fail_page_number
-        # The number of failed records to display per page.
+        # The number of failed records to return on each page.
         self.fail_page_size = fail_page_size
         # The region where the instance resides.
         # 
@@ -26,9 +26,9 @@ class DescribeDataImportTaskInfoRequest(DaraModel):
         # 
         # This parameter is required.
         self.slink_task_id = slink_task_id
-        # The page number of the successful records.
+        # The page number for successful records.
         self.success_page_number = success_page_number
-        # The number of successful records to display per page.
+        # The number of successful records to return on each page.
         self.success_page_size = success_page_size
 
     def validate(self):

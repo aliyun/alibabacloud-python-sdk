@@ -12,7 +12,7 @@ class CreatePolardbxSupabaseInstanceResponseBody(DaraModel):
         data: main_models.CreatePolardbxSupabaseInstanceResponseBodyData = None,
         request_id: str = None,
     ):
-        # The access denied details.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
         # The creation result.
         self.data = data
@@ -64,7 +64,7 @@ class CreatePolardbxSupabaseInstanceResponseBodyData(DaraModel):
         order_id: int = None,
         port: int = None,
     ):
-        # The endpoint.
+        # The connection endpoint.
         self.connection_string = connection_string
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -130,9 +130,9 @@ class CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The no permission type.
+        # The access denial type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

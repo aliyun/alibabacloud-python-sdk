@@ -19,7 +19,7 @@ class DescribePxfsTenantRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The tenant ID.
+        # The ID of the tenant.
         # 
         # This parameter is required.
         self.tenant_id = tenant_id

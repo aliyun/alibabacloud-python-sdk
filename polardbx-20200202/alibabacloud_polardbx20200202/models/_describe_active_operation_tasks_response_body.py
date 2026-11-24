@@ -110,15 +110,13 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         task_type_en: str = None,
         task_type_zh: str = None,
     ):
-        # Indicates whether the event can be canceled. Valid values:
-        # 
-        # - **0**: No.
-        # - **1**: Yes.
+        # Indicates whether cancellation is allowed. Valid values:
+        # - **0**: no
+        # - **1**: yes
         self.allow_cancel = allow_cancel
-        # Indicates whether the time can be modified. Valid values:
-        # 
-        # - **0**: No.
-        # - **1**: Yes.
+        # Indicates whether modification is allowed. Valid values:
+        # - **0**: no
+        # - **1**: yes
         self.allow_change = allow_change
         # The change level. This parameter can be ignored.
         self.change_level = change_level
@@ -126,7 +124,7 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         self.change_level_en = change_level_en
         # The change level in Chinese.
         self.change_level_zh = change_level_zh
-        # The creation time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The creation time. The time is in UTC and follows the YYYY-MM-DDTHH:mm:ssZ format.
         self.created_time = created_time
         # The current availability zone.
         self.current_avz = current_avz
@@ -148,7 +146,7 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         self.ins_comment = ins_comment
         # The instance name.
         self.ins_name = ins_name
-        # The modification time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The modification time. The time is in UTC and follows the YYYY-MM-DDTHH:mm:ssZ format.
         self.modified_time = modified_time
         # The preparation interval.
         self.prepare_interval = prepare_interval
@@ -156,16 +154,15 @@ class DescribeActiveOperationTasksResponseBodyItems(DaraModel):
         self.region = region
         # The result information. This parameter can be ignored.
         self.result_info = result_info
-        # The start time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The start time. The time is in UTC and follows the YYYY-MM-DDTHH:mm:ssZ format.
         self.start_time = start_time
         # The status. Valid values:
-        # 
-        # - **3**: pending 
+        # - **3**: pending
         # - **4**: running
         self.status = status
         # The list of child instances.
         self.sub_ins_names = sub_ins_names
-        # The switchover time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The switchover time. The time is in UTC and follows the YYYY-MM-DDTHH:mm:ssZ format.
         self.switch_time = switch_time
         # The task type.
         self.task_type = task_type

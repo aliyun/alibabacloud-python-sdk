@@ -14,7 +14,7 @@ class DescribePxfuseInfoResponseBody(DaraModel):
         data: main_models.DescribePxfuseInfoResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
         # The monitoring data.
         self.data = data
@@ -228,7 +228,7 @@ class DescribePxfuseInfoResponseBodyDataInstanceConnAddrs(DaraModel):
         self.connection_string = connection_string
         # The port.
         self.port = port
-        # The endpoint type.
+        # The type of the endpoint.
         self.type = type
         # VPC ID
         self.vpcid = vpcid
@@ -304,11 +304,11 @@ class DescribePxfuseInfoResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of missing permission.
+        # The no permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

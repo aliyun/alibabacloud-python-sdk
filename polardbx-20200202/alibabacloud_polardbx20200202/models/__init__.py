@@ -476,6 +476,9 @@ from ._enable_sql_audit_response import EnableSqlAuditResponse
 from ._execute_meta_query_request import ExecuteMetaQueryRequest
 from ._execute_meta_query_response_body import ExecuteMetaQueryResponseBody
 from ._execute_meta_query_response import ExecuteMetaQueryResponse
+from ._list_pxfs_tenants_request import ListPxfsTenantsRequest
+from ._list_pxfs_tenants_response_body import ListPxfsTenantsResponseBody
+from ._list_pxfs_tenants_response import ListPxfsTenantsResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
@@ -554,6 +557,9 @@ from ._modify_parameter_response import ModifyParameterResponse
 from ._modify_pxfs_security_ips_request import ModifyPxfsSecurityIpsRequest
 from ._modify_pxfs_security_ips_response_body import ModifyPxfsSecurityIpsResponseBody
 from ._modify_pxfs_security_ips_response import ModifyPxfsSecurityIpsResponse
+from ._modify_pxfs_tenant_quota_request import ModifyPxfsTenantQuotaRequest
+from ._modify_pxfs_tenant_quota_response_body import ModifyPxfsTenantQuotaResponseBody
+from ._modify_pxfs_tenant_quota_response import ModifyPxfsTenantQuotaResponse
 from ._modify_pxfuse_security_ips_request import ModifyPxfuseSecurityIpsRequest
 from ._modify_pxfuse_security_ips_response_body import ModifyPxfuseSecurityIpsResponseBody
 from ._modify_pxfuse_security_ips_response import ModifyPxfuseSecurityIpsResponse
@@ -965,6 +971,9 @@ from ._disable_open_search_public_endpoint_response_body import DisableOpenSearc
 from ._enable_open_search_public_endpoint_response_body import EnableOpenSearchPublicEndpointResponseBodyAccessDeniedDetail
 from ._execute_meta_query_response_body import ExecuteMetaQueryResponseBodyAccessDeniedDetail
 from ._execute_meta_query_response_body import ExecuteMetaQueryResponseBodyData
+from ._list_pxfs_tenants_response_body import ListPxfsTenantsResponseBodyAccessDeniedDetail
+from ._list_pxfs_tenants_response_body import ListPxfsTenantsResponseBodyDataTenants
+from ._list_pxfs_tenants_response_body import ListPxfsTenantsResponseBodyData
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
@@ -985,6 +994,8 @@ from ._modify_open_search_whitelist_group_response_body import ModifyOpenSearchW
 from ._modify_open_search_whitelist_group_response_body import ModifyOpenSearchWhitelistGroupResponseBodyData
 from ._modify_pxfs_security_ips_response_body import ModifyPxfsSecurityIpsResponseBodyAccessDeniedDetail
 from ._modify_pxfs_security_ips_response_body import ModifyPxfsSecurityIpsResponseBodyData
+from ._modify_pxfs_tenant_quota_response_body import ModifyPxfsTenantQuotaResponseBodyAccessDeniedDetail
+from ._modify_pxfs_tenant_quota_response_body import ModifyPxfsTenantQuotaResponseBodyData
 from ._modify_pxfuse_security_ips_response_body import ModifyPxfuseSecurityIpsResponseBodyAccessDeniedDetail
 from ._modify_pxfuse_security_ips_response_body import ModifyPxfuseSecurityIpsResponseBodyData
 from ._modify_supabase_dashboard_password_response_body import ModifySupabaseDashboardPasswordResponseBodyAccessDeniedDetail
@@ -1508,6 +1519,9 @@ __all__ = [
     ExecuteMetaQueryRequest,
     ExecuteMetaQueryResponseBody,
     ExecuteMetaQueryResponse,
+    ListPxfsTenantsRequest,
+    ListPxfsTenantsResponseBody,
+    ListPxfsTenantsResponse,
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
@@ -1586,6 +1600,9 @@ __all__ = [
     ModifyPxfsSecurityIpsRequest,
     ModifyPxfsSecurityIpsResponseBody,
     ModifyPxfsSecurityIpsResponse,
+    ModifyPxfsTenantQuotaRequest,
+    ModifyPxfsTenantQuotaResponseBody,
+    ModifyPxfsTenantQuotaResponse,
     ModifyPxfuseSecurityIpsRequest,
     ModifyPxfuseSecurityIpsResponseBody,
     ModifyPxfuseSecurityIpsResponse,
@@ -1997,6 +2014,9 @@ __all__ = [
     EnableOpenSearchPublicEndpointResponseBodyAccessDeniedDetail,
     ExecuteMetaQueryResponseBodyAccessDeniedDetail,
     ExecuteMetaQueryResponseBodyData,
+    ListPxfsTenantsResponseBodyAccessDeniedDetail,
+    ListPxfsTenantsResponseBodyDataTenants,
+    ListPxfsTenantsResponseBodyData,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
@@ -2017,6 +2037,8 @@ __all__ = [
     ModifyOpenSearchWhitelistGroupResponseBodyData,
     ModifyPxfsSecurityIpsResponseBodyAccessDeniedDetail,
     ModifyPxfsSecurityIpsResponseBodyData,
+    ModifyPxfsTenantQuotaResponseBodyAccessDeniedDetail,
+    ModifyPxfsTenantQuotaResponseBodyData,
     ModifyPxfuseSecurityIpsResponseBodyAccessDeniedDetail,
     ModifyPxfuseSecurityIpsResponseBodyData,
     ModifySupabaseDashboardPasswordResponseBodyAccessDeniedDetail,

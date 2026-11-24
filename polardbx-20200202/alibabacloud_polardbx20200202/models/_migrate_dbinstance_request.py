@@ -21,7 +21,7 @@ class MigrateDBInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The zone ID of the primary zone for a multi-zone instance. **This parameter is required if you want to create a multi-zone instance.**
+        # The zone ID of the primary zone for a multi-zone instance. **This parameter is required to create a multi-zone instance.**
         # 
         # This parameter is required.
         self.primary_zone_id = primary_zone_id
@@ -29,15 +29,15 @@ class MigrateDBInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The secondary zone ID.
-        # > This parameter cannot be the same as the ZoneId property.
+        # The zone ID of the secondary zone.
+        # > This parameter cannot have the same value as the ZoneId property.
         self.secondary_zone_id = secondary_zone_id
-        # The switch mode. Valid values:
+        # The switchover mode. Valid values:
         # 
         # - 0: Immediate switchover.
         # - 1: Switchover within the O&M window.
         self.switch_mode = switch_mode
-        # The third active zone.
+        # The tertiary zone for a Three-zone deployment. The zone must be active.
         self.tertiary_zone_id = tertiary_zone_id
         # The topology type. Valid values:
         # 
@@ -46,7 +46,7 @@ class MigrateDBInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.topology_type = topology_type
-        # The ID of the VPC where the access endpoint resides.
+        # The ID of the VPC where the access endpoint is located.
         self.vpc_id = vpc_id
         # The vSwitch ID. This parameter is required when you create a DRDS instance of the VPC network type.
         self.vswitch_id = vswitch_id

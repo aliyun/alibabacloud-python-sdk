@@ -16,7 +16,7 @@ class DescribeStoragePoolInfoResponseBody(DaraModel):
     ):
         # The response code.
         self.code = code
-        # The instance details.
+        # The list of instance details.
         self.data = data
         # Id of the request
         self.request_id = request_id
@@ -104,17 +104,17 @@ class DescribeStoragePoolInfoResponseBodyDataStoragePools(DaraModel):
         name: str = None,
         un_deletable_dnid: str = None,
     ):
-        # The specification type of the instance (the specification code).
+        # The instance type, which is the specification code.
         self.class_ = class_
         # The list of DNs.
         self.dn_id_list = dn_id_list
         # DN id
         self.dn_id_string = dn_id_string
-        # A reserved field.
+        # The reserved field.
         self.extra = extra
         # The time when the account was created.
         self.gmt_created = gmt_created
-        # The time when the storage pool was last modified, in timestamp format.
+        # The modification time, in timestamp format.
         self.gmt_modified = gmt_modified
         # The list of idle DNs.
         self.idle_dnid_list = idle_dnid_list

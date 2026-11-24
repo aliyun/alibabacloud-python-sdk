@@ -16,7 +16,7 @@ class DeletePxfsUserResponseBody(DaraModel):
         self.access_denied_detail = access_denied_detail
         # The response data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -65,9 +65,9 @@ class DeletePxfsUserResponseBodyData(DaraModel):
     ):
         # Indicates whether the identity is deleted.
         self.deleted = deleted
-        # The identity name.
+        # The name of the identity.
         self.identity_name = identity_name
-        # The tenant ID.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -113,17 +113,17 @@ class DeletePxfsUserResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The authorization action.
+        # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authorization principal.
+        # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The description is the same as above.
+        # Same as above.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of the authorization principal.
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the no-permission error.
+        # The no-permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

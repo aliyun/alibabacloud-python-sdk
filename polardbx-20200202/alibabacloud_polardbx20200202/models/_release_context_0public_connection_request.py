@@ -12,15 +12,13 @@ class ReleaseContext0PublicConnectionRequest(DaraModel):
         node_type: str = None,
         region_id: str = None,
     ):
-        # The public network connection string to release. If this parameter is not specified, the Mem0 public address is subject to automatic release.
+        # The public connection string to release. This parameter is optional. If you do not specify this parameter, the Mem0 public endpoint is automatically released.
         self.current_connection_string = current_connection_string
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The target node type. Valid values:
-        # - service
-        # - dashboard
+        # The type of the target node. Valid values: service, dashboard.
         self.node_type = node_type
         # The region ID of the instance.
         # 

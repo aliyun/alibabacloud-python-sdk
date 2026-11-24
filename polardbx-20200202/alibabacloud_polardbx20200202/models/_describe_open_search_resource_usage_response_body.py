@@ -12,7 +12,7 @@ class DescribeOpenSearchResourceUsageResponseBody(DaraModel):
         data: main_models.DescribeOpenSearchResourceUsageResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
         # The returned data.
         self.data = data
@@ -67,13 +67,13 @@ class DescribeOpenSearchResourceUsageResponseBodyData(DaraModel):
     ):
         # The total number of documents in the cluster.
         self.doc_count = doc_count
-        # The number of indexes. This is a filter condition for the number of indexes that the missing index table currently has. The input format is `operator + separator "" + index count`, for example, `>=100`.
+        # The number of indexes.
         self.index_count = index_count
         # The used storage space, in bytes.
         self.storage_size_in_bytes = storage_size_in_bytes
         # The total storage capacity, in bytes.
         self.storage_total_in_bytes = storage_total_in_bytes
-        # The storage space usage.
+        # The storage usage percentage.
         self.storage_usage_percent = storage_usage_percent
 
     def validate(self):
@@ -139,7 +139,7 @@ class DescribeOpenSearchResourceUsageResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type

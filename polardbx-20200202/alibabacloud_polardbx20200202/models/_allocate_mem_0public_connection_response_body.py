@@ -57,7 +57,7 @@ class AllocateMem0PublicConnectionResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # Same as above.
         self.auth_action = auth_action
-        # The identity used for authentication in the request.
+        # The identity identifier used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
         # Same as above.
         self.auth_principal_owner_id = auth_principal_owner_id

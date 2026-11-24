@@ -15,9 +15,9 @@ class DescribeCharacterSetResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data struct.
+        # The data structure.
         self.data = data
-        # The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
+        # The returned message. If the request is successful, success is returned. If the request fails, an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -77,7 +77,7 @@ class DescribeCharacterSetResponseBodyData(DaraModel):
         # - latin1
         # - utf8
         self.character_set = character_set
-        # The storage type of databases in the target instance. Currently, only polarx is supported.
+        # The storage type of the database on the target instance. Only polarx is supported.
         self.engine = engine
 
     def validate(self):

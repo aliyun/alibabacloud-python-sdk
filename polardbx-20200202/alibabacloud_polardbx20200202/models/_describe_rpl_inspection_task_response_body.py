@@ -21,7 +21,7 @@ class DescribeRplInspectionTaskResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -72,7 +72,7 @@ class DescribeRplInspectionTaskResponseBodyData(DaraModel):
     ):
         # The machine task information.
         self.inspection_task_list = inspection_task_list
-        # The slink status.
+        # The Slink status.
         self.slink_stage = slink_stage
 
     def validate(self):
@@ -126,13 +126,13 @@ class DescribeRplInspectionTaskResponseBodyDataInspectionTaskList(DaraModel):
         self.description = description
         # The task ID.
         self.id = id
-        # slinktaskid。
+        # The Slink task ID.
         self.slink_task_id = slink_task_id
         # The stage name.
         self.stage = stage
         # The task status.
         self.status = status
-        # The timestamp when the task was last updated.
+        # The timestamp of the last task update.
         self.update_time = update_time
 
     def validate(self):

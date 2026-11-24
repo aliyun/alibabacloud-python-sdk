@@ -17,7 +17,7 @@ class UpgradeColumnarVersionResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The response message.
+        # The message returned for the request.
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -70,7 +70,7 @@ class UpgradeColumnarVersionResponseBodyData(DaraModel):
         minor_version: str = None,
         task_list: List[main_models.UpgradeColumnarVersionResponseBodyDataTaskList] = None,
     ):
-        # The target version number.
+        # The target minor version.
         self.minor_version = minor_version
         # The list of upgrade tasks.
         self.task_list = task_list
@@ -115,9 +115,9 @@ class UpgradeColumnarVersionResponseBodyDataTaskList(DaraModel):
         db_instance_name: str = None,
         task_id: int = None,
     ):
-        # The instance ID.
+        # The ID of the instance.
         self.db_instance_name = db_instance_name
-        # The target task ID.
+        # The ID of the target task.
         self.task_id = task_id
 
     def validate(self):

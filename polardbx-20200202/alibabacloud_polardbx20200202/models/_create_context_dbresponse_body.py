@@ -73,11 +73,11 @@ class CreateContextDBResponseBodyData(DaraModel):
         self.context_dbinstance_name = context_dbinstance_name
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # The name of the context service dashboard instance.
+        # The name of the context service dashboard replica set.
         self.dashboard_replica_set_name = dashboard_replica_set_name
         # The name of the PolarDB-X Search instance.
         self.open_search_instance_name = open_search_instance_name
-        # The name of the context service service instance.
+        # The name of the context service replica set.
         self.service_replica_set_name = service_replica_set_name
         # The task ID.
         self.task_id = task_id
@@ -149,7 +149,7 @@ class CreateContextDBResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # As described above.
+        # The description as above.
         self.auth_action = auth_action
         # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name

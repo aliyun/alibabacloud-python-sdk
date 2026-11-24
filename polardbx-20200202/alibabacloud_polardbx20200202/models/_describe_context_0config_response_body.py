@@ -135,15 +135,15 @@ class DescribeContext0ConfigResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_action = auth_action
         # The identity used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authentication principal.
+        # The OwnerId of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of the authentication principal.
+        # The description is as above.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # The type of the policy.
         self.policy_type = policy_type
 
     def validate(self):

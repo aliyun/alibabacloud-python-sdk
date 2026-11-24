@@ -95,20 +95,20 @@ class ModifyPxfuseSecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The name of the operation.
+        # The name of the API operation.
         self.auth_action = auth_action
-        # The display name of the authenticated principal.
+        # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authenticated principal.
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of the identity used for authentication in the request. Valid values:
+        # The type of identity used for authentication in the request. Valid values:
         # - SubUser: RAM user.
         # - AssumedRoleUser: RAM role.
         # - Federated: SSO federated identity.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The type of access denial.
         self.no_permission_type = no_permission_type
         # PolicyType
         self.policy_type = policy_type

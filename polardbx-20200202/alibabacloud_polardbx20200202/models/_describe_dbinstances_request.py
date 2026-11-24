@@ -20,7 +20,7 @@ class DescribeDBInstancesRequest(DaraModel):
     ):
         # The database version.
         self.db_version = db_version
-        # The description or remark of the database.
+        # The description or remarks of the database.
         self.description = description
         # The instance ID.
         self.instance_id = instance_id

@@ -96,6 +96,7 @@ class DescribeContextDBInfoResponseBodyDataInstance(DaraModel):
         create_time: str = None,
         dbinstance_name: str = None,
         instance_id: str = None,
+        minor_version: str = None,
         node_count: int = None,
         open_search_instance_name: str = None,
         region_id: str = None,
@@ -106,23 +107,25 @@ class DescribeContextDBInfoResponseBodyDataInstance(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The instance specifications.
+        # The instance type.
         self.class_code = class_code
         # The list of endpoints.
         self.conn_addrs = conn_addrs
         # The creation time.
         self.create_time = create_time
-        # The database instance name.
+        # The name of the database instance.
         self.dbinstance_name = dbinstance_name
         # The instance ID.
         self.instance_id = instance_id
+        # The full tag of the minor version currently confirmed by the service. This parameter is empty if the version is unknown.
+        self.minor_version = minor_version
         # The number of nodes.
         self.node_count = node_count
-        # The PolarDB-X Search instance name.
+        # The name of the PolarDB-X Search instance.
         self.open_search_instance_name = open_search_instance_name
         # The region ID.
         self.region_id = region_id
-        # The VPC instance ID of the replica set node.
+        # The VPC instance IDs of the replica set nodes.
         # > This parameter is returned only when the network type of the instance is VPC.
         self.replica_sets = replica_sets
         # The instance status.
@@ -167,6 +170,9 @@ class DescribeContextDBInfoResponseBodyDataInstance(DaraModel):
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.minor_version is not None:
+            result['MinorVersion'] = self.minor_version
 
         if self.node_count is not None:
             result['NodeCount'] = self.node_count
@@ -219,6 +225,9 @@ class DescribeContextDBInfoResponseBodyDataInstance(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('MinorVersion') is not None:
+            self.minor_version = m.get('MinorVersion')
+
         if m.get('NodeCount') is not None:
             self.node_count = m.get('NodeCount')
 
@@ -264,7 +273,7 @@ class DescribeContextDBInfoResponseBodyDataInstanceReplicaSets(DaraModel):
         storage_type: str = None,
         zone_id: str = None,
     ):
-        # The instance specifications.
+        # The instance type.
         self.class_code = class_code
         # The endpoint type.
         self.conn_addrs = conn_addrs
@@ -274,17 +283,17 @@ class DescribeContextDBInfoResponseBodyDataInstanceReplicaSets(DaraModel):
         self.instance_id = instance_id
         # The number of nodes.
         self.node_count = node_count
-        # The target node type: service or dashboard.
+        # The type of the target node. Valid values: service and dashboard.
         self.node_type = node_type
         # The node status. Valid values:
         # 
-        # - **0**: Running.
-        # - **1**: Creating.
-        # - **2**: Abnormal.
-        # - **3**: Expired.
-        # - **4**: Releasing.
-        # - **5**: Released.
-        # - **6**: Locked.
+        # - **0**: running
+        # - **1**: creating
+        # - **2**: abnormal
+        # - **3**: expired
+        # - **4**: releasing
+        # - **5**: released
+        # - **6**: locked
         self.status = status
         # The storage type.
         self.storage_type = storage_type
@@ -380,20 +389,20 @@ class DescribeContextDBInfoResponseBodyDataInstanceReplicaSetsConnAddrs(DaraMode
     ):
         # The endpoint.
         self.connection_string = connection_string
-        # The target node type: service or dashboard.
+        # The type of the target node. Valid values: service and dashboard.
         self.node_type = node_type
-        # The port.
+        # The port number.
         self.port = port
         # The instance type. Valid values:
         # 
-        # - **ReadWrite**: primary instance.
-        # - **ReadOnly**: read-only instance.
+        # - **ReadWrite**: primary instance
+        # - **ReadOnly**: read-only instance
         self.type = type
         # VPC ID
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC-connected instance ID.
+        # The VPC instance ID.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -465,9 +474,9 @@ class DescribeContextDBInfoResponseBodyDataInstanceConnAddrs(DaraModel):
     ):
         # The endpoint.
         self.connection_string = connection_string
-        # The target node type: service or dashboard.
+        # The type of the target node. Valid values: service and dashboard.
         self.node_type = node_type
-        # The port.
+        # The port number.
         self.port = port
         # The endpoint type.
         self.type = type
@@ -475,7 +484,7 @@ class DescribeContextDBInfoResponseBodyDataInstanceConnAddrs(DaraModel):
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC-connected instance ID.
+        # The VPC instance ID.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -551,11 +560,11 @@ class DescribeContextDBInfoResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The authentication principal type.
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of missing permission.
+        # The type of the permission denial.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

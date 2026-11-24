@@ -15,11 +15,11 @@ class CreateServiceAccountRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The region in which the instance resides.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The type of the service account.
+        # The service account type.
         # 
         # This parameter is required.
         self.service_account_type = service_account_type

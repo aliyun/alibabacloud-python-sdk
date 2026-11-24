@@ -12,7 +12,7 @@ class CreateOpenSearchAccountResponseBody(DaraModel):
         data: main_models.CreateOpenSearchAccountResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denied error.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The returned policy details.
         self.data = data
@@ -106,7 +106,7 @@ class CreateOpenSearchAccountResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The description is as above.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id

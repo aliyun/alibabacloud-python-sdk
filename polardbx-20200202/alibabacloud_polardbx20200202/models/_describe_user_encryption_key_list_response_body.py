@@ -51,7 +51,7 @@ class DescribeUserEncryptionKeyListResponseBodyData(DaraModel):
         self,
         key_ids: List[str] = None,
     ):
-        # The key list.
+        # The list of keys.
         self.key_ids = key_ids
 
     def validate(self):

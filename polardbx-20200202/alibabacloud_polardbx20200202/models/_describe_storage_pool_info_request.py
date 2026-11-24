@@ -11,7 +11,7 @@ class DescribeStoragePoolInfoRequest(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The instance name.
+        # The name of the instance.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name

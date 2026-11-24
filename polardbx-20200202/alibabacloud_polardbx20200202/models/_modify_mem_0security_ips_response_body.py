@@ -12,9 +12,9 @@ class ModifyMem0SecurityIpsResponseBody(DaraModel):
         data: main_models.ModifyMem0SecurityIpsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # The data structure.
+        # The data struct.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -97,22 +97,22 @@ class ModifyMem0SecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The API operation name.
         self.auth_action = auth_action
-        # The identity used for authentication in the request.
+        # The identity identifier used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # The ID of the Alibaba Cloud account to which the identity used for authentication belongs.
+        # The ID of the Alibaba Cloud account to which the authenticated principal belongs.
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of identity used for authentication in the request. Valid values:
-        # - SubUser: RAM user.
-        # - AssumedRoleUser: RAM role.
-        # - Federated: SSO federated identity.
+        # - SubUser: RAM user
+        # - AssumedRoleUser: RAM role
+        # - Federated: SSO federated identity
         self.auth_principal_type = auth_principal_type
-        # The encrypted complete diagnostic information.
+        # The encoded complete diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial. Valid values:
-        # - **ImplicitDeny**: The resource owner has not granted the required permissions to the current user. Unauthorized operations are denied by default.
+        # The type of access policy denial. Valid values:
+        # - **ImplicitDeny**: The resource owner has not configured a relevant access policy for the current user, and unauthorized operations are denied by default.
         # - **ExplicitDeny**: The RAM policy configured by the resource owner explicitly denies the current user access to the corresponding resource.
         self.no_permission_type = no_permission_type
-        # The policy type.
+        # PolicyType
         self.policy_type = policy_type
 
     def validate(self):

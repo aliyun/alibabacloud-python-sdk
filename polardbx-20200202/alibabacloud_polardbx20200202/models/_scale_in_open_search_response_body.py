@@ -12,7 +12,7 @@ class ScaleInOpenSearchResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The details of the access denied error.
         self.access_denied_detail = access_denied_detail
         # The order ID.
         self.order_id = order_id
@@ -72,9 +72,9 @@ class ScaleInOpenSearchResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The encrypted complete diagnostic message.
+        # The encoded complete diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The type of the access denial.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

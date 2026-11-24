@@ -12,7 +12,7 @@ class ReleasePxfsPublicConnectionResponseBody(DaraModel):
         data: main_models.ReleasePxfsPublicConnectionResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The detailed cause of the access denial.
         self.access_denied_detail = access_denied_detail
         # The response data.
         self.data = data
@@ -63,9 +63,9 @@ class ReleasePxfsPublicConnectionResponseBodyData(DaraModel):
         pxfs_instance_id: str = None,
         task_id: int = None,
     ):
-        # The instance ID of the PolarDB-X instance.
+        # The PolarDB-X instance ID.
         self.dbinstance_name = dbinstance_name
-        # The instance ID of the Agent file service.
+        # The Agent file service instance ID.
         self.pxfs_instance_id = pxfs_instance_id
         # The task ID.
         self.task_id = task_id
@@ -121,7 +121,7 @@ class ReleasePxfsPublicConnectionResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # NoPermissionType
         self.no_permission_type = no_permission_type

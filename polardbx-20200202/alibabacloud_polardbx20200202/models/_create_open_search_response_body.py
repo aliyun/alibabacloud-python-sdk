@@ -106,11 +106,11 @@ class CreateOpenSearchResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The name of the security principal.
+        # The name of the authenticated principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The Alibaba Cloud account ID of the security principal.
+        # The ID of the Alibaba Cloud account to which the authenticated principal belongs.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # Same as above.
+        # The type of the authenticated principal.
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message

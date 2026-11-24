@@ -64,9 +64,9 @@ class DescribeColdDataBasicInfoResponseBodyData(DaraModel):
         self.backup_set_space_size = backup_set_space_size
         # The underlying cloud storage service.
         self.cloud_product = cloud_product
-        # The data size of cold storage.
+        # The data size in cold storage.
         self.current_space_size = current_space_size
-        # The data redundancy type of cold storage. LRS indicates locally redundant storage.
+        # The data redundancy type for cold storage. LRS indicates locally redundant storage.
         self.data_redundancy_type = data_redundancy_type
         # Indicates whether cold storage is enabled.
         self.enable_status = enable_status

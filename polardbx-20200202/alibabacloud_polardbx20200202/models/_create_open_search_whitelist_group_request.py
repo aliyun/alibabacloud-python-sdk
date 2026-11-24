@@ -29,7 +29,7 @@ class CreateOpenSearchWhitelistGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The description of the group.
+        # The description of the whitelist group.
         self.remark = remark
 
     def validate(self):

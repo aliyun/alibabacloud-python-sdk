@@ -39,11 +39,11 @@ class CreatePolardbxSupabaseInstanceRequest(DaraModel):
         self.db_password = db_password
         # The node specifications.
         self.node_spec = node_spec
-        # The billing method. Valid values: PREPAY and POSTPAY.
+        # The billing method.
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The billing cycle. Valid values: Year, Month, and Hour.
+        # The billing cycle.
         self.period = period
         # The region ID.
         # 
@@ -51,7 +51,7 @@ class CreatePolardbxSupabaseInstanceRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Specifies whether to enable multi-tenant mode.
+        # Specifies whether to enable the multi-tenant mode.
         self.tenant_mode = tenant_mode
         # The subscription duration.
         self.used_time = used_time

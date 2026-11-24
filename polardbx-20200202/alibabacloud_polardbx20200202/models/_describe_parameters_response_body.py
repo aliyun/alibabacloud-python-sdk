@@ -55,7 +55,7 @@ class DescribeParametersResponseBodyData(DaraModel):
         engine_version: str = None,
         running_parameters: List[main_models.DescribeParametersResponseBodyDataRunningParameters] = None,
     ):
-        # The list of original parameters.
+        # The original parameter list.
         self.config_parameters = config_parameters
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -63,7 +63,7 @@ class DescribeParametersResponseBodyData(DaraModel):
         self.engine = engine
         # The DPI engine version. Default value: 2.0.
         self.engine_version = engine_version
-        # The list of running parameter details.
+        # The list of running parameters.
         self.running_parameters = running_parameters
 
     def validate(self):

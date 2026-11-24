@@ -25,31 +25,33 @@ class CreateSQLEvaluateTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The ID of the instance on which the target SQL statement is executed. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of the target SQL statement, including the instance ID.
+        # The ID of the instance that executes the target SQL statement. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of the target SQL statement, including the instance ID.
         self.dst_db = dst_db
-        # The password of the target SQL statement. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of the target SQL statement, including the password.
+        # The password of the target SQL statement.
         self.dst_password = dst_password
         # The ID of the target SQL statement. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of the target SQL statement, including the ID.
         self.dst_res_id = dst_res_id
-        # The username of the destination instance.
+        # The destination username.
         self.dst_user_name = dst_user_name
-        # The region ID of the instance. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+        # The region ID of the instance. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the details of regions supported by PolarDB-X, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The description of the target SQL statement.
         self.slink_task_desc = slink_task_desc
-        # The task ID for executing the target SQL statement. > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the IDs of target SQL statements supported by PolarDB-X.
+        # The ID of the task that executes the target SQL statement. > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the IDs of target SQL statements supported by PolarDB-X.
         self.slink_task_id = slink_task_id
-        # Specifies whether to enable the source ApsaraDB RDS instance. Valid values: **enable**: enables the source ApsaraDB RDS instance. **disabled**: disables the source ApsaraDB RDS instance.
+        # Specifies whether the source ApsaraDB RDS instance is enabled. Valid values:
+        # - **enable**: The source ApsaraDB RDS instance is enabled.
+        # - **disabled**: The source ApsaraDB RDS instance is disabled.
         self.src_db = src_db
-        # The port number of the source instance. Valid values: 3200 to 3999. > This parameter is available and required only when **DBEndpointInstanceType** is set to **polardb-o**.
+        # The source port number. Valid values: 3200 to 3999. > This parameter is available and required only when **dbendpointinstancetype** is set to **polardb-o**.
         self.src_password = src_password
         # The ID of the source ApsaraDB RDS instance. > You can call the [DescribeDropSystemEventMetaList](https://help.aliyun.com/document_detail/196836.html) operation to query the details of all source ApsaraDB RDS instances in the target region, including instance IDs.
         self.src_res_id = src_res_id
-        # The type of the source instance. Valid values: RDS_MYSQL, POLARX1, POLARX2_STANDARD, POLARX2_ENTERPRISE, and POLARDB_M.
+        # The source instance type. Valid values: RDS_MYSQL, POLARX1, POLARX2_STANDARD, POLARX2_ENTERPRISE, and POLARDB_M.
         self.src_res_type = src_res_type
-        # The username of the source instance.
+        # The source username.
         self.src_user_name = src_user_name
 
     def validate(self):

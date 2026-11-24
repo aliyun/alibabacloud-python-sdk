@@ -11,11 +11,11 @@ class EnableRightsSeparationResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Returns success if the request is successful, or the corresponding error code if an error occurs.
+        # The returned message. If the request succeeds, success is returned. If the request fails, an error code is returned.
         self.message = message
-        # The unique request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

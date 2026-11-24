@@ -61,7 +61,7 @@ class DeleteOpenSearchWhitelistGroupResponseBodyData(DaraModel):
         self,
         message: str = None,
     ):
-        # The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
+        # The returned message. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
         self.message = message
 
     def validate(self):
@@ -103,7 +103,7 @@ class DeleteOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The diagnostic information.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
         # The type of the permission denial.
         self.no_permission_type = no_permission_type

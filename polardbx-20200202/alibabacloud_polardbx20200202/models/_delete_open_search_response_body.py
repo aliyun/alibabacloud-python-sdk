@@ -62,7 +62,7 @@ class DeleteOpenSearchResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         task_id: int = None,
     ):
-        # The instance name.
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
         # The task ID.
         self.task_id = task_id
@@ -114,7 +114,7 @@ class DeleteOpenSearchResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The no-permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

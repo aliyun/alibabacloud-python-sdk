@@ -29,7 +29,7 @@ class UpdateBackupPolicyRequest(DaraModel):
         region_id: str = None,
         remove_log_retention: int = None,
     ):
-        # The backup cycle. You must specify at least 2 days. The value is a 7-digit number. From left to right, each digit represents whether backup is enabled from Monday to Sunday. A value of 0 indicates that backup is disabled, and a value of 1 indicates that backup is enabled:
+        # The backup cycle. Specify at least two days. The value is a 7-digit string, where each digit from left to right represents whether backups are enabled for Monday through Sunday. A value of 0 indicates that backups are disabled, and a value of 1 indicates that backups are enabled:
         # 
         # - First digit: Monday
         # - Second digit: Tuesday
@@ -39,54 +39,55 @@ class UpdateBackupPolicyRequest(DaraModel):
         # - Sixth digit: Saturday
         # - Seventh digit: Sunday
         self.backup_period = backup_period
-        # The daily backup start time in UTC.
+        # The time when the daily backup starts, in UTC.
         self.backup_plan_begin = backup_plan_begin
-        # The retention period of backup sets. Unit: days.
+        # The retention period of the backup set, in days.
         self.backup_set_retention = backup_set_retention
-        # The backup type. Currently, only "0" is supported, which indicates fast backup.
+        # The backup type. Currently, only 0 is supported, which indicates a quick backup.
         self.backup_type = backup_type
         # The backup method. Valid values:
         # 
-        # - **P**: physical backup.
-        # - **L**: logical backup.
+        # - **P**: physical backup
+        # - **L**: logical backup
         self.backup_way = backup_way
-        # The interval of cold data backups. Unit: days. Valid values: 1 to 59.
+        # The interval at which cold data is backed up, in days. Valid values: 1 to 59.
         self.cold_data_backup_interval = cold_data_backup_interval
-        # The retention period of cold data backups. Unit: days. Valid values: 30 to 730.
+        # The retention period of cold data backups, in days. Valid values: 30 to 730.
         self.cold_data_backup_retention = cold_data_backup_retention
-        # The retention period of cross-region data backups. Unit: days.
+        # The retention period of cross-region data backups, in days.
         self.cross_region_data_backup_retention = cross_region_data_backup_retention
+        # The number of days selected for cross-region backups.
         self.cross_region_filter_value = cross_region_filter_value
-        # The retention period of cross-region log backups. Unit: days.
+        # The retention period of cross-region log backups, in days.
         self.cross_region_log_backup_retention = cross_region_log_backup_retention
         # The instance ID.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The destination region for cross-region backup.
+        # The destination region for cross-region backups.
         self.dest_cross_region = dest_cross_region
-        # Specifies whether to forcibly clean up binary logs when the total space usage of the instance exceeds 80% or the remaining space is less than 50 GB. The cleanup starts from the earliest logs until the total space usage drops below 80% and the remaining space exceeds 50 GB. Valid values:
+        # Specifies whether to forcibly clear binary logs when the total storage usage of the instance exceeds 80% or the remaining storage is less than 50 GB. The system clears the earliest binary logs until the total storage usage drops below 80% and the remaining storage is greater than 50 GB. Valid values:
         # 
-        # - **1**: Yes.
-        # - **0**: No.
+        # - **1**: yes
+        # - **0**: no
         self.force_clean_on_high_space_usage = force_clean_on_high_space_usage
-        # Specifies whether to enable cross-region data backup. Default value: false.
+        # Specifies whether to enable cross-region data backups. Default value: false.
         self.is_cross_region_data_backup_enabled = is_cross_region_data_backup_enabled
-        # Specifies whether to enable cross-region log backup. Default value: false.
+        # Specifies whether to enable cross-region log backups. Default value: false.
         self.is_cross_region_log_backup_enabled = is_cross_region_log_backup_enabled
-        # Specifies whether to enable backup. The value is fixed to 1, which indicates that backup is enabled.
+        # Specifies whether to enable backups. The fixed value is 1, which indicates that backups are enabled.
         self.is_enabled = is_enabled
-        # The number of hours that log backups are retained locally. Valid values: 0 to 168 (7 × 24 hours). A value of 0 indicates that log backups are not retained locally. Default value: 7.
+        # The local retention period of log backups, in hours. Valid values: 0 to 168. A value of 0 indicates that log backups are not retained. Default value: 7.
         self.local_log_retention = local_log_retention
-        # The number of local binary logs to retain. Default value: 60. Valid values: 6 to 100.
+        # The number of local binary logs to retain. Valid values: 6 to 100. Default value: 60.
         self.local_log_retention_number = local_log_retention_number
-        # The maximum binary log space usage in percentage. Valid values: 0 to 50. This parameter specifies a loop space. Default value: 30.
+        # The maximum space usage for binary logs. The parameter value ranges from 0 to 50. This is a loop space. Default value: 30.
         self.log_local_retention_space = log_local_retention_space
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The number of days that log backups are retained remotely. Valid values: 7 to 730. Unit: days. Default value: 7.
+        # The remote retention period of log backups, in days. Valid values: 7 to 730. Default value: 7.
         self.remove_log_retention = remove_log_retention
 
     def validate(self):

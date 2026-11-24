@@ -14,19 +14,19 @@ class DescribePolarxDataNodesRequest(DaraModel):
         search_key: str = None,
     ):
         # The type of nodes to query. Valid values:
-        # - all: queries both dn and gms nodes.
-        # - gms: queries only gms nodes.
-        # - dn: queries only dn nodes.
+        # - all: Queries both dn and gms nodes.
+        # - gms: Queries only gms nodes.
+        # - dn: Queries only dn nodes.
         self.node_type = node_type
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the integer data type. Default value: **1**.
+        # The page number. The value must be an integer greater than 0 and less than or equal to the maximum value of the INTEGER data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The region in which the instance resides.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The keyword for filtering results.
+        # The keyword.
         self.search_key = search_key
 
     def validate(self):

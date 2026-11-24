@@ -25,7 +25,7 @@ class DescribeBinaryLogListRequest(DaraModel):
         self.end_time = end_time
         # The name of the instance.
         self.instance_name = instance_name
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 30.
         self.page_size = page_size

@@ -12,7 +12,7 @@ class ModifyOpenSearchClassResponseBody(DaraModel):
         data: main_models.ModifyOpenSearchClassResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
         # The returned result.
         self.data = data
@@ -95,20 +95,20 @@ class ModifyOpenSearchClassResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The authorization action.
+        # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authorization principal.
+        # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the authorization principal.
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The type of identity used for authorization in the request. Valid values:
-        # - SubUser: RAM user.
-        # - AssumedRoleUser: RAM role.
-        # - Federated: SSO federated identity.
+        # The type of identity used for authentication in the request. Valid values:
+        # - SubUser: RAM user
+        # - AssumedRoleUser: RAM role
+        # - Federated: SSO federated identity
         self.auth_principal_type = auth_principal_type
-        # The encoded full diagnostic message.
+        # The encoded complete diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The no permission type.
+        # The permission denial type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

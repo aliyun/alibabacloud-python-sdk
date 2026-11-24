@@ -12,7 +12,7 @@ class ReleaseContext0PublicConnectionResponseBody(DaraModel):
         data: main_models.ReleaseContext0PublicConnectionResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The detailed reasons for the access denial.
         self.access_denied_detail = access_denied_detail
         # The task details.
         self.data = data
@@ -68,7 +68,7 @@ class ReleaseContext0PublicConnectionResponseBodyData(DaraModel):
         old_port: str = None,
         task_id: int = None,
     ):
-        # The context service instance name.
+        # The name of the context service instance.
         self.context_0instance_name = context_0instance_name
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -76,13 +76,13 @@ class ReleaseContext0PublicConnectionResponseBodyData(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The network type.
         self.net_type = net_type
-        # The query node type. Valid values:
+        # The type of the queried node. Valid values:
         # - service
         # - dashboard
         self.node_type = node_type
         # The database endpoint before the switchover.
         self.old_connection_string = old_connection_string
-        # The previous port value.
+        # The previous port number.
         self.old_port = old_port
         # The task ID.
         self.task_id = task_id
@@ -160,13 +160,13 @@ class ReleaseContext0PublicConnectionResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The description is as above.
+        # The description as mentioned above.
         self.auth_action = auth_action
         # The identity used for authentication in the request.
         self.auth_principal_display_name = auth_principal_display_name
-        # The description is as above.
+        # The description as mentioned above.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The description is as above.
+        # The description as mentioned above.
         self.auth_principal_type = auth_principal_type
         # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message

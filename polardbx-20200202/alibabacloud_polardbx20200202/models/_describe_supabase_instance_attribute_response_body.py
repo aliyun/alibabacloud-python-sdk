@@ -14,7 +14,7 @@ class DescribeSupabaseInstanceAttributeResponseBody(DaraModel):
         data: main_models.DescribeSupabaseInstanceAttributeResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # The instance details.
         self.data = data
@@ -81,25 +81,25 @@ class DescribeSupabaseInstanceAttributeResponseBodyData(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The list of endpoints.
+        # The endpoints.
         self.conn_addrs = conn_addrs
         # The creation time.
         self.create_time = create_time
         # The instance name.
         self.dbinstance_name = dbinstance_name
-        # The database engine version.
+        # The DPI engine version.
         self.engine_version = engine_version
         # Indicates whether the instance has expired.
         self.expired = expired
         # The lock mode.
         self.lock_mode = lock_mode
-        # The minor engine version.
+        # The minor version.
         self.minor_version = minor_version
         # The node specifications.
         self.node_class = node_class
         # The number of nodes.
         self.node_count = node_count
-        # The list of nodes.
+        # The nodes.
         self.nodes = nodes
         # The name of the associated PolarDB-X instance.
         self.polar_dbxdbinstance_name = polar_dbxdbinstance_name
@@ -107,7 +107,7 @@ class DescribeSupabaseInstanceAttributeResponseBodyData(DaraModel):
         self.region_id = region_id
         # The instance status.
         self.status = status
-        # The Supabase class code.
+        # The Supabase specification code.
         self.supabase_class_code = supabase_class_code
         # The multi-tenant mode.
         self.tenant_mode = tenant_mode
@@ -273,7 +273,7 @@ class DescribeSupabaseInstanceAttributeResponseBodyDataNodes(DaraModel):
         name: str = None,
         zone_id: str = None,
     ):
-        # The class code.
+        # The specification code.
         self.class_code = class_code
         # The node ID.
         self.id = id
@@ -388,15 +388,15 @@ class DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail(DaraModel)
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
         # The authentication principal type.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The no permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

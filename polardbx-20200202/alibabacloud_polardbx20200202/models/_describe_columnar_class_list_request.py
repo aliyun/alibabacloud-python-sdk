@@ -17,7 +17,7 @@ class DescribeColumnarClassListRequest(DaraModel):
         self.dbinstance_name = dbinstance_name
         # The instance name.
         self.instance_name = instance_name
-        # The region in which the instance resides.
+        # The region where the instance is located.
         # 
         # This parameter is required.
         self.region_id = region_id

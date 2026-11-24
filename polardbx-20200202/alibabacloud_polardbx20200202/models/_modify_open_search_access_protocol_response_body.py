@@ -13,17 +13,17 @@ class ModifyOpenSearchAccessProtocolResponseBody(DaraModel):
         protocol: str = None,
         request_id: str = None,
     ):
-        # The details of the access denial.
+        # The details of the access denied error.
         self.access_denied_detail = access_denied_detail
-        # The response message. "success" is returned for a successful request. An error code is returned for a failed request.
+        # The response message. If the request is successful, success is returned. If an error occurs, the corresponding error code is returned.
         self.message = message
         # The backend protocol. Valid values:
         # 
-        # - **HTTP** (default): supports association with HTTPS, HTTP, and QUIC listeners.
+        # - **HTTP** (default): Supports association with HTTPS, HTTP, and QUIC listeners.
         # 
-        # - **HTTPS**: supports association with HTTPS listeners.
+        # - **HTTPS**: Supports association with HTTPS listeners.
         # 
-        # - **gRPC**: supports association with HTTPS and QUIC listeners.
+        # - **gRPC**: Supports association with HTTPS and QUIC listeners.
         # 
         # > If **ServerGroupType** is set to **Fc**, you do not need to configure the backend protocol.
         self.protocol = protocol
@@ -87,14 +87,14 @@ class ModifyOpenSearchAccessProtocolResponseBodyAccessDeniedDetail(DaraModel):
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The identity type used for authentication in the request. Valid values:
+        # The type of identity used for authentication in the request. Valid values:
         # - SubUser: RAM user
         # - AssumedRoleUser: RAM role
         # - Federated: SSO federated identity
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the permission denial.
+        # The permission denial type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type

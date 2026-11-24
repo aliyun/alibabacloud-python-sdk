@@ -18,9 +18,9 @@ class DescribeEvaluateAndImportTasksResponseBody(DaraModel):
         success: bool = None,
         total_number: int = None,
     ):
-        # The details of the restoration tasks.
+        # The recovery task details.
         self.data = data
-        # The returned message. > This parameter is empty when the request succeeds. When the request fails, exception information such as an error code is returned.
+        # The returned message. > This parameter is empty if the request is successful. If the request fails, an error message (such as an error code) is returned.
         self.message = message
         # The page number.
         self.page_number = page_number
@@ -28,7 +28,7 @@ class DescribeEvaluateAndImportTasksResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The total number of entries.
         self.total_number = total_number
@@ -124,37 +124,37 @@ class DescribeEvaluateAndImportTasksResponseBodyData(DaraModel):
         self.bid = bid
         # The creator of the import task.
         self.creator = creator
-        # Indicates whether the task is deleted.
+        # Specifies whether the task is deleted.
         self.deleted = deleted
         # The timestamp when the task was created. Unit: milliseconds.
         self.gmt_created = gmt_created
-        # The time when the metadata information was last modified.
+        # The time when the metadata was modified.
         self.gmt_modified = gmt_modified
         # The task ID.
         self.id = id
         # The region ID.
         self.region_id = region_id
-        # The name of the slink destination database.
+        # The name of the destination Slink database.
         self.slink_dst_db = slink_dst_db
-        # The instance ID of the destination.
+        # The destination instance ID.
         self.slink_dst_res_id = slink_dst_res_id
-        # The username for the data connection of the destination.
+        # The username for the destination data connection.
         self.slink_dst_user_name = slink_dst_user_name
-        # The name of the slink source database.
+        # The name of the source Slink database.
         self.slink_src_db = slink_src_db
-        # The instance ID of the source.
+        # The source instance ID.
         self.slink_src_res_id = slink_src_res_id
-        # The resource type of the source.
+        # The type of the source resource.
         self.slink_src_res_type = slink_src_res_type
-        # The username for the data connection of the source.
+        # The username for the source data connection.
         self.slink_src_user_name = slink_src_user_name
-        # The stage of the synchronization task.
+        # The stage of the synchronization.
         self.slink_stage = slink_stage
-        # The running status of the synchronization task.
+        # The running status of the synchronization.
         self.slink_status = slink_status
-        # The description of the slink task.
+        # The description of the Slink task.
         self.slink_task_desc = slink_task_desc
-        # The slink task ID.
+        # The Slink task ID.
         self.slink_task_id = slink_task_id
         # The synchronization type.
         self.slink_type = slink_type

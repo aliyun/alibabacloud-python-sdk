@@ -20,9 +20,10 @@ class ModifyContext0SecurityIpsRequest(DaraModel):
         # The name of the whitelist group for the instance.
         self.group_name = group_name
         # The modification mode of the whitelist. Valid values:
+        # 
         # - 0: Overwrites the whitelist group.
-        # - 1: Adds a whitelist group.
-        # - 2: Deletes a whitelist group.
+        # - 1: Appends IP addresses to the whitelist group.
+        # - 2: Deletes the whitelist group.
         self.modify_mode = modify_mode
         # The ID of the region where the instance resides.
         # 

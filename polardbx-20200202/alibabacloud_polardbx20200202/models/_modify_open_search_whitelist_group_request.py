@@ -17,7 +17,7 @@ class ModifyOpenSearchWhitelistGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # The group ID.
+        # The ID of the group.
         # 
         # This parameter is required.
         self.group_id = group_id
@@ -25,11 +25,11 @@ class ModifyOpenSearchWhitelistGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.ips = ips
-        # The region of the instance.
+        # The region ID of the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The remark.
+        # The description.
         self.remark = remark
 
     def validate(self):

@@ -9,7 +9,7 @@ class DescribeParameterGroupsRequest(DaraModel):
         self,
         region_id: str = None,
     ):
-        # The region where the instance resides.
+        # The region of the instance.
         self.region_id = region_id
 
     def validate(self):

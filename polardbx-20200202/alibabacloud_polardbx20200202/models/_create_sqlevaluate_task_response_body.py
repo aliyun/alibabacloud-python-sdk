@@ -15,11 +15,11 @@ class CreateSQLEvaluateTaskResponseBody(DaraModel):
     ):
         # The returned result.
         self.data = data
-        # The response message. > This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+        # The returned message. > This parameter is empty if the request is successful. If the request fails, an error message is returned, such as an error code.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -67,7 +67,7 @@ class CreateSQLEvaluateTaskResponseBodyData(DaraModel):
         self,
         slink_task_id: str = None,
     ):
-        # The slink task ID.
+        # The Slink task ID.
         self.slink_task_id = slink_task_id
 
     def validate(self):

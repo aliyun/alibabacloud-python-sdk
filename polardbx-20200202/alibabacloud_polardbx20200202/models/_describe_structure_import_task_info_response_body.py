@@ -13,13 +13,13 @@ class DescribeStructureImportTaskInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The result set.
+        # The returned result set.
         self.data = data
-        # The returned message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
+        # The returned message. This parameter is empty when the request is successful. If the request fails, an error message such as an error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -68,9 +68,9 @@ class DescribeStructureImportTaskInfoResponseBodyData(DaraModel):
         slink_stage: str = None,
         structure_import_result: main_models.DescribeStructureImportTaskInfoResponseBodyDataStructureImportResult = None,
     ):
-        # The slink status.
+        # The Slink status.
         self.slink_stage = slink_stage
-        # The import result of the schema import task.
+        # The import result of the structure import task.
         self.structure_import_result = structure_import_result
 
     def validate(self):
@@ -113,11 +113,11 @@ class DescribeStructureImportTaskInfoResponseBodyDataStructureImportResult(DaraM
     ):
         # The cause of the exception.
         self.exception_detail = exception_detail
-        # The name of the table that encountered an exception.
+        # The name of the table with exceptions.
         self.exception_full_table_name = exception_full_table_name
         # The number of completed records.
         self.finished_num = finished_num
-        # The current progress in percentage.
+        # The current progress (percentage).
         self.percentage = percentage
         # The import status.
         self.status = status

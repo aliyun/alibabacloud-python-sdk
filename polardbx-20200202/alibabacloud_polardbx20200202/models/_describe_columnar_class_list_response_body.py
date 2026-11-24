@@ -89,7 +89,7 @@ class DescribeColumnarClassListResponseBodyDataClassCodeList(DaraModel):
         cpu_core: str = None,
         mem: str = None,
     ):
-        # The instance type.
+        # The instance specification.
         self.class_code = class_code
         # The number of CPU cores.
         self.cpu_core = cpu_core

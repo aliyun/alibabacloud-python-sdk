@@ -12,7 +12,7 @@ class CreateSupabaseNetTypeResponseBody(DaraModel):
         data: main_models.CreateSupabaseNetTypeResponseBodyData = None,
         request_id: str = None,
     ):
-        # The access denial details.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
         # The operation result.
         self.data = data
@@ -63,9 +63,9 @@ class CreateSupabaseNetTypeResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         task_id: int = None,
     ):
-        # The public network connection endpoint.
+        # The public endpoint.
         self.connection_string = connection_string
-        # The instance name.
+        # The name of the instance.
         self.dbinstance_name = dbinstance_name
         # The task ID.
         self.task_id = task_id
@@ -115,11 +115,11 @@ class CreateSupabaseNetTypeResponseBodyAccessDeniedDetail(DaraModel):
     ):
         # The authentication action.
         self.auth_action = auth_action
-        # The security principal name.
+        # The display name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
-        # The owner ID of the security principal.
+        # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
-        # The security principal type.
+        # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
         # The encoded diagnostic message.
         self.encoded_diagnostic_message = encoded_diagnostic_message

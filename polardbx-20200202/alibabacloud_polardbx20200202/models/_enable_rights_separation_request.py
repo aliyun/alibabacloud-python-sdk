@@ -16,13 +16,13 @@ class EnableRightsSeparationRequest(DaraModel):
         security_account_name: str = None,
         security_account_password: str = None,
     ):
-        # The description of the audit account.
+        # The description of the auditor account.
         self.audit_account_description = audit_account_description
-        # The name of the audit account.
+        # The name of the auditor account.
         # 
         # This parameter is required.
         self.audit_account_name = audit_account_name
-        # The password of the audit account.
+        # The password of the auditor account.
         # 
         # This parameter is required.
         self.audit_account_password = audit_account_password
@@ -36,11 +36,11 @@ class EnableRightsSeparationRequest(DaraModel):
         self.region_id = region_id
         # The description of the security administrator account.
         self.security_account_description = security_account_description
-        # The name of the security administrator account.
+        # The security administrator account.
         # 
         # This parameter is required.
         self.security_account_name = security_account_name
-        # The password of the security administrator account.
+        # The password of the security administrator.
         # 
         # This parameter is required.
         self.security_account_password = security_account_password

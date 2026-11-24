@@ -32,20 +32,20 @@ class CreateGdnStandbyMemberRequest(DaraModel):
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # Specifies whether to enable auto-renewal. Default value: true.
+        # Specifies whether to enable auto-renewal. Default value: true. Valid values:
         # 
-        # - **true**: Enabled.
-        # - **false**: Disabled.
+        # - **true**: yes
+        # - **false**: no
         self.auto_renew = auto_renew
         # The number of compute nodes.
         self.cnnode_count = cnnode_count
-        # The client token that is used to ensure the idempotence of the request. Make sure that the value is different for each request.
+        # The client token that is used to ensure the idempotence of the request. Make sure that the token is unique for each request.
         self.client_token = client_token
         # The name of the source instance.
         # 
         # This parameter is required.
         self.clone_instance_name = clone_instance_name
-        # The compute node specifications. This parameter is required for Enterprise Edition instances and is not required for Standard Edition instances.
+        # The compute node specifications. This parameter is required when you create an Enterprise Edition instance and is not required when you create a Standard Edition instance.
         # 
         # Enterprise Edition with local disks:
         # 
@@ -81,9 +81,9 @@ class CreateGdnStandbyMemberRequest(DaraModel):
         self.cn_class = cn_class
         # The number of storage nodes.
         self.dnnode_count = dnnode_count
-        # The description of the instance.
+        # The description.
         self.description = description
-        # The storage node specifications. This parameter is required for Enterprise Edition instances and is not required for Standard Edition instances.
+        # The storage node specifications. This parameter is required when you create an Enterprise Edition instance and is not required when you create a Standard Edition instance.
         # 
         # Enterprise Edition with local disks:
         # 
@@ -126,61 +126,56 @@ class CreateGdnStandbyMemberRequest(DaraModel):
         # - **polarx.mysql.x8.45xlarge.c25**: 180 cores, 1440 GB (dedicated)
         # - **polarx.mysql.x8.60xlarge.c25**: 240 cores, 1920 GB (dedicated)
         self.dn_class = dn_class
-        # The MySQL DPI engine version. Valid values: 5.7 and 8.0.
+        # The MySQL DPI engine version. Valid values: 5.7 or 8.0
         # 
         # This parameter is required.
         self.engine_version = engine_version
         # The network type. Only VPC is supported.
         self.network_type = network_type
-        # The billing method of the instance.
+        # The billing method of the instance. Valid values:
         # 
         # - **PREPAY**: subscription
         # - **POSTPAY**: pay-as-you-go
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The unit of the subscription duration. Valid values:
-        # 
-        # - Year
-        # - Month
-        # 
-        # For pay-as-you-go instances, the default value is Hour.
+        # The billing cycle. Valid values for the subscription billing method are Year and Month. The default value for the pay-as-you-go billing method is Hour.
         self.period = period
         # The primary zone.
         self.primary_zone = primary_zone
-        # The region in which the instance resides.
+        # The region where the instance resides.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. This parameter can be left empty. This parameter is not supported.
+        # The resource group ID. This parameter can be left empty. Resource groups are not supported.
         self.resource_group_id = resource_group_id
         # The secondary zone.
         self.secondary_zone = secondary_zone
         # The edition of the instance. Valid values:
         # 
-        # - enterprise: Enterprise Edition.
-        # - standard: Standard Edition.
+        # - **enterprise**: Enterprise Edition
+        # - **standard**: Standard Edition
         self.series = series
-        # The region in which the source instance resides.
+        # The region where the source instance resides.
         # 
         # This parameter is required.
         self.source_instance_region = source_instance_region
         # The storage type.
         self.storage_type = storage_type
-        # The zone for Three-zone deployment.
+        # The third active zone in a Three-zone deployment.
         self.tertiary_zone = tertiary_zone
         # The topology type. Valid values:
         # 
-        # - **3azones**: three-zone deployment.
-        # - **1azone**: single-zone deployment.
+        # - **3azones**: three-zone deployment
+        # - **1azone**: single-zone deployment
         # 
         # This parameter is required.
         self.topology_type = topology_type
-        # The subscription duration. Unit: months or years.
+        # The subscription duration. You can specify a duration in months or years.
         # 
-        # > If Period is set to Year, valid values of this parameter are 1, 2, and 3.
+        # > If Period is set to Year, valid values are 1, 2, and 3.
         self.used_time = used_time
-        # VPC ID。
+        # The VPC ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id

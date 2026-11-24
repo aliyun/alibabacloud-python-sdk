@@ -12,16 +12,14 @@ class CreateSubCNInstanceRequest(DaraModel):
         read_type: str = None,
         region_id: str = None,
     ):
-        # The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including the instance IDs.
         # 
         # This parameter is required.
         self.dbinstance_name = dbinstance_name
-        # Specifies whether to automatically calculate compute resource parameters. Valid values:
+        # Specifies whether to automatically configure compute resource parameters.
         # - **true**:
         self.is_auto_create = is_auto_create
-        # The read/write type. Valid values:
-        # - ReadWrite: row store read/write.
-        # - ColumnarRead: column store read-only.
+        # The read/write type. Valid values: ReadWrite (row store read/write) and ColumnarRead (column store read-only).
         self.read_type = read_type
         # The region ID.
         # 

@@ -93,6 +93,7 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         zone_id: str = None,
     ):
         # The CN node specifications. Valid values:
+        # 
         # - **polarx.x4.medium.2e**: 2 cores, 8 GB
         # - **polarx.x4.large.2e**: 4 cores, 16 GB
         # - **polarx.x8.large.2e**: 4 cores, 32 GB
@@ -107,7 +108,7 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         self.cn_node_class_code = cn_node_class_code
         # The number of CN nodes.
         self.cn_node_count = cn_node_count
-        # The commodity code of the instance. The value is fixed as drds_polarxpost_public_cn.
+        # The commodity type of the instance. The value is fixed as drds_polarxpost_public_cn.
         self.commodity_code = commodity_code
         # The endpoint information.
         self.conn_addrs = conn_addrs
@@ -117,22 +118,23 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         self.create_time = create_time
         # The instance type. Valid values:
         # 
-        # - **ReadWrite**: primary instance.
-        # - **ReadOnly**: read-only instance.
+        # - **ReadWrite**: primary instance
+        # - **ReadOnly**: read-only instance
         self.dbinstance_type = dbinstance_type
         # The node specifications of the instance.
         self.dbnode_class = dbnode_class
-        # The number of instance nodes.
+        # The number of nodes in the instance.
         self.dbnode_count = dbnode_count
         # The database node information.
         self.dbnodes = dbnodes
-        # The database type. The value is fixed as polarx.
+        # The database engine type. The value is fixed as polarx.
         self.dbtype = dbtype
-        # The database version.
+        # The database engine version.
         self.dbversion = dbversion
-        # The instance description.
+        # The description of the instance.
         self.description = description
         # The DN node specifications. Valid values:
+        # 
         # - **mysql.n2.medium.25**: 2 cores, 4 GB
         # - **mysql.n4.medium.25**: 2 cores, 8 GB
         # - **mysql.x8.medium.25**: 2 cores, 16 GB
@@ -151,50 +153,50 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         self.dn_node_class_code = dn_node_class_code
         # The number of DN nodes.
         self.dn_node_count = dn_node_count
-        # The database type. The value is fixed as MySQL.
+        # The database engine. The value is fixed as MySQL.
         self.engine = engine
-        # The expiration time. The time is in the yyyy-MM-ddTHH:mm:ss.sss+0000 format (UTC).
+        # The expiration time. The format is yyyy-MM-ddTHH:mm:ss.sss+0000 (UTC).
         self.expire_date = expire_date
         # Indicates whether the instance has expired. Valid values:
         # 
-        # - **true**: Expired.
-        # - **false**: Not expired.
+        # - **true**: The instance has expired.
+        # - **false**: The instance has not expired.
         self.expired = expired
         # The ID of the primary instance. If this parameter is not returned, the instance is a primary instance.
         self.id = id
         # The DPI engine version of the instance. This is an internal parameter.
         self.kind_code = kind_code
-        # The LTS version numbers.
+        # The LTS version number.
         # 
         # This parameter is required.
         self.ltsversions = ltsversions
-        # The latest kernel version supported by the instance.
+        # The latest kernel version supported by the current instance.
         self.latest_minor_version = latest_minor_version
         # The lock mode of the instance. Valid values:
         # 
-        # - **Unlock**: Normal.
-        # - **ManualLock**: Manually locked.
-        # - **LockByExpiration**: Automatically locked due to instance expiration.
-        # - **LockByRestoration**: Automatically locked before instance rollback.
-        # - **LockByDiskQuota**: Automatically locked due to insufficient disk space.
-        # - **LockReadInstanceByDiskQuota**: Read-only instance automatically locked due to insufficient disk space.
+        # - **Unlock**: normal
+        # - **ManualLock**: manually locked
+        # - **LockByExpiration**: automatically locked due to expiration
+        # - **LockByRestoration**: automatically locked before a rollback
+        # - **LockByDiskQuota**: automatically locked due to full storage space
+        # - **LockReadInstanceByDiskQuota**: automatically locked due to full storage space of the read-only instance
         self.lock_mode = lock_mode
-        # The end time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
+        # The end time of the maintenance window for the instance. The time is in UTC. Add 8 hours to the time to obtain the maintenance window displayed in the console.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
+        # The start time of the maintenance window for the instance. The time is in UTC. Add 8 hours to the time to obtain the maintenance window displayed in the console.
         self.maintain_start_time = maintain_start_time
         # The current kernel version.
         self.minor_version = minor_version
-        # The network type of the instance. Only VPC is supported, which indicates a virtual private cloud (VPC).
+        # The network type of the instance. The only valid value is VPC, which indicates a VPC.
         self.network = network
         # The billing method of the instance. Valid values:
         # 
-        # - **Postpaid**: pay-as-you-go.
-        # - **Prepaid**: subscription.
+        # - **Postpaid**: pay-as-you-go
+        # - **Prepaid**: subscription
         self.pay_type = pay_type
-        # The port of the instance endpoint.
+        # The connection port of the instance.
         self.port = port
-        # The names of read-only instances.
+        # The names of the read-only instances.
         self.read_dbinstances = read_dbinstances
         # The region where the instance resides.
         self.region_id = region_id
@@ -202,22 +204,22 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         self.resource_group_id = resource_group_id
         # Indicates whether the three-role mode is enabled. Valid values:
         # 
-        # - **false**: Disabled.
-        # - **true**: Enabled.
+        # - **false**: The three-role mode is not enabled.
+        # - **true**: The three-role mode is enabled.
         self.rights_separation_enabled = rights_separation_enabled
         # The three-role mode status. Valid values:
         # 
-        # - **disabled**: Disabled.
-        # - **enabled**: Enabled.
-        # - **processing**: Being processed.
-        # - **unknown**: Unknown. This may be caused by the instance being unreachable.
+        # - **disabled**: not enabled
+        # - **enabled**: enabled
+        # - **processing**: processing
+        # - **unknown**: unknown, which may be caused by the inability to connect to the instance
         self.rights_separation_status = rights_separation_status
         # The instance edition. Valid values:
         # 
-        # - **enterprise**: Enterprise Edition.
-        # - **standard**: Standard Edition.
+        # - **enterprise**: Enterprise Edition
+        # - **standard**: Standard Edition
         self.series = series
-        # The instance status. For more information, see [Instance status](https://help.aliyun.com/document_detail/339826.html).
+        # The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/339826.html).
         self.status = status
         # The used storage space, in bytes.
         self.storage_used = storage_used
@@ -225,10 +227,10 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstance(DaraModel):
         self.tag_set = tag_set
         # The instance type. Valid values:
         # 
-        # - **ReadWrite**: primary instance.
-        # - **ReadOnly**: read-only instance.
+        # - **ReadWrite**: primary instance
+        # - **ReadOnly**: read-only instance
         self.type = type
-        # VPC ID。
+        # The VPC ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -582,9 +584,9 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstanceDBNodes(DaraModel):
         self.id = id
         # The node specifications.
         self.node_class = node_class
-        # The region ID of the node.
+        # The ID of the region where the node resides.
         self.region_id = region_id
-        # The zone where the node resides.
+        # The name of the zone where the node resides.
         self.zone_id = zone_id
 
     def validate(self):
@@ -649,15 +651,15 @@ class DescribeDBInstanceViaEndpointResponseBodyDBInstanceConnAddrs(DaraModel):
     ):
         # The endpoint.
         self.connection_string = connection_string
-        # The port number.
+        # The connection port number.
         self.port = port
-        # The connection type. **VPC** indicates an internal network connection. **PUBLIC** indicates a public network connection.
+        # The connection type. **VPC** indicates an internal network connection, and **PUBLIC** indicates a public network connection.
         self.type = type
-        # VPC ID。
+        # The VPC ID.
         self.vpcid = vpcid
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The internal CloudInstanceId within the VPC. This parameter can be ignored.
+        # The internal CloudInstanceId in the VPC. You can ignore this parameter.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

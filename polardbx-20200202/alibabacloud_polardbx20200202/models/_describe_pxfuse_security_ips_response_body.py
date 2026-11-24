@@ -14,9 +14,9 @@ class DescribePxfuseSecurityIpsResponseBody(DaraModel):
         data: main_models.DescribePxfuseSecurityIpsResponseBodyData = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The instance details.
+        # The list of instance details.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -66,7 +66,7 @@ class DescribePxfuseSecurityIpsResponseBodyData(DaraModel):
     ):
         # The name of the memory engine instance.
         self.custins_name = custins_name
-        # The groups corresponding to the consumed service.
+        # The groups corresponding to the consumed services.
         self.groups = groups
 
     def validate(self):
@@ -114,11 +114,11 @@ class DescribePxfuseSecurityIpsResponseBodyDataGroups(DaraModel):
         self.group_name = group_name
         # The group tag.
         self.group_tag = group_tag
-        # Specifies whether an IP address that is already used for a DNAT entry can also be used for an SNAT entry. Valid values:
+        # Specifies whether an IP address that is already used in a DNAT entry can also be used in an SNAT entry. Valid values:
         # 
-        # - **true**: Destination IP address can also be used for an SNAT entry.
+        # - **true**: Destination IP address can also be used in an SNAT entry.
         # 
-        # - **false**: Destination IP address cannot be used for an SNAT entry.
+        # - **false**: Destination IP address cannot be used in an SNAT entry.
         self.ip_lists = ip_lists
 
     def validate(self):
@@ -164,17 +164,17 @@ class DescribePxfuseSecurityIpsResponseBodyAccessDeniedDetail(DaraModel):
         no_permission_type: str = None,
         policy_type: str = None,
     ):
-        # The description is the same as above.
+        # The description as mentioned above.
         self.auth_action = auth_action
-        # The display name of the authentication principal.
+        # The name of the authentication principal.
         self.auth_principal_display_name = auth_principal_display_name
         # The owner ID of the authentication principal.
         self.auth_principal_owner_id = auth_principal_owner_id
         # The type of the authentication principal.
         self.auth_principal_type = auth_principal_type
-        # The encoded diagnostic message.
+        # The diagnostic information.
         self.encoded_diagnostic_message = encoded_diagnostic_message
-        # The type of the no-permission error.
+        # The no-permission type.
         self.no_permission_type = no_permission_type
         # The policy type.
         self.policy_type = policy_type
