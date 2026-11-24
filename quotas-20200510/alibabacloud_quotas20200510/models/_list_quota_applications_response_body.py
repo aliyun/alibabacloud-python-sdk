@@ -16,9 +16,9 @@ class ListQuotaApplicationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records returned in this query.
+        # The maximum number of entries returned for the current query.
         self.max_results = max_results
-        # The token that marks the position of the returned data. An empty value indicates that all data has been returned.
+        # The pagination token that specifies the position of the returned data. An empty value indicates that all data has been queried.
         self.next_token = next_token
         # The details of the quota increase applications.
         self.quota_applications = quota_applications
@@ -105,23 +105,23 @@ class ListQuotaApplicationsResponseBodyQuotaApplications(DaraModel):
     ):
         # The ID of the quota increase application.
         self.application_id = application_id
-        # The time when the quota increase application was submitted. The value is in ISO 8601 format, in UTC, and ends with Z.
+        # The time when the quota increase application was submitted. The time follows the ISO 8601 standard and is displayed in UTC, ending with Z.
         self.apply_time = apply_time
-        # The approved quota value of the quota increase application.
+        # The approved quota value for the quota increase application.
         self.approve_value = approve_value
-        # The approval comment for the quota increase application.
+        # The approval comments for the quota increase application.
         self.audit_reason = audit_reason
-        # The remarks of the quota increase application.
+        # The remarks for the quota increase application.
         self.comment = comment
-        # The requested quota value of the quota increase application.
+        # The requested quota value for the quota increase application.
         self.desire_value = desire_value
         # The quota dimensions of the quota increase application.
         self.dimension = dimension
-        # The effective period of the quota increase application. The value is in ISO 8601 format, in UTC, and ends with Z.
+        # The effective period of the quota increase application. Format: ISO 8601, UTC time, ending with Z.
         self.effective_time = effective_time
-        # The expiration time of the quota increase application. The value is in ISO 8601 format, in UTC, and ends with Z.
+        # The expiration time of the quota increase application. The time follows the ISO 8601 standard and is displayed in UTC, ending with Z.
         self.expire_time = expire_time
-        # Indicates whether a notification is sent for the quota increase application result. Valid values:
+        # Specifies whether to send notifications for the result of the quota increase application. Valid values:
         # 
         # - 0: No.
         # - 3: Yes.
@@ -132,11 +132,11 @@ class ListQuotaApplicationsResponseBodyQuotaApplications(DaraModel):
         self.product_code = product_code
         # The quota ID.
         self.quota_action_code = quota_action_code
-        # The Alibaba Cloud Resource Name (ARN) of the quota.
+        # The ARN of the quota.
         self.quota_arn = quota_arn
-        # The quota category. Valid values:
-        # - CommonQuota (default): general quota.
-        # - WhiteListLabel: privilege.
+        # The quota type. Valid values:
+        # - CommonQuota (default): General quota.
+        # - WhiteListLabel: Privilege.
         # - FlowControl: API rate limit.
         self.quota_category = quota_category
         # The description of the quota.
@@ -301,11 +301,11 @@ class ListQuotaApplicationsResponseBodyQuotaApplicationsPeriod(DaraModel):
         period_value: int = None,
     ):
         # The unit of the quota calculation period. Valid values:
-        # - second: seconds.
-        # - minute: minutes.
-        # - hour: hours.
-        # - day: days.
-        # - week: weeks.
+        # - second: Seconds.
+        # - minute: Minutes.
+        # - hour: Hours.
+        # - day: Days.
+        # - week: Weeks.
         self.period_unit = period_unit
         # The value of the quota calculation period.
         self.period_value = period_value

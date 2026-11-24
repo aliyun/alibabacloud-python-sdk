@@ -9,6 +9,7 @@ class GetQuotaUtilizationOverviewRequest(DaraModel):
         self,
         quota_category: str = None,
     ):
+        # CommonQuota, FlowControl
         self.quota_category = quota_category
 
     def validate(self):

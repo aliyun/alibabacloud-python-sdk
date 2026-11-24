@@ -16,15 +16,15 @@ class ListQuotaApplicationsDetailForTemplateResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The maximum number of records returned for the current query.
+        # The maximum number of entries returned for the current query.
         self.max_results = max_results
-        # The token that marks the position from which the next query starts.
+        # The token that specifies the starting position of the query.
         self.next_token = next_token
-        # A list of quota application details.
+        # The list of quota application details.
         self.quota_applications = quota_applications
         # The request ID.
         self.request_id = request_id
-        # The total number of records returned for the request.
+        # The total number of entries returned for the current request.
         self.total_count = total_count
 
     def validate(self):
@@ -107,49 +107,44 @@ class ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications(DaraMo
     ):
         # The Alibaba Cloud account.
         self.aliyun_uid = aliyun_uid
-        # The ID of the quota increase request.
+        # The ID of the quota increase application.
         self.application_id = application_id
-        # The UTC time when the quota increase request was submitted.
+        # The time when the quota increase application was submitted. The time is displayed in UTC.
         self.apply_time = apply_time
-        # The approved quota value.
+        # The approved quota value for the quota increase application.
         self.approve_value = approve_value
-        # The reason for the approval.
+        # The approval comments for the quota increase application.
         self.audit_reason = audit_reason
-        # The ID of the quota application batch.
+        # The ID of the batch quota application.
         self.batch_quota_application_id = batch_quota_application_id
-        # The requested quota value.
+        # The requested quota value in the quota increase application.
         self.desire_value = desire_value
-        # The UTC time when the new quota value takes effect.
+        # The time when the quota takes effect. The time is displayed in UTC.
         self.effective_time = effective_time
-        # The language of the alert notification. Valid values:
+        # The language of quota alert notifications. Valid values:
         # 
         # - zh: Chinese.
-        # 
         # - en: English.
         self.env_language = env_language
-        # The UTC time when the new quota value expires.
+        # The time when the quota expires. The time is displayed in UTC.
         self.expire_time = expire_time
-        # Indicates whether a notification is sent for the quota increase request. Valid values:
+        # Specifies whether to send notifications for the result of the quota increase application. Valid values:
         # 
         # - 0: No.
-        # 
         # - 3: Yes.
         self.notice_type = notice_type
-        # The calculation cycle of the quota.
+        # The quota calculation period.
         self.period = period
-        # The abbreviation of the Alibaba Cloud service name.
+        # The abbreviation of the cloud service name.
         self.product_code = product_code
         # The quota ID.
         self.quota_action_code = quota_action_code
         # The Alibaba Cloud Resource Name (ARN) of the quota.
         self.quota_arn = quota_arn
         # The quota type. Valid values:
-        # 
         # - CommonQuota (default): General quota.
-        # 
-        # - WhiteListLabel: Privilege quota.
-        # 
-        # - FlowControl: API rate limit quota.
+        # - WhiteListLabel: Privilege.
+        # - FlowControl: API rate limit.
         self.quota_category = quota_category
         # The description of the quota.
         self.quota_description = quota_description
@@ -159,17 +154,17 @@ class ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications(DaraMo
         self.quota_name = quota_name
         # The unit of the quota.
         self.quota_unit = quota_unit
-        # The reason for the quota increase request.
+        # The reason for the quota increase application.
         self.reason = reason
-        # The approval status of the quota increase request. Valid values:
+        # The approval status of the quota increase application. Valid values:
         # 
-        # - Disagree: The request is rejected.
+        # - Disagree: Rejected.
         # 
-        # - Agree: The request is approved.
+        # - Agree: Approved.
         # 
-        # - Process: The request is in review.
+        # - Process: Under review.
         # 
-        # - Cancel: The request is closed.
+        # - Cancel: Closed.
         self.status = status
 
     def validate(self):
@@ -326,9 +321,9 @@ class ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod(
         period_unit: str = None,
         period_value: int = None,
     ):
-        # The unit of the calculation cycle.
+        # The unit of the quota calculation period.
         self.period_unit = period_unit
-        # The value of the calculation cycle.
+        # The value of the quota calculation period.
         self.period_value = period_value
 
     def validate(self):

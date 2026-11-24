@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_quotas20200510 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'quotas'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('quotas', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -2597,3 +2601,77 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateQuotaAlarmResponse:
         runtime = RuntimeOptions()
         return await self.update_quota_alarm_with_options_async(request, runtime)
+
+    def withdraw_quota_application_with_options(
+        self,
+        request: main_models.WithdrawQuotaApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WithdrawQuotaApplicationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.reason):
+            body['Reason'] = request.reason
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'WithdrawQuotaApplication',
+            version = '2020-05-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WithdrawQuotaApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def withdraw_quota_application_with_options_async(
+        self,
+        request: main_models.WithdrawQuotaApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WithdrawQuotaApplicationResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.application_id):
+            body['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.reason):
+            body['Reason'] = request.reason
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'WithdrawQuotaApplication',
+            version = '2020-05-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WithdrawQuotaApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def withdraw_quota_application(
+        self,
+        request: main_models.WithdrawQuotaApplicationRequest,
+    ) -> main_models.WithdrawQuotaApplicationResponse:
+        runtime = RuntimeOptions()
+        return self.withdraw_quota_application_with_options(request, runtime)
+
+    async def withdraw_quota_application_async(
+        self,
+        request: main_models.WithdrawQuotaApplicationRequest,
+    ) -> main_models.WithdrawQuotaApplicationResponse:
+        runtime = RuntimeOptions()
+        return await self.withdraw_quota_application_with_options_async(request, runtime)

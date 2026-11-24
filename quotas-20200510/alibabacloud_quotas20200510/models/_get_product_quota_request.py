@@ -15,18 +15,18 @@ class GetProductQuotaRequest(DaraModel):
         quota_action_code: str = None,
     ):
         # The quota dimensions.
-        # The properties of the quota item. The combination of dimensions and QuotaActionCode determines a unique quota item.
-        # > Dimensions are required for some cloud services. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quota dimensions of a cloud service and check whether a dimension is required. The Requisite response parameter indicates whether the dimension is required.
+        # The properties of the quota item. The combination of dimensions and the quota ID (QuotaActionCode) uniquely identifies a quota item.
+        # > Dimensions are required for some cloud services. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quotas of a cloud service and check whether dimensions are required. The Requisite response parameter indicates whether a dimension is required.
         self.dimensions = dimensions
         # The abbreviated name of the cloud service.
         # 
-        # > For more information about how to obtain the abbreviated name of a cloud service, see the ProductCode parameter in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
+        # > For more information about how to obtain the abbreviated name of a cloud service, see ProductCode in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
         # 
         # This parameter is required.
         self.product_code = product_code
         # The quota ID.
         # 
-        # > For more information about how to obtain the quota ID of a specified cloud service, see the QuotaActionCode parameter in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
+        # > For more information about how to obtain the quota ID of a specified cloud service, see QuotaActionCode in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
         # 
         # This parameter is required.
         self.quota_action_code = quota_action_code

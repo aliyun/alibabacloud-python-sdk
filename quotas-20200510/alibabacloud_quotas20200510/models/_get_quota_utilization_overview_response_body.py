@@ -17,13 +17,29 @@ class GetQuotaUtilizationOverviewResponseBody(DaraModel):
         status: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The data generation time or statistical date. For general quotas, the time is in UTC and formatted as yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\". For API rate limits, the format is yyyy-MM-dd.
         self.generated_at = generated_at
+        # The supplementary description of the report status. Use Status to determine the status.
         self.message = message
+        # The quota overview data.
         self.quota_overview = quota_overview
+        # The request ID.
         self.request_id = request_id
+        # The query result status of the quota utilization report. Valid values:
+        # 
+        # - AVAILABLE: The data is available.
+        # 
+        # - GENERATING: A new report is being generated. If an unexpired historical report exists, the most recent historical report is returned.
+        # - UNAVAILABLE: No general quota report is available. You must call StartQuotaUtilizationReport to start report generation first.
         self.status = status
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
 
     def validate(self):
@@ -97,8 +113,11 @@ class GetQuotaUtilizationOverviewResponseBodyQuotaOverview(DaraModel):
         over_80percent: main_models.GetQuotaUtilizationOverviewResponseBodyQuotaOverviewOver80Percent = None,
         over_95percent: main_models.GetQuotaUtilizationOverviewResponseBodyQuotaOverviewOver95Percent = None,
     ):
+        # The quotas in use.
         self.in_use = in_use
+        # The quotas with a utilization rate exceeding 80%.
         self.over_80percent = over_80percent
+        # The quotas with a utilization rate exceeding 95%.
         self.over_95percent = over_95percent
 
     def validate(self):
@@ -148,8 +167,11 @@ class GetQuotaUtilizationOverviewResponseBodyQuotaOverviewOver95Percent(DaraMode
         adjustable_ratio: float = None,
         total: int = None,
     ):
+        # The number of adjustable quotas with a utilization rate exceeding 95%.
         self.adjustable = adjustable
+        # The adjustment rate of quotas with a utilization rate exceeding 95%, without the percentage sign.
         self.adjustable_ratio = adjustable_ratio
+        # The number of quotas with a utilization rate exceeding 95%.
         self.total = total
 
     def validate(self):
@@ -191,8 +213,11 @@ class GetQuotaUtilizationOverviewResponseBodyQuotaOverviewOver80Percent(DaraMode
         adjustable_ratio: float = None,
         total: int = None,
     ):
+        # The number of adjustable quotas with a utilization rate exceeding 80%.
         self.adjustable = adjustable
+        # The adjustment rate of quotas with a utilization rate exceeding 80%, without the percentage sign.
         self.adjustable_ratio = adjustable_ratio
+        # The number of quotas with a utilization rate exceeding 80%.
         self.total = total
 
     def validate(self):
@@ -234,8 +259,11 @@ class GetQuotaUtilizationOverviewResponseBodyQuotaOverviewInUse(DaraModel):
         adjustable_ratio: float = None,
         total: int = None,
     ):
+        # The number of adjustable quotas in use.
         self.adjustable = adjustable
+        # The adjustment rate of quotas in use, without the percentage sign.
         self.adjustable_ratio = adjustable_ratio
+        # The total number of quotas in use.
         self.total = total
 
     def validate(self):

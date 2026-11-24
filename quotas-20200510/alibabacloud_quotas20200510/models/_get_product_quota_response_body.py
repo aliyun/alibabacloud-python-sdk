@@ -84,9 +84,9 @@ class GetProductQuotaResponseBodyQuota(DaraModel):
         self.applicable_range = applicable_range
         # The type of quota adjustment. Valid values:
         # 
-        # - continuous: Continuous.
+        # - continuous: continuous
         # 
-        # - discontinuous: Discontinuous.
+        # - discontinuous: discontinuous
         self.applicable_type = applicable_type
         # The sample reasons for applying for a quota adjustment.
         self.apply_reason_tips = apply_reason_tips
@@ -115,11 +115,11 @@ class GetProductQuotaResponseBodyQuota(DaraModel):
         # The ARN of the quota.
         self.quota_arn = quota_arn
         # The quota category. Valid values:
-        # - CommonQuota: General quota.
+        # - CommonQuota: general quota
         # 
-        # - FlowControl: API rate limit.
+        # - FlowControl: API rate limit
         # 
-        # - WhiteListLabel: Privilege.
+        # - WhiteListLabel: privilege
         self.quota_category = quota_category
         # The quota description.
         self.quota_description = quota_description
@@ -129,13 +129,13 @@ class GetProductQuotaResponseBodyQuota(DaraModel):
         self.quota_name = quota_name
         # The quota type. Valid values:
         # 
-        # - privilege: Privilege.
+        # - privilege: privileged
         # 
-        # - normal: Normal.
+        # - normal: normal
         self.quota_type = quota_type
         # The quota unit.
         # 
-        # > The unit varies for each quota. For example, the unit of the q_cbdch3 quota (maximum number of clusters) for Container Service for Kubernetes is Cluster, and the unit of the q_security-groups quota (maximum number of security groups) for Elastic Compute Service servers is count.
+        # > The unit varies with each quota. For example, the unit of the q_cbdch3 quota (maximum number of clusters) for Container Service for Kubernetes is Cluster, and the unit of the q_security-groups quota (maximum number of security groups) for Elastic Compute Service (ECS) servers is count.
         self.quota_unit = quota_unit
         # The supported range of quota values for the current quota item, which can be used as a reference when configuring a quota template.
         self.supported_range = supported_range
@@ -151,7 +151,7 @@ class GetProductQuotaResponseBodyQuota(DaraModel):
         # 
         # - limitReached: The quota limit is reached.
         # 
-        # - supportTicketRequired: A ticket must be submitted for the application.
+        # - supportTicketRequired: A ticket is required.
         self.unadjustable_detail = unadjustable_detail
         # The monitoring information of the quota usage in CloudMonitor.
         # 
@@ -342,9 +342,9 @@ class GetProductQuotaResponseBodyQuotaUsageMetric(DaraModel):
         # Format: a collection of `key:value` pairs. Example:
         # `{"productCode":"***","metricKey":"***","regionId":"***","label":"***"}`.
         self.metric_dimensions = metric_dimensions
-        # The CloudMonitor metric name.
+        # The name of the CloudMonitor metric.
         self.metric_name = metric_name
-        # The CloudMonitor metric namespace.
+        # The namespace of the CloudMonitor monitoring data.
         self.metric_namespace = metric_namespace
 
     def validate(self):
@@ -391,13 +391,13 @@ class GetProductQuotaResponseBodyQuotaQuotaItems(DaraModel):
         self.quota = quota
         # The quota unit.
         # 
-        # > The unit varies for each quota. For example, the unit of the q_cbdch3 quota (maximum number of clusters) for Container Service for Kubernetes is Cluster, and the unit of the q_security-groups quota (maximum number of security groups) for Elastic Compute Service servers is count.
+        # > The unit varies with each quota. For example, the unit of the q_cbdch3 quota (maximum number of clusters) for Container Service for Kubernetes is Cluster, and the unit of the q_security-groups quota (maximum number of security groups) for Elastic Compute Service (ECS) servers is count.
         self.quota_unit = quota_unit
-        # The quota item type. Valid values:
+        # The type of the quota item. Valid values:
         # 
-        # - BaseQuota: Base quota.
+        # - BaseQuota: base quota
         # 
-        # - ReservedQuota: Reserved quota.
+        # - ReservedQuota: reserved quota
         self.type = type
         # The quota usage.
         self.usage = usage
@@ -448,15 +448,15 @@ class GetProductQuotaResponseBodyQuotaPeriod(DaraModel):
     ):
         # The unit of the quota period. Valid values:
         # 
-        # - second: Seconds.
+        # - second: seconds
         # 
-        # - minute: Minutes.
+        # - minute: minutes
         # 
-        # - hour: Hours.
+        # - hour: hours
         # 
-        # - day: Days.
+        # - day: days
         # 
-        # - week: Weeks.
+        # - week: weeks
         self.period_unit = period_unit
         # The value of the quota period.
         self.period_value = period_value

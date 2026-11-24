@@ -20,25 +20,25 @@ class ListQuotaApplicationsRequest(DaraModel):
         status: str = None,
     ):
         # The quota dimensions.
-        # The dimensions are properties of a quota item. A combination of dimensions (Dimensions) and a quota ID (QuotaActionCode) uniquely identifies a quota item.
-        # > Some cloud services require dimensions. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The `Requisite` response parameter indicates whether a dimension is required.
+        # The properties of the quota item. The combination of dimensions and the quota ID (QuotaActionCode) uniquely identifies a quota item.
+        # > The dimensions are required for some cloud services. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quota dimensions supported by a cloud service. The Requisite response parameter indicates whether a dimension is required.
         self.dimensions = dimensions
-        # The keyword for searching quota increase applications.
+        # The search keyword for quota increase applications.
         self.key_word = key_word
-        # The maximum number of records to return in this query.
+        # The maximum number of entries to return for the current query.
         # 
         # Valid values: 1 to 200. Default value: 30.
         self.max_results = max_results
-        # The token that marks the position from which you want to start the query. Leave this parameter empty to query from the beginning.
+        # The pagination token that specifies the start position of the query. An empty value indicates that the query starts from the beginning.
         self.next_token = next_token
-        # The abbreviation of the cloud service name.
+        # The abbreviation of the cloud service.
         self.product_code = product_code
         # The quota ID.
         self.quota_action_code = quota_action_code
-        # The quota category. Valid values:
-        # - CommonQuota: general quota.
+        # The quota type. Valid values:
+        # - CommonQuota: General quota.
         # - FlowControl: API rate limit.
-        # - WhiteListLabel: privilege.
+        # - WhiteListLabel: Privilege.
         self.quota_category = quota_category
         # The approval status of the quota increase application. Valid values:
         # 
@@ -49,6 +49,8 @@ class ListQuotaApplicationsRequest(DaraModel):
         # - Process: Under review.
         # 
         # - Cancel: Closed.
+        # 
+        # - Withdrawn: Withdrawn.
         self.status = status
 
     def validate(self):
@@ -129,11 +131,11 @@ class ListQuotaApplicationsRequestDimensions(DaraModel):
     ):
         # The key of the quota dimension.
         # 
-        # > `Dimensions.N.Key` and `Dimensions.N.Value` must be specified together. The valid values of N depend on the number of dimensions supported by the cloud service. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The length of the returned array is the value of N.
+        # > Dimensions.N.Key and Dimensions.N.Value must be specified at the same time. The value range of N depends on the number of dimensions supported by the corresponding cloud service. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quota dimensions supported by the cloud service. The length of the returned array is the value of N.
         self.key = key
         # The value of the quota dimension.
         # 
-        # > `Dimensions.N.Key` and `Dimensions.N.Value` must be specified together. The valid values of N depend on the number of dimensions supported by the cloud service. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The length of the returned array is the value of N.
+        # > Dimensions.N.Key and Dimensions.N.Value must be specified at the same time. The value range of N depends on the number of dimensions supported by the corresponding cloud service. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quota dimensions supported by the cloud service. The length of the returned array is the value of N.
         self.value = value
 
     def validate(self):

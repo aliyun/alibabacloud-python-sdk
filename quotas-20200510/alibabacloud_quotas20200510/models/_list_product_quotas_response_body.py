@@ -21,7 +21,7 @@ class ListProductQuotasResponseBody(DaraModel):
         # Indicates whether a token for the next query is available.
         # 
         # - If NextToken is empty, it indicates that no subsequent query is available.
-        # - If NextToken is returned, the value is the token used to start the next query.
+        # - If NextToken has a return value, the value indicates the token for the next query.
         self.next_token = next_token
         # The quota details.
         self.quotas = quotas
@@ -112,7 +112,7 @@ class ListProductQuotasResponseBodyQuotas(DaraModel):
     ):
         # Indicates whether the quota is adjustable.
         self.adjustable = adjustable
-        # The range of quota values that can be applied for the current quota item, which serves as a reference for quota applications.
+        # The range of quota values that can be applied for the current quota item. This range is for reference when you apply for a quota.
         self.applicable_range = applicable_range
         # The quota adjustment type.
         self.applicable_type = applicable_type
@@ -132,7 +132,7 @@ class ListProductQuotasResponseBodyQuotas(DaraModel):
         self.period = period
         # The abbreviation of the cloud service name.
         self.product_code = product_code
-        # The ID of the quota.
+        # The quota ID.
         self.quota_action_code = quota_action_code
         # The ARN of the quota.
         self.quota_arn = quota_arn
@@ -148,7 +148,7 @@ class ListProductQuotasResponseBodyQuotas(DaraModel):
         self.quota_type = quota_type
         # The quota unit.
         self.quota_unit = quota_unit
-        # The range of quota values supported by the current quota item, which serves as a reference when you configure a quota template.
+        # The range of quota values supported by the current quota item. This range is for reference when you configure a quota template.
         self.supported_range = supported_range
         # The quota value.
         self.total_quota = total_quota
@@ -345,9 +345,9 @@ class ListProductQuotasResponseBodyQuotasUsageMetric(DaraModel):
         # Format: a collection of `key:value` pairs. Example:
         # `{"productCode":"***","metricKey":"***","regionId":"***","label":"***"}`.
         self.metric_dimensions = metric_dimensions
-        # The name of the CloudMonitor monitoring metric.
+        # The CloudMonitor metric name.
         self.metric_name = metric_name
-        # The namespace of the CloudMonitor monitoring data.
+        # The CloudMonitor monitoring data namespace.
         self.metric_namespace = metric_namespace
 
     def validate(self):

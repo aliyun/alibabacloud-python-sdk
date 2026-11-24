@@ -16,41 +16,38 @@ class ListQuotaApplicationsDetailForTemplateRequest(DaraModel):
         quota_category: str = None,
         status: str = None,
     ):
-        # The Alibaba Cloud account for which the quota increase is requested.
+        # The Alibaba Cloud account that submitted the quota increase application.
         self.aliyun_uid = aliyun_uid
-        # The ID of the quota application batch.
+        # The ID of the batch quota application.
         self.batch_quota_application_id = batch_quota_application_id
-        # The maximum number of records to return for the current query.
+        # The maximum number of entries to return for the current query.
         # 
         # Valid values: 1 to 100. Default value: 30.
         self.max_results = max_results
-        # The token that marks the position from which the query starts.
+        # The token that specifies the starting position of the query.
         # 
         # > If you do not specify this parameter, the query starts from the beginning.
         self.next_token = next_token
-        # The abbreviation of the Alibaba Cloud service name.
+        # The abbreviation of the cloud service name.
         # 
-        # > For more information about how to obtain the abbreviation of an Alibaba Cloud service name, see the `ProductCode` parameter in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
+        # > For more information about how to obtain the abbreviation of a cloud service name, see `ProductCode` in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
         self.product_code = product_code
         # The quota ID.
         self.quota_action_code = quota_action_code
         # The quota type. Valid values:
-        # 
         # - CommonQuota: General quota.
-        # 
-        # - FlowControl: API rate limit quota.
-        # 
-        # - WhiteListLabel: Privilege quota.
+        # - FlowControl: API rate limit.
+        # - WhiteListLabel: Privilege.
         self.quota_category = quota_category
-        # The approval status of the quota increase request. Valid values:
+        # The approval status of the quota increase application. Valid values:
         # 
-        # - Disagree: The request is rejected.
+        # - Disagree: Rejected.
         # 
-        # - Agree: The request is approved.
+        # - Agree: Approved.
         # 
-        # - Process: The request is in review.
+        # - Process: Under review.
         # 
-        # - Cancel: The request is closed.
+        # - Cancel: Closed.
         self.status = status
 
     def validate(self):

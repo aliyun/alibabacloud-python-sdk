@@ -18,13 +18,26 @@ class ListQuotaUtilizationReportRequest(DaraModel):
         quota_region_id: str = None,
         utilization_statuses: List[str] = None,
     ):
+        # Specifies whether to filter quotas by adjustability. Valid values:
+        # - true: Queries only adjustable quotas.
+        # - false: Queries only non-adjustable quotas.
+        # If this parameter is not specified, quotas are not filtered by adjustability.
         self.adjustable = adjustable
+        # The search keyword. Performs a fuzzy match based on the quota name or quota ID.
         self.key_words = key_words
+        # The maximum number of entries to return for this query.
         self.max_results = max_results
+        # The pagination token. Do not specify this parameter for the first query. For subsequent queries, pass the NextToken value returned in the previous response as is, and keep the quota type and filter conditions unchanged. Do not parse or construct the token.
         self.next_token = next_token
+        # The abbreviation of the cloud service.
+        # 
+        # > For information about how to obtain the abbreviation of a cloud service, see ProductCode in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
         self.product_code = product_code
+        # CommonQuota, FlowControl
         self.quota_category = quota_category
+        # The region ID of the quota, such as cn-hangzhou. If this parameter is not specified or is left empty, quotas are not filtered by region.
         self.quota_region_id = quota_region_id
+        # The utilization statuses. You can specify multiple values. If this parameter is not specified or an empty list is passed, quotas are not filtered by utilization status.
         self.utilization_statuses = utilization_statuses
 
     def validate(self):

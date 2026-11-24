@@ -92,6 +92,9 @@ from ._start_quota_utilization_report_response import StartQuotaUtilizationRepor
 from ._update_quota_alarm_request import UpdateQuotaAlarmRequest
 from ._update_quota_alarm_response_body import UpdateQuotaAlarmResponseBody
 from ._update_quota_alarm_response import UpdateQuotaAlarmResponse
+from ._withdraw_quota_application_request import WithdrawQuotaApplicationRequest
+from ._withdraw_quota_application_response_body import WithdrawQuotaApplicationResponseBody
+from ._withdraw_quota_application_response import WithdrawQuotaApplicationResponse
 from ._create_quota_alarm_request import CreateQuotaAlarmRequestQuotaDimensions
 from ._create_quota_application_request import CreateQuotaApplicationRequestDimensions
 from ._create_quota_applications_for_template_request import CreateQuotaApplicationsForTemplateRequestDimensions
@@ -236,6 +239,9 @@ __all__ = [
     UpdateQuotaAlarmRequest,
     UpdateQuotaAlarmResponseBody,
     UpdateQuotaAlarmResponse,
+    WithdrawQuotaApplicationRequest,
+    WithdrawQuotaApplicationResponseBody,
+    WithdrawQuotaApplicationResponse,
     CreateQuotaAlarmRequestQuotaDimensions,
     CreateQuotaApplicationRequestDimensions,
     CreateQuotaApplicationsForTemplateRequestDimensions,

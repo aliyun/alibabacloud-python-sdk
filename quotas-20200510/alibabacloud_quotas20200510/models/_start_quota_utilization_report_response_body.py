@@ -15,12 +15,22 @@ class StartQuotaUtilizationReportResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The description of the request processing result, such as report generation started or the allowed refresh time not reached. Use RefreshSuccess to determine the submission result instead of relying on the prompt text for programmatic evaluation.
         self.message = message
+        # The UTC time when the next refresh can be initiated, in the yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\" format, such as 2026-10-26T08:00:00Z. This parameter is returned when a task is not submitted due to refresh limits. This parameter is empty when a task is successfully submitted.
         self.next_refresh_time = next_refresh_time
+        # Indicates whether the report generation task was successfully submitted. A value of true indicates that the asynchronous task was submitted, but the report is not yet generated. A value of false indicates that the refresh limit period has not ended and no new task was submitted.
         self.refresh_success = refresh_success
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # - true: The call was successful.
+        # - false: The call failed.
         self.success = success
 
     def validate(self):

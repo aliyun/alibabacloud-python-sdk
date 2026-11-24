@@ -21,15 +21,33 @@ class ListQuotaUtilizationReportResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The error code.
         self.error_code = error_code
+        # The error message.
         self.error_msg = error_msg
+        # The data generation time or statistical date. For general quotas, the time is in UTC and formatted as yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\". For API rate quotas, the date is formatted as yyyy-MM-dd.
         self.generated_at = generated_at
+        # The supplementary description of the report status, such as report generation in progress, report generation needs to be started first, or a newer report is available for re-query. Applications should use Status to determine the status.
         self.message = message
+        # The token used to query the next page. An empty value indicates that no next page exists.
         self.next_token = next_token
+        # The list of quota usage on the current page. An empty list is returned if no matching data exists or no general quota report is available.
         self.quotas = quotas
+        # The request ID.
         self.request_id = request_id
+        # The status of the query result for the quota utilization report. Valid values:
+        # 
+        # - AVAILABLE: The data is available for query.
+        # 
+        # - GENERATING: A new report is being generated. If an unexpired historical report exists, the most recent historical report is returned.
+        # - UNAVAILABLE: No general quota report is available. You must call StartQuotaUtilizationReport to start report generation first.
         self.status = status
+        # Indicates whether the call is successful. Valid values:
+        # 
+        # - true: The call is successful.
+        # - false: The call fails.
         self.success = success
+        # The total number of entries that meet all filter conditions in the current report, rather than the number of entries on the current page. The value is 0 if no matching entries exist.
         self.total_count = total_count
 
     def validate(self):
@@ -134,21 +152,42 @@ class ListQuotaUtilizationReportResponseBodyQuotas(DaraModel):
         utilization: float = None,
         utilization_status: str = None,
     ):
+        # Indicates whether the quota is adjustable.
         self.adjustable = adjustable
+        # Indicates whether the used quota is displayed.
         self.consumable = consumable
+        # The quota dimensions. Format: `{"regionId":"region ID"}`.
         self.dimensions = dimensions
+        # The traffic throttling algorithms.
         self.flow_control_algo = flow_control_algo
+        # The abbreviation of the cloud service name.
         self.product_code = product_code
+        # The quota ID.
         self.quota_action_code = quota_action_code
+        # The quota ARN.
         self.quota_arn = quota_arn
+        # The quota type.
         self.quota_category = quota_category
+        # The quota description.
         self.quota_description = quota_description
+        # The quota name.
         self.quota_name = quota_name
+        # The quota value.
         self.total_quota = total_quota
+        # The quota usage.
         self.total_usage = total_usage
+        # The reason why the quota is not adjustable.
         self.unadjustable_detail = unadjustable_detail
+        # The monitoring information of the quota usage in CloudMonitor.
+        # 
+        # > An empty value indicates that no monitoring data for this quota exists in CloudMonitor.
         self.usage_metric = usage_metric
+        # The quota utilization rate, without the percentage sign.
         self.utilization = utilization
+        # The risk level determined by the returned Utilization value. Valid values:
+        # - NORMAL: Less than 80%.
+        # - WARN: Greater than or equal to 80% and less than 95%.
+        # - CRITICAL: Greater than or equal to 95%.
         self.utilization_status = utilization_status
 
     def validate(self):
@@ -273,8 +312,14 @@ class ListQuotaUtilizationReportResponseBodyQuotasUsageMetric(DaraModel):
         metric_name: str = None,
         metric_namespace: str = None,
     ):
+        # The CloudMonitor monitoring dimensions.
+        # 
+        # Format: a collection of key:value pairs. Example:
+        # `{"productCode":"***","metricKey":"***","regionId":"***","label":"***"}`.
         self.metric_dimensions = metric_dimensions
+        # The [monitored metric](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         self.metric_name = metric_name
+        # The namespace of the CloudMonitor monitoring data.
         self.metric_namespace = metric_namespace
 
     def validate(self):
@@ -318,10 +363,18 @@ class ListQuotaUtilizationReportResponseBodyQuotasFlowControlAlgo(DaraModel):
         tokens_per_refill: int = None,
         total_quota: float = None,
     ):
+        # The type of the throttling algorithm. Valid values:
+        # - FixedWindow: Fixed window.
+        # - TokenBucket: Token bucket.
+        # - Concurrency: Concurrency limit.
         self.algo_type = algo_type
+        # The time period. This parameter is returned only for FixedWindow and is empty for other algorithms.
         self.period = period
+        # The time interval between two token refills. This parameter is returned only for TokenBucket and is empty for other algorithms. The time unit must be confirmed with the upstream service and is not declared in the current code.
         self.refill_interval = refill_interval
+        # The number of tokens added per refill. This parameter is returned only for TokenBucket and is empty for other algorithms.
         self.tokens_per_refill = tokens_per_refill
+        # The quota value.
         self.total_quota = total_quota
 
     def validate(self):
@@ -376,7 +429,14 @@ class ListQuotaUtilizationReportResponseBodyQuotasFlowControlAlgoPeriod(DaraMode
         period_unit: str = None,
         period_value: int = None,
     ):
+        # The unit of the quota calculation period. Valid values:
+        # - second: Seconds.
+        # - minute: Minutes.
+        # - hour: Hours.
+        # - day: Days.
+        # - week: Weeks.
         self.period_unit = period_unit
+        # The value of the quota calculation period.
         self.period_value = period_value
 
     def validate(self):

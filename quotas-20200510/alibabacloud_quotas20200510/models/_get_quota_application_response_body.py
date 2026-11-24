@@ -70,38 +70,37 @@ class GetQuotaApplicationResponseBodyQuotaApplication(DaraModel):
     ):
         # The ID of the quota increase application.
         self.application_id = application_id
-        # The time when the quota increase application was submitted.
+        # The time when the quota increase application was submitted. Format: ISO 8601, UTC time, ending with Z.
         self.apply_time = apply_time
         # The approved quota value.
         self.approve_value = approve_value
-        # The review comments for the quota increase application.
+        # The approval comments for the quota increase application.
         self.audit_reason = audit_reason
         # The requested quota value.
         self.desire_value = desire_value
-        # The quota dimension.
-        # 
-        # Format: `{"regionId":"region"}`.
+        # The quota dimension. Format: `{"regionId":"region"}`. Example of a region dimension: `{"regionId":"cn-shanghai"}` or `{"regionId":"cn-hangzhou"}`.
         self.dimension = dimension
-        # The effective period of the quota.
+        # The effective period of the quota. Format: YYYY-MM-DD HH:mm:ss, without a time zone identity.
         self.effective_time = effective_time
-        # The time when the quota expires.
+        # The time when the quota expires. Format: YYYY-MM-DD HH:mm:ss, without a time zone identifier.
         self.expire_time = expire_time
         # The notification type. Valid values:
         # 
-        # - 0: no notification
-        # - 1: email notification
-        # - 2: SMS notification
+        # - 0: No notification.
+        # - 1: Email notification.
+        # - 2: SMS notification.
         self.notice_type = notice_type
         # The abbreviation of the cloud service name.
         self.product_code = product_code
         # The quota ID.
         self.quota_action_code = quota_action_code
-        # The ARN of the quota.
+        # The quota ARN.
         self.quota_arn = quota_arn
         # The quota category. Valid values:
-        # - CommonQuota: general quota
-        # - FlowControl: API rate limit
-        # - WhiteListLabel: privilege
+        # 
+        # - CommonQuota: General quota.
+        # - FlowControl: API rate limit.
+        # - WhiteListLabel: Privilege.
         self.quota_category = quota_category
         # The quota description.
         self.quota_description = quota_description
@@ -114,11 +113,8 @@ class GetQuotaApplicationResponseBodyQuotaApplication(DaraModel):
         # The approval status of the quota increase application. Valid values:
         # 
         # - Disagree: Rejected.
-        # 
         # - Agree: Approved.
-        # 
         # - Process: Under review.
-        # 
         # - Cancel: Closed.
         self.status = status
 

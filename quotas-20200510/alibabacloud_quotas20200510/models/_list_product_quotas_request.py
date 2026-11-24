@@ -23,27 +23,27 @@ class ListProductQuotasRequest(DaraModel):
     ):
         # The quota dimensions.
         self.dimensions = dimensions
-        # The code of the dimension group.
+        # The dimension group code.
         self.group_code = group_code
         # The search keyword for the quota.
         # > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). The search scope includes `QuotaName` and `QuotaActionCode`.
         self.key_word = key_word
-        # The maximum number of entries to return in a single request.
+        # The maximum number of entries to return for the current query.
         # 
         # Valid values: 1 to 100. Default value: 30.
         self.max_results = max_results
-        # The token used to retrieve the next page of results.
+        # The token for the next query.
         # 
-        # - Leave this parameter empty for the first request or when no more results are available.
-        # - If more results are available, set this parameter to the NextToken value returned when you invoke the previous API call.
+        # - For the first query or when no subsequent query is required, you do not need to specify this parameter.
+        # - If a subsequent query is required, set the value to the NextToken value returned by the previous API call.
         self.next_token = next_token
-        # The abbreviation of the cloud service.
+        # The abbreviated name of the cloud service.
         # 
-        # > For more information about how to obtain the abbreviation of a cloud service, see `ProductCode` in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
+        # > For more information about how to obtain the abbreviated name of a cloud service, see `ProductCode` in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
         # 
         # This parameter is required.
         self.product_code = product_code
-        # The ID of the quota.
+        # The quota ID.
         self.quota_action_code = quota_action_code
         # The quota category.
         # 
@@ -51,11 +51,11 @@ class ListProductQuotasRequest(DaraModel):
         self.quota_category = quota_category
         # The sorting method supported by the quota.
         # 
-        # > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). If no Settings are specified, it is left empty.
+        # > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). If the Settings are not specified, it is left empty.
         self.sort_field = sort_field
         # The sorting method supported by the quota.
         # 
-        # > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). If no Settings are specified, it is left empty.
+        # > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). If the Settings are not specified, it is left empty.
         self.sort_order = sort_order
 
     def validate(self):
