@@ -461,6 +461,9 @@ from ._get_model_api_response import GetModelApiResponse
 from ._get_model_group_request import GetModelGroupRequest
 from ._get_model_group_response_body import GetModelGroupResponseBody
 from ._get_model_group_response import GetModelGroupResponse
+from ._get_model_token_rate_limit_request import GetModelTokenRateLimitRequest
+from ._get_model_token_rate_limit_response_body import GetModelTokenRateLimitResponseBody
+from ._get_model_token_rate_limit_response import GetModelTokenRateLimitResponse
 from ._get_plugin_attachment_response_body import GetPluginAttachmentResponseBody
 from ._get_plugin_attachment_response import GetPluginAttachmentResponse
 from ._get_plugin_class_request import GetPluginClassRequest
@@ -863,6 +866,9 @@ from ._update_model_api_response import UpdateModelApiResponse
 from ._update_model_group_request import UpdateModelGroupRequest
 from ._update_model_group_response_body import UpdateModelGroupResponseBody
 from ._update_model_group_response import UpdateModelGroupResponse
+from ._update_model_token_rate_limit_request import UpdateModelTokenRateLimitRequest
+from ._update_model_token_rate_limit_response_body import UpdateModelTokenRateLimitResponseBody
+from ._update_model_token_rate_limit_response import UpdateModelTokenRateLimitResponse
 from ._update_network_access_request import UpdateNetworkAccessRequest
 from ._update_network_access_response_body import UpdateNetworkAccessResponseBody
 from ._update_network_access_response import UpdateNetworkAccessResponse
@@ -1194,6 +1200,7 @@ from ._get_consumer_access_overview_response_body import GetConsumerAccessOvervi
 from ._get_consumer_access_overview_response_body import GetConsumerAccessOverviewResponseBodyDataImpactsAuthorizationCounts
 from ._get_consumer_access_overview_response_body import GetConsumerAccessOverviewResponseBodyDataImpactsGateway
 from ._get_consumer_access_overview_response_body import GetConsumerAccessOverviewResponseBodyDataImpacts
+from ._get_consumer_access_overview_response_body import GetConsumerAccessOverviewResponseBodyDataModelTpmLimits
 from ._get_consumer_access_overview_response_body import GetConsumerAccessOverviewResponseBodyDataQuotas
 from ._get_consumer_access_overview_response_body import GetConsumerAccessOverviewResponseBodyDataResourcesEntitlementState
 from ._get_consumer_access_overview_response_body import GetConsumerAccessOverviewResponseBodyDataResourcesModelGroupsModels
@@ -1280,6 +1287,8 @@ from ._get_migration_task_response_body import GetMigrationTaskResponseBodyData
 from ._get_model_group_response_body import GetModelGroupResponseBodyDataConfigurationDeployment
 from ._get_model_group_response_body import GetModelGroupResponseBodyDataEntitlementState
 from ._get_model_group_response_body import GetModelGroupResponseBodyData
+from ._get_model_token_rate_limit_response_body import GetModelTokenRateLimitResponseBodyDataConsumers
+from ._get_model_token_rate_limit_response_body import GetModelTokenRateLimitResponseBodyData
 from ._get_plugin_attachment_response_body import GetPluginAttachmentResponseBodyData
 from ._get_plugin_class_response_body import GetPluginClassResponseBodyData
 from ._get_plugin_workspace_response_body import GetPluginWorkspaceResponseBodyData
@@ -1589,6 +1598,9 @@ from ._update_migration_task_request import UpdateMigrationTaskRequestVirtualSer
 from ._update_model_group_response_body import UpdateModelGroupResponseBodyDataConfigurationDeployment
 from ._update_model_group_response_body import UpdateModelGroupResponseBodyDataEntitlementState
 from ._update_model_group_response_body import UpdateModelGroupResponseBodyData
+from ._update_model_token_rate_limit_request import UpdateModelTokenRateLimitRequestConsumers
+from ._update_model_token_rate_limit_response_body import UpdateModelTokenRateLimitResponseBodyDataConsumers
+from ._update_model_token_rate_limit_response_body import UpdateModelTokenRateLimitResponseBodyData
 from ._update_portal_response_body import UpdatePortalResponseBodyData
 from ._update_service_request import UpdateServiceRequestHealthCheckConfig
 from ._update_service_request import UpdateServiceRequestOutlierDetectionConfig
@@ -2057,6 +2069,9 @@ __all__ = [
     GetModelGroupRequest,
     GetModelGroupResponseBody,
     GetModelGroupResponse,
+    GetModelTokenRateLimitRequest,
+    GetModelTokenRateLimitResponseBody,
+    GetModelTokenRateLimitResponse,
     GetPluginAttachmentResponseBody,
     GetPluginAttachmentResponse,
     GetPluginClassRequest,
@@ -2459,6 +2474,9 @@ __all__ = [
     UpdateModelGroupRequest,
     UpdateModelGroupResponseBody,
     UpdateModelGroupResponse,
+    UpdateModelTokenRateLimitRequest,
+    UpdateModelTokenRateLimitResponseBody,
+    UpdateModelTokenRateLimitResponse,
     UpdateNetworkAccessRequest,
     UpdateNetworkAccessResponseBody,
     UpdateNetworkAccessResponse,
@@ -2790,6 +2808,7 @@ __all__ = [
     GetConsumerAccessOverviewResponseBodyDataImpactsAuthorizationCounts,
     GetConsumerAccessOverviewResponseBodyDataImpactsGateway,
     GetConsumerAccessOverviewResponseBodyDataImpacts,
+    GetConsumerAccessOverviewResponseBodyDataModelTpmLimits,
     GetConsumerAccessOverviewResponseBodyDataQuotas,
     GetConsumerAccessOverviewResponseBodyDataResourcesEntitlementState,
     GetConsumerAccessOverviewResponseBodyDataResourcesModelGroupsModels,
@@ -2876,6 +2895,8 @@ __all__ = [
     GetModelGroupResponseBodyDataConfigurationDeployment,
     GetModelGroupResponseBodyDataEntitlementState,
     GetModelGroupResponseBodyData,
+    GetModelTokenRateLimitResponseBodyDataConsumers,
+    GetModelTokenRateLimitResponseBodyData,
     GetPluginAttachmentResponseBodyData,
     GetPluginClassResponseBodyData,
     GetPluginWorkspaceResponseBodyData,
@@ -3185,6 +3206,9 @@ __all__ = [
     UpdateModelGroupResponseBodyDataConfigurationDeployment,
     UpdateModelGroupResponseBodyDataEntitlementState,
     UpdateModelGroupResponseBodyData,
+    UpdateModelTokenRateLimitRequestConsumers,
+    UpdateModelTokenRateLimitResponseBodyDataConsumers,
+    UpdateModelTokenRateLimitResponseBodyData,
     UpdatePortalResponseBodyData,
     UpdateServiceRequestHealthCheckConfig,
     UpdateServiceRequestOutlierDetectionConfig,

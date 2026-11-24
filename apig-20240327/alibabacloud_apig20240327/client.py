@@ -8264,6 +8264,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.gateway_id):
             query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.include_model_tpm):
+            query['includeModelTpm'] = request.include_model_tpm
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -8295,6 +8297,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.gateway_id):
             query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.include_model_tpm):
+            query['includeModelTpm'] = request.include_model_tpm
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -10402,6 +10406,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_model_group_with_options_async(model_group_id, request, headers, runtime)
+
+    def get_model_token_rate_limit_with_options(
+        self,
+        gateway_id: str,
+        model_id: str,
+        request: main_models.GetModelTokenRateLimitRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetModelTokenRateLimitResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetModelTokenRateLimit',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/model-tpm/{DaraURL.percent_encode(model_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetModelTokenRateLimitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_model_token_rate_limit_with_options_async(
+        self,
+        gateway_id: str,
+        model_id: str,
+        request: main_models.GetModelTokenRateLimitRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetModelTokenRateLimitResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetModelTokenRateLimit',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/model-tpm/{DaraURL.percent_encode(model_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetModelTokenRateLimitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_model_token_rate_limit(
+        self,
+        gateway_id: str,
+        model_id: str,
+        request: main_models.GetModelTokenRateLimitRequest,
+    ) -> main_models.GetModelTokenRateLimitResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_model_token_rate_limit_with_options(gateway_id, model_id, request, headers, runtime)
+
+    async def get_model_token_rate_limit_async(
+        self,
+        gateway_id: str,
+        model_id: str,
+        request: main_models.GetModelTokenRateLimitRequest,
+    ) -> main_models.GetModelTokenRateLimitResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_model_token_rate_limit_with_options_async(gateway_id, model_id, request, headers, runtime)
 
     def get_plugin_attachment_with_options(
         self,
@@ -22880,6 +22960,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_model_group_with_options_async(model_group_id, request, headers, runtime)
+
+    def update_model_token_rate_limit_with_options(
+        self,
+        gateway_id: str,
+        model_id: str,
+        request: main_models.UpdateModelTokenRateLimitRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelTokenRateLimitResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumers):
+            body['consumers'] = request.consumers
+        if not DaraCore.is_null(request.expected_revision):
+            body['expectedRevision'] = request.expected_revision
+        if not DaraCore.is_null(request.global_tpm):
+            body['globalTpm'] = request.global_tpm
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelTokenRateLimit',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/model-tpm/{DaraURL.percent_encode(model_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelTokenRateLimitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_model_token_rate_limit_with_options_async(
+        self,
+        gateway_id: str,
+        model_id: str,
+        request: main_models.UpdateModelTokenRateLimitRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateModelTokenRateLimitResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.consumers):
+            body['consumers'] = request.consumers
+        if not DaraCore.is_null(request.expected_revision):
+            body['expectedRevision'] = request.expected_revision
+        if not DaraCore.is_null(request.global_tpm):
+            body['globalTpm'] = request.global_tpm
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateModelTokenRateLimit',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/gateways/{DaraURL.percent_encode(gateway_id)}/model-tpm/{DaraURL.percent_encode(model_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateModelTokenRateLimitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_model_token_rate_limit(
+        self,
+        gateway_id: str,
+        model_id: str,
+        request: main_models.UpdateModelTokenRateLimitRequest,
+    ) -> main_models.UpdateModelTokenRateLimitResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_model_token_rate_limit_with_options(gateway_id, model_id, request, headers, runtime)
+
+    async def update_model_token_rate_limit_async(
+        self,
+        gateway_id: str,
+        model_id: str,
+        request: main_models.UpdateModelTokenRateLimitRequest,
+    ) -> main_models.UpdateModelTokenRateLimitResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_model_token_rate_limit_with_options_async(gateway_id, model_id, request, headers, runtime)
 
     def update_network_access_with_options(
         self,

@@ -29,11 +29,11 @@ class UpdateMcpServerRequest(DaraModel):
         # The backend service configurations of the route. This parameter is conditionally required. If it is not provided, the API returns InvalidParameter.WithValue(400).
         self.backend_config = backend_config
         # The creation source type. Valid values:
-        # - ApiGatewayHttpToMCP: API Gateway-managed HTTP-to-MCP
-        # - ApiGatewayProxyMcpHosting: API Gateway-managed direct MCP proxy
-        # - ApiGatewayAssembly: API Gateway MCP assembly
-        # - NacosHttpToMCP: API Gateway-managed Nacos-synchronized HTTP-to-MCP
-        # - NacosMcpHosting: API Gateway-managed Nacos-synchronized direct MCP proxy
+        # - ApiGatewayHttpToMCP: Gateway-hosted HTTP-to-MCP
+        # - ApiGatewayProxyMcpHosting: Gateway-hosted direct MCP proxy
+        # - ApiGatewayAssembly: Gateway MCP assembly
+        # - NacosHttpToMCP: Gateway-hosted Nacos-synchronized HTTP-to-MCP
+        # - NacosMcpHosting: Gateway-hosted Nacos-synchronized direct MCP proxy
         self.create_from_type = create_from_type
         # The description.
         self.description = description
@@ -43,7 +43,13 @@ class UpdateMcpServerRequest(DaraModel):
         self.exposed_uri_path = exposed_uri_path
         # The list of canary release MCP server route configurations.
         self.gray_mcp_server_configs = gray_mcp_server_configs
-        # The MCP service description.
+        # The MCP service instructions. Only gateway-hosted HTTP-to-MCP services of AI Gateway Professional Edition are supported. The maximum length is 2,048 UTF-8 bytes.
+        # 
+        # - Passing a non-empty string replaces the saved instructions.
+        # - Omitting this field retains the saved instructions.
+        # - Passing an empty string `""` clears the saved instructions.
+        # 
+        # After you republish the MCP service, newly established MCP connections can read the updated instructions in `result.instructions` of the `initialize` response. If cleared, the response omits `instructions`.
         self.instructions = instructions
         # The route match rules. This parameter is conditionally required. If it is not provided, the API returns InvalidParameter.IsEmpty(400).
         self.match = match
@@ -188,7 +194,7 @@ class UpdateMcpServerRequestMcpServerConfig(DaraModel):
         mcp_server_spec: str = None,
         swagger_config: str = None,
     ):
-        # The MCP server configurations. This parameter is mutually exclusive with swaggerConfig.
+        # The MCP server configurations. This parameter is mutually exclusive with the swaggerConfig parameter.
         self.mcp_server_spec = mcp_server_spec
         # The Swagger document for HTTP-to-MCP. The document must comply with the OpenAPI 3.0 specification.
         self.swagger_config = swagger_config
@@ -326,7 +332,7 @@ class UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices(DaraModel)
     ):
         # The service port.
         self.port = port
-        # The protocol.
+        # The service protocol.
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
@@ -435,10 +441,10 @@ class UpdateMcpServerRequestBackendConfigServices(DaraModel):
     ):
         # The service port. Do not specify this parameter for dynamic ports.
         self.port = port
-        # The protocol. Valid values:
-        # - TCP.
-        # - HTTP.
-        # - DUBBO.
+        # The service protocol. Valid values:
+        # - TCP: TCP
+        # - HTTP: HTTP
+        # - DUBBO: Dubbo
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id

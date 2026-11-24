@@ -17,11 +17,11 @@ class ListGatewayWebsocketEventsResponseBody(DaraModel):
     ):
         # The business response code.
         self.code = code
-        # The query result.
+        # The query results.
         self.data = data
         # The error message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -79,9 +79,9 @@ class ListGatewayWebsocketEventsResponseBodyData(DaraModel):
         self.has_more = has_more
         # The observability events.
         self.items = items
-        # The actual number of entries per page used for the current request. The default value is 50 and the maximum value is 100.
+        # The actual number of results per page.
         self.max_results = max_results
-        # The encrypted cursor returned when there is a next page. This parameter is empty for the last page. The cursor is valid for 10 minutes and is bound to the user, gateway, time range, and filters. You can adjust maxResults for subsequent pages. SLS snapshot isolation is not guaranteed.
+        # The pagination token for the next page.
         self.next_token = next_token
 
     def validate(self):

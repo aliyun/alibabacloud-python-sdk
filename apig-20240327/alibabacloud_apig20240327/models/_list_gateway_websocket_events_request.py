@@ -17,27 +17,27 @@ class ListGatewayWebsocketEventsRequest(DaraModel):
         start_time: int = None,
         turn_id: str = None,
     ):
-        # The connection ID.
+        # The connection identifier.
         self.connection_id = connection_id
-        # The end time.
+        # The end time. The value is a UNIX timestamp in seconds since the UTC epoch. Example: 1793919600.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The number of entries per page for cursor-based pagination. If not specified or set to 0, the default value is 50. If the value is greater than 100, it is capped at 100. Negative values are invalid.
+        # The maximum number of results per page for cursor-based pagination.
         self.max_results = max_results
         # The model.
         self.model = model
-        # The pagination cursor. Do not specify this parameter for the first query. For subsequent pages, use the nextToken value returned in the previous response. The time range and filter conditions must remain unchanged, but you can adjust the maxResults value.
+        # The pagination token for the next page.
         self.next_token = next_token
         # The provider.
         self.provider = provider
         # The log source.
         self.source = source
-        # The start time.
+        # The start time. The value is a UNIX timestamp in seconds since the UTC epoch. Example: 1793916000.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The turn ID.
+        # The turn identifier.
         self.turn_id = turn_id
 
     def validate(self):
