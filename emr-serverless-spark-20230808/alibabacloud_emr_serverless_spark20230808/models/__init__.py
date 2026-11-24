@@ -65,6 +65,9 @@ from ._create_process_definition_with_schedule_response import CreateProcessDefi
 from ._create_ray_cluster_request import CreateRayClusterRequest
 from ._create_ray_cluster_response_body import CreateRayClusterResponseBody
 from ._create_ray_cluster_response import CreateRayClusterResponse
+from ._create_secret_value_request import CreateSecretValueRequest
+from ._create_secret_value_response_body import CreateSecretValueResponseBody
+from ._create_secret_value_response import CreateSecretValueResponse
 from ._create_session_cluster_request import CreateSessionClusterRequest
 from ._create_session_cluster_response_body import CreateSessionClusterResponseBody
 from ._create_session_cluster_response import CreateSessionClusterResponse
@@ -90,6 +93,9 @@ from ._delete_livy_compute_token_response_body import DeleteLivyComputeTokenResp
 from ._delete_livy_compute_token_response import DeleteLivyComputeTokenResponse
 from ._delete_ray_cluster_response_body import DeleteRayClusterResponseBody
 from ._delete_ray_cluster_response import DeleteRayClusterResponse
+from ._delete_secret_value_request import DeleteSecretValueRequest
+from ._delete_secret_value_response_body import DeleteSecretValueResponseBody
+from ._delete_secret_value_response import DeleteSecretValueResponse
 from ._delete_workspace_queue_request import DeleteWorkspaceQueueRequest
 from ._delete_workspace_queue_response_body import DeleteWorkspaceQueueResponseBody
 from ._delete_workspace_queue_response import DeleteWorkspaceQueueResponse
@@ -211,6 +217,9 @@ from ._list_regions_response import ListRegionsResponse
 from ._list_release_versions_request import ListReleaseVersionsRequest
 from ._list_release_versions_response_body import ListReleaseVersionsResponseBody
 from ._list_release_versions_response import ListReleaseVersionsResponse
+from ._list_secret_value_request import ListSecretValueRequest
+from ._list_secret_value_response_body import ListSecretValueResponseBody
+from ._list_secret_value_response import ListSecretValueResponse
 from ._list_session_clusters_request import ListSessionClustersRequest
 from ._list_session_clusters_response_body import ListSessionClustersResponseBody
 from ._list_session_clusters_response import ListSessionClustersResponse
@@ -414,6 +423,7 @@ from ._list_ray_logs_response_body import ListRayLogsResponseBodyDataObjectList
 from ._list_ray_logs_response_body import ListRayLogsResponseBodyData
 from ._list_regions_response_body import ListRegionsResponseBodyRegions
 from ._list_release_versions_response_body import ListReleaseVersionsResponseBodyReleaseVersions
+from ._list_secret_value_response_body import ListSecretValueResponseBodySecrets
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersApplicationConfigs
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersAutoStartConfiguration
 from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersAutoStopConfiguration
@@ -519,6 +529,9 @@ __all__ = [
     CreateRayClusterRequest,
     CreateRayClusterResponseBody,
     CreateRayClusterResponse,
+    CreateSecretValueRequest,
+    CreateSecretValueResponseBody,
+    CreateSecretValueResponse,
     CreateSessionClusterRequest,
     CreateSessionClusterResponseBody,
     CreateSessionClusterResponse,
@@ -544,6 +557,9 @@ __all__ = [
     DeleteLivyComputeTokenResponse,
     DeleteRayClusterResponseBody,
     DeleteRayClusterResponse,
+    DeleteSecretValueRequest,
+    DeleteSecretValueResponseBody,
+    DeleteSecretValueResponse,
     DeleteWorkspaceQueueRequest,
     DeleteWorkspaceQueueResponseBody,
     DeleteWorkspaceQueueResponse,
@@ -665,6 +681,9 @@ __all__ = [
     ListReleaseVersionsRequest,
     ListReleaseVersionsResponseBody,
     ListReleaseVersionsResponse,
+    ListSecretValueRequest,
+    ListSecretValueResponseBody,
+    ListSecretValueResponse,
     ListSessionClustersRequest,
     ListSessionClustersResponseBody,
     ListSessionClustersResponse,
@@ -868,6 +887,7 @@ __all__ = [
     ListRayLogsResponseBodyData,
     ListRegionsResponseBodyRegions,
     ListReleaseVersionsResponseBodyReleaseVersions,
+    ListSecretValueResponseBodySecrets,
     ListSessionClustersResponseBodySessionClustersApplicationConfigs,
     ListSessionClustersResponseBodySessionClustersAutoStartConfiguration,
     ListSessionClustersResponseBodySessionClustersAutoStopConfiguration,

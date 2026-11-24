@@ -10,11 +10,11 @@ class GetCuHoursRequest(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The end time of the query time range.
+        # The end time of the query range.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The start time of the query time range.
+        # The start time of the query range.
         # 
         # This parameter is required.
         self.start_time = start_time

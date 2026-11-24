@@ -49,7 +49,7 @@ class GetCuHoursResponseBodyData(DaraModel):
         self,
         cu_hours: str = None,
     ):
-        # The CU hours consumed by the specified queue during the query period. This value is an estimate and the final value is subject to the bill.
+        # The CU hours consumed by the queried queue during the query period. This value is an estimate, and the final amount is subject to the bill.
         self.cu_hours = cu_hours
 
     def validate(self):

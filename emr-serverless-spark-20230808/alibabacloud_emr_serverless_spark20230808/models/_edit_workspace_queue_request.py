@@ -25,6 +25,7 @@ class EditWorkspaceQueueRequest(DaraModel):
         self.environments = environments
         # The list of GPU instance types.
         self.gpu_spec = gpu_spec
+        # The ID of the subscription GPU quota instance.
         self.instance_id = instance_id
         # The resource specifications.
         self.resource_spec = resource_spec

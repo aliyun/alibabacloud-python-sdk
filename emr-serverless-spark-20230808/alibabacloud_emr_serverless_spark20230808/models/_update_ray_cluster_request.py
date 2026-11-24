@@ -24,22 +24,25 @@ class UpdateRayClusterRequest(DaraModel):
     ):
         # The description.
         self.description = description
-        # The Ray DPI engine version.
+        # The database engine version of the Ray DPI engine.
         self.display_release_version = display_release_version
+        # Specifies whether to upload metrics.
         self.enable_metrics_upload = enable_metrics_upload
         # The extra parameters. The value must be in JSON format.
         self.extra_param = extra_param
-        # The head node information for the Ray cluster.
+        # The head node information of the Ray cluster.
         self.head_spec = head_spec
         # The name of the Ray cluster. The name must be 1 to 64 characters in length.
         self.name = name
-        # The network connection name.
+        # The name of the network connectivity.
         self.network_service_name = network_service_name
+        # The SLS Logstore used to upload metrics.
         self.sls_log_store = sls_log_store
+        # The Simple Log Service (SLS) project used to upload metrics.
         self.sls_project = sls_project
-        # The list of managed directory IDs to mount.
+        # The IDs of the managed directories to mount.
         self.volume_ids = volume_ids
-        # The worker node information for the Ray cluster. A maximum of 50 worker groups are supported.
+        # The worker node information of the Ray cluster. A maximum of 50 worker groups are supported.
         self.worker_spec = worker_spec
 
     def validate(self):
@@ -152,22 +155,23 @@ class UpdateRayClusterRequestWorkerSpec(DaraModel):
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # The DPI engine version.
+        # The database engine version of the DPI engine.
         self.display_release_version = display_release_version
         # The Ray environment variables.
         self.env = env
+        # The GPU driver version.
         self.gpu_driver_version = gpu_driver_version
         # The GPU instance type.
         self.gpu_spec = gpu_spec
-        # The worker group name.
+        # The name of the worker group.
         self.group_name = group_name
         # The maximum number of workers. Minimum value: 1.
         self.max_replica = max_replica
-        # The memory size. Unit: GiB.
+        # The memory size. Unit: Gi.
         self.memory = memory
         # The minimum number of workers. Minimum value: 1. The value must be less than or equal to the value of maxReplica.
         self.min_replica = min_replica
-        # The queue name.
+        # The name of the queue.
         self.queue_name = queue_name
         # The Ray startup parameters.
         self.ray_start_params = ray_start_params
@@ -286,7 +290,7 @@ class UpdateRayClusterRequestHeadSpec(DaraModel):
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # The Ray DPI engine version.
+        # The database engine version of the Ray DPI engine.
         self.display_release_version = display_release_version
         # Specifies whether to enable auto scaling.
         self.enable_auto_scaling = enable_auto_scaling
@@ -296,14 +300,15 @@ class UpdateRayClusterRequestHeadSpec(DaraModel):
         self.gft_config = gft_config
         # Specifies whether to enable GCS fault tolerance.
         self.gft_enabled = gft_enabled
+        # The GPU driver version.
         self.gpu_driver_version = gpu_driver_version
         # The GPU instance type.
         self.gpu_spec = gpu_spec
         # The idle timeout period for workers after auto scaling is enabled.
         self.idle_timeout_seconds = idle_timeout_seconds
-        # The memory size. Unit: GiB.
+        # The memory size. Unit: Gi.
         self.memory = memory
-        # The queue name.
+        # The name of the queue.
         self.queue_name = queue_name
         # The Ray startup parameters.
         self.ray_start_params = ray_start_params
@@ -405,7 +410,7 @@ class UpdateRayClusterRequestHeadSpecGftConfig(DaraModel):
     ):
         # The Redis password.
         self.redis_password = redis_password
-        # The Redis address.
+        # The Redis endpoint.
         self.redis_url = redis_url
         # The Redis username.
         self.redis_username = redis_username

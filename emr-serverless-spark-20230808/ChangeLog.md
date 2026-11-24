@@ -1,3 +1,6 @@
+2026-11-24 Version: 2.4.0
+- Generated python 2023-08-08 for emr-serverless-spark.
+
 2026-11-18 Version: 2.3.2
 - Generated python 2023-08-08 for emr-serverless-spark.
 

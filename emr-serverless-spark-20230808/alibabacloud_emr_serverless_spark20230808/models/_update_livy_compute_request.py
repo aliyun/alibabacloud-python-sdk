@@ -32,12 +32,12 @@ class UpdateLivyComputeRequest(DaraModel):
         self.auto_start_configuration = auto_start_configuration
         # The auto-stop configuration.
         self.auto_stop_configuration = auto_stop_configuration
-        # The number of CPU cores for the Livy server.
+        # The number of CPU cores for the Livy server. Valid values:
         # - 1
         # - 2
         # - 4
         self.cpu_limit = cpu_limit
-        # The Spark DPI engine database engine version number.
+        # The Spark DPI engine version number.
         self.display_release_version = display_release_version
         # The status of the public endpoint switch.
         self.enable_public = enable_public
@@ -45,6 +45,7 @@ class UpdateLivyComputeRequest(DaraModel):
         self.environment_id = environment_id
         # Specifies whether to enable Fusion engine acceleration.
         self.fusion = fusion
+        # The Livy DPI engine version. This is a new parameter used to replace livyVersion.
         self.livy_release_version = livy_release_version
         # The Livy gateway configuration in JSON format. The following files are supported:
         # 
@@ -55,18 +56,18 @@ class UpdateLivyComputeRequest(DaraModel):
         self.livy_server_conf = livy_server_conf
         # The Livy version.
         self.livy_version = livy_version
-        # The memory size of the Livy server.
+        # The memory size of the Livy server. Valid values:
         # - 4Gi
         # - 8Gi
         # - 16Gi
         self.memory_limit = memory_limit
         # The name.
         self.name = name
-        # The network connectivity name.
+        # The network connection name.
         self.network_name = network_name
         # The queue name.
         self.queue_name = queue_name
-        # **[Deprecated]** The Spark DPI engine database engine version number. Use displayReleaseVersion instead.
+        # **[Deprecated]** The Spark DPI engine version number. Use displayReleaseVersion instead.
         self.release_version = release_version
         # The region ID.
         self.region_id = region_id
@@ -198,7 +199,7 @@ class UpdateLivyComputeRequestAutoStopConfiguration(DaraModel):
         enable: bool = None,
         idle_timeout_minutes: int = None,
     ):
-        # Specifies whether to allow automatic stopping.
+        # Specifies whether to allow automatic stopping. Valid values:
         # - true: Yes.
         # - false: No.
         self.enable = enable
@@ -236,7 +237,7 @@ class UpdateLivyComputeRequestAutoStartConfiguration(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Specifies whether to automatically start the gateway after creation.
+        # Specifies whether to automatically start the gateway after creation. Valid values:
         # - true: Yes.
         # - false: No.
         self.enable = enable

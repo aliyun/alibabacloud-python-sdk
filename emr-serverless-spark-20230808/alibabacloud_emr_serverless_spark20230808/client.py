@@ -1405,6 +1405,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_ray_cluster_with_options_async(workspace_id, request, headers, runtime)
 
+    def create_secret_value_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.CreateSecretValueRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSecretValueResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.comment):
+            body['comment'] = request.comment
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSecretValue',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/secret',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSecretValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_secret_value_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateSecretValueRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSecretValueResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.comment):
+            body['comment'] = request.comment
+        if not DaraCore.is_null(request.content):
+            body['content'] = request.content
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSecretValue',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/secret',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSecretValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_secret_value(
+        self,
+        workspace_id: str,
+        request: main_models.CreateSecretValueRequest,
+    ) -> main_models.CreateSecretValueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_secret_value_with_options(workspace_id, request, headers, runtime)
+
+    async def create_secret_value_async(
+        self,
+        workspace_id: str,
+        request: main_models.CreateSecretValueRequest,
+    ) -> main_models.CreateSecretValueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_secret_value_with_options_async(workspace_id, request, headers, runtime)
+
     def create_session_cluster_with_options(
         self,
         workspace_id: str,
@@ -2316,6 +2404,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_ray_cluster_with_options_async(workspace_id, cluster_id, headers, runtime)
+
+    def delete_secret_value_with_options(
+        self,
+        workspace_id: str,
+        secret_id: str,
+        request: main_models.DeleteSecretValueRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSecretValueResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSecretValue',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/secret/{DaraURL.percent_encode(secret_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSecretValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_secret_value_with_options_async(
+        self,
+        workspace_id: str,
+        secret_id: str,
+        request: main_models.DeleteSecretValueRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSecretValueResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSecretValue',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/secret/{DaraURL.percent_encode(secret_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSecretValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_secret_value(
+        self,
+        workspace_id: str,
+        secret_id: str,
+        request: main_models.DeleteSecretValueRequest,
+    ) -> main_models.DeleteSecretValueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_secret_value_with_options(workspace_id, secret_id, request, headers, runtime)
+
+    async def delete_secret_value_async(
+        self,
+        workspace_id: str,
+        secret_id: str,
+        request: main_models.DeleteSecretValueRequest,
+    ) -> main_models.DeleteSecretValueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_secret_value_with_options_async(workspace_id, secret_id, request, headers, runtime)
 
     def delete_workspace_queue_with_options(
         self,
@@ -5916,6 +6080,78 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_release_versions_with_options_async(request, headers, runtime)
+
+    def list_secret_value_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.ListSecretValueRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSecretValueResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSecretValue',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/secret',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSecretValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_secret_value_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListSecretValueRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSecretValueResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSecretValue',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/secret',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSecretValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_secret_value(
+        self,
+        workspace_id: str,
+        request: main_models.ListSecretValueRequest,
+    ) -> main_models.ListSecretValueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_secret_value_with_options(workspace_id, request, headers, runtime)
+
+    async def list_secret_value_async(
+        self,
+        workspace_id: str,
+        request: main_models.ListSecretValueRequest,
+    ) -> main_models.ListSecretValueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_secret_value_with_options_async(workspace_id, request, headers, runtime)
 
     def list_session_clusters_with_options(
         self,
