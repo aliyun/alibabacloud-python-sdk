@@ -53,7 +53,7 @@ class AddCategoryResponseBodyCategory(DaraModel):
         parent_id: int = None,
         type: str = None,
     ):
-        # The category ID. You can use it as a request parameter for the [UpdateCategory](~~UpdateCategory~~), [DeleteCategory](~~DeleteCategory~~), and [GetCategories](~~GetCategories~~) operations.
+        # The category ID. You can use this ID as a request parameter for the [UpdateCategory](~~UpdateCategory~~), [DeleteCategory](~~DeleteCategory~~), and [GetCategories](~~GetCategories~~) operations.
         self.cate_id = cate_id
         # The category name.
         self.cate_name = cate_name

@@ -24,22 +24,22 @@ class GetPlayInfoRequest(DaraModel):
     ):
         # The URL of the live comment mask data. Valid value: **danmu**.
         # 
-        # > This parameter takes effect only when `outputType` is set to `cdn`.
+        # > This parameter takes effect only when OutputType is set to cdn.
         self.addition_type = addition_type
         # The validity period of the playback URL. Unit: seconds.
         # 
         # - When OutputType is set to **cdn**:
         # 
-        #     - The playback URL expires periodically only if URL authentication is enabled. Otherwise, the URL remains permanently valid. For more information about how to enable and configure URL authentication, refer to [URL authentication](https://help.aliyun.com/document_detail/86090.html).
+        #     - The playback URL expires periodically only if URL authentication is enabled. Otherwise, the URL is permanently valid. For more information about how to enable and configure URL authentication, refer to [URL authentication](https://help.aliyun.com/document_detail/86090.html).
         #     - Minimum value: **1**.
         #     - Maximum value: unlimited.
         #     - Default value: If this parameter is not specified, the default validity period configured for URL authentication is used.
         # 
         # - When OutputType is set to **oss**:
         # 
-        #     - The playback URL expires periodically only if the storage permission is set to private. Otherwise, the URL remains permanently valid.
+        #     - The playback URL expires periodically only if the storage permission is set to private. Otherwise, the URL is permanently valid.
         #     - Minimum value: **1**.
-        #     - Maximum value: To reduce security risks of the origin server, the maximum value is **604800** (7 days) when the audio or video file is stored in a VOD bucket, and **129600** (36 hours) when the file is stored in a user-owned OSS bucket. If the maximum value does not meet your requirements, you can set OutputType to **cdn** and configure URL authentication to set a longer validity period.
+        #     - Maximum value: To reduce security risks of the origin server, the maximum value is **604800** (7 days) when the audio or video file is stored in an ApsaraVideo VOD bucket, and **129600** (36 hours) when the file is stored in a user-owned OSS bucket. If the maximum value does not meet your requirements, you can set OutputType to **cdn** and configure URL authentication to set a longer validity period.
         #     - Default value: If this parameter is not specified, the value is **3600**.
         self.auth_timeout = auth_timeout
         # The codec.
@@ -47,21 +47,21 @@ class GetPlayInfoRequest(DaraModel):
         # The definition of the video stream. Separate multiple definitions with commas (,). Valid values:
         # 
         # - **FD**: fluent.
-        # - **LD**: low definition.
-        # - **SD**: standard definition.
-        # - **HD**: high definition.
+        # - **LD**: standard definition.
+        # - **SD**: high definition.
+        # - **HD**: ultra-high definition.
         # - **OD**: original definition.
         # - **2K**: 2K.
         # - **4K**: 4K.
-        # - **SQ**: standard audio quality.
-        # - **HQ**: high audio quality.
+        # - **SQ**: standard sound quality.
+        # - **HQ**: high sound quality.
         # - **AUTO**: adaptive bitrate.
         # 
         # > - By default, streams of all definitions are retrieved.
-        # > - When you generate a tracing watermark, this parameter is required and must be consistent with the definition configured for tracing watermark transcoding.
-        # > - The AUTO definition is output only when transcoding packaging is configured in the transcoding template. For more information, refer to [PackageSetting: Transcoding packaging settings](~~52839#title-4fk-cg8-gzx~~).
+        # > - When a tracing watermark is generated, this parameter is required and must be consistent with the definition configured for tracing watermark transcoding.
+        # > - The AUTO format is output only when transcoding packaging is configured in the transcoding template. For more information, refer to [PackageSetting: transcoding packaging settings](~~52839#title-4fk-cg8-gzx~~).
         self.definition = definition
-        # The type of the digital watermark. Valid values:
+        # The digital watermarking type. Valid values:
         # 
         # - TraceMark: tracing watermark.
         # - CopyrightMark: copyright watermark.
@@ -76,7 +76,7 @@ class GetPlayInfoRequest(DaraModel):
         # 
         # 
         # > - By default, streams of all formats are retrieved.
-        # > - The mpd format is output only when the `dash` container format is configured in the transcoding template. For more information, refer to [Container: Container format](~~52839#title-7rr-3hj-gy5~~).
+        # > - The mpd format is output only when the dash container format is configured in the transcoding template. For more information, refer to [Container: container format](~~52839#title-7rr-3hj-gy5~~).
         self.formats = formats
         # The type of the output URL. Valid values:
         # 
@@ -85,10 +85,10 @@ class GetPlayInfoRequest(DaraModel):
         self.output_type = output_type
         # The custom playback settings. The value is a JSON string. You can specify the domain name for playback. For more information about how to construct the parameter, refer to [PlayConfig](~~86952#section-9g7-s9b-v7z~~).
         # 
-        # > - If PlayConfig is not specified or the `PlayDomain` field in PlayConfig is not specified, the operation uses the default domain name configured for VOD. If no default domain name is configured, the operation queries domain names in descending order of modification time and uses the most recently modified domain name as the playback domain name. To prevent an unexpected domain name from being returned, we recommend that you configure a default playback domain name. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Asset Management Configuration** > **Storage Management** > **Manage** > **Domain names that redirect back-to-origin traffic to this storage address** to configure the default playback domain name.
-        # > - When the `EncryptType` field in PlayConfig is set to `AliyunVoDEncryption`, the playback URL of the privately encrypted stream is not returned by default to ensure video security. To return the playback URL of the privately encrypted stream, you must also set the `ResultType` parameter to `Multiple`.
+        # > - If PlayConfig is not specified or the PlayDomain field in PlayConfig is not specified, the operation uses the default domain name configured in ApsaraVideo VOD by default. If no default domain name is configured, the operation queries domain names in descending order of modification time and uses the most recently modified domain name as the playback domain name. To prevent an unexpected domain name from being returned, we recommend that you configure a default playback domain name. You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management** > **Media Asset Management Configuration** > **Storage Management** > **Manage** > **Domain Names that Route Back-to-origin Traffic to This Storage Address** to configure the default playback domain name.
+        # > - When the EncryptType parameter in PlayConfig is set to AliyunVoDEncryption, the playback URL of the private encrypted stream is not returned by default to ensure video security. To return the playback URL of the private encrypted stream, you must also set the ResultType parameter to Multiple.
         self.play_config = play_config
-        # The CDN reauthentication parameter, which is a JSON string. When Type A signing of URL authentication is enabled, you can use this parameter to set the `uid` and `rand` fields of the authenticated URL. For more information, refer to [Type A signing](https://help.aliyun.com/document_detail/2249352.html).
+        # The CDN reauthentication parameter, which is a JSON string. When type A signing of URL authentication is enabled, you can use this parameter to set the uid and rand values of the authenticated URL. For more information, refer to [Type A signing](https://help.aliyun.com/document_detail/2249352.html).
         self.re_auth_info = re_auth_info
         # The custom ID. The ID must be 6 to 64 characters in length and can contain only lowercase letters, uppercase letters, digits, hyphens (-), and underscores (_). The ID must be unique per user.
         self.reference_id = reference_id
@@ -104,14 +104,14 @@ class GetPlayInfoRequest(DaraModel):
         # 
         # By default, streams of all types are retrieved.
         self.stream_type = stream_type
-        # The custom digital watermark information.
-        # - When `DigitalWatermarkType` is set to `TraceMark`, you can use this parameter to set the tracing watermark information for the video and return the video stream that contains the watermark information. Only English letters, digits, and Chinese characters are supported. A maximum of 1,024 characters are supported.
-        # - When `DigitalWatermarkType` is set to `CopyrightMark`, `Trace` corresponds to the **Watermark Text** configured when the watermark template is created. You can use this parameter to query and return the video stream with the specified watermark text.
+        # The custom digital watermarking information.
+        # - When DigitalWatermarkType is set to TraceMark, you can pass this parameter to set the tracing watermark information for the video and return the video stream that contains the watermark information. Only English letters, digits, and Chinese characters are supported. A maximum of 1,024 characters are supported.
+        # - When DigitalWatermarkType is set to CopyrightMark, Trace corresponds to the **Watermark Text** set when the watermark template is created. By passing this parameter, you can query and return the video stream with the specified watermark text.
         self.trace = trace
-        # The audio or video ID. You can specify only one ID. You can obtain the ID by using one of the following methods:
-        # - For audio or video files uploaded in the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Assets** > **Audio/Video** to view the ID.
-        # - When you call the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation to upload an audio or video file, the ID is the value of the VideoId response parameter.
-        # - After an audio or video file is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the ID. The ID is the value of the VideoId response parameter.
+        # The ID of the audio or video file. You can specify only one ID. You can obtain the ID by using one of the following methods:
+        # - For an audio or video file uploaded in the console, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Media Library** > **Audio/Video** to view the ID.
+        # - When you upload an audio or video file by calling the [CreateUploadVideo](https://help.aliyun.com/document_detail/55407.html) operation, the ID is the value of the VideoId response parameter.
+        # - After an audio or video file is uploaded, you can call the [SearchMedia](https://help.aliyun.com/document_detail/86044.html) operation to query the ID, which is the value of the VideoId response parameter.
         self.video_id = video_id
 
     def validate(self):

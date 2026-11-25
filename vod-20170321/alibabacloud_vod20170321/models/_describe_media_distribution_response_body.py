@@ -14,7 +14,7 @@ class DescribeMediaDistributionResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The distribution list of audio and video media assets. Statistics are displayed based on the statistical period (calendar hour, day, week, or month) within the specified time range.
+        # The distribution list of audio and video media assets. The list is displayed based on the statistical periods such as natural hours, days, weeks, and months of the start time and end time.
         self.media_distribution_list = media_distribution_list
         # The request ID.
         self.request_id = request_id
@@ -68,11 +68,11 @@ class DescribeMediaDistributionResponseBodyMediaDistributionList(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The number of media assets that match the specified time range within the statistical period.
+        # The number of media assets that match the specified time range within the natural statistical period.
         self.count = count
-        # The end time (exclusive) of the statistical period. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
+        # The end time of the statistical period. The end time is not included. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.end_time = end_time
-        # The start time (inclusive) of the statistical period. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
+        # The start time of the statistical period. The start time is included. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):

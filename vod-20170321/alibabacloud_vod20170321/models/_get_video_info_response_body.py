@@ -77,9 +77,9 @@ class GetVideoInfoResponseBodyVideo(DaraModel):
     ):
         # The application ID.
         self.app_id = app_id
-        # The final review result of the audio or video file. Valid values:
+        # The final moderation result of the audio or video file. Valid values:
         # 
-        # - **Normal**: Approved.
+        # - **Normal**: Passed.
         # - **Blocked**: Blocked.
         self.audit_status = audit_status
         # The category ID.
@@ -88,24 +88,24 @@ class GetVideoInfoResponseBodyVideo(DaraModel):
         self.cate_name = cate_name
         # The thumbnail URL of the audio or video file.
         self.cover_url = cover_url
-        # The time when the audio or video file was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The time when the audio or video file was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The custom media asset information.
         # 
-        # > This parameter is deprecated. The API no longer returns this parameter.
+        # > **[Deprecated]** This parameter is deprecated and is no longer returned when you call this operation.
         self.custom_media_info = custom_media_info
         # The description of the audio or video file.
         self.description = description
-        # The status of the offline download switch. After the offline download feature is enabled, mobile users can cache videos to their local devices for offline viewing by using ApsaraVideo Player. For more information, see [Offline download](https://help.aliyun.com/document_detail/86107.html). Valid values:
+        # The status of the offline download switch. After the offline download feature is enabled, mobile users can use ApsaraVideo Player to cache videos to their local devices for playback. For more information, see [Offline download](https://help.aliyun.com/document_detail/86107.html). Valid values:
         # 
-        # - **on**: enabled. Offline download is allowed.
-        # - **off**: disabled. Offline download is not allowed.
+        # - **on**: Enabled. Offline download is allowed.
+        # - **off**: Disabled. Offline download is prohibited.
         self.download_switch = download_switch
         # The duration of the audio or video file. Unit: seconds.
         self.duration = duration
-        # The time when the audio or video file was last updated. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+        # The last time when the audio or video file was updated. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.modification_time = modification_time
-        # The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The length is 6 to 64 characters. The ID is unique at the user level.
+        # The custom ID. The ID must be 6 to 64 characters in length and can contain only lowercase letters, uppercase letters, digits, hyphens, and underscores. The ID must be unique per user.
         self.reference_id = reference_id
         # The region where the audio or video file is stored.
         self.region_id = region_id
@@ -119,7 +119,7 @@ class GetVideoInfoResponseBodyVideo(DaraModel):
         # The size of the audio or video source file. Unit: bytes.
         self.size = size
         self.snapshots = snapshots
-        # The status of the audio or video file. For more information about the operations that can be performed on audio and video files in each status and the limits, see [Status: audio and video status](~~52839#title-vqg-8cz-7p8~~). Valid values:
+        # The status of the audio or video file. For more information about the operations that can be performed and the limits in each status, see [Status: Audio and video status](~~52839#title-vqg-8cz-7p8~~). Valid values:
         # 
         # - **Uploading**: The file is being uploaded.
         # - **UploadFail**: The file failed to be uploaded.
@@ -127,17 +127,17 @@ class GetVideoInfoResponseBodyVideo(DaraModel):
         # - **Transcoding**: The file is being transcoded.
         # - **TranscodeFail**: The file failed to be transcoded.
         # - **Blocked**: The file is blocked.
-        # - **Normal**: The file is in a normal state.
+        # - **Normal**: The file is normal.
         self.status = status
         # The storage class of the media asset. Valid values:
         # 
-        # - **Standard**: standard.
-        # - **IA**: Infrequent Access (media asset).
-        # - **Archive**: Archive (media asset).
-        # - **ColdArchive**: Cold Archive (media asset).
-        # - **SourceIA**: Infrequent Access (source file).
-        # - **SourceArchive**: Archive (source file).
-        # - **SourceColdArchive**: Cold Archive (source file).
+        # - **Standard**: Standard.
+        # - **IA**: Infrequent Access for media assets.
+        # - **Archive**: Archive for media assets.
+        # - **ColdArchive**: Cold Archive for media assets.
+        # - **SourceIA**: Infrequent Access for source files.
+        # - **SourceArchive**: Archive for source files.
+        # - **SourceColdArchive**: Cold Archive for source files.
         # - **Changing**: The storage class of the media asset is being changed.
         # - **SourceChanging**: The storage class of the source file is being changed.
         self.storage_class = storage_class
@@ -145,7 +145,7 @@ class GetVideoInfoResponseBodyVideo(DaraModel):
         self.storage_location = storage_location
         # The tags of the audio or video file. Multiple tags are separated by commas (,).
         self.tags = tags
-        # The transcoding template group ID.
+        # The ID of the transcoding template group.
         self.template_group_id = template_group_id
         # The title of the audio or video file.
         self.title = title

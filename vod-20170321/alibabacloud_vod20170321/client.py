@@ -442,6 +442,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_editing_project_materials_with_options_async(request, runtime)
 
+    def add_manifest_edit_template_with_options(
+        self,
+        request: main_models.AddManifestEditTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddManifestEditTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.templates):
+            query['Templates'] = request.templates
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddManifestEditTemplate',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddManifestEditTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_manifest_edit_template_with_options_async(
+        self,
+        request: main_models.AddManifestEditTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddManifestEditTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.templates):
+            query['Templates'] = request.templates
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddManifestEditTemplate',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddManifestEditTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_manifest_edit_template(
+        self,
+        request: main_models.AddManifestEditTemplateRequest,
+    ) -> main_models.AddManifestEditTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.add_manifest_edit_template_with_options(request, runtime)
+
+    async def add_manifest_edit_template_async(
+        self,
+        request: main_models.AddManifestEditTemplateRequest,
+    ) -> main_models.AddManifestEditTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.add_manifest_edit_template_with_options_async(request, runtime)
+
     def add_transcode_template_group_with_options(
         self,
         request: main_models.AddTranscodeTemplateGroupRequest,
@@ -2687,6 +2761,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteImageResponse:
         runtime = RuntimeOptions()
         return await self.delete_image_with_options_async(request, runtime)
+
+    def delete_manifest_edit_template_with_options(
+        self,
+        request: main_models.DeleteManifestEditTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteManifestEditTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteManifestEditTemplate',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteManifestEditTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_manifest_edit_template_with_options_async(
+        self,
+        request: main_models.DeleteManifestEditTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteManifestEditTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteManifestEditTemplate',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteManifestEditTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_manifest_edit_template(
+        self,
+        request: main_models.DeleteManifestEditTemplateRequest,
+    ) -> main_models.DeleteManifestEditTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.delete_manifest_edit_template_with_options(request, runtime)
+
+    async def delete_manifest_edit_template_async(
+        self,
+        request: main_models.DeleteManifestEditTemplateRequest,
+    ) -> main_models.DeleteManifestEditTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_manifest_edit_template_with_options_async(request, runtime)
 
     def delete_message_callback_with_options(
         self,
@@ -11246,6 +11390,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_live_record_video_with_options_async(request, runtime)
 
+    def list_manifest_edit_template_with_options(
+        self,
+        request: main_models.ListManifestEditTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListManifestEditTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListManifestEditTemplate',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListManifestEditTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_manifest_edit_template_with_options_async(
+        self,
+        request: main_models.ListManifestEditTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListManifestEditTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListManifestEditTemplate',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListManifestEditTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_manifest_edit_template(
+        self,
+        request: main_models.ListManifestEditTemplateRequest,
+    ) -> main_models.ListManifestEditTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.list_manifest_edit_template_with_options(request, runtime)
+
+    async def list_manifest_edit_template_async(
+        self,
+        request: main_models.ListManifestEditTemplateRequest,
+    ) -> main_models.ListManifestEditTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.list_manifest_edit_template_with_options_async(request, runtime)
+
     def list_snapshots_with_options(
         self,
         request: main_models.ListSnapshotsRequest,
@@ -13999,6 +14217,108 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitDynamicImageJobResponse:
         runtime = RuntimeOptions()
         return await self.submit_dynamic_image_job_with_options_async(request, runtime)
+
+    def submit_edit_media_manifest_job_with_options(
+        self,
+        request: main_models.SubmitEditMediaManifestJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitEditMediaManifestJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.audio_tracks):
+            query['AudioTracks'] = request.audio_tracks
+        if not DaraCore.is_null(request.auto_stream_job_id):
+            query['AutoStreamJobId'] = request.auto_stream_job_id
+        if not DaraCore.is_null(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not DaraCore.is_null(request.remove_tracks):
+            query['RemoveTracks'] = request.remove_tracks
+        if not DaraCore.is_null(request.subtitles):
+            query['Subtitles'] = request.subtitles
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        if not DaraCore.is_null(request.video_id):
+            query['VideoId'] = request.video_id
+        if not DaraCore.is_null(request.video_tracks):
+            query['VideoTracks'] = request.video_tracks
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitEditMediaManifestJob',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitEditMediaManifestJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_edit_media_manifest_job_with_options_async(
+        self,
+        request: main_models.SubmitEditMediaManifestJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitEditMediaManifestJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.audio_tracks):
+            query['AudioTracks'] = request.audio_tracks
+        if not DaraCore.is_null(request.auto_stream_job_id):
+            query['AutoStreamJobId'] = request.auto_stream_job_id
+        if not DaraCore.is_null(request.output_config):
+            query['OutputConfig'] = request.output_config
+        if not DaraCore.is_null(request.remove_tracks):
+            query['RemoveTracks'] = request.remove_tracks
+        if not DaraCore.is_null(request.subtitles):
+            query['Subtitles'] = request.subtitles
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        if not DaraCore.is_null(request.video_id):
+            query['VideoId'] = request.video_id
+        if not DaraCore.is_null(request.video_tracks):
+            query['VideoTracks'] = request.video_tracks
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitEditMediaManifestJob',
+            version = '2017-03-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitEditMediaManifestJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_edit_media_manifest_job(
+        self,
+        request: main_models.SubmitEditMediaManifestJobRequest,
+    ) -> main_models.SubmitEditMediaManifestJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_edit_media_manifest_job_with_options(request, runtime)
+
+    async def submit_edit_media_manifest_job_async(
+        self,
+        request: main_models.SubmitEditMediaManifestJobRequest,
+    ) -> main_models.SubmitEditMediaManifestJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_edit_media_manifest_job_with_options_async(request, runtime)
 
     def submit_media_dnadelete_job_with_options(
         self,

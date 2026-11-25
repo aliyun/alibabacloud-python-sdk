@@ -37,7 +37,7 @@ class AppInfoDTO(DaraModel):
         self.item_id = item_id
         # The update time.
         self.modification_time = modification_time
-        # The list of platform information for the application.
+        # The list of platform information included in the application.
         self.platforms = platforms
         # The user ID.
         self.user_id = user_id
@@ -132,7 +132,7 @@ class AppInfoDTOPlatforms(DaraModel):
     ):
         # The platform ID.
         self.item_id = item_id
-        # The list of licenses.
+        # The authorization list.
         self.license_item_ids = license_item_ids
         # The package name.
         self.pkg_name = pkg_name

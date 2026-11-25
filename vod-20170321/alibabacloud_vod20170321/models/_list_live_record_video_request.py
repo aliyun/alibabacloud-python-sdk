@@ -16,24 +16,24 @@ class ListLiveRecordVideoRequest(DaraModel):
         start_time: str = None,
         stream_name: str = None,
     ):
-        # The name of the application used during recording.
+        # The application name used for recording.
         self.app_name = app_name
-        # The domain name used during recording.
+        # The live streaming domain name used for recording.
         self.domain_name = domain_name
-        # The end time of the recording operation (when the live stream recording begins). The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The end time of the recording operation. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         self.end_time = end_time
         # The page number. Default value: **1**.
         self.page_no = page_no
         # The number of entries per page. Maximum value: **100**. Default value: **10**.
         self.page_size = page_size
-        # The sorting method for results. Valid values:
+        # The sorting method for the results. Valid values:
         # 
-        # - **CreationTime:Desc** (default): sorted by creation time in descending order.
-        # - **CreationTime:Asc**: sorted by creation time in ascending order.
+        # - **CreationTime:Desc** (default): Sorts the results by creation time in descending order.
+        # - **CreationTime:Asc**: Sorts the results by creation time in ascending order.
         self.sort_by = sort_by
-        # The start time of the recording operation (when the live stream recording begins). Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+        # The start time of the recording operation, which is when the live program recording starts. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
         self.start_time = start_time
-        # The name of the live stream used during recording.
+        # The name of the live stream used for recording.
         self.stream_name = stream_name
 
     def validate(self):

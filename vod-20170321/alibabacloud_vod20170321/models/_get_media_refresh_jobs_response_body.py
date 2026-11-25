@@ -13,7 +13,7 @@ class GetMediaRefreshJobsResponseBody(DaraModel):
         media_refresh_jobs: List[main_models.GetMediaRefreshJobsResponseBodyMediaRefreshJobs] = None,
         request_id: str = None,
     ):
-        # The list of audio or video purge or prefetch task information.
+        # The list of audio and video refresh or prefetch task information.
         self.media_refresh_jobs = media_refresh_jobs
         # The request ID.
         self.request_id = request_id
@@ -68,33 +68,35 @@ class GetMediaRefreshJobsResponseBodyMediaRefreshJobs(DaraModel):
         task_type: str = None,
         user_data: str = None,
     ):
-        # The error code. This field is returned when the purge or prefetch task fails to be submitted.
+        # The error code.
+        # This field is returned when the refresh or prefetch task fails to be submitted.
         self.error_code = error_code
-        # The error message. This field is returned when the purge or prefetch task fails to be submitted.
+        # The error message.
+        # This field is returned when the refresh or prefetch task fails to be submitted.
         self.error_message = error_message
-        # The filtering policy for playback streams. The value is in JSON format and contains the request parameters of the [SubmitMediaRefreshJob](https://help.aliyun.com/document_detail/431095.html) operation.
+        # The filter policy for playback streams. The value is in JSON format and contains the request parameters of the [Submit audio and video refresh or prefetch tasks](https://help.aliyun.com/document_detail/431095.html) API operation.
         self.filter_policy = filter_policy
         # The time when the task was created.
         self.gmt_create = gmt_create
-        # The time when the task was last modified.
+        # The time when the task was modified.
         self.gmt_modified = gmt_modified
         # The audio or video ID.
         self.media_id = media_id
-        # The ID of the audio or video purge or prefetch task.
+        # The task ID of the audio or video refresh or prefetch task.
         self.media_refresh_job_id = media_refresh_job_id
         # The task status. Valid values:
-        # - **success**: succeeded
-        # - **fail**: failed
+        # - **success**: success
+        # - **fail**: failure
         self.status = status
-        # The playback URLs that were successfully purged or prefetched.
+        # The playback URLs that are successfully refreshed or prefetched.
         self.success_play_urls = success_play_urls
-        # The task IDs for the purge or prefetch of playback URLs. Each URL corresponds to one task ID. You can use the task ID to call the [DescribeVodRefreshTasks](https://help.aliyun.com/document_detail/69214.html) operation to query the purge or prefetch status of each playback URL.
+        # The task IDs for refreshing or prefetching the playback URLs. Each URL corresponds to one task ID. You can use the task ID to call the [DescribeVodRefreshTasks](https://help.aliyun.com/document_detail/69214.html) API operation to query the refresh or prefetch status of each playback URL.
         self.task_ids = task_ids
         # The task type. Valid values:
-        # - **Refresh**: purge
+        # - **Refresh**: refresh
         # - **Preload**: prefetch
         self.task_type = task_type
-        # The UserData information specified when the purge or prefetch task was submitted.
+        # The UserData information passed when the refresh or prefetch task is submitted.
         self.user_data = user_data
 
     def validate(self):

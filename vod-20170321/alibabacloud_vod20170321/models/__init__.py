@@ -16,6 +16,9 @@ from ._add_editing_project_response import AddEditingProjectResponse
 from ._add_editing_project_materials_request import AddEditingProjectMaterialsRequest
 from ._add_editing_project_materials_response_body import AddEditingProjectMaterialsResponseBody
 from ._add_editing_project_materials_response import AddEditingProjectMaterialsResponse
+from ._add_manifest_edit_template_request import AddManifestEditTemplateRequest
+from ._add_manifest_edit_template_response_body import AddManifestEditTemplateResponseBody
+from ._add_manifest_edit_template_response import AddManifestEditTemplateResponse
 from ._add_transcode_template_group_request import AddTranscodeTemplateGroupRequest
 from ._add_transcode_template_group_response_body import AddTranscodeTemplateGroupResponseBody
 from ._add_transcode_template_group_response import AddTranscodeTemplateGroupResponse
@@ -97,6 +100,9 @@ from ._delete_editing_project_materials_response import DeleteEditingProjectMate
 from ._delete_image_request import DeleteImageRequest
 from ._delete_image_response_body import DeleteImageResponseBody
 from ._delete_image_response import DeleteImageResponse
+from ._delete_manifest_edit_template_request import DeleteManifestEditTemplateRequest
+from ._delete_manifest_edit_template_response_body import DeleteManifestEditTemplateResponseBody
+from ._delete_manifest_edit_template_response import DeleteManifestEditTemplateResponse
 from ._delete_message_callback_request import DeleteMessageCallbackRequest
 from ._delete_message_callback_response_body import DeleteMessageCallbackResponseBody
 from ._delete_message_callback_response import DeleteMessageCallbackResponse
@@ -412,6 +418,9 @@ from ._list_job_info_response import ListJobInfoResponse
 from ._list_live_record_video_request import ListLiveRecordVideoRequest
 from ._list_live_record_video_response_body import ListLiveRecordVideoResponseBody
 from ._list_live_record_video_response import ListLiveRecordVideoResponse
+from ._list_manifest_edit_template_request import ListManifestEditTemplateRequest
+from ._list_manifest_edit_template_response_body import ListManifestEditTemplateResponseBody
+from ._list_manifest_edit_template_response import ListManifestEditTemplateResponse
 from ._list_snapshots_request import ListSnapshotsRequest
 from ._list_snapshots_response_body import ListSnapshotsResponseBody
 from ._list_snapshots_response import ListSnapshotsResponse
@@ -505,6 +514,9 @@ from ._submit_digital_watermark_extract_job_response import SubmitDigitalWaterma
 from ._submit_dynamic_image_job_request import SubmitDynamicImageJobRequest
 from ._submit_dynamic_image_job_response_body import SubmitDynamicImageJobResponseBody
 from ._submit_dynamic_image_job_response import SubmitDynamicImageJobResponse
+from ._submit_edit_media_manifest_job_request import SubmitEditMediaManifestJobRequest
+from ._submit_edit_media_manifest_job_response_body import SubmitEditMediaManifestJobResponseBody
+from ._submit_edit_media_manifest_job_response import SubmitEditMediaManifestJobResponse
 from ._submit_media_dnadelete_job_request import SubmitMediaDNADeleteJobRequest
 from ._submit_media_dnadelete_job_response_body import SubmitMediaDNADeleteJobResponseBody
 from ._submit_media_dnadelete_job_response import SubmitMediaDNADeleteJobResponse
@@ -812,6 +824,7 @@ from ._list_live_record_video_response_body import ListLiveRecordVideoResponseBo
 from ._list_live_record_video_response_body import ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo
 from ._list_live_record_video_response_body import ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo
 from ._list_live_record_video_response_body import ListLiveRecordVideoResponseBodyLiveRecordVideoList
+from ._list_manifest_edit_template_response_body import ListManifestEditTemplateResponseBodyTemplateList
 from ._list_snapshots_response_body import ListSnapshotsResponseBodyMediaSnapshotSnapshotsSnapshot
 from ._list_snapshots_response_body import ListSnapshotsResponseBodyMediaSnapshotSnapshots
 from ._list_snapshots_response_body import ListSnapshotsResponseBodyMediaSnapshot
@@ -866,6 +879,9 @@ __all__ = [
     AddEditingProjectMaterialsRequest,
     AddEditingProjectMaterialsResponseBody,
     AddEditingProjectMaterialsResponse,
+    AddManifestEditTemplateRequest,
+    AddManifestEditTemplateResponseBody,
+    AddManifestEditTemplateResponse,
     AddTranscodeTemplateGroupRequest,
     AddTranscodeTemplateGroupResponseBody,
     AddTranscodeTemplateGroupResponse,
@@ -947,6 +963,9 @@ __all__ = [
     DeleteImageRequest,
     DeleteImageResponseBody,
     DeleteImageResponse,
+    DeleteManifestEditTemplateRequest,
+    DeleteManifestEditTemplateResponseBody,
+    DeleteManifestEditTemplateResponse,
     DeleteMessageCallbackRequest,
     DeleteMessageCallbackResponseBody,
     DeleteMessageCallbackResponse,
@@ -1262,6 +1281,9 @@ __all__ = [
     ListLiveRecordVideoRequest,
     ListLiveRecordVideoResponseBody,
     ListLiveRecordVideoResponse,
+    ListManifestEditTemplateRequest,
+    ListManifestEditTemplateResponseBody,
+    ListManifestEditTemplateResponse,
     ListSnapshotsRequest,
     ListSnapshotsResponseBody,
     ListSnapshotsResponse,
@@ -1355,6 +1377,9 @@ __all__ = [
     SubmitDynamicImageJobRequest,
     SubmitDynamicImageJobResponseBody,
     SubmitDynamicImageJobResponse,
+    SubmitEditMediaManifestJobRequest,
+    SubmitEditMediaManifestJobResponseBody,
+    SubmitEditMediaManifestJobResponse,
     SubmitMediaDNADeleteJobRequest,
     SubmitMediaDNADeleteJobResponseBody,
     SubmitMediaDNADeleteJobResponse,
@@ -1662,6 +1687,7 @@ __all__ = [
     ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideoVideo,
     ListLiveRecordVideoResponseBodyLiveRecordVideoListLiveRecordVideo,
     ListLiveRecordVideoResponseBodyLiveRecordVideoList,
+    ListManifestEditTemplateResponseBodyTemplateList,
     ListSnapshotsResponseBodyMediaSnapshotSnapshotsSnapshot,
     ListSnapshotsResponseBodyMediaSnapshotSnapshots,
     ListSnapshotsResponseBodyMediaSnapshot,

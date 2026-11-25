@@ -16,7 +16,7 @@ class GetVideoListResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The total number of audio and video files.
+        # The total number of audio and video assets.
         self.total = total
         self.video_list = video_list
 

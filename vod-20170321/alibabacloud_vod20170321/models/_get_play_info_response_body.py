@@ -70,10 +70,10 @@ class GetPlayInfoResponseBodyVideoBase(DaraModel):
         title: str = None,
         video_id: str = None,
     ):
-        # The URL of the audio or video thumbnail.
-        # > If you need to obtain the thumbnail URL in real time after a video is uploaded, you can configure VOD callbacks. For more information, refer to [HTTP callbacks](https://help.aliyun.com/document_detail/67214.html) and [Snapshot completion event](https://help.aliyun.com/document_detail/57337.html).
+        # The URL of the thumbnail for the audio or video file.
+        # > If you need to obtain the thumbnail URL in real time after a video is uploaded, you can configure an ApsaraVideo VOD callback. For more information, refer to [HTTP callbacks](https://help.aliyun.com/document_detail/67214.html) and [Video snapshot completion event](https://help.aliyun.com/document_detail/57337.html).
         self.cover_url = cover_url
-        # The time when the audio or video file was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
+        # The time when the audio or video file was created. The time follows the ISO 8601 standard in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The URL of the live comment mask data.
         self.dan_mu_url = dan_mu_url
@@ -84,19 +84,19 @@ class GetPlayInfoResponseBodyVideoBase(DaraModel):
         # - **video**: video.
         # - **audio**: audio-only.
         self.media_type = media_type
-        # The status of the audio or video file. For more information about the valid values and descriptions, refer to [Status: Audio and video status](~~52839#title-vqg-8cz-7p8~~).
+        # The status of the audio or video file. For more information about the valid values and descriptions, refer to [Status: media status](~~52839#title-vqg-8cz-7p8~~).
         self.status = status
-        # The storage class of the media asset. Valid values:
+        # The media storage type. Valid values:
         # 
-        # - **Standard**: Standard.
-        # - **IA**: Infrequent Access.
-        # - **Archive**: Archive.
-        # - **ColdArchive**: Cold Archive.
-        # - **SourceIA**: Infrequent Access for mezzanine files.
-        # - **SourceArchive**: Archive for mezzanine files.
-        # - **SourceColdArchive**: Cold Archive for mezzanine files.
-        # - **Changing**: The storage class of the media asset is being changed.
-        # - **SourceChanging**: The storage class of the mezzanine file is being changed.
+        # - **Standard**: standard.
+        # - **IA**: infrequent access for media assets.
+        # - **Archive**: archive for media assets.
+        # - **ColdArchive**: cold archive for media assets.
+        # - **SourceIA**: infrequent access for mezzanine files.
+        # - **SourceArchive**: archive for mezzanine files.
+        # - **SourceColdArchive**: cold archive for mezzanine files.
+        # - **Changing**: the storage type of the media asset is being changed.
+        # - **SourceChanging**: the storage type of the mezzanine file is being changed.
         self.storage_class = storage_class
         # The title of the audio or video file.
         self.title = title

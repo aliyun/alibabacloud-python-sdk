@@ -12,26 +12,26 @@ class DescribeMediaDistributionRequest(DaraModel):
         start_time: str = None,
         storage_class: str = None,
     ):
-        # The end time of CreationTime. The end time must be later than the start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC). The maximum time span between the start time and end time is six months.
+        # The end time of the creation time. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time span between the start time and end time is six months.
         self.end_time = end_time
         # The statistical interval. Default value: day. Valid values:
-        # - hour: by hour. Statistics are collected based on the calendar hours within the specified time range.
-        # - day: by day. Statistics are collected based on the calendar days within the specified time range.
-        # - week: by week. Statistics are collected based on the calendar weeks within the specified time range.
-        # - month: by month. Statistics are collected based on the calendar months within the specified time range.
+        # - hour: Hour. Statistics are collected based on the natural hours of the start time and end time.
+        # - day: Day. Statistics are collected based on the natural days of the start time and end time.
+        # - week: Week. Statistics are collected based on the natural weeks of the start time and end time.
+        # - month: Month. Statistics are collected based on the natural months of the start time and end time.
         self.interval = interval
-        # The start time of CreationTime. Format: yyyy-MM-ddTHH:mm:ssZ (UTC). The maximum time span between the start time and end time is six months.
+        # The start time of the creation time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time span between the start time and end time is six months.
         self.start_time = start_time
         # The storage class. Valid values:
-        # - Standard: standard storage.
-        # - IA: Infrequent Access.
+        # - Standard: Standard storage.
+        # - IA: Infrequent access.
         # - Archive: Archive storage.
-        # - ColdArchive: Cold Archive storage.
-        # - SourceIA: Infrequent Access for source files.
+        # - ColdArchive: Cold archive storage.
+        # - SourceIA: Infrequent access for source files.
         # - SourceArchive: Archive storage for source files.
-        # - SourceColdArchive: Cold Archive storage for source files.
-        # - Changing: the media asset storage class is being changed.
-        # - SourceChanging: the source file storage class is being changed.
+        # - SourceColdArchive: Cold archive storage for source files.
+        # - Changing: The storage type of the media asset is being changed.
+        # - SourceChanging: The storage type of the source file is being changed.
         self.storage_class = storage_class
 
     def validate(self):
