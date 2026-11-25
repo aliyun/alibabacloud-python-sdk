@@ -90,7 +90,7 @@ class DescribeEventLogResponseBodyDataList(DaraModel):
         url: str = None,
         vul_level: int = None,
     ):
-        # The application type supported by the access control policy. We recommend that you use ApplicationNameList. Valid values:
+        # The application type supported by the access control policy. Use ApplicationNameList instead. Valid values:
         # - **FTP**
         # - **HTTP**
         # - **HTTPS**
@@ -105,14 +105,14 @@ class DescribeEventLogResponseBodyDataList(DaraModel):
         # - **SSH**
         # - **SSL**
         # - **VNC**
-        # - **ANY**: All application types.
+        # - **ANY** (all application types)
         self.application_name = application_name
         # The name of the attacked application.
         self.attack_app = attack_app
         # The attack type of the intrusion prevention event. Valid values:
         # - **1**: Abnormal connection.
-        # - **2**: execute commands.
-        # - **3**: brute-force attacks.
+        # - **2**: Command execution.
+        # - **3**: Brute-force attack.
         # - **4**: Scan.
         # - **5**: Other.
         # - **6**: Information leak.
@@ -120,7 +120,7 @@ class DescribeEventLogResponseBodyDataList(DaraModel):
         # - **8**: Overflow attack.
         # - **9**: Web attack.
         # - **10**: Trojan backdoor.
-        # - **11**: Virus and worm.
+        # - **11**: Virus or worm.
         # - **12**: Mining behavior.
         # - **13**: Reverse shell.
         self.attack_type = attack_type
@@ -128,7 +128,7 @@ class DescribeEventLogResponseBodyDataList(DaraModel):
         # - **in**: Inbound.
         # - **out**: Outbound.
         self.direction = direction
-        # The destination IP address. This indicates that the intrusion prevention event involves this destination IP address.
+        # The queried destination IP address. This indicates that the intrusion prevention event involves this destination IP address.
         self.dst_ip = dst_ip
         # The destination port.
         self.dst_port = dst_port
@@ -138,7 +138,7 @@ class DescribeEventLogResponseBodyDataList(DaraModel):
         self.hit_type = hit_type
         # The protocol type.
         self.ip_protocol = ip_protocol
-        # The UID of the Cloud Firewall member accounts.
+        # The UID of the Cloud Firewall member account.
         self.member_uid = member_uid
         # The ID of the protection rule for the intrusion prevention event.
         self.rule_id = rule_id
@@ -149,13 +149,13 @@ class DescribeEventLogResponseBodyDataList(DaraModel):
         # - **2**: Block.
         self.rule_result = rule_result
         # The source of the detection rule for the intrusion prevention event. Valid values:
-        # - **1**: Basic protection.
-        # - **2**: Virtual Patches.
+        # - **1**: Basic defense.
+        # - **2**: Virtual patches.
         # - **4**: Threat intelligence.
         self.rule_source = rule_source
-        # The Server Name Indication (SNI) used when the TLS connection is established.
+        # The SNI used when the TLS connection is established.
         self.sni = sni
-        # The source IP address. This indicates that the intrusion prevention event involves this source IP address.
+        # The queried source IP address. This indicates that the intrusion prevention event involves this source IP address.
         self.src_ip = src_ip
         # The source port.
         self.src_port = src_port
@@ -163,9 +163,9 @@ class DescribeEventLogResponseBodyDataList(DaraModel):
         self.ssl_cipher = ssl_cipher
         # The phase in which the TLS handshake fails, such as Certificate.
         self.ssl_error_index = ssl_error_index
-        # The reason for the TLS handshake failure, such as BAD_PACKET_LENGTH.
+        # The cause of the TLS handshake failure, such as BAD_PACKET_LENGTH.
         self.ssl_error_msg = ssl_error_msg
-        # The TLS handshake result. For example, success indicates a successful handshake.
+        # The TLS handshake result. For example, success indicates that the handshake is successful.
         self.ssl_handshake_res = ssl_handshake_res
         # The TLS version, such as TLSv1.3.
         self.ssl_protocol = ssl_protocol

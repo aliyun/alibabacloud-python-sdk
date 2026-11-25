@@ -61,7 +61,7 @@ class ModifyCfwInstanceRequestUpdateList(DaraModel):
         # The code of the instance property to update.
         # The following codes are supported:
         # 
-        # - \\`Code\\`: \\`MajorVersion\\`. Set \\`Value\\` to \\`2\\`. This is available only for pay-as-you-go 1.0 users to upgrade their instances to pay-as-you-go 2.0.
+        # - \`Code\`: \`MajorVersion\`. Set \`Value\` to \`2\`. This is available only for pay-as-you-go 1.0 users to upgrade their instances to pay-as-you-go 2.0.
         # 
         #   >Warning: 
         # 
@@ -75,11 +75,11 @@ class ModifyCfwInstanceRequestUpdateList(DaraModel):
         # 
         #   
         # 
-        # - \\`Code\\`: \\`ThreatIntelligence\\`. This is available only for pay-as-you-go 2.0 users to enable or disable the threat intelligence feature. Set \\`Value\\` to \\`1\\` to enable the feature or \\`0\\` to disable it.
+        # - \`Code\`: \`ThreatIntelligence\`. This is available only for pay-as-you-go 2.0 users to enable or disable the threat intelligence feature. Set \`Value\` to \`1\` to enable the feature or \`0\` to disable it.
         # 
-        # - \\`Code\\`: \\`Sdl\\`. This is available only for pay-as-you-go 2.0 users to enable or disable the sensitive data leak detection feature. Set \\`Value\\` to \\`1\\` to enable the feature or \\`0\\` to disable it.
+        # - \`Code\`: \`Sdl\`. This is available only for pay-as-you-go 2.0 users to enable or disable the sensitive data leak detection feature. Set \`Value\` to \`1\` to enable the feature or \`0\` to disable it.
         self.code = code
-        # The value for the specified \\`Code\\`. For valid values, see the description of the \\`Code\\` parameter.
+        # The value for the specified \`Code\`. For valid values, see the description of the \`Code\` parameter.
         self.value = value
 
     def validate(self):

@@ -14,7 +14,7 @@ class DescribePrepayBillTotalRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The bill type. This parameter is required. If it is not specified, an error is returned. Valid values:
+        # The bill type. This parameter is required. If you do not specify this parameter, an error is returned. Valid values:
         # - elastic_traffic: elastic traffic.
         # - sdl: sensitive data leak detection traffic.
         self.bill_type = bill_type
@@ -26,8 +26,8 @@ class DescribePrepayBillTotalRequest(DaraModel):
         # This parameter is required.
         self.end_time = end_time
         # The language. Valid values:
-        # - zh
-        # - en
+        # - zh: Chinese.
+        # - en: English.
         # Default value: zh.
         self.lang = lang
         # The number of entries to return on each page. Default value: 10.

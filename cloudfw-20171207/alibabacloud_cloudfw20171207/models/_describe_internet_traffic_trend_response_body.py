@@ -28,37 +28,37 @@ class DescribeInternetTrafficTrendResponseBody(DaraModel):
         total_out_bytes: int = None,
         total_session: int = None,
     ):
-        # The average inbound network throughput. Unit: bps.
+        # The average network throughput in the inbound direction. Unit: bps.
         self.avg_in_bps = avg_in_bps
-        # The average outbound network throughput. Unit: bps.
+        # The average network throughput in the outbound direction. Unit: bps.
         self.avg_out_bps = avg_out_bps
         # The average number of requests.
         self.avg_session = avg_session
-        # The average total network throughput for inbound and outbound traffic. Unit: bps.
+        # The average network throughput in both outbound and inbound directions. Unit: bps.
         self.avg_total_bps = avg_total_bps
-        # A list of traffic statistics.
+        # The list of traffic statistics information.
         self.data_list = data_list
-        # The UNIX timestamp when the peak bandwidth was reached. Unit: seconds.
+        # The timestamp when the peak bandwidth occurred. The value is a UNIX timestamp in seconds.
         self.max_bandwidth_time = max_bandwidth_time
-        # The peak daily excess traffic.
+        # The maximum daily excess traffic.
         self.max_day_exceed_bytes = max_day_exceed_bytes
-        # The peak inbound network throughput. Unit: bps.
+        # The peak network throughput in the inbound direction. Unit: bps.
         self.max_in_bps = max_in_bps
-        # The peak outbound network throughput. Unit: bps.
+        # The peak network throughput in the outbound direction. Unit: bps.
         self.max_out_bps = max_out_bps
         # The peak number of requests.
         self.max_session = max_session
-        # The peak total network throughput for inbound and outbound traffic. Unit: bps.
+        # The peak network throughput in both outbound and inbound directions. Unit: bps.
         self.max_total_bps = max_total_bps
         # The ID of the request.
         self.request_id = request_id
-        # The total inbound and outbound traffic. Unit: bytes.
+        # The total network traffic in both outbound and inbound directions. Unit: bytes.
         self.total_bytes = total_bytes
         # The total excess traffic.
         self.total_exceed_bytes = total_exceed_bytes
-        # The total inbound traffic. Unit: bytes.
+        # The total network traffic in the inbound direction. Unit: bytes.
         self.total_in_bytes = total_in_bytes
-        # The total outbound traffic. Unit: bytes.
+        # The total network traffic in the outbound direction. Unit: bytes.
         self.total_out_bytes = total_out_bytes
         # The total number of requests.
         self.total_session = total_session
@@ -201,27 +201,27 @@ class DescribeInternetTrafficTrendResponseBodyDataList(DaraModel):
         time: int = None,
         total_bps: int = None,
     ):
-        # The inbound network throughput. Unit: bps.
+        # The network throughput in the inbound direction. Unit: bps.
         self.in_bps = in_bps
-        # The inbound traffic. Unit: bytes.
+        # The total network traffic in the inbound direction. Unit: bytes.
         self.in_bytes = in_bytes
-        # The inbound packet rate. Unit: pps.
+        # The packet rate in the inbound direction. Unit: pps.
         self.in_pps = in_pps
         # The number of new connections.
         self.new_conn = new_conn
-        # The outbound network throughput. Unit: bps.
+        # The network throughput in the outbound direction. Unit: bps.
         self.out_bps = out_bps
-        # The outbound traffic. Unit: bytes.
+        # The total network traffic in the outbound direction. Unit: bytes.
         self.out_bytes = out_bytes
-        # The outbound packet rate. Unit: pps.
+        # The packet rate in the outbound direction. Unit: pps.
         self.out_pps = out_pps
         # The number of requests.
         self.session_count = session_count
-        # The time when the traffic was recorded. This value is a UNIX timestamp in seconds.
+        # The time when the traffic occurred. The value is a UNIX timestamp in seconds.
         # 
-        # If data for this time point has not been processed, the values of other fields are -1.
+        # If the data for this time point is not fully processed, the values of other fields are -1.
         self.time = time
-        # The total inbound and outbound network throughput. Unit: bps.
+        # The total network throughput in both outbound and inbound directions. Unit: bps.
         self.total_bps = total_bps
 
     def validate(self):

@@ -17,23 +17,20 @@ class DescribeInternetTrafficTrendRequest(DaraModel):
         start_time: str = None,
         traffic_type: str = None,
     ):
-        # The direction of the Internet traffic. Valid values:
+        # The traffic direction of the Internet. Valid values:
         # 
-        # - **in**: inbound
-        # 
-        # - **out**: outbound
+        # - **in**: inbound traffic access control.
+        # - **out**: outbound traffic access control.
         self.direction = direction
-        # The end of the time range to query. This value is a UNIX timestamp in seconds.
+        # The end time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The language of the request and response. Valid values:
-        # 
-        # - **zh** (default): Chinese
-        # 
-        # - **en**: English
+        # The language type of the request and response messages. Valid values:
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         self.lang = lang
-        # The source tracking code.
+        # The tracing code.
         # 
         # This parameter is required.
         self.source_code = source_code
@@ -43,15 +40,15 @@ class DescribeInternetTrafficTrendRequest(DaraModel):
         self.src_private_ip = src_private_ip
         # The source public IP address.
         self.src_public_ip = src_public_ip
-        # The start of the time range to query. This value is a UNIX timestamp in seconds.
+        # The start time of the query. The value is a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.start_time = start_time
-        # The type of traffic to query. Valid values:
-        # 
-        # - **max** (default): peak traffic
-        # 
-        # - **avg**: average traffic
+        # The collected traffic type. Valid values:
+        #           
+        # - **max** (default): peak traffic.
+        #   
+        # - **avg**: average traffic.
         self.traffic_type = traffic_type
 
     def validate(self):

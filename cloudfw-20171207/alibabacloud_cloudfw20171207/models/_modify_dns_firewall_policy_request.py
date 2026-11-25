@@ -16,7 +16,6 @@ class ModifyDnsFirewallPolicyRequest(DaraModel):
         priority: str = None,
         release: str = None,
         source: str = None,
-        source_ip: str = None,
         source_type: str = None,
     ):
         # The action that Cloud Firewall performs on traffic that matches the access control policy. Valid values:
@@ -31,32 +30,35 @@ class ModifyDnsFirewallPolicyRequest(DaraModel):
         # The description of the access control policy.
         self.description = description
         # The destination address in the access control policy.
+        # 
         # - If **DestinationType** is set to net, **Destination** specifies the destination CIDR block. Example: 1.2.3.4/24.
         # - If **DestinationType** is set to group, **Destination** specifies the name of the destination address book. Example: db_group.
         # - If **DestinationType** is set to domain, **Destination** specifies the destination domain name. Example: *.aliyuncs.com.
-        # - If **DestinationType** is set to location, **Destination** specifies the destination area. For the positional encoding of specific areas, see the following section. Example: ["BJ11", "ZB"\\].
+        # - If **DestinationType** is set to location, **Destination** specifies the destination area (for specific area positional encoding, see below). Example: ["BJ11", "ZB"\].
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
-        # - **net**: Destination CIDR block.
-        # - **group**: Destination address book.
-        # - **domain**: Destination domain name.
+        # 
+        # - **net**: a destination CIDR block.
+        # - **group**: a destination address book.
+        # - **domain**: a destination domain name.
         self.destination_type = destination_type
         # The language of the request and response. Valid values:
-        # - **zh**: Chinese.
-        # - **en**: English.
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
         # Policy priority of the access control policy before policy priority is modified.
         self.priority = priority
-        # The status of the access control policy. By default, the policy is enabled after it is created. Valid values:
-        # - **true**: Enables the access control policy.
-        # - **false**: Disables the access control policy.
+        # Specifies whether the access control policy is enabled. By default, the policy is enabled after it is created. Valid values:
+        # 
+        # - **true**: enables the access control policy.
+        # - **false**: disables the access control policy.
         self.release = release
         self.source = source
-        # The source IP address of the requester.
-        self.source_ip = source_ip
         # The type of the source address in the access control policy. Valid values:
-        # - **net**: Source CIDR block.
-        # - **group**: Source address book.
+        # 
+        # - **net**: a source CIDR block.
+        # 
+        # - **group**: a source address book.
         self.source_type = source_type
 
     def validate(self):
@@ -94,9 +96,6 @@ class ModifyDnsFirewallPolicyRequest(DaraModel):
         if self.source is not None:
             result['Source'] = self.source
 
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-
         if self.source_type is not None:
             result['SourceType'] = self.source_type
 
@@ -130,9 +129,6 @@ class ModifyDnsFirewallPolicyRequest(DaraModel):
 
         if m.get('Source') is not None:
             self.source = m.get('Source')
-
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
 
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')

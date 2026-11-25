@@ -78,11 +78,11 @@ class DescribeConfiguredDomainNamesResponseBodyDomainNames(DaraModel):
         is_malicious: bool = None,
         operation_time: int = None,
     ):
-        # The comment.
+        # The remarks.
         self.comment = comment
         # The domain name.
         self.domain_name = domain_name
-        # Specifies whether the domain name is malicious. Valid values: 0 (not malicious), 1 (malicious).
+        # Indicates whether the domain name is malicious. Valid values: 0 (not malicious), 1 (malicious).
         self.is_malicious = is_malicious
         # The operation time. The value is a UNIX timestamp accurate to seconds, such as 1672502400.
         self.operation_time = operation_time

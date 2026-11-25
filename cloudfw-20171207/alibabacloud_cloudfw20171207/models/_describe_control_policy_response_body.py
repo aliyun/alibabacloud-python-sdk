@@ -168,7 +168,7 @@ class DescribeControlPolicyResponseBodyPolicys(DaraModel):
         # - If **DestinationType** is set to **net**, the destination address is a CIDR block. Example: 192.0.XX.XX/24.
         # - If **DestinationType** is set to **domain**, the destination address is a domain name. Example: aliyuncs.com.
         # - If **DestinationType** is set to **group**, the destination address is the name of an address book. Example: db_group.
-        # - If **DestinationType** is set to **location**, the destination address is an area name. For more information about the area positional encoding, see AddControlPolicy. Example: ["BJ11", "ZB"\\].
+        # - If **DestinationType** is set to **location**, the destination address is an area name. For more information about the area positional encoding, see AddControlPolicy. Example: ["BJ11", "ZB"\].
         self.destination = destination
         # The CIDR blocks in the destination address book of the access control policy.
         self.destination_group_cidrs = destination_group_cidrs
@@ -266,7 +266,7 @@ class DescribeControlPolicyResponseBodyPolicys(DaraModel):
         # 
         # - If **SourceType** is set to `net`, the source address is a CIDR block. Example: 192.0.XX.XX/24.
         # - If **SourceType** is set to `group`, the source address is the name of a source address book. Example: db_group.
-        # - If **SourceType** is set to `location`, the source address is an area. For more information about the area positional encoding, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"\\].
+        # - If **SourceType** is set to `location`, the source address is an area. For more information about the area positional encoding, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"\].
         self.source = source
         # The CIDR blocks in the source address book of the access control policy.
         self.source_group_cidrs = source_group_cidrs
@@ -289,7 +289,7 @@ class DescribeControlPolicyResponseBodyPolicys(DaraModel):
         # - **location**: Source region
         self.source_type = source_type
         # The quota consumed by the access control policy, which is the sum of the quota consumed by each policy.
-        # Quota consumed by a single policy = Number of source addresses (number of CIDR blocks or area) \\* Number of destination addresses (number of CIDR blocks, area, or domain names) \\* Number of port ranges \\* Number of applications.
+        # Quota consumed by a single policy = Number of source addresses (number of CIDR blocks or area) \* Number of destination addresses (number of CIDR blocks, area, or domain names) \* Number of port ranges \* Number of applications.
         self.spread_cnt = spread_cnt
         # The start time of the Policy Validity Period for the access control policy. The value is in the UNIX timestamp format in seconds. The time must be on the hour or half-hour, and must be at least 30 minutes earlier than the end time.
         # > If RepeatType is Permanent, StartTime is empty. If RepeatType is None, Daily, Weekly, or Monthly, StartTime is required, and you must configure the Settings for the start time.

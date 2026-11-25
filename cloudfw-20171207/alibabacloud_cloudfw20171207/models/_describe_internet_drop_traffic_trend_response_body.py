@@ -18,9 +18,11 @@ class DescribeInternetDropTrafficTrendResponseBody(DaraModel):
     ):
         # The data list.
         self.data_list = data_list
-        # The maximum number of dropped sessions in the corresponding period (peak value).
+        # The maximum number of dropped sessions in the specified period, which represents the peak value.
         self.drop_session_max = drop_session_max
-        # The traffic multiplication mode. Valid values: - **0**: priority mode. - **1**: load balancing mode.
+        # The traffic multiplication mode. Valid values:
+        # - **0**: priority mode.
+        # - **1**: load balancing mode.
         self.ratio_average = ratio_average
         # The request ID.
         self.request_id = request_id
@@ -100,9 +102,9 @@ class DescribeInternetDropTrafficTrendResponseBodyDataList(DaraModel):
         self.data_time = data_time
         # The list of queried traffic points.
         self.drop_ratio = drop_ratio
-        # The value range of the object: **[0,10000\\]**.
+        # The value range of the object: **[0,10000]**.
         self.drop_ring = drop_ring
-        # The rate of network traffic. Unit: kbit/s.
+        # The rate of network traffic. Unit: kbps.
         self.drop_ring_ratio = drop_ring_ratio
         # The number of blocked sessions.
         self.drop_session = drop_session
@@ -110,7 +112,7 @@ class DescribeInternetDropTrafficTrendResponseBodyDataList(DaraModel):
         self.ips_drop = ips_drop
         # The corresponding time point in the previous period. The time format is YYYY-MM-DD HH:mm:ss.
         self.ring_data_time = ring_data_time
-        # The dynamic packet drop time. The value is a UNIX timestamp in seconds, which indicates the number of seconds that have elapsed since January 1, 1970 (UTC).
+        # The dynamic packet drop time. The value is a UNIX timestamp in seconds, which represents the number of seconds that have elapsed since January 1, 1970 (UTC).
         self.ring_time = ring_time
         # The timestamp.
         self.time = time

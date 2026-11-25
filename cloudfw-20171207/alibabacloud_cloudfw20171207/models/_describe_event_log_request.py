@@ -25,8 +25,8 @@ class DescribeEventLogRequest(DaraModel):
     ):
         # The attack type of the intrusion prevention event. Valid values:
         # - **1**: Abnormal connection.
-        # - **2**: execute commands.
-        # - **3**: brute-force attacks.
+        # - **2**: Command execution.
+        # - **3**: Brute-force attack.
         # - **4**: Scan.
         # - **5**: Other.
         # - **6**: Information leak.
@@ -34,13 +34,13 @@ class DescribeEventLogRequest(DaraModel):
         # - **8**: Overflow attack.
         # - **9**: Web attack.
         # - **10**: Trojan backdoor.
-        # - **11**: Virus and worm.
+        # - **11**: Virus or worm.
         # - **12**: Mining behavior.
         # - **13**: Reverse shell.
         # 
-        # > If you do not specify the Settings for this parameter, events of all attack types are queried.
+        # > If you do not specify this parameter, all attack types are queried.
         self.attack_type = attack_type
-        # The page number for paging in a paged query.
+        # The page number.
         self.current_page = current_page
         # The destination IP address to query. If you specify this parameter, the intrusion prevention events that involve this destination IP address are queried.
         self.dst_ip = dst_ip
@@ -48,25 +48,25 @@ class DescribeEventLogRequest(DaraModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The type of Cloud Firewall. Valid values:
-        # - **VpcFirewall**: virtual private cloud (VPC) firewalls at the border.
-        # - **InternetFirewall** (default): the Internet Border firewall.
+        # The type of the Cloud Firewall. Valid values:
+        # - **VpcFirewall**: VPC firewall.
+        # - **InternetFirewall** (default): Internet Border firewall.
         self.firewall_type = firewall_type
-        # The language for receiving messages.
+        # The language of the response message.
         self.lang = lang
         # The log type.
         self.log_type = log_type
-        # Specifies the number of results per page for a paginated query.
+        # The number of entries to return on each page.
         # 
-        # Default value: **6**, which indicates that 6 results are returned per page. Maximum value: **10**.
+        # Default value: **6**, which indicates that 6 entries are returned on each page. Maximum value: **10**.
         self.page_size = page_size
-        # Filters event logs by rule hits. The value must be the same as the RuleId value in the response. If LogType is set to ips, pass the UUID of the IPS rule (the RuleUuid value returned by DescribeIPSRules) instead of the numeric format (font style) of the RuleId. If both RuleId and AttackType are specified, records that meet both conditions are returned. This parameter takes effect for ips, app_ctl, web_filter, and threat_intelligence. If LogType is set to tls and this parameter is specified, a parameter fault is returned. If no matching records are found, TotalCount is 0. If you do not specify this parameter, event logs are not filtered by rule hit.
+        # The rule ID.
         self.rule_id = rule_id
         # The defense status of Cloud Firewall. Valid values:
         # - **1**: Alert.
         # - **2**: Block.
         # 
-        # > If you do not specify this parameter, events of all defense statuses are queried.
+        # > If you do not specify this parameter, all defense statuses are queried.
         self.rule_result = rule_result
         # The tracing code.
         # 
@@ -76,7 +76,7 @@ class DescribeEventLogRequest(DaraModel):
         self.source_ip = source_ip
         # The source IP address to query. If you specify this parameter, the intrusion prevention events that involve this source IP address are queried.
         self.src_ip = src_ip
-        # Filters by the exact TLS handshake result. This parameter takes effect only when LogType is set to tls and is ignored for other types. Valid values: bypass, alert, and failed (handshake failure). If this parameter is not specified, records of the bypass, alert, and failed types are returned, and normal traffic with successful handshakes (success) is not returned.
+        # The TLS handshake result.
         self.ssl_handshake_res = ssl_handshake_res
         # The start time of the query. The value is a UNIX timestamp in seconds.
         # 

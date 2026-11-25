@@ -21,7 +21,7 @@ class DescribeControlPolicyDomainResolveRequest(DaraModel):
         self.ip_version = ip_version
         # The language type.
         self.lang = lang
-        # The region ID. This parameter is required. If this parameter is not specified, the MissingParameter.RegionNo (-200155, The required parameter \\"RegionNo\\" is not provided.) error is returned.
+        # The region ID. This parameter is required. If this parameter is not specified, the MissingParameter.RegionNo (-200155, The required parameter \"RegionNo\" is not provided.) error is returned.
         self.region_no = region_no
 
     def validate(self):

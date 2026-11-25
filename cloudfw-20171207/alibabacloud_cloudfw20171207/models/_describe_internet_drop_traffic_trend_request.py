@@ -26,7 +26,7 @@ class DescribeInternetDropTrafficTrendRequest(DaraModel):
         # 
         # This parameter is required.
         self.source_code = source_code
-        # The source IP address.
+        # The IP address of the access source.
         self.source_ip = source_ip
         # The start time. The value is a UNIX timestamp in seconds.
         # 

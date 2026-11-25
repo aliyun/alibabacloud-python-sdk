@@ -15,13 +15,13 @@ class DescribeInternetTimeTopResponseBody(DaraModel):
         request_id: str = None,
         traffic_time: int = None,
     ):
-        # The number of returned entries.
+        # The number of results.
         self.data_count = data_count
-        # The list of returned data.
+        # The returned data list.
         self.data_list = data_list
         # The ID of the request.
         self.request_id = request_id
-        # The traffic time. The value is a UNIX timestamp in seconds.
+        # The time of the traffic. The value is a UNIX timestamp in seconds.
         self.traffic_time = traffic_time
 
     def validate(self):
@@ -94,7 +94,7 @@ class DescribeInternetTimeTopResponseBodyDataList(DaraModel):
     ):
         # The IP address.
         self.ip = ip
-        # The inbound bandwidth. Unit: bit/s.
+        # The inbound traffic bandwidth rate. Unit: bps.
         self.in_bps = in_bps
         # The inbound packet forwarding rate. Unit: pps.
         self.in_pps = in_pps
@@ -106,7 +106,7 @@ class DescribeInternetTimeTopResponseBodyDataList(DaraModel):
         self.nat_ip = nat_ip
         # The number of new connections.
         self.new_conn = new_conn
-        # The outbound bandwidth. Unit: bit/s.
+        # The outbound traffic. Unit: bps.
         self.out_bps = out_bps
         # The outbound packet forwarding rate. Unit: pps.
         self.out_pps = out_pps
@@ -122,7 +122,7 @@ class DescribeInternetTimeTopResponseBodyDataList(DaraModel):
         self.resource_type = resource_type
         # The number of sessions.
         self.session_count = session_count
-        # The total bandwidth. Unit: bit/s.
+        # The total bandwidth. Unit: bps.
         self.total_bps = total_bps
         # The total number of packets.
         self.total_pps = total_pps

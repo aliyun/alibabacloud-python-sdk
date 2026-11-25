@@ -11,28 +11,28 @@ class DeleteVpcFirewallControlPolicyRequest(DaraModel):
         lang: str = None,
         vpc_firewall_id: str = None,
     ):
-        # The unique ID of the access control policy for the virtual private cloud (VPC) firewall.
+        # The unique identity ID of the access control policy for virtual private cloud (VPC) firewalls at the border.
         # 
-        # To delete an access control policy, you must provide the unique ID of the policy. You can call the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) operation to obtain the ID.
+        # When you delete an access control policy, you must provide the unique identity ID of the policy. You can invoke the [DescribeVpcFirewallControlPolicy](https://help.aliyun.com/document_detail/159758.html) operation to query the ID.
         # 
         # This parameter is required.
         self.acl_uuid = acl_uuid
         # The language of the request and response.
         # 
         # - **zh**: Chinese
-        # - **en**: English.
+        # - **en**: English
         self.lang = lang
-        # The ID of the access control policy group for the virtual private cloud (VPC) firewall. You can call the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to obtain the ID.
+        # The ID of the access control policy group for virtual private cloud (VPC) firewalls at the border. You can invoke the [DescribeVpcFirewallAclGroupList](https://help.aliyun.com/document_detail/159760.html) operation to query the ID.
         # 
         # Valid values:
         # 
-        # - If the VPC firewall protects a CEN instance, the value is the instance ID of the CEN instance.
+        # - If the virtual private cloud (VPC) firewalls at the border protect a CEN instance, the policy group ID is the instance ID of the CEN instance.
         # 
-        #    Example: cen-ervw0g12b5jbw\\*\\*\\*
+        #    Example: cen-ervw0g12b5jbw*\*\*\*
         # 
-        # - If the VPC firewall protects an Express Connect circuit, the value is the instance ID of the VPC firewall.
+        # - If the virtual private cloud (VPC) firewalls at the border protect an Express Connect circuit, the policy group ID is the instance ID of the virtual private cloud (VPC) firewalls at the border.
         #   
-        #   Example: vfw-a42bbb7b887148c9\\*\\*\\*.
+        #   Example: vfw-a42bbb7b887148c9*\*\*\*
         # 
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id

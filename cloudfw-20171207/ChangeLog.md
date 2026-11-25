@@ -1,3 +1,13 @@
+2026-11-25 Version: 10.0.0
+- Update API AddDnsFirewallPolicy: delete request parameters SourceIp.
+- Update API DescribePolicyAdvancedConfig: add response parameters Body.Eips.
+- Update API DescribePostpayBill: add response parameters Body.BillList.$.IsAgenticBilling.
+- Update API DescribePrepayBillTotal: add response parameters Body.BillList.$.IsAgenticBilling.
+- Update API DescribeUserBuyVersion: add response parameters Body.Agentic.
+- Update API ModifyDnsFirewallPolicy: delete request parameters SourceIp.
+- Update API SetAutoProtectNewAssets: delete request parameters SourceIp.
+
+
 2026-11-18 Version: 9.6.2
 - Generated python 2017-12-07 for Cloudfw.
 

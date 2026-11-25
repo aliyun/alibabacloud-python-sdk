@@ -466,8 +466,6 @@ class Client(OpenApiClient):
             query['Release'] = request.release
         if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not DaraCore.is_null(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.source_type):
             query['SourceType'] = request.source_type
         req = open_api_util_models.OpenApiRequest(
@@ -516,8 +514,6 @@ class Client(OpenApiClient):
             query['Release'] = request.release
         if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not DaraCore.is_null(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.source_type):
             query['SourceType'] = request.source_type
         req = open_api_util_models.OpenApiRequest(
@@ -22644,8 +22640,6 @@ class Client(OpenApiClient):
             query['Release'] = request.release
         if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not DaraCore.is_null(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.source_type):
             query['SourceType'] = request.source_type
         req = open_api_util_models.OpenApiRequest(
@@ -22692,8 +22686,6 @@ class Client(OpenApiClient):
             query['Release'] = request.release
         if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not DaraCore.is_null(request.source_ip):
-            query['SourceIp'] = request.source_ip
         if not DaraCore.is_null(request.source_type):
             query['SourceType'] = request.source_type
         req = open_api_util_models.OpenApiRequest(
@@ -26026,8 +26018,6 @@ class Client(OpenApiClient):
             query['AutoProtect'] = request.auto_protect
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not DaraCore.is_null(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -26058,8 +26048,6 @@ class Client(OpenApiClient):
             query['AutoProtect'] = request.auto_protect
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not DaraCore.is_null(request.source_ip):
-            query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

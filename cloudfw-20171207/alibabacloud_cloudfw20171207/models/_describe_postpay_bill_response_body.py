@@ -23,13 +23,13 @@ class DescribePostpayBillResponseBody(DaraModel):
         self.aggregate_internet_traffic = aggregate_internet_traffic
         # The aggregated NAT traffic. Unit: GB.
         self.aggregate_nat_traffic = aggregate_nat_traffic
-        # The aggregated sensitive data detection traffic. Unit: GB.
+        # The aggregated sensitive data leak detection traffic. Unit: GB.
         self.aggregate_sdl_traffic = aggregate_sdl_traffic
         # The aggregated total traffic. Unit: GB.
         self.aggregate_total_traffic = aggregate_total_traffic
         # The aggregated VPC traffic. Unit: GB.
         self.aggregate_vpc_traffic = aggregate_vpc_traffic
-        # The list of bills.
+        # The bill list.
         self.bill_list = bill_list
         # The ID of the request.
         self.request_id = request_id
@@ -112,6 +112,7 @@ class DescribePostpayBillResponseBodyBillList(DaraModel):
         end_time: int = None,
         internet_instance_cnt: int = None,
         internet_traffic: float = None,
+        is_agentic_billing: bool = None,
         is_derated: int = None,
         log_storage: int = None,
         nat_instance_cnt: int = None,
@@ -123,16 +124,18 @@ class DescribePostpayBillResponseBodyBillList(DaraModel):
         vpc_instance_cnt: int = None,
         vpc_traffic: float = None,
     ):
-        # The end time. The time is a UNIX timestamp accurate to seconds, which represents an exact hour or day.
+        # The end time. The time is a UNIX timestamp in seconds and represents an exact hour or day.
         self.end_time = end_time
         # The number of Internet instances.
         self.internet_instance_cnt = internet_instance_cnt
         # The Internet traffic. Unit: GB.
         self.internet_traffic = internet_traffic
-        # Indicates whether the fee is reduced. A value of 0 indicates that the fee is not reduced. A value greater than 0 indicates that the fee is reduced. If the fee is reduced, no bill is generated.
+        # Specifies whether the bill for the specified date is calculated based on the Agentic billing method. A value of true indicates the Agentic billing method. A value of false indicates the standard billing method.
+        self.is_agentic_billing = is_agentic_billing
+        # Specifies whether the fee is reduced or waived. A value of 0 indicates that the fee is not reduced or waived. A value greater than 0 indicates that the fee is reduced or waived, and no bill is generated.
         # > This parameter is valid only when you query hourly data.
         self.is_derated = is_derated
-        # The usage duration of Simple Log Service. Unit: TB×h.
+        # The usage duration of Simple Log Service. Unit: TB × hours.
         self.log_storage = log_storage
         # The number of NAT instances.
         self.nat_instance_cnt = nat_instance_cnt
@@ -140,9 +143,9 @@ class DescribePostpayBillResponseBodyBillList(DaraModel):
         self.nat_traffic = nat_traffic
         # The usage duration of sensitive data leak detection. Unit: hours.
         self.sdl = sdl
-        # The sensitive data detection traffic. Unit: GB.
+        # The sensitive data leak detection traffic. Unit: GB.
         self.sdl_traffic = sdl_traffic
-        # The start time. The time is a UNIX timestamp accurate to seconds, which represents an exact hour or day.
+        # The start time. The time is a UNIX timestamp in seconds and represents an exact hour or day.
         self.start_time = start_time
         # The usage duration of threat intelligence. Unit: hours.
         self.threat_intelligence = threat_intelligence
@@ -167,6 +170,9 @@ class DescribePostpayBillResponseBodyBillList(DaraModel):
 
         if self.internet_traffic is not None:
             result['InternetTraffic'] = self.internet_traffic
+
+        if self.is_agentic_billing is not None:
+            result['IsAgenticBilling'] = self.is_agentic_billing
 
         if self.is_derated is not None:
             result['IsDerated'] = self.is_derated
@@ -210,6 +216,9 @@ class DescribePostpayBillResponseBodyBillList(DaraModel):
 
         if m.get('InternetTraffic') is not None:
             self.internet_traffic = m.get('InternetTraffic')
+
+        if m.get('IsAgenticBilling') is not None:
+            self.is_agentic_billing = m.get('IsAgenticBilling')
 
         if m.get('IsDerated') is not None:
             self.is_derated = m.get('IsDerated')

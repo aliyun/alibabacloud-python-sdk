@@ -9,18 +9,17 @@ class SetAutoProtectNewAssetsRequest(DaraModel):
         self,
         auto_protect: bool = None,
         lang: str = None,
-        source_ip: str = None,
     ):
         # Specifies whether to enable automatic traffic redirection. Valid values:
-        # 
-        # **true****false**
+        # - **true**: Enabled.
+        # - **false**: Disabled.
         # 
         # This parameter is required.
         self.auto_protect = auto_protect
-        # The language. Valid values are zh (Chinese) and **en** (English). The default value is **zh**.
+        # The language type. Valid values:
+        # - **zh**: Chinese. Default value.
+        # - **en**: English.
         self.lang = lang
-        # The source IP address of the visitor.
-        self.source_ip = source_ip
 
     def validate(self):
         pass
@@ -36,9 +35,6 @@ class SetAutoProtectNewAssetsRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
-        if self.source_ip is not None:
-            result['SourceIp'] = self.source_ip
-
         return result
 
     def from_map(self, m: dict = None):
@@ -48,9 +44,6 @@ class SetAutoProtectNewAssetsRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-
-        if m.get('SourceIp') is not None:
-            self.source_ip = m.get('SourceIp')
 
         return self
 

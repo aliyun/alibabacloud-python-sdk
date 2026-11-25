@@ -10,7 +10,7 @@ class ModifyControlPolicyResponseBody(DaraModel):
         dry_run: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the request is a dry run. A value of true indicates that only a dry run was performed and no actual modification was made.
+        # Indicates whether the dry run is successful. A value of true indicates that only the dry run is performed and no actual modifications are made.
         self.dry_run = dry_run
         # The request ID.
         self.request_id = request_id

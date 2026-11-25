@@ -16,7 +16,7 @@ class DescribeConfiguredDomainNamesRequest(DaraModel):
         source_code: str = None,
         source_ip: str = None,
     ):
-        # The page number of the current page.
+        # The current page number.
         self.current_page = current_page
         # The traffic direction.
         # 
@@ -28,11 +28,11 @@ class DescribeConfiguredDomainNamesRequest(DaraModel):
         # 
         # This parameter is required.
         self.group_name = group_name
-        # The language of the request and response.
+        # The language of the request and response messages.
         self.lang = lang
         # The number of entries per page.
         self.page_size = page_size
-        # The source code.
+        # The tracing code.
         # 
         # This parameter is required.
         self.source_code = source_code

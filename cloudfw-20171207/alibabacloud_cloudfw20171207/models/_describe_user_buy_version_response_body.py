@@ -8,6 +8,7 @@ class DescribeUserBuyVersionResponseBody(DaraModel):
     def __init__(
         self,
         ack_cluster_connector_quota: int = None,
+        agentic: int = None,
         ali_uid: int = None,
         default_bandwidth: int = None,
         expire: int = None,
@@ -33,26 +34,28 @@ class DescribeUserBuyVersionResponseBody(DaraModel):
         vpc_bandwidth: int = None,
         vpc_number: int = None,
     ):
-        # The ACK cluster connector quota.
+        # The quota for ACK cluster connectors.
         self.ack_cluster_connector_quota = ack_cluster_connector_quota
+        # Specifies whether Agentic 2.0 is enabled.
+        self.agentic = agentic
         # The AliUid of the Cloud Firewall account.
         self.ali_uid = ali_uid
-        # The default bandwidth of the edition.
+        # The default bandwidth for the edition.
         self.default_bandwidth = default_bandwidth
         # The expiration time of the Cloud Firewall instance.
-        # > The value is a millisecond-level UNIX timestamp.
+        # > The value is a UNIX timestamp in milliseconds.
         # 
-        # > This field is meaningless when you use the pay-as-you-go edition.
+        # > This field is not applicable to the pay-as-you-go edition.
         self.expire = expire
         # The extended bandwidth.
         self.extension_bandwidth = extension_bandwidth
-        # The general-purpose instance quota.
+        # The quota for general-purpose instances.
         self.general_instance = general_instance
         # The ID of the purchased Cloud Firewall instance.
         # 
-        # > This field is meaningless when you use the trial version.
+        # > This field is not applicable to the trial edition.
         self.instance_id = instance_id
-        # The provisioning status of the Cloud Firewall instance. Valid values:
+        # The production status of the Cloud Firewall instance. Valid values:
         # 
         # - **normal**: The instance is running normally.
         # 
@@ -66,37 +69,37 @@ class DescribeUserBuyVersionResponseBody(DaraModel):
         self.instance_status = instance_status
         # The purchased traffic processing capacity of the Internet firewall.
         self.internet_bandwidth = internet_bandwidth
-        # The purchased quota for the Internet border protection.
+        # The purchased quota for the Internet Border protection.
         # 
-        # > This field takes effect only for subscription users.
+        # > This field is applicable only to subscription users.
         self.ip_number = ip_number
         # The enabling status of log delivery. Valid values:
         # - **true**: Enabled.
         # - **false**: Disabled.
         self.log_status = log_status
         # The purchased log storage capacity.
-        # > This field takes effect only for subscription users.
+        # > This field is applicable only to subscription users.
         self.log_storage = log_storage
         # The major version.
         self.major_version = major_version
-        # Indicates whether burstable elastic billing is enabled. Valid values:
+        # Specifies whether burstable elastic billing is enabled. Valid values:
         # - **1000000**: Enabled.
         # - **0**: Disabled.
         # 
-        # > This field takes effect only for subscription users.
+        # > This field is applicable only to subscription users.
         self.max_overflow = max_overflow
-        # The purchased traffic processing capacity of NAT firewalls.
+        # The purchased traffic processing capacity of the NAT firewall.
         self.nat_bandwidth = nat_bandwidth
-        # The private DNS connector quota.
+        # The quota for private DNS connectors.
         self.private_dns_connector_quota = private_dns_connector_quota
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The enabling status of sensitive data leak detection. In the Resource field, true indicates enabled and false indicates disabled. In the API response, 1 indicates enabled and 0 indicates disabled.
+        # The enabling status of sensitive data leak detection. In the Resource parameter, true indicates enabled and false indicates disabled. In the API response, 1 indicates enabled and 0 indicates disabled.
         self.sdl = sdl
         # The activation time of the Cloud Firewall instance.
-        # > The value is a millisecond-level UNIX timestamp.
+        # > The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The temporary upgrade bandwidth.
+        # The temporary bandwidth upgrade.
         self.temporary_bandwidth = temporary_bandwidth
         # The enabling status of threat intelligence.
         self.threat_intelligence = threat_intelligence
@@ -104,17 +107,17 @@ class DescribeUserBuyVersionResponseBody(DaraModel):
         # - **true**: Valid.
         # - **false**: Invalid.
         self.user_status = user_status
-        # The version of the Cloud Firewall instance. Valid values:
+        # The edition of the Cloud Firewall instance. Valid values:
         # - **2**: Premium Edition
         # - **3**: Enterprise Edition
         # - **4**: Ultimate Edition
-        # - **10**: Pay-as-you-go Edition
+        # - **10**: Pay-as-you-go edition
         self.version = version
-        # The purchased traffic processing capacity of VPC firewalls.
+        # The purchased traffic processing capacity of the VPC firewall.
         self.vpc_bandwidth = vpc_bandwidth
         # The purchased quota for VPC firewalls.
         # 
-        # > This field takes effect only for subscription users.
+        # > This field is applicable only to subscription users.
         self.vpc_number = vpc_number
 
     def validate(self):
@@ -127,6 +130,9 @@ class DescribeUserBuyVersionResponseBody(DaraModel):
             result = _map
         if self.ack_cluster_connector_quota is not None:
             result['AckClusterConnectorQuota'] = self.ack_cluster_connector_quota
+
+        if self.agentic is not None:
+            result['Agentic'] = self.agentic
 
         if self.ali_uid is not None:
             result['AliUid'] = self.ali_uid
@@ -206,6 +212,9 @@ class DescribeUserBuyVersionResponseBody(DaraModel):
         m = m or dict()
         if m.get('AckClusterConnectorQuota') is not None:
             self.ack_cluster_connector_quota = m.get('AckClusterConnectorQuota')
+
+        if m.get('Agentic') is not None:
+            self.agentic = m.get('Agentic')
 
         if m.get('AliUid') is not None:
             self.ali_uid = m.get('AliUid')

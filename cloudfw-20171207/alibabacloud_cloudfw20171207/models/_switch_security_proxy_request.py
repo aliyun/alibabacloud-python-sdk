@@ -107,7 +107,7 @@ class SwitchSecurityProxyRequestNatRouteEntryList(DaraModel):
         # 
         # This parameter is required.
         self.next_hop_type = next_hop_type
-        # The ID of the route table to which the route entry belongs. The route table must exist in the user\\"s VPC. This parameter and DestinationCidr are used together to locate a route. If the route does not exist, the task fails and a message indicating that the route entry does not exist is returned.
+        # The ID of the route table to which the route entry belongs. The route table must exist in the user\"s VPC. This parameter and DestinationCidr are used together to locate a route. If the route does not exist, the task fails and a message indicating that the route entry does not exist is returned.
         # 
         # This parameter is required.
         self.route_table_id = route_table_id

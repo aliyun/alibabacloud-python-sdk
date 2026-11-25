@@ -63,7 +63,7 @@ class DescribeVpcZoneResponseBodyZoneList(DaraModel):
         self.local_name = local_name
         # The ID of the zone.
         self.zone_id = zone_id
-        # The type of the zone. The default value is \\`AvailabilityZone\\`, which indicates a standard cloud zone.
+        # The type of the zone. The default value is \`AvailabilityZone\`, which indicates a standard cloud zone.
         self.zone_type = zone_type
 
     def validate(self):

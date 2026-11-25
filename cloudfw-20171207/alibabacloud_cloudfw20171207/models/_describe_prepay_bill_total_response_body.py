@@ -72,6 +72,7 @@ class DescribePrepayBillTotalResponseBodyBillList(DaraModel):
         end_time: int = None,
         extension_bandwidth: int = None,
         internet_traffic_bandwidth: float = None,
+        is_agentic_billing: bool = None,
         monthly_remaining_free_traffic: float = None,
         nat_traffic_bandwidth: float = None,
         overflow_time: int = None,
@@ -95,11 +96,13 @@ class DescribePrepayBillTotalResponseBodyBillList(DaraModel):
         self.extension_bandwidth = extension_bandwidth
         # The Internet traffic bandwidth. Unit: Gbit/s.
         self.internet_traffic_bandwidth = internet_traffic_bandwidth
-        # The monthly free quota for sensitive data detection. Unit: GB.
+        # Specifies whether Agentic billing is used on the date to which the bill belongs. A value of true indicates that Agentic billing is used. A value of false indicates that standard billing is used.
+        self.is_agentic_billing = is_agentic_billing
+        # The monthly free quota for sensitive data detection traffic. Unit: GB.
         self.monthly_remaining_free_traffic = monthly_remaining_free_traffic
         # The NAT traffic bandwidth. Unit: Gbit/s.
         self.nat_traffic_bandwidth = nat_traffic_bandwidth
-        # The timestamp when the total bandwidth (Internet, VPC, and NAT) reaches the maximum value on the day.
+        # The timestamp when the total bandwidth (Internet + VPC + NAT) reaches the maximum value on the day.
         self.overflow_time = overflow_time
         # The start time of the day. The value is a UNIX timestamp accurate to seconds.
         self.start_time = start_time
@@ -139,6 +142,9 @@ class DescribePrepayBillTotalResponseBodyBillList(DaraModel):
 
         if self.internet_traffic_bandwidth is not None:
             result['InternetTrafficBandwidth'] = self.internet_traffic_bandwidth
+
+        if self.is_agentic_billing is not None:
+            result['IsAgenticBilling'] = self.is_agentic_billing
 
         if self.monthly_remaining_free_traffic is not None:
             result['MonthlyRemainingFreeTraffic'] = self.monthly_remaining_free_traffic
@@ -185,6 +191,9 @@ class DescribePrepayBillTotalResponseBodyBillList(DaraModel):
 
         if m.get('InternetTrafficBandwidth') is not None:
             self.internet_traffic_bandwidth = m.get('InternetTrafficBandwidth')
+
+        if m.get('IsAgenticBilling') is not None:
+            self.is_agentic_billing = m.get('IsAgenticBilling')
 
         if m.get('MonthlyRemainingFreeTraffic') is not None:
             self.monthly_remaining_free_traffic = m.get('MonthlyRemainingFreeTraffic')

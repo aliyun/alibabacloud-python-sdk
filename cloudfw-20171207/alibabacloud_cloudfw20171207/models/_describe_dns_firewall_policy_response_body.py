@@ -158,7 +158,7 @@ class DescribeDnsFirewallPolicyResponseBodyPolicys(DaraModel):
         # 
         # - If **SourceType** is set to `net`, the source address is a CIDR block. Example: 192.0.XX.XX/24.
         # - If **SourceType** is set to `group`, the source address is the name of the source address book. Example: db_group.
-        # - If **SourceType** is set to `location`, the source address is an area. For more information about the specific area positional encoding, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"\\].
+        # - If **SourceType** is set to `location`, the source address is an area. For more information about the specific area positional encoding, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"\].
         self.source = source
         # The source addresses.
         self.source_addrs = source_addrs

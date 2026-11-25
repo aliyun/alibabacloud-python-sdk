@@ -58,9 +58,9 @@ class DescribeInstanceRdAccountsResponseBodyAccounts(DaraModel):
         account_id: str = None,
         display_name: str = None,
     ):
-        # The ID of the member accounts.
+        # The ID of member accounts.
         self.account_id = account_id
-        # The name of the member.
+        # The display name of the member.
         self.display_name = display_name
 
     def validate(self):
