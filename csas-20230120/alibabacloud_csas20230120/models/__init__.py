@@ -40,6 +40,9 @@ from ._risk_scene_config import RiskSceneConfig
 from ._rule import Rule
 from ._typed_aiasset import TypedAIAsset
 from ._user_certificate import UserCertificate
+from ._add_device_belong_identifiers_request import AddDeviceBelongIdentifiersRequest
+from ._add_device_belong_identifiers_response_body import AddDeviceBelongIdentifiersResponseBody
+from ._add_device_belong_identifiers_response import AddDeviceBelongIdentifiersResponse
 from ._add_device_group_match_devices_request import AddDeviceGroupMatchDevicesRequest
 from ._add_device_group_match_devices_response_body import AddDeviceGroupMatchDevicesResponseBody
 from ._add_device_group_match_devices_response import AddDeviceGroupMatchDevicesResponse
@@ -404,6 +407,9 @@ from ._list_client_users_response import ListClientUsersResponse
 from ._list_connectors_request import ListConnectorsRequest
 from ._list_connectors_response_body import ListConnectorsResponseBody
 from ._list_connectors_response import ListConnectorsResponse
+from ._list_device_belong_identifiers_request import ListDeviceBelongIdentifiersRequest
+from ._list_device_belong_identifiers_response_body import ListDeviceBelongIdentifiersResponseBody
+from ._list_device_belong_identifiers_response import ListDeviceBelongIdentifiersResponse
 from ._list_device_groups_request import ListDeviceGroupsRequest
 from ._list_device_groups_response_body import ListDeviceGroupsResponseBody
 from ._list_device_groups_response import ListDeviceGroupsResponse
@@ -593,6 +599,9 @@ from ._modify_forward_strategy_response import ModifyForwardStrategyResponse
 from ._modify_forward_strategy_binding_items_request import ModifyForwardStrategyBindingItemsRequest
 from ._modify_forward_strategy_binding_items_response_body import ModifyForwardStrategyBindingItemsResponseBody
 from ._modify_forward_strategy_binding_items_response import ModifyForwardStrategyBindingItemsResponse
+from ._remove_device_belong_identifiers_request import RemoveDeviceBelongIdentifiersRequest
+from ._remove_device_belong_identifiers_response_body import RemoveDeviceBelongIdentifiersResponseBody
+from ._remove_device_belong_identifiers_response import RemoveDeviceBelongIdentifiersResponse
 from ._remove_device_group_match_devices_request import RemoveDeviceGroupMatchDevicesRequest
 from ._remove_device_group_match_devices_response_body import RemoveDeviceGroupMatchDevicesResponseBody
 from ._remove_device_group_match_devices_response import RemoveDeviceGroupMatchDevicesResponse
@@ -752,6 +761,7 @@ from ._typed_aiasset import TypedAIAssetRecognitionEvidenceStateManagement
 from ._typed_aiasset import TypedAIAssetRecognitionEvidenceToolCall
 from ._typed_aiasset import TypedAIAssetRecognitionEvidence
 from ._typed_aiasset import TypedAIAssetRiskInfo
+from ._add_device_belong_identifiers_request import AddDeviceBelongIdentifiersRequestIdentifiers
 from ._add_virus_scan_additional_lists_request import AddVirusScanAdditionalListsRequestAdditionalLists
 from ._create_approval_process_request import CreateApprovalProcessRequestMatchSchemas
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessAppUninstallPolicies
@@ -949,6 +959,7 @@ from ._list_connectors_response_body import ListConnectorsResponseBodyConnectors
 from ._list_connectors_response_body import ListConnectorsResponseBodyConnectorsConnectorClients
 from ._list_connectors_response_body import ListConnectorsResponseBodyConnectorsUpgradeTime
 from ._list_connectors_response_body import ListConnectorsResponseBodyConnectors
+from ._list_device_belong_identifiers_response_body import ListDeviceBelongIdentifiersResponseBodyIdentifiers
 from ._list_device_groups_response_body import ListDeviceGroupsResponseBodyDeviceGroups
 from ._list_devices_for_vulnerability_response_body import ListDevicesForVulnerabilityResponseBodyDevices
 from ._list_dlp_outbound_logs_response_body import ListDlpOutboundLogsResponseBodyLogsMatchedDictsInnerDicts
@@ -1200,6 +1211,9 @@ __all__ = [
     Rule,
     TypedAIAsset,
     UserCertificate,
+    AddDeviceBelongIdentifiersRequest,
+    AddDeviceBelongIdentifiersResponseBody,
+    AddDeviceBelongIdentifiersResponse,
     AddDeviceGroupMatchDevicesRequest,
     AddDeviceGroupMatchDevicesResponseBody,
     AddDeviceGroupMatchDevicesResponse,
@@ -1564,6 +1578,9 @@ __all__ = [
     ListConnectorsRequest,
     ListConnectorsResponseBody,
     ListConnectorsResponse,
+    ListDeviceBelongIdentifiersRequest,
+    ListDeviceBelongIdentifiersResponseBody,
+    ListDeviceBelongIdentifiersResponse,
     ListDeviceGroupsRequest,
     ListDeviceGroupsResponseBody,
     ListDeviceGroupsResponse,
@@ -1753,6 +1770,9 @@ __all__ = [
     ModifyForwardStrategyBindingItemsRequest,
     ModifyForwardStrategyBindingItemsResponseBody,
     ModifyForwardStrategyBindingItemsResponse,
+    RemoveDeviceBelongIdentifiersRequest,
+    RemoveDeviceBelongIdentifiersResponseBody,
+    RemoveDeviceBelongIdentifiersResponse,
     RemoveDeviceGroupMatchDevicesRequest,
     RemoveDeviceGroupMatchDevicesResponseBody,
     RemoveDeviceGroupMatchDevicesResponse,
@@ -1912,6 +1932,7 @@ __all__ = [
     TypedAIAssetRecognitionEvidenceToolCall,
     TypedAIAssetRecognitionEvidence,
     TypedAIAssetRiskInfo,
+    AddDeviceBelongIdentifiersRequestIdentifiers,
     AddVirusScanAdditionalListsRequestAdditionalLists,
     CreateApprovalProcessRequestMatchSchemas,
     CreateApprovalProcessResponseBodyProcessAppUninstallPolicies,
@@ -2109,6 +2130,7 @@ __all__ = [
     ListConnectorsResponseBodyConnectorsConnectorClients,
     ListConnectorsResponseBodyConnectorsUpgradeTime,
     ListConnectorsResponseBodyConnectors,
+    ListDeviceBelongIdentifiersResponseBodyIdentifiers,
     ListDeviceGroupsResponseBodyDeviceGroups,
     ListDevicesForVulnerabilityResponseBodyDevices,
     ListDlpOutboundLogsResponseBodyLogsMatchedDictsInnerDicts,

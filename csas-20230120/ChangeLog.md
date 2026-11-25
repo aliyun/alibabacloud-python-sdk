@@ -1,3 +1,9 @@
+2026-11-25 Version: 1.26.0
+- Support API AddDeviceBelongIdentifiers.
+- Support API ListDeviceBelongIdentifiers.
+- Support API RemoveDeviceBelongIdentifiers.
+
+
 2026-11-25 Version: 1.25.1
 - Generated python 2023-01-20 for csas.
 

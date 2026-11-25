@@ -49,6 +49,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_device_belong_identifiers_with_options(
+        self,
+        request: main_models.AddDeviceBelongIdentifiersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddDeviceBelongIdentifiersResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.identifiers):
+            body_flat['Identifiers'] = request.identifiers
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddDeviceBelongIdentifiers',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddDeviceBelongIdentifiersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_device_belong_identifiers_with_options_async(
+        self,
+        request: main_models.AddDeviceBelongIdentifiersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddDeviceBelongIdentifiersResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.identifiers):
+            body_flat['Identifiers'] = request.identifiers
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddDeviceBelongIdentifiers',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddDeviceBelongIdentifiersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_device_belong_identifiers(
+        self,
+        request: main_models.AddDeviceBelongIdentifiersRequest,
+    ) -> main_models.AddDeviceBelongIdentifiersResponse:
+        runtime = RuntimeOptions()
+        return self.add_device_belong_identifiers_with_options(request, runtime)
+
+    async def add_device_belong_identifiers_async(
+        self,
+        request: main_models.AddDeviceBelongIdentifiersRequest,
+    ) -> main_models.AddDeviceBelongIdentifiersResponse:
+        runtime = RuntimeOptions()
+        return await self.add_device_belong_identifiers_with_options_async(request, runtime)
+
     def add_device_group_match_devices_with_options(
         self,
         request: main_models.AddDeviceGroupMatchDevicesRequest,
@@ -9513,6 +9587,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_connectors_with_options_async(request, runtime)
 
+    def list_device_belong_identifiers_with_options(
+        self,
+        request: main_models.ListDeviceBelongIdentifiersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDeviceBelongIdentifiersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.current_page):
+            body['CurrentPage'] = request.current_page
+        body_flat = {}
+        if not DaraCore.is_null(request.identifier_ids):
+            body_flat['IdentifierIds'] = request.identifier_ids
+        if not DaraCore.is_null(request.identifier_type):
+            body['IdentifierType'] = request.identifier_type
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDeviceBelongIdentifiers',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDeviceBelongIdentifiersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_device_belong_identifiers_with_options_async(
+        self,
+        request: main_models.ListDeviceBelongIdentifiersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDeviceBelongIdentifiersResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.current_page):
+            body['CurrentPage'] = request.current_page
+        body_flat = {}
+        if not DaraCore.is_null(request.identifier_ids):
+            body_flat['IdentifierIds'] = request.identifier_ids
+        if not DaraCore.is_null(request.identifier_type):
+            body['IdentifierType'] = request.identifier_type
+        if not DaraCore.is_null(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            body['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_size):
+            body['PageSize'] = request.page_size
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDeviceBelongIdentifiers',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDeviceBelongIdentifiersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_device_belong_identifiers(
+        self,
+        request: main_models.ListDeviceBelongIdentifiersRequest,
+    ) -> main_models.ListDeviceBelongIdentifiersResponse:
+        runtime = RuntimeOptions()
+        return self.list_device_belong_identifiers_with_options(request, runtime)
+
+    async def list_device_belong_identifiers_async(
+        self,
+        request: main_models.ListDeviceBelongIdentifiersRequest,
+    ) -> main_models.ListDeviceBelongIdentifiersResponse:
+        runtime = RuntimeOptions()
+        return await self.list_device_belong_identifiers_with_options_async(request, runtime)
+
     def list_device_groups_with_options(
         self,
         request: main_models.ListDeviceGroupsRequest,
@@ -14148,6 +14316,80 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyForwardStrategyBindingItemsResponse:
         runtime = RuntimeOptions()
         return await self.modify_forward_strategy_binding_items_with_options_async(request, runtime)
+
+    def remove_device_belong_identifiers_with_options(
+        self,
+        request: main_models.RemoveDeviceBelongIdentifiersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveDeviceBelongIdentifiersResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.identifier_ids):
+            body_flat['IdentifierIds'] = request.identifier_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveDeviceBelongIdentifiers',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveDeviceBelongIdentifiersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_device_belong_identifiers_with_options_async(
+        self,
+        request: main_models.RemoveDeviceBelongIdentifiersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveDeviceBelongIdentifiersResponse:
+        request.validate()
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.identifier_ids):
+            body_flat['IdentifierIds'] = request.identifier_ids
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveDeviceBelongIdentifiers',
+            version = '2023-01-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveDeviceBelongIdentifiersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_device_belong_identifiers(
+        self,
+        request: main_models.RemoveDeviceBelongIdentifiersRequest,
+    ) -> main_models.RemoveDeviceBelongIdentifiersResponse:
+        runtime = RuntimeOptions()
+        return self.remove_device_belong_identifiers_with_options(request, runtime)
+
+    async def remove_device_belong_identifiers_async(
+        self,
+        request: main_models.RemoveDeviceBelongIdentifiersRequest,
+    ) -> main_models.RemoveDeviceBelongIdentifiersResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_device_belong_identifiers_with_options_async(request, runtime)
 
     def remove_device_group_match_devices_with_options(
         self,
