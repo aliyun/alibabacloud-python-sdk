@@ -1,3 +1,7 @@
+2026-11-25 Version: 3.12.0
+- Support API ListLLMGatewayMetrics.
+
+
 2026-11-25 Version: 3.11.1
 - Generated python 2025-05-07 for RdsAi.
 

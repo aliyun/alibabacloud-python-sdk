@@ -20,7 +20,7 @@ class ListContextDatabaseCreditUsageRecordsResponseBody(DaraModel):
         total: int = None,
         workspace_id: str = None,
     ):
-        # The query dimension. Valid values: Workspace (a single workspace) and Account (all workspaces under the caller account).
+        # The query dimension. Valid values: Workspace indicates a single workspace, and Account indicates all workspaces under the caller account.
         self.dimension = dimension
         # The end time of the query range passed in the request, exclusive.
         self.end_time = end_time
@@ -34,7 +34,7 @@ class ListContextDatabaseCreditUsageRecordsResponseBody(DaraModel):
         self.request_id = request_id
         # The start time of the query range passed in the request, inclusive.
         self.start_time = start_time
-        # The total number of metering records that meet the filter conditions, which is not affected by pagination.
+        # The total number of metering records that match the filter conditions, which is not affected by pagination.
         self.total = total
         # The ID of the queried workspace. This parameter has a value only when Dimension is Workspace. It is empty for the account dimension.
         self.workspace_id = workspace_id
@@ -127,21 +127,21 @@ class ListContextDatabaseCreditUsageRecordsResponseBodyRecords(DaraModel):
         unit: str = None,
         workspace_id: str = None,
     ):
-        # The credit consumption of this record. It is returned as a decimal string with up to 6 decimal places, where 1 credit equals 1 CNY. The amount is recorded at the time of metering and does not change with subsequent price adjustments. If unpriced, null is returned, which does not indicate zero consumption.
+        # The credit consumption of this record. It is returned as a decimal string with up to 6 decimal places. 1 credit = 1 CNY. The amount is recorded at the time of metering and does not change with subsequent price adjustments. It is null when unpriced, which does not indicate zero consumption.
         self.credits = credits
         # The billing item of this record. Valid values: KnowledgeBaseRead (knowledge base read), MemoryRead (memory base read), MemoryWrite (memory base write), KnowledgeBaseWriteToken (knowledge base write token), and ContextGrowth (context growth).
         self.item = item
-        # The member ID that generated this record. Historical or system records may not have a member ID, in which case null is returned.
+        # The ID of the member that generated this record. Historical or system records may not have a member ID, in which case null is returned.
         self.member_id = member_id
-        # The usage of this record. The unit is specified by the Unit field in the same record.
+        # The usage of this record. The unit is specified by Unit in the same record.
         self.quantity = quantity
-        # The request time when this metering record was generated, in ISO 8601 UTC time format ending with `Z`.
+        # The request time when this metering record was generated, in ISO 8601 UTC time format ending with Z.
         self.request_time = request_time
-        # The context growth sub-item. Recognized values include KnowledgeOrganization (knowledge organization), MemoryPromotion (memory promotion), KnowledgeReview (knowledge review), KnowledgeEvolution (knowledge evolution), and MemoryEvolution (memory evolution). For other billing items, missing sub-items, or unrecognized sub-items, null is returned.
+        # The context growth sub-item. Recognized values include KnowledgeOrganization (knowledge organization), MemoryPromotion (memory promotion), KnowledgeReview (knowledge review), KnowledgeEvolution (knowledge evolution), and MemoryEvolution (memory evolution). null is returned for other billing items, missing sub-items, or unrecognized sub-items.
         self.sub_item = sub_item
-        # The metering unit. Valid values: Count (number of times), Token (number of tokens), and MicroCredit (one millionth of a credit).
+        # The metering unit. Valid values: Count indicates the number of times, Token indicates the number of tokens, and MicroCredit indicates one millionth of a credit.
         self.unit = unit
-        # The ID of the workspace to which this record belongs. Even if queried by account, each record still indicates the workspace it belongs to.
+        # The ID of the workspace to which this record belongs. Even if queried by account, each record still indicates its workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

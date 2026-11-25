@@ -7542,6 +7542,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_custom_agent_tools_with_options_async(runtime)
 
+    def list_llmgateway_metrics_with_options(
+        self,
+        request: main_models.ListLLMGatewayMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLLMGatewayMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['Granularity'] = request.granularity
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLLMGatewayMetrics',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLLMGatewayMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_llmgateway_metrics_with_options_async(
+        self,
+        request: main_models.ListLLMGatewayMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLLMGatewayMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.granularity):
+            query['Granularity'] = request.granularity
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not DaraCore.is_null(request.model):
+            query['Model'] = request.model
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLLMGatewayMetrics',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLLMGatewayMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_llmgateway_metrics(
+        self,
+        request: main_models.ListLLMGatewayMetricsRequest,
+    ) -> main_models.ListLLMGatewayMetricsResponse:
+        runtime = RuntimeOptions()
+        return self.list_llmgateway_metrics_with_options(request, runtime)
+
+    async def list_llmgateway_metrics_async(
+        self,
+        request: main_models.ListLLMGatewayMetricsRequest,
+    ) -> main_models.ListLLMGatewayMetricsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_llmgateway_metrics_with_options_async(request, runtime)
+
     def list_llmtoken_usage_with_options(
         self,
         request: main_models.ListLLMTokenUsageRequest,

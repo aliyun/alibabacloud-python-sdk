@@ -19,21 +19,21 @@ class GetContextDatabaseCreditUsageSummaryByMemberResponseBody(DaraModel):
         total: int = None,
         workspace_id: str = None,
     ):
-        # The end time of the query range passed in the request, exclusive.
+        # The end time of the query interval passed in the request, exclusive.
         self.end_time = end_time
-        # The member summaries on the current page, sorted in descending order of total credit consumption. Each record covers the entire query range.
+        # The member summaries on the current page, sorted by total credit consumption in descending order. Each record covers the entire query interval.
         self.items = items
-        # The actual page number used for the query.
+        # The actual page number used in this query.
         self.page = page
-        # The actual number of items per page used for the query.
+        # The actual number of items per page used in this query.
         self.page_size = page_size
-        # The ID of the request.
+        # The ID of the OpenAPI request, used to troubleshoot call issues.
         self.request_id = request_id
-        # The start time of the query range passed in the request, inclusive.
+        # The start time of the query interval passed in the request, inclusive.
         self.start_time = start_time
         # The total number of members that match the filter criteria. This is not the number of metering records and is not affected by pagination.
         self.total = total
-        # The ID of the workspace queried.
+        # The ID of the workspace queried in this request.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -114,13 +114,13 @@ class GetContextDatabaseCreditUsageSummaryByMemberResponseBodyItems(DaraModel):
         quantity: int = None,
         record_count: int = None,
     ):
-        # The total credit consumption of priced records for the member. Returned as a decimal string with up to 6 decimal places. 1 credit equals 1 CNY. The value is null if there are no priced records.
+        # The total credit consumption of priced records for this member. Returned as a decimal string with up to 6 decimal places, where 1 credit = 1 CNY. The value is `null` if there are no priced records.
         self.credits = credits
         # The member ID. Historical or system records may not have a member ID.
         self.member_id = member_id
-        # The total metered quantity of records that match the filter criteria for the member, including unpriced records. To view the usage of a specific billable item, specify Item in the request.
+        # The total metered quantity of records that match the filter criteria for this member, including unpriced records. To view the usage of a specific billing item, specify `Item` in the request.
         self.quantity = quantity
-        # The number of metering records that match the filter criteria for the member, including unpriced records.
+        # The number of metering records that match the filter criteria for this member, including unpriced records.
         self.record_count = record_count
 
     def validate(self):

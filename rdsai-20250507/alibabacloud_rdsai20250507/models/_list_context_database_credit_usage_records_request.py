@@ -24,15 +24,15 @@ class ListContextDatabaseCreditUsageRecordsRequest(DaraModel):
         self.end_time = end_time
         # The billing item used to filter records. Valid values: KnowledgeBaseRead (knowledge base read), MemoryRead (memory base read), MemoryWrite (memory base write), KnowledgeBaseWriteToken (knowledge base write token), and ContextGrowth (context growth). If omitted, all billing items that consume credits are included. Storage items or unlisted values return InvalidParameter.
         self.item = item
-        # The member ID used to filter records. If specified, WorkspaceId must also be provided. Otherwise, InvalidParameter is returned. A member ID is unique only within the workspace to which it belongs. This parameter only filters data and does not change the caller identity. Records without a member ID are not matched.
+        # The member ID used to filter records. If specified, WorkspaceId must also be provided. Otherwise, InvalidParameter is returned. A member ID is unique only within its workspace. This parameter only filters data and does not change the caller identity. Records without a member ID are not matched.
         self.member_id = member_id
         # The page number. Pages start from 1. Default value: 1.
         self.page = page
-        # The maximum number of records to return per page. Valid values: 1 to 200. Default value: 50. The pagination offset, calculated as (Page - 1) × PageSize, must not exceed 10,000.
+        # The maximum number of records to return per page. Valid values: 1 to 200. Default value: 50. The pagination offset (Page - 1) × PageSize must not exceed 10,000.
         self.page_size = page_size
-        # The field by which to sort the records. Only credits is supported. If omitted, the records are sorted in descending order of request time. Specifying a sort field does not change the total number of filtered records.
+        # The field by which to sort. Only credits is supported. If omitted, results are sorted in descending order of request time. Specifying a sort field does not change the total number of filtered records.
         self.sort_by = sort_by
-        # The sort order. Valid values: asc (ascending order) and desc (descending order). The values are case-insensitive. If SortBy is specified, the default value is desc. If only SortOrder is provided, InvalidParameter is returned. When sorting by credit, unpriced records are always placed at the end, and records with the same amount are sorted in descending order of request time.
+        # The sort order. Valid values: asc for ascending order and desc for descending order. The values are case-insensitive. The default value is desc when SortBy is specified. If only SortOrder is provided, InvalidParameter is returned. When sorting by credits, unpriced records are always placed at the end, and records with the same amount are sorted in descending order of request time.
         self.sort_order = sort_order
         # The start time of the query range, inclusive. Use the ISO 8601 time format, such as `2026-09-15T00:00:00Z` (UTC).
         # 

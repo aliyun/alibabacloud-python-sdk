@@ -19,19 +19,19 @@ class GetContextDatabaseCreditUsageSummaryResponseBody(DaraModel):
         total_credits: str = None,
         workspace_id: str = None,
     ):
-        # The bucketing results, sorted by BucketStart, Item, and SubItem in sequence. Unpriced records are included in Quantity and RecordCount, but not in Credits.
+        # The bucketing results, sorted sequentially by BucketStart, Item, and SubItem. Unpriced records are included in Quantity and RecordCount, but not in Credits.
         self.buckets = buckets
         # The query dimension. Valid values: Workspace (a single workspace) and Account (all workspaces under the caller account).
         self.dimension = dimension
-        # The end time of the query range passed in the request, exclusive.
+        # The end time of the query interval passed in the request, exclusive.
         self.end_time = end_time
-        # The actual bucketing granularity used. Valid values: Hour (hourly) and Day (daily). If the request parameter is omitted, the automatically selected granularity is returned.
+        # The actual bucketing granularity used. Valid values: Hour (hourly) and Day (daily). When the request parameter is omitted, the automatically selected granularity is returned.
         self.interval = interval
-        # The ID of the OpenAPI request, which is used to troubleshoot call issues.
+        # The ID of the API request, which is used to troubleshoot call issues.
         self.request_id = request_id
-        # The start time of the query range passed in the request, inclusive.
+        # The start time of the query interval passed in the request, inclusive.
         self.start_time = start_time
-        # The total credit consumption of priced records that meet the filter conditions within the query range. The value is returned as a decimal string with up to 6 decimal places. 1 credit = 1 CNY. If there are no priced records, the string 0 is returned. Unpriced records are not included in the total amount. Do not treat this value as the final bill amount.
+        # The total credit consumption of priced records that meet the filter conditions within the query interval. Returned as a decimal string with up to 6 decimal places, where 1 credit equals 1 CNY. Returns the string `0` when there are no priced records. Unpriced records are not included in the total. Do not treat this value as the final bill amount.
         self.total_credits = total_credits
         # The ID of the queried workspace. This parameter has a value only when Dimension is Workspace. It is empty for the account dimension.
         self.workspace_id = workspace_id
@@ -117,17 +117,17 @@ class GetContextDatabaseCreditUsageSummaryResponseBodyBuckets(DaraModel):
         sub_item: str = None,
         unit: str = None,
     ):
-        # The start time of the bucket, in ISO 8601 UTC time format ending with Z.
+        # The start time of the bucket, in ISO 8601 UTC time format ending with `Z`.
         self.bucket_start = bucket_start
-        # The total credit consumption of priced records in the bucket. The value is returned as a decimal string with up to 6 decimal places. 1 credit = 1 CNY. If all records are unpriced, the string 0 is returned.
+        # The total credit consumption of priced records in the bucket. Returned as a decimal string with up to 6 decimal places, where 1 credit equals 1 CNY. Returns the string `0` when all records are unpriced.
         self.credits = credits
-        # The billing item corresponding to the bucket. Valid values: KnowledgeBaseRead (knowledge base read), MemoryRead (memory read), MemoryWrite (memory write), KnowledgeBaseWriteToken (knowledge base write token), and ContextGrowth (context evolution).
+        # The billing item corresponding to the bucket. Valid values: KnowledgeBaseRead (knowledge base read), MemoryRead (memory read), MemoryWrite (memory write), KnowledgeBaseWriteToken (knowledge base write token), and ContextGrowth (context growth).
         self.item = item
         # The total usage of all records in the bucket, including unpriced records. The unit is specified by Unit.
         self.quantity = quantity
         # The number of metering records in the bucket, including unpriced records.
         self.record_count = record_count
-        # The context evolution sub-item. Recognized values include KnowledgeOrganization (knowledge organization), MemoryPromotion (memory promotion), KnowledgeReview (knowledge review), KnowledgeEvolution (knowledge evolution), and MemoryEvolution (memory evolution). For other billing items, missing sub-items, or unrecognized sub-items, null is returned.
+        # The context evolution sub-item. Recognized values include KnowledgeOrganization (knowledge organization), MemoryPromotion (memory promotion), KnowledgeReview (knowledge review), KnowledgeEvolution (knowledge evolution), and MemoryEvolution (memory evolution). Returns null for other billing items, missing sub-items, or unrecognized sub-items.
         self.sub_item = sub_item
         # The unit of measurement. Valid values: Count (number of times), Token (number of tokens), and MicroCredit (one millionth of a credit).
         self.unit = unit

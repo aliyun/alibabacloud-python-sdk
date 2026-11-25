@@ -11,11 +11,11 @@ class GetContextDatabaseUsageRequest(DaraModel):
         start_time: str = None,
         workspace_id: str = None,
     ):
-        # The end time of the query range, exclusive. It must be later than StartTime. Use the ISO 8601 time format, such as 2026-08-01T00:00:00Z (UTC).
+        # The end time of the query range, exclusive. It must be later than `StartTime`. Use the ISO 8601 time format, such as `2026-08-01T00:00:00Z` (UTC).
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The start time of the query range, inclusive. Use the ISO 8601 time format, such as 2026-07-01T00:00:00Z (UTC).
+        # The start time of the query range, inclusive. Use the ISO 8601 time format, such as `2026-07-01T00:00:00Z` (UTC).
         # 
         # This parameter is required.
         self.start_time = start_time
