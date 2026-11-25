@@ -23,7 +23,7 @@ class DescribeAgenticDBPerformanceResponseBody(DaraModel):
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
-        # The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and in UTC.
+        # The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -111,11 +111,13 @@ class DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys(Dar
     def __init__(
         self,
         branch_id: str = None,
+        endpoint_id: str = None,
         measurement: str = None,
         metric_name: str = None,
         points: main_models.DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeysPoints = None,
     ):
         self.branch_id = branch_id
+        self.endpoint_id = endpoint_id
         self.measurement = measurement
         self.metric_name = metric_name
         self.points = points
@@ -132,6 +134,9 @@ class DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys(Dar
         if self.branch_id is not None:
             result['BranchId'] = self.branch_id
 
+        if self.endpoint_id is not None:
+            result['EndpointId'] = self.endpoint_id
+
         if self.measurement is not None:
             result['Measurement'] = self.measurement
 
@@ -147,6 +152,9 @@ class DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys(Dar
         m = m or dict()
         if m.get('BranchId') is not None:
             self.branch_id = m.get('BranchId')
+
+        if m.get('EndpointId') is not None:
+            self.endpoint_id = m.get('EndpointId')
 
         if m.get('Measurement') is not None:
             self.measurement = m.get('Measurement')

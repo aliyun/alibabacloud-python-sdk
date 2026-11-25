@@ -22,6 +22,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         endpoints: List[main_models.DescribeApplicationAttributeResponseBodyEndpoints] = None,
         expire_time: str = None,
         expired: bool = None,
+        head_scheduling_mode: str = None,
         is_latest_version: bool = None,
         latest_version: str = None,
         lock_mode: str = None,
@@ -29,12 +30,15 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         maintain_start_time: str = None,
         mem_application_attribute: main_models.DescribeApplicationAttributeResponseBodyMemApplicationAttribute = None,
         minor_version: str = None,
+        monitor_category: str = None,
+        monitor_region_id: str = None,
         nat_gateway_id: str = None,
         nat_mapping_snat_ip_address: str = None,
         pay_type: str = None,
         polar_claw_application_attribute: main_models.DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute = None,
         polar_claw_saa_sapplication_attribute: main_models.DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute = None,
         polar_fsinstance_id: str = None,
+        prometheus_virtual_instance_id: str = None,
         region_id: str = None,
         request_id: str = None,
         security_groups: List[main_models.DescribeApplicationAttributeResponseBodySecurityGroups] = None,
@@ -52,20 +56,18 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
     ):
         # The application ID.
         self.application_id = application_id
-        # The application type.
+        # The type of the application.
         self.application_type = application_type
         # The CPU architecture. Valid values:
-        # - `x86`
+        # - x86
         self.architecture = architecture
-        # Indicates whether SNAT can be disabled.
+        # Indicates whether disabling SNAT is supported.
         self.can_disable_snat = can_disable_snat
         # The list of subcomponents.
         self.components = components
-        # The creation time.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The creation time. The time follows the ISO 8601 standard and is in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.creation_time = creation_time
-        # The instance ID of the PolarDB instance that the application depends on.
+        # The PolarDB instance ID that the application depends on.
         self.dbcluster_id = dbcluster_id
         # The description of the application.
         self.description = description
@@ -73,38 +75,36 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.dnat_mappings = dnat_mappings
         # The list of endpoints for the application.
         self.endpoints = endpoints
-        # The expiration time.
-        # 
-        # This parameter is empty when the billing method is pay-as-you-go.
-        # 
-        # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The expiration time. This field is empty if the billing method is Postpaid. The time follows the ISO 8601 standard and is in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
         self.expire_time = expire_time
         # Indicates whether the application has expired.
         self.expired = expired
-        # Indicates whether the application is of the latest version.
+        # The Ray head scheduling mode. enable: allows head scheduling; disable: disables head scheduling. Returned only for Ray instances. Defaults to enable if not configured. Not returned if head metadata is not ready. Indicates that the configuration is persisted, but does not indicate that the head rebuild is complete.
+        self.head_scheduling_mode = head_scheduling_mode
+        # Indicates whether the current version is the latest version.
         self.is_latest_version = is_latest_version
         # The latest version number.
         self.latest_version = latest_version
         # The lock mode. Valid values:
         # 
-        # - Unlock: Unlocked.
-        # - Lock: Locked.
+        # - Unlock: The application is not locked.
+        # - Lock: The application is locked.
         self.lock_mode = lock_mode
-        # The end time of the maintenance window.
-        # 
-        # The time is displayed in UTC in the HH:mmZ format.
+        # The end time of the maintenance window. The time is in UTC and follows the HH:mmZ format.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window.
-        # 
-        # The time is displayed in UTC in the HH:mmZ format.
+        # The start time of the maintenance window. The time is in UTC and follows the HH:mmZ format.
         self.maintain_start_time = maintain_start_time
         # The Mem0 application attributes.
         self.mem_application_attribute = mem_application_attribute
         # The minor version number.
         self.minor_version = minor_version
-        # The ID of the NAT gateway.
+        # The monitoring categorization used by CloudMonitor monitoring dashboard components, which is the namespace of the Prometheus virtual instance.
+        self.monitor_category = monitor_category
+        # The region ID used by CloudMonitor monitoring dashboard components.
+        self.monitor_region_id = monitor_region_id
+        # The NAT gateway ID.
         self.nat_gateway_id = nat_gateway_id
-        # The SNAT IP address bound to the vSwitch where the application resides. This address is from a customer-managed SNAT entry, which is discovered and returned in real time by the control plane. It is independent of the SNAT configuration of the Internet NAT gateway.
+        # The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This refers to customer-managed SNAT entries that are discovered and returned in real time by the control plane, and is independent of the Internet NAT gateway SNAT.
         self.nat_mapping_snat_ip_address = nat_mapping_snat_ip_address
         # The billing method.
         self.pay_type = pay_type
@@ -112,23 +112,26 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.polar_claw_application_attribute = polar_claw_application_attribute
         # The PolarClaw SaaS application attributes.
         self.polar_claw_saa_sapplication_attribute = polar_claw_saa_sapplication_attribute
-        # The instance ID of the PolarFS Archive or High-performance Edition.
+        # The instance ID of the PolarFS cold storage or high-performance edition.
         self.polar_fsinstance_id = polar_fsinstance_id
+        # The CloudMonitor Prometheus virtual instance ID, which the console uses to load CloudMonitor monitoring dashboard components. This field is not returned for applications without Grafana components.
+        self.prometheus_virtual_instance_id = prometheus_virtual_instance_id
         # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
-        # The list of application-level security groups.
+        # The list of security groups at the application level.
         self.security_groups = security_groups
-        # The list of application-level whitelists.
+        # The list of whitelists at the application level.
         self.security_iparrays = security_iparrays
-        # The Serverless type. Valid values:
-        # - 2: Dynamic.
+        # The serverless type. Valid values:
+        # - 2: Agile.
         # - 3: Stable.
         self.serverless_type = serverless_type
         # The SNAT status. Valid values: on and off.
         self.snat_status = snat_status
-        # The application status. Valid values:
+        # The status of the application. Valid values:
+        # 
         # - Creating: The application is being created.
         # - Activated: The application is running.
         # - Maintaining: The application is under maintenance.
@@ -144,19 +147,19 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         # - Unlocking: The application is being unlocked.
         # - Deleting: The application is being deleted.
         self.status = status
-        # The storage resources.
+        # The description of storage resources.
         self.storages = storages
         # Indicates whether an upgrade is available.
         self.upgrade_available = upgrade_available
-        # The VPC ID.
+        # The ID of the virtual private cloud (VPC).
         self.vpcid = vpcid
-        # The vSwitch ID.
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The application version.
+        # The version of the application.
         self.version = version
-        # The customer-managed VPC NAT gateway ID for NAT mapping.
+        # The VPC NAT gateway ID of the customer-managed VPC NAT gateway for NAT mapping.
         self.vpc_nat_gateway_id = vpc_nat_gateway_id
-        # The zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -238,6 +241,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if self.expired is not None:
             result['Expired'] = self.expired
 
+        if self.head_scheduling_mode is not None:
+            result['HeadSchedulingMode'] = self.head_scheduling_mode
+
         if self.is_latest_version is not None:
             result['IsLatestVersion'] = self.is_latest_version
 
@@ -259,6 +265,12 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if self.minor_version is not None:
             result['MinorVersion'] = self.minor_version
 
+        if self.monitor_category is not None:
+            result['MonitorCategory'] = self.monitor_category
+
+        if self.monitor_region_id is not None:
+            result['MonitorRegionId'] = self.monitor_region_id
+
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
 
@@ -276,6 +288,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if self.polar_fsinstance_id is not None:
             result['PolarFSInstanceId'] = self.polar_fsinstance_id
+
+        if self.prometheus_virtual_instance_id is not None:
+            result['PrometheusVirtualInstanceId'] = self.prometheus_virtual_instance_id
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -374,6 +389,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if m.get('Expired') is not None:
             self.expired = m.get('Expired')
 
+        if m.get('HeadSchedulingMode') is not None:
+            self.head_scheduling_mode = m.get('HeadSchedulingMode')
+
         if m.get('IsLatestVersion') is not None:
             self.is_latest_version = m.get('IsLatestVersion')
 
@@ -396,6 +414,12 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         if m.get('MinorVersion') is not None:
             self.minor_version = m.get('MinorVersion')
 
+        if m.get('MonitorCategory') is not None:
+            self.monitor_category = m.get('MonitorCategory')
+
+        if m.get('MonitorRegionId') is not None:
+            self.monitor_region_id = m.get('MonitorRegionId')
+
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
 
@@ -415,6 +439,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if m.get('PolarFSInstanceId') is not None:
             self.polar_fsinstance_id = m.get('PolarFSInstanceId')
+
+        if m.get('PrometheusVirtualInstanceId') is not None:
+            self.prometheus_virtual_instance_id = m.get('PrometheusVirtualInstanceId')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
@@ -472,11 +499,14 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 class DescribeApplicationAttributeResponseBodyStorages(DaraModel):
     def __init__(
         self,
+        container_mount_path: str = None,
         storage_capacity: str = None,
         storage_instance_id: str = None,
         storage_performance_level: str = None,
         storage_type: str = None,
     ):
+        # The mount point of the file system in the application container. This field is returned only if ContainerMountPath is explicitly specified during mounting. If this field is not returned, the default value /mnt/<StorageInstanceId> is used. The default value is not stored in the database, so existing mount records do not include this field.
+        self.container_mount_path = container_mount_path
         # The storage capacity.
         self.storage_capacity = storage_capacity
         # The storage instance ID.
@@ -494,6 +524,9 @@ class DescribeApplicationAttributeResponseBodyStorages(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.container_mount_path is not None:
+            result['ContainerMountPath'] = self.container_mount_path
+
         if self.storage_capacity is not None:
             result['StorageCapacity'] = self.storage_capacity
 
@@ -510,6 +543,9 @@ class DescribeApplicationAttributeResponseBodyStorages(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContainerMountPath') is not None:
+            self.container_mount_path = m.get('ContainerMountPath')
+
         if m.get('StorageCapacity') is not None:
             self.storage_capacity = m.get('StorageCapacity')
 
@@ -533,13 +569,13 @@ class DescribeApplicationAttributeResponseBodySecurityIPArrays(DaraModel):
         security_ipnet_type: str = None,
         security_iptype: str = None,
     ):
-        # The name of the IP address group. Default value: `default`.
+        # The name of the IP address group. Default value: default.
         self.security_iparray_name = security_iparray_name
         # The tag of the IP address group.
         self.security_iparray_tag = security_iparray_tag
-        # The whitelist IP addresses, separated by commas.
+        # The IP addresses in the whitelist, separated by commas.
         self.security_iplist = security_iplist
-        # The network type of the whitelist IP addresses. Default value: `mix`.
+        # The network type of the IP addresses in the whitelist. Default value: mix.
         self.security_ipnet_type = security_ipnet_type
         # The type of the IP address.
         self.security_iptype = security_iptype
@@ -602,9 +638,9 @@ class DescribeApplicationAttributeResponseBodySecurityGroups(DaraModel):
         self.net_type = net_type
         # The region ID.
         self.region_id = region_id
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The security group name.
+        # The name of the security group.
         self.security_group_name = security_group_name
 
     def validate(self):
@@ -654,9 +690,9 @@ class DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute(
     ):
         # The authentication callback URL.
         self.auth_callback_url = auth_callback_url
-        # The list of authentication providers for the application.
+        # The list of application authentication providers.
         self.auth_providers = auth_providers
-        # The identifier of the Supabase cluster.
+        # The Supabase cluster identifier.
         self.supabase_cluster_id = supabase_cluster_id
 
     def validate(self):
@@ -731,17 +767,17 @@ class DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangf
         phase: str = None,
         project_id: str = None,
     ):
-        # The attachment effective period (UNIX timestamp).
+        # The effective period of the attachment (UNIX timestamp).
         self.activated_at = activated_at
         # The Langfuse API key ID.
         self.api_key_id = api_key_id
-        # The ID of the binding task.
+        # The binding task ID.
         self.binding_task_id = binding_task_id
-        # The ID of the Langfuse application.
+        # The Langfuse application ID.
         self.langfuse_application_id = langfuse_application_id
-        # The phase of the binding.
+        # The binding phase.
         self.phase = phase
-        # The ID of the Langfuse project.
+        # The Langfuse project ID.
         self.project_id = project_id
 
     def validate(self):
@@ -816,7 +852,7 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel)
         self.db_name = db_name
         # The embedder model name.
         self.embedder_model_name = embedder_model_name
-        # The graph LLM model support.
+        # The graph LLM model.
         self.graph_llm_model_name = graph_llm_model_name
         # The LLM model name.
         self.llm_model_name = llm_model_name
@@ -824,19 +860,19 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel)
         self.memory_type = memory_type
         # Indicates whether multimodal capabilities are enabled.
         self.multimodal_enabled = multimodal_enabled
-        # The project name, which corresponds to the schema where project data is stored in the database.
+        # The project name, which corresponds to the schema where the database stores project data.
         self.project_name = project_name
-        # The name of the reranker model.
+        # The reranker model name.
         self.reranker_model_name = reranker_model_name
         # The Mem0 full session information storage configuration.
         self.session_store = session_store
         # The username.
         self.user_name = user_name
-        # The current dimensions of the VisualEmbedder.
+        # The current VisualEmbedder dimensions.
         self.visual_embedder_dimensions = visual_embedder_dimensions
         # The current VisualEmbedder model.
         self.visual_embedder_model_name = visual_embedder_model_name
-        # The currently enabled understanding modalities.
+        # The enabled understanding modalities.
         self.visual_llm_modalities = visual_llm_modalities
         # The current VisualLLM model.
         self.visual_llm_model_name = visual_llm_model_name
@@ -955,7 +991,7 @@ class DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStor
         self.dbcluster_id = dbcluster_id
         # The name of the session database. This parameter is returned only when the status is ENABLED.
         self.dbname = dbname
-        # The status of the session store. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
+        # The session storage status. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
         self.status = status
 
     def validate(self):
@@ -1011,17 +1047,17 @@ class DescribeApplicationAttributeResponseBodyEndpoints(DaraModel):
         self.description = description
         # The domain name of the application endpoint.
         self.domain = domain
-        # The endpoint ID.
+        # The ID of the endpoint.
         self.endpoint_id = endpoint_id
         # The IP address.
         self.ip = ip
-        # The endpoint type. Valid values:
+        # The type of the endpoint. Valid values:
         # - Private: VPC address.
         # - Public: Internet address.
         self.net_type = net_type
         # The port.
         self.port = port
-        # The port description.
+        # The description of the port.
         self.port_description = port_description
 
     def validate(self):
@@ -1090,7 +1126,7 @@ class DescribeApplicationAttributeResponseBodyDnatMappings(DaraModel):
         port_name: str = None,
         status: str = None,
     ):
-        # The access address in the NatIp:FrontPort format, which can be directly used in the office network.
+        # The access address in the format of NatIp:FrontPort. It can be directly used on the corporate network.
         self.access_address = access_address
         # The backend service port.
         self.backend_port = backend_port
@@ -1168,29 +1204,25 @@ class DescribeApplicationAttributeResponseBodyComponents(DaraModel):
         status: str = None,
         topology: main_models.DescribeApplicationAttributeResponseBodyComponentsTopology = None,
     ):
-        # The specifications of the application subcomponent.
+        # The specification of the application subcomponent.
         self.component_class = component_class
-        # The description of the specifications for the application subcomponent.
+        # The specification description of the application subcomponent.
         self.component_class_description = component_class_description
-        # The subcomponent ID.
+        # The ID of the subcomponent.
         self.component_id = component_id
         # The maximum number of replicas for the application subcomponent.
         self.component_max_replica = component_max_replica
         # The number of replicas for the application subcomponent.
         self.component_replica = component_replica
-        # The replica group name of the application subcomponent.
+        # The name of the replica group for the application subcomponent.
         self.component_replica_group_name = component_replica_group_name
         # The type of the application subcomponent.
         self.component_type = component_type
-        # The list of security groups at the subcomponent level.
-        # 
-        # If the security groups at the subcomponent level are the same as those at the application level, this return value is omitted.
+        # The list of security groups at the subcomponent level. If the security groups at the subcomponent level are the same as those at the application level, this parameter is not returned.
         self.security_groups = security_groups
-        # The list of whitelist IP addresses at the subcomponent level.
-        # 
-        # If the whitelist at the subcomponent level is the same as that at the application level, this return value is omitted.
+        # The list of whitelist IP addresses at the subcomponent level. If the whitelist at the subcomponent level is the same as that at the application level, this parameter is not returned.
         self.security_iparrays = security_iparrays
-        # The component status. The valid values are the same as the application status.
+        # The status of the component. The valid values are the same as those of the application status.
         self.status = status
         # The topology information of the application subcomponent.
         self.topology = topology
@@ -1302,11 +1334,11 @@ class DescribeApplicationAttributeResponseBodyComponentsTopology(DaraModel):
         layer: str = None,
         parents: List[str] = None,
     ):
-        # The list of topology child node IDs for the current application subcomponent, or the list of subcomponent types of the child nodes.
+        # The list of topology child node IDs or child node subcomponent types for the current application subcomponent.
         self.children = children
         # The topology layer of the topology information for the current application subcomponent.
         self.layer = layer
-        # The list of topology parent node IDs for the current application subcomponent, or the list of subcomponent types of the parent nodes.
+        # The list of topology parent node IDs or parent node subcomponent types for the current application subcomponent.
         self.parents = parents
 
     def validate(self):
@@ -1350,13 +1382,13 @@ class DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays(DaraMod
         security_ipnet_type: str = None,
         security_iptype: str = None,
     ):
-        # The name of the IP address group. Default value: `default`.
+        # The name of the IP address group. Default value: default.
         self.security_iparray_name = security_iparray_name
         # The tag of the IP address group.
         self.security_iparray_tag = security_iparray_tag
-        # The whitelist IP addresses, separated by commas.
+        # The IP addresses in the whitelist, separated by commas.
         self.security_iplist = security_iplist
-        # The network type of the whitelist IP addresses. Default value: `mix`.
+        # The network type of the IP addresses in the whitelist. Default value: mix.
         self.security_ipnet_type = security_ipnet_type
         # The type of the IP address.
         self.security_iptype = security_iptype
@@ -1419,9 +1451,9 @@ class DescribeApplicationAttributeResponseBodyComponentsSecurityGroups(DaraModel
         self.net_type = net_type
         # The region ID.
         self.region_id = region_id
-        # The security group ID.
+        # The ID of the security group.
         self.security_group_id = security_group_id
-        # The security group name.
+        # The name of the security group.
         self.security_group_name = security_group_name
 
     def validate(self):

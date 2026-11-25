@@ -8,12 +8,15 @@ class AttachApplicationPolarFSResponseBody(DaraModel):
     def __init__(
         self,
         application_id: str = None,
+        container_mount_path: str = None,
         polar_fsinstance_id: str = None,
         request_id: str = None,
     ):
         # The application ID.
         self.application_id = application_id
-        # The Polarlakebase instance ID.
+        # The actual container path to which the file system is mounted. If ContainerMountPath is not specified, the effective default value /mnt/<PolarFSInstanceId> is returned. If the file system is repeatedly mounted without changing the path, the original mount point of the instance is returned.
+        self.container_mount_path = container_mount_path
+        # The ID of the PolarLakebase instance.
         self.polar_fsinstance_id = polar_fsinstance_id
         # The request ID.
         self.request_id = request_id
@@ -29,6 +32,9 @@ class AttachApplicationPolarFSResponseBody(DaraModel):
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
 
+        if self.container_mount_path is not None:
+            result['ContainerMountPath'] = self.container_mount_path
+
         if self.polar_fsinstance_id is not None:
             result['PolarFSInstanceId'] = self.polar_fsinstance_id
 
@@ -41,6 +47,9 @@ class AttachApplicationPolarFSResponseBody(DaraModel):
         m = m or dict()
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+
+        if m.get('ContainerMountPath') is not None:
+            self.container_mount_path = m.get('ContainerMountPath')
 
         if m.get('PolarFSInstanceId') is not None:
             self.polar_fsinstance_id = m.get('PolarFSInstanceId')

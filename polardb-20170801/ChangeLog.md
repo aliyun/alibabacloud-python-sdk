@@ -1,3 +1,6 @@
+2026-11-25 Version: 9.5.3
+- Generated python 2017-08-01 for polardb.
+
 2026-11-24 Version: 9.5.2
 - Update API CreateCostRule: add request parameters BypassQuotaCheck.
 - Update API CreateCostRule: add request parameters InputTokenTier.

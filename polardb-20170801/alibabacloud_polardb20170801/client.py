@@ -1152,6 +1152,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.container_mount_path):
+            query['ContainerMountPath'] = request.container_mount_path
         if not DaraCore.is_null(request.polar_fsaccess_key_id):
             query['PolarFSAccessKeyId'] = request.polar_fsaccess_key_id
         if not DaraCore.is_null(request.polar_fsaccess_key_secret):
@@ -1186,6 +1188,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.container_mount_path):
+            query['ContainerMountPath'] = request.container_mount_path
         if not DaraCore.is_null(request.polar_fsaccess_key_id):
             query['PolarFSAccessKeyId'] = request.polar_fsaccess_key_id
         if not DaraCore.is_null(request.polar_fsaccess_key_secret):
@@ -17598,6 +17602,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
         if not DaraCore.is_null(request.interval):
             query['Interval'] = request.interval
         if not DaraCore.is_null(request.key):
@@ -17638,6 +17644,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.endpoint_id):
+            query['EndpointId'] = request.endpoint_id
         if not DaraCore.is_null(request.interval):
             query['Interval'] = request.interval
         if not DaraCore.is_null(request.key):
@@ -47184,6 +47192,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.component_types):
+            query['ComponentTypes'] = request.component_types
+        if not DaraCore.is_null(request.group_names):
+            query['GroupNames'] = request.group_names
         if not DaraCore.is_null(request.operation):
             query['Operation'] = request.operation
         req = open_api_util_models.OpenApiRequest(
@@ -47214,6 +47226,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.component_types):
+            query['ComponentTypes'] = request.component_types
+        if not DaraCore.is_null(request.group_names):
+            query['GroupNames'] = request.group_names
         if not DaraCore.is_null(request.operation):
             query['Operation'] = request.operation
         req = open_api_util_models.OpenApiRequest(

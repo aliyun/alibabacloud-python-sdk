@@ -11,19 +11,19 @@ class DescribeAgenticDBPerformanceRequest(DaraModel):
         branch_id: str = None,
         dbcluster_id: str = None,
         end_time: str = None,
+        endpoint_id: str = None,
         interval: str = None,
         key: str = None,
         start_time: str = None,
     ):
-        # The statistical method for alerts. Valid values for different monitoring items:
-        # 
+        # The alert aggregation method. Valid values vary by metric:
         # - Value: The value of the HTTP status code.
         # - Average: The average HTTP wait time.
-        # - Value: The value of the TELNET status code.
-        # - TelnetLatency: The average TELNET wait time.
-        # - Average: The average PING packet loss rate.
+        # - Value: The value of the Telnet status code.
+        # - TelnetLatency: The average Telnet wait time.
+        # - Average: The average ping packet loss rate.
         self.aggregate = aggregate
-        # The anchor branch ID. If this parameter is not specified, the main branch of the project is used by default.
+        # The anchor branch ID. If you do not specify this parameter, the main branch of the project is used by default.
         self.branch_id = branch_id
         # The cluster ID.
         # 
@@ -33,7 +33,9 @@ class DescribeAgenticDBPerformanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The data granularity of performance data. Valid values:
+        # The endpoint ID.
+        self.endpoint_id = endpoint_id
+        # The granularity of performance data. Valid values:
         # 
         # - 5
         # - 30
@@ -74,6 +76,9 @@ class DescribeAgenticDBPerformanceRequest(DaraModel):
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
+        if self.endpoint_id is not None:
+            result['EndpointId'] = self.endpoint_id
+
         if self.interval is not None:
             result['Interval'] = self.interval
 
@@ -98,6 +103,9 @@ class DescribeAgenticDBPerformanceRequest(DaraModel):
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('EndpointId') is not None:
+            self.endpoint_id = m.get('EndpointId')
 
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')

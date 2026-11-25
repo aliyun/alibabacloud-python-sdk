@@ -36,7 +36,7 @@ class CreatePolarFsRequest(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The acceleration space size. Unit: GB. The value must be no less than 5000 and must be a multiple of 1000. This parameter is required when acceleration is enabled for the basic edition.
+        # The acceleration space size. Unit: GB. The value must be no less than 5000 and must be a multiple of 1000. This parameter is required when acceleration is enabled for the Basic Edition.
         self.accelerate_storage_size = accelerate_storage_size
         # The acceleration startup mode. Valid values:
         # 
@@ -48,7 +48,7 @@ class CreatePolarFsRequest(DaraModel):
         # - **juice**: file system acceleration.
         # - **alluxio**: transparent acceleration.
         self.accelerate_type = accelerate_type
-        # The list of authorized accounts for the cold storage edition instance. Separate multiple accounts with commas (`,`).
+        # The list of authorized accounts for the Cold Storage Edition instance. Separate multiple accounts with commas (,).
         self.authorized_user_ids = authorized_user_ids
         # Specifies whether to enable auto-renewal. Valid values:
         # 
@@ -57,13 +57,13 @@ class CreatePolarFsRequest(DaraModel):
         # 
         # Default value: **false**.
         # 
-        # > This parameter takes effect only when the **PayType** parameter is set to **Prepaid**.
+        # > This parameter takes effect only when **PayType** is set to **Prepaid**.
         self.auto_renew = auto_renew
         # Specifies whether to automatically use coupons. Valid values:
         # - **true**: uses coupons (default).
         # - **false**: does not use coupons.
         self.auto_use_coupon = auto_use_coupon
-        # The edition. Valid values: basic (Basic Edition, default), high_performance (High-performance Edition), and cold (Cold Storage Edition). For the basic edition, you must specify the AccelerateSwitch and AccelerateStorageSize parameters. For the high_performance edition, you must specify the StorageType parameter (essdpl0 or essdpl1). For the cold edition, the StorageType parameter (local_redundancy or city_redundancy) is optional.
+        # The edition. Valid values: basic (Basic Edition, default), high_performance (High-performance Edition), and cold (Cold Storage Edition). For the Basic Edition, you must specify AccelerateSwitch and AccelerateStorageSize. For the High-performance Edition, you must specify StorageType (essdpl0 or essdpl1). For the Cold Storage Edition, StorageType (local_redundancy or city_redundancy) is optional.
         self.creation_category = creation_category
         # The number of buckets.
         # 
@@ -75,7 +75,7 @@ class CreatePolarFsRequest(DaraModel):
         self.custom_bucket_path = custom_bucket_path
         # The bucket and corresponding path information.
         # 
-        # > This parameter is required for transparent acceleration scenarios.
+        # > This parameter is required for transparent acceleration.
         self.custom_bucket_path_list = custom_bucket_path_list
         # The custom AccessKey ID.
         self.custom_oss_ak = custom_oss_ak
@@ -90,10 +90,10 @@ class CreatePolarFsRequest(DaraModel):
         # - **Postpaid**: pay-as-you-go.
         # - **Prepaid**: subscription.
         self.pay_type = pay_type
-        # If the billing method is **Prepaid**, this is a required pass parameter. Specifies whether the subscription cluster is billed by year or by month. 
+        # The subscription period. This parameter is required when PayType is set to **Prepaid**. Specifies whether the subscription cluster is billed on a yearly or monthly basis. 
         # 
-        # - **Year**: year. If you select subscription, the unit is year.
-        # - **Month**: month. If you select subscription, the unit is month.
+        # - **Year**: yearly.
+        # - **Month**: monthly.
         self.period = period
         # The coupon code. If this parameter is not specified, the default coupon is used.
         self.promotion_code = promotion_code
@@ -106,11 +106,11 @@ class CreatePolarFsRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The storage space. Unit: GB.
         self.storage_space = storage_space
-        # The storage type. For the high_performance edition, use lowercase essdpl0 or essdpl1. For the cold edition, use local_redundancy or city_redundancy. Select the value based on the edition. The value is case-sensitive.
+        # The storage type. For high_performance, use lowercase essdpl0 or essdpl1. For cold, use local_redundancy or city_redundancy. Select the value based on the edition. The value is case-sensitive.
         self.storage_type = storage_type
-        # The subscription duration. This parameter is required when the **PayType** parameter is set to **Prepaid**.
-        # - If the **Period** parameter is set to **Month**, the value of **UsedTime** must be an integer in the range of `[1-9]`.
-        # - If the **Period** parameter is set to **Year**, the value of **UsedTime** must be an integer in the range of `[1-3]`.
+        # The subscription duration. This parameter is required when PayType is set to **Prepaid**.
+        # - When **Period** is set to **Month**, **UsedTime** must be an integer in the range of `[1-9]`.
+        # - When **Period** is set to **Year**, **UsedTime** must be an integer in the range of `[1-3]`.
         self.used_time = used_time
         # The VPC ID.
         self.vpcid = vpcid
