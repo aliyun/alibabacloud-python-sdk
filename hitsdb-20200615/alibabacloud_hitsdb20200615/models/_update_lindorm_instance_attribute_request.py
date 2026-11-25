@@ -8,10 +8,12 @@ class UpdateLindormInstanceAttributeRequest(DaraModel):
     def __init__(
         self,
         deletion_protection: bool = None,
+        disposition_type: str = None,
         instance_alias: str = None,
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        planned_completion_date: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
@@ -19,17 +21,20 @@ class UpdateLindormInstanceAttributeRequest(DaraModel):
         # Specifies whether to enable deletion protection. Valid values:
         # 
         # - **true**: Enabled.
-        # 
         # - **false**: Disabled.
         self.deletion_protection = deletion_protection
-        # The name of the instance.
+        # The risk disposition type for a single zone.
+        self.disposition_type = disposition_type
+        # The instance name.
         self.instance_alias = instance_alias
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The planned completion date for risk disposition, in the yyyy-MM-dd format.
+        self.planned_completion_date = planned_completion_date
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
@@ -45,6 +50,9 @@ class UpdateLindormInstanceAttributeRequest(DaraModel):
         if self.deletion_protection is not None:
             result['DeletionProtection'] = self.deletion_protection
 
+        if self.disposition_type is not None:
+            result['DispositionType'] = self.disposition_type
+
         if self.instance_alias is not None:
             result['InstanceAlias'] = self.instance_alias
 
@@ -56,6 +64,9 @@ class UpdateLindormInstanceAttributeRequest(DaraModel):
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
+
+        if self.planned_completion_date is not None:
+            result['PlannedCompletionDate'] = self.planned_completion_date
 
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
@@ -73,6 +84,9 @@ class UpdateLindormInstanceAttributeRequest(DaraModel):
         if m.get('DeletionProtection') is not None:
             self.deletion_protection = m.get('DeletionProtection')
 
+        if m.get('DispositionType') is not None:
+            self.disposition_type = m.get('DispositionType')
+
         if m.get('InstanceAlias') is not None:
             self.instance_alias = m.get('InstanceAlias')
 
@@ -84,6 +98,9 @@ class UpdateLindormInstanceAttributeRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('PlannedCompletionDate') is not None:
+            self.planned_completion_date = m.get('PlannedCompletionDate')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')

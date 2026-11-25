@@ -41,6 +41,7 @@ class GetLindormV2InstanceResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
         service_type: str = None,
+        single_zone_risk_alert: main_models.GetLindormV2InstanceResponseBodySingleZoneRiskAlert = None,
         standby_vswitch_id: str = None,
         standby_zone_id: str = None,
         storage_usage: main_models.GetLindormV2InstanceResponseBodyStorageUsage = None,
@@ -81,6 +82,7 @@ class GetLindormV2InstanceResponseBody(DaraModel):
         self.request_id = request_id
         self.resource_group_id = resource_group_id
         self.service_type = service_type
+        self.single_zone_risk_alert = single_zone_risk_alert
         self.standby_vswitch_id = standby_vswitch_id
         self.standby_zone_id = standby_zone_id
         self.storage_usage = storage_usage
@@ -95,6 +97,8 @@ class GetLindormV2InstanceResponseBody(DaraModel):
             for v1 in self.engine_list:
                  if v1:
                     v1.validate()
+        if self.single_zone_risk_alert:
+            self.single_zone_risk_alert.validate()
         if self.storage_usage:
             self.storage_usage.validate()
         if self.white_ip_list:
@@ -201,6 +205,9 @@ class GetLindormV2InstanceResponseBody(DaraModel):
 
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
+
+        if self.single_zone_risk_alert is not None:
+            result['SingleZoneRiskAlert'] = self.single_zone_risk_alert.to_map()
 
         if self.standby_vswitch_id is not None:
             result['StandbyVSwitchId'] = self.standby_vswitch_id
@@ -328,6 +335,10 @@ class GetLindormV2InstanceResponseBody(DaraModel):
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
 
+        if m.get('SingleZoneRiskAlert') is not None:
+            temp_model = main_models.GetLindormV2InstanceResponseBodySingleZoneRiskAlert()
+            self.single_zone_risk_alert = temp_model.from_map(m.get('SingleZoneRiskAlert'))
+
         if m.get('StandbyVSwitchId') is not None:
             self.standby_vswitch_id = m.get('StandbyVSwitchId')
 
@@ -425,6 +436,57 @@ class GetLindormV2InstanceResponseBodyStorageUsage(DaraModel):
 
         if m.get('EngineUsage') is not None:
             self.engine_usage = m.get('EngineUsage')
+
+        return self
+
+class GetLindormV2InstanceResponseBodySingleZoneRiskAlert(DaraModel):
+    def __init__(
+        self,
+        confirm_date: str = None,
+        disposition_type: str = None,
+        need_alert: str = None,
+        planned_completion_date: str = None,
+    ):
+        self.confirm_date = confirm_date
+        self.disposition_type = disposition_type
+        self.need_alert = need_alert
+        self.planned_completion_date = planned_completion_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.confirm_date is not None:
+            result['ConfirmDate'] = self.confirm_date
+
+        if self.disposition_type is not None:
+            result['DispositionType'] = self.disposition_type
+
+        if self.need_alert is not None:
+            result['NeedAlert'] = self.need_alert
+
+        if self.planned_completion_date is not None:
+            result['PlannedCompletionDate'] = self.planned_completion_date
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfirmDate') is not None:
+            self.confirm_date = m.get('ConfirmDate')
+
+        if m.get('DispositionType') is not None:
+            self.disposition_type = m.get('DispositionType')
+
+        if m.get('NeedAlert') is not None:
+            self.need_alert = m.get('NeedAlert')
+
+        if m.get('PlannedCompletionDate') is not None:
+            self.planned_completion_date = m.get('PlannedCompletionDate')
 
         return self
 

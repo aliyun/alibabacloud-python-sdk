@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_hitsdb20200615 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,31 +21,10 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'hitsdb'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
-        self._endpoint_map = {
-            'us-west-1': 'hitsdb.us-west-1.aliyuncs.com',
-            'us-east-1': 'hitsdb.us-east-1.aliyuncs.com',
-            'eu-west-1': 'hitsdb.eu-west-1.aliyuncs.com',
-            'eu-central-1': 'hitsdb.eu-central-1.aliyuncs.com',
-            'cn-zhangjiakou': 'hitsdb.cn-zhangjiakou.aliyuncs.com',
-            'cn-wulanchabu': 'hitsdb.cn-wulanchabu.aliyuncs.com',
-            'cn-shenzhen-finance-1': 'hitsdb.cn-shenzhen-finance-1.aliyuncs.com',
-            'cn-shenzhen': 'hitsdb.cn-shenzhen.aliyuncs.com',
-            'cn-shanghai-finance-1': 'hitsdb.cn-shanghai-finance-1.aliyuncs.com',
-            'cn-shanghai': 'hitsdb.cn-shanghai.aliyuncs.com',
-            'cn-qingdao': 'hitsdb.cn-qingdao.aliyuncs.com',
-            'cn-north-2-gov-1': 'hitsdb.cn-north-2-gov-1.aliyuncs.com',
-            'cn-huhehaote': 'hitsdb.cn-huhehaote.aliyuncs.com',
-            'cn-hongkong': 'hitsdb.cn-hongkong.aliyuncs.com',
-            'cn-hangzhou-finance': 'hitsdb.cn-hangzhou-finance.aliyuncs.com',
-            'cn-hangzhou': 'hitsdb.cn-hangzhou.aliyuncs.com',
-            'cn-chengdu': 'hitsdb.cn-chengdu.aliyuncs.com',
-            'cn-beijing': 'hitsdb.cn-beijing.aliyuncs.com',
-            'ap-southeast-5': 'hitsdb.ap-southeast-5.aliyuncs.com',
-            'ap-southeast-3': 'hitsdb.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-1': 'hitsdb.ap-southeast-1.aliyuncs.com',
-            'ap-northeast-1': 'hitsdb.ap-northeast-1.aliyuncs.com'
-        }
         self.check_config(config)
         self._endpoint = self.get_endpoint('hitsdb', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -4170,6 +4150,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_lindorm_v2stream_engine_info_with_options_async(request, runtime)
 
+    def kill_query_with_options(
+        self,
+        request: main_models.KillQueryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.KillQueryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.process_id):
+            query['ProcessId'] = request.process_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'KillQuery',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.KillQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def kill_query_with_options_async(
+        self,
+        request: main_models.KillQueryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.KillQueryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.process_id):
+            query['ProcessId'] = request.process_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'KillQuery',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.KillQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def kill_query(
+        self,
+        request: main_models.KillQueryRequest,
+    ) -> main_models.KillQueryResponse:
+        runtime = RuntimeOptions()
+        return self.kill_query_with_options(request, runtime)
+
+    async def kill_query_async(
+        self,
+        request: main_models.KillQueryRequest,
+    ) -> main_models.KillQueryResponse:
+        runtime = RuntimeOptions()
+        return await self.kill_query_with_options_async(request, runtime)
+
     def list_auto_scaling_configs_with_options(
         self,
         tmp_req: main_models.ListAutoScalingConfigsRequest,
@@ -4601,6 +4663,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListComputeEngineJobResponse:
         runtime = RuntimeOptions()
         return await self.list_compute_engine_job_with_options_async(request, runtime)
+
+    def list_hbase_quotas_with_options(
+        self,
+        request: main_models.ListHBaseQuotasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHBaseQuotasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHBaseQuotas',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHBaseQuotasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_hbase_quotas_with_options_async(
+        self,
+        request: main_models.ListHBaseQuotasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHBaseQuotasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListHBaseQuotas',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListHBaseQuotasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_hbase_quotas(
+        self,
+        request: main_models.ListHBaseQuotasRequest,
+    ) -> main_models.ListHBaseQuotasResponse:
+        runtime = RuntimeOptions()
+        return self.list_hbase_quotas_with_options(request, runtime)
+
+    async def list_hbase_quotas_async(
+        self,
+        request: main_models.ListHBaseQuotasRequest,
+    ) -> main_models.ListHBaseQuotasResponse:
+        runtime = RuntimeOptions()
+        return await self.list_hbase_quotas_with_options_async(request, runtime)
 
     def list_ldps_compute_groups_with_options(
         self,
@@ -6408,6 +6548,186 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.set_default_olap_compute_group_with_options_async(request, runtime)
 
+    def set_hbase_quotas_with_options(
+        self,
+        request: main_models.SetHBaseQuotasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetHBaseQuotasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dimension):
+            query['Dimension'] = request.dimension
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope):
+            query['Scope'] = request.scope
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.time_unit):
+            query['TimeUnit'] = request.time_unit
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.unit):
+            query['Unit'] = request.unit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetHBaseQuotas',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetHBaseQuotasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_hbase_quotas_with_options_async(
+        self,
+        request: main_models.SetHBaseQuotasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetHBaseQuotasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dimension):
+            query['Dimension'] = request.dimension
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.limit):
+            query['Limit'] = request.limit
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scope):
+            query['Scope'] = request.scope
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not DaraCore.is_null(request.time_unit):
+            query['TimeUnit'] = request.time_unit
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        if not DaraCore.is_null(request.unit):
+            query['Unit'] = request.unit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetHBaseQuotas',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetHBaseQuotasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_hbase_quotas(
+        self,
+        request: main_models.SetHBaseQuotasRequest,
+    ) -> main_models.SetHBaseQuotasResponse:
+        runtime = RuntimeOptions()
+        return self.set_hbase_quotas_with_options(request, runtime)
+
+    async def set_hbase_quotas_async(
+        self,
+        request: main_models.SetHBaseQuotasRequest,
+    ) -> main_models.SetHBaseQuotasResponse:
+        runtime = RuntimeOptions()
+        return await self.set_hbase_quotas_with_options_async(request, runtime)
+
+    def show_process_list_with_options(
+        self,
+        request: main_models.ShowProcessListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ShowProcessListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ShowProcessList',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ShowProcessListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def show_process_list_with_options_async(
+        self,
+        request: main_models.ShowProcessListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ShowProcessListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ShowProcessList',
+            version = '2020-06-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ShowProcessListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def show_process_list(
+        self,
+        request: main_models.ShowProcessListRequest,
+    ) -> main_models.ShowProcessListResponse:
+        runtime = RuntimeOptions()
+        return self.show_process_list_with_options(request, runtime)
+
+    async def show_process_list_async(
+        self,
+        request: main_models.ShowProcessListRequest,
+    ) -> main_models.ShowProcessListResponse:
+        runtime = RuntimeOptions()
+        return await self.show_process_list_with_options_async(request, runtime)
+
     def switch_lsqlv3my_sqlservice_with_options(
         self,
         request: main_models.SwitchLSQLV3MySQLServiceRequest,
@@ -7013,6 +7333,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.deletion_protection):
             query['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.disposition_type):
+            query['DispositionType'] = request.disposition_type
         if not DaraCore.is_null(request.instance_alias):
             query['InstanceAlias'] = request.instance_alias
         if not DaraCore.is_null(request.instance_id):
@@ -7021,6 +7343,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.planned_completion_date):
+            query['PlannedCompletionDate'] = request.planned_completion_date
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
@@ -7055,6 +7379,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.deletion_protection):
             query['DeletionProtection'] = request.deletion_protection
+        if not DaraCore.is_null(request.disposition_type):
+            query['DispositionType'] = request.disposition_type
         if not DaraCore.is_null(request.instance_alias):
             query['InstanceAlias'] = request.instance_alias
         if not DaraCore.is_null(request.instance_id):
@@ -7063,6 +7389,8 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.planned_completion_date):
+            query['PlannedCompletionDate'] = request.planned_completion_date
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):

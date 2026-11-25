@@ -16,15 +16,15 @@ class GetInstanceIpWhiteListResponseBody(DaraModel):
         ip_list: List[str] = None,
         request_id: str = None,
     ):
-        # The details about why the access was denied.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # A list of whitelist groups.
+        # The list of whitelist groups.
         self.group_list = group_list
         # The instance ID.
         self.instance_id = instance_id
-        # A list of IP addresses in the whitelist.
+        # The list of IP addresses in the whitelist.
         self.ip_list = ip_list
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -87,7 +87,7 @@ class GetInstanceIpWhiteListResponseBodyGroupList(DaraModel):
     ):
         # The name of the whitelist group.
         self.group_name = group_name
-        # The IP address whitelist.
+        # The list of IP addresses in the whitelist.
         self.security_ip_list = security_ip_list
 
     def validate(self):

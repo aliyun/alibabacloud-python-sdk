@@ -10,7 +10,7 @@ class ChangeResourceGroupResponseBody(DaraModel):
         access_denied_detail: str = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
         # Id of the request
         self.request_id = request_id

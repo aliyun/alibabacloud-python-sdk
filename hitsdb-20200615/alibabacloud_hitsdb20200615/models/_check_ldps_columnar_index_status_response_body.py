@@ -8,10 +8,13 @@ class CheckLdpsColumnarIndexStatusResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
+        mode: str = None,
         opened: bool = None,
         request_id: str = None,
     ):
         self.access_denied_detail = access_denied_detail
+        # Columnar index mode. Valid values: LAKE and OLAP.
+        self.mode = mode
         self.opened = opened
         self.request_id = request_id
 
@@ -26,6 +29,9 @@ class CheckLdpsColumnarIndexStatusResponseBody(DaraModel):
         if self.access_denied_detail is not None:
             result['AccessDeniedDetail'] = self.access_denied_detail
 
+        if self.mode is not None:
+            result['Mode'] = self.mode
+
         if self.opened is not None:
             result['Opened'] = self.opened
 
@@ -38,6 +44,9 @@ class CheckLdpsColumnarIndexStatusResponseBody(DaraModel):
         m = m or dict()
         if m.get('AccessDeniedDetail') is not None:
             self.access_denied_detail = m.get('AccessDeniedDetail')
+
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
 
         if m.get('Opened') is not None:
             self.opened = m.get('Opened')

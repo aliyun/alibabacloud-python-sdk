@@ -10,7 +10,7 @@ class UpdateInstanceIpWhiteListResponseBody(DaraModel):
         access_denied_detail: str = None,
         request_id: str = None,
     ):
-        # The detailed reason why the access is denied.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The request ID.
         self.request_id = request_id

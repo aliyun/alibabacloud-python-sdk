@@ -12,7 +12,7 @@ class UpdateLindormV2InstanceResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
-        # The details of the access denied error.
+        # The details of the permission check failure.
         self.access_denied_detail = access_denied_detail
         # The instance ID.
         self.instance_id = instance_id

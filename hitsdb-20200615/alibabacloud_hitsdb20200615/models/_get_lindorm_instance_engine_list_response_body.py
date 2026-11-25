@@ -15,7 +15,7 @@ class GetLindormInstanceEngineListResponseBody(DaraModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The detailed reason why the access was denied.
+        # The detailed reason for the access denial.
         self.access_denied_detail = access_denied_detail
         # The list of engine types.
         self.engine_list = engine_list
@@ -79,12 +79,9 @@ class GetLindormInstanceEngineListResponseBodyEngineList(DaraModel):
         # The engine type. Valid values:
         # 
         # - **lindorm**: LindormTable.
-        # 
         # - **tsdb**: LindormTSDB.
-        # 
-        # - **solr**: Search engine.
-        # 
-        # - **store**: File engine.
+        # - **solr**: search engine.
+        # - **store**: file engine.
         self.engine_type = engine_type
         # The list of database connection information for the engine.
         self.net_info_list = net_info_list
@@ -133,27 +130,20 @@ class GetLindormInstanceEngineListResponseBodyEngineListNetInfoList(DaraModel):
     ):
         # The connection method for LindormTable. Valid values:
         # 
-        # - **0**: This is the default value and can be ignored.
-        # 
-        # - **1**: Use the HBase Java API to access LindormTable.
-        # 
-        # - **2**: Use a non-Java HBase API to access LindormTable.
-        # 
-        # - **3**: Use CQL to access LindormTable.
-        # 
+        # - **0**: Default value. You can ignore this value.
+        # - **1**: Use the HBase Java API to access the LindormTable endpoint.
+        # - **2**: Use a non-Java HBase API to access the LindormTable endpoint.
+        # - **3**: Use CQL to access the LindormTable endpoint.
         # - **4**: Use the LindormTable SQL endpoint.
-        # 
-        # - **5**: Use the S3-compatible endpoint for LindormTable.
-        # 
-        # - **6**: Use the MySQL-compatible endpoint for LindormTable.
+        # - **5**: Use the LindormTable S3-compatible endpoint.
+        # - **6**: Use the LindormTable MySQL-compatible endpoint.
         self.access_type = access_type
         # The database endpoint.
         self.connection_string = connection_string
         # The network type of the database endpoint. Valid values:
         # 
         # - **0**: Internet.
-        # 
-        # - **2**: Virtual private cloud (VPC).
+        # - **2**: VPC.
         self.net_type = net_type
         # The port number of the database endpoint.
         self.port = port

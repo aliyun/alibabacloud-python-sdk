@@ -12,7 +12,7 @@ class CreateLindormV2InstanceResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
-        # The detailed reason why the access was denied.
+        # The detailed reasons for access denial.
         self.access_denied_detail = access_denied_detail
         # The instance ID.
         self.instance_id = instance_id

@@ -21,17 +21,17 @@ class ListTagResourcesRequest(DaraModel):
         security_token: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token to retrieve the next page of results.
+        # The token that is used to start the next query to return more results.
         # 
-        # > Do not specify this parameter for your first request. If the response returns a **NextToken**, more results are available. To retrieve the next page, include the returned **NextToken** value in your next request.
+        # > You do not need to specify this parameter for the first query. If a query does not return all results, you can pass the **NextToken** value returned in the previous query to continue the query.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the instance is located. Call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to get a list of available regions.
+        # The ID of the region where the instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # A list of resource IDs.
+        # The list of resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -40,7 +40,7 @@ class ListTagResourcesRequest(DaraModel):
         # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
-        # A list of tags.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -131,13 +131,11 @@ class ListTagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
-        # 
-        # > Each tag is a key-value pair. This parameter specifies the key.
+        # The tag key.
+        # > You can specify multiple tag keys. For example, the Key in the first pair specifies the first tag key, and the Key in the second pair specifies the second tag key.
         self.key = key
-        # The value of the tag.
-        # 
-        # > Each tag is a key-value pair. This parameter specifies the value.
+        # The tag value.
+        # > You can specify multiple tag values. For example, the Value in the first pair specifies the first tag value, and the Value in the second pair specifies the second tag value.
         self.value = value
 
     def validate(self):

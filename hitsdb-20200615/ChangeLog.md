@@ -1,3 +1,10 @@
+2026-11-25 Version: 4.18.0
+- Support API KillQuery.
+- Support API ListHBaseQuotas.
+- Support API SetHBaseQuotas.
+- Support API ShowProcessList.
+
+
 2026-07-17 Version: 4.17.0
 - Support API GetComputeEngineJobDetail.
 - Support API GetComputeEngineJobLog.

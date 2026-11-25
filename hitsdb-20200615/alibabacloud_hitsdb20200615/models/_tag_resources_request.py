@@ -22,22 +22,22 @@ class TagResourcesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. Call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to obtain the region ID.
+        # The ID of the region where the instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # A list of resource IDs.
+        # The list of resource IDs.
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Set the value to **INSTANCE**.
+        # The resource type. Set the value to **INSTANCE**.
         # 
         # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
-        # A list of tags.
+        # The list of tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -126,13 +126,13 @@ class TagResourcesRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # > You can specify the keys for multiple tags. For example, the Key in the first pair is the key for the first tag, and the Key in the second pair is the key for the second tag.
+        # > You can specify multiple tag keys. For example, the Key in the first pair specifies the key of the first tag, and the Key in the second pair specifies the key of the second tag.
         # 
         # This parameter is required.
         self.key = key
         # The tag value.
         # 
-        # > You can specify the values for multiple tags. For example, the Value in the first pair is the value for the first tag, and the Value in the second pair is the value for the second tag.
+        # > You can specify multiple tag values. For example, the Value in the first pair specifies the value of the first tag, and the Value in the second pair specifies the value of the second tag.
         self.value = value
 
     def validate(self):

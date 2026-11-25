@@ -26,44 +26,37 @@ class GetLindormInstanceListRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page for a paged query.
+        # The number of entries to return per page for paging in a paged query.
         self.page_size = page_size
-        # A keyword for a fuzzy search on instance names.
+        # The keyword used to perform a fuzzy search by instance name.
         self.query_str = query_str
-        # The ID of the region where the instance is located. Call [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) to obtain the region ID.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The type of the instance. Valid values:
+        # The instance type. Valid values:
         # 
-        # - **lindorm**: a single-zone Lindorm instance.
-        # 
-        # - **lindorm_multizone**: a multi-zone Lindorm instance.
-        # 
-        # - **serverless_lindorm**: a Lindorm Serverless instance.
-        # 
-        # - **lindorm_standalone**: a Lindorm standalone instance.
-        # 
-        # - **lts**: the Lindorm Tunnel Service (LTS) type.
+        # - **lindorm**: Lindorm single-zone instance
+        # - **lindorm_multizone**: Lindorm multi-zone instance
+        # - **serverless_lindorm**: Lindorm Serverless instance
+        # - **lindorm_standalone**: Lindorm single-node instance
+        # - **lts**: Lindorm Tunnel Service
         self.service_type = service_type
-        # The type of the engine supported by the instance that you want to query. Valid values:
+        # The data engine types supported by the instance. Valid values:
         # 
-        # - **1**: search engine.
+        # - **1**: Search engine
+        # - **2**: LindormTSDB
+        # - **4**: LindormTable
+        # - **8**: File engine
         # 
-        # - **2**: LindormTSDB.
-        # 
-        # - **4**: LindormTable.
-        # 
-        # - **8**: file engine.
-        # 
-        # > For example, a value of 15 (8 + 4 + 2 + 1) indicates that the instance supports the file engine, LindormTable, LindormTSDB, and the search engine. A value of 6 (4 + 2) indicates that the instance supports LindormTSDB and LindormTable.
+        # > For example, if the value is 15 (15 = 8 + 4 + 2 + 1), the instance supports the search engine, LindormTSDB, LindormTable, and file engine. If the value is 6 (6 = 4 + 2), the instance supports LindormTSDB and LindormTable.
         self.support_engine = support_engine
-        # A list of tags. You can specify up to 20 tags.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -172,13 +165,13 @@ class GetLindormInstanceListRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key. Valid values of N: 1 to 20.
         # 
-        # > You can pass in keys for multiple tags. For example, the Key in the first pair represents the key for the first tag. The Key in the second pair represents the key for the second tag.
+        # > You can specify multiple tag keys. For example, the first Key specifies the first tag key, and the second Key specifies the second tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value. Valid values of N: 1 to 20.
         # 
-        # > You can provide values for multiple tags. For example, the Value in the first pair is the value for the first tag. The Value in the second pair is the value for the second tag.
+        # > You can specify multiple tag values. For example, the first Value specifies the first tag value, and the second Value specifies the second tag value.
         self.value = value
 
     def validate(self):

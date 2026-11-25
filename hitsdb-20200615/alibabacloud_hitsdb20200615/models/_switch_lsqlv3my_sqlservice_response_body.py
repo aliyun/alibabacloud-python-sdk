@@ -10,9 +10,9 @@ class SwitchLSQLV3MySQLServiceResponseBody(DaraModel):
         access_denied_detail: str = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The detailed reason why access was denied.
         self.access_denied_detail = access_denied_detail
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

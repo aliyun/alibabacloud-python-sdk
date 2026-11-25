@@ -23,19 +23,17 @@ class UpdateLindormV2InstanceRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The capacity of the storage-optimized storage.
+        # The capacity storage space.
         self.capacity_storage_size = capacity_storage_size
-        # The cloud storage capacity. Unit: GB.
+        # The cloud storage space. Unit: GB. When you modify the cloud storage space, you must also specify EngineList. The EngineType parameter in EngineList, and the NodeSpec and NodeCount parameters in NodeGroupList are required.
         self.cloud_storage_size = cloud_storage_size
-        # The cloud storage class.
-        # 
-        # - **PerformanceStorage**: performance cloud storage.
-        # 
-        # - **StandardStorage**: standard cloud storage.
+        # The cloud storage type. Valid values:
+        # - **PerformanceStorage**: Performance cloud storage.
+        # - **StandardStorage**: Standard cloud storage.
         self.cloud_storage_type = cloud_storage_type
-        # Specifies whether to enable storage-optimized storage.
+        # Specifies whether to enable capacity storage.
         self.enable_capacity_storage = enable_capacity_storage
-        # A list of engine types.
+        # The list of engine types.
         # 
         # This parameter is required.
         self.engine_list = engine_list
@@ -45,7 +43,7 @@ class UpdateLindormV2InstanceRequest(DaraModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the instance is located. To query the latest region list, call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID. Use this parameter to specify the region where you want to create the instance.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -156,22 +154,16 @@ class UpdateLindormV2InstanceRequestEngineList(DaraModel):
         # The engine type. Valid values:
         # 
         # - TABLE: LindormTable.
-        # 
         # - TSDB: LindormTSDB.
-        # 
         # - LSEARCH: search engine.
-        # 
-        # - LTS: LTS engine.
-        # 
+        # - LTS: Lindorm Tunnel Service.
         # - LVECTOR: vector engine.
-        # 
-        # - LCOLUMN: column store.
-        # 
+        # - LCOLUMN: column store engine.
         # - LAI: AI engine.
         # 
         # This parameter is required.
         self.engine_type = engine_type
-        # A list of engine node groups.
+        # The list of engine node groups.
         self.node_group_list = node_group_list
 
     def validate(self):
@@ -224,27 +216,22 @@ class UpdateLindormV2InstanceRequestEngineListNodeGroupList(DaraModel):
         # 
         # This parameter is required.
         self.node_count = node_count
-        # The disk size of a single node. This parameter is not required.
+        # The disk size per node. This parameter is not required.
         self.node_disk_size = node_disk_size
-        # The disk type of the node. This parameter is not required. **This parameter is available only for specific scenarios and is accessible to users on a whitelist.**
+        # The cloud disk type of the node. This parameter is not required. **This parameter is used in special scenarios and is available only after your account is added to the whitelist.**
         self.node_disk_type = node_disk_type
-        # The node specifications of the engine.
+        # The node specifications of the engine. Valid values:
         # 
-        # - **lindorm.c.2xlarge**: 8 cores and 16 GB of memory.
-        # 
-        # - **lindorm.g.2xlarge**: 8 cores and 32 GB of memory.
-        # 
-        # - **lindorm.c.4xlarge**: 16 cores and 32 GB of memory.
-        # 
-        # - **lindorm.g.4xlarge**: 16 cores and 64 GB of memory.
-        # 
-        # - **lindorm.c.8xlarge**: 32 cores and 64 GB of memory.
-        # 
-        # - **lindorm.g.8xlarge**: 32 cores and 128 GB of memory.
+        # - **lindorm.c.2xlarge**: 8 vCPUs and 16 GB of memory.
+        # - **lindorm.g.2xlarge**: 8 vCPUs and 32 GB of memory.
+        # - **lindorm.c.4xlarge**: 16 vCPUs and 32 GB of memory.
+        # - **lindorm.g.4xlarge**: 16 vCPUs and 64 GB of memory.
+        # - **lindorm.c.8xlarge**: 32 vCPUs and 64 GB of memory.
+        # - **lindorm.g.8xlarge**: 32 vCPUs and 128 GB of memory.
         # 
         # This parameter is required.
         self.node_spec = node_spec
-        # The name of the node group. **This parameter is required.** You can obtain the name by calling the GetLindormV2Instance operation.
+        # The name of the node group. You can call the GetLindormV2InstanceDetails operation to query the name.
         self.resource_group_name = resource_group_name
 
     def validate(self):

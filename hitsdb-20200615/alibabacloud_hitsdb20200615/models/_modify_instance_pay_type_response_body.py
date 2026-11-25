@@ -12,7 +12,7 @@ class ModifyInstancePayTypeResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
-        # The detailed reason why the access is denied.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The instance ID.
         self.instance_id = instance_id

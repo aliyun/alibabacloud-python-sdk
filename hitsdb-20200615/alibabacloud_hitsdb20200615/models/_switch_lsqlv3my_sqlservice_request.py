@@ -15,15 +15,17 @@ class SwitchLSQLV3MySQLServiceRequest(DaraModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The type of the operation. Valid values:
+        # The operation type.
         # 
-        # - 1: Enable
+        # Valid values:
         # 
-        # - 0: Disable
+        # - 1: Enable.
+        # 
+        # - 0: Disable.
         # 
         # This parameter is required.
         self.action_type = action_type
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

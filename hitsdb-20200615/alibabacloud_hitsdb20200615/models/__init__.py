@@ -120,6 +120,9 @@ from ._get_lindorm_v2storage_usage_response import GetLindormV2StorageUsageRespo
 from ._get_lindorm_v2stream_engine_info_request import GetLindormV2StreamEngineInfoRequest
 from ._get_lindorm_v2stream_engine_info_response_body import GetLindormV2StreamEngineInfoResponseBody
 from ._get_lindorm_v2stream_engine_info_response import GetLindormV2StreamEngineInfoResponse
+from ._kill_query_request import KillQueryRequest
+from ._kill_query_response_body import KillQueryResponseBody
+from ._kill_query_response import KillQueryResponse
 from ._list_auto_scaling_configs_request import ListAutoScalingConfigsRequest
 from ._list_auto_scaling_configs_shrink_request import ListAutoScalingConfigsShrinkRequest
 from ._list_auto_scaling_configs_response_body import ListAutoScalingConfigsResponseBody
@@ -134,6 +137,9 @@ from ._list_auto_scaling_rules_response import ListAutoScalingRulesResponse
 from ._list_compute_engine_job_request import ListComputeEngineJobRequest
 from ._list_compute_engine_job_response_body import ListComputeEngineJobResponseBody
 from ._list_compute_engine_job_response import ListComputeEngineJobResponse
+from ._list_hbase_quotas_request import ListHBaseQuotasRequest
+from ._list_hbase_quotas_response_body import ListHBaseQuotasResponseBody
+from ._list_hbase_quotas_response import ListHBaseQuotasResponse
 from ._list_ldps_compute_groups_request import ListLdpsComputeGroupsRequest
 from ._list_ldps_compute_groups_response_body import ListLdpsComputeGroupsResponseBody
 from ._list_ldps_compute_groups_response import ListLdpsComputeGroupsResponse
@@ -186,6 +192,12 @@ from ._restart_ldps_compute_group_response import RestartLdpsComputeGroupRespons
 from ._set_default_olap_compute_group_request import SetDefaultOlapComputeGroupRequest
 from ._set_default_olap_compute_group_response_body import SetDefaultOlapComputeGroupResponseBody
 from ._set_default_olap_compute_group_response import SetDefaultOlapComputeGroupResponse
+from ._set_hbase_quotas_request import SetHBaseQuotasRequest
+from ._set_hbase_quotas_response_body import SetHBaseQuotasResponseBody
+from ._set_hbase_quotas_response import SetHBaseQuotasResponse
+from ._show_process_list_request import ShowProcessListRequest
+from ._show_process_list_response_body import ShowProcessListResponseBody
+from ._show_process_list_response import ShowProcessListResponse
 from ._switch_lsqlv3my_sqlservice_request import SwitchLSQLV3MySQLServiceRequest
 from ._switch_lsqlv3my_sqlservice_response_body import SwitchLSQLV3MySQLServiceResponseBody
 from ._switch_lsqlv3my_sqlservice_response import SwitchLSQLV3MySQLServiceResponse
@@ -241,6 +253,7 @@ from ._get_lindorm_engine_config_response_body import GetLindormEngineConfigResp
 from ._get_lindorm_engine_config_response_body import GetLindormEngineConfigResponseBodyEngineConfigs
 from ._get_lindorm_fs_used_detail_response_body import GetLindormFsUsedDetailResponseBodyLStorageUsageList
 from ._get_lindorm_instance_response_body import GetLindormInstanceResponseBodyEngineList
+from ._get_lindorm_instance_response_body import GetLindormInstanceResponseBodySingleZoneRiskAlert
 from ._get_lindorm_instance_engine_list_response_body import GetLindormInstanceEngineListResponseBodyEngineListNetInfoList
 from ._get_lindorm_instance_engine_list_response_body import GetLindormInstanceEngineListResponseBodyEngineList
 from ._get_lindorm_instance_list_request import GetLindormInstanceListRequestTag
@@ -249,6 +262,7 @@ from ._get_lindorm_instance_list_response_body import GetLindormInstanceListResp
 from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodyEngineListConnectAddressList
 from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodyEngineListNodeGroup
 from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodyEngineList
+from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodySingleZoneRiskAlert
 from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodyStorageUsage
 from ._get_lindorm_v2instance_response_body import GetLindormV2InstanceResponseBodyWhiteIpList
 from ._get_lindorm_v2instance_details_response_body import GetLindormV2InstanceDetailsResponseBodyEngineListConnectAddressList
@@ -402,6 +416,9 @@ __all__ = [
     GetLindormV2StreamEngineInfoRequest,
     GetLindormV2StreamEngineInfoResponseBody,
     GetLindormV2StreamEngineInfoResponse,
+    KillQueryRequest,
+    KillQueryResponseBody,
+    KillQueryResponse,
     ListAutoScalingConfigsRequest,
     ListAutoScalingConfigsShrinkRequest,
     ListAutoScalingConfigsResponseBody,
@@ -416,6 +433,9 @@ __all__ = [
     ListComputeEngineJobRequest,
     ListComputeEngineJobResponseBody,
     ListComputeEngineJobResponse,
+    ListHBaseQuotasRequest,
+    ListHBaseQuotasResponseBody,
+    ListHBaseQuotasResponse,
     ListLdpsComputeGroupsRequest,
     ListLdpsComputeGroupsResponseBody,
     ListLdpsComputeGroupsResponse,
@@ -468,6 +488,12 @@ __all__ = [
     SetDefaultOlapComputeGroupRequest,
     SetDefaultOlapComputeGroupResponseBody,
     SetDefaultOlapComputeGroupResponse,
+    SetHBaseQuotasRequest,
+    SetHBaseQuotasResponseBody,
+    SetHBaseQuotasResponse,
+    ShowProcessListRequest,
+    ShowProcessListResponseBody,
+    ShowProcessListResponse,
     SwitchLSQLV3MySQLServiceRequest,
     SwitchLSQLV3MySQLServiceResponseBody,
     SwitchLSQLV3MySQLServiceResponse,
@@ -523,6 +549,7 @@ __all__ = [
     GetLindormEngineConfigResponseBodyEngineConfigs,
     GetLindormFsUsedDetailResponseBodyLStorageUsageList,
     GetLindormInstanceResponseBodyEngineList,
+    GetLindormInstanceResponseBodySingleZoneRiskAlert,
     GetLindormInstanceEngineListResponseBodyEngineListNetInfoList,
     GetLindormInstanceEngineListResponseBodyEngineList,
     GetLindormInstanceListRequestTag,
@@ -531,6 +558,7 @@ __all__ = [
     GetLindormV2InstanceResponseBodyEngineListConnectAddressList,
     GetLindormV2InstanceResponseBodyEngineListNodeGroup,
     GetLindormV2InstanceResponseBodyEngineList,
+    GetLindormV2InstanceResponseBodySingleZoneRiskAlert,
     GetLindormV2InstanceResponseBodyStorageUsage,
     GetLindormV2InstanceResponseBodyWhiteIpList,
     GetLindormV2InstanceDetailsResponseBodyEngineListConnectAddressList,

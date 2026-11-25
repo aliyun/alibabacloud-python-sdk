@@ -19,11 +19,11 @@ class ModifyInstancePayTypeRequest(DaraModel):
     ):
         # The subscription duration. This parameter is required when you change the billing method to subscription.
         # 
-        # - If \\`PricingCycle\\` is \\`Month\\`, the valid values are 1 to 9.
+        # - If PricingCycle is set to Month, valid values are [1, 9].
         # 
-        # - If \\`PricingCycle\\` is \\`Year\\`, the valid values are 1 to 3.
+        # - If PricingCycle is set to Year, valid values are [1, 3].
         self.duration = duration
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -31,17 +31,16 @@ class ModifyInstancePayTypeRequest(DaraModel):
         self.owner_id = owner_id
         # The billing method of the instance. Valid values:
         # 
-        # - **PREPAY**: subscription.
-        # 
-        # - **POSTPAY**: pay-as-you-go.
+        # - **PREPAY**: subscription
+        # - **POSTPAY**: pay-as-you-go
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The unit of the subscription duration. This parameter is required when you change the billing method to subscription.
+        # The unit of the subscription duration. This parameter is required when you change the billing method to subscription. Valid values:
         # 
-        # - Month: The unit is month.
+        # - Month: month
         # 
-        # - Year: The unit is year.
+        # - Year: year
         self.pricing_cycle = pricing_cycle
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

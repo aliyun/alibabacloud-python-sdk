@@ -18,13 +18,13 @@ class GetLindormInstanceListResponseBody(DaraModel):
     ):
         # The list of instances.
         self.instance_list = instance_list
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned on the page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of instances found.
+        # The total number of instances returned.
         self.total = total
 
     def validate(self):
@@ -109,120 +109,91 @@ class GetLindormInstanceListResponseBodyInstanceList(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The 16-digit ID of the Alibaba Cloud account.
+        # The 16-character AliUid of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # The reason why the instance failed to be created.
+        # The cause of the creation failure.
         self.create_error_code = create_error_code
-        # The timestamp of when the instance was created. The value is the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The number of milliseconds between the instance creation time and 00:00:00 on January 1, 1970.
         self.create_milliseconds = create_milliseconds
-        # The time when the instance was created.
+        # The creation time of the instance. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.create_time = create_time
         # Indicates whether the column store engine is enabled. Valid values:
         # 
         # - **true**: Enabled.
-        # 
         # - **false**: Not enabled.
         self.enable_column = enable_column
         # Indicates whether the compute engine is enabled for the instance. Valid values:
         # 
         # - **true**: Enabled.
-        # 
         # - **false**: Not enabled.
         self.enable_compute = enable_compute
-        # Indicates whether the LTS engine is enabled. Valid values:
+        # Indicates whether Lindorm Tunnel Service (LTS) is enabled. Valid values:
         # 
         # - **true**: Enabled.
-        # 
         # - **false**: Not enabled.
         self.enable_lts = enable_lts
-        # Indicates whether the messaging engine is enabled. Valid values:
+        # Indicates whether the message engine is enabled. Valid values:
         # 
         # - **true**: Enabled.
-        # 
         # - **false**: Not enabled.
         self.enable_message = enable_message
-        # Indicates whether the LindormTable 3.0 engine is enabled. Valid values:
+        # Indicates whether LindormTable 3.0 is enabled. Valid values:
         # 
-        # true: Enabled.
-        # false: Not enabled.
+        # - **true**: Enabled.
+        # - **false**: Not enabled.
         self.enable_row = enable_row
-        # Indicates whether the stream engine is enabled for the instance. Valid values:
+        # Indicates whether the streaming engine is enabled for the instance. Valid values:
         # 
-        # - **true**: The stream engine is enabled.
-        # 
-        # - **false**: The stream engine is not enabled.
+        # - **true**: The streaming engine is enabled.
+        # - **false**: The streaming engine is not enabled.
         self.enable_stream = enable_stream
         # Indicates whether the vector engine is enabled. Valid values:
         # 
         # - **true**: Enabled.
-        # 
         # - **false**: Not enabled.
         self.enable_vector = enable_vector
-        # The types of engines supported by the instance. The value of this parameter is the sum of the values of the supported engines.
+        # The engine types supported by the instance. The return value is the sum of the following engine type values:
         # 
-        # - **1**: search engine.
+        # - **1**: Search engine
+        # - **2**: LindormTSDB
+        # - **4**: LindormTable
+        # - **8**: File engine
         # 
-        # - **2**: LindormTSDB.
-        # 
-        # - **4**: LindormTable.
-        # 
-        # - **8**: file engine.
-        # 
-        # > For example, a value of 15 (8 + 4 + 2 + 1) indicates that the instance supports the file engine, LindormTable, LindormTSDB, and the search engine. A value of 6 (4 + 2) indicates that the instance supports LindormTSDB and LindormTable.
+        # > For example, if the value is 15 (15 = 8 + 4 + 2 + 1), the instance supports the search engine, LindormTSDB, LindormTable, and file engine. If the value is 6 (6 = 4 + 2), the instance supports LindormTSDB and LindormTable.
         self.engine_type = engine_type
-        # The expiration time of the instance.
+        # The expiration time of the instance. The time is in the yyyy-MM-dd HH:mm:ss format.
         # 
-        # > This parameter is returned only for subscription instances.
+        # > This parameter is returned only when the billing method of the instance is subscription.
         self.expire_time = expire_time
-        # The timestamp of when the instance expires. The value is the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The number of milliseconds between the time when the instance expires and 00:00:00 on January 1, 1970.
         self.expired_milliseconds = expired_milliseconds
-        # The name of the instance.
+        # The instance name.
         self.instance_alias = instance_alias
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The status of the instance. Valid values:
+        # The instance status. Valid values:
         # 
-        # - **CREATING**: The instance is being created.
-        # 
-        # - **ACTIVATION**: The instance is running.
-        # 
-        # - **COLD_EXPANDING**: The capacity of the storage-optimized instance is being expanded.
-        # 
-        # - **MINOR_VERSION_TRANSING**: The minor version of the instance is being upgraded.
-        # 
-        # - **RESIZING**: The instance is scaling up.
-        # 
-        # - **SHRINKING**: The instance is scaling down.
-        # 
-        # - **CLASS_CHANGING**: The instance class is being changed.
-        # 
-        # - **SSL_SWITCHING**: The SSL certificate is being changed.
-        # 
-        # - **CDC_OPENING**: The data subscription feature is being enabled.
-        # 
-        # - **TRANSFER**: Data migration is in progress.
-        # 
-        # - **DATABASE_TRANSFER**: Data is being migrated to the database.
-        # 
-        # - **GUARD_CREATING**: A disaster recovery instance is being created.
-        # 
-        # - **BACKUP_RECOVERING**: A backup is being restored.
-        # 
-        # - **DATABASE_IMPORTING**: Data is being imported.
-        # 
-        # - **NET_MODIFYING**: The network settings are being modified.
-        # 
-        # - **NET_SWITCHING**: The network type is being switched.
-        # 
-        # - **NET_CREATING**: A network connection is being created.
-        # 
-        # - **NET_DELETING**: A network connection is being deleted.
-        # 
-        # - **DELETING**: The instance is being deleted.
-        # 
-        # - **RESTARTING**: The instance is being restarted.
-        # 
-        # - **LOCKED**: The instance has expired and is locked.
+        # - **CREATING**: Creating.
+        # - **ACTIVATION**: Running.
+        # - **COLD_EXPANDING**: Performing storage expansion for storage-optimized cloud storage.
+        # - **MINOR_VERSION_TRANSING**: Upgrading the minor version.
+        # - **RESIZING**: Scaling out nodes.
+        # - **SHRINKING**: Scaling in nodes.
+        # - **CLASS_CHANGING**: Upgrading or downgrading specifications.
+        # - **SSL_SWITCHING**: Modifying SSL configurations.
+        # - **CDC_OPENING**: Enabling the data subscription feature.
+        # - **TRANSFER**: Migrating data.
+        # - **DATABASE_TRANSFER**: Migrating data to the database.
+        # - **GUARD_CREATING**: Creating a disaster recovery instance.
+        # - **BACKUP_RECOVERING**: Restoring from a backup.
+        # - **DATABASE_IMPORTING**: Importing data.
+        # - **NET_MODIFYING**: Modifying network configurations.
+        # - **NET_SWITCHING**: Switching between the internal network and the Internet.
+        # - **NET_CREATING**: Creating a network connection.
+        # - **NET_DELETING**: Performing a delete operation on the network connection.
+        # - **DELETING**: Performing a delete operation.
+        # - **RESTARTING**: Restarting.
+        # - **LOCKED**: Locked because the instance has expired.
         self.instance_status = instance_status
         # The storage capacity of the instance.
         self.instance_storage = instance_storage
@@ -230,29 +201,25 @@ class GetLindormInstanceListResponseBodyInstanceList(DaraModel):
         self.network_type = network_type
         # The billing method of the instance. Valid values:
         # 
-        # - **PREPAY**: subscription.
-        # 
-        # - **POSTPAY**: pay-as-you-go.
+        # - **PREPAY**: Subscription
+        # - **POSTPAY**: Pay-as-you-go
         self.pay_type = pay_type
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The type of the instance. Valid values:
+        # The instance type. Valid values:
         # 
-        # - **lindorm**: a Lindorm instance.
-        # 
-        # - **serverless_lindorm**: a Lindorm Serverless instance.
-        # 
-        # - **lindorm_standalone**: a Lindorm standalone instance.
-        # 
-        # - **lts**: the Lindorm Tunnel Service type.
+        # - **lindorm**: Lindorm instance
+        # - **serverless_lindorm**: Lindorm Serverless instance
+        # - **lindorm_standalone**: Lindorm single-node instance
+        # - **lts**: Lindorm Tunnel Service
         self.service_type = service_type
         # The list of tags.
         self.tags = tags
-        # The ID of the virtual private cloud (VPC) in which the instance is deployed.
+        # The VPC ID of the instance.
         self.vpc_id = vpc_id
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -439,9 +406,9 @@ class GetLindormInstanceListResponseBodyInstanceListTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):

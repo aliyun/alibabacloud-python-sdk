@@ -12,11 +12,11 @@ class RenewLindormInstanceResponseBody(DaraModel):
         order_id: int = None,
         request_id: str = None,
     ):
-        # The details about the access denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The ID of the instance.
+        # The instance ID. This field may not be returned in a partially successful response.
         self.instance_id = instance_id
-        # The ID of the order. You can find the order ID in the Order Management section of Expenses and Costs.
+        # The ID of the order. You can obtain the order ID in the Orders section of the Expenses and Costs console.
         self.order_id = order_id
         # The ID of the request.
         self.request_id = request_id

@@ -63,300 +63,246 @@ class GetLindormInstanceResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
         service_type: str = None,
+        single_zone_risk_alert: main_models.GetLindormInstanceResponseBodySingleZoneRiskAlert = None,
         standby_vswitch_id: str = None,
         standby_zone_id: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
         zone_id: str = None,
     ):
-        # The UID of the Alibaba Cloud account.
+        # The 16-character AliUid of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # The ID of the vSwitch in the arbiter zone for the multi-zone instance. The vSwitch must be deployed in the zone that is specified by `ArbiterZoneId`.
+        # The ID of the vSwitch in the arbiter zone for a multi-zone instance. The vSwitch must belong to the zone specified by ArbiterZoneId.
         self.arbiter_vswitch_id = arbiter_vswitch_id
-        # The arbiter zone ID of the multi-zone instance.
+        # The ID of the arbiter zone for a multi-zone instance.
         self.arbiter_zone_id = arbiter_zone_id
         # The deployment architecture. Valid values:
         # 
-        # - **1.0**: single-zone deployment.
-        # 
-        # - **2.0**: multi-zone deployment.
+        # - **1.0**: single-zone.
+        # - **2.0**: multi-zone.
         self.arch_version = arch_version
-        # The billable storage capacity of the archive storage. Unit: GB.
+        # The billable storage capacity of the archive storage type. Unit: GB.
         self.archive_storage = archive_storage
-        # Indicates whether auto-renewal is enabled for the instance. Valid values:
+        # Indicates whether auto-renewal is enabled. Valid values:
         # 
-        # - **true**: Enabled.
+        # - **true**: enabled.
+        # - **false**: disabled.
         # 
-        # - **false**: Disabled.
-        # 
-        # > This parameter is returned only for subscription instances.
+        # > This parameter is returned only when the billing method of the instance is subscription.
         self.auto_renew = auto_renew
-        # The ID of the backup instance.
+        # The backup instance.
         self.backup_instance = backup_instance
-        # The capacity of the cold storage.
+        # Storage capacity of storage capacity cloud storage.
         self.cold_storage = cold_storage
-        # The disk type of the core nodes in a multi-zone instance. Valid values:
+        # The disk type of the core node for a multi-zone instance. Valid values:
         # 
-        # - **cloud_efficiency**: Standard.
-        # 
-        # - **cloud_ssd**: Performance.
-        # 
-        # - **cloud_essd**: ESSD.
-        # 
-        # - **cloud_essd_pl0**: ESSD PL0.
+        # - **cloud_efficiency**: standard cloud storage.
+        # - **cloud_ssd**: performance cloud storage.
+        # - **cloud_essd**: enhanced performance cloud storage.
+        # - **cloud_essd_pl0**: performance cloud storage PL0.
         self.core_disk_category = core_disk_category
-        # The number of core nodes in the multi-zone instance.
+        # The number of core nodes for a multi-zone instance.
         self.core_num = core_num
-        # The storage capacity of a single core node in the multi-zone instance.
+        # The disk capacity of a single core node for a multi-zone instance.
         self.core_single_storage = core_single_storage
-        # The specification of the core nodes in the multi-zone instance.
+        # The core node specifications for a multi-zone instance.
         self.core_spec = core_spec
-        # The time at which the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The creation time of the instance, represented as the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_milliseconds = create_milliseconds
-        # The time at which the instance was created. The time is displayed in the **yyyy-MM-dd HH:mm:ss** format.
+        # The time when the instance was created. The time is displayed in the **yyyy-MM-dd HH:mm:ss** format.
         self.create_time = create_time
-        # Indicates whether release protection is enabled for the instance. Valid values:
+        # Indicates whether deletion protection is enabled. Valid values:
         # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.deletion_protection = deletion_protection
         # The storage type. Valid values:
         # 
-        # - **cloud_efficiency**: Standard.
-        # 
-        # - **cloud_ssd**: Performance.
-        # 
-        # - **cloud_essd**: Enhanced SSD (ESSD).
-        # 
-        # - **cloud_essd_pl0**: ESSD PL0.
-        # 
-        # - **capacity_cloud_storage**: Capacity.
-        # 
+        # - **cloud_efficiency**: standard cloud storage.
+        # - **cloud_ssd**: performance cloud storage.
+        # - **cloud_essd**: enhanced performance cloud storage.
+        # - **cloud_essd_pl0**: performance cloud storage PL0.
+        # - **capacity_cloud_storage**: capacity cloud storage.
         # - **local_ssd_pro**: local SSD.
-        # 
         # - **local_hdd_pro**: local HDD.
         self.disk_category = disk_category
         # The disk space threshold.
         self.disk_threshold = disk_threshold
-        # The disk usage.
+        # The disk space usage.
         self.disk_usage = disk_usage
-        # Indicates whether LBlob is enabled. Valid values:
+        # Indicates whether LBlob is enabled for the instance. Valid values:
         # 
-        # true: Enabled. false: Disabled.
+        # - true: enabled.
+        # - false: disabled.
         self.enable_blob = enable_blob
-        # Indicates whether Change Data Capture (CDC) is enabled for the instance. Valid values:
+        # Indicates whether the data subscription feature is enabled for the instance. Valid values:
         # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.enable_cdc = enable_cdc
         # Indicates whether the compute engine is enabled for the instance. Valid values:
         # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.enable_compute = enable_compute
         # Indicates whether Key Management Service (KMS) is enabled. Valid values:
         # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.enable_kms = enable_kms
-        # Specifies whether the wide table engine supports the Thrift and CQL protocols. If this feature is disabled, you can call the SwitchLProxyService operation to enable it.
+        # Indicates whether LindormTable supports the Thrift and CQL protocols. If not supported, you can call the SwitchLProxyService operation to enable or disable the support. Valid values:
         # 
-        # true: Supported.
+        # - True: supported.
         # 
-        # false: Not supported.
+        # - False: not supported.
         self.enable_lproxy = enable_lproxy
-        # Indicates whether the LTS engine is enabled for the instance. Valid values:
+        # Indicates whether Lindorm Tunnel Service is enabled for the instance. Valid values:
         # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.enable_lts = enable_lts
-        # Indicates whether LindormSQL V3.0, which is compatible with the MySQL protocol, is supported by the wide table engine.
-        # This feature is supported by default on instances created after October 24, 2023. For existing instances, contact technical support to enable this feature.
+        # Indicates whether LindormTable supports LindormSQL-V3, which is compatible with the MySQL protocol. Instances purchased after October 24, 2023 support this feature by default. For existing instances, contact technical support for evaluation before enabling this feature. Valid values:
         # 
-        # - true: Supported.
+        # - True: supported.
         # 
-        # - false: Not supported.
+        # - False: not supported.
         self.enable_lsql_version_v3 = enable_lsql_version_v3
-        # Indicates whether the ML node is enabled. Valid values:
+        # Indicates whether the AI control node is enabled. Valid values:
         # 
-        # - true: Enabled.
+        # - True: enabled.
         # 
-        # - false: Disabled.
+        # - False: disabled.
         self.enable_mlctrl = enable_mlctrl
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.enable_ssl = enable_ssl
-        # Indicates whether the History Server is enabled for the compute engine.
+        # Indicates whether History Server for the compute engine is enabled.
         self.enable_shs = enable_shs
-        # Indicates whether Transparent Data Encryption (TDE) is enabled. Valid values:
+        # Indicates whether storage encryption is enabled. Valid values:
         # 
-        # - true: Enabled.
+        # - true: enabled.
         # 
-        # - false: Disabled.
+        # - false: disabled.
         self.enable_store_tde = enable_store_tde
-        # Indicates whether the stream engine is enabled for the instance. Valid values:
+        # Indicates whether the streaming engine is enabled for the instance. Valid values:
         # 
-        # - **true**: Enabled.
-        # 
-        # - **false**: Disabled.
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.enable_stream = enable_stream
-        # The information about the engines.
+        # The list of engine information.
         self.engine_list = engine_list
-        # The types of the engines that are supported by the instance. The value of this parameter is the sum of the values of all supported engine types.
+        # The supported engine types. The return value is the sum of the values of the following engine types:
         # 
         # - 1: search engine
-        # 
-        # - 2: time series engine
-        # 
-        # - 4: wide table engine
-        # 
+        # - 2: LindormTSDB
+        # - 4: LindormTable
         # - 8: file engine
         # 
-        # > For example, if the value of this parameter is 15, it indicates that the instance supports the search, time series, wide table, and file engines because 1 + 2 + 4 + 8 = 15. If the value of this parameter is 6, it indicates that the instance supports the time series and wide table engines because 2 + 4 = 6.
+        # > For example, if the value of EngineType is 15 (15 = 8 + 4 + 2 + 1), the instance supports the search engine, LindormTSDB, LindormTable, and file engine. If the value of EngineType is 6 (6 = 4 + 2), the instance supports LindormTSDB and LindormTable.
         self.engine_type = engine_type
         # The expiration time of the instance. The time is displayed in the **yyyy-MM-dd HH:mm:ss** format.
         # 
-        # > This parameter is returned only for subscription instances.
+        # > This parameter is returned only when the billing method is subscription.
         self.expire_time = expire_time
-        # The expiration time of the instance. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The time when the instance expires, represented as the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.expired_milliseconds = expired_milliseconds
         # The name of the instance.
         self.instance_alias = instance_alias
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The status of the instance. Valid values:
+        # The instance status. Valid values:
         # 
         # - **CREATING**: The instance is being created.
-        # 
         # - **ACTIVATION**: The instance is running.
-        # 
-        # - **COLD_EXPANDING**: The capacity of the cold storage is being expanded.
-        # 
-        # - **MINOR_VERSION_TRANSITIONING**: The minor version of the instance is being changed.
-        # 
-        # - **RESIZING**: The number of nodes is being changed.
-        # 
-        # - **SHRINKING**: The number of nodes is being changed.
-        # 
-        # - **CLASS_CHANGING**: The specification of the instance is being changed.
-        # 
-        # - **SSL_SWITCHING**: SSL is being enabled or disabled.
-        # 
-        # - **CDC_OPENING**: The CDC feature is being enabled.
-        # 
-        # - **TRANSFER**: Data is being migrated.
-        # 
-        # - **DATABASE_TRANSFER**: Data is being migrated.
-        # 
+        # - **COLD_EXPANDING**: Capacity cloud storage expansion in progress.
+        # - **MINOR_VERSION_TRANSING**: The minor version is being upgraded.
+        # - **RESIZING**: The nodes are being scaled up.
+        # - **SHRINKING**: The nodes are being scaled down.
+        # - **CLASS_CHANGING**: Instance specification upgrade or downgrade in progress.
+        # - **SSL_SWITCHING**: The SSL certificate is being changed.
+        # - **CDC_OPENING**: The data subscription feature is being enabled.
+        # - **TRANSFER**: Data migration in progress.
+        # - **DATABASE_TRANSFER**: Data is being migrated to the database.
         # - **GUARD_CREATING**: A disaster recovery instance is being created.
-        # 
-        # - **BACKUP_RECOVERING**: Data is being restored from a backup.
-        # 
-        # - **DATABASE_IMPORTING**: Data is being imported.
-        # 
-        # - **NET_MODIFYING**: The network type is being changed.
-        # 
-        # - **NET_SWITCHING**: The network is being switched.
-        # 
+        # - **BACKUP_RECOVERING**: The backup is being restored.
+        # - **DATABASE_IMPORTING**: Data import in progress.
+        # - **NET_MODIFYING**: The network is being modified.
+        # - **NET_SWITCHING**: The network is being switched between the internal network and the Internet.
         # - **NET_CREATING**: A network connection is being created.
-        # 
         # - **NET_DELETING**: A network connection is being deleted.
-        # 
         # - **DELETING**: The instance is being deleted.
-        # 
         # - **RESTARTING**: The instance is being restarted.
-        # 
-        # - **LOCKED**: The instance is locked.
+        # - **LOCKED**: The instance has expired and is locked.
         self.instance_status = instance_status
         # The storage capacity of the instance.
         self.instance_storage = instance_storage
-        # The disk type of the log nodes in the multi-zone instance. Valid values:
+        # The disk type of the log node for a multi-zone instance. Valid values:
         # 
-        # - **cloud_efficiency**: Standard.
-        # 
-        # - **cloud_ssd**: Performance.
+        # - **cloud_efficiency**: standard cloud storage.
+        # - **cloud_ssd**: performance cloud storage.
         self.log_disk_category = log_disk_category
-        # The number of log nodes in the multi-zone instance.
+        # The number of log nodes for a multi-zone instance.
         self.log_num = log_num
-        # The storage capacity of a single log node in the multi-zone instance.
+        # The disk capacity of a single log node for a multi-zone instance.
         self.log_single_storage = log_single_storage
-        # The specification of the log nodes in the multi-zone instance.
+        # The log node specifications for a multi-zone instance.
         self.log_spec = log_spec
-        # The end time of the maintenance window.
+        # The end time of the maintenance window. The time is displayed in the HH:mmZ format. UTC time is used.
         self.maintain_end_time = maintain_end_time
-        # The start time of the maintenance window.
+        # The start time of the maintenance window. The time is displayed in the HH:mmZ format. UTC time is used.
         self.maintain_start_time = maintain_start_time
-        # The combination of zones. For more information about the supported zone combinations, see the instance buy page.
+        # The multi-zone combination. You can go to the buy page to view the supported zone combinations. Valid values:
         # 
-        # - **ap-southeast-5abc-aliyun**: Indonesia (Jakarta) Zone A, B, and C.
-        # 
-        # - **cn-hangzhou-ehi-aliyun**: China (Hangzhou) Zone E, H, and I.
-        # 
-        # - **cn-beijing-acd-aliyun**: China (Beijing) Zone A, C, and D.
-        # 
-        # - **ap-southeast-1-abc-aliyun**: Singapore Zone A, B, and C.
-        # 
-        # - **cn-zhangjiakou-abc-aliyun**: China (Zhangjiakou) Zone A, B, and C.
-        # 
-        # - **cn-shanghai-efg-aliyun**: China (Shanghai) Zone E, F, and G.
-        # 
-        # - **cn-shanghai-abd-aliyun**: China (Shanghai) Zone A, B, and D.
-        # 
-        # - **cn-hangzhou-bef-aliyun**: China (Hangzhou) Zone B, E, and F.
-        # 
-        # - **cn-hangzhou-bce-aliyun**: China (Hangzhou) Zone B, C, and E.
-        # 
-        # - **cn-beijing-fgh-aliyun**: China (Beijing) Zone F, G, and H.
-        # 
-        # - **cn-shenzhen-abc-aliyun**: China (Shenzhen) Zone A, B, and C.
+        # - **ap-southeast-5abc-aliyun**: Indonesia (Jakarta) Zones A, B, and C.
+        # - **cn-hangzhou-ehi-aliyun**: China (Hangzhou) Zones E, H, and I.
+        # - **cn-beijing-acd-aliyun**: China (Beijing) Zones A, C, and D.
+        # - **ap-southeast-1-abc-aliyun**: Singapore Zones A, B, and C.
+        # - **cn-zhangjiakou-abc-aliyun**: China (Zhangjiakou) Zones A, B, and C.
+        # - **cn-shanghai-efg-aliyun**: China (Shanghai) Zones E, F, and G.
+        # - **cn-shanghai-abd-aliyun**: China (Shanghai) Zones A, B, and D.
+        # - **cn-hangzhou-bef-aliyun**: China (Hangzhou) Zones B, E, and F.
+        # - **cn-hangzhou-bce-aliyun**: China (Hangzhou) Zones B, C, and E.
+        # - **cn-beijing-fgh-aliyun**: China (Beijing) Zones F, G, and H.
+        # - **cn-shenzhen-abc-aliyun**: China (Shenzhen) Zones A, B, and C.
         self.multi_zone_combination = multi_zone_combination
         # The network type of the instance.
         self.network_type = network_type
         # The billing method of the instance. Valid values:
         # 
-        # - **PREPAY**: subscription
-        # 
-        # - **POSTPAY**: pay-as-you-go
+        # - **PREPAY**: subscription.
+        # - **POSTPAY**: pay-as-you-go.
         self.pay_type = pay_type
-        # The ID of the vSwitch in the primary zone for the multi-zone instance. The vSwitch must be deployed in the zone that is specified by `PrimaryZoneId`.
+        # The ID of the vSwitch in the primary zone for a multi-zone instance. The vSwitch must belong to the zone specified by PrimaryZoneId.
         self.primary_vswitch_id = primary_vswitch_id
-        # The primary zone ID of the multi-zone instance.
+        # The ID of the primary zone for a multi-zone instance.
         self.primary_zone_id = primary_zone_id
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The ID of the request.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The type of the instance. Valid values:
+        # The instance type. Valid values:
         # 
-        # - **lindorm**: a single-zone instance.
-        # 
-        # - **lindorm_multizone**: a multi-zone instance.
-        # 
-        # - **serverless_lindorm**: a serverless instance.
-        # 
-        # - **lindorm_standalone**: a single-node instance.
-        # 
-        # - **lts**: a Lindorm Tunnel Service (LTS) instance.
+        # - **lindorm**: Lindorm single-zone instance.
+        # - **lindorm_multizone**: Lindorm multi-zone instance.
+        # - **serverless_lindorm**: Lindorm Serverless instance.
+        # - **lindorm_standalone**: Lindorm single-node instance.
+        # - **lts**: Lindorm Tunnel Service.
         self.service_type = service_type
-        # The ID of the vSwitch in the secondary zone for the multi-zone instance. The vSwitch must be deployed in the zone that is specified by `StandbyZoneId`.
+        # The risk alert information for the single-zone deployment.
+        self.single_zone_risk_alert = single_zone_risk_alert
+        # The ID of the vSwitch in the secondary zone for a multi-zone instance. The vSwitch must belong to the zone specified by StandbyZoneId.
         self.standby_vswitch_id = standby_vswitch_id
-        # The secondary zone ID of the multi-zone instance.
+        # The ID of the secondary zone for a multi-zone instance.
         self.standby_zone_id = standby_zone_id
         # The ID of the virtual private cloud (VPC) to which the instance belongs.
         self.vpc_id = vpc_id
         # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -364,6 +310,8 @@ class GetLindormInstanceResponseBody(DaraModel):
             for v1 in self.engine_list:
                  if v1:
                     v1.validate()
+        if self.single_zone_risk_alert:
+            self.single_zone_risk_alert.validate()
 
     def to_map(self):
         result = dict()
@@ -530,6 +478,9 @@ class GetLindormInstanceResponseBody(DaraModel):
 
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
+
+        if self.single_zone_risk_alert is not None:
+            result['SingleZoneRiskAlert'] = self.single_zone_risk_alert.to_map()
 
         if self.standby_vswitch_id is not None:
             result['StandbyVSwitchId'] = self.standby_vswitch_id
@@ -712,6 +663,10 @@ class GetLindormInstanceResponseBody(DaraModel):
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
 
+        if m.get('SingleZoneRiskAlert') is not None:
+            temp_model = main_models.GetLindormInstanceResponseBodySingleZoneRiskAlert()
+            self.single_zone_risk_alert = temp_model.from_map(m.get('SingleZoneRiskAlert'))
+
         if m.get('StandbyVSwitchId') is not None:
             self.standby_vswitch_id = m.get('StandbyVSwitchId')
 
@@ -726,6 +681,61 @@ class GetLindormInstanceResponseBody(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class GetLindormInstanceResponseBodySingleZoneRiskAlert(DaraModel):
+    def __init__(
+        self,
+        confirm_date: str = None,
+        disposition_type: str = None,
+        need_alert: bool = None,
+        planned_completion_date: str = None,
+    ):
+        # The confirmation date for risk handling. The date is displayed in the yyyy-MM-dd format.
+        self.confirm_date = confirm_date
+        # The risk handling type for the single-zone deployment.
+        self.disposition_type = disposition_type
+        # Indicates whether a risk alert for the single-zone deployment is required.
+        self.need_alert = need_alert
+        # The planned completion date for risk handling. The date is displayed in the yyyy-MM-dd format.
+        self.planned_completion_date = planned_completion_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.confirm_date is not None:
+            result['ConfirmDate'] = self.confirm_date
+
+        if self.disposition_type is not None:
+            result['DispositionType'] = self.disposition_type
+
+        if self.need_alert is not None:
+            result['NeedAlert'] = self.need_alert
+
+        if self.planned_completion_date is not None:
+            result['PlannedCompletionDate'] = self.planned_completion_date
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfirmDate') is not None:
+            self.confirm_date = m.get('ConfirmDate')
+
+        if m.get('DispositionType') is not None:
+            self.disposition_type = m.get('DispositionType')
+
+        if m.get('NeedAlert') is not None:
+            self.need_alert = m.get('NeedAlert')
+
+        if m.get('PlannedCompletionDate') is not None:
+            self.planned_completion_date = m.get('PlannedCompletionDate')
 
         return self
 
@@ -748,39 +758,32 @@ class GetLindormInstanceResponseBodyEngineList(DaraModel):
         self.arbiter_core_count = arbiter_core_count
         # The number of engine nodes.
         self.core_count = core_count
-        # The number of vCPUs for the engine node.
+        # The number of CPUs for the engine node.
         self.cpu_count = cpu_count
-        # The type of the engine. Valid values:
+        # The engine type. Valid values:
         # 
-        # - **lindorm**: the wide table engine.
-        # 
-        # - **tsdb**: the time series engine.
-        # 
-        # - **solr**: the search engine.
-        # 
-        # - **store**: the file engine.
-        # 
-        # - **bds**: the LTS engine.
-        # 
-        # - **compute**: the compute engine.
+        # - **lindorm**: LindormTable.
+        # - **tsdb**: LindormTSDB.
+        # - **solr**: search engine.
+        # - **store**: file engine.
+        # - **bds**: Lindorm Tunnel Service engine.
+        # - **compute**: compute engine.
         self.engine = engine
         # Indicates whether the engine is of the latest version. Valid values:
-        # 
-        # - **true**: The engine is of the latest version.
-        # 
-        # - **false**: The engine is not of the latest version.
+        # - **true**: latest version.
+        # - **false**: not the latest version.
         self.is_last_version = is_last_version
-        # The latest version of the engine.
+        # The latest version number of the engine.
         self.latest_version = latest_version
         # The memory size of the engine node.
         self.memory_size = memory_size
         # The number of nodes in the primary zone.
         self.primary_core_count = primary_core_count
-        # The specification of the engine nodes.
+        # The engine node specifications.
         self.specification = specification
         # The number of nodes in the secondary zone.
         self.standby_core_count = standby_core_count
-        # The version of the engine.
+        # The version number of the engine.
         self.version = version
 
     def validate(self):
