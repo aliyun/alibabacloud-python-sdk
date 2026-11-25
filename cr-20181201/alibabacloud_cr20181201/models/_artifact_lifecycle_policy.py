@@ -12,8 +12,11 @@ class ArtifactLifecyclePolicy(DaraModel):
         filter: main_models.ArtifactLifecyclePolicyFilter = None,
         type: str = None,
     ):
+        # The retention conditions for artifact versions.
         self.condition = condition
+        # The filter conditions for artifact versions.
         self.filter = filter
+        # The type of the artifact version data retention policy.
         self.type = type
 
     def validate(self):
@@ -58,6 +61,7 @@ class ArtifactLifecyclePolicyFilter(DaraModel):
         self,
         tag_wildcard: str = None,
     ):
+        # The matching expression for the names of additionally retained artifact versions.
         self.tag_wildcard = tag_wildcard
 
     def validate(self):
@@ -89,8 +93,11 @@ class ArtifactLifecyclePolicyCondition(DaraModel):
         last_push_older_than_days: int = None,
         latest_tag_count: int = None,
     ):
+        # Retains artifact versions whose most recent pull time is within the specified number of days.
         self.last_pull_older_than_days = last_pull_older_than_days
+        # Retains artifact versions whose most recent push time is within the specified number of days.
         self.last_push_older_than_days = last_push_older_than_days
+        # The number of most recently pushed artifact versions to retain.
         self.latest_tag_count = latest_tag_count
 
     def validate(self):

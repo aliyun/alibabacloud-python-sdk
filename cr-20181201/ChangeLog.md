@@ -1,3 +1,6 @@
+2026-11-25 Version: 2.2.6
+- Generated python 2018-12-01 for cr.
+
 2026-09-16 Version: 2.2.5
 - Update API CreateArtifactLifecycleRule: add request parameters DryRun.
 - Update API CreateArtifactLifecycleRule: add request parameters EnableDeleteUntaggedManifest.

@@ -20,6 +20,7 @@ class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.endpoint_type = endpoint_type
+        # The list of public access whitelist entries to delete for the instance.
         self.entries = entries
         # The IP CIDR block.
         self.entry = entry
@@ -27,11 +28,11 @@ class DeleteInstanceEndpointAclPolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The module for which the access policy is set. Valid values:
+        # The module for which the access policy is configured. Valid values:
         # 
-        # - `Registry`: access to the image repository
+        # - `Registry`: Access to the image repository.
         # 
-        # - `Chart`: access to Helm Chart
+        # - `Chart`: Access to Helm Chart.
         self.module_name = module_name
 
     def validate(self):

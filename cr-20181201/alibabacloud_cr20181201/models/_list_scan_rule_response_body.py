@@ -18,19 +18,19 @@ class ListScanRuleResponseBody(DaraModel):
         scan_rules: List[main_models.ListScanRuleResponseBodyScanRules] = None,
         total_count: int = None,
     ):
-        # The HTTP status code
+        # The return code.
         self.code = code
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.is_success = is_success
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
         # Request Id
         self.request_id = request_id
         # The list of scan rules.
         self.scan_rules = scan_rules
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -111,28 +111,28 @@ class ListScanRuleResponseBodyScanRules(DaraModel):
         trigger_type: str = None,
         update_time: int = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The list of namespaces.
         self.namespaces = namespaces
         # The repository name.
         self.repo_names = repo_names
-        # The tag that triggers the scan matches the regular expression.
+        # The regular expression used to match tags that trigger a scan.
         self.repo_tag_filter_pattern = repo_tag_filter_pattern
         # The rule name.
         self.rule_name = rule_name
-        # The scan rule id.
+        # The scan rule ID.
         self.scan_rule_id = scan_rule_id
         # The scan scope.
         self.scan_scope = scan_scope
         # The scan type. Valid values:
         # 
-        # *   `VUL`: Products Cloud Security Scanner
-        # *   `SBOM`: Product Content Analysis
+        # - `VUL`: artifact vulnerability scanning.
+        # - `SBOM`: artifact content analysis.
         self.scan_type = scan_type
         # The trigger type.
         self.trigger_type = trigger_type
-        # The update time.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

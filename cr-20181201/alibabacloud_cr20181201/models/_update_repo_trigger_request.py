@@ -15,31 +15,31 @@ class UpdateRepoTriggerRequest(DaraModel):
         trigger_type: str = None,
         trigger_url: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the image repository.
+        # The image repository ID.
         # 
         # This parameter is required.
         self.repo_id = repo_id
-        # The ID of the trigger.
+        # The trigger ID.
         # 
         # This parameter is required.
         self.trigger_id = trigger_id
-        # The name of the trigger.
-        # 
-        # You can specify the TriggerName or TriggerUrl parameter. The TriggerName parameter is optional.
+        # The trigger name. This parameter is optional. You must specify either TriggerName or TriggerUrl.
         self.trigger_name = trigger_name
-        # The image tag based on which the trigger is set.
+        # The image version that triggers the trigger.
         self.trigger_tag = trigger_tag
-        # The type of the trigger. Valid values:
+        # The trigger type. Valid values:
         # 
-        # *   `ALL`: a trigger that supports both tags and regular expressions.
-        # *   `TAG_LISTTAG`: a tag-based trigger.
-        # *   `TAG_REG_EXP`: a regular expression-based trigger.
+        # - `ALL`: all.
+        # 
+        # - `TAG_LISTTAG`: tag list.
+        # 
+        # - `TAG_REG_EXP`: regular expression.
         self.trigger_type = trigger_type
-        # The URL of the trigger.
+        # The trigger URL.
         self.trigger_url = trigger_url
 
     def validate(self):

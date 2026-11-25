@@ -22,18 +22,19 @@ class ListRepoTagScanResultResponseBody(DaraModel):
         self.code = code
         # Indicates whether the request is successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request failed.
+        # - `true`: Success
+        # 
+        # - `false`: Failure
         self.is_success = is_success
-        # The number of the returned page.
+        # The page number of the scan result list.
         self.page_no = page_no
-        # The number of entries returned per page.
+        # The number of entries per page in the scan result list.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of vulnerabilities detected on images.
+        # The total number of scanned vulnerabilities.
         self.total_count = total_count
-        # The details about the detected vulnerabilities.
+        # The array of scanned vulnerabilities.
         self.vulnerabilities = vulnerabilities
 
     def validate(self):
@@ -117,34 +118,43 @@ class ListRepoTagScanResultResponseBodyVulnerabilities(DaraModel):
         version_fixed: str = None,
         version_format: str = None,
     ):
-        # The ID of the image layer where the vulnerability was detected.
+        # The image layer that introduced the vulnerability.
         self.added_by = added_by
-        # The name of the vulnerability.
+        # The vulnerability name.
         self.alias_name = alias_name
-        # The URL of the vulnerability.
+        # The vulnerability link.
         self.cve_link = cve_link
-        # The directory of the vulnerability.
+        # The vulnerability location.
         self.cve_location = cve_location
-        # The name of the vulnerability.
+        # The vulnerability name.
         self.cve_name = cve_name
-        # The description of the vulnerability.
+        # The vulnerability description.
         self.description = description
-        # The cause of the vulnerability.
+        # The feature that introduced the vulnerability.
         self.feature = feature
-        # The command used to fix the vulnerability.
+        # The vulnerability fix command.
         self.fix_cmd = fix_cmd
-        # The type of the vulnerability. Valid values:
+        # The vulnerability type. Valid values:
         # 
-        # *   `cve`: image system vulnerability
-        # *   `sca`: image application vulnerability
+        # - `cve`: System vulnerability
+        # 
+        # - `sca`: Application vulnerability
         self.scan_type = scan_type
-        # The severity of the vulnerability.
+        # The severity level of the scanned vulnerability. Valid values:
+        # 
+        # - `High`: High
+        # 
+        # - `Medium`: Medium
+        # 
+        # - `Low`: Low
+        # 
+        # - `Unknown`: Unknown
         self.severity = severity
-        # The version of the vulnerability.
+        # The vulnerability version.
         self.version = version
-        # The version where the vulnerability was fixed.
+        # The version that fixes the vulnerability.
         self.version_fixed = version_fixed
-        # The format of the vulnerability.
+        # The version format.
         self.version_format = version_format
 
     def validate(self):

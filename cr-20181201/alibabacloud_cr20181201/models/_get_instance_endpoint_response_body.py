@@ -19,21 +19,27 @@ class GetInstanceEndpointResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # Indicates whether the access control list (ACL) feature is enabled.
+        # Indicates whether the access control list (ACL) is enabled.
         self.acl_enable = acl_enable
-        # The ACLs.
+        # The list of ACL entries.
         self.acl_entries = acl_entries
         # The return value.
         self.code = code
-        # Domain names.
+        # The list of domain names.
         self.domains = domains
-        # Indicates whether the ACL feature is enabled.
+        # Indicates whether the access endpoint is enabled.
         self.enable = enable
         # Indicates whether the request is successful.
         self.is_success = is_success
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The status of the instance.
+        # The running status. Valid values:
+        # 
+        # `CREATING`: Creating.
+        # 
+        # `RUNNING`: Running.
+        # 
+        # `DELETING`: Deleting.
         self.status = status
 
     def validate(self):
@@ -121,12 +127,13 @@ class GetInstanceEndpointResponseBodyDomains(DaraModel):
         domain: str = None,
         type: str = None,
     ):
-        # The domain name that is used to access the Container Registry Enterprise Edition instance.
+        # The domain name used to access the Enterprise instance.
         self.domain = domain
-        # The type of the domain name. Valid values:
+        # The domain name type. Valid values:
         # 
-        # *   `SYSTEM`: a system domain name.
-        # *   `USER`: a user domain name.
+        # - `SYSTEM`: system domain name
+        # 
+        # - `USER`: user domain name
         self.type = type
 
     def validate(self):
@@ -161,9 +168,9 @@ class GetInstanceEndpointResponseBodyAclEntries(DaraModel):
         comment: str = None,
         entry: str = None,
     ):
-        # Remarks for public IP address whitelists.
+        # The comment for adding an Internet whitelist entry.
         self.comment = comment
-        # The public IP address whitelist.
+        # The CIDR block added to the Internet whitelist.
         self.entry = entry
 
     def validate(self):

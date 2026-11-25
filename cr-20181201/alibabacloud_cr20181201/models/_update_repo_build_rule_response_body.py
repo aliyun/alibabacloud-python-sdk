@@ -12,16 +12,15 @@ class UpdateRepoBuildRuleResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The ID of the building rule.
+        # The build rule ID.
         self.build_rule_id = build_rule_id
         # The return value.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # Specifies whether the contact is updated. Valid values:
+        # - `true`: The update is successful.
+        # - `false`: The update failed.
         self.is_success = is_success
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

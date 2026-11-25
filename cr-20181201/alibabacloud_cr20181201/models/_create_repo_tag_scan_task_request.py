@@ -24,14 +24,13 @@ class CreateRepoTagScanTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.repo_id = repo_id
-        # The scan engine type:
-        # 
-        # - `SAS_SCAN_SERVICE`: The cloud security scan engine. This is a paid service.
-        # 
-        # - `ACR_SCAN_SERVICE`: The ACR scan engine.
+        # The scan engine type. Valid values:
+        # - `SAS_SCAN_SERVICE`: Security Center scan engine (requires paid activation).
+        # - `ACR_SCAN_SERVICE`: ACR scan engine.
         self.scan_service = scan_service
+        # The image security scan type.
         self.scan_type = scan_type
-        # The image tag.
+        # The image version.
         # 
         # This parameter is required.
         self.tag = tag

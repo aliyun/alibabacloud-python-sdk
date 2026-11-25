@@ -30,17 +30,21 @@ class GetArtifactLifecycleRuleResponseBody(DaraModel):
         scope: str = None,
         tag_regexp: str = None,
     ):
-        # Indicates whether automatic execution is enabled.
+        # Indicates whether the rule is automatically executed.
         self.auto = auto
         # The return value.
         self.code = code
-        # The creation time. This value is a UNIX timestamp in milliseconds.
+        # The creation time. The value is a UNIX timestamp. Unit: milliseconds.
         self.create_time = create_time
+        # Indicates whether DryRun mode is enabled. When DryRun mode is enabled, only lifecycle task scanning is performed, and actual data cleanup is not executed. This mode is disabled by default.
         self.dry_run = dry_run
         # Indicates whether lifecycle management is enabled.
         # 
         # Only one of this parameter and EnableDeleteUntaggedManifest can be set to true.
         self.enable_delete_tag = enable_delete_tag
+        # Indicates whether artifact cleanup is enabled.
+        # 
+        # Only one of this parameter and EnableDeleteTag can be set to true.
         self.enable_delete_untagged_manifest = enable_delete_untagged_manifest
         # The instance ID.
         self.instance_id = instance_id
@@ -50,11 +54,11 @@ class GetArtifactLifecycleRuleResponseBody(DaraModel):
         # 
         # - `false`: The API call failed.
         self.is_success = is_success
-        # The last modification time. This value is a UNIX timestamp in milliseconds.
+        # The last modification time. The value is a UNIX timestamp. Unit: milliseconds.
         self.modified_time = modified_time
         # The namespace name.
         self.namespace_name = namespace_name
-        # The next execution time. This value is a UNIX timestamp in milliseconds.
+        # The next execution time. The value is a UNIX timestamp. Unit: milliseconds.
         self.next_time = next_time
         # The list of lifecycle policies.
         self.policies = policies
@@ -62,7 +66,7 @@ class GetArtifactLifecycleRuleResponseBody(DaraModel):
         self.repo_name = repo_name
         # The request ID.
         self.request_id = request_id
-        # The number of images to retain.
+        # The number of retained images.
         self.retention_tag_count = retention_tag_count
         # The rule ID.
         self.rule_id = rule_id
@@ -70,7 +74,7 @@ class GetArtifactLifecycleRuleResponseBody(DaraModel):
         self.schedule_time = schedule_time
         # The cleanup scope.
         self.scope = scope
-        # The regular expression used to match image versions to retain.
+        # The regular expression used to retain image versions.
         self.tag_regexp = tag_regexp
 
     def validate(self):

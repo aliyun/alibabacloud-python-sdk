@@ -17,23 +17,23 @@ class DiagnosisIssue(DaraModel):
         occurrence_count: int = None,
         solution: str = None,
     ):
-        # A unique code that identifies the issue type.
+        # The event code.
         self.code = code
-        # An object that contains additional, unstructured key-value information about the issue.
+        # The additional information.
         self.extra = extra
-        # The time, in ISO 8601 format, when the issue was first detected.
+        # The first occurrence time of the event.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.first_occurrence = first_occurrence
-        # The time, in ISO 8601 format, when the issue was last detected.
+        # The last occurrence time of the event.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.last_occurrence = last_occurrence
-        # Specifies the severity of the issue. Valid values are `INFO`, `WARN`, and `ERROR`.
+        # The event level.
         self.level = level
-        # The total number of times the issue has occurred.
+        # The number of occurrences of the event.
         self.occurrence_count = occurrence_count
-        # The recommended action to resolve the issue.
+        # The Solutions.
         self.solution = solution
 
     def validate(self):

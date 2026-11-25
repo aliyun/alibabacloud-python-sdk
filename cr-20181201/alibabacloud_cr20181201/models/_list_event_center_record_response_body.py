@@ -22,15 +22,15 @@ class ListEventCenterRecordResponseBody(DaraModel):
         self.code = code
         # Indicates whether the request is successful.
         self.is_success = is_success
-        # The page number of the returned page.
+        # The page number.
         self.page_no = page_no
-        # The number of entries returned per page.
+        # The page size.
         self.page_size = page_size
-        # The list of historical events.
+        # The event history list.
         self.records = records
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total entries of historical events.
+        # The total number of event history records.
         self.total_count = total_count
 
     def validate(self):
@@ -114,35 +114,37 @@ class ListEventCenterRecordResponseBodyRecords(DaraModel):
         tag: str = None,
         update_time: int = None,
     ):
-        # The time when the event was created.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # The event notification channel.
+        # The notification channel.
         self.event_channel = event_channel
-        # The ID of the event notification.
+        # The event ID of the downstream notification.
         self.event_notify_id = event_notify_id
         # The notification method. Valid values:
         # 
-        # *   `http`: The notification is sent over HTTP.
-        # *   `https`: The notification is sent over HTTPS.
-        # *   `dingding`: The notification is sent by using DingTalk.
+        # - `http`: HTTP notification.
+        # 
+        # - `https`: HTTPS notification.
+        # 
+        # - `dingding`: DingTalk notification.
         self.event_notify_method = event_notify_method
-        # The type of the event.
+        # The event type.
         self.event_type = event_type
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The namespace.
         self.namespace = namespace
-        # The ID of the event record.
+        # The event record ID.
         self.record_id = record_id
-        # The name of the image repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The ID of the event notification rule.
+        # The event rule ID.
         self.rule_id = rule_id
-        # The name of the event notification rule.
+        # The event rule name.
         self.rule_name = rule_name
-        # The tags.
+        # The label.
         self.tag = tag
-        # The time when the event was last updated.
+        # The update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

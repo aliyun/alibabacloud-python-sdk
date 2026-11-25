@@ -12,11 +12,11 @@ class CreateArtifactBuildRuleResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The ID of the accelerated image building rule.
+        # The ID of the build rule.
         self.build_rule_id = build_rule_id
         # The return value.
         self.code = code
-        # Indicates whether the request is successful.
+        # Indicates whether the operation was successful.
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id

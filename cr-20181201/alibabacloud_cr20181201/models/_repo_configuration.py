@@ -12,9 +12,14 @@ class RepoConfiguration(DaraModel):
         repo_type: str = None,
         tag_immutability: bool = None,
     ):
+        # The default parameters for the image build rule.
         self.artifact_build_rule_parameters = artifact_build_rule_parameters
+        # The type of the image repository for automatic creation. Valid values: PRIVATE (private repository) and PUBLIC (public repository).
+        # 
         # This parameter is required.
         self.repo_type = repo_type
+        # Specifies whether image version immutability is enabled. After it is enabled, you cannot overwrite image versions other than latest.
+        # 
         # This parameter is required.
         self.tag_immutability = tag_immutability
 
@@ -57,6 +62,8 @@ class RepoConfigurationArtifactBuildRuleParameters(DaraModel):
         self,
         image_index_only: bool = None,
     ):
+        # Specifies whether to build only the image index.
+        # 
         # This parameter is required.
         self.image_index_only = image_index_only
 

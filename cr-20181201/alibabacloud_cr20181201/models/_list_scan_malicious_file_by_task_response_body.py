@@ -18,22 +18,23 @@ class ListScanMaliciousFileByTaskResponseBody(DaraModel):
         scan_malicious_files: List[main_models.ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles] = None,
         total_count: int = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # Indicates whether the API request is successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
-        # *   `true`: successful
-        # *   `false`: failed
+        # - `true`: The API call was successful.
+        # 
+        # - `false`: The API call failed.
         self.is_success = is_success
-        # The page number. Default value: 1.
+        # The current page number of the queried data. You can specify this parameter to determine the page from which the queried data is returned. Default value: 1.
         self.page_no = page_no
         # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried malicious files.
+        # The list of malicious files.
         self.scan_malicious_files = scan_malicious_files
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -112,21 +113,21 @@ class ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles(DaraModel):
         scan_task_id: str = None,
         update_time: int = None,
     ):
-        # The time when the image was created.
+        # The creation time.
         self.create_time = create_time
-        # The path of the file.
+        # The file path.
         self.file_path = file_path
-        # The time when the image was first scanned.
+        # The time of the first scan.
         self.first_scan_time = first_scan_time
-        # The severity of the malicious file.
+        # The severity level.
         self.level = level
-        # The MD5 hash value of the malicious file.
+        # The MD5 hash of the malicious file.
         self.malicious_md_5 = malicious_md_5
-        # The type of the malicious file.
+        # The type of the malicious sample.
         self.malicious_name = malicious_name
         # The ID of the image scan task.
         self.scan_task_id = scan_task_id
-        # The time when the image was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

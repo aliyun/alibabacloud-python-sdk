@@ -18,13 +18,13 @@ class ListArtifactSubscriptionRuleResponseBody(DaraModel):
         rules: List[main_models.ListArtifactSubscriptionRuleResponseBodyRules] = None,
         total_count: int = None,
     ):
-        # The response code.
+        # The return code.
         self.code = code
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # - `true`: The request was successful.
+        # - `true`: The call was successful.
         # 
-        # - `false`: The request failed.
+        # - `false`: The call failed.
         self.is_success = is_success
         # The page number.
         self.page_no = page_no
@@ -32,7 +32,7 @@ class ListArtifactSubscriptionRuleResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The subscription rules.
+        # The list of rules.
         self.rules = rules
         # The total number of entries.
         self.total_count = total_count
@@ -118,36 +118,40 @@ class ListArtifactSubscriptionRuleResponseBodyRules(DaraModel):
         source_provider: str = None,
         source_repo_name: str = None,
         tag_count: int = None,
+        tag_list: List[str] = None,
         tag_regexp: str = None,
     ):
-        # Indicates whether to enable the accelerated subscription channel. This feature is in public preview. Based on an optimized scheduling policy and network link, the speed of image subscription is improved.
+        # Indicates whether the acceleration link is enabled. The subscription acceleration feature is in public preview and can improve image subscription speed based on scheduling policies and network link optimization.
         self.accelerate = accelerate
-        # The time when the rule was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the rule was last modified.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # The name of the namespace.
+        # The namespace name.
         self.namespace_name = namespace_name
-        # Indicates whether to overwrite the image.
+        # Specifies whether to overwrite images.
         self.override = override
-        # The operating system and architecture. If the source repository contains a multi-architecture image, only images that have a specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
+        # The operating system and architecture. If the source repository contains multi-architecture images, only the specified operating system and architecture are subscribed to the destination repository of the Enterprise instance.
         self.platform = platform
-        # The name of the repository.
+        # The repository name.
         self.repo_name = repo_name
         # The rule ID.
         self.rule_id = rule_id
+        # The domain name of the source image repository for the subscription rule.
         self.source_domain = source_domain
         # The source namespace.
         self.source_namespace_name = source_namespace_name
-        # The source of the artifact. Valid values:
+        # The artifact source.
         self.source_provider = source_provider
         # The source repository.
         self.source_repo_name = source_repo_name
         # The number of subscribed images.
         self.tag_count = tag_count
-        # The regular expression that is used to subscribe to the source repository.
+        # The list of subscribed tags.
+        self.tag_list = tag_list
+        # The image versions subscribed from the source repository. Regular expressions are supported.
         self.tag_regexp = tag_regexp
 
     def validate(self):
@@ -200,6 +204,9 @@ class ListArtifactSubscriptionRuleResponseBodyRules(DaraModel):
         if self.tag_count is not None:
             result['TagCount'] = self.tag_count
 
+        if self.tag_list is not None:
+            result['TagList'] = self.tag_list
+
         if self.tag_regexp is not None:
             result['TagRegexp'] = self.tag_regexp
 
@@ -248,6 +255,9 @@ class ListArtifactSubscriptionRuleResponseBodyRules(DaraModel):
 
         if m.get('TagCount') is not None:
             self.tag_count = m.get('TagCount')
+
+        if m.get('TagList') is not None:
+            self.tag_list = m.get('TagList')
 
         if m.get('TagRegexp') is not None:
             self.tag_regexp = m.get('TagRegexp')

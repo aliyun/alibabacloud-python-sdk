@@ -16,14 +16,14 @@ class ListScanRuleRequest(DaraModel):
         self.instance_id = instance_id
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The type of the vulnerability. Valid values:
+        # The vulnerability type. Valid values:
         # 
-        # *   `VUL`: Products Cloud Security Scanner.
-        # *   `SBOM`: Product Content Analysis.
+        # - `VUL`: artifact vulnerability scanning.
+        # - `SBOM`: artifact content analysis.
         # 
-        # Default value: `VUL`
+        # Default value: `VUL`.
         self.scan_type = scan_type
 
     def validate(self):

@@ -11,7 +11,7 @@ class UpdateRepositoryResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The return code.
+        # The return value.
         self.code = code
         # Indicates whether the request is successful.
         self.is_success = is_success

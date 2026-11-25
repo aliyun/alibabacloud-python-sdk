@@ -26,9 +26,9 @@ class GetArtifactBuildTaskResponseBody(DaraModel):
     ):
         # The artifact build type. Valid values:
         # 
-        # - `IMAGE_TO_ACCELERATED_IMAGE`: Accelerated image creation optimized for ACK scenarios.
+        # - `IMAGE_TO_ACCELERATED_IMAGE`: accelerated image optimized for ACK scenarios.
         # 
-        # - `IMAGE_TO_ECI_ACCELERATED_IMAGE`: Accelerated image artifact optimized for ECI scenarios.
+        # - `IMAGE_TO_ECI_ACCELERATED_IMAGE`: accelerated image artifact optimized for Elastic Container Instance (ECI) scenarios.
         self.artifact_build_type = artifact_build_type
         # The artifact compression parameters.
         self.artifact_compression = artifact_compression
@@ -40,8 +40,9 @@ class GetArtifactBuildTaskResponseBody(DaraModel):
         self.end_time = end_time
         # The reserved field list of the artifact build task. The list elements should be empty.
         self.instructions = instructions
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.is_success = is_success
+        # The task priority.
         self.priority = priority
         # The request ID.
         self.request_id = request_id
@@ -52,9 +53,9 @@ class GetArtifactBuildTaskResponseBody(DaraModel):
         # The target artifact.
         self.target_artifact = target_artifact
         # The artifact build status. Valid values:
-        # - `PENDING`: Scheduling in progress.
+        # - `PENDING`: Scheduling.
         # 
-        # - `BUILDING`: Building in progress.
+        # - `BUILDING`: Building.
         # 
         # - `SUCCESS`: Build succeeded.
         # 
@@ -170,15 +171,15 @@ class GetArtifactBuildTaskResponseBodyTargetArtifact(DaraModel):
         size: int = None,
         version: str = None,
     ):
-        # The artifact type. Only IMAGE is supported.
+        # The artifact type. Currently, only IMAGE is supported.
         self.artifact_type = artifact_type
         # The number of artifact layers.
         self.layer_count = layer_count
-        # The repository ID. Only image repositories are supported. The repository ID of the target artifact must be the same as that of the source artifact.
+        # The repository ID. Currently, only image repositories are supported. The repository ID of the target artifact must be the same as that of the source artifact.
         self.repo_id = repo_id
         # The artifact size, in bytes.
         self.size = size
-        # The artifact version. Only images are supported.
+        # The artifact version. Currently, only images are supported.
         self.version = version
 
     def validate(self):
@@ -234,15 +235,15 @@ class GetArtifactBuildTaskResponseBodySourceArtifact(DaraModel):
         size: int = None,
         version: str = None,
     ):
-        # The artifact type. Only IMAGE is supported.
+        # The artifact type. Currently, only IMAGE is supported.
         self.artifact_type = artifact_type
         # The number of artifact layers.
         self.layer_count = layer_count
-        # The repository ID. Only image repositories are supported.
+        # The repository ID. Currently, only image repositories are supported.
         self.repo_id = repo_id
         # The artifact size, in bytes.
         self.size = size
-        # The artifact version. Only image versions are supported.
+        # The artifact version. Currently, only image versions are supported.
         self.version = version
 
     def validate(self):
@@ -296,9 +297,9 @@ class GetArtifactBuildTaskResponseBodyArtifactCompression(DaraModel):
         squash_keep_layers: int = None,
         start_layer_digest: str = None,
     ):
-        # The operating system and architecture.
+        # The operating system/architecture.
         self.platform = platform
-        # The number of layers to retain after compression.
+        # The number of layers retained after compression.
         self.squash_keep_layers = squash_keep_layers
         # The digest of the starting layer for compression.
         self.start_layer_digest = start_layer_digest

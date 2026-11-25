@@ -18,22 +18,23 @@ class ListRepoBuildRecordResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The list of image building records.
+        # The list of build records.
         self.build_records = build_records
         # The return value.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the API call is successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The API call is successful.
+        # 
+        # - `false`: The API call failed.
         self.is_success = is_success
-        # The page number of the returned page.
+        # The page number.
         self.page_no = page_no
-        # The number of entries returned per page.
+        # The page size.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -109,15 +110,15 @@ class ListRepoBuildRecordResponseBodyBuildRecords(DaraModel):
         image: main_models.ListRepoBuildRecordResponseBodyBuildRecordsImage = None,
         start_time: str = None,
     ):
-        # The ID of the image building record.
+        # The build record ID.
         self.build_record_id = build_record_id
-        # The status of the image building.
+        # The build status.
         self.build_status = build_status
-        # The time when the image building ended.
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
-        # The information about the image.
+        # The image information.
         self.image = image
-        # The time when the image building started.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -174,13 +175,13 @@ class ListRepoBuildRecordResponseBodyBuildRecordsImage(DaraModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
-        # The tag of the image.
+        # The image tag.
         self.image_tag = image_tag
-        # The ID of the repository.
+        # The repository ID.
         self.repo_id = repo_id
-        # The name of the repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The name of the namespace to which the repository belongs.
+        # The repository namespace name.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):

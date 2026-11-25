@@ -20,17 +20,17 @@ class ListChartReleaseResponseBody(DaraModel):
     ):
         # The list of chart versions.
         self.chart_releases = chart_releases
-        # The return value.
+        # The return code.
         self.code = code
         # Indicates whether the request is successful.
         self.is_success = is_success
-        # The page number of the returned page.
+        # The page number.
         self.page_no = page_no
-        # The number of entries returned per page.
+        # The page size.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -108,19 +108,19 @@ class ListChartReleaseResponseBodyChartReleases(DaraModel):
         size: str = None,
         status: str = None,
     ):
-        # The name of the chart version.
+        # The chart version name.
         self.chart = chart
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The time when the chart was last modified.
+        # The time when the chart was last modified. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # The version number of the chart.
+        # The chart version number.
         self.release = release
-        # The ID of the chart repository.
+        # The chart repository ID.
         self.repo_id = repo_id
-        # The size of the chart of the version. Unit: bytes.
+        # The size of the chart version, in bytes.
         self.size = size
-        # The status of the chart.
+        # The status.
         self.status = status
 
     def validate(self):

@@ -15,13 +15,13 @@ class ListEventCenterRuleNameResponseBody(DaraModel):
         request_id: str = None,
         rule_names: List[main_models.ListEventCenterRuleNameResponseBodyRuleNames] = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
         # Indicates whether the request is successful.
         self.is_success = is_success
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The list of names of event notification rules.
+        # The list of event rule names.
         self.rule_names = rule_names
 
     def validate(self):
@@ -76,9 +76,9 @@ class ListEventCenterRuleNameResponseBodyRuleNames(DaraModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
-        # The ID of the event notification rule.
+        # The event rule ID.
         self.rule_id = rule_id
-        # The name of the event notification rule.
+        # The event rule name.
         self.rule_name = rule_name
 
     def validate(self):

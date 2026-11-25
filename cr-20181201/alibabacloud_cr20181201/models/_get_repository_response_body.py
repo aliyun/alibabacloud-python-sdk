@@ -24,46 +24,49 @@ class GetRepositoryResponseBody(DaraModel):
         summary: str = None,
         tag_immutability: bool = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # The time when the repository was created.
+        # The creation time, represented as a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The details of the repository.
+        # The detailed information.
         self.detail = detail
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.is_success = is_success
-        # The time when the repository was last modified.
+        # The last modification time, represented as a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # Indicates how the repository was created. Valid values:
+        # The repository build type. Valid values:
         # 
-        # *   `MANUAL`: The repository was manually created.
-        # *   `AUTO`: The repository was automatically created.
+        # - `MANUAL`: manually triggered build.
+        # 
+        # - `AUTO`: automatically triggered build.
         self.repo_build_type = repo_build_type
-        # The ID of the repository.
+        # The repository ID.
         self.repo_id = repo_id
-        # The name of the repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The name of the namespace.
+        # The namespace name.
         self.repo_namespace_name = repo_namespace_name
-        # The status of the repository.
+        # The repository status.
         self.repo_status = repo_status
-        # The type of the repository. Valid values:
+        # The repository type. Valid values:
         # 
-        # *   `PUBLIC`: public repository.
-        # *   `PRIVATE`: private repository.
+        # - `PUBLIC`: public repository.
+        # 
+        # - `PRIVATE`: private repository.
         self.repo_type = repo_type
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The summary of the repository.
+        # The summary information.
         self.summary = summary
-        # Indicates whether the feature of image tag immutability is enabled. Valid values:
+        # The image tag immutability setting. Valid values:
         # 
-        # *   `true`: The feature of image tag immutability is enabled.
-        # *   `false`: The feature of image tag immutability is disabled.
+        # - `true`: Enabled.
+        # 
+        # - `false`: Disabled.
         self.tag_immutability = tag_immutability
 
     def validate(self):

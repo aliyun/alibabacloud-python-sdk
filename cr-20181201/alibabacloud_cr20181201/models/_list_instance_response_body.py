@@ -18,7 +18,7 @@ class ListInstanceResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
         # The instance information.
         self.instances = instances
@@ -111,7 +111,7 @@ class ListInstanceResponseBodyInstances(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.ListInstanceResponseBodyInstancesTags] = None,
     ):
-        # The creation time.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
@@ -123,13 +123,13 @@ class ListInstanceResponseBodyInstances(DaraModel):
         self.instance_specification = instance_specification
         # The instance status.
         self.instance_status = instance_status
-        # The last modification time.
+        # The last modification time, in UNIX timestamp format. Unit: milliseconds.
         self.modified_time = modified_time
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags of the instance.
+        # The collection of instance tags.
         self.tags = tags
 
     def validate(self):

@@ -12,15 +12,15 @@ class CreateBuildRecordByRecordResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The ID of the image building record.
+        # The build record ID.
         self.build_record_id = build_record_id
-        # The HTTP status code. The status code 200 indicates that the request is successful.\\
-        # Other status codes indicate that the request failed.
+        # The return code of the API operation. A value of 200 indicates success. Other values indicate error codes.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The call was successful.
+        # 
+        # - `false`: The call failed.
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id

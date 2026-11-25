@@ -11,15 +11,15 @@ class GetRepoTagRequest(DaraModel):
         repo_id: str = None,
         tag: str = None,
     ):
-        # The return value of status code.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The operation that you want to perform. Set the value to **GetRepoTag**.
+        # The repository ID.
         # 
         # This parameter is required.
         self.repo_id = repo_id
-        # The number of milliseconds that have elapsed since the image was created.
+        # The repository tag.
         # 
         # This parameter is required.
         self.tag = tag

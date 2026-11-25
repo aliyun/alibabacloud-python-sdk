@@ -13,7 +13,7 @@ class UpdateChartRepositoryRequest(DaraModel):
         repo_type: str = None,
         summary: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -21,16 +21,16 @@ class UpdateChartRepositoryRequest(DaraModel):
         # 
         # This parameter is required.
         self.repo_name = repo_name
-        # The name of the namespace to which the repository belongs.
+        # The name of the repository namespace.
         # 
         # This parameter is required.
         self.repo_namespace_name = repo_namespace_name
-        # The type of the repository. Valid values:
+        # The repository type. Valid values:
+        # - `PUBLIC`: public repository
         # 
-        # *   `PUBLIC`: a public repository.
-        # *   `PRIVATE`: a private repository.
+        # - `PRIVATE`: private repository
         self.repo_type = repo_type
-        # The summary of the repository.
+        # The summary.
         self.summary = summary
 
     def validate(self):

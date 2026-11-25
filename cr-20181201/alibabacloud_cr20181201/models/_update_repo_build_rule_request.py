@@ -20,40 +20,37 @@ class UpdateRepoBuildRuleRequest(DaraModel):
         push_type: str = None,
         repo_id: str = None,
     ):
-        # Building arguments.
+        # The build parameters.
         self.build_args = build_args
-        # The ID of the building rule.
+        # The build rule ID.
         # 
         # This parameter is required.
         self.build_rule_id = build_rule_id
-        # The path of the Dockerfile.
+        # The path to the Dockerfile.
         self.dockerfile_location = dockerfile_location
         # The name of the Dockerfile.
         self.dockerfile_name = dockerfile_name
-        # The tag of the image.
+        # The image tag version.
         self.image_tag = image_tag
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Architecture for image building. Valid values:
-        # 
-        # *   `linux/amd64`
-        # *   `linux/arm64`
-        # *   `linux/386`
-        # *   `linux/arm/v7`
-        # *   `linux/arm/v6`
-        # 
-        # Default value: `linux/amd64`
+        # The architecture of the image to build. Valid values:
+        # - `linux/amd64`
+        # - `linux/arm64`
+        # - `linux/386`
+        # - `linux/arm/v7`
+        # - `linux/arm/v6`
+        # Default value: `linux/amd64`.
         self.platforms = platforms
-        # The name of the push that triggers the building rule.
+        # The trigger name.
         self.push_name = push_name
-        # The type of the push that triggers the building rule. Valid values:
-        # 
-        # *   `GIT_TAG`: tag push
-        # *   `GIT_BRANCH`: branch push
+        # The push type. Valid values:
+        # - `GIT_TAG`: Triggered by a tag.
+        # - `GIT_BRANCH`: Triggered by a branch.
         self.push_type = push_type
-        # The ID of the image repository.
+        # The image repository ID.
         # 
         # This parameter is required.
         self.repo_id = repo_id

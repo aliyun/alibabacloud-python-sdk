@@ -17,15 +17,15 @@ class CreateChainRequest(DaraModel):
         repo_namespace_name: str = None,
         scope_exclude: List[str] = None,
     ):
-        # The JSON-serialized entity object that describes the delivery chain.
+        # The entity object of the JSON-formatted delivery chain description.
         self.chain_config = chain_config
-        # The description of the delivery chain.
+        # The delivery chain description.
         self.description = description
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the delivery chain.
+        # The delivery chain name.
         # 
         # This parameter is required.
         self.name = name
@@ -33,7 +33,7 @@ class CreateChainRequest(DaraModel):
         self.repo_name = repo_name
         # The namespace name.
         self.repo_namespace_name = repo_namespace_name
-        # The collection of repositories excluded from the delivery chain execution.
+        # The set of repositories excluded from execution by the delivery chain.
         self.scope_exclude = scope_exclude
 
     def validate(self):

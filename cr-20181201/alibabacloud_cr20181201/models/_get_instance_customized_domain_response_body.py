@@ -24,7 +24,7 @@ class GetInstanceCustomizedDomainResponseBody(DaraModel):
         self.cert_id = cert_id
         # The return code.
         self.code = code
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The custom domain name.
         self.domain = domain
@@ -36,7 +36,7 @@ class GetInstanceCustomizedDomainResponseBody(DaraModel):
         self.instance_id = instance_id
         # Indicates whether the operation is successful.
         self.is_success = is_success
-        # The modification time.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
         # The custom module name.
         self.module_name = module_name

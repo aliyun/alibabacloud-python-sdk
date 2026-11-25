@@ -12,22 +12,23 @@ class CreateChartNamespaceRequest(DaraModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
-        # Specifies whether to automatically create repositories in the namespace. Valid values:
+        # Specifies whether automatic creation of a repository is enabled. Valid values:
         # 
-        # \\-`  true `: automatically creates repositories in the namespace.
+        # - `true`: Automatic creation of a repository is enabled.
         # 
-        # \\-`  false `: does not automatically create repositories in the namespace.
+        # - `false`: Automatic creation of a repository is disabled.
         self.auto_create_repo = auto_create_repo
         # The default repository type. Valid values:
         # 
-        # *   `PUBLIC`: a public repository
-        # *   `PRIVATE`: a private repository
+        # - `PUBLIC`: Public repository.
+        # 
+        # - `PRIVATE`: Private repository.
         self.default_repo_type = default_repo_type
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the namespace.
+        # The namespace name.
         # 
         # This parameter is required.
         self.namespace_name = namespace_name

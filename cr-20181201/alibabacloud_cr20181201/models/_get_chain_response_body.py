@@ -24,31 +24,31 @@ class GetChainResponseBody(DaraModel):
         scope_id: str = None,
         scope_type: str = None,
     ):
-        # Delivery chain configuration description
+        # The configuration of the delivery chain.
         self.chain_config = chain_config
-        # Delivery chain ID
+        # The delivery chain ID.
         self.chain_id = chain_id
-        # Return code
+        # The return code.
         self.code = code
-        # Delivery chain creation time
+        # The time when the delivery chain was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Delivery chain description
+        # The description of the delivery chain.
         self.description = description
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the operation succeeded
+        # Indicates whether the request was successful.
         self.is_success = is_success
-        # Updated At of the delivery chain description
+        # The time when the delivery chain description was last modified. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # Delivery chain name
+        # The name of the delivery chain.
         self.name = name
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Collection of repositories excluded from delivery chain execution
+        # The collection of repositories excluded from the delivery chain execution.
         self.scope_exclude = scope_exclude
-        # Delivery chain scope ID
+        # The scope ID of the delivery chain.
         self.scope_id = scope_id
-        # Delivery chain scope type
+        # The scope type of the delivery chain.
         self.scope_type = scope_type
 
     def validate(self):
@@ -154,19 +154,19 @@ class GetChainResponseBodyChainConfig(DaraModel):
         routers: List[main_models.GetChainResponseBodyChainConfigRouters] = None,
         version: str = None,
     ):
-        # Delivery chain configuration ID
+        # The configuration ID of the delivery chain.
         self.chain_config_id = chain_config_id
         # Indicates whether the delivery chain configuration is active. Valid values:
         # 
-        # - `true`: The configuration is active.
+        # - `true`: Active.
         # 
-        # - `false`: The configuration is not active.
+        # - `false`: Inactive.
         self.is_active = is_active
-        # Each edge zone in the delivery chain
+        # The nodes in the delivery chain.
         self.nodes = nodes
-        # Execution order relationships between edge zones in the delivery chain
+        # The execution order between delivery chain nodes.
         self.routers = routers
-        # Delivery chain version
+        # The version of the delivery chain.
         self.version = version
 
     def validate(self):
@@ -236,9 +236,9 @@ class GetChainResponseBodyChainConfigRouters(DaraModel):
         from_: main_models.GetChainResponseBodyChainConfigRoutersFrom_ = None,
         to: main_models.GetChainResponseBodyChainConfigRoutersTo = None,
     ):
-        # source edge zone
+        # The source node.
         self.from_ = from_
-        # destination edge zone
+        # The destination node.
         self.to = to
 
     def validate(self):
@@ -277,7 +277,7 @@ class GetChainResponseBodyChainConfigRoutersTo(DaraModel):
         self,
         node_name: str = None,
     ):
-        # destination edge zone name
+        # The name of the destination node.
         self.node_name = node_name
 
     def validate(self):
@@ -305,7 +305,7 @@ class GetChainResponseBodyChainConfigRoutersFrom(DaraModel):
         self,
         node_name: str = None,
     ):
-        # source edge zone name
+        # The name of the source node.
         self.node_name = node_name
 
     def validate(self):
@@ -335,15 +335,15 @@ class GetChainResponseBodyChainConfigNodes(DaraModel):
         node_config: main_models.GetChainResponseBodyChainConfigNodesNodeConfig = None,
         node_name: str = None,
     ):
-        # Indicates whether to enable the delivery chain edge zone. Valid values:
+        # Indicates whether the delivery chain node is enabled. Valid values:
         # 
-        # - `true`: Enable the delivery chain edge zone.
+        # - `true`: Enabled.
         # 
-        # - `false`: Do not enable the delivery chain edge zone.
+        # - `false`: Disabled.
         self.enable = enable
-        # Delivery chain edge zone configuration
+        # The configuration of the delivery chain node.
         self.node_config = node_config
-        # Delivery chain edge zone name
+        # The name of the delivery chain node.
         self.node_name = node_name
 
     def validate(self):
@@ -388,16 +388,16 @@ class GetChainResponseBodyChainConfigNodesNodeConfig(DaraModel):
         scan_engine: str = None,
         timeout: int = None,
     ):
-        # Deny rules for scan nodes in the delivery chain
+        # The blocking policy for the scan node in the delivery chain.
         self.deny_policy = deny_policy
-        # Retry Count
+        # The number of retries.
         self.retry = retry
-        # Scan engine for the delivery chain node  
+        # The scan engine of the delivery chain scan node. Valid values:
         # 
-        # - `SAS_SCAN_SERVICE`, Security Center scan engine (requires paid activation)  
-        # - `ACR_SCAN_SERVICE`, ACR scan engine
+        # - `SAS_SCAN_SERVICE`: Security Center scan engine (requires paid activation).
+        # - `ACR_SCAN_SERVICE`: ACR scan engine.
         self.scan_engine = scan_engine
-        # Timeout (in seconds)
+        # The timeout period, in seconds.
         self.timeout = timeout
 
     def validate(self):
@@ -451,25 +451,25 @@ class GetChainResponseBodyChainConfigNodesNodeConfigDenyPolicy(DaraModel):
         logic: str = None,
         malicious_list: str = None,
     ):
-        # Deny action. Valid values:
+        # The blocking action. Valid values:
         # 
-        # - `BLOCK`: Block further execution of the delivery chain
+        # - `BLOCK`: Blocks the delivery chain from continuing execution.
         # 
-        # - `BLOCK_RETAG`: Block overwriting and pushing image tags
+        # - `BLOCK_RETAG`: Blocks and overwrites the pushed image tag.
         # 
-        # - `BLOCK_DELETE_TAG`: Block deleting image tags
+        # - `BLOCK_DELETE_TAG`: Blocks and deletes the image tag.
         self.action = action
-        # Collection of baseline samples to block. Separate multiple baseline sample names with commas.
+        # The collection of baseline samples to block. Separate multiple baseline sample names with commas (,).
         self.baseline_list = baseline_list
-        # Number of scanned vulnerabilities that triggers a block
+        # The number of vulnerabilities that triggers blocking.
         self.issue_count = issue_count
-        # The vulnerability Level at which blocking is triggered during a scan
+        # The vulnerability severity level that triggers blocking.
         self.issue_level = issue_level
-        # Collection of CVE vulnerabilities to block. Separate multiple CVE vulnerability names with commas.
+        # The collection of CVE vulnerabilities to block. Separate multiple CVE vulnerability names with commas (,).
         self.issue_list = issue_list
-        # The logic that triggers blocking upon scan detection
+        # The logic that triggers blocking during scanning.
         self.logic = logic
-        # The collection of malicious samples to block, with multiple sample names separated by commas
+        # The collection of malicious samples to block. Separate multiple malicious sample names with commas (,).
         self.malicious_list = malicious_list
 
     def validate(self):

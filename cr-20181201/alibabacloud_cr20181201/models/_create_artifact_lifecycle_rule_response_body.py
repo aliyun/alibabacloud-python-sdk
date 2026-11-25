@@ -12,12 +12,13 @@ class CreateArtifactLifecycleRuleResponseBody(DaraModel):
         request_id: str = None,
         rule_id: str = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The call was successful.
+        # 
+        # - `false`: The call failed.
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id

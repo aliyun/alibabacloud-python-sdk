@@ -26,37 +26,38 @@ class GetArtifactSubscriptionRuleResponseBody(DaraModel):
         source_provider: str = None,
         source_repo_name: str = None,
         tag_count: int = None,
+        tag_list: List[str] = None,
         tag_regexp: str = None,
     ):
-        # Indicates whether to enable the accelerated data transfer feature. This feature is in public preview. It optimizes scheduling policies and network paths to improve the speed of artifact subscription.
+        # Specifies whether to enable link acceleration. The subscription acceleration feature is in public preview and can improve image subscription speed through scheduling policies and network link optimization.
         self.accelerate = accelerate
         # The return code.
         self.code = code
-        # The time when the rule was created.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
-        # - `true`: The request succeeded.
+        # - `true`: The API call was successful.
         # 
-        # - `false`: The request failed.
+        # - `false`: The API call failed.
         self.is_success = is_success
-        # The time when the rule was last modified.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # The destination ACR namespace.
+        # The ACR namespace.
         self.namespace_name = namespace_name
-        # Indicates whether to overwrite the existing images that have the same tag in the destination repository.
+        # Specifies whether to overwrite images.
         self.override = override
-        # The operating systems and architectures. If a source repository contains multi-architecture images, only images that match the specified platforms are synchronized to the destination repository of the Enterprise Edition instance.
+        # The operating system and architecture. If the source repository contains multi-architecture images, only images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise instance.
         self.platform = platform
-        # The destination ACR repository.
+        # The ACR repository.
         self.repo_name = repo_name
         # The request ID.
         self.request_id = request_id
         # The rule ID.
         self.rule_id = rule_id
-        # The domain name of the artifact source.
+        # The domain name of the source image repository for the subscription rule.
         self.source_domain = source_domain
         # The source namespace.
         self.source_namespace_name = source_namespace_name
@@ -64,9 +65,11 @@ class GetArtifactSubscriptionRuleResponseBody(DaraModel):
         self.source_provider = source_provider
         # The source repository.
         self.source_repo_name = source_repo_name
-        # The number of images to subscribe to.
+        # The number of subscribed images.
         self.tag_count = tag_count
-        # The regular expression that is used to match the tags of images in the source repository for subscription.
+        # The list of subscribed tags.
+        self.tag_list = tag_list
+        # The image versions in the source repository to subscribe to. Regular expressions are supported.
         self.tag_regexp = tag_regexp
 
     def validate(self):
@@ -128,6 +131,9 @@ class GetArtifactSubscriptionRuleResponseBody(DaraModel):
         if self.tag_count is not None:
             result['TagCount'] = self.tag_count
 
+        if self.tag_list is not None:
+            result['TagList'] = self.tag_list
+
         if self.tag_regexp is not None:
             result['TagRegexp'] = self.tag_regexp
 
@@ -185,6 +191,9 @@ class GetArtifactSubscriptionRuleResponseBody(DaraModel):
 
         if m.get('TagCount') is not None:
             self.tag_count = m.get('TagCount')
+
+        if m.get('TagList') is not None:
+            self.tag_list = m.get('TagList')
 
         if m.get('TagRegexp') is not None:
             self.tag_regexp = m.get('TagRegexp')

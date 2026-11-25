@@ -15,16 +15,15 @@ class ListRepoTriggerResponseBody(DaraModel):
         request_id: str = None,
         triggers: List[main_models.ListRepoTriggerResponseBodyTriggers] = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
-        # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # Indicates whether the API call was successful. Valid values:
+        # - `true`: The API call was successful.
+        # - `false`: The API call failed.
         self.is_success = is_success
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The triggers of the repository.
+        # The list of triggers.
         self.triggers = triggers
 
     def validate(self):
@@ -83,22 +82,20 @@ class ListRepoTriggerResponseBodyTriggers(DaraModel):
         trigger_type: str = None,
         trigger_url: str = None,
     ):
-        # The type of the event that activates the trigger. Valid values:
-        # 
-        # *   `BUILD_SUCCESS`: The trigger is activated when an image building task is successful.
-        # *   `BUILD_Fail`: The trigger is activated when an image building task fails.
+        # The event type of the trigger. Valid values:
+        # - `BUILD_SUCCESS`: The trigger was successful.
+        # - `BUILD_Fail`: The trigger failed.
         self.repo_event = repo_event
         # The ID of the trigger.
         self.trigger_id = trigger_id
         # The name of the trigger.
         self.trigger_name = trigger_name
-        # The image tag based on which the trigger is set.
+        # The image version that triggers the trigger.
         self.trigger_tag = trigger_tag
-        # The type of the trigger. Valid values:
-        # 
-        # *   `ALL`: a trigger that supports both tags and regular expressions.
-        # *   `TAG_LISTTAG`: a tag-based trigger.
-        # *   `TAG_REG_EXP`: a regular expression-based trigger.
+        # The trigger type. Valid values:
+        # - `ALL`: All.
+        # - `TAG_LISTTAG`: Tag list.
+        # - `TAG_REG_EXP`: Regular expression.
         self.trigger_type = trigger_type
         # The URL of the trigger.
         self.trigger_url = trigger_url

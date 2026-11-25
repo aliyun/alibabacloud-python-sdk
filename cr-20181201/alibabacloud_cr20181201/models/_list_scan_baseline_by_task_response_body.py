@@ -18,12 +18,12 @@ class ListScanBaselineByTaskResponseBody(DaraModel):
         scan_baselines: List[main_models.ListScanBaselineByTaskResponseBodyScanBaselines] = None,
         total_count: int = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # Indicates whether the API request was successful. Valid values:
+        # Indicates whether the API call is successful. Valid values:
         # 
-        # *   `true`: successful
-        # *   `false`: failed
+        # - `true`: The API call is successful.
+        # - `false`: The API call failed.
         self.is_success = is_success
         # The page number.
         self.page_no = page_no
@@ -31,9 +31,9 @@ class ListScanBaselineByTaskResponseBody(DaraModel):
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The scanned baseline risks.
+        # The baseline list.
         self.scan_baselines = scan_baselines
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -119,35 +119,35 @@ class ListScanBaselineByTaskResponseBodyScanBaselines(DaraModel):
         scan_task_id: str = None,
         update_time: int = None,
     ):
-        # The category to which the baseline risk belongs.
+        # The baseline check category.
         self.baseline_class_alias = baseline_class_alias
-        # Suggestions about how to fix the baseline risk.
+        # The baseline check remediation suggestion.
         self.baseline_detail_advice = baseline_detail_advice
-        # The description of the baseline risk.
+        # The baseline description.
         self.baseline_detail_description = baseline_detail_description
-        # The path and content of the baseline risk.
+        # The baseline check path and content.
         self.baseline_detail_prompt = baseline_detail_prompt
-        # The number of baseline risks.
+        # The number of baseline check items.
         self.baseline_item_count = baseline_item_count
-        # The name of the baseline risk.
+        # The baseline check name.
         self.baseline_name_alias = baseline_name_alias
-        # The key of the baseline name.
+        # The baseline name key.
         self.baseline_name_key = baseline_name_key
-        # The severity of the baseline risk.
+        # The baseline check risk level.
         self.baseline_name_level = baseline_name_level
-        # The creation time.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
         # The time of the first scan.
         self.first_scan_time = first_scan_time
-        # High risk quantity.
+        # The number of high-risk items.
         self.high_risk_item_count = high_risk_item_count
-        # Low risk quantity.
+        # The number of low-risk items.
         self.low_risk_item_count = low_risk_item_count
-        # Medium risk quantity.
+        # The number of medium-risk items.
         self.middle_risk_item_count = middle_risk_item_count
-        # The ID of the image scan task.
+        # The image scan task ID.
         self.scan_task_id = scan_task_id
-        # The update time.
+        # The update time, in UNIX timestamp format. Unit: milliseconds.
         self.update_time = update_time
 
     def validate(self):

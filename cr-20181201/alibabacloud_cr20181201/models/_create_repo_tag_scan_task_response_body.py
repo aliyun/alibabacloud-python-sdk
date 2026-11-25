@@ -11,11 +11,11 @@ class CreateRepoTagScanTaskResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The return code.
+        # The return value.
         self.code = code
-        # Indicates whether the API call succeeded. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
-        # - `true`: The API call succeeded.
+        # - `true`: The API call was successful.
         # 
         # - `false`: The API call failed.
         self.is_success = is_success

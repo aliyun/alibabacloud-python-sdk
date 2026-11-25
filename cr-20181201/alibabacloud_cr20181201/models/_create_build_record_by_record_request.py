@@ -11,7 +11,7 @@ class CreateBuildRecordByRecordRequest(DaraModel):
         instance_id: str = None,
         repo_id: str = None,
     ):
-        # The ID of the image building record.
+        # The build record ID.
         # 
         # This parameter is required.
         self.build_record_id = build_record_id
@@ -19,7 +19,7 @@ class CreateBuildRecordByRecordRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the image repository.
+        # The image repository ID.
         # 
         # This parameter is required.
         self.repo_id = repo_id

@@ -13,9 +13,9 @@ class CreateArtifactBuildRuleShrinkRequest(DaraModel):
         scope_id: str = None,
         scope_type: str = None,
     ):
-        # The type of the artifact.
+        # The type of the accelerated image. Valid values:
         # 
-        # *   `ACCELERATED_IMAGE`: accelerated images.
+        # - `ACCELERATED_IMAGE`: accelerated image.
         # 
         # This parameter is required.
         self.artifact_type = artifact_type
@@ -23,17 +23,16 @@ class CreateArtifactBuildRuleShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Additional parameters.
+        # The additional parameters.
         self.parameters_shrink = parameters_shrink
-        # The ID of the effective range of the rule.
+        # The ID of the scope in which the rule takes effect. Valid values:
         # 
-        # *   Set the value to the ID of the image repository.
+        # - The ID of the image repository.
         # 
         # This parameter is required.
         self.scope_id = scope_id
-        # The effective range of the rule. Valid values:
-        # 
-        # *   `REPOSITORY`
+        # The scope in which the rule takes effect. Valid values:
+        # - `REPOSITORY`: repository level.
         # 
         # This parameter is required.
         self.scope_type = scope_type

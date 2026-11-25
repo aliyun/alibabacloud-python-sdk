@@ -12,17 +12,17 @@ class ListRepoBuildRecordLogRequest(DaraModel):
         offset: int = None,
         repo_id: str = None,
     ):
-        # The ID of the image building record.
+        # The build record ID.
         # 
         # This parameter is required.
         self.build_record_id = build_record_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The offset of log lines.
+        # The log line offset.
         self.offset = offset
-        # The ID of the image repository.
+        # The image repository ID.
         self.repo_id = repo_id
 
     def validate(self):

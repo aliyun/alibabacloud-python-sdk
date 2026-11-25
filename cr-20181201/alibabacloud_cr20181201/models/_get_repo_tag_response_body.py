@@ -18,28 +18,29 @@ class GetRepoTagResponseBody(DaraModel):
         status: str = None,
         tag: str = None,
     ):
-        # The ID of the image.
+        # The return code.
         self.code = code
-        # The size of the image. Unit: Bytes.
+        # The digest value.
         self.digest = digest
-        # crr-tquyps22md8p****
+        # The time when the image was created.
         self.image_create = image_create
-        # Image ID
+        # The image ID.
         self.image_id = image_id
-        # The number of milliseconds that have elapsed since the image was last updated.
+        # The size of the image.
         self.image_size = image_size
-        # The ID of the request.
+        # The time when the image was last updated. This value is a UNIX timestamp in milliseconds.
         self.image_update = image_update
+        # Indicates whether the request was successful.
+        self.is_success = is_success
+        # The request ID.
+        self.request_id = request_id
         # The status of the image. Valid values:
         # 
-        # *   `NORMAL`: The image is normal.
-        # *   `DELETING`: The image is being deleted.
-        self.is_success = is_success
-        # 1.0
-        self.request_id = request_id
-        # The ID of the instance.
+        # - `NORMAL`: Normal.
+        # 
+        # - `DELETING`: The image is being deleted.
         self.status = status
-        # The version of the repository.
+        # The repository tag.
         self.tag = tag
 
     def validate(self):

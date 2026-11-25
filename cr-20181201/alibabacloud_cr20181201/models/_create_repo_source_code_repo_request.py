@@ -16,38 +16,41 @@ class CreateRepoSourceCodeRepoRequest(DaraModel):
         oversea_build: bool = None,
         repo_id: str = None,
     ):
-        # Specifies whether to trigger image building when source code is committed. Valid values:
+        # Specifies whether to enable automatic building. Valid values:
         # 
-        # *   `true`: triggers image building when source code is committed.
-        # *   `false`: does not trigger image building when source code is committed.
+        # - `true`: enables automatic building.
+        # 
+        # - `false`: disables automatic building.
         self.auto_build = auto_build
         # The name of the source code repository.
         # 
         # This parameter is required.
         self.code_repo_name = code_repo_name
-        # The namespace to which the source code repository belongs.
+        # The namespace name of the source code repository.
         # 
         # This parameter is required.
         self.code_repo_namespace_name = code_repo_namespace_name
-        # The type of the source code hosting platform. Valid values: `GITHUB`, `GITLAB`, `GITEE`, `CODE`, and `CODEUP`.
+        # The type of the source code platform. Valid values: `GITHUB`, `GITLAB`, `GITEE`, `CODE`, and `CODEUP`.
         # 
         # This parameter is required.
         self.code_repo_type = code_repo_type
-        # Specifies whether to disable building caches. Valid values:
+        # Specifies whether to disable the build cache. Valid values:
         # 
-        # *   `true`: disables building caches.
-        # *   `false`: enables building caches.
+        # - `true`: disables the build cache.
+        # 
+        # - `false`: enables the build cache.
         self.disable_cache_build = disable_cache_build
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # Specifies whether to enable Build With Servers Deployed Outside Chinese Mainland. Valid values:
+        # Specifies whether to enable intelligent build acceleration for overseas sources. Valid values:
         # 
-        # *   `true`: enables Build With Servers Deployed Outside Chinese Mainland.
-        # *   `false`: does not enable Build With Servers Deployed Outside Chinese Mainland.
+        # - `true`: enables intelligent build acceleration for overseas sources.
+        # 
+        # - `false`: disables intelligent build acceleration for overseas sources.
         self.oversea_build = oversea_build
-        # The ID of the image repository.
+        # The image repository ID.
         # 
         # This parameter is required.
         self.repo_id = repo_id

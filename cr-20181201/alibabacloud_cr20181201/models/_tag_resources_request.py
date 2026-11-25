@@ -15,19 +15,19 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
-        # The region ID of the resources.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can specify a maximum of 20 resource IDs.
+        # The resource IDs. You can specify up to 20 resources.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The type of the resource. Instance resources are supported.
+        # The resource type. Currently supports Instance resources.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag list.
+        # The tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -86,11 +86,11 @@ class TagResourcesRequestTag(DaraModel):
     ):
         # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # A tag key can be up to 128 characters in length. It cannot start with acs: or aliyun, and cannot contain http:// or https://.
+        # A tag key can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
         self.key = key
         # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # A tag value can be up to 128 characters in length. It cannot start with acs: or aliyun, and cannot contain http:// or https://.
+        # A tag value can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
         self.value = value
 
     def validate(self):

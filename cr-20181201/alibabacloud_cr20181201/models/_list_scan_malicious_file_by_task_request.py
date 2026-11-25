@@ -16,21 +16,21 @@ class ListScanMaliciousFileByTaskRequest(DaraModel):
         scan_task_id: str = None,
         tag: str = None,
     ):
-        # The image digest.
+        # The digest of the image.
         self.digest = digest
         # The instance ID.
         self.instance_id = instance_id
-        # The severity of the malicious file.
+        # The severity level of the malicious file.
         self.level = level
         # The page number.
         self.page_no = page_no
-        # The number of entries per page. Maximum value: 100. If you specify a value greater than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
+        # The number of entries to return on each page. Maximum value: 100. If the value that you specify exceeds 100, the system returns a parameter error or uses 100 as the maximum number of entries to return.
         self.page_size = page_size
-        # The image repository ID.
+        # The ID of the image repository.
         self.repo_id = repo_id
         # The ID of the image scan task.
         self.scan_task_id = scan_task_id
-        # The image tag.
+        # The image version.
         self.tag = tag
 
     def validate(self):

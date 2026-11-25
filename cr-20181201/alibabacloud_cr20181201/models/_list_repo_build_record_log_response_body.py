@@ -18,19 +18,19 @@ class ListRepoBuildRecordLogResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The log content of the image building record.
+        # The build log content.
         self.build_record_logs = build_record_logs
         # The return value.
         self.code = code
         # Indicates whether the request is successful.
         self.is_success = is_success
-        # The page number of the returned page.
+        # The page number.
         self.page_no = page_no
-        # The number of entries returned per page.
+        # The number of log entries displayed per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -104,11 +104,11 @@ class ListRepoBuildRecordLogResponseBodyBuildRecordLogs(DaraModel):
         line_number: int = None,
         message: str = None,
     ):
-        # The stage of the building that is recorded in the log entry.
+        # The build stage of the log entry.
         self.build_stage = build_stage
         # The line number of the log entry.
         self.line_number = line_number
-        # The content of the log.
+        # The log content.
         self.message = message
 
     def validate(self):

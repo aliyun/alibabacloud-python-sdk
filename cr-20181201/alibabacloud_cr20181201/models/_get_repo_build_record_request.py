@@ -10,11 +10,11 @@ class GetRepoBuildRecordRequest(DaraModel):
         build_record_id: str = None,
         instance_id: str = None,
     ):
-        # The ID of the image building record.
+        # The build record ID.
         # 
         # This parameter is required.
         self.build_record_id = build_record_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

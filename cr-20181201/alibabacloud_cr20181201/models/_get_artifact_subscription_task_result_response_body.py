@@ -18,12 +18,13 @@ class GetArtifactSubscriptionTaskResultResponseBody(DaraModel):
         task_results: List[main_models.GetArtifactSubscriptionTaskResultResponseBodyTaskResults] = None,
         total_count: int = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Specifies whether the call was successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The call was successful.
+        # 
+        # - `false`: The call failed.
         self.is_success = is_success
         # The page number.
         self.page_no = page_no
@@ -31,9 +32,9 @@ class GetArtifactSubscriptionTaskResultResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The result of the artifact subscription task.
+        # The image task results.
         self.task_results = task_results
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -105,6 +106,7 @@ class GetArtifactSubscriptionTaskResultResponseBodyTaskResults(DaraModel):
         self,
         end_time: int = None,
         instance_id: str = None,
+        message: str = None,
         namespace_name: str = None,
         repo_name: str = None,
         result: str = None,
@@ -113,19 +115,21 @@ class GetArtifactSubscriptionTaskResultResponseBodyTaskResults(DaraModel):
         tag: str = None,
         task_id: str = None,
     ):
-        # The end time of the subscription task.
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
-        # The name of the namespace.
+        # The error message returned when the task fails.
+        self.message = message
+        # The namespace.
         self.namespace_name = namespace_name
-        # The name of the repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The result of the task.
+        # The result.
         self.result = result
-        # The start time of the subscription task.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The status of the task.
+        # The task status.
         self.status = status
         # The image tag.
         self.tag = tag
@@ -145,6 +149,9 @@ class GetArtifactSubscriptionTaskResultResponseBodyTaskResults(DaraModel):
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+
+        if self.message is not None:
+            result['Message'] = self.message
 
         if self.namespace_name is not None:
             result['NamespaceName'] = self.namespace_name
@@ -176,6 +183,9 @@ class GetArtifactSubscriptionTaskResultResponseBodyTaskResults(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
 
         if m.get('NamespaceName') is not None:
             self.namespace_name = m.get('NamespaceName')

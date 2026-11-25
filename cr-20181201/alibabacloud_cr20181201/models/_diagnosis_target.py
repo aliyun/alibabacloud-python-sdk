@@ -17,23 +17,23 @@ class DiagnosisTarget(DaraModel):
         start_time: str = None,
         tag: str = None,
     ):
-        # The end of the diagnostic time window, in ISO 8601 format. Must be after `StartTime`.
+        # The end time of the diagnostic.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.end_time = end_time
-        # A map of key-value pairs providing additional context for the diagnosis.
+        # The extra parameters.
         self.extra = extra
-        # The namespace that contains the repository.
+        # The namespace name.
         self.namespace = namespace
-        # The ID of a related operation, such as a previous diagnostic task.
+        # The ID of the diagnosed item.
         self.related_id = related_id
-        # The name of the repository.
+        # The repository name.
         self.repository = repository
-        # The start of the diagnostic time window, in ISO 8601 format.
+        # The start time of the diagnostic.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.start_time = start_time
-        # The container image tag.
+        # The image tag.
         self.tag = tag
 
     def validate(self):

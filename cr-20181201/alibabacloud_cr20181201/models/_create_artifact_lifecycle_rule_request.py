@@ -19,27 +19,33 @@ class CreateArtifactLifecycleRuleRequest(DaraModel):
         scope: str = None,
         tag_regexp: str = None,
     ):
-        # Specify whether to automatically execute the lifecycle management rule.
+        # Specifies whether to automatically execute the rule.
         self.auto = auto
+        # Specifies whether to enable DryRun mode. If DryRun mode is enabled, only the lifecycle task scan is performed and no actual data cleanup is executed. This mode is disabled by default.
         self.dry_run = dry_run
-        # Specify whether to enable lifecycle management for the artifact.
+        # Specifies whether to enable lifecycle management.
+        # 
+        # Only one of this parameter and EnableDeleteUntaggedManifest can be set to true.
         self.enable_delete_tag = enable_delete_tag
+        # Specifies whether to enable artifact cleanup.
+        # 
+        # Only one of this parameter and EnableDeleteTag can be set to true.
         self.enable_delete_untagged_manifest = enable_delete_untagged_manifest
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the namespace.
+        # The namespace name.
         self.namespace_name = namespace_name
-        # The name of the image repository.
+        # The image repository name.
         self.repo_name = repo_name
-        # The number of images that you want to retain.
+        # The number of images to retain.
         self.retention_tag_count = retention_tag_count
-        # The execution cycle of the lifecycle management rule.
+        # The execution cycle.
         self.schedule_time = schedule_time
-        # The deletion scope.
+        # The cleanup scope.
         self.scope = scope
-        # The regular expression that is used to indicate which image tags are retained.
+        # The regular expression used to match image versions to retain.
         self.tag_regexp = tag_regexp
 
     def validate(self):

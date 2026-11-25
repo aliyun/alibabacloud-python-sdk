@@ -19,37 +19,40 @@ class ListRepoTagScanResultRequest(DaraModel):
         tag: str = None,
         vul_query_key: str = None,
     ):
-        # The digest of the image.
+        # The image digest.
         self.digest = digest
-        # The parameter whose value that you want to query. Fox example, if the value is `FixCmd`, only the `FixCmd` parameter is returned.
+        # The query filter parameter. If the value is `FixCmd`, only the `FixCmd` result is returned, and other fields are not returned.
         self.filter_value = filter_value
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return.
+        # The page number of the scan result list.
         self.page_no = page_no
-        # The number of entries to return on each page.
+        # The number of entries per page in the scan result list.
         self.page_size = page_size
-        # The ID of the image repository.
+        # The image repository ID.
         self.repo_id = repo_id
-        # The ID of the security scan task.
+        # The image scan task ID.
         self.scan_task_id = scan_task_id
-        # The type of the vulnerability. Valid values:
+        # The vulnerability type. Valid values:
         # 
-        # *   `cve`: image system vulnerability
-        # *   `sca`: image application vulnerability
+        # - `cve`: Image system vulnerability
+        # - `sca`: Image application vulnerability
         self.scan_type = scan_type
-        # The severity of the vulnerability. Valid values:
+        # The severity level of the scanned vulnerability. Valid values:
         # 
-        # *   `High`
-        # *   `Medium`
-        # *   `Low`
-        # *   `Unknown`
+        # - `High`: High
+        # 
+        # - `Medium`: Medium
+        # 
+        # - `Low`: Low
+        # 
+        # - `Unknown`: Unknown
         self.severity = severity
-        # The name of the image tag.
+        # The image version name.
         self.tag = tag
-        # The keyword for fuzzy search used in scanning. The value can be a CVE name.
+        # The fuzzy search keyword for scanning. Fuzzy match by CVE name is supported.
         self.vul_query_key = vul_query_key
 
     def validate(self):

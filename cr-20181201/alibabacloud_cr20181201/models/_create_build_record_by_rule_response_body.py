@@ -12,7 +12,7 @@ class CreateBuildRecordByRuleResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The ID of the image building record.
+        # The build record ID.
         self.build_record_id = build_record_id
         # The return value.
         self.code = code

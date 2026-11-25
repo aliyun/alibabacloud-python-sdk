@@ -14,21 +14,21 @@ class UpdateNamespaceRequest(DaraModel):
         instance_id: str = None,
         namespace_name: str = None,
     ):
-        # Whether to automatically create a repository when an image is pushed.
+        # Specifies whether to allow automatic creation of a repository upon push.
         self.auto_create_repo = auto_create_repo
-        # The default configuration for automatically created repositories.
+        # The default repository configuration.
         self.default_repo_configuration = default_repo_configuration
-        # The default type for automatically created repositories. This parameter applies only if `AutoCreateRepo` is set to `true`. Valid values:
+        # The default repository type. Valid values:
         # 
-        # - `PUBLIC`: a public repository
+        # - `PUBLIC`: public repository
         # 
-        # - `PRIVATE`: a private repository
+        # - `PRIVATE`: private repository
         self.default_repo_type = default_repo_type
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the namespace.
+        # The namespace name.
         # 
         # This parameter is required.
         self.namespace_name = namespace_name

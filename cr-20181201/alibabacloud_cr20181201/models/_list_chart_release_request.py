@@ -14,21 +14,21 @@ class ListChartReleaseRequest(DaraModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
-        # The chart whose versions you want to query.
+        # The version prefix.
         self.chart = chart
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return.
+        # The page number.
         self.page_no = page_no
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The name of the repository.
+        # The repository name.
         # 
         # This parameter is required.
         self.repo_name = repo_name
-        # The name of the namespace.
+        # The namespace name.
         # 
         # This parameter is required.
         self.repo_namespace_name = repo_namespace_name

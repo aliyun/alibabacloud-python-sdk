@@ -14,23 +14,23 @@ class ListChartRepositoryRequest(DaraModel):
         repo_namespace_name: str = None,
         repo_status: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of the page to return.
+        # The page number.
         self.page_no = page_no
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The name of the repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The name of the namespace to which the repository belongs.
+        # The namespace.
         self.repo_namespace_name = repo_namespace_name
-        # The status of the chart repositories that you want to query. Valid values:
+        # The status of the chart repository. Valid values:
         # 
-        # *   `ALL`: query repositories of all status.
-        # *   `NORMAL`: query normal repositories.
-        # *   `DELETING`: query repositories that are being deleted.
+        # - `NORMAL`: The chart repository is in the Normal state.
+        #  
+        # - `DELETING`: The chart repository is being deleted.
         self.repo_status = repo_status
 
     def validate(self):

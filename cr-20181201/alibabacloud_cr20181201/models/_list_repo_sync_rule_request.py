@@ -25,7 +25,7 @@ class ListRepoSyncRuleRequest(DaraModel):
         self.page_no = page_no
         # The page size.
         self.page_size = page_size
-        # The image repository name.
+        # The repository name.
         self.repo_name = repo_name
         # The target instance ID.
         self.target_instance_id = target_instance_id

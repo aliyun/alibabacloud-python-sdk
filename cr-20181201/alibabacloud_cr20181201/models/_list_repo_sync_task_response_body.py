@@ -117,7 +117,7 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         task_status: str = None,
         task_trigger: str = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # Indicates whether the image is synchronized across accounts. Valid values:
         # 
@@ -135,9 +135,9 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         self.image_to = image_to
         # The custom synchronization link ID.
         self.link_id = link_id
-        # The modification time.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modifed_time = modifed_time
-        # The modification time.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
         # The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
         # 
@@ -161,9 +161,9 @@ class ListRepoSyncTaskResponseBodySyncTasks(DaraModel):
         self.task_status = task_status
         # The trigger policy. Valid values:
         # 
-        # - `PASSIVE`: Synchronization is automatically triggered.
+        # - `PASSIVE`: Automatically triggered synchronization.
         # 
-        # - `INITIATIVE`: Synchronization is manually triggered.
+        # - `INITIATIVE`: Manually triggered synchronization.
         # 
         # Default value: `PASSIVE`
         self.task_trigger = task_trigger

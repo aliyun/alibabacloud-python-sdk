@@ -16,7 +16,7 @@ class CreateChainResponseBody(DaraModel):
         self.chain_id = chain_id
         # The return code.
         self.code = code
-        # Indicates whether the operation is successful.
+        # Indicates whether the request is successful.
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id

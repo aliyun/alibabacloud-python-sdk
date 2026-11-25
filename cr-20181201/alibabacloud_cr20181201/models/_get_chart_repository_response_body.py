@@ -21,40 +21,43 @@ class GetChartRepositoryResponseBody(DaraModel):
         resource_group_id: str = None,
         summary: str = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # The time when the chart repository was created.
+        # The time when the chart repository was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the API call is successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The API call is successful.
+        # 
+        # - `false`: The API call failed.
         self.is_success = is_success
-        # The time when the chart repository was last modified.
+        # The time when the chart repository was last modified. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # The ID of the chart repository.
+        # The chart repository ID.
         self.repo_id = repo_id
-        # The name of the chart repository.
+        # The chart repository name.
         self.repo_name = repo_name
-        # The name of the namespace to which the chart repository belongs.
+        # The namespace to which the chart repository belongs.
         self.repo_namespace_name = repo_namespace_name
         # The status of the chart repository. Valid values:
         # 
-        # *   `NORMAL`: The repository is normal.
-        # *   `DELETING`: The repository is being deleted.
+        # - `NORMAL`: Normal.
+        #   
+        # - `DELETING`: Being deleted.
         self.repo_status = repo_status
         # The type of the chart repository. Valid values:
         # 
-        # *   `PUBLIC`: a public repository
-        # *   `PRIVATE`: a private repository
+        # - `PUBLIC`: public repository.
+        # 
+        # - `PRIVATE`: private repository.
         self.repo_type = repo_type
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The summary about the chart repository.
+        # The chart repository summary.
         self.summary = summary
 
     def validate(self):

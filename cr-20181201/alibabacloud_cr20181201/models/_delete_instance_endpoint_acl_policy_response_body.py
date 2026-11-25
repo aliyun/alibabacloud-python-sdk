@@ -11,7 +11,7 @@ class DeleteInstanceEndpointAclPolicyResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
         # Indicates whether the call is successful. Valid values:
         # 

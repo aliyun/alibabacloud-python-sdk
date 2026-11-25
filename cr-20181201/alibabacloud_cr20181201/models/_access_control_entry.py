@@ -10,7 +10,9 @@ class AccessControlEntry(DaraModel):
         comment: str = None,
         entry: str = None,
     ):
+        # The description of the whitelist entry.
         self.comment = comment
+        # The IP address or CIDR block that is allowed to access the public endpoint of the instance.
         self.entry = entry
 
     def validate(self):

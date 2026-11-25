@@ -23,12 +23,12 @@ class UpdateScanRuleRequest(DaraModel):
         # This parameter is required.
         self.instance_id = instance_id
         # The collection of namespaces.
-        # - If the scan scope is set to NAMESPACE, this parameter is required.
-        # - If the scan scope is set to REPO, specify exactly one namespace for this parameter.
+        # - When the scan scope is NAMESPACE, this parameter cannot be empty.
+        # - When the scan scope is REPO, this parameter must contain exactly one namespace.
         self.namespaces = namespaces
         # The list of repositories.
-        # - If the scan scope is set to NAMESPACE, this parameter must be empty.
-        # - If the scan scope is set to REPO, this parameter is required.
+        # - When the scan scope is NAMESPACE, this parameter must be empty.
+        # - When the scan scope is REPO, this parameter cannot be empty.
         self.repo_names = repo_names
         # The tag filtering rule.
         # 
@@ -42,15 +42,11 @@ class UpdateScanRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.scan_rule_id = scan_rule_id
-        # The scan scope. Valid values:
-        # - NAMESPACE: namespace
-        # - REPO: repository.
+        # The scan scope.
         # 
         # This parameter is required.
         self.scan_scope = scan_scope
-        # The trigger type. Valid values:
-        # - AUTO: Automatically triggered upon push.
-        # - MANUAL: Manually triggered.
+        # The trigger type.
         # 
         # This parameter is required.
         self.trigger_type = trigger_type

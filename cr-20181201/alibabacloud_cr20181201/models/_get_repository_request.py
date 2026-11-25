@@ -12,15 +12,15 @@ class GetRepositoryRequest(DaraModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the repository.
+        # The repository ID. This API supports querying by RepoId, or by RepoNamespaceName and RepoName together.
         self.repo_id = repo_id
-        # The name of the repository.
+        # The repository name. This API supports querying by RepoId, or by RepoNamespaceName and RepoName together.
         self.repo_name = repo_name
-        # The name of the namespace to which the repository belongs.
+        # The repository namespace name. This API supports querying by RepoId, or by RepoNamespaceName and RepoName together.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):

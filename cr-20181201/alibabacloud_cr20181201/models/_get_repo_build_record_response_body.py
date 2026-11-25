@@ -17,21 +17,21 @@ class GetRepoBuildRecordResponseBody(DaraModel):
         start_time: int = None,
         status: str = None,
     ):
-        # The ID of the image building record.
+        # The build record ID.
         self.build_record_id = build_record_id
         # The return value.
         self.code = code
-        # The time when the image building was completed.
+        # The end time, in UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
-        # The information about the image.
+        # The image information.
         self.image = image
         # Indicates whether the request is successful.
         self.is_success = is_success
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The time when the image building started.
+        # The start time, in UNIX timestamp format. Unit: milliseconds.
         self.start_time = start_time
-        # The status of the instance.
+        # The status.
         self.status = status
 
     def validate(self):
@@ -105,11 +105,11 @@ class GetRepoBuildRecordResponseBodyImage(DaraModel):
         repo_name: str = None,
         repo_namespace_name: str = None,
     ):
-        # The tag of the image.
+        # The image tag.
         self.image_tag = image_tag
-        # The name of the image repository.
+        # The image repository name.
         self.repo_name = repo_name
-        # The name of the namespace to which the image repository belongs.
+        # The namespace name of the image repository.
         self.repo_namespace_name = repo_namespace_name
 
     def validate(self):

@@ -30,46 +30,47 @@ class GetArtifactSubscriptionTaskResponseBody(DaraModel):
     ):
         # The artifact type.
         self.artifact_type = artifact_type
-        # The return value.
+        # The return code.
         self.code = code
-        # The end time of the artifact subscription task.
+        # The end time. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the API request is successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The API call was successful.
+        # 
+        # - `false`: The API call failed.
         self.is_success = is_success
-        # The return message.
+        # The returned message.
         self.message = message
-        # The name of the Container Registry namespace.
+        # The ACR namespace.
         self.namespace_name = namespace_name
-        # The name of the Container Registry repository.
+        # The ACR repository.
         self.repo_name = repo_name
         # The request ID.
         self.request_id = request_id
-        # The name of the source namespace.
+        # The source namespace.
         self.source_namespace_name = source_namespace_name
         # The artifact source.
         self.source_provider = source_provider
-        # The name of the source repository.
+        # The source repository.
         self.source_repo_name = source_repo_name
-        # The type of the source repository.
+        # The source artifact type.
         self.source_repo_type = source_repo_type
-        # The start time of the artifact subscription task.
+        # The start time. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The total subscribed tags.
+        # The number of subscribed tags.
         self.tag_subscription_count = tag_subscription_count
         # The total number of tags.
         self.tag_total_count = tag_total_count
         # The task ID.
         self.task_id = task_id
-        # The task results.
+        # The task result.
         self.task_result = task_result
-        # The status of the task.
+        # The task status.
         self.task_status = task_status
-        # The type of the task. Valid values:
+        # The task type.
         self.task_type = task_type
 
     def validate(self):

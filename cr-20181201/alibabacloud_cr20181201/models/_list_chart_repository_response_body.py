@@ -20,17 +20,17 @@ class ListChartRepositoryResponseBody(DaraModel):
     ):
         # The return value.
         self.code = code
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.is_success = is_success
-        # The page number of the returned page.
+        # The page number.
         self.page_no = page_no
-        # The number of entries returned per page.
+        # The page size.
         self.page_size = page_size
-        # The queried repositories.
+        # The list of repositories.
         self.repositories = repositories
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -111,31 +111,32 @@ class ListChartRepositoryResponseBodyRepositories(DaraModel):
         resource_group_id: str = None,
         summary: str = None,
     ):
-        # The time when the repository was created.
+        # The time when the repository was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The time when the repository was last modified.
+        # The time when the repository was last modified. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # The ID of the repository.
+        # The repository ID.
         self.repo_id = repo_id
-        # The name of the repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The name of the namespace to which the repository belongs.
+        # The namespace of the repository.
         self.repo_namespace_name = repo_namespace_name
         # The status of the repository. Valid values:
         # 
-        # *   `NORMAL`: The repository is normal.
-        # *   `DELETING`: The repository is being deleted.
+        # - `NORMAL`: Normal.
+        # 
+        # - `DELETING`: The repository is being deleted.
         self.repo_status = repo_status
         # The type of the repository. Valid values:
         # 
-        # *   `PRIVATE`: a private repository
-        # *   `PUBLIC`: a public repository
+        # - `PRIVATE`: a private repository.
+        # - `PUBLIC`: a public repository.
         self.repo_type = repo_type
-        # The ID of the resource group to which the repository belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The summary about the repository.
+        # The summary of the repository.
         self.summary = summary
 
     def validate(self):

@@ -17,14 +17,15 @@ class ListInstanceRegionResponseBody(DaraModel):
     ):
         # The return value.
         self.code = code
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the call is successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The call is successful.
+        # 
+        # - `false`: The call failed.
         self.is_success = is_success
         # The list of regions.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -79,9 +80,9 @@ class ListInstanceRegionResponseBodyRegions(DaraModel):
         local_name: str = None,
         region_id: str = None,
     ):
-        # The name of the region.
+        # The region name.
         self.local_name = local_name
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):

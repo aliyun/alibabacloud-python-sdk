@@ -20,17 +20,17 @@ class ListRepositoryResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.is_success = is_success
-        # The maximum number of entries returned.
+        # The maximum number of returned results.
         self.max_results = max_results
-        # The pagination token. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
+        # The token for the next page. If a next page exists, the service returns a NextToken value, which you can pass in the next request.
         self.next_token = next_token
         # The page number.
         self.page_no = page_no
-        # The page size.
+        # The number of entries per page.
         self.page_size = page_size
         # The list of repositories.
         self.repositories = repositories
@@ -131,17 +131,17 @@ class ListRepositoryResponseBodyRepositories(DaraModel):
         summary: str = None,
         tag_immutability: bool = None,
     ):
-        # The time when the repository was created.
+        # The time when the repository was created. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # The instance ID.
         self.instance_id = instance_id
-        # The time when the repository was last modified.
+        # The time when the repository was last modified. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
         # The repository build type. Valid values:
         # 
-        # - `AUTO`: Automatically triggered build.
+        # - `AUTO`: Automatically triggered.
         # 
-        # - `MANUAL`: Manually triggered build.
+        # - `MANUAL`: Manually triggered.
         self.repo_build_type = repo_build_type
         # The repository ID.
         self.repo_id = repo_id
@@ -159,9 +159,9 @@ class ListRepositoryResponseBodyRepositories(DaraModel):
         self.repo_type = repo_type
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The summary.
+        # The summary information.
         self.summary = summary
-        # The tag immutability of the image.
+        # The immutability of image tags.
         self.tag_immutability = tag_immutability
 
     def validate(self):

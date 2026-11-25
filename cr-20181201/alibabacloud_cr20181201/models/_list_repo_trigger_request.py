@@ -10,11 +10,11 @@ class ListRepoTriggerRequest(DaraModel):
         instance_id: str = None,
         repo_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the repository.
+        # The image repository ID.
         # 
         # This parameter is required.
         self.repo_id = repo_id

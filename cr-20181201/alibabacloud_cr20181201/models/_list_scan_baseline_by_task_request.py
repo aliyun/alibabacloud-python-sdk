@@ -16,19 +16,19 @@ class ListScanBaselineByTaskRequest(DaraModel):
         scan_task_id: str = None,
         tag: str = None,
     ):
-        # The digest value of the image.
+        # The image digest value.
         self.digest = digest
-        # The ID of the Container Registry instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The level of the baseline risk.
+        # The level.
         self.level = level
         # The page number.
         self.page_no = page_no
-        # The number of entries per page.
+        # The page size.
         self.page_size = page_size
-        # The ID of the image repository.
+        # The repository ID.
         self.repo_id = repo_id
-        # The ID of the image scan task.
+        # The image scan task ID.
         self.scan_task_id = scan_task_id
         # The image version.
         self.tag = tag

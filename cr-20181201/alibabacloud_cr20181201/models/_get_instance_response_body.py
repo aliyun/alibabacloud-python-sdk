@@ -23,41 +23,52 @@ class GetInstanceResponseBody(DaraModel):
         resource_group_id: str = None,
         tags: List[main_models.GetInstanceResponseBodyTags] = None,
     ):
-        # Return value
+        # The return code.
         self.code = code
-        # The time when the instance was created.
+        # The creation time, in UNIX timestamp format. Unit: milliseconds.
         self.create_time = create_time
-        # The ID of the Container Registry instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The issue occurs on the instance.
+        # The instance issue.
         self.instance_issue = instance_issue
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
-        # The edition of the instance. Valid values: Enterprise_Basic: Basic Edition instances Enterprise_Standard: Standard Edition instances Enterprise_Advanced: Advanced Edition instances
+        # The instance specification. Valid values:
+        # Enterprise_Basic: basic instance.
+        # Enterprise_Standard: standard instance.
+        # Enterprise_Advanced: advanced instance.
         self.instance_specification = instance_specification
-        # The status of the instance. Valid values:
+        # The instance status. Valid values:
         # 
-        # *   `PENDING`: The instance is being initialized.
-        # *   `INIT_ERROR`: The instance failed to be initialized.
-        # *   `STARTING`: The instance is being started.
-        # *   `RUNNING`: The instance is running.
-        # *   `STOPPING`: The instance is being stopped.
-        # *   `STOPPED`: The instance is stopped.
-        # *   `DELETING`: The instance is being deleted.
-        # *   `DELETED`: The instance is deleted.
+        # - `PENDING`: Initializing.
+        # 
+        # - `INIT_ERROR`: Initialization failed.
+        # 
+        # - `STARTING`: Starting.
+        # 
+        # - `RUNNING`: Running.
+        # 
+        # - `STOPPING`: Stopping.
+        # 
+        # - `STOPPED`: Stopped.
+        # 
+        # - `DELETING`: Deleting.
+        # 
+        # - `DELETED`: Deleted.
         self.instance_status = instance_status
-        # Indicates whether the request is successful. Valid values:
+        # Indicates whether the call was successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The call was successful.
+        # 
+        # - `false`: The call failed.
         self.is_success = is_success
-        # The time when the instance was last modified.
+        # The modification time, in UNIX timestamp format. Unit: milliseconds.
         self.modified_time = modified_time
         # The request ID.
         self.request_id = request_id
-        # The ID of the resource group to which the instance belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The tags of the instance.
+        # The tag collection of the instance.
         self.tags = tags
 
     def validate(self):

@@ -14,7 +14,7 @@ class CancelRepoSyncTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the replication task.
+        # The synchronization task ID.
         # 
         # This parameter is required.
         self.sync_task_id = sync_task_id

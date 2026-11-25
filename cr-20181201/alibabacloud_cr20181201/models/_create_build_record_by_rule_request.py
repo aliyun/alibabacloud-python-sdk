@@ -11,15 +11,15 @@ class CreateBuildRecordByRuleRequest(DaraModel):
         instance_id: str = None,
         repo_id: str = None,
     ):
-        # The ID of the image building rule.
+        # The build rule ID.
         # 
         # This parameter is required.
         self.build_rule_id = build_rule_id
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The ID of the image repository.
+        # The image repository ID.
         # 
         # This parameter is required.
         self.repo_id = repo_id

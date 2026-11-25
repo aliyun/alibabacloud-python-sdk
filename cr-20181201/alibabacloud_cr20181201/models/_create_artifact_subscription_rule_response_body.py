@@ -12,12 +12,13 @@ class CreateArtifactSubscriptionRuleResponseBody(DaraModel):
         request_id: str = None,
         rule_id: str = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # Indicate whether the API request is successful. Valid values:
+        # Indicates whether the API call was successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The API call was successful.
+        # 
+        # - `false`: The API call failed.
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id

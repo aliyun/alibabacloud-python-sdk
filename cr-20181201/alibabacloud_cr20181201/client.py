@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_cr20181201 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'cr'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('cr', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -575,6 +579,8 @@ class Client(OpenApiClient):
             query['SourceRepoName'] = request.source_repo_name
         if not DaraCore.is_null(request.tag_count):
             query['TagCount'] = request.tag_count
+        if not DaraCore.is_null(request.tag_list):
+            query['TagList'] = request.tag_list
         if not DaraCore.is_null(request.tag_regexp):
             query['TagRegexp'] = request.tag_regexp
         req = open_api_util_models.OpenApiRequest(
@@ -623,6 +629,8 @@ class Client(OpenApiClient):
             query['SourceRepoName'] = request.source_repo_name
         if not DaraCore.is_null(request.tag_count):
             query['TagCount'] = request.tag_count
+        if not DaraCore.is_null(request.tag_list):
+            query['TagList'] = request.tag_list
         if not DaraCore.is_null(request.tag_regexp):
             query['TagRegexp'] = request.tag_regexp
         req = open_api_util_models.OpenApiRequest(
@@ -8587,6 +8595,8 @@ class Client(OpenApiClient):
             query['SourceRepoName'] = request.source_repo_name
         if not DaraCore.is_null(request.tag_count):
             query['TagCount'] = request.tag_count
+        if not DaraCore.is_null(request.tag_list):
+            query['TagList'] = request.tag_list
         if not DaraCore.is_null(request.tag_regexp):
             query['TagRegexp'] = request.tag_regexp
         req = open_api_util_models.OpenApiRequest(
@@ -8637,6 +8647,8 @@ class Client(OpenApiClient):
             query['SourceRepoName'] = request.source_repo_name
         if not DaraCore.is_null(request.tag_count):
             query['TagCount'] = request.tag_count
+        if not DaraCore.is_null(request.tag_list):
+            query['TagList'] = request.tag_list
         if not DaraCore.is_null(request.tag_regexp):
             query['TagRegexp'] = request.tag_regexp
         req = open_api_util_models.OpenApiRequest(

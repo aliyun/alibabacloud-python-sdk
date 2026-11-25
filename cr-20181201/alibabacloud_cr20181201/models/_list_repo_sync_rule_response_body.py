@@ -28,7 +28,7 @@ class ListRepoSyncRuleResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The list of synchronization rules.
+        # The synchronization rules.
         self.sync_rules = sync_rules
         # The total number of entries.
         self.total_count = total_count
@@ -122,15 +122,12 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         target_region_id: str = None,
         target_repo_name: str = None,
     ):
-        # The creation time.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # Indicates whether images are synchronized across accounts. Valid values:
-        # 
-        # - `true`: Images are synchronized across accounts.
-        # 
-        # - `false`: Images are synchronized within the same account.
-        # 
-        # Default value: `false`
+        # Specifies whether to synchronize images across accounts. Valid values:
+        # - `true`: synchronizes images across accounts
+        # - `false`: synchronizes images within the same account
+        # Default value: `false`.
         self.cross_user = cross_user
         # The custom synchronization link ID.
         self.link_id = link_id
@@ -142,24 +139,20 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         self.local_region_id = local_region_id
         # The repository name of the source instance.
         self.local_repo_name = local_repo_name
-        # The modification time.
+        # The modification time. The value is a UNIX timestamp in milliseconds.
         self.modified_time = modified_time
-        # The namespace regex at the instance level.
-        # > This parameter is valid only when SyncScope is set to `INSTANCE`.
+        # The instance-level namespace regular expression.
+        # > This parameter is valid only when the SyncScope parameter is set to `INSTANCE`.
         self.namespace_name_filter = namespace_name_filter
-        # The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
-        # 
+        # The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Synchronization tasks with the same priority are executed in random order.
         # Valid values: 1 to 5.
-        # 
         # Default value: 3.
         self.priority = priority
         # The repository filtering rule.
-        # > This parameter is valid only when SyncScope is set to `INSTANCE` or `NAMESPACE`.
+        # > This parameter is valid only when the SyncScope parameter is set to `INSTANCE` or `NAMESPACE`.
         self.repo_name_filter = repo_name_filter
         # The synchronization direction. Valid values:
-        # 
         # - `FROM`: synchronizes from the source instance to the target instance
-        # 
         # - `TO`: synchronizes from the target instance to the source instance
         self.sync_direction = sync_direction
         # The synchronization rule ID.
@@ -167,17 +160,12 @@ class ListRepoSyncRuleResponseBodySyncRules(DaraModel):
         # The synchronization rule name.
         self.sync_rule_name = sync_rule_name
         # The synchronization scope. Valid values:
-        # 
-        # - `INSTANCE`: synchronizes based on namespace regex and repository regex rules
-        # 
-        # - `NAMESPACE`: synchronizes by namespace
-        # 
-        # - `REPO`: synchronizes by image repository
+        # - `INSTANCE`: synchronizes based on namespace and repository regular expressions
+        # - `NAMESPACE`: synchronizes based on namespaces
+        # - `REPO`: synchronizes based on image repositories
         self.sync_scope = sync_scope
         # The trigger policy. Valid values:
-        # 
-        # - `INITIATIVE`: proactive trigger
-        # 
+        # - `INITIATIVE`: active trigger
         # - `PASSIVE`: passive trigger
         self.sync_trigger = sync_trigger
         # The tag filtering rule.

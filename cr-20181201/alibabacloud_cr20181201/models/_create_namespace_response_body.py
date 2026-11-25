@@ -11,9 +11,9 @@ class CreateNamespaceResponseBody(DaraModel):
         is_success: bool = None,
         request_id: str = None,
     ):
-        # The response code. The value `success` indicates that the request was successful.
+        # The return value.
         self.code = code
-        # Indicates whether the request was successful.
+        # Indicates whether the request is successful.
         self.is_success = is_success
         # The request ID.
         self.request_id = request_id

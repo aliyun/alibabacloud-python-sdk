@@ -18,12 +18,13 @@ class ListArtifactSubscriptionTaskResponseBody(DaraModel):
         tasks: List[main_models.ListArtifactSubscriptionTaskResponseBodyTasks] = None,
         total_count: int = None,
     ):
-        # The return value.
+        # The return code.
         self.code = code
-        # Indicates whether the API request is successful. Valid values:
+        # Indicates whether the API call is successful. Valid values:
         # 
-        # *   `true`: The request is successful.
-        # *   `false`: The request fails.
+        # - `true`: The API call is successful.
+        # 
+        # - `false`: The API call failed.
         self.is_success = is_success
         # The page number.
         self.page_no = page_no
@@ -31,9 +32,9 @@ class ListArtifactSubscriptionTaskResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The queried artifact subscription tasks.
+        # The task list.
         self.tasks = tasks
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -121,29 +122,29 @@ class ListArtifactSubscriptionTaskResponseBodyTasks(DaraModel):
         task_status: str = None,
         task_type: str = None,
     ):
-        # The type of the artifact.
+        # The artifact type.
         self.artifact_type = artifact_type
-        # The end time of the artifact subscription task.
+        # The end time, in UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
         # The returned message.
         self.message = message
-        # The name of the namespace.
+        # The namespace name.
         self.namespace_name = namespace_name
-        # The name of the repository.
+        # The repository name.
         self.repo_name = repo_name
-        # The name of the source namespace.
+        # The source namespace.
         self.source_namespace_name = source_namespace_name
         # The artifact source.
         self.source_provider = source_provider
-        # The name of the source repository.
+        # The source repository.
         self.source_repo_name = source_repo_name
-        # The type of the source artifact.
+        # The source artifact type.
         self.source_repo_type = source_repo_type
-        # The start time of the artifact subscription task.
+        # The start time, in UNIX timestamp format. Unit: milliseconds.
         self.start_time = start_time
-        # The total number of subscribed tags.
+        # The number of subscribed tags.
         self.tag_subscription_count = tag_subscription_count
         # The total number of tags.
         self.tag_total_count = tag_total_count
@@ -151,9 +152,9 @@ class ListArtifactSubscriptionTaskResponseBodyTasks(DaraModel):
         self.task_id = task_id
         # The task result.
         self.task_result = task_result
-        # The status of the task.
+        # The task status.
         self.task_status = task_status
-        # The type of the task.
+        # The task type.
         self.task_type = task_type
 
     def validate(self):

@@ -16,17 +16,17 @@ class UpdateChainRequest(DaraModel):
         name: str = None,
         scope_exclude: List[str] = None,
     ):
-        # The configuration of the delivery chain in the JSON format.
+        # The JSON-formatted entity object that describes the delivery chain.
         # 
         # This parameter is required.
         self.chain_config = chain_config
-        # The ID of the delivery chain.
+        # The delivery chain ID.
         # 
         # This parameter is required.
         self.chain_id = chain_id
         # The description of the delivery chain.
         self.description = description
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -34,7 +34,7 @@ class UpdateChainRequest(DaraModel):
         # 
         # This parameter is required.
         self.name = name
-        # Repositories in which the delivery chain does not take effect.
+        # The set of repositories excluded from delivery chain execution.
         self.scope_exclude = scope_exclude
 
     def validate(self):

@@ -13,24 +13,25 @@ class CreateChartRepositoryRequest(DaraModel):
         repo_type: str = None,
         summary: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the repository.
+        # The name of the image repository.
         # 
         # This parameter is required.
         self.repo_name = repo_name
-        # The name of the namespace to which the repository belongs.
+        # The name of the namespace.
         # 
         # This parameter is required.
         self.repo_namespace_name = repo_namespace_name
-        # The default repository type. Valid values:
+        # The default type of the repository. Valid values:
         # 
-        # *   `PUBLIC`: a public repository.
-        # *   `PRIVATE`: a private repository.
+        # - `PUBLIC`: public repository
         # 
-        # You can specify the RepoType or Summary parameter. The RepoType parameter is optional.
+        # - `PRIVATE`: private repository
+        # 
+        # Specify either RepoType or Summary. This parameter is optional.
         self.repo_type = repo_type
         # The summary of the repository.
         self.summary = summary

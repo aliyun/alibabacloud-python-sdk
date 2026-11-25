@@ -20,41 +20,40 @@ class UpdateArtifactSubscriptionRuleRequest(DaraModel):
         source_provider: str = None,
         source_repo_name: str = None,
         tag_count: int = None,
+        tag_list: List[str] = None,
         tag_regexp: str = None,
     ):
-        # Specifies whether to enable an acceleration link for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+        # Specifies whether to enable the acceleration link. The subscription acceleration feature is in public preview. It improves the image subscription speed based on scheduling policies and network link optimization.
         self.accelerate = accelerate
         # The instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The name of the Container Registry namespace.
+        # The ACR namespace.
         self.namespace_name = namespace_name
-        # Specifies whether to overwrite the original image.
+        # Specifies whether to overwrite images.
         self.override = override
-        # The operating system and architecture. If the source repository contains multi-arch images, only the images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
+        # The operating system and architecture. If the source repository contains multi-architecture images, only images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise instance.
         self.platform = platform
-        # The name of the Container Registry repository.
+        # The ACR repository.
         self.repo_name = repo_name
         # The rule ID.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The name of the source namespace.
+        # The source namespace.
         self.source_namespace_name = source_namespace_name
-        # The source of the artifacts.
-        # 
-        # Valid values:
-        # 
-        # *   DOCKER_HUB: Docker Hub
-        # *   GCR: GCR
-        # *   QUAY: Quay.io
+        # The artifact source.
         self.source_provider = source_provider
         # The source repository.
         self.source_repo_name = source_repo_name
-        # The number of subscribed images.
+        # The number of images to subscribe to.
         self.tag_count = tag_count
-        # The image tags in the subscription source repository. Regular expressions are supported.
+        # - The image tags to subscribe to when matching by tag list. A maximum of 10 tags are supported.
+        # - This parameter is valid only when the rule is created by using tag list matching. It cannot be specified together with TagRegexp or TagCount.
+        # - If this parameter is not specified or an empty list is specified, the original tag list is retained and cannot be cleared. The matching method cannot be modified. To modify the matching method, delete the rule and create a new one.
+        self.tag_list = tag_list
+        # The image versions in the source repository to subscribe to. Regular expressions are supported.
         self.tag_regexp = tag_regexp
 
     def validate(self):
@@ -98,6 +97,9 @@ class UpdateArtifactSubscriptionRuleRequest(DaraModel):
         if self.tag_count is not None:
             result['TagCount'] = self.tag_count
 
+        if self.tag_list is not None:
+            result['TagList'] = self.tag_list
+
         if self.tag_regexp is not None:
             result['TagRegexp'] = self.tag_regexp
 
@@ -137,6 +139,9 @@ class UpdateArtifactSubscriptionRuleRequest(DaraModel):
 
         if m.get('TagCount') is not None:
             self.tag_count = m.get('TagCount')
+
+        if m.get('TagList') is not None:
+            self.tag_list = m.get('TagList')
 
         if m.get('TagRegexp') is not None:
             self.tag_regexp = m.get('TagRegexp')
