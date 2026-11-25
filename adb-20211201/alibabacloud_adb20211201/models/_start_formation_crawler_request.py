@@ -12,16 +12,16 @@ class StartFormationCrawlerRequest(DaraModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
-        # The task ID.
+        # The ID of the task.
         # 
         # This parameter is required.
         self.crawler_task_id = crawler_task_id
-        # The task name.
+        # The name of the task.
         self.crawler_task_name = crawler_task_name
-        # The cluster ID.
+        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
         # The region ID.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query available region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the IDs of available regions.
         # 
         # This parameter is required.
         self.region_id = region_id

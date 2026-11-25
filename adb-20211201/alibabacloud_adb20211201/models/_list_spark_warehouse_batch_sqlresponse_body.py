@@ -58,7 +58,7 @@ class ListSparkWarehouseBatchSQLResponseBodyData(DaraModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The queried Spark SQL statements.
+        # The list of executed Spark SQL statements.
         self.queries = queries
         # The total number of entries.
         self.total = total

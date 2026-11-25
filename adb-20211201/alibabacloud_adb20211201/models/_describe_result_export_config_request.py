@@ -12,15 +12,14 @@ class DescribeResultExportConfigRequest(DaraModel):
         region_id: str = None,
     ):
         # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the cluster IDs of all AnalyticDB for MySQL clusters in the specified region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The export type. Valid values:
         # 
-        # *   SLS: Indicates that the export destination is SLS.
-        # *   OSS: Indicates that the export destination is OSS.
+        # - SLS: The export destination is SLS.
+        # - OSS: The export destination is OSS.
         self.export_type = export_type
         # The region ID.
         # 

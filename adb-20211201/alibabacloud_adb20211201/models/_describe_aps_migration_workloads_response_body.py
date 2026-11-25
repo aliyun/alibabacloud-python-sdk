@@ -96,7 +96,7 @@ class DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads(DaraModel):
     ):
         # The number of ACUs.
         self.acu_count = acu_count
-        # The time when the task was created. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        # The time when the task was created. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
         # The error message.
         self.failed_msg = failed_msg
@@ -104,7 +104,7 @@ class DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads(DaraModel):
         self.id = id
         # The maximum response time.
         self.max_rt = max_rt
-        # The time when the task was modified. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+        # The time when the task was modified. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
         self.modify_time = modify_time
         # The name.
         self.name = name

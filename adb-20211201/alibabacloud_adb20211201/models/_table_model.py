@@ -85,21 +85,21 @@ class TableModel(DaraModel):
         self.current_version = current_version
         # The logical database name.
         self.db_name = db_name
-        # Indicates whether encryption is enabled.
+        # Specifies whether encryption is enabled.
         self.dict_encode = dict_encode
         # The distribution columns.
         self.distribute_columns = distribute_columns
         # The distribution type.
         self.distribute_type = distribute_type
-        # Indicates whether DFS is enabled.
+        # Specifies whether DFS is enabled.
         self.enable_dfs = enable_dfs
         # The number of hot partitions.
         self.hot_partition_count = hot_partition_count
         # The indexes.
         self.indexes = indexes
-        # Indicates whether full indexing is enabled.
+        # Specifies whether full indexing is enabled.
         self.is_all_index = is_all_index
-        # Indicates whether it is a full-text index dictionary.
+        # Specifies whether it is a full-text index dictionary.
         self.is_fulltext_dict = is_fulltext_dict
         # The maximum column ID.
         self.max_column_id = max_column_id
@@ -129,11 +129,11 @@ class TableModel(DaraModel):
         self.route_type = route_type
         # The routing engine type.
         self.rt_engine_type = rt_engine_type
-        # Indicates whether all indexes are routed.
+        # Specifies whether all indexes are routed.
         self.rt_index_all = rt_index_all
         # The routing mode type.
         self.rt_mode_type = rt_mode_type
-        # The storage description.
+        # The storage descriptor information.
         self.sd = sd
         # The storage policy.
         self.storage_policy = storage_policy
@@ -151,7 +151,7 @@ class TableModel(DaraModel):
         self.table_type = table_type
         # The table ID.
         self.tbl_id = tbl_id
-        # Indicates whether the table is a temporary table.
+        # Specifies whether the table is a temporary table.
         self.temporary = temporary
         # The update time.
         self.update_time = update_time
@@ -159,7 +159,7 @@ class TableModel(DaraModel):
         self.view_expanded_text = view_expanded_text
         # The SQL statement entered when creating the view.
         self.view_original_text = view_original_text
-        # The view safe mode pattern.
+        # The view security pattern.
         self.view_security_mode = view_security_mode
 
     def validate(self):

@@ -20,15 +20,15 @@ class DescribeApsJobsResponseBody(DaraModel):
         success: bool = None,
         total_count: str = None,
     ):
-        # The list of APS tasks.
+        # The list of tasks.
         self.apsjobs = apsjobs
         # The backend error code.
         self.code = code
-        # The HTTP status code returned for the request. A value of 200 indicates that the request was successful.
+        # The HTTP status code. A status code of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
         # The additional information about the call result. Valid values:
-        # - If the request is successful, **Success** is returned. 
-        # - If the request fails, a specific error code is returned.
+        # - If the request is normal, **Success** is returned. 
+        # - If the request is abnormal, a specific error code is returned.
         self.message = message
         # The page number.
         self.page_number = page_number
@@ -37,8 +37,8 @@ class DescribeApsJobsResponseBody(DaraModel):
         # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
-        # - **true**: Successful.
-        # - **false**: Failed.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
         # The total number of entries.
         self.total_count = total_count
@@ -137,7 +137,7 @@ class DescribeApsJobsResponseBodyAPSJobs(DaraModel):
         self.aps_job_id = aps_job_id
         # The name of the task.
         self.aps_job_name = aps_job_name
-        # The creation time in the yyyy-MM-dd HH:mm:ss format.
+        # The creation time. The time is in the yyyy-MM-dd HH:mm:ss format.
         self.create_time = create_time
         # The synchronization latency.
         self.delay = delay

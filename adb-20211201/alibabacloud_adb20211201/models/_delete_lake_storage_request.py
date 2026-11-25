@@ -11,9 +11,9 @@ class DeleteLakeStorageRequest(DaraModel):
         lake_storage_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL cluster.
+        # The ADB instance ID.
         self.dbcluster_id = dbcluster_id
-        # The ID of the lake storage.
+        # The ID of the lake storage instance.
         # 
         # This parameter is required.
         self.lake_storage_id = lake_storage_id

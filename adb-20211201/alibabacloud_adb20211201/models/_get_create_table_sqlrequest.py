@@ -16,23 +16,22 @@ class GetCreateTableSQLRequest(DaraModel):
         schema_name: str = None,
         table_name: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The cluster ID of the AnalyticDB for MySQL Data Lakehouse Edition (3.0) cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the cluster.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # The region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region IDs supported by AnalyticDB for MySQL.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The name of the database.
+        # The database name.
         self.schema_name = schema_name
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

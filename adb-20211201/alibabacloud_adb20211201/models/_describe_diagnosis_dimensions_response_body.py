@@ -15,15 +15,15 @@ class DescribeDiagnosisDimensionsResponseBody(DaraModel):
         resource_groups: List[str] = None,
         user_names: List[str] = None,
     ):
-        # The queried source IP addresses.
+        # The source IP addresses.
         self.client_ips = client_ips
-        # The queried database names.
+        # The database names.
         self.databases = databases
         # The request ID.
         self.request_id = request_id
-        # The queried resource group names.
+        # The resource group names.
         self.resource_groups = resource_groups
-        # The queried usernames.
+        # The usernames.
         self.user_names = user_names
 
     def validate(self):

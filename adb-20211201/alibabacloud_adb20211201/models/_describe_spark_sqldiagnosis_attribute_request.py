@@ -19,7 +19,7 @@ class DescribeSparkSQLDiagnosisAttributeRequest(DaraModel):
         # This parameter is required.
         self.app_id = app_id
         # The cluster ID.
-        # > * You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the information of all clusters in the specified region, including cluster IDs.
+        # > * You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the information of all clusters in the specified region, including the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -27,7 +27,7 @@ class DescribeSparkSQLDiagnosisAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.inner_query_id = inner_query_id
-        # The language type. The description of the system access policy is returned in this language.
+        # The language type. The description of the system access policy is returned in this language. Valid values:
         # 
         # - en: English.
         # - zh: Chinese.

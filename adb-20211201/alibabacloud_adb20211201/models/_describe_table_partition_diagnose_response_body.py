@@ -21,13 +21,13 @@ class DescribeTablePartitionDiagnoseResponseBody(DaraModel):
         suggest_min_records_per_partition: int = None,
         total_count: int = None,
     ):
-        # The information about the request denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The queried detection items and detection results.
+        # The list of check items and check results.
         self.detection_items = detection_items
-        # The queried partition diagnostic information.
+        # The details.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -35,11 +35,11 @@ class DescribeTablePartitionDiagnoseResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The recommended maximum number of rows in each partition.
+        # The recommended maximum number of rows for subpartitions.
         self.suggest_max_records_per_partition = suggest_max_records_per_partition
-        # The recommended minimum number of rows in each partition.
+        # The recommended minimum number of rows for subpartitions.
         self.suggest_min_records_per_partition = suggest_min_records_per_partition
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -143,19 +143,19 @@ class DescribeTablePartitionDiagnoseResponseBodyItems(DaraModel):
         table_name: str = None,
         total_size: int = None,
     ):
-        # The improper partitions.
+        # The unreasonable partitions.
         self.partition_detail = partition_detail
         # The number of partitions.
         self.partition_number = partition_number
-        # The name of the database.
+        # The database name.
         self.schema_name = schema_name
-        # The storage percentage of the table. Unit: %.
+        # The table storage proportion. Unit: %.
         # 
-        # >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+        # > Calculation formula: Table storage proportion = Total data volume of the table / Total data volume of the instance × 100.
         self.space_ratio = space_ratio
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
-        # The total data size of the table. Unit: bytes.
+        # The total data volume. Unit: bytes.
         self.total_size = total_size
 
     def validate(self):
@@ -215,15 +215,15 @@ class DescribeTablePartitionDiagnoseResponseBodyDetectionItems(DaraModel):
         name: str = None,
         status: str = None,
     ):
-        # The detection result.
+        # The check result message.
         self.message = message
-        # The name of the detection item.
+        # The name of the check item.
         self.name = name
-        # The severity level of the detection result. Valid values:
+        # The status of the check result. Valid values:
         # 
-        # *   NORMAL
-        # *   WARNING
-        # *   CRITICAL
+        # - NORMAL
+        # - WARNING
+        # - CRITICAL
         self.status = status
 
     def validate(self):

@@ -29,15 +29,15 @@ class QueryFormationInstsByTaskIDResponseBody(DaraModel):
         self.http_status_code = http_status_code
         # The task list.
         self.items = items
-        # The message. The value is OK when the request is successful.
+        # The message. The value is OK if the request is successful.
         self.message = message
         # The page number.
         self.page_number = page_number
-        # The total number of pages.
+        # The page size.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
         # The total number of records.
         self.total_count = total_count
@@ -154,9 +154,7 @@ class QueryFormationInstsByTaskIDResponseBodyData(DaraModel):
         self.schedule_state = schedule_state
         # The schema ID assigned to the instance by the system.
         self.schema = schema
-        # The task source. Valid values:
-        # - **system**: System.
-        # - **custom**: Custom.
+        # The task source. Valid values: - **system**: System. - **custom**: Custom.
         self.source_type = source_type
         # The synchronization time, accurate to milliseconds. Format: yyyy-MM-ddTHH:mm:ssZ.
         self.sync_time = sync_time

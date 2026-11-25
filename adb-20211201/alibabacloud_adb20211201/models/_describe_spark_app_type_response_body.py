@@ -11,14 +11,13 @@ class DescribeSparkAppTypeResponseBody(DaraModel):
         request_id: str = None,
         type: str = None,
     ):
-        # The detailed reason why the access was denied.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The request ID.
         self.request_id = request_id
         # The type of the Spark application. Valid values:
-        # 
-        # *   BATCH
-        # *   SQLENGINE
+        # - BATCH: batch application.
+        # - SQLENGINE: SQL engine application.
         self.type = type
 
     def validate(self):

@@ -16,15 +16,15 @@ class CheckFormationSchemaExistsResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # Indicates whether the schema exists.
+        # Indicates whether the metadata discovery schema exists.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message. OK is returned if the request is successful.
+        # The returned message. The value is OK if the request is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request is successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

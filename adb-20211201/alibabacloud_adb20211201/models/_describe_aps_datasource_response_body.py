@@ -11,7 +11,7 @@ class DescribeApsDatasourceResponseBody(DaraModel):
         aps_datasource: main_models.DescribeApsDatasourceResponseBodyApsDatasource = None,
         request_id: str = None,
     ):
-        # -
+        # The APS data source information.
         self.aps_datasource = aps_datasource
         # The ID of the request.
         self.request_id = request_id
@@ -189,7 +189,7 @@ class DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo(DaraModel):
         source_region_id: str = None,
         store: str = None,
     ):
-        # Specifies whether the resource is cross-account. Valid values:
+        # Specifies whether the resource belongs to a different account. Valid values:
         # 
         # - **true**: The current network instance is a cross-account resource.
         # - **false**: The current network instance belongs to the current account.
@@ -455,13 +455,13 @@ class DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo(DaraModel):
         security_group: str = None,
         vswitch: str = None,
     ):
-        # The ID of the E-MapReduce (EMR) cluster.
+        # The ID of the EMR cluster.
         self.emr_cluster_id = emr_cluster_id
         # The Hive metastore URL.
         self.meta_store_uri = meta_store_uri
-        # The ID of the security group.
+        # The security group ID.
         self.security_group = security_group
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.vswitch = vswitch
 
     def validate(self):

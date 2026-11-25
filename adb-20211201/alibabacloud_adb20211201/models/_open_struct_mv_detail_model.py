@@ -28,21 +28,19 @@ class OpenStructMvDetailModel(DaraModel):
         table_engine: str = None,
         updated_at: str = None,
     ):
-        # All direct parent base tables of the materialized view.
+        # All direct parent base tables of the current materialized view.
         self.base_table_infos = base_table_infos
-        # All direct parent base tables of the materialized view.
+        # All direct parent base tables of the current materialized view.
         self.base_table_names = base_table_names
-        # Indicates whether to enable alerting for refresh latency. Valid values:
+        # Specifies whether to enable the refresh delay alert. Valid values:
         # 
-        # - true: Yes.
-        # 
-        # - false: No.
+        # - 1: Yes.
+        # - 0: No.
         self.enable_delay_alert = enable_delay_alert
-        # Indicates whether to enable alerting for refresh task failures. Valid values:
+        # Specifies whether to enable the refresh task failure alert. Valid values:
         # 
-        # - true: Yes.
-        # 
-        # - false: No.
+        # - 1: Yes.
+        # - 0: No.
         self.enable_failure_alert = enable_failure_alert
         # The total number of explicit query hits in the last 7 days.
         self.explicit_hit = explicit_hit
@@ -50,21 +48,21 @@ class OpenStructMvDetailModel(DaraModel):
         self.first_refresh_time = first_refresh_time
         # The total number of implicit query hits in the last 7 days.
         self.implicit_hit = implicit_hit
-        # Indicates whether the materialized view has not been accessed by explicit or implicit queries for more than 30 days since its creation.
+        # Indicates whether the current materialized view has not been accessed (including explicit and implicit queries) for more than 30 days since its creation.
         self.is_inactive = is_inactive
-        # The refresh latency toleration, in minutes.
+        # The refresh delay tolerance, in minutes.
         self.latency_tolerance = latency_tolerance
-        # The disk space that the materialized view occupies for hot data, in bytes.
+        # The hot data disk space occupied by the materialized view, in bytes.
         self.local_size = local_size
-        # Whether query rewrite is enabled for the materialized view.
+        # Specifies whether query rewrite is enabled for the current materialized view.
         self.query_rewrite_enabled = query_rewrite_enabled
         # The refresh interval.
         self.refresh_interval = refresh_interval
         # The refresh model of the materialized view.
         self.refresh_state = refresh_state
-        # The disk space that the materialized view occupies for cold data, in bytes.
+        # The cold data disk space occupied by the materialized view, in bytes.
         self.remote_size = remote_size
-        # The resource group on which the refresh depends.
+        # The resource group that the refresh depends on.
         self.resource_group = resource_group
         # The table engine.
         self.table_engine = table_engine
@@ -203,7 +201,7 @@ class OpenStructMvDetailModelBaseTableInfos(DaraModel):
         table_engine: str = None,
         table_name: str = None,
     ):
-        # Whether the base table is a materialized view.
+        # Specifies whether the base table is a materialized view.
         self.base_table_is_mv = base_table_is_mv
         # The database name.
         self.schema_name = schema_name

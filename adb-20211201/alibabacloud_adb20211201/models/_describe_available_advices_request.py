@@ -18,13 +18,13 @@ class DescribeAvailableAdvicesRequest(DaraModel):
         region_id: str = None,
         schema_table_name: str = None,
     ):
-        # The generation date of the suggestion, in the yyyyMMdd format.
+        # The generation date of the suggestions, in the yyyyMMdd format.
         # 
-        # > Data is generated after daily analysis in the early morning. Therefore, you must specify a date of T-1 or earlier to query the data. For example, if today is 20240627, you must specify 20240626 or an earlier date.
+        # > Data is generated after daily analysis in the early morning. Therefore, you must specify a date of T-1 or earlier to query the data. For example, if today is 20240627, you should pass 20240626 or an earlier date.
         self.advice_date = advice_date
         # The type of the suggestion. Valid values:
-        # - **INDEX**: Index optimization.
-        # - **TIERING**: Hot and cold data optimization.
+        # - **INDEX**: index optimization.
+        # - **TIERING**: hot and cold data optimization.
         self.advice_type = advice_type
         # The cluster ID.
         # 
@@ -38,7 +38,7 @@ class DescribeAvailableAdvicesRequest(DaraModel):
         # - **ja**: Japanese.
         # - **zh-tw**: Traditional Chinese.
         self.lang = lang
-        # The field by which to sort the query results. The value is a JSON string. Example: `[{"Field":"SchemaName","Type":"Asc"}]`. Parameters:
+        # The field by which to sort the query results. The value must be a JSON string. Example: `[{"Field":"SchemaName","Type":"Asc"}]`. Parameters:
         # - `Field`: the sort field. Valid values:
         #     - `SchemaName`: the database name.
         #     - `TableName`: the table name.
@@ -60,7 +60,7 @@ class DescribeAvailableAdvicesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The concatenated string of the database name and table name.
+        # The concatenated string of the database name and the table name.
         self.schema_table_name = schema_table_name
 
     def validate(self):

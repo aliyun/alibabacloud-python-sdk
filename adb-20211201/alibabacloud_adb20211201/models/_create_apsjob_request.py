@@ -38,8 +38,7 @@ class CreateAPSJobRequest(DaraModel):
         self.destination_endpoint_user_name = destination_endpoint_user_name
         # The list of partitions.
         self.partition_list = partition_list
-        # The region ID.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region ID.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -53,7 +52,7 @@ class CreateAPSJobRequest(DaraModel):
         self.source_endpoint_region = source_endpoint_region
         # The username of the source endpoint.
         self.source_endpoint_user_name = source_endpoint_user_name
-        # The destination table mode.
+        # The mode of the destination table.
         self.target_table_mode = target_table_mode
 
     def validate(self):

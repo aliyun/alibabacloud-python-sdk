@@ -17,7 +17,7 @@ class CheckFormationSchemaExistsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable the prefix mode. Valid values:
+        # Specifies whether the prefix mode is enabled. Valid values:
         # - true: Yes.
         # - false: No.
         # 

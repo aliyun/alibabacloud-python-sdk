@@ -15,13 +15,13 @@ class GetTableColumnsRequest(DaraModel):
         schema_name: str = None,
         table_name: str = None,
     ):
-        # The name of the column.
+        # The column name.
         self.column_name = column_name
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+        # The page number. Valid values: an integer greater than 0 and up to the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # * **30** (default)
@@ -32,9 +32,9 @@ class GetTableColumnsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the database.
+        # The database name.
         self.schema_name = schema_name
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

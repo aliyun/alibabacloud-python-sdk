@@ -16,7 +16,7 @@ class DescribeJobResourceUsageResponseBody(DaraModel):
     ):
         # The API status code or POP error code.
         self.code = code
-        # The returned data.
+        # The response data.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -71,7 +71,7 @@ class DescribeJobResourceUsageResponseBodyData(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The end time. Format: yyyy-MM-ddTHH:mmZ (UTC time).
         self.end_time = end_time
-        # The ACU usage of the job resource group.
+        # The ACU usage of job resource groups.
         self.job_acu_usage = job_acu_usage
         # The page number.
         self.page_number = page_number
@@ -157,7 +157,7 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsage(DaraModel):
         spark_app_name: str = None,
         use_cache_pool: bool = None,
     ):
-        # The ACU resource usage details.
+        # The ACU resource usage.
         self.acu_usage_detail = acu_usage_detail
         # The end time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC time).
         self.job_end_time = job_end_time
@@ -169,7 +169,7 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsage(DaraModel):
         self.resource_group_name = resource_group_name
         # The name of the Spark application.
         self.spark_app_name = spark_app_name
-        # Indicates whether the cache pool is used.
+        # Indicates whether the hot pool is used.
         self.use_cache_pool = use_cache_pool
 
     def validate(self):
@@ -245,7 +245,7 @@ class DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail(DaraMode
         self.reserved_acu_number = reserved_acu_number
         # The number of spot instance ACUs.
         self.spot_acu_number = spot_acu_number
-        # The percentage of spot instance resources in the total elastic resources.
+        # The ratio of spot instance resources to total elastic resources.
         self.spot_acu_percentage = spot_acu_percentage
         # The total number of ACUs.
         self.total_acu_number = total_acu_number

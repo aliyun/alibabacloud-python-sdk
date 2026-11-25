@@ -100,13 +100,13 @@ class DescribeSqlPatternResponseBodyItems(DaraModel):
         user: str = None,
     ):
         # The client IP address.
-        # > This parameter is returned only when the Type parameter is set to accessip.
+        # > This parameter is returned only when the **Type** parameter is set to **accessip**.
         self.access_ip = access_ip
         # The average execution time. Unit: milliseconds.
         self.avg_cpu_time = avg_cpu_time
-        # The average peak memory. Unit: KB.
+        # The average peak memory usage. Unit: KB.
         self.avg_peak_memory = avg_peak_memory
-        # The average scan size. Unit: KB.
+        # The average scanned data size. Unit: KB.
         self.avg_scan_size = avg_scan_size
         # The average number of scanned rows.
         self.avg_stage_count = avg_stage_count
@@ -118,7 +118,7 @@ class DescribeSqlPatternResponseBodyItems(DaraModel):
         self.max_cpu_time = max_cpu_time
         # The Peak Volume memory. Unit: KB.
         self.max_peak_memory = max_peak_memory
-        # The maximum scan size. Unit: KB.
+        # The maximum scanned data size. Unit: KB.
         self.max_scan_size = max_scan_size
         # The maximum number of stages.
         self.max_stage_count = max_stage_count
@@ -131,7 +131,7 @@ class DescribeSqlPatternResponseBodyItems(DaraModel):
         # The query date.
         self.report_date = report_date
         # The username.
-        # > This parameter is returned only when the Type parameter is left empty or set to user.
+        # > This parameter is returned only when the **Type** parameter is left empty or set to **user**.
         self.user = user
 
     def validate(self):

@@ -43,9 +43,9 @@ class CreateApsSlsADBJobRequest(DaraModel):
         user_name: str = None,
         workload_name: str = None,
     ):
-        # The role name for cross-account access.
+        # The cross-account role name.
         self.across_role = across_role
-        # The UID for cross-account access.
+        # The cross-account UID.
         self.across_uid = across_uid
         # The advanced configuration.
         self.advanced_config = advanced_config
@@ -69,19 +69,19 @@ class CreateApsSlsADBJobRequest(DaraModel):
         self.dirty_data_handle_mode = dirty_data_handle_mode
         # The dirty data processing mode.
         self.dirty_data_process_pattern = dirty_data_process_pattern
-        # Specifies whether to enable exactly-once semantics.
+        # Specifies whether exactly-once semantics is enabled.
         self.exactly_once = exactly_once
-        # The number of AnalyticDB compute units (ACUs) for full data synchronization.
+        # The full ACUs.
         self.full_compute_unit = full_compute_unit
         # The Hudi advanced configuration.
         self.hudi_advanced_config = hudi_advanced_config
-        # The number of AnalyticDB compute units (ACUs) for incremental data synchronization.
+        # The incremental ACUs.
         self.incremental_compute_unit = incremental_compute_unit
-        # lakehosue ID。
+        # The lakehouse ID.
         self.lakehouse_id = lakehouse_id
-        # The maximum offset.
+        # The maximum number of offsets per trigger.
         self.max_offsets_per_trigger = max_offsets_per_trigger
-        # The OSS address.
+        # The OSS location.
         self.oss_location = oss_location
         # The output format.
         self.output_format = output_format
@@ -103,21 +103,21 @@ class CreateApsSlsADBJobRequest(DaraModel):
         self.resource_group = resource_group
         # The region ID of the source cluster.
         self.source_region_id = source_region_id
-        # The starting offset for delivery.
+        # The starting offset.
         # 
         # This parameter is required.
         self.starting_offsets = starting_offsets
-        # sls Store。
+        # The SLS store.
         self.store = store
         # The table name.
         # 
         # This parameter is required.
         self.table_name = table_name
-        # The generation rule for the destination.
+        # The destination generation rule.
         self.target_generate_rule = target_generate_rule
         # The destination type.
         self.target_type = target_type
-        # The UNIX timestamp conversion configuration.
+        # The UNIX timestamp conversion.
         self.unix_timestamp_convert = unix_timestamp_convert
         # The username.
         # 
@@ -352,11 +352,11 @@ class CreateApsSlsADBJobRequestUnixTimestampConvert(DaraModel):
         format: str = None,
         transform: bool = None,
     ):
-        # The conversion method.
+        # The conversion.
         self.convert = convert
         # The format.
         self.format = format
-        # Specifies whether to enable conversion.
+        # Specifies whether to enable the conversion.
         self.transform = transform
 
     def validate(self):
@@ -405,7 +405,7 @@ class CreateApsSlsADBJobRequestColumns(DaraModel):
         self.map_type = map_type
         # The column name.
         self.name = name
-        # The column data type.
+        # The data type of the column.
         self.type = type
 
     def validate(self):

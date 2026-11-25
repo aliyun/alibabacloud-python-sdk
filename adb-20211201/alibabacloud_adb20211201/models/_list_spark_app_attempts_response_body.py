@@ -54,33 +54,33 @@ class ListSparkAppAttemptsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of retry information. Metric description:
-        # - **AttemptId**: the retry ID.
-        # - **State**: the execute status of the application. Valid values:
-        #     - **SUBMITTED**: commit.
-        #     - **STARTING**: starting.
-        #     - **RUNNING**: executing.
-        #     - **FAILING**: the node failed and the environment is being cleaned up.
-        #     - **FAILED**: failed.
-        #     - **KILLING**: aborting the task and cleaning up the environment.
-        #     - **KILLED**: the task is aborted.
-        #     - **SUCCEEDING**: the node execution is complete and the environment is being cleaned up.
-        #     - **COMPLETED**: the node execution is complete.
-        #     - **FATAL**: unexpected failure.
-        #     - **UNKNOWN**: unknown fault.
-        # - **Message**: the alerting message. This parameter is empty if no alerting is generated.
-        # - **Data**: the Spark application template data.
-        # - **EstimateExecutionCpuTimeInSeconds**: the CPU time consumed to execute the Spark application, in milliseconds (ms).
-        # - **LogRootPath**: the storage path of log files.
-        # - **LastAttemptId**: the ID of the last retry.
-        # - **WebUiAddress**: the web UI address.
-        # - **SubmittedTimeInMillis**: the time when the Spark application was committed. This value is a UNIX timestamp in milliseconds (ms).
-        # - **StartedTimeInMillis**: the time when the Spark application was created. This value is a UNIX timestamp in milliseconds (ms).
-        # - **LastUpdatedTimeInMillis**: the time when the Spark application was last updated. This value is a UNIX timestamp in milliseconds (ms).
-        # - **TerminatedTimeInMillis**: the time when the Spark application stopped executing. This value is a UNIX timestamp in milliseconds (ms).
-        # - **DBClusterId**: the ID of the cluster that executes the Spark application.
-        # - **ResourceGroupName**: the name of the Job-type resource group.
-        # - **DurationInMillis**: the execution duration of the Spark application, in milliseconds (ms).
+        # The retry information list. Response parameter description:
+        # - **AttemptId**: The retry ID.
+        # - **State**: The execution state of the application. Valid values:
+        #     - **SUBMITTED**: Submitted.
+        #     - **STARTING**: Starting.
+        #     - **RUNNING**: Running.
+        #     - **FAILING**: The task failed. Cleaning up the environment.
+        #     - **FAILED**: Failed.
+        #     - **KILLING**: Aborting the task. Cleaning up the environment.
+        #     - **KILLED**: The task aborted.
+        #     - **SUCCEEDING**: The task execution ended. Cleaning up the environment.
+        #     - **COMPLETED**: The task execution ended.
+        #     - **FATAL**: Unexpected failure.
+        #     - **UNKNOWN**: Unknown error.
+        # - **Message**: The alert information. If no alert is generated, an empty value is returned.
+        # - **Data**: The Spark application template data.
+        # - **EstimateExecutionCpuTimeInSeconds**: The CPU time consumed to execute the Spark application, in milliseconds.
+        # - **LogRootPath**: The storage path of the log file.
+        # - **LastAttemptId**: The ID of the last retry.
+        # - **WebUiAddress**: The Web UI address.
+        # - **SubmittedTimeInMillis**: The time when the Spark application was submitted. The value is a UNIX timestamp in milliseconds.
+        # - **StartedTimeInMillis**: The time when the Spark application was created. The value is a UNIX timestamp in milliseconds.
+        # - **LastUpdatedTimeInMillis**: The time when the Spark application was last updated. The value is a UNIX timestamp in milliseconds.
+        # - **TerminatedTimeInMillis**: The time when the execution of the Spark application was stopped. The value is a UNIX timestamp in milliseconds.
+        # - **DBClusterId**: The ID of the cluster where the Spark application is executed.
+        # - **ResourceGroupName**: The name of the job resource group.
+        # - **DurationInMillis**: The execution duration of the Spark application, in milliseconds.
         self.attempt_info_list = attempt_info_list
         # The page number.
         self.page_number = page_number

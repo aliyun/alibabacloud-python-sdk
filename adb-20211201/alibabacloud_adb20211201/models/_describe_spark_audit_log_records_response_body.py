@@ -18,19 +18,19 @@ class DescribeSparkAuditLogRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+        # The details of the access denial. This field is returned only when RAM authentication fails.
         self.access_denied_detail = access_denied_detail
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The list of SQL audit logs.
+        # The list of SQL records.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries to return per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -120,43 +120,31 @@ class DescribeSparkAuditLogRecordsResponseBodyItems(DaraModel):
         self.app_id = app_id
         # The source IP address.
         self.client_ip = client_ip
-        # The SQL execution error message.
+        # The error message of the SQL execution.
         self.error_msg = error_msg
-        # The SQL execution error stack trace.
+        # The error stack trace of the SQL execution.
         self.error_trace = error_trace
-        # The start time of the SQL statement. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+        # The start time of the SQL execution. The time is in UTC and follows the yyyy-MM-ddTHH:mm:ssZ format.
         self.execute_time = execute_time
-        # The ID of the query executed within the Spark application.
+        # The internal query execution ID of the Spark application.
         self.inner_query_id = inner_query_id
-        # Whether it can be diagnosed.
+        # Indicates whether the SQL statement can be diagnosed.
         self.is_diagnosable = is_diagnosable
         # The query ID.
         self.process_id = process_id
-        # The resource group name.
+        # The name of the resource group.
         self.resource_group_name = resource_group_name
-        # The SQL statement.
+        # The details of the SQL statement.
         self.sqltext = sqltext
-        # The ID of the statement.
+        # The statement ID.
         self.statement_id = statement_id
-        # The source from which the query was initiated.
-        # 
-        # Valid values:
-        # 
-        # *   SQL_EDITOR: SQL_EDITOR.
-        # *   JDBC: JDBC.
+        # The source from which the query is initiated.
         self.statement_source = statement_source
         # The execution status of the SQL statement.
-        # 
-        # Valid values:
-        # 
-        # *   cancel: The task is canceled .
-        # *   finished: The execution succeeds .
-        # *   error: The execution fails .
-        # *   timeout: The execution of the command timed out.
         self.status = status
-        # The duration of the SQL statement. Unit: milliseconds.
+        # The execution duration of the SQL statement. Unit: milliseconds.
         self.total_time = total_time
-        # The username that is used to execute SQL statements.
+        # The username that executed the SQL statement.
         self.user = user
 
     def validate(self):

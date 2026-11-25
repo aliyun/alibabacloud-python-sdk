@@ -58,13 +58,13 @@ class DescribeApsJobDetailResponseBodyAPSJobDetail(DaraModel):
     ):
         # The list of synchronization objects.
         self.db_list = db_list
-        # The target database instance ID.
+        # The instance ID of the destination database.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
         # The region of the target instance.
         self.destination_endpoint_region = destination_endpoint_region
-        # The list of partitions.
+        # The partition list.
         self.partition_list = partition_list
-        # The source database instance ID.
+        # The instance ID of the source database.
         self.source_endpoint_instance_id = source_endpoint_instance_id
         # The region of the source database.
         self.source_endpoint_region = source_endpoint_region

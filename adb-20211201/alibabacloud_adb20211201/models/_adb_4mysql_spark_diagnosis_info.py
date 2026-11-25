@@ -12,9 +12,13 @@ class Adb4MysqlSparkDiagnosisInfo(DaraModel):
         diagnosis_msg: str = None,
         diagnosis_type: str = None,
     ):
+        # The diagnostic code.
         self.diagnosis_code = diagnosis_code
+        # The diagnostic cause.
         self.diagnosis_code_label = diagnosis_code_label
+        # The diagnostic suggestion.
         self.diagnosis_msg = diagnosis_msg
+        # The diagnostic information type.
         self.diagnosis_type = diagnosis_type
 
     def validate(self):

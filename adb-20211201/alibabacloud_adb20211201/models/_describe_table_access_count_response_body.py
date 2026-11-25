@@ -24,7 +24,7 @@ class DescribeTableAccessCountResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -90,11 +90,11 @@ class DescribeTableAccessCountResponseBodyItems(DaraModel):
     ):
         # The number of times the table was accessed.
         self.access_count = access_count
-        # The cluster ID of the cluster to which the table belongs.
+        # The ID of the cluster to which the table belongs.
         self.instance_name = instance_name
-        # The date on which the table was used.
+        # The date when the table was used.
         self.report_date = report_date
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
         # The database to which the table belongs.
         self.table_schema = table_schema

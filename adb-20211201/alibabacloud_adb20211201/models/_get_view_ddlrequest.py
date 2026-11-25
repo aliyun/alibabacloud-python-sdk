@@ -12,7 +12,7 @@ class GetViewDDLRequest(DaraModel):
         schema_name: str = None,
         view_name: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

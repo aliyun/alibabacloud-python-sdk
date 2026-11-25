@@ -20,13 +20,13 @@ class UpdateFormationCrawlerScheduleStateResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. OK is returned if the call was successful.
+        # The message returned. OK is returned when the call is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
-        # - **true**: Successful.
-        # - **false**: Failed.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

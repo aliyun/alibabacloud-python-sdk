@@ -14,20 +14,19 @@ class DeleteLakeStorageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # Indicates whether the delete operation was successful.
+        # The deletion result.
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The returned message. If the operation is asynchronously implemented, the job ID is returned.
+        # The job ID returned if the creation API is implemented asynchronously.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call is successful.
+        # - **true**: The call is successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

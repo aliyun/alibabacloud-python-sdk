@@ -11,15 +11,15 @@ class DescribeAdviceServiceEnabledResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The message about the call result. Valid values:
-        # - **Success**: The request is successful. 
-        # - Specific error message: Returned when an exception occurs.
+        # The message returned for the call result. 
+        # - If the request is successful, **Success** is returned. 
+        # - If the request fails, the specific error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the advisory service is enabled. Valid values:
-        # - **True**: The advisory service is enabled. 
-        # - **False**: The advisory service is disabled.
+        # - **True**: Enabled. 
+        # - **False**: Disabled.
         self.result = result
 
     def validate(self):

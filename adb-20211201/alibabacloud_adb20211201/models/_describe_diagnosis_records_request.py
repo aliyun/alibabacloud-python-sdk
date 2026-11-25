@@ -28,117 +28,83 @@ class DescribeDiagnosisRecordsRequest(DaraModel):
         user_name: str = None,
     ):
         # The source IP address.
-        # 
-        # > Call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to view the resource groups, database names, usernames, and source IP addresses for the SQL statements that meet the specified query conditions.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements that meet the specified search conditions.
         self.client_ip = client_ip
         # The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
         # 
-        # > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to view the details of all clusters in your account, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the details of all clusters under your account, including the cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database where the SQL statement is executed.
-        # 
-        # > Call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to view the resource groups, database names, usernames, and source IP addresses for the SQL statements that meet the specified query conditions.
+        # The database in which the SQL statement is executed.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements that meet the specified search conditions.
         self.database = database
-        # The end of the time range to query. Specify the time in the UNIX timestamp format. The time must be in milliseconds.
-        # 
-        # > - The end time must be later than the start time.
-        # >
-        # > - The interval between the start time and the end time cannot exceed 24 hours.
+        # The end time of the query. The time is a UNIX timestamp in milliseconds.
+        # > * The end time must be later than the start time.
+        # > * The interval between the start time and the end time cannot exceed 24 hours.
         self.end_time = end_time
-        # Filters the queries by the keywords contained in the SQL statements.
+        # The keyword used to filter SQL statements.
         self.keyword = keyword
-        # The language of the file title and some error messages in the downloaded file. Valid values:
-        # 
+        # The language of the downloaded file title and some error messages. Valid values:
         # - **zh**: Simplified Chinese (default).
-        # 
         # - **en**: English.
-        # 
         # - **ja**: Japanese.
-        # 
         # - **zh-tw**: Traditional Chinese.
         self.lang = lang
-        # The maximum peak memory of the SQL statement. Unit: bytes.
+        # The Peak Volume of memory for the SQL statement. Unit: bytes.
         self.max_peak_memory = max_peak_memory
-        # The maximum scan size of the target SQL statement. Unit: bytes.
+        # The maximum scan size of the SQL statement. Unit: bytes.
         self.max_scan_size = max_scan_size
         # The minimum peak memory of the SQL statement. Unit: bytes.
         self.min_peak_memory = min_peak_memory
         # The minimum scan size of the SQL statement. Unit: bytes.
         self.min_scan_size = min_scan_size
-        # The sorting order of the SQL statements. This parameter is a JSON array that is ordered by the sequence of the input array. It contains the `Field` and `Type` fields. Example: `[{"Field":"StartTime", "Type": "desc" }]`. The fields are described as follows:
-        # 
-        # - `Field` specifies the field by which to sort the SQL statements. Valid values:
-        # 
-        #   - `StartTime`: the start time of the execution.
-        # 
-        #   - `Status`: the execution state.
-        # 
-        #   - `UserName`: the username.
-        # 
-        #   - `Cost`: the execution duration.
-        # 
-        #   - `PeakMemory`: the peak memory.
-        # 
-        #   - `ScanSize`: the amount of scanned data.
-        # 
-        #   - `Database`: the database name.
-        # 
-        #   - `ClientIp`: the source IP address.
-        # 
-        #   - `ResourceGroup`: the resource group.
-        # 
-        #   - `QueueTime`: the amount of time that the query waited in a queue.
-        # 
-        #   - `OutputRows`: the number of output rows.
-        # 
-        #   - `OutputDataSize`: the amount of output data.
-        # 
-        #   - `ResourceCostRank`: the ranking of the execution duration of an operator in the SQL statement. This field is returned only when `QueryCondition` is set to `{"Type":"status","Value":"running"}`.
-        # 
-        # - `Type` specifies the sorting type. Valid values (case-insensitive):
-        # 
-        #   - `Desc`: descending order.
-        # 
-        #   - `Asc`: ascending order.
+        # The sorting rules for SQL statements based on specified fields. The value is a JSON array that contains the Field and Type fields. The SQL statements are sorted in the order of the fields in the array. Example: `[{"Field":"StartTime", "Type": "desc" }]`.
+        # - Field: the name of the field by which you want to sort the SQL statements. Valid values:
+        #     - StartTime: the start time of the execution.
+        #     - Status: the execution status.
+        #     - UserName: the username.
+        #     - Cost: the execution duration.
+        #     - PeakMemory: the peak memory.
+        #     - ScanSize: the scan size.
+        #     - Database: the database name.
+        #     - ClientIp: the source IP address.
+        #     - ResourceGroup: the resource group.
+        #     - QueueTime: the queue time.
+        #     - OutputRows: the number of output rows.
+        #     - OutputDataSize: the output data size.
+        #     - ResourceCostRank: the ranking of the execution duration of internal operators in the SQL statement. This field is supported only when QueryCondition is set to `{"Type":"status","Value":"running"}`.
+        # - Type: the sorting type. Valid values (case-insensitive):
+        #     - Desc: descending order.
+        #     - Asc: ascending order.
         self.order = order
-        # The page number. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
         # - **30** (default)
-        # 
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The ID of the SQL pattern.
         self.pattern_id = pattern_id
-        # The conditions for the SQL query. This parameter is a JSON string that contains fields such as Type, `Value`, `Min`, and `Max`. The `Type` field indicates the query dimension. Valid values for `Type`: `maxCost`, `status`, and `cost`. The `Value`, `Min`, and `Max` fields specify the query range for the dimension. Valid values:
-        # 
-        # - `{"Type":"maxCost","Value":"100"}`: queries the details of the top 100 SQL statements that have the longest execution durations. The `Value` field can only be set to 100.
-        # 
-        # - `{"Type":"status","Value":"finished"}`: queries the details of completed SQL statements. You can also set `Value` to `running` or `failed` to query SQL statements that are running or have failed.
-        # 
-        # - `{"Type":"cost","Min":"10","Max":"200"}`: queries the details of SQL statements whose execution durations are between 10 ms and 200 ms. You can customize the minimum and maximum execution durations. Unit: milliseconds.
+        # The conditions for the SQL query. The value is a JSON string that contains fields such as Type, Value, Min, and Max. The Type field specifies the query dimension. Valid values: maxCost, status, and cost. The Value, Min, or Max field specifies the query range for the dimension. Valid values:
+        # - `{"Type":"maxCost","Value":"100"}`: queries the details of the top 100 SQL statements with the longest execution duration. Currently, the Value field can only be set to 100.
+        # - `{"Type":"status","Value":"finished"}`: queries the details of completed SQL statements. You can also set Value to running or failed to query the details of running or failed SQL statements.
+        # - `{"Type":"cost","Min":"10","Max":"200"}`: queries the details of SQL statements whose execution duration is between 10 milliseconds and 200 milliseconds. You can also customize the maximum and minimum execution duration in milliseconds.
         self.query_condition = query_condition
         # The region ID.
-        # 
-        # > Call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to view the regions and zones supported by AnalyticDB for MySQL, including region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the regions and zones supported by AnalyticDB for MySQL, including the region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The resource group to which the SQL statement belongs.
-        # 
-        # > Call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to view the resource groups, database names, usernames, and source IP addresses for the SQL statements that meet the specified query conditions.
+        # > You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements that meet the specified search conditions.
         self.resource_group = resource_group
-        # The start of the time range to query. Specify the time in the UNIX timestamp format. The time must be in milliseconds.
-        # 
-        # > Only data from the last 14 days can be queried.
+        # The start time of the query. The time is a UNIX timestamp in milliseconds.
+        # > You can only query data within the last 14 days.
         self.start_time = start_time
-        # The username used to execute the SQL statement.
-        # Call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to view the resource groups, database names, usernames, and source IP addresses for the SQL statements that meet the specified query conditions.
+        # The username that executes the SQL statement.
+        # You can call the [DescribeDiagnosisDimensions](https://help.aliyun.com/document_detail/308210.html) operation to query the resource group, database name, username, and source IP address of the SQL statements that meet the specified search conditions.
         self.user_name = user_name
 
     def validate(self):

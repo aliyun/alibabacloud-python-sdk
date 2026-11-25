@@ -30,11 +30,11 @@ class UpdateFormationCrawlerScheduleStateRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The scheduling state. Valid values:
+        # The schedule state. Valid values:
         # 
-        # - NORMAL: resume.
+        # - NORMAL: resumes the schedule.
         # 
-        # - DISABLED: pause.
+        # - DISABLED: pauses the schedule.
         # 
         # This parameter is required.
         self.schedule_state = schedule_state

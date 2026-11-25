@@ -15,23 +15,21 @@ class DescribeResultExportConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # API status or POP error code.
+        # The operation status code or POP error code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
-        # The HTTP response status code. A value of 200 indicates that the request was successful.
+        # The HTTP status code returned. A status code of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The returned message. Valid values:
-        # 
-        # *   The request succeeded, and the server returns **OK**.
-        # *   The request failed, and the server returns an error message.
+        # The message returned for the call result.
+        # - If the request is successful, **OK** is returned. 
+        # - If an exception occurs, the specific error message is returned.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values: Valid values:
-        # 
-        # *   **True: Succeeded.**
-        # *   **False: Failed.
+        # Indicates whether the request is successful. Valid values:
+        # - **True**: The request is successful.
+        # - **False**: The request failed.
         self.success = success
 
     def validate(self):
@@ -95,12 +93,12 @@ class DescribeResultExportConfigResponseBodyData(DaraModel):
     ):
         # The export type. Valid values:
         # 
-        # *   SLS: Indicates that the export destination is SLS.
-        # *   OSS: Indicates that the export destination is OSS.
+        # - SLS: The export destination is SLS.
+        # - OSS: The export destination is OSS.
         self.export_type = export_type
-        # The configured OSS export settings, returned when the export destination is OSS.
+        # The OSS information when the export type is OSS.
         self.oss_info = oss_info
-        # The configured SLS export settings, returned when the export destination is SLS.
+        # The SLS configurations when the export type is SLS.
         self.sls_info = sls_info
 
     def validate(self):
@@ -147,9 +145,9 @@ class DescribeResultExportConfigResponseBodyDataSlsInfo(DaraModel):
         resource_group: str = None,
         sls_project: str = None,
     ):
-        # The expiration period (in days) for the temporary Logstore automatically created during result set export. The Logstore is automatically deleted after expiration. The returned value is between 1 and 30 days (inclusive).
+        # The expiration time of the temporarily generated Logstore for result set export. Unit: days. The Logstore is automatically deleted after it expires. Minimum value: 1. Maximum value: 30.
         self.logstore_ttl = logstore_ttl
-        # The name of the resource group that runs the export SQL.
+        # The name of the resource group in which the export SQL statement is executed.
         self.resource_group = resource_group
         # The name of the SLS project.
         self.sls_project = sls_project
@@ -193,11 +191,11 @@ class DescribeResultExportConfigResponseBodyDataOssInfo(DaraModel):
         resource_group: str = None,
         result_file_ttl: int = None,
     ):
-        # The path of the OSS bucket to which the result sets are exported.
+        # The OSS path where the export results are stored.
         self.export_base_path = export_base_path
-        # The name of the resource group that runs the export SQL.
+        # The name of the resource group in which the export SQL statement is executed.
         self.resource_group = resource_group
-        # The expiration period (in days) for the OSS file. The returned value is between 1 and 30 days (inclusive).
+        # The expiration time of the OSS files. Unit: days. Minimum value: 1. Maximum value: 30.
         self.result_file_ttl = result_file_ttl
 
     def validate(self):

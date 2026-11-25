@@ -18,26 +18,26 @@ class DescribeWorkerDetectionRequest(DaraModel):
         start_time: str = None,
     ):
         # The cluster ID.
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL clusters in a region, including the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL clusters in a specific region, including the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end of the query time range. Specify the time in the <i>yyyy-MM-ddTHH:mmZ</i> format (UTC).
+        # The end time of the query. Specify the time in the <i>yyyy-MM-ddTHH:mmZ</i> format. The time must be in UTC.
         self.end_time = end_time
-        # The display language of suggestions. Valid values:
-        # - **zh**: simplified Chinese (default).
+        # The display language of the suggestions. Valid values:
+        # - **zh**: Simplified Chinese (default).
         # - **en**: English.
         self.lang = lang
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to query the region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to query region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The beginning of the query time range. Specify the time in the <i>yyyy-MM-ddTHH:mmZ</i> format (UTC).
+        # The start time of the query. Specify the time in the <i>yyyy-MM-ddTHH:mmZ</i> format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):

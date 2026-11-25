@@ -20,29 +20,27 @@ class ListResultExportJobHistoryResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HTTP status code.
+        # The operation status code or POP error code.
         self.code = code
-        # The response code. The status code 200 indicates that the request was successful.
+        # The HTTP status code returned. A status code of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The queried result set export jobs.
+        # The list details.
         self.items = items
-        # The returned message. Valid values:
-        # 
-        # *   If the request was successful, an **OK** message is returned.
-        # *   If the request failed, an error message is returned.
+        # The additional information about the call result. Valid values:
+        # - **Ok**: The request is normal.                                
+        # - Specific error code: An exception occurred.
         self.message = message
-        # The page number.
+        # The page number, which is the same as the value passed in the request.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries on the current page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -145,59 +143,56 @@ class ListResultExportJobHistoryResponseBodyItems(DaraModel):
         status: str = None,
         time_cost: int = None,
     ):
-        # The RAM user ID.
+        # The ID of the Resource Access Management (RAM) user.
         self.ali_uid = ali_uid
-        # The time when the result set export job was created. The time follows the ISO 8601 standard in the *yyyy-mm-ddThh:mm:ssZ* format. The time is displayed in UTC.
+        # The time when the result set export task was created. Specify the time in the <i>yyyy-mm-ddThh:mm:ssZ</i> format. The time must be in UTC.
         self.create_time = create_time
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (3.0) cluster.
         self.dbcluster_id = dbcluster_id
-        # The name of the database account that is associated with the RAM user.
+        # The name of the database account associated with the Resource Access Management (RAM) user.
         self.database_user = database_user
-        # The end time of the result set export job. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time is displayed in UTC.
-        # 
-        # >  The end time must be later than the start time.
+        # The end time of the query. Specify the time in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format. The time must be in UTC.
+        # > The end time must be later than the start time.
         self.end_time = end_time
-        # The engine that is used to execute the result set export job. Only XIHE is returned.
+        # The engine used to execute the task. Only XIHE is supported.
         self.engine = engine
-        # The unique identifier of the result set export job.
+        # The unique identifier of the result set export task.
         self.export_job_id = export_job_id
-        # The complete URL of the path to store the exported result set.
+        # The complete address of the result set.
         self.export_path = export_path
-        # The number of exported rows. This parameter is returned only when the request was successful.
+        # The number of exported rows. This parameter is returned only when the operation call is successful.
         self.export_rows = export_rows
-        # The type of the result set export job.
+        # The export type.
         self.export_type = export_type
-        # Indicates whether the result set export job has expired. Valid values:
+        # Indicates whether the task has expired. Valid values:
         # 
-        # *   **false**
-        # *   **true**
+        # - **false**: The task has not expired.
+        # - **true**: The task has expired.
         self.is_expired = is_expired
-        # The returned message. This parameter is returned only when the request failed.
+        # The error message of the SQL execution for the result set export. This message is returned only when the task fails.
         self.message = message
-        # The query ID that can be used for diagnostics.
-        # 
-        # >  You can call the [DescribeDiagnosisSQLInfo](https://help.aliyun.com/document_detail/612337.html) operation to query the execution information about a query.
+        # The SQL query ID returned for diagnostics.
+        # > You can call the [DescribeDiagnosisSQLInfo](https://help.aliyun.com/document_detail/612495.html) operation to diagnose the query.
         self.process_id = process_id
-        # The progress of the result set export job. Unit: %. Valid values: 0 to 100.
+        # The export progress. Unit: percentage (%). Valid values: 0 to 100.
         self.progress = progress
-        # The name of the resource group that runs the result set export job.
+        # The resource group in which the task is executed.
         self.resource_group = resource_group
         # The name of the database.
         self.schema = schema
-        # The SQL statement that is used in the result set export job.
+        # The details of the SQL statement used in the result set export task.
         self.sql = sql
-        # The start time of the result set export job. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+        # The start time of the task. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
-        # The execution status of the result set export job. Valid values:
-        # 
-        # 1.  **SUBMITTED**
-        # 2.  **RUNNING**
-        # 3.  **SUCCEEDED**
-        # 4.  **FAILED**
+        # The execution status of the export task. Valid values:
+        # 1. **SUBMITTED**: The task is submitted.
+        # 2. **RUNNING**: The task is running.
+        # 3. **SUCCEEDED**: The task succeeded.
+        # 4. **FAILED**: The task failed.
         self.status = status
-        # The amount of time consumed to export execution records. Unit: milliseconds.
+        # The time consumed for data export, in milliseconds.
         # 
-        # >  The value is the duration between the time when the result set export job starts and the time when the result set export job ends.
+        # > The time is calculated from the start of the data export task to the end of the export.
         self.time_cost = time_cost
 
     def validate(self):

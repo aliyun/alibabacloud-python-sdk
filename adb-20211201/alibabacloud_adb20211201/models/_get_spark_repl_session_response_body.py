@@ -56,25 +56,23 @@ class GetSparkReplSessionResponseBodyData(DaraModel):
         web_ui_address: str = None,
     ):
         # Indicates whether the session is active. Valid values:
-        # 
-        # *   true
-        # *   false
+        # - true: Active.
+        # - false: Inactive.
         self.active = active
-        # The ID of the Alibaba Cloud account that owns the cluster.
+        # The ID of the Alibaba Cloud account to which the instance belongs.
         self.aliyun_uid = aliyun_uid
-        # The attempt ID of the Spark application.
+        # The retry ID of the Spark application.
         self.attempt_id = attempt_id
         # The error message.
         self.error = error
-        # The ID of the session that executes the code.
+        # The ID of the session for code execution.
         self.session_id = session_id
-        # The status of the session. Valid values:
-        # 
-        # *   IDLE
-        # *   BUSY
-        # *   DEAD
+        # The current session status. Valid values:
+        # - IDLE: The session is idle.
+        # - BUSY: The session is busy and executing a task.
+        # - DEAD: The session is closed.
         self.state = state
-        # The URL of the web UI for the Spark application.
+        # The Web UI address of the Spark application.
         self.web_ui_address = web_ui_address
 
     def validate(self):

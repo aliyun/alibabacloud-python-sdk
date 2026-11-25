@@ -20,16 +20,15 @@ class DescribeAPSADBInstancesResponseBody(DaraModel):
         success: bool = None,
         total_count: str = None,
     ):
-        # The HTTP status code or the error code.
+        # The status code or POP error code.
         self.code = code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The queried clusters.
+        # The list of items.
         self.items = items
-        # The returned message. Valid values:
-        # 
-        # *   If the request was successful, a success message is returned.****
-        # *   If the request failed, an error message is returned.
+        # The additional information about the call result. Valid values:
+        # - If the request is normal, **Success** is returned. 
+        # - If the request is abnormal, a specific error code is returned.
         self.message = message
         # The page number.
         self.page_number = page_number
@@ -37,12 +36,11 @@ class DescribeAPSADBInstancesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -132,17 +130,17 @@ class DescribeAPSADBInstancesResponseBodyItems(DaraModel):
         storage_resource: int = None,
         zone_id: str = None,
     ):
-        # The specifications of the reserved computing resources.
+        # The specifications of reserved compute resources.
         self.compute_resource = compute_resource
         # The description of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (3.0) cluster.
         self.dbcluster_id = dbcluster_id
         # The status of the cluster.
         self.dbcluster_status = dbcluster_status
-        # The amount of remaining reserved computing resources that are available in the cluster.
+        # The remaining allocatable reserved compute resources of the cluster.
         self.reserved_acu = reserved_acu
-        # The specifications of the reserved storage resources.
+        # The specifications of reserved storage resources.
         self.storage_resource = storage_resource
         # The zone ID of the cluster.
         self.zone_id = zone_id

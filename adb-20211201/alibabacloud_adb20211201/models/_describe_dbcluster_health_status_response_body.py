@@ -15,25 +15,21 @@ class DescribeDBClusterHealthStatusResponseBody(DaraModel):
         request_id: str = None,
         worker: main_models.DescribeDBClusterHealthStatusResponseBodyWorker = None,
     ):
-        # Details of the authentication failure.
+        # The details of the authentication failure.
         self.access_denied_detail = access_denied_detail
-        # The health status of the instance access nodes.
+        # The list of instance access node statuses.
         self.cs = cs
-        # The health status of the executor groups.
+        # The list of health statuses for compute node groups.
         self.executor = executor
         # The health status of the cluster. Valid values:
-        # 
-        # - **RISK**: The cluster is at risk.
-        # 
-        # - **NORMAL**: The cluster is healthy.
-        # 
-        # - **UNAVAILABLE**: The cluster is unavailable.
-        # 
-        # > The cluster health status is considered **NORMAL** only if the instance access nodes, executor groups, and worker node groups are all **NORMAL**, and the instance is responsive. If any of these components has a **RISK** status, the cluster status is **RISK**. If any component has an **UNAVAILABLE** status, the cluster status is **UNAVAILABLE**.
+        # - **RISK**: At risk.
+        # - **NORMAL**: Healthy.
+        # - **UNAVAILABLE**: Unavailable.
+        # > If the instance access node status, compute node group health status, and storage node group health status are all **Healthy** and the instance health check succeeds, the cluster health status is **Healthy**. If any of the three statuses is **At risk**, the cluster health status is **At risk**. If any of the three statuses is **Unavailable**, the cluster health status is **Unavailable**.
         self.instance_status = instance_status
         # The request ID.
         self.request_id = request_id
-        # The health status of the worker node groups.
+        # The list of health statuses for storage node groups.
         self.worker = worker
 
     def validate(self):
@@ -103,21 +99,18 @@ class DescribeDBClusterHealthStatusResponseBodyWorker(DaraModel):
         status: str = None,
         unavailable_count: int = None,
     ):
-        # The number of healthy worker node groups.
+        # The number of healthy storage node groups.
         self.active_count = active_count
-        # The total number of worker node groups.
+        # The total number of storage node groups.
         self.expected_count = expected_count
-        # The number of worker node groups at risk.
+        # The number of storage node groups at risk.
         self.risk_count = risk_count
-        # The health status of the worker node groups. Valid values:
-        # 
-        # - **RISK**: The worker node groups are at risk.
-        # 
-        # - **NORMAL**: The worker node groups are healthy.
-        # 
-        # - **UNAVAILABLE**: The worker node groups are unavailable.
+        # The health status of storage node groups. Valid values:
+        # - **RISK**: At risk.
+        # - **NORMAL**: Healthy.
+        # - **UNAVAILABLE**: Unavailable.
         self.status = status
-        # The number of unavailable worker node groups.
+        # The number of unavailable storage node groups.
         self.unavailable_count = unavailable_count
 
     def validate(self):
@@ -173,21 +166,18 @@ class DescribeDBClusterHealthStatusResponseBodyExecutor(DaraModel):
         status: str = None,
         unavailable_count: int = None,
     ):
-        # The number of healthy executor nodes.
+        # The number of healthy nodes.
         self.active_count = active_count
-        # The total number of executor nodes.
+        # The total number of compute nodes.
         self.expected_count = expected_count
-        # The number of executor nodes at risk.
+        # The number of nodes at risk.
         self.risk_count = risk_count
-        # The health status of the executor groups. Valid values:
-        # 
-        # - **RISK**: The executor groups are at risk.
-        # 
-        # - **NORMAL**: The executor groups are healthy.
-        # 
-        # - **UNAVAILABLE**: The executor groups are unavailable.
+        # The health status of compute node groups. Valid values:
+        # - **RISK**: At risk.
+        # - **NORMAL**: Healthy.
+        # - **UNAVAILABLE**: Unavailable.
         self.status = status
-        # The number of unavailable executor nodes.
+        # The number of unavailable nodes.
         self.unavailable_count = unavailable_count
 
     def validate(self):
@@ -243,21 +233,18 @@ class DescribeDBClusterHealthStatusResponseBodyCS(DaraModel):
         status: str = None,
         unavailable_count: int = None,
     ):
-        # The number of healthy instance access nodes.
+        # The number of healthy nodes.
         self.active_count = active_count
-        # The total number of instance access nodes.
+        # The total number of access nodes.
         self.expected_count = expected_count
-        # The number of instance access nodes at risk.
+        # The number of nodes at risk.
         self.risk_count = risk_count
-        # The health status of the instance access nodes. Valid values:
-        # 
-        # - **RISK**: The instance access nodes are at risk.
-        # 
-        # - **NORMAL**: The instance access nodes are healthy.
-        # 
-        # - **UNAVAILABLE**: The instance access nodes are unavailable.
+        # The status of instance access nodes. Valid values:
+        # - **RISK**: At risk.
+        # - **NORMAL**: Healthy.
+        # - **UNAVAILABLE**: Unavailable.
         self.status = status
-        # The number of unavailable instance access nodes.
+        # The number of unavailable nodes.
         self.unavailable_count = unavailable_count
 
     def validate(self):

@@ -16,15 +16,15 @@ class DescribeAccountPrivilegesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # A list of privilege details.
+        # The list of permission details.
         self.data = data
-        # The page number. This value matches the `PageNumber` input parameter.
+        # The page number, which is the same as the page number in the request.
         self.page_number = page_number
-        # The number of entries per page. This value matches the `PageSize` input parameter.
+        # The number of entries per page, which is the same as the page size in the request.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total count of privileges at the specified privilege level.
+        # The total number of permissions that the user has at the privilege level.
         self.total_count = total_count
 
     def validate(self):
@@ -86,11 +86,11 @@ class DescribeAccountPrivilegesResponseBodyData(DaraModel):
         privilege_type: str = None,
         privileges: List[str] = None,
     ):
-        # The privilege object, which specifies the database, table, column, and description.
+        # The privilege object, which is a triplet of database, table, and column, along with additional description information.
         self.privilege_object = privilege_object
-        # The privilege level. Valid values: `Global`, `Database`, `Table`, and `Column`. The `DescribeEnabledPrivileges` API returns this value.
+        # The privilege level, which can be Global, Databae, Table, or Column. This value is returned by the DescribeEnabledPrivileges operation.
         self.privilege_type = privilege_type
-        # A list of privileges.
+        # The list of permissions.
         self.privileges = privileges
 
     def validate(self):

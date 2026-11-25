@@ -16,10 +16,10 @@ class DescribeAdbMySqlTablesResponseBody(DaraModel):
         tables: List[str] = None,
     ):
         # The additional information about the call result. Valid values:
-        # - If the request is successful, **Success** is returned.
-        # - If the request fails, a specific error code is returned.
+        # - **Success**: The request is successful. 
+        # - Specific error code: The request is abnormal.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The name of the database.
         self.schema = schema

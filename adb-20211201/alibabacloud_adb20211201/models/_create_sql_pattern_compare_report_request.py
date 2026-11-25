@@ -15,26 +15,26 @@ class CreateSqlPatternCompareReportRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The end time of time window 2. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format.
+        # The end time of the second time window. The time is in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
         # 
         # This parameter is required.
         self.compare_end_time = compare_end_time
-        # The start time of time window 2. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format.
+        # The start time of the second time window. The time is in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
         # 
         # This parameter is required.
         self.compare_start_time = compare_start_time
-        # The ID of the AnalyticDB for MySQL cluster.
+        # The ID of the AnalyticDB for MySQL instance.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end time of time window 1. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format.
+        # The end time of the first time window. The time is in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
         # 
         # This parameter is required.
         self.end_time = end_time
         # The report type. Valid values:
         # 
-        # - `NEW`: Patterns that are new in time window 2.
-        # - `CHANGED`: Patterns that exist in both time windows and have an increased average value in at least one metric.
+        # - `NEW`: SQL patterns added in the second time window
+        # - `CHANGED`: SQL patterns that exist in both time windows and have an increased average value in at least one dimension
         # 
         # This parameter is required.
         self.pattern_type = pattern_type
@@ -42,7 +42,7 @@ class CreateSqlPatternCompareReportRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start time of time window 1. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format.
+        # The start time of the first time window. The time is in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
         # 
         # This parameter is required.
         self.start_time = start_time

@@ -11,11 +11,11 @@ class CreateFormationCrawlerRequest(DaraModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
-        # The JSON string that contains the complete crawler configuration. This is the most important parameter. For the internal JSON structure, see the CrawlerInfo structure definition section.
+        # The JSON string that contains the complete configuration information of the crawler. This field is the core parameter. For more information about its internal JSON structure, see the CrawlerInfo structure definition section.
         # 
         # This parameter is required.
         self.crawler_info = crawler_info
-        # The ADB instance ID. This specifies the resource-level scope of the operation.
+        # The ID of the ADB instance. This parameter specifies the resource-level scope of the operation.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

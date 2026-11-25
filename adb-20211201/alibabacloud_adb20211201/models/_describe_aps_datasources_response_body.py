@@ -16,7 +16,7 @@ class DescribeApsDatasourcesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The data sources.
+        # The array of data sources.
         self.aps_datasources = aps_datasources
         # The page number.
         self.page_number = page_number
@@ -24,7 +24,7 @@ class DescribeApsDatasourcesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of returned entries.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -95,11 +95,11 @@ class DescribeApsDatasourcesResponseBodyApsDatasources(DaraModel):
         self.datasource_description = datasource_description
         # The ID of the data source.
         self.datasource_id = datasource_id
-        # The name of the data source.
+        # The name of the target data source.
         self.datasource_name = datasource_name
         # The type of the data source.
         self.datasource_type = datasource_type
-        # Indicates whether a job is using the data source.
+        # Indicates whether a task is using the data source.
         self.has_job = has_job
 
     def validate(self):

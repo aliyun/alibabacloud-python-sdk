@@ -33,81 +33,63 @@ class DescribeSparkAuditLogRecordsRequest(DaraModel):
         self.client_ip = client_ip
         # The cluster ID.
         # 
-        # > 
-        # 
-        # *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query cluster IDs.
+        # > - You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Query end time. The end time must be later than the start time, and the interval between them must be less than 1 day. Format: yyyy-MM-ddTHH:mmZ (UTC time).
+        # The end time of the query. The end time must be later than the start time, and the interval between the start time and the end time must be less than one day.
+        # Format: yyyy-MM-ddTHH:mmZ (UTC).
         self.end_time = end_time
-        # Sort the SQL statements based on specified fields. The format is a JSON array that preserves order, and composite sorting is performed according to the sequence of objects in the array. Each object contains two fields: `Field` and `Type`. For example:`[{"Field":"CreateTime", "Type": "desc" }]`. Where:
+        # The sorting rule for SQL statements based on specified fields. The value is a JSON array that specifies composite sorting in the order of the input array. The array contains the `Field` and `Type` fields. Example: `[{"Field":"TotalTime", "Type": "desc" }]`.
         # 
-        # *   `Field` specifies the field that is used to sort the SQL statements. Valid values:
+        # - `Field`: the name of the field to sort by. Valid values:
+        #     - `ResourceGroupName`: the name of the resource group.
+        #     - `Status`: the execution status of the SQL statement.
+        #     - `User`: the username that executed the SQL statement.
+        #     - `ExecuteTime`: the start time of the SQL execution.
+        #     - `TotalTime`: the execution duration of the SQL statement.
+        #     - `ProcessId`: the query ID.
+        #     - `ClientIp`: the source IP address.
+        #     - `StatementSource`: the source from which the query is initiated.
         # 
-        #     *   `ResourceGroupName`: The name of the resource group.
-        #     *   `Status` :SQL execution status.
-        #     *   `User`: The username that is used to execute the SQL statement.
-        #     *   `ExecuteTime`: The start time of SQL execution.
-        #     *   `TotalTime`: The amount of time consumed to execute the SQL statement.
-        #     *   `ProcessId`: Query ID.
-        #     *   `ClientIp`: The source IP address.
-        #     *   `StatementSource`: The source from which the query was initiated.
-        # 
-        # *   `Type` specifies the sorting order. Valid values (case-insensitive):
-        # 
-        #     *   `Desc`: Descending order.
-        #     *   `Asc`: Ascending order.
+        # - `Type`: the sorting type. Valid values (case-insensitive):
+        #     - `Desc`: descending order.
+        #     - `Asc`: ascending order.
         self.order = order
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
         # The query ID.
         self.process_id = process_id
-        # This parameter is deprecated.
+        # **[Deprecated]** This parameter is deprecated.
         self.proxy_user = proxy_user
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to query the available regions and zones, including region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to view the regions and zones supported by AnalyticDB for MySQL, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group name.
-        # 
-        # >  You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/612410.html) operation to query the resource group ID within a cluster.
+        # The name of the resource group.
+        # > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/612410.html) operation to view the resource group ID of the cluster.
         self.resource_group_name = resource_group_name
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The keyword in the SQL statement.
         self.sqltext = sqltext
-        # Query start time. Format: *yyyy-MM-ddTHH:mmZ* (UTC time).
-        # 
-        # >  We recommend that you set the query start time to any point in time within 30 days.
+        # The start time of the query. Format: <i>yyyy-MM-ddTHH:mmZ</i> (UTC).
+        # > Set the start time to a point in time within the last 30 days.
         self.start_time = start_time
-        # The ID of the statement.
+        # The statement ID.
         self.statement_id = statement_id
-        # The source from which the query was initiated.
-        # 
-        # Valid values:
-        # 
-        # *   SQL_EDITOR: SQL_EDITOR.
-        # *   JDBC: JDBC.
+        # The source from which the query is initiated.
         self.statement_source = statement_source
         # The execution status of the SQL statement.
-        # 
-        # Valid values:
-        # 
-        # *   cancel: The task is canceled .
-        # *   finished: The execution succeeds .
-        # *   error:The execution fails .
-        # *   timeout: The execution timed out .
         self.status = status
-        # The duration of the SQL statement. Unit: milliseconds.
+        # The execution duration of the SQL statement. Unit: milliseconds.
         self.total_time = total_time
-        # The username that is used to execute SQL statements.
+        # The username that executed the SQL statement.
         self.user = user
 
     def validate(self):

@@ -181,7 +181,7 @@ class CreateApsDatasoureRequestSlsInfo(DaraModel):
     ):
         # Specifies whether cross-account access is used.
         self.across = across
-        # The name of the cross-account role.
+        # The cross-account role name.
         self.across_role = across_role
         # The cross-account UID.
         self.across_uid = across_uid
@@ -189,7 +189,7 @@ class CreateApsDatasoureRequestSlsInfo(DaraModel):
         self.project = project
         # The region ID of the source cluster.
         self.source_region_id = source_region_id
-        # The Simple Log Service Logstore.
+        # The Simple Log Service (SLS) Logstore.
         self.store = store
 
     def validate(self):
@@ -365,7 +365,7 @@ class CreateApsDatasoureRequestPolarDBMysqlInfo(DaraModel):
         self.across_role = across_role
         # The cross-account UID.
         self.across_uid = across_uid
-        # The endpoint of the private custom RDS instance.
+        # The private custom RDS endpoint.
         self.connect_url = connect_url
         # The instance ID.
         self.instance_id = instance_id
@@ -454,7 +454,7 @@ class CreateApsDatasoureRequestKafkaInfo(DaraModel):
     ):
         # The Kafka instance ID.
         self.kafka_cluster_id = kafka_cluster_id
-        # The name of the allocated Kafka topic.
+        # The assigned Kafka topic name.
         self.kafka_topic = kafka_topic
 
     def validate(self):

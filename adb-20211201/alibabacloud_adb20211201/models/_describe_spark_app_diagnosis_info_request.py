@@ -14,26 +14,25 @@ class DescribeSparkAppDiagnosisInfoRequest(DaraModel):
     ):
         # The application ID.
         # 
-        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
+        # > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
         # 
         # This parameter is required.
         self.app_id = app_id
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the information of all clusters in the specified region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The language in which you want to display the results. Valid values:
+        # The language of the response. Valid values: 
         # 
-        # *   en: English.
-        # *   zh (default): Chinese.
+        # - en: English. 
+        # - zh: Chinese. This is the default value.
         # 
         # This parameter is required.
         self.language = language
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to view the regions and zones supported by AnalyticDB for MySQL, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

@@ -19,18 +19,16 @@ class DescribeInclinedNodesRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The language of file titles and error messages. Valid values:
-        # 
-        # *   **zh**: simplified Chinese.
-        # *   **en**: English.
-        # *   **ja**: Japanese.
-        # *   **zh-tw**: traditional Chinese.
+        # Specifies the language for the title of the downloaded file and some error messages. Valid values:
+        # - **zh**: Simplified Chinese.
+        # - **en**: English.
+        # - **ja**: Japanese.
+        # - **zh-tw**: Traditional Chinese.
         self.lang = lang
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

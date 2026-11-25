@@ -22,27 +22,27 @@ class ModifyApsDatasoureShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The description of the data source.
+        # The data source description.
         self.datasource_description = datasource_description
         # The data source ID.
         # 
         # This parameter is required.
         self.datasource_id = datasource_id
-        # The name of the data source.
+        # The data source name.
         self.datasource_name = datasource_name
-        # The information about the Kafka instance.
+        # The Kafka data source information.
         self.kafka_info_shrink = kafka_info_shrink
-        # The lakehouse ID.
+        # The Lakehouse ID.
         self.lakehouse_id_shrink = lakehouse_id_shrink
-        # The parameter is no longer supported.
+        # The deprecated data source information.
         self.polar_dbmysql_info_shrink = polar_dbmysql_info_shrink
-        # The parameter is no longer supported.
+        # The deprecated data source information.
         self.rds_mysql_info_shrink = rds_mysql_info_shrink
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The information about Simple Log Service (SLS).
+        # The Simple Log Service (SLS) information.
         self.sls_info_shrink = sls_info_shrink
 
     def validate(self):

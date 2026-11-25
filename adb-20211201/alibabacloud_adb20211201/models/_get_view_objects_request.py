@@ -26,18 +26,20 @@ class GetViewObjectsRequest(DaraModel):
         self.filter_owner = filter_owner
         # The view name.
         self.filter_view_name = filter_view_name
-        # The view type. Valid values:
+        # The view type.
+        # 
+        # Valid values:
         # - VIRTUAL_VIEW
         # - MATERIALIZED_VIEW
         # 
-        # Default value: empty.
+        # Default value: null.
         self.filter_view_type = filter_view_type
         # The sort field.
-        # Valid values for the sort type:
+        # Valid values for Type:
         # - Asc
         # - Desc
         # 
-        # Valid values for the sort field:
+        # Valid values for Field:
         # - ViewName
         # - CreateTime
         # - UpdateTime
@@ -57,7 +59,7 @@ class GetViewObjectsRequest(DaraModel):
         self.region_id = region_id
         # The database name.
         self.schema_name = schema_name
-        # Specifies whether to display the base table information of materialized views.
+        # Specifies whether to display the base table information of the materialized view.
         self.show_mv_base_table = show_mv_base_table
 
     def validate(self):

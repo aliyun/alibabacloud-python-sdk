@@ -25,7 +25,7 @@ class DescribeSparkSQLDiagnosisListResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The SQL diagnostics information collection.
+        # The collection of SQL diagnostic information.
         self.sqldiagnosis_list = sqldiagnosis_list
         # The total number of entries.
         self.total_count = total_count
@@ -107,7 +107,7 @@ class DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList(DaraModel):
         self.app_id = app_id
         # The actual running time. Unit: milliseconds.
         self.elapsed_time = elapsed_time
-        # The internal query execution ID within the Spark application.
+        # The internal query execution ID of the Spark application.
         self.inner_query_id = inner_query_id
         # The maximum operator execution time. Unit: milliseconds.
         self.max_exclusive_time = max_exclusive_time
@@ -121,10 +121,10 @@ class DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList(DaraModel):
         self.start_time = start_time
         # The final execution state of the query. Valid values:
         # 
-        # - COMPLETED: The query is completed.
-        # - CANCELED: The query is canceled.
-        # - ABORTED: The query is aborted.
-        # - FAILED: The query failed.
+        # - COMPLETED: completed.
+        # - CANCELED: canceled.
+        # - ABORTED: aborted.
+        # - FAILED: failed.
         self.state = state
         # The unique ID of the code block in the Spark job.
         self.statement_id = statement_id

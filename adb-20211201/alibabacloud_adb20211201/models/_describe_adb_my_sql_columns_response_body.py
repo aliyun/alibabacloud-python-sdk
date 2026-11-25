@@ -22,8 +22,8 @@ class DescribeAdbMySqlColumnsResponseBody(DaraModel):
         self.column_count = column_count
         # The column information.
         self.columns = columns
-        # The additional information about the call result. Valid values:
-        # - If the request is successful, **Success** is returned.
+        # The additional information about the call result.
+        # - If the request is successful, **Success** is returned. 
         # - If the request fails, a specific error code is returned.
         self.message = message
         # The ID of the request.
@@ -108,7 +108,7 @@ class DescribeAdbMySqlColumnsResponseBodyColumns(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The column comment.
+        # The comment of the column.
         self.comment = comment
         # The name of the column.
         self.name = name

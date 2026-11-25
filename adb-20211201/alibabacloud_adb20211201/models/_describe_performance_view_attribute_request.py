@@ -25,7 +25,7 @@ class DescribePerformanceViewAttributeRequest(DaraModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the supported regions and zones, including region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query information about supported regions and zones, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

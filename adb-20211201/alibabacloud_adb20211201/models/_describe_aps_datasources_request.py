@@ -16,7 +16,7 @@ class DescribeApsDatasourcesRequest(DaraModel):
         region_id: str = None,
         start_time: str = None,
     ):
-        # The ADB instance ID. This parameter is required. You can invoke the DescribeDBClusters operation to query the cluster ID in the specified region.
+        # The ADB instance ID. This parameter is required when you invoke the operation. You can invoke the DescribeDBClusters operation to query the cluster ID in the target region.
         self.dbcluster_id = dbcluster_id
         # The name of the data source.
         self.datasource_name = datasource_name

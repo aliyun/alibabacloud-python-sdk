@@ -19,7 +19,7 @@ class DescribeJobResourceUsageRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i> (UTC time).
+        # The end time of the query, which must be later than the start time. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i> (UTC time).
         # 
         # This parameter is required.
         self.end_time = end_time

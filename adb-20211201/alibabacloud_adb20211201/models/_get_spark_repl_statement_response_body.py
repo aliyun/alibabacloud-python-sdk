@@ -61,40 +61,33 @@ class GetSparkReplStatementResponseBodyData(DaraModel):
         start_time: int = None,
         statement_id: int = None,
     ):
-        # The ID of the Alibaba Cloud account that owns the cluster.
+        # The ID of the Alibaba Cloud account to which the instance belongs.
         self.aliyun_uid = aliyun_uid
-        # The code that is executed.
+        # The executed code.
         self.code = code
-        # The code execution status. Valid values:
-        # 
-        # *   CANCELLED
-        # *   RUNNING
-        # *   SUCCEEDED
-        # *   ERROR
+        # The execution status of the code. Valid values:
+        # - CANCELLED: The execution is canceled.
+        # - RUNNING: The execution is in progress.
+        # - SUCCEEDED: The execution is completed.
+        # - ERROR: The execution failed.
         self.code_state = code_state
-        # The code type. Valid values:
-        # 
-        # *   PYTHON
-        # *   SCALA
+        # The type of the code. Valid values:
+        # - PYTHON
+        # - SCALA
         self.code_type = code_type
-        # The column names.
+        # The array of column names.
         self.columns = columns
-        # The end time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The end time of the task. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The error message.
         self.error = error
-        # The code execution result, which is a JSON string.
+        # The output result, which is a string in JSON format.
         self.output = output
-        # The execution result type.
-        # 
-        # Valid values:
-        # 
-        # *   TABLE
-        # *   TEXT
+        # The type of the output result.
         self.output_type = output_type
-        # The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # The start time of the task. The value is a UNIX timestamp in milliseconds.
         self.start_time = start_time
-        # The unique ID of the code block in the Spark job.
+        # The unique ID of the code block in this Spark job.
         self.statement_id = statement_id
 
     def validate(self):

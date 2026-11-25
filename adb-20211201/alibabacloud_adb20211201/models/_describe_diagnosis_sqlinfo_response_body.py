@@ -14,11 +14,11 @@ class DescribeDiagnosisSQLInfoResponseBody(DaraModel):
         request_id: str = None,
         stage_infos: List[main_models.DescribeDiagnosisSQLInfoResponseBodyStageInfos] = None,
     ):
-        # The execution details of the SQL statement, including the detailed SQL statement, statistics information, execution plan, and operator information.
+        # The execute details of the SQL statement, including the detailed SQL statement, statistics information, execute plan, and operator information.
         self.diagnosis_sqlinfo = diagnosis_sqlinfo
         # The request ID.
         self.request_id = request_id
-        # The stage-level execution information of the query.
+        # The staged execution information of the query.
         self.stage_infos = stage_infos
 
     def validate(self):
@@ -75,22 +75,23 @@ class DescribeDiagnosisSQLInfoResponseBodyStageInfos(DaraModel):
         stage_id: str = None,
         state: str = None,
     ):
+        # The type of the SQL execution engine.
         self.execution_type = execution_type
-        # The total input data size of the stage, in bytes.
+        # The total amount of input data for the stage. Unit: bytes.
         self.input_data_size = input_data_size
-        # The total number of input rows in the stage.
+        # The total number of input rows for the stage.
         self.input_rows = input_rows
-        # The cumulative operator duration of the stage, in milliseconds.
+        # The cumulative execution duration of operators for the stage. Unit: milliseconds.
         self.operator_cost = operator_cost
-        # The total output data size of the stage, in bytes.
+        # The total amount of output data for the stage. Unit: bytes.
         self.output_data_size = output_data_size
-        # The total number of output rows in the stage.
+        # The total number of output rows for the stage.
         self.output_rows = output_rows
-        # The total peak memory of the stage, in bytes.
+        # The peak memory usage for the stage. Unit: bytes.
         self.peak_memory = peak_memory
         # The execution progress of the stage.
         self.progress = progress
-        # StageID。
+        # The stage ID.
         self.stage_id = stage_id
         # The status of the stage.
         self.state = state

@@ -18,11 +18,11 @@ class GetTableResponseBody(DaraModel):
         self.code = code
         # The error message.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the request was successful.
         self.success = success
-        # The detailed table information.
+        # The details of the table.
         self.table = table
 
     def validate(self):

@@ -12,10 +12,9 @@ class GetSparkReplStatementRequest(DaraModel):
         statement_id: int = None,
     ):
         # The application ID.
-        # 
-        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query Spark application IDs.
+        # > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query the Spark application ID.
         self.app_id = app_id
-        # The ID of the session that executes the code.
+        # The ID of the session in which the code is executed.
         self.session_id = session_id
         # The unique ID of the code block in the Spark job.
         self.statement_id = statement_id

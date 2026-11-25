@@ -17,36 +17,35 @@ class DescribeSqlPatternRequest(DaraModel):
         type: str = None,
     ):
         # The cluster ID.
-        # > You can call the DescribeDBClusters operation to query the IDs of all clusters in a specified region.
-        # [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html)
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in a specified region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies the sorting of query results by a specified field. The format is a JSON character string, such as `[{"Field":"Pattern","Type":"Asc"}]`. Parameters:
-        # - Field: the sorting field. Valid values:
-        #     - Pattern: SQL pattern.
-        #     - AccessIP: client IP address.
-        #     - User: username.
-        #     - QueryCount: total number of queries.
-        #     - AvgPeakMemory: average peak memory. Unit: KB.
-        #     - MaxPeakMemory: Peak Volume memory. Unit: KB.
-        #     - AvgCpuTime: average computing duration. Unit: milliseconds.
-        #     - MaxCpuTime: maximum computing duration. Unit: milliseconds.
-        #     - AvgStageCount: average number of stages.
-        #     - MaxStageCount: maximum number of stages.
-        #     - AvgTaskCount: average number of tasks.
-        #     - MaxTaskCount: maximum number of tasks.
-        #     - AvgScanSize: average scan size. Unit: KB.
-        #     - MaxScanSize: maximum scan size. Unit: KB.
+        # Sorts the query results by a specified field. The format is a JSON character string, such as `[{"Field":"Pattern","Type":"Asc"}]`. Parameters:
+        # - `Field`: the sorting field. Valid values:
+        #     - `Pattern`: SQL pattern.
+        #     - `AccessIP`: client IP address.
+        #     - `User`: username.
+        #     - `QueryCount`: total number of queries.
+        #     - `AvgPeakMemory`: average peak memory usage. Unit: KB.
+        #     - `MaxPeakMemory`: Peak Volume memory. Unit: KB.
+        #     - `AvgCpuTime`: average computing duration. Unit: milliseconds.
+        #     - `MaxCpuTime`: maximum computing duration. Unit: milliseconds.
+        #     - `AvgStageCount`: average number of stages.
+        #     - `MaxStageCount`: maximum number of stages.
+        #     - `AvgTaskCount`: average number of tasks.
+        #     - `MaxTaskCount`: maximum number of tasks.
+        #     - `AvgScanSize`: average scanned data size. Unit: KB.
+        #     - `MaxScanSize`: maximum scanned data size. Unit: KB.
         # 
-        # - Type: the sorting method. Valid values:
-        #     - Asc: ascending sorting.
-        #     - Desc: descending sorting.
+        # - `Type`: the sorting method. Valid values:
+        #     - `Asc`: ascending sorting.
+        #     - `Desc`: descending sorting.
         # 
-        # > - If no Settings are specified for this parameter, the results are sorted in ascending order by the Pattern field by default.
-        # - To perform sorting by the AccessIP field, you must set the Type parameter to accessip. To perform sorting by the User field, you must leave the Type parameter empty or set it to user.
+        # > - If the Settings are not specified, the results are sorted in ascending order by the `Pattern` field by default.
+        # - To sort by the `AccessIP` field, you must set the `Type` parameter to `accessip`. To sort by the `User` field, you must leave the `Type` parameter empty or set it to `user`.
         self.order = order
-        # The page number. Valid values: integers greater than 0 and no greater than the maximum value of the Integer type.
+        # The page number. Valid values: integers greater than 0 and less than or equal to the maximum value of the Integer type.
         # Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
@@ -60,16 +59,16 @@ class DescribeSqlPatternRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         # The keyword that the SQL pattern must contain.
-        # > If this parameter is not specified, the details of all SQL patterns for the cluster on the date specified by the StartTime parameter are returned by default.
+        # > If this parameter is not specified, the details of all SQL patterns for the cluster on the date specified by the `StartTime` parameter are returned by default.
         self.sql_pattern = sql_pattern
-        # The start date of the query. The time is in UTC and formatted as yyyy-MM-dd.
-        # > You can only query data within the last 30 days.
+        # The start date for the query. The time is in UTC and formatted as yyyy-MM-dd.
+        # > Only data from the last 30 days can be queried.
         self.start_time = start_time
-        # Aggregates SQL patterns by a specified dimension. Valid values:
-        #  - user: aggregates by user.
-        #  - accessip: aggregates by access IP address.
+        # The dimension by which to aggregate SQL patterns. Valid values:
+        #  - `user`: aggregates by user.
+        #  - `accessip`: aggregates by access IP address.
         # 
-        # > If this parameter is not specified, SQL patterns are aggregated by user by default.
+        # > If this parameter is not specified, SQL patterns are aggregated by the `user` dimension by default.
         self.type = type
 
     def validate(self):

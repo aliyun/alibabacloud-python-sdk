@@ -15,7 +15,7 @@ class AddKnowledgeFileRequest(DaraModel):
         tags: str = None,
         upload_user: str = None,
     ):
-        # The AnalyticDB for MySQL cluster ID.
+        # The ID of the AnalyticDB for MySQL cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -25,13 +25,13 @@ class AddKnowledgeFileRequest(DaraModel):
         self.file_location = file_location
         # The file type.
         self.file_type = file_type
-        # Specifies whether the path is a folder.
+        # Specifies whether the object is a directory.
         self.is_dir = is_dir
         # The credibility or weight of the file.
         self.priority = priority
-        # The file tags in JSON format.
+        # The tags of the file, in JSON format.
         self.tags = tags
-        # The user who uploads the knowledge base file.
+        # The user who uploads the file to the knowledge base.
         self.upload_user = upload_user
 
     def validate(self):

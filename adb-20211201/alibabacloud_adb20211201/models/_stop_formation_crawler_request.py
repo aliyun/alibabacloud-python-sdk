@@ -12,15 +12,15 @@ class StopFormationCrawlerRequest(DaraModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
-        # The task ID.
+        # The ID of the task.
         # 
         # This parameter is required.
         self.crawler_task_id = crawler_task_id
-        # The task name.
+        # The name of the task.
         # 
         # This parameter is required.
         self.crawler_task_name = crawler_task_name
-        # The instance ID.
+        # The ID of the instance.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

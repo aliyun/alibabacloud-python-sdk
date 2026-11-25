@@ -24,37 +24,35 @@ class DescribeSparkAppDiagnosisInfoResponseBody(DaraModel):
         started_time: int = None,
         state: str = None,
     ):
-        # The information about the request denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
         # The application ID.
-        # 
-        # >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
+        # > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
         self.app_id = app_id
-        # The CPU utilization. Unit: %.
+        # The CPU utilization. Unit: percentage (%).
         self.cpu_utilization = cpu_utilization
-        # The queried diagnostic information.
+        # The list of Spark analysis information.
         self.diagnosis_info_list = diagnosis_info_list
-        # The execution duration of the application. Unit: milliseconds.
+        # The execution duration of the Spark application. Unit: milliseconds.
         self.duration_in_millis = duration_in_millis
-        # The amount of time consumed by the Java virtual machine to perform garbage collection operations. Unit: milliseconds.
+        # The time consumed by the Java Virtual Machine (JVM) to perform garbage collection. Unit: milliseconds.
         self.jvmgc_cost_in_millis = jvmgc_cost_in_millis
         # The peak memory usage. Unit: bytes.
         self.peak_memory_in_byte = peak_memory_in_byte
         # The request ID.
         self.request_id = request_id
-        # The amount of data used for shuffle reads. Unit: bytes.
+        # The amount of data read during the shuffle process. Unit: bytes.
         self.shuffle_read_in_byte = shuffle_read_in_byte
-        # The amount of data used for shuffle writes. Unit: bytes.
+        # The amount of data written during the shuffle process. Unit: bytes.
         self.shuffle_write_in_byte = shuffle_write_in_byte
-        # The amount of data spilled to disks when the memory is insufficient. Unit: bytes.
+        # The data volume spilled to disk when out of memory. Unit: bytes.
         self.spill_in_byte = spill_in_byte
-        # The time when the application started to be executed.
+        # The start time of the execution.
         self.started_time = started_time
-        # The status of the asynchronous import or export job. Valid values:
-        # 
-        # *   **RUNNING**
-        # *   **FINISHED**
-        # *   **FAILED**
+        # The status of the asynchronous import or export task to query. Valid values:
+        # * **RUNNING**: The task is in progress.
+        # * **FINISHED**: The task succeeded.
+        # * **FAILED**: The task failed.
         self.state = state
 
     def validate(self):

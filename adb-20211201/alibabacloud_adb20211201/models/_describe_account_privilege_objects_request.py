@@ -21,25 +21,26 @@ class DescribeAccountPrivilegeObjectsRequest(DaraModel):
         # 
         # This parameter is required.
         self.account_name = account_name
-        # The column name that is used to filter columns.
+        # The column name used to filter the results.
         self.column_privilege_object = column_privilege_object
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The database name that is used to filter databases.
+        # The database name used to filter the results.
         self.database_privilege_object = database_privilege_object
-        # The page number. Pages start from page 1. Default value: 1.
+        # The page number. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 20.
+        # The maximum number of entries per page. Default value: 20.
         self.page_size = page_size
-        # The permission level. Valid values: Database, Table, and Column. Global is not supported.
+        # The privilege level. Only the Database, Table, and Column levels are supported. The Global level is not supported.
         self.privilege_type = privilege_type
-        # The region ID of the cluster.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The table name that is used to filter tables.
+        # The table name used to filter the results.
         self.table_privilege_object = table_privilege_object
 
     def validate(self):

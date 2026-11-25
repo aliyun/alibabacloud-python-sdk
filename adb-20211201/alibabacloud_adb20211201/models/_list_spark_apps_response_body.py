@@ -81,19 +81,19 @@ class ListSparkAppsResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of application information. Response parameter description:
-        # - **Data**: the Spark application template data.
-        # - **EstimateExecutionCpuTimeInSeconds**: the CPU time consumed to execute the Spark application, in milliseconds (ms).
-        # - **LogRootPath**: the storage path of log files.
-        # - **LastAttemptId**: the retry ID.
-        # - **WebUiAddress**: the Web UI address.
-        # - **SubmittedTimeInMillis**: the time when the Spark application was submitted, in UNIX timestamp format, in milliseconds (ms).
-        # - **StartedTimeInMillis**: the time when the Spark application was created, in UNIX timestamp format, in milliseconds (ms).
-        # - **LastUpdatedTimeInMillis**: the time when the Spark application was last updated, in UNIX timestamp format, in milliseconds (ms).
-        # - **TerminatedTimeInMillis**: the time when the Spark application stopped execution, in UNIX timestamp format, in milliseconds (ms).
-        # - **DBClusterId**: the ID of the cluster that executed the Spark application.
-        # - **ResourceGroupName**: the name of the job resource group.
-        # - **DurationInMillis**: the execution duration of the Spark application, in milliseconds (ms).
+        # The application information list. Returned parameter descriptions:
+        # - **Data**: The Spark application template data.
+        # - **EstimateExecutionCpuTimeInSeconds**: The CPU time consumed to execute the Spark application, in milliseconds.
+        # - **LogRootPath**: The storage path of log files.
+        # - **LastAttemptId**: The retry ID.
+        # - **WebUiAddress**: The Web UI address.
+        # - **SubmittedTimeInMillis**: The time when the Spark application was committed. The value is a UNIX timestamp in milliseconds.
+        # - **StartedTimeInMillis**: The time when the Spark application was created. The value is a UNIX timestamp in milliseconds.
+        # - **LastUpdatedTimeInMillis**: The time when the Spark application was last updated. The value is a UNIX timestamp in milliseconds.
+        # - **TerminatedTimeInMillis**: The time when the execution of the Spark application was stopped. The value is a UNIX timestamp in milliseconds.
+        # - **DBClusterId**: The ID of the cluster where the Spark application is executed.
+        # - **ResourceGroupName**: The name of the job resource group.
+        # - **DurationInMillis**: The execution duration of the Spark application, in milliseconds.
         self.app_info_list = app_info_list
         # The page number.
         self.page_number = page_number

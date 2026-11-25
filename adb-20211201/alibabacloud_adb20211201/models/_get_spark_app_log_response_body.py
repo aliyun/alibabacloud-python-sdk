@@ -59,7 +59,7 @@ class GetSparkAppLogResponseBodyData(DaraModel):
         self.log_content = log_content
         # The number of log lines. A value of 0 indicates that no valid logs exist.
         self.log_size = log_size
-        # The alert information, such as task execution failure or insufficient resources. If no alerts are triggered, an empty value is returned.
+        # The alert information, such as task execution failure or insufficient resources. This parameter is empty if no alerts are generated.
         self.message = message
 
     def validate(self):

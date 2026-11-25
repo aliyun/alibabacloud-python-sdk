@@ -35,7 +35,7 @@ class ModifyDBResourceGroupRequest(DaraModel):
     ):
         # The PromQL resource group configuration.
         self.atm_config = atm_config
-        # The auto-stop time.
+        # The automatic stop time.
         self.auto_stop_interval = auto_stop_interval
         # Reserved parameter.
         self.cluster_mode = cluster_mode
@@ -46,11 +46,11 @@ class ModifyDBResourceGroupRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable the spot instance feature for the resource group. After you enable this feature, the unit price of resources decreases, but the resources may be released. This feature can be enabled only for Job resource groups. Valid values:
+        # Specifies whether to enable the spot instance feature for the resource group. After you enable spot instances, the unit price of resources decreases, but the instances may be released. This feature can be enabled only for Job resource groups. Valid values:
         # - **True**: Enables the spot instance feature.
         # - **False**: Disables the spot instance feature.
         self.enable_spot = enable_spot
-        # The engine configurations.
+        # The engine configuration.
         self.engine_params = engine_params
         # The GPU time-based elastic plan.
         self.gpu_elastic_plan = gpu_elastic_plan
@@ -62,23 +62,23 @@ class ModifyDBResourceGroupRequest(DaraModel):
         # The type of the resource group. Valid values:
         # - **Interactive**
         # - **Job**
-        # > For more information about Data Lakehouse Edition resource groups, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+        # > For more information about Data Lakehouse Edition resource groups, refer to [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
         # 
         # This parameter is required.
         self.group_type = group_type
         # Reserved parameter.
         self.max_cluster_count = max_cluster_count
         # The maximum reserved computing resources.
-        # - If the resource group type is Interactive, the maximum reserved computing resources is the currently unallocated resources of the cluster, and the step size is 16 ACUs.
-        # - If the resource group type is Job, the maximum reserved computing resources is the currently unallocated resources of the cluster, and the step size is 8 ACUs.
+        # - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 16 ACU.
+        # - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 8 ACU.
         self.max_compute_resource = max_compute_resource
         # Reserved parameter.
         self.max_gpu_quantity = max_gpu_quantity
         # Reserved parameter.
         self.min_cluster_count = min_cluster_count
         # The minimum reserved computing resources.
-        # - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
-        # - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
+        # - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACU.
+        # - If the resource group type is Job, the minimum reserved computing resources is 0 ACU.
         self.min_compute_resource = min_compute_resource
         # Reserved parameter.
         self.min_gpu_quantity = min_gpu_quantity
@@ -87,7 +87,7 @@ class ModifyDBResourceGroupRequest(DaraModel):
         # The region ID.
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
         self.region_id = region_id
-        # The job delivery rules.
+        # The job routing rules.
         self.rules = rules
         # Reserved parameter.
         self.spec_name = spec_name
@@ -268,7 +268,7 @@ class ModifyDBResourceGroupRequestRules(DaraModel):
     ):
         # The name of the resource group.
         self.group_name = group_name
-        # The threshold for query execution time, in milliseconds.
+        # The query execution time threshold, in milliseconds.
         self.query_time = query_time
         # The name of the destination resource group.
         self.target_group_name = target_group_name
@@ -323,9 +323,9 @@ class ModifyDBResourceGroupRequestRayConfig(DaraModel):
         self.app_config = app_config
         # The type of the Ray cluster. Valid values:
         # 
-        # - BASIC: Basic type, non-high-availability.
+        # - BASIC: basic type without high availability
         # 
-        # - HIGH_AVAILABILITY: High-availability type.
+        # - HIGH_AVAILABILITY: high-availability type
         self.category = category
         # Specifies whether to enable ENI.
         self.enable_user_eni = enable_user_eni
@@ -337,11 +337,11 @@ class ModifyDBResourceGroupRequestRayConfig(DaraModel):
         self.head_spec = head_spec
         # The resource type of the head node.
         self.head_spec_type = head_spec_type
-        # The list of storage mounts.
+        # The storage mount list.
         self.storage_mounts = storage_mounts
-        # The custom Python dependencies for RayCluster. The content must be in the requirements.txt format, with one pip dependency per line. A maximum of 200 lines are allowed, and each line cannot exceed 512 characters. Version constraints, extras, PEP 440 direct URLs, and # comments are supported, but shell metacharacters are not supported. This parameter applies only to AI resource groups of the RayCluster type.
+        # The custom Python dependencies for RayCluster. Specify the content in the requirements.txt format, with one pip dependency per line. A maximum of 200 lines are supported, and each line cannot exceed 512 characters. Version constraints, extras, PEP 440 direct URLs, and # comments are supported. Shell metacharacters are not supported. This parameter applies only to AI resource groups of the RayCluster type.
         self.user_defined_requirements = user_defined_requirements
-        # The list of Ray worker group configuration information.
+        # The Ray worker group configuration list.
         self.worker_groups = worker_groups
 
     def validate(self):
@@ -529,9 +529,9 @@ class ModifyDBResourceGroupRequestRayConfigStorageMounts(DaraModel):
     ):
         # The mount path.
         self.mount_path = mount_path
-        # The ID of the storage.
+        # The storage ID.
         self.storage_id = storage_id
-        # The name of the storage to mount. You must specify either this parameter or StorageId.
+        # The name of the storage to mount. Specify either this parameter or StorageId.
         self.storage_name = storage_name
 
     def validate(self):
@@ -573,9 +573,9 @@ class ModifyDBResourceGroupRequestRayConfigAppConfig(DaraModel):
         app_type: str = None,
         image_selector: main_models.ModifyDBResourceGroupRequestRayConfigAppConfigImageSelector = None,
     ):
-        # The name of the application.
+        # The application name.
         self.app_name = app_name
-        # The type of the application.
+        # The application type.
         self.app_type = app_type
         # The image configuration.
         self.image_selector = image_selector
@@ -621,7 +621,7 @@ class ModifyDBResourceGroupRequestRayConfigAppConfigImageSelector(DaraModel):
         inference_engine: str = None,
         llm_model: str = None,
     ):
-        # The name of the image.
+        # The image name.
         self.image = image
         # The inference engine.
         self.inference_engine = inference_engine
@@ -713,9 +713,9 @@ class ModifyDBResourceGroupRequestGpuElasticPlanRules(DaraModel):
         end_cron_expression: str = None,
         start_cron_expression: str = None,
     ):
-        # The end time specified by a cron expression. The interval must be at least 1 hour.
+        # The end time, specified as a cron expression. The interval must be no less than 1 hour.
         self.end_cron_expression = end_cron_expression
-        # The start time specified by a cron expression. The interval must be at least 1 hour.
+        # The start time, specified as a cron expression. The interval must be no less than 1 hour.
         self.start_cron_expression = start_cron_expression
 
     def validate(self):
@@ -767,7 +767,7 @@ class ModifyDBResourceGroupRequestAtmConfig(DaraModel):
         self.insert_node_num = insert_node_num
         # The insert node specifications ([0-9+] ACU).
         self.insert_node_spec = insert_node_spec
-        # The query node cache size (GB).
+        # The query node cache size (in GB).
         self.select_node_cache_size = select_node_cache_size
         # The number of query nodes.
         self.select_node_num = select_node_num
@@ -775,7 +775,7 @@ class ModifyDBResourceGroupRequestAtmConfig(DaraModel):
         self.select_node_spec = select_node_spec
         # The disk size of the storage node.
         self.storage_node_disk_size = storage_node_disk_size
-        # The storage node disk type (essd_pl1, essd_pl2).
+        # The disk type of the storage node (essd_pl1, essd_pl2).
         self.storage_node_disk_type = storage_node_disk_type
         # The number of storage nodes.
         self.storage_node_num = storage_node_num

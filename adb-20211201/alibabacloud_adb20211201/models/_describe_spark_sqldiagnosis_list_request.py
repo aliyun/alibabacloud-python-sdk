@@ -17,7 +17,7 @@ class DescribeSparkSQLDiagnosisListRequest(DaraModel):
         statement_id: int = None,
     ):
         # The cluster ID.
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in a specific region, including the cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in a specific region, including the cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -25,8 +25,8 @@ class DescribeSparkSQLDiagnosisListRequest(DaraModel):
         self.max_start_time = max_start_time
         # The minimum start time. Format: yyyy-MM-dd HH:mm:ss.
         self.min_start_time = min_start_time
-        # Sorts the query results by a specified field. The value must be a JSON string. Example: `[{"Field":"MaxExclusiveTime","Type":"Asc"}]`. Parameters in the JSON string:
-        # - `Field`: the sort field. Valid values:
+        # Sorts the query results by a specified field. The value must be a JSON string. Example: `[{"Field":"MaxExclusiveTime","Type":"Asc"}]`. The parameters are as follows:
+        # - `Field`: the field by which to sort the results. Valid values:
         #     - `MaxExclusiveTime`: the maximum execution time.
         #     - `PeakMemory`: the peak memory usage.
         #     - `QueryStartTime`: the query start time.
@@ -43,7 +43,7 @@ class DescribeSparkSQLDiagnosisListRequest(DaraModel):
         # The number of entries per page.
         self.page_size = page_size
         # The region ID.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the regions and zones supported by AnalyticDB for MySQL, including the region ID.
         # 
         # This parameter is required.
         self.region_id = region_id

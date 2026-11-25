@@ -16,9 +16,9 @@ class CreateAPSJobResponseBody(DaraModel):
     ):
         # The ID of the task.
         self.aps_job_id = aps_job_id
-        # The operation status code or POP error code.
+        # The API status code or POP error code.
         self.code = code
-        # The HTTP status code returned. A value of 200 indicates that the request was sent successfully.
+        # The HTTP status code. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
         # The additional information about the call result. Valid values:
         # - If the request is normal, **OK** is returned.                                

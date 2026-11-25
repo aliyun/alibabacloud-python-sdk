@@ -28,9 +28,9 @@ class DescribeAvailableAdvicesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The concatenated string of the database name and table name.
+        # The concatenated string of the database name and the table name.
         self.schema_table_names = schema_table_names
-        # The total number of returned results. Valid values: greater than or equal to 0 and up to the maximum value of the Integer data type. Default value: 0.
+        # The total number of returned results. Valid values: 0 to the maximum value of the Integer data type. Default value: 0.
         self.total_count = total_count
 
     def validate(self):
@@ -107,13 +107,13 @@ class DescribeAvailableAdvicesResponseBodyItems(DaraModel):
         table_name: str = None,
         total_count: int = None,
     ):
-        # The time when the suggestion was generated, in the yyyyMMdd format.
+        # The generation time of the suggestion, in the yyyyMMdd format.
         self.advice_date = advice_date
         # The suggestion ID.
         self.advice_id = advice_id
         # The type of the suggestion. Valid values:
-        # - **INDEX**: Index optimization.
-        # - **TIERING**: Hot and cold data optimization.
+        # - **INDEX**: index optimization.
+        # - **TIERING**: hot and cold data optimization.
         self.advice_type = advice_type
         # The benefit of the suggestion.
         self.benefit = benefit
@@ -126,15 +126,15 @@ class DescribeAvailableAdvicesResponseBodyItems(DaraModel):
         # - **50**
         # - **100**
         self.page_size = page_size
-        # The reason for generating optimization suggestions.
+        # The reason for generating the optimization suggestions.
         self.reason = reason
-        # The SQL statement to apply the suggestion.
+        # The SQL statement used to apply the suggestion.
         self.sql = sql
         # The database name.
         self.schema_name = schema_name
         # The table name.
         self.table_name = table_name
-        # The total number of returned results. Valid values: greater than or equal to 0 and up to the maximum value of the Integer data type. Default value: 0.
+        # The total number of returned results. Valid values: 0 to the maximum value of the Integer data type. Default value: 0.
         self.total_count = total_count
 
     def validate(self):

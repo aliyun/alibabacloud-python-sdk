@@ -17,23 +17,22 @@ class UpdateLakeStorageResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code. A value of 200 indicates that the request is successful.
+        # The status code. A value of 200 indicates success.
         self.code = code
-        # The returned data.
+        # The returned result.
         self.data = data
-        # The HTTP status code. A value of 200 indicates that the request was successful.
+        # The HTTP status code returned for the request. A value of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The returned message. Valid values:
+        # The additional information about the call result. Description:
         # 
-        # *   If the request was successful, an OK message is returned.
-        # *   If the request failed, an error message is returned.
+        # - If the request is successful, OK is returned.
+        # - If the request fails, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -106,11 +105,11 @@ class UpdateLakeStorageResponseBodyData(DaraModel):
         table_count: int = None,
         update_time: str = None,
     ):
-        # The time when the lake storage was created.
+        # The creation time.
         self.create_time = create_time
-        # The creator UID.
+        # The UID of the creator.
         self.creator_uid = creator_uid
-        # The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
+        # The ADB instance ID.
         self.dbcluster_id = dbcluster_id
         # The description of the lake storage.
         self.description = description
@@ -118,21 +117,21 @@ class UpdateLakeStorageResponseBodyData(DaraModel):
         self.file_size = file_size
         # The unique identifier of the lake storage.
         self.lake_storage_id = lake_storage_id
-        # The operator UID.
+        # The UID of the operator.
         self.operator_uid = operator_uid
-        # The owner UID.
+        # The UID of the owner.
         self.owner_uid = owner_uid
         # The number of partitions.
         self.partition_count = partition_count
-        # The permissions on the lake storage.
+        # The permissions of the lake storage.
         self.permissions = permissions
         # The region ID.
         self.region_id = region_id
-        # The total number of entries returned.
+        # The total number of data rows.
         self.row_count = row_count
-        # The number of tables.
+        # The number of databases and tables.
         self.table_count = table_count
-        # The time when the lake storage was last updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):
@@ -251,11 +250,11 @@ class UpdateLakeStorageResponseBodyDataPermissions(DaraModel):
     ):
         # The account ID.
         self.account = account
-        # The read permissions.
+        # The read permission.
         self.read = read
         # The account type.
         self.type = type
-        # The write permissions.
+        # The write permission.
         self.write = write
 
     def validate(self):

@@ -22,18 +22,18 @@ class GetDatabaseObjectsRequest(DaraModel):
         # The database name.
         self.filter_schema_name = filter_schema_name
         # The sort field.
-        # Valid values for Type:
+        # Valid values for the sort type:
         # - Asc
         # - Desc
         # 
-        # Valid values for Field:
+        # Valid values for the sort field:
         # - DatabseName
         # - CreateTime
         # - UpdateTime
         # 
         # Default value: {"Type": "Desc","Field": "DatabaseName"}.
         self.order_by = order_by
-        # The page number. The value must be greater than 0 and no greater than the maximum value of the Integer data type. Default value: **1**.
+        # The page number. The value must be greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: **1**.
         self.page_number = page_number
         # The number of entries per page. Valid values:
         # 

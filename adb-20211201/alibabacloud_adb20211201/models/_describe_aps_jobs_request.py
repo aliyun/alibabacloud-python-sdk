@@ -16,9 +16,9 @@ class DescribeApsJobsRequest(DaraModel):
     ):
         # The name of the task.
         self.aps_job_name = aps_job_name
-        # The end time of creation.
+        # The end of the creation time range.
         self.create_time_end = create_time_end
-        # The start time of creation.
+        # The start of the creation time range.
         self.create_time_start = create_time_start
         # The page number.
         # 

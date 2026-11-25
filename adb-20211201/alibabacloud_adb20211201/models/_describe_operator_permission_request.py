@@ -14,7 +14,7 @@ class DescribeOperatorPermissionRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in the target region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in the specified region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id

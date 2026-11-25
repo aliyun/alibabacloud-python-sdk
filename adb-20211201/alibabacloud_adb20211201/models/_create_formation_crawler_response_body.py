@@ -17,19 +17,19 @@ class CreateFormationCrawlerResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # Indicates whether the request is processed.
+        # Indicates whether the request was processed successfully.
         self.data = data
         # The HTTP status code. A value of 200 indicates success.
         self.http_status_code = http_status_code
-        # The response message. A value of OK indicates success.
+        # The returned message. The value is OK if the request is successful.
         self.message = message
-        # The request ID.
+        # The request tracking ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
-        # - **true**: The call is successful.
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
         # - **false**: The call failed.
         self.success = success
-        # The operation result. A value of true indicates that the task is created.
+        # The operation result. A value of true indicates that the task was created successfully.
         self.task_id = task_id
 
     def validate(self):

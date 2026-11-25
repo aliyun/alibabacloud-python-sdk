@@ -58,9 +58,9 @@ class DescribeDBClusterSpaceSummaryResponseBodyData(DaraModel):
         self.data_growth = data_growth
         # The hot data.
         self.hot_data = hot_data
-        # The total data volume. Unit: bytes.
+        # The total data size. Unit: bytes.
         # 
-        # > Calculation formula: Total data volume = Total hot data volume + Total cold data volume.
+        # > Calculation formula: Total data size = Total hot data size + Total cold data size.
         self.total_size = total_size
 
     def validate(self):
@@ -118,17 +118,17 @@ class DescribeDBClusterSpaceSummaryResponseBodyDataHotData(DaraModel):
         primary_key_index_size: int = None,
         total_size: int = None,
     ):
-        # The data volume of table records. Unit: bytes.
+        # The table record data size. Unit: bytes.
         self.data_size = data_size
-        # The data volume of regular indexes. Unit: bytes.
+        # The secondary index data size. Unit: bytes.
         self.index_size = index_size
-        # The volume of other data. Unit: bytes.
+        # The size of other data. Unit: bytes.
         self.other_size = other_size
-        # The data volume of primary key indexes. Unit: bytes.
+        # The primary key index data size. Unit: bytes.
         self.primary_key_index_size = primary_key_index_size
-        # The total hot data volume. Unit: bytes.
+        # The total hot data size. Unit: bytes.
         # 
-        # > Calculation formula: Total hot data volume = Table record data volume + Regular index data volume + Primary key index data volume + Others.
+        # > Calculation formula: Total hot data size = Table record data size + Secondary index data size + Primary key index data size + Others.
         self.total_size = total_size
 
     def validate(self):
@@ -181,13 +181,13 @@ class DescribeDBClusterSpaceSummaryResponseBodyDataDataGrowth(DaraModel):
         day_growth: int = None,
         week_growth: int = None,
     ):
-        # The data growth in the past day. Unit: bytes.
+        # The data growth over the past day. Unit: bytes.
         # 
-        # > Calculation formula: Data growth in the past day = Current total data volume - Total data volume 1 day ago.
+        # > Calculation formula: Data growth over the past day = Current total data size - Total data size one day ago.
         self.day_growth = day_growth
         # The average daily data growth over the past 7 days. Unit: bytes.
         # 
-        # > Calculation formula: Average daily data growth over the past 7 days = (Current total data volume - Total data volume 7 days ago) / 7.
+        # > Calculation formula: Average daily data growth over the past 7 days = (Current total data size - Total data size 7 days ago) / 7.
         self.week_growth = week_growth
 
     def validate(self):
@@ -225,17 +225,17 @@ class DescribeDBClusterSpaceSummaryResponseBodyDataColdData(DaraModel):
         primary_key_index_size: int = None,
         total_size: int = None,
     ):
-        # The data volume of table records. Unit: bytes.
+        # The table record data size. Unit: bytes.
         self.data_size = data_size
-        # The data volume of regular indexes. Unit: bytes.
+        # The secondary index data size. Unit: bytes.
         self.index_size = index_size
-        # The volume of other data. Unit: bytes.
+        # The size of other data. Unit: bytes.
         self.other_size = other_size
-        # The data volume of primary key indexes. Unit: bytes.
+        # The primary key index data size. Unit: bytes.
         self.primary_key_index_size = primary_key_index_size
-        # The total cold data volume. Unit: bytes.
+        # The total cold data size. Unit: bytes.
         # 
-        # > Calculation formula: Total cold data volume = Table record data volume + Regular index data volume + Primary key index data volume + Others.
+        # > Calculation formula: Total cold data size = Table record data size + Secondary index data size + Primary key index data size + Others.
         self.total_size = total_size
 
     def validate(self):

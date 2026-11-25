@@ -16,13 +16,13 @@ class UpdateLakeStorageRequest(DaraModel):
         permissions: List[main_models.UpdateLakeStorageRequestPermissions] = None,
         region_id: str = None,
     ):
-        # The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
+        # The ADB instance ID.
         self.dbcluster_id = dbcluster_id
         # The description of the lake storage.
         self.description = description
         # The unique identifier of the lake storage.
         self.lake_storage_id = lake_storage_id
-        # The permissions on the lake storage.
+        # The permissions of the lake storage.
         self.permissions = permissions
         # The region ID.
         self.region_id = region_id
@@ -91,7 +91,7 @@ class UpdateLakeStorageRequestPermissions(DaraModel):
         # 
         # This parameter is required.
         self.account = account
-        # The read permissions.
+        # The read permission.
         # 
         # This parameter is required.
         self.read = read
@@ -99,7 +99,7 @@ class UpdateLakeStorageRequestPermissions(DaraModel):
         # 
         # This parameter is required.
         self.type = type
-        # The write permissions.
+        # The write permission.
         # 
         # This parameter is required.
         self.write = write

@@ -24,13 +24,13 @@ class DescribeSparkSQLDiagnosisAttributeResponseBody(DaraModel):
         # The application ID.
         # > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query the ID of the Spark application.
         self.app_id = app_id
-        # The collection of diagnostic suggestions.
+        # The diagnostic suggestions.
         self.diagnosis_infos = diagnosis_infos
         # The actual execution time, in milliseconds.
         self.elapsed_time = elapsed_time
         # The internal query execution ID of the Spark application.
         self.inner_query_id = inner_query_id
-        # The operator queue sorted by metrics.
+        # The list of operators sorted by metrics.
         self.operator_list_sorted_by_metrics = operator_list_sorted_by_metrics
         # The request ID.
         self.request_id = request_id
@@ -119,9 +119,9 @@ class DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics(
         operator_list_sorted_by_exclusive_time: List[main_models.SparkOperatorInfo] = None,
         operator_list_sorted_by_max_memory: List[main_models.SparkOperatorInfo] = None,
     ):
-        # The operator queue sorted by execution time.
+        # The list of operators sorted by execution time.
         self.operator_list_sorted_by_exclusive_time = operator_list_sorted_by_exclusive_time
-        # The operator queue sorted by maximum memory consumption.
+        # The list of operators sorted by maximum memory consumption.
         self.operator_list_sorted_by_max_memory = operator_list_sorted_by_max_memory
 
     def validate(self):

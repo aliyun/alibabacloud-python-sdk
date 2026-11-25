@@ -27,7 +27,7 @@ class DescribePerformanceViewAttributeResponseBody(DaraModel):
         self.create_from_view_type = create_from_view_type
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # Indicates whether the keys completed in the original monitoring view are populated when you view the monitoring view. Valid values:
+        # Specifies whether to populate the keys from the original monitoring view when querying the monitoring view. Valid values:
         # 
         # - true
         # - false
@@ -106,7 +106,7 @@ class DescribePerformanceViewAttributeResponseBodyViewDetail(DaraModel):
     ):
         # The list of metric categories.
         self.categories = categories
-        # Indicates whether it is a linkage chart. Valid values:
+        # Specifies whether it is a linkage chart. Valid values:
         # 
         # - true
         # - false
@@ -219,7 +219,7 @@ class DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys(DaraM
         self.group_type = group_type
         # The key of the metric.
         self.key_name = key_name
-        # Indicates whether the metric is selected. Valid values:
+        # Specifies whether the metric is selected. Valid values:
         # 
         # - true
         # - false

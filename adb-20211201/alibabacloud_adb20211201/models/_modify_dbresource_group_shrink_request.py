@@ -32,7 +32,7 @@ class ModifyDBResourceGroupShrinkRequest(DaraModel):
     ):
         # The PromQL resource group configuration.
         self.atm_config_shrink = atm_config_shrink
-        # The auto-stop time.
+        # The automatic stop time.
         self.auto_stop_interval = auto_stop_interval
         # Reserved parameter.
         self.cluster_mode = cluster_mode
@@ -43,11 +43,11 @@ class ModifyDBResourceGroupShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # Specifies whether to enable the spot instance feature for the resource group. After you enable this feature, the unit price of resources decreases, but the resources may be released. This feature can be enabled only for Job resource groups. Valid values:
+        # Specifies whether to enable the spot instance feature for the resource group. After you enable spot instances, the unit price of resources decreases, but the instances may be released. This feature can be enabled only for Job resource groups. Valid values:
         # - **True**: Enables the spot instance feature.
         # - **False**: Disables the spot instance feature.
         self.enable_spot = enable_spot
-        # The engine configurations.
+        # The engine configuration.
         self.engine_params_shrink = engine_params_shrink
         # The GPU time-based elastic plan.
         self.gpu_elastic_plan_shrink = gpu_elastic_plan_shrink
@@ -59,23 +59,23 @@ class ModifyDBResourceGroupShrinkRequest(DaraModel):
         # The type of the resource group. Valid values:
         # - **Interactive**
         # - **Job**
-        # > For more information about Data Lakehouse Edition resource groups, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+        # > For more information about Data Lakehouse Edition resource groups, refer to [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
         # 
         # This parameter is required.
         self.group_type = group_type
         # Reserved parameter.
         self.max_cluster_count = max_cluster_count
         # The maximum reserved computing resources.
-        # - If the resource group type is Interactive, the maximum reserved computing resources is the currently unallocated resources of the cluster, and the step size is 16 ACUs.
-        # - If the resource group type is Job, the maximum reserved computing resources is the currently unallocated resources of the cluster, and the step size is 8 ACUs.
+        # - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 16 ACU.
+        # - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 8 ACU.
         self.max_compute_resource = max_compute_resource
         # Reserved parameter.
         self.max_gpu_quantity = max_gpu_quantity
         # Reserved parameter.
         self.min_cluster_count = min_cluster_count
         # The minimum reserved computing resources.
-        # - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
-        # - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
+        # - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACU.
+        # - If the resource group type is Job, the minimum reserved computing resources is 0 ACU.
         self.min_compute_resource = min_compute_resource
         # Reserved parameter.
         self.min_gpu_quantity = min_gpu_quantity
@@ -84,7 +84,7 @@ class ModifyDBResourceGroupShrinkRequest(DaraModel):
         # The region ID.
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of a specified cluster.
         self.region_id = region_id
-        # The job delivery rules.
+        # The job routing rules.
         self.rules_shrink = rules_shrink
         # Reserved parameter.
         self.spec_name = spec_name

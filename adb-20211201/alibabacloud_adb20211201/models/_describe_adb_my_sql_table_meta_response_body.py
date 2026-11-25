@@ -13,19 +13,17 @@ class DescribeAdbMySqlTableMetaResponseBody(DaraModel):
         success: bool = None,
         table_meta: main_models.DescribeAdbMySqlTableMetaResponseBodyTableMeta = None,
     ):
-        # The returned message. Valid values:
-        # 
-        # *   If the request was successful, a success message is returned.****
-        # *   If the request failed, an error message is returned.
+        # The additional information about the call result. Valid values:
+        # - **Success**: The request is successful. 
+        # - Specific error code: The request is abnormal.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
-        # The queried table metadata.
+        # The table metadata.
         self.table_meta = table_meta
 
     def validate(self):
@@ -87,42 +85,38 @@ class DescribeAdbMySqlTableMetaResponseBodyTableMeta(DaraModel):
         table_type: str = None,
         update_time: str = None,
     ):
-        # The time when the table was created.
+        # The creation time.
         self.create_time = create_time
         # The distribution key column.
         self.distribute_column = distribute_column
         # The distribution type.
         self.distribute_type = distribute_type
-        # Indicates whether full-column indexes are used.
+        # Indicates whether full indexing is enabled.
         self.is_all_index = is_all_index
-        # Indicates whether dictionary encoding is used.
+        # Indicates whether dictionary encoding is enabled.
         self.is_dict_encode = is_dict_encode
-        # Indicates whether full-text indexes are used.
+        # Indicates whether full-text indexing is enabled.
         self.is_full_text_dict = is_full_text_dict
-        # Indicates whether pages are hidden.
-        # 
-        # *   **false**
-        # *   **true**
+        # Indicates whether the page is hidden. Valid values:
+        # - **false**: The page is not hidden.
+        # - **true**: The page is hidden.
         self.is_hidden = is_hidden
-        # The partition key column.
+        # The partition column information.
         self.partition_column = partition_column
-        # The type of the partition.
+        # The partition type.
         self.partition_type = partition_type
         # The primary key column.
         self.primary_key_column = primary_key_column
         # The table engine.
         self.table_engine = table_engine
         # The name of the table.
-        # 
-        # **
-        # 
-        # ****
+        # > If this parameter is left empty, the usage frequency data of all tables in the specified cluster on the current day is returned.
         self.table_name = table_name
         # The database to which the table belongs.
         self.table_schema = table_schema
         # The type of the table.
         self.table_type = table_type
-        # The time when the table was updated.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

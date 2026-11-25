@@ -16,23 +16,21 @@ class ModifyApsSlsADBJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code or the error code.
+        # The status code or POP error code.
         self.code = code
         # The returned data.
         self.data = data
-        # The response code. The status code 200 indicates that the request was successful.
+        # The HTTP status code returned by the request. A status code of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The returned message. Valid values:
-        # 
-        # *   If the request was successful, a success message is returned.****
-        # *   If the request failed, an error message is returned.
+        # The execution result of applying the suggestion. Valid values:
+        # - If the request is successful, **SUCCESS** is returned.
+        # - If an exception occurs, the specific error message is returned.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

@@ -13,7 +13,7 @@ class DescribeInclinedNodesResponseBody(DaraModel):
         items: List[main_models.DescribeInclinedNodesResponseBodyItems] = None,
         request_id: str = None,
     ):
-        # The queried storage nodes.
+        # The list information.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -60,7 +60,7 @@ class DescribeInclinedNodesResponseBodyItems(DaraModel):
     ):
         # The disk usage of the storage node.
         self.disk_usage_ratio = disk_usage_ratio
-        # The number of the storage node.
+        # The storage node number.
         self.node = node
 
     def validate(self):

@@ -21,35 +21,28 @@ class DescribeViewJobsRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The owner.
         self.filter_owner = filter_owner
-        # The view name.
+        # The name of the view.
         self.filter_view_name = filter_view_name
-        # The view type.
-        # 
-        # Valid values:
-        # 
+        # The view type. Valid values:
         # - VIRTUAL_VIEW
         # - MATERIALIZED_VIEW
-        # 
         # Default value: empty.
         self.filter_view_type = filter_view_type
-        # The sort field.
-        # 
-        # Valid values for the sort order:
+        # The sort field. Valid values for the sort order:
         # - Asc
         # - Desc
-        # 
-        # Valid values for the sort field:
+        # Valid values for the field:
         # - StartTime
         # - EndTime
         # - ScheduledStartTime
         self.order_by = order_by
         # The page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
-        # The database name.
+        # The name of the database.
         self.schema_name = schema_name
 
     def validate(self):

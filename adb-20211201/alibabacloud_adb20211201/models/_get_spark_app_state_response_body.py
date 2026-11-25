@@ -59,7 +59,7 @@ class GetSparkAppStateResponseBodyData(DaraModel):
         self.app_name = app_name
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The alert message returned, such as task execution failure or insufficient resources. This parameter is empty if no alerts are generated.
+        # The alert message, such as task execution failure or insufficient resources. This field is empty if no alerts are triggered.
         self.message = message
         # The execution status of the application. Valid values:
         # - **SUBMITTED**: Submitted.

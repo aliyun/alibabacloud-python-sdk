@@ -23,11 +23,11 @@ class QueryFormationTasksByTypeResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. OK is returned if the call was successful.
+        # The message returned. The value is OK if the call is successful.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the call was successful.
         # - **true**: The call was successful.
         # - **false**: The call failed.
         self.success = success
@@ -108,13 +108,13 @@ class QueryFormationTasksByTypeResponseBodyData(DaraModel):
     ):
         # The creation time.
         self.create_time = create_time
-        # The execution duration of the most recent task.
+        # The execution time of the most recent task.
         self.last_task_inst_cost_time = last_task_inst_cost_time
         # The instance ID of the most recent task.
         self.last_task_inst_id = last_task_inst_id
         # The error message of the most recent task.
         self.last_task_inst_message = last_task_inst_message
-        # The instance status of the most recent node.
+        # The status of the most recent task instance.
         self.last_task_inst_state = last_task_inst_state
         # The scheduling status.
         self.schedule_state = schedule_state

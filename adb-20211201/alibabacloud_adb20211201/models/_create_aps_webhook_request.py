@@ -15,13 +15,12 @@ class CreateApsWebhookRequest(DaraModel):
         region_id: str = None,
         webhook: List[main_models.CreateApsWebhookRequestWebhook] = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The task type. Valid values:
-        # 
-        # ResultExport: SLS/OSS export task.
+        # The node type. Valid values:
+        # - ResultExport: SLS or OSS export task.
         # 
         # This parameter is required.
         self.job_type = job_type
@@ -95,7 +94,6 @@ class CreateApsWebhookRequestWebhook(DaraModel):
         # This parameter is required.
         self.url = url
         # The notification method. Valid values:
-        # 
         # - dingtalk: DingTalk.
         # - lark: Lark.
         # 

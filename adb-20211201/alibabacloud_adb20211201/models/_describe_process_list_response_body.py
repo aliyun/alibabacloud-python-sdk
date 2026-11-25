@@ -17,13 +17,13 @@ class DescribeProcessListResponseBody(DaraModel):
         total_count: str = None,
     ):
         self.items = items
-        # Page number.
+        # The page number.
         self.page_number = page_number
-        # The number of pages.
+        # The number of entries per page.
         self.page_size = page_size
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
-        # Total records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

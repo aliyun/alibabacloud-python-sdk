@@ -21,9 +21,9 @@ class ModifyApsSlsADBJobShrinkRequest(DaraModel):
         workload_id: str = None,
         workload_name: str = None,
     ):
-        # The information about columns.
+        # The column information.
         self.columns_shrink = columns_shrink
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -31,23 +31,23 @@ class ModifyApsSlsADBJobShrinkRequest(DaraModel):
         self.db_name = db_name
         # The dirty data processing mode.
         self.dirty_data_process_pattern = dirty_data_process_pattern
-        # Specifies whether to enable the consistency check.
+        # Specifies whether exactly-once processing is enabled.
         self.exactly_once = exactly_once
-        # The password of the database account.
+        # The password.
         self.password = password
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The start offset.
+        # The starting offset.
         self.starting_offsets = starting_offsets
         # The name of the table.
         self.table_name = table_name
         # The timestamp conversion.
         self.unix_timestamp_convert = unix_timestamp_convert
-        # The name of the database account.
+        # The username.
         self.user_name = user_name
-        # The job ID.
+        # The ID of the data link task.
         # 
         # This parameter is required.
         self.workload_id = workload_id

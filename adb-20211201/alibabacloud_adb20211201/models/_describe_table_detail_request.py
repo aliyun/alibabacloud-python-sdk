@@ -18,9 +18,9 @@ class DescribeTableDetailRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # The region ID.
         self.region_id = region_id
-        # The name of the database.
+        # The database name.
         self.schema_name = schema_name
-        # The name of the table.
+        # The table name.
         self.table_name = table_name
 
     def validate(self):

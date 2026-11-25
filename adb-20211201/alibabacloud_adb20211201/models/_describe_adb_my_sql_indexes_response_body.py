@@ -18,27 +18,23 @@ class DescribeAdbMySqlIndexesResponseBody(DaraModel):
         success: bool = None,
         table_name: str = None,
     ):
-        # The number of indexes.````
+        # The filter condition for the number of indexes (the number of indexes currently owned by the table with missing indexes). The input format is `operator + separator "" + number of indexes`, such as `>=100`.
         self.index_count = index_count
-        # The queried indexes.
+        # The list of indexes.
         self.indexes = indexes
-        # The returned message. Valid values:
-        # 
-        # *   If the request was successful, a success message is returned.****
-        # *   If the request failed, an error message is returned.
+        # The message returned for the call. Valid values:
+        # - **Success**: The request is successful. 
+        # - Specific error message: returned when the request fails.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The name of the database.
+        # The name of the database.  
         # 
-        # **
-        # 
-        # ****\\
+        # > <br>If this parameter is specified, subsequent migration or synchronization operations are performed only on this database.
         self.schema = schema
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
+        # Indicates whether the call was successful. Valid values:
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
         # The name of the table.
         self.table_name = table_name
@@ -118,7 +114,7 @@ class DescribeAdbMySqlIndexesResponseBodyIndexes(DaraModel):
         self.column = column
         # The name of the index.
         self.name = name
-        # The index type.
+        # The type of the index.
         self.type = type
 
     def validate(self):

@@ -84,7 +84,7 @@ class DescribeWorkerDetectionResponseBodyDetectionItems(DaraModel):
         self.name = name
         # The detection result.
         self.results = results
-        # The detection result status. Valid values:
+        # The status of the detection result. Valid values:
         # 
         # - NORMAL
         # - WARNING
@@ -140,13 +140,13 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResults(DaraModel):
         skewed_tables: List[main_models.DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables] = None,
         top_access_tables: List[main_models.DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables] = None,
     ):
-        # The aggregated operator metric detection results.
+        # The aggregation detection result of operator metrics.
         self.operator_agg = operator_agg
         # The collection of operator detection results.
         self.operator_details = operator_details
-        # The collection of tables with unreasonable partitions.
+        # The list of tables with improper partitions.
         self.partitioned_tables = partitioned_tables
-        # The table skew detection results.
+        # The table skew detection.
         self.skewed_tables = skewed_tables
         # The collection of table access detection results.
         self.top_access_tables = top_access_tables
@@ -294,17 +294,17 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSea
         max_scan_size: int = None,
         table_name: str = None,
     ):
-        # The number of times the table was accessed.
+        # The number of times the table is accessed.
         self.access_count = access_count
-        # The average scan duration. Unit: ms.
+        # The average scan duration. Unit: milliseconds.
         self.avg_scan_cost = avg_scan_cost
-        # The average table read size. Unit: bytes.
+        # The average amount of data read from the table. Unit: bytes.
         self.avg_scan_size = avg_scan_size
-        # The maximum scan duration. Unit: ms.
+        # The maximum scan duration. Unit: milliseconds.
         self.max_scan_cost = max_scan_cost
-        # The maximum data read size. Unit: bytes.
+        # The maximum amount of data read. Unit: bytes.
         self.max_scan_size = max_scan_size
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):
@@ -371,23 +371,23 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables(DaraM
         total_remote_data_size: int = None,
         total_row_count: int = None,
     ):
-        # The CREATE TABLE statement.
+        # The table creation statement.
         self.ddl = ddl
         # The number of partitions.
         self.partition_count = partition_count
-        # The database name.
+        # The name of the database.
         self.schema_name = schema_name
         # The number of skewed rows in the table.
         self.shard_skewed_rows = shard_skewed_rows
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
         # The total data size of the table. Unit: bytes.
         self.total_data_size = total_data_size
-        # The local data size. Unit: bytes.
+        # The size of local data. Unit: bytes.
         self.total_local_data_size = total_local_data_size
-        # The total primary key data size of the table. Unit: bytes.
+        # The data size of the primary key in the table. Unit: bytes.
         self.total_pk_size = total_pk_size
-        # The cold data size. Unit: bytes.
+        # The size of cold data. Unit: bytes.
         self.total_remote_data_size = total_remote_data_size
         # The total number of rows in the table.
         self.total_row_count = total_row_count
@@ -476,15 +476,15 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables(
         table_name: str = None,
         total_data_size: int = None,
     ):
-        # The CREATE TABLE statement.
+        # The table creation statement.
         self.ddl = ddl
         # The number of partitions.
         self.partition_count = partition_count
-        # The IDs of unreasonable partitions.
+        # The IDs of the improper partitions.
         self.partition_ids = partition_ids
-        # The database name.
+        # The name of the database.
         self.schema_name = schema_name
-        # The table name.
+        # The name of the table.
         self.table_name = table_name
         # The total data size of the table.
         self.total_data_size = total_data_size
@@ -545,7 +545,7 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails(Da
         metric_name: str = None,
         search_results: List[main_models.DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults] = None,
     ):
-        # The metric name.
+        # The name of the metric.
         self.metric_name = metric_name
         # The collection of search results.
         self.search_results = search_results
@@ -598,23 +598,23 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSea
         process_id: str = None,
         stage_id: str = None,
     ):
-        # The number of input rows of the operator.
+        # The number of input rows for the operator.
         self.input_rows = input_rows
-        # The input data size of the operator. Unit: bytes.
+        # The amount of input data for the operator. Unit: bytes.
         self.input_size = input_size
-        # The total operator duration within the stage, which is equivalent to the CPU time of the stage. You can use this value to determine which parts of the query consume more compute resources. Unit: ms.
+        # The total operator duration within the stage, which is equivalent to the CPU time of the stage. This metric can be actively used to determine which parts of the query consume the most compute resources. Unit: milliseconds.
         self.operator_cost = operator_cost
-        # The operator property information.
+        # The property information of the operator.
         self.operator_info = operator_info
-        # The operator name.
+        # The name of the operator.
         self.operator_name = operator_name
-        # The number of output rows of the operator.
+        # The number of output rows for the operator.
         self.output_rows = output_rows
-        # The output data size of the operator. Unit: bytes.
+        # The amount of output data for the operator. Unit: bytes.
         self.output_size = output_size
         # The peak memory consumed by the operator. Unit: bytes.
         self.peak_memory = peak_memory
-        # The SQL query ID, which can be used for diagnostics.
+        # The SQL query ID returned for diagnostics.
         self.process_id = process_id
         # The stage ID.
         self.stage_id = stage_id
@@ -699,9 +699,9 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg(DaraMo
         metric_name: str = None,
         search_results: List[main_models.DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults] = None,
     ):
-        # The name of the aggregated operator metric detection item.
+        # The name of the aggregation detection item for operator metrics.
         self.metric_name = metric_name
-        # The collection of aggregated operator metric search results.
+        # The collection of search results for aggregated operator metrics.
         self.search_results = search_results
 
     def validate(self):
@@ -753,9 +753,9 @@ class DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchR
         self.max_value = max_value
         # The number of times the operator appears.
         self.operator_count = operator_count
-        # The operator name.
+        # The name of the operator.
         self.operator_name = operator_name
-        # The cumulative value of the operator metric.
+        # The accumulated value of the operator metric.
         self.total_value = total_value
 
     def validate(self):

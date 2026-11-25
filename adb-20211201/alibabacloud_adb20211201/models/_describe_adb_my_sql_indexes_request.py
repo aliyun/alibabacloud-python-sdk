@@ -13,22 +13,19 @@ class DescribeAdbMySqlIndexesRequest(DaraModel):
         table_name: str = None,
     ):
         # The cluster ID.
-        # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the cluster ID of the Data Warehouse Edition cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The region ID.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the region ID of the cluster.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The name of the database.
         self.schema = schema
-        # The name of the table.
-        # 
-        # >  If you leave this parameter empty, the information about all the current tables in the cluster is returned.
+        # The name of the target table.
+        # > If this parameter is left empty, the usage frequency data of all tables in the target cluster on the current day is returned.
         self.table_name = table_name
 
     def validate(self):

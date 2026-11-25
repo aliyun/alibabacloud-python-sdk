@@ -51,11 +51,12 @@ class GetADBSparkNecessaryRAMPermissionsResponseBodyData(DaraModel):
         passed: bool = None,
         suggestion: str = None,
     ):
-        # The diagnostic information about the permission check failure. This parameter is returned when the permission check fails.
+        # The diagnostic information related to the permission check failure. This parameter is returned when the permission check fails.
         self.denied_detail = denied_detail
-        # Indicates whether the user has the basic permissions required to use ADB Spark. Valid values:
-        # - true: The check passed, and the user has the basic permissions.
-        # - false: The check failed, and the user lacks some permissions.
+        # Indicates whether the user has the basic permissions to use ADB Spark.
+        # 
+        # - true: The check is passed, and the user has the basic permissions.
+        # - false: The check fails, and the user lacks some permissions.
         self.passed = passed
         # The recommended configurations in the RAM system based on the diagnostic information.
         self.suggestion = suggestion
@@ -106,22 +107,22 @@ class GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail(DaraModel):
     ):
         # The name of the RAM action for which authentication failed.
         self.action = action
-        # The type of denial by the access policy. Valid values:
-        # - ImplicitDeny: The resource owner has not configured a relevant access policy for the current user, and operations without authorization are denied by default.
+        # The type of the access policy denial. Valid values:
+        # - ImplicitDeny: The resource owner has not configured a relevant access policy for the current user, and unauthorized operations are denied by default.
         # - ExplicitDeny: The RAM policy configured by the resource owner explicitly denies the current user access to the corresponding resource.
         self.no_permission_type = no_permission_type
         # The type of the policy that causes the permission denial. Valid values:
-        # - ControlPolicy: The control policy.
-        # - SessionPolicy: An additional permission policy attached to the temporary token.
-        # - AssumeRolePolicy: The trust policy of the RAM role.
-        # - AccountLevelIdentityBasedPolicy: The identity-access policy at the account level, including custom policies and system policies.
-        # - ResourceGroupLevelIdentityBasedPolicy: The identity-access policy at the resource group level, including custom policies and system policies.
+        # - ControlPolicy: control policy
+        # - SessionPolicy: additional permission policy added to the temporary token
+        # - AssumeRolePolicy: trust policy of the RAM role
+        # - AccountLevelIdentityBasedPolicy: identity-access policy at the account authorization scope, including custom policies and system policies
+        # - ResourceGroupLevelIdentityBasedPolicy: identity-access policy at the resource group authorization scope, including custom policies and system policies
         self.policy_type = policy_type
         # The identity type of the current user. Valid values:
-        # - SubUser: Resource Access Management (RAM) user.
-        # - AssumedRoleUser: RAM role.
+        # - SubUser: Resource Access Management (RAM) user
+        # - AssumedRoleUser: RAM role
         self.principal_type = principal_type
-        # The information about the authentication object, which can be the ID of the Resource Access Management (RAM) users of the current user or the role information of the current accessor.
+        # The information about the authentication target. The value can be the Resource Access Management (RAM) users ID of the current user, or the role information of the current accessor.
         self.resource_auth_target_info = resource_auth_target_info
         # The ID of the resource owner.
         self.resource_owner_id = resource_owner_id

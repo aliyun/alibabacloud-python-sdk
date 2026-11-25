@@ -19,69 +19,51 @@ class DescribeAppliedAdvicesRequest(DaraModel):
         schema_table_name: str = None,
         start_time: int = None,
     ):
-        # The type of the advice. Valid values:
-        # 
-        # - **INDEX**: index optimization
-        # 
-        # - **TIERING**: hot/cold data optimization
+        # The type of the suggestion. Valid values:
+        # - **INDEX**: Index optimization.
+        # - **TIERING**: Hot and cold data optimization.
         self.advice_type = advice_type
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end date of the query. The date is in the `yyyyMMdd` format.
+        # The end date for querying suggestions, in the yyyyMMdd format.
         self.end_time = end_time
-        # The keyword for the query. Fuzzy match by table name is supported.
+        # The query keyword. Fuzzy search by table name is supported.
         self.keyword = keyword
-        # The language of the query results. Valid values:
-        # 
-        # - **zh** (default): Chinese
-        # 
-        # - **en**: English
-        # 
-        # - **ja**: Japanese
-        # 
-        # - **zh-tw**: Traditional Chinese
+        # The display language for the suggestions. Valid values:
+        # - **zh**: Simplified Chinese (default).
+        # - **en**: English.
+        # - **ja**: Japanese.
+        # - **zh-tw**: Traditional Chinese.
         self.lang = lang
-        # The order by which to sort the query results. The value is a JSON string. Example: `[{"Field":"SchemaName","Type":"Asc"}]`. Fields:
+        # The field by which to sort the query results. The value is a JSON string, such as [{"Field":"SchemaName","Type":"Asc"}].
+        # - `Field`: the sort field. Valid values:
+        #     - `SchemaName`: the database name.
+        #     - `TableName`: the table name.
+        #     - `JobStatus`: the status of the table build task.
+        #     - `SubmitTime`: the time when the suggestion was issued.
+        #     - `Benefit`: the expected optimization benefit.
+        # - `Type`: the sort order. Valid values:
+        #     - `Asc`: ascending order.
+        #     - `Desc`: descending order.
         # 
-        # - `Field`: The field by which to sort the results. Valid values:
-        # 
-        #   - `SchemaName`: the database name
-        # 
-        #   - `TableName`: the table name
-        # 
-        #   - `JobStatus`: the status of the build job for the table
-        # 
-        #   - `SubmitTime`: the time when the advice was submitted
-        # 
-        #   - `Benefit`: the estimated benefit
-        # 
-        # - `Type`: The sort order. Valid values:
-        # 
-        #   - `Asc`: ascending
-        # 
-        #   - `Desc`: descending
-        # 
-        # > If you do not set this parameter, the query results are sorted by advice submission time in descending order.
+        # > If this parameter is not specified, the results are sorted in descending order by the time when the optimization suggestions were issued.
         self.order = order
-        # The page number. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. The value must be greater than 0 and no more than the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
-        # 
+        # The number of entries per page. Valid values:
         # - **30** (default)
-        # 
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the database and table. Format: **database.table**.
+        # The database name and table name. Format: **database.table**.
         self.schema_table_name = schema_table_name
-        # The start date of the query. The date is in the `yyyyMMdd` format.
+        # The start date for querying suggestions, in the yyyyMMdd format.
         self.start_time = start_time
 
     def validate(self):

@@ -14,8 +14,8 @@ class DescribeRegionsRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The language used for the names of regions and zones (the LocalName values in the response). Valid values:
-        # - **zh-CN**: simplified Chinese (default).
+        # The language used for the region and zone names (the LocalName field in the response). Valid values:
+        # - **zh-CN**: Simplified Chinese (default).
         # - **en-US**: English.
         # - **ja**: Japanese.
         self.accept_language = accept_language

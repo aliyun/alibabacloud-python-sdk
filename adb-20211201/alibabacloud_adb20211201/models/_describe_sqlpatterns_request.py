@@ -24,40 +24,40 @@ class DescribeSQLPatternsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query. Specify the time in UTC in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format.
+        # The end time of the query. Specify the time in the ISO 8601 standard in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format. The time must be in UTC.
         # > The end time must be later than the start time.
         self.end_time = end_time
         # The search keyword.
         self.keyword = keyword
         # The language configuration. Valid values:
-        # - **zh**: Simplified Chinese (default language).
+        # - **zh**: Simplified Chinese (default).
         # - **en**: English.
         # - **ja**: Japanese.
         # - **zh-tw**: Traditional Chinese.
         self.lang = lang
-        # The sorting rule for the query results. The format is a JSON character string. Example: `[{"Field":"AverageQueryTime","Type":"Asc"}]`. The JSON character string contains the following parameters:
-        # - `Field`: the field by which to sort the results. Valid values:
-        #     - `PatternCreationTime`: the earliest commit time of the pattern within the query time range.
-        #     - `AverageQueryTime`: the average total time consumed by the pattern within the query time range.
-        #     - `MaxQueryTime`: the maximum total time consumed by the pattern within the query time range.
+        # The sorting configuration for the query results. The value is a JSON string. Example: `[{"Field":"AverageQueryTime","Type":"Asc"}]`. Parameters:
+        # - `Field`: the sorting field. Valid values:
+        #     - `PatternCreationTime`: the earliest submission time of the pattern within the query time range.
+        #     - `AverageQueryTime`: the average total duration of the pattern within the query time range.
+        #     - `MaxQueryTime`: the maximum total duration of the pattern within the query time range.
         #     - `AverageExecutionTime`: the average execution duration of the pattern within the query time range.
         #     - `MaxExecutionTime`: the maximum execution duration of the pattern within the query time range.
-        #     - `AveragePeakMemory`: the average peak memory usage of the pattern within the query time range.
-        #     - `MaxPeakMemory`: the maximum peak memory usage of the pattern within the query time range.
+        #     - `AveragePeakMemory`: the average peak memory of the pattern within the query time range.
+        #     - `MaxPeakMemory`: the maximum peak memory of the pattern within the query time range.
         #     - `AverageScanSize`: the average amount of data read by the pattern within the query time range.
         #     - `MaxScanSize`: the maximum amount of data read by the pattern within the query time range.
         #     - `QueryCount`: the number of executions of the pattern within the query time range.
-        #     - `FailedCount`: the number of failed executions of the pattern within the query time range.
+        #     - `FailedCount`: the number of failures of the pattern within the query time range.
         # 
-        # - `Type`: the sort order. The value is not case-sensitive. Valid values:
+        # - `Type`: the sorting method. The value is case-insensitive. Valid values:
         #     - `Asc`: ascending order.
         #     - `Desc`: descending order.
         self.order = order
-        # The page number. Valid values: integers greater than 0 and up to the maximum integer value.
+        # The page number. Valid values: positive integers up to the maximum value of the Integer data type.
         # Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # - **10** (default value)
+        # - **10** (default)
         # - **30**
         # - **50**
         # - **100**
@@ -66,9 +66,9 @@ class DescribeSQLPatternsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The hash value of the SQL pattern, which is used to filter a specific SQL pattern.
+        # The hash value of the SQL pattern, which is used to filter specific SQL patterns.
         self.sql_pattern_hash = sql_pattern_hash
-        # The start time of the query. Specify the time in UTC in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format.
+        # The start time of the query. Specify the time in the ISO 8601 standard in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format. The time must be in UTC.
         # >  - You can only query data from the last 14 days.
         # - The interval between the start time and the end time cannot exceed 24 hours.
         self.start_time = start_time

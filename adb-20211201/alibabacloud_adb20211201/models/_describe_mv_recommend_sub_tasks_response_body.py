@@ -81,7 +81,7 @@ class DescribeMvRecommendSubTasksResponseBodyData(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The execution list of the materialized view recommendation task.
+        # The list of materialized view recommendation task executions.
         self.mv_recommend_sub_task_models = mv_recommend_sub_task_models
         # The page number.
         self.page_number = page_number

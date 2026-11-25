@@ -18,19 +18,19 @@ class DescribeTableDetailResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
-        # The detailed reason why the access was denied.
+        # The detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # The average number of rows in a shard.
+        # The average number of rows per shard.
         self.avg_size = avg_size
-        # The queried data distribution.
+        # The details.
         self.items = items
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of records per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of records.
         self.total_count = total_count
 
     def validate(self):
@@ -96,7 +96,7 @@ class DescribeTableDetailResponseBodyItems(DaraModel):
         self,
         shard: List[main_models.DescribeTableDetailResponseBodyItemsShard] = None,
     ):
-        # The queried shards.
+        # The list of shards.
         self.shard = shard
 
     def validate(self):
@@ -133,9 +133,9 @@ class DescribeTableDetailResponseBodyItemsShard(DaraModel):
         id: int = None,
         size: int = None,
     ):
-        # The shard ID. Only the numeric part of the shard name is returned.
+        # The shard number. Only the numeric part of the shard name is returned.
         self.id = id
-        # The number of rows in the table.
+        # The table size and number of rows.
         self.size = size
 
     def validate(self):

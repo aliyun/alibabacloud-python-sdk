@@ -10,7 +10,7 @@ class CreateSqlPatternCompareReportResponseBody(DaraModel):
         report_id: int = None,
         request_id: str = None,
     ):
-        # The ID of the created report. This value only indicates that the request has been accepted.
+        # The ID of the newly created report. The returned value only indicates that the request is accepted.
         self.report_id = report_id
         # The request ID.
         self.request_id = request_id

@@ -11,9 +11,9 @@ class GetSparkSQLEngineStateResponseBody(DaraModel):
         data: main_models.GetSparkSQLEngineStateResponseBodyData = None,
         request_id: str = None,
     ):
-        # The state information about the Spark SQL engine.
+        # The status details of the Spark SQL engine.
         self.data = data
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -56,33 +56,32 @@ class GetSparkSQLEngineStateResponseBodyData(DaraModel):
         state: str = None,
         submitted_time_in_millis: str = None,
     ):
-        # The ID of the Spark application.
+        # The application ID.
         self.app_id = app_id
         # The configuration of the Spark application.
         self.config = config
-        # The third-party JAR package.
+        # The third-party JAR packages.
         self.jars = jars
-        # The maximum number of started Spark executors.
+        # The maximum number of Spark executors to start.
         self.max_executor = max_executor
-        # The minimum number of started Spark executors.
+        # The minimum number of Spark executors to start.
         self.min_executor = min_executor
-        # The slot number of the Spark application.
+        # The slot value of the Spark application.
         self.slot_num = slot_num
-        # The execution state of the application. Valid values:
-        # 
-        # *   SUBMITTED
-        # *   STARTING
-        # *   RUNNING
-        # *   FAILING
-        # *   FAILED
-        # *   KILLING
-        # *   KILLED
-        # *   SUCCEEDING
-        # *   COMPLETED
-        # *   FATAL
-        # *   UNKNOWN
+        # The execution status of the application. Valid values:
+        # * SUBMITTED: Submitted.
+        # * STARTING: Starting.
+        # * RUNNING: Running.
+        # * FAILING: The task failed and the environment is being cleaned up.
+        # * FAILED: Failed.
+        # * KILLING: The task is being terminated and the environment is being cleaned up.
+        # * KILLED: Terminated.
+        # * SUCCEEDING: The task execution is complete and the environment is being cleaned up.
+        # * COMPLETED: Completed.
+        # * FATAL: Unexpected failure.
+        # * UNKNOWN: Unknown error.
         self.state = state
-        # The timestamp when the Spark SQL application was submitted. Unit: milliseconds.
+        # The submission time of the Spark SQL application. The value is a UNIX timestamp in milliseconds.
         self.submitted_time_in_millis = submitted_time_in_millis
 
     def validate(self):

@@ -12,12 +12,12 @@ class QueryFormationTasksByTypeRequest(DaraModel):
         task_type: str = None,
     ):
         # The cluster ID.
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL clusters in a region, including cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the details of all AnalyticDB for MySQL clusters in the specified region, including cluster IDs.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The region ID.
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the supported regions and zones, including region IDs.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to view the supported regions and zones, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id

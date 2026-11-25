@@ -12,13 +12,12 @@ class CreateApsWebhookShrinkRequest(DaraModel):
         region_id: str = None,
         webhook_shrink: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The task type. Valid values:
-        # 
-        # ResultExport: SLS/OSS export task.
+        # The node type. Valid values:
+        # - ResultExport: SLS or OSS export task.
         # 
         # This parameter is required.
         self.job_type = job_type

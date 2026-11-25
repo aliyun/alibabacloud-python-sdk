@@ -20,9 +20,9 @@ class GetFormationCrawlerResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The response message. OK is returned if the call was successful.
+        # The returned message. The value is OK if the call is successful.
         self.message = message
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
         # - **true**: Successful.

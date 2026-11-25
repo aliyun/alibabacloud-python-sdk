@@ -19,11 +19,11 @@ class DescribeApsActionLogsResponseBody(DaraModel):
         total_count: str = None,
         workload_id: str = None,
     ):
-        # The information about the request denial.
+        # The details of the access denial.
         self.access_denied_detail = access_denied_detail
-        # The queried logs.
+        # The list of logs.
         self.action_logs = action_logs
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The page number.
         self.page_number = page_number
@@ -31,9 +31,9 @@ class DescribeApsActionLogsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_count = total_count
-        # The ID of the real-time data ingestion job.
+        # The ID of the data link task.
         self.workload_id = workload_id
 
     def validate(self):
@@ -114,21 +114,21 @@ class DescribeApsActionLogsResponseBodyActionLogs(DaraModel):
         state: str = None,
         time: str = None,
     ):
-        # The content of the log.
+        # The log content.
         self.context = context
-        # The phase during which the log was generated. Valid values:
+        # The task stage. Valid values:
         # 
-        # *   **StructureMigrate**: schema migration.
-        # *   **FullDataSync**: full data synchronization.
-        # *   **IncrementalSync**: incremental data synchronization.
+        # - **StructureMigrate**: Schema migration.
+        # - **FullDataSync**: Full data synchronization.
+        # - **IncrementalSync**: Incremental data synchronization.
         self.stage = stage
-        # The type of the log. Multiple log types are separated by commas (,). Valid values:
+        # The log type. Separate multiple log types with commas (,). Valid values:
         # 
-        # *   **INFO**
-        # *   **WARN**
-        # *   **ERROR**
+        # - **INFO**: Information.
+        # - **WARN**: Warning.
+        # - **ERROR**: Error.
         self.state = state
-        # The time when the log was generated. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+        # The log time. The time is in the **yyyy-MM-ddTHH:mm:ssZ** format and must be in UTC.
         self.time = time
 
     def validate(self):

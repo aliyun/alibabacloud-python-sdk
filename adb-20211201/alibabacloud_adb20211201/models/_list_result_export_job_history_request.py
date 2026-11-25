@@ -21,54 +21,51 @@ class ListResultExportJobHistoryRequest(DaraModel):
         start_time: str = None,
         status_list: List[str] = None,
     ):
-        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in the specified region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The name of the database account.
+        # The database user.
         self.database_user = database_user
-        # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # The end time of the query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         # 
-        # >  The end time must be later than the start time.
+        # > The end time must be later than the start time.
         self.end_time = end_time
-        # The order in which to sort the SQL statements by field, which contains the `Field` and `Type` fields. Specify the order in the JSON format. Example: `[{"Field":"CreateTimee", "Type": "desc" }]`.
+        # The sorting conditions for SQL statements based on specified fields. The value is in JSON format and is an ordered JSON array that specifies composite sorting based on the sequence of the input array. The array contains the `Field` and `Type` fields. Example: `[{"Field":"CreateTimee", "Type": "desc" }]`. Details:
         # 
-        # *   `Field` specifies the field that is used to sort the SQL statements. Valid values:
+        # - `Field`: the name of the field by which to sort the statements. Valid values:
+        #     - `CreateTime`: the execution start time.
+        #     - `Status`: the execution status.
+        #     - `DatabaseUser`: the username.
+        #     - `TimeCost`: the execution duration.
+        #     - `ResourceGroup`: the resource group.
+        #     - `ExportRows`: the number of exported rows.
+        #     - `Progress`: the export progress.
         # 
-        #     *   `CreateTime`: the time when the result set export job was created.
-        #     *   `Status`: the execution status.
-        #     *   `DatabaseUser`: the name of the database account.
-        #     *   `TimeCost`: the execution duration.
-        #     *   `ResourceGroup`: the name of the resource group.
-        #     *   `ExportRows`: the number of exported rows.
-        #     *   `Progress`: the export progress.
         # 
-        # *   `Type` specifies the sorting order. Valid values (case-insensitive):
-        # 
-        #     *   `Desc`: descending order.
-        #     *   `Asc`: ascending order.
+        # - `Type`: the sorting type. Valid values (case-insensitive):
+        #     - `Desc`: descending order.
+        #     - `Asc`: ascending order.
         self.order = order
-        # The page number. Pages start from page 1.
+        # The page number. The value must be an integer greater than 0 and less than or equal to the maximum value of the Integer data type.
         self.page_number = page_number
         # The number of entries per page. Valid values:
-        # 
-        # *   **30** (default)
-        # *   **50**
-        # *   **100**
+        # - **30** (default)
+        # - **50**
+        # - **100**
         self.page_size = page_size
-        # The region ID of the cluster.
-        # 
-        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+        # The region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The name of the resource group that runs the result set export jobs. You can use this parameter to query the execution records of export jobs that are run in a specific resource group.
+        # The resource group in which the task is executed. You can filter tasks by resource group.
         self.resource_group = resource_group
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
+        # The start time of the query. Specify the time in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format. The time must be in UTC.
         self.start_time = start_time
-        # The execution status of result set export jobs. You can use this parameter to query the execution records of export jobs that are in a specific state.
+        # The list of task execution statuses. You can filter tasks by status.
         self.status_list = status_list
 
     def validate(self):
@@ -153,20 +150,19 @@ class ListResultExportJobHistoryRequestOrder(DaraModel):
         field: str = None,
         type: str = None,
     ):
-        # The field that is used to sort the SQL statements. Valid values:
+        # The name of the field by which to sort. Valid values:
         # 
-        # *   CreateTime
-        # *   DatabaseUser
-        # *   TimeCost
-        # *   ResourceGroup
-        # *   Status
-        # *   Progress
-        # *   ExportRows
+        # - CreateTime
+        # - DatabaseUser
+        # - TimeCost
+        # - ResourceGroup
+        # - Status
+        # - Progress
+        # - ExportRows
         self.field = field
-        # The sorting order. Valid values (case-insensitive):
-        # 
-        # *   **Desc**: descending order.
-        # *   **Asc**: ascending order.
+        # The sorting type. Valid values:
+        # - **Desc**: descending order.
+        # - **Asc**: ascending order.
         self.type = type
 
     def validate(self):

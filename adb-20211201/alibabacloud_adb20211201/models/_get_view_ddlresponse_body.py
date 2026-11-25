@@ -10,9 +10,9 @@ class GetViewDDLResponseBody(DaraModel):
         request_id: str = None,
         sql: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The SQL statement.
+        # The details of the SQL statement.
         self.sql = sql
 
     def validate(self):

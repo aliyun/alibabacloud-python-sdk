@@ -17,23 +17,20 @@ class DescribeAppliedAdvicesResponseBody(DaraModel):
         schema_table_names: List[str] = None,
         total_count: int = None,
     ):
-        # Details.
+        # The details.
         self.items = items
-        # The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. The value must be greater than 0 and no more than the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
-        # 
-        # - **30** (Default)
-        # 
+        # The number of entries per page. Valid values:
+        # - **30** (default)
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The concatenated strings of database and table names.
+        # The concatenated string of the database name and table name.
         self.schema_table_names = schema_table_names
-        # The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
+        # The total number of returned results. The value must be greater than or equal to 0 and no more than the maximum value of the Integer data type. Default value: 0.
         self.total_count = total_count
 
     def validate(self):
@@ -112,47 +109,40 @@ class DescribeAppliedAdvicesResponseBodyItems(DaraModel):
         table_name: str = None,
         total_count: int = None,
     ):
-        # The advice ID.
+        # The suggestion ID.
         self.advice_id = advice_id
-        # The benefit of the advice.
+        # The benefit of the suggestion.
         self.benefit = benefit
-        # The SQL statement of the build task.
+        # The SQL statement used to execute the build task.
         self.build_sql = build_sql
         # The index fields.
         self.index_fields = index_fields
-        # The status of the task that is used to apply the advice. Valid values:
-        # 
-        # - **SUCCEED**: The task is successful.
-        # 
-        # - **FAILED**: The task has failed.
+        # The status of the task that executes the suggestion. Valid values:
+        # - **SUCCEED**: Succeeded.
+        # - **FAILED**: Failed.
         self.job_status = job_status
-        # The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+        # The page number. The value must be greater than 0 and no more than the maximum value of the Integer data type. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values:
-        # 
-        # - **30** (Default)
-        # 
+        # The number of entries per page. Valid values:
+        # - **30** (default)
         # - **50**
-        # 
         # - **100**
         self.page_size = page_size
-        # The SQL statement that is used to roll back the advice.
+        # The rollback SQL statement for the suggestion.
         self.rollback_sql = rollback_sql
-        # The SQL statement that is used to apply the advice.
+        # The SQL statement used to apply the suggestion.
         self.sql = sql
         # The database name.
         self.schema_name = schema_name
-        # The submission status of the advice. Valid values:
-        # 
-        # - **SUCCEED**: The advice is submitted.
-        # 
-        # - **FAILED**: The advice fails to be submitted.
+        # The delivery status of the suggestion. Valid values:
+        # - **SUCCEED**: Succeeded.
+        # - **FAILED**: Failed.
         self.submit_status = submit_status
-        # The time when the advice was submitted. The time is in the `yyMMddHHmm` format. The time is displayed in UTC.
+        # The time when the suggestion was issued. Format: yyMMddHHmm (UTC).
         self.submit_time = submit_time
         # The table name.
         self.table_name = table_name
-        # The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
+        # The total number of returned results. The value must be greater than or equal to 0 and no more than the maximum value of the Integer data type. Default value: 0.
         self.total_count = total_count
 
     def validate(self):

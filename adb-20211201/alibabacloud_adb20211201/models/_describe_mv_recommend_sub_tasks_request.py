@@ -17,18 +17,18 @@ class DescribeMvRecommendSubTasksRequest(DaraModel):
         subtask_id: int = None,
         task_name: str = None,
     ):
-        # A fixed value. This value cannot be modified.
+        # A fixed value. This parameter cannot be modified.
         self.action_inner = action_inner
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # A fixed value. This value cannot be modified.
+        # A fixed value. This parameter cannot be modified.
         self.from_ = from_
         # The sort field.
         # Valid values for the sort order:
         # - Asc
         # - Desc
         # 
-        # Valid values for the sort field:
+        # Valid values for the field:
         # - StartTime
         # - EndTime
         self.order_by = order_by

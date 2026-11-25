@@ -14,19 +14,19 @@ class CreateApsSlsADBJobResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The API status or POP error code.
+        # The operation status code or POP error code.
         self.code = code
         # The returned data.
         self.data = data
-        # The HTTP status code returned. A value of 200 indicates that the request was successful.
+        # The HTTP status code returned by the request. A status code of 200 indicates that the request was successful.
         self.http_status_code = http_status_code
-        # The message returned for the call. Valid values:
-        # - If the request was successful, **Success** is returned. 
-        # - If the request failed, the specific error message is returned.
+        # The message returned for the call result. Valid values:
+        # - If the request is normal, **Success** is returned. 
+        # - If the request is abnormal, the specific error message is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The result of the precheck. Valid values:
+        # The precheck result. Valid values:
         # 
         # - **success**: The check passed.
         # - **false**: The check failed.

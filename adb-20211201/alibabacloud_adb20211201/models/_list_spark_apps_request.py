@@ -18,18 +18,18 @@ class ListSparkAppsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The filter conditions defined as a JSON-formatted string. The following valid KEY values and their meanings are supported in the JSON string:
+        # The filter conditions defined as a JSON string. The valid keys and their descriptions are as follows:
         # - SubmittedTimeRange: the start time.
         # - TerminatedTimeRange: the end time.
-        # - AppStates: the status of the Spark job.
+        # - AppStates: the state of the Spark job.
         # - AppId: the ID of the Spark job.
         # - AppNameRegex: the regular expression for the name of the Spark job.
         # - Tag: the tag information.
         # - ResourceGroupName: the name of the resource group.
         # 
         # For the start time and end time filter conditions, specify the range by using the following substructure:
-        # - Min: the lower bound of the time range. A value of null indicates no limit.
-        # - Max: the upper bound of the time range. A value of null indicates no limit.
+        # - Min: the lower limit of the time range. A value of null indicates no limit.
+        # - Max: the upper limit of the time range. A value of null indicates no limit.
         self.filters = filters
         # The page number. The value must be a positive integer. Default value: **1**.
         # 

@@ -21,15 +21,16 @@ class UpdateFormationCrawlerResponseBody(DaraModel):
         self.data = data
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # The additional information about the call result.
+        # The additional information about the call result. Valid values:
+        # 
         # - If the request is normal, OK is returned.
         # - If an exception occurs, a specific error code is returned.
         self.message = message
         # The request ID.
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
-        # - **true**: The call was successful.
-        # - **false**: The call failed.
+        # - **true**: Successful.
+        # - **false**: Failed.
         self.success = success
         # The task ID.
         self.task_id = task_id

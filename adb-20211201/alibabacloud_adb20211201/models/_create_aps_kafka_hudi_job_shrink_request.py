@@ -37,8 +37,7 @@ class CreateApsKafkaHudiJobShrinkRequest(DaraModel):
         target_type: str = None,
         workload_name: str = None,
     ):
-        # The RAM role whose trusted entity is an Alibaba Cloud account. For more information about how to create a RAM role, see Create a RAM role for a trusted Alibaba Cloud account.
-        # In the RAM role, the Alibaba Cloud account to which AnalyticDB for MySQL belongs must be configured as a trusted account for the Alibaba Cloud account to which the Kafka instance belongs.
+        # The RAM role whose trusted entity is an Alibaba Cloud account. For more information about how to create a RAM role, see Create a RAM role for a trusted Alibaba Cloud account. In the RAM role, the Alibaba Cloud account to which AnalyticDB for MySQL belongs is configured as a trusted account for the Alibaba Cloud account to which Kafka belongs.
         self.across_role = across_role
         # The ID of the Alibaba Cloud account to which the source Kafka instance belongs.
         self.across_uid = across_uid
@@ -49,15 +48,15 @@ class CreateApsKafkaHudiJobShrinkRequest(DaraModel):
         # This parameter is required.
         self.columns_shrink = columns_shrink
         # The cluster ID.
-        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in the specified region.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in the target region.
         # 
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The Kafka message type. Valid values: json, general_canal_json, mongo_canal_json, dataworks_json, and shareplex_json.
         self.data_format_type = data_format_type
         # The data output format. Valid values:
-        # - Single: The source is a single-line JSON record.
-        # - Multi: The source is a JSON array. A single JSON record must be output.
+        # - Single: the source is a single-line JSON record.
+        # - Multi: the source is a JSON array. A single JSON record must be output.
         self.data_output_format = data_output_format
         # The data source ID.
         self.datasource_id = datasource_id
@@ -65,31 +64,31 @@ class CreateApsKafkaHudiJobShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.db_name = db_name
-        # The full synchronization configurations.
+        # The full data synchronization configurations.
         self.full_compute_unit = full_compute_unit
-        # The destination Hudi configurations.
+        # The advanced HUDI configurations for the target.
         self.hudi_advanced_config = hudi_advanced_config
-        # The incremental synchronization configurations.
+        # The incremental data synchronization configurations.
         # 
         # This parameter is required.
         self.incremental_compute_unit = incremental_compute_unit
-        # The nesting parse level for JSON. Valid values:
-        # - 0: No parsing.
-        # - 1: Parse one level.
-        # - 2: Parse two levels.
-        # - 3: Parse three levels.
-        # - 4: Parse four levels.
-        # Default value: 1. For more information about the JSON nesting parse strategy, see JSON parse levels and schema field inference examples.
+        # Specifies the JSON nesting parse level. Valid values:
+        # - 0: does not parse JSON.
+        # - 1: parses one level.
+        # - 2: parses two levels.
+        # - 3: parses three levels.
+        # - 4: parses four levels.
+        # Default value: 1. For more information about the JSON nesting parse strategy, see JSON parsing levels and schema field inference examples.
         self.json_parse_level = json_parse_level
-        # Instance ID of the Kafka instance. You can obtain instance ID in the Kafka console.
+        # Instance ID of the Kafka instance. You can obtain instance ID from the Kafka console.
         self.kafka_cluster_id = kafka_cluster_id
-        # The ID of the Kafka topic. You can obtain the ID in the Kafka console.
+        # The ID of the Kafka topic. You can obtain the ID from the Kafka console.
         self.kafka_topic = kafka_topic
         # The ID of the lakehouse.
         self.lakehouse_id = lakehouse_id
         # The maximum number of messages to consume per trigger.
         self.max_offsets_per_trigger = max_offsets_per_trigger
-        # The destination lakehouse address, which is a complete OSS path.
+        # The destination data lakehouse address, which is the complete OSS path.
         self.oss_location = oss_location
         # The output data format.
         self.output_format = output_format
@@ -103,8 +102,8 @@ class CreateApsKafkaHudiJobShrinkRequest(DaraModel):
         #  "f1",
         #  "f2"
         # ],
-        # "RecordVersionField","xxx"
-        # RecordVersionField specifies the Hudi record version.
+        # "RecordVersionField":"xxx"
+        # RecordVersionField specifies the HUDI record version.
         self.primary_key_definition = primary_key_definition
         # The region ID.
         # 
@@ -117,9 +116,9 @@ class CreateApsKafkaHudiJobShrinkRequest(DaraModel):
         # The region ID.
         self.source_region_id = source_region_id
         # The starting consumption offset for Kafka. Valid values:
-        # - begin_cursor: The earliest offset.
-        # - end_cursor: The latest offset.
-        # - timestamp: A specified time.
+        # - begin_cursor: the earliest offset.
+        # - end_cursor: the latest offset.
+        # - timestamp: a specified timestamp.
         # 
         # This parameter is required.
         self.starting_offsets = starting_offsets
@@ -127,9 +126,9 @@ class CreateApsKafkaHudiJobShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.table_name = table_name
-        # The destination generation rule.
+        # The target generation rule.
         self.target_generate_rule = target_generate_rule
-        # The destination type.
+        # The target type.
         self.target_type = target_type
         # The name of the workload.
         # 

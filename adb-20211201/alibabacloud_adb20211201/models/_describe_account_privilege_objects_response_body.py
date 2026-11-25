@@ -16,11 +16,11 @@ class DescribeAccountPrivilegeObjectsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The permissions.
+        # The list of privileges.
         self.data = data
-        # The page number.
+        # The page number, which is the same as the value passed in the request.
         self.page_number = page_number
-        # The number of entries per page.
+        # The page size, which is the same as the value passed in the request.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
@@ -87,13 +87,13 @@ class DescribeAccountPrivilegeObjectsResponseBodyData(DaraModel):
         description: str = None,
         table: str = None,
     ):
-        # The name of the column. This parameter is returned when PrivilegeType is set to Column.
+        # The column name. This field is returned when the privilege level is Column.
         self.column = column
-        # The name of the database. This parameter is returned when PrivilegeType is set to Database, Table, or Column.
+        # The database name. This field is returned when the privilege level is Database, Table, or Column.
         self.database = database
-        # The description that is specified when you create a table or column. This parameter is returned only when PrivilegeType is set to Database or Table, indicating the database description or table description.
+        # The description specified when the table or column is created. This field has a value only when the privilege level is Database or Table, representing the description of the database or table, respectively.
         self.description = description
-        # The name of the table. This parameter is returned when PrivilegeType is set to Table or Column.
+        # The table name. This field is returned when the privilege level is Table or Column.
         self.table = table
 
     def validate(self):

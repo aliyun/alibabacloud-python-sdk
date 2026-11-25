@@ -13,7 +13,7 @@ class DescribeEnabledPrivilegesResponseBody(DaraModel):
         data: List[main_models.DescribeEnabledPrivilegesResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The supported permission levels and the list of permissions.
+        # The supported permission levels and permissions.
         self.data = data
         # The request ID.
         self.request_id = request_id

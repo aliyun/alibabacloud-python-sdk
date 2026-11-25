@@ -17,13 +17,13 @@ class DescribeSQLPatternsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the access denial. This field is returned only when RAM authentication fails.
+        # The details of the access denial. This field is returned only when the RAM authentication fails.
         self.access_denied_detail = access_denied_detail
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The list of patterns.
+        # The list.
         self.pattern_details = pattern_details
         # The request ID.
         self.request_id = request_id
@@ -125,15 +125,15 @@ class DescribeSQLPatternsResponseBodyPatternDetails(DaraModel):
     ):
         # The IP address of the client that submitted the SQL statement related to the pattern.
         self.access_ip = access_ip
-        # The average execution time of the pattern within the specified time range. Unit: milliseconds.
+        # The average execution duration of the pattern within the specified time range. Unit: milliseconds.
         self.average_execution_time = average_execution_time
         # The average CPU cost. Unit: milliseconds.
         self.average_operator_cost = average_operator_cost
         # The average peak memory usage of the pattern within the specified time range. Unit: bytes.
         self.average_peak_memory = average_peak_memory
-        # The average total time consumed by the pattern within the specified time range. Unit: milliseconds.
+        # The average total duration of the pattern within the specified time range. Unit: milliseconds.
         self.average_query_time = average_query_time
-        # The average scan time.
+        # The average scan duration.
         self.average_scan_cost = average_scan_cost
         # The average amount of data read by the pattern within the specified time range. Unit: bytes.
         self.average_scan_size = average_scan_size
@@ -142,17 +142,17 @@ class DescribeSQLPatternsResponseBodyPatternDetails(DaraModel):
         # * **false**: The execution cannot be blocked.
         # > Currently, AnalyticDB for MySQL only supports blocking SELECT and INSERT statements.
         self.blockable = blockable
-        # The number of failed executions of the pattern within the specified time range.
+        # The number of failures of the pattern within the specified time range.
         self.failed_count = failed_count
-        # The maximum execution time of the pattern within the specified time range. Unit: milliseconds.
+        # The maximum execution duration of the pattern within the specified time range. Unit: milliseconds.
         self.max_execution_time = max_execution_time
         # The maximum CPU cost. Unit: milliseconds.
         self.max_operator_cost = max_operator_cost
-        # The maximum peak memory usage for the SQL statement related to the pattern. Unit: bytes.
+        # The maximum peak memory for the SQL statement related to the pattern. Unit: bytes.
         self.max_peak_memory = max_peak_memory
-        # The maximum total time consumed by the pattern within the specified time range. Unit: milliseconds.
+        # The maximum total duration of the pattern within the specified time range. Unit: milliseconds.
         self.max_query_time = max_query_time
-        # The maximum scan time.
+        # The maximum scan duration.
         self.max_scan_cost = max_scan_cost
         # The maximum amount of data read by the SQL statement related to the pattern. Unit: bytes.
         self.max_scan_size = max_scan_size
@@ -162,7 +162,7 @@ class DescribeSQLPatternsResponseBodyPatternDetails(DaraModel):
         self.operator_cost_sum = operator_cost_sum
         # The earliest submission time of the pattern within the specified time range.
         self.pattern_creation_time = pattern_creation_time
-        # The ID of the SQL pattern.
+        # The ID of the SQL pattern statement.
         self.pattern_id = pattern_id
         # The percentage of the total peak memory usage of a single pattern within the query time range out of the total peak memory usage of all patterns. Unit: %.
         self.peak_memory_percentage = peak_memory_percentage
@@ -170,11 +170,11 @@ class DescribeSQLPatternsResponseBodyPatternDetails(DaraModel):
         self.peak_memory_sum = peak_memory_sum
         # The number of executions of the pattern within the specified time range.
         self.query_count = query_count
-        # The percentage of the time consumed by a single pattern within the query time range out of the total time consumed by all patterns. Unit: %.
+        # The percentage of the total duration of a single pattern within the query time range out of the total duration of all patterns. Unit: %.
         self.query_time_percentage = query_time_percentage
-        # The total time consumed. Unit: milliseconds.
+        # The total duration. Unit: milliseconds.
         self.query_time_sum = query_time_sum
-        # The SQL statement of the pattern.
+        # The SQL pattern statement.
         self.sqlpattern = sqlpattern
         # The percentage of the total data scan cost. Unit: %.
         self.scan_cost_percentage = scan_cost_percentage

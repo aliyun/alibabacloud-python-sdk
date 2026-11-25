@@ -16,16 +16,16 @@ class DescribeDBClusterPerformanceResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The cluster ID.
+        # The ID of the cluster.
         # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in a specified region.
         self.dbcluster_id = dbcluster_id
-        # The end time of the query. The time is in UTC in the format of <i>yyyy-MM-ddTHH:mmZ</i>.
+        # The end time of the query. The time is in UTC and follows the <i>yyyy-MM-ddTHH:mmZ</i> format.
         self.end_time = end_time
         # The list of cluster performance metrics.
         self.performances = performances
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The start time of the query. Specify the time in UTC in the format of <i>yyyy-MM-ddTHH:mmZ</i>.
+        # The start time of the query. Specify the time in UTC in the <i>yyyy-MM-ddTHH:mmZ</i> format.
         self.start_time = start_time
 
     def validate(self):
@@ -87,11 +87,11 @@ class DescribeDBClusterPerformanceResponseBodyPerformances(DaraModel):
         series: List[main_models.DescribeDBClusterPerformanceResponseBodyPerformancesSeries] = None,
         unit: str = None,
     ):
-        # The name of the performance metric.
+        # The name of the performance metrics.
         self.key = key
         # The list of performance data.
         self.series = series
-        # The unit of the monitoring metric.
+        # The unit of the monitoring metrics.
         self.unit = unit
 
     def validate(self):
@@ -142,13 +142,13 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(DaraModel):
         translate_key: str = None,
         values: List[str] = None,
     ):
-        # The name of the performance metric (monitoring metric value name). For more information, see [Monitoring metrics overview](https://help.aliyun.com/document_detail/2863211.html).
+        # The name of the performance metrics (the value name of the monitoring metrics). For details, see [Overview of monitoring metrics](https://help.aliyun.com/document_detail/2863211.html).
         self.name = name
-        # The tag value.
+        # The tag values.
         self.tags = tags
-        # The key used for internationalization translation. You can ignore this parameter in most cases.
+        # The key used for internationalization. You can ignore this parameter.
         self.translate_key = translate_key
-        # The performance values at different points in time.
+        # The details of the performance values at different points in time.
         self.values = values
 
     def validate(self):

@@ -14,13 +14,13 @@ class StartFormationCrawlerResponseBody(DaraModel):
     ):
         # The returned data.
         self.data = data
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the call was successful. Valid values:
-        # - **true**: Successful.
-        # - **false**: Failed.
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

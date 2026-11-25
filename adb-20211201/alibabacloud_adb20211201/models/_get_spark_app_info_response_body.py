@@ -11,20 +11,19 @@ class GetSparkAppInfoResponseBody(DaraModel):
         data: main_models.SparkAppInfo = None,
         request_id: str = None,
     ):
-        # The queried Spark application. Fields in the response parameter:
-        # 
-        # *   **Data**: the data of the Spark application template.
-        # *   **EstimateExecutionCpuTimeInSeconds**: the amount of time that is required to consume CPU resources for running the Spark application. Unit: milliseconds.
-        # *   **LogRootPath**: the storage path of log files.
-        # *   **LastAttemptId**: the most recent attempt ID.
-        # *   **WebUiAddress**: the web UI URL.
-        # *   **SubmittedTimeInMillis**: the time when the Spark application was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-        # *   **StartedTimeInMillis**: the time when the Spark application was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-        # *   **LastUpdatedTimeInMillis**: the time when the Spark application was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-        # *   **TerminatedTimeInMillis**: the time when the Spark application was terminated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
-        # *   **DBClusterId**: the ID of the cluster on which the Spark application runs.
-        # *   **ResourceGroupName**: the name of the job resource group.
-        # *   **DurationInMillis**: the amount of time that is required to run the Spark application. Unit: milliseconds.
+        # The information about the Spark application. Response parameter description:
+        # - **Data**: the Spark application template data.
+        # - **EstimateExecutionCpuTimeInSeconds**: the CPU time consumed to execute the Spark application, in milliseconds.
+        # - **LogRootPath**: the storage path of the log file.
+        # - **LastAttemptId**: the retry ID.
+        # - **WebUiAddress**: the web UI address.
+        # - **SubmittedTimeInMillis**: the time when the Spark application was submitted. The value is a UNIX timestamp in milliseconds.
+        # - **StartedTimeInMillis**: the time when the Spark application was created. The value is a UNIX timestamp in milliseconds.
+        # - **LastUpdatedTimeInMillis**: the time when the Spark application was last updated. The value is a UNIX timestamp in milliseconds.
+        # - **TerminatedTimeInMillis**: the time when the execution of the Spark application was terminated. The value is a UNIX timestamp in milliseconds.
+        # - **DBClusterId**: the ID of the cluster where the Spark application is executed.
+        # - **ResourceGroupName**: the name of the job resource group.
+        # - **DurationInMillis**: the execution duration of the Spark application, in milliseconds.
         self.data = data
         # The request ID.
         self.request_id = request_id

@@ -69,9 +69,9 @@ class DescribeApsHiveWorkloadResponseBodyApsWorkload(DaraModel):
         workload_name: str = None,
         workload_type_name: str = None,
     ):
-        # The advanced configurations.
+        # The advanced configuration.
         self.advanced_config = advanced_config
-        # The handling strategy when a database or table with the same name exists at the destination.
+        # The handling strategy for databases or tables with the same name in the destination.
         self.conflict_strategy = conflict_strategy
         # The creation time.
         self.create_time = create_time
@@ -83,7 +83,7 @@ class DescribeApsHiveWorkloadResponseBodyApsWorkload(DaraModel):
         self.datasource_name = datasource_name
         # The EMR cluster ID.
         self.emr_cluster_id = emr_cluster_id
-        # The number of ACUs required for migration.
+        # The number of ACUs required for the migration.
         self.full_compute_unit = full_compute_unit
         # The Hive metastore URL.
         self.meta_store_uri = meta_store_uri
@@ -93,7 +93,7 @@ class DescribeApsHiveWorkloadResponseBodyApsWorkload(DaraModel):
         self.parallelism = parallelism
         # The region ID.
         self.region_id = region_id
-        # The resource pool to which the SQL statement belongs.
+        # The resource pool to which the SQL statements belong.
         self.resource_group = resource_group
         # The status.
         self.state = state
@@ -109,7 +109,7 @@ class DescribeApsHiveWorkloadResponseBodyApsWorkload(DaraModel):
         self.workload_id = workload_id
         # The workload name.
         self.workload_name = workload_name
-        # The workload name.
+        # The workload type name.
         self.workload_type_name = workload_type_name
 
     def validate(self):

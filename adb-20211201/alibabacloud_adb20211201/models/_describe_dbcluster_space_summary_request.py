@@ -14,7 +14,7 @@ class DescribeDBClusterSpaceSummaryRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+        # <props="china">The ID of the cluster. The cluster runs Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
         # <props="intl">The ID of the Data Lakehouse Edition cluster.
         # 
         # This parameter is required.
