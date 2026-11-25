@@ -17,11 +17,11 @@ class GetConversationsResponseBody(DaraModel):
     ):
         # The request result.
         self.data = data
-        # Indicates whether there is a next page.
+        # Indicates whether more pages are available.
         self.has_more = has_more
-        # The number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
+        # The paging Settings for the number of entries per page in a paged query. Valid values: 1 to 100. Default value: 100.
         self.limit = limit
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -83,20 +83,17 @@ class GetConversationsResponseBodyData(DaraModel):
     ):
         # The creation time.
         self.created_at = created_at
-        # The historical conversation ID.
+        # The ID of the historical conversation.
         self.id = id
         # The conversation introduction.
         self.introduction = introduction
+        # Indicates whether the session is running.
         self.is_running = is_running
-        # The historical conversation name.
+        # The name of the historical conversation.
         self.name = name
-        # The session status. Valid values:
-        # - idle: The session is idle.
-        # - running: The session is generating a response.
-        # - pending_approval: The session is waiting for approval or manual review.
-        # 
-        # If both pending_approval and running conditions are met, pending_approval is returned.
+        # The session status.
         self.status = status
+        # The update time.
         self.updated_at = updated_at
 
     def validate(self):

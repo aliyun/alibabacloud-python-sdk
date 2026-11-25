@@ -5473,6 +5473,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetConversationsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.flow_id):
+            query['FlowId'] = request.flow_id
         if not DaraCore.is_null(request.last_id):
             query['LastId'] = request.last_id
         if not DaraCore.is_null(request.limit):
@@ -5509,6 +5511,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetConversationsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.flow_id):
+            query['FlowId'] = request.flow_id
         if not DaraCore.is_null(request.last_id):
             query['LastId'] = request.last_id
         if not DaraCore.is_null(request.limit):
@@ -5713,6 +5717,8 @@ class Client(OpenApiClient):
             query['EventMode'] = request.event_mode
         if not DaraCore.is_null(request.first_id):
             query['FirstId'] = request.first_id
+        if not DaraCore.is_null(request.flow_id):
+            query['FlowId'] = request.flow_id
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
         if not DaraCore.is_null(request.workspace_id):
@@ -5749,6 +5755,8 @@ class Client(OpenApiClient):
             query['EventMode'] = request.event_mode
         if not DaraCore.is_null(request.first_id):
             query['FirstId'] = request.first_id
+        if not DaraCore.is_null(request.flow_id):
+            query['FlowId'] = request.flow_id
         if not DaraCore.is_null(request.limit):
             query['Limit'] = request.limit
         if not DaraCore.is_null(request.workspace_id):

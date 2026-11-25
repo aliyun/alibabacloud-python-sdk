@@ -15,11 +15,11 @@ class GetMessagesResponseBody(DaraModel):
         limit: int = None,
         request_id: str = None,
     ):
-        # The query result.
+        # The query results.
         self.data = data
         # Indicates whether there is a next page.
         self.has_more = has_more
-        # The maximum number of entries returned.
+        # The maximum number of query results.
         self.limit = limit
         # The request ID.
         self.request_id = request_id
@@ -88,12 +88,13 @@ class GetMessagesResponseBodyData(DaraModel):
         retriever_resources: List[Any] = None,
         stream_key: str = None,
     ):
-        # The answer.
+        # The reply.
         self.answer = answer
-        # The session ID.
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # The creation time.
+        # The time when the message was created. The value is a UNIX timestamp in seconds.
         self.created_at = created_at
+        # The list of events.
         self.events = events
         # The feedback.
         self.feedback = feedback
@@ -106,7 +107,7 @@ class GetMessagesResponseBodyData(DaraModel):
         self.message_files = message_files
         # The query statement.
         self.query = query
-        # The retrieval resources.
+        # The retrieved resources.
         self.retriever_resources = retriever_resources
         self.stream_key = stream_key
 
@@ -236,7 +237,7 @@ class GetMessagesResponseBodyDataMessageFiles(DaraModel):
         self.id = id
         self.preview_url = preview_url
         self.type = type
-        # The upload file ID.
+        # The uploaded file ID.
         self.upload_file_id = upload_file_id
 
     def validate(self):
@@ -291,19 +292,19 @@ class GetMessagesResponseBodyDataEvents(DaraModel):
         answer: str = None,
         event: str = None,
     ):
-        # The approval status of the tool calling.
+        # The tool invocation approval status.
         self.approval_status = approval_status
-        # The tool calling ID.
+        # The tool invocation ID.
         self.call_id = call_id
-        # The session ID.
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # The description of the tool calling.
+        # The tool invocation description.
         self.description = description
         # The message ID.
         self.message_id = message_id
         # The tool approval round ID.
         self.round_id = round_id
-        # The parameters of the tool calling.
+        # The tool invocation parameters.
         self.tool_arguments = tool_arguments
         # The tool name.
         self.tool_name = tool_name

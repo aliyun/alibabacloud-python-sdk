@@ -22,31 +22,31 @@ class UpdateContextDatabaseWorkspaceResponseBody(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
-        # The account-level capability information of the current request. It only indicates the operations that the account compatibility adapter can perform and does not represent resource-level authorization. This field is optional and is not returned if no account-level executable operations are provided.
+        # The account-level capability information of the current call. It only indicates the operations that the account compatibility adapter can perform and does not represent resource-level authorization. This field is optional and is not returned if no account-level executable operations are provided.
         self.capabilities = capabilities
         # The ID of the cluster to which the workspace belongs. For shared clusters, `default` is returned. For dedicated clusters, the corresponding cluster ID is returned.
         self.cluster_id = cluster_id
-        # The permission mode used by the server to parse the identity of the current request. Valid values:
+        # The permission mode used by the server to parse the identity of the current call. Valid values:
         # - `personal_compatibility`: compatibility mode.
         # - `advanced`: advanced permission mode.
         # 
-        # This field describes the identity context of the current request. For the actual permission mode of the workspace, refer to PermissionMode.
+        # This field describes the identity context of the current call. For the actual permission mode of the workspace, refer to PermissionMode.
         self.console_permission_mode = console_permission_mode
-        # The creation time in ISO 8601 format.
+        # The time when the workspace was created, in ISO 8601 format.
         self.created_at = created_at
         # The permission mode of the workspace. Valid values:
         # - `personal_compatibility`: compatibility mode.
         # - `advanced`: advanced permission mode.
         self.permission_mode = permission_mode
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The workspace status.
+        # The status of the workspace.
         self.status = status
-        # The workspace type.
+        # The type of the workspace.
         self.type = type
-        # The viewer identity information of the current request, including the identity resolution mode, caller account type, and member information. Member-related fields are optional.
+        # The viewer identity information of the current call, including the identity parsing mode, caller account type, and member information. Member-related fields are optional.
         self.viewer = viewer
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
         # The updated name of the workspace.
         self.workspace_name = workspace_name
@@ -146,21 +146,21 @@ class UpdateContextDatabaseWorkspaceResponseBodyViewer(DaraModel):
         identity_mode: str = None,
         selected_member_id: str = None,
     ):
-        # The ID of the bound workspace member in the identity information of the current request. Optional. This field is empty if no bound member information is provided.
+        # The ID of the bound workspace member in the identity information of the current call. Optional. This field is empty if no bound member information is provided.
         self.bound_member_id = bound_member_id
         # The role of the bound member in the workspace, such as `Owner`. Optional. This field is empty if no bound member role information is provided.
         self.bound_member_role = bound_member_role
         # The status of the bound member, such as `active`. Optional. This field is empty if no bound member status information is provided.
         self.bound_member_status = bound_member_status
-        # The account type of the caller for the current request, such as `customer`. This field describes the caller account and does not indicate the role of a workspace member.
+        # The account type of the caller for the current call, such as `customer`. This field describes the caller account and does not indicate the role of the workspace member.
         self.caller_type = caller_type
-        # The identity resolution mode of the current request. Valid values:
+        # The identity parsing mode of the current call. Valid values:
         # - `account_compatibility`: account compatibility identity mode.
         # - `bound_member`: bound member identity mode.
         # 
-        # The identity resolution mode and the workspace permission mode are different concepts. You cannot infer whether advanced permissions are enabled for the workspace based on this field.
+        # The identity parsing mode and the permission mode of the workspace are different concepts. You cannot infer whether advanced permissions are enabled for the workspace based on this field.
         self.identity_mode = identity_mode
-        # The ID of the selected workspace member in the account compatibility identity mode. Optional. This field is empty if no member is selected for the current request. This field and the bound member ID represent the member selection result and the binding relationship, respectively.
+        # The ID of the selected workspace member in the account compatibility identity mode. Optional. This field is empty if no member is selected for the current call. This field and the bound member ID represent the member selection result and the binding relationship, respectively.
         self.selected_member_id = selected_member_id
 
     def validate(self):
@@ -218,7 +218,7 @@ class UpdateContextDatabaseWorkspaceResponseBodyCapabilities(DaraModel):
         self,
         executable_actions: List[str] = None,
     ):
-        # The list of operation names that the account compatibility adapter can perform. The list content does not represent read/write, member group, or access control authorization for specific resources.
+        # The list of names of operations that the account compatibility adapter can perform. The list content does not represent read/write, member group, or access control authorization for specific resources.
         self.executable_actions = executable_actions
 
     def validate(self):

@@ -19,7 +19,7 @@ class ChatMessagesRequest(DaraModel):
     ):
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool calling invoke events, child node events, and document events are unified into the answer field of the event = message. When set to separate, tool calling invoke events, child node events, and document events have their own respective events.
+        # The event output mode. Valid values: inline and separate. Default value: inline. When set to inline, tool invoke events, child node events, and document events are unified into the answer field of the event where event = message. When set to separate, tool invoke events, child node events, and document events have their own respective events.
         self.event_mode = event_mode
         # The list of attachments included in the current conversation round. References uploaded files by using UploadFileId.
         self.files = files
@@ -96,6 +96,7 @@ class ChatMessagesRequestInputs(DaraModel):
         self,
         custom_agent_id: str = None,
         enable_thinking: str = None,
+        flow_id: str = None,
         language: str = None,
         model_id: str = None,
         region_id: str = None,
@@ -105,23 +106,25 @@ class ChatMessagesRequestInputs(DaraModel):
         tool_approval_mode: str = None,
         workspace_id: str = None,
     ):
-        # The custom agent ID for the user.
+        # The custom agent ID.
         self.custom_agent_id = custom_agent_id
         # Specifies whether to enable the deep thinking mode.
         self.enable_thinking = enable_thinking
+        # The IM flow ID. Used to bind messages to a registered IM channel when a conversation is initiated through an IM channel.
+        self.flow_id = flow_id
         # The conversation language.
         self.language = language
         # The model ID.
         self.model_id = model_id
         # The region ID.
         self.region_id = region_id
-        # The tool approval call ID for resuming execution. Pass this parameter after the console completes all decisions for the current approval round to continue the interrupted ChatMessage loop. Do not pass this parameter for regular conversations.
+        # The tool approval call ID for resuming execution. Pass this parameter after the console completes all decisions for the current approval round to continue the interrupted ChatMessage loop. Do not pass this parameter for normal conversations.
         self.resume_call_id = resume_call_id
         # The thinking depth.
         self.think_effort = think_effort
         # The time zone. Default value: **Asia/Shanghai**.
         self.timezone = timezone
-        # The tool approval mode for the current conversation. Valid values: read_only (read-only, rejects write tools), manual (write tools require manual approval), and auto (automatically determined by the approval sub-agent; escalated to manual approval when needs_human is returned). Passing this parameter updates the approval mode for the current conversation.
+        # Specifies the tool approval mode for the current conversation. Valid values: read_only (read-only, rejects write tools), manual (write tools require manual approval), and auto (automatically determined by the approval sub-agent; escalated to manual approval when needs_human is returned). If specified, updates the approval mode of the current conversation.
         self.tool_approval_mode = tool_approval_mode
         # The ContextDB workspace ID.
         self.workspace_id = workspace_id
@@ -139,6 +142,9 @@ class ChatMessagesRequestInputs(DaraModel):
 
         if self.enable_thinking is not None:
             result['EnableThinking'] = self.enable_thinking
+
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
 
         if self.language is not None:
             result['Language'] = self.language
@@ -174,6 +180,9 @@ class ChatMessagesRequestInputs(DaraModel):
         if m.get('EnableThinking') is not None:
             self.enable_thinking = m.get('EnableThinking')
 
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+
         if m.get('Language') is not None:
             self.language = m.get('Language')
 
@@ -208,11 +217,11 @@ class ChatMessagesRequestFiles(DaraModel):
         upload_file_id: str = None,
         url: str = None,
     ):
-        # The file transfer method. Set this parameter to local_file when referencing an uploaded file, and provide the UploadFileId at the same time.
+        # The file transfer method. Set this parameter to local_file and provide the UploadFileId when referencing an uploaded file.
         self.transfer_method = transfer_method
         # The attachment type. A value of image indicates an image. The actual supported types are determined by the file upload configuration of the application.
         self.type = type
-        # The identifier of the uploaded file. The ContextDB management agent can use the UploadFileId returned by the current workspace knowledge base.
+        # The identifier of the uploaded file. The ContextDB management agent can use the UploadFileId returned by the knowledge base of the current workspace.
         self.upload_file_id = upload_file_id
         # The image URL.
         self.url = url

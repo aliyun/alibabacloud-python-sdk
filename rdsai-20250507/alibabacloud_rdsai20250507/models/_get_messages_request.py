@@ -10,15 +10,19 @@ class GetMessagesRequest(DaraModel):
         conversation_id: str = None,
         event_mode: str = None,
         first_id: str = None,
+        flow_id: str = None,
         limit: int = None,
         workspace_id: str = None,
     ):
         # The conversation ID.
         self.conversation_id = conversation_id
+        # The event output type. Valid values: inline and separate. Default value: inline. In inline mode, tool invocation events, child node events, and document events are unified into the answer field of the event where event = message. In separate mode, tool invocation events, child node events, and document events have their own respective events.
         self.event_mode = event_mode
         # The ID of the first message.
         self.first_id = first_id
-        # The number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
+        # The flow instance ID.
+        self.flow_id = flow_id
+        # The number of rows per page for paging. Valid values: 1 to 100. Default value: 100.
         self.limit = limit
         # The ContextDB workspace ID.
         self.workspace_id = workspace_id
@@ -40,6 +44,9 @@ class GetMessagesRequest(DaraModel):
         if self.first_id is not None:
             result['FirstId'] = self.first_id
 
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+
         if self.limit is not None:
             result['Limit'] = self.limit
 
@@ -58,6 +65,9 @@ class GetMessagesRequest(DaraModel):
 
         if m.get('FirstId') is not None:
             self.first_id = m.get('FirstId')
+
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
 
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')

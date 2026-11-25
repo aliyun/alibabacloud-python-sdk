@@ -16,7 +16,7 @@ class ChatMessagesShrinkRequest(DaraModel):
     ):
         # The conversation ID.
         self.conversation_id = conversation_id
-        # The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool calling invoke events, child node events, and document events are unified into the answer field of the event = message. When set to separate, tool calling invoke events, child node events, and document events have their own respective events.
+        # The event output mode. Valid values: inline and separate. Default value: inline. When set to inline, tool invoke events, child node events, and document events are unified into the answer field of the event where event = message. When set to separate, tool invoke events, child node events, and document events have their own respective events.
         self.event_mode = event_mode
         # The list of attachments included in the current conversation round. References uploaded files by using UploadFileId.
         self.files_shrink = files_shrink
