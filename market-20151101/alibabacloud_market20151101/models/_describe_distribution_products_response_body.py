@@ -16,10 +16,15 @@ class DescribeDistributionProductsResponseBody(DaraModel):
         results: List[main_models.DescribeDistributionProductsResponseBodyResults] = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The number of promotional products per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The promotional product information.
         self.results = results
+        # The total number of promotional products that match the search conditions.
         self.total_count = total_count
 
     def validate(self):
@@ -92,19 +97,57 @@ class DescribeDistributionProductsResponseBodyResults(DaraModel):
         type: str = None,
         user_comment_count: str = None,
     ):
+        # The product code.
         self.code = code
+        # The first-level category name of the product.
         self.first_category_name = first_category_name
+        # The URL of the product main image.
         self.image_url = image_url
+        # The product name.
         self.name = name
+        # The price of the default product specification. For example, 100 indicates CNY 100.
         self.price = price
+        # The user rating of the product.
         self.score = score
+        # The second-level category name of the product.
         self.second_category_name = second_category_name
+        # The brief description of the product.
         self.short_description = short_description
+        # The commission rebate ratio for the product. For example, 30 indicates 30%.
         self.submission_radio = submission_radio
+        # The name of the promotion service provider.
         self.supplier_name = supplier_name
+        # The Alibaba Cloud UID of the promotion service provider (product supplier).
         self.supplier_uid = supplier_uid
+        # The number of transactions for the product in the last 180 days.
         self.trade_count = trade_count
+        # The product type. Valid values:
+        #         APP: application
+        #         SERVICE: service
+        #         CHENGPIN_SITE: ready-made website
+        #         SITE_CUSTOM_SERVICE: custom website
+        #         SITE_PROMOTION_RUN: website promotion and operations
+        #         ENT_APP_SOFT: application software
+        #         CLOUD_SERVICE: cloud service
+        #         EIF: enterprise information
+        #         BASIC_TOOLS: basic tools
+        #         BASIC_SERVICES: basic services
+        #         JIANZHAN_XITONG: website building system
+        #         APP_COUPLES: application companion
+        #         MIRRORS_MARKET: image marketplace
+        #         MIRRORS_MARKET_BASIC_ENVIRONMENT: basic environment
+        #         MIRRORS_MARKET_APPLICATION_SOFTWARE: application software
+        #         MIRROR: image
+        #         DINGDING: DingTalk
+        #         DOWNLOAD: download
+        #         EXTENDED: unknown
+        #         API_SERVICE: API
+        #         ROS: resource orchestration
+        #         DOCKER: container
+        #         LICENSE: license key
+        #         SAAS_WUYING: application software - Wuying application.
         self.type = type
+        # The number of buyer comments for the product.
         self.user_comment_count = user_comment_count
 
     def validate(self):

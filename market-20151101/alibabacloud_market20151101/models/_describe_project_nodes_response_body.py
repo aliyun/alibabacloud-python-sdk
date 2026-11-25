@@ -14,8 +14,11 @@ class DescribeProjectNodesResponseBody(DaraModel):
         result: List[main_models.DescribeProjectNodesResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # None.
         self.result = result
+        # The success status identifier.
         self.success = success
 
     def validate(self):
@@ -78,21 +81,45 @@ class DescribeProjectNodesResponseBodyResult(DaraModel):
         step_no: int = None,
         template_form: str = None,
     ):
+        # Indicates whether rollback to the previous flow node is allowed.
         self.allow_rollback_node = allow_rollback_node
+        # Indicates whether the node automatically completes upon timeout.
         self.auto_finish_node = auto_finish_node
+        # The sequence number of the final flow node.
         self.final_step_no = final_step_no
+        # The timeout time of the flow node (UNIX timestamp).
         self.gmt_expired = gmt_expired
+        # The completion time of the flow node (UNIX timestamp).
         self.gmt_finished = gmt_finished
+        # The start time of the flow node (UNIX timestamp).
         self.gmt_start = gmt_start
+        # Indicates whether uploading an attachment is mandatory.
         self.need_attachment = need_attachment
+        # The ID of the next flow node.
         self.next_node_id = next_node_id
+        # The flow node ID.
         self.node_id = node_id
+        # The node name.
         self.node_name = node_name
+        # The execution status of the node. Valid values:
+        # - NotStart: not started.
+        # - Starting: in progress.
+        # - Cancel: canceled.
+        # - Finish: completed.
         self.node_status = node_status
+        # The role of the operator. Valid values:
+        # 
+        # - System: system.
+        # - Custom: customer.
+        # - Provider: service provider.
         self.operator_role = operator_role
+        # The ID of the parent flow node.
         self.parent_node_id = parent_node_id
+        # The ID of the previous flow node.
         self.previous_node_id = previous_node_id
+        # The sequence number of the flow node.
         self.step_no = step_no
+        # The form content of the flow node.
         self.template_form = template_form
 
     def validate(self):

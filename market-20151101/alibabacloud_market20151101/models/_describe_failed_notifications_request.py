@@ -10,8 +10,12 @@ class DescribeFailedNotificationsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The current page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of instances per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 

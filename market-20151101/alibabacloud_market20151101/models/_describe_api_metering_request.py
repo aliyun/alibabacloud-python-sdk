@@ -11,9 +11,13 @@ class DescribeApiMeteringRequest(DaraModel):
         product_code: str = None,
         type: int = None,
     ):
+        # The page number.
+        # 
         # This parameter is required.
         self.page_num = page_num
+        # The commodity code.
         self.product_code = product_code
+        # The type. Valid values: 1: package. 2: resource plan.
         self.type = type
 
     def validate(self):

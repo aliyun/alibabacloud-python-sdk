@@ -11,8 +11,11 @@ class FinishCurrentProjectNodeResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The response result.
         self.result = result
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

@@ -11,10 +11,15 @@ class ResumeProjectRequest(DaraModel):
         node_id: int = None,
         remark: str = None,
     ):
+        # The instance ID of the Alibaba Cloud Marketplace order.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the operation flow node.
+        # 
         # This parameter is required.
         self.node_id = node_id
+        # The reason for the remark.
         self.remark = remark
 
     def validate(self):

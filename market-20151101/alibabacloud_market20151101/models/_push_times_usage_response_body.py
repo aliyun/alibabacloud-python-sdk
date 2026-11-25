@@ -16,13 +16,21 @@ class PushTimesUsageResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The authentication error details.
         self.access_denied_detail = access_denied_detail
+        # The status code.
         self.code = code
+        # The fatal error.
         self.force_fatal = force_fatal
+        # The HTTP status code of the request.
         self.http_state_code = http_state_code
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):

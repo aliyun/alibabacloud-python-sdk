@@ -31,25 +31,57 @@ class DescribeProductResponseBody(DaraModel):
         type: str = None,
         use_count: int = None,
     ):
+        # The reason for the audit failure. This parameter is returned when QueryDraft is set to true.
         self.audit_fail_msg = audit_fail_msg
+        # The audit status. This parameter is returned when QueryDraft is set to true. Valid values:
+        # - draft: Not submitted.
+        # - security_ing: Under security audit.
+        # - security_fail: Security audit failed.
+        # - function_ing: Under feature audit.
+        # - function_fail: Feature audit failed.
+        # - info_ing: Under product information audit.
+        # - info_fail: Product information audit failed.
+        # - success: Succeeded.
         self.audit_status = audit_status
+        # The audit time. This parameter is returned when QueryDraft is set to true.
         self.audit_time = audit_time
+        # The product code.
         self.code = code
+        # The detailed description of the product. HTML is supported.
         self.description = description
+        # The category ID of the product.
         self.front_category_id = front_category_id
+        # The creation time.
         self.gmt_created = gmt_created
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The product name.
         self.name = name
+        # The URL of the product image.
         self.pic_url = pic_url
         self.product_extras = product_extras
         self.product_skus = product_skus
+        # The request ID.
         self.request_id = request_id
+        # The product score.
         self.score = score
+        # The shop information.
         self.shop_info = shop_info
+        # The short description of the product.
         self.short_description = short_description
+        # **[Deprecated]**
         self.status = status
+        # The UID of the service provider.
         self.supplier_pk = supplier_pk
+        # The product type. Valid values:
+        # 
+        # * APP: Application.
+        # * DOWNLOAD: Download.
+        # * MIRROR: Image.
+        # * SERVICE: Service.
+        # * API_SERVICE: API service.
         self.type = type
+        # The usage count.
         self.use_count = use_count
 
     def validate(self):
@@ -203,8 +235,11 @@ class DescribeProductResponseBodyShopInfo(DaraModel):
         telephones: main_models.DescribeProductResponseBodyShopInfoTelephones = None,
         wang_wangs: main_models.DescribeProductResponseBodyShopInfoWangWangs = None,
     ):
+        # The email addresses.
         self.emails = emails
+        # The shop ID.
         self.id = id
+        # The shop name.
         self.name = name
         self.telephones = telephones
         self.wang_wangs = wang_wangs

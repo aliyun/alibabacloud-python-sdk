@@ -9,6 +9,8 @@ class DescribeDistributionProductsLinkShrinkRequest(DaraModel):
         self,
         codes_shrink: str = None,
     ):
+        # The collection of product codes. The collection cannot be empty and can contain up to 50 entries.
+        # 
         # This parameter is required.
         self.codes_shrink = codes_shrink
 

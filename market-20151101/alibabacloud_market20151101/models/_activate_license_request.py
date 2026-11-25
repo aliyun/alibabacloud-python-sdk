@@ -10,7 +10,10 @@ class ActivateLicenseRequest(DaraModel):
         identification: str = None,
         license_code: str = None,
     ):
+        # The identity information for activation. Set this parameter to the Alibaba Cloud account ID (aliyunUid) of the user.
         self.identification = identification
+        # The authorization code.
+        # 
         # This parameter is required.
         self.license_code = license_code
 

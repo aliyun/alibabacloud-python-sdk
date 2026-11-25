@@ -14,12 +14,23 @@ class ModifyInvoiceForIsvRequest(DaraModel):
         operate_type: int = None,
         type: int = None,
     ):
+        # The remarks on the invoice from the service provider.
         self.check_notice = check_notice
+        # The electronic invoicing URL, used for customers to download the invoice.
         self.electron_url = electron_url
+        # The invoice application ID. This corresponds to the Result.Id field in the response of the DescribeInvoiceForIsv operation.
         self.invoice_id = invoice_id
+        # The invoice number.
         self.number = number
+        # The operation to perform on the current invoice. Valid values:
+        # - 0: issue the invoice.
+        # - 1: reject the invoice.
+        # 
         # This parameter is required.
         self.operate_type = operate_type
+        # The type of the current invoice. Valid values:
+        # - 2: digital electronic general invoice.
+        # - 3: digital electronic special invoice.
         self.type = type
 
     def validate(self):

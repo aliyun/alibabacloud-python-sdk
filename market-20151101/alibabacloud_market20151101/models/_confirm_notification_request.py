@@ -9,6 +9,8 @@ class ConfirmNotificationRequest(DaraModel):
         self,
         notification_request_id: str = None,
     ):
+        # The notification request ID.
+        # 
         # This parameter is required.
         self.notification_request_id = notification_request_id
 

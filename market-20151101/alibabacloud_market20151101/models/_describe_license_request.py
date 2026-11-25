@@ -9,6 +9,8 @@ class DescribeLicenseRequest(DaraModel):
         self,
         license_code: str = None,
     ):
+        # The activation code.
+        # 
         # This parameter is required.
         self.license_code = license_code
 

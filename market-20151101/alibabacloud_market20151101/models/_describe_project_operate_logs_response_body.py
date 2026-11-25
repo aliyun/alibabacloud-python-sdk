@@ -14,8 +14,11 @@ class DescribeProjectOperateLogsResponseBody(DaraModel):
         result: List[main_models.DescribeProjectOperateLogsResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -67,10 +70,18 @@ class DescribeProjectOperateLogsResponseBodyResult(DaraModel):
         operator_name: str = None,
         operator_role: str = None,
     ):
+        # The description of the operation.
         self.description = description
+        # The operation time (UNIX timestamp).
         self.gmt_create = gmt_create
+        # The Alibaba Cloud UID of the operator.
         self.operator = operator
+        # The name of the operator.
         self.operator_name = operator_name
+        # The role of the operator. Valid values:
+        # - System: system.
+        # - Custom: customer.
+        # - Provider: service provider.
         self.operator_role = operator_role
 
     def validate(self):

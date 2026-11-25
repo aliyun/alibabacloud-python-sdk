@@ -11,6 +11,8 @@ class DescribeDistributionProductsLinkRequest(DaraModel):
         self,
         codes: List[str] = None,
     ):
+        # The collection of product codes. The collection cannot be empty and can contain up to 50 entries.
+        # 
         # This parameter is required.
         self.codes = codes
 

@@ -34,26 +34,85 @@ class DescribeInstanceResponseBody(DaraModel):
         supplier_name: str = None,
     ):
         self.active_address = active_address
+        # The application information. The metric description of the parameters in the example is as follows:
+        # 
+        # - username: the username.
+        # - passowrd: the password.
+        # - frontEndUrl: the frontend URL.
+        # - adminUrl: the management URL.
         self.app_json = app_json
         self.auto_renewal = auto_renewal
+        # The time when the instance was activated (timestamp).
         self.began_on = began_on
+        # The business module.
+        # 
+        # The metric description of the parameters in the example is as follows:
+        # 
+        # - package_version: the version.
         self.component_json = component_json
+        # This parameter is deprecated.
         self.constraints = constraints
+        # The creation time (timestamp).
         self.created_on = created_on
+        # The expiration time (timestamp).
         self.end_on = end_on
+        # The extended information.
         self.extend_json = extend_json
+        # The host information. The metric description of the parameters in the example is as follows:
+        # 
+        # - username: the username.
+        # - passowrd: the password.
+        # - ip: the host IP address.
+        # - innerIp: the internal network IP address of the host.
         self.host_json = host_json
+        # The instance ID.
         self.instance_id = instance_id
+        # Indicates whether the instance is a trial instance.
         self.is_trial = is_trial
         self.license_code = license_code
         self.modules = modules
+        # The order ID.
         self.order_id = order_id
+        # The commodity code.
         self.product_code = product_code
+        # The product name.
         self.product_name = product_name
+        # The SKU code.
         self.product_sku_code = product_sku_code
+        # The product type. Valid values:
+        # 
+        # - APP: application.
+        # - SERVIC: service.
+        # - MIRROR: image.
+        # - DOWNLOAD: download.
+        # - API_SERVICE: API.
+        # - DOCKER: Docker.
         self.product_type = product_type
+        # The relational information.
         self.relational_data = relational_data
+        # The business status. The value varies based on the product type.
+        # 
+        # If ProductType is set to MIRROR:
+        # - PRODUCE: being provisioned.
+        # - USING: in use.
+        # - UNUSED: not used.
+        # - EXPIRED: expired.
+        # - CLOSED: released.
+        # 
+        # If ProductType is set to SERVICE:
+        # - READYING: not started.
+        # - STARTED: in service.
+        # - CONFIRM: completed.
+        # - EXPIRED: expired.
+        # - CLOSED: released.
+        # 
+        # If ProductType is set to APP, DOWNLOAD, API_SERVICE, or DOCKER:
+        # - OPENING: being activated.
+        # - OPENED: activated.
+        # - EXPIRED: expired.
+        # - CLOSED: released.
         self.status = status
+        # The service provider name.
         self.supplier_name = supplier_name
 
     def validate(self):
@@ -212,6 +271,13 @@ class DescribeInstanceResponseBodyRelationalData(DaraModel):
         self,
         service_status: str = None,
     ):
+        # The service status. Valid values:
+        # 
+        # - READYING: not started.
+        # - STARTED: in service.
+        # - CONFIRM: completed.
+        # - EXPIRED: expired.
+        # - CLOSED: released.
         self.service_status = service_status
 
     def validate(self):

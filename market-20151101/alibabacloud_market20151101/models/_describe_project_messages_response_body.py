@@ -15,9 +15,13 @@ class DescribeProjectMessagesResponseBody(DaraModel):
         success: bool = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of project messages.
         self.result = result
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number of messages.
         self.total_count = total_count
 
     def validate(self):
@@ -75,10 +79,19 @@ class DescribeProjectMessagesResponseBodyResult(DaraModel):
         operator_name: str = None,
         operator_role: str = None,
     ):
+        # The content of the message.
         self.content = content
+        # The time when the message was created. The value is a UNIX timestamp.
         self.gmt_create = gmt_create
+        # The Alibaba Cloud UID of the message sender.
         self.operator = operator
+        # The name of the message sender.
         self.operator_name = operator_name
+        # The role of the operator. Valid values:
+        # 
+        # - System: The system.
+        # - Custom: The customer.
+        # - Provider: The service provider.
         self.operator_role = operator_role
 
     def validate(self):

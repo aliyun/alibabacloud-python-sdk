@@ -16,11 +16,15 @@ class CrossAccountVerifyTokenResponseBody(DaraModel):
         result: main_models.CrossAccountVerifyTokenResponseBodyResult = None,
         success: bool = None,
     ):
+        # Status code. A value of 200 indicates success.
         self.code = code
+        # Error message.
         self.message = message
-        # RequestId
+        # Request ID.
         self.request_id = request_id
+        # Response result object.
         self.result = result
+        # Indicates whether the API call was successful.
         self.success = success
 
     def validate(self):
@@ -77,9 +81,13 @@ class CrossAccountVerifyTokenResponseBodyResult(DaraModel):
         name: str = None,
         uid: str = None,
     ):
+        # Authorized roles.
         self.auth_roles = auth_roles
+        # Authorization time.
         self.auth_time = auth_time
+        # User display name.
         self.name = name
+        # User Alibaba Cloud UID.
         self.uid = uid
 
     def validate(self):

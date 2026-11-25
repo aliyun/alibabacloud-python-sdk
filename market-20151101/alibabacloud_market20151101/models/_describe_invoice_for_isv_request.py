@@ -18,15 +18,29 @@ class DescribeInvoiceForIsvRequest(DaraModel):
         type: int = None,
         user_id: int = None,
     ):
+        # The end time. By default, 23:59:59 is appended to the date.
         self.create_time_end = create_time_end
+        # The start time. By default, 00:00:00 is appended to the date.
         self.create_time_start = create_time_start
+        # The ID of the invoice application. This corresponds to the Result.Id field in the response of the DescribeInvoiceForIsv operation.
         self.invoice_id = invoice_id
+        # The maximum number of entries per page in a paging query. Maximum value: 50. Default value: 10. (This parameter is not enabled.)
         self.max_results = max_results
+        # The pagination token returned by the current call. This parameter is not enabled.
         self.next_token = next_token
+        # The page number. Pages start from 1.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The current invoice status. Valid values:
+        # - 0: Applying.
+        # - 1: Completed.
         self.status = status
+        # The invoice type. If this parameter is left empty, all types are queried by default. Valid values:
+        # - 2: Digital electronic ordinary invoice.
+        # - 3: Digital electronic special invoice.
         self.type = type
+        # The Alibaba Cloud user ID of the customer.
         self.user_id = user_id
 
     def validate(self):

@@ -9,6 +9,8 @@ class DescribeProjectInfoRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The business instance ID in Cloud Marketplace.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

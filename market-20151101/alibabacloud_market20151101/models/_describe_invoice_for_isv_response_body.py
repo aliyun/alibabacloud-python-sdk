@@ -20,14 +20,23 @@ class DescribeInvoiceForIsvResponseBody(DaraModel):
         result: List[main_models.DescribeInvoiceForIsvResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The product code.
         self.code = code
+        # The total count.
         self.count = count
+        # The maximum number of entries per page for a paged query. Maximum value: 50. Default value: 10.
         self.max_results = max_results
+        # The query token returned by this call.
         self.next_token = next_token
+        # The current page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The information about the successful flow node.
         self.result = result
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -116,6 +125,7 @@ class DescribeInvoiceForIsvResponseBodyResult(DaraModel):
         id: str = None,
         invoice_id: str = None,
         invoice_list: List[main_models.DescribeInvoiceForIsvResponseBodyResultInvoiceList] = None,
+        invoice_title_relation: str = None,
         material_type: str = None,
         modified_time: str = None,
         modified_time_str: str = None,
@@ -127,22 +137,45 @@ class DescribeInvoiceForIsvResponseBodyResult(DaraModel):
         user_address_dto: main_models.DescribeInvoiceForIsvResponseBodyResultUserAddressDto = None,
         user_notice: str = None,
     ):
+        # The Alibaba Cloud user ID of the customer.
         self.aliyun_pk = aliyun_pk
+        # The service provider invoice remarks.
         self.check_notice = check_notice
+        # The creation time.
         self.create_time_str = create_time_str
+        # The order, bill, or contract number.
         self.evaluate_list = evaluate_list
+        # The ID of the invoice application. This corresponds to the InvoiceId parameter when you call the ModifyInvoiceForIsv operation.
         self.id = id
+        # The ID of the invoice object.
         self.invoice_id = invoice_id
+        # **[Deprecated]** The invoice sub-collection.
         self.invoice_list = invoice_list
+        # The relationship between the invoice title and the customer real-name information. Valid values: `REAL_NAME_MATCH` (The real-name information is consistent), `PERSONAL_APPLY_ENTERPRISE_TITLE` (An individual applies for an enterprise title), `ENTERPRISE_MULTI_TITLE` (Multiple titles for an enterprise), `MASTER_ACCOUNT_OPERATION` (Operated by the main account), and `OTHER` (Other). If not provided, the value is null.
+        self.invoice_title_relation = invoice_title_relation
+        # The invoice issuance type. Valid values:
+        # - 0: Paper.
+        # - 1: Electronic.
         self.material_type = material_type
+        # The time when the order status was modified. The time is displayed in GMT.
         self.modified_time = modified_time
+        # The time when the invoice was modified.
         self.modified_time_str = modified_time_str
+        # The total invoice amount. Unit: CNY.
         self.price = price
+        # The user information of the invoice applicant.
         self.receipt_user_info_dto = receipt_user_info_dto
+        # The invoice status. Valid values: 0: Pending. 1: Invoiced.
         self.status = status
+        # The invoice title.
         self.title = title
+        # The invoice type. Valid values:
+        # - 2: Digital electronic general invoice.
+        # - 3: Digital electronic special invoice.
         self.type = type
+        # The address information.
         self.user_address_dto = user_address_dto
+        # The user invoice remarks.
         self.user_notice = user_notice
 
     def validate(self):
@@ -188,6 +221,9 @@ class DescribeInvoiceForIsvResponseBodyResult(DaraModel):
         if self.invoice_list is not None:
             for k1 in self.invoice_list:
                 result['InvoiceList'].append(k1.to_map() if k1 else None)
+
+        if self.invoice_title_relation is not None:
+            result['InvoiceTitleRelation'] = self.invoice_title_relation
 
         if self.material_type is not None:
             result['MaterialType'] = self.material_type
@@ -250,6 +286,9 @@ class DescribeInvoiceForIsvResponseBodyResult(DaraModel):
                 temp_model = main_models.DescribeInvoiceForIsvResponseBodyResultInvoiceList()
                 self.invoice_list.append(temp_model.from_map(k1))
 
+        if m.get('InvoiceTitleRelation') is not None:
+            self.invoice_title_relation = m.get('InvoiceTitleRelation')
+
         if m.get('MaterialType') is not None:
             self.material_type = m.get('MaterialType')
 
@@ -295,12 +334,19 @@ class DescribeInvoiceForIsvResponseBodyResultUserAddressDto(DaraModel):
         phone: str = None,
         postal_code: str = None,
     ):
+        # The recipient.
         self.addressee = addressee
+        # The Alibaba Cloud user ID of the customer.
         self.aliyun_pk = aliyun_pk
+        # **[Deprecated]**
         self.biz_type = biz_type
+        # The delivery address.
         self.delivery_address = delivery_address
+        # The email address.
         self.emails = emails
+        # The phone number.
         self.phone = phone
+        # The postal code.
         self.postal_code = postal_code
 
     def validate(self):
@@ -362,8 +408,21 @@ class DescribeInvoiceForIsvResponseBodyResultUserAddressDto(DaraModel):
 class DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto(DaraModel):
     def __init__(
         self,
+        bank_account: str = None,
+        bank_name: str = None,
+        reg_address: str = None,
+        reg_phone: str = None,
         tax_number: str = None,
     ):
+        # The bank account.
+        self.bank_account = bank_account
+        # The name of the bank.
+        self.bank_name = bank_name
+        # The registered address.
+        self.reg_address = reg_address
+        # The registered landline number.
+        self.reg_phone = reg_phone
+        # The unified social credit code of the enterprise.
         self.tax_number = tax_number
 
     def validate(self):
@@ -374,6 +433,18 @@ class DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.bank_account is not None:
+            result['BankAccount'] = self.bank_account
+
+        if self.bank_name is not None:
+            result['BankName'] = self.bank_name
+
+        if self.reg_address is not None:
+            result['RegAddress'] = self.reg_address
+
+        if self.reg_phone is not None:
+            result['RegPhone'] = self.reg_phone
+
         if self.tax_number is not None:
             result['TaxNumber'] = self.tax_number
 
@@ -381,6 +452,18 @@ class DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BankAccount') is not None:
+            self.bank_account = m.get('BankAccount')
+
+        if m.get('BankName') is not None:
+            self.bank_name = m.get('BankName')
+
+        if m.get('RegAddress') is not None:
+            self.reg_address = m.get('RegAddress')
+
+        if m.get('RegPhone') is not None:
+            self.reg_phone = m.get('RegPhone')
+
         if m.get('TaxNumber') is not None:
             self.tax_number = m.get('TaxNumber')
 
@@ -392,7 +475,9 @@ class DescribeInvoiceForIsvResponseBodyResultInvoiceList(DaraModel):
         id: str = None,
         invoice_amount: str = None,
     ):
+        # The ID of the invoice object.
         self.id = id
+        # The applied invoicing amount. Unit: CNY.
         self.invoice_amount = invoice_amount
 
     def validate(self):
@@ -435,15 +520,27 @@ class DescribeInvoiceForIsvResponseBodyResultEvaluateList(DaraModel):
         real_aliyun_id: str = None,
         real_aliyun_pk: str = None,
     ):
+        # Specifies whether proxy invoicing is used.
         self.agent = agent
+        # The amount. Unit: CNY.
         self.amount = amount
+        # The time when the transaction occurred.
         self.biz_time_str = biz_time_str
+        # The ID of the invoicing object.
         self.id = id
+        # The type of the order or bill. Valid values:
+        # - 0: Order.
+        # - 1: Bill.
         self.order_type = order_type
+        # The ID of the order.
         self.out_biz_id = out_biz_id
+        # The commodity code.
         self.product_code = product_code
+        # **[Deprecated]** The product name.
         self.product_name = product_name
+        # The account ID.
         self.real_aliyun_id = real_aliyun_id
+        # The account to which the order belongs.
         self.real_aliyun_pk = real_aliyun_pk
 
     def validate(self):

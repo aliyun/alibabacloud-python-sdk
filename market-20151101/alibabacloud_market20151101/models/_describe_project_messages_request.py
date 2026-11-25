@@ -10,8 +10,11 @@ class DescribeProjectMessagesRequest(DaraModel):
         instance_id: str = None,
         page_index: int = None,
     ):
+        # The instance ID of the Alibaba Cloud Marketplace business.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The page number. Each page returns 20 entries.
         self.page_index = page_index
 
     def validate(self):

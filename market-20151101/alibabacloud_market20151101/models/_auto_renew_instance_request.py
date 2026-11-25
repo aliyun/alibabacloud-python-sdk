@@ -13,11 +13,24 @@ class AutoRenewInstanceRequest(DaraModel):
         owner_id: int = None,
         type: str = None,
     ):
+        # The cycle unit. This parameter is required when enabling auto-renewal. Valid values:
+        # - Day: day.
+        # - Month: month.
+        # - Year: year.
         self.auto_renew_cycle = auto_renew_cycle
+        # The renewal cycle. This parameter is required when enabling auto-renewal.
         self.auto_renew_duration = auto_renew_duration
+        # The Alibaba Cloud Marketplace instance ID. This parameter is required.
+        # 
         # This parameter is required.
         self.order_biz_id = order_biz_id
         self.owner_id = owner_id
+        # The operation type. Valid values:
+        # - open: enables auto-renewal.
+        # - close: disables auto-renewal.
+        # 
+        # This parameter is required.
+        # 
         # This parameter is required.
         self.type = type
 

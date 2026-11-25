@@ -31,27 +31,91 @@ class DescribeInstanceForIsvResponseBody(DaraModel):
         status: str = None,
         supplier_name: str = None,
     ):
+        # The activation URL.
         self.active_address = active_address
+        # The application information. The metric description of the parameters in the example is as follows:
+        # 
+        # username: the username.
+        # passowrd: the password.
+        # frontEndUrl: the frontend URL.
+        # adminUrl: the administration URL.
         self.app_json = app_json
+        # The automatic payment information for epoch-based products. A non-empty value indicates that you enable auto-renewal.
+        # autoRenewCycle: Day, Month, or Year.
+        # autoRenewDuration: the renewal epoch.
         self.auto_renewal = auto_renewal
+        # The time when the instance was activated (timestamp).
         self.began_on = began_on
+        # The business module. The metric description of the parameters in the example is as follows:
+        # *   package_version: the version.
         self.component_json = component_json
+        # The creation time (timestamp).
         self.created_on = created_on
+        # The expiration time (timestamp).
         self.end_on = end_on
+        # The extended information.
         self.extend_json = extend_json
+        # The host information. The metric description of the parameters in the example is as follows:
+        # 
+        # username: the username.
+        # passowrd: the password.
+        # ip: the host IP address.
+        # innerIp: the internal network IP address of the host.
         self.host_json = host_json
+        # The image instance information.
+        # imageId: the image ID.
+        # instanceId: the instance ID.
+        # ecsInstanceId: the ECS instance ID.
         self.image_json = image_json
+        # The instance ID.
         self.instance_id = instance_id
+        # Indicates whether the instance is a trial instance.
         self.is_trial = is_trial
+        # The activation code.
         self.license_code = license_code
+        # The order ID.
         self.order_id = order_id
+        # The commodity code.
         self.product_code = product_code
+        # The product name.
         self.product_name = product_name
+        # The SKU code.
         self.product_sku_code = product_sku_code
+        # The product type. Valid values:
+        # *   APP: application.
+        # *   SERVIC: service.
+        # *   MIRROR: image.
+        # *   DOWNLOAD: download.
+        # *   API_SERVICE: API.
+        # *   DOCKER: Docker.
         self.product_type = product_type
+        # The relational information.
         self.relational_data = relational_data
+        # The request ID.
         self.request_id = request_id
+        # The business status. Different values are set based on the product type.
+        # 
+        # When ProductType is set to MIRROR:
+        # *   PRODUCE: being provisioned.
+        # *   USING: in use.
+        # *   UNUSED: not in use.
+        # *   EXPIRED: expired.
+        # *   CLOSED: released.
+        # 
+        # When ProductType is set to SERVICE:
+        # *   READYING: not started.
+        # *   STARTED: in service.
+        # *   CONFIRM: completed.
+        # *   EXPIRED: expired.
+        # *   CLOSED: released.
+        # 
+        # When ProductType is set to APP, DOWNLOAD, API_SERVICE, or DOCKER:
+        # *   OPENING: being activated.
+        # *   OPENED: activated.
+        # *   EXPIRED: expired.
+        # *   CLOSED: released.
         self.status = status
+        # The service provider name.
         self.supplier_name = supplier_name
 
     def validate(self):
@@ -207,6 +271,12 @@ class DescribeInstanceForIsvResponseBodyRelationalData(DaraModel):
         self,
         service_status: str = None,
     ):
+        # The service status. Valid values:
+        # *   READYING: not started.
+        # *   STARTED: in service.
+        # *   CONFIRM: completed.
+        # *   EXPIRED: expired.
+        # *   CLOSED: released.
         self.service_status = service_status
 
     def validate(self):

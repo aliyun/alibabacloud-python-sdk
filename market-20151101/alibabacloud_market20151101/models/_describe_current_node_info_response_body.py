@@ -12,8 +12,11 @@ class DescribeCurrentNodeInfoResponseBody(DaraModel):
         result: main_models.DescribeCurrentNodeInfoResponseBodyResult = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The process node information returned upon success.
         self.result = result
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -70,21 +73,45 @@ class DescribeCurrentNodeInfoResponseBodyResult(DaraModel):
         step_no: int = None,
         template_form: str = None,
     ):
+        # Indicates whether rollback to the previous process node is allowed.
         self.allow_rollback_node = allow_rollback_node
+        # Indicates whether the node is automatically completed.
         self.auto_finish_node = auto_finish_node
+        # The sequence number of the last node.
         self.final_step_no = final_step_no
+        # The timeout of the process node. The value is a UNIX timestamp.
         self.gmt_expired = gmt_expired
+        # The completion time of the process node. The value is a UNIX timestamp.
         self.gmt_finished = gmt_finished
+        # The start time of the process node. The value is a UNIX timestamp.
         self.gmt_start = gmt_start
+        # Indicates whether uploading an attachment is mandatory.
         self.need_attachment = need_attachment
+        # The ID of the next process node.
         self.next_node_id = next_node_id
+        # The ID of the process node.
         self.node_id = node_id
+        # The name of the node.
         self.node_name = node_name
+        # The execution status of the node. Valid values:
+        # - NotStart: not started.
+        # - Starting: in progress.
+        # - Cancel: canceled.
+        # - Finish: completed.
         self.node_status = node_status
+        # The role of the operator for the process node. Valid values:
+        # - system: system.
+        # - custom: user.
         self.operator_role = operator_role
+        # The ID of the parent process node.
         self.parent_node_id = parent_node_id
+        # The ID of the previous process node.
         self.previous_node_id = previous_node_id
+        # The sequence number of the process node.
         self.step_no = step_no
+        # The form content of the process node in JSON format.
+        # Sample code:
+        # `[ { "fieldKey": "TFD0", //form key "isRequired": true, //whether the field is required "maxLength": 50, //maximum length "placeHolder": "Name", //form value description "stepNum": 0, //sort value (ascending) "title": "Consignee name", //form title "type": "text" //form type }, { "fieldKey": "TFD1", "isRequired": true, "maxLength": 50, "placeHolder": "Phone number", "stepNum": 1, "title": "Consignee phone number", "type": "text" }, { "fieldKey": "TFD2", "isRequired": true, "maxLength": 50, "placeHolder": "Province, city, district, street, and house number", "stepNum": 2, "title": "Detailed shipping address", "type": "textarea" } ]`.
         self.template_form = template_form
 
     def validate(self):

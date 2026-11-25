@@ -25,17 +25,36 @@ class DescribePriceResponseBody(DaraModel):
         trade_price: float = None,
     ):
         self.coupons = coupons
+        # Currency
+        # 
+        # CNY: Chinese Yuan
+        # USD: US Dollar
+        # JPY: Japanese Yen
         self.currency = currency
+        # Indicates whether a promotion is available
         self.cuxiao = cuxiao
+        # Cycle unit
+        # 
+        # DAY: Day
+        # MONTH: Month
+        # YEAR: Year
         self.cycle = cycle
+        # Discount amount (original price minus trade price), in CNY
         self.discount_price = discount_price
+        # Number of cycles, such as 1, 2, 3...
         self.duration = duration
+        # Purchase restriction code
         self.expression_code = expression_code
+        # Purchase restriction description
         self.expression_message = expression_message
+        # Promotion name
         self.info_title = info_title
+        # Original price, in CNY
         self.original_price = original_price
+        # Product code
         self.product_code = product_code
         self.promotion_rules = promotion_rules
+        # Trade price (actual price), in CNY
         self.trade_price = trade_price
 
     def validate(self):

@@ -13,10 +13,15 @@ class ModifyInvoiceForIsvResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The status code. A value of 200 indicates success.
         self.code = code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The error message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful.
         self.result = result
 
     def validate(self):

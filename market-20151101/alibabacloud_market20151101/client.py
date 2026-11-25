@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import Dict
 
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_market20151101 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'Market'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'market.aliyuncs.com',
@@ -2348,10 +2352,16 @@ class Client(OpenApiClient):
     ) -> main_models.PushTimesUsageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.adjust):
+            query['Adjust'] = request.adjust
+        if not DaraCore.is_null(request.adjust_date):
+            query['AdjustDate'] = request.adjust_date
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.mark):
+            query['Mark'] = request.mark
         if not DaraCore.is_null(request.times):
             query['Times'] = request.times
         req = open_api_util_models.OpenApiRequest(
@@ -2380,10 +2390,16 @@ class Client(OpenApiClient):
     ) -> main_models.PushTimesUsageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.adjust):
+            query['Adjust'] = request.adjust
+        if not DaraCore.is_null(request.adjust_date):
+            query['AdjustDate'] = request.adjust_date
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.mark):
+            query['Mark'] = request.mark
         if not DaraCore.is_null(request.times):
             query['Times'] = request.times
         req = open_api_util_models.OpenApiRequest(

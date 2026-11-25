@@ -11,8 +11,11 @@ class DescribeInstanceRequest(DaraModel):
         order_type: str = None,
         owner_id: int = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The order type. This parameter is deprecated.
         self.order_type = order_type
         self.owner_id = owner_id
 

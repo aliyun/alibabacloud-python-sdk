@@ -9,6 +9,8 @@ class DescribeProjectNodesRequest(DaraModel):
         self,
         instance_id: str = None,
     ):
+        # The instance ID of the Alibaba Cloud Marketplace order.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 

@@ -1,3 +1,6 @@
+2026-11-25 Version: 4.3.2
+- Generated python 2015-11-01 for Market.
+
 2026-05-22 Version: 4.3.0
 - Support API PushTimesUsage.
 

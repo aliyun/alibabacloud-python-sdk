@@ -13,8 +13,11 @@ class DescribeProductRequest(DaraModel):
     ):
         # AliUid
         self.ali_uid = ali_uid
+        # The product code.
+        # 
         # This parameter is required.
         self.code = code
+        # Specifies whether to query the product draft. Typically, you do not need to query the product draft. Product drafts are used for queries before a product is officially listed for sale.
         self.query_draft = query_draft
 
     def validate(self):

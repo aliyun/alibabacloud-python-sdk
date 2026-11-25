@@ -10,7 +10,9 @@ class PushMeteringDataResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The success status identifier.
         self.success = success
 
     def validate(self):

@@ -14,8 +14,11 @@ class DescribeProjectAttachmentsResponseBody(DaraModel):
         result: List[main_models.DescribeProjectAttachmentsResponseBodyResult] = None,
         success: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The list of project attachments.
         self.result = result
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -77,20 +80,35 @@ class DescribeProjectAttachmentsResponseBodyResult(DaraModel):
         operator_role: str = None,
         step_no: int = None,
     ):
+        # The MD5 hash of the attachment.
         self.attachment_token = attachment_token
+        # The type of the attachment.
         self.attachment_type = attachment_type
+        # The content text.
         self.content = content
+        # The access URL of the file.
         self.file_link = file_link
+        # The expiration time of the file URL (UNIX timestamp).
         self.file_link_gmt_expired = file_link_gmt_expired
+        # The name of the file.
         self.file_name = file_name
+        # The size of the file (in bytes).
         self.file_size = file_size
+        # The file name extension.
         self.file_suffix = file_suffix
+        # The time when the attachment was uploaded (UNIX timestamp).
         self.gmt_create = gmt_create
+        # The ID of the flow node where the attachment was uploaded.
         self.node_id = node_id
+        # The name of the node.
         self.node_name = node_name
+        # The Alibaba Cloud UID of the operator.
         self.operator = operator
+        # The name of the operator.
         self.operator_name = operator_name
+        # The role of the operator.
         self.operator_role = operator_role
+        # The sequence number of the flow node.
         self.step_no = step_no
 
     def validate(self):

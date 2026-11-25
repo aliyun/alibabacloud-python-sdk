@@ -21,16 +21,25 @@ class DescribeApiMeteringResponseBody(DaraModel):
         success: bool = None,
         version: str = None,
     ):
+        # The status code.
         self.code = code
+        # The total count.
         self.count = count
         # fatal
         self.fatal = fatal
+        # The error message.
         self.message = message
+        # The page number.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The list of return values.
         self.result = result
+        # The result indicator.
         self.success = success
+        # The version.
         self.version = version
 
     def validate(self):
@@ -126,12 +135,19 @@ class DescribeApiMeteringResponseBodyResult(DaraModel):
         total_usage: int = None,
         unit: str = None,
     ):
+        # The Alibaba Cloud PK.
         self.aliyun_pk = aliyun_pk
+        # The commodity code.
         self.product_code = product_code
+        # The commodity name.
         self.product_name = product_name
+        # The total API capacity.
         self.total_capacity = total_capacity
+        # The remaining quota.
         self.total_quota = total_quota
+        # The usage.
         self.total_usage = total_usage
+        # The unit.
         self.unit = unit
 
     def validate(self):

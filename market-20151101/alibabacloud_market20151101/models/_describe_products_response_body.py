@@ -16,10 +16,14 @@ class DescribeProductsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.page_number = page_number
+        # The number of products displayed per page.
         self.page_size = page_size
         self.product_items = product_items
+        # The request ID.
         self.request_id = request_id
+        # The total number of products that match the search conditions.
         self.total_count = total_count
 
     def validate(self):

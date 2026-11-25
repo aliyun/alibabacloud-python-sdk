@@ -9,6 +9,7 @@ class CrossAccountVerifyTokenRequest(DaraModel):
         self,
         token: str = None,
     ):
+        # Token returned upon successful cross-account role authorization.
         self.token = token
 
     def validate(self):

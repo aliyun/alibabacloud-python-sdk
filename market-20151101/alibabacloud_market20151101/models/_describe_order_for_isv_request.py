@@ -9,6 +9,8 @@ class DescribeOrderForIsvRequest(DaraModel):
         self,
         order_id: str = None,
     ):
+        # The order ID.
+        # 
         # This parameter is required.
         self.order_id = order_id
 

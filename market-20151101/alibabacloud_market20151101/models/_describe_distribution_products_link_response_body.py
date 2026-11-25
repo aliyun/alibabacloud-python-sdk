@@ -17,8 +17,11 @@ class DescribeDistributionProductsLinkResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
+        # The promotion link information for the promoted products.
         self.result = result
+        # The success status indicator.
         self.success = success
+        # The total number of promoted products.
         self.total_count = total_count
 
     def validate(self):
@@ -74,8 +77,11 @@ class DescribeDistributionProductsLinkResponseBodyResult(DaraModel):
         name: str = None,
         url: str = None,
     ):
+        # The code of the promoted product.
         self.code = code
+        # The name of the promoted product.
         self.name = name
+        # The promotion link for the product. Note: The sample link is a test product link.
         self.url = url
 
     def validate(self):

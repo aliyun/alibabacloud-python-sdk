@@ -14,9 +14,14 @@ class DescribeDistributionProductsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The list of filter conditions.
         self.filter = filter
+        # The current page number.
+        # 
         # This parameter is required.
         self.page_number = page_number
+        # The number of promotional products per page.
+        # 
         # This parameter is required.
         self.page_size = page_size
 
@@ -66,8 +71,20 @@ class DescribeDistributionProductsRequestFilter(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The search label category. Valid values:
+        # 
+        # - code: the commodity code of the promotional product
+        # - name: the name of the promotional product
+        # - supplierName: the name of the promotion service provider.
+        # 
         # This parameter is required.
         self.key = key
+        # The search tag value:
+        # 
+        # - code: the product code to search for
+        # - name: the product name to search for
+        # - supplierName: the supplier name to search for.
+        # 
         # This parameter is required.
         self.value = value
 

@@ -13,7 +13,9 @@ class DescribeLicenseResponseBody(DaraModel):
         license: main_models.DescribeLicenseResponseBodyLicense = None,
         request_id: str = None,
     ):
+        # The license object.
         self.license = license
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,17 +62,30 @@ class DescribeLicenseResponseBodyLicense(DaraModel):
         product_sku_id: str = None,
         supplier_name: str = None,
     ):
+        # The activation time.
         self.activate_time = activate_time
+        # The creation time.
         self.create_time = create_time
+        # The expiration time.
         self.expired_time = expired_time
         self.extend_array = extend_array
+        # The extended information.
         self.extend_info = extend_info
+        # The business instance ID.
         self.instance_id = instance_id
+        # The activation code.
         self.license_code = license_code
+        # The license status.
+        # - ACTIVATED
+        # - INACTIVATED
         self.license_status = license_status
+        # The product code.
         self.product_code = product_code
+        # The product name.
         self.product_name = product_name
+        # The product SKU ID.
         self.product_sku_id = product_sku_id
+        # The supplier name.
         self.supplier_name = supplier_name
 
     def validate(self):
@@ -172,9 +187,13 @@ class DescribeLicenseResponseBodyLicenseExtendInfo(DaraModel):
         email: str = None,
         mobile: str = None,
     ):
+        # The account information.
         self.account_quantity = account_quantity
+        # The Alibaba Cloud UID.
         self.ali_uid = ali_uid
+        # The email address.
         self.email = email
+        # The mobile phone number.
         self.mobile = mobile
 
     def validate(self):

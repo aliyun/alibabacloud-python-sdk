@@ -33,27 +33,74 @@ class DescribeOrderResponseBody(DaraModel):
         supplier_telephones: main_models.DescribeOrderResponseBodySupplierTelephones = None,
         total_price: float = None,
     ):
+        # The number of accounts.
         self.account_quantity = account_quantity
+        # The unique identifier of the Alibaba Cloud user (aliyunPK).
         self.ali_uid = ali_uid
+        # The order component information. The metric description for the parameters in the example is as follows:
+        # 
+        # - package_quantity: the number of usage times (a component specific to API products)
+        # - package_version: the version
+        # - ord_time: the duration
+        # - order_num: the quantity
+        # - code: the component code
+        # - globarKey: the component key
+        # - name: the component name
+        # - value: the component value.
         self.components = components
+        # The amount of vouchers used, in CNY.
         self.coupon_price = coupon_price
+        # The time when the order was placed.
         self.created_on = created_on
         self.instance_ids = instance_ids
+        # The order ID.
         self.order_id = order_id
+        # The order status. Valid values:
+        # 
+        # - NORMAL: Normal.
+        # - REFUND: Refunded.
+        # - DELETE: Voided.
         self.order_status = order_status
+        # The order type. Valid values:
+        # 
+        # - NEW: New purchase order.
+        # - RENEW: Renewal order.
+        # - TRIAL: Trial order.
         self.order_type = order_type
+        # The original price of the order, in CNY.
         self.original_price = original_price
+        # The payment time.
         self.paid_on = paid_on
+        # The payment status. Valid values:
+        # 
+        # - PAID: Paid.
+        # - UNPAID: Unpaid.
         self.pay_status = pay_status
+        # The actual payment amount, in CNY.
         self.payment_price = payment_price
+        # The time unit for prepaid orders. Valid values:
+        # 
+        # - MONTH: one month
+        # - SEASON: one quarter
+        # - HALFYEAR: half a year
+        # - YEAR: one year
+        # - TWOYEARS: two years
+        # - ONCE: one-time.
         self.period_type = period_type
+        # The commodity code.
         self.product_code = product_code
+        # The name of the subscribed product.
         self.product_name = product_name
+        # The specification code of the subscribed product.
         self.product_sku_code = product_sku_code
+        # The quantity of the subscribed product.
         self.quantity = quantity
+        # The request ID.
         self.request_id = request_id
+        # The company name of the seller.
         self.supplier_company_name = supplier_company_name
         self.supplier_telephones = supplier_telephones
+        # The total payable amount of the order, in CNY.
         self.total_price = total_price
 
     def validate(self):

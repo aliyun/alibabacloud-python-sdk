@@ -12,8 +12,11 @@ class DescribeProjectInfoResponseBody(DaraModel):
         result: main_models.DescribeProjectInfoResponseBodyResult = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -71,22 +74,51 @@ class DescribeProjectInfoResponseBodyResult(DaraModel):
         template_id: int = None,
         template_type: str = None,
     ):
+        # The current step in the process.
         self.current_step_no = current_step_no
+        # The Alibaba Cloud UID of the customer.
         self.customer_ali_uid = customer_ali_uid
+        # The sequence number of the last step.
         self.final_step_no = final_step_no
+        # The completion method of the project. Valid values:
+        # 
+        # - null: The default value for unfinished projects.
+        # - CustomerConfirm: Manually confirmed by the customer.
+        # - SystemAutoConfirm: Automatically confirmed by the system due to timeout.
         self.finish_type = finish_type
+        # The creation time of the project. The value is a UNIX timestamp.
         self.gmt_create = gmt_create
+        # The expiration time of the project. The value is a UNIX timestamp.
         self.gmt_expired = gmt_expired
+        # The completion time of the project. The value is a UNIX timestamp.
         self.gmt_finished = gmt_finished
+        # The business instance ID in Cloud Marketplace.
         self.instance_id = instance_id
+        # The order ID.
         self.order_id = order_id
+        # The product code.
         self.product_code = product_code
+        # The name of the Cloud Marketplace product.
         self.product_name = product_name
+        # The code of the Cloud Marketplace product SKU.
         self.product_sku_code = product_sku_code
+        # The name of the Cloud Marketplace product SKU.
         self.product_sku_name = product_sku_name
+        # The execution status of the project. Valid values:
+        # 
+        # - Starting: In progress.
+        # - Cancel: Canceled.
+        # - Pause: Paused.
+        # - Finish: Completed.
         self.project_status = project_status
+        # The UID of the supplier to which the project belongs.
         self.supplier_ali_uid = supplier_ali_uid
+        # The ID of the process template to which the project belongs.
         self.template_id = template_id
+        # The template type of the project. Valid values:
+        # 
+        # - Public: Public template.
+        # - Private: Private template.
         self.template_type = template_type
 
     def validate(self):

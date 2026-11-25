@@ -11,8 +11,11 @@ class PauseProjectResponseBody(DaraModel):
         result: bool = None,
         success: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the operation is successful.
         self.result = result
+        # The success status identifier.
         self.success = success
 
     def validate(self):

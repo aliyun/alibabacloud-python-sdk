@@ -12,11 +12,17 @@ class FinishCurrentProjectNodeRequest(DaraModel):
         remark: str = None,
         template_form: str = None,
     ):
+        # The instance ID of the Alibaba Cloud Marketplace order.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The ID of the process node.
+        # 
         # This parameter is required.
         self.node_id = node_id
+        # The remarks.
         self.remark = remark
+        # The form content to submit, in JSON format. Example: {"TFD0":"mr.go","TFD1":"1330010xxxx","TFD2":"Chaoyang District, Wangjing Street, Block x, No. y"}.
         self.template_form = template_form
 
     def validate(self):
