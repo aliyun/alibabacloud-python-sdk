@@ -7,6 +7,7 @@ import json
 from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_aliding20230426 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -22,6 +23,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'aliding'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('aliding', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -855,6 +859,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.AddRecordPermissionHeaders()
         return await self.add_record_permission_with_options_async(request, headers, runtime)
+
+    def add_robot_to_scenegroup_with_options(
+        self,
+        request: main_models.AddRobotToScenegroupRequest,
+        tmp_header: main_models.AddRobotToScenegroupHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddRobotToScenegroupResponse:
+        request.validate()
+        headers = main_models.AddRobotToScenegroupShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not DaraCore.is_null(request.robot_code):
+            body['RobotCode'] = request.robot_code
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddRobotToScenegroup',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/addRobotToScenegroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddRobotToScenegroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_robot_to_scenegroup_with_options_async(
+        self,
+        request: main_models.AddRobotToScenegroupRequest,
+        tmp_header: main_models.AddRobotToScenegroupHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddRobotToScenegroupResponse:
+        request.validate()
+        headers = main_models.AddRobotToScenegroupShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not DaraCore.is_null(request.robot_code):
+            body['RobotCode'] = request.robot_code
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddRobotToScenegroup',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/dingtalk/v1/im/addRobotToScenegroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddRobotToScenegroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_robot_to_scenegroup(
+        self,
+        request: main_models.AddRobotToScenegroupRequest,
+    ) -> main_models.AddRobotToScenegroupResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.AddRobotToScenegroupHeaders()
+        return self.add_robot_to_scenegroup_with_options(request, headers, runtime)
+
+    async def add_robot_to_scenegroup_async(
+        self,
+        request: main_models.AddRobotToScenegroupRequest,
+    ) -> main_models.AddRobotToScenegroupResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.AddRobotToScenegroupHeaders()
+        return await self.add_robot_to_scenegroup_with_options_async(request, headers, runtime)
 
     def add_scenegroup_member_with_options(
         self,

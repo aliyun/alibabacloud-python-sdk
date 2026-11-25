@@ -46,6 +46,11 @@ from ._add_record_permission_request import AddRecordPermissionRequest
 from ._add_record_permission_shrink_request import AddRecordPermissionShrinkRequest
 from ._add_record_permission_response_body import AddRecordPermissionResponseBody
 from ._add_record_permission_response import AddRecordPermissionResponse
+from ._add_robot_to_scenegroup_headers import AddRobotToScenegroupHeaders
+from ._add_robot_to_scenegroup_shrink_headers import AddRobotToScenegroupShrinkHeaders
+from ._add_robot_to_scenegroup_request import AddRobotToScenegroupRequest
+from ._add_robot_to_scenegroup_response_body import AddRobotToScenegroupResponseBody
+from ._add_robot_to_scenegroup_response import AddRobotToScenegroupResponse
 from ._add_scenegroup_member_headers import AddScenegroupMemberHeaders
 from ._add_scenegroup_member_shrink_headers import AddScenegroupMemberShrinkHeaders
 from ._add_scenegroup_member_request import AddScenegroupMemberRequest
@@ -1707,6 +1712,7 @@ from ._add_permission_request import AddPermissionRequestOption
 from ._add_permission_request import AddPermissionRequestTenantContext
 from ._add_record_permission_headers import AddRecordPermissionHeadersAccountContext
 from ._add_record_permission_request import AddRecordPermissionRequestTenantContext
+from ._add_robot_to_scenegroup_headers import AddRobotToScenegroupHeadersAccountContext
 from ._add_scenegroup_member_headers import AddScenegroupMemberHeadersAccountContext
 from ._add_ticket_memo_headers import AddTicketMemoHeadersAccountContext
 from ._add_ticket_memo_request import AddTicketMemoRequestTenantContext
@@ -2848,6 +2854,11 @@ __all__ = [
     AddRecordPermissionShrinkRequest,
     AddRecordPermissionResponseBody,
     AddRecordPermissionResponse,
+    AddRobotToScenegroupHeaders,
+    AddRobotToScenegroupShrinkHeaders,
+    AddRobotToScenegroupRequest,
+    AddRobotToScenegroupResponseBody,
+    AddRobotToScenegroupResponse,
     AddScenegroupMemberHeaders,
     AddScenegroupMemberShrinkHeaders,
     AddScenegroupMemberRequest,
@@ -4509,6 +4520,7 @@ __all__ = [
     AddPermissionRequestTenantContext,
     AddRecordPermissionHeadersAccountContext,
     AddRecordPermissionRequestTenantContext,
+    AddRobotToScenegroupHeadersAccountContext,
     AddScenegroupMemberHeadersAccountContext,
     AddTicketMemoHeadersAccountContext,
     AddTicketMemoRequestTenantContext,

@@ -1,3 +1,7 @@
+2026-11-25 Version: 2.59.0
+- Support API AddRobotToScenegroup.
+
+
 2026-10-08 Version: 2.58.0
 - Support API InvokePage.
 - Support API ListUserAuthorizedResources.
