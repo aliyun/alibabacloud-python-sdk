@@ -1,3 +1,6 @@
+2026-11-25 Version: 1.15.0
+- Generated python 2022-02-22 for Ess.
+
 2026-11-13 Version: 1.14.0
 - Support API CancelScalingGroupZoneShift.
 - Support API StartScalingGroupZoneShift.

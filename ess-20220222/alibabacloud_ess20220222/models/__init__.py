@@ -96,6 +96,9 @@ from ._delete_scaling_rule_response import DeleteScalingRuleResponse
 from ._delete_scheduled_task_request import DeleteScheduledTaskRequest
 from ._delete_scheduled_task_response_body import DeleteScheduledTaskResponseBody
 from ._delete_scheduled_task_response import DeleteScheduledTaskResponse
+from ._delete_warm_pool_request import DeleteWarmPoolRequest
+from ._delete_warm_pool_response_body import DeleteWarmPoolResponseBody
+from ._delete_warm_pool_response import DeleteWarmPoolResponse
 from ._describe_alarms_request import DescribeAlarmsRequest
 from ._describe_alarms_response_body import DescribeAlarmsResponseBody
 from ._describe_alarms_response import DescribeAlarmsResponse
@@ -174,6 +177,9 @@ from ._describe_scaling_rules_response import DescribeScalingRulesResponse
 from ._describe_scheduled_tasks_request import DescribeScheduledTasksRequest
 from ._describe_scheduled_tasks_response_body import DescribeScheduledTasksResponseBody
 from ._describe_scheduled_tasks_response import DescribeScheduledTasksResponse
+from ._describe_warm_pool_instances_request import DescribeWarmPoolInstancesRequest
+from ._describe_warm_pool_instances_response_body import DescribeWarmPoolInstancesResponseBody
+from ._describe_warm_pool_instances_response import DescribeWarmPoolInstancesResponse
 from ._detach_alb_server_groups_request import DetachAlbServerGroupsRequest
 from ._detach_alb_server_groups_response_body import DetachAlbServerGroupsResponseBody
 from ._detach_alb_server_groups_response import DetachAlbServerGroupsResponse
@@ -253,6 +259,9 @@ from ._modify_scaling_rule_response import ModifyScalingRuleResponse
 from ._modify_scheduled_task_request import ModifyScheduledTaskRequest
 from ._modify_scheduled_task_response_body import ModifyScheduledTaskResponseBody
 from ._modify_scheduled_task_response import ModifyScheduledTaskResponse
+from ._put_warm_pool_request import PutWarmPoolRequest
+from ._put_warm_pool_response_body import PutWarmPoolResponseBody
+from ._put_warm_pool_response import PutWarmPoolResponse
 from ._query_historical_metric_request import QueryHistoricalMetricRequest
 from ._query_historical_metric_response_body import QueryHistoricalMetricResponseBody
 from ._query_historical_metric_response import QueryHistoricalMetricResponse
@@ -520,6 +529,7 @@ from ._describe_scaling_rules_response_body import DescribeScalingRulesResponseB
 from ._describe_scaling_rules_response_body import DescribeScalingRulesResponseBodyScalingRules
 from ._describe_scheduled_tasks_response_body import DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions
 from ._describe_scheduled_tasks_response_body import DescribeScheduledTasksResponseBodyScheduledTasks
+from ._describe_warm_pool_instances_response_body import DescribeWarmPoolInstancesResponseBodyWarmPoolInstances
 from ._detach_alb_server_groups_request import DetachAlbServerGroupsRequestAlbServerGroups
 from ._detach_server_groups_request import DetachServerGroupsRequestServerGroups
 from ._detach_vserver_groups_request import DetachVServerGroupsRequestVServerGroupsVServerGroupAttributes
@@ -599,6 +609,8 @@ from ._modify_scaling_rule_request import ModifyScalingRuleRequestHybridMetricsD
 from ._modify_scaling_rule_request import ModifyScalingRuleRequestHybridMetrics
 from ._modify_scaling_rule_request import ModifyScalingRuleRequestStepAdjustments
 from ._modify_scheduled_task_request import ModifyScheduledTaskRequestWarmPoolCapacityOptions
+from ._put_warm_pool_request import PutWarmPoolRequestCapacityOptions
+from ._put_warm_pool_request import PutWarmPoolRequestInstanceReusePolicy
 from ._query_historical_metric_response_body import QueryHistoricalMetricResponseBodyHistoricalMetricsHistoricalMetric
 from ._query_historical_metric_response_body import QueryHistoricalMetricResponseBodyHistoricalMetrics
 from ._query_predictive_metric_response_body import QueryPredictiveMetricResponseBodyPredictiveMetricsPredictiveMetric
@@ -717,6 +729,9 @@ __all__ = [
     DeleteScheduledTaskRequest,
     DeleteScheduledTaskResponseBody,
     DeleteScheduledTaskResponse,
+    DeleteWarmPoolRequest,
+    DeleteWarmPoolResponseBody,
+    DeleteWarmPoolResponse,
     DescribeAlarmsRequest,
     DescribeAlarmsResponseBody,
     DescribeAlarmsResponse,
@@ -795,6 +810,9 @@ __all__ = [
     DescribeScheduledTasksRequest,
     DescribeScheduledTasksResponseBody,
     DescribeScheduledTasksResponse,
+    DescribeWarmPoolInstancesRequest,
+    DescribeWarmPoolInstancesResponseBody,
+    DescribeWarmPoolInstancesResponse,
     DetachAlbServerGroupsRequest,
     DetachAlbServerGroupsResponseBody,
     DetachAlbServerGroupsResponse,
@@ -874,6 +892,9 @@ __all__ = [
     ModifyScheduledTaskRequest,
     ModifyScheduledTaskResponseBody,
     ModifyScheduledTaskResponse,
+    PutWarmPoolRequest,
+    PutWarmPoolResponseBody,
+    PutWarmPoolResponse,
     QueryHistoricalMetricRequest,
     QueryHistoricalMetricResponseBody,
     QueryHistoricalMetricResponse,
@@ -1141,6 +1162,7 @@ __all__ = [
     DescribeScalingRulesResponseBodyScalingRules,
     DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions,
     DescribeScheduledTasksResponseBodyScheduledTasks,
+    DescribeWarmPoolInstancesResponseBodyWarmPoolInstances,
     DetachAlbServerGroupsRequestAlbServerGroups,
     DetachServerGroupsRequestServerGroups,
     DetachVServerGroupsRequestVServerGroupsVServerGroupAttributes,
@@ -1220,6 +1242,8 @@ __all__ = [
     ModifyScalingRuleRequestHybridMetrics,
     ModifyScalingRuleRequestStepAdjustments,
     ModifyScheduledTaskRequestWarmPoolCapacityOptions,
+    PutWarmPoolRequestCapacityOptions,
+    PutWarmPoolRequestInstanceReusePolicy,
     QueryHistoricalMetricResponseBodyHistoricalMetricsHistoricalMetric,
     QueryHistoricalMetricResponseBodyHistoricalMetrics,
     QueryPredictiveMetricResponseBodyPredictiveMetricsPredictiveMetric,

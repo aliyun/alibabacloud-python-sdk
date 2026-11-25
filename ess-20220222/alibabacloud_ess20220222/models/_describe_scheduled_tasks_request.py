@@ -27,11 +27,11 @@ class DescribeScheduledTasksRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the scheduled task list. Pages start from 1.
+        # The page number of the scheduled task list. Pages start from page 1.
         # 
         # Default value: 1.
         self.page_number = page_number
-        # Settings for the number of entries per page during paging in a paged query. Maximum value: 50.
+        # The number of entries per page in a paged query. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -39,7 +39,7 @@ class DescribeScheduledTasksRequest(DaraModel):
         # - Daily: The scheduled task is executed once every specified number of days. 
         # - Weekly: The scheduled task is executed on specified days of each week. 
         # - Monthly: The scheduled task is executed on specified days of each month. 
-        # - Cron: The scheduled task is executed based on the specified cron expression.
+        # - Cron: The scheduled task is executed based on a specified cron expression.
         self.recurrence_type = recurrence_type
         # The recurrence value of the scheduled task.
         # 
@@ -53,15 +53,15 @@ class DescribeScheduledTasksRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the scaling group that executes the scheduled task.
         self.scaling_group_id = scaling_group_id
-        # The scaling rules used when the scheduled tasks are triggered. This parameter is valid only when a scaling rule is specified for the scheduled tasks.
+        # The scaling rules that are used when the scheduled tasks are triggered. This parameter is valid only when a scaling rule is specified for the scheduled task.
         self.scheduled_actions = scheduled_actions
-        # The IDs of the scheduled tasks to query.
+        # The IDs of the scheduled tasks to be queried.
         self.scheduled_task_ids = scheduled_task_ids
-        # The names of the scheduled tasks to query.
+        # The names of the scheduled tasks to be queried.
         self.scheduled_task_names = scheduled_task_names
-        # Specifies whether the scheduled task is enabled. Valid values:
-        # - true: The task is enabled.
-        # - false: The task is disabled.
+        # Specifies whether the scheduled task is started. Valid values:
+        # - true: The task is started.
+        # - false: The task is stopped.
         self.task_enabled = task_enabled
         # The name of the task. Fuzzy match by keyword is supported.
         self.task_name = task_name

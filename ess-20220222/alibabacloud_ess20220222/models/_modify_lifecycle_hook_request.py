@@ -24,12 +24,13 @@ class ModifyLifecycleHookRequest(DaraModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # The subsequent action after the wait state ends. Valid values:
-        # - CONTINUE: continues the response to the scale-out activity or the scale-in activity.
-        # - ABANDON: releases the ECS instances created during the scale-out activity or removes the ECS instances from the scaling group during the scale-in activity.
-        # - ROLLBACK: rejects the release of ECS instances and rolls back the scale-in activity. For a scale-out activity, this value has the same effect as ABANDON, which releases the created ECS instances.
+        # The subsequent action to perform after the wait state ends. Valid values: 
         # 
-        # If a scale-in activity occurs and multiple lifecycle hooks are triggered, and the DefaultResult of one lifecycle hook is set to ABANDON or ROLLBACK, the wait states of other lifecycle hooks are ended in advance when the wait state of this hook ends. In other cases, the subsequent action is determined by the last lifecycle hook that ends its wait state.
+        # - CONTINUE: Continues the response to the scale-out or scale-down activity.
+        # - ABANDON: Releases the ECS instances created during the scale-out activity or removes the ECS instances from the scaling group during the scale-down activity.
+        # - ROLLBACK: Rejects the release of ECS instances and rolls back the scale-down activity. For a scale-out activity, releases the created ECS instances, which has the same effect as ABANDON.
+        # 
+        # If a scale-down activity is triggered and multiple lifecycle hooks are invoked, and the DefaultResult of one lifecycle hook is set to ABANDON or ROLLBACK, the wait states of other lifecycle hooks are ended in advance when the wait state of this hook ends. In other cases, the subsequent action is determined by the last lifecycle hook that ends its wait state.
         self.default_result = default_result
         # The wait time set by the lifecycle hook for the scaling activity. The subsequent action is performed after the wait state times out. Valid values: 30 to 21600. Unit: seconds.
         # 
@@ -42,32 +43,32 @@ class ModifyLifecycleHookRequest(DaraModel):
         # The name of the lifecycle hook to be modified.
         self.lifecycle_hook_name = lifecycle_hook_name
         # The status of the lifecycle hook. Valid values:
-        # - Active: enables the lifecycle hook.
-        # - InActive: pauses the lifecycle hook.
+        # - Active: Enables the lifecycle hook.
+        # - InActive: Disables the lifecycle hook.
         # 
         # If you do not specify this parameter, the status of the lifecycle hook remains unchanged.
-        # > After a lifecycle hook is created, it is in the Active state by default.
+        # > After a lifecycle hook is created, it is enabled by default.
         self.lifecycle_hook_status = lifecycle_hook_status
         # The type of scaling activity to which the lifecycle hook applies. Valid values:
-        # - SCALE_OUT: scale-out activity of the scaling group.
-        # - SCALE_IN: scale-in activity of the scaling group.
+        # - SCALE_OUT: Scale-out activity of the scaling group.
+        # - SCALE_IN: Scale-in activity of the scaling group.
         self.lifecycle_transition = lifecycle_transition
-        # The identity of the Notification Recipient for the lifecycle hook. Settings for this parameter support the following notification methods:
+        # The identifier of the notification recipient for the lifecycle hook. The following notification methods are supported:
         # - Message Service (MNS) queue. Format: acs:mns:{region-id}:{account-id}:queue/{queuename}.
         # - MNS topic. Format: acs:mns:{region-id}:{account-id}:topic/{topicname}.
         # - Operation Orchestration Service (OOS) template. Format: acs:oos:{region-id}:{account-id}:template/{templatename}.
         # - EventBridge. Format: acs:eventbridge:{region-id}:{account-id}:eventbus/default.
         # 
-        # Variables in the parameter formats:
-        # - region-id: the ID of the region where the scaling group resides.
-        # - account-id: the Alibaba Cloud account ID.
-        # - queuename: the name of the MNS queue.
-        # - topicname: the name of the MNS topic.
-        # - templatename: the name of the OOS template.
+        # Variables in the formats:
+        # - region-id: The ID of the region where the scaling group resides.
+        # - account-id: The Alibaba Cloud account ID.
+        # - queuename: The name of the MNS queue.
+        # - topicname: The name of the MNS topic.
+        # - templatename: The name of the OOS template.
         self.notification_arn = notification_arn
         # The fixed string information for the wait state of the scaling activity. The value can be up to 4,096 characters in length.
         # 
-        # When Auto Scaling pushes a message to the Notification Recipient, it also sends the predefined NotificationMetadata parameter value to help you manage and mark different types of notifications. This parameter takes effect only when the NotificationArn parameter is specified.
+        # When Auto Scaling pushes a message to the notification recipient, it also sends the predefined NotificationMetadata value to help you manage and tag different types of notifications. This parameter takes effect only when the NotificationArn parameter is specified.
         self.notification_metadata = notification_metadata
         self.owner_account = owner_account
         self.owner_id = owner_id

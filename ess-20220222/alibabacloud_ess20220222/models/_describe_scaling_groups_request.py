@@ -36,29 +36,29 @@ class DescribeScalingGroupsRequest(DaraModel):
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The paging Settings for the number of entries per page in a paged query. Maximum value: 50.
+        # The Settings for the number of entries per page during paging in a paged query. Maximum value: 50.
         # 
         # Default value: 10.
         self.page_size = page_size
-        # The ID of the region to which the scaling group belongs.
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the scaling groups to query belong.
         # 
-        # > If no scaling groups belong to the specified resource group, an empty result is returned and no error is reported.
+        # > If no scaling group belongs to the specified resource group, an empty result is returned and no error is returned.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The IDs of the scaling groups to query.
         # 
-        # Invalid scaling group IDs are ignored in the query results, and no error is reported.
+        # Invalid scaling group IDs are ignored in the response and no error is returned.
         self.scaling_group_ids = scaling_group_ids
         # The name of the scaling group.
         self.scaling_group_name = scaling_group_name
         # The names of the scaling groups to query.
         # 
-        # Invalid scaling group names are ignored in the query results, and no error is reported.
+        # Invalid scaling group names are ignored in the response and no error is returned.
         self.scaling_group_names = scaling_group_names
         # The tags of the scaling group.
         self.tags = tags
@@ -169,9 +169,9 @@ class DescribeScalingGroupsRequestTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key of the scaling group.
         self.key = key
-        # The value of the tag.
+        # The tag value of the scaling group.
         self.value = value
 
     def validate(self):

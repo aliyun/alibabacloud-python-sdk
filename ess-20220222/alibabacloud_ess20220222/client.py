@@ -3633,6 +3633,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_scheduled_task_with_options_async(request, runtime)
 
+    def delete_warm_pool_with_options(
+        self,
+        request: main_models.DeleteWarmPoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWarmPoolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWarmPool',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWarmPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_warm_pool_with_options_async(
+        self,
+        request: main_models.DeleteWarmPoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWarmPoolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteWarmPool',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteWarmPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_warm_pool(
+        self,
+        request: main_models.DeleteWarmPoolRequest,
+    ) -> main_models.DeleteWarmPoolResponse:
+        runtime = RuntimeOptions()
+        return self.delete_warm_pool_with_options(request, runtime)
+
+    async def delete_warm_pool_async(
+        self,
+        request: main_models.DeleteWarmPoolRequest,
+    ) -> main_models.DeleteWarmPoolResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_warm_pool_with_options_async(request, runtime)
+
     def describe_alarms_with_options(
         self,
         request: main_models.DescribeAlarmsRequest,
@@ -6080,6 +6158,88 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeScheduledTasksResponse:
         runtime = RuntimeOptions()
         return await self.describe_scheduled_tasks_with_options_async(request, runtime)
+
+    def describe_warm_pool_instances_with_options(
+        self,
+        request: main_models.DescribeWarmPoolInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWarmPoolInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWarmPoolInstances',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWarmPoolInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_warm_pool_instances_with_options_async(
+        self,
+        request: main_models.DescribeWarmPoolInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWarmPoolInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeWarmPoolInstances',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeWarmPoolInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_warm_pool_instances(
+        self,
+        request: main_models.DescribeWarmPoolInstancesRequest,
+    ) -> main_models.DescribeWarmPoolInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_warm_pool_instances_with_options(request, runtime)
+
+    async def describe_warm_pool_instances_async(
+        self,
+        request: main_models.DescribeWarmPoolInstancesRequest,
+    ) -> main_models.DescribeWarmPoolInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_warm_pool_instances_with_options_async(request, runtime)
 
     def detach_alb_server_groups_with_options(
         self,
@@ -9264,6 +9424,96 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyScheduledTaskResponse:
         runtime = RuntimeOptions()
         return await self.modify_scheduled_task_with_options_async(request, runtime)
+
+    def put_warm_pool_with_options(
+        self,
+        request: main_models.PutWarmPoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PutWarmPoolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.capacity_options):
+            query['CapacityOptions'] = request.capacity_options
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_reuse_policy):
+            query['InstanceReusePolicy'] = request.instance_reuse_policy
+        if not DaraCore.is_null(request.pool_state):
+            query['PoolState'] = request.pool_state
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PutWarmPool',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PutWarmPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_warm_pool_with_options_async(
+        self,
+        request: main_models.PutWarmPoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PutWarmPoolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.capacity_options):
+            query['CapacityOptions'] = request.capacity_options
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.instance_reuse_policy):
+            query['InstanceReusePolicy'] = request.instance_reuse_policy
+        if not DaraCore.is_null(request.pool_state):
+            query['PoolState'] = request.pool_state
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.scaling_group_id):
+            query['ScalingGroupId'] = request.scaling_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PutWarmPool',
+            version = '2022-02-22',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PutWarmPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_warm_pool(
+        self,
+        request: main_models.PutWarmPoolRequest,
+    ) -> main_models.PutWarmPoolResponse:
+        runtime = RuntimeOptions()
+        return self.put_warm_pool_with_options(request, runtime)
+
+    async def put_warm_pool_async(
+        self,
+        request: main_models.PutWarmPoolRequest,
+    ) -> main_models.PutWarmPoolResponse:
+        runtime = RuntimeOptions()
+        return await self.put_warm_pool_with_options_async(request, runtime)
 
     def query_historical_metric_with_options(
         self,

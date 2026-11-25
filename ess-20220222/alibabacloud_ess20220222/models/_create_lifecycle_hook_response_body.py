@@ -12,7 +12,7 @@ class CreateLifecycleHookResponseBody(DaraModel):
     ):
         # The ID of the lifecycle hook.
         self.lifecycle_hook_id = lifecycle_hook_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

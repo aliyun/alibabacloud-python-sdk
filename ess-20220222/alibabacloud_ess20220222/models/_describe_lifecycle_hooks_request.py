@@ -19,7 +19,8 @@ class DescribeLifecycleHooksRequest(DaraModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # The list of lifecycle hook IDs.
+        # The IDs of the lifecycle hooks.
+        # > Conditionally required: You must specify at least one of LifecycleHookIds or ScalingGroupId when you query lifecycle hooks. If you specify both parameters, LifecycleHookIds takes precedence. If you specify only RegionId without specifying either of the two parameters, a 400 InvalidParameter error is returned.
         self.lifecycle_hook_ids = lifecycle_hook_ids
         # The name of the lifecycle hook.
         self.lifecycle_hook_name = lifecycle_hook_name
@@ -29,14 +30,15 @@ class DescribeLifecycleHooksRequest(DaraModel):
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The Settings for the number of entries to return on each page during paging in a paged query. Maximum value: 50.
+        # The number of entries to return on each page. Maximum value: 50.
         # 
         # Default value: 50.
         self.page_size = page_size
-        # The ID of the region where the scaling group resides.
+        # The region ID of the scaling group.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         # The ID of the scaling group.
+        # > Conditionally required: You must specify at least one of LifecycleHookIds or ScalingGroupId when you query lifecycle hooks. If you specify only RegionId without specifying either of the two parameters, a 400 InvalidParameter error is returned.
         self.scaling_group_id = scaling_group_id
 
     def validate(self):

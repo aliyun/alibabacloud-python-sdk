@@ -21,30 +21,32 @@ class CreateLifecycleHookRequest(DaraModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # The action to be performed after the wait state ends. Valid values:
-        # - CONTINUE: continues the response to the scale-out or scale-in activity.
-        # - ABANDON: releases the ECS instances created during the scale-out activity or removes the ECS instances from the scaling group during the scale-in activity.
-        # - ROLLBACK: rejects the release of ECS instances and rolls back the scale-in activity. For a scale-out activity, this value has the same effect as ABANDON, which releases the created ECS instances.
+        # The action to be performed after the wait state ends. Valid values: 
         # 
-        # When a scale-in activity occurs in the scaling group and multiple lifecycle hooks are triggered, if the DefaultResult of one lifecycle hook is set to ABANDON or ROLLBACK and the wait state of the hook ends, the wait states of other lifecycle hooks are ended in advance. In other cases, the action to be performed is determined by the last lifecycle hook whose wait state ends.
+        # - CONTINUE: Continues the response to the scale-out or scale-in activity.
+        # - ABANDON: Releases the ECS instances created by the scale-out activity or removes the ECS instances in the scale-in activity from the scaling group. 
+        # - ROLLBACK: Rejects the release of ECS instances and rolls back the scale-in activity. For a scale-out activity, this value directly releases the created ECS instances, which has the same effect as ABANDON.
+        # 
+        # When a scale-in activity occurs in the scaling group and multiple lifecycle hooks are triggered, if the DefaultResult of one lifecycle hook is set to ABANDON or ROLLBACK and the wait state of the hook ends, the wait states of other lifecycle hooks are ended in advance. In other cases, the action to be performed is subject to the action of the last lifecycle hook whose wait state ends.
         # 
         # Default value: CONTINUE.
         self.default_result = default_result
-        # The wait time set by the lifecycle hook for the scaling activity. After the wait state times out, the next action is performed. Valid values: 30 to 21600. Unit: seconds.
+        # The wait time configured by the lifecycle hook for the scaling activity. After the wait state times out, the next action is performed. Valid values: 30 to 21600. Unit: seconds.
         # 
-        # After you create a lifecycle hook, you can call the RecordLifecycleActionHeartbeat operation to extend the wait time of the ECS instance, or call the CompleteLifecycleAction operation to end the wait state of the scaling activity in advance. 
+        # After you create a lifecycle hook, you can call RecordLifecycleActionHeartbeat to extend the wait time of the ECS instance, or call CompleteLifecycleAction to end the wait state of the scaling activity in advance. 
         # 
         # Default value: 600.
         self.heartbeat_timeout = heartbeat_timeout
         # The specific scenarios triggered by the lifecycle hook.
         self.lifecycle_action_sources = lifecycle_action_sources
-        # The name of the lifecycle hook. The name must be unique within the scaling group. It must be 2 to 64 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). It must start with a letter, digit, or Chinese character.
+        # The name of the lifecycle hook. The name must be unique among all lifecycle hooks in the current scaling group. It must be 2 to 64 characters in length, start with a digit, an uppercase or lowercase letter, or a Chinese character, and can contain digits, underscores (_), hyphens (-), and periods (.).
         # 
         # Default value: the value of LifecycleHookId.
         self.lifecycle_hook_name = lifecycle_hook_name
-        # The type of scaling activity to which the lifecycle hook applies. Valid values:
-        # - SCALE_OUT: scale-out activities of the scaling group.
-        # - SCALE_IN: scale-in activities of the scaling group.
+        # The type of scaling activity to which the lifecycle hook applies. Valid values: 
+        #          
+        # - SCALE_OUT: scale-out activity of the scaling group. 
+        # - SCALE_IN: scale-in activity of the scaling group.
         # 
         # This parameter is required.
         self.lifecycle_transition = lifecycle_transition
@@ -56,14 +58,14 @@ class CreateLifecycleHookRequest(DaraModel):
         # 
         # The variables in the formats have the following meanings:
         # - region-id: the ID of the region where the scaling group resides.
-        # - account-id: the Alibaba Cloud account ID. The ID of a RAM user is not supported.
+        # - account-id: the Alibaba Cloud account ID. The ID of a Resource Access Management (RAM) user is not supported.
         # - queuename: the name of the MNS queue.
         # - topicname: the name of the MNS topic.
         # - templatename: the name of the OOS template.
         self.notification_arn = notification_arn
         # The notification message pushed to the NotificationArn (notification recipient) when the lifecycle hook pauses the scaling activity. This parameter helps you manage and mark different types of notification messages. You must specify NotificationArn together with this parameter. The value can be up to 4,096 characters in length.
         # 
-        # If NotificationArn is set to an OOS template, including a public template or a custom template, NotificationMetadata must be specified as a JSON string that matches the parameters of the OOS template. For example, `{"dbInstanceId": "dds-bp17661e0135****", "modifyMode": "Append"}`, where `dbInstanceId` and `modifyMode` are parameters defined in the OOS template. Some parameters of the OOS template have default values. You must specify the parameters that do not have default values in NotificationMetadata. If you specify a parameter that has a default value, the original default value is overwritten. However, keep the default values for the following parameters to obtain relevant information during the runtime of the scaling activity:
+        # If NotificationArn is set to an OOS template, including a public or custom template, NotificationMetadata must be specified as a JSON string that matches the parameters of the OOS template. For example, `{"dbInstanceId": "dds-bp17661e0135****", "modifyMode": "Append"}`, where `dbInstanceId` and `modifyMode` are parameters defined in the OOS template. Some parameters of the OOS template have default values. You must specify parameters without default values in NotificationMetadata. If you specify parameters with default values, the original default values are overwritten. However, keep the default values for the following parameters to obtain relevant information at runtime:
         # 
         # - `regionId`: the region where the scaling activity is executed. Default value: ${regionId}.
         # 
@@ -71,14 +73,14 @@ class CreateLifecycleHookRequest(DaraModel):
         # 
         # - `lifecycleHookId`: the ID of the lifecycle hook. Default value: ${lifecycleHookId}.
         # 
-        # - `lifecycleActionToken`: the identifier of the wait state of the scaling activity, which is used to end the current suspended action in advance. Default value: ${lifecycleActionToken}.
+        # - `lifecycleActionToken`: the wait state identifier for the scaling activity, which is used to end the current suspended activity in advance. Default value: ${lifecycleActionToken}.
         # 
         # - `scalingGroupId`: the ID of the scaling group to which the scaling activity belongs. Default value: ${scalingGroupId}.
         # 
-        # - `lifecycleActionResult`: the action to be performed after the wait state of the lifecycle hook ends. This parameter is used to end the current suspended action in advance when the OOS template execution fails. When DefaultResult is set to ROLLBACK, the default value of this parameter is ROLLBACK. In other cases, the default value is ABANDON.
+        # - `lifecycleActionResult`: the action to be performed after the wait state of the lifecycle hook ends. This parameter is used to end the current suspended activity in advance when the OOS template execution fails. When DefaultResult is set to ROLLBACK, the default value of this parameter is ROLLBACK. In other cases, the default value is ABANDON.
         # 
-        # > - You can adjust the settings of lifecycleActionResult to overwrite the current default value as needed. Valid values: ABANDON, CONTINUE, ROLLBACK, and ${lifecycleActionResult}.
-        # ${lifecycleActionResult} indicates that the value of lifecycleActionResult is the same as the value of DefaultResult.
+        # >- You can configure the value of lifecycleActionResult to overwrite the current default value as needed. Valid values: ABANDON, CONTINUE, ROLLBACK, and ${lifecycleActionResult}.
+        # Among these values, ${lifecycleActionResult} indicates that the value of lifecycleActionResult is the same as that of DefaultResult.
         # - You can obtain detailed information about the parameters of the corresponding template in the [OOS console](https://oos.console.aliyun.com/).
         self.notification_metadata = notification_metadata
         self.owner_account = owner_account

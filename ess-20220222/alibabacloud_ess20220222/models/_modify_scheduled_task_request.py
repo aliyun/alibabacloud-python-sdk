@@ -31,10 +31,10 @@ class ModifyScheduledTaskRequest(DaraModel):
     ):
         # The description of the scheduled task. The description must be 2 to 200 characters in length.
         self.description = description
-        # The expected number of instances in the scaling group. This parameter is available only when the scaling method of the scheduled task is set to specifying the number of instances in the scaling group.
-        # > The scaling group must support setting the expected number of instances. Specifically, DesiredCapacity must be specified when the scaling group is created.
+        # The expected number of instances in the scaling group. This parameter is required when the scaling method of the scheduled task is set to specify the number of instances in the scaling group.
+        # > The scaling group must support the expected number of instances. This means that DesiredCapacity must be specified when the scaling group is created.
         self.desired_capacity = desired_capacity
-        # The period of time during which Auto Scaling retries to execute the scheduled task after the trigger operation fails. Unit: seconds. Valid values: 0 to 1800.
+        # The retry period during which Auto Scaling continues to attempt to execute the scheduled task after the triggered operation fails. Unit: seconds. Valid values: 0 to 1800.
         # 
         # Default value: 600.
         self.launch_expiration_time = launch_expiration_time
@@ -44,13 +44,13 @@ class ModifyScheduledTaskRequest(DaraModel):
         # 
         # - If RecurrenceType is not specified, the task is executed only once at the specified date and time.
         self.launch_time = launch_time
-        # The maximum number of instances in the scaling group. This parameter is available only when the scaling method of the scheduled task is set to specifying the number of instances in the scaling group.
+        # The maximum number of instances in the scaling group. This parameter is required when the scaling method of the scheduled task is set to specify the number of instances in the scaling group.
         self.max_value = max_value
-        # The minimum number of instances in the scaling group. This parameter is available only when the scaling method of the scheduled task is set to specifying the number of instances in the scaling group.
+        # The minimum number of instances in the scaling group. This parameter is required when the scaling method of the scheduled task is set to specify the number of instances in the scaling group.
         self.min_value = min_value
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The end time of the scheduled task for recurring execution. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot specify a time that is later than 365 days from the date of modification.
+        # The end time of the scheduled task that is executed repeatedly. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot specify a time that is later than 365 days from the date of modification.
         self.recurrence_end_time = recurrence_end_time
         # The recurrence type of the scheduled task. Valid values:
         #  
@@ -63,10 +63,10 @@ class ModifyScheduledTaskRequest(DaraModel):
         self.recurrence_type = recurrence_type
         # The recurrence value of the scheduled task.
         # 
-        # - If RecurrenceType is set to Daily, only one value can be entered. Valid values: 1 to 31.
-        # - If RecurrenceType is set to Weekly, multiple values can be entered and must be separated by commas (,). For example, the values for Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0,1,2,3,4,5,6.
+        # - If RecurrenceType is set to Daily, you can specify only one value. Valid values: 1 to 31.
+        # - If RecurrenceType is set to Weekly, you can specify multiple values separated by commas (,). For example, the values for Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0,1,2,3,4,5,6.
         # - If RecurrenceType is set to Monthly, the format is A-B. Valid values of A and B: 1 to 31. B must be greater than or equal to A.
-        # - If RecurrenceType is set to Cron, the value represents UTC time and supports a five-field expression for minutes, hours, days, months, and weeks. Wildcards such as commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), L, and W are supported.
+        # - If RecurrenceType is set to Cron, the value specifies a cron expression in UTC. The expression supports five fields: minute, hour, day, month, and week. It supports wildcards such as commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), L, and W.
         # 
         # After modification, both RecurrenceType and RecurrenceValue must be valid.
         self.recurrence_value = recurrence_value
@@ -74,11 +74,16 @@ class ModifyScheduledTaskRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the scaling group for which you want to modify the number of instances when the scheduled task is triggered. This parameter is available only when the scaling method is set to specifying the number of instances in the scaling group. After you specify ScalingGroupId, you must specify a value for at least one of the following parameters: MinValue, MaxValue, and DesiredCapacity.
+        # The ID of the scaling group in which you want to modify the number of instances or adjust the warm pool capacity when the scheduled task is triggered.
+        # 
+        # After you specify ScalingGroupId, the scaling method of the scheduled task is set to specify the number of instances in the scaling group or adjust the warm pool capacity.
+        # 
+        # - Specify the number of instances in the scaling group: You must specify at least one of the MinValue, MaxValue, and DesiredCapacity parameters.
+        # - Adjust the warm pool capacity: You must specify WarmPoolCapacityOptions.
         # 
         # > You cannot specify both ScheduledAction and ScalingGroupId at the same time.
         self.scaling_group_id = scaling_group_id
-        # The unique identifier of the scaling rule. This parameter is available only when the scaling method is set to selecting an existing scaling rule. Select a created scaling rule and enter its unique identifier, which can be viewed on the scaling rule details page.
+        # The ID of the scaling rule to execute. This parameter is available only when the scaling method is set to execute an existing scaling rule. You can view the ID on the details page of the scaling rule.
         # 
         # > You cannot specify both ScheduledAction and ScalingGroupId at the same time.
         self.scheduled_action = scheduled_action
@@ -86,16 +91,18 @@ class ModifyScheduledTaskRequest(DaraModel):
         # 
         # This parameter is required.
         self.scheduled_task_id = scheduled_task_id
-        # The name of the scheduled task. The name must be 2 to 64 characters in length and start with a letter, digit, or Chinese character. It can contain periods (.), underscores (_), and hyphens (-). The name must be unique within the same region and Alibaba Cloud account.
+        # The name of the scheduled task. The name must be 2 to 64 characters in length and can contain periods (.), underscores (_), and hyphens (-). It must start with a letter, digit, or Chinese character. The name must be unique within the same region and Alibaba Cloud account.
         self.scheduled_task_name = scheduled_task_name
         # Specifies whether to enable the scheduled task. Valid values:
         # 
-        # - true: Enables the scheduled task.
-        # - false: Disables the scheduled task.
+        # - true: enables the scheduled task.
+        # - false: disables the scheduled task.
         # 
         # Default value: true.
         self.task_enabled = task_enabled
         # The warm pool capacity configuration of the scaling group. This parameter is valid only when a warm pool is configured for the scaling group.
+        # 
+        # > You must specify ScalingGroupId when you specify this parameter.
         self.warm_pool_capacity_options = warm_pool_capacity_options
 
     def validate(self):
@@ -240,9 +247,9 @@ class ModifyScheduledTaskRequestWarmPoolCapacityOptions(DaraModel):
         desired_group_prepared_capacity: int = None,
         min_capacity: int = None,
     ):
-        # The expected number of warmed instances.
+        # The expected number of prepared instances. The system maintains the sum of the current number of instances in the scaling group and the number of instances in the warm pool at this value. Default value: the maximum number of instances in the scaling group, which is specified by MaxSize.
         self.desired_group_prepared_capacity = desired_group_prepared_capacity
-        # The minimum number of instances in the warm pool.
+        # The minimum number of instances in the warm pool. The system always retains at least this number of prepared instances in the warm pool to ensure that instances can be quickly added from the warm pool during scale-out. Default value: 0.
         self.min_capacity = min_capacity
 
     def validate(self):

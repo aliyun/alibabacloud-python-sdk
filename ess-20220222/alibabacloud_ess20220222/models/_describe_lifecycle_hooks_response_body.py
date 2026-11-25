@@ -22,7 +22,7 @@ class DescribeLifecycleHooksResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of lifecycle hooks.
         self.total_count = total_count
@@ -93,11 +93,11 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(DaraModel):
         notification_metadata: str = None,
         scaling_group_id: str = None,
     ):
-        # The next action to perform after the wait state of the instance ends.
+        # The action to perform after the wait state of the instance ends.
         self.default_result = default_result
-        # The wait time configured in the lifecycle hook for the scaling activity. The next action is performed when the wait time expires.
+        # The wait time configured in the lifecycle hook for the scaling activity. The next action is performed after the wait time expires.
         self.heartbeat_timeout = heartbeat_timeout
-        # The specific scenarios that trigger the lifecycle hook.
+        # The specific scenarios in which the lifecycle hook is triggered.
         self.lifecycle_action_sources = lifecycle_action_sources
         # The ID of the lifecycle hook.
         self.lifecycle_hook_id = lifecycle_hook_id
@@ -109,8 +109,8 @@ class DescribeLifecycleHooksResponseBodyLifecycleHooks(DaraModel):
         self.lifecycle_hook_status = lifecycle_hook_status
         # The scaling activity type associated with the lifecycle hook.
         self.lifecycle_transition = lifecycle_transition
-        # The notification recipient identifier for the lifecycle hook. The parameter format is as follows:
-        # - No notification configured: `acs:ess:{region-id}:{account-id}:null/null`.
+        # The identifier of the notification recipient for the lifecycle hook. The parameter format is as follows:
+        # - Notifications not configured: `acs:ess:{region-id}:{account-id}:null/null`.
         # - MNS queue: `acs:mns:{region-id}:{account-id}:queue/{queuename}`.
         # - MNS topic: `acs:mns:{region-id}:{account-id}:topic/{topicname}`.
         # - OOS template: `acs:oos:{region-id}:{account-id}:template/{templatename}`.

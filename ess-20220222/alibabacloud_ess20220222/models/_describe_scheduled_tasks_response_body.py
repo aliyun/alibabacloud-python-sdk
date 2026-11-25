@@ -22,7 +22,7 @@ class DescribeScheduledTasksResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The scheduled tasks.
+        # The information about the scheduled tasks.
         self.scheduled_tasks = scheduled_tasks
         # The total number of scheduled tasks.
         self.total_count = total_count
@@ -100,17 +100,17 @@ class DescribeScheduledTasksResponseBodyScheduledTasks(DaraModel):
     ):
         # The description of the scheduled task.
         self.description = description
-        # The expected number of instances in the scaling group. This parameter is valid when the scaling method of the scheduled task is set to configuring the number of instances in the scaling group.
+        # The expected number of instances in the scaling group. This parameter takes effect when the scaling method of the scheduled task is set to adjust the number of instances in the scaling group.
         self.desired_capacity = desired_capacity
-        # The retry period after the scheduled task fails to be triggered. Unit: seconds. Valid values: 0 to 21600.
+        # The time period during which a retry is performed after the scheduled task fails to be triggered. Unit: seconds. Valid values: 0 to 21600.
         self.launch_expiration_time = launch_expiration_time
-        # The time when the scheduled task is triggered. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
+        # The time at which the scheduled task is triggered. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
         self.launch_time = launch_time
-        # The maximum number of instances in the scaling group. This parameter is valid when the scaling method of the scheduled task is set to configuring the number of instances in the scaling group.
+        # The maximum number of instances in the scaling group. This parameter takes effect when the scaling method of the scheduled task is set to adjust the number of instances in the scaling group.
         self.max_value = max_value
-        # The minimum number of instances in the scaling group. This parameter is valid when the scaling method of the scheduled task is set to configuring the number of instances in the scaling group.
+        # The minimum number of instances in the scaling group. This parameter takes effect when the scaling method of the scheduled task is set to adjust the number of instances in the scaling group.
         self.min_value = min_value
-        # The end time of the recurrence for the scheduled task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
+        # The end time of the recurring scheduled task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
         self.recurrence_end_time = recurrence_end_time
         # The recurrence type of the scheduled task.
         self.recurrence_type = recurrence_type
@@ -118,15 +118,15 @@ class DescribeScheduledTasksResponseBodyScheduledTasks(DaraModel):
         self.recurrence_value = recurrence_value
         # The ID of the scaling group that executes the scheduled task.
         self.scaling_group_id = scaling_group_id
-        # The scaling rule executed when the scheduled task is triggered. This parameter is returned only when a scaling rule is specified for the scheduled task.
+        # The scaling rule used when the scheduled task is executed. This parameter is returned only when a scaling rule is specified for the scheduled task.
         self.scheduled_action = scheduled_action
         # The ID of the scheduled task.
         self.scheduled_task_id = scheduled_task_id
         # The name of the scheduled task.
         self.scheduled_task_name = scheduled_task_name
-        # Indicates whether the scheduled task is enabled. Valid values: 
-        # - true: The task is enabled.
-        # - false: The task is disabled.
+        # Indicates whether the scheduled task is started. Valid values: 
+        # - true: The task is started.
+        # - false: The task is stopped.
         # 
         # Default value: true.
         self.task_enabled = task_enabled
@@ -245,7 +245,7 @@ class DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions(Da
         desired_group_prepared_capacity: int = None,
         min_capacity: int = None,
     ):
-        # The expected number of prepared instances.
+        # The expected number of instances covered by the warm pool. The system maintains the sum of the current number of instances in the scaling group and the number of instances in the warm pool at this value.
         self.desired_group_prepared_capacity = desired_group_prepared_capacity
         # The minimum number of instances in the warm pool.
         self.min_capacity = min_capacity
