@@ -10,9 +10,9 @@ class DescribeClusterUserKubeconfigResponseBody(DaraModel):
         config: str = None,
         expiration: str = None,
     ):
-        # The kubeconfig file of the cluster.
+        # The kubeconfig of the cluster.
         self.config = config
-        # The expiration time of the kubeconfig file. The time is displayed in UTC and follows the RFC 3339 standard.
+        # The expiration time of the kubeconfig. The time is in UTC and follows the RFC 3339 format.
         self.expiration = expiration
 
     def validate(self):

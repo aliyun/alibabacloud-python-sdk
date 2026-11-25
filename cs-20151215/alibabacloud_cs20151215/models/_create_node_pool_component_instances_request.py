@@ -78,9 +78,9 @@ class CreateNodePoolComponentInstancesRequestRollingPolicy(DaraModel):
         self.batch_interval = batch_interval
         # The maximum number of nodes allowed to fail during the rolling update. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
         self.max_failed_nodes = max_failed_nodes
-        # The maximum number of parallel updates per batch. Default value: 1.
+        # The maximum number of parallel operations per batch. Default value: 1.
         self.max_parallelism = max_parallelism
-        # The auto-pause policy during the node upgrade process. Valid values: NotPause, FirstBatch, and EveryBatch. Default value: NotPause.
+        # The automatic pause policy during the node upgrade. Valid values: NotPause, FirstBatch, and EveryBatch. Default value: NotPause.
         self.pause_policy = pause_policy
 
     def validate(self):
@@ -128,13 +128,13 @@ class CreateNodePoolComponentInstancesRequestComponents(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The configuration of the component.
+        # The component configuration.
         self.config = config
-        # The name of the component.
+        # The component name.
         # 
         # This parameter is required.
         self.name = name
-        # The version of the component.
+        # The component version.
         # 
         # This parameter is required.
         self.version = version
@@ -224,9 +224,9 @@ class CreateNodePoolComponentInstancesRequestComponentsConfigEnvs(DaraModel):
         name: str = None,
         value: str = None,
     ):
-        # The name of the environment variable.
+        # The environment variable name.
         self.name = name
-        # The value of the environment variable.
+        # The environment variable value.
         self.value = value
 
     def validate(self):

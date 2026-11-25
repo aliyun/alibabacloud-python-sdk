@@ -12,7 +12,7 @@ class UpdateK8sClusterUserConfigExpireRequest(DaraModel):
     ):
         # The custom expiration time. Unit: hours.
         # 
-        # Valid values: 1 to 876000, which is equivalent to a maximum of 100 years.
+        # Valid values: 1 to 876000. The maximum value is equivalent to 100 years.
         # 
         # This parameter is required.
         self.expire_hour = expire_hour

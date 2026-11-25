@@ -53,13 +53,13 @@ class GrantPermissionsRequestBody(DaraModel):
         role_name: str = None,
         role_type: str = None,
     ):
-        # The ID of the target cluster for authorization.
+        # The ID of the target cluster.
         # 
-        # - If the `role_type` parameter is set to `all-clusters`, set this parameter to an empty string.
+        # - If the value of the `role_type` parameter is `all-clusters`, set this parameter to an empty string.
         # 
         # This parameter is required.
         self.cluster = cluster
-        # Specifies whether the authorization is a custom authorization (the `role_name` parameter uses a custom ClusterRole name).
+        # Specifies whether the authorization is custom. For custom authorizations, the `role_name` parameter uses a custom ClusterRole name.
         self.is_custom = is_custom
         # Specifies whether the authorization is for a RAM role.
         self.is_ram_role = is_ram_role
@@ -76,8 +76,8 @@ class GrantPermissionsRequestBody(DaraModel):
         # 
         # >Notice: 
         # 
-        # - `admin`, `admin-view`, `ops`: cannot be granted at the namespace level.
-        # - `admin-view`: cannot be granted at the all-clusters level.
+        # - `admin`, `admin-view`, and `ops`: Namespace-level authorization is not supported.
+        # - `admin-view`: Cluster-wide authorization is currently not supported.
         # 
         # This parameter is required.
         self.role_name = role_name
@@ -85,7 +85,7 @@ class GrantPermissionsRequestBody(DaraModel):
         # 
         # - `cluster`: cluster level.
         # - `namespace`: namespace level.
-        # - `all-clusters`: all-clusters level.
+        # - `all-clusters`: all clusters.
         # 
         # This parameter is required.
         self.role_type = role_type

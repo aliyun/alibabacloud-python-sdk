@@ -12,7 +12,7 @@ class ListAddonsResponseBody(DaraModel):
         self,
         addons: List[main_models.ListAddonsResponseBodyAddons] = None,
     ):
-        # The list of available components.
+        # The list of available add-ons.
         self.addons = addons
 
     def validate(self):
@@ -55,33 +55,32 @@ class ListAddonsResponseBodyAddons(DaraModel):
         supported_actions: List[str] = None,
         version: str = None,
     ):
-        # The CPU architectures supported by the component.
+        # The CPU architectures supported by the add-on.
         self.architecture = architecture
-        # The category of the component. Valid values:
-        # - core: core component
-        # - network: network component
-        # - security: security component
-        # - storage: storage component
-        # - monitor: logging and monitoring component
-        # - application: application component
-        # 
-        # An empty value indicates that the component belongs to another category.
+        # The category of the add-on. Valid values:
+        # - core: Core add-on.
+        # - network: Network add-on.
+        # - security: Security add-on.
+        # - storage: Storage add-on.
+        # - monitor: Logging and monitoring add-on.
+        # - application: Application add-on.
+        # An empty value indicates that the add-on type is other.
         self.category = category
-        # The schema of custom parameters for the component.
+        # The schema of custom parameters for the add-on.
         self.config_schema = config_schema
-        # Indicates whether the component is installed by default. Valid values:
-        # - true: The component is installed by default when the cluster is created.
-        # - false: The component is not installed by default.
+        # Indicates whether the add-on is installed by default. Valid values:
+        # - true: The add-on is installed by default when the cluster is created.
+        # - false: The add-on is not installed by default.
         self.install_by_default = install_by_default
-        # Indicates whether the component is managed. Valid values:
-        # - true: The component is managed.
-        # - false: The component is not managed.
+        # Indicates whether the add-on is managed. Valid values:
+        # - true: The add-on is managed.
+        # - false: The add-on is not managed.
         self.managed = managed
-        # The name of the component.
+        # The name of the add-on.
         self.name = name
-        # The operations supported by the component.
+        # The operations supported by the add-on.
         self.supported_actions = supported_actions
-        # The version of the component.
+        # The version of the add-on.
         self.version = version
 
     def validate(self):

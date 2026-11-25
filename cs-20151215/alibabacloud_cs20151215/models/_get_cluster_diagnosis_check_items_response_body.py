@@ -88,15 +88,15 @@ class GetClusterDiagnosisCheckItemsResponseBodyCheckItems(DaraModel):
         self.display = display
         # The check item group.
         self.group = group
-        # The evaluation result of the check item.
+        # The check item evaluation result.
         self.level = level
         # The check result message.
         self.message = message
-        # The name of the check item.
+        # The check item name.
         self.name = name
         # The reference value.
         self.refer = refer
-        # The value of the check item.
+        # The check item value.
         self.value = value
 
     def validate(self):

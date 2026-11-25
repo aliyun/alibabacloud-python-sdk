@@ -21,13 +21,19 @@ class DescribeTriggerRequest(DaraModel):
         # This parameter is required.
         self.namespace = namespace
         # The trigger type. Valid values:
-        # - `deployment`: Triggers for stateless applications.
-        # - `application`: Triggers for Application Center applications.
+        # 
+        # - `deployment`: The trigger for stateless applications. 
+        # 
+        # - `application`: The trigger for Hybrid Cloud Application Center applications.
+        # 
         # Default value: `deployment`.
+        # 
         # If you do not specify the trigger type, the query results are not filtered by trigger type.
         self.type = type
         # The trigger action. Valid values:
+        # 
         # `redeploy`: Redeploys the application.
+        # 
         # If you do not specify the trigger action, the query results are not filtered by trigger action.
         self.action = action
 

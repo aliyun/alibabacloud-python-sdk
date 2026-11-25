@@ -14,7 +14,7 @@ class RepairClusterNodePoolRequest(DaraModel):
         nodes: List[str] = None,
         operations: List[main_models.RepairClusterNodePoolRequestOperations] = None,
     ):
-        # **[Deprecated]** Specifies whether to restart the instance.
+        # **[Deprecated]** Specifies whether to allow restarting instances.
         self.auto_restart = auto_restart
         # The list of nodes.
         self.nodes = nodes

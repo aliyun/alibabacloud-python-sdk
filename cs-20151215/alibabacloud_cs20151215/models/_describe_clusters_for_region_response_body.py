@@ -135,19 +135,19 @@ class DescribeClustersForRegionResponseBodyClusters(DaraModel):
         self.cluster_domain = cluster_domain
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The specification of the cluster. Valid values:
+        # The specifications of the cluster. Valid values:
         # 
         # - `ack.standard`: Basic Edition.
         # - `ack.pro.small`: Pro Edition.
         # - `ack.pro.xlarge`: Pro XL.
         # - `ack.pro.2xlarge`: Pro 2XL.
-        # - `ack.pro.4xlarge`: Pro 4XL. To use this specification, you must contact customer service to apply for whitelist access.
+        # - `ack.pro.4xlarge`: Pro 4XL (contact customer service to apply for whitelist access).
         # 
-        # Pro XL, Pro 2XL, and Pro 4XL are the three tiers provided by the <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). These tiers pre-allocate and reserve control plane resources to ensure that API concurrency and pod scheduling capabilities remain consistently high. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+        # Pro XL, Pro 2XL, and Pro 4XL are the three tiers provided by the <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and pod scheduling capabilities remain consistently high. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
         # 
-        # For more information about the cluster management fees for the Pro Edition and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
+        # For more information about the cluster management fees for Pro Edition and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
         self.cluster_spec = cluster_spec
-        # The type of the cluster. Valid values:
+        # The cluster type. Valid values:
         # - Kubernetes: ACK dedicated cluster.
         # - ManagedKubernetes: ACK managed cluster, including ACK managed clusters (Pro Edition and Basic Edition), ACK Serverless clusters (Pro Edition and Basic Edition), ACK Edge clusters (Pro Edition and Basic Edition), and ACK Lingjun clusters (Pro Edition).
         # - ExternalKubernetes: registered cluster.
@@ -158,13 +158,15 @@ class DescribeClustersForRegionResponseBodyClusters(DaraModel):
         self.created = created
         # The current version of the cluster.
         self.current_version = current_version
-        # Indicates whether deletion protection is enabled for the cluster to prevent accidental deletion through the console or API. Valid values:
+        # Specifies whether deletion protection is enabled for the cluster to prevent accidental deletion through the console or API. Valid values:
         # - true: Deletion protection is enabled. The cluster cannot be deleted through the console or API.
         # - false: Deletion protection is disabled. The cluster can be deleted through the console or API.
         self.deletion_protection = deletion_protection
         # The initial version of the cluster.
         self.init_version = init_version
-        # The IP stack of the cluster.
+        # The IP stack of the cluster. Valid values:
+        # - ipv4: The cluster supports only the IPv4 protocol stack.
+        # - dual: The cluster supports both IPv4 and IPv6 protocol stacks.
         self.ip_stack = ip_stack
         # The name of the cluster.
         self.name = name
@@ -184,7 +186,7 @@ class DescribeClustersForRegionResponseBodyClusters(DaraModel):
         self.resource_group_id = resource_group_id
         # The ID of the security group to which the cluster belongs.
         self.security_group_id = security_group_id
-        # The CIDR block for services in the cluster.
+        # The CIDR block for services.
         # 
         # This parameter is required.
         self.service_cidr = service_cidr
@@ -205,7 +207,7 @@ class DescribeClustersForRegionResponseBodyClusters(DaraModel):
         # - `deleting`: The cluster is being deleted.
         # - `deleted`: The cluster is deleted.
         # - `delete_failed`: The cluster failed to be deleted.
-        # - `waiting`: The cluster is waiting for the accessed state.
+        # - `waiting`: Waiting for the accessed state.
         # - `disconnected`: The cluster is disconnected.
         self.state = state
         # The version support policy of the cluster. The values are case-sensitive. Valid values:
@@ -217,7 +219,7 @@ class DescribeClustersForRegionResponseBodyClusters(DaraModel):
         self.tags = tags
         # The time zone.
         self.timezone = timezone
-        # The time when the cluster was last updated.
+        # The time when the cluster was updated.
         self.updated = updated
         # The ID of the VPC where the cluster is deployed.
         self.vpc_id = vpc_id

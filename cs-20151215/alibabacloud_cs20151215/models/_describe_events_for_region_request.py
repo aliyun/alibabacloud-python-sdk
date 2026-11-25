@@ -17,11 +17,11 @@ class DescribeEventsForRegionRequest(DaraModel):
         self.cluster_id = cluster_id
         # The maximum number of results to return for a single request.
         self.max_results = max_results
-        # The query token. The value is the next_token parameter value returned by the previous API call.
+        # The pagination token. Set the value to the next_token value returned by the previous API call.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The maximum number of results to return per page.
+        # The maximum number of results to display per page.
         # 
         # Valid values: 1 to 100.
         # 

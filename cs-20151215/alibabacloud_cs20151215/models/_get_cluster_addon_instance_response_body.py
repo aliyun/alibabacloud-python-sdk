@@ -14,19 +14,19 @@ class GetClusterAddonInstanceResponseBody(DaraModel):
         state: str = None,
         version: str = None,
     ):
-        # The custom parameter settings of the add-on.
+        # The custom parameter settings of the component.
         self.config = config
-        # The log feature status of the add-on.
+        # The logging status of the component.
         self.logging = logging
-        # The name of the add-on instance.
+        # The name of the component instance.
         self.name = name
-        # The state of the add-on. Valid values:
+        # The component state. Valid values:
         # - active: Installed.
         # - updating: Updating.
         # - upgrading: Upgrading.
         # - deleting: Uninstalling.
         self.state = state
-        # The version of the add-on instance.
+        # The version of the component instance.
         self.version = version
 
     def validate(self):
@@ -83,21 +83,21 @@ class GetClusterAddonInstanceResponseBodyLogging(DaraModel):
         log_project: str = None,
         logstore: str = None,
     ):
-        # Specifies whether the add-on supports the log feature. Valid values:
+        # Indicates whether the component supports the logging feature. Valid values:
         # 
         # - true: Supported.
         # 
         # - false: Not supported.
         self.capable = capable
-        # Specifies whether the log feature is enabled. Valid values:
+        # Indicates whether the logging feature is enabled. Valid values:
         # 
         # - true: Enabled.
         # 
         # - false: Disabled.
         self.enabled = enabled
-        # The Log Service project used by the add-on log feature.
+        # The log project used by the component logging feature.
         self.log_project = log_project
-        # The Logstore used by the add-on log feature.
+        # The Logstore used by the component logging feature.
         self.logstore = logstore
 
     def validate(self):

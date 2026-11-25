@@ -16,14 +16,14 @@ class GetUpgradeStatusResponseBody(DaraModel):
     ):
         # The error message during the cluster upgrade.
         self.error_message = error_message
-        # The ID of the precheck report.
+        # The precheck report ID.
         self.precheck_report_id = precheck_report_id
         # The current upgrade status of the cluster. Valid values:
         # 
-        # - `success`: Upgrade succeeded.
-        # - `fail`: Upgrade failed.
-        # - `pause`: Upgrade paused.
-        # - `running`: Upgrade in progress.
+        # - `success`: The upgrade succeeded.
+        # - `fail`: The upgrade failed.
+        # - `pause`: The upgrade is paused.
+        # - `running`: The upgrade is in progress.
         self.status = status
         # The current upgrade stage of the cluster. Valid values:
         # 
@@ -31,7 +31,7 @@ class GetUpgradeStatusResponseBody(DaraModel):
         # - `prechecking`: Prechecking.
         # - `upgrading`: Upgrading.
         # - `pause`: Paused.
-        # - `success`: Upgrade succeeded.
+        # - `success`: The upgrade succeeded.
         self.upgrade_step = upgrade_step
         # The details of the upgrade task.
         self.upgrade_task = upgrade_task
@@ -91,6 +91,7 @@ class GetUpgradeStatusResponseBodyUpgradeTask(DaraModel):
         # The description of the upgrade task.
         self.message = message
         # The status of the upgrade task. Valid values:
+        # 
         # - `running`: Running.
         # - `Success`: Succeeded.
         # - `Failed`: Failed.

@@ -17,19 +17,19 @@ class ContainerdConfig(DaraModel):
         max_concurrent_downloads: int = None,
         registry_mirrors: List[str] = None,
     ):
-        # Whether to ignore volumes defined in the image.
+        # The configuration to ignore volumes defined in the image.
         self.ignore_image_defined_volume = ignore_image_defined_volume
-        # A list of insecure registries that skip TLS certificate verification.
+        # The registries that skip certificate verification.
         self.insecure_registries = insecure_registries
-        # Maximum core dump size in bytes.
+        # The core dump size.
         self.limit_core = limit_core
-        # Maximum locked memory in bytes.
+        # The maximum memory lock limit.
         self.limit_mem_lock = limit_mem_lock
-        # Maximum number of open file handles.
+        # The maximum number of file handles.
         self.limit_no_file = limit_no_file
-        # The maximum number of concurrent image layer downloads.
+        # The maximum number of concurrent downloads.
         self.max_concurrent_downloads = max_concurrent_downloads
-        # A list of registry mirrors to accelerate image pulls.
+        # The registry mirror configuration.
         self.registry_mirrors = registry_mirrors
 
     def validate(self):

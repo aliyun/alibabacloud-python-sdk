@@ -14,11 +14,11 @@ class ListNodePoolComponentsResponseBody(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The node components.
+        # The list of node components.
         self.components = components
-        # The maximum number of results per page. Default value: 200.
+        # The maximum number of results to return. Default value: 200.
         self.max_results = max_results
-        # The pagination token.
+        # The next token for pagination.
         self.next_token = next_token
 
     def validate(self):
@@ -68,7 +68,7 @@ class ListNodePoolComponentsResponseBodyComponents(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The parameter schema of the node component, including custom parameters and system parameters.
+        # The configuration schema of the node component, including custom parameters and system parameters.
         self.config_schema = config_schema
         # The name of the node component.
         self.name = name

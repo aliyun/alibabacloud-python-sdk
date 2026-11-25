@@ -12,15 +12,15 @@ class DescribeExternalAgentRequest(DaraModel):
     ):
         # The agent permission mode. Valid values:
         # 
-        # - admin: Administrator mode. The agent has all permissions.
-        # - restricted: Restricted mode. The agent has only partial permissions.
+        # - admin: the administrator mode, which grants all permissions.
+        # - restricted: the restricted mode, which grants only specific permissions.
         # 
         # Default value: admin.
         self.agent_mode = agent_mode
         # Specifies whether to obtain internal network access credentials. Valid values:
         # 
-        # - `true`: Obtains only internal network connection credentials.
-        # - `false`: Obtains only public network connection credentials.
+        # - `true`: obtains only internal network connection credentials.
+        # - `false`: obtains only public network connection credentials.
         # 
         # Default value: `false`.
         self.private_ip_address = private_ip_address

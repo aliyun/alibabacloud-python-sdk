@@ -78,7 +78,7 @@ class ListClusterInspectReportsResponseBodyReports(DaraModel):
         self.start_time = start_time
         # The generation status of the inspection report.
         self.status = status
-        # The inspection report summary.
+        # The summary of the inspection report.
         self.summary = summary
 
     def validate(self):

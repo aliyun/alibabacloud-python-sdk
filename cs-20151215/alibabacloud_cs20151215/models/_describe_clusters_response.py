@@ -101,7 +101,7 @@ class DescribeClustersResponseBody(DaraModel):
         self.current_version = current_version
         # The data disk category of the node.
         self.data_disk_category = data_disk_category
-        # The data disk size of the node.
+        # The size of the data disk for the node.
         self.data_disk_size = data_disk_size
         # Indicates whether deletion protection is enabled for the cluster.
         self.deletion_protection = deletion_protection
@@ -111,7 +111,7 @@ class DescribeClustersResponseBody(DaraModel):
         self.external_loadbalancer_id = external_loadbalancer_id
         # The initial version of the cluster.
         self.init_version = init_version
-        # The access address of the cluster API server, including the internal network access address and the public network access address.
+        # The access endpoint of the cluster API server, including the internal network access endpoint and the public network access endpoint.
         self.master_url = master_url
         # The metadata of the cluster.
         self.meta_data = meta_data
@@ -119,7 +119,7 @@ class DescribeClustersResponseBody(DaraModel):
         self.name = name
         # The network mode of the cluster.
         self.network_mode = network_mode
-        # Indicates whether Private Zone is enabled for the cluster. Default value: false.
+        # Indicates whether PrivateZone is enabled for the cluster. Default value: false.
         self.private_zone = private_zone
         # The subtype of the cluster.
         self.profile = profile
@@ -129,23 +129,23 @@ class DescribeClustersResponseBody(DaraModel):
         self.resource_group_id = resource_group_id
         # The security group ID of the cluster.
         self.security_group_id = security_group_id
-        # The current number of nodes in the cluster, including master and worker nodes.
+        # The current number of nodes in the cluster, including master nodes and worker nodes.
         self.size = size
-        # The state of the cluster.
+        # The running state of the cluster.
         self.state = state
-        # The subnet CIDR of the cluster.
+        # The subnet CIDR block of the cluster.
         self.subnet_cidr = subnet_cidr
         # The tags of the cluster.
         self.tags = tags
         # The time when the cluster was updated.
         self.updated = updated
-        # The VPC ID of the cluster.
+        # The virtual private cloud (VPC) ID of the cluster.
         self.vpc_id = vpc_id
-        # The vSwitch CIDR.
+        # The CIDR block of the vSwitch.
         self.vswitch_cidr = vswitch_cidr
         # The ID of the vSwitch where the cluster is deployed.
         self.vswitch_id = vswitch_id
-        # The name of the RAM role used by the worker nodes.
+        # The name of the Resource Access Management (RAM) role used by the worker nodes.
         self.worker_ram_role_name = worker_ram_role_name
         # The zone ID of the cluster.
         self.zone_id = zone_id

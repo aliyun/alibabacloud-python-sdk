@@ -28,9 +28,9 @@ class UpdateResourcesDeleteProtectionRequest(DaraModel):
         self.namespace = namespace
         # The type of the resource to update. Valid values:
         # 
-        # - namespaces: namespace.
+        # - namespaces: namespace
         # 
-        # - services: service.
+        # - services: service
         self.resource_type = resource_type
         # The list of target resources.
         self.resources = resources

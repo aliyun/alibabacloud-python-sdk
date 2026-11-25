@@ -14,9 +14,9 @@ class ListAddonsRequest(DaraModel):
         profile: str = None,
         region_id: str = None,
     ):
-        # The cluster ID. If this parameter is specified, the system queries the available components for the specified cluster and ignores other parameters.
+        # The cluster ID. If this parameter is specified, the system queries the list of available add-ons for the cluster and ignores other parameters.
         self.cluster_id = cluster_id
-        # The cluster specification. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
+        # The cluster specifications. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.cluster_spec = cluster_spec
         # The cluster type. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.cluster_type = cluster_type
@@ -24,7 +24,7 @@ class ListAddonsRequest(DaraModel):
         self.cluster_version = cluster_version
         # The cluster profile. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.profile = profile
-        # The region. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
+        # The region ID. If cluster_id is specified, this parameter is ignored. The region_id, cluster_type, profile, cluster_spec, and cluster_version parameters must be specified together.
         self.region_id = region_id
 
     def validate(self):

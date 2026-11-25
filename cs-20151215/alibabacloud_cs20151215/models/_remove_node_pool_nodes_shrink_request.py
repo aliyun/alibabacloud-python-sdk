@@ -15,30 +15,27 @@ class RemoveNodePoolNodesShrinkRequest(DaraModel):
         release_node: bool = None,
     ):
         # Specifies whether to remove nodes concurrently. Valid values:
-        # - true: Nodes are removed from the scaling group concurrently.
-        # - false: Nodes are removed from the scaling group sequentially.
-        # 
+        # - true: Nodes are concurrently removed from the scaling group.
+        # - false: Nodes are sequentially removed from the scaling group.
         # Default value: false.
         self.concurrency = concurrency
         # Specifies whether to drain the nodes. Valid values:
-        # - true: Drain the nodes.
-        # - false: Do not drain the nodes.
+        # - true: Drains the nodes.
+        # - false: Does not drain the nodes.
         self.drain_node = drain_node
         # The drain timeout period in seconds. Valid values: (0, 1800]. Default value: 1800. This parameter takes effect only when drain_node is set to true.
         self.drain_timeout_seconds = drain_timeout_seconds
         # The list of instances to be removed.
         self.instance_ids_shrink = instance_ids_shrink
-        # **[Deprecated]**
+        # **[Deprecated]** The list of removed nodes.
         # 
-        # The list of nodes to be removed.
-        # 
-        # >Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>
+        # >Danger: This parameter is deprecated. Use instance_ids instead.</danger>
         self.nodes_shrink = nodes_shrink
         # Specifies whether automatic release the nodes. Valid values:
-        # - true: Release the nodes.
-        # - false: Do not release the nodes.
+        # - true: Releases the nodes.
+        # - false: Does not release the nodes.
         # 
-        # Removing nodes does not automatically release subscription nodes. Automatic release subscription nodes, [change the billing method of the nodes from subscription to pay-as-you-go](https://www.alibabacloud.com/help/en/ecs/change-the-billing-method-of-an-instance-from-subscription-to-pay-as-you-go-1), and then log on to the ECS console automatic release them.
+        # Removing nodes does not automatically release subscription nodes. Automatic release subscription nodes, [change the billing method of the nodes from subscription to pay-as-you-go](https://www.alibabacloud.com/help/en/ecs/change-the-billing-method-of-an-instance-from-subscription-to-pay-as-you-go-1) and then log on to the ECS console automatic release them.
         self.release_node = release_node
 
     def validate(self):

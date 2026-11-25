@@ -19,7 +19,7 @@ class DescribeClusterEventsRequest(DaraModel):
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
-        # The maximum number of entries to return on each page. Valid values: 1 to 100. Default value: 50.
+        # The maximum number of results to return per page. Valid values: 1 to 100. Default value: 50.
         self.page_size = page_size
         # The ID of the task to query.
         self.task_id = task_id

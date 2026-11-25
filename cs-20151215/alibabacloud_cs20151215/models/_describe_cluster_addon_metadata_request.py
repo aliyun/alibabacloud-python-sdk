@@ -9,7 +9,7 @@ class DescribeClusterAddonMetadataRequest(DaraModel):
         self,
         version: str = None,
     ):
-        # The component version.
+        # The version of the add-on.
         self.version = version
 
     def validate(self):

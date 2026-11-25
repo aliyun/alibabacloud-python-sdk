@@ -80,22 +80,22 @@ class DescribeClusterResourcesResponseBody(DaraModel):
         self.created = created
         # The resource ID.
         self.instance_id = instance_id
-        # The resource information. For more information about the source information of resources, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
+        # The resource metadata. For more information about the source information of resources, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
         self.resource_info = resource_info
         # The resource type.
         self.resource_type = resource_type
         # The resource state. Valid values:
         # 
         # - `CREATE_COMPLETE`: The resource is created.
-        # - `CREATE_FAILED`: The resource fails to be created.
+        # - `CREATE_FAILED`: The resource failed to be created.
         # - `CREATE_IN_PROGRESS`: The resource is being created.
-        # - `DELETE_FAILED`: The resource fails to be deleted.
+        # - `DELETE_FAILED`: The resource failed to be deleted.
         # - `DELETE_IN_PROGRESS`: The resource is being deleted.
         # - `ROLLBACK_COMPLETE`: The rollback is successful.
-        # - `ROLLBACK_FAILED`: The rollback fails.
+        # - `ROLLBACK_FAILED`: The rollback failed.
         # - `ROLLBACK_IN_PROGRESS`: The rollback is in progress.
         self.state = state
-        # Specifies whether the resource is created by ACK. Valid values:
+        # Specifies whether the resource is created by ACK:
         # 
         # - 1: The resource is created by ACK.
         # - 0: The resource is an existing resource.
@@ -106,7 +106,7 @@ class DescribeClusterResourcesResponseBody(DaraModel):
         self.associated_object = associated_object
         # The deletion behavior of the resource when the cluster is deleted.
         self.delete_behavior = delete_behavior
-        # The type of the creator of the resource. Valid values:
+        # The type of the resource creator. Valid values:
         # - user: The resource is created by the user.
         # - system: The resource is created by the ACK control system.
         # - addon: The resource is created by a cluster component.
@@ -220,14 +220,16 @@ class DescribeClusterResourcesResponseBodyDeleteBehavior(DaraModel):
         delete_by_default: bool = None,
         changeable: bool = None,
     ):
-        # Specifies whether the resource is deleted by default when the cluster is deleted. Valid values:
+        # Specifies whether the resource is deleted by default when the cluster is deleted.
         # 
         # - true: The resource is deleted by default.
+        # 
         # - false: The resource is not deleted.
         self.delete_by_default = delete_by_default
-        # Specifies whether the default behavior returned in `delete_by_default` can be changed. Valid values:
+        # Specifies whether the default behavior returned in `delete_by_default` can be changed.
         # 
         # - true: The default behavior can be changed.
+        # 
         # - false: The default behavior cannot be changed.
         self.changeable = changeable
 

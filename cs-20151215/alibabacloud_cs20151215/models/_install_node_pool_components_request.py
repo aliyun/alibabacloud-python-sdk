@@ -177,7 +177,7 @@ class InstallNodePoolComponentsRequestComponentsConfig(DaraModel):
     ):
         # The custom configuration of the component.
         self.custom_config = custom_config
-        # The environment variables for the node component.
+        # The environment variables of the node component.
         self.envs = envs
 
     def validate(self):

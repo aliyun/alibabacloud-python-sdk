@@ -10,16 +10,16 @@ class DescribeSubaccountK8sClusterUserConfigRequest(DaraModel):
         private_ip_address: bool = None,
         temporary_duration_minutes: int = None,
     ):
-        # Specifies whether the internal network connection configuration is obtained. Valid values:
-        # - `true`: Obtains only the KubeConfig credentials for the internal network connection.
-        # - `false`: Obtains only the KubeConfig credentials for the public network connection.
+        # Specifies whether to obtain the internal network connection configuration. Valid values:
+        # - `true`: obtains only the KubeConfig credentials for internal network connections
+        # - `false`: obtains only the KubeConfig credentials for public network connections
         # 
         # Default value: `false`.
         self.private_ip_address = private_ip_address
-        # The validity period of the temporary KubeConfig. Unit: minutes.
+        # The validity period of the temporary KubeConfig, in minutes.
         # 
         # Valid values: 15 to 4320, which indicates a maximum of 3 days.
-        # > If you do not specify this parameter, the system automatically determines a longer validity period. The specific expiration time is determined by the value of the returned expiration field.
+        # > If you do not specify this parameter, the system automatically determines a longer validity period. The specific expiration time is determined by the value of the expiration field in the response.
         self.temporary_duration_minutes = temporary_duration_minutes
 
     def validate(self):

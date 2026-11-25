@@ -120,7 +120,7 @@ class CreateClusterRequest(DaraModel):
         self.access_control_list = access_control_list
         # The list of cluster components. You can use `addons` to specify the cluster components that you want to install when you create a cluster.
         # 
-        # **Network components**: Required. Includes two options for the network type: Flannel and Terway. You must select one of them when you create a cluster:
+        # **Network components**: Required. Two network types, Flannel and Terway, are supported. You must select one of the network types when you create a cluster:
         # 
         # - Flannel: [{"name":"flannel","config":""}\\].
         # - Terway: [{"name": "terway-eniip","config": ""}\\].
@@ -129,12 +129,12 @@ class CreateClusterRequest(DaraModel):
         # 
         # `csi`: [{"name":"csi-plugin","config": ""},{"name": "csi-provisioner","config": ""}\\].
         # 
-        # **Log components**: Optional. We recommend that you enable this component. If you do not enable Log Service, you cannot use the cluster audit feature.
+        # **Log component**: Optional. We recommend that you enable this component. If you do not enable Simple Log Service, you cannot use the cluster audit feature.
         # 
         # - Use an existing `SLS Project`: [{"name": "loongcollector","config": "{\\"IngressDashboardEnabled\\":\\"true\\",\\"sls_project_name\\":\\"your_sls_project_name\\"}"}\\].
         # - Create a new `SLS Project`: [{"name": "loongcollector","config": "{\\"IngressDashboardEnabled\\":\\"true\\"}"}\\].
         # 
-        # **Ingress components**: Optional. By default, the `nginx-ingress-controller` Ingress component is installed in ACK dedicated clusters.
+        # **Ingress component**: Optional. By default, the `nginx-ingress-controller` Ingress component is installed in ACK dedicated clusters.
         # 
         # - Install the Ingress component and enable Internet access: [{"name":"nginx-ingress-controller","config":"{\\"IngressSlbNetworkType\\":\\"internet\\"}"}\\].
         # - Disable the default installation of the Ingress component: [{"name": "nginx-ingress-controller","config": "","disabled": true}\\].
@@ -145,51 +145,57 @@ class CreateClusterRequest(DaraModel):
         # 
         # Example of enabling the event center: [{"name":"ack-node-problem-detector","config":"{\\"sls_project_name\\":\\"your_sls_project_name\\"}"}\\].
         self.addons = addons
-        # A ServiceAccount is the access credential for communication between pods and the cluster API server. `api-audiences` specifies the valid identities for request `tokens` and is used by the `apiserver` to authenticate whether a request `token` is valid. You can configure multiple `audiences` and separate them with commas (,).
+        # A ServiceAccount is the access credential for communication between pods and the cluster API server. `api-audiences` specifies the valid identities for request `tokens` and is used by the `apiserver` to verify whether a request `token` is valid. You can configure multiple `audiences` and separate them with commas (,).
         # 
         # For more information about `ServiceAccount`, see [Deploy service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
         self.api_audiences = api_audiences
-        # The cluster audit log configurations.
+        # The cluster audit log configuration.
         self.audit_log_config = audit_log_config
-        # The [intelligent managed mode](https://help.aliyun.com/document_detail/2938898.html) configurations.
+        # The [ACK Auto Mode](https://help.aliyun.com/document_detail/2938898.html) configuration.
         self.auto_mode = auto_mode
-        # **[Deprecated]** Specifies whether to enable auto-renewal. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
+        # **[Deprecated]**
         # 
-        # - `true`: Enables auto-renewal.
-        # - `false`: Disables auto-renewal.
+        # Specifies whether to enable auto-renewal. This parameter takes effect only when `charge_type` is set to `PrePaid`. Valid values:
+        # 
+        # - `true`: enables auto-renewal.
+        # - `false`: disables auto-renewal.
         # 
         # Default value: `false`.
         # 
-        # This parameter was changed on October 15, 2024. For more information, see [Announcement on parameter behavior changes of the CreateCluster operation for cluster creation](https://help.aliyun.com/document_detail/2849194.html).
+        # This parameter was changed on October 15, 2024. For more information, see [Announcement on parameter behavior changes of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
         self.auto_renew = auto_renew
-        # **[Deprecated]** The auto-renewal cycle. This parameter takes effect only when you select subscription and auto-renewal. When `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, 6, and 12.
+        # **[Deprecated]**
+        # 
+        # The auto-renewal epoch. This parameter takes effect only when you select upfront and auto-renewal. When `PeriodUnit` is set to `Month`, valid values are 1, 2, 3, 6, and 12.
         # 
         # Default value: 1.
         # 
-        # This parameter was changed on October 15, 2024. For more information, see [Announcement on parameter behavior changes of the CreateCluster operation for cluster creation](https://help.aliyun.com/document_detail/2849194.html).
+        # This parameter was changed on October 15, 2024. For more information, see [Announcement on parameter behavior changes of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
         self.auto_renew_period = auto_renew_period
-        # **[Deprecated]** The billing method of the Classic Load Balancer (CLB) instance used by the API server. Default value: PostPaid. Valid values:
-        # - PostPaid: Pay-as-you-go.
-        # - PrePaid: Subscription. This billing method is no longer supported for new CLB instances, but existing instances are not affected.
+        # **[Deprecated]**
+        # 
+        # The billing method of the Classic Load Balancer (CLB) instance used by the API server. Default value: PostPaid. Valid values:
+        # - PostPaid: pay-as-you-go.
+        # - PrePaid: subscription. This billing method is no longer supported for new CLB instances, but existing instances are not affected.
         # 
         # >Notice: 
         # 
-        # - This parameter was changed on October 15, 2024. For more information, see [Announcement on parameter behavior changes of the CreateCluster operation for cluster creation](https://help.aliyun.com/document_detail/2849194.html).
+        # - This parameter was changed on October 15, 2024. For more information, see [Announcement on parameter behavior changes of the CreateCluster operation](https://help.aliyun.com/document_detail/2849194.html).
         # - Starting December 1, 2024, newly created CLB instances no longer support the subscription billing method, and an instance fee is charged.
         # </notice>
-        # <props="china">For more information, see [Service notices: Deprecation of the subscription billing method for the CLB instance of the API server in newly created clusters](https://help.aliyun.com/document_detail/2851191.html) and [Announcement on billing item adjustments for Classic Load Balancer (CLB)](https://help.aliyun.com/document_detail/2839797.html).
-        # <props="intl">For more information, see [Announcement on billing item adjustments for Classic Load Balancer (CLB)](https://help.aliyun.com/document_detail/2839797.html).
+        # <props="china">For more information, see [Service notices: Announcement on the cancellation of the subscription billing method for the Classic Load Balancer (CLB) instance of the API server in newly created clusters](https://help.aliyun.com/document_detail/2851191.html) and [Announcement on the adjustment of Classic Load Balancer (CLB) billable items](https://help.aliyun.com/document_detail/2839797.html).
+        # <props="intl">For more information, see [Announcement on the adjustment of Classic Load Balancer (CLB) billable items](https://help.aliyun.com/document_detail/2839797.html).
         self.charge_type = charge_type
-        # **[Deprecated]** To configure the cluster control plane, use the `security_hardening_os` parameter under `control_plane_config` instead. To configure node pools, use the `security_hardening_os` parameter under `scaling_group` in `nodepool` instead.
+        # **[Deprecated]** To configure the cluster control plane, use the `security_hardening_os` parameter under `control_plane_config` instead. To configure a node pool, use the `security_hardening_os` parameter under `scaling_group` in `nodepool` instead.
         self.cis_enabled = cis_enabled
         # The client token.
         self.client_token = client_token
-        # **[Deprecated]** To configure control plane nodes of a cluster, use the `cloud_monitor_flags` parameter under `control_plane_config` instead. To configure node pools, use the `cms_enabled` parameter under `kubernetes_config` in `nodepool` instead.
+        # **[Deprecated]** To configure control plane nodes, use the `cloud_monitor_flags` parameter under `control_plane_config` instead. To configure a node pool, use the `cms_enabled` parameter under `kubernetes_config` in `nodepool` instead.
         # 
-        # Specifies whether to install the CloudMonitor agent on the cluster. Valid values:
+        # Specifies whether to install the CloudMonitor agent for the cluster. Valid values:
         # 
-        # - `true`: Installs the CloudMonitor agent.
-        # - `false`: Does not install the CloudMonitor agent.
+        # - `true`: installs the CloudMonitor agent.
+        # - `false`: does not install the CloudMonitor agent.
         # 
         # Default value: `false`.
         self.cloud_monitor_flags = cloud_monitor_flags
@@ -205,47 +211,46 @@ class CreateClusterRequest(DaraModel):
         # - `ack.pro.2xlarge`: Pro 2XL.
         # - `ack.pro.4xlarge`: Pro 4XL. You must contact customer service to apply for whitelist access.
         # 
-        # Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and reserving control plane resources, these editions ensure that API concurrency and pod scheduling capabilities are always maintained at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+        # Pro XL, Pro 2XL, and Pro 4XL are three tiers provided by <props="china">[ACK Pro Provisioned Control Plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro Provisioned Control Plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and fixing control plane resources, these editions ensure that API concurrency and pod scheduling capabilities are always maintained at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
         # 
         # For more information about the cluster management fees for Pro Edition and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
         self.cluster_spec = cluster_spec
-        # Valid values:
         # - `Kubernetes`: ACK dedicated cluster.
         # - `ManagedKubernetes`: ACK managed cluster, including ACK managed clusters (Pro Edition and Basic Edition), ACK Serverless clusters (Pro Edition and Basic Edition), ACK Edge clusters (Pro Edition and Basic Edition), and ACK Lingjun clusters (Pro Edition).
-        # - `ExternalKubernetes`: Registered cluster.
+        # - `ExternalKubernetes`: registered cluster.
         self.cluster_type = cluster_type
-        # The CIDR block for pods. It must be a valid private CIDR block, specifically one of the following CIDR blocks or their subnets: 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16. It cannot overlap with the CIDR block of the VPC or the CIDR blocks used by existing Kubernetes clusters in the VPC. It cannot be modified after the cluster is created.
+        # The pod CIDR block. It must be a valid private CIDR block, which is one of the following CIDR blocks or their subnets: 10.0.0.0/8, 172.16.0.0/12 to 172.31.0.0/16, and 192.168.0.0/16. It cannot overlap with the CIDR block of the VPC or the CIDR blocks used by existing Kubernetes clusters in the VPC. It cannot be modified after the cluster is created.
         # 
         # For more information about cluster network planning, see [Network planning for ACK managed clusters](https://help.aliyun.com/document_detail/86500.html).
         # 
         # > This parameter is required for Flannel clusters.
         self.container_cidr = container_cidr
-        # The control plane configuration for an ACK dedicated cluster.
+        # The control plane configuration for dedicated ACK clusters.
         self.control_plane_config = control_plane_config
-        # The connection configuration of the cluster. If you specify this parameter, the endpoint_public_access and load_balancer_id parameters do not take effect. To specify a CLB or NLB instance, use load_balancers_config to specify the corresponding instance ID.
+        # The endpoint configuration of the cluster. If you specify this parameter, the endpoint_public_access and load_balancer_id parameters do not take effect. To specify a CLB or NLB instance, use the load_balancers_config parameter to specify the instance ID.
         self.control_plane_endpoints_config = control_plane_endpoints_config
-        # The list of component names. This parameter specifies the control plane components whose logs are collected. By default, logs of kube-apiserver, kube-controller-manager, kube-scheduler, and cloud-controller-manager are collected.
+        # The names of the control plane components for which logs are collected. By default, logs are collected for kube-apiserver, kube-controller-manager, kube-scheduler, and cloud-controller-manager.
         self.controlplane_log_components = controlplane_log_components
-        # The Log Service project for control plane component logs. You can use an existing project for log storage, or use the automatic creation feature to create a project. If you choose automatic creation, a Log Service project named k8s-log-{ClusterID} is created.
+        # The Log Service project for control plane component logs. You can use an existing project for log storage, or use the automatic creation of a project by the system. If you choose automatic creation, a Log Service project named `k8s-log-{ClusterID}` is created.
         self.controlplane_log_project = controlplane_log_project
-        # The log retention period for control plane components. Unit: days.
+        # The log retention period in days for control plane components.
         self.controlplane_log_ttl = controlplane_log_ttl
-        # **[Deprecated]** Use the cpu_policy parameter under control_plane_config for cluster control plane configuration, and use the cpu_policy parameter under kubernetes_config in nodepool for node pool configuration.
+        # **[Deprecated]** Use the cpu_policy parameter in control_plane_config for cluster control plane configuration, or the cpu_policy parameter in kubernetes_config of nodepool for node pool configuration.
         # 
-        # The CPU management policy for nodes. This parameter supports the following policies when the cluster version is 1.12.6 or later:
+        # The CPU management policy for nodes. If the cluster version is 1.12.6 or later, the following policies are supported:
         # - static: allows you to enhance CPU affinity and exclusivity for pods with specific resource characteristics on the node.
-        # - none: uses the default CPU affinity policy.
+        # - none: enables the default CPU affinity scheme.
         # 
         # Default value: none.
         self.cpu_policy = cpu_policy
-        # **[Deprecated]** Use the extra_sans parameter instead.
+        # **[Deprecated]** Use the `extra_sans` parameter instead.
         # 
-        # The SANs of the custom certificate. Separate multiple IP addresses or domain names with commas (,).
+        # The custom certificate SANs. Separate multiple IP addresses or domain names with commas (,).
         self.custom_san = custom_san
-        # Specifies whether to enable deletion protection for the cluster to prevent accidental deletion through the console or API calls. Valid values:
+        # Specifies whether to enable cluster deletion protection to prevent accidental deletion of the cluster through the console or API. Valid values:
         # 
-        # - `true`: Enables cluster deletion protection. The cluster cannot be deleted through the console or API.
-        # - `false`: Disables cluster deletion protection. The cluster can be deleted through the console or API.
+        # - `true`: enables cluster deletion protection. The cluster cannot be deleted through the console or API.
+        # - `false`: disables cluster deletion protection. The cluster can be deleted through the console or API.
         # 
         # Default value: `false`.
         self.deletion_protection = deletion_protection
@@ -253,50 +258,50 @@ class CreateClusterRequest(DaraModel):
         # 
         # Specifies whether to perform a rollback when cluster creation fails. Valid values:
         # 
-        # - `true`: Performs a rollback when cluster creation fails.
-        # - `false`: Does not perform a rollback when cluster creation fails.
+        # - `true`: performs a rollback when cluster creation fails.
+        # - `false`: does not perform a rollback when cluster creation fails.
         # 
         # Default value: `true`.
         self.disable_rollback = disable_rollback
-        # **[Deprecated]** Use the `rrsa_config` parameter instead.
+        # **[Deprecated]** Use the rrsa_config parameter instead.
         # 
-        # Specifies whether to enable RRSA. Valid values:
+        # Specifies whether to enable RAM Roles for Service Accounts (RRSA). Valid values:
         # 
-        # - true: Enables RRSA.
-        # - false: Disables RRSA.
+        # - `true`: enables RRSA.
+        # - `false`: disables RRSA.
         self.enable_rrsa = enable_rrsa
-        # The ID of the KMS key used to encrypt data cloud disks. For more information, see [Key Management Service](https://help.aliyun.com/document_detail/28935.html).
+        # The ID of the Key Management Service (KMS) key used to encrypt data cloud disks. For more information, see [Key Management Service](https://help.aliyun.com/document_detail/28935.html).
         # 
         # > This feature takes effect only in ACK Pro clusters.
         self.encryption_provider_key = encryption_provider_key
-        # Specifies whether to enable public network access. An elastic IP address (EIP) is used to expose the API Server for public network access to the cluster. Valid values:
+        # Specifies whether to enable public network access. An elastic IP address (EIP) is used to expose the API server for public network access to the cluster. Valid values:
         # 
-        # - `true`: Enables public network access.
-        # - `false`: Disables public network access. If you select this value, the cluster API Server cannot be accessed over the Internet.
+        # - `true`: enables public network access.
+        # - `false`: disables public network access. If you select this value, the cluster API server cannot be accessed over the Internet.
         # 
         # Default value: `false`.
         self.endpoint_public_access = endpoint_public_access
-        # The custom Subject Alternative Name (SAN) of the API Server certificate.
+        # The custom Subject Alternative Name (SAN) of the API server certificate.
         self.extra_sans = extra_sans
-        # **[Deprecated]** You cannot select existing nodes when creating a cluster. To add existing nodes to a cluster, create a node pool first and call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
+        # **[Deprecated]** Existing nodes cannot be selected when you create a cluster. To add existing nodes to a cluster, create a node pool first and call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
         # 
-        # Specifies whether to mount data cloud disks to existing instances when creating a cluster. Valid values:
+        # Specifies whether to mount data cloud disks to existing instances when you create a cluster by using existing instances. Valid values:
         # 
-        # - `true`: Stores containers and images on data cloud disks. Existing data on the data cloud disks will be lost. Back up your data first.
-        # - `false`: Does not store containers and images on data cloud disks.
+        # - `true`: stores containers and images on data cloud disks. The original data on the data cloud disks will be lost. Back up your data first.
+        # - `false`: does not store containers and images on data cloud disks.
         # 
         # Default value: `false`.
         # 
-        # Data cloud disk mounting rules:
+        # Rules for mounting data cloud disks:
         # 
-        # - If the ECS instance has data cloud disks attached and the file system of the last data cloud disk is not initialized, the system automatically formats the data cloud disk to ext4 to store /var/lib/docker and /var/lib/kubelet.
-        # - If the ECS instance does not have data cloud disks attached, no new data cloud disk will be attached.
+        # - If an ECS instance has data cloud disks mounted and the file system of the last data cloud disk is not initialized, the system automatically formats the data cloud disk to ext4 to store the /var/lib/docker and /var/lib/kubelet directories.
+        # - If an ECS instance does not have data cloud disks mounted, no new data cloud disk will be mounted.
         self.format_disk = format_disk
-        # **[Deprecated]** For cluster control plane configurations, use the `image_id` parameter under `control_plane_config` instead. For node pool configurations, use the `image_id` parameter under `scaling_group` in `nodepool` instead.
+        # **[Deprecated]** For the control plane configuration, use the image_id parameter under control_plane_config instead. For the node pool configuration, use the image_id parameter under scaling_group in nodepool instead.
         # 
         # The custom image for nodes. By default, the system image is used. If you select a custom image, it replaces the default system image. For more information, see [Custom images](https://help.aliyun.com/document_detail/146647.html).
         self.image_id = image_id
-        # **[Deprecated]** For cluster control plane configurations, use the `image_type` parameter under `control_plane_config` instead. For node pool configurations, use the `image_type` parameter under `scaling_group` in `nodepool` instead.
+        # **[Deprecated]** For the control plane configuration, use the image_type parameter under control_plane_config instead. For the node pool configuration, use the image_type parameter under scaling_group in nodepool instead.
         # 
         # The operating system distribution type. We recommend that you use this field to specify the node operating system. Valid values:
         # 
@@ -312,47 +317,52 @@ class CreateClusterRequest(DaraModel):
         # 
         # Default value: `CentOS`.
         self.image_type = image_type
-        # **[Deprecated]** You cannot select existing nodes when creating a cluster. To add existing nodes to a cluster, create a node pool first and call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
+        # **[Deprecated]** Existing nodes cannot be selected when you create a cluster. To add existing nodes to a cluster, create a node pool first and call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
         # 
-        # The list of existing ECS instances to be added as worker nodes when creating a cluster with existing nodes.
+        # The list of existing ECS instances to be added as worker nodes when you create a cluster by using existing nodes.
         # 
-        # > This field is required when you create a cluster with existing instances.
+        # > This field is required when you create a cluster by using existing instances.
         self.instances = instances
-        # The IP stack of the cluster.
-        self.ip_stack = ip_stack
-        # Specifies whether to enable automatic creation of an advanced security group. This parameter takes effect when `security_group_id` is empty.
+        # The IP stack of the cluster. Valid values:
         # 
-        # > If you use a basic security group, the total number of nodes and Terway pods in the cluster cannot exceed 2,000. Therefore, we recommend that you use an advanced security group when creating a cluster of the Terway network type.
+        # - `ipv4`: single stack.
+        # - `dual`: dual stack.
+        # 
+        # Default value: `ipv4`.
+        self.ip_stack = ip_stack
+        # Specifies whether to enable automatic creation of an advanced security group. This parameter takes effect when security_group_id is empty.
+        # 
+        # > When a basic security group is used, the total number of nodes and Terway pods in the cluster cannot exceed 2,000. Therefore, we recommend that you use an advanced security group when you create a cluster with the Terway network type.
         # 
         # Valid values:
-        # - `true`: Creates and uses an advanced security group.
-        # - `false`: Uses a basic security group.
+        # - `true`: creates and uses an advanced security group.
+        # - `false`: uses a basic security group.
         # 
         # Default value: `true`.
         self.is_enterprise_security_group = is_enterprise_security_group
-        # **[Deprecated]** You cannot select existing nodes when creating a cluster. To add existing nodes to a cluster, create a node pool first and call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
+        # **[Deprecated]** Existing nodes cannot be selected when you create a cluster. To add existing nodes to a cluster, create a node pool first and call the [AttachInstancesToNodePool](https://help.aliyun.com/document_detail/2667920.html) operation.
         # 
-        # Specifies whether to retain the instance names when creating a cluster with existing instances. Valid values:
+        # Specifies whether to retain the instance names when you create a cluster by using existing instances. Valid values:
         # 
-        # - `true`: Retains the instance names.
-        # - `false`: Does not retain the instance names. The names are replaced based on system rules.
+        # - `true`: retains the instance names.
+        # - `false`: does not retain the instance names. The names are replaced based on system rules.
         # 
         # Default value: `true`.
         self.keep_instance_name = keep_instance_name
-        # **[Deprecated]** For cluster control plane configurations, use the `key_pair` parameter under `control_plane_config` instead. For node pool configurations, use the `key_pair` parameter under `scaling_group` in `nodepool` instead.
+        # **[Deprecated]** For the control plane configuration, use the key_pair parameter under control_plane_config instead. For the node pool configuration, use the key_pair parameter under scaling_group in nodepool instead.
         # 
-        # The name of the key pair. You must specify either this parameter or `login_password`.
+        # The name of the key pair. You must specify either this parameter or login_password.
         self.key_pair = key_pair
         # The cluster version, which is consistent with the Kubernetes community baseline version. We recommend that you select the latest version. If you do not specify this parameter, the latest version is used by default.
         # 
         # You can create clusters of the latest three versions. You can call the [DescribeKubernetesVersionMetadata](https://help.aliyun.com/document_detail/2667899.html) operation to query the supported cluster versions.
         # 
-        # For more information about the Kubernetes versions supported by ACK, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
+        # For more information about the Kubernetes versions supported by ACK, see [Kubernetes version release notes](https://help.aliyun.com/document_detail/185269.html).
         self.kubernetes_version = kubernetes_version
-        # The instance ID of the Classic Load Balancer (CLB) used for API server access. If you specify this parameter, automatic creation of a CLB instance for the API server is disabled.
+        # The instance ID of the Classic Load Balancer (CLB) used for API server access. If you specify this parameter, automatic creation of a CLB instance for the API server is not performed.
         # > Make sure that the CLB instance has no other dependencies, such as listeners or backend servers. Shared-resource and Internet-facing CLB instances are not supported.
         self.load_balancer_id = load_balancer_id
-        # **[Deprecated]** For CLB instances, billing is based on usage. This parameter does not take effect.
+        # **[Deprecated]** CLB instances use usage-based billing. This parameter does not take effect.
         # 
         # The load balancing specification. Valid values:
         # - slb.s1.small
@@ -364,38 +374,38 @@ class CreateClusterRequest(DaraModel):
         # 
         # Default value: `slb.s2.small`.
         self.load_balancer_spec = load_balancer_spec
-        # **[Deprecated]** This parameter enables Simple Log Service for the cluster. It takes effect only for ACK Serverless clusters and must be set to `SLS`.
+        # **[Deprecated]** This parameter specifies whether to enable Simple Log Service for the cluster. It takes effect only for ACK Serverless clusters, and the value must be `SLS`.
         self.logging_type = logging_type
-        # **[Deprecated]** For cluster control plane configurations, use the `login_password` parameter under `control_plane_config` instead. For node pool configurations, use the `login_password` parameter under `scaling_group` in `nodepool` instead.
+        # **[Deprecated]** For the control plane configuration, use the login_password parameter under control_plane_config instead. For the node pool configuration, use the login_password parameter under scaling_group in nodepool instead.
         # 
-        # The SSH logon password. You must specify either this parameter or `key_pair`. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # The SSH logon password. You must specify either this parameter or key_pair. The password must be 8 to 30 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         self.login_password = login_password
         # The maintenance window of the cluster.
         self.maintenance_window = maintenance_window
-        # **[Deprecated]** For cluster control plane configurations, use the `auto_renew` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the auto_renew parameter under control_plane_config instead.
         # 
-        # Specifies whether to enable auto-renewal for master nodes. This parameter takes effect only when `master_instance_charge_type` is set to `PrePaid`. Valid values:
+        # Specifies whether to enable auto-renewal for master nodes. This parameter takes effect only when master_instance_charge_type is set to `PrePaid`. Valid values:
         # 
-        # - `true`: Enables auto-renewal.
-        # - `false`: Disables auto-renewal.
+        # - `true`: enables auto-renewal.
+        # - `false`: disables auto-renewal.
         # 
         # Default value: `true`.
         self.master_auto_renew = master_auto_renew
-        # **[Deprecated]** For cluster control plane configurations, use the `auto_renew_period` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the auto_renew_period parameter under control_plane_config instead.
         # 
-        # The auto-renewal epoch for master nodes. This parameter takes effect and is required only when the subscription billing method is selected.
+        # The auto-renewal period for master nodes. This parameter is required and takes effect only when the subscription billing method is selected.
         # 
         # Valid values: 1, 2, 3, 6, and 12.
         # 
         # Default value: 1.
         self.master_auto_renew_period = master_auto_renew_period
-        # **[Deprecated]** For cluster control plane configurations, use the `size` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the size parameter under control_plane_config instead.
         # 
         # The number of master nodes. Valid values: `3` and `5`.
         # 
         # Default value: `3`.
         self.master_count = master_count
-        # **[Deprecated]** For cluster control plane configurations, use the `instance_charge_type` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the instance_charge_type parameter under control_plane_config instead.
         # 
         # The billing method of master nodes. Valid values:
         # 
@@ -404,25 +414,25 @@ class CreateClusterRequest(DaraModel):
         # 
         # Default value: `PostPaid`.
         self.master_instance_charge_type = master_instance_charge_type
-        # **[Deprecated]** For cluster control plane configurations, use the `instance_types` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the instance_types parameter under control_plane_config instead.
         # 
         # The instance types of master nodes. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         self.master_instance_types = master_instance_types
-        # **[Deprecated]** For cluster control plane configurations, use the `unit` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the unit parameter under control_plane_config instead.
         # 
-        # The subscription period of master nodes. This parameter takes effect and is required only when `master_instance_charge_type` is set to `PrePaid`.
+        # The subscription duration of master nodes. This parameter is required and takes effect only when master_instance_charge_type is set to `PrePaid`.
         # 
         # Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
         # 
         # Default value: 1.
         self.master_period = master_period
-        # **[Deprecated]** For cluster control plane configurations, use the `period_unit` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the period_unit parameter under control_plane_config instead.
         # 
         # The subscription period unit of master nodes. This parameter is required when the billing method is `PrePaid`.
         # 
-        # Valid value: `Month`. Currently, only month is supported.
+        # Valid value: `Month`. Only monthly subscription is supported.
         self.master_period_unit = master_period_unit
-        # **[Deprecated]** For cluster control plane configurations, use the `system_disk_category` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the system_disk_category parameter under control_plane_config instead.
         # 
         # The system cloud disk category of master nodes. Valid values:
         # 
@@ -432,85 +442,84 @@ class CreateClusterRequest(DaraModel):
         # 
         # Default value: `cloud_ssd`. The default value may vary by zone.
         self.master_system_disk_category = master_system_disk_category
-        # **[Deprecated]** For cluster control plane configurations, use the `system_disk_performance_level` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the system_disk_performance_level parameter under control_plane_config instead.
         # 
-        # The performance level of the system cloud disk for master nodes. This parameter takes effect only for ESSDs. The performance level is related to the disk size. For more information, see [ESSD standard SSD](https://help.aliyun.com/document_detail/122389.html).
+        # The performance level of the system cloud disk for master nodes. This parameter takes effect only for ESSD. The performance level is related to the disk size. For more information, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
         self.master_system_disk_performance_level = master_system_disk_performance_level
-        # **[Deprecated]** For cluster control plane configurations, use the `system_disk_size` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the system_disk_size parameter under control_plane_config instead.
         # 
-        # The system cloud disk size of master nodes. Valid values: 40 to 500. Unit: GiB.
+        # The size of the system cloud disk for master nodes. Valid values: 40 to 500. Unit: GiB.
         # 
         # Default value: `120`.
         self.master_system_disk_size = master_system_disk_size
-        # **[Deprecated]** For cluster control plane configurations, use the `system_disk_snapshot_policy_id` parameter under `control_plane_config` instead.
+        # **[Deprecated]** For the control plane configuration, use the system_disk_snapshot_policy_id parameter under control_plane_config instead.
         # 
-        # The ID of the automatic snapshot policy applied to the system cloud disk of master nodes.
+        # The ID of the automatic snapshot policy applied to the system cloud disks of master nodes.
         self.master_system_disk_snapshot_policy_id = master_system_disk_snapshot_policy_id
-        # **[Deprecated]** Use the `vswitch_ids` parameter instead.
+        # **[Deprecated]** Use the vswitch_ids parameter instead.
         # 
         # The list of vSwitch IDs for master nodes. You can specify 1 to 3 vSwitches. To ensure high availability of the cluster, we recommend that you select three vSwitches in different zones.
         # 
-        # The number of specified vSwitches must be consistent with the value of `master_count` and correspond to the elements in `master_vswitch_ids` one by one.
+        # The number of specified instance types must be the same as the value of master_count and correspond to the elements in master_vswitch_ids one by one.
         self.master_vswitch_ids = master_vswitch_ids
-        # The custom name of the cluster. The name must be 1 to 63 characters in length and can contain digits, Chinese characters, English letters, and hyphens (-). It cannot start with a hyphen (-).
+        # The custom name of the cluster. The name must be 1 to 63 characters in length and can contain digits, Chinese characters, letters, and hyphens (-). It cannot start with a hyphen (-).
         # 
         # This parameter is required.
         self.name = name
-        # **[Deprecated]** Use the `snat_entry` parameter instead.
+        # **[Deprecated]** Use the snat_entry parameter instead.
         self.nat_gateway = nat_gateway
-        # The maximum number of IP addresses that can be assigned to nodes. This parameter determines the number of IP addresses by specifying the CIDR block of the network. It takes effect only for clusters of the Flannel network type.
+        # The number of node IP addresses. The number of IP addresses is determined by the CIDR block of the network. This parameter takes effect only for clusters of the Flannel network type.
         # 
         # Default value: `26`.
         self.node_cidr_mask = node_cidr_mask
-        # **[Deprecated]** For node pool configurations, use the `node_name_mode` parameter under `kubernetes_config` in `nodepool` instead.
+        # **[Deprecated]** For the node pool configuration, use the node_name_mode parameter under kubernetes_config in nodepool instead.
         self.node_name_mode = node_name_mode
-        # The node service port. Valid port range: 30000 to 65535.
+        # The node service port. Valid values: 30000 to 65535.
         # 
         # Default value: `30000-32767`.
         self.node_port_range = node_port_range
         # The list of node pools.
         self.nodepools = nodepools
-        # **[Deprecated]** For node pool configurations, use the `desired_size` parameter under `scaling_group` in `nodepool` instead. The number of worker nodes. Valid values: 0 to 100.
+        # **[Deprecated]** For node pool configurations, use the desired_size parameter under scaling_group in nodepool instead. The number of worker nodes. Valid values: 0 to 100.
         self.num_of_nodes = num_of_nodes
         # The automatic O&M policy for the cluster.
         self.operation_policy = operation_policy
-        # **[Deprecated]** For control plane node configurations, use the `image_type` parameter under `control_plane_config` instead. For node pool configurations, use the `image_type` parameter under `scaling_group` in `nodepool` instead. The operating system platform type. Valid values:
+        # **[Deprecated]** For control plane node configurations, use the image_type parameter under control_plane_config instead. For node pool configurations, use the image_type parameter under scaling_group in nodepool instead. The operating system platform type. Valid values:
         # - Windows
         # - Linux
-        # Default value: `Linux`.
+        # Default value: Linux.
         self.os_type = os_type
-        # **[Deprecated]** The subscription duration. This parameter takes effect and is required only when `charge_type` is set to `PrePaid`. Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1. This field was changed on October 15, 2024. For more information, see [Announcement on parameter behavior changes of the CreateCluster API operation](https://help.aliyun.com/document_detail/2849194.html).
+        # **[Deprecated]** The subscription duration. This parameter takes effect and is required only when charge_type is set to PrePaid. Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1. This field was changed on October 15, 2024. For more information, see [Announcement on parameter behavior changes of the CreateCluster API operation](https://help.aliyun.com/document_detail/2849194.html).
         self.period = period
-        # **[Deprecated]** The billing cycle. This parameter is required when the billing method is `PrePaid`. Valid value: `Month`. Currently, only monthly billing is supported. This field was changed on October 15, 2024. For more information, see [Announcement on parameter behavior changes of the CreateCluster API operation](https://help.aliyun.com/document_detail/2849194.html).
+        # **[Deprecated]** The billing cycle. This parameter is required when the billing method is PrePaid. Valid values: Month. Currently, only monthly billing is supported. This field was changed on October 15, 2024. For more information, see [Announcement on parameter behavior changes of the CreateCluster API operation](https://help.aliyun.com/document_detail/2849194.html).
         self.period_unit = period_unit
-        # **[Deprecated]** For node pool configurations, use the `platform` parameter under `scaling_group` in `nodepool` instead. The operating system distribution. Valid values:
+        # **[Deprecated]** For node pool configurations, use the platform parameter under scaling_group in nodepool instead. The operating system distribution. Valid values:
         # - CentOS
         # - AliyunLinux
         # - QbootAliyunLinux
         # - Qboot
         # - Windows
         # - WindowsCore
-        # Default value: `CentOS`.
+        # Default value: CentOS.
         self.platform = platform
-        # **[Deprecated]** When the Terway network plug-in is selected, you must specify the vSwitches used to assign IP addresses to pods. Each pod vSwitch corresponds to a worker node vSwitch, and they must be in the same zone.
-        # > We recommend that the subnet mask length of the pod vSwitch does not exceed 19, and the maximum subnet mask length does not exceed 25. Otherwise, the number of pod IP addresses that can be allocated in the cluster network is very limited, which affects the normal use of the cluster.
+        # **[Deprecated]** When the Terway network plug-in is used, you must specify vSwitches to assign IP addresses to pods. Each pod vSwitch corresponds to a worker node vSwitch. The pod vSwitch and the worker node vSwitch must be in the same zone.
+        # > We recommend that the subnet mask of the pod vSwitch CIDR block be no larger than /19, and /25 at most. Otherwise, the number of pod IP addresses that can be allocated in the cluster network is very limited, which affects the normal use of the cluster.
         self.pod_vswitch_ids = pod_vswitch_ids
-        # The cluster subtype when `cluster_type` is set to `ManagedKubernetes`, which indicates an ACK managed cluster. Valid values:
-        # - `Default`: ACK managed clusters, including ACK Pro and ACK ACK clusters.
-        # - `Edge`: ACK Edge clusters, including ACK Edge Pro and ACK Edge ACK clusters.
-        # - `Serverless`: ACK Serverless clusters, including ACK Serverless Pro and ACK Serverless ACK clusters.
-        # - `Lingjun`: ACK Lingjun clusters, which provide the Pro edition.
+        # When cluster_type is set to ManagedKubernetes, which indicates an ACK managed cluster, you can further specify the cluster subtype. Valid values:
+        # - Default: ACK managed clusters, including ACK Pro and ACK ACK clusters.
+        # - Edge: ACK Edge clusters, including ACK Edge Pro and ACK Edge ACK clusters.
+        # - Serverless: ACK Serverless clusters, including ACK Serverless Pro and ACK Serverless ACK clusters.
+        # - Lingjun: ACK Lingjun clusters, which are available only in Pro Edition.
         self.profile = profile
         # The kube-proxy mode. Valid values:
-        # - `iptables`: A mature and stable kube-proxy mode. Service discovery and load balancing for Kubernetes Services are configured by using iptables rules. However, the performance is average and greatly affected by the scale. This mode is suitable for clusters with a small number of Services.
-        # - `ipvs`: A high-performance kube-proxy mode. Service discovery and load balancing for Kubernetes Services are configured by using the Linux IPVS module. This mode is suitable for clusters with a large number of Services and scenarios that require high-performance load balancing.
-        # - `nftables`: A next-generation kube-proxy mode. Service discovery and load balancing are implemented based on Linux nftables, which is a modern alternative to iptables. Compared with iptables, nftables provides better network performance, rule update efficiency, and performance in large-scale Service scenarios.
-        # This mode is supported only in clusters of Kubernetes 1.35 and later. The Kubernetes community deprecated IPVS in version 1.35. We recommend that you use nftables for new clusters to obtain long-term community support.
-        # Default value: `ipvs`.
+        # - iptables: A mature and stable kube-proxy mode. Service discovery and load balancing for Kubernetes Services are configured by using iptables rules. However, the performance is average and heavily affected by scale. This mode is suitable for clusters with a small number of Services.
+        # - ipvs: A high-performance kube-proxy mode. Service discovery and load balancing for Kubernetes Services are configured by using the Linux IPVS module. This mode is suitable for clusters with a large number of Services and scenarios that require high-performance load balancing.
+        # - nftables: A next-generation kube-proxy mode. Service discovery and load balancing are implemented based on Linux nftables. It is a modern alternative to iptables. Compared with iptables, nftables performs better in network performance, rule update efficiency, and large-scale Service scenarios. This mode is supported only in clusters of Kubernetes 1.35 and later. The Kubernetes community deprecated IPVS starting from version 1.35. We recommend that you use nftables for new clusters to obtain long-term community support.
+        # Default value: ipvs.
         self.proxy_mode = proxy_mode
-        # **[Deprecated]** For node pool configurations, use the `rds_instances` parameter under `scaling_group` in `nodepool` instead. The list of ApsaraDB RDS instances to which you want to add the cluster to the whitelist. We recommend that you add the pod CIDR block and node CIDR block to the RDS whitelist. If you specify RDS instances here, nodes may fail to be created because the instances are not in the running state.
+        # **[Deprecated]** For node pool configurations, use the rds_instances parameter under scaling_group in nodepool instead. The list of ApsaraDB RDS instances to which you want to add the cluster nodes to the whitelist. We recommend that you add the pod CIDR block and node CIDR block to the whitelist of the ApsaraDB RDS instances. If the ApsaraDB RDS instances are not in the running state, the nodes cannot be scaled out.
         self.rds_instances = rds_instances
-        # The ID of the region where the cluster is deployed. For details, see [Regions supported by container service](https://help.aliyun.com/document_detail/216938.html).
+        # The ID of the region where the cluster is deployed. For more information, see [Regions supported by Container Service for Kubernetes](https://help.aliyun.com/document_detail/216938.html).
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -518,55 +527,55 @@ class CreateClusterRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The configuration of the RAM Roles for Service Accounts (RRSA) feature.
         self.rrsa_config = rrsa_config
-        # The container runtime used in the cluster. Valid values: containerd, sandboxed container, and Docker.
+        # The container runtime of the cluster. Valid values: containerd, sandboxed container, and Docker.
         # > Kubernetes 1.24 and later no longer support Docker as a built-in container runtime.
-        # For more information, see [Comparison among Docker, containerd, and sandboxed container runtimes](https://help.aliyun.com/document_detail/160313.html).
+        # For more information, see [Comparison among Docker, containerd, and sandboxed container](https://help.aliyun.com/document_detail/160313.html).
         self.runtime = runtime
-        # The ID of the security group. Required when you create a cluster by using an existing security group. This parameter and is_enterprise_security_group are mutually exclusive. Cluster nodes are automatically added to this security group.
+        # The ID of the security group. This parameter is required when you create a cluster by using an existing security group. You must specify either this parameter or is_enterprise_security_group. Cluster nodes are automatically added to this security group.
         self.security_group_id = security_group_id
-        # **[Deprecated]** For control plane configurations, use the `security_hardening_os` parameter under `control_plane_config` instead. For node pool configurations, use the `security_hardening_os` parameter under `scaling_group` in `nodepool` instead. Specifies whether to enable Alibaba Cloud OS security hardening. Valid values:
-        # - `true`: Enabled.
-        # - `false`: Disabled.
-        # Default value: `false`.
+        # **[Deprecated]** For control plane configurations, use the security_hardening_os parameter under control_plane_config instead. For node pool configurations, use the security_hardening_os parameter under scaling_group in nodepool instead. Specifies whether to enable Alibaba Cloud OS security hardening. Valid values:
+        # - true: Enables Alibaba Cloud OS security hardening.
+        # - false: Disables Alibaba Cloud OS security hardening.
+        # Default value: false.
         self.security_hardening_os = security_hardening_os
-        # A ServiceAccount is an access credential for communication between pods and the cluster API server. The `service-account-issuer` is the issuer identity in the `serviceaccount token`, which is the `iss` field in the `token payload`. For more information about `ServiceAccount`, see [Deploy service account token volume projection](https://help.aliyun.com/document_detail/160384.html).
+        # A ServiceAccount is an access credential for communication between pods and the cluster API server. The service-account-issuer is the issuer identity in the serviceaccount token, which is the iss field in the token payload. For more information about ServiceAccount, see [Deploy ServiceAccount token volume projection](https://help.aliyun.com/document_detail/160384.html).
         self.service_account_issuer = service_account_issuer
         # The CIDR block of the Service network. Valid values: 10.0.0.0/16 to 10.0.0.0/24, 172.16.0.0/16 to 172.31.0.0/24, and 192.168.0.0/16 to 192.168.0.0/24. The CIDR block cannot overlap with the VPC CIDR block 10.1.0.0/21 or the CIDR blocks used by existing Kubernetes clusters in the VPC. The CIDR block cannot be modified after the cluster is created. Default value: 172.19.0.0/20.
         self.service_cidr = service_cidr
-        # **[Deprecated]** The service discovery type used in the cluster. This parameter is used to specify the service discovery method in an `ACK Serverless` cluster. Valid values:
-        # - `CoreDNS`: Uses the standard Kubernetes service discovery component CoreDNS. You must deploy a group of containers in the cluster for DNS resolution. By default, two ECI instances with 0.25 vCPUs and 512 MiB of memory are used.
-        # - `PrivateZone`: Uses Alibaba Cloud PrivateZone to provide service discovery capabilities. You must activate the PrivateZone service.
+        # **[Deprecated]** The service discovery type in the cluster. This parameter is used to specify the service discovery method in ACK Serverless clusters. Valid values:
+        # - CoreDNS: Uses CoreDNS, a native standard service discovery component of Kubernetes. You must deploy a group of containers in the cluster for DNS resolution. By default, two Elastic Container Instance (ECI) instances with 0.25 vCPUs and 512 MiB of memory are used.
+        # - PrivateZone: Uses Alibaba Cloud PrivateZone to provide service discovery capabilities. You must enable the PrivateZone service.
         # Default value: None (disabled).
         self.service_discovery_types = service_discovery_types
         # Specifies whether to configure SNAT for the VPC. Valid values:
-        # - `true`: Enables automatic creation of a NAT gateway and configures SNAT rules. Settings: `true` is required if nodes and applications in the cluster need to access the Internet.
+        # - `true`: Automatically creates a NAT gateway and configures SNAT rules. Set this parameter to `true` if nodes and applications in the cluster need to access the Internet.
         # - `false`: Does not create a NAT gateway or configure SNAT rules. Nodes and applications in the cluster cannot access the Internet.
-        # > If you do not enable this feature when you create the cluster, you can [manually enable it](https://help.aliyun.com/document_detail/178480.html) later if your business needs to access the Internet.
+        # > If this feature is not enabled when you create the cluster, you can [manually enable it](https://help.aliyun.com/document_detail/178480.html) later if your business needs to access the Internet.
         # Default value: `false`.
         self.snat_entry = snat_entry
         # **[Deprecated]** For control plane node configurations, use the `soc_enabled` parameter under `control_plane_config` instead. For node pool configurations, use the `soc_enabled` parameter under `scaling_group` in `nodepool` instead. Specifies whether to enable mlps 2.0 security hardening. For more information, see [ACK mlps 2.0 security hardening instructions](https://help.aliyun.com/document_detail/196148.html). Valid values:
-        # - `true`: Enabled.
-        # - `false`: Disabled.
+        # - `true`: Enables mlps 2.0 security hardening.
+        # - `false`: Disables mlps 2.0 security hardening.
         # Default value: `false`.
         self.soc_enabled = soc_enabled
         # Specifies whether to enable public SSH access. This parameter is used to log on to the master nodes of an ACK dedicated cluster. This parameter does not take effect in managed clusters. Valid values:
-        # - `true`: Enabled.
-        # - `false`: Disabled.
-        # Default value: `false`.
+        # - true: Enabled.
+        # - false: Disabled.
+        # Default value: false.
         self.ssh_flags = ssh_flags
-        # The support policy for the cluster version. The value is case-sensitive. Valid values:
+        # The cluster version support policy. The value is case-sensitive. Valid values:
         # - Standard: Standard support.
         # - Extended: Extended support. After the standard support period ends, the cluster enters the extended support period and continues to receive CVE patch versions.
-        # Only ACK Pro managed clusters (where `cluster_spec` is set to `ack.pro.*` and `profile` is set to `Default`) support the `Extended` value. Specifying `Extended` for ACK Basic, ACS, ACK Edge managed, and ACK dedicated clusters will be rejected. Patch versions in the extended support period are also applicable only to ACK Pro managed clusters. Specifying such versions for other cluster types will be rejected. If this parameter is not specified, the default value is determined by the server configuration.
+        # Only ACK Pro managed clusters (where cluster_spec is set to ack.pro.* and profile is set to Default) support the Extended value. Specifying Extended for ACK Basic, ACS, ACK Edge managed, and ACK dedicated clusters will be rejected. Patch versions in the extended support period are also applicable only to ACK Pro managed clusters. Specifying such versions to create clusters of other types will be rejected. If this parameter is not specified, the default value is determined by the server configuration.
         self.support_policy = support_policy
         # The node tags. Tag definition rules:
         # - A tag is a case-sensitive key-value pair. You can configure up to 20 tags.
         # - Tag keys must be unique and can be up to 64 characters in length. Tag values can be empty and can be up to 128 characters in length. Tag keys and values cannot start with "aliyun", "acs:", "https://", or "http://". For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
         self.tags = tags
-        # **[Deprecated]** For node pool configurations, use the `taints` parameter under `kubernetes_config` in `nodepool` instead. The taints of the nodes. Taints and tolerations work together to prevent pods from being scheduled to inappropriate nodes. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        # **[Deprecated]** For node pool configurations, use the taints parameter under kubernetes_config in nodepool instead. The node taints. Taints and tolerations work together to prevent pods from being scheduled onto inappropriate nodes. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
         # [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/)
         self.taints = taints
-        # **[Deprecated]** By default, no rollback is performed when cluster creation fails. You must manually clean up the failed cluster. The timeout period for cluster creation, in minutes. Default value: `60`.
+        # **[Deprecated]** By default, no rollback is performed when cluster creation fails. You must manually clean up the failed cluster. The timeout period for cluster creation, in minutes. Default value: 60.
         self.timeout_mins = timeout_mins
         # The time zone used by the cluster. For more information, see [Supported time zones](https://help.aliyun.com/document_detail/354879.html).
         self.timezone = timezone
@@ -574,66 +583,48 @@ class CreateClusterRequest(DaraModel):
         self.user_ca = user_ca
         # **[Deprecated]** The custom node data.
         self.user_data = user_data
-        # The ID of the VPC used by the cluster. This parameter is required when you create the cluster.
+        # The ID of the VPC used by the cluster. This parameter is required when you do not automatically create a VPC.
         self.vpcid = vpcid
-        # The vSwitches where the cluster nodes are deployed. This parameter is required when you create a managed cluster with zero nodes.
+        # The vSwitches where the cluster nodes reside. This parameter is required when you create a managed cluster with zero nodes.
         self.vswitch_ids = vswitch_ids
-        # **[Deprecated]** For node pool configurations, use the `auto_renew` parameter under `scaling_group` in `nodepool` instead. Specifies whether to enable auto-renewal for worker nodes. This parameter takes effect only when `worker_instance_charge_type` is set to `PrePaid`. Valid values:
-        # - `true`: Enabled.
-        # - `false`: Disabled.
-        # Default value: `true`.
+        # **[Deprecated]** For node pool configurations, use the auto_renew parameter under scaling_group in nodepool instead. Specifies whether to enable auto-renewal for worker nodes. This parameter takes effect only when worker_instance_charge_type is set to PrePaid. Valid values:
+        # - true: Enables auto-renewal.
+        # - false: Disables auto-renewal.
+        # Default value: true.
         self.worker_auto_renew = worker_auto_renew
-        # **[Deprecated]** For node pool configurations, use the `auto_renew_period` parameter under `scaling_group` in `nodepool` instead.
-        # 
-        # The auto-renewal epoch for worker nodes. This parameter takes effect and is required only when the subscription billing method is selected.
-        # 
-        # Valid values: 1, 2, 3, 6, and 12.
+        # **[Deprecated]** For node pool configurations, use the `auto_renew_period` parameter under `scaling_group` in `nodepool` instead. The auto-renewal epoch for worker nodes. This parameter takes effect and is required only when the subscription billing method is selected. Valid values: 1, 2, 3, 6, and 12.
         self.worker_auto_renew_period = worker_auto_renew_period
-        # **[Deprecated]** For node pool configurations, use the `data_disks` parameter under `scaling_group` in `nodepool` instead.
-        # 
-        # The combination of configurations such as the type and size of the data cloud disks for worker nodes.
+        # **[Deprecated]** For node pool configurations, use the `data_disks` parameter under `scaling_group` in `nodepool` instead. The combination of configurations such as the type and size of data cloud disks for worker nodes.
         self.worker_data_disks = worker_data_disks
-        # **[Deprecated]** For node pool configurations, use the `instance_charge_type` parameter under `scaling_group` in `nodepool` instead.
-        # 
-        # The billing method for worker nodes. Valid values:
+        # **[Deprecated]** For node pool configurations, use the `instance_charge_type` parameter under `scaling_group` in `nodepool` instead. The billing method for worker nodes. Valid values:
         # 
         # - `PrePaid`: Subscription.
         # - `PostPaid`: Pay-as-you-go.
         # 
-        # Default value: `PostPaid`.
+        # Default value: pay-as-you-go.
         self.worker_instance_charge_type = worker_instance_charge_type
-        # **[Deprecated]** For node pool configurations, use the `instance_types` parameter under `scaling_group` in `nodepool` instead.
-        # 
-        # The instance configurations for worker nodes.
+        # **[Deprecated]** For node pool configurations, use the `instance_types` parameter under `scaling_group` in `nodepool` instead. The instance configurations for worker nodes.
         self.worker_instance_types = worker_instance_types
-        # **[Deprecated]** For node pool configurations, use the `period` parameter under `scaling_group` in `nodepool` instead.
-        # 
-        # The subscription duration for worker nodes. This parameter takes effect and is required only when `worker_instance_charge_type` is set to `PrePaid`.
+        # **[Deprecated]** For node pool configurations, use the `period` parameter under `scaling_group` in `nodepool` instead. The subscription duration for worker nodes. This parameter is required and takes effect only when `worker_instance_charge_type` is set to `PrePaid`.
         # 
         # Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60.
         # 
         # Default value: 1.
         self.worker_period = worker_period
-        # **[Deprecated]** For node pool configurations, use the `period_unit` parameter under `scaling_group` in `nodepool` instead.
+        # **[Deprecated]** For node pool configurations, use the `period_unit` parameter under `scaling_group` in `nodepool` instead. The billing cycle for worker nodes. This parameter is required when the billing method is `PrePaid`.
         # 
-        # The subscription period unit for worker nodes. This parameter is required when the billing method is set to `PrePaid`.
-        # 
-        # Valid value: `Month`. Currently, only month is supported.
+        # Valid value: `Month`. Only monthly subscription is supported.
         self.worker_period_unit = worker_period_unit
-        # **[Deprecated]** For node pool configurations, use the `system_disk_category` parameter under `scaling_group` in `nodepool` instead.
-        # 
-        # The type of the system cloud disk for worker nodes. For more information, see [Block Storage overview](https://help.aliyun.com/document_detail/63136.html).
+        # **[Deprecated]** For node pool configurations, use the `system_disk_category` parameter under `scaling_group` in `nodepool` instead. The type of the system cloud disk for worker nodes. For more information, see [Block Storage overview](https://help.aliyun.com/document_detail/63136.html).
         # 
         # Valid values:
         # 
-        # - `cloud_efficiency`: Ultra cloud disk.
+        # - `cloud_efficiency`: Ultra disk.
         # - `cloud_ssd`: Standard SSD.
         # 
         # Default value: `cloud_ssd`.
         self.worker_system_disk_category = worker_system_disk_category
-        # **[Deprecated]** For node pool configurations, use the `system_disk_performance_level` parameter under `scaling_group` in `nodepool` instead.
-        # 
-        # When the system cloud disk is an ESSD, you can configure the performance level (PL). For more information, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
+        # **[Deprecated]** For node pool configurations, use the `system_disk_performance_level` parameter under `scaling_group` in `nodepool` instead. When the system cloud disk is a standard SSD, you can configure the performance level (PL) of the standard SSD. For more information, see [standard SSDs](https://help.aliyun.com/document_detail/122389.html).
         # 
         # Valid values:
         # 
@@ -642,33 +633,25 @@ class CreateClusterRequest(DaraModel):
         # - PL2
         # - PL3
         self.worker_system_disk_performance_level = worker_system_disk_performance_level
-        # **[Deprecated]** For node pool configurations, use the `system_disk_size` parameter under `scaling_group` in `nodepool` instead.
-        # 
-        # The size of the system cloud disk for worker nodes. Unit: GiB.
+        # **[Deprecated]** For node pool configurations, use the `system_disk_size` parameter under `scaling_group` in `nodepool` instead. The size of the system cloud disk for worker nodes. Unit: GiB.
         # 
         # Valid values: 40 to 500.
         # 
-        # The value of this parameter must be greater than or equal to the maximum of 40 and the image size.
+        # The value of this parameter must be greater than or equal to max{40, ImageSize}.
         # 
         # Default value: `120`.
         self.worker_system_disk_size = worker_system_disk_size
-        # **[Deprecated]** For node pool configurations, use the `system_disk_snapshot_policy_id` parameter under `scaling_group` in `nodepool` instead.
-        # 
-        # The ID of the automatic snapshot policy applied to the system cloud disk of worker nodes.
+        # **[Deprecated]** For node pool configurations, use the `system_disk_snapshot_policy_id` parameter under `scaling_group` in `nodepool` instead. The ID of the automatic snapshot policy applied to the system cloud disk of worker nodes.
         self.worker_system_disk_snapshot_policy_id = worker_system_disk_snapshot_policy_id
-        # **[Deprecated]** For node pool configurations, use the `vswitch_ids` parameter under `scaling_group` in `nodepool` instead.
-        # 
-        # The list of vSwitches used by cluster nodes. Each node corresponds to one vSwitch.
+        # **[Deprecated]** For node pool configurations, use the `vswitch_ids` parameter under `scaling_group` in `nodepool` instead. The list of vSwitches used by cluster nodes. Each node corresponds to one vSwitch.
         # 
         # When you create a managed cluster with zero nodes, the `worker_vswitch_ids` parameter is not required, but you must specify `vswitch_ids`.
         self.worker_vswitch_ids = worker_vswitch_ids
-        # **[Deprecated]** Use the `zone_ids` parameter instead.
+        # **[Deprecated]** Use the `zone_ids` parameter instead. The ID of the zone in the region where the cluster resides. This parameter is specific to managed ACK clusters.
         # 
-        # The zone ID of the region where the cluster resides. This parameter is specific to managed ACK clusters.
-        # 
-        # When you create a managed ACK cluster, if `vpc_id` and `vswitch_ids` are not specified, you must specify `zone_id` for the cluster to automatically create a VPC and network resources in this zone. If `vpc_id` and `vswitch_ids` are specified, this parameter does not take effect.
+        # When you create a managed ACK cluster, if `vpc_id` and `vswitch_ids` are not specified, you must specify `zone_id` to automatically create a VPC and network resources in the active zone. If `vpc_id` and `vswitch_ids` are specified, this parameter does not take effect.
         self.zone_id = zone_id
-        # The zone IDs of the region where the cluster resides. This parameter is specific to managed ACK clusters.
+        # The IDs of multiple zones in the region where the cluster resides. This parameter is specific to managed ACK clusters.
         self.zone_ids = zone_ids
 
     def validate(self):
@@ -1402,7 +1385,7 @@ class CreateClusterRequestWorkerDataDisks(DaraModel):
         # 
         # Default value: `false`.
         self.encrypted = encrypted
-        # The performance level of the data cloud disk. This parameter takes effect only for [ESSD](https://help.aliyun.com/document_detail/122389.html).
+        # The performance level of the data cloud disk for the node. This parameter takes effect only for [standard SSDs](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
         # The size of the data cloud disk. Valid values: 40 to 32767. Unit: GiB.
         # 
@@ -1482,7 +1465,7 @@ class CreateClusterRequestOperationPolicy(DaraModel):
         self,
         cluster_auto_upgrade: main_models.CreateClusterRequestOperationPolicyClusterAutoUpgrade = None,
     ):
-        # The automatic cluster upgrade configuration.
+        # The automatic cluster upgrade.
         self.cluster_auto_upgrade = cluster_auto_upgrade
 
     def validate(self):
@@ -1555,9 +1538,9 @@ class CreateClusterRequestControlPlaneEndpointsConfig(DaraModel):
         internal_dns_config: main_models.CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig = None,
         load_balancers_config: List[main_models.CreateClusterRequestControlPlaneEndpointsConfigLoadBalancersConfig] = None,
     ):
-        # The internal DNS configuration of the cluster, which applies to ACK managed clusters. The internal domain name is used by node-side system components such as kubelet and kube-proxy to access the API server. If internal domain name access is not enabled, node-side system components access the API server by using the IP address of the CLB instance.
+        # The internal DNS configuration for the cluster. This parameter applies to ACK managed clusters. The internal domain name of the cluster is used by node-side system components such as kubelet and kube-proxy to access the API server. If internal domain name access is not enabled, node-side system components access the API server by using the IP address of the CLB instance.
         self.internal_dns_config = internal_dns_config
-        # The connection configuration of the cluster. If you specify this parameter, the endpoint_public_access and load_balancer_id parameters do not take effect. ACK supports only automatic creation of NLB instances. To specify a CLB or NLB instance, use load_balancers_config to specify the corresponding instance ID.
+        # The endpoint configuration of the cluster. If you specify this parameter, the endpoint_public_access and load_balancer_id parameters do not take effect. ACK supports automatic creation of NLB instances. To use an existing NLB instance, use the load_balancers_config parameter to specify the instance ID.
         self.load_balancers_config = load_balancers_config
 
     def validate(self):
@@ -1639,7 +1622,7 @@ class CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig(DaraModel
         self,
         bind_vpcs: List[str] = None,
     ):
-        # The VPCs where the internal DNS records of the cluster take effect.
+        # The VPCs in which the internal DNS records of the cluster take effect.
         self.bind_vpcs = bind_vpcs
 
     def validate(self):
@@ -1697,9 +1680,7 @@ class CreateClusterRequestControlPlaneConfig(DaraModel):
         # 
         # Default value: true.
         self.auto_renew = auto_renew
-        # The auto-renewal period for control plane nodes. Valid values: 1, 2, 3, 6, and 12. Unit: months.
-        # 
-        # Default value: 1.
+        # The auto-renewal period for control plane nodes. Valid values: 1, 2, 3, 6, and 12. Unit: months. Default value: 1.
         self.auto_renew_period = auto_renew_period
         # The billing method for control plane nodes. Valid values:
         # - PrePaid: subscription.
@@ -1715,7 +1696,7 @@ class CreateClusterRequestControlPlaneConfig(DaraModel):
         self.cloud_monitor_flags = cloud_monitor_flags
         # The CPU management policy for nodes. Valid values:
         # - static: allows you to enhance CPU affinity and exclusivity for pods with specific resource characteristics on the node.
-        # - none: uses the default CPU affinity policy.
+        # - none: enables the default CPU affinity scheme.
         # 
         # Default value: none.
         self.cpu_policy = cpu_policy
@@ -1725,7 +1706,7 @@ class CreateClusterRequestControlPlaneConfig(DaraModel):
         self.image_id = image_id
         # The type of the operating system image.
         self.image_type = image_type
-        # The instance metadata access configuration for ECS instances. This parameter is available only to users in the whitelist. To use this parameter, submit a ticket.
+        # The instance metadata access configuration for ECS instances. This parameter is available only to whitelisted accounts. To use this parameter, submit a ticket.
         self.instance_metadata_options = instance_metadata_options
         # The instance types of the nodes.
         self.instance_types = instance_types
@@ -1733,17 +1714,14 @@ class CreateClusterRequestControlPlaneConfig(DaraModel):
         self.key_pair = key_pair
         # The SSH logon password. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. You must specify this parameter or the key_pair parameter.
         self.login_password = login_password
-        # **[Deprecated]** The service port range of the node.
+        # **[Deprecated]** The service port range for nodes.
         self.node_port_range = node_port_range
-        # The subscription period for control plane nodes. This parameter is required and takes effect only when the billing method is set to PrePaid. Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Unit: months.
-        # 
-        # Default value: 1.
+        # The subscription period for control plane nodes. This parameter is required and takes effect only when the billing method is set to PrePaid. Valid values: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Unit: months. Default value: 1.
         self.period = period
-        # The unit of the subscription period for control plane nodes. This parameter is required and takes effect only when the billing method is set to PrePaid. Valid value: Month. Currently, only months are supported.
+        # The unit of the subscription period for control plane nodes. This parameter is required and takes effect only when the billing method is set to PrePaid. Valid value: Month. Only months are supported.
         self.period_unit = period_unit
-        # **[Deprecated]** The name of the runtime for control plane nodes. Valid value:
-        # 
-        # containerd: the containerd runtime, which supports all cluster versions.
+        # **[Deprecated]** The name of the runtime for control plane nodes. Valid values:
+        # - containerd: the containerd runtime, which supports all cluster versions.
         self.runtime = runtime
         # Specifies whether to enable security hardening for Alibaba Cloud OS. Valid values:
         # - true: enables security hardening for Alibaba Cloud OS.
@@ -1763,26 +1741,22 @@ class CreateClusterRequestControlPlaneConfig(DaraModel):
         # - true: enables the feature.
         # - false: disables the feature.
         # 
-        # This parameter is supported only when system_disk_category is set to cloud_auto.
+        # This parameter is supported only when the system_disk_category parameter is set to cloud_auto.
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
         # The type of the system cloud disk for the node. Valid values:
         # - cloud_efficiency: ultra disk.
         # - cloud_ssd: standard SSD.
         # - cloud_essd: ESSD.
-        # - cloud_auto: ESSD AutoPL cloud disk.
-        # - cloud_essd_entry: ESSD Entry cloud disk.
+        # - cloud_auto: ESSD AutoPL disk.
+        # - cloud_essd_entry: ESSD Entry disk.
         # 
         # Default value: cloud_ssd. The default value may vary by zone.
         self.system_disk_category = system_disk_category
-        # The performance level of the system cloud disk for the node. This parameter takes effect only for ESSDs. The performance level varies based on the disk size. For more information, see [ESSD (standard SSD)](https://help.aliyun.com/document_detail/122389.html).
+        # The performance level of the system cloud disk for the node. This parameter takes effect only for ESSDs. The performance level is related to the disk size. For more information, see [standard SSD](https://help.aliyun.com/document_detail/122389.html).
         self.system_disk_performance_level = system_disk_performance_level
-        # The provisioned read and write IOPS for the system cloud disk of the node. Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50,000}. 
-        # 
-        # This parameter is supported only when system_disk_category is set to cloud_auto.
+        # The provisioned read and write IOPS for the system cloud disk of the node. Valid values: 0 to min{50,000, 1000 × capacity - baseline performance}. Baseline performance = min{1,800 + 50 × capacity, 50000}. This parameter is supported only when the system_disk_category parameter is set to cloud_auto.
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
-        # The size of the system cloud disk for the node. Valid values: 40 to 500. Unit: GiB.
-        # 
-        # Default value: 120.
+        # The size of the system cloud disk for the node. Valid values: 40 to 500. Unit: GiB. Default value: 120.
         self.system_disk_size = system_disk_size
         # The ID of the automatic snapshot policy for the node.
         self.system_disk_snapshot_policy_id = system_disk_snapshot_policy_id
@@ -1958,7 +1932,7 @@ class CreateClusterRequestAutoMode(DaraModel):
         self,
         enable: bool = None,
     ):
-        # Specifies whether to enable the intelligent managed mode. Valid values:
+        # Specifies whether to enable ACK Auto Mode.
         # 
         # - true: Enabled.
         # 
@@ -1991,7 +1965,7 @@ class CreateClusterRequestAuditLogConfig(DaraModel):
         enabled: bool = None,
         sls_project_name: str = None,
     ):
-        # Specifies whether to enable the cluster audit log feature. Valid values:
+        # Specifies whether to enable the cluster audit log feature.
         # 
         # - true: Enabled.
         # 

@@ -13,7 +13,7 @@ class DescribeClustersRequest(DaraModel):
     ):
         # The cluster type.
         self.cluster_type = cluster_type
-        # The cluster name used for fuzzy matching.
+        # Performs a fuzzy match based on the cluster name.
         self.name = name
         # The ID of the resource group used to filter clusters.
         self.resource_group_id = resource_group_id

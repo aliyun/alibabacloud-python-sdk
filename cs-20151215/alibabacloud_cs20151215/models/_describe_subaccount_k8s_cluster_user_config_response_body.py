@@ -14,7 +14,7 @@ class DescribeSubaccountK8sClusterUserConfigResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.config = config
-        # The expiration time of the KubeConfig. Format: UTC time in RFC 3339 format.
+        # The expiration time of the KubeConfig. The time is displayed in UTC and follows the RFC 3339 standard.
         self.expiration = expiration
 
     def validate(self):

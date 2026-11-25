@@ -18,30 +18,26 @@ class DescribeClusterNodesRequest(DaraModel):
     ):
         # The list of node instance IDs. Separate multiple values with commas (,).
         self.instance_ids = instance_ids
-        # The list of node IP addresses used for filtering. Separate multiple values with commas (,).
+        # The list of node IP addresses. Separate multiple values with commas (,). This parameter is used to filter nodes by IP address.
         self.node_ips = node_ips
-        # The node labels used for filtering. Specify the labels as key=value pairs separated by commas (,). Multiple labels are evaluated with the AND operator. Only nodes that match all specified labels are returned.
+        # The labels used to filter nodes. Specify the labels as key=value pairs separated by commas (,). Multiple labels are evaluated by using the logical AND operator. Only nodes that match all specified labels are returned.
         self.node_labels = node_labels
-        # The list of node names used for filtering. Separate multiple values with commas (,).
+        # The list of node names. Separate multiple values with commas (,). This parameter is used to filter nodes by name.
         self.node_names = node_names
         # The node pool ID.
         self.nodepool_id = nodepool_id
         # The page number of the current query.
-        # 
         # Default value: 1.
         self.page_number = page_number
-        # The maximum number of records to return per page. Valid values: 1 to 100.
-        # 
+        # The maximum number of entries to return on each page. Valid values: 1 to 100.
         # Default value: 10.
         self.page_size = page_size
-        # The running states of the cluster nodes used for filtering. Valid values:
-        # 
-        # - `all`: does not filter nodes by running state and queries nodes in all states.
-        # - `running`: the cluster nodes that are running.
-        # - `removing`: the cluster nodes that are being removed.
-        # - `initial`: the cluster nodes that are being initialized.
-        # - `failed`: the cluster nodes that failed to be created.
-        # 
+        # The state of the cluster nodes. This parameter is used to filter nodes by their running state. Valid values:
+        # - `all`: all nodes.
+        # - `running`: running nodes.
+        # - `removing`: nodes that are being removed.
+        # - `initial`: nodes that are being initialized.
+        # - `failed`: nodes that failed to be created.
         # Default value: `all`.
         self.state = state
 

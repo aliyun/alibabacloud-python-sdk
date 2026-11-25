@@ -17,9 +17,9 @@ class CreateAutoRepairPolicyRequest(DaraModel):
     ):
         # The name of the self-healing rule.
         self.name = name
-        # The resource subtype that can be associated with the self-healing rule.
+        # The subtype of resource that the self-healing rule can be associated with.
         self.resource_sub_type = resource_sub_type
-        # The resource type that can be associated with the self-healing rule.
+        # The type of resource that the self-healing rule can be associated with.
         self.resource_type = resource_type
         # The list of self-healing subrules.
         self.rules = rules
@@ -76,7 +76,7 @@ class CreateAutoRepairPolicyRequestRules(DaraModel):
         incidents: List[main_models.CreateAutoRepairPolicyRequestRulesIncidents] = None,
         repair_procedure: List[main_models.CreateAutoRepairPolicyRequestRulesRepairProcedure] = None,
     ):
-        # The list of identified incidents.
+        # The list of identified faults.
         self.incidents = incidents
         # The repair procedure.
         self.repair_procedure = repair_procedure
@@ -133,7 +133,7 @@ class CreateAutoRepairPolicyRequestRulesRepairProcedure(DaraModel):
     ):
         # The configuration parameters for the repair procedure.
         self.config = config
-        # The configuration for the manual intervention procedure.
+        # The manual intervention configuration for the procedure.
         self.intervention = intervention
         # The name of the procedure.
         self.name = name
@@ -180,7 +180,7 @@ class CreateAutoRepairPolicyRequestRulesRepairProcedureIntervention(DaraModel):
         inquiring_label: main_models.CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel = None,
         type: str = None,
     ):
-        # The label configuration for authorization confirmation. Adding the following labels to the node indicates that you authorize ACK to execute the operations in this stage. After completing the operations in this stage, ACK automatically removes the authorization inquiry and confirmation labels corresponding to this stage. If you do not add the following labels in time to grant authorization, ACK will not execute the actions in this stage and subsequent stages, and the node may remain in a damaged state.
+        # The label configuration for authorization confirmation. Adding the following labels to the node indicates that you authorize ACK to execute the operations in this stage. After completing the operations in this stage, ACK automatically removes the authorization inquiry and confirmation labels for this stage. If you do not add the following labels in time to grant authorization, ACK will not execute the actions in this stage and subsequent stages, and the node may remain in an impaired state.
         self.approved_label = approved_label
         # Specifies whether to enable manual approval.
         self.enable = enable
@@ -312,9 +312,9 @@ class CreateAutoRepairPolicyRequestRulesIncidents(DaraModel):
         name: str = None,
         type: str = None,
     ):
-        # The name of the incident.
+        # The name of the fault.
         self.name = name
-        # The type of the incident.
+        # The type of the fault.
         self.type = type
 
     def validate(self):

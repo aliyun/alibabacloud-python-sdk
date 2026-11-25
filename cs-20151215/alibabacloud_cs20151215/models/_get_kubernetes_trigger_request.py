@@ -21,14 +21,20 @@ class GetKubernetesTriggerRequest(DaraModel):
         # This parameter is required.
         self.namespace = namespace
         # The trigger type. Valid values:
-        # - `deployment`: The trigger for stateless applications.
-        # - `application`: The trigger for application center applications.
+        # 
+        # - `deployment`: triggers for stateless applications 
+        # 
+        # - `application`: triggers for applications in the Application Center
+        # 
         # Default value: `deployment`.
-        # If the trigger type is not specified, the query results are not filtered by trigger type.
+        # 
+        # If you do not specify the trigger type, the query results are not filtered by trigger type.
         self.type = type
         # The trigger action. Valid values:
-        # - `redeploy`: Redeploys the resources defined in `project_id`.
-        # If the trigger action is not specified, the query results are not filtered by trigger action.
+        # 
+        # - `redeploy`: redeploys the resources defined in `project_id`
+        # 
+        # If you do not specify the trigger action, the query results are not filtered by trigger action.
         self.action = action
 
     def validate(self):

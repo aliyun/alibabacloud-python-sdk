@@ -29,43 +29,43 @@ class InstancePatterns(DaraModel):
         minimum_eni_private_ip_address_quantity: int = None,
         minimum_eni_quantity: int = None,
     ):
-        # [This parameter is deprecated and replaced by cpu_architectures] The architectures of instance types.
+        # **[Deprecated]** Use the cpu_architectures parameter instead. The architecture type of the instance type.
         self.architectures = architectures
-        # [This parameter is deprecated] Specifies whether to include burstable instance types.
+        # **[Deprecated]** Do not use this parameter. Specifies whether the instance type is a burstable instance type.
         self.burst_performance_option = burst_performance_option
-        # [This parameter is deprecated and replaced by cores] The number of vCores provided by the instance type.
+        # **[Deprecated]** Use the cores parameter instead. The number of vCPU cores of the instance type.
         self.core = core
-        # The number of vCPU cores for the instance type.
+        # The number of vCPU cores of the instance type.
         self.cores = cores
-        # The CPU architecture of the instance type.
+        # The CPU architecture of the instance.
         self.cpu_architectures = cpu_architectures
-        # The instance type that you want to exclude.
+        # The instance types to exclude.
         self.excluded_instance_types = excluded_instance_types
-        # The type of the instance.
+        # The instance categories.
         self.instance_categories = instance_categories
         # The instance family level.
         self.instance_family_level = instance_family_level
-        # The specified instance family.
+        # The specified instance families.
         self.instance_type_families = instance_type_families
-        # The maximum vCPU cores allowed for the instance type.
+        # The maximum number of vCPU cores of the instance type.
         self.max_cpu_cores = max_cpu_cores
-        # The maximum allowed memory size. Unit: GiB.
+        # The maximum memory of the instance type. Unit: GiB.
         self.max_memory_size = max_memory_size
-        # [This parameter is deprecated] The maximum hourly price of the instance.
+        # **[Deprecated]** Do not use this parameter. The maximum hourly price of the instance.
         self.max_price = max_price
-        # The maximum allowed number of GPUs per instance.
+        # The expected maximum number of GPUs.
         self.maximum_gpu_amount = maximum_gpu_amount
         # The memory size of the instance type. Unit: GiB.
         self.memory = memory
-        # The minimum vCPU cores required for the instance type.
+        # The minimum number of vCPU cores of the instance type.
         self.min_cpu_cores = min_cpu_cores
-        # The minimum required memory size. Unit: GiB.
+        # The minimum memory of the instance type. Unit: GiB.
         self.min_memory_size = min_memory_size
-        # The minimum required number of IPv6 addresses per ENI.
+        # The expected minimum number of IPv6 addresses per elastic network interface controller (NIC).
         self.minimum_eni_ipv_6address_quantity = minimum_eni_ipv_6address_quantity
-        # The minimum required number of IPv4 addresses per ENI.
+        # The expected minimum number of IPv4 addresses per elastic network interface controller (NIC).
         self.minimum_eni_private_ip_address_quantity = minimum_eni_private_ip_address_quantity
-        # The minimum required number of elastic network interfaces (ENIs) per instance.
+        # The expected minimum number of elastic network interfaces (ENIs) that can be mounted.
         self.minimum_eni_quantity = minimum_eni_quantity
 
     def validate(self):

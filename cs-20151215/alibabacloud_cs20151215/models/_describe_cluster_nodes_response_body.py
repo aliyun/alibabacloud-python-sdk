@@ -64,7 +64,7 @@ class DescribeClusterNodesResponseBodyPage(DaraModel):
     ):
         # The current page number.
         self.page_number = page_number
-        # The maximum number of records to return per page.
+        # The maximum number of entries that can be displayed on each page.
         self.page_size = page_size
         # The total number of results.
         self.total_count = total_count
@@ -125,18 +125,17 @@ class DescribeClusterNodesResponseBodyNodes(DaraModel):
         spot_strategy: str = None,
         state: str = None,
     ):
-        # The time when the node was created. The time follows the ISO 8601 standard and includes the time zone.
+        # The time when the node was created. The time is displayed in ISO 8601 format and includes the time zone.
         self.creation_time = creation_time
         # The error message returned when the node was created.
         self.error_message = error_message
-        # The time when the node expires. The time follows the ISO 8601 standard and includes the time zone.
+        # The time when the node expires. The time is displayed in ISO 8601 format and includes the time zone.
         self.expired_time = expired_time
         # The hostname of the node.
         self.host_name = host_name
         # The ID of the system image used by the node.
         self.image_id = image_id
         # The billing method of the node. Valid values:
-        # 
         # - `PrePaid`: subscription.
         # - `PostPaid`: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
@@ -145,17 +144,15 @@ class DescribeClusterNodesResponseBodyNodes(DaraModel):
         # The name of the node in the cluster.
         self.instance_name = instance_name
         # The role of the node. Valid values:
-        # 
-        # - Master: the master node of the cluster.
-        # - Worker: the worker node of the cluster.
+        # - Master: master node in the cluster.
+        # - Worker: worker node in the cluster.
         self.instance_role = instance_role
         # The ECS instance status of the node. Valid values:
-        # 
-        # - `Pending`: the instance is being created.
-        # - `Running`: the instance is running.
-        # - `Starting`: the instance is starting.
-        # - `Stopping`: the instance is stopping.
-        # - `Stopped`: the instance is stopped.
+        # - `Pending`: being created.
+        # - `Running`: running.
+        # - `Starting`: starting.
+        # - `Stopping`: stopping.
+        # - `Stopped`: stopped.
         self.instance_status = instance_status
         # The node specifications.
         self.instance_type = instance_type
@@ -163,37 +160,33 @@ class DescribeClusterNodesResponseBodyNodes(DaraModel):
         self.instance_type_family = instance_type_family
         # The IP addresses of the node.
         self.ip_address = ip_address
-        # Specifies whether the node is an Alibaba Cloud instance. Valid values:
-        # 
-        # - `true`: the node is an Alibaba Cloud instance.
-        # - `false`: the node is not an Alibaba Cloud instance.
+        # Indicates whether the node is an Alibaba Cloud instance. Valid values:
+        # - `true`: yes.
+        # - `false`: no.
         self.is_aliyun_node = is_aliyun_node
-        # The name of the node, which is the node identifier in the cluster.
+        # The name of the node. This name is used as the node identifier in the cluster.
         self.node_name = node_name
-        # Specifies whether the node is ready. Valid values:
-        # 
-        # - `Ready`: the node is ready.
-        # - `NotReady`: the node is not ready.
-        # - `Unknown`: the status is unknown.
-        # - `Offline`: the node is offline.
+        # Indicates whether the node is ready. Valid values:
+        # - `Ready`: ready.
+        # - `NotReady`: not ready.
+        # - `Unknown`: unknown.
+        # - `Offline`: offline.
         self.node_status = node_status
         # The node pool ID.
         self.nodepool_id = nodepool_id
-        # The method used to initialize the node, such as manual creation or creation by Resource Orchestration Service (ROS).
+        # The method used to initialize the node, such as manual creation or creation by using Resource Orchestration Service (ROS).
         self.source = source
         # The type of the spot instance. Valid values:
-        # 
-        # - NoSpot: the instance is not a spot instance.
-        # - SpotWithPriceLimit: the instance is a spot instance with a maximum price limit.
-        # - SpotAsPriceGo: the instance is a spot instance whose price is automatically set based on the current market price.
+        # - NoSpot: non-spot instance.
+        # - SpotWithPriceLimit: spot instance with a maximum price limit.
+        # - SpotAsPriceGo: spot instance whose price is automatically set based on the current market price.
         self.spot_strategy = spot_strategy
         # The running state of the node. Valid values:
-        # 
-        # - `pending`: the node is being created.
-        # - `running`: the node is running.
-        # - `starting`: the node is starting.
-        # - `stopping`: the node is stopping.
-        # - `stopped`: the node is stopped.
+        # - `pending`: being created.
+        # - `running`: running.
+        # - `starting`: starting.
+        # - `stopping`: stopping.
+        # - `stopped`: stopped.
         self.state = state
 
     def validate(self):

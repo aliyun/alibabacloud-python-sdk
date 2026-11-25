@@ -13,7 +13,7 @@ class ListClusterAddonInstanceResourcesResponseBody(DaraModel):
         helm_release: main_models.ListClusterAddonInstanceResourcesResponseBodyHelmRelease = None,
         kubernetes_objects: List[main_models.ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects] = None,
     ):
-        # The Helm release instance information corresponding to the component.
+        # The information about the Helm release instance corresponding to the component.
         self.helm_release = helm_release
         # The list of Kubernetes objects contained in the component.
         self.kubernetes_objects = kubernetes_objects
@@ -70,7 +70,7 @@ class ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects(DaraModel):
         self.kind = kind
         # The name of the object.
         self.name = name
-        # The namespace to which the object belongs.
+        # The namespace of the object.
         self.namespace = namespace
         # The Kubernetes API version of the object.
         self.version = version

@@ -19,11 +19,11 @@ class UpdateNodePoolComponentRequest(DaraModel):
     ):
         # The configuration of the node component.
         self.config = config
-        # Specifies whether to disable rolling updates. Default value: false. When set to false, updating the baseline configuration triggers a rolling update of nodes.
+        # Specifies whether to disable rolling updates. Default value: false. Updating the baseline configuration synchronously triggers a rolling update on nodes.
         self.disable_rolling = disable_rolling
         # The name of the node component.
         self.name = name
-        # The list of nodes to include in the rolling update. By default, all nodes are included.
+        # The list of nodes to perform the rolling update on. Default value: all nodes.
         self.node_names = node_names
         # The rolling update configuration.
         self.rolling_policy = rolling_policy
@@ -93,13 +93,13 @@ class UpdateNodePoolComponentRequestRollingPolicy(DaraModel):
         max_parallelism: int = None,
         pause_policy: str = None,
     ):
-        # The interval between batches during the upgrade, in seconds.
+        # The upgrade interval between batches, in seconds.
         self.batch_interval = batch_interval
-        # The maximum number of nodes that can fail during the rolling update. Default value: 0, which means the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+        # The maximum number of nodes allowed to fail during the rolling update. Default value: 0, which means the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
         self.max_failed_nodes = max_failed_nodes
-        # The maximum number of nodes that can be updated in parallel per batch. Default value: 1.
+        # The maximum number of parallel updates per batch. Default value: 1.
         self.max_parallelism = max_parallelism
-        # The automatic pause policy during node upgrades.
+        # The automatic pause policy during the node upgrade process.
         self.pause_policy = pause_policy
 
     def validate(self):

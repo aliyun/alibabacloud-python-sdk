@@ -11,11 +11,11 @@ class DescribeClusterAddonMetadataResponseBody(DaraModel):
         name: str = None,
         version: str = None,
     ):
-        # The component parameter schema.
+        # The schema of the add-on parameters.
         self.config_schema = config_schema
-        # The component name.
+        # The name of the add-on.
         self.name = name
-        # The component version.
+        # The version of the add-on.
         self.version = version
 
     def validate(self):

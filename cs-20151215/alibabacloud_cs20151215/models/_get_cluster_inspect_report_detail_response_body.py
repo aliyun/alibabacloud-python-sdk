@@ -21,7 +21,7 @@ class GetClusterInspectReportDetailResponseBody(DaraModel):
     ):
         # The list of results.
         self.check_item_results = check_item_results
-        # The completion time of the inspection report in ISO 8601 format with time zone information.
+        # The end time of the inspection report in ISO 8601 format, including the time zone.
         self.end_time = end_time
         # The pagination token.
         self.next_token = next_token
@@ -29,11 +29,11 @@ class GetClusterInspectReportDetailResponseBody(DaraModel):
         self.report_id = report_id
         # The request ID.
         self.request_id = request_id
-        # The start time of the inspection report in ISO 8601 format with time zone information.
+        # The start time of the inspection report in ISO 8601 format, including the time zone.
         self.start_time = start_time
         # The generation status of the inspection report. Valid values:
-        # - completed: The generation is completed.
-        # - running: The generation is in progress.
+        # - completed: Completed.
+        # - running: In progress.
         self.status = status
         # The summary of the inspection report.
         self.summary = summary
@@ -120,15 +120,15 @@ class GetClusterInspectReportDetailResponseBodySummary(DaraModel):
         normal_count: int = None,
         warn_count: int = None,
     ):
-        # The number of check items whose result is advice.
+        # The number of inspection items whose result is advice.
         self.advice_count = advice_count
-        # The status code of the check task result.
+        # The status code of the inspection task result.
         self.code = code
-        # The number of check items whose result is error.
+        # The number of inspection items whose result is error.
         self.error_count = error_count
-        # The number of check items whose result is normal.
+        # The number of inspection items whose result is normal.
         self.normal_count = normal_count
-        # The number of check items whose result is warning.
+        # The number of inspection items whose result is warning.
         self.warn_count = warn_count
 
     def validate(self):
@@ -197,7 +197,7 @@ class GetClusterInspectReportDetailResponseBodyCheckItemResults(DaraModel):
         self.category = category
         # The unique identifier of the inspection item.
         self.check_item_uid = check_item_uid
-        # The description of the check item.
+        # The description of the inspection item.
         self.description = description
         # The remediation suggestion.
         self.fix = fix
@@ -207,16 +207,16 @@ class GetClusterInspectReportDetailResponseBodyCheckItemResults(DaraModel):
         # - error: medium risk
         # - critical: high risk
         self.level = level
-        # The name of the check item.
+        # The name of the inspection item.
         self.name = name
-        # The check result. Valid values:
-        # - true: The check item is abnormal.
-        # - false: The check item is normal.
-        # - disable: The check item is disabled.
+        # The inspection result. Valid values:
+        # - true: the inspection item is abnormal
+        # - false: the inspection item is normal
+        # - disable: the inspection item is disabled
         self.result = result
-        # The resource type of the check target.
+        # The resource type of the inspection target.
         self.target_type = target_type
-        # The list of check targets.
+        # The list of inspection targets.
         self.targets = targets
 
     def validate(self):

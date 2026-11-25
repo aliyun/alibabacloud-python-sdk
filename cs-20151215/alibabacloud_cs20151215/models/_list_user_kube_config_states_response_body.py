@@ -15,7 +15,7 @@ class ListUserKubeConfigStatesResponseBody(DaraModel):
     ):
         # The pagination parameters.
         self.page = page
-        # The KubeConfig status details for the user.
+        # The details of the KubeConfig status for the user.
         self.states = states
 
     def validate(self):
@@ -64,13 +64,15 @@ class ListUserKubeConfigStatesResponseBodyStates(DaraModel):
         cluster_name: str = None,
         cluster_state: str = None,
     ):
-        # The expiration time of the KubeConfig certificate. The time is in UTC and follows the RFC 3339 format.
+        # The expiration time of the KubeConfig certificate. The time is displayed in UTC and follows the RFC 3339 standard.
         self.cert_expire_time = cert_expire_time
         # The current status of the KubeConfig certificate. Valid values:
+        # 
         # - Expired: The certificate has expired.
         # - Unexpired: The certificate has not expired.
         # - Unissued: The certificate has not been issued.
         # - Unknown: The status is unknown.
+        # 
         # - Removed: The certificate has been removed, but an issuance record exists.
         self.cert_state = cert_state
         # The cluster ID.
@@ -78,6 +80,7 @@ class ListUserKubeConfigStatesResponseBodyStates(DaraModel):
         # The cluster name.
         self.cluster_name = cluster_name
         # The running status of the cluster. Valid values:
+        # 
         # - `initial`: The cluster is being created.
         # - `failed`: The cluster failed to be created.
         # - `running`: The cluster is running.
@@ -145,7 +148,7 @@ class ListUserKubeConfigStatesResponseBodyPage(DaraModel):
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of results.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

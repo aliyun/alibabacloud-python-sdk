@@ -12,7 +12,7 @@ class ListClusterChecksResponseBody(DaraModel):
         self,
         checks: List[main_models.ListClusterChecksResponseBodyChecks] = None,
     ):
-        # The list of checks.
+        # The check list.
         self.checks = checks
 
     def validate(self):

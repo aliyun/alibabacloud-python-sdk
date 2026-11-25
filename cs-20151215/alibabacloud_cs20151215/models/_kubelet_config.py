@@ -45,70 +45,70 @@ class KubeletConfig(DaraModel):
     ):
         # The whitelist of allowed unsafe sysctl patterns.
         self.allowed_unsafe_sysctls = allowed_unsafe_sysctls
-        # The list of IP addresses for the cluster DNS servers.
+        # The list of IP addresses of cluster DNS servers.
         self.cluster_dns = cluster_dns
-        # The maximum number of log files that can exist per container.
+        # The maximum number of log files that can exist for each container.
         self.container_log_max_files = container_log_max_files
-        # The maximum size a log file can reach before log rotation is performed.
+        # The maximum size that a log file can reach before it is rotated.
         self.container_log_max_size = container_log_max_size
-        # The maximum number of concurrent workers for log rotation operations.
+        # Specifies the maximum number of concurrent workers required to perform log rotation operations.
         self.container_log_max_workers = container_log_max_workers
-        # The interval for monitoring container logs to perform log rotation.
+        # Specifies the duration for monitoring container logs to perform log rotation operations.
         self.container_log_monitor_interval = container_log_monitor_interval
-        # Specifies whether to enable CPU CFS quota enforcement.
+        # The switch for CPU CFS quota enforcement.
         self.cpu_cfsquota = cpu_cfsquota
         # The CPU CFS quota period value.
         self.cpu_cfsquota_period = cpu_cfsquota_period
         # The CPU manager policy.
         self.cpu_manager_policy = cpu_manager_policy
-        # The maximum burst size for event records.
+        # The burst limit for the number of event records.
         self.event_burst = event_burst
-        # The maximum number of events that can be generated per second.
+        # The number of events that can be generated per second.
         self.event_record_qps = event_record_qps
-        # The set of hard eviction thresholds that trigger pod eviction.
+        # The set of hard thresholds that trigger pod eviction.
         self.eviction_hard = eviction_hard
         # The set of soft eviction thresholds.
         self.eviction_soft = eviction_soft
-        # The set of eviction grace periods.
+        # The set of soft eviction grace periods.
         self.eviction_soft_grace_period = eviction_soft_grace_period
-        # The feature gates configuration used to enable experimental features.
+        # The feature gates used to enable experimental features.
         self.feature_gates = feature_gates
-        # The threshold above which image garbage collection runs continuously.
+        # The threshold above which image garbage collection is continuously performed.
         self.image_gchigh_threshold_percent = image_gchigh_threshold_percent
         # The threshold below which image garbage collection is not performed.
         self.image_gclow_threshold_percent = image_gclow_threshold_percent
-        # The maximum number of burst requests sent to the API server per second.
+        # The burst limit for the number of requests sent to the API server per second.
         self.kube_apiburst = kube_apiburst
-        # The number of queries per second when communicating with the API server.
+        # The number of queries per second for communication with the API server.
         self.kube_apiqps = kube_apiqps
-        # The resource configuration reserved for Kubernetes system components.
+        # The resource configuration reserved for the Kubernetes system.
         self.kube_reserved = kube_reserved
-        # The maximum number of pods that can run on the node.
+        # The maximum number of running pods.
         self.max_pods = max_pods
-        # The policy used by the memory management manager.
+        # The memory management policy to use.
         self.memory_manager_policy = memory_manager_policy
         # The maximum number of PIDs that can be used in a pod.
         self.pod_pids_limit = pod_pids_limit
         # The read-only port number.
         self.read_only_port = read_only_port
-        # The maximum number of burst image pulls.
+        # The burst limit for the number of image pulls.
         self.registry_burst = registry_burst
         # The QPS limit for the image registry.
         self.registry_pull_qps = registry_pull_qps
         # The memory reserved for NUMA nodes.
         self.reserved_memory = reserved_memory
-        # Specifies whether to pull images one at a time.
+        # Specifies whether to pull images one by one.
         self.serialize_image_pulls = serialize_image_pulls
-        # Enables automatic issuance and rotation of kubelet server certificates. When enabled, you must also set "RotateKubeletServerCertificate": true in the kubelet featureGates configuration.
+        # Enables the automatic issuance and rotation of Kubelet server certificates. When enabled, you must also configure "RotateKubeletServerCertificate": true in the featureGates of the Kubelet.
         # 
-        # > - Available only for clusters running version 1.30 or later.
-        # > - For clusters running version 1.30 to v1.33, submit a ticket to apply for this feature.
+        # > - Only applicable to clusters of version 1.30 and later.
+        # > - Clusters of versions 1.30 to v1.33 must commit a ticket to apply.
         self.server_tlsbootstrap = server_tlsbootstrap
         # The resource configuration reserved for the system.
         self.system_reserved = system_reserved
-        # The Policy Name of the topology management manager to use.
+        # The topology manager policy name to use.
         self.topology_manager_policy = topology_manager_policy
-        # The versioned configuration for the OpenTelemetry tracing client.
+        # The versioned configuration information for OpenTelemetry tracing client settings.
         self.tracing = tracing
 
     def validate(self):
@@ -373,7 +373,7 @@ class KubeletConfigReservedMemory(DaraModel):
         limits: Dict[str, Any] = None,
         numa_node: int = None,
     ):
-        # The memory resources limit.
+        # The limits on memory resources.
         self.limits = limits
         # The NUMA node.
         self.numa_node = numa_node

@@ -10,15 +10,12 @@ class ListClusterChecksRequest(DaraModel):
         target: str = None,
         type: str = None,
     ):
-        # Filters specific check objects.
+        # Filters the specified check objects.
         self.target = target
         # The check type. Valid values:
         # - ClusterMigrate: cluster migration
-        # 
         # - MasterUpgrade: cluster control plane upgrade
-        # 
         # - NodePoolUpgrade: node pool upgrade
-        # 
         # - ClusterUpgrade: cluster upgrade
         self.type = type
 

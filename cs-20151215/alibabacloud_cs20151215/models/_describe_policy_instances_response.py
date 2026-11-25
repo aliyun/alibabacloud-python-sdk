@@ -93,11 +93,7 @@ class DescribePolicyInstancesResponseBody(DaraModel):
         self.policy_parameters = policy_parameters
         # The governance level of the rule instance.
         self.policy_severity = policy_severity
-        # The enforcement scope of the policy instance.
-        # 
-        # A value of "*" indicates all namespaces in the cluster.
-        # 
-        # Otherwise, the names of the target namespaces are returned, separated by commas (,).
+        # The enforcement scope of the policy instance. A value of "*" indicates all namespaces in the cluster. Otherwise, the names of the target namespaces are returned, separated by commas (,).
         self.policy_scope = policy_scope
         # The governance action of the rule. Valid values:
         # 
@@ -111,7 +107,7 @@ class DescribePolicyInstancesResponseBody(DaraModel):
         self.updated = updated
         # **[Deprecated]** The resource ID. Do not use this parameter.
         self.resource_id = resource_id
-        # **[Deprecated]** The number of processed violations in the cluster. Do not use this parameter.
+        # **[Deprecated]** The count of processed violations in the cluster. Do not use this parameter.
         self.total_violations = total_violations
         # **[Deprecated]** The deletion status. Do not use this parameter.
         self.is_deleted = is_deleted

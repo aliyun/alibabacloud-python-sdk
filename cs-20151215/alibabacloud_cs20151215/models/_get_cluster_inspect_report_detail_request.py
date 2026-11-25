@@ -24,7 +24,7 @@ class GetClusterInspectReportDetailRequest(DaraModel):
         self.category = category
         # Specifies whether to filter inspection items. If set to true, only abnormal inspection items with a result of true are returned.
         self.enable_filter = enable_filter
-        # The query language. Valid values:
+        # The query language.
         # - zh_CN
         # - en_US
         self.language = language
@@ -38,7 +38,7 @@ class GetClusterInspectReportDetailRequest(DaraModel):
         self.max_results = max_results
         # The pagination token.
         self.next_token = next_token
-        # The object type. Only check items that match the object type are returned.
+        # The inspection object type. Only inspection items that match the specified object type are returned.
         self.target_type = target_type
 
     def validate(self):

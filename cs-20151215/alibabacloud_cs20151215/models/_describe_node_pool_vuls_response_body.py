@@ -15,9 +15,10 @@ class DescribeNodePoolVulsResponseBody(DaraModel):
     ):
         # The list of vulnerabilities in the node pool.
         self.vul_records = vul_records
-        # Indicates whether the Security Center CVE fix service is purchased. Valid values:
+        # Specifies whether the Security Center CVE fix service is purchased.
         # 
         # - true: Purchased.
+        # 
         # - false: Not purchased.
         self.vuls_fix_service_purchased = vuls_fix_service_purchased
 
@@ -64,7 +65,7 @@ class DescribeNodePoolVulsResponseBodyVulRecords(DaraModel):
     ):
         # The node instance ID.
         self.instance_id = instance_id
-        # The name of the node, which identifies the node in the cluster.
+        # The node name, which identifies the node in the cluster.
         self.node_name = node_name
         # The list of vulnerabilities.
         self.vul_list = vul_list
@@ -123,11 +124,11 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(DaraModel):
         self.alias_name = alias_name
         # The list of CVEs corresponding to the vulnerability.
         self.cve_list = cve_list
-        # The name of the vulnerability.
+        # The vulnerability name.
         self.name = name
         # The vulnerability level.
         self.necessity = necessity
-        # Indicates whether a restart is required.
+        # Specifies whether a restart is required.
         self.need_reboot = need_reboot
         # The list of packages affected by the vulnerability.
         self.package_list = package_list
@@ -195,7 +196,7 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList(DaraModel):
         self,
         name: str = None,
     ):
-        # The name of the package.
+        # The package name.
         self.name = name
 
     def validate(self):

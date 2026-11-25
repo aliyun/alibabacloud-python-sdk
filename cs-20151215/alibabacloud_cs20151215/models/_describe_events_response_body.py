@@ -16,7 +16,7 @@ class DescribeEventsResponseBody(DaraModel):
     ):
         # The event details.
         self.events = events
-        # The pagination token. Set this parameter to the next_token value returned from the previous API call.
+        # The query token, which is the value of the next_token parameter returned by the previous API call.
         self.next_token = next_token
         # The pagination information.
         self.page_info = page_info
@@ -71,7 +71,7 @@ class DescribeEventsResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The page number for paging in the paged query.
+        # The page number for paging.
         self.page_number = page_number
         # The maximum number of results to return per page.
         self.page_size = page_size
@@ -134,22 +134,22 @@ class DescribeEventsResponseBodyEvents(DaraModel):
         # The start time of the event in ISO 8601 format, including the time zone.
         self.time = time
         # The event type. Valid values:
-        # - `cluster_create`: Cluster creation.
-        # - `cluster_scaleout`: Cluster scale-out.
-        # - `cluster_attach`: Addition of existing nodes.
-        # - `cluster_delete`: Cluster deletion.
-        # - `cluster_upgrade`: Cluster upgrade.
-        # - `cluster_migrate`: Cluster migration.
-        # - `cluster_node_delete`: Node removal.
-        # - `cluster_node_drain`: Node draining.
-        # - `cluster_modify`: Cluster modification.
-        # - `cluster_configuration_modify`: Cluster control configuration modification.
-        # - `cluster_addon_install`: Add-on installation.
-        # - `cluster_addon_upgrade`: Add-on upgrade.
-        # - `cluster_addon_uninstall`: Add-on uninstallation.
-        # - `runtime_upgrade`: Runtime upgrade.
-        # - `nodepool_upgrade`: Node pool upgrade.
-        # - `nodepool_update`: Node pool update.
+        # - `cluster_create`: cluster creation
+        # - `cluster_scaleout`: cluster scale-out
+        # - `cluster_attach`: adding existing nodes
+        # - `cluster_delete`: cluster deletion
+        # - `cluster_upgrade`: cluster upgrade
+        # - `cluster_migrate`: cluster migration
+        # - `cluster_node_delete`: node removal
+        # - `cluster_node_drain`: node draining
+        # - `cluster_modify`: cluster modification
+        # - `cluster_configuration_modify`: cluster management configuration modification
+        # - `cluster_addon_install`: add-on installation
+        # - `cluster_addon_upgrade`: add-on upgrade
+        # - `cluster_addon_uninstall`: add-on uninstallation
+        # - `runtime_upgrade`: runtime upgrade
+        # - `nodepool_upgrade`: node pool upgrade
+        # - `nodepool_update`: node pool update
         self.type = type
 
     def validate(self):
@@ -218,9 +218,9 @@ class DescribeEventsResponseBodyEventsData(DaraModel):
         reason: str = None,
     ):
         # The event level. Valid values:
-        # - info: Information.
-        # - warning: Warning.
-        # - error: Error.
+        # - info: informational
+        # - warning: warning
+        # - error: error
         self.level = level
         # The event details.
         self.message = message

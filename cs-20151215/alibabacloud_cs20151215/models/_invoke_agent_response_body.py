@@ -29,7 +29,7 @@ class InvokeAgentResponseBody(DaraModel):
     ):
         # The error code for the RUN_ERROR event.
         self.code = code
-        # The tool output text for the TOOL_CALL_RESULT event. The text may be truncated.
+        # The tool output text for the TOOL_CALL_RESULT event, which may be truncated.
         self.content = content
         # The incremental fragment of text, reasoning, or tool parameters. Fragments with the same ID are concatenated in order.
         self.delta = delta
@@ -47,9 +47,9 @@ class InvokeAgentResponseBody(DaraModel):
         self.role = role
         # The run ID of the current run for RUN_STARTED and RUN_FINISHED events.
         self.run_id = run_id
-        # The thread snapshot for the STATE_SNAPSHOT event, including sessionId and requestId.
+        # The session snapshot for the STATE_SNAPSHOT event, which includes sessionId and requestId.
         self.snapshot = snapshot
-        # The thread ID for RUN_STARTED and RUN_FINISHED events. It is consistent with the request and the thread snapshot.
+        # The thread ID for RUN_STARTED and RUN_FINISHED events. It is consistent with the request and the session snapshot.
         self.thread_id = thread_id
         # The tool invoke ID. It associates TOOL_CALL_START/ARGS/END/RESULT events with approval interrupts.
         self.tool_call_id = tool_call_id
@@ -59,7 +59,7 @@ class InvokeAgentResponseBody(DaraModel):
         # 
         # This parameter is required.
         self.type = type
-        # The extension value of the CUSTOM event. It can be any JSON object or null.
+        # The extension value of the CUSTOM event, which can be any JSON object or null.
         self.value = value
 
     def validate(self):
@@ -182,7 +182,7 @@ class InvokeAgentResponseBodyOutcome(DaraModel):
     ):
         # The list of interrupts waiting for a response. This field appears only when outcome.type is interrupt and contains at least one item.
         self.interrupts = interrupts
-        # The outcome type. A value of success indicates normal completion. A value of interrupt indicates waiting for a response, in which case the interrupts array contains at least one item.
+        # The outcome type. A value of success indicates normal completion, and interrupt indicates waiting for a response. When the value is interrupt, the interrupts array contains at least one item.
         # 
         # This parameter is required.
         self.type = type
@@ -234,13 +234,13 @@ class InvokeAgentResponseBodyOutcomeInterrupts(DaraModel):
     ):
         # The optional expiration time string of the interrupt. This field is not output for current tool approvals.
         self.expires_at = expires_at
-        # The ID of the interrupt. It is used as resume[].interruptId when resuming the run.
+        # The interrupt ID, which is used as resume[].interruptId when resuming the run.
         # 
         # This parameter is required.
         self.id = id
         # The approval description or follow-up question text displayed to the user.
         self.message = message
-        # The optional extension information of the interrupt. It cannot replace tool events.
+        # The optional extension information of the interrupt, which cannot replace tool events.
         self.metadata = metadata
         # The reason for the interrupt. The value is tool_call_approve for tool approval and ask_human for follow-up questions.
         # 
@@ -248,7 +248,7 @@ class InvokeAgentResponseBodyOutcomeInterrupts(DaraModel):
         self.reason = reason
         # The JSON Schema for the response. Tool approval requires decision=yes/no, and follow-up questions use strings.
         self.response_schema = response_schema
-        # The optional associated tool invoke ID. It is the same as the toolCallId of the preceding TOOL_CALL_START event.
+        # The optional associated tool invoke ID, which is the same as the toolCallId of the preceding TOOL_CALL_START event.
         self.tool_call_id = tool_call_id
 
     def validate(self):

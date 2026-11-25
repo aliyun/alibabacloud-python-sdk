@@ -13,11 +13,11 @@ class Taint(DaraModel):
     ):
         # The scheduling policy. Valid values:
         # 
-        # - `NoSchedule`: Not tolerated. This affects only the scheduling process. Already scheduled pods are not affected. This applies only to newly added pods.
+        # - `NoSchedule`: Not tolerated. It affects only the scheduling process and applies only to newly added pods. Already scheduled pods are not affected.
         # 
-        # - `NoExecute`: Not tolerated. When the taint changes, the pod is evicted.
+        # - `NoExecute`: Not tolerated. Pods are evicted when the taint changes.
         # 
-        # - `PreferNoSchedule`: Soft constraint. Existing pods on the node are not affected. The scheduler tries to avoid scheduling pods that do not tolerate the taint to the node.
+        # - `PreferNoSchedule`: Soft constraint. Existing pods on the node are not affected. The system tries to avoid scheduling pods that do not meet the requirements to the node.
         # 
         # Default value: `NoSchedule`.
         self.effect = effect

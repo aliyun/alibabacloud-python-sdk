@@ -92,6 +92,8 @@ class Client(OpenApiClient):
             body['cpu_policy'] = request.cpu_policy
         if not DaraCore.is_null(request.format_disk):
             body['format_disk'] = request.format_disk
+        if not DaraCore.is_null(request.format_disk_option):
+            body['format_disk_option'] = request.format_disk_option
         if not DaraCore.is_null(request.image_id):
             body['image_id'] = request.image_id
         if not DaraCore.is_null(request.instances):
@@ -147,6 +149,8 @@ class Client(OpenApiClient):
             body['cpu_policy'] = request.cpu_policy
         if not DaraCore.is_null(request.format_disk):
             body['format_disk'] = request.format_disk
+        if not DaraCore.is_null(request.format_disk_option):
+            body['format_disk_option'] = request.format_disk_option
         if not DaraCore.is_null(request.image_id):
             body['image_id'] = request.image_id
         if not DaraCore.is_null(request.instances):
@@ -219,6 +223,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.format_disk):
             body['format_disk'] = request.format_disk
+        if not DaraCore.is_null(request.format_disk_option):
+            body['format_disk_option'] = request.format_disk_option
         if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
         if not DaraCore.is_null(request.keep_instance_name):
@@ -257,6 +263,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.format_disk):
             body['format_disk'] = request.format_disk
+        if not DaraCore.is_null(request.format_disk_option):
+            body['format_disk_option'] = request.format_disk_option
         if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
         if not DaraCore.is_null(request.keep_instance_name):
@@ -4022,6 +4030,8 @@ class Client(OpenApiClient):
             body['expired'] = request.expired
         if not DaraCore.is_null(request.format_disk):
             body['format_disk'] = request.format_disk
+        if not DaraCore.is_null(request.format_disk_option):
+            body['format_disk_option'] = request.format_disk_option
         if not DaraCore.is_null(request.keep_instance_name):
             body['keep_instance_name'] = request.keep_instance_name
         if not DaraCore.is_null(request.nodepool_id):
@@ -4067,6 +4077,8 @@ class Client(OpenApiClient):
             body['expired'] = request.expired
         if not DaraCore.is_null(request.format_disk):
             body['format_disk'] = request.format_disk
+        if not DaraCore.is_null(request.format_disk_option):
+            body['format_disk_option'] = request.format_disk_option
         if not DaraCore.is_null(request.keep_instance_name):
             body['keep_instance_name'] = request.keep_instance_name
         if not DaraCore.is_null(request.nodepool_id):

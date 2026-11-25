@@ -18,9 +18,9 @@ class DescribeEventsRequest(DaraModel):
         self.cluster_id = cluster_id
         # The maximum number of results to return for a single request.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned from the previous API call.
+        # The query token, which is the value of the NextToken parameter returned by the previous API call.
         self.next_token = next_token
-        # The page number for paging in the paged query.
+        # The page number for paging.
         self.page_number = page_number
         # The maximum number of results to return per page.
         # 
@@ -29,22 +29,22 @@ class DescribeEventsRequest(DaraModel):
         # Default value: 50.
         self.page_size = page_size
         # The event type. If you do not specify this parameter, events of all types are queried. Valid values:
-        # - `cluster_create`: Cluster creation.
-        # - `cluster_scaleout`: Cluster scale-out.
-        # - `cluster_attach`: Addition of existing nodes.
-        # - `cluster_delete`: Cluster deletion.
-        # - `cluster_upgrade`: Cluster upgrade.
-        # - `cluster_migrate`: Cluster migration.
-        # - `cluster_node_delete`: Node removal.
-        # - `cluster_node_drain`: Node draining.
-        # - `cluster_modify`: Cluster modification.
-        # - `cluster_configuration_modify`: Cluster control configuration modification.
-        # - `cluster_addon_install`: Add-on installation.
-        # - `cluster_addon_upgrade`: Add-on upgrade.
-        # - `cluster_addon_uninstall`: Add-on uninstallation.
-        # - `runtime_upgrade`: Runtime upgrade.
-        # - `nodepool_upgrade`: Node pool upgrade.
-        # - `nodepool_update`: Node pool update.
+        # - `cluster_create`: cluster creation
+        # - `cluster_scaleout`: cluster scale-out
+        # - `cluster_attach`: adding existing nodes
+        # - `cluster_delete`: cluster deletion
+        # - `cluster_upgrade`: cluster upgrade
+        # - `cluster_migrate`: cluster migration
+        # - `cluster_node_delete`: node removal
+        # - `cluster_node_drain`: node draining
+        # - `cluster_modify`: cluster modification
+        # - `cluster_configuration_modify`: cluster management configuration modification
+        # - `cluster_addon_install`: add-on installation
+        # - `cluster_addon_upgrade`: add-on upgrade
+        # - `cluster_addon_uninstall`: add-on uninstallation
+        # - `runtime_upgrade`: runtime upgrade
+        # - `nodepool_upgrade`: node pool upgrade
+        # - `nodepool_update`: node pool update
         self.type = type
 
     def validate(self):

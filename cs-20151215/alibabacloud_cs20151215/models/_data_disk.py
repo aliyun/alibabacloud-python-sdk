@@ -22,62 +22,62 @@ class DataDisk(DaraModel):
         size: int = None,
         snapshot_id: str = None,
     ):
-        # Specifies whether to automatically mount the data disk.
+        # Specifies whether to mount the data cloud disk.
         self.auto_format = auto_format
-        # The ID of the automatic snapshot policy. The system performs automatic backup for a cloud disk based on the specified automatic snapshot policy.
+        # The ID of the automatic snapshot policy. The cloud disk is automatically backed up based on the snapshot policy.
         # 
-        # By default, this parameter is empty, which indicates that automatic backup is disabled.
+        # Default value: empty, which indicates that automatic backup is disabled.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # Specifies whether to enable the burst feature for the data disk. Valid values:
+        # Specifies whether to enable performance burst for the data cloud disk. Valid values:
+        # - true: Yes.
+        # - false: No.
         # 
-        # *   `true`: enables the burst feature.
-        # *   `false`: disables the burst feature for the data disk.
-        # 
-        # This parameter is available only if `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
         self.bursting_enabled = bursting_enabled
-        # The category of data disk. Valid values:
+        # The type of the data cloud disk. Valid values:
         # 
-        # *   `cloud`: basic disk.
-        # *   `cloud_efficiency`: ultra disk
-        # *   `cloud_ssd`: standard SSD.
-        # *   `cloud_essd`: Enterprise ESSD (ESSD).
-        # *   `cloud_auto`: ESSD AutoPL disk.
-        # *   `cloud_essd_entry`: ESSD Entry disk.
-        # *   `elastic_ephemeral_disk_premium`: premium elastic ephemeral disk.
-        # *   `elastic_ephemeral_disk_standard`: standard elastic ephemeral disk.
+        # - cloud: Basic cloud disk.
+        # - cloud_efficiency: Ultra disk.
+        # - cloud_ssd: Standard SSD.
+        # - cloud_essd: ESSD.
+        # - cloud_auto: ESSD AutoPL cloud disk.
+        # - cloud_essd_entry: ESSD Entry cloud disk.
+        # - elastic_ephemeral_disk_premium: Premium elastic ephemeral disk.
+        # - elastic_ephemeral_disk_standard: Standard elastic ephemeral disk.
         # 
-        # Default value: `cloud_efficiency`.
+        # Default value: cloud_efficiency.
         self.category = category
-        # The mount target of the data disk. If you do not specify this parameter, the system automatically assigns a mount target when you create an Elastic Compute Service (ECS) instance. Valid values: /dev/xvdb to /dev/xvdz.
+        # The mount point of the data cloud disk. If you do not specify this parameter, the system will allocate a mount point by default during the automatic creation of an ECS instance. The mount point starts from /dev/xvdb and ends at /dev/xvdz.
         self.device = device
-        # The data disk name. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the data cloud disk. The name must be 2 to 128 characters in length and can contain letters and Chinese characters. It must start with a letter or a Chinese character and cannot start with http:// or https://. It can contain digits, colons (:), underscores (_), and hyphens (-).
         self.disk_name = disk_name
-        # Specifies whether to encrypt the data disk. Valid values:
+        # Specifies whether to encrypt the data cloud disk. Valid values:
         # 
-        # *   `true`: encrypts the data disk.
-        # *   `false`: does not encrypt the data disk.
+        # - true: Encrypts the data cloud disk.
+        # - false: Does not encrypt the data cloud disk.
         # 
-        # Default value: `false`.
+        # Default value: false.
         self.encrypted = encrypted
-        # The file system that is mounted. This parameter takes effect only if auto_format is set to true. Valid values: ext4 and xfs.
+        # The type of the file system to be mounted. This parameter takes effect only when auto_format is set to true. Valid values: ext4 and xfs.
         self.file_system = file_system
-        # The ID of the Key Management Service (KMS) key that is used to encrypt the data disk.
+        # The ID of the Key Management Service (KMS) key used to encrypt the data cloud disk.
         self.kms_key_id = kms_key_id
-        # The path to which the data disk is mounted. You must specify a valid path.
+        # The mount path. It must be a valid file path.
         self.mount_target = mount_target
-        # The performance level (PL) of the data disk. This parameter takes effect only for an ESSD. This parameter is related to the disk size. For more information, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+        # The performance level of the node data cloud disk. This parameter takes effect only for ESSDs, not standard SSDs. The performance level is related to the disk size. For more information, see [ESSD cloud disks](https://help.aliyun.com/document_detail/122389.html).
         self.performance_level = performance_level
-        # The preset IOPS of the data disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+        # The provisioned read and write IOPS of the data cloud disk. Valid values: 0 to min{50,000, 1000 × Capacity - Baseline performance}.
+        # Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
         # 
-        # This parameter is available only if `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
         self.provisioned_iops = provisioned_iops
-        # The size of the data disk. Unit: GiB.
+        # The size of the data cloud disk. Unit: GiB.
         # 
         # Valid values: 40 to 32768.
         # 
-        # Default value: `120`.
+        # Default value: 120.
         self.size = size
-        # The ID of the snapshot that you want to use to create the data disk. If this parameter is specified, the specified size of the data disk is ignored. The size of the disk equals the size of the specified snapshot. If the snapshot was created on or before July 15, 2013, the API request is rejected and the InvalidSnapshot.TooOld message is returned.
+        # The ID of the snapshot used to create the data cloud disk. If you specify this parameter, the DataDisks.Size parameter is ignored, and the actual size of the created disk is the same as the size of the specified snapshot. If the snapshot was created on or before July 15, 2013, the call is rejected and the InvalidSnapshot.TooOld error code is returned.
         self.snapshot_id = snapshot_id
 
     def validate(self):

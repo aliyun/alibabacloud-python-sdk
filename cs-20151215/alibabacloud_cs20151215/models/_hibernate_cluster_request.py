@@ -9,6 +9,7 @@ class HibernateClusterRequest(DaraModel):
         self,
         client_token: str = None,
     ):
+        # The client token.
         self.client_token = client_token
 
     def validate(self):

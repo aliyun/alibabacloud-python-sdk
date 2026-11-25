@@ -15,9 +15,7 @@ class CreateTemplateRequest(DaraModel):
     ):
         # The description of the orchestration template.
         self.description = description
-        # The name of the template. 
-        # 
-        # Naming rules: The name must be 1 to 63 characters in length, and can contain digits, Chinese characters, letters, and hyphens (-). It cannot start with a hyphen (-).
+        # The name of the template. The name must be 1 to 63 characters in length and can contain digits, Chinese characters, letters, and hyphens (-). It cannot start with a hyphen (-).
         # 
         # This parameter is required.
         self.name = name
@@ -27,13 +25,13 @@ class CreateTemplateRequest(DaraModel):
         # 
         # This parameter is required.
         self.template = template
-        # The templatetype.
+        # The template type.
         # 
-        # - If you set this parameter to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
+        # - If the value is `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
         # 
-        # - If you do not specify this parameter or set it to another value, the template is not displayed on the Orchestration Templates page in the console.
+        # - If this parameter is left empty or set to other values, the template is not displayed on the Orchestration Templates page in the console.
         # 
-        # Recommended Settings: `kubernetes`.
+        # Set this parameter to `kubernetes`.
         self.template_type = template_type
 
     def validate(self):

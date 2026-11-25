@@ -15,7 +15,7 @@ class DescribePolicyInstancesStatusResponseBody(DaraModel):
     ):
         # The number of policy instances deployed at different governance levels in the cluster.
         self.instances_severity_count = instances_severity_count
-        # The list of policy instance counts by policy type.
+        # The list of policy instance counts for different policy types.
         self.policy_instances = policy_instances
 
     def validate(self):
@@ -61,7 +61,7 @@ class DescribePolicyInstancesStatusResponseBodyPolicyInstances(DaraModel):
         policy_name: str = None,
         policy_severity: str = None,
     ):
-        # The policy type. For more information about supported policy types and their descriptions, see [Container security policy rules](https://help.aliyun.com/document_detail/359819.html).
+        # The policy type. For supported policy types and their descriptions, see [Container security policy rules](https://help.aliyun.com/document_detail/359819.html).
         self.policy_category = policy_category
         # The policy description.
         self.policy_description = policy_description

@@ -77,19 +77,19 @@ class DescribeTriggerResponseBody(DaraModel):
         self.cluster_id = cluster_id
         # The trigger project name.
         # 
-        # It consists of the namespace and application name in the `${namespace}/${name}` format. Example: default/test-app.
+        # It consists of the namespace and application name, in the `${namespace}/${name}` format. Example: default/test-app.
         self.project_id = project_id
         # The trigger type.
         # 
         # Valid values:
         # 
-        # - `deployment`: the trigger for stateless applications. 
+        # - `deployment`: trigger for stateless applications. 
         # 
-        # - `application`: the trigger for Hybrid Cloud Application Center applications.
+        # - `application`: trigger for Hybrid Cloud Application Center applications.
         self.type = type
         # The trigger action. Valid values:
         # 
-        # `redeploy`: redeploys the application.
+        # `redeploy`: Redeploys the application.
         self.action = action
         # The token information.
         self.token = token

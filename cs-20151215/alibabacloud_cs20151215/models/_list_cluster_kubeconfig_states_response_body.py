@@ -75,7 +75,7 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
         self.account_id = account_id
         # The logon name of the Resource Access Management (RAM) user or the name of the RAM role.
         self.account_name = account_name
-        # The account state.
+        # The account status.
         # 
         # Valid values:
         # - Active: The account is active.
@@ -89,14 +89,14 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
         # - RamUser: Resource Access Management (RAM) user.
         # - RamRole: RAM role.
         self.account_type = account_type
-        # The expiration time of the KubeConfig client certificate. The time is displayed in ISO 8601 format and includes time zone information.
+        # The expiration time of the KubeConfig client certificate. The time is in ISO 8601 format and includes time zone information.
         self.cert_expire_time = cert_expire_time
-        # The state of the KubeConfig client certificate.
+        # The status of the KubeConfig client certificate.
         # 
         # Valid values:
-        # - Unexpired: The certificate is not expired.
-        # - Expired: The certificate is expired.
-        # - Unknown: The certificate state is unknown (abnormal state).
+        # - Unexpired: The certificate has not expired.
+        # - Expired: The certificate has expired.
+        # - Unknown: The status is unknown, which indicates an exception.
         self.cert_state = cert_state
         # The name of the cloud service.
         self.cloud_service_name = cloud_service_name
@@ -198,8 +198,8 @@ class ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles(DaraModel):
         # Specifies whether the content is consistent with the default cluster role template.
         # 
         # Valid values:
-        # - true: The content is consistent with the default cluster role template.
-        # - false: The content is inconsistent with the default cluster role template.
+        # - true: Consistent.
+        # - false: Inconsistent.
         self.is_default_template = is_default_template
         # The name of the cluster role associated with the cloud service role in the cluster.
         self.role_name = role_name
@@ -257,7 +257,7 @@ class ListClusterKubeconfigStatesResponseBodyPage(DaraModel):
         self.page_number = page_number
         # The maximum number of entries per page.
         self.page_size = page_size
-        # The total number of entries.
+        # The total number of results.
         self.total_count = total_count
 
     def validate(self):

@@ -11,9 +11,9 @@ class DescribeTemplateAttributeRequest(DaraModel):
     ):
         # The templatetype.
         # 
-        # - If this parameter is set to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
+        # - If you set this parameter to `kubernetes`, the template is displayed on the Orchestration Templates page in the console.
         # 
-        # - If this parameter is not specified or is set to another value, the template is not displayed on the Orchestration Templates page in the console.
+        # - If you do not specify this parameter or set it to another value, the template is not displayed on the Orchestration Templates page in the console.
         # 
         # Recommended Settings: `kubernetes`.
         self.template_type = template_type

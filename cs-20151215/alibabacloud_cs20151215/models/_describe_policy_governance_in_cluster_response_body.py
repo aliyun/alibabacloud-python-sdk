@@ -18,7 +18,7 @@ class DescribePolicyGovernanceInClusterResponseBody(DaraModel):
         self.violation = violation
         # The current policy governance audit logs of the cluster.
         self.admit_log = admit_log
-        # The counts of enabled policies at different severity levels in the cluster.
+        # The counts of enabled policies at different severity levels in the current cluster.
         self.on_state = on_state
 
     def validate(self):
@@ -74,9 +74,9 @@ class DescribePolicyGovernanceInClusterResponseBodyOnState(DaraModel):
         severity: str = None,
         total: int = None,
     ):
-        # The number of enabled policy types.
+        # The count of currently enabled policy types.
         self.enabled_count = enabled_count
-        # The severity level of the policy governance.
+        # The policy governance severity level.
         self.severity = severity
         # The total number of policy types at the severity level.
         self.total = total
@@ -126,13 +126,13 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLog(DaraModel):
         self.count = count
         # The log project that stores the policy action information.
         self.log_project = log_project
-        # The Logstore that stores the policy action information.
+        # The log store that stores the policy action information.
         self.log_store = log_store
-        # The log information about policy violations.
+        # The log information of policy violations.
         self.logs = logs
         # The status of the query result. Valid values:
-        # * `Complete`: The query is complete and the returned result is complete.
-        # * `Incomplete`: The query is complete but the returned result is incomplete. You must repeat the request to obtain the complete result.
+        # * `Complete`: The query is complete, and the returned result is complete.
+        # * `Incomplete`: The query is complete, but the returned result is incomplete. You must repeat the request to obtain the complete result.
         self.progress = progress
 
     def validate(self):
@@ -209,8 +209,8 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs(DaraModel):
         # The ID of the cluster.
         self.cluster_id = cluster_id
         # The action taken by the policy. Valid values:
-        # - warn: Generates an alert for the policy violation but does not intercept the request.
-        # - deny: Intercepts the request that violates the policy.
+        # - warn: Alerts on policy violations but does not intercept the requests.
+        # - deny: Intercepts requests that violate the policy.
         self.constraint_action = constraint_action
         # The API version of the policy.
         self.constraint_api_version = constraint_api_version
@@ -218,7 +218,7 @@ class DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs(DaraModel):
         self.constraint_category = constraint_category
         # The API group of the policy.
         self.constraint_group = constraint_group
-        # The corresponding Policy Name in policy management.
+        # The policy name in policy management.
         self.constraint_kind = constraint_kind
         # The name of the policy instance.
         self.constraint_name = constraint_name
@@ -449,7 +449,7 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn(DaraM
     ):
         # The description of the policy.
         self.policy_description = policy_description
-        # The Policy Name.
+        # The policy name.
         self.policy_name = policy_name
         # The severity level.
         self.severity = severity
@@ -504,7 +504,7 @@ class DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny(DaraM
     ):
         # The description of the policy.
         self.policy_description = policy_description
-        # The Policy Name.
+        # The policy name.
         self.policy_name = policy_name
         # The severity level.
         self.severity = severity

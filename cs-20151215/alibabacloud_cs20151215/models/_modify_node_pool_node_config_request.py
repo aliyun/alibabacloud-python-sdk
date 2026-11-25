@@ -16,11 +16,11 @@ class ModifyNodePoolNodeConfigRequest(DaraModel):
         os_config: main_models.ModifyNodePoolNodeConfigRequestOsConfig = None,
         rolling_policy: main_models.ModifyNodePoolNodeConfigRequestRollingPolicy = None,
     ):
-        # The containerd runtime configuration.
+        # The containerd runtime configurations.
         self.containerd_config = containerd_config
         # The kubelet parameter settings.
         self.kubelet_config = kubelet_config
-        # The list of nodes to upgrade.
+        # The list of specified nodes to upgrade.
         self.node_names = node_names
         # The operating system parameter settings.
         self.os_config = os_config
@@ -88,11 +88,11 @@ class ModifyNodePoolNodeConfigRequestRollingPolicy(DaraModel):
         max_failed_nodes: int = None,
         max_parallelism: int = None,
     ):
-        # The maximum number of nodes that are allowed to fail during the rolling update. Default value: 0, which indicates that the task fails if any node fails. If the value is greater than 0, the task fails and stops when the cumulative number of failed nodes exceeds this value.
+        # The maximum number of nodes that are allowed to fail during a rolling update. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
         self.max_failed_nodes = max_failed_nodes
-        # Node updates in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be updated in parallel per batch.
+        # Nodes in the node pool are updated in batches. This parameter specifies the maximum number of nodes that can be updated in parallel in each batch.
         # 
-        # Valid values: [1,10].
+        # Valid values: 1 to 10.
         # 
         # Default value: 10.
         self.max_parallelism = max_parallelism
@@ -129,7 +129,7 @@ class ModifyNodePoolNodeConfigRequestOsConfig(DaraModel):
         hugepage: main_models.Hugepage = None,
         sysctl: Dict[str, Any] = None,
     ):
-        # The hugepage configuration.
+        # The hugepage configurations.
         self.hugepage = hugepage
         # The custom sysctl parameter settings.
         self.sysctl = sysctl

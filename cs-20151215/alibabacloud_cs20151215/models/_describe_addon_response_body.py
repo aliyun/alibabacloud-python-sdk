@@ -125,8 +125,8 @@ class DescribeAddonResponseBodyNewerVersions(DaraModel):
         # The minimum cluster version required by this component version.
         self.minimum_cluster_version = minimum_cluster_version
         # Indicates whether the component can be upgraded to this version. Valid values:
-        # - true: Supported.
-        # - false: Not supported.
+        # - true: The component can be upgraded to this version.
+        # - false: The component cannot be upgraded to this version.
         self.upgradable = upgradable
         # The latest version number of the component.
         self.version = version

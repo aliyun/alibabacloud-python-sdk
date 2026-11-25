@@ -69,7 +69,7 @@ class DescribeTemplatesResponseBodyTemplates(DaraModel):
         template_with_hist_id: str = None,
         updated: str = None,
     ):
-        # The access permissions of the deployment template. Valid values:
+        # The access permissions of the user deployment template. Valid values:
         # 
         # - `private`: Private.
         # - `public`: Public.
@@ -83,17 +83,17 @@ class DescribeTemplatesResponseBodyTemplates(DaraModel):
         self.id = id
         # The name of the orchestration template.
         self.name = name
-        # The tags of the orchestration template. If no tag is explicitly specified, the template name is used as the default tag.
+        # The tags of the orchestration template. If not explicitly specified, the default value is the template name.
         self.tags = tags
-        # The content of the orchestration template in YAML format.
+        # The content of the template in YAML format.
         self.template = template
-        # The templatetype. Valid values:
+        # The templatetype.
         # 
         # - `kubernetes`: The template is displayed on the Orchestration Templates page in the console.
         # 
-        # - If this parameter is left empty or set to other values: The template is not displayed on the Orchestration Templates page in the console.
+        # - If this parameter is left empty or set to other values, the template is not displayed on the Orchestration Templates page in the console.
         self.template_type = template_type
-        # The ID of the parent template associated with the orchestration template. This ID is used to implement the multi-version feature for templates. Different versions of the same template share the same `template_with_hist_id` value.
+        # The ID of the parent template associated with the template. This parameter is used to implement the multi-version feature for templates. Different versions of the same template share the same `template_with_hist_id` value.
         self.template_with_hist_id = template_with_hist_id
         # The time when the orchestration template was updated.
         self.updated = updated

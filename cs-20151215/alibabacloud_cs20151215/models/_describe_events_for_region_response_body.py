@@ -73,7 +73,7 @@ class DescribeEventsForRegionResponseBodyPageInfo(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The maximum number of results to return per page.
+        # The maximum number of results to display per page.
         self.page_size = page_size
         # The total number of results.
         self.total_count = total_count

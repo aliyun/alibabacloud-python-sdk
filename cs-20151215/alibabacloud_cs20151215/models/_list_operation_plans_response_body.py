@@ -59,13 +59,13 @@ class ListOperationPlansResponseBodyPlans(DaraModel):
     ):
         # The cluster ID.
         self.cluster_id = cluster_id
-        # The creation time of the execution plan.
+        # The time when the execution plan was created.
         self.created = created
-        # The expected end time in ISO 8601 format, including time zone information.
+        # The expected end time in ISO 8601 format, including the time zone information.
         self.end_time = end_time
         # The execution plan ID.
         self.plan_id = plan_id
-        # The expected start time in ISO 8601 format, including time zone information.
+        # The expected start time in ISO 8601 format, including the time zone information.
         self.start_time = start_time
         # The status. Valid values:
         # - scheduled: Scheduled.

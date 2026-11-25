@@ -73,7 +73,7 @@ class DescribeClusterEventsResponseBodyPageInfo(DaraModel):
     ):
         # The page number.
         self.page_number = page_number
-        # The maximum number of results to display on each page.
+        # The maximum number of results to return per page.
         self.page_size = page_size
         # The total number of results.
         self.total_count = total_count
@@ -129,28 +129,28 @@ class DescribeClusterEventsResponseBodyEvents(DaraModel):
         self.event_id = event_id
         # The event source.
         self.source = source
-        # The object associated with the event.
+        # The operation object associated with the event.
         self.subject = subject
-        # The start time of the event. The time is in ISO 8601 format and includes time zone information.
+        # The start time of the event in ISO 8601 format, including the time zone.
         self.time = time
         # The event type. Valid values:
         # 
-        # - cluster_create: cluster creation
-        # - cluster_scaleout: cluster scale-out
-        # - cluster_attach: addition of existing nodes
-        # - cluster_delete: cluster deletion
-        # - cluster_upgrade: cluster upgrade
-        # - cluster_migrate: cluster migration
-        # - cluster_node_delete: node removal
-        # - cluster_node_drain: node draining
-        # - cluster_modify: cluster modification
-        # - cluster_configuration_modify: cluster management configuration modification
-        # - cluster_addon_install: add-on installation
-        # - cluster_addon_upgrade: add-on upgrade
-        # - cluster_addon_uninstall: add-on uninstallation
-        # - runtime_upgrade: runtime upgrade
-        # - nodepool_upgrade: node pool upgrade
-        # - nodepool_update: node pool update
+        # - cluster_create: Cluster creation.
+        # - cluster_scaleout: Cluster scale-out.
+        # - cluster_attach: Addition of existing nodes.
+        # - cluster_delete: Cluster deletion.
+        # - cluster_upgrade: Cluster upgrade.
+        # - cluster_migrate: Cluster migration.
+        # - cluster_node_delete: Node removal.
+        # - cluster_node_drain: Node draining.
+        # - cluster_modify: Cluster modification.
+        # - cluster_configuration_modify: Cluster management configuration modification.
+        # - cluster_addon_install: Add-on installation.
+        # - cluster_addon_upgrade: Add-on upgrade.
+        # - cluster_addon_uninstall: Add-on uninstallation.
+        # - runtime_upgrade: Runtime upgrade.
+        # - nodepool_upgrade: Node pool upgrade.
+        # - nodepool_update: Node pool update.
         self.type = type
 
     def validate(self):

@@ -16,7 +16,7 @@ class QuotasValue(DaraModel):
         self.quota = quota
         # The quota code.
         self.operation_code = operation_code
-        # Indicates whether the quota can be adjusted.
+        # Specifies whether the quota can be adjusted.
         self.adjustable = adjustable
         # The unit.
         self.unit = unit

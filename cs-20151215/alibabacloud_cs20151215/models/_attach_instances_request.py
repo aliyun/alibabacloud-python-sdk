@@ -12,6 +12,7 @@ class AttachInstancesRequest(DaraModel):
         self,
         cpu_policy: str = None,
         format_disk: bool = None,
+        format_disk_option: str = None,
         image_id: str = None,
         instances: List[str] = None,
         is_edge_worker: bool = None,
@@ -24,28 +25,30 @@ class AttachInstancesRequest(DaraModel):
         tags: List[main_models.Tag] = None,
         user_data: str = None,
     ):
-        # The CPU management policy for the node. The following two policies are supported when the cluster version is 1.12.6 or later:
+        # The CPU management policy for the node. The following policies are supported if the cluster version is 1.12.6 or later. Valid values:
         # 
-        # - `static`: allows you to enhance CPU affinity and exclusivity for pods with specific resource characteristics on the node.
-        # - `none`: uses the existing default CPU affinity policy.
+        # - static: allows you to enhance CPU affinity and exclusivity for pods with specific resource characteristics on the node.
+        # - none: uses the existing default CPU affinity policy.
         # 
-        # Default value: `none`.
+        # Default value: none.
         # 
         # > This parameter is not supported if nodepool_id is specified.
         self.cpu_policy = cpu_policy
         # Specifies whether to store container data and images on a data cloud disk. Valid values:
         # 
-        # - `true`: stores container data and images on a data cloud disk.
-        # - `false`: does not store container data and images on a data cloud disk.
+        # - true: stores container data and images on a data cloud disk.
+        # - false: does not store container data and images on a data cloud disk.
         # 
-        # Default value: `false`.
+        # Default value: false.
         # 
         # Data cloud disk mounting rules:
         # 
         # - If the ECS instance has data cloud disks attached and the file system of the last data cloud disk is not initialized, the system automatically formats the data cloud disk to EXT4 to store the /var/lib/docker and /var/lib/kubelet directories, which are the default data directories for the Docker container runtime and kubelet component.
         # - If the ECS instance does not have data cloud disks attached, no new data cloud disk is attached.
-        # > If you choose to store data on a data cloud disk and the ECS instance already has data cloud disks attached, the existing data on the data cloud disks will be lost. Back up your data first.
+        # > If you choose to store data on a data cloud disk and the ECS instance already has data cloud disks attached, the existing data on the data cloud disks will be lost. Back up your data in advance.
         self.format_disk = format_disk
+        # The disk formatting method. This parameter is mutually exclusive with format_disk.
+        self.format_disk_option = format_disk_option
         # The custom image ID.
         # 
         # - If you specify a custom image ID, the system cloud disk image of the instance is replaced with the custom image.
@@ -59,30 +62,30 @@ class AttachInstancesRequest(DaraModel):
         self.instances = instances
         # Specifies whether the node to be added is an edge node, namely an ENS node. Valid values:
         # 
-        # - `true`: The node to be added is an edge node.
-        # - `false`: The node to be added is not an edge node.
+        # - true: The node to be added is an edge node.
+        # - false: The node to be added is not an edge node.
         # 
-        # Default value: `false`.
+        # Default value: false.
         # 
-        # > If the node is an edge node, you must set this parameter to `true` to identify the node type as an ENS node.
+        # > If the node is an edge node, you must set this parameter to true to identify the node type as an ENS node.
         self.is_edge_worker = is_edge_worker
         # Specifies whether to retain the original instance name. Valid values:
         # 
-        # - `true`: retains the instance name.
-        # - `false`: does not retain the instance name.
+        # - true: retains the instance name.
+        # - false: does not retain the instance name.
         # 
-        # Default value: `false`.
+        # Default value: false.
         self.keep_instance_name = keep_instance_name
-        # The name of the key pair for the instances to be added. You can specify either the key_pair or password parameter, or leave both empty.
+        # The name of the key pair for the instances to be added. You can specify either key_pair or password, or leave both empty.
         # > This parameter is not supported if nodepool_id is specified.
         self.key_pair = key_pair
         # The node pool ID. If you do not specify this parameter, the node is added to the default node pool.
         self.nodepool_id = nodepool_id
-        # The SSH logon password for the instances to be added. You can specify either the key_pair or password parameter, or leave both empty.
+        # The SSH logon password for the instances to be added. You can specify either key_pair or password, or leave both empty.
         # 
         # The password must meet the following requirements:
-        # - The password must be 8 to 30 characters in length.
-        # - The password must contain uppercase letters, lowercase letters, digits, and special characters.
+        # - The password is 8 to 30 characters in length.
+        # - The password contains uppercase letters, lowercase letters, digits, and special characters.
         # - The password cannot contain backslashes (\\) or double quotation marks (").
         # 
         # For security purposes, the password is encrypted during transmission.
@@ -109,7 +112,7 @@ class AttachInstancesRequest(DaraModel):
         # - A label is a case-sensitive key-value pair. You can configure up to 20 labels.
         # - Label keys must be unique and can be up to 64 characters in length.
         # - Label values can be empty and can be up to 128 characters in length.
-        # - Label keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`.
+        # - Label keys and values cannot start with aliyun, acs:, https://, or http://.
         # 
         # For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
         # > This parameter is not supported if nodepool_id is specified.
@@ -137,6 +140,9 @@ class AttachInstancesRequest(DaraModel):
 
         if self.format_disk is not None:
             result['format_disk'] = self.format_disk
+
+        if self.format_disk_option is not None:
+            result['format_disk_option'] = self.format_disk_option
 
         if self.image_id is not None:
             result['image_id'] = self.image_id
@@ -182,6 +188,9 @@ class AttachInstancesRequest(DaraModel):
 
         if m.get('format_disk') is not None:
             self.format_disk = m.get('format_disk')
+
+        if m.get('format_disk_option') is not None:
+            self.format_disk_option = m.get('format_disk_option')
 
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')

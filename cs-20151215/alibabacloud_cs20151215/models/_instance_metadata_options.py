@@ -9,16 +9,16 @@ class InstanceMetadataOptions(DaraModel):
         self,
         http_tokens: str = None,
     ):
-        # The ECS instance metadata access mode configuration. Valid values:
+        # The access mode configuration for ECS instance metadata. Valid values:
         # 
         # * `optional`: Compatible with both normal mode and hardened mode.
-        # * `required`: Enables hardened mode only (IMDSv2). After this mode is enabled, applications in the node cannot access ECS instance metadata in normal mode.
+        # * `required`: Enables hardened mode only (IMDSv2). After this mode is enabled, applications on the node cannot access ECS instance metadata in normal mode.
         # 
         # Default value: `optional`.
         # 
         # >Notice: 
         # 
-        # * This parameter is currently available only by whitelist. To use this parameter, submit a ticket.
+        # * This parameter is currently available only to whitelisted users. To use this parameter, submit a ticket.
         # * Only ACK managed clusters of version 1.28 and later support this parameter.
         # 
         # 

@@ -12,7 +12,7 @@ class UnInstallClusterAddonsRequest(DaraModel):
         self,
         addons: List[main_models.UnInstallClusterAddonsRequestAddons] = None,
     ):
-        # The list of components.
+        # The list of add-ons.
         self.addons = addons
 
     def validate(self):
@@ -49,11 +49,11 @@ class UnInstallClusterAddonsRequestAddons(DaraModel):
         cleanup_cloud_resources: bool = None,
         name: str = None,
     ):
-        # Specifies whether to clean up the associated cloud resources when uninstalling the component. Valid values:
-        # - true: Clean up.
-        # - false: Retain.
+        # Specifies whether to delete the associated cloud resources when uninstalling the add-on. Valid values:
+        # - true: Deletes the resources.
+        # - false: Retains the resources.
         self.cleanup_cloud_resources = cleanup_cloud_resources
-        # The name of the component to uninstall. You can call the [ListClusterAddonInstances](https://help.aliyun.com/document_detail/2667940.html) operation to query the components installed in the cluster.
+        # The name of the add-on to uninstall. You can call the [ListClusterAddonInstances](https://help.aliyun.com/document_detail/2667940.html) operation to query the add-ons installed in the cluster.
         self.name = name
 
     def validate(self):
