@@ -15,9 +15,9 @@ class ModifyInstanceNetworkOptionsRequest(DaraModel):
     ):
         # The bandwidth weight.
         # 
-        # The supported values vary by instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the bandwidth weight values supported by the instance type.
+        # The supported values vary based on the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the bandwidth weight values supported by the instance type.
         self.bandwidth_weighting = bandwidth_weighting
-        # The instance ID for which to modify the network bandwidth weight.
+        # The instance ID for which you want to modify the network bandwidth weight.
         self.instance_id = instance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account

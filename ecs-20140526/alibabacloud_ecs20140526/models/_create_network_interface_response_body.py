@@ -54,20 +54,20 @@ class CreateNetworkInterfaceResponseBody(DaraModel):
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.security_group_ids = security_group_ids
-        # The ID of the Virtual Network Operator (VNO) associated with the Elastic Network Interface (ENI).
+        # The ID of the Virtual Network Operator (VNO) corresponding to the Elastic Network Interface (ENI).
         self.service_id = service_id
         # Indicates whether the user of the Elastic Network Interface (ENI) is a cloud service or a VNO.
         self.service_managed = service_managed
         # > This parameter is in invitational preview and is not yet available.
         self.source_dest_check = source_dest_check
-        # The status of the Elastic Network Interface (ENI).
+        # The status of the elastic network interface (ENI).
         self.status = status
         self.tags = tags
         # The type of the Elastic Network Interface (ENI).
         self.type = type
         # The ID of the vSwitch in the VPC.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC) to which the ENI belongs.
+        # The ID of the VPC to which the ENI belongs.
         self.vpc_id = vpc_id
         # The zone ID.
         self.zone_id = zone_id

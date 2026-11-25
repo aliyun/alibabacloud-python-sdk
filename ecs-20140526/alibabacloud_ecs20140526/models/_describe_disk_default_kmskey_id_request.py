@@ -12,7 +12,7 @@ class DescribeDiskDefaultKMSKeyIdRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) to view the latest list of Alibaba Cloud regions.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) operation to query the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id

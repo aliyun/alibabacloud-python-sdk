@@ -26,46 +26,46 @@ class ModifyAutoProvisioningGroupRequest(DaraModel):
         terminate_instances_with_expiration: bool = None,
         total_target_capacity: str = None,
     ):
-        # The ID of the auto provisioning group.
+        # The ID of the auto-provisioning group.
         self.auto_provisioning_group_id = auto_provisioning_group_id
-        # The name of the auto provisioning group. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. The name can contain digits, colons (:), underscores (_), or hyphens (-).
+        # The name of the auto-provisioning group. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter or a Chinese character and cannot start with http:// or https://.
         self.auto_provisioning_group_name = auto_provisioning_group_name
-        # The billing method of the capacity difference when the sum of PayAsYouGoTargetCapacity and SpotTargetCapacity is less than TotalTargetCapacity. Valid values:
+        # Specifies the billing method for the supplemental capacity when the sum of PayAsYouGoTargetCapacity and SpotTargetCapacity is less than TotalTargetCapacity. Valid values:
         # 
-        # - PayAsYouGo: pay-as-you-go instance.
-        # - Spot: spot instance.
+        # - PayAsYouGo: pay-as-you-go instances.
+        # - Spot: spot instances.
         self.default_target_capacity_type = default_target_capacity_type
-        # Specifies whether to release instances when the real-time capacity of the auto provisioning group exceeds the target capacity and a scale-in event is triggered. Valid values:
+        # Specifies whether to release the instances that are removed during a scale-in event when the real-time capacity of the auto-provisioning group exceeds the target capacity and triggers a scale-in. Valid values:
         # 
-        # - termination: Releases the scaled-in instances.
-        # - no-termination: Only removes the scaled-in instances from the auto provisioning group.
+        # - termination: releases the instances that are removed during the scale-in.
+        # - no-termination: only removes the instances from the auto-provisioning group without releasing them.
         self.excess_capacity_termination_policy = excess_capacity_termination_policy
-        # The extended launch template list.
+        # The extended launch templates.
         self.launch_template_config = launch_template_config
-        # The maximum price of spot instances in the auto provisioning group.
+        # The maximum price of spot instances in the auto-provisioning group.
         # 
-        # > If both MaxSpotPrice and LaunchTemplateConfig.N.MaxPrice are specified, the lower value is used. LaunchTemplateConfig.N.MaxPrice is specified in Settings when the auto provisioning group is created and cannot be modified.
+        # > If both MaxSpotPrice and LaunchTemplateConfig.N.MaxPrice are specified, the lower value takes precedence. LaunchTemplateConfig.N.MaxPrice is specified when the auto-provisioning group is created and cannot be modified.
         self.max_spot_price = max_spot_price
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The target capacity of pay-as-you-go instances in the auto provisioning group. Valid values: less than the parameter value of TotalTargetCapacity.
+        # The target capacity of pay-as-you-go instances in the auto-provisioning group. Valid values: less than the value of TotalTargetCapacity.
         self.pay_as_you_go_target_capacity = pay_as_you_go_target_capacity
-        # The region ID of the auto provisioning group. You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The ID of the region where the auto-provisioning group resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The target capacity of spot instances in the auto provisioning group. Valid values: less than the parameter value of TotalTargetCapacity.
+        # The target capacity of spot instances in the auto-provisioning group. Valid values: less than the value of TotalTargetCapacity.
         self.spot_target_capacity = spot_target_capacity
-        # Specifies whether to release instances in the auto provisioning group when the group expires. Valid values:
+        # Specifies whether to release the instances in the auto-provisioning group when the group expires. Valid values:
         # 
-        # - true: Releases the instances in the group.
-        # - false: Only removes the instances from the auto provisioning group.
+        # - true: releases the instances in the group.
+        # - false: only removes the instances from the group without releasing them.
         self.terminate_instances_with_expiration = terminate_instances_with_expiration
-        # The total target capacity of the auto provisioning group. Valid values: positive integers.
+        # The total target capacity of the auto-provisioning group. Valid values: positive integers.
         # 
-        # The total capacity must be greater than or equal to the sum of PayAsYouGoTargetCapacity (the target capacity of pay-as-you-go instances) and SpotTargetCapacity (the target capacity of spot instances).
+        # The total target capacity must be greater than or equal to the sum of PayAsYouGoTargetCapacity (the target capacity of pay-as-you-go instances) and SpotTargetCapacity (the target capacity of spot instances).
         self.total_target_capacity = total_target_capacity
 
     def validate(self):
@@ -189,20 +189,20 @@ class ModifyAutoProvisioningGroupRequestLaunchTemplateConfig(DaraModel):
         v_switch_id: str = None,
         weighted_capacity: float = None,
     ):
-        # The instance type specified in the extension launch template. Valid values of N: 1 to 20. For more information, see [Instance family](https://help.aliyun.com/document_detail/25378.html).
+        # The instance type specified in the extended launch template. Valid values of N: 1 to 20. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         self.instance_type = instance_type
         # The maximum price of the spot instance in the extended launch template.
         self.max_price = max_price
         # The priority of the extended launch template. A value of 0 indicates the highest priority. Valid values: greater than 0.
         self.priority = priority
-        # The ID of the vSwitch to which the ECS instance belongs in the extended launch template. The zone of the ECS instance launched from the extended template is determined by the vSwitch.
+        # The ID of the vSwitch to which the ECS instances in the extended launch template belong. The zone of the ECS instances launched by using the extended template is determined by the vSwitch.
         self.v_switch_id = v_switch_id
-        # The weight of the instance type specified in the extended launch template. A higher value indicates that a single instance can meet more computing requirements, which means fewer instances are required. Valid values: greater than 0.
+        # The weight of the instance type in the extended launch template. A higher weight indicates that a single instance has more computing power and fewer instances are required. Valid values: greater than 0.
         # 
-        # You can calculate the weight based on the computing power of the specified instance type and the minimum computing power of a single node in the cluster. For example, if the minimum computing power of a single node is 8 vCPUs and 60 GiB:
+        # You can determine the weight based on the computing power of the specified instance type and the minimum computing power of a single node in the cluster. For example, if the minimum computing power of a single node is 8 vCPUs and 60 GiB of memory:
         # 
-        # - The weight of an instance type with 8 vCPUs and 60 GiB can be set to 1.
-        # - The weight of an instance type with 16 vCPUs and 120 GiB can be set to 2.
+        # - You can set the weight of an instance type with 8 vCPUs and 60 GiB of memory to 1.
+        # - You can set the weight of an instance type with 16 vCPUs and 120 GiB of memory to 2.
         self.weighted_capacity = weighted_capacity
 
     def validate(self):

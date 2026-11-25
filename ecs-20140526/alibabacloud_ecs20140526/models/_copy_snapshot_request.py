@@ -29,7 +29,7 @@ class CopySnapshotRequest(DaraModel):
     ):
         # >This parameter is in invitational preview and is not supported.
         self.arn = arn
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The ID of the destination region for the new snapshot.
         # 
@@ -41,7 +41,7 @@ class CopySnapshotRequest(DaraModel):
         # 
         # This parameter is required.
         self.destination_snapshot_description = destination_snapshot_description
-        # The name of the new snapshot. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character, and cannot start with http:// or https://. It supports characters in the Unicode Letter category, including English letters, Chinese characters, and digits. It can contain colons (:), underscores (_), periods (.), or hyphens (-).
+        # The name of the new snapshot. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. It can contain letters, digits, and Chinese characters. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # Default value: empty.
         # 
@@ -56,10 +56,10 @@ class CopySnapshotRequest(DaraModel):
         # 
         # Default value: false.
         self.encrypted = encrypted
-        # The customer master key (CMK) managed by Key Management Service (KMS) in the destination region.
+        # The KMS customer master key (CMK) in the destination region.
         self.kmskey_id = kmskey_id
         self.owner_id = owner_id
-        # The region of the source snapshot. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region where the source snapshot resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -69,7 +69,7 @@ class CopySnapshotRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The retention period of the new snapshot. Unit: days. The snapshot is subject to automatic release when the retention period expires. Valid values: 1 to 65536.
         # 
-        # Default value: empty, which indicates that the snapshot is not scheduled for automatic release.
+        # Default value: empty, which indicates that the snapshot is not subject to automatic release.
         self.retention_days = retention_days
         # The ID of the source snapshot.
         # 
@@ -211,9 +211,9 @@ class CopySnapshotRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the new snapshot. If specified, the value cannot be an empty string. The value can be up to 128 characters in length, cannot start with aliyun or acs:, and cannot contain http:// or https://.
+        # The tag key of the new snapshot. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
-        # The tag value of the new snapshot. This parameter can be left empty. It can be up to 128 characters in length, and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # The tag value of the new snapshot. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

@@ -23,7 +23,7 @@ class ListPluginStatusRequest(DaraModel):
     ):
         # The instance ID. You can specify up to 50 instance IDs in a single request. Valid values of N: 1 to 50.
         self.instance_id = instance_id
-        # The maximum number of entries to return per page in a paging query.
+        # The maximum number of entries per page for a paging query.
         # 
         # Maximum value: 50.
         # 
@@ -31,19 +31,19 @@ class ListPluginStatusRequest(DaraModel):
         self.max_results = max_results
         # The plugin name. All characters are supported. The name can be up to 255 characters in length.
         # 
-        # - If you do not specify this parameter, the status of installed plugins on the instance is queried.
+        # - If you do not specify this parameter, the status of all installed plugins on the instance is queried.
         # 
         #     > If you do not specify this parameter, you can specify only one instance ID.
         # 
         # - If you specify this parameter, the status of the specified plugin on the instance is queried.
         self.name = name
-        # The pagination token. Set the value to the NextToken value returned in the previous call.
+        # The pagination token. Set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults to perform paging query operations.
+        # > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults for paging.
         self.page_number = page_number
-        # > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults to perform paging query operations.
+        # > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults for paging.
         self.page_size = page_size
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 

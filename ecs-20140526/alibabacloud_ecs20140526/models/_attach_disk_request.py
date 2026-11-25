@@ -28,7 +28,7 @@ class AttachDiskRequest(DaraModel):
         # 
         # Default value: false.
         # 
-        # > If you set this parameter to `Bootable=true`, the destination ECS instance must not have a system disk attached.
+        # > If you set Bootable to true, the destination ECS instance must not have a system disk attached.
         self.bootable = bootable
         # Specifies whether to release the disk when the instance is released. Valid values:
         # 
@@ -39,19 +39,19 @@ class AttachDiskRequest(DaraModel):
         # 
         # When you configure this parameter, take note of the following items:
         # 
-        # - If you set `DeleteWithInstance` to `false` and the ECS instance is locked for security reasons (that is, `"LockReason" : "security"` is marked in `OperationLocks`), this property of the disk is ignored and the disk is released when the ECS instance is released.
+        # - If you set DeleteWithInstance to false and the ECS instance is locked for security reasons (that is, `{"OperationLocks": {"LockReason" : "security"}}` is returned), this property of the disk is ignored and the disk is released along with the instance when the instance is released.
         # 
-        # - If the destination disk that you want to attach is an `elastic ephemeral disk`, you must set the `DeleteWithInstance` parameter to `true`.
+        # - If the destination disk you want to attach is an elastic ephemeral disk, you must set DeleteWithInstance to true.
         # 
         # - This parameter cannot be configured for disks with the multi-attach feature enabled.
         self.delete_with_instance = delete_with_instance
         # The device name of the disk.
         # 
-        # > This parameter is being deprecated. To improve compatibility, we recommend that you use other parameters to identify the disk.
+        # > This parameter will be deprecated. To improve compatibility, use other parameters to identify the disk.
         self.device = device
-        # The ID of the disk that you want to attach. The disk (`DiskId`) and the instance (`InstanceId`) must be in the same zone.
+        # The ID of the disk that you want to attach. The disk (DiskId) and the instance (InstanceId) must reside in the same zone.
         # 
-        # > You can attach data disks and system disks. For the related constraints, see the operation description section above.
+        # > You can attach both data disks and system disks. For the related constraints, see the operation description section above.
         # 
         # This parameter is required.
         self.disk_id = disk_id
@@ -63,7 +63,7 @@ class AttachDiskRequest(DaraModel):
         # Default value: false.
         # 
         # 
-        # > Currently, only regional Enterprise SSDs (ESSDs) (`cloud_regional_disk_auto`) support setting this parameter to true.
+        # > Currently, only regional Enterprise SSDs (ESSDs) (cloud_regional_disk_auto) support setting this parameter to true.
         self.force = force
         # The ID of the ECS instance to which you want to attach the disk.
         # 
@@ -71,20 +71,21 @@ class AttachDiskRequest(DaraModel):
         self.instance_id = instance_id
         # The name of the SSH key pair to bind to a Linux ECS instance when you attach a system disk.
         # 
-        # - Windows Server: SSH key pairs are not supported. Even if you specify this parameter, only the `Password` configuration is applied.
+        # - Windows Server: SSH key pairs are not supported. Even if you specify this parameter, only the Password configuration takes effect.
         # 
-        # - Linux: Password-based logon is disabled by default.
+        # - Linux: Password logon is disabled by default.
         self.key_pair_name = key_pair_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The logon password of the instance, which is configured when you attach a system disk. This parameter takes effect only for the administrator and root usernames and does not take effect for other usernames. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The special characters can be:
+        # The logon password for the instance, which is configured when you attach a system disk. This parameter takes effect only for the administrator and root usernames. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The following special characters are supported:
         # 
         # ```
         # ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
         # ```
+        # 
         # For Windows instances, the password cannot start with a forward slash (/).
         # 
-        # > If you specify the `Password` parameter, send the request over HTTPS to prevent password leaks.
+        # > If you specify the Password parameter, use HTTPS to send the request to prevent password leaks.
         self.password = password
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

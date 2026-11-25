@@ -16,11 +16,11 @@ class DeleteVscRequest(DaraModel):
         resource_owner_id: int = None,
         vsc_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # Specifies whether to perform a dry run for the request. Valid values:
-        # - true: Performs a dry run and does not query the resource status. The checks include whether the AccessKey pair is valid, the authorization of the Resource Access Management (RAM) user, and whether the required parameters are specified. If the dry run fails, the corresponding error is returned. If the dry run succeeds, the DryRunOperation error code is returned.
-        # - false: Sends a normal request. If the dry run succeeds, a 2XX HTTP status code is returned and the resource status is queried.
+        # Specifies whether to perform only a dry run on the request. Valid values:
+        # - true: performs a dry run and does not query the resource status. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user has the required authorization, and whether the required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        # - false: sends a normal request. If the request passes the dry run, a 2xx HTTP status code is returned and the resource status is queried.
         # Default value: false.
         self.dry_run = dry_run
         self.owner_account = owner_account
@@ -31,7 +31,7 @@ class DeleteVscRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VSC to delete.
+        # The ID of the VSC that you want to delete.
         # 
         # This parameter is required.
         self.vsc_id = vsc_id

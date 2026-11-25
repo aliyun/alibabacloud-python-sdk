@@ -18,22 +18,22 @@ class DescribeAutoSnapshotPolicyAssociationsRequest(DaraModel):
         resource_owner_id: int = None,
     ):
         # The ID of the automatic snapshot policy.
-        # - You can specify only one of AutoSnapshotPolicyId and DiskId.
+        # - You can specify only one of the AutoSnapshotPolicyId and DiskId parameters.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The cloud disk ID.
-        # - You can specify only one of AutoSnapshotPolicyId and DiskId.
+        # The ID of the cloud disk.
+        # - You can specify only one of the AutoSnapshotPolicyId and DiskId parameters.
         self.disk_id = disk_id
-        # The maximum number of entries per page for paging queries. Maximum value: 100.
+        # The number of entries per page for a paged query. The maximum paging value is 100.
         # 
         # Default value:
-        # - When no value is set or the value is set to less than 10, the default value is 10.
-        # - When the value is set to greater than 100, the default value is 100.
+        # - If you do not specify Settings or the Settings value is less than 10, the default value is 10.
+        # - If the Settings value is greater than 100, the default value is 100.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the value of NextToken returned in the previous API call.
+        # The query token. The value is the `NextToken` parameter value returned by the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the automatic snapshot policy. You can call [DescribeRegions](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-describeregions) to query the most recent list of Alibaba Cloud regions.
+        # The region ID of the automatic snapshot policy. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/ecs/developer-reference/api-ecs-2014-05-26-describeregions) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

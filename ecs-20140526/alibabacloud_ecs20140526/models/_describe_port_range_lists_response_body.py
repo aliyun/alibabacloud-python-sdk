@@ -14,9 +14,9 @@ class DescribePortRangeListsResponseBody(DaraModel):
         port_range_lists: List[main_models.DescribePortRangeListsResponseBodyPortRangeLists] = None,
         request_id: str = None,
     ):
-        # The pagination token returned in this call. If the return value is empty, no more data is available.
+        # The pagination token returned for the current call. If the value is empty, no more data is available.
         self.next_token = next_token
-        # The port range list information.
+        # The port lists.
         self.port_range_lists = port_range_lists
         # The request ID.
         self.request_id = request_id
@@ -75,19 +75,19 @@ class DescribePortRangeListsResponseBodyPortRangeLists(DaraModel):
     ):
         # The number of associated resources.
         self.association_count = association_count
-        # The time when the port range list was created. The time is in ISO 8601 format and displayed in UTC.
+        # The creation time of the port list. The time follows the ISO 8601 standard in the UTC time zone.
         self.creation_time = creation_time
-        # The description of the port range list.
+        # The description of the port list.
         self.description = description
-        # The maximum number of entries supported by the port range list.
+        # The maximum number of entries that the port list supports.
         self.max_entries = max_entries
-        # The ID of the port range list.
+        # The ID of the port list.
         self.port_range_list_id = port_range_list_id
-        # The name of the port range list.
+        # The name of the port list.
         self.port_range_list_name = port_range_list_name
-        # The ID of the resource group to which the port range list belongs.
+        # The ID of the resource group to which the port list belongs.
         self.resource_group_id = resource_group_id
-        # The tags of the port range list.
+        # The tags of the port list.
         self.tags = tags
 
     def validate(self):
@@ -166,9 +166,9 @@ class DescribePortRangeListsResponseBodyPortRangeListsTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the port range list.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The tag value of the port range list.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

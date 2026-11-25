@@ -11,7 +11,7 @@ class CreateNetworkInterfacePermissionResponseBody(DaraModel):
         network_interface_permission: main_models.CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission = None,
         request_id: str = None,
     ):
-        # The collection of information composed of the Elastic network interface controller (NIC) permission list.
+        # The collection of elastic network interface controller (NIC) permissions.
         self.network_interface_permission = network_interface_permission
         # The request ID.
         self.request_id = request_id
@@ -56,13 +56,13 @@ class CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission(Dar
     ):
         # The account ID of the Alibaba Cloud partner (certified ISV).
         self.account_id = account_id
-        # The ID of the Elastic network interface controller (NIC).
+        # The ID of the Elastic Network Interface (ENI).
         self.network_interface_id = network_interface_id
-        # The ID of the Elastic network interface controller (NIC) permission.
+        # The ID of the elastic network interface controller (NIC) permission.
         self.network_interface_permission_id = network_interface_permission_id
-        # The Elastic network interface controller (NIC) permission.
+        # The elastic network interface controller (NIC) permission.
         self.permission = permission
-        # The state of the Elastic network interface controller (NIC) permission. Valid values:
+        # The state of the elastic network interface controller (NIC) permission. Valid values:
         # 
         # - Pending: The authorization is in progress.
         # - Granted: The authorization is granted.

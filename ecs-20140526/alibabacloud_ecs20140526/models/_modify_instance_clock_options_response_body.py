@@ -12,7 +12,7 @@ class ModifyInstanceClockOptionsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The modification task ID.
+        # The ID of the modification task.
         # 
         # You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the modification result.
         self.task_id = task_id

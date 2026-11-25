@@ -16,7 +16,7 @@ class EndTerminalSessionRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the session resides.
+        # The ID of the region where the session is located.
         # 
         # This parameter is required.
         self.region_id = region_id

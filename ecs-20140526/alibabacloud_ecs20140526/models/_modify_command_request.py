@@ -20,29 +20,29 @@ class ModifyCommandRequest(DaraModel):
         timeout: int = None,
         working_dir: str = None,
     ):
-        # > This parameter is deprecated and does not take effect even if specified.
+        # > **[Deprecated]** This parameter is deprecated. Specifying this parameter does not take effect.
         self.command_content = command_content
-        # The command ID. You can call [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) to query all available command IDs.
+        # The command ID. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
         # 
         # This parameter is required.
         self.command_id = command_id
-        # The command description. The description supports all character sets and can be up to 512 characters in length.
+        # The command description. It supports all character sets and can be up to 512 characters in length.
         self.description = description
-        # The bootstrap program for script execution. The value can be up to 1 KB in length.
+        # The bootstrap program for script execution. It can be up to 1 KB in length.
         self.launcher = launcher
-        # The command name. The name supports all character sets and can be up to 128 characters in length.
+        # The command name. It supports all character sets and can be up to 128 characters in length.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The maximum timeout period for the command to run on ECS instances. Unit: seconds. If the command cannot be completed within the specified timeout period, the command times out. When a timeout occurs, the command process is forcefully terminated by canceling the PID of the command.
+        # The maximum timeout period for executing the command on an ECS instance, in seconds. If the command cannot be run and completed within the specified period, a timeout occurs. After a timeout occurs, the command process is forcibly terminated and the PID of the command is canceled.
         self.timeout = timeout
-        # The execution path. The path can be up to 200 characters in length.
+        # The execution path. It can be up to 200 characters in length.
         self.working_dir = working_dir
 
     def validate(self):

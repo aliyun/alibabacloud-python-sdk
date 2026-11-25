@@ -16,13 +16,13 @@ class CreateDiagnosticReportRequest(DaraModel):
         resource_id: str = None,
         start_time: str = None,
     ):
-        # The additional options in JSON format.
+        # The extended parameters in JSON format.
         self.additional_options = additional_options
-        # The end time. Specify the time in the ISO 8601 standard in the UTC time zone. This parameter takes effect only for diagnostic metrics that do not require Cloud Assistant commands to be executed in the guest OS.
+        # The end time. The time follows the ISO 8601 standard and is displayed in UTC. This parameter takes effect only for diagnostic metrics that do not require Cloud Assistant commands to be executed in the guest OS.
         self.end_time = end_time
         # The metric set ID. If this parameter is left empty, the default metric set dms-instancedefault for ECS instances is used.
         self.metric_set_id = metric_set_id
-        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -30,7 +30,7 @@ class CreateDiagnosticReportRequest(DaraModel):
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The start time. Specify the time in the ISO 8601 standard in the UTC time zone. This parameter takes effect only for diagnostic metrics that do not require Cloud Assistant commands to be executed in the guest OS.
+        # The start time. The time follows the ISO 8601 standard and is displayed in UTC. This parameter takes effect only for diagnostic metrics that do not require Cloud Assistant commands to be executed in the guest OS.
         self.start_time = start_time
 
     def validate(self):

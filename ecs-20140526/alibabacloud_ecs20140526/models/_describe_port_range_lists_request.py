@@ -22,31 +22,31 @@ class DescribePortRangeListsRequest(DaraModel):
         resource_owner_id: int = None,
         tag: List[main_models.DescribePortRangeListsRequestTag] = None,
     ):
-        # The number of entries per page for a paged query.
+        # The number of entries to return per page for paging in a paged query.
         # 
         # - Maximum value: 100.
         # 
         # - Default value: 10.
         self.max_results = max_results
-        # The pagination token. Set this parameter to the NextToken value returned in the previous call to this operation. You do not need to set this parameter for the first request.
+        # The pagination token. The value is the NextToken value returned from the previous call. You do not need to specify this parameter for the first call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the port range list. Valid values of N: 0 to 100.
+        # The ID of the port list. Valid values of N: 0 to 100.
         self.port_range_list_id = port_range_list_id
-        # The name of the port range list. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. The name cannot start with http://, https://, com.aliyun, or com.alibabacloud. The name can contain letters, Chinese characters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the port list. The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with http://, https://, com.aliyun, or com.alibabacloud. It can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         self.port_range_list_name = port_range_list_name
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1,000. You can invoke [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) to query the list of resource groups.
+        # The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1,000. You can invoke the [ListResourceGroups](https://help.aliyun.com/document_detail/2716558.html) operation to query the resource group list.
         # 
-        # >Filtering by the default resource group is not supported.
+        # > Filtering by the default resource group is not supported.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags bound to the port range list.
+        # The tags bound to the port list.
         self.tag = tag
 
     def validate(self):
@@ -145,7 +145,7 @@ class DescribePortRangeListsRequestTag(DaraModel):
     ):
         # The tag key of the instance. Valid values of N: 1 to 20.
         # 
-        # If you use a single tag to filter resources, the resource count with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count that has all specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call [ListTagResources](https://help.aliyun.com/document_detail/110425.html) to query resources.
+        # If you use a single tag to filter resources, the resource count of resources under this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources attached to all the specified tags cannot exceed 1,000. If the resource count exceeds 1,000, invoke the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         self.key = key
         # The tag value.
         self.value = value

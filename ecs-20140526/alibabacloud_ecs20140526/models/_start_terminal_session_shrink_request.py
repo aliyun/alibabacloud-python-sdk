@@ -24,17 +24,17 @@ class StartTerminalSessionShrinkRequest(DaraModel):
         target_server: str = None,
         username: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that it is unique among different requests. The **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The command to execute after the session is initiated. The value cannot exceed 512 characters in length.
+        # The command to be executed after the session is initiated. The command cannot exceed 512 characters in length.
         # 
-        # > If you specify `CommandLine`, you cannot specify `PortNumber` or `TargetServer`.
+        # > After CommandLine is specified, you cannot specify PortNumber or TargetServer.
         self.command_line = command_line
-        # The network type of the WebSocket URL required for remotely connecting to the instance. Valid values:
-        # - Internet: the Internet (default).
+        # The network type of the WebSocket URL required for a remote connection to the instance. Valid values:
+        # - Internet: the Internet. This is the default value.
         # - Intranet: the internal network.
         self.connection_type = connection_type
-        # The session encryption configuration.
+        # The session encryption configurations.
         self.encryption_options_shrink = encryption_options_shrink
         # The list of instance IDs.
         # 
@@ -42,24 +42,24 @@ class StartTerminalSessionShrinkRequest(DaraModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The name of the user password used when using Session Manager on a Windows instance. The value cannot exceed 255 characters in length.
-        # If you want to use Session Manager on a Windows instance as a non-default user (other than System), you must specify both `Username` and this parameter. To reduce the risk of password leakage, the plaintext password must be hosted in the parameter repository of CloudOps Orchestration Service, and you only need to pass the password name here. For more information, see [Encrypt a parameter](https://help.aliyun.com/document_detail/186828.html).
+        # The name of the user password used when Session Manager is used on a Windows instance. The name cannot exceed 255 characters in length.
+        # If you want to use Session Manager on a Windows instance as a non-default user (System), you must specify both the Username parameter and this parameter. To reduce the risk of password leakage, the plaintext password must be hosted in the operations management parameter repository, and only the password name is passed here. For more information, see [Encrypted parameters](https://help.aliyun.com/document_detail/186828.html).
         self.password_name = password_name
-        # The port number of the ECS instance used for port forwarding. If you specify this parameter, the Cloud Assistant Agent forwards data to the specified port. For example, SSH uses port 22.
+        # The port number of the ECS instance, which is used for data forwarding. After this parameter is specified, data forwarding of Cloud Assistant Agent is directed to the specified port number for port forwarding. For example, SSH uses port 22.
         # 
-        # Default value: empty, which indicates that no port number is specified for port forwarding.
+        # Default value: null, which indicates that the port number for data forwarding is not specified.
         self.port_number = port_number
-        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the latest regions.
+        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The address of the destination service in the VPC that is accessed through the instance.
+        # The destination service address in the VPC that is accessed through the instance.
         # 
-        # > If this parameter is not empty, `PortNumber` specifies the port number of the destination service in the VPC accessed through the managed instance.
+        # > When this parameter is not empty, PortNumber specifies the port number of the destination service in the VPC that is accessed through the managed instance.
         self.target_server = target_server
-        # The username used to connect to the instance.
+        # The username used for the connection.
         self.username = username
 
     def validate(self):

@@ -18,7 +18,7 @@ class DescribeStorageCapacityUnitsResponseBody(DaraModel):
     ):
         # The page number of the SCU list.
         self.page_number = page_number
-        # The number of entries per page in paging queries.
+        # The number of entries per page for paging in a paged query.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id

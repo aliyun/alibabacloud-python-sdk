@@ -24,23 +24,15 @@ class DescribeAutoSnapshotPolicyExRequest(DaraModel):
     ):
         # The ID of the automatic snapshot policy.
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
-        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length and can contain characters that are classified as letter in Unicode, including Chinese characters, English letters, and digits. The name can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the automatic snapshot policy. The name must be 2 to 128 characters in length, and can contain letters and digits. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
         self.auto_snapshot_policy_name = auto_snapshot_policy_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the page to return for the automatic snapshot policy list.
-        # 
-        # Minimum value: 1.
-        # 
-        # Default value: 1.
+        # The page number. The returned automatic snapshot policy list is displayed in a paging manner. Starting value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for the automatic snapshot policy list.
-        # 
-        # Maximum value: 100.
-        # 
-        # Default value: 10.
+        # The number of entries per page when the returned automatic snapshot policy list is displayed in a paging manner. Maximum value: 100. Default value: 10.
         self.page_size = page_size
-        # The region ID of the automatic snapshot policies that you want to query. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the automatic snapshot policy to query. You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -50,7 +42,7 @@ class DescribeAutoSnapshotPolicyExRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):
@@ -147,9 +139,9 @@ class DescribeAutoSnapshotPolicyExRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the automatic snapshot policy. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+        # The key of tag N of the automatic snapshot policy. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.key = key
-        # The tag value of the automatic snapshot policy. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+        # The value of tag N of the automatic snapshot policy. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

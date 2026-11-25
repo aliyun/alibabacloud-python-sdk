@@ -26,24 +26,24 @@ class CreatePrefixListRequest(DaraModel):
     ):
         # The address family of the prefix list. Valid values:
         # 
-        # - IPv4.
-        # - IPv6.
+        # - IPv4
+        # - IPv6
         # 
         # This parameter is required.
         self.address_family = address_family
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The ClientToken parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description of the prefix list. The description must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
+        # The description of the prefix list. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
         self.description = description
         # The prefix list entry information.
         self.entry = entry
-        # The maximum number of entries supported by the prefix list. Valid values: 1 to 200.
+        # The maximum number of entries that the prefix list supports. Valid values: 1 to 200.
         # 
         # This parameter is required.
         self.max_entries = max_entries
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter or a Chinese character. It cannot start with http://, https://, com.aliyun, or com.alibabacloud. It can contain Chinese characters, letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # This parameter is required.
         self.prefix_list_name = prefix_list_name
@@ -173,11 +173,11 @@ class CreatePrefixListRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the prefix list. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key of the prefix list. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         self.key = key
-        # The tag value of the prefix list. Valid values of N: 1 to 20. This parameter can be an empty string.
+        # The tag value of the prefix list. Valid values of N: 1 to 20. The tag value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -216,9 +216,9 @@ class CreatePrefixListRequestEntry(DaraModel):
         # 
         # - The number of entries in the prefix list cannot exceed the maximum number of entries (`MaxEntries`).
         # - The type of the Classless Inter-Domain Routing in an entry is determined by the address family. A prefix list cannot contain both IPv4 and IPv6 Classless Inter-Domain Routing.
-        # - Classless Inter-Domain Routing in multiple entries cannot be duplicate. For example, you cannot specify two Settings such as 192.168.1.0/24.
-        # - You can specify a single IP address in the Settings, and the system automatically transforms it into a Classless Inter-Domain Routing. For example, if you specify 192.168.1.100 in the Settings, the system automatically transforms it into 192.168.1.100/32.
-        # - If you use an IPv6 Classless Inter-Domain Routing, the system automatically transforms it into a zero-compressed format and transforms letters to lowercase. For example, if you specify 2001:0DB8:0000:0000:0000:0000:0000:0000/32 in the Settings, the system automatically transforms it into 2001:db8::/32.
+        # - Classless Inter-Domain Routing in multiple entries cannot be duplicate. For example, you cannot specify two 192.168.1.0/24 Settings.
+        # - Single IP address Settings are supported. The system automatically transforms the IP address to a Classless Inter-Domain Routing. For example, if your Settings are 192.168.1.100, the system automatically transforms it to 192.168.1.100/32.
+        # - If you use an IPv6 Classless Inter-Domain Routing, the system automatically transforms it to the zero-compression format and transforms letters to lowercase. For example, if your Settings are 2001:0DB8:0000:0000:0000:0000:0000:0000/32, the system automatically transforms it to 2001:db8::/32.
         # 
         # For more information about Classless Inter-Domain Routing, see [What is CIDR](~~185311#598efe6ef1v00~~).
         # 
@@ -226,7 +226,7 @@ class CreatePrefixListRequestEntry(DaraModel):
         # 
         # This parameter is required.
         self.cidr = cidr
-        # The description of the prefix list entry. The description must be 2 to 32 characters in length, and cannot start with `http://` or `https://`. Valid values of N: 0 to 200.
+        # The description of the prefix list entry. The description must be 2 to 32 characters in length, and cannot start with http:// or https://. Valid values of N: 0 to 200.
         self.description = description
 
     def validate(self):

@@ -24,26 +24,26 @@ class CreateActivationRequest(DaraModel):
         tag: List[main_models.CreateActivationRequestTag] = None,
         time_to_live_in_hours: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The ClientToken parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the activation code. The description must be 1 to 100 characters in length.
         self.description = description
-        # The maximum number of times that the activation code can be used to register managed instances. Valid values: 1 to 1000.
+        # The maximum number of times the activation code can be used to register managed instances. Valid values: 1 to 1000.
         # 
         # Default value: 10.
         self.instance_count = instance_count
-        # The default prefix of the instance name. The prefix must be 2 to 50 characters in length. It must start with a letter and cannot start with a special character or a digit. It can contain only periods (.), underscores (_), hyphens (-), and colons (:). It cannot start with `http://` or `https://`.
+        # The default instance name prefix. The prefix must be 2 to 50 characters in length. It must start with a letter and cannot start with a special character or a digit. It can contain only periods (.), underscores (_), hyphens (-), and colons (:). It cannot start with `http://` or `https://`.
         # 
-        # Instances registered by using the activation code created by this operation use this name as a prefix to generate sequential instance names. You can also specify a new instance name to override this default value when you register a managed instance.
+        # Instances registered by using the activation code created by this operation will use this name as a prefix to generate sequential instance names. You can also specify a new instance name to override this default value when you register the managed instance.
         # 
-        # When you register a managed instance, if you specify the InstanceName parameter, an instance name in the <InstanceName>-001 format is generated. The number of digits in the serial number 001 depends on the number of digits in the value of the InstanceCount parameter. If you do not specify the InstanceName parameter, the hostname of the host is used as the instance name.
+        # When you register a managed instance, if the InstanceName parameter is specified, the instance name is generated in the <InstanceName>-001 format, where the number of digits in 001 depends on the number of digits in the InstanceCount value. If the InstanceName parameter is not specified, the hostname of the host is used as the instance name.
         self.instance_name = instance_name
-        # The IP addresses of the hosts that are allowed to use the activation code. Set the value to an IPv4 address, an IPv6 address, or a CIDR block.
+        # The IP addresses of the hosts that are allowed to use the activation code. The value can be an IPv4 address, an IPv6 address, or a CIDR block.
         self.ip_address_range = ip_address_range
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. Supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
-        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -164,13 +164,13 @@ class CreateActivationRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the managed instance activation code (dynamic code). Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string.
+        # The tag key of the managed instance activation code (dynamic code). N ranges from 1 to 20. If you specify this parameter, it cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that are attached to all the specified tags cannot exceed 1,000. If the resource count exceeds 1,000, you must invoke the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+        # If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources to which you attach multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         # 
-        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N of the managed instance activation code. Valid values of N: 1 to 20. The tag value can be an empty string.
+        # The tag value of the managed instance activation code. N ranges from 1 to 20. This parameter can be an empty string.
         # 
         # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value

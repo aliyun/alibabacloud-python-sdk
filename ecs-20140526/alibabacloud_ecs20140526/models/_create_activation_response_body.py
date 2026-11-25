@@ -11,9 +11,9 @@ class CreateActivationResponseBody(DaraModel):
         activation_id: str = None,
         request_id: str = None,
     ):
-        # The activation code. The code is returned only once when the operation is called and cannot be queried later. Make sure that you securely store the return value.
+        # The activation code. The code is returned only once when the operation is called and cannot be queried later. Therefore, make sure to securely save the return value.
         self.activation_code = activation_code
-        # The ID of the activation code.
+        # The activation code ID.
         self.activation_id = activation_id
         # The request ID.
         self.request_id = request_id

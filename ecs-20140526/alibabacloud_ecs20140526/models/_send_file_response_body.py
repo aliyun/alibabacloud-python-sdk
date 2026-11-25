@@ -10,7 +10,7 @@ class SendFileResponseBody(DaraModel):
         invoke_id: str = None,
         request_id: str = None,
     ):
-        # The execution ID.
+        # The invocation ID.
         self.invoke_id = invoke_id
         # The request ID.
         self.request_id = request_id

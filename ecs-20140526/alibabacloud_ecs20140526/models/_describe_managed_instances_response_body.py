@@ -23,12 +23,12 @@ class DescribeManagedInstancesResponseBody(DaraModel):
         self.next_token = next_token
         # The page number of the managed instance list.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of managed instances returned.
-        # > When you use the MaxResults and NextToken parameters for paging and paged query, the returned TotalCount value is meaningless.
+        # The total number of managed instances queried.
+        # > When you use the MaxResults and NextToken parameters for paging, the returned TotalCount value is meaningless.
         self.total_count = total_count
 
     def validate(self):
@@ -115,13 +115,13 @@ class DescribeManagedInstancesResponseBodyInstances(DaraModel):
         self.agent_version = agent_version
         # Indicates whether the managed instance is connected. Valid values:
         # 
-        # - true: The managed instance is connected. You can manage the managed instance by using Cloud Assistant.
+        # - true: The managed instance is connected. You can use Cloud Assistant to manage the managed instance.
         # 
         # - false: The managed instance is not connected. The server may be stopped or the Cloud Assistant Agent is not properly installed.
         self.connected = connected
         # The hostname of the managed instance.
         self.hostname = hostname
-        # The managed instance ID.
+        # The ID of the managed instance.
         self.instance_id = instance_id
         # The name of the managed instance.
         self.instance_name = instance_name
@@ -131,7 +131,7 @@ class DescribeManagedInstancesResponseBodyInstances(DaraModel):
         self.intranet_ip = intranet_ip
         # The number of times the managed instance executed Cloud Assistant tasks.
         self.invocation_count = invocation_count
-        # The time when the Cloud Assistant task was last executed. The time follows the ISO 8601 standard in the UTC time zone.
+        # The time when the Cloud Assistant task was last executed. The time is in ISO 8601 format and in UTC.
         self.last_invoked_time = last_invoked_time
         # The machine code of the managed instance.
         self.machine_id = machine_id
@@ -139,7 +139,7 @@ class DescribeManagedInstancesResponseBodyInstances(DaraModel):
         self.os_type = os_type
         # The version information of the operating system.
         self.os_version = os_version
-        # The time when the managed instance was registered. The time follows the ISO 8601 standard in the UTC time zone.
+        # The time when the managed instance was registered. The time is in ISO 8601 format and in UTC.
         self.registration_time = registration_time
         # The ID of the resource group to which the managed instance belongs.
         self.resource_group_id = resource_group_id
@@ -272,7 +272,7 @@ class DescribeManagedInstancesResponseBodyInstancesTags(DaraModel):
     ):
         # The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources attached to multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+        # If you use a single tag to filter resources, the number of returned resources cannot exceed 1,000. If you use multiple tags to filter resources, the number of returned resources that have multiple tags attached cannot exceed 1,000. If the number of resources exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         # 
         # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.tag_key = tag_key

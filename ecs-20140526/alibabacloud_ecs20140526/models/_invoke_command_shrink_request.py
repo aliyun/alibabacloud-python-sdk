@@ -35,146 +35,146 @@ class InvokeCommandShrinkRequest(DaraModel):
         windows_password_name: str = None,
         working_dir: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The command ID. You can call [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) to query all available command IDs. 
+        # The command ID. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs. 
         # 
-        # >You can run public commands by specifying the command name. For more information, see [View and run Cloud Assistant public commands](https://help.aliyun.com/document_detail/429635.html).
+        # > For public commands, you can run them by command name. For more information, see [View and run Cloud Assistant public commands](https://help.aliyun.com/document_detail/429635.html).
         # 
         # This parameter is required.
         self.command_id = command_id
         # The container ID. Only 64-bit hexadecimal strings are supported. You can use the `docker://`, `containerd://`, or `cri-o://` prefix to specify the container runtime.
         # 
         # Precautions:
-        # - If you specify this parameter, Cloud Assistant executes the script in the specified container of the instance.
-        # - If you specify this parameter, the command can run only on Linux instances with Cloud Assistant Agent version 2.2.3.344 or later.
+        # - If you specify this parameter, Cloud Assistant runs the script in the specified container on the instance.
+        # - If you specify this parameter, the command can only be run on Linux instances where the Cloud Assistant Agent version is 2.2.3.344 or later.
         # 
-        #     - To view the Cloud Assistant Agent version, see [Install Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
-        #     - To upgrade the Cloud Assistant Agent version, see [Upgrade or disable upgrades for Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
+        #     - For more information about how to view the Cloud Assistant Agent version, see [Install the Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
+        #     - For more information about how to upgrade the Cloud Assistant Agent version, see [Upgrade or disable the upgrade of the Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
         # 
-        # - If you specify this parameter, the `Username` parameter specified in this operation and the `WorkingDir` parameter specified in [CreateCommand](https://help.aliyun.com/document_detail/64844.html) do not take effect. The command is executed only by the default user in the default working directory of the container. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
-        # - If you specify this parameter, only Shell scripts can be executed in Linux containers. You cannot use a format such as `#!/usr/bin/python` at the beginning of the script to specify an interpreter. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
+        # - If you specify this parameter, the `Username` parameter specified in this operation and the `WorkingDir` parameter specified in [CreateCommand](https://help.aliyun.com/document_detail/64844.html) do not take effect. The command can only be run by the default user of the container in the default working directory of the container. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
+        # - If you specify this parameter, only shell scripts can be run in Linux containers. You cannot specify an interpreter for the script content by using a command such as `#!/usr/bin/python` at the beginning of the script. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
         self.container_id = container_id
         # The container name.
         # 
         # Precautions:
-        # - If you specify this parameter, Cloud Assistant executes the script in the specified container of the instance.
-        # - If you specify this parameter, the command can run only on Linux instances with Cloud Assistant Agent version 2.2.3.344 or later.
+        # - If you specify this parameter, Cloud Assistant runs the script in the specified container on the instance.
+        # - If you specify this parameter, the command can only be run on Linux instances where the Cloud Assistant Agent version is 2.2.3.344 or later.
         # 
-        #     - To view the Cloud Assistant Agent version, see [Install Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
-        #     - To upgrade the Cloud Assistant Agent version, see [Upgrade or disable upgrades for Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
-        # - If you specify this parameter, the `Username` parameter specified in this operation and the `WorkingDir` parameter specified in [CreateCommand](https://help.aliyun.com/document_detail/64844.html) do not take effect. The command is executed only by the default user in the default working directory of the container. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
-        # - If you specify this parameter, only Shell scripts can be executed in Linux containers. You cannot use a format such as `#!/usr/bin/python` at the beginning of the script to specify an interpreter. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
+        #     - For more information about how to view the Cloud Assistant Agent version, see [Install the Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
+        #     - For more information about how to upgrade the Cloud Assistant Agent version, see [Upgrade or disable the upgrade of the Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
+        # - If you specify this parameter, the `Username` parameter specified in this operation and the `WorkingDir` parameter specified in [CreateCommand](https://help.aliyun.com/document_detail/64844.html) do not take effect. The command can only be run by the default user of the container in the default working directory of the container. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
+        # - If you specify this parameter, only shell scripts can be run in Linux containers. You cannot specify an interpreter for the script content by using a command such as `#!/usr/bin/python` at the beginning of the script. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
         self.container_name = container_name
-        # The schedule on which the command is executed. Three types of scheduled execution are supported: fixed interval (based on a Rate expression), one-time execution at a specified time, and clock-based scheduling (based on a Cron expression).
+        # The execution time of the scheduled command. Three scheduled execution modes are supported: execution at fixed intervals (based on rate expressions), one-time execution at a specified time, and clock-based scheduled execution (based on cron expressions).
         # 
-        # - Fixed interval execution: Based on a Rate expression, the command is executed at a set interval. The interval can be specified in seconds (s), minutes (m), hours (h), or days (d). This is suitable for scenarios that require execution at fixed intervals. Format: `rate(<interval value><interval unit>)`. For example, to execute every 5 minutes, use `rate(5m)`. Fixed interval execution has the following limits:
-        #     - The interval must not exceed 7 days or be less than 60 seconds, and must be greater than the timeout period of the scheduled task.
-        #     - The execution interval is based on a fixed frequency and is independent of the actual execution time of the task. For example, if the command is set to execute every 5 minutes and the task takes 2 minutes to complete, the next execution starts 3 minutes after the task completes.
-        #     - The command is not executed immediately when the task is created. For example, if the command is set to execute every 5 minutes, the first execution starts 5 minutes after the task is created.
+        # - Execution at fixed intervals: runs the command at a specified interval based on a rate expression. The interval can be set in seconds (s), minutes (m), hours (h), or days (d). This mode is suitable for scenarios where tasks are run at fixed intervals. The format is `rate(<interval value><interval unit>)`. For example, to run the command every 5 minutes, use `rate(5m)`. The following limits apply to execution at fixed intervals:
+        #     - The specified interval must not exceed 7 days or be less than 60 seconds, and must be greater than the timeout period of the scheduled task.
+        #     - The execution interval is based only on the fixed frequency and is independent of the actual time required to run the task. For example, if you set the command to run every 5 minutes and the task takes 2 minutes to complete, the next execution starts 3 minutes after the task is completed.
+        #     - The task is not run immediately upon creation. For example, if you set the command to run every 5 minutes, the command is not run immediately upon task creation, but starts 5 minutes after the task is created.
         # 
-        # - One-time execution at a specified time: The command is executed once at the specified time zone and time. Format: `at(yyyy-MM-dd HH:mm:ss <time zone>)`. If no time zone is specified, UTC is used by default. The time zone supports the following three formats:
-        #     - Full time zone name: For example, `Asia/Shanghai` (China/Shanghai time) or `America/Los_Angeles` (US/Los Angeles time).
-        #     - Time zone offset from Greenwich Mean Time: For example, `GMT+8:00` (UTC+8) or `GMT-7:00` (UTC-7). When using the GMT format, leading zeros are not supported for the hour value.
-        #     - Time zone abbreviation: Only UTC (Coordinated Universal Time) is supported.
+        # - One-time execution at a specified time: runs the command once at the specified time zone and time point. The format is `at(yyyy-MM-dd HH:mm:ss <time zone>)`. If you do not specify a time zone, the UTC time zone is used by default. The time zone supports the following three formats:
+        #     - Time zone full name: for example, `Asia/Shanghai` (China/Shanghai time) and `America/Los_Angeles` (US/Los Angeles time).
+        #     - Time zone offset from Greenwich Mean Time: for example, `GMT+8:00` (East 8th zone) and `GMT-7:00` (West 7th zone). When you use the GMT format, leading zeros are not supported for the hour.
+        #     - Time zone abbreviation: only UTC (Coordinated Universal Time) is supported.
         # 
-        #   For example, to execute once at 13:15:30 on June 6, 2022 in China/Shanghai time, use: `at(2022-06-06 13:15:30 Asia/Shanghai)`. To execute once at 13:15:30 on June 6, 2022 in UTC-7, use: `at(2022-06-06 13:15:30 GMT-7:00)`.
+        #   For example, to run the command once at 13:15:30 on June 6, 2022 in the China/Shanghai time zone, use `at(2022-06-06 13:15:30 Asia/Shanghai)`. To run the command once at 13:15:30 on June 6, 2022 in the West 7th zone, use `at(2022-06-06 13:15:30 GMT-7:00)`.
         # 
-        # - Clock-based scheduling (based on a Cron expression): Based on a Cron expression, the command is executed on a set schedule. Format: `<seconds> <minutes> <hours> <day of month> <month> <day of week> <year (optional)> <time zone>`. The scheduled execution time is calculated based on the Cron expression in the specified time zone. If no time zone is specified, the system time zone of the instance is used by default. For more information about Cron expressions, see [Cron expressions](https://help.aliyun.com/document_detail/64769.html). The time zone supports the following three formats:
-        #     - Full time zone name: For example, `Asia/Shanghai` (China/Shanghai time) or `America/Los_Angeles` (US/Los Angeles time).
-        #     - Time zone offset from Greenwich Mean Time: For example, `GMT+8:00` (UTC+8) or `GMT-7:00` (UTC-7). When using the GMT format, leading zeros are not supported for the hour value.
-        #     - Time zone abbreviation: Only UTC (Coordinated Universal Time) is supported.
-        #   For example, to execute once at 10:15 every day in 2022 in China/Shanghai time, use `0 15 10 ? * * 2022 Asia/Shanghai`. To execute every 30 minutes from 10:00 to 11:30 every day in 2022 in UTC+8, use `0 0/30 10-11 * * ? 2022 GMT+8:00`. To execute every 5 minutes from 14:00 to 14:55 every day in October every two years starting from 2022 in UTC, use `0 0/5 14 * 10 ? 2022/2 UTC`.
+        # - Clock-based scheduled execution (based on cron expressions): runs the command based on a cron expression. The format is `<seconds> <minutes> <hours> <day of month> <month> <day of week> <year (optional)> <time zone>`, which is `<cron expression> <time zone>`. The scheduled task execution time is calculated and executed based on the cron expression in the specified time zone. If you do not specify a time zone, the internal system time zone of the instance that runs the scheduled task is used by default. For more information about cron expressions, see [Cron expressions](https://help.aliyun.com/document_detail/64769.html). The time zone supports the following three formats:
+        #     - Time zone full name: for example, `Asia/Shanghai` (China/Shanghai time) and `America/Los_Angeles` (US/Los Angeles time).
+        #     - Time zone offset from Greenwich Mean Time: for example, `GMT+8:00` (East 8th zone) and `GMT-7:00` (West 7th zone). When you use the GMT format, leading zeros are not supported for the hour.
+        #     - Time zone abbreviation: only UTC (Coordinated Universal Time) is supported.
+        #   For example, to run the command once at 10:15 every day in 2022 in the China/Shanghai time zone, use `0 15 10 ? * * 2022 Asia/Shanghai`. To run the command every half hour from 10:00 to 11:30 every day in 2022 in the East 8th zone, use `0 0/30 10-11 * * ? 2022 GMT+8:00`. To run the command every 5 minutes from 14:00 to 14:55 every day in October every two years starting from 2022 in the UTC time zone, use `0 0/5 14 * 10 ? 2022/2 UTC`.
         # 
-        #     >The minimum interval must be greater than or equal to the timeout period of the scheduled task and no less than 10 seconds.
+        #     > The minimum specified time interval must be greater than or equal to the timeout period of the scheduled task and not less than 10 seconds.
         self.frequency = frequency
-        # The list of instances on which to execute the command. You can specify up to 100 instance IDs. Valid values of N: 1 to 100.
+        # The list of instance IDs on which the command is run. You can specify up to 100 instance IDs. Valid values of N: 1 to 100.
         # 
-        # You can also apply for a quota increase in Quota Center (quota name: Maximum number of instances supported for command execution).
+        # You can also apply for a quota increase in Quota Center. The quota name is the maximum number of instances supported for command execution.
         self.instance_id = instance_id
-        # The bootstrap program for script execution. The value cannot exceed 1 KB in length.
+        # The bootstrap program for script execution. The length cannot exceed 1 KB.
         self.launcher = launcher
-        # The OSS delivery configuration for the command execution output.
+        # The OSS data shipping configuration for the command execution output.
         # 
-        # - Format: oss://${BucketName}/${Prefix}, where ${BucketName} is the name of the destination OSS bucket and ${Prefix} is the directory prefix for delivery.
+        # - Format: `oss://${BucketName}/${Prefix}`. `${BucketName}` is the name of the OSS bucket to which the data is shipped, and `${Prefix}` is the directory prefix to which the data is shipped.
         self.oss_output_delivery = oss_output_delivery
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The key-value pairs of custom parameters to pass in when the custom parameter feature is enabled. The number of custom parameters ranges from 0 to 10.
+        # The key-value pairs of custom parameters passed when the command is run if the custom parameter feature is enabled. The number of custom parameters ranges from 0 to 10.
         # 
-        # - Map keys cannot be empty strings and can contain up to 64 characters.
-        # - Map values can be empty strings.
-        # - After Base64 encoding, the total length of the custom parameters and the original command content cannot exceed 24 KB.
-        # - The set of custom parameter names must be a subset of the parameter set defined when the command was created. For parameters that are not passed in, you can use empty strings as substitutes.
+        # - The key in the map cannot be an empty string and can be up to 64 characters in length.
+        # - The value in the map can be an empty string.
+        # - The total length of the custom parameters and the original command content cannot exceed 24 KB after Base64 encoding.
+        # - The set of custom parameter names must be a subset of the parameter set defined when the command was created. For parameters that are not passed, you can use an empty string instead.
         # 
-        # You can unset this parameter to disable custom parameters.
+        # You can leave this parameter unspecified to disable custom parameters.
         self.parameters_shrink = parameters_shrink
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # Specifies how the command is executed. Valid values:
+        # The execution mode of the command. Valid values:
         # 
-        # - Once: immediately executes the command.
-        # - Period: executes the command on a schedule. If you set this parameter to `Period`, you must also specify the `Frequency` parameter.
-        # - NextRebootOnly: automatically executes the command the next time the instance starts.
-        # - EveryReboot: automatically executes the command every time the instance starts.
-        # - DryRun: performs a dry run of the request without actually executing the command. The dry run checks request parameters, the instance execution environment, and the Cloud Assistant Agent status.
+        # - Once: runs the command immediately.
+        # - Period: runs the command on a schedule. If you set this parameter to `Period`, you must also specify the `Frequency` parameter.
+        # - NextRebootOnly: automatically runs the command the next time the instance starts.
+        # - EveryReboot: automatically runs the command every time the instance starts.
+        # - DryRun: only prechecks the request. The command is not actually run. The check items include the request parameters, instance execution environment, and Cloud Assistant Agent running status.
         # 
         # Default value:
         # 
         # - If you do not specify the `Frequency` parameter, the default value is `Once`.
-        # - If you specify the `Frequency` parameter, the command is executed as `Period` regardless of whether you set this parameter.
+        # - If you specify the `Frequency` parameter, the value is processed as `Period` regardless of whether this parameter is set.
         # 
         # Precautions:
         # 
-        # - You can call [StopInvocation](https://help.aliyun.com/document_detail/64838.html) to stop a pending or scheduled command execution.
-        # - If you set this parameter to `Period` or `EveryReboot`, you can call [DescribeInvocationResults](https://help.aliyun.com/document_detail/64845.html) and specify `IncludeHistory=true` to view the execution history of the scheduled command.
+        # - You can call the [StopInvocation](https://help.aliyun.com/document_detail/64838.html) operation to stop a pending or scheduled command.
+        # - If you set this parameter to `Period` or `EveryReboot`, you can call the [DescribeInvocationResults](https://help.aliyun.com/document_detail/64845.html) operation and set `IncludeHistory` to `true` to view the historical records of the scheduled command execution.
         self.repeat_mode = repeat_mode
-        # The ID of the resource group for the command execution. When you specify this parameter:
+        # The ID of the resource group in which the command is run. When you specify this parameter:
         # 
-        # - The ECS instance specified by InstanceId must belong to this resource group if the instance is not in the default resource group.
+        # - If the ECS instance specified by InstanceId belongs to a non-default resource group, the ECS instance must belong to this resource group.
         # 
-        # - You can filter command execution results by specifying this parameter (by calling [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) or [DescribeInvocationResults](https://help.aliyun.com/document_detail/64845.html)).
+        # - You can specify this parameter to filter the corresponding command execution results by calling the [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) or [DescribeInvocationResults](https://help.aliyun.com/document_detail/64845.html) operation.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The tags used to filter instances. You can use tags to run commands in batches on instances with the same tag without specifying InstanceId.
+        # The list of tags used to filter instances. You can run the command on instances with the same tag in batches without specifying InstanceId.
         self.resource_tag = resource_tag
-        # The tags.
+        # The list of tags.
         self.tag = tag
-        # The mode in which the task is stopped (manually stopped or interrupted due to timeout). Valid values:
+        # The mode used when the task is stopped (manually stopped or interrupted due to execution timeout). Valid values:
         # - Process: stops the current script process.
-        # - ProcessTree: stops the current process tree (the script process and all child processes it created).
+        # - ProcessTree: stops the current process tree, which includes the script process and all its child processes.
         self.termination_mode = termination_mode
-        # >This parameter is deprecated and has no effect if specified.
+        # **[Deprecated]** This parameter is deprecated and does not take effect even if it is specified.
         self.timed = timed
-        # The timeout period for the command execution. Unit: seconds.
+        # The timeout period for running the command. Unit: seconds.
         # 
-        # - The value must be at least 10 seconds.
+        # - The value cannot be less than 10.
         # 
-        # - If the command cannot run because of process issues, missing modules, or missing Cloud Assistant Agent, a timeout occurs. When a timeout occurs, the command process is forcefully terminated.
+        # - A timeout occurs when the command cannot be run due to process issues, missing modules, or a missing Cloud Assistant Agent. After a timeout, the command process is forcibly terminated.
         # 
-        # - If you do not set this value, the timeout period specified when the command was created is used.
+        # - If you do not specify this parameter, the timeout period specified when the command was created is used.
         # 
         # - This value applies only to the current command execution and does not change the timeout period of the command itself.
         self.timeout = timeout
-        # The username used to execute the command on the ECS instance. The value can be up to 255 characters in length.
+        # The name of the user that runs the command on the ECS instance. The name can be up to 255 characters in length.
         # 
-        # - For Linux instances, the command is executed as the root user by default.
-        # - For Windows instances, the command is executed as the System user by default.
+        # - For ECS instances that run Linux, the command is run by the root user by default.
+        # - For ECS instances that run Windows, the command is run by the System user by default.
         # 
-        # You can also specify another existing user on the instance to execute the command. Executing Cloud Assistant commands as a regular user is more secure. For more information, see [Configure a regular user to run Cloud Assistant commands](https://help.aliyun.com/document_detail/203771.html).
+        # You can also specify another existing user on the instance to run the command. Running Cloud Assistant commands as a regular user is more secure. For more information, see [Configure a regular user to run Cloud Assistant commands](https://help.aliyun.com/document_detail/203771.html).
         self.username = username
-        # The name of the password used by the user to execute the command on a Windows instance. The value can be up to 255 characters in length.
+        # The name of the password for the user that executes the command on a Windows instance. The name can be up to 255 characters in length.
         # 
-        # If you want to execute a command as a non-default user (System) on a Windows instance, you must specify both `Username` and this parameter. To reduce the risk of password leaks, store the plaintext password in the parameter repository of operations management, and pass in only the password name here. For more information, see [Encryption parameters](https://help.aliyun.com/document_detail/186828.html) and [Configure a regular user to run Cloud Assistant commands](https://help.aliyun.com/document_detail/203771.html).
+        # If you want to execute the command on a Windows instance as a non-default user (other than System), you must specify both `Username` and this parameter. To reduce the risk of password leakage, the plaintext password must be hosted in the parameter repository of System Operations Management. Here, you only pass the name of the password. For more information, see [Encrypt parameters](https://help.aliyun.com/document_detail/186828.html) and [Settings for regular users to execute Cloud Assistant commands](https://help.aliyun.com/document_detail/203771.html).
         # 
-        # > This parameter is not required when you execute a command as the root user on a Linux instance or the System user on a Windows instance.
+        # > You do not need to pass this parameter when you run the command as the root user on a Linux instance or the System user on a Windows instance.
         self.windows_password_name = windows_password_name
-        # The directory in which the command is executed on the ECS instance. The value can be up to 200 characters in length.
-        # - If you do not set this value, the working directory specified when the command was created is used.
-        # - This value applies only to the current command execution and does not change the working directory of the command itself.
+        # The directory in which the command is run on the ECS instance. The length cannot exceed 200 characters.
+        # - If you do not specify this parameter, the running directory specified when the command was created is used.
+        # - This value applies only to the current command execution and does not change the running directory of the command itself.
         self.working_dir = working_dir
 
     def validate(self):
@@ -358,15 +358,15 @@ class InvokeCommandShrinkRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key for the command execution. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+        # The tag key for the command to execute. Valid values of N: 1 to 20. The value cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the number of resources with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources with all specified tags attached cannot exceed 1,000. If the number of resources exceeds 1,000, execute the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+        # If you use a single tag to filter resources, the resource count under the tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources attached to all the specified tags cannot exceed 1,000. If the resource count exceeds 1,000, you must use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         # 
-        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The value can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value for the command execution. Valid values of N: 1 to 20. The tag value can be an empty string.
+        # The tag value of the command execution. Valid values of N: 1 to 20. The value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -405,21 +405,21 @@ class InvokeCommandShrinkRequestResourceTag(DaraModel):
         # 
         # Precautions:
         # 
-        # - This parameter conflicts with the InstanceId parameter. You cannot specify both parameters at the same time.
+        # - This parameter conflicts with the InstanceId parameter and cannot be specified at the same time.
         # 
-        # - Valid values of N: 1 to 10. The tag key cannot be an empty string.
+        # - Valid values of N: 1 to 10. The value cannot be an empty string.
         # 
-        # - The number of instances with the specified tag cannot exceed the limit of InstanceId.N. If the number of instances exceeds the limit, control the number of instances by adding batch tags, such as batch: b1.
+        # - The number of instances under the tag cannot exceed the limit of InstanceId.N. If the number of instances exceeds the limit, control the number of instances by adding batch tags, such as batch: b1.
         # 
-        # - The tag key can be up to 64 characters in length and cannot start with aliyun or acs:. It cannot contain http:// or https://.
+        # - The value can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
         # The tag value used to filter instances.
         # 
         # Precautions:
         # 
         # - Valid values of N: 1 to 10.
-        # - The tag value can be an empty string.
-        # - The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+        # - The value can be an empty string.
+        # - The value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

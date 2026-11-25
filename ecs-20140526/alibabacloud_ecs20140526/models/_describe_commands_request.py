@@ -31,27 +31,27 @@ class DescribeCommandsRequest(DaraModel):
     ):
         # The command ID.
         self.command_id = command_id
-        # The encoding mode of the `CommandContent` and `Output` fields in the response. Valid values:
-        # - PlainText: The original script content and output information are returned.
-        # - Base64: The Base64-encoded script content and output information are returned.
+        # The encoding mode of the CommandContent and Output fields in the response. Valid values:
+        # - PlainText: returns the original script content and output information.
+        # - Base64: returns the Base64-encoded script content and output information.
         # 
         # Default value: Base64.
         self.content_encoding = content_encoding
         # The description of the command.
         # 
-        # - When you specify the `Provider` parameter parameter query public commands, fuzzy search is supported by default.
+        # - When you specify the Provider parameter parameter query public commands, fuzzy match is supported by default.
         # 
-        # - When you do not specify the `Provider` parameter parameter query private commands, fuzzy search is supported. For example, if you enter `test*`, the system searches for all commands whose descriptions start with `test`. If you enter `*test`, the system searches for all commands whose descriptions end with `test`. If you enter `*test*`, the system searches for all commands whose descriptions contain `test`.
+        # - When you do not specify the Provider parameter parameter query private commands, fuzzy match is supported. For example, if you enter test*, the system searches for all commands whose descriptions start with test. If you enter *test, the system searches for all commands whose descriptions end with test. If you enter *test*, the system searches for all commands whose descriptions contain test.
         self.description = description
         # Specifies whether to query only the latest version of public commands if the query result includes public commands. This parameter does not affect the query of private commands.
         # 
-        # - true: Queries only the latest version of public commands.
+        # - true: queries only the latest version of public commands.
         # 
-        # - false: Queries all versions of public commands.
+        # - false: queries all versions of public commands.
         # 
         # Default value: false.
         self.latest = latest
-        # The maximum number of entries per page for a paged query.
+        # The maximum number of entries per page for a paging query.
         # 
         # Maximum value: 50.
         # 
@@ -59,11 +59,11 @@ class DescribeCommandsRequest(DaraModel):
         self.max_results = max_results
         # The name of the command.
         # 
-        # - When you specify the `Provider` parameter parameter query public commands, fuzzy search is supported by default.
+        # - When you specify the Provider parameter parameter query public commands, fuzzy match is supported by default.
         # 
-        # - When you do not specify the `Provider` parameter parameter query private commands, fuzzy search is supported. For example, if you enter `command*`, the system searches for all commands whose names start with `command`. If you enter `*command`, the system searches for all commands whose names end with `command`. If you enter `*command*`, the system searches for all commands whose names contain `command`.
+        # - When you do not specify the Provider parameter parameter query private commands, fuzzy match is supported. For example, if you enter command*, the system searches for all commands whose names start with command. If you enter *command, the system searches for all commands whose names end with command. If you enter *command*, the system searches for all commands whose names contain command.
         self.name = name
-        # The query token. The value is the NextToken value returned from the previous API call.
+        # The pagination token. Set the value to the NextToken value returned from the previous API call.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -74,10 +74,10 @@ class DescribeCommandsRequest(DaraModel):
         # The provider of the public command. Valid values:
         # 
         # - If you do not specify this parameter, the system queries all Cloud Assistant commands that you manually created by default.
-        # - If you set this parameter to `AlibabaCloud`, the system queries all public commands provided by Alibaba Cloud.
+        # - If you set this parameter to AlibabaCloud, the system queries all public commands provided by Alibaba Cloud.
         # - If you set this parameter to a specific public command provider, the system queries all public commands provided by the provider. Examples:
-        #     - If you set `Provider` to `AlibabaCloud.ECS.GuestOS`, the system queries the public commands provided by `AlibabaCloud.ECS.GuestOS`.
-        #     - If you set `Provider` to `AlibabaCloud.ECS.GuestOSDiagnose`, the system queries the public commands provided by `AlibabaCloud.ECS.GuestOSDiagnose`.
+        #     - If you set Provider to AlibabaCloud.ECS.GuestOS, the system queries the public commands provided by AlibabaCloud.ECS.GuestOS.
+        #     - If you set Provider to AlibabaCloud.ECS.GuestOSDiagnose, the system queries the public commands provided by AlibabaCloud.ECS.GuestOSDiagnose.
         self.provider = provider
         # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
@@ -91,7 +91,7 @@ class DescribeCommandsRequest(DaraModel):
         self.tag = tag
         # The type of the command. Valid values: 
         # 
-        # - RunBatScript: The command is a Bat script that runs on a Windows instance.
+        # - RunBatScript: The command is a batch script that runs on a Windows instance.
         # - RunPowerShellScript: The command is a PowerShell script that runs on a Windows instance.
         # - RunShellScript: The command is a shell script that runs on a Linux instance.
         self.type = type
@@ -234,13 +234,13 @@ class DescribeCommandsRequestTag(DaraModel):
     ):
         # The tag key of the command. Valid values of N: 1 to 20. The value cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the resource count returned for this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count returned for resources attached to all the specified tags cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+        # If you use a single tag to filter resources, the resource count returned for this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that are attached to multiple tags at the same time cannot exceed 1,000. If the resource count exceeds 1,000, you must use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         # 
-        # The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag key can be up to 64 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
         # The tag value of the command. Valid values of N: 1 to 20. The value can be an empty string.
         # 
-        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

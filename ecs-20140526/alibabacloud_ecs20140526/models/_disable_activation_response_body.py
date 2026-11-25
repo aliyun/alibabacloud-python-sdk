@@ -60,7 +60,7 @@ class DisableActivationResponseBodyActivation(DaraModel):
     ):
         # The activation code ID.
         self.activation_id = activation_id
-        # The time when the activation code was created. The time follows the ISO 8601 standard in UTC.
+        # The creation time. The time is formatted in ISO 8601 and displayed in UTC.
         self.creation_time = creation_time
         # The number of unregistered instances.
         self.deregistered_count = deregistered_count
@@ -72,7 +72,7 @@ class DisableActivationResponseBodyActivation(DaraModel):
         self.instance_count = instance_count
         # The default instance name prefix.
         self.instance_name = instance_name
-        # The IP addresses of hosts that are allowed to use the activation code.
+        # The IP addresses of the hosts that are allowed to use the activation code.
         self.ip_address_range = ip_address_range
         # The number of registered instances.
         self.registered_count = registered_count

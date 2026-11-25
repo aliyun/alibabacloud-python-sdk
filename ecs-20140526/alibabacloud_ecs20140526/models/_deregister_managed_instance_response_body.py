@@ -11,7 +11,7 @@ class DeregisterManagedInstanceResponseBody(DaraModel):
         instance: main_models.DeregisterManagedInstanceResponseBodyInstance = None,
         request_id: str = None,
     ):
-        # The collection of managed instance information.
+        # The details of the managed instances.
         self.instance = instance
         # The request ID.
         self.request_id = request_id
@@ -64,11 +64,11 @@ class DeregisterManagedInstanceResponseBodyInstance(DaraModel):
     ):
         # The ID of the activation code.
         self.activation_id = activation_id
-        # The version number of the Cloud Assistant Agent.
+        # The version number of the Cloud Assistant agent.
         self.agent_version = agent_version
         # The hostname of the managed instance.
         self.hostname = hostname
-        # The instance ID of the managed instance.
+        # The managed instance ID.
         self.instance_id = instance_id
         # The name of the managed instance.
         self.instance_name = instance_name
@@ -78,15 +78,15 @@ class DeregisterManagedInstanceResponseBodyInstance(DaraModel):
         self.intranet_ip = intranet_ip
         # The number of Cloud Assistant tasks executed on the managed instance.
         self.invocation_count = invocation_count
-        # The time when the last Cloud Assistant task was executed. The time follows the ISO 8601 standard and is in the UTC time zone.
+        # The time when the last Cloud Assistant task was executed. The time follows the ISO 8601 standard and is displayed in UTC.
         self.last_invoked_time = last_invoked_time
         # The machine ID of the managed instance.
         self.machine_id = machine_id
         # The operating system of the managed instance.
         self.os_type = os_type
-        # The version information of the operating system.
+        # The version of the operating system.
         self.os_version = os_version
-        # The time when the managed instance was registered. The time follows the ISO 8601 standard and is in the UTC time zone.
+        # The time when the managed instance was registered. The time follows the ISO 8601 standard and is displayed in UTC.
         self.registration_time = registration_time
         # The ID of the resource group to which the managed instance belongs.
         self.resource_group_id = resource_group_id

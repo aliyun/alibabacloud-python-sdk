@@ -50,7 +50,7 @@ class ModifyCloudAssistantSettingsRequest(DaraModel):
         # 
         # This parameter is required.
         self.setting_type = setting_type
-        # The Simple Log Service (SLS) delivery configuration.
+        # The SLS delivery configuration.
         self.sls_delivery_config = sls_delivery_config
 
     def validate(self):
@@ -154,8 +154,7 @@ class ModifyCloudAssistantSettingsRequestSlsDeliveryConfig(DaraModel):
         logstore_name: str = None,
         project_name: str = None,
     ):
-        # Specifies whether to enable delivery to SLS.
-        # Default value: false.
+        # Specifies whether to enable delivery to SLS. Default value: false.
         self.enabled = enabled
         # The name of the SLS Logstore.
         self.logstore_name = logstore_name
@@ -199,12 +198,12 @@ class ModifyCloudAssistantSettingsRequestSessionManagerConfig(DaraModel):
         self,
         session_manager_enabled: bool = None,
     ):
-        # The Cloud Assistant session feature switch. Valid values:
-        # - true: enabled
-        # - false: disabled
+        # Specifies whether to enable the Cloud Assistant session feature. Valid values:
+        # * true: enabled
+        # * false: disabled
         # 
         # Precautions:
-        # - Enabling or disabling the session feature takes effect across all regions.
+        # * Enabling or disabling the session feature takes effect in all regions.
         self.session_manager_enabled = session_manager_enabled
 
     def validate(self):
@@ -245,8 +244,7 @@ class ModifyCloudAssistantSettingsRequestResourceUsageConfig(DaraModel):
         # 
         # - Default value: 20.
         self.cpu_limit = cpu_limit
-        # Specifies whether to retain the script file in the Cloud Assistant directory after command execution is completed.
-        # Default value: false.
+        # Specifies whether to retain the script file in the Cloud Assistant directory after the command execution is completed. Default value: false.
         self.keep_script_file = keep_script_file
         # The maximum number of Cloud Assistant log files to retain.
         # - Default value: 30.
@@ -263,7 +261,7 @@ class ModifyCloudAssistantSettingsRequestResourceUsageConfig(DaraModel):
         # - Minimum value: 35MB.
         # - Maximum value: 1024MB.
         self.memory_limit = memory_limit
-        # The maximum number of consecutive times that the usage of CPU or memory resources exceeds the limit. After reaching this limit, the Cloud Assistant Agent automatically stops.
+        # The maximum number of consecutive times that the usage of CPU or memory resources exceeds the limit. When this limit is reached, the Cloud Assistant Agent automatically stops.
         # - Default value: 3.
         # - Minimum value: 3.
         self.overload_limit = overload_limit
@@ -347,7 +345,7 @@ class ModifyCloudAssistantSettingsRequestOssDeliveryConfig(DaraModel):
         # - The length cannot exceed 254 characters.
         # - It cannot start with a forward slash (/) or a backslash (\\).
         # 
-        # Note: Pass an empty string ("") to indicate that no directory prefix is required. If a directory prefix was previously set and is no longer needed, pass an empty string ("") to clear it.
+        # Note: Pass an empty string ("") if no directory prefix is required. If a directory prefix was previously set and is no longer needed, pass an empty string ("") to clear it.
         self.prefix = prefix
 
     def validate(self):
@@ -409,44 +407,26 @@ class ModifyCloudAssistantSettingsRequestAgentUpgradeConfig(DaraModel):
         enabled: bool = None,
         time_zone: str = None,
     ):
-        # The list of time windows during which upgrades are allowed. The time can be accurate to minutes. The default time zone is UTC.
-        # 
-        # The interval between time windows cannot be less than 1 hour.
-        # 
-        # Format: start time (HH:mm)-end time (HH:mm).
-        # 
-        # Example:
-        # [
-        # "02:00-03:00",
-        # "05:00-06:00"
-        # ]
-        # This indicates that upgrades are allowed every day from 02:00 to 03:00 and from 05:00 to 06:00 in the UTC time zone.
+        # The list of time windows allowed for upgrades, accurate to the minute. The default time zone is UTC. The interval between time windows cannot be less than 1 hour. Format: start time (HH:mm)-end time (HH:mm). For example, ["02:00-03:00", "05:00-06:00"] indicates that upgrades are allowed every day from 02:00 to 03:00 and from 05:00 to 06:00 in the UTC time zone.
         self.allowed_upgrade_window = allowed_upgrade_window
-        # Specifies whether to immediately check the version and perform updates when the Cloud Assistant Agent starts. Default value: true.
-        # 
-        # This parameter takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
+        # Specifies whether to check the version and perform updates immediately when the Cloud Assistant Agent starts. Default value: true. This parameter takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
         # 
         # - Windows: 2.1.4.1065
         # 
         # - Linux: 2.2.4.1065
         self.bootstrap_upgrade = bootstrap_upgrade
-        # Specifies whether to disable the Cloud Assistant Agent from checking and performing updates.
-        # Default value: false.
-        # Precautions:
-        # 1. You must fully evaluate the security risks and business impacts caused by disabling upgrades or continuing to run an earlier version of the Agent. You are responsible for any risks and impacts that arise.
+        # Specifies whether to disable the Cloud Assistant Agent from checking and performing updates. Default value: false. Precautions:
+        # 1. Fully evaluate the security risks and business impacts caused by disabling upgrades or continuing to run an earlier version of the Agent. You are responsible for the resulting risks and impacts.
         # 2. The disable upgrade configuration takes effect at the account level. It applies to all ECS instances under the account and does not support individual exemptions by instance. Therefore, the aforementioned risks cover all instances within the account.
         # 3. This parameter takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
         #    - Windows: 2.1.4.1065
         #    - Linux: 2.2.4.1065
         self.disable_upgrade = disable_upgrade
-        # Specifies whether to enable the custom Agent upgrade configuration. If set to false, the system attempts to upgrade the agent every 30 minutes by default.
-        # 
-        # Default value: false.
+        # Specifies whether to enable the custom Agent upgrade configuration. If set to false, the system attempts to upgrade the Agent every 30 minutes by default. Default value: false.
         self.enabled = enabled
-        # The time zone for the allowed upgrade time windows. The default time zone is UTC.
-        # The time zone supports the following two formats:
-        # - Full name of the time zone: such as Asia/Shanghai (China/Shanghai time) and America/Los_Angeles (US/Los Angeles time).
-        # - Offset of the time zone relative to Greenwich Mean Time (GMT): such as GMT+8:00 (East 8th zone) and GMT-7:00 (West 7th zone). Leading zeros are not supported for the hour digit.
+        # The time zone for the allowed upgrade time windows. The default time zone is UTC. The time zone supports the following two formats:
+        # - Full time zone name: such as Asia/Shanghai (China/Shanghai time) and America/Los_Angeles (US/Los Angeles time).
+        # - Time zone offset from Greenwich Mean Time (GMT): such as GMT+8:00 (UTC+8) and GMT-7:00 (UTC-7). Leading zeros are not supported for the hour value.
         self.time_zone = time_zone
 
     def validate(self):

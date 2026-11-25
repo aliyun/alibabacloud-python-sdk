@@ -20,19 +20,19 @@ class ModifyDiskChargeTypeRequest(DaraModel):
     ):
         # Specifies whether to enable automatic payment. Valid values: 
         #          
-        # - true (default): enables automatic payment. Make sure that your account balance is sufficient. If your account balance is insufficient, an abnormal order is generated and can only be canceled. 
-        # - false: generates an order without deducting fees. If your account balance is insufficient, a normal unpaid order is generated. You can log on to the Alibaba Cloud **Expenses and Costs** console and pay the order on the <props="china"><ph>[My Orders](https://usercenter2.aliyun.com/order/list)</ph><props="intl"><ph>[Order Management](https://usercenter2-intl.aliyun.com/order/list)</ph> page.
+        # - true: enables automatic payment. This is the default value. Make sure that your account balance is sufficient. If your account balance is insufficient, an abnormal order is generated and can only be canceled. 
+        # - false: generates an order without deducting fees. If your account balance is insufficient, a normal unpaid order is generated. You can log on to the Alibaba Cloud **Expenses and Costs** console and pay the order on the <props="china"><ph>[My Orders](https://usercenter2.aliyun.com/order/list)</ph><props="intl"><ph>[Orders](https://usercenter2-intl.aliyun.com/order/list)</ph> page.
         self.auto_pay = auto_pay
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The billing method of the disk. Valid values: 
+        # The new billing method of the disk. Valid values: 
         #          
-        # - PrePaid (default): switches the pay-as-you-go data disk to a subscription data disk. 
-        # - PostPaid: switches the subscription data disk to a pay-as-you-go data disk.
+        # - PrePaid: changes the billing method of the data disk from pay-as-you-go to subscription. This is the default value. 
+        # - PostPaid: changes the billing method of the data disk from subscription to pay-as-you-go.
         # 
-        # > When you switch a pay-as-you-go disk to a subscription disk, the billing cycle of the disk capacity is automatically synchronized with that of the associated ECS instance.
+        # > When you change the billing method of a pay-as-you-go disk to subscription, the billing cycle of the disk capacity fee is automatically synchronized with that of the associated ECS instance.
         self.disk_charge_type = disk_charge_type
-        # The list of disk IDs. The value is a JSON array. You can specify up to 16 disk IDs. Separate multiple IDs with commas (,).
+        # The IDs of the disks. The value is a JSON array. You can specify up to 16 disk IDs. Separate multiple IDs with commas (,).
         # 
         # This parameter is required.
         self.disk_ids = disk_ids

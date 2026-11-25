@@ -19,16 +19,16 @@ class DescribeActivationsResponseBody(DaraModel):
     ):
         # The collection of activation codes and their usage information.
         self.activation_list = activation_list
-        # The query token returned by the current call.
+        # The pagination token returned by the current call.
         self.next_token = next_token
         # The current page number.
         self.page_number = page_number
-        # Settings for the number of entries returned per page in a paged query. This parameter is used for paging.
+        # The number of entries returned per page.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of record entries that meet the conditional query.
-        # > If you use the MaxResults and NextToken parameters for a paged query (paging), the returned TotalCount value is meaningless.
+        # The total number of records that meet the query conditions.
+        # > When you use the MaxResults and NextToken parameters for pagination, the returned TotalCount value is meaningless.
         self.total_count = total_count
 
     def validate(self):
@@ -125,7 +125,7 @@ class DescribeActivationsResponseBodyActivationList(DaraModel):
         self.registered_count = registered_count
         # The ID of the resource group to which the activation code belongs.
         self.resource_group_id = resource_group_id
-        # The tag information of the managed instance activation code.
+        # The tag information of the activation code for the managed instance.
         self.tags = tags
         # The validity period of the activation code. Unit: hours.
         self.time_to_live_in_hours = time_to_live_in_hours
@@ -230,9 +230,9 @@ class DescribeActivationsResponseBodyActivationListTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the managed instance activation code.
+        # The tag key of the activation code for the managed instance.
         self.tag_key = tag_key
-        # The tag value of the managed instance activation code.
+        # The tag value of the activation code for the managed instance.
         self.tag_value = tag_value
 
     def validate(self):

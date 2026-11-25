@@ -47,7 +47,7 @@ class ModifyCloudAssistantSettingsShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.setting_type = setting_type
-        # The Simple Log Service (SLS) delivery configuration.
+        # The SLS delivery configuration.
         self.sls_delivery_config_shrink = sls_delivery_config_shrink
 
     def validate(self):

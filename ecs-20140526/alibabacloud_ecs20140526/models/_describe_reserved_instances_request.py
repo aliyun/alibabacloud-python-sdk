@@ -31,16 +31,16 @@ class DescribeReservedInstancesRequest(DaraModel):
     ):
         # The allocation type. Valid values:
         # 
-        # - Normal: queries the reserved instances under the current account.
-        # - Shared: queries the reserved instances that are shared between the main account and linked accounts under the current account.
+        # - Normal: Queries the reserved instances within the current account.
+        # - Shared: Queries the reserved instances that are shared between the main account and linked accounts within the current account.
         # 
         # Default value: Normal.
         self.allocation_type = allocation_type
         # The instance type that matches the reserved instance. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html). 
         # 
-        # > This is the instance type selected when you purchase the reserved instance. When the reserved instance is applied, a regional reserved instance can be applied to different instance types within the same instance family based on the equivalence calculation.
+        # > This is the instance type that you selected when you purchased the reserved instance. When the reserved instance is applied to offset the bills of pay-as-you-go instances, regional reserved instances support size flexibility within the same instance family.
         self.instance_type = instance_type
-        # The instance family that matches the reserved instance. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+        # The instance type family that matches the reserved instance. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
         self.instance_type_family = instance_type_family
         # The lock type. Valid values:
         # 
@@ -49,9 +49,9 @@ class DescribeReservedInstancesRequest(DaraModel):
         self.lock_reason = lock_reason
         # The payment type of the reserved instance. Valid values:
         # 
-        # - No Upfront: no upfront.
-        # - Partial Upfront: partial upfront.
-        # - All Upfront: all upfront.
+        # - No Upfront: no upfront
+        # - Partial Upfront: partial upfront
+        # - All Upfront: all upfront
         self.offering_type = offering_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -59,7 +59,7 @@ class DescribeReservedInstancesRequest(DaraModel):
         # 
         # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page for a paging query. Maximum value: 100.
+        # The number of entries per page in a paging query. Maximum value: 100.
         # 
         # Default value: 10.
         self.page_size = page_size
@@ -67,7 +67,7 @@ class DescribeReservedInstancesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The reserved instance IDs. Array length: 1 to 100.
+        # The IDs of the reserved instances. Array length: 1 to 100.
         self.reserved_instance_id = reserved_instance_id
         # The name of the reserved instance.
         # 
@@ -77,8 +77,8 @@ class DescribeReservedInstancesRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # The scope of the reserved instance. Valid values:
         #          
-        # - Region: regional.
-        # - Zone: zonal.
+        # - Region: regional
+        # - Zone: zonal
         self.scope = scope
         # The statuses of the reserved instances.
         self.status = status
@@ -223,11 +223,11 @@ class DescribeReservedInstancesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the reserved instance. The tag key cannot be an empty string and can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+        # The tag key of the reserved instance. The tag key cannot be an empty string. It can be up to 128 characters in length, and cannot start with aliyun or acs:. It cannot contain http:// or https://.
         # 
-        # > If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have multiple tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+        # > If you use a single tag to filter resources, the resource count of resources under this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have multiple tags attached cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         self.key = key
-        # The tag value of the reserved instance. The tag value cannot be an empty string and can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
+        # The tag value of the reserved instance. The tag value cannot be an empty string. It can be up to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

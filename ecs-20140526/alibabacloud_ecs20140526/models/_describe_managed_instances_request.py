@@ -33,9 +33,9 @@ class DescribeManagedInstancesRequest(DaraModel):
         self.activation_id = activation_id
         # Indicates whether the managed instance is connected. Valid values:
         # 
-        # true: The managed instance is connected. You can manage the managed instance by using Cloud Assistant.
+        # - true: The managed instance is connected. You can use Cloud Assistant to manage the managed instance.
         # 
-        # false: The managed instance is not connected. The server may be stopped or the Cloud Assistant Agent is not properly installed.
+        # - false: The managed instance is not connected. The server may be stopped or the Cloud Assistant Agent is not properly installed.
         self.connected = connected
         # The ID of the managed instance. Valid values of N: 1 to 50.
         self.instance_id = instance_id
@@ -43,7 +43,7 @@ class DescribeManagedInstancesRequest(DaraModel):
         self.instance_ip = instance_ip
         # The name of the managed instance.
         self.instance_name = instance_name
-        # The value of the MachineId parameter specified when the managed instance is registered. The value can be up to 36 characters in length.
+        # The value of the MachineId parameter specified when the managed instance was registered. The value can be up to 36 characters in length.
         # Sample registration script:
         # ```
         # aliyun-service --register \\
@@ -56,9 +56,9 @@ class DescribeManagedInstancesRequest(DaraModel):
         # 
         # - If the MachineId and ForceResult parameters are specified during registration, Cloud Assistant generates a fixed managed instance ID for the MachineId.
         # - If the MachineId parameter is not explicitly specified, Cloud Assistant automatically generates a MachineId value based on the hardware information of the machine.
-        # - Recommended: Explicitly specify the MachineId and ForceResult parameters to mark the mapping between the managed instance and the on-premises machine.
+        # - Recommendation: Explicitly specify the MachineId and ForceResult parameters to mark the mapping between the managed instance and the on-premises machine.
         self.machine_id = machine_id
-        # The maximum number of entries to return on each page during paging and paged query.
+        # The maximum number of entries per page during paging.
         # 
         # Maximum value: 50.
         # 
@@ -74,13 +74,13 @@ class DescribeManagedInstancesRequest(DaraModel):
         self.os_type = os_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # > This parameter will be taken offline. We recommend that you use NextToken and MaxResults for paging and paged query operations.
+        # > This parameter will be deprecated. Use NextToken and MaxResults to perform paged query operations.
         self.page_number = page_number
-        # > This parameter will be taken offline. We recommend that you use NextToken and MaxResults for paging and paged query operations.
+        # > This parameter will be deprecated. Use NextToken and MaxResults to perform paged query operations.
         self.page_size = page_size
         # The region ID. Supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
         # 
-        # You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to view region IDs and other information.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to view region IDs and other information.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -229,7 +229,7 @@ class DescribeManagedInstancesRequestTag(DaraModel):
     ):
         # The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
         # 
-        # If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources attached to multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+        # If you use a single tag to filter resources, the number of returned resources cannot exceed 1,000. If you use multiple tags to filter resources, the number of returned resources that have multiple tags attached cannot exceed 1,000. If the number of resources exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
         # 
         # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key

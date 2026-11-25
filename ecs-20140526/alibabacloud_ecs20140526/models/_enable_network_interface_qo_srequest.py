@@ -100,23 +100,23 @@ class EnableNetworkInterfaceQoSRequestQoS(DaraModel):
     ):
         # The maximum inbound internal bandwidth limit.
         # 
-        # Unit: Kbit/s. Step size: 1000 (1 Mbit/s). Valid values: [50000, +∞).
+        # Unit: Kbit/s. Step: 1000 (1 Mbit/s). Valid values: [50000, +∞).
         self.bandwidth_rx = bandwidth_rx
         # The maximum outbound internal bandwidth limit.
         # 
-        # Unit: Kbit/s. Step size: 1000 (1 Mbit/s). Valid values: [50000, +∞).
+        # Unit: Kbit/s. Step: 1000 (1 Mbit/s). Valid values: [50000, +∞).
         self.bandwidth_tx = bandwidth_tx
-        # The maximum number of sessions.
+        # The maximum number of concurrent connections.
         # 
-        # Step size: 10000. Valid values: [10000, +∞).
+        # Step: 10000. Valid values: [10000, +∞).
         self.concurrent_connections = concurrent_connections
         # The inbound internal packet forwarding rate.
         # 
-        # Unit: PPS. Step size: 10000. Valid values: [10000, +∞).
+        # Unit: PPS. Step: 10000. Valid values: [10000, +∞).
         self.pps_rx = pps_rx
         # The outbound internal packet forwarding rate.
         # 
-        # Unit: PPS. Step size: 10000. Valid values: [10000, +∞).
+        # Unit: PPS. Step: 10000. Valid values: [10000, +∞).
         self.pps_tx = pps_tx
 
     def validate(self):

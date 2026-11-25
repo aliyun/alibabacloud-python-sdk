@@ -22,13 +22,13 @@ class CreateSimulatedSystemEventsRequest(DaraModel):
         # The type of the system event. Valid values: 
         # 
         # - SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
-        # - SystemFailure.Reboot: The instance is restarted due to a system error.
-        # - InstanceFailure.Reboot: The instance is restarted due to an instance error.
+        # - SystemFailure.Reboot: The instance is restarted due to a system failure.
+        # - InstanceFailure.Reboot: The instance is restarted due to an instance failure.
         # - SystemMaintenance.Stop: The instance is stopped due to system maintenance.
         # - SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
-        # - SystemFailure.Redeploy: The instance is redeployed due to a system error.
-        # - SystemFailure.Stop: The instance is stopped due to a system error.
-        # - InstanceFailure.Reboot: The instance is restarted due to an instance error.
+        # - SystemFailure.Redeploy: The instance is redeployed due to a system failure.
+        # - SystemFailure.Stop: The instance is stopped due to a system failure.
+        # - InstanceFailure.Reboot: The instance is restarted due to an instance failure.
         # 
         # This parameter is required.
         self.event_type = event_type
@@ -38,7 +38,7 @@ class CreateSimulatedSystemEventsRequest(DaraModel):
         self.instance_id = instance_id
         # The scheduled start time of the event. Specify the time in the [ISO 8601](https://help.aliyun.com/document_detail/25696.html) standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # > When the TriggerRealOps parameter is set to false, you must specify the NotBefore parameter.
+        # > If the TriggerRealOps parameter is set to false, you must specify the NotBefore parameter.
         self.not_before = not_before
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -48,7 +48,7 @@ class CreateSimulatedSystemEventsRequest(DaraModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to trigger actual O&M operations. Valid values:<br>- true: Triggers actual O&M operations. The system actually stops or releases the instance. Proceed with caution during testing, or select an instance that does not run business workloads for testing. The O&M event is generated approximately 1 minute after the API call succeeds.<br>- false: Simulates only event notifications without affecting the actual lifecycle of the instance. This is the default value.
+        # Specifies whether to trigger actual O&M operations. Valid values:<br>- true: Triggers actual O&M operations. The system actually stops or releases the instance. Proceed with caution during testing, or select an instance that does not run business workloads for testing. The O&M event is generated approximately 1 minute after the API call succeeds.<br>- false: Simulates only event notifications and does not affect the actual lifecycle of the instance. This is the default value.
         self.trigger_real_ops = trigger_real_ops
 
     def validate(self):

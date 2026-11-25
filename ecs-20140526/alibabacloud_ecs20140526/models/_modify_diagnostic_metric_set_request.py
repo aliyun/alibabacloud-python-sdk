@@ -26,7 +26,7 @@ class ModifyDiagnosticMetricSetRequest(DaraModel):
         self.metric_set_id = metric_set_id
         # The name of the diagnostic metric set.
         self.metric_set_name = metric_set_name
-        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the latest list of Alibaba Cloud regions.
         # 
         # This parameter is required.
         self.region_id = region_id

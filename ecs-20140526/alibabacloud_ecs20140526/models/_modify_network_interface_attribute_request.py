@@ -29,9 +29,9 @@ class ModifyNetworkInterfaceAttributeRequest(DaraModel):
         source_dest_check: bool = None,
         tx_queue_size: int = None,
     ):
-        # The network connectivity tracking configuration information collection.
+        # The network connectivity tracking configuration information set.
         # 
-        # Before you use this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html) carefully.
+        # Before using this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
         self.connection_tracking_configuration = connection_tracking_configuration
         # Specifies whether to retain the ENI when the instance is released. Valid values:
         # 
@@ -39,41 +39,41 @@ class ModifyNetworkInterfaceAttributeRequest(DaraModel):
         # 
         # - false: The ENI is retained.
         self.delete_on_release = delete_on_release
-        # The description of the network interface controller (NIC). The description must be 2 to 255 characters in length and cannot start with `http://` or `https://`.
+        # The description of the Elastic Network Interface (ENI) (network interface controller (NIC)). The description must be 2 to 255 characters in length and cannot start with http:// or https://.
         # 
         # Default value: empty.
         self.description = description
-        # Specifies whether to enable the primary IPv6 address for the network interface controller (NIC).
+        # Indicates whether the primary IPv6 address is enabled for the Elastic Network Interface (ENI) (network interface controller (NIC)).
         self.enable_primary_ipv_6 = enable_primary_ipv_6
         # This parameter is not available for public use.
         self.enhanced_network = enhanced_network
-        # The ID of the network interface controller (NIC).
+        # The ID of the Elastic Network Interface (ENI) (network interface controller (NIC)).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
-        # The name of the Elastic Network Interface (ENI). The name must be 2 to 128 characters in length and must start with a letter or a Chinese character. It cannot start with `http://` or `https://`. It supports characters in the Letter category of Unicode, such as English letters, Chinese characters, and digits. It can contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the Elastic Network Interface (ENI) (network interface controller (NIC)). The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It supports Unicode characters in the letter categorization, including English letters, Chinese characters, and digits. It can contain colons (:), underscores (_), periods (.), and hyphens (-).
         # 
         # Default value: empty.
         self.network_interface_name = network_interface_name
-        # The traffic parameters of the network interface controller (NIC).
+        # The traffic parameter of the Elastic Network Interface (ENI) (network interface controller (NIC)).
         self.network_interface_traffic_config = network_interface_traffic_config
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of queues for the ENI. Valid values: 1 to 2048.
         # 
-        # - You can modify the number of queues for an ENI that is in the `Available` state, or for an ENI that is attached (`InUse`) to an instance that is in the `Stopped` state.
+        # - You can modify the number of queues for an ENI that is in the `Available` state, or an ENI that is attached (`InUse`) to an instance that is in the `Stopped` state.
         # 
-        # - The number of queues for the ENI cannot exceed the maximum number of queues per ENI allowed by the instance type. The total number of queues for all ENIs attached to the instance cannot exceed the total queue quota allowed by the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation and query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` parameters to obtain the maximum number of queues per ENI and the total queue quota for the instance type.
+        # - The number of queues for the ENI cannot exceed the maximum number of queues per ENI allowed by the instance type. The total number of queues for all ENIs attached to the instance cannot exceed the total queue quota allowed by the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation and query the MaximumQueueNumberPerEni and TotalEniQueueQuantity fields to obtain the maximum number of queues per ENI and the total queue quota for the instance type.
         self.queue_number = queue_number
-        # The region ID of the network interface controller (NIC). You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the Elastic Network Interface (ENI) (network interface controller (NIC)). You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The inbound queue depth of the network interface controller (NIC).
+        # The inbound queue depth of the Elastic Network Interface (ENI) (network interface controller (NIC)).
         # 
-        # > This parameter is in invitational preview and is not available for public use. If you need to use it, submit a ticket to apply for whitelist access.
+        # > This parameter is in invitational preview and is not available for public use. If you need to use this parameter, submit a ticket to apply for whitelist access.
         # 
         # Take note of the following items:
         # 
@@ -81,11 +81,11 @@ class ModifyNetworkInterfaceAttributeRequest(DaraModel):
         # - This parameter currently applies only to Linux images.
         # - A larger inbound queue depth can increase inbound throughput and reduce the packet loss rate, but it consumes more memory.
         self.rx_queue_size = rx_queue_size
-        # The list of security group IDs. The secondary network interface controller (NIC) is added to the specified security groups and removed from its current security groups.
+        # The list of security group IDs. The secondary Elastic Network Interface (ENI) (network interface controller (NIC)) will be added to the specified security groups and removed from its existing security groups.
         # 
-        # - The valid values of N depend on the quota of security groups that each network interface controller (NIC) can join. For more information, see [Limits](~~25412#SecurityGroupQuota~~).
+        # - The valid values of N depend on the quota of security groups that each Elastic Network Interface (ENI) can join. For more information, see [Limits](~~25412#SecurityGroupQuota~~).
         # 
-        # - The modification takes effect shortly, but there may be a slight delay.
+        # - Changes to security groups take effect shortly, but a slight delay may occur.
         self.security_group_id = security_group_id
         # Specifies whether to enable source/destination checking. We recommend that you enable this feature to improve network security. Valid values:
         # 
@@ -95,11 +95,11 @@ class ModifyNetworkInterfaceAttributeRequest(DaraModel):
         # 
         # Default value: false.
         # 
-        # > This feature is supported only in specific regions. Before you use it, read [Source/destination checking](https://help.aliyun.com/document_detail/2863210.html) carefully.
+        # > This feature is supported only in specific regions. Before you use this feature, read [Source/destination checking](https://help.aliyun.com/document_detail/2863210.html).
         self.source_dest_check = source_dest_check
-        # The outbound queue depth of the network interface controller (NIC).
+        # The outbound queue depth of the Elastic Network Interface (ENI) (network interface controller (NIC)).
         # 
-        # > This parameter is in invitational preview and is not available for public use. If you need to use it, submit a ticket to apply for whitelist access.
+        # > This parameter is in invitational preview and is not available for public use. If you need to use this parameter, submit a ticket to apply for whitelist access.
         # 
         # Take note of the following items:
         # 
@@ -247,32 +247,28 @@ class ModifyNetworkInterfaceAttributeRequestNetworkInterfaceTrafficConfig(DaraMo
         rx_queue_size: int = None,
         tx_queue_size: int = None,
     ):
-        # The traffic pattern of the network interface controller (NIC). Valid values of the parameter:
+        # The traffic pattern of the network interface controller (NIC). Valid values for the parameter:
         # 
         # - Standard: uses the TCP traffic pattern.
         # - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA traffic pattern.
         # 
-        # When the Elastic Network Interface (ENI) is attached to an instance, take note of the following items:
-        # - The total number of RDMA network interface controllers (NICs) for the instance cannot exceed the RDMA network interface controller (NIC) quota allowed by the instance type. You can invoke the DescribeInstanceTypes operation and query the EriQuantity parameter to obtain the RDMA network interface controller (NIC) quota for the instance type.
-        # 
-        # > This parameter is in invitational preview and is not available for public use.
+        # When the Elastic Network Interface (ENI) is attached to an instance, take note of the following item:
+        # - The total number of RDMA network interface controllers (NICs) for the instance cannot exceed the RDMA network interface controller (NIC) quota allowed by the instance type. You can invoke the DescribeInstanceTypes operation and query the EriQuantity field to obtain the RDMA network interface controller (NIC) quota for the instance type.
         self.network_interface_traffic_mode = network_interface_traffic_mode
-        # The number of queues for the network interface controller (NIC).
+        # The number of queues for the Elastic Network Interface (ENI).
         # When the Elastic Network Interface (ENI) is attached to an instance, take note of the following items:
         # - The number of queues cannot exceed the maximum number of queues per network interface controller (NIC) allowed by the instance type.
-        # - The total number of queues for all network interface controllers (NICs) attached to the instance cannot exceed the total queue quota allowed by the instance type. You can invoke the DescribeInstanceTypes operation and query the MaximumQueueNumberPerEni and TotalEniQueueQuantity parameters to obtain the maximum number of queues per network interface controller (NIC) and the total queue quota for the instance type.
+        # - The total number of queues for all network interface controllers (NICs) attached to the instance cannot exceed the total queue quota allowed by the instance type. You can invoke the DescribeInstanceTypes operation and query the MaximumQueueNumberPerEni and TotalEniQueueQuantity fields to obtain the maximum number of queues per network interface controller (NIC) and the total queue quota for the instance type.
         # 
         # > This parameter is in invitational preview and is not available for public use.
         self.queue_number = queue_number
         # The number of queues for the RDMA network interface controller (NIC).
-        # When the Elastic Network Interface (ENI) is attached to an instance, take note of the following items:
-        # - The number of queues cannot exceed the maximum number of queues per RDMA network interface controller (NIC) allowed by the instance type. You can invoke the DescribeInstanceTypes operation and query the QueuePairNumber parameter to obtain the maximum number of queues per RDMA network interface controller (NIC) for the instance type.
-        # 
-        # > This parameter is in invitational preview and is not available for public use.
+        # When the Elastic Network Interface (ENI) is attached to an instance, take note of the following item:
+        # - The number of queues cannot exceed the maximum number of queues per RDMA network interface controller (NIC) allowed by the instance type. You can invoke the DescribeInstanceTypes operation and query the QueuePairNumber field to obtain the maximum number of queues per RDMA network interface controller (NIC) for the instance type.
         self.queue_pair_number = queue_pair_number
-        # The inbound queue depth of the network interface controller (NIC).
+        # The inbound queue depth of the Elastic Network Interface (ENI) (network interface controller (NIC)).
         # 
-        # > This parameter is in invitational preview and is not available for public use. If you need to use it, submit a ticket to apply for whitelist access.
+        # > This parameter is in invitational preview and is not available for public use. If you need to use this parameter, submit a ticket to apply for whitelist access.
         # 
         # Take note of the following items:
         # 
@@ -280,9 +276,9 @@ class ModifyNetworkInterfaceAttributeRequestNetworkInterfaceTrafficConfig(DaraMo
         # - This parameter currently applies only to Linux images.
         # - A larger inbound queue depth can increase inbound throughput and reduce the packet loss rate, but it consumes more memory.
         self.rx_queue_size = rx_queue_size
-        # The outbound queue depth of the network interface controller (NIC).
+        # The outbound queue depth of the Elastic Network Interface (ENI) (network interface controller (NIC)).
         # 
-        # > This parameter is in invitational preview and is not available for public use. If you need to use it, submit a ticket to apply for whitelist access.
+        # > This parameter is in invitational preview and is not available for public use. If you need to use this parameter, submit a ticket to apply for whitelist access.
         # 
         # Take note of the following items:
         # 

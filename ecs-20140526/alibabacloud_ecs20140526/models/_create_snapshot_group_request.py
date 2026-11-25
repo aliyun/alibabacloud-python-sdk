@@ -29,41 +29,41 @@ class CreateSnapshotGroupRequest(DaraModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The ID of the disk for which you want to create a snapshot-consistent group. You can specify multiple disk IDs across instances within the same zone. Valid values of N: 1 to 128. A single snapshot-consistent group can contain up to 128 disks with a total capacity of up to 256 TiB.
+        # The ID of the disk for which you want to create a snapshot-consistent group. You can specify multiple disk IDs across instances in the same zone. Valid values of N: 1 to 128. A single snapshot-consistent group can contain up to 128 disks, and the total capacity cannot exceed 256 TiB.
         # 
         # Take note of the following items:
         # 
-        # - This parameter and `ExcludeDiskId.N` cannot be set at the same time.
-        # - If you set `InstanceId`, you can set this parameter only to the IDs of disks attached to the specified instance. Setting multiple cross-instance disk IDs is no longer supported.
+        # - This parameter and ExcludeDiskId.N cannot be set at the same time.
+        # - If you set InstanceId, you can set this parameter only to the IDs of disks attached to the specified instance. Setting multiple cross-instance disk IDs is no longer supported.
         self.disk_id = disk_id
         # The ID of the disk for which you do not want to create a snapshot in the instance. After you specify a disk ID, the created snapshot-consistent group does not contain the snapshot of the disk. Valid values of N: 1 to 128.
         # 
         # Default value: empty, which indicates that snapshots are created for all disks in the instance.
         # 
-        # > This parameter and `DiskId.N` cannot be set at the same time.
+        # > This parameter and DiskId.N cannot be set at the same time.
         self.exclude_disk_id = exclude_disk_id
         # The instance ID.
         self.instance_id = instance_id
-        # Specifies whether to enable the snapshot instant access (active) feature. Valid values:
+        # Specifies whether to enable snapshot instant access. Valid values:
         # 
-        # - true: active.
-        # - false: shutdown.
+        # - true: enabled.
+        # - false: disabled.
         # 
         # Default value: false.
         # 
-        # > This parameter is deprecated. Standard snapshots of enterprise SSD and standard SSD disks have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to configure this parameter, and no additional fees are incurred.
+        # > This parameter is deprecated. Standard snapshots of ESSDs are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to perform additional configurations, and no additional fees are incurred.
         self.instant_access = instant_access
-        # Specifies the Settings for the usage time of the snapshot instant access (active) feature. Unit: days. Valid values: 1 to 65535.
+        # The retention period of snapshot instant access. Unit: days. Valid values: 1 to 65535.
         # 
-        # This parameter takes effect only when `InstantAccess` is set to true. An automatic shutdown of the instant access (active) feature is triggered when the specified period expires.
+        # This parameter takes effect only when `InstantAccess` is set to true. The snapshot instant access feature is automatically disabled when the specified period expires.
         # 
-        # Default value: empty, which indicates that the retention period of the instant access feature is the same as the release time of the snapshot.
+        # Default value: empty, which indicates that the retention period is the same as the snapshot release time.
         # 
-        # > This parameter is deprecated. Standard snapshots of enterprise SSD and standard SSD disks have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to configure this parameter, and no additional fees are incurred.
+        # > This parameter is deprecated. Standard snapshots of ESSDs are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to perform additional configurations, and no additional fees are incurred.
         self.instant_access_retention_days = instant_access_retention_days
-        # The name of the snapshot consistency group. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`. It can contain digits, periods (.), underscores (_), hyphens (-), and colons (:).
+        # The name of the snapshot consistency group. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, periods (.), underscores (_), hyphens (-), and colons (:).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -77,7 +77,7 @@ class CreateSnapshotGroupRequest(DaraModel):
         self.resource_owner_id = resource_owner_id
         # > This parameter is not available.
         self.storage_location_arn = storage_location_arn
-        # The tags.
+        # The list of tags.
         self.tag = tag
 
     def validate(self):

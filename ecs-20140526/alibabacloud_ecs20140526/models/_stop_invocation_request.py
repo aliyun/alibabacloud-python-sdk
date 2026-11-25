@@ -17,9 +17,9 @@ class StopInvocationRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The IDs of the instances on which to stop the command execution. You can specify up to 50 instance IDs. Valid values of N: 1 to 50.
+        # The IDs of the instances on which you want to stop the command. You can specify up to 50 instance IDs. Valid values of N: 1 to 50.
         self.instance_id = instance_id
-        # The command execution ID. You can call the [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) operation to query all execution IDs.
+        # The invocation ID. You can call the [DescribeInvocations](https://help.aliyun.com/document_detail/64840.html) operation to query all invocation IDs.
         # 
         # This parameter is required.
         self.invoke_id = invoke_id

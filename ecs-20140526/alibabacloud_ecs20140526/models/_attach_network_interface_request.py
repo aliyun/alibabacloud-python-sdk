@@ -22,26 +22,26 @@ class AttachNetworkInterfaceRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The index of the network card specified for the ENI.
+        # The index of the physical network card specified for the ENI.
         # 
-        # >The valid values of NetworkCardIndex depend on the instance family. If the instance type does not support NetworkCard, you cannot specify this parameter. If the instance type supports NetworkCard, see [Instance families](https://help.aliyun.com/document_detail/25378.html) for valid values.
+        # > The valid values of NetworkCardIndex depend on the instance family. If the instance type does not support NetworkCard, this parameter cannot be specified. If it is supported, see [Instance families](https://help.aliyun.com/document_detail/25378.html) for valid values.
         self.network_card_index = network_card_index
-        # The network interface controller (NIC) ID.
+        # The ID of the Elastic Network Interface (ENI) network interface controller (NIC).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The trunk ENI ID.
-        # >This parameter is not yet available.
+        # The ID of the trunk ENI.
+        # > This parameter is not available.
         self.trunk_network_instance_id = trunk_network_instance_id
-        # >This parameter is deprecated.
+        # > **[Deprecated]**
         self.wait_for_network_configuration_ready = wait_for_network_configuration_ready
 
     def validate(self):

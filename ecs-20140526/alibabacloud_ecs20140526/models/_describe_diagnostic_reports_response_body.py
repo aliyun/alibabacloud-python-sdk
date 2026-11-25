@@ -14,7 +14,7 @@ class DescribeDiagnosticReportsResponseBody(DaraModel):
         reports: main_models.DescribeDiagnosticReportsResponseBodyReports = None,
         request_id: str = None,
     ):
-        # The query token returned for the current call.
+        # The query token returned by the current call.
         self.next_token = next_token
         self.reports = reports
         # The request ID.

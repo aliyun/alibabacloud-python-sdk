@@ -19,19 +19,22 @@ class ModifySnapshotAttributeRequest(DaraModel):
     ):
         # The description of the snapshot. The description can be empty and can be up to 256 characters in length. It cannot start with http:// or https://.
         self.description = description
-        # Specifies whether to shutdown the instant access feature for the snapshot. Valid values:
-        # - true: shutdown the instant access feature.
-        # - false: do not shutdown the instant access feature.
+        # Specifies whether to trigger a shutdown of the snapshot instant access (active) feature. Valid values:
+        # 
+        # - true: Triggers a shutdown of the snapshot instant access (active) feature.
+        # - false: Does not trigger a shutdown of the snapshot instant access (active) feature.
+        # 
         # Default value: false.
         # 
-        # > **[Deprecated]** This parameter is deprecated. Standard snapshots of ESSD cloud disks have been upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to perform additional configurations, and no additional fees are incurred.
+        # > **[Deprecated]** This parameter is deprecated. Standard snapshots of an ESSD disk (enterprise SSD, not standard SSD) are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to perform additional configurations, and no additional fees are incurred.
         self.disable_instant_access = disable_instant_access
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The retention period of the snapshot in days. When you specify this parameter, the retention period is calculated from the **creation time** of the snapshot. The creation time is represented in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and displayed in UTC. Valid values: 1 to 65536.
-        # > You can only extend the retention period of a snapshot. You cannot shorten the existing retention period.
+        # 
+        # >The retention period of a snapshot can only be extended. You cannot shorten the existing retention period of a snapshot.
         self.retention_days = retention_days
         # The snapshot ID.
         # 

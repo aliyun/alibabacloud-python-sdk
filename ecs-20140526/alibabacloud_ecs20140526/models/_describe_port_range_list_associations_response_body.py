@@ -14,9 +14,9 @@ class DescribePortRangeListAssociationsResponseBody(DaraModel):
         port_range_list_associations: List[main_models.DescribePortRangeListAssociationsResponseBodyPortRangeListAssociations] = None,
         request_id: str = None,
     ):
-        # The pagination token returned by the current call. If this value is empty, no more data is returned.
+        # The pagination token returned by the current call. If this value is empty, no more data is available.
         self.next_token = next_token
-        # The array of resources associated with the port list.
+        # The array of resources associated with the port range list.
         self.port_range_list_associations = port_range_list_associations
         # The request ID.
         self.request_id = request_id
@@ -69,7 +69,7 @@ class DescribePortRangeListAssociationsResponseBodyPortRangeListAssociations(Dar
     ):
         # The ID of the resource.
         self.resource_id = resource_id
-        # The type of the resource. Valid values: SecurityGroup.
+        # The resource type. Valid value: SecurityGroup.
         self.resource_type = resource_type
 
     def validate(self):

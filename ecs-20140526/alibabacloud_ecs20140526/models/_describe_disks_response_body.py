@@ -20,14 +20,14 @@ class DescribeDisksResponseBody(DaraModel):
         self.disks = disks
         # The pagination token returned by this call.
         self.next_token = next_token
-        # > This parameter will be deprecated soon. Use the `NextToken` and `MaxResults` parameters for paged queries.
+        # > This parameter will be deprecated soon. Use the `NextToken` and `MaxResults` parameters for pagination.
         self.page_number = page_number
-        # > This parameter will be deprecated soon. Use the `NextToken` and `MaxResults` parameters for paged queries.
+        # > This parameter will be deprecated soon. Use the `NextToken` and `MaxResults` parameters for pagination.
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
-        # > When you use the `MaxResults` and `NextToken` parameters for paged queries, the returned `TotalCount` value is invalid.
+        # The total number of queried entries.
+        # > When you use the `MaxResults` and `NextToken` parameters for pagination, the returned value of the `TotalCount` parameter is invalid.
         self.total_count = total_count
 
     def validate(self):
@@ -155,6 +155,7 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
         portable: bool = None,
         product_code: str = None,
         provisioned_iops: int = None,
+        read_write_mode: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         serial_number: str = None,
@@ -207,6 +208,7 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
         self.portable = portable
         self.product_code = product_code
         self.provisioned_iops = provisioned_iops
+        self.read_write_mode = read_write_mode
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.serial_number = serial_number
@@ -347,6 +349,9 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
 
         if self.provisioned_iops is not None:
             result['ProvisionedIops'] = self.provisioned_iops
+
+        if self.read_write_mode is not None:
+            result['ReadWriteMode'] = self.read_write_mode
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -509,6 +514,9 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
 
         if m.get('ProvisionedIops') is not None:
             self.provisioned_iops = m.get('ProvisionedIops')
+
+        if m.get('ReadWriteMode') is not None:
+            self.read_write_mode = m.get('ReadWriteMode')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

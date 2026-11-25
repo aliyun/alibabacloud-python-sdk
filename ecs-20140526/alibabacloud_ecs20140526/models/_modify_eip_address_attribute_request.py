@@ -15,12 +15,17 @@ class ModifyEipAddressAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the EIP.
+        # 
         # This parameter is required.
         self.allocation_id = allocation_id
+        # The maximum bandwidth of the EIP. Unit: Mbit/s.
+        # 
         # This parameter is required.
         self.bandwidth = bandwidth
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the EIP.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

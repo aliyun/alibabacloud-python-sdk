@@ -2772,6 +2772,8 @@ class Client(OpenApiClient):
             query['PerformanceLevel'] = request.performance_level
         if not DaraCore.is_null(request.provisioned_iops):
             query['ProvisionedIops'] = request.provisioned_iops
+        if not DaraCore.is_null(request.read_write_mode):
+            query['ReadWriteMode'] = request.read_write_mode
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
@@ -2836,6 +2838,8 @@ class Client(OpenApiClient):
             query['PerformanceLevel'] = request.performance_level
         if not DaraCore.is_null(request.provisioned_iops):
             query['ProvisionedIops'] = request.provisioned_iops
+        if not DaraCore.is_null(request.read_write_mode):
+            query['ReadWriteMode'] = request.read_write_mode
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
@@ -4526,6 +4530,8 @@ class Client(OpenApiClient):
             query['PerformanceLevel'] = request.performance_level
         if not DaraCore.is_null(request.provisioned_iops):
             query['ProvisionedIops'] = request.provisioned_iops
+        if not DaraCore.is_null(request.read_write_mode):
+            query['ReadWriteMode'] = request.read_write_mode
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
@@ -4606,6 +4612,8 @@ class Client(OpenApiClient):
             query['PerformanceLevel'] = request.performance_level
         if not DaraCore.is_null(request.provisioned_iops):
             query['ProvisionedIops'] = request.provisioned_iops
+        if not DaraCore.is_null(request.read_write_mode):
+            query['ReadWriteMode'] = request.read_write_mode
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
@@ -15604,6 +15612,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDiagnosticReportsResponse:
         runtime = RuntimeOptions()
         return await self.describe_diagnostic_reports_with_options_async(request, runtime)
+
+    def describe_disk_attachments_with_options(
+        self,
+        request: main_models.DescribeDiskAttachmentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDiskAttachmentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDiskAttachments',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDiskAttachmentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_disk_attachments_with_options_async(
+        self,
+        request: main_models.DescribeDiskAttachmentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDiskAttachmentsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDiskAttachments',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDiskAttachmentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_disk_attachments(
+        self,
+        request: main_models.DescribeDiskAttachmentsRequest,
+    ) -> main_models.DescribeDiskAttachmentsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_disk_attachments_with_options(request, runtime)
+
+    async def describe_disk_attachments_async(
+        self,
+        request: main_models.DescribeDiskAttachmentsRequest,
+    ) -> main_models.DescribeDiskAttachmentsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_disk_attachments_with_options_async(request, runtime)
 
     def describe_disk_default_kmskey_id_with_options(
         self,

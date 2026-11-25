@@ -31,31 +31,31 @@ class CreateSnapshotRequest(DaraModel):
         # - Standard: standard snapshot.
         # - Flash: local snapshot.
         # 
-        # > **[Deprecated]** This parameter will be deprecated. Standard snapshots for ESSD disks (not standard SSD) have been upgraded to [instantly active by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration is required, and no extra fees are incurred.
+        # > This parameter is about to be deprecated. Standard snapshots for ESSD (standard SSD) disks have been upgraded to [default snapshot instant access](https://help.aliyun.com/document_detail/193667.html). No additional configuration is required, and no extra fees are incurred.
         self.category = category
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The snapshot description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description of the snapshot. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         # 
         # Default value: empty.
         self.description = description
-        # The disk ID. You can call the DescribeDisks operation and filter by InstanceId to query the disks attached to the instance. The disk used to create a snapshot must be in the In Use or Available state. An available disk must have been attached to an ECS instance before.
+        # The ID of the cloud disk. You can call the DescribeDisks operation and filter cloud disks attached to an instance by using the InstanceId parameter. The cloud disk used to create a snapshot must be in the In Use or Available state. An available cloud disk must have been attached to an ECS instance before.
         # 
         # This parameter is required.
         self.disk_id = disk_id
         # Specifies whether to enable the snapshot instant access feature. Valid values:
-        # - true: enables the feature. Only ESSD disks (not standard SSD) support this feature.
+        # - true: enables the feature. Only ESSD (standard SSD) disks support this feature.
         # - false: disables the feature. A standard snapshot is created.
         # 
         # Default value: false.
         # 
-        # > **[Deprecated]** This parameter is deprecated. Standard snapshots for ESSD disks (not standard SSD) have been upgraded to [instantly active by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration is required, and no extra fees are incurred.
+        # > This parameter is deprecated. Standard snapshots for ESSD (standard SSD) disks have been upgraded to [default snapshot instant access](https://help.aliyun.com/document_detail/193667.html). No additional configuration is required, and no extra fees are incurred.
         self.instant_access = instant_access
-        # Settings for the retention period of the snapshot instant access feature. The snapshot undergoes automatic release when the retention period expires. This parameter takes effect only when `InstantAccess` is set to `true`. Unit: days. Valid values: 1 to 65535.
+        # Sets the retention period for the snapshot instant access feature. After the retention period expires, the snapshot is automatically released. This parameter takes effect only when `InstantAccess` is set to `true`. Unit: days. Valid values: 1 to 65535.
         # 
         # Default value: the value of the `RetentionDays` parameter.
         # 
-        # > **[Deprecated]** This parameter is deprecated. Standard snapshots for ESSD disks (not standard SSD) have been upgraded to [instantly active by default](https://help.aliyun.com/document_detail/193667.html). No additional configuration is required, and no extra fees are incurred.
+        # > This parameter is deprecated. Standard snapshots for ESSD (standard SSD) disks have been upgraded to [default snapshot instant access](https://help.aliyun.com/document_detail/193667.html). No additional configuration is required, and no extra fees are incurred.
         self.instant_access_retention_days = instant_access_retention_days
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -63,13 +63,13 @@ class CreateSnapshotRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Settings for the snapshot retention period. Unit: days. Valid values: 1 to 65536. The snapshot undergoes automatic release when the retention period expires.
+        # Sets the snapshot retention period, in days. Valid values: 1 to 65536. After the retention period expires, the snapshot is automatically released.
         # 
-        # Default value: empty, which indicates that the snapshot does not undergo automatic release.
+        # Default value: empty, which indicates that the snapshot is not automatically released.
         self.retention_days = retention_days
-        # The snapshot name. The name must be 2 to 128 characters in length. It must start with a letter and can contain Unicode letters (including English and Chinese letters) and ASCII digits (0-9). It can contain colons (:), underscores (_), periods (.), and hyphens (-).
+        # The name of the snapshot. The name must be 2 to 128 characters in length and must start with a letter. It can contain Unicode letters (including English and Chinese letters) and ASCII digits (0 to 9). It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
         # 
-        # > It cannot start with `http://` or `https://`. To prevent name conflicts with automatic snapshots, it cannot start with `auto`.
+        # > The name cannot start with `http://` or `https://`. To prevent conflicts with the names of automatic snapshots, the name cannot start with `auto`.
         self.snapshot_name = snapshot_name
         # > This parameter is not available.
         self.storage_location_arn = storage_location_arn
@@ -194,9 +194,9 @@ class CreateSnapshotRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the snapshot. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
+        # The tag key of the snapshot. Valid values of N: 1 to 20. If this parameter is specified, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the snapshot. Valid values of N: 1 to 20. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+        # The tag value of the snapshot. Valid values of N: 1 to 20. If this parameter is specified, it can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

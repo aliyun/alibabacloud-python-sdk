@@ -16,17 +16,17 @@ class DescribePlanMaintenanceWindowsShrinkRequest(DaraModel):
         target_resource_group_id: str = None,
         target_resource_tags_shrink: str = None,
     ):
-        # Specifies whether the O&M window is enabled.
+        # Specifies whether the window is enabled or disabled.
         self.enable = enable
-        # The number of entries to return on each page in a paging query. Maximum value: 100. Default value: 10. If you do not specify a value or the specified value is less than 10, the default value 10 is used. If the specified value is greater than 100, the default value 100 is used.
+        # The number of entries per page in a paging query. Maximum value: 100. Default value: 10. If no value is specified or the specified value is less than 10, the default value 10 is used. If the specified value is greater than 100, the default value 100 is used.
         self.max_results = max_results
-        # The pagination token. Set the value to the NextToken value returned from the previous API call.
+        # The pagination token. Set the value to the NextToken value returned in the last API call.
         self.next_token = next_token
         # The ID of the O&M window.
         self.plan_window_id = plan_window_id
         # The name of the O&M window.
         self.plan_window_name = plan_window_name
-        # The region ID. This parameter is required for Alibaba Cloud SDK routing. However, setting any region ID for this operation makes no difference. The operation returns all O&M windows across the network that meet the specified conditions.
+        # The region ID. This parameter is required for Alibaba Cloud SDK routing. However, setting any region ID for this operation makes no difference, and the operation returns O&M windows that meet the conditions across the entire network.
         # 
         # This parameter is required.
         self.region_id = region_id

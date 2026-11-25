@@ -18,7 +18,7 @@ class DescribeSendFileResultsResponseBody(DaraModel):
         total_count: int = None,
     ):
         self.invocations = invocations
-        # The query token returned by the current call.
+        # The pagination token returned by the current call.
         self.next_token = next_token
         # The current page number of the query result.
         self.page_number = page_number
@@ -26,8 +26,8 @@ class DescribeSendFileResultsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The total number of scripts.
-        # > If you use the MaxResults and NextToken parameters to perform a paged query, the returned TotalCount value is meaningless.
+        # The total number of files.
+        # > If you use the MaxResults and NextToken parameters for paging in a paged query, the returned TotalCount value is meaningless.
         self.total_count = total_count
 
     def validate(self):

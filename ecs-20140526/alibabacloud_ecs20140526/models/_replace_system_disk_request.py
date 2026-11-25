@@ -36,26 +36,27 @@ class ReplaceSystemDiskRequest(DaraModel):
         self.architecture = architecture
         # This parameter is not available.
         self.arn = arn
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # > **[Deprecated]** This parameter is deprecated. To improve compatibility, we recommend that you use `ImageId`.
+        # > **[Deprecated]** This parameter is deprecated. To improve compatibility, use ImageId.
         self.disk_id = disk_id
         # > This parameter is not available.
         self.encrypt_algorithm = encrypt_algorithm
         # Specifies whether to encrypt the disk. Valid values:
         # 
         # - true: yes.
+        # 
         # - false: no.
         # 
         # Default value: false.
         # 
-        # >Notice: When you use a shared encrypted image to create a disk based on an encrypted snapshot, you must set the request parameter Encrypted to true for the disk to ensure that the created disk uses the key of the shared image recipient.
+        # >Notice: When you use a shared encrypted image to create a disk based on an encrypted snapshot, you must specify the request parameter Encrypted=true to ensure that the created disk uses the key of the image sharer.
         self.encrypted = encrypted
         # The ID of the image used to replace the system disk. This parameter is required.
         self.image_id = image_id
-        # The ID of target instance.
+        # The ID of the instance.
         # 
-        # > Before you initiate the request, make sure that the instance status is `Stopped`.
+        # > Before you initiate the request, make sure that the target instance status is `Stopped`.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -63,11 +64,11 @@ class ReplaceSystemDiskRequest(DaraModel):
         self.kmskey_id = kmskey_id
         # The name of the key pair. 
         # 
-        # > This parameter takes effect only on Linux ECS instances. You can bind an SSH key pair to the ECS instance as the logon credential. After you bind an SSH key pair, the password logon method is disabled.
+        # > This parameter takes effect only on Linux ECS instances. You can bind an SSH key pair to the ECS instance as the logon credential. After an SSH key pair is used, the username and password logon method is disabled.
         self.key_pair_name = key_pair_name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The new password for the ECS instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The special characters can be:
+        # The password used to reset the logon password of the ECS instance. The password must be 8 to 30 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. The special characters can be:
         # 
         # ```
         # ()`~!@#$%^&*-_+=|{}[]:;\\"<>,.?/
@@ -83,7 +84,7 @@ class ReplaceSystemDiskRequest(DaraModel):
         # 
         # Default value: false.
         # 
-        # > If you specify this parameter, you must leave the Password parameter empty. You must also ensure that the specified image has a preset password.
+        # > If you specify this parameter, you must leave the Password parameter empty and make sure that a password is preset for the image.
         self.password_inherit = password_inherit
         # > **[Deprecated]**
         self.platform = platform
@@ -92,6 +93,7 @@ class ReplaceSystemDiskRequest(DaraModel):
         # Specifies whether to use Security Center for free after the system disk is replaced. Valid values: 
         # 
         # - Active: uses Security Center. This value is supported only for public images.
+        # 
         # - Deactive: does not use Security Center. This value is supported for all images.
         # 
         # Default value: Deactive.
@@ -299,18 +301,18 @@ class ReplaceSystemDiskRequestSystemDisk(DaraModel):
     ):
         # The new capacity of the system disk. Unit: GiB. Valid values:
         # 
-        # - Basic disk: Max{20, Size of the image specified by the ImageId parameter} to 500.
-        # - ESSD:
-        #   - PL0: Max{1, Size of the image specified by the ImageId parameter} to 2048.
-        #   - PL1: Max{20, Size of the image specified by the ImageId parameter} to 2048.
-        #   - PL2: Max{461, Size of the image specified by the ImageId parameter} to 2048.
-        #   - PL3: Max{1261, Size of the image specified by the ImageId parameter} to 2048.
-        # - ESSD AutoPL disk: Max{1, Size of the image specified by the ImageId parameter} to 2048.
-        # - Other disks: Max{20, Size of the image specified by the ImageId parameter} to 2048.
+        # - Basic disk: Max{20, Image size specified by the ImageId parameter} to 500.
+        # - standard SSD:
+        #   - PL0: Max{1, Image size specified by the ImageId parameter} to 2048.
+        #   - PL1: Max{20, Image size specified by the ImageId parameter} to 2048.
+        #   - PL2: Max{461, Image size specified by the ImageId parameter} to 2048.
+        #   - PL3: Max{1261, Image size specified by the ImageId parameter} to 2048.
+        # - ESSD AutoPL disk: Max{1, Image size specified by the ImageId parameter} to 2048.
+        # - Other disks: Max{20, Image size specified by the ImageId parameter} to 2048.
         # 
-        # Default value: Max{40, Size of the image specified by the ImageId parameter}.
+        # Default value: Max{40, Image size specified by the ImageId parameter}.
         # 
-        # > You are charged extra for the capacity that exceeds `Max{20, Capacity of the system disk before the replacement}`.
+        # > You are charged extra for the disk capacity that exceeds `Max{20, Capacity of the system disk before replacement}`.
         self.size = size
 
     def validate(self):

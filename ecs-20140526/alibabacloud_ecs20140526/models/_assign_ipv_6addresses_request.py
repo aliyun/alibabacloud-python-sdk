@@ -21,31 +21,31 @@ class AssignIpv6AddressesRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # One or more IPv6 addresses to assign to the elastic network interface (ENI). You can set up to 10 IPv6 addresses. Valid values of N: 1 to 10.
+        # The IPv6 addresses to be allocated to the Elastic network interface controller (NIC). You can specify a maximum of 10 IPv6 addresses. Valid values of N: 1 to 10.
         # 
         # Example: Ipv6Address.1=2001:db8:1234:1a00::\\*\\*\\*\\*
         # 
-        # > When you call this operation, you must set either the `Ipv6Addresses.N` parameter or the `Ipv6AddressCount` parameter, but not both.
+        # > When you invoke this operation, you must configure the Settings for either the Ipv6Addresses.N parameter or the Ipv6AddressCount parameter, but you cannot configure both.
         self.ipv_6address = ipv_6address
-        # The number of IPv6 addresses to randomly generate for the elastic network interface (ENI). Valid values: 1 to 10.
+        # The number of randomly generated IPv6 addresses to be allocated to the Elastic network interface controller (NIC). Valid values: 1 to 10.
         # 
-        # > When you call this operation, you must set either the `Ipv6Addresses.N` parameter or the `Ipv6AddressCount` parameter, but not both.
+        # > When you invoke this operation, you must configure the Settings for either the Ipv6Addresses.N parameter or the Ipv6AddressCount parameter, but you cannot configure both.
         self.ipv_6address_count = ipv_6address_count
-        # One or more IPv6 prefixes to assign to the elastic network interface (ENI). Valid values of N: 1 to 10.
-        # > If you want to set IPv6 prefixes for the ENI, you must set either the Ipv6Prefix.N parameter or the Ipv6PrefixCount parameter, but not both.
+        # The IPv6 prefixes to be allocated to the Elastic network interface controller (NIC). Valid values of N: 1 to 10.
+        # > If you want to allocate IPv6 prefixes to the Elastic network interface controller (NIC), you must configure the Settings for either the Ipv6Prefix.N parameter or the Ipv6PrefixCount parameter, but you cannot configure both.
         self.ipv_6prefix = ipv_6prefix
-        # The number of IPv6 prefixes to assign to the elastic network interface (ENI). Valid values: 1 to 10.
-        # > If you want to set IPv6 prefixes for the ENI, you must set either the Ipv6Prefix.N parameter or the Ipv6PrefixCount parameter, but not both.
+        # The number of IPv6 prefixes to be allocated to the Elastic network interface controller (NIC). Valid values: 1 to 10.
+        # > If you want to allocate IPv6 prefixes to the Elastic network interface controller (NIC), you must configure the Settings for either the Ipv6Prefix.N parameter or the Ipv6PrefixCount parameter, but you cannot configure both.
         self.ipv_6prefix_count = ipv_6prefix_count
-        # The ID of the elastic network interface (ENI).
+        # The ID of the Elastic network interface controller (NIC).
         # 
         # This parameter is required.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the elastic network interface (ENI). You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+        # The region ID of the Elastic network interface controller (NIC). You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id

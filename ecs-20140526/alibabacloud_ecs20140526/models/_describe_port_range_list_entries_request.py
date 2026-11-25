@@ -16,7 +16,7 @@ class DescribePortRangeListEntriesRequest(DaraModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the port list.
+        # The port list ID.
         # 
         # This parameter is required.
         self.port_range_list_id = port_range_list_id

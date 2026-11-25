@@ -151,7 +151,7 @@ class ModifyPortRangeListRequestRemoveEntry(DaraModel):
         # 
         # - Duplicate `PortRange` values are not allowed.
         # 
-        # - The value cannot be the same as the `AddEntry.N.PortRange` parameter value.
+        # - The value cannot be the same as the value of `AddEntry.N.PortRange`.
         self.port_range = port_range
 
     def validate(self):
@@ -184,11 +184,11 @@ class ModifyPortRangeListRequestAddEntry(DaraModel):
         self.description = description
         # The port range. Valid values of N: 0 to 200. Limits:
         # 
-        # - The number of entries cannot exceed the maximum entry capacity (`MaxEntries`).
+        # - The number of entries cannot exceed the maximum number of entries (`MaxEntries`).
         # 
         # - Duplicate `PortRange` values are not allowed.
         # 
-        # - The value cannot be the same as the `RemoveEntry.N.PortRange` parameter value.
+        # - The value cannot be the same as the value of `RemoveEntry.N.PortRange`.
         self.port_range = port_range
 
     def validate(self):

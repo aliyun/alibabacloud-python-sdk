@@ -419,6 +419,9 @@ from ._describe_diagnostic_report_attributes_response import DescribeDiagnosticR
 from ._describe_diagnostic_reports_request import DescribeDiagnosticReportsRequest
 from ._describe_diagnostic_reports_response_body import DescribeDiagnosticReportsResponseBody
 from ._describe_diagnostic_reports_response import DescribeDiagnosticReportsResponse
+from ._describe_disk_attachments_request import DescribeDiskAttachmentsRequest
+from ._describe_disk_attachments_response_body import DescribeDiskAttachmentsResponseBody
+from ._describe_disk_attachments_response import DescribeDiskAttachmentsResponse
 from ._describe_disk_default_kmskey_id_request import DescribeDiskDefaultKMSKeyIdRequest
 from ._describe_disk_default_kmskey_id_response_body import DescribeDiskDefaultKMSKeyIdResponseBody
 from ._describe_disk_default_kmskey_id_response import DescribeDiskDefaultKMSKeyIdResponse
@@ -1446,6 +1449,7 @@ from ._describe_diagnostic_reports_response_body import DescribeDiagnosticReport
 from ._describe_diagnostic_reports_response_body import DescribeDiagnosticReportsResponseBodyReportsReportIssues
 from ._describe_diagnostic_reports_response_body import DescribeDiagnosticReportsResponseBodyReportsReport
 from ._describe_diagnostic_reports_response_body import DescribeDiagnosticReportsResponseBodyReports
+from ._describe_disk_attachments_response_body import DescribeDiskAttachmentsResponseBodyDiskAttachments
 from ._describe_disk_monitor_data_response_body import DescribeDiskMonitorDataResponseBodyMonitorDataDiskMonitorData
 from ._describe_disk_monitor_data_response_body import DescribeDiskMonitorDataResponseBodyMonitorData
 from ._describe_disks_request import DescribeDisksRequestFilter
@@ -2506,6 +2510,9 @@ __all__ = [
     DescribeDiagnosticReportsRequest,
     DescribeDiagnosticReportsResponseBody,
     DescribeDiagnosticReportsResponse,
+    DescribeDiskAttachmentsRequest,
+    DescribeDiskAttachmentsResponseBody,
+    DescribeDiskAttachmentsResponse,
     DescribeDiskDefaultKMSKeyIdRequest,
     DescribeDiskDefaultKMSKeyIdResponseBody,
     DescribeDiskDefaultKMSKeyIdResponse,
@@ -3533,6 +3540,7 @@ __all__ = [
     DescribeDiagnosticReportsResponseBodyReportsReportIssues,
     DescribeDiagnosticReportsResponseBodyReportsReport,
     DescribeDiagnosticReportsResponseBodyReports,
+    DescribeDiskAttachmentsResponseBodyDiskAttachments,
     DescribeDiskMonitorDataResponseBodyMonitorDataDiskMonitorData,
     DescribeDiskMonitorDataResponseBodyMonitorData,
     DescribeDisksRequestFilter,

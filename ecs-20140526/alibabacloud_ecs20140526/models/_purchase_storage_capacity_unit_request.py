@@ -35,13 +35,13 @@ class PurchaseStorageCapacityUnitRequest(DaraModel):
         # 
         # This parameter is required.
         self.capacity = capacity
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The ClientToken parameter can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The description of the SCU. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The source of the request. Default value: OpenAPI. You do not need to manually specify this parameter.
+        # The source of the request. Default value: OpenAPI. You do not need to specify this parameter.
         self.from_app = from_app
-        # The name of the SCU. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter or a Chinese character and cannot start with `http://` or `https://`.
+        # The name of the SCU. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -59,7 +59,7 @@ class PurchaseStorageCapacityUnitRequest(DaraModel):
         # 
         # Default value: Month.
         self.period_unit = period_unit
-        # The region ID of the SCU. After the region is specified, the SCU can be used to offset only the pay-as-you-go bills of disks in this region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # The region ID of the SCU. After the region is specified, the SCU can be used to offset only the pay-as-you-go bills of cloud disks in this region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -198,9 +198,9 @@ class PurchaseStorageCapacityUnitRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the SCU. The tag key cannot be an empty string. It can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
+        # The tag key of the SCU. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
         self.key = key
-        # The tag value of the SCU. The tag value can be an empty string. It can be up to 128 characters in length, and cannot start with `acs:`, or contain `http://` or `https://`.
+        # The tag value of the SCU. The tag value can be an empty string. It can be up to 128 characters in length and cannot start with `acs:`, or contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

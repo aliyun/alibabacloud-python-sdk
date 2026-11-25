@@ -27,7 +27,7 @@ class DescribeVscsRequest(DaraModel):
         self.instance_id = instance_id
         # The maximum number of entries to return. Valid values: 10 to 500. Default value: 10. If you do not specify this parameter or specify a value less than 10, the default value is 10. If you specify a value greater than 500, the default value is 500.
         self.max_results = max_results
-        # The query token returned for the current request.
+        # The query token returned by this request.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -35,19 +35,17 @@ class DescribeVscsRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs. If you use this parameter to filter resources, the resource count cannot exceed 1,000. Note: Filtering by the default resource group is not supported.
+        # The ID of the resource group to which the instance belongs. If you use this parameter to filter resources, the resource count cannot exceed 1,000. Note: You cannot filter resources by the default resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The status of the VSCs to query. If you do not specify this parameter, VSCs in all states are returned. Valid values:
-        # 
-        # - In_use: The VSC is in use.
-        # - Attaching: The VSC is being attached.
-        # - Detaching: The VSC is being detached.
-        # - AttachFailed: The VSC failed to be attached.
-        # - DetachFailed: The VSC failed to be detached.
+        # - In_use: In use.
+        # - Attaching: Being attached.
+        # - Detaching: Being detached.
+        # - AttachFailed: Attachment failed.
+        # - DetachFailed: Detachment failed.
         # - All: All states.
-        # 
         # Default value: All.
         self.status = status
         # The tags.
@@ -155,13 +153,9 @@ class DescribeVscsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the command. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string.
-        # 
-        # If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources to which you attach multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
-        # 
-        # The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag key of the command. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. If you use a single tag to filter resources, the resource count cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all the specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources. The tag key can be up to 64 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.key = key
-        # The tag value. Valid values of N: 1 to 20. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        # The tag value. Valid values of N: 1 to 20. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

@@ -12,7 +12,7 @@ class ResizeDiskResponseBody(DaraModel):
     ):
         # The ID of the generated order.
         # 
-        # > The order ID is returned only when you resize a subscription cloud disk.
+        # > The order ID is returned only when you resize a subscription disk.
         self.order_id = order_id
         # The request ID.
         self.request_id = request_id
