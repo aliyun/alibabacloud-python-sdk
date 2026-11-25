@@ -18,19 +18,19 @@ class ListDataConnectorsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of collectors.
+        # The list of data connectors.
         self.data_connector = data_connector
-        # The maximum number of records returned in this query.
+        # The maximum number of entries returned in the current request.
         self.max_results = max_results
-        # The token for the next query.
+        # The token used to query the next page.
         self.next_token = next_token
         # The current page number.
         self.page_number = page_number
-        # The number of records per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -118,37 +118,37 @@ class ListDataConnectorsResponseBodyDataConnector(DaraModel):
         src_data_type: str = None,
         update_time: int = None,
     ):
-        # The configuration item ID of the collector access object in the multi-cloud configuration.
+        # The ID of the configuration item for the data connector access object in the multi-cloud configuration.
         self.auth_config_id = auth_config_id
-        # The cloud product to which the authentication configuration belongs.
+        # The cloud service to which the authentication configuration belongs.
         self.auth_config_product = auth_config_product
-        # The cloud vendor to which the authentication configuration belongs.
+        # The cloud provider to which the authentication configuration belongs.
         self.auth_config_vendor = auth_config_vendor
         # The creation time.
         self.creation_time = creation_time
-        # The collector configuration information.
+        # The configuration information of the data connector.
         self.data_connector_config = data_connector_config
-        # The collector ID.
+        # The data connector ID.
         self.data_connector_id = data_connector_id
-        # The data connector name.
+        # The name of the data connector.
         self.data_connector_name = data_connector_name
-        # The connector status.
+        # The enabled status of the data connector.
         self.data_connector_status = data_connector_status
-        # The connector type.
+        # The type of the data connector.
         self.data_connector_type = data_connector_type
-        # The destination data source ID. This parameter is required only for synchronization.
+        # The ID of the destination data source. This parameter is required only for synchronization.
         self.dest_data_source_id = dest_data_source_id
-        # The Simple Log Service project name.
+        # The name of the Simple Log Service project.
         self.log_project_name = log_project_name
         # The log storage region ID.
         self.log_region_id = log_region_id
-        # The Simple Log Service Logstore name.
+        # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
-        # The name of the SLS data import job for the collector.
+        # The name of the Simple Log Service (SLS) data import job for the data connector.
         self.sls_ingestion_job_name = sls_ingestion_job_name
-        # The status of the SLS data import job for the collector.
+        # The status of the Simple Log Service (SLS) data import job for the data connector.
         self.sls_ingestion_job_state = sls_ingestion_job_state
-        # The source data type.
+        # The type of the source data source.
         self.src_data_type = src_data_type
         # The update time.
         self.update_time = update_time

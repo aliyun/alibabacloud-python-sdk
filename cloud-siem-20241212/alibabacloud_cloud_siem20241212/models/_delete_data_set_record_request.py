@@ -13,11 +13,11 @@ class DeleteDataSetRecordRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The dataset ID.
+        # The ID of the dataset.
         # 
         # This parameter is required.
         self.data_set_id = data_set_id
-        # The list of dataset record IDs in JSON array format.
+        # The IDs of the dataset records, in JSON array format.
         # 
         # This parameter is required.
         self.data_set_record_ids = data_set_record_ids
@@ -27,9 +27,9 @@ class DeleteDataSetRecordRequest(DaraModel):
         self.lang = lang
         # The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets are located. Valid values:
         # - cn-hangzhou: Assets are located in the Chinese mainland.
-        # - ap-southeast-1: Assets are located outside the Chinese mainland.
+        # - ap-southeast-1: Assets are located in regions outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the user whose perspective the administrator assumes.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

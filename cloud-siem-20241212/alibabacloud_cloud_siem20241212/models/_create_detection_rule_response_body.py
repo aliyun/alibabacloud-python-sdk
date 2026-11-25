@@ -12,7 +12,7 @@ class CreateDetectionRuleResponseBody(DaraModel):
     ):
         # The ID of the detection rule.
         self.detection_rule_id = detection_rule_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

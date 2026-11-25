@@ -15,25 +15,25 @@ class DeleteLogStoreRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
-        # > Note: This parameter is required in practice. If this parameter is not specified, the API returns a 400 error: "The specified Lang can not be empty."
+        # Note: This parameter is actually required. If it is not provided, the API returns a 400 error with the message "The specified Lang can not be empty.".
         self.lang = lang
-        # The Simple Log Service project name.
-        # > Note: This parameter is required in practice. If this parameter is not specified, the API returns a 400 error: "SLS log project name is empty."
+        # The name of the Simple Log Service project.
+        # Note: This parameter is actually required. If it is not provided, the API returns a 400 error with the message "SLS log project name is empty.".
         self.log_project_name = log_project_name
-        # The log storage region ID.
+        # The ID of the log storage region.
         self.log_region_id = log_region_id
-        # The Simple Log Service LogStore name.
+        # The name of the Simple Log Service Logstore.
         self.log_store_name = log_store_name
-        # The user ID for data access.
+        # The ID of the user for data ingestion.
         self.log_user_id = log_user_id
-        # The region where the Cloud Threat Detection and Response (CTDR) data management center is located. Specify the management center based on the region of your assets. Valid values:
-        # - cn-hangzhou: Your assets belong to the Chinese mainland.
-        # - ap-southeast-1: Your assets belong to regions outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID that the administrator switches to when viewing from the perspective of another member.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

@@ -27,13 +27,13 @@ class CreateNormalizationRuleShrinkRequest(DaraModel):
         role_for: int = None,
         vendor_id: str = None,
     ):
-        # Specifies whether to pack non-standard fields into the extended field extend_content. Valid values:
+        # Specifies whether to pack non-standard fields into the extend_content extension field. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         self.extend_content_packed = extend_content_packed
-        # The storage mode for extended fields. Valid values: flat, pack, reject.
+        # The storage mode for extension fields. Valid values: flat, pack, and reject.
         self.extend_field_store_mode = extend_field_store_mode
-        # The language of the response messages. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
@@ -45,7 +45,7 @@ class CreateNormalizationRuleShrinkRequest(DaraModel):
         self.normalization_rule_expression = normalization_rule_expression
         # The format of the normalization rule.
         self.normalization_rule_format = normalization_rule_format
-        # The list of normalization rule IDs.
+        # The IDs of the normalization rules.
         self.normalization_rule_ids_shrink = normalization_rule_ids_shrink
         # The mode of the normalization rule. Valid values:
         # - both
@@ -55,8 +55,8 @@ class CreateNormalizationRuleShrinkRequest(DaraModel):
         # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
         # The type of the normalization rule. Valid values:
-        # - predefined: predefined normalization rule.
-        # - custom: custom normalization rule.
+        # - predefined: Predefined normalization rule.
+        # - custom: Custom normalization rule.
         self.normalization_rule_type = normalization_rule_type
         # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
@@ -65,18 +65,18 @@ class CreateNormalizationRuleShrinkRequest(DaraModel):
         # The ID of the normalization security domain.
         self.normalization_security_domain_id = normalization_security_domain_id
         # The field used to sort the rule list. Valid values:
-        # - GmtModified: sorts by modification time.
-        # - Id: sorts by rule ID (default).
+        # - GmtModified: Sorts by modification time.
+        # - Id: Sorts by rule ID. This is the default value.
         self.order_field = order_field
         # The product ID.
         self.product_id = product_id
-        # The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Assets are located in the Chinese mainland.
-        # - ap-southeast-1: Assets are located outside China.
+        # The region where the data management center of Threat Analysis is located. Select the region based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside China.
         self.region_id = region_id
-        # The ID of the member accounts in the resource folder.
+        # The ID of the member account in the resource directory.
         self.role_for = role_for
-        # The vendor ID associated with the normalization rule.
+        # The ID of the vendor associated with the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):

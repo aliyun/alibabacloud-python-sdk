@@ -11,9 +11,9 @@ class UpdateDataSetRecordResponseBody(DaraModel):
         data_set_record_statistic: main_models.UpdateDataSetRecordResponseBodyDataSetRecordStatistic = None,
         request_id: str = None,
     ):
-        # The result of the dataset update.
+        # The dataset update results.
         self.data_set_record_statistic = data_set_record_statistic
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

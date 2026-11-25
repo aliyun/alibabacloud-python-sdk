@@ -27,17 +27,17 @@ class CreateCopilotChatRequest(DaraModel):
         thinking_mode: str = None,
         trace_id: str = None,
     ):
-        # The client session ID.
+        # The client conversation ID.
         self.client_conversation_id = client_conversation_id
         # The client message ID.
         # 
         # This parameter is required.
         self.client_message_id = client_message_id
-        # The session ID.
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # The session creation configuration.
+        # The conversation creation configuration.
         self.create_conversation = create_conversation
-        # The language of the returned message. Valid values:
+        # The language of the returned messages. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
@@ -51,9 +51,9 @@ class CreateCopilotChatRequest(DaraModel):
         self.plan_mode = plan_mode
         # The security project ID.
         self.project_id = project_id
-        # The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Assets reside in the Chinese mainland.
-        # - ap-southeast-1: Assets reside outside the Chinese mainland.
+        # The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located in regions outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the replaced conversation turn.
         self.replace_turn_id = replace_turn_id
@@ -195,9 +195,9 @@ class CreateCopilotChatRequestMessages(DaraModel):
         content: str = None,
         role: str = None,
     ):
-        # The content of the message.
+        # The message content.
         self.content = content
-        # The role of the message.
+        # The message role.
         self.role = role
 
     def validate(self):
@@ -243,7 +243,7 @@ class CreateCopilotChatRequestCreateConversation(DaraModel):
         self.project_id = project_id
         # The deep thinking configuration.
         self.thinking_mode = thinking_mode
-        # The session title.
+        # The conversation title.
         self.title = title
 
     def validate(self):

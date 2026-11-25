@@ -84,17 +84,15 @@ class ValidateNormalizationRuleResponseBodyValidateResult(DaraModel):
         # - OperationDenied.TheValueLessThanMin: The field value is less than the specified minimum value.
         # - OperationDenied.TheValueMoreThanMax: The field value is greater than the specified maximum value.
         # - OperationDenied.TheValueNotMatchRegularExpression: The field value fails the regular expression match.
-        # - success: The validation is passed.
+        # - success: The validation passed.
         self.message = message
-        # The source of the normalized field. Valid values:
-        # - preset: Built-in.
-        # - custom: Custom.
+        # The source of the normalized field. Valid values: preset and custom.
         self.normalization_field_from = normalization_field_from
         # The name of the normalized field.
         self.normalization_field_name = normalization_field_name
         # Specifies whether the normalized field is required.
         self.normalization_field_required = normalization_field_required
-        # Specifies whether the normalized field name is built into the system.
+        # Indicates whether the normalized field name is built into the system.
         self.normalization_field_reserved = normalization_field_reserved
         # The type of the normalized field. Valid values: text, long, double, and json.
         self.normalization_field_type = normalization_field_type
@@ -103,9 +101,9 @@ class ValidateNormalizationRuleResponseBodyValidateResult(DaraModel):
         # The validation status of the normalized field. Valid values: pass and fail.
         self.normalization_field_validation_status = normalization_field_validation_status
         # The validation result. Valid values:
-        # - 1: The validation is passed.
+        # - 1: The validation passed.
         # - 0: A warning is returned.
-        # - 1: The validation fails.
+        # - 1: The validation failed.
         self.result = result
 
     def validate(self):

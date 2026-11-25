@@ -10,9 +10,7 @@ class CreateProductResponseBody(DaraModel):
         product_id: str = None,
         request_id: str = None,
     ):
-        # The product ID.
         self.product_id = product_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

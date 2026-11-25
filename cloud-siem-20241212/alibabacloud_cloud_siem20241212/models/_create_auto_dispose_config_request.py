@@ -11,7 +11,7 @@ class CreateAutoDisposeConfigRequest(DaraModel):
         lang: str = None,
         product_code: str = None,
     ):
-        # Specifies whether automatic analysis is enabled for the user. Valid values:
+        # Specifies whether the user has enabled automatic analysis. Valid values:
         # - enabled: Enabled.
         # - disabled: Disabled.
         # 

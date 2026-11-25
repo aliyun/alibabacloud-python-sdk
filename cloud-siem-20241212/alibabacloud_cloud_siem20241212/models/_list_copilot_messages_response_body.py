@@ -17,13 +17,13 @@ class ListCopilotMessagesResponseBody(DaraModel):
         request_id: str = None,
     ):
         # The API version.
-        # >You can call the [DescribeGroupProductions](~~DescribeGroupProductions~~) operation to obtain this parameter.
+        # > You can call the [DescribeGroupProductions](~~DescribeGroupProductions~~) operation to obtain this parameter.
         self.api_version = api_version
-        # The list of conversation messages.
+        # The list of session messages.
         self.items = items
-        # The maximum amount of data read in this query.
+        # The maximum amount of data read in the current request.
         self.max_results = max_results
-        # The token for the next query.
+        # The token for the start of the next query.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id

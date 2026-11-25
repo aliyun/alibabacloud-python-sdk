@@ -13,9 +13,9 @@ class GetDataStorageResponseBody(DaraModel):
         data: main_models.GetDataStorageResponseBodyData = None,
         request_id: str = None,
     ):
-        # The detailed information returned.
+        # The detailed response content.
         self.data = data
-        # The request ID.
+        # The request message ID.
         self.request_id = request_id
 
     def validate(self):
@@ -69,39 +69,39 @@ class GetDataStorageResponseBodyData(DaraModel):
     ):
         # The amount of cold storage used for user logs.
         self.cold_storage_used_capacity = cold_storage_used_capacity
-        # The storage region of user logs.
+        # The storage region for user-side logs.
         self.data_storage_region_id = data_storage_region_id
-        # Specifies whether the storage region can be modified. By default, the region cannot be modified. You can contact the product manager to reset the region, and the region can be reset only once. Valid values:
-        # - allow: The region can be modified.
-        # - deny: The region cannot be modified.
+        # Indicates whether the storage region can be modified. By default, modification is not allowed. Contact the product manager to reset the region. The region can be reset only once. Valid values:
+        # - allow: The storage region can be modified.
+        # - deny: The storage region cannot be modified.
         self.data_storage_region_permission = data_storage_region_permission
-        # The storage capacity purchased for subscription.
+        # The storage capacity purchased in subscription scenarios.
         self.data_storage_total_capacity = data_storage_total_capacity
-        # The amount of storage used in user log management.
+        # The storage capacity used in user log management.
         self.data_storage_used_capacity = data_storage_used_capacity
-        # The storage usage details of the log management user.
+        # The details of storage usage by log management users.
         self.data_storage_used_capacity_detail = data_storage_used_capacity_detail
-        # The multi-account delivery settings for the current storage resources. Returned when the query is successful. If the read operation fails, see DeliverySettingsError.
+        # The multi-account delivery settings for the current storage resource. This parameter is returned when the query is successful. If the read operation fails, refer to DeliverySettingsError.
         self.delivery_settings = delivery_settings
-        # The read error code for the optional multi-account delivery settings. If the read operation fails, DELIVERY_SETTINGS_UNAVAILABLE is returned. If the read operation is successful, this field is empty or not returned, and does not affect other storage fields.
+        # The read fault code for optional multi-account delivery settings. If the read failed, DELIVERY_SETTINGS_UNAVAILABLE is returned. If the read is successful, this field is empty or not returned and does not affect other storage fields.
         self.delivery_settings_error = delivery_settings_error
-        # The name of the Simple Log Service project where user logs are stored.
+        # The name of the Simple Log Service project that stores user logs.
         self.log_project = log_project
         # The status of the log project.
         self.log_project_state = log_project_state
-        # Specifies whether the status of the log project can be changed.
+        # Indicates whether the status of the log project can be changed.
         self.log_project_state_change_allowed = log_project_state_change_allowed
-        # Specifies whether Simple Log Service is disabled.
+        # Indicates whether the log service is disabled.
         self.log_service_disabled = log_service_disabled
-        # The details of the Logstores for normalized data.
+        # The Logstore details for normalized data.
         self.normalization_log_stores = normalization_log_stores
-        # The details of the normalized datasets.
+        # The details of normalized datasets.
         self.normalization_log_views = normalization_log_views
-        # The list of Record Logstores.
+        # The list of record Logstores.
         self.record_log_stores = record_log_stores
-        # The storage details of raw logs in Security Center.
+        # The storage details of raw logs from Security Center.
         self.sas_log_stores = sas_log_stores
-        # The list of legacy Logstores in SIEM V1.
+        # The list of legacy SIEM V1 Logstores.
         self.unused_log_stores = unused_log_stores
 
     def validate(self):
@@ -278,7 +278,7 @@ class GetDataStorageResponseBodyDataUnusedLogStores(DaraModel):
         self.log_store_name = log_store_name
         # The data retention period.
         self.log_store_ttl = log_store_ttl
-        # The amount of hot storage used.
+        # The used capacity of hot storage.
         self.used_capacity = used_capacity
 
     def validate(self):
@@ -317,6 +317,7 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
     def __init__(
         self,
         account_deliveries: List[main_models.GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries] = None,
+        auto_key_detect: bool = None,
         log_code: str = None,
         log_delivery_group: str = None,
         log_delivery_permission: str = None,
@@ -329,27 +330,29 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
         log_store_ttl: int = None,
         used_capacity: float = None,
     ):
-        # The delivery records of this log type expanded by source account, including the current account and member accounts with existing records.
+        # The delivery records of the log type expanded by source account, including the current account and member accounts with existing records.
         self.account_deliveries = account_deliveries
+        # Indicates whether automatic index discovery is enabled for the full-text index of the Logstore in Simple Log Service. This field is returned only when WithAutoKeyDetect=true is specified in the request, and is not returned if the read operation fails.
+        self.auto_key_detect = auto_key_detect
         # The log code.
         self.log_code = log_code
         # The group to which the log belongs. Valid values:
         # - host: Host logs.
         # - security: Security logs.
         self.log_delivery_group = log_delivery_group
-        # Specifies whether the log delivery switch can be operated. Log delivery is unavailable if the service is not purchased. Valid values:
+        # Specifies whether you are allowed to toggle the log delivery switch. Log delivery is unavailable if the service is not purchased. Valid values:
         # - allow: Allowed.
         # - deny: Not allowed.
         self.log_delivery_permission = log_delivery_permission
         # The log delivery status. Valid values:
-        # - enable: Log delivery is enabled.
-        # - disable: Log delivery is disabled.
+        # - enable: Delivery is enabled for the log.
+        # - disable: Delivery is disabled for the log.
         self.log_delivery_status = log_delivery_status
         # The time of the last log delivery operation. The format is YYYY-MM-DDTHH:mm:ss.
         self.log_delivery_update_time = log_delivery_update_time
         # The log name.
         self.log_name = log_name
-        # The default query conditions for the log. When multiple logs are stored in a single Logstore, you must use query conditions to perform a log query for a specific log.
+        # The default query conditions for the log. When multiple logs are stored in a single Logstore, you must use query conditions to perform a log query.
         self.log_search_conditions = log_search_conditions
         # Indicates whether the Logstore where the log is stored exists. Valid values:
         # - true: Exists.
@@ -359,7 +362,7 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
         self.log_store_name = log_store_name
         # The storage duration of the Logstore where the log is stored. The minimum storage duration is 30 days.
         self.log_store_ttl = log_store_ttl
-        # The amount of hot storage used.
+        # The used capacity of hot storage.
         self.used_capacity = used_capacity
 
     def validate(self):
@@ -377,6 +380,9 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
         if self.account_deliveries is not None:
             for k1 in self.account_deliveries:
                 result['AccountDeliveries'].append(k1.to_map() if k1 else None)
+
+        if self.auto_key_detect is not None:
+            result['AutoKeyDetect'] = self.auto_key_detect
 
         if self.log_code is not None:
             result['LogCode'] = self.log_code
@@ -420,6 +426,9 @@ class GetDataStorageResponseBodyDataSasLogStores(DaraModel):
             for k1 in m.get('AccountDeliveries'):
                 temp_model = main_models.GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries()
                 self.account_deliveries.append(temp_model.from_map(k1))
+
+        if m.get('AutoKeyDetect') is not None:
+            self.auto_key_detect = m.get('AutoKeyDetect')
 
         if m.get('LogCode') is not None:
             self.log_code = m.get('LogCode')
@@ -465,17 +474,15 @@ class GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries(DaraModel):
         log_delivery_status: str = None,
         log_delivery_update_time: str = None,
     ):
-        # The UID of the source cloud account. This field is an int64 number.
+        # The UID of the source Alibaba Cloud account for the logs. This field is an int64 number.
         self.account_id = account_id
-        # The display name of the source account. If the name is not obtained, the account UID string is used.
+        # The display name of the source account. If the name is unavailable, the account UID string is used.
         self.account_name = account_name
-        # Indicates whether the account is the current management or target account (the current account). A value of true indicates the current account. A value of false indicates a member source account.
+        # Indicates whether the account is the current management or target account. A value of true indicates the current account, and a value of false indicates a member source account.
         self.is_da_account = is_da_account
-        # The recorded delivery status of the source account. Valid values:
-        # - enable: Enabled.
-        # - disable: Disabled.
+        # The recorded delivery status for the source account. Valid values: enable (enabled) and disable (disabled).
         self.log_delivery_status = log_delivery_status
-        # The last update time of the delivery status for the source account. If no record is generated, this field is empty or not returned.
+        # The last update time of the delivery status for the source account. This field is empty or not returned if no records are generated.
         # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.log_delivery_update_time = log_delivery_update_time
@@ -582,19 +589,19 @@ class GetDataStorageResponseBodyDataNormalizationLogViews(DaraModel):
         log_view_existed: bool = None,
         log_view_name: str = None,
     ):
-        # The log type of the normalized logs.
+        # The log type of the normalized log.
         self.activity_name = activity_name
-        # The category of the normalized logs.
+        # The category of the normalized log.
         self.category_name = category_name
-        # The number of times this normalized dataset is referenced in Threat Analysis and Response.
+        # The number of times the normalized dataset is referenced in the threat analysis integration center.
         self.detection_rule_reference_count = detection_rule_reference_count
-        # The list of products that reference this normalized dataset in Threat Analysis and Response.
+        # The list of products that reference the normalized dataset in the threat analysis integration center.
         self.detection_rule_reference_product_ids = detection_rule_reference_product_ids
         # The query statement used to query log types in the normalized dataset.
         self.log_search_conditions = log_search_conditions
-        # The Logstore where Threat Analysis and Response stores normalized logs.
+        # The Logstore in threat analysis that stores normalized logs.
         self.log_store_name = log_store_name
-        # Specifies whether the normalized dataset exists. Valid values:
+        # Indicates whether the normalized dataset exists. Valid values:
         # - true: The dataset exists.
         # - false: The dataset does not exist.
         self.log_view_existed = log_view_existed
@@ -666,15 +673,21 @@ class GetDataStorageResponseBodyDataNormalizationLogViews(DaraModel):
 class GetDataStorageResponseBodyDataNormalizationLogStores(DaraModel):
     def __init__(
         self,
+        auto_key_detect: bool = None,
+        log_store_existed: bool = None,
         log_store_name: str = None,
         log_store_ttl: int = None,
         used_capacity: float = None,
     ):
+        # Indicates whether automatic index discovery is enabled for the full-text index of the Logstore in Simple Log Service. This field is returned only when WithAutoKeyDetect=true is specified in the request, and is not returned if the read operation fails.
+        self.auto_key_detect = auto_key_detect
+        # Indicates whether the corresponding Logstore in Simple Log Service exists. A value of true indicates that the Logstore exists. A value of false indicates that the Logstore is not created and delivery is not enabled. In this case, automatic index discovery cannot be configured. This field is returned only when WithAutoKeyDetect=true is specified in the request.
+        self.log_store_existed = log_store_existed
         # The name of the Logstore that stores normalized data.
         self.log_store_name = log_store_name
-        # The storage duration of the normalized data.
+        # The storage duration for normalized data.
         self.log_store_ttl = log_store_ttl
-        # The amount of hot storage used.
+        # The used capacity of hot storage.
         self.used_capacity = used_capacity
 
     def validate(self):
@@ -685,6 +698,12 @@ class GetDataStorageResponseBodyDataNormalizationLogStores(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_key_detect is not None:
+            result['AutoKeyDetect'] = self.auto_key_detect
+
+        if self.log_store_existed is not None:
+            result['LogStoreExisted'] = self.log_store_existed
+
         if self.log_store_name is not None:
             result['LogStoreName'] = self.log_store_name
 
@@ -698,6 +717,12 @@ class GetDataStorageResponseBodyDataNormalizationLogStores(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoKeyDetect') is not None:
+            self.auto_key_detect = m.get('AutoKeyDetect')
+
+        if m.get('LogStoreExisted') is not None:
+            self.log_store_existed = m.get('LogStoreExisted')
+
         if m.get('LogStoreName') is not None:
             self.log_store_name = m.get('LogStoreName')
 
@@ -724,19 +749,19 @@ class GetDataStorageResponseBodyDataDeliverySettings(DaraModel):
         types: List[main_models.GetDataStorageResponseBodyDataDeliverySettingsTypes] = None,
         unavailable_reason: str = None,
     ):
-        # The account directory of the current account and managed member accounts.
+        # The account directory of the current local account and managed members.
         self.accounts = accounts
-        # Specifies whether the current account meets the conditions for delivery setting operations. This is determined based on authorization, target project availability, capacity orders, and the current account identity. The PrerequisiteEnabled parameter must also be met.
+        # Indicates whether the current account meets the conditions for configuring delivery settings. This is determined based on authorization, target project availability, capacity orders, and the current account identity. The PrerequisiteEnabled parameter must also be set to true.
         self.can_configure = can_configure
-        # The current version of the delivery settings. When you modify multi-account configurations or specify member delivery, pass this value back as ConfigurationVersion. You must query this value again after each modification and cannot use a fixed example value.
+        # The version of the current delivery settings. When you modify multi-account configurations or specify member delivery, pass this value back as the ConfigurationVersion parameter. Query this value again after each modification. Do not use a fixed sample value.
         self.configuration_version = configuration_version
-        # The UID of the current management and delivery target account, which is a decimal string. This is also the current account that is permanently retained in the account selection list.
+        # The UID of the current management and delivery target account. The value is a decimal string. This account is also the fixed local account in the account selection list.
         self.da_account_id = da_account_id
-        # The master switch for the saved multi-account centralized delivery. A value of true indicates that the switch is turned on. A value of false indicates that the switch is turned off.
+        # The master switch for saved multi-account centralized delivery. A value of true indicates that the switch is turned on. A value of false indicates that the switch is turned off.
         self.enabled = enabled
-        # Specifies whether the initialization of the account scope and automatic inclusion settings is completed when the feature is enabled for the first time.
+        # Indicates whether the initialization of the account scope and automatic inclusion settings upon the first enabling is complete.
         self.initialized = initialized
-        # Specifies whether the prerequisite of enabling multi-account security management in Security Center is met.
+        # Indicates whether the prerequisite of enabling multi-account security management in Security Center is met.
         self.prerequisite_enabled = prerequisite_enabled
         # The name of the current Simple Log Service project for centralized delivery. When you modify multi-account settings or specify member delivery, pass this value back as the TargetProject request parameter.
         self.target_project = target_project
@@ -744,7 +769,12 @@ class GetDataStorageResponseBodyDataDeliverySettings(DaraModel):
         self.target_region = target_region
         # The account selection, automatic inclusion settings, and existing delivery status categorized by log type.
         self.types = types
-        # The reason code for being unconfigurable. Valid values: DA_UNAUTHORIZED (the management account is not authorized), TARGET_PROJECT_UNAVAILABLE (the target project is unavailable), LOG_CAPACITY_UNAVAILABLE (no valid capacity order exists), and NOT_CURRENT_ACCOUNT (the operation is not performed by the current account). This field is empty or not returned if the conditions are met.
+        # The reason code for why the configuration is unavailable. Valid values:
+        # - DA_UNAUTHORIZED: The management account is not authorized.
+        # - TARGET_PROJECT_UNAVAILABLE: The target project is unavailable.
+        # - LOG_CAPACITY_UNAVAILABLE: No valid capacity order exists.
+        # - NOT_CURRENT_ACCOUNT: The operation is not performed by the current account.
+        # If the conditions are met, this parameter is empty or not returned.
         self.unavailable_reason = unavailable_reason
 
     def validate(self):
@@ -852,13 +882,13 @@ class GetDataStorageResponseBodyDataDeliverySettingsTypes(DaraModel):
         log_code: str = None,
         selected_account_ids: List[str] = None,
     ):
-        # Specifies whether to automatically add subsequent new and available managed members to the selection scope of this log type.
+        # Indicates whether to automatically add subsequent new and available managed members to the selection scope of this log type.
         self.auto_include_new_accounts = auto_include_new_accounts
-        # The status list of existing source delivery records for this log type.
+        # The list of statuses for existing source delivery records of this log type.
         self.executions = executions
-        # The unique identifier of the log type, which corresponds to UpdateDataStorageDelivery.LogCode.
+        # The unique identifier of the log type. This corresponds to UpdateDataStorageDelivery.LogCode.
         self.log_code = log_code
-        # The array of UIDs of the selected source accounts for this log type, including the current account. The response is a JSON string array. When you write an array(simple) request, you must serialize it into comma-separated values.
+        # The array of UIDs of the source accounts selected for this log type, including the local account. The response is a JSON string array. When you write an array(simple) request, serialize the value as comma-separated values.
         self.selected_account_ids = selected_account_ids
 
     def validate(self):
@@ -915,13 +945,16 @@ class GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions(DaraModel):
         status: str = None,
         update_time: int = None,
     ):
-        # The UID of the source account for this delivery record, which is a decimal string.
+        # The UID of the source account for this delivery record. The value is a decimal string.
         self.account_id = account_id
-        # A reserved compatibility field. The current implementation does not populate historical execution error codes, so this field is usually empty or not returned. If execution fails, read the error code returned by the corresponding write operation.
+        # A reserved compatibility field. The current implementation does not populate historical execution error codes. This field is usually empty or not returned. If execution fails, read the error code returned by the corresponding write operation.
         self.error_code = error_code
-        # The recorded delivery status. RUNNING indicates that the status is recorded as enabled after the last successful operation. STOPPED indicates that the status is recorded as disabled. This field does not indicate real-time log arrival.
+        # The recorded delivery status. Valid values:
+        # - RUNNING: The delivery is recorded as enabled after the last successful operation.
+        # - STOPPED: The delivery is recorded as disabled.
+        # This field does not indicate real-time log arrival.
         self.status = status
-        # The last update time of the delivery status, which is a UNIX timestamp in milliseconds. This field is empty or not returned if the record has no update time.
+        # The time when the delivery status was last updated. The value is a UNIX timestamp in milliseconds. If the record has no update time, this field is empty or not returned.
         self.update_time = update_time
 
     def validate(self):
@@ -970,13 +1003,13 @@ class GetDataStorageResponseBodyDataDeliverySettingsAccounts(DaraModel):
         authorized: bool = None,
         da_account: bool = None,
     ):
-        # The UID of the source Alibaba Cloud account, which is a decimal string.
+        # The UID of the source cloud account. The value is a decimal string.
         self.account_id = account_id
         # The display name of the account. If the name is missing, the UID string is returned.
         self.account_name = account_name
-        # Specifies whether the account has the authorization required for log delivery. This parameter must be set to true when you add a selected member.
+        # Indicates whether the account has the authorization required for log delivery. This parameter must be set to true when you add a member.
         self.authorized = authorized
-        # Specifies whether the account is the current management and delivery target account, which is the current account.
+        # Indicates whether the account is the current management and delivery target account, which is the local account.
         self.da_account = da_account
 
     def validate(self):

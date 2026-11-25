@@ -12,18 +12,18 @@ class CheckUpgradeItemRequest(DaraModel):
         role_for: str = None,
         upgrade_item_id: str = None,
     ):
-        # The language of the response. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
-        # Note: This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
+        # Note: This parameter is required. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
         self.lang = lang
-        # The region where the threat analysis data management center resides. Specify the management center region based on the region of your assets. Valid values:
-        # - cn-hangzhou: The assets reside in the Chinese mainland.
-        # - ap-southeast-1: The assets reside outside China.
+        # The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside China.
         self.region_id = region_id
-        # The ID of the member to which the administrator switches the view.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The upgrade item ID.
+        # The ID of the upgrade item.
         self.upgrade_item_id = upgrade_item_id
 
     def validate(self):

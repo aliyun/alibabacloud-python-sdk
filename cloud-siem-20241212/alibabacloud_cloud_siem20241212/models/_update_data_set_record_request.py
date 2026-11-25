@@ -20,21 +20,17 @@ class UpdateDataSetRecordRequest(DaraModel):
         # 
         # This parameter is required.
         self.data_set_id = data_set_id
-        # The content of the dataset records, in JSON array format.
+        # The content of the dataset records in JSON array format.
         self.data_set_records = data_set_records
-        # The language of the response. Valid values:
-        # 
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
-        # The region where the Data Management center for threat analysis is located. Select a region for the management center based on the region of your asset. Valid values:
-        # 
-        # - cn-hangzhou: The asset is in the Chinese mainland.
-        # 
-        # - ap-southeast-1: The asset is in a region outside China.
+        # The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland.
+        # - ap-southeast-1: Assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID of the member. An administrator can use this parameter to switch to the perspective of a specific member.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

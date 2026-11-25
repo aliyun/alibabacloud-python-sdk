@@ -20,7 +20,7 @@ class ListDetectionRulesResponseBody(DaraModel):
     ):
         # The list of detection rules.
         self.detection_rules = detection_rules
-        # The maximum number of data entries to return in this request.
+        # The maximum number of results to return in this request.
         self.max_results = max_results
         # The token used to start the next query.
         self.next_token = next_token
@@ -158,7 +158,7 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         # - ALERT_ACTIVITY: other alerts
         # - EDR_ALERT_ACTIVITY: endpoint detection and response alerts
         # - FIREWALL_ALERT_ACTIVITY: firewall alerts
-        # - WAF_ALERT_ACTIVITY: Web Application Firewall alerts
+        # - WAF_ALERT_ACTIVITY: web application firewall alerts
         self.alert_schema_id = alert_schema_id
         # The tactic phase of the alert.
         self.alert_tactic_id = alert_tactic_id
@@ -172,7 +172,7 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         self.alert_type = alert_type
         # The alerting type mapping.
         self.alert_type_mapping = alert_type_mapping
-        # The creation time. The format is YYYY-MM-DD HH:mm:ss.
+        # The creation time.
         self.create_time = create_time
         # The expression content of the detection rule.
         self.detection_expression_content = detection_expression_content
@@ -196,14 +196,14 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         self.detection_rule_type = detection_rule_type
         # The entity mapping configuration.
         self.entity_mappings = entity_mappings
-        # The incident aggregation period configuration.
+        # The event aggregation period configuration.
         self.incident_aggregation_expression = incident_aggregation_expression
-        # The incident aggregation type. Valid values:
-        # - none: no event generated
+        # The event aggregation type. Valid values:
+        # - none: no event generation
         # - graph_compute: graph computing (supported by predefined rules)
-        # - expert: expert rule
+        # - expert: expert rules
         # - passthrough: alerting pass-through (one-to-one)
-        # - window: similar aggregation (window)
+        # - window: similar event aggregation (window)
         self.incident_aggregation_type = incident_aggregation_type
         # The ID of the log normalization category.
         self.log_category_id = log_category_id
@@ -211,7 +211,7 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         self.log_schema_id = log_schema_id
         # The XML configuration of the playbook.
         self.playbook = playbook
-        # The user-defined parameters of the playbook.
+        # The custom parameters of the playbook.
         self.playbook_parameters = playbook_parameters
         # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
@@ -219,7 +219,7 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         self.schedule_begin_time = schedule_begin_time
         # The cron expression for scheduling. This parameter is required when ScheduleType is set to cron.
         self.schedule_expression = schedule_expression
-        # The maximum number of retries upon timeout. Valid values: 1 to 100.
+        # The maximum number of retries for a timeout. Valid values: 1 to 100.
         self.schedule_max_retries = schedule_max_retries
         # The maximum timeout period in seconds. Valid values: 60 to 1800.
         self.schedule_max_timeout = schedule_max_timeout
@@ -229,7 +229,7 @@ class ListDetectionRulesResponseBodyDetectionRules(DaraModel):
         self.schedule_type = schedule_type
         # The length of the schedule window.
         self.schedule_window = schedule_window
-        # The update time. The format is YYYY-MM-DD HH:mm:ss.
+        # The update time.
         self.update_time = update_time
 
     def validate(self):

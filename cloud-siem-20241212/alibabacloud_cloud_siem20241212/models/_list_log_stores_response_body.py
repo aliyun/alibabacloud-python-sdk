@@ -17,13 +17,13 @@ class ListLogStoresResponseBody(DaraModel):
     ):
         # The list of Simple Log Service Logstores.
         self.log_stores = log_stores
-        # The maximum number of data entries to return in this request.
+        # The maximum number of entries to return for the current request.
         self.max_results = max_results
-        # The token for the next query. You do not need to specify this parameter for the first query or when no subsequent query is required. If a subsequent query is required, set the value to the NextToken value returned by the previous API call.
+        # The token for the next query. If this is the first query or no subsequent query is required, you do not need to specify this parameter. If a subsequent query is required, set this parameter to the NextToken value returned by the previous API call.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The total number of records.
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):

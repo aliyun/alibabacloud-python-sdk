@@ -3986,6 +3986,8 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
             body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.with_auto_key_detect):
+            body['WithAutoKeyDetect'] = request.with_auto_key_detect
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -4018,6 +4020,8 @@ class Client(OpenApiClient):
             body['RegionId'] = request.region_id
         if not DaraCore.is_null(request.role_for):
             body['RoleFor'] = request.role_for
+        if not DaraCore.is_null(request.with_auto_key_detect):
+            body['WithAutoKeyDetect'] = request.with_auto_key_detect
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )

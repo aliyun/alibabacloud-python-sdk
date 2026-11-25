@@ -25,49 +25,49 @@ class CreateNormalizationSchemaRequest(DaraModel):
         target_log_store: str = None,
         vendor_id: str = None,
     ):
-        # The language of the response messages. Valid values:
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         # 
-        # Note: This parameter is required in actual API calls. If it is not provided, the service returns a 400 error: "The specified Lang can not be empty." Pass the language code explicitly.
+        # Note: This parameter is required in actual API calls. If it is not provided, the service returns a 400 error "The specified Lang can not be empty.". Explicitly pass the language code.
         self.lang = lang
-        # The normalization category ID.
+        # The ID of the normalization category.
         self.normalization_category_id = normalization_category_id
-        # The field source.
+        # The source of the field.
         self.normalization_field_source = normalization_field_source
         # The normalization fields.
         self.normalization_fields = normalization_fields
-        # The normalization schema description.
+        # The description of the normalization schema.
         self.normalization_schema_description = normalization_schema_description
-        # The normalization schema ID. When creating a custom schema, the ID must start with custom- and can contain only lowercase letters, digits, and hyphens. Example: custom-my-log-schema.
+        # The ID of the normalization schema. When you create a custom schema, the ID must start with custom- and can contain only lowercase letters, digits, and hyphens. Example: custom-my-log-schema.
         # 
         # This parameter is required.
         self.normalization_schema_id = normalization_schema_id
-        # The normalization schema name.
+        # The name of the normalization schema.
         # 
         # This parameter is required.
         self.normalization_schema_name = normalization_schema_name
-        # The normalization schema type. Valid values:
-        # - log: log.
-        # - entity: entity.
+        # The type of the normalization schema. Valid values:
+        # - log: Log.
+        # - entity: Entity.
         # 
         # This parameter is required.
         self.normalization_schema_type = normalization_schema_type
-        # The security domain ID.
+        # The ID of the security domain.
         self.normalization_security_domain_id = normalization_security_domain_id
-        # The product ID.
+        # The ID of the product.
         self.product_id = product_id
-        # The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Select the management center region based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: assets in the Chinese mainland or Hong Kong (China).
-        # - ap-southeast-1: assets in regions outside China.
+        # The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
+        # - ap-southeast-1: Assets are located in regions outside China.
         self.region_id = region_id
-        # The user ID that the administrator uses to switch to the view of another member account.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
-        # The Simple Log Service LogStore.
+        # The Logstore of Simple Log Service.
         # 
         # This parameter is required.
         self.target_log_store = target_log_store
-        # The vendor ID.
+        # The ID of the vendor.
         self.vendor_id = vendor_id
 
     def validate(self):
@@ -191,29 +191,29 @@ class CreateNormalizationSchemaRequestNormalizationFields(DaraModel):
         normalization_field_tokenize: bool = None,
         normalization_field_type: str = None,
     ):
-        # The standard field description.
+        # The description of the normalization field.
         self.normalization_field_description = normalization_field_description
-        # The standard field example.
+        # The example of the normalization field.
         self.normalization_field_example = normalization_field_example
-        # The key source for a standard field of the JSON type.
+        # The source of the key for the JSON normalization field.
         self.normalization_field_from = normalization_field_from
-        # Specifies whether to create indexes for all keys in a standard field of the JSON type.
+        # Specifies whether to create indexes for all keys of the JSON normalization field.
         self.normalization_field_json_index_all = normalization_field_json_index_all
-        # The key list for a standard field of the JSON type.
+        # The list of keys for the JSON normalization field.
         self.normalization_field_json_keys = normalization_field_json_keys
-        # The normalization field name.
+        # The name of the normalization field.
         # 
         # This parameter is required.
         self.normalization_field_name = normalization_field_name
-        # Specifies whether the standard field is required.
+        # Specifies whether the normalization field is required.
         self.normalization_field_required = normalization_field_required
         # Specifies whether the normalization field is required.
         self.normalization_field_requirement = normalization_field_requirement
         # Specifies whether the normalization field is reserved.
         self.normalization_field_reserved = normalization_field_reserved
-        # Specifies whether the standard field is tokenized.
+        # Specifies whether the normalization field is tokenized.
         self.normalization_field_tokenize = normalization_field_tokenize
-        # The standard field type. Valid values: text, long, double, and json.
+        # The type of the normalization field. Valid values: text, long, double, and json.
         # 
         # This parameter is required.
         self.normalization_field_type = normalization_field_type
@@ -317,21 +317,21 @@ class CreateNormalizationSchemaRequestNormalizationFieldsNormalizationFieldJsonK
         normalization_field_tokenize: bool = None,
         normalization_field_type: str = None,
     ):
-        # The key description for a standard field of the JSON type.
+        # The description of the key for the JSON normalization field.
         self.normalization_field_description = normalization_field_description
-        # The key example for a standard field of the JSON type.
+        # The example of the key for the JSON normalization field.
         self.normalization_field_example = normalization_field_example
-        # The key source for a standard field of the JSON type.
+        # The source of the key for the JSON normalization field.
         self.normalization_field_from = normalization_field_from
-        # The key name for a standard field of the JSON type.
+        # The name of the key for the JSON normalization field.
         # 
         # This parameter is required.
         self.normalization_field_name = normalization_field_name
-        # Specifies whether the key for a standard field of the JSON type is required.
+        # Specifies whether the key for the JSON normalization field is required.
         self.normalization_field_required = normalization_field_required
-        # Specifies whether the key for a standard field of the JSON type is tokenized.
+        # Specifies whether the key for the JSON normalization field is tokenized.
         self.normalization_field_tokenize = normalization_field_tokenize
-        # The key type for a standard field of the JSON type. Valid values: text, long, double, and json.
+        # The type of the key for the JSON normalization field. Valid values: text, long, double, and json.
         # 
         # This parameter is required.
         self.normalization_field_type = normalization_field_type

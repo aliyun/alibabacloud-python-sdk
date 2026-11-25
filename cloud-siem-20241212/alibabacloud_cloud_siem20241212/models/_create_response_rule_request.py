@@ -25,9 +25,9 @@ class CreateResponseRuleRequest(DaraModel):
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
-        # The maximum number of data records to return in the current read operation.
+        # The maximum number of data records to return in the current request.
         self.max_results = max_results
-        # The token that marks the position from which the current read operation starts. If you leave this parameter empty, the read operation starts from the beginning.
+        # The token that marks the position from which to start reading. If this parameter is left empty, the reading starts from the beginning.
         self.next_token = next_token
         # The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
         # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).
@@ -36,7 +36,6 @@ class CreateResponseRuleRequest(DaraModel):
         # The action configuration of the automated response rule.
         self.response_action_config = response_action_config
         # The action type of the automated response rule. Valid values:
-        # 
         # - doPlaybook: Executes a playbook.
         # - changeEventStatus: Updates the event status.
         # - changeThreatLevel: Updates the threat level of the event.
@@ -53,7 +52,6 @@ class CreateResponseRuleRequest(DaraModel):
         # The remarks of the response rule.
         self.response_rule_remark = response_rule_remark
         # The trigger type of the automated response rule. Valid values:
-        # 
         # - event: An event occurs.
         # - event_update: An event is updated.
         # - alert: An alert is triggered.
@@ -61,7 +59,6 @@ class CreateResponseRuleRequest(DaraModel):
         # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
         # The view type. Valid values:
-        # 
         # - 0: The view of the current Alibaba Cloud account.
         # - 1: The view of all accounts in the enterprise.
         self.role_type = role_type

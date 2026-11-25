@@ -40,7 +40,7 @@ class CreateDataSourceShrinkRequest(DaraModel):
         self.data_source_recognize_enabled = data_source_recognize_enabled
         # The data source recognizer.
         self.data_source_recognizer = data_source_recognizer
-        # The data ingestion IDs associated with the data source.
+        # The IDs of the data ingestion tasks associated with the data source.
         self.data_source_references_shrink = data_source_references_shrink
         # The list of Simple Log Service projects.
         self.data_source_stores = data_source_stores
@@ -70,7 +70,7 @@ class CreateDataSourceShrinkRequest(DaraModel):
         # - cn-hangzhou: The assets are located in the Chinese mainland.
         # - ap-southeast-1: The assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The ID of the user whose perspective the administrator switches to.
+        # The ID of the member whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):
@@ -213,7 +213,7 @@ class CreateDataSourceShrinkRequestDataSourceStores(DaraModel):
         self.data_source_store_from = data_source_store_from
         # The ID of the log storage.
         self.data_source_store_id = data_source_store_id
-        # The log storage status. Valid values:
+        # The status of the log storage. Valid values:
         # - normal
         # - abnormal
         self.data_source_store_status = data_source_store_status

@@ -9,7 +9,7 @@ class CreateNormalizationSchemaResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # The request message ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -11,11 +11,11 @@ class GetAlertResponseBody(DaraModel):
         alert: main_models.GetAlertResponseBodyAlert = None,
         request_id: str = None,
     ):
-        # If this value is true, the minor engine version is not the latest version.
+        # Indicates whether the minor version is not the latest version.
         # 
-        # > If the minor engine version of your server is not the latest version, the sampling logs may be inaccurate, which causes imprecise IP statistics. We recommend that you upgrade the minor engine version at your earliest convenience.
+        # > If the minor version of your server is not the latest, the sampled logs may be inaccurate, resulting in inaccurate IP address statistics. Therefore, we recommend that you upgrade the minor version of your server as soon as possible.
         self.alert = alert
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +52,9 @@ class GetAlertResponseBodyAlert(DaraModel):
         alert_record: str = None,
         alert_uuid: str = None,
     ):
-        # The alert content.
+        # The content of the alert.
         self.alert_record = alert_record
-        # The alert UUID.
+        # The UUID of the alert.
         self.alert_uuid = alert_uuid
 
     def validate(self):

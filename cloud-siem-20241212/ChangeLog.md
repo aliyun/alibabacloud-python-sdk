@@ -1,3 +1,6 @@
+2026-11-25 Version: 2.8.2
+- Generated python 2024-12-12 for cloud-siem.
+
 2026-11-06 Version: 2.8.1
 - Update API ListDetectionRules: add request parameters LogSchemaIds.
 

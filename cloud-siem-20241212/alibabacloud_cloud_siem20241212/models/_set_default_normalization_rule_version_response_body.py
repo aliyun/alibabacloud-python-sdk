@@ -11,9 +11,9 @@ class SetDefaultNormalizationRuleVersionResponseBody(DaraModel):
         normalization_rule_version: main_models.SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion = None,
         request_id: str = None,
     ):
-        # The normalization rule version.
+        # The version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -63,37 +63,37 @@ class SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion(Dar
         update_time: int = None,
         vendor_id: str = None,
     ):
-        # The time when the normalization rule version was created. The value is a UNIX timestamp in milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
-        # The normalization rule category ID.
+        # The category ID of the normalization rule.
         self.normalization_category_id = normalization_category_id
-        # The normalization rule description.
+        # The description of the normalization rule.
         self.normalization_rule_description = normalization_rule_description
-        # The normalization rule expression.
+        # The expression of the normalization rule.
         self.normalization_rule_expression = normalization_rule_expression
-        # The normalization rule format.
+        # The format of the normalization rule.
         self.normalization_rule_format = normalization_rule_format
-        # The normalization rule ID.
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
-        # The normalization rule name.
+        # The name of the normalization rule.
         self.normalization_rule_name = normalization_rule_name
-        # The normalization rule status.
+        # The status of the normalization rule.
         self.normalization_rule_status = normalization_rule_status
-        # The normalization rule type. Valid values:
-        # - predefined: predefined normalization rule.
-        # - custom: custom normalization rule.
+        # The type of the normalization rule. Valid values:
+        # - predefined: predefined normalization rule
+        # - custom: custom normalization rule
         self.normalization_rule_type = normalization_rule_type
         # The current version of the normalization rule.
         self.normalization_rule_version = normalization_rule_version
-        # The normalization schema ID.
+        # The ID of the normalization schema.
         self.normalization_schema_id = normalization_schema_id
-        # The normalization security domain ID.
+        # The ID of the normalization security domain.
         self.normalization_security_domain_id = normalization_security_domain_id
-        # The product ID.
+        # The ID of the product.
         self.product_id = product_id
-        # The time when the normalization rule version was last updated. The value is a UNIX timestamp in milliseconds.
+        # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
-        # The vendor ID associated with the normalization rule.
+        # The ID of the vendor corresponding to the normalization rule.
         self.vendor_id = vendor_id
 
     def validate(self):

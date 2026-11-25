@@ -18,17 +18,17 @@ class ListAlertAggregationsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of alert groups returned based on the specified aggregation method, sorted by alert count in descending order.
+        # The list of alert groups returned based on the specified aggregation method, sorted in descending order of the number of alerts.
         self.alert_aggregations = alert_aggregations
-        # The maximum number of entries returned in this request.
+        # The maximum number of entries returned for this request.
         self.max_results = max_results
         # The token for the next query.
         self.next_token = next_token
-        # The current page number.
+        # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries.
         self.total_count = total_count
@@ -117,33 +117,32 @@ class ListAlertAggregationsResponseBodyAlertAggregations(DaraModel):
     ):
         # The list of account display values involved in the aggregation group, which corresponds one-to-one with the order of AccountIds. If the username is valid and different from the account ID, the format is "Username/Account ID". Otherwise, only the account ID is returned.
         self.account_display_values = account_display_values
-        # The list of IDs of the member accounts for which the report is generated. Note: You only need to specify this parameter when you generate a multi-account report and want to generate a report for a specified range of accounts.
+        # The list of IDs of member accounts for which the report is generated. Note: This parameter is required only when you generate a multi-account report and want to generate the report for a specified range of accounts.
         self.account_ids = account_ids
-        # The unique identifier of the aggregation group. It is concatenated by AggregationType, PrimaryValue, and SecondaryValue with colons (:). If there is no secondary aggregation value, the last segment is empty.
+        # The unique identifier of the aggregation group. It is concatenated by AggregationType, PrimaryValue, and SecondaryValue with colons (:). If no secondary aggregation value exists, the last segment is empty.
         self.aggregation_key = aggregation_key
         # The aggregation method.
         self.aggregation_type = aggregation_type
-        # The number of consecutive failures. This parameter is optional.
+        # The number of consecutive failures. This field is optional.
         self.alert_count = alert_count
         # The collection of MITRE ATT&CK attack techniques associated with the alerts in the aggregation group. Each element is a JSON array string.
         self.attack_stages = attack_stages
-        # The distribution of alert counts by defense action in the aggregation group. Name is the value of the action field, and Value is the corresponding alert count.
+        # The distribution of the number of alerts in the aggregation group, counted by defense action. Name is the value of the action field, and Value is the corresponding number of alerts.
         self.defense_action_counts = defense_action_counts
         # The time of the first access. The value is a UNIX timestamp accurate to seconds.
         self.first_time = first_time
         # The time when the attack event last occurred.
         self.latest_time = latest_time
-        # The display text of the primary aggregation value. For account aggregation, it returns "Username/Account ID". If there is no valid username, only the account ID is returned. For event summaries, it returns the event name based on Lang. If the name is missing, the event UUID is returned.
+        # The display text of the primary aggregation value. For account aggregation, "Username/Account ID" is returned. If no valid username exists, only the account ID is returned. For event summaries, the event name is returned based on Lang. If the name is missing, the event UUID is returned.
         self.primary_display_value = primary_display_value
         # The value corresponding to the primary query condition.
         self.primary_value = primary_value
         # The value corresponding to the secondary query condition.
         self.secondary_value = secondary_value
         # The collection of event source codes.
-        # 
-        # > Example: [\\"MRM\\"]
+        # > Example: [\\\\\\"MRM\\\\\\"]
         self.source_codes = source_codes
-        # The distribution of alert counts by alert status in the aggregation group. Name is the alert status value, and Value is the corresponding alert count.
+        # The distribution of the number of alerts in the aggregation group, counted by alert status. Name is the alert status value, and Value is the corresponding number of alerts.
         self.status_counts = status_counts
 
     def validate(self):

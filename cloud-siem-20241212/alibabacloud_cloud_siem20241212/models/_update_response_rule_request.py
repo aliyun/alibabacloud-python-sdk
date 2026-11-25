@@ -25,9 +25,9 @@ class UpdateResponseRuleRequest(DaraModel):
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
-        # The maximum number of data records to read in the current request.
+        # The maximum number of data records to return in the current request.
         self.max_results = max_results
-        # The token that specifies the position from which to start reading. If this parameter is left empty, the reading starts from the beginning.
+        # The token that indicates the position from which to start reading. An empty value indicates that the reading starts from the beginning.
         self.next_token = next_token
         # The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
         # - cn-hangzhou: The assets are located in the Chinese mainland.
@@ -43,7 +43,7 @@ class UpdateResponseRuleRequest(DaraModel):
         # - deleteEventTag: Deletes an event tag.
         # - alertWhitelist: Adds an alert to the whitelist.
         self.response_action_type = response_action_type
-        # The rule trigger condition configuration.
+        # The trigger condition configuration of the rule.
         self.response_execution_condition = response_execution_condition
         # The ID of the automated response rule.
         self.response_rule_id = response_rule_id
@@ -51,7 +51,7 @@ class UpdateResponseRuleRequest(DaraModel):
         self.response_rule_name = response_rule_name
         # The execution priority of the automated response rule.
         self.response_rule_priority = response_rule_priority
-        # The remarks of the response rule.
+        # The remarks for the response rule.
         self.response_rule_remark = response_rule_remark
         # The status of the automated response rule. Valid values:
         # - 0: Disabled.

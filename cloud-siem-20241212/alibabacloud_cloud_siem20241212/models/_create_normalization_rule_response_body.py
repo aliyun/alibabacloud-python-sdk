@@ -10,9 +10,9 @@ class CreateNormalizationRuleResponseBody(DaraModel):
         normalization_rule_id: str = None,
         request_id: str = None,
     ):
-        # The normalization rule ID.
+        # The ID of the normalization rule.
         self.normalization_rule_id = normalization_rule_id
-        # The request message ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

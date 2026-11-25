@@ -16,7 +16,7 @@ class CreateCopilotConversationRequest(DaraModel):
         title: str = None,
         trace_id: str = None,
     ):
-        # The language of the response messages. Valid values:
+        # The language of the returned message. Valid values:
         # - **zh** (default): Chinese.
         # - **en**: English.
         self.lang = lang
@@ -24,15 +24,15 @@ class CreateCopilotConversationRequest(DaraModel):
         self.model = model
         # The planning configuration.
         self.plan_mode = plan_mode
-        # The security project ID.
+        # The ID of the security project.
         self.project_id = project_id
-        # The region where the data management center for threat analysis is located. Select the management center region based on the region where your assets reside. Valid values:
-        # - cn-hangzhou: Assets are located in the Chinese mainland.
-        # - ap-southeast-1: Assets are located outside China.
+        # The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets reside. Valid values:
+        # - cn-hangzhou: Assets reside in the Chinese mainland.
+        # - ap-southeast-1: Assets reside outside the Chinese mainland.
         self.region_id = region_id
-        # The thinking mode configuration.
+        # The deep thinking configuration.
         self.thinking_mode = thinking_mode
-        # The session title.
+        # The title of the session.
         self.title = title
         # The trace ID of the created span object.
         self.trace_id = trace_id

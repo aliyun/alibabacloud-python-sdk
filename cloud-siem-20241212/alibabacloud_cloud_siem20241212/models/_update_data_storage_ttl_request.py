@@ -15,27 +15,23 @@ class UpdateDataStorageTtlRequest(DaraModel):
         region_id: str = None,
         role_for: int = None,
     ):
-        # The language of the response. Valid values:
-        # 
+        # The language of the response message. Valid values:
         # - **zh** (default): Chinese.
-        # 
         # - **en**: English.
         self.lang = lang
-        # The storage duration for cold storage in Simple Log Service. This setting is not yet available.
+        # The cold storage duration in Simple Log Service. This parameter is not available for configuration.
         self.log_store_cold_ttl = log_store_cold_ttl
-        # The storage duration for hot storage in Simple Log Service.
+        # The hot storage duration in Simple Log Service.
         self.log_store_hot_ttl = log_store_hot_ttl
-        # The name of the Logstore for threat analysis.
+        # The name of the Logstore for Threat Analysis.
         self.log_store_name = log_store_name
         # The storage duration of the Logstore.
         self.log_store_ttl = log_store_ttl
-        # The region of the Data Management Center for threat analysis. Select a region based on the location of your assets. Valid values:
-        # 
-        # - cn-hangzhou: The Chinese mainland.
-        # 
-        # - ap-southeast-1: Regions outside the Chinese mainland.
+        # The region of the data management center for Threat Analysis. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside the Chinese mainland.
         self.region_id = region_id
-        # The user ID of the member whose perspective the administrator assumes.
+        # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
 
     def validate(self):

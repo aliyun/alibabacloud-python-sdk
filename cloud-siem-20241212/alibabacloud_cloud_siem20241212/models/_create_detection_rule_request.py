@@ -53,39 +53,39 @@ class CreateDetectionRuleRequest(DaraModel):
         # The description of the alert. You can use $$ to reference query output fields.
         self.alert_description = alert_description
         # The threat level of the alert. Valid values:
-        # - 5: critical
-        # - 4: high
-        # - 3: medium
-        # - 2: low
-        # - 1: informational
+        # - 5: critical.
+        # - 4: high.
+        # - 3: medium.
+        # - 2: low.
+        # - 1: informational.
         self.alert_level = alert_level
         # The alert level mapping.
         self.alert_level_mapping = alert_level_mapping
         # The name of the alert. You can use $$ to reference query output fields.
         self.alert_name = alert_name
         # The ID of the alert template for the detection rule. Valid values:
-        # - ALERT_ACTIVITY: other alerts
-        # - EDR_ALERT_ACTIVITY: endpoint detection and response (EDR) alerts
-        # - FIREWALL_ALERT_ACTIVITY: firewall alerts
-        # - WAF_ALERT_ACTIVITY: Web Application Firewall (WAF) alerts
+        # - ALERT_ACTIVITY: other alerts.
+        # - EDR_ALERT_ACTIVITY: endpoint detection and response (EDR) alerts.
+        # - FIREWALL_ALERT_ACTIVITY: firewall alerts.
+        # - WAF_ALERT_ACTIVITY: Web Application Firewall (WAF) alerts.
         self.alert_schema_id = alert_schema_id
         # The tactic phase of the alert.
         self.alert_tactic_id = alert_tactic_id
         # The alert threshold count.
         self.alert_threshold_count = alert_threshold_count
-        # The list of alert threshold fields, separated by commas.
+        # The list of fields for the alert threshold. Separate multiple fields with commas (,).
         self.alert_threshold_group = alert_threshold_group
-        # The length of the alert threshold period.
+        # The period length of the alert threshold.
         self.alert_threshold_period = alert_threshold_period
-        # The alerting type.
+        # The alert type.
         self.alert_type = alert_type
-        # The alerting type mapping.
+        # The alert type mapping.
         self.alert_type_mapping = alert_type_mapping
         # The expression content of the detection rule.
         self.detection_expression_content = detection_expression_content
         # The expression type of the detection rule. Valid values:
-        # - sql: SQL
-        # - playbook: playbook
+        # - sql: SQL.
+        # - playbook: playbook.
         self.detection_expression_type = detection_expression_type
         # The description of the detection rule.
         self.detection_rule_description = detection_rule_description
@@ -98,9 +98,9 @@ class CreateDetectionRuleRequest(DaraModel):
         # The version of the detection rule template.
         self.detection_rule_template_version = detection_rule_template_version
         # The type of the detection rule. Valid values:
-        # - preset: preset detection rule
-        # - custom: custom detection rule
-        # - custom_template: rule template
+        # - preset: preset detection rule.
+        # - custom: custom detection rule.
+        # - custom_template: rule template.
         self.detection_rule_type = detection_rule_type
         # The list of detection rule conditions.
         self.detection_rules = detection_rules
@@ -108,30 +108,30 @@ class CreateDetectionRuleRequest(DaraModel):
         self.entity_mappings = entity_mappings
         # The event aggregation period configuration.
         self.incident_aggregation_expression = incident_aggregation_expression
-        # The event summaries type. Valid values:
-        # - none: no event generated
-        # - graph_compute: graph computing (supported by predefined rules)
-        # - expert: expert rules
-        # - passthrough: alerting pass-through (1-to-1)
-        # - window: homogeneous aggregation (window)
+        # The event aggregation type. Valid values:
+        # - none: no event is generated.
+        # - graph_compute: graph computing, supported by predefined rules.
+        # - expert: expert rules.
+        # - passthrough: alert pass-through (one-to-one).
+        # - window: homogeneous aggregation (window).
         self.incident_aggregation_type = incident_aggregation_type
         # The language of the response message. Valid values:
-        # - **zh** (default): Chinese
-        # - **en**: English
+        # - **zh** (default): Chinese.
+        # - **en**: English.
         # 
-        # Note: This parameter is required in actual API calls. If this parameter is not provided, the service returns a 400 error "The specified Lang can not be empty." Explicitly pass the language code.
+        # Note: This parameter is required in actual API calls. If this parameter is not provided, the service returns a 400 error with the message "The specified Lang can not be empty." Explicitly pass the language code.
         self.lang = lang
         # The ID of the log normalization category.
         self.log_category_id = log_category_id
         # The ID of the log normalization schema.
         self.log_schema_id = log_schema_id
-        # The custom parameters for the playbook.
+        # The custom parameters of the playbook.
         self.playbook_parameters = playbook_parameters
         # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
-        # The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
-        # - cn-hangzhou: Assets are located in the Chinese mainland.
-        # - ap-southeast-1: Assets are located outside the Chinese mainland.
+        # The region of the data management center for Threat Analysis. Select the region of the management center based on the region where your assets are located. Valid values:
+        # - cn-hangzhou: The assets are located in the Chinese mainland.
+        # - ap-southeast-1: The assets are located outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the user whose perspective the administrator switches to.
         self.role_for = role_for
@@ -139,15 +139,15 @@ class CreateDetectionRuleRequest(DaraModel):
         self.schedule_begin_time = schedule_begin_time
         # The cron expression for scheduling. This parameter is required when ScheduleType is set to cron.
         self.schedule_expression = schedule_expression
-        # The maximum number of retries after a timeout. Valid values: 1 to 100.
+        # The maximum number of retries upon timeout. Valid values: 1 to 100.
         self.schedule_max_retries = schedule_max_retries
-        # The maximum timeout period in seconds. Valid values: 60 to 1800.
+        # The maximum timeout period. Unit: seconds. Valid values: 60 to 1800.
         self.schedule_max_timeout = schedule_max_timeout
-        # The schedule type. Valid values:
-        # - fixed_rate: fixed interval
-        # - cron: cron expression
+        # The scheduling type. Valid values:
+        # - fixed_rate: fixed interval.
+        # - cron: cron expression.
         self.schedule_type = schedule_type
-        # The length of the schedule window.
+        # The length of the scheduling window.
         self.schedule_window = schedule_window
 
     def validate(self):

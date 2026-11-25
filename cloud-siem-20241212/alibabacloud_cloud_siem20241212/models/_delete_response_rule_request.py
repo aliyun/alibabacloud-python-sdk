@@ -19,7 +19,7 @@ class DeleteResponseRuleRequest(DaraModel):
         self.lang = lang
         # The maximum number of data records to return in the current request.
         self.max_results = max_results
-        # The token that specifies the position to start reading. If this parameter is left empty, the reading starts from the beginning.
+        # The token that specifies the starting position for reading. Leave this parameter empty to start reading from the beginning.
         self.next_token = next_token
         # The region where the data management center for threat analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
         # - cn-hangzhou: Assets are located in the Chinese mainland and Hong Kong (China).

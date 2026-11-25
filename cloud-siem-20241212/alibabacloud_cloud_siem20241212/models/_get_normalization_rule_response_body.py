@@ -74,14 +74,14 @@ class GetNormalizationRuleResponseBodyNormalizationRule(DaraModel):
         # The creation time. The value is a UNIX timestamp in milliseconds.
         self.create_time = create_time
         # Specifies whether to pack non-standard fields into the extended field extend_content. Valid values:
-        # - enabled: Enabled.
-        # - disabled: Disabled.
+        # - enabled: enabled
+        # - disabled: disabled
         self.extend_content_packed = extend_content_packed
-        # The storage mode for extended fields. Valid values: flat (ingest as-is), reject (do not ingest), and pack (pack into the extend_content field).
+        # The storage mode for extended fields. Valid values: flat: ingested as-is, reject: not ingested, pack: packed into the extend_content field.
         self.extend_field_store_mode = extend_field_store_mode
-        # The category ID of the normalization rule.
+        # The ID of the normalization rule category.
         self.normalization_category_id = normalization_category_id
-        # The field source:
+        # The source of the field. Valid values:
         # - "native": raw logs
         # - "normalized": normalized logs
         self.normalization_field_source = normalization_field_source
@@ -114,11 +114,11 @@ class GetNormalizationRuleResponseBodyNormalizationRule(DaraModel):
         self.normalization_schema_id = normalization_schema_id
         # The ID of the normalization security domain.
         self.normalization_security_domain_id = normalization_security_domain_id
-        # The field used to sort the rule list. Valid values:
-        # - GmtModified: sort by modification time
-        # - Id: sort by rule ID (default)
+        # The field by which the rule list is sorted. Valid values:
+        # - GmtModified: sorts by update time
+        # - Id: sorts by rule ID (default)
         self.order_field = order_field
-        # The product ID.
+        # The ID of the product.
         self.product_id = product_id
         # The update time. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time

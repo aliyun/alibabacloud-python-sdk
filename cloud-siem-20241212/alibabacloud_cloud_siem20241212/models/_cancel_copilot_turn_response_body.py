@@ -12,11 +12,11 @@ class CancelCopilotTurnResponseBody(DaraModel):
         request_id: str = None,
         turn: main_models.CancelCopilotTurnResponseBodyTurn = None,
     ):
-        # The API version number. The value is 1.0.0.
+        # The API version number, which is "1.0.0".
         self.api_version = api_version
         # The request ID.
         self.request_id = request_id
-        # The security operations Agent conversation turn.
+        # The conversation turn of the security operations agent.
         self.turn = turn
 
     def validate(self):
@@ -72,23 +72,23 @@ class CancelCopilotTurnResponseBodyTurn(DaraModel):
     ):
         # The client message ID.
         self.client_message_id = client_message_id
-        # The session ID.
+        # The conversation ID.
         self.conversation_id = conversation_id
-        # The creation time. The time follows the ISO 8601 standard in UTC.
+        # The creation time in ISO 8601 format and the UTC time zone.
         self.created_at = created_at
-        # The conversation feedback information.
+        # The returned conversation information.
         self.feedback = feedback
-        # The number of tokens used for input.
+        # The number of input tokens used.
         self.input_tokens = input_tokens
         # The model ID.
         self.model_id = model_id
-        # The number of tokens used for output.
+        # The number of output tokens.
         self.output_tokens = output_tokens
         # The number of reasoning tokens used on the current day.
         self.reasoning_tokens = reasoning_tokens
-        # Indicates whether a retry is allowed.
+        # Specifies whether retries are allowed.
         self.retry_allowed = retry_allowed
-        # The status of the conversation turn.
+        # The status.
         self.status = status
         # The primary key ID.
         self.turn_id = turn_id
