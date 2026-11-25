@@ -22,29 +22,17 @@ class AIUsageLimitPolicy(DaraModel):
         status: str = None,
         user_group_ids: List[str] = None,
     ):
-        # A brief description of the policy\\"s purpose or scope.
         self.description = description
-        # The timestamp (in UTC) when the policy was created, formatted as `YYYY-MM-DDThh:mm:ssZ`. This is a system-generated, read-only property.
         self.gmt_create = gmt_create
-        # The timestamp (in UTC) when the policy was last modified, formatted as `YYYY-MM-DDThh:mm:ssZ`. This is a system-generated, read-only property.
         self.gmt_modified = gmt_modified
-        # The unique identifier for the usage limit policy. This is a system-generated, read-only value.
         self.limit_policy_id = limit_policy_id
-        # The maximum value for the specified `MetricType` allowed within the `ResetPeriod`. Once this limit is reached, further requests are throttled or rejected.
         self.limit_value = limit_value
-        # The type of metric the limit applies to, such as the number of API requests, tokens processed, or compute units consumed.
         self.metric_type = metric_type
-        # A user-friendly name for the policy. This helps you identify the policy in a list.
         self.name = name
-        # The priority of the policy, used to determine the evaluation order when multiple policies apply to the same request. A lower number indicates a higher priority.
         self.priority = priority
-        # The time window during which the usage count is accumulated before it resets. For example: `Hour`, `Day`, or `Month`.
         self.reset_period = reset_period
-        # A list of service IDs that this policy applies to. The policy is enforced only for requests made to these services.
         self.service_ids = service_ids
-        # The status of the policy. Valid values are `Enabled` and `Disabled`. A disabled policy is not enforced.
         self.status = status
-        # A list of user group IDs that this policy applies to. The policy is enforced only for users who belong to these groups.
         self.user_group_ids = user_group_ids
 
     def validate(self):

@@ -59,7 +59,7 @@ class UpdateProhibitedSoftwareResponseBodySoftware(DaraModel):
         tag_ids: List[str] = None,
         windows_processes: List[main_models.UpdateProhibitedSoftwareResponseBodySoftwareWindowsProcesses] = None,
     ):
-        # The time when the prohibited software was created, in the yyyy-MM-dd HH:mm:ss format. The time is displayed in UTC+8.
+        # The time when the prohibited software was created. The time is in the yyyy-MM-dd HH:mm:ss format and displayed in the UTC+8 time zone.
         self.create_time = create_time
         # The description of the prohibited software.
         self.description = description
@@ -69,11 +69,11 @@ class UpdateProhibitedSoftwareResponseBodySoftware(DaraModel):
         self.mac_osprocesses = mac_osprocesses
         # The name of the prohibited software.
         self.name = name
-        # The IDs of the software prohibition policies that directly reference this prohibited software.
+        # The IDs of the software prohibition policies that directly reference the prohibited software.
         self.policy_ids = policy_ids
         # The ID of the prohibited software.
         self.software_id = software_id
-        # The IDs of the prohibited software tags associated with this prohibited software.
+        # The IDs of the prohibited software tags associated with the prohibited software.
         self.tag_ids = tag_ids
         # The list of process configurations for the Windows operating system.
         self.windows_processes = windows_processes
@@ -180,13 +180,13 @@ class UpdateProhibitedSoftwareResponseBodySoftwareWindowsProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The bundle ID of the application. This parameter is required only for macOS processes.
+        # The bundle ID of the application. This field is applicable only to macOS processes.
         self.bundle_id = bundle_id
-        # The command line parameters for starting the process.
+        # The command-line arguments used to start the process.
         self.cmdline = cmdline
         # The directory where the process is located.
         self.directory = directory
-        # The process name.
+        # The name of the process.
         self.process = process
 
     def validate(self):
@@ -235,13 +235,13 @@ class UpdateProhibitedSoftwareResponseBodySoftwareMacOSProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The bundle ID of the application. This parameter is required only for macOS processes.
+        # The bundle ID of the application. This field is applicable only to macOS processes.
         self.bundle_id = bundle_id
-        # The command line parameters for starting the process.
+        # The command-line arguments used to start the process.
         self.cmdline = cmdline
         # The directory where the process is located.
         self.directory = directory
-        # The process name.
+        # The name of the process.
         self.process = process
 
     def validate(self):
@@ -290,13 +290,13 @@ class UpdateProhibitedSoftwareResponseBodySoftwareLinuxProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The bundle ID of the application. This parameter is required only for macOS processes.
+        # The bundle ID of the application. This field is applicable only to macOS processes.
         self.bundle_id = bundle_id
-        # The command line parameters for starting the process.
+        # The command-line arguments used to start the process.
         self.cmdline = cmdline
         # The directory where the process is located.
         self.directory = directory
-        # The process name.
+        # The name of the process.
         self.process = process
 
     def validate(self):

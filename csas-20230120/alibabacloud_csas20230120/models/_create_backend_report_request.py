@@ -17,33 +17,33 @@ class CreateBackendReportRequest(DaraModel):
         targets: List[main_models.CreateBackendReportRequestTargets] = None,
         validity_type: str = None,
     ):
-        # The filing expiration time as a UNIX timestamp in seconds. This parameter is required when ValidityType is set to FixedTime or ValidityType is not specified, and the value must be later than the current time. When ValidityType is set to Permanent, do not specify this parameter or set it to 0.
+        # The expiration time of the report, which is a UNIX timestamp in seconds. This parameter is required when ValidityType is set to FixedTime or is not specified, and the value must be later than the current time. When ValidityType is set to Permanent, do not specify this parameter or set it to 0.
         self.end_timestamp = end_timestamp
-        # The filing policy type. Valid values:
-        # * PrivateAccessBlock: private access.
-        # * DomainWhitelist: domain name whitelist.
-        # * DomainBlacklist: domain name blacklist.
-        # * SoftwareBlock: software blocking.
-        # * DlpSend: file outbound transfer.
-        # * PeripheralBlock: peripheral control.
+        # The policy type. Valid values:
+        # * PrivateAccessBlock: private network access
+        # * DomainWhitelist: domain name whitelist
+        # * DomainBlacklist: domain name blacklist
+        # * SoftwareBlock: software blocking
+        # * DlpSend: outbound file transfer
+        # * PeripheralBlock: peripheral control
         # 
         # This parameter is required.
         self.policy_type = policy_type
-        # The filing reason. The value must be 1 to 1024 characters in length.
+        # The reason for the report. The value must be 1 to 1,024 characters in length.
         # 
         # This parameter is required.
         self.reason = reason
-        # The list of filing objects, serialized in Flat format. You can specify 1 to 100 filing objects of the same policy type. The object fields must match the PolicyType value.
+        # The list of report objects in flat serialization format. You can specify 1 to 100 report objects of the same policy type. The object fields must match the policy type.
         # 
         # This parameter is required.
         self.report_objects = report_objects
-        # The list of filing users, serialized in Flat format. You can specify 1 to 100 users. Only specific SASE users under the current Alibaba Cloud account are supported. The product of the number of deduplicated users and the number of filing objects cannot exceed 100.
+        # The list of target users in flat serialization format. You can specify 1 to 100 users. Only specific SASE users under the current Alibaba Cloud account are supported. The product of the number of deduplicated users and the number of report objects cannot exceed 100.
         # 
         # This parameter is required.
         self.targets = targets
-        # The validity duration type. Default value: FixedTime. Valid values:
-        # * FixedTime: Expires at the specified time.
-        # * Permanent: Permanently valid.
+        # The validity type. If you do not specify this parameter, the default value is FixedTime. Valid values:
+        # * FixedTime: The exemption expires at the specified time.
+        # * Permanent: The exemption is permanently valid.
         self.validity_type = validity_type
 
     def validate(self):
@@ -118,7 +118,7 @@ class CreateBackendReportRequestTargets(DaraModel):
         self,
         user_id: str = None,
     ):
-        # The SASE user ID. You can call ListUsers to query the ID.
+        # The SASE user ID. You can call ListUsers to query the user ID.
         # 
         # This parameter is required.
         self.user_id = user_id
@@ -154,21 +154,21 @@ class CreateBackendReportRequestReportObjects(DaraModel):
         scope: str = None,
         software_id: str = None,
     ):
-        # The private access application ID. This parameter is required when PolicyType is set to PrivateAccessBlock. You can call ListPrivateAccessApplications to query the ID.
+        # The ID of the private access application. This parameter is required when PolicyType is set to PrivateAccessBlock. You can call ListPrivateAccessApplications to query the application ID.
         self.application_id = application_id
-        # The endpoint operating system. This parameter is required when PolicyType is set to PeripheralBlock. Valid values:
-        # * windows: Windows.
-        # * macOS: macOS.
+        # The operating system of the endpoint. This parameter is required when PolicyType is set to PeripheralBlock. Valid values:
+        # * windows: Windows
+        # * macOS: macOS
         self.dev_type = dev_type
         # The peripheral channel. This parameter is required when PolicyType is set to PeripheralBlock. Windows supports usbStorage, printer, mobile, cardReader, cdrom, and bluetooth. macOS supports usbStorage, airDrop, mobile, and bluetooth.
         self.device_type = device_type
-        # The file MD5 hash. This parameter is required when PolicyType is set to DlpSend. The value must be a 32-character hexadecimal string and is case-insensitive.
+        # The MD5 hash of the file. This parameter is required when PolicyType is set to DlpSend. The value must be a 32-character hexadecimal string and is not case-sensitive.
         self.file_md_5 = file_md_5
-        # The filing domain name. This parameter is required when PolicyType is set to DomainWhitelist or DomainBlacklist. Regular domain names and wildcard domain names that start with *. are supported. Protocols, ports, and paths are not supported.
+        # The domain name to be reported. This parameter is required when PolicyType is set to DomainWhitelist or DomainBlacklist. Regular domain names and wildcard domain names starting with *. are supported. Protocols, ports, and paths are not supported.
         self.report_domain = report_domain
-        # The peripheral filing granularity. This parameter is required when PolicyType is set to PeripheralBlock. Currently, only Channel is supported, which indicates filing by peripheral channel.
+        # The reporting granularity for peripherals. This parameter is required when PolicyType is set to PeripheralBlock. Only Channel is supported, which indicates reporting by peripheral channel.
         self.scope = scope
-        # The blocked software ID. This parameter is required when PolicyType is set to SoftwareBlock.
+        # The ID of the blocked software. This parameter is required when PolicyType is set to SoftwareBlock.
         self.software_id = software_id
 
     def validate(self):

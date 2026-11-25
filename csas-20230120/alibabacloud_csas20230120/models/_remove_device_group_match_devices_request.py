@@ -12,11 +12,11 @@ class RemoveDeviceGroupMatchDevicesRequest(DaraModel):
         dev_tags: List[str] = None,
         device_group_id: str = None,
     ):
-        # The collection of terminal device IDs to be removed. At least one ID must be specified, and duplicate values are not allowed.
+        # The IDs of the terminal devices to remove. Specify at least one ID. Duplicate IDs are not allowed.
         # 
         # This parameter is required.
         self.dev_tags = dev_tags
-        # The device label ID.
+        # The ID of the device label.
         # 
         # This parameter is required.
         self.device_group_id = device_group_id

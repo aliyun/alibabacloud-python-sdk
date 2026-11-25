@@ -11,7 +11,7 @@ class CreateForwardStrategyResponseBody(DaraModel):
         forward_strategy: main_models.CreateForwardStrategyResponseBodyForwardStrategy = None,
         request_id: str = None,
     ):
-        # The traffic forwarding rule.
+        # The forwarding rule.
         self.forward_strategy = forward_strategy
         # Id of the request
         self.request_id = request_id
@@ -55,22 +55,22 @@ class CreateForwardStrategyResponseBodyForwardStrategy(DaraModel):
         priority: int = None,
         status: str = None,
     ):
-        # The description of the traffic forwarding rule.
+        # The description of the forwarding rule.
         self.description = description
-        # The target instance ID.
+        # The instance ID of the target instance.
         self.destination_id = destination_id
         # The destination type. Valid values:
         # - **Connector**: connector.
         self.destination_type = destination_type
-        # The ID of the traffic forwarding rule.
+        # The ID of the forwarding rule.
         self.forward_id = forward_id
         # The policy name.
         self.name = name
         # The policy priority.
         self.priority = priority
-        # The status of the internal-facing access application. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # The status of the internal network access application. Valid values:
+        # - **Enabled**: The application is enabled.
+        # - **Disabled**: The application is disabled.
         self.status = status
 
     def validate(self):

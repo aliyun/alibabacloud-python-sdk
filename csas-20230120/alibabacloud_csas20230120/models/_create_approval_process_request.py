@@ -92,12 +92,15 @@ class CreateApprovalProcessRequestMatchSchemas(DaraModel):
         self.domain_blacklist_schema_id = domain_blacklist_schema_id
         # The ID of the domain name whitelist approval template.
         self.domain_whitelist_schema_id = domain_whitelist_schema_id
+        # The ID of the endpoint hardening approval template.
         self.endpoint_hardening_schema_id = endpoint_hardening_schema_id
         # The ID of the peripheral control approval template.
         self.peripheral_block_schema_id = peripheral_block_schema_id
+        # The ID of the internal network access control approval template.
         self.private_access_block_schema_id = private_access_block_schema_id
         # The ID of the software blocking approval template.
         self.software_block_schema_id = software_block_schema_id
+        # The ID of the software hardening approval template.
         self.software_hardening_schema_id = software_hardening_schema_id
 
     def validate(self):

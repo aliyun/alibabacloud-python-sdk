@@ -11,7 +11,7 @@ class ListPrivateAccessApplicationL7SwitchesRequest(DaraModel):
         self,
         application_ids: List[str] = None,
     ):
-        # The IDs of internal-facing applications. You can specify up to 100 internal-facing application IDs.
+        # The IDs of the internal-facing applications. You can specify up to 100 internal-facing application IDs.
         self.application_ids = application_ids
 
     def validate(self):

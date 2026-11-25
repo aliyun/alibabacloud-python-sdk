@@ -20,7 +20,7 @@ class ListNetBandwidthRequest(DaraModel):
         self.current_page = current_page
         # The list of instance IDs.
         self.instance_ids = instance_ids
-        # The network type. If this parameter is left empty, both VPC and Connector instances are queried.
+        # The network type. If this parameter is left empty, both VPC and Connector network instances are queried.
         self.net_type = net_type
         # The number of entries per page.
         # 

@@ -13,7 +13,7 @@ class GetProhibitedPolicyResponseBody(DaraModel):
         policy: main_models.GetProhibitedPolicyResponseBodyPolicy = None,
         request_id: str = None,
     ):
-        # The details of the software prohibition policy.
+        # The details of the prohibited software policy.
         self.policy = policy
         # Id of the request
         self.request_id = request_id
@@ -74,65 +74,65 @@ class GetProhibitedPolicyResponseBodyPolicy(DaraModel):
         user_group_ids: List[str] = None,
         whitelist: List[str] = None,
     ):
-        # Indicates whether end users are allowed to submit a filing request for this policy. Valid values:
-        # - **true**: Filing is allowed. The terminal pop-up window provides a filing entry.
-        # - **false**: Filing is not allowed.
+        # Indicates whether terminal users are allowed to submit applications for this policy. Valid values:
+        # - **true**: Applications are allowed. The terminal pop-up window provides an entry for submitting applications.
+        # - **false**: Applications are not allowed.
         self.allow_report = allow_report
-        # The creation time of the software prohibition policy, in the yyyy-MM-dd HH:mm:ss format using the UTC+8 time zone.
+        # The time when the prohibited software policy was created. The time is displayed in the yyyy-MM-dd HH:mm:ss format and uses the UTC+8 time zone.
         self.create_time = create_time
-        # The description of the software prohibition policy.
+        # The description of the prohibited software policy.
         self.description = description
         # Indicates whether the policy is enabled. Valid values:
-        # - **true**: Enabled. The policy is delivered to terminals and takes effect.
-        # - **false**: Disabled. The policy configuration is retained but not delivered to terminals.
+        # - **true**: The policy is enabled, delivered to terminals, and takes effect.
+        # - **false**: The policy is disabled. The configuration is retained but not delivered to terminals.
         self.enabled = enabled
         # Indicates whether to forcibly terminate running software processes. Valid values:
-        # - **true**: The terminal immediately terminates the running processes of the software when the policy is triggered.
-        # - **false**: Running processes are not terminated. Only subsequent launches are blocked.
+        # - **true**: The terminal immediately terminates the running processes of the software when the policy is matched.
+        # - **false**: The terminal does not terminate running processes but only prevents subsequent startups.
         self.force_kill = force_kill
         # The Chinese text of the primary button in the terminal pop-up window.
         self.main_button_text_ch = main_button_text_ch
         # The English text of the primary button in the terminal pop-up window.
         self.main_button_text_en = main_button_text_en
-        # The policy matching target type. Valid values:
-        # - **UserGroupAll**: Associates with all users.
-        # - **UserGroupNormal**: Associates with specific user groups.
+        # The target matching mode of the policy. Valid values:
+        # - **UserGroupAll**: Applies to all users.
+        # - **UserGroupNormal**: Applies to specific user groups.
         self.match_mode = match_mode
         # The Chinese text of the secondary button in the terminal pop-up window.
         self.minor_button_text_ch = minor_button_text_ch
         # The English text of the secondary button in the terminal pop-up window.
         self.minor_button_text_en = minor_button_text_en
-        # The name of the software prohibition policy.
+        # The name of the prohibited software policy.
         self.name = name
-        # The object type of the controlled target. Valid values:
-        # - **App**: Controls by prohibited software. The controlled objects are specified by SoftwareIds.
-        # - **Tag**: Controls by prohibited software labels. The controlled objects are specified by TagIds. All prohibited software under the labels is controlled.
+        # The managed object type. Valid values:
+        # - **App**: Managed by prohibited software. The managed objects are specified by SoftwareIds.
+        # - **Tag**: Managed by prohibited software tag. The managed objects are specified by TagIds, and all prohibited software under the tag is managed.
         self.object_type = object_type
-        # The software prohibition policy ID.
+        # The ID of the prohibited software policy.
         self.policy_id = policy_id
-        # The action type. Valid values:
-        # - **Ban**: Blocks the software from running and displays a pop-up notification to the end user.
-        # - **BanSilent**: Blocks the software from running without notifying the end user (silent blocking).
-        # - **Warn**: Displays a pop-up notification to the end user without blocking the software from running.
+        # The enforcement action. Valid values:
+        # - **Ban**: Blocks the software from running and displays a pop-up window to notify the terminal user.
+        # - **BanSilent**: Blocks the software from running silently without notifying the terminal user.
+        # - **Warn**: Displays a pop-up window to notify the terminal user without blocking the software from running.
         self.policy_type = policy_type
         # The policy priority. Valid values: 0 to 99. A smaller value indicates a higher priority.
         self.priority = priority
-        # The Chinese prompt content displayed in the terminal pop-up window.
+        # The Chinese prompt content in the terminal pop-up window.
         self.prompt_ch = prompt_ch
-        # The English prompt content displayed in the terminal pop-up window.
+        # The English prompt content in the terminal pop-up window.
         self.prompt_en = prompt_en
-        # The approval process ID bound to this policy. An empty string is returned if no approval process is bound. In this case, filing requests submitted by end users are approved by the IT administrator as a fallback. Approval processes are bound by using [AttachPolicy2ApprovalProcess](~~AttachPolicy2ApprovalProcess~~) and unbound by using [DetachPolicy2ApprovalProcess](~~DetachPolicy2ApprovalProcess~~). You can obtain this value from the following operation:
+        # The ID of the approval process bound to the policy. If no approval process is bound, an empty string is returned, and applications submitted by terminal users are approved by the IT administrator. You can bind an approval process by calling [AttachPolicy2ApprovalProcess](~~AttachPolicy2ApprovalProcess~~) and unbind it by calling [DetachPolicy2ApprovalProcess](~~DetachPolicy2ApprovalProcess~~). You can obtain the value from the following operations:
         # - [ListApprovalProcesses](~~ListApprovalProcesses~~): Lists approval processes.
         self.report_process_id = report_process_id
-        # The collection of prohibited software directly controlled by this policy.
+        # The list of prohibited software directly managed by the policy.
         self.software_ids = software_ids
-        # The collection of prohibited software label IDs controlled by this policy.
+        # The list of prohibited software tag IDs managed by the policy.
         self.tag_ids = tag_ids
         # The Chinese title of the terminal pop-up window.
         self.title_ch = title_ch
         # The English title of the terminal pop-up window.
         self.title_en = title_en
-        # The collection of user group IDs to which this policy applies.
+        # The list of user group IDs to which the policy applies.
         self.user_group_ids = user_group_ids
         # The list of exempted usernames.
         self.whitelist = whitelist
@@ -309,11 +309,11 @@ class GetProhibitedPolicyResponseBodyPolicySoftwareIds(DaraModel):
         is_default: bool = None,
         software_id: str = None,
     ):
-        # Indicates whether the prohibited software is a system built-in entry. Valid values:
-        # - **true**: A system built-in prohibited software entry shared by all Alibaba Cloud accounts. Modification and deletion are not supported.
-        # - **false**: A custom prohibited software entry under the current Alibaba Cloud account.
+        # Indicates whether the prohibited software is a built-in prohibited software. Valid values:
+        # - **true**: The software is a built-in prohibited software that is shared by all Alibaba Cloud accounts and cannot be modified or deleted.
+        # - **false**: The software is a custom prohibited software under the current Alibaba Cloud account.
         self.is_default = is_default
-        # The prohibited software ID.
+        # The ID of the prohibited software.
         self.software_id = software_id
 
     def validate(self):

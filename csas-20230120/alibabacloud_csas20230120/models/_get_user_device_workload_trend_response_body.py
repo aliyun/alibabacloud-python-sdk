@@ -18,14 +18,14 @@ class GetUserDeviceWorkloadTrendResponseBody(DaraModel):
         # Id of the request
         self.request_id = request_id
         # The English name of the workload type. Valid values:
-        # - **CPU Usage**: returned when WorkloadType is set to cpu.
-        # - **Memory Usage**: returned when WorkloadType is set to mem.
+        # - **CPU Usage**: Returned when WorkloadType is set to cpu.
+        # - **Memory Usage**: Returned when WorkloadType is set to mem.
         self.title_en = title_en
         # The Chinese name of the workload type. Valid values:
-        # - **CPU使用率**: returned when WorkloadType is set to cpu.
-        # - **内存使用率**: returned when WorkloadType is set to mem.
+        # - **CPU使用率**: Returned when WorkloadType is set to cpu.
+        # - **内存使用率**: Returned when WorkloadType is set to mem.
         self.title_zh = title_zh
-        # The list of workload trend data points, sorted by time in ascending order.
+        # The list of workload trend data points, sorted in ascending order by time.
         self.workload_list = workload_list
 
     def validate(self):
@@ -80,9 +80,9 @@ class GetUserDeviceWorkloadTrendResponseBodyWorkloadList(DaraModel):
         timestamp: int = None,
         workload: float = None,
     ):
-        # The collection time of the data point. This value is a UNIX timestamp in seconds.
+        # The collection time of the data point, which is a UNIX timestamp in seconds.
         self.timestamp = timestamp
-        # The workload usage percentage. Valid values: 0 to 100, with two decimal places.
+        # The workload usage percentage. Valid values: 0 to 100, rounded to two decimal places.
         self.workload = workload
 
     def validate(self):

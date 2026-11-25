@@ -13,7 +13,13 @@ class RecoveryContent(DaraModel):
         auth_report_interval: main_models.AuthReportInterval = None,
         recovery_actions: List[str] = None,
     ):
+        # The validity period configuration after authentication-based recovery. This parameter is used when RecoveryActions includes auth.
         self.auth_report_interval = auth_report_interval
+        # The set of recovery methods after mitigation. Valid values:
+        # - **auto**: Automatic recovery.
+        # - **auth**: Recovery after the user completes authentication.
+        # - **console**: Manual recovery by an administrator in the console.
+        # 
         # This parameter is required.
         self.recovery_actions = recovery_actions
 

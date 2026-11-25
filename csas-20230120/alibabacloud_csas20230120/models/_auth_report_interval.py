@@ -10,7 +10,12 @@ class AuthReportInterval(DaraModel):
         time_unit: str = None,
         value: int = None,
     ):
+        # The unit of the effective recovery duration. Valid values:
+        # - **Minute**: Minutes.
+        # - **Hour**: Hours.
+        # - **Day**: Days.
         self.time_unit = time_unit
+        # The numeric value of the effective recovery duration. The unit is specified by TimeUnit. A non-zero value must be at least 1.
         self.value = value
 
     def validate(self):

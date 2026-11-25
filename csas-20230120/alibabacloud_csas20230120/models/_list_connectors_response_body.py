@@ -79,18 +79,18 @@ class ListConnectorsResponseBodyConnectors(DaraModel):
         vip_cidr: str = None,
     ):
         # Specifies whether global acceleration is enabled. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
         self.accelerate_status = accelerate_status
         # The internal access applications associated with the connector.
         self.applications = applications
-        # The IP address of the cluster.
+        # The cluster IP address.
         self.cluster_ip = cluster_ip
-        # The port of the cluster.
+        # The cluster port.
         self.cluster_port = cluster_port
         # The deployed connector clients.
         self.connector_clients = connector_clients
-        # The connector ID.
+        # The unique ID of the connector.
         self.connector_id = connector_id
         # The time when the connector was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
@@ -99,15 +99,16 @@ class ListConnectorsResponseBodyConnectors(DaraModel):
         # The region ID.
         self.region_id = region_id
         # The connection status of the connector. Valid values:
-        # - **Online**: Online.
-        # - **Offline**: Offline.
+        # - **Online**: online.
+        # - **Offline**: offline.
         self.status = status
-        # The connector instance status. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Shutdown.
+        # The instance status of the connector. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: shutdown.
         self.switch_status = switch_status
         # The upgrade time of the connector.
         self.upgrade_time = upgrade_time
+        # The CIDR block of the virtual IP address.
         self.vip_cidr = vip_cidr
 
     def validate(self):

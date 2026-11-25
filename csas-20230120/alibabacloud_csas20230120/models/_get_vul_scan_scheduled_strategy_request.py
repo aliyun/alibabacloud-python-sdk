@@ -9,9 +9,9 @@ class GetVulScanScheduledStrategyRequest(DaraModel):
         self,
         strategy_id: str = None,
     ):
-        # The vulnerability scheduled scan policy ID. You can obtain the value from the following operations:
-        # - [ListVulScanScheduledStrategies](~~ListVulScanScheduledStrategies~~): Lists vulnerability scheduled scan policies.
-        # - [CreateVulScanScheduledStrategy](~~CreateVulScanScheduledStrategy~~): Creates a vulnerability scheduled scan policy.
+        # The ID of the scheduled vulnerability scanning policy. You can obtain the value from the following operations:
+        # - [ListVulScanScheduledStrategies](~~ListVulScanScheduledStrategies~~): Queries scheduled vulnerability scanning policies.
+        # - [CreateVulScanScheduledStrategy](~~CreateVulScanScheduledStrategy~~): Creates a scheduled vulnerability scanning policy.
         # 
         # This parameter is required.
         self.strategy_id = strategy_id

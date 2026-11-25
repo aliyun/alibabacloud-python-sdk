@@ -10,7 +10,7 @@ class CreateSaseUserTagRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # The description of the employee tag.
+        # The description of the user tag.
         self.description = description
         # The name of the user tag.
         self.name = name

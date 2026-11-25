@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_csas20230120 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -21,6 +22,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'csas'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'cn-hangzhou': 'csas.aliyuncs.com',
@@ -12722,6 +12726,8 @@ class Client(OpenApiClient):
             query['DeviceTags'] = request.device_tags
         if not DaraCore.is_null(request.device_types):
             query['DeviceTypes'] = request.device_types
+        if not DaraCore.is_null(request.disk_encrypt_statuses):
+            query['DiskEncryptStatuses'] = request.disk_encrypt_statuses
         if not DaraCore.is_null(request.dlp_statuses):
             query['DlpStatuses'] = request.dlp_statuses
         if not DaraCore.is_null(request.hostname):
@@ -12798,6 +12804,8 @@ class Client(OpenApiClient):
             query['DeviceTags'] = request.device_tags
         if not DaraCore.is_null(request.device_types):
             query['DeviceTypes'] = request.device_types
+        if not DaraCore.is_null(request.disk_encrypt_statuses):
+            query['DiskEncryptStatuses'] = request.disk_encrypt_statuses
         if not DaraCore.is_null(request.dlp_statuses):
             query['DlpStatuses'] = request.dlp_statuses
         if not DaraCore.is_null(request.hostname):
@@ -16099,6 +16107,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not DaraCore.is_null(request.timeout_sec):
             body['TimeoutSec'] = request.timeout_sec
+        if not DaraCore.is_null(request.url_access_paths):
+            body_flat['UrlAccessPaths'] = request.url_access_paths
         if not DaraCore.is_null(request.user_mark_status):
             body['UserMarkStatus'] = request.user_mark_status
         if not DaraCore.is_null(request.zero_trust_status):
@@ -16145,6 +16155,8 @@ class Client(OpenApiClient):
             body['Status'] = request.status
         if not DaraCore.is_null(request.timeout_sec):
             body['TimeoutSec'] = request.timeout_sec
+        if not DaraCore.is_null(request.url_access_paths):
+            body_flat['UrlAccessPaths'] = request.url_access_paths
         if not DaraCore.is_null(request.user_mark_status):
             body['UserMarkStatus'] = request.user_mark_status
         if not DaraCore.is_null(request.zero_trust_status):

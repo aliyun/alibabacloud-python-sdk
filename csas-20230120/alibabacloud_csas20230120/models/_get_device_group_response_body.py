@@ -13,7 +13,7 @@ class GetDeviceGroupResponseBody(DaraModel):
         device_group: main_models.GetDeviceGroupResponseBodyDeviceGroup = None,
         request_id: str = None,
     ):
-        # The device label details.
+        # The device group details.
         self.device_group = device_group
         # Id of the request
         self.request_id = request_id
@@ -58,25 +58,25 @@ class GetDeviceGroupResponseBodyDeviceGroup(DaraModel):
         match_dev_tags: List[str] = None,
         name: str = None,
     ):
-        # The device label description.
+        # The description of the device group.
         self.description = description
-        # The device label ID.
+        # The ID of the device group.
         self.device_group_id = device_group_id
-        # The dynamic device group rule operator.
+        # The operator for the dynamic device group rule.
         self.dynamic_operator = dynamic_operator
-        # The matching rule of the dynamic device label.
+        # The matching rule for the dynamic device group.
         self.dynamic_rule = dynamic_rule
-        # The device label type. Valid values:
-        # - **static**: Static device label. Members consist of manually added terminal devices.
-        # - **dynamic**: Dynamic device label.
+        # The type of the device group. Valid values:
+        # - **static**: A static device group. Members are terminal devices that are manually added.
+        # - **dynamic**: A dynamic device group.
         self.group_type = group_type
-        # Indicates whether the device label is a system built-in device label. Valid values:
-        # - **true**: System built-in device label.
-        # - **false**: User-defined device label.
+        # Indicates whether the device group is a built-in system device group. Valid values:
+        # - **true**: The device group is a built-in system device group.
+        # - **false**: The device group is a custom device group.
         self.is_default = is_default
-        # The collection of terminal device IDs associated with the device label.
+        # The IDs of the devices associated with the device group.
         self.match_dev_tags = match_dev_tags
-        # The device label name.
+        # The name of the device group.
         self.name = name
 
     def validate(self):

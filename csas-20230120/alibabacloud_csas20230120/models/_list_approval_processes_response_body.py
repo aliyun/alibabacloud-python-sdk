@@ -14,7 +14,7 @@ class ListApprovalProcessesResponseBody(DaraModel):
         request_id: str = None,
         total_num: str = None,
     ):
-        # The list of approval processes.
+        # The approval processes.
         self.processes = processes
         # The ID of the request.
         self.request_id = request_id
@@ -81,33 +81,37 @@ class ListApprovalProcessesResponseBodyProcesses(DaraModel):
         software_block_policies: main_models.ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies = None,
         software_hardening_policies: main_models.ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies = None,
     ):
-        # The list of policies associated with endpoint uninstallation.
+        # The policies associated with endpoint uninstallation.
         self.app_uninstall_policies = app_uninstall_policies
+        # The type of the approval process. Valid values: 0 (built-in approval), 1 (DingTalk approval), 2 (WeCom approval), and 3 (Lark approval).
         self.approval_type = approval_type
         # The time when the approval process was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The description of the approval process.
         self.description = description
-        # The list of policies associated with device registration.
+        # The policies associated with device registration.
         self.device_registration_policies = device_registration_policies
-        # The list of policies associated with file sending.
+        # The policies associated with file sending.
         self.dlp_send_policies = dlp_send_policies
-        # The list of policies associated with the domain name blacklist.
+        # The policies associated with the domain name blacklist.
         self.domain_blacklist_policies = domain_blacklist_policies
-        # The list of policies associated with the domain name whitelist.
+        # The policies associated with the domain name whitelist.
         self.domain_whitelist_policies = domain_whitelist_policies
+        # The policies associated with endpoint hardening. If the approval process is not configured with an approval template of this type, SchemaId and PolicyIds are empty.
         self.endpoint_hardening_policies = endpoint_hardening_policies
-        # The list of policies associated with peripheral control.
+        # The policies associated with peripheral control.
         self.peripheral_block_policies = peripheral_block_policies
+        # The policies associated with internal network access control. If the approval process is not configured with an approval template of this type, SchemaId and PolicyIds are empty.
         self.private_access_block_policies = private_access_block_policies
         # The ID of the approval process.
         self.process_id = process_id
         # The name of the approval process.
         self.process_name = process_name
-        # The list of approval nodes.
+        # The approval nodes.
         self.process_nodes = process_nodes
-        # The list of policies associated with software blocking.
+        # The policies associated with the software block.
         self.software_block_policies = software_block_policies
+        # The policies associated with software hardening. If the approval process is not configured with an approval template of this type, SchemaId and PolicyIds are empty.
         self.software_hardening_policies = software_hardening_policies
 
     def validate(self):
@@ -271,7 +275,9 @@ class ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies(DaraMo
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The IDs of the software hardening policies.
         self.policy_ids = policy_ids
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -306,7 +312,7 @@ class ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies(DaraModel)
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The IDs of the software blocking policies.
+        # The IDs of the software block policies.
         self.policy_ids = policy_ids
         # The ID of the approval template.
         self.schema_id = schema_id
@@ -380,7 +386,9 @@ class ListApprovalProcessesResponseBodyProcessesPrivateAccessBlockPolicies(DaraM
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The IDs of the internal network access control applications.
         self.policy_ids = policy_ids
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -415,7 +423,7 @@ class ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies(DaraMode
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The IDs of the peripheral control policy.
+        # The IDs of the peripheral control policies.
         self.policy_ids = policy_ids
         # The ID of the approval template.
         self.schema_id = schema_id
@@ -452,7 +460,9 @@ class ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies(DaraMo
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The IDs of the endpoint hardening policies.
         self.policy_ids = policy_ids
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):

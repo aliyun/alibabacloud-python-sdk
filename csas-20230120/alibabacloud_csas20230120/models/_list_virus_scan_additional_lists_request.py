@@ -15,7 +15,7 @@ class ListVirusScanAdditionalListsRequest(DaraModel):
         list_ids: List[str] = None,
         list_type: str = None,
     ):
-        # Filters by matching dimension. Duplicate values are not allowed. If this parameter is not specified, all matching dimensions are returned.
+        # Filters by match dimension. Duplicate values are not allowed. If this parameter is not specified, all match dimensions are returned.
         self.additional_types = additional_types
         # The operating system type for which the list takes effect. Valid values:
         # - **windows**: Windows.
@@ -23,13 +23,13 @@ class ListVirusScanAdditionalListsRequest(DaraModel):
         # 
         # This parameter is required.
         self.dev_type = dev_type
-        # The content of the list entry, using exact match. This parameter is used to locate a specific list entry by content and does not support fuzzy match.
+        # The content of the list entry. Exact match is used. This parameter is used to locate a specific list by content. Fuzzy match is not supported.
         self.list_detail = list_detail
-        # Filters by list entry ID. Duplicate values are not allowed. If this parameter is not specified, no filtering by list entry ID is applied.
+        # Filters by list entry ID. Duplicate values are not allowed. If this parameter is not specified, no filtering by list entry ID is performed.
         self.list_ids = list_ids
         # Filters by list type. If this parameter is not specified, both blacklists and whitelists are returned. Valid values:
-        # - **Blacklist**: Blacklist. Files that match are directly identified as virus files.
-        # - **Whitelist**: Whitelist. Files that match are excluded from virus detection.
+        # - **Blacklist**: Blacklist. Matched files are directly identified as virus files.
+        # - **Whitelist**: Whitelist. Matched files are excluded from virus detection.
         self.list_type = list_type
 
     def validate(self):

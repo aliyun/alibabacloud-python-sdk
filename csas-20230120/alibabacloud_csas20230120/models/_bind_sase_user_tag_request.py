@@ -12,9 +12,9 @@ class BindSaseUserTagRequest(DaraModel):
         sase_user_ids: List[str] = None,
         tag_ids: List[str] = None,
     ):
-        # The collection of user IDs.
+        # The IDs of the users.
         self.sase_user_ids = sase_user_ids
-        # The collection of user label IDs.
+        # The IDs of the user tags.
         self.tag_ids = tag_ids
 
     def validate(self):

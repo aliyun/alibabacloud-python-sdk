@@ -19,6 +19,7 @@ class ListUserDevicesRequest(DaraModel):
         device_statuses: List[str] = None,
         device_tags: List[str] = None,
         device_types: List[str] = None,
+        disk_encrypt_statuses: List[str] = None,
         dlp_statuses: List[str] = None,
         hostname: str = None,
         ia_statuses: List[str] = None,
@@ -39,55 +40,57 @@ class ListUserDevicesRequest(DaraModel):
         self.app_statuses = app_statuses
         # The client versions.
         self.app_versions = app_versions
-        # The automatic logon statuses used to filter user endpoint devices.
+        # Filters the results by the automatic logon status of the user terminal devices.
         self.auto_login_statuses = auto_login_statuses
-        # The current page number for paging queries. Valid values: 1 to 10000.
+        # The page number of the current page for paging in a paged query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The department to which the user belongs. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+        # The department to which the user belongs. The value must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
         self.department = department
-        # The ownership of the endpoint device. Valid values:
+        # The ownership of the terminal device. Valid values:
         # - **Personal**: Personal device.
-        # - **Company**: Company device.
+        # - **Company**: Corporate device.
         self.device_belong = device_belong
-        # The ID of the device group.
+        # The device group ID.
         self.device_group_id = device_group_id
-        # The endpoint device statuses.
+        # The terminal device statuses.
         self.device_statuses = device_statuses
-        # The IDs of the endpoint devices.
+        # The terminal device IDs.
         self.device_tags = device_tags
-        # The operating system types of the endpoint devices.
+        # The terminal device operating system types.
         self.device_types = device_types
+        # Filters the results by the disk encryption status of the user terminal devices. You can select multiple statuses, which are evaluated with an OR logical operator. If you select Unencrypted, the result includes user terminal devices that have not reported their disk encryption status.
+        self.disk_encrypt_statuses = disk_encrypt_statuses
         # The office data protection statuses.
         self.dlp_statuses = dlp_statuses
-        # The name of the endpoint device. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system also queries all endpoint devices whose names contain 4-byte UTF-8 characters.
+        # The name of the terminal device. The value must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system also queries all terminal devices whose names contain 4-byte UTF-8 characters.
         self.hostname = hostname
         # The Internet access statuses.
         self.ia_statuses = ia_statuses
-        # The internal IP address of the endpoint device.
+        # The internal IP address of the terminal device.
         self.inner_ip = inner_ip
-        # The MAC address of the endpoint device.
+        # The MAC address of the terminal device.
         self.mac = mac
         # The network access control statuses.
         self.nac_statuses = nac_statuses
         # The internal network access statuses.
         self.pa_statuses = pa_statuses
-        # The number of entries per page for paging queries. Valid values: 1 to 500.
+        # The number of entries per page in a paged query. Valid values: 1 to 500.
         # 
         # This parameter is required.
         self.page_size = page_size
         # The user ID. You can obtain the value from the following operations:
-        # - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user endpoint device.
-        # - [ListUserDevices](~~ListUserDevices~~): Queries a list of user endpoint devices.
+        # - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user terminal device.
+        # - [ListUserDevices](~~ListUserDevices~~): Lists user terminal devices.
         self.sase_user_id = sase_user_id
         # Specifies whether sharing is enabled for the device. Valid values:
         # - **true**: Sharing is enabled.
         # - **false**: Sharing is disabled.
         self.sharing_status = sharing_status
-        # The BIOS system SN.
+        # The BIOS system serial number.
         self.sn_bios = sn_bios
-        # The system serial number (SN).
+        # The system serial number.
         self.sn_system = sn_system
         # The sorting parameter. Valid values:
         # - **Username**: Sorts by Username in ascending order.
@@ -95,7 +98,7 @@ class ListUserDevicesRequest(DaraModel):
         # - **UpdateTime**: Sorts by UpdateTime in descending order.
         # - **CreateTime**: Sorts by CreateTime in descending order.
         self.sort_by = sort_by
-        # The username. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
+        # The username. The value must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
         self.username = username
         # The name of the office area.
         self.workshop = workshop
@@ -137,6 +140,9 @@ class ListUserDevicesRequest(DaraModel):
 
         if self.device_types is not None:
             result['DeviceTypes'] = self.device_types
+
+        if self.disk_encrypt_statuses is not None:
+            result['DiskEncryptStatuses'] = self.disk_encrypt_statuses
 
         if self.dlp_statuses is not None:
             result['DlpStatuses'] = self.dlp_statuses
@@ -216,6 +222,9 @@ class ListUserDevicesRequest(DaraModel):
 
         if m.get('DeviceTypes') is not None:
             self.device_types = m.get('DeviceTypes')
+
+        if m.get('DiskEncryptStatuses') is not None:
+            self.disk_encrypt_statuses = m.get('DiskEncryptStatuses')
 
         if m.get('DlpStatuses') is not None:
             self.dlp_statuses = m.get('DlpStatuses')

@@ -9,7 +9,7 @@ class InvalidateApprovalRequest(DaraModel):
         self,
         approval_id: str = None,
     ):
-        # The ID of the approval instance to immediately invalidate. You can call ListApprovals to query approval instance IDs. Only one approval instance ID under the current Alibaba Cloud account can be specified per request.
+        # The ID of the approval instance to be immediately invalidated. You can obtain the ID by calling the ListApprovals operation. You can specify only one approval instance ID under the current Alibaba Cloud account at a time.
         # 
         # This parameter is required.
         self.approval_id = approval_id

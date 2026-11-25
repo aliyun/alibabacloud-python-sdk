@@ -29,9 +29,9 @@ class UpdatePrivateAccessApplicationShrinkRequest(DaraModel):
         tag_ids: List[str] = None,
         unauthorized_access_config_shrink: str = None,
     ):
-        # The application address groups. You can specify this parameter when ConfigMode is Precise. You cannot specify this parameter when ConfigMode is an empty string.
+        # The application address groups. You can specify this parameter when ConfigMode is set to Precise. You cannot specify this parameter when ConfigMode is an empty string.
         self.address_groups = address_groups
-        # The collection of private access application addresses. You can enter up to 1,000 private access application addresses.
+        # The addresses of the private access application. You can specify up to 1,000 addresses.
         self.addresses = addresses
         # The ID of the private access application. You can obtain the value from the following operations:
         # - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists private access applications.
@@ -40,16 +40,16 @@ class UpdatePrivateAccessApplicationShrinkRequest(DaraModel):
         # This parameter is required.
         self.application_id = application_id
         # The configuration mode. Valid values:
-        # * Empty string: the default mode.
-        # * Precise: the precise mode.
+        # * Empty string: Default mode.
+        # * Precise: Precise mode.
         self.config_mode = config_mode
         # The description of the private access application. The description must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
-        # The health check configuration. This parameter is valid only when HealthCheckMode is set to Continuous. You cannot specify this parameter when HealthCheckMode is set to OnAccess.
+        # The health check configuration. This parameter takes effect only when HealthCheckMode is set to Continuous. You cannot specify this parameter when HealthCheckMode is set to OnAccess.
         self.health_check_config_shrink = health_check_config_shrink
         # The health check mode. Valid values:
-        # * OnAccess: Checks upon access without active probing.
-        # * Continuous: Performs continuous checks and periodically probes based on the configurations in HealthCheckConfig.
+        # * OnAccess: Checks health upon access without active probing.
+        # * Continuous: Performs continuous health checks and periodically probes based on the configuration in HealthCheckConfig.
         # If this parameter is not specified, the default value is OnAccess. When the application addresses include wildcard domain names or CIDR blocks, or when the number of application addresses exceeds 10, only OnAccess is supported.
         self.health_check_mode = health_check_mode
         # The Layer 7 application configuration in browser access mode.
@@ -62,11 +62,11 @@ class UpdatePrivateAccessApplicationShrinkRequest(DaraModel):
         self.l_7proxy_domain_private = l_7proxy_domain_private
         # The modification type of the private access application. Valid values:
         # - **Cover** (default): Overwrites the original addresses, port ranges, and tag IDs with the values of the **Addresses**, **PortRanges**, and **TagIds** parameters.
-        # - **Append**: Appends the values specified in the **Addresses**, **PortRanges**, and **TagIds** parameters to the original addresses, port ranges, and tag IDs.
+        # - **Append**: Appends the values of the **Addresses**, **PortRanges**, and **TagIds** parameters to the original addresses, port ranges, and tag IDs.
         self.modify_type = modify_type
         # The name of the application.
         self.name = name
-        # The collection of port ranges for the private access application. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicate or overlap.
+        # The port ranges of the private access application. You can specify up to 65,535 port ranges. Multiple port ranges cannot be duplicate or overlap.
         self.port_ranges = port_ranges
         # The protocol of the private access application. Valid values:
         # - **All**: All protocols.
@@ -77,7 +77,7 @@ class UpdatePrivateAccessApplicationShrinkRequest(DaraModel):
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.status = status
-        # The collection of private access tag IDs. You can associate up to six custom private access tags with a single private access application.
+        # The IDs of the private access tags. You can associate up to six custom private access tags with a private access application.
         self.tag_ids = tag_ids
         # The configuration for unauthorized application access requests.
         self.unauthorized_access_config_shrink = unauthorized_access_config_shrink

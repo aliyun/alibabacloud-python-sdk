@@ -12,7 +12,7 @@ class CreateSaseUserTagResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The user tag ID.
+        # The ID of the user tag.
         self.tag_id = tag_id
 
     def validate(self):

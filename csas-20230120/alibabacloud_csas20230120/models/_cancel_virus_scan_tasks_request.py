@@ -11,7 +11,7 @@ class CancelVirusScanTasksRequest(DaraModel):
         self,
         task_ids: List[str] = None,
     ):
-        # The collection of virus scan task IDs to cancel. The collection must contain at least one ID, and duplicate IDs are not allowed.
+        # The IDs of the virus scan tasks to cancel. Specify at least one ID. Duplicate IDs are not allowed.
         # 
         # This parameter is required.
         self.task_ids = task_ids

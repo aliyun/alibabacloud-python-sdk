@@ -12,9 +12,9 @@ class AddVirusScanAdditionalListsResponseBody(DaraModel):
         list_ids: List[str] = None,
         request_id: str = None,
     ):
-        # The list of IDs for the newly added entries. The order is consistent with AdditionalLists in the request.
+        # The IDs of the added list entries. The order of the IDs is the same as the order of the entries in the AdditionalLists parameter of the request.
         self.list_ids = list_ids
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -29,7 +29,7 @@ class ListApprovalsRequest(DaraModel):
         schema_name: str = None,
         statuses: List[str] = None,
     ):
-        # The IDs of the approval instances.
+        # The instance IDs of the approval instances.
         self.approval_ids = approval_ids
         # The end time when the approval instance was created. The value is a UNIX timestamp in seconds.
         self.create_end_time = create_end_time
@@ -43,11 +43,11 @@ class ListApprovalsRequest(DaraModel):
         self.creator_user_id = creator_user_id
         # The username of the user who created the approval instance.
         self.creator_username = creator_username
-        # The page number of the current page for a paging query. Valid values: 1 to 10000.
+        # The page number of the current page for paging in a paged query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The list of effective statuses of reports. The list uses the flat serialization format and cannot contain duplicate values. Only records with the Approved approval status are matched. Valid values:
+        # The list of effect statuses for the report. The list uses the flat serialization format and cannot contain duplicate values. Only records with the Approved approval status are matched. Valid values:
         # * Enabled: Valid.
         # * Expired: Invalid or expired.
         self.effect_statuses = effect_statuses
@@ -55,7 +55,7 @@ class ListApprovalsRequest(DaraModel):
         self.operator_user_id = operator_user_id
         # The username of the user who operated the approval instance.
         self.operator_username = operator_username
-        # The number of entries per page for a paging query. Valid values: 1 to 500.
+        # The Settings for the number of entries to return on each page for paging in a paged query. Valid values: 1 to 500.
         # 
         # This parameter is required.
         self.page_size = page_size
@@ -80,7 +80,7 @@ class ListApprovalsRequest(DaraModel):
         self.schema_id = schema_id
         # The name of the associated approval template.
         self.schema_name = schema_name
-        # The statuses of the approval instances.
+        # The instance statuses of the approval instances.
         self.statuses = statuses
 
     def validate(self):

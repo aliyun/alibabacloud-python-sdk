@@ -55,20 +55,20 @@ class GetForwardStrategyResponseBodyForwardStrategy(DaraModel):
         priority: int = None,
         status: str = None,
     ):
-        # The policy description.
+        # The description of the policy.
         self.description = description
         # The target instance ID.
         self.destination_id = destination_id
         # The destination type. Valid values:
-        # - **Connector**: connector.
+        # - **Connector**: Connector.
         self.destination_type = destination_type
-        # The forwarding rule ID.
+        # The ID of the forwarding rule.
         self.forward_id = forward_id
         # The policy name.
         self.name = name
-        # The policy priority. The value 1 indicates the highest priority, and the value 100 indicates the lowest priority.
+        # The policy priority. A value of 1 indicates the highest priority, and a value of 100 indicates the lowest priority.
         self.priority = priority
-        # The policy status. Valid values:
+        # The status of the policy. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.status = status

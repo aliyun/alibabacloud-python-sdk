@@ -14,18 +14,17 @@ class CreateDeviceGroupRequest(DaraModel):
         group_type: str = None,
         name: str = None,
     ):
-        # The description of the device label. The description can contain letters, digits, Chinese characters, spaces, periods (.), underscores (_), and hyphens (-). This parameter can be left empty.
+        # The description of the device tag. The description can contain Chinese characters, uppercase and lowercase letters, digits, spaces, periods (.), underscores (_), and hyphens (-). This parameter can be left empty.
         self.description = description
-        # The operator of the dynamic device group rule.
+        # The operator for dynamic device group rules.
         self.dynamic_operator = dynamic_operator
-        # The matching rule of the dynamic device label.
+        # The matching rule for the dynamic device tag.
         self.dynamic_rule = dynamic_rule
-        # The type of the device label. Valid values:
-        # 
-        # - **static**: static device label. After creation, manually add terminal devices by calling [AddDeviceGroupMatchDevices](~~AddDeviceGroupMatchDevices~~).
-        # - **dynamic**: dynamic device label. Members are automatically matched by the DynamicRule matching rule.
+        # The type of the device tag. Valid values:
+        # - **static**: static device tag. After the tag is created, you can manually add terminal devices by calling the [AddDeviceGroupMatchDevices](~~AddDeviceGroupMatchDevices~~) operation.
+        # - **dynamic**: dynamic device tag. Members are automatically matched based on the DynamicRule matching rule.
         self.group_type = group_type
-        # The name of the device label. The name must be 1 to 128 characters in length and can contain letters, digits, Chinese characters, periods (.), underscores (_), and hyphens (-). Spaces are not supported.
+        # The name of the device tag. The name must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-). Spaces are not allowed.
         # 
         # This parameter is required.
         self.name = name

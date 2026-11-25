@@ -71,58 +71,58 @@ class GetPrivateAccessApplicationResponseBodyApplication(DaraModel):
         tag_ids: List[str] = None,
         unauthorized_access_config: main_models.PAApplicationUnauthorizedAccessConfig = None,
     ):
-        # The application address groups. Required when ConfigMode is set to Precise. Cannot be specified when ConfigMode is an empty string.
+        # The application address groups. This parameter is required when ConfigMode is set to Precise and cannot be specified when ConfigMode is an empty string.
         self.address_groups = address_groups
-        # The collection of addresses for the private access application.
+        # The addresses of the private access application.
         self.addresses = addresses
         # The ID of the private access application.
         self.application_id = application_id
-        # Specifies whether the application is created through automatic creation. Valid values:
+        # Specifies whether the application is automatically created. Valid values:
         # * 0: Manual creation.
         # * 1: Automatic creation.
         self.auto_generated = auto_generated
         # The browser access mode. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.browser_access_status = browser_access_status
         # The configuration mode. Valid values:
-        # * Empty string: default mode.
-        # * Precise: precise mode.
+        # * Empty string: Default mode.
+        # * Precise: Precise mode.
         self.config_mode = config_mode
-        # The collection of connector IDs.
+        # The IDs of the connectors.
         self.connector_ids = connector_ids
         # The time when the private access application was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The description of the private access application.
         self.description = description
-        # The health check configuration. This parameter contains valid configurations only when the health check mode is set to Continuous.
+        # The health check configuration. This parameter contains a valid configuration only when the health check mode is set to Continuous.
         self.health_check_config = health_check_config
         # The health check mode. Valid values:
-        # * OnAccess: on-access check.
-        # * Continuous: continuous check.
+        # * OnAccess: On-access check.
+        # * Continuous: Continuous check.
         self.health_check_mode = health_check_mode
-        # The browser access mode parameter: application configuration.
+        # The application configuration for the browser access mode.
         self.l_7config = l_7config
-        # The browser access mode parameter: mapped proxy domain name.
+        # The mapped proxy domain name for the browser access mode.
         self.l_7proxy_domain_automatic = l_7proxy_domain_automatic
-        # The browser access mode parameter: custom proxy domain name.
+        # The custom proxy domain name for the browser access mode.
         self.l_7proxy_domain_custom = l_7proxy_domain_custom
         # The name of the private access application.
         self.name = name
-        # The collection of private access policy IDs.
+        # The IDs of the private access policies.
         self.policy_ids = policy_ids
-        # The collection of port ranges for the private access application. Multiple port ranges cannot be duplicated or overlap.
+        # The port ranges of the private access application. Multiple port ranges cannot be duplicate or overlap.
         self.port_ranges = port_ranges
         # The protocol of the private access application. Valid values:
-        # - **All**: all protocols.
+        # - **All**: All protocols.
         # - **TCP**.
         # - **UDP**.
         self.protocol = protocol
         # The status of the private access application. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.status = status
-        # The collection of private access tag IDs.
+        # The IDs of the private access tags.
         self.tag_ids = tag_ids
         # The configuration for unauthorized application access requests.
         self.unauthorized_access_config = unauthorized_access_config

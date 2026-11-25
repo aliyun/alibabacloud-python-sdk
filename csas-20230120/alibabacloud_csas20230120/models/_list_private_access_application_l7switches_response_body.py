@@ -15,7 +15,7 @@ class ListPrivateAccessApplicationL7SwitchesResponseBody(DaraModel):
     ):
         # The Layer 7 application configurations.
         self.l_7switches = l_7switches
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,22 +62,23 @@ class ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches(DaraModel):
         src_ip_mark_status: str = None,
         status: str = None,
         timeout_sec: int = None,
+        url_access_paths: List[main_models.ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths] = None,
         user_mark_status: str = None,
         zero_trust_status: str = None,
     ):
         # The ID of the internal-facing application.
         self.application_id = application_id
-        # The device tag mark switch. Valid values:
+        # The device tag marking switch. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.dev_tag_mark_status = dev_tag_mark_status
-        # The download audit switch for sensitive applications. Valid values:
+        # The sensitive application download audit switch. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.download_audit_status = download_audit_status
-        # The port ranges.
+        # The end port.
         self.port_ranges = port_ranges
-        # The source IP mark switch. Valid values:
+        # The source IP marking switch. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.src_ip_mark_status = src_ip_mark_status
@@ -87,7 +88,8 @@ class ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches(DaraModel):
         self.status = status
         # The request timeout period.
         self.timeout_sec = timeout_sec
-        # The user mark switch. Valid values:
+        self.url_access_paths = url_access_paths
+        # The user marking switch. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.user_mark_status = user_mark_status
@@ -99,6 +101,10 @@ class ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches(DaraModel):
     def validate(self):
         if self.port_ranges:
             for v1 in self.port_ranges:
+                 if v1:
+                    v1.validate()
+        if self.url_access_paths:
+            for v1 in self.url_access_paths:
                  if v1:
                     v1.validate()
 
@@ -129,6 +135,11 @@ class ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches(DaraModel):
 
         if self.timeout_sec is not None:
             result['TimeoutSec'] = self.timeout_sec
+
+        result['UrlAccessPaths'] = []
+        if self.url_access_paths is not None:
+            for k1 in self.url_access_paths:
+                result['UrlAccessPaths'].append(k1.to_map() if k1 else None)
 
         if self.user_mark_status is not None:
             result['UserMarkStatus'] = self.user_mark_status
@@ -164,11 +175,52 @@ class ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches(DaraModel):
         if m.get('TimeoutSec') is not None:
             self.timeout_sec = m.get('TimeoutSec')
 
+        self.url_access_paths = []
+        if m.get('UrlAccessPaths') is not None:
+            for k1 in m.get('UrlAccessPaths'):
+                temp_model = main_models.ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths()
+                self.url_access_paths.append(temp_model.from_map(k1))
+
         if m.get('UserMarkStatus') is not None:
             self.user_mark_status = m.get('UserMarkStatus')
 
         if m.get('ZeroTrustStatus') is not None:
             self.zero_trust_status = m.get('ZeroTrustStatus')
+
+        return self
+
+class ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths(DaraModel):
+    def __init__(
+        self,
+        allow_methods: List[str] = None,
+        urls: List[str] = None,
+    ):
+        self.allow_methods = allow_methods
+        self.urls = urls
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.allow_methods is not None:
+            result['AllowMethods'] = self.allow_methods
+
+        if self.urls is not None:
+            result['Urls'] = self.urls
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowMethods') is not None:
+            self.allow_methods = m.get('AllowMethods')
+
+        if m.get('Urls') is not None:
+            self.urls = m.get('Urls')
 
         return self
 

@@ -9,7 +9,7 @@ class GetForwardStrategyRequest(DaraModel):
         self,
         forward_id: str = None,
     ):
-        # The forwarding rule ID.
+        # The ID of the forwarding rule.
         # 
         # This parameter is required.
         self.forward_id = forward_id

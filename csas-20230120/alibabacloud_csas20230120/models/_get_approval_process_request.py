@@ -9,8 +9,8 @@ class GetApprovalProcessRequest(DaraModel):
         self,
         process_id: str = None,
     ):
-        # The ID of the approval process. You can obtain the value by calling the following operation:
-        # - [ListApprovalProcesses](~~ListApprovalProcesses~~): Queries a list of approval processes.
+        # The ID of the approval process. You can call the following operation to obtain the value:
+        # - [ListApprovalProcesses](~~ListApprovalProcesses~~): Queries a list of approval processes in batches.
         # 
         # This parameter is required.
         self.process_id = process_id

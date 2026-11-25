@@ -9,7 +9,7 @@ class GetProhibitedSoftwareShrinkRequest(DaraModel):
         self,
         software_id_shrink: str = None,
     ):
-        # The prohibited software ID.
+        # The ID of the prohibited software.
         self.software_id_shrink = software_id_shrink
 
     def validate(self):

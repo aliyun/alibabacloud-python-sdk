@@ -17,17 +17,17 @@ class CreateProhibitedSoftwareRequest(DaraModel):
         tag_ids: List[str] = None,
         windows_processes: List[main_models.CreateProhibitedSoftwareRequestWindowsProcesses] = None,
     ):
-        # The description of the disabled software.
+        # The description of the blocked software.
         self.description = description
         # The list of process configurations for the Linux operating system.
         self.linux_processes = linux_processes
         # The list of process configurations for the macOS operating system.
         self.mac_osprocesses = mac_osprocesses
-        # The name of the disabled software.
+        # The name of the blocked software.
         # 
         # This parameter is required.
         self.name = name
-        # The IDs of custom disabled software tags to associate. Duplicate values are not allowed.
+        # The IDs of the custom blocked software tags to associate. Duplicate IDs are not allowed.
         self.tag_ids = tag_ids
         # The list of process configurations for the Windows operating system.
         self.windows_processes = windows_processes
@@ -116,13 +116,13 @@ class CreateProhibitedSoftwareRequestWindowsProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The bundle ID of the application. This parameter is required only for macOS processes. You must specify at least one of BundleId and Process. Maximum length: 1024 characters.
+        # The bundle ID. This parameter is required only for macOS processes. You must specify at least one of the BundleId and Process parameters. The value can be up to 1,024 characters in length.
         self.bundle_id = bundle_id
-        # The command line parameters for starting the process. If specified, only processes whose command line contains this content are matched. If left empty, the command line is not checked. Maximum length: 1024 characters.
+        # The command-line arguments used to start the process. If you specify this parameter, only processes whose command lines contain the specified content are matched. If you leave this parameter empty, the command line is not verified. The value can be up to 1,024 characters in length.
         self.cmdline = cmdline
-        # The directory where the process is located. If specified, only processes with the same name in this directory are matched. If left empty, processes in any directory are matched. Maximum length: 1024 characters.
+        # The directory where the process is located. If you specify this parameter, only processes with the same name in this directory are matched. If you leave this parameter empty, processes in any directory are matched. The value can be up to 1,024 characters in length.
         self.directory = directory
-        # The process name. Maximum length: 1024 characters.
+        # The process name. The value can be up to 1,024 characters in length.
         self.process = process
 
     def validate(self):
@@ -171,13 +171,13 @@ class CreateProhibitedSoftwareRequestMacOSProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The bundle ID of the application. This parameter is required only for macOS processes. You must specify at least one of BundleId and Process. Maximum length: 1024 characters.
+        # The bundle ID. This parameter is required only for macOS processes. You must specify at least one of the BundleId and Process parameters. The value can be up to 1,024 characters in length.
         self.bundle_id = bundle_id
-        # The command line parameters for starting the process. If specified, only processes whose command line contains this content are matched. If left empty, the command line is not checked. Maximum length: 1024 characters.
+        # The command-line arguments used to start the process. If you specify this parameter, only processes whose command lines contain the specified content are matched. If you leave this parameter empty, the command line is not verified. The value can be up to 1,024 characters in length.
         self.cmdline = cmdline
-        # The directory where the process is located. If specified, only processes with the same name in this directory are matched. If left empty, processes in any directory are matched. Maximum length: 1024 characters.
+        # The directory where the process is located. If you specify this parameter, only processes with the same name in this directory are matched. If you leave this parameter empty, processes in any directory are matched. The value can be up to 1,024 characters in length.
         self.directory = directory
-        # The process name. Maximum length: 1024 characters.
+        # The process name. The value can be up to 1,024 characters in length.
         self.process = process
 
     def validate(self):
@@ -226,13 +226,13 @@ class CreateProhibitedSoftwareRequestLinuxProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The bundle ID of the application. This parameter is required only for macOS processes. You must specify at least one of BundleId and Process. Maximum length: 1024 characters.
+        # The bundle ID. This parameter is required only for macOS processes. You must specify at least one of the BundleId and Process parameters. The value can be up to 1,024 characters in length.
         self.bundle_id = bundle_id
-        # The command line parameters for starting the process. If specified, only processes whose command line contains this content are matched. If left empty, the command line is not checked. Maximum length: 1024 characters.
+        # The command-line arguments used to start the process. If you specify this parameter, only processes whose command lines contain the specified content are matched. If you leave this parameter empty, the command line is not verified. The value can be up to 1,024 characters in length.
         self.cmdline = cmdline
-        # The directory where the process is located. If specified, only processes with the same name in this directory are matched. If left empty, processes in any directory are matched. Maximum length: 1024 characters.
+        # The directory where the process is located. If you specify this parameter, only processes with the same name in this directory are matched. If you leave this parameter empty, processes in any directory are matched. The value can be up to 1,024 characters in length.
         self.directory = directory
-        # The process name. Maximum length: 1024 characters.
+        # The process name. The value can be up to 1,024 characters in length.
         self.process = process
 
     def validate(self):

@@ -11,7 +11,7 @@ class BatchDeletePrivateAccessPolicyRequest(DaraModel):
         self,
         policy_ids: List[str] = None,
     ):
-        # The IDs of internal network access policies. You can specify up to 100 internal network access policy IDs.
+        # The IDs of the internal network access policies. You can specify up to 100 internal network access policy IDs.
         self.policy_ids = policy_ids
 
     def validate(self):

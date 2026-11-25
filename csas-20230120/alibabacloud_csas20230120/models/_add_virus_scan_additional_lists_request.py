@@ -13,9 +13,9 @@ class AddVirusScanAdditionalListsRequest(DaraModel):
         additional_lists: List[main_models.AddVirusScanAdditionalListsRequestAdditionalLists] = None,
         dev_type: str = None,
     ):
-        # The list of entries to append. At least one entry is required.
+        # The list of entries to add. The list must contain at least one entry.
         self.additional_lists = additional_lists
-        # The operating system type for which the list takes effect. Valid values:
+        # The operating system type to which the list applies. Valid values:
         # - **windows**: Windows.
         # - **macOS**: macOS.
         # 
@@ -64,17 +64,17 @@ class AddVirusScanAdditionalListsRequestAdditionalLists(DaraModel):
         list_type: str = None,
     ):
         # The matching dimension of the list entry. Valid values:
-        # - **FileSuffix**: matches by file name extension.
-        # - **FileName**: matches by file name.
-        # - **FolderName**: matches by folder name.
-        # - **FilePath**: matches by file path.
-        # - **FileMd5**: matches by file MD5 value.
+        # - **FileSuffix**: Matches by file name extension.
+        # - **FileName**: Matches by file name.
+        # - **FolderName**: Matches by folder name.
+        # - **FilePath**: Matches by file path.
+        # - **FileMd5**: Matches by file MD5 hash.
         self.additional_type = additional_type
-        # The content of the list entry. The value cannot exceed 255 characters. The meaning is determined by AdditionalType: when AdditionalType is set to FileSuffix, specify a file name extension. When set to FileName, specify a file name. When set to FolderName, specify a folder name. When set to FilePath, specify a file path. When set to FileMd5, specify the MD5 value of a file.
+        # The content of the list entry. The value can be up to 255 characters in length. The meaning of this parameter is determined by the AdditionalType parameter. If AdditionalType is set to FileSuffix, specify the file name extension. If AdditionalType is set to FileName, specify the file name. If AdditionalType is set to FolderName, specify the folder name. If AdditionalType is set to FilePath, specify the file path. If AdditionalType is set to FileMd5, specify the MD5 hash of the file.
         self.detail = detail
         # The list type. Valid values:
-        # - **Blacklist**: blacklist. Files that match are directly identified as virus files.
-        # - **Whitelist**: whitelist. Files that match are excluded from virus detection.
+        # - **Blacklist**: Blacklist. Matched files are directly identified as virus files.
+        # - **Whitelist**: Whitelist. Matched files are excluded from virus detection.
         self.list_type = list_type
 
     def validate(self):

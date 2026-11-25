@@ -19,14 +19,23 @@ class UserCertificate(DaraModel):
         name: str = None,
         private_key: str = None,
     ):
+        # The certificate ID.
         self.cert_id = cert_id
+        # The certificate content in PEM format.
         self.certificate = certificate
+        # The certificate description.
         self.description = description
+        # The domain names for which the certificate is valid.
         self.dns_names = dns_names
+        # The expiration time.
         self.exp_time_unix = exp_time_unix
+        # The creation timestamp.
         self.gmt_create_unix = gmt_create_unix
+        # The update timestamp.
         self.gmt_modified_unix = gmt_modified_unix
+        # The certificate name.
         self.name = name
+        # The PEM private key.
         self.private_key = private_key
 
     def validate(self):

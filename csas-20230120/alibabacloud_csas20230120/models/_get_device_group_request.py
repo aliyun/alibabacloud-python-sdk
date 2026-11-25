@@ -9,9 +9,9 @@ class GetDeviceGroupRequest(DaraModel):
         self,
         device_group_id: str = None,
     ):
-        # The device label ID. You can obtain this value from:
-        # - [ListDeviceGroups](~~ListDeviceGroups~~): Lists device labels.
-        # - [CreateDeviceGroup](~~CreateDeviceGroup~~): Creates a device label.
+        # The device group ID. You can obtain the value from the following operations:
+        # - [ListDeviceGroups](~~ListDeviceGroups~~): Lists device groups.
+        # - [CreateDeviceGroup](~~CreateDeviceGroup~~): Creates a device group.
         # 
         # This parameter is required.
         self.device_group_id = device_group_id

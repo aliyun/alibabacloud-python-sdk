@@ -68,31 +68,35 @@ class GetApprovalProcessResponseBodyProcess(DaraModel):
         software_block_policies: main_models.GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies = None,
         software_hardening_policies: main_models.GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies = None,
     ):
-        # The list of policies associated with endpoint uninstallation.
+        # The list of associated endpoint uninstall policies.
         self.app_uninstall_policies = app_uninstall_policies
-        # The approval type.
+        # The approval type. Valid values:
+        # - 0: Built-in approval.
+        # - 1: DingTalk approval.
+        # - 2: WeCom approval.
+        # - 3: Lark approval.
         self.approval_type = approval_type
-        # The creation time of the approval process. The time is in the YYYY-MM-DD HH:mm:ss format.
+        # The time when the approval process was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The description of the approval process.
         self.description = description
         # The list of policies associated with device registration.
         self.device_registration_policies = device_registration_policies
-        # The list of associated outbound file policies.
+        # The list of associated outbound file transfer policies.
         self.dlp_send_policies = dlp_send_policies
         # The list of policies associated with the domain name blacklist.
         self.domain_blacklist_policies = domain_blacklist_policies
         # The list of policies associated with the domain name whitelist.
         self.domain_whitelist_policies = domain_whitelist_policies
-        # The endpoint hardening policies.
+        # The list of associated endpoint hardening policies.
         self.endpoint_hardening_policies = endpoint_hardening_policies
-        # The label.
+        # The event callback URL. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter returns the complete event callback URL of the external platform. For other approval types, this parameter is empty.
         self.event_label = event_label
-        # The external configuration.
+        # The external approval configuration. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter includes the integration configuration for the external approval platform, including appKey, appSecret, eventVerifyToken, and eventAesKey. For other approval types, this parameter is empty.
         self.external_config = external_config
         # The list of associated peripheral control policies.
         self.peripheral_block_policies = peripheral_block_policies
-        # The software hardening policy.
+        # The list of policies associated with internal network access control.
         self.private_access_block_policies = private_access_block_policies
         # The ID of the approval process.
         self.process_id = process_id
@@ -102,7 +106,7 @@ class GetApprovalProcessResponseBodyProcess(DaraModel):
         self.process_nodes = process_nodes
         # The list of policies associated with software blocking.
         self.software_block_policies = software_block_policies
-        # The software hardening policy.
+        # The list of associated software hardening policies.
         self.software_hardening_policies = software_hardening_policies
 
     def validate(self):
@@ -280,13 +284,13 @@ class GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The ID of the external process.
+        # The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The list of mappings between system fields and external approval form controls.
         self.field_map = field_map
-        # The policy ID.
+        # The list of software hardening policy IDs.
         self.policy_ids = policy_ids
-        # The template ID.
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -342,10 +346,11 @@ class GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap(Dar
         display_field_value: str = None,
         system_field: str = None,
     ):
-        # The display field.
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
         self.display_field_value = display_field_value
-        # The system field.
+        # The system field identifier, such as processName.
         self.system_field = system_field
 
     def validate(self):
@@ -388,9 +393,9 @@ class GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The ID of the external process.
+        # The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The list of mappings between system fields and external approval form controls.
         self.field_map = field_map
         # The list of software blocking policy IDs.
         self.policy_ids = policy_ids
@@ -450,10 +455,11 @@ class GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap(DaraMod
         display_field_value: str = None,
         system_field: str = None,
     ):
-        # The display field.
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
         self.display_field_value = display_field_value
-        # The system field.
+        # The identifier of the system field, such as softwareName.
         self.system_field = system_field
 
     def validate(self):
@@ -494,9 +500,9 @@ class GetApprovalProcessResponseBodyProcessProcessNodes(DaraModel):
         sase_user_id: str = None,
         username: str = None,
     ):
-        # The approver ID.
+        # The ID of the approver.
         self.sase_user_id = sase_user_id
-        # The approver username.
+        # The username of the approver.
         self.username = username
 
     def validate(self):
@@ -533,13 +539,13 @@ class GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies(DaraModel)
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The ID of the external process.
+        # The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The list of mappings between system fields and external approval form controls.
         self.field_map = field_map
-        # The policy ID.
+        # The list of internal network access control policy IDs.
         self.policy_ids = policy_ids
-        # The template ID.
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -595,10 +601,11 @@ class GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap(Da
         display_field_value: str = None,
         system_field: str = None,
     ):
-        # The display field.
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
         self.display_field_value = display_field_value
-        # The system field.
+        # The system field identifier, such as applicationId.
         self.system_field = system_field
 
     def validate(self):
@@ -641,9 +648,9 @@ class GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The ID of the external process.
+        # The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The list of mappings between system fields and external approval form controls.
         self.field_map = field_map
         # The list of peripheral control policy IDs.
         self.policy_ids = policy_ids
@@ -703,10 +710,11 @@ class GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap(DaraM
         display_field_value: str = None,
         system_field: str = None,
     ):
-        # The display field.
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
         self.display_field_value = display_field_value
-        # The system field.
+        # The system field identifier, such as devType.
         self.system_field = system_field
 
     def validate(self):
@@ -749,13 +757,13 @@ class GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The ID of the external process.
+        # The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The list of mappings between system fields and external approval form controls.
         self.field_map = field_map
-        # The policy ID.
+        # The list of endpoint hardening policy IDs.
         self.policy_ids = policy_ids
-        # The template ID.
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -811,10 +819,11 @@ class GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap(Dar
         display_field_value: str = None,
         system_field: str = None,
     ):
-        # The display field.
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
         self.display_field_value = display_field_value
-        # The system field.
+        # The system field identifier, such as processName.
         self.system_field = system_field
 
     def validate(self):
@@ -857,9 +866,9 @@ class GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The ID of the external process.
+        # The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
         self.external_process_id = external_process_id
-        # The field mapping table.
+        # The list of mappings between system fields and external approval form controls.
         self.field_map = field_map
         # The list of domain name whitelist policy IDs.
         self.policy_ids = policy_ids
@@ -919,10 +928,11 @@ class GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap(DaraM
         display_field_value: str = None,
         system_field: str = None,
     ):
-        # The display field.
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
         self.display_field_value = display_field_value
-        # The system field.
+        # The identifier of the system field, such as reportDomain.
         self.system_field = system_field
 
     def validate(self):
@@ -965,9 +975,9 @@ class GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The ID of the external process.
+        # The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The list of mappings between system fields and external approval form controls.
         self.field_map = field_map
         # The list of domain name blacklist policy IDs.
         self.policy_ids = policy_ids
@@ -1027,10 +1037,11 @@ class GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap(DaraM
         display_field_value: str = None,
         system_field: str = None,
     ):
-        # The display field.
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
         self.display_field_value = display_field_value
-        # The system field.
+        # The identifier of the system field, such as reportDomain.
         self.system_field = system_field
 
     def validate(self):
@@ -1073,11 +1084,11 @@ class GetApprovalProcessResponseBodyProcessDlpSendPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The ID of the external process.
+        # The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The list of mappings between system fields and external approval form controls.
         self.field_map = field_map
-        # The list of outbound file policy IDs.
+        # The list of outbound file transfer policy IDs.
         self.policy_ids = policy_ids
         # The ID of the approval template.
         self.schema_id = schema_id
@@ -1135,10 +1146,11 @@ class GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap(DaraModel):
         display_field_value: str = None,
         system_field: str = None,
     ):
-        # The display field.
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
         self.display_field_value = display_field_value
-        # The system field.
+        # The system field identifier, such as fileName.
         self.system_field = system_field
 
     def validate(self):
@@ -1181,9 +1193,9 @@ class GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies(DaraModel)
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The ID of the external process.
+        # The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The list of mappings between system fields and external approval form controls.
         self.field_map = field_map
         # The list of device registration policy IDs.
         self.policy_ids = policy_ids
@@ -1243,10 +1255,11 @@ class GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap(Da
         display_field_value: str = None,
         system_field: str = None,
     ):
-        # The display field.
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
         self.display_field_value = display_field_value
-        # The system field.
+        # The identifier of the system field, such as report_domain.
         self.system_field = system_field
 
     def validate(self):
@@ -1289,11 +1302,11 @@ class GetApprovalProcessResponseBodyProcessAppUninstallPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The ID of the external process.
+        # The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
         self.external_process_id = external_process_id
-        # The field mapping.
+        # The list of mappings between system fields and external approval form controls.
         self.field_map = field_map
-        # The list of endpoint uninstallation policy IDs.
+        # The list of endpoint uninstall policy IDs.
         self.policy_ids = policy_ids
         # The ID of the approval template.
         self.schema_id = schema_id
@@ -1351,10 +1364,11 @@ class GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap(DaraMode
         display_field_value: str = None,
         system_field: str = None,
     ):
-        # The display field.
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
         self.display_field_value = display_field_value
-        # The system field.
+        # The system field identifier, such as approvalReason.
         self.system_field = system_field
 
     def validate(self):

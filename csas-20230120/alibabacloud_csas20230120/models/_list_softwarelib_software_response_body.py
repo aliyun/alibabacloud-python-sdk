@@ -16,13 +16,13 @@ class ListSoftwarelibSoftwareResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The software list.
+        # The list of software packages.
         self.data_list = data_list
-        # The maximum number of entries per page. This parameter is not returned by the current operation.
+        # The maximum number of entries returned on each page. This parameter is not returned by the current API operation.
         self.max_results = max_results
-        # The query token. This parameter is not returned by the current operation.
+        # The query token. This parameter is not returned by the current API operation.
         self.next_token = next_token
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
         # The total number of software packages that meet the query conditions.
         self.total_count = total_count
@@ -112,13 +112,13 @@ class ListSoftwarelibSoftwareResponseBodyDataList(DaraModel):
         self.check_bundle_id = check_bundle_id
         # The software name used for verification.
         self.check_software_name = check_software_name
-        # The software category ID.
+        # The ID of the software category.
         self.classify_id = classify_id
         # The time when the software was created. The value is a UNIX timestamp accurate to seconds.
         self.create_time = create_time
-        # The software description.
+        # The description of the software.
         self.description = description
-        # The list of associated endpoint device IDs.
+        # The list of associated terminal device IDs.
         self.dev_tags = dev_tags
         # The list of associated device group IDs.
         self.device_group_ids = device_group_ids
@@ -130,33 +130,33 @@ class ListSoftwarelibSoftwareResponseBodyDataList(DaraModel):
         self.logo_url = logo_url
         # The maximum software version number for macOS with Apple silicon.
         self.mac_apple_version = mac_apple_version
-        # The maximum software version number for macOS with Intel chips.
+        # The maximum software version number for macOS with Intel processors.
         self.mac_intel_version = mac_intel_version
-        # The policy match target type. Valid values:
-        # - **UserGroupAll**: all users.
-        # - **UserGroupNormal**: specified user groups.
-        # - **DevTagNormal**: specified devices.
-        # - **DeviceGroupNormal**: specified device groups.
-        # - **DevTagAll**: all devices.
-        # - **None**: not configured.
+        # The target type for policy matching. Valid values:
+        # - **UserGroupAll**: All users.
+        # - **UserGroupNormal**: Specified user groups.
+        # - **DevTagNormal**: Specified devices.
+        # - **DeviceGroupNormal**: Specified device groups.
+        # - **DevTagAll**: All devices.
+        # - **None**: Not configured.
         self.match_mode = match_mode
         # The official download URL of the software.
         self.official_download_url = official_download_url
         # The execution account. Only Windows is supported.
         self.run_as_account = run_as_account
-        # The software ID.
+        # The ID of the software.
         self.software_id = software_id
-        # The software name.
+        # The name of the software.
         self.software_name = software_name
-        # Indicates whether the built-in library source is deleted.
+        # Indicates whether the source in the built-in library is deleted.
         self.source_removed = source_removed
-        # The software source. Valid values:
-        # - **custom**: custom software.
-        # - **builtin**: built-in software library.
+        # The source of the software. Valid values:
+        # - **custom**: Custom software.
+        # - **builtin**: Built-in software library.
         self.source_type = source_type
         # The list of associated user group IDs.
         self.user_group_ids = user_group_ids
-        # The software version list. This field is not returned by the current operation. Call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~) to query software versions.
+        # The list of software versions. This field is not returned by the current API operation. For more information about how to view and manage software versions, see [Software management](https://www.alibabacloud.com/help/en/sase/user-guide/software-management).
         self.versions = versions
         # The maximum software version number for Windows.
         self.windows_version = windows_version
@@ -349,11 +349,11 @@ class ListSoftwarelibSoftwareResponseBodyDataListVersions(DaraModel):
         # The operating system applicable to the software package. Valid values:
         # - **Windows**: Windows.
         # - **Mac(Apple)**: macOS with Apple silicon.
-        # - **Mac(Intel)**: macOS with Intel chips.
+        # - **Mac(Intel)**: macOS with Intel processors.
         self.os = os
-        # The software publisher type. Valid values:
-        # - **local**: local upload.
-        # - **thirdparty**: third-party link.
+        # The type of the software publisher. Valid values:
+        # - **local**: Local upload.
+        # - **thirdparty**: Third-party link.
         self.publisher_type = publisher_type
         # The ID of the software to which the version belongs.
         self.software_id = software_id
@@ -364,12 +364,12 @@ class ListSoftwarelibSoftwareResponseBodyDataListVersions(DaraModel):
         # The download URL of the software package.
         self.software_url = software_url
         # The release status of the version. Valid values:
-        # - **published**: published.
-        # - **unpublished**: unpublished.
+        # - **published**: Published.
+        # - **unpublished**: Unpublished.
         self.status = status
         # The software version number.
         self.version = version
-        # The software version ID.
+        # The ID of the software version.
         self.version_id = version_id
 
     def validate(self):

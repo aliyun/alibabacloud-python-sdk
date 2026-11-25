@@ -18,19 +18,19 @@ class CreateBackendReportResponseBody(DaraModel):
         target_count: int = None,
         total_count: int = None,
     ):
-        # The number of user-object combinations that failed to be created.
+        # The number of failed combinations.
         self.failed_count = failed_count
-        # The processing results for each user-object combination. If some combinations fail, the operation still returns results for all combinations.
+        # The processing results of each combination of user and report object. If some combinations fail, the operation still returns the results of all combinations.
         self.items = items
-        # The number of deduplicated filing objects.
+        # The number of deduplicated report objects.
         self.object_count = object_count
         # Id of the request
         self.request_id = request_id
-        # The number of user-object combinations that are created.
+        # The number of successfully created combinations.
         self.success_count = success_count
-        # The number of deduplicated filing users.
+        # The number of deduplicated target users.
         self.target_count = target_count
-        # The total number of expanded user-object combinations.
+        # The total number of combinations of users and report objects after expansion.
         self.total_count = total_count
 
     def validate(self):
@@ -110,23 +110,23 @@ class CreateBackendReportResponseBodyItems(DaraModel):
         success: bool = None,
         target: main_models.CreateBackendReportResponseBodyItemsTarget = None,
     ):
-        # The approval instance ID generated after a successful creation. This parameter is not returned if the creation fails.
+        # The ID of the approval instance generated after the combination is successfully created. This parameter is not returned if the creation fails.
         self.approval_id = approval_id
-        # The error code returned when the current combination fails to be created. This parameter is not returned if the creation succeeds.
+        # The error code returned when the current combination fails to be created. This parameter is not returned if the creation is successful.
         self.code = code
-        # The filing effective status. Enabled is returned when the creation succeeds, which indicates that the filing is valid.
+        # The effective status of the report. If the creation is successful, Enabled is returned, which indicates that the report is valid.
         self.effect_status = effect_status
-        # The error message returned when the current combination fails to be created. This parameter is not returned if the creation succeeds.
+        # The error message returned when the current combination fails to be created. This parameter is not returned if the creation is successful.
         self.message = message
-        # The filing object corresponding to the current combination. The fields vary based on the PolicyType value.
+        # The report object corresponding to the current combination. The fields vary based on the policy type.
         self.report_object = report_object
-        # The filing type. BackendReport is always returned when the creation succeeds, which indicates a backend filing.
+        # The report type. If the creation is successful, BackendReport is returned, which indicates a backend report.
         self.report_type = report_type
-        # The approval status. Approved is returned when the creation succeeds, which indicates that the filing is approved.
+        # The approval status. If the creation is successful, Approved is returned, which indicates that the request is approved.
         self.status = status
-        # Indicates whether the current combination is created.
+        # Indicates whether the current combination is successfully created.
         self.success = success
-        # The filing user corresponding to the current combination.
+        # The target user corresponding to the current combination.
         self.target = target
 
     def validate(self):

@@ -16,18 +16,18 @@ class ListForwardStrategiesRequest(DaraModel):
         name: str = None,
         page_size: str = None,
     ):
-        # The page number of the current page in paging query. Valid values: 1 to 10000.
+        # The page number of the current page in a paged query. Valid values: 1 to 10000.
         self.current_page = current_page
-        # The list of access destination instance IDs.
+        # The IDs of the access destination instances.
         self.destination_ids = destination_ids
-        # The type of the access destination. Valid values:
-        # - **Connector**: connector.
+        # The destination type. Valid values:
+        # - **Connector**: Connector.
         self.destination_type = destination_type
-        # The list of forwarding rule IDs.
+        # The IDs of the forwarding rules.
         self.forward_ids = forward_ids
         # The name of the forwarding rule.
         self.name = name
-        # The number of entries per page in paging query. Valid values: 1 to 1000.
+        # The number of entries per page in a paged query. Valid values: 1 to 1000.
         self.page_size = page_size
 
     def validate(self):

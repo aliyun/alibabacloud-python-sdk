@@ -15,7 +15,7 @@ class CreateProhibitedSoftwareResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The details of the disabled software.
+        # The details of the blocked software.
         self.software = software
 
     def validate(self):
@@ -58,19 +58,19 @@ class CreateProhibitedSoftwareResponseBodySoftware(DaraModel):
         tag_ids: List[str] = None,
         windows_processes: List[main_models.CreateProhibitedSoftwareResponseBodySoftwareWindowsProcesses] = None,
     ):
-        # The creation time of the disabled software, in the yyyy-MM-dd HH:mm:ss format. The time is in the UTC+8 time zone.
+        # The time when the blocked software was created. The time is displayed in the yyyy-MM-dd HH:mm:ss format and uses the UTC+8 time zone.
         self.create_time = create_time
-        # The description of the disabled software.
+        # The description of the blocked software.
         self.description = description
         # The list of process configurations for the Linux operating system.
         self.linux_processes = linux_processes
         # The list of process configurations for the macOS operating system.
         self.mac_osprocesses = mac_osprocesses
-        # The software name.
+        # The name of the software.
         self.name = name
-        # The ID of the disabled software.
+        # The ID of the blocked software.
         self.software_id = software_id
-        # The IDs of disabled software tags associated with this disabled software.
+        # The IDs of the blocked software tags associated with the blocked software.
         self.tag_ids = tag_ids
         # The list of process configurations for the Windows operating system.
         self.windows_processes = windows_processes
@@ -171,9 +171,9 @@ class CreateProhibitedSoftwareResponseBodySoftwareWindowsProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The bundle ID of the application. This parameter is required only for macOS processes.
+        # The bundle ID. This field is applicable only to macOS processes.
         self.bundle_id = bundle_id
-        # The command line parameters for starting the process.
+        # The command-line arguments used to start the process.
         self.cmdline = cmdline
         # The directory where the process is located.
         self.directory = directory
@@ -226,9 +226,9 @@ class CreateProhibitedSoftwareResponseBodySoftwareMacOSProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The bundle ID of the application. This parameter is required only for macOS processes.
+        # The bundle ID. This field is applicable only to macOS processes.
         self.bundle_id = bundle_id
-        # The command line parameters for starting the process.
+        # The command-line arguments used to start the process.
         self.cmdline = cmdline
         # The directory where the process is located.
         self.directory = directory
@@ -281,9 +281,9 @@ class CreateProhibitedSoftwareResponseBodySoftwareLinuxProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The bundle ID of the application. This parameter is required only for macOS processes.
+        # The bundle ID. This field is applicable only to macOS processes.
         self.bundle_id = bundle_id
-        # The command line parameters for starting the process.
+        # The command-line arguments used to start the process.
         self.cmdline = cmdline
         # The directory where the process is located.
         self.directory = directory

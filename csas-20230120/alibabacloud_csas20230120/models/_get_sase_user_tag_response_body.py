@@ -54,11 +54,11 @@ class GetSaseUserTagResponseBodySaseUserTag(DaraModel):
     ):
         # The Alibaba Cloud account ID.
         self.aliuid = aliuid
-        # The user tag description.
+        # The description of the user tag.
         self.description = description
-        # The user tag name.
+        # The name of the user tag.
         self.name = name
-        # The user tag ID.
+        # The ID of the user tag.
         self.tag_id = tag_id
 
     def validate(self):

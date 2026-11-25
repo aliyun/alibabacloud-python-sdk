@@ -14,15 +14,15 @@ class ListDeviceGroupsRequest(DaraModel):
         name: str = None,
         page_size: int = None,
     ):
-        # The number of the page to return in a paged query. Valid values: 1 to 10000.
+        # The page number of the current page displayed during paging in a paged query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The collection of device group IDs. Duplicate values are not allowed.
+        # The IDs of the device groups. Duplicate IDs are not allowed.
         self.device_group_ids = device_group_ids
-        # The device label name. The name can be up to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
+        # The name of the device tag. The name can be up to 128 characters in length and supports Chinese characters and uppercase and lowercase English letters. It can also contain digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The number of entries to return on each page in a paged query. Valid values: 1 to 500.
+        # The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 500.
         # 
         # This parameter is required.
         self.page_size = page_size

@@ -22,8 +22,8 @@ class CreatePADiagnosisTaskShrinkRequest(DaraModel):
         self.dev_tag = dev_tag
         # The diagnosis type. Valid values:
         # 
-        # - **FullLink**: full-link diagnosis.
-        # - **Application**: application diagnosis.
+        # - **FullLink**: End-to-end diagnosis.
+        # - **Application**: Application diagnosis.
         # 
         # This parameter is required.
         self.diagnose_type = diagnose_type
@@ -31,11 +31,11 @@ class CreatePADiagnosisTaskShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.host = host
-        # The POP point ID.
+        # The ID of the PoP.
         self.pop_id = pop_id
-        # The POP point selection mode. Valid values:
-        # - **AutoSelect**: automatic selection.
-        # - **ManualSelect**: manual selection.
+        # The PoP selection mode. Valid values:
+        # - **AutoSelect**: Automatic selection.
+        # - **ManualSelect**: Manual selection.
         # 
         # This parameter is required.
         self.pop_mode = pop_mode
@@ -43,15 +43,15 @@ class CreatePADiagnosisTaskShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.port = port
-        # The protocol used by the internal network access application. Valid values:
+        # The application protocol for internal network access. Valid values:
         # - **TCP**
-        # - **UDP**.
+        # - **UDP**
         # 
         # This parameter is required.
         self.protocol = protocol
-        # The extra configurations for UDP diagnosis. If this parameter is not specified, any response received is considered a success.
+        # The additional configurations for UDP diagnosis. If this parameter is not configured, receiving any response content is considered a success.
         self.udp_extra_configs_shrink = udp_extra_configs_shrink
-        # The user group ID.
+        # The ID of the user group.
         self.user_group_id = user_group_id
         # The username.
         self.username = username

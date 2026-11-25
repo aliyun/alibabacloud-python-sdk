@@ -1,3 +1,6 @@
+2026-11-25 Version: 1.25.1
+- Generated python 2023-01-20 for csas.
+
 2026-10-14 Version: 1.25.0
 - Support API DescribeApplicationHealthCheckReports.
 - Update API CreatePrivateAccessApplication: add request parameters HealthCheckConfig.

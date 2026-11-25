@@ -11,17 +11,17 @@ class UpdateConnectorClientRequest(DaraModel):
         dev_tag: str = None,
         status: str = None,
     ):
-        # The connector ID. You can call [ListConnectors](~~ListConnectors~~) to query connector IDs.
+        # The connector ID. You can obtain the value by calling the [ListConnectors](~~ListConnectors~~) operation.
         # 
         # This parameter is required.
         self.connector_id = connector_id
-        # The unique identifier of the ConnectorClient device. You can call [ListConnectors](~~ListConnectors~~) to query connector information.
+        # The unique identifier of the ConnectorClient device. You can obtain the value by calling the [ListConnectors](~~ListConnectors~~) operation.
         # 
         # This parameter is required.
         self.dev_tag = dev_tag
         # The connection status of the ConnectorClient. Valid values:
-        # - **Enabled**: connected.
-        # - **Disabled**: disconnected.
+        # - **Enabled**: Connected.
+        # - **Disabled**: Disconnected.
         self.status = status
 
     def validate(self):

@@ -12,7 +12,7 @@ class CreateDomainMetaRequest(DaraModel):
     ):
         # The list type.
         self.list_type = list_type
-        # The list name. Maximum length: 32 characters.
+        # The name of the list. The name can be up to 32 characters in length.
         self.name = name
 
     def validate(self):

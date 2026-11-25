@@ -9,7 +9,7 @@ class GetIdpConfigRequest(DaraModel):
         self,
         id: str = None,
     ):
-        # ID of the identity provider configuration.
+        # The ID of the identity source configuration.
         # 
         # This parameter is required.
         self.id = id

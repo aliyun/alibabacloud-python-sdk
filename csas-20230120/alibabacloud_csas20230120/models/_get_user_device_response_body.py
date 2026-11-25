@@ -74,6 +74,8 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         device_version: str = None,
         disk: str = None,
         disk_available: int = None,
+        disk_encrypt_status: str = None,
+        disk_encrypt_status_reason: str = None,
         disk_used: int = None,
         dlp_status: str = None,
         edr_status: str = None,
@@ -105,18 +107,18 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         username: str = None,
         workshop: str = None,
     ):
-        # The status of the client. Valid values:
-        # - **Online**: Online.
-        # - **Offline**: Offline.
+        # The client status. Valid values:
+        # - **Online**: online
+        # - **Offline**: offline
         self.app_status = app_status
         # The client version.
         self.app_version = app_version
-        # The password-free logon status of the device. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
-        # - **Unprovisioned**: Unprovisioned.
+        # The passwordless login status of the device. Valid values:
+        # - **Enabled**: enabled
+        # - **Disabled**: disabled
+        # - **Unprovisioned**: unprovisioned
         self.auto_login_status = auto_login_status
-        # The battery health percentage.
+        # The battery health.
         self.battery_health_percentage = battery_health_percentage
         # The remaining battery percentage.
         self.battery_remaining_percentage = battery_remaining_percentage
@@ -140,84 +142,88 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         self.country_en = country_en
         # The country in Chinese.
         self.country_zh = country_zh
-        # The registration time of the endpoint device. Format: YYYY-MM-DD HH:mm:ss.
+        # The registration time of the endpoint device. The format is YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The department to which the user belongs.
         self.department = department
         # The ownership of the endpoint device. Valid values:
-        # - **Personal**: Personal device.
-        # - **Company**: Company device.
+        # - **Personal**: personal device
+        # - **Company**: company device
         self.device_belong = device_belong
         # The model of the endpoint device.
         self.device_model = device_model
         # The status of the endpoint device. Valid values:
-        # - **Online**: Online.
-        # - **Offline**: Offline.
-        # - **LongTermOffline**: Long-term offline.
-        # - **Locked**: Locked.
-        # - **Lost**: Reported as lost.
-        # - **Unbound**: Unbound.
+        # - **Online**: online
+        # - **Offline**: offline
+        # - **LongTermOffline**: long-term offline
+        # - **Locked**: locked
+        # - **Lost**: lost
+        # - **Unbound**: unbound
         self.device_status = device_status
         # The ID of the endpoint device.
         self.device_tag = device_tag
         # The operating system type of the endpoint device. Valid values:
-        # - **Windows**: Windows.
-        # - **macOS**: macOS.
-        # - **Linux**: Linux.
-        # - **Android**: Android.
-        # - **iOS**: iOS.
-        # - **Windows_Wuying**: WUYING Workspace.
+        # - **Windows**: Windows
+        # - **macOS**: macOS
+        # - **Linux**: Linux
+        # - **Android**: Android
+        # - **iOS**: iOS
+        # - **Windows_Wuying**: WUYING Workspace
         self.device_type = device_type
         # The operating system version of the endpoint device.
         self.device_version = device_version
         # The disk model of the endpoint device.
         self.disk = disk
-        # The available disk space, in GB.
+        # The available disk space. Unit: GB.
         self.disk_available = disk_available
-        # The used disk space, in GB.
+        # The disk encryption status of the user endpoint device. Valid values: Unsupported (encryption not supported), Unencrypted (not encrypted), Encrypting (encrypting), Encrypted (encrypted), and EncryptFailed (encryption failed). If the status is not reported, is null, or is unknown, Unencrypted is returned.
+        self.disk_encrypt_status = disk_encrypt_status
+        # The reason why disk encryption failed or is not supported on the user endpoint device. This reason is returned only when DiskEncryptStatus is Unsupported or EncryptFailed. For other statuses, an empty string is returned. Maximum length: 512 characters.
+        self.disk_encrypt_status_reason = disk_encrypt_status_reason
+        # The used disk space. Unit: GB.
         self.disk_used = disk_used
         # The office data protection status. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
-        # - **Unprovisioned**: Unprovisioned.
-        # - **Unauthorized**: Unauthorized.
+        # - **Enabled**: enabled
+        # - **Disabled**: disabled
+        # - **Unprovisioned**: unprovisioned
+        # - **Unauthorized**: unauthorized
         self.dlp_status = dlp_status
         # The anti-intrusion status. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
+        # - **Enabled**: enabled
+        # - **Disabled**: disabled
         self.edr_status = edr_status
         # The collection of historical users of the endpoint device.
         self.history_users = history_users
         # The name of the endpoint device.
         self.hostname = hostname
         # The Internet access status. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
-        # - **Unprovisioned**: Unprovisioned.
+        # - **Enabled**: enabled
+        # - **Disabled**: disabled
+        # - **Unprovisioned**: unprovisioned
         self.ia_status = ia_status
         # The internal IP address of the endpoint device.
         self.inner_ip = inner_ip
-        # Indicates whether the terminal is joined to an Active Directory (AD) domain.
+        # Indicates whether the endpoint has joined an Active Directory (AD) domain.
         self.join_ad_domain = join_ad_domain
         # The MAC address of the endpoint device.
         self.mac = mac
         # The collection of matched device group IDs.
         self.match_device_group_ids = match_device_group_ids
-        # The memory capacity of the endpoint device. Unit: GB.
+        # The memory capacity of the terminal device. Unit: GB.
         self.memory = memory
         # The network access control status. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         # - **Unprovisioned**: Unprovisioned.
         self.nac_status = nac_status
-        # The list of network interface controllers (NICs) of the endpoint device.
+        # The list of network interface controllers (NICs) of the terminal device.
         self.net_interface_info = net_interface_info
         # The internal network access status. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         # - **Unprovisioned**: Unprovisioned.
         self.pa_status = pa_status
-        # The list of running processes on the terminal.
+        # The list of running processes on the terminal device.
         self.processes = processes
         # The province to which the public IP address belongs.
         self.province = province
@@ -225,27 +231,27 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         self.province_en = province_en
         # The province in Chinese.
         self.province_zh = province_zh
-        # The ID of the user.
+        # The user ID.
         self.sase_user_id = sase_user_id
-        # Specifies whether sharing is enabled for the device. Valid values:
-        # - **true**: Enabled.
-        # - **false**: Disabled.
+        # Indicates whether sharing is enabled for the device. Valid values:
+        # - **true**: Sharing is enabled.
+        # - **false**: Sharing is disabled.
         self.sharing_status = sharing_status
-        # The motherboard serial number.
+        # The serial number of the baseboard.
         self.sn_base_board = sn_base_board
         # The serial number of the BIOS.
         self.sn_bios = sn_bios
-        # The hard disk serial number.
+        # The serial number of the disk drive.
         self.sn_disk_drive = sn_disk_drive
         # The serial number of the processor.
         self.sn_processor = sn_processor
-        # The system serial number.
+        # The serial number of the system.
         self.sn_system = sn_system
-        # The logon IP address of the endpoint device.
+        # The logon IP address of the terminal device.
         self.src_ip = src_ip
         # The timestamp when the terminal process information was collected.
         self.terminal_info_collect_time = terminal_info_collect_time
-        # The last online time of the endpoint device. Format: YYYY-MM-DD HH:mm:ss.
+        # The last online time of the terminal device. Format: YYYY-MM-DD HH:mm:ss.
         self.update_time = update_time
         # The username.
         self.username = username
@@ -345,6 +351,12 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
 
         if self.disk_available is not None:
             result['DiskAvailable'] = self.disk_available
+
+        if self.disk_encrypt_status is not None:
+            result['DiskEncryptStatus'] = self.disk_encrypt_status
+
+        if self.disk_encrypt_status_reason is not None:
+            result['DiskEncryptStatusReason'] = self.disk_encrypt_status_reason
 
         if self.disk_used is not None:
             result['DiskUsed'] = self.disk_used
@@ -521,6 +533,12 @@ class GetUserDeviceResponseBodyDevice(DaraModel):
         if m.get('DiskAvailable') is not None:
             self.disk_available = m.get('DiskAvailable')
 
+        if m.get('DiskEncryptStatus') is not None:
+            self.disk_encrypt_status = m.get('DiskEncryptStatus')
+
+        if m.get('DiskEncryptStatusReason') is not None:
+            self.disk_encrypt_status_reason = m.get('DiskEncryptStatusReason')
+
         if m.get('DiskUsed') is not None:
             self.disk_used = m.get('DiskUsed')
 
@@ -630,11 +648,11 @@ class GetUserDeviceResponseBodyDeviceProcesses(DaraModel):
         memory: int = None,
         name: str = None,
     ):
-        # The CPU usage percentage of the process.
+        # The percentage of CPU usage by the process.
         self.cpu = cpu
         # The description of the running process.
         self.description = description
-        # The memory usage of the process, in MB.
+        # The memory usage of the process. Unit: MB.
         self.memory = memory
         # The name of the process.
         self.name = name
@@ -720,7 +738,7 @@ class GetUserDeviceResponseBodyDeviceHistoryUsers(DaraModel):
         sase_user_id: str = None,
         username: str = None,
     ):
-        # The ID of the user.
+        # The user ID.
         self.sase_user_id = sase_user_id
         # The username.
         self.username = username

@@ -10,7 +10,7 @@ class CreateDeviceGroupResponseBody(DaraModel):
         device_group_id: str = None,
         request_id: str = None,
     ):
-        # The device label ID.
+        # The ID of the device tag.
         self.device_group_id = device_group_id
         # Id of the request
         self.request_id = request_id

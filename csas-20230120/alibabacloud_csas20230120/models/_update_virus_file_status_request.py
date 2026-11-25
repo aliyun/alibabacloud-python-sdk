@@ -13,54 +13,54 @@ class UpdateVirusFileStatusRequest(DaraModel):
         operation: str = None,
         virus_type: str = None,
     ):
-        # The unique identifier of the user terminal device where the virus file is located. The value can be up to 64 characters in length. You can obtain the value from the following operation:
-        # - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): lists virus file statuses.
+        # The unique identifier of the user terminal device where the virus file is located. The value can be up to 64 characters in length. You can obtain the value from the following source:
+        # - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): Queries the statuses of virus files in batches.
         # 
         # This parameter is required.
         self.dev_tag = dev_tag
-        # The MD5 value of the virus file. The value must be a 32-character hexadecimal string. You can obtain the value from the following operation:
-        # - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): lists virus file statuses.
+        # The MD5 hash value of the virus file. The value must be a 32-character hexadecimal string. You can obtain the value from the following source:
+        # - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): Queries the statuses of virus files in batches.
         # 
         # This parameter is required.
         self.file_md_5 = file_md_5
-        # The absolute path of the virus file on the user terminal device. You can obtain the value from the following operation:
-        # - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): lists virus file statuses.
+        # The absolute path of the virus file on the user terminal device. You can obtain the value from the following source:
+        # - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): Queries the statuses of virus files in batches.
         # 
         # This parameter is required.
         self.file_path = file_path
-        # The disposal action. Valid values:
-        # - **AdminQuarantine**: quarantines the virus file. The server creates a disposal task and returns a TaskId. The user terminal device pulls and executes the quarantine.
-        # - **AdminTrust**: trusts the virus file. Only the disposal status is updated. No disposal task is created, and TaskId returns an empty string.
+        # The processing action. Valid values:
+        # - **AdminQuarantine**: Quarantines the virus file. The server creates a processing task and returns a TaskId. The user terminal device pulls and executes the quarantine task.
+        # - **AdminTrust**: Marks the virus file as trusted. This action only updates the processing status and does not create a processing task. An empty string is returned for TaskId.
         # 
         # This parameter is required.
         self.operation = operation
         # The virus type. This parameter is used for synchronization to update the virus type of the file. Valid values:
-        # - **Backdoor**: backdoor program.
-        # - **DDoS**: DDoS Trojan.
-        # - **Downloader**: downloader Trojan.
+        # - **Backdoor**: Backdoor program.
+        # - **DDoS**: DDoS trojan.
+        # - **Downloader**: Downloader trojan.
         # - **Engtest**: DPI engine test program.
-        # - **Hacktool**: hacker tool.
-        # - **Trojan**: self-mutating Trojan.
-        # - **Malbaseware**: contaminated base software.
-        # - **MalScript**: malicious script.
-        # - **Malware**: malicious program.
-        # - **Miner**: mining programs.
-        # - **Proxytool**: proxy tool.
-        # - **RansomWare**: ransomware.
-        # - **RiskWare**: riskware.
-        # - **Rootkit**: kernel-hidden program.
-        # - **Stealer**: credential stealer.
-        # - **Scanner**: scanner.
-        # - **Suspicious**: suspicious program.
-        # - **Virus**: file-infecting virus.
-        # - **WebShell**: webshell.
-        # - **Worm**: worms.
-        # - **BlackList**: file that hit a blacklist entry.
-        # - **Exp**: vulnerability exploits program.
-        # - **Patcher**: cracking program.
-        # - **Gametool**: private server tool.
-        # - **AdWare**: adware.
-        # - **Maldoc**: malicious document.
+        # - **Hacktool**: Hacker tool.
+        # - **Trojan**: Self-mutating trojan.
+        # - **Malbaseware**: Contaminated basic software.
+        # - **MalScript**: Malicious script.
+        # - **Malware**: Malicious program.
+        # - **Miner**: Mining programs.
+        # - **Proxytool**: Proxy tool.
+        # - **RansomWare**: Ransomware.
+        # - **RiskWare**: Riskware.
+        # - **Rootkit**: Kernel hiding program.
+        # - **Stealer**: Stealer tool.
+        # - **Scanner**: Scanner.
+        # - **Suspicious**: Suspicious program.
+        # - **Virus**: Infectious virus.
+        # - **WebShell**: Web shell.
+        # - **Worm**: Worms.
+        # - **BlackList**: Files that hit the blacklist.
+        # - **Exp**: Vulnerability exploits program.
+        # - **Patcher**: Cracking program.
+        # - **Gametool**: Private server tool.
+        # - **AdWare**: Adware.
+        # - **Maldoc**: Malicious document.
         self.virus_type = virus_type
 
     def validate(self):

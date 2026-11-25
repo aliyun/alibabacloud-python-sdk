@@ -13,7 +13,7 @@ class CreateProhibitedTagResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The disabled software tag.
+        # The prohibited software tag.
         self.tag = tag
 
     def validate(self):
@@ -52,13 +52,13 @@ class CreateProhibitedTagResponseBodyTag(DaraModel):
         name: str = None,
         tag_id: str = None,
     ):
-        # The time when the disabled software tag was created, in the yyyy-MM-dd HH:mm:ss format. The time is displayed in UTC+8.
+        # The time when the prohibited software tag was created. The time is in the yyyy-MM-dd HH:mm:ss format and uses the UTC+8 time zone.
         self.create_time = create_time
-        # The description of the disabled software tag.
+        # The description of the prohibited software tag.
         self.description = description
-        # The name of the disabled software tag.
+        # The name of the prohibited software tag.
         self.name = name
-        # The ID of the disabled software tag.
+        # The ID of the prohibited software tag.
         self.tag_id = tag_id
 
     def validate(self):

@@ -68,26 +68,35 @@ class UpdateApprovalProcessResponseBodyProcess(DaraModel):
         software_block_policies: main_models.UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies = None,
         software_hardening_policies: main_models.UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies = None,
     ):
-        # The list of policies associated with terminal uninstall.
+        # The list of policies associated with endpoint uninstallation.
         self.app_uninstall_policies = app_uninstall_policies
+        # The approval type. Valid values:
+        # - 0: Built-in approval.
+        # - 1: DingTalk approval.
+        # - 2: WeCom approval.
+        # - 3: Lark approval.
         self.approval_type = approval_type
-        # The time when the approval process was created.
+        # The time when the approval process was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The description of the approval process.
         self.description = description
         # The list of policies associated with device registration.
         self.device_registration_policies = device_registration_policies
-        # The list of policies associated with file outgoing.
+        # The list of policies associated with outbound file transfer.
         self.dlp_send_policies = dlp_send_policies
         # The list of policies associated with the domain name blacklist.
         self.domain_blacklist_policies = domain_blacklist_policies
         # The list of policies associated with the domain name whitelist.
         self.domain_whitelist_policies = domain_whitelist_policies
+        # The list of associated endpoint hardening policies.
         self.endpoint_hardening_policies = endpoint_hardening_policies
+        # The event callback URL. This field returns the complete event callback URL of the external platform when the approval type is 1 (DingTalk approval) or 3 (Lark approval). For other approval types, this field is empty.
         self.event_label = event_label
+        # The external approval configuration. This field contains the integration information for the external approval platform when the approval type is 1 (DingTalk approval) or 3 (Lark approval). For other approval types, this field is empty.
         self.external_config = external_config
         # The list of policies associated with peripheral control.
         self.periphera_block_policies = periphera_block_policies
+        # The list of associated internal network access control policies.
         self.private_access_block_policies = private_access_block_policies
         # The ID of the approval process.
         self.process_id = process_id
@@ -97,6 +106,7 @@ class UpdateApprovalProcessResponseBodyProcess(DaraModel):
         self.process_nodes = process_nodes
         # The list of policies associated with software blocking.
         self.software_block_policies = software_block_policies
+        # The list of associated software hardening policies.
         self.software_hardening_policies = software_hardening_policies
 
     def validate(self):
@@ -274,9 +284,13 @@ class UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(DaraMode
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The list of software hardening policy IDs.
         self.policy_ids = policy_ids
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -332,8 +346,11 @@ class UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap(
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
         self.display_field_value = display_field_value
+        # The system field identifier, such as processName.
         self.system_field = system_field
 
     def validate(self):
@@ -376,9 +393,11 @@ class UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
-        # The list of software blocking policy IDs.
+        # The list of software block policy IDs.
         self.policy_ids = policy_ids
         # The ID of the approval template.
         self.schema_id = schema_id
@@ -436,8 +455,11 @@ class UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap(Dara
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as softwareName.
         self.system_field = system_field
 
     def validate(self):
@@ -478,9 +500,9 @@ class UpdateApprovalProcessResponseBodyProcessProcessNodes(DaraModel):
         sase_user_id: str = None,
         username: str = None,
     ):
-        # The approver ID.
+        # The ID of the approver.
         self.sase_user_id = sase_user_id
-        # The approver username.
+        # The username of the approver.
         self.username = username
 
     def validate(self):
@@ -517,9 +539,13 @@ class UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies(DaraMod
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The list of internal network access control policy IDs.
         self.policy_ids = policy_ids
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -575,8 +601,11 @@ class UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
         self.display_field_value = display_field_value
+        # The system field identifier, such as applicationId.
         self.system_field = system_field
 
     def validate(self):
@@ -619,7 +648,9 @@ class UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
         # The list of peripheral control policy IDs.
         self.policy_ids = policy_ids
@@ -679,8 +710,11 @@ class UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap(Dar
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as devType.
         self.system_field = system_field
 
     def validate(self):
@@ -723,9 +757,13 @@ class UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies(DaraMode
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The list of endpoint hardening policy IDs.
         self.policy_ids = policy_ids
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -781,8 +819,11 @@ class UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap(
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
         self.display_field_value = display_field_value
+        # The system field identifier, such as processName.
         self.system_field = system_field
 
     def validate(self):
@@ -825,7 +866,9 @@ class UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies(DaraModel)
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
         # The list of domain name whitelist policy IDs.
         self.policy_ids = policy_ids
@@ -885,8 +928,11 @@ class UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap(Da
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as reportDomain.
         self.system_field = system_field
 
     def validate(self):
@@ -929,7 +975,9 @@ class UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies(DaraModel)
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
         # The list of domain name blacklist policy IDs.
         self.policy_ids = policy_ids
@@ -989,8 +1037,11 @@ class UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap(Da
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as reportDomain.
         self.system_field = system_field
 
     def validate(self):
@@ -1033,9 +1084,11 @@ class UpdateApprovalProcessResponseBodyProcessDlpSendPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
-        # The list of file outgoing policy IDs.
+        # The list of outbound file transfer policy IDs.
         self.policy_ids = policy_ids
         # The ID of the approval template.
         self.schema_id = schema_id
@@ -1093,8 +1146,11 @@ class UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap(DaraModel)
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as fileName.
         self.system_field = system_field
 
     def validate(self):
@@ -1137,7 +1193,9 @@ class UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies(DaraMod
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
         # The list of device registration policy IDs.
         self.policy_ids = policy_ids
@@ -1197,8 +1255,11 @@ class UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as report_domain.
         self.system_field = system_field
 
     def validate(self):
@@ -1241,9 +1302,11 @@ class UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
-        # The list of terminal uninstall policy IDs.
+        # The list of endpoint uninstallation policy IDs.
         self.policy_ids = policy_ids
         # The ID of the approval template.
         self.schema_id = schema_id
@@ -1301,8 +1364,11 @@ class UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap(DaraM
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form.
         self.display_field = display_field
+        # The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as approvalReason.
         self.system_field = system_field
 
     def validate(self):

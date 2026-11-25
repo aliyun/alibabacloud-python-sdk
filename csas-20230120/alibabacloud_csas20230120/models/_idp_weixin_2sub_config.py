@@ -16,13 +16,21 @@ class IdpWeixin2SubConfig(DaraModel):
         event_verify_token: str = None,
         redirect_uri: str = None,
     ):
+        # The agent ID of the WeCom application.
         self.agent_id = agent_id
+        # The schema used to launch the application from the WeCom Android client.
         self.app_schema = app_schema
+        # The secret of the WeCom application.
         self.app_secret = app_secret
+        # The WeCom enterprise ID (CorpId).
         self.corp_id = corp_id
+        # The AES encryption key for WeCom event callbacks.
         self.event_aes_key = event_aes_key
+        # The label (callback URL) for WeCom event callbacks.
         self.event_label = event_label
+        # The verification token for WeCom event callbacks.
         self.event_verify_token = event_verify_token
+        # The callback URL for WeCom logon authorization.
         self.redirect_uri = redirect_uri
 
     def validate(self):

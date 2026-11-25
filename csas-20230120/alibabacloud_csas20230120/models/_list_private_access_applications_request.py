@@ -22,20 +22,20 @@ class ListPrivateAccessApplicationsRequest(DaraModel):
         tag_id: str = None,
     ):
         # The access mode. Valid values:
-        # - **app**: application access. Filters applications that support application access.
-        # - **browser**: browser access. Filters applications that support browser access.
+        # - **app**: Application access. Filters applications that support application access.
+        # - **browser**: Browser access. Filters applications that support browser access.
         self.access_modes = access_modes
         # The address of the private access application. The address must be 1 to 128 characters in length, and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
         self.address = address
-        # The IDs of the private access applications. You can specify up to 100 IDs.
+        # The IDs of the private access applications. You can enter up to 100 private access application IDs.
         self.application_ids = application_ids
-        # The ID of the connector. You can obtain the ID from the following operation: [ListConnectors](~~ListConnectors~~): List connectors.
+        # The ID of the connector. You can obtain the value from the following operation: [ListConnectors](~~ListConnectors~~): List connectors.
         self.connector_id = connector_id
-        # The page number of the current page in a paging query. Valid values: 1 to 10000.
+        # The page number of the current page in a paged query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # Filters applications by health check status. Valid values:
+        # Filters by health check status. Valid values:
         # * normal: The success rate of the last check is greater than or equal to 95%.
         # * partialError: The success rate of the last check is greater than 0 and less than 95%.
         # * error: The success rate of the last check is 0.
@@ -43,19 +43,19 @@ class ListPrivateAccessApplicationsRequest(DaraModel):
         self.health_check_status = health_check_status
         # The name of the private access application. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
-        # The Settings for the number of entries per page in a paging query. Valid values: 1 to 1000.
+        # The number of entries per page in a paged query. Valid values: 1 to 1000.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The ID of the private access policy. You can obtain the ID from the following operations:
+        # The ID of the private access policy. You can obtain the value from the following operations:
         # - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): List private access policies.
         # - [CreatePrivateAccessPolicy](~~CreatePrivateAccessPolicy~~): Create a private access policy.
         self.policy_id = policy_id
         # The status of the private access application. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.status = status
-        # The ID of the private access tag. You can obtain the ID from the following operations:
+        # The ID of the private access tag. You can obtain the value from the following operations:
         # - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): List private access tags.
         # - [CreatePrivateAccessTag](~~CreatePrivateAccessTag~~): Create a private access tag.
         self.tag_id = tag_id

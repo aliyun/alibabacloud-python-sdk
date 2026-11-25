@@ -10,7 +10,7 @@ class GetProhibitedSoftwareRequest(DaraModel):
         self,
         software_id: main_models.GetProhibitedSoftwareRequestSoftwareId = None,
     ):
-        # The prohibited software ID.
+        # The ID of the prohibited software.
         self.software_id = software_id
 
     def validate(self):
@@ -41,12 +41,12 @@ class GetProhibitedSoftwareRequestSoftwareId(DaraModel):
         is_default: bool = None,
         software_id: str = None,
     ):
-        # Indicates whether the prohibited software is a system built-in prohibited software. Valid values:
-        # - **true**: A system built-in prohibited software that is shared across all Alibaba Cloud accounts and cannot be modified or deleted.
-        # - **false**: A custom prohibited software under the current Alibaba Cloud account.
+        # Specifies whether the prohibited software is a built-in prohibited software. Valid values:
+        # - **true**: The software is a built-in prohibited software. It is shared by all Alibaba Cloud accounts and cannot be modified or deleted.
+        # - **false**: The software is a custom prohibited software within the current Alibaba Cloud account.
         self.is_default = is_default
-        # The prohibited software ID. You can obtain the value from the following operations:
-        # - [ListProhibitedSoftware](~~ListProhibitedSoftware~~): Lists prohibited software.
+        # The ID of the prohibited software. You can obtain the value from the following operations:
+        # - [ListProhibitedSoftware](~~ListProhibitedSoftware~~): Queries prohibited software in batches.
         # - [CreateProhibitedSoftware](~~CreateProhibitedSoftware~~): Creates custom prohibited software.
         self.software_id = software_id
 

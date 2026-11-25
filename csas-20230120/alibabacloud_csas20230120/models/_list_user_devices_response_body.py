@@ -18,7 +18,7 @@ class ListUserDevicesResponseBody(DaraModel):
         self.devices = devices
         # The ID of the request.
         self.request_id = request_id
-        # The total number of endpoint devices.
+        # The total number of terminal devices.
         self.total_num = total_num
 
     def validate(self):
@@ -86,6 +86,8 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         device_type: str = None,
         device_version: str = None,
         disk: str = None,
+        disk_encrypt_status: str = None,
+        disk_encrypt_status_reason: str = None,
         dlp_status: str = None,
         edr_status: str = None,
         full_department: List[str] = None,
@@ -120,35 +122,35 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         self.app_status = app_status
         # The client version.
         self.app_version = app_version
-        # The auto-logon status of the client.
+        # The auto-login status of the client.
         self.auto_login_status = auto_login_status
         # The CPU model of the endpoint device.
         self.cpu = cpu
-        # The city of the public IP address.
+        # The city to which the public IP address belongs.
         self.city = city
         # The city in English.
         self.city_en = city_en
         # The city in Chinese.
         self.city_zh = city_zh
-        # The continent of the public IP address.
+        # The continent to which the public IP address belongs.
         self.continent = continent
         # The continent in English.
         self.continent_en = continent_en
         # The continent in Chinese.
         self.continent_zh = continent_zh
-        # The country of the public IP address.
+        # The country to which the public IP address belongs.
         self.country = country
         # The country in English.
         self.country_en = country_en
         # The country in Chinese.
         self.country_zh = country_zh
-        # The registration time of the endpoint device.
+        # The registration time of the endpoint device. Format: YYYY-MM-DD HH:mm:ss.
         self.create_time = create_time
         # The department to which the user belongs.
         self.department = department
-        # The ownership of the endpoint device. Valid values:
+        # The ownership of the terminal device. Valid values:
         # - **Personal**: Personal device.
-        # - **Company**: Company device.
+        # - **Company**: Corporate device.
         self.device_belong = device_belong
         # The model of the endpoint device.
         self.device_model = device_model
@@ -157,23 +159,27 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         # - **Offline**: Offline.
         # - **LongTermOffline**: Long-term offline.
         # - **Locked**: Locked.
-        # - **Lost**: Reported lost.
+        # - **Lost**: Reported as lost.
         # - **Unbound**: Unbound.
         self.device_status = device_status
         # The ID of the endpoint device.
         self.device_tag = device_tag
-        # The operating system type of the endpoint device. Valid values:
+        # The terminal device operating system type. Valid values:
         # - **Windows**: Windows.
         # - **macOS**: macOS.
         # - **Linux**: Linux.
         # - **Android**: Android.
         # - **iOS**: iOS.
-        # - **Windows_Wuying**: WUYING Workspace.
+        # - **Windows_Wuying**: Wuying cloud desktop.
         self.device_type = device_type
         # The operating system version of the endpoint device.
         self.device_version = device_version
         # The disk model of the endpoint device.
         self.disk = disk
+        # The disk encryption status of the user endpoint device. Valid values: Unsupported (encryption is not supported), Unencrypted (not encrypted), Encrypting (encrypting), Encrypted (encrypted), and EncryptFailed (encryption failed). If the status is not reported, null, or unknown, Unencrypted is returned.
+        self.disk_encrypt_status = disk_encrypt_status
+        # The reason why disk encryption failed or is not supported on the user endpoint device. This reason is returned only when DiskEncryptStatus is Unsupported or EncryptFailed. For other statuses, an empty string is returned. Maximum length: 512 characters.
+        self.disk_encrypt_status_reason = disk_encrypt_status_reason
         # The office data protection status. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
@@ -193,11 +199,11 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         # - **Disabled**: Disabled.
         # - **Unprovisioned**: Unprovisioned.
         self.ia_status = ia_status
-        # The internal IP address of the endpoint device.
+        # The internal IP address of the terminal device.
         self.inner_ip = inner_ip
-        # Indicates whether the endpoint device is added to an Active Directory (AD) domain.
+        # Indicates whether the device is joined to an AD domain.
         self.join_ad_domain = join_ad_domain
-        # The MAC address of the endpoint device.
+        # The MAC address of the terminal device.
         self.mac = mac
         # The IDs of the matched device groups.
         self.match_device_group_ids = match_device_group_ids
@@ -208,20 +214,20 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         # - **Disabled**: Disabled.
         # - **Unprovisioned**: Unprovisioned.
         self.nac_status = nac_status
-        # The list of network interface controllers (NICs) of the endpoint device.
+        # The list of network interfaces.
         self.net_interface_info = net_interface_info
         # The internal network access status. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         # - **Unprovisioned**: Unprovisioned.
         self.pa_status = pa_status
-        # The province of the public IP address.
+        # The province to which the public IP address belongs.
         self.province = province
         # The province in English.
         self.province_en = province_en
         # The province in Chinese.
         self.province_zh = province_zh
-        # The ID of the user.
+        # The user ID.
         self.sase_user_id = sase_user_id
         # Specifies whether sharing is enabled for the device. Valid values:
         # - **true**: Sharing is enabled.
@@ -231,15 +237,15 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         self.sn_base_board = sn_base_board
         # The serial number of the BIOS.
         self.sn_bios = sn_bios
-        # The serial number of the hard disk.
+        # The serial number of the disk drive.
         self.sn_disk_drive = sn_disk_drive
         # The serial number of the processor.
         self.sn_processor = sn_processor
-        # The system serial number (SN).
+        # The system serial number.
         self.sn_system = sn_system
-        # The logon IP address of the endpoint device.
+        # The logon IP address of the terminal device.
         self.src_ip = src_ip
-        # The last online time of the endpoint device.
+        # The last online time of the terminal device, in the YYYY-MM-DD HH:mm:ss format.
         self.update_time = update_time
         # The username.
         self.username = username
@@ -322,6 +328,12 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
 
         if self.disk is not None:
             result['Disk'] = self.disk
+
+        if self.disk_encrypt_status is not None:
+            result['DiskEncryptStatus'] = self.disk_encrypt_status
+
+        if self.disk_encrypt_status_reason is not None:
+            result['DiskEncryptStatusReason'] = self.disk_encrypt_status_reason
 
         if self.dlp_status is not None:
             result['DlpStatus'] = self.dlp_status
@@ -476,6 +488,12 @@ class ListUserDevicesResponseBodyDevices(DaraModel):
         if m.get('Disk') is not None:
             self.disk = m.get('Disk')
 
+        if m.get('DiskEncryptStatus') is not None:
+            self.disk_encrypt_status = m.get('DiskEncryptStatus')
+
+        if m.get('DiskEncryptStatusReason') is not None:
+            self.disk_encrypt_status_reason = m.get('DiskEncryptStatusReason')
+
         if m.get('DlpStatus') is not None:
             self.dlp_status = m.get('DlpStatus')
 
@@ -568,9 +586,9 @@ class ListUserDevicesResponseBodyDevicesNetInterfaceInfo(DaraModel):
         mac: str = None,
         name: str = None,
     ):
-        # The MAC address of the NIC.
+        # The MAC address of the network interface.
         self.mac = mac
-        # The name of the NIC.
+        # The name of the network interface.
         self.name = name
 
     def validate(self):

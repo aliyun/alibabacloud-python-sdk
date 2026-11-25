@@ -24,7 +24,7 @@ class ListNetBandwidthResponseBody(DaraModel):
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of entries.
         self.total_num = total_num
 
     def validate(self):
@@ -90,11 +90,11 @@ class ListNetBandwidthResponseBodyNetBandwidthList(DaraModel):
         net_type: str = None,
         region: str = None,
     ):
-        # The bandwidth value, in Mbps.
+        # The bandwidth value (Mbps).
         self.bandwidth = bandwidth
-        # The time when the instance was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the instance was last modified.
+        # The update time.
         self.gmt_modified = gmt_modified
         # The instance ID.
         self.instance_id = instance_id

@@ -10,8 +10,8 @@ class GetPrivateAccessApplicationRequest(DaraModel):
         application_id: str = None,
     ):
         # The ID of the private access application. You can obtain the value from the following operations:
-        # - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists private access applications.
-        # - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates a private access application.
+        # - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): List private access applications.
+        # - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Create a private access application.
         # 
         # This parameter is required.
         self.application_id = application_id

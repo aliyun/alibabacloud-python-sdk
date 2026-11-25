@@ -18,9 +18,9 @@ class CreateEnterpriseAcceleratePolicyRequest(DaraModel):
         user_attribute_group: str = None,
     ):
         # The acceleration mode. Valid values:
-        # - **whiltelist**: whitelist-based acceleration.
-        # - **global**: global acceleration.
-        # - **build-in-list**: built-in application acceleration.
+        # - **whiltelist**: whitelist acceleration
+        # - **global**: global acceleration
+        # - **build-in-list**: built-in application acceleration
         self.acceleration_type = acceleration_type
         # The description of the enterprise management policy. The description must be 1 to 512 characters in length.
         self.description = description
@@ -28,23 +28,23 @@ class CreateEnterpriseAcceleratePolicyRequest(DaraModel):
         self.name = name
         # The priority.
         self.priority = priority
-        # Specifies whether to display the policy in the client. Valid values:
-        # - **0**: not displayed.
-        # - **1**: displayed.
+        # Specifies whether the policy is displayed on the client. Valid values:
+        # - **0**: not displayed
+        # - **1**: displayed
         self.show_in_client = show_in_client
-        # The address (IP address or domain name) of the acceleration instance.
+        # The address of the accelerated instance, which can be an IP address or a domain name.
         # 
         # This parameter is required.
         self.upstream_host = upstream_host
-        # The port of the acceleration instance. Valid values: 1000 to 60000.
+        # The port of the accelerated instance. Valid values: 1000 to 60000.
         # 
         # This parameter is required.
         self.upstream_port = upstream_port
-        # The acceleration instance.
+        # The accelerated instance.
         # 
         # This parameter is required.
         self.upstream_type = upstream_type
-        # The acceleration user group.
+        # The accelerated user group.
         # 
         # This parameter is required.
         self.user_attribute_group = user_attribute_group

@@ -11,7 +11,7 @@ class BatchDeletePrivateAccessApplicationRequest(DaraModel):
         self,
         application_ids: List[str] = None,
     ):
-        # The IDs of internal-facing access applications. You can specify up to 100 application IDs.
+        # The IDs of the private access applications. You can specify up to 100 private access application IDs.
         self.application_ids = application_ids
 
     def validate(self):

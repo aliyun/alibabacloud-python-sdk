@@ -10,9 +10,9 @@ class UpdateVirusFileStatusResponseBody(DaraModel):
         request_id: str = None,
         task_id: str = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The disposal task ID. This parameter is returned when Operation is set to AdminQuarantine. An empty string is returned when Operation is set to AdminTrust. You can check the execution result on the user terminal device by using the TaskExecutionInfo field of ListVirusFileStatuses.
+        # The ID of the processing task. This parameter is returned when Operation is set to AdminQuarantine. An empty string is returned when Operation is set to AdminTrust. You can view the execution result on the user terminal device by using the TaskExecutionInfo parameter in the ListVirusFileStatuses operation.
         self.task_id = task_id
 
     def validate(self):

@@ -15,7 +15,7 @@ class GetProhibitedSoftwareResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The prohibited software details.
+        # The details of the prohibited software.
         self.software = software
 
     def validate(self):
@@ -60,27 +60,27 @@ class GetProhibitedSoftwareResponseBodySoftware(DaraModel):
         tag_ids: List[str] = None,
         windows_processes: List[main_models.GetProhibitedSoftwareResponseBodySoftwareWindowsProcesses] = None,
     ):
-        # The creation time of the prohibited software, in the yyyy-MM-dd HH:mm:ss format. The time is displayed in UTC+8.
+        # The time when the prohibited software was created. The time is in the yyyy-MM-dd HH:mm:ss format and follows the UTC+8 time zone.
         self.create_time = create_time
         # The description of the prohibited software.
         self.description = description
-        # Indicates whether the prohibited software is a system built-in prohibited software. Valid values:
-        # - **true**: A system built-in prohibited software that is shared across all Alibaba Cloud accounts and cannot be modified or deleted.
-        # - **false**: A custom prohibited software under the current Alibaba Cloud account.
+        # Specifies whether the prohibited software is a built-in prohibited software. Valid values:
+        # - **true**: The software is a built-in prohibited software. It is shared by all Alibaba Cloud accounts and cannot be modified or deleted.
+        # - **false**: The software is a custom prohibited software within the current Alibaba Cloud account.
         self.is_default = is_default
-        # The list of process configurations for the Linux operating system.
+        # The list of process configurations in the Linux operating system.
         self.linux_processes = linux_processes
-        # The list of process configurations for the macOS operating system.
+        # The list of process configurations in the macOS operating system.
         self.mac_osprocesses = mac_osprocesses
         # The name of the prohibited software.
         self.name = name
         # The IDs of the software prohibition policies that directly reference the prohibited software.
         self.policy_ids = policy_ids
-        # The prohibited software ID.
+        # The ID of the prohibited software.
         self.software_id = software_id
-        # The IDs of the prohibited software tags associated with the prohibited software.
+        # The IDs of the prohibited software tags that are associated with the prohibited software.
         self.tag_ids = tag_ids
-        # The list of process configurations for the Windows operating system.
+        # The list of process configurations in the Windows operating system.
         self.windows_processes = windows_processes
 
     def validate(self):
@@ -191,13 +191,13 @@ class GetProhibitedSoftwareResponseBodySoftwareWindowsProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The application bundle identifier (Bundle ID). This parameter is required only for macOS processes.
+        # The bundle ID of the application. This parameter is required only for macOS processes.
         self.bundle_id = bundle_id
-        # The command-line arguments for starting the process.
+        # The command-line arguments used to start the process.
         self.cmdline = cmdline
         # The directory where the process is located.
         self.directory = directory
-        # The process name.
+        # The name of the process.
         self.process = process
 
     def validate(self):
@@ -246,13 +246,13 @@ class GetProhibitedSoftwareResponseBodySoftwareMacOSProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The application bundle identifier (Bundle ID). This parameter is required only for macOS processes.
+        # The bundle ID of the application. This parameter is required only for macOS processes.
         self.bundle_id = bundle_id
-        # The command-line arguments for starting the process.
+        # The command-line arguments used to start the process.
         self.cmdline = cmdline
         # The directory where the process is located.
         self.directory = directory
-        # The process name.
+        # The name of the process.
         self.process = process
 
     def validate(self):
@@ -301,13 +301,13 @@ class GetProhibitedSoftwareResponseBodySoftwareLinuxProcesses(DaraModel):
         directory: str = None,
         process: str = None,
     ):
-        # The application bundle identifier (Bundle ID). This parameter is required only for macOS processes.
+        # The bundle ID of the application. This parameter is required only for macOS processes.
         self.bundle_id = bundle_id
-        # The command-line arguments for starting the process.
+        # The command-line arguments used to start the process.
         self.cmdline = cmdline
         # The directory where the process is located.
         self.directory = directory
-        # The process name.
+        # The name of the process.
         self.process = process
 
     def validate(self):

@@ -17,56 +17,56 @@ class ListOperationAuditLogsRequest(DaraModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The page number of the current page in paging. The value starts from 1.
+        # The page number of the current page for a paged query. Pages start from 1.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The end time of the query. This value is a UNIX timestamp in seconds. The value must be later than StartTime.
+        # The end time of the query. The value is a UNIX timestamp in seconds. The value must be later than StartTime.
         # 
         # This parameter is required.
         self.end_time = end_time
-        # The event source type. Valid values:
-        # - **console**: console call.
-        # - **sdk**: SDK call.
+        # The source type of the event. Valid values:
+        # - **console**: The event is triggered by a console call.
+        # - **sdk**: The event is triggered by an SDK call.
         self.event_type = event_type
-        # The operation function module. The value is the English code of the function module. If other values are specified, no records are returned. Valid values:
-        # - **PrivateAccess**: private access.
-        # - **OfficeNetworkAccess**: office network access.
-        # - **AppAcceleration**: application acceleration.
-        # - **InternetAccess**: Internet access.
-        # - **OfficeDataProtection**: office data protection.
-        # - **IdentityAccessManagement**: identity and access management.
-        # - **DeviceManagement**: device management.
-        # - **ApprovalCenter**: approval center.
-        # - **SoftwareManagement**: software management.
-        # - **LogAnalysis**: log analysis.
-        # - **Setting**: settings.
-        # - **DigitalWatermark**: digital watermarking.
-        # - **DynamicDecision**: dynamic decision.
-        # - **InternetBehaviorManagement**: Internet behavior management.
-        # - **AgentOfficeSecurity**: Agent office security.
-        # - **NetworkAccess**: network access.
-        # - **RiskManagement**: risk management.
-        # - **EndpointProtection**: endpoint protection.
-        # - **Overview**: overview page.
-        # - **ITManagement**: IT management.
-        # - **InstanceManagement**: instance management.
+        # The operation feature module. The value must be the English code of the feature module. If you specify other values, no records are queried. Valid values:
+        # - **PrivateAccess**: internal network access
+        # - **OfficeNetworkAccess**: office network access
+        # - **AppAcceleration**: application acceleration
+        # - **InternetAccess**: Internet access
+        # - **OfficeDataProtection**: office data protection
+        # - **IdentityAccessManagement**: identity and access management
+        # - **DeviceManagement**: endpoint management
+        # - **ApprovalCenter**: approval center
+        # - **SoftwareManagement**: software management
+        # - **LogAnalysis**: log analysis
+        # - **Setting**: settings
+        # - **DigitalWatermark**: digital watermarking
+        # - **DynamicDecision**: dynamic decision-making
+        # - **InternetBehaviorManagement**: Internet behavior management
+        # - **AgentOfficeSecurity**: agent office security
+        # - **NetworkAccess**: network access
+        # - **RiskManagement**: risk management
+        # - **EndpointProtection**: endpoint protection
+        # - **Overview**: overview page
+        # - **ITManagement**: IT management
+        # - **InstanceManagement**: instance management
         self.operation_func = operation_func
         # The operation status. Valid values:
-        # - **success**: The operation succeeded. Equivalent values: true, 成功.
-        # - **failure**: The operation failed. Equivalent values: fail, failed, false, 失败.
+        # - **success**: The operation is successful. Equivalent values are true and Success.
+        # - **failure**: The operation fails. Equivalent values are fail, failed, false, and Failure.
         # 
-        # If this parameter is not specified, only successful operation records are returned.
+        # If this parameter is not specified, only records of successful operations are returned.
         self.operation_status = operation_status
-        # The operation type. The value must exactly match the original operation type recorded in the log. The OperationType value in the response is localized based on the request language and may differ from this filter value.
+        # The operation type. The value must be exactly the same as the original operation type recorded in the log. The OperationType in the returned result is localized based on the request language and may differ from this filter value.
         self.operation_type = operation_type
         # The Alibaba Cloud account ID (AliUid) of the operator.
         self.operator_id = operator_id
-        # The number of entries per page. Settings: 1 to 100. Used in paging.
+        # The number of entries to return on each page for a paged query. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The start time of the query. This value is a UNIX timestamp in seconds. The value must be earlier than EndTime. The interval between StartTime and EndTime cannot exceed 30 days, and StartTime cannot be more than 31 days before the current time.
+        # The start time of the query. The value is a UNIX timestamp in seconds. The value must be earlier than EndTime. The interval between StartTime and EndTime cannot exceed 30 days, and StartTime cannot be more than 31 days before the current time.
         # 
         # This parameter is required.
         self.start_time = start_time

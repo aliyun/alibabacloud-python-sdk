@@ -38,6 +38,7 @@ from ._process_item import ProcessItem
 from ._recovery_content import RecoveryContent
 from ._risk_scene_config import RiskSceneConfig
 from ._rule import Rule
+from ._typed_aiasset import TypedAIAsset
 from ._user_certificate import UserCertificate
 from ._add_device_group_match_devices_request import AddDeviceGroupMatchDevicesRequest
 from ._add_device_group_match_devices_response_body import AddDeviceGroupMatchDevicesResponseBody
@@ -741,6 +742,16 @@ from ._pal7config import PAL7ConfigRequestHeaderRewriteConfig
 from ._pal7config import PAL7ConfigRequestQueryRewriteConfig
 from ._pal7config import PAL7ConfigResponseHeaderRewriteConfig
 from ._pal7config import PAL7ConfigResponseRewriteConfig
+from ._typed_aiasset import TypedAIAssetIdentityIdentifiersPeProductIdentity
+from ._typed_aiasset import TypedAIAssetIdentityIdentifiersWindowsAppxIdentity
+from ._typed_aiasset import TypedAIAssetIdentityIdentifiers
+from ._typed_aiasset import TypedAIAssetRecognitionEvidenceAgentDeclaration
+from ._typed_aiasset import TypedAIAssetRecognitionEvidenceAutonomousExecution
+from ._typed_aiasset import TypedAIAssetRecognitionEvidenceModelCall
+from ._typed_aiasset import TypedAIAssetRecognitionEvidenceStateManagement
+from ._typed_aiasset import TypedAIAssetRecognitionEvidenceToolCall
+from ._typed_aiasset import TypedAIAssetRecognitionEvidence
+from ._typed_aiasset import TypedAIAssetRiskInfo
 from ._add_virus_scan_additional_lists_request import AddVirusScanAdditionalListsRequestAdditionalLists
 from ._create_approval_process_request import CreateApprovalProcessRequestMatchSchemas
 from ._create_approval_process_response_body import CreateApprovalProcessResponseBodyProcessAppUninstallPolicies
@@ -977,6 +988,7 @@ from ._list_polices_for_user_group_response_body import ListPolicesForUserGroupR
 from ._list_pop_traffic_statistics_response_body import ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints
 from ._list_pop_traffic_statistics_response_body import ListPopTrafficStatisticsResponseBodyTrafficData
 from ._list_private_access_application_l7switches_response_body import ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesPortRanges
+from ._list_private_access_application_l7switches_response_body import ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths
 from ._list_private_access_application_l7switches_response_body import ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches
 from ._list_private_access_applications_response_body import ListPrivateAccessApplicationsResponseBodyApplicationsPortRanges
 from ._list_private_access_applications_response_body import ListPrivateAccessApplicationsResponseBodyApplications
@@ -1118,7 +1130,9 @@ from ._update_nac_user_cert_status_request import UpdateNacUserCertStatusRequest
 from ._update_private_access_application_request import UpdatePrivateAccessApplicationRequestPortRanges
 from ._update_private_access_application_shrink_request import UpdatePrivateAccessApplicationShrinkRequestPortRanges
 from ._update_private_access_application_l7switch_request import UpdatePrivateAccessApplicationL7SwitchRequestPortRanges
+from ._update_private_access_application_l7switch_request import UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths
 from ._update_private_access_application_l7switch_response_body import UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchPortRanges
+from ._update_private_access_application_l7switch_response_body import UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths
 from ._update_private_access_application_l7switch_response_body import UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch
 from ._update_private_access_policy_request import UpdatePrivateAccessPolicyRequestCustomUserAttributes
 from ._update_prohibited_policy_request import UpdateProhibitedPolicyRequestSoftwareIds
@@ -1184,6 +1198,7 @@ __all__ = [
     RecoveryContent,
     RiskSceneConfig,
     Rule,
+    TypedAIAsset,
     UserCertificate,
     AddDeviceGroupMatchDevicesRequest,
     AddDeviceGroupMatchDevicesResponseBody,
@@ -1887,6 +1902,16 @@ __all__ = [
     PAL7ConfigRequestQueryRewriteConfig,
     PAL7ConfigResponseHeaderRewriteConfig,
     PAL7ConfigResponseRewriteConfig,
+    TypedAIAssetIdentityIdentifiersPeProductIdentity,
+    TypedAIAssetIdentityIdentifiersWindowsAppxIdentity,
+    TypedAIAssetIdentityIdentifiers,
+    TypedAIAssetRecognitionEvidenceAgentDeclaration,
+    TypedAIAssetRecognitionEvidenceAutonomousExecution,
+    TypedAIAssetRecognitionEvidenceModelCall,
+    TypedAIAssetRecognitionEvidenceStateManagement,
+    TypedAIAssetRecognitionEvidenceToolCall,
+    TypedAIAssetRecognitionEvidence,
+    TypedAIAssetRiskInfo,
     AddVirusScanAdditionalListsRequestAdditionalLists,
     CreateApprovalProcessRequestMatchSchemas,
     CreateApprovalProcessResponseBodyProcessAppUninstallPolicies,
@@ -2123,6 +2148,7 @@ __all__ = [
     ListPopTrafficStatisticsResponseBodyTrafficDataDatapoints,
     ListPopTrafficStatisticsResponseBodyTrafficData,
     ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesPortRanges,
+    ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths,
     ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches,
     ListPrivateAccessApplicationsResponseBodyApplicationsPortRanges,
     ListPrivateAccessApplicationsResponseBodyApplications,
@@ -2264,7 +2290,9 @@ __all__ = [
     UpdatePrivateAccessApplicationRequestPortRanges,
     UpdatePrivateAccessApplicationShrinkRequestPortRanges,
     UpdatePrivateAccessApplicationL7SwitchRequestPortRanges,
+    UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths,
     UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchPortRanges,
+    UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths,
     UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch,
     UpdatePrivateAccessPolicyRequestCustomUserAttributes,
     UpdateProhibitedPolicyRequestSoftwareIds,

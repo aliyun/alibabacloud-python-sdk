@@ -16,30 +16,30 @@ class ListSoftwarelibSoftwareRequest(DaraModel):
         software_name: str = None,
         source_type: str = None,
     ):
-        # The software category ID. You can call [ListSoftwarelibClassify](~~ListSoftwarelibClassify~~) to obtain the value.
+        # The ID of the software category. For more information about how to configure software categories, see [Software management](https://www.alibabacloud.com/help/en/sase/user-guide/software-management).
         self.classify_id = classify_id
-        # The page number of the current page displayed during paging in a paged query. Valid values: 1 to 10000.
+        # The page number of the current page for a paged query. Valid values: 1 to 10000.
         # 
         # This parameter is required.
         self.current_page = current_page
-        # The maximum number of entries per page. This parameter is not supported by the current operation. Use CurrentPage and PageSize for pagination.
+        # The maximum number of entries to return on each page. This parameter is not supported by the current API operation. Use CurrentPage and PageSize for pagination.
         self.max_results = max_results
-        # The query token. This parameter is not supported by the current operation. Use CurrentPage and PageSize for pagination.
+        # The query token. This parameter is not supported by the current API operation. Use CurrentPage and PageSize for pagination.
         self.next_token = next_token
         # The operating system applicable to the software package. Valid values:
         # - **Windows**: Windows.
         # - **Mac(Apple)**: macOS with Apple silicon.
-        # - **Mac(Intel)**: macOS with Intel chips.
+        # - **Mac(Intel)**: macOS with Intel processors.
         self.os = os
-        # The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 500.
+        # The number of entries to return on each page for a paged query. Valid values: 1 to 500.
         # 
         # This parameter is required.
         self.page_size = page_size
-        # The software name. Fuzzy match is supported.
+        # The name of the software. Fuzzy match is supported.
         self.software_name = software_name
-        # The software source. Valid values:
-        # - **custom**: custom software.
-        # - **builtin**: built-in software library.
+        # The source of the software. Valid values:
+        # - **custom**: Custom software.
+        # - **builtin**: Built-in software library.
         self.source_type = source_type
 
     def validate(self):

@@ -13,11 +13,11 @@ class BatchDeleteDomainItemsRequest(DaraModel):
         list_id: str = None,
         list_type: str = None,
     ):
-        # The IDs of domain name list entries.
+        # The IDs of the domain name list entries.
         self.item_ids = item_ids
-        # The list ID. This is the unique business identifier used for policy references and CRUD operations.
+        # The ID of the list, which is a unique business identifier used for policy references and add, delete, and modify operations.
         self.list_id = list_id
-        # The list type (Blacklist/Whitelist).
+        # The type of the list (Blacklist/Whitelist).
         self.list_type = list_type
 
     def validate(self):

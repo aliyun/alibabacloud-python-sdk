@@ -12,12 +12,12 @@ class UnbindSaseUserTagResponseBody(DaraModel):
         success: bool = None,
     ):
         # The API status code or POP error code. Valid values:
-        # - **2xx**: Success.
-        # - **3xx**: Redirection.
-        # - **4xx**: Request error.
-        # - **5xx**: Server error.
+        # - **2xx**: success
+        # - **3xx**: redirection
+        # - **4xx**: request error
+        # - **5xx**: server error
         self.code = code
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # Indicates whether the operation was successful.
         self.success = success

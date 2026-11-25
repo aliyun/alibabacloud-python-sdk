@@ -11,7 +11,7 @@ class CreateSoftwarelibDistributeTaskResponseBody(DaraModel):
         request_id: str = None,
         task: main_models.CreateSoftwarelibDistributeTaskResponseBodyTask = None,
     ):
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
         # The information about the created task.
         self.task = task
@@ -54,24 +54,24 @@ class CreateSoftwarelibDistributeTaskResponseBodyTask(DaraModel):
         support_os: str = None,
         task_id: str = None,
     ):
-        # The task creation time as a second-level UNIX timestamp.
+        # The time when the task was created. The value is a UNIX timestamp in seconds.
         self.create_time = create_time
-        # The task name.
+        # The name of the task.
         self.name = name
-        # The software name.
+        # The name of the software.
         self.software_name = software_name
-        # The task status. Valid values:
-        # - **enabled**: enabled.
-        # - **disabled**: disabled.
+        # The status of the task. Valid values:
+        # - **enabled**: Enabled.
+        # - **disabled**: Disabled.
         # 
-        # The initial status of a task after creation is disabled.
+        # After a task is created, its initial status is disabled.
         self.status = status
         # The operating system to which the task applies. Valid values:
         # - **Windows**: Windows.
-        # - **Mac(Apple)**: macOS with Apple silicon.
-        # - **Mac(Intel)**: macOS with Intel processors.
+        # - **Mac(Apple)**: macOS on Apple silicon.
+        # - **Mac(Intel)**: macOS on Intel processors.
         self.support_os = support_os
-        # The task ID, which is used to query the task execution result.
+        # The ID of the task. You can use the ID to query the task execution result.
         self.task_id = task_id
 
     def validate(self):

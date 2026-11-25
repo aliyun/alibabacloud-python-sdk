@@ -64,47 +64,38 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTask(DaraModel):
         user_group: main_models.GetPADiagnosisTaskResponseBodyDiagnosisTaskUserGroup = None,
         username: str = None,
     ):
-        # The time when the task was created.
+        # The task creation time.
         self.create_time = create_time
-        # The ID of the device.
+        # The ID of the terminal device.
         self.dev_tag = dev_tag
         # The ID of the diagnostic task.
         self.diagnose_id = diagnose_id
-        # The diagnostic type. Valid values:
-        # 
-        # - **FullLink**: full-link diagnostics
-        # 
-        # - **Application**: application diagnostics
+        # The diagnosis type. Valid values:
+        # - **FullLink**: end-to-end diagnosis.
+        # - **Application**: application diagnosis.
         self.diagnose_type = diagnose_type
         # The domain name to be diagnosed.
         self.host = host
-        # The ID of the POP.
+        # The ID of the PoP.
         self.pop_id = pop_id
-        # The point of presence (POP) selection mode:
-        # 
-        # - **AutoSelect**: automatic selection
-        # 
-        # - **ManualSelect**: manual selection
+        # The PoP selection mode. Valid values:
+        # - **AutoSelect**: automatic selection.
+        # - **ManualSelect**: manual selection.
         self.pop_mode = pop_mode
         # The port.
         self.port = port
-        # The private access application protocol. Valid values:
-        # 
+        # The protocol used to access the application over the internal network. Valid values:
         # - **TCP**
-        # 
         # - **UDP**
         self.protocol = protocol
-        # The diagnostic result.
+        # The diagnosis result.
         self.result = result
-        # The status of the task. Valid values:
-        # 
+        # The running status of the task. Valid values:
         # - **Running**: The task is running.
-        # 
-        # - **Finished**: The task is complete.
-        # 
+        # - **Finished**: The task is completed.
         # - **Failed**: The task failed.
         self.status = status
-        # Additional UDP configurations.
+        # The additional UDP configurations.
         self.udp_extra_configs = udp_extra_configs
         # The user group.
         self.user_group = user_group
@@ -262,7 +253,7 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskUdpExtraConfigs(DaraModel):
     ):
         # The expected response from the backend server.
         self.expected_response = expected_response
-        # The content of the UDP request.
+        # The UDP request content.
         self.request_content = request_content
 
     def validate(self):
@@ -302,13 +293,13 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResult(DaraModel):
     ):
         # The error message.
         self.error_message = error_message
-        # The ID of the request stream.
+        # The ID of the request flow.
         self.flow_id = flow_id
         # The network connectivity information.
         self.network_link_info = network_link_info
         # The policy information.
         self.policy_info = policy_info
-        # Indicates whether the operation was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -373,11 +364,11 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfo(DaraModel):
         self.device_attribute_info = device_attribute_info
         # The processing duration.
         self.process_time = process_time
-        # The name of the routing policy.
+        # The routing policy name.
         self.route_strategy_info = route_strategy_info
         # The user group information.
         self.user_group_info = user_group_info
-        # The zero-trust policy information.
+        # The zero trust policy information.
         self.zero_trust_policy_info = zero_trust_policy_info
 
     def validate(self):
@@ -443,19 +434,16 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoZeroTrustPolicy
         block_info: str = None,
         policy_name: str = None,
     ):
-        # The policy action:
-        # 
-        # - **Allow**: allow
-        # 
-        # - **Block**: block
-        # 
-        # - **Observe**: monitor mode
+        # The policy action. Valid values:
+        # - **Allow**: allows the traffic.
+        # - **Block**: blocks the traffic.
+        # - **Observe**: monitor mode.
         self.action = action
         # The application name.
         self.app_name = app_name
-        # The block information.
+        # The blocking information.
         self.block_info = block_info
-        # The name of the zero-trust policy.
+        # The name of the zero trust policy.
         self.policy_name = policy_name
 
     def validate(self):
@@ -509,7 +497,7 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoUserGroupInfo(D
         self.email = email
         # The list of department names.
         self.group = group
-        # The matched user group.
+        # The matched user groups.
         self.matched_user_groups = matched_user_groups
         # The mobile phone number.
         self.telephone = telephone
@@ -569,7 +557,7 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoRouteStrategyIn
     ):
         # The policy type.
         self.route_type = route_type
-        # The policy ID.
+        # The ID of the policy.
         self.strategy_id = strategy_id
         # The policy name.
         self.strategy_name = strategy_name
@@ -621,39 +609,33 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoDeviceAttribute
         process: List[str] = None,
         ssid: str = None,
     ):
-        # The ID of the device.
+        # The ID of the terminal device.
         self.dev_tag = dev_tag
-        # The operating system of the device. Valid values:
-        # 
-        # - **Windows**: Windows
-        # 
-        # - **macOS**: macOS
-        # 
-        # - **Linux**: Linux
-        # 
-        # - **Android**: Android
-        # 
-        # - **iOS**: iOS
-        # 
-        # - **Windows_Wuying**: Cloud Desktop
+        # The operating system type of the terminal device. Valid values:
+        # - **Windows**: Windows.
+        # - **macOS**: macOS.
+        # - **Linux**: Linux.
+        # - **Android**: Android.
+        # - **iOS**: iOS.
+        # - **Windows_Wuying**: WUYING Workspace.
         self.device_type = device_type
-        # The name of the file.
+        # The file name.
         self.file = file
         # The firewall.
         self.firewall = firewall
-        # The name of the device. The name can be 1 to 128 characters long and can include letters, numbers, and the following special characters: . , ; - _ / @ and spaces. To query for all devices with names containing 4-byte UTF-8 characters, enter only an underscore (_).
+        # The name of the terminal device. The name must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system additionally queries all terminal devices whose names contain 4-byte UTF-8 characters.
         self.hostname = hostname
-        # The private IP address of the device.
+        # The internal IP address of the terminal device.
         self.inner_ip = inner_ip
         # The public IP address.
         self.internet_ip = internet_ip
-        # The MAC address of the device.
+        # The MAC address of the terminal device.
         self.mac = mac
         # The matched security baseline.
         self.matched_security_baseline = matched_security_baseline
         # The list of security baseline processes.
         self.process = process
-        # The SSID.
+        # The service set identifier (SSID) of the wireless network.
         self.ssid = ssid
 
     def validate(self):
@@ -744,7 +726,7 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfo(DaraModel
         links: List[main_models.GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoLinks] = None,
         nodes: List[main_models.GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoNodes] = None,
     ):
-        # The Domain Name System (DNS) information.
+        # The DNS information.
         self.dns = dns
         # The time to first byte.
         self.fbt = fbt
@@ -825,25 +807,25 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoNodes(Dara
         resource_id: str = None,
         success: bool = None,
     ):
-        # The private access application address. The address can be 1 to 128 characters long and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
+        # The address used to access the application over the internal network. The address must be 1 to 128 characters in length and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
         self.address = address
-        # The ID of the cloud network instance.
+        # The instance ID of the cloud network.
         self.cloud_net_id = cloud_net_id
         # The error message.
         self.error = error
-        # The geographic location information.
+        # The geographical location information.
         self.geo_data = geo_data
-        # The node ID.
+        # The ID of the node.
         self.id = id
-        # The node name.
+        # The name of the node.
         self.name = name
-        # The English name of the node.
+        # The name of the node in English.
         self.name_en = name_en
         # The node type.
         self.node_type = node_type
-        # The resource ID.
+        # The ID of the resource.
         self.resource_id = resource_id
-        # Indicates whether the operation was successful.
+        # Indicates whether the request is successful.
         self.success = success
 
     def validate(self):
@@ -934,7 +916,7 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoNodesGeoDa
         self.city = city
         # The country.
         self.country = country
-        # The Internet Service Provider (ISP).
+        # The ISP.
         self.isp = isp
         # The province.
         self.prov = prov
@@ -995,7 +977,7 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoLinks(Dara
         self.hops = hops
         # The latency.
         self.latency = latency
-        # Indicates whether the operation was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The destination node.
         self.to_node = to_node
@@ -1068,11 +1050,11 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoLinksHops(
     ):
         # The address.
         self.address = address
-        # The geographic location.
+        # The geographical location.
         self.geo_data = geo_data
         # The latency.
         self.latency = latency
-        # The Time to Live (TTL).
+        # The time to live (TTL).
         self.ttl = ttl
 
     def validate(self):
@@ -1197,7 +1179,7 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoDns(DaraMo
         self.latency = latency
         # The DNS result.
         self.result = result
-        # Indicates whether the operation was successful.
+        # Indicates whether the request is successful.
         self.success = success
         # The destination node.
         self.to_node = to_node
@@ -1293,9 +1275,9 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoDnsHops(Da
         latency: str = None,
         geo_data: main_models.GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoDnsHopsGeoData = None,
     ):
-        # The private access application address. The address can be 1 to 128 characters long and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
+        # The application address for internal network access. The value must be 1 to 128 characters in length and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
         self.address = address
-        # The TTL.
+        # The time to live (TTL).
         self.ttl = ttl
         # The latency.
         self.latency = latency
@@ -1356,7 +1338,7 @@ class GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoDnsHopsGeo
         self.prov = prov
         # The city.
         self.city = city
-        # The ISP.
+        # The Internet service provider (ISP).
         self.isp = isp
 
     def validate(self):

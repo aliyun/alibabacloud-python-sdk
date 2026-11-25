@@ -88,15 +88,15 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
     ):
         # The details of the approval instance.
         self.approval_detail = approval_detail
-        # The ID of the approval instance.
+        # The approval instance ID.
         self.approval_id = approval_id
         # The list of progress nodes for the approval instance.
         self.approval_progresses = approval_progresses
         # The approval type. Valid values:
-        # - 0: Built-in approval.
-        # - 1: DingTalk approval.
-        # - 2: WeCom approval.
-        # - 3: Lark approval.
+        # * 0: Built-in approval.
+        # * 1: DingTalk approval.
+        # * 2: WeCom approval.
+        # * 3: Lark approval.
         self.approval_type = approval_type
         # The time when the approval instance was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
@@ -108,15 +108,15 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         self.creator_user_id = creator_user_id
         # The username of the user who created the approval instance.
         self.creator_username = creator_username
-        # The effective status of the report. If the approval status is not Approved, an empty string is returned. Valid values:
-        # - Enabled: Valid.
-        # - Expired: Invalid or expired.
+        # The validity status of the report. If the approval status is not Approved, an empty string is returned. Valid values:
+        # * Enabled: Valid.
+        # * Expired: Invalid or expired.
         self.effect_status = effect_status
         # The expiration time of the report. The value is a UNIX timestamp in seconds. If ValidityType is set to Permanent, 0 is returned.
         self.end_timestamp = end_timestamp
         # The type of the policy associated with the approval instance. Valid values:
-        # - **DomainBlacklist**: Domain name blacklist.
-        # - **DomainWhitelist**: Domain name whitelist.
+        # - **DomainBlacklist**: Domain blacklist.
+        # - **DomainWhitelist**: Domain whitelist.
         # - **SoftwareBlock**: Software blocking.
         # - **DeviceRegistration**: Excess registration.
         # - **AppUninstall**: Endpoint uninstallation.
@@ -134,19 +134,19 @@ class ListApprovalsResponseBodyApprovals(DaraModel):
         # The reason for creating the approval instance.
         self.reason = reason
         # The report type. Valid values:
-        # - ApprovalReport: Approval report.
-        # - BackendReport: Backend report.
+        # * ApprovalReport: Approval report.
+        # * BackendReport: Backend report.
         self.report_type = report_type
-        # The content of the template associated with the approval instance.
+        # The content of the schema associated with the approval instance.
         self.schema_content = schema_content
-        # The ID of the template associated with the approval instance.
+        # The ID of the schema associated with the approval instance.
         self.schema_id = schema_id
-        # The name of the template associated with the approval instance.
+        # The name of the schema associated with the approval instance.
         self.schema_name = schema_name
-        # The status of the approval instance. Valid values:
-        # - **Pending**: Pending approval.
+        # The approval instance status. Valid values:
+        # - **Pending**: Pending.
         # - **Approved**: Approved.
-        # - **Rejected**: Denied.
+        # - **Rejected**: Deny.
         # - **Revoked**: Revoked.
         # - **Expired**: Expired.
         # - **Deleted**: Deleted.
@@ -325,7 +325,7 @@ class ListApprovalsResponseBodyApprovalsApprovalProgresses(DaraModel):
         # The list of operators for the approval progress node.
         self.operators = operators
         # The status of the approval progress node. Valid values:
-        # - **Pending**: Pending approval.
+        # - **Pending**: Pending.
         # - **Approved**: Approved.
         # - **Rejected**: Rejected.
         # - **Revoked**: Revoked.

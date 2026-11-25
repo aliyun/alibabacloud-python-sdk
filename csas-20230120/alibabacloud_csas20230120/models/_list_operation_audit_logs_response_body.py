@@ -14,11 +14,11 @@ class ListOperationAuditLogsResponseBody(DaraModel):
         request_id: str = None,
         total_num: int = None,
     ):
-        # The list of administrator operation audit logs, sorted by operation time in descending order.
+        # The list of administrator operation audit logs. The logs are sorted in descending order of operation time.
         self.logs = logs
         # Id of the request
         self.request_id = request_id
-        # The total number of logs that match the query conditions.
+        # The total number of logs that meet the query conditions.
         self.total_num = total_num
 
     def validate(self):
@@ -76,19 +76,19 @@ class ListOperationAuditLogsResponseBodyLogs(DaraModel):
         operator_id: str = None,
         success: bool = None,
     ):
-        # The post-operation snapshot. This value is recorded as-is by the audit framework without localization. This field is empty for historical logs that are not integrated with the audit framework.
+        # The snapshot after the operation. It is recorded as-is by the audit framework and is not localized. This field is empty for historical logs that are not connected to the audit framework.
         self.after_action = after_action
-        # The pre-operation snapshot. This value is recorded as-is by the audit framework without localization. This field is empty for historical logs that are not integrated with the audit framework.
+        # The snapshot before the operation. It is recorded as-is by the audit framework and is not localized. This field is empty for historical logs that are not connected to the audit framework.
         self.before_action = before_action
-        # The error code when the operation failed. This field is empty when the operation succeeded.
+        # The error code returned when the operation fails. This field is empty when the operation is successful.
         self.error_code = error_code
-        # The error message when the operation failed. This field is empty when the operation succeeded.
+        # The error message returned when the operation fails. This field is empty when the operation is successful.
         self.error_message = error_message
-        # The event source type. Valid values:
-        # - **console**: console call.
-        # - **sdk**: SDK call.
+        # The source type of the event. Valid values:
+        # - **console**: The event is triggered by a console call.
+        # - **sdk**: The event is triggered by an SDK call.
         self.event_type = event_type
-        # The operation function module. The return value is localized based on the request language.
+        # The operation feature module. The return value is localized based on the request language.
         self.operation_func = operation_func
         # The operation page. The return value is localized based on the request language.
         self.operation_page = operation_page
@@ -98,7 +98,7 @@ class ListOperationAuditLogsResponseBodyLogs(DaraModel):
         self.operation_type = operation_type
         # The Alibaba Cloud account ID (AliUid) of the operator.
         self.operator_id = operator_id
-        # Indicates whether the operation succeeded.
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):

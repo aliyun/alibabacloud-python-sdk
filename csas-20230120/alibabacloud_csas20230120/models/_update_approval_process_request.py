@@ -20,11 +20,15 @@ class UpdateApprovalProcessRequest(DaraModel):
         process_name: str = None,
         process_nodes: List[List[str]] = None,
     ):
+        # The approval type. Valid values: 0 (built-in approval), 1 (DingTalk approval), 2 (WeCom approval), and 3 (Lark approval). Default value: 0.
         self.approval_type = approval_type
-        # The description of the approval process. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+        # The description of the approval process. The description must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
+        # The event callback identifier. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter is used to generate the event callback URL for the external platform. You can pass a complete callback URL, and the server retains only the part after the callback path prefix.
         self.event_label = event_label
+        # The integration configuration for the external approval platform. This parameter is required when the approval type is 1 (DingTalk approval) or 3 (Lark approval). It includes integration parameters such as appKey and appSecret, and must be passed as a JSON string.
         self.external_config = external_config
+        # The external approval template configurations. Configure the approval template ID, external approval process ID, and field mappings based on the policy type. This parameter is used only when ApprovalType is set to 1 (DingTalk approval), 2 (WeCom approval), or 3 (Lark approval). If this parameter is not passed, the existing template associations of the approval process are cleared. The approval templates associated with business policies cannot be cleared.
         self.match_schema_configs = match_schema_configs
         # The matched approval templates.
         self.match_schemas = match_schemas
@@ -32,7 +36,7 @@ class UpdateApprovalProcessRequest(DaraModel):
         # 
         # This parameter is required.
         self.process_id = process_id
-        # The name of the approval process. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+        # The name of the approval process. The name must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
         self.process_name = process_name
         # The list of approval nodes. You can define up to 5 approval nodes.
         self.process_nodes = process_nodes
@@ -124,22 +128,25 @@ class UpdateApprovalProcessRequestMatchSchemas(DaraModel):
         software_block_schema_id: str = None,
         software_hardening_schema_id: str = None,
     ):
-        # The ID of the device uninstall approval template.
+        # The ID of the application uninstallation approval template.
         self.app_uninstall_schema_id = app_uninstall_schema_id
         # The ID of the device registration approval template.
         self.device_registration_schema_id = device_registration_schema_id
-        # The ID of the file outgoing approval template.
+        # The ID of the file outbound sending approval template.
         self.dlp_send_schema_id = dlp_send_schema_id
         # The ID of the domain name blacklist approval template.
         self.domain_blacklist_schema_id = domain_blacklist_schema_id
         # The ID of the domain name whitelist approval template.
         self.domain_whitelist_schema_id = domain_whitelist_schema_id
+        # The ID of the endpoint hardening approval template.
         self.endpoint_hardening_schema_id = endpoint_hardening_schema_id
         # The ID of the peripheral control approval template.
         self.peripheral_block_schema_id = peripheral_block_schema_id
+        # The ID of the internal network access control approval template.
         self.private_access_block_schema_id = private_access_block_schema_id
         # The ID of the software blocking approval template.
         self.software_block_schema_id = software_block_schema_id
+        # The ID of the software hardening approval template.
         self.software_hardening_schema_id = software_hardening_schema_id
 
     def validate(self):
@@ -230,15 +237,25 @@ class UpdateApprovalProcessRequestMatchSchemaConfigs(DaraModel):
         software_block_schema_config: main_models.UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig = None,
         software_hardening_schema_config: main_models.UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig = None,
     ):
+        # The approval template configuration for the application uninstallation policy.
         self.app_uninstall_schema_config = app_uninstall_schema_config
+        # The approval template configuration for the device registration policy.
         self.device_registration_schema_config = device_registration_schema_config
+        # The approval template configuration for the file outbound sending policy.
         self.dlp_send_schema_config = dlp_send_schema_config
+        # The approval template configuration for the domain name blacklist policy.
         self.domain_blacklist_schema_config = domain_blacklist_schema_config
+        # The approval template configuration for the domain name whitelist policy.
         self.domain_whitelist_schema_config = domain_whitelist_schema_config
+        # The approval template configuration for the endpoint hardening policy.
         self.endpoint_hardening_schema_config = endpoint_hardening_schema_config
+        # The approval template configuration for the peripheral control policy.
         self.peripheral_block_schema_config = peripheral_block_schema_config
+        # The approval template configuration for the internal network access control policy.
         self.private_access_block_schema_config = private_access_block_schema_config
+        # The approval template configuration for the software blocking policy.
         self.software_block_schema_config = software_block_schema_config
+        # The approval template configuration for the software hardening policy.
         self.software_hardening_schema_config = software_hardening_schema_config
 
     def validate(self):
@@ -351,8 +368,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfi
         field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
         self.schema_id = schema_id
 
     def validate(self):
@@ -402,8 +422,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfi
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
         self.display_field = display_field
+        # The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
         self.display_field_value = display_field_value
+        # The system field identifier, such as processName.
         self.system_field = system_field
 
     def validate(self):
@@ -445,8 +468,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig(Da
         field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
         self.schema_id = schema_id
 
     def validate(self):
@@ -496,8 +522,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFie
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
         self.display_field = display_field
+        # The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as softwareName.
         self.system_field = system_field
 
     def validate(self):
@@ -539,8 +568,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConf
         field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
         self.schema_id = schema_id
 
     def validate(self):
@@ -590,8 +622,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConf
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
         self.display_field = display_field
+        # The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
         self.display_field_value = display_field_value
+        # The system field identifier, such as applicationId.
         self.system_field = system_field
 
     def validate(self):
@@ -633,8 +668,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig(
         field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
         self.schema_id = schema_id
 
     def validate(self):
@@ -684,8 +722,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigF
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
         self.display_field = display_field
+        # The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as devType.
         self.system_field = system_field
 
     def validate(self):
@@ -727,8 +768,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfi
         field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
         self.schema_id = schema_id
 
     def validate(self):
@@ -778,8 +822,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfi
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
         self.display_field = display_field
+        # The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
         self.display_field_value = display_field_value
+        # The system field identifier, such as processName.
         self.system_field = system_field
 
     def validate(self):
@@ -821,8 +868,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig(
         field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
         self.schema_id = schema_id
 
     def validate(self):
@@ -872,8 +922,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigF
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
         self.display_field = display_field
+        # The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as reportDomain.
         self.system_field = system_field
 
     def validate(self):
@@ -915,8 +968,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfig(
         field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
         self.schema_id = schema_id
 
     def validate(self):
@@ -966,8 +1022,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigF
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
         self.display_field = display_field
+        # The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as reportDomain.
         self.system_field = system_field
 
     def validate(self):
@@ -1009,8 +1068,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig(DaraMode
         field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
         self.schema_id = schema_id
 
     def validate(self):
@@ -1060,8 +1122,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap(
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
         self.display_field = display_field
+        # The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as fileName.
         self.system_field = system_field
 
     def validate(self):
@@ -1103,8 +1168,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConf
         field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
         self.schema_id = schema_id
 
     def validate(self):
@@ -1154,8 +1222,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConf
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
         self.display_field = display_field
+        # The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as report_domain.
         self.system_field = system_field
 
     def validate(self):
@@ -1197,8 +1268,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig(Dar
         field_map: List[main_models.UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap] = None,
         schema_id: str = None,
     ):
+        # The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
         self.external_process_id = external_process_id
+        # The mapping list between system fields and external approval form controls.
         self.field_map = field_map
+        # The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
         self.schema_id = schema_id
 
     def validate(self):
@@ -1248,8 +1322,11 @@ class UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFiel
         display_field_value: str = None,
         system_field: str = None,
     ):
+        # The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
         self.display_field = display_field
+        # The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
         self.display_field_value = display_field_value
+        # The identifier of the system field, such as approvalReason.
         self.system_field = system_field
 
     def validate(self):

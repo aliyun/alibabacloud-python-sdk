@@ -84,23 +84,23 @@ class ListPrivateAccessApplicationsResponseBodyApplications(DaraModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
-        # The application address groups. This parameter is returned when ConfigMode is set to Precise, and is empty when ConfigMode is an empty string.
+        # The application address groups. This parameter is returned when ConfigMode is Precise, and is empty when ConfigMode is an empty string.
         self.address_groups = address_groups
         # The addresses of the private access application.
         self.addresses = addresses
         # The ID of the private access application.
         self.application_id = application_id
-        # Specifies whether the application is created by automatic creation. Valid values:
-        # * 0: manual creation.
-        # * 1: automatic creation.
+        # Specifies whether the application is automatically created. Valid values:
+        # * 0: Manually created.
+        # * 1: Automatically created.
         self.auto_generated = auto_generated
         # The browser access mode. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.browser_access_status = browser_access_status
         # The configuration mode. Valid values:
-        # * Empty string: default mode.
-        # * Precise: precise mode.
+        # * Empty string: Default mode.
+        # * Precise: Precise mode.
         self.config_mode = config_mode
         # The IDs of the connectors.
         self.connector_ids = connector_ids
@@ -111,8 +111,8 @@ class ListPrivateAccessApplicationsResponseBodyApplications(DaraModel):
         # The health check configuration. This parameter contains valid configurations only when the health check mode is Continuous.
         self.health_check_config = health_check_config
         # The health check mode. Valid values:
-        # * OnAccess: checks upon access.
-        # * Continuous: continuous checks.
+        # * OnAccess: Check on access.
+        # * Continuous: Continuous check.
         self.health_check_mode = health_check_mode
         # The parameter for the browser access mode: the mapped proxy domain name.
         self.l_7proxy_domain_automatic = l_7proxy_domain_automatic
@@ -122,16 +122,16 @@ class ListPrivateAccessApplicationsResponseBodyApplications(DaraModel):
         self.name = name
         # The IDs of the private access policies.
         self.policy_ids = policy_ids
-        # The port ranges of the private access application. Multiple port ranges cannot be duplicate or overlap.
+        # The port ranges of the private access application. Multiple port ranges cannot be duplicated or overlap.
         self.port_ranges = port_ranges
         # The protocol of the private access application. Valid values:
-        # - **All**: all protocols.
+        # - **All**: All protocols.
         # - **TCP**
         # - **UDP**
         self.protocol = protocol
         # The status of the private access application. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.status = status
         # The IDs of the private access tags.
         self.tag_ids = tag_ids

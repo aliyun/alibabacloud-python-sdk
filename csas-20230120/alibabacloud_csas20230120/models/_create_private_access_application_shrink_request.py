@@ -31,21 +31,21 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
         self.address_groups = address_groups
         # The collection of private access application addresses. You can enter up to 1,000 private access application addresses.
         self.addresses = addresses
-        # The browser access status of the private access application. After you enable this feature, you can access private access applications without a client. Default value: **Disabled**. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
+        # The browser access status of the private access application. After you enable this feature, you can access private access applications in clientless mode. Default value: **Disabled**. Valid values:
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
         self.browser_access_status = browser_access_status
         # The configuration mode. Valid values:
-        # * Empty string: Default mode.
-        # * Precise: Precise mode.
+        # * Empty string: default mode.
+        # * Precise: precise mode.
         self.config_mode = config_mode
         # The description of the private access application. The description must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
         self.description = description
         # The health check configuration. This parameter is required when HealthCheckMode is set to Continuous, and cannot be specified when HealthCheckMode is set to OnAccess.
         self.health_check_config_shrink = health_check_config_shrink
         # The health check mode. Valid values:
-        # * OnAccess: Checks upon access without proactive probing.
-        # * Continuous: Performs continuous checks and proactive probing based on the configurations in HealthCheckConfig.
+        # * OnAccess: checks upon access without proactive probing.
+        # * Continuous: performs continuous checks and proactive probing based on the configurations in HealthCheckConfig.
         # If this parameter is not specified, the default value is OnAccess. When the application addresses include wildcard domain names or CIDR blocks, or when the number of application addresses exceeds 10, only OnAccess is supported.
         self.health_check_mode = health_check_mode
         # The application configuration in browser access mode.
@@ -61,15 +61,15 @@ class CreatePrivateAccessApplicationShrinkRequest(DaraModel):
         # The collection of port ranges for the private access application. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicate or overlap.
         self.port_ranges = port_ranges
         # The protocol of the private access application. Valid values:
-        # - **All**: All protocols.
+        # - **All**: all protocols.
         # - **TCP**
         # - **UDP**
         # 
         # This parameter is required.
         self.protocol = protocol
         # The status of the private access application. Valid values:
-        # - **Enabled**: Enabled.
-        # - **Disabled**: Disabled.
+        # - **Enabled**: enabled.
+        # - **Disabled**: disabled.
         # 
         # This parameter is required.
         self.status = status

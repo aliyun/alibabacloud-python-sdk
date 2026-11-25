@@ -11,9 +11,9 @@ class GetIdpConfigResponseBody(DaraModel):
         data: main_models.GetIdpConfigResponseBodyData = None,
         request_id: str = None,
     ):
-        # Identity provider configuration.
+        # The identity source configuration.
         self.data = data
-        # ID of this request.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -66,45 +66,43 @@ class GetIdpConfigResponseBodyData(DaraModel):
         verify_token: str = None,
         verify_url: str = None,
     ):
-        # AccessKey ID for the IDaaS identity provider.
+        # The AccessKey ID of the IDaaS identity source.
         self.access_key = access_key
-        # AccessKey for the IDaaS identity provider.
+        # The AccessKey secret of the IDaaS identity source.
         self.access_key_secret = access_key_secret
-        # Description of the identity provider configuration.
+        # The description of the identity source configuration.
         self.description = description
-        # URL to query the organizational structure from a custom identity provider.
+        # The URL used to query the organizational structure of a self-managed identity source.
         self.get_group_url = get_group_url
-        # ID of the identity provider configuration.
+        # The ID of the identity source configuration.
         self.id = id
-        # Metadata of the identity provider (IdP).
+        # The metadata of the identity provider (IdP).
         self.idp_metadata = idp_metadata
-        # Type of multi-factor authentication (MFA) configuration.
+        # The configuration type of secondary authentication.
         self.mfa_config_type = mfa_config_type
-        # Login type for mobile clients.
+        # The logon type for mobile devices.
         self.mobile_login_type = mobile_login_type
-        # Type of MFA configuration for mobile clients.
+        # The configuration type of secondary authentication for mobile devices.
         self.mobile_mfa_config_type = mobile_mfa_config_type
-        # List of IDs for multiple identity providers.
+        # The IDs of multiple identity source configurations.
         self.multi_idp_info = multi_idp_info
-        # Name of the identity provider configuration.
+        # The name of the identity source configuration.
         self.name = name
-        # Login type for PC clients.
+        # The logon type for PCs.
         self.pc_login_type = pc_login_type
-        # Status of the identity provider configuration. Valid values:
-        # 
+        # The enabling status of the identity source configuration. Valid values:
         # - **Enabled**: Enabled.
-        # 
         # - **Disabled**: Disabled.
         self.status = status
-        # Type of the identity provider configuration.
+        # The type of the identity source configuration.
         self.type = type
-        # Time when the configuration was last updated.
+        # The update time.
         self.update_time = update_time
-        # AES key used to encrypt requests to a custom MFA service.
+        # The encryption key used for requests to a self-managed secondary authentication service.
         self.verify_aes_key = verify_aes_key
-        # Token used to verify signatures in requests to a custom MFA service.
+        # The token used to verify the request signature of a self-managed secondary authentication service.
         self.verify_token = verify_token
-        # URL used to verify one-time passwords with a custom MFA service.
+        # The verification URL of a self-managed secondary authentication service.
         self.verify_url = verify_url
 
     def validate(self):

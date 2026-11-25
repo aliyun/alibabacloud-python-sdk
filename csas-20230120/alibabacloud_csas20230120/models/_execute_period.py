@@ -20,9 +20,9 @@ class ExecutePeriod(DaraModel):
         # The frequency and interval configuration for periodic execution. Frequency and Interval together specify the execution cycle.
         self.schedule_effect = schedule_effect
         # The execution cycle mode. Valid values:
-        # - **Once**: The single execution mode. Used in combination with ExecuteMode=Once.
-        # - **Interval**: The periodic execution mode based on a specified frequency. Used in combination with ExecuteMode=Schedule.
-        # - **Weekly**: The weekly execution mode where you can select effective days. Used in combination with ExecuteMode=Schedule and EffectDay.
+        # - **Once**: Single execution mode. Used in combination with ExecuteMode=Once.
+        # - **Interval**: Periodic execution at a specified frequency. Used in combination with ExecuteMode=Schedule.
+        # - **Weekly**: Weekly execution on selected days. Used in combination with ExecuteMode=Schedule and EffectDay.
         self.valid_type = valid_type
 
     def validate(self):
@@ -156,19 +156,19 @@ class ExecutePeriodEffectDay(DaraModel):
         tuesday: bool = None,
         wednesday: bool = None,
     ):
-        # Specifies whether the policy takes effect on Friday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Friday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
         self.friday = friday
-        # Specifies whether the policy takes effect on Monday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Monday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
         self.monday = monday
-        # Specifies whether the policy takes effect on Saturday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Saturday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
         self.saturday = saturday
-        # Specifies whether the policy takes effect on Sunday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Sunday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
         self.sunday = sunday
-        # Specifies whether the policy takes effect on Thursday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Thursday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
         self.thursday = thursday
-        # Specifies whether the policy takes effect on Tuesday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Tuesday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
         self.tuesday = tuesday
-        # Specifies whether the policy takes effect on Wednesday when ValidType is set to Weekly. Valid values: true and false. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
+        # Specifies whether the policy takes effect on Wednesday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
         self.wednesday = wednesday
 
     def validate(self):

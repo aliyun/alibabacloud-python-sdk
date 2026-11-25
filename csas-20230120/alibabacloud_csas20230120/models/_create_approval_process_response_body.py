@@ -65,7 +65,7 @@ class CreateApprovalProcessResponseBodyProcess(DaraModel):
         software_block_policies: main_models.CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies = None,
         software_hardening_policies: main_models.CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies = None,
     ):
-        # The list of policies associated with endpoint uninstallation.
+        # The list of policies associated with application uninstallation.
         self.app_uninstall_policies = app_uninstall_policies
         # The time when the approval process was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
@@ -79,9 +79,11 @@ class CreateApprovalProcessResponseBodyProcess(DaraModel):
         self.domain_blacklist_policies = domain_blacklist_policies
         # The list of policies associated with the domain name whitelist.
         self.domain_whitelist_policies = domain_whitelist_policies
+        # The list of policies associated with endpoint hardening.
         self.endpoint_hardening_policies = endpoint_hardening_policies
         # The list of policies associated with peripheral control.
         self.peripheral_block_policies = peripheral_block_policies
+        # The list of policies associated with internal network access control.
         self.private_access_block_policies = private_access_block_policies
         # The ID of the approval process.
         self.process_id = process_id
@@ -91,6 +93,7 @@ class CreateApprovalProcessResponseBodyProcess(DaraModel):
         self.process_nodes = process_nodes
         # The list of policies associated with software blocking.
         self.software_block_policies = software_block_policies
+        # The list of policies associated with software hardening.
         self.software_hardening_policies = software_hardening_policies
 
     def validate(self):
@@ -248,7 +251,9 @@ class CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(DaraMode
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The list of software hardening policy IDs.
         self.policy_ids = policy_ids
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -320,7 +325,7 @@ class CreateApprovalProcessResponseBodyProcessProcessNodes(DaraModel):
         sase_user_id: str = None,
         username: str = None,
     ):
-        # The approver ID.
+        # The ID of the approver.
         self.sase_user_id = sase_user_id
         # The username of the approver.
         self.username = username
@@ -357,7 +362,9 @@ class CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies(DaraMod
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The list of internal network access application IDs.
         self.policy_ids = policy_ids
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -429,7 +436,9 @@ class CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies(DaraMode
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        # The list of endpoint hardening policy IDs.
         self.policy_ids = policy_ids
+        # The ID of the approval template.
         self.schema_id = schema_id
 
     def validate(self):
@@ -612,7 +621,7 @@ class CreateApprovalProcessResponseBodyProcessAppUninstallPolicies(DaraModel):
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
-        # The list of endpoint uninstallation policy IDs.
+        # The list of application uninstallation policy IDs.
         self.policy_ids = policy_ids
         # The ID of the approval template.
         self.schema_id = schema_id

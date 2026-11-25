@@ -15,13 +15,13 @@ class PAApplicationUnauthorizedAccessConfig(DaraModel):
     ):
         # Specifies whether end users are allowed to submit approval requests.
         self.allow_report = allow_report
-        # The content displayed in the client interception pop-up window.
+        # The content displayed in the client block pop-up window.
         self.block_content = block_content
         # Specifies whether the feature is enabled. Valid values:
-        # - **true**: Enabled. Users are redirected to an interception page when they access an unauthorized application.
-        # - **false**: Disabled. An error message is returned by default when users access an unauthorized application.
+        # - **true**: Enabled. If an application is unauthorized, the user is redirected to the block page.
+        # - **false**: Disabled. If an application is unauthorized, an error message is returned by default.
         self.enabled = enabled
-        # The ID of the approval flow associated with the policy.
+        # The ID of the approval process associated with the policy.
         self.report_process_id = report_process_id
 
     def validate(self):
@@ -114,13 +114,13 @@ class PAApplicationUnauthorizedAccessConfigBlockContentBlockTextZh(DaraModel):
         browser_alert_title: str = None,
         report_button_text: str = None,
     ):
-        # The prompt content of the block page.
+        # The prompt message on the block page.
         self.browser_alert_content = browser_alert_content
         # The background pattern of the block page.
         self.browser_alert_style = browser_alert_style
         # The title of the block page.
         self.browser_alert_title = browser_alert_title
-        # The text of the report approval button.
+        # The text on the approval request button.
         self.report_button_text = report_button_text
 
     def validate(self):
@@ -169,13 +169,13 @@ class PAApplicationUnauthorizedAccessConfigBlockContentBlockTextEn(DaraModel):
         browser_alert_title: str = None,
         report_button_text: str = None,
     ):
-        # The prompt content of the English block page.
+        # The English prompt message on the block page.
         self.browser_alert_content = browser_alert_content
-        # The background pattern of the English block page.
+        # The English background pattern of the block page.
         self.browser_alert_style = browser_alert_style
-        # The title of the English block page.
+        # The English title of the block page.
         self.browser_alert_title = browser_alert_title
-        # The text of the English report approval button.
+        # The English text on the approval request button.
         self.report_button_text = report_button_text
 
     def validate(self):

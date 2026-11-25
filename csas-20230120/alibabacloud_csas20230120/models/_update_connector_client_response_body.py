@@ -13,9 +13,9 @@ class UpdateConnectorClientResponseBody(DaraModel):
         connector_client: main_models.UpdateConnectorClientResponseBodyConnectorClient = None,
         request_id: str = None,
     ):
-        # ConnectorClient。
+        # The ConnectorClient.
         self.connector_client = connector_client
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -70,12 +70,12 @@ class UpdateConnectorClientResponseBodyConnectorClient(DaraModel):
         # The number of CPUs of the ConnectorClient.
         self.cpusize = cpusize
         # The connection status of the ConnectorClient. Valid values:
-        # - **Connected**: connected.
-        # - **Disconnected**: disconnected.
+        # - **Connected**: Connected.
+        # - **Disconnected**: Disconnected.
         self.connection_status = connection_status
-        # ConnectorID。
+        # The connector ID.
         self.connector_id = connector_id
-        # The time when the connector was created.
+        # The time when the connector was created. The time is in the YYYY-MM-DD HH:mm:ss format.
         self.create_time = create_time
         # The unique identifier of the ConnectorClient device.
         self.dev_tag = dev_tag
@@ -88,28 +88,28 @@ class UpdateConnectorClientResponseBodyConnectorClient(DaraModel):
         # The O&M status. Valid values:
         # - **Running**: O&M in progress.
         # - **Failed**: O&M failed.
-        # - (empty string): not in O&M status.
+        # - **(Empty string)**: Not in an O&M state.
         self.operation_status = operation_status
         # The private IP address of the ConnectorClient.
         self.private_ip = private_ip
-        # The program runtime. Unit: seconds.
+        # The runtime of the program. Unit: seconds.
         self.process_run_time = process_run_time
         # The public IP address of the ConnectorClient.
         self.public_ip = public_ip
         # The version number.
         self.release_notes = release_notes
-        # The enabled status of the ConnectorClient, which can be used to force the client offline. Valid values:
-        # - **Enabled**: enabled.
-        # - **Disabled**: disabled.
+        # The enabled status of the ConnectorClient, which controls whether the client is forced offline. Valid values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.status = status
-        # The version status of the connector. Valid values:
+        # The upgrade status of the connector. Valid values:
         # 
-        # - **Latest**: the current version is the latest version.
-        # - **NewVersionAvailable**: a newer version is available for upgrade.
+        # - **Latest**: The connector is updated to the latest version.
+        # - **NewVersionAvailable**: A new version is available for upgrade.
         self.upgrade_status = upgrade_status
         # The blockchain version.
         self.version = version
-        # The version to roll back to.
+        # The version to be rolled back.
         self.version_to_rollback = version_to_rollback
 
     def validate(self):

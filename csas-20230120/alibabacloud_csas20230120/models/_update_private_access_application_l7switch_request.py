@@ -17,38 +17,40 @@ class UpdatePrivateAccessApplicationL7SwitchRequest(DaraModel):
         src_ip_mark_status: str = None,
         status: str = None,
         timeout_sec: int = None,
+        url_access_paths: List[main_models.UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths] = None,
         user_mark_status: str = None,
         zero_trust_status: str = None,
     ):
-        # The ID of the internal-facing application. Required.
+        # The ID of the internal access application. Required.
         self.application_id = application_id
-        # The device tag mark switch. Required. Valid values:
+        # The device tag marking switch. Required. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.dev_tag_mark_status = dev_tag_mark_status
-        # The sensitive application download audit switch. Optional. Valid values:
+        # The download audit switch for sensitive applications. Optional. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.download_audit_status = download_audit_status
-        # The collection of port ranges for the internal-facing application. Multiple port ranges cannot be duplicated or overlap. You can specify up to 50 port ranges. This parameter takes effect and is validated only when Status is set to **Enabled**. If this parameter is not specified or an empty collection is passed in, the default ports 80, 443, 8080, and 465 are used. The effective ports are the intersection of the ports specified in this request and the port ranges already configured for the internal-facing application.
+        # The port ranges for the internal access application. Multiple port ranges cannot overlap or be duplicated. You can specify up to 50 port ranges. This parameter takes effect and is verified only when Status is set to **Enabled**. If this parameter is not specified or an empty set is specified, the default ports 80, 443, 8080, and 465 are used. The effective ports are the intersection of the ports specified in this request and the configured port ranges of the internal access application.
         self.port_ranges = port_ranges
-        # The source IP mark switch. Required. Valid values:
+        # The source IP marking switch. Required. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.src_ip_mark_status = src_ip_mark_status
-        # The master switch for Layer 7 access of the internal-facing application. Required. Valid values:
+        # The master switch for the Layer 7 access switch of the internal access application. Required. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         # 
-        # When the value is **Disabled**, PortRanges is neither validated nor saved.
+        # When the value is set to **Disabled**, PortRanges is neither verified nor saved.
         self.status = status
-        # The request timeout period, in seconds. Valid values: 1 to 3600. Default value: 60. If this parameter is not specified or an invalid value is specified, the value 60 is used.
+        # The request timeout period, in seconds. Valid values: 1 to 3600. Default value: 60. If this parameter is not specified or an invalid value is specified, the default value 60 is used.
         self.timeout_sec = timeout_sec
-        # The user mark switch. Required. Valid values:
+        self.url_access_paths = url_access_paths
+        # The user marking switch. Required. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.user_mark_status = user_mark_status
-        # The host bypass prevention switch. Required. Valid values:
+        # The Host bypass prevention switch. Required. Valid values:
         # - **Enabled**: Enabled.
         # - **Disabled**: Disabled.
         self.zero_trust_status = zero_trust_status
@@ -56,6 +58,10 @@ class UpdatePrivateAccessApplicationL7SwitchRequest(DaraModel):
     def validate(self):
         if self.port_ranges:
             for v1 in self.port_ranges:
+                 if v1:
+                    v1.validate()
+        if self.url_access_paths:
+            for v1 in self.url_access_paths:
                  if v1:
                     v1.validate()
 
@@ -86,6 +92,11 @@ class UpdatePrivateAccessApplicationL7SwitchRequest(DaraModel):
 
         if self.timeout_sec is not None:
             result['TimeoutSec'] = self.timeout_sec
+
+        result['UrlAccessPaths'] = []
+        if self.url_access_paths is not None:
+            for k1 in self.url_access_paths:
+                result['UrlAccessPaths'].append(k1.to_map() if k1 else None)
 
         if self.user_mark_status is not None:
             result['UserMarkStatus'] = self.user_mark_status
@@ -121,11 +132,52 @@ class UpdatePrivateAccessApplicationL7SwitchRequest(DaraModel):
         if m.get('TimeoutSec') is not None:
             self.timeout_sec = m.get('TimeoutSec')
 
+        self.url_access_paths = []
+        if m.get('UrlAccessPaths') is not None:
+            for k1 in m.get('UrlAccessPaths'):
+                temp_model = main_models.UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths()
+                self.url_access_paths.append(temp_model.from_map(k1))
+
         if m.get('UserMarkStatus') is not None:
             self.user_mark_status = m.get('UserMarkStatus')
 
         if m.get('ZeroTrustStatus') is not None:
             self.zero_trust_status = m.get('ZeroTrustStatus')
+
+        return self
+
+class UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths(DaraModel):
+    def __init__(
+        self,
+        allow_methods: List[str] = None,
+        urls: List[str] = None,
+    ):
+        self.allow_methods = allow_methods
+        self.urls = urls
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.allow_methods is not None:
+            result['AllowMethods'] = self.allow_methods
+
+        if self.urls is not None:
+            result['Urls'] = self.urls
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowMethods') is not None:
+            self.allow_methods = m.get('AllowMethods')
+
+        if m.get('Urls') is not None:
+            self.urls = m.get('Urls')
 
         return self
 

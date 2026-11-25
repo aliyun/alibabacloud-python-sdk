@@ -14,11 +14,11 @@ class InvalidateApprovalResponseBody(DaraModel):
     ):
         # The ID of the invalidated approval instance.
         self.approval_id = approval_id
-        # The effective status of the approval. When the invalidation succeeds, the value is fixed as Expired, which indicates that the approval has been invalidated.
+        # The effective status of the report. If the invalidation succeeds, Expired is returned to indicate that the report is invalidated.
         self.effect_status = effect_status
-        # The approval type. Valid values:
-        # * ApprovalReport: approval.
-        # * BackendReport: backend approval.
+        # The report type. Valid values:
+        # * ApprovalReport: approval report.
+        # * BackendReport: backend report.
         self.report_type = report_type
         # Id of the request
         self.request_id = request_id
