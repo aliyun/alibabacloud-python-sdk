@@ -18,7 +18,7 @@ class DescribeDefenseResourcesResponseBody(DaraModel):
         self.request_id = request_id
         # The list of protected objects.
         self.resources = resources
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -67,6 +67,7 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
         acw_cookie_status: int = None,
         acw_secure_status: int = None,
         acw_v3secure_status: int = None,
+        cookie_config: main_models.DescribeDefenseResourcesResponseBodyResourcesCookieConfig = None,
         custom_headers: List[str] = None,
         description: str = None,
         detail: Dict[str, Any] = None,
@@ -84,25 +85,27 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
         response_headers: List[main_models.DescribeDefenseResourcesResponseBodyResourcesResponseHeaders] = None,
         xff_status: int = None,
     ):
-        # The status of the tracking cookie.
+        # The status of the tracking cookie. Valid values:
         # 
-        # - **0**: Disabled.
+        # - **0**: disabled.
         # 
-        # - **1**: Enabled.
+        # - **1**: enabled.
         self.acw_cookie_status = acw_cookie_status
-        # The status of the secure attribute for the tracking cookie.
+        # The status of the Secure attribute for the tracking cookie. Valid values:
         # 
-        # - **0**: Disabled.
+        # - **0**: disabled.
         # 
-        # - **1**: Enabled.
+        # - **1**: enabled.
         self.acw_secure_status = acw_secure_status
-        # The status of the secure attribute for the slider cookie.
+        # The status of the Secure attribute for the slider cookie. Valid values:
         # 
-        # - **0**: Disabled.
+        # - **0**: disabled.
         # 
-        # - **1**: Enabled.
+        # - **1**: enabled.
         self.acw_v3secure_status = acw_v3secure_status
-        # The custom XFF headers used to obtain the originating IP address of the client. If XFF is set to 1 and this field is empty, the first IP address in the XFF header is used as the originating IP address of the client.
+        # The cookie attribute aggregation configuration.
+        self.cookie_config = cookie_config
+        # The custom X-Forwarded-For (XFF) header used to obtain the actual originating IP address of the client. If XFF is set to 1 and this field is empty, the first IP address in the XFF header is used as the originating IP address of the client.
         self.custom_headers = custom_headers
         # The description.
         self.description = description
@@ -110,11 +113,11 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
         self.detail = detail
         # The time when the protected object was created. Unit: milliseconds.
         self.gmt_create = gmt_create
-        # The time when the protected object was last modified. Unit: milliseconds.
+        # The time when the protected object was modified. Unit: milliseconds.
         self.gmt_modified = gmt_modified
         # The instance ID of the WAF instance.
         self.instance_id = instance_id
-        # The Alibaba Cloud account to which the protected object asset belongs in a multi-account management feature scenario.
+        # The account to which the protected object Asset belongs when the multi-account management feature is used.
         self.owner_user_id = owner_user_id
         # The protection mode of the protected object.
         self.pattern = pattern
@@ -126,22 +129,24 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
         self.resource_group = resource_group
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The origin of the protected object.
+        # The source of the protected object.
         self.resource_origin = resource_origin
         # The status of the protected object. Valid values:
         # 
-        # - **initializing**: Default protection is being initialized.
+        # - **initializing**: The default protection is being initialized.
         # 
-        # - **active**: Running normally.
+        # - **active**: The protected object is running normally.
         # 
-        # - **init_failed**: Default protection initialization failed.
+        # - **init_failed**: The default protection initialization failed.
         self.resource_status = resource_status
         # The response header parameters.
         self.response_headers = response_headers
-        # Indicates whether XFF proxy is enabled for the protected object.
+        # Indicates whether the X-Forwarded-For (XFF) proxy feature is enabled for the protected object.
         self.xff_status = xff_status
 
     def validate(self):
+        if self.cookie_config:
+            self.cookie_config.validate()
         if self.response_headers:
             for v1 in self.response_headers:
                  if v1:
@@ -160,6 +165,9 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
 
         if self.acw_v3secure_status is not None:
             result['AcwV3SecureStatus'] = self.acw_v3secure_status
+
+        if self.cookie_config is not None:
+            result['CookieConfig'] = self.cookie_config.to_map()
 
         if self.custom_headers is not None:
             result['CustomHeaders'] = self.custom_headers
@@ -224,6 +232,10 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
         if m.get('AcwV3SecureStatus') is not None:
             self.acw_v3secure_status = m.get('AcwV3SecureStatus')
 
+        if m.get('CookieConfig') is not None:
+            temp_model = main_models.DescribeDefenseResourcesResponseBodyResourcesCookieConfig()
+            self.cookie_config = temp_model.from_map(m.get('CookieConfig'))
+
         if m.get('CustomHeaders') is not None:
             self.custom_headers = m.get('CustomHeaders')
 
@@ -283,9 +295,9 @@ class DescribeDefenseResourcesResponseBodyResourcesResponseHeaders(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the custom response header.
+        # The key of the specified custom response header.
         self.key = key
-        # The value of the custom response header.
+        # The value of the specified custom response header.
         self.value = value
 
     def validate(self):
@@ -311,6 +323,51 @@ class DescribeDefenseResourcesResponseBodyResourcesResponseHeaders(DaraModel):
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class DescribeDefenseResourcesResponseBodyResourcesCookieConfig(DaraModel):
+    def __init__(
+        self,
+        acw_sc_v3same_site: str = None,
+        acw_tc_same_site: str = None,
+    ):
+        # The SameSite policy of the slider cookie. Valid values:
+        # - **None**: None.
+        # - **Lax**: Lax.
+        # - **Strict**: Strict.
+        # > An empty string indicates that the SameSite attribute is not configured.
+        self.acw_sc_v3same_site = acw_sc_v3same_site
+        # The SameSite policy of the tracking cookie. Valid values:
+        # - **None**: None.
+        # - **Lax**: Lax.
+        # - **Strict**: Strict.
+        # > An empty string indicates that the SameSite attribute is not configured.
+        self.acw_tc_same_site = acw_tc_same_site
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.acw_sc_v3same_site is not None:
+            result['AcwScV3SameSite'] = self.acw_sc_v3same_site
+
+        if self.acw_tc_same_site is not None:
+            result['AcwTcSameSite'] = self.acw_tc_same_site
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcwScV3SameSite') is not None:
+            self.acw_sc_v3same_site = m.get('AcwScV3SameSite')
+
+        if m.get('AcwTcSameSite') is not None:
+            self.acw_tc_same_site = m.get('AcwTcSameSite')
 
         return self
 

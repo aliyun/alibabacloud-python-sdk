@@ -125,12 +125,41 @@ from ._delete_member_account_response import DeleteMemberAccountResponse
 from ._describe_abnormal_cloud_resources_request import DescribeAbnormalCloudResourcesRequest
 from ._describe_abnormal_cloud_resources_response_body import DescribeAbnormalCloudResourcesResponseBody
 from ._describe_abnormal_cloud_resources_response import DescribeAbnormalCloudResourcesResponse
+from ._describe_access_config_request import DescribeAccessConfigRequest
+from ._describe_access_config_response_body import DescribeAccessConfigResponseBody
+from ._describe_access_config_response import DescribeAccessConfigResponse
 from ._describe_account_delegated_status_request import DescribeAccountDelegatedStatusRequest
 from ._describe_account_delegated_status_response_body import DescribeAccountDelegatedStatusResponseBody
 from ._describe_account_delegated_status_response import DescribeAccountDelegatedStatusResponse
 from ._describe_addresses_request import DescribeAddressesRequest
 from ._describe_addresses_response_body import DescribeAddressesResponseBody
 from ._describe_addresses_response import DescribeAddressesResponse
+from ._describe_ai_engine_event_request import DescribeAiEngineEventRequest
+from ._describe_ai_engine_event_response_body import DescribeAiEngineEventResponseBody
+from ._describe_ai_engine_event_response import DescribeAiEngineEventResponse
+from ._describe_ai_engine_event_nodes_request import DescribeAiEngineEventNodesRequest
+from ._describe_ai_engine_event_nodes_response_body import DescribeAiEngineEventNodesResponseBody
+from ._describe_ai_engine_event_nodes_response import DescribeAiEngineEventNodesResponse
+from ._describe_ai_engine_event_operations_request import DescribeAiEngineEventOperationsRequest
+from ._describe_ai_engine_event_operations_response_body import DescribeAiEngineEventOperationsResponseBody
+from ._describe_ai_engine_event_operations_response import DescribeAiEngineEventOperationsResponse
+from ._describe_ai_engine_event_trends_request import DescribeAiEngineEventTrendsRequest
+from ._describe_ai_engine_event_trends_response_body import DescribeAiEngineEventTrendsResponseBody
+from ._describe_ai_engine_event_trends_response import DescribeAiEngineEventTrendsResponse
+from ._describe_ai_engine_events_request import DescribeAiEngineEventsRequest
+from ._describe_ai_engine_events_shrink_request import DescribeAiEngineEventsShrinkRequest
+from ._describe_ai_engine_events_response_body import DescribeAiEngineEventsResponseBody
+from ._describe_ai_engine_events_response import DescribeAiEngineEventsResponse
+from ._describe_ai_engine_evidence_request_request import DescribeAiEngineEvidenceRequestRequest
+from ._describe_ai_engine_evidence_request_response_body import DescribeAiEngineEvidenceRequestResponseBody
+from ._describe_ai_engine_evidence_request_response import DescribeAiEngineEvidenceRequestResponse
+from ._describe_ai_engine_evidence_requests_request import DescribeAiEngineEvidenceRequestsRequest
+from ._describe_ai_engine_evidence_requests_shrink_request import DescribeAiEngineEvidenceRequestsShrinkRequest
+from ._describe_ai_engine_evidence_requests_response_body import DescribeAiEngineEvidenceRequestsResponseBody
+from ._describe_ai_engine_evidence_requests_response import DescribeAiEngineEvidenceRequestsResponse
+from ._describe_ai_engine_overview_request import DescribeAiEngineOverviewRequest
+from ._describe_ai_engine_overview_response_body import DescribeAiEngineOverviewResponseBody
+from ._describe_ai_engine_overview_response import DescribeAiEngineOverviewResponse
 from ._describe_alarm_banner_request import DescribeAlarmBannerRequest
 from ._describe_alarm_banner_response_body import DescribeAlarmBannerResponseBody
 from ._describe_alarm_banner_response import DescribeAlarmBannerResponse
@@ -596,6 +625,12 @@ from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_tag_values_request import ListTagValuesRequest
 from ._list_tag_values_response_body import ListTagValuesResponseBody
 from ._list_tag_values_response import ListTagValuesResponse
+from ._modify_access_config_request import ModifyAccessConfigRequest
+from ._modify_access_config_response_body import ModifyAccessConfigResponseBody
+from ._modify_access_config_response import ModifyAccessConfigResponse
+from ._modify_ai_engine_event_status_request import ModifyAiEngineEventStatusRequest
+from ._modify_ai_engine_event_status_response_body import ModifyAiEngineEventStatusResponseBody
+from ._modify_ai_engine_event_status_response import ModifyAiEngineEventStatusResponse
 from ._modify_apisec_abnormals_request import ModifyApisecAbnormalsRequest
 from ._modify_apisec_abnormals_response_body import ModifyApisecAbnormalsResponseBody
 from ._modify_apisec_abnormals_response import ModifyApisecAbnormalsResponse
@@ -634,6 +669,7 @@ from ._modify_defense_resource_group_request import ModifyDefenseResourceGroupRe
 from ._modify_defense_resource_group_response_body import ModifyDefenseResourceGroupResponseBody
 from ._modify_defense_resource_group_response import ModifyDefenseResourceGroupResponse
 from ._modify_defense_resource_xff_request import ModifyDefenseResourceXffRequest
+from ._modify_defense_resource_xff_shrink_request import ModifyDefenseResourceXffShrinkRequest
 from ._modify_defense_resource_xff_response_body import ModifyDefenseResourceXffResponseBody
 from ._modify_defense_resource_xff_response import ModifyDefenseResourceXffResponse
 from ._modify_defense_rule_request import ModifyDefenseRuleRequest
@@ -746,6 +782,7 @@ from ._create_cloud_resource_shrink_request import CreateCloudResourceShrinkRequ
 from ._create_defense_resource_request import CreateDefenseResourceRequestTag
 from ._create_defense_resource_shrink_request import CreateDefenseResourceShrinkRequestTag
 from ._create_domain_request import CreateDomainRequestListen
+from ._create_domain_request import CreateDomainRequestRedirectBackendConfig
 from ._create_domain_request import CreateDomainRequestRedirectBackendPorts
 from ._create_domain_request import CreateDomainRequestRedirectRequestHeaders
 from ._create_domain_request import CreateDomainRequestRedirect
@@ -755,6 +792,24 @@ from ._create_domain_response_body import CreateDomainResponseBodyDomainInfo
 from ._describe_abnormal_cloud_resources_response_body import DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails
 from ._describe_abnormal_cloud_resources_response_body import DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources
 from ._describe_addresses_response_body import DescribeAddressesResponseBodyAddressList
+from ._describe_ai_engine_event_response_body import DescribeAiEngineEventResponseBodyAttackSourcesSources
+from ._describe_ai_engine_event_response_body import DescribeAiEngineEventResponseBodyAttackSources
+from ._describe_ai_engine_event_nodes_response_body import DescribeAiEngineEventNodesResponseBodyItems
+from ._describe_ai_engine_event_operations_response_body import DescribeAiEngineEventOperationsResponseBodyItems
+from ._describe_ai_engine_event_trends_response_body import DescribeAiEngineEventTrendsResponseBodyPointsRiskCounts
+from ._describe_ai_engine_event_trends_response_body import DescribeAiEngineEventTrendsResponseBodyPoints
+from ._describe_ai_engine_events_request import DescribeAiEngineEventsRequestFilter
+from ._describe_ai_engine_events_response_body import DescribeAiEngineEventsResponseBodyItemsAttackSourcesSources
+from ._describe_ai_engine_events_response_body import DescribeAiEngineEventsResponseBodyItemsAttackSources
+from ._describe_ai_engine_events_response_body import DescribeAiEngineEventsResponseBodyItems
+from ._describe_ai_engine_evidence_request_response_body import DescribeAiEngineEvidenceRequestResponseBodyAttackSourcesSources
+from ._describe_ai_engine_evidence_request_response_body import DescribeAiEngineEvidenceRequestResponseBodyAttackSources
+from ._describe_ai_engine_evidence_requests_request import DescribeAiEngineEvidenceRequestsRequestFilter
+from ._describe_ai_engine_evidence_requests_response_body import DescribeAiEngineEvidenceRequestsResponseBodyItemsAttackSourcesSources
+from ._describe_ai_engine_evidence_requests_response_body import DescribeAiEngineEvidenceRequestsResponseBodyItemsAttackSources
+from ._describe_ai_engine_evidence_requests_response_body import DescribeAiEngineEvidenceRequestsResponseBodyItems
+from ._describe_ai_engine_overview_response_body import DescribeAiEngineOverviewResponseBodyHandleStatusCounts
+from ._describe_ai_engine_overview_response_body import DescribeAiEngineOverviewResponseBodyRiskCounts
 from ._describe_alarm_banner_response_body import DescribeAlarmBannerResponseBodyBannerStatus
 from ._describe_alarm_list_response_body import DescribeAlarmListResponseBodyAlarms
 from ._describe_api_exports_response_body import DescribeApiExportsResponseBodyApiExports
@@ -794,6 +849,7 @@ from ._describe_cname_count_response_body import DescribeCnameCountResponseBodyC
 from ._describe_common_log_fields_response_body import DescribeCommonLogFieldsResponseBodyLogFieldList
 from ._describe_ddo_sstatus_response_body import DescribeDDoSStatusResponseBodyDDoSStatus
 from ._describe_default_https_response_body import DescribeDefaultHttpsResponseBodyDefaultHttps
+from ._describe_defense_resource_response_body import DescribeDefenseResourceResponseBodyResourceCookieConfig
 from ._describe_defense_resource_response_body import DescribeDefenseResourceResponseBodyResourceResponseHeaders
 from ._describe_defense_resource_response_body import DescribeDefenseResourceResponseBodyResource
 from ._describe_defense_resource_group_response_body import DescribeDefenseResourceGroupResponseBodyGroup
@@ -801,6 +857,7 @@ from ._describe_defense_resource_groups_response_body import DescribeDefenseReso
 from ._describe_defense_resource_owner_uid_response_body import DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos
 from ._describe_defense_resource_templates_response_body import DescribeDefenseResourceTemplatesResponseBodyTemplates
 from ._describe_defense_resources_request import DescribeDefenseResourcesRequestTag
+from ._describe_defense_resources_response_body import DescribeDefenseResourcesResponseBodyResourcesCookieConfig
 from ._describe_defense_resources_response_body import DescribeDefenseResourcesResponseBodyResourcesResponseHeaders
 from ._describe_defense_resources_response_body import DescribeDefenseResourcesResponseBodyResources
 from ._describe_defense_rule_response_body import DescribeDefenseRuleResponseBodyRule
@@ -810,6 +867,7 @@ from ._describe_defense_template_response_body import DescribeDefenseTemplateRes
 from ._describe_defense_templates_response_body import DescribeDefenseTemplatesResponseBodyTemplates
 from ._describe_domain_detail_response_body import DescribeDomainDetailResponseBodyCertDetail
 from ._describe_domain_detail_response_body import DescribeDomainDetailResponseBodyListen
+from ._describe_domain_detail_response_body import DescribeDomainDetailResponseBodyRedirectBackendConfig
 from ._describe_domain_detail_response_body import DescribeDomainDetailResponseBodyRedirectBackendPorts
 from ._describe_domain_detail_response_body import DescribeDomainDetailResponseBodyRedirectBackends
 from ._describe_domain_detail_response_body import DescribeDomainDetailResponseBodyRedirectBackupBackends
@@ -944,8 +1002,11 @@ from ._modify_cloud_resource_request import ModifyCloudResourceRequestListen
 from ._modify_cloud_resource_request import ModifyCloudResourceRequestRedirectRequestHeaders
 from ._modify_cloud_resource_request import ModifyCloudResourceRequestRedirect
 from ._modify_cloud_resource_cert_request import ModifyCloudResourceCertRequestCertificates
+from ._modify_defense_resource_xff_request import ModifyDefenseResourceXffRequestCookieConfig
 from ._modify_defense_resource_xff_request import ModifyDefenseResourceXffRequestResponseHeaders
+from ._modify_defense_resource_xff_shrink_request import ModifyDefenseResourceXffShrinkRequestResponseHeaders
 from ._modify_domain_request import ModifyDomainRequestListen
+from ._modify_domain_request import ModifyDomainRequestRedirectBackendConfig
 from ._modify_domain_request import ModifyDomainRequestRedirectBackendPorts
 from ._modify_domain_request import ModifyDomainRequestRedirectRequestHeaders
 from ._modify_domain_request import ModifyDomainRequestRedirect
@@ -1078,12 +1139,41 @@ __all__ = [
     DescribeAbnormalCloudResourcesRequest,
     DescribeAbnormalCloudResourcesResponseBody,
     DescribeAbnormalCloudResourcesResponse,
+    DescribeAccessConfigRequest,
+    DescribeAccessConfigResponseBody,
+    DescribeAccessConfigResponse,
     DescribeAccountDelegatedStatusRequest,
     DescribeAccountDelegatedStatusResponseBody,
     DescribeAccountDelegatedStatusResponse,
     DescribeAddressesRequest,
     DescribeAddressesResponseBody,
     DescribeAddressesResponse,
+    DescribeAiEngineEventRequest,
+    DescribeAiEngineEventResponseBody,
+    DescribeAiEngineEventResponse,
+    DescribeAiEngineEventNodesRequest,
+    DescribeAiEngineEventNodesResponseBody,
+    DescribeAiEngineEventNodesResponse,
+    DescribeAiEngineEventOperationsRequest,
+    DescribeAiEngineEventOperationsResponseBody,
+    DescribeAiEngineEventOperationsResponse,
+    DescribeAiEngineEventTrendsRequest,
+    DescribeAiEngineEventTrendsResponseBody,
+    DescribeAiEngineEventTrendsResponse,
+    DescribeAiEngineEventsRequest,
+    DescribeAiEngineEventsShrinkRequest,
+    DescribeAiEngineEventsResponseBody,
+    DescribeAiEngineEventsResponse,
+    DescribeAiEngineEvidenceRequestRequest,
+    DescribeAiEngineEvidenceRequestResponseBody,
+    DescribeAiEngineEvidenceRequestResponse,
+    DescribeAiEngineEvidenceRequestsRequest,
+    DescribeAiEngineEvidenceRequestsShrinkRequest,
+    DescribeAiEngineEvidenceRequestsResponseBody,
+    DescribeAiEngineEvidenceRequestsResponse,
+    DescribeAiEngineOverviewRequest,
+    DescribeAiEngineOverviewResponseBody,
+    DescribeAiEngineOverviewResponse,
     DescribeAlarmBannerRequest,
     DescribeAlarmBannerResponseBody,
     DescribeAlarmBannerResponse,
@@ -1549,6 +1639,12 @@ __all__ = [
     ListTagValuesRequest,
     ListTagValuesResponseBody,
     ListTagValuesResponse,
+    ModifyAccessConfigRequest,
+    ModifyAccessConfigResponseBody,
+    ModifyAccessConfigResponse,
+    ModifyAiEngineEventStatusRequest,
+    ModifyAiEngineEventStatusResponseBody,
+    ModifyAiEngineEventStatusResponse,
     ModifyApisecAbnormalsRequest,
     ModifyApisecAbnormalsResponseBody,
     ModifyApisecAbnormalsResponse,
@@ -1587,6 +1683,7 @@ __all__ = [
     ModifyDefenseResourceGroupResponseBody,
     ModifyDefenseResourceGroupResponse,
     ModifyDefenseResourceXffRequest,
+    ModifyDefenseResourceXffShrinkRequest,
     ModifyDefenseResourceXffResponseBody,
     ModifyDefenseResourceXffResponse,
     ModifyDefenseRuleRequest,
@@ -1699,6 +1796,7 @@ __all__ = [
     CreateDefenseResourceRequestTag,
     CreateDefenseResourceShrinkRequestTag,
     CreateDomainRequestListen,
+    CreateDomainRequestRedirectBackendConfig,
     CreateDomainRequestRedirectBackendPorts,
     CreateDomainRequestRedirectRequestHeaders,
     CreateDomainRequestRedirect,
@@ -1708,6 +1806,24 @@ __all__ = [
     DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResourcesDetails,
     DescribeAbnormalCloudResourcesResponseBodyAbnormalCloudResources,
     DescribeAddressesResponseBodyAddressList,
+    DescribeAiEngineEventResponseBodyAttackSourcesSources,
+    DescribeAiEngineEventResponseBodyAttackSources,
+    DescribeAiEngineEventNodesResponseBodyItems,
+    DescribeAiEngineEventOperationsResponseBodyItems,
+    DescribeAiEngineEventTrendsResponseBodyPointsRiskCounts,
+    DescribeAiEngineEventTrendsResponseBodyPoints,
+    DescribeAiEngineEventsRequestFilter,
+    DescribeAiEngineEventsResponseBodyItemsAttackSourcesSources,
+    DescribeAiEngineEventsResponseBodyItemsAttackSources,
+    DescribeAiEngineEventsResponseBodyItems,
+    DescribeAiEngineEvidenceRequestResponseBodyAttackSourcesSources,
+    DescribeAiEngineEvidenceRequestResponseBodyAttackSources,
+    DescribeAiEngineEvidenceRequestsRequestFilter,
+    DescribeAiEngineEvidenceRequestsResponseBodyItemsAttackSourcesSources,
+    DescribeAiEngineEvidenceRequestsResponseBodyItemsAttackSources,
+    DescribeAiEngineEvidenceRequestsResponseBodyItems,
+    DescribeAiEngineOverviewResponseBodyHandleStatusCounts,
+    DescribeAiEngineOverviewResponseBodyRiskCounts,
     DescribeAlarmBannerResponseBodyBannerStatus,
     DescribeAlarmListResponseBodyAlarms,
     DescribeApiExportsResponseBodyApiExports,
@@ -1747,6 +1863,7 @@ __all__ = [
     DescribeCommonLogFieldsResponseBodyLogFieldList,
     DescribeDDoSStatusResponseBodyDDoSStatus,
     DescribeDefaultHttpsResponseBodyDefaultHttps,
+    DescribeDefenseResourceResponseBodyResourceCookieConfig,
     DescribeDefenseResourceResponseBodyResourceResponseHeaders,
     DescribeDefenseResourceResponseBodyResource,
     DescribeDefenseResourceGroupResponseBodyGroup,
@@ -1754,6 +1871,7 @@ __all__ = [
     DescribeDefenseResourceOwnerUidResponseBodyOwnerInfos,
     DescribeDefenseResourceTemplatesResponseBodyTemplates,
     DescribeDefenseResourcesRequestTag,
+    DescribeDefenseResourcesResponseBodyResourcesCookieConfig,
     DescribeDefenseResourcesResponseBodyResourcesResponseHeaders,
     DescribeDefenseResourcesResponseBodyResources,
     DescribeDefenseRuleResponseBodyRule,
@@ -1763,6 +1881,7 @@ __all__ = [
     DescribeDefenseTemplatesResponseBodyTemplates,
     DescribeDomainDetailResponseBodyCertDetail,
     DescribeDomainDetailResponseBodyListen,
+    DescribeDomainDetailResponseBodyRedirectBackendConfig,
     DescribeDomainDetailResponseBodyRedirectBackendPorts,
     DescribeDomainDetailResponseBodyRedirectBackends,
     DescribeDomainDetailResponseBodyRedirectBackupBackends,
@@ -1897,8 +2016,11 @@ __all__ = [
     ModifyCloudResourceRequestRedirectRequestHeaders,
     ModifyCloudResourceRequestRedirect,
     ModifyCloudResourceCertRequestCertificates,
+    ModifyDefenseResourceXffRequestCookieConfig,
     ModifyDefenseResourceXffRequestResponseHeaders,
+    ModifyDefenseResourceXffShrinkRequestResponseHeaders,
     ModifyDomainRequestListen,
+    ModifyDomainRequestRedirectBackendConfig,
     ModifyDomainRequestRedirectBackendPorts,
     ModifyDomainRequestRedirectRequestHeaders,
     ModifyDomainRequestRedirect,

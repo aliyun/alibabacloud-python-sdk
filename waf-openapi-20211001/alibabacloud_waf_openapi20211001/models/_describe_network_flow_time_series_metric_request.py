@@ -16,32 +16,28 @@ class DescribeNetworkFlowTimeSeriesMetricRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The filter conditions for the query. Multiple filter conditions have a logical AND relationship.
+        # The query filter conditions. Multiple filter conditions are combined by using the logical AND operator.
         # 
         # This parameter is required.
         self.filter = filter
         # The ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the instance ID.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The metric to query. Different metrics return different data. Valid values:
+        # The metric used to distinguish the returned data content. Different metrics correspond to different data content. The metrics supported by this operation are as follows:
         # 
-        # - qps: The number of requests that WAF processes per second. This is a peak value. WAF calculates a queries per second (QPS) value every 10 seconds and uses the peak value within the specified time granularity as the QPS.
-        # 
-        # - total_requests: The total number of requests that WAF processes.
-        # 
-        # - top5_status: The top five response codes that WAF returns to the client and the corresponding time series statistics.
-        # 
-        # - top5_upstream_status: The top five response codes that the origin server returns to the client and the corresponding time series statistics.
+        # *   qps: returns the number of requests processed by WAF per second. The peak calculation method is used. A QPS value is calculated every 10 seconds, and the Peak Volume among multiple values is used as the QPS value within the current statistical time granularity.
+        # *   total_requests: returns the total number of requests processed by WAF.
+        # *   top5_status: returns the top 5 response codes returned by WAF to the client and the corresponding time sequence statistics.
+        # *   top 5_upstream_status: returns the top 5 back-to-origin response codes returned by the origin server to the client and the corresponding time sequence statistics.
         # 
         # This parameter is required.
         self.metric = metric
-        # The region of the WAF instance. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
-        # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
@@ -99,9 +95,9 @@ class DescribeNetworkFlowTimeSeriesMetricRequestFilter(DaraModel):
         conditions: List[main_models.DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions] = None,
         date_range: main_models.DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange = None,
     ):
-        # A list of filter conditions. Each item describes a filter condition.
+        # The list of filter conditions. Each node describes a filter condition.
         self.conditions = conditions
-        # The time range to query.
+        # The time range for the query.
         # 
         # This parameter is required.
         self.date_range = date_range
@@ -149,13 +145,13 @@ class DescribeNetworkFlowTimeSeriesMetricRequestFilterDateRange(DaraModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
+        # The end time of the query. The time is represented as a UNIX timestamp in seconds.
         # 
         # This parameter is required.
         self.end_date = end_date
-        # The start of the time range to query, in UNIX timestamp format. Unit: seconds. The query time range cannot exceed the last 30 days.
-        # 
-        # > ## The start time must be within the last 30 days.
+        # The start time of the query. The data range cannot exceed the past 30 days. The time is represented as a UNIX timestamp in seconds.
+        # > The start time must be later than the current time minus 30 days.
+        # > -
         # 
         # This parameter is required.
         self.start_date = start_date
@@ -193,15 +189,14 @@ class DescribeNetworkFlowTimeSeriesMetricRequestFilterConditions(DaraModel):
         op_value: str = None,
         values: Any = None,
     ):
-        # The field to use for filtering. This parameter supports the following fields:
+        # The name of the field on which the filter operation is performed. The Key parameter of the current operation supports only the following two fields:
         # 
-        # - matched_host: The protected object.
-        # 
-        # - cluster: The protection cluster.
+        # - matched_host: the protected object.
+        # - cluster: the protection cluster.
         self.key = key
         # The operator.
         self.op_value = op_value
-        # The filter value.
+        # The filter values.
         self.values = values
 
     def validate(self):

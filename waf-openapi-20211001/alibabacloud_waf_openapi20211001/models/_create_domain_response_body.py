@@ -51,9 +51,9 @@ class CreateDomainResponseBodyDomainInfo(DaraModel):
         domain: str = None,
         domain_id: str = None,
     ):
-        # The CNAME assigned by WAF to the domain name.
+        # The CNAME address assigned by WAF to the domain name.
         self.cname = cname
-        # The name of the added domain name.
+        # The added domain name.
         self.domain = domain
         # The domain name ID.
         self.domain_id = domain_id

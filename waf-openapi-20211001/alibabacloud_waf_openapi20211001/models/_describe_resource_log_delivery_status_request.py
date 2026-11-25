@@ -13,7 +13,7 @@ class DescribeResourceLogDeliveryStatusRequest(DaraModel):
         resources: str = None,
     ):
         # The ID of the WAF instance.
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -23,7 +23,7 @@ class DescribeResourceLogDeliveryStatusRequest(DaraModel):
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The protected objects to query. Separate multiple protected objects with commas (,).
         # 

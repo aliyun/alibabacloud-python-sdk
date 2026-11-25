@@ -16,7 +16,7 @@ class DescribeApiExportsResponseBody(DaraModel):
     ):
         # The list of export tasks.
         self.api_exports = api_exports
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of entries returned.
         self.total = total
@@ -71,9 +71,9 @@ class DescribeApiExportsResponseBodyApiExports(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The time when the export task was created. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # The time when the export task was created. The value is a UNIX timestamp in UTC. Unit: seconds.
         self.create_time = create_time
-        # The file name.
+        # The name of the file.
         self.file_name = file_name
         # The download URL of the file.
         self.file_url = file_url
@@ -85,15 +85,15 @@ class DescribeApiExportsResponseBodyApiExports(DaraModel):
         # 
         # - **exporting**: The export is in progress.
         # 
-        # - **completed**: The export is complete.
+        # - **completed**: The export succeeded.
         self.status = status
         # The type of the export task. Valid values:
         # 
-        # - **apisec_api**: API asset task.
+        # - **apisec_api**: API asset task
         # 
-        # - **apisec_abnormal**: API risk task.
+        # - **apisec_abnormal**: API risk task
         # 
-        # - **apisec_event**: API security event task.
+        # - **apisec_event**: API security event task
         self.type = type
 
     def validate(self):

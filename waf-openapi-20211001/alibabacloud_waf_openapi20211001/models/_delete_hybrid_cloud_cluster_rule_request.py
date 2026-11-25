@@ -12,7 +12,7 @@ class DeleteHybridCloudClusterRuleRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The resource ID of the cluster rule.
+        # The ID of the cluster rule resource.
         # 
         # This parameter is required.
         self.cluster_rule_resource_id = cluster_rule_resource_id
@@ -22,7 +22,7 @@ class DeleteHybridCloudClusterRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 

@@ -13,6 +13,7 @@ class ModifyDefenseResourceXffRequest(DaraModel):
         acw_cookie_status: int = None,
         acw_secure_status: int = None,
         acw_v3secure_status: int = None,
+        cookie_config: main_models.ModifyDefenseResourceXffRequestCookieConfig = None,
         custom_headers: List[str] = None,
         instance_id: str = None,
         region_id: str = None,
@@ -21,27 +22,29 @@ class ModifyDefenseResourceXffRequest(DaraModel):
         response_headers: List[main_models.ModifyDefenseResourceXffRequestResponseHeaders] = None,
         xff_status: int = None,
     ):
-        # The status of the tracking cookie switch.
+        # The status of the tracking cookie switch. Valid values:
         # 
-        # - **0**: disabled.
+        # - **0**: Disabled.
         # 
-        # - **1 (default)**: enabled.
+        # - **1** (default): Enabled.
         self.acw_cookie_status = acw_cookie_status
-        # The status of the secure attribute of the tracking cookie.
+        # The status of the Secure attribute for the tracking cookie. Valid values:
         # 
-        # - **0 (default)**: disabled.
+        # - **0** (default): Disabled.
         # 
-        # - **1**: enabled.
+        # - **1**: Enabled.
         self.acw_secure_status = acw_secure_status
-        # The status of the secure attribute of the slider cookie.
+        # The status of the Secure attribute for the slider cookie. Valid values:
         # 
-        # - **0 (default)**: disabled.
+        # - **0** (default): Disabled.
         # 
-        # - **1**: enabled.
+        # - **1**: Enabled.
         self.acw_v3secure_status = acw_v3secure_status
+        # The aggregated configuration of cookie attributes.
+        self.cookie_config = cookie_config
         # The list of specified header fields.
         # 
-        # > The first IP address in the specified header field is used as the client source IP address to prevent XFF spoofing. If multiple headers are specified, the system attempts to obtain the source IP address from the headers in order. If the first header does not contain an IP address, the system tries the second header, and so on. If none of the specified headers contain an IP address, the first IP address in the X-Forwarded-For header is used.
+        # > The first IP address in the specified header field is used as the source IP address of the client to prevent X-Forwarded-For (XFF) spoofing. If multiple headers are specified, the system attempts to obtain the source IP address in sequence. If the first header does not contain an IP address, the system checks the second header, and so on. If no IP address is found in any of the specified headers, the first IP address in the X-Forwarded-For header is used.
         self.custom_headers = custom_headers
         # Instance ID of the WAF instance.
         # 
@@ -49,7 +52,7 @@ class ModifyDefenseResourceXffRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -57,7 +60,7 @@ class ModifyDefenseResourceXffRequest(DaraModel):
         self.region_id = region_id
         # The name of the protected object.
         # 
-        # > The protected object must have been added to WAF. You can call the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation to query the name of the protected object.
+        # > The protected object must be added to WAF. You can call the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation to query the name of the protected object.
         # 
         # This parameter is required.
         self.resource = resource
@@ -65,16 +68,18 @@ class ModifyDefenseResourceXffRequest(DaraModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The response header parameters.
         self.response_headers = response_headers
-        # Specifies whether a Layer 7 proxy (Anti-DDoS Pro, CDN, or similar) is deployed in front of WAF. Valid values:
+        # Specifies whether a Layer 7 proxy, such as Anti-DDoS or CDN, is enabled before WAF. Valid values:
         # 
-        # - **0 (default)**: No Layer 7 proxy is deployed.
+        # - **0** (default): The proxy is disabled.
         # 
-        # - **1**: A Layer 7 proxy is deployed.
+        # - **1**: The proxy is enabled.
         # 
         # This parameter is required.
         self.xff_status = xff_status
 
     def validate(self):
+        if self.cookie_config:
+            self.cookie_config.validate()
         if self.response_headers:
             for v1 in self.response_headers:
                  if v1:
@@ -93,6 +98,9 @@ class ModifyDefenseResourceXffRequest(DaraModel):
 
         if self.acw_v3secure_status is not None:
             result['AcwV3SecureStatus'] = self.acw_v3secure_status
+
+        if self.cookie_config is not None:
+            result['CookieConfig'] = self.cookie_config.to_map()
 
         if self.custom_headers is not None:
             result['CustomHeaders'] = self.custom_headers
@@ -130,6 +138,10 @@ class ModifyDefenseResourceXffRequest(DaraModel):
         if m.get('AcwV3SecureStatus') is not None:
             self.acw_v3secure_status = m.get('AcwV3SecureStatus')
 
+        if m.get('CookieConfig') is not None:
+            temp_model = main_models.ModifyDefenseResourceXffRequestCookieConfig()
+            self.cookie_config = temp_model.from_map(m.get('CookieConfig'))
+
         if m.get('CustomHeaders') is not None:
             self.custom_headers = m.get('CustomHeaders')
 
@@ -162,9 +174,9 @@ class ModifyDefenseResourceXffRequestResponseHeaders(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the custom response header.
+        # The key of the specified custom response header.
         self.key = key
-        # The value of the custom response header.
+        # The value of the specified custom response header.
         self.value = value
 
     def validate(self):
@@ -190,6 +202,61 @@ class ModifyDefenseResourceXffRequestResponseHeaders(DaraModel):
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class ModifyDefenseResourceXffRequestCookieConfig(DaraModel):
+    def __init__(
+        self,
+        acw_sc_v3same_site: str = None,
+        acw_tc_same_site: str = None,
+    ):
+        # The SameSite policy of the slider cookie. Valid values:
+        # 
+        # - **None**: None.
+        # 
+        # - **Lax**: Lax.
+        # 
+        # - **Strict**: Strict.
+        # 
+        # > An empty string indicates that the SameSite attribute is not configured.   
+        # If the SameSite policy is set to None, the Secure attribute must be enabled for the cookie.
+        self.acw_sc_v3same_site = acw_sc_v3same_site
+        # The SameSite policy of the tracking cookie. Valid values:
+        # 
+        # - **None**: None.
+        # 
+        # - **Lax**: Lax.
+        # 
+        # - **Strict**: Strict.
+        # 
+        # > An empty string indicates that the SameSite attribute is not configured.  
+        # If the SameSite policy is set to None, the Secure attribute must be enabled for the cookie.
+        self.acw_tc_same_site = acw_tc_same_site
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.acw_sc_v3same_site is not None:
+            result['AcwScV3SameSite'] = self.acw_sc_v3same_site
+
+        if self.acw_tc_same_site is not None:
+            result['AcwTcSameSite'] = self.acw_tc_same_site
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcwScV3SameSite') is not None:
+            self.acw_sc_v3same_site = m.get('AcwScV3SameSite')
+
+        if m.get('AcwTcSameSite') is not None:
+            self.acw_tc_same_site = m.get('AcwTcSameSite')
 
         return self
 

@@ -18,7 +18,7 @@ class ModifyHybridCloudClusterRuleRequest(DaraModel):
     ):
         # **[Deprecated]** The ID of the hybrid cloud cluster.
         self.cluster_id = cluster_id
-        # The resource ID of the cluster rule.
+        # The ID of the cluster rule resource.
         self.cluster_rule_resource_id = cluster_rule_resource_id
         # Instance ID of the WAF instance.
         # 
@@ -26,7 +26,7 @@ class ModifyHybridCloudClusterRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -34,23 +34,23 @@ class ModifyHybridCloudClusterRuleRequest(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The traffic redirection rule configuration.
+        # The traffic redirection rule configuration:
         # 
         # <notice>The mode cannot be modified.</notice>
         # - **check_mode**: the mode. Valid values:
-        #   - **all**: full traffic redirection.
-        #   - **part**: partial traffic redirection.
-        # - **type**: the rule matching type. Valid values:
-        #   - **exact**: exact match.
-        #   - **regex**: regular expression.
+        #   - **all**: full traffic redirection
+        #   - **part**: partial traffic redirection
+        # - **type**: the rule match type. Valid values:
+        #   - **exact**: exact match
+        #   - **regex**: regular expression
         # - **substance**: the rule value.
         self.rule_config = rule_config
-        # The rule status. Valid values:
-        # - **on**: enabled.
-        # - **off**: disabled.
+        # The status of the rule. Valid values:
+        # - **on**: enabled
+        # - **off**: disabled
         self.rule_status = rule_status
         # **[Deprecated]** The rule type. Valid values:
-        # - **pullin**: traffic redirection configuration.
+        # - **pullin**: traffic redirection configuration
         self.rule_type = rule_type
 
     def validate(self):

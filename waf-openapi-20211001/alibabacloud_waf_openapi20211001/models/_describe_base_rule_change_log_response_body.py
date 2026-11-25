@@ -16,7 +16,7 @@ class DescribeBaseRuleChangeLogResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The list of rule group changes.
+        # The list of rule library change records.
         self.rules = rules
         # The total number of rule change records.
         self.total_count = total_count
@@ -73,14 +73,14 @@ class DescribeBaseRuleChangeLogResponseBodyRules(DaraModel):
         # The CVE ID of the vulnerability associated with the system rule.
         self.cve_id = cve_id
         # The operation type. Valid values:
-        # - add: added.
-        # - modify: modified.
+        # - add: add.
+        # - modify: modify.
         self.operation = operation
         # The rule ID.
         self.rule_id = rule_id
         # The rule name.
         self.rule_name = rule_name
-        # The time when the rule was updated. The value is a UNIX timestamp in milliseconds.
+        # The update time of the rule. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

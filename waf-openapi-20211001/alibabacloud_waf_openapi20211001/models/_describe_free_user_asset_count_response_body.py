@@ -13,7 +13,7 @@ class DescribeFreeUserAssetCountResponseBody(DaraModel):
     ):
         # The asset statistics information for basic detection.
         self.asset = asset
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

@@ -15,7 +15,7 @@ class DescribeDefenseRuleStatisticsResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The statistics results.
+        # The statistics.
         self.statistics_infos = statistics_infos
 
     def validate(self):
@@ -61,7 +61,7 @@ class DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos(DaraModel):
         secondary_value: str = None,
         third_value: str = None,
     ):
-        # The number of rules that meet all query conditions.
+        # The number of rules that meet all the query conditions.
         self.count = count
         # The value corresponding to the quaternary query condition.
         self.fourth_value = fourth_value

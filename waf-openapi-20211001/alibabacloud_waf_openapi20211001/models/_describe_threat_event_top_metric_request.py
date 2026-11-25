@@ -17,22 +17,22 @@ class DescribeThreatEventTopMetricRequest(DaraModel):
         # 
         # This parameter is required.
         self.event_id = event_id
-        # The ID of the WAF instance.
+        # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The statistical metric. Different values of Metric correspond to different statistical objects. Valid values:
-        # - **time**: aggregates statistics by attack time, sorts them in descending order, and returns the top 5 records.
-        # - **src**: aggregates statistics by source IP address of attack requests, sorts them in descending order, and returns the top 5 records.
-        # - **target**: aggregates statistics by URL of attack requests (excluding query strings), sorts them in descending order, and returns the top 5 records.
-        # - **type**: aggregates statistics by attack type, sorts them in descending order, and returns the top 5 records.
-        # - **tools**: aggregates statistics by attack tool, sorts them in descending order, and returns the top 5 records.
+        # The metric used for statistics. Different metrics correspond to different statistical dimensions. Valid values:
+        # - **time**: aggregates statistics by attack time, sorts the results in descending order, and returns the top 5 entries.
+        # - **src**: aggregates statistics by the source IP address of attack requests, sorts the results in descending order, and returns the top 5 entries.
+        # - **target**: aggregates statistics by the URL of attack requests (excluding the query string), sorts the results in descending order, and returns the top 5 entries.
+        # - **type**: aggregates statistics by attack type, sorts the results in descending order, and returns the top 5 entries.
+        # - **tools**: aggregates statistics by attack tool, sorts the results in descending order, and returns the top 5 entries.
         # 
         # This parameter is required.
         self.metric = metric
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 

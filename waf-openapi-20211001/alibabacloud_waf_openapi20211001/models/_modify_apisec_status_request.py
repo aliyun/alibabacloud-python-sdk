@@ -15,8 +15,8 @@ class ModifyApisecStatusRequest(DaraModel):
         resources: str = None,
     ):
         # The API security status. Valid values: 
-        # - **1**: enabled.
-        # - **0**: disabled.
+        # - **1**: Enabled.
+        # - **0**: Disabled.
         # 
         # This parameter is required.
         self.apisec_status = apisec_status
@@ -34,7 +34,7 @@ class ModifyApisecStatusRequest(DaraModel):
         self.region_id = region_id
         # The name of the protected object group to which the protected object is added.
         self.resource_groups = resource_groups
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The name of the protected object.
         self.resources = resources

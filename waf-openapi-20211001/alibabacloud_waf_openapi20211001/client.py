@@ -1109,6 +1109,8 @@ class Client(OpenApiClient):
             query['Resource'] = request.resource
         if not DaraCore.is_null(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         body = {}
@@ -1155,6 +1157,8 @@ class Client(OpenApiClient):
             query['Resource'] = request.resource
         if not DaraCore.is_null(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         body = {}
@@ -2905,6 +2909,8 @@ class Client(OpenApiClient):
             query['Resource'] = request.resource
         if not DaraCore.is_null(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.rule_ids):
             query['RuleIds'] = request.rule_ids
         if not DaraCore.is_null(request.template_id):
@@ -2947,6 +2953,8 @@ class Client(OpenApiClient):
             query['Resource'] = request.resource
         if not DaraCore.is_null(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.rule_ids):
             query['RuleIds'] = request.rule_ids
         if not DaraCore.is_null(request.template_id):
@@ -3746,6 +3754,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_abnormal_cloud_resources_with_options_async(request, runtime)
 
+    def describe_access_config_with_options(
+        self,
+        request: main_models.DescribeAccessConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAccessConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAccessConfig',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAccessConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_access_config_with_options_async(
+        self,
+        request: main_models.DescribeAccessConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAccessConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAccessConfig',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAccessConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_access_config(
+        self,
+        request: main_models.DescribeAccessConfigRequest,
+    ) -> main_models.DescribeAccessConfigResponse:
+        runtime = RuntimeOptions()
+        return self.describe_access_config_with_options(request, runtime)
+
+    async def describe_access_config_async(
+        self,
+        request: main_models.DescribeAccessConfigRequest,
+    ) -> main_models.DescribeAccessConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_access_config_with_options_async(request, runtime)
+
     def describe_account_delegated_status_with_options(
         self,
         request: main_models.DescribeAccountDelegatedStatusRequest,
@@ -3917,6 +4007,794 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeAddressesResponse:
         runtime = RuntimeOptions()
         return await self.describe_addresses_with_options_async(request, runtime)
+
+    def describe_ai_engine_event_with_options(
+        self,
+        request: main_models.DescribeAiEngineEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEvent',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ai_engine_event_with_options_async(
+        self,
+        request: main_models.DescribeAiEngineEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEventResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEvent',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ai_engine_event(
+        self,
+        request: main_models.DescribeAiEngineEventRequest,
+    ) -> main_models.DescribeAiEngineEventResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ai_engine_event_with_options(request, runtime)
+
+    async def describe_ai_engine_event_async(
+        self,
+        request: main_models.DescribeAiEngineEventRequest,
+    ) -> main_models.DescribeAiEngineEventResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ai_engine_event_with_options_async(request, runtime)
+
+    def describe_ai_engine_event_nodes_with_options(
+        self,
+        request: main_models.DescribeAiEngineEventNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEventNodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEventNodes',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEventNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ai_engine_event_nodes_with_options_async(
+        self,
+        request: main_models.DescribeAiEngineEventNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEventNodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEventNodes',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEventNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ai_engine_event_nodes(
+        self,
+        request: main_models.DescribeAiEngineEventNodesRequest,
+    ) -> main_models.DescribeAiEngineEventNodesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ai_engine_event_nodes_with_options(request, runtime)
+
+    async def describe_ai_engine_event_nodes_async(
+        self,
+        request: main_models.DescribeAiEngineEventNodesRequest,
+    ) -> main_models.DescribeAiEngineEventNodesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ai_engine_event_nodes_with_options_async(request, runtime)
+
+    def describe_ai_engine_event_operations_with_options(
+        self,
+        request: main_models.DescribeAiEngineEventOperationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEventOperationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEventOperations',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEventOperationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ai_engine_event_operations_with_options_async(
+        self,
+        request: main_models.DescribeAiEngineEventOperationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEventOperationsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEventOperations',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEventOperationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ai_engine_event_operations(
+        self,
+        request: main_models.DescribeAiEngineEventOperationsRequest,
+    ) -> main_models.DescribeAiEngineEventOperationsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ai_engine_event_operations_with_options(request, runtime)
+
+    async def describe_ai_engine_event_operations_async(
+        self,
+        request: main_models.DescribeAiEngineEventOperationsRequest,
+    ) -> main_models.DescribeAiEngineEventOperationsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ai_engine_event_operations_with_options_async(request, runtime)
+
+    def describe_ai_engine_event_trends_with_options(
+        self,
+        request: main_models.DescribeAiEngineEventTrendsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEventTrendsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEventTrends',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEventTrendsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ai_engine_event_trends_with_options_async(
+        self,
+        request: main_models.DescribeAiEngineEventTrendsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEventTrendsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEventTrends',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEventTrendsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ai_engine_event_trends(
+        self,
+        request: main_models.DescribeAiEngineEventTrendsRequest,
+    ) -> main_models.DescribeAiEngineEventTrendsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ai_engine_event_trends_with_options(request, runtime)
+
+    async def describe_ai_engine_event_trends_async(
+        self,
+        request: main_models.DescribeAiEngineEventTrendsRequest,
+    ) -> main_models.DescribeAiEngineEventTrendsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ai_engine_event_trends_with_options_async(request, runtime)
+
+    def describe_ai_engine_events_with_options(
+        self,
+        tmp_req: main_models.DescribeAiEngineEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEventsResponse:
+        tmp_req.validate()
+        request = main_models.DescribeAiEngineEventsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.seach_value):
+            query['SeachValue'] = request.seach_value
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEvents',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ai_engine_events_with_options_async(
+        self,
+        tmp_req: main_models.DescribeAiEngineEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEventsResponse:
+        tmp_req.validate()
+        request = main_models.DescribeAiEngineEventsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.seach_value):
+            query['SeachValue'] = request.seach_value
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEvents',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ai_engine_events(
+        self,
+        request: main_models.DescribeAiEngineEventsRequest,
+    ) -> main_models.DescribeAiEngineEventsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ai_engine_events_with_options(request, runtime)
+
+    async def describe_ai_engine_events_async(
+        self,
+        request: main_models.DescribeAiEngineEventsRequest,
+    ) -> main_models.DescribeAiEngineEventsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ai_engine_events_with_options_async(request, runtime)
+
+    def describe_ai_engine_evidence_request_with_options(
+        self,
+        request: main_models.DescribeAiEngineEvidenceRequestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEvidenceRequestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.evidence_id):
+            query['EvidenceId'] = request.evidence_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEvidenceRequest',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEvidenceRequestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ai_engine_evidence_request_with_options_async(
+        self,
+        request: main_models.DescribeAiEngineEvidenceRequestRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEvidenceRequestResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.evidence_id):
+            query['EvidenceId'] = request.evidence_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEvidenceRequest',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEvidenceRequestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ai_engine_evidence_request(
+        self,
+        request: main_models.DescribeAiEngineEvidenceRequestRequest,
+    ) -> main_models.DescribeAiEngineEvidenceRequestResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ai_engine_evidence_request_with_options(request, runtime)
+
+    async def describe_ai_engine_evidence_request_async(
+        self,
+        request: main_models.DescribeAiEngineEvidenceRequestRequest,
+    ) -> main_models.DescribeAiEngineEvidenceRequestResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ai_engine_evidence_request_with_options_async(request, runtime)
+
+    def describe_ai_engine_evidence_requests_with_options(
+        self,
+        tmp_req: main_models.DescribeAiEngineEvidenceRequestsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEvidenceRequestsResponse:
+        tmp_req.validate()
+        request = main_models.DescribeAiEngineEvidenceRequestsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.seach_value):
+            query['SeachValue'] = request.seach_value
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEvidenceRequests',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEvidenceRequestsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ai_engine_evidence_requests_with_options_async(
+        self,
+        tmp_req: main_models.DescribeAiEngineEvidenceRequestsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineEvidenceRequestsResponse:
+        tmp_req.validate()
+        request = main_models.DescribeAiEngineEvidenceRequestsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filter):
+            request.filter_shrink = Utils.array_to_string_with_specified_style(tmp_req.filter, 'Filter', 'json')
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.filter_shrink):
+            query['Filter'] = request.filter_shrink
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.seach_value):
+            query['SeachValue'] = request.seach_value
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineEvidenceRequests',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineEvidenceRequestsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ai_engine_evidence_requests(
+        self,
+        request: main_models.DescribeAiEngineEvidenceRequestsRequest,
+    ) -> main_models.DescribeAiEngineEvidenceRequestsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ai_engine_evidence_requests_with_options(request, runtime)
+
+    async def describe_ai_engine_evidence_requests_async(
+        self,
+        request: main_models.DescribeAiEngineEvidenceRequestsRequest,
+    ) -> main_models.DescribeAiEngineEvidenceRequestsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ai_engine_evidence_requests_with_options_async(request, runtime)
+
+    def describe_ai_engine_overview_with_options(
+        self,
+        request: main_models.DescribeAiEngineOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineOverview',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineOverviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ai_engine_overview_with_options_async(
+        self,
+        request: main_models.DescribeAiEngineOverviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAiEngineOverviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAiEngineOverview',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAiEngineOverviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ai_engine_overview(
+        self,
+        request: main_models.DescribeAiEngineOverviewRequest,
+    ) -> main_models.DescribeAiEngineOverviewResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ai_engine_overview_with_options(request, runtime)
+
+    async def describe_ai_engine_overview_async(
+        self,
+        request: main_models.DescribeAiEngineOverviewRequest,
+    ) -> main_models.DescribeAiEngineOverviewResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ai_engine_overview_with_options_async(request, runtime)
 
     def describe_alarm_banner_with_options(
         self,
@@ -17936,6 +18814,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
+    def modify_access_config_with_options(
+        self,
+        request: main_models.ModifyAccessConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAccessConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not DaraCore.is_null(request.config_value):
+            query['ConfigValue'] = request.config_value
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAccessConfig',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAccessConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_access_config_with_options_async(
+        self,
+        request: main_models.ModifyAccessConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAccessConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not DaraCore.is_null(request.config_value):
+            query['ConfigValue'] = request.config_value
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAccessConfig',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAccessConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_access_config(
+        self,
+        request: main_models.ModifyAccessConfigRequest,
+    ) -> main_models.ModifyAccessConfigResponse:
+        runtime = RuntimeOptions()
+        return self.modify_access_config_with_options(request, runtime)
+
+    async def modify_access_config_async(
+        self,
+        request: main_models.ModifyAccessConfigRequest,
+    ) -> main_models.ModifyAccessConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_access_config_with_options_async(request, runtime)
+
+    def modify_ai_engine_event_status_with_options(
+        self,
+        request: main_models.ModifyAiEngineEventStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAiEngineEventStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.target_status):
+            query['TargetStatus'] = request.target_status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAiEngineEventStatus',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAiEngineEventStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_ai_engine_event_status_with_options_async(
+        self,
+        request: main_models.ModifyAiEngineEventStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAiEngineEventStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.comment):
+            query['Comment'] = request.comment
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.target_status):
+            query['TargetStatus'] = request.target_status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAiEngineEventStatus',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAiEngineEventStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_ai_engine_event_status(
+        self,
+        request: main_models.ModifyAiEngineEventStatusRequest,
+    ) -> main_models.ModifyAiEngineEventStatusResponse:
+        runtime = RuntimeOptions()
+        return self.modify_ai_engine_event_status_with_options(request, runtime)
+
+    async def modify_ai_engine_event_status_async(
+        self,
+        request: main_models.ModifyAiEngineEventStatusRequest,
+    ) -> main_models.ModifyAiEngineEventStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_ai_engine_event_status_with_options_async(request, runtime)
+
     def modify_apisec_abnormals_with_options(
         self,
         request: main_models.ModifyApisecAbnormalsRequest,
@@ -19062,10 +20116,14 @@ class Client(OpenApiClient):
 
     def modify_defense_resource_xff_with_options(
         self,
-        request: main_models.ModifyDefenseResourceXffRequest,
+        tmp_req: main_models.ModifyDefenseResourceXffRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyDefenseResourceXffResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyDefenseResourceXffShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cookie_config):
+            request.cookie_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.cookie_config, 'CookieConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.acw_cookie_status):
             query['AcwCookieStatus'] = request.acw_cookie_status
@@ -19073,6 +20131,8 @@ class Client(OpenApiClient):
             query['AcwSecureStatus'] = request.acw_secure_status
         if not DaraCore.is_null(request.acw_v3secure_status):
             query['AcwV3SecureStatus'] = request.acw_v3secure_status
+        if not DaraCore.is_null(request.cookie_config_shrink):
+            query['CookieConfig'] = request.cookie_config_shrink
         if not DaraCore.is_null(request.custom_headers):
             query['CustomHeaders'] = request.custom_headers
         if not DaraCore.is_null(request.instance_id):
@@ -19108,10 +20168,14 @@ class Client(OpenApiClient):
 
     async def modify_defense_resource_xff_with_options_async(
         self,
-        request: main_models.ModifyDefenseResourceXffRequest,
+        tmp_req: main_models.ModifyDefenseResourceXffRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ModifyDefenseResourceXffResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ModifyDefenseResourceXffShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.cookie_config):
+            request.cookie_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.cookie_config, 'CookieConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.acw_cookie_status):
             query['AcwCookieStatus'] = request.acw_cookie_status
@@ -19119,6 +20183,8 @@ class Client(OpenApiClient):
             query['AcwSecureStatus'] = request.acw_secure_status
         if not DaraCore.is_null(request.acw_v3secure_status):
             query['AcwV3SecureStatus'] = request.acw_v3secure_status
+        if not DaraCore.is_null(request.cookie_config_shrink):
+            query['CookieConfig'] = request.cookie_config_shrink
         if not DaraCore.is_null(request.custom_headers):
             query['CustomHeaders'] = request.custom_headers
         if not DaraCore.is_null(request.instance_id):
@@ -19187,6 +20253,8 @@ class Client(OpenApiClient):
             query['Resource'] = request.resource
         if not DaraCore.is_null(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         body = {}
@@ -19233,6 +20301,8 @@ class Client(OpenApiClient):
             query['Resource'] = request.resource
         if not DaraCore.is_null(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.template_id):
             query['TemplateId'] = request.template_id
         body = {}
@@ -19373,8 +20443,12 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource):
+            query['Resource'] = request.resource
         if not DaraCore.is_null(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.rule_status):
@@ -19415,8 +20489,12 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource):
+            query['Resource'] = request.resource
         if not DaraCore.is_null(request.resource_manager_resource_group_id):
             query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
         if not DaraCore.is_null(request.rule_status):

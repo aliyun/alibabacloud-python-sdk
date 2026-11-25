@@ -13,7 +13,7 @@ class DescribeResourceLogDeliveryStatusResponseBody(DaraModel):
         log_configs: List[main_models.DescribeResourceLogDeliveryStatusResponseBodyLogConfigs] = None,
         request_id: str = None,
     ):
-        # The list of log delivery configurations for protected objects.
+        # The log forwarding configurations for the protected objects.
         self.log_configs = log_configs
         # The request ID.
         self.request_id = request_id
@@ -60,20 +60,20 @@ class DescribeResourceLogDeliveryStatusResponseBodyLogConfigs(DaraModel):
         resource: str = None,
         status: bool = None,
     ):
-        # The name of the delivery configuration.
+        # The name of the log forwarding configuration.
         self.delivery_name = delivery_name
-        # The delivery type of the protected object. Valid values:
+        # The log forwarding type for the protected object. Valid values:
         # 
-        # - **syslog**: delivered to a syslog service.
-        # - **kafka**: delivered to a Kafka service.
+        # - **syslog**: syslog service.
+        # - **kafka**: Kafka service.
         self.delivery_type = delivery_type
         # The protected object.
         self.resource = resource
         # The log delivery status of the protected object. Valid values:
         # 
-        # - **true**: enabled.
+        # - **true**: Enabled.
         # 
-        # - **false**: disabled.
+        # - **false**: shutdown.
         self.status = status
 
     def validate(self):

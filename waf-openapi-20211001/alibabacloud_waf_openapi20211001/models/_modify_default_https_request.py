@@ -22,25 +22,22 @@ class ModifyDefaultHttpsRequest(DaraModel):
         # 
         # This parameter is required.
         self.cert_id = cert_id
-        # The cipher suite type.
-        # 
-        # > This parameter is required. You must specify this parameter when you call this operation.
+        # The type of the cipher suite. This parameter is required when you call this operation.
         self.cipher_suite = cipher_suite
-        # The custom cipher suites to add. This parameter is used only when **CipherSuite** is set to **99**.
+        # The custom cipher suites to be added. This parameter is used only when **CipherSuite** is set to **99**.
         self.custom_ciphers = custom_ciphers
-        # Specifies whether TLS 1.3 is supported. Valid values:
+        # Specifies whether to support TLS 1.3. Valid values:
         # 
         # - **true**: TLS 1.3 is supported.
         # 
         # - **false**: TLS 1.3 is not supported.
-        # > - This parameter is used only when HttpsPorts is not empty, which indicates that the domain name uses the HTTPS protocol. If TLSVersion is set to tlsv1.3, this value must be true.
+        # > This parameter is used only when HttpsPorts is not empty, which indicates that the domain name uses HTTPS. When TLSVersion is set to tlsv1.3, this parameter must be set to true.
         self.enable_tlsv_3 = enable_tlsv_3
-        # The ID of the WAF instance.
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # The ID of the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 

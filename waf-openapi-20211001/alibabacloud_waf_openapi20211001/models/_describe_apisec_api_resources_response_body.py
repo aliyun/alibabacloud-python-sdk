@@ -18,7 +18,7 @@ class DescribeApisecApiResourcesResponseBody(DaraModel):
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -99,16 +99,16 @@ class DescribeApisecApiResourcesResponseBodyData(DaraModel):
         self.api_format = api_format
         # The ID of the API.
         self.api_id = api_id
-        # API-related information, which is a JSON string constructed from a series of parameters. The parameters include:
+        # The information about the API. The information is converted into a JSON string constructed by a series of parameters. The parameters include:
         # - **param_num**: the number of API parameters.
         # - **request_method**: the request method.
         # - **protocol**: the request protocol.
         # - **api_url**: the request URL.
-        # - **poc_payload**: the request.
-        # - **request**: the request example.
-        # - **response**: the response example.
+        # - **poc_payload**: the request payload.
+        # - **request**: the request sample.
+        # - **response**: the response sample.
         # - **param**: the request parameters.
-        # > This value is returned only when the **ApiId** request parameter is specified.
+        # > This parameter is returned only if the **ApiId** request parameter is specified.
         self.api_info = api_info
         # The request method of the API. Valid values:
         # - **GET**: GET request.
@@ -120,7 +120,7 @@ class DescribeApisecApiResourcesResponseBodyData(DaraModel):
         # - **PATCH**: PATCH request.
         # - **OPTIONS**: OPTIONS request.
         self.api_method = api_method
-        # Sensitive information related to the API, which is a JSON string constructed from a series of parameters. The parameters include:
+        # The sensitive information involved in the API. The information is converted into a JSON string constructed by a series of parameters. The parameters include:
         # - **request_sensitive_list**: the list of sensitive data types in requests.
         # - **response_sensitive_list**: the list of sensitive data types in responses.
         # - **sensitive_list**: the list of sensitive data types.
@@ -131,21 +131,21 @@ class DescribeApisecApiResourcesResponseBodyData(DaraModel):
         # The sensitive data in API responses.
         self.api_sensitive_response = api_sensitive_response
         # The status of the API. Valid values:
-        # - **NewbornInterface**: New.
+        # - **NewbornInterface**: Newly added.
         # - **OfflineInterface**: Inactive.
         # - **normal**: Normal.
         self.api_status = api_status
         # The business purpose of the API.
-        # > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported business purposes.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported business purposes.
         self.api_tag = api_tag
-        # The service object. Valid values:
+        # The service object of the API. Valid values:
         # - **PublicAPI**: Public service.
-        # - **ThirdpartAPI**: Third-party collaboration.
+        # - **ThirdpartAPI**: Third-party cooperation.
         # - **InternalAPI**: Internal office.
         self.api_type = api_type
         # Specifies whether the API has an authentication field. Valid values:
-        # - **0**: Has authentication.
-        # - **1**: Does not have authentication.
+        # - **0**: Has authentication field.
+        # - **1**: No authentication field.
         self.auth_flag = auth_flag
         # The number of bot access requests in the last 30 days.
         self.bot_cnt = bot_cnt
@@ -155,19 +155,19 @@ class DescribeApisecApiResourcesResponseBodyData(DaraModel):
         self.event_num = event_num
         # The list of API examples.
         self.examples = examples
-        # The time when the API asset was first discovered. The value is a UNIX timestamp (UTC), in seconds.
+        # The time when the API asset was first discovered. The time is a UNIX timestamp in UTC. Unit: seconds.
         self.farthest_ts = farthest_ts
         # Specifies whether the API is followed. Valid values:
         # - **1**: Followed.
         # - **0**: Not followed.
         self.follow = follow
-        # The most recent access time of the API asset. The value is a UNIX timestamp (UTC), in seconds.
+        # The time when the API asset was last accessed. The time is a UNIX timestamp in UTC. Unit: seconds.
         self.lastest_ts = lastest_ts
         # The domain name or IP address to which the API operation belongs.
         self.matched_host = matched_host
-        # The remarks.
+        # The note.
         self.note = note
-        # The list of protected objects associated with the asset.
+        # The list of protected objects corresponding to the asset.
         self.resources = resources
 
     def validate(self):

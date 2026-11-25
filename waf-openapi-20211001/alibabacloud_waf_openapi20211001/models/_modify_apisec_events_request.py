@@ -18,10 +18,10 @@ class ModifyApisecEventsRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
         user_status: str = None,
     ):
-        # The hybrid cloud cluster ID.
-        # > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
+        # The ID of the hybrid cloud cluster.
+        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The list of API security event IDs.
+        # The IDs of the API security events.
         # 
         # This parameter is required.
         self.event_ids = event_ids
@@ -29,25 +29,25 @@ class ModifyApisecEventsRequest(DaraModel):
         self.event_scope = event_scope
         # The ID of the WAF instance.
         # 
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The remarks.
+        # The note.
         self.note = note
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland
         # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The event status. Valid values:
+        # The status of the event. Valid values:
         # 
-        # - **toBeConfirmed**: To be confirmed.
-        # - **confirmed**: Confirmed.
-        # - **ignored**: Ignored.
+        # - **toBeConfirmed**: to be confirmed
+        # - **confirmed**: confirmed
+        # - **ignored**: ignored
         # 
         # This parameter is required.
         self.user_status = user_status

@@ -13,13 +13,17 @@ class DescribeVerifyContentResponseBody(DaraModel):
         request_id: str = None,
         verify_result: bool = None,
     ):
-        # The DNS-based verification content, including the TXT record details.
+        # The DNS verification content.
         self.dns_content = dns_content
-        # The file-based verification content, including the file name, path, and download URL.
+        # The file verification content.
         self.file_content = file_content
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the domain ownership verification is successful.
+        # The verification result. Valid values:
+        # 
+        # - **true**: Verification passed.
+        # 
+        # - **false**: Verification failed.
         self.verify_result = verify_result
 
     def validate(self):
@@ -74,15 +78,15 @@ class DescribeVerifyContentResponseBodyFileContent(DaraModel):
         value: str = None,
         verify_path: str = None,
     ):
-        # The download URL of the verification file.
+        # The file download path.
         self.download_url = download_url
-        # The name of the verification file.
+        # The file name.
         self.file_name = file_name
-        # The root domain of the domain name to be verified.
+        # The primary domain name.
         self.top_domain = top_domain
-        # The content of the verification file.
+        # The file content.
         self.value = value
-        # The URL that is used to access the verification file.
+        # The access path for file verification.
         self.verify_path = verify_path
 
     def validate(self):
@@ -136,11 +140,11 @@ class DescribeVerifyContentResponseBodyDnsContent(DaraModel):
         type: str = None,
         value: str = None,
     ):
-        # The host record of the DNS TXT record used for domain ownership verification.
+        # The host record.
         self.rr = rr
-        # The type of the DNS record used for verification.
+        # The TXT record type.
         self.type = type
-        # The value of the DNS TXT record used for verification.
+        # The TXT record value.
         self.value = value
 
     def validate(self):

@@ -10,9 +10,9 @@ class CreateCertsResponseBody(DaraModel):
         cert_identifier: str = None,
         request_id: str = None,
     ):
-        # The certificate ID.
+        # The ID of the certificate.
         self.cert_identifier = cert_identifier
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

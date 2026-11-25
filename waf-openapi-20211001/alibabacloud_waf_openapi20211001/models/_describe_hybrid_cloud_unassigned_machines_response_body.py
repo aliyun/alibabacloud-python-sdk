@@ -16,7 +16,7 @@ class DescribeHybridCloudUnassignedMachinesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
         # The list of unassigned machines in the hybrid cloud cluster.
         self.unassigned_machines = unassigned_machines
@@ -74,7 +74,7 @@ class DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines(DaraMo
     ):
         # The number of CPU cores.
         self.cpu = cpu
-        # The node name.
+        # The name of the node.
         self.custom_name = custom_name
         # The hostname.
         self.host_name = host_name

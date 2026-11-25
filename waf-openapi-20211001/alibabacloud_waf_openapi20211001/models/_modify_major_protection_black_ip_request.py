@@ -18,37 +18,37 @@ class ModifyMajorProtectionBlackIpRequest(DaraModel):
     ):
         # The description.
         self.description = description
-        # The expiration timestamp, in seconds.
-        # > If the value is **0**, the rule takes effect permanently.
+        # The expiration timestamp. Unit: seconds.
+        # > A value of **0** indicates that the rule permanently takes effect.
         # 
         # This parameter is required.
         self.expired_time = expired_time
         # The ID of the WAF instance.
         # 
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The IP blacklist to add. You can specify custom IP addresses or CIDR blocks. Both IPv4 and IPv6 are supported. Separate multiple IP addresses with commas (,).
+        # The IP blacklist to be added. You can specify custom IP addresses or CIDR blocks for the IP blacklist. Both IPv4 and IPv6 addresses are supported. Separate multiple IP addresses with commas (,).
         # For more information, see [Critical event protection](https://help.aliyun.com/document_detail/425591.html).
         # 
         # This parameter is required.
         self.ip_list = ip_list
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
+        # - **cn-hangzhou**: the Chinese mainland
         # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # - **ap-southeast-1**: outside the Chinese mainland
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The ID of the IP blacklist rule for critical event protection.
+        # The ID of the IP blacklist rule for critical event protection. Before you obtain the rule ID, enable the critical event protection feature. Then, call the [DescribeDefenseTemplates](https://help.aliyun.com/document_detail/2712643.html) operation and set DefenseScene to major_protection to obtain the ID of the critical event protection template. After that, call the [DescribeDefenseRules](https://help.aliyun.com/document_detail/461426.html) operation to obtain the ID of the IP blacklist rule under the template.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The ID of the critical event protection scenario template.
+        # The ID of the critical event protection template. Before you obtain the template ID, enable the critical event protection feature. Then, call the [DescribeDefenseTemplates](https://help.aliyun.com/document_detail/2712643.html) operation and set DefenseScene to major_protection to obtain the ID of the critical event protection template.
         # 
-        # > This parameter requires the ID of a protection template of the critical event protection type. You can create this type of template only after you purchase the critical event protection upgrade.
+        # > You can create this type of template only after you purchase critical event protection through an upgrade.
         # >
         # > For more information about how to enable critical event protection and create a critical event protection rule template, see [Critical event protection](https://help.aliyun.com/document_detail/425591.html).
         # 

@@ -12,20 +12,20 @@ class DescribeChargeModuleRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The pricing unit.
+        # The billing unit.
         self.charge_unit = charge_unit
-        # The billing type of the instance. Valid values:
-        # - **POSTPAY**: pay-as-you-go WAF instance.
+        # The billing method of the instance. Valid values:
+        # - **POSTPAY**: pay-as-you-go WAF instances.
         # 
         # This parameter is required.
         self.pay_type = pay_type
-        # The region where the WAF instance resides. Valid values:
+        # The region of the WAF instance. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

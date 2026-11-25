@@ -14,7 +14,7 @@ class DescribeNetworkFlowTimeSeriesMetricResponseBody(DaraModel):
         request_id: str = None,
         time_series_meta_data: main_models.DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData = None,
     ):
-        # The time series data. Multiple data series can be returned.
+        # The returned time sequence data. Time sequence data of multiple values can be returned.
         self.network_flow_time_series = network_flow_time_series
         # The request ID.
         self.request_id = request_id
@@ -71,11 +71,11 @@ class DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData(DaraMode
         date_range: main_models.DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange = None,
         units: str = None,
     ):
-        # The time granularity of each data point in the returned time series. For example, "15m" indicates that each data point represents statistics for a 15-minute interval. For more information about the time granularity, see the **Time granularity of data points** section.
+        # The statistical time granularity of each data point in the returned time sequence data. For example, "15m" indicates that each returned data point is the statistical data for every 15 minutes. For the time granularity of the returned data, see **Description of the time granularity of time sequence data points**.
         self.aggregate_interval = aggregate_interval
-        # The time range that was queried.
+        # The time range used for the query.
         self.date_range = date_range
-        # The unit of the returned data. Default value: requests.
+        # The unit of the returned statistical data. Default value: requests.
         self.units = units
 
     def validate(self):
@@ -118,9 +118,9 @@ class DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range that was queried. This value is a UNIX timestamp. Unit: seconds. This value is the same as the EndDate request parameter.
+        # The end time used for the query, represented as a UNIX timestamp in seconds. This value is the same as the EndDate parameter in the request.
         self.end_date = end_date
-        # The start of the time range that was queried. This value is a UNIX timestamp. Unit: seconds. This value is the same as the StartDate request parameter.
+        # The start time used for the query, represented as a UNIX timestamp in seconds. This value is the same as the StartDate parameter in the request.
         self.start_date = start_date
 
     def validate(self):
@@ -156,11 +156,11 @@ class DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries(DaraM
         timestamps: List[str] = None,
         values: List[int] = None,
     ):
-        # The metric name. This value is the same as the Metric request parameter.
+        # The returned data content. The meaning is consistent with the Metric parameter in the request parameters.
         self.metric = metric
-        # The timestamps. Each value represents the start of a time interval.
+        # The time series. Each point represents the start time of a time range.
         self.timestamps = timestamps
-        # The metric values. Each value represents the count within the corresponding time interval.
+        # The data series. Each point represents the statistical count within a specific time range.
         self.values = values
 
     def validate(self):

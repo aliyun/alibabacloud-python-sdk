@@ -27,8 +27,8 @@ class ModifyHybridCloudClusterRequest(DaraModel):
     ):
         # The network access mode. Valid values:
         # 
-        # - **internet**: public network access.
-        # - **vpc**: Express Connect private network access.
+        # - **internet**: Internet access.
+        # - **vpc**: Private network access over Express Connect.
         # 
         # This parameter is required.
         self.access_mode = access_mode
@@ -41,11 +41,11 @@ class ModifyHybridCloudClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.cluster_name = cluster_name
-        # The list of available ports for the HTTP protocol. The value is a string. If multiple ports are specified, they are returned in the format of **port1,port2,port3**.
+        # The list of available ports for the HTTP protocol. The value is a string. For multiple ports, use the **port1,port2,port3** format.
         # 
         # This parameter is required.
         self.http_ports = http_ports
-        # The list of available ports for the HTTPS protocol. The value is a string. If multiple ports are specified, they are returned in the format of **port1,port2,port3**.
+        # The list of available ports for the HTTPS protocol. The value is a string. For multiple ports, use the **port1,port2,port3** format.
         # 
         # This parameter is required.
         self.https_ports = https_ports
@@ -59,7 +59,7 @@ class ModifyHybridCloudClusterRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The log fields to be returned.
+        # The log fields that are not returned.
         self.log_fields_not_returned = log_fields_not_returned
         # The number of protection nodes that can be added to the cluster.
         # 
@@ -67,32 +67,32 @@ class ModifyHybridCloudClusterRequest(DaraModel):
         self.protection_server_count = protection_server_count
         # The proxy gateway mode. Valid values:
         # 
-        # - on: enabled.
-        # - off: disabled.
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.proxy_status = proxy_status
         # The cluster type. Valid values:
-        # - **cname**: reverse proxy cluster.
-        # - **service**: service-based cluster.
+        # - **cname**: Reverse proxy cluster.
+        # - **service**: Service cluster.
         self.proxy_type = proxy_type
         # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
+        # - **cn-hangzhou**: The Chinese mainland.
         # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # - **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
-        # The remarks.
+        # The remark.
         self.remark = remark
         # The Alibaba Cloud resource group ID.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The rule configuration.
         self.rule_config = rule_config
         # The rule status. Valid values:
-        # - **on**: enabled.
-        # - **off**: disabled.
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.rule_status = rule_status
         # The rule type. Valid values:
         # 
-        # bypass: bypasses security checks and directly allows the request.
+        # bypass: Skips security checks and directly allows traffic.
         self.rule_type = rule_type
 
     def validate(self):

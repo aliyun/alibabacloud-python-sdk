@@ -14,11 +14,11 @@ class DescribePrepayDailyBillsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of WAF burstable billing records.
+        # The list of elastic pay-as-you-go bills for the WAF instance.
         self.bills = bills
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -64,6 +64,7 @@ class DescribePrepayDailyBillsResponseBody(DaraModel):
 class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
     def __init__(
         self,
+        agentic_waf: bool = None,
         elastic_qps_set_value: int = None,
         end_time: int = None,
         exceed_status: int = None,
@@ -79,40 +80,42 @@ class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
         total: int = None,
         type: List[str] = None,
     ):
+        # Specifies whether Agentic WAF is activated.
+        self.agentic_waf = agentic_waf
         # The burstable QPS specification of the WAF instance.
         self.elastic_qps_set_value = elastic_qps_set_value
-        # The end time of the billing record. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # The end time of the bill. The value is a UNIX timestamp in UTC. Unit: seconds.
         self.end_time = end_time
-        # The overuse status of the current period. Valid values:
-        # - **0**: Normal.
+        # The overuse status for the current period. Valid values:
+        # - **0**: normal.
         # - **1**: overused.
         # - **2**: sandboxed.
         self.exceed_status = exceed_status
-        # Indicates whether the extension plug-in is enabled. Valid values:
-        # - **true**: The extension plug-in is enabled.
-        # - **false**: The extension plug-in is not enabled.
+        # Specifies whether the extension plug-in is enabled. Valid values:
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.extension_plugin = extension_plugin
-        # The number of requests processed by the plug-in.
+        # The number of plug-in requests processed.
         self.extension_plugin_request = extension_plugin_request
-        # The maximum QPS during the current period.
+        # The maximum QPS for the current period.
         self.max_qps = max_qps
-        # The unit price for burstable billing. Unit: CNY for the China site and USD for the international site.
+        # The unit price of elastic billing. Unit: CNY on the Chinese site and USD on the international site.
         self.price = price
-        # The QPS extension specification of the WAF instance.
+        # The extended QPS specification of the WAF instance.
         self.qps = qps
         # The QPS specification included in the WAF instance edition.
         self.qps_version = qps_version
-        # Indicates whether risk identification is enabled. Valid values:
-        # - **true**: Risk identification is enabled.
-        # - **false**: Risk identification is not enabled.
+        # Specifies whether risk identification is enabled. Valid values:
+        # - **true**: enabled.
+        # - **false**: disabled.
         self.risk_control = risk_control
         # The number of times risk identification is used.
         self.risk_traffic = risk_traffic
-        # The start time of the billing record. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # The start time of the bill. The value is a UNIX timestamp in UTC. Unit: seconds.
         self.start_time = start_time
-        # The total QPS that is billed.
+        # The total QPS to be billed.
         self.total = total
-        # The burstable billing type.
+        # The elastic billing type.
         self.type = type
 
     def validate(self):
@@ -123,6 +126,9 @@ class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.agentic_waf is not None:
+            result['AgenticWaf'] = self.agentic_waf
+
         if self.elastic_qps_set_value is not None:
             result['ElasticQpsSetValue'] = self.elastic_qps_set_value
 
@@ -169,6 +175,9 @@ class DescribePrepayDailyBillsResponseBodyBills(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgenticWaf') is not None:
+            self.agentic_waf = m.get('AgenticWaf')
+
         if m.get('ElasticQpsSetValue') is not None:
             self.elastic_qps_set_value = m.get('ElasticQpsSetValue')
 

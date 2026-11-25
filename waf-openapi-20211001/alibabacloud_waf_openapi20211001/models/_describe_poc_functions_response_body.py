@@ -13,9 +13,9 @@ class DescribePocFunctionsResponseBody(DaraModel):
         functions: List[main_models.DescribePocFunctionsResponseBodyFunctions] = None,
         request_id: str = None,
     ):
-        # A list of the POC feature details.
+        # The list of POC feature details.
         self.functions = functions
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58,17 +58,13 @@ class DescribePocFunctionsResponseBodyFunctions(DaraModel):
         expire_time: int = None,
         type: str = None,
     ):
-        # The expiration time of the POC feature trial. This value is a UNIX timestamp. Unit: milliseconds.
+        # The expiration time of the instance. The value is a timestamp in milliseconds.
         self.expire_time = expire_time
         # The type of the POC feature trial. Valid values:
-        # 
         # - **apisec**: API security.
-        # 
-        # - **botWeb**: bot management for websites.
-        # 
-        # - **botApp**: bot management for apps.
-        # 
-        # - **largeLanguageModel**: AI-powered application protection.
+        # - **botWeb**: Bot management web protection.
+        # - **botApp**: Bot management app protection.
+        # - **largeLanguageModel**: AI application protection.
         self.type = type
 
     def validate(self):

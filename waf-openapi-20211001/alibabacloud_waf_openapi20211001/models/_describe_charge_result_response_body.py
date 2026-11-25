@@ -17,7 +17,7 @@ class DescribeChargeResultResponseBody(DaraModel):
     ):
         # The calculation results.
         self.module_details = module_details
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The total number of calculated credits.
         self.total_credit = total_credit
@@ -79,7 +79,7 @@ class DescribeChargeResultResponseBodyModuleDetails(DaraModel):
     ):
         # The number of credits for the billing module.
         self.credit = credit
-        # The billing module code.
+        # The identifier of the billing module.
         self.module_code = module_code
         # The number of SeCUs for the billing module.
         self.se_cu = se_cu

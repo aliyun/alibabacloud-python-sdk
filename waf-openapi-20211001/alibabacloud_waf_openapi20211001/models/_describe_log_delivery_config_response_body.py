@@ -51,17 +51,16 @@ class DescribeLogDeliveryConfigResponseBodyDeliveryConfig(DaraModel):
         delivery_name: str = None,
         delivery_type: str = None,
     ):
-        # The details of the log delivery configuration, in JSON format.
+        # The details of the log delivery configuration, which are formatted as a JSON string constructed from a series of parameters.
         # 
-        # > This parameter is the same as the **DeliveryDetail** parameter of the **CreateLogDeliveryConfig** operation. For more information, see [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~).
+        # > This parameter is the same as the **DeliveryDetail** parameter of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation. For more information, see the description of the log delivery configuration parameters in the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
         self.delivery_detail = delivery_detail
         # The name of the log delivery configuration.
         self.delivery_name = delivery_name
         # The type of the log delivery configuration. Valid values:
         # 
-        # - **syslog**: The logs are delivered to a syslog service.
-        # 
-        # - **kafka**: The logs are delivered to a Kafka service.
+        # - **syslog**: delivers logs to a Syslog service.
+        # - **kafka**: delivers logs to a Kafka service.
         self.delivery_type = delivery_type
 
     def validate(self):

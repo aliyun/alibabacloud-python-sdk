@@ -11,9 +11,9 @@ class DescribeAlarmBannerResponseBody(DaraModel):
         banner_status: main_models.DescribeAlarmBannerResponseBodyBannerStatus = None,
         request_id: str = None,
     ):
-        # The status information of the alert banner.
+        # The alert banner status information.
         self.banner_status = banner_status
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -52,29 +52,24 @@ class DescribeAlarmBannerResponseBodyBannerStatus(DaraModel):
         status: bool = None,
         type: str = None,
     ):
-        # The cause of the alert. If **Type** is set to **sandbox**, valid values:
+        # The cause of the alerting. If the Alarm Metric is sandbox (**Type** is set to **sandbox**), valid values are:
         # 
-        # - **fivefold**: The queries per second (QPS) of your service exceeds five times the upper limit of your plan.
-        # 
-        # - **4count**: The QPS of your service has exceeded the upper limit of your plan for four or more days.
-        # 
-        # - **exceed10w**: The peak QPS of your service exceeds 100,000.
-        # 
+        # - **fivefold**: The clean queries per second (QPS) exceeds the current specifications.
+        # - **4count**: The accumulated actual clean QPS exceeds the current specifications.
+        # - **exceed10w**: The actual peak clean QPS exceeds 100,000.
         # - **costProtection**: Billing protection is triggered.
         self.cause = cause
-        # The count associated with the alert at the time it was triggered.
+        # The usage when alerting is triggered.
         # 
-        # - If **Type** is set to **sandbox**, this parameter indicates the number of days that the QPS has exceeded the upper limit of your plan.
+        # - If the Alarm Metric is sandbox (**Type** is set to **sandbox**), this parameter indicates the number of days the quota is exceeded.
         self.count = count
-        # Indicates whether an alert is triggered. Valid values:
-        # 
-        # - **true**: An alert is triggered. If **Type** is set to **sandbox**, the instance is in the sandbox.
-        # 
-        # - **false**: No alert is triggered. If **Type** is set to **sandbox**, the instance is not in the sandbox.
+        # The alerting status. Valid values:
+        # - **true**: Alerting is triggered. If the Alarm Metric is sandbox (**Type** is set to **sandbox**), the instance is in the sandbox.
+        # - **false**: No alerting is triggered. If the Alarm Metric is sandbox (**Type** is set to **sandbox**), the instance is not in the sandbox.
         self.status = status
-        # The alert type. Valid value:
+        # The Alarm Metric. Valid values:
         # 
-        # - **sandbox**: a sandbox alert.
+        # - **sandbox**: sandbox alerting.
         self.type = type
 
     def validate(self):

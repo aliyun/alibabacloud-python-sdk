@@ -19,21 +19,21 @@ class DescribeAddressesRequest(DaraModel):
         self.address_like = address_like
         # The ID of the WAF instance.
         # 
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The number of entries per page for paging. Valid values: 1 to 500. Default value: 20.
+        # The number of entries to return per page in a paging query. Valid values: 1 to 500. Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next page. Set this parameter to the value of **NextToken** returned in the previous API call. Leave this parameter empty for the first page.
+        # The pagination token for the next page. Set the value to the **NextToken** value returned from the previous API call. This parameter is not required for the first query.
         self.next_token = next_token
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the address book to query.
         self.rule_id = rule_id

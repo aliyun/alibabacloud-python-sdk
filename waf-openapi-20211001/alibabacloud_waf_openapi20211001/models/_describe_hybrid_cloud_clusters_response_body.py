@@ -15,7 +15,7 @@ class DescribeHybridCloudClustersResponseBody(DaraModel):
     ):
         # The list of clusters.
         self.cluster_infos = cluster_infos
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -73,54 +73,48 @@ class DescribeHybridCloudClustersResponseBodyClusterInfos(DaraModel):
         # The network access mode. Valid values:
         # 
         # - **internet**: Internet access.
-        # 
-        # - **vpc**: leased line-based private network access.
+        # - **vpc**: Express Connect private network access.
         self.access_mode = access_mode
-        # The region where the leased line is connected. Valid values:
-        # 
-        # - **cn-hangzhou**: Hangzhou
-        # 
-        # - **cn-beijing**: Beijing
-        # 
-        # - **cn-shanghai**: Shanghai
+        # The Express Connect access region. Valid values:
+        # - **cn-hangzhou**: Hangzhou.
+        # - **cn-beiijng**: Beijing.
+        # - **cn-shanghai**: Shanghai.
         self.access_region = access_region
         # The name of the cluster.
         self.cluster_name = cluster_name
         # The resource ID of the hybrid cloud cluster.
         self.cluster_resource_id = cluster_resource_id
-        # The ports that use the HTTP protocol. The value is a string. If multiple ports are returned, they are separated by commas in the **port1,port2,port3** format.
+        # The list of HTTP ports. Separate multiple ports with commas (,). Example: port1,port2,port3.
         self.http_ports = http_ports
-        # The ports that use the HTTPS protocol. The value is a string. If multiple ports are returned, they are separated by commas in the **port1,port2,port3** format.
+        # The list of HTTPS ports. Separate multiple ports with commas (,). Example: port1,port2,port3.
         self.https_ports = https_ports
-        # The cluster ID.
+        # The ID of the cluster.
         self.id = id
-        # The number of protection nodes that you can add to the cluster.
+        # The number of protection nodes that can be added to the cluster.
         self.protection_server_count = protection_server_count
-        # The status of the proxy. Valid values:
+        # The proxy gateway mode. Valid values:
         # 
-        # - **on**: enabled
-        # 
-        # - **off**: disabled
+        # - **on**: Enabled.
+        # - **off**: Disabled.
         self.proxy_status = proxy_status
-        # The type of the cluster. Valid values:
+        # The cluster type. Valid values:
         # 
-        # - **cname**: reverse proxy cluster
-        # 
-        # - **service**: service cluster
+        # - **cname**: Reverse proxy cluster.
+        # - **service**: Service cluster.
         self.proxy_type = proxy_type
         # The remarks.
         self.remark = remark
         # The rule configuration.
         self.rule_config = rule_config
-        # The status of the manual bypass setting. Valid values:
+        # The manual bypass status. Valid values:
         # 
-        # - **on**: enabled.
+        # - **on**: Enabled.
         # 
-        # - **off**: disabled.
+        # - **off**: Disabled.
         self.rule_status = rule_status
-        # The type of the rule. Valid values:
+        # The rule type. Valid values:
         # 
-        # - **bypass**: WAF does not perform security checks and allows traffic to pass through.
+        # - **bypass**: Skips security checks and directly allows requests.
         self.rule_type = rule_type
 
     def validate(self):

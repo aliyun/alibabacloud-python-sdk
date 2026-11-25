@@ -18,7 +18,7 @@ class DescribeBaseSystemRulesResponseBody(DaraModel):
         self.request_id = request_id
         # The list of system protection rules.
         self.rules = rules
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -95,39 +95,39 @@ class DescribeBaseSystemRulesResponseBodyRules(DaraModel):
         # - **lfilei**: local file inclusion (LFI).
         # - **protocol_violation**: protocol violation.
         # - **scanner_behavior**: scanner behavior.
-        # - **logic_flaw**: business logic bug.
-        # - **arbitrary_file_reading**: arbitrary file read.
+        # - **logic_flaw**: business logic flaw.
+        # - **arbitrary_file_reading**: arbitrary file reading.
         # - **arbitrary_file_download**: arbitrary file download.
-        # - **xxe**: XML external entity injection.
-        # - **csrf**: cross-site request forgery.
-        # - **crlf**: CRLF injection.
+        # - **xxe**: external entity injection.
+        # - **csrf**: cross-site request forgery (CSRF).
+        # - **crlf**: CRLF.
         # - **other**: other.
         self.detect_type = detect_type
         # The risk level. Valid values:
         # 
-        # - **super_strict**: super strict.
+        # - **super_strict**: Super strict.
         # 
-        # - **strict**: strict.
+        # - **strict**: Strict.
         # 
-        # - **medium**: medium.
+        # - **medium**: Medium.
         # 
-        # - **loose**: loose.
+        # - **loose**: Loose.
         self.risk_level = risk_level
-        # The rule action. Valid values:
+        # The action of the rule. Valid values:
         # 
         # - **block**: Block.
         # 
         # - **monitor**: Monitor.
         self.rule_action = rule_action
-        # The rule ID.
+        # The ID of the rule.
         self.rule_id = rule_id
         # The name of the protection rule.
         self.rule_name = rule_name
-        # The rule status. Valid values:
-        # - **1**: disabled.
-        # - **0**: enabled.
+        # The status of the rule. Valid values:
+        # - **1**: Disabled.
+        # - **0**: Enabled.
         self.rule_status = rule_status
-        # The time when the rule was last updated. The value is a UNIX timestamp in milliseconds.
+        # The update time of the rule. The value is a UNIX timestamp in milliseconds.
         self.update_time = update_time
 
     def validate(self):

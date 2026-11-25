@@ -16,23 +16,26 @@ class DescribeApisecEventDetailRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
+        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The type of detailed information about the security event.
+        # The type of details for the security event.
         self.detail_type = detail_type
         # The ID of the API security event.
         # 
         # This parameter is required.
         self.event_id = event_id
-        # The dimension of the security event.
-        self.event_scope = event_scope
-        # Instance ID of the WAF instance.
+        # The scope of the security event. Valid values:
+        # - **ip**: IP security events. This is the default value.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+        # - **account**: account security events.
+        self.event_scope = event_scope
+        # The WAF instance ID.
+        # 
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view the current WAF instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 

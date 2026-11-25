@@ -15,9 +15,9 @@ class DescribeDefenseTemplateValidResourcesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The names of the protected objects that are valid for the protection template.
+        # The list of protected object names.
         self.resources = resources
-        # The total number of protected objects that match the query criteria.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):

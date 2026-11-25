@@ -37,67 +37,68 @@ class DescribeApisecEventsRequest(DaraModel):
         # The ID of the API.
         self.api_id = api_id
         # The business purpose of the API.
-        # > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported business purposes.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query supported business purposes.
         self.api_tag = api_tag
         # The attack IP address.
         self.attack_ip = attack_ip
-        # The hybrid cloud cluster ID.
-        # > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
+        # The ID of the hybrid cloud cluster.
+        # > This parameter is applicable only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The end time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
+        # The end time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
         self.end_ts = end_ts
         # The ID of the API security event.
         self.event_id = event_id
-        # The event level. Valid values:
-        # - **high**: High-risk.
-        # - **medium**: Medium-risk.
-        # - **low**: Low-risk.
+        # The severity level of the event. Valid values:
+        # - **high**: high risk.
+        # - **medium**: medium risk.
+        # - **low**: low risk.
         self.event_level = event_level
         # The dimension of the security event.
         self.event_scope = event_scope
         # The event type.
-        # > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported event types.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query supported event types.
         self.event_tag = event_tag
         # The ID of the WAF instance.
         # 
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The domain name or IP address to which the API operation belongs.
         self.matched_host = matched_host
-        # The name of the field used for sorting. Valid values:
-        # - **allCnt**: attack count.
-        # - **startTs**: event start time.
-        # - **endTs**: event end time.
+        # The name of the field by which to sort. Valid values:
+        # - **allCnt**: the number of attacks.
+        # - **startTs**: the start time of the event.
+        # - **endTs**: the end time of the event.
         self.order_key = order_key
         # The sort order. Valid values:
-        # - **desc**: Descending order (default).
-        # - **asc**: Ascending order.
+        # - **desc**: descending order (default).
+        # - **asc**: ascending order.
         self.order_way = order_way
-        # The source of the event type. Valid values:
-        # - **custom**: Custom.
-        # - **default**: Built-in.
+        # The origin of the event type. Valid values:
+        # - **custom**: custom.
+        # - **default**: built-in.
         self.origin = origin
-        # The page number to return in a paged query. Default value: **1**, which indicates the first page.
+        # The page number to return for a paged query. Default value: **1**, which indicates that the first page is returned during paging.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Default value: **10**, which indicates 10 entries per page.
+        # The number of entries to return on each page in a paged query. Default value: **10**, which indicates that 10 entries are returned on each page during paging.
         self.page_size = page_size
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The start time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
         self.start_ts = start_ts
-        # The event status. Valid values:
-        # - **toBeConfirmed**: To be confirmed.
-        # - **confirmed**: Confirmed.
-        # - **actioned**: Handled.
-        # - **ignored**: Ignored.
+        # The status of the event. Valid values:
+        # 
+        # - **toBeConfirmed**: pending confirmation.
+        # - **confirmed**: confirmed.
+        # - **actioned**: handled.
+        # - **ignored**: ignored.
         self.user_status = user_status
 
     def validate(self):

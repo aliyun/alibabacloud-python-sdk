@@ -16,17 +16,17 @@ class DescribeLogDeliveryConfigsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The log delivery configurations.
+        # The delivery configuration information.
         self.delivery_configs = delivery_configs
-        # The maximum number of entries returned per page.
+        # The number of entries to return per page during paging in a paged query. Valid values: 1 to 50. Default value: 20.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # The pagination token for querying the next page. If a next page exists, this field returns a value.
         # 
-        # > If this parameter is not empty, more results are available. Use the value of **NextToken** in the next request to retrieve the next page of results. If the value is empty, all results have been returned.
+        # > If this parameter returns a value, it indicates that more pages exist. You can use the returned **NextToken** value as a request parameter to obtain the data on the next page. Repeat this process until no value is returned, which indicates that all data has been retrieved.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The total number of log delivery configurations returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -88,17 +88,16 @@ class DescribeLogDeliveryConfigsResponseBodyDeliveryConfigs(DaraModel):
         delivery_name: str = None,
         delivery_type: str = None,
     ):
-        # The details of the log delivery configuration, returned as a JSON string.
+        # The content of the delivery configuration. The content is a JSON string constructed from a series of parameters.
         # 
-        # > The structure of this parameter is the same as the **DeliveryDetail** request parameter of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
+        # > This parameter is the same as the **DeliveryDetail** request parameter of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation. For more information, see the **Delivery configuration content parameters** section of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
         self.delivery_detail = delivery_detail
-        # The name of the log delivery configuration.
+        # The name of the delivery configuration.
         self.delivery_name = delivery_name
-        # The type of the log delivery configuration. Valid values:
+        # The type of the delivery configuration. Valid values:
         # 
-        # - **syslog**: Log delivery to a syslog server.
-        # 
-        # - **kafka**: Log delivery to a Kafka cluster.
+        # - **syslog**: Delivers logs to a Syslog service.
+        # - **kafka**: Delivers logs to a Kafka service.
         self.delivery_type = delivery_type
 
     def validate(self):

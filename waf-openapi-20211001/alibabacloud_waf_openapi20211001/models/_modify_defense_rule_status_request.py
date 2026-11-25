@@ -11,18 +11,20 @@ class ModifyDefenseRuleStatusRequest(DaraModel):
         dry_run: bool = None,
         instance_id: str = None,
         region_id: str = None,
+        resource: str = None,
         resource_manager_resource_group_id: str = None,
+        resource_type: str = None,
         rule_id: int = None,
         rule_status: int = None,
         template_id: int = None,
     ):
         # The type of the protection rule.
         self.defense_type = defense_type
-        # Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+        # Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is initiated. Valid values:
         # 
-        # - **true**: A dry run request is sent. Only the request conditions are checked, and the specified operation is not performed. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+        # - **true**: initiates a dry run request. The system only checks whether the request meets the execution conditions and does not perform the operations specified in the request. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
         # 
-        # - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+        # - **false**: initiates a normal request. If the check succeeds, the operations specified in the request are performed.
         self.dry_run = dry_run
         # Instance ID of the WAF instance.
         # 
@@ -30,23 +32,30 @@ class ModifyDefenseRuleStatusRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region in which the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The protection object or protection group. This parameter is used for protection rules whose **DefenseType** is **resource**. Specify the name of the protection object or protection group based on **ResourceType**.
+        self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The ID of the protection rule that you want to modify.
+        # The type of the protection target. This parameter is applicable to rules whose **DefenseType** is **resource**. Valid values:
         # 
-        # > You can call the [DescribeDefenseRules](https://help.aliyun.com/document_detail/461426.html) operation to query the protection rule ID. You can create a protection rule by calling the [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) operation.
+        # - **single (default)**: single protection object.
+        # - **group**: protection group.
+        self.resource_type = resource_type
+        # The ID of the protection rule to be modified.
+        # 
+        # > You can call the [DescribeDefenseRules](https://help.aliyun.com/document_detail/461426.html) operation to query the ID of the protection rule. You can create a protection rule by calling the [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) operation.
         # 
         # This parameter is required.
         self.rule_id = rule_id
-        # The status of the protection rule that you want to modify. Valid values: 
-        # - **0**: disabled.  
-        # - **1**: enabled.
+        # The status of the protection rule to be modified. Valid values: 
+        # - **0**: disabled  
+        # - **1**: enabled
         # 
         # This parameter is required.
         self.rule_status = rule_status
@@ -73,8 +82,14 @@ class ModifyDefenseRuleStatusRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.resource is not None:
+            result['Resource'] = self.resource
+
         if self.resource_manager_resource_group_id is not None:
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
 
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
@@ -101,8 +116,14 @@ class ModifyDefenseRuleStatusRequest(DaraModel):
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
+
         if m.get('ResourceManagerResourceGroupId') is not None:
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
 
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')

@@ -16,7 +16,7 @@ class ListTagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.ListTagResourcesRequestTag] = None,
     ):
-        # The token that is used to start the next query.
+        # The token used to start the next query.
         self.next_token = next_token
         # The region where the WAF instance resides. Valid values:
         # 
@@ -26,15 +26,15 @@ class ListTagResourcesRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource ID. You can specify up to 50 entries.
+        # The resource IDs. You can specify up to 50 resource IDs.
         # 
         # > - This parameter is conditionally required. You must specify at least one ResourceId.N value. If ResourceType is set to ALIYUN::WAF::DEFENSERESOURCE, the value of ResourceId corresponds to the Resources[].Resource field returned by the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation.
         self.resource_id = resource_id
-        # The resource type. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+        # The resource type. Valid values: ALIYUN::WAF::DEFENSERESOURCE.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The list of tags. You can specify up to 20 entries.
+        # The list of tags. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):

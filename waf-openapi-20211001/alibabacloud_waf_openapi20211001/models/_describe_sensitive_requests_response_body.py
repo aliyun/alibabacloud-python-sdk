@@ -18,7 +18,7 @@ class DescribeSensitiveRequestsResponseBody(DaraModel):
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -82,9 +82,9 @@ class DescribeSensitiveRequestsResponseBodyData(DaraModel):
         self.api_id = api_id
         # The IP address.
         self.client_ip = client_ip
-        # The assessment result. Valid values:
-        # - **leak**: a leak risk exists.
-        # - **none**: no leak risk exists.
+        # The evaluation result. Valid values:
+        # - **leak**: A leakage risk exists.
+        # - **none**: No leakage risk exists.
         self.detection_result = detection_result
         # The number of events in the last 30 days.
         self.event_count = event_count

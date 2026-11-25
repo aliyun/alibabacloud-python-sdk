@@ -1,3 +1,6 @@
+2026-11-25 Version: 7.10.2
+- Generated python 2021-10-01 for waf-openapi.
+
 2026-11-09 Version: 7.8.8
 - Update API DescribeChargeResult: add request parameters ChargeModules.$.UsageDecimal.
 

@@ -12,13 +12,11 @@ class DescribeBotAppKeyRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the Web Application Firewall (WAF) instance.
-        # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of your WAF instance.
+        # The ID of the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The version of the AppKey. Set the value to 1.
+        # The key version. Only the value 1 is supported.
         self.key_version = key_version
         # The region where the WAF instance resides. Valid values:
         # 

@@ -18,7 +18,7 @@ class DescribeSensitiveStatisticResponseBody(DaraModel):
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -80,7 +80,7 @@ class DescribeSensitiveStatisticResponseBodyData(DaraModel):
         self.matched_host = matched_host
         # The sensitive data type.
         # 
-        # > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported sensitive data types.
+        # > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to query the supported sensitive data types.
         self.sensitive_code = sensitive_code
 
     def validate(self):

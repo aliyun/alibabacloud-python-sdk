@@ -13,21 +13,18 @@ class DescribeUserEventTrendRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the hybrid cloud cluster.
+        # The hybrid cloud cluster ID.
         # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
         # The dimension of security events.
         self.event_scope = event_scope
-        # Instance ID of the WAF instance.
-        # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+        # The WAF instance ID.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view the current WAF instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance is deployed. Valid values:
-        # 
+        # The region to which the WAF instance belongs. Valid values:
         # - **cn-hangzhou**: the Chinese mainland.
-        # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.

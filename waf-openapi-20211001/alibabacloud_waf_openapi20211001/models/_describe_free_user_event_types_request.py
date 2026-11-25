@@ -13,11 +13,11 @@ class DescribeFreeUserEventTypesRequest(DaraModel):
     ):
         # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region to which the WAF instance belongs. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 

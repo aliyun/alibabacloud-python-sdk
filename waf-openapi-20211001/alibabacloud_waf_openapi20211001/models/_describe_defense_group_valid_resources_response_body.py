@@ -15,9 +15,9 @@ class DescribeDefenseGroupValidResourcesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The names of the protected objects.
+        # The names of the protection objects.
         self.resources = resources
-        # The total number of entries returned.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):

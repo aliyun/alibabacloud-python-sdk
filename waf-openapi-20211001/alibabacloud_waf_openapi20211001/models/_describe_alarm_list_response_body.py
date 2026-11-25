@@ -13,9 +13,9 @@ class DescribeAlarmListResponseBody(DaraModel):
         alarms: List[main_models.DescribeAlarmListResponseBodyAlarms] = None,
         request_id: str = None,
     ):
-        # The alerts.
+        # The alert list.
         self.alarms = alarms
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -65,35 +65,29 @@ class DescribeAlarmListResponseBodyAlarms(DaraModel):
     ):
         # The cause of the alert. Valid values:
         # 
-        # - **fivefold**: The QPS exceeds the limit of the current WAF instance specifications.
-        # 
-        # - **4count**: The actual QPS has cumulatively exceeded the limit of the current WAF instance specifications.
-        # 
-        # - **exceed10w**: The peak QPS exceeds 100,000.
-        # 
+        # - **fivefold**: The service QPS exceeds the current specifications.
+        # - **4count**: The cumulative actual service QPS exceeds the current specifications.
+        # - **exceed10w**: The actual peak service QPS exceeds 100,000.
         # - **costProtection**: Billing protection is triggered.
         self.cause = cause
-        # The end time of the alert. This is a UNIX timestamp. Unit: milliseconds.
+        # The end time of the alert. The value is a UNIX timestamp in UTC. Unit: milliseconds.
         self.end_time = end_time
-        # The peak QPS during the alert period.
+        # The peak QPS.
         self.max_qps = max_qps
-        # The QPS limit of the current WAF instance specifications.
+        # The current specifications.
         self.spec = spec
-        # The start time of the alert. This is a UNIX timestamp. Unit: milliseconds.
+        # The start time of the alert. The value is a UNIX timestamp in UTC. Unit: milliseconds.
         self.start_time = start_time
         # The current status of the alert. Valid values:
         # 
-        # - **1**: The queries per second (QPS) limit is exceeded.
-        # 
-        # - **2**: The WAF instance enters the sandbox.
-        # 
-        # - **3**: The WAF instance is removed from the sandbox.
-        # 
-        # - **4**: The QPS no longer exceeds the limit.
+        # - **1**: The QPS limit is exceeded.
+        # - **2**: The instance is added to the sandbox.
+        # - **3**: The instance is removed from the sandbox.
+        # - **4**: The QPS limit is no longer exceeded.
         self.status = status
-        # The type of the alert. Valid value:
+        # The Alarm Metric for alerting. Valid values:
         # 
-        # - **qps**: a QPS alert.
+        # - **qps**: The QPS alerts for the service.
         self.type = type
 
     def validate(self):

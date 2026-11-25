@@ -22,7 +22,7 @@ class DescribeHybridCloudBasicMonitorRequest(DaraModel):
         # 
         # This parameter is required.
         self.mid = mid
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 

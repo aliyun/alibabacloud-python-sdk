@@ -16,11 +16,11 @@ class DescribeBotRuleLabelsResponseBody(DaraModel):
         rule_labels: List[main_models.DescribeBotRuleLabelsResponseBodyRuleLabels] = None,
         total_count: int = None,
     ):
-        # The number of entries to return per paging in a paged query. Valid values: 1 to 200. Default value: 20.
+        # The number of entries to return per page in a paged query. This parameter is used for paging. Valid values: 1 to 200. Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next page. This parameter is returned only if a next page exists.
+        # The pagination token for the next page. This parameter is returned only when a next page exists.
         # 
-        # > If this parameter is returned, it indicates that there is a next page. You can use the returned **NextToken** as a request parameter to obtain the data of the next page until no value is returned, which indicates that all data is obtained.
+        # > If this parameter is returned, a next page exists. You can use the returned **NextToken** as a request parameter to obtain the next page of data. Repeat this process until no value is returned, which indicates that all data is retrieved.
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
@@ -93,13 +93,13 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         label_type: str = None,
         sub_scene: str = None,
     ):
-        # The bot behavior corresponding to the rule label.
+        # The bot behavior corresponding to the rule label. Valid values:
         # 
         # - **malicious**: malicious bots.
         # - **suspicious**: suspicious bots.
         # - **normal**: normal bots.
         self.bot_behavior = bot_behavior
-        # The default action.
+        # The default action. Valid values:
         # 
         # - **block**: block.
         # - **monitor**: monitor.
@@ -110,14 +110,14 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         self.default_action = default_action
         # The default configurations corresponding to the label.
         self.default_config = default_config
-        # The default status of the label rule.
+        # The default status of the label rule. Valid values:
         # 
         # - **1**: The rule is enabled.
         # - **0**: The rule is disabled.
         self.default_status = default_status
         # The bot management rule label.
         self.label_key = label_key
-        # The status of the label.
+        # The status of the label. Valid values:
         # 
         # - **online**: online.
         # - **wait_offline**: pending offline.
@@ -126,7 +126,7 @@ class DescribeBotRuleLabelsResponseBodyRuleLabels(DaraModel):
         self.label_type = label_type
         # The bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
         # 
-        # - **web**: the web protection scenario.
+        # - **web**: the Web protection scenario.
         # - **app**: the app protection scenario.
         # - **agentic_web**: the Agentic Web protection scenario.
         # - **agentic_app**: the Agentic App protection scenario.

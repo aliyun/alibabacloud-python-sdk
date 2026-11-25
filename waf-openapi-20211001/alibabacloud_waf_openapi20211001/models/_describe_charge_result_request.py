@@ -18,9 +18,9 @@ class DescribeChargeResultRequest(DaraModel):
         resource_manager_resource_group_id: str = None,
     ):
         # The billing cycle. Valid values:
-        # - **Year**: calculates the billing result for one year
-        # - **Month**: calculates the billing result for one month
-        # - **Day**: calculates the billing result for one day
+        # - **Year**: calculates the billing result for one year.
+        # - **Month**: calculates the billing result for one month.
+        # - **Day**: calculates the billing result for one day.
         self.charge_cycle = charge_cycle
         # The list of billing modules to be calculated.
         # 
@@ -29,17 +29,17 @@ class DescribeChargeResultRequest(DaraModel):
         # The metering unit.
         self.charge_unit = charge_unit
         # The billing method of the instance. Valid values:
-        # - **POSTPAY**: pay-as-you-go WAF instances
+        # - **POSTPAY**: pay-as-you-go WAF instances.
         # 
         # This parameter is required.
         self.pay_type = pay_type
         # The region of the WAF instance. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland
+        # - **cn-hangzhou**: the Chinese mainland.
         # 
-        # - **ap-southeast-1**: outside the Chinese mainland
+        # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):
@@ -107,11 +107,11 @@ class DescribeChargeResultRequestChargeModules(DaraModel):
         usage: int = None,
         usage_decimal: float = None,
     ):
-        # The billing module code.
+        # The identifier of the billing module.
         self.module_code = module_code
         # The usage of the billing module.
         self.usage = usage
-        # The usage of the billing module, which supports integers and decimals. If the billing module is log storage capacity, the usage supports up to one decimal place, such as 10.5. This parameter is optional and has no default value. If this parameter is specified, it takes precedence even if the value is 0. If this parameter is not specified, Usage is used.
+        # The usage of the billing module, which supports integers and decimals. If the billing module is log storage capacity, the usage supports up to one decimal place, such as 10.5. This parameter is optional and has no default value. If this parameter is specified, it takes precedence. A value of 0 is also considered as specified. If this parameter is not specified, Usage is used.
         self.usage_decimal = usage_decimal
 
     def validate(self):

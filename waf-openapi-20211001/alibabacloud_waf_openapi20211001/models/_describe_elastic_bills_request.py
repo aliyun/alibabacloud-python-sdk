@@ -13,15 +13,15 @@ class DescribeElasticBillsRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The WAF instance ID.
+        # Instance ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The page number when using paging. Default value: **1**.
+        # The page number of the current page in paging. Default value: **1**.
         self.page_number = page_number
-        # The number of entries per page when using paging. Default value: **10**, which indicates that each page contains 10 entries.
+        # The number of entries to return on each page in paging. Default value: **10**, which indicates that each page contains 10 entries.
         self.page_size = page_size
         # The region where the WAF instance resides. Valid values:
         # 
@@ -29,7 +29,7 @@ class DescribeElasticBillsRequest(DaraModel):
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

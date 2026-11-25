@@ -24,21 +24,27 @@ class DescribeInstanceResponseBody(DaraModel):
         self.details = details
         # The WAF edition.
         self.edition = edition
-        # The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds. Format: ms.
+        # The time when the instance expires. The value is a UNIX timestamp in the format of milliseconds.
         self.end_time = end_time
-        # Indicates whether the current instance has an overdue payment. Valid values:
+        # Specifies whether the instance has an overdue payment. Valid values:
+        # - **0**: Normal.
+        # - **1**: Overdue payment.
         self.in_debt = in_debt
         # The WAF instance ID.
         self.instance_id = instance_id
         # The billing method of the instance. Valid values:
+        # 
+        # - **POSTPAY**: Pay-as-you-go.
+        # 
+        # - **PREPAY**: Subscription.
         self.pay_type = pay_type
-        # The instance execution status. Valid values:
+        # The execution status of the instance. Valid values:
         # - **commodity_converting**: The commodity is being converted.
         # 
-        # - **commodity_convert_check_failed**: The commodity conversion check failed.
+        # - **commodity_convert_check_failed**: The commodity conversion verification failed.
         # 
         # - **commodity_convert_process_failed**: The commodity conversion failed.
-        # - **order_create_failed**: The order failed to be created.
+        # - **order_create_failed**: The order creation failed.
         # - **order_pending_payment**: The order is pending payment.
         self.process_status = process_status
         # The region where the WAF instance resides. Valid values:
@@ -144,6 +150,7 @@ class DescribeInstanceResponseBodyDetails(DaraModel):
         self,
         acl_rule_max_ip_count: int = None,
         agentic_apisec: bool = None,
+        agentic_waf: bool = None,
         anti_scan: bool = None,
         anti_scan_template_max_count: int = None,
         apisec: bool = None,
@@ -203,20 +210,24 @@ class DescribeInstanceResponseBodyDetails(DaraModel):
         whitelist_rule_in_template_max_count: int = None,
         whitelist_template_max_count: int = None,
     ):
-        # The maximum number of IP addresses that can be added to the match content. For more information about match content, refer to [Match condition description](https://help.aliyun.com/document_detail/374354.html).
+        # The maximum number of IP addresses that can be added to the match content. For more information about match content, see [Match condition description](https://help.aliyun.com/document_detail/374354.html).
         self.acl_rule_max_ip_count = acl_rule_max_ip_count
-        # Indicates whether Agentic API security is enabled.
+        # Specifies whether the Agentic API security feature is enabled.
         self.agentic_apisec = agentic_apisec
+        # Specifies whether the instance is an Agentic WAF edition.
+        self.agentic_waf = agentic_waf
         # Specifies whether scan protection is supported. Valid values:
+        # - **true**: Supported.
+        # 
+        # - **false**: Not supported.
         self.anti_scan = anti_scan
         # The maximum number of scan protection templates that can be configured.
         self.anti_scan_template_max_count = anti_scan_template_max_count
-        # Indicates whether API security is enabled.
+        # Specifies whether the API security feature is enabled.
         self.apisec = apisec
         # The maximum number of back-to-origin IP addresses that can be configured.
         self.backend_max_count = backend_max_count
         # Specifies whether basic protection rules are supported. Valid values:
-        # 
         # - **true**: Supported.
         # 
         # - **false**: Not supported.
@@ -226,25 +237,27 @@ class DescribeInstanceResponseBodyDetails(DaraModel):
         # The maximum number of basic protection rule templates that can be configured.
         self.base_waf_group_rule_template_max_count = base_waf_group_rule_template_max_count
         # Specifies whether bot management is supported. Valid values:
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.bot = bot
-        # Indicates whether scenario-specific protection against app crawlers is supported. Valid values:
+        # Specifies whether scenario-specific anti-crawler protection for apps is supported. Valid values:
         # - **true**: Supported.
         # - **false**: Not supported.
         self.bot_app = bot_app
         # The maximum number of bot management protection templates that can be configured.
         self.bot_template_max_count = bot_template_max_count
-        # Specifies whether scenario-specific protection against web crawlers is supported. Valid values:
+        # Specifies whether scenario-specific anti-crawler protection for websites is supported. Valid values:
         # - **true**: Supported.
         # - **false**: Not supported.
         self.bot_web = bot_web
-        # The maximum number of CNAMEs that can be added.
+        # The maximum number of CNAME records that can be added.
         self.cname_resource_max_count = cname_resource_max_count
-        # Indicates whether custom responses are supported. Valid values:
+        # Specifies whether custom responses are supported. Valid values:
         # - **true**: Supported.
         # 
         # - **false**: Not supported.
         self.custom_response = custom_response
-        # The maximum number of protection rules that a single custom response template can contain.
+        # The maximum number of protection rules that can be included in a single custom response template.
         self.custom_response_rule_in_template_max_count = custom_response_rule_in_template_max_count
         # The maximum number of custom response templates that can be configured.
         self.custom_response_template_max_count = custom_response_template_max_count
@@ -255,66 +268,78 @@ class DescribeInstanceResponseBodyDetails(DaraModel):
         self.custom_rule = custom_rule
         # The strings included in custom rules.
         self.custom_rule_action = custom_rule_action
-        # The match conditions for custom rules. For more information, refer to the parameter description of **custom rule (custom_acl) conditions** in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+        # The match conditions for custom rules. For more information, see the parameter description of **conditions** for **custom rules (custom_acl)** in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
         self.custom_rule_condition = custom_rule_condition
-        # The maximum number of protection rules that a single custom rule template can contain.
+        # The maximum number of protection rules that can be included in a single custom rule template.
         self.custom_rule_in_template_max_count = custom_rule_in_template_max_count
-        # The rate limiting object for custom rules.
+        # The rate limiting objects for custom rules.
         self.custom_rule_ratelimitor = custom_rule_ratelimitor
         # The maximum number of custom rule templates that can be configured.
         self.custom_rule_template_max_count = custom_rule_template_max_count
         # The maximum number of protection groups that can be configured.
         self.defense_group_max_count = defense_group_max_count
-        # The maximum number of protection objects that a protection group can contain.
+        # The maximum number of protected objects that can be included in a protection group.
         self.defense_object_in_group_max_count = defense_object_in_group_max_count
-        # The maximum number of protection objects that can be associated with a single template.
+        # The maximum number of protected objects that can be associated with a single template.
         self.defense_object_in_template_max_count = defense_object_in_template_max_count
-        # The maximum number of protection objects that can be configured.
+        # The maximum number of protected objects that can be configured.
         self.defense_object_max_count = defense_object_max_count
-        # Specifies whether data leak prevention is supported. Valid values:
+        # Specifies whether information leak prevention is supported. Valid values:
         # - **true**: Supported.
         # - **false**: Not supported.
         self.dlp = dlp
-        # The maximum number of protection rules that a single information leak prevention template can contain.
+        # The maximum number of protection rules that can be included in a single information leak prevention template.
         self.dlp_rule_in_template_max_count = dlp_rule_in_template_max_count
         # The maximum number of information leak prevention templates that can be configured.
         self.dlp_template_max_count = dlp_template_max_count
-        # The burstable QPS value for the subscription instance with pay-as-you-go billing for burstable capacity. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
-        # > This parameter has no practical meaning for **pay-as-you-go** instances.
+        # The burstable pay-as-you-go QPS value for subscription instances. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
+        # > This parameter is not applicable to **pay-as-you-go** instances.
         self.elastic_qps = elastic_qps
         # Specifies whether exclusive IP addresses are supported. Valid values:
+        # - **true**: Supported.
+        # 
+        # - **false**: Not supported.
         self.exclusive_ip = exclusive_ip
-        # The extended QPS value of the subscription instance. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
+        # The extended QPS value for subscription instances. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
         # > This parameter is not applicable to **pay-as-you-go** instances.
         self.extend_qps = extend_qps
-        # The free QPS value included in the subscription plan. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
+        # The free QPS value for subscription instances. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
         # 
-        # > This parameter has no practical meaning for **pay-as-you-go** instances.
+        # > This parameter is not applicable to **pay-as-you-go** instances.
         self.free_qps = free_qps
         # Specifies whether Global Server Load Balancing (GSLB) is supported. Valid values:
+        # - **true**: Supported.
+        # 
+        # - **false**: Not supported.
         self.gslb = gslb
-        # The available HTTP port range. For more information, refer to [Ports supported by WAF](https://help.aliyun.com/document_detail/385578.html).
+        # The available HTTP port range. For more information, see [Port ranges supported by WAF](https://help.aliyun.com/document_detail/385578.html).
         self.http_ports = http_ports
-        # The available HTTPS port range. For more information, refer to [Ports supported by WAF](https://help.aliyun.com/document_detail/385578.html).
+        # The available HTTPS port range. For more information, see [Port ranges supported by WAF](https://help.aliyun.com/document_detail/385578.html).
         self.https_ports = https_ports
-        # Indicates whether hybrid cloud is enabled.
+        # Specifies whether the hybrid cloud feature is enabled.
         self.hybrid_cloud = hybrid_cloud
-        # The number of hybrid cloud extended nodes.
+        # The number of extended nodes for the hybrid cloud.
         self.hybrid_cloud_node_extend = hybrid_cloud_node_extend
-        # Indicates whether the IP blacklist is supported. Valid values:
+        # Specifies whether IP blacklist is supported. Valid values:
         # - **true**: Supported.
         # 
         # - **false**: Not supported.
         self.ip_blacklist = ip_blacklist
         # The maximum number of IP addresses that can be added to a blacklist rule.
         self.ip_blacklist_ip_in_rule_max_count = ip_blacklist_ip_in_rule_max_count
-        # The maximum number of protection rules that a single blacklist template can contain.
+        # The maximum number of protection rules that can be included in a single blacklist template.
         self.ip_blacklist_rule_in_template_max_count = ip_blacklist_rule_in_template_max_count
         # The maximum number of blacklist templates that can be configured.
         self.ip_blacklist_template_max_count = ip_blacklist_template_max_count
         # Specifies whether IPv6 is supported. Valid values:
+        # - **true**: Supported.
+        # 
+        # - **false**: Not supported.
         self.ipv_6 = ipv_6
-        # Specifies whether the log service is supported. Valid values:
+        # Specifies whether Simple Log Service is supported. Valid values:
+        # - **true**: Supported.
+        # 
+        # - **false**: Not supported.
         self.log_service = log_service
         # Specifies whether critical event protection is supported. Valid values:
         # - **true**: Supported.
@@ -323,34 +348,35 @@ class DescribeInstanceResponseBodyDetails(DaraModel):
         self.major_protection = major_protection
         # The maximum number of critical event protection templates that can be configured.
         self.major_protection_template_max_count = major_protection_template_max_count
-        # The QPS billing protection threshold for the pay-as-you-go edition. For more information, see [Traffic billing protection](https://help.aliyun.com/document_detail/2249021.html) for pay-as-you-go.
-        # > This parameter has no practical meaning for **subscription** instances.
+        # The QPS traffic billing protection threshold for pay-as-you-go instances. For more information, see [Traffic billing protection](https://help.aliyun.com/document_detail/2249021.html) for pay-as-you-go instances.
+        # > This parameter is not applicable to **subscription** instances.
         self.qps_billing_cap = qps_billing_cap
-        # Indicates whether the multi-account management feature is supported.
+        # Specifies whether the multi-account management feature is supported.
         self.resource_directory = resource_directory
         # Specifies whether web tamper proofing is supported. Valid values:
+        # - **true**: Supported.
+        # - **false**: Not supported.
         self.tamperproof = tamperproof
-        # The maximum number of protection rules that a single web tamper proofing template can contain.
+        # The maximum number of protection rules that can be included in a single web tamper proofing template.
         self.tamperproof_rule_in_template_max_count = tamperproof_rule_in_template_max_count
         # The maximum number of web tamper proofing protection templates that can be configured.
         self.tamperproof_template_max_count = tamperproof_template_max_count
-        # The maximum number of IP addresses that can be imported to the IP blacklist in a single bulk import.
+        # The maximum number of IP addresses that can be imported to an IP blacklist in a single batch.
         self.vast_ip_blacklist_in_file_max_count = vast_ip_blacklist_in_file_max_count
-        # The maximum number of IP addresses that can be added to the IP blacklist in a single page operation.
+        # The maximum number of IP addresses that can be added to an IP blacklist in a single page operation.
         self.vast_ip_blacklist_in_operation_max_count = vast_ip_blacklist_in_operation_max_count
-        # The maximum number of IP blacklist entries that a single user can configure.
+        # The maximum number of IP blacklists that can be configured per user.
         self.vast_ip_blacklist_max_count = vast_ip_blacklist_max_count
-        # Specifies whether the IP whitelist is supported. Valid values:
-        # 
+        # Specifies whether IP address whitelists are supported. Valid values:
         # - **true**: Supported.
         # 
         # - **false**: Not supported.
         self.whitelist = whitelist
-        # The logical operators for whitelist rules. For more information, refer to the parameter description of **whitelist rule (whitelist) conditions** in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+        # The logical operators for whitelist rules. For more information, see the parameter description of **conditions** for **whitelist rules** in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
         self.whitelist_logical = whitelist_logical
-        # The match fields for whitelist rules. For more information, refer to the parameter description of **whitelist rule (whitelist) conditions** in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+        # The match fields for whitelist rules. For more information, see the parameter description of **conditions** for **whitelist rules** in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
         self.whitelist_rule_condition = whitelist_rule_condition
-        # The maximum number of protection rules that a single whitelist template can contain.
+        # The maximum number of protection rules that can be included in a single whitelist template.
         self.whitelist_rule_in_template_max_count = whitelist_rule_in_template_max_count
         # The maximum number of whitelist templates that can be configured.
         self.whitelist_template_max_count = whitelist_template_max_count
@@ -368,6 +394,9 @@ class DescribeInstanceResponseBodyDetails(DaraModel):
 
         if self.agentic_apisec is not None:
             result['AgenticApisec'] = self.agentic_apisec
+
+        if self.agentic_waf is not None:
+            result['AgenticWaf'] = self.agentic_waf
 
         if self.anti_scan is not None:
             result['AntiScan'] = self.anti_scan
@@ -552,6 +581,9 @@ class DescribeInstanceResponseBodyDetails(DaraModel):
 
         if m.get('AgenticApisec') is not None:
             self.agentic_apisec = m.get('AgenticApisec')
+
+        if m.get('AgenticWaf') is not None:
+            self.agentic_waf = m.get('AgenticWaf')
 
         if m.get('AntiScan') is not None:
             self.anti_scan = m.get('AntiScan')

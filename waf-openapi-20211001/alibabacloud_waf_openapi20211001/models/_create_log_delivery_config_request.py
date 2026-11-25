@@ -14,9 +14,9 @@ class CreateLogDeliveryConfigRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The content of the log delivery configuration. The value is a JSON string constructed from a series of parameters.
+        # The content of the log delivery configuration. The content is a JSON string constructed from a series of parameters.
         # 
-        # > The parameters vary based on the specified **delivery type** (**DeliveryType**). For more information, see **Description of delivery configuration content parameters**.
+        # > The specific parameters vary based on the specified **log delivery configuration type** (**DeliveryType**). For more information, see **Parameter descriptions for log delivery configuration content**.
         # 
         # This parameter is required.
         self.delivery_detail = delivery_detail

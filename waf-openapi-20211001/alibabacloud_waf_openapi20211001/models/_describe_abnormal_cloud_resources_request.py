@@ -11,9 +11,9 @@ class DescribeAbnormalCloudResourcesRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The ID of the WAF instance.
+        # The WAF instance ID.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the WAF instance ID.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the current WAF instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id

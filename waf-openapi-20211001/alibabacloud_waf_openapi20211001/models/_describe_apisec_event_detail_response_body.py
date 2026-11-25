@@ -27,36 +27,36 @@ class DescribeApisecEventDetailResponseBody(DaraModel):
         self.attack_cnt = attack_cnt
         # The attacker list.
         self.attacker_list = attacker_list
-        # The detailed information about the security event. The value is a string converted from a JSON object constructed by a series of parameters.
+        # The details of the security event, which are converted into a string in JSON format constructed from a series of parameters.
         self.detail_value = detail_value
-        # The end time of the query. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # The end time of the query. The time is a UNIX timestamp in UTC. Unit: seconds.
         self.end_ts = end_ts
         # The ID of the API security event.
         self.event_id = event_id
-        # The event level. Valid values:
-        # - **high**: high risk.
-        # - **medium**: medium risk.
-        # - **low**: low risk.
+        # The level of the event. Valid values:
+        # - **high**: high-risk.
+        # - **medium**: medium-risk.
+        # - **low**: low-risk.
         self.event_level = event_level
-        # The dimension of the security event. Valid values:
-        # - **ip** (default): IP security event.
+        # The scope of the security event. Valid values:
+        # - **ip**: IP security events. This is the default value.
         # 
-        # - **account**: account security event.
+        # - **account**: account security events.
         self.event_scope = event_scope
-        # The event type.
-        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
+        # The type of the event.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported event types.
         self.event_tag = event_tag
-        # The remarks.
+        # The note.
         self.note = note
         # The origin of the event type. Valid values:
         # - **custom**: custom.
         # - **default**: built-in.
         self.origin = origin
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The start time of the query. The value is a UNIX timestamp (UTC). Unit: seconds.
+        # The start time of the query. The time is a UNIX timestamp in UTC. Unit: seconds.
         self.start_ts = start_ts
-        # The event status. Valid values:
+        # The status of the event. Valid values:
         # - **toBeConfirmed**: to be confirmed.
         # - **confirmed**: confirmed.
         # - **actioned**: handled.

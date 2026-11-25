@@ -14,11 +14,11 @@ class DescribeSensitiveOutboundStatisticResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of statistics on outbound transfers of personal information.
+        # The list of statistics on the types of outbound personal information.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned for outbound transfer statistics.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -72,32 +72,24 @@ class DescribeSensitiveOutboundStatisticResponseBodyData(DaraModel):
         sensitive_type: str = None,
     ):
         # The assessment result. Valid values:
-        # 
-        # - **report**: a data outbound transfer threat exists.
-        # 
-        # - **none**: no data outbound transfer threat exists.
+        # - **report**: Outbound data risks exist.
+        # - **none**: No outbound data risks exist.
         self.detection_result = detection_result
-        # The total number of personal information data entries detected.
+        # The total number of data records.
         self.info_count = info_count
-        # The number of outbound transfer data entries for the sensitive data type.
+        # The number of outbound data records.
         self.outbound_count = outbound_count
-        # The code that represents the type of sensitive data.
-        # 
-        # > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported sensitive data types.
+        # The sensitive data type.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
         self.sensitive_code = sensitive_code
-        # The sensitivity level. Valid values:
-        # 
-        # - **high**: high.
-        # 
-        # - **medium**: medium.
-        # 
-        # - **low**: low.
+        # The sensitivity level. Valid values: 
+        # - **high**: high sensitivity
+        # - **medium**: medium sensitivity
+        # - **low**: low sensitivity
         self.sensitive_level = sensitive_level
-        # The type of information. Valid values:
-        # 
-        # - **info**: all personal information.
-        # 
-        # - **sensitive**: only sensitive personal information.
+        # The type of queried information. Valid values: 
+        # - **info**: all personal information
+        # - **sensitive**: only sensitive personal information
         self.sensitive_type = sensitive_type
 
     def validate(self):

@@ -16,30 +16,28 @@ class DescribeResourceLogFieldConfigRequest(DaraModel):
         # The log delivery type. Valid values:
         # 
         # - **sls**: Simple Log Service.
-        # 
-        # - **kafka**: Kafka.
-        # 
-        # - **syslog**: Syslog.
+        # - **kafka**: External delivery to Kafka.
+        # - **syslog**: External delivery to Syslog.
         # 
         # This parameter is required.
         self.delivery_type = delivery_type
-        # The ID of the Web Application Firewall (WAF) instance.
+        # Instance ID of the WAF instance.
         # 
-        # > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
-        # - **cn-hangzhou**: the Chinese mainland.
+        # - **cn-hangzhou**: The Chinese mainland.
         # 
-        # - **ap-southeast-1**: outside the Chinese mainland.
+        # - **ap-southeast-1**: Outside the Chinese mainland.
         self.region_id = region_id
-        # The protected object whose log field configuration you want to query.
+        # The protected object to query.
         # 
         # This parameter is required.
         self.resource = resource
-        # The ID of the resource group to which the WAF instance belongs.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
 
     def validate(self):

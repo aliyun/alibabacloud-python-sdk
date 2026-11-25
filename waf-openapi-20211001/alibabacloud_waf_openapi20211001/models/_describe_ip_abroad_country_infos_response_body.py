@@ -16,9 +16,9 @@ class DescribeIpAbroadCountryInfosResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of overseas country information.
+        # The list of countries outside China.
         self.abroad_infos = abroad_infos
-        # The number of entries to return on each page for a paging query. Valid values: 1 to 500. Default value: 20.
+        # The number of entries to return on each page in a paging query. Valid values: 1 to 500. Default value: 20.
         self.max_results = max_results
         # The pagination token for the next page.
         self.next_token = next_token
@@ -93,7 +93,7 @@ class DescribeIpAbroadCountryInfosResponseBodyAbroadInfos(DaraModel):
         self.country = country
         # The country name.
         self.country_name = country_name
-        # The list of overseas region information.
+        # The list of regions outside China.
         self.regions = regions
 
     def validate(self):

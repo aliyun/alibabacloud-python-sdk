@@ -18,9 +18,9 @@ class CreateSM2CertRequest(DaraModel):
     ):
         # The certificate name.
         self.cert_name = cert_name
-        # The content of the SM encryption certificate.
+        # The content of the ShangMi certificate.
         self.encrypt_certificate = encrypt_certificate
-        # The private key content of the SM encryption certificate.
+        # The content of the private key for the ShangMi certificate.
         self.encrypt_private_key = encrypt_private_key
         # Instance ID of the WAF instance.
         # 
@@ -28,17 +28,17 @@ class CreateSM2CertRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
         # - **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
-        # The Alibaba Cloud resource group ID.
+        # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The signing certificate content of the SM certificate.
+        # The content of the signing certificate for the ShangMi certificate.
         self.sign_certificate = sign_certificate
-        # The private key content of the SM signing certificate.
+        # The content of the private key for the signing certificate of the ShangMi certificate.
         self.sign_private_key = sign_private_key
 
     def validate(self):

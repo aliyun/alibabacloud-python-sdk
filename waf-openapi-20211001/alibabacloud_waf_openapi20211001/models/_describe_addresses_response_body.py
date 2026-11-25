@@ -18,14 +18,14 @@ class DescribeAddressesResponseBody(DaraModel):
     ):
         # The list of addresses.
         self.address_list = address_list
-        # The number of entries per page for paging. Valid values: 1 to 500. Default value: 20.
+        # The number of entries to return per page in a paging query. Valid values: 1 to 500. Default value: 20.
         self.max_results = max_results
-        # The pagination token for the next page. If a next page exists, this field contains a value.
-        # > If this parameter has a return value, a next page exists. You can pass the returned **NextToken** as a request parameter to retrieve the next page of data. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+        # The pagination token for the next page. This field is returned only when a next page exists.
+        # > If this parameter returns a value, a next page exists. You can use the returned **NextToken** value as a request parameter to obtain the data on the next page until no value is returned, which indicates that all data is obtained.
         self.next_token = next_token
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -89,9 +89,9 @@ class DescribeAddressesResponseBodyAddressList(DaraModel):
     ):
         # The address.
         self.address = address
-        # The most recent modification time of the address. The value is a UNIX timestamp in milliseconds.
+        # The time when the address was last modified. The value is a UNIX timestamp in milliseconds.
         self.gmt_modified = gmt_modified
-        # The address book ID.
+        # The ID of the address book.
         self.rule_id = rule_id
 
     def validate(self):

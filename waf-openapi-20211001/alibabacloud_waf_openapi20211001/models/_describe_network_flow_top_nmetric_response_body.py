@@ -14,9 +14,9 @@ class DescribeNetworkFlowTopNMetricResponseBody(DaraModel):
         request_id: str = None,
         top_nmeta_data: main_models.DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData = None,
     ):
-        # An array of the top N statistics.
+        # The array of returned top statistics.
         self.network_flow_top_nvalues = network_flow_top_nvalues
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The metadata of the returned data.
         self.top_nmeta_data = top_nmeta_data
@@ -72,7 +72,7 @@ class DescribeNetworkFlowTopNMetricResponseBodyTopNMetaData(DaraModel):
     ):
         # The time range used for the query.
         self.date_range = date_range
-        # The unit of the returned statistical data.
+        # The unit of the returned statistics.
         self.units = units
 
     def validate(self):
@@ -109,9 +109,9 @@ class DescribeNetworkFlowTopNMetricResponseBodyTopNMetaDataDateRange(DaraModel):
         end_date: int = None,
         start_date: int = None,
     ):
-        # The end of the time range. This value is a UNIX timestamp. Unit: seconds.
+        # The end time used for the data query. The end time is represented by a UNIX timestamp in seconds. This value is the same as the EndDate request parameter.
         self.end_date = end_date
-        # The beginning of the time range. This value is a UNIX timestamp. Unit: seconds.
+        # The start time used for the data query. The start time is represented by a UNIX timestamp in seconds. This value is the same as the StartDate request parameter.
         self.start_date = start_date
 
     def validate(self):
@@ -147,11 +147,11 @@ class DescribeNetworkFlowTopNMetricResponseBodyNetworkFlowTopNValues(DaraModel):
         name: str = None,
         value: int = None,
     ):
-        # The additional attribute associated with the entry. For example, when the Metric is set to real_client_ip, this parameter indicates the country or region to which the IP address belongs.
+        # The additional information returned, such as the country, province, and city to which an IP address belongs.
         self.attribute = attribute
-        # The dimension value that corresponds to the specified Metric request parameter. For example, if the Metric is set to real_client_ip, this parameter indicates the source IP address.
+        # The value of a field. The meaning varies depending on the queried metric.
         self.name = name
-        # The total number of requests or the QPS value, depending on the specified Metric. This value is used for top N ranking.
+        # The statistical count used for top sorting.
         self.value = value
 
     def validate(self):

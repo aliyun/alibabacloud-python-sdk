@@ -12,7 +12,7 @@ class DescribeDomainUsedPortsResponseBody(DaraModel):
         request_id: str = None,
         used_ports: List[int] = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
         # The list of used ports.
         self.used_ports = used_ports

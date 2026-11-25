@@ -12,26 +12,25 @@ class VerifyDomainOwnerRequest(DaraModel):
         protocol: str = None,
         verify_type: str = None,
     ):
-        # The domain name whose ownership you want to verify.
+        # The domain name to query.
+        # 
+        # You can set this parameter to perform a fuzzy match to check whether a domain name is added to WAF.
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The ID of the WAF instance.
+        # Instance ID of the WAF instance.
         # 
-        # > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the WAF instance ID.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The protocol type used for file verification. This parameter is required only when you set VerifyType to fileCheck. Valid values:
-        # 
-        # - **HTTP**: the HTTP protocol.
-        # 
-        # - **HTTPS**: the HTTPS protocol.
+        # The protocol type used for file verification. This parameter is required only when VerifyType is set to fileCheck. Valid values:
+        # - **HTTP**: HTTP.
+        # - **HTTPS**: HTTPS.
         self.protocol = protocol
         # The verification method. Valid values:
         # 
         # - **dnsCheck**: DNS verification.
-        # 
         # - **fileCheck**: File verification.
         # 
         # This parameter is required.

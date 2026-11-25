@@ -16,13 +16,13 @@ class DescribeIpAbroadCountryInfosRequest(DaraModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
     ):
-        # The overseas region to query. You can perform a fuzzy match by using the region ID or the region name in Chinese or English.
+        # The region outside China to query. Fuzzy match is supported by region ID or region name in Chinese or English.
         self.abroad_region = abroad_region
-        # The overseas country to query. You can perform a fuzzy match by using the country ID or the country name in Chinese or English.
+        # The country outside China to query. Fuzzy match is supported by country ID or country name in Chinese or English.
         self.country = country
         # Instance ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
@@ -32,9 +32,9 @@ class DescribeIpAbroadCountryInfosRequest(DaraModel):
         # 
         # - **cn**: Simplified Chinese.
         self.language = language
-        # The number of entries to return on each page for a paging query. Valid values: 1 to 500. Default value: 20.
+        # The number of entries to return on each page in a paging query. Valid values: 1 to 500. Default value: 20.
         self.max_results = max_results
-        # The paging token that is used to query the next page. Set the value to the **NextToken** value returned from the previous API call. You do not need to specify this parameter for the first call.
+        # The pagination token for the next query. Set the value to the **NextToken** value returned from the previous API invoke. You do not need to specify this parameter for the first query.
         self.next_token = next_token
         # The region where the WAF instance resides. Valid values:
         # 

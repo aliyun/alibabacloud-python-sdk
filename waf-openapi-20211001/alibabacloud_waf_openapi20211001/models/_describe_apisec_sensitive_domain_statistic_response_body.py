@@ -14,11 +14,11 @@ class DescribeApisecSensitiveDomainStatisticResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The returned data.
+        # The returned results.
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -74,15 +74,15 @@ class DescribeApisecSensitiveDomainStatisticResponseBodyData(DaraModel):
         self.api_count = api_count
         # The number of involved domain names.
         self.domain_count = domain_count
-        # The code of the sensitive data type.
-        # > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported sensitive data types.
+        # The code of the sensitive data.
+        # > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported types of sensitive data.
         self.sensitive_code = sensitive_code
         # The sensitivity level of the API. Valid values:
         # - **S1**: low sensitivity.
         # - **S2**: medium sensitivity.
         # - **S3**: high sensitivity.
         self.sensitive_level = sensitive_level
-        # The name of the sensitive data type.
+        # The name of the sensitive data.
         self.sensitive_name = sensitive_name
 
     def validate(self):

@@ -19,27 +19,27 @@ class DescribeApisecSensitiveDomainStatisticRequest(DaraModel):
         type: str = None,
     ):
         # The ID of the hybrid cloud cluster.
-        # > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
+        # > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
         self.cluster_id = cluster_id
-        # The end time. This value is a UNIX timestamp (UTC) in milliseconds.
+        # The end time in the UNIX timestamp format. Unit: milliseconds.
         self.end_time = end_time
         # The ID of the WAF instance.
         # 
-        # > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The sort order of the list. Valid values:
+        # The sorting order of the list. Valid values:
         # 
         # - asc: ascending order.
         # 
         # - desc: descending order.
         self.order_way = order_way
-        # The page number of the page to return in a paged query. Default value: **1**, which indicates the first page. For more information about paging, see the paging parameters.
+        # The page number. Default value: **1**, which indicates that the first page is returned.
         self.page_number = page_number
-        # The number of entries per page in a paged query. Default value: **5**, which indicates 5 entries per page. For more information about paging, see the paging parameters.
+        # The number of entries to return per page. Default value: **5**, which indicates that each page contains 5 entries.
         self.page_size = page_size
-        # The region where the WAF instance is deployed. Valid values:
+        # The region where the WAF instance resides. Valid values:
         # 
         # - **cn-hangzhou**: the Chinese mainland.
         # 
@@ -47,13 +47,13 @@ class DescribeApisecSensitiveDomainStatisticRequest(DaraModel):
         self.region_id = region_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
-        # The start time. This value is a UNIX timestamp (UTC) in milliseconds.
+        # The start time in the UNIX timestamp format. Unit: milliseconds.
         self.start_time = start_time
         # The type of sensitive data. Valid values:
         # 
-        # - request: request sensitive data.
+        # - request: sensitive data in requests.
         # 
-        # - response: response sensitive data.
+        # - response: sensitive data in responses.
         self.type = type
 
     def validate(self):

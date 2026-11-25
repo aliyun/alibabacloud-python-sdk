@@ -18,7 +18,7 @@ class DescribeApisecEventsResponseBody(DaraModel):
         self.data = data
         # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The total number of returned results.
         self.total_count = total_count
 
     def validate(self):
@@ -96,72 +96,72 @@ class DescribeApisecEventsResponseBodyData(DaraModel):
         self.api_format = api_format
         # The ID of the API associated with the security event.
         self.api_id = api_id
-        # The business purpose of the API.
+        # The API business purpose.
         # 
         # > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported business purposes.
         self.api_tag = api_tag
         # The attack client.
         self.attack_client = attack_client
-        # The attack count information, which is a string converted from a JSON object. The key is a timestamp in seconds, and the value is the number of attacks.
+        # The attack count information, converted to a string in JSON format constructed by a series of parameters. The key is a timestamp in seconds, and the value is the number of attacks.
         self.attack_cnt_info = attack_cnt_info
-        # The attack IP address.
-        # >Notice: This parameter is deprecated. Use the AttackIps parameter instead.</notice>
+        # The attack IP address.<notice>This parameter is deprecated. Use the AttackIps parameter instead.</notice>
         self.attack_ip = attack_ip
-        # The attack IP information, which is a string converted from a JSON object constructed with the following parameters:
-        # - **ip**: the IP address.
-        # - **country_id**: the country to which the IP address belongs.
-        # - **region_id**: the region to which the IP address belongs.
-        # - **cnt**: the number of attacks.
+        # The attack IP address information, converted to a string in JSON format constructed by a series of parameters. Includes:
+        # - **ip**: The IP address.
+        # - **country_id**: The country.
+        # - **region_id**: The region.
+        # - **cnt**: The number of attacks.
         self.attack_ip_info = attack_ip_info
         # The list of attack IP addresses.
         self.attack_ips = attack_ips
-        # The Attacker list associated with the event.
+        # The attacker list corresponding to the event.
         self.attacker_list = attacker_list
-        # The end time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
+        # The end time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
         self.end_ts = end_ts
         # The event ID.
         self.event_id = event_id
-        # The event details, which is a string converted from a JSON object constructed with the following parameters:
-        # - **ip_info**: the attack IP information. Refer to the response parameter **AttackIpInfo** of this operation.
-        # - **rule_id**: the rule ID associated with the event.
-        # - **rule_tag**: the rule information associated with the event.
+        # The detailed event information, converted to a string in JSON format constructed by a series of parameters. Includes:
+        # - **ip_info**: The attack IP address information. You can refer to the **AttackIpInfo** response parameter of this operation.
+        # - **rule_id**: The ID of the rule corresponding to the event.
+        # - **rule_tag**: The rule information corresponding to the event.
         self.event_info = event_info
-        # The event level. Valid values:
-        # - **high**: High-risk.
-        # - **medium**: Medium-risk.
-        # - **low**: Low-risk.
+        # The severity level of the event. Valid values:
+        # - **high**: high risk.
+        # - **medium**: medium risk.
+        # - **low**: low risk.
         self.event_level = event_level
         # The event type.
         # 
         # > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported event types.
         self.event_tag = event_tag
-        # Indicates whether the event is followed. Valid values:
+        # Specifies whether the event is followed. Valid values:
         # - **1**: Followed.
         # - **0**: Not followed.
         self.follow = follow
         # The domain name or IP address to which the API operation belongs.
         self.matched_host = matched_host
-        # The remarks.
+        # The note.
         self.note = note
-        # The source of the event type. Valid values:
-        # - **custom**: Custom.
-        # - **default**: Built-in.
+        # The origin of the event type. Valid values:
+        # - **custom**: custom.
+        # - **default**: built-in.
         self.origin = origin
         # The country to which the attack IP address belongs.
         self.remote_country = remote_country
         # The region to which the attack IP address belongs.
         self.remote_region = remote_region
-        # A sample API request data, which is a string converted from a JSON object constructed with a series of parameters.
+        # The API request data instance, converted to a string in JSON format constructed by a series of parameters.
         self.request_data = request_data
-        # A sample API response data, which is a string converted from a JSON object constructed with a series of parameters.
+        # The API response data example, converted to a string in JSON format constructed by a series of parameters.
         self.response_data = response_data
-        # The start time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
+        # The start time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
         self.start_ts = start_ts
-        # The event status. Valid values:
-        # - **toBeConfirmed**: To be confirmed.
-        # - **confirmed**: Confirmed.
-        # - **actioned**: Handled.
-        # - **ignored**: Ignored.
+        # The status of the event. Valid values:
+        # 
+        # - **toBeConfirmed**: pending confirmation.
+        # - **confirmed**: confirmed.
+        # - **actioned**: handled.
+        # - **ignored**: ignored.
         self.user_status = user_status
 
     def validate(self):
