@@ -47,6 +47,9 @@ from ._delete_project_response import DeleteProjectResponse
 from ._generate_yike_login_token_request import GenerateYikeLoginTokenRequest
 from ._generate_yike_login_token_response_body import GenerateYikeLoginTokenResponseBody
 from ._generate_yike_login_token_response import GenerateYikeLoginTokenResponse
+from ._get_aiapp_job_request import GetAIAppJobRequest
+from ._get_aiapp_job_response_body import GetAIAppJobResponseBody
+from ._get_aiapp_job_response import GetAIAppJobResponse
 from ._get_agent_job_request import GetAgentJobRequest
 from ._get_agent_job_response_body import GetAgentJobResponseBody
 from ._get_agent_job_response import GetAgentJobResponse
@@ -122,6 +125,9 @@ from ._precheck_video_character_replace_job_response import PrecheckVideoCharact
 from ._search_media_request import SearchMediaRequest
 from ._search_media_response_body import SearchMediaResponseBody
 from ._search_media_response import SearchMediaResponse
+from ._submit_aiapp_job_request import SubmitAIAppJobRequest
+from ._submit_aiapp_job_response_body import SubmitAIAppJobResponseBody
+from ._submit_aiapp_job_response import SubmitAIAppJobResponse
 from ._submit_agent_job_request import SubmitAgentJobRequest
 from ._submit_agent_job_response_body import SubmitAgentJobResponseBody
 from ._submit_agent_job_response import SubmitAgentJobResponse
@@ -184,6 +190,8 @@ from ._batch_get_video_character_replace_jobs_response_body import BatchGetVideo
 from ._create_asset_category_response_body import CreateAssetCategoryResponseBodyCategory
 from ._create_oss_upload_response_body import CreateOssUploadResponseBodyUploadCredentials
 from ._create_upload_media_response_body import CreateUploadMediaResponseBodyUploadCredentials
+from ._get_aiapp_job_response_body import GetAIAppJobResponseBodyAIAppJob
+from ._get_aiapp_job_response_body import GetAIAppJobResponseBodyArtifacts
 from ._get_agent_job_response_body import GetAgentJobResponseBodyJob
 from ._get_asset_category_response_body import GetAssetCategoryResponseBodyCategory
 from ._get_asset_category_response_body import GetAssetCategoryResponseBodySubCategories
@@ -274,6 +282,9 @@ __all__ = [
     GenerateYikeLoginTokenRequest,
     GenerateYikeLoginTokenResponseBody,
     GenerateYikeLoginTokenResponse,
+    GetAIAppJobRequest,
+    GetAIAppJobResponseBody,
+    GetAIAppJobResponse,
     GetAgentJobRequest,
     GetAgentJobResponseBody,
     GetAgentJobResponse,
@@ -349,6 +360,9 @@ __all__ = [
     SearchMediaRequest,
     SearchMediaResponseBody,
     SearchMediaResponse,
+    SubmitAIAppJobRequest,
+    SubmitAIAppJobResponseBody,
+    SubmitAIAppJobResponse,
     SubmitAgentJobRequest,
     SubmitAgentJobResponseBody,
     SubmitAgentJobResponse,
@@ -411,6 +425,8 @@ __all__ = [
     CreateAssetCategoryResponseBodyCategory,
     CreateOssUploadResponseBodyUploadCredentials,
     CreateUploadMediaResponseBodyUploadCredentials,
+    GetAIAppJobResponseBodyAIAppJob,
+    GetAIAppJobResponseBodyArtifacts,
     GetAgentJobResponseBodyJob,
     GetAssetCategoryResponseBodyCategory,
     GetAssetCategoryResponseBodySubCategories,

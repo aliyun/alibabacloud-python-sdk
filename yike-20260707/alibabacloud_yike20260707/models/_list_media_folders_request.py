@@ -15,7 +15,7 @@ class ListMediaFoldersRequest(DaraModel):
         self.page_no = page_no
         # The number of entries per page. Default value: 20. Maximum value: 50. If the value exceeds 50, it is truncated to 50.
         self.page_size = page_size
-        # The project ID. If this parameter is not specified, the default project of the current account is used. The value is in the `pd_{uid}` format.
+        # The project ID. If this parameter is not specified, the default project of the current account is used. The value format is `pd_{uid}`.
         self.production_id = production_id
 
     def validate(self):

@@ -68,7 +68,7 @@ class ListMediaFoldersResponseBodyFolderList(DaraModel):
         self.folder_id = folder_id
         # The folder name.
         self.folder_name = folder_name
-        # Indicates whether the folder is the default folder. Each project has exactly one default folder.
+        # Indicates whether the folder is the default folder. Each project has one and only one default folder.
         self.is_default = is_default
         # The modification time.
         self.modified_time = modified_time

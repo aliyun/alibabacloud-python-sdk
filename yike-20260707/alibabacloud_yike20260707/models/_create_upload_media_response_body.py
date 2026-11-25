@@ -17,21 +17,21 @@ class CreateUploadMediaResponseBody(DaraModel):
         upload_credentials: main_models.CreateUploadMediaResponseBodyUploadCredentials = None,
         upload_ticket: str = None,
     ):
-        # The unsigned OSS URL of the file. The format is `oss://bucket/objectKey`.
+        # The unsigned OSS URL of the file in the `oss://bucket/objectKey` format.
         self.file_url = file_url
         # The media asset ID.
         self.media_id = media_id
-        # The OSS object key. The format is `yike-v1/uid segment-ws segment/date/hour/type/mediaId+random string+source suffix.file name extension`.
+        # The OSS object key in the `yike-v1/uid segment-ws segment/date/hour/type/mediaId+random string+source suffix.file name extension` format.
         self.object_key = object_key
         # The request ID.
         self.request_id = request_id
-        # The storage location identifier. The format is `bucket.endpoint`.
+        # The storage location identifier in the `bucket.endpoint` format.
         self.storage_location = storage_location
-        # The expiration time of the ticket. The time is in UTC and follows the ISO 8601 standard. This field is returned when UPLOAD_TICKET is used.
+        # The expiration time of the ticket in UTC and ISO 8601 format. This field is returned when `UPLOAD_TICKET` is used.
         self.ticket_expiration = ticket_expiration
         # The upload credentials. Some fields may be empty depending on the `CredentialType`.
         self.upload_credentials = upload_credentials
-        # The upload ticket. This field is returned when UPLOAD_TICKET is used. The ticket is a 27-character string in the format of UT1+region code+random string+check digit. A real credential is issued based on this ticket during a ticket exchange.
+        # The upload ticket. This field is returned when `UPLOAD_TICKET` is used. It is a 27-character string in the UT1+region code+random string+check digit format. A real credential is issued based on this ticket during a ticket exchange.
         self.upload_ticket = upload_ticket
 
     def validate(self):
@@ -113,27 +113,27 @@ class CreateUploadMediaResponseBodyUploadCredentials(DaraModel):
         signature: str = None,
         signed_url: str = None,
     ):
-        # The temporary STS `AccessKey ID`. This field is returned when `STS_TOKEN` is used.
+        # The temporary STS AccessKey ID. This field is returned when `STS_TOKEN` is used.
         self.access_key_id = access_key_id
-        # The temporary STS AccessKey secret. This field is returned when STS_TOKEN is used.
+        # The temporary STS AccessKey secret. This field is returned when `STS_TOKEN` is used.
         self.access_key_secret = access_key_secret
-        # The OSS bucket. This field is returned when STS_TOKEN, POST_POLICY, or PRESIGNED_URL is used.
+        # The OSS bucket. This field is returned when `STS_TOKEN`, `POST_POLICY`, or `PRESIGNED_URL` is used.
         self.bucket = bucket
-        # The expiration time of the credential. The time is in UTC and follows the ISO 8601 standard.
+        # The expiration time of the credential in UTC and ISO 8601 format.
         self.expiration = expiration
-        # The Base64-encoded PostObject policy. This field is returned when POST_POLICY is used.
+        # The Base64-encoded PostObject policy. This field is returned when `POST_POLICY` is used.
         self.policy = policy
-        # The AccessKey ID used for the signature. This field is returned when POST_POLICY is used.
+        # The AccessKey ID used for the signature. This field is returned when `POST_POLICY` is used.
         self.post_access_key_id = post_access_key_id
-        # The target endpoint for the POST request. This field is returned when POST_POLICY is used.
+        # The destination endpoint for the POST request. This field is returned when `POST_POLICY` is used.
         self.post_endpoint = post_endpoint
         # The OSS region. This field is returned in all three credential modes.
         self.region = region
-        # The STS security token. This field is returned when STS_TOKEN is used.
+        # The STS security token. This field is returned when `STS_TOKEN` is used.
         self.security_token = security_token
-        # The PostObject signature. This field is returned when POST_POLICY is used.
+        # The PostObject signature. This field is returned when `POST_POLICY` is used.
         self.signature = signature
-        # The pre-signed PUT URL. This field is returned when PRESIGNED_URL is used.
+        # The pre-signed PUT URL. This field is returned when `PRESIGNED_URL` is used.
         self.signed_url = signed_url
 
     def validate(self):

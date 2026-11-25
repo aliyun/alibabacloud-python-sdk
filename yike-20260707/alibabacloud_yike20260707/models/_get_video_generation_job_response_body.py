@@ -13,7 +13,7 @@ class GetVideoGenerationJobResponseBody(DaraModel):
     ):
         # Id of the request
         self.request_id = request_id
-        # The video generation job.
+        # The video generation task.
         self.video_generation_job = video_generation_job
 
     def validate(self):
@@ -64,15 +64,15 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
     ):
         # The aspect ratio.
         self.aspect_ratio = aspect_ratio
-        # The video duration, in seconds.
+        # The video duration. Unit: seconds.
         self.duration = duration
-        # The error message. The value is a string. This parameter is returned only when the job status is Failed.
+        # The error message. The value is a string and is returned when the task status is Failed.
         self.error_message = error_message
-        # The job input.
+        # The task input.
         self.input = input
         # The job ID.
         self.job_id = job_id
-        # The job feature configurations. This parameter does not require configuration at this time.
+        # The task feature configuration. Currently, no configuration is required.
         self.job_parameters = job_parameters
         # The job type.
         self.job_type = job_type
@@ -81,8 +81,7 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         # The number of generated videos.
         self.n = n
         # The generation result. The value is a JSON string that contains the following fields:
-        # 
-        # Medias: the list of media information (Media objects). Fields of a Media object:
+        # Medias: the list of media information (Media objects). The Media object includes the following fields:
         # MediaId: String. The media asset ID.
         # OutputUrl: String. The media URL, including the authentication string.
         self.output = output
@@ -90,12 +89,12 @@ class GetVideoGenerationJobResponseBodyVideoGenerationJob(DaraModel):
         self.resolution = resolution
         # The scene type. Currently, only general is supported.
         self.scene = scene
-        # The job status. Valid values:
-        # - Created: The job is created.
-        # - Queuing: The job is queued.
-        # - Executing: The job is executing.
-        # - Finished: The job succeeded.
-        # - Failed: The job failed.
+        # The task status. Valid values:
+        # - Created: The task is created.
+        # - Queuing: The task is queuing.
+        # - Executing: The task is executing.
+        # - Finished: The task ran successfully.
+        # - Failed: The task failed.
         self.status = status
         # The user business information.
         self.user_data = user_data

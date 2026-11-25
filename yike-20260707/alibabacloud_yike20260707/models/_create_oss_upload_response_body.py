@@ -15,7 +15,7 @@ class CreateOssUploadResponseBody(DaraModel):
     ):
         # OSS ObjectKey
         self.object_key = object_key
-        # The **OSS presigned GET URL**, which is valid for 24 hours and uses the public endpoint. If signature generation fails, null is returned, which does not affect direct upload with the credentials.
+        # The **OSS pre-signed GET URL**, which is valid for 24 hours and uses the public endpoint. If the signature generation fails, null is returned, which does not affect direct upload using the credentials.
         self.oss_url = oss_url
         # The **request ID**.
         self.request_id = request_id
@@ -83,21 +83,21 @@ class CreateOssUploadResponseBodyUploadCredentials(DaraModel):
         self.access_key_secret = access_key_secret
         # OSS Bucket
         self.bucket = bucket
-        # The expiration time of the credentials. The time is in UTC and follows the ISO 8601 standard. The actual return value prevails.
+        # The expiration time of the credential in UTC and ISO 8601 format. The actual return value prevails.
         self.expiration = expiration
-        # The PostObject policy, which is Base64-encoded. This field is returned when POST_POLICY is used.
+        # The PostObject policy, which is Base64-encoded. This is returned when POST_POLICY is used.
         self.policy = policy
-        # The AccessKey ID used for signing. This field is returned when POST_POLICY is used.
+        # The AccessKey ID used for the signature. This is returned when POST_POLICY is used.
         self.post_access_key_id = post_access_key_id
-        # The destination endpoint for POST requests. This field is returned when POST_POLICY is used.
+        # The target endpoint for the POST request. This is returned when POST_POLICY is used.
         self.post_endpoint = post_endpoint
         # The OSS region, such as cn-shanghai.
         self.region = region
         # The STS security token.
         self.security_token = security_token
-        # The PostObject signature. This field is returned when POST_POLICY is used.
+        # The PostObject signature. This is returned when POST_POLICY is used.
         self.signature = signature
-        # The presigned PUT URL. This field is returned when PRESIGNED_URL is used.
+        # The pre-signed PUT URL. This is returned when PRESIGNED_URL is used.
         self.signed_url = signed_url
 
     def validate(self):

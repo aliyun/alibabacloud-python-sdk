@@ -18,26 +18,26 @@ class CreateUploadMediaRequest(DaraModel):
         user_data: str = None,
     ):
         # The type of the upload credential. Valid values:
-        # - `STS_TOKEN`: the default value. Direct upload by using the OSS SDK.
-        # - `POST_POLICY`: form-based upload.
-        # - `PRESIGNED_URL`: pre-signed PUT URL.
-        # - `UPLOAD_TICKET`: ticket mode. A real credential is issued only when the ticket is exchanged.
+        # - `STS_TOKEN`: the default value, used for direct upload by using the OSS SDK.
+        # - `POST_POLICY`: used for form-based upload.
+        # - `PRESIGNED_URL`: used for pre-signed PUT upload.
+        # - `UPLOAD_TICKET`: the ticket mode, where a real credential is issued only when the ticket is exchanged.
         self.credential_type = credential_type
-        # The entity ID. The default value is AiSaasMediaAsset. You can ignore this parameter in common calls.
+        # The entity ID. The default value is AiSaasMediaAsset. You can ignore this parameter for general calls.
         self.entity_id = entity_id
-        # The file information, which is a JSON string. This parameter is required when you create a media asset. The **Type** field is required and can be set to video, audio, or image. The **Name** (file name), **Ext** (file name extension without the period), and **Size** (file size in bytes) fields are optional. This parameter can be omitted when you overwrite an existing media asset (Overwrite=true). If this parameter is omitted, the original media asset type and source file name extension are used.
+        # The file information in JSON string format. This parameter is required when you create a media asset. The **Type** field is required and can be set to video, audio, or image. The **Name** (file name), **Ext** (file name extension without the dot), and **Size** (size in bytes) fields are optional. This parameter can be omitted when you overwrite an existing media asset (Overwrite=true). If omitted, the original media asset type and source file name extension are used.
         self.file_info = file_info
-        # The ID of the existing media asset. This parameter is required when Overwrite is set to true (overwrite mode). If CredentialType is set to UPLOAD_TICKET, this parameter indicates a ticket exchange. This parameter is not required in other credential modes.
+        # The ID of the existing media asset. This parameter is required when Overwrite is set to true to overwrite the media asset. If CredentialType is set to UPLOAD_TICKET, this parameter indicates a ticket exchange. Do not specify this parameter in other credential modes.
         self.media_id = media_id
-        # The metadata of the media asset, which is a JSON string. This parameter is required when you create a media asset. It can contain the following fields: **Title** (the title; if not specified, FileInfo.Name is used), **Description**, **CateId** (the category ID), **Tags** (comma-separated tags), **BusinessType** (falls back to general if an invalid value is provided), **CoverURL**, **DynamicMetaData** (a JSON string, such as ProductionId), **ReferenceId** (the external reference ID), and **RegisterConfig** (an object that contains SearchLibName to specify the search library). This parameter can be omitted when you overwrite an existing media asset.
+        # The media asset metadata in JSON string format. This parameter is required when you create a media asset. It can contain the following fields: **Title** (title, defaults to FileInfo.Name if not specified), **Description**, **CateId** (category ID), **Tags** (comma-separated), **BusinessType** (falls back to general for invalid values), **CoverURL**, **DynamicMetaData** (JSON string, such as ProductionId), **ReferenceId** (external reference ID), and **RegisterConfig** (object containing SearchLibName to specify the search library). This parameter can be omitted when you overwrite an existing media asset.
         self.media_meta_data = media_meta_data
-        # Specifies whether to overwrite the existing media asset. Default value: false. If this parameter is set to true, you must specify MediaId. The original media asset is reset (old files, snapshots, and analysis results are cleared, and the status is set to uploading), and a new credential is issued as if it were the first upload.
+        # Specifies whether to overwrite the existing media asset. Default value: false. If this parameter is set to true, you must specify MediaId. The original media asset is reset (old files, snapshots, and analysis artifacts are cleared, and the status is set to uploading), and a new credential is issued as if it were the first upload.
         self.overwrite = overwrite
-        # The project ID. This parameter has the highest priority and is written to dynamicMetaData.ProductionId, overwriting the value with the same name in DynamicMetaData. It is automatically paired with the default folder `fd__default`. This parameter is supported only by the default entity. If you specify this parameter for a non-default entity, an `InvalidParameter` error is returned. If this parameter is not specified, `ProductionId` is obtained from the existing fallback chain.
+        # The project ID. This parameter is written to dynamicMetaData.ProductionId with the highest priority, overwriting the value with the same name in DynamicMetaData, and is automatically paired with the default folder `fd__default`. This parameter is supported only by the default entity. If you specify this parameter for a non-default entity, an `InvalidParameter` error is returned. If you do not specify this parameter, the `ProductionId` is obtained from the existing fallback chain.
         self.project_id = project_id
-        # The specified storage location. The format is `bucket.endpoint`. If this parameter is not specified, the default bucket selection policy is used.
+        # The specified storage location in the `bucket.endpoint` format. If you do not specify this parameter, a bucket is selected based on the default bucket selection policy.
         self.storage_location = storage_location
-        # The custom user data, which is a JSON string.
+        # The custom user data in JSON string format.
         self.user_data = user_data
 
     def validate(self):

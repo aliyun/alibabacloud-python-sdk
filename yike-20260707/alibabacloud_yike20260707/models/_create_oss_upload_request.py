@@ -17,13 +17,13 @@ class CreateOssUploadRequest(DaraModel):
         self.biz_config = biz_config
         # The credential type. This is a reserved parameter. The current version always returns STS temporary credentials, and this parameter does not take effect.
         self.credential_type = credential_type
-        # The file name extension, such as mp4, wav, or png. Do not include the dot. If this parameter is not specified, `MissingParameter` is returned.
+        # The file name extension, such as mp4, wav, or png. Do not include the dot. If this parameter is missing, `MissingParameter` is returned.
         # 
         # This parameter is required.
         self.file_ext = file_ext
         # The file type. Valid values: `Media` (default), `StoryboardInput`, `ImageFusion`, `AIAppParams`, `Workflow`, and `CommonFile`. If an invalid value is specified, `InvalidParameter` is returned. This value is used as a path segment in the `ObjectKey` and is converted to lowercase.
         self.file_type = file_type
-        # The explicitly specified destination bucket.
+        # The explicitly specified target bucket.
         self.target_bucket = target_bucket
 
     def validate(self):

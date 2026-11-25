@@ -1226,6 +1226,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.generate_yike_login_token_with_options_async(request, runtime)
 
+    def get_aiapp_job_with_options(
+        self,
+        request: main_models.GetAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.only_outputs):
+            query['OnlyOutputs'] = request.only_outputs
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAIAppJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAIAppJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aiapp_job_with_options_async(
+        self,
+        request: main_models.GetAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.only_outputs):
+            query['OnlyOutputs'] = request.only_outputs
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAIAppJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAIAppJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aiapp_job(
+        self,
+        request: main_models.GetAIAppJobRequest,
+    ) -> main_models.GetAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_aiapp_job_with_options(request, runtime)
+
+    async def get_aiapp_job_async(
+        self,
+        request: main_models.GetAIAppJobRequest,
+    ) -> main_models.GetAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_aiapp_job_with_options_async(request, runtime)
+
     def get_agent_job_with_options(
         self,
         request: main_models.GetAgentJobRequest,
@@ -3121,6 +3195,92 @@ class Client(OpenApiClient):
     ) -> main_models.SearchMediaResponse:
         runtime = RuntimeOptions()
         return await self.search_media_with_options_async(request, runtime)
+
+    def submit_aiapp_job_with_options(
+        self,
+        request: main_models.SubmitAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not DaraCore.is_null(request.inputs):
+            body['Inputs'] = request.inputs
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAIAppJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAIAppJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_aiapp_job_with_options_async(
+        self,
+        request: main_models.SubmitAIAppJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitAIAppJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.user_data):
+            query['UserData'] = request.user_data
+        body = {}
+        if not DaraCore.is_null(request.inputs):
+            body['Inputs'] = request.inputs
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitAIAppJob',
+            version = '2026-07-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitAIAppJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_aiapp_job(
+        self,
+        request: main_models.SubmitAIAppJobRequest,
+    ) -> main_models.SubmitAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return self.submit_aiapp_job_with_options(request, runtime)
+
+    async def submit_aiapp_job_async(
+        self,
+        request: main_models.SubmitAIAppJobRequest,
+    ) -> main_models.SubmitAIAppJobResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_aiapp_job_with_options_async(request, runtime)
 
     def submit_agent_job_with_options(
         self,

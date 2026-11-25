@@ -10,7 +10,7 @@ class GetVideoGenerationJobRequest(DaraModel):
         client_token: str = None,
         job_id: str = None,
     ):
-        # The client token.
+        # The idempotency parameter.
         self.client_token = client_token
         # The job ID.
         self.job_id = job_id
