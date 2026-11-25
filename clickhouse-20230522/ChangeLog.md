@@ -1,3 +1,6 @@
+2026-11-25 Version: 3.2.1
+- Generated python 2023-05-22 for clickhouse.
+
 2026-11-18 Version: 3.2.0
 - Support API ModifyLangfuseUserAllowOrgCreation.
 

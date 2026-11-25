@@ -5655,8 +5655,12 @@ class Client(OpenApiClient):
     ) -> main_models.RestartDBInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.node_list):
+            query['NodeList'] = request.node_list
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -5685,8 +5689,12 @@ class Client(OpenApiClient):
     ) -> main_models.RestartDBInstanceResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.node_list):
+            query['NodeList'] = request.node_list
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
