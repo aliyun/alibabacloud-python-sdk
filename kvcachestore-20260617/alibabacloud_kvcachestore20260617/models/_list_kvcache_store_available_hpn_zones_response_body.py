@@ -13,7 +13,7 @@ class ListKVCacheStoreAvailableHpnZonesResponseBody(DaraModel):
         instance_hpn_zones: List[main_models.ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones] = None,
         request_id: str = None,
     ):
-        # The list of available HpnZones for instances.
+        # The list of available HpnZones for the instances.
         self.instance_hpn_zones = instance_hpn_zones
         # The request ID. This ID is returned regardless of whether the API call is successful.
         self.request_id = request_id
@@ -61,7 +61,7 @@ class ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones(DaraModel):
     ):
         # The list of available HpnZones for the instance.
         self.available_hpn_zones = available_hpn_zones
-        # The ID of the KVCacheStore instance.
+        # The KVCacheStore instance ID.
         self.kvcs_id = kvcs_id
         # The ID of the zone where the instance resides.
         self.zone_id = zone_id

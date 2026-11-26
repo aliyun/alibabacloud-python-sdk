@@ -16,15 +16,13 @@ class ListKVCacheStoreAvailableVscsRequest(DaraModel):
         kvcs_id: str = None,
         region_id: str = None,
     ):
-        # The cross-account authorization role chain, used for cross-account VSC queries in ECS or EFLO scenarios.
+        # The cross-account authorization role chain, which is used to query VSCs across accounts in ECS or EFLO scenarios.
         self.arns = arns
         # The compute instance ID.
         # 
         # This parameter is required.
         self.instance_id = instance_id
-        # The compute instance type. Valid values:
-        # - ECS
-        # - EFLO
+        # The compute instance type. Valid values: ECS and EFLO.
         # 
         # This parameter is required.
         self.instance_type = instance_type
@@ -104,9 +102,7 @@ class ListKVCacheStoreAvailableVscsRequestArns(DaraModel):
         # 
         # This parameter is required.
         self.role_arn = role_arn
-        # The role type. Valid values:
-        # - service
-        # - user
+        # The role type. Valid values: service and user.
         # 
         # This parameter is required.
         self.role_type = role_type

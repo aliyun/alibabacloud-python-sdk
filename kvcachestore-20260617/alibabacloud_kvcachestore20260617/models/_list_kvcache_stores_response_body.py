@@ -19,21 +19,21 @@ class ListKVCacheStoresResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of KVCacheStore instances. Each element contains the following parameters: KvcsId, Name, Status, ExtraStatus, RegionId, ZoneId, HpnZone, Type, Capacity, PaymentType, MountPointId, CreateTime, and Description.
+        # The list of KVCacheStores. Each element contains sub-parameters such as KvcsId, Name, Status, ExtraStatus, RegionId, ZoneId, HpnZone, Type, Capacity, PaymentType, MountPointId, CreateTime, and Description.
         self.kvcache_stores = kvcache_stores
-        # The maximum number of entries returned per page.
+        # The maximum number of entries returned per pagination request.
         self.max_results = max_results
-        # The pagination token for the next page. This value is empty when no more data is available. This parameter is valid only for cursor-based pagination.
+        # The cursor for the next page. If no more data is available, this parameter is empty. This parameter is valid only when cursor pagination is used.
         self.next_token = next_token
-        # The current page number. This parameter is valid only for page number-based pagination.
+        # The current page number. This parameter is valid only when page number pagination is used.
         self.page_number = page_number
-        # The number of entries per page. This parameter is valid only for page number-based pagination.
+        # The number of entries per page. This parameter is valid only when page number pagination is used.
         self.page_size = page_size
-        # The total number of pages. This parameter is returned only for page number-based pagination.
+        # The total number of pages. This parameter is returned only when page number pagination is used.
         self.page_total = page_total
-        # The request ID. A request ID is returned regardless of whether the call is successful.
+        # The request ID. This ID is returned regardless of whether the API call is successful.
         self.request_id = request_id
-        # The total number of instances. This parameter is returned only for page number-based pagination. For cursor-based pagination, the value is -1.
+        # The total number of instances. This parameter is returned only when page number pagination is used. If cursor pagination is used, the value is -1.
         self.total_count = total_count
 
     def validate(self):
@@ -125,9 +125,9 @@ class ListKVCacheStoresResponseBodyKVCacheStores(DaraModel):
         type: str = None,
         zone_id: str = None,
     ):
-        # The storage capacity, in GiB.
+        # The storage capacity. Unit: GiB.
         self.capacity = capacity
-        # The creation time in ISO 8601 format.
+        # The time when the instance was created. The time follows the ISO 8601 standard.
         self.create_time = create_time
         # The instance description.
         self.description = description
@@ -137,11 +137,11 @@ class ListKVCacheStoresResponseBodyKVCacheStores(DaraModel):
         self.hpn_zone = hpn_zone
         # The instance ID.
         self.kvcs_id = kvcs_id
-        # The file system-level mount point ID. Instances under the same file system share this mount point. For more information, use the ListKVCacheInstanceAttachInfo operation.
+        # The file system-level mount point ID. This mount point is shared by instances within the same file system. For more information, call the ListKVCacheInstanceAttachInfo operation.
         self.mount_point_id = mount_point_id
         # The instance name.
         self.name = name
-        # The payment type. Valid values: PREPAY and POSTPAY.
+        # The billing method. Valid values: PREPAY and POSTPAY.
         self.payment_type = payment_type
         # The region ID.
         self.region_id = region_id
@@ -151,7 +151,7 @@ class ListKVCacheStoresResponseBodyKVCacheStores(DaraModel):
         self.status = status
         # The list of resource tags.
         self.tags = tags
-        # The instance type. Valid values: kvcs (KVCacheStore, CPFS).
+        # The instance type. Valid value: kvcs (KVCacheStore, CPFS).
         self.type = type
         # The zone ID.
         self.zone_id = zone_id

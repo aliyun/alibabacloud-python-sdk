@@ -17,17 +17,17 @@ class ListKVCacheStoreAttachInfoResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of mount records.
+        # The list of attachment information.
         self.attach_infos = attach_infos
-        # The query token, which is used to query the next batch of data.
+        # The pagination token. It is used to query the next batch of data.
         self.next_token = next_token
         # The page number.
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The request ID. This ID is returned regardless of whether the call is successful.
+        # The request ID. The request ID is returned regardless of whether the call is successful.
         self.request_id = request_id
-        # The total number of entries returned for a paging query.
+        # The total number of entries returned for the paged query.
         self.total_count = total_count
 
     def validate(self):
@@ -93,28 +93,37 @@ class ListKVCacheStoreAttachInfoResponseBodyAttachInfos(DaraModel):
         self,
         attached_at: str = None,
         capacity: int = None,
+        control_sn: str = None,
         instance_id: str = None,
         kvcs_id: str = None,
         mount_point_id: str = None,
+        nguid: str = None,
+        protocol: str = None,
         region_id: str = None,
         status: str = None,
         type: str = None,
         vsc_id: str = None,
         zone_id: str = None,
     ):
-        # The time of the last attach operation in ISO 8601 format. If the instance is not attached, the value is null.
+        # The time of the last attachment. The time follows the ISO 8601 standard. If the instance is not attached, the value is null.
         self.attached_at = attached_at
-        # The capacity of the file system in GiB.
+        # The capacity of the file system. Unit: GiB.
         self.capacity = capacity
-        # The ID of the compute resource, which is the ECS instance ID or the Lingjun compute node ID.
+        # The serial number (SN) of the NVMe channel disk. This value is returned only when protocol is set to nvme and the channel is bound in the current round. If other protocols are used or the channel is not bound, the value is null.
+        self.control_sn = control_sn
+        # The ID of the compute resource, such as the ECS instance ID or the Lingjun compute node ID.
         self.instance_id = instance_id
         # KVCacheStore KvcsId
         self.kvcs_id = kvcs_id
         # The ID of the file system-level mount point.
         self.mount_point_id = mount_point_id
+        # The NGUID of the KVCacheStore data disk. This value is returned only when protocol is set to nvme and the NGUID is generated for the instance. If other protocols are used or the NGUID is missing, the value is null.
+        self.nguid = nguid
+        # The access channel protocol of the instance. Valid values: vsc (VSC channel) and nvme (TDC NVMe channel).
+        self.protocol = protocol
         # The region where the instance is deployed.
         self.region_id = region_id
-        # The attach status. Valid values: Attaching, Attached, and Detaching. After the instance is detached, the record is deleted and not returned.
+        # The attachment status. Valid values: Attaching, Attached, and Detaching. After an instance is detached, the record is deleted and not returned.
         self.status = status
         # The instance type. Valid value: kvcs.
         self.type = type
@@ -137,6 +146,9 @@ class ListKVCacheStoreAttachInfoResponseBodyAttachInfos(DaraModel):
         if self.capacity is not None:
             result['Capacity'] = self.capacity
 
+        if self.control_sn is not None:
+            result['ControlSn'] = self.control_sn
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -145,6 +157,12 @@ class ListKVCacheStoreAttachInfoResponseBodyAttachInfos(DaraModel):
 
         if self.mount_point_id is not None:
             result['MountPointId'] = self.mount_point_id
+
+        if self.nguid is not None:
+            result['Nguid'] = self.nguid
+
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -171,6 +189,9 @@ class ListKVCacheStoreAttachInfoResponseBodyAttachInfos(DaraModel):
         if m.get('Capacity') is not None:
             self.capacity = m.get('Capacity')
 
+        if m.get('ControlSn') is not None:
+            self.control_sn = m.get('ControlSn')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
@@ -179,6 +200,12 @@ class ListKVCacheStoreAttachInfoResponseBodyAttachInfos(DaraModel):
 
         if m.get('MountPointId') is not None:
             self.mount_point_id = m.get('MountPointId')
+
+        if m.get('Nguid') is not None:
+            self.nguid = m.get('Nguid')
+
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

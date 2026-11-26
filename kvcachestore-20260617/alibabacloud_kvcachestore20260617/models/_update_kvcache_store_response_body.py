@@ -13,9 +13,9 @@ class UpdateKVCacheStoreResponseBody(DaraModel):
     ):
         # The ID of the modified KVCacheStore.
         self.kvcs_id = kvcs_id
-        # The specification change order ID. Returned only when Capacity is modified.
+        # The specification change order ID. This parameter is returned only when the Capacity is modified.
         self.order_id = order_id
-        # The request ID. The request ID is returned regardless of whether the operation is successful.
+        # The request ID. The request ID is returned regardless of whether the API call is successful.
         self.request_id = request_id
 
     def validate(self):

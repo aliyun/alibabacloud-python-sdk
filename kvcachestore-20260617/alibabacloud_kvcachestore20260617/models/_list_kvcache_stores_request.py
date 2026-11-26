@@ -17,13 +17,13 @@ class ListKVCacheStoresRequest(DaraModel):
         status: str = None,
         zone_id: str = None,
     ):
-        # The list of KvcsId values. Separate multiple IDs with commas (,). A maximum of 100 IDs can be specified.
+        # The list of KvcsIds. Separate multiple IDs with commas. You can specify up to 100 IDs.
         self.kvcs_ids = kvcs_ids
-        # The maximum number of entries per page for cursor-based pagination. Default value: 10. Maximum value: 100. This parameter is used together with NextToken.
+        # The maximum number of entries per page for cursor pagination. Default value: 10. Maximum value: 100. This parameter is used together with NextToken.
         self.max_results = max_results
-        # The instance name used for filtering. Prefix matching is supported.
+        # The instance name filter for prefix matching.
         self.name = name
-        # The pagination token. Do not specify this parameter for the first request. For subsequent requests, use the NextToken value returned in the previous response. This parameter and PageNumber are mutually exclusive.
+        # The pagination cursor. Do not specify this parameter for the first query. For subsequent queries, use the NextToken value returned from the previous request. This parameter and PageNumber are mutually exclusive.
         self.next_token = next_token
         # The page number. Default value: 1. This parameter and NextToken are mutually exclusive. If both are specified, PageNumber takes precedence.
         self.page_number = page_number
@@ -33,7 +33,7 @@ class ListKVCacheStoresRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The instance status used for filtering. Valid values: Creating, Available, InUse, Stopping, Stopped, and Deleting.
+        # The instance status filter. Valid values: Creating, Available, InUse, Stopping, Stopped, and Deleting.
         self.status = status
         # The zone ID, such as cn-hangzhou-a.
         self.zone_id = zone_id

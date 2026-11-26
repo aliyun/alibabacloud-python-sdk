@@ -1,3 +1,9 @@
+2026-11-26 Version: 1.1.2
+- Update API ListKVCacheStoreAttachInfo: add response parameters Body.AttachInfos.$.ControlSn.
+- Update API ListKVCacheStoreAttachInfo: add response parameters Body.AttachInfos.$.Nguid.
+- Update API ListKVCacheStoreAttachInfo: add response parameters Body.AttachInfos.$.Protocol.
+
+
 2026-10-28 Version: 1.1.1
 - Update API AttachKVCacheStore: add request parameters InstanceType.
 - Update API ListKVCacheStoreAttachInfo: add request parameters VscId.

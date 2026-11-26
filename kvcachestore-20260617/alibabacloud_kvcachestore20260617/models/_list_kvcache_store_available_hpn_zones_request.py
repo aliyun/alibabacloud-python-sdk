@@ -12,7 +12,7 @@ class ListKVCacheStoreAvailableHpnZonesRequest(DaraModel):
         kvcs_ids: List[str] = None,
         region_id: str = None,
     ):
-        # The IDs of the KVCacheStore instances. Separate multiple IDs with commas. You can specify 1 to 100 IDs.
+        # The list of KVCacheStore instance IDs. Separate multiple IDs with commas. You can specify 1 to 100 IDs.
         # 
         # This parameter is required.
         self.kvcs_ids = kvcs_ids

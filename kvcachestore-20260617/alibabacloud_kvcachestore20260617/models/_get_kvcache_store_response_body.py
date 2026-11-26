@@ -15,7 +15,7 @@ class GetKVCacheStoreResponseBody(DaraModel):
     ):
         # The details of the KvCacheStore instance.
         self.kv_cache_store = kv_cache_store
-        # The request ID. A request ID is returned regardless of whether the call is successful.
+        # The ID of the request. The request ID is returned regardless of whether the call is successful.
         self.request_id = request_id
 
     def validate(self):
@@ -65,45 +65,33 @@ class GetKVCacheStoreResponseBodyKvCacheStore(DaraModel):
         type: str = None,
         zone_id: str = None,
     ):
-        # The storage capacity in GiB.
+        # The storage capacity, in GiB.
         self.capacity = capacity
-        # The creation time in ISO 8601 format.
+        # The time when the instance was created. The time follows the ISO 8601 standard.
         self.create_time = create_time
-        # The instance description.
+        # The description of the instance.
         self.description = description
-        # The extra status information. Valid values:
-        # - CapacityExpanding: The capacity is being expanded.
-        # - CapacityExpandSuccess: The capacity expansion succeeded.
-        # - CapacityExpandFail: The capacity expansion failed.
+        # The extra status information. Valid values: CapacityExpanding, CapacityExpandSuccess, and CapacityExpandFail.
         self.extra_status = extra_status
-        # The cluster ID.
+        # The cluster number.
         self.hpn_zone = hpn_zone
-        # The instance ID.
+        # The ID of the instance.
         self.kvcs_id = kvcs_id
-        # The file system-level mount point ID. Instances under the same file system share this mount point. For more information, use ListKVCacheInstanceAttachInfo.
+        # The ID of the file system-level mount point. The mount point is shared by instances in the same file system. For more information, call the ListKVCacheInstanceAttachInfo operation.
         self.mount_point_id = mount_point_id
-        # The instance name.
+        # The name of the instance.
         self.name = name
-        # The payment type. Valid values:
-        # - PREPAY: subscription.
-        # - POSTPAY: pay-as-you-go.
+        # The billing method. Valid values: PREPAY and POSTPAY.
         self.payment_type = payment_type
         # The region ID.
         self.region_id = region_id
-        # The resource group ID.
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The instance status. Valid values:
-        # - Creating: The instance is being created.
-        # - Available: The instance is available.
-        # - InUse: The instance is in use.
-        # - Stopping: The instance is being stopped.
-        # - Stopped: The instance is stopped.
-        # - Deleting: The instance is being deleted.
+        # The instance status. Valid values: Creating, Available, InUse, Stopping, Stopped, and Deleting.
         self.status = status
-        # The list of resource tags.
+        # The tags of the resource.
         self.tags = tags
-        # The instance type. Valid values:
-        # - kvcs: KVCacheStore (CPFS).
+        # The instance type, such as kvcs (KVCacheStore, CPFS).
         self.type = type
         # The zone ID.
         self.zone_id = zone_id
@@ -226,9 +214,9 @@ class GetKVCacheStoreResponseBodyKvCacheStoreTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the resource.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The tag value of the resource.
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

@@ -10,7 +10,7 @@ class GetKVCacheStoreRequest(DaraModel):
         kvcs_id: str = None,
         region_id: str = None,
     ):
-        # The KvCacheStore instance ID.
+        # The ID of the KvCacheStore instance.
         # 
         # This parameter is required.
         self.kvcs_id = kvcs_id
