@@ -22,16 +22,18 @@ class CreateAccessAssignmentRequest(DaraModel):
         # The Alibaba Cloud account ID of the authorization target.
         self.origin_target_id = origin_target_id
         # The CloudSSO identity ID. Details:
-        # - If PrincipalType is set to User, PrincipalId is the CloudSSO user ID.
-        # - If PrincipalType is set to Group, PrincipalId is the CloudSSO group ID.
+        # 
+        # - If `PrincipalType` is set to `User`, `PrincipalId` is the CloudSSO user ID.
+        # - If `PrincipalType` is set to `Group`, `PrincipalId` is the CloudSSO group ID.
         self.principal_id = principal_id
         # The CloudSSO identity type. Valid values:
-        # - User: user
-        # - Group: group
+        # 
+        # - User: A user.
+        # - Group: A group.
         self.principal_type = principal_type
         # The ID of the deployment target.
         self.target_id = target_id
-        # The target type of the task. Valid value: RD-Account, which indicates that the task target is an account in a resource directory.
+        # The target type of the task. Valid values: RD-Account: The task target is an account in a resource directory.
         self.target_type = target_type
 
     def validate(self):

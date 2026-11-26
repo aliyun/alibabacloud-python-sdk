@@ -75,12 +75,14 @@ class CreateAccessAssignmentResponseBodyTask(DaraModel):
         # The CloudSSO identity name.
         self.principal_name = principal_name
         # The CloudSSO identity type. Valid values:
-        # - User: user
-        # - Group: group
+        # 
+        # - User: A user.
+        # - Group: A group.
         self.principal_type = principal_type
         # The task status. Valid values:
+        # 
         # - InProgress: The task is in progress.
-        # - Success: The task succeeded.
+        # - Success: The task is successful.
         # - Failed: The task failed.
         self.status = status
         # The ID of the task target.
@@ -91,11 +93,11 @@ class CreateAccessAssignmentResponseBodyTask(DaraModel):
         self.target_path = target_path
         # The path name of the task target in the resource directory.
         self.target_path_name = target_path_name
-        # The target type of the task. Valid value: RD-Account, which indicates that the task target is an account in a resource directory.
+        # The target type of the task. Valid values: RD-Account: The task target is an account in a resource directory.
         self.target_type = target_type
         # The task ID.
         self.task_id = task_id
-        # The task type. Valid value: CreateAccessAssignment, which indicates an authorization task for an account in a resource directory.
+        # The task type. Valid values: CreateAccessAssignment: The task is an authorization task for an account in a resource directory.
         self.task_type = task_type
 
     def validate(self):

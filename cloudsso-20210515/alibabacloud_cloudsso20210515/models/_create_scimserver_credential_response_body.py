@@ -13,7 +13,7 @@ class CreateSCIMServerCredentialResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The SCIM credential information.
+        # The SCIM server credential information.
         self.scimserver_credential = scimserver_credential
 
     def validate(self):
@@ -55,22 +55,22 @@ class CreateSCIMServerCredentialResponseBodySCIMServerCredential(DaraModel):
         expire_time: str = None,
         status: str = None,
     ):
-        # The time when the SCIM credential was created. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The time when the SCIM server credential was created. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.create_time = create_time
-        # The ID of the SCIM credential.
+        # The ID of the SCIM server credential.
         self.credential_id = credential_id
-        # The SCIM credential secret.
+        # The SCIM server credential secret.
         # 
-        # > The SCIM credential secret is returned only when the credential is created and cannot be queried later. Keep it secure.
+        # > The SCIM server credential secret is returned only when the credential is created and cannot be queried later. Store it securely.
         self.credential_secret = credential_secret
-        # The type of the SCIM credential.
+        # The type of the SCIM server credential.
         self.credential_type = credential_type
         # The directory ID.
         self.directory_id = directory_id
-        # The time when the SCIM credential expires. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+        # The time when the SCIM server credential expires. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
         self.expire_time = expire_time
-        # The status of the SCIM credential. Valid values:
-        # - Enabled: The SCIM credential is enabled.
+        # The status of the SCIM server credential. Valid values:
+        # - Enabled: The credential is enabled.
         self.status = status
 
     def validate(self):

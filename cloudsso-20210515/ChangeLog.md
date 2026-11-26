@@ -1,3 +1,12 @@
+2026-11-26 Version: 1.9.0
+- Support API DeleteSecurityInfo.
+- Support API GetSecurityInfo.
+- Support API GetSecurityInfoPreference.
+- Support API SendVerificationMessage.
+- Support API SetSecurityInfo.
+- Support API SetSecurityInfoPreference.
+
+
 2026-11-02 Version: 1.8.0
 - Generated python 2021-05-15 for cloudsso.
 

@@ -18,29 +18,29 @@ class DeleteAccessAssignmentRequest(DaraModel):
     ):
         # The access configuration ID.
         self.access_configuration_id = access_configuration_id
-        # Specifies whether to remove the access configuration deployment when you remove the last authorization that uses the access configuration on an account in a resource directory. Valid values:
+        # Specifies whether to remove the deployment of the access configuration provisioning when you remove the last authorization that uses the access configuration on an account in a resource directory. Valid values:
         # 
-        # - DeprovisionForLastAccessAssignmentOnAccount: Removes the access configuration deployment.
-        # - None: Does not remove the access configuration deployment. This is the default value.
+        # - DeprovisionForLastAccessAssignmentOnAccount: removes the deployment of the access configuration provisioning.
+        # - None: does not remove the deployment of the access configuration provisioning. Default value.
         self.deprovision_strategy = deprovision_strategy
         # The directory ID.
         self.directory_id = directory_id
-        # The Alibaba Cloud account ID of the authorization target.
+        # The ID of the Alibaba Cloud account to which the authorization target belongs.
         self.origin_target_id = origin_target_id
-        # The CloudSSO identity ID. The value varies based on the principal type:
+        # The CloudSSO identity ID. Details:
         # 
-        # - If `PrincipalType` is `User`, `PrincipalId` is the CloudSSO user ID.
-        # - If `PrincipalType` is `Group`, `PrincipalId` is the CloudSSO group ID.
+        # - If PrincipalType is set to User, PrincipalId is the CloudSSO user ID.
+        # - If PrincipalType is set to Group, PrincipalId is the CloudSSO group ID.
         self.principal_id = principal_id
         # The CloudSSO identity type. Valid values:
         # 
-        # - User: user
-        # - Group: group
+        # - User: user.
+        # - Group: group.
         self.principal_type = principal_type
-        # The target ID of the task.
+        # The ID of the task target.
         self.target_id = target_id
-        # The target type of the task. Valid values:
-        # - RD-Account: The task target is an account in a resource directory.
+        # The type of the task target. Valid values:
+        # - RD-Account: an account in a resource directory.
         self.target_type = target_type
 
     def validate(self):

@@ -66,7 +66,7 @@ class DeleteAccessAssignmentResponseBodyTask(DaraModel):
         self.access_configuration_id = access_configuration_id
         # The access configuration name.
         self.access_configuration_name = access_configuration_name
-        # The Alibaba Cloud account ID of the authorization target.
+        # The ID of the Alibaba Cloud account to which the authorization target belongs.
         self.origin_target_id = origin_target_id
         # The CloudSSO identity ID.
         self.principal_id = principal_id
@@ -74,8 +74,8 @@ class DeleteAccessAssignmentResponseBodyTask(DaraModel):
         self.principal_name = principal_name
         # The CloudSSO identity type. Valid values:
         # 
-        # - User: user
-        # - Group: group
+        # - User: user.
+        # - Group: group.
         self.principal_type = principal_type
         # The task status. Valid values:
         # 
@@ -83,7 +83,7 @@ class DeleteAccessAssignmentResponseBodyTask(DaraModel):
         # - Success: The task is successful.
         # - Failed: The task failed.
         self.status = status
-        # The target ID of the task.
+        # The ID of the task target.
         self.target_id = target_id
         # The name of the task target.
         self.target_name = target_name
@@ -91,13 +91,13 @@ class DeleteAccessAssignmentResponseBodyTask(DaraModel):
         self.target_path = target_path
         # The path name of the task target in the resource directory.
         self.target_path_name = target_path_name
-        # The target type of the task. Valid values:
-        # - RD-Account: The task target is an account in a resource directory.
+        # The type of the task target. Valid values:
+        # - RD-Account: an account in a resource directory.
         self.target_type = target_type
         # The task ID.
         self.task_id = task_id
         # The task type. Valid values:
-        # - DeleteAccessAssignment: The task removes an authorization from an account in a resource directory.
+        # - DeleteAccessAssignment: the task of removing authorization from an account in a resource directory.
         self.task_type = task_type
 
     def validate(self):

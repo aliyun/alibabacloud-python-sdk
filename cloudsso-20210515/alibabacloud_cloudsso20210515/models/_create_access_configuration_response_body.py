@@ -69,19 +69,19 @@ class CreateAccessConfigurationResponseBodyAccessConfiguration(DaraModel):
         self.description = description
         # The initial access page.
         # 
-        # The page address that a CloudSSO user initially accesses when using the access configuration to access an account in a resource directory.
+        # The URL of the initial page that is accessed when a CloudSSO user accesses an account in a resource directory by using the access configuration.
         self.relay_state = relay_state
         # The session duration.
         # 
-        # The maximum duration of a session when a CloudSSO user uses the access configuration to access an account in a resource directory.
+        # The maximum duration of a session when a CloudSSO user accesses an account in a resource directory by using the access configuration.
         # 
         # Unit: seconds.
         self.session_duration = session_duration
-        # The status notification information.
+        # The status notifications.
         self.status_notifications = status_notifications
-        # The list of tags.
+        # The tags.
         self.tags = tags
-        # The time when the access configuration was last modified.
+        # The time when the access configuration was updated.
         self.update_time = update_time
 
     def validate(self):

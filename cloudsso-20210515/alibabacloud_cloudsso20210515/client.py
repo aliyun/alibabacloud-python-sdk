@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Dict
 
 from alibabacloud_cloudsso20210515 import models as main_models
+from alibabacloud_gateway_pop.client import Client as GatewayClientClient
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
@@ -20,6 +21,9 @@ class Client(OpenApiClient):
         config: open_api_util_models.Config,
     ):
         super().__init__(config)
+        self._product_id = 'cloudsso'
+        gateway_client = GatewayClientClient()
+        self._spi = gateway_client
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloudsso', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1425,6 +1429,84 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteSCIMServerCredentialResponse:
         runtime = RuntimeOptions()
         return await self.delete_scimserver_credential_with_options_async(request, runtime)
+
+    def delete_security_info_with_options(
+        self,
+        request: main_models.DeleteSecurityInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSecurityInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSecurityInfo',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSecurityInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_security_info_with_options_async(
+        self,
+        request: main_models.DeleteSecurityInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSecurityInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSecurityInfo',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSecurityInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_security_info(
+        self,
+        request: main_models.DeleteSecurityInfoRequest,
+    ) -> main_models.DeleteSecurityInfoResponse:
+        runtime = RuntimeOptions()
+        return self.delete_security_info_with_options(request, runtime)
+
+    async def delete_security_info_async(
+        self,
+        request: main_models.DeleteSecurityInfoRequest,
+    ) -> main_models.DeleteSecurityInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_security_info_with_options_async(request, runtime)
 
     def delete_user_with_options(
         self,
@@ -2899,6 +2981,150 @@ class Client(OpenApiClient):
     ) -> main_models.GetSCIMSynchronizationStatusResponse:
         runtime = RuntimeOptions()
         return await self.get_scimsynchronization_status_with_options_async(request, runtime)
+
+    def get_security_info_with_options(
+        self,
+        request: main_models.GetSecurityInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSecurityInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSecurityInfo',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSecurityInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_security_info_with_options_async(
+        self,
+        request: main_models.GetSecurityInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSecurityInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSecurityInfo',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSecurityInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_security_info(
+        self,
+        request: main_models.GetSecurityInfoRequest,
+    ) -> main_models.GetSecurityInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_security_info_with_options(request, runtime)
+
+    async def get_security_info_async(
+        self,
+        request: main_models.GetSecurityInfoRequest,
+    ) -> main_models.GetSecurityInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_security_info_with_options_async(request, runtime)
+
+    def get_security_info_preference_with_options(
+        self,
+        request: main_models.GetSecurityInfoPreferenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSecurityInfoPreferenceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSecurityInfoPreference',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSecurityInfoPreferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_security_info_preference_with_options_async(
+        self,
+        request: main_models.GetSecurityInfoPreferenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSecurityInfoPreferenceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSecurityInfoPreference',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSecurityInfoPreferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_security_info_preference(
+        self,
+        request: main_models.GetSecurityInfoPreferenceRequest,
+    ) -> main_models.GetSecurityInfoPreferenceResponse:
+        runtime = RuntimeOptions()
+        return self.get_security_info_preference_with_options(request, runtime)
+
+    async def get_security_info_preference_async(
+        self,
+        request: main_models.GetSecurityInfoPreferenceRequest,
+    ) -> main_models.GetSecurityInfoPreferenceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_security_info_preference_with_options_async(request, runtime)
 
     def get_service_status_with_options(
         self,
@@ -5377,6 +5603,8 @@ class Client(OpenApiClient):
             query['Password'] = request.password
         if not DaraCore.is_null(request.require_password_reset_for_next_login):
             query['RequirePasswordResetForNextLogin'] = request.require_password_reset_for_next_login
+        if not DaraCore.is_null(request.reset_method):
+            query['ResetMethod'] = request.reset_method
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
@@ -5413,6 +5641,8 @@ class Client(OpenApiClient):
             query['Password'] = request.password
         if not DaraCore.is_null(request.require_password_reset_for_next_login):
             query['RequirePasswordResetForNextLogin'] = request.require_password_reset_for_next_login
+        if not DaraCore.is_null(request.reset_method):
+            query['ResetMethod'] = request.reset_method
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
@@ -5525,6 +5755,84 @@ class Client(OpenApiClient):
     ) -> main_models.RetryUserProvisioningEventResponse:
         runtime = RuntimeOptions()
         return await self.retry_user_provisioning_event_with_options_async(request, runtime)
+
+    def send_verification_message_with_options(
+        self,
+        request: main_models.SendVerificationMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendVerificationMessageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendVerificationMessage',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendVerificationMessageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_verification_message_with_options_async(
+        self,
+        request: main_models.SendVerificationMessageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendVerificationMessageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SendVerificationMessage',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SendVerificationMessageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_verification_message(
+        self,
+        request: main_models.SendVerificationMessageRequest,
+    ) -> main_models.SendVerificationMessageResponse:
+        runtime = RuntimeOptions()
+        return self.send_verification_message_with_options(request, runtime)
+
+    async def send_verification_message_async(
+        self,
+        request: main_models.SendVerificationMessageRequest,
+    ) -> main_models.SendVerificationMessageResponse:
+        runtime = RuntimeOptions()
+        return await self.send_verification_message_with_options_async(request, runtime)
 
     def set_external_samlidentity_provider_with_options(
         self,
@@ -5943,6 +6251,162 @@ class Client(OpenApiClient):
     ) -> main_models.SetSCIMSynchronizationStatusResponse:
         runtime = RuntimeOptions()
         return await self.set_scimsynchronization_status_with_options_async(request, runtime)
+
+    def set_security_info_with_options(
+        self,
+        request: main_models.SetSecurityInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetSecurityInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.security_email):
+            query['SecurityEmail'] = request.security_email
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetSecurityInfo',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetSecurityInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_security_info_with_options_async(
+        self,
+        request: main_models.SetSecurityInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetSecurityInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.security_email):
+            query['SecurityEmail'] = request.security_email
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetSecurityInfo',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetSecurityInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_security_info(
+        self,
+        request: main_models.SetSecurityInfoRequest,
+    ) -> main_models.SetSecurityInfoResponse:
+        runtime = RuntimeOptions()
+        return self.set_security_info_with_options(request, runtime)
+
+    async def set_security_info_async(
+        self,
+        request: main_models.SetSecurityInfoRequest,
+    ) -> main_models.SetSecurityInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.set_security_info_with_options_async(request, runtime)
+
+    def set_security_info_preference_with_options(
+        self,
+        request: main_models.SetSecurityInfoPreferenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetSecurityInfoPreferenceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_user_manage_security_email):
+            query['AllowUserManageSecurityEmail'] = request.allow_user_manage_security_email
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetSecurityInfoPreference',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetSecurityInfoPreferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_security_info_preference_with_options_async(
+        self,
+        request: main_models.SetSecurityInfoPreferenceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetSecurityInfoPreferenceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.allow_user_manage_security_email):
+            query['AllowUserManageSecurityEmail'] = request.allow_user_manage_security_email
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetSecurityInfoPreference',
+            version = '2021-05-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetSecurityInfoPreferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_security_info_preference(
+        self,
+        request: main_models.SetSecurityInfoPreferenceRequest,
+    ) -> main_models.SetSecurityInfoPreferenceResponse:
+        runtime = RuntimeOptions()
+        return self.set_security_info_preference_with_options(request, runtime)
+
+    async def set_security_info_preference_async(
+        self,
+        request: main_models.SetSecurityInfoPreferenceRequest,
+    ) -> main_models.SetSecurityInfoPreferenceResponse:
+        runtime = RuntimeOptions()
+        return await self.set_security_info_preference_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,

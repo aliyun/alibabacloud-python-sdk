@@ -14,13 +14,11 @@ class ListTagResourcesResponseBody(DaraModel):
         request_id: str = None,
         tag_resources: List[main_models.ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The token that is used to retrieve the next page of query results.
-        # 
-        # If NextToken is empty, it indicates that the results are not truncated.
+        # The token for the next page of results. If NextToken is empty, the results are not truncated.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The list of tag-resource relationships.
+        # The list of resource-tag associations.
         self.tag_resources = tag_resources
 
     def validate(self):

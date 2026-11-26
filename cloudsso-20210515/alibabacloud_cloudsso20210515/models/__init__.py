@@ -53,6 +53,9 @@ from ._delete_mfadevice_for_user_response import DeleteMFADeviceForUserResponse
 from ._delete_scimserver_credential_request import DeleteSCIMServerCredentialRequest
 from ._delete_scimserver_credential_response_body import DeleteSCIMServerCredentialResponseBody
 from ._delete_scimserver_credential_response import DeleteSCIMServerCredentialResponse
+from ._delete_security_info_request import DeleteSecurityInfoRequest
+from ._delete_security_info_response_body import DeleteSecurityInfoResponseBody
+from ._delete_security_info_response import DeleteSecurityInfoResponse
 from ._delete_user_request import DeleteUserRequest
 from ._delete_user_response_body import DeleteUserResponseBody
 from ._delete_user_response import DeleteUserResponse
@@ -114,6 +117,12 @@ from ._get_password_policy_response import GetPasswordPolicyResponse
 from ._get_scimsynchronization_status_request import GetSCIMSynchronizationStatusRequest
 from ._get_scimsynchronization_status_response_body import GetSCIMSynchronizationStatusResponseBody
 from ._get_scimsynchronization_status_response import GetSCIMSynchronizationStatusResponse
+from ._get_security_info_request import GetSecurityInfoRequest
+from ._get_security_info_response_body import GetSecurityInfoResponseBody
+from ._get_security_info_response import GetSecurityInfoResponse
+from ._get_security_info_preference_request import GetSecurityInfoPreferenceRequest
+from ._get_security_info_preference_response_body import GetSecurityInfoPreferenceResponseBody
+from ._get_security_info_preference_response import GetSecurityInfoPreferenceResponse
 from ._get_service_status_response_body import GetServiceStatusResponseBody
 from ._get_service_status_response import GetServiceStatusResponse
 from ._get_task_request import GetTaskRequest
@@ -212,6 +221,9 @@ from ._reset_user_password_response import ResetUserPasswordResponse
 from ._retry_user_provisioning_event_request import RetryUserProvisioningEventRequest
 from ._retry_user_provisioning_event_response_body import RetryUserProvisioningEventResponseBody
 from ._retry_user_provisioning_event_response import RetryUserProvisioningEventResponse
+from ._send_verification_message_request import SendVerificationMessageRequest
+from ._send_verification_message_response_body import SendVerificationMessageResponseBody
+from ._send_verification_message_response import SendVerificationMessageResponse
 from ._set_external_samlidentity_provider_request import SetExternalSAMLIdentityProviderRequest
 from ._set_external_samlidentity_provider_response_body import SetExternalSAMLIdentityProviderResponseBody
 from ._set_external_samlidentity_provider_response import SetExternalSAMLIdentityProviderResponse
@@ -227,6 +239,12 @@ from ._set_password_policy_response import SetPasswordPolicyResponse
 from ._set_scimsynchronization_status_request import SetSCIMSynchronizationStatusRequest
 from ._set_scimsynchronization_status_response_body import SetSCIMSynchronizationStatusResponseBody
 from ._set_scimsynchronization_status_response import SetSCIMSynchronizationStatusResponse
+from ._set_security_info_request import SetSecurityInfoRequest
+from ._set_security_info_response_body import SetSecurityInfoResponseBody
+from ._set_security_info_response import SetSecurityInfoResponse
+from ._set_security_info_preference_request import SetSecurityInfoPreferenceRequest
+from ._set_security_info_preference_response_body import SetSecurityInfoPreferenceResponseBody
+from ._set_security_info_preference_response import SetSecurityInfoPreferenceResponse
 from ._tag_resources_request import TagResourcesRequest
 from ._tag_resources_response_body import TagResourcesResponseBody
 from ._tag_resources_response import TagResourcesResponse
@@ -294,6 +312,8 @@ from ._get_group_response_body import GetGroupResponseBodyGroup
 from ._get_login_preference_response_body import GetLoginPreferenceResponseBodyLoginPreference
 from ._get_mfaauthentication_setting_info_response_body import GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo
 from ._get_password_policy_response_body import GetPasswordPolicyResponseBodyPasswordPolicy
+from ._get_security_info_response_body import GetSecurityInfoResponseBodySecurityEmail
+from ._get_security_info_preference_response_body import GetSecurityInfoPreferenceResponseBodySecurityInfoPreference
 from ._get_service_status_response_body import GetServiceStatusResponseBodyServiceStatus
 from ._get_task_response_body import GetTaskResponseBodyTask
 from ._get_task_status_response_body import GetTaskStatusResponseBodyTaskStatus
@@ -330,6 +350,7 @@ from ._list_users_response_body import ListUsersResponseBodyUsersTags
 from ._list_users_response_body import ListUsersResponseBodyUsers
 from ._provision_access_configuration_response_body import ProvisionAccessConfigurationResponseBodyTasks
 from ._set_external_samlidentity_provider_response_body import SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration
+from ._set_security_info_preference_response_body import SetSecurityInfoPreferenceResponseBodySecurityInfoPreference
 from ._tag_resources_request import TagResourcesRequestTag
 from ._update_access_configuration_response_body import UpdateAccessConfigurationResponseBodyAccessConfiguration
 from ._update_directory_response_body import UpdateDirectoryResponseBodyDirectory
@@ -391,6 +412,9 @@ __all__ = [
     DeleteSCIMServerCredentialRequest,
     DeleteSCIMServerCredentialResponseBody,
     DeleteSCIMServerCredentialResponse,
+    DeleteSecurityInfoRequest,
+    DeleteSecurityInfoResponseBody,
+    DeleteSecurityInfoResponse,
     DeleteUserRequest,
     DeleteUserResponseBody,
     DeleteUserResponse,
@@ -452,6 +476,12 @@ __all__ = [
     GetSCIMSynchronizationStatusRequest,
     GetSCIMSynchronizationStatusResponseBody,
     GetSCIMSynchronizationStatusResponse,
+    GetSecurityInfoRequest,
+    GetSecurityInfoResponseBody,
+    GetSecurityInfoResponse,
+    GetSecurityInfoPreferenceRequest,
+    GetSecurityInfoPreferenceResponseBody,
+    GetSecurityInfoPreferenceResponse,
     GetServiceStatusResponseBody,
     GetServiceStatusResponse,
     GetTaskRequest,
@@ -550,6 +580,9 @@ __all__ = [
     RetryUserProvisioningEventRequest,
     RetryUserProvisioningEventResponseBody,
     RetryUserProvisioningEventResponse,
+    SendVerificationMessageRequest,
+    SendVerificationMessageResponseBody,
+    SendVerificationMessageResponse,
     SetExternalSAMLIdentityProviderRequest,
     SetExternalSAMLIdentityProviderResponseBody,
     SetExternalSAMLIdentityProviderResponse,
@@ -565,6 +598,12 @@ __all__ = [
     SetSCIMSynchronizationStatusRequest,
     SetSCIMSynchronizationStatusResponseBody,
     SetSCIMSynchronizationStatusResponse,
+    SetSecurityInfoRequest,
+    SetSecurityInfoResponseBody,
+    SetSecurityInfoResponse,
+    SetSecurityInfoPreferenceRequest,
+    SetSecurityInfoPreferenceResponseBody,
+    SetSecurityInfoPreferenceResponse,
     TagResourcesRequest,
     TagResourcesResponseBody,
     TagResourcesResponse,
@@ -632,6 +671,8 @@ __all__ = [
     GetLoginPreferenceResponseBodyLoginPreference,
     GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo,
     GetPasswordPolicyResponseBodyPasswordPolicy,
+    GetSecurityInfoResponseBodySecurityEmail,
+    GetSecurityInfoPreferenceResponseBodySecurityInfoPreference,
     GetServiceStatusResponseBodyServiceStatus,
     GetTaskResponseBodyTask,
     GetTaskStatusResponseBodyTaskStatus,
@@ -668,6 +709,7 @@ __all__ = [
     ListUsersResponseBodyUsers,
     ProvisionAccessConfigurationResponseBodyTasks,
     SetExternalSAMLIdentityProviderResponseBodySAMLIdentityProviderConfiguration,
+    SetSecurityInfoPreferenceResponseBodySecurityInfoPreference,
     TagResourcesRequestTag,
     UpdateAccessConfigurationResponseBodyAccessConfiguration,
     UpdateDirectoryResponseBodyDirectory,

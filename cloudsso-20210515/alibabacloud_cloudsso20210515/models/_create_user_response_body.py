@@ -62,7 +62,7 @@ class CreateUserResponseBodyUser(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # The time when the user was created (UTC).
+        # The time when the user was created. The time is displayed in UTC.
         self.create_time = create_time
         # The description of the user.
         self.description = description
@@ -74,7 +74,7 @@ class CreateUserResponseBodyUser(DaraModel):
         self.first_name = first_name
         # The last name of the user.
         self.last_name = last_name
-        # The type of the user. Valid values:
+        # The provisioning type of the user. Valid values:
         # 
         # - Manual: Manually created.
         # - Synchronized: Synchronized from an external source.
@@ -86,7 +86,7 @@ class CreateUserResponseBodyUser(DaraModel):
         self.status = status
         # The list of tags.
         self.tags = tags
-        # The time when the user was last modified (UTC).
+        # The time when the user was updated. The time is displayed in UTC.
         self.update_time = update_time
         # The user ID.
         self.user_id = user_id

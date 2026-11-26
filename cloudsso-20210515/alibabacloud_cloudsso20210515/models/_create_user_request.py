@@ -22,25 +22,25 @@ class CreateUserRequest(DaraModel):
     ):
         # The description of the user.
         # 
-        # Maximum length: 1024 characters.
+        # Length: up to 1024 characters.
         self.description = description
         # The directory ID.
         self.directory_id = directory_id
         # The display name of the user.
         # 
-        # Maximum length: 256 characters.
+        # Length: up to 256 characters.
         self.display_name = display_name
         # The email address of the user. The email address must be unique within the directory.
         # 
-        # Maximum length: 128 characters.
+        # Length: up to 128 characters.
         self.email = email
         # The first name of the user.
         # 
-        # Maximum length: 64 characters.
+        # Length: up to 64 characters.
         self.first_name = first_name
         # The last name of the user.
         # 
-        # Maximum length: 64 characters.
+        # Length: up to 64 characters.
         self.last_name = last_name
         # The status of the user. Valid values:
         # 
@@ -49,11 +49,11 @@ class CreateUserRequest(DaraModel):
         self.status = status
         # The list of tags.
         self.tags = tags
-        # The username. The username must be unique within the directory and cannot be modified.
+        # The username. It must be unique within the directory and cannot be modified.
         # 
-        # Format: Can contain digits, letters, and the following special characters: `@_-.`
+        # Format: The username can contain digits, letters, and the special characters `@_-.`.
         # 
-        # Maximum length: 64 characters.
+        # Length: up to 64 characters.
         self.user_name = user_name
 
     def validate(self):

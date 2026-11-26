@@ -13,7 +13,7 @@ class AddUserToGroupRequest(DaraModel):
     ):
         # The ID of the directory.
         self.directory_id = directory_id
-        # The ID of the group.
+        # The ID of the user group.
         self.group_id = group_id
         # The ID of the user.
         self.user_id = user_id

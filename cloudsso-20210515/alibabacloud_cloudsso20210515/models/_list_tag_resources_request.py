@@ -22,15 +22,17 @@ class ListTagResourcesRequest(DaraModel):
         self.next_token = next_token
         # The list of resource IDs. You can specify up to 50 resource IDs in a single call.
         # > 
-        # > - Supported resource types include users and access configurations:
-        # > - - If the resource type is user, specify the user ID.
-        # > - - If the resource type is access configuration, specify the access configuration ID.
+        # > - The resource type supports users and access configurations:
+        # > - - If the resource type is user, enter the user ID.
+        # > - - If the resource type is access configuration, enter the access configuration ID.
         # 
         # <notice>If the DirectoryId parameter is not specified, you must add the prefix "${DirectoryId}_" to the resource ID.</notice>
         self.resource_id = resource_id
-        # The resource type. Valid values:
-        # - user: The resource is a user.
-        # - accessConfiguration: The resource is an access configuration.
+        # The resource type. Users and access configurations are supported.
+        # 
+        # - Set the value to user for users.
+        # 
+        # - Set the value to accessConfiguration for access configurations.
         # 
         # This parameter is required.
         self.resource_type = resource_type
@@ -97,7 +99,7 @@ class ListTagResourcesRequestTag(DaraModel):
     ):
         # The tag key.
         # 
-        # > - - The tag key cannot be an empty string.
+        # > - - The value cannot be an empty string.
         self.key = key
         # The tag value.
         self.value = value

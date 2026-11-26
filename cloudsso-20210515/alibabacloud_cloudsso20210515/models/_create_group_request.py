@@ -11,13 +11,13 @@ class CreateGroupRequest(DaraModel):
         directory_id: str = None,
         group_name: str = None,
     ):
-        # The description of the user group.
+        # The description of the group.
         # 
         # Length: The description can be up to 1024 characters in length.
         self.description = description
         # The directory ID.
         self.directory_id = directory_id
-        # The name of the user group.
+        # The name of the group.
         # 
         # Format: The name can contain letters, digits, and the special characters `_-.`.
         # 

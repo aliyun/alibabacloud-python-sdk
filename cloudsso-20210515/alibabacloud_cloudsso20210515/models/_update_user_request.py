@@ -15,19 +15,19 @@ class UpdateUserRequest(DaraModel):
         new_last_name: str = None,
         user_id: str = None,
     ):
-        # The ID of the directory.
+        # The directory ID.
         self.directory_id = directory_id
-        # The new description of the user.
+        # The description of the user.
         self.new_description = new_description
-        # The new display name of the user.
+        # The display name of the user.
         self.new_display_name = new_display_name
-        # The new email address of the user.
+        # The email address of the user.
         self.new_email = new_email
-        # The new first name of the user.
+        # The first name of the user.
         self.new_first_name = new_first_name
-        # The new last name of the user.
+        # The last name of the user.
         self.new_last_name = new_last_name
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
 
     def validate(self):

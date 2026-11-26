@@ -11,14 +11,15 @@ class ResetUserPasswordRequest(DaraModel):
         generate_random_password: bool = None,
         password: str = None,
         require_password_reset_for_next_login: bool = None,
+        reset_method: str = None,
         user_id: str = None,
     ):
         # The directory ID.
         self.directory_id = directory_id
-        # Specifies whether to automatically generate a password. Valid values:
+        # Specifies whether to automatically generate a password. This parameter is valid only when the reset method is DirectPassword. Valid values:
         # 
-        # - True: The password is automatically generated.
-        # - False (default): The password is manually specified.
+        # - True: Automatically generates a password.
+        # - False (default): Manually sets a password.
         self.generate_random_password = generate_random_password
         # The new password.
         # 
@@ -26,13 +27,19 @@ class ResetUserPasswordRequest(DaraModel):
         # 
         # Length: 8 to 32 characters.
         # 
-        # > If GenerateRandomPassword is set to False, you must specify Password.
+        # > If `GenerateRandomPassword` is set to `False`, you must specify `Password`.
         self.password = password
-        # Specifies whether the user must reset the password upon the next logon. Valid values:
+        # Specifies whether the user must reset the password upon next logon. Valid values:
         # 
         # - True: The user must reset the password.
         # - False (default): The user does not need to reset the password.
         self.require_password_reset_for_next_login = require_password_reset_for_next_login
+        # The reset method. Valid values:
+        # 
+        # - DirectPassword (default): Sets the password directly.
+        # 
+        # - Email: Sends a password reset email.
+        self.reset_method = reset_method
         # The user ID.
         self.user_id = user_id
 
@@ -56,6 +63,9 @@ class ResetUserPasswordRequest(DaraModel):
         if self.require_password_reset_for_next_login is not None:
             result['RequirePasswordResetForNextLogin'] = self.require_password_reset_for_next_login
 
+        if self.reset_method is not None:
+            result['ResetMethod'] = self.reset_method
+
         if self.user_id is not None:
             result['UserId'] = self.user_id
 
@@ -74,6 +84,9 @@ class ResetUserPasswordRequest(DaraModel):
 
         if m.get('RequirePasswordResetForNextLogin') is not None:
             self.require_password_reset_for_next_login = m.get('RequirePasswordResetForNextLogin')
+
+        if m.get('ResetMethod') is not None:
+            self.reset_method = m.get('ResetMethod')
 
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')

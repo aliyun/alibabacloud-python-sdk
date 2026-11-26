@@ -13,7 +13,7 @@ class UpdateUserResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the user.
+        # The user information.
         self.user = user
 
     def validate(self):
@@ -59,7 +59,7 @@ class UpdateUserResponseBodyUser(DaraModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # The time when the user was created. The value is displayed in UTC.
+        # The time when the user was created (UTC).
         self.create_time = create_time
         # The description of the user.
         self.description = description
@@ -71,23 +71,21 @@ class UpdateUserResponseBodyUser(DaraModel):
         self.first_name = first_name
         # The last name of the user.
         self.last_name = last_name
-        # The type of the user. Valid values:
+        # The provisioning type of the user. Valid values:
         # 
-        # - Manual: The user is manually created.
-        # 
-        # - Synchronized: The user is synchronized from an external identity provider (IdP).
+        # - Manual: Manually created.
+        # - Synchronized: Synchronized from an external source.
         self.provision_type = provision_type
         # The status of the user. Valid values:
         # 
-        # - Enabled: The logon of the user is enabled.
-        # 
-        # - Disabled: The logon of the user is disabled.
+        # - Enabled: Enabled.
+        # - Disabled: Disabled.
         self.status = status
-        # The time when the information about the user was modified. The value is displayed in UTC.
+        # The time when the user was updated (UTC).
         self.update_time = update_time
-        # The ID of the user.
+        # The user ID.
         self.user_id = user_id
-        # The username of the user.
+        # The username.
         self.user_name = user_name
 
     def validate(self):
