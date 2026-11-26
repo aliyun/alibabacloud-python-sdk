@@ -16,10 +16,10 @@ class DescribeVsDomainPvDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain_name = domain_name
-        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the \\`YYYY-MM-DDThh:mm:ssZ\\` format. The time must be in UTC.
+        # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the \`YYYY-MM-DDThh:mm:ssZ\` format. The time must be in UTC.
         self.end_time = end_time
         self.owner_id = owner_id
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the \\`YYYY-MM-DDThh:mm:ssZ\\` format. The time must be in UTC.<br>The minimum data granularity is 1 hour.<br>If you do not set this parameter, the data in the last 24 hours is returned.<br><br>
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the \`YYYY-MM-DDThh:mm:ssZ\` format. The time must be in UTC.<br>The minimum data granularity is 1 hour.<br>If you do not set this parameter, the data in the last 24 hours is returned.<br><br>
         self.start_time = start_time
 
     def validate(self):

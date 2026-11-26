@@ -107,15 +107,15 @@ class DescribeComfyProductionsResponseBodyProductions(DaraModel):
         state: str = None,
         updated_time: str = None,
     ):
-        # The ComfyTask ID.
+        # The ID of the ComfyTask.
         self.comfy_task_id = comfy_task_id
-        # The creation time. The time follows the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
+        # The creation time. The time follows the ISO 8601 standard and includes the time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.creation_time = creation_time
         # The file name of the production.
         self.file_name = file_name
-        # The production ID.
+        # The ID of the production.
         self.production_id = production_id
-        # The production status.
+        # The status of the production.
         self.state = state
         # The last modified time. The time is a UNIX timestamp in seconds.
         self.updated_time = updated_time

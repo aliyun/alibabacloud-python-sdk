@@ -10,9 +10,9 @@ class CreateDeviceResponseBody(DaraModel):
         id: str = None,
         request_id: str = None,
     ):
-        # Device ID.
+        # The ID of the device.
         self.id = id
-        # Request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

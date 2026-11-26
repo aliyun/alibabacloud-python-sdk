@@ -11,11 +11,11 @@ class CreateComfyTaskRequest(DaraModel):
         user_parameters: str = None,
         workflow_id: str = None,
     ):
-        # The identifier of the resource pool.
+        # The ID of the resource pool.
         # 
         # This parameter is required.
         self.hive_id = hive_id
-        # The workflow parameters to be replaced.
+        # The workflow parameters to be replaced by the user.
         # 
         # This parameter is required.
         self.user_parameters = user_parameters

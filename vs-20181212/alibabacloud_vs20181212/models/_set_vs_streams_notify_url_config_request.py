@@ -33,7 +33,7 @@ class SetVsStreamsNotifyUrlConfigRequest(DaraModel):
         self.domain_name = domain_name
         # The URL to which live stream information is pushed.
         # 
-        # > This URL must start with http\\:// or https\\://.
+        # > This URL must start with http\:// or https\://.
         # 
         # This parameter is required.
         self.notify_url = notify_url

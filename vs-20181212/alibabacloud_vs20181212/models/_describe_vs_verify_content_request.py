@@ -10,7 +10,7 @@ class DescribeVsVerifyContentRequest(DaraModel):
         domain_name: str = None,
         owner_id: int = None,
     ):
-        # The domain name of Visual Edge Computing Service.
+        # The Visual Edge Computing Service domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name

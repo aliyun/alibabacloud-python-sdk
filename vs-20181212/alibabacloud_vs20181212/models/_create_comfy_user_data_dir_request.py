@@ -9,7 +9,7 @@ class CreateComfyUserDataDirRequest(DaraModel):
         self,
         path: str = None,
     ):
-        # The path of the directory to create. The format is /dir1/ for a single-level directory and /dir1/dir2/ for a multi-level directory.
+        # The path to create the directory. The single-level format is /dir1/, and the multi-level format is /dir1/dir2/.
         self.path = path
 
     def validate(self):

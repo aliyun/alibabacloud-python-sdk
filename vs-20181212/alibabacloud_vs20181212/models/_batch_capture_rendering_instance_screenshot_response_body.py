@@ -17,7 +17,7 @@ class BatchCaptureRenderingInstanceScreenshotResponseBody(DaraModel):
         success_count: int = None,
         success_items: List[main_models.BatchCaptureRenderingInstanceScreenshotResponseBodySuccessItems] = None,
     ):
-        # The data pre-check result.
+        # The data precheck result.
         self.datatest = datatest
         # The number of failed instances.
         self.failed_count = failed_count
@@ -107,7 +107,7 @@ class BatchCaptureRenderingInstanceScreenshotResponseBodySuccessItems(DaraModel)
         download_url: str = None,
         rendering_instance_id: str = None,
     ):
-        # The time when the screenshot was created. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+        # The time when the screenshot was created. The time follows the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
         self.creation_time = creation_time
         # The download URL of the screenshot.
         self.download_url = download_url
@@ -155,7 +155,7 @@ class BatchCaptureRenderingInstanceScreenshotResponseBodyFailedItems(DaraModel):
     ):
         # The error code for the failure.
         self.err_code = err_code
-        # The reason for the failure.
+        # The error message for the failure.
         self.err_message = err_message
         # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
@@ -197,7 +197,7 @@ class BatchCaptureRenderingInstanceScreenshotResponseBodyDatatest(DaraModel):
         self,
         result: main_models.BatchCaptureRenderingInstanceScreenshotResponseBodyDatatestResult = None,
     ):
-        # The pre-check result.
+        # The precheck result.
         self.result = result
 
     def validate(self):

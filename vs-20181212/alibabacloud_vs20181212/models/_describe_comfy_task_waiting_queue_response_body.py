@@ -19,7 +19,7 @@ class DescribeComfyTaskWaitingQueueResponseBody(DaraModel):
         self.message = message
         # Id of the request
         self.request_id = request_id
-        # The task waiting queue information.
+        # The waiting queue information.
         self.task_waiting_queue = task_waiting_queue
 
     def validate(self):

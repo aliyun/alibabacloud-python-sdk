@@ -10,7 +10,7 @@ class DescribeVsVerifyContentResponseBody(DaraModel):
         content: str = None,
         request_id: str = None,
     ):
-        # The verification content.
+        # The check content.
         self.content = content
         # The request ID.
         self.request_id = request_id

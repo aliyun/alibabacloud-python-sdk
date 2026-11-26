@@ -18,14 +18,15 @@ class ResumeVsStreamRequest(DaraModel):
         # 
         # This parameter is required.
         self.app_name = app_name
+        # Controls the stream behavior. Valid values:
+        # - **resume**: Resumes the stream.
         self.control_stream_action = control_stream_action
-        # Your accelerated domain name.
+        # The accelerated domain name.
         # 
         # This parameter is required.
         self.domain_name = domain_name
         # The stream type.
-        # 
-        # > Only publisher is supported.
+        # > Currently, only publisher is supported.
         # 
         # This parameter is required.
         self.live_stream_type = live_stream_type

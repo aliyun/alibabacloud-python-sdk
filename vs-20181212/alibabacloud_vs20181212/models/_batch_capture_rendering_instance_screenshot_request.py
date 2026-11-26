@@ -12,9 +12,9 @@ class BatchCaptureRenderingInstanceScreenshotRequest(DaraModel):
         quality: int = None,
         rendering_instance_ids: List[str] = None,
     ):
-        # The image quality. Valid values: 1 to 100.
+        # The quality of the image. Valid values: 1 to 100.
         self.quality = quality
-        # The list of instance IDs. A maximum of 100 instance IDs can be specified.
+        # The list of instance IDs. You can specify up to 100 IDs.
         # 
         # This parameter is required.
         self.rendering_instance_ids = rendering_instance_ids

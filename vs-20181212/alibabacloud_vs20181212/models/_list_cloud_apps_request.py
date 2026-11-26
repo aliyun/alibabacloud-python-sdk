@@ -31,13 +31,13 @@ class ListCloudAppsRequest(DaraModel):
         self.latest_version_only = latest_version_only
         # The page number of the list to query. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page during paging for a paged query. Settings: 1 to 100. Default value: 10.
+        # Settings for the number of entries to return on each page during paging for a paged query. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The label of the cloud application. Valid values:
         # - hot
         # - game
         # - app
-        # To query cloud applications without labels, set this parameter to NULL.
+        # To query applications without labels, set the value to NULL.
         self.pkg_label = pkg_label
         # The type of the installation package. Valid values:
         # - android
@@ -47,8 +47,8 @@ class ListCloudAppsRequest(DaraModel):
         # The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time
         # The upload status of the application. Valid values:
-        # - Success: The upload is successful. This is a final state.
-        # - Failed: The upload failed. This is a final state.
+        # - Success: successful. This is a final state.
+        # - Failed: failed. This is a final state.
         # - Created
         # - Doing
         self.status = status

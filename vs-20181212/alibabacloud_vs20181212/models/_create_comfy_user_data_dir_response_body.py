@@ -13,7 +13,7 @@ class CreateComfyUserDataDirResponseBody(DaraModel):
     ):
         # The status code. A value of 0 indicates success.
         self.code = code
-        # The description. If Status is Failed, this field contains the cause of the failure.
+        # The description. If Status is Failed, it includes the cause of the failure.
         self.message = message
         # Id of the request
         self.request_id = request_id

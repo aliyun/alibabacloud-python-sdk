@@ -18,11 +18,11 @@ class ListFilePushStatusesResponseBody(DaraModel):
     ):
         # The page number of the returned list.
         self.page_number = page_number
-        # The Settings for the number of entries per page during paging in a paged query.
+        # The Settings for the number of entries returned per page during paging in a paged query.
         self.page_size = page_size
         # The list of file push statuses.
         self.push_statuses = push_statuses
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of matched file push records.
         self.total_count = total_count
@@ -94,19 +94,19 @@ class ListFilePushStatusesResponseBodyPushStatuses(DaraModel):
         self.file_id = file_id
         # The name of the file.
         self.file_name = file_name
-        # The start time of the push. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+        # The start time of the push. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.push_time = push_time
-        # The instance ID of the cloud application service.
+        # The cloud application service instance ID.
         self.rendering_instance_id = rendering_instance_id
         # The push status of the file. Valid values:
         # - Created
         # - Doing
-        # - Success: final state.
-        # - Failed: final state.
+        # - Success: terminal state
+        # - Failed: terminal state
         self.status = status
         # The description of the status.
         self.status_description = status_description
-        # The latest update time of the status. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+        # The latest update time of the status. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.update_time = update_time
 
     def validate(self):

@@ -22,7 +22,7 @@ class ListFilesRequest(DaraModel):
         self.file_name = file_name
         # The page number of the list to query. Pages start from 1. Default value: 1.
         self.page_number = page_number
-        # The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 100. Default value: 10.
+        # The Settings for the number of entries to return on each page during paging in a paged query. Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
         # The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.start_time = start_time

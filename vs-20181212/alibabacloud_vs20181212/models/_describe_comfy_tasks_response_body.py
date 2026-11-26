@@ -25,7 +25,7 @@ class DescribeComfyTasksResponseBody(DaraModel):
         # The page number. Default value: 1.
         self.page_number = page_number
         # The page size.
-        # > Only for recording queries.
+        # > Only applicable to recording queries.
         self.page_size = page_size
         # Id of the request
         self.request_id = request_id
@@ -111,21 +111,21 @@ class DescribeComfyTasksResponseBodyTasks(DaraModel):
         updated_time: str = None,
         workflow_id: str = None,
     ):
-        # The creation time, represented as a UNIX timestamp in milliseconds.
+        # The creation time. The value is a UNIX timestamp in milliseconds.
         self.creation_time = creation_time
-        # The end time of the task, represented as a UNIX timestamp in milliseconds.
+        # The end time of the task. The value is a UNIX timestamp in milliseconds.
         self.end_time = end_time
         # The ID of the resource pool used by the task.
         self.hive_id = hive_id
-        # The task error message.
+        # The error message of the task.
         self.task_error_message = task_error_message
-        # The task ID.
+        # The ID of the task.
         self.task_id = task_id
-        # The task state.
+        # The state of the task.
         self.task_state = task_state
-        # The task state message.
+        # The state message of the task.
         self.task_state_message = task_state_message
-        # The last modified time, represented as a UNIX timestamp in milliseconds.
+        # The last modified time. The value is a UNIX timestamp in milliseconds.
         self.updated_time = updated_time
         # The ID of the Comfy workflow used by the task.
         self.workflow_id = workflow_id

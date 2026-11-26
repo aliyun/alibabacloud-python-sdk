@@ -414,6 +414,7 @@ from ._install_cloud_app_shrink_request import InstallCloudAppShrinkRequest
 from ._install_cloud_app_response_body import InstallCloudAppResponseBody
 from ._install_cloud_app_response import InstallCloudAppResponse
 from ._list_cloud_app_installations_request import ListCloudAppInstallationsRequest
+from ._list_cloud_app_installations_shrink_request import ListCloudAppInstallationsShrinkRequest
 from ._list_cloud_app_installations_response_body import ListCloudAppInstallationsResponseBody
 from ._list_cloud_app_installations_response import ListCloudAppInstallationsResponse
 from ._list_cloud_app_patches_request import ListCloudAppPatchesRequest
@@ -651,6 +652,10 @@ from ._upgrade_rendering_instance_image_request import UpgradeRenderingInstanceI
 from ._upgrade_rendering_instance_image_shrink_request import UpgradeRenderingInstanceImageShrinkRequest
 from ._upgrade_rendering_instance_image_response_body import UpgradeRenderingInstanceImageResponseBody
 from ._upgrade_rendering_instance_image_response import UpgradeRenderingInstanceImageResponse
+from ._upgrade_rendering_server_image_request import UpgradeRenderingServerImageRequest
+from ._upgrade_rendering_server_image_shrink_request import UpgradeRenderingServerImageShrinkRequest
+from ._upgrade_rendering_server_image_response_body import UpgradeRenderingServerImageResponseBody
+from ._upgrade_rendering_server_image_response import UpgradeRenderingServerImageResponse
 from ._upload_cloud_app_request import UploadCloudAppRequest
 from ._upload_cloud_app_shrink_request import UploadCloudAppShrinkRequest
 from ._upload_cloud_app_response_body import UploadCloudAppResponseBody
@@ -830,6 +835,8 @@ from ._update_rendering_instance_settings_request import UpdateRenderingInstance
 from ._update_rendering_project_request import UpdateRenderingProjectRequestSessionAttribs
 from ._upgrade_rendering_instance_image_response_body import UpgradeRenderingInstanceImageResponseBodyFailedItems
 from ._upgrade_rendering_instance_image_response_body import UpgradeRenderingInstanceImageResponseBodySuccessItems
+from ._upgrade_rendering_server_image_response_body import UpgradeRenderingServerImageResponseBodyFailedInstances
+from ._upgrade_rendering_server_image_response_body import UpgradeRenderingServerImageResponseBodySuccessInstances
 
 __all__ = [
     AddHiveEdgeWorkersRequest,
@@ -1244,6 +1251,7 @@ __all__ = [
     InstallCloudAppResponseBody,
     InstallCloudAppResponse,
     ListCloudAppInstallationsRequest,
+    ListCloudAppInstallationsShrinkRequest,
     ListCloudAppInstallationsResponseBody,
     ListCloudAppInstallationsResponse,
     ListCloudAppPatchesRequest,
@@ -1481,6 +1489,10 @@ __all__ = [
     UpgradeRenderingInstanceImageShrinkRequest,
     UpgradeRenderingInstanceImageResponseBody,
     UpgradeRenderingInstanceImageResponse,
+    UpgradeRenderingServerImageRequest,
+    UpgradeRenderingServerImageShrinkRequest,
+    UpgradeRenderingServerImageResponseBody,
+    UpgradeRenderingServerImageResponse,
     UploadCloudAppRequest,
     UploadCloudAppShrinkRequest,
     UploadCloudAppResponseBody,
@@ -1659,5 +1671,7 @@ __all__ = [
     UpdateRenderingInstanceSettingsRequestSettings,
     UpdateRenderingProjectRequestSessionAttribs,
     UpgradeRenderingInstanceImageResponseBodyFailedItems,
-    UpgradeRenderingInstanceImageResponseBodySuccessItems
+    UpgradeRenderingInstanceImageResponseBodySuccessItems,
+    UpgradeRenderingServerImageResponseBodyFailedInstances,
+    UpgradeRenderingServerImageResponseBodySuccessInstances
 ]

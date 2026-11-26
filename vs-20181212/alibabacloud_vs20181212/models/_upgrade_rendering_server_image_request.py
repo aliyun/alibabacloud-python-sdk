@@ -1,0 +1,53 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class UpgradeRenderingServerImageRequest(DaraModel):
+    def __init__(
+        self,
+        image_id: str = None,
+        precheck: bool = None,
+        rendering_instance_ids: List[str] = None,
+    ):
+        # This parameter is required.
+        self.image_id = image_id
+        self.precheck = precheck
+        # This parameter is required.
+        self.rendering_instance_ids = rendering_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+
+        if self.precheck is not None:
+            result['Precheck'] = self.precheck
+
+        if self.rendering_instance_ids is not None:
+            result['RenderingInstanceIds'] = self.rendering_instance_ids
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+
+        if m.get('Precheck') is not None:
+            self.precheck = m.get('Precheck')
+
+        if m.get('RenderingInstanceIds') is not None:
+            self.rendering_instance_ids = m.get('RenderingInstanceIds')
+
+        return self
+

@@ -16,15 +16,15 @@ class ListFilesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of file information.
+        # The list of files.
         self.files = files
         # The page number of the returned list.
         self.page_number = page_number
-        # The Settings for the number of entries per page during paging in a paged query.
+        # The Settings for the number of entries returned per page during paging in a paged query.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of matched file records.
+        # The total number of matched files.
         self.total_count = total_count
 
     def validate(self):
@@ -100,16 +100,16 @@ class ListFilesResponseBodyFiles(DaraModel):
         # The upload status of the file. Valid values:
         # - Created
         # - Doing
-        # - Success: final state
-        # - Failed: final state
+        # - Success: final state.
+        # - Failed: final state.
         self.status = status
         # The description of the status.
         self.status_description = status_description
-        # The target path for pushing the file to the cloud application service instance.
+        # The destination path for pushing the file to the cloud application service instance.
         self.target_path = target_path
-        # The time when the status was last updated. The time follows the ISO 8601 standard and includes the time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+        # The time when the status was last updated. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.update_time = update_time
-        # The time when the upload started. The time follows the ISO 8601 standard and includes the time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+        # The time when the upload started. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.upload_time = upload_time
 
     def validate(self):

@@ -18,9 +18,9 @@ class ListCloudAppInstallationsResponseBody(DaraModel):
     ):
         # The list of installation information.
         self.installation_infos = installation_infos
-        # The page number of the returned list.
+        # The page number of the list to query.
         self.page_number = page_number
-        # The number of entries returned per page for a paged query.
+        # The Settings for the number of entries per page during paging in a paged query.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
@@ -98,17 +98,19 @@ class ListCloudAppInstallationsResponseBodyInstallationInfos(DaraModel):
         self.app_name = app_name
         # The version of the application.
         self.app_version = app_version
-        # The installation time. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+        # The installation time. The time is displayed in the ISO 8601 standard and includes the time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.installation_time = installation_time
         # The ID of the patch package.
         self.patch_id = patch_id
-        # The cloud application service instance ID.
+        # The instance ID of the cloud application service.
         self.rendering_instance_id = rendering_instance_id
-        # The installation status of the cloud application. Valid values: install-init and installing (intermediate states), and installed and install-failed (final states).
+        # The installation status of the cloud application. Valid values:
+        # - Intermediate states: install-init and installing.
+        # - Final states: installed and install-failed.
         self.status = status
         # The description of the status.
         self.status_description = status_description
-        # The time when the status was last updated. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+        # The latest update time of the status. The time is displayed in the ISO 8601 standard and includes the time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.update_time = update_time
 
     def validate(self):

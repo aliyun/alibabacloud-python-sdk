@@ -15,7 +15,7 @@ class DescribeComfyProductionsRequest(DaraModel):
         self.page_number = page_number
         # The page size.
         self.page_size = page_size
-        # The ID of the specified ComfyTask.
+        # The ID of the ComfyTask.
         # 
         # This parameter is required.
         self.task_id = task_id

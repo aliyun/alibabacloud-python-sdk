@@ -18,9 +18,9 @@ class ListCloudAppPatchesResponseBody(DaraModel):
     ):
         # The page number of the returned list.
         self.page_number = page_number
-        # Settings for the number of entries per page when paging in a paged query.
+        # The paging Settings for the number of entries returned on each page in a paged query.
         self.page_size = page_size
-        # The patch list of the cloud application.
+        # The list of patches for the cloud application.
         self.patches = patches
         # Id of the request
         self.request_id = request_id
@@ -102,16 +102,16 @@ class ListCloudAppPatchesResponseBodyPatches(DaraModel):
         # The upload status of the application. Valid values:
         # - Created
         # - Doing
-        # - Success: desired state
-        # - Failed: desired state
+        # - Success: final state
+        # - Failed: final state
         # - Deleting
-        # - DeleteFailed: desired state
+        # - DeleteFailed: final state
         self.status = status
         # The description of the status.
         self.status_description = status_description
-        # The latest time when the status was updated. The time is in the YYYY-MM-DDTHH:mm:ss format.
+        # The time when the status was last updated. The time is in the YYYY-MM-DDTHH:mm:ss format.
         self.update_time = update_time
-        # The time when the application was uploaded. The time is in the ISO 8601 standard and includes the time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+        # The time when the patch was uploaded. The time follows the ISO 8601 standard and includes a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.upload_time = upload_time
 
     def validate(self):

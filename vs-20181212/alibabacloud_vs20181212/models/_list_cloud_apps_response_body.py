@@ -20,11 +20,11 @@ class ListCloudAppsResponseBody(DaraModel):
         self.cloud_apps = cloud_apps
         # The page number of the returned list.
         self.page_number = page_number
-        # The Settings for the number of entries returned on each page during paging for a paged query.
+        # Settings for the number of entries returned per page during paging for a paged query.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The total number of cloud applications that match the query conditions.
+        # The total number of matched cloud applications.
         self.total_count = total_count
 
     def validate(self):
@@ -117,14 +117,14 @@ class ListCloudAppsResponseBodyCloudApps(DaraModel):
         # The upload status of the application. Valid values:
         # - Created
         # - Doing
-        # - Success: This is a final state.
-        # - Failed: This is a final state.
+        # - Success: final state
+        # - Failed: final state
         self.status = status
         # The description of the status.
         self.status_description = status_description
-        # The time when the status was last updated. The time is displayed in the ISO 8601 standard with a time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+        # The time when the status was last updated. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.update_time = update_time
-        # The time when the application was uploaded. The time is displayed in the ISO 8601 standard with a time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+        # The time when the application was uploaded. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
         self.upload_time = upload_time
 
     def validate(self):

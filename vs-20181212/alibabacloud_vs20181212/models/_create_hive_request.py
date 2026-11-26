@@ -10,7 +10,7 @@ class CreateHiveRequest(DaraModel):
         description: str = None,
         name: str = None,
     ):
-        # A description of the cluster.
+        # The description.
         self.description = description
         # The project ID.
         # 

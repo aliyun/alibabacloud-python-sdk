@@ -12,11 +12,11 @@ class AddHiveEdgeWorkersRequest(DaraModel):
         hive_id: str = None,
         instance_ids: List[str] = None,
     ):
-        # The cluster ID.
+        # **The cluster ID.**
         # 
         # This parameter is required.
         self.hive_id = hive_id
-        # A list of instance IDs.
+        # **The list of workload IDs.**
         # 
         # This parameter is required.
         self.instance_ids = instance_ids
