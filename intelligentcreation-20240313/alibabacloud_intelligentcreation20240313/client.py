@@ -47,6 +47,90 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_script_hot_word_with_options(
+        self,
+        request: main_models.AddScriptHotWordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddScriptHotWordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.hot_word):
+            body['hotWord'] = request.hot_word
+        if not DaraCore.is_null(request.script_record_id):
+            body['scriptRecordId'] = request.script_record_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddScriptHotWord',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/addScriptHotWord',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddScriptHotWordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_script_hot_word_with_options_async(
+        self,
+        request: main_models.AddScriptHotWordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddScriptHotWordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.hot_word):
+            body['hotWord'] = request.hot_word
+        if not DaraCore.is_null(request.script_record_id):
+            body['scriptRecordId'] = request.script_record_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddScriptHotWord',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/addScriptHotWord',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddScriptHotWordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_script_hot_word(
+        self,
+        request: main_models.AddScriptHotWordRequest,
+    ) -> main_models.AddScriptHotWordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_script_hot_word_with_options(request, headers, runtime)
+
+    async def add_script_hot_word_async(
+        self,
+        request: main_models.AddScriptHotWordRequest,
+    ) -> main_models.AddScriptHotWordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_script_hot_word_with_options_async(request, headers, runtime)
+
     def add_text_feedback_with_options(
         self,
         request: main_models.AddTextFeedbackRequest,
@@ -2650,6 +2734,82 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_individuation_text_with_options_async(request, headers, runtime)
+
+    def delete_script_hot_word_with_options(
+        self,
+        request: main_models.DeleteScriptHotWordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteScriptHotWordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hot_word_id):
+            query['hotWordId'] = request.hot_word_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteScriptHotWord',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/deleteScriptHotWord',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteScriptHotWordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_script_hot_word_with_options_async(
+        self,
+        request: main_models.DeleteScriptHotWordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteScriptHotWordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hot_word_id):
+            query['hotWordId'] = request.hot_word_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteScriptHotWord',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/deleteScriptHotWord',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteScriptHotWordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_script_hot_word(
+        self,
+        request: main_models.DeleteScriptHotWordRequest,
+    ) -> main_models.DeleteScriptHotWordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_script_hot_word_with_options(request, headers, runtime)
+
+    async def delete_script_hot_word_async(
+        self,
+        request: main_models.DeleteScriptHotWordRequest,
+    ) -> main_models.DeleteScriptHotWordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_script_hot_word_with_options_async(request, headers, runtime)
 
     def describe_document_with_options(
         self,
@@ -5523,6 +5683,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.query_individuation_text_task_with_options_async(request, headers, runtime)
 
+    def query_script_hot_word_list_with_options(
+        self,
+        request: main_models.QueryScriptHotWordListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryScriptHotWordListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hot_word):
+            query['hotWord'] = request.hot_word
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.script_record_id):
+            query['scriptRecordId'] = request.script_record_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryScriptHotWordList',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/listScriptHotWord',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryScriptHotWordListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_script_hot_word_list_with_options_async(
+        self,
+        request: main_models.QueryScriptHotWordListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryScriptHotWordListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hot_word):
+            query['hotWord'] = request.hot_word
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.script_record_id):
+            query['scriptRecordId'] = request.script_record_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryScriptHotWordList',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/listScriptHotWord',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryScriptHotWordListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_script_hot_word_list(
+        self,
+        request: main_models.QueryScriptHotWordListRequest,
+    ) -> main_models.QueryScriptHotWordListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.query_script_hot_word_list_with_options(request, headers, runtime)
+
+    async def query_script_hot_word_list_async(
+        self,
+        request: main_models.QueryScriptHotWordListRequest,
+    ) -> main_models.QueryScriptHotWordListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.query_script_hot_word_list_with_options_async(request, headers, runtime)
+
     def query_session_info_with_options(
         self,
         tmp_req: main_models.QuerySessionInfoRequest,
@@ -7172,3 +7420,87 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_agent_with_options_async(request, headers, runtime)
+
+    def update_script_hot_word_with_options(
+        self,
+        request: main_models.UpdateScriptHotWordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateScriptHotWordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.hot_word):
+            body['hotWord'] = request.hot_word
+        if not DaraCore.is_null(request.hot_word_id):
+            body['hotWordId'] = request.hot_word_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateScriptHotWord',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/updateScriptHotWord',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateScriptHotWordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_script_hot_word_with_options_async(
+        self,
+        request: main_models.UpdateScriptHotWordRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateScriptHotWordResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.hot_word):
+            body['hotWord'] = request.hot_word
+        if not DaraCore.is_null(request.hot_word_id):
+            body['hotWordId'] = request.hot_word_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateScriptHotWord',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/updateScriptHotWord',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateScriptHotWordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_script_hot_word(
+        self,
+        request: main_models.UpdateScriptHotWordRequest,
+    ) -> main_models.UpdateScriptHotWordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_script_hot_word_with_options(request, headers, runtime)
+
+    async def update_script_hot_word_async(
+        self,
+        request: main_models.UpdateScriptHotWordRequest,
+    ) -> main_models.UpdateScriptHotWordResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_script_hot_word_with_options_async(request, headers, runtime)

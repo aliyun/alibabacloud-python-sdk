@@ -1,3 +1,10 @@
+2026-11-26 Version: 2.20.0
+- Support API AddScriptHotWord.
+- Support API DeleteScriptHotWord.
+- Support API QueryScriptHotWordList.
+- Support API UpdateScriptHotWord.
+
+
 2026-11-26 Version: 2.19.3
 - Generated python 2024-03-13 for IntelligentCreation.
 

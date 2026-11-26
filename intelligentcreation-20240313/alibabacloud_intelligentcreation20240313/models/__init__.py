@@ -28,6 +28,9 @@ from ._text_theme import TextTheme
 from ._text_theme_list_result import TextThemeListResult
 from ._upload_info import UploadInfo
 from ._voice_model_response import VoiceModelResponse
+from ._add_script_hot_word_request import AddScriptHotWordRequest
+from ._add_script_hot_word_response_body import AddScriptHotWordResponseBody
+from ._add_script_hot_word_response import AddScriptHotWordResponse
 from ._add_text_feedback_request import AddTextFeedbackRequest
 from ._add_text_feedback_response_body import AddTextFeedbackResponseBody
 from ._add_text_feedback_response import AddTextFeedbackResponse
@@ -120,6 +123,9 @@ from ._delete_individuation_project_response import DeleteIndividuationProjectRe
 from ._delete_individuation_text_request import DeleteIndividuationTextRequest
 from ._delete_individuation_text_response_body import DeleteIndividuationTextResponseBody
 from ._delete_individuation_text_response import DeleteIndividuationTextResponse
+from ._delete_script_hot_word_request import DeleteScriptHotWordRequest
+from ._delete_script_hot_word_response_body import DeleteScriptHotWordResponseBody
+from ._delete_script_hot_word_response import DeleteScriptHotWordResponse
 from ._describe_document_response import DescribeDocumentResponse
 from ._finish_aicoach_task_session_request import FinishAICoachTaskSessionRequest
 from ._finish_aicoach_task_session_response_body import FinishAICoachTaskSessionResponseBody
@@ -209,6 +215,9 @@ from ._query_image_to_video_task_response import QueryImageToVideoTaskResponse
 from ._query_individuation_text_task_request import QueryIndividuationTextTaskRequest
 from ._query_individuation_text_task_response_body import QueryIndividuationTextTaskResponseBody
 from ._query_individuation_text_task_response import QueryIndividuationTextTaskResponse
+from ._query_script_hot_word_list_request import QueryScriptHotWordListRequest
+from ._query_script_hot_word_list_response_body import QueryScriptHotWordListResponseBody
+from ._query_script_hot_word_list_response import QueryScriptHotWordListResponse
 from ._query_session_info_request import QuerySessionInfoRequest
 from ._query_session_info_shrink_request import QuerySessionInfoShrinkRequest
 from ._query_session_info_response_body import QuerySessionInfoResponseBody
@@ -259,6 +268,9 @@ from ._transfer_portrait_style_response import TransferPortraitStyleResponse
 from ._update_agent_request import UpdateAgentRequest
 from ._update_agent_response_body import UpdateAgentResponseBody
 from ._update_agent_response import UpdateAgentResponse
+from ._update_script_hot_word_request import UpdateScriptHotWordRequest
+from ._update_script_hot_word_response_body import UpdateScriptHotWordResponseBody
+from ._update_script_hot_word_response import UpdateScriptHotWordResponse
 from ._batch_create_aicoach_task_request import BatchCreateAICoachTaskRequestStudentList
 from ._batch_delete_practice_task_response_body import BatchDeletePracticeTaskResponseBodyResults
 from ._batch_get_project_task_response_body import BatchGetProjectTaskResponseBodyResultList
@@ -386,6 +398,9 @@ __all__ = [
     TextThemeListResult,
     UploadInfo,
     VoiceModelResponse,
+    AddScriptHotWordRequest,
+    AddScriptHotWordResponseBody,
+    AddScriptHotWordResponse,
     AddTextFeedbackRequest,
     AddTextFeedbackResponseBody,
     AddTextFeedbackResponse,
@@ -478,6 +493,9 @@ __all__ = [
     DeleteIndividuationTextRequest,
     DeleteIndividuationTextResponseBody,
     DeleteIndividuationTextResponse,
+    DeleteScriptHotWordRequest,
+    DeleteScriptHotWordResponseBody,
+    DeleteScriptHotWordResponse,
     DescribeDocumentResponse,
     FinishAICoachTaskSessionRequest,
     FinishAICoachTaskSessionResponseBody,
@@ -567,6 +585,9 @@ __all__ = [
     QueryIndividuationTextTaskRequest,
     QueryIndividuationTextTaskResponseBody,
     QueryIndividuationTextTaskResponse,
+    QueryScriptHotWordListRequest,
+    QueryScriptHotWordListResponseBody,
+    QueryScriptHotWordListResponse,
     QuerySessionInfoRequest,
     QuerySessionInfoShrinkRequest,
     QuerySessionInfoResponseBody,
@@ -617,6 +638,9 @@ __all__ = [
     UpdateAgentRequest,
     UpdateAgentResponseBody,
     UpdateAgentResponse,
+    UpdateScriptHotWordRequest,
+    UpdateScriptHotWordResponseBody,
+    UpdateScriptHotWordResponse,
     BatchCreateAICoachTaskRequestStudentList,
     BatchDeletePracticeTaskResponseBodyResults,
     BatchGetProjectTaskResponseBodyResultList,
