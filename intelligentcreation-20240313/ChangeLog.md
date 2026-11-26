@@ -1,3 +1,6 @@
+2026-11-26 Version: 2.19.3
+- Generated python 2024-03-13 for IntelligentCreation.
+
 2026-09-02 Version: 2.19.2
 - Update API ListAgents: add response parameters Body.list.$.characterGender.
 

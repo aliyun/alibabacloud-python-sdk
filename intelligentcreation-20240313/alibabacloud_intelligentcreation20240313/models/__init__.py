@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._aicoach_script_hot_word_item import AICoachScriptHotWordItem
 from ._add_document_info import AddDocumentInfo
 from ._add_document_result import AddDocumentResult
 from ._anchor_response import AnchorResponse
@@ -359,6 +360,7 @@ from ._submit_project_task_request import SubmitProjectTaskRequestFramesVideoScr
 from ._submit_project_task_request import SubmitProjectTaskRequestFrames
 
 __all__ = [
+    AICoachScriptHotWordItem,
     AddDocumentInfo,
     AddDocumentResult,
     AnchorResponse,
