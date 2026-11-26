@@ -17,8 +17,11 @@ class CreateAirflowRequest(DaraModel):
         dags_dir: str = None,
         data_mount_info_list: List[main_models.DataMountInfo] = None,
         description: str = None,
+        enable_lineage: bool = None,
         enable_serverless: bool = None,
         graceful_shutdown_timeout: int = None,
+        lineage_replicas: int = None,
+        lineage_spec: str = None,
         oss_bucket_name: str = None,
         oss_path: str = None,
         plugins_dir: str = None,
@@ -43,16 +46,22 @@ class CreateAirflowRequest(DaraModel):
         self.app_spec = app_spec
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The DAG directory scanned by Airflow.
+        # The directory scanned by Airflow for DAGs.
         self.dags_dir = dags_dir
         # The list of data mount information.
         self.data_mount_info_list = data_mount_info_list
         # The description of the Airflow instance.
         self.description = description
-        # Specifies whether to enable Worker elasticity.
+        # Specifies whether to enable data lineage. For Airflow 2.x, this feature is always disabled, and the lineage specification and number of replicas are ignored.
+        self.enable_lineage = enable_lineage
+        # Specifies whether to enable elasticity for workers.
         self.enable_serverless = enable_serverless
-        # The timeout period for the Worker to gracefully shut down.
+        # The timeout period for a worker to gracefully shut down.
         self.graceful_shutdown_timeout = graceful_shutdown_timeout
+        # The number of replicas for the lineage service. The default value is 1 when enabled. If omitted during an update, the original value is retained.
+        self.lineage_replicas = lineage_replicas
+        # The specification of the lineage service. It uses the same tier as the Airflow instance specification.
+        self.lineage_spec = lineage_spec
         # The name of the OSS bucket.
         # 
         # This parameter is required.
@@ -61,33 +70,33 @@ class CreateAirflowRequest(DaraModel):
         # 
         # This parameter is required.
         self.oss_path = oss_path
-        # The plugin directory scanned by the Airflow instance.
+        # The directory scanned by the Airflow instance for plugins.
         self.plugins_dir = plugins_dir
-        # The path of the package installation file.
+        # The path to the installation package.
         self.requirement_file = requirement_file
         # The ID of the security group.
         # 
         # This parameter is required.
         self.security_group_id = security_group_id
-        # The startup script of the Airflow container.
+        # The startup script for the Airflow container.
         self.startup_file = startup_file
         # The ID of the vSwitch.
         # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # VPC ID。
+        # The VPC ID.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
-        # The number of extended Worker node replicas.
+        # The number of worker node extensions.
         # 
         # This parameter is required.
         self.worker_serverless_replicas = worker_serverless_replicas
-        # The ID of the Data Management workspace.
+        # The DMS workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id
-        # The zone ID within the region.
+        # The zone ID in the region.
         self.zone_id = zone_id
 
     def validate(self):
@@ -124,11 +133,20 @@ class CreateAirflowRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.enable_lineage is not None:
+            result['EnableLineage'] = self.enable_lineage
+
         if self.enable_serverless is not None:
             result['EnableServerless'] = self.enable_serverless
 
         if self.graceful_shutdown_timeout is not None:
             result['GracefulShutdownTimeout'] = self.graceful_shutdown_timeout
+
+        if self.lineage_replicas is not None:
+            result['LineageReplicas'] = self.lineage_replicas
+
+        if self.lineage_spec is not None:
+            result['LineageSpec'] = self.lineage_spec
 
         if self.oss_bucket_name is not None:
             result['OssBucketName'] = self.oss_bucket_name
@@ -191,11 +209,20 @@ class CreateAirflowRequest(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('EnableLineage') is not None:
+            self.enable_lineage = m.get('EnableLineage')
+
         if m.get('EnableServerless') is not None:
             self.enable_serverless = m.get('EnableServerless')
 
         if m.get('GracefulShutdownTimeout') is not None:
             self.graceful_shutdown_timeout = m.get('GracefulShutdownTimeout')
+
+        if m.get('LineageReplicas') is not None:
+            self.lineage_replicas = m.get('LineageReplicas')
+
+        if m.get('LineageSpec') is not None:
+            self.lineage_spec = m.get('LineageSpec')
 
         if m.get('OssBucketName') is not None:
             self.oss_bucket_name = m.get('OssBucketName')

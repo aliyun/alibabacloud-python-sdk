@@ -18,7 +18,7 @@ class GetAirflowResponseBody(DaraModel):
         root: main_models.GetAirflowResponseBodyRoot = None,
         success: bool = None,
     ):
-        # The details about the access denial.
+        # The access denial details.
         self.access_denied_detail = access_denied_detail
         # The error code.
         self.error_code = error_code
@@ -28,13 +28,12 @@ class GetAirflowResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The returned data.
+        # The data details.
         self.root = root
-        # Indicates whether the request was successful. The following values are returned:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # 
-        # - **false**: The request failed.
+        # - **true**: The request is successful.                                 
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -106,7 +105,10 @@ class GetAirflowResponseBodyRoot(DaraModel):
         dags_dir: str = None,
         deploy_error_msg: str = None,
         description: str = None,
+        enable_lineage: bool = None,
         gmt_created: str = None,
+        lineage_replicas: int = None,
+        lineage_spec: str = None,
         oss_bucket_name: str = None,
         oss_path: str = None,
         plugins_dir: str = None,
@@ -131,39 +133,45 @@ class GetAirflowResponseBodyRoot(DaraModel):
         self.app_type = app_type
         # The custom configurations.
         self.custom_airflow_cfg = custom_airflow_cfg
-        # The DAG directory that Airflow scans.
+        # The DAG directory scanned by Airflow.
         self.dags_dir = dags_dir
         # The deployment error message.
         self.deploy_error_msg = deploy_error_msg
         # The description of the Airflow instance.
         self.description = description
-        # The time when the instance was created.
+        # Specifies whether data lineage is enabled.
+        self.enable_lineage = enable_lineage
+        # The creation time.
         self.gmt_created = gmt_created
+        # The number of replicas for the lineage service. The default value is 1 when enabled. If omitted during an update, the original value is retained.
+        self.lineage_replicas = lineage_replicas
+        # The merged lineage service specifications, which use the same tier as the application specifications.
+        self.lineage_spec = lineage_spec
         # The name of the OSS bucket.
         self.oss_bucket_name = oss_bucket_name
         # The OSS path.
         self.oss_path = oss_path
-        # The plugin directory that Airflow scans.
+        # The plugin directory scanned by Airflow.
         self.plugins_dir = plugins_dir
         # The region ID.
         self.region_id = region_id
-        # The path to the Python dependencies file (requirements.txt).
+        # The configuration file for dependency packages.
         self.requirement_file = requirement_file
-        # The ID of the security group.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # The startup script that runs before Airflow starts.
+        # The script loaded before Airflow starts.
         self.startup_file = startup_file
-        # The status of the Airflow instance.
+        # The Airflow instance status.
         self.status = status
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC.
+        # The VPC ID.
         self.vpc_id = vpc_id
         # The number of worker nodes.
         self.worker_serverless_replicas = worker_serverless_replicas
-        # The ID of the DMS workspace.
+        # The Data Management (DMS) workspace ID.
         self.workspace_id = workspace_id
-        # The zone ID.
+        # The zone ID in the region.
         self.zone_id = zone_id
 
     def validate(self):
@@ -198,8 +206,17 @@ class GetAirflowResponseBodyRoot(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.enable_lineage is not None:
+            result['EnableLineage'] = self.enable_lineage
+
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
+
+        if self.lineage_replicas is not None:
+            result['LineageReplicas'] = self.lineage_replicas
+
+        if self.lineage_spec is not None:
+            result['LineageSpec'] = self.lineage_spec
 
         if self.oss_bucket_name is not None:
             result['OssBucketName'] = self.oss_bucket_name
@@ -268,8 +285,17 @@ class GetAirflowResponseBodyRoot(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('EnableLineage') is not None:
+            self.enable_lineage = m.get('EnableLineage')
+
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
+
+        if m.get('LineageReplicas') is not None:
+            self.lineage_replicas = m.get('LineageReplicas')
+
+        if m.get('LineageSpec') is not None:
+            self.lineage_spec = m.get('LineageSpec')
 
         if m.get('OssBucketName') is not None:
             self.oss_bucket_name = m.get('OssBucketName')

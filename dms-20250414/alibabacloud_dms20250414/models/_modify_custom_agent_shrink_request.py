@@ -36,18 +36,18 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         # The current DMS unit.
         self.dmsunit = dmsunit
         # The specified data scope in **JSON character string format**.
-        # - General metric descriptions:
-        #   - tableFlag: true indicates that a data scope is specified.
-        #   - scope: The fixed value personal.
-        #   - personal: The parameters for file and database types.
+        # - General metric descriptions
+        #   - tableFlag: true indicates that the data scope is specified.
+        #   - scope: personal is a fixed value.
+        #   - personal: parameters for file and database types.
         # 
         # **File type**: Pass parameters in the following format:
-        # - DataSourceType: The fixed value remote_data_center.
-        # - FileId: The file ID.
-        # - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
-        # - Tables: The table names returned by the ListDataCenterTable operation.
-        # - TableIds: The table IDs returned by the ListDataCenterTable operation.
-        # - RegionId: The current region.
+        # - DataSourceType: remote_data_center is a fixed value.
+        # - FileId: the file ID.
+        # - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name.
+        # - Tables: the table names returned by the ListDataCenterTable operation.
+        # - TableIds: the table IDs returned by the ListDataCenterTable operation.
+        # - RegionId: the current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -68,16 +68,16 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         # ```
         # 
         # **Database type**: Pass parameters in the following format:
-        # - DataSourceType: The fixed value database.
-        # - DmsInstanceId: The DMS instance ID returned by the data center operation.
-        # - DmsDatabaseId: The DMS database ID returned by the data center operation.
-        # - FileId: The instance name. **[Deprecated]**
-        # - DbName: The database name returned by the data center operation.
-        # - Database: The database name returned by the data center operation.
-        # - Tables: The table names returned by the data center operation.
-        # - TableIds: The table IDs returned by the data center operation.
-        # - Engine: The DPI engine type (mysql or postgresql).
-        # - RegionId: The current region.
+        # - DataSourceType: database is a fixed value.
+        # - DmsInstanceId: the DMS instance ID returned by the data center API.
+        # - DmsDatabaseId: the DMS database ID returned by the data center API.
+        # - FileId: **[Deprecated]** The instance name.
+        # - DbName: the database name returned by the data center API.
+        # - Database: the database name returned by the data center API.
+        # - Tables: the table names returned by the data center API.
+        # - TableIds: the table IDs returned by the data center API.
+        # - Engine: the DPI engine type, such as mysql or postgresql.
+        # - RegionId: the current region.
         # ```
         # {
         #   "tableFlag": true,
@@ -106,10 +106,10 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         # The execution configuration.
         self.execution_config_shrink = execution_config_shrink
         # The instructions.
-        # - Input limit: Maximum of 10,000 characters.
+        # - Input limit: up to 10,000 characters.
         self.instruction = instruction
         # The knowledge.
-        # - Input limit: Maximum of 10,000 characters.
+        # - Input limit: up to 10,000 characters.
         self.knowledge = knowledge
         # The external knowledge bases.
         self.knowledge_config_list_shrink = knowledge_config_list_shrink
@@ -125,12 +125,12 @@ class ModifyCustomAgentShrinkRequest(DaraModel):
         # The scheduled task configuration.
         self.schedule_task_config_shrink = schedule_task_config_shrink
         # The text report format.
-        #  - Input limit: Maximum of 10,000 characters.
+        # - Input limit: up to 10,000 characters.
         self.text_report_config = text_report_config
         # The list of user-specified skills.
         self.user_specified_skill_list_shrink = user_specified_skill_list_shrink
         # The web report format.
-        # - Input limit: Maximum of 50,000 characters.
+        # - Input limit: up to 50,000 characters.
         self.web_report_config = web_report_config
         # The web report theme. Valid values:
         # - default: Default.

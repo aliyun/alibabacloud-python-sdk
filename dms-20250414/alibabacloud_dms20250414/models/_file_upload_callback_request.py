@@ -25,8 +25,8 @@ class FileUploadCallbackRequest(DaraModel):
         # 
         # This parameter is required.
         self.filename = filename
-        # The name of the user\\"s OSS bucket.
-        # - Specify this parameter to use a file in the user\\"s OSS bucket and register the file as a data center file through the callback.
+        # The name of the user\"s OSS bucket.
+        # - Specify this parameter to use a file in the user\"s OSS bucket and register the file as a data center file through the callback.
         self.oss_bucket = oss_bucket
         # The full path of the uploaded file.
         # - Format: Concatenate the UploadDir field returned by the DescribeFileUploadSignature operation with the file name.

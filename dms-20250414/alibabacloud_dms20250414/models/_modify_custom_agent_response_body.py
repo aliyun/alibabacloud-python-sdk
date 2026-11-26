@@ -115,10 +115,10 @@ class ModifyCustomAgentResponseBodyData(DaraModel):
         workspace_id: str = None,
     ):
         # The custom agent type. Valid values:
-        # - Default: The system-built-in custom agent. Each workspace can have at most one Default type, and it cannot be deleted.
-        # - Common: A common custom agent.
+        # - Default: The built-in custom agent. Each workspace can have at most one Default agent, which cannot be deleted.
+        # - Common: A regular custom agent.
         self.agent_type = agent_type
-        # The ID of the Alibaba Cloud main account.
+        # The main Alibaba Cloud account ID.
         self.aliyun_parent_uid = aliyun_parent_uid
         # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
@@ -547,8 +547,8 @@ class ModifyCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
         mcp_server_id: str = None,
     ):
         # The access type. Valid values:
-        # - mcp: Access through MCP.
-        # - dms_kb: Access through the DMS knowledge base.
+        # - mcp: access through MCP
+        # - dms_kb: access through the DMS knowledge base
         self.access_type = access_type
         # The knowledge base ID.
         self.kb_uuid = kb_uuid
@@ -596,7 +596,7 @@ class ModifyCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
-        # Specifies whether to prohibit appending data sources in a session.
+        # Specifies whether to disable appending data sources during the session.
         self.forbidden_append_data_source = forbidden_append_data_source
         # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
@@ -604,7 +604,7 @@ class ModifyCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the confirmation for generating a web report.
+        # Specifies whether to skip the web report generation confirmation.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
@@ -660,7 +660,7 @@ class ModifyCustomAgentResponseBodyDataCallbackConfig(DaraModel):
         tool_id: str = None,
         type: str = None,
     ):
-        # The parameters to invoke callback tool calling.
+        # The callback tool calling parameters to invoke.
         self.callback_args = callback_args
         # The prompt for generating parameters to invoke callback tool calling.
         self.callback_prompt = callback_prompt

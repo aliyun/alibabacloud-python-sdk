@@ -380,116 +380,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_user_to_data_agent_workspace_with_options_async(request, runtime)
 
-    def batch_create_data_lake_partitions_with_options(
-        self,
-        tmp_req: main_models.BatchCreateDataLakePartitionsRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.BatchCreateDataLakePartitionsResponse:
-        tmp_req.validate()
-        request = main_models.BatchCreateDataLakePartitionsShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.partition_inputs):
-            request.partition_inputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.partition_inputs, 'PartitionInputs', 'json')
-        query = {}
-        if not DaraCore.is_null(request.catalog_name):
-            query['CatalogName'] = request.catalog_name
-        if not DaraCore.is_null(request.db_name):
-            query['DbName'] = request.db_name
-        if not DaraCore.is_null(request.if_not_exists):
-            query['IfNotExists'] = request.if_not_exists
-        if not DaraCore.is_null(request.need_result):
-            query['NeedResult'] = request.need_result
-        if not DaraCore.is_null(request.table_name):
-            query['TableName'] = request.table_name
-        if not DaraCore.is_null(request.tid):
-            query['Tid'] = request.tid
-        if not DaraCore.is_null(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        body = {}
-        if not DaraCore.is_null(request.partition_inputs_shrink):
-            body['PartitionInputs'] = request.partition_inputs_shrink
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'BatchCreateDataLakePartitions',
-            version = '2025-04-14',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.BatchCreateDataLakePartitionsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def batch_create_data_lake_partitions_with_options_async(
-        self,
-        tmp_req: main_models.BatchCreateDataLakePartitionsRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.BatchCreateDataLakePartitionsResponse:
-        tmp_req.validate()
-        request = main_models.BatchCreateDataLakePartitionsShrinkRequest()
-        Utils.convert(tmp_req, request)
-        if not DaraCore.is_null(tmp_req.partition_inputs):
-            request.partition_inputs_shrink = Utils.array_to_string_with_specified_style(tmp_req.partition_inputs, 'PartitionInputs', 'json')
-        query = {}
-        if not DaraCore.is_null(request.catalog_name):
-            query['CatalogName'] = request.catalog_name
-        if not DaraCore.is_null(request.db_name):
-            query['DbName'] = request.db_name
-        if not DaraCore.is_null(request.if_not_exists):
-            query['IfNotExists'] = request.if_not_exists
-        if not DaraCore.is_null(request.need_result):
-            query['NeedResult'] = request.need_result
-        if not DaraCore.is_null(request.table_name):
-            query['TableName'] = request.table_name
-        if not DaraCore.is_null(request.tid):
-            query['Tid'] = request.tid
-        if not DaraCore.is_null(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
-        body = {}
-        if not DaraCore.is_null(request.partition_inputs_shrink):
-            body['PartitionInputs'] = request.partition_inputs_shrink
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query),
-            body = Utils.parse_to_map(body)
-        )
-        params = open_api_util_models.Params(
-            action = 'BatchCreateDataLakePartitions',
-            version = '2025-04-14',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.BatchCreateDataLakePartitionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def batch_create_data_lake_partitions(
-        self,
-        request: main_models.BatchCreateDataLakePartitionsRequest,
-    ) -> main_models.BatchCreateDataLakePartitionsResponse:
-        runtime = RuntimeOptions()
-        return self.batch_create_data_lake_partitions_with_options(request, runtime)
-
-    async def batch_create_data_lake_partitions_async(
-        self,
-        request: main_models.BatchCreateDataLakePartitionsRequest,
-    ) -> main_models.BatchCreateDataLakePartitionsResponse:
-        runtime = RuntimeOptions()
-        return await self.batch_create_data_lake_partitions_with_options_async(request, runtime)
-
     def check_data_agent_memory_config_with_options(
         self,
         request: main_models.CheckDataAgentMemoryConfigRequest,
@@ -913,10 +803,16 @@ class Client(OpenApiClient):
             query['DataMountInfoList'] = request.data_mount_info_list_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_lineage):
+            query['EnableLineage'] = request.enable_lineage
         if not DaraCore.is_null(request.enable_serverless):
             query['EnableServerless'] = request.enable_serverless
         if not DaraCore.is_null(request.graceful_shutdown_timeout):
             query['GracefulShutdownTimeout'] = request.graceful_shutdown_timeout
+        if not DaraCore.is_null(request.lineage_replicas):
+            query['LineageReplicas'] = request.lineage_replicas
+        if not DaraCore.is_null(request.lineage_spec):
+            query['LineageSpec'] = request.lineage_spec
         if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not DaraCore.is_null(request.oss_path):
@@ -983,10 +879,16 @@ class Client(OpenApiClient):
             query['DataMountInfoList'] = request.data_mount_info_list_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_lineage):
+            query['EnableLineage'] = request.enable_lineage
         if not DaraCore.is_null(request.enable_serverless):
             query['EnableServerless'] = request.enable_serverless
         if not DaraCore.is_null(request.graceful_shutdown_timeout):
             query['GracefulShutdownTimeout'] = request.graceful_shutdown_timeout
+        if not DaraCore.is_null(request.lineage_replicas):
+            query['LineageReplicas'] = request.lineage_replicas
+        if not DaraCore.is_null(request.lineage_spec):
+            query['LineageSpec'] = request.lineage_spec
         if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not DaraCore.is_null(request.oss_path):
@@ -11307,10 +11209,16 @@ class Client(OpenApiClient):
             query['DataMountInfoList'] = request.data_mount_info_list_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_lineage):
+            query['EnableLineage'] = request.enable_lineage
         if not DaraCore.is_null(request.enable_serverless):
             query['EnableServerless'] = request.enable_serverless
         if not DaraCore.is_null(request.graceful_shutdown_timeout):
             query['GracefulShutdownTimeout'] = request.graceful_shutdown_timeout
+        if not DaraCore.is_null(request.lineage_replicas):
+            query['LineageReplicas'] = request.lineage_replicas
+        if not DaraCore.is_null(request.lineage_spec):
+            query['LineageSpec'] = request.lineage_spec
         if not DaraCore.is_null(request.plugins_dir):
             query['PluginsDir'] = request.plugins_dir
         if not DaraCore.is_null(request.requirement_file):
@@ -11365,10 +11273,16 @@ class Client(OpenApiClient):
             query['DataMountInfoList'] = request.data_mount_info_list_shrink
         if not DaraCore.is_null(request.description):
             query['Description'] = request.description
+        if not DaraCore.is_null(request.enable_lineage):
+            query['EnableLineage'] = request.enable_lineage
         if not DaraCore.is_null(request.enable_serverless):
             query['EnableServerless'] = request.enable_serverless
         if not DaraCore.is_null(request.graceful_shutdown_timeout):
             query['GracefulShutdownTimeout'] = request.graceful_shutdown_timeout
+        if not DaraCore.is_null(request.lineage_replicas):
+            query['LineageReplicas'] = request.lineage_replicas
+        if not DaraCore.is_null(request.lineage_spec):
+            query['LineageSpec'] = request.lineage_spec
         if not DaraCore.is_null(request.plugins_dir):
             query['PluginsDir'] = request.plugins_dir
         if not DaraCore.is_null(request.requirement_file):

@@ -16,16 +16,16 @@ class CreateDataAgentAccuracyTestResponseBody(DaraModel):
     ):
         # The returned result.
         self.data = data
-        # The error code returned if the request failed.
+        # The error code returned when an exception occurs.
         self.error_code = error_code
-        # The error message returned if the call failed.
+        # The error message returned when the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - **true**: The request was successful.                                 
-        # - **false**: The request failed.
+        # - **true**: The request is successful.                                 
+        # - **false**: The request fails.
         self.success = success
 
     def validate(self):

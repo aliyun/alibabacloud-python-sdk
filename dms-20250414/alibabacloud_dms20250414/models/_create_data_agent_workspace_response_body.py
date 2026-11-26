@@ -97,7 +97,7 @@ class CreateDataAgentWorkspaceResponseBodyData(DaraModel):
         self.is_session_share_enabled = is_session_share_enabled
         # The last modification time of the workspace. The value is a UNIX timestamp in seconds.
         self.modify_time = modify_time
-        # The name of the user\\"s role in the workspace.
+        # The name of the user\"s role in the workspace.
         self.role_name = role_name
         # The number of members in the workspace.
         self.total_member = total_member

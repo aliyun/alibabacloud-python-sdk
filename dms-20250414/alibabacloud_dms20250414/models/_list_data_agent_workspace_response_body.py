@@ -199,7 +199,7 @@ class ListDataAgentWorkspaceResponseBodyDataContent(DaraModel):
         self.is_session_share_enabled = is_session_share_enabled
         # The time when the workspace was last modified. The value is a timestamp in milliseconds.
         self.modify_time = modify_time
-        # The name of the user\\"s role in the workspace.
+        # The name of the user\"s role in the workspace.
         self.role_name = role_name
         # The number of running sessions in the workspace.
         self.running_session_count = running_session_count

@@ -20,7 +20,7 @@ class ListCustomAgentResponseBody(DaraModel):
         self.data = data
         # The error code.
         self.error_code = error_code
-        # The error message returned if the call fails.
+        # The error message returned when the call fails.
         self.error_message = error_message
         # Id of the request
         self.request_id = request_id
@@ -187,19 +187,19 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         web_report_theme: str = None,
         workspace_id: str = None,
     ):
-        # The custom agent type. Valid values:
-        # - Default: The system built-in custom agent.
-        # - Common: The common custom agent.
+        # The type of the custom agent. Valid values:
+        # - Default: System-built-in custom agent.
+        # - Common: Regular custom agent.
         self.agent_type = agent_type
-        # The ID of the Alibaba Cloud main account.
+        # The Alibaba Cloud parent account ID.
         self.aliyun_parent_id = aliyun_parent_id
-        # The ID of the Alibaba Cloud account.
+        # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
-        # The callback feature configuration.
+        # The callback configuration.
         self.callback_config = callback_config
         # The name of the creator.
         self.creator_user_name = creator_user_name
-        # The custom agent ID.
+        # The ID of the custom agent.
         self.custom_agent_id = custom_agent_id
         # The current DMS unit.
         self.dmsunit = dmsunit
@@ -207,7 +207,7 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         self.data_json = data_json
         # Specifies whether the agent is displayed by default.
         self.default_agent = default_agent
-        # The custom agent description.
+        # The description of the custom agent.
         self.description = description
         # The current DMS unit.
         self.dms_unit = dms_unit
@@ -225,34 +225,34 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         self.knowledge = knowledge
         # The external knowledge bases.
         self.knowledge_config_list = knowledge_config_list
-        # The knowledge semantic configuration list.
+        # The list of knowledge semantic configurations.
         self.knowledge_semantic_config_list = knowledge_semantic_config_list
         # The modifier.
         self.modifier = modifier
         # The name of the modifier.
         self.modifier_user_name = modifier_user_name
-        # The custom agent name.
+        # The name of the custom agent.
         self.name = name
         # The next run time of the scheduled task.
         self.next_runtime = next_runtime
         # The offline time.
         self.offline_time = offline_time
-        # The recommended question list.
+        # The list of recommended questions.
         # - You can configure up to 10 recommended questions.
         self.recommend_question_list = recommend_question_list
         # The region.
         self.region = region
-        # The reference historical session ID.
+        # The referenced historical session ID.
         self.related_session_id = related_session_id
         # The release time.
         self.release_time = release_time
         # The scheduled task configuration.
         self.schedule_task_config = schedule_task_config
-        # The custom agent status.
+        # The status of the custom agent.
         self.status = status
         # The text report format.
         self.text_report_config = text_report_config
-        # The user-specified skill list.
+        # The list of user-specified skills.
         self.user_specified_skill_list = user_specified_skill_list
         # The web report format.
         self.web_report_config = web_report_config
@@ -527,7 +527,7 @@ class ListCustomAgentResponseBodyDataContentScheduleTaskConfig(DaraModel):
         self.cron_expression = cron_expression
         # The question for the scheduled task.
         self.query = query
-        # The reference historical session ID.
+        # The ID of the referenced historical session.
         self.related_session_id = related_session_id
 
     def validate(self):
@@ -627,12 +627,12 @@ class ListCustomAgentResponseBodyDataContentKnowledgeConfigList(DaraModel):
         mcp_server_id: str = None,
     ):
         # The access type. Valid values:
-        # - mcp: MCP access.
-        # - dms_kb: DMS knowledge base access.
+        # - mcp: Access through MCP.
+        # - dms_kb: Access through DMS knowledge base.
         self.access_type = access_type
         # The knowledge base ID.
         self.kb_uuid = kb_uuid
-        # The MCP server ID.
+        # The ID of the MCP server.
         self.mcp_server_id = mcp_server_id
 
     def validate(self):
@@ -676,15 +676,15 @@ class ListCustomAgentResponseBodyDataContentExecutionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
-        # Specifies whether to prohibit appending data sources in the session.
+        # Specifies whether to prohibit appending data sources during the session.
         self.forbidden_append_data_source = forbidden_append_data_source
-        # Specifies whether to prohibit user inquiries during the process.
+        # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
         # Specifies whether to skip the plan confirmation step.
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the web report rendering confirmation.
+        # Specifies whether to skip the confirmation for generating the web report.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
@@ -740,11 +740,11 @@ class ListCustomAgentResponseBodyDataContentCallbackConfig(DaraModel):
         tool_id: str = None,
         type: str = None,
     ):
-        # The callback tool invocation parameters.
+        # The parameters to invoke the callback tool calling.
         self.callback_args = callback_args
-        # The prompt for generating callback tool invocation parameters.
+        # The prompt for generating parameters to invoke the callback tool calling.
         self.callback_prompt = callback_prompt
-        # The timing for callback tool invocation.
+        # The timing to invoke the callback tool calling.
         self.callback_time = callback_time
         # The callback tool identifier.
         self.tool_id = tool_id

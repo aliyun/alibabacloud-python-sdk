@@ -14,21 +14,24 @@ class UpdateAirflowShrinkRequest(DaraModel):
         dags_dir: str = None,
         data_mount_info_list_shrink: str = None,
         description: str = None,
+        enable_lineage: bool = None,
         enable_serverless: bool = None,
         graceful_shutdown_timeout: int = None,
+        lineage_replicas: int = None,
+        lineage_spec: str = None,
         plugins_dir: str = None,
         requirement_file: str = None,
         startup_file: str = None,
         worker_serverless_replicas: int = None,
         workspace_id: str = None,
     ):
-        # The unique key ID of the Airflow instance.
+        # The unique key ID of Airflow.
         # 
         # This parameter is required.
         self.airflow_id = airflow_id
         # The name of the Airflow instance.
         self.airflow_name = airflow_name
-        # The specification description of the Airflow instance.
+        # The specification description of Airflow.
         self.app_spec = app_spec
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -36,17 +39,23 @@ class UpdateAirflowShrinkRequest(DaraModel):
         self.dags_dir = dags_dir
         # The list of data mount information.
         self.data_mount_info_list_shrink = data_mount_info_list_shrink
-        # The description of the Airflow instance.
+        # The description of Airflow.
         self.description = description
+        # Specifies whether to enable data lineage. For Airflow 2.x, this feature is always disabled, and the lineage specifications and number of replicas are ignored.
+        self.enable_lineage = enable_lineage
         # Specifies whether to enable serverless workers.
         self.enable_serverless = enable_serverless
-        # The timeout period for a worker to exit.
+        # The timeout period for worker exit.
         self.graceful_shutdown_timeout = graceful_shutdown_timeout
+        # The number of replicas for the lineage service. The default value is 1 when enabled. If omitted during an update, the original value is retained.
+        self.lineage_replicas = lineage_replicas
+        # The merged lineage service specification, which uses the same tier as AppSpec.
+        self.lineage_spec = lineage_spec
         # The plugin directory scanned by Airflow.
         self.plugins_dir = plugins_dir
         # The installation file for package dependencies.
         self.requirement_file = requirement_file
-        # The script loaded at startup of the Airflow instance.
+        # The script loaded when the Airflow instance starts.
         self.startup_file = startup_file
         # The number of worker nodes.
         self.worker_serverless_replicas = worker_serverless_replicas
@@ -84,11 +93,20 @@ class UpdateAirflowShrinkRequest(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.enable_lineage is not None:
+            result['EnableLineage'] = self.enable_lineage
+
         if self.enable_serverless is not None:
             result['EnableServerless'] = self.enable_serverless
 
         if self.graceful_shutdown_timeout is not None:
             result['GracefulShutdownTimeout'] = self.graceful_shutdown_timeout
+
+        if self.lineage_replicas is not None:
+            result['LineageReplicas'] = self.lineage_replicas
+
+        if self.lineage_spec is not None:
+            result['LineageSpec'] = self.lineage_spec
 
         if self.plugins_dir is not None:
             result['PluginsDir'] = self.plugins_dir
@@ -130,11 +148,20 @@ class UpdateAirflowShrinkRequest(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('EnableLineage') is not None:
+            self.enable_lineage = m.get('EnableLineage')
+
         if m.get('EnableServerless') is not None:
             self.enable_serverless = m.get('EnableServerless')
 
         if m.get('GracefulShutdownTimeout') is not None:
             self.graceful_shutdown_timeout = m.get('GracefulShutdownTimeout')
+
+        if m.get('LineageReplicas') is not None:
+            self.lineage_replicas = m.get('LineageReplicas')
+
+        if m.get('LineageSpec') is not None:
+            self.lineage_spec = m.get('LineageSpec')
 
         if m.get('PluginsDir') is not None:
             self.plugins_dir = m.get('PluginsDir')

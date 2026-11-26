@@ -16,7 +16,7 @@ class ListCustomAgentRequest(DaraModel):
         workspace_id: str = None,
     ):
         # The custom agent type. Valid values:
-        # - Default: system built-in custom agent
+        # - Default: built-in custom agent
         # - Common: regular custom agent
         self.agent_type = agent_type
         # The page number. Pages start from 1.

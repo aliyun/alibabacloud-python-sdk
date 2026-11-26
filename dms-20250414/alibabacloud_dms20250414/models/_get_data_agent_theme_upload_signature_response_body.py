@@ -95,7 +95,7 @@ class GetDataAgentThemeUploadSignatureResponseBodyData(DaraModel):
         self.object_key = object_key
         # The parameter set that specifies the derived key.
         self.oss_credential = oss_credential
-        # The signature time in the format of yyyyMMdd\\"T\\"HHmmss\\"Z\\".
+        # The signature time in the format of yyyyMMdd\"T\"HHmmss\"Z\".
         self.oss_date = oss_date
         # The STS token used to upload files to OSS. The token is valid for 1 hour.
         self.oss_security_token = oss_security_token

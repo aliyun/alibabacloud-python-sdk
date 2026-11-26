@@ -16,13 +16,13 @@ class GetDataAgentTaskModelUsageResponseBody(DaraModel):
     ):
         # The summary data of model usage for DataAgent analysis tasks.
         self.data = data
-        # The error code returned when a request exception occurs.
+        # The error code, which is returned when a request exception occurs.
         self.error_code = error_code
-        # The error message returned when the call fails.
+        # The error message, which is returned when the call fails.
         self.error_message = error_message
-        # The request ID. You can use this ID to locate logs and troubleshoot issues.
+        # The request ID, which is used to locate logs and troubleshoot issues.
         self.request_id = request_id
-        # Indicates whether the request is successful. Valid values:
+        # Specifies whether the request is successful. Valid values:
         # 
         # - **true**: The request is successful.
         # - **false**: The request fails.
@@ -78,7 +78,9 @@ class GetDataAgentTaskModelUsageResponseBodyData(DaraModel):
     def __init__(
         self,
         acceleration_ratio: float = None,
+        peak_concurrency: float = None,
         rate_limited_session_count: int = None,
+        total_llm_queue_duration: float = None,
         total_llm_wait_duration: float = None,
         total_session_count: int = None,
         peak_tpm: int = None,
@@ -86,10 +88,14 @@ class GetDataAgentTaskModelUsageResponseBodyData(DaraModel):
         total_token_consumed: int = None,
         used_models: int = None,
     ):
-        # The acceleration ratio, which indicates the speed improvement brought by subtask parallelism.
+        # The acceleration ratio, which is the speedup brought by the parallel execution of subtasks.
         self.acceleration_ratio = acceleration_ratio
+        # The peak concurrency.
+        self.peak_concurrency = peak_concurrency
         # The number of throttled sessions.
         self.rate_limited_session_count = rate_limited_session_count
+        # The total queueing time for the large language model.
+        self.total_llm_queue_duration = total_llm_queue_duration
         # The total throttling duration of all sessions.
         self.total_llm_wait_duration = total_llm_wait_duration
         # The total number of sessions.
@@ -114,8 +120,14 @@ class GetDataAgentTaskModelUsageResponseBodyData(DaraModel):
         if self.acceleration_ratio is not None:
             result['AccelerationRatio'] = self.acceleration_ratio
 
+        if self.peak_concurrency is not None:
+            result['PeakConcurrency'] = self.peak_concurrency
+
         if self.rate_limited_session_count is not None:
             result['RateLimitedSessionCount'] = self.rate_limited_session_count
+
+        if self.total_llm_queue_duration is not None:
+            result['TotalLlmQueueDuration'] = self.total_llm_queue_duration
 
         if self.total_llm_wait_duration is not None:
             result['TotalLlmWaitDuration'] = self.total_llm_wait_duration
@@ -142,8 +154,14 @@ class GetDataAgentTaskModelUsageResponseBodyData(DaraModel):
         if m.get('AccelerationRatio') is not None:
             self.acceleration_ratio = m.get('AccelerationRatio')
 
+        if m.get('PeakConcurrency') is not None:
+            self.peak_concurrency = m.get('PeakConcurrency')
+
         if m.get('RateLimitedSessionCount') is not None:
             self.rate_limited_session_count = m.get('RateLimitedSessionCount')
+
+        if m.get('TotalLlmQueueDuration') is not None:
+            self.total_llm_queue_duration = m.get('TotalLlmQueueDuration')
 
         if m.get('TotalLlmWaitDuration') is not None:
             self.total_llm_wait_duration = m.get('TotalLlmWaitDuration')

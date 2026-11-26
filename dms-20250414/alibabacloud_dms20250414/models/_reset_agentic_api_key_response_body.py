@@ -97,7 +97,7 @@ class ResetAgenticApiKeyResponseBodyData(DaraModel):
         self.agent_name = agent_name
         # The type of the Agent to which the Access Token belongs. Valid values:
         # - HUMAN_BOUND: fully inherits the permissions of the associated user.
-        # - PERMISSION_NARROW: narrows the permissions based on the associated user\\"s permission baseline.
+        # - PERMISSION_NARROW: narrows the permissions based on the associated user\"s permission baseline.
         # - AGENT_BOUND: inherits the permissions of the parent Agent.
         # - STANDALONE: holds permissions as an independent identity principal.
         self.agent_type = agent_type

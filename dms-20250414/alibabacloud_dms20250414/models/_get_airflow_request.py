@@ -10,11 +10,11 @@ class GetAirflowRequest(DaraModel):
         airflow_id: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the Airflow instance.
+        # The Airflow instance ID.
         # 
         # This parameter is required.
         self.airflow_id = airflow_id
-        # The ID of the workspace.
+        # The workspace ID.
         # 
         # This parameter is required.
         self.workspace_id = workspace_id

@@ -16,7 +16,7 @@ class DescribeDataAgentSessionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The returned struct.
+        # The returned data structure.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -118,11 +118,11 @@ class DescribeDataAgentSessionResponseBodyData(DaraModel):
         self.file = file
         # The list of historical conversation messages in the session.
         self.messages = messages
-        # The custom agent for the intelligent development session preview.
+        # The custom agent for intelligent development session preview.
         self.preview_custom_agent = preview_custom_agent
         # The recall results from the knowledge base and memory for the current session.
         self.recall_results = recall_results
-        # Indicates whether the session is favorited by the current logged-on user.
+        # Indicates whether the item is favorited by the current logged-on user.
         self.saved = saved
         # The session configuration items.
         self.session_config = session_config
@@ -335,12 +335,12 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # The ID of the custom agent.
         self.custom_agent_id = custom_agent_id
         # The usage stage of the custom agent. Valid values:
-        # - **debug**: Debug stage.
+        # - **debug**: Debugging stage.
         # - **prod**: Production stage.
         self.custom_agent_stage = custom_agent_stage
         # Specifies whether to enable web search.
         self.enable_search = enable_search
-        # The encryption key for storing artifacts in OSS, including built-in and user OSS. This key is typically specified in CreateDataAgentSession.
+        # The encryption key for storing artifacts in OSS, including built-in and user OSS. This is typically specified in CreateDataAgentSession.
         self.encrypt_key = encrypt_key
         # The encryption type for storing artifacts in OSS, including built-in and user OSS.
         self.encrypt_type = encrypt_type
@@ -358,6 +358,8 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         # - **INSIGHT**: Insight mode.
         self.mode = mode
         # The report page width.
+        # 
+        # Unit: mm.
         self.report_page_width = report_page_width
         # The report watermark.
         self.report_water_mark = report_water_mark
@@ -458,9 +460,9 @@ class DescribeDataAgentSessionResponseBodyDataRecallResults(DaraModel):
         score: float = None,
         type: str = None,
     ):
-        # The content of the recalled knowledge chunk.
+        # The content of the recalled knowledge block.
         self.content = content
-        # The similarity score of this data entry. The scoring algorithm is related to the algorithm specified when the index is created, such as l2, ip, or cosine.
+        # The similarity score of this data entry. The scoring algorithm is related to the algorithm specified during index creation, such as l2, ip, or cosine.
         self.score = score
         # The category of the recalled knowledge.
         self.type = type
@@ -535,7 +537,7 @@ class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent(DaraModel):
         web_report_theme: str = None,
         workspace_id: str = None,
     ):
-        # The Alibaba Cloud main account ID.
+        # The ID of the Alibaba Cloud main account.
         self.aliyun_parent_uid = aliyun_parent_uid
         # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
@@ -601,11 +603,11 @@ class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent(DaraModel):
         # The web report format.
         self.web_report_config = web_report_config
         # The web report theme. Valid values:
-        # - default: default
-        # - journal: journal
-        # - legacy: legacy
-        # - neobrutalism: stylized
-        # - infographic: infographic
+        # - default: Default.
+        # - journal: Journal.
+        # - legacy: Legacy.
+        # - neobrutalism: Neobrutalism.
+        # - infographic: Infographic.
         self.web_report_theme = web_report_theme
         # The workspace ID.
         self.workspace_id = workspace_id
@@ -861,9 +863,9 @@ class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentScheduleTaskConf
         query: str = None,
         related_session_id: str = None,
     ):
-        # The cron expression for scheduled runs.
+        # The cron expression for scheduled execution.
         self.cron_expression = cron_expression
-        # The question for scheduled runs.
+        # The question for scheduled execution.
         self.query = query
         # The ID of the referenced session.
         self.related_session_id = related_session_id
@@ -964,9 +966,9 @@ class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeConfigL
         kb_uuid: str = None,
         mcp_server_id: str = None,
     ):
-        # The access type. If this parameter is not specified, the default value is mcp. Valid values:
-        # - mcp: MCP access. You must specify the McpServerId parameter.
-        # - dms_kb: DMS knowledge base access. You must specify the KbUuid parameter.
+        # The access type. If you do not specify this parameter, the default value is mcp. Valid values:
+        # - mcp: Access through MCP. You must specify the McpServerId parameter.
+        # - dms_kb: Access through a DMS knowledge base. You must specify the KbUuid parameter.
         self.access_type = access_type
         # The knowledge base ID.
         self.kb_uuid = kb_uuid
@@ -1016,23 +1018,22 @@ class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentExecutionConfig(
         skip_web_report_confirm: bool = None,
     ):
         # The tendency of the agent to ask follow-up questions to clarify requirements. **This parameter takes effect only when SkipAskHuman is set to false and SkipPlan is set to false.** Valid values: 0 to 1.
-        # 
         # The following list describes some tendency values:
-        # - 0.0: Do not ask questions. The agent does not ask the user any questions, skips confirmation after generating a plan, and directly executes the plan.
+        # - 0.0: Do not ask questions. The agent does not ask the user questions, skips confirmation after generating the plan, and directly executes the plan.
         # - 0.1: Confirm the plan only. The agent confirms the generated plan only once and does not ask additional questions about requirements or details.
         # - 0.4: Ask questions when the task is blocked. The agent handles the task autonomously by default and asks questions only when the task cannot proceed or be completed.
-        # - 0.7: Ask questions when key criteria are uncertain. The agent proactively asks questions when there is critical ambiguity in the goals, scope, business criteria, or acceptance criteria.
+        # - 0.7: Ask questions when key criteria are uncertain. The agent proactively asks questions when critical ambiguity exists in the goals, scope, business criteria, or acceptance criteria.
         # - 1.0: Fully align throughout the process. The agent proactively clarifies requirements during planning and execution, and continuously confirms when encountering important ambiguities, assumptions, or solution branches.
         self.clarification_tendency = clarification_tendency
-        # Indicates whether appending data sources in the session is prohibited.
+        # Specifies whether to prohibit appending data sources in the session.
         self.forbidden_append_data_source = forbidden_append_data_source
-        # Indicates whether user inquiries during the process are prohibited.
+        # Specifies whether to prohibit user inquiries during the process.
         self.skip_ask_human = skip_ask_human
-        # Indicates whether the plan confirmation step is skipped.
+        # Specifies whether to skip the plan confirmation step.
         self.skip_plan = skip_plan
-        # Indicates whether all SQL confirmations are skipped.
+        # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Indicates whether the confirmation for generating a web report is skipped.
+        # Specifies whether to skip the confirmation for generating web reports.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
@@ -1094,11 +1095,11 @@ class DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentCallbackConfig(D
         tool_id: str = None,
         type: str = None,
     ):
-        # The callback tool invocation parameters.
+        # The parameters used to invoke callback tool calling.
         self.callback_args = callback_args
-        # The prompt used to generate callback tool invocation parameters.
+        # The prompt used to generate the parameters to invoke callback tool calling.
         self.callback_prompt = callback_prompt
-        # The timing for callback tool invocation.
+        # The timing to invoke callback tool calling.
         self.callback_time = callback_time
         # The callback tool identifier.
         self.tool_id = tool_id
@@ -1161,7 +1162,7 @@ class DescribeDataAgentSessionResponseBodyDataMessages(DaraModel):
         self.content = content
         # The unique ID of the historical conversation message.
         self.id = id
-        # The send time of the historical conversation message.
+        # The time when the historical conversation message was sent.
         self.send_time = send_time
         # The status of the historical conversation message.
         self.status = status
@@ -1211,7 +1212,7 @@ class DescribeDataAgentSessionResponseBodyDataDataSources(DaraModel):
         detail: str = None,
     ):
         # The data source category. Valid values:
-        # - **CHAT**: The data source is specified in a conversation by calling the CreateDataAgentSession or SendChatMessage operation.
+        # - **CHAT**: The data source is specified in the conversation by calling the CreateDataAgentSession or SendChatMessage operation.
         # - **CUSTOM_AGENT**: The data source comes from the preset analysis data scope in a custom agent.
         self.category = category
         # The data source details. When Category is set to CHAT or CUSTOM_AGENT, the structure of Detail aligns with the structure of a single element in the DataSources parameter of the SendChatMessage operation.
@@ -1287,10 +1288,10 @@ class DescribeDataAgentSessionResponseBodyDataCapabilities(DaraModel):
         type: str = None,
     ):
         # The ID of the mounted capability.
-        # - If Type is set to skill, the value indicates the skill ID.
-        # - If Type is set to dms_kb, the value indicates the knowledge base ID.
+        # - If Type is set to skill, this parameter indicates the skill ID.
+        # - If Type is set to dms_kb, this parameter indicates the knowledge base ID.
         self.id = id
-        # The type. Valid values:
+        # The capability type. Valid values:
         # - skill: skill
         # - dms_kb: knowledge base
         self.type = type

@@ -22,11 +22,11 @@ class CreateDataAgentAccuracyTestRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
-        # The ID of the custom agent to be tested for accuracy.
+        # The ID of the custom agent that requires accuracy testing.
         self.custom_agent_id = custom_agent_id
-        # Deprecated.
+        # **[Deprecated]**.
         self.dataset = dataset
-        # The data source. We recommend that you configure this in the custom agent.
+        # The data source. Configure it in the custom agent.
         self.datasource = datasource
         # The description.
         self.desc = desc
@@ -44,7 +44,7 @@ class CreateDataAgentAccuracyTestRequest(DaraModel):
         self.mode = mode
         # The name of the test item.
         self.name = name
-        # Specifies whether sessions are displayed after analysis. This parameter is not supported.
+        # Specifies whether to display sessions after analysis. This feature is not supported.
         self.need_delete = need_delete
         # The region ID.
         self.region_id = region_id

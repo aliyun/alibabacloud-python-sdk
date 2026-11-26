@@ -1,3 +1,28 @@
+2026-11-26 Version: 5.0.0
+- Delete API BatchCreateDataLakePartitions.
+- Update API CreateAirflow: add request parameters EnableLineage.
+- Update API CreateAirflow: add request parameters LineageReplicas.
+- Update API CreateAirflow: add request parameters LineageSpec.
+- Update API CreateAirflow: add response parameters Body.Root.EnableLineage.
+- Update API CreateAirflow: add response parameters Body.Root.LineageReplicas.
+- Update API CreateAirflow: add response parameters Body.Root.LineageSpec.
+- Update API GetAirflow: add response parameters Body.Root.EnableLineage.
+- Update API GetAirflow: add response parameters Body.Root.LineageReplicas.
+- Update API GetAirflow: add response parameters Body.Root.LineageSpec.
+- Update API GetDataAgentTaskModelUsage: add response parameters Body.Data.PeakConcurrency.
+- Update API GetDataAgentTaskModelUsage: add response parameters Body.Data.TotalLlmQueueDuration.
+- Update API GetDataAgentTaskModelUsageMetrics: add response parameters Body.Data.$.Concurrency.
+- Update API ListAirflows: add response parameters Body.Root.List.$.EnableLineage.
+- Update API ListAirflows: add response parameters Body.Root.List.$.LineageReplicas.
+- Update API ListAirflows: add response parameters Body.Root.List.$.LineageSpec.
+- Update API UpdateAirflow: add request parameters EnableLineage.
+- Update API UpdateAirflow: add request parameters LineageReplicas.
+- Update API UpdateAirflow: add request parameters LineageSpec.
+- Update API UpdateAirflow: add response parameters Body.Root.EnableLineage.
+- Update API UpdateAirflow: add response parameters Body.Root.LineageReplicas.
+- Update API UpdateAirflow: add response parameters Body.Root.LineageSpec.
+
+
 2026-11-12 Version: 4.6.0
 - Generated python 2025-04-14 for Dms.
 

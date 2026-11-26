@@ -81,7 +81,7 @@ class GetMyAgenticNotificationChannelAuthorizeUrlResponseBodyData(DaraModel):
     ):
         # The URL of the Lark OAuth authorization page. After the user opens the URL in a browser and completes the authorization, the system binds the Lark account as the notification identity for the current user, and the channel switch remains unchanged. The state parameter in the URL is valid for 180 seconds and can be used only once.
         self.authorize_url = authorize_url
-        # The callback URL after the authorization is completed. You must add this URL to the redirect URL whitelist of the tenant\\"s Lark application. Otherwise, the authorization fails.
+        # The callback URL after the authorization is completed. You must add this URL to the redirect URL whitelist of the tenant\"s Lark application. Otherwise, the authorization fails.
         self.redirect_uri = redirect_uri
 
     def validate(self):

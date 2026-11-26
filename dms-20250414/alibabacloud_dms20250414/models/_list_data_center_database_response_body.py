@@ -142,11 +142,11 @@ class ListDataCenterDatabaseResponseBodyData(DaraModel):
         #   - Y: The dataset is built-in.
         #   - N: The dataset is not built-in.
         self.is_internal = is_internal
-        # The name of the user\\"s OSS bucket.
+        # The name of the user\"s OSS bucket.
         self.oss_bucket = oss_bucket
         # The file size, in bytes.
         self.size = size
-        # Indicates whether the user\\"s OSS bucket is used.
+        # Indicates whether the user\"s OSS bucket is used.
         self.use_user_oss_bucket = use_user_oss_bucket
 
     def validate(self):

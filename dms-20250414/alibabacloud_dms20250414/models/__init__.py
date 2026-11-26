@@ -33,6 +33,7 @@ from ._dltable import DLTable
 from ._dltable_input import DLTableInput
 from ._dltablebase_info import DLTablebaseInfo
 from ._data_agent_application import DataAgentApplication
+from ._data_agent_application_agreement import DataAgentApplicationAgreement
 from ._data_agent_billing_instance import DataAgentBillingInstance
 from ._data_mount_info import DataMountInfo
 from ._dms_gateway_order import DmsGatewayOrder
@@ -68,10 +69,6 @@ from ._add_data_agent_memory_response import AddDataAgentMemoryResponse
 from ._add_user_to_data_agent_workspace_request import AddUserToDataAgentWorkspaceRequest
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBody
 from ._add_user_to_data_agent_workspace_response import AddUserToDataAgentWorkspaceResponse
-from ._batch_create_data_lake_partitions_request import BatchCreateDataLakePartitionsRequest
-from ._batch_create_data_lake_partitions_shrink_request import BatchCreateDataLakePartitionsShrinkRequest
-from ._batch_create_data_lake_partitions_response_body import BatchCreateDataLakePartitionsResponseBody
-from ._batch_create_data_lake_partitions_response import BatchCreateDataLakePartitionsResponse
 from ._check_data_agent_memory_config_request import CheckDataAgentMemoryConfigRequest
 from ._check_data_agent_memory_config_response_body import CheckDataAgentMemoryConfigResponseBody
 from ._check_data_agent_memory_config_response import CheckDataAgentMemoryConfigResponse
@@ -493,6 +490,7 @@ from ._workspace_code_publish_request import WorkspaceCodePublishRequest
 from ._workspace_code_publish_response_body import WorkspaceCodePublishResponseBody
 from ._workspace_code_publish_response import WorkspaceCodePublishResponse
 from ._agentic_dms_instance_sync_task_instance import AgenticDmsInstanceSyncTaskInstanceDmsInstanceSummary
+from ._data_agent_application import DataAgentApplicationLastRequest
 from ._open_claw_instance_vo import OpenClawInstanceVOImageInfo
 from ._add_agentic_data_source_response_body import AddAgenticDataSourceResponseBodyData
 from ._add_data_agent_memory_response_body import AddDataAgentMemoryResponseBodyData
@@ -695,6 +693,7 @@ __all__ = [
     DLTableInput,
     DLTablebaseInfo,
     DataAgentApplication,
+    DataAgentApplicationAgreement,
     DataAgentBillingInstance,
     DataMountInfo,
     DmsGatewayOrder,
@@ -730,10 +729,6 @@ __all__ = [
     AddUserToDataAgentWorkspaceRequest,
     AddUserToDataAgentWorkspaceResponseBody,
     AddUserToDataAgentWorkspaceResponse,
-    BatchCreateDataLakePartitionsRequest,
-    BatchCreateDataLakePartitionsShrinkRequest,
-    BatchCreateDataLakePartitionsResponseBody,
-    BatchCreateDataLakePartitionsResponse,
     CheckDataAgentMemoryConfigRequest,
     CheckDataAgentMemoryConfigResponseBody,
     CheckDataAgentMemoryConfigResponse,
@@ -1155,6 +1150,7 @@ __all__ = [
     WorkspaceCodePublishResponseBody,
     WorkspaceCodePublishResponse,
     AgenticDmsInstanceSyncTaskInstanceDmsInstanceSummary,
+    DataAgentApplicationLastRequest,
     OpenClawInstanceVOImageInfo,
     AddAgenticDataSourceResponseBodyData,
     AddDataAgentMemoryResponseBodyData,

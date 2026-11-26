@@ -22,7 +22,7 @@ class UpdateDataAgentAccuracyTestRequest(DaraModel):
         region_id: str = None,
         workspace_id: str = None,
     ):
-        # The accuracy test instance ID.
+        # The instance ID of the accuracy test.
         self.accuracy_test_ins_id = accuracy_test_ins_id
         # The new custom agent ID.
         self.customer_agent_id = customer_agent_id
@@ -48,7 +48,7 @@ class UpdateDataAgentAccuracyTestRequest(DaraModel):
         self.need_delete = need_delete
         # The region ID.
         self.region_id = region_id
-        # The workspace ID.
+        # The ID of the workspace.
         self.workspace_id = workspace_id
 
     def validate(self):

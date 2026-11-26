@@ -16,7 +16,7 @@ class GetDataAgentTaskModelUsageMetricsResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The list of time-series TPM metrics for model usage. The usage at each time point is returned in chronological order.
+        # The list of time-series metrics of TPM for model usage, which returns the usage at each time point in chronological order.
         self.data = data
         # The error code, which is returned when a request exception occurs.
         self.error_code = error_code
@@ -86,14 +86,17 @@ class GetDataAgentTaskModelUsageMetricsResponseBodyData(DaraModel):
     def __init__(
         self,
         begin_time: int = None,
+        concurrency: float = None,
         end_time: int = None,
         tpm: int = None,
     ):
         # The start time of the statistical interval for the time-series point. The value is a UNIX timestamp in seconds.
         self.begin_time = begin_time
+        # The concurrency value.
+        self.concurrency = concurrency
         # The end time of the statistical interval for the time-series point. The value is a UNIX timestamp in seconds.
         self.end_time = end_time
-        # The TPM at the time-series point, which represents the number of tokens consumed in the statistical interval.
+        # The TPM of the time-series point, which is the number of tokens consumed in the statistical interval.
         self.tpm = tpm
 
     def validate(self):
@@ -107,6 +110,9 @@ class GetDataAgentTaskModelUsageMetricsResponseBodyData(DaraModel):
         if self.begin_time is not None:
             result['BeginTime'] = self.begin_time
 
+        if self.concurrency is not None:
+            result['Concurrency'] = self.concurrency
+
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
@@ -119,6 +125,9 @@ class GetDataAgentTaskModelUsageMetricsResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('BeginTime') is not None:
             self.begin_time = m.get('BeginTime')
+
+        if m.get('Concurrency') is not None:
+            self.concurrency = m.get('Concurrency')
 
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')

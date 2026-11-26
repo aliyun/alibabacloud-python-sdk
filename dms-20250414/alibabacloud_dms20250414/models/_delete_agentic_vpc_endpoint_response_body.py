@@ -14,7 +14,7 @@ class DeleteAgenticVpcEndpointResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The deletion acceptance result. For duplicate requests, downstream errors are retained and idempotence is not guaranteed.
+        # The deletion acceptance result. For duplicate requests, downstream errors are retained, and idempotence is not guaranteed.
         self.data = data
         # The error code returned when a request exception occurs.
         self.error_code = error_code
@@ -82,7 +82,7 @@ class DeleteAgenticVpcEndpointResponseBodyData(DaraModel):
     ):
         # The ID of the endpoint accepted for deletion.
         self.endpoint_id = endpoint_id
-        # The deletion status. A value of DELETING only indicates that the asynchronous deletion request is accepted, not that the deletion in the cloud is complete.
+        # The deletion status. A value of DELETING only indicates that the asynchronous deletion request is accepted, and does not indicate that the deletion in the cloud is complete.
         self.status = status
 
     def validate(self):

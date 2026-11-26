@@ -85,7 +85,7 @@ class AddUserToDataAgentWorkspaceResponseBodyData(DaraModel):
         self.join_time = join_time
         # The Alibaba Cloud UID of the user.
         self.member_id = member_id
-        # The name of the user\\"s role in the workspace.
+        # The name of the user\"s role in the workspace.
         self.role_name = role_name
         # The number of tasks that the user is running in the workspace.
         self.running_task_number = running_task_number

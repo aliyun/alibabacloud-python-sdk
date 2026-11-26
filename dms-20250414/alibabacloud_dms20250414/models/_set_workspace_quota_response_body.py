@@ -16,15 +16,15 @@ class SetWorkspaceQuotaResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Details of the access denial.
+        # The access denied details.
         self.access_denied_detail = access_denied_detail
-        # The returned data.
+        # The response data.
         self.data = data
         # The error code.
         self.error_code = error_code
         # The HTTP status code.
         self.http_status_code = http_status_code
-        # A human-readable message about the request\\"s outcome.
+        # The log information.
         self.message = message
         # The request ID.
         self.request_id = request_id
@@ -100,19 +100,19 @@ class SetWorkspaceQuotaResponseBodyData(DaraModel):
         status: str = None,
         workspace_id: str = None,
     ):
-        # The compute unit (CU) quota.
+        # The CU quota.
         self.cu_quota = cu_quota
-        # The amount of compute unit (CU) quota used.
+        # The CU quota usage.
         self.cu_quota_usage = cu_quota_usage
-        # The ID of the billing instance.
+        # The billing instance ID.
         self.instance_id = instance_id
         # The order ID.
         self.order_id = order_id
-        # The status of the order.
+        # The order status.
         self.state = state
-        # The status of the instance.
+        # The instance status.
         self.status = status
-        # The ID of the workspace.
+        # The workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):

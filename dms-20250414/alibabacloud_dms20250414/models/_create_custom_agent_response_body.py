@@ -113,11 +113,11 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         web_report_theme: str = None,
         workspace_id: str = None,
     ):
-        # The custom agent type. Valid values:
+        # The type of the custom agent. Valid values:
         # - Default: The system-built-in custom agent.
         # - Common: The common custom agent.
         self.agent_type = agent_type
-        # The ID of the Alibaba Cloud main account.
+        # The parent Alibaba Cloud account ID.
         self.aliyun_parent_uid = aliyun_parent_uid
         # The Alibaba Cloud account ID.
         self.aliyun_uid = aliyun_uid
@@ -143,7 +143,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         # The instruction.
         self.instruction = instruction
-        # Indicates whether a periodic task is configured.
+        # Indicates whether a scheduled task is configured.
         self.is_schedule_task = is_schedule_task
         # The knowledge.
         self.knowledge = knowledge
@@ -157,7 +157,7 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.modifier_user_name = modifier_user_name
         # The name of the custom agent.
         self.name = name
-        # The next execution time of the periodic task.
+        # The next run time of the scheduled task.
         # - Timestamp format.
         self.next_runtime = next_runtime
         # The offline time.
@@ -171,9 +171,9 @@ class CreateCustomAgentResponseBodyData(DaraModel):
         self.related_session_id = related_session_id
         # The release time.
         self.release_time = release_time
-        # The periodic task configuration.
+        # The scheduled task configuration.
         self.schedule_task_config = schedule_task_config
-        # The custom agent status.
+        # The status of the custom agent.
         self.status = status
         # The text report format.
         self.text_report_config = text_report_config
@@ -442,9 +442,9 @@ class CreateCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
         query: str = None,
         related_session_id: str = None,
     ):
-        # The cron expression for time-based scheduling.
+        # The cron expression for periodic scheduling.
         self.cron_expression = cron_expression
-        # The question for the scheduled task.
+        # The query for the periodic task.
         self.query = query
         # The ID of the referenced historical session.
         self.related_session_id = related_session_id
@@ -595,15 +595,15 @@ class CreateCustomAgentResponseBodyDataExecutionConfig(DaraModel):
         skip_sql_confirm: bool = None,
         skip_web_report_confirm: bool = None,
     ):
-        # Specifies whether to prohibit appending data sources in a session.
+        # Specifies whether to prohibit appending data sources in the session.
         self.forbidden_append_data_source = forbidden_append_data_source
-        # Specifies whether to prohibit user inquiries during the process.
+        # Specifies whether to disable user inquiries during the process.
         self.skip_ask_human = skip_ask_human
         # Specifies whether to skip the plan confirmation step.
         self.skip_plan = skip_plan
         # Specifies whether to skip all SQL confirmations.
         self.skip_sql_confirm = skip_sql_confirm
-        # Specifies whether to skip the confirmation for generating a web report.
+        # Specifies whether to skip the web report drawing confirmation.
         self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
@@ -659,9 +659,9 @@ class CreateCustomAgentResponseBodyDataCallbackConfig(DaraModel):
         tool_id: str = None,
         type: str = None,
     ):
-        # The parameters to invoke the callback tool.
+        # The parameters used to invoke the callback tool.
         self.callback_args = callback_args
-        # The prompt for generating parameters to invoke the callback tool.
+        # The prompt used to generate parameters to invoke the callback tool.
         self.callback_prompt = callback_prompt
         # The timing to invoke the callback tool.
         self.callback_time = callback_time
